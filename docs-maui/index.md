@@ -1,1 +1,3 @@
-# Welcome to docs-maui-public!
+# Welcome to .NET MAUI.
+
+The .NET MAUI docs live here.
