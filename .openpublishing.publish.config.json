@@ -8,6 +8,10 @@
       "monikers": [],
       "moniker_ranges": [],
       "open_to_public_contributors": true,
+      "xref_query_tags": [
+        "/dotnet",
+        "/uwp/api"
+      ],      
       "type_mapping": {
         "Conceptual": "Content"
       },
