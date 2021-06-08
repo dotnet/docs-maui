@@ -24,7 +24,10 @@
       {
         "files": [
           "**/*.png",
-          "**/*.jpg"
+          "**/*.jpg",
+          "**/*.jpeg",
+          "**/*.gif",
+          "**/*.svg"
         ],
         "exclude": [
           "**/obj/**",
@@ -39,9 +42,14 @@
     "overwrite": [],
     "externalReference": [],
     "globalMetadata": {
+      "author": "davidbritch",
       "breadcrumb_path": "/dotnet/maui/breadcrumb/toc.json",
       "extendBreadcrumb": true,
-      "feedback_system": "None"
+      "feedback_system": "GitHub",
+      "feedback_github_repo": "dotnet/docs-maui",
+      "ms.author": "dabritch",
+      "ms.prod": "dotnet-mobile",
+      "title": ".NET Multi-platform App UI"
     },
     "fileMetadata": {},
     "template": [],
