@@ -2,7 +2,7 @@
   "docsets_to_publish": [
     {
       "docset_name": "docs-maui-public",
-      "build_source_folder": "docs-maui",
+      "build_source_folder": "docs",
       "build_output_subfolder": "docs-maui-public",
       "locale": "en-us",
       "monikers": [],
@@ -11,7 +11,7 @@
       "xref_query_tags": [
         "/dotnet",
         "/uwp/api"
-      ],      
+      ],
       "type_mapping": {
         "Conceptual": "Content"
       },
@@ -22,6 +22,8 @@
   "notification_subscribers": [],
   "sync_notification_subscribers": [],
   "branches_to_filter": [],
+  "git_repository_url_open_to_public_contributors": "https://github.com/dotnet/docs-maui",
+  "git_repository_branch_open_to_public_contributors": "main",
   "skip_source_output_uploading": false,
   "need_preview_pull_request": true,
   "contribution_branch_mappings": {},
