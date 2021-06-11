@@ -1,8 +1,8 @@
 - name: .NET MAUI
   href: index.yml
-  expanded: true
   items:
     - name: Get started
+      expanded: true
       items:
         - name: What is .NET Multi-platform App UI?
           href: get-started/what-is-maui.md
@@ -15,12 +15,14 @@
         - name: Migrate from Xamarin.Forms
           href: get-started/migrate.md
     - name: Fundamentals
+      expanded: true
       items:
         - name: App startup
           href: fundamentals/app-startup.md
         - name: Customize controls
           href: fundamentals/handlers/customize.md
     - name: Internals
+      expanded: true
       items:
         - name: Single project
           href: internals/single-project.md
