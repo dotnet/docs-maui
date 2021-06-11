@@ -193,4 +193,4 @@ public class Startup : IStartup
 }
 ```
 
-In this example, all controls in the app will be backed by handlers, aside from the `BoxView` and `Frame` controls which will be backed by Xamarin.Forms renderers.
+In this example, all controls in the app will be backed by handlers, aside from the `BoxView` and `Frame` controls that will be backed by Xamarin.Forms renderers.

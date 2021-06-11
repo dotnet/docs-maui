@@ -20,7 +20,7 @@ ms.date: 06/07/2021
 
 - Write cross-platform apps in XAML and C#, from a single shared code-base in Visual Studio.
 - Share UI layout and design across platforms.
-- Share code, test and business logic across platforms.
+- Share code, test, and business logic across platforms.
 
 ## How .NET MAUI works
 
