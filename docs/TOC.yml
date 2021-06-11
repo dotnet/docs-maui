@@ -1,2 +1,26 @@
-- name: Index
-  href: index.md
+- name: .NET MAUI
+  href: index.yml
+  expanded: true
+  items:
+    - name: Get started
+      items:
+        - name: What is .NET Multi-platform App UI?
+          href: get-started/what-is-maui.md
+        - name: Supported platforms
+          href: get-started/supported-platforms.md
+        - name: Installation
+          href: get-started/installation.md
+        - name: Build your first app
+          href: get-started/first-app.md
+        - name: Migrate from Xamarin.Forms
+          href: get-started/migrate.md
+    - name: Fundamentals
+      items:
+        - name: App startup
+          href: fundamentals/app-startup.md
+        - name: Customize controls
+          href: fundamentals/handlers/customize.md
+    - name: Internals
+      items:
+        - name: Single project
+          href: internals/single-project.md
