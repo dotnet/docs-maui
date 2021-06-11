@@ -74,7 +74,7 @@ Any custom fonts consumed by an app must be included in your .csproj file. This 
 ```xml
 <ItemGroup>
    <MauiFont Include="Resources\Fonts\*" />
- </ItemGroup>
+</ItemGroup>
 ```
 
 > [!NOTE]
