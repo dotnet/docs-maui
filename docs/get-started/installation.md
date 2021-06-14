@@ -15,7 +15,7 @@ To create .NET Multi-platform App UI (MAUI) apps, you currently require .NET 6 P
 
 ![Visual Studio workload](installation-images/vs-workloads.png)
 
-To verify your development environment, and install any missing components, use the [maui-check](https://github.com/Redth/dotnet-maui-check) utility. Install this utility using the following donet CLI command:
+To verify your development environment, and install any missing components, use the [maui-check](https://github.com/Redth/dotnet-maui-check) utility. Install this utility using the following .NET CLI command:
 
 ```dotnetcli
 dotnet tool install -g redth.net.maui.check
