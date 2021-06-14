@@ -13,7 +13,7 @@ ms.date: 06/09/2021
 
 To create .NET Multi-platform App UI (MAUI) apps, you currently require .NET 6 Preview 4 with .NET MAUI and the platform SDKs for Android, iOS, macOS, tvOS, and Mac Catalyst. You also need [Visual Studio 16.11 Preview 1](https://visualstudio.microsoft.com/vs/preview/) with the Mobile development with .NET and Universal Windows Platform development workloads installed:
 
-![Visual Studio workload](installation-images/vs-workloads.png)
+:::image type="content" source="installation-images/vs-workloads.png" alt-text="Visual Studio workload":::
 
 To verify your development environment, and install any missing components, use the [maui-check](https://github.com/Redth/dotnet-maui-check) utility. Install this utility using the following .NET CLI command:
 

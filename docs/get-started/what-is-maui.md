@@ -82,7 +82,7 @@ In a .NET MAUI app, you write code that primarily interacts with the .NET MAUI A
 - One location to manage resources such as fonts and images.
 - Multi-targeting to organize platform-specific code.
 
-![.NET MAUI single project](what-is-maui-images/single-project.png)
+:::image type="content" source="what-is-maui-images/single-project.png" alt-text=".NET MAUI single project.":::
 
 For more information about .NET MAUI single project, see [.NET MAUI single project](~/internals/single-project.md).
 
