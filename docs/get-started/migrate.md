@@ -59,4 +59,4 @@ This example ports the [Button Demos](/samples/xamarin/xamarin-forms-samples/use
     dotnet build -t:Run -f net6.0-maccatalyst
     ```
 
-1. Examine any runtime errors, some of which will be due to incomplete handler availability.
+1. Examine any run-time errors, some of which will be due to incomplete handler availability.
