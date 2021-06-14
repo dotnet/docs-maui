@@ -34,7 +34,7 @@ In this tutorial, you'll learn how to create your first .NET Multi-platform App 
 
     ![Broken dependencies](first-app-images/broken-dependencies.png)
 
-1. In the dotnet CLI, create a **nuget.config** file in the root folder of the project and add the **maui-preview** feed:
+1. In the .NET CLI, create a *nuget.config* file in the root folder of the project and add the `maui-preview` feed:
 
     ```dotnetcli
     dotnet new nugetconfig
