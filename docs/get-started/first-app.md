@@ -30,7 +30,7 @@ In this tutorial, you'll learn how to create your first .NET Multi-platform App 
 
     ![Configure the project](first-app-images/configure-project.png)
 
-    Wait for the project to be created. Note that Visual Studio hasn't restored the required .NET 6 dependencies:
+    Wait for the project to be created. Note that Visual Studio hasn't restored the required .NET 6 dependencies. You'll restore them in a later step.
 
     ![Broken dependencies](first-app-images/broken-dependencies.png)
 
