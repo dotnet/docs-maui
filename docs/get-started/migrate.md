@@ -41,7 +41,7 @@ This example ports the [Button Demos](/samples/xamarin/xamarin-forms-samples/use
     > [!NOTE]
     > If you are unable to restore project dependencies, ensure that you have the latest MAUI preview installed.
 
-1. Copy the [code files](https://github.com/xamarin/xamarin-forms-samples/tree/main/UserInterface/ButtonDemos/ButtonDemos/ButtonDemos) (except App.xaml) into the newly created project.
+1. Copy the [code files](https://github.com/xamarin/xamarin-forms-samples/tree/main/UserInterface/ButtonDemos/ButtonDemos/ButtonDemos) (except *App.xaml*) into the newly created project.
 1. In the newly created project, replace the following namespaces:
 
     | Old namespace | New namespace |
