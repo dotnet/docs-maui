@@ -41,7 +41,7 @@ In this tutorial, you'll learn how to create your first .NET Multi-platform App 
     dotnet nuget add source -n maui-preview https://aka.ms/maui-preview/index.json
     ```
 
-1. In the dotnet CLI, restore the dependencies for the newly created project:
+1. In the .NET CLI, restore the dependencies for the newly created project:
 
     ```dotnetcli
     dotnet restore
