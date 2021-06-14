@@ -34,7 +34,7 @@ While the BCL enables apps running on different platforms to share common busine
 
 ![.NET MAUI architecture diagram](what-is-maui-images/architecture.png)
 
-In a .NET MAUI app, you write code that primarily interacts with the .NET MAUI API (1). .NET MAUI then directly exercises the native platform APIs (3). In addition, app code may directly exercise platform APIs (2), if required.
+In a .NET MAUI app, you write code that primarily interacts with the .NET MAUI API (1). .NET MAUI then directly consumes the native platform APIs (3). In addition, app code may directly exercise platform APIs (2), if required.
 
 .NET MAUI apps can be written on PC or Mac, and compile into native app packages:
 
