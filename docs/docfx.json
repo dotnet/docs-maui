@@ -49,7 +49,7 @@
       "feedback_github_repo": "dotnet/docs-maui",
       "ms.author": "dabritch",
       "ms.prod": "dotnet-mobile",
-      "title": ".NET Multi-platform App UI"
+      "ms.technology": "dotnet-maui"
     },
     "fileMetadata": {},
     "template": [],
