@@ -84,7 +84,7 @@ In a .NET MAUI app, you write code that primarily interacts with the .NET MAUI A
 
 :::image type="content" source="what-is-maui-images/single-project.png" alt-text=".NET MAUI single project.":::
 
-For more information about .NET MAUI single project, see [.NET MAUI single project](~/internals/single-project.md).
+For more information about .NET MAUI single project, see [.NET MAUI single project](~/fundamentals/single-project.md).
 
 ### .NET hot reload
 

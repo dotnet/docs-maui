@@ -22,4 +22,4 @@
         - name: Customize controls
           href: fundamentals/handlers/customize.md
         - name: Single project
-          href: internals/single-project.md
+          href: fundamentals/single-project.md

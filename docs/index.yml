@@ -39,4 +39,4 @@ landingContent:
           - text: Customize controls
             url: fundamentals/handlers/customize.md
           - text: Single project
-            url: internals/single-project.md
+            url: fundamentals/single-project.md
