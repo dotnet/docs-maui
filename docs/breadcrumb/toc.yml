@@ -1,0 +1,11 @@
+- name: Docs
+  tocHref: /
+  topicHref: /
+  items:
+  - name: .NET
+    tocHref: /dotnet/
+    topicHref: /dotnet/index
+    items:
+    - name: .NET MAUI
+      tocHref: /dotnet/maui
+      topicHref: /dotnet/maui/index
