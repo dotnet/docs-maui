@@ -12,14 +12,16 @@ metadata:
   ms.date: 06/08/2021
 
 landingContent:
-  - title: Get started
+  - title: Overview
     linkLists:
       - linkListType: overview
         links:
           - text: What is .NET Multi-platform App UI?
-            url: get-started/what-is-maui.md
+            url: what-is-maui.md
           - text: Supported platforms
-            url: get-started/supported-platforms.md
+            url: supported-platforms.md      
+  - title: Get started
+    linkLists:
       - linkListType: how-to-guide
         links:
           - text: Installation

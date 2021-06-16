@@ -2,9 +2,9 @@
   href: index.yml
   items:
     - name: What is .NET Multi-platform App UI?
-      href: get-started/what-is-maui.md
+      href: what-is-maui.md
     - name: Supported platforms
-      href: get-started/supported-platforms.md
+      href: supported-platforms.md
     - name: Get started
       expanded: true
       items:
