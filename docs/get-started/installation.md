@@ -1,8 +1,6 @@
 ---
 title: ".NET MAUI installation"
 description: "Installation instructions for .NET MAUI."
-author: davidbritch
-ms.author: dabritch
 ms.date: 06/09/2021
 ---
 

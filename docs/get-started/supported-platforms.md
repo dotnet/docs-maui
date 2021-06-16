@@ -1,8 +1,6 @@
 ---
 title: ".NET MAUI supported platforms"
 description: ".NET MAUI platform and development system requirements."
-author: davidbritch
-ms.author: dabritch
 ms.date: 06/07/2021
 ---
 

@@ -1,8 +1,6 @@
 ---
 title: ".NET MAUI app startup"
 description: ".NET MAUI apps are bootstrapped using HostBuilder from the Microsoft.Extensions library, enabling apps to be initialized from a single location."
-author: davidbritch
-ms.author: dabritch
 ms.date: 06/10/2021
 ---
 

@@ -1,8 +1,6 @@
 ---
 title: "Build your first .NET MAUI app in Visual Studio"
 description: "How to create and run your first .NET MAUI app."
-author: davidbritch
-ms.author: dabritch
 ms.date: 06/09/2021
 ---
 

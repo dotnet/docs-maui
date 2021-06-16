@@ -1,8 +1,6 @@
 ---
 title: "What is .NET MAUI?"
 description: ".NET Multi-platform App UI (MAUI) is a cross-platform framework for creating native mobile and desktop apps with C# and XAML."
-author: davidbritch
-ms.author: dabritch
 ms.date: 06/07/2021
 ---
 

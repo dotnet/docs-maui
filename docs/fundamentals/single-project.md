@@ -1,8 +1,6 @@
 ---
 title: ".NET MAUI single project"
 description: "The .NET MAUI single project brings all the platform-specific experiences across Android, iOS, macOS, and Windows, into one shared head project."
-author: davidbritch
-ms.author: dabritch
 ms.date: 06/10/2021
 ---
 

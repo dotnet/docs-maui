@@ -1,8 +1,6 @@
 ---
 title: "Migrate your app from Xamarin.Forms to .NET MAUI"
 description: "Migrate your Xamarin.Forms app to .NET MAUI with the .NET upgrade assistant."
-author: davidbritch
-ms.author: dabritch
 ms.date: 06/07/2021
 ---
 
