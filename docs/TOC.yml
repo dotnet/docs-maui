@@ -21,8 +21,5 @@
           href: fundamentals/app-startup.md
         - name: Customize controls
           href: fundamentals/handlers/customize.md
-    - name: Internals
-      expanded: true
-      items:
         - name: Single project
           href: internals/single-project.md

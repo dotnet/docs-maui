@@ -38,9 +38,5 @@ landingContent:
             url: fundamentals/app-startup.md
           - text: Customize controls
             url: fundamentals/handlers/customize.md
-  - title: Internals
-    linkLists:
-      - linkListType: concept
-        links:
           - text: Single project
             url: internals/single-project.md
