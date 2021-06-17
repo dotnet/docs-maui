@@ -120,11 +120,11 @@ public class Startup : IStartup
     public void Configure(IAppHostBuilder appBuilder)
     {
         appBuilder
+            .UseMauiApp<App>()        
             .ConfigureMauiHandlers(handlers =>
             {
                 handlers.AddHandler(typeof(MyEntry), typeof(MyEntryHandler));
-            })         
-            .UseMauiApp<App>();               
+            });         
     }
 }
 ```
@@ -168,7 +168,8 @@ public class Startup : IStartup
     public void Configure(IAppHostBuilder appBuilder)
     {
         appBuilder
-            .UseFormsCompatibility(false)
+            .UseFormsCompatibility(false)          
+            .UseMauiApp<App>()
             #if __ANDROID__
             .ConfigureMauiHandlers(handlers =>
             {
@@ -176,7 +177,7 @@ public class Startup : IStartup
                     typeof(Microsoft.Maui.Controls.Compatibility.Platform.Android.BoxRenderer));
                 handlers.AddCompatibilityRenderer(typeof(Microsoft.Maui.Controls.Frame),
                     typeof(Microsoft.Maui.Controls.Compatibility.Platform.Android.FastRenderers.FrameRenderer));
-            })
+            });
             #elif __IOS__
             .ConfigureMauiHandlers(handlers =>
             {
@@ -184,9 +185,8 @@ public class Startup : IStartup
                     typeof(Microsoft.Maui.Controls.Compatibility.Platform.iOS.BoxRenderer));
                 handlers.AddCompatibilityRenderer(typeof(Microsoft.Maui.Controls.Frame),
                     typeof(Microsoft.Maui.Controls.Compatibility.Platform.iOS.FrameRenderer));
-            })
+            });
             #endif            
-            .UseMauiApp<App>();
     }
 }
 ```
