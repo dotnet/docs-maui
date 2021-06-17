@@ -23,7 +23,7 @@ The process for migrating a Xamarin.Forms app to .NET MAUI is expected to be:
 
 This example ports the [Button Demos](/samples/xamarin/xamarin-forms-samples/userinterface-buttondemos/) sample. The process is as follows:
 
-1. Create a new, blank, multi-targeted MAUI project:
+1. Create a new, blank, multi-targeted .NET MAUI project:
 
     ```dotnetcli
     dotnet new maui -n ButtonDemos
@@ -37,7 +37,7 @@ This example ports the [Button Demos](/samples/xamarin/xamarin-forms-samples/use
     ```
 
     > [!NOTE]
-    > If you are unable to restore project dependencies, ensure that you have the latest MAUI preview installed.
+    > If you are unable to restore project dependencies, ensure that you have the latest .NET MAUI preview installed.
 
 1. Copy the [code files](https://github.com/xamarin/xamarin-forms-samples/tree/main/UserInterface/ButtonDemos/ButtonDemos/ButtonDemos) (except *App.xaml*) into the newly created project.
 1. In the newly created project, replace the following namespaces:
