@@ -147,7 +147,6 @@ public class Startup : IStartup
         appBuilder
             .UseFormsCompatibility()
             .UseMauiApp<App>();
-
     }
 }
 ```
