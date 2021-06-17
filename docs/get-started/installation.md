@@ -126,7 +126,7 @@ dotnet build -t:Run -f net6.0-maccatalyst
 
 It's possible to specify which simulator is launched and used for net6.0-ios by specifying the `_DeviceName` MSBuild property:
 
-```dotnetCLI
+```dotnetcli
 dotnet build -t:Run -f net6.0-ios -p:_DeviceName=:v2:udid=<UDID>
 ```
 
