@@ -109,7 +109,7 @@ appBuilder
 
 ## Register handlers
 
-To register your own handlers, call the `ConfigureMauiHandlers` method on the `IAppHostBuidler` object. Then, on the `IMauiHandlersCollection` object, call the `AddHandler` method to add the required handler:
+To register your own handlers, call the `ConfigureMauiHandlers` method on the `IAppHostBuilder` object. Then, on the `IMauiHandlersCollection` object, call the `AddHandler` method to add the required handler:
 
 ```csharp
 using Microsoft.Maui;
