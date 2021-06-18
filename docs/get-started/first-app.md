@@ -8,6 +8,9 @@ ms.date: 06/17/2021
 
 In this tutorial, you'll learn how to create your first .NET Multi-platform App UI (MAUI) app, and run it in an Android emulator.
 
+> [!NOTE]
+> Visual Studio for Mac support will arrive in a future release.
+
 ## Prerequisites
 
 - An environment that has been configured for .NET MAUI development, using the maui-check tool. For more information, see [Install .NET 6 Preview 5](installation.md#install-net-6-preview-5).
