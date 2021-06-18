@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI app startup"
 description: ".NET MAUI apps are bootstrapped using HostBuilder from the Microsoft.Extensions library, enabling apps to be initialized from a single location."
-ms.date: 06/10/2021
+ms.date: 06/18/2021
 ---
 
 # .NET MAUI app startup
@@ -131,28 +131,6 @@ public class Startup : IStartup
 
 In this example, the `MyEntryHandler` handler is registered against the `MyEntry` control. Therefore, any instances of the `MyEntry` control will be handled by the `MyEntryHandler`.
 
-## Configure compatibility
-
-To use Xamarin.Forms compatibility features, including controls backed by Xamarin.Forms renderers instead of .NET MAUI handlers, call the `UseFormsCompatibility` method on the `IAppHostBuilder` object:
-
-```csharp
-using Microsoft.Maui;
-using Microsoft.Maui.Hosting;
-using Microsoft.Maui.Controls.Compatibility;
-
-public class Startup : IStartup
-{
-    public void Configure(IAppHostBuilder appBuilder)
-    {
-        appBuilder
-            .UseFormsCompatibility()
-            .UseMauiApp<App>();
-    }
-}
-```
-
-The `UseCompatibility` method also accepts an optional `bool` argument that specifies whether to register renderers. By passing `false` to this method you can use all Xamarin.Forms compatibility features except for renderers.
-
 ### Register renderers
 
 To use controls backed by .NET MAUI handlers, with specific controls backed by Xamarin.Forms renderers, call the `ConfigureMauiHandlers` method on the `IAppHostBuilder` object. Then, on the `IMauiHandlersCollection` object, call the `AddCompatibilityRenderer` method to add the required renderer:
@@ -166,8 +144,7 @@ public class Startup : IStartup
 {
     public void Configure(IAppHostBuilder appBuilder)
     {
-        appBuilder
-            .UseFormsCompatibility(false)          
+        appBuilder   
             .UseMauiApp<App>()
             #if __ANDROID__
             .ConfigureMauiHandlers(handlers =>

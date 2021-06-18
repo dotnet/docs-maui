@@ -49,7 +49,8 @@
       "feedback_github_repo": "dotnet/docs-maui",
       "ms.author": "dabritch",
       "ms.prod": "dotnet-mobile",
-      "ms.technology": "dotnet-maui"
+      "ms.technology": "dotnet-maui",
+      "zone_pivot_group_filename": "maui/zone-pivot-groups.json"
     },
     "fileMetadata": {},
     "template": [],
