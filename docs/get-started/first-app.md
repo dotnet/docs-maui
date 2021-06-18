@@ -22,7 +22,7 @@ In this tutorial, you'll learn how to create and run your first .NET Multi-platf
 
 ## Get started with Visual Studio 2019
 
-In this tutorial, you'll learn how to create your first .NET MAUI app in Visual Studio 2019, and run it on an Android emulator:
+In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2019, and run it on an Android emulator:
 
 1. Launch Visual Studio 2019 build 16.11 (Preview 2 or greater), and in the start window click **Create a new project** to create a new project:
 
@@ -69,7 +69,7 @@ If, while connecting Visual Studio to your Mac through Xamarin Mac Agent (XMA), 
 
 ## Get started with .NET command-line interface
 
-In this tutorial, you'll learn how to create and run your first .NET MAUI app using the .NET command-line interface (CLI):
+In this tutorial, you'll create and run your first .NET MAUI app using the .NET command-line interface (CLI):
 
 1. In the .NET CLI, create a new .NET MAUI app:
 
