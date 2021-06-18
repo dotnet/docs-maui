@@ -50,7 +50,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2019, 
 
     [![App running in the Android emulator](first-app-images/running-app.png)](first-app-images/running-app-large.png#lightbox)
 
-### Build and debug iOS apps
+## Build and debug iOS apps
 
 To build and debug .NET 6 iOS apps from Visual Studio 2019 you must manually install the .NET 6 SDK and iOS workloads on both Windows and macOS (your Mac build host).
 
@@ -101,7 +101,7 @@ In this tutorial, you'll create and run your first .NET MAUI app using the .NET 
     > [!NOTE]
     > These commands will launch the app on the default platform device, if one can be found. On Android, it's recommended to start an emulator before building and launching your app.
 
-### iOS simulator selection
+## iOS simulator selection
 
 It's possible to specify which simulator is launched and used for net6.0-ios by specifying the `_DeviceName` MSBuild property:
 
