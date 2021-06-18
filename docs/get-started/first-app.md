@@ -101,7 +101,7 @@ In this tutorial, you'll create and run your first .NET MAUI app using the .NET 
     > [!NOTE]
     > These commands will launch the app on the default platform device, if one can be found. On Android, it's recommended to start an emulator before building and launching your app.
 
-## iOS simulator selection
+## Select an iOS simulator
 
 It's possible to specify which simulator is launched and used for net6.0-ios by specifying the `_DeviceName` MSBuild property:
 
