@@ -48,7 +48,6 @@ This example ports the [Button Demos](/samples/xamarin/xamarin-forms-samples/use
     | `using Xamarin.Forms` | `using Microsoft.Maui` **AND** `using Microsoft.Maui.Controls` |
     | `using Xamarin.Forms.Xaml` | `using Microsoft.Maui.Controls.Xaml` |
 
-1. In the **Startup** class, disable the compatibility renderers by passing `false` to the `UseFormsCompatibility` method. This ensures that you'll be using the .NET MAUI `Button`, rather than the Xamarin.Forms `Button`.
 1. Run the app on your chosen platform:
 
     ```dotnetcli
