@@ -131,7 +131,7 @@ public class Startup : IStartup
 
 In this example, the `MyEntryHandler` handler is registered against the `MyEntry` control. Therefore, any instances of the `MyEntry` control will be handled by the `MyEntryHandler`.
 
-### Register renderers
+## Register renderers
 
 To use controls backed by .NET MAUI handlers, with specific controls backed by Xamarin.Forms renderers, call the `ConfigureMauiHandlers` method on the `IAppHostBuilder` object. Then, on the `IMauiHandlersCollection` object, call the `AddCompatibilityRenderer` method to add the required renderer:
 
