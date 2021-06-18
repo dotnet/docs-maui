@@ -65,7 +65,7 @@ If, while connecting Visual Studio to your Mac through Xamarin Mac Agent (XMA), 
 ## Prerequisites
 
 - An environment that has been configured for .NET MAUI development, using the maui-check tool. For more information, see [Install .NET 6 Preview 5](installation.md#install-net-6-preview-5).
-- Simulators and emulators for your chosen platforms.
+- A configured simulator or emulator for your chosen platform. For more information about creating an Android emulator, see [Android emulator setup](/xamarin/android/get-started/installation/android-emulator/).
 
 ## Get started with .NET command-line interface
 
@@ -115,7 +115,6 @@ You can retrieve a list of possible unique device id (UDID) values by executing 
 /Applications/Xcode.app/Contents/Developer/usr/bin/simctl list
 ```
 
-> [!NOTE]
-> The default iOS simulator will be launched if you don't specify a UDID.
+The default iOS simulator will be launched if you don't specify a UDID.
 
 ::: zone-end
