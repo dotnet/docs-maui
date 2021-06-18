@@ -1,6 +1,6 @@
 ### YamlMime:ZonePivotGroups
 groups:
-- id: platform
+- id: preview-platforms
   title: Platform
   prompt: Choose your development environment
   pivots:
