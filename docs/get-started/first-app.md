@@ -2,7 +2,7 @@
 title: "Build your first .NET MAUI app in Visual Studio"
 description: "How to create and run your first .NET MAUI app."
 zone_pivot_groups: preview-platforms
-ms.date: 06/17/2021
+ms.date: 06/18/2021
 ---
 
 # Build your first .NET MAUI app

@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI installation"
 description: "Installation instructions for .NET MAUI."
-ms.date: 06/17/2021
+ms.date: 06/18/2021
 ---
 
 # .NET MAUI installation
