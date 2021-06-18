@@ -9,7 +9,9 @@ ms.date: 06/17/2021
 > [!IMPORTANT]
 > These requirements will change as new preview releases of Visual Studio and .NET MAUI are released.
 
-To create .NET Multi-platform App UI (MAUI) apps, you currently require .NET 6 Preview 5 with .NET MAUI and the platform SDKs for Android, iOS, macOS, tvOS, and Mac Catalyst. You also need [Visual Studio 16.11 Preview 2](https://visualstudio.microsoft.com/vs/preview/) with the following workloads installed:
+To create .NET Multi-platform App UI (MAUI) apps, you currently require .NET 6 Preview 5 with .NET MAUI and the platform SDKs for Android, iOS, macOS, tvOS, and Mac Catalyst.
+
+To create .NET MAUI apps in Visual Studio, you'll also need [Visual Studio 16.11 Preview 2](https://visualstudio.microsoft.com/vs/preview/) with the following workloads installed:
 
 - Mobile development with .NET
 - Universal Windows Platform development
@@ -135,52 +137,3 @@ exists.
 
 - Congratulations, everything looks great!
 ```
-
-## Build and launch apps
-
-For instructions on how to create and build your first .NET MAUI app, see [Build your first .NET MAUI app](first-app.md).
-
-Once a .NET MAUI app has been created, it can optionally be built using .NET CLI. The following .NET CLI commands show how to build and launch a .NET MAUI app on three different platforms:
-
-```dotnetcli
-dotnet build -t:Run -f net6.0-android
-dotnet build -t:Run -f net6.0-ios -p:_DeviceName=:v2:udid=<UDID>
-dotnet build -t:Run -f net6.0-maccatalyst
-```
-
-### iOS simulator selection
-
-It's possible to specify which simulator is launched and used for net6.0-ios by specifying the `_DeviceName` MSBuild property:
-
-```dotnetcli
-dotnet build -t:Run -f net6.0-ios -p:_DeviceName=:v2:udid=<UDID>
-```
-
-You can retrieve a list of possible unique device id (UDID) values by executing the `simctl list` command:
-
-```console
-/Applications/Xcode.app/Contents/Developer/usr/bin/simctl list
-```
-
-> [!NOTE]
-> The default iOS simulator will be launched if you don't specify a UDID.
-
-## IDE support
-
-Currently, you should use the latest preview version of Visual Studio 2019 16.11 on Windows (with the Mobile development with .NET and Universal Windows Platform development workloads installed).
-
-Visual Studio for Mac support will arrive in a future release.
-
-### iOS from Visual Studio
-
-To build and debug .NET 6 iOS apps from Visual Studio 2019 you must manually install the .NET 6 SDK and iOS workloads on both Windows and macOS (your Mac build host).
-
-If, while connecting Visual Studio to your Mac through Xamarin Mac Agent (XMA), you are prompted to install a different version of the SDK, you can ignore the prompt since it refers to a legacy version of XMA.
-
-> [!NOTE]
-> Visual Studio 2019 can only currently deploy .NET MAUI iOS apps to the iOS simulator, and not to physical devices.
-
-## Known issues
-
-- There are no project property pages available for iOS and Android.
-- Editors, such as the manifest editor and entitlements editor, will fail to open. As a workaround, files can be edited in the XML editor.
