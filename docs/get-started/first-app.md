@@ -7,7 +7,9 @@ ms.date: 06/17/2021
 # Build your first .NET MAUI app
 
 In this tutorial, you'll learn how to create your first .NET Multi-platform App UI (MAUI) app, and run it in an Android emulator.
-This currently only covers Windows as a Development platform, since Visual Studio for Mac currently does not support MAUI templates and build. It is however possible to build from the command line as described in [Install .NET 6 Preview 5](installation.md#build-and-launch-apps).
+
+> [!NOTE]
+> Visual Studio for Mac support will arrive in a future release.
 
 ## Prerequisites
 
