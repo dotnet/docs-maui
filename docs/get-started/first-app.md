@@ -48,7 +48,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2019, 
 
 1. In the running app in the Android emulator, press the **CLICK ME** button several times and observe that the count of the number of button clicks is incremented.
 
-    :::image type="content" source="first-app-images/running-app.png" alt-text="App running in the Android emulator." lightbox="first-app-images/running-app-large.png":::
+    :::image type="content" source="first-app-images/running-app.png" alt-text="App running in the Android emulator." lightbox="first-app-images/running-app-large.png" border="false":::
 
 ## Build and debug iOS apps
 
