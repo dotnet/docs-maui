@@ -17,7 +17,7 @@ To create .NET MAUI apps in Visual Studio, you'll also need [Visual Studio 16.11
 - Universal Windows Platform development
 - Desktop development with C++
 - .NET Desktop Development
-- ASP.NET and web development (required for Blazor Desktop and the BlazorWebView control)
+- ASP.NET and web development (required for Blazor Desktop and the `BlazorWebView` control)
 
 :::image type="content" source="installation-images/vs-workloads.png" alt-text="Visual Studio workload.":::
 
@@ -28,7 +28,7 @@ In addition, you must currently install the following Visual Studio extensions t
 
 For more information about the required workloads and components for WinUI 3 development, see [Required workloads and components](/windows/apps/project-reunion/set-up-your-development-environment#required-workloads-and-components).
 
-To use the WebView or BlazorWebView controls on Windows you need to install the WebView2 package:
+To use the `WebView` or `BlazorWebView` controls on Windows you need to install the WebView2 package:
 
 - [Microsoft Edge WebView2 installer](https://developer.microsoft.com/microsoft-edge/webview2/)
 
