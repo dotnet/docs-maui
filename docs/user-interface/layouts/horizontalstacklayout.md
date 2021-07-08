@@ -36,9 +36,7 @@ The following XAML shows how to create a `HorizontalStackLayout` that contains d
 </ContentPage>
 ```
 
-This example creates a `HorizontalStackLayout` containing a `BoxView` and a `Label` object.
-
-<!--By default, there are six device-independent units of space between the child views:
+This example creates a `HorizontalStackLayout` containing a `BoxView` and a `Label` object. <!-- By default, there are six device-independent units of space between the child views:
 
 [![Screenshot of a vertically oriented StackLayout](stacklayout-images/vertical.png "Vertically oriented StackLayout")](stacklayout-images/vertical-large.png#lightbox "Vertically oriented StackLayout")
 
