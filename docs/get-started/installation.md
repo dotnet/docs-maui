@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI installation"
 description: "Installation instructions for .NET MAUI."
-ms.date: 06/18/2021
+ms.date: 07/09/2021
 ---
 
 # .NET MAUI installation
@@ -46,12 +46,7 @@ Then, run `maui-check`:
 maui-check
 ```
 
-If any tools and SDKs required by .NET MAUI are missing, `maui-check` will install them.
-
-> [!NOTE]
-> It may be necessary to run `maui-check` multiple times to gain a successful install.
-
-The example below shows the output generated if the tools and SDKs required by .NET MAUI are already installed:
+If any tools and SDKs required by .NET MAUI are missing, `maui-check` will install them. The example below shows the output generated if the tools and SDKs required by .NET MAUI are already installed:
 
 ```dotnetcli
       _   _   _____   _____     __  __      _      _   _   ___
