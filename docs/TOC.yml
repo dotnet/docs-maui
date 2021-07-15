@@ -32,15 +32,17 @@
           href: user-interface/handlers/customize.md
         - name: Graphics
           items:
-            - name: Overview
-              href: user-interface/graphics/paint/index.md
-            - name: Solid colors
-              href: user-interface/graphics/paint/solidcolor.md
-            - name: Gradients
+            - name: Paint
               items:
-              - name: Overview
-                href: user-interface/graphics/paint/gradient.md
-              - name: Linear gradients
-                href: user-interface/graphics/paint/lineargradient.md
-              - name: Radial gradients
-                href: user-interface/graphics/paint/radialgradient.md
+                - name: Overview
+                  href: user-interface/graphics/paint/index.md
+                - name: Solid colors
+                  href: user-interface/graphics/paint/solidcolor.md
+                - name: Gradients
+                  items:
+                  - name: Overview
+                    href: user-interface/graphics/paint/gradient.md
+                  - name: Linear gradients
+                    href: user-interface/graphics/paint/lineargradient.md
+                  - name: Radial gradients
+                    href: user-interface/graphics/paint/radialgradient.md
