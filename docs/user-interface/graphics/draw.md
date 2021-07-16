@@ -27,7 +27,7 @@ In this example, a red diagonal line is drawn from (10,50) to (90,100):
 :::image type="content" source="draw-images/line.png" alt-text="Screenshot of a red line.":::
 
 > [!NOTE]
-> There's a `DrawLine` overload that takes two `PointF` arguments.
+> There's also a `DrawLine` overload that takes two `PointF` arguments.
 
 The following example shows how to draw a dashed line:
 
@@ -182,7 +182,7 @@ canvas.StrokeSize = 4;
 canvas.DrawArc(50, 50, 100, 100, 0, 180, true, false);
 ```
 
-In this example, a teal arc of dimensions 100x100 (device-independent units) is drawn at (50,50). The arc is drawn in a clockwise direction, and isn't closed:
+In this example, a teal arc of dimensions 100x100 (device-independent units) is drawn at (50,50). The arc is drawn in a clockwise direction from 0 to 180 degrees, and isn't closed:
 
 :::image type="content" source="draw-images/arc.png" alt-text="Screenshot of a teal arc.":::
 
@@ -195,7 +195,7 @@ canvas.FillColor = Colors.Teal;
 canvas.FillArc(50, 50, 100, 100, 0, 180, true);
 ```
 
-In this example, a filled teal arc of dimensions 100x100 (device-independent units) is drawn at (50,50). The arc is drawn in a clockwise direction, and is closed automatically:
+In this example, a filled teal arc of dimensions 100x100 (device-independent units) is drawn at (50,50). The arc is drawn in a clockwise direction from 0 to 180 degrees, and is closed automatically:
 
 :::image type="content" source="draw-images/filled-arc.png" alt-text="Screenshot of a filled teal arc.":::
 
