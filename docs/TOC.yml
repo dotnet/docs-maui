@@ -34,7 +34,9 @@
           items:
             - name: Overview
               href: user-interface/graphics/index.md
-            - name: Paint
+            - name: Draw objects
+              href: user-interface/graphics/draw.md
+            - name: Paint objects
               items:
                 - name: Overview
                   href: user-interface/graphics/paint/index.md
