@@ -32,6 +32,8 @@
           href: user-interface/handlers/customize.md
         - name: Graphics
           items:
+            - name: Overview
+              href: user-interface/graphics/index.md
             - name: Paint
               items:
                 - name: Overview
