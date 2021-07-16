@@ -15,4 +15,4 @@ The `Paint` class is an abstract class that paints an area with its output. Clas
 - `ImagePaint`
 - `PatternPaint`
 
-Instances of these types can painted on an `ICanvas`, typically by using the `SetFillPaint` method to set the paint as the fill of a particular shape.
+Instances of these types can painted on an `ICanvas`, typically by using the `SetFillPaint` method to set the paint as the fill of a shape.
