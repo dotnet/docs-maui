@@ -26,6 +26,9 @@ In this example, a red diagonal line is drawn from (10,50) to (90,100):
 
 :::image type="content" source="draw-images/line.png" alt-text="Screenshot of a red line.":::
 
+> [!NOTE]
+> There's a `DrawLine` overload that takes two `PointF` arguments.
+
 The following example shows how to draw a dashed line:
 
 ```csharp
@@ -82,8 +85,10 @@ In this example, a red filled ellipse with dimensions 150x50 (device-independent
 
 :::image type="content" source="draw-images/filled-ellipse.png" alt-text="Screenshot of a red filled ellipse.":::
 
+The `FillColor` property of the `ICanvas` object must be set to a `Color` before invoking the `FillEllipse` method.
+
 > [!NOTE]
-> The `FillColor` property of the `ICanvas` object must be set to a `Color` before invoking the `FillEllipse` method.
+> There are `DrawEllipse` and `FillEllipse` overloads that take `Rectangle` and `RectangleF` arguments. In addition, there are also `DrawCircle` and `FillCircle` overloads.
 
 ## Draw a rectangle
 
@@ -126,8 +131,10 @@ In this example, a dark blue filled rectangle with dimensions 100x50 (device-ind
 
 :::image type="content" source="draw-images/filled-rectangle.png" alt-text="Screenshot of a dark blue filled rectangle.":::
 
+The `FillColor` property of the `ICanvas` object must be set to a `Color` before invoking the `FillRectangle` method.
+
 > [!NOTE]
-> The `FillColor` property of the `ICanvas` object must be set to a `Color` before invoking the `FillRectangle` method.
+> There are `DrawRectangle` and `FillRectangle` overloads that take `Rectangle` and `RectangleF` arguments.
 
 ## Draw a rounded rectangle
 
@@ -158,8 +165,10 @@ In this example, a green filled rectangle with rounded corners and dimensions 10
 
 :::image type="content" source="draw-images/filled-rounded-rectangle.png" alt-text="Screenshot of a green filled rounded rectangle.":::
 
+The `FillColor` property of the `ICanvas` object must be set to a `Color` before invoking the `FillRoundedRectangle` method.
+
 > [!NOTE]
-> The `FillColor` property of the `ICanvas` object must be set to a `Color` before invoking the `FillRoundedRectangle` method.
+> There are `DrawRoundedRectangle` and `FillRoundedRectangle` overloads that take `Rectangle` and `RectangleF` arguments, and overloads that enable the radius of each corner to be separately specified.
 
 ## Draw an arc
 
@@ -190,8 +199,10 @@ In this example, a filled teal arc of dimensions 100x100 (device-independent uni
 
 :::image type="content" source="draw-images/filled-arc.png" alt-text="Screenshot of a filled teal arc.":::
 
+The `FillColor` property of the `ICanvas` object must be set to a `Color` before invoking the `FillArc` method.
+
 > [!NOTE]
-> The `FillColor` property of the `ICanvas` object must be set to a `Color` before invoking the `FillArc` method.
+> There are `DrawArc` and `FillArc` overloads that take `Rectangle` and `RectangleF` arguments.
 
 ## Draw a path
 
