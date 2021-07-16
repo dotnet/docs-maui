@@ -6,7 +6,7 @@ ms.date: 07/16/2021
 
 # .NET MAUI Graphics
 
-.NET Multi-platform App UI (MAUI) includes a cross-platform 2D graphics library that targets iOS, Android, Windows, macOS, Tizen, and Linux. With this library, you can use a common API to target multiple graphics abstractions, enabling you to share your drawing code between platforms, or mix and match graphics implementations with a single app.
+.NET Multi-platform App UI (MAUI) includes a cross-platform 2D graphics library that targets iOS, Android, Windows, macOS, Tizen, and Linux. With this library, you can use a common API to target multiple graphics abstractions, enabling you to share your drawing code between platforms, or mix and match graphics implementations within a single app.
 
 The library, which is contained in the `Microsoft.Maui.Graphics` namespace, includes a drawing canvas, which supports drawing shapes, paths, gradients, text, images, and shadows.
 
