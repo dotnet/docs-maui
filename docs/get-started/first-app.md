@@ -34,7 +34,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022, 
 
     :::image type="content" source="first-app-images/start-open.png" alt-text="Open solution.":::
 
-1. Wait for the project to be created, and its dependencies to be restored:
+1. Wait for the project to load, and its dependencies to be restored:
 
     :::image type="content" source="first-app-images/restored-dependencies.png" alt-text="Restored dependencies.":::
 
