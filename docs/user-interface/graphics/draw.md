@@ -42,7 +42,7 @@ In this example, a red dashed diagonal line is drawn from (10,50) to (90,100):
 
 :::image type="content" source="draw-images/dashed-line.png" alt-text="Screenshot of a dashed red line.":::
 
-For more information about dashed lines, see [Draw dashed shapes](#draw-dashed-shapes).
+For more information about dashed lines, see [Draw dashed objects](#draw-dashed-objects).
 
 ## Draw an ellipse
 
@@ -72,7 +72,7 @@ In this example, a red circle with dimensions 150x150 (device-independent units)
 
 :::image type="content" source="draw-images/circle.png" alt-text="Screenshot of a red circle.":::
 
-For information about drawing a dashed ellipse, see [Draw dashed shapes](#draw-dashed-shapes).
+For information about drawing a dashed ellipse, see [Draw dashed objects](#draw-dashed-objects).
 
 A filled ellipse can be drawn with the `FillEllipse` method, which also requires `x`, `y`, `width`, and `height` arguments:
 
@@ -118,7 +118,7 @@ In this example, a dark blue square with dimensions 100x100 (device-independent 
 
 :::image type="content" source="draw-images/square.png" alt-text="Screenshot of a dark blue square.":::
 
-For information about drawing a dashed rectangle, see [Draw dashed shapes](#draw-dashed-shapes).
+For information about drawing a dashed rectangle, see [Draw dashed objects](#draw-dashed-objects).
 
 A filled rectangle can be drawn with the `FillRectangle` method, which also requires `x`, `y`, `width`, and `height` arguments:
 
@@ -152,7 +152,7 @@ In this example, a green rectangle with rounded corners and dimensions 100x50 (d
 
 :::image type="content" source="draw-images/rounded-rectangle.png" alt-text="Screenshot of a green rounded rectangle.":::
 
-For information about drawing a dashed rounded rectangle, see [Draw dashed shapes](#draw-dashed-shapes).
+For information about drawing a dashed rounded rectangle, see [Draw dashed objects](#draw-dashed-objects).
 
 A filled rounded rectangle can be drawn with the `FillRoundedRectangle` method, which also requires requires `x`, `y`, `width`, `height`, and `cornerRadius` arguments.
 
@@ -186,7 +186,7 @@ In this example, a teal arc of dimensions 100x100 (device-independent units) is 
 
 :::image type="content" source="draw-images/arc.png" alt-text="Screenshot of a teal arc.":::
 
-For information about drawing a dashed arc, see [Draw dashed shapes](#draw-dashed-shapes).
+For information about drawing a dashed arc, see [Draw dashed objects](#draw-dashed-objects).
 
 A filled arc can be drawn with the `FillArc` method, which requires `x`, `y`, `width`, `height`, `startAngle`, `endAngle`, and `clockwise` arguments:
 
@@ -206,10 +206,157 @@ The `FillColor` property of the `ICanvas` object must be set to a `Color` before
 
 ## Draw a path
 
+Paths are used to draw curves and complex shapes and can be drawn on an `ICanvas` using the `DrawPath` method, which requires a `PathF` argument. The `PathF` class a series of methods that enable the shape of the path to be manipulated,
+
+The following example shows how to draw a path:
+
+```csharp
+PathF path = new PathF();
+path.MoveTo(40, 10);
+path.LineTo(70, 80);
+path.LineTo(10, 50);
+path.Close();
+canvas.StrokeColor = Colors.Green;
+canvas.StrokeSize = 6;
+canvas.DrawPath(path);
+```
+
+In this example, a closed green triangle is drawn:
+
+:::image type="content" source="draw-images/path.png" alt-text="Screenshot of a closed green triangle.":::
+
+A filled path can be drawn with the `FillPath`, which also requires a `PathF` argument:
+
+```csharp
+PathF path = new PathF();
+path.MoveTo(40, 10);
+path.LineTo(70, 80);
+path.LineTo(10, 50);
+canvas.FillColor = Colors.SlateBlue;
+canvas.FillPath(path);
+```
+
+In this example, a filled slate blue triangle is drawn:
+
+:::image type="content" source="draw-images/filled-path.png" alt-text="Screenshot of a filled slate blue triangle.":::
+
+The `FillColor` property of the `ICanvas` object must be set to a `Color` before invoking the `FillPath` method.
+
+> [!NOTE]
+> There are `DrawPath` and `FillPath` overloads that take `PathF` arguments.
+
+## Draw an image
+
+## Draw a string
+
+## Draw text
+
 ## Draw a shadow
 
-## Draw dashed shapes
+Objects drawn on an `ICanvas` can have a shadow applied using the `SetShadow` method, which takes `SizeF`, `float`, and `Color` arguments:
+
+- `offset`, of type `SizeF`, specifies an offset for the shadow, which represents the position of a light source that creates the shadow.
+- `blur`, of type `float`, represents the amount of blur to apply to the shadow.
+- `color`, of type `Color`, defines the color of the shadow.
+
+The following examples show how to add shadows to objects:
+
+```csharp
+canvas.StrokeColor = Colors.Black;
+canvas.StrokeSize = 4;
+canvas.SetShadow(new SizeF(10, 10), 2, Colors.Grey);
+canvas.DrawRectangle(100, 50, 90, 100);
+
+canvas.SetShadow(new SizeF(10, 10), 4, Colors.Grey);
+canvas.DrawEllipse(200, 50, 90, 100);
+
+canvas.SetShadow(new SizeF(10, 10), 6, Colors.Grey);
+canvas.DrawRoundedRectangle(300, 50, 90, 100, 25);
+```
+
+In these examples, shadows whose light sources are in identical sources are added to different objects, with differing amounts of blur:
+
+:::image type="content" source="draw-images/shadow.png" alt-text="Screenshot of a objects drawn with shadows.":::
+
+## Draw dashed objects
+
+`ICanvas` objects have a `StrokeDashPattern` property, of type `float[]`. This property is an array of `float` values that indicate the pattern of dashes and gaps that are to be used when during an object. Each `float` in the array specifies the length of a dash or gap. The first item in the array specifies the length of a dash, while the second item in the array specifies the length of a gap. Therefore, `float` values with an even index value specify dashes, while `float` values with an odd index value specify gaps.
+
+The following example shows how to draw a dashed square, using a regular dash::
+
+```csharp
+canvas.StrokeColor = Colors.Red;
+canvas.StrokeSize = 4;
+canvas.StrokeDashPattern = new float[] { 2, 2 };
+canvas.DrawRectangle(100, 50, 90, 100);
+```
+
+In this example, a square with a regular dashed stroke is drawn:
+
+:::image type="content" source="draw-images/dashed-square1.png" alt-text="Screenshot of a regular dashed square.":::
+
+The following example shows how to draw a dashed square, using an irregular dash:
+
+```csharp
+canvas.StrokeColor = Colors.Red;
+canvas.StrokeSize = 4;
+canvas.StrokeDashPattern = new float[] { 4, 4, 1, 4 };
+canvas.DrawRectangle(100, 50, 90, 100);
+```
+
+In this example, a square with an irregular dashed stroke is drawn:
+
+:::image type="content" source="draw-images/dashed-square2.png" alt-text="Screenshot of an irregular dashed square.":::
 
 ## Control line ends
 
+A line has three parts: start cap, line body, and end cap. The start and end caps describe the shape at the start and end of a line.
+
+`ICanvas` objects have a `StrokeLineCap` property, of type `LineCap`, that describes the shape at the start and end of a line. The `LineCap` enumeration defines the following members:
+
+- `Butt`, which represents a line with a square end, drawn to extend to the exact endpoint of the line. This is the default value of the `StrokeLineCap` property.
+- `Round`, which represents a line with a rounded end.
+- `Square`, which represents a line with a square end, drawn to extend beyond the endpoint to a distance equal to half the line width.
+
+The following example shows how to set the `StrokeLineCap` property:
+
+
+```csharp
+canvas.StrokeSize = 10;
+canvas.StrokeColor = Colors.Red;
+canvas.StrokeLineCap = LineCap.Round;
+canvas.DrawLine(100, 160, 300, 160);
+```
+
+In this example, the red line is rounded at the start and end of the line:
+
+:::image type="content" source="draw-images/linecap.png" alt-text="Screenshot of three lines with different line caps.":::
+
 ## Control line joins
+
+`ICanvas` objects have a `StrokeLineJoin` property, of type `LineJoin`, that specifies the type of join that is used at the vertices of an object. The `LineJoin` enumeration defines the following members:
+
+- `Miter`, which represents angular vertices that produce a sharp or clipped corner. This is the default value of the `StrokeLineJoin` property.
+- `Round`, which represents rounded vertices that produce a circular arc at the corner.
+- `Bevel`, which represents beveled vertices that produce a diagonal corner.
+
+> [!NOTE]
+> When the `StrokeLineJoin` property is set to `Miter`, the `MiterLimit` property can be set to a `float` to limit the miter length of line joins in the object.
+
+The following example shows how to set the `StrokeLineJoin` property:
+
+```csharp
+canvas.StrokeSize = 20;
+canvas.StrokeColor = Colors.Blue;
+canvas.StrokeLineJoin = LineJoin.Round;
+//canvas.MiterLimit = 2;
+PathF path = new PathF();
+path.MoveTo(20, 20);
+path.LineTo(250, 50);
+path.LineTo(20, 120);
+canvas.DrawPath(path);
+```
+
+In this example, the blue `PathF` object has rounded joins at its vertices:
+
+:::image type="content" source="draw-images/linejoin.png" alt-text="Screenshot of the effect of the three different LineJoin enumeration members.":::
