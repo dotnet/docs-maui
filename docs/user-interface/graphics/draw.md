@@ -206,7 +206,7 @@ The `FillColor` property of the `ICanvas` object must be set to a `Color` before
 
 ## Draw a path
 
-Paths are used to draw curves and complex shapes and can be drawn on an `ICanvas` using the `DrawPath` method, which requires a `PathF` argument. The `PathF` class a series of methods that enable the shape of the path to be manipulated,
+Paths are used to draw curves and complex shapes and can be drawn on an `ICanvas` using the `DrawPath` method, which requires a `PathF` argument. The `PathF` type contains a series of methods that enable the shape of the path to be manipulated,
 
 The following example shows how to draw a path:
 
@@ -247,13 +247,88 @@ The `FillColor` property of the `ICanvas` object must be set to a `Color` before
 
 ## Draw an image
 
+Images can be drawn on an `ICanvas` using the `DrawImage` method, which requires `IImage`, `x`, `y`, `width`, and `height` arguments.
+
+The following example shows how to load an image and draw it to the canvas:
+
+```csharp
+IImage image;
+var assembly = GetType().GetTypeInfo().Assembly;
+using (var stream = assembly.GetManifestResourceStream("MyMauiApp.Resources.Images.dotnet_bot.png"))
+{
+    image = GraphicsPlatform.CurrentService.LoadImageFromStream(stream);
+}
+
+if (image != null)
+{
+    canvas.DrawImage(image, 40, 40, image.Width, image.Height);
+}
+```
+
+In this example, the image is retrieved from the assembly and loaded as a stream. It's then drawn at actual size at (40,40):
+
+:::image type="content" source="draw-images/image.png" alt-text="Screenshot of an image.":::
+
+> [!NOTE]
+> Loading an image that's embedded in an assembly requires the image to have its build action set to **Embedded Resource**.
+
 ## Draw a string
 
-## Draw text
+Strings can be drawn on an `ICanvas` using one of the `DrawString` overloads. The appearance of each string can be defined by setting the `FontName`, `FontColor`, and `FontSize` properties. String alignment can be defined by specifying horizontal and vertical alignment options that perform alignment within the string's bounding box.
+
+> [!NOTE]
+> The bounding box for a string is defined by its `x`, `y`, `width`, and `height` arguments.
+
+The following examples show how to draw strings:
+
+```csharp
+canvas.FontColor = Colors.Blue;
+canvas.FontSize = 18;
+
+canvas.SetToSystemFont();
+canvas.DrawString("Text is left aligned.", 20, 20, 380, 100, HorizontalAlignment.Left, VerticalAlignment.Top);
+canvas.DrawString("Text is centered.", 20, 60, 380, 100, HorizontalAlignment.Center, VerticalAlignment.Top);
+canvas.DrawString("Text is right aligned.", 20, 100, 380, 100, HorizontalAlignment.Right, VerticalAlignment.Top);
+
+canvas.SetToBoldSystemFont();
+canvas.DrawString("This text is displayed using the bold system font.", 20, 140, 350, 100, HorizontalAlignment.Left, VerticalAlignment.Top);
+
+canvas.FontName = "Arial";
+canvas.FontColor = Colors.Black;
+canvas.SetShadow(new SizeF(6, 6), 4, Colors.Gray);
+canvas.DrawString("This text has a shadow.", 20, 200, 300, 100, HorizontalAlignment.Left, VerticalAlignment.Top);
+```
+
+In this example, strings with different appearance and alignment options are displayed:
+
+:::image type="content" source="draw-images/string.png" alt-text="Screenshot of strings using different alignment options.":::
+
+> [!NOTE]
+> The `DrawString` overloads also enable truncation and line spacing to be specified.
+
+## Draw attributed text
+
+Attributed text can be drawn on an `ICanvas` using the `DrawText` method, which requires `IAttributedText`, `x`, `y`, `width`, and `height` arguments. Attributed text is a string with associated attributes for parts of its text, that typically represents styling data.
+
+The following example shows how to display attributed text:
+
+```csharp
+canvas.FontName = "Arial";
+canvas.FontSize = 18;
+canvas.FontColor = Colors.Blue;
+
+string markdownText = @"This is *italic text*, **bold text**, __underline text__, and ***bold italic text***.";
+IAttributedText attributedText = MarkdownAttributedTextReader.Read(markdownText); // Requires the Microsoft.Maui.Graphics.Text.Markdig package
+canvas.DrawText(attributedText, 10, 10, 400, 400);
+```
+
+In this example, markdown is converted to attributed text and displayed with the correct styling:
+
+:::image type="content" source="draw-images/text.png" alt-text="Screenshot of correctly rendered markdown.":::
 
 ## Draw a shadow
 
-Objects drawn on an `ICanvas` can have a shadow applied using the `SetShadow` method, which takes `SizeF`, `float`, and `Color` arguments:
+Objects drawn on an `ICanvas` can have a shadow applied using the `SetShadow` method, which takes the following arguments:
 
 - `offset`, of type `SizeF`, specifies an offset for the shadow, which represents the position of a light source that creates the shadow.
 - `blur`, of type `float`, represents the amount of blur to apply to the shadow.
@@ -262,16 +337,17 @@ Objects drawn on an `ICanvas` can have a shadow applied using the `SetShadow` me
 The following examples show how to add shadows to objects:
 
 ```csharp
-canvas.StrokeColor = Colors.Black;
-canvas.StrokeSize = 4;
-canvas.SetShadow(new SizeF(10, 10), 2, Colors.Grey);
-canvas.DrawRectangle(100, 50, 90, 100);
-
+canvas.FillColor = Colors.Red;
 canvas.SetShadow(new SizeF(10, 10), 4, Colors.Grey);
-canvas.DrawEllipse(200, 50, 90, 100);
+canvas.FillRectangle(100, 50, 90, 100);
 
-canvas.SetShadow(new SizeF(10, 10), 6, Colors.Grey);
-canvas.DrawRoundedRectangle(300, 50, 90, 100, 25);
+canvas.FillColor = Colors.Green;
+canvas.SetShadow(new SizeF(10, -10), 4, Colors.Grey);
+canvas.FillEllipse(200, 50, 90, 100);
+
+canvas.FillColor = Colors.Blue;
+canvas.SetShadow(new SizeF(-10, 10), 4, Colors.Grey);
+canvas.FillRoundedRectangle(300, 50, 90, 100, 25);
 ```
 
 In these examples, shadows whose light sources are in identical sources are added to different objects, with differing amounts of blur:
@@ -330,7 +406,7 @@ canvas.DrawLine(100, 160, 300, 160);
 
 In this example, the red line is rounded at the start and end of the line:
 
-:::image type="content" source="draw-images/linecap.png" alt-text="Screenshot of three lines with different line caps.":::
+:::image type="content" source="draw-images/linecap.png" alt-text="Screenshot of three lines with different line caps." border="false":::
 
 ## Control line joins
 
@@ -346,17 +422,69 @@ In this example, the red line is rounded at the start and end of the line:
 The following example shows how to set the `StrokeLineJoin` property:
 
 ```csharp
-canvas.StrokeSize = 20;
-canvas.StrokeColor = Colors.Blue;
-canvas.StrokeLineJoin = LineJoin.Round;
-//canvas.MiterLimit = 2;
 PathF path = new PathF();
 path.MoveTo(20, 20);
 path.LineTo(250, 50);
 path.LineTo(20, 120);
+
+canvas.StrokeSize = 20;
+canvas.StrokeColor = Colors.Blue;
+canvas.StrokeLineJoin = LineJoin.Round;
 canvas.DrawPath(path);
 ```
 
 In this example, the blue `PathF` object has rounded joins at its vertices:
 
-:::image type="content" source="draw-images/linejoin.png" alt-text="Screenshot of the effect of the three different LineJoin enumeration members.":::
+:::image type="content" source="draw-images/linejoin.png" alt-text="Screenshot of the effect of the three different LineJoin enumeration members." border="false":::
+
+## Clip objects
+
+Objects that are drawn to an `ICanvas` can be clipped prior to drawing, with the following methods:
+
+- `ClipPath` clips an object so that only the area that's within the region of a `PathF` object will be visible.
+- `ClipRectangle` clips an object so that only the area that's within the region of a rectangle will be visible. The rectangle can be specified using `float` arguments, or by a `Rectangle` or `RectangleF` argument.
+- `SubtractFromClip` clips an object so that only the area that's outside the region of a rectangle will be visible. The rectangle can be specified using `float` arguments, or by a `Rectangle` or `RectangleF` argument.
+
+The following example shows how to use the `ClipPath` method to clip an image:
+
+```csharp
+IImage image;
+var assembly = GetType().GetTypeInfo().Assembly;
+using (var stream = assembly.GetManifestResourceStream("MyMauiApp.Resources.Images.dotnet_bot.png"))
+{
+    image = GraphicsPlatform.CurrentService.LoadImageFromStream(stream);
+}
+
+if (image != null)
+{
+    PathF path = new PathF();
+    path.AppendCircle(160, 150, 90);
+    canvas.ClipPath(path);  // Must be called before DrawImage
+    canvas.DrawImage(image, 40, 40, image.Width, image.Height);
+}
+```
+
+In this example, the image is clipped using a `PathF` object that defines a circle that's centered at (160,150) with a radius of 90. The result is that only the part of the image within the circle is visible:
+
+:::image type="content" source="draw-images/clippath.png" alt-text="Screenshot of an image that's been clipped with the ClipPath method." border="false":::
+
+The following example shows how to use the `SubtractFromClip` method to clip an image:
+
+```csharp
+IImage image;
+var assembly = GetType().GetTypeInfo().Assembly;
+using (var stream = assembly.GetManifestResourceStream("MyMauiApp.Resources.Images.dotnet_bot.png"))
+{
+    image = GraphicsPlatform.CurrentService.LoadImageFromStream(stream);
+}
+
+if (image != null)
+{
+    canvas.SubtractFromClip(110, 90, 110, 100);
+    canvas.DrawImage(image, 40, 40, image.Width, image.Height);
+}
+```
+
+In this example, the area defined by the rectangle that's specified by the arguments supplied to the `SubtractFromClip` method is clipped from the image. The result is only the parts of the image outside the rectangle are visible:
+
+:::image type="content" source="draw-images/subtractfromclip.png" alt-text="Screenshot of an image that's been clipped with the SubtractFromClip method." border="false":::
