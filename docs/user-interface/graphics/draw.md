@@ -306,6 +306,8 @@ In this example, strings with different appearance and alignment options are dis
 > [!NOTE]
 > The `DrawString` overloads also enable truncation and line spacing to be specified.
 
+For information about drawing shadows, see [Draw a shadow](#draw-a-shadow).
+
 ## Draw attributed text
 
 Attributed text can be drawn on an `ICanvas` using the `DrawText` method, which requires `IAttributedText`, `x`, `y`, `width`, and `height` arguments. Attributed text is a string with associated attributes for parts of its text, that typically represents styling data.
@@ -466,7 +468,7 @@ if (image != null)
 
 In this example, the image is clipped using a `PathF` object that defines a circle that's centered at (160,150) with a radius of 90. The result is that only the part of the image within the circle is visible:
 
-:::image type="content" source="draw-images/clippath.png" alt-text="Screenshot of an image that's been clipped with the ClipPath method." border="false":::
+:::image type="content" source="draw-images/clippath.png" alt-text="Screenshot of an image that's been clipped with the ClipPath method.":::
 
 The following example shows how to use the `SubtractFromClip` method to clip an image:
 
@@ -487,4 +489,4 @@ if (image != null)
 
 In this example, the area defined by the rectangle that's specified by the arguments supplied to the `SubtractFromClip` method is clipped from the image. The result is only the parts of the image outside the rectangle are visible:
 
-:::image type="content" source="draw-images/subtractfromclip.png" alt-text="Screenshot of an image that's been clipped with the SubtractFromClip method." border="false":::
+:::image type="content" source="draw-images/subtractfromclip.png" alt-text="Screenshot of an image that's been clipped with the SubtractFromClip method.":::
