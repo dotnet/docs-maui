@@ -12,7 +12,7 @@ The `PatternPaint` class defines a `Pattern` property, of type `IPattern`, which
 
 ## Create a PatternPaint object
 
-A pattern must be created before an area can be painted with it. Once the pattern has been created, it should be assigned to the `Pattern` property of a `PatternPaint` object.
+To paint an area with a pattern, create the pattern and assign it to the `Pattern` property of a `PatternPaint` object.
 
 The following example shows how to create a pattern and fill an area with it:
 

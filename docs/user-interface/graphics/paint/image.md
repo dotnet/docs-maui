@@ -12,7 +12,7 @@ The `ImagePaint` class defines an `Image` property, of type `IImage`, which repr
 
 ## Create an ImagePaint object
 
-An image must be loaded before an area can be painted with it. Once the image has been retrieved, it should be assigned to the `Image` property of the `ImagePaint` object.
+To paint an area with an image, load the image and assign it to the `Image` property of the `ImagePaint` object.
 
 > [!NOTE]
 > Loading an image that's embedded in an assembly requires the image to have its build action set to **Embedded Resource**.
@@ -41,16 +41,16 @@ if (image != null)
 In this example, the image is retrieved from the assembly and loaded as a stream. The image is resized using the `Downsize` method, with the argument specifying that its largest dimension should be set to 100 pixels.
 
 > [!IMPORTANT]
-> The `Downsize` method automatically disposes its source image. This can be disabled by specifying `false` to its `dispose` argument.
+> The `Downsize` method automatically disposes its source image. This can be disabled by passing `false` as its `dispose` argument.
 
 The `Image` property of the `ImagePaint` object is set to the downsized version of the image, and the `ImagePaint` object is set as the paint to fill an object with. A rectangle is then drawn that's filled with the paint:
 
 :::image type="content" source="image-images/imagepaint.png" alt-text="Screenshot of a rectangle, filled with an image.":::
 
 > [!NOTE]
-> An `ImagePaint` object can also be created from an `IImage`` object by the `AsPaint` extension method.
+> An `ImagePaint` object can also be created from an `IImage` object by the `AsPaint` extension method.
 
-Alternatively, the `SetFillImage` extension method can be used to simplify the code to paint an area with an image:
+Alternatively, the `SetFillImage` extension method can be used to simplify the code:
 
 ```csharp
 if (image != null)
