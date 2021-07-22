@@ -40,6 +40,8 @@
               items:
                 - name: Overview
                   href: user-interface/graphics/paint/index.md
+                - name: Patterns
+                  href: user-interface/graphics/paint/pattern.md
                 - name: Solid colors
                   href: user-interface/graphics/paint/solidcolor.md
                 - name: Gradients

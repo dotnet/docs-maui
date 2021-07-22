@@ -10,9 +10,9 @@ ms.date: 07/15/2021
 
 The `Paint` class is an abstract class that paints an area with its output. Classes that derive from `Paint` describe different ways of painting an area. The following list describes the different paint types available in .NET MAUI:
 
-- `SolidPaint`, which is used to paint an area with a solid color. For more information, see [Solid color paint](solidcolor.md).
-- `GradientPaint`, which is used to paint an area with a gradient. For more information, see [Gradient paint](gradient.md).
+- `SolidPaint`, which paints an area with a solid color. For more information, see [Solid color paint](solidcolor.md).
+- `GradientPaint`, which paints an area with a gradient. For more information, see [Gradient paint](gradient.md).
 - `ImagePaint`
-- `PatternPaint`
+- `PatternPaint`, which paints an area with a pattern. For more information, see [Pattern paint](pattern.md).
 
 Instances of these types can painted on an `ICanvas`, typically by using the `SetFillPaint` method to set the paint as the fill of a shape.

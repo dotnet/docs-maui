@@ -4,7 +4,7 @@ description: "The .NET MAUI SolidPaint class paints an area with a solid color."
 ms.date: 07/15/2021
 ---
 
-# .NET MAUI Graphics: Solid colors paint
+# .NET MAUI Graphics: Solid color paint
 
 The .NET Multi-platform App UI (MAUI) `SolidPaint` class derives from the `Paint` class, and is used to paint an area with a solid color.
 

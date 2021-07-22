@@ -42,4 +42,4 @@ In this example, the pattern is a 10x10 area that contains a diagonal line from 
 :::image type="content" source="pattern-images/patternpaint.png" alt-text="Screenshot of a rectangle, filled with a silver pattern.":::
 
 > [!NOTE]
-> A `PatternPaint` object can also be created from a `PicturePattern` object by using the `AsPaint` extension method.
+> A `PatternPaint` object can also be created from a `PicturePattern` object by the `AsPaint` extension method.
