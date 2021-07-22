@@ -45,7 +45,7 @@ In this example, the image is retrieved from the assembly and loaded as a stream
 
 The `Image` property of the `ImagePaint` object is set to the downsized version of the image, and the `ImagePaint` object is set as the paint to fill an object with. A rectangle is then drawn that's filled with the paint:
 
-:::image type="content" source="draw-images/imagepaint.png" alt-text="Screenshot of a rectangle, filled with an image.":::
+:::image type="content" source="image-images/imagepaint.png" alt-text="Screenshot of a rectangle, filled with an image.":::
 
 > [!NOTE]
 > An `ImagePaint` object can also be created from an `IImage`` object by the `AsPaint` extension method.
