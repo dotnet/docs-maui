@@ -42,7 +42,7 @@ The `IDrawable` object can then be consumed by the `GraphicsView` by declaring i
     <StackLayout>
         <GraphicsView Drawable="{StaticResource drawable}"
                       HeightRequest="500"
-                      WidthRequest="500" />
+                      WidthRequest="400" />
     </StackLayout>
 </ContentPage>
 ```
