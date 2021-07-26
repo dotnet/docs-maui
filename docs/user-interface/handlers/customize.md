@@ -38,7 +38,7 @@ public partial class App : Application
         InitializeComponent();
 
 #if __ANDROID__
-        Microsoft.Maui.Handlers.ViewHandler.ViewMapper[nameof(IView.BackgroundColor)] = (h, v) =>
+        Microsoft.Maui.Handlers.ViewHandler.ViewMapper[nameof(IView.Background)] = (h, v) =>
         {
             (h.NativeView as Android.Views.View).SetBackgroundColor(Microsoft.Maui.Graphics.Colors.Cyan.ToNative());
         };
@@ -61,7 +61,7 @@ public partial class MainPage : ContentPage, IPage
     {
         InitializeComponent();
 #if __ANDROID__
-        Handlers.EntryHandler.EntryMapper[nameof(IEntry.BackgroundColor)] = (h, v) =>
+        Handlers.EntryHandler.EntryMapper[nameof(IEntry.Background)] = (h, v) =>
         {
             (h.NativeView as global::Android.Views.Entry).UnderlineVisible = false;
         };
@@ -100,7 +100,7 @@ namespace MauiApp1
   		{
           InitializeComponent();
 
-          Microsoft.Maui.Handlers.EntryHandler.EntryMapper[nameof(IView.BackgroundColor)] = (handler, view) =>
+          Microsoft.Maui.Handlers.EntryHandler.EntryMapper[nameof(IView.Background)] = (handler, view) =>
           {
               if (view is MyEntry)
               {
