@@ -1,6 +1,6 @@
 ---
 title: ".NET MAUI Graphics: Draw objects"
-description: "The .NET MAUI 2d graphics library enables you to draw objects on a drawing canvas."
+description: "The .NET MAUI 2D graphics library enables you to draw objects on a drawing canvas."
 ms.date: 07/16/2021
 ---
 
@@ -72,6 +72,9 @@ In this example, a red circle with dimensions 150x150 (device-independent units)
 
 :::image type="content" source="draw-images/circle.png" alt-text="Screenshot of a red circle.":::
 
+> [!NOTE]
+> Circles can also be drawn with the `DrawCircle` method.
+
 For information about drawing a dashed ellipse, see [Draw dashed objects](#draw-dashed-objects).
 
 A filled ellipse can be drawn with the `FillEllipse` method, which also requires `x`, `y`, `width`, and `height` arguments:
@@ -89,6 +92,8 @@ The `FillColor` property of the `ICanvas` object must be set to a `Color` before
 
 > [!NOTE]
 > There are `DrawEllipse` and `FillEllipse` overloads that take `Rectangle` and `RectangleF` arguments. In addition, there are also `DrawCircle` and `FillCircle` overloads.
+
+Filled circles can also be drawn with the `FillCircle` method.
 
 ## Draw a rectangle
 

@@ -54,3 +54,5 @@
                     href: user-interface/graphics/paint/lineargradient.md
                   - name: Radial gradients
                     href: user-interface/graphics/paint/radialgradient.md
+            - name: Transforms
+              href: user-interface/graphics/transforms.md
