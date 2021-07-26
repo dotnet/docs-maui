@@ -16,12 +16,11 @@ The .NET Multi-platform App UI (MAUI) 2D graphics library supports traditional g
 
 These transforms are known as *affine* transforms. Affine transforms always preserve parallel lines and never cause a coordinate or size to become infinite.
 
-> [!IMPORTANT]
-> The .NET MAUI `VisualElement` class also supports the following transform properties: `TranslationX`, `TranslationY`, `Scale`, `Rotation`, `RotationX`, and `RotationY`.  However, there are several differences between `Microsoft.Maui.Graphics` transforms and `Microsoft.Maui.Controls.VisualElement` transforms:
->
-> - `Microsoft.Maui.Graphics` transforms are methods, while `VisualElement` transforms are properties. Therefore, `Microsoft.Maui.Graphics` transforms perform an operation while `VisualElement` transforms set a state. `Microsoft.Maui.Graphics` transforms apply to subsequently drawn graphics objects, but not to graphics objects that are drawn before the transform is applied. In contrast, a `VisualElement` transform applies to a previously rendered element as soon as the property is set. Therefore, `Microsoft.Maui.Graphics` transforms are cumulative as methods are called, while `VisualElement` transforms are replaced when the property is set with another value.
-> - `Microsoft.Maui.Graphics` transforms are applied to the `ICanvas` object, while `VisualElement` transforms are applied to `VisualElement` derived object.
-> - `Microsoft.Maui.Graphics` transforms are relative to the upper-left corner of the `ICanvas`, while `VisualElement` transforms are relative to the upper-left corner of the `VisualElement` to which they are applied.
+The .NET MAUI `VisualElement` class also supports the following transform properties: `TranslationX`, `TranslationY`, `Scale`, `Rotation`, `RotationX`, and `RotationY`.  However, there are several differences between `Microsoft.Maui.Graphics` transforms and `Microsoft.Maui.Controls.VisualElement` transforms:
+
+- `Microsoft.Maui.Graphics` transforms are methods, while `VisualElement` transforms are properties. Therefore, `Microsoft.Maui.Graphics` transforms perform an operation while `VisualElement` transforms set a state. `Microsoft.Maui.Graphics` transforms apply to subsequently drawn graphics objects, but not to graphics objects that are drawn before the transform is applied. In contrast, a `VisualElement` transform applies to a previously rendered element as soon as the property is set. Therefore, `Microsoft.Maui.Graphics` transforms are cumulative as methods are called, while `VisualElement` transforms are replaced when the property is set with another value.
+- `Microsoft.Maui.Graphics` transforms are applied to the `ICanvas` object, while `VisualElement` transforms are applied to `VisualElement` derived object.
+- `Microsoft.Maui.Graphics` transforms are relative to the upper-left corner of the `ICanvas`, while `VisualElement` transforms are relative to the upper-left corner of the `VisualElement` to which they are applied.
 
 ## Translate transform
 
@@ -51,7 +50,7 @@ canvas.FillPath(path);
 
 The center of the star is at (0,0), and the points of he star are on a circle surrounding that point. Each point is a combination of sine and cosine values of an angle that increases by 5/11ths of 360 degrees. The radius of the circle is set as 100. If the `PathF` object is displayed without any transforms, the center of the star will be positioned at the upper-left corner of the `ICanvas`, and only a quarter of it will be visible. Therefore, a translate transform is used to shift the star horizontally and vertically to (150,150):
 
-:::image type="content" source="transform-images/translate.png" alt-text="Screenshot of an 11-pointed star.":::
+:::image type="content" source="transforms-images/translate.png" alt-text="Screenshot of an 11-pointed star.":::
 
 ## Scale transform
 
@@ -88,7 +87,7 @@ canvas.DrawString(".NET MAUI", 50, 100, 80, 20, HorizontalAlignment.Left, Vertic
 
 In this example, ".NET MAUI" is displayed inside a rounded rectangle stroked with a dashed line. The same objects drawn after the `Scale` call increase in size proportionally:
 
-:::image type="content" source="transform-images/scale.png" alt-text="Screenshot of unscaled and scaled text.":::
+:::image type="content" source="transforms-images/scale.png" alt-text="Screenshot of unscaled and scaled text.":::
 
 The text and the rounded rectangle are both subject to the same scaling factors.
 
@@ -98,9 +97,6 @@ The text and the rounded rectangle are both subject to the same scaling factors.
 Order matters when you combine `Translate` and `Scale` calls. If the `Translate` call comes after the `Scale` call, the translation factors are scaled by the scaling factors. If the `Translate` call comes before the `Scale` call, the translation factors are not scaled.
 
 ## Rotate transform
-
-https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/shapes/path-transforms
-https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/graphics/skiasharp/transforms/rotate
 
 The rotate transform rotates a graphical object around a point. Rotation is clockwise for increasing angles. Negative angles and angles greater than 360 degrees are allowed.
 
@@ -116,7 +112,7 @@ canvas.DrawString(".NET MAUI", 50, 50, HorizontalAlignment.Left);
 
 In this example, ".NET MAUI" is rotated 45 degrees clockwise:
 
-:::image type="content" source="transform-images/rotate.png" alt-text="Screenshot of rotated text.":::
+:::image type="content" source="transforms-images/rotate.png" alt-text="Screenshot of rotated text.":::
 
 Alternatively, graphical objects can be rotated centered around a specific point. This requires the `Rotate` overload that accepts `degrees`, `x`, and `y` `float` arguments:
 
@@ -176,8 +172,10 @@ canvas.DrawLine(0, 10, 0, -80);
 canvas.RestoreState();
 ```
 
-In this example, the `Translate` and `Scale` calls apply globally to the clock, and so are called before the `Rotate` method.
+In this example, the `Translate` and `Scale` calls apply globally to the clock, and so are called before the `Rotate` method
 
-There are 60 marks of two different sizes that are drawn in a circle around the clock. The `FillCircle` call draws that circle at (0,-90), which relative to the center of the clock corresponds to 12:00. The `Rotate` call increments the rotation angle by 6 degrees after every tick mark. The `angle` variable is used solely to determine if a large circle or a small circle is drawn. Finally, the current time is obtained and rotation degrees are calculated for the hour, minute, and second hands. Each hand is drawn in the 12:00 position so that the rotation angle is relative to that.
+There are 60 marks of two different sizes that are drawn in a circle around the clock. The `FillCircle` call draws that circle at (0,-90), which relative to the center of the clock corresponds to 12:00. The `Rotate` call increments the rotation angle by 6 degrees after every tick mark. The `angle` variable is used solely to determine if a large circle or a small circle is drawn. Finally, the current time is obtained and rotation degrees are calculated for the hour, minute, and second hands. Each hand is drawn in the 12:00 position so that the rotation angle is relative to that:
+
+:::image type="content" source="transforms-images/clock.png" alt-text="Screenshot of an analog clock.":::
 
 ## Concatenate transforms (aka Matrix transforms?)
