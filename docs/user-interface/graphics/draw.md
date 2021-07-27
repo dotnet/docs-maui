@@ -211,7 +211,27 @@ The `FillColor` property of the `ICanvas` object must be set to a `Color` before
 
 ## Draw a path
 
-Paths are used to draw curves and complex shapes and can be drawn on an `ICanvas` using the `DrawPath` method, which requires a `PathF` argument. The `PathF` type contains a series of methods that enable the shape of the path to be manipulated,
+A path is a collection of one or more *contours*. Each contour is a collection of *connected* straight lines and curves. Contours are not connected to each other but they might visually overlap. Sometimes a single contour can overlap itself.
+
+Paths are used to draw curves and complex shapes and can be drawn on an `ICanvas` using the `DrawPath` method, which requires a `PathF` argument.
+
+A contour generally begins with a call to the `PathF.MoveTo` method, which you can express either as a `PointF` value or as separate `x` and `y` coordinates. The `MoveTo` call establishes a point at the beginning of the contour and an initial current point. You can then call the following methods to continue the contour with a line or curve from the current point to a point specified in the method, which then becomes the new current point:
+
+- `LineTo` to add a straight line to the path.
+- `AddArc` to add an arc, which is a line on the circumference of a circle or ellipse.
+- `CurveTo` to add a cubic Bezier spline.
+- `QuadTo` to add a quadratic Bezier spline.
+
+None of these methods contains all of the data necessary to describe the line or curve. Instead, each method works in conjunction with the current point established by the method call immediately preceding it. For example, the `LineTo` method adds a straight line to the contour based on the current point.
+
+A contour ends with another call to `MoveTo`, which begins a new contour, or a call to `Close`, which closes the contour. The `Close` method automatically appends a straight line from the current point to the first point of the contour, and marks the path as closed.
+
+The `PathF` class also defines other methods and properties. The following methods add entire contours to the path:
+
+- `AppendEllipse` appends a closed ellipse contour to the path.
+- `AppendCircle` appends a closed circle contour to the path.
+- `AppendRectangle` appends a closed rectangle contour to the path.
+- `AppendRoundedRectangle` appends a closed rectangle with rounded corners to the path.
 
 The following example shows how to draw a path:
 
@@ -246,9 +266,6 @@ In this example, a filled slate blue triangle is drawn:
 :::image type="content" source="draw-images/filled-path.png" alt-text="Screenshot of a filled slate blue triangle.":::
 
 The `FillColor` property of the `ICanvas` object must be set to a `Color` before invoking the `FillPath` method.
-
-> [!NOTE]
-> There are `DrawPath` and `FillPath` overloads that take `PathF` arguments.
 
 ## Draw an image
 
