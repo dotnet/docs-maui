@@ -178,4 +178,118 @@ There are 60 marks of two different sizes that are drawn in a circle around the 
 
 :::image type="content" source="transforms-images/clock.png" alt-text="Screenshot of an analog clock.":::
 
-## Concatenate transforms (aka Matrix transforms?)
+## Concatenate transforms
+
+A transform can be described in terms of a 3x3 affine transformation matrix, that performs transformations in 2D space. This 3x3 matrix is represented by the `AffineTransform` class, which is a collection of three rows and three columns of `float` values.
+
+The following table shows the structure of an `AffineTransform` matrix:
+
+:::row:::
+    :::column:::
+        M00
+    :::column-end:::
+    :::column:::
+        M10
+    :::column-end:::
+    :::column:::
+        0.0
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        M01
+    :::column-end:::
+    :::column:::
+        M11
+    :::column-end:::
+    :::column:::
+        0.0
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        M02
+    :::column-end:::
+    :::column:::
+        M12
+    :::column-end:::
+    :::column:::
+        1.0
+    :::column-end:::
+:::row-end:::
+
+> [!NOTE]
+> An affine transformation matrix has its final column equal to (0,0,1), so only members in the first two columns need to be specified.
+
+The `AffineTransform` class defines six properties of type `float`, that correspond to the six cells in the first two columns of the transform matrix:
+
+:::row:::
+    :::column:::
+        ScaleX
+    :::column-end:::
+    :::column:::
+        ShearY
+    :::column-end:::
+    :::column:::
+        0.0
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        ShearX
+    :::column-end:::
+    :::column:::
+        ScaleY
+    :::column-end:::
+    :::column:::
+        0.0
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        TranslateX
+    :::column-end:::
+    :::column:::
+        TranslateY
+    :::column-end:::
+    :::column:::
+        1.0
+    :::column-end:::
+:::row-end:::
+
+By manipulating matrix values, you can rotate, scale, shear, and translate graphical objects. For example, if you change the `M02` value to 100, you can use it to translate a graphical object 100 device-independent units along the x-axis. If you change the `M12` value to 3, you can use it to stretch a graphical object to three times its current height. If you change both values, you move the graphical object 100 device-independent units along the x-axis and stretch its height by a factor of 3. In addition, affine transformation matrices can be multiplied to form any number of linear transformations, such as rotation and shear, followed by translation.
+
+You can set a new transform matrix with the `AffineTransform` constructors, the `AffineTransform.SetMatrix` method, and the `AffineTransform.SetTransform` method. The advantage of using a transform matrix is that composite transforms can be applied as a single `AffineTransform`, which is referred to as *concatenation*. The `AffineTransform` class also defines methods that can be used to manipulate matrix values.
+
+> [!NOTE]
+> The default `AffineTransform` constructor creates an identity matrix.
+
+The only `ICanvas` method that accepts an `AffineTransform` argument is `ConcatenateTransform`, which combines multiple transforms into a single transform.
+
+The following example shows how to use the `ConcatenateTransform` method to transform a `PathF` object using an `AffineTransform`:
+
+```csharp
+PathF path = new PathF();
+for (int i = 0; i < 11; i++)
+{
+    double angle = 5 * i * 2 * Math.PI / 11;
+    PointF point = new PointF(100 * (float)Math.Sin(angle), -100 * (float)Math.Cos(angle));
+
+    if (i == 0)
+        path.MoveTo(point);
+    else
+        path.LineTo(point);
+}
+
+
+AffineTransform transform = new AffineTransform(1.5f, 1, 0, 1, 150, 150);        
+canvas.ConcatenateTransform(transform);
+canvas.FillColor = Colors.Red;
+canvas.FillPath(path);
+
+```
+
+In this example, the `PathF` object is scaled and sheared on the x-axis, and translated on the x-axis and the y-axis.
+
+> [!NOTE]
+> The `AffineTransform` class defines a `CreateInverse` method that obtains the matrix that reverses a given matrix.

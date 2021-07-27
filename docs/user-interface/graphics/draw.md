@@ -6,9 +6,9 @@ ms.date: 07/16/2021
 
 # .NET MAUI Graphics: Draw objects
 
-The .NET Multi-platform App UI (MAUI) 2D graphics library, in the `Microsoft.Maui.Graphics` namespace, enables you to draw objects on a drawing canvas. This library exposes the drawing canvas as an `ICanvas` object.
+The .NET Multi-platform App UI (MAUI) 2D graphics library, in the `Microsoft.Maui.Graphics` namespace, enables you to draw objects on a drawing canvas. This library defines the drawing canvas as an `ICanvas` object.
 
-The .NET MAUI `GraphicsView` control exposes an `ICanvas` object, on which properties can be set and methods invoked to draw objects. For more information about the `GraphicsView`, see [.NET MAUI GraphicsView](~/user-interface/controls/graphicsview.md).
+The .NET MAUI `GraphicsView` control provides access to an `ICanvas` object, on which properties can be set and methods invoked to draw objects. For more information about the `GraphicsView`, see [.NET MAUI GraphicsView](~/user-interface/controls/graphicsview.md).
 
 ## Draw a line
 
