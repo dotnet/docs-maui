@@ -20,16 +20,15 @@ The `NonZero` winding mode draws a hypothetical ray from the point to infinity i
 The following example fills a five-pointed star using the `NonZero` winding mode:
 
 ```csharp
-PointF center = new PointF(dirtyRect.Width / 2, dirtyRect.Height / 2);
 float radius = 0.45f * Math.Min(dirtyRect.Width, dirtyRect.Height);
 
 PathF path = new PathF();
-path.MoveTo(dirtyRect.Width / 2, dirtyRect.Height / 2 - radius);
+path.MoveTo(dirtyRect.Center.X, dirtyRect.Center.Y - radius);
 
 for (int i = 1; i < 5; i++)
 {
     double angle = i * 4 * Math.PI / 5;
-    path.LineTo(new PointF(radius * (float)Math.Sin(angle) + center.X, -radius * (float)Math.Cos(angle) + center.Y));
+    path.LineTo(new PointF(radius * (float)Math.Sin(angle) + dirtyRect.Center.X, -radius * (float)Math.Cos(angle) + dirtyRect.Center.Y));
 }
 path.Close();
 
@@ -55,16 +54,15 @@ The `EvenOdd` winding mode draws a hypothetical ray from the point to infinity i
 The following example fills a five-pointed star using the `EvenOdd` winding mode:
 
 ```csharp
-PointF center = new PointF(dirtyRect.Width / 2, dirtyRect.Height / 2);
 float radius = 0.45f * Math.Min(dirtyRect.Width, dirtyRect.Height);
 
 PathF path = new PathF();
-path.MoveTo(dirtyRect.Width / 2, dirtyRect.Height / 2 - radius);
+path.MoveTo(dirtyRect.Center.X, dirtyRect.Center.Y - radius);
 
 for (int i = 1; i < 5; i++)
 {
     double angle = i * 4 * Math.PI / 5;
-    path.LineTo(new PointF(radius * (float)Math.Sin(angle) + center.X, -radius * (float)Math.Cos(angle) + center.Y));
+    path.LineTo(new PointF(radius * (float)Math.Sin(angle) + dirtyRect.Center.X, -radius * (float)Math.Cos(angle) + dirtyRect.Center.Y));
 }
 path.Close();
 

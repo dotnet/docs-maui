@@ -29,7 +29,9 @@ namespace MyMauiApp
 }
 ```
 
-The `IDrawable` object can then be consumed by the `GraphicsView` by declaring it as a resource, and consuming it using its key:
+The `Draw` method has `ICanvas` and `RectangleF` arguments. The `ICanvas` argument is the drawing canvas on which you can draw graphical objects. The `RectangleF` argument is a `struct` that contains data about the size and location of the drawing canvas. For information about drawing on an `ICanvas`, see [.NET MAUI Graphics: Draw objects](~/user-interface/graphics/draw.md).
+
+The `IDrawable` object can be consumed by the `GraphicsView` by declaring it as a resource, and consuming it using its key:
 
 ```xaml
 <ContentPage xmlns=http://schemas.microsoft.com/dotnet/2021/maui
@@ -47,4 +49,17 @@ The `IDrawable` object can then be consumed by the `GraphicsView` by declaring i
 </ContentPage>
 ```
 
-## Drawing position
+## Drawing canvas location and size
+
+- `Bottom`, of type `float`, which represents the y-coordinate of the bottom edge of the canvas.
+- `Center`, of type `PointF`. which specifies the coordinates of the center of the canvas.
+- `Height`, of type `float`, which defines the height of the canvas.
+- `IsEmpty`, of type `bool`, which indicates whether the canvas has a zero size and location.
+- `Left`, of type `float`, which represents the x-coordinate of the left edge of the canvas.
+- `Location`, of type `PointF`, which defines the coordinates of the upper-left corner of the canvas.
+- `Right`, of type `float`, which represents the x-coordinate of the right edge of the canvas.
+- `Size`, of type `SizeF`, which defines the width and height of the canvas.
+- `Top`, of type `float`, which represents the y-coordinate of the top edge of the canvas.
+- `Width`, of type `float`, which defines the width of the canvas.
+- `X`, of type `float`, which defines the x-coordinate of the upper-left corner of the canvas.
+- `Y`, of type `float`, which defines the y-coordinate of the upper-left corner of the canvas.

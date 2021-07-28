@@ -121,8 +121,8 @@ Alternatively, graphical objects can be rotated centered around a specific point
 canvas.FontColor = Colors.Blue;
 canvas.FontSize = 18;
 
-canvas.Rotate(45, dirtyRect.Width / 2, dirtyRect.Height / 2);
-canvas.DrawString(".NET MAUI", dirtyRect.Width / 2, dirtyRect.Height / 2, HorizontalAlignment.Left);
+canvas.Rotate(45, dirtyRect.Center.X, dirtyRect.Center.Y);
+canvas.DrawString(".NET MAUI", dirtyRect.Center.X, dirtyRect.Center.Y, HorizontalAlignment.Left);
 ```
 
 In this example, `.NET MAUI` is rotated 45 degrees around the center of the canvas.
@@ -136,7 +136,7 @@ canvas.StrokeLineCap = LineCap.Round;
 canvas.FillColor = Colors.Gray;
 
 // Translation and scaling
-canvas.Translate(dirtyRect.Width / 2f, dirtyRect.Height / 2f);
+canvas.Translate(dirtyRect.Center.X, dirtyRect.Center.Y);
 float scale = Math.Min(dirtyRect.Width / 200f, dirtyRect.Height / 200f);
 canvas.Scale(scale, scale);
 
