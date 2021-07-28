@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI Graphics: Draw objects"
 description: "The .NET MAUI 2D graphics library enables you to draw objects on a drawing canvas."
-ms.date: 07/16/2021
+ms.date: 07/28/2021
 ---
 
 # .NET MAUI Graphics: Draw objects
@@ -352,6 +352,34 @@ canvas.DrawText(attributedText, 10, 10, 400, 400);
 In this example, markdown is converted to attributed text and displayed with the correct styling:
 
 :::image type="content" source="draw-images/text.png" alt-text="Screenshot of correctly rendered markdown.":::
+
+## Draw with fill and stroke
+
+Graphical objects with both fill and stroke can be drawn to the canvas by calling a draw method *after* a fill method. For example, to draw an outlined rectangle, set the `FillColor` and `StrokeColor` properties to colors, then call the `FillRectangle` method followed by the `DrawRectangle` method.
+
+The following example draws a filled circle, with a stroke outline, as a path:
+
+```csharp
+PointF center = new PointF(dirtyRect.Width / 2, dirtyRect.Height / 2);
+float radius = Math.Min(dirtyRect.Width, dirtyRect.Height) / 4;
+
+PathF path = new PathF();
+path.AppendCircle(center.X, center.Y, radius);
+
+canvas.StrokeColor = Colors.Blue;
+canvas.StrokeSize = 10;
+canvas.FillColor = Colors.Red;
+
+canvas.FillPath(path);
+canvas.DrawPath(path);
+```
+
+In this example, the stroke and fill colors for a `PathF` object are specified. The filled circle is drawn, then the outline stroke of the circle:
+
+:::image type="content" source="draw-images/circle-outlined.png" alt-text="Screenshot of a circle drawn with fill and stroke.":::
+
+> [!IMPORTANT]
+> Calling a draw method before a fill method will result in an incorrect z-order. The fill will be drawn over the stroke, and the stroke won't be visible.
 
 ## Draw a shadow
 
