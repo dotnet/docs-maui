@@ -267,6 +267,9 @@ In this example, a filled slate blue triangle is drawn:
 
 The `FillColor` property of the `ICanvas` object must be set to a `Color` before invoking the `FillPath` method.
 
+> [!IMPORTANT]
+> The `FillPath` method has an overload that enables a `WindingMode` to be specified, which sets the fill algorithm that's used. For more information, see [.NET MAUI Graphics: Winding modes](windingmodes.md).
+
 ## Draw an image
 
 Images can be drawn on an `ICanvas` using the `DrawImage` method, which requires `IImage`, `x`, `y`, `width`, and `height` arguments.
@@ -491,6 +494,9 @@ if (image != null)
 In this example, the image is clipped using a `PathF` object that defines a circle that's centered at (160,150) with a radius of 90. The result is that only the part of the image within the circle is visible:
 
 :::image type="content" source="draw-images/clippath.png" alt-text="Screenshot of an image that's been clipped with the ClipPath method.":::
+
+> [!IMPORTANT]
+> The `ClipPath` method has an overload that enables a `WindingMode` to be specified, which sets the fill algorithm that's used when clipping. For more information, see [.NET MAUI Graphics: Winding modes](windingmodes.md).
 
 The following example shows how to use the `SubtractFromClip` method to clip an image:
 

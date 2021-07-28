@@ -56,3 +56,5 @@
                     href: user-interface/graphics/paint/radialgradient.md
             - name: Transforms
               href: user-interface/graphics/transforms.md
+            - name: Winding modes
+              href: user-interface/graphics/windingmodes.md
