@@ -6,9 +6,9 @@ ms.date: 07/28/2021
 
 # .NET MAUI Graphics: Winding modes
 
-Two contours in a path can overlap, and the lines that make up a single contour can overlap. Any enclosed area can potentially be filled, but you might not want to fill all the enclosed areas.
+`Microsoft.Maui.Graphics` provides a `WindingMode` enumeration, which enables you to specify the fill algorithm to be used by the `FillPath` method. Contours in a path can overlap, and any enclosed area can potentially be filled, but you might not want to fill all the enclosed areas.
 
-`Microsoft.Maui.Graphics` provides a `WindingMode` enumeration, which enables you to specify the fill algorithm when filling a path with the `FillPath` method. The `WindingMode` enumeration defines `NonZero` and `EvenOdd` members. Each member represents a different algorithm for determining whether a point is in the fill region of an enclosed area.
+The `WindingMode` enumeration defines `NonZero` and `EvenOdd` members. Each member represents a different algorithm for determining whether a point is in the fill region of an enclosed area.
 
 > [!NOTE]
 > The `ClipPath` method has an overload that enables a `WindingMode` argument to be specified. By default, this argument is set to `WindingMode.NonZero`.
@@ -41,14 +41,12 @@ canvas.FillPath(path); // Overload automatically uses a NonZero winding mode
 canvas.DrawPath(path);
 ```
 
-In this example, the path is drawn twice. The `FillPath` method is used to fill the path with blue, while the `DrawPath` method outlines the path with a red stroke. The `FillPath` overload used omits the `WindingMode` argument, and instead specifies that the `NonZero` winding mode is used. This results in all the enclosed areas of the path being filled:
+In this example, the path is drawn twice. The `FillPath` method is used to fill the path with blue, while the `DrawPath` method outlines the path with a red stroke. The `FillPath` overload used omits the `WindingMode` argument, and instead automatically uses the `NonZero` winding mode. This results in all the enclosed areas of the path being filled:
 
 :::image type="content" source="windingmodes-images/nonzero.png" alt-text="Screenshot of a five-pointed star, using the non-zero winding mode.":::
 
 > [!NOTE]
 > For many paths, the `NonZero` winding mode often fills all the enclosed areas of a path.
-
-The `PathF` class also defines methods such as `AppendRectangle`, and `AppendCircle` that draw entire contours.
 
 ## EvenOdd
 
