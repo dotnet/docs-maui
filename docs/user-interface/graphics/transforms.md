@@ -256,7 +256,7 @@ The `AffineTransform` class defines six properties of type `float`, that corresp
     :::column-end:::
 :::row-end:::
 
-By manipulating matrix values, you can rotate, scale, shear, and translate graphical objects. For example, if you change the `M02` value to 100, you can use it to translate a graphical object 100 device-independent units along the x-axis. If you change the `M11` value to 3, you can use it to stretch a graphical object to three times its current height. If you change both values, you move the graphical object 100 device-independent units along the x-axis and stretch its height by a factor of 3.
+By manipulating matrix values, you can rotate, scale, shear, and translate graphical objects. For example, if you change the `M02` value to 100, you can use it to translate a graphical object 100 pixels along the x-axis. If you change the `M11` value to 3, you can use it to stretch a graphical object to three times its current height. If you change both values, you move the graphical object 100 pixels along the x-axis and stretch its height by a factor of 3.
 
 You can define a new transform matrix with the `AffineTransform` constructors, the `AffineTransform.SetMatrix` method, and the `AffineTransform.SetTransform` method. The advantage of specifying transforms with a transform matrix is that composite transforms can be applied as a single `AffineTransform`, which is referred to as *concatenation*. The `AffineTransform` class also defines methods that can be used to manipulate matrix values.
 

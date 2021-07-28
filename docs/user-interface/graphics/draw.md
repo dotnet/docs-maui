@@ -8,7 +8,10 @@ ms.date: 07/28/2021
 
 The .NET Multi-platform App UI (MAUI) 2D graphics library, in the `Microsoft.Maui.Graphics` namespace, enables you to draw objects on a drawing canvas. This library defines the drawing canvas as an `ICanvas` object.
 
-The .NET MAUI `GraphicsView` control provides access to an `ICanvas` object, on which properties can be set and methods invoked to draw objects. For more information about the `GraphicsView`, see [.NET MAUI GraphicsView](~/user-interface/controls/graphicsview.md).
+The .NET MAUI `GraphicsView` control provides access to an `ICanvas` object, on which properties can be set and methods invoked to draw graphical objects. For more information about the `GraphicsView`, see [.NET MAUI GraphicsView](~/user-interface/controls/graphicsview.md).
+
+> [!IMPORTANT]
+> Graphical objects are drawn on an `ICanvas` in units of pixels.
 
 ## Draw a line
 
@@ -56,7 +59,7 @@ canvas.StrokeSize = 4;
 canvas.DrawEllipse(200, 50, 150, 50);
 ```
 
-In this example, a red ellipse with dimensions 150x50 (device-independent units) is drawn at (200,50):
+In this example, a red ellipse with dimensions 150x50 is drawn at (200,50):
 
 :::image type="content" source="draw-images/ellipse.png" alt-text="Screenshot of a red ellipse.":::
 
@@ -68,7 +71,7 @@ canvas.StrokeSize = 4;
 canvas.DrawEllipse(200, 50, 150, 150);
 ```
 
-In this example, a red circle with dimensions 150x150 (device-independent units) is drawn at (200,50):
+In this example, a red circle with dimensions 150x150 is drawn at (200,50):
 
 :::image type="content" source="draw-images/circle.png" alt-text="Screenshot of a red circle.":::
 
@@ -84,7 +87,7 @@ canvas.FillColor = Colors.Red;
 canvas.FillEllipse(200, 50, 150, 50);
 ```
 
-In this example, a red filled ellipse with dimensions 150x50 (device-independent units) is drawn at (200,50):
+In this example, a red filled ellipse with dimensions 150x50 is drawn at (200,50):
 
 :::image type="content" source="draw-images/filled-ellipse.png" alt-text="Screenshot of a red filled ellipse.":::
 
@@ -107,7 +110,7 @@ canvas.StrokeSize = 4;
 canvas.DrawRectangle(50, 100, 100, 50);
 ```
 
-In this example, a dark blue rectangle with dimensions 100x50 (device-independent units) is drawn at (50,100):
+In this example, a dark blue rectangle with dimensions 100x50 is drawn at (50,100):
 
 :::image type="content" source="draw-images/rectangle.png" alt-text="Screenshot of a dark blue rectangle.":::
 
@@ -119,7 +122,7 @@ canvas.StrokeSize = 4;
 canvas.DrawRectangle(50, 100, 100, 100);
 ```
 
-In this example, a dark blue square with dimensions 100x100 (device-independent units) is drawn at (50,100):
+In this example, a dark blue square with dimensions 100x100 is drawn at (50,100):
 
 :::image type="content" source="draw-images/square.png" alt-text="Screenshot of a dark blue square.":::
 
@@ -132,7 +135,7 @@ canvas.FillColor = Colors.DarkBlue;
 canvas.FillRectangle(50, 100, 100, 50);
 ```
 
-In this example, a dark blue filled rectangle with dimensions 100x50 (device-independent units) is drawn at (50,100):
+In this example, a dark blue filled rectangle with dimensions 100x50 is drawn at (50,100):
 
 :::image type="content" source="draw-images/filled-rectangle.png" alt-text="Screenshot of a dark blue filled rectangle.":::
 
@@ -153,7 +156,7 @@ canvas.StrokeSize = 4;
 canvas.DrawRoundedRectangle(50, 100, 100, 50, 12);
 ```
 
-In this example, a green rectangle with rounded corners and dimensions 100x50 (device-independent units) is drawn at (50,100):
+In this example, a green rectangle with rounded corners and dimensions 100x50 is drawn at (50,100):
 
 :::image type="content" source="draw-images/rounded-rectangle.png" alt-text="Screenshot of a green rounded rectangle.":::
 
@@ -166,7 +169,7 @@ canvas.FillColor = Colors.Green;
 canvas.FillRoundedRectangle(50, 100, 100, 50, 12);
 ```
 
-In this example, a green filled rectangle with rounded corners and dimensions 100x50 (device-independent units) is drawn at (50,100):
+In this example, a green filled rectangle with rounded corners and dimensions 100x50 is drawn at (50,100):
 
 :::image type="content" source="draw-images/filled-rounded-rectangle.png" alt-text="Screenshot of a green filled rounded rectangle.":::
 
@@ -187,7 +190,7 @@ canvas.StrokeSize = 4;
 canvas.DrawArc(50, 50, 100, 100, 0, 180, true, false);
 ```
 
-In this example, a teal arc of dimensions 100x100 (device-independent units) is drawn at (50,50). The arc is drawn in a clockwise direction from 0 to 180 degrees, and isn't closed:
+In this example, a teal arc of dimensions 100x100 is drawn at (50,50). The arc is drawn in a clockwise direction from 0 to 180 degrees, and isn't closed:
 
 :::image type="content" source="draw-images/arc.png" alt-text="Screenshot of a teal arc.":::
 
@@ -200,7 +203,7 @@ canvas.FillColor = Colors.Teal;
 canvas.FillArc(50, 50, 100, 100, 0, 180, true);
 ```
 
-In this example, a filled teal arc of dimensions 100x100 (device-independent units) is drawn at (50,50). The arc is drawn in a clockwise direction from 0 to 180 degrees, and is closed automatically:
+In this example, a filled teal arc of dimensions 100x100 is drawn at (50,50). The arc is drawn in a clockwise direction from 0 to 180 degrees, and is closed automatically:
 
 :::image type="content" source="draw-images/filled-arc.png" alt-text="Screenshot of a filled teal arc.":::
 
