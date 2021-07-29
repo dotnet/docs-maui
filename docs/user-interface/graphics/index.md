@@ -10,6 +10,11 @@ ms.date: 07/23/2021
 
 The library, which is contained in the `Microsoft.Maui.Graphics` namespace, contains a drawing canvas, which supports drawing shapes, paths, gradients, text, images, and shadows.
 
+There are many similarities between the functionality provided by `Microsoft.Maui.Graphics`, and the functionality provided by .NET MAUI shapes and brushes. However, each is aimed at different scenarios:
+
+- `Microsoft.Maui.Graphics` functionality must be consumed on a drawing canvas, enables performant graphics to be drawn, and provides a convenient approach for writing graphics-based controls. For example, a control that replicates the GitHub contribution profile can be more easily implemented using `Microsoft.Maui.Graphics` than by using .NET MAUI shapes.
+- .NET MAUI shapes can be consumed directly on a page, and brushes can be consumed by all controls. This functionality is provided to help you produce an attractive UI.
+
 ## Platform abstractions
 
 The following table lists the graphics abstractions that are supported on each platform:
