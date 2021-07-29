@@ -49,7 +49,7 @@ The `IDrawable` object can be consumed by the `GraphicsView` by declaring it as 
 </ContentPage>
 ```
 
-## Drawing canvas location and size
+## Position and size graphical objects
 
 The location and size of the `ICanvas` on a page can be determined by examining properties of the `RectangleF` argument in the `Draw` method.
 
@@ -68,4 +68,4 @@ The `RectangleF` struct defines the following properties:
 - `X`, of type `float`, which defines the x-coordinate of the upper-left corner of the canvas.
 - `Y`, of type `float`, which defines the y-coordinate of the upper-left corner of the canvas.
 
-These properties can be used to place and size graphical objects on the `ICanvas`. For example, graphical objects can be placed at the center of the `Canvas` by using the `Center.X` and `Center.Y` values as arguments to a drawing method. For information about drawing on an `ICanvas`, see [.NET MAUI Graphics: Draw objects](~/user-interface/graphics/draw.md).
+These properties can be used to position and size graphical objects on the `ICanvas`. For example, graphical objects can be placed at the center of the `Canvas` by using the `Center.X` and `Center.Y` values as arguments to a drawing method. For information about drawing on an `ICanvas`, see [.NET MAUI Graphics: Draw objects](~/user-interface/graphics/draw.md).
