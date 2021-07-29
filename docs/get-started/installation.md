@@ -19,7 +19,7 @@ To create .NET MAUI apps in Visual Studio, you'll also need [Visual Studio 2022 
 - .NET Desktop Development
 - ASP.NET and web development (required for Blazor Desktop and the `BlazorWebView` control)
 
-:::image type="content" source="installation-images/vs-workloads.png" alt-text="Visual Studio workload.":::
+:::image type="content" source="media/installation/vs-workloads.png" alt-text="Visual Studio workload.":::
 
 In addition, you must currently install the following Visual Studio extension to create apps that target Windows UI Library (WinUI) 3:
 

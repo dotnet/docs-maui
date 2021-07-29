@@ -32,21 +32,21 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022, 
 
 1. Launch Visual Studio 2022 build 17.0 (Preview 2 or greater), and in the start window click **Open a project or solution** to browse for your solution:
 
-    :::image type="content" source="first-app-images/start-open.png" alt-text="Open solution.":::
+    :::image type="content" source="media/first-app/start-open.png" alt-text="Open solution.":::
 
 1. Wait for the project to load, and its dependencies to be restored:
 
-    :::image type="content" source="first-app-images/restored-dependencies.png" alt-text="Restored dependencies.":::
+    :::image type="content" source="media/first-app/restored-dependencies.png" alt-text="Restored dependencies.":::
 
 1. In the Visual Studio toolbar, select the drop-down next to the **Start** button (the triangular button that resembles a Play button), select **Android Emulator**, and then select the emulator you'd like to deploy the app to:
 
-    :::image type="content" source="first-app-images/select-android-emulator.png" alt-text="Select your Android emulator.":::
+    :::image type="content" source="media/first-app/select-android-emulator.png" alt-text="Select your Android emulator.":::
 
 1. In the Visual Studio toolbar, press the **Start** button to launch the app in your chosen Android emulator.
 
 1. In the running app in the Android emulator, press the **CLICK ME** button several times and observe that the count of the number of button clicks is incremented.
 
-    :::image type="content" source="first-app-images/running-app.png" alt-text="App running in the Android emulator." lightbox="first-app-images/running-app-large.png":::
+    :::image type="content" source="media/first-app/running-app.png" alt-text="App running in the Android emulator." lightbox="media/first-app/running-app-large.png":::
 
 ## Build and debug iOS apps
 
