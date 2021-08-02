@@ -10,7 +10,7 @@ The .NET Multi-platform App UI (MAUI) library supports compositing operations fo
 
 :::image type="content" source="blendmodes-images/normal.png" alt-text="Screenshot of a three colored circles, using the normal blend mode.":::
 
-In this example, the cyan circle is drawn first, followed by the magenta circle, then the yellow circle. Each circle obscures the circle drawn underneath it. This only occurs because the default blend mode is `Normal`, which means that the source is drawn over the destination.
+In this example, the cyan circle is drawn first, followed by the magenta circle, then the yellow circle. Each circle obscures the circle drawn underneath it. This only occurs because the default blend mode is `Normal`, which means that the source is drawn over the destination. However, it's possible to specify a different blend mode for a different result. For example, if you specify `DestinationOver`, then in the area where the source and destination intersect, the destination is drawn over the source.
 
 The 28 members of the `BlendMode` enumeration can be divided into three categories:
 
@@ -29,7 +29,68 @@ The 28 members of the `BlendMode` enumeration can be divided into three categori
 | `Difference` |  | `PlusDarker` |
 | `Exclusion` |  | `PlusLighter` |
 
-The order that the members are listed in the table above is the same as in the `BlendMode` enumeration. The X members in the first column have the integer values 0 to 11. The second column are members that correspond to integers 12 to 15, and the member in the third column have values 16 to 27.
+The order that the members are listed in the table above is the same as in the `BlendMode` enumeration. The 12 members in the first column have the integer values 0 to 11. The second column are members that correspond to integers 12 to 15, and the member in the third column have values 16 to 27.
+
+## Porter-Duff blend modes
+
+The Porter-Duff blend modes, named after Thomas Porter and Tom Duff, define 12 compositing operators that describe how to compute the color resulting from the composition of the source with the destination.
+
+The Porter-Duff blend modes can be described by considering the case of drawing two rectangles that contain transparent areas:
+
+:::image type="content" source="blendmodes-images/porterduff-source-destination.png" alt-text="Screenshot of the two overlapping rectangles, using the DestinationOver blend mode.":::
+
+In the image above, the destination is a transparent rectangle except for a brown area that occupies the left and top two-thirds of the display surface. The source is also a transparent rectangle except for a blue area that occupies the right and bottom two-thirds of the display surface.
+
+Displaying the source on the destination produces the following result:
+
+:::image type="content" source="blendmodes-images/rectangles-normal.png" alt-text="Screenshot of the two overlapping rectangles, using the Normal blend mode.":::
+
+The transparent pixels of the source allow the background to show through, while the blue source pixels obscure the background. This is the normal case, using the default blend mode of `Normal`. However, it's possible to specify that in the area where the source and destination intersect, the destination appears instead of the source, using the `DestinationOver` blend mode:
+
+:::image type="content" source="blendmodes-images/porterduff-destinationover.png" alt-text="Screenshot of the two overlapping rectangles, using the DestinationOver blend mode.":::
+
+The `DestinationIn` blend mode displays only the area where the destination and source intersect using the destination color:
+
+:::image type="content" source="blendmodes-images/porterduff-destinationin.png" alt-text="Screenshot of the two overlapping rectangles, using the DestinationIn blend mode.":::
+
+The `Xor` blend mode causes nothing to appear where the two areas overlap:
+
+:::image type="content" source="blendmodes-images/porterduff-xor.png" alt-text="Screenshot of the two overlapping rectangles, using the Xor blend mode.":::
+
+The coloured destination and source rectangles effectively divide the display surface into four unique areas that can be colored in different ways, corresponding to the presence of the destination and source rectangles:
+
+:::image type="content" source="blendmodes-images/porterduff.png" alt-text="Composition options with the Porter-Duff blend modes." border="false":::
+
+The upper-right and lower-right rectangles are always blank because both the destination and source are transparent in those area. The destination color occupies the upper-left area, so that area can either be colored with the destination color or not at all. Similarly, the source color occupies the lower-right area, so that area can be colored with the source color or not at all.
+
+The following table lists the Porter-Duff blend modes supported by `Microsoft.Maui.Graphics`, and how they color each of the three non-blank area in the diagram above:
+
+| Blend mode | Destination | Intersection | Source |
+| -- | -- | -- | -- |
+| `Clear` |  |  |  |
+| `Copy` |  | Source | X |
+| `SourceIn` |  | Source |  |
+| `SourceOut` |  |  | X |
+| `SourceAtop` | X | Source |  |
+| `DestinationOver` | X | Destination | X |
+| `DestinationIn` |  | Destination |  |
+| `DestinationOut` | X |  |  |
+| `DestinationAtop` |  | Destination | X |
+| `Xor` | X |  | X |
+| `PlusDarker` | X | Sum | X |
+| `PlusLighter` | X | Sum | X |
+
+These blend modes are symmetrical. The source and destination can be exchanged, and all the modes are still available.
+
+The naming convention of the modes follows a few simple rules:
+
+- The *Over* suffix indicates what is visible in the intersection. Either the source or destination is drawn over the other.
+- The *In* suffix means that only the intersection is colored. The output is restricted to only the part of the source or destination that is in the other.
+- The *Out* suffix means that the intersection is not colored. The output is only the part of the source or destination that is out of the intersection.
+- The *Atop* suffix is the union of *In* and *Out*. It includes the area where the source or destination is atop of the other.
+
+> [!NOTE]
+> The `PlusLighter` blend mode sums the source and destination. Then, for values above 1, white is displayed. Similarly, the `PlusDarker` blend mode sums the source and destination, but subtracts 1 from the resulting values, with values below 0 becoming black.
 
 ## Separable blend modes
 
@@ -111,37 +172,3 @@ The following table lists how which HSL components are composited for each non-s
 | `Saturation` | Saturation | Hue and Luminosity |
 | `Color` | Hue and Saturation | Luminosity |
 | `Luminosity` | Luminosity | Hue and Saturation |
-
-## Porter-Duff blend modes
-
-The Porter-Duff blend modes, named after Thomas Porter and Tom Duff,
-
-
-The following table lists the Porter-Duff blend modes supported by `Microsoft.Maui.Graphics`, and how they color each of the three non-blank area in the diagram above:
-
-| Blend mode | Destination | Intersection | Source |
-| -- | -- | -- | -- |
-| `Clear` |  |  |  |
-| `Copy` |  | Source | X |
-| `SourceIn` |  | Source |  |
-| `SourceOut` |  |  | X |
-| `SourceAtop` | X | Source |  |
-| `DestinationOver` | X | Destination | X |
-| `DestinationIn` |  | Destination |  |
-| `DestinationOut` | X |  |  |
-| `DestinationAtop` |  | Destination | X |
-| `Xor` | X |  | X |
-| `PlusDarker` | X | Sum | X |
-| `PlusLighter` | X | Sum | X |
-
-These blend modes are symmetrical. The source and destination can be exchanged, and all the modes are still available.
-
-The naming convention of the modes follows a few simple rules:
-
-- The *Over* suffix indicates what is visible in the intersection. Either the source or destination is drawn over the other.
-- The *In* suffix means that only the intersection is colored. The output is restricted to only the part of the source or destination that is in the other.
-- The *Out* suffix means that the intersection is not colored. The output is only the part of the source or destination that is out of the intersection.
-- The *Atop* suffix is the union of *In* and *Out*. It includes the area where the source or destination is atop of the other.
-
-> [!NOTE]
-> The `PlusLighter` blend mode sums the source and destination. Then, for values above 1, white is displayed. Similarly, the `PlusDarker` blend mode sums the source and destination, but subtracts 1 from the resulting values, with values below 0 becoming black.
