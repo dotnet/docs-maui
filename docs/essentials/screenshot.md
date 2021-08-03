@@ -13,7 +13,7 @@ The **Screenshot** class lets you take a capture of the current displayed screen
 
 ## Get started
 
-[!include[](~/essentials/includes/get-started.md)]
+[!INCLUDE [get-started](includes/get-started.md)]
 
 ## Using Screenshot
 

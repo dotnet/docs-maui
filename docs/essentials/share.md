@@ -15,7 +15,7 @@ The **Share** class enables an application to share data such as text and web li
 
 ## Get started
 
-[!include[](~/essentials/includes/get-started.md)]
+[!INCLUDE [get-started](includes/get-started.md)]
 
 # [Android](#tab/android)
 
@@ -115,7 +115,7 @@ await Share.RequestAsync(new ShareMultipleFilesRequest
 
 ## Presentation Location
 
-[!include[](~/essentials/includes/ios-PresentationSourceBounds.md)]
+[!INCLUDE [ios-PresentationSourceBounds](includes/ios-PresentationSourceBounds.md)]
 
 ## Platform Differences
 
@@ -143,4 +143,4 @@ await Share.RequestAsync(new ShareMultipleFilesRequest
 
 > [!Video https://channel9.msdn.com/Shows/XamarinShow/Share-Essential-API-of-the-Week/player]
 
-[!include[](~/essentials/includes/xamarin-show-essentials.md)]
+[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

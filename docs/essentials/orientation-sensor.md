@@ -15,7 +15,7 @@ The **OrientationSensor** class lets you monitor the orientation of a device in 
 
 ## Get started
 
-[!include[](~/essentials/includes/get-started.md)]
+[!INCLUDE [get-started](includes/get-started.md)]
 
 ## Using OrientationSensor
 
@@ -100,7 +100,7 @@ Examples:
 
 - If the device is positioned so its left edge is on a table, and the top points north, the device has been rotated &ndash;90 degrees around the Y axis (or 90 degrees around the negative Y axis). The `Quaternion` value is (0, -0.707, 0, 0.707).
 
-[!include[](~/essentials/includes/sensor-speed.md)]
+[!INCLUDE [sensor-speed](includes/sensor-speed.md)]
 
 ## API
 

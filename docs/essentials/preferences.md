@@ -14,7 +14,7 @@ The **Preferences** class helps to store application preferences in a key/value 
 
 ## Get started
 
-[!include[](~/essentials/includes/get-started.md)]
+[!INCLUDE [get-started](includes/get-started.md)]
 
 ## Using Preferences
 
@@ -117,4 +117,4 @@ When storing a string, this API is intended to store small amounts of text. Perf
 
 > [!Video https://channel9.msdn.com/Shows/XamarinShow/Preferences-Essential-API-of-the-Week/player]
 
-[!include[](~/essentials/includes/xamarin-show-essentials.md)]
+[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

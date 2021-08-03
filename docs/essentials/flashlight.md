@@ -14,7 +14,7 @@ The **Flashlight** class has the ability to turn on or off the device's camera f
 
 ## Get started
 
-[!include[](~/essentials/includes/get-started.md)]
+[!INCLUDE [get-started](includes/get-started.md)]
 
 To access the **Flashlight** functionality the following platform specific setup is required.
 
@@ -47,7 +47,7 @@ By adding these permissions [Google Play will automatically filter out devices](
 [assembly: UsesFeature("android.hardware.camera.autofocus", Required = false)]
 ```
 
-[!include[](~/essentials/includes/android-permissions.md)]
+[!INCLUDE [android-permissions](includes/android-permissions.md)]
 
 # [iOS](#tab/ios)
 
@@ -125,4 +125,4 @@ A camera surface texture is created to turn on or off the `FlashMode` of the cam
 
 > [!Video https://channel9.msdn.com/Shows/XamarinShow/Flashlight-XamarinEssentials-API-of-the-Week/player]
 
-[!include[](~/essentials/includes/xamarin-show-essentials.md)]
+[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

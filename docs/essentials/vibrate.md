@@ -14,7 +14,7 @@ The **Vibration** class lets you start and stop the vibrate functionality for a 
 
 ## Get started
 
-[!include[](~/essentials/includes/get-started.md)]
+[!INCLUDE [get-started](includes/get-started.md)]
 
 To access the **Vibration** functionality the following platform specific setup is required.
 
@@ -122,4 +122,4 @@ No platform differences.
 
 > [!Video https://channel9.msdn.com/Shows/XamarinShow/Vibration-XamarinEssentials-API-of-the-Week/player]
 
-[!include[](~/essentials/includes/xamarin-show-essentials.md)]
+[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

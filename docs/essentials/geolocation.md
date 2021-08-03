@@ -14,7 +14,7 @@ The **Geolocation** class provides APIs to retrieve the device's current geoloca
 
 ## Get started
 
-[!include[](~/essentials/includes/get-started.md)]
+[!INCLUDE [get-started](includes/get-started.md)]
 
 To access the **Geolocation** functionality, the following platform-specific setup is required:
 
@@ -60,7 +60,7 @@ Or directly into your **AndroidManifest.xml**:
 
 If it recommended to read [Android documentation on background location updates](https://developer.android.com/training/location/permissions) as there are many restrictions that need to be considered.
 
-[!include[](~/essentials/includes/android-permissions.md)]
+[!INCLUDE [android-permissions](includes/android-permissions.md)]
 
 # [iOS](#tab/ios)
 
@@ -270,4 +270,4 @@ On UWP, altitude is returned in meters. See the [AltitudeReferenceSystem](/uwp/a
 
 > [!Video https://channel9.msdn.com/Shows/XamarinShow/Geolocation-XamarinEssentials-API-of-the-Week/player]
 
-[!include[](~/essentials/includes/xamarin-show-essentials.md)]
+[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

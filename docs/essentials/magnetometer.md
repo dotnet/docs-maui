@@ -13,7 +13,7 @@ The **Magnetometer** class lets you monitor the device's magnetometer sensor whi
 
 ## Get started
 
-[!include[](~/essentials/includes/get-started.md)]
+[!INCLUDE [get-started](includes/get-started.md)]
 
 ## Using Magnetometer
 
@@ -68,7 +68,7 @@ public class MagnetometerTest
 
 All data is returned in µT (microteslas).
 
-[!include[](~/essentials/includes/sensor-speed.md)]
+[!INCLUDE [sensor-speed](includes/sensor-speed.md)]
 
 ## API
 

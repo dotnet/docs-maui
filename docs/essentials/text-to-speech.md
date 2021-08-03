@@ -14,7 +14,7 @@ The **TextToSpeech** class enables an application to utilize the built-in text-t
 
 ## Get started
 
-[!include[](~/essentials/includes/get-started.md)]
+[!INCLUDE [get-started](includes/get-started.md)]
 
 ## Using Text-to-Speech
 
@@ -151,4 +151,4 @@ public async Task SpeakNow()
 
 > [!Video https://channel9.msdn.com/Shows/XamarinShow/Text-to-Speech-XamarinEssentials-API-of-the-Week/player]
 
-[!include[](~/essentials/includes/xamarin-show-essentials.md)]
+[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

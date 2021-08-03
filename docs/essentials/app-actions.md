@@ -13,7 +13,7 @@ The **AppActions** class lets you create and respond to app shortcuts from the a
 
 ## Get started
 
-[!include[](~/essentials/includes/get-started.md)]
+[!INCLUDE [get-started](includes/get-started.md)]
 
 To access the **AppActions** functionality the following platform specific setup is required.
 

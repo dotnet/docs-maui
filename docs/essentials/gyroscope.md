@@ -13,7 +13,7 @@ The **Gyroscope** class lets you monitor the device's gyroscope sensor which is 
 
 ## Get started
 
-[!include[](~/essentials/includes/get-started.md)]
+[!INCLUDE [get-started](includes/get-started.md)]
 
 ## Using Gyroscope
 
@@ -66,7 +66,7 @@ public class GyroscopeTest
 }
 ```
 
-[!include[](~/essentials/includes/sensor-speed.md)]
+[!INCLUDE [sensor-speed](includes/sensor-speed.md)]
 
 ## API
 

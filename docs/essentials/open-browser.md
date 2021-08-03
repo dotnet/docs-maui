@@ -14,7 +14,7 @@ The **Browser** class enables an application to open a web link in the optimized
 
 ## Get started
 
-[!include[](~/essentials/includes/get-started.md)]
+[!INCLUDE [get-started](includes/get-started.md)]
 
 To access the **Browser** functionality the following platform specific setup is required.
 
@@ -134,4 +134,4 @@ The user's default browser will always be launched regardless of the `BrowserLau
 
 > [!Video https://channel9.msdn.com/Shows/XamarinShow/Open-Browser-XamarinEssentials-API-of-the-Week/player]
 
-[!include[](~/essentials/includes/xamarin-show-essentials.md)]
+[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

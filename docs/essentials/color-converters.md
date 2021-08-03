@@ -14,7 +14,7 @@ The **ColorConverters** class in Xamarin.Essentials provides several helper meth
 
 ## Get started
 
-[!include[](~/essentials/includes/get-started.md)]
+[!INCLUDE [get-started](includes/get-started.md)]
 
 ## Using Color Converters
 
@@ -84,4 +84,4 @@ The `ToSystemColor` method applies to Android.Graphics.Color, UIKit.UIColor, and
 
 > [!Video https://channel9.msdn.com/Shows/XamarinShow/Color-Converters-XamarinEssentials-API-of-the-Week/player]
 
-[!include[](~/essentials/includes/xamarin-show-essentials.md)]
+[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

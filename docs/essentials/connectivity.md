@@ -14,7 +14,7 @@ The **Connectivity** class lets you monitor for changes in the device's network 
 
 ## Get started
 
-[!include[](~/essentials/includes/get-started.md)]
+[!INCLUDE [get-started](includes/get-started.md)]
 
 To access the **Connectivity** functionality the following platform specific setup is required.
 
@@ -117,4 +117,4 @@ It is important to note that it is possible that `Internet` is reported by `Netw
 
 > [!Video https://channel9.msdn.com/Shows/XamarinShow/Connectivity-Essential-API-of-the-Week/player]
 
-[!include[](~/essentials/includes/xamarin-show-essentials.md)]
+[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

@@ -14,7 +14,7 @@ The **RequestedTheme** API is part of the [`AppInfo`](app-information.md) class 
 
 ## Get started
 
-[!include[](~/essentials/includes/get-started.md)]
+[!INCLUDE [get-started](includes/get-started.md)]
 
 ## Using RequestedTheme
 
@@ -75,4 +75,4 @@ You can read more on the [UWP Requested Theme Documentation](/uwp/api/windows.ui
 
 > [!Video https://channel9.msdn.com/Shows/XamarinShow/Theme-Detection-XamarinEssentials-API-of-the-Week/player]
 
-[!include[](~/essentials/includes/xamarin-show-essentials.md)]
+[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]
