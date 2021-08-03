@@ -30,7 +30,7 @@ The best practice here is to use a web backend as a middle layer between your mo
 
 ## Get started
 
-[!include[](~/essentials/includes/get-started.md)]
+[!INCLUDE [get-started](includes/get-started.md)]
 
 To access the **WebAuthenticator** functionality the following platform specific setup is required.
 

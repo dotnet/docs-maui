@@ -13,7 +13,7 @@ The **FilePicker** class lets a user pick a single or multiple files from the de
 
 ## Get started
 
-[!include[](~/essentials/includes/get-started.md)]
+[!INCLUDE [get-started](includes/get-started.md)]
 
 To access the **FilePicker** functionality the following platform specific setup is required.
 
@@ -105,7 +105,7 @@ var options = new PickOptions
 
 If you desire your user to pick multiple files you can call the `FilePicker.PickMultipleAsync()` method. It also takes in `PickOptions` as a parameter to specify additional information. The results are the same as `PickAsync`, but instead of a single `FileResult` an `IEnumerable<FileResult>` is returned that can be iterated over.
 
-[!include[](~/essentials/includes/tip-file-result.md)]
+[!INCLUDE [tip-file-result](includes/tip-file-result.md)]
 
 ## Platform Differences
 

@@ -14,7 +14,7 @@ The **Sms** class enables an application to open the default SMS application wit
 
 ## Get started
 
-[!include[](~/essentials/includes/get-started.md)]
+[!INCLUDE [get-started](includes/get-started.md)]
 
 To access the **Sms** functionality the following platform specific setup is required.
 
@@ -108,4 +108,4 @@ public class SmsTest
 
 > [!Video https://channel9.msdn.com/Shows/XamarinShow/SMS-XamarinEssentials-API-of-the-Week/player]
 
-[!include[](~/essentials/includes/xamarin-show-essentials.md)]
+[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

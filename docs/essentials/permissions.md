@@ -14,9 +14,9 @@ The **Permissions** class provides the ability to check and request runtime perm
 
 ## Get started
 
-[!include[](~/essentials/includes/get-started.md)]
+[!INCLUDE [get-started](includes/get-started.md)]
 
-[!include[](~/essentials/includes/android-permissions.md)]
+[!INCLUDE [android-permissions](includes/android-permissions.md)]
 
 ## Using Permissions
 
@@ -272,4 +272,4 @@ Read more on the [App Capability Declaration](/windows/uwp/packaging/app-capabil
 
 > [!Video https://channel9.msdn.com/Shows/XamarinShow/Permissions-XamarinEssentials-API-of-the-Week/player]
 
-[!include[](~/essentials/includes/xamarin-show-essentials.md)]
+[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

@@ -13,7 +13,7 @@ The **Barometer** class lets you monitor the device's barometer sensor, which me
 
 ## Get started
 
-[!include[](~/essentials/includes/get-started.md)]
+[!INCLUDE [get-started](includes/get-started.md)]
 
 ## Using Barometer
 
@@ -66,7 +66,7 @@ public class BarometerTest
 }
 ```
 
-[!include[](~/essentials/includes/sensor-speed.md)]
+[!INCLUDE [sensor-speed](includes/sensor-speed.md)]
 
 ## Platform Implementation Specifics
 

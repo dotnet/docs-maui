@@ -14,7 +14,7 @@ The **[Accelerometer](accelerometer.md)** class lets you monitor the device's ac
 
 ## Get started
 
-[!include[](~/essentials/includes/get-started.md)]
+[!INCLUDE [get-started](includes/get-started.md)]
 
 ## Using Detect Shake
 
@@ -65,7 +65,7 @@ public class DetectShakeTest
 }
 ```
 
-[!include[](~/essentials/includes/sensor-speed.md)]
+[!INCLUDE [sensor-speed](includes/sensor-speed.md)]
 
 ## Implementation Details
 
@@ -80,4 +80,4 @@ The detect shake API uses raw readings from the accelerometer to calculate accel
 
 > [!Video https://channel9.msdn.com/Shows/XamarinShow/Detect-Shake-XamarinEssentials-API-of-the-Week/player]
 
-[!include[](~/essentials/includes/xamarin-show-essentials.md)]
+[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

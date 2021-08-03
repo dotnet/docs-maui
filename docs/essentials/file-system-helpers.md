@@ -14,7 +14,7 @@ The **FileSystem** class contains a series of helpers to find the application's 
 
 ## Get started
 
-[!include[](~/essentials/includes/get-started.md)]
+[!INCLUDE [get-started](includes/get-started.md)]
 
 ## Using File System Helpers
 
@@ -85,4 +85,4 @@ Add any file into the root in the UWP project and mark the Build Action as **Con
 
 > [!Video https://channel9.msdn.com/Shows/XamarinShow/File-System-Helpers-XamarinEssentials-API-of-the-Week/player]
 
-[!include[](~/essentials/includes/xamarin-show-essentials.md)]
+[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

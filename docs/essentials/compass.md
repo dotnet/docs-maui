@@ -14,7 +14,7 @@ The **Compass** class lets you monitor the device's magnetic north heading.
 
 ## Get started
 
-[!include[](~/essentials/includes/get-started.md)]
+[!INCLUDE [get-started](includes/get-started.md)]
 
 ## Using Compass
 
@@ -66,7 +66,7 @@ public class CompassTest
 }
 ```
 
-[!include[](~/essentials/includes/sensor-speed.md)]
+[!INCLUDE [sensor-speed](includes/sensor-speed.md)]
 
 ## Platform Implementation Specifics
 
@@ -99,4 +99,4 @@ This is only applied on the Android platform, and the parameter is ignored on iO
 
 > [!Video https://channel9.msdn.com/Shows/XamarinShow/Compass-XamarinEssentials-API-of-the-Week/player]
 
-[!include[](~/essentials/includes/xamarin-show-essentials.md)]
+[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

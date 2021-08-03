@@ -14,7 +14,7 @@ The **SecureStorage** class helps securely store simple key/value pairs.
 
 ## Get started
 
-[!include[](~/essentials/includes/get-started.md)]
+[!INCLUDE [get-started](includes/get-started.md)]
 
 To access the **SecureStorage** functionality, the following platform-specific setup is required:
 
@@ -171,4 +171,4 @@ This API is intended to store small amounts of text.  Performance may be slow if
 
 > [!Video https://channel9.msdn.com/Shows/XamarinShow/Secure-Storage-XamarinEssentials-API-of-the-Week/player]
 
-[!include[](~/essentials/includes/xamarin-show-essentials.md)]
+[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

@@ -14,7 +14,7 @@ The **PhoneDialer** class enables an application to open a phone number in the d
 
 ## Get started
 
-[!include[](~/essentials/includes/get-started.md)]
+[!INCLUDE [get-started](includes/get-started.md)]
 
 # [Android](#tab/android)
 
@@ -85,4 +85,4 @@ public class PhoneDialerTest
 
 > [!Video https://channel9.msdn.com/Shows/XamarinShow/Phone-Dialer-XamarinEssentials-API-of-the-Week/player]
 
-[!include[](~/essentials/includes/xamarin-show-essentials.md)]
+[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

@@ -14,7 +14,7 @@ The **Accelerometer** class lets you monitor the device's accelerometer sensor, 
 
 ## Get started
 
-[!include[](~/essentials/includes/get-started.md)]
+[!INCLUDE [get-started](includes/get-started.md)]
 
 ## Using Accelerometer
 
@@ -81,7 +81,7 @@ Examples:
 
 - When the device lies flat on a table and is pushed toward the sky with an acceleration of A m/s^2, the acceleration value is equal to A+9.81 which corresponds to the acceleration of the device (+A m/s^2) minus the force of gravity (-9.81 m/s^2) and normalized in G.
 
-[!include[](~/essentials/includes/sensor-speed.md)]
+[!INCLUDE [sensor-speed](includes/sensor-speed.md)]
 
 ## API
 
@@ -92,4 +92,4 @@ Examples:
 
 > [!Video https://channel9.msdn.com/Shows/XamarinShow/Accelerometer-XamarinEssentials-API-of-the-Week/player]
 
-[!include[](~/essentials/includes/xamarin-show-essentials.md)]
+[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

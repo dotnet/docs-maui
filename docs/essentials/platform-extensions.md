@@ -13,7 +13,7 @@ Xamarin.Essentials provides several platform extension methods when having to wo
 
 ## Get started
 
-[!include[](~/essentials/includes/get-started.md)]
+[!INCLUDE [get-started](includes/get-started.md)]
 
 ## Using Platform Extensions
 

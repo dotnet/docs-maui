@@ -14,7 +14,7 @@ The **DeviceInfo** class provides information about the device the application i
 
 ## Get started
 
-[!include[](~/essentials/includes/get-started.md)]
+[!INCLUDE [get-started](includes/get-started.md)]
 
 ## Using DeviceInfo
 
@@ -90,4 +90,4 @@ iOS does not expose an API for developers to get the model of the specific iOS d
 
 > [!Video https://channel9.msdn.com/Shows/XamarinShow/Device-Information-XamarinEssentials-API-of-the-Week/player]
 
-[!include[](~/essentials/includes/xamarin-show-essentials.md)]
+[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

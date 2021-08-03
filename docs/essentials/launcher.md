@@ -14,7 +14,7 @@ The **Launcher** class enables an application to open a URI by the system. This 
 
 ## Get started
 
-[!include[](~/essentials/includes/get-started.md)]
+[!INCLUDE [get-started](includes/get-started.md)]
 
 ## Using Launcher
 
@@ -93,7 +93,7 @@ await Launcher.OpenAsync(new OpenFileRequest
 
 ## Presentation Location When Opening Files
 
-[!include[](~/essentials/includes/ios-PresentationSourceBounds.md)]
+[!INCLUDE [ios-PresentationSourceBounds](includes/ios-PresentationSourceBounds.md)]
 
 ## Platform Differences
 
@@ -124,4 +124,4 @@ No platform differences.
 
 > [!Video https://channel9.msdn.com/Shows/XamarinShow/Launcher-XamarinEssentials-API-of-the-Week/player]
 
-[!include[](~/essentials/includes/xamarin-show-essentials.md)]
+[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

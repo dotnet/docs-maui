@@ -14,7 +14,7 @@ The **Battery** class lets you check the device's battery information and monito
 
 ## Get started
 
-[!include[](~/essentials/includes/get-started.md)]
+[!INCLUDE [get-started](includes/get-started.md)]
 
 To access the **Battery** functionality the following platform specific setup is required.
 
@@ -184,4 +184,4 @@ No platform differences.
 
 > [!Video https://channel9.msdn.com/Shows/XamarinShow/Battery-Essential-API-of-the-Week/player]
 
-[!include[](~/essentials/includes/xamarin-show-essentials.md)]
+[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

@@ -13,7 +13,7 @@ The **Contacts** class lets a user pick a contact and retrieve information about
 
 ## Get started
 
-[!include[](~/essentials/includes/get-started.md)]
+[!INCLUDE [get-started](includes/get-started.md)]
 
 To access the **Contacts** functionality the following platform specific setup is required.
 

@@ -14,7 +14,7 @@ The **VersionTracking** class lets you check the applications version and build 
 
 ## Get started
 
-[!include[](~/essentials/includes/get-started.md)]
+[!INCLUDE [get-started](includes/get-started.md)]
 
 ## Using Version Tracking
 
@@ -81,4 +81,4 @@ All version information is stored using the [Preferences](preferences.md) API in
 
 > [!Video https://channel9.msdn.com/Shows/XamarinShow/Version-Tracking-XamarinEssentials-API-of-the-Week/player]
 
-[!include[](~/essentials/includes/xamarin-show-essentials.md)]
+[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

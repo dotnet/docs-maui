@@ -20,7 +20,7 @@ Applications sometimes need to use events that call the event handler on a secon
 
 ## Get started
 
-[!include[](~/essentials/includes/get-started.md)]
+[!INCLUDE [get-started](includes/get-started.md)]
 
 ## Running Code on the Main Thread
 
@@ -116,4 +116,4 @@ The `MainThread` class includes the following additional `static` methods that c
 
 > [!Video https://channel9.msdn.com/Shows/XamarinShow/Main-Thread-XamarinEssentials-API-of-the-Week/player]
 
-[!include[](~/essentials/includes/xamarin-show-essentials.md)]
+[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

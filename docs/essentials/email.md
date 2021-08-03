@@ -48,7 +48,7 @@ No platform differences.
 
 ## Get started
 
-[!include[](~/essentials/includes/get-started.md)]
+[!INCLUDE [get-started](includes/get-started.md)]
 
 > [!TIP]
 > To use the Email API on iOS you must run it on a physical device, else an exception will be thrown.
@@ -141,4 +141,4 @@ Not all email clients support sending attachments. See [documentation](/windows/
 
 > [!Video https://channel9.msdn.com/Shows/XamarinShow/Email-XamarinEssentials-API-of-the-Week/player]
 
-[!include[](~/essentials/includes/xamarin-show-essentials.md)]
+[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

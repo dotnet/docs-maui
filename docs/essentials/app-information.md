@@ -14,7 +14,7 @@ The **AppInfo** class provides information about your application.
 
 ## Get started
 
-[!include[](~/essentials/includes/get-started.md)]
+[!INCLUDE [get-started](includes/get-started.md)]
 
 ## Using AppInfo
 
@@ -93,4 +93,4 @@ App information is taken from the `Package.appxmanifest` for the following field
 
 > [!Video https://channel9.msdn.com/Shows/XamarinShow/App-Information-Essential-API-of-the-Week/player]
 
-[!include[](~/essentials/includes/xamarin-show-essentials.md)]
+[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]
