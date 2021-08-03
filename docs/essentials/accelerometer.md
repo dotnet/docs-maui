@@ -1,16 +1,13 @@
 ---
-title: "Xamarin.Essentials: Accelerometer"
-description: "The Accelerometer class in Xamarin.Essentials lets you monitor the device's accelerometer sensor, which indicates the acceleration of the device in three dimensional space."
-author: jamesmontemagno
-ms.author: jamont
-ms.date: 04/02/2019
-ms.custom: video
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+title: "Essentials: Accelerometer"
+description: "The Accelerometer class in Microsoft.Maui.Essentials lets you monitor the device's accelerometer sensor, which indicates the acceleration of the device in 3D space."
+ms.date: 08/02/2021
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials", "A", "G", "X", "Y", "Z"]
 ---
 
-# Xamarin.Essentials: Accelerometer
+# Accelerometer
 
-The **Accelerometer** class lets you monitor the device's accelerometer sensor, which indicates the acceleration of the device in three-dimensional space.
+The <xref:xref:Microsoft.Maui.Essentials.Accelerometer> class lets you monitor the device's accelerometer sensor, which indicates the acceleration of the device in 3D space. The `Accelerometer` class is part of the .NET MAUI Essentials library that is included with the .NET MAUI Workload.
 
 ## Get started
 
@@ -18,16 +15,15 @@ The **Accelerometer** class lets you monitor the device's accelerometer sensor, 
 
 ## Using Accelerometer
 
-Add a reference to Xamarin.Essentials in your class:
+Add a reference to the `Microsoft.Maui.Essentials` namespace in your class:
 
 ```csharp
-using Xamarin.Essentials;
+using Microsoft.Maui.Essentials;
 ```
 
-The Accelerometer functionality works by calling the `Start` and `Stop` methods to listen for changes to the acceleration. Any changes are sent back through the `ReadingChanged` event. Here is sample usage:
+The accelerometer functionality works by calling the <xref:xref:Microsoft.Maui.Essentials.Accelerometer.Start%2A> and <xref:xref:Microsoft.Maui.Essentials.Accelerometer.Stop> methods to listen for changes to the acceleration. Any changes are sent back through the <xref:xref:Microsoft.Maui.Essentials.Accelerometer.ReadingChanged> event. Here's a sample of using the accelerometer:
 
 ```csharp
-
 public class AccelerometerTest
 {
     // Set speed delay for monitoring changes.
@@ -67,29 +63,23 @@ public class AccelerometerTest
 }
 ```
 
-Accelerometer readings are reported back in G. A G is a unit of gravitation force equal to that exerted by the earth's gravitational field (9.81 m/s^2).
+Accelerometer readings are reported back in **G**. A **G** is a unit of gravitation force equal to the gravity exerted by the earth's gravitational field $(9.81 m/s^2)$.
 
-The coordinate-system is defined relative to the screen of the phone in its default orientation. The axes are not swapped when the device's screen orientation changes.
+The coordinate-system is defined relative to the screen of the device in its default orientation. The axes aren't swapped when the device's screen orientation changes.
 
-The X axis is horizontal and points to the right, the Y axis is vertical and points up and the Z axis points towards the outside of the front face of the screen. In this system, coordinates behind the screen have negative Z values.
+The **X** axis is horizontal and points to the right, the **Y** axis is vertical and points up and the **Z** axis points towards the outside of the front face of the screen. In this system, coordinates behind the screen have negative **Z** values.
 
 Examples:
 
-- When the device lies flat on a table and is pushed on its left side toward the right, the x acceleration value is positive.
+- When the device lies flat on a table and is pushed on its left side toward the right, the **X** acceleration value is positive.
 
-- When the device lies flat on a table, the acceleration value is +1.00 G or (+9.81 m/s^2), which correspond to the acceleration of the device (0 m/s^2) minus the force of gravity (-9.81 m/s^2) and normalized as in G.
+- When the device lies flat on a table, the acceleration value is +1.00 G or $(+9.81 m/s^2)$, which correspond to the acceleration of the device $(0 m/s^2)$ minus the force of gravity $(-9.81 m/s^2)$ and normalized as in G.
 
-- When the device lies flat on a table and is pushed toward the sky with an acceleration of A m/s^2, the acceleration value is equal to A+9.81 which corresponds to the acceleration of the device (+A m/s^2) minus the force of gravity (-9.81 m/s^2) and normalized in G.
+- When the device lies flat on a table and is pushed toward the sky with an acceleration of **A** $m/s^2$, the acceleration value is equal to $A+9.81$ which corresponds to the acceleration of the device $(+A m/s^2)$ minus the force of gravity $(-9.81 m/s^2)$ and normalized in **G**.
 
 [!INCLUDE [sensor-speed](includes/sensor-speed.md)]
 
 ## API
 
-- [Accelerometer source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Accelerometer)
-- [Accelerometer API documentation](xref:Xamarin.Essentials.Accelerometer)
-
-## Related Video
-
-> [!Video https://channel9.msdn.com/Shows/XamarinShow/Accelerometer-XamarinEssentials-API-of-the-Week/player]
-
-[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]
+- [Accelerometer source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/Accelerometer)
+- [Accelerometer API documentation](xref:Microsoft.Maui.Essentials.Accelerometer)

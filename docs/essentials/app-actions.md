@@ -1,33 +1,32 @@
 ---
-title: "Xamarin.Essentials: App Actions"
-description: "The Accelerometer class in Xamarin.Essentials lets you create and respond to app shortcuts from the app icon."
-author: jamesmontemagno
-ms.author: jamont
-ms.date: 01/04/2021
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+title: "Essentials: App Actions"
+description: "The AppActions class in Microsoft.Maui.Essentials lets you create and respond to app shortcuts from the app icon."
+ms.date: 08/02/2021
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials", "AppDelegate.cs", "AppActions"]
 ---
 
-# Xamarin.Essentials: App Actions
+# App Actions
 
-The **AppActions** class lets you create and respond to app shortcuts from the app icon.
+The <xref:Microsoft.Maui.Essentials.AppActions> class lets you create and respond to app shortcuts from the app icon. App shortcuts are helpful to users because they allow you, as the app developer, to present them with additional ways of starting your app. For example, if you were developing an email and calendar app, you could present two different app actions, one to open the app directly to the current day of the calendar, and another to open to the email inbox folder.
 
 ## Get started
 
 [!INCLUDE [get-started](includes/get-started.md)]
 
-To access the **AppActions** functionality the following platform specific setup is required.
+To access the `AppActions` functionality the following platform specific setup is required.
 
 # [Android](#tab/android)
 
 Add the intent filter to your `MainActivity` class:
 
 ```csharp
-[IntentFilter(
-        new[] { Xamarin.Essentials.Platform.Intent.ActionAppAction },
-        Categories = new[] { Android.Content.Intent.CategoryDefault })]
-public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+[IntentFilter(new[] { Microsoft.Maui.Essentials.Platform.Intent.ActionAppAction },
+              Categories = new[] { Android.Content.Intent.CategoryDefault })]
+[Activity(Theme = "@style/Maui.SplashTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
+public class MainActivity : MauiAppCompatActivity
 {
     ...
+}
 ```
 
 Then add the following logic to handle actions:
@@ -37,24 +36,24 @@ protected override void OnResume()
 {
     base.OnResume();
 
-    Xamarin.Essentials.Platform.OnResume(this);
+    Microsoft.Maui.Essentials.Essentials.Platform.OnResume(this);
 }
 
 protected override void OnNewIntent(Android.Content.Intent intent)
 {
     base.OnNewIntent(intent);
 
-    Xamarin.Essentials.Platform.OnNewIntent(intent);
+    Microsoft.Maui.Essentials.Platform.OnNewIntent(intent);
 }
 ```
 
 # [iOS](#tab/ios)
 
-In the `AppDelegate.cs` add the following logic to handle actions:
+In the _AppDelegate.cs_ add the following logic to handle actions:
 
 ```csharp
 public override void PerformActionForShortcutItem(UIApplication application, UIApplicationShortcutItem shortcutItem, UIOperationHandler completionHandler)
-    => Xamarin.Essentials.Platform.PerformActionForShortcutItem(application, shortcutItem, completionHandler);
+    => Microsoft.Maui.Essentials.Platform.PerformActionForShortcutItem(application, shortcutItem, completionHandler);
 ```
 
 # [UWP](#tab/uwp)
@@ -62,20 +61,25 @@ public override void PerformActionForShortcutItem(UIApplication application, UIA
 In the `App.xaml.cs` file in the `OnLaunched` method add the following logic at the bottom of the method:
 
 ```csharp
-Xamarin.Essentials.Platform.OnLaunched(e);
+protected override void OnLaunched(LaunchActivatedEventArgs args)
+{
+    // ... other code
+
+    Microsoft.Maui.Essentials.Platform.OnLaunched(args);
+}
 ```
 
 -----
 
-## Create Actions
+## Create actions
 
-Add a reference to Xamarin.Essentials in your class:
+Add a reference to the `Microsoft.Maui.Essentials` namespace in your class:
 
 ```csharp
-using Xamarin.Essentials;
+using Microsoft.Maui.Essentials;
 ```
-App Actions can be created at any time, but are often created when an application starts. Call the `SetAsync` method to create the list of actions for your app.
 
+App Actions can be created at any time, but are often created when an application starts. Call the `SetAsync` method to create the list of actions for your app.
 
 ```csharp
 try
@@ -90,18 +94,18 @@ catch (FeatureNotSupportedException ex)
 }
 ```
 
-If App Actions are not supported on the specific version of the operating system a `FeatureNotSupportedException` will be thrown. 
+If App Actions aren't supported on the specific version of the operating system a `FeatureNotSupportedException` will be thrown.
 
 The following properties can be set on an `AppAction`:
 
-* Id: A unique identifier used to respond to the action tap.
-* Title: the visible title to display.
-* Subtitle: If supported a sub-title to display under the title.
-* Icon: Must match icons in the corresponding resources directory on each platform.
+- **Id**: A unique identifier used to respond to the action tap.
+- **Title**: the visible title to display.
+- **Subtitle**: If supported a sub-title to display under the title.
+- **Icon**: Must match icons in the corresponding resources directory on each platform.
 
-![App Actions on Homescreen.](images/appactions.png)
+:::image type="content" source="images/appactions.png" alt-text="App actions on home screen":::
 
-## Responding To Actions
+## Responding to actions
 
 When your application starts register for the `OnAppAction` event. When an app action is selected the event will be sent with information as to which action was selected.
 
@@ -129,13 +133,10 @@ void AppActions_OnAppAction(object sender, AppActionEventArgs e)
 ```
 
 ## GetActions
+
 You can get the current list of App Actions by calling `AppActions.GetAsync()`.
 
 ## API
 
-- [AppActions source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/AppActions)
-- [AppActions API documentation](xref:Xamarin.Essentials.AppActions)
-
-## Related Video
-
-> [!Video https://channel9.msdn.com/Shows/XamarinShow/App-Actions-XamarinEssentials-API-of-the-Week/player]
+- [AppActions source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/AppActions)
+- [AppActions API documentation](xref:Microsft.Maui.Essentials.AppActions)
