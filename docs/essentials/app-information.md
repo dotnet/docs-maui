@@ -1,14 +1,11 @@
 ---
-title: "Xamarin.Essentials: App Information"
-description: "This document describes the AppInfo class in Xamarin.Essentials, which provides information about your application. For example, it exposes the app name and version."
-author: jamesmontemagno
-ms.author: jamont
-ms.date: 01/29/2019
-ms.custom: video
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+title: "Essentials: App Information"
+description: "Describes the AppInfo class in Microsoft.Maui.Essentials, which provides information about your application. For example, it exposes the app name and version."
+ms.date: 08/04/2021
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
-# Xamarin.Essentials: App Information
+# App Information
 
 The **AppInfo** class provides information about your application.
 
@@ -18,13 +15,9 @@ The **AppInfo** class provides information about your application.
 
 ## Using AppInfo
 
-Add a reference to Xamarin.Essentials in your class:
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
-```csharp
-using Xamarin.Essentials;
-```
-
-## Obtaining Application Information:
+## Read the app information
 
 The following information is exposed through the API:
 
@@ -42,7 +35,7 @@ var version = AppInfo.VersionString;
 var build = AppInfo.BuildString;
 ```
 
-## Displaying Application Settings
+## Display app settings
 
 The **AppInfo** class can also display a page of settings maintained by the operating system for the application:
 
@@ -53,7 +46,11 @@ AppInfo.ShowSettingsUI();
 
 This settings page allows the user to change application permissions and perform other platform-specific tasks.
 
-## Platform Implementation Specifics
+## Platform specifics
+
+This section describes platform-specific implementation details related to the `AppInfo` type.
+
+<!-- markdownlint-disable MD025 -->
 
 # [Android](#tab/android)
 
@@ -73,7 +70,7 @@ App information is taken from the `Info.plist` for the following fields:
 - **PackageName**: `CFBundleIdentifier`
 - **VersionString** – `CFBundleShortVersionString`
 
-# [UWP](#tab/uwp)
+# [Windows](#tab/windows)
 
 App information is taken from the `Package.appxmanifest` for the following fields:
 
@@ -84,7 +81,9 @@ App information is taken from the `Package.appxmanifest` for the following field
 
 --------------
 
+<!-- markdownlint-enable MD025 -->
+
 ## API
 
-- [AppInfo source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/AppInfo)
-- [AppInfo API documentation](xref:Xamarin.Essentials.AppInfo)
+- [AppInfo source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/AppInfo)
+<!-- - [AppInfo API documentation](xref:Microsoft.Maui.Essentials.AppInfo)-->

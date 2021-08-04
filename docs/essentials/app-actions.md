@@ -76,11 +76,7 @@ protected override void OnLaunched(LaunchActivatedEventArgs args)
 
 ## Create actions
 
-Add a reference to the `Microsoft.Maui.Essentials` namespace in your class:
-
-```csharp
-using Microsoft.Maui.Essentials;
-```
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
 App Actions can be created at any time, but are often created when an application starts. Call the `SetAsync` method to create the list of actions for your app.
 
