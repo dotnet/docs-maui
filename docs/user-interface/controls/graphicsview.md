@@ -14,7 +14,7 @@ The .NET Multi-platform App UI (MAUI) `GraphicsView` is a graphics canvas on whi
 
 ## Create a GraphicsView
 
-A `GraphicsView` must define an `IDrawable` object that defines the content that will be drawn on the control. This can be achieved by creating an object that derives from `IDrawable`, and by implementing its `Draw` method:
+A `GraphicsView` must define an `IDrawable` object that specifies the content that will be drawn on the control. This can be achieved by creating an object that derives from `IDrawable`, and by implementing its `Draw` method:
 
 ```csharp
 using Microsoft.Maui.Graphics;
@@ -31,9 +31,9 @@ namespace MyMauiApp
 }
 ```
 
-The `Draw` method has `ICanvas` and `RectangleF` arguments. The `ICanvas` argument is the drawing canvas on which you can draw graphical objects. The `RectangleF` argument is a `struct` that contains data about the size and location of the drawing canvas. For information about drawing on an `ICanvas`, see [.NET MAUI Graphics: Draw objects](~/user-interface/graphics/draw.md).
+The `Draw` method has `ICanvas` and `RectangleF` arguments. The `ICanvas` argument is the drawing canvas on which you draw graphical objects. The `RectangleF` argument is a `struct` that contains data about the size and location of the drawing canvas. For more information about drawing on an `ICanvas`, see [.NET MAUI Graphics: Draw objects](~/user-interface/graphics/draw.md).
 
-The `IDrawable` object can be consumed by the `GraphicsView` by declaring it as a resource, and consuming it using its key:
+The `IDrawable` object should be declared as a resource, and then consumed by the `GraphicsView` by specifying its key:
 
 ```xaml
 <ContentPage xmlns=http://schemas.microsoft.com/dotnet/2021/maui
@@ -74,9 +74,9 @@ These properties can be used to position and size graphical objects on the `ICan
 
 ## Convert the drawable to an image
 
-The graphical objects that are drawn on a `GraphicsView` can be converted to an image by the `ToImage` method, which is available in the `Microsoft.Maui.Graphics` namespace. This method requires `width` and `height` `float` arguments, that specify the dimensions of the image.
+The graphical objects that are drawn on a `GraphicsView` can be converted to an image by the `ToImage` method, which is available in the `Microsoft.Maui.Graphics` namespace. This method requires `width` and `height` arguments, of type `float`, that specify the dimensions of the image.
 
-The `ToImage` method runs on an `IDrawable` object, which is exposed by the `GraphicsView.Drawable` property. Therefore, to call the `ToImage` method on a `GraphicsView`, the `GraphicsView` must be named with the `x:Name` attribute:
+The `ToImage` method operates on an `IDrawable` object, which is exposed by the `GraphicsView.Drawable` property. Therefore, to call the `ToImage` method on a `GraphicsView`, the `GraphicsView` must be named with the `x:Name` attribute:
 
 ```xaml
 <GraphicsView x:Name="graphicsDrawable"
@@ -89,7 +89,7 @@ In code, the `Drawable` property of the `GraphicsView` object can then be access
 
 ```csharp
 using Microsoft.Maui.Graphics;
-
+...
 IImage image = graphicsDrawable.Drawable.ToImage(400, 500);
 ```
 

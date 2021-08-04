@@ -8,7 +8,7 @@ ms.date: 07/28/2021
 
 <!-- Sample link goes here -->
 
-The .NET Multi-platform App UI (MAUI) 2D graphics library, in the `Microsoft.Maui.Graphics` namespace, enables you to draw graphical objects on a drawing canvas. This library defines the drawing canvas as an `ICanvas` object.
+The .NET Multi-platform App UI (MAUI) graphics library, in the `Microsoft.Maui.Graphics` namespace, enables you to draw graphical objects on a canvas. This library defines the drawing canvas as an `ICanvas` object.
 
 The .NET MAUI `GraphicsView` control provides access to an `ICanvas` object, on which properties can be set and methods invoked to draw graphical objects. For more information about the `GraphicsView`, see [.NET MAUI GraphicsView](~/user-interface/controls/graphicsview.md).
 
@@ -51,7 +51,7 @@ For more information about dashed lines, see [Draw dashed objects](#draw-dashed-
 
 ## Draw an ellipse
 
-Ellipses and circles can be drawn on an `ICanvas` using the `DrawEllipse` method, which requires `x`, `y`, `width`, and `height` arguments.
+Ellipses and circles can be drawn on an `ICanvas` using the `DrawEllipse` method, which requires `x`, `y`, `width`, and `height` arguments, of type `float`.
 
 The following example shows how to draw an ellipse:
 
@@ -82,7 +82,7 @@ In this example, a red circle with dimensions 150x150 is drawn at (200,50):
 
 For information about drawing a dashed ellipse, see [Draw dashed objects](#draw-dashed-objects).
 
-A filled ellipse can be drawn with the `FillEllipse` method, which also requires `x`, `y`, `width`, and `height` arguments:
+A filled ellipse can be drawn with the `FillEllipse` method, which also requires `x`, `y`, `width`, and `height` arguments, of type `float`:
 
 ```csharp
 canvas.FillColor = Colors.Red;
@@ -95,14 +95,14 @@ In this example, a red filled ellipse with dimensions 150x50 is drawn at (200,50
 
 The `FillColor` property of the `ICanvas` object must be set to a `Color` before invoking the `FillEllipse` method.
 
+Filled circles can also be drawn with the `FillCircle` method.
+
 > [!NOTE]
 > There are `DrawEllipse` and `FillEllipse` overloads that take `Rectangle` and `RectangleF` arguments. In addition, there are also `DrawCircle` and `FillCircle` overloads.
 
-Filled circles can also be drawn with the `FillCircle` method.
-
 ## Draw a rectangle
 
-Rectangles and squares can be drawn on an `ICanvas` using the `DrawRectangle` method, which requires `x`, `y`, `width`, and `height` arguments.
+Rectangles and squares can be drawn on an `ICanvas` using the `DrawRectangle` method, which requires `x`, `y`, `width`, and `height` arguments, of type `float`.
 
 The following example shows how to draw a rectangle:
 
@@ -130,7 +130,7 @@ In this example, a dark blue square with dimensions 100x100 is drawn at (50,100)
 
 For information about drawing a dashed rectangle, see [Draw dashed objects](#draw-dashed-objects).
 
-A filled rectangle can be drawn with the `FillRectangle` method, which also requires `x`, `y`, `width`, and `height` arguments:
+A filled rectangle can be drawn with the `FillRectangle` method, which also requires `x`, `y`, `width`, and `height` arguments, of type `float`:
 
 ```csharp
 canvas.FillColor = Colors.DarkBlue;
@@ -148,7 +148,7 @@ The `FillColor` property of the `ICanvas` object must be set to a `Color` before
 
 ## Draw a rounded rectangle
 
-Rounded rectangles and squares can be drawn on an `ICanvas` using the `DrawRoundedRectangle` method, which requires `x`, `y`, `width`, `height`, and `cornerRadius` arguments. The `cornerRadius` argument specifies the radius used to round the corners of the rectangle.
+Rounded rectangles and squares can be drawn on an `ICanvas` using the `DrawRoundedRectangle` method, which requires `x`, `y`, `width`, `height`, and `cornerRadius` arguments, of type `float`. The `cornerRadius` argument specifies the radius used to round the corners of the rectangle.
 
 The following example shows how to draw a rounded rectangle:
 
@@ -164,7 +164,7 @@ In this example, a green rectangle with rounded corners and dimensions 100x50 is
 
 For information about drawing a dashed rounded rectangle, see [Draw dashed objects](#draw-dashed-objects).
 
-A filled rounded rectangle can be drawn with the `FillRoundedRectangle` method, which also requires requires `x`, `y`, `width`, `height`, and `cornerRadius` arguments.
+A filled rounded rectangle can be drawn with the `FillRoundedRectangle` method, which also requires requires `x`, `y`, `width`, `height`, and `cornerRadius` arguments, of type `float`:
 
 ```csharp
 canvas.FillColor = Colors.Green;
@@ -182,7 +182,7 @@ The `FillColor` property of the `ICanvas` object must be set to a `Color` before
 
 ## Draw an arc
 
-Arcs can be drawn on an `ICanvas` using the `DrawArc` method, which requires `x`, `y`, `width`, `height`, `startAngle`, `endAngle`, `clockwise`, and `closed` arguments. The `startAngle` argument specifies the angle from the x-axis to the starting point of the arc. The `endAngle` argument specifies the angle from from the x-axis to the end point of the arc. The `clockwise` argument specifies the direction in which the arc is drawn, and the `closed` argument specifies whether the end point of the arc will be connected to the start point.
+Arcs can be drawn on an `ICanvas` using the `DrawArc` method, which requires `x`, `y`, `width`, `height`, `startAngle`, and `endAngle` arguments of type `float`, and `clockwise` and `closed` arguments of type `bool`. The `startAngle` argument specifies the angle from the x-axis to the starting point of the arc. The `endAngle` argument specifies the angle from from the x-axis to the end point of the arc. The `clockwise` argument specifies the direction in which the arc is drawn, and the `closed` argument specifies whether the end point of the arc will be connected to the start point.
 
 The following example shows how to draw an arc:
 
@@ -198,7 +198,7 @@ In this example, a teal arc of dimensions 100x100 is drawn at (50,50). The arc i
 
 For information about drawing a dashed arc, see [Draw dashed objects](#draw-dashed-objects).
 
-A filled arc can be drawn with the `FillArc` method, which requires `x`, `y`, `width`, `height`, `startAngle`, `endAngle`, and `clockwise` arguments:
+A filled arc can be drawn with the `FillArc` method, which requires `x`, `y`, `width`, `height`, `startAngle`, and `endAngle` arguments of type `float`, and a `clockwise` argument of type `bool`:
 
 ```csharp
 canvas.FillColor = Colors.Teal;
@@ -277,7 +277,7 @@ The `FillColor` property of the `ICanvas` object must be set to a `Color` before
 
 ## Draw an image
 
-Images can be drawn on an `ICanvas` using the `DrawImage` method, which requires `IImage`, `x`, `y`, `width`, and `height` arguments.
+Images can be drawn on an `ICanvas` using the `DrawImage` method, which requires an `IImage` argument, and `x`, `y`, `width`, and `height` arguments, of type `float`.
 
 The following example shows how to load an image and draw it to the canvas:
 
@@ -295,16 +295,16 @@ if (image != null)
 }
 ```
 
-In this example, the image is retrieved from the assembly and loaded as a stream. It's then drawn at actual size at (50,50):
+In this example, an image is retrieved from the assembly and loaded as a stream. It's then drawn at actual size at (50,50):
 
 :::image type="content" source="draw-images/image.png" alt-text="Screenshot of an image.":::
 
-> [!NOTE]
+> [!IMPORTANT]
 > Loading an image that's embedded in an assembly requires the image to have its build action set to **Embedded Resource**.
 
 ## Draw a string
 
-Strings can be drawn on an `ICanvas` using one of the `DrawString` overloads. The appearance of each string can be defined by setting the `FontName`, `FontColor`, and `FontSize` properties. String alignment can be defined by specifying horizontal and vertical alignment options that perform alignment within the string's bounding box.
+Strings can be drawn on an `ICanvas` using one of the `DrawString` overloads. The appearance of each string can be defined by setting the `FontName`, `FontColor`, and `FontSize` properties. String alignment can be specified by horizontal and vertical alignment options that perform alignment within the string's bounding box.
 
 > [!NOTE]
 > The bounding box for a string is defined by its `x`, `y`, `width`, and `height` arguments.
@@ -340,11 +340,14 @@ For information about drawing shadows, see [Draw a shadow](#draw-a-shadow).
 
 ## Draw attributed text
 
-Attributed text can be drawn on an `ICanvas` using the `DrawText` method, which requires `IAttributedText`, `x`, `y`, `width`, and `height` arguments. Attributed text is a string with associated attributes for parts of its text, that typically represents styling data.
+Attributed text can be drawn on an `ICanvas` using the `DrawText` method, which requires an `IAttributedText` argument, and `x`, `y`, `width`, and `height` arguments, of type `float`. Attributed text is a string with associated attributes for parts of its text, that typically represents styling data.
 
-The following example shows how to display attributed text:
+The following example shows how to draw attributed text:
 
 ```csharp
+using Microsoft.Maui.Graphics.Text;
+...
+
 canvas.FontName = "Arial";
 canvas.FontSize = 18;
 canvas.FontColor = Colors.Blue;
@@ -382,18 +385,18 @@ In this example, the stroke and fill colors for a `PathF` object are specified. 
 
 :::image type="content" source="draw-images/circle-outlined.png" alt-text="Screenshot of a circle drawn with fill and stroke.":::
 
-> [!IMPORTANT]
+> [!WARNING]
 > Calling a draw method before a fill method will result in an incorrect z-order. The fill will be drawn over the stroke, and the stroke won't be visible.
 
 ## Draw a shadow
 
-Objects drawn on an `ICanvas` can have a shadow applied using the `SetShadow` method, which takes the following arguments:
+Graphical objects drawn on an `ICanvas` can have a shadow applied using the `SetShadow` method, which takes the following arguments:
 
 - `offset`, of type `SizeF`, specifies an offset for the shadow, which represents the position of a light source that creates the shadow.
 - `blur`, of type `float`, represents the amount of blur to apply to the shadow.
 - `color`, of type `Color`, defines the color of the shadow.
 
-The following examples show how to add shadows to objects:
+The following examples show how to add shadows to filled objects:
 
 ```csharp
 canvas.FillColor = Colors.Red;
@@ -409,13 +412,13 @@ canvas.SetShadow(new SizeF(-10, 10), 4, Colors.Grey);
 canvas.FillRoundedRectangle(300, 50, 90, 100, 25);
 ```
 
-In these examples, shadows whose light sources are in identical sources are added to different objects, with differing amounts of blur:
+In these examples, shadows whose light sources are in different positions are added to the filled objects, with identical amounts of blur:
 
 :::image type="content" source="draw-images/shadow.png" alt-text="Screenshot of a objects drawn with shadows.":::
 
 ## Draw dashed objects
 
-`ICanvas` objects have a `StrokeDashPattern` property, of type `float[]`. This property is an array of `float` values that indicate the pattern of dashes and gaps that are to be used when during an object. Each `float` in the array specifies the length of a dash or gap. The first item in the array specifies the length of a dash, while the second item in the array specifies the length of a gap. Therefore, `float` values with an even index value specify dashes, while `float` values with an odd index value specify gaps.
+`ICanvas` objects have a `StrokeDashPattern` property, of type `float[]`. This property is an array of `float` values that indicate the pattern of dashes and gaps that are to be used when drawing the stroke for an object. Each `float` in the array specifies the length of a dash or gap. The first item in the array specifies the length of a dash, while the second item in the array specifies the length of a gap. Therefore, `float` values with an even index value specify dashes, while `float` values with an odd index value specify gaps.
 
 The following example shows how to draw a dashed square, using a regular dash::
 
@@ -445,9 +448,9 @@ In this example, a square with an irregular dashed stroke is drawn:
 
 ## Control line ends
 
-A line has three parts: start cap, line body, and end cap. The start and end caps describe the shape at the start and end of a line.
+A line has three parts: start cap, line body, and end cap. The start and end caps describe the start and end of a line.
 
-`ICanvas` objects have a `StrokeLineCap` property, of type `LineCap`, that describes the shape at the start and end of a line. The `LineCap` enumeration defines the following members:
+`ICanvas` objects have a `StrokeLineCap` property, of type `LineCap`, that describes the start and end of a line. The `LineCap` enumeration defines the following members:
 
 - `Butt`, which represents a line with a square end, drawn to extend to the exact endpoint of the line. This is the default value of the `StrokeLineCap` property.
 - `Round`, which represents a line with a rounded end.
@@ -498,7 +501,7 @@ In this example, the blue `PathF` object has rounded joins at its vertices:
 
 ## Clip objects
 
-Objects that are drawn to an `ICanvas` can be clipped prior to drawing, with the following methods:
+Graphical objects that are drawn to an `ICanvas` can be clipped prior to drawing, with the following methods:
 
 - `ClipPath` clips an object so that only the area that's within the region of a `PathF` object will be visible.
 - `ClipRectangle` clips an object so that only the area that's within the region of a rectangle will be visible. The rectangle can be specified using `float` arguments, or by a `Rectangle` or `RectangleF` argument.
@@ -547,6 +550,6 @@ if (image != null)
 }
 ```
 
-In this example, the area defined by the rectangle that's specified by the arguments supplied to the `SubtractFromClip` method is clipped from the image. The result is only the parts of the image outside the rectangle are visible:
+In this example, the area defined by the rectangle that's specified by the arguments supplied to the `SubtractFromClip` method is clipped from the image. The result is that only the parts of the image outside the rectangle are visible:
 
 :::image type="content" source="draw-images/subtractfromclip.png" alt-text="Screenshot of an image that's been clipped with the SubtractFromClip method.":::

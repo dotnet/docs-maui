@@ -8,7 +8,7 @@ ms.date: 07/30/2021
 
 <!-- Sample link goes here -->
 
-The .NET Multi-platform App UI (MAUI) library enables different compositing operations for graphical objects to be specified by the `ICanvas.BlendMode` property. This property determines what happens when a graphical object (called the *source*), is rendered on top of an existing graphical object (called the *destination*). By default, the last drawn object obscures the objects drawn underneath it:
+The .NET Multi-platform App UI (MAUI) graphics library enables different compositing operations for graphical objects to be specified by the `ICanvas.BlendMode` property. This property determines what happens when a graphical object (called the *source*), is rendered on top of an existing graphical object (called the *destination*). By default, the last drawn object obscures the objects drawn underneath it:
 
 :::image type="content" source="blendmodes-images/normal.png" alt-text="Screenshot of a three colored circles, using the normal blend mode.":::
 
@@ -31,13 +31,11 @@ The 28 members of the `BlendMode` enumeration can be divided into three categori
 | `Difference` |  | `PlusDarker` |
 | `Exclusion` |  | `PlusLighter` |
 
-The order that the members are listed in the table above is the same as in the `BlendMode` enumeration. The first column lists the 12 *separable* blend modes, while the second column lists the *non-separable* blend modes. Finally, the third column lists the *Porter-Duff** blend modes.
+The order that the members are listed in the table above is the same as in the `BlendMode` enumeration. The first column lists the 12 *separable* blend modes, while the second column lists the *non-separable* blend modes. Finally, the third column lists the *Porter-Duff* blend modes.
 
 ## Porter-Duff blend modes
 
-The Porter-Duff blend modes, named after Thomas Porter and Tom Duff, define 12 compositing operators that describe how to compute the color resulting from the composition of the source with the destination.
-
-The Porter-Duff blend modes can best be described by considering the case of drawing two rectangles that contain transparent areas:
+The Porter-Duff blend modes, named after Thomas Porter and Tom Duff, define 12 compositing operators that describe how to compute the color resulting from the composition of the source with the destination. These compositing operators can best be described by considering the case of drawing two rectangles that contain transparent areas:
 
 :::image type="content" source="blendmodes-images/porterduff-source-destination.png" alt-text="Screenshot of the two overlapping rectangles, using the DestinationOver blend mode.":::
 
@@ -63,7 +61,7 @@ The coloured destination and source rectangles effectively divide the display su
 
 The upper-right and lower-left rectangles are always blank because both the destination and source are transparent in those areas. The destination color occupies the upper-left area, so that area can either be colored with the destination color or not at all. Similarly, the source color occupies the lower-right area, so that area can be colored with the source color or not at all.
 
-The following table lists the Porter-Duff blend modes provided by `Microsoft.Maui.Graphics`, and how they color each of the three non-blank area in the diagram above:
+The following table lists the Porter-Duff blend modes provided by `Microsoft.Maui.Graphics`, and how they color each of the three non-blank areas in the diagram above:
 
 | Blend mode | Destination | Intersection | Source |
 | -- | -- | -- | -- |
@@ -80,8 +78,6 @@ The following table lists the Porter-Duff blend modes provided by `Microsoft.Mau
 | `PlusDarker` | X | Sum | X |
 | `PlusLighter` | X | Sum | X |
 
-These blend modes are symmetrical. The source and destination can be exchanged, and all the modes are still available.
-
 The naming convention of the modes follows a few simple rules:
 
 - The *Over* suffix indicates what is visible in the intersection. Either the source or destination is drawn over the other.
@@ -90,7 +86,9 @@ The naming convention of the modes follows a few simple rules:
 - The *Atop* suffix is the union of *In* and *Out*. It includes the area where the source or destination is atop of the other.
 
 > [!NOTE]
-> The `PlusLighter` blend mode sums the source and destination. Then, for values above 1, white is displayed. Similarly, the `PlusDarker` blend mode sums the source and destination, but subtracts 1 from the resulting values, with values below 0 becoming black.
+> These blend modes are symmetrical. The source and destination can be exchanged, and all the modes are still available.
+
+The `PlusLighter` blend mode sums the source and destination. Then, for values above 1, white is displayed. Similarly, the `PlusDarker` blend mode sums the source and destination, but subtracts 1 from the resulting values, with values below 0 becoming black.
 
 ## Separable blend modes
 
@@ -116,7 +114,7 @@ The following table shows the separable blend modes, with brief explanations of 
 > [!NOTE]
 > If the source is transparent, then the separable blend modes have no effect.
 
-The following example draws three overlapping circles of cyan, magenta, and yellow:
+The following example uses the `Multiply` blend mode to draw three overlapping circles of cyan, magenta, and yellow:
 
 ```csharp
 PointF center = new PointF(dirtyRect.Center.X, dirtyRect.Center.Y);
@@ -142,11 +140,9 @@ canvas.FillColor = Colors.Yellow;
 canvas.FillCircle(center3, radius);
 ```
 
-In this example, the `Multiply` blend mode is used to display the three subtractive primary colors:
+The result is that a combination of any two colors produces red, green, and blue, and a combination of all three colors produces black.
 
 :::image type="content" source="blendmodes-images/multiply.png" alt-text="Screenshot of a three colored circles, using the multiply blend mode.":::
-
-Combination of any two colors produces red, green, and blue, and a combination of all three colors produces black.
 
 ## Non-separable blend modes
 
