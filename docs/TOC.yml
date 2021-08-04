@@ -38,6 +38,8 @@
               href: user-interface/graphics/blendmodes.md
             - name: Draw objects
               href: user-interface/graphics/draw.md
+            - name: Images
+              href: user-interface/graphics/images.md
             - name: Paint objects
               items:
                 - name: Overview
