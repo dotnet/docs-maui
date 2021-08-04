@@ -7,7 +7,7 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials", "A", "G", "X", "Y", "Z"]
 
 # Accelerometer
 
-The <xref:xref:Microsoft.Maui.Essentials.Accelerometer> class lets you monitor the device's accelerometer sensor, which indicates the acceleration of the device in 3D space. The `Accelerometer` class is part of the .NET MAUI Essentials library that is included with the .NET MAUI Workload.
+The `Microsoft.Maui.Essentials.Accelerometer` class lets you monitor the device's accelerometer sensor, which indicates the acceleration of the device in 3D space.
 
 ## Get started
 
@@ -21,7 +21,7 @@ Add a reference to the `Microsoft.Maui.Essentials` namespace in your class:
 using Microsoft.Maui.Essentials;
 ```
 
-The accelerometer functionality works by calling the <xref:xref:Microsoft.Maui.Essentials.Accelerometer.Start%2A> and <xref:xref:Microsoft.Maui.Essentials.Accelerometer.Stop> methods to listen for changes to the acceleration. Any changes are sent back through the <xref:xref:Microsoft.Maui.Essentials.Accelerometer.ReadingChanged> event. Here's a sample of using the accelerometer:
+The accelerometer functionality works by calling the `Start` and `Stop` methods to listen for changes to the acceleration. Any changes are sent back through the `ReadingChanged` event. Here's a sample of using the accelerometer:
 
 ```csharp
 public class AccelerometerTest
@@ -82,4 +82,4 @@ Examples:
 ## API
 
 - [Accelerometer source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/Accelerometer)
-- [Accelerometer API documentation](xref:Microsoft.Maui.Essentials.Accelerometer)
+<!-- - [Accelerometer API documentation](xref:Microsoft.Maui.Essentials.Accelerometer)-->

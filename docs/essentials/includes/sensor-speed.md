@@ -2,7 +2,8 @@
 ms.topic: include
 ms.date: 08/02/2021
 ---
-## [Sensor Speed](xref:Microsoft.Maui.Essentials.SensorSpeed)
+
+## Sensor Speed
 
 - **Fastest** – Get the sensor data as fast as possible (not guaranteed to return on UI thread).
 - **Game** – Rate suitable for games (not guaranteed to return on UI thread).

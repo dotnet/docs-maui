@@ -7,13 +7,15 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials", "AppDelegate.cs", "AppAc
 
 # App Actions
 
-The <xref:Microsoft.Maui.Essentials.AppActions> class lets you create and respond to app shortcuts from the app icon. App shortcuts are helpful to users because they allow you, as the app developer, to present them with additional ways of starting your app. For example, if you were developing an email and calendar app, you could present two different app actions, one to open the app directly to the current day of the calendar, and another to open to the email inbox folder.
+The `Microsoft.Maui.Essentials.AppActions` class lets you create and respond to app shortcuts from the app icon. App shortcuts are helpful to users because they allow you, as the app developer, to present them with additional ways of starting your app. For example, if you were developing an email and calendar app, you could present two different app actions, one to open the app directly to the current day of the calendar, and another to open to the email inbox folder.
 
 ## Get started
 
 [!INCLUDE [get-started](includes/get-started.md)]
 
 To access the `AppActions` functionality the following platform specific setup is required.
+
+<!-- markdownlint-disable MD025 -->
 
 # [Android](#tab/android)
 
@@ -22,7 +24,6 @@ Add the intent filter to your `MainActivity` class:
 ```csharp
 [IntentFilter(new[] { Microsoft.Maui.Essentials.Platform.Intent.ActionAppAction },
               Categories = new[] { Android.Content.Intent.CategoryDefault })]
-[Activity(Theme = "@style/Maui.SplashTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
 public class MainActivity : MauiAppCompatActivity
 {
     ...
@@ -36,7 +37,7 @@ protected override void OnResume()
 {
     base.OnResume();
 
-    Microsoft.Maui.Essentials.Essentials.Platform.OnResume(this);
+    Microsoft.Maui.Essentials.Platform.OnResume(this);
 }
 
 protected override void OnNewIntent(Android.Content.Intent intent)
@@ -56,7 +57,7 @@ public override void PerformActionForShortcutItem(UIApplication application, UIA
     => Microsoft.Maui.Essentials.Platform.PerformActionForShortcutItem(application, shortcutItem, completionHandler);
 ```
 
-# [UWP](#tab/uwp)
+# [Windows](#tab/windows)
 
 In the `App.xaml.cs` file in the `OnLaunched` method add the following logic at the bottom of the method:
 
@@ -70,6 +71,8 @@ protected override void OnLaunched(LaunchActivatedEventArgs args)
 ```
 
 -----
+
+<!-- markdownlint-enable MD025 -->
 
 ## Create actions
 
@@ -103,7 +106,7 @@ The following properties can be set on an `AppAction`:
 - **Subtitle**: If supported a sub-title to display under the title.
 - **Icon**: Must match icons in the corresponding resources directory on each platform.
 
-:::image type="content" source="images/appactions.png" alt-text="App actions on home screen":::
+:::image type="content" source="images/appactions.png" alt-text="App actions on home screen.":::
 
 ## Responding to actions
 
@@ -139,4 +142,4 @@ You can get the current list of App Actions by calling `AppActions.GetAsync()`.
 ## API
 
 - [AppActions source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/AppActions)
-- [AppActions API documentation](xref:Microsft.Maui.Essentials.AppActions)
+<!-- - [AppActions API documentation](xref:Microsft.Maui.Essentials.AppActions) -->
