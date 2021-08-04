@@ -281,19 +281,19 @@ The following example shows how to load an image and draw it to the canvas:
 
 ```csharp
 IImage image;
-var assembly = GetType().GetTypeInfo().Assembly;
-using (var stream = assembly.GetManifestResourceStream("MyMauiApp.Resources.Images.dotnet_bot.png"))
+Assembly assembly = GetType().GetTypeInfo().Assembly;
+using (Stream stream = assembly.GetManifestResourceStream("MyMauiApp.Resources.Images.dotnet_bot.png"))
 {
     image = GraphicsPlatform.CurrentService.LoadImageFromStream(stream);
 }
 
 if (image != null)
 {
-    canvas.DrawImage(image, 40, 40, image.Width, image.Height);
+    canvas.DrawImage(image, 50, 50, image.Width, image.Height);
 }
 ```
 
-In this example, the image is retrieved from the assembly and loaded as a stream. It's then drawn at actual size at (40,40):
+In this example, the image is retrieved from the assembly and loaded as a stream. It's then drawn at actual size at (50,50):
 
 :::image type="content" source="draw-images/image.png" alt-text="Screenshot of an image.":::
 

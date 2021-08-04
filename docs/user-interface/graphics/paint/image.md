@@ -31,17 +31,14 @@ if (image != null)
 {
     ImagePaint imagePaint = new ImagePaint
     {
-        Image = image.Downsize(100) // Dispose the original image
+        Image = image.Downsize(100)
     };
     canvas.SetFillPaint(imagePaint, RectangleF.Zero);
     canvas.FillRectangle(0, 0, 265, 300);
 }
 ```
 
-In this example, the image is retrieved from the assembly and loaded as a stream. The image is resized using the `Downsize` method, with the argument specifying that its largest dimension should be set to 100 pixels.
-
-> [!IMPORTANT]
-> The `Downsize` method automatically disposes its source image. This can be disabled by passing `false` as its `dispose` argument.
+In this example, the image is retrieved from the assembly and loaded as a stream. The image is resized using the `Downsize` method, with the argument specifying that its largest dimension should be set to 100 pixels. For more information about downsizing an image, see [Downsize an image](~/user-interface/graphics/images.md#downsize-an-image).
 
 The `Image` property of the `ImagePaint` object is set to the downsized version of the image, and the `ImagePaint` object is set as the paint to fill an object with. A rectangle is then drawn that's filled with the paint:
 
