@@ -1,6 +1,6 @@
 ---
 title: ".NET MAUI Graphics: Blend modes"
-description: "The .NET MAUI 2D graphics library enables different compositing operations to be specified by the BlendMode property."
+description: "The .NET MAUI graphics library enables different compositing operations to be specified by the BlendMode property."
 ms.date: 07/30/2021
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: ".NET MAUI Graphics: Draw objects"
-description: "The .NET MAUI 2D graphics library enables you to draw objects on a drawing canvas."
+description: "The .NET MAUI graphics library enables you to draw objects on a drawing canvas."
 ms.date: 07/28/2021
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: ".NET MAUI Graphics: Winding modes"
-description: "The .NET MAUI 2D graphics library enables you to specify the fill algorithm when filling or clipping a path."
+description: "The .NET MAUI graphics library enables you to specify the fill algorithm when filling or clipping a path."
 ms.date: 07/28/2021
 ---
 
