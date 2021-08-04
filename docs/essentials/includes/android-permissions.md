@@ -1,29 +1,28 @@
 ---
 ms.topic: include
-author: jamesmontemagno
-ms.author: jamont
-ms.date: 05/11/2020
+ms.date: 08/04/2021
 ---
-This API uses runtime permissions on Android. Please ensure that Xamarin.Essentials is fully initialized and permission handling is setup in your app.
 
-In the Android project's `MainLauncher` or any `Activity` that is launched Xamarin.Essentials must be initialized in the `OnCreate` method:
+This API uses runtime permissions on Android. Please ensure that .NET MAUI Essentials is fully initialized and permission handling is setup in your app. For more information, see [Get Started with .NET MAUI Essentials](../get-started.md).
+
+In the Android project's `MainLauncher` or any `Activity` that is launched, .NET MAUI Essentials must be initialized in the `OnCreate` method:
 
 ```csharp
 protected override void OnCreate(Bundle savedInstanceState) 
 {
     //...
     base.OnCreate(savedInstanceState);
-    Xamarin.Essentials.Platform.Init(this, savedInstanceState); // add this line to your code, it may also be called: bundle
+    Microsoft.Maui.Essentials.Platform.Init(this, savedInstanceState); // add this line to your code, it may also be called: bundle
     //...
 }    
 ```
 
-To handle runtime permissions on Android, Xamarin.Essentials must receive any `OnRequestPermissionsResult`. Add the following code to all `Activity` classes:
+To handle runtime permissions on Android, .NET MAUI Essentials must receive any `OnRequestPermissionsResult`. Add the following code to all `Activity` classes:
 
 ```csharp
 public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Android.Content.PM.Permission[] grantResults)
 {
-    Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+    Microsoft.Maui.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
     base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 }
