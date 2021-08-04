@@ -265,9 +265,3 @@ On UWP, altitude is returned in meters. See the [AltitudeReferenceSystem](/uwp/a
 
 - [Geolocation source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Geolocation)
 - [Geolocation API documentation](xref:Xamarin.Essentials.Geolocation)
-
-## Related Video
-
-> [!Video https://channel9.msdn.com/Shows/XamarinShow/Geolocation-XamarinEssentials-API-of-the-Week/player]
-
-[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

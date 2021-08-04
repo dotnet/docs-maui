@@ -76,9 +76,3 @@ All version information is stored using the [Preferences](preferences.md) API in
 
 - [Version Tracking source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/VersionTracking)
 - [Version Tracking API documentation](xref:Xamarin.Essentials.VersionTracking)
-
-## Related Video
-
-> [!Video https://channel9.msdn.com/Shows/XamarinShow/Version-Tracking-XamarinEssentials-API-of-the-Week/player]
-
-[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

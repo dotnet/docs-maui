@@ -138,9 +138,3 @@ await Share.RequestAsync(new ShareMultipleFilesRequest
 
 - [Share source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Share)
 - [Share API documentation](xref:Xamarin.Essentials.Share)
-
-## Related Video
-
-> [!Video https://channel9.msdn.com/Shows/XamarinShow/Share-Essential-API-of-the-Week/player]
-
-[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

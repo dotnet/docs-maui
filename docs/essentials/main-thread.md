@@ -111,9 +111,3 @@ The `MainThread` class includes the following additional `static` methods that c
 
 - [MainThread source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/MainThread)
 - [MainThread API documentation](xref:Xamarin.Essentials.MainThread)
-
-## Related Video
-
-> [!Video https://channel9.msdn.com/Shows/XamarinShow/Main-Thread-XamarinEssentials-API-of-the-Week/player]
-
-[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

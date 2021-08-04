@@ -79,9 +79,3 @@ The `ToSystemColor` method applies to Android.Graphics.Color, UIKit.UIColor, and
 - [Color Converters API documentation](xref:Xamarin.Essentials.ColorConverters)
 - [Color Extensions source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Types/ColorConverters.shared.cs)
 - [Color Extensions API documentation](xref:Xamarin.Essentials.ColorExtensions)
-
-## Related Video
-
-> [!Video https://channel9.msdn.com/Shows/XamarinShow/Color-Converters-XamarinEssentials-API-of-the-Week/player]
-
-[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

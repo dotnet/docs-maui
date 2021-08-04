@@ -266,10 +266,3 @@ Read more on the [App Capability Declaration](/windows/uwp/packaging/app-capabil
 
 - [Permissions source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Permissions)
 - [Permissions API documentation](xref:Xamarin.Essentials.Permissions)
-
-
-## Related Video
-
-> [!Video https://channel9.msdn.com/Shows/XamarinShow/Permissions-XamarinEssentials-API-of-the-Week/player]
-
-[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

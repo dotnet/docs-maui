@@ -66,9 +66,3 @@ Here is a list of available conversions:
 
 - [Unit Converters source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Types/UnitConverters.shared.cs)
 - [Unit Converters API documentation](xref:Xamarin.Essentials.UnitConverters)
-
-## Related Video
-
-> [!Video https://channel9.msdn.com/Shows/XamarinShow/Unit-Conversion-XamarinEssentials-API-of-the-Week/player]
-
-[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

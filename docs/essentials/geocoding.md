@@ -120,9 +120,3 @@ The [`Location`](xref:Xamarin.Essentials.Location) and [`LocationExtensions`](xr
 
 - [Geocoding source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Geocoding)
 - [Geocoding API documentation](xref:Xamarin.Essentials.Geocoding)
-
-## Related Video
-
-> [!Video https://channel9.msdn.com/Shows/XamarinShow/Geocoding-XamarinEssentials-API-of-the-Week/player]
-
-[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]
