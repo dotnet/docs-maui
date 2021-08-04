@@ -6,6 +6,8 @@ ms.date: 07/22/2021
 
 # .NET MAUI Graphics: Pattern paint
 
+<!-- Sample link goes here -->
+
 The .NET Multi-platform App UI (MAUI) `PatternPaint` class derives from the `Paint` class, and is used to paint an area with a pattern.
 
 The `PatternPaint` class defines a `Pattern` property, of type `IPattern`, which represents the pattern to paint. The class also has an `IsTransparent` property that returns a `bool` that represents whether the background or foreground color has an alpha value of less than 1.

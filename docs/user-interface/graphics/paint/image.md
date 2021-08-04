@@ -6,6 +6,8 @@ ms.date: 07/22/2021
 
 # .NET MAUI Graphics: Image paint
 
+<!-- Sample link goes here -->
+
 The .NET Multi-platform App UI (MAUI) `ImagePaint` class derives from the `Paint` class, and is used to paint an area with an image.
 
 The `ImagePaint` class defines an `Image` property, of type `IImage`, which represents the image to paint. The class also has an `IsTransparent` property that returns `false`.

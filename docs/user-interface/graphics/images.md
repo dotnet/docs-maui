@@ -6,6 +6,8 @@ ms.date: 08/03/2021
 
 # .NET MAUI Graphics: Images
 
+<!-- Sample link goes here -->
+
 The .NET Multi-platform App UI (MAUI) graphics library includes functionality to load, save, resize, and downsize images. Supported image formats are dependent on the underlying platform.
 
 Images are represented by the `IImage` type, which defines the following properties:

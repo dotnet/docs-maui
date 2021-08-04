@@ -6,6 +6,8 @@ ms.date: 07/15/2021
 
 # .NET MAUI Paint: Gradient paint
 
+<!-- Sample link goes here -->
+
 The .NET Multi-platform App UI (MAUI) `GradientPaint` class derives from the `Paint` class, and is an abstract base class that describes a gradient, which is composed of gradient steps. A `GradientPaint` paints an area with multiple colors that blend into each other along an axis. Classes that derive from `GradientPaint` describe different ways of interpreting gradients stops, and .NET MAUI provides the following gradient paints:
 
 - `LinearGradientPaint`, which paints an area with a linear gradient. For more information, see [.NET MAUI Graphics: Linear gradients](lineargradient.md).

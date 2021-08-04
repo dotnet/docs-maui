@@ -6,6 +6,8 @@ ms.date: 07/15/2021
 
 # .NET MAUI Graphics: Linear gradient paint
 
+<!-- Sample link goes here -->
+
 The `LinearGradientPaint` class derives from the `GradientPaint` class, and paints an area with a linear gradient, which blends two or more colors along a line known as the gradient axis. `GradientStop` objects are used to specify the colors in the gradient and their positions. For more information about `GradientStop` objects, see [.NET MAUI Paint: Gradients](gradient.md).
 
 The `LinearGradientPaint` class defines the following properties:

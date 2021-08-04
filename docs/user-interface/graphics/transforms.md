@@ -6,6 +6,8 @@ ms.date: 07/26/2021
 
 # .NET MAUI Graphics: Transforms
 
+<!-- Sample link goes here -->
+
 The .NET Multi-platform App UI (MAUI) 2D graphics library supports traditional graphics transforms, which are implement as methods of the `ICanvas` object. Mathematically, transforms alter the coordinates and sizes that you specify in `ICanvas` drawing methods as the graphical objects are rendered.
 
 `Microsoft.Maui.Graphics` supports the following transforms:

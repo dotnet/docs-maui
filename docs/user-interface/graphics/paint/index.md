@@ -6,6 +6,8 @@ ms.date: 07/15/2021
 
 # .NET MAUI Graphics: Paint objects
 
+<!-- Sample link goes here -->
+
 .NET Multi-platform App UI (MAUI) includes the ability to paint an area of objects drawn with types from the `Microsoft.Maui.Graphics`, using different approaches.
 
 The `Paint` class is an abstract class that paints an area with its output. Classes that derive from `Paint` describe different ways of painting an area. The following list describes the different paint types available in .NET MAUI:

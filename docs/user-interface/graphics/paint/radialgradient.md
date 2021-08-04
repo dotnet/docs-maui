@@ -6,6 +6,8 @@ ms.date: 07/15/2021
 
 # .NET MAUI Graphics: Radial gradient paint
 
+<!-- Sample link goes here -->
+
 The `RadialGradientPaint` class derives from the `GradientPaint` class, and paints an area with a radial gradient, which blends two or more colors across a circle. `GradientStop` objects are used to specify the colors in the gradient and their positions. For more information about `GradientStop` objects, see [.NET MAUI Paint: Gradients](gradient.md).
 
 The `RadialGradientPaint` class defines the following properties:
