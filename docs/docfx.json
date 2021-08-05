@@ -52,11 +52,7 @@
       "ms.technology": "dotnet-maui",
       "zone_pivot_group_filename": "maui/zone-pivot-groups.json"
     },
-    "fileMetadata": {
-      "titleSuffix" : {
-        "user-interface/graphics/**/**.md": ".NET MAUI Graphics"
-      }
-    },
+    "fileMetadata": {},
     "template": [],
     "dest": "docs-maui-public",
     "markdownEngineName": "markdig"
