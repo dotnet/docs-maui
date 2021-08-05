@@ -146,9 +146,3 @@ public async Task SpeakNow()
 
 - [TextToSpeech source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/TextToSpeech)
 - [TextToSpeech API documentation](xref:Xamarin.Essentials.TextToSpeech)
-
-## Related Video
-
-> [!Video https://channel9.msdn.com/Shows/XamarinShow/Text-to-Speech-XamarinEssentials-API-of-the-Week/player]
-
-[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

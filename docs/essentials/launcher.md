@@ -119,9 +119,3 @@ No platform differences.
 
 - [Launcher source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Launcher)
 - [Launcher API documentation](xref:Xamarin.Essentials.Launcher)
-
-## Related Video
-
-> [!Video https://channel9.msdn.com/Shows/XamarinShow/Launcher-XamarinEssentials-API-of-the-Week/player]
-
-[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

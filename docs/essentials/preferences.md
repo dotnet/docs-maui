@@ -112,9 +112,3 @@ When storing a string, this API is intended to store small amounts of text. Perf
 
 - [Preferences source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Preferences)
 - [Preferences API documentation](xref:Xamarin.Essentials.Preferences)
-
-## Related Video
-
-> [!Video https://channel9.msdn.com/Shows/XamarinShow/Preferences-Essential-API-of-the-Week/player]
-
-[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

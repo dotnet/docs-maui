@@ -70,9 +70,3 @@ You can read more on the [UWP Requested Theme Documentation](/uwp/api/windows.ui
 
 - [AppInfo source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/AppInfo)
 - [AppInfo API documentation](xref:Xamarin.Essentials.AppInfo)
-
-## Related Video
-
-> [!Video https://channel9.msdn.com/Shows/XamarinShow/Theme-Detection-XamarinEssentials-API-of-the-Week/player]
-
-[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

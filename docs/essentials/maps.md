@@ -153,9 +153,3 @@ No platform-specific implementation details.
 
 - [Map source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Map)
 - [Map API documentation](xref:Xamarin.Essentials.Map)
-
-## Related Video
-
-> [!Video https://channel9.msdn.com/Shows/XamarinShow/Maps-XamarinEssentials-API-of-the-Week/player]
-
-[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

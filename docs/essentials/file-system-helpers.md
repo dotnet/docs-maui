@@ -80,9 +80,3 @@ Add any file into the root in the UWP project and mark the Build Action as **Con
 
 - [File System Helpers source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/FileSystem)
 - [File System API documentation](xref:Xamarin.Essentials.FileSystem)
-
-## Related Video
-
-> [!Video https://channel9.msdn.com/Shows/XamarinShow/File-System-Helpers-XamarinEssentials-API-of-the-Week/player]
-
-[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

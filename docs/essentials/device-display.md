@@ -101,9 +101,3 @@ No differences.
 
 - [DeviceDisplay source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/DeviceDisplay)
 - [DeviceDisplay API documentation](xref:Xamarin.Essentials.DeviceDisplay)
-
-## Related Video
-
-> [!Video https://channel9.msdn.com/Shows/XamarinShow/Device-Display-Information-XamarinEssentials-API-of-the-Week/player]
-
-[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

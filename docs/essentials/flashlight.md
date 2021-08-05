@@ -120,9 +120,3 @@ A camera surface texture is created to turn on or off the `FlashMode` of the cam
 
 - [Flashlight source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Flashlight)
 - [Flashlight API documentation](xref:Xamarin.Essentials.Flashlight)
-
-## Related Video
-
-> [!Video https://channel9.msdn.com/Shows/XamarinShow/Flashlight-XamarinEssentials-API-of-the-Week/player]
-
-[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

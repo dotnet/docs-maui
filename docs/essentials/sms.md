@@ -103,9 +103,3 @@ public class SmsTest
 
 - [Sms source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Sms)
 - [Sms API documentation](xref:Xamarin.Essentials.Sms)
-
-## Related Video
-
-> [!Video https://channel9.msdn.com/Shows/XamarinShow/SMS-XamarinEssentials-API-of-the-Week/player]
-
-[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

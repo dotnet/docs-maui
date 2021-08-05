@@ -80,9 +80,3 @@ public class PhoneDialerTest
 
 - [Phone Dialer source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/PhoneDialer)
 - [Phone Dialer API documentation](xref:Xamarin.Essentials.PhoneDialer)
-
-## Related Video
-
-> [!Video https://channel9.msdn.com/Shows/XamarinShow/Phone-Dialer-XamarinEssentials-API-of-the-Week/player]
-
-[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

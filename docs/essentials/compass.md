@@ -94,9 +94,3 @@ This is only applied on the Android platform, and the parameter is ignored on iO
 
 - [Compass source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Compass)
 - [Compass API documentation](xref:Xamarin.Essentials.Compass)
-
-## Related Video
-
-> [!Video https://channel9.msdn.com/Shows/XamarinShow/Compass-XamarinEssentials-API-of-the-Week/player]
-
-[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]

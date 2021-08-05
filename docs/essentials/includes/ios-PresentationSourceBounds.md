@@ -1,41 +1,41 @@
 ---
 ms.topic: include
-author: jamont
-ms.author: jamont
-ms.date: 01/16/2020
+ms.date: 08/04/2021
 ---
 
-When requesting a share or opening launcher on iPadOS you have the ability to present in a pop over control. This specifies where the pop over will appear and point an arrow directly to. This location is often the control that launched the action. You can specify the location using the `PresentationSourceBounds` property:
+When requesting a share or opening launcher on iPadOS, you can present in a popover. This specifies where the pop over will appear and point an arrow directly to. This location is often the control that launched the action. You can specify the location using the `PresentationSourceBounds` property:
 
 ```csharp
 await Share.RequestAsync(new ShareFileRequest
-{
-    Title = Title,
-    File = new ShareFile(file),
-    PresentationSourceBounds = DeviceInfo.Platform== DevicePlatform.iOS && DeviceInfo.Idiom == DeviceIdiom.Tablet
-                            ? new System.Drawing.Rectangle(0, 20, 0, 0)
-                            : System.Drawing.Rectangle.Empty
-});
+    {
+        Title = Title,
+        File = new ShareFile(file),
+        PresentationSourceBounds = DeviceInfo.Platform== DevicePlatform.iOS && DeviceInfo.Idiom == DeviceIdiom.Tablet
+                                ? new System.Drawing.Rectangle(0, 20, 0, 0)
+                                : System.Drawing.Rectangle.Empty
+    });
 ```
 
 ```csharp
 await Launcher.OpenAsync(new OpenFileRequest
-{
-    File = new ReadOnlyFile(file),
-    PresentationSourceBounds = DeviceInfo.Platform== DevicePlatform.iOS && DeviceInfo.Idiom == DeviceIdiom.Tablet
-                            ? new System.Drawing.Rectangle(0, 20, 0, 0)
-                            : System.Drawing.Rectangle.Empty
-});
+    {
+        File = new ReadOnlyFile(file),
+        PresentationSourceBounds = DeviceInfo.Platform== DevicePlatform.iOS && DeviceInfo.Idiom == DeviceIdiom.Tablet
+                                ? new System.Drawing.Rectangle(0, 20, 0, 0)
+                                : System.Drawing.Rectangle.Empty
+    });
 ```
+
+<!-- TODO: Is this stuff Apple specific? It seems generic. I know the previous section is because it references iOS, but that's done in this code -->
 
 Everything described here works equally for `Share` and `Launcher`.
 
-If you are using Xamarin.Forms you are able to pass in a `View` and calculate the bounds:
+Here are some extension methods that help calculate the bounds of a view:
 
 ```csharp
 public static class ViewHelpers
 {
-    public static Rectangle GetAbsoluteBounds(this Xamarin.Forms.View element)
+    public static Rectangle GetAbsoluteBounds(this Microsoft.Maui.Controls.View element)
     {
         Element looper = element;
 
@@ -47,7 +47,7 @@ public static class ViewHelpers
         while (looper.Parent != null)
         {
             looper = looper.Parent;
-            if (looper is Xamarin.Forms.View v)
+            if (looper is Microsoft.Maui.Controls.View v)
             {
                 absoluteX += v.X + v.Margin.Top;
                 absoluteY += v.Y + v.Margin.Left;
@@ -64,9 +64,12 @@ public static class ViewHelpers
 
 This can then be used when calling `RequstAsync`:
 
+<!-- TODO: I don't think this code works. I can't resolve Share.RequestAsync and there is a type mismatch on bounds.ToSystemRectangle and what is Analytics for? Is that normal to put in these examples? odd -->
+
 ```csharp
-public Command<Xamarin.Forms.View> ShareCommand { get; } = new Command<Xamarin.Forms.View>(Share);
-async void Share(Xamarin.Forms.View element)
+public Command<Microsoft.Maui.Controls.View> ShareCommand { get; } = new Command<Microsoft.Maui.Controls.View>(Share);
+
+async void Share(Microsoft.Maui.Controls.View element)
 {
     try
     {

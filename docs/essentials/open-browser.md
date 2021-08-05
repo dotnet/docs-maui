@@ -129,9 +129,3 @@ The user's default browser will always be launched regardless of the `BrowserLau
 
 - [Browser source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Browser)
 - [Browser API documentation](xref:Xamarin.Essentials.Browser)
-
-## Related Video
-
-> [!Video https://channel9.msdn.com/Shows/XamarinShow/Open-Browser-XamarinEssentials-API-of-the-Week/player]
-
-[!INCLUDE [xamarin-show-essentials](includes/xamarin-show-essentials.md)]
