@@ -3,7 +3,7 @@ ms.topic: include
 ms.date: 08/04/2021
 ---
 
-When requesting a share or opening launcher on iPadOS, you can present in a popover. This specifies where the pop over will appear and point an arrow directly to. This location is often the control that launched the action. You can specify the location using the `PresentationSourceBounds` property:
+When requesting a share or opening launcher on iPadOS, you can present in a popover. This specifies where the popover will appear and point an arrow directly to. This location is often the control that launched the action. You can specify the location using the `PresentationSourceBounds` property:
 
 ```csharp
 await Share.RequestAsync(new ShareFileRequest
@@ -56,15 +56,10 @@ public static class ViewHelpers
 
         return new Rectangle(absoluteX, absoluteY, element.Width, element.Height);
     }
-
-    public static System.Drawing.Rectangle ToSystemRectangle(this Rectangle rect) =>
-        new System.Drawing.Rectangle((int)rect.X, (int)rect.Y, (int)rect.Width, (int)rect.Height);
 }
 ```
 
 This can then be used when calling `RequstAsync`:
-
-<!-- TODO: I don't think this code works. I can't resolve Share.RequestAsync and there is a type mismatch on bounds.ToSystemRectangle and what is Analytics for? Is that normal to put in these examples? odd -->
 
 ```csharp
 public Command<Microsoft.Maui.Controls.View> ShareCommand { get; } = new Command<Microsoft.Maui.Controls.View>(Share);
@@ -73,12 +68,9 @@ async void Share(Microsoft.Maui.Controls.View element)
 {
     try
     {
-        Analytics.TrackEvent("ShareWithFriends");
-        var bounds = element.GetAbsoluteBounds();
-
-        await Share.RequestAsync(new ShareTextRequest
+        await Microsoft.Maui.Essentials.Share.RequestAsync(new ShareTextRequest
         {
-            PresentationSourceBounds = bounds.ToSystemRectangle(),
+            PresentationSourceBounds = element.GetAbsoluteBounds(),
             Title = "Title",
             Text = "Text"
         });
@@ -97,3 +89,5 @@ You can pass in the calling element when the `Command` is triggered:
         Command="{Binding ShareWithFriendsCommand}"
         CommandParameter="{Binding Source={RelativeSource Self}}"/>
 ```
+
+For an example of the `ViewHelpers` class, see the [.NET MAUI Essentials Samples hosted on GitHub](https://github.com/dotnet/maui/blob/main/src/Essentials/samples/Samples/Helpers/ViewHelpers.cs).
