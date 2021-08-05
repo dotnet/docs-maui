@@ -69,7 +69,7 @@ Images can be resized using the `IImage.Resize` method, which requires `width` a
 - A `ResizeMode` argument, that controls how the image will be resized to fit its target dimensions.
 - A `bool` argument that controls whether the source image will be disposed after performing the resize operation. This argument defaults to `false`, indicating that the source image won't be disposed.
 
-The `ResizeMode` enumeration defines the following members, which specify how to resize the the image to the target size:
+The `ResizeMode` enumeration defines the following members, which specify how to resize the image to the target size:
 
 - `Fit`, which letterboxes the image so that it fits its target size.
 - `Bleed`, which clips the image so that it fits its target size, while preserving its aspect ratio.

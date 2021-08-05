@@ -55,7 +55,7 @@ The `Xor` blend mode causes nothing to appear where the two areas overlap:
 
 :::image type="content" source="blendmodes-images/porterduff-xor.png" alt-text="Screenshot of the two overlapping rectangles, using the Xor blend mode.":::
 
-The coloured destination and source rectangles effectively divide the display surface into four unique areas that can be colored in different ways, corresponding to the presence of the destination and source rectangles:
+The colored destination and source rectangles effectively divide the display surface into four unique areas that can be colored in different ways, corresponding to the presence of the destination and source rectangles:
 
 :::image type="content" source="blendmodes-images/porterduff.png" alt-text="Composition options with the Porter-Duff blend modes." border="false":::
 

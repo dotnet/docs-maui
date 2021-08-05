@@ -41,7 +41,7 @@ For examples of using different graphics abstractions, see [Microsoft.Maui.Graph
 
 In .NET MAUI, the `GraphicsView` enables consumption of the `Microsoft.Maui.Graphics` library, via a drawing canvas that's exposed as an `ICanvas` object. For more information about the `GraphicsView`, see [.NET MAUI GraphicsView](~/user-interface/controls/graphicsview.md).
 
-`ICanvas` defines the following properties, that effect the appearance of object's that are drawn on the canvas:
+`ICanvas` defines the following properties, that affect the appearance of object's that are drawn on the canvas:
 
 - `Alpha`, of type `float`, indicates the opacity of an object.
 - `Antialias`, of type `bool`, specifies whether anti-aliasing is enabled.

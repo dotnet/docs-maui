@@ -59,7 +59,7 @@ The center of the star is at (0,0), and the points of the star are on a circle s
 
 The scale transform changes the size of a graphical object, and can also often cause coordinates to move when a graphical object is made larger.
 
-The `Scale` method requires `x` and `y` arguments, of type `float`, that let you specify different values for horizontal and vertical scaling, otherwise known as *anisotropic* scaling. The values of `x` and `y` have a big impact on the resulting scaling:
+The `Scale` method requires `x` and `y` arguments, of type `float`, that let you specify different values for horizontal and vertical scaling, otherwise known as *anisotropic* scaling. The values of `x` and `y` have a significant impact on the resulting scaling:
 
 - Values between 0 and 1 decrease the width and height of the scaled object.
 - Values greater than 1 increase the width and height of the scaled object.

@@ -164,7 +164,7 @@ In this example, a green rectangle with rounded corners and dimensions 100x50 is
 
 For information about drawing a dashed rounded rectangle, see [Draw dashed objects](#draw-dashed-objects).
 
-A filled rounded rectangle can be drawn with the `FillRoundedRectangle` method, which also requires requires `x`, `y`, `width`, `height`, and `cornerRadius` arguments, of type `float`:
+A filled rounded rectangle can be drawn with the `FillRoundedRectangle` method, which also requires `x`, `y`, `width`, `height`, and `cornerRadius` arguments, of type `float`:
 
 ```csharp
 canvas.FillColor = Colors.Green;
@@ -182,7 +182,7 @@ The `FillColor` property of the `ICanvas` object must be set to a `Color` before
 
 ## Draw an arc
 
-Arcs can be drawn on an `ICanvas` using the `DrawArc` method, which requires `x`, `y`, `width`, `height`, `startAngle`, and `endAngle` arguments of type `float`, and `clockwise` and `closed` arguments of type `bool`. The `startAngle` argument specifies the angle from the x-axis to the starting point of the arc. The `endAngle` argument specifies the angle from from the x-axis to the end point of the arc. The `clockwise` argument specifies the direction in which the arc is drawn, and the `closed` argument specifies whether the end point of the arc will be connected to the start point.
+Arcs can be drawn on an `ICanvas` using the `DrawArc` method, which requires `x`, `y`, `width`, `height`, `startAngle`, and `endAngle` arguments of type `float`, and `clockwise` and `closed` arguments of type `bool`. The `startAngle` argument specifies the angle from the x-axis to the starting point of the arc. The `endAngle` argument specifies the angle from the x-axis to the end point of the arc. The `clockwise` argument specifies the direction in which the arc is drawn, and the `closed` argument specifies whether the end point of the arc will be connected to the start point.
 
 The following example shows how to draw an arc:
 
@@ -192,7 +192,7 @@ canvas.StrokeSize = 4;
 canvas.DrawArc(50, 50, 100, 100, 0, 180, true, false);
 ```
 
-In this example, a teal arc of dimensions 100x100 is drawn at (50,50). The arc is drawn in a clockwise direction from 0 to 180 degrees, and isn't closed:
+In this example, a teal arc of dimensions 100x100 is drawn at (50,50). The arc is drawn in a clockwise direction from 0 degrees to 180 degrees, and isn't closed:
 
 :::image type="content" source="draw-images/arc.png" alt-text="Screenshot of a teal arc.":::
 
@@ -205,7 +205,7 @@ canvas.FillColor = Colors.Teal;
 canvas.FillArc(50, 50, 100, 100, 0, 180, true);
 ```
 
-In this example, a filled teal arc of dimensions 100x100 is drawn at (50,50). The arc is drawn in a clockwise direction from 0 to 180 degrees, and is closed automatically:
+In this example, a filled teal arc of dimensions 100x100 is drawn at (50,50). The arc is drawn in a clockwise direction from 0 degrees to 180 degrees, and is closed automatically:
 
 :::image type="content" source="draw-images/filled-arc.png" alt-text="Screenshot of a filled teal arc.":::
 
@@ -227,7 +227,7 @@ A contour generally begins with a call to the `PathF.MoveTo` method, which you c
 - `CurveTo` to add a cubic Bezier spline.
 - `QuadTo` to add a quadratic Bezier spline.
 
-None of these methods contains all of the data necessary to describe the line or curve. Instead, each method works in conjunction with the current point established by the method call immediately preceding it. For example, the `LineTo` method adds a straight line to the contour based on the current point.
+None of these methods contain all of the data necessary to describe the line or curve. Instead, each method works with the current point established by the method call immediately preceding it. For example, the `LineTo` method adds a straight line to the contour based on the current point.
 
 A contour ends with another call to `MoveTo`, which begins a new contour, or a call to `Close`, which closes the contour. The `Close` method automatically appends a straight line from the current point to the first point of the contour, and marks the path as closed.
 
@@ -420,7 +420,7 @@ In these examples, shadows whose light sources are in different positions are ad
 
 `ICanvas` objects have a `StrokeDashPattern` property, of type `float[]`. This property is an array of `float` values that indicate the pattern of dashes and gaps that are to be used when drawing the stroke for an object. Each `float` in the array specifies the length of a dash or gap. The first item in the array specifies the length of a dash, while the second item in the array specifies the length of a gap. Therefore, `float` values with an even index value specify dashes, while `float` values with an odd index value specify gaps.
 
-The following example shows how to draw a dashed square, using a regular dash::
+The following example shows how to draw a dashed square, using a regular dash:
 
 ```csharp
 canvas.StrokeColor = Colors.Red;

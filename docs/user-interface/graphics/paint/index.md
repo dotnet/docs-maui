@@ -17,6 +17,6 @@ The `Paint` class is an abstract class that paints an object with its output. Cl
 - `ImagePaint`, which paints an object with an image. For more information, see [Image paint](image.md).
 - `PatternPaint`, which paints an object with a pattern. For more information, see [Pattern paint](pattern.md).
 
-Instances of these types can painted on an `ICanvas`, typically by using the `SetFillPaint` method to set the paint as the fill of a graphical object.
+Instances of these types can be painted on an `ICanvas`, typically by using the `SetFillPaint` method to set the paint as the fill of a graphical object.
 
 The `Paint` class also defines `BackgroundColor`, and `ForegroundColor` properties, of type `Color`, that can be used to optionally define background and foreground colors for a `Paint` object.
