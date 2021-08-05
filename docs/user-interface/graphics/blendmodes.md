@@ -37,7 +37,7 @@ The order that the members are listed in the table above is the same as in the `
 
 The Porter-Duff blend modes, named after Thomas Porter and Tom Duff, define 12 compositing operators that describe how to compute the color resulting from the composition of the source with the destination. These compositing operators can best be described by considering the case of drawing two rectangles that contain transparent areas:
 
-:::image type="content" source="blendmodes-images/porterduff-source-destination.png" alt-text="Screenshot of the two overlapping rectangles, using the DestinationOver blend mode.":::
+:::image type="content" source="blendmodes-images/porterduff-source-destination.png" alt-text="Screenshot of destination and source rectangles.":::
 
 In the image above, the destination is a transparent rectangle except for a brown area that occupies the left and top two-thirds of the display surface. The source is also a transparent rectangle except for a blue area that occupies the right and bottom two-thirds of the display surface. Displaying the source on the destination produces the following result:
 
