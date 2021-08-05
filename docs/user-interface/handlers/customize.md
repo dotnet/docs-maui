@@ -94,28 +94,28 @@ using Microsoft.Maui.Graphics;
 
 namespace MauiApp1
 {
-  	public partial class App : Application
-  	{
-  		public App()
-  		{
-          InitializeComponent();
+    public partial class App : Application
+    {
+        public App()
+        {
+            InitializeComponent();
 
-          Microsoft.Maui.Handlers.EntryHandler.EntryMapper[nameof(IView.Background)] = (handler, view) =>
-          {
-              if (view is MyEntry)
-              {
+            Microsoft.Maui.Handlers.EntryHandler.EntryMapper[nameof(IView.Background)] = (handler, view) =>
+            {
+                if (view is MyEntry)
+                {
 #if __ANDROID__
-                  handler.NativeView.SetBackgroundColor(Colors.Red.ToNative());
+                    handler.NativeView.SetBackgroundColor(Colors.Red.ToNative());
 #elif __IOS__
                   handler.NativeView.BackgroundColor = Colors.Red.ToNative();
                   handler.NativeView.BorderStyle = UIKit.UITextBorderStyle.Line;
 #elif WINDOWS
                   handler.NativeView.Background = Colors.Red.ToNative();
 #endif
-              }
-          };
-  		}
-  	}
+                }
+            };
+        }
+    }
 }
 ```
 
