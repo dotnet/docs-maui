@@ -1,17 +1,17 @@
 ---
-title: ".NET MAUI Paint: Gradient paint"
-description: "The .NET MAUI GradientPaint class is an abstract class that describes a gradient, composed of gradient stops."
+title: ".NET MAUI Graphics: Gradient paint"
+description: "The .NET MAUI graphics library includes a GradientPaint class, which is an abstract class that describes a gradient, composed of gradient stops."
 ms.date: 07/15/2021
 ---
 
-# .NET MAUI Paint: Gradient paint
+# .NET MAUI Graphics: Gradient paint
 
 <!-- Sample link goes here -->
 
-The .NET Multi-platform App UI (MAUI) `GradientPaint` class derives from the `Paint` class, and is an abstract base class that describes a gradient, which is composed of gradient steps. A `GradientPaint` paints an area with multiple colors that blend into each other along an axis. Classes that derive from `GradientPaint` describe different ways of interpreting gradients stops, and .NET MAUI provides the following gradient paints:
+The .NET Multi-platform App UI (MAUI) graphics library includes a `GradientPaint` class that's derived from the `Paint` class, and is an abstract base class that describes a gradient, which is composed of gradient steps. A `GradientPaint` paints a graphical object with multiple colors that blend into each other along an axis. Classes that derive from `GradientPaint` describe different ways of interpreting gradients stops, and the .NET MAUI graphics library provides the following gradient paints:
 
-- `LinearGradientPaint`, which paints an area with a linear gradient. For more information, see [.NET MAUI Graphics: Linear gradients](lineargradient.md).
-- `RadialGradientPaint`, which paints an area with a radial gradient. For more information, see [.NET MAUI Graphics: Radial gradients](radialgradient.md).
+- `LinearGradientPaint`, which paints an object with a linear gradient. For more information, see [.NET MAUI Graphics: Linear gradients](lineargradient.md).
+- `RadialGradientPaint`, which paints an object with a radial gradient. For more information, see [.NET MAUI Graphics: Radial gradients](radialgradient.md).
 
 The `GradientPaint` class defines the `GradientStops` property, of type `GradientStop`, which represents the brush's gradient stops, each of which specifies a color and an offset along the gradient axis.
 
@@ -25,7 +25,7 @@ The `GradientStop` class defines the following properties:
 - `Offset`, of type `float`, which represents the location of the gradient stop within the gradient vector. Valid values are in the range 0.0-1.0. The closer this value is to 0, the closer the color is to the start of the gradient. Similarly, the closer this value is to 1, the closer the color is to the end of the gradient.
 
 > [!IMPORTANT]
-> The coordinate system used by gradients is relative to a bounding box for the output area. 0 indicates 0 percent of the bounding box, and 1 indicates 100 percent of the bounding box. Therefore, (0.5,0.5) describes a point in the middle of the bounding box, and (1,1) describes a point at the bottom right of the bounding box.
+> The coordinate system used by gradients is relative to a bounding box for the graphical object. 0 indicates 0 percent of the bounding box, and 1 indicates 100 percent of the bounding box. Therefore, (0.5,0.5) describes a point in the middle of the bounding box, and (1,1) describes a point at the bottom right of the bounding box.
 
 Gradient stops can be added to a `GradientPoint` object with the `AddOffset` method.
 

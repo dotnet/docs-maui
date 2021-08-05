@@ -1,6 +1,6 @@
 ---
 title: ".NET MAUI Graphics: Radial gradient paint"
-description: "The .NET MAUI RadialGradientPaint class paints an area with a radial gradient."
+description: "The .NET MAUI graphics library includes a RadialGradientPaint class, that paints a graphical object with a radial gradient."
 ms.date: 07/15/2021
 ---
 
@@ -8,7 +8,7 @@ ms.date: 07/15/2021
 
 <!-- Sample link goes here -->
 
-The `RadialGradientPaint` class derives from the `GradientPaint` class, and paints an area with a radial gradient, which blends two or more colors across a circle. `GradientStop` objects are used to specify the colors in the gradient and their positions. For more information about `GradientStop` objects, see [.NET MAUI Paint: Gradients](gradient.md).
+The .NET Multi-platform App UI (MAUI) graphics library includes a `RadialGradientPaint` class that's derived from the `GradientPaint` class, which paints a graphical object with a radial gradient. A radial gradient blends two or more colors across a circle. `GradientStop` objects are used to specify the colors in the gradient and their positions. For more information about `GradientStop` objects, see [.NET MAUI Graphics: Gradients](gradient.md).
 
 The `RadialGradientPaint` class defines the following properties:
 

@@ -1,6 +1,6 @@
 ---
 title: ".NET MAUI Graphics: Image paint"
-description: "The .NET MAUI ImagePaint class paints an area with an image."
+description: "The .NET MAUI graphics library includes an ImagePaint class, that paints a graphical object with an image."
 ms.date: 07/22/2021
 ---
 
@@ -8,18 +8,18 @@ ms.date: 07/22/2021
 
 <!-- Sample link goes here -->
 
-The .NET Multi-platform App UI (MAUI) `ImagePaint` class derives from the `Paint` class, and is used to paint an area with an image.
+The .NET Multi-platform App UI (MAUI) graphics library includes an `ImagePaint` class that's derived from the `Paint` class, which is used to paint a graphical object with an image.
 
 The `ImagePaint` class defines an `Image` property, of type `IImage`, which represents the image to paint. The class also has an `IsTransparent` property that returns `false`.
 
 ## Create an ImagePaint object
 
-To paint an area with an image, load the image and assign it to the `Image` property of the `ImagePaint` object.
+To paint an object with an image, load the image and assign it to the `Image` property of the `ImagePaint` object.
 
 > [!NOTE]
 > Loading an image that's embedded in an assembly requires the image to have its build action set to **Embedded Resource**.
 
-The following example shows how to load an image and fill an area with it:
+The following example shows how to load an image and fill a rectangle with it:
 
 ```csharp
 IImage image;

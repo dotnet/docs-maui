@@ -1,6 +1,6 @@
 ---
 title: ".NET MAUI Graphics: Linear gradient paint"
-description: "The .NET MAUI LinearGradientPaint class paints an area with a linear gradient."
+description: "The .NET MAUI graphics library includes a LinearGradientPaint class, that paints a graphical object with a linear gradient."
 ms.date: 07/15/2021
 ---
 
@@ -8,7 +8,7 @@ ms.date: 07/15/2021
 
 <!-- Sample link goes here -->
 
-The `LinearGradientPaint` class derives from the `GradientPaint` class, and paints an area with a linear gradient, which blends two or more colors along a line known as the gradient axis. `GradientStop` objects are used to specify the colors in the gradient and their positions. For more information about `GradientStop` objects, see [.NET MAUI Paint: Gradients](gradient.md).
+The .NET Multi-platform App UI (MAUI) graphics library includes a `LinearGradientPaint` class that's derived from the `GradientPaint` class, which paints a graphical object with a linear gradient. A linear gradient blends two or more colors along a line known as the gradient axis. `GradientStop` objects are used to specify the colors in the gradient and their positions. For more information about `GradientStop` objects, see [.NET MAUI Graphics: Gradients](gradient.md).
 
 The `LinearGradientPaint` class defines the following properties:
 
@@ -19,7 +19,7 @@ The `LinearGradientPaint` class defines the following properties:
 
 A linear gradient's gradient stops are positioned along the gradient axis. The orientation and size of the gradient axis can be changed using the `StartPoint` and `EndPoint` properties. By manipulating these properties, you can create horizontal, vertical, and diagonal gradients, reverse the gradient direction, condense the gradient spread, and more.
 
-The `StartPoint` and `EndPoint` properties are relative to the area being painted. (0,0) represents the top-left corner of the area being painted, and (1,1) represents the bottom-right corner of the area being painted. The following diagram shows the gradient axis for a diagonal linear gradient brush:
+The `StartPoint` and `EndPoint` properties are relative to the graphical object being painted. (0,0) represents the top-left corner of the object being painted, and (1,1) represents the bottom-right corner of the object being painted. The following diagram shows the gradient axis for a diagonal linear gradient brush:
 
 :::image type="content" source="lineargradient-images/gradient-axis.png" alt-text="The gradient axis for diagonal linear gradient." border="false":::
 

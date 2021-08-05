@@ -8,9 +8,9 @@ ms.date: 07/26/2021
 
 <!-- Sample link goes here -->
 
-The .NET Multi-platform App UI (MAUI) graphics library supports traditional graphics transforms, which are implement as methods of the `ICanvas` object. Mathematically, transforms alter the coordinates and sizes that you specify in `ICanvas` drawing methods as the graphical objects are rendered.
+The .NET Multi-platform App UI (MAUI) graphics library supports traditional graphics transforms, which are implemented as methods on the `ICanvas` object. Mathematically, transforms alter the coordinates and sizes that you specify in `ICanvas` drawing methods, when the graphical objects are rendered.
 
-`Microsoft.Maui.Graphics` supports the following transforms:
+The following transforms are supported:
 
 - *Translate* to shift coordinates from one location to another.
 - *Scale* to increase or decrease coordinates and sizes.
@@ -27,7 +27,7 @@ The .NET MAUI `VisualElement` class also supports the following transform proper
 
 ## Translate transform
 
-The translate transform shifts graphical objects in the horizontal and vertical directions. Translation can be considered unnecessary because the same result can be accomplished by changing the coordinates of the drawing method you're using. However, when displaying a path, all the coordinates are encapsulated in the path, and so it's easier to apply a translate transform to shift the entire path.
+The translate transform shifts graphical objects in the horizontal and vertical directions. Translation can be considered unnecessary because the same result can be accomplished by changing the coordinates of the drawing method you're using. However, when displaying a path, all the coordinates are encapsulated in the path, and so it's often easier to apply a translate transform to shift the entire path.
 
 The `Translate` method requires `x` and `y` arguments, of type `float`, that cause subsequently drawn graphic objects to be shifted horizontally and vertically. Negative `x` values move an object to the left, while positive values move an object to the right. Negative `y` values move an object up, while positive values move an object down.
 
@@ -57,7 +57,7 @@ The center of the star is at (0,0), and the points of the star are on a circle s
 
 ## Scale transform
 
-The scale transform changes the size of a graphical object, and can also often cause coordinates to move as a graphical object is made larger.
+The scale transform changes the size of a graphical object, and can also often cause coordinates to move when a graphical object is made larger.
 
 The `Scale` method requires `x` and `y` arguments, of type `float`, that let you specify different values for horizontal and vertical scaling, otherwise known as *anisotropic* scaling. The values of `x` and `y` have a big impact on the resulting scaling:
 
@@ -131,7 +131,7 @@ In this example, `.NET MAUI` is rotated 45 degrees around the center of the canv
 
 ## Combine transforms
 
-The easiest way to combine transforms is to begin with global transforms, followed by local transforms. For example, translation, scaling, and rotation can be combined to draw an analog clock. The clock can be drawn using an arbitrary coordinate system based on a circle that's centered at (0,0) with a radius of 100. Translation and scaling expand and center the circle on the canvas, and rotation can then be used to draw the minute and hour marks of the clock and to rotate the hands:
+The simplest way to combine transforms is to begin with global transforms, followed by local transforms. For example, translation, scaling, and rotation can be combined to draw an analog clock. The clock can be drawn using an arbitrary coordinate system based on a circle that's centered at (0,0) with a radius of 100. Translation and scaling expand and center the clock on the canvas, and rotation can then be used to draw the minute and hour marks of the clock and to rotate the hands:
 
 ```csharp
 canvas.StrokeLineCap = LineCap.Round;
@@ -265,9 +265,7 @@ You can define a new transform matrix with the `AffineTransform` constructors, t
 > [!NOTE]
 > The default `AffineTransform` constructor creates an identity matrix.
 
-The only `ICanvas` method that accepts an `AffineTransform` argument is the `ConcatenateTransform` method, which combines multiple transforms into a single transform.
-
-The following example shows how to use the `ConcatenateTransform` method to transform a `PathF` object using an `AffineTransform`:
+The only `ICanvas` method that accepts an `AffineTransform` argument is the `ConcatenateTransform` method, which combines multiple transforms into a single transform. The following example shows how to use this method to transform a `PathF` object:
 
 ```csharp
 PathF path = new PathF();

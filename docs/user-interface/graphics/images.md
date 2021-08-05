@@ -12,18 +12,10 @@ The .NET Multi-platform App UI (MAUI) graphics library includes functionality to
 
 Images are represented by the `IImage` type, which defines the following properties:
 
-- `Width`, of type `float`, which defines the width of an image.
-- `Height`, of type `float`, which defines the height of an image.
+- `Width`, of type `float`, that defines the width of an image.
+- `Height`, of type `float`, that defines the height of an image.
 
-An optional `ImageFormat` argument can be specified when loading and saving images. The `ImageFormat` enumeration defines the following members:
-
-- `Png`
-- `Jpeg`
-- `Gif`
-- `Tiff`
-- `Bmp`
-
-However, this argument is only used when the image format is supported by the underlying platform.
+An optional `ImageFormat` argument can be specified when loading and saving images. The `ImageFormat` enumeration defines `Png`, `Jpeg`, `Gif`, `Tiff`, and `Bmp` members. However, this argument is only used when the image format is supported by the underlying platform.
 
 ## Load an image
 
@@ -58,9 +50,9 @@ The following example shows how to save an image:
 
 ```csharp
 IImage image;
-// Code to load and manipulate an image
+...
 
-// Save image
+// Save image to a memory stream
 if (image != null)
 {
     using (MemoryStream memStream = new MemoryStream())
@@ -72,12 +64,10 @@ if (image != null)
 
 ## Resize an image
 
-Images can be resized using the `IImage.Resize` method, which requires `width` and `height` arguments, of type `float`, which represent the
+Images can be resized using the `IImage.Resize` method, which requires `width` and `height` arguments, of type `float`, which represent the target dimensions of the image. The `Resize` method also accepts two optional arguments:
 
-The `Resize` method also accepts two optional arguments:
-
-- A `ResizeMode` argument, that controls how the image will be resized to fit its target width and height.
-- A `bool` argument that controls whether the source image should be disposed after performing the resize operation. This argument defaults to `false`, indicating that the source image won't be disposed.
+- A `ResizeMode` argument, that controls how the image will be resized to fit its target dimensions.
+- A `bool` argument that controls whether the source image will be disposed after performing the resize operation. This argument defaults to `false`, indicating that the source image won't be disposed.
 
 The `ResizeMode` enumeration defines the following members, which specify how to resize the the image to the target size:
 
@@ -102,13 +92,13 @@ if (image != null)
 }
 ```
 
-In this example, the image is retrieved from the assembly and loaded as a stream. The image is resized using the `Resize` method, with the arguments specifying its new size, and that it should be stretched to fill the available space. In addition, the source image is disposed. The resized image is then drawn at actual size at (50,50).
+In this example, the image is retrieved from the assembly and loaded as a stream. The image is resized using the `Resize` method, with its arguments specifying the new size, and that it should be stretched to fill the available space. In addition, the source image is disposed. The resized image is then drawn at actual size at (50,50).
 
 ## Downsize an image
 
 Images can be downsized by one of the `IImage.Downsize` overloads. The first overload requires a single `float` value that represents the maximum width or height of the image, and downsizes the image while maintaining its aspect ratio. The second overload requires two `float` arguments, that represent the maximum width and maximum height of the image.
 
-The `Downsize` overloads also accept an optional `bool` argument that controls whether the source image should be disposed after performing the downsize operation. This argument defaults to `false`, indicating that the source image won't be disposed.
+The `Downsize` overloads also accept an optional `bool` argument that controls whether the source image should be disposed after performing the downsizing operation. This argument defaults to `false`, indicating that the source image won't be disposed.
 
 The following example shows how to downsize an image:
 

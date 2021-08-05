@@ -1,6 +1,6 @@
 ---
 title: ".NET MAUI Graphics: Pattern paint"
-description: "The .NET MAUI PatternPaint class paints an area with a pattern."
+description: "The .NET MAUI graphics library includes a PatternPaint class, that paints a graphical object with a pattern."
 ms.date: 07/22/2021
 ---
 
@@ -8,15 +8,15 @@ ms.date: 07/22/2021
 
 <!-- Sample link goes here -->
 
-The .NET Multi-platform App UI (MAUI) `PatternPaint` class derives from the `Paint` class, and is used to paint an area with a pattern.
+The .NET Multi-platform App UI (MAUI) graphics library includes a `PatternPaint` class that's derived from the `Paint` class, which is used to paint a graphical object with a pattern.
 
-The `PatternPaint` class defines a `Pattern` property, of type `IPattern`, which represents the pattern to paint. The class also has an `IsTransparent` property that returns a `bool` that represents whether the background or foreground color has an alpha value of less than 1.
+The `PatternPaint` class defines a `Pattern` property, of type `IPattern`, which represents the pattern to paint. The class also has an `IsTransparent` property that returns a `bool` that represents whether the background or foreground color of the paint has an alpha value of less than 1.
 
 ## Create a PatternPaint object
 
 To paint an area with a pattern, create the pattern and assign it to the `Pattern` property of a `PatternPaint` object.
 
-The following example shows how to create a pattern and fill an area with it:
+The following example shows how to create a pattern and fill an object with it:
 
 ```csharp
 IPattern pattern;
