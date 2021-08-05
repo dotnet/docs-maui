@@ -1,15 +1,13 @@
 ---
-title: "Xamarin.Essentials: Barometer"
-description: "The Barometer class in Xamarin.Essentials lets you monitor the device's barometer sensor, which measures pressure."
-author: jamesmontemagno
-ms.author: jamont
-ms.date: 11/04/2018
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+title: "Essentials: Barometer"
+description: "Describes the Barometer class in the Microsoft.Maui.Essentials namespace, which lets you monitor the device's barometer sensor."
+ms.date: 08/04/2021
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
-# Xamarin.Essentials: Barometer
+# Barometer
 
-The **Barometer** class lets you monitor the device's barometer sensor, which measures pressure.
+The `Barometer` class lets you monitor the device's barometer sensor, which measures pressure.
 
 ## Get started
 
@@ -17,16 +15,11 @@ The **Barometer** class lets you monitor the device's barometer sensor, which me
 
 ## Using Barometer
 
-Add a reference to Xamarin.Essentials in your class:
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
+
+The Barometer functionality works by calling the `Start` and `Stop` methods to listen for changes to the barometer's pressure reading. The pressure reading is represented in hectopascals. Any changes are sent back through the `ReadingChanged` event. The following code example demonstrates reading the barometer sensor:
 
 ```csharp
-using Xamarin.Essentials;
-```
-
-The Barometer functionality works by calling the `Start` and `Stop` methods to listen for changes to the barometer's pressure reading in hectopascals. Any changes are sent back through the `ReadingChanged` event. Here is sample usage:
-
-```csharp
-
 public class BarometerTest
 {
     // Set speed delay for monitoring changes.
@@ -68,7 +61,11 @@ public class BarometerTest
 
 [!INCLUDE [sensor-speed](includes/sensor-speed.md)]
 
-## Platform Implementation Specifics
+## Platform specifics
+
+This section describes platform-specific implementation details related to the barometer.
+
+<!-- markdownlint-disable MD025 -->
 
 # [Android](#tab/android)
 
@@ -80,13 +77,15 @@ This API uses [CMAltimeter](https://developer.apple.com/documentation/coremotion
 
 `SensorSpeed` is not used as it is not supported on iOS.
 
-# [UWP](#tab/uwp)
+# [Windows](#tab/windows)
 
 No platform-specific implementation details.
 
 -----
 
+<!-- markdownlint-enable MD025 -->
+
 ## API
 
-- [Barometer source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Barometer)
-- [Barometer API documentation](xref:Xamarin.Essentials.Barometer)
+- [Barometer source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/Barometer)
+<!-- - [Barometer API documentation](xref:Microsoft.Maui.Essentials.Barometer)-->

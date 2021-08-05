@@ -1,16 +1,13 @@
 ---
-title: "Xamarin.Essentials: App Theme"
-description: "This document describes the Requested App Theme API in Xamarin.Essentials, which provides information as to what theme style is requested for the running app."
-author: jamesmontemagno
-ms.custom: video
-ms.author: jamont
-ms.date: 01/06/2020
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+title: "Essentials: App Theme"
+description: "Describes the AppInfo class in the Microsoft.Maui.Essentials namespace and how it can be used to detect the requested app theme."
+ms.date: 08/04/2021
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials", "RequestedTheme"]
 ---
 
-# Xamarin.Essentials: App Theme
+# App Theme
 
-The **RequestedTheme** API is part of the [`AppInfo`](app-information.md) class and provides information as to what theme is requested for your running app by the system.
+The `RequestedTheme` API is part of the [`AppInfo`](app-information.md) class and provides information as to what theme is requested by the system for your running app.
 
 ## Get started
 
@@ -18,55 +15,53 @@ The **RequestedTheme** API is part of the [`AppInfo`](app-information.md) class 
 
 ## Using RequestedTheme
 
-Add a reference to Xamarin.Essentials in your class:
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
-```csharp
-using Xamarin.Essentials;
-```
+## Read the theme setting
 
-## Obtaining Theme Information
-
-The requested application theme can be detected with the following API:
+The requested app theme can be detected with the following code:
 
 ```csharp
 AppTheme appTheme = AppInfo.RequestedTheme;
-
 ```
 
-This will provide the current requested theme by the system for your application. The return value will be one of the following:
+This class provides the current requested theme by the system for your application. One of the following values is returned:
 
-* Unspecified
-* Light
-* Dark
+- Unspecified
+- Light
+- Dark
 
-Unspecified will be returned when the operating system does not have a specific user interface style to request. An example of this is on devices running versions of iOS older than 13.0.
+_Unspecified_ is returned when the operating system doesn't have a specific user interface style. An example of this is on devices running versions of iOS older than 13.0.
 
+## Platform specifics
 
-## Platform Implementation Specifics
+This section describes platform-specific implementation details related to the `AppInfo.RequestedTheme` property.
+
+<!-- markdownlint-disable MD025 -->
 
 # [Android](#tab/android)
 
-Android uses configuration modes to specify the type of theme to request from the user. Based on the version of Android, it can be changed by the user or is changed when battery saver mode is enabled.
+Android uses configuration modes to specify the type of theme to request from the user. Based on the version of Android, it can be changed by the user or may be changed when battery saver mode is enabled.
 
 You can read more on the official [Android documentation for Dark Theme](https://developer.android.com/guide/topics/ui/look-and-feel/darktheme).
 
-
 # [iOS](#tab/ios)
 
-Unspecified will always be returned on versions of iOS older than 13.0
+_Unspecified_ is always returned on versions of iOS older than 13.0
 
+# [Windows](#tab/windows)
 
-# [UWP](#tab/uwp)
+Code that accesses the `AppInfo.RequestedTheme` property must be called on the UI thread or an exception will be thrown.
 
-Calling `RequestedTheme` must be called on the UI thread or an exception will be thrown.
+Windows applications respect the **RequestedTheme** property setting in the Windows _App.xaml_. If it's set to a specific theme, this API always returns this setting. To use the dynamic theme of the OS, remove this property from your application. When your app is run, it returns the theme set by the user in Windows settings: **Settings** > **Personalization** > **Colors** > **Choose your default app mode**.
 
-UWP applications will respect your setting in the UWP App.xaml under **RequestedTheme**. If it is set to a specific theme, Xamarin.Essentials will always return this setting. To use dynamic theme of the OS remove this node from your application and then when your app is run it will return the theme set by the user in Windows settings (**Settings > Personalization > Colors > Choose your default app mode**).
-
-You can read more on the [UWP Requested Theme Documentation](/uwp/api/windows.ui.xaml.application.requestedtheme).
+<!-- TODO: You can read more on the [UWP Requested Theme Documentation](/uwp/api/windows.ui.xaml.application.requestedtheme). -->
 
 --------------
 
+<!-- markdownlint-enable MD025 -->
+
 ## API
 
-- [AppInfo source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/AppInfo)
-- [AppInfo API documentation](xref:Xamarin.Essentials.AppInfo)
+- [AppInfo source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/AppInfo)
+<!-- - [AppInfo API documentation](xref:Microsoft.Maui.Essentials.AppInfo)-->

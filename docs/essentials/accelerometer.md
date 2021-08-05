@@ -15,11 +15,7 @@ The `Microsoft.Maui.Essentials.Accelerometer` class lets you monitor the device'
 
 ## Using Accelerometer
 
-Add a reference to the `Microsoft.Maui.Essentials` namespace in your class:
-
-```csharp
-using Microsoft.Maui.Essentials;
-```
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
 The accelerometer functionality works by calling the `Start` and `Stop` methods to listen for changes to the acceleration. Any changes are sent back through the `ReadingChanged` event. Here's a sample of using the accelerometer:
 
