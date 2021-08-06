@@ -1,16 +1,13 @@
 ---
-title: "Xamarin.Essentials: Clipboard"
-description: "This document describes the Clipboard class in Xamarin.Essentials, which lets you copy and paste text to the system clipboard between applications."
-author: jamesmontemagno
-ms.author: jamont
-ms.date: 01/06/2020
-ms.custom: video
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+title: "Essentials: Clipboard"
+description: "Describes the Clipboard class in the Microsoft.Maui.Essentials namespace, which lets you copy and paste text to the system clipboard"
+ms.date: 08/05/2021
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
-# Xamarin.Essentials: Clipboard
+# Clipboard
 
-The **Clipboard** class lets you copy and paste text to the system clipboard between applications.
+The `Clipboard` class lets you copy and paste text to the system clipboard between applications.
 
 ## Get started
 
@@ -18,31 +15,27 @@ The **Clipboard** class lets you copy and paste text to the system clipboard bet
 
 ## Using Clipboard
 
-Add a reference to Xamarin.Essentials in your class:
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
+
+To check if the clipboard has text currently ready to be pasted:
 
 ```csharp
-using Xamarin.Essentials;
+bool hasText = Clipboard.HasText;
 ```
 
-To check if the **Clipboard** has text currently ready to be pasted:
-
-```csharp
-var hasText = Clipboard.HasText;
-```
-
-To set text to the **Clipboard**:
+To set text to the clipboard:
 
 ```csharp
 await Clipboard.SetTextAsync("Hello World");
 ```
 
-To read text from the **Clipboard**:
+To read text from the clipboard:
 
 ```csharp
-var text = await Clipboard.GetTextAsync();
+string text = await Clipboard.GetTextAsync();
 ```
 
-Whenever any of the clipboard's content has changed an event is triggered:
+Whenever any of the clipboard's content has changed, an event is triggered:
 
 ```csharp
 public class ClipboardTest
@@ -53,17 +46,17 @@ public class ClipboardTest
         Clipboard.ClipboardContentChanged += OnClipboardContentChanged;
     }
 
-    void OnClipboardContentChanged(object sender, EventArgs    e)
+    void OnClipboardContentChanged(object sender, EventArgs e)
     {
-        Console.WriteLine($"Last clipboard change at {DateTime.UtcNow:T}";);
+        Console.WriteLine($"Last clipboard change occurred at {DateTime.UtcNow:T}");
     }
 }
 ```
 
 > [!TIP]
-> Access to the Clipboard must be done on the main user interface thread. See the [MainThread](~/essentials/main-thread.md) API to see how to invoke methods on the main user interface thread.
+> Access to the clipboard must be done on the main user interface thread. For more information on how to invoke methods on the main user interface thread, see [MainThread](main-thread.md).
 
 ## API
 
-- [Clipboard source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Clipboard)
-- [Clipboard API documentation](xref:Xamarin.Essentials.Clipboard)
+- [Clipboard source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/Clipboard)
+<!-- - [Clipboard API documentation](xref:Microsoft.Maui.Essentials.Clipboard)-->
