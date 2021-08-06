@@ -4,7 +4,7 @@ description: "The .NET MAUI graphics library includes a Paint class, which is an
 ms.date: 07/15/2021
 ---
 
-# .NET MAUI Graphics: Paint objects
+# Paint graphical objects
 
 <!-- Sample link goes here -->
 

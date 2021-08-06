@@ -36,11 +36,11 @@
               href: user-interface/graphics/index.md
             - name: Blend modes
               href: user-interface/graphics/blendmodes.md
-            - name: Draw objects
+            - name: Draw graphical objects
               href: user-interface/graphics/draw.md
             - name: Images
               href: user-interface/graphics/images.md
-            - name: Paint objects
+            - name: Paint graphical objects
               items:
                 - name: Overview
                   href: user-interface/graphics/paint/index.md

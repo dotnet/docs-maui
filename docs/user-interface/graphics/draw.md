@@ -1,16 +1,16 @@
 ---
-title: ".NET MAUI Graphics: Draw objects"
-description: "The .NET MAUI graphics library enables you to draw objects on a drawing canvas."
+title: ".NET MAUI Graphics: Draw graphical objects"
+description: "The .NET MAUI graphics library enables you to draw graphical objects on a canvas."
 ms.date: 07/28/2021
 ---
 
-# .NET MAUI Graphics: Draw objects
+# Draw graphical objects
 
 <!-- Sample link goes here -->
 
 The .NET Multi-platform App UI (.NET MAUI) graphics library, in the `Microsoft.Maui.Graphics` namespace, enables you to draw graphical objects on a canvas. This library defines the drawing canvas as an `ICanvas` object.
 
-The .NET MAUI `GraphicsView` control provides access to an `ICanvas` object, on which properties can be set and methods invoked to draw graphical objects. For more information about the `GraphicsView`, see [.NET MAUI GraphicsView](~/user-interface/controls/graphicsview.md).
+The .NET MAUI `GraphicsView` control provides access to an `ICanvas` object, on which properties can be set and methods invoked to draw graphical objects. For more information about the `GraphicsView`, see [GraphicsView](~/user-interface/controls/graphicsview.md).
 
 > [!IMPORTANT]
 > Graphical objects are drawn on an `ICanvas` in units of pixels.
@@ -273,7 +273,7 @@ In this example, a filled slate blue triangle is drawn:
 The `FillColor` property of the `ICanvas` object must be set to a `Color` before invoking the `FillPath` method.
 
 > [!IMPORTANT]
-> The `FillPath` method has an overload that enables a `WindingMode` to be specified, which sets the fill algorithm that's used. For more information, see [.NET MAUI Graphics: Winding modes](windingmodes.md).
+> The `FillPath` method has an overload that enables a `WindingMode` to be specified, which sets the fill algorithm that's used. For more information, see [Winding modes](windingmodes.md).
 
 ## Draw an image
 
@@ -530,7 +530,7 @@ In this example, the image is clipped using a `PathF` object that defines a circ
 :::image type="content" source="draw-images/clippath.png" alt-text="Screenshot of an image that's been clipped with the ClipPath method.":::
 
 > [!IMPORTANT]
-> The `ClipPath` method has an overload that enables a `WindingMode` to be specified, which sets the fill algorithm that's used when clipping. For more information, see [.NET MAUI Graphics: Winding modes](windingmodes.md).
+> The `ClipPath` method has an overload that enables a `WindingMode` to be specified, which sets the fill algorithm that's used when clipping. For more information, see [Winding modes](windingmodes.md).
 
 The following example shows how to use the `SubtractFromClip` method to clip an image:
 

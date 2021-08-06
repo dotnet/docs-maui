@@ -4,7 +4,7 @@ description: "The .NET MAUI graphics library includes a PatternPaint class, that
 ms.date: 07/22/2021
 ---
 
-# .NET MAUI Graphics: Pattern paint
+# Paint a pattern
 
 <!-- Sample link goes here -->
 

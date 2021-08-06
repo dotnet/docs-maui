@@ -4,7 +4,7 @@ description: ".NET MAUI includes a cross-platform 2D graphics library that targe
 ms.date: 07/23/2021
 ---
 
-# .NET MAUI Graphics
+# Graphics
 
 <!-- Sample link goes here -->
 
@@ -39,7 +39,7 @@ For examples of using different graphics abstractions, see [Microsoft.Maui.Graph
 
 ## Drawing canvas
 
-In .NET MAUI, the `GraphicsView` enables consumption of the `Microsoft.Maui.Graphics` library, via a drawing canvas that's exposed as an `ICanvas` object. For more information about the `GraphicsView`, see [.NET MAUI GraphicsView](~/user-interface/controls/graphicsview.md).
+In .NET MAUI, the `GraphicsView` enables consumption of the `Microsoft.Maui.Graphics` library, via a drawing canvas that's exposed as an `ICanvas` object. For more information about the `GraphicsView`, see [GraphicsView](~/user-interface/controls/graphicsview.md).
 
 `ICanvas` defines the following properties, that affect the appearance of object's that are drawn on the canvas:
 

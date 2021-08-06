@@ -4,11 +4,11 @@ description: "The .NET MAUI graphics library includes a LinearGradientPaint clas
 ms.date: 07/15/2021
 ---
 
-# .NET MAUI Graphics: Linear gradient paint
+# Paint a linear gradient
 
 <!-- Sample link goes here -->
 
-The .NET Multi-platform App UI (.NET MAUI) graphics library includes a `LinearGradientPaint` class that's derived from the `GradientPaint` class, which paints a graphical object with a linear gradient. A linear gradient blends two or more colors along a line known as the gradient axis. `GradientStop` objects are used to specify the colors in the gradient and their positions. For more information about `GradientStop` objects, see [.NET MAUI Graphics: Gradients](gradient.md).
+The .NET Multi-platform App UI (.NET MAUI) graphics library includes a `LinearGradientPaint` class that's derived from the `GradientPaint` class, which paints a graphical object with a linear gradient. A linear gradient blends two or more colors along a line known as the gradient axis. `GradientStop` objects are used to specify the colors in the gradient and their positions. For more information about `GradientStop` objects, see [Paint gradients](gradient.md).
 
 The `LinearGradientPaint` class defines the following properties:
 

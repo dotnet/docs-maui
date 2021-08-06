@@ -4,7 +4,7 @@ description: "The .NET MAUI graphics library supports translation, scaling, and 
 ms.date: 07/26/2021
 ---
 
-# .NET MAUI Graphics: Transforms
+# Transforms
 
 <!-- Sample link goes here -->
 

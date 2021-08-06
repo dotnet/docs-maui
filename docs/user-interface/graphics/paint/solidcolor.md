@@ -4,7 +4,7 @@ description: "The .NET MAUI graphics library includes a SolidPaint class, that p
 ms.date: 07/15/2021
 ---
 
-# .NET MAUI Graphics: Solid color paint
+# Paint a solid color
 
 <!-- Sample link goes here -->
 

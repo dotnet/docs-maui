@@ -4,7 +4,7 @@ description: "The .NET MAUI graphics library includes an ImagePaint class, that 
 ms.date: 07/22/2021
 ---
 
-# .NET MAUI Graphics: Image paint
+# Paint an image
 
 <!-- Sample link goes here -->
 

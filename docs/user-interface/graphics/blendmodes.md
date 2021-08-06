@@ -4,7 +4,7 @@ description: "The .NET MAUI graphics library enables different compositing opera
 ms.date: 07/30/2021
 ---
 
-# .NET MAUI Graphics: Blend modes
+# Blend modes
 
 <!-- Sample link goes here -->
 

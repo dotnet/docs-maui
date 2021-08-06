@@ -4,7 +4,7 @@ description: "The .NET MAUI graphics library enables you to specify the fill alg
 ms.date: 07/28/2021
 ---
 
-# .NET MAUI Graphics: Winding modes
+# Winding modes
 
 <!-- Sample link goes here -->
 

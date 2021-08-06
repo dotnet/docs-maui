@@ -4,7 +4,7 @@ description: "The .NET MAUI graphics library includes functionality to load, sav
 ms.date: 08/03/2021
 ---
 
-# .NET MAUI Graphics: Images
+# Images
 
 <!-- Sample link goes here -->
 

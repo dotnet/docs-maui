@@ -4,11 +4,11 @@ description: "The .NET MAUI GraphicsView is a graphics canvas on which 2D graphi
 ms.date: 07/28/2021
 ---
 
-# .NET MAUI GraphicsView
+# GraphicsView
 
 <!-- Sample link goes here -->
 
-The .NET Multi-platform App UI (.NET MAUI) `GraphicsView` is a graphics canvas on which 2D graphics can be drawn using the `Microsoft.Maui.Graphics` library. For more information about `Microsoft.Maui.Graphics`, see [.NET MAUI Graphics](~/user-interface/graphics/index.md).
+The .NET Multi-platform App UI (.NET MAUI) `GraphicsView` is a graphics canvas on which 2D graphics can be drawn using the `Microsoft.Maui.Graphics` library. For more information about `Microsoft.Maui.Graphics`, see [Graphics](~/user-interface/graphics/index.md).
 
 `GraphicsView` defines the `Drawable` property, of type `IDrawable`, which specifies the content that will be drawn. This property is backed by a `BindableProperty`, which means it can be the target of data binding, and styled.
 
@@ -31,7 +31,7 @@ namespace MyMauiApp
 }
 ```
 
-The `Draw` method has `ICanvas` and `RectangleF` arguments. The `ICanvas` argument is the drawing canvas on which you draw graphical objects. The `RectangleF` argument is a `struct` that contains data about the size and location of the drawing canvas. For more information about drawing on an `ICanvas`, see [.NET MAUI Graphics: Draw objects](~/user-interface/graphics/draw.md).
+The `Draw` method has `ICanvas` and `RectangleF` arguments. The `ICanvas` argument is the drawing canvas on which you draw graphical objects. The `RectangleF` argument is a `struct` that contains data about the size and location of the drawing canvas. For more information about drawing on an `ICanvas`, see [Draw graphical objects](~/user-interface/graphics/draw.md).
 
 The `IDrawable` object should be declared as a resource, and then consumed by the `GraphicsView` by specifying its key:
 
@@ -70,7 +70,7 @@ The `RectangleF` struct defines the following properties:
 - `X`, of type `float`, which defines the x-coordinate of the upper-left corner of the canvas.
 - `Y`, of type `float`, which defines the y-coordinate of the upper-left corner of the canvas.
 
-These properties can be used to position and size graphical objects on the `ICanvas`. For example, graphical objects can be placed at the center of the `Canvas` by using the `Center.X` and `Center.Y` values as arguments to a drawing method. For information about drawing on an `ICanvas`, see [.NET MAUI Graphics: Draw objects](~/user-interface/graphics/draw.md).
+These properties can be used to position and size graphical objects on the `ICanvas`. For example, graphical objects can be placed at the center of the `Canvas` by using the `Center.X` and `Center.Y` values as arguments to a drawing method. For information about drawing on an `ICanvas`, see [Draw graphical objects](~/user-interface/graphics/draw.md).
 
 ## Convert the drawable to an image
 
@@ -93,4 +93,4 @@ using Microsoft.Maui.Graphics;
 IImage image = graphicsDrawable.Drawable.ToImage(400, 500);
 ```
 
-For information about image handling in `Microsoft.Maui.Graphics`, see [.NET MAUI Graphics: Images](~/user-interface/graphics/images.md).
+For information about image handling in `Microsoft.Maui.Graphics`, see [Images](~/user-interface/graphics/images.md).
