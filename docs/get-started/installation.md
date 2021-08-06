@@ -9,7 +9,7 @@ ms.date: 07/28/2021
 > [!IMPORTANT]
 > These requirements will change as new preview releases of Visual Studio and .NET MAUI are released.
 
-To create .NET Multi-platform App UI (MAUI) apps, you currently require .NET 6 Preview 6 with .NET MAUI and the platform SDKs for Android, iOS, macOS, tvOS, and Mac Catalyst.
+To create .NET Multi-platform App UI (.NET MAUI) apps, you currently require .NET 6 Preview 6 with .NET MAUI and the platform SDKs for Android, iOS, macOS, tvOS, and Mac Catalyst.
 
 To create .NET MAUI apps in Visual Studio, you'll also need [Visual Studio 2022 Preview 2](https://visualstudio.microsoft.com/vs/preview/vs2022/) with the following workloads installed:
 
