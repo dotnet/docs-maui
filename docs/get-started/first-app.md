@@ -5,7 +5,7 @@ zone_pivot_groups: preview-platforms
 ms.date: 07/15/2021
 ---
 
-# Build your first .NET MAUI app
+# Build your first app
 
 In this tutorial, you'll learn how to create and run your first .NET Multi-platform App UI (.NET MAUI) app.
 
