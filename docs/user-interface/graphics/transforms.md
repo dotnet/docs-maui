@@ -64,6 +64,7 @@ The `Scale` method requires `x` and `y` arguments, of type `float`, that let you
 - Values between 0 and 1 decrease the width and height of the scaled object.
 - Values greater than 1 increase the width and height of the scaled object.
 - Values of 1 indicate that the object is not scaled.
+
 <!--
 - Negative values flip the scaled object horizontally and vertically.
 - Values between 0 and -1 flip the scaled object and decrease its width and height.

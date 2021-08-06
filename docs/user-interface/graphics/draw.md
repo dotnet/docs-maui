@@ -458,7 +458,6 @@ A line has three parts: start cap, line body, and end cap. The start and end cap
 
 The following example shows how to set the `StrokeLineCap` property:
 
-
 ```csharp
 canvas.StrokeSize = 10;
 canvas.StrokeColor = Colors.Red;
