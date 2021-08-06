@@ -1,16 +1,13 @@
 ---
 title: "Xamarin.Essentials Map"
-description: "The Map class in Xamarin.Essentials enables an application to open the installed map application to a specific location or placemark."
-author: jamesmontemagno
-ms.author: jamont
+description: "The Map class in Microsoft.Maui.Essentials enables an application to open the installed map application to a specific location or placemark."
 ms.date: 05/26/2020
-ms.custom: video
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
-# Xamarin.Essentials: Map
+# Map
 
-The **Map** class enables an application to open the installed map application to a specific location or placemark.
+The `Map` class enables an application to open the installed map application to a specific location or placemark.
 
 ## Get started
 
@@ -18,11 +15,7 @@ The **Map** class enables an application to open the installed map application t
 
 ## Using Map
 
-Add a reference to Xamarin.Essentials in your class:
-
-```csharp
-using Xamarin.Essentials;
-```
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
 The Map functionality works by calling the `OpenAsync` method with the `Location` or `Placemark` to open with optional `MapLaunchOptions`.
 
@@ -117,7 +110,7 @@ public class MapTest
 }
 ```
 
-## Platform Differences
+## Platform differences
 
 # [Android](#tab/android)
 
@@ -127,13 +120,13 @@ public class MapTest
 
 - `NavigationMode` supports Driving, Transit, and Walking.
 
-# [UWP](#tab/uwp)
+# [Windows](#tab/windows)
 
 - `NavigationMode` supports Driving, Transit, and Walking.
 
 --------------
 
-## Platform Implementation Specifics
+## Platform implementation specifics
 
 # [Android](#tab/android)
 
@@ -143,7 +136,7 @@ Android uses the `geo:` Uri scheme to launch the maps application on the device.
 
 No platform-specific implementation details.
 
-# [UWP](#tab/uwp)
+# [Windows](#tab/windows)
 
 No platform-specific implementation details.
 
@@ -152,4 +145,4 @@ No platform-specific implementation details.
 ## API
 
 - [Map source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Map)
-- [Map API documentation](xref:Xamarin.Essentials.Map)
+<!-- - [Map API documentation](xref:Microsoft.Maui.Essentials.Map)-->

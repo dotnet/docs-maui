@@ -1,15 +1,13 @@
 ---
-title: "Xamarin.Essentials: Gyroscope"
-description: "The Gyroscope class in Xamarin.Essentials lets you monitor the device's gyroscope sensor, which measures rotation around the device's three primary axes."
-author: jamesmontemagno
-ms.author: jamont
+title: "Gyroscope"
+description: "The Gyroscope class in Microsoft.Maui.Essentials lets you monitor the device's gyroscope sensor, which measures rotation around the device's three primary axes."
 ms.date: 11/04/2018
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
-# Xamarin.Essentials: Gyroscope
+# Gyroscope
 
-The **Gyroscope** class lets you monitor the device's gyroscope sensor which is the rotation around the device's three primary axes.
+The `Gyroscope` class lets you monitor the device's gyroscope sensor which is the rotation around the device's three primary axes.
 
 ## Get started
 
@@ -17,11 +15,7 @@ The **Gyroscope** class lets you monitor the device's gyroscope sensor which is 
 
 ## Using Gyroscope
 
-Add a reference to Xamarin.Essentials in your class:
-
-```csharp
-using Xamarin.Essentials;
-```
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
 The Gyroscope functionality works by calling the `Start` and `Stop` methods to listen for changes to the gyroscope. Any changes are sent back through the `ReadingChanged` event in rad/s. Here is sample usage:
 
@@ -71,4 +65,4 @@ public class GyroscopeTest
 ## API
 
 - [Gyroscope source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Gyroscope)
-- [Gyroscope API documentation](xref:Xamarin.Essentials.Gyroscope)
+<!-- - [Gyroscope API documentation](xref:Microsoft.Maui.Essentials.Gyroscope)-->

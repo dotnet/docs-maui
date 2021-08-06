@@ -1,15 +1,13 @@
 ---
-title: "Xamarin.Essentials: Media Picker"
-description: "The MediaPicker class in Xamarin.Essentials lets a user pick or take a photo or video on the device."
-author: jamesmontemagno
-ms.author: jamont
+title: "Media Picker"
+description: "The MediaPicker class in Microsoft.Maui.Essentials lets a user pick or take a photo or video on the device."
 ms.date: 01/04/2021
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
-# Xamarin.Essentials: Media Picker
+# Media Picker
 
-The **MediaPicker** class lets a user pick or take a photo or video on the device.
+The `MediaPicker` class lets a user pick or take a photo or video on the device.
 
 ## Get started
 
@@ -65,7 +63,7 @@ In your `Info.plist` add the following keys:
 
 Ensure that you update the `<string>` in each to a description specific for your app as it will be shown to your users.
 
-# [UWP](#tab/uwp)
+# [Windows](#tab/windows)
 
 In the `Package.appxmanifest` under **Capabilities** ensure that `Microphone` and `Webcam` capabilities are checked.
 
@@ -132,4 +130,4 @@ async Task LoadPhotoAsync(FileResult photo)
 ## API
 
 - [MediaPicker source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/MediaPicker)
-- [MediaPicker API documentation](xref:Xamarin.Essentials.MediaPicker)
+<!-- - [MediaPicker API documentation](xref:Microsoft.Maui.Essentials.MediaPicker)-->

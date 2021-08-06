@@ -1,15 +1,13 @@
 ---
-title: "Xamarin.Essentials: Contacts"
-description: "The Contacts class in Xamarin.Essentials lets a user pick a contact and retrieve information about it."
-author: jamesmontemagno
-ms.author: jamont
+title: "Contacts"
+description: "The Contacts class in Microsoft.Maui.Essentials lets a user pick a contact and retrieve information about it."
 ms.date: 01/04/2021
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
-# Xamarin.Essentials: Contacts
+# Contacts
 
-The **Contacts** class lets a user pick a contact and retrieve information about it.
+The `Contacts` class lets a user pick a contact and retrieve information about it.
 
 ## Get started
 
@@ -48,7 +46,7 @@ In your `Info.plist` add the following keys:
 
 Ensure that you update the `<string>` in the description that is specific for your app as it will be shown to your users.
 
-# [UWP](#tab/uwp)
+# [Windows](#tab/windows)
 
 In the `Package.appxmanifest` under **Capabilities** ensure that `Contact` capability is checked.
 
@@ -117,7 +115,7 @@ catch (Exception ex)
 - The `cancellationToken` parameter in the `GetAllAsync` method is only used on UWP.
 - The iOS platform does not support the `DisplayName` property natively, thus the `DisplayName` value is constructed as "GivenName FamilyName".
 
-# [UWP](#tab/uwp)
+# [Windows](#tab/windows)
 
 No platform differences.
 
@@ -127,4 +125,4 @@ No platform differences.
 ## API
 
 - [Contacts source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Contacts)
-- [Contacts API documentation](xref:Xamarin.Essentials.Contacts)
+<!-- - [Contacts API documentation](xref:Microsoft.Maui.Essentials.Contacts)-->

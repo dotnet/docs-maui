@@ -1,5 +1,5 @@
 ---
-title: "Essentials: Battery"
+title: "Battery"
 description: "Describes the Battery class in the Microsoft.Maui.Essentials namespace, which lets you check the device's battery information and monitor for changes."
 ms.date: 08/05/2021
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]

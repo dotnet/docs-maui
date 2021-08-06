@@ -1,16 +1,13 @@
 ---
-title: "Xamarin.Essentials: Connectivity"
-description: "The Connectivity class in Xamarin.Essentials lets you monitor for changes in the device's network conditions, check the current network access, and how it is currently connected."
-author: jamesmontemagno
-ms.author: jamont
+title: "Connectivity"
+description: "The Connectivity class in Microsoft.Maui.Essentials lets you monitor for changes in the device's network conditions, check the current network access, and how it is currently connected."
 ms.date: 01/08/2019
-ms.custom: video
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
-# Xamarin.Essentials: Connectivity
+# Connectivity
 
-The **Connectivity** class lets you monitor for changes in the device's network conditions, check the current network access, and how it is currently connected.
+The `Connectivity` class lets you monitor for changes in the device's network conditions, check the current network access, and how it is currently connected.
 
 ## Get started
 
@@ -42,7 +39,7 @@ Or right click on the Android project and open the project's properties. Under *
 
 No additional setup required.
 
-# [UWP](#tab/uwp)
+# [Windows](#tab/windows)
 
 No additional setup required.
 
@@ -50,11 +47,7 @@ No additional setup required.
 
 ## Using Connectivity
 
-Add a reference to Xamarin.Essentials in your class:
-
-```csharp
-using Xamarin.Essentials;
-```
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
 Check current network access:
 
@@ -67,7 +60,7 @@ if (current == NetworkAccess.Internet)
 }
 ```
 
-[Network access](xref:Xamarin.Essentials.NetworkAccess) falls into the following categories:
+[Network access](xref:Microsoft.Maui.Essentials.NetworkAccess) falls into the following categories:
 
 * **Internet** – Local and internet access.
 * **ConstrainedInternet** – Limited internet access. Indicates captive portal connectivity, where local access to a web portal is provided, but access to the Internet requires that specific credentials are provided via a portal.
@@ -75,7 +68,7 @@ if (current == NetworkAccess.Internet)
 * **None** – No connectivity is available.
 * **Unknown** – Unable to determine internet connectivity.
 
-You can check what type of [connection profile](xref:Xamarin.Essentials.ConnectionProfile) the device is actively using:
+You can check what type of [connection profile](xref:Microsoft.Maui.Essentials.ConnectionProfile) the device is actively using:
 
 ```csharp
 var profiles = Connectivity.ConnectionProfiles;
@@ -111,4 +104,4 @@ It is important to note that it is possible that `Internet` is reported by `Netw
 ## API
 
 * [Connectivity source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Connectivity)
-* [Connectivity API documentation](xref:Xamarin.Essentials.Connectivity)
+* [Connectivity API documentation](xref:Microsoft.Maui.Essentials.Connectivity)

@@ -1,5 +1,5 @@
 ---
-title: "Essentials: Clipboard"
+title: "Clipboard"
 description: "Describes the Clipboard class in the Microsoft.Maui.Essentials namespace, which lets you copy and paste text to the system clipboard"
 ms.date: 08/05/2021
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]

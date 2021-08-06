@@ -1,16 +1,13 @@
 ---
-title: "Xamarin.Essentials: SMS"
-description: "The Sms class in Xamarin.Essentials enables an application to open the default SMS application with a specified message to send to a recipient."
-author: jamesmontemagno
-ms.custom: video
-ms.author: jamont
+title: "SMS"
+description: "The Sms class in Microsoft.Maui.Essentials enables an application to open the default SMS application with a specified message to send to a recipient."
 ms.date: 09/24/2020
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
-# Xamarin.Essentials: SMS
+# SMS
 
-The **Sms** class enables an application to open the default SMS application with a specified message to send to a recipient.
+The `Sms` class enables an application to open the default SMS application with a specified message to send to a recipient.
 
 ## Get started
 
@@ -37,7 +34,7 @@ Open the **AndroidManifest.xml** file under the **Properties** folder and add th
 
 No additional setup required.
 
-# [UWP](#tab/uwp)
+# [Windows](#tab/windows)
 
 No platform differences.
 
@@ -45,11 +42,7 @@ No platform differences.
 
 ## Using Sms
 
-Add a reference to Xamarin.Essentials in your class:
-
-```csharp
-using Xamarin.Essentials;
-```
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
 The SMS functionality works by calling the `ComposeAsync` method an `SmsMessage` that contains the message's recipient and the body of the message, both of which are optional.
 
@@ -102,4 +95,4 @@ public class SmsTest
 ## API
 
 - [Sms source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Sms)
-- [Sms API documentation](xref:Xamarin.Essentials.Sms)
+<!-- - [Sms API documentation](xref:Microsoft.Maui.Essentials.Sms)-->

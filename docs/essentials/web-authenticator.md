@@ -1,15 +1,15 @@
 ---
-title: "Xamarin.Essentials: Web Authenticator"
-description: "This document describes the WebAuthenticator class in Xamarin.Essentials, which lets you start browser based authentication flows which listen for a callback to the app."
+title: "Web Authenticator"
+description: "Describes the WebAuthenticator class in Microsoft.Maui.Essentials, which lets you start browser based authentication flows which listen for a callback to the app."
 author: redth
 ms.author: jodick
 ms.date: 03/26/2020
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
-# Xamarin.Essentials: Web Authenticator
+# Web Authenticator
 
-The **WebAuthenticator** class lets you initiate browser based flows which listen for a callback to a specific URL registered to the app.
+The `WebAuthenticator` class lets you initiate browser based flows which listen for a callback to a specific URL registered to the app.
 
 ## Overview
 
@@ -99,7 +99,7 @@ public override bool ContinueUserActivity(UIApplication application, NSUserActiv
 }
 ```
 
-# [UWP](#tab/uwp)
+# [Windows](#tab/windows)
 
 For UWP, you'll need to declare your callback URI in your `Package.appxmanifest` file:
 
@@ -121,11 +121,7 @@ For UWP, you'll need to declare your callback URI in your `Package.appxmanifest`
 
 ## Using WebAuthenticator
 
-Add a reference to Xamarin.Essentials in your class:
-
-```csharp
-using Xamarin.Essentials;
-```
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
 The API consists mainly of a single method `AuthenticateAsync` which takes two parameters: The url which should be used to start the web browser flow, and the Uri which you expect the flow to ultimately call back to and which your app is registered to be able to handle.
 
@@ -170,7 +166,7 @@ Custom Tabs are used whenever available, otherwise an Intent is started for the 
 
 On iOS 12 or higher, `ASWebAuthenticationSession` is used.  On iOS 11, `SFAuthenticationSession` is used.  On older iOS versions, `SFSafariViewController` is used if available, otherwise Safari is used.
 
-# [UWP](#tab/uwp)
+# [Windows](#tab/windows)
 
 On UWP, the `WebAuthenticationBroker` is used if supported, otherwise the system browser is used.
 
@@ -285,5 +281,5 @@ Check out the [full controller sample](https://github.com/xamarin/Essentials/blo
 ## API
 
 - [WebAuthenticator source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/WebAuthenticator)
-- [WebAuthenticator API documentation](xref:Xamarin.Essentials.WebAuthenticator)
+<!-- - [WebAuthenticator API documentation](xref:Microsoft.Maui.Essentials.WebAuthenticator)-->
 - [ASP.NET Core Server Sample](https://github.com/xamarin/Essentials/blob/develop/Samples/Sample.Server.WebAuthenticator/)

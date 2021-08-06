@@ -1,11 +1,8 @@
 ---
 title: "Get Started with Xamarin.Essentials"
 description: "Get started with Xamarin.Essentials, which provides a single cross-platform API that works with any iOS, Android, or UWP application."
-author: jamesmontemagno
-ms.author: jamont
-ms.custom: video
 ms.date: 05/11/2020
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
 # Get Started with Xamarin.Essentials
@@ -77,7 +74,7 @@ Xamarin.Essentials is available as a NuGet package and is included in every new 
 
     No additional setup required.
 
-    # [UWP](#tab/uwp)
+    # [Windows](#tab/windows)
 
     No additional setup required.
 

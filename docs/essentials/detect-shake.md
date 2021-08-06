@@ -1,16 +1,13 @@
 ---
-title: "Xamarin.Essentials: Detect Shake"
-description: "The Accelerometer class in Xamarin.Essentials enables you to detect a shake movement of the device."
-author: jamesmontemagno
-ms.author: jamont
+title: "Detect Shake"
+description: "The Accelerometer class in Microsoft.Maui.Essentials enables you to detect a shake movement of the device."
 ms.date: 05/28/2019
-ms.custom: video
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
-# Xamarin.Essentials: Detect Shake
+# Detect Shake
 
-The **[Accelerometer](accelerometer.md)** class lets you monitor the device's accelerometer sensor, which indicates the acceleration of the device in three-dimensional space. Additionally, it enables you to register for events when the user shakes the device.
+The `[Accelerometer](accelerometer.md)` class lets you monitor the device's accelerometer sensor, which indicates the acceleration of the device in three-dimensional space. Additionally, it enables you to register for events when the user shakes the device.
 
 ## Get started
 
@@ -18,11 +15,7 @@ The **[Accelerometer](accelerometer.md)** class lets you monitor the device's ac
 
 ## Using Detect Shake
 
-Add a reference to Xamarin.Essentials in your class:
-
-```csharp
-using Xamarin.Essentials;
-```
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
 To detect a shake of the device you must use the Accelerometer functionality by calling the `Start` and `Stop` methods to listen for changes to the acceleration and to detect a shake. Any time a shake is detected a `ShakeDetected` event will fire. It is recommended to use `Game` or faster for the `SensorSpeed`. Here is sample usage:
 
@@ -74,4 +67,4 @@ The detect shake API uses raw readings from the accelerometer to calculate accel
 ## API
 
 - [Accelerometer source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Accelerometer)
-- [Accelerometer API documentation](xref:Xamarin.Essentials.Accelerometer)
+<!-- - [Accelerometer API documentation](xref:Microsoft.Maui.Essentials.Accelerometer)-->

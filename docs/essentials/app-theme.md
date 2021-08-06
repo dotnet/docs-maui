@@ -1,5 +1,5 @@
 ---
-title: "Essentials: App Theme"
+title: "App Theme"
 description: "Describes the AppInfo class in the Microsoft.Maui.Essentials namespace and how it can be used to detect the requested app theme."
 ms.date: 08/04/2021
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials", "RequestedTheme"]
@@ -33,7 +33,7 @@ This class provides the current requested theme by the system for your applicati
 
 _Unspecified_ is returned when the operating system doesn't have a specific user interface style. An example of this is on devices running versions of iOS older than 13.0.
 
-## Platform specifics
+## Platform implementation specifics
 
 This section describes platform-specific implementation details related to the `AppInfo.RequestedTheme` property.
 

@@ -1,16 +1,13 @@
 ---
-title: "Xamarin.Essentials: File System Helpers"
-description: "The FileSystem class in Xamarin.Essentials contains a series of helpers to find the application's cache and data directories and open files inside of the app package."
-author: jamesmontemagno
-ms.custom: video
-ms.author: jamont
+title: "File System Helpers"
+description: "The FileSystem class in Microsoft.Maui.Essentials contains a series of helpers to find the application's cache and data directories and open files inside of the app package."
 ms.date: 11/04/2018
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
-# Xamarin.Essentials: File System Helpers
+# File System Helpers
 
-The **FileSystem** class contains a series of helpers to find the application's cache and data directories and open files inside of the app package.
+The `FileSystem` class contains a series of helpers to find the application's cache and data directories and open files inside of the app package.
 
 ## Get started
 
@@ -18,11 +15,7 @@ The **FileSystem** class contains a series of helpers to find the application's 
 
 ## Using File System Helpers
 
-Add a reference to Xamarin.Essentials in your class:
-
-```csharp
-using Xamarin.Essentials;
-```
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
 To get the application's directory to store **cache data**. Cache data can be used for any data that needs to persist longer than temporary data, but should not be data that is required to properly operate, as the OS dictates when this storage is cleared.
 
@@ -48,7 +41,7 @@ To open a file that is bundled into the application package:
  }
 ```
 
-## Platform Implementation Specifics
+## Platform implementation specifics
 
 # [Android](#tab/android)
 
@@ -67,7 +60,7 @@ Add any file into the **Assets** folder in the Android project and mark the Buil
 
 Add any file into the **Resources** folder in the iOS project and mark the Build Action as **BundledResource** to use it with `OpenAppPackageFileAsync`.
 
-# [UWP](#tab/uwp)
+# [Windows](#tab/windows)
 
 - **CacheDirectory** – Returns the [LocalCacheFolder](/uwp/api/windows.storage.applicationdata.localcachefolder#Windows_Storage_ApplicationData_LocalCacheFolder) directory..
 - **AppDataDirectory** – Returns the [LocalFolder](/uwp/api/windows.storage.applicationdata.localfolder#Windows_Storage_ApplicationData_LocalFolder) directory that is backed up to the cloud.
@@ -79,4 +72,4 @@ Add any file into the root in the UWP project and mark the Build Action as **Con
 ## API
 
 - [File System Helpers source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/FileSystem)
-- [File System API documentation](xref:Xamarin.Essentials.FileSystem)
+<!-- - [File System API documentation](xref:Microsoft.Maui.Essentials.FileSystem)-->

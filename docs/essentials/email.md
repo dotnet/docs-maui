@@ -1,16 +1,13 @@
 ---
-title: "Xamarin.Essentials: Email"
-description: "The Email class in Xamarin.Essentials enables an application to open the default email application with a specified information including subject, body, and recipients (TO, CC, BCC)."
-author: jamesmontemagno
-ms.custom: video
-ms.author: jamont
+title: "Email"
+description: "The Email class in Microsoft.Maui.Essentials enables an application to open the default email application with a specified information including subject, body, and recipients (TO, CC, BCC)."
 ms.date: 09/24/2020
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
-# Xamarin.Essentials: Email
+# Email
 
-The **Email** class enables an application to open the default email application with a specified information including subject, body, and recipients (TO, CC, BCC).
+The `Email` class enables an application to open the default email application with a specified information including subject, body, and recipients (TO, CC, BCC).
 
 To access the **Email** functionality the following platform specific setup is required.
 
@@ -40,7 +37,7 @@ In iOS 9 and greater, Apple enforces what schemes an application can query for. 
 </array>
 ```
 
-# [UWP](#tab/uwp)
+# [Windows](#tab/windows)
 
 No platform differences.
 
@@ -55,11 +52,7 @@ No platform differences.
 
 ## Using Email
 
-Add a reference to Xamarin.Essentials in your class:
-
-```csharp
-using Xamarin.Essentials;
-```
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
 The Email functionality works by calling the `ComposeAsync` method an `EmailMessage` that contains information about the email:
 
@@ -114,7 +107,7 @@ message.Attachments.Add(new EmailAttachment(file));
 await Email.ComposeAsync(message);
 ```
 
-## Platform Differences
+## Platform differences
 
 # [Android](#tab/android)
 
@@ -124,7 +117,7 @@ Not all email clients for Android support `Html`, since there is no way to detec
 
 No platform differences.
 
-# [UWP](#tab/uwp)
+# [Windows](#tab/windows)
 
 Only supports `PlainText` as the `BodyFormat` attempting to send `Html` will throw a `FeatureNotSupportedException`.
 
@@ -135,4 +128,4 @@ Not all email clients support sending attachments. See [documentation](/windows/
 ## API
 
 - [Email source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Email)
-- [Email API documentation](xref:Xamarin.Essentials.Email)
+<!-- - [Email API documentation](xref:Microsoft.Maui.Essentials.Email)-->

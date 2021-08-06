@@ -1,10 +1,8 @@
 ---
 title: "Xamarin.Essentials Platform & Feature Support"
 description: "Xamarin.Essentials provides a single cross-platform API that works with any iOS, Android, or UWP application that can be accessed from shared code no matter how the user interface is created."
-author: jamesmontemagno
-ms.author: jamont
 ms.date: 08/20/2019
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
 # Platform Support

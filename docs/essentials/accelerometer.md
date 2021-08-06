@@ -1,5 +1,5 @@
 ---
-title: "Essentials: Accelerometer"
+title: "Accelerometer"
 description: "The Accelerometer class in Microsoft.Maui.Essentials lets you monitor the device's accelerometer sensor, which indicates the acceleration of the device in 3D space."
 ms.date: 08/02/2021
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials", "A", "G", "X", "Y", "Z"]

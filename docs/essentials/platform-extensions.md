@@ -1,13 +1,11 @@
 ---
 title: "Xamarin.Essentials Platform Extensions"
 description: "Xamarin.Essentials provides several platform extension methods when having to work with platform types such as Rect, Size, and Point."
-author: jamesmontemagno
-ms.author: jamont
 ms.date: 03/13/2019
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
-# Xamarin.Essentials: Platform Extensions
+# Platform Extensions
 
 Xamarin.Essentials provides several platform extension methods when having to work with platform types such as Rect, Size, and Point. This means that you can convert between the `System` version of these types for their iOS, Android, and UWP specific types.
 
@@ -17,11 +15,7 @@ Xamarin.Essentials provides several platform extension methods when having to wo
 
 ## Using Platform Extensions
 
-Add a reference to Xamarin.Essentials in your class:
-
-```csharp
-using Xamarin.Essentials;
-```
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
 All platform extensions can only be called from the iOS, Android, or UWP project.
 
@@ -140,6 +134,6 @@ var system2 = platform.ToSystemRectangle();
 ## API
 
 - [Converters source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Types/PlatformExtensions)
-- [Point Converters API documentation](xref:Xamarin.Essentials.PointExtensions)
-- [Rectangle Converters API documentation](xref:Xamarin.Essentials.RectangleExtensions)
-- [Size Converters API documentation](xref:Xamarin.Essentials.SizeExtensions)
+<!-- - [Point Converters API documentation](xref:Microsoft.Maui.Essentials.PointExtensions)-->
+<!-- - [Rectangle Converters API documentation](xref:Microsoft.Maui.Essentials.RectangleExtensions)-->
+<!-- - [Size Converters API documentation](xref:Microsoft.Maui.Essentials.SizeExtensions)-->

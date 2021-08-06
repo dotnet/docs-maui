@@ -1,15 +1,13 @@
 ---
-title: "Xamarin.Essentials: Screenshot"
-description: "This document describes the Screenshot class in Xamarin.Essentials, which lets you take a capture of the current displayed screen of the app."
-author: jamesmontemagno
-ms.author: jamont
+title: "Screenshot"
+description: "Describes the Screenshot class in Microsoft.Maui.Essentials, which lets you take a capture of the current displayed screen of the app."
 ms.date: 04/14/2021
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
-# Xamarin.Essentials: Screenshot
+# Screenshot
 
-The **Screenshot** class lets you take a capture of the current displayed screen of the app.
+The `Screenshot` class lets you take a capture of the current displayed screen of the app.
 
 ## Get started
 
@@ -17,11 +15,7 @@ The **Screenshot** class lets you take a capture of the current displayed screen
 
 ## Using Screenshot
 
-Add a reference to Xamarin.Essentials in your class:
-
-```csharp
-using Xamarin.Essentials;
-```
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
 Then call `CaptureAsync` to take a screenshot of the current screen of the running application. This will return back a `ScreenshotResult` that can be used to get the `Width`, `Height`, and a `Stream` of the screenshot taken.
 
@@ -43,4 +37,4 @@ Not all views support being captured at a screen level such as an OpenGL view.
 ## API
 
 - [Screenshot source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Screenshot)
-- [Screenshot API documentation](xref:Xamarin.Essentials.Screenshot)
+<!-- - [Screenshot API documentation](xref:Microsoft.Maui.Essentials.Screenshot)-->

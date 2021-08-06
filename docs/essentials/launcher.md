@@ -1,16 +1,13 @@
 ---
 title: "Xamarin.Essentials Launcher"
-description: "The Launcher class in Xamarin.Essentials enables an application to open a URI by the system."
-author: jamesmontemagno
-ms.custom: video
-ms.author: jamont
+description: "The Launcher class in Microsoft.Maui.Essentials enables an application to open a URI by the system."
 ms.date: 08/20/2019
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
-# Xamarin.Essentials: Launcher
+# Launcher
 
-The **Launcher** class enables an application to open a URI by the system. This is often used when deep linking into another application's custom URI schemes. If you are looking to open the browser to a website then you should refer to the **[Browser](open-browser.md)** API.
+The `Launcher` class enables an application to open a URI by the system. This is often used when deep linking into another application's custom URI schemes. If you are looking to open the browser to a website then you should refer to the **[Browser](open-browser.md)** API.
 
 ## Get started
 
@@ -18,11 +15,7 @@ The **Launcher** class enables an application to open a URI by the system. This 
 
 ## Using Launcher
 
-Add a reference to Xamarin.Essentials in your class:
-
-```csharp
-using Xamarin.Essentials;
-```
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
 To use the Launcher functionality call the `OpenAsync` method and pass in a `string` or `Uri` to open. Optionally, the `CanOpenAsync` method can be used to check if the URI schema can be handled by an application on the device.
 
@@ -68,7 +61,7 @@ In iOS 9 and greater, Apple enforces what schemes an application can query for. 
 </array>
 ```
 
-# [UWP](#tab/uwp)
+# [Windows](#tab/windows)
 
 No additional setup.
 
@@ -95,7 +88,7 @@ await Launcher.OpenAsync(new OpenFileRequest
 
 [!INCLUDE [ios-PresentationSourceBounds](includes/ios-PresentationSourceBounds.md)]
 
-## Platform Differences
+## Platform differences
 
 # [Android](#tab/android)
 
@@ -109,7 +102,7 @@ The Task returned from `CanOpenAsync` completes immediately.
 
 More information about the iOS implementation is available [here](xref:UIKit.UIApplication.CanOpenUrl*)
 
-# [UWP](#tab/uwp)
+# [Windows](#tab/windows)
 
 No platform differences.
 
@@ -118,4 +111,4 @@ No platform differences.
 ## API
 
 - [Launcher source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Launcher)
-- [Launcher API documentation](xref:Xamarin.Essentials.Launcher)
+<!-- - [Launcher API documentation](xref:Microsoft.Maui.Essentials.Launcher)-->

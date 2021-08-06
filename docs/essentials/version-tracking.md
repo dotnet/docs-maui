@@ -1,16 +1,13 @@
 ---
-title: "Xamarin.Essentials: Version Tracking"
-description: "The VersionTracking class in Xamarin.Essentials lets you check the applications version and build numbers along with seeing additional information such as if it is the first time the application launched ever or for the current version, get the previous build information, and more."
-author: jamesmontemagno
-ms.author: jamont
+title: "Version Tracking"
+description: "The VersionTracking class in Microsoft.Maui.Essentials lets you check the applications version and build numbers along with seeing additional information such as if it is the first time the application launched ever or for the current version, get the previous build information, and more."
 ms.date: 05/28/2019
-ms.custom: video
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
-# Xamarin.Essentials: Version Tracking
+# Version Tracking
 
-The **VersionTracking** class lets you check the applications version and build numbers along with seeing additional information such as if it is the first time the application launched ever or for the current version, get the previous build information, and more.
+The `VersionTracking` class lets you check the applications version and build numbers along with seeing additional information such as if it is the first time the application launched ever or for the current version, get the previous build information, and more.
 
 ## Get started
 
@@ -18,13 +15,9 @@ The **VersionTracking** class lets you check the applications version and build 
 
 ## Using Version Tracking
 
-Add a reference to Xamarin.Essentials in your class:
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
-```csharp
-using Xamarin.Essentials;
-```
-
-The first time you use the **VersionTracking** class it will start tracking the current version. You must call `Track` early only in your application each time it is loaded to ensure the current version information is tracked:
+The first time you use the `VersionTracking` class it will start tracking the current version. You must call `Track` early only in your application each time it is loaded to ensure the current version information is tracked:
 
 ```csharp
 VersionTracking.Track();
@@ -68,11 +61,11 @@ var versionHistory = VersionTracking.VersionHistory;
 var buildHistory = VersionTracking.BuildHistory;
 ```
 
-## Platform Implementation Specifics
+## Platform implementation specifics
 
 All version information is stored using the [Preferences](preferences.md) API in Xamarin.Essentials and is stored with a filename of **[YOUR-APP-PACKAGE-ID].xamarinessentials.versiontracking** and follows the same data persistence outlined in the [Preferences](preferences.md#persistence) documentation.
 
 ## API
 
 - [Version Tracking source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/VersionTracking)
-- [Version Tracking API documentation](xref:Xamarin.Essentials.VersionTracking)
+<!-- - [Version Tracking API documentation](xref:Microsoft.Maui.Essentials.VersionTracking)-->

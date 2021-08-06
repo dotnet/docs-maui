@@ -1,15 +1,13 @@
 ---
-title: "Xamarin.Essentials: File Picker"
-description: "The FilePicker class in Xamarin.Essentials lets a user pick a single or multiple files from the device."
-author: jamesmontemagno
-ms.author: jamont
+title: "File Picker"
+description: "The FilePicker class in Microsoft.Maui.Essentials lets a user pick a single or multiple files from the device."
 ms.date: 04/27/2021
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
-# Xamarin.Essentials: File Picker
+# File Picker
 
-The **FilePicker** class lets a user pick a single or multiple files from the device.
+The `FilePicker` class lets a user pick a single or multiple files from the device.
 
 ## Get started
 
@@ -41,7 +39,7 @@ Or right click on the Android project and open the project's properties. Under *
 
 To enable iCloud capabilities in the file picker on iOS please follow these [directions](../ios/platform/document-picker.md#enabling-icloud-in-xamarin).
 
-# [UWP](#tab/uwp)
+# [Windows](#tab/windows)
 
 No additional setup required.
 
@@ -107,7 +105,7 @@ If you desire your user to pick multiple files you can call the `FilePicker.Pick
 
 [!INCLUDE [tip-file-result](includes/tip-file-result.md)]
 
-## Platform Differences
+## Platform differences
 
 # [Android](#tab/android)
 
@@ -117,7 +115,7 @@ If you desire your user to pick multiple files you can call the `FilePicker.Pick
 
 No platform differences.
 
-# [UWP](#tab/uwp)
+# [Windows](#tab/windows)
 
 No platform differences.
 
@@ -126,7 +124,7 @@ No platform differences.
 ## API
 
 - [FilePicker source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/FilePicker)
-- [FilePicker API documentation](xref:Xamarin.Essentials.FilePicker)
+<!-- - [FilePicker API documentation](xref:Microsoft.Maui.Essentials.FilePicker)-->
 
 ## Related Video
 

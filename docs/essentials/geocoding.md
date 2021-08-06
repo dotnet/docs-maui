@@ -1,16 +1,13 @@
 ---
-title: "Xamarin.Essentials: Geocoding"
-description: "The Geocoding class in Xamarin.Essentials provides APIs to both geocode a placemark to a positional coordinates and reverse geocode coordinates to a placemark."
-author: jamesmontemagno
-ms.author: jamont
+title: "Geocoding"
+description: "The Geocoding class in Microsoft.Maui.Essentials provides APIs to both geocode a placemark to a positional coordinates and reverse geocode coordinates to a placemark."
 ms.date: 05/28/2019
-ms.custom: video
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
-# Xamarin.Essentials: Geocoding
+# Geocoding
 
-The **Geocoding** class provides APIs to geocode a placemark to a positional coordinates and reverse geocode coordinates to a placemark.
+The `Geocoding` class provides APIs to geocode a placemark to a positional coordinates and reverse geocode coordinates to a placemark.
 
 ## Get started
 
@@ -26,7 +23,7 @@ No additional setup required.
 
 No additional setup required.
 
-# [UWP](#tab/uwp)
+# [Windows](#tab/windows)
 
 A Bing Maps API key is required to use geocoding functionality. Sign up for a free [Bing Maps](https://www.bingmapsportal.com/) account. Under **My account > My keys** create a new key and fill out information based on your application type (which should be **Public Windows App (UWP, 8.x, and earlier)** for UWP apps).
 
@@ -40,13 +37,9 @@ Platform.MapServiceToken = "YOUR-KEY-HERE";
 
 ## Using Geocoding
 
-Add a reference to Xamarin.Essentials in your class:
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
-```csharp
-using Xamarin.Essentials;
-```
-
-Getting [location](xref:Xamarin.Essentials.Location) coordinates for an address:
+Getting [location](xref:Microsoft.Maui.Essentials.Location) coordinates for an address:
 
 ```csharp
 try
@@ -74,7 +67,7 @@ The altitude isn't always available. If it is not available, the `Altitude` prop
 
 ## Using Reverse Geocoding
 
-Reverse geocoding is the process of getting [placemarks](xref:Xamarin.Essentials.Placemark) for an existing set of coordinates:
+Reverse geocoding is the process of getting [placemarks](xref:Microsoft.Maui.Essentials.Placemark) for an existing set of coordinates:
 
 ```csharp
 try
@@ -114,9 +107,9 @@ catch (Exception ex)
 
 ## Distance between Two Locations
 
-The [`Location`](xref:Xamarin.Essentials.Location) and [`LocationExtensions`](xref:Xamarin.Essentials.LocationExtensions) classes define methods to calculate the distance between two locations. See the article [**Xamarin.Essentials: Geolocation**](geolocation.md#calculate-distance) for an example.
+The [`Location`](xref:Microsoft.Maui.Essentials.Location) and [`LocationExtensions`](xref:Microsoft.Maui.Essentials.LocationExtensions) classes define methods to calculate the distance between two locations. See the article [**Xamarin.Essentials: Geolocation**](geolocation.md#calculate-distance) for an example.
 
 ## API
 
 - [Geocoding source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Geocoding)
-- [Geocoding API documentation](xref:Xamarin.Essentials.Geocoding)
+<!-- - [Geocoding API documentation](xref:Microsoft.Maui.Essentials.Geocoding)-->

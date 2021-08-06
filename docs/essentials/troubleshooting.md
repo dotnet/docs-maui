@@ -1,13 +1,11 @@
 ---
-title: "Xamarin.Essentials: Troubleshooting"
-description: "This document describes how to troubleshoot issues encountered when developing with the Xamarin.Essentials library."
-author: jamesmontemagno
-ms.author: jamont
+title: "Troubleshooting"
+description: "Describes how to troubleshoot issues encountered when developing with the Xamarin.Essentials library."
 ms.date: 01/06/2020
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
-# Xamarin.Essentials: Troubleshooting
+# Troubleshooting
 
 ## Error: Version conflict detected for Xamarin.Android.Support.Compat
 

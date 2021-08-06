@@ -1,16 +1,13 @@
 ---
-title: "Xamarin.Essentials: Preferences"
-description: "This document describes the Preferences class in Xamarin.Essentials, which saves application preferences in a key/value store. It discusses how to use the class and the types of data that can be stored."
-author: jamesmontemagno
-ms.author: jamont
+title: "Preferences"
+description: "Describes the Preferences class in Microsoft.Maui.Essentials, which saves application preferences in a key/value store. It discusses how to use the class and the types of data that can be stored."
 ms.date: 01/15/2019
-ms.custom: video
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
-# Xamarin.Essentials: Preferences
+# Preferences
 
-The **Preferences** class helps to store application preferences in a key/value store.
+The `Preferences` class helps to store application preferences in a key/value store.
 
 ## Get started
 
@@ -18,11 +15,7 @@ The **Preferences** class helps to store application preferences in a key/value 
 
 ## Using Preferences
 
-Add a reference to Xamarin.Essentials in your class:
-
-```csharp
-using Xamarin.Essentials;
-```
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
 To save a value for a given _key_ in preferences:
 
@@ -82,7 +75,7 @@ Preferences are stored natively, which allows you to integrate your settings int
 
 Values of `DateTime` are stored in a 64-bit binary (long integer) format using two methods defined by the `DateTime` class: The [`ToBinary`](xref:System.DateTime.ToBinary) method is used to encode the `DateTime` value, and the [`FromBinary`](xref:System.DateTime.FromBinary(System.Int64)) method decodes the value. See the documentation of these methods for adjustments that might be made to decoded values when a `DateTime` is stored that is not a Coordinated Universal Time (UTC) value.
 
-## Platform Implementation Specifics
+## Platform implementation specifics
 
 # [Android](#tab/android)
 
@@ -92,7 +85,7 @@ All data is stored into [Shared Preferences](https://developer.android.com/train
 
 [NSUserDefaults](../ios/app-fundamentals/user-defaults.md) is used to store values on iOS devices. If no `sharedName` is specified the `StandardUserDefaults` are used, else the name is used to create a new `NSUserDefaults` with the specified name used for the `NSUserDefaultsType.SuiteName`.
 
-# [UWP](#tab/uwp)
+# [Windows](#tab/windows)
 
 [ApplicationDataContainer](/uwp/api/windows.storage.applicationdatacontainer) is used to store the values on the device. If no `sharedName` is specified the `LocalSettings` are used, otherwise the name is used to create a new container inside of `LocalSettings`.
 
@@ -111,4 +104,4 @@ When storing a string, this API is intended to store small amounts of text. Perf
 ## API
 
 - [Preferences source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Preferences)
-- [Preferences API documentation](xref:Xamarin.Essentials.Preferences)
+<!-- - [Preferences API documentation](xref:Microsoft.Maui.Essentials.Preferences)-->

@@ -1,16 +1,13 @@
 ---
-title: "Xamarin.Essentials: Permissions"
-description: "This document describes the Permissions class in Xamarin.Essentials, which provides the ability to check and request runtime permissions."
-author: jamesmontemagno
-ms.author: jamont
-ms.custom: video
+title: "Permissions"
+description: "Describes the Permissions class in Microsoft.Maui.Essentials, which provides the ability to check and request runtime permissions."
 ms.date: 01/04/2021
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
-# Xamarin.Essentials: Permissions
+# Permissions
 
-The **Permissions** class provides the ability to check and request runtime permissions.
+The `Permissions` class provides the ability to check and request runtime permissions.
 
 ## Get started
 
@@ -20,11 +17,7 @@ The **Permissions** class provides the ability to check and request runtime perm
 
 ## Using Permissions
 
-Add a reference to Xamarin.Essentials in your class:
-
-```csharp
-using Xamarin.Essentials;
-```
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
 ## Checking Permissions
 
@@ -240,7 +233,7 @@ if (status != PermissionStatus.Granted)
 }
 ```
 
-## Platform Implementation Specifics
+## Platform implementation specifics
 
 # [Android](#tab/android)
 
@@ -254,7 +247,7 @@ Permissions must have a matching string in the `Info.plist` file. Once a permiss
 
 Read more on the [iOS Security and Privacy Features](../ios/app-fundamentals/security-privacy.md) documentation.
 
-# [UWP](#tab/uwp)
+# [Windows](#tab/windows)
 
 Permissions must have matching capabilities declared in the package manifest. Permission status defaults to Unknown in most instances.
 
@@ -265,4 +258,4 @@ Read more on the [App Capability Declaration](/windows/uwp/packaging/app-capabil
 ## API
 
 - [Permissions source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Permissions)
-- [Permissions API documentation](xref:Xamarin.Essentials.Permissions)
+<!-- - [Permissions API documentation](xref:Microsoft.Maui.Essentials.Permissions)-->

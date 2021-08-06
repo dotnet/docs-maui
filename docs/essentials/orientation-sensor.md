@@ -1,14 +1,12 @@
 ---
-title: "Xamarin.Essentials: OrientationSensor"
+title: "OrientationSensor"
 description: "The OrientationSensor class lets you monitor the orientation of a device in three-dimensional space."
-author: jamesmontemagno
-ms.author: jamont
 ms.date: 11/04/2018
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
-# Xamarin.Essentials: OrientationSensor
+# OrientationSensor
 
-The **OrientationSensor** class lets you monitor the orientation of a device in three dimensional space.
+The `OrientationSensor` class lets you monitor the orientation of a device in three dimensional space.
 
 > [!NOTE]
 > This class is for determining the orientation of a device in 3D space. If you need to determine if the device's video display is in portrait or landscape mode, use the `Orientation` property of the `ScreenMetrics` object available from the [`DeviceDisplay`](device-display.md) class.
@@ -19,11 +17,7 @@ The **OrientationSensor** class lets you monitor the orientation of a device in 
 
 ## Using OrientationSensor
 
-Add a reference to Xamarin.Essentials in your class:
-
-```csharp
-using Xamarin.Essentials;
-```
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
 The `OrientationSensor` is enabled by calling the `Start` method to monitor changes to the device's orientation, and disabled by calling the `Stop` method. Any changes are sent back through the `ReadingChanged` event. Here is a sample usage:
 
@@ -105,4 +99,4 @@ Examples:
 ## API
 
 - [OrientationSensor source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/OrientationSensor)
-- [OrientationSensor API documentation](xref:Xamarin.Essentials.OrientationSensor)
+<!-- - [OrientationSensor API documentation](xref:Microsoft.Maui.Essentials.OrientationSensor)-->

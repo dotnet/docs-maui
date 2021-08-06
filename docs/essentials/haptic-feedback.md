@@ -1,15 +1,14 @@
 ---
-title: "Xamarin.Essentials: Haptic Feedback"
-description: "This document describes the HapticFeedback class in Xamarin.Essentials, which lets you control haptic feedback on device."
+title: "Haptic Feedback"
+description: "Describes the HapticFeedback class in Microsoft.Maui.Essentials, which lets you control haptic feedback on device."
 author: dimonovdd
-ms.author: jamont
 ms.date: 01/04/2021
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
-# Xamarin.Essentials: Haptic Feedback
+# Haptic Feedback
 
-The **HapticFeedback** class lets you control haptic feedback on device.
+The `HapticFeedback` class lets you control haptic feedback on device.
 
 ## Get started
 
@@ -41,7 +40,7 @@ Or right click on the Android project and open the project's properties. Under *
 
 No additional setup required.
 
-# [UWP](#tab/uwp)
+# [Windows](#tab/windows)
 
 No platform differences.
 
@@ -49,11 +48,7 @@ No platform differences.
 
 ## Using Haptic Feedback
 
-Add a reference to Xamarin.Essentials in your class:
-
-```csharp
-using Xamarin.Essentials;
-```
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
 The Haptic Feedback functionality can be performed with a `Click` or `LongPress` feedback type.
 
@@ -79,4 +74,4 @@ catch (Exception ex)
 ## API
 
 - [HapticFeedback source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/HapticFeedback)
-- [HapticFeedback API documentation](xref:Xamarin.Essentials.HapticFeedback)
+<!-- - [HapticFeedback API documentation](xref:Microsoft.Maui.Essentials.HapticFeedback)-->
