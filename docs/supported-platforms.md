@@ -6,12 +6,15 @@ ms.date: 06/07/2021
 
 # .NET MAUI supported platforms
 
-.NET Multi-platform App UI (MAUI) apps can be written for the following platforms:
+.NET Multi-platform App UI (.NET MAUI) apps can be written for the following platforms:
 
 - Android 5.0 (API 21) or higher.
 - iOS 10 or higher.
 - macOS 11 (Big Sur) or higher.
 - Windows desktop and the Universal Windows Platform (UWP), using Windows UI Library (WinUI) 3.
+
+> [!NOTE]
+> macOS support is provided by Mac Catalyst.
 
 .NET MAUI apps for Android, iOS, and Windows can be built in Visual Studio. However, a networked Mac is required for iOS development. From .NET MAUI Preview 6, the minimum required version of Xcode is 13.0 Beta 1.
 
