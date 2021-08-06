@@ -1,5 +1,5 @@
 ---
-title: "Essentials: Barometer"
+title: "Barometer"
 description: "Describes the Barometer class in the Microsoft.Maui.Essentials namespace, which lets you monitor the device's barometer sensor."
 ms.date: 08/04/2021
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
@@ -61,7 +61,7 @@ public class BarometerTest
 
 [!INCLUDE [sensor-speed](includes/sensor-speed.md)]
 
-## Platform specifics
+## Platform implementation specifics
 
 This section describes platform-specific implementation details related to the barometer.
 

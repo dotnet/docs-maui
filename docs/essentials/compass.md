@@ -1,16 +1,13 @@
 ---
-title: "Xamarin.Essentials: Compass"
-description: "This document describes the Compass class in Xamarin.Essentials, which lets you monitor the device's magnetic north heading."
-author: jamesmontemagno
-ms.custom: video
-ms.author: jamont
+title: "Compass"
+description: "Describes the Compass class in Microsoft.Maui.Essentials, which lets you monitor the device's magnetic north heading."
 ms.date: 11/04/2018
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
-# Xamarin.Essentials: Compass
+# Compass
 
-The **Compass** class lets you monitor the device's magnetic north heading.
+The `Compass` class lets you monitor the device's magnetic north heading.
 
 ## Get started
 
@@ -18,11 +15,7 @@ The **Compass** class lets you monitor the device's magnetic north heading.
 
 ## Using Compass
 
-Add a reference to Xamarin.Essentials in your class:
-
-```csharp
-using Xamarin.Essentials;
-```
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
 The Compass functionality works by calling the `Start` and `Stop` methods to listen for changes to the compass. Any changes are sent back through the `ReadingChanged` event. Here is an example:
 
@@ -68,7 +61,7 @@ public class CompassTest
 
 [!INCLUDE [sensor-speed](includes/sensor-speed.md)]
 
-## Platform Implementation Specifics
+## Platform implementation specifics
 
 # [Android](#tab/android)
 
@@ -93,4 +86,4 @@ This is only applied on the Android platform, and the parameter is ignored on iO
 ## API
 
 - [Compass source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Compass)
-- [Compass API documentation](xref:Xamarin.Essentials.Compass)
+<!-- - [Compass API documentation](xref:Microsoft.Maui.Essentials.Compass)-->

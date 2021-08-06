@@ -1,16 +1,13 @@
 ---
 title: "Xamarin.Essentials Open Browser"
-description: "The Browser class in Xamarin.Essentials enables an application to open a web link in the optimized system preferred browser or the external browser."
-author: jamesmontemagno
-ms.author: jamont
+description: "The Browser class in Microsoft.Maui.Essentials enables an application to open a web link in the optimized system preferred browser or the external browser."
 ms.date: 09/24/2020
-ms.custom: video
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
-# Xamarin.Essentials: Browser
+# Browser
 
-The **Browser** class enables an application to open a web link in the optimized system preferred browser or the external browser.
+The `Browser` class enables an application to open a web link in the optimized system preferred browser or the external browser.
 
 ## Get started
 
@@ -41,7 +38,7 @@ Open the **AndroidManifest.xml** file under the **Properties** folder and add th
 
 No additional setup required.
 
-# [UWP](#tab/uwp)
+# [Windows](#tab/windows)
 
 No platform differences.
 
@@ -49,11 +46,7 @@ No platform differences.
 
 ## Using Browser
 
-Add a reference to Xamarin.Essentials in your class:
-
-```csharp
-using Xamarin.Essentials;
-```
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
 The Browser functionality works by calling the `OpenAsync` method with the `Uri` and `BrowserLaunchMode`.
 
@@ -95,7 +88,7 @@ await Browser.OpenAsync(uri, new BrowserLaunchOptions
 
 ![Browser Options.](images/browser-options.png)
 
-## Platform Implementation Specifics
+## Platform implementation specifics
 
 # [Android](#tab/android)
 
@@ -119,7 +112,7 @@ An `Intent` will be used to request the Uri be opened through the systems normal
 
 The standard `OpenUrl` on the main application is used to launch the default browser outside of the application.
 
-# [UWP](#tab/uwp)
+# [Windows](#tab/windows)
 
 The user's default browser will always be launched regardless of the `BrowserLaunchMode`.
 
@@ -128,4 +121,4 @@ The user's default browser will always be launched regardless of the `BrowserLau
 ## API
 
 - [Browser source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Browser)
-- [Browser API documentation](xref:Xamarin.Essentials.Browser)
+<!-- - [Browser API documentation](xref:Microsoft.Maui.Essentials.Browser)-->

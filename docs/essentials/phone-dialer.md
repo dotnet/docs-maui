@@ -1,16 +1,13 @@
 ---
-title: "Xamarin.Essentials: Phone Dialer"
-description: "The PhoneDialer class in Xamarin.Essentials enables an application to open a phone number in the dialer"
-author: jamesmontemagno
-ms.custom: video
-ms.author: jamont
+title: "Phone Dialer"
+description: "The PhoneDialer class in Microsoft.Maui.Essentials enables an application to open a phone number in the dialer"
 ms.date: 07/02/2019
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
-# Xamarin.Essentials: Phone Dialer
+# Phone Dialer
 
-The **PhoneDialer** class enables an application to open a phone number in the dialer.
+The `PhoneDialer` class enables an application to open a phone number in the dialer.
 
 ## Get started
 
@@ -35,7 +32,7 @@ Open the **AndroidManifest.xml** file under the **Properties** folder and add th
 
 No additional setup required.
 
-# [UWP](#tab/uwp)
+# [Windows](#tab/windows)
 
 No platform differences.
 
@@ -43,11 +40,7 @@ No platform differences.
 
 ## Using Phone Dialer
 
-Add a reference to Xamarin.Essentials in your class:
-
-```csharp
-using Xamarin.Essentials;
-```
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
 The Phone Dialer functionality works by calling the `Open` method with a phone number to open the dialer with. When `Open` is requested the API will automatically attempt to format the number based on the country code if specified.
 
@@ -79,4 +72,4 @@ public class PhoneDialerTest
 ## API
 
 - [Phone Dialer source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/PhoneDialer)
-- [Phone Dialer API documentation](xref:Xamarin.Essentials.PhoneDialer)
+<!-- - [Phone Dialer API documentation](xref:Microsoft.Maui.Essentials.PhoneDialer)-->

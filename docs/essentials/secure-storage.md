@@ -1,16 +1,13 @@
 ---
-title: "Xamarin.Essentials: Secure Storage"
-description: "This document describes the SecureStorage class in Xamarin.Essentials, which helps securely store simple key/value pairs. It discusses how to use the class, platform implementation specifics, and limitations."
-author: jamesmontemagno
-ms.author: jamont
+title: "Secure Storage"
+description: "Describes the SecureStorage class in Microsoft.Maui.Essentials, which helps securely store simple key/value pairs. It discusses how to use the class, platform implementation specifics, and limitations."
 ms.date: 04/02/2019
-ms.custom: video
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
-# Xamarin.Essentials: Secure Storage
+# Secure Storage
 
-The **SecureStorage** class helps securely store simple key/value pairs.
+The `SecureStorage` class helps securely store simple key/value pairs.
 
 ## Get started
 
@@ -67,7 +64,7 @@ In the project properties, under **iOS Bundle Signing** set the **Custom Entitle
 > [!TIP]
 > When deploying to an iOS device this entitlement is not required and should be removed.
 
-# [UWP](#tab/uwp)
+# [Windows](#tab/windows)
 
 No additional setup required.
 
@@ -75,11 +72,7 @@ No additional setup required.
 
 ## Using Secure Storage
 
-Add a reference to Xamarin.Essentials in your class:
-
-```csharp
-using Xamarin.Essentials;
-```
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
 To save a value for a given _key_ in secure storage:
 
@@ -126,7 +119,7 @@ SecureStorage.RemoveAll();
 > [!TIP]
 > It is possible that an exception is thrown when calling `GetAsync` or `SetAsync`. This can be caused by a device not supporting secure storage, encryption keys changing, or corruption of data. It is best to handle this by removing and adding the setting back if possible.
 
-## Platform Implementation Specifics
+## Platform implementation specifics
 
 # [Android](#tab/android)
 
@@ -148,7 +141,7 @@ On older API levels, the Android KeyStore only supports storing **RSA** keys, wh
 
 In some cases KeyChain data is synchronized with iCloud, and uninstalling the application may not remove the secure values from iCloud and other devices of the user.
 
-# [UWP](#tab/uwp)
+# [Windows](#tab/windows)
 
 [DataProtectionProvider](/uwp/api/windows.security.cryptography.dataprotection.dataprotectionprovider) is used to encrypt values securely on UWP devices.
 
@@ -165,4 +158,4 @@ This API is intended to store small amounts of text.  Performance may be slow if
 ## API
 
 - [SecureStorage source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/SecureStorage)
-- [SecureStorage API documentation](xref:Xamarin.Essentials.SecureStorage)
+<!-- - [SecureStorage API documentation](xref:Microsoft.Maui.Essentials.SecureStorage)-->

@@ -1,16 +1,13 @@
 ---
-title: "Xamarin.Essentials: Vibration"
-description: "This document describes the Vibration class in Xamarin.Essentials, which lets you start and stop the vibrate functionality for a desired amount of time."
-author: jamesmontemagno
-ms.custom: video
-ms.author: jamont
+title: "Vibration"
+description: "Describes the Vibration class in Microsoft.Maui.Essentials, which lets you start and stop the vibrate functionality for a desired amount of time."
 ms.date: 11/04/2018
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
-# Xamarin.Essentials: Vibration
+# Vibration
 
-The **Vibration** class lets you start and stop the vibrate functionality for a desired amount of time.
+The `Vibration` class lets you start and stop the vibrate functionality for a desired amount of time.
 
 ## Get started
 
@@ -42,7 +39,7 @@ Or right click on the Android project and open the project's properties. Under *
 
 No additional setup required.
 
-# [UWP](#tab/uwp)
+# [Windows](#tab/windows)
 
 No additional setup required.
 
@@ -50,11 +47,7 @@ No additional setup required.
 
 ## Using Vibration
 
-Add a reference to Xamarin.Essentials in your class:
-
-```csharp
-using Xamarin.Essentials;
-```
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
 The Vibration functionality can be requested for a set amount of time or the default of 500 milliseconds.
 
@@ -95,7 +88,7 @@ catch (Exception ex)
 }
 ```
 
-## Platform Differences
+## Platform differences
 
 # [Android](#tab/android)
 
@@ -107,7 +100,7 @@ No platform differences.
 - Always vibrates for 500 milliseconds.
 - Not possible to cancel vibration.
 
-# [UWP](#tab/uwp)
+# [Windows](#tab/windows)
 
 No platform differences.
 
@@ -116,4 +109,4 @@ No platform differences.
 ## API
 
 - [Vibration source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Vibration)
-- [Vibration API documentation](xref:Xamarin.Essentials.Vibration)
+<!-- - [Vibration API documentation](xref:Microsoft.Maui.Essentials.Vibration)-->

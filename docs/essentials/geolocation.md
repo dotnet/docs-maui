@@ -1,16 +1,13 @@
 ---
-title: "Xamarin.Essentials: Geolocation"
-description: "This document describes the Geolocation class in Xamarin.Essentials, which provides APIs to retrieve the device's current geolocation coordinates."
-author: jamesmontemagno
-ms.custom: video
-ms.author: jamont
+title: "Geolocation"
+description: "Describes the Geolocation class in Microsoft.Maui.Essentials, which provides APIs to retrieve the device's current geolocation coordinates."
 ms.date: 03/13/2019
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
-# Xamarin.Essentials: Geolocation
+# Geolocation
 
-The **Geolocation** class provides APIs to retrieve the device's current geolocation coordinates.
+The `Geolocation` class provides APIs to retrieve the device's current geolocation coordinates.
 
 ## Get started
 
@@ -75,7 +72,7 @@ Or manually edit the file and add the following and update the rationale:
 <string>Fill in a reason why your app needs access to location.</string>
 ```
 
-# [UWP](#tab/uwp)
+# [Windows](#tab/windows)
 
 You must set the `Location` permission for the application. This can be done by opening the **Package.appxmanifest** and selecting the **Capabilities** tab and checking **Location**.
 
@@ -83,15 +80,11 @@ You must set the `Location` permission for the application. This can be done by 
 
 ## Using Geolocation
 
-Add a reference to Xamarin.Essentials in your class:
-
-```csharp
-using Xamarin.Essentials;
-```
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
 The Geolocation API will also prompt the user for permissions when necessary.
 
-You can get the last known [location](xref:Xamarin.Essentials.Location) of the device by calling the `GetLastKnownLocationAsync` method. This is often faster then doing a full query, but can be less accurate and may return `null` if no cached location exists.
+You can get the last known [location](xref:Microsoft.Maui.Essentials.Location) of the device by calling the `GetLastKnownLocationAsync` method. This is often faster then doing a full query, but can be less accurate and may return `null` if no cached location exists.
 
 ```csharp
 try
@@ -121,7 +114,7 @@ catch (Exception ex)
 }
 ```
 
-To query the current device's [location](xref:Xamarin.Essentials.Location) coordinates, the `GetLocationAsync` can be used. It is best to pass in a full `GeolocationRequest` and `CancellationToken` since it may take some time to get the device's location.
+To query the current device's [location](xref:Microsoft.Maui.Essentials.Location) coordinates, the `GetLocationAsync` can be used. It is best to pass in a full `GeolocationRequest` and `CancellationToken` since it may take some time to get the device's location.
 
 ```csharp
 CancellationTokenSource cts;
@@ -214,7 +207,7 @@ The following table outlines accuracy per platform:
 <a name="calculate-distance"></a>
 
 ## Detecting Mock Locations
-Some devices may return a mock location from the provider or by an application that provides mock locations. You can detect this by using the `IsFromMockProvider` on any [`Location`](xref:Xamarin.Essentials.Location).
+Some devices may return a mock location from the provider or by an application that provides mock locations. You can detect this by using the `IsFromMockProvider` on any [`Location`](xref:Microsoft.Maui.Essentials.Location).
 
 ```csharp
 var request = new GeolocationRequest(GeolocationAccuracy.Medium);
@@ -231,7 +224,7 @@ if (location != null)
 
 ## Distance between Two Locations
 
-The [`Location`](xref:Xamarin.Essentials.Location) and [`LocationExtensions`](xref:Xamarin.Essentials.LocationExtensions) classes define `CalculateDistance` methods that allow you to calculate the distance between two geographic locations. This calculated distance does not take roads or other pathways into account, and is merely the shortest distance between the two points along the surface of the Earth, also known as the _great-circle distance_ or colloquially, the distance "as the crow flies."
+The [`Location`](xref:Microsoft.Maui.Essentials.Location) and [`LocationExtensions`](xref:Microsoft.Maui.Essentials.LocationExtensions) classes define `CalculateDistance` methods that allow you to calculate the distance between two geographic locations. This calculated distance does not take roads or other pathways into account, and is merely the shortest distance between the two points along the surface of the Earth, also known as the _great-circle distance_ or colloquially, the distance "as the crow flies."
 
 Here's an example:
 
@@ -243,7 +236,7 @@ double miles = Location.CalculateDistance(boston, sanFrancisco, DistanceUnits.Mi
 
 The `Location` constructor has latitude and longitude arguments in that order. Positive latitude values are north of the equator, and positive longitude values are east of the Prime Meridian. Use the final argument to `CalculateDistance` to specify miles or kilometers. The `UnitConverters` class also defines `KilometersToMiles` and `MilesToKilometers` methods for converting between the two units.
 
-## Platform Differences
+## Platform differences
 
 Altitude is calculated differently on each platform.
 
@@ -255,7 +248,7 @@ On Android, [altitude](https://developer.android.com/reference/android/location/
 
 On iOS, [altitude](https://developer.apple.com/documentation/corelocation/cllocation/1423820-altitude) is measured in meters. Positive values indicate altitudes above sea level, while negative values indicate altitudes below sea level.
 
-# [UWP](#tab/uwp)
+# [Windows](#tab/windows)
 
 On UWP, altitude is returned in meters. See the [AltitudeReferenceSystem](/uwp/api/windows.devices.geolocation.geopoint.altitudereferencesystem#Windows_Devices_Geolocation_Geopoint_AltitudeReferenceSystem) documentation for more information.
 
@@ -264,4 +257,4 @@ On UWP, altitude is returned in meters. See the [AltitudeReferenceSystem](/uwp/a
 ## API
 
 - [Geolocation source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Geolocation)
-- [Geolocation API documentation](xref:Xamarin.Essentials.Geolocation)
+<!-- - [Geolocation API documentation](xref:Microsoft.Maui.Essentials.Geolocation)-->

@@ -1,5 +1,5 @@
 ---
-title: "Essentials: App Information"
+title: "App Information"
 description: "Describes the AppInfo class in Microsoft.Maui.Essentials, which provides information about your application. For example, it exposes the app name and version."
 ms.date: 08/04/2021
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
@@ -7,7 +7,7 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 
 # App Information
 
-The **AppInfo** class provides information about your application.
+The `AppInfo` class provides information about your application.
 
 ## Get started
 
@@ -37,7 +37,7 @@ var build = AppInfo.BuildString;
 
 ## Display app settings
 
-The **AppInfo** class can also display a page of settings maintained by the operating system for the application:
+The `AppInfo` class can also display a page of settings maintained by the operating system for the application:
 
 ```csharp
 // Display settings page
@@ -46,7 +46,7 @@ AppInfo.ShowSettingsUI();
 
 This settings page allows the user to change application permissions and perform other platform-specific tasks.
 
-## Platform specifics
+## Platform implementation specifics
 
 This section describes platform-specific implementation details related to the `AppInfo` type.
 

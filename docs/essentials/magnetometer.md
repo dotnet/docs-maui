@@ -1,15 +1,13 @@
 ---
-title: "Xamarin.Essentials: Magnetometer"
-description: "The Magnetometer class in Xamarin.Essentials lets you monitor the device's magnetometer sensor, which indicates the device's orientation relative to Earth's magnetic field."
-author: jamesmontemagno
-ms.author: jamont
+title: "Magnetometer"
+description: "The Magnetometer class in Microsoft.Maui.Essentials lets you monitor the device's magnetometer sensor, which indicates the device's orientation relative to Earth's magnetic field."
 ms.date: 11/04/2018
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
-# Xamarin.Essentials: Magnetometer
+# Magnetometer
 
-The **Magnetometer** class lets you monitor the device's magnetometer sensor which indicates the device's orientation relative to Earth's magnetic field.
+The `Magnetometer` class lets you monitor the device's magnetometer sensor which indicates the device's orientation relative to Earth's magnetic field.
 
 ## Get started
 
@@ -17,11 +15,7 @@ The **Magnetometer** class lets you monitor the device's magnetometer sensor whi
 
 ## Using Magnetometer
 
-Add a reference to Xamarin.Essentials in your class:
-
-```csharp
-using Xamarin.Essentials;
-```
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
 The Magnetometer functionality works by calling the `Start` and `Stop` methods to listen for changes to the magnetometer. Any changes are sent back through the `ReadingChanged` event. Here is sample usage:
 
@@ -73,4 +67,4 @@ All data is returned in µT (microteslas).
 ## API
 
 - [Magnetometer source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Magnetometer)
-- [Magnetometer API documentation](xref:Xamarin.Essentials.Magnetometer)
+<!-- - [Magnetometer API documentation](xref:Microsoft.Maui.Essentials.Magnetometer)-->

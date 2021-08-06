@@ -1,16 +1,13 @@
 ---
-title: "Xamarin.Essentials: Flashlight"
-description: "This document describes the Flashlight class in Xamarin.Essentials, which has the ability to turn on or off the device's camera flash to turn it into a flashlight."
-author: jamesmontemagno
-ms.custom: video
-ms.author: jamont
+title: "Flashlight"
+description: "Describes the Flashlight class in Microsoft.Maui.Essentials, which has the ability to turn on or off the device's camera flash to turn it into a flashlight."
 ms.date: 11/04/2018
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
-# Xamarin.Essentials: Flashlight
+# Flashlight
 
-The **Flashlight** class has the ability to turn on or off the device's camera flash to turn it into a flashlight.
+The `Flashlight` class has the ability to turn on or off the device's camera flash to turn it into a flashlight.
 
 ## Get started
 
@@ -53,7 +50,7 @@ By adding these permissions [Google Play will automatically filter out devices](
 
 No additional setup required.
 
-# [UWP](#tab/uwp)
+# [Windows](#tab/windows)
 
 No additional setup required.
 
@@ -61,11 +58,7 @@ No additional setup required.
 
 ## Using Flashlight
 
-Add a reference to Xamarin.Essentials in your class:
-
-```csharp
-using Xamarin.Essentials;
-```
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
 The flashlight can be turned on and off through the `TurnOnAsync` and `TurnOffAsync` methods:
 
@@ -92,7 +85,7 @@ catch (Exception ex)
 }
 ```
 
-## Platform Implementation Specifics
+## Platform implementation specifics
 
 ### [Android](#tab/android)
 
@@ -110,7 +103,7 @@ A camera surface texture is created to turn on or off the `FlashMode` of the cam
 
 [AVCaptureDevice](xref:AVFoundation.AVCaptureDevice) is used to turn on and off the Torch and Flash mode of the device.
 
-### [UWP](#tab/uwp)
+### [Windows](#tab/windows)
 
 [Lamp](/uwp/api/windows.devices.lights.lamp) is used to detect the first lamp on the back of the device to turn on or off.
 
@@ -119,4 +112,4 @@ A camera surface texture is created to turn on or off the `FlashMode` of the cam
 ## API
 
 - [Flashlight source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Flashlight)
-- [Flashlight API documentation](xref:Xamarin.Essentials.Flashlight)
+<!-- - [Flashlight API documentation](xref:Microsoft.Maui.Essentials.Flashlight)-->

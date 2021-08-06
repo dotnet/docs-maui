@@ -1,16 +1,13 @@
 ---
-title: "Xamarin.Essentials: Device Display Information"
-description: "This document describes the DeviceDisplay class in Xamarin.Essentials, which provides screen metrics for the device on which the application is running."
-author: jamesmontemagno
-ms.custom: video
-ms.author: jamont
+title: "Device Display Information"
+description: "Describes the DeviceDisplay class in Microsoft.Maui.Essentials, which provides screen metrics for the device on which the application is running."
 ms.date: 11/04/2018
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
-# Xamarin.Essentials: Device Display Information
+# Device Display Information
 
-The **DeviceDisplay** class provides information about the device's screen metrics the application is running on and can request to keep the screen from falling asleep when the application is running.
+The `DeviceDisplay` class provides information about the device's screen metrics the application is running on and can request to keep the screen from falling asleep when the application is running.
 
 ## Get started
 
@@ -18,15 +15,11 @@ The **DeviceDisplay** class provides information about the device's screen metri
 
 ## Using DeviceDisplay
 
-Add a reference to Xamarin.Essentials in your class:
-
-```csharp
-using Xamarin.Essentials;
-```
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
 ## Main Display Info
 
-In addition to basic device information the **DeviceDisplay** class contains information about the device's screen and orientation.
+In addition to basic device information the `DeviceDisplay` class contains information about the device's screen and orientation.
 
 ```csharp
 // Get Metrics
@@ -48,7 +41,7 @@ var height = mainDisplayInfo.Height;
 var density = mainDisplayInfo.Density;
 ```
 
-The **DeviceDisplay** class also exposes an event that can be subscribed to that is triggered whenever any screen metric changes:
+The `DeviceDisplay` class also exposes an event that can be subscribed to that is triggered whenever any screen metric changes:
 
 ```csharp
 public class DisplayInfoTest
@@ -69,7 +62,7 @@ public class DisplayInfoTest
 
 ## Keep Screen On
 
-The **DeviceDisplay** class exposes a `bool` property called `KeepScreenOn` that can be set to attempt to keep the device's display from turning off or locking.
+The `DeviceDisplay` class exposes a `bool` property called `KeepScreenOn` that can be set to attempt to keep the device's display from turning off or locking.
 
 ```csharp
 public class KeepScreenOnTest
@@ -81,7 +74,7 @@ public class KeepScreenOnTest
 }
 ```
 
-## Platform Differences
+## Platform differences
 
 # [Android](#tab/android)
 
@@ -89,9 +82,9 @@ No differences.
 
 # [iOS](#tab/ios)
 
-- Accessing `DeviceDisplay` must be done on the UI thread or else an exception will be thrown. You can use the [`MainThread.BeginInvokeOnMainThread`](~/essentials/main-thread.md) method to run that code on the UI thread.
+- Accessing `DeviceDisplay` must be done on the UI thread or else an exception will be thrown. You can use the [`MainThread.BeginInvokeOnMainThread`](main-thread.md) method to run that code on the UI thread.
 
-# [UWP](#tab/uwp)
+# [Windows](#tab/windows)
 
 No differences.
 
@@ -100,4 +93,4 @@ No differences.
 ## API
 
 - [DeviceDisplay source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/DeviceDisplay)
-- [DeviceDisplay API documentation](xref:Xamarin.Essentials.DeviceDisplay)
+<!-- - [DeviceDisplay API documentation](xref:Microsoft.Maui.Essentials.DeviceDisplay)-->

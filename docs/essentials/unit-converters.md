@@ -1,16 +1,13 @@
 ---
 title: "Xamarin.Essentials Unit Converters"
-description: "The UnitConverters class in Xamarin.Essentials provides several unit converters to help developers when using Xamarin.Essentials."
-author: jamesmontemagno
-ms.custom: video
-ms.author: jamont
+description: "The UnitConverters class in Microsoft.Maui.Essentials provides several unit converters to help developers when using Xamarin.Essentials."
 ms.date: 01/06/2020
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
-# Xamarin.Essentials: Unit Converters
+# Unit Converters
 
-The **UnitConverters** class provides several unit converters to help developers when using Xamarin.Essentials.
+The `UnitConverters` class provides several unit converters to help developers when using Xamarin.Essentials.
 
 ## Get started
 
@@ -18,13 +15,9 @@ The **UnitConverters** class provides several unit converters to help developers
 
 ## Using Unit Converters
 
-Add a reference to Xamarin.Essentials in your class:
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
-```csharp
-using Xamarin.Essentials;
-```
-
-All unit converters are available by using the static `UnitConverters` class in Xamarin.Essentials. For instance you can easily convert Fahrenheit to Celsius.
+All unit converters are available by using the static `UnitConverters` class in Microsoft.Maui.Essentials. For instance you can easily convert Fahrenheit to Celsius.
 
 ```csharp
 var celsius = UnitConverters.FahrenheitToCelsius(32.0);
@@ -65,4 +58,4 @@ Here is a list of available conversions:
 ## API
 
 - [Unit Converters source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Types/UnitConverters.shared.cs)
-- [Unit Converters API documentation](xref:Xamarin.Essentials.UnitConverters)
+<!-- - [Unit Converters API documentation](xref:Microsoft.Maui.Essentials.UnitConverters)-->

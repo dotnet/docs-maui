@@ -1,16 +1,13 @@
 ---
-title: "Xamarin.Essentials: Permissions"
-description: "This document describes the Permissions class in Xamarin.Essentials, which provides the ability to check and request runtime permissions."
-author: jamesmontemagno
-ms.author: jamont
-ms.custom: video
+title: "Permissions"
+description: "Describes the Permissions class in Microsoft.Maui.Essentials, which provides the ability to check and request runtime permissions."
 ms.date: 01/04/2021
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
-# Xamarin.Essentials: Permissions
+# Permissions
 
-The **Permissions** class provides the ability to check and request runtime permissions.
+The `Permissions` class provides the ability to check and request runtime permissions.
 
 ## Get started
 
@@ -20,11 +17,7 @@ The **Permissions** class provides the ability to check and request runtime perm
 
 ## Using Permissions
 
-Add a reference to Xamarin.Essentials in your class:
-
-```csharp
-using Xamarin.Essentials;
-```
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
 ## Checking Permissions
 
@@ -71,31 +64,31 @@ Xamarin.Essentials attempts to abstract as many permissions as possible. However
 
 Icon Guide:
 
-* ![Full Support.](~/media/shared/yes.png "Full Support") - Supported
-* ![Not Supported.](~/media/shared/no.png "Not supported or required") - Not supported/required
+* ✔️ - Supported
+* ❌ - Not supported/required
 
-| Permission | Android | iOS | UWP | watchOS | tvOS | Tizen |
-| --- | :---: | :---: | :---: | :---: | :---: | :---: | :---:
-| CalendarRead   | ![Android supported](~/media/shared/yes.png "Android supported") | ![iOS supported](~/media/shared/yes.png "iOS supported") | ![UWP not supported](~/media/shared/no.png "UWP not supported") | ![watchOS supported](~/media/shared/yes.png "watchOS supported") | ![tvOS not supported](~/media/shared/no.png "tvOS not supported") | ![Tizen not supported](~/media/shared/no.png "Tizen not supported") |
-| CalendarWrite | ![Android supported](~/media/shared/yes.png "Android supported") | ![iOS supported](~/media/shared/yes.png "iOS supported") | ![UWP not supported](~/media/shared/no.png "UWP not supported") | ![watchOS supported](~/media/shared/yes.png "watchOS supported") | ![tvOS not supported](~/media/shared/no.png "tvOS not supported") | ![Tizen not supported](~/media/shared/no.png "Tizen not supported") |
-| Camera | ![Android supported](~/media/shared/yes.png "Android supported") | ![iOS supported](~/media/shared/yes.png "iOS supported") | ![UWP not supported](~/media/shared/no.png "UWP not supported") | ![watchOS not supported](~/media/shared/no.png "watchOS not supported") | ![tvOS not supported](~/media/shared/no.png "tvOS not supported") | ![Tizen  supported](~/media/shared/yes.png "Tizen supported") |
-| ContactsRead | ![Android supported](~/media/shared/yes.png "Android supported") | ![iOS supported](~/media/shared/yes.png "iOS supported") | ![UWP supported](~/media/shared/yes.png "UWP supported") | ![watchOS not supported](~/media/shared/no.png "watchOS not supported") | ![tvOS not supported](~/media/shared/no.png "tvOS not supported") | ![Tizen not supported](~/media/shared/no.png "Tizen not supported") |
-| ContactsWrite | ![Android supported](~/media/shared/yes.png "Android supported") | ![iOS supported](~/media/shared/yes.png "iOS supported") | ![UWP supported](~/media/shared/yes.png "UWP supported") | ![watchOS not supported](~/media/shared/no.png "watchOS not supported") | ![tvOS not supported](~/media/shared/no.png "tvOS not supported") | ![Tizen not supported](~/media/shared/no.png "Tizen not supported") |
-| Flashlight | ![Android supported](~/media/shared/yes.png "Android supported") | ![iOS not supported](~/media/shared/no.png "iOS not supported") | ![UWP not supported](~/media/shared/no.png "UWP not supported") | ![watchOS not supported](~/media/shared/no.png "watchOS not supported") | ![tvOS not supported](~/media/shared/no.png "tvOS not supported") | ![Tizen  supported](~/media/shared/yes.png "Tizen supported") |
-| LocationWhenInUse | ![Android supported](~/media/shared/yes.png "Android supported") | ![iOS supported](~/media/shared/yes.png "iOS supported") | ![UWP supported](~/media/shared/yes.png "UWP supported") | ![watchOS supported](~/media/shared/yes.png "watchOS supported") | ![tvOS supported](~/media/shared/yes.png "tvOS supported")  | ![Tizen  supported](~/media/shared/yes.png "Tizen supported") |
-| LocationAlways | ![Android supported](~/media/shared/yes.png "Android supported") | ![iOS supported](~/media/shared/yes.png "iOS supported") | ![UWP supported](~/media/shared/yes.png "UWP supported") | ![watchOS supported](~/media/shared/yes.png "watchOS supported") | ![tvOS not supported](~/media/shared/no.png "tvOS not supported") | ![Tizen  supported](~/media/shared/yes.png "Tizen supported") |
-| Media | ![Android not supported](~/media/shared/no.png "Android not supported") | ![iOS supported](~/media/shared/yes.png "iOS supported") | ![UWP not supported](~/media/shared/no.png "UWP not supported") | ![watchOS not supported](~/media/shared/no.png "watchOS not supported") | ![tvOS not supported](~/media/shared/no.png "tvOS not supported") | ![Tizen not supported](~/media/shared/no.png "Tizen not supported") |
-| Microphone | ![Android supported](~/media/shared/yes.png "Android supported") | ![iOS supported](~/media/shared/yes.png "iOS supported") | ![UWP supported](~/media/shared/yes.png "UWP supported") | ![watchOS not supported](~/media/shared/no.png "watchOS not supported") | ![tvOS not supported](~/media/shared/no.png "tvOS not supported") | ![Tizen  supported](~/media/shared/yes.png "Tizen supported") |
-| Phone | ![Android supported](~/media/shared/yes.png "Android supported") | ![iOS supported](~/media/shared/yes.png "iOS supported") | ![UWP not supported](~/media/shared/no.png "UWP not supported") | ![watchOS not supported](~/media/shared/no.png "watchOS not supported") | ![tvOS not supported](~/media/shared/no.png "tvOS not supported") | ![Tizen not supported](~/media/shared/no.png "Tizen not supported") |
-| Photos | ![Android not supported](~/media/shared/no.png "Android not supported") | ![iOS supported](~/media/shared/yes.png "iOS supported") | ![UWP not supported](~/media/shared/no.png "UWP not supported") | ![watchOS not supported](~/media/shared/no.png "watchOS not supported") | ![tvOS supported](~/media/shared/yes.png "tvOS supported") | ![Tizen not supported](~/media/shared/no.png "Tizen not supported") |
-| Reminders | ![Android not supported](~/media/shared/no.png "Android not supported") | ![iOS supported](~/media/shared/yes.png "iOS supported") | ![UWP not supported](~/media/shared/no.png "UWP not supported") | ![watchOS supported](~/media/shared/yes.png "watchOS supported") | ![tvOS not supported](~/media/shared/no.png "tvOS not supported") | ![Tizen not supported](~/media/shared/no.png "Tizen not supported") |
-| Sensors | ![Android supported](~/media/shared/yes.png "Android supported") | ![iOS supported](~/media/shared/yes.png "iOS supported") | ![UWP supported](~/media/shared/yes.png "UWP supported") | ![watchOS supported](~/media/shared/yes.png "watchOS supported") | ![tvOS not supported](~/media/shared/no.png "tvOS not supported") | ![Tizen not supported](~/media/shared/no.png "Tizen not supported") |
-| Sms | ![Android supported](~/media/shared/yes.png "Android supported") | ![iOS supported](~/media/shared/yes.png "iOS supported") | ![UWP not supported](~/media/shared/no.png "UWP not supported") | ![watchOS not supported](~/media/shared/no.png "watchOS not supported") | ![tvOS not supported](~/media/shared/no.png "tvOS not supported") | ![Tizen not supported](~/media/shared/no.png "Tizen not supported") |
-| Speech | ![Android supported](~/media/shared/yes.png "Android supported") | ![iOS supported](~/media/shared/yes.png "iOS supported") | ![UWP not supported](~/media/shared/no.png "UWP not supported") | ![watchOS not supported](~/media/shared/no.png "watchOS not supported") | ![tvOS not supported](~/media/shared/no.png "tvOS not supported") | ![Tizen not supported](~/media/shared/no.png "Tizen not supported") |
-| StorageRead | ![Android supported](~/media/shared/yes.png "Android supported") | ![iOS not supported](~/media/shared/no.png "iOS not supported") | ![UWP not supported](~/media/shared/no.png "UWP not supported") | ![watchOS not supported](~/media/shared/no.png "watchOS not supported") | ![tvOS not supported](~/media/shared/no.png "tvOS not supported") | ![Tizen not supported](~/media/shared/no.png "Tizen not supported") |
-| StorageWrite | ![Android supported](~/media/shared/yes.png "Android supported") | ![iOS not supported](~/media/shared/no.png "iOS not supported") | ![UWP not supported](~/media/shared/no.png "UWP not supported") | ![watchOS not supported](~/media/shared/no.png "watchOS not supported") | ![tvOS not supported](~/media/shared/no.png "tvOS not supported") | ![Tizen not supported](~/media/shared/no.png "Tizen not supported") |
+| Permission        | Android | iOS | UWP | watchOS | tvOS | Tizen |
+|-------------------|:-------:|:---:|:---:|:-------:|:----:|:-----:|:-:|
+| CalendarRead      | ✔️     | ✔️  | ❌  | ✔️      | ❌   | ❌     |
+| CalendarWrite     | ✔️     | ✔️  | ❌  | ✔️      | ❌   | ❌     |
+| Camera            | ✔️     | ✔️  | ❌  | ❌       | ❌   | ✔️    |
+| ContactsRead      | ✔️     | ✔️  | ✔️ | ❌       | ❌   | ❌     |
+| ContactsWrite     | ✔️     | ✔️  | ✔️ | ❌       | ❌   | ❌     |
+| Flashlight        | ✔️     | ❌   | ❌  | ❌       | ❌   | ✔️    |
+| LocationWhenInUse | ✔️     | ✔️  | ✔️ | ✔️      | ✔️  | ✔️    |
+| LocationAlways    | ✔️     | ✔️  | ✔️ | ✔️      | ❌   | ✔️    |
+| Media             | ❌      | ✔️  | ❌  | ❌       | ❌   | ❌     |
+| Microphone        | ✔️     | ✔️  | ✔️ | ❌       | ❌   | ✔️    |
+| Phone             | ✔️     | ✔️  | ❌  | ❌       | ❌   | ❌     |
+| Photos            | ❌      | ✔️  | ❌  | ❌       | ✔️  | ❌     |
+| Reminders         | ❌      | ✔️  | ❌  | ✔️      | ❌   | ❌     |
+| Sensors           | ✔️     | ✔️  | ✔️ | ✔️      | ❌   | ❌     |
+| Sms               | ✔️     | ✔️  | ❌  | ❌       | ❌   | ❌     |
+| Speech            | ✔️     | ✔️  | ❌  | ❌       | ❌   | ❌     |
+| StorageRead       | ✔️     | ❌   | ❌  | ❌       | ❌   | ❌     |
+| StorageWrite      | ✔️     | ❌   | ❌  | ❌       | ❌   | ❌     |
 
-If a permission is marked as ![not supported.](~/media/shared/no.png "not supported") it will always return `Granted` when checked or requested.
+If a permission is marked as ❌ it will always return `Granted` when checked or requested.
 
 ## General Usage
 
@@ -240,7 +233,7 @@ if (status != PermissionStatus.Granted)
 }
 ```
 
-## Platform Implementation Specifics
+## Platform implementation specifics
 
 # [Android](#tab/android)
 
@@ -254,7 +247,7 @@ Permissions must have a matching string in the `Info.plist` file. Once a permiss
 
 Read more on the [iOS Security and Privacy Features](../ios/app-fundamentals/security-privacy.md) documentation.
 
-# [UWP](#tab/uwp)
+# [Windows](#tab/windows)
 
 Permissions must have matching capabilities declared in the package manifest. Permission status defaults to Unknown in most instances.
 
@@ -265,4 +258,4 @@ Read more on the [App Capability Declaration](/windows/uwp/packaging/app-capabil
 ## API
 
 - [Permissions source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Permissions)
-- [Permissions API documentation](xref:Xamarin.Essentials.Permissions)
+<!-- - [Permissions API documentation](xref:Microsoft.Maui.Essentials.Permissions)-->

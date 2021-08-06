@@ -1,5 +1,5 @@
 ---
-title: "Essentials: App Actions"
+title: "App Actions"
 description: "The AppActions class in Microsoft.Maui.Essentials lets you create and respond to app shortcuts from the app icon."
 ms.date: 08/02/2021
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials", "AppDelegate.cs", "AppActions"]

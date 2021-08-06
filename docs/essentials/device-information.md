@@ -1,16 +1,13 @@
 ---
-title: "Xamarin.Essentials: Device Information"
-description: "This document describes the DeviceInfo class in Xamarin.Essentials, which provides information about the device the application is running on."
-author: jamesmontemagno
-ms.custom: video
-ms.author: jamont
+title: "Device Information"
+description: "Describes the DeviceInfo class in Microsoft.Maui.Essentials, which provides information about the device the application is running on."
 ms.date: 11/04/2018
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
-# Xamarin.Essentials: Device Information
+# Device Information
 
-The **DeviceInfo** class provides information about the device the application is running on.
+The `DeviceInfo` class provides information about the device the application is running on.
 
 ## Get started
 
@@ -18,11 +15,7 @@ The **DeviceInfo** class provides information about the device the application i
 
 ## Using DeviceInfo
 
-Add a reference to Xamarin.Essentials in your class:
-
-```csharp
-using Xamarin.Essentials;
-```
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
 The following information is exposed through the API:
 
@@ -51,7 +44,7 @@ var deviceType = DeviceInfo.DeviceType;
 
 ## Platforms
 
-[`DeviceInfo.Platform`](xref:Xamarin.Essentials.DeviceInfo.Platform) correlates to a constant string that maps to the operating system. The values can be checked with the `DevicePlatform` struct:
+[`DeviceInfo.Platform`](xref:Microsoft.Maui.Essentials.DeviceInfo.Platform) correlates to a constant string that maps to the operating system. The values can be checked with the `DevicePlatform` struct:
 
 - **DevicePlatform.iOS** – iOS
 - **DevicePlatform.Android** – Android
@@ -60,7 +53,7 @@ var deviceType = DeviceInfo.DeviceType;
 
 ## Idioms
 
-[`DeviceInfo.Idiom`](xref:Xamarin.Essentials.DeviceInfo.Idiom) correlates a constant string that maps to the type of device the application is running on. The values can be checked with the `DeviceIdiom` struct:
+[`DeviceInfo.Idiom`](xref:Microsoft.Maui.Essentials.DeviceInfo.Idiom) correlates a constant string that maps to the type of device the application is running on. The values can be checked with the `DeviceIdiom` struct:
 
 - **DeviceIdiom.Phone** – Phone
 - **DeviceIdiom.Tablet** – Tablet
@@ -73,7 +66,7 @@ var deviceType = DeviceInfo.DeviceType;
 
 `DeviceInfo.DeviceType` correlates an enumeration to determine if the application is running on a physical or virtual device. A virtual device is a simulator or emulator.
 
-## Platform Implementation Specifics
+## Platform implementation specifics
 
 # [iOS](#tab/ios)
 
@@ -84,4 +77,4 @@ iOS does not expose an API for developers to get the model of the specific iOS d
 ## API
 
 - [DeviceInfo source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/DeviceInfo)
-- [DeviceInfo API documentation](xref:Xamarin.Essentials.DeviceInfo)
+<!-- - [DeviceInfo API documentation](xref:Microsoft.Maui.Essentials.DeviceInfo)-->

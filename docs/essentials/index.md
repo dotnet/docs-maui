@@ -1,10 +1,8 @@
 ---
 title: "Xamarin.Essentials"
 description: "This document links to various guides that describe Xamarin.Essentials, which provides developers with cross-platform APIs for their mobile applications."
-author: jamesmontemagno
-ms.author: jamont
 ms.date: 02/26/2020
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
 # Xamarin.Essentials

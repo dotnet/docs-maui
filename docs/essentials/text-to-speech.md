@@ -1,16 +1,13 @@
 ---
-title: "Xamarin.Essentials: Text-to-Speech"
-description: "The TextToSpeech class in Xamarin.Essentials enables an application utilize the built in text-to-speech engines to speak back text from the device and also to query available languages that the engine can support."
-author: jamesmontemagno
-ms.custom: video
-ms.author: jamont
+title: "Text-to-Speech"
+description: "The TextToSpeech class in Microsoft.Maui.Essentials enables an application utilize the built in text-to-speech engines to speak back text from the device and also to query available languages that the engine can support."
 ms.date: 11/04/2018
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
-# Xamarin.Essentials: Text-to-Speech
+# Text-to-Speech
 
-The **TextToSpeech** class enables an application to utilize the built-in text-to-speech engines to speak back text from the device and also to query available languages that the engine can support.
+The `TextToSpeech` class enables an application to utilize the built-in text-to-speech engines to speak back text from the device and also to query available languages that the engine can support.
 
 ## Get started
 
@@ -18,11 +15,7 @@ The **TextToSpeech** class enables an application to utilize the built-in text-t
 
 ## Using Text-to-Speech
 
-Add a reference to Xamarin.Essentials in your class:
-
-```csharp
-using Xamarin.Essentials;
-```
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
 Text-to-Speech works by calling the `SpeakAsync` method with text and optional parameters, and returns after the utterance has finished.
 
@@ -145,4 +138,4 @@ public async Task SpeakNow()
 ## API
 
 - [TextToSpeech source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/TextToSpeech)
-- [TextToSpeech API documentation](xref:Xamarin.Essentials.TextToSpeech)
+<!-- - [TextToSpeech API documentation](xref:Microsoft.Maui.Essentials.TextToSpeech)-->

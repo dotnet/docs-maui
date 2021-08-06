@@ -1,17 +1,14 @@
 ---
-title: "Xamarin.Essentials: Share"
-description: "The Share class in Xamarin.Essentials enables an application to share data such as text, files, and web links to other applications on the device."
+title: "Share"
+description: "The Share class in Microsoft.Maui.Essentials enables an application to share data such as text, files, and web links to other applications on the device."
 ms.assetid: B7B01D55-0129-4C87-B515-89F8F4E94665
-author: jamesmontemagno
-ms.author: jamont
 ms.date: 01/04/2021
-ms.custom: video
-no-loc: [Xamarin.Forms, Xamarin.Essentials]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
-# Xamarin.Essentials: Share
+# Share
 
-The **Share** class enables an application to share data such as text and web links to other applications on the device.
+The `Share` class enables an application to share data such as text and web links to other applications on the device.
 
 ## Get started
 
@@ -34,7 +31,7 @@ If your application shares media files, you must add the following keys to your 
 
 Ensure that you update the `<string>` in each to a text that's specific for your app, because it will be shown to your users.
 
-# [UWP](#tab/uwp)
+# [Windows](#tab/windows)
 
 No additional setup required.
 
@@ -42,11 +39,7 @@ No additional setup required.
 
 ## Using Share
 
-Add a reference to Xamarin.Essentials in your class:
-
-```csharp
-using Xamarin.Essentials;
-```
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
 The Share functionality works by calling the `RequestAsync` method with a data request payload that includes information to share to other applications. Text and Uri can be mixed and each platform will handle filtering based on content.
 
@@ -117,7 +110,7 @@ await Share.RequestAsync(new ShareMultipleFilesRequest
 
 [!INCLUDE [ios-PresentationSourceBounds](includes/ios-PresentationSourceBounds.md)]
 
-## Platform Differences
+## Platform differences
 
 # [Android](#tab/android)
 
@@ -127,7 +120,7 @@ await Share.RequestAsync(new ShareMultipleFilesRequest
 
 - `Subject` not used.
 
-# [UWP](#tab/uwp)
+# [Windows](#tab/windows)
 
 - `Title` will default to Application Name if not set.
 - `Subject` not used.
@@ -137,4 +130,4 @@ await Share.RequestAsync(new ShareMultipleFilesRequest
 ## API
 
 - [Share source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Share)
-- [Share API documentation](xref:Xamarin.Essentials.Share)
+<!-- - [Share API documentation](xref:Microsoft.Maui.Essentials.Share)-->
