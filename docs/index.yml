@@ -1,11 +1,11 @@
 ### YamlMime:Landing
 
 title: .NET Multi-platform App UI documentation
-summary: .NET Multi-platform App UI (MAUI) lets you build native apps using a .NET cross-platform UI toolkit that targets the mobile and desktop form factors on Android, iOS, macOS, Windows, and Tizen.
+summary: .NET Multi-platform App UI (.NET MAUI) lets you build native apps using a .NET cross-platform UI toolkit that targets the mobile and desktop form factors on Android, iOS, macOS, Windows, and Tizen.
 
 metadata:
   title: .NET Multi-Platform App UI documentation
-  description: .NET Multi-platform App UI (MAUI) lets you build native apps using a .NET cross-platform UI toolkit that targets the mobile and desktop form factors on Android, iOS, macOS, Windows, and Tizen.
+  description: .NET Multi-platform App UI (.NET MAUI) lets you build native apps using a .NET cross-platform UI toolkit that targets the mobile and desktop form factors on Android, iOS, macOS, Windows, and Tizen.
   ms.topic: landing-page
   author: davidbritch
   ms.author: dabritch

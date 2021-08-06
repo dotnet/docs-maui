@@ -6,7 +6,7 @@ ms.date: 06/07/2021
 
 # .NET MAUI supported platforms
 
-.NET Multi-platform App UI (MAUI) apps can be written for the following platforms:
+.NET Multi-platform App UI (.NET MAUI) apps can be written for the following platforms:
 
 - Android 5.0 (API 21) or higher.
 - iOS 10 or higher.
