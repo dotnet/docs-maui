@@ -8,7 +8,7 @@ ms.date: 07/28/2021
 
 <!-- Sample link goes here -->
 
-The .NET Multi-platform App UI (MAUI) graphics library provides a `WindingMode` enumeration, that enables you to specify the fill algorithm to be used by the `FillPath` method. Contours in a path can overlap, and any enclosed area can potentially be filled, but you might not want to fill all the enclosed areas. For more information about paths, see [Draw a path](draw.md#draw-a-path).
+The .NET Multi-platform App UI (.NET MAUI) graphics library provides a `WindingMode` enumeration, that enables you to specify the fill algorithm to be used by the `FillPath` method. Contours in a path can overlap, and any enclosed area can potentially be filled, but you might not want to fill all the enclosed areas. For more information about paths, see [Draw a path](draw.md#draw-a-path).
 
 The `WindingMode` enumeration defines `NonZero` and `EvenOdd` members. Each member represents a different algorithm for determining whether a point is in the fill region of an enclosed area.
 

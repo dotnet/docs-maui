@@ -8,7 +8,7 @@ ms.date: 07/15/2021
 
 <!-- Sample link goes here -->
 
-The .NET Multi-platform App UI (MAUI) graphics library includes the ability to paint graphical objects with solid colors, gradients, repeating images, and patterns.
+The .NET Multi-platform App UI (.NET MAUI) graphics library includes the ability to paint graphical objects with solid colors, gradients, repeating images, and patterns.
 
 The `Paint` class is an abstract class that paints an object with its output. Classes that derive from `Paint` describe different ways of painting an object. The following list describes the different paint types available in the .NET MAUI graphics library:
 

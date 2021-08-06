@@ -8,7 +8,7 @@ ms.date: 07/22/2021
 
 <!-- Sample link goes here -->
 
-The .NET Multi-platform App UI (MAUI) graphics library includes a `PatternPaint` class that's derived from the `Paint` class, which is used to paint a graphical object with a pattern.
+The .NET Multi-platform App UI (.NET MAUI) graphics library includes a `PatternPaint` class that's derived from the `Paint` class, which is used to paint a graphical object with a pattern.
 
 The `PatternPaint` class defines a `Pattern` property, of type `IPattern`, which represents the pattern to paint. The class also has an `IsTransparent` property that returns a `bool` that represents whether the background or foreground color of the paint has an alpha value of less than 1.
 

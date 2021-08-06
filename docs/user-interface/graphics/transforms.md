@@ -8,7 +8,7 @@ ms.date: 07/26/2021
 
 <!-- Sample link goes here -->
 
-The .NET Multi-platform App UI (MAUI) graphics library supports traditional graphics transforms, which are implemented as methods on the `ICanvas` object. Mathematically, transforms alter the coordinates and sizes that you specify in `ICanvas` drawing methods, when the graphical objects are rendered.
+The .NET Multi-platform App UI (.NET MAUI) graphics library supports traditional graphics transforms, which are implemented as methods on the `ICanvas` object. Mathematically, transforms alter the coordinates and sizes that you specify in `ICanvas` drawing methods, when the graphical objects are rendered.
 
 The following transforms are supported:
 

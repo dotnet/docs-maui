@@ -8,7 +8,7 @@ ms.date: 07/15/2021
 
 <!-- Sample link goes here -->
 
-The .NET Multi-platform App UI (MAUI) graphics library includes a `GradientPaint` class that's derived from the `Paint` class, and is an abstract base class that describes a gradient, which is composed of gradient steps. A `GradientPaint` paints a graphical object with multiple colors that blend into each other along an axis. Classes that derive from `GradientPaint` describe different ways of interpreting gradients stops, and the .NET MAUI graphics library provides the following gradient paints:
+The .NET Multi-platform App UI (.NET MAUI) graphics library includes a `GradientPaint` class that's derived from the `Paint` class, and is an abstract base class that describes a gradient, which is composed of gradient steps. A `GradientPaint` paints a graphical object with multiple colors that blend into each other along an axis. Classes that derive from `GradientPaint` describe different ways of interpreting gradients stops, and the .NET MAUI graphics library provides the following gradient paints:
 
 - `LinearGradientPaint`, which paints an object with a linear gradient. For more information, see [.NET MAUI Graphics: Linear gradients](lineargradient.md).
 - `RadialGradientPaint`, which paints an object with a radial gradient. For more information, see [.NET MAUI Graphics: Radial gradients](radialgradient.md).

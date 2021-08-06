@@ -8,7 +8,7 @@ ms.date: 07/22/2021
 
 <!-- Sample link goes here -->
 
-The .NET Multi-platform App UI (MAUI) graphics library includes an `ImagePaint` class that's derived from the `Paint` class, which is used to paint a graphical object with an image.
+The .NET Multi-platform App UI (.NET MAUI) graphics library includes an `ImagePaint` class that's derived from the `Paint` class, which is used to paint a graphical object with an image.
 
 The `ImagePaint` class defines an `Image` property, of type `IImage`, which represents the image to paint. The class also has an `IsTransparent` property that returns `false`.
 
