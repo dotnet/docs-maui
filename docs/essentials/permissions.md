@@ -64,31 +64,31 @@ Xamarin.Essentials attempts to abstract as many permissions as possible. However
 
 Icon Guide:
 
-* ![Full Support.](~/media/shared/yes.png "Full Support") - Supported
-* ![Not Supported.](~/media/shared/no.png "Not supported or required") - Not supported/required
+* ✔️ - Supported
+* ❌ - Not supported/required
 
-| Permission | Android | iOS | UWP | watchOS | tvOS | Tizen |
-| --- | :---: | :---: | :---: | :---: | :---: | :---: | :---:
-| CalendarRead   | ![Android supported](~/media/shared/yes.png "Android supported") | ![iOS supported](~/media/shared/yes.png "iOS supported") | ![UWP not supported](~/media/shared/no.png "UWP not supported") | ![watchOS supported](~/media/shared/yes.png "watchOS supported") | ![tvOS not supported](~/media/shared/no.png "tvOS not supported") | ![Tizen not supported](~/media/shared/no.png "Tizen not supported") |
-| CalendarWrite | ![Android supported](~/media/shared/yes.png "Android supported") | ![iOS supported](~/media/shared/yes.png "iOS supported") | ![UWP not supported](~/media/shared/no.png "UWP not supported") | ![watchOS supported](~/media/shared/yes.png "watchOS supported") | ![tvOS not supported](~/media/shared/no.png "tvOS not supported") | ![Tizen not supported](~/media/shared/no.png "Tizen not supported") |
-| Camera | ![Android supported](~/media/shared/yes.png "Android supported") | ![iOS supported](~/media/shared/yes.png "iOS supported") | ![UWP not supported](~/media/shared/no.png "UWP not supported") | ![watchOS not supported](~/media/shared/no.png "watchOS not supported") | ![tvOS not supported](~/media/shared/no.png "tvOS not supported") | ![Tizen  supported](~/media/shared/yes.png "Tizen supported") |
-| ContactsRead | ![Android supported](~/media/shared/yes.png "Android supported") | ![iOS supported](~/media/shared/yes.png "iOS supported") | ![UWP supported](~/media/shared/yes.png "UWP supported") | ![watchOS not supported](~/media/shared/no.png "watchOS not supported") | ![tvOS not supported](~/media/shared/no.png "tvOS not supported") | ![Tizen not supported](~/media/shared/no.png "Tizen not supported") |
-| ContactsWrite | ![Android supported](~/media/shared/yes.png "Android supported") | ![iOS supported](~/media/shared/yes.png "iOS supported") | ![UWP supported](~/media/shared/yes.png "UWP supported") | ![watchOS not supported](~/media/shared/no.png "watchOS not supported") | ![tvOS not supported](~/media/shared/no.png "tvOS not supported") | ![Tizen not supported](~/media/shared/no.png "Tizen not supported") |
-| Flashlight | ![Android supported](~/media/shared/yes.png "Android supported") | ![iOS not supported](~/media/shared/no.png "iOS not supported") | ![UWP not supported](~/media/shared/no.png "UWP not supported") | ![watchOS not supported](~/media/shared/no.png "watchOS not supported") | ![tvOS not supported](~/media/shared/no.png "tvOS not supported") | ![Tizen  supported](~/media/shared/yes.png "Tizen supported") |
-| LocationWhenInUse | ![Android supported](~/media/shared/yes.png "Android supported") | ![iOS supported](~/media/shared/yes.png "iOS supported") | ![UWP supported](~/media/shared/yes.png "UWP supported") | ![watchOS supported](~/media/shared/yes.png "watchOS supported") | ![tvOS supported](~/media/shared/yes.png "tvOS supported")  | ![Tizen  supported](~/media/shared/yes.png "Tizen supported") |
-| LocationAlways | ![Android supported](~/media/shared/yes.png "Android supported") | ![iOS supported](~/media/shared/yes.png "iOS supported") | ![UWP supported](~/media/shared/yes.png "UWP supported") | ![watchOS supported](~/media/shared/yes.png "watchOS supported") | ![tvOS not supported](~/media/shared/no.png "tvOS not supported") | ![Tizen  supported](~/media/shared/yes.png "Tizen supported") |
-| Media | ![Android not supported](~/media/shared/no.png "Android not supported") | ![iOS supported](~/media/shared/yes.png "iOS supported") | ![UWP not supported](~/media/shared/no.png "UWP not supported") | ![watchOS not supported](~/media/shared/no.png "watchOS not supported") | ![tvOS not supported](~/media/shared/no.png "tvOS not supported") | ![Tizen not supported](~/media/shared/no.png "Tizen not supported") |
-| Microphone | ![Android supported](~/media/shared/yes.png "Android supported") | ![iOS supported](~/media/shared/yes.png "iOS supported") | ![UWP supported](~/media/shared/yes.png "UWP supported") | ![watchOS not supported](~/media/shared/no.png "watchOS not supported") | ![tvOS not supported](~/media/shared/no.png "tvOS not supported") | ![Tizen  supported](~/media/shared/yes.png "Tizen supported") |
-| Phone | ![Android supported](~/media/shared/yes.png "Android supported") | ![iOS supported](~/media/shared/yes.png "iOS supported") | ![UWP not supported](~/media/shared/no.png "UWP not supported") | ![watchOS not supported](~/media/shared/no.png "watchOS not supported") | ![tvOS not supported](~/media/shared/no.png "tvOS not supported") | ![Tizen not supported](~/media/shared/no.png "Tizen not supported") |
-| Photos | ![Android not supported](~/media/shared/no.png "Android not supported") | ![iOS supported](~/media/shared/yes.png "iOS supported") | ![UWP not supported](~/media/shared/no.png "UWP not supported") | ![watchOS not supported](~/media/shared/no.png "watchOS not supported") | ![tvOS supported](~/media/shared/yes.png "tvOS supported") | ![Tizen not supported](~/media/shared/no.png "Tizen not supported") |
-| Reminders | ![Android not supported](~/media/shared/no.png "Android not supported") | ![iOS supported](~/media/shared/yes.png "iOS supported") | ![UWP not supported](~/media/shared/no.png "UWP not supported") | ![watchOS supported](~/media/shared/yes.png "watchOS supported") | ![tvOS not supported](~/media/shared/no.png "tvOS not supported") | ![Tizen not supported](~/media/shared/no.png "Tizen not supported") |
-| Sensors | ![Android supported](~/media/shared/yes.png "Android supported") | ![iOS supported](~/media/shared/yes.png "iOS supported") | ![UWP supported](~/media/shared/yes.png "UWP supported") | ![watchOS supported](~/media/shared/yes.png "watchOS supported") | ![tvOS not supported](~/media/shared/no.png "tvOS not supported") | ![Tizen not supported](~/media/shared/no.png "Tizen not supported") |
-| Sms | ![Android supported](~/media/shared/yes.png "Android supported") | ![iOS supported](~/media/shared/yes.png "iOS supported") | ![UWP not supported](~/media/shared/no.png "UWP not supported") | ![watchOS not supported](~/media/shared/no.png "watchOS not supported") | ![tvOS not supported](~/media/shared/no.png "tvOS not supported") | ![Tizen not supported](~/media/shared/no.png "Tizen not supported") |
-| Speech | ![Android supported](~/media/shared/yes.png "Android supported") | ![iOS supported](~/media/shared/yes.png "iOS supported") | ![UWP not supported](~/media/shared/no.png "UWP not supported") | ![watchOS not supported](~/media/shared/no.png "watchOS not supported") | ![tvOS not supported](~/media/shared/no.png "tvOS not supported") | ![Tizen not supported](~/media/shared/no.png "Tizen not supported") |
-| StorageRead | ![Android supported](~/media/shared/yes.png "Android supported") | ![iOS not supported](~/media/shared/no.png "iOS not supported") | ![UWP not supported](~/media/shared/no.png "UWP not supported") | ![watchOS not supported](~/media/shared/no.png "watchOS not supported") | ![tvOS not supported](~/media/shared/no.png "tvOS not supported") | ![Tizen not supported](~/media/shared/no.png "Tizen not supported") |
-| StorageWrite | ![Android supported](~/media/shared/yes.png "Android supported") | ![iOS not supported](~/media/shared/no.png "iOS not supported") | ![UWP not supported](~/media/shared/no.png "UWP not supported") | ![watchOS not supported](~/media/shared/no.png "watchOS not supported") | ![tvOS not supported](~/media/shared/no.png "tvOS not supported") | ![Tizen not supported](~/media/shared/no.png "Tizen not supported") |
+| Permission        | Android | iOS | UWP | watchOS | tvOS | Tizen |
+|-------------------|:-------:|:---:|:---:|:-------:|:----:|:-----:|:-:|
+| CalendarRead      | ✔️     | ✔️  | ❌  | ✔️      | ❌   | ❌     |
+| CalendarWrite     | ✔️     | ✔️  | ❌  | ✔️      | ❌   | ❌     |
+| Camera            | ✔️     | ✔️  | ❌  | ❌       | ❌   | ✔️    |
+| ContactsRead      | ✔️     | ✔️  | ✔️ | ❌       | ❌   | ❌     |
+| ContactsWrite     | ✔️     | ✔️  | ✔️ | ❌       | ❌   | ❌     |
+| Flashlight        | ✔️     | ❌   | ❌  | ❌       | ❌   | ✔️    |
+| LocationWhenInUse | ✔️     | ✔️  | ✔️ | ✔️      | ✔️  | ✔️    |
+| LocationAlways    | ✔️     | ✔️  | ✔️ | ✔️      | ❌   | ✔️    |
+| Media             | ❌      | ✔️  | ❌  | ❌       | ❌   | ❌     |
+| Microphone        | ✔️     | ✔️  | ✔️ | ❌       | ❌   | ✔️    |
+| Phone             | ✔️     | ✔️  | ❌  | ❌       | ❌   | ❌     |
+| Photos            | ❌      | ✔️  | ❌  | ❌       | ✔️  | ❌     |
+| Reminders         | ❌      | ✔️  | ❌  | ✔️      | ❌   | ❌     |
+| Sensors           | ✔️     | ✔️  | ✔️ | ✔️      | ❌   | ❌     |
+| Sms               | ✔️     | ✔️  | ❌  | ❌       | ❌   | ❌     |
+| Speech            | ✔️     | ✔️  | ❌  | ❌       | ❌   | ❌     |
+| StorageRead       | ✔️     | ❌   | ❌  | ❌       | ❌   | ❌     |
+| StorageWrite      | ✔️     | ❌   | ❌  | ❌       | ❌   | ❌     |
 
-If a permission is marked as ![not supported.](~/media/shared/no.png "not supported") it will always return `Granted` when checked or requested.
+If a permission is marked as ❌ it will always return `Granted` when checked or requested.
 
 ## General Usage
 
