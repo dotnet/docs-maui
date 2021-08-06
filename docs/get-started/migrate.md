@@ -4,7 +4,7 @@ description: "Migrate your Xamarin.Forms app to .NET MAUI with the .NET upgrade 
 ms.date: 06/07/2021
 ---
 
-# Migrate your app from Xamarin.Forms to .NET MAUI
+# Migrate your app from Xamarin.Forms
 
 You don't need to rewrite your Xamarin.Forms apps to move them to .NET Multi-platform App UI (.NET MAUI). However, you need to make a small amount of code changes to each app. Similarly, you can use single-project features without merging all of your Xamarin.Forms projects into one project.
 

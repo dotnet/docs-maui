@@ -4,7 +4,7 @@ description: ".NET MAUI handlers map cross-platform controls to performant nativ
 ms.date: 06/10/2021
 ---
 
-# Customize .NET MAUI controls with handlers
+# Customize controls with handlers
 
 .NET Multi-platform App UI (.NET MAUI) provides a collection of controls that can be used to display data, initiate actions, indicate activity, display collections, pick data, and more. By default, *handlers* map these cross-platform controls to native controls on each platform. For example, on iOS a .NET MAUI handler will map a .NET MAUI `Button` to an iOS `UIButton`. On Android, the `Button` will be mapped to a `AppCompatButton`:
 
