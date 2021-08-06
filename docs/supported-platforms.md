@@ -4,7 +4,7 @@ description: ".NET MAUI platform and development system requirements."
 ms.date: 06/07/2021
 ---
 
-# .NET MAUI supported platforms
+# Supported platforms
 
 .NET Multi-platform App UI (.NET MAUI) apps can be written for the following platforms:
 

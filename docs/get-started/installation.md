@@ -4,7 +4,7 @@ description: "Installation instructions for .NET MAUI."
 ms.date: 07/28/2021
 ---
 
-# .NET MAUI installation
+# Installation
 
 > [!IMPORTANT]
 > These requirements will change as new preview releases of Visual Studio and .NET MAUI are released.
