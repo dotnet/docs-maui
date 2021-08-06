@@ -6,7 +6,7 @@ ms.date: 06/10/2021
 
 # Customize .NET MAUI controls with handlers
 
-.NET Multi-platform App UI (MAUI) provides a collection of controls that can be used to display data, initiate actions, indicate activity, display collections, pick data, and more. By default, *handlers* map these cross-platform controls to native controls on each platform. For example, on iOS a .NET MAUI handler will map a .NET MAUI `Button` to an iOS `UIButton`. On Android, the `Button` will be mapped to a `AppCompatButton`:
+.NET Multi-platform App UI (.NET MAUI) provides a collection of controls that can be used to display data, initiate actions, indicate activity, display collections, pick data, and more. By default, *handlers* map these cross-platform controls to native controls on each platform. For example, on iOS a .NET MAUI handler will map a .NET MAUI `Button` to an iOS `UIButton`. On Android, the `Button` will be mapped to a `AppCompatButton`:
 
 :::image type="content" source="customize-images/button-handler.png" alt-text="Button handler architecture." border="false":::
 
@@ -38,7 +38,7 @@ public partial class App : Application
         InitializeComponent();
 
 #if __ANDROID__
-        Microsoft.Maui.Handlers.ViewHandler.ViewMapper[nameof(IView.BackgroundColor)] = (h, v) =>
+        Microsoft.Maui.Handlers.ViewHandler.ViewMapper[nameof(IView.Background)] = (h, v) =>
         {
             (h.NativeView as Android.Views.View).SetBackgroundColor(Microsoft.Maui.Graphics.Colors.Cyan.ToNative());
         };
@@ -61,7 +61,7 @@ public partial class MainPage : ContentPage, IPage
     {
         InitializeComponent();
 #if __ANDROID__
-        Handlers.EntryHandler.EntryMapper[nameof(IEntry.BackgroundColor)] = (h, v) =>
+        Handlers.EntryHandler.EntryMapper[nameof(IEntry.Background)] = (h, v) =>
         {
             (h.NativeView as global::Android.Views.Entry).UnderlineVisible = false;
         };
@@ -94,28 +94,28 @@ using Microsoft.Maui.Graphics;
 
 namespace MauiApp1
 {
-  	public partial class App : Application
-  	{
-  		public App()
-  		{
-          InitializeComponent();
+    public partial class App : Application
+    {
+        public App()
+        {
+            InitializeComponent();
 
-          Microsoft.Maui.Handlers.EntryHandler.EntryMapper[nameof(IView.BackgroundColor)] = (handler, view) =>
-          {
-              if (view is MyEntry)
-              {
+            Microsoft.Maui.Handlers.EntryHandler.EntryMapper[nameof(IView.Background)] = (handler, view) =>
+            {
+                if (view is MyEntry)
+                {
 #if __ANDROID__
-                  handler.NativeView.SetBackgroundColor(Colors.Red.ToNative());
+                    handler.NativeView.SetBackgroundColor(Colors.Red.ToNative());
 #elif __IOS__
                   handler.NativeView.BackgroundColor = Colors.Red.ToNative();
                   handler.NativeView.BorderStyle = UIKit.UITextBorderStyle.Line;
 #elif WINDOWS
                   handler.NativeView.Background = Colors.Red.ToNative();
 #endif
-              }
-          };
-  		}
-  	}
+                }
+            };
+        }
+    }
 }
 ```
 
