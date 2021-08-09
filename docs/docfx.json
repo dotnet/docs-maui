@@ -50,9 +50,14 @@
       "ms.author": "dabritch",
       "ms.prod": "dotnet-mobile",
       "ms.technology": "dotnet-maui",
-      "zone_pivot_group_filename": "maui/zone-pivot-groups.json"
+      "zone_pivot_group_filename": "maui/zone-pivot-groups.json",
+      "titleSuffix": ".NET MAUI"
     },
-    "fileMetadata": {},
+    "fileMetadata": {
+        "titleSuffix": {
+            "essentials/**.md": ".NET MAUI Essentials"
+        }
+    },
     "template": [],
     "dest": "docs-maui-public",
     "markdownEngineName": "markdig"
