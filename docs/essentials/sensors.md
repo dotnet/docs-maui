@@ -1,0 +1,545 @@
+---
+title: Accessing device sensors overview
+description: #Required; article description that is displayed in search results. 
+ms.topic: overview
+ms.date: 08/09/2021
+ms.custom: template-overview
+show_latex: true
+---
+
+# Accessing device sensors
+
+Devices have all sorts of sensors available to you. Some sensors can detect movement, others changes in the environment, such as light. Monitoring and reacting to these sensors makes your app dynamic in adapting to how the device is being used. You can also respond to changes in the sensors and alert the user. This article gives you a brief overview of the common sensors supported by .NET Multi-User Application (.NET MAUI).
+
+## Sensor speed
+
+It's important to note that the sensor is updated according to speed you set when you start monitoring the sensor. However, monitoring too many sensors at once may affect the rate the sensor data is returned.
+
+- `Fastest`\
+Get the sensor data as fast as possible (not guaranteed to return on UI thread).
+
+- `Game`\
+Rate suitable for games (not guaranteed to return on UI thread).
+
+- `Default`\
+Default rate suitable for screen orientation changes.
+
+- `UI`\
+Rate suitable for general user interface.
+
+## Sensor event handlers
+
+Event handlers added to sensor events aren't guaranteed to run on the UI thread. If the event handler needs to access user-interface elements, use the [`MainThread.BeginInvokeOnMainThread`](main-thread.md) method to run that code on the UI thread.
+
+## Accelerometer
+
+The accelerometer sensor measures the acceleration of the device along its three axes. The data reported by the sensor represents how the user is moving the device.
+
+To start monitoring the accelerometer sensor, call the `Accelerometer.Start` method. .NET MAUI sends accelerometer data changes to your app by raising the `Accelerometer.ReadingChanged` event. Use the `Accelerometer.Stop` method to stop monitoring the sensor. You can detect the monitoring state of the accelerometer with the `Accelerometer.IsMonitoring` property, which will be `true` if the accelerometer was started and is currently being monitored.
+
+The following code example demonstrates monitoring the accelerometer for changes:
+
+```csharp
+using Microsoft.Maui.Essentials;
+using System;
+
+namespace HelloMaui.Sensors
+{
+    public class AccelerometerTest
+    {
+        public void ToggleAccelerometer()
+        {
+            const SensorSpeed speed = SensorSpeed.UI;
+
+            try
+            {
+                if (Accelerometer.IsMonitoring)
+                {
+                    Accelerometer.Stop();
+                    Accelerometer.ReadingChanged -= Accelerometer_ReadingChanged;
+                }
+                else
+                {
+                    Accelerometer.ReadingChanged += Accelerometer_ReadingChanged;
+                    Accelerometer.Start(speed);
+                }
+            }
+            catch (FeatureNotSupportedException fnsEx)
+            {
+                // Feature not supported on device
+            }
+            catch (Exception ex)
+            {
+                // Other error has occurred.
+            }
+        }
+
+        void Accelerometer_ReadingChanged(object sender, AccelerometerChangedEventArgs e)
+        {
+            AccelerometerData data = e.Reading;
+
+            // Process Acceleration X, Y, Z
+            Console.WriteLine($"Reading: X: {data.Acceleration.X}, Y: {data.Acceleration.Y}, Z: {data.Acceleration.Z}");
+        }
+    }
+}
+```
+
+Accelerometer readings are reported back in **G**. A **G** is a unit of gravitation force equal to the gravity exerted by the earth's gravitational field $(9.81 m/s^2)$.
+
+The coordinate-system is defined relative to the screen of the device in its default orientation. The axes aren't swapped when the device's screen orientation changes.
+
+The **X** axis is horizontal and points to the right, the **Y** axis is vertical and points up and the **Z** axis points towards the outside of the front face of the screen. In this system, coordinates behind the screen have negative **Z** values.
+
+Examples:
+
+- When the device lies flat on a table and is pushed on its left side toward the right, the **X** acceleration value is positive.
+
+- When the device lies flat on a table, the acceleration value is +1.00 G or $(+9.81 m/s^2)$, which correspond to the acceleration of the device $(0 m/s^2)$ minus the force of gravity $(-9.81 m/s^2)$ and normalized as in G.
+
+<!-- TODO: Why are A and G mentioned here as if they're XYZ properties from the data? -->
+- When the device lies flat on a table and is pushed toward the sky with an acceleration of **A** $m/s^2$, the acceleration value is equal to $A+9.81$ which corresponds to the acceleration of the device $(+A m/s^2)$ minus the force of gravity $(-9.81 m/s^2)$ and normalized in **G**.
+
+### Platform-specific information (Accelerometer)
+
+There isn't any platform-specific information for the accelerometer.
+
+## Barometer
+
+The barometer sensor measures the ambient air pressure. The data reported by the sensor represents the current air pressure. This data is reported the first time you start monitoring the sensor and then each time the pressure changes.
+
+To start monitoring the barometer sensor, call the `Barometer.Start` method. .NET MAUI sends air pressure readings to your app by raising the `Barometer.ReadingChanged` event. Use the `Barometer.Stop` method to stop monitoring the sensor. You can detect the monitoring state of the barometer with the `Barometer.IsMonitoring` property, which will be `true` if the barometer is currently being monitored.
+
+The pressure reading is represented in hectopascals.
+
+The following code example demonstrates monitoring the barometer for changes:
+
+```csharp
+using Microsoft.Maui.Essentials;
+using System;
+
+namespace HelloMaui.Sensors
+{
+    public class BarometerTest
+    {
+        public void ToggleBarometer()
+        {
+            const SensorSpeed speed = SensorSpeed.UI;
+
+            try
+            {
+                if (Barometer.IsMonitoring)
+                {
+                    Barometer.Stop();
+                    Barometer.ReadingChanged -= Barometer_ReadingChanged;
+                }
+                else
+                {
+                    Barometer.ReadingChanged += Barometer_ReadingChanged;
+                    Barometer.Start(speed);
+                }
+            }
+            catch (FeatureNotSupportedException fnsEx)
+            {
+                // Feature not supported on device
+            }
+            catch (Exception ex)
+            {
+                // Other error has occurred.
+            }
+        }
+
+        void Barometer_ReadingChanged(object sender, BarometerChangedEventArgs e)
+        {
+            var data = e.Reading;
+
+            // Process Pressure
+            Console.WriteLine($"Reading: Pressure: {data.PressureInHectopascals} hectopascals");
+        }
+    }
+}
+
+```
+
+### Platform-specific information (Barometer)
+
+This section describes platform-specific implementation details related to the barometer.
+
+<!-- markdownlint-disable MD025 -->
+# [Android](#tab/android)
+
+No platform-specific implementation details.
+
+# [iOS](#tab/ios)
+
+This API uses [CMAltimeter](https://developer.apple.com/documentation/coremotion/cmaltimeter#//apple_ref/occ/cl/CMAltimeter) to monitor pressure changes, which is a hardware feature that was added to iPhone 6 and newer devices. A `FeatureNotSupportedException` will be thrown on devices that don't support the altimeter, the sensor used to report air pressure.
+
+`SensorSpeed` isn't used by this API, as it isn't supported on iOS.
+
+# [Windows](#tab/windows)
+
+No platform-specific implementation details.
+
+-----
+<!-- markdownlint-enable MD025 -->
+
+## Compass
+
+The compass sensor monitor the device's magnetic north heading.
+
+To start monitoring the compass sensor, call the `Compass.Start` method. .NET MAUI sends air pressure readings to your app by raising the `Compass.ReadingChanged` event. Use the `Compass.Stop` method to stop monitoring the sensor. You can detect the monitoring state of the compass with the `Compass.IsMonitoring` property, which will be `true` if the compass is currently being monitored.
+
+The following code example demonstrates monitoring the compass for changes:
+
+```csharp
+using Microsoft.Maui.Essentials;
+using System;
+
+namespace HelloMaui.Sensors
+{
+    public class CompassTest
+    {
+        public void ToggleCompass()
+        {
+            const SensorSpeed speed = SensorSpeed.UI;
+
+            try
+            {
+                if (Compass.IsMonitoring)
+                {
+                    Compass.Stop();
+                    Compass.ReadingChanged -= Compass_ReadingChanged;
+                }
+                else
+                {
+                    Compass.ReadingChanged += Compass_ReadingChanged;
+                    Compass.Start(speed);
+                }
+            }
+            catch (FeatureNotSupportedException fnsEx)
+
+            {
+                // Feature not supported on device
+            }
+            catch (Exception ex)
+            {
+                // Some other exception has occurred
+            }
+        }
+
+        void Compass_ReadingChanged(object sender, CompassChangedEventArgs e)
+        {
+            var data = e.Reading;
+
+            // Process Heading Magnetic North
+            Console.WriteLine($"Reading: {data.HeadingMagneticNorth} degrees");
+        }
+    }
+}
+```
+
+### Platform-specific information (Compass)
+
+This section describes platform-specific implementation details related to the compass.
+
+<!-- markdownlint-disable MD025 -->
+# [Android](#tab/android)
+
+Android doesn't provide an API for retrieving the compass heading. .NET MAUI uses the accelerometer and magnetometer sensors to calculate the magnetic north heading, which is recommended by Google.
+
+In rare instances, you maybe see inconsistent results because the sensors need to be calibrated. Recalibrating the compass on Android varies by phone model and Android version. You'll need to search the internet on how to recalibrate the compass. Here are two links that may help in recalibrating the compass:
+
+- [Google Help Center: Find and improve your location’s accuracy](https://support.google.com/maps/answer/2839911)
+- [Stack Exchange Android Enthusiasts: How can I calibrate the compass on my phone?](https://android.stackexchange.com/questions/10145/how-can-i-calibrate-the-compass-on-my-phone)
+
+Running multiple sensors from your app at the same time may impair the sensor speed.
+
+### Lowpass filter
+
+Because of how the Android compass values are updated and calculated, there may be a need to smooth out the values. A _Lowpass filter_ can be applied that averages the sine and cosine values of the angles and can be turned on by using the `Start` method overload, which accepts the `bool applyLowPassFilter` parameter:
+
+```csharp
+Compass.Start(SensorSpeed.UI, applyLowPassFilter: true);
+```
+
+This is only applied on the Android platform, and the parameter is ignored on iOS and Windows. For more information, see [this GitHub issue comment](https://github.com/xamarin/Essentials/pull/354#issuecomment-405316860).
+
+# [iOS](#tab/ios)
+
+No platform-specific implementation details.
+
+# [Windows](#tab/windows)
+
+No platform-specific implementation details.
+
+-----
+<!-- markdownlint-enable MD025 -->
+
+## Shake
+
+Even though this article is listing **shake** as a sensor, it isn't. The [accelerometer](#accelerometer) is used to detect when the device is shaken.
+
+The detect shake API uses raw readings from the accelerometer to calculate acceleration. It uses a simple queue mechanism to detect if 3/4ths of the recent accelerometer events occurred in the last half second. Acceleration is calculated by adding the square of the X, Y, and Z ($x^2+y^2+z^2$) readings from the accelerometer and comparing it to a specific threshold.
+
+To start monitoring the accelerometer sensor, call the `Accelerometer.Start` method. .NET MAUI sends accelerometer data changes to your app by raising the `Accelerometer.ReadingChanged` event. Use the `Accelerometer.Stop` method to stop monitoring the sensor. You can detect the monitoring state of the accelerometer with the `Accelerometer.IsMonitoring` property, which will be `true` if the accelerometer was started and is currently being monitored.
+
+When a shake is detected, a `ShakeDetected` event is raised. It's recommended to use `Game` or faster for the `SensorSpeed`. The following code example demonstrates reacting to the `ShakeDetected` event:
+
+```csharp
+using Microsoft.Maui.Essentials;
+using System;
+
+namespace HelloMaui.Sensors
+{
+    public class ShakeTest
+    {
+        public void ToggleAccelerometer()
+        {
+            const SensorSpeed speed = SensorSpeed.Game;
+
+            try
+            {
+                if (Accelerometer.IsMonitoring)
+                {
+                    Accelerometer.Stop();
+                    Accelerometer.ShakeDetected -= Accelerometer_ShakeDetected;
+                }
+                else
+                {
+                    Accelerometer.ShakeDetected += Accelerometer_ShakeDetected;
+                    Accelerometer.Start(speed);
+                }
+            }
+            catch (FeatureNotSupportedException fnsEx)
+            {
+                // Feature not supported on device
+            }
+            catch (Exception ex)
+            {
+                // Other error has occurred.
+            }
+        }
+
+        void Accelerometer_ShakeDetected(object sender, EventArgs e)
+        {
+            // Process shake event
+            Console.WriteLine("Device shake detected!");
+        }
+    }
+}
+```
+
+### Platform-specific information (Shake)
+
+There isn't any platform-specific information for the accelerometer sensor and shake detection.
+
+## Gyroscope
+
+The gyroscope sensor measures the angular rotation speed around the device's three primary axes.
+
+To start monitoring the gyroscope sensor, call the `Gyroscope.Start` method. .NET MAUI sends gyroscope data changes to your app by raising the `Gyroscope.ReadingChanged` event. The data provided by this event is measured in rad/s (radian per second). Use the `Gyroscope.Stop` method to stop monitoring the sensor. You can detect the monitoring state of the gyroscope with the `Gyroscope.IsMonitoring` property, which will be `true` if the gyroscope was started and is currently being monitored.
+
+```csharp
+using Microsoft.Maui.Essentials;
+using System;
+
+namespace HelloMaui.Sensors
+{
+    public class GyroscopeTest
+    {
+        public void ToggleGyroscope()
+        {
+            const SensorSpeed speed = SensorSpeed.UI;
+
+            try
+            {
+                if (Gyroscope.IsMonitoring)
+                {
+                    Gyroscope.Stop();
+                    Gyroscope.ReadingChanged -= Gyroscope_ReadingChanged;
+                }
+                else
+                {
+                    Gyroscope.ReadingChanged += Gyroscope_ReadingChanged;
+                    Gyroscope.Start(speed);
+                }
+            }
+            catch (FeatureNotSupportedException fnsEx)
+            {
+                // Feature not supported on device
+            }
+            catch (Exception ex)
+            {
+                // Other error has occurred.
+            }
+        }
+
+        void Gyroscope_ReadingChanged(object sender, GyroscopeChangedEventArgs e)
+        {
+            GyroscopeData data = e.Reading;
+
+            // Process Angular Velocity X, Y, and Z reported in rad/s
+            Console.WriteLine($"Reading: X: {data.AngularVelocity.X}, Y: {data.AngularVelocity.Y}, Z: {data.AngularVelocity.Z}");
+        }
+    }
+}
+```
+
+### Platform-specific information (Gyroscope)
+
+There isn't any platform-specific information for the gyroscope sensor.
+
+## Magnetometer
+
+The magnetometer sensor indicates the device's orientation relative to Earth's magnetic field.
+
+To start monitoring the magnetometer sensor, call the `Magnetometer.Start` method. .NET MAUI sends magnetometer data changes to your app by raising the `Magnetometer.ReadingChanged` event. The data provided by this event is measured in rad/s (radian per second). Use the `Magnetometer.Stop` method to stop monitoring the sensor. You can detect the monitoring state of the magnetometer with the `Magnetometer.IsMonitoring` property, which will be `true` if the magnetometer was started and is currently being monitored.
+
+All data is returned in $µT$ (microteslas).
+
+```csharp
+using Microsoft.Maui.Essentials;
+using System;
+
+namespace HelloMaui.Sensors
+{
+    public class MagnetometerTest
+    {
+        public void ToggleMagnetometer()
+        {
+            const SensorSpeed speed = SensorSpeed.UI;
+
+            try
+            {
+                if (Magnetometer.IsMonitoring)
+                {
+                    Magnetometer.Stop();
+                    Magnetometer.ReadingChanged -= Magnetometer_ReadingChanged;
+                }
+                else
+                {
+                    Magnetometer.ReadingChanged += Magnetometer_ReadingChanged;
+                    Magnetometer.Start(speed);
+                }
+            }
+            catch (FeatureNotSupportedException fnsEx)
+            {
+                // Feature not supported on device
+            }
+            catch (Exception ex)
+            {
+                // Other error has occurred.
+            }
+        }
+
+        void Magnetometer_ReadingChanged(object sender, MagnetometerChangedEventArgs e)
+        {
+            MagnetometerData data = e.Reading;
+
+            // Process MagneticField X, Y, and Z
+            Console.WriteLine($"Reading: X: {data.MagneticField.X}, Y: {data.MagneticField.Y}, Z: {data.MagneticField.Z}");
+        }
+    }
+}
+```
+
+### Platform-specific information (Magnetometer)
+
+There isn't any platform-specific information for the magnetometer sensor.
+
+## Orientation
+
+The orientation sensor monitors the orientation of a device in 3D space.
+
+> [!NOTE]
+> This sensor isn't used for determining if the device's video display is in portrait or landscape mode, use the `Orientation` property of the `ScreenMetrics` object available from the [`DeviceDisplay`](device-display.md) class.
+
+To start monitoring the orientation sensor, call the `OrientationSensor.Start` method. .NET MAUI sends orientation data changes to your app by raising the `Magnetometer.ReadingChanged` event. The data provided by this event is measured in rad/s (radian per second). Use the `OrientationSensor.Stop` method to stop monitoring the sensor. You can detect the monitoring state of the orientation with the `OrientationSensor.IsMonitoring` property, which will be `true` if the orientation was started and is currently being monitored.
+
+```csharp
+using Microsoft.Maui.Essentials;
+using System;
+
+namespace HelloMaui.Sensors
+{
+    public class OrientationTest
+    {
+        public void ToggleOrientation()
+        {
+            const SensorSpeed speed = SensorSpeed.UI;
+
+            try
+            {
+                if (OrientationSensor.IsMonitoring)
+                {
+                    OrientationSensor.Stop();
+                    OrientationSensor.ReadingChanged -= OrientationSensor_ReadingChanged;
+                }
+                else
+                {
+                    OrientationSensor.ReadingChanged += OrientationSensor_ReadingChanged;
+                    OrientationSensor.Start(speed);
+                }
+            }
+            catch (FeatureNotSupportedException fnsEx)
+            {
+                // Feature not supported on device
+            }
+            catch (Exception ex)
+            {
+                // Other error has occurred.
+            }
+        }
+
+        void OrientationSensor_ReadingChanged(object sender, OrientationSensorChangedEventArgs e)
+        {
+            OrientationSensorData data = e.Reading;
+
+            // Process Orientation quaternion (X, Y, Z, and W)
+            Console.WriteLine($"Reading: X: {data.Orientation.X}, Y: {data.Orientation.Y}, Z: {data.Orientation.Z}");
+        }
+    }
+}
+
+```
+
+`OrientationSensor` readings are reported back in the form of a [`Quaternion`](xref:System.Numerics.Quaternion) that describes the orientation of the device based on two 3D coordinate systems:
+
+The device (generally a phone or tablet) has a 3D coordinate system with the following axes:
+
+- The positive X-axis points to the right of the display in portrait mode.
+- The positive Y-axis points to the top of the device in portrait mode.
+- The positive Z-axis points out of the screen.
+
+The 3D coordinate system of the Earth has the following axes:
+
+- The positive X-axis is tangent to the surface of the Earth and points east.
+- The positive Y-axis is also tangent to the surface of the Earth and points north.
+- The positive Z-axis is perpendicular to the surface of the Earth and points up.
+
+The `Quaternion` describes the rotation of the device's coordinate system relative to the Earth's coordinate system.
+
+A `Quaternion` value is closely related to rotation around an axis. If an axis of rotation is the normalized vector ($a<sub>x</sub>, a<sub>y</sub>, a<sub>z</sub>), and the rotation angle is Θ, then the (X, Y, Z, W) components of the quaternion are:
+
+(a<sub>x</sub>·sin(Θ/2), a<sub>y</sub>·sin(Θ/2), a<sub>z</sub>·sin(Θ/2), cos(Θ/2))
+
+These are right-hand coordinate systems, so with the thumb of the right hand pointed in the positive direction of the rotation axis, the curve of the fingers indicate the direction of rotation for positive angles.
+
+Examples:
+
+- When the device lies flat on a table with its screen facing up, with the top of the device (in portrait mode) pointing north, the two coordinate systems are aligned. The `Quaternion` value represents the identity quaternion (0, 0, 0, 1). All rotations can be analyzed relative to this position.
+
+- When the device lies flat on a table with its screen facing up, and the top of the device (in portrait mode) pointing west, the `Quaternion` value is (0, 0, 0.707, 0.707). The device has been rotated 90 degrees around the Z axis of the Earth.
+
+- When the device is held upright so that the top (in portrait mode) points towards the sky, and the back of the device faces north, the device has been rotated 90 degrees around the X axis. The `Quaternion` value is (0.707, 0, 0, 0.707).
+
+- If the device is positioned so its left edge is on a table, and the top points north, the device has been rotated -90 degrees around the Y axis (or 90 degrees around the negative Y axis). The `Quaternion` value is (0, -0.707, 0, 0.707).
+
+### Platform-specific information (Orientation)
+
+There isn't any platform-specific information for the magnetometer sensor.
+
+## Next steps
+<!-- Add a context sentence for the following links -->
+- [Write an overview](contribute-how-to-write-overview.md)
+- [Links](links-how-to.md)
