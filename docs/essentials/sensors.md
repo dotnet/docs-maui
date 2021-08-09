@@ -13,7 +13,7 @@ Devices have all sorts of sensors available to you. Some sensors can detect move
 
 ## Sensor speed
 
-It's important to note that the sensor is updated according to speed you set when you start monitoring the sensor. However, monitoring too many sensors at once may affect the rate the sensor data is returned.
+Sensor speed sets the speed in which a sensor will return data to your app. When you start a sensor, you provide the desired sensor speed. However, monitoring too many sensors at once may affect the rate sensor data is returned to your app.
 
 - `Fastest`\
 Get the sensor data as fast as possible (not guaranteed to return on UI thread).
@@ -27,9 +27,9 @@ Default rate suitable for screen orientation changes.
 - `UI`\
 Rate suitable for general user interface.
 
-## Sensor event handlers
+### Sensor event handlers
 
-Event handlers added to sensor events aren't guaranteed to run on the UI thread. If the event handler needs to access user-interface elements, use the [`MainThread.BeginInvokeOnMainThread`](main-thread.md) method to run that code on the UI thread.
+Event handlers added to sensors with either `Game` or `Fastest` sensor speeds aren't guaranteed to run on the UI thread. If the event handler needs to access user-interface elements, use the [`MainThread.BeginInvokeOnMainThread`](main-thread.md) method to run that code on the UI thread.
 
 ## Accelerometer
 
@@ -519,9 +519,9 @@ The 3D coordinate system of the Earth has the following axes:
 
 The `Quaternion` describes the rotation of the device's coordinate system relative to the Earth's coordinate system.
 
-A `Quaternion` value is closely related to rotation around an axis. If an axis of rotation is the normalized vector ($a<sub>x</sub>, a<sub>y</sub>, a<sub>z</sub>), and the rotation angle is Θ, then the (X, Y, Z, W) components of the quaternion are:
+A `Quaternion` value is closely related to rotation around an axis. If an axis of rotation is the normalized vector ($a_x, a_y, a_z$), and the rotation angle is $\theta$, then the (X, Y, Z, W) components of the quaternion are:
 
-(a<sub>x</sub>·sin(Θ/2), a<sub>y</sub>·sin(Θ/2), a<sub>z</sub>·sin(Θ/2), cos(Θ/2))
+$(a_x \times \sin(\theta/2), a_y \times \sin(\theta/2), a_z \times \sin(\theta/2), \cos(\theta/2)$
 
 These are right-hand coordinate systems, so with the thumb of the right hand pointed in the positive direction of the rotation axis, the curve of the fingers indicate the direction of rotation for positive angles.
 
@@ -538,8 +538,3 @@ Examples:
 ### Platform-specific information (Orientation)
 
 There isn't any platform-specific information for the magnetometer sensor.
-
-## Next steps
-<!-- Add a context sentence for the following links -->
-- [Write an overview](contribute-how-to-write-overview.md)
-- [Links](links-how-to.md)
