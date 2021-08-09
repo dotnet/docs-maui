@@ -1,6 +1,6 @@
 ---
 title: Accessing device sensors overview
-description: #Required; article description that is displayed in search results. 
+description: "Learn how to use and monitor sensors provided by your device, with .NET MAUI. You can monitor the following sensors: accelerometer, barometer, compass, shake, gyroscope, magnetometer, orientation."
 ms.topic: overview
 ms.date: 08/09/2021
 ms.custom: template-overview
@@ -29,7 +29,7 @@ Rate suitable for general user interface.
 
 ### Sensor event handlers
 
-Event handlers added to sensors with either `Game` or `Fastest` sensor speeds aren't guaranteed to run on the UI thread. If the event handler needs to access user-interface elements, use the [`MainThread.BeginInvokeOnMainThread`](main-thread.md) method to run that code on the UI thread.
+Event handlers added to sensors with either the `Game` or `Fastest` speeds **aren't** guaranteed to run on the UI thread. If the event handler needs to access user-interface elements, use the [`MainThread.BeginInvokeOnMainThread`](main-thread.md) method to run that code on the UI thread.
 
 ## Accelerometer
 
