@@ -13,7 +13,7 @@ Devices have all sorts of sensors available to you. Some sensors can detect move
 
 ## Sensor speed
 
-Sensor speed sets the speed in which a sensor will return data to your app. When you start a sensor, you provide the desired sensor speed. However, monitoring too many sensors at once may affect the rate sensor data is returned to your app.
+Sensor speed sets the speed in which a sensor will return data to your app. When you start a sensor, you provide the desired sensor speed with the `SensorSpeed` enumeration.
 
 - `Fastest`\
 Get the sensor data as fast as possible (not guaranteed to return on UI thread).
@@ -26,6 +26,9 @@ Default rate suitable for screen orientation changes.
 
 - `UI`\
 Rate suitable for general user interface.
+
+> [!WARNING]
+> Monitoring too many sensors at once may affect the rate sensor data is returned to your app.
 
 ### Sensor event handlers
 
@@ -102,7 +105,23 @@ Examples:
 
 ### Platform-specific information (Accelerometer)
 
-There isn't any platform-specific information for the accelerometer.
+This section describes platform-specific implementation details related to the accelerometer sensor.
+
+<!-- markdownlint-disable MD025 -->
+# [Android](#tab/android)
+
+No platform-specific implementation details.
+
+# [iOS](#tab/ios)
+
+No platform-specific implementation details.
+
+# [Windows](#tab/windows)
+
+No platform-specific implementation details.
+
+-----
+<!-- markdownlint-enable MD025 -->
 
 ## Barometer
 
@@ -163,7 +182,7 @@ namespace HelloMaui.Sensors
 
 ### Platform-specific information (Barometer)
 
-This section describes platform-specific implementation details related to the barometer.
+This section describes platform-specific implementation details related to the barometer sensor.
 
 <!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
@@ -187,7 +206,7 @@ No platform-specific implementation details.
 
 The compass sensor monitor the device's magnetic north heading.
 
-To start monitoring the compass sensor, call the `Compass.Start` method. .NET MAUI sends air pressure readings to your app by raising the `Compass.ReadingChanged` event. Use the `Compass.Stop` method to stop monitoring the sensor. You can detect the monitoring state of the compass with the `Compass.IsMonitoring` property, which will be `true` if the compass is currently being monitored.
+To start monitoring the compass sensor, call the `Compass.Start` method. .NET MAUI raises the `Compass.ReadingChanged` event when the compass heading changes. Use the `Compass.Stop` method to stop monitoring the sensor. You can detect the monitoring state of the compass with the `Compass.IsMonitoring` property, which will be `true` if the compass is currently being monitored.
 
 The following code example demonstrates monitoring the compass for changes:
 
@@ -240,7 +259,7 @@ namespace HelloMaui.Sensors
 
 ### Platform-specific information (Compass)
 
-This section describes platform-specific implementation details related to the compass.
+This section describes platform-specific implementation details related to the compass feature.
 
 <!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
@@ -281,9 +300,11 @@ Even though this article is listing **shake** as a sensor, it isn't. The [accele
 
 The detect shake API uses raw readings from the accelerometer to calculate acceleration. It uses a simple queue mechanism to detect if 3/4ths of the recent accelerometer events occurred in the last half second. Acceleration is calculated by adding the square of the X, Y, and Z ($x^2+y^2+z^2$) readings from the accelerometer and comparing it to a specific threshold.
 
-To start monitoring the accelerometer sensor, call the `Accelerometer.Start` method. .NET MAUI sends accelerometer data changes to your app by raising the `Accelerometer.ReadingChanged` event. Use the `Accelerometer.Stop` method to stop monitoring the sensor. You can detect the monitoring state of the accelerometer with the `Accelerometer.IsMonitoring` property, which will be `true` if the accelerometer was started and is currently being monitored.
+To start monitoring the accelerometer sensor, call the `Accelerometer.Start` method. When a shake is detected, the `Accelerometer.ShakeDetected` event is raised.  Use the `Accelerometer.Stop` method to stop monitoring the sensor. You can detect the monitoring state of the accelerometer with the `Accelerometer.IsMonitoring` property, which will be `true` if the accelerometer was started and is currently being monitored.
 
-When a shake is detected, a `ShakeDetected` event is raised. It's recommended to use `Game` or faster for the `SensorSpeed`. The following code example demonstrates reacting to the `ShakeDetected` event:
+It's recommended to use `Game` or faster for the `SensorSpeed`.
+
+The following code example demonstrates reacting to the `ShakeDetected` event:
 
 ```csharp
 using Microsoft.Maui.Essentials;
@@ -331,7 +352,23 @@ namespace HelloMaui.Sensors
 
 ### Platform-specific information (Shake)
 
-There isn't any platform-specific information for the accelerometer sensor and shake detection.
+This section describes platform-specific implementation details related to the accelerometer's shake feature.
+
+<!-- markdownlint-disable MD025 -->
+# [Android](#tab/android)
+
+No platform-specific implementation details.
+
+# [iOS](#tab/ios)
+
+No platform-specific implementation details.
+
+# [Windows](#tab/windows)
+
+No platform-specific implementation details.
+
+-----
+<!-- markdownlint-enable MD025 -->
 
 ## Gyroscope
 
@@ -387,15 +424,29 @@ namespace HelloMaui.Sensors
 
 ### Platform-specific information (Gyroscope)
 
-There isn't any platform-specific information for the gyroscope sensor.
+This section describes platform-specific implementation details related to the gyroscope sensor.
+
+<!-- markdownlint-disable MD025 -->
+# [Android](#tab/android)
+
+No platform-specific implementation details.
+
+# [iOS](#tab/ios)
+
+No platform-specific implementation details.
+
+# [Windows](#tab/windows)
+
+No platform-specific implementation details.
+
+-----
+<!-- markdownlint-enable MD025 -->
 
 ## Magnetometer
 
 The magnetometer sensor indicates the device's orientation relative to Earth's magnetic field.
 
-To start monitoring the magnetometer sensor, call the `Magnetometer.Start` method. .NET MAUI sends magnetometer data changes to your app by raising the `Magnetometer.ReadingChanged` event. The data provided by this event is measured in rad/s (radian per second). Use the `Magnetometer.Stop` method to stop monitoring the sensor. You can detect the monitoring state of the magnetometer with the `Magnetometer.IsMonitoring` property, which will be `true` if the magnetometer was started and is currently being monitored.
-
-All data is returned in $µT$ (microteslas).
+To start monitoring the magnetometer sensor, call the `Magnetometer.Start` method. .NET MAUI sends magnetometer data changes to your app by raising the `Magnetometer.ReadingChanged` event. The data provided by this event is measured in $µT$ (microteslas). Use the `Magnetometer.Stop` method to stop monitoring the sensor. You can detect the monitoring state of the magnetometer with the `Magnetometer.IsMonitoring` property, which will be `true` if the magnetometer was started and is currently being monitored.
 
 ```csharp
 using Microsoft.Maui.Essentials;
@@ -445,7 +496,23 @@ namespace HelloMaui.Sensors
 
 ### Platform-specific information (Magnetometer)
 
-There isn't any platform-specific information for the magnetometer sensor.
+This section describes platform-specific implementation details related to the magnetometer sensor.
+
+<!-- markdownlint-disable MD025 -->
+# [Android](#tab/android)
+
+No platform-specific implementation details.
+
+# [iOS](#tab/ios)
+
+No platform-specific implementation details.
+
+# [Windows](#tab/windows)
+
+No platform-specific implementation details.
+
+-----
+<!-- markdownlint-enable MD025 -->
 
 ## Orientation
 
@@ -454,7 +521,7 @@ The orientation sensor monitors the orientation of a device in 3D space.
 > [!NOTE]
 > This sensor isn't used for determining if the device's video display is in portrait or landscape mode, use the `Orientation` property of the `ScreenMetrics` object available from the [`DeviceDisplay`](device-display.md) class.
 
-To start monitoring the orientation sensor, call the `OrientationSensor.Start` method. .NET MAUI sends orientation data changes to your app by raising the `Magnetometer.ReadingChanged` event. The data provided by this event is measured in rad/s (radian per second). Use the `OrientationSensor.Stop` method to stop monitoring the sensor. You can detect the monitoring state of the orientation with the `OrientationSensor.IsMonitoring` property, which will be `true` if the orientation was started and is currently being monitored.
+To start monitoring the orientation sensor, call the `OrientationSensor.Start` method. .NET MAUI sends orientation data changes to your app by raising the `OrientationSensor.ReadingChanged` event. Use the `OrientationSensor.Stop` method to stop monitoring the sensor. You can detect the monitoring state of the orientation with the `OrientationSensor.IsMonitoring` property, which will be `true` if the orientation was started and is currently being monitored.
 
 ```csharp
 using Microsoft.Maui.Essentials;
@@ -537,4 +604,20 @@ Examples:
 
 ### Platform-specific information (Orientation)
 
-There isn't any platform-specific information for the magnetometer sensor.
+This section describes platform-specific implementation details related to the orientation sensor.
+
+<!-- markdownlint-disable MD025 -->
+# [Android](#tab/android)
+
+No platform-specific implementation details.
+
+# [iOS](#tab/ios)
+
+No platform-specific implementation details.
+
+# [Windows](#tab/windows)
+
+No platform-specific implementation details.
+
+-----
+<!-- markdownlint-enable MD025 -->
