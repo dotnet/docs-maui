@@ -9,7 +9,7 @@ show_latex: true
 
 # Accessing device sensors
 
-Devices have all sorts of sensors available to you. Some sensors can detect movement, others changes in the environment, such as light. Monitoring and reacting to these sensors makes your app dynamic in adapting to how the device is being used. You can also respond to changes in the sensors and alert the user. This article gives you a brief overview of the common sensors supported by .NET Multi-User Application (.NET MAUI).
+Devices have all sorts of sensors that are available to you. Some sensors can detect movement, others changes in the environment, such as light. Monitoring and reacting to these sensors makes your app dynamic in adapting to how the device is being used. You can also respond to changes in the sensors and alert the user. This article gives you a brief overview of the common sensors supported by .NET Multi-User Application (.NET MAUI).
 
 ## Sensor speed
 
@@ -204,7 +204,7 @@ No platform-specific implementation details.
 
 ## Compass
 
-The compass sensor monitor the device's magnetic north heading.
+The compass sensor monitors the device's magnetic north heading.
 
 To start monitoring the compass sensor, call the `Compass.Start` method. .NET MAUI raises the `Compass.ReadingChanged` event when the compass heading changes. Use the `Compass.Stop` method to stop monitoring the sensor. You can detect the monitoring state of the compass with the `Compass.IsMonitoring` property, which will be `true` if the compass is currently being monitored.
 
@@ -519,7 +519,7 @@ No platform-specific implementation details.
 The orientation sensor monitors the orientation of a device in 3D space.
 
 > [!NOTE]
-> This sensor isn't used for determining if the device's video display is in portrait or landscape mode, use the `Orientation` property of the `ScreenMetrics` object available from the [`DeviceDisplay`](device-display.md) class.
+> This sensor isn't used for determining if the device's video display is in portrait or landscape mode. Use the `Orientation` property of the `ScreenMetrics` object available from the [`DeviceDisplay`](device-display.md) class.
 
 To start monitoring the orientation sensor, call the `OrientationSensor.Start` method. .NET MAUI sends orientation data changes to your app by raising the `OrientationSensor.ReadingChanged` event. Use the `OrientationSensor.Stop` method to stop monitoring the sensor. You can detect the monitoring state of the orientation with the `OrientationSensor.IsMonitoring` property, which will be `true` if the orientation was started and is currently being monitored.
 

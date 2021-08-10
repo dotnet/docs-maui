@@ -26,7 +26,7 @@
       items:
         - name: Customize controls
           href: user-interface/handlers/customize.md
-    - name: Device features
+    - name: Platform integration
       expanded: true
       items:
         - name: Sensors
