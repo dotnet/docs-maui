@@ -17,7 +17,7 @@ In this tutorial, you'll learn how to create and run your first .NET Multi-platf
 ## Prerequisites
 
 - Visual Studio 2022 (Preview 2 or newer), with the required workloads. For more information, see [Installation](installation.md).
-- An environment that has been configured for .NET MAUI development, using the maui-check tool. For more information, see [Install .NET 6 Preview 6](installation.md#install-net-6-preview-6).
+- An environment that has been configured for .NET MAUI development. For more information, see [Install .NET 6 Preview 6](installation.md#install-net-6-preview-6).
 - A configured Android emulator. For more information about creating an Android emulator, see [Android emulator setup](/xamarin/android/get-started/installation/android-emulator/).
 
 ## Get started with Visual Studio 2022 (Preview)
