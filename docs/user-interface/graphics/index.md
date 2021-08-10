@@ -1,6 +1,6 @@
 ---
 title: "Graphics"
-description: ".NET MAUI includes a cross-platform 2D graphics library that targets iOS, Android, Windows, macOS, Tizen, and Linux."
+description: ".NET MAUI includes cross-platform 2D graphics functionality that targets iOS, Android, Windows, macOS, Tizen, and Linux."
 ms.date: 07/23/2021
 ---
 
@@ -8,9 +8,9 @@ ms.date: 07/23/2021
 
 <!-- Sample link goes here -->
 
-.NET Multi-platform App UI (.NET MAUI) includes a cross-platform 2D graphics library that targets iOS, Android, Windows, macOS, Tizen, and Linux. With this library, you can use a common API to target multiple graphics abstractions, enabling you to share your drawing code between platforms, or mix and match graphics implementations within a single app.
+.NET Multi-platform App UI (.NET MAUI) includes cross-platform 2D graphics functionality that targets iOS, Android, Windows, macOS, Tizen, and Linux. With this functionality, you can use a common API to target multiple graphics abstractions, enabling you to share your drawing code between platforms, or mix and match graphics implementations within a single app.
 
-The library, which is contained in the `Microsoft.Maui.Graphics` namespace, contains a drawing canvas, which supports drawing shapes, paths, gradients, text, images, and shadows.
+The graphics functionality is contained in the `Microsoft.Maui.Graphics` namespace, and provides a drawing canvas that supports drawing and painting shapes and images, compositing operations, and graphical object transforms.
 
 There are many similarities between the functionality provided by `Microsoft.Maui.Graphics`, and the functionality provided by .NET MAUI shapes and brushes. However, each is aimed at different scenarios:
 
@@ -39,7 +39,7 @@ For examples of using different graphics abstractions, see [Microsoft.Maui.Graph
 
 ## Drawing canvas
 
-In .NET MAUI, the `GraphicsView` enables consumption of the `Microsoft.Maui.Graphics` library, via a drawing canvas that's exposed as an `ICanvas` object. For more information about the `GraphicsView`, see [GraphicsView](~/user-interface/controls/graphicsview.md).
+In .NET MAUI, the `GraphicsView` enables consumption of the `Microsoft.Maui.Graphics` functionalit, via a drawing canvas that's exposed as an `ICanvas` object. For more information about the `GraphicsView`, see [GraphicsView](~/user-interface/controls/graphicsview.md).
 
 `ICanvas` defines the following properties, that affect the appearance of object's that are drawn on the canvas:
 

@@ -1,6 +1,6 @@
 ---
 title: "Paint a solid color"
-description: "The .NET MAUI graphics library includes a SolidPaint class, that paints a graphical object with a solid color."
+description: ".NET MAUI graphics includes a SolidPaint class, that paints a graphical object with a solid color."
 ms.date: 07/15/2021
 ---
 
@@ -8,7 +8,7 @@ ms.date: 07/15/2021
 
 <!-- Sample link goes here -->
 
-The .NET Multi-platform App UI (.NET MAUI) graphics library includes a `SolidPaint` class that's derived from the `Paint` class, which s used to paint a graphical object with a solid color.
+.NET Multi-platform App UI (.NET MAUI) graphics includes a `SolidPaint` class that's derived from the `Paint` class, which s used to paint a graphical object with a solid color.
 
 The `SolidPaint` class defines a `Color` property, of type `Color`, which represents the color of the paint. The class also has an `IsTransparent` property that returns a `bool` that represents whether the color has an alpha value of less than 1.
 

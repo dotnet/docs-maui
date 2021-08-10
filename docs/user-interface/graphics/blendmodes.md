@@ -1,6 +1,6 @@
 ---
 title: "Blend modes"
-description: "The .NET MAUI graphics library enables different compositing operations to be specified by the BlendMode property."
+description: ".NET MAUI graphics enables different compositing operations to be specified by the BlendMode property."
 ms.date: 07/30/2021
 ---
 
@@ -8,7 +8,7 @@ ms.date: 07/30/2021
 
 <!-- Sample link goes here -->
 
-The .NET Multi-platform App UI (.NET MAUI) graphics library enables different compositing operations for graphical objects to be specified by the `ICanvas.BlendMode` property. This property determines what happens when a graphical object (called the *source*), is rendered on top of an existing graphical object (called the *destination*). By default, the last drawn object obscures the objects drawn underneath it:
+.NET Multi-platform App UI (.NET MAUI) graphics enables different compositing operations for graphical objects to be specified by the `ICanvas.BlendMode` property. This property determines what happens when a graphical object (called the *source*), is rendered on top of an existing graphical object (called the *destination*). By default, the last drawn object obscures the objects drawn underneath it:
 
 :::image type="content" source="blendmodes-images/normal.png" alt-text="Screenshot of a three colored circles, using the normal blend mode.":::
 
