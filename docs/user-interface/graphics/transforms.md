@@ -1,5 +1,5 @@
 ---
-title: ".NET MAUI Graphics: Transforms"
+title: "Transforms"
 description: "The .NET MAUI graphics library supports translation, scaling, and rotation transforms."
 ms.date: 07/26/2021
 ---

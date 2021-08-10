@@ -1,5 +1,5 @@
 ---
-title: ".NET MAUI Graphics: Draw graphical objects"
+title: "Draw graphical objects"
 description: "The .NET MAUI graphics library enables you to draw graphical objects on a canvas."
 ms.date: 07/28/2021
 ---

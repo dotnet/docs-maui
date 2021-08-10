@@ -1,5 +1,5 @@
 ---
-title: ".NET MAUI Graphics: Paint objects"
+title: "Paint graphical objects"
 description: "The .NET MAUI graphics library includes a Paint class, which is an abstract class that paints a graphical object with its output."
 ms.date: 07/15/2021
 ---

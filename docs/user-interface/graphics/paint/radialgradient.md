@@ -1,5 +1,5 @@
 ---
-title: ".NET MAUI Graphics: Radial gradient paint"
+title: "Paint a radial gradient"
 description: "The .NET MAUI graphics library includes a RadialGradientPaint class, that paints a graphical object with a radial gradient."
 ms.date: 07/15/2021
 ---

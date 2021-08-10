@@ -1,5 +1,5 @@
 ---
-title: ".NET MAUI Graphics: Gradient paint"
+title: "Paint gradients"
 description: "The .NET MAUI graphics library includes a GradientPaint class, which is an abstract class that describes a gradient, composed of gradient stops."
 ms.date: 07/15/2021
 ---

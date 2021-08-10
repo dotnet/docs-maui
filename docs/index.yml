@@ -48,5 +48,3 @@ landingContent:
             url: user-interface/handlers/customize.md
           - text: Graphics
             url: user-interface/graphics/index.md
-          - text: GraphicsView
-            url: user-interface/controls/graphicsview.md

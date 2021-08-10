@@ -1,5 +1,5 @@
 ---
-title: ".NET MAUI Graphics: Images"
+title: "Images"
 description: "The .NET MAUI graphics library includes functionality to load, save, resize, and downsize images."
 ms.date: 08/03/2021
 ---

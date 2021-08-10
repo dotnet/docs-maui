@@ -1,5 +1,5 @@
 ---
-title: ".NET MAUI Graphics: Pattern paint"
+title: "Paint a pattern"
 description: "The .NET MAUI graphics library includes a PatternPaint class, that paints a graphical object with a pattern."
 ms.date: 07/22/2021
 ---

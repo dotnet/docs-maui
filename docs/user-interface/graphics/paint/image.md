@@ -1,5 +1,5 @@
 ---
-title: ".NET MAUI Graphics: Image paint"
+title: "Paint images"
 description: "The .NET MAUI graphics library includes an ImagePaint class, that paints a graphical object with an image."
 ms.date: 07/22/2021
 ---

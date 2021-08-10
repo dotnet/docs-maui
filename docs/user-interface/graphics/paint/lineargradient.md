@@ -1,5 +1,5 @@
 ---
-title: ".NET MAUI Graphics: Linear gradient paint"
+title: "Paint a linear gradient"
 description: "The .NET MAUI graphics library includes a LinearGradientPaint class, that paints a graphical object with a linear gradient."
 ms.date: 07/15/2021
 ---
