@@ -16,8 +16,8 @@ In this tutorial, you'll learn how to create and run your first .NET Multi-platf
 
 ## Prerequisites
 
-- Visual Studio 2022 (Preview 2 or newer), with the required workloads. For more information, see [Installation](installation.md).
-- An environment that has been configured for .NET MAUI development. For more information, see [Install .NET 6 Preview 6](installation.md#install-net-6-preview-6).
+- The latest preview of Visual Studio 2022, with the required workloads. For more information, see [Installation](installation.md).
+- An environment that has been configured for .NET MAUI development. For more information, see [Install latest .NET 6](installation.md#install-latest-net-6-preview).
 - A configured Android emulator. For more information about creating an Android emulator, see [Android emulator setup](/xamarin/android/get-started/installation/android-emulator/).
 
 ## Get started with Visual Studio 2022 (Preview)
@@ -30,7 +30,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022, 
     dotnet new maui -n HelloMaui
     ```
 
-1. Launch Visual Studio 2022 build 17.0 (Preview 2 or greater), and in the start window click **Open a project or solution** to browse for your solution:
+1. Launch the latest preview of Visual Studio 2022, and in the start window click **Open a project or solution** to browse for your solution:
 
     :::image type="content" source="first-app-images/start-open.png" alt-text="Open solution.":::
 
@@ -62,8 +62,8 @@ If, while connecting Visual Studio to your Mac through Xamarin Mac Agent (XMA), 
 
 ## Prerequisites
 
-- An environment that has been configured for .NET MAUI development. For more information, see [Install .NET 6 Preview 6](installation.md#install-net-6-preview-6).
-- A configured simulator or emulator for your chosen platform. For more information about creating an Android emulator, see [Android emulator setup](/xamarin/android/get-started/installation/android-emulator/).
+- An environment that has been configured for .NET MAUI development. For more information, see [Install latest .NET 6](installation.md#install-latest-net-6-preview).
+- A configured Android emulator. For more information about creating an Android emulator, see [Android emulator setup](/xamarin/android/get-started/installation/android-emulator/).
 
 ## Get started with .NET command-line interface
 
