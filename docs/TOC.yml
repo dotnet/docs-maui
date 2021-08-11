@@ -29,5 +29,8 @@
     - name: Platform integration
       expanded: true
       items:
-        - name: Sensors
-          href: essentials/sensors.md
+        - name: Essentials
+          expanded: true
+          items:
+            - name: Sensors
+              href: platform-integration/essentials/sensors.md
