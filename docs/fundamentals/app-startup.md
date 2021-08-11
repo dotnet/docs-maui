@@ -4,9 +4,9 @@ description: ".NET MAUI apps are bootstrapped using HostBuilder from the Microso
 ms.date: 06/18/2021
 ---
 
-# .NET MAUI app startup
+# App startup
 
-.NET Multi-platform App UI (MAUI) apps are bootstrapped using the [.NET Generic Host](/dotnet/core/extensions/generic-host). This enables apps to be initialized from a single location, and provides the ability to configure fonts, services, and third-party libraries.
+.NET Multi-platform App UI (.NET MAUI) apps are bootstrapped using the [.NET Generic Host](/dotnet/core/extensions/generic-host). This enables apps to be initialized from a single location, and provides the ability to configure fonts, services, and third-party libraries.
 
 Each platform has an entry point that initializes the app host builder, and then invokes the `Configure` method of the `Startup` class in your app. The `Startup` class can be considered the entry point for your app, and is responsible for creating a window that defines the initial page of your app.
 

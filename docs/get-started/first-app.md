@@ -2,12 +2,12 @@
 title: "Build your first .NET MAUI app in Visual Studio"
 description: "How to create and run your first .NET MAUI app."
 zone_pivot_groups: preview-platforms
-ms.date: 06/18/2021
+ms.date: 07/15/2021
 ---
 
-# Build your first .NET MAUI app
+# Build your first app
 
-In this tutorial, you'll learn how to create and run your first .NET Multi-platform App UI (MAUI) app.
+In this tutorial, you'll learn how to create and run your first .NET Multi-platform App UI (.NET MAUI) app.
 
 > [!NOTE]
 > Visual Studio for Mac support will arrive in a future release.
@@ -16,27 +16,25 @@ In this tutorial, you'll learn how to create and run your first .NET Multi-platf
 
 ## Prerequisites
 
-- An environment that has been configured for .NET MAUI development, using the maui-check tool. For more information, see [Install .NET 6 Preview 5](installation.md#install-net-6-preview-5).
-- Visual Studio 2019 (build 16.11 Preview 2 or greater) or Visual Studio 2022 (any edition), with the required workloads. For more information, see [Installation](installation.md).
+- The latest preview of Visual Studio 2022, with the required workloads. For more information, see [Installation](installation.md).
+- An environment that has been configured for .NET MAUI development. For more information, see [Install latest .NET 6](installation.md#install-latest-net-6-preview).
 - A configured Android emulator. For more information about creating an Android emulator, see [Android emulator setup](/xamarin/android/get-started/installation/android-emulator/).
 
-## Get started with Visual Studio 2019
+## Get started with Visual Studio 2022 (Preview)
 
-In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2019, and run it on an Android emulator:
+In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022, and run it on an Android emulator:
 
-1. Launch Visual Studio 2019 build 16.11 (Preview 2 or greater), and in the start window click **Create a new project** to create a new project:
+1. Open a command prompt and create a new project by running the command:
 
-    :::image type="content" source="first-app-images/new-solution.png" alt-text="New solution.":::
+    ```dotnetcli
+    dotnet new maui -n HelloMaui
+    ```
 
-1. In the **Create a new project** window, select **MAUI** in the **Project type** drop-down, select the **.NET MAUI App** template, and click the **Next** button:
+1. Launch the latest preview of Visual Studio 2022, and in the start window click **Open a project or solution** to browse for your solution:
 
-    :::image type="content" source="first-app-images/new-project.png" alt-text="Choose a template.":::
+    :::image type="content" source="first-app-images/start-open.png" alt-text="Open solution.":::
 
-1. In the **Configure your new project** window, name your project, choose a suitable location for it, and click the **Create** button:
-
-    :::image type="content" source="first-app-images/configure-project.png" alt-text="Configure the project.":::
-
-    Wait for the project to be created, and its dependencies to be restored:
+1. Wait for the project to load, and its dependencies to be restored:
 
     :::image type="content" source="first-app-images/restored-dependencies.png" alt-text="Restored dependencies.":::
 
@@ -48,24 +46,24 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2019, 
 
 1. In the running app in the Android emulator, press the **CLICK ME** button several times and observe that the count of the number of button clicks is incremented.
 
-    :::image type="content" source="first-app-images/running-app.png" alt-text="App running in the Android emulator." lightbox="first-app-images/running-app-large.png" border="false":::
+    :::image type="content" source="first-app-images/running-app.png" alt-text="App running in the Android emulator." lightbox="first-app-images/running-app-large.png":::
 
 ## Build and debug iOS apps
 
-To build and debug .NET 6 iOS apps from Visual Studio 2019 you must manually install the .NET 6 SDK and iOS workloads on both Windows and macOS (your Mac build host).
+To build and debug .NET 6 iOS apps from Visual Studio 2022 you must manually install the .NET 6 SDK and iOS workloads on both Windows and macOS (your Mac build host).
 
 If, while connecting Visual Studio to your Mac through Xamarin Mac Agent (XMA), you are prompted to install a different version of the SDK, you can ignore the prompt since it refers to a legacy version of XMA.
 
 > [!NOTE]
-> Visual Studio 2019 can only currently deploy .NET MAUI iOS apps to the iOS simulator, and not to physical devices.
+> Visual Studio 2022 can only currently deploy .NET MAUI iOS apps to the iOS simulator, and not to physical devices.
 
 ::: zone-end
 ::: zone pivot="dotnet-cli"
 
 ## Prerequisites
 
-- An environment that has been configured for .NET MAUI development, using the maui-check tool. For more information, see [Install .NET 6 Preview 5](installation.md#install-net-6-preview-5).
-- A configured simulator or emulator for your chosen platform. For more information about creating an Android emulator, see [Android emulator setup](/xamarin/android/get-started/installation/android-emulator/).
+- An environment that has been configured for .NET MAUI development. For more information, see [Install latest .NET 6](installation.md#install-latest-net-6-preview).
+- A configured Android emulator. For more information about creating an Android emulator, see [Android emulator setup](/xamarin/android/get-started/installation/android-emulator/).
 
 ## Get started with .NET command-line interface
 
