@@ -10,11 +10,11 @@ A `HorizontalStackLayout` organizes child views in a one-dimensional horizontal 
 
 The `HorizontalStackLayout` defines the following properties:
 
-- `Spacing`, of type `double`, indicates the amount of space between each child view. <!-- The default value of this property is six device-independent units. -->
+- `Spacing`, of type `double`, indicates the amount of space between each child view. The default value of this property is 0.
 
-The default value of this property is six device-independent units.
+This property is backed by a `BindableProperty` object, which means that it can be the target of data bindings and styled.
 
-The `HorizontalStackLayout` class ultimately derives from the `Layout` class, which defines a `Children` property of type `IReadOnlyList<IView>`. The `Children` property is the `ContentProperty` of the `Layout` class, and therefore does not need to be explicitly set from XAML.
+The `HorizontalStackLayout` class ultimately derives from the `Layout` class, which defines a `Children` property of type `IList<IView>`. The `Children` property is the `ContentProperty` of the `Layout` class, and therefore does not need to be explicitly set from XAML.
 
 <!--
 > [!TIP]
@@ -36,10 +36,9 @@ The following XAML shows how to create a `HorizontalStackLayout` that contains d
 </ContentPage>
 ```
 
-This example creates a `HorizontalStackLayout` containing a `BoxView` and a `Label` object.
+This example creates a `HorizontalStackLayout` containing a `BoxView` and a `Label` object. By default, there is no space between the child views:
 
-<!-- By default, there are six device-independent units of space between the child views:
-
+<!--
 [![Screenshot of a vertically oriented StackLayout](stacklayout-images/vertical.png "Vertically oriented StackLayout")](stacklayout-images/vertical-large.png#lightbox "Vertically oriented StackLayout")
 
 > [!NOTE]
@@ -64,7 +63,7 @@ The spacing between child views in a `HorizontalStackLayout` can be changed by s
 </ContentPage>
 ```
 
-This example creates a `HorizontalStackLayout` containing a `BoxView` and a `Label` object, that have ten device-independent units of space between them.
+This example creates a `HorizontalStackLayout` containing a `BoxView` and a `Label` object, that have ten device-independent units of space between them:
 <!--
 [![Screenshot of a StackLayout without any spacing.](stacklayout-images/spacing.png "StackLayout without any spacing."](stacklayout-images/spacing-large.png#lightbox "StackLayout without any spacing")
 

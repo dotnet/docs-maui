@@ -10,9 +10,11 @@ A `VerticalStackLayout` organizes child views in a one-dimensional vertical stac
 
 The `VerticalStackLayout` defines the following properties:
 
-- `Spacing`, of type `double`, indicates the amount of space between each child view. <!-- The default value of this property is six device-independent units. -->
+- `Spacing`, of type `double`, indicates the amount of space between each child view. The default value of this property is 0.
 
-The `VerticalStackLayout` class ultimately derives from the `Layout` class, which defines a `Children` property of type `IReadOnlyList<IView>`. The `Children` property is the `ContentProperty` of the `Layout` class, and therefore does not need to be explicitly set from XAML.
+This property is backed by a `BindableProperty` object, which means that it can be the target of data bindings and styled.
+
+The `VerticalStackLayout` class ultimately derives from the `Layout` class, which defines a `Children` property of type `IList<IView>`. The `Children` property is the `ContentProperty` of the `Layout` class, and therefore does not need to be explicitly set from XAML.
 
 <!--
 > [!TIP]
@@ -38,9 +40,9 @@ The following XAML shows how to create a `VerticalStackLayout` that contains dif
 </ContentPage>
 ```
 
-This example creates a `VerticalStackLayout` containing `Label` and `BoxView` objects.
+This example creates a `VerticalStackLayout` containing `Label` and `BoxView` objects. By default, there is no space between the child views:
 
-<!-- By default, there are six device-independent units of space between the child views:
+<!--
 
 [![Screenshot of a vertically oriented StackLayout](stacklayout-images/vertical.png "Vertically oriented StackLayout")](stacklayout-images/vertical-large.png#lightbox "Vertically oriented StackLayout")
 
@@ -70,7 +72,7 @@ The spacing between child views in a `VerticalStackLayout` can be changed by set
 </ContentPage>
 ```
 
-This example creates a `VerticalStackLayout` containing `Label` and `BoxView` objects that have ten device-independent units of space between the child views.
+This example creates a `VerticalStackLayout` containing `Label` and `BoxView` objects that have ten device-independent units of space between the child views:
 <!--
 [![Screenshot of a StackLayout without any spacing.](stacklayout-images/spacing.png "StackLayout without any spacing."](stacklayout-images/spacing-large.png#lightbox "StackLayout without any spacing")
 

@@ -46,7 +46,3 @@ landingContent:
         links:
           - text: Customize controls
             url: user-interface/handlers/customize.md
-          - text: HorizontalStackLayout
-            url: user-interface/layouts/horizontalstacklayout.md
-          - text: VerticalStackLayout
-            url: user-interface/layouts/verticalstacklayout.md
