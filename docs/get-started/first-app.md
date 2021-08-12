@@ -1,5 +1,5 @@
 ---
-title: "Build your first .NET MAUI app in Visual Studio"
+title: "Build your first .NET MAUI app"
 description: "How to create and run your first .NET MAUI app."
 zone_pivot_groups: preview-platforms
 ms.date: 07/15/2021
@@ -24,17 +24,19 @@ In this tutorial, you'll learn how to create and run your first .NET Multi-platf
 
 In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022, and run it on an Android emulator:
 
-1. Open a command prompt and create a new project by running the command:
+1. Launch Visual Studio 2022, and in the start window click **Create a new project** to create a new project:
 
-    ```dotnetcli
-    dotnet new maui -n HelloMaui
-    ```
+    :::image type="content" source="first-app-images/new-solution.png" alt-text="New solution.":::
 
-1. Launch the latest preview of Visual Studio 2022, and in the start window click **Open a project or solution** to browse for your solution:
+1. In the **Create a new project** window, select **MAUI** in the **Project type** drop-down, select the **.NET MAUI App** template, and click the **Next** button:
 
-    :::image type="content" source="first-app-images/start-open.png" alt-text="Open solution.":::
+    :::image type="content" source="first-app-images/new-project.png" alt-text="Choose a template.":::
 
-1. Wait for the project to load, and its dependencies to be restored:
+1. In the **Configure your new project** window, name your project, choose a suitable location for it, and click the **Create** button:
+
+    :::image type="content" source="first-app-images/configure-project.png" alt-text="Configure the project.":::
+
+1. Wait for the project to be created, and its dependencies to be restored:
 
     :::image type="content" source="first-app-images/restored-dependencies.png" alt-text="Restored dependencies.":::
 
