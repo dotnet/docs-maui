@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI installation"
 description: "Installation instructions for .NET MAUI."
-ms.date: 08/10/2021
+ms.date: 08/12/2021
 ---
 
 # Installation
@@ -32,6 +32,12 @@ To use the `WebView` or `BlazorWebView` controls on Windows you need to install 
 - [Microsoft Edge WebView2 installer](https://developer.microsoft.com/microsoft-edge/webview2/)
 
 ## Install latest .NET 6 preview
+
+In the .NET CLI, run the following command to install the .NET MAUI workloads:
+
+```dotnetcli
+dotnet workload install maui
+```
 
 To verify your development environment, and install any missing components, use the [maui-check](https://github.com/Redth/dotnet-maui-check) utility. For acquiring and installing .NET SDKs, `maui-check` uses the same workload commands described in the [release notes](https://github.com/dotnet/core/blob/main/release-notes/6.0/install-maui.md). Install the `maui-check` utility using the following .NET CLI command:
 
