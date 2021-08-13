@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI control customization with handlers"
 description: ".NET MAUI handlers map cross-platform controls to performant native controls on each platform."
-ms.date: 06/10/2021
+ms.date: 08/13/2021
 ---
 
 # Customize controls with handlers
