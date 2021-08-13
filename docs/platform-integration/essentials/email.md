@@ -1,21 +1,33 @@
 ---
 title: "Email"
-description: "The Email class in Microsoft.Maui.Essentials enables an application to open the default email application with a specified information including subject, body, and recipients (TO, CC, BCC)."
-ms.date: 09/24/2020
+description: "Learn how to use the .MET MAUI Email class in Microsoft.Maui.Essentials to open the default email application. The subject, body, and recipients of email can be set."
+ms.date: 08/12/2021
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
 # Email
 
-The `Email` class enables an application to open the default email application with a specified information including subject, body, and recipients (TO, CC, BCC).
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `Email` class to open the default email app. When the email app is loaded, it can be set to create a new email with the specified recipients, subject, and body.
 
-To access the **Email** functionality the following platform specific setup is required.
+## Get started
 
+[!INCLUDE [get-started](includes/get-started.md)]
+
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
+
+> [!WARNING]
+> To use the email API on iOS, you must run it on a physical device. Otherwise, an exception is thrown.
+
+### Platform specific setup
+
+To access the email functionality the following platform specific setup is required.
+
+<!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
 
-If your project's Target Android version is set to **Android 11 (R API 30)** you must update your Android Manifest with queries that are used with the new [package visibility requirements](https://developer.android.com/preview/privacy/package-visibility).
+If your project's _Target Android_ version is set to **Android 11 (R API 30)**, you must update your _Android Manifest_ with queries that are used with the [package visibility requirements](https://developer.android.com/preview/privacy/package-visibility).
 
-Open the **AndroidManifest.xml** file under the **Properties** folder and add the following inside of the **manifest** node:
+Open the _AndroidManifest.xml_ file under the **Properties** folder and add the following inside of the **manifest** node:
 
 ```xml
 <queries>
@@ -28,7 +40,8 @@ Open the **AndroidManifest.xml** file under the **Properties** folder and add th
 
 # [iOS](#tab/ios)
 
-In iOS 9 and greater, Apple enforces what schemes an application can query for. To query if email is a valid target the `mailto` scheme must be specified in the  LSApplicationQueriesSchemes in your Info.plist file.
+<!-- TODO: Verify the wording on this. Something was wrong in the original article and I don't know iOS well enough -->
+In iOS 9 and greater, Apple enforces which schemes an application can query for. To query if **email** is a valid target, the `mailto` scheme must be specified for the `LSApplicationQueriesSchemes` scheme, in your _Info.plist_ file.
 
 ```xml
 <key>LSApplicationQueriesSchemes</key>
@@ -39,16 +52,10 @@ In iOS 9 and greater, Apple enforces what schemes an application can query for. 
 
 # [Windows](#tab/windows)
 
-No platform differences.
+No additional setup required.
 
 -----
-
-## Get started
-
-[!INCLUDE [get-started](includes/get-started.md)]
-
-> [!TIP]
-> To use the Email API on iOS you must run it on a physical device, else an exception will be thrown.
+<!-- markdownlint-enable MD025 -->
 
 ## Using Email
 
@@ -85,47 +92,56 @@ public class EmailTest
 }
 ```
 
-## File Attachments
+## File attachments
 
-This feature enables an app to email files in email clients on the device. Xamarin.Essentials will automatically detect the file type (MIME) and request the file to be added as an attachment. Every email client is different and may only support specific file extensions, or none at all.
+When creating the email provided to the email client, you can add file attachments. The API will automatically detect the file type (MIME), so you don't need to specify it. Some mail clients may restrict the types of files you send, or possibly prevent attachments all together.
 
-Here is a sample of writing text to disk and adding it as an email attachment:
+Use the `EmailMessage.Attachments` collection to manage the files attached to an email.
+
+The following examples demonstrates adding arbitrary text to a file, then adding i tto the email.
 
 ```csharp
 var message = new EmailMessage
 {
-    Subject = "Hello",
-    Body = "World",
+    Subject = "To my friends",
+    Body = "Hello everyone!\r\n\r\nI've attached a list of my favorite memories.",
 };
 
-var fn = "Attachment.txt";
-var file = Path.Combine(FileSystem.CacheDirectory, fn);
-File.WriteAllText(file, "Hello World");
+string fileName = "attachment.txt";
+string filePath = Path.Combine(FileSystem.CacheDirectory, fileName);
 
-message.Attachments.Add(new EmailAttachment(file));
+File.WriteAllText(filePath, "Hello World");
+
+message.Attachments.Add(new EmailAttachment(filePath));
 
 await Email.ComposeAsync(message);
 ```
 
-## Platform differences
+## Body type
 
+The body of an email message can specify either `Html` or `PlainText`. However, the platform and email client may or may not restrict the type of email you can send.
+
+<!-- markdownlint-disable MD025 -->
+<!-- markdownlint-disable MD024 -->
 # [Android](#tab/android)
 
-Not all email clients for Android support `Html`, since there is no way to detect this we recommend using `PlainText` when sending emails.
+Not all email clients for Android support `Html`, since there is no way to detect this, we recommend using `PlainText` when sending emails.
 
 # [iOS](#tab/ios)
 
-No platform differences.
+Both `Html` and `PlainText` are supported.
 
 # [Windows](#tab/windows)
 
-Only supports `PlainText` as the `BodyFormat` attempting to send `Html` will throw a `FeatureNotSupportedException`.
+Only supports `PlainText` as the `BodyFormat`. Attempting to send an `Html` email throws the exception: `FeatureNotSupportedException`.
 
-Not all email clients support sending attachments. See [documentation](/windows/uwp/contacts-and-calendar/sending-email) for more information.
+Not all email clients support sending attachments. For more information, see [Sending emails](/windows/uwp/contacts-and-calendar/sending-email).
 
 -----
+<!-- markdownlint-enable MD024 -->
+<!-- markdownlint-enable MD025 -->
 
 ## API
 
-- [Email source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Email)
+- [Email source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/Email)
 <!-- - [Email API documentation](xref:Microsoft.Maui.Essentials.Email)-->

@@ -1,25 +1,30 @@
 ---
 title: "SMS"
-description: "The Sms class in Microsoft.Maui.Essentials enables an application to open the default SMS application with a specified message to send to a recipient."
-ms.date: 09/24/2020
+description: "Learn how to use the .MET MAUI Sms class in Microsoft.Maui.Essentials to open the default SMS application. The text message can be preloaded with a message and recipient."
+ms.date: 08/12/2021
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
 # SMS
 
-The `Sms` class enables an application to open the default SMS application with a specified message to send to a recipient.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `Sms` class to open the default SMS app and preload it with a message and recipient.
 
 ## Get started
 
 [!INCLUDE [get-started](includes/get-started.md)]
 
-To access the **Sms** functionality the following platform specific setup is required.
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
+### Platform specific setup
+
+To access the SMS functionality the following platform specific setup is required.
+
+<!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
 
-If your project's Target Android version is set to **Android 11 (R API 30)** you must update your Android Manifest with queries that are used with the new [package visibility requirements](https://developer.android.com/preview/privacy/package-visibility).
+If your project's _Target Android_ version is set to **Android 11 (R API 30)**, you must update your _Android Manifest_ with queries that are used with the [package visibility requirements](https://developer.android.com/preview/privacy/package-visibility).
 
-Open the **AndroidManifest.xml** file under the **Properties** folder and add the following inside of the **manifest** node:
+Open the _AndroidManifest.xml_ file under the **Properties** folder and add the following inside of the **manifest** node:
 
 ```xml
 <queries>
@@ -36,24 +41,25 @@ No additional setup required.
 
 # [Windows](#tab/windows)
 
-No platform differences.
+No additional setup required.
 
 -----
+<!-- markdownlint-enable MD025 -->
 
-## Using Sms
+## Create a message
 
 [!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
-The SMS functionality works by calling the `ComposeAsync` method an `SmsMessage` that contains the message's recipient and the body of the message, both of which are optional.
+The SMS functionality works by creating a new `SmsMessage` object, and calling the `ComposeAsync` method. You can optionally include a message and zero or more recipients.
 
 ```csharp
-public class SmsTest
+public partial class SmsTest
 {
     public async Task SendSms(string messageText, string recipient)
     {
         try
         {
-            var message = new SmsMessage(messageText, new []{ recipient });
+            var message = new SmsMessage(messageText, new[] { recipient });
             await Sms.ComposeAsync(message);
         }
         catch (FeatureNotSupportedException ex)
@@ -71,7 +77,7 @@ public class SmsTest
 Additionally, you can pass in multiple receipients to a `SmsMessage`:
 
 ```csharp
-public class SmsTest
+public partial class SmsTest
 {
     public async Task SendSms(string messageText, string[] recipients)
     {
@@ -94,5 +100,5 @@ public class SmsTest
 
 ## API
 
-- [Sms source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Sms)
+- [Sms source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/Sms)
 <!-- - [Sms API documentation](xref:Microsoft.Maui.Essentials.Sms)-->
