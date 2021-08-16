@@ -40,8 +40,7 @@ Open the _AndroidManifest.xml_ file under the **Properties** folder and add the 
 
 # [iOS](#tab/ios)
 
-<!-- TODO: Verify the wording on this. Something was wrong in the original article and I don't know iOS well enough -->
-In iOS 9 and greater, Apple enforces which schemes an application can query for. To query if **email** is a valid target, the `mailto` scheme must be specified for the `LSApplicationQueriesSchemes` scheme, in your _Info.plist_ file.
+In iOS 9 and greater, Apple enforces which schemes an application can query for. To query if email is a valid target, the `mailto` scheme must be specified for the `LSApplicationQueriesSchemes` key, in your _Info.plist_ file. With this scheme, your app is given permission to open the system email app.
 
 ```xml
 <key>LSApplicationQueriesSchemes</key>
@@ -59,9 +58,7 @@ No additional setup required.
 
 ## Using Email
 
-[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
-
-The Email functionality works by calling the `ComposeAsync` method an `EmailMessage` that contains information about the email:
+The Email functionality works by providing the email information as an argument to the `ComposeAsync` method. In this example, the `EmailMessage` type is used to represent the email information:
 
 ```csharp
 public class EmailTest
@@ -94,11 +91,11 @@ public class EmailTest
 
 ## File attachments
 
-When creating the email provided to the email client, you can add file attachments. The API will automatically detect the file type (MIME), so you don't need to specify it. Some mail clients may restrict the types of files you send, or possibly prevent attachments all together.
+When creating the email provided to the email client, you can add file attachments. The API will automatically detect the file type (MIME), so you don't need to specify it. Some mail clients may restrict the types of files you send, or possibly prevent attachments altogether.
 
 Use the `EmailMessage.Attachments` collection to manage the files attached to an email.
 
-The following examples demonstrates adding arbitrary text to a file, then adding i tto the email.
+The following example demonstrates adding arbitrary text to a file, and then adding it to the email.
 
 ```csharp
 var message = new EmailMessage
