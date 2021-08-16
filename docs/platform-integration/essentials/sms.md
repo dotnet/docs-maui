@@ -48,8 +48,6 @@ No additional setup required.
 
 ## Create a message
 
-[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
-
 The SMS functionality works by creating a new `SmsMessage` object, and calling the `ComposeAsync` method. You can optionally include a message and zero or more recipients.
 
 ```csharp

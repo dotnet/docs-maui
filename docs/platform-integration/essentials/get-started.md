@@ -7,13 +7,16 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 
 # Get started with .NET MAUI Essentials
 
-.NET Multi-platform App UI (.NET MAUI) Essentials provides a single cross-platform API that works with any iOS, Android, or UWP application. Essentials is accessed from cross-platform friendly code that is ignorant of the platform it's run on. Some APIs do require platform-specific configure or setup, but that's the exception rather than the rule. For more information about platform and operating system support, see [Platform Support](platform-feature-support.md).
+.NET Multi-platform App UI (.NET MAUI) Essentials provides a single cross-platform API that works with any iOS, Android, or Windows application. Essentials is accessed from cross-platform friendly code that is ignorant of the platform it's run on. Some APIs do require platform-specific configure or setup, but that's the exception rather than the rule. For more information about platform and operating system support, see [.NET MAUI supported platforms](../../supported-platforms.md).
 
 ## Migrating from Xamarin.Forms
 
-Unlike Xamarin.Forms Essentials, .NET MAUI Essentials is included with .NET MAUI. You're no longer required to install a NuGet package or add reference to the Essentials library.
+Unlike Xamarin.Forms Essentials, .NET MAUI Essentials is included with .NET MAUI. You're no longer required to install a NuGet package or add a reference to the Essentials library.
 
 ## Setup
+
+<!-- TODO: Final requirements are needed before GA -->
+<!-- TODO: What do we mention about AndroidX? -->
 
 .NET MAUI Essentials requires setup on Android. iOS and Windows don't require any setup to enable access to Essentials.
 
@@ -30,14 +33,11 @@ Unlike Xamarin.Forms Essentials, .NET MAUI Essentials is included with .NET MAUI
 
   These two versions are set in the Project Options dialog for the Android project. Double-click the project node in the **Solution** pane, or right-click the project node and then select **Options**, then navigate to the **Android Application** tab.
 
-<!-- TODO: What is still valid in these two paragraphs? -->
-When compiling against Android 9.0, Xamarin.Essentials installs version 28.0.0.3 of the Xamarin.Android.Support libraries that it requires. Any other Xamarin.Android.Support libraries that your application requires should also be updated to version 28.0.0.3 using the NuGet package manager. All Xamarin.Android.Support libraries used by your application should be the same, and should be at least version 28.0.0.3. Refer to the [troubleshooting page](troubleshooting.md) if you have issues adding the Xamarin.Essentials NuGet or updating NuGets in your solution.
-
-Starting with version 1.5.0 when compiling against Android 10.0, Xamarin.Essentials install AndroidX support libraries that it requires. Read through the [AndroidX documentation](../android/platform/androidx.md) if you have not made the transition yet.
-
 <!-- markdownlint-disable MD001 -->
 ### Configure the MainApplication or Activity
 <!-- markdownlint-enable MD001 -->
+
+<!-- TODO: Verify this is no longer required by GA -->
 
 In the Android project's `MainApplication` or any `Activity` that is launched, Essentials must be initialized in the `OnCreate` method by calling the `Microsoft.Maui.Essentials.Platform.Init`method:
 
