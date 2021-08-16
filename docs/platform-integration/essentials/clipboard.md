@@ -1,23 +1,23 @@
 ---
 title: "Clipboard"
-description: "Describes the Clipboard class in the Microsoft.Maui.Essentials namespace, which lets you copy and paste text to the system clipboard"
-ms.date: 08/05/2021
+description: "Learn how to use the .MET MAUI Clipboard class in the Microsoft.Maui.Essentials namespace, which lets you copy and paste text to the system clipboard"
+ms.date: 08/16/2021
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
 # Clipboard
 
-The `Clipboard` class lets you copy and paste text to the system clipboard between applications.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `Clipboard` class. With this class you can copy and paste text to and from the system clipboard.
 
 ## Get started
 
 [!INCLUDE [get-started](includes/get-started.md)]
 
-## Using Clipboard
-
 [!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
-To check if the clipboard has text currently ready to be pasted:
+## Using Clipboard
+
+To check if the clipboard contains text, which a user would normally use to paste into an app:
 
 ```csharp
 bool hasText = Clipboard.HasText;

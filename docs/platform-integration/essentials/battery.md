@@ -1,29 +1,30 @@
 ---
 title: "Battery"
-description: "Describes the Battery class in the Microsoft.Maui.Essentials namespace, which lets you check the device's battery information and monitor for changes."
+description: "Learn how to use the .MET MAUI Battery class in the Microsoft.Maui.Essentials namespace. You can check the device's battery information and monitor for changes."
 ms.date: 08/05/2021
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
 # Battery
 
-The `Battery` class lets you check the device's battery information and monitor for changes and provides information about the device's energy-saver status, which indicates if the device is running in a low-power mode. Applications should avoid background processing if the device's energy-saver status is on.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `Battery` class lets you check the device's battery information and monitor for changes. This class also provides information about the device's energy-saver status, which indicates if the device is running in a low-power mode. Applications should avoid background processing if the device's energy-saver status is on.
 
 ## Get started
 
 [!INCLUDE [get-started](includes/get-started.md)]
 
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
+
 To access the **Battery** functionality the following platform-specific setup is required.
 
 <!-- markdownlint-disable MD025 -->
-
 # [Android](#tab/android)
 
 The `Battery` permission is required and must be configured in the Android project. This can be added in the following ways:
 
 - Add the assembly-based permission:
 
-  Open the **AssemblyInfo.cs** file under the **Properties** folder and add:
+  Open the _AssemblyInfo.cs_ file under the **Properties** folder and add:
 
   ```csharp
   [assembly: UsesPermission(Android.Manifest.Permission.BatteryStats)]
@@ -33,7 +34,7 @@ The `Battery` permission is required and must be configured in the Android proje
 
 - Update the Android Manifest:
 
-  Open the **AndroidManifest.xml** file under the **Properties** folder and add the following inside of the **manifest** node.
+  Open the _AndroidManifest.xml_ file under the **Properties** folder and add the following inside of the `manifest` node:
 
   ```xml
   <uses-permission android:name="android.permission.BATTERY_STATS" />
@@ -43,7 +44,7 @@ The `Battery` permission is required and must be configured in the Android proje
 
 - Use the Android project properties:
 
-  Right-click on the Android project and open the project's properties. Under **Android Manifest** find the **Required permissions:** area and check the **Battery** permission. This will automatically update the **AndroidManifest.xml** file.
+  Right-click on the Android project and open the project's properties. Under _Android Manifest_ find the **Required permissions:** area and check the **Battery** permission. This will automatically update the _AndroidManifest.xml_ file.
 
 # [iOS](#tab/ios)
 
@@ -54,12 +55,9 @@ No additional setup required.
 No additional setup required.
 
 -----
-
 <!-- markdownlint-enable MD025 -->
 
 ## Using Battery
-
-[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
 Check current battery information:
 
@@ -166,7 +164,7 @@ If the energy-saver status changes to `On`, the application should stop performi
 
 ## Platform differences
 
-This section describes the platform-specific differences trlsyrf to the battery.
+This section describes the platform-specific differences with the battery.
 
 <!-- markdownlint-disable MD025 -->
 <!-- markdownlint-disable MD024 -->
@@ -177,12 +175,12 @@ No platform differences.
 
 # [iOS](#tab/ios)
 
-- Device must be used to test APIs.
-- Only will return `AC` or `Battery` for `PowerSource`.
+- APIs won't work in an emulator and you must use a real device.
+- Only returns `AC` or `Battery` for `PowerSource`.
 
 # [Windows](#tab/windows)
 
-- Only will return `AC` or `Battery` for `PowerSource`.
+- Only returns `AC` or `Battery` for `PowerSource`.
 
 -----
 
