@@ -10,7 +10,7 @@ ms.date: 06/07/2021
 
 - Android 5.0 (API 21) or higher.
 - iOS 10 or higher.
-- macOS 11 (Big Sur) or higher.
+- macOS 10.13 or higher.
 - Windows desktop and the Universal Windows Platform (UWP), using Windows UI Library (WinUI) 3.
 
 > [!NOTE]
