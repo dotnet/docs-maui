@@ -1,61 +1,72 @@
 ---
 title: "Contacts"
-description: "The Contacts class in Microsoft.Maui.Essentials lets a user pick a contact and retrieve information about it."
-ms.date: 01/04/2021
+description: "Learn how to use the .MET MAUI Contacts class in Microsoft.Maui.Essentials namespace, which lets a pick a contact and retrieve information about it."
+ms.date: 08/16/2021
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
 # Contacts
 
-The `Contacts` class lets a user pick a contact and retrieve information about it.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `Contacts` class to select a contact and read information about it.
 
 ## Get started
 
 [!INCLUDE [get-started](includes/get-started.md)]
 
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
+
 To access the **Contacts** functionality the following platform specific setup is required.
 
+<!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
 
 The `ReadContacts` permission is required and must be configured in the Android project. This can be added in the following ways:
 
-Open the **AssemblyInfo.cs** file under the **Properties** folder and add:
+- Add the assembly-based permission:
 
-```csharp
-[assembly: UsesPermission(Android.Manifest.Permission.ReadContacts)]
-```
+  Open the _AssemblyInfo.cs_ file under the **Properties** folder and add:
 
-OR Update Android Manifest:
+  ```csharp
+  [assembly: UsesPermission(Android.Manifest.Permission.ReadContacts)]
+  ```
 
-Open the **AndroidManifest.xml** file under the **Properties** folder and add the following inside of the **manifest** node.
+  \- or -
 
-```xml
-<uses-permission android:name="android.permission.READ_CONTACTS" /> />
-```
+- Update the Android Manifest:
 
-Or right click on the Android project and open the project's properties. Under **Android Manifest** find the **Required permissions:** area and check this permission. This will automatically update the **AndroidManifest.xml** file.
+  Open the _AndroidManifest.xml_ file under the **Properties** folder and add the following inside of the `manifest` node:
+
+  ```xml
+  <uses-permission android:name="android.permission.READ_CONTACTS" /> />
+  ```
+
+  \- or -
+
+- Use the Android project properties:
+
+  Right-click on the Android project and open the project's properties. Under **Android Manifest** find the **Required permissions:** area and check the **Contacts** permission. This will automatically update the **AndroidManifest.xml** file.
 
 # [iOS](#tab/ios)
 
-In your `Info.plist` add the following keys:
+In your _Info.plist_ file, add the following keys:
 
 ```xml
 <key>NSContactsUsageDescription</key>
 <string>This app needs access to contacts to pick a contact and get info.</string>
 ```
 
-Ensure that you update the `<string>` in the description that is specific for your app as it will be shown to your users.
+The `<string>` element is the description specific to your app and is shown to the user.
 
 # [Windows](#tab/windows)
 
-In the `Package.appxmanifest` under **Capabilities** ensure that `Contact` capability is checked.
+In the _Package.appxmanifest_, under **Capabilities**, ensure that the **Contact** capability is checked.
 
 -----
+<!-- markdownlint-enable MD025 -->
 
 ## Pick a contact
 
-By calling `Contacts.PickContactAsync()` the contact dialog will appear and allow the user to receive information about the user.
-
+You can request the user to pick a contact by calling the `Contacts.PickContactAsync` method. A contact dialog will appear on the device allowing the user to select a contact. If the user doesn't select a contact, `null` is returned.
 
 ```csharp
 try
@@ -83,6 +94,8 @@ catch (Exception ex)
 
 ## Get all contacts
 
+The `Contacts.GetAllAsync` method returns a collection of contacts.
+
 ```csharp
 ObservableCollection<Contact> contactsCollect = new ObservableCollection<Contact>();
 
@@ -106,23 +119,28 @@ catch (Exception ex)
 
 ## Platform differences
 
+This section describes the platform-specific differences with the contacts API.
+
+<!-- markdownlint-disable MD025 -->
+<!-- markdownlint-disable MD024 -->
 # [Android](#tab/android)
 
-- The `cancellationToken` parameter in the `GetAllAsync` method is only used on UWP.
+- The `cancellationToken` parameter in the `GetAllAsync` method is only used on Windows.
 
 # [iOS](#tab/ios)
 
-- The `cancellationToken` parameter in the `GetAllAsync` method is only used on UWP.
-- The iOS platform does not support the `DisplayName` property natively, thus the `DisplayName` value is constructed as "GivenName FamilyName".
+- The `cancellationToken` parameter in the `GetAllAsync` method is only used on Windows.
+- The iOS platform does not support the `DisplayName` property natively, thus, the `DisplayName` value is constructed as "GivenName FamilyName".
 
 # [Windows](#tab/windows)
 
 No platform differences.
 
 -----
-
+<!-- markdownlint-enable MD024 -->
+<!-- markdownlint-enable MD025 -->
 
 ## API
 
-- [Contacts source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Contacts)
+- [Contacts source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/Contacts)
 <!-- - [Contacts API documentation](xref:Microsoft.Maui.Essentials.Contacts)-->

@@ -72,7 +72,7 @@ public partial class SmsTest
 }
 ```
 
-Additionally, you can pass in multiple receipients to a `SmsMessage`:
+Additionally, you can pass in multiple recipients to a `SmsMessage`:
 
 ```csharp
 public partial class SmsTest

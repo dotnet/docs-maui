@@ -1,39 +1,46 @@
 ---
 title: "Connectivity"
-description: "The Connectivity class in Microsoft.Maui.Essentials lets you monitor for changes in the device's network conditions, check the current network access, and how it is currently connected."
-ms.date: 01/08/2019
+description: "Learn how to use the .MET MAUI Connectivity class in the Microsoft.Maui.Essentials namespace. With this class you can determine if you can communicate with the internet and which network devices are connected"
+ms.date: 08/16/2021
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
 # Connectivity
 
-The `Connectivity` class lets you monitor for changes in the device's network conditions, check the current network access, and how it is currently connected.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `Connectivity` class to inspect the network accessibility of the device. The network connection may have access to the internet. Devices also contain different kinds of network connections, such as Bluetooth, cellular, or WiFi. The `Connectivity` class has an event to monitor changes in the devices connection state.
 
 ## Get started
 
 [!INCLUDE [get-started](includes/get-started.md)]
 
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
+
 To access the **Connectivity** functionality the following platform specific setup is required.
 
+<!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
 
 The `AccessNetworkState` permission is required and must be configured in the Android project. This can be added in the following ways:
 
-Open the **AssemblyInfo.cs** file under the **Properties** folder and add:
+- Open the **AssemblyInfo.cs** file under the **Properties** folder and add:
+  
+  ```csharp
+  [assembly: UsesPermission(Android.Manifest.Permission.AccessNetworkState)]
+  ```
 
-```csharp
-[assembly: UsesPermission(Android.Manifest.Permission.AccessNetworkState)]
-```
+  \- or -
 
-OR Update Android Manifest:
+- Update Android Manifest:
 
-Open the **AndroidManifest.xml** file under the **Properties** folder and add the following inside of the **manifest** node.
+  Open the _AndroidManifest.xml_ file under the **Properties** folder and add the following inside of the **manifest** node.
+  
+  ```xml
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  ```
 
-```xml
-<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-```
+  \- or -
 
-Or right click on the Android project and open the project's properties. Under **Android Manifest** find the **Required permissions:** area and check the **Access Network State** permission. This will automatically update the **AndroidManifest.xml** file.
+- Right click on the Android project and open the project's properties. Under _Android Manifest_ find the **Required permissions:** area and check the **Access Network State** permission. This will automatically update the _AndroidManifest.xml_ file.
 
 # [iOS](#tab/ios)
 
@@ -44,12 +51,11 @@ No additional setup required.
 No additional setup required.
 
 -----
+<!-- markdownlint-enable MD025 -->
 
 ## Using Connectivity
 
-[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
-
-Check current network access:
+You can determine the scope of the current network by checking the `Connectivity.NetworkAccess` property.
 
 ```csharp
 var current = Connectivity.NetworkAccess;
@@ -60,15 +66,15 @@ if (current == NetworkAccess.Internet)
 }
 ```
 
-[Network access](xref:Microsoft.Maui.Essentials.NetworkAccess) falls into the following categories:
+Network access falls into the following categories:
 
-* **Internet** – Local and internet access.
-* **ConstrainedInternet** – Limited internet access. Indicates captive portal connectivity, where local access to a web portal is provided, but access to the Internet requires that specific credentials are provided via a portal.
-* **Local** – Local network access only.
-* **None** – No connectivity is available.
-* **Unknown** – Unable to determine internet connectivity.
+- **Internet** – Local and internet access.
+- **ConstrainedInternet** – Limited internet access. Indicates captive portal connectivity, where local access to a web portal is provided, but access to the internet requires that specific credentials provided through the portal.
+- **Local** – Local network access only.
+- **None** – No connectivity is available.
+- **Unknown** – Unable to determine internet connectivity.
 
-You can check what type of [connection profile](xref:Microsoft.Maui.Essentials.ConnectionProfile) the device is actively using:
+You can check what type of connection profile the device is actively using:
 
 ```csharp
 var profiles = Connectivity.ConnectionProfiles;
@@ -78,7 +84,7 @@ if (profiles.Contains(ConnectionProfile.WiFi))
 }
 ```
 
-Whenever the connection profile or network access changes you can receive an event when triggered:
+Whenever the connection profile or network access changes, the `Connectivity.ConnectivityChanged` event is raised:
 
 ```csharp
 public class ConnectivityTest
@@ -91,17 +97,46 @@ public class ConnectivityTest
 
     void Connectivity_ConnectivityChanged(object sender, ConnectivityChangedEventArgs e)
     {
-        var access = e.NetworkAccess;
-        var profiles = e.ConnectionProfiles;
+        if (e.NetworkAccess == NetworkAccess.ConstrainedInternet)
+            Console.WriteLine("Internet access is available but is limited.");
+
+        else if (e.NetworkAccess != NetworkAccess.Internet)
+            Console.WriteLine("Internet access has been lost.");
+
+        // Log each active connection
+        Console.Write("Connections active: ");
+
+        foreach (var item in e.ConnectionProfiles)
+        {
+            switch (item)
+            {
+                case ConnectionProfile.Bluetooth:
+                    Console.Write("Bluetooth");
+                    break;
+                case ConnectionProfile.Cellular:
+                    Console.Write("Cell");
+                    break;
+                case ConnectionProfile.Ethernet:
+                    Console.Write("Ethernet");
+                    break;
+                case ConnectionProfile.WiFi:
+                    Console.Write("WiFi");
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        Console.WriteLine();
     }
 }
 ```
 
 ## Limitations
 
-It is important to note that it is possible that `Internet` is reported by `NetworkAccess` but full access to the web is not available. Due to how connectivity works on each platform it can only guarantee that a connection is available. For instance the device may be connected to a Wi-Fi network, but the router is disconnected from the internet. In this instance Internet may be reported, but an active connection is not available.
+It's important to know that it's possible that `Internet` is reported by `NetworkAccess` but full access to the web is not available. Due to how connectivity works on each platform it can only guarantee that a connection is available. For instance the device may be connected to a Wi-Fi network, but the router is disconnected from the internet. In this instance Internet may be reported, but an active connection is not available.
 
 ## API
 
-* [Connectivity source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Connectivity)
-* [Connectivity API documentation](xref:Microsoft.Maui.Essentials.Connectivity)
+- [Connectivity source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/Connectivity)
+<!-- - [Connectivity API documentation](xref:Microsoft.Maui.Essentials.Connectivity)-->
