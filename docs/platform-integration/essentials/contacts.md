@@ -15,7 +15,7 @@ This article describes how you can use the .NET Multi-platform App UI (.NET MAUI
 
 [!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
-To access the **Contacts** functionality the following platform specific setup is required.
+To access the **Contacts** functionality the following platform-specific setup is required.
 
 <!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
@@ -34,10 +34,10 @@ The `ReadContacts` permission is required and must be configured in the Android 
 
 - Update the Android Manifest:
 
-  Open the _AndroidManifest.xml_ file under the **Properties** folder and add the following inside of the `manifest` node:
+  Open the _AndroidManifest.xml_ file under the **Properties** folder and add the following in the `manifest` node:
 
   ```xml
-  <uses-permission android:name="android.permission.READ_CONTACTS" /> />
+  <uses-permission android:name="android.permission.READ_CONTACTS" />
   ```
 
   \- or -
@@ -130,7 +130,7 @@ This section describes the platform-specific differences with the contacts API.
 # [iOS](#tab/ios)
 
 - The `cancellationToken` parameter in the `GetAllAsync` method is only used on Windows.
-- The iOS platform does not support the `DisplayName` property natively, thus, the `DisplayName` value is constructed as "GivenName FamilyName".
+- The iOS platform doesn't support the `DisplayName` property natively, thus, the `DisplayName` value is constructed as "GivenName FamilyName".
 
 # [Windows](#tab/windows)
 

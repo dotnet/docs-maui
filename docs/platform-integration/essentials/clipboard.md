@@ -7,7 +7,7 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 
 # Clipboard
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `Clipboard` class. With this class you can copy and paste text to and from the system clipboard.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `Clipboard` class. With this class, you can copy and paste text to and from the system clipboard.
 
 ## Get started
 
@@ -35,7 +35,7 @@ To read text from the clipboard:
 string text = await Clipboard.GetTextAsync();
 ```
 
-Whenever any of the clipboard's content has changed, an event is triggered:
+Whenever the clipboard content changes, an event is triggered:
 
 ```csharp
 public class ClipboardTest
