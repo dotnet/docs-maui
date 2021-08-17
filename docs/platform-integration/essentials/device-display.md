@@ -1,47 +1,45 @@
 ---
 title: "Device Display Information"
-description: "Describes the DeviceDisplay class in Microsoft.Maui.Essentials, which provides screen metrics for the device on which the application is running."
-ms.date: 11/04/2018
+description: "Learn how to use the .MET MAUI DeviceDisplay class in the Microsoft.Maui.Essentials namespace, which provides screen metrics for the device on which the app is running."
+ms.date: 08/17/2021
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
-# Device Display Information
+# Device display information
 
-The `DeviceDisplay` class provides information about the device's screen metrics the application is running on and can request to keep the screen from falling asleep when the application is running.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `DeviceDisplay` class to read information about the device's screen metrics. This class can be used to request the screen stay awake while the app is running.
 
 ## Get started
 
 [!INCLUDE [get-started](includes/get-started.md)]
 
-## Using DeviceDisplay
-
 [!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
-## Main Display Info
+## Main display info
 
-In addition to basic device information the `DeviceDisplay` class contains information about the device's screen and orientation.
+The `DeviceDisplay.MainDisplayInfo` property returns information about the screen and orientation.
 
 ```csharp
 // Get Metrics
-var mainDisplayInfo = DeviceDisplay.MainDisplayInfo;
+DisplayInfo mainDisplayInfo = DeviceDisplay.MainDisplayInfo;
 
 // Orientation (Landscape, Portrait, Square, Unknown)
-var orientation = mainDisplayInfo.Orientation;
+DisplayOrientation orientation = mainDisplayInfo.Orientation;
 
 // Rotation (0, 90, 180, 270)
-var rotation = mainDisplayInfo.Rotation;
+DisplayRotation rotation = mainDisplayInfo.Rotation;
 
 // Width (in pixels)
-var width = mainDisplayInfo.Width;
+double width = mainDisplayInfo.Width;
 
 // Height (in pixels)
-var height = mainDisplayInfo.Height;
+double height = mainDisplayInfo.Height;
 
 // Screen density
-var density = mainDisplayInfo.Density;
+double density = mainDisplayInfo.Density;
 ```
 
-The `DeviceDisplay` class also exposes an event that can be subscribed to that is triggered whenever any screen metric changes:
+The `DeviceDisplay` class also provides the `MainDisplayInfoChanged` event that is raised when any screen metric changes:
 
 ```csharp
 public class DisplayInfoTest
@@ -55,30 +53,28 @@ public class DisplayInfoTest
     void OnMainDisplayInfoChanged(object sender, DisplayInfoChangedEventArgs  e)
     {
         // Process changes
-        var displayInfo = e.DisplayInfo;
+        DisplayInfo displayInfo = e.DisplayInfo;
     }
 }
 ```
 
 ## Keep Screen On
 
-The `DeviceDisplay` class exposes a `bool` property called `KeepScreenOn` that can be set to attempt to keep the device's display from turning off or locking.
+The `DeviceDisplay` class has a property named `KeepScreenOn` which when set to `true`, which prevents the device's display from turning off or locking.
 
 ```csharp
-public class KeepScreenOnTest
-{
-    public void ToggleScreenLock()
-    {
-        DeviceDisplay.KeepScreenOn = !DeviceDisplay.KeepScreenOn;
-    }
-}
+public void ToggleScreenLock() =>
+    DeviceDisplay.KeepScreenOn = !DeviceDisplay.KeepScreenOn;
 ```
 
 ## Platform differences
 
+This section describes the platform-specific differences with the device display.
+
+<!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
 
-No differences.
+No platform differences.
 
 # [iOS](#tab/ios)
 
@@ -86,9 +82,10 @@ No differences.
 
 # [Windows](#tab/windows)
 
-No differences.
+No platform differences.
 
---------------
+-----
+<!-- markdownlint-enable MD025 -->
 
 ## API
 
