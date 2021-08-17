@@ -1,6 +1,6 @@
 ---
 title: "Connectivity"
-description: "Learn how to use the .MET MAUI Connectivity class in the Microsoft.Maui.Essentials namespace. With this class you can determine if you can communicate with the internet and which network devices are connected"
+description: "Learn how to use the .MET MAUI Connectivity class in the Microsoft.Maui.Essentials namespace. With this class, you can determine if you can communicate with the internet and which network devices are connected"
 ms.date: 08/16/2021
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
@@ -15,7 +15,7 @@ This article describes how you can use the .NET Multi-platform App UI (.NET MAUI
 
 [!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
-To access the **Connectivity** functionality the following platform specific setup is required.
+To access the **Connectivity** functionality, the following platform-specific setup is required.
 
 <!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
@@ -32,7 +32,7 @@ The `AccessNetworkState` permission is required and must be configured in the An
 
 - Update Android Manifest:
 
-  Open the _AndroidManifest.xml_ file under the **Properties** folder and add the following inside of the **manifest** node.
+  Open the _AndroidManifest.xml_ file under the **Properties** folder and add the following in the **manifest** node.
   
   ```xml
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -40,15 +40,15 @@ The `AccessNetworkState` permission is required and must be configured in the An
 
   \- or -
 
-- Right click on the Android project and open the project's properties. Under _Android Manifest_ find the **Required permissions:** area and check the **Access Network State** permission. This will automatically update the _AndroidManifest.xml_ file.
+- Right-click on the Android project and open the project's properties. Under _Android Manifest_ find the **Required permissions:** area and check the **Access Network State** permission. This will automatically update the _AndroidManifest.xml_ file.
 
 # [iOS](#tab/ios)
 
-No additional setup required.
+No setup is required.
 
 # [Windows](#tab/windows)
 
-No additional setup required.
+No setup is required.
 
 -----
 <!-- markdownlint-enable MD025 -->
@@ -69,7 +69,7 @@ if (current == NetworkAccess.Internet)
 Network access falls into the following categories:
 
 - **Internet** – Local and internet access.
-- **ConstrainedInternet** – Limited internet access. Indicates captive portal connectivity, where local access to a web portal is provided, but access to the internet requires that specific credentials provided through the portal.
+- **ConstrainedInternet** – Limited internet access. This value means that there's a captive portal, where local access to a web portal is provided. Once the portal is used to provide authentication credentials, internet access is granted.
 - **Local** – Local network access only.
 - **None** – No connectivity is available.
 - **Unknown** – Unable to determine internet connectivity.
@@ -134,7 +134,7 @@ public class ConnectivityTest
 
 ## Limitations
 
-It's important to know that it's possible that `Internet` is reported by `NetworkAccess` but full access to the web is not available. Due to how connectivity works on each platform it can only guarantee that a connection is available. For instance the device may be connected to a Wi-Fi network, but the router is disconnected from the internet. In this instance Internet may be reported, but an active connection is not available.
+It's important to know that it's possible that `Internet` is reported by `NetworkAccess` but full access to the web isn't available. Because of how connectivity works on each platform, it can only guarantee that a connection is available. For instance, the device may be connected to a Wi-Fi network, but the router is disconnected from the internet. In this instance `Internet` may be reported, but an active connection isn't available.
 
 ## API
 

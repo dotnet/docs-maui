@@ -7,7 +7,10 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 
 # Battery
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `Battery` class lets you check the device's battery information and monitor for changes. This class also provides information about the device's energy-saver status, which indicates if the device is running in a low-power mode. Applications should avoid background processing if the device's energy-saver status is on.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `Battery` class to check the device's battery information and monitor for changes. This class also provides information about the device's energy-saver status, which indicates if the device is running in a low-power mode.
+
+> [!IMPORTANT]
+> Applications should avoid background processing if the device's energy-saver status is on.
 
 ## Get started
 
@@ -34,7 +37,7 @@ The `Battery` permission is required and must be configured in the Android proje
 
 - Update the Android Manifest:
 
-  Open the _AndroidManifest.xml_ file under the **Properties** folder and add the following inside of the `manifest` node:
+  Open the _AndroidManifest.xml_ file under the **Properties** folder and add the following in the `manifest` node:
 
   ```xml
   <uses-permission android:name="android.permission.BATTERY_STATS" />
@@ -48,18 +51,18 @@ The `Battery` permission is required and must be configured in the Android proje
 
 # [iOS](#tab/ios)
 
-No additional setup required.
+No setup is required.
 
 # [Windows](#tab/windows)
 
-No additional setup required.
+No setup is required.
 
 -----
 <!-- markdownlint-enable MD025 -->
 
 ## Using Battery
 
-Check current battery information:
+The following example demonstrates checking the state of the battery:
 
 ```csharp
 double level = Battery.ChargeLevel; // returns 0.0 to 1.0 or 1.0 when on AC or no battery.
@@ -108,7 +111,7 @@ switch (source)
 }
 ```
 
-Whenever any of the battery's properties change an event is triggered:
+The `Battery` class also provides the `BatteryInfoChanged` event, with which you can detect changes to the battery:
 
 ```csharp
 public class BatteryTest
@@ -130,7 +133,7 @@ public class BatteryTest
 }
 ```
 
-Devices that run on batteries can be put into a low-power energy-saver mode. Sometimes devices are switched into this mode automatically, for example, when the battery drops below 20% capacity. The operating system responds to energy-saver mode by reducing activities that tend to deplete the battery. Applications can help by avoiding background processing or other high-power activities when energy-saver mode is on.
+Devices that run on batteries can be put into a low-power energy-saver mode. Sometimes devices are switched into this mode automatically, like when the battery drops below 20% capacity. The operating system responds to energy-saver mode by reducing activities that tend to deplete the battery. Applications can help by avoiding background processing or other high-power activities when energy-saver mode is on.
 
 You can also obtain the current energy-saver status of the device using the static `Battery.EnergySaverStatus` property:
 
@@ -139,7 +142,7 @@ You can also obtain the current energy-saver status of the device using the stat
 EnergySaverStatus status = Battery.EnergySaverStatus;
 ```
 
-This property returns a member of the `EnergySaverStatus` enumeration, which is either `On`, `Off`, or `Unknown`. If the property returns `On`, the application should avoid background processing or other activities that might consume a lot of power.
+This property returns a member of the `EnergySaverStatus` enumeration, which is either `On`, `Off`, or `Unknown`. If the property returns `On`, the application should avoid background processing or other activities that might consume too much power.
 
 The application should also install an event handler. The `Battery` class exposes an event that is triggered when the energy-saver status changes:
 
@@ -160,7 +163,7 @@ public class EnergySaverTest
 }
 ```
 
-If the energy-saver status changes to `On`, the application should stop performing background processing. If the status changes to `Unknown` or `Off`, the application can resume background processing.
+If the energy-saver status changes to `On`, the application should stop doing background processing. If the status changes to `Unknown` or `Off`, the application can resume background processing.
 
 ## Platform differences
 
@@ -175,7 +178,7 @@ No platform differences.
 
 # [iOS](#tab/ios)
 
-- APIs won't work in an emulator and you must use a real device.
+- APIs won't work in a simulator and you must use a real device.
 - Only returns `AC` or `Battery` for `PowerSource`.
 
 # [Windows](#tab/windows)
