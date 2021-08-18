@@ -17,33 +17,28 @@ Handlers can be accessed through a control-specific interface provided by .NET M
 All handler-based .NET MAUI controls can be customized by modifying the mapper for a control's handler. The syntax for modifying a mapper is as follows:
 
 ```csharp
-<HandlerType>.<MapperName>[<string>] = (handler, view) =>
+HandlerType.MapperName[string] = (handler, view) =>
 {
-  // Per-platform handler customization logic goes here
+  // Manipulate handler.NativeView to customize the handler
 };
 ```
 
 All handler types are located in the `Microsoft.Maui.Handlers` namespace, and each handler provides a mapper that maps each cross-platform control property to a method that applies the property value to the native control. The `handler` argument to the mapper provides an instance of the handler being customized, and the `view` argument provides an instance of the cross-platform control that the handler implements. For a list of the type names that implement handler-based .NET MAUI controls, see [Handler-based controls](#handler-based-controls).
 
-Handlers expose the cross-platform control implemented by the handler via the `VirtualView` property. In addition, the native control that implements the .NET MAUI cross-platform control is exposed by the handlers' `NativeView` property. This property can be accessed to set native control properties, invoke native control methods, and subscribe to native control events.
+Each handler class exposes the native control that implements the cross-platform control via its `NativeView` property. This property can be accessed to set native control properties, invoke native control methods, and subscribe to native control events. In addition, the cross-platform control implemented by the handler is exposed via its `VirtualView` property.
 
-> [!IMPORTANT]
-> Handlers should only be customized to augment the appearance and behavior of a .NET MAUI control beyond that provided by the control's cross-platform API.
+Handlers can be customized to augment the appearance and behavior of a .NET MAUI control beyond the customization that's possible through the control's API. Handlers are global and therefore customization can occur anywhere in your .NET MAUI app. For example, customizing a handler for a control in your `App` class will result in all controls of that type being customized in the app. Similarly, customizing a handler for a control in the first page of your app will also result in all controls of that type in the app being customized.
 
-Handlers are global and therefore customization can occur anywhere in your .NET MAUI app. For example, customizing a handler for a control in your `App` class will result in all controls of that type being customized in the app. Similarly, customizing a handler for a control in the first page of your app will also result in all controls of that type in the app being customized.
-
-Handlers can be customized per platform by using the `#if` preprocessor directive, to multi-target code based on the platform. However, you can just as easily use platform-specific folders and files to organize your code. For more information about conditional compilation, see [Conditional compilation](/dotnet/csharp/language-reference/preprocessor-directives#conditional-compilation).
+Handlers can be customized per platform by using compiler preprocessor directives, to multi-target code based on the platform. Alternatively, you can use partial classes to organize your code into platform-specific folders and files. For more information about conditional compilation, see [Conditional compilation](/dotnet/csharp/language-reference/preprocessor-directives#conditional-compilation).
 
 ## Handler lifecycle
 
 All handler-based .NET MAUI controls support two handler lifecycle events:
 
-- `HandlerChanged` is fired after the handler for a cross-platform control has been created. This event signals that the native control that implements the cross-platform control is available, and all the property values set on the cross-platform control have been applied to the native control.
-- `HandlerChanging` is fired before an existing handler is removed from a cross-platform control, and before a new handler for the cross-platform control has been created. This event signals that the existing native control is about be removed from the cross-platform control, and therefore that any native events should be unwired and other cleanup performed. The `HandlerChangingEventArgs` object that accompanies this event has `OldHandler` and `NewHandler` properties, of type `IElementHandler`.
+- `HandlerChanged` is fired after the handler for a cross-platform control has been created. This event indicates that the native control that implements the cross-platform control is available, and all the property values set on the cross-platform control have been applied to the native control.
+- `HandlerChanging` is fired before an existing handler is removed from a cross-platform control, and before a new handler for the cross-platform control is created. This event indicates that the existing native control is about be removed from the cross-platform control, and therefore that any native events should be unwired and other cleanup performed. The `HandlerChangingEventArgs` object that accompanies this event has `OldHandler` and `NewHandler` properties, of type `IElementHandler`.
 
- before a new handler for a cross-platform control is created
-
-In addition to these events, each control also features an overridable `OnHandlerChanged` method that's invoked when the `HandlerChanged` event fires, and a `OnHandlerChanging` method that's invoked when the `HandlerChanging` event fires.
+In addition to these events, each control also has an overridable `OnHandlerChanged` method that's invoked when the `HandlerChanged` event fires, and a `OnHandlerChanging` method that's invoked when the `HandlerChanging` event fires.
 
 ## Customize a control with a mapper
 
@@ -51,7 +46,7 @@ The .NET MAUI `Entry` is a single-line text input control, that implements the `
 
 :::image type="content" source="customize-images/entry-handler.png" alt-text="Entry handler architecture." border="false":::
 
-The `EntryHandler` class maps the cross-platform control API to the native control API with the `EntryMapper`. This mapper can be modified to customize the control on each platform:
+The `EntryMapper`, in the `EntryHandler` class, maps the cross-platform control API to the native control API. This mapper can be modified to customize the control on each platform:
 
 ```csharp
 using Microsoft.Maui;
@@ -81,7 +76,7 @@ namespace HandlersDemos.Views
 }
 ```
 
-In this example, the `Entry` customization occurs in a page class. Therefore, all `Entry` controls on Android, iOS, and Windows will be customized once the `CustomizeEntryPage` is displayed. The following customization is performed:
+In this example, the `Entry` customization occurs in a page class. Therefore, all `Entry` controls on Android, iOS, and Windows will be customized once the `CustomizeEntryPage` is displayed. The following customization is performed by using compiler preprocessing directives:
 
 - On Android, the underline is removed from the `Entry`.
 - On iOS, the border is removed from the `Entry`.
@@ -92,7 +87,7 @@ In this example, the `Entry` customization occurs in a page class. Therefore, al
 
 ## Customize specific control instances
 
-Handlers are global, and therefore customizing a handler for a control will result in all controls of that type being customized in your app. However, handlers for specific control instances can be customized by subclassing the control, and then by modifying the handler for the parent control only when the control is of the subclassed type. For example, to customize a spcific `Entry` control on a page that contains multiple `Entry` controls, you should first subclass the `Entry` control:
+Handlers are global, and customizing a handler for a control will result in all controls of the same type being customized in your app. However, handlers for specific control instances can be customized by subclassing the control, and then by modifying the handler for the base control type only when the control is of the subclassed type. For example, to customize a spcific `Entry` control on a page that contains multiple `Entry` controls, you should first subclass the `Entry` control:
 
 ```csharp
 using Microsoft.Maui.Controls;
@@ -127,17 +122,16 @@ Any `MyEntry` instances in the app will then be customized as per the handler mo
 
 ## Subscribe to native control events
 
-A handlers `NativeView` property can be accessed to set native control properties, invoke native control methods, and subscribe to native control events. Subscribing to a native control event should occur when the `HandlerChanged` event fires, which indicates that the native control that implements the cross-platform control is available. Similarly, unsubscribing from the same event should occur when the `HandlerChanging` event fires, which indicates that the control's handler is about to be removed from the cross-platform control. For more information about handler lifecycle events, see [Handler lifecycle](#handler-lifecycle).
+A handlers `NativeView` property can be accessed to set native control properties, invoke native control methods, and subscribe to native control events. Subscribing to a native control event should occur when the `HandlerChanged` event fires, which indicates that the native control that implements the cross-platform control is available and initialized. Similarly, unsubscribing from the native event should occur when the `HandlerChanging` event fires, which indicates that the control's handler is about to be removed from the cross-platform control. For more information about handler lifecycle events, see [Handler lifecycle](#handler-lifecycle).
 
-Therefore, to subscribe to, and unsubscribe from, native control events you must register event handlers for the `HandlerChanged` and `HandlerChanging` events on the cross-platform control being customized:
+To subscribe to, and unsubscribe from, native control events you must register event handlers for the `HandlerChanged` and `HandlerChanging` events on the .NET MAUI control being customized:
 
 ```xaml
-<Entry Placeholder="Entry customized with a native event"
-       HandlerChanged="OnHandlerChanged"
+<Entry HandlerChanged="OnHandlerChanged"
        HandlerChanging="OnHandlerChanging" />
 ```
 
-Handlers can be customized per platform by using the `#if` preprocessor directive, or by using platform-specific folders and files to organize your code. Each approach will be discussed in turn.
+Handlers can be customized per platform by using compiler preprocessor directives, or by using partial classes to organize your code into platform-specific folders and files. Each approach will be discussed in turn.
 
 ### Using preprocessor directives
 
@@ -190,17 +184,15 @@ namespace HandlersDemos.Views
 }
 ```
 
-The `HandlerChanged` event fires after the handler for a cross-platform control has been created, signalling that the corresponding native control is available for use. Therefore, the event handler for this event is where any native event subscriptions should be performed. Doing so involves casting the `NativeView` property of the handler to the type, or base type, of the native control so that native events can be accessed. In this example, the `OnHandlerChanged` event subscribes to the native control's `FocusChange` event.
+The `HandlerChanged` event fires after the native control that implements the cross-platform control has been created and initialized. Therefore, its event handler is where native event subscriptions should be performed. This requires casting the `NativeView` property of the handler to the type, or base type, of the native control so that native events can be accessed. In this example, the `OnHandlerChanged` event subscribes to the native control's `FocusChange` event.
 
 The `OnFocusChange` event handler accesses the native control for the `Entry` and sets its background color as the control gains and loses focus.
 
-The `HandlerChanging` event fires before an existing handler is removed from a cross-platform control, before a new handler for a cross-platform control is created. Therefore, the event handler for this event is where any native event subscriptions should be removed, and other cleanup, should be performed. The `HandlerChangingEventArgs` object that accompanies this event has `OldHandler` and `NewHandler` properties, which will be set to the old and new handlers respectively. In this example, the `OnHandlerChanging` event removes the subscription to the native `FocusChange` event.
+The `HandlerChanging` event fires before the existing handler is removed from the cross-platform control, and before the new handler for the cross-platform control is created. Therefore, its event handler is where native event subscriptions should be removed, and other cleanup should be performed. The `HandlerChangingEventArgs` object that accompanies this event has `OldHandler` and `NewHandler` properties, which will be set to the old and new handlers respectively. In this example, the `OnHandlerChanging` event removes the subscription to the native `FocusChange` event.
 
-### Using platform-specific folders and files
+### Using partial classes
 
-Rather than using compiler preprocessor directives to conditionally compile your app, it's also possible to organize your platform code using platform-specific folders and files.
-
-The code-behind file containing the event handlers for the `HandlerChanged` and `HandlerChanging` events is shown in the following example, which partial methods and partial classes to organize code to customize the `Entry` control on Android:
+Rather than using compiler preprocessor directives to conditionally compile your app, it's also possible use partial classes to organize your control customization code into platform-specific folders and files. With this approach, your customization code is separated into a cross-platform partial class, and a platform-specific partial class. The following example shows the cross-platform partial class:
 
 ```csharp
 using System;
@@ -208,7 +200,7 @@ using Microsoft.Maui.Controls;
 
 namespace HandlersDemos.Views
 {
-    public partial class CustomizeEntryPartialClassPage : ContentPage
+    public partial class CustomizeEntryPage : ContentPage
     {
         public CustomizeEntryPartialClassPage()
         {
@@ -231,7 +223,7 @@ namespace HandlersDemos.Views
 }
 ```
 
-In this example the two event handlers call partial methods named `ChangedHandler` and `ChangingHandler`, whose signatures are defined in this part of the partial class. The partial methods implementations are defined in another part of the partial class, that's located in the **Platforms** > **Android** folder of the project:
+In this example, the two event handlers call partial methods named `ChangedHandler` and `ChangingHandler`, whose signatures are defined in the cross-platform partial class. The partial method implementations are then defined in the platform-specific partial class, that's located in the **Platforms** > **Android** folder of the project:
 
 ```csharp
 using AndroidX.AppCompat.Widget;
@@ -242,7 +234,7 @@ using System;
 
 namespace HandlersDemos.Views
 {
-    public partial class CustomizeEntryPartialClassPage : ContentPage
+    public partial class CustomizeEntryPage : ContentPage
     {
         partial void ChangedHandler(object sender, EventArgs e)
         {
@@ -270,13 +262,7 @@ namespace HandlersDemos.Views
 }
 ```
 
-The `HandlerChanged` event fires after the handler for a cross-platform control has been created, signalling that the corresponding native control is available for use. Therefore, the event handler for this event is where any native event subscriptions should be performed. Doing so involves casting the `NativeView` property of the handler to the type, or base type, of the native control so that native events can be accessed. In this example, the `OnHandlerChanged` event subscribes to the native control's `FocusChange` event.
-
-The `OnFocusChange` event handler accesses the native control for the `Entry` and sets its background color as the control gains and loses focus.
-
-The `HandlerChanging` event fires before an existing handler is removed from a cross-platform control, before a new handler for a cross-platform control is created. Therefore, the event handler for this event is where any native event subscriptions should be removed, and other cleanup, should be performed. The `HandlerChangingEventArgs` object that accompanies this event has `OldHandler` and `NewHandler` properties, which will be set to the old and new handlers respectively. In this example, the `OnHandlerChanging` event removes the subscription to the native `FocusChange` event.
-
-The advantage of this approach is that the partial methods don't have to be implemented on each platform. Instead, the compiler removes the signature at compile time on any platforms that don't provide an implementation. For information about partial methods, see [Partial methods](/dotnet/csharp/programming-guide/classes-and-structs/partial-classes-and-methods#partial-methods).
+The advantage of this approach is that compiler preprocessing directives aren't required, and that the partial methods don't have to be implemented on each platform. Instead, the compiler removes references to the method signature on any platforms that don't provide an implementation. For information about partial methods, see [Partial methods](/dotnet/csharp/programming-guide/classes-and-structs/partial-classes-and-methods#partial-methods).
 
 ## Handler-based controls
 
@@ -310,7 +296,7 @@ The following table lists the names of the types that implement handler-based .N
 | `Window` | `IWindow` | `WindowHandler` | `WindowMapper` |
 
 > [!IMPORTANT]
-> The .NET MAUI cross-platform controls are located in the `Microsoft.Maui.Controls` namespace, while handlers for those controls are located in the `Microsoft.Maui.Handlers` namespace. The control interfaces are located in the `Microsoft.Maui` namespace.
+> The .NET MAUI cross-platform controls are located in the `Microsoft.Maui.Controls` namespace, while handlers for the controls are located in the `Microsoft.Maui.Handlers` namespace. The control interfaces are located in the `Microsoft.Maui` namespace.
 
 ## Renderer-based controls
 
