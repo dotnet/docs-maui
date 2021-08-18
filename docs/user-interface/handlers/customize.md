@@ -131,11 +131,11 @@ To subscribe to, and unsubscribe from, native control events you must register e
        HandlerChanging="OnHandlerChanging" />
 ```
 
-Handlers can be customized per platform by using compiler preprocessor directives, or by using partial classes to organize your code into platform-specific folders and files. Each approach will be discussed in turn.
+Handlers can be customized per platform by using compiler preprocessor directives, or by using partial classes to organize your code into platform-specific folders and files. Each approach will be discussed in turn, by customizing an `Entry` on Android.
 
 ### Using preprocessor directives
 
-The code-behind file containing the event handlers for the `HandlerChanged` and `HandlerChanging` events is shown in the following example, which uses preprocessor directives to customize the `Entry` control on Android:
+The code-behind file containing the event handlers for the `HandlerChanged` and `HandlerChanging` events is shown in the following example, which uses preprocessor directives:
 
 ```csharp
 using System;
@@ -300,7 +300,7 @@ The following table lists the names of the types that implement handler-based .N
 
 ## Renderer-based controls
 
-The following controls are backed by renderers:
+The following controls are backed by renderers, and use a different customization approach:
 
 - `CarouselView`
 - `CollectionView`
