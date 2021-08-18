@@ -7,7 +7,7 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 
 # Device display information
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `DeviceDisplay` class to read information about the device's screen metrics. This class can be used to request the screen stay awake while the app is running.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `DeviceDisplay` class to read information about the device's screen metrics. This class can be used to request the screen stays awake while the app is running.
 
 ## Get started
 
@@ -58,9 +58,9 @@ public class DisplayInfoTest
 }
 ```
 
-## Keep Screen On
+## Keep the screen on
 
-The `DeviceDisplay` class has a property named `KeepScreenOn` which when set to `true`, which prevents the device's display from turning off or locking.
+The `DeviceDisplay` class has a property named `KeepScreenOn` which when set to `true`, prevents the device's display from turning off or locking.
 
 ```csharp
 public void ToggleScreenLock() =>

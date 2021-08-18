@@ -61,7 +61,7 @@ No setup is required.
 > [!IMPORTANT]
 > All methods must be called on the UI thread because permission checks and requests are automatically handled by .NET MAUI Essentials.
 
-## Pick file
+## Pick a file
 
 The `FilePicker.PickAsync` method prompts the user to pick a file from the device. Use the `PickOptions` type to specify the title and file types allowed with the picker. The following example demonstrates opening the picker and processing the selected image:
 
@@ -95,14 +95,15 @@ async Task<FileResult> PickAndShow(PickOptions options)
 Default file types are provided with `FilePickerFileType.Images`, `FilePickerFileType.Png`, and `FilePickerFilerType.Videos`. You can specify custom file types per platform, by creating an instance of the `FilePickerFileType` class. The constructor of this class takes a dictionary that is keyed by the `DevicePlatform` type to identify the platform. The value of the dictionary key is a collection of strings representing the file types. For example here is how you would specify specific comic file types:
 
 ```csharp
-var customFileType = new FilePickerFileType(new Dictionary<DevicePlatform, IEnumerable<string>>
-                    {
-                        { DevicePlatform.iOS, new[] { "public.my.comic.extension" } }, // or general UTType values
-                        { DevicePlatform.Android, new[] { "application/comics" } },
-                        { DevicePlatform.UWP, new[] { ".cbr", ".cbz" } },
-                        { DevicePlatform.Tizen, new[] { "*/*" } },
-                        { DevicePlatform.macOS, new[] { "cbr", "cbz" } }, // or general UTType values
-                    });
+var customFileType = new FilePickerFileType(
+                        new Dictionary<DevicePlatform, IEnumerable<string>>
+                        {
+                            { DevicePlatform.iOS, new[] { "public.my.comic.extension" } }, // or general UTType values
+                            { DevicePlatform.Android, new[] { "application/comics" } },
+                            { DevicePlatform.UWP, new[] { ".cbr", ".cbz" } },
+                            { DevicePlatform.Tizen, new[] { "*/*" } },
+                            { DevicePlatform.macOS, new[] { "cbr", "cbz" } }, // or general UTType values
+                        });
 
 PickOptions options = new()
 {

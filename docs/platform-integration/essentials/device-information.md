@@ -48,9 +48,12 @@ The `DeviceInfo.Platform` property represents the operating system the app is ru
 
 - `DevicePlatform.iOS`
 - `DevicePlatform.Android`
+- `DevicePlatform.macOS`
 - `DevicePlatform.UWP` (Windows)
-- `DevicePlatform.Unknown`
+- `DevicePlatform.tvOS`
+- `DevicePlatform.watchOS`
 - `DevicePlatform.Tizen`
+- `DevicePlatform.Unknown`
 
 The following example demonstrates comparing the `DeviceInfo.Platform` value to a `DevicePlatform` property:
 
