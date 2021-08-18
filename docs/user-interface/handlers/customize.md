@@ -87,7 +87,7 @@ In this example, the `Entry` customization occurs in a page class. Therefore, al
 
 ## Customize specific control instances
 
-Handlers are global, and customizing a handler for a control will result in all controls of the same type being customized in your app. However, handlers for specific control instances can be customized by subclassing the control, and then by modifying the handler for the base control type only when the control is of the subclassed type. For example, to customize a spcific `Entry` control on a page that contains multiple `Entry` controls, you should first subclass the `Entry` control:
+Handlers are global, and customizing a handler for a control will result in all controls of the same type being customized in your app. However, handlers for specific control instances can be customized by subclassing the control, and then by modifying the handler for the base control type only when the control is of the subclassed type. For example, to customize a specific `Entry` control on a page that contains multiple `Entry` controls, you should first subclass the `Entry` control:
 
 ```csharp
 using Microsoft.Maui.Controls;
