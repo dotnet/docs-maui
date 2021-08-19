@@ -1,6 +1,6 @@
 ---
 title: "Haptic Feedback"
-description: "Learn how to use the .NET MAUIHapticFeedback class in the Microsoft.Maui.Essentials namespace. This class lets you control haptic feedback on a device."
+description: "Learn how to use the .NET MAUI HapticFeedback class in the Microsoft.Maui.Essentials namespace. This class lets you control haptic feedback on a device."
 ms.date: 08/19/2021
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
@@ -15,7 +15,7 @@ This article describes how you can use the .NET Multi-platform App UI (.NET MAUI
 
 [!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
-To access the haptic feedback functionality, the following platform specific setup is required.
+To access the haptic feedback functionality, the following platform-specific setup is required.
 
 <!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)

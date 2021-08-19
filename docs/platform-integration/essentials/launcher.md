@@ -1,6 +1,6 @@
 ---
 title: "Launcher"
-description: "Learn how to use the .NET MAUILauncher class in the Microsoft.Maui.Essentials namespace, which can open another application by URI."
+description: "Learn how to use the .NET MAUI Launcher class in the Microsoft.Maui.Essentials namespace, which can open another application by URI."
 ms.date: 08/20/2019
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---

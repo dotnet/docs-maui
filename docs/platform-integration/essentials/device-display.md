@@ -1,6 +1,6 @@
 ---
 title: "Device Display Information"
-description: "Learn how to use the .NET MAUIDeviceDisplay class in the Microsoft.Maui.Essentials namespace, which provides screen metrics for the device on which the app is running."
+description: "Learn how to use the .NET MAUI DeviceDisplay class in the Microsoft.Maui.Essentials namespace, which provides screen metrics for the device on which the app is running."
 ms.date: 08/17/2021
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---

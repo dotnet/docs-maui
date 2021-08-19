@@ -1,6 +1,6 @@
 ---
 title: "Geocoding"
-description: "Learn how to use the .NET MAUIthe Geocoding class in the Microsoft.Maui.Essentials namespace. This class provides APIs to both geocode a placemark to a positional coordinate, and reverse geocode coordinates to a placemark."
+description: "Learn how to use the .NET MAUI Geocoding class in the Microsoft.Maui.Essentials namespace. This class provides APIs to both geocode a placemark to a positional coordinate, and reverse geocode coordinates to a placemark."
 ms.date: 05/28/2019
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---

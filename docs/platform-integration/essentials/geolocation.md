@@ -1,6 +1,6 @@
 ---
 title: "Geolocation"
-description: "Learn how to use the .NET MAUIGeolocation class in the Microsoft.Maui.Essentials namespace. This class provides API to retrieve the device's current geolocation coordinates."
+description: "Learn how to use the .NET MAUI Geolocation class in the Microsoft.Maui.Essentials namespace. This class provides API to retrieve the device's current geolocation coordinates."
 ms.date: 03/13/2019
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---

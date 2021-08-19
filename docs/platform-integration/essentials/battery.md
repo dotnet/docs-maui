@@ -1,6 +1,6 @@
 ---
 title: "Battery"
-description: "Learn how to use the .NET MAUIBattery class in the Microsoft.Maui.Essentials namespace. You can check the device's battery information and monitor for changes."
+description: "Learn how to use the .NET MAUI Battery class in the Microsoft.Maui.Essentials namespace. You can check the device's battery information and monitor for changes."
 ms.date: 08/05/2021
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---

@@ -1,6 +1,6 @@
 ---
 title: "SMS"
-description: "Learn how to use the .NET MAUISms class in Microsoft.Maui.Essentials to open the default SMS application. The text message can be preloaded with a message and recipient."
+description: "Learn how to use the .NET MAUI Sms class in Microsoft.Maui.Essentials to open the default SMS application. The text message can be preloaded with a message and recipient."
 ms.date: 08/12/2021
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---

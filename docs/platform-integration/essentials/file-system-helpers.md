@@ -1,6 +1,6 @@
 ---
 title: "File system helpers"
-description: "Learn how to use the .NET MAUIFileSystem class in the Microsoft.Maui.Essentials namespace. This class contains helper methods that access the application's cache and data directories, and helps open files in the app package."
+description: "Learn how to use the .NET MAUI FileSystem class in the Microsoft.Maui.Essentials namespace. This class contains helper methods that access the application's cache and data directories, and helps open files in the app package."
 ms.date: 08/18/2021
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
