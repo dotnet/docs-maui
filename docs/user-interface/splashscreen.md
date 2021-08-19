@@ -46,4 +46,4 @@ On iOS, the splash screen is added to the app package as a storyboard named `Mau
 
 ---
 
-For more advanced splash screen scenarios, per-platform splash screen approaches apply.
+For more advanced splash screen scenarios, per-platform approaches apply.
