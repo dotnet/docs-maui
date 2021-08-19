@@ -1,32 +1,31 @@
 ---
 title: "Splash screens"
 description: ".NET Multi-platform App UI (.NET MAUI) splash screens can be displayed when an app is launched, while the app's initialization process completes."
-ms.date: 06/07/2021
+ms.date: 08/19/2021
 ---
 
 # Splash screens
 
 <!-- Todo: Move this content into the images doc, once it migrates over? -->
 
-.NET Multi-platform App UI (.NET MAUI) apps can display a splash screen while their initialization process completes. The splash screen is displayed immediately when an app is launched, providing immediate feedback to users while app resources are initialized. Once the app is ready for interaction, the splash screen is dismissed.
+On iOS and Android, .NET Multi-platform App UI (.NET MAUI) apps can display a splash screen while their initialization process completes. The splash screen is displayed immediately when an app is launched, providing immediate feedback to users while app resources are initialized. Once the app is ready for interaction, the splash screen is dismissed.
 
 Splash screens are a composite of an image and a background color, which can both be customized. The standard platform image formats are supported, including Scalable Vector Graphics (SVG) files.
 
 > [!TIP]
-> The SVG format is the recommended file format for .NET MAUI splash screens.
+> The SVG format is the recommended image format for .NET MAUI splash screens.
 
-.NET MAUI splash screens are specified by dragging an image into the **Resources** folder of your single project, and setting the build action of the image to **MauiSplashScreen** in the **Properties** window. This creates a corresponding entry in your single project .csproj file:
+.NET MAUI splash screens are specified by dragging an image into the **Resources** folder of your project., and setting the build action of the image to **MauiSplashScreen** in the **Properties** window. This creates a corresponding entry in the .csproj file for your project:
 
-```
+```xml
 <MauiSplashScreen Include="Resources\Images\splashscreen.svg" />
 ```
 
-> [!WARNING]
-> Splash screen files names must be lowercase, start and end with a letter character, and contain only alphanumeric characters or underscores.
+Splash screen files names must be lowercase, start and end with a letter character, and contain only alphanumeric characters or underscores.
 
 As well as specifying an image for your app's splash screen you can also specify a background color:
 
-```
+```xml
 <MauiSplashScreen Include="Resources\Images\splashscreen.svg" Color="#512BD4" />
 ```
 
@@ -45,13 +44,6 @@ On Android, the splash screen is added to your app package as **Resourcs/values/
 
 On iOS, the splash screen is added to the app package as a storyboard named `MauiSplash.storyboard`, which is set as the app's `UILaunchStoryboardName`. Therefore, your app should not set a `LaunchScreen.storyboard`, and you should not set `UILaunchStoryboardName` in your **Info.plist** file.
 
-# [Windows](#tab/windows)
-
-On Windows, the splash screen is inserted into the app package as an assets file.
-
 ---
 
-> [!TIP]
-> Effective splash screens are often simple, being compromised of a simple centered image and a background color that looks good regardless of the platform your app is running on.
-
-For more advanced splash screen scenarios, native splash screen approaches still apply.
+For more advanced splash screen scenarios, per-platform splash screen approaches apply.
