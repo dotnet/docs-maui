@@ -1,56 +1,65 @@
 ---
 title: "Haptic Feedback"
-description: "Describes the HapticFeedback class in Microsoft.Maui.Essentials, which lets you control haptic feedback on device."
-author: dimonovdd
-ms.date: 01/04/2021
+description: "Learn how to use the .NET MAUIHapticFeedback class in the Microsoft.Maui.Essentials namespace. This class lets you control haptic feedback on a device."
+ms.date: 08/19/2021
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
 # Haptic Feedback
 
-The `HapticFeedback` class lets you control haptic feedback on device.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `HapticFeedback` class to control haptic feedback on a device.
 
 ## Get started
 
 [!INCLUDE [get-started](includes/get-started.md)]
 
-To access the **HapticFeedback** functionality the following platform specific setup is required.
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
+To access the haptic feedback functionality, the following platform specific setup is required.
+
+<!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
 
-The Vibrate permission is required and must be configured in the Android project. This can be added in the following ways:
+The `Vibrate` permission is required and must be configured in the Android project. This can be added in the following ways:
 
-Open the **AssemblyInfo.cs** file under the **Properties** folder and add:
+- Add the assembly-based permission:
 
-```csharp
-[assembly: UsesPermission(Android.Manifest.Permission.Vibrate)]
-```
+  Open the _AssemblyInfo.cs_ file under the **Properties** folder and add:
 
-OR Update Android Manifest:
+  ```csharp
+  [assembly: UsesPermission(Android.Manifest.Permission.Vibrate)]
+  ```
 
-Open the **AndroidManifest.xml** file under the **Properties** folder and add the following inside of the **manifest** node.
+  \- or -
 
-```xml
-<uses-permission android:name="android.permission.VIBRATE" />
-```
+- Update the Android Manifest:
 
-Or right click on the Android project and open the project's properties. Under **Android Manifest** find the **Required permissions:** area and check the **VIBRATE** permission. This will automatically update the **AndroidManifest.xml** file.
+  Open the _AndroidManifest.xml_ file under the **Properties** folder and add the following in the `manifest` node:
+
+  ```xml
+  <uses-permission android:name="android.permission.VIBRATE" />
+  ```
+
+  \- or -
+
+- Use the Android project properties:
+
+  Right-click on the Android project and open the project's properties. Under _Android Manifest_ find the **Required permissions:** area and check the **VIBRATE** permission. This will automatically update the _AndroidManifest.xml_ file.
 
 # [iOS](#tab/ios)
 
-No additional setup required.
+No setup is required.
 
 # [Windows](#tab/windows)
 
-No platform differences.
+No setup is required.
 
 -----
+<!-- markdownlint-enable MD025 -->
 
-## Using Haptic Feedback
+## Use haptic feedback
 
-[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
-
-The Haptic Feedback functionality can be performed with a `Click` or `LongPress` feedback type.
+The haptic feedback functionality can be performed with a `Click` or `LongPress` feedback type.
 
 ```csharp
 try
@@ -73,5 +82,5 @@ catch (Exception ex)
 
 ## API
 
-- [HapticFeedback source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/HapticFeedback)
+- [HapticFeedback source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/HapticFeedback)
 <!-- - [HapticFeedback API documentation](xref:Microsoft.Maui.Essentials.HapticFeedback)-->

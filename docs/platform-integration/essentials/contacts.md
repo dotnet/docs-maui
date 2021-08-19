@@ -1,6 +1,6 @@
 ---
 title: "Contacts"
-description: "Learn how to use the .MET MAUI Contacts class in the Microsoft.Maui.Essentials namespace, which lets a pick a contact and retrieve information about it."
+description: "Learn how to use the .NET MAUIContacts class in the Microsoft.Maui.Essentials namespace, which lets a pick a contact and retrieve information about it."
 ms.date: 08/16/2021
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---

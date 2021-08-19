@@ -1,6 +1,6 @@
 ---
 title: "File picker"
-description: "Learn how to use the .MET MAUI FilePicker class in the Microsoft.Maui.Essentials namespace, which lets a user choose one or more files from the device."
+description: "Learn how to use the .NET MAUIFilePicker class in the Microsoft.Maui.Essentials namespace, which lets a user choose one or more files from the device."
 ms.date: 08/17/2021
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Email"
-description: "Learn how to use the .MET MAUI Email class in the Microsoft.Maui.Essentials namespace to open the default email application. The subject, body, and recipients of email can be set."
+description: "Learn how to use the .NET MAUIEmail class in the Microsoft.Maui.Essentials namespace to open the default email application. The subject, body, and recipients of email can be set."
 ms.date: 08/12/2021
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---

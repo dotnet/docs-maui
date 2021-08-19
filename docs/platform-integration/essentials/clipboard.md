@@ -1,6 +1,6 @@
 ---
 title: "Clipboard"
-description: "Learn how to use the .MET MAUI Clipboard class in the Microsoft.Maui.Essentials namespace, which lets you copy and paste text to the system clipboard"
+description: "Learn how to use the .NET MAUIClipboard class in the Microsoft.Maui.Essentials namespace, which lets you copy and paste text to the system clipboard"
 ms.date: 08/16/2021
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
