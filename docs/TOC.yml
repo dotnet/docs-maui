@@ -26,3 +26,5 @@
       items:
         - name: Customize controls
           href: user-interface/handlers/customize.md
+        - name: Splash screens
+          href: user-interface/splashscreen.md
