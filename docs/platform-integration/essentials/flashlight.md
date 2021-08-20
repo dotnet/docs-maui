@@ -49,7 +49,7 @@ There are two permissions to configure in your project: `Flashlight` and `Camera
   <!-- TODO: Check on this value -->
   Right-click on the Android project and open the project's properties. Under _Android Manifest_ find the **Required permissions:** area and check the **FLASHLIGHT** and **CAMERA** permissions. This will automatically update the _AndroidManifest.xml_ file.
 
-By adding these permissions, [Google Play will automatically filter out devices](https://developer.android.com/guide/topics/manifest/uses-feature-element.html#permissions-features) without specific hardware. You can get around this by adding the following to your AssemblyInfo.cs file in your Android project:
+By adding these permissions, [Google Play will automatically filter out devices](https://developer.android.com/guide/topics/manifest/uses-feature-element.html#permissions-features) without specific hardware. You can get around this by adding the following to your _AssemblyInfo.cs_ file in your Android project:
 
 ```csharp
 [assembly: UsesFeature("android.hardware.camera", Required = false)]
@@ -101,7 +101,7 @@ catch (Exception ex)
 
 ## Platform differences
 
-This section describes the platform-specific differences with the battery.
+This section describes the platform-specific differences with the flashlight.
 
 <!-- markdownlint-disable MD025 -->
 <!-- markdownlint-disable MD024 -->
@@ -123,7 +123,7 @@ The `AVCaptureDevice` API is used to turn on and off the Torch and Flash mode of
 
 ### [Windows](#tab/windows)
 
-The [`Lamp`](/uwp/api/windows.devices.lights.lamp) API is used to turn on or off the first detected lamp on the back of the device.
+The <xref:Windows.Devices.Lights.Lamp> API is used to turn on or off the first detected lamp on the back of the device.
 
 -----
 <!-- markdownlint-enable MD024 -->

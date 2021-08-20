@@ -86,6 +86,7 @@ An alternative to editing the _Info.plist_ file directly is opening the plist ed
 
 # [Windows](#tab/windows)
 
+<!-- TODO: Check if this is still supported in WinUI3 -->
 In the _Package.appxmanifest_, under **Capabilities**, ensure that the **Location** capability is checked.
 
 -----
@@ -93,9 +94,9 @@ In the _Package.appxmanifest_, under **Capabilities**, ensure that the **Locatio
 
 ## Get the last known location
 
-The device may have cached the most recent location of the device. Use the `Geolocation.GetLastKnownLocationAsync` method. This is often faster then doing a full location query, but can be less accurate. If no cached location exists, this method returns `null`.
+The device may have cached the most recent location of the device. Use the `Geolocation.GetLastKnownLocationAsync` method to access the cached location, if available. This is often faster then doing a full location query, but can be less accurate. If no cached location exists, this method returns `null`.
 
-> [!TIP]
+> [!NOTE]
 > When necessary, the Geolocation API prompt's the user for permissions.
 
 The following code example demonstrates checking for a cached location:
@@ -129,13 +130,13 @@ public async Task GetCachedLocation()
 }
 ```
 
-Not all location values may be available, depending on the device. For example, the `Altitude` property might be `null`, have a value of 0, or have a positive value indicating the meters above sea level. Other values that may not be present include `Speed` and `Course`.
+Not all location values may be available, depending on the device. For example, the `Altitude` property might be `null`, have a value of 0, or have a positive value indicating the meters above sea level. Other values that may not be present include the `Speed` and `Course` properties.
 
 ## Get the current location
 
-While checking for the [last known location](#get-the-last-known-location) of the device may be quicker, it can be inaccurate. Use the `Geolocation.GetLocationAsync` method to query the device for the current location. You can configure the accuracy and timeout of the query. It's best to use both `GeolocationRequest` and `CancellationToken` parameters, since it may take some time to get the device's location.
+While checking for the [last known location](#get-the-last-known-location) of the device may be quicker, it can be inaccurate. Use the `Geolocation.GetLocationAsync` method to query the device for the current location. You can configure the accuracy and timeout of the query. It's best to the method overload that uses the `GeolocationRequest` and `CancellationToken` parameters, since it may take some time to get the device's location.
 
-> [!TIP]
+> [!NOTE]
 > When necessary, the Geolocation API prompt's the user for permissions.
 
 The following code example demonstrates how to request the device's location, while supporting cancellation:
@@ -236,7 +237,7 @@ The following sections outline the location accuracy distance, per platform:
 
 ## Detecting mock locations
 
-Some devices may return a mock location from the provider or by an application that provides mock locations. You can detect this by using the `IsFromMockProvider` on any `Location`
+Some devices may return a mock location from the provider or by an application that provides mock locations. You can detect this by using the `IsFromMockProvider` on any `Location`:
 
 ```csharp
 public async Task CheckMock()
