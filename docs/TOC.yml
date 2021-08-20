@@ -24,5 +24,7 @@
     - name: User interface
       expanded: true
       items:
+        - name: BlazorWebView
+          href: user-interface/controls/blazorwebview.md
         - name: Customize controls
           href: user-interface/handlers/customize.md
