@@ -1,6 +1,6 @@
 ---
 title: "Geocoding"
-description: "The Geocoding class in Microsoft.Maui.Essentials provides APIs to both geocode a placemark to a positional coordinates and reverse geocode coordinates to a placemark."
+description: "Learn how to use the .NET MAUI Geocoding class in the Microsoft.Maui.Essentials namespace. This class provides APIs to both geocode a placemark to a positional coordinate, and reverse geocode coordinates to a placemark."
 ms.date: 05/28/2019
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
@@ -13,45 +13,46 @@ The `Geocoding` class provides APIs to geocode a placemark to a positional coord
 
 [!INCLUDE [get-started](includes/get-started.md)]
 
-To access the **Geocoding** functionality the following platform specific setup is required.
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
+To access the **Geocoding** functionality the following platform-specific setup is required.
+
+<!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
 
-No additional setup required.
+No setup is required.
 
 # [iOS](#tab/ios)
 
-No additional setup required.
+No setup is required.
 
 # [Windows](#tab/windows)
 
-A Bing Maps API key is required to use geocoding functionality. Sign up for a free [Bing Maps](https://www.bingmapsportal.com/) account. Under **My account > My keys** create a new key and fill out information based on your application type (which should be **Public Windows App (UWP, 8.x, and earlier)** for UWP apps).
+A Bing Maps API key is required to use geocoding functionality. Sign up for a free [Bing Maps](https://www.bingmapsportal.com/) account. Under **My account** > **My keys**, create a new key and fill out information based on your application type, which should be **Public Windows App (UWP, 8.x, and earlier)**.
 
-Early on in your application's life before calling any **Geocoding** methods set the API key (which is only available on UWP):
+Early on in your application's life before calling any `Geocoding` methods, set the API key, which is only available on Windows:
 
 ```csharp
 Platform.MapServiceToken = "YOUR-KEY-HERE";
 ```
 
 -----
+<!-- markdownlint-enable MD025 -->
 
-## Using Geocoding
+## Use geocoding
 
-[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
-
-Getting [location](xref:Microsoft.Maui.Essentials.Location) coordinates for an address:
+The following example demonstrates how to get the location coordinates for an address:
 
 ```csharp
 try
 {
-    var address =  "Microsoft Building 25 Redmond WA USA";
+    var address = "Microsoft Building 25 Redmond WA USA";
     var locations = await Geocoding.GetLocationsAsync(address);
 
     var location = locations?.FirstOrDefault();
+
     if (location != null)
-    {
         Console.WriteLine($"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}");
-    }
 }
 catch (FeatureNotSupportedException fnsEx)
 {
@@ -63,11 +64,11 @@ catch (Exception ex)
 }
 ```
 
-The altitude isn't always available. If it is not available, the `Altitude` property might be `null` or the value might be zero. If the altitude is available, the value is in meters above sea level.
+The altitude isn't always available. If it isn't available, the `Altitude` property might be `null`, or the value might be `0`. If the altitude is available, the value is in meters above sea level.
 
-## Using Reverse Geocoding
+## Reverse geocoding
 
-Reverse geocoding is the process of getting [placemarks](xref:Microsoft.Maui.Essentials.Placemark) for an existing set of coordinates:
+Reverse geocoding is the process of getting placemarks for an existing set of coordinates. The following example demonstrates getting placemarks:
 
 ```csharp
 try
@@ -78,6 +79,7 @@ try
     var placemarks = await Geocoding.GetPlacemarksAsync(lat, lon);
 
     var placemark = placemarks?.FirstOrDefault();
+                
     if (placemark != null)
     {
         var geocodeAddress =
@@ -105,11 +107,11 @@ catch (Exception ex)
 }
 ```
 
-## Distance between Two Locations
+## Get the distance between two locations
 
-The [`Location`](xref:Microsoft.Maui.Essentials.Location) and [`LocationExtensions`](xref:Microsoft.Maui.Essentials.LocationExtensions) classes define methods to calculate the distance between two locations. See the article [**Xamarin.Essentials: Geolocation**](geolocation.md#calculate-distance) for an example.
+The `Location` and `LocationExtensions` classes define methods to calculate the distance between two locations. For an example of getting the distance between two locations, see [Distance between two locations](geolocation.md#distance-between-two-locations).
 
 ## API
 
-- [Geocoding source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Geocoding)
+- [Geocoding source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/Geocoding)
 <!-- - [Geocoding API documentation](xref:Microsoft.Maui.Essentials.Geocoding)-->

@@ -1,6 +1,6 @@
 ---
 title: "Device information"
-description: "Learn how to use the .MET MAUI DeviceInfo class in the Microsoft.Maui.Essentials namespace, which provides information about the device the app is running on."
+description: "Learn how to use the .NET MAUI DeviceInfo class in the Microsoft.Maui.Essentials namespace, which provides information about the device the app is running on."
 ms.date: 08/17/2021
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---

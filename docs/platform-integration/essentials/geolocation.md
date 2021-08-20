@@ -1,136 +1,114 @@
 ---
 title: "Geolocation"
-description: "Describes the Geolocation class in Microsoft.Maui.Essentials, which provides APIs to retrieve the device's current geolocation coordinates."
+description: "Learn how to use the .NET MAUI Geolocation class in the Microsoft.Maui.Essentials namespace. This class provides API to retrieve the device's current geolocation coordinates."
 ms.date: 03/13/2019
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
 # Geolocation
 
-The `Geolocation` class provides APIs to retrieve the device's current geolocation coordinates.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `Geolocation` class. This class provides APIs to retrieve the device's current geolocation coordinates.
 
 ## Get started
 
 [!INCLUDE [get-started](includes/get-started.md)]
 
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
+
 To access the **Geolocation** functionality, the following platform-specific setup is required:
 
+<!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
 
-Coarse and Fine Location permissions are required and must be configured in the Android project. Additionally, if your app targets Android 5.0 (API level 21) or higher, you must declare that your app uses the hardware features in the manifest file. This can be added in the following ways:
+**Coarse and Fine Location** permissions are required and must be configured in the Android project. Additionally, if your app targets Android 5.0 (API level 21) or higher, you must declare that your app uses the hardware features in the manifest file. This can be added in the following ways:
 
-Open the **AssemblyInfo.cs** file under the **Properties** folder and add:
+- Add the assembly-based permission:
 
-```csharp
-[assembly: UsesPermission(Android.Manifest.Permission.AccessCoarseLocation)]
-[assembly: UsesPermission(Android.Manifest.Permission.AccessFineLocation)]
-[assembly: UsesFeature("android.hardware.location", Required = false)]
-[assembly: UsesFeature("android.hardware.location.gps", Required = false)]
-[assembly: UsesFeature("android.hardware.location.network", Required = false)]
-```
+  Open the _AssemblyInfo.cs_ file under the **Properties** folder and add:
+  
+  ```csharp
+  [assembly: UsesPermission(Android.Manifest.Permission.AccessCoarseLocation)]
+  [assembly: UsesPermission(Android.Manifest.Permission.AccessFineLocation)]
+  [assembly: UsesFeature("android.hardware.location", Required = false)]
+  [assembly: UsesFeature("android.hardware.location.gps", Required = false)]
+  [assembly: UsesFeature("android.hardware.location.network", Required = false)]
+  ```
 
-Or update the Android manifest:
+  If your application is targeting Android 10 - Q (API Level 29 or higher) and is requesting **LocationAlways**, you must also add this permission request:
 
-Open the **AndroidManifest.xml** file under the **Properties** folder and add the following inside of the **manifest** node:
+  ```csharp
+  [assembly: UsesPermission(Manifest.Permission.AccessBackgroundLocation)]
+  ```
 
-```xml
-<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-<uses-feature android:name="android.hardware.location" android:required="false" />
-<uses-feature android:name="android.hardware.location.gps" android:required="false" />
-<uses-feature android:name="android.hardware.location.network" android:required="false" />
-```
+  \- or -
 
-Or right-click on the Android project and open the project's properties. Under **Android Manifest** find the **Required permissions:** area and check the **ACCESS_COARSE_LOCATION** and **ACCESS_FINE_LOCATION** permissions. This will automatically update the **AndroidManifest.xml** file.
+- Update the Android Manifest:
 
-If your application is targeting Android 10 - Q (API Level 29 or higher) and is requesting **LocationAlways**, you must also add the following permission into **AssemblyInfo.cs**:
+  Open the _AndroidManifest.xml_ file under the **Properties** folder and add the following in the `manifest` node:
 
-```csharp
-[assembly: UsesPermission(Manifest.Permission.AccessBackgroundLocation)]
-```
+  ```xml
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+  <uses-feature android:name="android.hardware.location" android:required="false" />
+  <uses-feature android:name="android.hardware.location.gps" android:required="false" />
+  <uses-feature android:name="android.hardware.location.network" android:required="false" />
+  ```
 
-Or directly into your **AndroidManifest.xml**:
+  If your application is targeting Android 10 - Q (API Level 29 or higher) and is requesting **LocationAlways**, you must also add this permission request:
 
-```xml
-<uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
-```
+  ```xml
+  <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+  ```
 
-If it recommended to read [Android documentation on background location updates](https://developer.android.com/training/location/permissions) as there are many restrictions that need to be considered.
+  \- or -
+
+- Use the Android project properties:
+  
+  Right-click on the Android project and open the project's properties. Under _Android Manifest_ find the **Required permissions:** area and check the **ACCESS_COARSE_LOCATION** and **ACCESS_FINE_LOCATION** permissions. This will automatically update the _AndroidManifest.xml_ file.
+
+> [!TIP]
+> Be sure to read the [Android documentation on background location updates](https://developer.android.com/training/location/permissions), as there are many restrictions that need to be considered.
 
 [!INCLUDE [android-permissions](includes/android-permissions.md)]
 
 # [iOS](#tab/ios)
 
-Your app's **Info.plist** must contain the `NSLocationWhenInUseUsageDescription` key in order to access the device’s location.
-
-Open the plist editor and add the **Privacy - Location When In Use Usage Description** property and fill in a value to display to the user.
-
-Or manually edit the file and add the following and update the rationale:
+In your _Info.plist_ file, add the following keys:
 
 ```xml
 <key>NSLocationWhenInUseUsageDescription</key>
 <string>Fill in a reason why your app needs access to location.</string>
 ```
 
+The `<string>` element is the reason the app is requesting access to location information. This text is shown to the user.
+
+An alternative to editing the _Info.plist_ file directly is opening the plist editor. In the editor you can add the **Privacy - Location When In Use Usage Description** property, and fill in a value to display to the user.
+
 # [Windows](#tab/windows)
 
-You must set the `Location` permission for the application. This can be done by opening the **Package.appxmanifest** and selecting the **Capabilities** tab and checking **Location**.
+In the _Package.appxmanifest_, under **Capabilities**, ensure that the **Location** capability is checked.
 
 -----
+<!-- markdownlint-enable MD025 -->
 
-## Using Geolocation
+## Get the last known location
 
-[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
+The device may have cached the most recent location of the device. Use the `Geolocation.GetLastKnownLocationAsync` method. This is often faster then doing a full location query, but can be less accurate. If no cached location exists, this method returns `null`.
 
-The Geolocation API will also prompt the user for permissions when necessary.
+> [!TIP]
+> When necessary, the Geolocation API prompt's the user for permissions.
 
-You can get the last known [location](xref:Microsoft.Maui.Essentials.Location) of the device by calling the `GetLastKnownLocationAsync` method. This is often faster then doing a full query, but can be less accurate and may return `null` if no cached location exists.
-
-```csharp
-try
-{
-    var location = await Geolocation.GetLastKnownLocationAsync();
-
-    if (location != null)
-    {
-        Console.WriteLine($"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}");
-    }
-}
-catch (FeatureNotSupportedException fnsEx)
-{
-    // Handle not supported on device exception
-}
-catch (FeatureNotEnabledException fneEx)
-{
-    // Handle not enabled on device exception
-}
-catch (PermissionException pEx)
-{
-    // Handle permission exception
-}
-catch (Exception ex)
-{
-    // Unable to get location
-}
-```
-
-To query the current device's [location](xref:Microsoft.Maui.Essentials.Location) coordinates, the `GetLocationAsync` can be used. It is best to pass in a full `GeolocationRequest` and `CancellationToken` since it may take some time to get the device's location.
+The following code example demonstrates checking for a cached location:
 
 ```csharp
-CancellationTokenSource cts;
-
-async Task GetCurrentLocation()
+public async Task GetCachedLocation()
 {
     try
     {
-        var request = new GeolocationRequest(GeolocationAccuracy.Medium, TimeSpan.FromSeconds(10));
-        cts = new CancellationTokenSource();
-        var location = await Geolocation.GetLocationAsync(request, cts.Token);
+        Location location = await Geolocation.GetLastKnownLocationAsync();
 
         if (location != null)
-        {
             Console.WriteLine($"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}");
-        }
     }
     catch (FeatureNotSupportedException fnsEx)
     {
@@ -149,84 +127,135 @@ async Task GetCurrentLocation()
         // Unable to get location
     }
 }
+```
 
-protected override void OnDisappearing()
+Not all location values may be available, depending on the device. For example, the `Altitude` property might be `null`, have a value of 0, or have a positive value indicating the meters above sea level. Other values that may not be present include `Speed` and `Course`.
+
+## Get the current location
+
+While checking for the [last known location](#get-the-last-known-location) of the device may be quicker, it can be inaccurate. Use the `Geolocation.GetLocationAsync` method to query the device for the current location. You can configure the accuracy and timeout of the query. It's best to use both `GeolocationRequest` and `CancellationToken` parameters, since it may take some time to get the device's location.
+
+> [!TIP]
+> When necessary, the Geolocation API prompt's the user for permissions.
+
+The following code example demonstrates how to request the device's location, while supporting cancellation:
+
+```csharp
+private CancellationTokenSource _cancelTokenSource;
+private bool _isCheckingLocation;
+
+public async Task GetCurrentLocation()
 {
-    if (cts != null && !cts.IsCancellationRequested)
-        cts.Cancel();
-    base.OnDisappearing();
+    try
+    {
+        _isCheckingLocation = true;
+
+        var request = new GeolocationRequest(GeolocationAccuracy.Medium, TimeSpan.FromSeconds(10));
+                
+        _cancelTokenSource = new CancellationTokenSource();
+
+        Location location = await Geolocation.GetLocationAsync(request, _cancelTokenSource.Token);
+
+        if (location != null)
+            Console.WriteLine($"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}");
+    }
+    catch (FeatureNotSupportedException fnsEx)
+    {
+        // Handle not supported on device exception
+    }
+    catch (FeatureNotEnabledException fneEx)
+    {
+        // Handle not enabled on device exception
+    }
+    catch (PermissionException pEx)
+    {
+        // Handle permission exception
+    }
+    catch (Exception ex)
+    {
+        // Unable to get location
+    }
+    finally
+    {
+        _isCheckingLocation = false;
+    }
+}
+
+public void CancelRequest()
+{
+    if (_isCheckingLocation && _cancelTokenSource != null && _cancelTokenSource.IsCancellationRequested == false)
+        _cancelTokenSource.Cancel();
 }
 ```
 
-Note all values may be available due to how each device queries geolocation through different providers. For example, the `Altitude` property might be `null`, have a value of 0, or have a positive value, which is in meters above sea level. Other values that may not be present include `Speed` and `Course`.
+Not all location values may be available, depending on the device. For example, the `Altitude` property might be `null`, have a value of 0, or have a positive value indicating the meters above sea level. Other values that may not be present include `Speed` and `Course`.
 
-## Geolocation Accuracy
+## Accuracy
 
-The following table outlines accuracy per platform:
+The following sections outline the location accuracy distance, per platform:
 
 ### Lowest
 
 | Platform | Distance (in meters) |
-| --- | --- |
-| Android | 500 |
-| iOS | 3000 |
-| UWP | 1000 - 5000 |
+|----------|----------------------|
+| Android  | 500                  |
+| iOS      | 3000                 |
+| Windows  | 1000 - 5000          |
 
 ### Low
 
 | Platform | Distance (in meters) |
-| --- | --- |
-| Android | 500 |
-| iOS | 1000 |
-| UWP | 300 - 3000 |
+|----------|----------------------|
+| Android  | 500                  |
+| iOS      | 1000                 |
+| Windows  | 300 - 3000           |
 
 ### Medium (Default)
 
 | Platform | Distance (in meters) |
-| --- | --- |
-| Android | 100 - 500 |
-| iOS | 100 |
-| UWP | 30-500 |
+|----------|----------------------|
+| Android  | 100 - 500            |
+| iOS      | 100                  |
+| Windows  | 30-500               |
 
 ### High
 
 | Platform | Distance (in meters) |
-| --- | --- |
-| Android | 0 - 100 |
-| iOS | 10 |
-| UWP | <= 10 |
+|----------|----------------------|
+| Android  | 0 - 100              |
+| iOS      | 10                   |
+| Windows  | <= 10                |
 
 ### Best
 
 | Platform | Distance (in meters) |
-| --- | --- |
-| Android | 0 - 100 |
-| iOS | ~0 |
-| UWP | <= 10 |
+|----------|----------------------|
+| Android  | 0 - 100              |
+| iOS      | ~0                   |
+| Windows  | <= 10                |
 
-<a name="calculate-distance"></a>
+## Detecting mock locations
 
-## Detecting Mock Locations
-Some devices may return a mock location from the provider or by an application that provides mock locations. You can detect this by using the `IsFromMockProvider` on any [`Location`](xref:Microsoft.Maui.Essentials.Location).
+Some devices may return a mock location from the provider or by an application that provides mock locations. You can detect this by using the `IsFromMockProvider` on any `Location`
 
 ```csharp
-var request = new GeolocationRequest(GeolocationAccuracy.Medium);
-var location = await Geolocation.GetLocationAsync(request);
-
-if (location != null)
+public async Task CheckMock()
 {
-    if(location.IsFromMockProvider)
+    var request = new GeolocationRequest(GeolocationAccuracy.Medium);
+    Location location = await Geolocation.GetLocationAsync(request);
+
+    if (location != null && location.IsFromMockProvider)
     {
         // location is from a mock provider
     }
 }
 ```
 
-## Distance between Two Locations
+## Distance between two locations
 
-The [`Location`](xref:Microsoft.Maui.Essentials.Location) and [`LocationExtensions`](xref:Microsoft.Maui.Essentials.LocationExtensions) classes define `CalculateDistance` methods that allow you to calculate the distance between two geographic locations. This calculated distance does not take roads or other pathways into account, and is merely the shortest distance between the two points along the surface of the Earth, also known as the _great-circle distance_ or colloquially, the distance "as the crow flies."
+The `Location.CalculateDistance` method calculates the distance between two geographic locations. This calculated distance doesn't take roads or other pathways into account, and is merely the shortest distance between the two points along the surface of the Earth. This calculation is known as the _great-circle distance_ calculation.
 
-Here's an example:
+The following code calculates the distance between the United States of America cities of Boston and San Francisco:
 
 ```csharp
 Location boston = new Location(42.358056, -71.063611);
@@ -234,15 +263,19 @@ Location sanFrancisco = new Location(37.783333, -122.416667);
 double miles = Location.CalculateDistance(boston, sanFrancisco, DistanceUnits.Miles);
 ```
 
-The `Location` constructor has latitude and longitude arguments in that order. Positive latitude values are north of the equator, and positive longitude values are east of the Prime Meridian. Use the final argument to `CalculateDistance` to specify miles or kilometers. The `UnitConverters` class also defines `KilometersToMiles` and `MilesToKilometers` methods for converting between the two units.
+The `Location` constructor accepts the latitude and longitude arguments, respectively. Positive latitude values are north of the equator, and positive longitude values are east of the Prime Meridian. Use the final argument to `CalculateDistance` to specify miles or kilometers. The `UnitConverters` class also defines `KilometersToMiles` and `MilesToKilometers` methods for converting between the two units.
 
 ## Platform differences
 
+This section describes the platform-specific differences with the geolocation API.
+
 Altitude is calculated differently on each platform.
 
+<!-- markdownlint-disable MD025 -->
+<!-- markdownlint-disable MD024 -->
 # [Android](#tab/android)
 
-On Android, [altitude](https://developer.android.com/reference/android/location/Location#getAltitude()), if available, is returned in meters above the WGS 84 reference ellipsoid. If this location does not have an altitude then 0.0 is returned.
+On Android, [altitude](https://developer.android.com/reference/android/location/Location#getAltitude()), if available, is returned in meters above the WGS 84 reference ellipsoid. If this location doesn't have an altitude, `0.0` is returned.
 
 # [iOS](#tab/ios)
 
@@ -250,11 +283,13 @@ On iOS, [altitude](https://developer.apple.com/documentation/corelocation/clloca
 
 # [Windows](#tab/windows)
 
-On UWP, altitude is returned in meters. See the [AltitudeReferenceSystem](/uwp/api/windows.devices.geolocation.geopoint.altitudereferencesystem#Windows_Devices_Geolocation_Geopoint_AltitudeReferenceSystem) documentation for more information.
+On Windows, altitude is returned in meters. For more information, see the [AltitudeReferenceSystem](/uwp/api/windows.devices.geolocation.geopoint.altitudereferencesystem#Windows_Devices_Geolocation_Geopoint_AltitudeReferenceSystem) reference documentation.
 
 -----
+<!-- markdownlint-enable MD024 -->
+<!-- markdownlint-enable MD025 -->
 
 ## API
 
-- [Geolocation source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Geolocation)
+- [Geolocation source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/Geolocation)
 <!-- - [Geolocation API documentation](xref:Microsoft.Maui.Essentials.Geolocation)-->

@@ -1,6 +1,6 @@
 ---
 title: "Connectivity"
-description: "Learn how to use the .MET MAUI Connectivity class in the Microsoft.Maui.Essentials namespace. With this class, you can determine if you can communicate with the internet and which network devices are connected"
+description: "Learn how to use the .NET MAUI Connectivity class in the Microsoft.Maui.Essentials namespace. With this class, you can determine if you can communicate with the internet and which network devices are connected"
 ms.date: 08/16/2021
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---

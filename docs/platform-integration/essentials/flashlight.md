@@ -1,43 +1,55 @@
 ---
 title: "Flashlight"
-description: "Describes the Flashlight class in Microsoft.Maui.Essentials, which has the ability to turn on or off the device's camera flash to turn it into a flashlight."
-ms.date: 11/04/2018
+description: "Learn how to use the .NET MAUI Flashlight class in the Microsoft.Maui.Essentials namespace. This class provides the ability to turn on or off the device's camera flash, to emulate a flashlight."
+ms.date: 08/19/2021
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
 # Flashlight
 
-The `Flashlight` class has the ability to turn on or off the device's camera flash to turn it into a flashlight.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `Flashlight` class. With this class, you can toggle the device's camera flash on and off, to emulate a flashlight.
 
 ## Get started
 
 [!INCLUDE [get-started](includes/get-started.md)]
 
-To access the **Flashlight** functionality the following platform specific setup is required.
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
+To access the flashlight functionality the following platform-specific setup is required.
+
+<!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
 
-The Flashlight and Camera permissions are required and must be configured in the Android project. This can be added in the following ways:
+There are two permissions to configure in your project: `Flashlight` and `Camera`. These permissions can be set in the following ways:
 
-Open the **AssemblyInfo.cs** file under the **Properties** folder and add:
+- Add the assembly-based permission:
 
-```csharp
-[assembly: UsesPermission(Android.Manifest.Permission.Flashlight)]
-[assembly: UsesPermission(Android.Manifest.Permission.Camera)]
-```
+  Open the _AssemblyInfo.cs_ file under the **Properties** folder and add:
 
-OR Update Android Manifest:
+  ```csharp
+  [assembly: UsesPermission(Android.Manifest.Permission.Flashlight)]
+  [assembly: UsesPermission(Android.Manifest.Permission.Camera)]
+  ```
 
-Open the **AndroidManifest.xml** file under the **Properties** folder and add the following inside of the **manifest** node.
+  \- or -
 
-```xml
-<uses-permission android:name="android.permission.FLASHLIGHT" />
-<uses-permission android:name="android.permission.CAMERA" />
-```
+- Update the Android Manifest:
 
-Or right click on the Android project and open the project's properties. Under **Android Manifest** find the **Required permissions:** area and check the **FLASHLIGHT** and **CAMERA** permissions. This will automatically update the **AndroidManifest.xml** file.
+  Open the _AndroidManifest.xml_ file under the **Properties** folder and add the following in the `manifest` node:
 
-By adding these permissions [Google Play will automatically filter out devices](https://developer.android.com/guide/topics/manifest/uses-feature-element.html#permissions-features) without specific hardware. You can get around this by adding the following to your AssemblyInfo.cs file in your Android project:
+  ```xml
+  <uses-permission android:name="android.permission.FLASHLIGHT" />
+  <uses-permission android:name="android.permission.CAMERA" />
+  ```
+
+  \- or -
+
+- Use the Android project properties:
+
+  <!-- TODO: Check on this value -->
+  Right-click on the Android project and open the project's properties. Under _Android Manifest_ find the **Required permissions:** area and check the **FLASHLIGHT** and **CAMERA** permissions. This will automatically update the _AndroidManifest.xml_ file.
+
+By adding these permissions, [Google Play will automatically filter out devices](https://developer.android.com/guide/topics/manifest/uses-feature-element.html#permissions-features) without specific hardware. You can get around this by adding the following to your AssemblyInfo.cs file in your Android project:
 
 ```csharp
 [assembly: UsesFeature("android.hardware.camera", Required = false)]
@@ -48,27 +60,29 @@ By adding these permissions [Google Play will automatically filter out devices](
 
 # [iOS](#tab/ios)
 
-No additional setup required.
+No setup is required.
 
 # [Windows](#tab/windows)
 
-No additional setup required.
+No setup is required.
 
 -----
+<!-- markdownlint-enable MD025 -->
 
-## Using Flashlight
-
-[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
+## Use Flashlight
 
 The flashlight can be turned on and off through the `TurnOnAsync` and `TurnOffAsync` methods:
 
 ```csharp
 try
 {
-    // Turn On
+    // Turn on
     await Flashlight.TurnOnAsync();
 
-    // Turn Off
+    // Pause for 3 seconds
+    await Task.Delay(TimeSpan.FromSeconds(3));
+
+    // Turn off
     await Flashlight.TurnOffAsync();
 }
 catch (FeatureNotSupportedException fnsEx)
@@ -85,31 +99,37 @@ catch (Exception ex)
 }
 ```
 
-## Platform implementation specifics
+## Platform differences
 
+This section describes the platform-specific differences with the battery.
+
+<!-- markdownlint-disable MD025 -->
+<!-- markdownlint-disable MD024 -->
 ### [Android](#tab/android)
 
-The Flashlight class has been optimized based on the device's operating system.
+The `Flashlight` class has been optimized based on the device's operating system.
 
-#### API Level 23 and Higher
+#### API level 23 and higher
 
 On newer API levels, [Torch Mode](https://developer.android.com/reference/android/hardware/camera2/CameraManager.html#setTorchMode) will be used to turn on or off the flash unit of the device.
 
-#### API Level 22 and Lower
+#### API level 22 and lower
 
 A camera surface texture is created to turn on or off the `FlashMode` of the camera unit.
 
 ### [iOS](#tab/ios)
 
-[AVCaptureDevice](xref:AVFoundation.AVCaptureDevice) is used to turn on and off the Torch and Flash mode of the device.
+The `AVCaptureDevice` API is used to turn on and off the Torch and Flash mode of the device.
 
 ### [Windows](#tab/windows)
 
-[Lamp](/uwp/api/windows.devices.lights.lamp) is used to detect the first lamp on the back of the device to turn on or off.
+The [`Lamp`](/uwp/api/windows.devices.lights.lamp) API is used to turn on or off the first detected lamp on the back of the device.
 
 -----
+<!-- markdownlint-enable MD024 -->
+<!-- markdownlint-enable MD025 -->
 
 ## API
 
-- [Flashlight source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Flashlight)
+- [Flashlight source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/Flashlight)
 <!-- - [Flashlight API documentation](xref:Microsoft.Maui.Essentials.Flashlight)-->
