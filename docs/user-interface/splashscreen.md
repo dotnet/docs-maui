@@ -32,7 +32,7 @@ A background color for your splash screen can also be specified:
 <!-- Valid color values are actually derived from the SKColor struct, rather than Microsoft.Maui.Graphics.Colors. This may change. -->
 Color values can be specified in hexadecimal, or as a .NET MAUI color. For example, `Color="Red"` is valid.
 
-At build time, .NET MAUI takes the splash screen and resizes it to the correct size for your target platform and device. The splash screen is then added to your app package.
+At build time, the splash screen image is resized to the correct size for the target platform and device. The splash screen is then added to your app package.
 
 <!-- markdownlint-disable MD025 -->
 
