@@ -3,14 +3,14 @@ ms.topic: include
 ms.date: 08/04/2021
 ---
 
-When requesting a share or opening launcher on iOS, you can present in a popover. This specifies where the popover will appear and point an arrow directly to. This location is often the control that launched the action. You can specify the location using the `PresentationSourceBounds` property:
+When requesting a share or opening launcher on iPadOS, you can present in a popover. This specifies where the popover will appear and point an arrow directly to. This location is often the control that launched the action. You can specify the location using the `PresentationSourceBounds` property:
 
 ```csharp
 await Share.RequestAsync(new ShareFileRequest
     {
         Title = Title,
         File = new ShareFile(file),
-        PresentationSourceBounds = DeviceInfo.Platform== DevicePlatform.iOS && DeviceInfo.Idiom == DeviceIdiom.Tablet
+        PresentationSourceBounds = DeviceInfo.Platform == DevicePlatform.iOS && DeviceInfo.Idiom == DeviceIdiom.Tablet
                                 ? new System.Drawing.Rectangle(0, 20, 0, 0)
                                 : System.Drawing.Rectangle.Empty
     });
@@ -20,7 +20,7 @@ await Share.RequestAsync(new ShareFileRequest
 await Launcher.OpenAsync(new OpenFileRequest
     {
         File = new ReadOnlyFile(file),
-        PresentationSourceBounds = DeviceInfo.Platform== DevicePlatform.iOS && DeviceInfo.Idiom == DeviceIdiom.Tablet
+        PresentationSourceBounds = DeviceInfo.Platform == DevicePlatform.iOS && DeviceInfo.Idiom == DeviceIdiom.Tablet
                                 ? new System.Drawing.Rectangle(0, 20, 0, 0)
                                 : System.Drawing.Rectangle.Empty
     });

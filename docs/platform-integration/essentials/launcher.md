@@ -15,7 +15,7 @@ The `Launcher` class enables an application to open a URI by the system. This is
 
 [!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
-To access the flashlight functionality, the following platform-specific setup is required.
+To access the launcher functionality, the following platform-specific setup is required.
 
 <!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
@@ -92,7 +92,7 @@ public class LauncherTest
 }
 ```
 
-## Presentation Location When Opening Files
+## Set the launcher location
 
 [!INCLUDE [ios-PresentationSourceBounds](includes/ios-PresentationSourceBounds.md)]
 
