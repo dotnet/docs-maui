@@ -18,7 +18,7 @@ The process for migrating a Xamarin.Forms app to .NET MAUI is expected to be:
 1. Build and fix any issues.
 1. Run the converted app and verify that it functions correctly.
 
-> [!IMPORTANT]
+> [!WARNING]
 > Do not currently migrate your production apps to .NET MAUI.
 
 ## Port an app example
