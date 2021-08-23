@@ -1,12 +1,15 @@
 ---
 title: "BlazorWebView"
-description: "The .NET Multi-platform App UI (.NET MAUI) BlazorWebView control enables you to host a Blazor web app in your .NET MAUI app, and integrate the app with devices features."
+description: "The .NET Multi-platform App UI (.NET MAUI) BlazorWebView control enables you to host a Blazor web app in your .NET MAUI app, and integrate the app with device features."
 ms.date: 08/19/2021
 ---
 
 # BlazorWebView
 
 The .NET Multi-platform App UI (.NET MAUI) `BlazorWebView` is a control that enables you to host a Blazor web app in your .NET MAUI app. These apps, known as .NET MAUI Blazor apps, enable a Blazor web app to be integrated with native platform features and UI controls. The `BlazorWebView` control can be added to any page of a .NET MAUI app, and pointed to the root of the Blazor app. The Blazor components run natively in the .NET process and render web UI to an embedded web view control. .NET MAUI Blazor apps can run on all the platforms supported by .NET MAUI.
+
+> [!IMPORTANT]
+> Using the `BlazorWebView` control requires you to have installed the ASP.NET and web development workload in Visual Studio. In addition, to use the `BlazorWebView` control on Windows requires you to install the [WebView2(https://developer.microsoft.com/microsoft-edge/webview2/)] runtime.
 
 `BlazorWebView` defines the following properties:
 
@@ -21,8 +24,8 @@ The `RootComponent` class defines the following properties:
 
 For information about Blazor apps, see [Introduction to ASP.NET Core Blazor](/aspnet/core/blazor/).
 
-> [!IMPORTANT]
-> Using the `BlazorWebView` control requires you to have installed the ASP.NET and web development workload in Visual Studio. In addition, to use the `BlazorWebView` control on Windows requires you to install the [WebView2(https://developer.microsoft.com/microsoft-edge/webview2/) runtime.
+> [!NOTE]
+> Existing Blazor components can be used in a .NET MAUI Blazor app by moving the code into the app, or by referencing an existing class library or package that contains the component.
 
 ## Create a .NET MAUI Blazor app
 
@@ -30,9 +33,7 @@ A .NET MAUI Blazor app can be created in Visual Studio by the **.NET MAUI Blazor
 
 :::image type="content" source="blazorwebview-images/blazorwebapp-template.png" alt-text=".NET MAUI Blazor app project template screenshot.":::
 
-The project template creates a multi-targeted .NET MAUI Blazor app that can be deployed to Android, iOS, Mac Catalyst, and Windows.
-
-The `BlazorWebControl` is defined in *MainPage.xaml* in the project, and points to the root of the Blazor app:
+This project template creates a multi-targeted .NET MAUI Blazor app that can be deployed to Android, iOS, Mac Catalyst, and Windows. The `BlazorWebControl` is defined in *MainPage.xaml* in the created project, and points to the root of the Blazor app:
 
 ```xaml
 <ContentPage xmlns=http://schemas.microsoft.com/dotnet/2021/maui
@@ -51,11 +52,9 @@ The `BlazorWebControl` is defined in *MainPage.xaml* in the project, and points 
 </ContentPage>
 ```
 
-The root Blazor component for the app is in *Main.razor*. The rest of the Blazor components are in the *Pages* and *Shared* directories, and are identical to the components used in the default Blazor template. Static web assets for the app are in the *wwwroot* folder.
+The root Blazor component for the app is in *Main.razor*. The rest of the Blazor components are in the *Pages* and *Shared* project folders, and are identical to the components used in the default Blazor template. Static web assets for the app are in the *wwwroot* folder.
 
-Existing Blazor components can be used in the .NET MAUI Blazor app by moving the code into the app, or by referencing an existing class library or package that contains the component.
-
-## Add a BlazorWebView to an existing .NET MAUI app
+## Add a BlazorWebView to an existing app
 
 The process to add a `BlazorWebView` to an existing .NET MAUI app is as follows:
 
@@ -68,8 +67,8 @@ The process to add a `BlazorWebView` to an existing .NET MAUI app is as follows:
     The Razor SDK is required to build and package projects containing Razor files for Blazor projects.
 
 1. Add the root Blazor component for the app to the project.
-1. Add your Blazor components to folders named *Pages* and *Shared* in your project.
-1. Add static web assets to a folder named *wwwroot* in your project.
+1. Add your Blazor components to project folders named *Pages* and *Shared*.
+1. Add your static web assets to a project folder named *wwwroot*.
 1. Add any optional *_Imports.razor* files to your project.
 1. Add a `BlazorWebView` to a page in your .NET MAUI app, and point it to the root of the Blazor app:
 
@@ -96,7 +95,10 @@ The process to add a `BlazorWebView` to an existing .NET MAUI app is as follows:
     using Microsoft.Extensions.DependencyInjection;
     ```
 
-1. Modify the `Configure` method of your `Startup` class to register the `BlazorWebView` for use in your app. To do this, call the `RegisterBlazorMauiWebView` method, the `UseMicrosoftExtensionsServiceProviderFactory` method, and the `ConfigureServices` method on the `IAppHostBuilder` object. Then, on the `IServiceCollection` object, call the `AddBlazorWebView` method to add component web view services to the services collection:
+    > [!NOTE]
+    > Blazor requires service scopes, which are only supported with the `Microsoft.Extensions.DependencyInjection` library.
+
+1. Modify the `Configure` method of your `Startup` class to register the `BlazorWebView` control for use in your app. To do this, call the `RegisterBlazorMauiWebView` method, the `UseMicrosoftExtensionsServiceProviderFactory` method, and the `ConfigureServices` method on the `IAppHostBuilder` object. Then, on the `IServiceCollection` object, call the `AddBlazorWebView` method to add component web view services to the services collection:
 
     ```csharp
     public class Startup : IStartup
@@ -104,8 +106,8 @@ The process to add a `BlazorWebView` to an existing .NET MAUI app is as follows:
            public void Configure(IAppHostBuilder appBuilder)
            {
                  appBuilder
-                      .RegisterBlazorMauiWebView()
-                      .UseMicrosoftExtensionsServiceProviderFactory()
+                       .RegisterBlazorMauiWebView()
+                       .UseMicrosoftExtensionsServiceProviderFactory()
                        .UseMauiApp<App>()
                        .ConfigureFonts(fonts =>
                        {
@@ -119,6 +121,3 @@ The process to add a `BlazorWebView` to an existing .NET MAUI app is as follows:
           }
     }
     ```
-
-    > [!NOTE]
-    > Blazor requires service scopes, which are only supported with the `Microsoft.Extensions.DependencyInjection` library.
