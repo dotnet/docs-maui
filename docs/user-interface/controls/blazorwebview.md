@@ -28,7 +28,7 @@ For information about Blazor apps, see [Introduction to ASP.NET Core Blazor](/as
 
 A .NET MAUI Blazor app can be created in Visual Studio by the **.NET MAUI Blazor app** template:
 
-:::image type="content" source="blazorwebview-imagess/blazorwebapp-template.png" alt-text=".NET MAUI Blazor app project template screenshot.":::
+:::image type="content" source="blazorwebview-images/blazorwebapp-template.png" alt-text=".NET MAUI Blazor app project template screenshot.":::
 
 The project template creates a multi-targeted .NET MAUI Blazor app that can be deployed to Android, iOS, Mac Catalyst, and Windows.
 
