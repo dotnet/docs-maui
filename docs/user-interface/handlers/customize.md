@@ -86,7 +86,7 @@ In this example, the `Entry` customization occurs in a page class. Therefore, al
 - On Windows, the thickness of the font in the `Entry` is set to thin.
 
 > [!IMPORTANT]
-> The index into a mapper is an arbitrary string and does not have to correspond to a property exposed by a type, or a property on a native control. For example, `["MyCustomization"]` can be specified as a mapper index, with any native control modification being performed as the customization.
+> The index into a mapper is an arbitrary string and doesn't have to correspond to a property exposed by a type, or a property on a native control. For example, `["MyCustomization"]` can be specified as a mapper index, with any native control modification being performed as the customization.
 
 ## Customize specific control instances
 
