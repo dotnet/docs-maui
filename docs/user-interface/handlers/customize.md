@@ -23,7 +23,7 @@ HandlerType.MapperName[string] = (handler, view) =>
 };
 ```
 
-All handler types are located in the `Microsoft.Maui.Handlers` namespace, and each handler provides a mapper that maps each cross-platform control property to a method that applies the property value to the native control. The `handler` argument to the mapper provides an instance of the handler being customized, and the `view` argument provides an instance of the cross-platform control that the handler implements. For a list of the type names that implement handler-based .NET MAUI controls, see [Handler-based controls](#handler-based-controls).
+All handler types are located in the `Microsoft.Maui.Handlers` namespace, and each handler provides a mapper that maps each cross-platform control property to a method that applies the property value to the native control. The `handler` argument provides an instance of the handler being customized, and the `view` argument provides an instance of the cross-platform control that the handler implements. For a list of the type names that implement handler-based .NET MAUI controls, see [Handler-based controls](#handler-based-controls).
 
 Each handler class exposes the native control that implements the cross-platform control via its `NativeView` property. This property can be accessed to set native control properties, invoke native control methods, and subscribe to native control events. In addition, the cross-platform control implemented by the handler is exposed via its `VirtualView` property.
 
