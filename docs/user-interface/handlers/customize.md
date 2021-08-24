@@ -45,7 +45,7 @@ In addition to these events, each control also has an overridable `OnHandlerChan
 
 ## Customize a control with a mapper
 
-The .NET MAUI `Entry` is a single-line text input control, that implements the `IEntry` interface. On iOS, the `EntryHandler` maps the `Entry` to an iOS `UITextField` control. On Android, the `Entry` is mapped to an `AppCompatEditText`, and on Windows the `Entry` is mapped to a `TextBox` control:
+The .NET MAUI `Entry` is a single-line text input control, that implements the `IEntry` interface. On iOS, the `EntryHandler` maps the `Entry` to an iOS `UITextField` control. On Android, the `Entry` is mapped to an `AppCompatEditText` control, and on Windows the `Entry` is mapped to a `TextBox` control:
 
 :::image type="content" source="customize-images/entry-handler.png" alt-text="Entry handler architecture." border="false":::
 
@@ -79,7 +79,7 @@ namespace HandlersDemos.Views
 }
 ```
 
-In this example, the `Entry` customization occurs in a page class. Therefore, all `Entry` controls on Android, iOS, and Windows will be customized once the `CustomizeEntryPage` is displayed. The following customization is performed by using compiler preprocessing directives:
+In this example, the `Entry` customization occurs in a page class. Therefore, all `Entry` controls on Android, iOS, and Windows will be customized once an instance of the `CustomizeEntryPage` is created. The following customization is performed by using compiler preprocessing directives:
 
 - On Android, the underline is removed from the `Entry`.
 - On iOS, the border is removed from the `Entry`.
@@ -265,7 +265,7 @@ namespace HandlersDemos.Views
 }
 ```
 
-The advantage of this approach is that compiler preprocessing directives aren't required, and that the partial methods don't have to be implemented on each platform. Instead, the compiler removes references to the method signature on any platforms that don't provide an implementation. For information about partial methods, see [Partial methods](/dotnet/csharp/programming-guide/classes-and-structs/partial-classes-and-methods#partial-methods).
+The advantage of this approach is that compiler preprocessing directives aren't required, and that the partial methods don't have to be implemented on each platform. If an implementation isn't provided on a platform, the compiler removes the signature at compile time. For information about partial methods, see [Partial methods](/dotnet/csharp/programming-guide/classes-and-structs/partial-classes-and-methods#partial-methods).
 
 ## Handler-based controls
 
@@ -315,5 +315,3 @@ The following controls are backed by renderers, and use a different customizatio
 - `SwipeView`
 - `TabbedPage`
 - `TableView`
-
-For more information about renderers, see [Xamarin.Forms custom renderers](/xamarin/xamarin-forms/app-fundamentals/custom-renderer/).
