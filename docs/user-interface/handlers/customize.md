@@ -54,16 +54,17 @@ The following example removes the underline from all `Entry` controls in the app
 ```csharp
 using Microsoft.Maui;
 using Microsoft.Maui.Controls;
+using Microsoft.Maui.Graphics;
 
-public partial class MainPage : ContentPage, IPage
+public partial class MainPage : ContentPage
 {
     public MainPage()
     {
         InitializeComponent();
 #if __ANDROID__
-        Handlers.EntryHandler.EntryMapper[nameof(IEntry.Background)] = (h, v) =>
+        Handlers.EntryHandler.EntryMapper[nameof(IEntry.Background)] = (handler, view) =>
         {
-            (h.NativeView as global::Android.Views.Entry).UnderlineVisible = false;
+            handler.NativeView.SetBackgroundColor(Colors.Transparent.ToNative());
         };
 #endif
     }
