@@ -7,7 +7,7 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 
 # Launcher
 
-The `Launcher` class enables an application to open a URI by the system. This is often used when deep linking into another application's custom URI schemes. If you're looking to open the browser to a website, use the [Browser](open-browser.md) API instead.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `Launcher` class. This class enables an application to open a URI by the system. This is often used when deep linking into another application's custom URI schemes. If you're looking to open the browser to a website, use the [Browser](open-browser.md) API instead.
 
 ## Get started
 
