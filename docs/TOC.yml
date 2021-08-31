@@ -36,6 +36,8 @@
               href: user-interface/graphics/index.md
             - name: Blend modes
               href: user-interface/graphics/blendmodes.md
+            - name: Colors
+              href: user-interface/graphics/colors.md
             - name: Draw graphical objects
               href: user-interface/graphics/draw.md
             - name: Images
