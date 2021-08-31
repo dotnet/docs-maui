@@ -5,6 +5,7 @@ ms.date: 03/13/2019
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
+<!-- TODO update article -->
 # Platform Extensions
 
 Xamarin.Essentials provides several platform extension methods when having to work with platform types such as Rect, Size, and Point. This means that you can convert between the `System` version of these types for their iOS, Android, and UWP specific types.
