@@ -1,6 +1,6 @@
 ---
 title: "Colors"
-description: "The .NET MAUI Color class lets you specify colors as RGB values, HSL values, HSV values, or with a color name."
+description: "The .NET MAUI Color class, in the Microsoft.Maui.Graphics namespace, lets you specify colors as RGB values, HSL values, HSV values, or with a color name."
 ms.date: 08/31/2021
 ---
 
@@ -8,43 +8,41 @@ ms.date: 08/31/2021
 
 <!-- Sample link goes here -->
 
-The `Color` class lets you specify colors as Red-Green-Blue (RGB) values, Hue-Saturation-Luminosity (HSL) values, Hue-Saturation-Value (HSV) values, or with a color name. An Alpha channel is also available to indicate transparency.
+The `Color` class, in the `Microsoft.Maui.Graphics` namespace, lets you specify colors as Red-Green-Blue (RGB) values, Hue-Saturation-Luminosity (HSL) values, Hue-Saturation-Value (HSV) values, or with a color name. An Alpha channel is also available to indicate transparency.
 
-`Color` objects can be created with the `Color` constructors, which can be used to specify a gray shade, an RGB value, or an RGB value with transparency. In all cases, arguments are `float` values ranging from 0 to 1.
+`Color` objects can be created with `Color` constructors, which can be used to specify a gray shade, an RGB value, or an RGB value with transparency. In all cases, arguments are `float` values ranging from 0 to 1.
 
-> [!IMPORTANT]
+> [!NOTE]
 > The default `Color` constructor creates a black `Color` object.
 
-You can also use static methods to create `Color` objects:
+You can also use the following static methods to create `Color` objects:
 
-- `Color.FromRgb` for `float` RGB values from 0 to 1.
-- `Color.FromRgb` for `double` RGB values from 0 to 1.
-- `Color.FromRgb` for `byte` RGB values from 0 to 255.
-- `Color.FromRgba` for `float` RGA values, with transparency, from 0 to 1.
-- `Color.FromRgba` for `double` RGB values, with transparency, from 0 to 1.
-- `Color.FromRgba` for `byte` RGB values, with transparency, from 0 to 255.
-- `Color.FromRgba` for a `string`-based hexadecimal value in the form "#RRGGBBAA" or "#RRGGBB" or "#RGBA" or "#RGB", where each letter corresponds to a hexadecimal digit for the alpha, red, green, and blue channels.
-- `Color.FromHsla` for `float` HSL values, with transparency.
-- `Color.FromHsla` for `double` HSL values, with transparency.
-- `Color.FromHsv` for `float` HSV values from 0 to 1.
-- `Color.FromHsv` for `int` HSV values from 0 to 255.
-- `Color.FromHsva` for `float` HSV values, with transparency.
-- `Color.FromHsva` for `int` HSV values, with transparency.
-- `Color.FromInt` for an `int` value calculated as (B + 256 \* (G + 256 \* (R + 256 \* A))).
-- `Color.FromUint` for a `uint` value calculated as (B + 256 \* (G + 256 \* (R + 256 \* A))).
-- `Color.FromArgb` for a `string`-based hexadecimal value in the form "#AARRGGBB" or "#RRGGBB" or "#ARGB" or "RGB", where each letter corresponds to a hexadecimal digit for the alpha, red, green, and blue channels.
+- `Color.FromRgb` from `float` RGB values that range from 0 to 1.
+- `Color.FromRgb` from `double` RGB values that range from 0 to 1.
+- `Color.FromRgb` from `byte` RGB values that range from 0 to 255.
+- `Color.FromRgba` from `float` RGBA values that range from 0 to 1.
+- `Color.FromRgba` from `double` RGBA values that range from 0 to 1.
+- `Color.FromRgba` from `byte` RGBA values that range from 0 to 255.
+- `Color.FromRgba` from a `string`-based hexadecimal value in the form "#RRGGBBAA" or "#RRGGBB" or "#RGBA" or "#RGB", where each letter corresponds to a hexadecimal digit for the alpha, red, green, and blue channels.
+- `Color.FromHsla` from `float` HSLA values.
+- `Color.FromHsla` from `double` HSLA values.
+- `Color.FromHsv` from `float` HSV values that range from 0 to 1.
+- `Color.FromHsv` from `int` HSV values that range from 0 to 255.
+- `Color.FromHsva` from `float` HSVA values.
+- `Color.FromHsva` from `int` HSV values.
+- `Color.FromInt` from an `int` value calculated as (B + 256 \* (G + 256 \* (R + 256 \* A))).
+- `Color.FromUint` from a `uint` value calculated as (B + 256 \* (G + 256 \* (R + 256 \* A))).
+- `Color.FromArgb` from a `string`-based hexadecimal value in the form "#AARRGGBB" or "#RRGGBB" or "#ARGB" or "RGB", where each letter corresponds to a hexadecimal digit for the alpha, red, green, and blue channels.
 
 > [!NOTE]
 > In addition to the methods listed above, the `Color` class also has `Parse` and `TryParse` methods that create `Color` objects from `string` arguments.
 
-Once created, a `Color` object is immutable. The characteristics of the color can be obtained from the following properties:
+Once created, a `Color` object is immutable. The characteristics of the color can be obtained from the following `float` properties, that range from 0 to 1:
 
 - `R`, which represents the red channel of the color.
 - `G`, which represents the green channel of the color.
 - `B`, which represents the blue channel of the color.
 - `A`, which represents the alpha channel of the color.
-
-These properties are all `float` values ranging from 0 to 1.
 
 In addition, the characteristics of the color can be obtained from the following methods:
 
@@ -60,13 +58,13 @@ The `Colors` class defines 148 public static read-only fields for common colors,
 
 The following instance methods modify an existing color to create a new color:
 
-- `AddLuminosity` returns a `Color` by modifying the luminosity by the supplied delta.
+- `AddLuminosity` returns a `Color` by adding the luminosity value to the supplied delta value.
 - `GetComplementary` returns the complementary `Color`.
-- `MultiplyAlpha` returns a `Color` by modifying the alpha, multiplying it by the supplied `float` value.
-- `WithAlpha` returns a `Color`, replacing the alpha with the supplied `float` value.
-- `WithHue` returns a `Color`, replacing the hue with the supplied `float` value.
-- `WithLuminosity` returns a `Color`, replacing the luminosity with the supplied `float` value.
-- `WithSaturation` returns a `Color`, replacing the saturation with the supplied `float` value.
+- `MultiplyAlpha` returns a `Color` by multiplying the alpha value by the supplied `float` value.
+- `WithAlpha` returns a `Color`, replacing the alpha value with the supplied `float` value.
+- `WithHue` returns a `Color`, replacing the hue value with the supplied `float` value.
+- `WithLuminosity` returns a `Color`, replacing the luminosity value with the supplied `float` value.
+- `WithSaturation` returns a `Color`, replacing the saturation value with the supplied `float` value.
 
 ## Conversions
 
