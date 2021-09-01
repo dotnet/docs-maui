@@ -70,7 +70,7 @@ The following instance methods modify an existing color to create a new color:
 
 The following instance methods convert a `Color` to an alternative representation:
 
-- `AsPaint` returns a `SolidPaint` object whose `Color` property is set to the color. 
+- `AsPaint` returns a `SolidPaint` object whose `Color` property is set to the color.
 - `ToHex` returns a hexadecimal `string` representation of a `Color`.
 - `ToArgbHex` returns an ARGB hexadecimal `string` representation of a `Color`.
 - `ToRgbaHex` returns an RGBA hexadecimal `string` representation of a `Color`.
