@@ -36,6 +36,8 @@ landingContent:
     linkLists:
       - linkListType: concept
         links:
+          - text: App lifecycle
+            url: fundamentals/app-lifecycle.md
           - text: App startup
             url: fundamentals/app-startup.md
           - text: Single project

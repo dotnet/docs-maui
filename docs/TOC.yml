@@ -17,6 +17,8 @@
     - name: Fundamentals
       expanded: true
       items:
+        - name: App lifecycle
+          href: fundamentals/app-lifecycle.md
         - name: App startup
           href: fundamentals/app-startup.md
         - name: Single project
