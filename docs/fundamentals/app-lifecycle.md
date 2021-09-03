@@ -6,7 +6,7 @@ ms.date: 09/03/2021
 
 # App lifecycle
 
-.NET Multi-platform App UI (.NET MAUI) apps typically have three execution states: *not running*, *running*, and *stopped*. .NET MAUI raises lifecycle cross-platform events on the `Window` class when an app transitions from the not running state to the running state, and the running state to the stopped state.
+.NET Multi-platform App UI (.NET MAUI) apps generally have three execution states: *not running*, *running*, and *stopped*. .NET MAUI raises lifecycle cross-platform events on the `Window` class when an app transitions from the not running state to the running state, and the running state to the stopped state.
 
 The following diagram shows an overview of the .NET MAUI app lifecycle:
 
@@ -128,6 +128,8 @@ namespace NativeLifecycleDemo
 }
 ```
 
+For more information about the Android app lifecycle, see [Understand the Activity Lifecycle](https://developer.android.com/guide/components/activities/activity-lifecycle) on developer.android.com.
+
 ### iOS
 
 The following table lists the .NET MAUI delegates that are invoked in response to iOS lifecycle events being raised:
@@ -183,6 +185,8 @@ namespace NativeLifecycleDemo
     }
 }
 ```
+
+For more information about the iOS app lifecycle, see [Managing Your App's Life Cycle](https://developer.apple.com/documentation/uikit/app_and_environment/managing_your_app_s_life_cycle?language=objc) on developer.apple.com.
 
 ### Windows
 
