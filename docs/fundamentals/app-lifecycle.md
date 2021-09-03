@@ -12,7 +12,7 @@ The following diagram shows an overview of the .NET MAUI app lifecycle:
 
 :::image type="content" source="app-lifecycle-images/app-lifecycle.png" alt-text=".NET MAUI app lifecycle" border="false":::
 
-In the diagram, the gray oval indicates that the app isn't loaded into memory. The light blue ovals indicate that the app is in memory. The arcs indicate events that are fired by .NET MAUI, that provide notifications to the running app.
+In the diagram, the gray oval indicates that the app isn't loaded into memory. The light blue ovals indicate that the app is in memory. The arcs indicate events that are raised by .NET MAUI, that provide notifications to the running app.
 
 The execution state of an app depends on the app's history. For example, when an app is installed for the first time, or a device is started, the app can be considered to be *not running*. When the app is started, the `Created` and `Activated` events are raised and the app is *running*. If the user switches to a different app, or returns to the device's Home screen, the `Deactivated` and `Stopped` events are raised and the app is *stopped*. If the user returns to the app, the `Resuming` event is raised and app is *running*. Alternatively, an app might be terminated by a user while it's running. In this situation the app is *stopped*, the `Destroying` event is raised and the app is *not running*. Similarly, a device might terminate an app while it's stopped, due to resource restrictions, and the `Destroying` event is raised and the app is *not running*.
 
