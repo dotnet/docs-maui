@@ -9,8 +9,9 @@ ms.date: 07/15/2021
 
 In this tutorial, you'll learn how to create and run your first .NET Multi-platform App UI (.NET MAUI) app.
 
-> [!NOTE]
-> Visual Studio for Mac support will arrive in a future release.
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
+
+Visual Studio for Mac support will arrive in a future release.
 
 ::: zone pivot="windows"
 
