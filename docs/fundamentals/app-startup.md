@@ -8,6 +8,8 @@ ms.date: 06/18/2021
 
 .NET Multi-platform App UI (.NET MAUI) apps are bootstrapped using the [.NET Generic Host](/dotnet/core/extensions/generic-host). This enables apps to be initialized from a single location, and provides the ability to configure fonts, services, and third-party libraries.
 
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
+
 Each platform has an entry point that initializes the app host builder, and then invokes the `Configure` method of the `Startup` class in your app. The `Startup` class can be considered the entry point for your app, and is responsible for creating a window that defines the initial page of your app.
 
 The `Startup` class, which must implement the `IStartup` interface, must at a minimum provide an app to run:
