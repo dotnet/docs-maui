@@ -56,4 +56,7 @@ Then, run `maui-check`:
 maui-check
 ```
 
+> [!IMPORTANT]
+> `maui-check` requires administrative permissions.
+
 If any tools and SDKs required by .NET MAUI are missing, `maui-check` will install them. It may be necessary to run `maui-check` more than once to ensure that your environment has the latest tools and SDKs required by .NET MAUI.
