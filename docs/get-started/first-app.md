@@ -18,7 +18,7 @@ Visual Studio for Mac support will arrive in a future release.
 ## Prerequisites
 
 - The latest preview of Visual Studio 2022, with the required workloads. For more information, see [Installation](installation.md).
-- An environment that has been configured for .NET MAUI development. For more information, see [Install latest .NET 6](installation.md#install-latest-net-6-preview).
+- An environment that has been configured for .NET MAUI development. For more information, see [Install latest .NET 6](installation.md).
 - A configured Android emulator. For more information about creating an Android emulator, see [Android emulator setup](/xamarin/android/get-started/installation/android-emulator/).
 
 ## Get started with Visual Studio 2022 (Preview)
@@ -65,7 +65,7 @@ If, while connecting Visual Studio to your Mac through Xamarin Mac Agent (XMA), 
 
 ## Prerequisites
 
-- An environment that has been configured for .NET MAUI development. For more information, see [Install latest .NET 6](installation.md#install-latest-net-6-preview).
+- An environment that has been configured for .NET MAUI development. For more information, see [Install latest .NET 6](installation.md).
 - A configured Android emulator. For more information about creating an Android emulator, see [Android emulator setup](/xamarin/android/get-started/installation/android-emulator/).
 
 ## Get started with .NET command-line interface
