@@ -1,6 +1,6 @@
 ---
 title: "Text-to-Speech"
-description: "The TextToSpeech class in Microsoft.Maui.Essentials enables an application utilize the built in text-to-speech engines to speak back text from the device and also to query available languages that the engine can support."
+description: "Learn how to use the .NET MAUI TextToSpeech class, which enables an application utilize the built in text-to-speech engines to speak back text from the device."
 ms.date: 11/04/2018
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---

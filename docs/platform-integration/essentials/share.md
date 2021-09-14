@@ -1,133 +1,139 @@
 ---
 title: "Share"
-description: "The Share class in Microsoft.Maui.Essentials enables an application to share data such as text, files, and web links to other applications on the device."
-ms.assetid: B7B01D55-0129-4C87-B515-89F8F4E94665
-ms.date: 01/04/2021
+description: "Learn how to use the .NET MAUI Share class, which can share data, such as web links, to other applications on the device."
+ms.date: 09/13/2021
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
 # Share
 
-The `Share` class enables an application to share data such as text and web links to other applications on the device.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `Share` class. This class provides an API to send date, such as text or web links, to the devices share function.
+
+When a share request is made, the device displays a share window, prompting the user to choose an app to share with:
+
+:::image type="content" source="images/share.png" alt-text="Share from your app to a different app":::
 
 ## Get started
 
 [!INCLUDE [get-started](includes/get-started.md)]
 
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
+
+To access the **SecureStorage** functionality, the following platform-specific setup is required:
+
+<!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
 
-No additional setup required.
+No setup is required.
 
 # [iOS](#tab/ios)
 
-If your application shares media files, you must add the following keys to your `Info.plist`:
+If your application is going to share media files, such as photos and videos, you must add the following keys to your _Info.plist_ file:
 
 ```xml
 <key>NSPhotoLibraryAddUsageDescription</key>
-<string>This app needs access to the photo gallery for saving photos and videos.</string>
+<string>This app needs access to the photo gallery to save photos and videos.</string>
 <key>NSPhotoLibraryUsageDescription</key>
-<string>This app needs access to photos gallery for saving photos and videos.</string>
+<string>This app needs access to the photo gallery to save photos and videos.</string>
 ```
 
-Ensure that you update the `<string>` in each to a text that's specific for your app, because it will be shown to your users.
+The `<string>` elements represent the text shown to your users when permission is requested. Make sure that you change the text to something specific to your application.
 
 # [Windows](#tab/windows)
 
-No additional setup required.
+No setup is required.
 
 -----
 
-## Using Share
+## Share text and links
 
-[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
-
-The Share functionality works by calling the `RequestAsync` method with a data request payload that includes information to share to other applications. Text and Uri can be mixed and each platform will handle filtering based on content.
+The share functionality works by calling the `RequestAsync` method with a data payload that includes information to share to other applications. `Text` and `Uri` can be mixed and each platform will handle filtering based on content.
 
 ```csharp
-
-public class ShareTest
+public async Task ShareText(string text)
 {
-    public async Task ShareText(string text)
+    await Share.RequestAsync(new ShareTextRequest
     {
-        await Share.RequestAsync(new ShareTextRequest
-            {
-                Text = text,
-                Title = "Share Text"
-            });
-    }
+        Text = text,
+        Title = "Share Text"
+    });
+}
 
-    public async Task ShareUri(string uri)
+public async Task ShareUri(string uri)
+{
+    await Share.RequestAsync(new ShareTextRequest
     {
-        await Share.RequestAsync(new ShareTextRequest
-            {
-                Uri = uri,
-                Title = "Share Web Link"
-            });
-    }
+        Uri = uri,
+        Title = "Share Web Link"
+    });
 }
 ```
 
-User interface to share to external application that appears when request is made:
+## Share a file
 
-![Share to external application UI.](images/share.png)
+You can also share files to other applications on the device. .NET MAUI automatically detects the file type (MIME) and requests a share. However, operating systems may restrict which types of files can be shared.
 
-## File
-
-This features enables an app to share files to other applications on the device. Xamarin.Essentials will automatically detect the file type (MIME) and request a share. Each platform may only support specific file extensions.
-
-Here is a sample of writing text to disk and sharing it to other apps:
+The following code example writes a text file to the device, and then requests a share:
 
 ```csharp
-var fn =  "Attachment.txt";
-var file = Path.Combine(FileSystem.CacheDirectory, fn);
+string fn = "Attachment.txt";
+string file = Path.Combine(FileSystem.CacheDirectory, fn);
+
 File.WriteAllText(file, "Hello World");
 
 await Share.RequestAsync(new ShareFileRequest
 {
-    Title = Title,
+    Title = "Share text file",
     File = new ShareFile(file)
 });
 ```
 
-## Multiple Files
+## Share multiple files
 
-The usage of share multiple files differs from the single file only in the ability of sending several files at once:
+Sharing multiple files is slightly different from sharing a single file. Instead of using the `File` property of the share request, use the `Files` property:
 
 ```csharp
-var file1 = Path.Combine(FileSystem.CacheDirectory, "Attachment1.txt");
-File.WriteAllText(file, "Content 1");
-var file2 = Path.Combine(FileSystem.CacheDirectory, "Attachment2.txt");
-File.WriteAllText(file, "Content 2");
+string file1 = Path.Combine(FileSystem.CacheDirectory, "Attachment1.txt");
+string file2 = Path.Combine(FileSystem.CacheDirectory, "Attachment2.txt");
+            
+File.WriteAllText(file1, "Content 1");
+File.WriteAllText(file2, "Content 2");
 
 await Share.RequestAsync(new ShareMultipleFilesRequest
 {
-    Title = ShareFilesTitle,
+    Title = "Share multiple files",
     Files = new List<ShareFile> { new ShareFile(file1), new ShareFile(file2) }
 });
 ```
 
-## Presentation Location
+## Presentation location
 
 [!INCLUDE [ios-PresentationSourceBounds](includes/ios-PresentationSourceBounds.md)]
 
 ## Platform differences
 
+This section describes the platform-specific differences with the share API.
+
+<!-- markdownlint-disable MD025 -->
+<!-- markdownlint-disable MD024 -->
 # [Android](#tab/android)
 
-- `Subject` property is used for desired subject of a message.
+- The `Subject` property is used for desired subject of a message.
 
 # [iOS](#tab/ios)
 
-- `Subject` not used.
+- The `Subject` property isn't used.
 
 # [Windows](#tab/windows)
 
-- `Title` will default to Application Name if not set.
-- `Subject` not used.
+- The `Title` property will default to application name if not set.
+- The `Subject` property isn't used.
 
 -----
+<!-- markdownlint-enable MD024 -->
+<!-- markdownlint-enable MD025 -->
 
 ## API
 
-- [Share source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Share)
+- [Share source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/Share)
 <!-- - [Share API documentation](xref:Microsoft.Maui.Essentials.Share)-->
