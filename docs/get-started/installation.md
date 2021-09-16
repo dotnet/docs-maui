@@ -16,7 +16,7 @@ To create .NET MAUI apps in Visual Studio, you'll need the latest [Visual Studio
 - Universal Windows Platform development
 - Desktop development with C++
 - .NET Desktop Development
-- ASP.NET and web development (required for Blazor Desktop and the `BlazorWebView` control)
+- ASP.NET and web development (required for .NET MAUI Blazor apps)
 
 :::image type="content" source="installation-images/vs-workloads.png" alt-text="Visual Studio workload.":::
 
