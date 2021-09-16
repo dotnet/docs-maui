@@ -1,23 +1,23 @@
 ---
 title: "Text-to-Speech"
 description: "Learn how to use the .NET MAUI TextToSpeech class, which enables an application utilize the built in text-to-speech engines to speak back text from the device."
-ms.date: 11/04/2018
+ms.date: 09/16/2021
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
 # Text-to-Speech
 
-The `TextToSpeech` class enables an application to utilize the built-in text-to-speech engines to speak back text from the device and also to query available languages that the engine can support.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `TextToSpeech` class. This calss enables an application to utilize the built-in text-to-speech engines to speak back text from the device. You can also use it to query for available languages.
 
 ## Get started
 
 [!INCLUDE [get-started](includes/get-started.md)]
 
-## Using Text-to-Speech
-
 [!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
-Text-to-Speech works by calling the `SpeakAsync` method with text and optional parameters, and returns after the utterance has finished.
+## Using Text-to-Speech
+
+Text-to-speech works by calling the `SpeakAsync` method with the text to speak.
 
 ```csharp
 public async Task SpeakNowDefaultSettings()
@@ -38,6 +38,8 @@ public void SpeakNowDefaultSettings2()
 ```
 
 This method takes in an optional `CancellationToken` to stop the utterance once it starts.
+
+<!-- TODO: The note below about an async call blocking seems to contradict the speak SpeakMultiple idea of queueing multiple. How can it queue if it blocks? -->
 
 ```csharp
 CancellationTokenSource cts;
@@ -83,9 +85,9 @@ public void SpeakMultiple()
 }
 ```
 
-### Speech Settings
+## Settings
 
-For more control over how the audio is spoken back with `SpeechOptions` that allows setting the volume, pitch, and locale.
+To control the volume, pitch, and locale of the voice, use the `SpeechOptions` class. Pass an instance of that class to the `SpeakAsync` method:
 
 ```csharp
 public async Task SpeakNow()
@@ -103,13 +105,13 @@ public async Task SpeakNow()
 The following are supported values for these parameters:
 
 | Parameter | Minimum | Maximum |
-| --- | :---: | :---: |
-| Pitch | 0 | 2.0 |
-| Volume | 0 | 1.0 |
+|-----------|:-------:|:-------:|
+| `Pitch`     | 0       | 2.0     |
+| `Volume`    | 0       | 1.0     |
 
-### Speech Locales
+### Speech locales
 
-Each platform supports different locales, to speak back text in different languages and accents. Platforms have different codes and ways of specifying the locale, which is why Xamarin.Essentials provides a cross-platform `Locale` class and a way to query them with `GetLocalesAsync`.
+Each platform supports different locales, to speak back text in different languages and accents. Platforms have different codes and ways of specifying the locale. .NET MAUI helps in this in this regard with the `Locale` class. Use the `GetLocalesAsync` method to get which locales are available:
 
 ```csharp
 public async Task SpeakNow()
@@ -137,5 +139,5 @@ public async Task SpeakNow()
 
 ## API
 
-- [TextToSpeech source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/TextToSpeech)
+- [TextToSpeech source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/TextToSpeech)
 <!-- - [TextToSpeech API documentation](xref:Microsoft.Maui.Essentials.TextToSpeech)-->
