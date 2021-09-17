@@ -35,4 +35,4 @@ To use the `WebView` or `BlazorWebView` controls on Windows you need to install 
 
 .NET MAUI requires the Android 31 SDK for development. The Android 31 SDK can be installed through [Android Studio](https://developer.android.com/studio)
 
-Currently .NET MAUI has a dependency on OpenJDK. OpenJDK can be installed [from the microsoft openJDK page](https://www.microsoft.com/openjdk).
+Currently .NET MAUI has a dependency on OpenJDK 11. OpenJDK 11 can be installed [from the microsoft openJDK page](https://www.microsoft.com/openjdk).
