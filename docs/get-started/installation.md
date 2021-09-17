@@ -78,4 +78,3 @@ To create apps that target Windows UI Library (WinUI) 3, install the following V
 To use the `WebView` or `BlazorWebView` controls on Windows, install the **WebView2 Runtime**:
 
 - [Microsoft Edge WebView2 installer](https://developer.microsoft.com/microsoft-edge/webview2/)
-
