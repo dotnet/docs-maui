@@ -33,7 +33,7 @@ Under the **Installation** > **Mobile development with .NET** section, check the
 
 ## More requirements
 
-.NET MAUI requires the Android 31 SDK for development. To develop .NET MAUI apps, you must install the following items:
+.NET MAUI requires the Android 31 SDK for development. Install the following items:
 
 - [Microsoft Build of OpenJDK](https://www.microsoft.com/openjdk)
 
