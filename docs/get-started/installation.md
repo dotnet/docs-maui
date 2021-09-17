@@ -6,9 +6,11 @@ ms.date: 09/16/2021
 
 # Installation
 
-To create .NET Multi-platform App UI (.NET MAUI) apps, you need the latest preview versions of both Visual Studio 2022 and .NET 6. Additionally, you'll need to install the platform SDKs for Android, iOS, macOS, tvOS, and Mac Catalyst.
+To create .NET Multi-platform App UI (.NET MAUI) apps, you need the latest preview versions of both Visual Studio 2022 and .NET 6.
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
+
+Visual Studio 2022 should install .NET 6 for you, but if it's missing, download it from the [Download .NET 6.0 site](https://dotnet.microsoft.com/download/dotnet/6.0).
 
 > [!NOTE]
 > If you previously used these instructions to install .NET MAUI, note the absence of the `maui-check` tool. This tool is no longer required to get .NET MAUI working in Visual Studio.
@@ -76,3 +78,4 @@ To create apps that target Windows UI Library (WinUI) 3, install the following V
 To use the `WebView` or `BlazorWebView` controls on Windows, install the **WebView2 Runtime**:
 
 - [Microsoft Edge WebView2 installer](https://developer.microsoft.com/microsoft-edge/webview2/)
+
