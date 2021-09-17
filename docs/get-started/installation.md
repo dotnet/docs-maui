@@ -35,9 +35,9 @@ Under the **Installation** > **Mobile development with .NET** section, check the
 
 .NET MAUI requires the Android 31 SDK for development. To develop .NET MAUI apps, you must install the following items:
 
-- Microsoft Build of OpenJDK
+- [Microsoft Build of OpenJDK](https://www.microsoft.com/openjdk)
 
-  You may notice that Visual Studio installs a version of Microsoft OpenJDK, however, you need to install the Microsoft OpenJDK 11, available from the [OpenJDK](https://www.microsoft.com/openjdk) page. After you install this version of the OpenJDK, Visual Studio will automatically pick it up. if it doesn't set it in the **Java Development Kit Location** field when configuring the Android 31 SDK in the next part.
+  You may notice that Visual Studio installs a version of Microsoft OpenJDK, however, you need to install the Microsoft OpenJDK 11, available from the [OpenJDK page](https://www.microsoft.com/openjdk). After you install this version of the OpenJDK, Visual Studio will automatically pick it up. if it doesn't set it in the **Java Development Kit Location** field when configuring the Android 31 SDK in the next part.
 
 - Android 31 SDK
 
