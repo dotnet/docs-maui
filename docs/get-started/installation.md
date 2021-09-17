@@ -10,8 +10,6 @@ To create .NET Multi-platform App UI (.NET MAUI) apps, you need the latest previ
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
-If you've used previous releases of .NET MAUI, the install and setup of .NET MAUI has been simplified. Once you've installed the required Visual Studio workloads and components, and then have created or opened a .NET MAUI app, Visual Studio will prompt you to install any missing requirements.
-
 > [!NOTE]
 > If you previously used these instructions to install .NET MAUI, note the absence of the `maui-check` tool. This tool is no longer necessary to get .NET MAUI working in Visual Studio.
 
@@ -31,7 +29,7 @@ Under the **Installation** > **Mobile development with .NET** section, check the
 
 :::image type="content" source="installation-images/vs-optional.png" alt-text="Visual Studio installer enabling the .NET MAUI optional component.":::
 
-## Additional requirements
+## More requirements
 
 .NET MAUI requires the Android 31 SDK for development. To develop .NET MAUI apps, you must install the following items:
 
@@ -41,11 +39,11 @@ Under the **Installation** > **Mobile development with .NET** section, check the
 
 - Android 31 SDK
 
-  The Android 31 SDK can be installed through Visual Studio. These steps are critical in getting Visual Studio to recognize the Andorid 
+  The Android 31 SDK can be installed through Visual Studio. These steps are critical in getting Visual Studio to recognize the Android SDK and to creating a .NET MAUI app.
 
   01. Open Visual Studio.
   01. If the **Open Recent/Get Started** window opens, choose **Continue without code**.
-  01. In the main Visual Studio window, use the menu to choose **Tools** > **Options...**. This displays the options window.
+  01. In the main Visual Studio window, use the menu to choose **Tools** > **Options...**. The options window is displayed.
   01. In the search bar, type `android`. Select the **Xamarin** > **Android Settings** category.
   01. The **Android SDK Location** should point to a default of _C:\Program Files (x86)\Android\android-sdk_. It probably has a red `X` indicating it's not configured correctly. This is normal.
   01. Select the **OK** button to close the window. Visual Studio will now try to load the Android SDKs.
@@ -60,11 +58,11 @@ Under the **Installation** > **Mobile development with .NET** section, check the
 
       :::image type="content" source="installation-images/vs-android-sdk.png" alt-text="Visual Studio android settings for .NET MAUI.":::
 
-For these changes to take affect, you may need to restart Visual Studio.
+For these changes to take effect, you may need to restart Visual Studio.
 
 ## Windows (WinUI 3)
 
-To create apps that target Windows UI Library (WinUI) 3, install the following Visual Studio extension::
+To create apps that target Windows UI Library (WinUI) 3, install the following Visual Studio extension:
 
 - [Single-project MSIX Packaging Tools](https://marketplace.visualstudio.com/items?itemName=ProjectReunion.MicrosoftSingleProjectMSIXPackagingToolsDev17)
 
