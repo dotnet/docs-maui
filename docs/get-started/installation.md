@@ -11,7 +11,7 @@ To create .NET Multi-platform App UI (.NET MAUI) apps, you need the latest previ
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
 > [!NOTE]
-> If you previously used these instructions to install .NET MAUI, note the absence of the `maui-check` tool. This tool is no longer necessary to get .NET MAUI working in Visual Studio.
+> If you previously used these instructions to install .NET MAUI, note the absence of the `maui-check` tool. This tool is no longer required to get .NET MAUI working in Visual Studio.
 
 ## Visual Studio workloads
 
@@ -50,13 +50,13 @@ Under the **Installation** > **Mobile development with .NET** section, check the
 
       :::image type="content" source="installation-images/vs-android-settings.png" alt-text="Visual Studio android settings for .NET MAUI.":::
   
-  Visual Studio should now be able to load the Android SDK Manager, with which you'll install the Android 31 SDK.
+  Visual Studio should now be able to load the Android SDK Manager. The next step is to install the Android 31 SDK:
 
   01. In the main Visual Studio window, use the menu to choose **Tools** > **Android** > **Android SDK Manager...**
   01. In the Android SDK Manager, check the **Android 12.0 API Level 31** item.
   01. Select the **Apply Changes** button.
 
-      :::image type="content" source="installation-images/vs-android-sdk.png" alt-text="Visual Studio android settings for .NET MAUI.":::
+      :::image type="content" source="installation-images/vs-android-sdk.png" alt-text="Visual Studio android SDK manager window for .NET MAUI.":::
 
 For these changes to take effect, you may need to restart Visual Studio.
 
