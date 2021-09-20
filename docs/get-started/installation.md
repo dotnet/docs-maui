@@ -37,7 +37,7 @@ Under the **Installation** > **Mobile development with .NET** section, check the
 
 - [Microsoft Build of OpenJDK](https://www.microsoft.com/openjdk)
 
-  You may notice that Visual Studio installs a version of Microsoft OpenJDK, however, you need to install the Microsoft OpenJDK 11, available from the [OpenJDK page](https://www.microsoft.com/openjdk). After you install this version of the OpenJDK, Visual Studio will automatically pick it up. If it doesn't, set the path to the OpenJDK in the **Java Development Kit Location** field, when configuring the Android 31 SDK..
+  You may notice that Visual Studio installs a version of Microsoft OpenJDK, however, you need to install the Microsoft OpenJDK 11, available from the [OpenJDK page](https://www.microsoft.com/openjdk). When installing OpenJDK 11 use the default installation configuration settings.  After you install this version of the OpenJDK, Visual Studio will automatically pick it up. If it doesn't, set the path to the OpenJDK in the **Java Development Kit Location** field, when configuring the Android 31 SDK.
 
 - Android 31 SDK
 
