@@ -19,7 +19,7 @@ Visual Studio 2022 should install .NET 6 for you, but if it's missing, download 
 
 To create .NET MAUI apps, you'll need [Visual Studio 2022 Preview 4 or later](https://visualstudio.microsoft.com/vs/preview/vs2022/). Either install Visual Studio, or modify the installation and check the following **workloads**:
 
-- ASP.NET and web development (required for Blazor Desktop and the `BlazorWebView` control)
+- ASP.NET and web development (required for .NET MAUI Blazor apps)
 - Mobile development with .NET
 - .NET Desktop Development
 - Desktop development with C++
