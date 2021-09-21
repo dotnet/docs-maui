@@ -10,16 +10,16 @@ To create .NET Multi-platform App UI (.NET MAUI) apps, you need the latest previ
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
-## Visual Studio workloads
+## Visual Studio
 
-To create .NET MAUI apps, you'll need [Visual Studio 2022 Preview 4 or later](https://visualstudio.microsoft.com/vs/preview/vs2022/). Either install Visual Studio, or modify your installation and install the following **workloads**:
+To create .NET MAUI apps, you'll need [Visual Studio 2022 Preview 4 or later](https://visualstudio.microsoft.com/vs/preview/vs2022/). Either install Visual Studio, or modify your installation, and install the following **workloads**:
 
 - Mobile development with .NET
 - ASP.NET and web development (required for .NET MAUI Blazor apps)
 
   :::image type="content" source="installation-images/vs-workloads.png" alt-text="Visual Studio workloads for .NET MAUI.":::
 
-Then, in the **Installation details** > **Mobile development with .NET** section, check the **.NET MAUI (Preview)** optional workload:
+Then, in the **Installation details** > **Mobile development with .NET** section of the installation window, check the **.NET MAUI (Preview)** optional workload:
 
 :::image type="content" source="installation-images/vs-optional.png" alt-text="Visual Studio installer enabling the .NET MAUI optional workload.":::
 
@@ -29,7 +29,7 @@ Then, in the **Installation details** > **Mobile development with .NET** section
 
 - [Microsoft Build of OpenJDK](https://www.microsoft.com/openjdk)
 
-  While Visual Studio installs a version of Microsoft OpenJDK, you need to install Microsoft OpenJDK 11, available from the [OpenJDK page](https://www.microsoft.com/openjdk). When installing OpenJDK 11, use the default installation configuration settings. After you install this version of the OpenJDK, Visual Studio should automatically use it as its Java Development Kit. However, if it doesn't, set the path to the OpenJDK install in the **Tools** > **Options** > **Xamarin** > **Android Settings** > **Java Development Kit Location** field.
+  While Visual Studio installs a version of Microsoft OpenJDK, you need to install Microsoft OpenJDK 11, available from the [OpenJDK page](https://www.microsoft.com/openjdk). When installing OpenJDK 11, use the default installation configuration settings. After installing OpenJDK 11, Visual Studio should automatically consume it. However, if it doesn't, set the path to the OpenJDK install in the **Tools** > **Options** > **Xamarin** > **Android Settings** > **Java Development Kit Location** field.
 
 - Android 12 (API 31) SDK
 
@@ -52,13 +52,12 @@ Then, in the **Installation details** > **Mobile development with .NET** section
 
   Visual Studio should now be able to load the Android SDK Manager. The next step is to install the Android 12 SDK:
 
-  01. In the main Visual Studio window, use choose the **Tools** > **Android** > **Android SDK Manager...** menu.
+  01. In the main Visual Studio window, choose the **Tools** > **Android** > **Android SDK Manager...** menu item.
   01. In the Android SDK Manager, check the **Android 12.0 API Level 31** item and click the **Apply Changes** button.
 
       :::image type="content" source="installation-images/vs-android-sdk.png" alt-text="Visual Studio android SDK manager window for .NET MAUI.":::
 
-> [!NOTE]
-> You may need to restart Visual Studio for these changes to take effect.
+  Visual Studio will then install the Android 12 SDK.
 
 ## iOS
 
