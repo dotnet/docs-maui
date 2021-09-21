@@ -52,7 +52,7 @@ This project template creates a multi-targeted .NET MAUI Blazor app that can be 
 </ContentPage>
 ```
 
-The root Blazor component for the app is in *Main.razor*. The rest of the Blazor components are in the *Pages* and *Shared* project folders, and are identical to the components used in the default Blazor template. Static web assets for the app are in the *wwwroot* folder.
+The root Blazor component for the app is in *Main.razor*, which Razor compiles into a type named `Main` in the application's root namespace. The rest of the Blazor components are in the *Pages* and *Shared* project folders, and are identical to the components used in the default Blazor web template. Static web assets for the app are in the *wwwroot* folder.
 
 ## Add a BlazorWebView to an existing app
 
