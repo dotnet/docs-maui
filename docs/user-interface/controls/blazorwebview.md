@@ -58,7 +58,7 @@ The root Blazor component for the app is in *Main.razor*, which Razor compiles i
 
 The process to add a `BlazorWebView` to an existing .NET MAUI app is as follows:
 
-1. Add the Razor SDK, `Microsoft.NET.Sdk.Razor` to your project by editing its first line:
+1. Add the Razor SDK, `Microsoft.NET.Sdk.Razor` to your project by editing its first line of the CSPROJ project file:
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Razor">
