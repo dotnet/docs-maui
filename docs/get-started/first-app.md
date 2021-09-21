@@ -53,8 +53,6 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022, 
 
 ## Build and debug iOS apps
 
-To build and debug .NET 6 iOS apps from Visual Studio 2022 you must manually install the .NET 6 SDK and iOS workloads on both Windows and macOS (your Mac build host).
-
 If, while connecting Visual Studio to your Mac through Xamarin Mac Agent (XMA), you are prompted to install a different version of the SDK, you can ignore the prompt since it refers to a legacy version of XMA.
 
 > [!NOTE]
