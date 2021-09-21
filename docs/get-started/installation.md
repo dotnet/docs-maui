@@ -78,6 +78,4 @@ To create apps that target Windows UI Library (WinUI) 3, install the following V
 > [!IMPORTANT]
 > You **must** uncomment the Windows `TargetFrameworks` from your _.csproj_ file in order to enable windows development.
 
-To use the `WebView` or `BlazorWebView` controls on Windows, install the **WebView2 Runtime**:
-
-- [Microsoft Edge WebView2 installer](https://developer.microsoft.com/microsoft-edge/webview2/)
+Continue to [Build your first App](first-app.md).
