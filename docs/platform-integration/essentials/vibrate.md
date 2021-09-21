@@ -15,8 +15,6 @@ This article describes how you can use the .NET Multi-platform App UI (.NET MAUI
 
 [!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
-### Platform specific setup
-
 To access the Vibration functionality, the following platform specific setup is required.
 
 <!-- markdownlint-disable MD025 -->
