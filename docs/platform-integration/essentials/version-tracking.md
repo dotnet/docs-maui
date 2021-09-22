@@ -1,32 +1,31 @@
 ---
-title: "Version Tracking"
-description: "The VersionTracking class in Microsoft.Maui.Essentials lets you check the applications version and build numbers along with seeing additional information such as if it is the first time the application launched ever or for the current version, get the previous build information, and more."
+title: "Version tracking"
+description: "Learn how to use the .NET MAUI VersionTracking class, which lets you check the applications version and build numbers along with seeing additional information."
 ms.date: 05/28/2019
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
 # Version Tracking
 
-The `VersionTracking` class lets you check the applications version and build numbers along with seeing additional information such as if it is the first time the application launched ever or for the current version, get the previous build information, and more.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `VersionTracking` class. This class lets you check the applications version and build numbers along with seeing additional information such as if it's the first time the application launched.
 
 ## Get started
 
 [!INCLUDE [get-started](includes/get-started.md)]
 
-## Using Version Tracking
-
 [!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
-The first time you use the `VersionTracking` class it will start tracking the current version. You must call `Track` early only in your application each time it is loaded to ensure the current version information is tracked:
+## Check the version
+
+The first time you use the `VersionTracking` class, it starts tracking the current version. You must call `Track` early in your application's lifecycle, and each time it's loaded to ensure the current version information is tracked:
 
 ```csharp
 VersionTracking.Track();
 ```
 
-After the initial `Track` is called version information can be read:
+After the initial `Track` is called, version information can be read:
 
 ```csharp
-
 // First time ever launched application
 var firstLaunch = VersionTracking.IsFirstLaunchEver;
 
@@ -61,11 +60,13 @@ var versionHistory = VersionTracking.VersionHistory;
 var buildHistory = VersionTracking.BuildHistory;
 ```
 
-## Platform implementation specifics
+## Platform differences
 
-All version information is stored using the [Preferences](preferences.md) API in Xamarin.Essentials and is stored with a filename of **[YOUR-APP-PACKAGE-ID].xamarinessentials.versiontracking** and follows the same data persistence outlined in the [Preferences](preferences.md#persistence) documentation.
+<!-- TODO: file name contains xamarin, what is it? the secure-storage article also has this./ -->
+
+All version information is stored using the [Preferences](preferences.md) API, and is stored with a filename of _[YOUR-APP-PACKAGE-ID].xamarinessentials_.versiontracking** and follows the same data persistence outlined in the [Preferences](preferences.md#persistence) documentation.
 
 ## API
 
-- [Version Tracking source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/VersionTracking)
+- [Version Tracking source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/VersionTracking)
 <!-- - [Version Tracking API documentation](xref:Microsoft.Maui.Essentials.VersionTracking)-->

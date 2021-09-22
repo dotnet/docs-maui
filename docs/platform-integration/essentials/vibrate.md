@@ -1,39 +1,50 @@
 ---
 title: "Vibration"
-description: "Describes the Vibration class in Microsoft.Maui.Essentials, which lets you start and stop the vibrate functionality for a desired amount of time."
-ms.date: 11/04/2018
+description: "Learn how to use the .NET MAUI Vibration class, which lets you start and stop the vibrate functionality for a desired amount of time."
+ms.date: 09/17/2021
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
 # Vibration
 
-The `Vibration` class lets you start and stop the vibrate functionality for a desired amount of time.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `Vibration` class. This class lets you start and stop the vibrate functionality for a desired amount of time.
 
 ## Get started
 
 [!INCLUDE [get-started](includes/get-started.md)]
 
-To access the **Vibration** functionality the following platform specific setup is required.
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
+To access the Vibration functionality, the following platform specific setup is required.
+
+<!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
 
-The Vibrate permission is required and must be configured in the Android project. This can be added in the following ways:
+The `VIBRATE` permission is required, and must be configured in the Android project. This can be added in the following ways:
 
-Open the **AssemblyInfo.cs** file under the **Properties** folder and add:
+- Add the assembly-based permission:
 
-```csharp
-[assembly: UsesPermission(Android.Manifest.Permission.Vibrate)]
-```
+  Open the _AssemblyInfo.cs_ file under the **Properties** folder and add:
 
-OR Update Android Manifest:
+  ```csharp
+  [assembly: UsesPermission(Android.Manifest.Permission.Vibrate)]
+  ```
 
-Open the **AndroidManifest.xml** file under the **Properties** folder and add the following inside of the **manifest** node.
+  \- or -
 
-```xml
-<uses-permission android:name="android.permission.VIBRATE" />
-```
+- Update the Android Manifest:
 
-Or right click on the Android project and open the project's properties. Under **Android Manifest** find the **Required permissions:** area and check the **VIBRATE** permission. This will automatically update the **AndroidManifest.xml** file.
+  Open the _AndroidManifest.xml_ file under the **Properties** folder and add the following in the `manifest` node:
+
+  ```xml
+  <uses-permission android:name="android.permission.VIBRATE" />
+  ```
+
+  \- or -
+
+- Use the Android project properties:
+
+  Right-click on the Android project and open the project's properties. Under _Android Manifest_ find the **Required permissions:** area and check the appropriate permissions. This will automatically update the _AndroidManifest.xml_ file.
 
 # [iOS](#tab/ios)
 
@@ -45,11 +56,9 @@ No additional setup required.
 
 -----
 
-## Using Vibration
+## Vibrate the device
 
-[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
-
-The Vibration functionality can be requested for a set amount of time or the default of 500 milliseconds.
+The vibration functionality can be requested for a set amount of time or the default of 500 milliseconds.
 
 ```csharp
 try
@@ -90,7 +99,11 @@ catch (Exception ex)
 
 ## Platform differences
 
-# [Android](#tab/android)
+This section describes the platform-specific differences with the vibration API.
+
+<!-- markdownlint-disable MD025 -->
+<!-- markdownlint-disable MD024 -->
+### [Android](#tab/android)
 
 No platform differences.
 
@@ -105,8 +118,10 @@ No platform differences.
 No platform differences.
 
 -----
+<!-- markdownlint-enable MD024 -->
+<!-- markdownlint-enable MD025 -->
 
 ## API
 
-- [Vibration source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Vibration)
+- [Vibration source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/Vibration)
 <!-- - [Vibration API documentation](xref:Microsoft.Maui.Essentials.Vibration)-->
