@@ -6,7 +6,7 @@ ms.date: 09/21/2021
 
 # Installation
 
-To create .NET Multi-platform App UI (.NET MAUI) apps, you need the latest preview versions of Visual Studio 2022 and .NET 6. Visual Studio 2022 should install .NET 6 for you, but if it's missing, download it from the [Download .NET 6.0 site](https://dotnet.microsoft.com/download/dotnet/6.0).
+To create .NET Multi-platform App UI (.NET MAUI) apps, you need the latest preview versions of Visual Studio 2022 and .NET 6.
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
@@ -15,13 +15,18 @@ To create .NET Multi-platform App UI (.NET MAUI) apps, you need the latest previ
 To create .NET MAUI apps, you'll need [Visual Studio 2022 Preview 4 or later](https://visualstudio.microsoft.com/vs/preview/vs2022/). Either install Visual Studio, or modify your installation, and install the following **workloads**:
 
 - Mobile development with .NET
+- .NET desktop development
 - ASP.NET and web development (required for .NET MAUI Blazor apps)
 
   :::image type="content" source="installation-images/vs-workloads.png" alt-text="Visual Studio workloads for .NET MAUI.":::
 
-Then, in the **Installation details** > **Mobile development with .NET** section of the installation window, check the **.NET MAUI (Preview)** optional workload:
+In the **Installation details** > **Mobile development with .NET** section of the installation window, check the **.NET MAUI (Preview)** optional workload:
 
-:::image type="content" source="installation-images/vs-optional.png" alt-text="Visual Studio installer enabling the .NET MAUI optional workload.":::
+:::image type="content" source="installation-images/vs-optional-mobile.png" alt-text="Visual Studio installer enabling the .NET MAUI optional workload.":::
+
+In the **Installation details** > **.NET desktop development** section of the installation window, check the **MSIX Packaging Tools** optional workload:
+
+:::image type="content" source="installation-images/vs-optional-desktop.png" alt-text="Visual Studio installer enabling the MSIX packaging tools optional workload.":::
 
 ## Android
 
@@ -59,16 +64,6 @@ Then, in the **Installation details** > **Mobile development with .NET** section
 
   Visual Studio will then install the Android 12 SDK.
 
-## iOS
-
-To build and debug .NET 6 iOS apps from Visual Studio 2022 you must also install the .NET MAUI workload on your Mac build host. On your Mac, in the .NET CLI, run the following command to install the .NET MAUI workload:
-
-```dotnetcli
-dotnet workload install maui
-```
-
-In addition, you must also install the latest beta of Xcode 13 on your Mac.
-
 ## Windows (WinUI 3)
 
 To create apps that target Windows UI Library (WinUI) 3, install the following Visual Studio extension:
@@ -78,4 +73,9 @@ To create apps that target Windows UI Library (WinUI) 3, install the following V
 > [!IMPORTANT]
 > You **must** uncomment the Windows `TargetFrameworks` from your _.csproj_ file in order to enable windows development.
 
-Continue to [Build your first App](first-app.md).
+## Next steps
+
+To learn how to create and run your first .NET MAUI app, continue to build your first app.
+
+> [!div class="nextstepaction"]
+> [Build your first app](first-app.md)
