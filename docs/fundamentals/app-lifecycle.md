@@ -1,7 +1,7 @@
 ---
 title: "App lifecycle"
 description: ".NET MAUI raises cross-platform lifecycle events when an app transitions between its different execution states."
-ms.date: 09/03/2021
+ms.date: 09/27/2021
 ---
 
 # App lifecycle
@@ -45,13 +45,63 @@ These cross-platform events map to different platform events, and the following 
 In addition to these events, the `Window` class also has the following overridable methods:
 
 - `OnCreated`, which is invoked when the `Created` event is raised.
-- `OnResumed`, which is invoked when the `Resumed` event is raised.
 - `OnActivated`, which is invoked when the `Activated` event is raised.
 - `OnDeactivated`, which is invoked when the `OnDeactivated` event is raised.
 - `OnStopped`, which is invoked when the `Stopped` event is raised.
+- `OnResumed`, which is invoked when the `Resumed` event is raised.
 - `OnDestroying`, which is invoked when the `Destroying` event is raised.
 
-<!-- Todo: add code example -->
+To override these methods, or subscribe to the `Window` lifecycle events, create a class that derives from the `Window` class:
+
+```csharp
+using Microsoft.Maui.Controls;
+
+namespace MyMauiApp
+{
+    public class MyWindow : Window
+    {
+        public MyWindow() : base()
+        {
+        }
+
+        public MyWindow(Page page) : base(page)
+        {
+        }
+
+        protected override void OnCreated()
+        {
+            // Required logic goes here
+        }
+    }
+}
+```
+
+The `Window`-derived class can then be consumed by overriding the `CreateWindow` method in your `App` class to return a `MyWindow` instance:
+
+```csharp
+using Microsoft.Maui;
+using Microsoft.Maui.Controls;
+using Application = Microsoft.Maui.Controls.Application;
+
+namespace MyMauiApp
+{
+    public partial class App : Application
+    {
+        public App()
+        {
+            InitializeComponent();
+        }
+
+        protected override Window CreateWindow(IActivationState activationState)
+        {
+            return new MyWindow(new MainPage());
+        }
+    }
+}
+```
+
+> [!WARNING]
+> A `InvalidOperationException` will be thrown if the `App.MainPage` property is set and the `CreateWindow` method is overridden to provide a page.
 
 ## Native lifecycle events
 
@@ -92,21 +142,21 @@ The following table lists the .NET MAUI delegates that are invoked in response t
 > [!IMPORTANT]
 > Each delegate has a corresponding identically named extension method, that can be called to register a handler for the delegate.
 
-To respond to an Android lifecycle delegate being invoked, call the `ConfigureLifecycleEvents` method on the `IAppHostBuilder` object in the `Configure` method of your `Startup` class. Then, on the `ILifecycleBuilder` object, call the `AddAndroid` method and specify the `Action` that registers handlers for the required delegates:
+To respond to an Android lifecycle delegate being invoked, call the `ConfigureLifecycleEvents` method on the `MauiAppBuilder` object in the `CreateMauiapp` method of your `MauiProgram` class. Then, on the `ILifecycleBuilder` object, call the `AddAndroid` method and specify the `Action` that registers handlers for the required delegates:
 
 ```csharp
 using Microsoft.Maui;
 using Microsoft.Maui.Controls.Hosting;
-using Microsoft.Maui.Hosting;
 using Microsoft.Maui.LifecycleEvents;
 
 namespace NativeLifecycleDemo
 {
-    public class Startup : IStartup
+    public static class MauiProgram
     {
-        public void Configure(IAppHostBuilder appBuilder)
+        public static MauiApp CreateMauiApp()
         {
-            appBuilder
+            var builder = MauiApp.CreateBuilder();
+            builder
                 .UseMauiApp<App>()
                 .ConfigureLifecycleEvents(events =>
                 {
@@ -123,6 +173,8 @@ namespace NativeLifecycleDemo
                         System.Diagnostics.Debug.WriteLine($"Lifecycle event: {eventName}{(type == null ? string.Empty : $" ({type})")}");
                     }
                 });
+
+            return builder.Build();
         }
     }
 }
@@ -150,21 +202,21 @@ The following table lists the .NET MAUI delegates that are invoked in response t
 > [!IMPORTANT]
 > Each delegate has a corresponding identically named extension method, that can be called to register a handler for the delegate.
 
-To respond to an iOS lifecycle delegate being invoked, call the `ConfigureLifecycleEvents` method on the `IAppHostBuilder` object in the `Configure` method of your `Startup` class. Then, on the `ILifecycleBuilder` object, call the `AddiOS` method and specify the `Action` that registers handlers for the required delegates:
+To respond to an iOS lifecycle delegate being invoked, call the `ConfigureLifecycleEvents` method on the `MauiAppBuilder` object in the `CreateMauiapp` method of your `MauiProgram` class. Then, on the `ILifecycleBuilder` object, call the `AddiOS` method and specify the `Action` that registers handlers for the required delegates:
 
 ```csharp
 using Microsoft.Maui;
 using Microsoft.Maui.Controls.Hosting;
-using Microsoft.Maui.Hosting;
 using Microsoft.Maui.LifecycleEvents;
 
 namespace NativeLifecycleDemo
 {
-    public class Startup : IStartup
+    public static class MauiProgram
     {
-        public void Configure(IAppHostBuilder appBuilder)
+        public static MauiApp CreateMauiApp()
         {
-            appBuilder
+            var builder = MauiApp.CreateBuilder();
+            builder
                 .UseMauiApp<App>()
                 .ConfigureLifecycleEvents(events =>
                 {
@@ -175,12 +227,13 @@ namespace NativeLifecycleDemo
                         .DidEnterBackground((app) => LogEvent("DidEnterBackground"))
                         .WillTerminate((app) => LogEvent("WillTerminate")));
 #endif
-
                     static void LogEvent(string eventName, string type = null)
                     {
                         System.Diagnostics.Debug.WriteLine($"Lifecycle event: {eventName}{(type == null ? string.Empty : $" ({type})")}");
                     }
                 });
+
+            return builder.Build();
         }
     }
 }
@@ -208,45 +261,46 @@ The `NativeMessage` event is specific to .NET MAUI, and enables native Windows m
 > [!IMPORTANT]
 > Each delegate has a corresponding identically named extension method, that can be called to register a handler for the delegate.
 
-To respond to a Windows lifecycle delegate being invoked, call the `ConfigureLifecycleEvents` method on the `IAppHostBuilder` object in the `Configure` method of your `Startup` class. Then, on the `ILifecycleBuilder` object, call the `AddWindows` method and specify the `Action` that call registers handlers for the required delegates:
+To respond to a Windows lifecycle delegate being invoked, call the `ConfigureLifecycleEvents` method on the `MauiAppBuilder` object in the `CreateMauiapp` method of your `MauiProgram` class. Then, on the `ILifecycleBuilder` object, call the `AddWindows` method and specify the `Action` that call registers handlers for the required delegates:
 
 ```csharp
 using Microsoft.Maui;
 using Microsoft.Maui.Controls.Hosting;
-using Microsoft.Maui.Hosting;
 using Microsoft.Maui.LifecycleEvents;
 
 namespace NativeLifecycleDemo
 {
-    public class Startup : IStartup
+    public static class MauiProgram
     {
-        public void Configure(IAppHostBuilder appBuilder)
+        public static MauiApp CreateMauiApp()
         {
-            appBuilder
-                  .UseMauiApp<App>()
-                  .ConfigureLifecycleEvents(events =>
-                  {
+            var builder = MauiApp.CreateBuilder();
+            builder
+                .UseMauiApp<App>()
+                .ConfigureLifecycleEvents(events =>
+                {
 #if WINDOWS
-                               events.AddWindows(windows => windows
-                                      .OnActivated((window, args) => LogEvent("OnActivated"))
-                                      .OnClosed((window, args) => LogEvent("OnClosed"))
-                                      .OnLaunched((window, args) => LogEvent("OnLaunched"))
-                                      .OnLaunching((window, args) => LogEvent("OnLaunching"))
-                                      .OnVisibilityChanged((window, args) => LogEvent("OnVisibilityChanged"))
-                                      .OnNativeMessage((window, args) =>
-                                      {
-                                          if (args.MessageId == Convert.ToUInt32("0x02E0"))
-                                          {
-                                              // DPI has changed
-                                          }
-                                      }));
+                   events.AddWindows(windows => windows
+                          .OnActivated((window, args) => LogEvent("OnActivated"))
+                          .OnClosed((window, args) => LogEvent("OnClosed"))
+                          .OnLaunched((window, args) => LogEvent("OnLaunched"))
+                          .OnLaunching((window, args) => LogEvent("OnLaunching"))
+                          .OnVisibilityChanged((window, args) => LogEvent("OnVisibilityChanged"))
+                          .OnNativeMessage((window, args) =>
+                          {
+                              if (args.MessageId == Convert.ToUInt32("0x02E0"))
+                              {
+                                  // DPI has changed
+                              }
+                          }));
 #endif
+                    static void LogEvent(string eventName, string type = null)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"Lifecycle event: {eventName}{(type == null ? string.Empty : $" ({type})")}");
+                    }
+                });
 
-                      static void LogEvent(string eventName, string type = null)
-                      {
-                          System.Diagnostics.Debug.WriteLine($"Lifecycle event: {eventName}{(type == null ? string.Empty : $" ({type})")}");
-                      }
-                  });
+            return builder.Build();
         }
     }
 }
