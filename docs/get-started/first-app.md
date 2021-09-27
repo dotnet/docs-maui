@@ -2,22 +2,22 @@
 title: "Build your first .NET MAUI app"
 description: "How to create and run your first .NET MAUI app."
 zone_pivot_groups: preview-platforms
-ms.date: 07/15/2021
+ms.date: 09/23/2021
 ---
 
 # Build your first app
 
 In this tutorial, you'll learn how to create and run your first .NET Multi-platform App UI (.NET MAUI) app.
 
-> [!NOTE]
-> Visual Studio for Mac support will arrive in a future release.
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
+
+Visual Studio for Mac support will arrive in a future release.
 
 ::: zone pivot="windows"
 
 ## Prerequisites
 
 - The latest preview of Visual Studio 2022, with the required workloads. For more information, see [Installation](installation.md).
-- An environment that has been configured for .NET MAUI development. For more information, see [Install latest .NET 6](installation.md#install-latest-net-6-preview).
 - A configured Android emulator. For more information about creating an Android emulator, see [Android emulator setup](/xamarin/android/get-started/installation/android-emulator/).
 
 ## Get started with Visual Studio 2022 (Preview)
@@ -52,8 +52,6 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022, 
 
 ## Build and debug iOS apps
 
-To build and debug .NET 6 iOS apps from Visual Studio 2022 you must manually install the .NET 6 SDK and iOS workloads on both Windows and macOS (your Mac build host).
-
 If, while connecting Visual Studio to your Mac through Xamarin Mac Agent (XMA), you are prompted to install a different version of the SDK, you can ignore the prompt since it refers to a legacy version of XMA.
 
 > [!NOTE]
@@ -64,7 +62,7 @@ If, while connecting Visual Studio to your Mac through Xamarin Mac Agent (XMA), 
 
 ## Prerequisites
 
-- An environment that has been configured for .NET MAUI development. For more information, see [Install latest .NET 6](installation.md#install-latest-net-6-preview).
+- An environment that has been configured for .NET MAUI development. For more information, see [Install latest .NET 6](installation.md).
 - A configured Android emulator. For more information about creating an Android emulator, see [Android emulator setup](/xamarin/android/get-started/installation/android-emulator/).
 
 ## Get started with .NET command-line interface

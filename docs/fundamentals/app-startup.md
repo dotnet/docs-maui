@@ -1,47 +1,57 @@
 ---
 title: ".NET MAUI app startup"
 description: ".NET MAUI apps are bootstrapped using HostBuilder from the Microsoft.Extensions library, enabling apps to be initialized from a single location."
-ms.date: 06/18/2021
+ms.date: 09/14/2021
 ---
 
 # App startup
 
 .NET Multi-platform App UI (.NET MAUI) apps are bootstrapped using the [.NET Generic Host](/dotnet/core/extensions/generic-host). This enables apps to be initialized from a single location, and provides the ability to configure fonts, services, and third-party libraries.
 
-Each platform has an entry point that initializes the app host builder, and then invokes the `Configure` method of the `Startup` class in your app. The `Startup` class can be considered the entry point for your app, and is responsible for creating a window that defines the initial page of your app.
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
-The `Startup` class, which must implement the `IStartup` interface, must at a minimum provide an app to run:
+Each platform entry point calls a `CreateMauiApp` method on the static `MauiProgram` class (formerly `Startup`) which creates and returns a `MauiApp`, the entry point for your app.
+
+The `MauiProgram` class must at a minimum provide an app to run:
 
 ```csharp
 using Microsoft.Maui;
+using Microsoft.Maui.Controls.Compatibility;
+using Microsoft.Maui.Controls.Hosting;
 using Microsoft.Maui.Hosting;
 
-public class Startup : IStartup
+public static class MauiProgram
 {
-    public void Configure(IAppHostBuilder appBuilder)
+    public static MauiApp CreateMauiApp()
     {
-        appBuilder
+        var builder = MauiApp.CreateBuilder();
+        builder
             .UseMauiApp<App>();
+
+        return builder.Build();
     }
 }
+
 ```
 
-The `App` class should derive from the `Application` class, and must override the `CreateWindow` method to provide a `Window` within which your app runs, and that defines the UI for the initial page of the app:
+The `App` class derives from the `Application` class:
 
 ```csharp
 using Microsoft.Maui;
 using Microsoft.Maui.Controls;
+using Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific;
+using Application = Microsoft.Maui.Controls.Application;
 
-public partial class App : Application
+public class App : Application
 {
-    protected override IWindow CreateWindow(IActivationState activationState)
+    public App()
     {
-        return new Window(new MainPage());
+        MainPage = new MainPage();
     }
 }
 ```
 
-In the example above, `MainPage` is a `ContentPage` that defines the UI for the initial page of the app.
+In the example above, `MainPage` is a `ContentPage` that defines the UI for the initial page of the app. The `Application` creates a `Window` within which to run the application and display views. You may customize this behavior by overriding the `CreateWindow` method.
 
 ## Register fonts
 
@@ -49,18 +59,23 @@ Fonts can be added to your app and referenced by filename or alias. This is acco
 
 ```csharp
 using Microsoft.Maui;
+using Microsoft.Maui.Controls.Compatibility;
+using Microsoft.Maui.Controls.Hosting;
 using Microsoft.Maui.Hosting;
 
-public class Startup : IStartup
+public static class MauiProgram
 {
-    public void Configure(IAppHostBuilder appBuilder)
+    public static MauiApp CreateMauiApp()
     {
-        appBuilder
+        var builder = MauiApp.CreateBuilder();
+        builder
             .UseMauiApp<App>()
             .ConfigureFonts(fonts =>
             {
-                fonts.AddFont("Lobster-Regular.ttf", "Lobster");
-            });            
+                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+            });
+
+        return builder.Build();
     }
 }
 ```
@@ -83,7 +98,7 @@ The font can then be consumed by referencing its name, without the file extensio
 ```xaml
 <!-- Use font name -->
 <Label Text="Hello .NET MAUI"
-       FontFamily="Lobster-Regular" />
+       FontFamily="OpenSans-Regular" />
 ```
 
 Alternatively, it can be consumed by referencing its alias:
@@ -91,13 +106,13 @@ Alternatively, it can be consumed by referencing its alias:
 ```xaml
 <!-- Use font alias -->
 <Label Text="Hello .NET MAUI"
-       FontFamily="Lobster" />
+       FontFamily="OpenSansRegular" />
 ```
 
 <!-- ## Configure Essentials
 
 ```csharp
-appBuilder
+builder
     .UseMauiApp<App>()
     .ConfigureEssentials(essentials =>
     {
@@ -113,18 +128,22 @@ To register your own handlers, call the `ConfigureMauiHandlers` method on the `I
 
 ```csharp
 using Microsoft.Maui;
+using Microsoft.Maui.Controls.Compatibility;
+using Microsoft.Maui.Controls.Hosting;
 using Microsoft.Maui.Hosting;
 
-public class Startup : IStartup
+public static class MauiProgram
 {
-    public void Configure(IAppHostBuilder appBuilder)
+    public static MauiApp CreateMauiApp()
     {
-        appBuilder
+        var builder = MauiApp.CreateBuilder();
+        builder
             .UseMauiApp<App>()        
             .ConfigureMauiHandlers(handlers =>
             {
                 handlers.AddHandler(typeof(MyEntry), typeof(MyEntryHandler));
-            });         
+            });     
+        return builder.Build();    
     }
 }
 ```
@@ -139,12 +158,14 @@ To use controls backed by .NET MAUI handlers, with specific controls backed by X
 using Microsoft.Maui;
 using Microsoft.Maui.Hosting;
 using Microsoft.Maui.Controls.Compatibility;
+using Microsoft.Maui.Controls.Hosting;
 
-public class Startup : IStartup
+public static class MauiProgram
 {
-    public void Configure(IAppHostBuilder appBuilder)
+    public static MauiApp CreateMauiApp()
     {
-        appBuilder   
+        var builder = MauiApp.CreateBuilder();
+        builder
             .UseMauiApp<App>()
             #if __ANDROID__
             .ConfigureMauiHandlers(handlers =>
@@ -162,7 +183,9 @@ public class Startup : IStartup
                 handlers.AddCompatibilityRenderer(typeof(Microsoft.Maui.Controls.Frame),
                     typeof(Microsoft.Maui.Controls.Compatibility.Platform.iOS.FrameRenderer));
             });
-            #endif            
+            #endif   
+
+        return builder.Build();         
     }
 }
 ```

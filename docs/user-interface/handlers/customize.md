@@ -6,7 +6,11 @@ ms.date: 08/13/2021
 
 # Customize controls with handlers
 
-.NET Multi-platform App UI (.NET MAUI) provides a collection of controls that can be used to display data, initiate actions, indicate activity, display collections, pick data, and more. By default, *handlers* map these cross-platform controls to native controls on each platform. For example, on iOS a .NET MAUI handler will map a .NET MAUI `Button` to an iOS `UIButton`. On Android, the `Button` will be mapped to a `AppCompatButton`:
+.NET Multi-platform App UI (.NET MAUI) provides a collection of controls that can be used to display data, initiate actions, indicate activity, display collections, pick data, and more. By default, *handlers* map these cross-platform controls to native controls on each platform.
+
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
+
+For example, on iOS a .NET MAUI handler will map a .NET MAUI `Button` to an iOS `UIButton`. On Android, the `Button` will be mapped to a `AppCompatButton`:
 
 :::image type="content" source="customize-images/button-handler.png" alt-text="Button handler architecture." border="false":::
 
@@ -54,16 +58,17 @@ The following example removes the underline from all `Entry` controls in the app
 ```csharp
 using Microsoft.Maui;
 using Microsoft.Maui.Controls;
+using Microsoft.Maui.Graphics;
 
-public partial class MainPage : ContentPage, IPage
+public partial class MainPage : ContentPage
 {
     public MainPage()
     {
         InitializeComponent();
 #if __ANDROID__
-        Handlers.EntryHandler.EntryMapper[nameof(IEntry.Background)] = (h, v) =>
+        Handlers.EntryHandler.EntryMapper[nameof(IEntry.Background)] = (handler, view) =>
         {
-            (h.NativeView as global::Android.Views.Entry).UnderlineVisible = false;
+            handler.NativeView.SetBackgroundColor(Colors.Transparent.ToNative());
         };
 #endif
     }
