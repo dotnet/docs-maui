@@ -1,7 +1,7 @@
 ---
 title: "App lifecycle"
 description: ".NET MAUI raises cross-platform lifecycle events when an app transitions between its different execution states."
-ms.date: 09/27/2021
+ms.date: 09/29/2021
 ---
 
 # App lifecycle
@@ -51,7 +51,41 @@ In addition to these events, the `Window` class also has the following overridab
 - `OnResumed`, which is invoked when the `Resumed` event is raised.
 - `OnDestroying`, which is invoked when the `Destroying` event is raised.
 
-To override these methods, or subscribe to the `Window` lifecycle events, create a class that derives from the `Window` class:
+To subscribe to the `Window` lifecycle events, override the `CreateWindow` method in your `App` class to create a `Window` instance on which you can subscribe to events:
+
+```csharp
+using Microsoft.Maui;
+using Microsoft.Maui.Controls;
+using Application = Microsoft.Maui.Controls.Application;
+
+namespace MyMauiApp
+{
+    public partial class App : Application
+    {
+        public App()
+        {
+            InitializeComponent();
+
+            MainPage = new MainPage();
+        }
+
+        protected override Window CreateWindow(IActivationState activationState)
+        {
+            Window window = base.CreateWindow(activationState);
+
+            window.Created += (s, e) =>
+            {
+                // Register services etc.
+            };
+
+            return window;
+        }
+    }
+}
+
+```
+
+Alternatively, to consume the lifecycle overrides, create a class that derives from the `Window` class
 
 ```csharp
 using Microsoft.Maui.Controls;
@@ -70,42 +104,20 @@ namespace MyMauiApp
 
         protected override void OnCreated()
         {
-            // Required logic goes here
+            // Register services etc.
         }
     }
 }
 ```
 
-The `Window`-derived class can then be consumed by overriding the `CreateWindow` method in your `App` class to return a `MyWindow` instance:
-
-```csharp
-using Microsoft.Maui;
-using Microsoft.Maui.Controls;
-using Application = Microsoft.Maui.Controls.Application;
-
-namespace MyMauiApp
-{
-    public partial class App : Application
-    {
-        public App()
-        {
-            InitializeComponent();
-        }
-
-        protected override Window CreateWindow(IActivationState activationState)
-        {
-            return new MyWindow(new MainPage());
-        }
-    }
-}
-```
+The `Window`-derived class can then be consumed by overriding the `CreateWindow` method in your `App` class to return a `MyWindow` instance.
 
 > [!WARNING]
-> A `InvalidOperationException` will be thrown if the `App.MainPage` property is set and the `CreateWindow` method is overridden to provide a page.
+> A `InvalidOperationException` will be thrown if the `App.MainPage` property is set and the `CreateWindow` method creates a `Window` object using the override that accepts a `Page` argument.
 
 ## Native lifecycle events
 
-.NET MAUI defines delegates that are invoked in response to native platform lifecycle events being raised. Handlers can be specified for these delegates, using named methods or anonymous functions, which are executed when the delegate is invoked. This mechanism enables apps to be notified when native platform lifecycle events are raised.
+.NET MAUI defines delegates that are invoked in response to native platform lifecycle events being raised. Handlers can be specified for these delegates, using named methods or anonymous functions, which are executed when the delegate is invoked. This mechanism enables apps to be notified when common native platform lifecycle events are raised.
 
 > [!IMPORTANT]
 > The `ConfigureLifecycleEvents` method is in the `Microsoft.Maui.LifecycleEvents` namespace.
@@ -261,7 +273,7 @@ The `NativeMessage` event is specific to .NET MAUI, and enables native Windows m
 > [!IMPORTANT]
 > Each delegate has a corresponding identically named extension method, that can be called to register a handler for the delegate.
 
-To respond to a Windows lifecycle delegate being invoked, call the `ConfigureLifecycleEvents` method on the `MauiAppBuilder` object in the `CreateMauiapp` method of your `MauiProgram` class. Then, on the `ILifecycleBuilder` object, call the `AddWindows` method and specify the `Action` that call registers handlers for the required delegates:
+To respond to a Windows lifecycle delegate being invoked, call the `ConfigureLifecycleEvents` method on the `MauiAppBuilder` object in the `CreateMauiapp` method of your `MauiProgram` class. Then, on the `ILifecycleBuilder` object, call the `AddWindows` method and specify the `Action` that registers handlers for the required delegates:
 
 ```csharp
 using Microsoft.Maui;
@@ -308,7 +320,85 @@ namespace NativeLifecycleDemo
 
 ## Custom lifecycle events
 
-<!-- Todo: AddEvent example and explanation
-```csharp
-events.AddEvent<Action<string>>("CustomEventName", value => LogEvent("CustomEventName"));
-```-->
+While .NET MAUI defines delegates that are invoked in response to native platform lifecycle events being raised, it only exposes a common set of native platform lifecycle events. However, it also include a mechanism, typically for library authors, that enables apps to be notified when additional native platform lifecycle events are raised. The process for accomplishing this is as follows:
+
+- Register an event handler for a native lifecycle event that isn't exposed by .NET MAUI.
+- In the event handler for the native lifecycle event, retrieve the `ILifecycleEventService` instance and call its `InvokeEvents` method, specifying the native event name as its argument.
+- In the `CreateMauiApp` method of your `MauiProgram` class, call the `ConfigureLifecycleEvents` method on the `MauiAppBuilder` object. Then, on the `ILifecycleBuilder` object, call the `AddEvent` method and specify the native event name and the `Action` that will be invoked when the native event is raised.
+
+### Example
+
+The WinUI 3 [`Window.SizeChanged`](xref:Microsoft.UI.Xaml.Window.SizeChanged) event occurs when the native app window has first rendered, or has changed its rendering size. .NET MAUI doesn't expose this native event as a lifecycle event. However, apps can receive notification when this native event is raised by using the following approach:
+
+- Register an event handler for the [`Window.SizeChanged`](xref:Microsoft.UI.Xaml.Window.SizeChanged) native lifecycle event:
+
+    ```csharp
+    #if WINDOWS
+                MauiWinUIApplication.Current.MainWindow.SizeChanged += OnSizeChanged;
+    #endif
+    ```
+
+    The `MauiWinUIApplication` type on Windows can be used to access the native app instance via its `Current` property. The `MainWindow` property exposes the native app window, which is of type `Microsoft.UI.Xaml.Window`.
+
+    > [!NOTE]
+    > The `MauiApplication` type on Android can be used to access the native app instance. Similarly, the `MauiUIApplicationDelegate` type on iOS can be used to access the native app instance.
+
+- In the event handler for the native lifecycle event, retrieve the `ILifecycleEventService` instance and call its `InvokeEvents` method, specifying the native event name as its argument:
+
+    ```csharp
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Maui;
+    using Microsoft.Maui.LifecycleEvents;
+    ...
+
+    #if WINDOWS
+            void OnSizeChanged(object sender, Microsoft.UI.Xaml.WindowSizeChangedEventArgs args)
+            {
+                ILifecycleEventService service = MauiWinUIApplication.Current.Services.GetRequiredService<ILifecycleEventService>();
+                service.InvokeEvents(nameof(Microsoft.UI.Xaml.Window.SizeChanged));
+            }
+    #endif
+    ```
+
+    > [!WARNING]
+    > Invoking an unregistered event, with the `InvokeEvents` method, doesn't throw an exception.
+
+- In the `CreateMauiApp` method of your `MauiProgram` class, call the `ConfigureLifecycleEvents` method on the `MauiAppBuilder` object. Then, on the `ILifecycleBuilder` object, call the `AddEvent` method and specify the native event name and the `Action` that will be invoked when the native event is raised:
+
+    ```csharp
+    using Microsoft.Maui;
+    using Microsoft.Maui.Controls.Hosting;
+    using Microsoft.Maui.LifecycleEvents;
+
+    namespace NativeLifecycleDemo
+    {
+        public static class MauiProgram
+        {
+            public static MauiApp CreateMauiApp()
+            {
+                var builder = MauiApp.CreateBuilder();
+                builder
+                    .UseMauiApp<App>()
+                    .ConfigureLifecycleEvents(events =>
+                    {
+    #if WINDOWS
+                        events.AddEvent(nameof(Microsoft.UI.Xaml.Window.SizeChanged), () => LogEvent("Window SizeChanged"));
+    #endif
+                        static void LogEvent(string eventName, string type = null)
+                        {
+                            System.Diagnostics.Debug.WriteLine($"Lifecycle event: {eventName}{(type == null ? string.Empty : $" ({type})")}");
+                        }
+                    });
+
+                return builder.Build();
+            }
+        }
+    }
+    ```
+
+The overall effect is that when a user changes the app window size on Windows, the action specified in the `AddEvent` method is executed.
+
+> [!NOTE]
+> The `AddEvent` method also has an overload that enables a delegate to be specified.
+
+<!-- Todo: extension methods can be created to simplify this syntax -->
