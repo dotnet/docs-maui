@@ -75,7 +75,7 @@ namespace MyMauiApp
 
             window.Created += (s, e) =>
             {
-                // Register services etc.
+                // Register services
             };
 
             return window;
@@ -104,7 +104,7 @@ namespace MyMauiApp
 
         protected override void OnCreated()
         {
-            // Register services etc.
+            // Register services
         }
     }
 }
@@ -320,11 +320,12 @@ namespace NativeLifecycleDemo
 
 ## Custom lifecycle events
 
-While .NET MAUI defines delegates that are invoked in response to native platform lifecycle events being raised, it only exposes a common set of native platform lifecycle events. However, it also include a mechanism, typically for library authors, that enables apps to be notified when additional native platform lifecycle events are raised. The process for accomplishing this is as follows:
+While .NET MAUI defines delegates that are invoked in response to native platform lifecycle events being raised, it only exposes a common set of native platform lifecycle events. However, it also includes a mechanism, typically for library authors, that enables apps to be notified when additional native platform lifecycle events are raised. The process for accomplishing this is as follows:
 
 - Register an event handler for a native lifecycle event that isn't exposed by .NET MAUI.
 - In the event handler for the native lifecycle event, retrieve the `ILifecycleEventService` instance and call its `InvokeEvents` method, specifying the native event name as its argument.
-- In the `CreateMauiApp` method of your `MauiProgram` class, call the `ConfigureLifecycleEvents` method on the `MauiAppBuilder` object. Then, on the `ILifecycleBuilder` object, call the `AddEvent` method and specify the native event name and the `Action` that will be invoked when the native event is raised.
+
+Then, apps that want to receive notification of the native lifecycle event should modify the `CreateMauiApp` method of their `MauiProgram` class to call the `ConfigureLifecycleEvents` method on the `MauiAppBuilder` object. Then, on the `ILifecycleBuilder` object, call the `AddEvent` method and specify the native event name and the `Action` that will be invoked when the native event is raised.
 
 ### Example
 
