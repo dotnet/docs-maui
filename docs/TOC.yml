@@ -26,3 +26,5 @@
       items:
         - name: Customize controls
           href: user-interface/handlers/customize.md
+        - name: Window
+          href: user-interface/controls/window.md
