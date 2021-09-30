@@ -29,7 +29,7 @@ The `Window` class defines the following cross-platform lifecycle events:
 | `Deactivated` | This event is raised when the window is no longer the focused window. However, the window might still be visible. |  |
 | `Stopped` | This event is raised when the window is no longer visible. There's no guarantee that an app will resume from this state, because it may be terminated by the operating system. | Disconnect from any long running processes, or cancel any pending requests that might consume device resources. |
 | `Resumed` | This event is raised when an app resumes after being stopped. This event won't be raised the first time your app launches, and can only be raised if the `Stopped` event has previously been raised. | Subscribe to any required events, and refresh any content that's on the visible page. |
-| `Destroying` | This event is raised when the native window is being destroyed and deallocated. The same cross-platform window might be used against a new native window when the app is re-opened. | Remove any event subscriptions that you've attached to the native window. |
+| `Destroying` | This event is raised when the native window is being destroyed and deallocated. The same cross-platform window might be used against a new native window when the app is reopened. | Remove any event subscriptions that you've attached to the native window. |
 
 These cross-platform events map to different platform events, and the following table shows this mapping:
 
@@ -144,8 +144,8 @@ The following table lists the .NET MAUI delegates that are invoked in response t
 | `OnPostResume` | `Android.App.Activity` | Invoked when activity resume is complete, after `OnResume` has been called. | Always call the super class's implementation. This is a system-only event that generally shouldn't be used by apps. |
 | `OnPressingBack` | `Android.App.Activity` | Invoked when the activity has detected a press of the back key, but hasn't handled the press. | This is a .NET MAUI custom event.  |
 | `OnRequestPermissionsResult` | `Android.App.Activity`, `int`, `string[]`, `Android.Content.PM.Permission[]` | Invoked as a callback for the result from requesting permissions. |  |
-| `OnRestart` | `Android.App.Activity` | Invoked after `OnStop` when the current activity is being re-displayed to the user (the user has navigated back to it). | Always call the super class's implementation. |
-| `OnRestoreInstanceState` | `Android.App.Activity`, `Android.OS.Bundle` | Invoked after `OnStart` when the activity is being re-initialized from a previously saved state. |  |
+| `OnRestart` | `Android.App.Activity` | Invoked after `OnStop` when the current activity is being redisplayed to the user (the user has navigated back to it). | Always call the super class's implementation. |
+| `OnRestoreInstanceState` | `Android.App.Activity`, `Android.OS.Bundle` | Invoked after `OnStart` when the activity is being reinitialized from a previously saved state. |  |
 | `OnResume` | `Android.App.Activity` | Invoked after `OnRestoreInstanceState`, `OnRestart`, or `OnPause`, to indicate that the activity is active and is ready to receive input. |  |
 | `OnSaveInstanceState` | `Android.App.Activity`, `Android.OS.Bundle` | Invoked to retrieve per-instance state from an activity being killed so that the state can be restored in `OnCreate` or `OnRestoreInstanceState`. |  |
 | `OnStart` | `Android.App.Activity` | Invoked after `OnCreate` or `OnRestart` when the activity has been stopped, but is now being displayed to the user. | Always call the super class's implementation.  |
@@ -259,12 +259,12 @@ The following table lists the .NET MAUI delegates that are invoked in response t
 
 | Delegate | Arguments | Description |
 | -- | -- | -- |
-| `OnActivated` | `Microsoft.UI.Xaml.Window`, `Microsoft.UI.Xaml.WindowActivatedEventArgs` | Invoked when the native [`Activated`](xref:Microsoft.UI.Xaml.Window.Activated) event is raised, provided that the app isn't resuming. |
+| `OnActivated` | `Microsoft.UI.Xaml.Window`, `Microsoft.UI.Xaml.WindowActivatedEventArgs` | Invoked when the native [`Activated`](xref:Microsoft.UI.Xaml.Window.Activated) event is raised, if the app isn't resuming. |
 | `OnClosed` | `Microsoft.UI.Xaml.Window`, `Microsoft.UI.Xaml.WindowEventArgs` | Invoked when the native [`Closed`](xref:Microsoft.UI.Xaml.Window.Closed) event is raised. |
 | `OnLaunched` | `Microsoft.UI.Xaml.Window`, `Microsoft.UI.Xaml.LaunchActivatedEventArgs` | Invoked by .NET MAUI's [`Application.OnLaunched`](xref:Microsoft.UI.Xaml.Application.OnLaunched*) override once the native window has been created and activated. |
 | `OnLaunching` | `Microsoft.UI.Xaml.Window`, `Microsoft.UI.Xaml.LaunchActivatedEventArgs` | Invoked by .NET MAUI's [`Application.OnLaunched`](xref:Microsoft.UI.Xaml.Application.OnLaunched*) override before the native window has been created and activated. |
 | `OnNativeMessage` | `Microsoft.UI.Xaml.Window`, `WindowsNativeMessageEventArgs` | Invoked when .NET MAUI's `NativeMessage` event is raised. |
-| `OnResumed` | `Microsoft.UI.Xaml.Window` | Invoked when the native [`Activated`](xref:Microsoft.UI.Xaml.Window.Activated) event is raised, provided that the app is resuming. |
+| `OnResumed` | `Microsoft.UI.Xaml.Window` | Invoked when the native [`Activated`](xref:Microsoft.UI.Xaml.Window.Activated) event is raised, if the app is resuming. |
 | `OnVisibilityChanged` | `Microsoft.UI.Xaml.Window`, `Microsoft.UI.Xaml.WindowVisibilityChangedEventArgs` | Invoked when the native [`VisibilityChanged`](xref:Microsoft.UI.Xaml.Window.VisibilityChanged) event is raised. |
 | `OnWindowCreated` | `Microsoft.UI.Xaml.Window` | Invoked when the native window is created for the cross-platform `Window`. |
 
@@ -310,6 +310,41 @@ namespace NativeLifecycleDemo
                     {
                         System.Diagnostics.Debug.WriteLine($"Lifecycle event: {eventName}{(type == null ? string.Empty : $" ({type})")}");
                     }
+                });
+
+            return builder.Build();
+        }
+    }
+}
+```
+
+### Retrieve the Window object
+
+Native code on each platform can retrieve the app's `Window` object from native lifecycle events, with the `GetWindow` extension method:
+
+```csharp
+using Microsoft.Maui;
+using Microsoft.Maui.Controls.Hosting;
+using Microsoft.Maui.LifecycleEvents;
+
+namespace NativeLifecycleDemo
+{
+    public static class MauiProgram
+    {
+        public static MauiApp CreateMauiApp()
+        {
+            var builder = MauiApp.CreateBuilder();
+            builder
+                .UseMauiApp<App>()
+                .ConfigureLifecycleEvents(events =>
+                {
+#if WINDOWS
+                    events.AddWindows(windows => windows
+                            .OnClosed((window, args) =>
+                            {
+                                IWindow appWindow = window.GetWindow();
+                            }));
+#endif
                 });
 
             return builder.Build();
