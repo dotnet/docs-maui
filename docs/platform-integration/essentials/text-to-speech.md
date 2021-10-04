@@ -7,7 +7,7 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 
 # Text-to-Speech
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `TextToSpeech` class. This calss enables an application to utilize the built-in text-to-speech engines to speak back text from the device. You can also use it to query for available languages.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `TextToSpeech` class. This class enables an application to utilize the built-in text-to-speech engines to speak back text from the device. You can also use it to query for available languages.
 
 ## Get started
 
@@ -27,7 +27,7 @@ public async Task SpeakNowDefaultSettings()
     // This method will block until utterance finishes.
 }
 
-public void SpeakNowDefaultSettings2()
+public void SpeakNowDefaultSettingsContinue()
 {
     TextToSpeech.SpeakAsync("Hello World").ContinueWith((t) =>
     {
@@ -134,7 +134,7 @@ public async Task SpeakNow()
 
 ## Limitations
 
-- Utterance queue is not guaranteed if called across multiple threads.
+- Utterance queueing is not guaranteed if called across multiple threads.
 - Background audio playback is not officially supported.
 
 ## API

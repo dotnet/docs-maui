@@ -19,7 +19,7 @@ When a share request is made, the device displays a share window, prompting the 
 
 [!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
-To access the **SecureStorage** functionality, the following platform-specific setup is required:
+To access the **Share** functionality, the following platform-specific setup is required:
 
 <!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
@@ -118,7 +118,7 @@ This section describes the platform-specific differences with the share API.
 <!-- markdownlint-disable MD024 -->
 # [Android](#tab/android)
 
-- The `Subject` property is used for desired subject of a message.
+- The `Subject` property is used for the desired subject of a message.
 
 # [iOS](#tab/ios)
 
@@ -126,7 +126,7 @@ This section describes the platform-specific differences with the share API.
 
 # [Windows](#tab/windows)
 
-- The `Title` property will default to application name if not set.
+- The `Title` property will default to the application name if not set.
 - The `Subject` property isn't used.
 
 -----

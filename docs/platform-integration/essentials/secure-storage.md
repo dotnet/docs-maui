@@ -24,7 +24,7 @@ To access the **SecureStorage** functionality, the following platform-specific s
 
 ### Enable or disable backup
 
-You can choose to disable Auto Backup for your entire application by setting the `android:allowBackup` setting to false in the _AndroidManifest.xml_ file. This approach is only recommended if you plan on restoring data in another way.
+You can choose to disable Auto Backup for your entire application by setting `android:allowBackup` to false in the _AndroidManifest.xml_ file. This approach is only recommended if you plan on restoring data in another way.
 
 ```xml
 <manifest ... >
@@ -61,7 +61,7 @@ Auto Backup can be configured to disable specific content from backing up. You c
 
 When developing on the **iOS simulator**, enable the **Keychain** entitlement and add a keychain access group for the application's bundle identifier.
 
-Open the _Entitlements.plist_ in the iOS project and find the **Keychain** entitlement and enable it. This will automatically add the application's identifier as a group.
+Open the _Entitlements.plist_ in the project and find the **Keychain** entitlement and enable it. This will automatically add the application's identifier as a group.
 
 In the project properties, under **iOS Bundle Signing** set the **Custom Entitlements** to **Entitlements.plist**.
 
@@ -80,7 +80,7 @@ No setup is required.
 The following code examples demonstrate how to use secure storage.
 
 > [!TIP]
-> it's possible that an exception is thrown when calling `GetAsync` or `SetAsync`. This can be caused by a device not supporting secure storage, encryption keys changing, or corruption of data. it's best to handle this by removing and adding the setting back if possible.
+> It's possible that an exception is thrown when calling `GetAsync` or `SetAsync`. This can be caused by a device not supporting secure storage, encryption keys changing, or corruption of data. it's best to handle this by removing and adding the setting back if possible.
 
 ### Write a value
 
@@ -142,7 +142,7 @@ This section describes the platform-specific differences with the secure storage
 <!-- markdownlint-disable MD024 -->
 # [Android](#tab/android)
 
-The [Android KeyStore](https://developer.android.com/training/articles/keystore.html) is used to store the cipher key used to encrypt the value before it's saved into a [Shared Preferences](https://developer.android.com/training/data-storage/shared-preferences.html) with a filename of _[YOUR-APP-PACKAGE-ID].xamarinessentials_.  The value-key used in the shared preferences file is a _MD5 Hash_ of the key passed into the `SecureStorage` APIs.
+The [Android KeyStore](https://developer.android.com/training/articles/keystore.html) is used to store the cipher key used to encrypt the value before it's saved into a [Shared Preferences](https://developer.android.com/training/data-storage/shared-preferences.html) with a filename of _[YOUR-APP-PACKAGE-ID].xamarinessentials_. The value-key used in the shared preferences file is a _MD5 Hash_ of the key passed into the `SecureStorage` APIs.
 
 - **API Level 23 and Higher**
 
@@ -156,15 +156,15 @@ The [Android KeyStore](https://developer.android.com/training/articles/keystore.
 
 # [iOS](#tab/ios)
 
-[KeyChain](xref:Security.SecKeyChain) is used to store values securely on iOS devices. The `SecRecord` used to store the value has a `Service` value set to `[YOUR-APP-BUNDLE-ID].xamarinessentials`.
+[KeyChain](xref:Security.SecKeyChain) is used to store values securely on iOS devices. The `SecRecord` used to store the value has a `Service` value set to _[YOUR-APP-BUNDLE-ID].xamarinessentials_.
 
-In some cases, KeyChain data is synchronized with iCloud, and uninstalling the application may not remove the secure values from iCloud and other devices of the user.
+In some cases, KeyChain data is synchronized with iCloud, and uninstalling the application may not remove the secure values from user devices.
 
 # [Windows](#tab/windows)
 
 [DataProtectionProvider](/uwp/api/windows.security.cryptography.dataprotection.dataprotectionprovider) is used to encrypt values securely on Windows devices.
 
-Encrypted values are stored in `ApplicationData.Current.LocalSettings`, inside a container with a name of `[YOUR-APP-ID].xamarinessentials`.
+Encrypted values are stored in `ApplicationData.Current.LocalSettings`, inside a container with a name of _[YOUR-APP-ID].xamarinessentials_.
 
 **SecureStorage** uses the [Preferences](preferences.md) API and follows the same data persistence outlined in the [Preferences](preferences.md#persistence) documentation. It also uses `LocalSettings`, which has a restriction that a setting name length may be 255 characters at the most. Each setting can be up to 8K bytes in size, and each composite setting can be up to 64K bytes in size.
 

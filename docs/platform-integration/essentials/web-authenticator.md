@@ -11,9 +11,10 @@ This article describes how you can use the .NET Multi-platform App UI (.NET MAUI
 
 ## Overview
 
-Many apps require adding user authentication, and this often means enabling your users to sign in their existing Microsoft, Facebook, Google, or Apple Sign In account.
+Many apps require adding user authentication, and this often means enabling your users to sign in to their existing Microsoft, Facebook, Google, or Apple Sign In account.
 
-[Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) provides an excellent turn-key solution to adding authentication to your app.
+> [!TIP]
+> [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) provides an excellent turn-key solution to adding authentication to your app.
 
 If you're interested in using your own web service for authentication, it's possible to use **WebAuthenticator** to implement the client-side functionality.
 
@@ -89,7 +90,7 @@ Add your app's callback URI pattern to your _Info.plist_, such as:
 </array>
 ```
 
-You'll also need to override your `AppDelegate.OpenUrl` and `AppDelegate.ContinueUserActivity` methods in the `AppDelegate.cs` file to use the essentials call first:
+You'll also need to override your `AppDelegate.OpenUrl` and `AppDelegate.ContinueUserActivity` methods in the `AppDelegate.cs` file to use the Essentials call first:
 
 ```csharp
 public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
@@ -133,7 +134,7 @@ For WinUI 3, you'll need to declare your callback URI protocol in your _Package.
 
 The API consists mainly of a single method, `AuthenticateAsync`, which takes two parameters:
 
-01. The url used to start the web browser flow.
+01. The URL used to start the web browser flow.
 01. The URI the flow is expected to ultimately call back to, that is registered to your app.
 
 The result is a `WebAuthenticatorResult`, which includes any query parameters parsed from the callback URI:
@@ -198,7 +199,7 @@ This section describes the platform-specific differences with the web authentica
 
 # [iOS](#tab/ios)
 
-Depending on the iOS version, behavior is slightly different:
+Depending on the iOS version, the behavior is slightly different:
 
 - iOS 12 or higher\
   `ASWebAuthenticationSession` is used.
@@ -219,11 +220,9 @@ On WinUI 3, the `WebAuthenticationBroker` is used, if supported, otherwise the s
 
 ## Apple Sign In
 
-According to [Apple's review guidelines](https://developer.apple.com/app-store/review/guidelines/#sign-in-with-apple), if your app uses any social login service to authenticate, it must also offer Apple Sign In as an option.
+According to [Apple's review guidelines](https://developer.apple.com/app-store/review/guidelines/#sign-in-with-apple), if your app uses any social login service to authenticate, it must also offer Apple Sign In as an option. To add Apple Sign In to your apps, first you'll need to [configure your app to use Apple Sign In](../ios/platform/ios13/sign-in.md).
 
-To add Apple Sign In to your apps, first you'll need to [configure your app to use Apple Sign In](../ios/platform/ios13/sign-in.md).
-
-For iOS 13 and higher, call the `AppleSignInAuthenticator.AuthenticateAsync()` method. This will use automatically the native Apple Sign in APIs so your users get the best experience possible on these devices. For example, You can write your shared code to use the right API at runtime:
+For iOS 13 and higher, call the `AppleSignInAuthenticator.AuthenticateAsync()` method. This will use automatically the native Apple Sign in APIs so your users get the best experience possible on these devices. For example, you can write your shared code to use the correct API at runtime:
 
 ```csharp
 var scheme = "..."; // Apple, Microsoft, Google, Facebook, etc.
