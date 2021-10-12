@@ -347,7 +347,7 @@ A TalkBack tutorial opens automatically the first time you enable TalkBack.
 
 For alternative methods of enabling TalkBack, see [Turn Talkback on or off](https://support.google.com/accessibility/android/answer/6007100?hl=en-GB&ref_topic=10601570).
 
-### iOS and macOS
+### Enable VoiceOver
 
 VoiceOver is the primary screen reader used on iOS and macOS. On iOS, VoiceOver can be enabled as follows:
 
