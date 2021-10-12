@@ -6,23 +6,25 @@ ms.date: 10/11/2021
 
 # Accessibility
 
+<!-- Sample link goes here -->
+
 Accessibility is concerned with building experiences that make your apps usable by people who use technology in a wide range of environments and approach your UI with a range of needs and experiences. For some situations, accessibility requirements are imposed by law. Regardless, it's advisable to address accessibility issues regardless of legal requirements so that your apps have the largest possible audience.
 
-[Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/standards-guidelines/wcag/) is the global accessibility standard and legal benchmark for web and mobile. These guidelines describe the various ways in which apps can be made to be more perceivable, operable, understandable, and robust, for all.
+The [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/standards-guidelines/wcag/) are the global accessibility standard and legal benchmark for web and mobile. These guidelines describe the various ways in which apps can be made more perceivable, operable, understandable, and robust, for all.
 
 Many user accessibility needs are met by assistive technology products installed by the user or by tools and settings provided by the operating system. This includes functionality such as screen readers, screen magnification, and high-contrast settings.
 
-Screen readers typically provide auditory descriptions of user controls that are displayed on the screen. These descriptions help users navigate through the application and provide references to controls, such as images, that have no input or written text. Screen readers are often controlled through gestures on the touchscreen, trackpad, or keyboard. For information about enabling screen readers, see [Enable screen readers](#enable-screen-readers).
+Screen readers typically provide auditory descriptions of controls that are displayed on the screen. These descriptions help users navigate through the app and provide references to controls, such as images, that have no input or text. Screen readers are often controlled through gestures on the touchscreen, trackpad, or keyboard. For information about enabling screen readers, see [Enable screen readers](#enable-screen-readers).
 
-Each operating system has its own screen readers with their own unique behaviors and configurations. For example, most screen readers read the text associated with a control when it receives focus, enabling users to orient themselves as they navigate through the app. However, some screen readers can also read the entire application user interface when a page appears, which enables the user to receive all of the page's available informational content before attempting to navigate it.
+Each operating system has its own screen reader with its own unique behavior and configuration. For example, most screen readers read the text associated with a control when it receives focus, enabling users to orient themselves as they navigate through the app. However, some screen readers can also read the entire app user interface when a page appears, which enables the user to receive all of the page's available informational content before attempting to navigate it.
 
-Most screen readers will automatically read any text associated with a control that receives accessibility focus. This means that controls such as `Label` or `Button` that have a `Text` property set will be accessible for the user. However, `Image`, `ImageButton`, `ActivityIndicator`, and others might not be in the accessibility tree because no text is associated with them.
+Most screen readers will automatically read any text associated with a control that receives accessibility focus. This means that controls, such as `Label` or `Button`, that have a `Text` property set will be accessible for the user. However, `Image`, `ImageButton`, `ActivityIndicator`, and others might not be in the accessibility tree because no text is associated with them.
 
-.NET Multi-platform App UI (.NET MAUI) supports two approaches to providing access to the accessibility experience of the underlying native platform. *Semantic properties* are the .NET MAUI approach to providing accessibility values in apps, and are the recommended approach. *Automation properties* are the Xamarin.Forms approach to providing accessibility values in apps, and have been superseded by semantic properties.
+.NET Multi-platform App UI (.NET MAUI) supports two approaches to providing access to the accessibility experience of the underlying native platform. *Semantic properties* are the .NET MAUI approach to providing accessibility values in apps, and are the recommended approach. *Automation properties* are the Xamarin.Forms approach to providing accessibility values in apps, and have been superseded by semantic properties. In both cases, the default accessibility order of controls is the same order in which they're listed in XAML or added to the layout. However, different layouts might have additional factors that influence accessibility order. For example, the accessibility order of `StackLayout` is also based on its orientation, and the accessibility order of `Grid` is based on its row and column arrangement.
 
 ## Semantic properties
 
-Semantic properties define information about which controls should receive accessibility focus and which text should be read aloud to the user. Semantic properties are attached properties that can be added to any element to set the underlying accessibility APIs on the native platforms.
+Semantic properties are used tp define information about which controls should receive accessibility focus and which text should be read aloud to the user. Semantic properties are attached properties that can be added to any element to set the underlying accessibility APIs on the native platforms.
 
 > [!IMPORTANT]
 > Semantic properties don't try to force equivalent behavior on each platform. Instead, they rely on the accessibility experience provided by each platform.
@@ -31,11 +33,9 @@ The `SemanticProperties` class defines the following attached properties:
 
 - `Description`, of type `string`, which represents a description that will be read aloud by the screen reader. For more information, see [Description](#description).
 - `Hint`, of type `string`, which is similar to `Description`, but provides additional context such as the purpose of a control. For more information, see [Hint](#hint).
-- `HeadingLevel`, of type `SemanticHeadingLevel`, which enables an element to be marked as a heading to organize the UI and make it easier to navigate. For more information, see [Heading level](#heading-level).
+- `HeadingLevel`, of type `SemanticHeadingLevel`, which enables an element to be marked as a heading to organize the UI and make it easier to navigate. For more information, see [Heading levels](#heading-levels).
 
 These attached properties set native accessibility values so that a screen reader can speak about the element. <!-- For more information about attached properties, see [Attached properties]().-->
-
-In .NET MAUI, the default accessibility order of controls is the same order in which they're listed in XAML or added to the layout. Different layouts might have additional factors that influence accessibility order. For example, the accessibility order of `StackLayout` is also based on its orientation, and the accessibility order of `Grid` is based on its row and column arrangement.
 
 ### Description
 
@@ -60,7 +60,7 @@ image.SetValue(SemanticProperties.DescriptionProperty, "Image of dotnet bot.");
 ```
 
 > [!WARNING]
-> Don't set the `SemanticProperties.Description` attached property on a `Label`. This will stop the `Text` property being spoken by the screen reader. Instead, set the `Text` property and the `SemanticProperties.Hint` attached property.
+> Don't set the `SemanticProperties.Description` attached property on a `Label`. This will stop the `Text` property being spoken by the screen reader. Instead, set the `Text` property, and the `SemanticProperties.Hint` attached property if required.
 
 The accessibility information for an element can also be defined on another element. For example, a `Label` next to an `Entry` can be used to describe what the `Entry` represents. This can be accomplished in XAML as follows:
 
@@ -108,7 +108,7 @@ In addition, the `SetValue` method can also be used to set the `SemanticProperti
 activityIndicator.SetValue(SemanticProperties.HintProperty, "Saving your data to the cloud.");
 ```
 
-On Android, this property behaves slightly differently depending on the control its attached to. For example, for controls without text values, such as `Switch` and `CheckBox`, the controls will display the hint with the control. However, for controls with text values, the hint is not displayed and is read after the text value.
+On Android, this property behaves slightly differently depending on the control it's attached to. For example, for controls without text values, such as `Switch` and `CheckBox`, the controls will display the hint with the control. However, for controls with text values, the hint is not displayed and is read after the text value.
 
 > [!WARNING]
 > The `SemanticProperties.Hint` property conflicts with the `Entry.Placeholder` property on Android, which both map to the same native property. Therefore, setting a different `SemanticProperties.Hint` value to the `Entry.Placeholder` value isn't recommended.
@@ -158,7 +158,7 @@ Alternatively, if the content in your `WebView` is simple, you could provide a d
 
 ## Semantic focus
 
-Controls have a `SetSemanticFocus` extension method, defined in the `Microsoft.Maui` namespace, which forces screen reader focus to a specified element. For example, given a `Label` named `label`, screen reader focus can be forced to the `Label` with the following code:
+Controls have a `SetSemanticFocus` extension method, defined in the `Microsoft.Maui` namespace, which forces screen reader focus to a specified element. For example, given a `Label` named `label`, screen reader focus can be forced to the element with the following code:
 
 ```csharp
 using Microsoft.Maui;
@@ -171,7 +171,7 @@ label.SetSemanticFocus();
 
 ## Semantic screen reader
 
-.NET MAUI Essentials includes a `SemanticScreenReader` class that enables you instruct a screen reader to announce specified text. <!-- For more information, see [SemanticScreenReader]().-->
+.NET MAUI Essentials includes a `SemanticScreenReader` class that enables you to instruct a screen reader to announce specified text. <!-- For more information, see [SemanticScreenReader]().-->
 
 <!--
 ### Semantic effects
@@ -185,7 +185,7 @@ Automation properties are attached properties that can be added to any element t
 
 The `AutomationProperties` class defines the following attached properties:
 
-- `ExcludedWithChildren`, of type `bool?`, determines if an element and its children should be excluded from the accessibility tree. For more information see [ExcludedWithChildren](#excludedwithchildren).
+- `ExcludedWithChildren`, of type `bool?`, determines if an element and its children should be excluded from the accessibility tree. For more information, see [ExcludedWithChildren](#excludedwithchildren).
 - `IsInAccessibleTree`, of type `bool?`, indicates whether the element is available in the accessibility tree. For more information, see [IsInAccessibleTree](#isinaccessibletree).
 - `Name`, of type `string`, represents a short description of the element that serves as a speakable identifier for that element. For more information, see [Name](#name).
 - `HelpText`, of type `string`, represents a longer description of the element, which can be thought of as tooltip text that's associated with the element. For more information, see [HelpText](#helptext).
@@ -196,17 +196,11 @@ These attached properties set native accessibility values so that a screen reade
 > [!IMPORTANT]
 > Using the `AutomationProperties` attached properties may impact UI Test execution on Android. The `AutomationId`, `AutomationProperties.Name` and `AutomationProperties.HelpText` properties will both set the native `ContentDescription` property, with the `AutomationProperties.Name` and `AutomationProperties.HelpText` property values taking precedence over the `AutomationId` value (if both `AutomationProperties.Name` and `AutomationProperties.HelpText` are set, the values will be concatenated). This means that any tests looking for `AutomationId` will fail if `AutomationProperties.Name` or `AutomationProperties.HelpText` are also set on the element. In this scenario, UI Tests should be altered to look for the value of `AutomationProperties.Name` or `AutomationProperties.HelpText`, or a concatenation of both.
 
-Screen readers also read different accessibility values. In the sample application:
+Different screen readers read different accessibility values. For example, on Windows, Narrator will prioritize `AutomationProperties.Name`, `AutomationProperties.LabeledBy`, and then `AutomationProperties.HelpText`. On Android, TalkBack may combine the `AutomationProperties.Name` and `AutomationProperties.HelpText` values. Therefore, it's recommended that thorough accessibility testing is carried out on each platform to ensure an optimal experience.
 
-- VoiceOver will read the `Placeholder` value of the `Entry`, followed by instructions for using the control.
-- TalkBack will read the `Placeholder` value of the `Entry`, followed by the `AutomationProperties.HelpText` value, followed by instructions for using the control.
-- Narrator will read the `AutomationProperties.LabeledBy` value of the `Entry`, followed by instructions on using the control.
+### ExcludedWithChildren
 
-In addition, Narrator will prioritize `AutomationProperties.Name`, `AutomationProperties.LabeledBy`, and then `AutomationProperties.HelpText`. On Android, TalkBack may combine the `AutomationProperties.Name` and `AutomationProperties.HelpText` values. Therefore, it's recommended that thorough accessibility testing is carried out on each platform to ensure an optimal experience.
-
-## ExcludedWithChildren
-
-The `AutomationProperties.ExcludeWithChildren` attached property, of type `bool?`, determines if an element and its children should be excluded from the accessibility tree. This enables scenarios such as displaying an `AbsoluteLayout` over another layout such as a `StackLayout`, with the `StackLayout` being excluded from the accessibility tree because it's not currently visible. It can be used from XAML as follows:
+The `AutomationProperties.ExcludeWithChildren` attached property, of type `bool?`, determines if an element and its children should be excluded from the accessibility tree. This enables scenarios such as displaying an `AbsoluteLayout` over another layout such as a `StackLayout`, with the `StackLayout` being excluded from the accessibility tree when it's not visible. It can be used from XAML as follows:
 
 ```xaml
 <StackLayout AutomationProperties.ExcludedWithChildren="true">
@@ -229,7 +223,7 @@ When this attached property is set, .NET MAUI sets the `AutomationProperties.IsI
 > [!WARNING]
 > This attached property should typically remain unset. The majority of controls should be present in the accessibility tree, and the `AutomationProperties.ExcludedWithChildren` attached property can be set in scenarios where an element and its children need removing from the accessibility tree.
 
-The `AutomationProperties.IsInAccessibleTree` attached property, of type `bool?`, determines if the element is accessible, and hence visible, to screen readers. It must be set to `true` to use the other accessibility attached properties. This can be accomplished in XAML as follows:
+The `AutomationProperties.IsInAccessibleTree` attached property, of type `bool?`, determines if the element is visible to screen readers. It must be set to `true` to use the other automation properties. This can be accomplished in XAML as follows:
 
 ```xaml
 <Entry AutomationProperties.IsInAccessibleTree="true" />
@@ -238,7 +232,7 @@ The `AutomationProperties.IsInAccessibleTree` attached property, of type `bool?`
 Alternatively, it can be set in C# as follows:
 
 ```csharp
-var entry = new Entry();
+Entry entry = new Entry();
 AutomationProperties.SetIsInAccessibleTree(entry, true);
 ```
 
@@ -257,7 +251,7 @@ The `AutomationProperties.Name` attached property value should be a short, descr
 Alternatively, it can be set in C# as follows:
 
 ```csharp
-var activityIndicator = new ActivityIndicator();
+ActivityIndicator activityIndicator = new ActivityIndicator();
 AutomationProperties.SetIsInAccessibleTree(activityIndicator, true);
 AutomationProperties.SetName(activityIndicator, "Progress indicator");
 ```
@@ -278,7 +272,7 @@ The `AutomationProperties.HelpText` attached property should be set to text that
 Alternatively, it can be set in C# as follows:
 
 ```csharp
-var button = new Button { Text = "Toggle ActivityIndicator" };
+Button button = new Button { Text = "Toggle ActivityIndicator" };
 AutomationProperties.SetIsInAccessibleTree(button, true);
 AutomationProperties.SetHelpText(button, "Tap to toggle the activity indicator");
 ```
@@ -301,14 +295,33 @@ The `AutomationProperties.LabeledBy` attached property allows another element to
 Alternatively, it can be set in C# as follows:
 
 ```csharp
-var nameLabel = new Label { Text = "Enter your name: " };
-var entry = new Entry();
+Label label = new Label { Text = "Enter your name: " };
+Entry entry = new Entry();
 AutomationProperties.SetIsInAccessibleTree(entry, true);
-AutomationProperties.SetLabeledBy(entry, nameLabel);
+AutomationProperties.SetLabeledBy(entry, label);
 ```
 
 > [!IMPORTANT]
 > The `AutomationProperties.LabeledByProperty` is not supported on iOS.
+
+## Testing accessibility
+
+.NET MAUI apps typically target multiple platforms, which means testing the accessibility features according to the platform. Follow these links to learn how to test accessibility on each platform:
+
+- [Test your app's accessibility](https://developer.android.com/guide/topics/ui/accessibility/testing) on Android.
+- [Verifying app accessibility on iOS](https://developer.apple.com/library/archive/technotes/TestingAccessibilityOfiOSApps/TestAccessibilityiniOSSimulatorwithAccessibilityInspector/TestAccessibilityiniOSSimulatorwithAccessibilityInspector.html).
+- [Testing for accessibility on OS X](https://developer.apple.com/library/archive/documentation/Accessibility/Conceptual/AccessibilityMacOSX/OSXAXTestingApps.html)
+- [Accessibility testing](/windows/apps/design/accessibility/accessibility-testing) on Windows.
+
+The following tools can assist with your accessibility testing:
+
+- [Accessibility Insights](https://accessibilityinsights.io) for Android and Windows apps.
+- [Accessibility Scanner](https://support.google.com/accessibility/android/answer/6376570) for Android apps.
+- [Accessibility Inspector](https://developer.apple.com/library/archive/documentation/Accessibility/Conceptual/AccessibilityMacOSX/OSXAXTestingApps.html) for iOS and macOS apps.
+- [Android Studio Layout Inspector](https://developer.android.com/studio/debug/layout-inspector) for Android apps.
+- [Xcode View Debugger](https://developer.apple.com/library/archive/documentation/DeveloperTools/Conceptual/debugging_with_xcode/chapters/special_debugging_workflows.html#//apple_ref/doc/uid/TP40015022-CH9-SW2) for iOS and macOS apps.
+
+However, none of these tools can perfectly emulate the screen reader user experience, and the best way to test and troubleshoot your apps for accessibility will always be manually with screen readers.
 
 ## Enable screen readers
 
@@ -327,7 +340,7 @@ TalkBack is the primary screen reader used on Android. How it's enabled depends 
 1. Turn **Use TalkBack** on.
 1. Select **OK**.
 
-> ![NOTE]
+> [!NOTE]
 > While these steps apply to most devices, you might experience some differences.
 
 A TalkBack tutorial opens automatically the first time you enable TalkBack.
@@ -360,27 +373,6 @@ For alternative methods of enabling VoiceOver, see [Turn VoiceOver on or off on 
 
 ### Enable Narrator
 
-Narrator is the primary screen reader used on Windows. Narrator can be enabled as follows:
-
-1. Press the **Windows logo key** + **Ctrl** + **Enter** together. These keys can be pressed again to stop Narrator.
+Narrator is the primary screen reader used on Windows. Narrator can be enabled by pressing the **Windows logo key** + **Ctrl** + **Enter** together. These keys can be pressed again to stop Narrator.
 
 For more information about Narrator, see [Complete guide to Narrator](https://support.microsoft.com/windows/complete-guide-to-narrator-e4397a0d-ef4f-b386-d8ae-c172f109bdb1).
-
-## Testing accessibility
-
-.NET MAUI applications typically target multiple platforms, which means testing the accessibility features according to the platform. Follow these links to learn how to test accessibility on each platform:
-
-- [Test your app's accessibility](https://developer.android.com/guide/topics/ui/accessibility/testing) on Android.
-- [Verifying app accessibility on iOS](https://developer.apple.com/library/archive/technotes/TestingAccessibilityOfiOSApps/TestAccessibilityiniOSSimulatorwithAccessibilityInspector/TestAccessibilityiniOSSimulatorwithAccessibilityInspector.html).
-- [Testing for accessibility on OS X](https://developer.apple.com/library/archive/documentation/Accessibility/Conceptual/AccessibilityMacOSX/OSXAXTestingApps.html)
-- [Accessibility testing](/windows/apps/design/accessibility/accessibility-testing) on Windows.
-
-The following tools can assist with your accessibility testing:
-
-- [Accessibility Insights](https://accessibilityinsights.io) for Android and Windows apps.
-- [Accessibility Scanner](https://support.google.com/accessibility/android/answer/6376570) for Android apps.
-- [Accessibility Inspector](https://developer.apple.com/library/archive/documentation/Accessibility/Conceptual/AccessibilityMacOSX/OSXAXTestingApps.html) for iOS and macOS apps.
-- [Android Studio Layout Inspector](https://developer.android.com/studio/debug/layout-inspector) for Android apps.
-- [Xcode View Debugger](https://developer.apple.com/library/archive/documentation/DeveloperTools/Conceptual/debugging_with_xcode/chapters/special_debugging_workflows.html#//apple_ref/doc/uid/TP40015022-CH9-SW2) for iOS and macOS apps.
-
-However, none of these tools can perfectly emulate the screen reader user experience, and the best way to test and troubleshoot your apps for accessibility will always be manually.
