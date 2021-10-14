@@ -43,14 +43,11 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022, 
 
     :::image type="content" source="first-app-images/android-emulator-button.png" alt-text="Android emulator button.":::
 
-<!-- markdownlint-disable MD032 -->
-<!-- markdownlint-disable MD046 -->
     > [!NOTE]
     > To work around current issues in Preview 5:
+    >
     > - If the **Android Emulator** button does not appear, restart Visual Studio and reload the solution.
     > - If Visual Studio builds the app and attempts to deploy it to Windows, restart Visual Studio a second time and reload the solution.  
-<!-- markdownlint-enable MD046 -->
-<!-- markdownlint-enable MD032 -->
 
 1. In the **Android SDK License Acceptance** window, press the **Accept** button:
 
