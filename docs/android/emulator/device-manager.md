@@ -81,53 +81,53 @@ Clicking **New** launches the **New Device** screen:
 
 To configure a new device in the **New Device** screen, use the following steps:
 
-1. Give the device a new name. In the following example, the new device is named **Pixel_API_27**:
+01. Give the device a new name. In the following example, the new device is named **Pixel_API_27**:
 
-   :::image type="content" source="media/device-manager/win/10-device-name-sml.png" alt-text="Naming the new device." lightbox="media/device-manager/win/10-device-name.png":::
+    :::image type="content" source="media/device-manager/win/10-device-name-sml.png" alt-text="Naming the new device." lightbox="media/device-manager/win/10-device-name.png":::
 
-2. Select a physical device to emulate by clicking the **Base Device** pull-down menu:
+01. Select a physical device to emulate by clicking the **Base Device** pull-down menu:
 
-   :::image type="content" source="media/device-manager/win/11-device-menu-sml.png" alt-text="Selecting the physical device to emulate." lightbox="media/device-manager/win/11-device-menu.png":::
+    :::image type="content" source="media/device-manager/win/11-device-menu-sml.png" alt-text="Selecting the physical device to emulate." lightbox="media/device-manager/win/11-device-menu.png":::
 
-3. Select a processor type for this virtual device by clicking the **Processor** pull-down menu. Selecting **x86** will provide the best performance because it enables the emulator to take advantage of [hardware acceleration](hardware-acceleration.md). The **x86_64** option will also make use of hardware acceleration, but it runs slightly slower than **x86** (**x86_64** is normally used for testing 64-bit apps):
+01. Select a processor type for this virtual device by clicking the **Processor** pull-down menu. Selecting **x86** will provide the best performance because it enables the emulator to take advantage of [hardware acceleration](hardware-acceleration.md). The **x86_64** option will also make use of hardware acceleration, but it runs slightly slower than **x86** (**x86_64** is normally used for testing 64-bit apps):
 
-   :::image type="content" source="media/device-manager/win/12-processor-type-menu-sml.png" alt-text="Selecting the processor type." lightbox="media/device-manager/win/12-processor-type-menu.png":::
+    :::image type="content" source="media/device-manager/win/12-processor-type-menu-sml.png" alt-text="Selecting the processor type." lightbox="media/device-manager/win/12-processor-type-menu.png":::
 
-4. Select the Android version (API level) by clicking the **OS** pull-down menu. For example, select **Oreo 8.1 - API 27** to create a virtual device for API level 27:
+01. Select the Android version (API level) by clicking the **OS** pull-down menu. For example, select **Oreo 8.1 - API 27** to create a virtual device for API level 27:
 
-   :::image type="content" source="media/device-manager/win/13-android-version-w158-sml.png" alt-text="Selecting the Android version." lightbox="media/device-manager/win/13-android-version-w158.png":::
+    :::image type="content" source="media/device-manager/win/13-android-version-w158-sml.png" alt-text="Selecting the Android version." lightbox="media/device-manager/win/13-android-version-w158.png":::
 
-   If you select an Android API level that has not yet been installed, the Device Manager will display **A new device will be downloaded** message at the bottom of the screen &ndash; it will download and install the necessary files as it creates the new virtual device:
+    If you select an Android API level that has not yet been installed, the Device Manager will display **A new device will be downloaded** message at the bottom of the screen &ndash; it will download and install the necessary files as it creates the new virtual device:
 
-   :::image type="content" source="media/device-manager/win/14-automatic-download-w158.png" alt-text="A new device image will be downloaded.":::
+    :::image type="content" source="media/device-manager/win/14-automatic-download-w158.png" alt-text="A new device image will be downloaded.":::
 
-5. If you want to include Google Play Services APIs in your virtual device, enable the **Google APIs** option. To include the Google Play Store app, enable the **Google Play Store** option:
+01. If you want to include Google Play Services APIs in your virtual device, enable the **Google APIs** option. To include the Google Play Store app, enable the **Google Play Store** option:
 
-   :::image type="content" source="media/device-manager/win/15-google-play-services-sml.png" alt-text="Selecting Google Play Services and Google Play Store." lightbox="media/device-manager/win/15-google-play-services.png":::
+    :::image type="content" source="media/device-manager/win/15-google-play-services-sml.png" alt-text="Selecting Google Play Services and Google Play Store." lightbox="media/device-manager/win/15-google-play-services.png":::
 
-   Note that Google Play Store images are available only for some base device types such as Pixel, Pixel 2, Nexus 5, and Nexus 5X.
+    Note that Google Play Store images are available only for some base device types such as Pixel, Pixel 2, Nexus 5, and Nexus 5X.
 
-6. Edit any properties that you need to modify. To make changes to properties, see [Editing Android Virtual Device Properties](device-properties.md).
+01. Edit any properties that you need to modify. To make changes to properties, see [Editing Android Virtual Device Properties](device-properties.md).
 
-7. Add any additional properties that you need to explicitly set. The **New Device** screen lists only the most commonly-modified properties, but you can click the **Add Property** pull-down menu (at the bottom) to add additional properties:
+01. Add any additional properties that you need to explicitly set. The **New Device** screen lists only the most commonly-modified properties, but you can click the **Add Property** pull-down menu (at the bottom) to add additional properties:
 
-   :::image type="content" source="media/device-manager/win/16-add-property-menu-sml.png" alt-text="Add Property pull-down menu." lightbox="media/device-manager/win/16-add-property-menu.png":::
+    :::image type="content" source="media/device-manager/win/16-add-property-menu-sml.png" alt-text="Add Property pull-down menu." lightbox="media/device-manager/win/16-add-property-menu.png":::
 
     You can also define a custom property by selecting **Custom...** at manager//the top of the property list.
 
-8. Click the **Create** button (lower right-hand corner) to create the new device:
+01. Click the **Create** button (lower right-hand corner) to create the new device:
 
-   :::image type="content" source="media/device-manager/win/17-create-button-sml.png" alt-text="Create button." lightbox="media/device-manager/win/17-create-button.png":::
+    :::image type="content" source="media/device-manager/win/17-create-button-sml.png" alt-text="Create button." lightbox="media/device-manager/win/17-create-button.png":::
 
-9. You might get a **License Acceptance** screen. Click **Accept** if you agree to the license terms:
+01. You might get a **License Acceptance** screen. Click **Accept** if you agree to the license terms:
 
-   :::image type="content" source="media/device-manager/win/18-license-acceptance-sml.png" alt-text="License Acceptance screen." lightbox="media/device-manager/win/18-license-acceptance.png":::
+    :::image type="content" source="media/device-manager/win/18-license-acceptance-sml.png" alt-text="License Acceptance screen." lightbox="media/device-manager/win/18-license-acceptance.png":::
 
-10. The Android Device Manager adds the new device to the list of installed virtual devices while displaying a **Creating** progress indicator during device creation:
+01. The Android Device Manager adds the new device to the list of installed virtual devices while displaying a **Creating** progress indicator during device creation:
 
     :::image type="content" source="media/device-manager/win/19-creating-the-device-sml.png" alt-text="Creation progress Indicator." lightbox="media/device-manager/win/19-creating-the-device.png":::
 
-11. When the creation process is complete, the new device is shown in the list of installed virtual devices with a **Start** button, ready to launch:
+01. When the creation process is complete, the new device is shown in the list of installed virtual devices with a **Start** button, ready to launch:
 
     :::image type="content" source="media/device-manager/win/20-created-device-sml.png" alt-text="Newly-created device ready to launch." lightbox="media/device-manager/win/20-created-device.png":::
 
@@ -247,49 +247,49 @@ Clicking **New Device** launches the **New Device** screen:
 
 Use the following steps to configure a new device in the **New Device** screen:
 
-1. Give the device a new name. In the following example, the new device is named **Pixel_API_27**:
+01. Give the device a new name. In the following example, the new device is named **Pixel_API_27**:
 
-   :::image type="content" source="media/device-manager/mac/11-device-name-m76-sml.png" alt-text="Naming the new device." lightbox="media/device-manager/mac/11-device-name-m76.png":::
+    :::image type="content" source="media/device-manager/mac/11-device-name-m76-sml.png" alt-text="Naming the new device." lightbox="media/device-manager/mac/11-device-name-m76.png":::
 
-2. Select a physical device to emulate by clicking the **Base Device** pull-down menu:
+01. Select a physical device to emulate by clicking the **Base Device** pull-down menu:
 
-   :::image type="content" source="media/device-manager/mac/12-device-menu-m76-sml.png" alt-text="Selecting the physical device to emulate." lightbox="media/device-manager/mac/12-device-menu-m76.png":::
+    :::image type="content" source="media/device-manager/mac/12-device-menu-m76-sml.png" alt-text="Selecting the physical device to emulate." lightbox="media/device-manager/mac/12-device-menu-m76.png":::
 
-3. Select a processor type for this virtual device by clicking the **Processor** pull-down menu. Selecting **x86** will provide the best performance because it enables the emulator to take advantage of [hardware acceleration](hardware-acceleration.md). The **x86_64** option will also make use of hardware acceleration, but it runs slightly slower than **x86** (**x86_64** is normally used for testing 64-bit apps):
+01. Select a processor type for this virtual device by clicking the **Processor** pull-down menu. Selecting **x86** will provide the best performance because it enables the emulator to take advantage of [hardware acceleration](hardware-acceleration.md). The **x86_64** option will also make use of hardware acceleration, but it runs slightly slower than **x86** (**x86_64** is normally used for testing 64-bit apps):
 
-   :::image type="content" source="media/device-manager/mac/13-processor-type-menu-m76-sml.png" alt-text="Selecting the processor type." lightbox="media/device-manager/mac/13-processor-type-menu-m76.png":::
+    :::image type="content" source="media/device-manager/mac/13-processor-type-menu-m76-sml.png" alt-text="Selecting the processor type." lightbox="media/device-manager/mac/13-processor-type-menu-m76.png":::
 
-4. Select the Android version (API level) by clicking the **OS** pull-down menu. For example, select **Oreo 8.1 - API 27** to create a virtual device for API level 27:
+01. Select the Android version (API level) by clicking the **OS** pull-down menu. For example, select **Oreo 8.1 - API 27** to create a virtual device for API level 27:
 
-   :::image type="content" source="media/device-manager/mac/14-android-screenshot-m76-sml.png" alt-text="Selecting the Android version." lightbox="media/device-manager/mac/14-android-screenshot-m76.png":::
+    :::image type="content" source="media/device-manager/mac/14-android-screenshot-m76-sml.png" alt-text="Selecting the Android version." lightbox="media/device-manager/mac/14-android-screenshot-m76.png":::
 
-   If you select an Android API level that has not yet been installed, the Device Manager will display **A new device will be downloaded** message at the bottom of the screen &ndash; it will download and install the necessary files as it creates the new virtual device:
+    If you select an Android API level that has not yet been installed, the Device Manager will display **A new device will be downloaded** message at the bottom of the screen &ndash; it will download and install the necessary files as it creates the new virtual device:
 
-   :::image type="content" source="media/device-manager/mac/15-automatic-download-m76.png" alt-text="A new device image will be downloaded.":::
+    :::image type="content" source="media/device-manager/mac/15-automatic-download-m76.png" alt-text="A new device image will be downloaded.":::
 
-5. If you want to include Google Play Services APIs in your virtual device, enable the **Google APIs** option. To include the Google Play Store app, enable the **Google Play Store** option:
+01. If you want to include Google Play Services APIs in your virtual device, enable the **Google APIs** option. To include the Google Play Store app, enable the **Google Play Store** option:
 
-   :::image type="content" source="media/device-manager/mac/16-google-play-services-m76-sml.png" alt-text="Selecting Google Play Services and Google Play Store." lightbox="media/device-manager/mac/16-google-play-services-m76.png":::
+    :::image type="content" source="media/device-manager/mac/16-google-play-services-m76-sml.png" alt-text="Selecting Google Play Services and Google Play Store." lightbox="media/device-manager/mac/16-google-play-services-m76.png":::
 
-   Note that Google Play Store images are available only for some base device types such as Pixel, Pixel 2, Nexus 5, and Nexus 5X.
+    Note that Google Play Store images are available only for some base device types such as Pixel, Pixel 2, Nexus 5, and Nexus 5X.
 
-6. Edit any properties that you need to modify. To make changes to properties, see [Editing Android Virtual Device Properties](device-properties.md).
+01. Edit any properties that you need to modify. To make changes to properties, see [Editing Android Virtual Device Properties](device-properties.md).
 
-7. Add any additional properties that you need to explicitly set. The **New Device** screen lists only the most commonly-modified properties, but you can click the **Add Property** pull-down menu (at the bottom) to add additional properties:
+01. Add any additional properties that you need to explicitly set. The **New Device** screen lists only the most commonly-modified properties, but you can click the **Add Property** pull-down menu (at the bottom) to add additional properties:
 
-   :::image type="content" source="media/device-manager/mac/17-add-property-menu-m76-sml.png" alt-text="Add Property pull-down menu." lightbox="media/device-manager/mac/17-add-property-menu-m76.png":::
+    :::image type="content" source="media/device-manager/mac/17-add-property-menu-m76-sml.png" alt-text="Add Property pull-down menu." lightbox="media/device-manager/mac/17-add-property-menu-m76.png":::
 
-   You can also define a custom property by clicking **Custom...** at the top of this property list.
+    You can also define a custom property by clicking **Custom...** at the top of this property list.
 
-8. Click the **Create** button (lower right-hand corner) to create the new device:
+01. Click the **Create** button (lower right-hand corner) to create the new device:
 
-   :::image type="content" source="media/device-manager/mac/18-create-button-m76.png" alt-text="Create button.":::
+    :::image type="content" source="media/device-manager/mac/18-create-button-m76.png" alt-text="Create button.":::
 
-9. The Android Device Manager adds the new device to the list of installed virtual devices while displaying a **Creating** progress indicator during device creation:
+01. The Android Device Manager adds the new device to the list of installed virtual devices while displaying a **Creating** progress indicator during device creation:
 
-   :::image type="content" source="media/device-manager/mac/19-creating-the-device-m76-sml.png" alt-text="Creation progress indicator." lightbox="media/device-manager/mac/19-creating-the-device-m76.png":::
+    :::image type="content" source="media/device-manager/mac/19-creating-the-device-m76-sml.png" alt-text="Creation progress indicator." lightbox="media/device-manager/mac/19-creating-the-device-m76.png":::
 
-10. When the creation process is complete, the new device is shown in the list of installed virtual devices with a **Start** button, ready to launch:
+01. When the creation process is complete, the new device is shown in the list of installed virtual devices with a **Start** button, ready to launch:
 
     :::image type="content" source="media/device-manager/mac/20-created-device-m76-sml.png" alt-text="Newly-created device ready to launch." lightbox="media/device-manager/mac/20-created-device-m76.png":::
 
@@ -361,21 +361,21 @@ If the SDK is not installed at this location, you may get this error when you la
 
 To work around this problem, use the following steps:
 
-1. From the Windows desktop, navigate to **C:\\Users\\*username*\\AppData\\Roaming\\XamarinDeviceManager**:
+01. From the Windows desktop, navigate to **C:\\Users\\*username*\\AppData\\Roaming\\XamarinDeviceManager**:
 
-   :::image type="content" source="media/device-manager/win/30-log-files.png" alt-text="Android Device Manager log file location.":::
+    :::image type="content" source="media/device-manager/win/30-log-files.png" alt-text="Android Device Manager log file location.":::
 
-2. Double-click to open one of the log files and locate the **Config file path**. For example:
+01. Double-click to open one of the log files and locate the **Config file path**. For example:
 
-   :::image type="content" source="media/device-manager/win/31-config-file-path-sml.png" alt-text="Config file path in log file." lightbox="media/device-manager/win/31-config-file-path.png":::
+    :::image type="content" source="media/device-manager/win/31-config-file-path-sml.png" alt-text="Config file path in log file." lightbox="media/device-manager/win/31-config-file-path.png":::
 
-3. Navigate to this location and double-click **user.config** to open it.
+01. Navigate to this location and double-click **user.config** to open it.
 
-4. In **user.config**, locate the `<UserSettings>` element and add an **AndroidSdkPath** attribute to it. Set this attribute to the path where the Android SDK is installed on your computer and save the file. For example, `<UserSettings>` would look like the following if the Android SDK was installed at **C:\\Programs\\Android\\SDK**:
+01. In **user.config**, locate the `<UserSettings>` element and add an **AndroidSdkPath** attribute to it. Set this attribute to the path where the Android SDK is installed on your computer and save the file. For example, `<UserSettings>` would look like the following if the Android SDK was installed at **C:\\Programs\\Android\\SDK**:
 
-   ```xml
-   <UserSettings SdkLibLastWriteTimeUtcTicks="636409365200000000" AndroidSdkPath="C:ProgramsAndroidSDK" />
-   ```
+    ```xml
+    <UserSettings SdkLibLastWriteTimeUtcTicks="636409365200000000" AndroidSdkPath="C:ProgramsAndroidSDK" />
+    ```
 
 After making this change to **user.config**, you should be able to launch the Android Device Manager.
 
@@ -397,17 +397,17 @@ If you have an AVD configured for Android Oreo with simulated Wi-Fi access, rest
 
 To work around this problem,
 
-1. Select the AVD in the Android Device Manager.
+01. Select the AVD in the Android Device Manager.
 
-2. From the additional options menu, click **Reveal in Explorer**.
+01. From the additional options menu, click **Reveal in Explorer**.
 
-3. Navigate to **snapshots > default_boot**.
+01. Navigate to **snapshots > default_boot**.
 
-4. Delete the **snapshot.pb** file:
+01. Delete the **snapshot.pb** file:
 
-   :::image type="content" source="media/device-manager/win/33-delete-snapshot.png" alt-text="Location of the snapshot.pb file.":::
+    :::image type="content" source="media/device-manager/win/33-delete-snapshot.png" alt-text="Location of the snapshot.pb file.":::
 
-5. Restart the AVD.
+01. Restart the AVD.
 
 After these changes are made, the AVD will restart in a state that allows Wi-Fi to work again.
 
@@ -431,17 +431,17 @@ If you have an AVD configured for Android Oreo with simulated Wi-Fi access, rest
 
 To work around this problem,
 
-1. Select the AVD in the Android Device Manager.
+01. Select the AVD in the Android Device Manager.
 
-2. From the additional options menu, click **Reveal in Finder**.
+01. From the additional options menu, click **Reveal in Finder**.
 
-3. Navigate to **snapshots > default_boot**.
+01. Navigate to **snapshots > default_boot**.
 
-4. Delete the **snapshot.pb** file:
+01. Delete the **snapshot.pb** file:
 
-   :::image type="content" source="media/device-manager/mac/30-delete-snapshot-sml.png" alt-text="Location of the snapshot.pb file." lightbox="media/device-manager/mac/30-delete-snapshot.png":::
+    :::image type="content" source="media/device-manager/mac/30-delete-snapshot-sml.png" alt-text="Location of the snapshot.pb file." lightbox="media/device-manager/mac/30-delete-snapshot.png":::
 
-5. Restart the AVD.
+01. Restart the AVD.
 
 After these changes are made, the AVD will restart in a state that allows Wi-Fi to work again.
 
