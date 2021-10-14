@@ -48,7 +48,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022, 
     >
     > If Visual Studio builds the app and attempts to deploy it to Windows, restart Visual Studio a second time and reload the solution.
 
-1. In the **Android SDK - License Acceptance** window, press the **Accept** button:
+1. In the **Android SDK License Acceptance** window, press the **Accept** button:
 
     :::image type="content" source="first-app-images/android-sdk-license.png" alt-text="Android SDK License Acceptance window.":::
 
