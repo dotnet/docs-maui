@@ -10,7 +10,7 @@ ms.date: 03/31/2021
 
 This article explains how to use the Android Device Manager to create and configure Android Virtual Devices (AVDs) that emulate physical Android devices. You can use these virtual devices to run and test your app without having to rely on a physical device.
 
-After you have verified that hardware acceleration is enabled, as described in [Hardware Acceleration for Emulator Performance](hardware-acceleration.md), the next step is to use the _Android Device Manager_ to create virtual devices that you can use to test and debug your app.
+After you have verified that hardware acceleration is enabled, as described in [Hardware Acceleration for Emulator Performance](hardware-acceleration.md), the next step is to use the _Android Device Manager_ (AVD) to create virtual devices that you can use to test and debug your app.
 
 ::: zone pivot="windows"
 
@@ -20,15 +20,13 @@ This article explains how to use the Android Device Manager to create, duplicate
 
 :::image type="content" source="media/device-manager/win/01-devices-dialog-sml.png" alt-text="Screenshot of the Android Device Manager in the Devices tab." lightbox="media/device-manager/win/01-devices-dialog.png":::
 
-You use the Android Device Manager to create and configure _Android Virtual Devices_ (AVDs) that run in the [Android Emulator](~/android/deploy-test/debugging/debug-on-emulator.md). Each AVD is an emulator configuration that simulates a physical Android device. This makes it possible to run and test your app in a variety of configurations that simulate different physical Android devices.
+You use the Android Device Manager to create and configure AVDs that run in the [Android Emulator](~/android/deploy-test/debugging/debug-on-emulator.md). Each AVD is an emulator configuration that simulates a physical Android device. This makes it possible to run and test your app in a variety of configurations that simulate different physical Android devices.
 
 ## Requirements
 
 To use the Android Device Manager, you will need the following items:
 
-- Visual Studio 2019 Community, Professional, or Enterprise.
-
-- OR Visual Studio 2017 version 15.8 or later is required. Visual Studio Community, Professional, and Enterprise editions are supported.
+- Visual Studio 2022 version 17.1 Preview. Visual Studio Community, Professional, and Enterprise editions are supported.
 
 - Visual Studio Tools for Xamarin version 4.9 or later.
 
