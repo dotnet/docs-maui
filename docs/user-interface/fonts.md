@@ -1,22 +1,102 @@
 ---
-title: "Fonts in .NET MAUI"
-description: "This article explains how to specify font information on controls that display text in .NET MAUI applications."
+title: "Fonts"
+description: "This article explains how to specify font information on controls that display text in .NET MAUI apps."
 author: davidbritch
 ms.author: dabritch
-ms.date: 11/04/2020
+ms.date: 10/19/2021
 ---
 
-# Fonts in .NET MAUI
+# Fonts
 
-[![Download Sample.](~/media/shared/download.png) Download the sample](/samples/xamarin/xamarin-forms-samples/workingwithfonts)
+<!-- Sample link (if any), goes here -->
 
-By default, .NET MAUI uses a system font defined by each platform. However, controls that display text define properties that you can use to change this font:
+By default, .NET Multi-platform App UI (.NET MAUI) apps use the Open Sans font on each platform. However, this default can be changed, and additional fonts can be registered for use in an app.
 
+All controls that display text define properties that can be set to change font appearance:
+
+- `FontFamily`, of type `string`.
 - `FontAttributes`, of type `FontAttributes`, which is an enumeration with three members: `None`, `Bold`, and `Italic`. The default value of this property is `None`.
 - `FontSize`, of type `double`.
-- `FontFamily`, of type `string`.
+- `FontAutoScalingEnabled`, of type `bool`, which defines whether an app's UI reflects text scaling preferences set in the operating system. The default value of this property is `true`.
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+
+## Register fonts
+
+True type format (TTF) and open type font (OTF) fonts can be added to your app and referenced by filename or alias, with registration being performed in the `CreateMauiApp` method in the `MauiProgram` class. This is accomplished by invoking the `ConfigureFonts` method on the `MauiAppBuilder` object. Then, on the `IFontCollection` object, call the `AddFont` method to add the required font to your app:
+
+```csharp
+using Microsoft.Maui.Controls.Hosting;
+using Microsoft.Maui.Hosting;
+
+namespace MyMauiApp
+{
+    public static class MauiProgram
+    {
+        public static MauiApp CreateMauiApp()
+        {
+            var builder = MauiApp.CreateBuilder();
+            builder
+                .UseMauiApp<App>()
+                .ConfigureFonts(fonts =>
+                {
+                    fonts.AddFont("Lobster-Regular.ttf", "Lobster");
+                });
+
+            return builder.Build();
+        }
+    }  
+}
+```
+
+In the example above, the first argument to the `AddFont` method is the font filename, while the second argument represents an optional alias by which the font can be referenced when consuming it.
+
+Any fonts consumed by an app must be placed in the **Resources** > **Fonts** folder of the app's project, with a build action of **MauiFont**. This creates a corresponding item in the app's .csproj file. Alternatively, all fonts in the app can be registered by using a wildcard in the .csproj file:
+
+```xml
+<ItemGroup>
+   <MauiFont Include="Resources\Fonts\*" />
+</ItemGroup>
+```
+
+> [!NOTE]
+> The `*` wildcard character indicates that all the files within the folder will be treated as being font files. In addition, if you want to include files from sub-folders too, then configure it using additional wildcard characters, for example, `Resources\Fonts\**\*`.
+
+## Consume fonts
+
+Registered fonts can be consumed by setting the `FontFamily` property of a control that displays text to the font name, without the file extension:
+
+```xaml
+<!-- Use font name -->
+<Label Text="Hello .NET MAUI"
+       FontFamily="Lobster-Regular" />
+```
+
+Alternatively, it can be consumed by referencing its alias:
+
+```xaml
+<!-- Use font alias -->
+<Label Text="Hello .NET MAUI"
+       FontFamily="Lobster" />
+```
+
+The equivalent C# code is:
+
+```csharp
+// Use font name
+Label label1 = new Label
+{
+    Text = "Hello .NET MAUI!",
+    FontFamily = "Lobster-Regular"
+};
+
+// Use font alias
+Label label2 = new Label
+{
+    Text = "Hello .NET MAUI!",
+    FontFamily = "Lobster"
+};
+```
 
 ## Set font attributes
 
@@ -72,6 +152,8 @@ Label label2 = new Label
 };
 ```
 
+<!-- Todo: Check Device.GetNamedSize survives the cull -->
+
 Alternatively, the `Device.GetNamedSize` method has an override that specifies the second argument as an `Element`:
 
 ```csharp
@@ -83,74 +165,26 @@ myLabel.FontSize = Device.GetNamedSize(NamedSize.Large, myLabel);
 ```
 
 > [!NOTE]
-> The `FontSize` value, when specified as a `double`, is measured in device-independent units. For more information, see [Units of Measurement](~/xamarin-forms/user-interface/controls/common-properties.md#units-of-measurement).
+> The `FontSize` value, when specified as a `double`, is measured in device-independent units. <!--For more information, see [Units of Measurement](~/xamarin-forms/user-interface/controls/common-properties.md#units-of-measurement).-->
 
 For more information about named font sizes, see [Understand named font sizes](#understand-named-font-sizes).
 
-## Set the font family
+## Disable font auto scaling
 
-Controls that display text can set the `FontFamily` property to a font family name, such as "Times Roman". However, this will only work if that font family is supported on the particular platform.
+All controls that display text have font scaling enabled by default, which means that an app's UI reflects text scaling preferences set in the operating system. However, this behavior can be disabled by setting the `FontAutoScalingEnabled` property on text-based control's to `false`:
 
-There are a number of techniques that can be used to attempt to derive the fonts that are available on a platform. However, the presence of a TTF (True Type Format) font file does not necessarily imply a font family, and TTFs are often included that are not intended for use in applications. In addition, the fonts installed on a platform can change with platform version. Therefore, the most reliable approach for specifying a font family is to use a custom font.
-
-Custom fonts can be added to your .NET MAUI shared project and consumed by platform projects without any additional work. The process for accomplishing this is as follows:
-
-1. Add the font to your .NET MAUI shared project as an embedded resource (**Build Action: EmbeddedResource**).
-1. Register the font file with the assembly, in a file such as **AssemblyInfo.cs**, using the `ExportFont` attribute. An optional alias can also be specified.
-
-The following example shows the Lobster-Regular font being registered with the assembly, along with an alias:
-
-```csharp
-using Xamarin.Forms;
-
-[assembly: ExportFont("Lobster-Regular.ttf", Alias = "Lobster")]
+```xaml
+<Label Text="Scaling disabled"
+       FontSize="18"
+       FontAutoScalingEnabled="False" />
 ```
+
+This approach is useful when you want to guarantee that text is displayed at a specific size.
 
 > [!NOTE]
-> The font can reside in any folder in the shared project, without having to specify the folder name when registering the font with the assembly.
->
-> On Windows, the font file name and font name may be different. To discover the font name on Windows, right-click the .ttf file and select **Preview**. The font name can then be determined from the preview window.
+> Font auto scaling also works with font icons. For more information, see [Display font icons](#display-font-icons).
 
-The font can then be consumed on each platform by referencing its name, without the file extension:
-
-```xaml
-<!-- Use font name -->
-<Label Text="Hello .NET MAUI"
-       FontFamily="Lobster-Regular" />
-```
-
-Alternatively, it can be consumed on each platform by referencing its alias:
-
-```xaml
-<!-- Use font alias -->
-<Label Text="Hello .NET MAUI"
-       FontFamily="Lobster" />
-```
-
-The equivalent C# code is:
-
-```csharp
-// Use font name
-Label label1 = new Label
-{
-    Text = "Hello .NET MAUI!",
-    FontFamily = "Lobster-Regular"
-};
-
-// Use font alias
-Label label2 = new Label
-{
-    Text = "Hello .NET MAUI!",
-    FontFamily = "Lobster"
-};
-```
-
-The following screenshot shows the custom font:
-
-[![Custom font.](fonts-images/custom-sml.png "Custom Fonts Example."](fonts-images/custom.png#lightbox "Custom Fonts Example")
-
-> [!IMPORTANT]
-> For release builds on Windows, ensure the assembly containing the custom font is passed as an argument in the `Forms.Init` method call. For more information, see [Troubleshooting](~/xamarin-forms/platform/windows/installation/index.md#troubleshooting).
+<!-- Todo: Breaking change on iOS because all numbered fonts will scale. Disable by implementing IFontManager that inherits from MAUI, and explicitly implement GetFont to influence the font that's returned. -->
 
 ## Set font properties per platform
 
@@ -169,7 +203,9 @@ The `OnPlatform` and `On` classes can be used in XAML to set font properties per
 </Label>
 ```
 
-The [`Device.RuntimePlatform`](~/xamarin-forms/platform/device.md#provide-platform-specific-values) property can be used in code to set font properties per platform
+<!-- Todo: Device.RuntimePlatform will most likely be deprecated in favour of Essentials -->
+
+The `Device.RuntimePlatform` property can be used in code to set font properties per platform
 
 ```csharp
 Label label = new Label
@@ -183,9 +219,11 @@ label.FontFamily = Device.RuntimePlatform == Device.iOS ? "MarkerFelt-Thin" :
    Device.RuntimePlatform == Device.Android ? "Lobster-Regular" : "ArimaMadurai-Black";
 ```
 
-For more information about providing platform-specific values, see [Provide platform-specific values](~/xamarin-forms/platform/device.md#provide-platform-specific-values). For information about the `OnPlatform` markup extension, see [OnPlatform markup extension](~/xamarin-forms/xaml/markup-extensions/consuming.md#onplatform-markup-extension).
+<!-- For more information about providing platform-specific values, see [Provide platform-specific values](~/xamarin-forms/platform/device.md#provide-platform-specific-values). For information about the `OnPlatform` markup extension, see [OnPlatform markup extension](~/xamarin-forms/xaml/markup-extensions/consuming.md#onplatform-markup-extension). -->
 
 ## Understand named font sizes
+
+<!-- Todo: Confirm that these sizes are still valid -->
 
 .NET MAUI defines fields in the `NamedSize` enumeration that represent specific font sizes. The following table shows the `NamedSize` members, and their default sizes on iOS, Android, and the Universal Windows Platform (UWP):
 
@@ -202,14 +240,14 @@ For more information about providing platform-specific values, see [Provide plat
 | `Subtitle` | 22 | 16 | 20 |
 | `Caption` | 12 | 12 | 12 |
 
-The size values are measured in device-independent units. For more information, see [Units of Measurement](~/xamarin-forms/user-interface/controls/common-properties.md#units-of-measurement).
+The size values are measured in device-independent units. <!-- For more information, see [Units of Measurement](~/xamarin-forms/user-interface/controls/common-properties.md#units-of-measurement). -->
 
 > [!NOTE]
-> On iOS and Android, named font sizes will autoscale based on operating system accessibility options. This behavior can be disabled on iOS with a platform-specific. For more information, see [Accessibility Scaling for Named Font Sizes on iOS](~/xamarin-forms/platform/ios/named-font-size-scaling.md).
+> On iOS and Android, named font sizes will autoscale based on operating system accessibility options. This behavior can be disabled on iOS with a platform-specific. <!-- For more information, see [Accessibility Scaling for Named Font Sizes on iOS](~/xamarin-forms/platform/ios/named-font-size-scaling.md). -->
 
 ## Display font icons
 
-Font icons can be displayed by .NET MAUI applications by specifying the font icon data in a `FontImageSource` object. This class, which derives from the `ImageSource` class, has the following properties:
+Font icons can be displayed by .NET MAUI apps by specifying the font icon data in a `FontImageSource` object. This class, which derives from the `ImageSource` class, has the following properties:
 
 - `Glyph` – the unicode character value of the font icon, specified as a `string`.
 - `Size` – a `double` value that indicates the size, in device-independent units, of the rendered font icon. The default value is 30. In addition, this property can be set to a named font size.
@@ -245,6 +283,6 @@ image.Source = new FontImageSource
 };
 ```
 
-The following screenshot, from the [Bindable Layouts](/samples/xamarin/xamarin-forms-samples/userinterface-bindablelayouts) sample, show several font icons being displayed by a bindable layout:
+The following screenshot shows several font icons being displayed:
 
-![Screenshot of font icons being displayed.](fonts-images/font-image-source.png "Font icons being displayed in an Image view")
+:::image type="content" source="fonts-images/font-image-source.png" alt-text="Screenshot of three font icons.":::
