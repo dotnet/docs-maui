@@ -190,6 +190,8 @@ This approach is useful when you want to guarantee that text is displayed at a s
 
 The `OnPlatform` and `On` classes can be used in XAML to set font properties per platform. The example below sets different font families and sizes:
 
+<!-- Todo: UWP refs in code below -->
+
 ```xaml
 <Label Text="Different font properties on different platforms"
        FontSize="{OnPlatform iOS=20, Android=Medium, UWP=24}">
@@ -225,9 +227,9 @@ label.FontFamily = Device.RuntimePlatform == Device.iOS ? "MarkerFelt-Thin" :
 
 <!-- Todo: Confirm that these sizes are still valid -->
 
-.NET MAUI defines fields in the `NamedSize` enumeration that represent specific font sizes. The following table shows the `NamedSize` members, and their default sizes on iOS, Android, and the Universal Windows Platform (UWP):
+.NET MAUI defines fields in the `NamedSize` enumeration that represent specific font sizes. The following table shows the `NamedSize` members, and their default sizes on iOS, Android, and Windows:
 
-| Member | iOS | Android | UWP |
+| Member | iOS | Android | Windows |
 | --- | --- | --- | --- |
 | `Default` | 17 | 14 | 14 |
 | `Micro` | 12 | 10 | 15.667 |
