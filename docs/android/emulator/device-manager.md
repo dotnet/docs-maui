@@ -1,181 +1,237 @@
 ---
 title: "Managing Virtual Devices with the Android Device Manager"
 description: "This article explains how to use the Android Device Manager to create and configure Android Virtual Devices (AVDs) that emulate physical Android devices, for .NET MAUI. You can use these virtual devices to run and test your app without having to rely on a physical device"
-zone_pivot_groups: platform
 ms.custom: video
 ms.date: 03/31/2021
+no-loc: ["user.config"]
 ---
+
+TODO: Is screenshot an acceptable word?
+TODO: Check on launch vs run?
 
 # Managing virtual devices with the Android Device Manager
 
 This article explains how to use the Android Device Manager to create and configure Android Virtual Devices (AVDs) that emulate physical Android devices. You can use these virtual devices to run and test your app without having to rely on a physical device.
 
-After you have verified that hardware acceleration is enabled, as described in [Hardware Acceleration for Emulator Performance](hardware-acceleration.md), the next step is to use the _Android Device Manager_ (AVD) to create virtual devices that you can use to test and debug your app.
+> [!IMPORTANT]
+> Enable hardware acceleration for the android devices. For more information, see [Hardware Acceleration for Emulator Performance](hardware-acceleration.md).
 
+<!--
 ::: zone pivot="windows"
+-->
 
 ## Android Device Manager on Windows
 
-This article explains how to use the Android Device Manager to create, duplicate, customize, and launch Android virtual devices.
+You use the Android Device Manager to create and configure an Android Virtual Devices (AVD) that run in the [Android Emulator](../deploy-test/debugging/debug-on-emulator.md). Each AVD is an emulator configuration that simulates a physical Android device. This makes it possible to run and test your app in a variety of configurations that simulate different physical Android devices.
 
 :::image type="content" source="media/device-manager/win/01-devices-dialog-sml.png" alt-text="Screenshot of the Android Device Manager in the Devices tab." lightbox="media/device-manager/win/01-devices-dialog.png":::
 
-You use the Android Device Manager to create and configure AVDs that run in the [Android Emulator](~/android/deploy-test/debugging/debug-on-emulator.md). Each AVD is an emulator configuration that simulates a physical Android device. This makes it possible to run and test your app in a variety of configurations that simulate different physical Android devices.
-
 ## Requirements
 
-To use the Android Device Manager, you will need the following items:
+To use the Android Device Manager, you'll need the following items:
 
-- Visual Studio 2022 version 17.1 Preview. Visual Studio Community, Professional, and Enterprise editions are supported.
+- Visual Studio 2022 version 17.1 Preview 1. Visual Studio Community, Professional, and Enterprise editions are supported.
 
-- Visual Studio Tools for Xamarin version 4.9 or later.
+- The Android SDK. Be sure to install the Android SDK at its default location if it isn't already installed: _C:\\Program Files (x86)\\Android\\android-sdk_.
 
-- The Android SDK must be installed (see [Setting up the Android SDK for Xamarin.Android](~/android/get-started/installation/android-sdk.md)). Be sure to install the Android SDK at its default location if it is not already installed: **C:\\Program Files (x86)\\Android\\android-sdk**.
-
-- The following packages must be installed (via the [Android SDK Manager](~/android/get-started/installation/android-sdk.md)):
+- The following packages must be installed in the:
 
   - **Android SDK Tools version 26.1.1** or later
   - **Android SDK Platform-Tools 27.0.1** or later
   - **Android SDK Build-Tools 27.0.3** or later
-  - **Android Emulator 27.2.7** or later.
+  - **Android Emulator 27.2.7** or later
 
   These packages should be displayed with **Installed** status as seen in the following screenshot:
 
-  :::image type="content" source="media/device-manager/win/02-sdk-tools-sml.png" alt-text="Installing Android SDK Tools." lightbox="media/device-manager/win/02-sdk-tools.png":::
+  :::image type="content" source="media/device-manager/win/02-sdk-tools.png" alt-text="Installing Android SDK Tools.":::
 
-## Launching the Device Manager
+When you install the **Mobile development with .NET** workload in Visual Studio, and select the optional **.NET MAUI (Preview)** workload, everything is installed for you. For more information on setting up .NET MAUI with Visual Studio, see [Installation](../../get-started/installation.md).
 
-Launch the Android Device Manager from the **Tools** menu by clicking **Tools > Android > Android Device Manager**:
+## Launching the device manager
 
-:::image type="content" source="media/device-manager/win/03-tools-menu-sml.png" alt-text="Launching the Device manager from the Tools menu." lightbox="media/device-manager/win/03-tools-menu.png":::
+After opening Visual Studio, launch the Android Device Manager from the **Tools** menu by pressing **Tools > Android > Android Device Manager**:
+
+TODO: Need VS2022 non-preview version of this image
+
+:::image type="content" source="media/device-manager/win/03-tools-menu.png" alt-text="Launching the Device manager from the Tools menu.":::
+
+TODO: Is this still applicable?
 
 If the following error dialog is presented on launch, see the [Troubleshooting](#troubleshooting) section for workaround instructions:
 
 :::image type="content" source="media/device-manager/win/04-sdk-error.png" alt-text="Android SDK instance error dialog.":::
 
-## Main Screen
+## Main screen
 
-When you first launch the Android Device Manager, it presents a screen that displays all currently-configured virtual devices. For each virtual device, the **Name**, **OS** (Android Version), **Processor**, **Memory** size, and screen **Resolution** are displayed:
+When you run the Android Device Manager, it presents a screen that displays all currently-configured virtual devices. For each virtual device, the **Name**, **OS** (Android Version), **Processor**, **Memory** size, and screen **Resolution** are displayed:
 
-:::image type="content" source="media/device-manager/win/05-installed-list-sml.png" alt-text="List of installed devices and their parameters." lightbox="media/device-manager/win/05-installed-list.png":::
+When you select a device in the list, the **Start** button appears on the right. Press the **Start** button to launch the emulator with this virtual device. If the emulator is running with the selected virtual device, the **Start** button changes to a **Stop** button that you can use to halt the emulator.
 
-When you select a device in the list, the **Start** button appears on the right. You can click the **Start** button to launch the emulator with this virtual device:
+### Create a new device
 
-:::image type="content" source="media/device-manager/win/06-start-button-sml.png" alt-text="Start button for a device image." lightbox="media/device-manager/win/06-start-button.png":::
+To create a new device, press the **New** button:
 
-After the emulator starts with the selected virtual device, the **Start** button changes to a **Stop** button that you can use to halt the emulator:
+:::image type="content" source="media/device-manager/win/08-new-button.png" alt-text="New button for creating a new device.":::
 
-:::image type="content" source="media/device-manager/win/07-stop-button-sml.png" alt-text="Stop button for the running device." lightbox="media/device-manager/win/07-stop-button.png":::
+The **New Device** window is displayed. To configure the device, follow these steps:
 
-### New Device
+01. Give the device a new name. In the following example, the new device is named **Pixel 2 - API 28**.
 
-To create a new device, click the **New** button (located in the upper right-hand area of the screen):
+    :::image type="content" source="media/device-manager/win/09-device-props-sml.png" alt-text="New Device screen of the Device Manager." lightbox="media/device-manager/win/09-device-props.png":::
 
-:::image type="content" source="media/device-manager/win/08-new-button-sml.png" alt-text="New button for creating a new device." lightbox="media/device-manager/win/08-new-button.png":::
+01. Select a physical device to emulate by selecting a device in the **Base Device** box.
+01. Select a processor type for this virtual device with the **Processor** box.
 
-Clicking **New** launches the **New Device** screen:
+    Selecting **x86** will provide the best performance because it enables the emulator to take advantage of [hardware acceleration](hardware-acceleration.md). The **x86_64** option will also make use of hardware acceleration, but it runs slightly slower than **x86** (**x86_64** is normally used for testing 64-bit apps).
 
-:::image type="content" source="media/device-manager/win/09-new-device-editor-sml.png" alt-text="New Device screen of the Device Manager." lightbox="media/device-manager/win/09-new-device-editor.png":::
+01. Select the Android version (API level) with the **OS** box.
 
-To configure a new device in the **New Device** screen, use the following steps:
+    If you select an Android API level that has not yet been installed, the Device Manager will display **A new device will be downloaded** message at the bottom of the screen &ndash; it will download and install the necessary files as it creates the new virtual device.
 
-01. Give the device a new name. In the following example, the new device is named **Pixel_API_27**:
+01. If you want to include Google Play Services APIs in your virtual device, select the **Google APIs** option. To include the Google Play Store app on the virtual device, select the **Google Play Store** option
 
-    :::image type="content" source="media/device-manager/win/10-device-name-sml.png" alt-text="Naming the new device." lightbox="media/device-manager/win/10-device-name.png":::
+    > [!NOTE]
+    > Google Play Store images are available only for some base device types such as Pixel, Pixel 2, Nexus 5, and Nexus 5X. This is indicated by the text `(+ Store)` in the image name.
 
-01. Select a physical device to emulate by clicking the **Base Device** pull-down menu:
+01. Use the property list to change some of the most commonly-modified properties. To make changes to properties, see [Editing Android Virtual Device Properties](device-properties.md).
 
-    :::image type="content" source="media/device-manager/win/11-device-menu-sml.png" alt-text="Selecting the physical device to emulate." lightbox="media/device-manager/win/11-device-menu.png":::
+01. Add any additional properties that you need to explicitly set with the **Add Property** box at the bottom of the window:
 
-01. Select a processor type for this virtual device by clicking the **Processor** pull-down menu. Selecting **x86** will provide the best performance because it enables the emulator to take advantage of [hardware acceleration](hardware-acceleration.md). The **x86_64** option will also make use of hardware acceleration, but it runs slightly slower than **x86** (**x86_64** is normally used for testing 64-bit apps):
+    :::image type="content" source="media/device-manager/win/16-add-property-menu.png" alt-text="Add Property pull-down menu.":::
 
-    :::image type="content" source="media/device-manager/win/12-processor-type-menu-sml.png" alt-text="Selecting the processor type." lightbox="media/device-manager/win/12-processor-type-menu.png":::
+    You can also define a custom property by selecting **Custom...**.
 
-01. Select the Android version (API level) by clicking the **OS** pull-down menu. For example, select **Oreo 8.1 - API 27** to create a virtual device for API level 27:
+01. Press the **Create** button to create the new device:
 
-    :::image type="content" source="media/device-manager/win/13-android-version-w158-sml.png" alt-text="Selecting the Android version." lightbox="media/device-manager/win/13-android-version-w158.png":::
+    :::image type="content" source="media/device-manager/win/17-create-button.png" alt-text="Create button.":::
 
-    If you select an Android API level that has not yet been installed, the Device Manager will display **A new device will be downloaded** message at the bottom of the screen &ndash; it will download and install the necessary files as it creates the new virtual device:
-
-    :::image type="content" source="media/device-manager/win/14-automatic-download-w158.png" alt-text="A new device image will be downloaded.":::
-
-01. If you want to include Google Play Services APIs in your virtual device, enable the **Google APIs** option. To include the Google Play Store app, enable the **Google Play Store** option:
-
-    :::image type="content" source="media/device-manager/win/15-google-play-services-sml.png" alt-text="Selecting Google Play Services and Google Play Store." lightbox="media/device-manager/win/15-google-play-services.png":::
-
-    Note that Google Play Store images are available only for some base device types such as Pixel, Pixel 2, Nexus 5, and Nexus 5X.
-
-01. Edit any properties that you need to modify. To make changes to properties, see [Editing Android Virtual Device Properties](device-properties.md).
-
-01. Add any additional properties that you need to explicitly set. The **New Device** screen lists only the most commonly-modified properties, but you can click the **Add Property** pull-down menu (at the bottom) to add additional properties:
-
-    :::image type="content" source="media/device-manager/win/16-add-property-menu-sml.png" alt-text="Add Property pull-down menu." lightbox="media/device-manager/win/16-add-property-menu.png":::
-
-    You can also define a custom property by selecting **Custom...** at manager//the top of the property list.
-
-01. Click the **Create** button (lower right-hand corner) to create the new device:
-
-    :::image type="content" source="media/device-manager/win/17-create-button-sml.png" alt-text="Create button." lightbox="media/device-manager/win/17-create-button.png":::
-
-01. You might get a **License Acceptance** screen. Click **Accept** if you agree to the license terms:
-
-    :::image type="content" source="media/device-manager/win/18-license-acceptance-sml.png" alt-text="License Acceptance screen." lightbox="media/device-manager/win/18-license-acceptance.png":::
+    You might get a **License Acceptance** screen when you create the device. Select **Accept** if you agree to the license terms.
 
 01. The Android Device Manager adds the new device to the list of installed virtual devices while displaying a **Creating** progress indicator during device creation:
 
-    :::image type="content" source="media/device-manager/win/19-creating-the-device-sml.png" alt-text="Creation progress Indicator." lightbox="media/device-manager/win/19-creating-the-device.png":::
+    :::image type="content" source="media/device-manager/win/19-creating-the-device.png" alt-text="Creation progress Indicator.":::
 
-01. When the creation process is complete, the new device is shown in the list of installed virtual devices with a **Start** button, ready to launch:
+01. When the creation process is complete, the new device is shown in the list of installed virtual devices with a **Start** button, ready to launch
 
-    :::image type="content" source="media/device-manager/win/20-created-device-sml.png" alt-text="Newly-created device ready to launch." lightbox="media/device-manager/win/20-created-device.png":::
+### Edit device
 
-### Edit Device
+To edit an existing virtual device, select the device and then press the **Edit** button:
 
-To edit an existing virtual device, select the device and click the **Edit** button (located in the upper right-hand corner of the screen):
+:::image type="content" source="media/device-manager/win/21-edit-button.png" alt-text="Edit button for modifying a device.":::
 
-:::image type="content" source="media/device-manager/win/21-edit-button-sml.png" alt-text="Edit button for modifying a device." lightbox="media/device-manager/win/21-edit-button.png":::
+Pressing **Edit** displays the **Device Editor** window for the selected virtual device.
 
-Clicking **Edit** launches the Device Editor for the selected virtual device:
+The **Device Editor** window lists the properties of the virtual device under the **Property** column, with the corresponding values of each property in the **Value** column. When you select a property, a detailed description of that property is displayed on the right.
 
-:::image type="content" source="media/device-manager/win/22-device-editor-sml.png" alt-text="Device Editor screen." lightbox="media/device-manager/win/22-device-editor.png":::
-
-The **Device Editor** screen lists the properties of the virtual device under the **Property** column, with the corresponding values of each property in the **Value** column. When you select a property, a detailed description of that property is displayed on the right.
-
-To change a property, edit its value in the **Value** column. For example, in the following screenshot the `hw.lcd.density` property is being changed from **480** to **240**:
+To change a property, edit its value in the **Value** column. For example, in the following screenshot the `hw.lcd.density` property is being changed to **240**:
 
 :::image type="content" source="media/device-manager/win/23-device-editing-sml.png" alt-text="Device Editing example." lightbox="media/device-manager/win/23-device-editing.png":::
 
-After you have made the necessary configuration changes, click the **Save** button. For more information about changing virtual device properties, see [Editing Android Virtual Device Properties](device-properties.md).
+After you've made the necessary configuration changes, press the **Save** button. For more information about changing virtual device properties, see [Editing Android Virtual Device Properties](device-properties.md).
 
-### Additional Options
+### Additional options
 
-Additional options for working with devices are available from the **Additional Options** (&hellip;) pull-down menu in the upper right-hand corner:
+Additional options for working with devices are available from the **Additional Options** (&hellip;) pull-down menu:
 
-:::image type="content" source="media/device-manager/win/24-overflow-menu-sml.png" alt-text="Location of additional options menu." lightbox="media/device-manager/win/24-overflow-menu.png":::
+:::image type="content" source="media/device-manager/win/24-overflow-menu.png" alt-text="Location of additional options menu.":::
 
 The additional options menu contains the following items:
 
-- **Duplicate and Edit** &ndash; Duplicates the currently-selected device and opens it in the **New Device** screen with a different unique name. For example, selecting **Pixel_API_27** and clicking **Duplicate and Edit** appends a counter to the name:
+- **Duplicate and Edit** &ndash; Duplicates the currently-selected device and opens it in the **New Device** screen with a new name that's similar to the existing device. For example, selecting **Pixel 2 - API 28** and pressing **Duplicate and Edit** appends a counter to the name: **Pixel 2 - API 28 (1)**.
 
-  :::image type="content" source="media/device-manager/win/25-dupe-and-edit-sml.png" alt-text="Duplicate and Edit screen." lightbox="media/device-manager/win/25-dupe-and-edit.png":::
+- **Start with Factory Defaults** &ndash; TODO
 
-- **Reveal in Explorer** &ndash; Opens a Windows Explorer window in the folder that holds the files for the virtual device. For example, selecting **Pixel_API_27** and clicking **Reveal in Explorer** opens a window like the following example:
+- **Start with Kernel Logs** &ndash; TODO
 
-  :::image type="content" source="media/device-manager/win/26-reveal-in-explorer-sml.png" alt-text="Results of clicking Reveal in Explorer." lightbox="media/device-manager/win/26-reveal-in-explorer.png":::
+- **Download System Image** &ndash; Downloads the Android OS system image for the device, if it's not already downloaded.
 
-- **Factory Reset** &ndash; Resets the selected device to its default settings, erasing any user changes made to the internal state of the device while it was running (this also erases the current [Quick Boot](~/android/deploy-test/debugging/debug-on-emulator.md#quick-boot) snapshot, if any). This change does not alter modifications that you make to the virtual device during creation and editing. A dialog box will appear with the reminder that this reset cannot be undone. Click **Factory Reset** to confirm the reset:
+- **Reveal in Explorer** &ndash; Opens Windows Explorer and navigates to the folder that holds the files for the virtual device.
 
-  :::image type="content" source="media/device-manager/win/27-factory-reset.png" alt-text="Factory Reset dialog.":::
+- **Repair** &ndash; TODO
 
-- **Delete** &ndash; Permanently deletes the selected virtual device. A dialog box will appear with the reminder that deleting a device cannot be undone. Click **Delete** if you are certain that you want to delete the device.
+- **Factory Reset** &ndash; Resets the selected device to its default settings, erasing any user changes made to the internal state of the device while it was running. This action also erases the current [Quick Boot](~/android/deploy-test/debugging/debug-on-emulator.md#quick-boot) snapshot if it exists. This change doesn't alter modifications that you make to the virtual device during creation and editing. A dialog box will appear with the reminder that this reset cannot be undone &ndash; press **Factory Reset** to confirm the reset.
 
-  :::image type="content" source="media/device-manager/win/28-delete-device-w158.png" alt-text="Delete device dialog.":::
+- **Delete** &ndash; Permanently deletes the selected virtual device. A dialog box will appear with the reminder that deleting a device cannot be undone. Press **Delete** if you are certain that you want to delete the device.
 
+## Troubleshooting
+
+The following sections explain how to diagnose and work around problems that may occur when using the Android Device Manager to configure virtual devices.
+
+### Android SDK in non-standard location
+
+Typically, the Android SDK is installed at _C:\\Program Files (x86)\\Android\\android-sdk_. If the SDK isn't installed at this location, you may get this error when you launch the Android Device Manager:
+
+:::image type="content" source="media/device-manager/win/29-sdk-error.png" alt-text="Android SDK instance error.":::
+
+To work around this problem, do the following:
+
+01. Open the _%LOCALAPPDATA%\\Xamarin\\Logs\\XamarinDeviceManager_ folder.
+
+    The `%LOCALAPPDATA%` value is an environment variable that typically points to the _C:\\Users\\{your user name}\\AppData\\Local_ folder.
+
+01. Open one of the log files and search for an entry describing **Config file path**. For example:
+
+    :::image type="content" source="media/device-manager/win/31-config-file-path.png" alt-text="Config file path in log file.":::
+
+01. Navigate to this folder and open the _user.config_ in a text editor.
+
+01. In _user.config_, find the `<UserSettings>` element and add an **AndroidSdkPath** attribute to it. Set this attribute to the path where the Android SDK is installed on your computer and save the file. For example, `<UserSettings>` would look like the following if the Android SDK was installed at _C:\\Programs\\Android\\SDK_:
+
+    TODO: Does visual studio handle this some how now?
+
+    ```xml
+    <UserSettings SdkLibLastWriteTimeUtcTicks="636409365200000000" AndroidSdkPath="C:\Programs\Android\SDK" />
+    ```
+
+After making this change to **user.config**, you should be able to launch the Android Device Manager.
+
+### Wrong version of Android SDK Tools
+
+TODO: Set the correct version numbers
+
+If Android SDK tools 26.1.1 or later isn't installed, you may see this error dialog on launch:
+
+:::image type="content" source="media/device-manager/win/32-sdk-instance-error.png" alt-text="Screenshot shows the Android SDK instance error dialog box.":::
+
+If you see this error dialog, press **Open SDK Manager** to open the Android SDK Manager. In the Android SDK Manager, press the **Tools** tab and install the following packages:
+
+- **Android SDK Tools 26.1.1** or later
+- **Android SDK Platform-Tools 27.0.1** or later
+- **Android SDK Build-Tools 27.0.3** or later
+
+For more information, see [Installation](../../get-started/installation.md).
+
+### Snapshot disables WiFi on Android Oreo
+
+TODO: Check on WiFi vs Wi-Fi
+
+If you've an AVD configured for Android Oreo with simulated Wi-Fi access, restarting the AVD after a snapshot may cause Wi-Fi access to become disabled.
+
+To work around this problem,
+
+01. Open the **Android Device Manager**.
+
+01. Select the AVD in the Android Device Manager.
+
+01. From the **Additional Options** (&hellip;) menu, select **Reveal in Explorer**.
+
+01. Navigate to the **snapshots > default_boot** folder.
+
+01. Delete the _snapshot.pb_ file:
+
+    :::image type="content" source="media/device-manager/win/33-delete-snapshot.png" alt-text="Location of the snapshot.pb file.":::
+
+01. Restart the AVD.
+
+After these changes are made, the AVD will restart in a state that allows Wi-Fi to work again.
+
+
+<!--
 ::: zone-end
 ::: zone pivot="macos"
 
 > [!NOTE]
-> If you are using a Mac with an Apple chip, such as the M1, you will need to install the [Android Emulator for M1 preview from GitHub](https://github.com/google/android-emulator-m1-preview/releases).
+> If you are using a Mac with an Apple chip, such as the M1, you'll need to install the [Android Emulator for M1 preview from GitHub](https://github.com/google/android-emulator-m1-preview/releases).
 
 ## Android Device Manager on macOS
 
@@ -187,7 +243,7 @@ You use the Android Device Manager to create and configure *Android Virtual Devi
 
 ## Requirements
 
-To use the Android Device Manager, you will need the following items:
+To use the Android Device Manager, you'll need the following items:
 
 - Visual Studio for Mac 7.6 or later.
 
@@ -203,9 +259,9 @@ To use the Android Device Manager, you will need the following items:
 
   :::image type="content" source="media/device-manager/mac/02-sdk-tools-sml.png" alt-text="Installing Android SDK Tools." lightbox="media/device-manager/mac/02-sdk-tools.png":::
 
-## Launching the Device Manager
+## Launching the device manager
 
-Launch the Android Device Manager by clicking **Tools > Device Manager**:
+Launch the Android Device Manager by pressing **Tools > Device Manager**:
 
 :::image type="content" source="media/device-manager/mac/03-tools-menu-sml.png" alt-text="Launching the Device manager from the Tools menu." lightbox="media/device-manager/mac/03-tools-menu.png":::
 
@@ -213,13 +269,13 @@ If the following error dialog is presented on launch, see the [Troubleshooting](
 
 :::image type="content" source="media/device-manager/mac/04-sdk-instance-error.png" alt-text="Screenshot shows the Android SDK instance error dialog box for troubleshooting information.":::
 
-## Main Screen
+## Main screen
 
 When you first launch the Android Device Manager, it presents a screen that displays all currently-configured virtual devices. For each virtual device, the **Name**, **OS** (Android Version), **Processor**, **Memory** size, and screen **Resolution** are displayed:
 
 :::image type="content" source="media/device-manager/mac/05-devices-list-sml.png" alt-text="List of installed devices and their parameters." lightbox="media/device-manager/mac/05-devices-list.png":::
 
-When you select a device in the list, the **Play** button appears on the right. You can click the **Play** button to launch the emulator with this virtual device:
+When you select a device in the list, the **Play** button appears on the right. You can press the **Play** button to launch the emulator with this virtual device:
 
 :::image type="content" source="media/device-manager/mac/06-start-button-sml.png" alt-text="Play button for a device image." lightbox="media/device-manager/mac/06-start-button.png":::
 
@@ -233,13 +289,13 @@ When you stop the emulator, you may get a prompt asking if you want to save the 
 
 Saving the current state will make the emulator boot faster when this virtual device is launched again. For more information about Quick Boot, see [Quick Boot](~/android/deploy-test/debugging/debug-on-emulator.md#quick-boot).
 
-### New Device
+### New device
 
-To create a new device, click the **New Device** button (located in the upper left-hand area of the screen):
+To create a new device, press the **New Device** button (located in the upper left-hand area of the screen):
 
 :::image type="content" source="media/device-manager/mac/09-new-button-sml.png" alt-text="New button for creating a new device." lightbox="media/device-manager/mac/09-new-button.png":::
 
-Clicking **New Device** launches the **New Device** screen:
+Pressing **New Device** launches the **New Device** screen:
 
 :::image type="content" source="media/device-manager/mac/10-new-device-editor-sml.png" alt-text="New Device screen of the Device Manager." lightbox="media/device-manager/mac/10-new-device-editor.png":::
 
@@ -249,15 +305,15 @@ Use the following steps to configure a new device in the **New Device** screen:
 
     :::image type="content" source="media/device-manager/mac/11-device-name-m76-sml.png" alt-text="Naming the new device." lightbox="media/device-manager/mac/11-device-name-m76.png":::
 
-01. Select a physical device to emulate by clicking the **Base Device** pull-down menu:
+01. Select a physical device to emulate by pressing the **Base Device** pull-down menu:
 
     :::image type="content" source="media/device-manager/mac/12-device-menu-m76-sml.png" alt-text="Selecting the physical device to emulate." lightbox="media/device-manager/mac/12-device-menu-m76.png":::
 
-01. Select a processor type for this virtual device by clicking the **Processor** pull-down menu. Selecting **x86** will provide the best performance because it enables the emulator to take advantage of [hardware acceleration](hardware-acceleration.md). The **x86_64** option will also make use of hardware acceleration, but it runs slightly slower than **x86** (**x86_64** is normally used for testing 64-bit apps):
+01. Select a processor type for this virtual device by pressing the **Processor** pull-down menu. Selecting **x86** will provide the best performance because it enables the emulator to take advantage of [hardware acceleration](hardware-acceleration.md). The **x86_64** option will also make use of hardware acceleration, but it runs slightly slower than **x86** (**x86_64** is normally used for testing 64-bit apps):
 
     :::image type="content" source="media/device-manager/mac/13-processor-type-menu-m76-sml.png" alt-text="Selecting the processor type." lightbox="media/device-manager/mac/13-processor-type-menu-m76.png":::
 
-01. Select the Android version (API level) by clicking the **OS** pull-down menu. For example, select **Oreo 8.1 - API 27** to create a virtual device for API level 27:
+01. Select the Android version (API level) by pressing the **OS** pull-down menu. For example, select **Oreo 8.1 - API 27** to create a virtual device for API level 27:
 
     :::image type="content" source="media/device-manager/mac/14-android-screenshot-m76-sml.png" alt-text="Selecting the Android version." lightbox="media/device-manager/mac/14-android-screenshot-m76.png":::
 
@@ -273,13 +329,13 @@ Use the following steps to configure a new device in the **New Device** screen:
 
 01. Edit any properties that you need to modify. To make changes to properties, see [Editing Android Virtual Device Properties](device-properties.md).
 
-01. Add any additional properties that you need to explicitly set. The **New Device** screen lists only the most commonly-modified properties, but you can click the **Add Property** pull-down menu (at the bottom) to add additional properties:
+01. Add any additional properties that you need to explicitly set. The **New Device** screen lists only the most commonly-modified properties, but you can press the **Add Property** pull-down menu (at the bottom) to add additional properties:
 
     :::image type="content" source="media/device-manager/mac/17-add-property-menu-m76-sml.png" alt-text="Add Property pull-down menu." lightbox="media/device-manager/mac/17-add-property-menu-m76.png":::
 
-    You can also define a custom property by clicking **Custom...** at the top of this property list.
+    You can also define a custom property by pressing **Custom...** at the top of this property list.
 
-01. Click the **Create** button (lower right-hand corner) to create the new device:
+01. Press the **Create** button (lower right-hand corner) to create the new device:
 
     :::image type="content" source="media/device-manager/mac/18-create-button-m76.png" alt-text="Create button.":::
 
@@ -291,13 +347,13 @@ Use the following steps to configure a new device in the **New Device** screen:
 
     :::image type="content" source="media/device-manager/mac/20-created-device-m76-sml.png" alt-text="Newly-created device ready to launch." lightbox="media/device-manager/mac/20-created-device-m76.png":::
 
-### Edit Device
+### Edit device
 
 To edit an existing virtual device, select the **Additional Options** pull-down menu (gear icon) and select **Edit**:
 
 :::image type="content" source="media/device-manager/mac/21-edit-button-m76-sml.png" alt-text="Edit menu selection for modifying a new device." lightbox="media/device-manager/mac/21-edit-button-m76.png":::
 
-Clicking **Edit** launches the Device Editor for the selected virtual device:
+Pressing **Edit** launches the Device Editor for the selected virtual device:
 
 :::image type="content" source="media/device-manager/mac/22-device-editor-sml.png" alt-text="Device Editor screen." lightbox="media/device-manager/mac/22-device-editor.png":::
 
@@ -307,9 +363,9 @@ To change a property, edit its value in the **Value** column. For example, in th
 
 :::image type="content" source="media/device-manager/mac/23-device-editing-sml.png" alt-text="Device Editing example." lightbox="media/device-manager/mac/23-device-editing.png":::
 
-After you have made the necessary configuration changes, click the **Save** button. For more information about changing virtual device properties, see [Editing Android Virtual Device Properties](device-properties.md).
+After you've made the necessary configuration changes, press the **Save** button. For more information about changing virtual device properties, see [Editing Android Virtual Device Properties](device-properties.md).
 
-### Additional Options
+### Additional options
 
 Additional options for working with a device are available from the pull-down menu located to the left of the **Play** button:
 
@@ -319,105 +375,35 @@ The additional options menu contains the following items:
 
 - **Edit** &ndash; Opens the currently-selected device in the device editor as described earlier.
 
-- **Duplicate and Edit** &ndash; Duplicates the currently-selected device and opens it in the **New Device** screen with a different unique name. For example, selecting **Pixel 2 API 28** and clicking **Duplicate and Edit** appends a counter to the name:
+- **Duplicate and Edit** &ndash; Duplicates the currently-selected device and opens it in the **New Device** screen with a different unique name. For example, selecting **Pixel 2 API 28** and pressing **Duplicate and Edit** appends a counter to the name:
 
   :::image type="content" source="media/device-manager/mac/25-dupe-and-edit-sml.png" alt-text="Duplicate and Edit screen." lightbox="media/device-manager/mac/25-dupe-and-edit.png":::
 
-- **Reveal in Finder** &ndash; Opens a macOS Finder window in the folder that holds the files for the virtual device. For example, selecting **Pixel 2 API 28** and clicking **Reveal in Finder** opens a window like the following example:
+- **Reveal in Finder** &ndash; Opens a macOS Finder window in the folder that holds the files for the virtual device. For example, selecting **Pixel 2 API 28** and pressing **Reveal in Finder** opens a window like the following example:
 
-  :::image type="content" source="media/device-manager/mac/26-reveal-in-finder-sml.png" alt-text="Results of clicking Reveal in Finder." lightbox="media/device-manager/mac/26-reveal-in-finder.png":::
+  :::image type="content" source="media/device-manager/mac/26-reveal-in-finder-sml.png" alt-text="Results of pressing Reveal in Finder." lightbox="media/device-manager/mac/26-reveal-in-finder.png":::
 
-- **Factory Reset** &ndash; Resets the selected device to its default settings, erasing any user changes made to the internal state of the device while it was running (this also erases the current [Quick Boot](~/android/deploy-test/debugging/debug-on-emulator.md#quick-boot) snapshot, if any). This change does not alter modifications that you make to the virtual device during creation and editing. A dialog box will appear with the reminder that this reset cannot be undone. Click **Factory Reset** to confirm the reset.
+- **Factory Reset** &ndash; Resets the selected device to its default settings, erasing any user changes made to the internal state of the device while it was running (this also erases the current [Quick Boot](~/android/deploy-test/debugging/debug-on-emulator.md#quick-boot) snapshot, if any). This change doesn't alter modifications that you make to the virtual device during creation and editing. A dialog box will appear with the reminder that this reset cannot be undone. Press **Factory Reset** to confirm the reset.
 
   :::image type="content" source="media/device-manager/mac/27-factory-reset-m76.png" alt-text="Factory reset dialog.":::
 
-- **Delete** &ndash; Permanently deletes the selected virtual device. A dialog box will appear with the reminder that deleting a device cannot be undone. Click **Delete** if you are certain that you want to delete the device.
+- **Delete** &ndash; Permanently deletes the selected virtual device. A dialog box will appear with the reminder that deleting a device cannot be undone. Press **Delete** if you are certain that you want to delete the device.
 
   :::image type="content" source="media/device-manager/mac/28-delete-device-m76.png" alt-text="Delete device dialog.":::
-
------
-
-<a name="troubleshooting"></a>
 
 ## Troubleshooting
 
 The following sections explain how to diagnose and work around problems that may occur when using the Android Device Manager to configure virtual devices.
 
-<!-- markdownlint-disable MD001 -->
+### Wrong version of Android SDK Tools
 
-# [Visual Studio](#tab/windows)
+TODO: Set the correct version numbers
 
-### Android SDK in Non-Standard Location
-
-Typically, the Android SDK is installed at the following location:
-
-**C:\\Program Files (x86)\\Android\\android-sdk**
-
-If the SDK is not installed at this location, you may get this error when you launch the Android Device Manager:
-
-:::image type="content" source="media/device-manager/win/29-sdk-error.png" alt-text="Android SDK instance error.":::
-
-To work around this problem, use the following steps:
-
-01. From the Windows desktop, navigate to **C:\\Users\\*username*\\AppData\\Roaming\\XamarinDeviceManager**:
-
-    :::image type="content" source="media/device-manager/win/30-log-files.png" alt-text="Android Device Manager log file location.":::
-
-01. Double-click to open one of the log files and locate the **Config file path**. For example:
-
-    :::image type="content" source="media/device-manager/win/31-config-file-path-sml.png" alt-text="Config file path in log file." lightbox="media/device-manager/win/31-config-file-path.png":::
-
-01. Navigate to this location and double-click **user.config** to open it.
-
-01. In **user.config**, locate the `<UserSettings>` element and add an **AndroidSdkPath** attribute to it. Set this attribute to the path where the Android SDK is installed on your computer and save the file. For example, `<UserSettings>` would look like the following if the Android SDK was installed at **C:\\Programs\\Android\\SDK**:
-
-    ```xml
-    <UserSettings SdkLibLastWriteTimeUtcTicks="636409365200000000" AndroidSdkPath="C:ProgramsAndroidSDK" />
-    ```
-
-After making this change to **user.config**, you should be able to launch the Android Device Manager.
-
-### Wrong Version of Android SDK Tools
-
-If Android SDK tools 26.1.1 or later is not installed, you may see this error dialog on launch:
-
-:::image type="content" source="media/device-manager/win/32-sdk-instance-error.png" alt-text="Screenshot shows the Android SDK instance error dialog box.":::
-
-If you see this error dialog, click **Open SDK Manager** to open the Android SDK Manager. In the Android SDK Manager, click the **Tools** tab and install the following packages:
-
-- **Android SDK Tools 26.1.1** or later
-- **Android SDK Platform-Tools 27.0.1** or later
-- **Android SDK Build-Tools 27.0.3** or later
-
-### Snapshot disables WiFi on Android Oreo
-
-If you have an AVD configured for Android Oreo with simulated Wi-Fi access, restarting the AVD after a snapshot may cause Wi-Fi access to become disabled.
-
-To work around this problem,
-
-01. Select the AVD in the Android Device Manager.
-
-01. From the additional options menu, click **Reveal in Explorer**.
-
-01. Navigate to **snapshots > default_boot**.
-
-01. Delete the **snapshot.pb** file:
-
-    :::image type="content" source="media/device-manager/win/33-delete-snapshot.png" alt-text="Location of the snapshot.pb file.":::
-
-01. Restart the AVD.
-
-After these changes are made, the AVD will restart in a state that allows Wi-Fi to work again.
-
-# [Visual Studio for Mac](#tab/macos)
-
-### Wrong Version of Android SDK Tools
-
-If Android SDK tools 26.1.1 or later is not installed, you may see this error dialog on launch:
+If Android SDK tools 26.1.1 or later isn't installed, you may see this error dialog on launch:
 
 :::image type="content" source="media/device-manager/mac/29-sdk-instance-error.png" alt-text="Android SDK instance error dialog.":::
 
-If you see this error dialog, click **OK** to open the Android SDK Manager. In the Android SDK Manager, click the **Tools** tab and install the following packages:
+If you see this error dialog, press **OK** to open the Android SDK Manager. In the Android SDK Manager, press the **Tools** tab and install the following packages:
 
 - **Android SDK Tools 26.1.1** or later
 - **Android SDK Platform-Tools 28.0.1** or later
@@ -425,13 +411,13 @@ If you see this error dialog, click **OK** to open the Android SDK Manager. In t
 
 ### Snapshot disables WiFi on Android Oreo
 
-If you have an AVD configured for Android Oreo with simulated Wi-Fi access, restarting the AVD after a snapshot may cause Wi-Fi access to become disabled.
+If you've an AVD configured for Android Oreo with simulated Wi-Fi access, restarting the AVD after a snapshot may cause Wi-Fi access to become disabled.
 
 To work around this problem,
 
 01. Select the AVD in the Android Device Manager.
 
-01. From the additional options menu, click **Reveal in Finder**.
+01. From the **Additional Options** (&hellip;) menu, select **Reveal in Finder**.
 
 01. Navigate to **snapshots > default_boot**.
 
@@ -443,38 +429,18 @@ To work around this problem,
 
 After these changes are made, the AVD will restart in a state that allows Wi-Fi to work again.
 
------
-
-### Generating a Bug Report
-
-# [Visual Studio](#tab/windows)
-
-If you find a problem with the Android Device Manager that cannot be resolved using the above troubleshooting tips, please file a bug report by right-clicking the title bar and selecting **Generate Bug Report**:
-
-:::image type="content" source="media/device-manager/win/34-bug-report-sml.png" alt-text="Location of menu item for filing a bug report." lightbox="media/device-manager/win/34-bug-report.png":::
-
-# [Visual Studio for Mac](#tab/macos)
-
-If you find a problem with the Android Device Manager that cannot be resolved using the above troubleshooting tips, please file a bug report by clicking **Help > Report a Problem**:
-
-:::image type="content" source="media/device-manager/mac/31-bug-report-sml.png" alt-text="Location of menu item for filing a bug report." lightbox="media/device-manager/mac/31-bug-report.png":::
-
 ::: zone-end
 
-## Summary
+-->
 
-This guide introduced the Android Device Manager available in Visual Studio Tools for Xamarin and Visual Studio for Mac. It explained essential features such as starting and stopping the Android emulator, selecting an Android virtual device (AVD) to run, creating new virtual devices, and how to edit a virtual device. It explained how to edit profile hardware properties for further customization, and it provided troubleshooting tips for common problems.
+## Related links
 
-## Related Links
-
-- [Changes to the Android SDK Tooling](~/android/troubleshooting/sdk-cli-tooling-changes.md)
-- [Debugging on the Android Emulator](~/android/deploy-test/debugging/debug-on-emulator.md)
+- [Changes to the Android SDK Tooling](../troubleshooting/sdk-cli-tooling-changes.md)
+- [Debugging on the Android Emulator](../deploy-test/debugging/debug-on-emulator.md)
 - [SDK Tools Release Notes (Google)](https://developer.android.com/studio/releases/sdk-tools)
 - [avdmanager](https://developer.android.com/studio/command-line/avdmanager.html)
 - [sdkmanager](https://developer.android.com/studio/command-line/sdkmanager.html)
 
-## Related Video
-
-> [!Video https://channel9.msdn.com/Shows/XamarinShow/How-to-Create-and-Manage-Your-Own-Android-Emulators/player]
+TODO: Swap branches and see what this include was... I dont see why it should be here.
 
 [!include[](~/essentials/includes/xamarin-show-essentials.md)]
