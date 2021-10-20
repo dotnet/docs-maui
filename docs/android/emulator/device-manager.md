@@ -440,7 +440,3 @@ After these changes are made, the AVD will restart in a state that allows Wi-Fi 
 - [SDK Tools Release Notes (Google)](https://developer.android.com/studio/releases/sdk-tools)
 - [avdmanager](https://developer.android.com/studio/command-line/avdmanager.html)
 - [sdkmanager](https://developer.android.com/studio/command-line/sdkmanager.html)
-
-TODO: Swap branches and see what this include was... I dont see why it should be here.
-
-[!include[](~/essentials/includes/xamarin-show-essentials.md)]
