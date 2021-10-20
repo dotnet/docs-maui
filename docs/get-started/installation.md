@@ -18,6 +18,12 @@ To create .NET MAUI apps, you'll need Visual Studio 17.1 Preview 1. Either insta
 
   :::image type="content" source="installation-images/vs-workloads.png" alt-text="Visual Studio workloads for .NET MAUI.":::
 
+## Windows (WinUI 3)
+
+To create apps that target Windows UI Library (WinUI) 3, install the following Visual Studio extension:
+
+- [Single-project MSIX Packaging Tools](https://marketplace.visualstudio.com/items?itemName=ProjectReunion.MicrosoftSingleProjectMSIXPackagingToolsDev17)
+
 ## Next steps
 
 To learn how to create and run your first .NET MAUI app, continue to build your first app.
