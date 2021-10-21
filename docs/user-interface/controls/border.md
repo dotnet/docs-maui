@@ -15,11 +15,11 @@ The .NET Multi-platform App UI (.NET MAUI) `Border` is a container control that 
 - `Content`, of type `IView`, represents the content to display in the border. This property is the `ContentProperty` of the `Border` class, and therefore does not need to be explicitly set from XAML.
 - `Padding`, of type `Thickness`, represents the distance between the border and its child element.
 - `StrokeShape`, of type `IShape`, describes the shape of the border.
-- `Stroke`, of type `Brush`, indicates the brush used to paint the border's outline.
+- `Stroke`, of type `Brush`, indicates the brush used to paint the border.
 - `StrokeThickness`, of type `double`, indicates the width of the border. The default value of this property is 1.0.
 - `StrokeDashArray`, of type `DoubleCollection`, which represents a collection of `double` values that indicate the pattern of dashes and gaps that make up the border.
 - `StrokeDashOffset`, of type `double`, specifies the distance within the dash pattern where a dash begins. The default value of this property is 0.0.
-- `StrokeLineCap`, of type `PenLineCap`, describes the shape at the start and end of a line. The default value of this property is `PenLineCap.Flat`.
+- `StrokeLineCap`, of type `PenLineCap`, describes the shape at the start and end of its line. The default value of this property is `PenLineCap.Flat`.
 - `StrokeLineJoin`, of type `PenLineJoin`, specifies the type of join that is used at the vertices of the stroke shape. The default value of this property is `PenLineJoin.Miter`.
 - `StrokeMiterLimit`, of type `double`, specifies the limit on the ratio of the miter length to half the stroke thickness. The default value of this property is 10.0.
 
