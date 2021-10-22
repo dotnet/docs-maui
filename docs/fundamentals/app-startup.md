@@ -44,13 +44,16 @@ using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific;
 using Application = Microsoft.Maui.Controls.Application;
 
-public class App : Application
+namespace MyMauiApp
 {
-    public App()
+    public class App : Application
     {
-        InitializeComponent();
+        public App()
+        {
+            InitializeComponent();
 
-        MainPage = new MainPage();
+            MainPage = new MainPage();
+        }
     }
 }
 ```
