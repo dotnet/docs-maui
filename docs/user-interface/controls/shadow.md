@@ -8,7 +8,7 @@ ms.date: 10/22/2021
 
 <!-- Sample link, if any, goes here -->
 
-The .NET Multi-platform App UI (.NET MAUI) `Shadow` is a control that paints a shadow around a control. The `VisualElement` class has a `Shadow` bindable property, of type `Shadow`, that enables a shadow to be added to a layout or view.
+The .NET Multi-platform App UI (.NET MAUI) `Shadow` is a control that paints a shadow around a layout or view. The `VisualElement` class has a `Shadow` bindable property, of type `Shadow`, that enables a shadow to be added to any layout or view.
 
 The `Shadow` class defines the following properties:
 
@@ -63,13 +63,13 @@ Shadows can also be added to clipped objects, as shown in the following example:
 </Image>
 ```
 
-In this example, the image is clipped using an `EllipseGeometry`, and then a shadow is added to the clipped image:
+In this example, the image is clipped using an `EllipseGeometry`, and a shadow is added to the clipped image:
 
 :::image type="content" source="shadow-images/clipped-image.png" alt-text="Screenshot of a clipped image with a shadow applied.":::
 
 <!-- For more information about clipping an element, see [Clip with a Geometry](). -->
 
-## Create a gradient Shadow
+## Create a Shadow gradient
 
 The color of a shadow is defined using a `Brush`. Therefore, gradient shadows can also be added to controls:
 
