@@ -10,7 +10,7 @@ ms.date: 09/14/2021
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
-Each platform entry point calls a `CreateMauiApp` method on the static `MauiProgram` class (formerly `Startup`) which creates and returns a `MauiApp`, the entry point for your app.
+Each platform entry point calls a `CreateMauiApp` method on the static `MauiProgram` class that creates and returns a `MauiApp`, the entry point for your app.
 
 The `MauiProgram` class must at a minimum provide an app to run:
 
@@ -20,18 +20,20 @@ using Microsoft.Maui.Controls.Compatibility;
 using Microsoft.Maui.Controls.Hosting;
 using Microsoft.Maui.Hosting;
 
-public static class MauiProgram
+namespace MyMauiApp
 {
-    public static MauiApp CreateMauiApp()
+    public static class MauiProgram
     {
-        var builder = MauiApp.CreateBuilder();
-        builder
-            .UseMauiApp<App>();
+        public static MauiApp CreateMauiApp()
+        {
+            var builder = MauiApp.CreateBuilder();
+            builder
+                .UseMauiApp<App>();
 
-        return builder.Build();
-    }
+            return builder.Build();
+        }
+    }  
 }
-
 ```
 
 The `App` class derives from the `Application` class:
@@ -46,16 +48,18 @@ public class App : Application
 {
     public App()
     {
+        InitializeComponent();
+
         MainPage = new MainPage();
     }
 }
 ```
 
-In the example above, `MainPage` is a `ContentPage` that defines the UI for the initial page of the app. The `Application` creates a `Window` within which to run the application and display views. You may customize this behavior by overriding the `CreateWindow` method.
+In the example above, `MainPage` is a `ContentPage` that defines the UI for the initial page of the app. The `Application` creates a `Window` within which to run the application and display views. You can customize this behavior by overriding the `CreateWindow` method.
 
 ## Register fonts
 
-Fonts can be added to your app and referenced by filename or alias. This is accomplished by invoking the `ConfigureFonts` method on the `IAppHostBuilder` object. Then, on the `IFontCollection` object, call the `AddFont` method to add the required font:
+Fonts can be added to your app and referenced by filename or alias. This is accomplished by invoking the `ConfigureFonts` method on the `MauiAppBuilder` object. Then, on the `IFontCollection` object, call the `AddFont` method to add the required font:
 
 ```csharp
 using Microsoft.Maui;
@@ -63,19 +67,22 @@ using Microsoft.Maui.Controls.Compatibility;
 using Microsoft.Maui.Controls.Hosting;
 using Microsoft.Maui.Hosting;
 
-public static class MauiProgram
+namespace MyMauiApp
 {
-    public static MauiApp CreateMauiApp()
+    public static class MauiProgram
     {
-        var builder = MauiApp.CreateBuilder();
-        builder
-            .UseMauiApp<App>()
-            .ConfigureFonts(fonts =>
-            {
-                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-            });
+        public static MauiApp CreateMauiApp()
+        {
+            var builder = MauiApp.CreateBuilder();
+            builder
+                .UseMauiApp<App>()
+                .ConfigureFonts(fonts =>
+                {
+                    fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                });
 
-        return builder.Build();
+            return builder.Build();
+        }
     }
 }
 ```
@@ -124,7 +131,7 @@ builder
 
 ## Register handlers
 
-To register your own handlers, call the `ConfigureMauiHandlers` method on the `IAppHostBuilder` object. Then, on the `IMauiHandlersCollection` object, call the `AddHandler` method to add the required handler:
+To register your own handlers, call the `ConfigureMauiHandlers` method on the `MauiAppBuilder` object. Then, on the `IMauiHandlersCollection` object, call the `AddHandler` method to add the required handler:
 
 ```csharp
 using Microsoft.Maui;
@@ -132,18 +139,21 @@ using Microsoft.Maui.Controls.Compatibility;
 using Microsoft.Maui.Controls.Hosting;
 using Microsoft.Maui.Hosting;
 
-public static class MauiProgram
+namespace MyMauiApp
 {
-    public static MauiApp CreateMauiApp()
+    public static class MauiProgram
     {
-        var builder = MauiApp.CreateBuilder();
-        builder
-            .UseMauiApp<App>()        
-            .ConfigureMauiHandlers(handlers =>
-            {
-                handlers.AddHandler(typeof(MyEntry), typeof(MyEntryHandler));
-            });     
-        return builder.Build();    
+        public static MauiApp CreateMauiApp()
+        {
+            var builder = MauiApp.CreateBuilder();
+            builder
+                .UseMauiApp<App>()        
+                .ConfigureMauiHandlers(handlers =>
+                {
+                    handlers.AddHandler(typeof(MyEntry), typeof(MyEntryHandler));
+                });     
+            return builder.Build();    
+        }
     }
 }
 ```
@@ -152,7 +162,7 @@ In this example, the `MyEntryHandler` handler is registered against the `MyEntry
 
 ## Register renderers
 
-To use controls backed by .NET MAUI handlers, with specific controls backed by Xamarin.Forms renderers, call the `ConfigureMauiHandlers` method on the `IAppHostBuilder` object. Then, on the `IMauiHandlersCollection` object, call the `AddCompatibilityRenderer` method to add the required renderer:
+To use controls backed by .NET MAUI handlers, with specific controls backed by Xamarin.Forms renderers, call the `ConfigureMauiHandlers` method on the `MauiAppBuilder` object. Then, on the `IMauiHandlersCollection` object, call the `AddCompatibilityRenderer` method to add the required renderer:
 
 ```csharp
 using Microsoft.Maui;
@@ -160,32 +170,35 @@ using Microsoft.Maui.Hosting;
 using Microsoft.Maui.Controls.Compatibility;
 using Microsoft.Maui.Controls.Hosting;
 
-public static class MauiProgram
+namespace MyMauiApp
 {
-    public static MauiApp CreateMauiApp()
+    public static class MauiProgram
     {
-        var builder = MauiApp.CreateBuilder();
-        builder
-            .UseMauiApp<App>()
-            #if __ANDROID__
-            .ConfigureMauiHandlers(handlers =>
-            {
-                handlers.AddCompatibilityRenderer(typeof(Microsoft.Maui.Controls.BoxView),
-                    typeof(Microsoft.Maui.Controls.Compatibility.Platform.Android.BoxRenderer));
-                handlers.AddCompatibilityRenderer(typeof(Microsoft.Maui.Controls.Frame),
-                    typeof(Microsoft.Maui.Controls.Compatibility.Platform.Android.FastRenderers.FrameRenderer));
-            });
-            #elif __IOS__
-            .ConfigureMauiHandlers(handlers =>
-            {
-                handlers.AddCompatibilityRenderer(typeof(Microsoft.Maui.Controls.BoxView),
-                    typeof(Microsoft.Maui.Controls.Compatibility.Platform.iOS.BoxRenderer));
-                handlers.AddCompatibilityRenderer(typeof(Microsoft.Maui.Controls.Frame),
-                    typeof(Microsoft.Maui.Controls.Compatibility.Platform.iOS.FrameRenderer));
-            });
-            #endif   
+        public static MauiApp CreateMauiApp()
+        {
+            var builder = MauiApp.CreateBuilder();
+            builder
+                .UseMauiApp<App>()
+                #if __ANDROID__
+                .ConfigureMauiHandlers(handlers =>
+                {
+                    handlers.AddCompatibilityRenderer(typeof(Microsoft.Maui.Controls.BoxView),
+                        typeof(Microsoft.Maui.Controls.Compatibility.Platform.Android.BoxRenderer));
+                    handlers.AddCompatibilityRenderer(typeof(Microsoft.Maui.Controls.Frame),
+                        typeof(Microsoft.Maui.Controls.Compatibility.Platform.Android.FastRenderers.FrameRenderer));
+                });
+                #elif __IOS__
+                .ConfigureMauiHandlers(handlers =>
+                {
+                    handlers.AddCompatibilityRenderer(typeof(Microsoft.Maui.Controls.BoxView),
+                        typeof(Microsoft.Maui.Controls.Compatibility.Platform.iOS.BoxRenderer));
+                    handlers.AddCompatibilityRenderer(typeof(Microsoft.Maui.Controls.Frame),
+                        typeof(Microsoft.Maui.Controls.Compatibility.Platform.iOS.FrameRenderer));
+                });
+                #endif   
 
-        return builder.Build();         
+            return builder.Build();         
+        }
     }
 }
 ```
