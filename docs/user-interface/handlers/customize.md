@@ -12,7 +12,7 @@ ms.date: 08/13/2021
 
 For example, on iOS a .NET MAUI handler will map a .NET MAUI `Button` to an iOS `UIButton`. On Android, the `Button` will be mapped to a `AppCompatButton`:
 
-:::image type="content" source="customize-images/button-handler.png" alt-text="Button handler architecture." border="false":::
+:::image type="content" source="media/customize/button-handler.png" alt-text="Button handler architecture." border="false":::
 
 Handlers can be accessed through a control-specific interface provided by .NET MAUI, such as `IButton` for a `Button`. This avoids the cross-platform control having to reference its handler, and the handler having to reference the cross-platform control. The mapping of the cross-platform control API to the platform API is provided by a *mapper*.
 
