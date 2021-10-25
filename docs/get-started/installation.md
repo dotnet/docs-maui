@@ -18,11 +18,11 @@ To create .NET MAUI apps, you'll need [Visual Studio 2022 Preview 5](https://vis
 - Universal Windows Platform development
 - ASP.NET and web development (required for .NET MAUI Blazor apps)
 
-  :::image type="content" source="installation-images/vs-workloads.png" alt-text="Visual Studio workloads for .NET MAUI.":::
+  :::image type="content" source="media/installation/vs-workloads.png" alt-text="Visual Studio workloads for .NET MAUI.":::
 
 In the **Installation details** > **Mobile development with .NET** section of the installation window, check the **.NET MAUI (Preview)** optional workload:
 
-:::image type="content" source="installation-images/vs-optional.png" alt-text="Visual Studio installer enabling the .NET MAUI optional workload.":::
+:::image type="content" source="media/installation/vs-optional.png" alt-text="Visual Studio installer enabling the .NET MAUI optional workload.":::
 
 ## Windows (WinUI 3)
 
