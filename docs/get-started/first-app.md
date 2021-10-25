@@ -4,6 +4,8 @@ description: "Learn how to create and run your first .NET MAUI app on Android."
 ms.date: 10/20/2021
 ---
 
+<!-- zone_pivot_groups: preview-platforms -->
+
 # Build your first app
 
 In this tutorial, you'll learn how to create and run your first .NET Multi-platform App UI (.NET MAUI) app.
@@ -11,6 +13,8 @@ In this tutorial, you'll learn how to create and run your first .NET Multi-platf
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
 Visual Studio for Mac support will arrive in a future release.
+
+<!-- ::: zone pivot="windows" -->
 
 ## Prerequisites
 
@@ -81,3 +85,72 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022, 
 1. In the running app in the Android emulator, press the **CLICK ME** button several times and observe that the count of the number of button clicks is incremented.
 
     :::image type="content" source="first-app-images/running-app.png" alt-text="App running in the Android emulator." lightbox="first-app-images/running-app-large.png":::
+
+<!-- ## Build and debug iOS apps
+
+If, while connecting Visual Studio to your Mac through Xamarin Mac Agent (XMA), you are prompted to install a different version of the SDK, you can ignore the prompt since it refers to a legacy version of XMA.
+
+> [!NOTE]
+> Visual Studio 2022 can only currently deploy .NET MAUI iOS apps to the iOS simulator, and not to physical devices.
+
+::: zone-end
+::: zone pivot="dotnet-cli"
+
+## Prerequisites
+
+- The latest preview of Visual Studio 2022, with the required workloads. For more information, see [Installation](installation.md).
+- A configured Android emulator.
+
+## Get started with .NET command-line interface
+
+In this tutorial, you'll create and run your first .NET MAUI app using the .NET command-line interface (CLI):
+
+1. In the .NET CLI, create a new .NET MAUI app:
+
+    ```dotnetcli
+    dotnet new maui -n HelloMauiPreview
+    ```
+
+1. In the .NET CLI, change directory to the newly created project:
+
+    ```dotnetcli
+    cd HelloMauiPreview
+    ```
+
+1. In the .NET CLI, change directory to the single project and restore its dependencies:
+
+    ```dotnetcli
+    cd HelloMauiPreview
+    dotnet restore
+    ```
+
+1. In the .NET CLI, build and launch the app on your chosen platform:
+
+    ```dotnetcli
+    dotnet build -t:Run -f net6.0-android
+    dotnet build -t:Run -f net6.0-ios
+    dotnet build -t:Run -f net6.0-maccatalyst
+    ```
+
+    > [!NOTE]
+    > These commands will launch the app on the default platform device, if one can be found. On Android, it's recommended to start an emulator before building and launching your app.
+
+## Select an iOS simulator
+
+It's possible to specify which simulator is launched and used for net6.0-ios by specifying the `_DeviceName` MSBuild property:
+
+```dotnetcli
+dotnet build -t:Run -f net6.0-ios -p:_DeviceName=:v2:udid=<UDID>
+```
+
+You can retrieve a list of possible unique device id (UDID) values by executing the `simctl list` command:
+
+```console
+/Applications/Xcode.app/Contents/Developer/usr/bin/simctl list
+```
+
+The default iOS simulator will be launched if you don't specify a UDID.
+
+::: zone-end
+
+-->
