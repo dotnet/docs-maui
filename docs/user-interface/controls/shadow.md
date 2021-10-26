@@ -40,7 +40,7 @@ The following XAML example shows how to add a shadow to an `Image`:
 
 In this example, a black shadow is added to the right and bottom of the image:
 
-:::image type="content" source="shadow-images/image.png" alt-text="Screenshot of an image with a shadow applied.":::
+:::image type="content" source="media/shadow/image.png" alt-text="Screenshot of an image with a shadow applied.":::
 
 Shadows can also be added to clipped objects, as shown in the following example:
 
@@ -65,7 +65,7 @@ Shadows can also be added to clipped objects, as shown in the following example:
 
 In this example, the image is clipped using an `EllipseGeometry`, and a shadow is added to the clipped image:
 
-:::image type="content" source="shadow-images/clipped-image.png" alt-text="Screenshot of a clipped image with a shadow applied.":::
+:::image type="content" source="media/shadow/clipped-image.png" alt-text="Screenshot of a clipped image with a shadow applied.":::
 
 <!-- For more information about clipping an element, see [Clip with a Geometry](). -->
 
@@ -99,6 +99,6 @@ The color of a shadow is defined using a `Brush`. Therefore, gradient shadows ca
 
 In this example, a linear gradient shadow is added to the round rectangle, with the gradient interpolating vertically from gray to black:
 
-:::image type="content" source="shadow-images/roundrectangle.png" alt-text="Screenshot of a round rectangle with a shadow applied.":::
+:::image type="content" source="media/shadow/roundrectangle.png" alt-text="Screenshot of a round rectangle with a shadow applied.":::
 
 <!-- For more information about brushes, see [Brushes](). -->
