@@ -51,6 +51,6 @@ The following XAML example shows how to draw a border around a `Label`:
 
 In this example, a border with rounded top-left and bottom-right corners is drawn around a `Label`. The border shape is defined as a `RoundRectangle` object, whose `CornerRadius` property is set to a `Thickness` value that enables independent control of each corner of the rectangle:
 
-:::image type="content" source="border-images/border.png" alt-text="Border around a Label.":::
+:::image type="content" source="media/border/border.png" alt-text="Border around a Label.":::
 
 <!-- Todo (potentially): .NET MAUI may add a markup extension for setting the stroke shape directly, rather than having to instantiate one. -->
