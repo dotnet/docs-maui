@@ -51,7 +51,7 @@ In addition to these events, each control also has an overridable `OnHandlerChan
 
 The .NET MAUI `Entry` is a single-line text input control, that implements the `IEntry` interface. On iOS, the `EntryHandler` maps the `Entry` to an iOS `UITextField` control. On Android, the `Entry` is mapped to an `AppCompatEditText` control, and on Windows the `Entry` is mapped to a `TextBox` control:
 
-:::image type="content" source="customize-images/entry-handler.png" alt-text="Entry handler architecture." border="false":::
+:::image type="content" source="media/customize/entry-handler.png" alt-text="Entry handler architecture." border="false":::
 
 The `EntryMapper`, in the `EntryHandler` class, maps the cross-platform control API to the native control API. This mapper can be modified to customize the control on each platform:
 
