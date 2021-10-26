@@ -287,4 +287,4 @@ image.Source = new FontImageSource
 
 The following screenshot shows several font icons being displayed:
 
-:::image type="content" source="fonts-images/font-image-source.png" alt-text="Screenshot of three font icons.":::
+:::image type="content" source="media/fonts/font-image-source.png" alt-text="Screenshot of three font icons.":::
