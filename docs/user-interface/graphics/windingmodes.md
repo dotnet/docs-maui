@@ -44,7 +44,7 @@ canvas.DrawPath(path);
 
 In this example, the path is drawn twice. The `FillPath` method is used to fill the path with blue, while the `DrawPath` method outlines the path with a red stroke. The `FillPath` overload used omits the `WindingMode` argument, and instead automatically uses the `NonZero` winding mode. This results in all the enclosed areas of the path being filled:
 
-:::image type="content" source="windingmodes-images/nonzero.png" alt-text="Screenshot of a five-pointed star, using the non-zero winding mode.":::
+:::image type="content" source="media/windingmodes/nonzero.png" alt-text="Screenshot of a five-pointed star, using the non-zero winding mode.":::
 
 > [!NOTE]
 > For many paths, the `NonZero` winding mode often fills all the enclosed areas of a path.
@@ -78,4 +78,4 @@ canvas.DrawPath(path);
 
 In this example, the path is drawn twice. The `FillPath` method is used to fill the path with blue, while the `DrawPath` method outlines the path with a red stroke. The `FillPath` overload used specifies that the `EvenOdd` winding mode is used. This results in the central area of the star not being filled:
 
-:::image type="content" source="windingmodes-images/evenodd.png" alt-text="Screenshot of a five-pointed star, using the even-odd winding mode.":::
+:::image type="content" source="media/windingmodes/evenodd.png" alt-text="Screenshot of a five-pointed star, using the even-odd winding mode.":::

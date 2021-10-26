@@ -41,7 +41,7 @@ canvas.FillRectangle(10, 10, 250, 250);
 
 In this example, the pattern is a 10x10 area that contains a diagonal line from (0,0) to (10,10), and a diagonal line from (0,10) to (10,0). The `Pattern` property of the `PatternPaint` object is set to the pattern, and the `PatternPaint` object is set as the paint to fill an object with. A rectangle is then drawn that's filled with the paint:
 
-:::image type="content" source="pattern-images/patternpaint.png" alt-text="Screenshot of a rectangle, filled with a silver pattern.":::
+:::image type="content" source="media/pattern/patternpaint.png" alt-text="Screenshot of a rectangle, filled with a silver pattern.":::
 
 > [!NOTE]
 > A `PatternPaint` object can also be created from a `PicturePattern` object by the `AsPaint` extension method.

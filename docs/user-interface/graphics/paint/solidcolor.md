@@ -27,7 +27,7 @@ canvas.FillRoundedRectangle(solidRectangle, 12);
 
 The `SolidPaint` object is specified as the first argument to the `SetFillPaint` method. Therefore, a filled rounded rectangle is painted with a silver `SolidPaint` object:
 
-:::image type="content" source="solidcolor-images/solidpaint.png" alt-text="Screenshot of a rounded rectangle, filled with a silver SolidPaint object.":::
+:::image type="content" source="media/solidcolor/solidpaint.png" alt-text="Screenshot of a rounded rectangle, filled with a silver SolidPaint object.":::
 
 Alternatively, the color can be specified with the `Color` property:
 

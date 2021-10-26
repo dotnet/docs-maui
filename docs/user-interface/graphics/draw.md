@@ -29,7 +29,7 @@ canvas.DrawLine(10, 50, 90, 100);
 
 In this example, a red diagonal line is drawn from (10,50) to (90,100):
 
-:::image type="content" source="draw-images/line.png" alt-text="Screenshot of a red line.":::
+:::image type="content" source="media/draw/line.png" alt-text="Screenshot of a red line.":::
 
 > [!NOTE]
 > There's also a `DrawLine` overload that takes two `PointF` arguments.
@@ -45,7 +45,7 @@ canvas.DrawLine(10, 50, 90, 100);
 
 In this example, a red dashed diagonal line is drawn from (10,50) to (90,100):
 
-:::image type="content" source="draw-images/dashed-line.png" alt-text="Screenshot of a dashed red line.":::
+:::image type="content" source="media/draw/dashed-line.png" alt-text="Screenshot of a dashed red line.":::
 
 For more information about dashed lines, see [Draw dashed objects](#draw-dashed-objects).
 
@@ -63,7 +63,7 @@ canvas.DrawEllipse(200, 50, 150, 50);
 
 In this example, a red ellipse with dimensions 150x50 is drawn at (200,50):
 
-:::image type="content" source="draw-images/ellipse.png" alt-text="Screenshot of a red ellipse.":::
+:::image type="content" source="media/draw/ellipse.png" alt-text="Screenshot of a red ellipse.":::
 
 To draw a circle, make the `width` and `height` arguments to the `DrawEllipse` method equal:
 
@@ -75,7 +75,7 @@ canvas.DrawEllipse(200, 50, 150, 150);
 
 In this example, a red circle with dimensions 150x150 is drawn at (200,50):
 
-:::image type="content" source="draw-images/circle.png" alt-text="Screenshot of a red circle.":::
+:::image type="content" source="media/draw/circle.png" alt-text="Screenshot of a red circle.":::
 
 > [!NOTE]
 > Circles can also be drawn with the `DrawCircle` method.
@@ -91,7 +91,7 @@ canvas.FillEllipse(200, 50, 150, 50);
 
 In this example, a red filled ellipse with dimensions 150x50 is drawn at (200,50):
 
-:::image type="content" source="draw-images/filled-ellipse.png" alt-text="Screenshot of a red filled ellipse.":::
+:::image type="content" source="media/draw/filled-ellipse.png" alt-text="Screenshot of a red filled ellipse.":::
 
 The `FillColor` property of the `ICanvas` object must be set to a `Color` before invoking the `FillEllipse` method.
 
@@ -114,7 +114,7 @@ canvas.DrawRectangle(50, 100, 100, 50);
 
 In this example, a dark blue rectangle with dimensions 100x50 is drawn at (50,100):
 
-:::image type="content" source="draw-images/rectangle.png" alt-text="Screenshot of a dark blue rectangle.":::
+:::image type="content" source="media/draw/rectangle.png" alt-text="Screenshot of a dark blue rectangle.":::
 
 To draw a square, make the `width` and `height` arguments to the `DrawRectangle` method equal:
 
@@ -126,7 +126,7 @@ canvas.DrawRectangle(50, 100, 100, 100);
 
 In this example, a dark blue square with dimensions 100x100 is drawn at (50,100):
 
-:::image type="content" source="draw-images/square.png" alt-text="Screenshot of a dark blue square.":::
+:::image type="content" source="media/draw/square.png" alt-text="Screenshot of a dark blue square.":::
 
 For information about drawing a dashed rectangle, see [Draw dashed objects](#draw-dashed-objects).
 
@@ -139,7 +139,7 @@ canvas.FillRectangle(50, 100, 100, 50);
 
 In this example, a dark blue filled rectangle with dimensions 100x50 is drawn at (50,100):
 
-:::image type="content" source="draw-images/filled-rectangle.png" alt-text="Screenshot of a dark blue filled rectangle.":::
+:::image type="content" source="media/draw/filled-rectangle.png" alt-text="Screenshot of a dark blue filled rectangle.":::
 
 The `FillColor` property of the `ICanvas` object must be set to a `Color` before invoking the `FillRectangle` method.
 
@@ -160,7 +160,7 @@ canvas.DrawRoundedRectangle(50, 100, 100, 50, 12);
 
 In this example, a green rectangle with rounded corners and dimensions 100x50 is drawn at (50,100):
 
-:::image type="content" source="draw-images/rounded-rectangle.png" alt-text="Screenshot of a green rounded rectangle.":::
+:::image type="content" source="media/draw/rounded-rectangle.png" alt-text="Screenshot of a green rounded rectangle.":::
 
 For information about drawing a dashed rounded rectangle, see [Draw dashed objects](#draw-dashed-objects).
 
@@ -173,7 +173,7 @@ canvas.FillRoundedRectangle(50, 100, 100, 50, 12);
 
 In this example, a green filled rectangle with rounded corners and dimensions 100x50 is drawn at (50,100):
 
-:::image type="content" source="draw-images/filled-rounded-rectangle.png" alt-text="Screenshot of a green filled rounded rectangle.":::
+:::image type="content" source="media/draw/filled-rounded-rectangle.png" alt-text="Screenshot of a green filled rounded rectangle.":::
 
 The `FillColor` property of the `ICanvas` object must be set to a `Color` before invoking the `FillRoundedRectangle` method.
 
@@ -194,7 +194,7 @@ canvas.DrawArc(50, 50, 100, 100, 0, 180, true, false);
 
 In this example, a teal arc of dimensions 100x100 is drawn at (50,50). The arc is drawn in a clockwise direction from 0 degrees to 180 degrees, and isn't closed:
 
-:::image type="content" source="draw-images/arc.png" alt-text="Screenshot of a teal arc.":::
+:::image type="content" source="media/draw/arc.png" alt-text="Screenshot of a teal arc.":::
 
 For information about drawing a dashed arc, see [Draw dashed objects](#draw-dashed-objects).
 
@@ -207,7 +207,7 @@ canvas.FillArc(50, 50, 100, 100, 0, 180, true);
 
 In this example, a filled teal arc of dimensions 100x100 is drawn at (50,50). The arc is drawn in a clockwise direction from 0 degrees to 180 degrees, and is closed automatically:
 
-:::image type="content" source="draw-images/filled-arc.png" alt-text="Screenshot of a filled teal arc.":::
+:::image type="content" source="media/draw/filled-arc.png" alt-text="Screenshot of a filled teal arc.":::
 
 The `FillColor` property of the `ICanvas` object must be set to a `Color` before invoking the `FillArc` method.
 
@@ -253,7 +253,7 @@ canvas.DrawPath(path);
 
 In this example, a closed green triangle is drawn:
 
-:::image type="content" source="draw-images/path.png" alt-text="Screenshot of a closed green triangle.":::
+:::image type="content" source="media/draw/path.png" alt-text="Screenshot of a closed green triangle.":::
 
 A filled path can be drawn with the `FillPath`, which also requires a `PathF` argument:
 
@@ -268,7 +268,7 @@ canvas.FillPath(path);
 
 In this example, a filled slate blue triangle is drawn:
 
-:::image type="content" source="draw-images/filled-path.png" alt-text="Screenshot of a filled slate blue triangle.":::
+:::image type="content" source="media/draw/filled-path.png" alt-text="Screenshot of a filled slate blue triangle.":::
 
 The `FillColor` property of the `ICanvas` object must be set to a `Color` before invoking the `FillPath` method.
 
@@ -297,7 +297,7 @@ if (image != null)
 
 In this example, an image is retrieved from the assembly and loaded as a stream. It's then drawn at actual size at (50,50):
 
-:::image type="content" source="draw-images/image.png" alt-text="Screenshot of an image.":::
+:::image type="content" source="media/draw/image.png" alt-text="Screenshot of an image.":::
 
 > [!IMPORTANT]
 > Loading an image that's embedded in an assembly requires the image to have its build action set to **Embedded Resource**.
@@ -331,7 +331,7 @@ canvas.DrawString("This text has a shadow.", 20, 200, 300, 100, HorizontalAlignm
 
 In this example, strings with different appearance and alignment options are displayed:
 
-:::image type="content" source="draw-images/string.png" alt-text="Screenshot of strings using different alignment options.":::
+:::image type="content" source="media/draw/string.png" alt-text="Screenshot of strings using different alignment options.":::
 
 > [!NOTE]
 > The `DrawString` overloads also enable truncation and line spacing to be specified.
@@ -359,7 +359,7 @@ canvas.DrawText(attributedText, 10, 10, 400, 400);
 
 In this example, markdown is converted to attributed text and displayed with the correct styling:
 
-:::image type="content" source="draw-images/text.png" alt-text="Screenshot of correctly rendered markdown.":::
+:::image type="content" source="media/draw/text.png" alt-text="Screenshot of correctly rendered markdown.":::
 
 ## Draw with fill and stroke
 
@@ -383,7 +383,7 @@ canvas.DrawPath(path);
 
 In this example, the stroke and fill colors for a `PathF` object are specified. The filled circle is drawn, then the outline stroke of the circle:
 
-:::image type="content" source="draw-images/circle-outlined.png" alt-text="Screenshot of a circle drawn with fill and stroke.":::
+:::image type="content" source="media/draw/circle-outlined.png" alt-text="Screenshot of a circle drawn with fill and stroke.":::
 
 > [!WARNING]
 > Calling a draw method before a fill method will result in an incorrect z-order. The fill will be drawn over the stroke, and the stroke won't be visible.
@@ -414,7 +414,7 @@ canvas.FillRoundedRectangle(300, 50, 90, 100, 25);
 
 In these examples, shadows whose light sources are in different positions are added to the filled objects, with identical amounts of blur:
 
-:::image type="content" source="draw-images/shadow.png" alt-text="Screenshot of a objects drawn with shadows.":::
+:::image type="content" source="media/draw/shadow.png" alt-text="Screenshot of a objects drawn with shadows.":::
 
 ## Draw dashed objects
 
@@ -431,7 +431,7 @@ canvas.DrawRectangle(100, 50, 90, 100);
 
 In this example, a square with a regular dashed stroke is drawn:
 
-:::image type="content" source="draw-images/dashed-square1.png" alt-text="Screenshot of a regular dashed square.":::
+:::image type="content" source="media/draw/dashed-square1.png" alt-text="Screenshot of a regular dashed square.":::
 
 The following example shows how to draw a dashed square, using an irregular dash:
 
@@ -444,7 +444,7 @@ canvas.DrawRectangle(100, 50, 90, 100);
 
 In this example, a square with an irregular dashed stroke is drawn:
 
-:::image type="content" source="draw-images/dashed-square2.png" alt-text="Screenshot of an irregular dashed square.":::
+:::image type="content" source="media/draw/dashed-square2.png" alt-text="Screenshot of an irregular dashed square.":::
 
 ## Control line ends
 
@@ -467,7 +467,7 @@ canvas.DrawLine(100, 160, 300, 160);
 
 In this example, the red line is rounded at the start and end of the line:
 
-:::image type="content" source="draw-images/linecap.png" alt-text="Screenshot of three lines with different line caps." border="false":::
+:::image type="content" source="media/draw/linecap.png" alt-text="Screenshot of three lines with different line caps." border="false":::
 
 ## Control line joins
 
@@ -496,7 +496,7 @@ canvas.DrawPath(path);
 
 In this example, the blue `PathF` object has rounded joins at its vertices:
 
-:::image type="content" source="draw-images/linejoin.png" alt-text="Screenshot of the effect of the three different LineJoin enumeration members." border="false":::
+:::image type="content" source="media/draw/linejoin.png" alt-text="Screenshot of the effect of the three different LineJoin enumeration members." border="false":::
 
 ## Clip objects
 
@@ -527,7 +527,7 @@ if (image != null)
 
 In this example, the image is clipped using a `PathF` object that defines a circle that's centered at (160,150) with a radius of 90. The result is that only the part of the image within the circle is visible:
 
-:::image type="content" source="draw-images/clippath.png" alt-text="Screenshot of an image that's been clipped with the ClipPath method.":::
+:::image type="content" source="media/draw/clippath.png" alt-text="Screenshot of an image that's been clipped with the ClipPath method.":::
 
 > [!IMPORTANT]
 > The `ClipPath` method has an overload that enables a `WindingMode` to be specified, which sets the fill algorithm that's used when clipping. For more information, see [Winding modes](windingmodes.md).
@@ -551,4 +551,4 @@ if (image != null)
 
 In this example, the area defined by the rectangle that's specified by the arguments supplied to the `SubtractFromClip` method is clipped from the image. The result is that only the parts of the image outside the rectangle are visible:
 
-:::image type="content" source="draw-images/subtractfromclip.png" alt-text="Screenshot of an image that's been clipped with the SubtractFromClip method.":::
+:::image type="content" source="media/draw/subtractfromclip.png" alt-text="Screenshot of an image that's been clipped with the SubtractFromClip method.":::

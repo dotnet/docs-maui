@@ -21,7 +21,7 @@ A linear gradient's gradient stops are positioned along the gradient axis. The o
 
 The `StartPoint` and `EndPoint` properties are relative to the graphical object being painted. (0,0) represents the top-left corner of the object being painted, and (1,1) represents the bottom-right corner of the object being painted. The following diagram shows the gradient axis for a diagonal linear gradient brush:
 
-:::image type="content" source="lineargradient-images/gradient-axis.png" alt-text="The gradient axis for diagonal linear gradient." border="false":::
+:::image type="content" source="media/lineargradient/gradient-axis.png" alt-text="The gradient axis for diagonal linear gradient." border="false":::
 
 In this diagram, the dashed line shows the gradient axis, which highlights the interpolation path of the gradient from the start point to the end point.
 
@@ -48,7 +48,7 @@ canvas.FillRoundedRectangle(linearRectangle, 12);
 
 In this example, the rounded rectangle is painted with a linear gradient that interpolates horizontally from yellow to green:
 
-:::image type="content" source="lineargradient-images/horizontal.png" alt-text="Screenshot of a rounded rectangle, filled with a horizontal linear gradient.":::
+:::image type="content" source="media/lineargradient/horizontal.png" alt-text="Screenshot of a rounded rectangle, filled with a horizontal linear gradient.":::
 
 ### Create a vertical linear gradient
 
@@ -73,7 +73,7 @@ canvas.FillRoundedRectangle(linearRectangle, 12);
 
 In this example, the rounded rectangle is painted with a linear gradient that interpolates vertically from yellow to green:
 
-:::image type="content" source="lineargradient-images/vertical.png" alt-text="Screenshot of a rounded rectangle, filled with a vertical linear gradient.":::
+:::image type="content" source="media/lineargradient/vertical.png" alt-text="Screenshot of a rounded rectangle, filled with a vertical linear gradient.":::
 
 ### Create a diagonal linear gradient
 
@@ -98,4 +98,4 @@ canvas.FillRoundedRectangle(linearRectangle, 12);
 
 In this example, the rounded rectangle is painted with a linear gradient that interpolates diagonally from yellow to green:
 
-:::image type="content" source="lineargradient-images/diagonal.png" alt-text="Screenshot of a rounded rectangle, filled with a diagonal linear gradient.":::
+:::image type="content" source="media/lineargradient/diagonal.png" alt-text="Screenshot of a rounded rectangle, filled with a diagonal linear gradient.":::

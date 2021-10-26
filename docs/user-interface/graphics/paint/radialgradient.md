@@ -40,7 +40,7 @@ canvas.FillRoundedRectangle(radialRectangle, 12);
 
 In this example, the rounded rectangle is painted with a radial gradient that interpolates from red to dark blue. The center of the radial gradient is positioned in the center of the rectangle:
 
-:::image type="content" source="radialgradient-images/center.png" alt-text="Screenshot of a rounded rectangle, filled with a centered radial gradient.":::
+:::image type="content" source="media/radialgradient/center.png" alt-text="Screenshot of a rounded rectangle, filled with a centered radial gradient.":::
 
 The following example moves the center of the radial gradient to the top-left corner of the rectangle:
 
@@ -61,7 +61,7 @@ canvas.FillRoundedRectangle(radialRectangle, 12);
 
 In this example, the rounded rectangle is painted with a radial gradient that interpolates from red to dark blue. The center of the radial gradient is positioned in the top-left of the rectangle:
 
-:::image type="content" source="radialgradient-images/top-left.png" alt-text="Screenshot of a rounded rectangle, filled with a top-left radial gradient.":::
+:::image type="content" source="media/radialgradient/top-left.png" alt-text="Screenshot of a rounded rectangle, filled with a top-left radial gradient.":::
 
 The following example moves the center of the radial gradient to the bottom-right corner of the rectangle:
 
@@ -82,4 +82,4 @@ canvas.FillRoundedRectangle(radialRectangle, 12);
 
 In this example, the rounded rectangle is painted with a radial gradient that interpolates from red to dark blue. The center of the radial gradient is positioned in the bottom-right of the rectangle:
 
-:::image type="content" source="radialgradient-images/bottom-right.png" alt-text="Screenshot of a rounded rectangle, filled with a bottom-right radial gradient.":::
+:::image type="content" source="media/radialgradient/bottom-right.png" alt-text="Screenshot of a rounded rectangle, filled with a bottom-right radial gradient.":::

@@ -10,7 +10,7 @@ ms.date: 07/30/2021
 
 .NET Multi-platform App UI (.NET MAUI) graphics enables different compositing operations for graphical objects to be specified by the `ICanvas.BlendMode` property. This property determines what happens when a graphical object (called the *source*), is rendered on top of an existing graphical object (called the *destination*). By default, the last drawn object obscures the objects drawn underneath it:
 
-:::image type="content" source="blendmodes-images/normal.png" alt-text="Screenshot of a three colored circles, using the normal blend mode.":::
+:::image type="content" source="media/blendmodes/normal.png" alt-text="Screenshot of a three colored circles, using the normal blend mode.":::
 
 In this example, the cyan circle is drawn first, followed by the magenta circle, then the yellow circle. Each circle obscures the circle drawn underneath it. This occurs because the default blend mode is `Normal`, which means that the source is drawn over the destination. However, it's possible to specify a different blend mode for a different result. For example, if you specify `DestinationOver`, then in the area where the source and destination intersect, the destination is drawn over the source.
 
@@ -37,27 +37,27 @@ The order that the members are listed in the table above is the same as in the `
 
 The Porter-Duff blend modes, named after Thomas Porter and Tom Duff, define 12 compositing operators that describe how to compute the color resulting from the composition of the source with the destination. These compositing operators can best be described by considering the case of drawing two rectangles that contain transparent areas:
 
-:::image type="content" source="blendmodes-images/porterduff-source-destination.png" alt-text="Screenshot of destination and source rectangles.":::
+:::image type="content" source="media/blendmodes/porterduff-source-destination.png" alt-text="Screenshot of destination and source rectangles.":::
 
 In the image above, the destination is a transparent rectangle except for a brown area that occupies the left and top two-thirds of the display surface. The source is also a transparent rectangle except for a blue area that occupies the right and bottom two-thirds of the display surface. Displaying the source on the destination produces the following result:
 
-:::image type="content" source="blendmodes-images/rectangles-normal.png" alt-text="Screenshot of the two overlapping rectangles, using the Normal blend mode.":::
+:::image type="content" source="media/blendmodes/rectangles-normal.png" alt-text="Screenshot of the two overlapping rectangles, using the Normal blend mode.":::
 
 The transparent pixels of the source allow the background to show through, while the blue source pixels obscure the background. This is the normal case, using the default blend mode of `Normal`. However, it's possible to specify that in the area where the source and destination intersect, the destination appears instead of the source, using the `DestinationOver` blend mode:
 
-:::image type="content" source="blendmodes-images/porterduff-destinationover.png" alt-text="Screenshot of the two overlapping rectangles, using the DestinationOver blend mode.":::
+:::image type="content" source="media/blendmodes/porterduff-destinationover.png" alt-text="Screenshot of the two overlapping rectangles, using the DestinationOver blend mode.":::
 
 The `DestinationIn` blend mode displays only the area where the destination and source intersect, using the destination color:
 
-:::image type="content" source="blendmodes-images/porterduff-destinationin.png" alt-text="Screenshot of the two overlapping rectangles, using the DestinationIn blend mode.":::
+:::image type="content" source="media/blendmodes/porterduff-destinationin.png" alt-text="Screenshot of the two overlapping rectangles, using the DestinationIn blend mode.":::
 
 The `Xor` blend mode causes nothing to appear where the two areas overlap:
 
-:::image type="content" source="blendmodes-images/porterduff-xor.png" alt-text="Screenshot of the two overlapping rectangles, using the Xor blend mode.":::
+:::image type="content" source="media/blendmodes/porterduff-xor.png" alt-text="Screenshot of the two overlapping rectangles, using the Xor blend mode.":::
 
 The colored destination and source rectangles effectively divide the display surface into four unique areas that can be colored in different ways, corresponding to the presence of the destination and source rectangles:
 
-:::image type="content" source="blendmodes-images/porterduff.png" alt-text="Composition options with the Porter-Duff blend modes." border="false":::
+:::image type="content" source="media/blendmodes/porterduff.png" alt-text="Composition options with the Porter-Duff blend modes." border="false":::
 
 The upper-right and lower-left rectangles are always blank because both the destination and source are transparent in those areas. The destination color occupies the upper-left area, so that area can either be colored with the destination color or not at all. Similarly, the source color occupies the lower-right area, so that area can be colored with the source color or not at all.
 
@@ -142,7 +142,7 @@ canvas.FillCircle(center3, radius);
 
 The result is that a combination of any two colors produces red, green, and blue, and a combination of all three colors produces black.
 
-:::image type="content" source="blendmodes-images/multiply.png" alt-text="Screenshot of a three colored circles, using the multiply blend mode.":::
+:::image type="content" source="media/blendmodes/multiply.png" alt-text="Screenshot of a three colored circles, using the multiply blend mode.":::
 
 ## Non-separable blend modes
 
