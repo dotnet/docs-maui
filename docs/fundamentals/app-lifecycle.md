@@ -10,7 +10,7 @@ ms.date: 09/29/2021
 
 The following diagram shows an overview of the .NET MAUI app lifecycle:
 
-:::image type="content" source="app-lifecycle-images/app-lifecycle.png" alt-text=".NET MAUI app lifecycle" border="false":::
+:::image type="content" source="media/app-lifecycle/app-lifecycle.png" alt-text=".NET MAUI app lifecycle" border="false":::
 
 In the diagram, the gray oval indicates that the app isn't loaded into memory. The light blue ovals indicate that the app is in memory. The arcs indicate events that are raised by .NET MAUI, that provide notifications to the running app.
 
