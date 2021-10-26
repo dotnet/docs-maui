@@ -16,7 +16,7 @@ To create .NET MAUI apps, you'll need Visual Studio 17.1 Preview 1. Either insta
 
 - Mobile development with .NET
 
-  :::image type="content" source="installation-images/vs-workloads.png" alt-text="Visual Studio workloads for .NET MAUI.":::
+  :::image type="content" source="media/installation/vs-workloads.png" alt-text="Visual Studio workloads for .NET MAUI.":::
 
 ## Windows (WinUI 3)
 
