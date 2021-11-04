@@ -40,10 +40,6 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022, 
 
     :::image type="content" source="media/first-app/restored-dependencies.png" alt-text="Restored dependencies.":::
 
-1. In the Visual Studio toolbar, press the **Android Emulator** button to start the download of the Android SDK and emulator:
-
-    :::image type="content" source="media/first-app/android-emulator-button.png" alt-text="Android emulator button.":::
-
 1. In the **Android SDK License Acceptance** window, press the **Accept** button:
 
     :::image type="content" source="media/first-app/android-sdk-license.png" alt-text="Android SDK License Acceptance window.":::
@@ -76,7 +72,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022, 
 
     :::image type="content" source="media/first-app/android-device-manager.png" alt-text="Android Device Manager window.":::
 
-1. In the Visual Studio toolbar, press the **Pixel 2 - API 28 (Android 9.0 - API 28)** button to build and run the app:
+1. In the Visual Studio toolbar, press the **Pixel 5 - API 30 (Android 11.0 - API 30)** button to build and run the app:
 
     :::image type="content" source="media/first-app/pixel2-api28.png" alt-text="Pixel 2 API 28 emulator button.":::
 
