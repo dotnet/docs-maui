@@ -1,9 +1,10 @@
 ---
 title: "Build your first .NET MAUI app"
 description: "Learn how to create and run your first .NET MAUI app on Android."
-zone_pivot_groups: preview-platforms
-ms.date: 10/14/2021
+ms.date: 11/08/2021
 ---
+
+<!-- zone_pivot_groups: preview-platforms -->
 
 # Build your first app
 
@@ -13,17 +14,17 @@ In this tutorial, you'll learn how to create and run your first .NET Multi-platf
 
 Visual Studio for Mac support will arrive in a future release.
 
-::: zone pivot="windows"
+<!-- ::: zone pivot="windows" -->
 
 ## Prerequisites
 
-- The latest preview of Visual Studio 2022, with the required workloads. For more information, see [Installation](installation.md).
+- The latest preview of Visual Studio 2022 17.1, with the required workload. For more information, see [Installation](installation.md).
 
-## Get started with Visual Studio 2022 (Preview)
+## Get started with Visual Studio 2022 17.1 (Preview)
 
 In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022, and run it on an Android emulator:
 
-1. Launch Visual Studio 2022, and in the start window click **Create a new project** to create a new project:
+1. Launch Visual Studio 2022 17.1 (Preview), and in the start window click **Create a new project** to create a new project:
 
     :::image type="content" source="media/first-app/new-solution.png" alt-text="New solution.":::
 
@@ -38,16 +39,6 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022, 
 1. Wait for the project to be created, and its dependencies to be restored:
 
     :::image type="content" source="media/first-app/restored-dependencies.png" alt-text="Restored dependencies.":::
-
-1. In the Visual Studio toolbar, press the **Android Emulator** button to start the download of the Android SDK and emulator:
-
-    :::image type="content" source="media/first-app/android-emulator-button.png" alt-text="Android emulator button.":::
-
-    > [!NOTE]
-    > To work around current issues in Preview 5:
-    >
-    > - If the **Android Emulator** button does not appear, restart Visual Studio and reload the solution.
-    > - If Visual Studio builds the app and attempts to deploy it to Windows, restart Visual Studio a second time and reload the solution.  
 
 1. In the **Android SDK License Acceptance** window, press the **Accept** button:
 
@@ -81,7 +72,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022, 
 
     :::image type="content" source="media/first-app/android-device-manager.png" alt-text="Android Device Manager window.":::
 
-1. In the Visual Studio toolbar, press the **Pixel 2 - API 28 (Android 9.0 - API 28)** button to build and run the app:
+1. In the Visual Studio toolbar, press the **Pixel 5 - API 30 (Android 11.0 - API 30)** button to build and run the app:
 
     :::image type="content" source="media/first-app/pixel2-api28.png" alt-text="Pixel 2 API 28 emulator button.":::
 
@@ -91,7 +82,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022, 
 
     :::image type="content" source="media/first-app/running-app.png" alt-text="App running in the Android emulator." lightbox="media/first-app/running-app-large.png":::
 
-## Build and debug iOS apps
+<!-- ## Build and debug iOS apps
 
 If, while connecting Visual Studio to your Mac through Xamarin Mac Agent (XMA), you are prompted to install a different version of the SDK, you can ignore the prompt since it refers to a legacy version of XMA.
 
@@ -157,3 +148,5 @@ You can retrieve a list of possible unique device id (UDID) values by executing 
 The default iOS simulator will be launched if you don't specify a UDID.
 
 ::: zone-end
+
+-->
