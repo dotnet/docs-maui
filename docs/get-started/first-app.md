@@ -74,7 +74,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022, 
 
 1. In the Visual Studio toolbar, press the **Pixel 5 - API 30 (Android 11.0 - API 30)** button to build and run the app:
 
-    :::image type="content" source="media/first-app/pixel2-api28.png" alt-text="Pixel 2 API 28 emulator button.":::
+    :::image type="content" source="media/first-app/pixel5-api30.png" alt-text="Pixel 5 API 30 emulator button.":::
 
    Visual Studio will start the Android emulator, build the app, and deploy the app to the emulator.
 
