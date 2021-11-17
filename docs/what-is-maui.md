@@ -22,7 +22,7 @@ Using .NET MAUI, you can develop apps that can run on Android, iOS, macOS, and W
 
 - Write cross-platform apps in XAML and C#, from a single shared code-base in Visual Studio.
 - Share UI layout and design across platforms.
-- Share code, test, and business logic across platforms.
+- Share code, tests, and business logic across platforms.
 
 ## How .NET MAUI works
 
