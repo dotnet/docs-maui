@@ -43,7 +43,7 @@ In a .NET MAUI app, you write code that primarily interacts with the .NET MAUI A
 - Android apps built using .NET MAUI compile from C# into intermediate language (IL) which is then just-in-time (JIT) compiled to a native assembly when the app launches.
 - iOS apps built using .NET MAUI are fully ahead-of-time (AOT) compiled from C# into native ARM assembly code.
 - macOS apps built using .NET MAUI use Mac Catalyst, a solution from Apple that brings your iOS app built with UIKit to the desktop, and augments it with additional AppKit and platform APIs as required.
-- Windows apps built using .NET MAUI use Windows UI Library 3 (WinUI 3) to create native apps that target the Windows desktop. For more information about WinUI, see [Windows UI Library](/windows/apps/winui/).
+- Windows apps built using .NET MAUI use Windows UI Library 3 (WinUI 3) to create native apps that target the Windows desktop. For more information about WinUI 3, see [Windows UI Library](/windows/apps/winui/).
 
 > [!NOTE]
 > Building apps for iOS and macOS requires a Mac.
