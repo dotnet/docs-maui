@@ -110,7 +110,7 @@ namespace MauiApp1
                 if (view is MyEntry)
                 {
 #if __ANDROID__
-                    handler.NativeView.SetBackgroundColor(Colors.Red.ToNative());
+                  handler.NativeView.SetBackgroundColor(Colors.Red.ToNative());
 #elif __IOS__
                   handler.NativeView.BackgroundColor = Colors.Red.ToNative();
                   handler.NativeView.BorderStyle = UIKit.UITextBorderStyle.Line;
