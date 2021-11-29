@@ -12,7 +12,7 @@ ms.date: 11/29/2021
 
 The project for a .NET Multi-platform App UI (.NET MAUI) app contains a _Platforms_ folder, with each child folder representing a platform that .NET MAUI can target:
 
-:::image type="content" source="media/invoke-platform-code/platform-folders.png" alt-text="Platform folders screenshot.":::
+:::image type="content" source="media/configure-multi-targeting/platform-folders.png" alt-text="Platform folders screenshot.":::
 
 The folders for each target platform contain platform-specific code that starts the app on each platform, plus any additional platform code you add. At build time, the compiler only includes the code from each folder when building for that specific platform. For example, when you build for Android the files in the _Platforms_ > _Android_ folder will be built into the app package, but the files in the other _Platform_ folders won't be.
 
