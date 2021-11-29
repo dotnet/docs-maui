@@ -14,13 +14,13 @@ The project for a .NET Multi-platform App UI (.NET MAUI) app contains a _Platfor
 
 :::image type="content" source="media/configure-multi-targeting/platform-folders.png" alt-text="Platform folders screenshot.":::
 
-The folders for each target platform contain platform-specific code that starts the app on each platform, plus any additional platform code you add. At build time, the compiler only includes the code from each folder when building for that specific platform. For example, when you build for Android the files in the _Platforms_ > _Android_ folder will be built into the app package, but the files in the other _Platform_ folders won't be.
+The folders for each target platform contain platform-specific code that starts the app on each platform, plus any additional platform code you add. At build time, the build system only includes the code from each folder when building for that specific platform. For example, when you build for Android the files in the _Platforms_ > _Android_ folder will be built into the app package, but the files in the other _Platform_ folders won't be.
 
 In addition to this default multi-targeting approach, .NET MAUI apps can also be multi-targeted based on your own filename and folder criteria. This enables you to structure your .NET MAUI app project so that you don't have to place your platform code into sub-folders of the _Platforms_ folder.
 
 ## Configure filename-based multi-targeting
 
-A standard multi-targeting pattern is to include the platform as an extension in the filename containing the platform code. The build system can be configured to use this pattern by adding the following XML to your .NET MAUI app project (.csproj) file as children of the `<Project>` node:
+A standard multi-targeting pattern is to include the platform as an extension in the filename for the platform code. For example, _MyService.Android.cs_ would represent the Android-specific implementation of the `MyService` class. The build system can be configured to use this pattern by adding the following XML to your .NET MAUI app project (.csproj) file as children of the `<Project>` node:
 
 ```xml
 <ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-android')) != true">
@@ -39,7 +39,7 @@ A standard multi-targeting pattern is to include the platform as an extension in
 </ItemGroup>
 ```
 
-This XML tells the build system to remove platform-based filename patterns under specific conditions:
+This XML configures the build system to remove platform-based filename patterns under specific conditions:
 
 - Don't compile C# code that includes _*.Android.cs_ in the filename, if you aren't building for Android.
 - Don't compile C# code that includes _*.iOS.cs_ in the filename, if you aren't building for iOS or MacCatalyst.
@@ -50,7 +50,7 @@ This XML tells the build system to remove platform-based filename patterns under
 
 ## Configure folder-based multi-targeting
 
-Another standard multi-targeting pattern is to include the platform name in a folder name. The build system can be configured to use this pattern by adding the following XML to your .NET MAUI app project (.csproj) file as children of the `<Project>` node:
+Another standard multi-targeting pattern is to include the platform as a folder name. For example, a folder named _Android_ would contain Android-specific code. The build system can be configured to use this pattern by adding the following XML to your .NET MAUI app project (.csproj) file as children of the `<Project>` node:
 
 ```xml
 <ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-android')) != true">
@@ -73,7 +73,7 @@ Another standard multi-targeting pattern is to include the platform name in a fo
 </ItemGroup>
 ```
 
-This XML tells the build system to remove platform-based folder patterns under specific conditions:
+This XML configures the build system to remove platform-based folder patterns under specific conditions:
 
 - Don't compile C# code that's located in the _Android_ folder, or sub-folder of the _Android_ folder, if you aren't building for Android.
 - Don't compile C# code that's located in the _iOS_ folder, or sub-folder of the _iOS_ folder, if you aren't building for iOS or MacCatalyst.
@@ -84,7 +84,7 @@ This XML tells the build system to remove platform-based folder patterns under s
 
 ## Combine filename and folder multi-targeting
 
-Filename-based multi-targeting can be combined with folder-based multi-targeting. The build system can be configured to use this pattern by adding the following XML to your .NET MAUI app project (.csproj) file as children of the `<Project>` node:
+Filename-based multi-targeting can be combined with folder-based multi-targeting if required. The build system can be configured to use this pattern by adding the following XML to your .NET MAUI app project (.csproj) file as children of the `<Project>` node:
 
 ```xml
 <ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-android')) != true">
@@ -109,7 +109,7 @@ Filename-based multi-targeting can be combined with folder-based multi-targeting
 </ItemGroup>
 ```
 
-This XML tells the build system to remove platform-based folder patterns under specific conditions:
+This XML configures the build system to remove platform-based filename and folder patterns under specific conditions:
 
 - Don't compile C# code that includes _*.Android.cs_ in the filename, or that's located in the _Android_ folder or sub-folder of the _Android_ folder, if you aren't building for Android.
 - Don't compile C# code that includes _*.iOS.cs_ in the filename, or that's located in the _iOS_ folder or sub-folder of the _iOS_ folder, if you aren't building for iOS or MacCatalyst.
