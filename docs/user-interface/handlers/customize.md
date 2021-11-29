@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI control customization with handlers"
 description: ".NET MAUI handlers map cross-platform controls to performant native controls on each platform."
-ms.date: 08/13/2021
+ms.date: 11/29/2021
 ---
 
 # Customize controls with handlers
@@ -42,7 +42,7 @@ public partial class App : Application
         InitializeComponent();
 
 #if __ANDROID__
-        Microsoft.Maui.Handlers.ViewHandler.ViewMapper[nameof(IView.Background)] = (h, v) =>
+        Microsoft.Maui.Handlers.ViewHandler.ViewMapper.AppendToMapping(nameof(IView.Background), (h, v) =>
         {
             (h.NativeView as Android.Views.View).SetBackgroundColor(Microsoft.Maui.Graphics.Colors.Cyan.ToNative());
         };
@@ -66,9 +66,9 @@ public partial class MainPage : ContentPage
     {
         InitializeComponent();
 #if __ANDROID__
-        Handlers.EntryHandler.EntryMapper[nameof(IEntry.Background)] = (handler, view) =>
+        Microsoft.Maui.Handlers.EntryHandler.EntryMapper.AppendToMapping("NoUnderline", (h, v) =>
         {
-            handler.NativeView.SetBackgroundColor(Colors.Transparent.ToNative());
+            h.NativeView.BackgroundTintList = ColorStateList.ValueOf(Colors.Transparent.ToAndroid());
         };
 #endif
     }
@@ -105,7 +105,7 @@ namespace MauiApp1
         {
             InitializeComponent();
 
-            Microsoft.Maui.Handlers.EntryHandler.EntryMapper[nameof(IView.Background)] = (handler, view) =>
+            Microsoft.Maui.Handlers.EntryHandler.EntryMapper.AppendToMapping(nameof(IView.Background), (handler, view) =>
             {
                 if (view is MyEntry)
                 {
