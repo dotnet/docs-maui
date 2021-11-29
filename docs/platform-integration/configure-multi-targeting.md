@@ -20,7 +20,7 @@ In addition to this default multi-targeting approach, .NET MAUI apps can also be
 
 ## Configure filename-based multi-targeting
 
-A standard multi-targeting pattern is to include the platform as an extension in the filename for the platform code. For example, _MyService.Android.cs_ would represent the Android-specific implementation of the `MyService` class. The build system can be configured to use this pattern by adding the following XML to your .NET MAUI app project (.csproj) file as children of the `<Project>` node:
+A standard multi-targeting pattern is to include the platform as an extension in the filename for the platform code. For example, _MyService.Android.cs_ would represent an Android-specific implementation of the `MyService` class. The build system can be configured to use this pattern by adding the following XML to your .NET MAUI app project (.csproj) file as children of the `<Project>` node:
 
 ```xml
 <ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-android')) != true">
