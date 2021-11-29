@@ -129,13 +129,13 @@ At build time, the compiler will combine the cross-platform partial class with t
 
 ## Configure multi-targeting
 
-By default, .NET MAUI apps are configured so that platform code must be placed in a sub-folder of the **Platforms** folder. However, multi-targeting can also be performed based on your own filename and folder criteria.
+.NET MAUI apps can also be multi-targeted based on your own filename and folder criteria. This enables you to structure your .NET MAUI app project so that you don't have to place your platform code into sub-folders of the **Platforms** folder.
 
-For example, a standard multi-targeting pattern is to include the platform in the filename containing the platform code. The build system can then be configured to combine cross-platform partial classes with platform partial classes that include the platform's name:
+For example, a standard multi-targeting pattern is to include the platform in the filename containing the platform code. The build system can configured to use this pattern to combine cross-platform partial classes with platform partial classes that include the platform's name:
 
 :::image type="content" source="media/invoke-platform-code/multi-target-filenames.png" alt-text="DeviceOrientationService classes using filename-based multi-targeting.":::
 
-Another standard multi-targeting pattern is to include the platform in a folder name. The build system can then be configured to combine cross-platform partial classes with platform partial classes that are located in platform-named folders:
+Another standard multi-targeting pattern is to include the platform in a folder name. The build system can then be configured to use this pattern to combine cross-platform partial classes with platform partial classes that are located in specific folders:
 
 :::image type="content" source="media/invoke-platform-code/multi-target-folders.png" alt-text="DeviceOrientationService classes using folder-based multi-targeting.":::
 
