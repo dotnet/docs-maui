@@ -26,3 +26,8 @@
       items:
         - name: Customize controls
           href: user-interface/handlers/customize.md
+    - name: Platform integration
+      expanded: true
+      items:
+        - name: Configure multi-targeting
+          href: platform-integration/configure-multi-targeting.md
