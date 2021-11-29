@@ -41,9 +41,9 @@ A standard multi-targeting pattern is to include the platform as an extension in
 
 This XML configures the build system to remove platform-based filename patterns under specific conditions:
 
-- Don't compile C# code that includes _*.Android.cs_ in the filename, if you aren't building for Android.
-- Don't compile C# code that includes _*.iOS.cs_ in the filename, if you aren't building for iOS or MacCatalyst.
-- Don't compile C# code that includes _*.Windows.cs_ in the filename, if you aren't building for Windows.
+- Don't compile C# code whose filename ends with _.Android.cs_, if you aren't building for Android.
+- Don't compile C# code whose filename ends with _.iOS.cs_, if you aren't building for iOS or MacCatalyst.
+- Don't compile C# code whose filename ends with _.Windows.cs_, if you aren't building for Windows.
 
 > [!IMPORTANT]
 > Filename-based multi-targeting can be combined with folder-based multi-targeting. For more information, see [Combine filename and folder multi-targeting](#combine-filename-and-folder-multi-targeting).
@@ -111,6 +111,6 @@ Filename-based multi-targeting can be combined with folder-based multi-targeting
 
 This XML configures the build system to remove platform-based filename and folder patterns under specific conditions:
 
-- Don't compile C# code that includes _*.Android.cs_ in the filename, or that's located in the _Android_ folder or sub-folder of the _Android_ folder, if you aren't building for Android.
-- Don't compile C# code that includes _*.iOS.cs_ in the filename, or that's located in the _iOS_ folder or sub-folder of the _iOS_ folder, if you aren't building for iOS or MacCatalyst.
-- Don't compile C# code that includes _*.Windows.cs_ in the filename, or that's located in the _Windows_ folder or sub-folder of the _Windows_ folder, if you aren't building for Windows.
+- Don't compile C# code whose filename ends with _.Android.cs_, or that's located in the _Android_ folder or sub-folder of the _Android_ folder, if you aren't building for Android.
+- Don't compile C# code whose filename ends with _.iOS.cs_, or that's located in the _iOS_ folder or sub-folder of the _iOS_ folder, if you aren't building for iOS or MacCatalyst.
+- Don't compile C# code whose filename ends with _.Windows.cs_, or that's located in the _Windows_ folder or sub-folder of the _Windows_ folder, if you aren't building for Windows.
