@@ -10,7 +10,7 @@ ms.date: 11/29/2021
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
-The project for a .NET Multi-platform App UI (.NET MAUI) app contains a _Platforms_ folder, with each child folder representing a platform that .NET MAUI can target:
+The project for a .NET MAUI app contains a _Platforms_ folder, with each child folder representing a platform that .NET MAUI can target:
 
 :::image type="content" source="media/configure-multi-targeting/platform-folders.png" alt-text="Platform folders screenshot.":::
 
