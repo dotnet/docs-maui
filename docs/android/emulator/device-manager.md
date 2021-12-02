@@ -2,12 +2,9 @@
 title: "Managing Virtual Devices with the Android Device Manager"
 description: "This article explains how to use the Android Device Manager to create and configure Android Virtual Devices (AVDs) that emulate physical Android devices, for .NET MAUI. You can use these virtual devices to run and test your app without having to rely on a physical device"
 ms.custom: video
-ms.date: 03/31/2021
+ms.date: 11/18/2021
 no-loc: ["user.config"]
 ---
-
-TODO: Is screenshot an acceptable word?
-TODO: Check on launch vs run?
 
 # Managing virtual devices with the Android Device Manager
 
@@ -47,15 +44,13 @@ To use the Android Device Manager, you'll need the following items:
 
 When you install the **Mobile development with .NET** workload in Visual Studio, and select the optional **.NET MAUI (Preview)** workload, everything is installed for you. For more information on setting up .NET MAUI with Visual Studio, see [Installation](../../get-started/installation.md).
 
-## Launching the device manager
+## Open the device manager
 
-After opening Visual Studio, launch the Android Device Manager from the **Tools** menu by pressing **Tools > Android > Android Device Manager**:
-
-TODO: Need VS2022 non-preview version of this image
+Open the Android Device Manager in Visual Studio from the **Tools** menu by pressing **Tools > Android > Android Device Manager**:
 
 :::image type="content" source="media/device-manager/win/03-tools-menu.png" alt-text="Launching the Device manager from the Tools menu.":::
 
-TODO: Is this still applicable?
+<!-- TODO: Is this still applicable? -->
 
 If the following error dialog is presented on launch, see the [Troubleshooting](#troubleshooting) section for workaround instructions:
 
@@ -75,7 +70,7 @@ To create a new device, press the **New** button:
 
 The **New Device** window is displayed. To configure the device, follow these steps:
 
-01. Give the device a new name. In the following example, the new device is named **Pixel 2 - API 28**.
+01. Give the device a new name. In the following example, the new device is named _Pixel 2 - API 28_.
 
     :::image type="content" source="media/device-manager/win/09-device-props-sml.png" alt-text="New Device screen of the Device Manager." lightbox="media/device-manager/win/09-device-props.png":::
 
@@ -149,7 +144,7 @@ The additional options menu contains the following items:
 
 - **Repair** &ndash; TODO
 
-- **Factory Reset** &ndash; Resets the selected device to its default settings, erasing any user changes made to the internal state of the device while it was running. This action also erases the current [Quick Boot](~/android/deploy-test/debugging/debug-on-emulator.md#quick-boot) snapshot if it exists. This change doesn't alter modifications that you make to the virtual device during creation and editing. A dialog box will appear with the reminder that this reset cannot be undone &ndash; press **Factory Reset** to confirm the reset.
+- **Factory Reset** &ndash; Resets the selected device to its default settings, erasing any user changes made to the internal state of the device while it was running. This action also erases the current [Quick Boot](../deploy-test/debugging/debug-on-emulator.md#quick-boot) snapshot if it exists. This change doesn't alter modifications that you make to the virtual device during creation and editing. A dialog box will appear with the reminder that this reset cannot be undone &ndash; press **Factory Reset** to confirm the reset.
 
 - **Delete** &ndash; Permanently deletes the selected virtual device. A dialog box will appear with the reminder that deleting a device cannot be undone. Press **Delete** if you are certain that you want to delete the device.
 
@@ -177,7 +172,7 @@ To work around this problem, do the following:
 
 01. In _user.config_, find the `<UserSettings>` element and add an **AndroidSdkPath** attribute to it. Set this attribute to the path where the Android SDK is installed on your computer and save the file. For example, `<UserSettings>` would look like the following if the Android SDK was installed at _C:\\Programs\\Android\\SDK_:
 
-    TODO: Does visual studio handle this some how now?
+    <!-- TODO: Does visual studio handle this some how now? -->
 
     ```xml
     <UserSettings SdkLibLastWriteTimeUtcTicks="636409365200000000" AndroidSdkPath="C:\Programs\Android\SDK" />
@@ -187,23 +182,19 @@ After making this change to **user.config**, you should be able to launch the An
 
 ### Wrong version of Android SDK Tools
 
-TODO: Set the correct version numbers
-
-If Android SDK tools 26.1.1 or later isn't installed, you may see this error dialog on launch:
+If you have thew wrong Android SDK tools installed, installed, you may see this error dialog on launch:
 
 :::image type="content" source="media/device-manager/win/32-sdk-instance-error.png" alt-text="Screenshot shows the Android SDK instance error dialog box.":::
 
-If you see this error dialog, press **Open SDK Manager** to open the Android SDK Manager. In the Android SDK Manager, press the **Tools** tab and install the following packages:
+If you see that error dialog, press **Open SDK Manager** to open the Android SDK Manager. In the Android SDK Manager, go to the **Tools** tab and install the following packages:
 
-- **Android SDK Tools 26.1.1** or later
-- **Android SDK Platform-Tools 27.0.1** or later
-- **Android SDK Build-Tools 27.0.3** or later
+- **Android SDK Command-line Tools 5.0** or later
+- **Android SDK Platform-Tools 31.0.3** or later
+- **Android SDK Build-Tools 30.0.3** or later
 
 For more information, see [Installation](../../get-started/installation.md).
 
-### Snapshot disables WiFi on Android Oreo
-
-TODO: Check on WiFi vs Wi-Fi
+### Snapshot disables Wi=Fi on Android Oreo
 
 If you've an AVD configured for Android Oreo with simulated Wi-Fi access, restarting the AVD after a snapshot may cause Wi-Fi access to become disabled.
 
@@ -225,8 +216,10 @@ To work around this problem,
 
 After these changes are made, the AVD will restart in a state that allows Wi-Fi to work again.
 
-
 <!--
+
+TODO: The Mac stuff hasn't been rewritten/touched.
+
 ::: zone-end
 ::: zone pivot="macos"
 
@@ -403,7 +396,7 @@ If Android SDK tools 26.1.1 or later isn't installed, you may see this error dia
 
 :::image type="content" source="media/device-manager/mac/29-sdk-instance-error.png" alt-text="Android SDK instance error dialog.":::
 
-If you see this error dialog, press **OK** to open the Android SDK Manager. In the Android SDK Manager, press the **Tools** tab and install the following packages:
+If you see this error dialog, press **OK** to open the Android SDK Manager. In the Android SDK Manager, go to the **Tools** tab and install the following packages:
 
 - **Android SDK Tools 26.1.1** or later
 - **Android SDK Platform-Tools 28.0.1** or later

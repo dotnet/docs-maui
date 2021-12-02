@@ -1,7 +1,7 @@
 ---
 title: "Android Emulator Setup"
 description: "The Android Emulator can be run in a variety of configurations to simulate different devices. This article explains how to prepare the Android Emulator for testing your .NET MAUI app."
-ms.date: 10/11/2021
+ms.date: 12/02/2021
 ---
 
 # Android emulator setup
@@ -18,12 +18,18 @@ The following articles are available to help manage and setup your Android emula
 
   How to use the Android Device Manager to create and customize virtual devices.
 
-- [Editing Android Virtual Device Properties](~/android/get-started/installation/android-emulator/device-properties.md)
+- [Editing Android Virtual Device Properties](device-properties.md)
 
   How to use the Android Device Manager to edit the profile properties of a virtual device.
 
-- [Android Emulator Troubleshooting](~/android/get-started/installation/android-emulator/troubleshooting.md)
+<!--
+
+TODO: Still being ported
+
+- [Android Emulator Troubleshooting](troubleshooting.md)
 
   In this article, the most common warning messages and issues that occur while running the Android Emulator are described, along with workarounds and tips.
 
 After you have configured the Android Emulator, see [Debugging on the Android Emulator](~/android/deploy-test/debugging/debug-on-emulator.md) for information about how to launch the emulator and use it for testing and debugging your app.
+
+-->
