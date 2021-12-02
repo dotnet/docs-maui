@@ -43,11 +43,11 @@ Resource files should be placed in the _Resources_ folder of your .NET MAUI app 
 > [!NOTE]
 > In addition, XAML files are stored in your .NET MAUI app project, and are automatically assigned the **MauiXaml** build action when created by project and item templates. However, XAML files will not typically be located in the _Resources_ folder of the app project.
 
-When a resource file is added to a .NET MAUI app project, a corresponding entry for the resource is created in the project (.csproj) file. After adding a resource file, its build action can be set in the **Properties** window. The following screenshot shows a _Resources_ folder containing image and font resources:
+When a resource file is added to a .NET MAUI app project, a corresponding entry for the resource is created in the project (.csproj) file. After adding a resource file, its build action can be set in the **Properties** window. The following screenshot shows a _Resources_ folder containing image and font resources in child folders:
 
 :::image type="content" source="media/single-project/resources.png" alt-text="Image and font resources screenshot.":::
 
-Alternatively, child folders of the _Resources_ folder can be designated for each resource type by editing the project (.csproj) file for your app:
+Child folders of the _Resources_ folder can be designated for each resource type by editing the project (.csproj) file for your app:
 
 ```xml
 <ItemGroup>
