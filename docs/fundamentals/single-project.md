@@ -38,7 +38,7 @@ Resource files should be placed in the _Resources_ folder of your .NET MAUI app 
 | Images | MauiImage |
 | Splash screen | MauiSplashScreen |
 | Raw assets | MauiAsset |
-| CSS | MauiCss |
+| CSS files | MauiCss |
 
 > [!NOTE]
 > In addition, XAML files are stored in your .NET MAUI app project, and are automatically assigned the **MauiXaml** build action when created by project and item templates. However, XAML files will not typically be located in the _Resources_ folder of the app project.
