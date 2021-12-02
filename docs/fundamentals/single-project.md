@@ -190,7 +190,7 @@ Multi-targeting can also be combined with conditional compilation so that code i
 
 For more information about conditional compilation, see [Conditional compilation](/dotnet/csharp/language-reference/preprocessor-directives#conditional-compilation).
 
-## App startup
+## App entry point
 
 While the _Platforms_ folders contain platform-specific code that starts the app on each platform, .NET MAUI apps do have a single cross-platform app entry point. Each platform entry point calls a `CreateMauiApp` method on the static `MauiProgram` class in your app project, and returns a `MauiApp`, which is the entry point for your app.
 
