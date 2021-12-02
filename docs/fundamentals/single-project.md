@@ -29,7 +29,7 @@ Resource management for cross-platform app development has traditionally been pr
 > [!IMPORTANT]
 > Each image resource file is used as a source image, from which images of the required resolutions are generated for each platform.
 
-Resource files should be placed in the _Resources_ folder of your .NET MAUI app project, and must have their build action set correctly. The following table shows the build actions for each resource file type:
+Resource files should be placed in the _Resources_ folder of your .NET MAUI app project, or child folders of the _Resources_ folder, and must have their build action set correctly. The following table shows the build actions for each resource file type:
 
 | Resource | Build action |
 | -------- | ------------ |
@@ -43,7 +43,9 @@ Resource files should be placed in the _Resources_ folder of your .NET MAUI app 
 > [!NOTE]
 > In addition, XAML files are stored in your .NET MAUI app project, and are automatically assigned the **MauiXaml** build action when created by project and item templates. However, XAML files will not typically be located in the _Resources_ folder of the app project.
 
-When a resource file is added to a .NET MAUI app project, a corresponding entry for the resource is created in the project (.csproj) file. After adding a resource file, its build action can be set in the **Properties** window.
+When a resource file is added to a .NET MAUI app project, a corresponding entry for the resource is created in the project (.csproj) file. After adding a resource file, its build action can be set in the **Properties** window. The following screenshot shows a _Resources_ folder containing image and font resources:
+
+:::image type="content" source="media/single-project/resources.png" alt-text="Image and font resources screenshot.":::
 
 Alternatively, child folders of the _Resources_ folder can be designated for each resource type by editing the project (.csproj) file for your app:
 
@@ -102,7 +104,7 @@ At build time, images are resized to the correct resolutions for the target plat
 True type format (TTF) and open type font (OTF) fonts can be added to your app project by dragging them into the _Resources\Fonts_ folder of your project, and setting their build action to **MauiFont** in the **Properties** window. This creates a corresponding entry per font in the .csproj file for your project:
 
 ```xml
-<MauiFont Include="Resources\Fonts\MyFont.ttf" />
+<MauiFont Include="Resources\Fonts\OpenSans-Regular.ttf" />
 ```
 
 At build time, the fonts are copied to your app package.
@@ -163,7 +165,11 @@ A .NET MAUI app project contains a _Platforms_ folder, with each child folder re
 
 :::image type="content" source="media/single-project/platform-folders.png" alt-text="Platform folders screenshot.":::
 
-The folders for each target platform contain platform-specific code that starts the app on each platform, plus any additional platform code you add. At build time, the build system only includes the code from each folder when building for that specific platform. For example, when you build for Android the files in the _Platforms_ > _Android_ folder will be built into the app package, but the files in the other _Platforms_ folders won't be. This approach uses a feature called multi-targeting to target multiple platforms from a single project.
+The folders for each target platform contain platform-specific code that starts the app on each platform, plus any additional platform code you add:
+
+:::image type="content" source="media/single-project/platform-code.png" alt-text="Platform-specific code screenshot.":::
+
+At build time, the build system only includes the code from each folder when building for that specific platform. For example, when you build for Android the files in the _Platforms_ > _Android_ folder will be built into the app package, but the files in the other _Platforms_ folders won't be. This approach uses a feature called multi-targeting to target multiple platforms from a single project.
 
 Multi-targeting can be combined with partial classes and partial methods to invoke native platform functionality from cross-platform code. For more information, see [Invoke platform code](~/platform-integration/invoke-platform-code.md)
 
