@@ -47,7 +47,7 @@ For the best experience on Windows, it's recommended you use WHPX to accelerate 
 > [!IMPORTANT]
 > You can't run a VM-accelerated emulator inside another VM, such as a VM hosted by VirtualBox, VMware, or Docker (unless using WSL2). You must run the Android emulator [directly on your system hardware](https://developer.android.com/studio/run/emulator-acceleration.html#extensions).
 
-For information about launching and debugging with the Android emulator, see [Debugging on the Android Emulator](~/android/deploy-test/debugging/debug-on-emulator.md).
+For information about launching and debugging with the Android emulator, see [Debugging on the Android Emulator](../deployment/debug-on-emulator.md).
 
 <a name="hyper-v-win"></a>
 
@@ -104,7 +104,7 @@ After Hyper-V is enabled, you'll be able to run your accelerated Android emulato
 > [!IMPORTANT]
 > HAXM is only supported on Intel CPUs.
 
-If your computer doesn't support Hyper-V, you may use HAXM to accelerate the Android emulator. To use HAXM, [disable Device Guard](~/android/get-started/installation/android-emulator/troubleshooting.md?tabs=vswin#disable-devguard).
+If your computer doesn't support Hyper-V, you may use HAXM to accelerate the Android emulator. To use HAXM, [disable Device Guard](troubleshooting.md#disabling-device-guard).
 
 ### Verifying HAXM support
 
@@ -134,11 +134,11 @@ HAXM install packages for Windows are available from the [Intel Hardware Acceler
 
 01. Run **intelhaxm-android.exe** to start the HAXM installer. Accept the default values in the installer dialogs.
 
-When you create a virtual device (see [Managing Virtual Devices with the Android Device Manager](~/android/get-started/installation/android-emulator/device-manager.md)), be sure to select an **x86**-based system image. If you use an ARM-based system image, the virtual device will not be accelerated and will run slowly.
+When you [create a virtual device](device-manager.md), be sure to select an **x86**-based system image. If you use an ARM-based system image, the virtual device will not be accelerated and will run slowly.
 
 ## Troubleshooting
 
-For help with troubleshooting hardware acceleration issues, see the Android emulator [Troubleshooting](~/android/get-started/installation/android-emulator/troubleshooting.md?tabs=vswin#accel-issues-win) guide.
+For help with troubleshooting hardware acceleration issues, see the Android emulator [Troubleshooting](troubleshooting.md#hardware-acceleration-issues) guide.
 
 <!--
 
@@ -223,7 +223,7 @@ HAXM installation packages for macOS are available from the [Intel Hardware Acce
 
 ## Troubleshooting
 
-For help with troubleshooting hardware acceleration issues, see the Android emulator [Troubleshooting](~/android/get-started/installation/android-emulator/troubleshooting.md?tabs=vsmac#accel-issues-mac) guide.
+For help with troubleshooting hardware acceleration issues, see the Android emulator [Troubleshooting](troubleshooting.md?tabs=vsmac#accel-issues-mac) guide.
 
 ::: zone-end
 -->
