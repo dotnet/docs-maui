@@ -26,3 +26,7 @@
       items:
         - name: Customize controls
           href: user-interface/handlers/customize.md
+        - name: Images
+          items:
+            - name: App icons
+              href: user-interface/images/app-icons.md
