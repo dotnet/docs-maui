@@ -22,12 +22,12 @@ ms.date: 11/30/2021
 
 ## Resource files
 
-Resource management for cross-platform app development has traditionally been problematic. Each platform has its own approach to managing resources, which must be understood by developers. For example, each platform has differing image requirements that typically involve supplying multiple versions of each image at different resolutions. Therefore, a single image typically has to be duplicated multiple times per platform, with the resulting images having to use different filename and folder conventions on each platform.
+Resource management for cross-platform app development has traditionally been problematic. Each platform has its own approach to managing resources, that you have to understand. For example, each platform has differing image requirements that typically involves creating multiple versions of each image at different resolutions. Therefore, a single image typically has to be duplicated multiple times per platform, at different resolutions, with the resulting images having to use different filename and folder conventions on each platform.
 
 .NET MAUI single project enables resource files to be stored in a single location while being consumed on each platform. This includes fonts, images, the app icon, the splash screen, raw assets, and CSS files.
 
 > [!IMPORTANT]
-> Each image resource file is used as a source image, from which images of the required resolutions are generated for each platform.
+> Each image resource file is used as a source image, from which images of the required resolutions are generated for each platform at build time.
 
 Resource files should be placed in the _Resources_ folder of your .NET MAUI app project, or child folders of the _Resources_ folder, and must have their build action set correctly. The following table shows the build actions for each resource file type:
 
@@ -41,13 +41,13 @@ Resource files should be placed in the _Resources_ folder of your .NET MAUI app 
 | CSS files | MauiCss |
 
 > [!NOTE]
-> In addition, XAML files are stored in your .NET MAUI app project, and are automatically assigned the **MauiXaml** build action when created by project and item templates. However, XAML files will not typically be located in the _Resources_ folder of the app project.
+> XAML files are also stored in your .NET MAUI app project, and are automatically assigned the **MauiXaml** build action when created by project and item templates. However, XAML files will not typically be located in the _Resources_ folder of the app project.
 
 When a resource file is added to a .NET MAUI app project, a corresponding entry for the resource is created in the project (.csproj) file. After adding a resource file, its build action can be set in the **Properties** window. The following screenshot shows a _Resources_ folder containing image and font resources in child folders:
 
 :::image type="content" source="media/single-project/resources.png" alt-text="Image and font resources screenshot.":::
 
-Child folders of the _Resources_ folder can be designated for each resource type by editing the project (.csproj) file for your app:
+Child folders of the _Resources_ folder can be designated for each resource type by editing the project file for your app:
 
 ```xml
 <ItemGroup>
@@ -62,7 +62,7 @@ Child folders of the _Resources_ folder can be designated for each resource type
 </ItemGroup>
 ```
 
-The wildcard character (`*`) indicates that all the files within the folder will be treated as being of the specified resource type. In addition, it's possible to include all files from child folders, by using two wildcard characters (`**`):
+The wildcard character (`*`) indicates that all the files within the folder will be treated as being of the specified resource type. In addition, it's possible to include all files from child folders:
 
 ```xml
 <ItemGroup>
@@ -71,25 +71,25 @@ The wildcard character (`*`) indicates that all the files within the folder will
 </ItemGroup>
 ```
 
-In this example, `<MauiImage Include="Resources\Images\**\*" />` specifies that any files in the _Resources\Images_ folder, or any child folders of the _Images_ folder, will be used as source images from which images of the required resolution are generated for each platform.
+In this example, the double wildcard character ('**') specifies that the _Images_ folder can contain child folders. Therefore, `<MauiImage Include="Resources\Images\**\*" />` specifies that any files in the _Resources\Images_ folder, or any child folders of the _Images_ folder, will be used as source images from which images of the required resolution are generated for each platform.
 
-Platform-specific resources will override their shared resource counterparts. For example, if you have an Android-specific file located at _Platforms\Android\Resources\drawable-xhdpi\logo.png_, and you also provide a shared _Resources\Images\logo.svg_ file, the Scalable Vector Graphics (SVG) file will be used to generate the required Android images, except for the XHDPI image that already exists as a platform-specific image.
+Platform-specific resources will override their shared resource counterparts. For example, if you have an Android-specific image located at _Platforms\Android\Resources\drawable-xhdpi\logo.png_, and you also provide a shared _Resources\Images\logo.svg_ image, the Scalable Vector Graphics (SVG) file will be used to generate the required Android images, except for the XHDPI image that already exists as a platform-specific image.
 
 ### App icons
 
-An app icon can be added to your app project by dragging an image into the _Resources\Images_ folder of the project, and setting the build action of the icon to **MauiIcon** in the **Properties** window. This creates a corresponding entry in the .csproj file for your project:
+An app icon can be added to your app project by dragging an image into the _Resources\Images_ folder of the project, and setting the build action of the icon to **MauiIcon** in the **Properties** window. This creates a corresponding entry in your project file:
 
 ```xml
 <MauiIcon Include="Resources\Images\appicon.png" />
 ```
 
-At build time, the app icon is resized to the correct sizes for the target platform and device. The resized app icons are then added to your app package. App icons are resized to multiple resolutions, because they have multiple purposes, including being used to represent the app on the device, and in the app store.
+At build time, the app icon is resized to the correct sizes for the target platform and device. The resized app icons are then added to your app package. App icons are resized to multiple resolutions because they have multiple uses, including being used to represent the app on the device, and in the app store.
 
 <!-- For more information, see [App icons](~/user-interface/app-icons.md). -->
 
 ### Images
 
-Images can be added to your app project by dragging them to the _Resources\Images_ folder of your project, and setting their build action to **MauiImage** in the **Properties** window. This creates a corresponding entry per image in the .csproj file for your project:
+Images can be added to your app project by dragging them to the _Resources\Images_ folder of your project, and setting their build action to **MauiImage** in the **Properties** window. This creates a corresponding entry per image in your project file:
 
 ```xml
 <MauiImage Include="Resources\Images\logo.jpg" />
@@ -101,7 +101,7 @@ At build time, images are resized to the correct resolutions for the target plat
 
 ### Fonts
 
-True type format (TTF) and open type font (OTF) fonts can be added to your app project by dragging them into the _Resources\Fonts_ folder of your project, and setting their build action to **MauiFont** in the **Properties** window. This creates a corresponding entry per font in the .csproj file for your project:
+True type format (TTF) and open type font (OTF) fonts can be added to your app project by dragging them into the _Resources\Fonts_ folder of your project, and setting their build action to **MauiFont** in the **Properties** window. This creates a corresponding entry per font in your project file:
 
 ```xml
 <MauiFont Include="Resources\Fonts\OpenSans-Regular.ttf" />
@@ -113,7 +113,7 @@ For more information, see [Fonts](~/user-interface/fonts.md).
 
 ### Splash screen
 
-A slash screen can be added to your app project by dragging an image into the _Resources\Images_ folder of your project, and setting the build action of the image to **MauiSplashScreen** in the **Properties** window. This creates a corresponding entry in the .csproj file for your project:
+A slash screen can be added to your app project by dragging an image into the _Resources\Images_ folder of your project, and setting the build action of the image to **MauiSplashScreen** in the **Properties** window. This creates a corresponding entry in your project file:
 
 ```xml
 <MauiSplashScreen Include="Resources\Images\splashscreen.svg" />
@@ -125,13 +125,13 @@ For more information, see [Splash screens](~/user-interface/splashscreen.md).
 
 ### Raw assets
 
-Raw asset files, such as HTML, JSON, and videos, can be added to your app project by dragging them into the _Resources_ folder of your project (or a sub-folder, such as _Resources\Assets_), and setting their build action to `MauiAsset` in the **Properties** window. This creates a corresponding entry per asset in the .csproj file for your project:
+Raw asset files, such as HTML, JSON, and videos, can be added to your app project by dragging them into the _Resources_ folder of your project (or a sub-folder, such as _Resources\Assets_), and setting their build action to `MauiAsset` in the **Properties** window. This creates a corresponding entry per asset in your project file:
 
 ```xml
 <MauiAsset Include="Resources\Assets\index.html" />
 ```
 
-Raw asset can then be consumed by controls, as required:
+Raw assets can then be consumed by controls, as required:
 
 ```xaml
 <WebView Source="index.html" />
@@ -141,7 +141,7 @@ At build time, raw assets are copied to your app package.
 
 ### CSS files
 
-Cascading Style Sheet (CSS) files can be added to the single project by dragging them into the _Resources_ folder of your project, and setting their build action to `MauiCss` in the **Properties** window. This creates a corresponding entry per CSS file in the .csproj file for your project:
+Cascading Style Sheet (CSS) files can be added to your app project by dragging them into the _Resources_ folder of your project, and setting their build action to `MauiCss` in the **Properties** window. This creates a corresponding entry per CSS file in your project file:
 
 ```xml
 <MauiCss Include="Resources\styles.css" />
@@ -165,13 +165,11 @@ A .NET MAUI app project contains a _Platforms_ folder, with each child folder re
 
 :::image type="content" source="media/single-project/platform-folders.png" alt-text="Platform folders screenshot.":::
 
-The folders for each target platform contain platform-specific code that starts the app on each platform, plus any additional platform code you add:
+The folders for each platform contain platform-specific resources, and code and that starts the app on each platform:
 
 :::image type="content" source="media/single-project/platform-code.png" alt-text="Platform-specific code screenshot.":::
 
-At build time, the build system only includes the code from each folder when building for that specific platform. For example, when you build for Android the files in the _Platforms_ > _Android_ folder will be built into the app package, but the files in the other _Platforms_ folders won't be. This approach uses a feature called multi-targeting to target multiple platforms from a single project.
-
-Multi-targeting can be combined with partial classes and partial methods to invoke native platform functionality from cross-platform code. For more information, see [Invoke platform code](~/platform-integration/invoke-platform-code.md)
+At build time, the build system only includes the code from each folder when building for that specific platform. For example, when you build for Android the files in the _Platforms\Android_ folder will be built into the app package, but the files in the other _Platforms_ folders won't be. This approach uses multi-targeting to target multiple platforms from a single project. Multi-targeting can be combined with partial classes and partial methods to invoke native platform functionality from cross-platform code. For more information, see [Invoke platform code](~/platform-integration/invoke-platform-code.md).
 
 In addition to this default multi-targeting approach, .NET MAUI apps can also be multi-targeted based on your own filename and folder criteria. This enables you to structure your .NET MAUI app project so that you don't have to place your platform code into sub-folders of the _Platforms_ folder. For more information, see [Configure multi-targeting](~/platform-integration/configure-multi-targeting.md).
 
@@ -192,8 +190,6 @@ For more information about conditional compilation, see [Conditional compilation
 
 ## App entry point
 
-While the _Platforms_ folders contain platform-specific code that starts the app on each platform, .NET MAUI apps do have a single cross-platform app entry point. Each platform entry point calls a `CreateMauiApp` method on the static `MauiProgram` class in your app project, and returns a `MauiApp`, which is the entry point for your app.
-
-The `CreateMauiApp` method bootstraps the app using the [.NET Generic Host](/dotnet/core/extensions/generic-host). This provides the ability to configure the app, services, and third-party libraries from a single location.
+While the _Platforms_ folders contain platform-specific code that starts the app on each platform, .NET MAUI apps have a single cross-platform app entry point. Each platform entry point calls a `CreateMauiApp` method on the static `MauiProgram` class in your app project, and returns a `MauiApp`, which is the entry point for your app. The `CreateMauiApp` method bootstraps the app using the [.NET Generic Host](/dotnet/core/extensions/generic-host). This provides the ability to configure the app, services, and third-party libraries from a single location.
 
 For more information, see [App startup](~/fundamentals/app-startup.md).
