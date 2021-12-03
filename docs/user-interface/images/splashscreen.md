@@ -10,12 +10,12 @@ ms.date: 08/19/2021
 
 On Android and iOS, .NET Multi-platform App UI (.NET MAUI) apps can display a splash screen while their initialization process completes. The splash screen is displayed immediately when an app is launched, providing immediate feedback to users while app resources are initialized. Once the app is ready for interaction, the splash screen is dismissed.
 
-Splash screens are a composite of an image and a background color, which can both be customized. The standard platform image formats are supported, including Scalable Vector Graphics (SVG) files.
+Splash screens are a composite of an image and a background color. The standard platform image formats are supported, including Scalable Vector Graphics (SVG) files.
 
 > [!TIP]
 > The SVG format is the recommended image format for .NET MAUI splash screens.
 
-.NET MAUI splash screens are specified by dragging an image into the **Resources\Images** folder of your project, and setting the build action of the image to **MauiSplashScreen** in the **Properties** window. This creates a corresponding entry in the .csproj file for your project:
+.NET MAUI splash screens can be added to your app project by dragging an image into the _Resources\Images_ folder of the project, and setting the build action of the image to **MauiSplashScreen** in the **Properties** window. This creates a corresponding entry in your project file:
 
 <!-- Todo: The template currently puts the splash screen in Resources, not Resources\Images -->
 
