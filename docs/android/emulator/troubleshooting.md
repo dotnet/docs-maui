@@ -7,7 +7,7 @@ ms.date: 12/03/2021
 
 # Android emulator troubleshooting
 
-This article describes the most common warning messages and issues that occur while configuring and running the Android Emulator. In addition, it describes solutions for resolving these errors as well as various troubleshooting tips to help you diagnose emulator problems.
+This article describes the most common warning messages and issues that occur while configuring and running the Android Emulator. Also, it describes solutions for resolving these errors and various troubleshooting tips to help you diagnose emulator problems.
 
 <!--
 ::: zone pivot="windows"
@@ -21,7 +21,7 @@ Some error messages may be displayed by the emulator when you deploy your app. T
 
 If you see an error about a failure to install the APK on the emulator or a failure to run the Android Debug Bridge (**adb**), verify that the Android SDK can connect to your emulator. To verify emulator connectivity, use the following steps:
 
-01. Launch the emulator from the **Android Device Manager** (select your virtual device and click **Start**).
+01. Launch the emulator from the **Android Device Manager** (select your virtual device and select **Start**).
 
 01. Open a command prompt and go to the folder where **adb** is installed. If the Android SDK is installed at its default location, **adb** is located at _C:\\Program Files (x86)\\Android\\android-sdk\\platform-tools\\adb.exe_; if not, modify this path for the location of the Android SDK on your computer.
 
@@ -38,7 +38,7 @@ If you see an error about a failure to install the APK on the emulator or a fail
     emulator-5554   device
     ```
 
-01. If the emulator does not appear in this list, start the **Android SDK Manager**, apply all updates, then try launching the emulator again.
+01. If the emulator doesn't appear in this list, start the **Android SDK Manager**, apply all updates, then try launching the emulator again.
 
 ### MMIO access error
 
@@ -48,7 +48,7 @@ If the message **An MMIO access error has occurred** is displayed, restart the e
 
 ## Missing Google Play Services
 
-If the virtual device you are running in the emulator does not have Google Play Services or Google Play Store installed, this condition is often caused by creating a virtual device without including these packages. When you [create a virtual device](device-manager.md), be sure to select one or both of the following options:
+If the emulated Android device doesn't have Google Play Services or Google Play Store installed, you probably created a virtual device that excluded these packages. When you [create a virtual device](device-manager.md), be sure to select one or both of the following options:
 
 - **Google APIs** &ndash; includes Google Play Services in the virtual device.
 - **Google Play Store** &ndash; includes Google Play Store in the virtual device.
@@ -65,40 +65,40 @@ For example, this virtual device will include Google Play Services and Google Pl
 Performance issues are typically caused by one of the following problems:
 
 - The emulator is running without hardware acceleration.
-- The virtual device running in the emulator is not using an x86-based system image.
+- The virtual device running in the emulator isn't using an x86-based system image.
 
 The following sections cover these scenarios in more detail.
 
-### Hardware acceleration is not enabled
+### Hardware acceleration isn't enabled
 
-If hardware acceleration is not enabled, starting a virtual device from the Device Manager will produce a dialog with an error message indicating that the Windows Hypervisor Platform (WHPX) is not configured properly:
+When you start a virtual device, and you don't have hardware acceleration enabled, the Device Manager displays an error dialog similar to the following image:
 
 :::image type="content" source="media/troubleshooting/win/01-dev-mgr-warning-w158.png" alt-text="Andorid device manager warning about Hyper-V not enabled on .NET MAUI.":::
 
-If this error message is displayed, see [Hardware acceleration issues](#hardware-acceleration-issues) below for steps you can take to verify and enable hardware acceleration.
+To fix this error, follow the troubleshooting steps in the [Hardware acceleration issues](#hardware-acceleration-issues) section.
 
 ### Acceleration is enabled but the emulator runs too slowly
 
-A common cause for this problem is not using an x86-based image in your virtual device (AVD). When you [create a virtual device](device-manager.md), be sure to select an x86-based system image:
+A common cause for this problem isn't using an x86-based image in your virtual device (AVD). When you [create a virtual device](device-manager.md), be sure to select an x86-based system image:
 
 :::image type="content" source="media/troubleshooting/win/02-x86-virtual-device-w158-sml.png" alt-text="Select an x86 image for Android and .NET MAUI.":::
 
 ## Hardware acceleration issues
 
-Whether you are using Hyper-V or HAXM for hardware acceleration, you may run into configuration problems or conflicts with other software on your computer. You can verify that hardware acceleration is enabled (and which acceleration method the emulator is using) by opening a command prompt and entering the following command:
+When using hardware acceleration, you may run into configuration problems or conflicts with other software on your computer. The first step in troubleshooting is verifying that hardware acceleration is enabled. You can use the Android's SDK to check this setting. Open a command prompt and entering the following command:
 
 ```cmd
 "C:\Program Files (x86)\Android\android-sdk\emulator\emulator-check.exe" accel
 ```
 
-This command assumes that the Android SDK is installed at the default location of _C:\\Program Files (x86)\\Android\\android-sdk_; if not, modify the above path for the location of the Android SDK on your computer.
+This command assumes that the Android SDK is installed at the default location of _C:\\Program Files (x86)\\Android\\android-sdk_. If the Android SDK is installed elsewhere, modify the preceding command to the correct location.
 
 ### Hardware acceleration not available
 
 If Hyper-V is available, a message like the following example will be returned from the **emulator-check.exe accel** command:
 
 ```cmd
-HAXM is not installed, but Windows Hypervisor Platform is available.
+HAXM isn't installed, but Windows Hypervisor Platform is available.
 ```
 
 If HAXM is available, a message like the following example will be returned:
@@ -107,17 +107,17 @@ If HAXM is available, a message like the following example will be returned:
 HAXM version 6.2.1 (4) is installed and usable.
 ```
 
-If hardware acceleration is not available, a message like the following example will be displayed (the emulator looks for HAXM if it is unable to find Hyper-V):
+If hardware acceleration isn't available, a message like the following example will be displayed (the emulator looks for HAXM if it's unable to find Hyper-V):
 
 ```cmd
-HAXM is not installed on this machine
+HAXM isn't installed on this machine
 ```
 
-If hardware acceleration is not available, see [Enabling Hyper-V acceleration](hardware-acceleration.md#enabling-hyper-v-acceleration) to learn how to enable hardware acceleration on your computer.
+If hardware acceleration isn't available, see [Enabling Hyper-V acceleration](hardware-acceleration.md#enabling-hyper-v-acceleration) to learn how to enable hardware acceleration on your computer.
 
 ### Incorrect BIOS settings
 
-If the BIOS has not been configured properly to support hardware acceleration, a message similar to the following example will be displayed when you run the **emulator-check.exe accel** command:
+If the BIOS hasn't been configured properly to support hardware acceleration, a message similar to the following example will be displayed when you run the **emulator-check.exe accel** command:
 
 ```cmd
 VT feature disabled in BIOS/UEFI
@@ -128,7 +128,7 @@ To correct this problem, reboot into your computer's BIOS and enable the followi
 - Virtualization Technology (may have a different label depending on motherboard manufacturer).
 - Hardware Enforced Data Execution Prevention.
 
-If hardware acceleration is enabled and the BIOS is configured properly, the emulator should run successfully with hardware acceleration. However, problems may still result due to issues that are specific to Hyper-V and HAXM, as explained next.
+If problems still occur because of issues related to Hyper-V and HAXM, see the following section.
 
 ### Hyper-V issues
 
@@ -144,7 +144,7 @@ In some cases, enabling both **Hyper-V** and **Windows Hypervisor Platform** in 
     Get-WindowsOptionalFeature -FeatureName Microsoft-Hyper-V-All -Online
     ```
 
-    If Hyper-V is not enabled, a message similar to the following example will be displayed to indicate that the state of Hyper-V is **Disabled**:
+    If Hyper-V isn't enabled, a message similar to the following example will be displayed to indicate that the state of Hyper-V is **Disabled**:
 
     ```
     FeatureName      : Microsoft-Hyper-V-All
@@ -161,7 +161,7 @@ In some cases, enabling both **Hyper-V** and **Windows Hypervisor Platform** in 
     Get-WindowsOptionalFeature -FeatureName HypervisorPlatform -Online
     ```
 
-    If the Hypervisor is not enabled, a message similar to the following example will be displayed to indicate that the state of HypervisorPlatform is **Disabled**:
+    If the Hypervisor isn't enabled, a message similar to the following example will be displayed to indicate that the state of HypervisorPlatform is **Disabled**:
 
     ```
     FeatureName      : HypervisorPlatform
@@ -172,7 +172,7 @@ In some cases, enabling both **Hyper-V** and **Windows Hypervisor Platform** in 
     CustomProperties :
     ```
 
-If Hyper-V and/or HypervisorPlatform are not enabled, use the following PowerShell commands to enable them:
+If Hyper-V or HypervisorPlatform aren't enabled, use the following PowerShell commands to enable them:
 
 ```powershell
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
@@ -187,7 +187,7 @@ For more information about enabling Hyper-V (including techniques for enabling H
 
 HAXM issues are often the result of conflicts with other virtualization technologies, incorrect settings, or an out-of-date HAXM driver.
 
-### HAXM process is not running
+### HAXM process isn't running
 
 If HAXM is installed, you can verify that the HAXM process is running by opening a command prompt and entering the following command:
 
@@ -208,7 +208,7 @@ SERVICE_NAME: intelhaxm
     WAIT_HINT          : 0x0
 ```
 
-If `STATE` is not set to `RUNNING`, see [How to Use the Intel Hardware Accelerated Execution Manager](https://software.intel.com/android/articles/how-to-use-the-intel-hardware-accelerated-execution-manager-intel-haxm-android-emulator) to resolve the problem.
+If `STATE` isn't set to `RUNNING`, see [How to Use the Intel Hardware Accelerated Execution Manager](https://software.intel.com/android/articles/how-to-use-the-intel-hardware-accelerated-execution-manager-intel-haxm-android-emulator) to resolve the problem.
 
 <a name="virt-conflicts"></a>
 
@@ -216,23 +216,23 @@ If `STATE` is not set to `RUNNING`, see [How to Use the Intel Hardware Accelerat
 
 HAXM can conflict with other technologies that use virtualization, such as Hyper-V, Windows Device Guard, and some antivirus software:
 
-- **Hyper-V** &ndash; If you are using a version of Windows before the **Windows 10 April 2018 update (build 1803)** and Hyper-V is enabled, follow the steps in [Disabling Hyper-V](#disable-hyperv) so that HAXM can be enabled.
+- **Hyper-V** &ndash; If you're using a version of Windows before the **Windows 10 April 2018 update (build 1803)** and Hyper-V is enabled, follow the steps in [Disabling Hyper-V](#disable-hyperv) so that HAXM can be enabled.
 
 - **Device Guard** &ndash; Device Guard and Credential Guard can prevent Hyper-V from being disabled on Windows machines. To disable Device Guard and Credential Guard, see [Disabling Device Guard](#disable-devguard).
 
-- **Antivirus Software** &ndash; If you are running antivirus software that uses hardware-assisted virtualization (such as Avast), disable or uninstall this software, reboot, and retry the Android emulator.
+- **Antivirus Software** &ndash; If you're running antivirus software that uses hardware-assisted virtualization (such as Avast), disable or uninstall this software, reboot, and retry the Android emulator.
 
 #### Incorrect BIOS settings
 
-If you are using HAXM on a Windows PC, HAXM will not work unless virtualization technology (Intel VT-x) is enabled in the BIOS. If VT-x is disabled, you will get an error similar to the following when you attempt to start the Android Emulator:
+On Windows, HAXM won't work unless virtualization technology (Intel VT-x) is enabled in the BIOS. If VT-x is disabled, you'll get an error similar to the following when you attempt to start the Android Emulator:
 
-> This computer meets the requirements for HAXM, but Intel Virtualization Technology (VT-x) is not turned on.
+> This computer meets the requirements for HAXM, but Intel Virtualization Technology (VT-x) isn't turned on.
 
-To correct this error, boot the computer into the BIOS, enable both VT-x and SLAT (Second-Level Address Translation), then restart the computer back into Windows.
+To correct this error, boot the computer into the BIOS, enable both VT-x and SLAT (Second-Level Address Translation) and restart the computer.
 
 #### Disabling Hyper-V
 
-If you are using a version of Windows before the **Windows 10 April 2018 Update (build 1803)** and Hyper-V is enabled, you must disable Hyper-V and reboot your computer to install and use HAXM. If you are using **Windows 10 April 2018 Update (build 1803)** or later, Android Emulator version 27.2.7 or later can use Hyper-V (instead of HAXM) for hardware acceleration, so it is not necessary to disable Hyper-V.
+If you're using a version of Windows before the **Windows 10 April 2018 Update (build 1803)** and Hyper-V is enabled, you must disable Hyper-V and reboot your computer to install and use HAXM. If you're using **Windows 10 April 2018 Update (build 1803)** or later, Android Emulator version 27.2.7 or later can use Hyper-V (instead of HAXM) for hardware acceleration, so it isn't necessary to disable Hyper-V.
 
 You can disable Hyper-V from the Control Panel by following these steps:
 
@@ -250,9 +250,9 @@ Alternately, you can use the following PowerShell command to disable the Hyper-V
 Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-Hypervisor
 ```
 
-Intel HAXM and Microsoft Hyper-V cannot both be active at the same time. Unfortunately, there is no way to switch between Hyper-V and HAXM without restarting your computer.
+Intel HAXM and Microsoft Hyper-V can't both be active at the same time. Unfortunately, there's no way to switch between Hyper-V and HAXM without restarting your computer.
 
-In some cases, using the above steps will not succeed in disabling Hyper-V if Device Guard and Credential Guard are enabled. If you are unable to disable Hyper-V (or it seems to be disabled but HAXM installation still fails), use the steps in the next section to disable Device Guard and Credential Guard.
+It's possible that the preceding steps won't succeed in disabling Hyper-V if Device Guard and Credential Guard are enabled. If you're unable to disable Hyper-V, or it seems to be disabled but HAXM installation still fails, use the steps in the next section to disable Device Guard and Credential Guard.
 
 #### Disabling Device Guard
 
@@ -299,15 +299,15 @@ If Device Guard is enabled, use the following steps to disable it:
 
 01. After the computer reboots, check again to ensure that Hyper-V is disabled (as described in the previous steps).
 
-If Hyper-V is still not disabled, the policies of your domain-joined computer may prevent you from disabling Device Guard or Credential Guard. In this case, you can request an exemption from your domain administrator to allow you to opt out of Credential Guard. Alternately, you can use a computer that is not domain-joined if you must use HAXM.
+If Hyper-V is still not disabled, the policies of your domain-joined computer may prevent you from disabling Device Guard or Credential Guard. In this case, you can request an exemption from your domain administrator to allow you to opt out of Credential Guard. Alternately, you can use a computer that isn't domain-joined if you must use HAXM.
 
-## Additional troubleshooting tips
+## More troubleshooting tips
 
 The following suggestions are often helpful in diagnosing Android emulator issues.
 
 ### Starting the emulator from the command line
 
-If the emulator is not already running, you can start it from the command line (rather than from within Visual Studio) to view its output. Typically, Android emulator AVD images are stored at the following location: _%userprofile%\\.android\\avd_.
+If the emulator isn't already running, you can start it from the command line (rather than from within Visual Studio) to view its output. Typically, Android emulator AVD images are stored at the following location: _%userprofile%\\.android\\avd_.
 
 You can launch the emulator with an AVD image from this location by passing in the folder name of the AVD. For example, this command launches an AVD named **Pixel_API_27**:
 
@@ -315,9 +315,9 @@ You can launch the emulator with an AVD image from this location by passing in t
 "C:\Program Files (x86)\Android\android-sdk\emulator\emulator.exe" -partition-size 512 -no-boot-anim -verbose -feature WindowsHypervisorPlatform -avd Pixel_API_27 -prop monodroid.avdname=Pixel_API_27
 ```
 
-This example assumes that the Android SDK is installed at the default location of _C:\\Program Files (x86)\\Android\\android-sdk_; if not, modify the above path for the location of the Android SDK on your computer.
+This command assumes that the Android SDK is installed at the default location of _C:\\Program Files (x86)\\Android\\android-sdk_. If the Android SDK is installed elsewhere, modify the preceding command to the correct location.
 
-When you run this command, it will produce many lines of output while the emulator starts up. In particular, lines such as the following example will be printed if hardware acceleration is enabled and working properly (in this example, HAXM is used for hardware acceleration):
+When you run this command, it produces many lines of output while the emulator starts up. Specifically, lines such as the following example are printed if hardware acceleration is enabled and working properly. In this example, HAXM is used for hardware acceleration:
 
 ```cmd
 emulator: CPU Acceleration: working
@@ -328,7 +328,7 @@ emulator: CPU Acceleration status: HAXM version 6.2.1 (4) is installed and usabl
 
 Often you can diagnose emulator problems by viewing the Device Manager logs. These logs are written to the following location: _%userprofile%\\AppData\\Local\\Xamarin\\Logs\\16.0_.
 
-You can view each _DeviceManager.log_ file by using a text editor such as Notepad. The following example log entry indicates that HAXM was not found on the computer:
+You can view each _DeviceManager.log_ file by using a text editor such as Notepad. The following example log entry indicates that HAXM wasn't found on the computer:
 
 ```cmd
 Component Intel x86 Emulator Accelerator (HAXM installer) r6.2.1 [Extra: (Intel Corporation)] not present on the system
@@ -367,7 +367,7 @@ If you see an error about a failure to install the APK on the emulator or a fail
    emulator-5554   device
    ```
 
-01. If the emulator does not appear in this list, start the **Android SDK Manager**, apply all updates, then try launching the emulator again.
+01. If the emulator doesn't appear in this list, start the **Android SDK Manager**, apply all updates, then try launching the emulator again.
 
 ### MMIO access error
 
@@ -377,7 +377,7 @@ If `An MMIO access error has occurred` is displayed, restart the emulator.
 
 ## Missing Google Play Services
 
-If the virtual device you are running in the emulator does not have Google Play Services or Google Play Store installed, this condition is usually caused by creating a virtual device without including these packages. When you [create a virtual device](device-manager.md), be sure to select one or both of the following:
+If the virtual device you're running in the emulator doesn't have Google Play Services or Google Play Store installed, this condition is usually caused by creating a virtual device without including these packages. When you [create a virtual device](device-manager.md), be sure to select one or both of the following:
 
 - **Google APIs** &ndash; includes Google Play Services in the virtual device.
 - **Google Play Store** &ndash; includes Google Play Store in the virtual device.
@@ -396,17 +396,17 @@ For example, this virtual device will include Google Play Services and Google Pl
 Performance issues are typically caused by one of the following problems:
 
 - The emulator is running without hardware acceleration.
-- The virtual device running in the emulator is not using an x86-based system image.
+- The virtual device running in the emulator isn't using an x86-based system image.
 
 The following sections cover these scenarios in more detail.
 
-### Hardware acceleration is not enabled
+### Hardware acceleration isn't enabled
 
-If hardware acceleration is not enabled, a dialog may pop up with a message such as **device will run unaccelerated** when you deploy your app to the Android emulator. If you are not certain whether hardware acceleration is enabled on your computer (or you would like to know which technology is providing the acceleration), see [Hardware acceleration issues](#accel-issues-mac) below for steps you can take to verify and enable hardware acceleration.
+If hardware acceleration isn't enabled, a dialog may pop up with a message such as **device will run unaccelerated** when you deploy your app to the Android emulator. If you're not certain whether hardware acceleration is enabled on your computer (or you would like to know which technology is providing the acceleration), see [Hardware acceleration issues](#accel-issues-mac) below for steps you can take to verify and enable hardware acceleration.
 
 ### Acceleration is enabled but the emulator runs too slowly
 
-A common cause for this problem is not using an x86-based image in your virtual device. When you [create a virtual device](device-manager.md), be sure to select an x86-based system image:
+A common cause for this problem isn't using an x86-based image in your virtual device. When you [create a virtual device](device-manager.md), be sure to select an x86-based system image:
 
 [![Selecting an x86 system image for a virtual device.](troubleshooting-images/mac/02-x86-virtual-device-m75-sml.png)](troubleshooting-images/mac/02-x86-virtual-device-m75.png#lightbox)
 
@@ -414,13 +414,13 @@ A common cause for this problem is not using an x86-based image in your virtual 
 
 ## Hardware acceleration issues
 
-Whether you are using the Hypervisor Framework or HAXM for hardware acceleration of the emulator, you may run into problems caused by installation issues or an out-of-date version of macOS. The following sections can help you resolve this issue.
+Whether you're using the Hypervisor Framework or HAXM for hardware acceleration of the emulator, you may run into problems caused by installation issues or an out-of-date version of macOS. The following sections can help you resolve this issue.
 
 <a name="hypervisor-issues"></a>
 
 ### Hypervisor Framework issues
 
-If you are using macOS 10.10 or later on a newer Mac, the Android emulator will automatically use the Hypervisor Framework for hardware acceleration. However, some older Macs or Macs running a version of macOS earlier than 10.10 may not provide Hypervisor Framework support.
+If you're using macOS 10.10 or later on a newer Mac, the Android emulator will automatically use the Hypervisor Framework for hardware acceleration. However, some older Macs or Macs running a version of macOS earlier than 10.10 may not provide Hypervisor Framework support.
 
 To determine whether or not your Mac supports the Hypervisor Framework, open a Terminal and enter the following command:
 
@@ -434,11 +434,11 @@ If your Mac supports the Hypervisor Framework, the above command will return the
 kern.hv_support: 1
 ```
 
-If the Hypervisor Framework is not available on your Mac, you can follow the steps in [Accelerating with HAXM](~/android/get-started/installation/android-emulator/hardware-acceleration.md?tabs=vsmac#haxm-mac) to use HAXM for acceleration instead.
+If the Hypervisor Framework isn't available on your Mac, you can follow the steps in [Accelerating with HAXM](~/android/get-started/installation/android-emulator/hardware-acceleration.md?tabs=vsmac#haxm-mac) to use HAXM for acceleration instead.
 
 ### HAXM issues
 
-If the Android Emulator does not start properly, this problem is often caused by problems with HAXM. HAXM issues are often the result of conflicts with other virtualization technologies, incorrect settings, or an out-of-date HAXM driver. Try reinstalling the HAXM driver, using the steps detailed in [Installing HAXM](~/android/get-started/installation/android-emulator/hardware-acceleration.md?tabs=vsmac#install-haxm-mac).
+If the Android Emulator doesn't start properly, this problem is often caused by problems with HAXM. HAXM issues are often the result of conflicts with other virtualization technologies, incorrect settings, or an out-of-date HAXM driver. Try reinstalling the HAXM driver, using the steps detailed in [Installing HAXM](~/android/get-started/installation/android-emulator/hardware-acceleration.md?tabs=vsmac#install-haxm-mac).
 
 ## Additional troubleshooting tips
 
@@ -446,7 +446,7 @@ The following suggestions are often helpful in diagnosing Android emulator issue
 
 ### Starting the emulator from the command line
 
-If the emulator is not already running, you can start it from the command line (rather than from within Visual Studio for Mac) to view its output. Typically, Android emulator AVD images are stored at the following location: _~/.android/avd_.
+If the emulator isn't already running, you can start it from the command line (rather than from within Visual Studio for Mac) to view its output. Typically, Android emulator AVD images are stored at the following location: _~/.android/avd_.
 
 You can launch the emulator with an AVD image from this location by passing in the folder name of the AVD. For example, this command launches an AVD named **Pixel_2_API_28**:
 
