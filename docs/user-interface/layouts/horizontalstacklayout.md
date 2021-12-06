@@ -5,7 +5,7 @@ ms.date: 07/08/2021
 ---
 
 # .NET MAUI HorizontalStackLayout
-
+https://github.com/dotnet/maui/pull/3362
 A `HorizontalStackLayout` organizes child views in a one-dimensional horizontal stack, and is a more performant alternative to a `StackLayout`. In addition, a `HorizontalStackLayout` can be used as a parent layout that contains other child layouts.
 
 The `HorizontalStackLayout` defines the following properties:
