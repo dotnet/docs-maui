@@ -4,7 +4,7 @@ description: "Learn how the .NET MAUI VerticalStackLayout organizes child views 
 ms.date: 12/06/2021
 ---
 
-# .NET MAUI VerticalStackLayout
+# VerticalStackLayout
 
 A `VerticalStackLayout` organizes child views in a one-dimensional vertical stack, and is a more performant alternative to a `StackLayout`. In addition, a `VerticalStackLayout` can be used as a parent layout that contains other child layouts.
 
@@ -56,10 +56,9 @@ This example creates a `VerticalStackLayout` containing `Label` and `Rectangle` 
 
 :::image type="content" source="media/verticalstacklayout/basic.png" alt-text="VerticalStackLayout displaying different child views screenshot.":::
 
-<!--
+
 > [!NOTE]
-> The value of the `Margin` property represents the distance between an element and its adjacent elements. For more information, see [Margin and Padding](margin-and-padding.md).
--->
+> The value of the `Margin` property represents the distance between an element and its adjacent elements. <!--For more information, see [Margin and Padding](margin-and-padding.md).-->
 
 ## Space between child views
 
@@ -102,14 +101,14 @@ This example creates a `VerticalStackLayout` containing `Label` and `Rectangle` 
 > [!TIP]
 > The `Spacing` property can be set to negative values to make child views overlap.
 
-## Position and size of child views
+## Position and size child views
 
 The size and position of child views within a `VerticalStackLayout` depends upon the values of the child views' `HeightRequest` and `WidthRequest` properties, and the values of their `HorizontalOptions` properties. In a `VerticalStackLayout`, child views expand to fill the available width when their size isn't explicitly set.
 
 The `HorizontalOptions` properties of a `VerticalStackLayout`, and its child views, can be set to fields from the `LayoutOptions` struct, which encapsulates an *alignment* layout preference. This layout preference determines the position and size of a child view within its parent layout.
 
 > [!TIP]
-> Don't set the `HorizontalOptions` property of a `VerticalStackLayout` unless you need to. The default value of `LayoutOptions.Fill` allows for the best layout optimization. Changing these properties has a cost and consumes memory, even when setting them back to the default values.
+> Don't set the `HorizontalOptions` property of a `VerticalStackLayout` unless you need to. The default value of `LayoutOptions.Fill` allows for the best layout optimization. Changing this property has a cost and consumes memory, even when setting it back to its default value.
 
 ### Alignment
 
@@ -139,9 +138,9 @@ The following XAML example sets alignment preferences on each child view in the 
 
 In this example, alignment preferences are set on the `Label` objects to control their position within the `VerticalStackLayout`. The `Start`, `Center`, `End`, and `Fill` fields are used to define the alignment of the `Label` objects within the parent `VerticalStackLayout`:
 
-:::image type="content" source="media/verticalstacklayout/alignment.png" alt-text="VerticalStackLayout displaying different child views with different alignment options screenshot.":::
+:::image type="content" source="media/verticalstacklayout/alignment.png" alt-text="VerticalStackLayout displaying aligned child views screenshot.":::
 
-In this example, the `Label` child views within the `VerticalStackLayout` set their `HorizontalOptions` properties to one of the alignment fields:
+A `VerticalStackLayout` only respects the alignment preferences on child views that are in the opposite direction to the orientation of the layout. Therefore, the `Label` child views within the `VerticalStackLayout` set their `HorizontalOptions` properties to one of the alignment fields:
 
 - `Start`, which positions the `Label` on the left-hand side of the `VerticalStackLayout`.
 - `Center`, which centers the `Label` in the `VerticalStackLayout`.
@@ -199,11 +198,9 @@ The following XAML shows an example of nesting `HorizontalStackLayout` objects i
 </ContentPage>
 ```
 
-In this example, the parent `VerticalStackLayout` contains nested `HorizontalStackLayout` objects inside `Frame` objects.
+In this example, the parent `VerticalStackLayout` contains nested `HorizontalStackLayout` objects inside `Frame` objects:
 
 :::image type="content" source="media/verticalstacklayout/nested.png" alt-text="VerticalStackLayout displaying nested HorizontalStackLayout objects screenshot.":::
 
-<!--
 > [!IMPORTANT]
-> The deeper you nest layout objects, the more the nested layouts will impact performance. For more information, see [Choose the correct layout](~/xamarin-forms/deploy-test/performance.md#choose-the-correct-layout).
--->
+> The deeper you nest layout objects, the more the nested layouts will impact performance. <!--For more information, see [Choose the correct layout](~/xamarin-forms/deploy-test/performance.md#choose-the-correct-layout).-->
