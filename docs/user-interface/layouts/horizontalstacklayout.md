@@ -85,7 +85,8 @@ The following XAML example sets alignment preferences on each child view in the 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StackLayoutDemos.Views.HorizontalStackLayoutPage">
-    <HorizontalStackLayout Margin="20">
+    <HorizontalStackLayout Margin="20"
+                           HeightRequest="200">
         <Label Text="Start"
                BackgroundColor="Gray"
                VerticalOptions="Start" />
