@@ -79,8 +79,6 @@ The `VerticalOptions` properties of a `HorizontalStackLayout`, and its child vie
 > [!TIP]
 > Don't set the `VerticalOptions` property of a `HorizontalStackLayout` unless you need to. The default value of `LayoutOptions.Fill` allows for the best layout optimization. Changing this property has a cost and consumes memory, even when setting it back to its default value.
 
-### Alignment
-
 The following XAML example sets alignment preferences on each child view in the `HorizontalStackLayout`:
 
 ```xaml
