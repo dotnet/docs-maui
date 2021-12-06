@@ -56,7 +56,6 @@ This example creates a `VerticalStackLayout` containing `Label` and `Rectangle` 
 
 :::image type="content" source="media/verticalstacklayout/basic.png" alt-text="VerticalStackLayout displaying different child views screenshot.":::
 
-
 > [!NOTE]
 > The value of the `Margin` property represents the distance between an element and its adjacent elements. <!--For more information, see [Margin and Padding](margin-and-padding.md).-->
 
@@ -203,4 +202,4 @@ In this example, the parent `VerticalStackLayout` contains nested `HorizontalSta
 :::image type="content" source="media/verticalstacklayout/nested.png" alt-text="VerticalStackLayout displaying nested HorizontalStackLayout objects screenshot.":::
 
 > [!IMPORTANT]
-> The deeper you nest layout objects, the more the nested layouts will impact performance. <!--For more information, see [Choose the correct layout](~/xamarin-forms/deploy-test/performance.md#choose-the-correct-layout).-->
+> The deeper you nest layout objects, the more the nested layouts will impact performance. <!--For more information, see [Choose the correct layout](~/xamarin-forms/deploy-test/performance.md#choose-the-correct-layout). -->
