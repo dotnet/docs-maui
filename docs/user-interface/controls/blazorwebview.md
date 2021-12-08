@@ -25,7 +25,7 @@ Existing Blazor components can be used in a .NET MAUI Blazor app by moving the c
 
 For information about Blazor apps, see [Introduction to ASP.NET Core Blazor](/aspnet/core/blazor/).
 
-> [!IMPORTANT]
+> [!NOTE]
 > While Visual Studio installs all the required tooling to develop .NET MAUI Blazor apps, end users of .NET MAUI Blazor apps on Windows must install the [WebView2](https://developer.microsoft.com/microsoft-edge/webview2/) runtime.
 
 ## Create a .NET MAUI Blazor app
