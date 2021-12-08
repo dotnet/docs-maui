@@ -8,8 +8,7 @@ ms.date: 12/08/2021
 
 The .NET Multi-platform App UI (.NET MAUI) `BlazorWebView` is a control that enables you to host a Blazor web app in your .NET MAUI app. These apps, known as .NET MAUI Blazor apps, enable a Blazor web app to be integrated with native platform features and UI controls. The `BlazorWebView` control can be added to any page of a .NET MAUI app, and pointed to the root of the Blazor app. The Blazor components run natively in the .NET process and render web UI to an embedded web view control. .NET MAUI Blazor apps can run on all the platforms supported by .NET MAUI.
 
-> [!IMPORTANT]
-> While Visual Studio installs all the required tooling to develop .NET MAUI Blazor apps, end users of .NET MAUI Blazor apps on Windows must install the [WebView2](https://developer.microsoft.com/microsoft-edge/webview2/) runtime.
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
 `BlazorWebView` defines the following properties:
 
@@ -22,10 +21,12 @@ The `RootComponent` class defines the following properties:
 - `ComponentType`, of type `Type?`, which defines the type of the root component.
 - `Parameters`, of type `IDictionary<string, object?>?`, which represents an optional dictionary of parameters to pass to the root component.
 
+Existing Blazor components can be used in a .NET MAUI Blazor app by moving the code into the app, or by referencing an existing class library or package that contains the component.
+
 For information about Blazor apps, see [Introduction to ASP.NET Core Blazor](/aspnet/core/blazor/).
 
-> [!NOTE]
-> Existing Blazor components can be used in a .NET MAUI Blazor app by moving the code into the app, or by referencing an existing class library or package that contains the component.
+> [!IMPORTANT]
+> While Visual Studio installs all the required tooling to develop .NET MAUI Blazor apps, end users of .NET MAUI Blazor apps on Windows must install the [WebView2](https://developer.microsoft.com/microsoft-edge/webview2/) runtime.
 
 ## Create a .NET MAUI Blazor app
 
