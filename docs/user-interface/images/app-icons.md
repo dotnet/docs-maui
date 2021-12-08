@@ -21,7 +21,7 @@ An app icon can be added to your app project by dragging an image into the _Reso
 </ItemGroup>
 ```
 
-App icon filenames must be lowercase, start and end with a letter character, and contains only alphanumeric characters or underscores.
+To comply with Android resource naming rules, app icon filenames must be lowercase, start and end with a letter character, and contain only alphanumeric characters or underscores. For more information, see [App resources overview](https://developer.android.com/guide/topics/resources/providing-resources) on developer.android.com.
 
 A background color for the app icon can also be specified:
 
