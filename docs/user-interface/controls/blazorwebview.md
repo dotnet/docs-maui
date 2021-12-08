@@ -96,9 +96,6 @@ The process to add a `BlazorWebView` to an existing .NET MAUI app is as follows:
     using Microsoft.Extensions.DependencyInjection;
     ```
 
-    > [!NOTE]
-    > Blazor requires service scopes, which are only supported with the `Microsoft.Extensions.DependencyInjection` library.
-
 1. Modify the `CreateMauiApp` method of your `MauiProgram` class to register the `BlazorWebView` control for use in your app. To do this, call the `RegisterBlazorMauiWebView` method on the `MauiAppBuilder` object. Then, on the `IServiceCollection` object, call the `AddBlazorWebView` method to add component web view services to the services collection:
 
     ```csharp
