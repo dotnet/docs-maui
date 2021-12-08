@@ -10,7 +10,7 @@ ms.date: 08/19/2021
 
 On Android and iOS, .NET Multi-platform App UI (.NET MAUI) apps can display a splash screen while their initialization process completes. The splash screen is displayed immediately when an app is launched, providing immediate feedback to users while app resources are initialized:
 
-:::image type="content" source="media/splashscreen/maui.png" alt-text=".NET MAUI splash screens screenshot." border="false":::
+:::image type="content" source="media/splashscreen/splashscreens.png" alt-text=".NET MAUI splash screens screenshot." border="false":::
 
 Once the app is ready for interaction, its splash screen is dismissed.
 
