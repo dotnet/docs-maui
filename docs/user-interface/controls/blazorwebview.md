@@ -104,22 +104,22 @@ The process to add a `BlazorWebView` to an existing .NET MAUI app is as follows:
     ```csharp
     public static class MauiProgram
     {
-           public static MauiApp CreateMauiApp()
-           {
-                 var builder = MauiApp.CreateBuilder();
-                 builder
-                      .RegisterBlazorMauiWebView()
-                       .UseMauiApp<App>()
-                       .ConfigureFonts(fonts =>
-                       {
-                             fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                       });
+        public static MauiApp CreateMauiApp()
+        {
+            var builder = MauiApp.CreateBuilder();
+            builder
+                .RegisterBlazorMauiWebView()
+                .UseMauiApp<App>()
+                .ConfigureFonts(fonts =>
+                {
+                    fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                });
 
-                 builder.Services.AddBlazorWebView();
-                 // Register any app services on the IServiceCollection object
-                 // e.g. builder.Services.AddSingleton<WeatherForecastService>();
+            builder.Services.AddBlazorWebView();
+            // Register any app services on the IServiceCollection object
+            // e.g. builder.Services.AddSingleton<WeatherForecastService>();
 
-                 return builder.Build();
-           }
+            return builder.Build();
+        }
     }
     ```
