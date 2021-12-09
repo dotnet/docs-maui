@@ -321,7 +321,7 @@ The following tools can assist with your accessibility testing:
 - [Android Studio Layout Inspector](https://developer.android.com/studio/debug/layout-inspector) for Android apps.
 - [Xcode View Debugger](https://developer.apple.com/library/archive/documentation/DeveloperTools/Conceptual/debugging_with_xcode/chapters/special_debugging_workflows.html#//apple_ref/doc/uid/TP40015022-CH9-SW2) for iOS and macOS apps.
 
-However, none of these tools can perfectly emulate the screen reader user experience, and the best way to test and troubleshoot your apps for accessibility will always be manually with screen readers.
+However, none of these tools can perfectly emulate the screen reader user experience, and the best way to test and troubleshoot your apps for accessibility will always be manually on physical devices with screen readers.
 
 ## Enabling screen readers
 
