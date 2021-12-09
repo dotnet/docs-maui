@@ -8,7 +8,7 @@ ms.date: 10/11/2021
 
 <!-- Sample link goes here -->
 
-Accessibility is concerned with building experiences that make your apps usable by people who use technology in a wide range of environments and approach your UI with a range of needs and experiences. For some situations, accessibility requirements are imposed by law. Regardless, it's advisable to address accessibility issues regardless of legal requirements so that your apps have the largest possible audience.
+Semantics is concerned with building experiences that make your apps inclusive of people who use technology in a wide range of environments and approach your UI with a range of needs and experiences. In many situations, legal requirements for accessibility may provide an impetus for developers to address accessibility issues. Regardless, it's advisable to build inclusive and accessible apps so that your apps reach the largest possible audience.
 
 The [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/standards-guidelines/wcag/) are the global accessibility standard and legal benchmark for web and mobile. These guidelines describe the various ways in which apps can be made more perceivable, operable, understandable, and robust, for all.
 
