@@ -4,7 +4,7 @@ description: "Learn how to use the SemanticProperties class in a .NET MAUI app, 
 ms.date: 10/11/2021
 ---
 
-# Accessibility
+# Semantics
 
 <!-- Sample link goes here -->
 
