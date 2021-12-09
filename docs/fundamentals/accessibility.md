@@ -24,7 +24,7 @@ Most screen readers will automatically read any text associated with a control t
 
 ## Semantic properties
 
-Semantic properties are used tp define information about which controls should receive accessibility focus and which text should be read aloud to the user. Semantic properties are attached properties that can be added to any element to set the underlying accessibility APIs on the native platforms.
+Semantic properties are used to define information about which controls should receive accessibility focus and which text should be read aloud to the user. Semantic properties are attached properties that can be added to any element to set the underlying accessibility APIs on the native platforms.
 
 > [!IMPORTANT]
 > Semantic properties don't try to force equivalent behavior on each platform. Instead, they rely on the accessibility experience provided by each platform.
