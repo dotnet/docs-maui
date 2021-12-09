@@ -384,7 +384,7 @@ Follow these tips to ensure that your .NET MAUI apps are accessible to the wides
 <!-- markdownlint-disable MD032 -->
 
 > [!div class="checklist"]
-> - Make the user interface self-describing. Tag all the elements of your user interface with descriptive text and hints.
+> - Make sure the user interface is self-describing. Test that all the elements of your user interface are screen reader accessible. Add descriptive text and hints when necessary.
 > - Ensure that images and icons have alternate text descriptions.
 > - Support large fonts and high contrast. Avoid hardcoding control dimensions, and instead prefer layouts that resize to accommodate larger font sizes. Test color schemes in high-contrast mode to ensure they are readable.
 > - Design the visual tree with navigation in mind. Use appropriate layout controls so that navigating between controls using alternate input methods follows the same logical flow as using touch. In addition, exclude unnecessary elements from screen readers (for example, decorative images or labels for fields that are already accessible).
