@@ -1,14 +1,14 @@
 ---
-title: ".NET MAUI semantics for accessibility"
+title: "Semantics for accessibility"
 description: "Learn how to use the SemanticProperties class in a .NET MAUI app, so that a screen reader can speak about the user interface elements on a page."
 ms.date: 10/11/2021
 ---
 
-# Semantics
+# Semantics for accessibility
 
 <!-- Sample link goes here -->
 
-Semantics is concerned with building experiences that make your apps inclusive of people who use technology in a wide range of environments and approach your UI with a range of needs and experiences. In many situations, legal requirements for accessibility may provide an impetus for developers to address accessibility issues. Regardless, it's advisable to build inclusive and accessible apps so that your apps reach the largest possible audience.
+Semantics for accessibility is concerned with building experiences that make your apps inclusive for people who use technology in a wide range of environments and approach your UI with a range of needs and experiences. In many situations, legal requirements for accessibility may provide an impetus for developers to address accessibility issues. Regardless, it's advisable to build inclusive and accessible apps so that your apps reach the largest possible audience.
 
 The [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/standards-guidelines/wcag/) are the global accessibility standard and legal benchmark for web and mobile. These guidelines describe the various ways in which apps can be made more perceivable, operable, understandable, and robust, for all.
 
@@ -16,15 +16,15 @@ Many user accessibility needs are met by assistive technology products installed
 
 Screen readers typically provide auditory descriptions of controls that are displayed on the screen. These descriptions help users navigate through the app and provide references to controls, such as images, that have no input or text. Screen readers are often controlled through gestures on the touchscreen, trackpad, or keyboard. For information about enabling screen readers, see [Enable screen readers](#enabling-screen-readers).
 
-Each operating system has its own screen readers with their own unique behavior and configuration. For example, most screen readers read the text associated with a control when it receives focus, enabling users to orient themselves as they navigate through the app. However, some screen readers can also read the entire app user interface when a page appears, which enables the user to receive all of the page's available informational content before attempting to navigate it.
+Operating systems have their own screen readers with their own unique behavior and configuration. For example, most screen readers read the text associated with a control when it receives focus, enabling users to orient themselves as they navigate through the app. However, some screen readers can also read the entire app user interface when a page appears, which enables the user to receive all of the page's available informational content before attempting to navigate it.
 
 Most screen readers will automatically read any text associated with a control that receives accessibility focus. This means that controls, such as `Label` or `Button`, that have a `Text` property set will be accessible for the user. However, `Image`, `ImageButton`, `ActivityIndicator`, and others might not be in the accessibility tree because no text is associated with them.
 
-.NET Multi-platform App UI (.NET MAUI) supports two approaches to providing access to the accessibility experience of the underlying native platform. *Semantic properties* are the .NET MAUI approach to providing accessibility values in apps, and are the recommended approach. *Automation properties* are the Xamarin.Forms approach to providing accessibility values in apps, and have been superseded by semantic properties. In both cases, the default accessibility order of controls is the same order in which they're listed in XAML or added to the layout. However, different layouts might have additional factors that influence accessibility order. For example, the accessibility order of `StackLayout` is also based on its orientation, and the accessibility order of `Grid` is based on its row and column arrangement.
+.NET Multi-platform App UI (.NET MAUI) supports two approaches to providing access to the accessibility experience of the underlying platform. *Semantic properties* are the .NET MAUI approach to providing accessibility values in apps, and are the recommended approach. *Automation properties* are the Xamarin.Forms approach to providing accessibility values in apps, and have been superseded by semantic properties. In both cases, the default accessibility order of controls is the same order in which they're listed in XAML or added to the layout. However, different layouts might have additional factors that influence accessibility order. For example, the accessibility order of `StackLayout` is also based on its orientation, and the accessibility order of `Grid` is based on its row and column arrangement.
 
 ## Semantic properties
 
-Semantic properties are used to define information about which controls should receive accessibility focus and which text should be read aloud to the user. Semantic properties are attached properties that can be added to any element to set the underlying accessibility APIs on the native platforms.
+Semantic properties are used to define information about which controls should receive accessibility focus and which text should be read aloud to the user. Semantic properties are attached properties that can be added to any element to set the underlying platform accessibility APIs.
 
 > [!IMPORTANT]
 > Semantic properties don't try to force equivalent behavior on each platform. Instead, they rely on the accessibility experience provided by each platform.
@@ -35,7 +35,7 @@ The `SemanticProperties` class defines the following attached properties:
 - `Hint`, of type `string`, which is similar to `Description`, but provides additional context such as the purpose of a control. For more information, see [Hint](#hint).
 - `HeadingLevel`, of type `SemanticHeadingLevel`, which enables an element to be marked as a heading to organize the UI and make it easier to navigate. For more information, see [Heading levels](#heading-levels).
 
-These attached properties set native accessibility values so that a screen reader can speak about the element. <!-- For more information about attached properties, see [Attached properties]().-->
+These attached properties set platform accessibility values so that a screen reader can speak about the element. <!-- For more information about attached properties, see [Attached properties]().-->
 
 ### Description
 
@@ -111,7 +111,7 @@ activityIndicator.SetValue(SemanticProperties.HintProperty, "Saving your data to
 On Android, this property behaves slightly differently depending on the control it's attached to. For example, for controls without text values, such as `Switch` and `CheckBox`, the controls will display the hint with the control. However, for controls with text values, the hint is not displayed and is read after the text value.
 
 > [!WARNING]
-> The `SemanticProperties.Hint` property conflicts with the `Entry.Placeholder` property on Android, which both map to the same native property. Therefore, setting a different `SemanticProperties.Hint` value to the `Entry.Placeholder` value isn't recommended.
+> The `SemanticProperties.Hint` property conflicts with the `Entry.Placeholder` property on Android, which both map to the same platform property. Therefore, setting a different `SemanticProperties.Hint` value to the `Entry.Placeholder` value isn't recommended.
 
 <!-- ^ and Editor? -->
 
@@ -150,7 +150,7 @@ stackLayout.SetValue(SemanticProperties.HeadingLevelProperty, SemanticHeadingLev
 <!-- Todo: is this right?
 ### WebView    
 
-The native WebView control on each platform is responsible for determining which elements of its content are accessible, and each WebView control should report its HTML content as accessibility elements.
+The WebView control on each platform is responsible for determining which elements of its content are accessible, and each WebView control should report its HTML content as accessibility elements.
 
 Alternatively, if the content in your `WebView` is simple, you could provide a description of the content for the `WebView` with the `SemanticProperties.Description` and `SemanticProperties.Hint` attached properties.
 
@@ -191,10 +191,10 @@ The `AutomationProperties` class defines the following attached properties:
 - `HelpText`, of type `string`, represents a longer description of the element, which can be thought of as tooltip text that's associated with the element. For more information, see [HelpText](#helptext).
 - `LabeledBy`, of type `VisualElement`, which enables another element to define accessibility information for the current element. For more information, see [LabeledBy](#labeledby).
 
-These attached properties set native accessibility values so that a screen reader can speak about the element. <!-- For more information about attached properties, see [Attached Properties](~/xamarin-forms/xaml/attached-properties.md). -->
+These attached properties set platform accessibility values so that a screen reader can speak about the element. <!-- For more information about attached properties, see [Attached Properties](~/xamarin-forms/xaml/attached-properties.md). -->
 
 > [!IMPORTANT]
-> Using the `AutomationProperties` attached properties may impact UI Test execution on Android. The `AutomationId`, `AutomationProperties.Name` and `AutomationProperties.HelpText` properties will both set the native `ContentDescription` property, with the `AutomationProperties.Name` and `AutomationProperties.HelpText` property values taking precedence over the `AutomationId` value (if both `AutomationProperties.Name` and `AutomationProperties.HelpText` are set, the values will be concatenated). This means that any tests looking for `AutomationId` will fail if `AutomationProperties.Name` or `AutomationProperties.HelpText` are also set on the element. In this scenario, UI Tests should be altered to look for the value of `AutomationProperties.Name` or `AutomationProperties.HelpText`, or a concatenation of both.
+> Using the `AutomationProperties` attached properties may impact UI Test execution on Android. The `AutomationId`, `AutomationProperties.Name` and `AutomationProperties.HelpText` properties will both set the platform `ContentDescription` property, with the `AutomationProperties.Name` and `AutomationProperties.HelpText` property values taking precedence over the `AutomationId` value (if both `AutomationProperties.Name` and `AutomationProperties.HelpText` are set, the values will be concatenated). This means that any tests looking for `AutomationId` will fail if `AutomationProperties.Name` or `AutomationProperties.HelpText` are also set on the element. In this scenario, UI Tests should be altered to look for the value of `AutomationProperties.Name` or `AutomationProperties.HelpText`, or a concatenation of both.
 
 Different screen readers read different accessibility values. For example, on Windows, Narrator will prioritize `AutomationProperties.Name`, `AutomationProperties.LabeledBy`, and then `AutomationProperties.HelpText`. On Android, TalkBack may combine the `AutomationProperties.Name` and `AutomationProperties.HelpText` values. Therefore, it's recommended that thorough accessibility testing is carried out on each platform to ensure an optimal experience.
 
@@ -376,3 +376,16 @@ For alternative methods of enabling VoiceOver, see [Turn VoiceOver on or off on 
 Narrator is the primary screen reader used on Windows. Narrator can be enabled by pressing the **Windows logo key** + **Ctrl** + **Enter** together. These keys can be pressed again to stop Narrator.
 
 For more information about Narrator, see [Complete guide to Narrator](https://support.microsoft.com/windows/complete-guide-to-narrator-e4397a0d-ef4f-b386-d8ae-c172f109bdb1).
+
+## Accessibility checklist
+
+Follow these tips to ensure that your .NET MAUI apps are accessible to the widest audience possible:
+
+> [!div class="checklist"]
+> - Make the user interface self-describing. Tag all the elements of your user interface with descriptive text and hints.
+> - Ensure that images and icons have alternate text descriptions.
+> - Support large fonts and high contrast. Avoid hardcoding control dimensions, and instead prefer layouts that resize to accommodate larger font sizes. Test color schemes in high-contrast mode to ensure they are readable.
+> - Design the visual tree with navigation in mind. Use appropriate layout controls so that navigating between controls using alternate input methods follows the same logical flow as using touch. In addition, exclude unnecessary elements from screen readers (for example, decorative images or labels for fields that are already accessible).
+> - Don't rely on audio or color cues alone. Avoid situations where the sole indication of progress, completion, or some other state is a sound or color change. Either design the user interface to include clear visual cues, with sound and color for reinforcement only, or add specific accessibility indicators. When choosing colors, try to avoid a palette that is hard to distinguish for users with color blindness.
+> - Provide captions for video content and a readable script for audio content. It's also helpful to provide controls that adjust the speed of audio or video content, and ensure that volume and transport controls are easy to find and use.
+> - Localize your accessibility descriptions when the app supports multiple languages.
