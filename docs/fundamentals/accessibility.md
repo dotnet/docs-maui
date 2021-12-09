@@ -119,7 +119,7 @@ On Android, this property behaves slightly differently depending on the control 
 
 The `SemanticProperties.HeadingLevel` attached property enables an element to be marked as a heading to organize the UI and make it easier to navigate. Some screen readers enable users to quickly jump between headings.
 
-Headings have a level from 1 to 9, and are represented by the `SemanticHeadingLevel` enumeration, which defines `None`, and `Level1` through to `Level9` members.
+Headings have a level from 1 to 9, and are represented by the `SemanticHeadingLevel` enumeration, which defines `None`, and `Level1` through `Level9` members.
 
 > [!IMPORTANT]
 > While Windows offers 9 levels of headings, Android and iOS only offer a single heading. Therefore, when `SemanticProperties.HeadingLevel` is set on Windows it maps to the correct heading level. However, when set on Android and iOS it maps to a single heading level.
