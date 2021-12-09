@@ -1,7 +1,7 @@
 ---
 title: "Semantics for accessibility"
 description: "Learn how to use the SemanticProperties class in a .NET MAUI app, so that a screen reader can speak about the user interface elements on a page."
-ms.date: 10/11/2021
+ms.date: 12/09/2021
 ---
 
 # Semantics for accessibility
@@ -20,7 +20,10 @@ Operating systems have their own screen readers with their own unique behavior a
 
 Most screen readers will automatically read any text associated with a control that receives accessibility focus. This means that controls, such as `Label` or `Button`, that have a `Text` property set will be accessible for the user. However, `Image`, `ImageButton`, `ActivityIndicator`, and others might not be in the accessibility tree because no text is associated with them.
 
-.NET Multi-platform App UI (.NET MAUI) supports two approaches to providing access to the accessibility experience of the underlying platform. *Semantic properties* are the .NET MAUI approach to providing accessibility values in apps, and are the recommended approach. *Automation properties* are the Xamarin.Forms approach to providing accessibility values in apps, and have been superseded by semantic properties. In both cases, the default accessibility order of controls is the same order in which they're listed in XAML or added to the layout. However, different layouts might have additional factors that influence accessibility order. For example, the accessibility order of `StackLayout` is also based on its orientation, and the accessibility order of `Grid` is based on its row and column arrangement.
+.NET Multi-platform App UI (.NET MAUI) supports two approaches to providing access to the accessibility experience of the underlying platform. *Semantic properties* are the .NET MAUI approach to providing accessibility values in apps, and are the recommended approach. *Automation properties* are the Xamarin.Forms approach to providing accessibility values in apps, and have been superseded by semantic properties. In both cases, the default accessibility order of controls is the same order in which they're listed in XAML or added to the layout. However, different layouts might have additional factors that influence accessibility order. For example, the accessibility order of `StackLayout` is also based on its orientation, and the accessibility order of `Grid` is based on its row and column arrangement. For more information about content ordering, see [Meaningful Content Ordering](https://devblogs.microsoft.com/xamarin/the-journey-to-accessible-apps-meaningful-content-ordering/) on the Xamarin blog.
+
+> [!NOTE]
+> When a `WebView` displays a website that's accessible, it will also be accessible in a .NET MAUI app. Conversely, when a `WebView` displays a website that's not accessible, it won't be accessible in a .NET MAUI app.
 
 ## Semantic properties
 
@@ -49,7 +52,7 @@ The `SemanticProperties.Description` attached property represents a short, descr
 Alternatively, it can be set in C#:
 
 ```csharp
-Image image = new Image();
+Image image = new Image { Source = "dotnet_bot.png" };
 SemanticProperties.SetDescription(image, "Image of dotnet bot.");
 ```
 
@@ -86,26 +89,23 @@ SemanticProperties.SetDescription(entry, label.Text);
 The `SemanticProperties.Hint` attached property represents a `string` that provides additional context to the `SemanticProperties.Description` attached property, such as the purpose of a control. Setting this property can be accomplished in XAML:
 
 ```xaml
-<ActivityIndicator IsRunning="true"
-                   SemanticProperties.Description="Progress indicator."
-                   SemanticProperties.Hint="Saving your data to the cloud." />
+<Image Source="like.png"
+       SemanticProperties.Description="Like"
+       SemanticProperties.Hint="Like this post." />
 ```
 
 Alternatively, it can be set in C#:
 
 ```csharp
-ActivityIndicator activityIndicator = new ActivityIndicator
-{
-    IsRunning = true
-};
-SemanticProperties.SetDescription(activityIndicator, "Progress indicator.");
-SemanticProperties.SetHint(activityIndicator, "Saving your data to the cloud.");
+Image image = new Image { Source = "like.png" };
+SemanticProperties.SetDescription(image, "Like");
+SemanticProperties.SetHint(image, "Like this post.");
 ```
 
 In addition, the `SetValue` method can also be used to set the `SemanticProperties.Hint` attached property:
 
 ```csharp
-activityIndicator.SetValue(SemanticProperties.HintProperty, "Saving your data to the cloud.");
+image.SetValue(SemanticProperties.HintProperty, "Like this post.");
 ```
 
 On Android, this property behaves slightly differently depending on the control it's attached to. For example, for controls without text values, such as `Switch` and `CheckBox`, the controls will display the hint with the control. However, for controls with text values, the hint is not displayed and is read after the text value.
@@ -127,34 +127,42 @@ Headings have a level from 1 to 9, and are represented by the `SemanticHeadingLe
 The following example demonstrates setting this attached property:
 
 ```xaml
-<StackLayout SemanticProperties.Description="Main page layout"
-             SemanticProperties.HeadingLevel="Level1">
-    ...
-</StackLayout>
+<Label Text="Get started with .NET MAUI"
+       SemanticProperties.HeadingLevel="Level1" />
+<Label Text="Paragraphs of text go here." />
+<Label Text="Installation"
+       SemanticProperties.HeadingLevel="Level2" />
+<Label Text="Paragraphs of text go here." />    
+<Label Text="Build your first app"
+       SemanticProperties.HeadingLevel="Level3" />
+<Label Text="Paragraphs of text go here." />     
+<Label Text="Publish your app"
+       SemanticProperties.HeadingLevel="Level4" />
+<Label Text="Paragraphs of text go here." />   
 ```
 
 Alternatively, it can be set in C#:
 
 ```csharp
-StackLayout stackLayout = new StackLayout();
-SemanticProperties.SetDescription(stackLayout, "Main page layout.");
-SemanticProperties.SetHeadingLevel(stackLayout, SemanticHeadingLevel.Level1);
+Label label1 = new Label { Text = "Get started with .NET MAUI" };
+Label label2 = new Label { Text = "Paragraphs of text go here." };
+Label label3 = new Label { Text = "Installation" };
+Label label4 = new Label { Text = "Paragraphs of text go here." };
+Label label5 = new Label { Text = "Build your first app" };
+Label label6 = new Label { Text = "Paragraphs of text go here." };
+Label label7 = new Label { Text = "Publish your app" };
+Label label8 = new Label { Text = "Paragraphs of text go here." };
+SemanticProperties.SetHeadingLevel(label1, SemanticHeadingLevel.Level1);
+SemanticProperties.SetHeadingLevel(label3, SemanticHeadingLevel.Level1);
+SemanticProperties.SetHeadingLevel(label5, SemanticHeadingLevel.Level1);
+SemanticProperties.SetHeadingLevel(label7, SemanticHeadingLevel.Level1);
 ```
 
 In addition, the `SetValue` method can also be used to set the `SemanticProperties.HeadingLevel` attached property:
 
 ```csharp
-stackLayout.SetValue(SemanticProperties.HeadingLevelProperty, SemanticHeadingLevel.Level1);
+label1.SetValue(SemanticProperties.HeadingLevelProperty, SemanticHeadingLevel.Level1);
 ```
-
-<!-- Todo: is this right?
-### WebView    
-
-The WebView control on each platform is responsible for determining which elements of its content are accessible, and each WebView control should report its HTML content as accessibility elements.
-
-Alternatively, if the content in your `WebView` is simple, you could provide a description of the content for the `WebView` with the `SemanticProperties.Description` and `SemanticProperties.Hint` attached properties.
-
--->
 
 ## Semantic focus
 
@@ -171,7 +179,13 @@ label.SetSemanticFocus();
 
 ## Semantic screen reader
 
-.NET MAUI Essentials includes a `SemanticScreenReader` class that enables you to instruct a screen reader to announce specified text. <!-- For more information, see [SemanticScreenReader]().-->
+.NET MAUI Essentials includes a `SemanticScreenReader` class that enables you to instruct a screen reader to announce specified text. This can be achieved by calling the `SemanticScreenReader.Announce` method, passing a `string` argument that represents the text:
+
+```csharp
+SemanticScreenReader.Announce("This is the announcement text.");
+```
+
+<!-- For more information, see [SemanticScreenReader]().-->
 
 <!--
 ### Semantic effects
@@ -384,6 +398,7 @@ Follow these tips to ensure that your .NET MAUI apps are accessible to the wides
 <!-- markdownlint-disable MD032 -->
 
 > [!div class="checklist"]
+> - Ensure your app is perceivable, operable, understandable, and robust for all by following the Web Content Accessibility Guidelines (WCAG). WCAG is the global accessibility standard and legal benchmark for web and mobile. For more information, see [Web Content Accessibility Guidelines (WCAG) Overview](https://www.w3.org/WAI/standards-guidelines/wcag/).
 > - Make sure the user interface is self-describing. Test that all the elements of your user interface are screen reader accessible. Add descriptive text and hints when necessary.
 > - Ensure that images and icons have alternate text descriptions.
 > - Support large fonts and high contrast. Avoid hardcoding control dimensions, and instead prefer layouts that resize to accommodate larger font sizes. Test color schemes in high-contrast mode to ensure they are readable.
@@ -391,5 +406,6 @@ Follow these tips to ensure that your .NET MAUI apps are accessible to the wides
 > - Don't rely on audio or color cues alone. Avoid situations where the sole indication of progress, completion, or some other state is a sound or color change. Either design the user interface to include clear visual cues, with sound and color for reinforcement only, or add specific accessibility indicators. When choosing colors, try to avoid a palette that is hard to distinguish for users with color blindness.
 > - Provide captions for video content and a readable script for audio content. It's also helpful to provide controls that adjust the speed of audio or video content, and ensure that volume and transport controls are easy to find and use.
 > - Localize your accessibility descriptions when the app supports multiple languages.
+> - Test the accessibility features of your app on each platform it targets. For more information, see [Testing accessibility](#testing-accessibility).
 
 <!-- markdownlint-enable MD032 -->
