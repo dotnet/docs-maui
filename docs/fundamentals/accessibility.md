@@ -60,7 +60,7 @@ image.SetValue(SemanticProperties.DescriptionProperty, "Image of dotnet bot.");
 ```
 
 > [!WARNING]
-> Don't set the `SemanticProperties.Description` attached property on a `Label`. This will stop the `Text` property being spoken by the screen reader. Instead, set the `Text` property, and the `SemanticProperties.Hint` attached property if required.
+> Avoid setting the `SemanticProperties.Description` attached property on a `Label`. This will stop the `Text` property being spoken by the screen reader. This is because the visual text should ideally match the text read aloud by the screen reader.
 
 The accessibility information for an element can also be defined on another element. For example, a `Label` next to an `Entry` can be used to describe what the `Entry` represents. This can be accomplished in XAML as follows:
 
