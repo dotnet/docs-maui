@@ -381,6 +381,8 @@ For more information about Narrator, see [Complete guide to Narrator](https://su
 
 Follow these tips to ensure that your .NET MAUI apps are accessible to the widest audience possible:
 
+<!-- markdownlint-disable MD032 -->
+
 > [!div class="checklist"]
 > - Make the user interface self-describing. Tag all the elements of your user interface with descriptive text and hints.
 > - Ensure that images and icons have alternate text descriptions.
@@ -389,3 +391,5 @@ Follow these tips to ensure that your .NET MAUI apps are accessible to the wides
 > - Don't rely on audio or color cues alone. Avoid situations where the sole indication of progress, completion, or some other state is a sound or color change. Either design the user interface to include clear visual cues, with sound and color for reinforcement only, or add specific accessibility indicators. When choosing colors, try to avoid a palette that is hard to distinguish for users with color blindness.
 > - Provide captions for video content and a readable script for audio content. It's also helpful to provide controls that adjust the speed of audio or video content, and ensure that volume and transport controls are easy to find and use.
 > - Localize your accessibility descriptions when the app supports multiple languages.
+
+<!-- markdownlint-enable MD032 -->
