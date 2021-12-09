@@ -1,5 +1,5 @@
 ---
-title: ".NET MAUI accessibility"
+title: ".NET MAUI semantics for accessibility"
 description: "Learn how to use the SemanticProperties class in a .NET MAUI app, so that a screen reader can speak about the user interface elements on a page."
 ms.date: 10/11/2021
 ---
