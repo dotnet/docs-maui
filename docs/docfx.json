@@ -52,7 +52,8 @@
       "ms.prod": "dotnet-mobile",
       "ms.technology": "dotnet-maui",
       "zone_pivot_group_filename": "maui/zone-pivot-groups.json",
-      "titleSuffix": ".NET MAUI"
+      "titleSuffix": ".NET MAUI",
+      "searchScope": [ ".NET MAUI" ]
     },
     "fileMetadata": {
         "titleSuffix": {
