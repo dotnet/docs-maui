@@ -80,6 +80,6 @@ Because the `Stroke` property is of type `Brush`, borders can also be drawn usin
 </Border>
 ```
 
-In this example, a linear gradient border is drawn around a `Label`:
+In this example, a border that uses a linear gradient is drawn around a `Label`:
 
 :::image type="content" source="media/border/linear-gradient-border.png" alt-text="Linear gradient border around a Label screenshot.":::
