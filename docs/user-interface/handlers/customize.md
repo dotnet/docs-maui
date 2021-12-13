@@ -45,7 +45,7 @@ public partial class App : Application
         Microsoft.Maui.Handlers.ViewHandler.ViewMapper.AppendToMapping(nameof(IView.Background), (h, v) =>
         {
             (h.NativeView as Android.Views.View).SetBackgroundColor(Microsoft.Maui.Graphics.Colors.Cyan.ToNative());
-        };
+        });
 #endif
     }
 }
@@ -69,7 +69,7 @@ public partial class MainPage : ContentPage
         Microsoft.Maui.Handlers.EntryHandler.EntryMapper.AppendToMapping("NoUnderline", (h, v) =>
         {
             h.NativeView.BackgroundTintList = ColorStateList.ValueOf(Colors.Transparent.ToAndroid());
-        };
+        });
 #endif
     }
 }
@@ -118,7 +118,7 @@ namespace MauiApp1
                   handler.NativeView.Background = Colors.Red.ToNative();
 #endif
                 }
-            };
+            });
         }
     }
 }
