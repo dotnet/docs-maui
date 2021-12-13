@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI invoking platform code"
 description: "Learn how to invoke platform code in a .NET MAUI app, by combining multi-targeting with partial classes and partial methods."
-ms.date: 11/29/2021
+ms.date: 12/13/2021
 ---
 
 # Invoke platform code
@@ -120,7 +120,6 @@ After providing the platform implementations, the API can be invoked from cross-
 
 ```csharp
 using CallPlatformCodeDemos.Services;
-using Microsoft.Maui.Controls;
 ...
 
 DeviceOrientationService deviceOrientationService = new DeviceOrientationService();
