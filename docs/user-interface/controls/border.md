@@ -1,7 +1,7 @@
 ---
 title: "Border"
 description: "Learn how to use the .NET MAUI Border class, which is a container control that draws a border, background, or both, around another control."
-ms.date: 10/21/2021
+ms.date: 12/13/2021
 ---
 
 # Border
@@ -51,6 +51,35 @@ The following XAML example shows how to draw a border around a `Label`:
 
 In this example, a border with rounded top-left and bottom-right corners is drawn around a `Label`. The border shape is defined as a `RoundRectangle` object, whose `CornerRadius` property is set to a `Thickness` value that enables independent control of each corner of the rectangle:
 
-:::image type="content" source="media/border/border.png" alt-text="Border around a Label.":::
+:::image type="content" source="media/border/border.png" alt-text="Border around a Label screenshot.":::
 
 <!-- Todo (potentially): .NET MAUI may add a markup extension for setting the stroke shape directly, rather than having to instantiate one. -->
+
+Because the `Stroke` property is of type `Brush`, borders can also be drawn using gradients:
+
+```xaml
+<Border StrokeThickness="4"
+        Background="#2B0B98"
+        Padding="16,8"
+        HorizontalOptions="Center">
+    <Border.StrokeShape>
+        <RoundRectangle CornerRadius="40,0,0,40" />
+    </Border.StrokeShape>
+    <Border.Stroke>
+        <LinearGradientBrush EndPoint="0,1">
+            <GradientStop Color="Orange"
+                          Offset="0.1" />
+            <GradientStop Color="Brown"
+                          Offset="1.0" />
+        </LinearGradientBrush>
+    </Border.Stroke>
+    <Label Text=".NET MAUI"
+           TextColor="White"
+           FontSize="18"
+           FontAttributes="Bold" />
+</Border>
+```
+
+In this example, a linear gradient border is drawn around a `Label`:
+
+:::image type="content" source="media/border/linear-gradient-border.png" alt-text="Linear gradient border around a Label screenshot.":::
