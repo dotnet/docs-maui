@@ -21,7 +21,9 @@
           href: fundamentals/single-project.md
     - name: User interface
       items:
-        - name: Border
-          href: user-interface/controls/border.md
-        - name: Customize controls
-          href: user-interface/handlers/customize.md
+        - name: Controls
+          items:
+            - name: Border
+              href: user-interface/controls/border.md
+            - name: Customize controls
+              href: user-interface/handlers/customize.md
