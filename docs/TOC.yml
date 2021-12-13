@@ -30,9 +30,9 @@
         - name: Images
           items:
             - name: Splash screen
-              href: user-interface/images/splashscreen.md        
+              href: user-interface/images/splashscreen.md
         - name: Shadow
-        - href: user-interface/shadow.md              
+          href: user-interface/shadow.md              
     - name: Platform integration
       items:
         - name: Configure multi-targeting
