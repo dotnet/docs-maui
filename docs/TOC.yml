@@ -6,7 +6,6 @@
     - name: Supported platforms
       href: supported-platforms.md
     - name: Get started
-      expanded: true
       items:
         - name: Installation
           href: get-started/installation.md
@@ -15,14 +14,14 @@
         - name: Migrate from Xamarin.Forms
           href: get-started/migrate.md
     - name: Fundamentals
-      expanded: true
       items:
         - name: App startup
           href: fundamentals/app-startup.md
         - name: Single project
           href: fundamentals/single-project.md
     - name: User interface
-      expanded: true
       items:
+        - name: Shadow
+        - href: user-interface/shadow.md
         - name: Customize controls
           href: user-interface/handlers/customize.md

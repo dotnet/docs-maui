@@ -1,14 +1,14 @@
 ---
 title: "Shadow"
 description: "Learn how to use the .NET MAUI Shadow class, which paints a shadow around a control."
-ms.date: 10/22/2021
+ms.date: 12/13/2021
 ---
 
 # Shadow
 
 <!-- Sample link, if any, goes here -->
 
-The .NET Multi-platform App UI (.NET MAUI) `Shadow` is a control that paints a shadow around a layout or view. The `VisualElement` class has a `Shadow` bindable property, of type `Shadow`, that enables a shadow to be added to any layout or view.
+The .NET Multi-platform App UI (.NET MAUI) `Shadow` class paints a shadow around a layout or view. The `VisualElement` class has a `Shadow` bindable property, of type `Shadow`, that enables a shadow to be added to any layout or view.
 
 The `Shadow` class defines the following properties:
 
@@ -18,6 +18,9 @@ The `Shadow` class defines the following properties:
 - `OffSet`, of type `Point`, specifies the offset for the shadow, which represents the position of the light source that creates the shadow.
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+
+> [!IMPORTANT]
+> The `Brush` property only currently supports a `SolidColorBrush`.
 
 ## Create a Shadow
 
@@ -38,7 +41,7 @@ The following XAML example shows how to add a shadow to an `Image`:
 </Image>
 ```
 
-In this example, a black shadow is added to the right and bottom of the image:
+In this example, a black shadow is painted around the outline of the image, with its offset specifying that it appears at the right and bottom of the image:
 
 :::image type="content" source="media/shadow/image.png" alt-text="Screenshot of an image with a shadow applied.":::
 
@@ -63,11 +66,13 @@ Shadows can also be added to clipped objects, as shown in the following example:
 </Image>
 ```
 
-In this example, the image is clipped using an `EllipseGeometry`, and a shadow is added to the clipped image:
+In this example, a black shadow is painted around the outline of the `EllipseGeometry` that clips the image:
 
 :::image type="content" source="media/shadow/clipped-image.png" alt-text="Screenshot of a clipped image with a shadow applied.":::
 
 <!-- For more information about clipping an element, see [Clip with a Geometry](). -->
+
+<!-- Todo: Only currently supported on Android
 
 ## Create a Shadow gradient
 
@@ -102,3 +107,5 @@ In this example, a linear gradient shadow is added to the round rectangle, with 
 :::image type="content" source="media/shadow/roundrectangle.png" alt-text="Screenshot of a round rectangle with a shadow applied.":::
 
 <!-- For more information about brushes, see [Brushes](). -->
+
+-->
