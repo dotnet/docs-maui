@@ -106,6 +106,4 @@ In this example, a linear gradient shadow is added to the round rectangle, with 
 
 :::image type="content" source="media/shadow/roundrectangle.png" alt-text="Screenshot of a round rectangle with a shadow applied.":::
 
-<!-- For more information about brushes, see [Brushes](). -->
-
--->
+For more information about brushes, see [Brushes](). -->
