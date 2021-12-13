@@ -53,7 +53,7 @@ In this example, a border with rounded top-left and bottom-right corners is draw
 
 :::image type="content" source="media/border/border.png" alt-text="Border around a Label screenshot.":::
 
-<!-- Todo (potentially): .NET MAUI may add a markup extension for setting the stroke shape directly, rather than having to instantiate one. -->
+<!-- Todo (potentially): .NET MAUI may add a markup extension for setting the stroke shape directly, rather than having to instantiate one. See https://github.com/dotnet/maui/pull/3256 -->
 
 Because the `Stroke` property is of type `Brush`, borders can also be drawn using gradients:
 
