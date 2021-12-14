@@ -365,13 +365,13 @@ The WinUI 3 [`Window.SizeChanged`](xref:Microsoft.UI.Xaml.Window.SizeChanged) ev
                 .UseMauiApp<App>()
                 .ConfigureLifecycleEvents(events =>
                 {
-#if WINDOWS
+    #if WINDOWS
                       events.AddWindows(windows => windows
                              .OnWindowCreated(window =>
                              {
                                     window.SizeChanged += OnSizeChanged;
                              }));
-#endif
+    #endif
                 });
 
           return builder.Build();
