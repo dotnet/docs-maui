@@ -16,7 +16,7 @@ The project for a .NET MAUI app contains a _Platforms_ folder, with each child f
 
 The folders for each target platform contain platform-specific code that starts the app on each platform, plus any additional platform code you add. At build time, the build system only includes the code from each folder when building for that specific platform. For example, when you build for Android the files in the _Platforms_ > _Android_ folder will be built into the app package, but the files in the other _Platforms_ folders won't be. This approach uses a feature called multi-targeting to target multiple platforms from a single project.
 
-Multi-targeting can be combined with partial classes and partial methods to invoke native platform functionality from cross-platform code. The process for invoking platform code from cross-platform code is to:
+Multi-targeting can be combined with partial classes and partial methods to invoke platform functionality from cross-platform code. The process for invoking platform code from cross-platform code is to:
 
 1. Define the cross-platform API as a partial class that defines partial method signatures for any operations you want to invoke on each platform. For more information, see [Define the cross-platform API](#define-the-cross-platform-api).
 1. Implement the cross-platform API per platform, by defining the same partial class and the same partial method signatures, while also providing the method implementations. For more information, see [Implement the API per platform](#implement-the-api-per-platform).
