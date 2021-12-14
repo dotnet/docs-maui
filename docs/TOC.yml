@@ -27,15 +27,18 @@
               href: user-interface/controls/blazorwebview.md
             - name: Border
               href: user-interface/controls/border.md
-            - name: Customize controls
-              href: user-interface/handlers/customize.md
+        - name: Customize controls
+          href: user-interface/handlers/customize.md
         - name: Images
           items:
             - name: Splash screen
-              href: user-interface/images/splashscreen.md          
-        - name: Platform integration
-          items:
-            - name: Configure multi-targeting
-              href: platform-integration/configure-multi-targeting.md
-            - name: Invoke platform code
-              href: platform-integration/invoke-platform-code.md
+              href: user-interface/images/splashscreen.md
+        - name: Shadow
+          href: user-interface/shadow.md              
+    - name: Platform integration
+      items:
+        - name: Configure multi-targeting
+          href: platform-integration/configure-multi-targeting.md
+        - name: Invoke platform code
+          href: platform-integration/invoke-platform-code.md
+ 
