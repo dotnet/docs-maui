@@ -6,15 +6,17 @@ ms.date: 12/13/2021
 
 # App lifecycle
 
-.NET Multi-platform App UI (.NET MAUI) apps generally have three execution states: *not running*, *running*, and *stopped*. .NET MAUI raises lifecycle cross-platform events on the `Window` class when an app transitions from the not running state to the running state, and the running state to the stopped state.
+.NET Multi-platform App UI (.NET MAUI) apps generally have three execution states: *not running*, *running*, *deactivated*, and *stopped*. .NET MAUI raises cross-platform lifecycle events on the `Window` class when an app transitions from the not running state to the running state, the running state to the deactivated state, the deactivated state to the stopped state, the stopped state to the running state, and the stopped state to the not running state.
+
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
 The following diagram shows an overview of the .NET MAUI app lifecycle:
 
 :::image type="content" source="media/app-lifecycle/app-lifecycle.png" alt-text=".NET MAUI app lifecycle" border="false":::
 
-In the diagram, the gray oval indicates that the app isn't loaded into memory. The light blue ovals indicate that the app is in memory. The arcs indicate events that are raised by .NET MAUI, that provide notifications to the running app.
+In the diagram, the gray oval indicates that the app isn't loaded into memory. The light blue ovals indicate that the app is in memory. Text on arcs indicates events that are raised by .NET MAUI, that provide notifications to the running app.
 
-The execution state of an app depends on the app's history. For example, when an app is installed for the first time, or a device is started, the app can be considered to be *not running*. When the app is started, the `Created` and `Activated` events are raised and the app is *running*. If the user switches to a different app, or returns to the device's Home screen, the `Deactivated` and `Stopped` events are raised and the app is *stopped*. If the user returns to the app, the `Resuming` event is raised and app is *running*. Alternatively, an app might be terminated by a user while it's running. In this situation the app is *stopped*, the `Destroying` event is raised and the app is *not running*. Similarly, a device might terminate an app while it's stopped, due to resource restrictions, and the `Destroying` event is raised and the app is *not running*.
+The execution state of an app depends on the app's history. For example, when an app is installed for the first time, or a device is started, the app can be considered to be *not running*. When the app is started, the `Created` and `Activated` events are raised and the app is *running*. If a different app window gains focus, the `Deactivated` event is raised and the app is *deactivated*. If the user switches switches to a different app or returns to the device's Home screen, so that the app window is no longer visible, the `Deactivated` and `Stopped` events are raised and the app is *stopped*. If the user returns to the app, the `Resuming` event is raised and app is *running*. Alternatively, an app might be terminated by a user while it's running. In this situation the app is *deactivated* then *stopped*, the `Destroying` event is raised, and the app is *not running*. Similarly, a device might terminate an app while it's stopped, due to resource restrictions, and the `Destroying` event is raised and the app is *not running*.
 
 In addition, .NET MAUI enables apps to be notified when platform lifecycle events are raised. For more information, see [Platform lifecycle events](#platform-lifecycle-events).
 
@@ -24,7 +26,7 @@ The `Window` class defines the following cross-platform lifecycle events:
 
 | Event | Description | Action to take |
 | -- | -- | -- |
-| `Created` | This event is raised after the native window has been created. At this point the cross-platform window will have a native window handler, but the window might not be visible yet. | Register any services that are needed before a window exists. |
+| `Created` | This event is raised after the native window has been created. At this point the cross-platform window will have a native window handler, but the window might not be visible yet. |  |
 | `Activated` | This event is raised when the window has been activated, and is, or will become, the focused window. |  |
 | `Deactivated` | This event is raised when the window is no longer the focused window. However, the window might still be visible. |  |
 | `Stopped` | This event is raised when the window is no longer visible. There's no guarantee that an app will resume from this state, because it may be terminated by the operating system. | Disconnect from any long running processes, or cancel any pending requests that might consume device resources. |
@@ -71,14 +73,13 @@ namespace MyMauiApp
 
             window.Created += (s, e) =>
             {
-                // Register services
+                // Custom logic
             };
 
             return window;
         }
     }
 }
-
 ```
 
 Alternatively, to consume the lifecycle overrides, create a class that derives from the `Window` class
@@ -136,7 +137,6 @@ The following table lists the .NET MAUI delegates that are invoked in response t
 | `OnPause` | `Android.App.Activity` | Invoked when an activity is going into the background, but has not yet been killed. | Always call the super class's implementation. |
 | `OnPostCreate` | `Android.App.Activity`, `Android.OS.Bundle?` | Invoked when activity startup is complete, after `OnStart` and `OnRestoreInstanceState` have been called. | Always call the super class's implementation. This is a system-only event that generally shouldn't be used by apps. |
 | `OnPostResume` | `Android.App.Activity` | Invoked when activity resume is complete, after `OnResume` has been called. | Always call the super class's implementation. This is a system-only event that generally shouldn't be used by apps. |
-| `OnPressingBack` | `Android.App.Activity` | Invoked when the activity has detected a press of the back key, but hasn't handled the press. | This is a .NET MAUI custom event.  |
 | `OnRequestPermissionsResult` | `Android.App.Activity`, `int`, `string[]`, `Android.Content.PM.Permission[]` | Invoked as a callback for the result from requesting permissions. |  |
 | `OnRestart` | `Android.App.Activity` | Invoked after `OnStop` when the current activity is being redisplayed to the user (the user has navigated back to it). | Always call the super class's implementation. |
 | `OnRestoreInstanceState` | `Android.App.Activity`, `Android.OS.Bundle` | Invoked after `OnStart` when the activity is being reinitialized from a previously saved state. |  |
@@ -355,15 +355,28 @@ The WinUI 3 [`Window.SizeChanged`](xref:Microsoft.UI.Xaml.Window.SizeChanged) ev
 - Register an event handler for the [`Window.SizeChanged`](xref:Microsoft.UI.Xaml.Window.SizeChanged) platform lifecycle event:
 
     ```csharp
-    #if WINDOWS
-                MauiWinUIApplication.Current.MainWindow.SizeChanged += OnSizeChanged;
-    #endif
+    using Microsoft.Maui.LifecycleEvents;
+    ...
+
+    public static MauiApp CreateMauiApp()
+    {
+          var builder = MauiApp.CreateBuilder();
+          builder
+                .UseMauiApp<App>()
+                .ConfigureLifecycleEvents(events =>
+                {
+#if WINDOWS
+                      events.AddWindows(windows => windows
+                             .OnWindowCreated(window =>
+                             {
+                                    window.SizeChanged += OnSizeChanged;
+                             }));
+#endif
+                });
+
+          return builder.Build();
+    }    
     ```
-
-    The `MauiWinUIApplication` type on Windows can be used to access the native app instance via its `Current` property. The `MainWindow` property exposes the native app window, which is of type `Microsoft.UI.Xaml.Window`.
-
-    > [!NOTE]
-    > The `MauiApplication` type on Android can be used to access the native app instance. Similarly, the `MauiUIApplicationDelegate` type on iOS can be used to access the native app instance.
 
 - In the event handler for the platform lifecycle event, retrieve the `ILifecycleEventService` instance and call its `InvokeEvents` method, specifying the platform event name as its argument:
 
@@ -372,13 +385,15 @@ The WinUI 3 [`Window.SizeChanged`](xref:Microsoft.UI.Xaml.Window.SizeChanged) ev
     ...
 
     #if WINDOWS
-            void OnSizeChanged(object sender, Microsoft.UI.Xaml.WindowSizeChangedEventArgs args)
+            static void OnSizeChanged(object sender, Microsoft.UI.Xaml.WindowSizeChangedEventArgs args)
             {
                 ILifecycleEventService service = MauiWinUIApplication.Current.Services.GetRequiredService<ILifecycleEventService>();
                 service.InvokeEvents(nameof(Microsoft.UI.Xaml.Window.SizeChanged));
             }
     #endif
     ```
+
+    The `MauiWinUIApplication` type on Windows can be used to access the native app instance via its `Current` property. The `MauiApplication` type on Android can be used to access the native app instance. Similarly, the `MauiUIApplicationDelegate` type on iOS can be used to access the native app instance.
 
     > [!WARNING]
     > Invoking an unregistered event, with the `InvokeEvents` method, doesn't throw an exception.
@@ -400,6 +415,12 @@ The WinUI 3 [`Window.SizeChanged`](xref:Microsoft.UI.Xaml.Window.SizeChanged) ev
                     .ConfigureLifecycleEvents(events =>
                     {
     #if WINDOWS
+                        events.AddWindows(windows => windows
+                               .OnWindowCreated(window =>
+                               {
+                                      window.SizeChanged += OnSizeChanged;
+                               }));
+
                         events.AddEvent(nameof(Microsoft.UI.Xaml.Window.SizeChanged), () => LogEvent("Window SizeChanged"));
     #endif
                         static void LogEvent(string eventName, string type = null)
