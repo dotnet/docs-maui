@@ -76,9 +76,6 @@ The size and position of child views within a `HorizontalStackLayout` depends up
 
 The `VerticalOptions` properties of a `HorizontalStackLayout`, and its child views, can be set to fields from the `LayoutOptions` struct, which encapsulates an *alignment* layout preference. This layout preference determines the position and size of a child view within its parent layout.
 
-> [!TIP]
-> Don't set the `VerticalOptions` property of a `HorizontalStackLayout` unless you need to. The default value of `LayoutOptions.Fill` allows for the best layout optimization. Changing this property has a cost and consumes memory, even when setting it back to its default value.
-
 The following XAML example sets alignment preferences on each child view in the `HorizontalStackLayout`:
 
 ```xaml
