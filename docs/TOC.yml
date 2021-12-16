@@ -17,6 +17,8 @@
     - name: Fundamentals
       expanded: true
       items:
+        - name: Accessibility
+          href: fundamentals/accessibility.md
         - name: App startup
           href: fundamentals/app-startup.md
         - name: Single project
