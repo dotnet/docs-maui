@@ -1,7 +1,7 @@
 ---
 title: "Semantics for accessibility"
 description: "Learn how to use the SemanticProperties class in a .NET MAUI app, so that a screen reader can speak about the user interface elements on a page."
-ms.date: 12/09/2021
+ms.date: 12/16/2021
 ---
 
 # Semantics for accessibility
@@ -175,8 +175,6 @@ using Microsoft.Maui;
 label.SetSemanticFocus();
 ```
 
-<!-- Todo: Any scenarios for calling UpdateSemantics or UpdateSemanticNodeInfo? -->
-
 ## Semantic screen reader
 
 .NET MAUI Essentials includes a `SemanticScreenReader` class that enables you to instruct a screen reader to announce specified text. This can be achieved by calling the `SemanticScreenReader.Announce` method, passing a `string` argument that represents the text:
@@ -207,10 +205,10 @@ The `AutomationProperties` class defines the following attached properties:
 
 These attached properties set platform accessibility values so that a screen reader can speak about the element. <!-- For more information about attached properties, see [Attached Properties](~/xamarin-forms/xaml/attached-properties.md). -->
 
-> [!IMPORTANT]
-> Using the `AutomationProperties` attached properties may impact UI Test execution on Android. The `AutomationId`, `AutomationProperties.Name` and `AutomationProperties.HelpText` properties will both set the platform `ContentDescription` property, with the `AutomationProperties.Name` and `AutomationProperties.HelpText` property values taking precedence over the `AutomationId` value (if both `AutomationProperties.Name` and `AutomationProperties.HelpText` are set, the values will be concatenated). This means that any tests looking for `AutomationId` will fail if `AutomationProperties.Name` or `AutomationProperties.HelpText` are also set on the element. In this scenario, UI Tests should be altered to look for the value of `AutomationProperties.Name` or `AutomationProperties.HelpText`, or a concatenation of both.
+Different screen readers read different accessibility values. Therefore, when using automation properties it's recommended that thorough accessibility testing is carried out on each platform to ensure an optimal experience.
 
-Different screen readers read different accessibility values. For example, on Windows, Narrator will prioritize `AutomationProperties.Name`, `AutomationProperties.LabeledBy`, and then `AutomationProperties.HelpText`. On Android, TalkBack may combine the `AutomationProperties.Name` and `AutomationProperties.HelpText` values. Therefore, it's recommended that thorough accessibility testing is carried out on each platform to ensure an optimal experience.
+> [!IMPORTANT]
+> Automation properties are the Xamarin.Forms approach to providing accessibility values in apps, and have been superseded by semantic properties. For more information about semantic properties, see [Semantic properties](#semantic-properties).
 
 ### ExcludedWithChildren
 
