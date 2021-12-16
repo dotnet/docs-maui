@@ -215,7 +215,7 @@ A linear gradient's gradient stops are positioned along the gradient axis. The o
 
 The `StartPoint` and `EndPoint` properties are relative to the graphical object being painted. (0,0) represents the top-left corner of the object being painted, and (1,1) represents the bottom-right corner of the object being painted. The following diagram shows the gradient axis for a diagonal linear gradient brush:
 
-:::image type="content" source="media/lineargradient-axis.png" alt-text="The gradient axis for diagonal linear gradient." border="false":::
+:::image type="content" source="media/paint/lineargradient-axis.png" alt-text="The gradient axis for diagonal linear gradient." border="false":::
 
 In this diagram, the dashed line shows the gradient axis, which highlights the interpolation path of the gradient from the start point to the end point.
 
@@ -242,7 +242,7 @@ canvas.FillRoundedRectangle(linearRectangle, 12);
 
 In this example, the rounded rectangle is painted with a linear gradient that interpolates horizontally from yellow to green:
 
-:::image type="content" source="media/lineargradient-horizontal.png" alt-text="Screenshot of a rounded rectangle, filled with a horizontal linear gradient.":::
+:::image type="content" source="media/paint/lineargradient-horizontal.png" alt-text="Screenshot of a rounded rectangle, filled with a horizontal linear gradient.":::
 
 #### Create a vertical linear gradient
 
@@ -267,7 +267,7 @@ canvas.FillRoundedRectangle(linearRectangle, 12);
 
 In this example, the rounded rectangle is painted with a linear gradient that interpolates vertically from yellow to green:
 
-:::image type="content" source="media/lineargradient-vertical.png" alt-text="Screenshot of a rounded rectangle, filled with a vertical linear gradient.":::
+:::image type="content" source="media/paint/lineargradient-vertical.png" alt-text="Screenshot of a rounded rectangle, filled with a vertical linear gradient.":::
 
 #### Create a diagonal linear gradient
 
@@ -292,7 +292,7 @@ canvas.FillRoundedRectangle(linearRectangle, 12);
 
 In this example, the rounded rectangle is painted with a linear gradient that interpolates diagonally from yellow to green:
 
-:::image type="content" source="media/lineargradient-diagonal.png" alt-text="Screenshot of a rounded rectangle, filled with a diagonal linear gradient.":::
+:::image type="content" source="media/paint/lineargradient-diagonal.png" alt-text="Screenshot of a rounded rectangle, filled with a diagonal linear gradient.":::
 
 ## Paint a radial gradient
 
@@ -328,7 +328,7 @@ canvas.FillRoundedRectangle(radialRectangle, 12);
 
 In this example, the rounded rectangle is painted with a radial gradient that interpolates from red to dark blue. The center of the radial gradient is positioned in the center of the rectangle:
 
-:::image type="content" source="media/radialgradient-center.png" alt-text="Screenshot of a rounded rectangle, filled with a centered radial gradient.":::
+:::image type="content" source="media/paint/radialgradient-center.png" alt-text="Screenshot of a rounded rectangle, filled with a centered radial gradient.":::
 
 The following example moves the center of the radial gradient to the top-left corner of the rectangle:
 
@@ -339,7 +339,7 @@ RadialGradientPaint radialGradientPaint = new RadialGradientPaint
     EndColor = Colors.DarkBlue,
     Center = new Point(0.0, 0.0)
     // Radius is already 0.5
-};
+}
 
 RectangleF radialRectangle = new RectangleF(100, 100, 200, 100);
 canvas.SetFillPaint(radialGradientPaint, radialRectangle);
@@ -349,7 +349,7 @@ canvas.FillRoundedRectangle(radialRectangle, 12);
 
 In this example, the rounded rectangle is painted with a radial gradient that interpolates from red to dark blue. The center of the radial gradient is positioned in the top-left of the rectangle:
 
-:::image type="content" source="media/radialgradient-top-left.png" alt-text="Screenshot of a rounded rectangle, filled with a top-left radial gradient.":::
+:::image type="content" source="media/paint/radialgradient-top-left.png" alt-text="Screenshot of a rounded rectangle, filled with a top-left radial gradient.":::
 
 The following example moves the center of the radial gradient to the bottom-right corner of the rectangle:
 
@@ -370,4 +370,4 @@ canvas.FillRoundedRectangle(radialRectangle, 12);
 
 In this example, the rounded rectangle is painted with a radial gradient that interpolates from red to dark blue. The center of the radial gradient is positioned in the bottom-right of the rectangle:
 
-:::image type="content" source="media/radialgradient-bottom-right.png" alt-text="Screenshot of a rounded rectangle, filled with a bottom-right radial gradient.":::
+:::image type="content" source="media/paint/radialgradient-bottom-right.png" alt-text="Screenshot of a rounded rectangle, filled with a bottom-right radial gradient.":::
