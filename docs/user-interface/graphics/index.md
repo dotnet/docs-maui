@@ -1,7 +1,7 @@
 ---
 title: "Graphics"
 description: ".NET MAUI includes cross-platform 2D graphics functionality that targets iOS, Android, Windows, macOS, Tizen, and Linux."
-ms.date: 07/23/2021
+ms.date: 12/16/2021
 ---
 
 # Graphics
@@ -9,6 +9,8 @@ ms.date: 07/23/2021
 <!-- Sample link goes here -->
 
 .NET Multi-platform App UI (.NET MAUI) includes cross-platform 2D graphics functionality that targets iOS, Android, Windows, macOS, Tizen, and Linux. With this functionality, you can use a common API to target multiple graphics abstractions, enabling you to share your drawing code between platforms, or mix and match graphics implementations within a single app.
+
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
 The graphics functionality is contained in the `Microsoft.Maui.Graphics` namespace, and provides a drawing canvas that supports drawing and painting shapes and images, compositing operations, and graphical object transforms.
 

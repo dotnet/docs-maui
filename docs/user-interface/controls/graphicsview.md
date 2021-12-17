@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI GraphicsView"
 description: "The .NET MAUI GraphicsView is a graphics canvas on which 2D graphics can be drawn using the cross-platform functionality from the Microsoft.Maui.Graphics namespace."
-ms.date: 07/28/2021
+ms.date: 12/17/2021
 ---
 
 # GraphicsView
@@ -9,6 +9,8 @@ ms.date: 07/28/2021
 <!-- Sample link goes here -->
 
 The .NET Multi-platform App UI (.NET MAUI) `GraphicsView` is a graphics canvas on which 2D graphics can be drawn using functionality from the `Microsoft.Maui.Graphics` namespace. For more information about `Microsoft.Maui.Graphics`, see [Graphics](~/user-interface/graphics/index.md).
+
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
 `GraphicsView` defines the `Drawable` property, of type `IDrawable`, which specifies the content that will be drawn. This property is backed by a `BindableProperty`, which means it can be the target of data binding, and styled.
 
@@ -43,11 +45,11 @@ The `IDrawable` object should be declared as a resource, and then consumed by th
     <ContentPage.Resources>
         <drawable:GraphicsDrawable x:Key="drawable" />
     </ContentPage.Resources>
-    <StackLayout>
+    <VerticalStackLayout>
         <GraphicsView Drawable="{StaticResource drawable}"
                       HeightRequest="500"
                       WidthRequest="400" />
-    </StackLayout>
+    </VerticalStackLayout>
 </ContentPage>
 ```
 

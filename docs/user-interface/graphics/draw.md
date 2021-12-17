@@ -1,7 +1,7 @@
 ---
 title: "Draw graphical objects"
 description: ".NET MAUI graphics enables you to draw graphical objects on a canvas."
-ms.date: 07/28/2021
+ms.date: 12/16/2021
 ---
 
 # Draw graphical objects
@@ -9,6 +9,8 @@ ms.date: 07/28/2021
 <!-- Sample link goes here -->
 
 .NET Multi-platform App UI (.NET MAUI) graphics, in the `Microsoft.Maui.Graphics` namespace, enables you to draw graphical objects on a canvas that's defined as an `ICanvas` object.
+
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
 The .NET MAUI `GraphicsView` control provides access to an `ICanvas` object, on which properties can be set and methods invoked to draw graphical objects. For more information about the `GraphicsView`, see [GraphicsView](~/user-interface/controls/graphicsview.md).
 
@@ -24,10 +26,10 @@ The following example shows how to draw a line:
 ```csharp
 canvas.StrokeColor = Colors.Red;
 canvas.StrokeSize = 6;
-canvas.DrawLine(10, 50, 90, 100);
+canvas.DrawLine(10, 10, 90, 100);
 ```
 
-In this example, a red diagonal line is drawn from (10,50) to (90,100):
+In this example, a red diagonal line is drawn from (10,10) to (90,100):
 
 :::image type="content" source="media/draw/line.png" alt-text="Screenshot of a red line.":::
 
@@ -40,10 +42,10 @@ The following example shows how to draw a dashed line:
 canvas.StrokeColor = Colors.Red;
 canvas.StrokeSize = 4;
 canvas.StrokeDashPattern = new float[] { 2, 2 };
-canvas.DrawLine(10, 50, 90, 100);
+canvas.DrawLine(10, 10, 90, 100);
 ```
 
-In this example, a red dashed diagonal line is drawn from (10,50) to (90,100):
+In this example, a red dashed diagonal line is drawn from (10,10) to (90,100):
 
 :::image type="content" source="media/draw/dashed-line.png" alt-text="Screenshot of a dashed red line.":::
 
@@ -58,10 +60,10 @@ The following example shows how to draw an ellipse:
 ```csharp
 canvas.StrokeColor = Colors.Red;
 canvas.StrokeSize = 4;
-canvas.DrawEllipse(200, 50, 150, 50);
+canvas.DrawEllipse(10, 10, 100, 50);
 ```
 
-In this example, a red ellipse with dimensions 150x50 is drawn at (200,50):
+In this example, a red ellipse with dimensions 150x50 is drawn at (10,10):
 
 :::image type="content" source="media/draw/ellipse.png" alt-text="Screenshot of a red ellipse.":::
 
@@ -70,10 +72,10 @@ To draw a circle, make the `width` and `height` arguments to the `DrawEllipse` m
 ```csharp
 canvas.StrokeColor = Colors.Red;
 canvas.StrokeSize = 4;
-canvas.DrawEllipse(200, 50, 150, 150);
+canvas.DrawEllipse(10, 10, 100, 100);
 ```
 
-In this example, a red circle with dimensions 150x150 is drawn at (200,50):
+In this example, a red circle with dimensions 150x150 is drawn at (10,10):
 
 :::image type="content" source="media/draw/circle.png" alt-text="Screenshot of a red circle.":::
 
@@ -86,10 +88,10 @@ A filled ellipse can be drawn with the `FillEllipse` method, which also requires
 
 ```csharp
 canvas.FillColor = Colors.Red;
-canvas.FillEllipse(200, 50, 150, 50);
+canvas.FillEllipse(10, 10, 150, 50);
 ```
 
-In this example, a red filled ellipse with dimensions 150x50 is drawn at (200,50):
+In this example, a red filled ellipse with dimensions 150x50 is drawn at (10,10):
 
 :::image type="content" source="media/draw/filled-ellipse.png" alt-text="Screenshot of a red filled ellipse.":::
 
@@ -109,10 +111,10 @@ The following example shows how to draw a rectangle:
 ```csharp
 canvas.StrokeColor = Colors.DarkBlue;
 canvas.StrokeSize = 4;
-canvas.DrawRectangle(50, 100, 100, 50);
+canvas.DrawRectangle(10, 10, 100, 50);
 ```
 
-In this example, a dark blue rectangle with dimensions 100x50 is drawn at (50,100):
+In this example, a dark blue rectangle with dimensions 100x50 is drawn at (10,10):
 
 :::image type="content" source="media/draw/rectangle.png" alt-text="Screenshot of a dark blue rectangle.":::
 
@@ -121,10 +123,10 @@ To draw a square, make the `width` and `height` arguments to the `DrawRectangle`
 ```csharp
 canvas.StrokeColor = Colors.DarkBlue;
 canvas.StrokeSize = 4;
-canvas.DrawRectangle(50, 100, 100, 100);
+canvas.DrawRectangle(10, 10, 100, 100);
 ```
 
-In this example, a dark blue square with dimensions 100x100 is drawn at (50,100):
+In this example, a dark blue square with dimensions 100x100 is drawn at (10,10):
 
 :::image type="content" source="media/draw/square.png" alt-text="Screenshot of a dark blue square.":::
 
@@ -134,10 +136,10 @@ A filled rectangle can be drawn with the `FillRectangle` method, which also requ
 
 ```csharp
 canvas.FillColor = Colors.DarkBlue;
-canvas.FillRectangle(50, 100, 100, 50);
+canvas.FillRectangle(10, 10, 100, 50);
 ```
 
-In this example, a dark blue filled rectangle with dimensions 100x50 is drawn at (50,100):
+In this example, a dark blue filled rectangle with dimensions 100x50 is drawn at (10,10):
 
 :::image type="content" source="media/draw/filled-rectangle.png" alt-text="Screenshot of a dark blue filled rectangle.":::
 
@@ -155,10 +157,10 @@ The following example shows how to draw a rounded rectangle:
 ```csharp
 canvas.StrokeColor = Colors.Green;
 canvas.StrokeSize = 4;
-canvas.DrawRoundedRectangle(50, 100, 100, 50, 12);
+canvas.DrawRoundedRectangle(10, 10, 100, 50, 12);
 ```
 
-In this example, a green rectangle with rounded corners and dimensions 100x50 is drawn at (50,100):
+In this example, a green rectangle with rounded corners and dimensions 100x50 is drawn at (10,10):
 
 :::image type="content" source="media/draw/rounded-rectangle.png" alt-text="Screenshot of a green rounded rectangle.":::
 
@@ -168,10 +170,10 @@ A filled rounded rectangle can be drawn with the `FillRoundedRectangle` method, 
 
 ```csharp
 canvas.FillColor = Colors.Green;
-canvas.FillRoundedRectangle(50, 100, 100, 50, 12);
+canvas.FillRoundedRectangle(10, 10, 100, 50, 12);
 ```
 
-In this example, a green filled rectangle with rounded corners and dimensions 100x50 is drawn at (50,100):
+In this example, a green filled rectangle with rounded corners and dimensions 100x50 is drawn at (10,10):
 
 :::image type="content" source="media/draw/filled-rounded-rectangle.png" alt-text="Screenshot of a green filled rounded rectangle.":::
 
@@ -189,10 +191,10 @@ The following example shows how to draw an arc:
 ```csharp
 canvas.StrokeColor = Colors.Teal;
 canvas.StrokeSize = 4;
-canvas.DrawArc(50, 50, 100, 100, 0, 180, true, false);
+canvas.DrawArc(10, 10, 100, 100, 0, 180, true, false);
 ```
 
-In this example, a teal arc of dimensions 100x100 is drawn at (50,50). The arc is drawn in a clockwise direction from 0 degrees to 180 degrees, and isn't closed:
+In this example, a teal arc of dimensions 100x100 is drawn at (10,10). The arc is drawn in a clockwise direction from 0 degrees to 180 degrees, and isn't closed:
 
 :::image type="content" source="media/draw/arc.png" alt-text="Screenshot of a teal arc.":::
 
@@ -202,10 +204,10 @@ A filled arc can be drawn with the `FillArc` method, which requires `x`, `y`, `w
 
 ```csharp
 canvas.FillColor = Colors.Teal;
-canvas.FillArc(50, 50, 100, 100, 0, 180, true);
+canvas.FillArc(10, 10, 100, 100, 0, 180, true);
 ```
 
-In this example, a filled teal arc of dimensions 100x100 is drawn at (50,50). The arc is drawn in a clockwise direction from 0 degrees to 180 degrees, and is closed automatically:
+In this example, a filled teal arc of dimensions 100x100 is drawn at (10,10). The arc is drawn in a clockwise direction from 0 degrees to 180 degrees, and is closed automatically:
 
 :::image type="content" source="media/draw/filled-arc.png" alt-text="Screenshot of a filled teal arc.":::
 
@@ -284,23 +286,23 @@ The following example shows how to load an image and draw it to the canvas:
 ```csharp
 IImage image;
 Assembly assembly = GetType().GetTypeInfo().Assembly;
-using (Stream stream = assembly.GetManifestResourceStream("MyMauiApp.Resources.Images.dotnet_bot.png"))
+using (Stream stream = assembly.GetManifestResourceStream("GraphicsViewDemos.Resources.Images.dotnet_bot.png"))
 {
     image = GraphicsPlatform.CurrentService.LoadImageFromStream(stream);
 }
 
 if (image != null)
 {
-    canvas.DrawImage(image, 50, 50, image.Width, image.Height);
+    canvas.DrawImage(image, 10, 10, image.Width, image.Height);
 }
 ```
 
-In this example, an image is retrieved from the assembly and loaded as a stream. It's then drawn at actual size at (50,50):
+In this example, an image is retrieved from the assembly and loaded as a stream. It's then drawn at actual size at (10,10):
 
 :::image type="content" source="media/draw/image.png" alt-text="Screenshot of an image.":::
 
 > [!IMPORTANT]
-> Loading an image that's embedded in an assembly requires the image to have its build action set to **Embedded Resource**.
+> Loading an image that's embedded in an assembly requires the image to have its build action set to **Embedded Resource** rather than **MauiImage**.
 
 ## Draw a string
 
@@ -361,6 +363,9 @@ In this example, markdown is converted to attributed text and displayed with the
 
 :::image type="content" source="media/draw/text.png" alt-text="Screenshot of correctly rendered markdown.":::
 
+> [!IMPORTANT]
+> Drawing attributed text requires you to have added the `Microsoft.Maui.Graphics.Text.Markdig` NuGet package to your project.
+
 ## Draw with fill and stroke
 
 Graphical objects with both fill and stroke can be drawn to the canvas by calling a draw method *after* a fill method. For example, to draw an outlined rectangle, set the `FillColor` and `StrokeColor` properties to colors, then call the `FillRectangle` method followed by the `DrawRectangle` method.
@@ -401,15 +406,15 @@ The following examples show how to add shadows to filled objects:
 ```csharp
 canvas.FillColor = Colors.Red;
 canvas.SetShadow(new SizeF(10, 10), 4, Colors.Grey);
-canvas.FillRectangle(100, 50, 90, 100);
+canvas.FillRectangle(10, 10, 90, 100);
 
 canvas.FillColor = Colors.Green;
 canvas.SetShadow(new SizeF(10, -10), 4, Colors.Grey);
-canvas.FillEllipse(200, 50, 90, 100);
+canvas.FillEllipse(110, 10, 90, 100);
 
 canvas.FillColor = Colors.Blue;
 canvas.SetShadow(new SizeF(-10, 10), 4, Colors.Grey);
-canvas.FillRoundedRectangle(300, 50, 90, 100, 25);
+canvas.FillRoundedRectangle(210, 10, 90, 100, 25);
 ```
 
 In these examples, shadows whose light sources are in different positions are added to the filled objects, with identical amounts of blur:
@@ -426,7 +431,7 @@ The following example shows how to draw a dashed square, using a regular dash:
 canvas.StrokeColor = Colors.Red;
 canvas.StrokeSize = 4;
 canvas.StrokeDashPattern = new float[] { 2, 2 };
-canvas.DrawRectangle(100, 50, 90, 100);
+canvas.DrawRectangle(10, 10, 90, 100);
 ```
 
 In this example, a square with a regular dashed stroke is drawn:
@@ -439,7 +444,7 @@ The following example shows how to draw a dashed square, using an irregular dash
 canvas.StrokeColor = Colors.Red;
 canvas.StrokeSize = 4;
 canvas.StrokeDashPattern = new float[] { 4, 4, 1, 4 };
-canvas.DrawRectangle(100, 50, 90, 100);
+canvas.DrawRectangle(10, 10, 90, 100);
 ```
 
 In this example, a square with an irregular dashed stroke is drawn:
@@ -462,7 +467,7 @@ The following example shows how to set the `StrokeLineCap` property:
 canvas.StrokeSize = 10;
 canvas.StrokeColor = Colors.Red;
 canvas.StrokeLineCap = LineCap.Round;
-canvas.DrawLine(100, 160, 300, 160);
+canvas.DrawLine(10, 10, 110, 110);
 ```
 
 In this example, the red line is rounded at the start and end of the line:
@@ -484,9 +489,9 @@ The following example shows how to set the `StrokeLineJoin` property:
 
 ```csharp
 PathF path = new PathF();
-path.MoveTo(20, 20);
-path.LineTo(250, 50);
-path.LineTo(20, 120);
+path.MoveTo(10, 10);
+path.LineTo(110, 50);
+path.LineTo(10, 110);
 
 canvas.StrokeSize = 20;
 canvas.StrokeColor = Colors.Blue;
@@ -511,7 +516,7 @@ The following example shows how to use the `ClipPath` method to clip an image:
 ```csharp
 IImage image;
 var assembly = GetType().GetTypeInfo().Assembly;
-using (var stream = assembly.GetManifestResourceStream("MyMauiApp.Resources.Images.dotnet_bot.png"))
+using (var stream = assembly.GetManifestResourceStream("GraphicsViewDemos.Resources.Images.dotnet_bot.png"))
 {
     image = GraphicsPlatform.CurrentService.LoadImageFromStream(stream);
 }
@@ -519,13 +524,13 @@ using (var stream = assembly.GetManifestResourceStream("MyMauiApp.Resources.Imag
 if (image != null)
 {
     PathF path = new PathF();
-    path.AppendCircle(160, 150, 90);
+    path.AppendCircle(100, 90, 80);
     canvas.ClipPath(path);  // Must be called before DrawImage
-    canvas.DrawImage(image, 40, 40, image.Width, image.Height);
+    canvas.DrawImage(image, 10, 10, image.Width, image.Height);
 }
 ```
 
-In this example, the image is clipped using a `PathF` object that defines a circle that's centered at (160,150) with a radius of 90. The result is that only the part of the image within the circle is visible:
+In this example, the image is clipped using a `PathF` object that defines a circle that's centered at (100,90) with a radius of 80. The result is that only the part of the image within the circle is visible:
 
 :::image type="content" source="media/draw/clippath.png" alt-text="Screenshot of an image that's been clipped with the ClipPath method.":::
 
@@ -544,8 +549,8 @@ using (var stream = assembly.GetManifestResourceStream("MyMauiApp.Resources.Imag
 
 if (image != null)
 {
-    canvas.SubtractFromClip(110, 90, 110, 100);
-    canvas.DrawImage(image, 40, 40, image.Width, image.Height);
+    canvas.SubtractFromClip(60, 60, 90, 90);
+    canvas.DrawImage(image, 10, 10, image.Width, image.Height);
 }
 ```
 

@@ -10,6 +10,8 @@ ms.date: 12/16/2021
 
 .NET Multi-platform App UI (.NET MAUI) graphics includes the ability to paint graphical objects with solid colors, gradients, repeating images, and patterns.
 
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
+
 The `Paint` class is an abstract class that paints an object with its output. Classes that derive from `Paint` describe different ways of painting an object. The following list describes the different paint types available in .NET MAUI graphics:
 
 - `SolidPaint`, which paints an object with a solid color. For more information, see [Paint a solid color](#paint-a-solid-color).
@@ -76,7 +78,7 @@ The following example shows how to load an image and fill a rectangle with it:
 ```csharp
 IImage image;
 var assembly = GetType().GetTypeInfo().Assembly;
-using (var stream = assembly.GetManifestResourceStream("MyMauiApp.Resources.Images.dotnet_bot.png"))
+using (var stream = assembly.GetManifestResourceStream("GraphicsViewDemos.Resources.Images.dotnet_bot.png"))
 {
     image = GraphicsPlatform.CurrentService.LoadImageFromStream(stream);
 }
@@ -88,7 +90,7 @@ if (image != null)
         Image = image.Downsize(100)
     };
     canvas.SetFillPaint(imagePaint, RectangleF.Zero);
-    canvas.FillRectangle(0, 0, 265, 300);
+    canvas.FillRectangle(0, 0, 240, 300);
 }
 ```
 
@@ -107,7 +109,7 @@ Alternatively, the `SetFillImage` extension method can be used to simplify the c
 if (image != null)
 {
     canvas.SetFillImage(image.Downsize(100));
-    canvas.FillRectangle(0, 0, 265, 300);
+    canvas.FillRectangle(0, 0, 240, 300);
 }
 ```
 
@@ -188,7 +190,7 @@ LinearGradientPaint linearGradientPaint = new LinearGradientPaint
 linearGradientPaint.AddOffset(0.25f, Colors.Red);
 linearGradientPaint.AddOffset(0.75f, Colors.Blue);
 
-RectangleF linearRectangle = new RectangleF(100, 100, 200, 100);
+RectangleF linearRectangle = new RectangleF(10, 10, 200, 100);
 canvas.SetFillPaint(linearGradientPaint, linearRectangle);
 canvas.SetShadow(new SizeF(10, 10), 10, Colors.Grey);
 canvas.FillRoundedRectangle(linearRectangle, 12);                                                     
@@ -234,7 +236,7 @@ LinearGradientPaint linearGradientPaint = new LinearGradientPaint
     EndPoint = new Point(1, 0)
 };
 
-RectangleF linearRectangle = new RectangleF(100, 100, 200, 100);
+RectangleF linearRectangle = new RectangleF(10, 10, 200, 100);
 canvas.SetFillPaint(linearGradientPaint, linearRectangle);
 canvas.SetShadow(new SizeF(10, 10), 10, Colors.Grey);
 canvas.FillRoundedRectangle(linearRectangle, 12);
@@ -259,7 +261,7 @@ LinearGradientPaint linearGradientPaint = new LinearGradientPaint
     EndPoint = new Point(0, 1)
 };
 
-RectangleF linearRectangle = new RectangleF(100, 100, 200, 100);
+RectangleF linearRectangle = new RectangleF(10, 10, 200, 100);
 canvas.SetFillPaint(linearGradientPaint, linearRectangle);
 canvas.SetShadow(new SizeF(10, 10), 10, Colors.Grey);
 canvas.FillRoundedRectangle(linearRectangle, 12);
@@ -284,7 +286,7 @@ LinearGradientPaint linearGradientPaint = new LinearGradientPaint
     // EndPoint is already (1,1)
 };
 
-RectangleF linearRectangle = new RectangleF(100, 100, 200, 100);
+RectangleF linearRectangle = new RectangleF(10, 10, 200, 100);
 canvas.SetFillPaint(linearGradientPaint, linearRectangle);
 canvas.SetShadow(new SizeF(10, 10), 10, Colors.Grey);
 canvas.FillRoundedRectangle(linearRectangle, 12);
@@ -309,7 +311,7 @@ A radial gradient's gradient stops are positioned along a gradient axis defined 
 
 To create a radial gradient, create a `RadialGradientPaint` object and set its `StartColor` and `EndColor` properties. Then, set its `Center` and `Radius` properties.
 
-The following example shows how to create a diagonal `LinearGradientPaint`:
+The following example shows how to create a centered `RadialGradientPaint`:
 
 ```csharp
 RadialGradientPaint radialGradientPaint = new RadialGradientPaint
@@ -320,7 +322,7 @@ RadialGradientPaint radialGradientPaint = new RadialGradientPaint
     // Radius is already 0.5
 };
 
-RectangleF radialRectangle = new RectangleF(100, 100, 200, 100);
+RectangleF radialRectangle = new RectangleF(10, 10, 200, 100);
 canvas.SetFillPaint(radialGradientPaint, radialRectangle);
 canvas.SetShadow(new SizeF(10, 10), 10, Colors.Grey);
 canvas.FillRoundedRectangle(radialRectangle, 12);
@@ -339,9 +341,9 @@ RadialGradientPaint radialGradientPaint = new RadialGradientPaint
     EndColor = Colors.DarkBlue,
     Center = new Point(0.0, 0.0)
     // Radius is already 0.5
-}
+};
 
-RectangleF radialRectangle = new RectangleF(100, 100, 200, 100);
+RectangleF radialRectangle = new RectangleF(10, 10, 200, 100);
 canvas.SetFillPaint(radialGradientPaint, radialRectangle);
 canvas.SetShadow(new SizeF(10, 10), 10, Colors.Grey);
 canvas.FillRoundedRectangle(radialRectangle, 12);
@@ -362,7 +364,7 @@ RadialGradientPaint radialGradientPaint = new RadialGradientPaint
     // Radius is already 0.5
 };
 
-RectangleF radialRectangle = new RectangleF(100, 100, 200, 100);
+RectangleF radialRectangle = new RectangleF(10, 10, 200, 100);
 canvas.SetFillPaint(radialGradientPaint, radialRectangle);
 canvas.SetShadow(new SizeF(10, 10), 10, Colors.Grey);
 canvas.FillRoundedRectangle(radialRectangle, 12);

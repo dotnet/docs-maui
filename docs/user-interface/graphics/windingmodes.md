@@ -1,7 +1,7 @@
 ---
 title: "Winding modes"
 description: ".NET MAUI graphics enables you to specify the fill algorithm when filling or clipping a path."
-ms.date: 07/28/2021
+ms.date: 12/16/2021
 ---
 
 # Winding modes
@@ -9,6 +9,8 @@ ms.date: 07/28/2021
 <!-- Sample link goes here -->
 
 .NET Multi-platform App UI (.NET MAUI) graphics provides a `WindingMode` enumeration, that enables you to specify the fill algorithm to be used by the `FillPath` method. Contours in a path can overlap, and any enclosed area can potentially be filled, but you might not want to fill all the enclosed areas. For more information about paths, see [Draw a path](draw.md#draw-a-path).
+
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
 The `WindingMode` enumeration defines `NonZero` and `EvenOdd` members. Each member represents a different algorithm for determining whether a point is in the fill region of an enclosed area.
 

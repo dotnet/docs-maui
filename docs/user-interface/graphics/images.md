@@ -1,7 +1,7 @@
 ---
 title: "Images"
 description: ".NET MAUI graphics includes functionality to load, save, resize, and downsize images."
-ms.date: 08/03/2021
+ms.date: 12/16/2021
 ---
 
 # Images
@@ -9,6 +9,8 @@ ms.date: 08/03/2021
 <!-- Sample link goes here -->
 
 .NET Multi-platform App UI (.NET MAUI) graphics includes functionality to load, save, resize, and downsize images. Supported image formats are dependent on the underlying platform.
+
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
 Images are represented by the `IImage` type, which defines the following properties:
 
@@ -26,41 +28,21 @@ The following example shows how to load an image:
 ```csharp
 IImage image;
 Assembly assembly = GetType().GetTypeInfo().Assembly;
-using (Stream stream = assembly.GetManifestResourceStream("MyMauiApp.Resources.Images.dotnet_bot.png"))
+using (Stream stream = assembly.GetManifestResourceStream("GraphicsViewDemos.Resources.Images.dotnet_bot.png"))
 {
     image = GraphicsPlatform.CurrentService.LoadImageFromStream(stream);
 }
 
 if (image != null)
 {
-    // Do something with the image
+    canvas.DrawImage(image, 10, 10, image.Width, image.Height);
 }
 ```
 
-In this example, the image is retrieved from the assembly and loaded as a stream.
+In this example, the image is retrieved from the assembly, loaded as a stream, and displayed.
 
-> [!NOTE]
-> Loading an image that's embedded in an assembly requires the image to have its build action set to **Embedded Resource**.
-
-## Save an image
-
-Images can be saved by the `IImage.Save` and `IImage.SaveAsync` methods. Each method saves the `IImage` to a `Stream`, and enables optional `ImageFormat` and quality values to be specified.
-
-The following example shows how to save an image:
-
-```csharp
-IImage image;
-...
-
-// Save image to a memory stream
-if (image != null)
-{
-    using (MemoryStream memStream = new MemoryStream())
-    {
-        newImage.Save(memStream);
-    }
-}
-```
+> [!IMPORTANT]
+> Loading an image that's embedded in an assembly requires the image to have its build action set to **Embedded Resource** rather than **MauiImage**.
 
 ## Resize an image
 
@@ -80,7 +62,7 @@ The following example shows how to resize an image:
 ```csharp
 IImage image;
 Assembly assembly = GetType().GetTypeInfo().Assembly;
-using (Stream stream = assembly.GetManifestResourceStream("MyMauiApp.Resources.Images.dotnet_bot.png"))
+using (Stream stream = assembly.GetManifestResourceStream("GraphicsViewDemos.Resources.Images.dotnet_bot.png"))
 {
     image = GraphicsPlatform.CurrentService.LoadImageFromStream(stream);
 }
@@ -88,11 +70,11 @@ using (Stream stream = assembly.GetManifestResourceStream("MyMauiApp.Resources.I
 if (image != null)
 {
     IImage newImage = image.Resize(100, 60, ResizeMode.Stretch, true);
-    canvas.DrawImage(newImage, 50, 50, newImage.Width, newImage.Height);
+    canvas.DrawImage(newImage, 10, 10, newImage.Width, newImage.Height);
 }
 ```
 
-In this example, the image is retrieved from the assembly and loaded as a stream. The image is resized using the `Resize` method, with its arguments specifying the new size, and that it should be stretched to fill the available space. In addition, the source image is disposed. The resized image is then drawn at actual size at (50,50).
+In this example, the image is retrieved from the assembly and loaded as a stream. The image is resized using the `Resize` method, with its arguments specifying the new size, and that it should be stretched to fill the available space. In addition, the source image is disposed. The resized image is then drawn at actual size at (10,10).
 
 ## Downsize an image
 
@@ -105,7 +87,7 @@ The following example shows how to downsize an image:
 ```csharp
 IImage image;
 Assembly assembly = GetType().GetTypeInfo().Assembly;
-using (Stream stream = assembly.GetManifestResourceStream("MyMauiApp.Resources.Images.dotnet_bot.png"))
+using (Stream stream = assembly.GetManifestResourceStream("GraphicsViewDemos.Resources.Images.dotnet_bot.png"))
 {
     image = GraphicsPlatform.CurrentService.LoadImageFromStream(stream);
 }
@@ -113,8 +95,35 @@ using (Stream stream = assembly.GetManifestResourceStream("MyMauiApp.Resources.I
 if (image != null)
 {
     IImage newImage = image.Downsize(100, true);
-    canvas.DrawImage(newImage, 50, 50, newImage.Width, newImage.Height);
+    canvas.DrawImage(newImage, 10, 10, newImage.Width, newImage.Height);
 }
 ```
 
-In this example, the image is retrieved from the assembly and loaded as a stream. The image is downsized using the `Downsize` method, with the argument specifying that its largest dimension should be set to 100 pixels. In addition, the source image is disposed. The downsized image is then drawn at actual size at (50,50).
+In this example, the image is retrieved from the assembly and loaded as a stream. The image is downsized using the `Downsize` method, with the argument specifying that its largest dimension should be set to 100 pixels. In addition, the source image is disposed. The downsized image is then drawn at actual size at (10,10).
+
+## Save an image
+
+Images can be saved by the `IImage.Save` and `IImage.SaveAsync` methods. Each method saves the `IImage` to a `Stream`, and enables optional `ImageFormat` and quality values to be specified.
+
+The following example shows how to save an image:
+
+```csharp
+IImage image;
+Assembly assembly = GetType().GetTypeInfo().Assembly;
+using (Stream stream = assembly.GetManifestResourceStream("GraphicsViewDemos.Resources.Images.dotnet_bot.png"))
+{
+    image = GraphicsPlatform.CurrentService.LoadImageFromStream(stream);
+}
+
+// Save image to a memory stream
+if (image != null)
+{
+    IImage newImage = image.Downsize(150, true);
+    using (MemoryStream memStream = new MemoryStream())
+    {
+        newImage.Save(memStream);
+    }
+}
+```
+
+In this example, the image is retrieved from the assembly and loaded as a stream. The image is downsized using the `Downsize` method, with the argument specifying that its largest dimension should be set to 150 pixels. In addition, the source image is disposed. The downsized image is then saved to a stream.

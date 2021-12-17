@@ -10,6 +10,8 @@ ms.date: 07/26/2021
 
 .NET Multi-platform App UI (.NET MAUI) graphics supports traditional graphics transforms, which are implemented as methods on the `ICanvas` object. Mathematically, transforms alter the coordinates and sizes that you specify in `ICanvas` drawing methods, when the graphical objects are rendered.
 
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
+
 The following transforms are supported:
 
 - *Translate* to shift coordinates from one location to another.
@@ -286,7 +288,6 @@ AffineTransform transform = new AffineTransform(1.5f, 1, 0, 1, 150, 150);
 canvas.ConcatenateTransform(transform);
 canvas.FillColor = Colors.Red;
 canvas.FillPath(path);
-
 ```
 
 In this example, the `PathF` object is scaled and sheared on the x-axis, and translated on the x-axis and the y-axis.
