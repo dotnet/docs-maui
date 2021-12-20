@@ -1,6 +1,6 @@
 ---
 title: ".NET MAUI GraphicsView"
-description: "The .NET MAUI GraphicsView is a graphics canvas on which 2D graphics can be drawn using the cross-platform functionality from the Microsoft.Maui.Graphics namespace."
+description: "The .NET MAUI GraphicsView is a graphics canvas on which 2D graphics can be drawn using types from the Microsoft.Maui.Graphics namespace."
 ms.date: 12/17/2021
 ---
 
@@ -8,7 +8,7 @@ ms.date: 12/17/2021
 
 <!-- Sample link goes here -->
 
-The .NET Multi-platform App UI (.NET MAUI) `GraphicsView` is a graphics canvas on which 2D graphics can be drawn using functionality from the `Microsoft.Maui.Graphics` namespace. For more information about `Microsoft.Maui.Graphics`, see [Graphics](~/user-interface/graphics/index.md).
+The .NET Multi-platform App UI (.NET MAUI) `GraphicsView` is a graphics canvas on which 2D graphics can be drawn using types from the `Microsoft.Maui.Graphics` namespace. For more information about `Microsoft.Maui.Graphics`, see [Graphics](~/user-interface/graphics/index.md).
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
@@ -35,7 +35,7 @@ namespace MyMauiApp
 
 The `Draw` method has `ICanvas` and `RectangleF` arguments. The `ICanvas` argument is the drawing canvas on which you draw graphical objects. The `RectangleF` argument is a `struct` that contains data about the size and location of the drawing canvas. For more information about drawing on an `ICanvas`, see [Draw graphical objects](~/user-interface/graphics/draw.md).
 
-The `IDrawable` object should be declared as a resource, and then consumed by the `GraphicsView` by specifying its key:
+In XAML, the `IDrawable` object should be declared as a resource, and then consumed by a `GraphicsView` by specifying its key:
 
 ```xaml
 <ContentPage xmlns=http://schemas.microsoft.com/dotnet/2021/maui
@@ -47,7 +47,7 @@ The `IDrawable` object should be declared as a resource, and then consumed by th
     </ContentPage.Resources>
     <VerticalStackLayout>
         <GraphicsView Drawable="{StaticResource drawable}"
-                      HeightRequest="500"
+                      HeightRequest="300"
                       WidthRequest="400" />
     </VerticalStackLayout>
 </ContentPage>
@@ -76,14 +76,14 @@ These properties can be used to position and size graphical objects on the `ICan
 
 ## Convert the drawable to an image
 
-The graphical objects that are drawn on a `GraphicsView` can be converted to an image by the `ToImage` method, which is available in the `Microsoft.Maui.Graphics` namespace. This method requires `width` and `height` arguments, of type `float`, that specify the dimensions of the image.
+Graphical objects that are drawn on a `GraphicsView` can be converted to an image by the `ToImage` method, which is available in the `Microsoft.Maui.Graphics` namespace. This method requires `width` and `height` arguments, of type `float`, that specify the dimensions of the image.
 
 The `ToImage` method operates on an `IDrawable` object, which is exposed by the `GraphicsView.Drawable` property. Therefore, to call the `ToImage` method on a `GraphicsView`, the `GraphicsView` must be named with the `x:Name` attribute:
 
 ```xaml
-<GraphicsView x:Name="graphicsDrawable"
+<GraphicsView x:Name="graphicsView"
               Drawable="{StaticResource drawable}"
-              HeightRequest="500"
+              HeightRequest="300"
               WidthRequest="400" />
 ```
 
@@ -92,7 +92,15 @@ In code, the `Drawable` property of the `GraphicsView` object can then be access
 ```csharp
 using Microsoft.Maui.Graphics;
 ...
-IImage image = graphicsDrawable.Drawable.ToImage(400, 500);
+IImage image = graphicsView.Drawable.ToImage(400, 500);
 ```
 
 For information about image handling in `Microsoft.Maui.Graphics`, see [Images](~/user-interface/graphics/images.md).
+
+## Invalidate the canvas
+
+`GraphicsView` has an `Invalidate` method that informs the canvas that it needs to redraw itself. This method must be invoked on a `GraphicsView` instance:
+
+```csharp
+graphicsView.Invalidate();
+```

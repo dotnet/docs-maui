@@ -8,18 +8,16 @@ ms.date: 12/16/2021
 
 <!-- Sample link goes here -->
 
-.NET Multi-platform App UI (.NET MAUI) includes cross-platform 2D graphics functionality that targets iOS, Android, Windows, macOS, Tizen, and Linux. With this functionality, you can use a common API to target multiple graphics abstractions, enabling you to share your drawing code between platforms, or mix and match graphics implementations within a single app.
+.NET Multi-platform App UI (.NET MAUI) provides a cross-platform graphics canvas on which 2D graphics can be drawn using types from the `Microsoft.Maui.Graphics` namespace. This canvas supports drawing and painting shapes and images, compositing operations, and graphical object transforms.
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
-The graphics functionality is contained in the `Microsoft.Maui.Graphics` namespace, and provides a drawing canvas that supports drawing and painting shapes and images, compositing operations, and graphical object transforms.
 
 There are many similarities between the functionality provided by `Microsoft.Maui.Graphics`, and the functionality provided by .NET MAUI shapes and brushes. However, each is aimed at different scenarios:
 
 - `Microsoft.Maui.Graphics` functionality must be consumed on a drawing canvas, enables performant graphics to be drawn, and provides a convenient approach for writing graphics-based controls. For example, a control that replicates the GitHub contribution profile can be more easily implemented using `Microsoft.Maui.Graphics` than by using .NET MAUI shapes.
 - .NET MAUI shapes can be consumed directly on a page, and brushes can be consumed by all controls. This functionality is provided to help you produce an attractive UI.
 
-## Platform abstractions
+<!-- ## Platform abstractions
 
 The following table lists the graphics abstractions that are supported on each platform:
 
@@ -35,9 +33,7 @@ The following table lists the graphics abstractions that are supported on each p
 | Tizen | SkiaSharp |
 | Linux | SkiaSharp |
 
-By default, .NET MAUI uses the native graphics capabilities of each platform.
-
-For examples of using different graphics abstractions, see [Microsoft.Maui.Graphics samples](https://github.com/dotnet/Microsoft.Maui.Graphics/tree/main/samples).
+By default, .NET MAUI uses the native graphics capabilities of each platform. -->
 
 ## Drawing canvas
 
