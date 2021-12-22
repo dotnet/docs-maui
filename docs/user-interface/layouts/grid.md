@@ -1,10 +1,10 @@
 ---
-title: ".NET MAUI Grid"
+title: "Grid"
 description: "The .NET MAUI GridLayout, or Grid, is a layout that organizes its children into rows and columns of cells."
 ms.date: 12/22/2021
 ---
 
-# .NET MAUI Grid
+# Grid
 
 <!-- Sample link goes here -->
 
