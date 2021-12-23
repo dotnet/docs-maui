@@ -8,7 +8,7 @@ ms.date: 12/23/2021
 
 <!-- Sample link goes here -->
 
-The .NET Multi-platform App UI (.NET MAUI) `FlexLayout` is a layout that can arrange its children horizontally and vertically in a stack, and can also wrap its children if there are too many to fit in a single row or column. In addition, `FlexLayout` can control orientation and alignment, and adapt to different screen sizes. `FlexLayout` is based on the CSS [Flexible Box Layout Module](https://www.w3.org/TR/css-flexbox-1/).
+The .NET Multi-platform App UI (.NET MAUI) `FlexLayout` is a layout that can arrange its children horizontally and vertically in a stack, and can also wrap its children if there are too many to fit in a single row or column. In addition, `FlexLayout` can control orientation and alignment, and adapt to different screen sizes. `FlexLayout` is based on the Cascading Style Sheets (CSS) [Flexible Box Layout Module](https://www.w3.org/TR/css-flexbox-1/).
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
@@ -46,7 +46,7 @@ The `Direction` property, of type `FlexDirection`, defines the direction and mai
 When the `Direction` property is set to `Column`, or `ColumnReverse`, the main-axis will be the y-axis and items will be stacked vertically. When the `Direction` property is set to `Row`, or `RowReverse`, the main-axis will be the x-axis and children will be stacked horizontally.
 
 > [!NOTE]
-> In XAML, you can specify the value of this property using the enumeration member names in lowercase, uppercase, or mixed case, or you can use two additional strings shown in parentheses.
+> In XAML, you can specify the value of this property using the enumeration member names in lowercase, uppercase, or mixed case, or you can use the two additional strings shown in parentheses.
 
 ### Wrap
 
