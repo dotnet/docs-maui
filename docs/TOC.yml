@@ -31,8 +31,8 @@
             #   href: user-interface/layouts/absolutelayout.md
             # - name: FlexLayout
             #   href: user-interface/layouts/flexlayout.md
-            - name: Grid
-              href: user-interface/layouts/grid.md
+            - name: GridLayout
+              href: user-interface/layouts/gridlayout.md
             # - name: RelativeLayout
             #   href: user-interface/layouts/relativelayout.md
             - name: StackLayout

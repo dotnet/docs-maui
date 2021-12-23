@@ -4,11 +4,11 @@ description: "The .NET MAUI GridLayout, or Grid, is a layout that organizes its 
 ms.date: 12/22/2021
 ---
 
-# Grid
+# GridLayout
 
 <!-- Sample link goes here -->
 
-:::image type="content" source="media/grid/layouts.png" alt-text=".NET MAUI Grid." border="false":::
+:::image type="content" source="media/gridlayout/layouts.png" alt-text=".NET MAUI Grid." border="false":::
 
 The .NET Multi-platform App UI (.NET MAUI) `GridLayout`, or `Grid`, is a layout that organizes its children into rows and columns, which can have proportional or absolute sizes. By default, a `Grid` contains one row and one column. In addition, a `Grid` can be used as a parent layout that contains other child layouts.
 
@@ -50,7 +50,7 @@ By default, a `Grid` contains one row and one column:
 
 In this example, the `Grid` contains a single child `Label` that's automatically positioned in a single location:
 
-:::image type="content" source="media/grid/default.png" alt-text="Default .NET MAUI Grid layout.":::
+:::image type="content" source="media/gridlayout/default.png" alt-text="Default .NET MAUI Grid layout.":::
 
 The layout behavior of a `Grid` can be defined with the `RowDefinitions` and `ColumnDefinitions` properties, which are collections of `RowDefinition` and `ColumnDefinition` objects, respectively. These collections define the row and column characteristics of a `Grid`, and should contain one `RowDefinition` object for each row in the `Grid`, and one `ColumnDefinition` object for each column in the `Grid`.
 
@@ -154,7 +154,7 @@ The following XAML shows the same `Grid` definition, and also positions child vi
 
 In this example, all three `Grid` rows are occupied by `BoxView` and `Label` views. The third row is 100 device-independent units high, with the first two rows occupying the remaining space (the first row is twice as high as the second row). The two columns are equal in width and divide the `Grid` in half. The `BoxView` in the third row spans both columns:
 
-:::image type="content" source="media/grid/basic.png" alt-text="Basic .NET MAUI Grid layout.":::
+:::image type="content" source="media/gridlayout/basic.png" alt-text="Basic .NET MAUI Grid layout.":::
 
 In addition, child views in a `Grid` can share cells. The order that the children appear in the XAML is the order that the children are placed in the `Grid`. In the previous example, the `Label` objects are only visible because they are rendered on top of the `BoxView` objects. The `Label` objects would not be visible if the `BoxView` objects were rendered on top of them.
 
@@ -293,7 +293,7 @@ By default, `Grid` rows and columns have no space between them. This can be chan
 
 This example creates a `Grid` whose rows and columns are separated by 6 device-independent units of space:
 
-:::image type="content" source="media/grid/spacing.png" alt-text=".NET MAUI Grid with spacing between cells.":::
+:::image type="content" source="media/gridlayout/spacing.png" alt-text=".NET MAUI Grid with spacing between cells.":::
 
 > [!TIP]
 > The `RowSpacing` and `ColumnSpacing` properties can be set to negative values to make cell contents overlap.
@@ -412,7 +412,7 @@ The following XAML creates a `Grid` with nine equal-size cells, and places a `La
 
 In this example, the `Label` objects in each row are all identically aligned vertically, but use different horizontal alignments. Alternatively, this can be thought of as the `Label` objects in each column being identically aligned horizontally, but using different vertical alignments:
 
-:::image type="content" source="media/grid/alignment.png" alt-text="Cell alignment in a .NET MAUI Grid.":::
+:::image type="content" source="media/gridlayout/alignment.png" alt-text="Cell alignment in a .NET MAUI Grid.":::
 
 The equivalent C# code is:
 
@@ -618,7 +618,7 @@ The following XAML shows an example of nesting `Grid` objects:
 
 In this example, the root `Grid` layout contains a `BoxView` in its first row, and a child `Grid` in its second row. The child `Grid` contains `Slider` objects that manipulate the color displayed by the `BoxView`, and `Label` objects that display the value of each `Slider`:
 
-:::image type="content" source="media/grid/nested.png" alt-text="Nested .NET MAUI Grid objects.":::
+:::image type="content" source="media/gridlayout/nested.png" alt-text="Nested .NET MAUI Grid objects.":::
 
 > [!IMPORTANT]
 > The deeper you nest `Grid` objects and other layouts, the more the nested layouts will impact performance. <!--For more information, see [Choose the correct layout](~/xamarin-forms/deploy-test/performance.md#choose-the-correct-layout).-->
