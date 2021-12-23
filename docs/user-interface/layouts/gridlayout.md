@@ -1,5 +1,5 @@
 ---
-title: "Grid"
+title: "GridLayout"
 description: "The .NET MAUI GridLayout, or Grid, is a layout that organizes its children into rows and columns of cells."
 ms.date: 12/22/2021
 ---
@@ -10,29 +10,32 @@ ms.date: 12/22/2021
 
 :::image type="content" source="media/gridlayout/layouts.png" alt-text=".NET MAUI Grid." border="false":::
 
-The .NET Multi-platform App UI (.NET MAUI) `GridLayout`, or `Grid`, is a layout that organizes its children into rows and columns, which can have proportional or absolute sizes. By default, a `Grid` contains one row and one column. In addition, a `Grid` can be used as a parent layout that contains other child layouts.
+The .NET Multi-platform App UI (.NET MAUI) `GridLayout`, or `Grid`, is a layout that organizes its children into rows and columns, which can have proportional or absolute sizes. By default, a `GridLayout` contains one row and one column. In addition, a `GridLayout` can be used as a parent layout that contains other child layouts.
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
-The `Grid` layout should not be confused with tables, and is not intended to present tabular data. Unlike HTML tables, a `Grid` is intended for laying out content. <!-- For displaying tabular data, consider using a [ListView](~/xamarin-forms/user-interface/listview/index.md), [CollectionView](~/xamarin-forms/user-interface/collectionview/introduction.md), or [TableView](~/xamarin-forms/user-interface/tableview.md).-->
+The `GridLayout` should not be confused with tables, and is not intended to present tabular data. Unlike HTML tables, a `GridLayout` is intended for laying out content. <!-- For displaying tabular data, consider using a [ListView](~/xamarin-forms/user-interface/listview/index.md), [CollectionView](~/xamarin-forms/user-interface/collectionview/introduction.md), or [TableView](~/xamarin-forms/user-interface/tableview.md).-->
 
-The `Grid` class defines the following properties:
+The `GridLayout` class defines the following properties:
 
-- `Column`, of type `int`, which is an attached property that indicates the column alignment of a view within a parent `Grid`. The default value of this property is 0. A validation callback ensures that when the property is set, its value is greater than or equal to 0.
+- `Column`, of type `int`, which is an attached property that indicates the column alignment of a view within a parent `GridLayout`. The default value of this property is 0. A validation callback ensures that when the property is set, its value is greater than or equal to 0.
 - `ColumnDefinitions`, of type `ColumnDefinitionCollection`, is a list of `ColumnDefinition` objects that define the width of the grid columns.
 - `ColumnSpacing`, of type `double`, indicates the distance between grid columns. The default value of this property is 0.
-- `ColumnSpan`, of type `int`, which is an attached property that indicates the total number of columns that a view spans within a parent `Grid`. The default value of this property is 1. A validation callback ensures that when the property is set, its value is greater than or equal to 1.
-- `Row`, of type `int`, which is an attached property that indicates the row alignment of a view within a parent `Grid`. The default value of this property is 0. A validation callback ensures that when the property is set, its value is greater than or equal to 0.
+- `ColumnSpan`, of type `int`, which is an attached property that indicates the total number of columns that a view spans within a parent `GridLayout`. The default value of this property is 1. A validation callback ensures that when the property is set, its value is greater than or equal to 1.
+- `Row`, of type `int`, which is an attached property that indicates the row alignment of a view within a parent `GridLayout`. The default value of this property is 0. A validation callback ensures that when the property is set, its value is greater than or equal to 0.
 - `RowDefinitions`, of type `RowDefinitionCollection`, is a list of `RowDefintion` objects that define the height of the grid rows.
 - `RowSpacing`, of type `double`, indicates the distance between grid rows. The default value of this property is 0.
-- `RowSpan`, of type `int`, which is an attached property that indicates the total number of rows that a view spans within a parent `Grid`. The default value of this property is 1. A validation callback ensures that when the property is set, its value is greater than or equal to 1.
+- `RowSpan`, of type `int`, which is an attached property that indicates the total number of rows that a view spans within a parent `GridLayout`. The default value of this property is 1. A validation callback ensures that when the property is set, its value is greater than or equal to 1.
 
 These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings and styled.
 
-The `Grid` class derives from the `Layout` class, which defines a `Children` property of type `IList<IView>`. The `Children` property is the `ContentProperty` of the `Layout` class, and therefore does not need to be explicitly set from XAML.
+The `GridLayout` class derives from the `Layout` class, which defines a `Children` property of type `IList<IView>`. The `Children` property is the `ContentProperty` of the `Layout` class, and therefore does not need to be explicitly set from XAML.
 
 <!-- > [!TIP]
 > To obtain the best possible layout performance, follow the guidelines at [Optimize layout performance](~/xamarin-forms/deploy-test/performance.md#optimize-layout-performance). -->
+
+> [!NOTE]
+> In .NET MAUI, `Grid` is an alias for `GridLayout` and is used in the rest of this article.
 
 ## Rows and columns
 
@@ -616,7 +619,7 @@ The following XAML shows an example of nesting `Grid` objects:
 </ContentPage>
 ```
 
-In this example, the root `Grid` layout contains a `BoxView` in its first row, and a child `Grid` in its second row. The child `Grid` contains `Slider` objects that manipulate the color displayed by the `BoxView`, and `Label` objects that display the value of each `Slider`:
+In this example, the root `Grid` contains a `BoxView` in its first row, and a child `Grid` in its second row. The child `Grid` contains `Slider` objects that manipulate the color displayed by the `BoxView`, and `Label` objects that display the value of each `Slider`:
 
 :::image type="content" source="media/gridlayout/nested.png" alt-text="Nested .NET MAUI Grid objects.":::
 
