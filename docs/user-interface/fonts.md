@@ -1,9 +1,7 @@
 ---
 title: "Fonts"
 description: "This article explains how to specify font information on controls that display text in .NET MAUI apps."
-author: davidbritch
-ms.author: dabritch
-ms.date: 10/19/2021
+ms.date: 12/23/2021
 ---
 
 # Fonts
@@ -11,6 +9,8 @@ ms.date: 10/19/2021
 <!-- Sample link (if any), goes here -->
 
 By default, .NET Multi-platform App UI (.NET MAUI) apps use the Open Sans font on each platform. However, this default can be changed, and additional fonts can be registered for use in an app.
+
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
 All controls that display text define properties that can be set to change font appearance:
 
@@ -51,13 +51,15 @@ namespace MyMauiApp
 
 In the example above, the first argument to the `AddFont` method is the font filename, while the second argument represents an optional alias by which the font can be referenced when consuming it.
 
-Any fonts consumed by an app must be placed in the **Resources** > **Fonts** folder of the app's project, with a build action of **MauiFont**. This creates a corresponding item in the app's .csproj file. Alternatively, all fonts in the app can be registered by using a wildcard in the .csproj file:
+Any fonts consumed by an app must be placed in the **Resources** > **Fonts** folder of the app's project, with a build action of **MauiFont**. This creates a corresponding entry per font in your project file. Alternatively, all fonts in the app can be registered by using a wildcard in your project file:
 
 ```xml
 <ItemGroup>
    <MauiFont Include="Resources\Fonts\*" />
 </ItemGroup>
 ```
+
+At build time, fonts are copied to your app package.
 
 > [!NOTE]
 > The `*` wildcard character indicates that all the files within the folder will be treated as being font files. In addition, if you want to include files from sub-folders too, then configure it using additional wildcard characters, for example, `Resources\Fonts\**\*`.
@@ -207,7 +209,7 @@ The `OnPlatform` and `On` classes can be used in XAML to set font properties per
 
 <!-- Todo: Device.RuntimePlatform will most likely be deprecated in favour of Essentials -->
 
-The `Device.RuntimePlatform` property can be used in code to set font properties per platform
+The `Device.RuntimePlatform` property can be used in code to set font properties per platform:
 
 ```csharp
 Label label = new Label
@@ -276,7 +278,7 @@ The following XAML example has a single font icon being displayed by an `Image` 
 This code displays an XBox icon, from the Ionicons font family, in an `Image` view. Note that while the unicode character for this icon is `\uf30c`, it has to be escaped in XAML and so becomes `&#xf30c;`. The equivalent C# code is:
 
 ```csharp
-Image image = new Image { BackgroundColor = Color.FromHex("#D1D1D1") };
+Image image = new Image { BackgroundColor = Color.FromArgb("#D1D1D1") };
 image.Source = new FontImageSource
 {
     Glyph = "\uf30c",
