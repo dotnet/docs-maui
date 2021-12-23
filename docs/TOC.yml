@@ -29,8 +29,8 @@
             #   href: user-interface/layouts/choose-layout.md
             # - name: AbsoluteLayout
             #   href: user-interface/layouts/absolutelayout.md
-            # - name: FlexLayout
-            #   href: user-interface/layouts/flexlayout.md
+            - name: FlexLayout
+              href: user-interface/layouts/flexlayout.md
             - name: GridLayout
               href: user-interface/layouts/gridlayout.md
             # - name: RelativeLayout
