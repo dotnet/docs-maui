@@ -24,7 +24,7 @@ The `FlexLayout` class defines the following properties:
 - `Basis`, of type `FlexBasis`, which is an attached property that defines the initial main axis dimension of the child. The default value of this property is `Auto`. For more information, see [Basis](#basis).
 - `Grow`, of type `float`, which is an attached property that specifies the amount of available space the child should use on the main axis. The default value of this property is 0.0. A validation callback ensures that when the property is set, its value is greater than or equal to 0. For more information, see [Grow](#grow).
 - `Order`, of type `int`, which is an attached property that determines whether the child should be laid out before or after other children in the container. The default value of this property is 0. For more information, see [Order](#order).
-- `Shrink`, of type `float`, which is an attached property that controls how a child should shrink so that all children can fit inside the container.  The default value of this property is 1.0. A validation callback ensures that when the property is set, its value is greater than or equal to 0. For more information, see [Shrink](#shrink).
+- `Shrink`, of type `float`, which is an attached property that controls how a child should shrink so that all children can fit inside the container. The default value of this property is 1.0. A validation callback ensures that when the property is set, its value is greater than or equal to 0. For more information, see [Shrink](#shrink).
 
 These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings and styled.
 
@@ -32,7 +32,7 @@ The `FlexLayout` class derives from the `Layout` class, which defines a `Childre
 
 ## Orientation and alignment
 
-The `Direction`, `Wrap`, `JustifyContent`, `AlignItems`, `AlignContent`, and `Position` bindable properties can be set on a `FlexLayout` to control orientation and alignment:
+The `Direction`, `Wrap`, `JustifyContent`, `AlignItems`, `AlignContent`, and `Position` bindable properties can be set on a `FlexLayout` to control orientation and alignment of all children.
 
 ### Direction
 
@@ -118,7 +118,7 @@ https://github.com/dotnet/maui/blob/main/src/Controls/src/Core/Layout/FlexLayout
 
 ## Attached properties
 
-`FlexLayout` defines five attached bindable properties. These properties are set on children of the `FlexLayout` and pertain only to that particular child.
+The `AlignSelf`, `Order`, `Basis`, `Grow`, and `Shrink` attached bindable properties should be set on children of the `FlexLayout` to control orientation, alignment, and sizing of specific children.
 
 ### AlignSelf
 
