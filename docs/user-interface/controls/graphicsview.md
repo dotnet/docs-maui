@@ -74,6 +74,14 @@ The `RectangleF` struct defines the following properties:
 
 These properties can be used to position and size graphical objects on the `ICanvas`. For example, graphical objects can be placed at the center of the `Canvas` by using the `Center.X` and `Center.Y` values as arguments to a drawing method. For information about drawing on an `ICanvas`, see [Draw graphical objects](~/user-interface/graphics/draw.md).
 
+## Invalidate the canvas
+
+`GraphicsView` has an `Invalidate` method that informs the canvas that it needs to redraw itself. This method must be invoked on a `GraphicsView` instance:
+
+```csharp
+graphicsView.Invalidate();
+```
+
 ## Convert the drawable to an image
 
 Graphical objects that are drawn on a `GraphicsView` can be converted to an image by the `ToImage` method, which is available in the `Microsoft.Maui.Graphics` namespace. This method requires `width` and `height` arguments, of type `float`, that specify the dimensions of the image.
@@ -96,11 +104,3 @@ IImage image = graphicsView.Drawable.ToImage(400, 500);
 ```
 
 For information about image handling in `Microsoft.Maui.Graphics`, see [Images](~/user-interface/graphics/images.md).
-
-## Invalidate the canvas
-
-`GraphicsView` has an `Invalidate` method that informs the canvas that it needs to redraw itself. This method must be invoked on a `GraphicsView` instance:
-
-```csharp
-graphicsView.Invalidate();
-```
