@@ -46,3 +46,5 @@ landingContent:
         links:
           - text: Customize controls
             url: user-interface/handlers/customize.md
+          - text: Graphics
+            url: user-interface/graphics/index.md

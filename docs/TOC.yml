@@ -28,9 +28,29 @@
             - name: BlazorWebView
               href: user-interface/controls/blazorwebview.md
             - name: Border
-              href: user-interface/controls/border.md
+              href: user-interface/controls/border.md          
+            - name: GraphicsView
+              href: user-interface/controls/graphicsview.md
         - name: Customize controls
           href: user-interface/handlers/customize.md
+        - name: Graphics
+          items:
+            - name: Overview
+              href: user-interface/graphics/index.md
+            - name: Blend modes
+              href: user-interface/graphics/blendmodes.md
+            - name: Colors
+              href: user-interface/graphics/colors.md
+            - name: Draw graphical objects
+              href: user-interface/graphics/draw.md
+            - name: Images
+              href: user-interface/graphics/images.md
+            - name: Paint graphical objects
+              href: user-interface/graphics/paint.md
+            - name: Transforms
+              href: user-interface/graphics/transforms.md
+            - name: Winding modes
+              href: user-interface/graphics/windingmodes.md
         - name: Images
           items:
             - name: Splash screen
@@ -43,4 +63,3 @@
           href: platform-integration/configure-multi-targeting.md
         - name: Invoke platform code
           href: platform-integration/invoke-platform-code.md
- 
