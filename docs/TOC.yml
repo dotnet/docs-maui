@@ -6,7 +6,6 @@
     - name: Supported platforms
       href: supported-platforms.md
     - name: Get started
-      expanded: true
       items:
         - name: Installation
           href: get-started/installation.md
@@ -15,17 +14,21 @@
         - name: Migrate from Xamarin.Forms
           href: get-started/migrate.md
     - name: Fundamentals
-      expanded: true
       items:
+        - name: Accessibility
+          href: fundamentals/accessibility.md
         - name: App startup
           href: fundamentals/app-startup.md
         - name: Single project
           href: fundamentals/single-project.md
     - name: User interface
-      expanded: true
       items:
         - name: Controls
           items:
+            - name: BlazorWebView
+              href: user-interface/controls/blazorwebview.md
+            - name: Border
+              href: user-interface/controls/border.md          
             - name: GraphicsView
               href: user-interface/controls/graphicsview.md
         - name: Customize controls
@@ -48,3 +51,15 @@
               href: user-interface/graphics/transforms.md
             - name: Winding modes
               href: user-interface/graphics/windingmodes.md
+        - name: Images
+          items:
+            - name: Splash screen
+              href: user-interface/images/splashscreen.md
+        - name: Shadow
+          href: user-interface/shadow.md              
+    - name: Platform integration
+      items:
+        - name: Configure multi-targeting
+          href: platform-integration/configure-multi-targeting.md
+        - name: Invoke platform code
+          href: platform-integration/invoke-platform-code.md
