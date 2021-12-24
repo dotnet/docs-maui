@@ -10,6 +10,8 @@ ms.date: 12/16/2021
 
 Semantics for accessibility is concerned with building experiences that make your apps inclusive for people who use technology in a wide range of environments and approach your UI with a range of needs and experiences. In many situations, legal requirements for accessibility may provide an impetus for developers to address accessibility issues. Regardless, it's advisable to build inclusive and accessible apps so that your apps reach the largest possible audience.
 
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
+
 The [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/standards-guidelines/wcag/) are the global accessibility standard and legal benchmark for web and mobile. These guidelines describe the various ways in which apps can be made more perceivable, operable, understandable, and robust, for all.
 
 Many user accessibility needs are met by assistive technology products installed by the user or by tools and settings provided by the operating system. This includes functionality such as screen readers, screen magnification, and high-contrast settings.

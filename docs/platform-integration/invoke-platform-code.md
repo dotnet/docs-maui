@@ -29,7 +29,7 @@ To invoke platform code from cross-platform code, the first step is to define th
 The following example shows a cross-platform API that can be used to retrieve the orientation of a device:
 
 ```csharp
-namespace CallPlatformCodeDemos.Services
+namespace InvokePlatformCodeDemos.Services
 {
     public enum DeviceOrientation
     {
@@ -78,7 +78,7 @@ using Android.Content;
 using Android.Runtime;
 using Android.Views;
 
-namespace CallPlatformCodeDemos.Services
+namespace InvokePlatformCodeDemos.Services
 {
     public partial class DeviceOrientationService
     {
@@ -100,7 +100,7 @@ The following example shows the implementation of the `GetOrientation` method on
 ```csharp
 using UIKit;
 
-namespace CallPlatformCodeDemos.Services
+namespace InvokePlatformCodeDemos.Services
 {
     public partial class DeviceOrientationService
     {
@@ -119,7 +119,7 @@ namespace CallPlatformCodeDemos.Services
 After providing the platform implementations, the API can be invoked from cross-platform code by creating an object instance and invoking its operation:
 
 ```csharp
-using CallPlatformCodeDemos.Services;
+using InvokePlatformCodeDemos.Services;
 ...
 
 DeviceOrientationService deviceOrientationService = new DeviceOrientationService();
