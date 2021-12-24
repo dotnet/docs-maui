@@ -116,7 +116,7 @@ https://github.com/dotnet/maui/blob/main/src/Core/src/Layouts/FlexEnums.cs
 https://github.com/dotnet/maui/blob/main/src/Controls/src/Core/Layout/FlexLayout.cs
 -->
 
-## Attached properties
+## Child alignment and sizing
 
 The `AlignSelf`, `Order`, `Basis`, `Grow`, and `Shrink` attached bindable properties should be set on children of the `FlexLayout` to control orientation, alignment, and sizing of specific children.
 
