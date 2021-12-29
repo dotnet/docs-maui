@@ -14,8 +14,6 @@ The `HorizontalStackLayout` defines the following properties:
 
 This property is backed by a `BindableProperty` object, which means that it can be the target of data bindings and styled.
 
-The `HorizontalStackLayout` class ultimately derives from the `Layout` class, which defines a `Children` property of type `IList<IView>`. The `Children` property is the `ContentProperty` of the `HorizontalStackLayout` class, and therefore does not need to be explicitly set from XAML.
-
 <!--
 > [!TIP]
 > To obtain the best possible layout performance, follow the guidelines at [Optimize layout performance](~/xamarin-forms/deploy-test/performance.md#optimize-layout-performance).
