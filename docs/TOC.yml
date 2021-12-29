@@ -15,6 +15,8 @@
           href: get-started/migrate.md
     - name: Fundamentals
       items:
+        - name: Accessibility
+          href: fundamentals/accessibility.md
         - name: App startup
           href: fundamentals/app-startup.md
         - name: Single project
@@ -27,20 +29,34 @@
               href: user-interface/controls/blazorwebview.md
             - name: Border
               href: user-interface/controls/border.md
+            - name: GraphicsView
+              href: user-interface/controls/graphicsview.md
         - name: Customize controls
           href: user-interface/handlers/customize.md
-        - name: Layouts
+        - name: Graphics
           items:
-            - name: HorizontalStackLayout
-              href: user-interface/layouts/horizontalstacklayout.md
-            - name: VerticalStackLayout
-              href: user-interface/layouts/verticalstacklayout.md
+            - name: Overview
+              href: user-interface/graphics/index.md
+            - name: Blend modes
+              href: user-interface/graphics/blendmodes.md
+            - name: Colors
+              href: user-interface/graphics/colors.md
+            - name: Draw graphical objects
+              href: user-interface/graphics/draw.md
+            - name: Images
+              href: user-interface/graphics/images.md
+            - name: Paint graphical objects
+              href: user-interface/graphics/paint.md
+            - name: Transforms
+              href: user-interface/graphics/transforms.md
+            - name: Winding modes
+              href: user-interface/graphics/windingmodes.md
         - name: Images
           items:
             - name: Splash screen
               href: user-interface/images/splashscreen.md
-        - name: Shadow
-          href: user-interface/shadow.md              
+        - name: Shadows
+          href: user-interface/shadow.md
     - name: Platform integration
       items:
         - name: Configure multi-targeting

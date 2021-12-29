@@ -1,7 +1,7 @@
 ---
 title: "Splash screen"
 description: "A .NET MAUI splash screen can be displayed on Android and iOS when an app is launched, while the app's initialization process completes."
-ms.date: 08/19/2021
+ms.date: 12/24/2021
 ---
 
 # Splash screens
@@ -48,10 +48,11 @@ At build time, the splash screen image is resized to the correct size for the ta
 
 On Android, the splash screen is added to your app package as **Resourcs/values/maui_colors.xml** and **Resources/drawable/maui_splash_image.xml**. .NET MAUI apps use the `Maui.SplashTheme` by default, which ensures that a splash screen will be displayed if present. Therefore, you should not specify a different theme in your manifest file or in your `MainActivity` class:
 
-<!-- Templates have implicit usings, so no need to include a using directive for Microsoft.Maui -->
+<!-- Todo: P11 templates have implicit usings, so no need to include a using directive for Microsoft.Maui -->
 ```csharp
 using Android.App;
 using Android.Content.PM;
+using Microsoft.Maui;
 
 namespace MyMauiApp
 {

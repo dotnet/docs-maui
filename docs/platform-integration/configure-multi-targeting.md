@@ -57,16 +57,12 @@ Another standard multi-targeting pattern is to include the platform as a folder 
   <Compile Remove="**\Android\**\*.cs" />
   <None Include="**\Android\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 </ItemGroup>
-```
 
-```xml
 <ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-ios')) != true AND $(TargetFramework.StartsWith('net6.0-maccatalyst')) != true">
   <Compile Remove="**\iOS\**\*.cs" />
   <None Include="**\iOS\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 </ItemGroup>
-```
 
-```xml
 <ItemGroup Condition="$(TargetFramework.Contains('-windows')) != true ">
   <Compile Remove="**\Windows\**\*.cs" />
   <None Include="**\Windows\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
