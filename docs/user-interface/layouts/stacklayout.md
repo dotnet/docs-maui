@@ -1,7 +1,7 @@
 ---
 title: "StackLayout"
 description: "A .NET MAUI StackLayout organizes child views in a one-dimensional stack, either horizontally or vertically."
-ms.date: 12/22/2021
+ms.date: 12/28/2021
 ---
 
 # StackLayout
@@ -20,8 +20,6 @@ The `StackLayout` class defines the following properties:
 - `Spacing`, of type `double`, indicates the amount of space between each child view. The default value of this property is 0.
 
 These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings and styled.
-
-The `StackLayout` class derives from the `Layout` class, which defines a `Children` property of type `IList<IView>`. The `Children` property is the `ContentProperty` of the `Layout` class, and therefore does not need to be explicitly set from XAML.
 
 <!-- > [!TIP]
 > To obtain the best possible layout performance, follow the guidelines at [Optimize layout performance](~/xamarin-forms/deploy-test/performance.md#optimize-layout-performance). -->
@@ -66,21 +64,19 @@ public class VerticalStackLayoutPage : ContentPage
     public VerticalStackLayoutPage()
     {
         Title = "Vertical StackLayout demo";
-        Content = new StackLayout
-        {
-            Margin = new Thickness(20),
-            Children =
-            {
-                new Label { Text = "Primary colors" },
-                new BoxView { Color = Colors.Red, HeightRequest = 40 },
-                new BoxView { Color = Colors.Yellow, HeightRequest = 40 },
-                new BoxView { Color = Colors.Blue, HeightRequest = 40 },
-                new Label { Text = "Secondary colors" },
-                new BoxView { Color = Colors.Green, HeightRequest = 40 },
-                new BoxView { Color = Colors.Orange, HeightRequest = 40 },
-                new BoxView { Color = Colors.Purple, HeightRequest = 40 }
-            }
-        };
+
+        StackLayout stackLayout = new StackLayout { Margin = new Thickness(20) };
+
+        stackLayout.Add(new Label { Text = "Primary colors" });
+        stackLayout.Add(new BoxView { Color = Colors.Red, HeightRequest = 40 });
+        stackLayout.Add(new BoxView { Color = Colors.Yellow, HeightRequest = 40 });
+        stackLayout.Add(new BoxView { Color = Colors.Blue, HeightRequest = 40 });
+        stackLayout.Add(new Label { Text = "Secondary colors" });
+        stackLayout.Add(new BoxView { Color = Colors.Green, HeightRequest = 40 });
+        stackLayout.Add(new BoxView { Color = Colors.Orange, HeightRequest = 40 });
+        stackLayout.Add(new BoxView { Color = Colors.Purple, HeightRequest = 40 });
+
+        Content = stackLayout;
     }
 }
 ```
@@ -128,21 +124,22 @@ public class HorizontalStackLayoutPage : ContentPage
     public HorizontalStackLayoutPage()
     {
         Title = "Horizontal StackLayout demo";
-        Content = new StackLayout
+
+        StackLayout stackLayout = new StackLayout
         {
             Margin = new Thickness(20),
             Orientation = StackOrientation.Horizontal,
-            HorizontalOptions = LayoutOptions.Center,
-            Children =
-            {
-                new BoxView { Color = Colors.Red, WidthRequest = 40 },
-                new BoxView { Color = Colors.Yellow, WidthRequest = 40 },
-                new BoxView { Color = Colors.Blue, WidthRequest = 40 },
-                new BoxView { Color = Colors.Green, WidthRequest = 40 },
-                new BoxView { Color = Colors.Orange, WidthRequest = 40 },
-                new BoxView { Color = Colors.Purple, WidthRequest = 40 }
-            }
+            HorizontalOptions = LayoutOptions.Center
         };
+
+        stackLayout.Add(new BoxView { Color = Colors.Red, WidthRequest = 40 });
+        stackLayout.Add(new BoxView { Color = Colors.Yellow, WidthRequest = 40 });
+        stackLayout.Add(new BoxView { Color = Colors.Blue, WidthRequest = 40 });
+        stackLayout.Add(new BoxView { Color = Colors.Green, WidthRequest = 40 });
+        stackLayout.Add(new BoxView { Color = Colors.Orange, WidthRequest = 40 });
+        stackLayout.Add(new BoxView { Color = Colors.Purple, WidthRequest = 40 });
+
+        Content = stackLayout;
     }
 }
 ```
@@ -191,22 +188,23 @@ public class StackLayoutSpacingPage : ContentPage
     public StackLayoutSpacingPage()
     {
         Title = "StackLayout Spacing demo";
-        Content = new StackLayout
+
+        StackLayout stackLayout = new StackLayout
         {
             Margin = new Thickness(20),
-            Spacing = 6,
-            Children =
-            {
-                new Label { Text = "Primary colors" },
-                new BoxView { Color = Colors.Red, HeightRequest = 40 },
-                new BoxView { Color = Colors.Yellow, HeightRequest = 40 },
-                new BoxView { Color = Colors.Blue, HeightRequest = 40 },
-                new Label { Text = "Secondary colors" },
-                new BoxView { Color = Colors.Green, HeightRequest = 40 },
-                new BoxView { Color = Colors.Orange, HeightRequest = 40 },
-                new BoxView { Color = Colors.Purple, HeightRequest = 40 }
-            }
+            Spacing = 6
         };
+
+        stackLayout.Add(new Label { Text = "Primary colors" });
+        stackLayout.Add(new BoxView { Color = Colors.Red, HeightRequest = 40 });
+        stackLayout.Add(new BoxView { Color = Colors.Yellow, HeightRequest = 40 });
+        stackLayout.Add(new BoxView { Color = Colors.Blue, HeightRequest = 40 });
+        stackLayout.Add(new Label { Text = "Secondary colors" });
+        stackLayout.Add(new BoxView { Color = Colors.Green, HeightRequest = 40 });
+        stackLayout.Add(new BoxView { Color = Colors.Orange, HeightRequest = 40 });
+        stackLayout.Add(new BoxView { Color = Colors.Purple, HeightRequest = 40 });
+
+        Content = stackLayout;
     }
 }
 ```
@@ -261,18 +259,19 @@ public class AlignmentPage : ContentPage
     public AlignmentPage()
     {
         Title = "Alignment demo";
-        Content = new StackLayout
+
+        StackLayout stackLayout = new StackLayout
         {
             Margin = new Thickness(20),
-            Spacing = 6,
-            Children =
-            {
-                new Label { Text = "Start", BackgroundColor = Colors.Gray, HorizontalOptions = LayoutOptions.Start },
-                new Label { Text = "Center", BackgroundColor = Colors.Gray, HorizontalOptions = LayoutOptions.Center },
-                new Label { Text = "End", BackgroundColor = Colors.Gray, HorizontalOptions = LayoutOptions.End },
-                new Label { Text = "Fill", BackgroundColor = Colors.Gray, HorizontalOptions = LayoutOptions.Fill }
-            }
+            Spacing = 6
         };
+
+        stackLayout.Add(new Label { Text = "Start", BackgroundColor = Colors.Gray, HorizontalOptions = LayoutOptions.Start });
+        stackLayout.Add(new Label { Text = "Center", BackgroundColor = Colors.Gray, HorizontalOptions = LayoutOptions.Center });
+        stackLayout.Add(new Label { Text = "End", BackgroundColor = Colors.Gray, HorizontalOptions = LayoutOptions.End });
+        stackLayout.Add(new Label { Text = "Fill", BackgroundColor = Colors.Gray, HorizontalOptions = LayoutOptions.Fill });
+
+        Content = stackLayout;
     }
 }
 ```
@@ -345,60 +344,62 @@ public class CombinedStackLayoutPage : ContentPage
     public CombinedStackLayoutPage()
     {
         Title = "Combined StackLayouts demo";
-        Content = new StackLayout
+
+        Frame frame1 = new Frame
         {
-            Margin = new Thickness(20),
-            Children =
-            {
-                new Label { Text = "Primary colors" },
-                new Frame
-                {
-                    BorderColor = Colors.Black,
-                    Padding = new Thickness(5),
-                    Content = new StackLayout
-                    {
-                        Orientation = StackOrientation.Horizontal,
-                        Spacing = 15,
-                        Children =
-                        {
-                            new BoxView { Color = Colors.Red, WidthRequest = 40 },
-                            new Label { Text = "Red", FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)), VerticalOptions = LayoutOptions.Center }
-                        }
-                    }
-                },
-                new Frame
-                {
-                    BorderColor = Colors.Black,
-                    Padding = new Thickness(5),
-                    Content = new StackLayout
-                    {
-                        Orientation = StackOrientation.Horizontal,
-                        Spacing = 15,
-                        Children =
-                        {
-                            new BoxView { Color = Colors.Yellow, WidthRequest = 40 },
-                            new Label { Text = "Yellow", FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)), VerticalOptions = LayoutOptions.Center }
-                        }
-                    }
-                },
-                new Frame
-                {
-                    BorderColor = Colors.Black,
-                    Padding = new Thickness(5),
-                    Content = new StackLayout
-                    {
-                        Orientation = StackOrientation.Horizontal,
-                        Spacing = 15,
-                        Children =
-                        {
-                            new BoxView { Color = Colors.Blue, WidthRequest = 40 },
-                            new Label { Text = "Blue", FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)), VerticalOptions = LayoutOptions.Center }
-                        }
-                    }
-                },
-                ...
-            }
+            BorderColor = Colors.Black,
+            Padding = new Thickness(5)
         };
+        StackLayout frame1StackLayout = new StackLayout
+        {
+            Orientation = StackOrientation.Horizontal,
+            Spacing = 15
+        };
+        frame1StackLayout.Add(new BoxView { Color = Colors.Red, WidthRequest = 40 });
+        frame1StackLayout.Add(new Label { Text = "Red", FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)), VerticalOptions = LayoutOptions.Center });
+        frame1.Content = frame1StackLayout;
+
+        Frame frame2 = new Frame
+        {
+            BorderColor = Colors.Black,
+            Padding = new Thickness(5)
+        };
+        StackLayout frame2StackLayout = new StackLayout
+        {
+            Orientation = StackOrientation.Horizontal,
+            Spacing = 15
+        };
+        frame2StackLayout.Add(new BoxView { Color = Colors.Yellow, WidthRequest = 40 });
+        frame2StackLayout.Add(new Label { Text = "Yellow", FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)), VerticalOptions = LayoutOptions.Center });
+        frame2.Content = frame2StackLayout;
+
+        Frame frame3 = new Frame
+        {
+            BorderColor = Colors.Black,
+            Padding = new Thickness(5)
+        };
+        StackLayout frame3StackLayout = new StackLayout
+        {
+            Orientation = StackOrientation.Horizontal,
+            Spacing = 15
+        };
+        frame3StackLayout.Add(new BoxView { Color = Colors.Blue, WidthRequest = 40 });
+        frame3StackLayout.Add(new Label { Text = "Blue", FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)), VerticalOptions = LayoutOptions.Center });
+        frame3.Content = frame3StackLayout;
+
+        ...
+
+        StackLayout stackLayout = new StackLayout { Margin = new Thickness(20) };
+        stackLayout.Add(new Label { Text = "Primary colors" });
+        stackLayout.Add(frame1);
+        stackLayout.Add(frame2);
+        stackLayout.Add(frame3);
+        stackLayout.Add(new Label { Text = "Secondary colors" });
+        stackLayout.Add(frame4);
+        stackLayout.Add(frame5);
+        stackLayout.Add(frame6);
+
+        Content = stackLayout;
     }
 }
 ```
