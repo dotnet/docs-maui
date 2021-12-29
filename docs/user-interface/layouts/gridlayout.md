@@ -1,7 +1,7 @@
 ---
 title: "GridLayout"
 description: "The .NET MAUI GridLayout, or Grid, is a layout that organizes its children into rows and columns of cells."
-ms.date: 12/22/2021
+ms.date: 12/28/2021
 ---
 
 # GridLayout
@@ -28,8 +28,6 @@ The `GridLayout` class defines the following properties:
 - `RowSpan`, of type `int`, which is an attached property that indicates the total number of rows that a view spans within a parent `GridLayout`. The default value of this property is 1. A validation callback ensures that when the property is set, its value is greater than or equal to 1.
 
 These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings and styled.
-
-The `GridLayout` class derives from the `Layout` class, which defines a `Children` property of type `IList<IView>`. The `Children` property is the `ContentProperty` of the `Layout` class, and therefore does not need to be explicitly set from XAML.
 
 <!-- > [!TIP]
 > To obtain the best possible layout performance, follow the guidelines at [Optimize layout performance](~/xamarin-forms/deploy-test/performance.md#optimize-layout-performance). -->
@@ -185,12 +183,12 @@ public class BasicGridPage : ContentPage
 
         // Row 0
         // The BoxView and Label are in row 0 and column 0, and so only need to be added to the
-        // Grid.Children collection to obtain the default row and column settings.
-        grid.Children.Add(new BoxView
+        // Grid to obtain the default row and column settings.
+        grid.Add(new BoxView
         {
             Color = Color.Green
         });
-        grid.Children.Add(new Label
+        grid.Add(new Label
         {
             Text = "Row 0, Column 0",
             HorizontalOptions = LayoutOptions.Center,
@@ -199,11 +197,11 @@ public class BasicGridPage : ContentPage
 
         // This BoxView and Label are in row 0 and column 1, which are specified as arguments
         // to the Add method.
-        grid.Children.Add(new BoxView
+        grid.Add(new BoxView
         {
             Color = Color.Blue
         }, 1, 0);
-        grid.Children.Add(new Label
+        grid.Add(new Label
         {
             Text = "Row 0, Column 1",
             HorizontalOptions = LayoutOptions.Center,
@@ -213,11 +211,11 @@ public class BasicGridPage : ContentPage
         // Row 1
         // This BoxView and Label are in row 1 and column 0, which are specified as arguments
         // to the Add method overload.
-        grid.Children.Add(new BoxView
+        grid.Add(new BoxView
         {
             Color = Color.Teal
         }, 0, 1);
-        grid.Children.Add(new Label
+        grid.Add(new Label
         {
             Text = "Row 1, Column 0",
             HorizontalOptions = LayoutOptions.Center,
@@ -226,11 +224,11 @@ public class BasicGridPage : ContentPage
 
         // This BoxView and Label are in row 1 and column 1, which are specified as arguments
         // to the Add method overload.
-        grid.Children.Add(new BoxView
+        grid.Add(new BoxView
         {
             Color = Color.Purple
         }, 1, 1);
-        grid.Children.Add(new Label
+        grid.Add(new Label
         {
             Text = "Row1, Column 1",
             HorizontalOptions = LayoutOptions.Center,
@@ -252,8 +250,8 @@ public class BasicGridPage : ContentPage
         Grid.SetRow(label, 2);
         Grid.SetColumnSpan(label, 2);
 
-        grid.Children.Add(boxView);
-        grid.Children.Add(label);
+        grid.Add(boxView);
+        grid.Add(label);
 
         Title = "Basic Grid demo";
         Content = grid;
@@ -441,33 +439,33 @@ public class GridAlignmentPage : ContentPage
         };
 
         // Row 0
-        grid.Children.Add(new BoxView
+        grid.Add(new BoxView
         {
             Color = Color.AliceBlue
         });
-        grid.Children.Add(new Label
+        grid.Add(new Label
         {
             Text = "Upper left",
             HorizontalOptions = LayoutOptions.Start,
             VerticalOptions = LayoutOptions.Start
         });
 
-        grid.Children.Add(new BoxView
+        grid.Add(new BoxView
         {
             Color = Color.LightSkyBlue
         }, 1, 0);
-        grid.Children.Add(new Label
+        grid.Add(new Label
         {
             Text = "Upper center",
             HorizontalOptions = LayoutOptions.Center,
             VerticalOptions = LayoutOptions.Start
         }, 1, 0);
 
-        grid.Children.Add(new BoxView
+        grid.Add(new BoxView
         {
             Color = Color.CadetBlue
         }, 2, 0);
-        grid.Children.Add(new Label
+        grid.Add(new Label
         {
             Text = "Upper right",
             HorizontalOptions = LayoutOptions.End,
@@ -475,33 +473,33 @@ public class GridAlignmentPage : ContentPage
         }, 2, 0);
 
         // Row 1
-        grid.Children.Add(new BoxView
+        grid.Add(new BoxView
         {
             Color = Color.CornflowerBlue
         }, 0, 1);
-        grid.Children.Add(new Label
+        grid.Add(new Label
         {
             Text = "Center left",
             HorizontalOptions = LayoutOptions.Start,
             VerticalOptions = LayoutOptions.Center
         }, 0, 1);
 
-        grid.Children.Add(new BoxView
+        grid.Add(new BoxView
         {
             Color = Color.DodgerBlue
         }, 1, 1);
-        grid.Children.Add(new Label
+        grid.Add(new Label
         {
             Text = "Center center",
             HorizontalOptions = LayoutOptions.Center,
             VerticalOptions = LayoutOptions.Center
         }, 1, 1);
 
-        grid.Children.Add(new BoxView
+        grid.Add(new BoxView
         {
             Color = Color.DarkSlateBlue
         }, 2, 1);
-        grid.Children.Add(new Label
+        grid.Add(new Label
         {
             Text = "Center right",
             HorizontalOptions = LayoutOptions.End,
@@ -509,33 +507,33 @@ public class GridAlignmentPage : ContentPage
         }, 2, 1);
 
         // Row 2
-        grid.Children.Add(new BoxView
+        grid.Add(new BoxView
         {
             Color = Color.SteelBlue
         }, 0, 2);
-        grid.Children.Add(new Label
+        grid.Add(new Label
         {
             Text = "Lower left",
             HorizontalOptions = LayoutOptions.Start,
             VerticalOptions = LayoutOptions.End
         }, 0, 2);
 
-        grid.Children.Add(new BoxView
+        grid.Add(new BoxView
         {
             Color = Color.LightBlue
         }, 1, 2);
-        grid.Children.Add(new Label
+        grid.Add(new Label
         {
             Text = "Lower center",
             HorizontalOptions = LayoutOptions.Center,
             VerticalOptions = LayoutOptions.End
         }, 1, 2);
 
-        grid.Children.Add(new BoxView
+        grid.Add(new BoxView
         {
             Color = Color.BlueViolet
         }, 2, 2);
-        grid.Children.Add(new Label
+        grid.Add(new Label
         {
             Text = "Lower right",
             HorizontalOptions = LayoutOptions.End,
@@ -659,7 +657,7 @@ public class ColorSlidersGridPage : ContentPage
         };
 
         boxView = new BoxView { Color = Color.Black };
-        rootGrid.Children.Add(boxView);
+        rootGrid.Add(boxView);
 
         // Child page layout
         Grid childGrid = new Grid
@@ -680,35 +678,35 @@ public class ColorSlidersGridPage : ContentPage
 
         redSlider = new Slider();
         redSlider.ValueChanged += OnSliderValueChanged;
-        childGrid.Children.Add(redSlider);
+        childGrid.Add(redSlider);
 
         Label redLabel = new Label();
         redLabel.SetBinding(Label.TextProperty, new Binding("Value", converter: doubleToInt, converterParameter: "255", stringFormat: "Red = {0}", source: redSlider));
         Grid.SetRow(redLabel, 1);
-        childGrid.Children.Add(redLabel);
+        childGrid.Add(redLabel);
 
         greenSlider = new Slider();
         greenSlider.ValueChanged += OnSliderValueChanged;
         Grid.SetRow(greenSlider, 2);
-        childGrid.Children.Add(greenSlider);
+        childGrid.Add(greenSlider);
 
         Label greenLabel = new Label();
         greenLabel.SetBinding(Label.TextProperty, new Binding("Value", converter: doubleToInt, converterParameter: "255", stringFormat: "Green = {0}", source: greenSlider));
         Grid.SetRow(greenLabel, 3);
-        childGrid.Children.Add(greenLabel);
+        childGrid.Add(greenLabel);
 
         blueSlider = new Slider();
         blueSlider.ValueChanged += OnSliderValueChanged;
         Grid.SetRow(blueSlider, 4);
-        childGrid.Children.Add(blueSlider);
+        childGrid.Add(blueSlider);
 
         Label blueLabel = new Label();
         blueLabel.SetBinding(Label.TextProperty, new Binding("Value", converter: doubleToInt, converterParameter: "255", stringFormat: "Blue = {0}", source: blueSlider));
         Grid.SetRow(blueLabel, 5);
-        childGrid.Children.Add(blueLabel);
+        childGrid.Add(blueLabel);
 
         // Place the child Grid in the root Grid
-        rootGrid.Children.Add(childGrid, 0, 1);
+        rootGrid.Add(childGrid, 0, 1);
 
         Title = "Nested Grids demo";
         Content = rootGrid;
