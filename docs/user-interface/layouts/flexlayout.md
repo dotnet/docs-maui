@@ -33,6 +33,8 @@ These properties are backed by `BindableProperty` objects, which means that the 
 > [!IMPORTANT]
 > When items in a `FlexLayout` are arranged in a column, the `FlexLayout` has a vertical *main axis* and a horizontal *cross axis*. When items in a `FlexLayout` are arranged in a row, the `FlexLayout` has a horizontal *main axis* and a vertical *cross axis*.
 
+<!-- `FlexLayout` and its children can be partially styled using Cascading Style Sheets (CSS). For more information, see [Styling apps using Cascading Style Sheets (CSS)](). -->
+
 ## Orientation and alignment
 
 The `Direction`, `Wrap`, `JustifyContent`, `AlignItems`, `AlignContent`, and `Position` bindable properties can be set on a `FlexLayout` to control orientation and alignment of all children.
@@ -150,7 +152,7 @@ Usually, children are arranged in the order in which they are added to the `Flex
 
 ### Basis
 
-The `Basis` property, of type `FlexBasis`, defines the amount of space that's allocated to a child on the main axis. The value specified by this property is the size along the main axis of the parent `FlexLayout`. Therefore, this property indicates the width of a child when children are arranged in rows, or the height of a child when children are arranged in columns.
+The `Basis` property, of type `FlexBasis`, defines the amount of space that's allocated to a child on the main axis. The value specified by this property is the size along the main axis of the parent `FlexLayout`. Therefore, this property indicates the width of a child when children are arranged in rows, or the height of a child when children are arranged in columns. This property is called *basis* because it specifies a size that is the basis of all subsequent layout.
 
 The `FlexBasis` type is a structure that enables size to be specified in device-independent units, or as a percentage of the size of the `FlexLayout`. The default value of the `Basis` property is `Auto`, which means that the child's requested width or height is used.
 
@@ -215,7 +217,8 @@ A `FlexLayout` can substitute for a `StackLayout`:
                 JustifyContent="SpaceEvenly">        
         <Label Text="FlexLayout in Action"
                FontSize="Large" />
-        <Image Source="seatedmonkey.jpg" />
+        <Image Source="dotnet_bot_branded.png"
+               HeightRequest="300" />
         <Button Text="Do-Nothing Button" />
         <Label Text="Another Label" />
     </FlexLayout>
@@ -259,14 +262,14 @@ In addition, the `FlexLayout` is a child of a `ScrollView`. Therefore, if there 
 
 ### Page layout
 
-There is a standard layout in web design called the [_holy grail_](https://en.wikipedia.org/wiki/Holy_grail_(web_design)) because it's a layout format that is very desirable, but often hard to realize with perfection. The layout consists of a header at the top of the page and a footer at the bottom, both extending to the full width of the page. Occupying the center of the page is the main content, but often with a columnar menu to the left of the content and supplementary information (sometimes called an _aside_ area) at the right. [Section 5.4.1 of the CSS Flexible Box Layout specification](https://www.w3.org/TR/css-flexbox-1/#order-accessibility) describes how the holy grail layout can be realized with a flex box.
+There is a standard layout in web design called the [*holy grail*](https://en.wikipedia.org/wiki/Holy_grail_(web_design)) because it's a layout format that is very desirable, but often hard to realize with perfection. The layout consists of a header at the top of the page and a footer at the bottom, both extending to the full width of the page. Occupying the center of the page is the main content, but often with a columnar menu to the left of the content and supplementary information (sometimes called an *aside* area) at the right. This layout can be realized with a `FlexLayout`.
 
-The **Holy Grail Layout** page of the **[FlexLayoutDemos](/samples/xamarin/xamarin-forms-samples/userinterface-flexlayoutdemos)** sample shows a simple implementation of this layout using one `FlexLayout` nested in another. Because this page is designed for a phone in portrait mode, the areas to the left and right of the content area are only 50 pixels wide:
+The following example shows an implementation of this layout using a `FlexLayout` nested in another:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FlexLayoutDemos.HolyGrailLayoutPage"
+             x:Class="FlexLayoutDemos.Views.HolyGrailLayoutPage"
              Title="Holy Grail Layout">
 
     <FlexLayout Direction="Column">
@@ -308,267 +311,11 @@ The **Holy Grail Layout** page of the **[FlexLayoutDemos](/samples/xamarin/xamar
 </ContentPage>
 ```
 
-Here it is running:
+The navigation and aside areas are rendered with a `BoxView` on the left and right. The first `FlexLayout` has a vertical main axis and contains three children arranged in a column. These are the header, the body of the page, and the footer. The nested `FlexLayout` has a horizontal main axis with three children arranged in a row:
 
-[![The Holy Grail Layout Page.](flex-layout-images/HolyGrailLayout.png "The Holy Grail Layout Page."](flex-layout-images/HolyGrailLayout-Large.png#lightbox)]
+:::image type="content" source="media/flexlayout/holy-grail.png" alt-text="Holy grail layout with the .NET MAUI FlexLayout.":::
 
-The navigation and aside areas are rendered with a `BoxView` on the left and right.
+In this example, the `Order` property is set on the first `BoxView` to a value less than its siblings to cause it to appear as the first item in the row. The `Basis` property is set on both `BoxView` objects to give them a width of 50 device-independent units. The `Grow` property is set on the nested `FlexLayout` to indicate that this `FlexLayout` should occupy all of the unused vertical space within the outer `FlexLayout`. In addition, the `Grow` property is set on the `Label` representing the content, to indicate that this content is to occupy all of the unused horizontal space within the nested `FlexLayout`.
 
-The first `FlexLayout` in the XAML file has a vertical main axis and contains three children arranged in a column. These are the header, the body of the page, and the footer. The nested `FlexLayout` has a horizontal main axis with three children arranged in a row.
-
-Three attached bindable properties are demonstrated in this program:
-
-- The `Order` attached bindable property is set on the first `BoxView`. This property is an integer with a default value of 0. You can use this property to change the layout order. Generally developers prefer the content of the page to appear in markup prior to the navigation items and aside items. Setting the `Order` property on the first `BoxView` to a value less than its other siblings causes it to appear as the first item in the row. Similarly, you can ensure that an item appears last by setting the `Order` property to a value greater than its siblings.
-
-- The `Basis` attached bindable property is set on the two `BoxView` items to give them a width of 50 pixels. This property is of type `FlexBasis`, a structure that defines a static property of type `FlexBasis` named `Auto`, which is the default. You can use `Basis` to  specify a pixel size or a percentage that indicates how much space the item occupies on the main axis. It is called a _basis_ because it specifies an item size that is the basis of all subsequent layout.
-
-- The `Grow` property is set on the nested `Layout` and on the `Label` child representing the content. This property is of type `float` and has a default value of 0. When set to a positive value, all the remaining space along the main axis is allocated to that item and to siblings with positive values of `Grow`. The space is allocated proportionally to the values, somewhat like the star specification in a `Grid`.
-
-    The first `Grow` attached property is set on the nested `FlexLayout`, indicating that this `FlexLayout` is to occupy all the unused vertical space within the outer `FlexLayout`. The second `Grow` attached property is set on the `Label` representing the content, indicating that this content is to occupy all the unused horizontal space within the inner `FlexLayout`.
-
-    There is also a similar `Shrink` attached bindable property that you can use when the size of children exceeds the size of the `FlexLayout` but wrapping is not desired.
-
-### Catalog items with FlexLayout
-
-The **Catalog Items** page in the **[FlexLayoutDemos](/samples/xamarin/xamarin-forms-samples/userinterface-flexlayoutdemos)** sample is similar to [Example 1 in Section 1.1 of the CSS Flex Layout Box specification](https://www.w3.org//TR/css-flexbox-1/#overview) except that it displays a horizontally scrollable series of pictures and descriptions of three monkeys:
-
-[![The Catalog Items Page.](flex-layout-images/CatalogItems.png "The Catalog Items Page."](flex-layout-images/CatalogItems-Large.png#lightbox)]
-
-Each of the three monkeys is a `FlexLayout` contained in a `Frame` that is given an explicit height and width, and which is also a child of a larger `FlexLayout`. In this XAML file, most of the properties of the `FlexLayout` children are specified in styles, all but one of which is an implicit style:
-
-```xaml
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:FlexLayoutDemos"
-             x:Class="FlexLayoutDemos.CatalogItemsPage"
-             Title="Catalog Items">
-    <ContentPage.Resources>
-        <Style TargetType="Frame">
-            <Setter Property="BackgroundColor" Value="LightYellow" />
-            <Setter Property="BorderColor" Value="Blue" />
-            <Setter Property="Margin" Value="10" />
-            <Setter Property="CornerRadius" Value="15" />
-        </Style>
-
-        <Style TargetType="Label">
-            <Setter Property="Margin" Value="0, 4" />
-        </Style>
-
-        <Style x:Key="headerLabel" TargetType="Label">
-            <Setter Property="Margin" Value="0, 8" />
-            <Setter Property="FontSize" Value="Large" />
-            <Setter Property="TextColor" Value="Blue" />
-        </Style>
-
-        <Style TargetType="Image">
-            <Setter Property="FlexLayout.Order" Value="-1" />
-            <Setter Property="FlexLayout.AlignSelf" Value="Center" />
-        </Style>
-
-        <Style TargetType="Button">
-            <Setter Property="Text" Value="LEARN MORE" />
-            <Setter Property="FontSize" Value="Large" />
-            <Setter Property="TextColor" Value="White" />
-            <Setter Property="BackgroundColor" Value="Green" />
-            <Setter Property="BorderRadius" Value="20" />
-        </Style>
-    </ContentPage.Resources>
-
-    <ScrollView Orientation="Both">
-        <FlexLayout>
-            <Frame WidthRequest="300"
-                   HeightRequest="480">
-
-                <FlexLayout Direction="Column">
-                    <Label Text="Seated Monkey"
-                           Style="{StaticResource headerLabel}" />
-                    <Label Text="This monkey is laid back and relaxed, and likes to watch the world go by." />
-                    <Label Text="  &#x2022; Doesn't make a lot of noise" />
-                    <Label Text="  &#x2022; Often smiles mysteriously" />
-                    <Label Text="  &#x2022; Sleeps sitting up" />
-                    <Image Source="{local:ImageResource FlexLayoutDemos.Images.SeatedMonkey.jpg}"
-                           WidthRequest="180"
-                           HeightRequest="180" />
-                    <Label FlexLayout.Grow="1" />
-                    <Button />
-                </FlexLayout>
-            </Frame>
-
-            <Frame WidthRequest="300"
-                   HeightRequest="480">
-
-                <FlexLayout Direction="Column">
-                    <Label Text="Banana Monkey"
-                           Style="{StaticResource headerLabel}" />
-                    <Label Text="Watch this monkey eat a giant banana." />
-                    <Label Text="  &#x2022; More fun than a barrel of monkeys" />
-                    <Label Text="  &#x2022; Banana not included" />
-                    <Image Source="{local:ImageResource FlexLayoutDemos.Images.Banana.jpg}"
-                           WidthRequest="240"
-                           HeightRequest="180" />
-                    <Label FlexLayout.Grow="1" />
-                    <Button />
-                </FlexLayout>
-            </Frame>
-
-            <Frame WidthRequest="300"
-                   HeightRequest="480">
-
-                <FlexLayout Direction="Column">
-                    <Label Text="Face-Palm Monkey"
-                           Style="{StaticResource headerLabel}" />
-                    <Label Text="This monkey reacts appropriately to ridiculous assertions and actions." />
-                    <Label Text="  &#x2022; Cynical but not unfriendly" />
-                    <Label Text="  &#x2022; Seven varieties of grimaces" />
-                    <Label Text="  &#x2022; Doesn't laugh at your jokes" />
-                    <Image Source="{local:ImageResource FlexLayoutDemos.Images.FacePalm.jpg}"
-                           WidthRequest="180"
-                           HeightRequest="180" />
-                    <Label FlexLayout.Grow="1" />
-                    <Button />
-                </FlexLayout>
-            </Frame>
-        </FlexLayout>
-    </ScrollView>
-</ContentPage>
-```
-
-The implicit style for the `Image` includes settings of two attached bindable properties of `Flexlayout`:
-
-```xaml
-<Style TargetType="Image">
-    <Setter Property="FlexLayout.Order" Value="-1" />
-    <Setter Property="FlexLayout.AlignSelf" Value="Center" />
-</Style>
-```
-
-The `Order` setting of &ndash;1 causes the `Image` element to be displayed first in each of the nested `FlexLayout` views regardless of its position within the children collection. The `AlignSelf` property of `Center` causes the `Image` to be centered within the `FlexLayout`. This overrides the setting of the `AlignItems` property, which has a default value of `Stretch`, meaning that the `Label` and `Button` children are stretched to the full width of the `FlexLayout`.
-
-Within each of the three `FlexLayout` views, a blank `Label` precedes the `Button`, but it has a `Grow` setting of 1. This means that all the extra vertical space is allocated to this blank `Label`, which effectively pushes the `Button` to the bottom.
-
-## CSS styling with FlexLayout
-
-You can use the [CSS styling](~/xamarin-forms/user-interface/styles/css/index.md) feature introduced with .NET MAUI 3.0 in connection with `FlexLayout`. The **CSS Catalog Items** page of the **[FlexLayoutDemos](/samples/xamarin/xamarin-forms-samples/userinterface-flexlayoutdemos)** sample duplicates the layout of the **Catalog Items** page, but with a CSS style sheet for many of the styles:
-
-[![The CSS Catalog Items Page.](flex-layout-images/CssCatalogItems.png "The CSS Catalog Items Page."](flex-layout-images/CssCatalogItems-Large.png#lightbox)]
-
-The original **CatalogItemsPage.xaml** file has five `Style` definitions in its `Resources` section with 15 `Setter` objects. In the **CssCatalogItemsPage.xaml** file, that has been reduced to two `Style` definitions with just four `Setter` objects. These styles supplement the CSS style sheet for properties that the .NET MAUI CSS styling feature currently doesn't support:
-
-```xaml
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:FlexLayoutDemos"
-             x:Class="FlexLayoutDemos.CssCatalogItemsPage"
-             Title="CSS Catalog Items">
-    <ContentPage.Resources>
-        <StyleSheet Source="CatalogItemsStyles.css" />
-
-        <Style TargetType="Frame">
-            <Setter Property="BorderColor" Value="Blue" />
-            <Setter Property="CornerRadius" Value="15" />
-        </Style>
-
-        <Style TargetType="Button">
-            <Setter Property="Text" Value="LEARN MORE" />
-            <Setter Property="BorderRadius" Value="20" />
-        </Style>
-    </ContentPage.Resources>
-
-    <ScrollView Orientation="Both">
-        <FlexLayout>
-            <Frame>
-                <FlexLayout Direction="Column">
-                    <Label Text="Seated Monkey" StyleClass="header" />
-                    <Label Text="This monkey is laid back and relaxed, and likes to watch the world go by." />
-                    <Label Text="  &#x2022; Doesn't make a lot of noise" />
-                    <Label Text="  &#x2022; Often smiles mysteriously" />
-                    <Label Text="  &#x2022; Sleeps sitting up" />
-                    <Image Source="{local:ImageResource FlexLayoutDemos.Images.SeatedMonkey.jpg}" />
-                    <Label StyleClass="empty" />
-                    <Button />
-                </FlexLayout>
-            </Frame>
-
-            <Frame>
-                <FlexLayout Direction="Column">
-                    <Label Text="Banana Monkey" StyleClass="header" />
-                    <Label Text="Watch this monkey eat a giant banana." />
-                    <Label Text="  &#x2022; More fun than a barrel of monkeys" />
-                    <Label Text="  &#x2022; Banana not included" />
-                    <Image Source="{local:ImageResource FlexLayoutDemos.Images.Banana.jpg}" />
-                    <Label StyleClass="empty" />
-                    <Button />
-                </FlexLayout>
-            </Frame>
-
-            <Frame>
-                <FlexLayout Direction="Column">
-                    <Label Text="Face-Palm Monkey" StyleClass="header" />
-                    <Label Text="This monkey reacts appropriately to ridiculous assertions and actions." />
-                    <Label Text="  &#x2022; Cynical but not unfriendly" />
-                    <Label Text="  &#x2022; Seven varieties of grimaces" />
-                    <Label Text="  &#x2022; Doesn't laugh at your jokes" />
-                    <Image Source="{local:ImageResource FlexLayoutDemos.Images.FacePalm.jpg}" />
-                    <Label StyleClass="empty" />
-                    <Button />
-                </FlexLayout>
-            </Frame>
-        </FlexLayout>
-    </ScrollView>
-</ContentPage>
-```
-
-The CSS style sheet is referenced in the first line of the `Resources` section:
-
-```xaml
-<StyleSheet Source="CatalogItemsStyles.css" />
-```
-
-Notice also that two elements in each of the three items include `StyleClass` settings:
-
-```xaml
-<Label Text="Seated Monkey" StyleClass="header" />
-···
-<Label StyleClass="empty" />
-```
-
-These refer to selectors in the **CatalogItemsStyles.css** style sheet:
-
-```css
-frame {
-    width: 300;
-    height: 480;
-    background-color: lightyellow;
-    margin: 10;
-}
-
-label {
-    margin: 4 0;
-}
-
-label.header {
-    margin: 8 0;
-    font-size: large;
-    color: blue;
-}
-
-label.empty {
-    flex-grow: 1;
-}
-
-image {
-    height: 180;
-    order: -1;
-    align-self: center;
-}
-
-button {
-    font-size: large;
-    color: white;
-    background-color: green;
-}
-```
-
-Several `FlexLayout` attached bindable properties are referenced here. In the `label.empty` selector, you'll see the `flex-grow` attribute, which styles an empty `Label` to provide some blank space above the `Button`. The `image` selector contains an `order` attribute and an `align-self` attribute, both of which correspond to `FlexLayout` attached bindable properties.
-
-You've seen that you can set properties directly on the `FlexLayout` and you can set attached bindable properties on the children of a `FlexLayout`. Or, you can set these properties indirectly using traditional XAML-based styles or CSS styles. What's important is to know and understand these properties. These properties are what makes the `FlexLayout` truly flexible.
+> [!NOTE]
+> There's also a `Shrink` property that you can use when the size of children exceeds the size of the `FlexLayout` but wrapping is not desired.
