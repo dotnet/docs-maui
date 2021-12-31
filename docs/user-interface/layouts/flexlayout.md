@@ -82,7 +82,7 @@ The `AlignItems` property, of type `FlexAlignItems`, indicates how the layout en
 
 This is one of two properties that indicates how children are aligned on the cross axis. Within each row, children are stretched or aligned on the start, center, or end of each item.
 
-For any individual item, the `AlignItems` setting can be overridden with the `AlignSelf` attached bindable property.
+For any individual child, the `AlignItems` setting can be overridden with the `AlignSelf` attached bindable property.
 
 ### AlignContent
 
@@ -109,130 +109,94 @@ When the `Position` property is set to `Absolute`, the `Left`, `Right`, `Top`, a
 
 -->
 
-<!--
-
-https://github.com/dotnet/maui/blob/main/src/Core/src/Layouts/Flex.cs
-https://github.com/dotnet/maui/blob/main/src/Core/src/Layouts/FlexEnums.cs
-https://github.com/dotnet/maui/blob/main/src/Controls/src/Core/Layout/FlexLayout.cs
--->
-
 ## Child alignment and sizing
 
-The `AlignSelf`, `Order`, `Basis`, `Grow`, and `Shrink` attached bindable properties should be set on children of the `FlexLayout` to control child orientation, alignment, and sizing.
+The `AlignSelf`, `Order`, `Basis`, `Grow`, and `Shrink` attached bindable properties can be set on children of the `FlexLayout` to control child orientation, alignment, and sizing.
 
 ### AlignSelf
 
-The `AlignSelf` attached bindable property is of type `FlexAlignSelf`, an enumeration with five members:
+The `AlignSelf` property, of type `FlexAlignSelf`, indicates how the layout engine will distribute space between and around children for a specific child along the cross axis. The `FlexAlignSelf` enumeration defines the following members:
 
-- `Auto`, the default
-- `Stretch`
-- `Center`
-- `Start` (or "flex-start" in XAML)
-- `End` (or "flex-end" in XAML)
+- `Auto`, which indicates that a child should be aligned according to the alignment value of its parent. This is the default value of the `AlignSelf` property.
+- `Stretch`, which indicates that a child should be stretched out.
+- `Center`, which indicates that a child should be aligned around the center.
+- `Start` (or "flex-start" in XAML), which indicates that a child should be aligned at the start.
+- `End` (or "flex-end" in XAML), which indicates that a child should be aligned at the end.
 
-For any individual child of the `FlexLayout`, this property setting overrides the [`AlignItems`](#the-alignitems-property) property set on the `FlexLayout` itself. The default setting of `Auto` means to use the `AlignItems` setting.
+For any individual child of the `FlexLayout`, this property overrides the `AlignItems` property set on the `FlexLayout`. The default setting of `Auto` means to use the `AlignItems` setting.
 
-For a `Label` element named `label` (or example), you can set the `AlignSelf` property in code like this:
-
-```csharp
-FlexLayout.SetAlignSelf(label, FlexAlignSelf.Center);
-```
-
-Notice that there is no reference to the `FlexLayout` parent of the `Label`. In XAML, you set the property like this:
+In XAML, this property is set on a child without any reference to its `FlexLayout` parent:
 
 ```xaml
-<Label ... FlexLayout.AlignSelf="Center" ... />
+<Label FlexLayout.AlignSelf="Center"
+       ... />
+```
+
+The equivalent C# code is:
+
+```csharp
+Label label = new Label();
+FlexLayout.SetAlignSelf(label, FlexAlignSelf.Center);
 ```
 
 ### Order
 
-The `Order` property is of type `int`. The default value is 0.
+The `Order` property, of type `int`, enables you to change the order that children of the `FlexLayout` are arranged. The default value of this property is 0.
 
-The `Order` property allows you to change the order that the children of the `FlexLayout` are arranged. Usually, the children of a `FlexLayout` are arranged is the same order that they appear in the `Children` collection. You can override this order by setting the `Order` attached bindable property to a non-zero integer value on one or more children. The `FlexLayout` then arranges its children based on the setting of the `Order` property on each child, but children with the same `Order` setting are arranged in the order that they appear in the `Children` collection.
+Usually, children are arranged in the order in which they are added to the `FlexLayout`. However, this order can be overridden by setting this property to a non-zero integer value on one or more children. The `FlexLayout` then arranges its children based on their `Order` property values. Children with the same `Order` property values are arranged in the order in which they are added to the `FlexLayout`.
 
 ### Basis
 
-The `Basis` attached bindable property indicates the amount of space that is allocated to a child of the `FlexLayout` on the main axis. The size specified by the `Basis` property is the size along the main axis of the parent `FlexLayout`. Therefore, `Basis` indicates the width of a child when the children are arranged in rows, or the height when the children are arranged in columns.
+The `Basis` property, of type `FlexBasis`, defines the amount of space that's allocated to a child on the main axis. The value specified by this property is the size along the main axis of the parent `FlexLayout`. Therefore, this property indicates the width of a child when children are arranged in rows, or the height of a child when children are arranged in columns.
 
-The `Basis` property is of type `FlexBasis`, a structure. The size can be specified in either device-independent units or as a percentage of the size of the `FlexLayout`. The default value of the `Basis` property is the static property `FlexBasis.Auto`, which means that the child's requested width or height is used.
+The `FlexBasis` type is a structure that enables size to be specified in device-independent units, or as a percentage of the size of the `FlexLayout`. The default value of the `Basis` property is `Auto`, which means that the child's requested width or height is used.
 
-In code, you can set the `Basis` property for a `Label` named `label` to 40 device-independent units like this:
+In XAML, you can use a number for a size in device-independent units:
 
-```csharp
-FlexLayout.SetBasis(label, new FlexBasis(40, false));
+```xaml
+<Label FlexLayout.Basis="40"
+       ... />
 ```
 
-The second argument to the `FlexBasis` constructor is named `isRelative` and indicates whether the size is relative (`true` or absolute (`false`. The argument has a default value of `false`, so you can also use the following code:
-
-```csharp
-FlexLayout.SetBasis(label, new FlexBasis(40));
-```
-
-An implicit conversion from `float` to `FlexBasis` is defined, so you can simplify it even further:
+The equivalent C# code is:
 
 ```csharp
 FlexLayout.SetBasis(label, 40);
 ```
 
-You can set the size to 25% of the `FlexLayout` parent like this:
+In XAML, a percentage can be specified as follows:
+
+```xaml
+<Label FlexLayout.Basis="25%"
+       ... />
+```
+
+The equivalent C# code is:
 
 ```csharp
 FlexLayout.SetBasis(label, new FlexBasis(0.25f, true));
 ```
 
-This fractional value must be in the range of 0 to 1.
-
-In XAML, you can use a number for a size in device-independent units:
-
-```xaml
-<Label ... FlexLayout.Basis="40" ... />
-```
-
-Or you can specify a percentage in the range of 0% to 100%:
-
-```xaml
-<Label ... FlexLayout.Basis="25%" ... />
-```
-
-The **Basis Experiment** page of the **[FlexLayoutDemos](/samples/xamarin/xamarin-forms-samples/userinterface-flexlayoutdemos)** sample allows you to experiment with the `Basis` property. The page displays a wrapped column of five `Label` elements with alternating background and foreground colors. Two `Slider` elements let you specify `Basis` values for the second and fourth `Label`:
-
-[![The Basis Experiment Page.](flex-layout-images/BasisExperiment.png "The Basis Experiment Page."](flex-layout-images/BasisExperiment-Large.png#lightbox)
-
-The iOS screenshot at the left shows the two `Label` elements being given heights in device-independent units. The Android screen shows them being given heights that are a fraction of the total height of the `FlexLayout`. If the `Basis` is set at 100%, then the child is the height of the `FlexLayout`, and will wrap to the next column and occupy the entire height of that column, as the UWP screenshot demonstrates: It appears as if the five children are arranged in a row, but they're actually arranged in five columns.
+The first argument to the `FlexBasis` constructor is a fractional `float` value that must be in the range of 0 to 1. The second argument indicates that the size is relative, rather than absolute.
 
 ### Grow
 
-The `Grow` attached bindable property is of type `int`. The default value is 0, and the value must be greater than or equal to 0.
+The `Grow` property, of type `float`, specifies the amount of available space the child should use on the main axis. The default value of this property is 0.0, and its value must be greater than or equal to 0.
 
-The `Grow` property plays a role when the `Wrap` property is set to `NoWrap` and the row of children has a total width less than the width of the `FlexLayout`, or the column of children has a shorter height than the `FlexLayout`. The `Grow` property indicates how to apportion the leftover space among the children.
-
-In the **Grow Experiment** page, five `Label` elements of alternating colors are arranged in a column, and two `Slider` elements allow you to adjust the `Grow` property of the second and fourth `Label`. The iOS screenshot at the far left shows the default `Grow` properties of 0:
-
-[![The Grow Experiment Page.](flex-layout-images/GrowExperiment.png "The Grow Experiment Page."](flex-layout-images/GrowExperiment-Large.png#lightbox)
-
-If any one child is given a positive `Grow` value, then that child takes up all the remaining space, as the Android screenshot demonstrates. This space can also be allocated among two or more children. In the UWP screenshot, the `Grow` property of the second `Label` is set to 0.5, while the `Grow` property of the fourth `Label` is 1.5, which gives the fourth `Label` three times as much of the leftover space as the second `Label`.
-
-How the child view uses that space depends on the particular type of child. For a `Label`, the text can be positioned within the total space of the `Label` using the properties `HorizontalTextAlignment` and `VerticalTextAlignment`.
+The `Grow` property is used when the `Wrap` property is set to `NoWrap` and a row of children has a total width less than the width of the `FlexLayout`, or a column of children has a shorter height than the `FlexLayout`. The `Grow` property indicates how to apportion the leftover space among the children. If a single child is given a positive `Grow` value, then that child takes up all the remaining space. Alternatively, the remaining space can also be allocated among two or more children.
 
 ### Shrink
 
-The `Shrink` attached bindable property is of type `int`. The default value is 1, and the value must be greater than or equal to 0.
+The `Shrink` property, of type `float`, controls how a child should shrink so that all children can fit inside the container. The default value of this property is 1.0, and its value must be greater than or equal to 0.
 
-The `Shrink` property plays a role when the `Wrap` property is set to `NoWrap` and the aggregate width of a row of children is greater than the width of the `FlexLayout`, or the aggregate height of a single column of children is greater than the height of the `FlexLayout`. Normally the `FlexLayout` will display these children by constricting their sizes. The `Shrink` property can indicate which children are given priority in being displayed at their full sizes.
+The `Shrink` property is used when the `Wrap` property is set to `NoWrap` and the aggregate width of a row of children is greater than the width of the `FlexLayout`, or the aggregate height of a single column of children is greater than the height of the `FlexLayout`. Normally the `FlexLayout` will display these children by constricting their sizes. The `Shrink` property can indicate which children are given priority in being displayed at their full sizes.
 
-The **Shrink Experiment** page creates a `FlexLayout` with a single row of five `Label` children that require more space than the `FlexLayout` width. The iOS screenshot at the left shows all the `Label` elements with default values of 1:
+> [!TIP]
+> The `Grow` and `Shrink` values can both be set to accommodate situations where the aggregate child sizes might sometimes be less than or sometimes greater than the size of the `FlexLayout`.
 
-[![The Shrink Experiment Page.](flex-layout-images/ShrinkExperiment.png "The Shrink Experiment Page."](flex-layout-images/ShrinkExperiment-Large.png#lightbox)
+## Examples
 
-In the Android screenshot, the `Shrink` value for the second `Label` is set to 0, and that `Label` is displayed in its full width. Also, the fourth `Label` is given a `Shrink` value greater than one, and it has shrunk. The UWP screenshot shows both `Label` elements being given a `Shrink` value of 0 to allow them to be displayed in their full size, if that is possible.
-
-You can set both the `Grow` and `Shrink` values to accommodate situations where the aggregate child sizes might sometimes be less than or sometimes greater than the size of the `FlexLayout`.
-
-## Common usage scenarios
-
-The **[FlexLayoutDemos](/samples/xamarin/xamarin-forms-samples/userinterface-flexlayoutdemos)** sample program contains several pages that demonstrate some common uses of `FlexLayout` and allows you to experiment with its properties.
-
-### Using FlexLayout for a simple stack
+### Stack
 
 The **Simple Stack** page shows how `FlexLayout` can substitute for a `StackLayout` but with simpler markup. Everything in this sample is defined in the XAML page. The `FlexLayout` contains four children:
 
@@ -246,14 +210,10 @@ The **Simple Stack** page shows how `FlexLayout` can substitute for a `StackLayo
     <FlexLayout Direction="Column"
                 AlignItems="Center"
                 JustifyContent="SpaceEvenly">
-
         <Label Text="FlexLayout in Action"
                FontSize="Large" />
-
-        <Image Source="{local:ImageResource FlexLayoutDemos.Images.SeatedMonkey.jpg}" />
-
+        <Image Source="SeatedMonkey.jpg" />
         <Button Text="Do-Nothing Button" />
-
         <Label Text="Another Label" />
     </FlexLayout>
 </ContentPage>
@@ -285,9 +245,7 @@ Three properties of `FlexLayout` are shown in the **SimpleStackPage.xaml** file:
 
     If you were using a `StackLayout`, you would need to assign the `VerticalOptions` property of each item to `CenterAndExpand` to achieve a similar effect. But the `CenterAndExpand` option would allocate twice as much space between each item than before the first item and after the last item. You can mimic the `CenterAndExpand` option of `VerticalOptions` by setting the `JustifyContent` property of `FlexLayout` to `SpaceAround`.
 
-These `FlexLayout` properties are discussed in more detail in the section **[The bindable properties in detail](#the-bindable-properties-in-detail)** below.
-
-### Using FlexLayout for wrapping items
+### Wrap items
 
 The **Photo Wrapping** page of the **[FlexLayoutDemos](/samples/xamarin/xamarin-forms-samples/userinterface-flexlayoutdemos)** sample demonstrates how `FlexLayout` can wrap its children to additional rows or columns. The XAML file instantiates the `FlexLayout` and assigns two properties of it:
 
@@ -385,7 +343,7 @@ Here's the program running, progressively scrolled from top to bottom:
 
 [![The Photo Wrapping Page.](flex-layout-images/PhotoWrapping.png "The Photo Wrapping Page."](flex-layout-images/PhotoWrapping-Large.png#lightbox)
 
-### Page layout with FlexLayout
+### Page layout
 
 There is a standard layout in web design called the [_holy grail_](https://en.wikipedia.org/wiki/Holy_grail_(web_design)) because it's a layout format that is very desirable, but often hard to realize with perfection. The layout consists of a header at the top of the page and a footer at the bottom, both extending to the full width of the page. Occupying the center of the page is the main content, but often with a columnar menu to the left of the content and supplementary information (sometimes called an _aside_ area) at the right. [Section 5.4.1 of the CSS Flexible Box Layout specification](https://www.w3.org/TR/css-flexbox-1/#order-accessibility) describes how the holy grail layout can be realized with a flex box.
 
