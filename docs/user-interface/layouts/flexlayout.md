@@ -201,7 +201,7 @@ The `Shrink` property is used when the `Wrap` property is set to `NoWrap` and th
 
 ## Examples
 
-This section shows/demonstrates common uses of `FlexLayout`.
+The following examples demonstrate common uses of `FlexLayout`.
 
 ### Stack
 
