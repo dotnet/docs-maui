@@ -8,7 +8,7 @@ ms.date: 12/28/2021
 
 <!-- Sample link goes here -->
 
-:::image type="content" source="media/gridlayout/layouts.png" alt-text=".NET MAUI Grid." border="false":::
+:::image type="content" source="media/gridlayout/layouts.png" alt-text=".NET MAUI GridLayout." border="false":::
 
 The .NET Multi-platform App UI (.NET MAUI) `GridLayout`, or `Grid`, is a layout that organizes its children into rows and columns, which can have proportional or absolute sizes. By default, a `GridLayout` contains one row and one column. In addition, a `GridLayout` can be used as a parent layout that contains other child layouts.
 

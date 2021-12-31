@@ -8,6 +8,8 @@ ms.date: 12/23/2021
 
 <!-- Sample link goes here -->
 
+:::image type="content" source="media/flexlayout/layouts.png" alt-text=".NET MAUI FlexLayout." border="false":::
+
 The .NET Multi-platform App UI (.NET MAUI) `FlexLayout` is a layout that can arrange its children horizontally and vertically in a stack, and can also wrap its children if there are too many to fit in a single row or column. In addition, `FlexLayout` can control orientation and alignment, and adapt to different screen sizes. `FlexLayout` is based on the Cascading Style Sheets (CSS) [Flexible Box Layout Module](https://www.w3.org/TR/css-flexbox-1/).
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
@@ -28,7 +30,8 @@ The `FlexLayout` class defines the following properties:
 
 These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings and styled.
 
-The `FlexLayout` class derives from the `Layout` class, which defines a `Children` property of type `IList<IView>`. The `Children` property is the `ContentProperty` of the `Layout` class, and therefore does not need to be explicitly set from XAML.
+> [!IMPORTANT]
+> When items in a `FlexLayout` are arranged in a column, the `FlexLayout` has a vertical *main axis* and a horizontal *cross axis*. When items in a `FlexLayout` are arranged in a row, the `FlexLayout` has a horizontal *main axis* and a vertical *cross axis*.
 
 ## Orientation and alignment
 
@@ -196,63 +199,44 @@ The `Shrink` property is used when the `Wrap` property is set to `NoWrap` and th
 
 ## Examples
 
+This section shows/demonstrates common uses of `FlexLayout`.
+
 ### Stack
 
-The **Simple Stack** page shows how `FlexLayout` can substitute for a `StackLayout` but with simpler markup. Everything in this sample is defined in the XAML page. The `FlexLayout` contains four children:
+A `FlexLayout` can substitute for a `StackLayout`:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:FlexLayoutDemos"
-             x:Class="FlexLayoutDemos.SimpleStackPage"
-             Title="Simple Stack">
-
+             x:Class="FlexLayoutDemos.Views.SimpleStackPage"
+             Title="Simple Stack">    
     <FlexLayout Direction="Column"
                 AlignItems="Center"
-                JustifyContent="SpaceEvenly">
+                JustifyContent="SpaceEvenly">        
         <Label Text="FlexLayout in Action"
                FontSize="Large" />
-        <Image Source="SeatedMonkey.jpg" />
+        <Image Source="seatedmonkey.jpg" />
         <Button Text="Do-Nothing Button" />
         <Label Text="Another Label" />
     </FlexLayout>
 </ContentPage>
 ```
 
-Here's that page running on iOS, Android, and the Universal Windows Platform:
+In this example, the `Direction` property is set to `Column`, which causes the children of the `FlexLayout` to be arranged in a single column. The `AlignItems` property is set to `Center`, which causes each child to be horizontally centered. The `JustifyContent` property is set to `SpaceEvenly` which allocates all leftover vertical space equally between all the children, above the first child and below the last child:
 
-[![The Simple Stack Page.](flex-layout-images/SimpleStack.png "The Simple Stack Page."](flex-layout-images/SimpleStack-Large.png#lightbox)]
+:::image type="content" source="media/flexlayout/stack.png" alt-text="Vertically oriented .NET MAUI FlexLayout.":::
 
-Three properties of `FlexLayout` are shown in the **SimpleStackPage.xaml** file:
-
-- The `Direction` property is set to a value of the `FlexDirection` enumeration. The default is `Row`. Setting the property to `Column` causes the children of the `FlexLayout` to be arranged in a single column of items.
-
-    When items in a `FlexLayout` are arranged in a column, the `FlexLayout` is said to have a vertical _main axis_ and a horizontal _cross axis_.
-
-- The `AlignItems` property is of type `FlexAlignItems` and specifies how items are aligned on the cross axis. The `Center` option causes each item to be horizontally centered.
-
-    If you were using a `StackLayout` rather than a `FlexLayout` for this task, you would center all the items by assigning the `HorizontalOptions` property of each item to `Center`. The `HorizontalOptions` property doesn't work for children of a `FlexLayout`, but the single `AlignItems` property accomplishes the same goal. If you need to, you can use the `AlignSelf` attached bindable property to override the `AlignItems` property for individual items:
-
-    ```xaml
-    <Label Text="FlexLayout in Action"
-           FontSize="Large"
-           FlexLayout.AlignSelf="Start" />
-    ```
-
-    With that change, this one `Label` is positioned at the left edge of the `FlexLayout` when the reading order is left-to-right.
-
-- The `JustifyContent` property is of type `FlexJustify`, and specifies how items are arranged on the main axis. The `SpaceEvenly` option allocates all leftover vertical space equally between all the items, and above the first item, and below the last item.
-
-    If you were using a `StackLayout`, you would need to assign the `VerticalOptions` property of each item to `CenterAndExpand` to achieve a similar effect. But the `CenterAndExpand` option would allocate twice as much space between each item than before the first item and after the last item. You can mimic the `CenterAndExpand` option of `VerticalOptions` by setting the `JustifyContent` property of `FlexLayout` to `SpaceAround`.
+> [!NOTE]
+> The `AlignSelf` attached property can be used to override the `AlignItems` property for a specific child.
 
 ### Wrap items
 
-The **Photo Wrapping** page of the **[FlexLayoutDemos](/samples/xamarin/xamarin-forms-samples/userinterface-flexlayoutdemos)** sample demonstrates how `FlexLayout` can wrap its children to additional rows or columns. The XAML file instantiates the `FlexLayout` and assigns two properties of it:
+A `FlexLayout` can wrap its children to additional rows or columns:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FlexLayoutDemos.PhotoWrappingPage"
+             x:Class="FlexLayoutDemos.Views.PhotoWrappingPage"
              Title="Photo Wrapping">
     <Grid>
         <ScrollView>
@@ -260,88 +244,18 @@ The **Photo Wrapping** page of the **[FlexLayoutDemos](/samples/xamarin/xamarin-
                         Wrap="Wrap"
                         JustifyContent="SpaceAround" />
         </ScrollView>
-
-        <ActivityIndicator x:Name="activityIndicator"
-                           IsRunning="True"
-                           VerticalOptions="Center" />
+        ...
     </Grid>
 </ContentPage>
 ```
 
-The `Direction` property of this `FlexLayout` is not set, so it has the default setting of `Row`, meaning that the children are arranged in rows and the main axis is horizontal.
+In this example, the `Direction` property of the `FlexLayout` is not set, so it has the default setting of `Row`, meaning that the children are arranged in rows and the main axis is horizontal. The `Wrap` property is set to to `Wrap`, which causes children to wrap to the next row if there are too many children to fit on a row. The `JustifyContent` property is set to `SpaceAround` which allocates all leftover space on the main axis so that each child is surrounded by the same amount of space:
 
-The `Wrap` property is of an enumeration type `FlexWrap`. If there are too many items to fit on a row, then this property setting causes the items to wrap to the next row.
+:::image type="content" source="media/flexlayout/wrap.png" alt-text="Horizontally wrapping .NET MAUI FlexLayout.":::
 
-Notice that the `FlexLayout` is a child of a `ScrollView`. If there are too many rows to fit on the page, then the `ScrollView` has a default `Orientation` property of `Vertical` and allows vertical scrolling.
+The code-behind file for this example accesses a collection of photos and adds them to the `FlexLayout`.
 
-The `JustifyContent` property allocates leftover space on the main axis (the horizontal axis) so that each item is surrounded by the same amount of blank space.
-
-The code-behind file accesses a collection of sample photos and adds them to the `Children` collection of the `FlexLayout`:
-
-```csharp
-public partial class PhotoWrappingPage : ContentPage
-{
-    // Class for deserializing JSON list of sample bitmaps
-    [DataContract]
-    class ImageList
-    {
-        [DataMember(Name = "photos")]
-        public List<string> Photos = null;
-    }
-
-    public PhotoWrappingPage ()
-    {
-        InitializeComponent ();
-
-        LoadBitmapCollection();
-    }
-
-    async void LoadBitmapCollection()
-    {
-        using (WebClient webClient = new WebClient())
-        {
-            try
-            {
-                // Download the list of stock photos
-                Uri uri = new Uri("https://raw.githubusercontent.com/xamarin/docs-archive/master/Images/stock/small/stock.json");
-                byte[] data = await webClient.DownloadDataTaskAsync(uri);
-
-                // Convert to a Stream object
-                using (Stream stream = new MemoryStream(data))
-                {
-                    // Deserialize the JSON into an ImageList object
-                    var jsonSerializer = new DataContractJsonSerializer(typeof(ImageList));
-                    ImageList imageList = (ImageList)jsonSerializer.ReadObject(stream);
-
-                    // Create an Image object for each bitmap
-                    foreach (string filepath in imageList.Photos)
-                    {
-                        Image image = new Image
-                        {
-                            Source = ImageSource.FromUri(new Uri(filepath))
-                        };
-                        flexLayout.Children.Add(image);
-                    }
-                }
-            }
-            catch
-            {
-                flexLayout.Children.Add(new Label
-                {
-                    Text = "Cannot access list of bitmap files"
-                });
-            }
-        }
-
-        activityIndicator.IsRunning = false;
-        activityIndicator.IsVisible = false;
-    }
-}
-```
-
-Here's the program running, progressively scrolled from top to bottom:
-
-[![The Photo Wrapping Page.](flex-layout-images/PhotoWrapping.png "The Photo Wrapping Page."](flex-layout-images/PhotoWrapping-Large.png#lightbox)]
+In addition, the `FlexLayout` is a child of a `ScrollView`. Therefore, if there are too many rows to fit on the page, then the `ScrollView` has a default `Orientation` property of `Vertical` and allows vertical scrolling.
 
 ### Page layout
 
