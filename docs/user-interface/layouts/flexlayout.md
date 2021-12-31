@@ -221,7 +221,7 @@ The **Simple Stack** page shows how `FlexLayout` can substitute for a `StackLayo
 
 Here's that page running on iOS, Android, and the Universal Windows Platform:
 
-[![The Simple Stack Page.](flex-layout-images/SimpleStack.png "The Simple Stack Page."](flex-layout-images/SimpleStack-Large.png#lightbox)
+[![The Simple Stack Page.](flex-layout-images/SimpleStack.png "The Simple Stack Page."](flex-layout-images/SimpleStack-Large.png#lightbox)]
 
 Three properties of `FlexLayout` are shown in the **SimpleStackPage.xaml** file:
 
@@ -341,7 +341,7 @@ public partial class PhotoWrappingPage : ContentPage
 
 Here's the program running, progressively scrolled from top to bottom:
 
-[![The Photo Wrapping Page.](flex-layout-images/PhotoWrapping.png "The Photo Wrapping Page."](flex-layout-images/PhotoWrapping-Large.png#lightbox)
+[![The Photo Wrapping Page.](flex-layout-images/PhotoWrapping.png "The Photo Wrapping Page."](flex-layout-images/PhotoWrapping-Large.png#lightbox)]
 
 ### Page layout
 
@@ -396,7 +396,7 @@ The **Holy Grail Layout** page of the **[FlexLayoutDemos](/samples/xamarin/xamar
 
 Here it is running:
 
-[![The Holy Grail Layout Page.](flex-layout-images/HolyGrailLayout.png "The Holy Grail Layout Page."](flex-layout-images/HolyGrailLayout-Large.png#lightbox)
+[![The Holy Grail Layout Page.](flex-layout-images/HolyGrailLayout.png "The Holy Grail Layout Page."](flex-layout-images/HolyGrailLayout-Large.png#lightbox)]
 
 The navigation and aside areas are rendered with a `BoxView` on the left and right.
 
@@ -418,7 +418,7 @@ Three attached bindable properties are demonstrated in this program:
 
 The **Catalog Items** page in the **[FlexLayoutDemos](/samples/xamarin/xamarin-forms-samples/userinterface-flexlayoutdemos)** sample is similar to [Example 1 in Section 1.1 of the CSS Flex Layout Box specification](https://www.w3.org//TR/css-flexbox-1/#overview) except that it displays a horizontally scrollable series of pictures and descriptions of three monkeys:
 
-[![The Catalog Items Page.](flex-layout-images/CatalogItems.png "The Catalog Items Page."](flex-layout-images/CatalogItems-Large.png#lightbox)
+[![The Catalog Items Page.](flex-layout-images/CatalogItems.png "The Catalog Items Page."](flex-layout-images/CatalogItems-Large.png#lightbox)]
 
 Each of the three monkeys is a `FlexLayout` contained in a `Frame` that is given an explicit height and width, and which is also a child of a larger `FlexLayout`. In this XAML file, most of the properties of the `FlexLayout` children are specified in styles, all but one of which is an implicit style:
 
@@ -536,7 +536,7 @@ Within each of the three `FlexLayout` views, a blank `Label` precedes the `Butto
 
 You can use the [CSS styling](~/xamarin-forms/user-interface/styles/css/index.md) feature introduced with .NET MAUI 3.0 in connection with `FlexLayout`. The **CSS Catalog Items** page of the **[FlexLayoutDemos](/samples/xamarin/xamarin-forms-samples/userinterface-flexlayoutdemos)** sample duplicates the layout of the **Catalog Items** page, but with a CSS style sheet for many of the styles:
 
-[![The CSS Catalog Items Page.](flex-layout-images/CssCatalogItems.png "The CSS Catalog Items Page."](flex-layout-images/CssCatalogItems-Large.png#lightbox)
+[![The CSS Catalog Items Page.](flex-layout-images/CssCatalogItems.png "The CSS Catalog Items Page."](flex-layout-images/CssCatalogItems-Large.png#lightbox)]
 
 The original **CatalogItemsPage.xaml** file has five `Style` definitions in its `Resources` section with 15 `Setter` objects. In the **CssCatalogItemsPage.xaml** file, that has been reduced to two `Style` definitions with just four `Setter` objects. These styles supplement the CSS style sheet for properties that the .NET MAUI CSS styling feature currently doesn't support:
 
