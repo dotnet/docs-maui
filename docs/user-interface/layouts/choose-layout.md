@@ -111,7 +111,7 @@ Space can be distributed within a column or row by using auto sizing, which lets
 > [!CAUTION]
 > Try to ensure that as few rows and columns as possible are set to `Auto` size. Each auto-sized row or column will cause the layout engine to perform additional layout calculations. Instead, use fixed size rows and columns if possible. Alternatively, set rows and columns to occupy a proportional amount of space with the `GridUnitType.Star` enumeration value.
 
-For more information, see [.NET MAUI Grid](grid.md).
+For more information, see [.NET MAUI Grid](gridlayout.md).
 
 ## FlexLayout
 
@@ -135,7 +135,7 @@ In this example, layout works as follows:
 - The `AlignItems` property is set to `Center`, which causes each item to be horizontally centered.
 - The `JustifyContent` property is set to `SpaceEvenly`, which allocates all leftover vertical space equally between all the items, and above the first item, and below the last item.
 
-For more information, see [.NET MAUI FlexLayout](flex-layout.md).
+For more information, see [.NET MAUI FlexLayout](flexlayout.md).
 
 <!--
 ## AbsoluteLayout
