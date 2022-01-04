@@ -1,12 +1,12 @@
 ---
-title: "Margin and Padding"
-description: "The Margin and Padding properties control layout behavior when an element is rendered in the user interface."
+title: "Margin and padding"
+description: "The .NET MAUI Margin and Padding properties control layout behavior when an element is rendered in the user interface."
 ms.date: 01/04/2022
 ---
 
-# Margin and Padding
+# Margin and padding
 
-The `Margin` and `Padding` properties control layout behavior when an element is rendered in the user interface. Margin and padding are related layout concepts:
+The The .NET Multi-platform App UI (.NET MAUI) `Margin` and `Padding` properties control layout behavior when an element is rendered in the user interface. Margin and padding are related layout concepts:
 
 - The `Margin` property represents the distance between an element and its adjacent elements, and is used to control the element's rendering position, and the rendering position of its neighbors. `Margin` values can be specified on layouts and views.
 - The `Padding` property represents the distance between an element and its child elements, and is used to separate the control from its own content. `Padding` values can be specified on layouts.
