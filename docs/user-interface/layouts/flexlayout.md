@@ -256,7 +256,7 @@ In this example, the `Direction` property of the `FlexLayout` is not set, so it 
 
 :::image type="content" source="media/flexlayout/wrap.png" alt-text="Horizontally wrapping .NET MAUI FlexLayout.":::
 
-The code-behind file for this example accesses a collection of photos and adds them to the `FlexLayout`.
+The code-behind file for this example retrieves a collection of photos and adds them to the `FlexLayout`.
 
 In addition, the `FlexLayout` is a child of a `ScrollView`. Therefore, if there are too many rows to fit on the page, then the `ScrollView` has a default `Orientation` property of `Vertical` and allows vertical scrolling.
 
