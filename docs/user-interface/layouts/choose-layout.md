@@ -4,7 +4,7 @@ description: ".NET MAUI layout classes allow you to arrange and group UI control
 ms.date: 01/04/2022
 ---
 
-# Choose a .NET MAUI Layout
+# Choose a layout
 
 :::image type="content" source="media/choose-layout/layouts.png" alt-text=".NET MAUI layout classes." border="false":::
 
@@ -78,6 +78,8 @@ The following XAML shows how to create a `HorizontalStackLayout` containing diff
 
 In a `HorizontalStackLayout`, if an element's size is not explicitly set, it expands to fill the available height.
 
+For more information, see [.NET MAUI HorizontalStackLayout](horizontalstacklayout.md).
+
 ## VerticalStackLayout
 
 A `VerticalStackLayout` organizes child views in a one-dimensional vertical stack, and is a more performant alternative to a `StackLayout`. `VerticalStackLayout` is typically used to arrange a subsection of the UI on a page.
@@ -93,6 +95,8 @@ The following XAML shows how to create a `VerticalStackLayout` containing three 
 ```
 
 In a `VerticalStackLayout`, if an element's size is not explicitly set, it expands to fill the available width.
+
+For more information, see [.NET MAUI VerticalStackLayout](verticalstacklayout.md).
 
 ## Grid
 
