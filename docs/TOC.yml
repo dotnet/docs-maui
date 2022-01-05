@@ -25,8 +25,8 @@
           href: user-interface/handlers/customize.md
         - name: Layouts
           items:
-            # - name: Choose a layout
-            #   href: user-interface/layouts/choose-layout.md
+            - name: Choose a layout
+              href: user-interface/layouts/choose-layout.md
             # - name: AbsoluteLayout
             #   href: user-interface/layouts/absolutelayout.md
             - name: FlexLayout
@@ -43,3 +43,5 @@
             #   href: user-interface/layouts/layout-options.md
             # - name: Margin and Padding
             #   href: user-interface/layouts/margin-padding.md
+        - name: Margin and padding
+          href: user-interface/margin-padding.md
