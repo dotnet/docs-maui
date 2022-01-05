@@ -58,7 +58,7 @@ A `StackLayout` is often used as a parent layout, which contains other child lay
 
 This is wasteful because unnecessary layout calculations are performed. Instead, the desired layout can be better achieved by using a `Grid`.
 
-For more information, see [.NET MAUI StackLayout](stacklayout.md).
+For more information, see [StackLayout](stacklayout.md).
 
 ## HorizontalStackLayout
 
@@ -78,7 +78,7 @@ The following XAML shows how to create a `HorizontalStackLayout` containing diff
 
 In a `HorizontalStackLayout`, if an element's size is not explicitly set, it expands to fill the available height.
 
-For more information, see [.NET MAUI HorizontalStackLayout](horizontalstacklayout.md).
+For more information, see [HorizontalStackLayout](horizontalstacklayout.md).
 
 ## VerticalStackLayout
 
@@ -96,7 +96,7 @@ The following XAML shows how to create a `VerticalStackLayout` containing three 
 
 In a `VerticalStackLayout`, if an element's size is not explicitly set, it expands to fill the available width.
 
-For more information, see [.NET MAUI VerticalStackLayout](verticalstacklayout.md).
+For more information, see [VerticalStackLayout](verticalstacklayout.md).
 
 ## Grid
 
@@ -141,7 +141,7 @@ Space can be distributed within a column or row by using auto sizing, which lets
 > [!CAUTION]
 > Try to ensure that as few rows and columns as possible are set to `Auto` size. Each auto-sized row or column will cause the layout engine to perform additional layout calculations. Instead, use fixed size rows and columns if possible. Alternatively, set rows and columns to occupy a proportional amount of space with the `GridUnitType.Star` enumeration value.
 
-For more information, see [.NET MAUI Grid](gridlayout.md).
+For more information, see [Grid](gridlayout.md).
 
 ## FlexLayout
 
@@ -165,7 +165,7 @@ In this example, layout works as follows:
 - The `AlignItems` property is set to `Center`, which causes each item to be horizontally centered.
 - The `JustifyContent` property is set to `SpaceEvenly`, which allocates all leftover vertical space equally between all the items, and above the first item, and below the last item.
 
-For more information, see [.NET MAUI FlexLayout](flexlayout.md).
+For more information, see [FlexLayout](flexlayout.md).
 
 <!--
 ## AbsoluteLayout
@@ -206,7 +206,7 @@ In this example, layout works as follows:
 > [!CAUTION]
 > Avoid using the `AbsoluteLayout.AutoSize` property whenever possible, as it will cause the layout engine to perform additional layout calculations.
 
-For more information, see [.NET MAUI AbsoluteLayout](absolutelayout.md).
+For more information, see [AbsoluteLayout](absolutelayout.md).
 
 ## RelativeLayout
 
@@ -255,7 +255,7 @@ In this example, layout works as follows:
 > [!WARNING]
 > Avoid using a `RelativeLayout` whenever possible. It will result in the CPU having to perform significantly more work.
 
-For more information, see [.NET MAUI RelativeLayout](relativelayout.md).
+For more information, see [RelativeLayout](relativelayout.md).
 
 ## BindableLayout
 
