@@ -1,10 +1,10 @@
 ---
-title: "Choose a layout"
+title: "Layouts"
 description: ".NET MAUI layout classes allow you to arrange and group UI controls in your app."
 ms.date: 01/04/2022
 ---
 
-# Choose a layout
+# Layouts
 
 :::image type="content" source="media/layouts.png" alt-text=".NET MAUI layout classes." border="false":::
 
@@ -257,12 +257,15 @@ In this example, layout works as follows:
 
 For more information, see [.NET MAUI RelativeLayout](relativelayout.md).
 
+## BindableLayout
+
+## Layout options
+
 ## Input transparency
 
 Each visual element has an `InputTransparent` property that's used to define whether the element receives input. Its default value is `false`, ensuring that the element receives input.
 
 When this property is set on a layout class, its value transfers to child elements. Therefore, setting the `InputTransparent` property to `true` on a layout class will result in all elements within the layout not receiving input.
-
 
 ## Layout performance
 
