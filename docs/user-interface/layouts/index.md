@@ -6,7 +6,7 @@ ms.date: 01/04/2022
 
 # Choose a layout
 
-:::image type="content" source="media/choose-layout/layouts.png" alt-text=".NET MAUI layout classes." border="false":::
+:::image type="content" source="media/layouts.png" alt-text=".NET MAUI layout classes." border="false":::
 
 .NET Multi-platform App UI (.NET MAUI) layout classes allow you to arrange and group UI controls in your application. Choosing a layout class requires knowledge of how the layout positions its child elements, and how the layout sizes its child elements. In addition, it may be necessary to nest layouts to create your desired layout.
 
