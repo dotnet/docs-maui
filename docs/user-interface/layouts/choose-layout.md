@@ -62,9 +62,37 @@ For more information, see [.NET MAUI StackLayout](stacklayout.md).
 
 ## HorizontalStackLayout
 
+A `HorizontalStackLayout` organizes child views in a one-dimensional horizontal stack, and is a more performant alternative to a `StackLayout`. `HorizontalStackLayout` is typically used to arrange a subsection of the UI on a page.
+
+The following XAML shows how to create a `HorizontalStackLayout` containing different child views:
+
+```xaml
+<HorizontalStackLayout Margin="20">
+   <Rectangle Fill="Red"
+              HeightRequest="30"
+              WidthRequest="30" />
+   <Label Text="Red"
+          FontSize="Large" />
+</HorizontalStackLayout>
+```
+
+In a `HorizontalStackLayout`, if an element's size is not explicitly set, it expands to fill the available height.
+
 ## VerticalStackLayout
 
+A `VerticalStackLayout` organizes child views in a one-dimensional vertical stack, and is a more performant alternative to a `StackLayout`. `VerticalStackLayout` is typically used to arrange a subsection of the UI on a page.
 
+The following XAML shows how to create a `VerticalStackLayout` containing three `Label` objects:
+
+```xaml
+<VerticalStackLayout Margin="20,35,20,25">
+    <Label Text="The VericalStackLayout has its Margin property set, to control the rendering position of the VerticalStackLayout." />
+    <Label Text="The Padding property can be set to specify the distance between the VerticalStackLayout and its children." />
+    <Label Text="The Spacing property can be set to specify the distance between views in the VerticalStackLayout." />
+</VerticalStackLayout>
+```
+
+In a `VerticalStackLayout`, if an element's size is not explicitly set, it expands to fill the available width.
 
 ## Grid
 
