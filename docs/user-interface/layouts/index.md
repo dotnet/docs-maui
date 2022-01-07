@@ -98,9 +98,9 @@ In a `VerticalStackLayout`, if an element's size is not explicitly set, it expan
 
 For more information, see [VerticalStackLayout](verticalstacklayout.md).
 
-## Grid
+## GridLayout
 
-A `Grid` is used for displaying elements in rows and columns, which can have proportional or absolute sizes. A grid's rows and columns are specified with the `RowDefinitions` and `ColumnDefinitions` properties.
+A `GridLayout`, or `Grid`, is used for displaying elements in rows and columns, which can have proportional or absolute sizes. A grid's rows and columns are specified with the `RowDefinitions` and `ColumnDefinitions` properties.
 
 To position elements in specific `Grid` cells, use the `Grid.Column` and `Grid.Row` attached properties. To make elements span across multiple rows and columns, use the `Grid.RowSpan` and `Grid.ColumnSpan` attached properties.
 
