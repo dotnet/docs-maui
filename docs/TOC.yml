@@ -27,21 +27,9 @@
           items:
             - name: Overview
               href: user-interface/layouts/index.md
-            # - name: AbsoluteLayout
-            #   href: user-interface/layouts/absolutelayout.md
             - name: FlexLayout
               href: user-interface/layouts/flexlayout.md
             - name: GridLayout
               href: user-interface/layouts/gridlayout.md
-            # - name: RelativeLayout
-            #   href: user-interface/layouts/relativelayout.md
             - name: StackLayout
               href: user-interface/layouts/stacklayout.md
-            # - name: Bindable Layouts
-            #   href: user-interface/layouts/bindablelayout.md
-            # - name: Layout Options
-            #   href: user-interface/layouts/layout-options.md
-            # - name: Margin and Padding
-            #   href: user-interface/layouts/margin-padding.md
-        - name: Margin and padding
-          href: user-interface/margin-padding.md
