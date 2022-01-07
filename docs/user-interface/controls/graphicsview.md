@@ -19,8 +19,6 @@ The .NET Multi-platform App UI (.NET MAUI) `GraphicsView` is a graphics canvas o
 A `GraphicsView` must define an `IDrawable` object that specifies the content that will be drawn on the control. This can be achieved by creating an object that derives from `IDrawable`, and by implementing its `Draw` method:
 
 ```csharp
-using Microsoft.Maui.Graphics;
-
 namespace MyMauiApp
 {
     public class GraphicsDrawable : IDrawable
@@ -98,8 +96,6 @@ The `ToImage` method operates on an `IDrawable` object, which is exposed by the 
 In code, the `Drawable` property of the `GraphicsView` object can then be accessed, and the `ToImage` method called:
 
 ```csharp
-using Microsoft.Maui.Graphics;
-...
 IImage image = graphicsView.Drawable.ToImage(400, 500);
 ```
 
