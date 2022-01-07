@@ -32,7 +32,7 @@
             - name: GraphicsView
               href: user-interface/controls/graphicsview.md
         - name: Customize controls
-          href: user-interface/handlers/customize.md             
+          href: user-interface/handlers/customize.md
         - name: Graphics
           items:
             - name: Overview
@@ -61,14 +61,14 @@
               href: user-interface/layouts/index.md
             - name: FlexLayout
               href: user-interface/layouts/flexlayout.md
+            - name: GridLayout
+              href: user-interface/layouts/gridlayout.md              
             - name: HorizontalStackLayout
               href: user-interface/layouts/horizontalstacklayout.md
-            - name: GridLayout
-              href: user-interface/layouts/gridlayout.md
             - name: StackLayout
               href: user-interface/layouts/stacklayout.md
             - name: VerticalStackLayout
-              href: user-interface/layouts/verticalstacklayout.md 
+              href: user-interface/layouts/verticalstacklayout.md
         - name: Shadows
           href: user-interface/shadow.md
     - name: Platform integration
