@@ -6,7 +6,7 @@ ms.date: 12/06/2021
 
 # VerticalStackLayout
 
-A `VerticalStackLayout` organizes child views in a one-dimensional vertical stack, and is a more performant alternative to a `StackLayout`. In addition, a `VerticalStackLayout` can be used as a parent layout that contains other child layouts.
+The .NET Multi-platform App UI (.NET MAUI) `VerticalStackLayout` organizes child views in a one-dimensional vertical stack, and is a more performant alternative to a `StackLayout`. In addition, a `VerticalStackLayout` can be used as a parent layout that contains other child layouts.
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
