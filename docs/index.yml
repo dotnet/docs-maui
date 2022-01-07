@@ -48,12 +48,14 @@ landingContent:
             url: user-interface/controls/blazorwebview.md
           - text: Border
             url: user-interface/controls/border.md
-          - text: GraphicsView
-            url: user-interface/controls/graphicsview.md
           - text: Customize controls
             url: user-interface/handlers/customize.md
+          - text: GraphicsView
+            url: user-interface/controls/graphicsview.md
           - text: Graphics
             url: user-interface/graphics/index.md
+          - text: Layouts
+            url: user-interface/layouts/index.md
           - text: Shadows
             url: user-interface/shadow.md
           - text: Splash screen
@@ -65,4 +67,4 @@ landingContent:
           - text: Configure multi-targeting
             url: platform-integration/configure-multi-targeting.md
           - text: Invoke platform code
-            url: platform-integration/invoke-platform-code.md           
+            url: platform-integration/invoke-platform-code.md
