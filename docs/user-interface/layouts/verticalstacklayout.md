@@ -10,7 +10,6 @@ A `VerticalStackLayout` organizes child views in a one-dimensional vertical stac
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
-
 The `VerticalStackLayout` defines the following properties:
 
 - `Spacing`, of type `double`, indicates the amount of space between each child view. The default value of this property is 0.
