@@ -52,7 +52,6 @@ On Android, the splash screen is added to your app package as **Resourcs/values/
 ```csharp
 using Android.App;
 using Android.Content.PM;
-using Microsoft.Maui;
 
 namespace MyMauiApp
 {

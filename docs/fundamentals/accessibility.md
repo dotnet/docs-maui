@@ -171,9 +171,6 @@ label1.SetValue(SemanticProperties.HeadingLevelProperty, SemanticHeadingLevel.Le
 Controls have a `SetSemanticFocus` extension method, defined in the `Microsoft.Maui` namespace, which forces screen reader focus to a specified element. For example, given a `Label` named `label`, screen reader focus can be forced to the element with the following code:
 
 ```csharp
-using Microsoft.Maui;
-...
-
 label.SetSemanticFocus();
 ```
 
