@@ -55,6 +55,12 @@
           items:
             - name: Splash screen
               href: user-interface/images/splashscreen.md
+        - name: Layouts
+          items:
+            - name: HorizontalStackLayout
+              href: user-interface/layouts/horizontalstacklayout.md
+            - name: VerticalStackLayout
+              href: user-interface/layouts/verticalstacklayout.md
         - name: Shadows
           href: user-interface/shadow.md
     - name: Platform integration
