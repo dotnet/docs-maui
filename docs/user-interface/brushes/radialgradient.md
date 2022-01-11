@@ -30,7 +30,7 @@ To create a radial gradient, create a `RadialGradientBrush` object and set its `
 
 The following XAML example shows a `RadialGradientBrush` that's set as the `Background` of a `Frame`:
 
-```xaml    
+```xaml
 <Frame BorderColor="LightGray"
        HasShadow="True"
        CornerRadius="12"
