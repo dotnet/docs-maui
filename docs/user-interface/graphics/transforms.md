@@ -184,48 +184,45 @@ There are 60 marks of two different sizes that are drawn in a circle around the 
 
 ## Concatenate transforms
 
-A transform can be described in terms of a 3x3 affine transformation matrix, which performs transformations in 2D space. This 3x3 matrix is represented by the `AffineTransform` class, which is a collection of three rows and three columns of `float` values.
-
-The following table shows the structure of an `AffineTransform` matrix:
+A transform can be described in terms of a 3x3 affine transformation matrix, which performs transformations in 2D space. The following table shows the structure of a 3x3 affine transformation matrix:
 
 :::row:::
-    :::column:::
-        M00
-    :::column-end:::
-    :::column:::
-        M10
-    :::column-end:::
-    :::column:::
-        0.0
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        M01
-    :::column-end:::
     :::column:::
         M11
     :::column-end:::
     :::column:::
+        M12
+    :::column-end:::
+    :::column:::
         0.0
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        M02
+        M21
     :::column-end:::
     :::column:::
-        M12
+        M22
+    :::column-end:::
+    :::column:::
+        0.0
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        M31
+    :::column-end:::
+    :::column:::
+        M32
     :::column-end:::
     :::column:::
         1.0
     :::column-end:::
 :::row-end:::
 
-> [!NOTE]
-> An affine transformation matrix has its final column equal to (0,0,1), so only members in the first two columns need to be specified.
+An affine transformation matrix has its final column equal to (0,0,1), so only members in the first two columns need to be specified. Therefore, the 3x3 matrix is represented by the [`Matrix3x2`](xref:System.Numerics.Matrix3x2) struct, from the `System.Numerics` namespace, which is a collection of three rows and two columns of `float` values.
 
-The `AffineTransform` class defines six properties of type `float`, that correspond to the six cells in the first two columns of the transform matrix:
+The six cells in the first two columns of the transform matrix represent values that performing scaling, shearing, and translation:
 
 :::row:::
     :::column:::
@@ -261,14 +258,11 @@ The `AffineTransform` class defines six properties of type `float`, that corresp
     :::column-end:::
 :::row-end:::
 
-By manipulating matrix values, you can rotate, scale, shear, and translate graphical objects. For example, if you change the `M02` value to 100, you can use it to translate a graphical object 100 pixels along the x-axis. If you change the `M11` value to 3, you can use it to stretch a graphical object to three times its current height. If you change both values, you move the graphical object 100 pixels along the x-axis and stretch its height by a factor of 3.
+For example, if you change the `M31` value to 100, you can use it to translate a graphical object 100 pixels along the x-axis. If you change the `M22` value to 3, you can use it to stretch a graphical object to three times its current height. If you change both values, you move the graphical object 100 pixels along the x-axis and stretch its height by a factor of 3.
 
-You can define a new transform matrix with the `AffineTransform` constructors, the `AffineTransform.SetMatrix` method, and the `AffineTransform.SetTransform` method. The advantage of specifying transforms with a transform matrix is that composite transforms can be applied as a single `AffineTransform`, which is referred to as *concatenation*. The `AffineTransform` class also defines methods that can be used to manipulate matrix values.
+You can define a new transform matrix with the [`Matrix3x2`](xref:System.Numerics.Matrix3x2) constructor. The advantage of specifying transforms with a transform matrix is that composite transforms can be applied as a single transform, which is referred to as *concatenation*. The [`Matrix3x2`](xref:System.Numerics.Matrix3x2) struct also defines methods that can be used to manipulate matrix values.
 
-> [!NOTE]
-> The default `AffineTransform` constructor creates an identity matrix.
-
-The only `ICanvas` method that accepts an `AffineTransform` argument is the `ConcatenateTransform` method, which combines multiple transforms into a single transform. The following example shows how to use this method to transform a `PathF` object:
+The only `ICanvas` method that accepts a [`Matrix3x2`](xref:System.Numerics.Matrix3x2) argument is the `ConcatenateTransform` method, which combines multiple transforms into a single transform. The following example shows how to use this method to transform a `PathF` object:
 
 ```csharp
 PathF path = new PathF();
@@ -283,14 +277,10 @@ for (int i = 0; i < 11; i++)
         path.LineTo(point);
 }
 
-
-AffineTransform transform = new AffineTransform(1.5f, 1, 0, 1, 150, 150);        
+Matrix3x2 transform = new Matrix3x2(1.5f, 1, 0, 1, 150, 150);     
 canvas.ConcatenateTransform(transform);
 canvas.FillColor = Colors.Red;
 canvas.FillPath(path);
 ```
 
 In this example, the `PathF` object is scaled and sheared on the x-axis, and translated on the x-axis and the y-axis.
-
-> [!NOTE]
-> The `AffineTransform` class defines a `CreateInverse` method that obtains the matrix that reverses a given matrix.
