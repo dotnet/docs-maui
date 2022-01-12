@@ -112,7 +112,7 @@ True type format (TTF) and open type font (OTF) fonts can be added to your app p
 
 At build time, the fonts are copied to your app package.
 
-For more information, see [Fonts](~/user-interface/fonts.md).
+<!-- For more information, see [Fonts](~/user-interface/fonts.md). -->
 
 ### Splash screen
 
