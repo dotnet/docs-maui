@@ -48,11 +48,11 @@ The following XAML example creates and renders a composite shape, with the `Fill
 
 In this example, a composite shape made up of a series of concentric rings is displayed:
 
-:::image type="content" source="media/fillrule/evenodd.png" alt-text="Composite shape with EvenOdd fill rule.":::
+:::image type="content" source="media/fillrule/evenodd.png" alt-text="Composite shape with EvenOdd fill rule." border="false":::
 
 In the composite shape, notice that the center and third rings are not filled. This is because a ray drawn from any point within either of those two rings passes through an even number of segments:
 
-:::image type="content" source="media/fillrule/evenodd-annotated.png" alt-text="Annotated composite shape with EvenOdd fill rule.":::
+:::image type="content" source="media/fillrule/evenodd-annotated.png" alt-text="Annotated composite shape with EvenOdd fill rule." border="false":::
 
 In the image above, the red circles represent points, and the lines represent arbitrary rays. For the upper point, the two arbitrary rays each pass through an even number of line segments. Therefore, the ring the point is in isn't filled. For the lower point, the two arbitrary rays each pass through an odd number of line segments. Therefore, the ring the point is in is filled.
 
@@ -88,11 +88,11 @@ The following XAML example creates and renders a composite shape, with the `Fill
 
 In this example, a composite shape made up of a series of concentric rings is displayed:
 
-:::image type="content" source="media/fillrule/nonzero.png" alt-text="Diagram shows four concentric circles, all filled in.":::
+:::image type="content" source="media/fillrule/nonzero.png" alt-text="Diagram shows four concentric circles, all filled in." border="false":::
 
 In the composite shape, notice that all rings are filled. This is because all the segments are running in the same direction, and so a ray drawn from any point will cross one or more segments and the sum of the crossings will not equal zero:
 
-:::image type="content" source="media/fillrule/nonzero-annotated.png" alt-text="Diagram shows the circles from the previous diagram with directional arrows and a ray annotated with + 1 for each circle it crosses.":::
+:::image type="content" source="media/fillrule/nonzero-annotated.png" alt-text="Diagram shows the circles from the previous diagram with directional arrows and a ray annotated with + 1 for each circle it crosses." border="false":::
 
 In the image above the red arrows represent the direction the segments are drawn, and black arrow represents an arbitrary ray running from a point in the innermost ring. Starting with a value of zero, for each segment that the ray crosses, a value of one is added because the segment crosses the ray from left to right.
 
@@ -159,11 +159,11 @@ A more complex shape with segments running in different directions is required t
 
 In this example, a series of arc segments are drawn, that aren't closed:
 
-:::image type="content" source="media/fillrule/nonzero-gaps.png" alt-text="Diagram shows four concentric circles, with the outmost and third from outermost filled in.":::
+:::image type="content" source="media/fillrule/nonzero-gaps.png" alt-text="Diagram shows four concentric circles, with the outmost and third from outermost filled in." border="false":::
 
 In the image above, the third arc from the center is not filled. This is because the sum of the values from a given ray crossing the segments in its path is zero:
 
-:::image type="content" source="media/fillrule/nonzero-gaps-annotated.png" alt-text="Diagram shows the circles from the previous diagram with directional arrows and two rays annotated with + 1 or – 1 for each circle they cross.":::
+:::image type="content" source="media/fillrule/nonzero-gaps-annotated.png" alt-text="Diagram shows the circles from the previous diagram with directional arrows and two rays annotated with + 1 or – 1 for each circle they cross." border="false":::
 
 In the image above, the red circle represents a point, the black lines represent arbitrary rays that move out from the point in the non-filled region, and the red arrows represent the direction the segments are drawn. As can be seen, the sum of the values from the rays crossing the segments is zero:
 
