@@ -539,7 +539,7 @@ These properties are backed by `BindableProperty` objects, which means that they
 > [!NOTE]
 > The `Children` property is the `ContentProperty` of the `GeometryGroup` class, and so does not need to be explicitly set from XAML.
 
-For more information about the `FillRule` enumeration, see [.NET MAUI Shapes: Fill rules](fillrules.md).
+For more information about the `FillRule` enumeration, see [Fill rules](fillrules.md).
 
 To draw a composite geometry, set the required `Geometry` objects as the children of a `GeometryGroup`, and display them with a `Path` object. The following XAML shows an example of this:
 
@@ -582,7 +582,7 @@ The `RoundRectangleGeometry` class, which derives from the `GeometryGroup` class
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
 > [!NOTE]
-> The fill rule used by the `RoundRectangleGeometry` is `FillRule.Nonzero`. For more information about fill rules, see [.NET MAUI Shapes: Fill rules](fillrules.md).
+> The fill rule used by the `RoundRectangleGeometry` is `FillRule.Nonzero`. For more information about fill rules, see [Fill rules](fillrules.md).
 
 The following example shows how to create and render a `RoundRectangleGeometry` in a `Path` object:
 

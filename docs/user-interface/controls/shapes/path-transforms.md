@@ -227,10 +227,10 @@ These properties are backed by `BindableProperty` objects, which means that they
 
 A `CompositeTransform` applies transforms in this order:
 
-1. Scale (`ScaleX` and `ScaleY`.
-1. Skew (`SkewX` and `SkewY`.
-1. Rotate (`Rotation`.
-1. Translate (`TranslateX`, `TranslateY`.
+1. Scale (`ScaleX` and `ScaleY`).
+1. Skew (`SkewX` and `SkewY`).
+1. Rotate (`Rotation`).
+1. Translate (`TranslateX`, `TranslateY`).
 
 If you want to apply multiple transforms to an object in a different order, you should create a `TransformGroup` and insert the transforms in your intended order.
 

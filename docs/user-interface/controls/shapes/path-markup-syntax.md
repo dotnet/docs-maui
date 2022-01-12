@@ -21,10 +21,10 @@ Path markup syntax is composed of an optional `FillRule` value, and one or more 
 
 In this syntax:
 
-- *fillRule* is an optional `Microsoft.Maui.Controls.Shapes.FillRule` that specifies whether the geometry should use the `EvenOdd` or `Nonzero` `FillRule`. `F0` is used to specify the `EvenOdd` fill rule, while `F1` is used to specify the `Nonzero` fill rule. For more information about fill rules, see [Fill rules](fillrules.md).
+- *fillRule* is an optional `FillRule` that specifies whether the geometry should use the `EvenOdd` or `Nonzero` fill rule. `F0` is used to specify the `EvenOdd` fill rule, while `F1` is used to specify the `Nonzero` fill rule. For more information about fill rules, see [Fill rules](fillrules.md).
 - *figureDescription* represents a figure composed of a move command, draw commands, and an optional close command. A move command specifies the start point of the figure. Draw commands describe the figure's contents, and the optional close command closes the figure.
 
-In the example above, the path markup syntax specifies a start point using the move command (`M`, a series of straight lines using the line command (`L`, and closes the path with the close command (`Z`.
+In the example above, the path markup syntax specifies a start point using the move command (`M`), a series of straight lines using the line command (`L`), and closes the path with the close command (`Z`).
 
 In path markup syntax, spaces are not required before or after commands. In addition, two numbers don't have to be separated by a comma or white space, but this can only be achieved when the string is unambiguous.
 
@@ -49,14 +49,14 @@ In this syntax, *startPoint* is a `Point` structure that specifies the start poi
 
 A draw command can consist of several shape commands. The following draw commands are available:
 
-- Line (`L` or `l`.
-- Horizontal line (`H` or `h`.
-- Vertical line (`V` or `v`.
-- Elliptical arc (`A` or `a`.
-- Cubic Bezier curve (`C` or `c`.
-- Quadratic Bezier curve (`Q` or `q`.
-- Smooth cubic Bezier curve (`S` or `s`.
-- Smooth quadratic Bezier curve (`T` or `t`.
+- Line (`L` or `l`).
+- Horizontal line (`H` or `h`).
+- Vertical line (`V` or `v`).
+- Elliptical arc (`A` or `a`).
+- Cubic Bezier curve (`C` or `c`).
+- Quadratic Bezier curve (`Q` or `q`).
+- Smooth cubic Bezier curve (`S` or `s`).
+- Smooth quadratic Bezier curve (`T` or `t`).
 
 Each draw command is specified with a case-insensitive letter. When sequentially entering more than one command of the same type, you can omit the duplicate command entry. For example `L 100,200 300,400` is equivalent to `L 100,200 L 300,400`.
 
