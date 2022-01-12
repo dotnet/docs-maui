@@ -56,6 +56,8 @@ landingContent:
             url: user-interface/graphics/index.md
           - text: Layouts
             url: user-interface/layouts/index.md
+          - text: Shapes
+            url: user-interface/controls/shapes/index.md
           - text: Shadows
             url: user-interface/shadow.md
           - text: Splash screen

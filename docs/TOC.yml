@@ -25,12 +25,40 @@
       items:
         - name: Controls
           items:
-            - name: BlazorWebView
-              href: user-interface/controls/blazorwebview.md
-            - name: Border
-              href: user-interface/controls/border.md
-            - name: GraphicsView
-              href: user-interface/controls/graphicsview.md
+            - name: Present data
+              items:
+                - name: Border
+                  href: user-interface/controls/border.md
+                - name: BlazorWebView
+                  href: user-interface/controls/blazorwebview.md
+                - name: GraphicsView
+                  href: user-interface/controls/graphicsview.md
+                - name: Shapes
+                  items:
+                    - name: Overview
+                      href: user-interface/controls/shapes/index.md
+                    - name: Ellipse
+                      href: user-interface/controls/shapes/ellipse.md
+                    - name: Fill rules
+                      href: user-interface/controls/shapes/fillrules.md
+                    - name: Geometries
+                      href: user-interface/controls/shapes/geometries.md
+                    - name: Line
+                      href: user-interface/controls/shapes/line.md
+                    - name: Paths
+                      items:
+                        - name: Path
+                          href: user-interface/controls/shapes/path.md
+                        - name: Path markup syntax
+                          href: user-interface/controls/shapes/path-markup-syntax.md
+                        - name: Path transforms
+                          href: user-interface/controls/shapes/path-transforms.md
+                    - name: Polygon
+                      href: user-interface/controls/shapes/polygon.md
+                    - name: Polyline
+                      href: user-interface/controls/shapes/polyline.md
+                    - name: Rectangle
+                      href: user-interface/controls/shapes/rectangle.md
         - name: Customize controls
           href: user-interface/handlers/customize.md
         - name: Graphics
@@ -62,7 +90,7 @@
             - name: FlexLayout
               href: user-interface/layouts/flexlayout.md
             - name: GridLayout
-              href: user-interface/layouts/gridlayout.md              
+              href: user-interface/layouts/gridlayout.md
             - name: HorizontalStackLayout
               href: user-interface/layouts/horizontalstacklayout.md
             - name: StackLayout
