@@ -56,8 +56,8 @@ In a .NET MAUI app, you write code that primarily interacts with the .NET MAUI A
 - Multiple page types for creating rich navigation types, like drawers.
 - Support for data-binding, for more elegant and maintainable development patterns.
 - The ability to customize handlers to enhance the way in which UI elements are presented.
-- Essential cross-platform APIs for accessing native device features. These APIs enable apps to access things like the GPS, the accelerometer, and battery and network states. For more information, see [.NET MAUI essentials](#net-maui-essentials).
-- A cross-platform graphics library, that provides a common API to target multiple platforms, which enables you to share your 2D drawing code between platforms, or mix and match graphics implementations with a single app.
+- Essential cross-platform APIs for accessing native device features. These APIs enable apps to access device features such as the GPS, the accelerometer, and battery and network states. For more information, see [.NET MAUI essentials](#net-maui-essentials).
+- Cross-platform graphics functionality, that provides a drawing canvas that supports drawing and painting shapes an images, compositing operations, and graphical object transforms.
 - A single project system that uses multi-targeting to target Android, iOS, macOS, and Windows. For more information, see [.NET MAUI Single project](#net-maui-single-project).
 - .NET hot reload, so that you can modify both your XAML and your managed source code while the app is running, then observe the result of your modifications without rebuilding the app. For more information, see [.NET hot reload](#net-hot-reload).
 
