@@ -124,7 +124,7 @@ A slash screen can be added to your app project by dragging an image into the _R
 
 At build time, the splash screen image is resized to the correct size for the target platform and device. The resized splash screen is then added to your app package.
 
-For more information, see [Splash screens](~/user-interface/splashscreen.md).
+For more information, see [Splash screens](~/user-interface/images/splashscreen.md).
 
 ### Raw assets
 
