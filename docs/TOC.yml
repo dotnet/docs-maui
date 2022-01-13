@@ -29,6 +29,8 @@
               href: user-interface/controls/blazorwebview.md
             - name: Border
               href: user-interface/controls/border.md
+            - name: Frame
+              href: user-interface/controls/frame.md
             - name: GraphicsView
               href: user-interface/controls/graphicsview.md
         - name: Customize controls
@@ -62,7 +64,7 @@
             - name: FlexLayout
               href: user-interface/layouts/flexlayout.md
             - name: GridLayout
-              href: user-interface/layouts/gridlayout.md              
+              href: user-interface/layouts/gridlayout.md
             - name: HorizontalStackLayout
               href: user-interface/layouts/horizontalstacklayout.md
             - name: StackLayout
