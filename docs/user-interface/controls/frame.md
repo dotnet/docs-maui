@@ -6,7 +6,7 @@ ms.date: 01/13/2022
 
 # Frame
 
-The .NET Multi-platform App UI (.NET MAUI) `Frame` class is used to wrap a view or layout with a border that can be configured with color, shadow, and other options. Frames can be used to create borders around controls but can be used to create more complex UI.
+The .NET Multi-platform App UI (.NET MAUI) `Frame` class is used to wrap a view or layout with a border that can be configured with color, shadow, and other options. Frames can be used to create borders around controls but can also be used to create more complex UI.
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
@@ -82,9 +82,7 @@ The following screenshot shows the example card:
 
 ## Round elements
 
-The `CornerRadius` property of the `Frame` control is one approach to creating a circle image.
-
-The following XAML shows how to create a circle image with a `Frame`:
+The `CornerRadius` property of the `Frame` control is one approach to creating a circle image. The following XAML shows how to create a circle image with a `Frame`:
 
 ```xaml
 <Frame Margin="10"
