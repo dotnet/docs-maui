@@ -10,10 +10,6 @@ The .NET Multi-platform App UI (.NET MAUI) `Frame` class is used to wrap a view 
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
-The following screenshot shows examples of using a `Frame`:
-
-:::image type="content" source="media/frame/frame.png" alt-text="Screenshot of Frame examples.":::
-
 The `Frame` class defines the following properties:
 
 - `BorderColor`, of type `Color`, determines the color of the `Frame` border.
@@ -30,26 +26,16 @@ A `Frame` object typically wraps another control, such as a `Label`:
 
 ```xaml
 <Frame>
-  <Label Text="Example" />
+  <Label Text="Frame wrapped around a Label" />
 </Frame>
 ```
 
-The equivalent C# code is:
-
-```csharp
-Frame frame = new Frame
-{
-    Content = new Label { Text = "Example" }
-};
-```
-
-`Frame` objects can be customized with rounded corners, colorized borders, and drop shadows by setting properties:
+The appearance of `Frame` objects can be customized by setting properties:
 
 ```xaml
-<Frame BorderColor="Orange"
-       CornerRadius="10"
-       HasShadow="True">
-  <Label Text="Example" />
+<Frame BorderColor="Gray"
+       CornerRadius="10">
+  <Label Text="Frame wrapped around a Label" />
 </Frame>
 ```
 
@@ -58,12 +44,15 @@ The equivalent C# code is:
 ```csharp
 Frame frame = new Frame
 {
-    BorderColor = Colors.Orange,
+    BorderColor = Colors.Gray
     CornerRadius = 10,
-    HasShadow = true,
-    Content = new Label { Text = "Example" }
+    Content = new Label { Text = "Frame wrapped around a Label" }
 };
 ```
+
+The following screenshot shows the example `Frame`:
+
+:::image type="content" source="media/frame/frame.png" alt-text="Screenshot of Frame examples.":::
 
 ## Create a card with a Frame
 
