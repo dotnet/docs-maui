@@ -1,0 +1,119 @@
+---
+title: "Frame"
+description: "The .NET MAUI Frame class is used to wrap a view or layout with a border that can be configured with color, shadow, and other options."
+ms.date: 01/13/2022
+---
+
+# Frame
+
+The .NET Multi-platform App UI (.NET MAUI) `Frame` class is used to wrap a view or layout with a border that can be configured with color, shadow, and other options. Frames can be used to create borders around controls but can be used to create more complex UI.
+
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
+
+The following screenshot shows examples of using a `Frame`:
+
+:::image type="content" source="media/frame/frame.png" alt-text="Screenshot of Frame examples.":::
+
+The `Frame` class defines the following properties:
+
+- `BorderColor`, of type `Color`, determines the color of the `Frame` border.
+- `CornerRadius`, of type `float`, determines the rounded radius of the corner.
+- `HasShadow`, of type `bool`, determines whether the frame has a drop shadow.
+
+These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+
+The `Frame` class inherits from `ContentView`, which provides a `Content` bindable property. The `Content` property is the `ContentProperty` of the `Frame` class, and therefore does not need to be explicitly set from XAML.
+
+## Create a Frame
+
+A `Frame` object typically wraps another control, such as a `Label`:
+
+```xaml
+<Frame>
+  <Label Text="Example" />
+</Frame>
+```
+
+The equivalent C# code is:
+
+```csharp
+Frame frame = new Frame
+{
+    Content = new Label { Text = "Example" }
+};
+```
+
+`Frame` objects can be customized with rounded corners, colorized borders, and drop shadows by setting properties:
+
+```xaml
+<Frame BorderColor="Orange"
+       CornerRadius="10"
+       HasShadow="True">
+  <Label Text="Example" />
+</Frame>
+```
+
+The equivalent C# code is:
+
+```csharp
+Frame frame = new Frame
+{
+    BorderColor = Colors.Orange,
+    CornerRadius = 10,
+    HasShadow = true,
+    Content = new Label { Text = "Example" }
+};
+```
+
+## Create a card with a Frame
+
+Combining a `Frame` object with a layout such as a `StackLayout` enables the creation of more complex UI.
+
+The following XAML shows how to create a card with a `Frame`:
+
+```xaml
+<Frame BorderColor="Gray"
+       CornerRadius="5"
+       Padding="8">
+  <StackLayout>
+    <Label Text="Card Example"
+           FontSize="Medium"
+           FontAttributes="Bold" />
+    <BoxView Color="Gray"
+             HeightRequest="2"
+             HorizontalOptions="Fill" />
+    <Label Text="Frames can wrap more complex layouts to create more complex UI components, such as this card!"/>
+  </StackLayout>
+</Frame>
+```
+
+The following screenshot shows the example card:
+
+:::image type="content" source="media/frame/frame-card.png" alt-text="Screenshot of a card created with a Frame.":::
+
+## Round elements
+
+The `CornerRadius` property of the `Frame` control is one approach to creating a circle image.
+
+The following XAML shows how to create a circle image with a `Frame`:
+
+```xaml
+<Frame Margin="10"
+       BorderColor="Black"
+       CornerRadius="50"
+       HeightRequest="60"
+       WidthRequest="60"
+       IsClippedToBounds="True"
+       HorizontalOptions="Center"
+       VerticalOptions="Center">
+  <Image Source="outdoors.jpg"
+         Aspect="AspectFill"
+         Margin="-20"
+         HeightRequest="100"
+         WidthRequest="100" />
+</Frame>
+```
+
+The following screenshot shows the example circle image:
+
+:::image type="content" source="media/frame/circle-image.png" alt-text="Screenshot of a circle image created with a Frame.":::
