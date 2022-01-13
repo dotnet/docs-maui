@@ -31,6 +31,8 @@
               href: user-interface/controls/border.md
             - name: GraphicsView
               href: user-interface/controls/graphicsview.md
+            - name: ScrollView
+              href: user-interface/controls/scrollview.md
         - name: Customize controls
           href: user-interface/handlers/customize.md
         - name: Graphics
@@ -62,7 +64,7 @@
             - name: FlexLayout
               href: user-interface/layouts/flexlayout.md
             - name: GridLayout
-              href: user-interface/layouts/gridlayout.md              
+              href: user-interface/layouts/gridlayout.md
             - name: HorizontalStackLayout
               href: user-interface/layouts/horizontalstacklayout.md
             - name: StackLayout
