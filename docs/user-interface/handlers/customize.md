@@ -32,20 +32,17 @@ Handlers are typically customized to augment the appearance and behavior of a na
 The following example customizes the background color of every control in the app, on Android, to cyan:
 
 ```csharp
-using Microsoft.Maui;
-using Microsoft.Maui.Controls;
-
 public partial class App : Application
 {
     public App()
     {
         InitializeComponent();
 
-#if __ANDROID__
+#if ANDROID
         Microsoft.Maui.Handlers.ViewHandler.ViewMapper.AppendToMapping(nameof(IView.Background), (h, v) =>
         {
             (h.NativeView as Android.Views.View).SetBackgroundColor(Microsoft.Maui.Graphics.Colors.Cyan.ToNative());
-        };
+        });
 #endif
     }
 }
@@ -56,20 +53,16 @@ public partial class App : Application
 The following example removes the underline from all `Entry` controls in the app, on Android:
 
 ```csharp
-using Microsoft.Maui;
-using Microsoft.Maui.Controls;
-using Microsoft.Maui.Graphics;
-
 public partial class MainPage : ContentPage
 {
     public MainPage()
     {
         InitializeComponent();
-#if __ANDROID__
+#if ANDROID
         Microsoft.Maui.Handlers.EntryHandler.EntryMapper.AppendToMapping("NoUnderline", (h, v) =>
         {
             h.NativeView.BackgroundTintList = ColorStateList.ValueOf(Colors.Transparent.ToAndroid());
-        };
+        });
 #endif
     }
 }
@@ -80,8 +73,6 @@ public partial class MainPage : ContentPage
 Handlers for specific control instances can be customized by subclassing the control, and then by modifying the handler for the parent control only when the control is of the subclassed type. For example, to customize specific `Entry` controls on a page that contains multiple `Entry` controls, you should first subclass the `Entry` control:
 
 ```csharp
-using Microsoft.Maui.Controls;
-
 namespace MyMauiApp
 {
     public class MyEntry : Entry
@@ -93,10 +84,6 @@ namespace MyMauiApp
 You can then customize the `EntryHandler` to perform the desired modification to `MyEntry` instances:
 
 ```csharp
-using Microsoft.Maui;
-using Microsoft.Maui.Controls;
-using Microsoft.Maui.Graphics;
-
 namespace MauiApp1
 {
     public partial class App : Application
@@ -109,16 +96,16 @@ namespace MauiApp1
             {
                 if (view is MyEntry)
                 {
-#if __ANDROID__
+#if ANDROID
                   handler.NativeView.SetBackgroundColor(Colors.Red.ToNative());
-#elif __IOS__
+#elif IOS
                   handler.NativeView.BackgroundColor = Colors.Red.ToNative();
                   handler.NativeView.BorderStyle = UIKit.UITextBorderStyle.Line;
 #elif WINDOWS
                   handler.NativeView.Background = Colors.Red.ToNative();
 #endif
                 }
-            };
+            });
         }
     }
 }

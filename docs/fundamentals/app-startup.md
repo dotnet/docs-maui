@@ -15,10 +15,8 @@ Each platform entry point calls a `CreateMauiApp` method on the static `MauiProg
 The `MauiProgram` class must at a minimum provide an app to run:
 
 ```csharp
-using Microsoft.Maui;
-using Microsoft.Maui.Controls.Compatibility;
-using Microsoft.Maui.Controls.Hosting;
 using Microsoft.Maui.Hosting;
+using Microsoft.Maui.Controls.Hosting;
 
 namespace MyMauiApp
 {
@@ -39,9 +37,6 @@ namespace MyMauiApp
 The `App` class derives from the `Application` class:
 
 ```csharp
-using Microsoft.Maui;
-using Microsoft.Maui.Controls;
-using Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific;
 using Application = Microsoft.Maui.Controls.Application;
 
 namespace MyMauiApp
@@ -65,10 +60,8 @@ In the example above, `MainPage` is a `ContentPage` that defines the UI for the 
 Fonts can be added to your app and referenced by filename or alias. This is accomplished by invoking the `ConfigureFonts` method on the `MauiAppBuilder` object. Then, on the `IFontCollection` object, call the `AddFont` method to add the required font:
 
 ```csharp
-using Microsoft.Maui;
-using Microsoft.Maui.Controls.Compatibility;
-using Microsoft.Maui.Controls.Hosting;
 using Microsoft.Maui.Hosting;
+using Microsoft.Maui.Controls.Hosting;
 
 namespace MyMauiApp
 {
@@ -137,10 +130,8 @@ builder
 To register your own handlers, call the `ConfigureMauiHandlers` method on the `MauiAppBuilder` object. Then, on the `IMauiHandlersCollection` object, call the `AddHandler` method to add the required handler:
 
 ```csharp
-using Microsoft.Maui;
-using Microsoft.Maui.Controls.Compatibility;
-using Microsoft.Maui.Controls.Hosting;
 using Microsoft.Maui.Hosting;
+using Microsoft.Maui.Controls.Hosting;
 
 namespace MyMauiApp
 {
@@ -168,10 +159,9 @@ In this example, the `MyEntryHandler` handler is registered against the `MyEntry
 To use controls backed by .NET MAUI handlers, with specific controls backed by Xamarin.Forms renderers, call the `ConfigureMauiHandlers` method on the `MauiAppBuilder` object. Then, on the `IMauiHandlersCollection` object, call the `AddCompatibilityRenderer` method to add the required renderer:
 
 ```csharp
-using Microsoft.Maui;
 using Microsoft.Maui.Hosting;
-using Microsoft.Maui.Controls.Compatibility;
 using Microsoft.Maui.Controls.Hosting;
+using Microsoft.Maui.Controls.Compatibility;
 
 namespace MyMauiApp
 {
@@ -182,7 +172,7 @@ namespace MyMauiApp
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
-                #if __ANDROID__
+                #if ANDROID
                 .ConfigureMauiHandlers(handlers =>
                 {
                     handlers.AddCompatibilityRenderer(typeof(Microsoft.Maui.Controls.BoxView),
@@ -190,7 +180,7 @@ namespace MyMauiApp
                     handlers.AddCompatibilityRenderer(typeof(Microsoft.Maui.Controls.Frame),
                         typeof(Microsoft.Maui.Controls.Compatibility.Platform.Android.FastRenderers.FrameRenderer));
                 });
-                #elif __IOS__
+                #elif IOS
                 .ConfigureMauiHandlers(handlers =>
                 {
                     handlers.AddCompatibilityRenderer(typeof(Microsoft.Maui.Controls.BoxView),
