@@ -21,7 +21,7 @@ The `AbsoluteLayout` class defines the following properties:
 - `LayoutBounds`, of type `Rectangle`, which is an attached property that represents the position and size of a child. The default value of this property is (0,0,AutoSize,AutoSize).
 - `LayoutFlags`, of type `AbsoluteLayoutFlags`, which is an attached property that indicates whether properties of the layout bounds used to position and size the child are interpreted proportionally. The default value of this property is `AbsoluteLayoutFlags.None`.
 
-These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings and styled. For more information about attached properties, see [.NET MAUI Attached Properties](~/xamarin-forms/xaml/attached-properties.md).
+These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings and styled. <!--For more information about attached properties, see [.NET MAUI Attached Properties](~/xaml/attached-properties.md).--?
 
 <!--
 > [!TIP]
