@@ -23,6 +23,20 @@
           href: fundamentals/single-project.md
     - name: User interface
       items:
+        - name: Brushes
+          items:
+            - name: Overview
+              href: user-interface/brushes/index.md
+            - name: Solid colors
+              href: user-interface/brushes/solidcolor.md
+            - name: Gradients
+              items:
+                - name: Overview
+                  href: user-interface/brushes/gradient.md
+                - name: Linear gradients
+                  href: user-interface/brushes/lineargradient.md
+                - name: Radial gradients
+                  href: user-interface/brushes/radialgradient.md                                    
         - name: Controls
           items:
             - name: BlazorWebView
@@ -62,7 +76,7 @@
             - name: FlexLayout
               href: user-interface/layouts/flexlayout.md
             - name: GridLayout
-              href: user-interface/layouts/gridlayout.md              
+              href: user-interface/layouts/gridlayout.md
             - name: HorizontalStackLayout
               href: user-interface/layouts/horizontalstacklayout.md
             - name: StackLayout
