@@ -38,7 +38,7 @@ public partial class App : Application
     {
         InitializeComponent();
 
-#if __ANDROID__
+#if ANDROID
         Microsoft.Maui.Handlers.ViewHandler.ViewMapper.AppendToMapping(nameof(IView.Background), (h, v) =>
         {
             (h.NativeView as Android.Views.View).SetBackgroundColor(Microsoft.Maui.Graphics.Colors.Cyan.ToNative());
@@ -58,7 +58,7 @@ public partial class MainPage : ContentPage
     public MainPage()
     {
         InitializeComponent();
-#if __ANDROID__
+#if ANDROID
         Microsoft.Maui.Handlers.EntryHandler.EntryMapper.AppendToMapping("NoUnderline", (h, v) =>
         {
             h.NativeView.BackgroundTintList = ColorStateList.ValueOf(Colors.Transparent.ToAndroid());
@@ -96,9 +96,9 @@ namespace MauiApp1
             {
                 if (view is MyEntry)
                 {
-#if __ANDROID__
+#if ANDROID
                   handler.NativeView.SetBackgroundColor(Colors.Red.ToNative());
-#elif __IOS__
+#elif IOS
                   handler.NativeView.BackgroundColor = Colors.Red.ToNative();
                   handler.NativeView.BorderStyle = UIKit.UITextBorderStyle.Line;
 #elif WINDOWS

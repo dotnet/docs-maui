@@ -172,7 +172,7 @@ namespace MyMauiApp
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
-                #if __ANDROID__
+                #if ANDROID
                 .ConfigureMauiHandlers(handlers =>
                 {
                     handlers.AddCompatibilityRenderer(typeof(Microsoft.Maui.Controls.BoxView),
@@ -180,7 +180,7 @@ namespace MyMauiApp
                     handlers.AddCompatibilityRenderer(typeof(Microsoft.Maui.Controls.Frame),
                         typeof(Microsoft.Maui.Controls.Compatibility.Platform.Android.FastRenderers.FrameRenderer));
                 });
-                #elif __IOS__
+                #elif IOS
                 .ConfigureMauiHandlers(handlers =>
                 {
                     handlers.AddCompatibilityRenderer(typeof(Microsoft.Maui.Controls.BoxView),

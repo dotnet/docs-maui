@@ -164,7 +164,7 @@ namespace PlatformLifecycleDemo
                 .UseMauiApp<App>()
                 .ConfigureLifecycleEvents(events =>
                 {
-#if __ANDROID__
+#if ANDROID
                     events.AddAndroid(android => android
                         .OnActivityResult((activity, requestCode, resultCode, data) => LogEvent("OnActivityResult", requestCode.ToString()))
                         .OnStart((activity) => LogEvent("OnStart"))
@@ -222,7 +222,7 @@ namespace PlatformLifecycleDemo
                 .UseMauiApp<App>()
                 .ConfigureLifecycleEvents(events =>
                 {
-#if __IOS__
+#if IOS
                     events.AddiOS(ios => ios
                         .OnActivated((app) => LogEvent("OnActivated"))
                         .OnResignActivation((app) => LogEvent("OnResignActivation"))
