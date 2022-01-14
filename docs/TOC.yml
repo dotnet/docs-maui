@@ -17,6 +17,8 @@
       items:
         - name: Accessibility
           href: fundamentals/accessibility.md
+        - name: App lifecycle
+          href: fundamentals/app-lifecycle.md
         - name: App startup
           href: fundamentals/app-startup.md
         - name: Single project
@@ -36,7 +38,7 @@
                 - name: Linear gradients
                   href: user-interface/brushes/lineargradient.md
                 - name: Radial gradients
-                  href: user-interface/brushes/radialgradient.md                                    
+                  href: user-interface/brushes/radialgradient.md
         - name: Controls
           items:
             - name: BlazorWebView
@@ -67,6 +69,8 @@
               href: user-interface/graphics/windingmodes.md
         - name: Images
           items:
+            - name: App icons
+              href: user-interface/images/app-icons.md
             - name: Splash screen
               href: user-interface/images/splashscreen.md
         - name: Layouts
