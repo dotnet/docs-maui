@@ -17,12 +17,28 @@
       items:
         - name: Accessibility
           href: fundamentals/accessibility.md
+        - name: App lifecycle
+          href: fundamentals/app-lifecycle.md
         - name: App startup
           href: fundamentals/app-startup.md
         - name: Single project
           href: fundamentals/single-project.md
     - name: User interface
       items:
+        - name: Brushes
+          items:
+            - name: Overview
+              href: user-interface/brushes/index.md
+            - name: Solid colors
+              href: user-interface/brushes/solidcolor.md
+            - name: Gradients
+              items:
+                - name: Overview
+                  href: user-interface/brushes/gradient.md
+                - name: Linear gradients
+                  href: user-interface/brushes/lineargradient.md
+                - name: Radial gradients
+                  href: user-interface/brushes/radialgradient.md
         - name: Controls
           items:
             - name: BlazorWebView
@@ -31,6 +47,8 @@
               href: user-interface/controls/border.md
             - name: ContentView
               href: user-interface/controls/contentview.md
+            - name: Frame
+              href: user-interface/controls/frame.md
             - name: GraphicsView
               href: user-interface/controls/graphicsview.md
         - name: Customize controls
@@ -55,6 +73,8 @@
               href: user-interface/graphics/windingmodes.md
         - name: Images
           items:
+            - name: App icons
+              href: user-interface/images/app-icons.md
             - name: Splash screen
               href: user-interface/images/splashscreen.md
         - name: Layouts

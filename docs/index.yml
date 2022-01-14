@@ -36,6 +36,8 @@ landingContent:
         links:
           - text: Accessibility
             url: fundamentals/accessibility.md
+          - text: App lifecycle
+            url: fundamentals/app-lifecycle.md
           - text: App startup
             url: fundamentals/app-startup.md
           - text: Single project
@@ -48,6 +50,8 @@ landingContent:
             url: user-interface/controls/blazorwebview.md
           - text: Border
             url: user-interface/controls/border.md
+          - text: Brushes
+            url: user-interface/brushes/index.md
           - text: Customize controls
             url: user-interface/handlers/customize.md
           - text: GraphicsView
