@@ -14,30 +14,28 @@ The .NET Multi-platform App UI (.NET MAUI) `ContentView` is a control that enabl
 
 The `ContentView` class defines a `Content` property, of type `View`, which represents the content of the `ContentView`. This property is backed by a `BindableProperty` object, which means that it can be the target of data bindings, and styled.
 
-The `ContentView` class derives from the `TemplatedView` class, which defines the following property:
-
-- `ControlTemplate`, of type `ControlTemplate`, which defines the appearance of the control.
-
-For more information about the `ControlTemplate` property, see [Customize appearance with a ControlTemplate](#customize-appearance-with-a-controltemplate).
+The `ContentView` class derives from the `TemplatedView` class, which defines the `ControlTemplate` bindable property, of type `ControlTemplate`, which defines the appearance of the control. For more information about the `ControlTemplate` property, see [Customize appearance with a ControlTemplate](#customize-appearance-with-a-controltemplate).
 
 > [!NOTE]
 > A `ContentView` can only contain a single child.
 
 ## Create a custom control
 
-The `ContentView` class offers little functionality by itself but can be used to create a custom control. This article demonstrates how to create a `CardView` control, which is a UI element that displays an image, title, and description in a card-like layout.
-
-The process for creating a custom control is to:
+The `ContentView` class offers little functionality by itself but can be used to create a custom control. The process for creating a custom control is to:
 
 1. Create a class that derives from the `ContentView` class.
 1. Define any control properties or events in the code-behind file for the custom control.
 1. Define the UI for the custom control.
 
+This article demonstrates how to create a `CardView` control, which is a UI element that displays an image, title, and description in a card-like layout.
+
 ### Create a ContentView-derived class
 
-A `ContentView` class can be created using the ContentView item template in Visual Studio. This template creates a XAML file in which the UI for the custom control can be defined, and a code-behind file in which any control properties, events, and other logic can be defined.
+A `ContentView`-derived class can be created using the ContentView item template in Visual Studio. This template creates a XAML file in which the UI for the custom control can be defined, and a code-behind file in which any control properties, events, and other logic can be defined.
 
 ### Define control properties
+
+Any control properties, events, and other logic should be defined in the code-behind file for the `ContentView`-derived class.
 
 The `CardView` custom control defines the following properties:
 
@@ -50,7 +48,7 @@ The `CardView` custom control defines the following properties:
 
 Each property is backed by a `BindableProperty` instance.
 
-The following example shows the code-behind file for the `CardView` class:
+The following example shows the `CardTitle` bindable property in the code-behind file for the `CardView` class:
 
 ```csharp
 public partial class CardView : ContentView
@@ -71,11 +69,11 @@ public partial class CardView : ContentView
 }
 ```
 
-For more information about `BindableProperty` objects, see [Bindable Properties](~/xaml/bindable-properties.md).
+<!-- For more information about `BindableProperty` objects, see [Bindable Properties](~/xaml/bindable-properties.md). -->
 
 ### Define the UI
 
-The custom control UI uses a `ContentView` as the root element for the `CardView` control:
+The custom control UI can be defined in the XAML file for the `ContentView`-derived class, which uses a `ContentView` as the root element of the control:
 
 ```XAML
 <ContentView ...
@@ -104,14 +102,14 @@ The custom control UI uses a `ContentView` as the root element for the `CardView
 </ContentView>
 ```
 
-The `ContentView` element sets the `x:Name` property to `this`, which can be used to access the object bound to the `CardView` instance. Elements in the layout set bindings on their properties to values defined on the bound object. For more information about data binding, see [Data Binding](~/fundamentals/data-binding/index.md).
+The `ContentView` element sets the `x:Name` property to `this`, which can be used to access the object bound to the `CardView` instance. Elements in the layout set bindings on their properties to values defined on the bound object. <!-- For more information about data binding, see [Data Binding](~/fundamentals/data-binding/index.md).-->
 
 > [!NOTE]
-> The `FallbackValue` property provides a default value in case the binding is `null`.
+> The `FallbackValue` property in the `Binding` expression provides a default value in case the binding is `null`.
 
 ## Instantiate a custom control
 
-A reference to the custom control namespace must be added to a page that instantiates the custom control. Once the reference has been added the `CardView` can be instantiated in XAML, and its properties defined:
+A reference to the custom control namespace must be added to the page that instantiates the custom control. Once the reference has been added the `CardView` can be instantiated, and its properties defined:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -135,11 +133,11 @@ The following screenshot shows multiple `CardView` objects:
 
 :::image type="content" source="media/contentview/cardview-list.png" alt-text="Screenshot of CardView objects.":::
 
-## Customize UI with a ControlTemplate
+## Customize appearance with a ControlTemplate
 
-A custom control that derives from the `ContentView` class can define its UI using XAML or code, or may not define its UI at all. A `ControlTemplate` can override the UI, regardless of how the UI is defined.
+A custom control that derives from the `ContentView` class can define its UI using XAML or code, or may not define its UI at all. A `ControlTemplate` can be used to override the control's appearance, regardless of how that appearance is defined.
 
-The `CardView` layout might occupy too much space for some use cases. A `ControlTemplate` can override the `CardView` layout to provide a more compact view, suitable for a condensed list:
+For example, a `CardView` layout might occupy too much space for some use cases. A `ControlTemplate` can be used to override the `CardView` layout to provide a more compact view, suitable for a condensed list:
 
 ```xaml
 <ContentPage.Resources>
@@ -174,11 +172,11 @@ The `CardView` layout might occupy too much space for some use cases. A `Control
 Data binding in a `ControlTemplate` uses the `TemplateBinding` markup extension to specify bindings. The `ControlTemplate` property can then be set to the defined `ControlTemplate` object, by using its `x:Key` value. The following example shows the `ControlTemplate` property set on a `CardView` instance:
 
 ```xaml
-<controls:CardView ControlTemplate="{StaticResource CardViewCompressed}"/>
+<controls:CardView ControlTemplate="{StaticResource CardViewCompressed}" />
 ```
 
-The following screenshot shows a standard `CardView` instance and a `CardView` whose `ControlTemplate` has been overridden:
+The following screenshot shows a standard `CardView` instance, and multiple `CardView` instances whose control templates have been overridden:
 
 :::image type="content" source="media/contentview/cardview-controltemplates.png" alt-text="Screenshot of CardView overridden with a ControlTemplate.":::
 
-For more information about control templates, see [Control Templates](~/fundamentals/templates/control-template.md).
+<!-- For more information about control templates, see [Control Templates](~/fundamentals/templates/control-template.md). -->
