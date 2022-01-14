@@ -46,16 +46,12 @@ landingContent:
     linkLists:
       - linkListType: concept
         links:
-          - text: BlazorWebView
-            url: user-interface/controls/blazorwebview.md
-          - text: Border
-            url: user-interface/controls/border.md
           - text: Brushes
             url: user-interface/brushes/index.md
+          - text: Controls
+            url: user-interface/controls/index.md
           - text: Customize controls
             url: user-interface/handlers/customize.md
-          - text: GraphicsView
-            url: user-interface/controls/graphicsview.md
           - text: Graphics
             url: user-interface/graphics/index.md
           - text: Layouts

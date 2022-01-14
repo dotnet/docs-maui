@@ -41,18 +41,38 @@
                   href: user-interface/brushes/radialgradient.md
         - name: Controls
           items:
-            - name: BlazorWebView
-              href: user-interface/controls/blazorwebview.md
-            - name: Border
-              href: user-interface/controls/border.md
-            - name: ContentView
-              href: user-interface/controls/contentview.md
-            - name: Frame
-              href: user-interface/controls/frame.md
-            - name: GraphicsView
-              href: user-interface/controls/graphicsview.md
-        - name: Customize controls
-          href: user-interface/handlers/customize.md
+            - name: Overview
+              href: user-interface/controls/index.md
+            - name: Customize controls
+              href: user-interface/handlers/customize.md
+            - name: Layouts
+              items:
+                - name: Overview
+                  href: user-interface/layouts/index.md
+                - name: FlexLayout
+                  href: user-interface/layouts/flexlayout.md
+                - name: GridLayout
+                  href: user-interface/layouts/gridlayout.md
+                - name: HorizontalStackLayout
+                  href: user-interface/layouts/horizontalstacklayout.md
+                - name: StackLayout
+                  href: user-interface/layouts/stacklayout.md
+                - name: VerticalStackLayout
+                  href: user-interface/layouts/verticalstacklayout.md
+            - name: Views
+              items:
+                - name: Present data
+                  items:
+                    - name: BlazorWebView
+                      href: user-interface/controls/blazorwebview.md
+                    - name: Border
+                      href: user-interface/controls/border.md
+                    - name: ContentView
+                      href: user-interface/controls/contentview.md
+                    - name: Frame
+                      href: user-interface/controls/frame.md
+                    - name: GraphicsView
+                      href: user-interface/controls/graphicsview.md
         - name: Graphics
           items:
             - name: Overview
@@ -77,20 +97,6 @@
               href: user-interface/images/app-icons.md
             - name: Splash screen
               href: user-interface/images/splashscreen.md
-        - name: Layouts
-          items:
-            - name: Overview
-              href: user-interface/layouts/index.md
-            - name: FlexLayout
-              href: user-interface/layouts/flexlayout.md
-            - name: GridLayout
-              href: user-interface/layouts/gridlayout.md
-            - name: HorizontalStackLayout
-              href: user-interface/layouts/horizontalstacklayout.md
-            - name: StackLayout
-              href: user-interface/layouts/stacklayout.md
-            - name: VerticalStackLayout
-              href: user-interface/layouts/verticalstacklayout.md
         - name: Shadows
           href: user-interface/shadow.md
     - name: Platform integration
