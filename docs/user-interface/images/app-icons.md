@@ -1,12 +1,14 @@
 ---
 title: "App icons"
 description: "Learn how to add a .NET MAUI app icon to your app, which is the logo that represents your app in multiple places."
-ms.date: 12/03/2021
+ms.date: 01/14/2022
 ---
 
 # App icons
 
 Every app has a logo icon that represents it, and that icon typically appears in multiple places. For example, on iOS the app icon appears on the Home screen and throughout the system, such as in Settings, notifications, and search results, and in the App Store. On Android, the app icon appears as a launcher icon and throughout the system, such as on the action bar and in notifications, and in the Google Play Store. On Windows the app icon appears in the app list in the start menu, on the taskbar and task manager, on the app's tile, and in the Microsoft Store.
+
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
 A .NET Multi-platform App UI (.NET MAUI) app icon is a composite of an image and a background color. The standard platform image formats are supported, including Scalable Vector Graphics (SVG) files.
 
