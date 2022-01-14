@@ -17,6 +17,8 @@
       items:
         - name: Accessibility
           href: fundamentals/accessibility.md
+        - name: App lifecycle
+          href: fundamentals/app-lifecycle.md
         - name: App startup
           href: fundamentals/app-startup.md
         - name: Single project
