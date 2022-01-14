@@ -53,6 +53,8 @@
               href: user-interface/graphics/windingmodes.md
         - name: Images
           items:
+            - name: App icons
+              href: user-interface/images/app-icons.md          
             - name: Splash screen
               href: user-interface/images/splashscreen.md
         - name: Layouts
