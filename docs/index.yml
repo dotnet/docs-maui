@@ -7,9 +7,7 @@ metadata:
   title: .NET Multi-Platform App UI documentation
   description: .NET Multi-platform App UI (.NET MAUI) lets you build native apps using a .NET cross-platform UI toolkit that targets the mobile and desktop form factors on Android, iOS, macOS, Windows, and Tizen.
   ms.topic: landing-page
-  author: davidbritch
-  ms.author: dabritch
-  ms.date: 06/08/2021
+  ms.date: 12/24/2021
 
 landingContent:
   - title: Overview
@@ -36,6 +34,8 @@ landingContent:
     linkLists:
       - linkListType: concept
         links:
+          - text: Accessibility
+            url: fundamentals/accessibility.md
           - text: App lifecycle
             url: fundamentals/app-lifecycle.md
           - text: App startup
@@ -46,5 +46,27 @@ landingContent:
     linkLists:
       - linkListType: concept
         links:
+          - text: BlazorWebView
+            url: user-interface/controls/blazorwebview.md
+          - text: Border
+            url: user-interface/controls/border.md
           - text: Customize controls
             url: user-interface/handlers/customize.md
+          - text: GraphicsView
+            url: user-interface/controls/graphicsview.md
+          - text: Graphics
+            url: user-interface/graphics/index.md
+          - text: Layouts
+            url: user-interface/layouts/index.md
+          - text: Shadows
+            url: user-interface/shadow.md
+          - text: Splash screen
+            url: user-interface/images/splashscreen.md
+  - title: Platform integration
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Configure multi-targeting
+            url: platform-integration/configure-multi-targeting.md
+          - text: Invoke platform code
+            url: platform-integration/invoke-platform-code.md
