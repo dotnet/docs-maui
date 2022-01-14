@@ -45,6 +45,8 @@
               href: user-interface/controls/blazorwebview.md
             - name: Border
               href: user-interface/controls/border.md
+            - name: ContentView
+              href: user-interface/controls/contentview.md
             - name: Frame
               href: user-interface/controls/frame.md
             - name: GraphicsView
