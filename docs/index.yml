@@ -49,7 +49,7 @@ landingContent:
           - text: Brushes
             url: user-interface/brushes/index.md
           - text: Controls
-            url: user-interface/controls.index.md
+            url: user-interface/controls/index.md
           - text: Customize controls
             url: user-interface/handlers/customize.md
           - text: Graphics
