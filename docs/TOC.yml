@@ -41,16 +41,20 @@
                   href: user-interface/brushes/radialgradient.md
         - name: Controls
           items:
-            - name: BlazorWebView
-              href: user-interface/controls/blazorwebview.md
-            - name: Border
-              href: user-interface/controls/border.md
-            - name: ContentView
-              href: user-interface/controls/contentview.md
-            - name: Frame
-              href: user-interface/controls/frame.md
-            - name: GraphicsView
-              href: user-interface/controls/graphicsview.md
+            - name: Overview
+              href: user-interface/controls/index.md
+            - name: Present data
+              items:
+                - name: BlazorWebView
+                  href: user-interface/controls/blazorwebview.md
+                - name: Border
+                  href: user-interface/controls/border.md
+                - name: ContentView
+                  href: user-interface/controls/contentview.md
+                - name: Frame
+                  href: user-interface/controls/frame.md
+                - name: GraphicsView
+                  href: user-interface/controls/graphicsview.md
         - name: Customize controls
           href: user-interface/handlers/customize.md
         - name: Graphics
