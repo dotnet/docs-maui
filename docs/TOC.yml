@@ -61,6 +61,22 @@
                   href: user-interface/layouts/verticalstacklayout.md
             - name: Views
               items:
+                - name: Display collections
+                  items:
+                    - name: CarouselView
+                      items:
+                          - name: Overview
+                            href: user-interface/controls/carouselview/index.md
+                          - name: Data
+                            href: user-interface/controls/carouselview/populate-data.md
+                          - name: Layout
+                            href: user-interface/controls/carouselview/layout.md
+                          - name: Interaction
+                            href: user-interface/controls/carouselview/selection.md
+                          - name: EmptyView
+                            href: user-interface/controls/carouselview/emptyview.md
+                          - name: Scrolling
+                            href: user-interface/controls/carouselview/scrolling.md
                 - name: Present data
                   items:
                     - name: BlazorWebView
