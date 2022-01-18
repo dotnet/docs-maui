@@ -72,7 +72,7 @@
                           - name: Layout
                             href: user-interface/controls/carouselview/layout.md
                           - name: Interaction
-                            href: user-interface/controls/carouselview/selection.md
+                            href: user-interface/controls/carouselview/interaction.md
                           - name: EmptyView
                             href: user-interface/controls/carouselview/emptyview.md
                           - name: Scrolling
