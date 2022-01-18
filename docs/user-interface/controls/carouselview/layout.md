@@ -96,9 +96,7 @@ CarouselView carouselView = new CarouselView
 };
 ```
 
-This results in a layout that grows horizontally as new items are added:
-
-:::image type="content" source="media/layout/horizontal.png" alt-text="Screenshot of a CarouselView horizontal layout.":::
+This results in a layout that grows horizontally as new items are added.
 
 ## Vertical layout
 
@@ -155,9 +153,7 @@ CarouselView carouselView = new CarouselView
 };
 ```
 
-This results in a layout that grows vertically as new items are added:
-
-:::image type="content" source="media/layout/vertical.png" alt-text="Screenshot of a CarouselView vertical layout.":::
+This results in a layout that grows vertically as new items are added.
 
 ## Partially visible adjacent items
 
