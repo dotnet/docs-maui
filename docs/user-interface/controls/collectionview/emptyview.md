@@ -88,19 +88,16 @@ In this example, what looks like a redundant has been added as the root element 
 The equivalent C# code is:
 
 ```csharp
+StackLayout stackLayout = new StackLayout();
+stackLayout.Add(new Label { Text = "No results matched your filter.", ... } );
+stackLayout.Add(new Label { Text = "Try a broader filter?", ... } );
+
 SearchBar searchBar = new SearchBar { ... };
 CollectionView collectionView = new CollectionView
 {
     EmptyView = new ContentView
     {
-        Content = new StackLayout
-        {
-            Children =
-            {
-                new Label { Text = "No results matched your filter.", ... },
-                new Label { Text = "Try a broader filter?", ... }
-            }
-        }
+        Content = stackLayout
     }
 };
 collectionView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");

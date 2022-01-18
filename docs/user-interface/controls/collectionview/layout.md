@@ -383,22 +383,15 @@ The `Header` and `Footer` properties can each be set to a view. This can be a si
 The equivalent C# code is:
 
 ```csharp
+StackLayout headerStackLayout = new StackLayout();
+header.StackLayout.Add(new Label { Text = "Monkeys", ... } );
+StackLayout footerStackLayout = new StackLayout();
+footerStackLayout.Add(new Label { Text = "Friends of Xamarin Monkey", ... } );
+
 CollectionView collectionView = new CollectionView
-{
-    Header = new StackLayout
-    {
-        Children =
-        {
-            new Label { Text = "Monkeys", ... }
-        }
-    },
-    Footer = new StackLayout
-    {
-        Children =
-        {
-            new Label { Text = "Friends of Xamarin Monkey", ... }
-        }
-    }
+{  
+    Header = headerStackLayout,
+    Footer = footerStackLayout            
 };
 collectionView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
 ```
