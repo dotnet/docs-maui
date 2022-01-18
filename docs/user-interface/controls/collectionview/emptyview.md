@@ -8,12 +8,12 @@ ms.date: 01/18/2022
 
 The .NET Multi-platform App UI (.NET MAUI) `CollectionView` defines the following properties that can be used to provide user feedback when there's no data to display:
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 - `EmptyView`, of type `object`, the string, binding, or view that will be displayed when the `ItemsSource` property is `null`, or when the collection specified by the `ItemsSource` property is `null` or empty. The default value is `null`.
 - `EmptyViewTemplate`, of type `DataTemplate`, the template to use to format the specified `EmptyView`. The default value is `null`.
 
 These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings.
+
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
 The main usage scenarios for setting the `EmptyView` property are displaying user feedback when a filtering operation on a `CollectionView` yields no data, and displaying user feedback while data is being retrieved from a web service.
 
