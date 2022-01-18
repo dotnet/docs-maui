@@ -61,6 +61,24 @@
                   href: user-interface/layouts/verticalstacklayout.md
             - name: Views
               items:
+                - name: Display collections
+                  items:
+                    - name: CollectionView
+                      items:
+                          - name: Overview
+                            href: user-interface/controls/collectionview/index.md
+                          - name: Data
+                            href: user-interface/controls/collectionview/populate-data.md
+                          - name: Layout
+                            href: user-interface/controls/collectionview/layout.md
+                          - name: Selection
+                            href: user-interface/controls/collectionview/selection.md
+                          - name: EmptyView
+                            href: user-interface/controls/collectionview/emptyview.md
+                          - name: Scrolling
+                            href: user-interface/controls/collectionview/scrolling.md
+                          - name: Grouping
+                            href: user-interface/controls/collectionview/grouping.md                                                      
                 - name: Present data
                   items:
                     - name: BlazorWebView
