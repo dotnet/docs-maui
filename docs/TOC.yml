@@ -21,6 +21,30 @@
           href: fundamentals/app-lifecycle.md
         - name: App startup
           href: fundamentals/app-startup.md
+        - name: Data binding
+          items:
+              - name: Overview
+                href: fundamentals/data-binding/index.md
+              - name: Basic bindings
+                href: fundamentals/data-binding/basic-bindings.md
+              - name: Binding mode
+                href: fundamentals/data-binding/binding-mode.md
+              - name: String formatting
+                href: fundamentals/data-binding/string-formatting.md
+              - name: Binding path
+                href: fundamentals/data-binding/binding-path.md
+              - name: Binding value converters
+                href: fundamentals/data-binding/converters.md
+              - name: Relative bindings
+                href: fundamentals/data-binding/relative-bindings.md
+              - name: Binding fallbacks
+                href: fundamentals/data-binding/binding-fallbacks.md
+              - name: Multi-bindings
+                href: fundamentals/data-binding/multibinding.md
+              - name: Commanding
+                href: fundamentals/data-binding/command.md
+              - name: Compiled bindings
+                href: fundamentals/data-binding/compiled-bindings.md                                    
         - name: Single project
           href: fundamentals/single-project.md
     - name: User interface
