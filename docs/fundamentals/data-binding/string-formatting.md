@@ -21,10 +21,7 @@ String formatting can also be accomplished with data bindings by setting the `St
                       StringFormat='The slider value is {0:F2}'}" />
 ```
 
-> [!NOTE]
-> In XAML the formatting string is delimited by single-quote characters to help the XAML parser avoid treating the curly braces as another XAML markup extension.
-
-In this example, the formatting specification of `F2` causes the value to be displayed with two decimal places.
+In XAML the formatting string is delimited by single-quote characters to help the XAML parser avoid treating the curly braces as another XAML markup extension. In this example, the formatting specification of `F2` causes the value to be displayed with two decimal places.
 
 > [!NOTE]
 > Using the `StringFormat` property only makes sense when the target property is of type `string`, and the binding mode is `OneWay` or `TwoWay`. For two-way bindings, the `StringFormat` is only applicable for values passing from the source to the target.
