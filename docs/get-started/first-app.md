@@ -1,7 +1,7 @@
 ---
 title: "Build your first .NET MAUI app"
 description: "Learn how to create and run your first .NET MAUI app on Android."
-ms.date: 11/08/2021
+ms.date: 01/19/2021
 ---
 
 <!-- zone_pivot_groups: preview-platforms -->
@@ -18,19 +18,22 @@ Visual Studio for Mac support will arrive in a future release.
 
 ## Prerequisites
 
-- The latest preview of Visual Studio 2022 17.1, with the required workload. For more information, see [Installation](installation.md).
+- The latest preview of Visual Studio 2022 with the required workloads. For more information, see [Installation](installation.md).
 
 ## Get started with Visual Studio 2022 17.1 (Preview)
 
 In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022, and run it on an Android emulator:
 
-1. Launch Visual Studio 2022 17.1 (Preview), and in the start window click **Create a new project** to create a new project:
+1. Launch Visual Studio 2022 Preview, and in the start window click **Create a new project** to create a new project:
 
     :::image type="content" source="media/first-app/new-solution.png" alt-text="New solution.":::
 
 1. In the **Create a new project** window, select **MAUI** in the **Project type** drop-down, select the **.NET MAUI App (Preview)** template, and click the **Next** button:
 
     :::image type="content" source="media/first-app/new-project.png" alt-text="Choose a template.":::
+
+> [!NOTE]
+> If the **.NET MAUI App (Preview)** project template does not appear in the **Create a new project** window, open the Developer Command Prompt for VS 2022 Preview and run the following command: `devenv.exe /updateConfiguration`. Then, restart Visual Studio.
 
 1. In the **Configure your new project** window, name your project, choose a suitable location for it, and click the **Create** button:
 
