@@ -32,8 +32,8 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
     :::image type="content" source="media/first-app/new-project.png" alt-text="Choose a template.":::
 
-> [!NOTE]
-> If the **.NET MAUI App (Preview)** project template does not appear in the **Create a new project** window, open the Developer Command Prompt for VS 2022 Preview and run the following command: `devenv.exe /updateConfiguration`. Then, restart Visual Studio.
+    > [!NOTE]
+    > If the **.NET MAUI App (Preview)** project template does not appear in the **Create a new project** window, open the Developer Command Prompt for VS 2022 Preview and run the following command: `devenv.exe /updateConfiguration`. Then, restart Visual Studio.
 
 1. In the **Configure your new project** window, name your project, choose a suitable location for it, and click the **Create** button:
 
