@@ -5,18 +5,19 @@ ms.date: 01/19/2022
 ---
 
 # Compiled Bindings
-A .NET Multi-platform App UI (.NET MAUI) 
+A .NET Multi-platform App UI (.NET MAUI)
 Data bindings have two main problems:
 
 1. There's no compile-time validation of binding expressions. Instead, bindings are resolved at runtime. Therefore, any invalid bindings aren't detected until runtime when the application doesn't behave as expected or error messages appear.
 1. They aren't cost efficient. Bindings are resolved at runtime using general-purpose object inspection (reflection), and the overhead of doing this varies from platform to platform.
+
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
 Compiled bindings improve data binding performance in .NET MAUI applications by resolving binding expressions at compile-time rather than runtime. In addition, this compile-time validation of binding expressions enables a better developer troubleshooting experience because invalid bindings are reported as build errors.
 
 The process for using compiled bindings is to:
 
-1. Enable XAML compilation. For more information about XAML compilation, see [XAML Compilation](~/xamarin-forms/xaml/xamlc.md).
+1. Enable XAML compilation. <!--For more information about XAML compilation, see [XAML Compilation](~/xaml/xamlc.md).-->
 1. Set an `x:DataType` attribute on a `VisualElement` to the type of the object that the `VisualElement` and its children will bind to.
 
 > [!NOTE]
@@ -57,7 +58,7 @@ The **Compiled Color Selector** page demonstrates using compiled bindings betwee
 </ContentPage>
 ```
 
-The root `StackLayout` instantiates the `HslColorViewModel` and initializes the `Color` property within property element tags for the `BindingContext` property. This root `StackLayout` also defines the `x:DataType` attribute as the viewmodel type, indicating that any binding expressions in the root `StackLayout` view hierarchy will be compiled. This can be verified by changing any of the binding expressions to bind to a non-existent viewmodel property, which will result in a build error. While this example sets the `x:DataType` attribute to a string literal, it can also be set to a type with the `x:Type` markup extension. For more information about the `x:Type` markup extension, see [x:Type Markup Extension](~/xamarin-forms/xaml/markup-extensions/consuming.md#xtype-markup-extension).
+The root `StackLayout` instantiates the `HslColorViewModel` and initializes the `Color` property within property element tags for the `BindingContext` property. This root `StackLayout` also defines the `x:DataType` attribute as the viewmodel type, indicating that any binding expressions in the root `StackLayout` view hierarchy will be compiled. This can be verified by changing any of the binding expressions to bind to a non-existent viewmodel property, which will result in a build error. While this example sets the `x:DataType` attribute to a string literal, it can also be set to a type with the `x:Type` markup extension. <!--For more information about the `x:Type` markup extension, see [x:Type Markup Extension](~/xaml/markup-extensions/consuming.md#xtype-markup-extension).-->
 
 > [!IMPORTANT]
 > The `x:DataType` attribute can be re-defined at any point in a view hierarchy.
@@ -66,11 +67,11 @@ The `BoxView`, `Label` elements, and `Slider` views inherit the binding context 
 
 When the application is first run, the `BoxView`, `Label` elements, and `Slider` elements are all set from the viewmodel based on the initial `Color` property set when the viewmodel was instantiated. This is shown in the following screenshot:
 
-![Compiled Color Selector.](compiled-bindings-images/compiledcolorselector.png)
+:::image type="content" source="media/compiled-bindings/compiledcolorselector.png" alt-text="Compiled color selector.":::
 
 As the sliders are manipulated, the `BoxView` and `Label` elements are updated accordingly.
 
-For more information about this color selector, see [ViewModels and Property-Change Notifications](~/xamarin-forms/app-fundamentals/data-binding/binding-mode.md#viewmodels-and-property-change-notifications).
+For more information about this color selector, see [ViewModels and property-change notifications](~/fundamentals/data-binding/binding-mode.md#viewmodels-and-property-change-notifications).
 
 ## Use compiled bindings in a DataTemplate
 
@@ -111,11 +112,11 @@ The **Compiled Color List** page demonstrates using compiled bindings in a `Data
 
 The `ListView.ItemsSource` property is set to the static `NamedColor.All` property. The `NamedColor` class uses .NET reflection to enumerate all the static public fields in the `Color` structure, and to store them with their names in a collection that is accessible from the static `All` property. Therefore, the `ListView` is filled with all of the `NamedColor` instances. For each item in the `ListView`, the binding context for the item is set to a `NamedColor` object. The `BoxView` and `Label` elements in the `ViewCell` are bound to `NamedColor` properties.
 
-Note that the `DataTemplate` defines the `x:DataType` attribute to be the `NamedColor` type, indicating that any binding expressions in the `DataTemplate` view hierarchy will be compiled. This can be verified by changing any of the binding expressions to bind to a non-existent `NamedColor` property, which will result in a build error.  While this example sets the `x:DataType` attribute to a string literal, it can also be set to a type with the `x:Type` markup extension. For more information about the `x:Type` markup extension, see [x:Type Markup Extension](~/xamarin-forms/xaml/markup-extensions/consuming.md#xtype-markup-extension).
+Note that the `DataTemplate` defines the `x:DataType` attribute to be the `NamedColor` type, indicating that any binding expressions in the `DataTemplate` view hierarchy will be compiled. This can be verified by changing any of the binding expressions to bind to a non-existent `NamedColor` property, which will result in a build error.  While this example sets the `x:DataType` attribute to a string literal, it can also be set to a type with the `x:Type` markup extension. <!--For more information about the `x:Type` markup extension, see [x:Type Markup Extension](~/xaml/markup-extensions/consuming.md#xtype-markup-extension).-->
 
 When the application is first run, the `ListView` is populated with `NamedColor` instances. When an item in the `ListView` is selected, the `BoxView.Color` property is set to the color of the selected item in the `ListView`:
 
-![Compiled Color List.](compiled-bindings-images/compiledcolorlist.png)
+:::image type="content" source="media/compiled-bindings/compiledcolorlist.png" alt-text="Compiled color list.":::
 
 Selecting other items in the `ListView` updates the color of the `BoxView`.
 
@@ -147,7 +148,7 @@ Careful structuring of `x:DataType` attributes can therefore lead to a page usin
 
 The root `StackLayout` sets the `x:DataType` attribute to be the `HslColorViewModel` type, indicating that any binding expression in the root `StackLayout` view hierarchy will be compiled. However, the inner `StackLayout` redefines the `x:DataType` attribute to `null` with the `x:Null` markup expression. Therefore, the binding expressions within the inner `StackLayout` use classic bindings. Only the `BoxView`, within the root `StackLayout` view hierarchy, uses compiled bindings.
 
-For more information about the `x:Null` markup expression, see [x:Null Markup Extension](~/xamarin-forms/xaml/markup-extensions/consuming.md#xnull-markup-extension).
+<!-- For more information about the `x:Null` markup expression, see [x:Null Markup Extension](~/xaml/markup-extensions/consuming.md#xnull-markup-extension). -->
 
 ## Performance
 

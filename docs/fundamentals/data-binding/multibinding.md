@@ -6,8 +6,9 @@ ms.date: 01/19/2022
 
 # Multi-Bindings
 
-A .NET Multi-platform App UI (.NET MAUI) 
+A .NET Multi-platform App UI (.NET MAUI)
 Multi-bindings provide the ability to attach a collection of `Binding` objects to a single binding target property. They are created with the `MultiBinding` class, which evaluates all of its `Binding` objects, and returns a single value through a `IMultiValueConverter` instance provided by your application. In addition, `MultiBinding` reevaluates all of its `Binding` objects when any of the bound data changes.
+
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
 The `MultiBinding` class defines the following properties:
@@ -211,7 +212,7 @@ label.SetBinding(Label.TextProperty, new MultiBinding
 
 When setting the `Converter` and `StringFormat` properties, the converter is applied to the data value first, and then the `StringFormat` is applied.
 
-For more information about string formatting in .NET MAUI, see [.NET MAUI String Formatting](string-formatting.md).
+For more information about string formatting in .NET MAUI, see [String formatting](string-formatting.md).
 
 ## Provide fallback values
 
@@ -219,7 +220,7 @@ Data bindings can be made more robust by defining fallback values to use if the 
 
 A `MultiBinding` will use its `FallbackValue` when the `Convert` method of an `IMultiValueConverter` instance returns `BindableProperty.UnsetValue`, which indicates that the converter did not produce a value. A `MultiBinding` will use its `TargetNullValue` when the `Convert` method of an `IMultiValueConverter` instance returns `null`, which indicates that the converter cannot perform the conversion.
 
-For more information about binding fallbacks, see [.NET MAUI Binding Fallbacks](binding-fallbacks.md).
+For more information about binding fallbacks, see [Binding fallbacks](binding-fallbacks.md).
 
 ## Nest MultiBinding objects
 
@@ -306,4 +307,4 @@ In this example, the `MultiBinding` object uses its `AnyTrueMultiConverter` inst
 
 In this example, the `TemplatedParent` relative binding mode is used to bind from within a control template to the runtime object instance to which the template is applied. The `Expander`, which is the root element of the `ControlTemplate`, has its `BindingContext` set to the runtime object instance to which the template is applied. Therefore, the `Expander` and its children resolve their binding expressions, and `Binding` objects, against the properties of the `CardViewExpander` object. The `MultiBinding` uses the `AllTrueMultiConverter` instance to set the `Expander.IsVisible` property to `true` provided that the two `Binding` objects evaluate to `true`. Otherwise, the `Expander.IsVisible` property is set to `false`.
 
-For more information about relative bindings, see [.NET MAUI Relative Bindings](relative-bindings.md). For more information about control templates, see [.NET MAUI Control Templates](~/xamarin-forms/app-fundamentals/templates/control-template.md).
+For more information about relative bindings, see [Relative bindings](relative-bindings.md). <!--For more information about control templates, see [Control templates](~/fundamentals/templates/control-template.md).-->

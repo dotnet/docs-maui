@@ -5,8 +5,11 @@ ms.date: 01/19/2022
 ---
 
 # Relative Bindings
-A .NET Multi-platform App UI (.NET MAUI) 
+
+A .NET Multi-platform App UI (.NET MAUI)
+
 Relative bindings provide the ability to set the binding source relative to the position of the binding target. They are created with the `RelativeSource` markup extension, and set as the `Source` property of a binding expression.
+
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
 The `RelativeSource` markup extension is supported by the `RelativeSourceExtension` class, which defines the following properties:
@@ -27,7 +30,7 @@ The `Mode` property should be set to one of the `RelativeBindingSourceMode` enum
 
 The `Mode` property is the content property of the `RelativeSourceExtension` class. Therefore, for XAML markup expressions expressed with curly braces, you can eliminate the `Mode=` part of the expression.
 
-For more information about .NET MAUI markup extensions, see [XAML Markup Extensions](~/xamarin-forms/xaml/markup-extensions/index.md).
+<!-- For more information about .NET MAUI markup extensions, see [XAML Markup Extensions](~/xaml/markup-extensions/index.md). -->
 
 ## Bind to self
 
@@ -42,7 +45,7 @@ The `Self` relative binding mode is used bind a property of an element to anothe
 
 In this example, the `BoxView` sets its `WidthRequest` property to a fixed size, and the `HeightRequest` property binds to the `WidthRequest` property. Therefore, both properties are equal and so a square is drawn:
 
-![Screenshot of a Self mode relative binding.](relative-bindings-images/self-relative-binding.png)
+:::image type="content" source="media/relative-bindings/self-relative-binding.png" alt-text="Screenshot of a Self mode relative binding.":::
 
 > [!IMPORTANT]
 > When binding a property of an element to another property on the same element, the properties must be the same type. Alternatively, you can specify a converter on the binding to convert the value.
@@ -102,7 +105,7 @@ The following XAML shows an example where the `Mode` property will be implicitly
 
 In this example, the `BindingContext` of the page is set to the `DefaultViewModel` property of itself. This property is defined in the code-behind file for the page, and provides a viewmodel instance. The `ListView` binds to the `Employees` property of the viewmodel. The `DataTemplate`, which defines the appearance of each item in the `ListView`, contains a `Button`. The button's `Command` property is bound to the `DeleteEmployeeCommand` in its parent's viewmodel. Tapping a `Button` deletes an employee:
 
-![Screenshot of a FindAncestor mode relative binding.](relative-bindings-images/findancestor-relative-binding.png)
+:::image type="content" source="media/relative-bindings/findancestor-relative-binding.png" alt-text="Screenshot of a FindAncestor mode relative binding.":::
 
 In addition, the optional `AncestorLevel` property can help disambiguate ancestor lookup in scenarios where there is possibly more than one ancestor of that type in the visual tree:
 
@@ -166,6 +169,6 @@ The following XAML shows an example of the `TemplatedParent` relative binding mo
 
 In this example, the `Frame`, which is the root element of the `ControlTemplate`, has its `BindingContext` set to the runtime object instance to which the template is applied. Therefore, the `Frame` and its children resolve their binding expressions against the properties of each `CardView` object:
 
-![Screenshot of a TemplatedParent mode relative binding.](relative-bindings-images/templatedparent-relative-binding.png)
+:::image type="content" source="media/relative-bindings/templatedparent-relative-binding.png" alt-text="Screenshot of a TemplatedParent mode relative binding.":::
 
-For more information about control templates, see [.NET MAUI Control Templates](~/xamarin-forms/app-fundamentals/templates/control-template.md).
+<!-- For more information about control templates, see [Control Templates](~/fundamentals/templates/control-template.md). -->

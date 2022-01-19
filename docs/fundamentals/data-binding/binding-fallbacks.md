@@ -9,6 +9,7 @@ ms.date: 01/19/2022
 A .NET Multi-platform App UI (.NET MAUI)
 
 Sometimes data bindings fail, because the binding source can't be resolved, or because the binding succeeds but returns a `null` value. While these scenarios can be handled with value converters, or other additional code, data bindings can be made more robust by defining fallback values to use if the binding process fails. This can be accomplished by defining the `FallbackValue` and `TargetNullValue` properties in a binding expression. Because these properties reside in the `BindingBase` class, they can be used with bindings, multi-bindings, compiled bindings, and with the `Binding` markup extension.
+
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
 > [!NOTE]
@@ -39,7 +40,7 @@ Rather than defining `FallbackValue` property values inline, it's recommended to
 
 Here's the program running:
 
-![FallbackValue Binding.](binding-fallbacks-images/bindingunavailable-detail.png)
+:::image type="content" source="media/binding-fallbacks/bindingunavailable-detail.png" alt-text="FallbackValue Binding.":::
 
 When the `FallbackValue` property isn't set in a binding expression and the binding path or part of the path isn't resolved, `BindableProperty.DefaultValue` is set on the target. However, when the `FallbackValue` property is set and the binding path or part of the path isn't resolved, the value of the `FallbackValue` value property is set on the target. Therefore, on the **MonkeyDetail** page the `Label` displays "Population size unknown" because the bound object lacks a `Population` property.
 
@@ -88,7 +89,7 @@ Rather than defining `TargetNullValue` property values inline, it's recommended 
 
 Here's the program running:
 
-![TargetNullValue Binding.](binding-fallbacks-images/bindingunavailable.png)
+:::image type="content" source="media/binding-fallbacks/bindingunavailable.png" alt-text="TargetNullValue Binding.":::
 
 When the `TargetNullValue` property isn't set in a binding expression, a source value of `null` will be converted if a value converter is defined, formatted if a `StringFormat` is defined, and the result is then set on the target. However, when the `TargetNullValue` property is set, a source value of `null` will be converted if a value converter is defined, and if it's still `null` after the conversion, the value of the `TargetNullValue` property is set on the target.
 
