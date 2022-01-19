@@ -1,6 +1,6 @@
 ---
 title: "Binding fallbacks"
-description: "This article explains how to make bindings more robust by defining fallback values that will be used if binding fails."
+description: ".NET MAUI data bindings can be made more robust by defining fallback values that will be used if binding fails."
 ms.date: 01/19/2022
 ---
 
