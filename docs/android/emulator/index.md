@@ -22,14 +22,8 @@ The following articles are available to help manage and setup your Android emula
 
   How to use the Android Device Manager to edit the profile properties of a virtual device.
 
-<!--
-
-TODO: Still being ported
-
 - [Android Emulator Troubleshooting](troubleshooting.md)
 
   In this article, the most common warning messages and issues that occur while running the Android Emulator are described, along with workarounds and tips.
 
 After you have configured the Android Emulator, see [Debugging on the Android Emulator](~/android/deploy-test/debugging/debug-on-emulator.md) for information about how to launch the emulator and use it for testing and debugging your app.
-
--->

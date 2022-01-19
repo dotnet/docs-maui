@@ -1,6 +1,6 @@
 ---
 title: "Android Emulator Troubleshooting"
-description: "This article explains how to diagnose and work around problems that may occur when using the Android Emulator."
+description: "This article explains how to diagnose and work around problems that may occur when using the Android Emulator to deploy and run your .NET MAUI app."
 zone_pivot_groups: platform
 ms.date: 12/03/2021
 ---
@@ -44,14 +44,12 @@ If you see an error about a failure to install the APK on the emulator or a fail
 
 If the message **An MMIO access error has occurred** is displayed, restart the emulator.
 
-<a name="gps-win"></a>
-
 ## Missing Google Play Services
 
 If the emulated Android device doesn't have Google Play Services or Google Play Store installed, you probably created a virtual device that excluded these packages. When you [create a virtual device](device-manager.md), be sure to select one or both of the following options:
 
-- **Google APIs** &ndash; includes Google Play Services in the virtual device.
-- **Google Play Store** &ndash; includes Google Play Store in the virtual device.
+- **Google APIs**&mdash;includes Google Play Services in the virtual device.
+- **Google Play Store**&ndash;includes Google Play Store in the virtual device.
 
 For example, this virtual device will include Google Play Services and Google Play Store:
 
@@ -210,15 +208,13 @@ SERVICE_NAME: intelhaxm
 
 If `STATE` isn't set to `RUNNING`, see [How to Use the Intel Hardware Accelerated Execution Manager](https://software.intel.com/android/articles/how-to-use-the-intel-hardware-accelerated-execution-manager-intel-haxm-android-emulator) to resolve the problem.
 
-<a name="virt-conflicts"></a>
-
 #### HAXM virtualization conflicts
 
 HAXM can conflict with other technologies that use virtualization, such as Hyper-V, Windows Device Guard, and some antivirus software:
 
-- **Hyper-V** &ndash; If you're using a version of Windows before the **Windows 10 April 2018 update (build 1803)** and Hyper-V is enabled, follow the steps in [Disabling Hyper-V](#disable-hyperv) so that HAXM can be enabled.
+- **Hyper-V** &ndash; If you're using a version of Windows before the **Windows 10 April 2018 update (build 1803)** and Hyper-V is enabled, follow the steps in [Disabling Hyper-V](#disabling-hyper-v) so that HAXM can be enabled.
 
-- **Device Guard** &ndash; Device Guard and Credential Guard can prevent Hyper-V from being disabled on Windows machines. To disable Device Guard and Credential Guard, see [Disabling Device Guard](#disable-devguard).
+- **Device Guard** &ndash; Device Guard and Credential Guard can prevent Hyper-V from being disabled on Windows machines. To disable Device Guard and Credential Guard, see [Disabling Device Guard](#disabling-device-guard).
 
 - **Antivirus Software** &ndash; If you're running antivirus software that uses hardware-assisted virtualization (such as Avast), disable or uninstall this software, reboot, and retry the Android emulator.
 
@@ -373,8 +369,6 @@ If you see an error about a failure to install the APK on the emulator or a fail
 
 If `An MMIO access error has occurred` is displayed, restart the emulator.
 
-<a name="gps-mac"></a>
-
 ## Missing Google Play Services
 
 If the virtual device you're running in the emulator doesn't have Google Play Services or Google Play Store installed, this condition is usually caused by creating a virtual device without including these packages. When you [create a virtual device](device-manager.md), be sure to select one or both of the following:
@@ -388,8 +382,6 @@ For example, this virtual device will include Google Play Services and Google Pl
 
 > [!NOTE]
 > Google Play Store images are available only for some base device types such as Pixel, Pixel 2, Nexus 5, and Nexus 5X.
-
-<a name="perf-mac"></a>
 
 ## Performance issues
 
@@ -410,13 +402,9 @@ A common cause for this problem isn't using an x86-based image in your virtual d
 
 [![Selecting an x86 system image for a virtual device.](troubleshooting-images/mac/02-x86-virtual-device-m75-sml.png)](troubleshooting-images/mac/02-x86-virtual-device-m75.png#lightbox)
 
-<a name="accel-issues-mac"></a>
-
 ## Hardware acceleration issues
 
 Whether you're using the Hypervisor Framework or HAXM for hardware acceleration of the emulator, you may run into problems caused by installation issues or an out-of-date version of macOS. The following sections can help you resolve this issue.
-
-<a name="hypervisor-issues"></a>
 
 ### Hypervisor Framework issues
 

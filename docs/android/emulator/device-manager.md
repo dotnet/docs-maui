@@ -1,7 +1,6 @@
 ---
 title: "Managing Virtual Devices with the Android Device Manager"
 description: "This article explains how to use the Android Device Manager to create and configure Android Virtual Devices (AVDs) that emulate physical Android devices, for .NET MAUI. You can use these virtual devices to run and test your app without having to rely on a physical device"
-ms.custom: video
 ms.date: 11/18/2021
 no-loc: ["user.config"]
 ---
@@ -27,16 +26,16 @@ You use the Android Device Manager to create and configure an Android Virtual De
 
 To use the Android Device Manager, you'll need the following items:
 
-- Visual Studio 2022 version 17.1 Preview 1. Visual Studio Community, Professional, and Enterprise editions are supported.
+- Visual Studio 2022 version 17.1 Preview 3. Visual Studio Community, Professional, and Enterprise editions are supported.
 
-- The Android SDK. Be sure to install the Android SDK at its default location if it isn't already installed: _C:\\Program Files (x86)\\Android\\android-sdk_.
+- The **Android SDK API Level 30** or later. Be sure to install the Android SDK at its default location if it isn't already installed: _C:\\Program Files (x86)\\Android\\android-sdk_.
 
 - The following packages must be installed in the:
 
-  - **Android SDK Tools version 26.1.1** or later
-  - **Android SDK Platform-Tools 27.0.1** or later
-  - **Android SDK Build-Tools 27.0.3** or later
-  - **Android Emulator 27.2.7** or later
+  - **Android SDK Tools 5.0** or later
+  - **Android SDK Platform-Tools 31.0.3** or later
+  - **Android SDK Build-Tools 30.0.2** or later
+  - **Android Emulator 30.8.4** or later
 
   These packages should be displayed with **Installed** status as seen in the following screenshot:
 
@@ -152,6 +151,8 @@ The additional options menu contains the following items:
 
 The following sections explain how to diagnose and work around problems that may occur when using the Android Device Manager to configure virtual devices.
 
+<!-- uncomment if applicable later
+
 ### Android SDK in non-standard location
 
 Typically, the Android SDK is installed at _C:\\Program Files (x86)\\Android\\android-sdk_. If the SDK isn't installed at this location, you may get this error when you launch the Android Device Manager:
@@ -172,13 +173,15 @@ To work around this problem, do the following:
 
 01. In _user.config_, find the `<UserSettings>` element and add an **AndroidSdkPath** attribute to it. Set this attribute to the path where the Android SDK is installed on your computer and save the file. For example, `<UserSettings>` would look like the following if the Android SDK was installed at _C:\\Programs\\Android\\SDK_:
 
-    <!-- TODO: Does visual studio handle this some how now? -->
+    TODO: Does visual studio handle this some how now?
 
     ```xml
     <UserSettings SdkLibLastWriteTimeUtcTicks="636409365200000000" AndroidSdkPath="C:\Programs\Android\SDK" />
     ```
 
 After making this change to **user.config**, you should be able to launch the Android Device Manager.
+
+-->
 
 ### Wrong version of Android SDK Tools
 
@@ -425,10 +428,3 @@ After these changes are made, the AVD will restart in a state that allows Wi-Fi 
 ::: zone-end
 
 -->
-
-## Related links
-
-- [Debug on the Android Emulator](../deployment/debug-on-emulator.md)
-- [SDK Tools Release Notes (Google)](https://developer.android.com/studio/releases/sdk-tools)
-- [avdmanager](https://developer.android.com/studio/command-line/avdmanager.html)
-- [sdkmanager](https://developer.android.com/studio/command-line/sdkmanager.html)

@@ -11,7 +11,6 @@ This article explains how to use your computer's hardware acceleration features 
 With Visual Studio, you can easily test and debug your .NET MAUI app for Android in situations where an Android device isn't available. However, if hardware acceleration isn't available or enabled, the emulator will run too slow. You can drastically improve the performance of the emulator by enabling hardware acceleration and using special x86 virtual device images.
 
 <!-- TODO: What are the virtualization extensions on the new M1 ARM processors for Mac?
-           Also, isn't Hypervisor.Framework a macOS-only tech? Why is this at the start?
 -->
 
 | Scenario                                  | HAXM        | WHPX    | Hypervisor.Framework |
@@ -48,8 +47,6 @@ For the best experience on Windows, it's recommended you use WHPX to accelerate 
 > You can't run a VM-accelerated emulator inside another VM, such as a VM hosted by VirtualBox, VMware, or Docker (unless using WSL2). You must run the Android emulator [directly on your system hardware](https://developer.android.com/studio/run/emulator-acceleration.html#extensions).
 
 For information about launching and debugging with the Android emulator, see [Debugging on the Android Emulator](../deployment/debug-on-emulator.md).
-
-<a name="hyper-v-win"></a>
 
 ## Accelerating with Hyper-V
 
@@ -124,8 +121,6 @@ To determine if your hardware supports HAXM, follow the steps in [Does My Proces
 
 If your computer can support HAXM but HAXM isn't installed, use the steps in the next section to install HAXM.
 
-<a name="install-haxm-win"></a>
-
 ### Installing HAXM
 
 HAXM install packages for Windows are available from the [Intel Hardware Accelerated Execution Manager](https://github.com/intel/haxm/releases) GitHub releases page. Use the following steps to download and install HAXM:
@@ -167,8 +162,6 @@ It is recommended that you use the Hypervisor Framework to accelerate the Androi
 
 For information about launching and debugging with the Android emulator, see [Debugging on the Android Emulator](~/android/deploy-test/debugging/debug-on-emulator.md).
 
-<a name="hypervisor"></a>
-
 ## Accelerating with the Hypervisor Framework
 
 To use the Android emulator with the Hypervisor Framework, your Mac must meet the following criteria:
@@ -180,8 +173,6 @@ To use the Android emulator with the Hypervisor Framework, your Mac must meet th
 If your Mac meets these criteria, the Android emulator will automatically use the Hypervisor Framework for acceleration. If you aren't sure if Hypervisor Framework is supported on your Mac, see the [Troubleshooting guide](troubleshooting.md?tabs=vsmac#hypervisor-issues) for ways to verify that your Mac supports Hypervisor.
 
 If the Hypervisor Framework isn't supported by your Mac, you can use HAXM to accelerate the Android emulator (described next).
-
-<a name="haxm-mac"></a>
 
 ## Accelerating with HAXM
 
@@ -210,8 +201,6 @@ You can check to see if HAXM is already installed by using the following steps:
     > HAXM is not installed on this machine (/dev/HAX is missing).
 
 If HAXM isn't installed, use the steps in the next section to install HAXM.
-
-<a name="install-haxm-mac"></a>
 
 ### Installing HAXM
 
