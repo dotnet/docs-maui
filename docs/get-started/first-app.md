@@ -20,7 +20,7 @@ Visual Studio for Mac support will arrive in a future release.
 
 - The latest preview of Visual Studio 2022 with the required workloads. For more information, see [Installation](installation.md).
 
-## Get started with Visual Studio 2022 17.1 (Preview)
+## Get started with Visual Studio 2022 (Preview)
 
 In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022, and run it on an Android emulator:
 
