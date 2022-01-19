@@ -42,9 +42,9 @@
               - name: Multi-bindings
                 href: fundamentals/data-binding/multibinding.md
               - name: Commanding
-                href: fundamentals/data-binding/command.md
+                href: fundamentals/data-binding/commanding.md
               - name: Compiled bindings
-                href: fundamentals/data-binding/compiled-bindings.md                                    
+                href: fundamentals/data-binding/compiled-bindings.md
         - name: Single project
           href: fundamentals/single-project.md
     - name: User interface
