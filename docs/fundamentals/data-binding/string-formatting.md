@@ -6,8 +6,10 @@ ms.date: 01/19/2022
 
 # String Formatting
 
-A .NET Multi-platform App UI (.NET MAUI) 
+A .NET Multi-platform App UI (.NET MAUI)
+
 Sometimes it's convenient to use data bindings to display the string representation of an object or value. For example, you might want to use a `Label` to display the current value of a `Slider`. In this data binding, the `Slider` is the source, and the target is the `Text` property of the `Label`.
+
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
 When displaying strings in code, the most powerful tool is the static [`String.Format`](xref:System.String.Format(System.String,System.Object)) method. The formatting string includes formatting codes specific to various types of objects, and you can include other text along with the values being formatted. See the [Formatting Types in .NET](/dotnet/standard/base-types/formatting-types/) article for more information on string formatting.
@@ -113,7 +115,7 @@ The last section sets the `BindingContext` to the value of `Math.PI` and display
 
 Here's the program running:
 
-![String Formatting.](string-formatting-images/stringformatting.png)
+:::image type="content" source="media/string-formatting/stringformatting.png" alt-text="String formatting.":::
 
 ## ViewModels and String Formatting
 
@@ -166,7 +168,7 @@ This approach is shown in the **Better Color Selector** sample, which uses the s
 
 There are now three pairs of `Slider` and `Label` elements that are bound to the same source property in the `HslColorViewModel` object. The only difference is that `Label` has a `StringFormat` property to display each `Slider` value.
 
-![Better Color Selector.](string-formatting-images/bettercolorselector.png)
+:::image type="content" source="media/string-formatting/bettercolorselector.png" alt-text="Better color selector.":::
 
 You might be wondering how you could display RGB (red, green, blue) values in traditional two-digit hexadecimal format. Those integer values aren't directly available from the `Color` structure. One solution would be to calculate integer values of the color components within the ViewModel and expose them as properties. You could then format them using the `X2` formatting specification.
 

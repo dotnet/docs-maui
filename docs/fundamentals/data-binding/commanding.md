@@ -6,8 +6,10 @@ ms.date: 01/19/2022
 
 # Commanding
 
-A .NET Multi-platform App UI (.NET MAUI) 
+A .NET Multi-platform App UI (.NET MAUI)
+
 In the Model-View-ViewModel (MVVM) architecture, data bindings are defined between properties in the ViewModel, which is generally a class that derives from `INotifyPropertyChanged`, and properties in the View, which is generally the XAML file. Sometimes an application has needs that go beyond these property bindings by requiring the user to initiate commands that affect something in the ViewModel. These commands are generally signaled by button clicks or finger taps, and traditionally they are processed in the code-behind file in a handler for the `Clicked` event of the `Button` or the `Tapped` event of a `TapGestureRecognizer`.
+
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
 The commanding interface provides an alternative approach to implementing commands that is much better suited to the MVVM architecture. The ViewModel itself can contain commands, which are methods that are executed in reaction to a specific activity in the View such as a `Button` click. Data bindings are defined between these commands and the `Button`.
@@ -271,7 +273,7 @@ Here's how it works: The user first presses the **New** button. This enables the
 
 The following screenshot shows the **Submit** button enabled after an age has been set:
 
-![Person Entry.](commanding-images/personentry.png)
+:::image type="content" source="media/commanding/personentry.png" alt-text="Person Entry.":::
 
 The program does not have any facility for editing existing entries, and does not save the entries when you navigate away from the page.
 
@@ -282,9 +284,7 @@ A constructor of the `Command` class allows you to pass arguments of type `Actio
 ```csharp
 public class PersonCollectionViewModel : INotifyPropertyChanged
 {
-
     ···
-
     public PersonCollectionViewModel()
     {
         NewCommand = new Command(
@@ -315,9 +315,7 @@ public class PersonCollectionViewModel : INotifyPropertyChanged
         (SubmitCommand as Command).ChangeCanExecute();
         (CancelCommand as Command).ChangeCanExecute();
     }
-
     ···
-
 }
 ```
 
@@ -332,14 +330,10 @@ The `PropertyChanged` handler for the new `PersonViewModel` object calls the `Ch
 ```csharp
 public class PersonCollectionViewModel : INotifyPropertyChanged
 {
-
     ···
-
     public PersonCollectionViewModel()
     {
-
         ···
-
         SubmitCommand = new Command(
             execute: () =>
             {
@@ -356,12 +350,9 @@ public class PersonCollectionViewModel : INotifyPropertyChanged
                        PersonEdit.Name.Length > 1 &&
                        PersonEdit.Age > 0;
             });
-
         ···
     }
-
     ···
-
 }
 ```
 
@@ -374,14 +365,10 @@ The `execute` function for the **Cancel** button does everything that the **Subm
 ```csharp
 public class PersonCollectionViewModel : INotifyPropertyChanged
 {
-
     ···
-
     public PersonCollectionViewModel()
     {
-
         ···
-
         CancelCommand = new Command(
             execute: () =>
             {
@@ -395,9 +382,7 @@ public class PersonCollectionViewModel : INotifyPropertyChanged
                 return IsEditing;
             });
     }
-
     ···
-
 }
 ```
 
@@ -522,7 +507,7 @@ The 11 buttons for the 10 digits and the decimal point share a binding to `Digit
 
 Here's the program in action:
 
-![Decimal Keyboard.](commanding-images/decimalkeyboard.png)
+:::image type="content" source="media/commanding/decimalkeyboard.png" alt-text="Decimal keyboard.":::
 
 Notice that the button for the decimal point is disabled because the entered number already contains a decimal point.
 
@@ -554,9 +539,7 @@ public class DecimalKeypadViewModel : INotifyPropertyChanged
     }
 
     public ICommand ClearCommand { private set; get; }
-
     public ICommand BackspaceCommand { private set; get; }
-
     public ICommand DigitCommand { private set; get; }
 }
 ```
@@ -566,9 +549,7 @@ The button corresponding to the `ClearCommand` is always enabled and simply sets
 ```csharp
 public class DecimalKeypadViewModel : INotifyPropertyChanged
 {
-
     ···
-
     public DecimalKeypadViewModel()
     {
         ClearCommand = new Command(
@@ -577,9 +558,7 @@ public class DecimalKeypadViewModel : INotifyPropertyChanged
                 Entry = "0";
                 RefreshCanExecutes();
             });
-
         ···
-
     }
 
     void RefreshCanExecutes()
@@ -587,9 +566,7 @@ public class DecimalKeypadViewModel : INotifyPropertyChanged
         ((Command)BackspaceCommand).ChangeCanExecute();
         ((Command)DigitCommand).ChangeCanExecute();
     }
-
     ···
-
 }
 ```
 
@@ -602,14 +579,10 @@ The **Backspace** button is enabled only when the length of the entry is greater
 ```csharp
 public class DecimalKeypadViewModel : INotifyPropertyChanged
 {
-
     ···
-
     public DecimalKeypadViewModel()
     {
-
         ···
-
         BackspaceCommand = new Command(
             execute: () =>
             {
@@ -624,13 +597,9 @@ public class DecimalKeypadViewModel : INotifyPropertyChanged
             {
                 return Entry.Length > 1 || Entry != "0";
             });
-
         ···
-
     }
-
     ···
-
 }
 ```
 
@@ -641,14 +610,10 @@ The `DigitCommand` property is bound to 11 buttons, each of which identifies its
 ```csharp
 public class DecimalKeypadViewModel : INotifyPropertyChanged
 {
-
     ···
-
     public DecimalKeypadViewModel()
     {
-
         ···
-
         DigitCommand = new Command<string>(
             execute: (string arg) =>
             {
@@ -664,9 +629,7 @@ public class DecimalKeypadViewModel : INotifyPropertyChanged
                 return !(arg == "." && Entry.Contains("."));
             });
     }
-
     ···
-
 }
 ```
 

@@ -6,8 +6,10 @@ ms.date: 01/19/2022
 
 # Binding Value Converters
 
-A .NET Multi-platform App UI (.NET MAUI) 
+A .NET Multi-platform App UI (.NET MAUI)
+
 Data bindings usually transfer data from a source property to a target property, and in some cases from the target property to the source property. This transfer is straightforward when the source and target properties are of the same type, or when one type can be converted to the other type through an implicit conversion. When that is not the case, a type conversion must take place.
+
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
 In the [**String Formatting**](string-formatting.md) article, you saw how you can use the `StringFormat` property of a data binding to convert any type into a string. For other types of conversions, you need to write some specialized code in a class that implements the `IValueConverter` interface. (The Universal Windows Platform contains a similar class named [`IValueConverter`](/uwp/api/Windows.UI.Xaml.Data.IValueConverter/) in the `Windows.UI.Xaml.Data` namespace, but this `IValueConverter` is in the `.NET MAUI` namespace.) Classes that implement `IValueConverter` are called *value converters*, but they are also often referred to as *binding converters* or *binding value converters*.
@@ -87,7 +89,7 @@ If a value converter is used in multiple pages of your application, you can inst
 
 The **Enable Buttons** page demonstrates a common need when a `Button` performs an operation based on text that the user types into an `Entry` view. If nothing has been typed into the `Entry`, the `Button` should be disabled. Each `Button` contains a data binding on its `IsEnabled` property. The data-binding source is the `Length` property of the `Text` property of the corresponding `Entry`. If that `Length` property is not 0, the value converter returns `true` and the `Button` is enabled:
 
-![Enable Buttons.](converters-images/enablebuttons.png)
+:::image type="content" source="media/converters/enablebuttons.png" alt-text="Enable buttons.":::
 
 Notice that the `Text` property in each `Entry` is initialized to an empty string. The `Text` property is `null` by default, and the data binding will not work in that case.
 
@@ -228,7 +230,7 @@ The **Switch Indicators** page demonstrates how it can be used to display the va
 
 In the last of the three `Switch` and `Label` pairs, the generic argument is set to `Style`, and entire `Style` objects are provided for the values of `TrueObject` and `FalseObject`. These override the implicit style for `Label` set in the resource dictionary, so the properties in that style are explicitly assigned to the `Label`. Toggling the `Switch` causes the corresponding `Label` to reflect the change:
 
-![Switch Indicators.](converters-images/switchindicators.png)
+:::image type="content" source="media/converters/switchindicators.png" alt-text="Switch indicators.":::
 
 It's also possible to use [`Triggers`](~/xamarin-forms/app-fundamentals/triggers.md) to implement similar changes in the user-interface based on other views.
 
@@ -452,4 +454,4 @@ The values of the `Red` and `Green` properties are displayed with a `Binding` ma
 
 Here's the result:
 
-![RGB Color Selector.](converters-images/rgbcolorselector.png)
+:::image type="content" source="media/converters/rgbcolorselector.png" alt-text="RGB color selector.":::

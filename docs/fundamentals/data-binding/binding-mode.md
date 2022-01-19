@@ -6,7 +6,8 @@ ms.date: 01/19/2022
 
 # Binding Mode
 
-A .NET Multi-platform App UI (.NET MAUI) 
+A .NET Multi-platform App UI (.NET MAUI)
+
 In the [previous article](basic-bindings.md), the **Alternative Code Binding** and **Alternative XAML Binding** pages featured a `Label` with its `Scale` property bound to the `Value` property of a `Slider`. Because the `Slider` initial value is 0, this caused the `Scale` property of the `Label` to be set to 0 rather than 1, and the `Label` disappeared.
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
@@ -37,7 +38,7 @@ At first, this might seem backwards: Now the `Label` is the data-binding source,
 
 As you might expect, the `Slider` is initialized to the value 1 from the initial `Opacity` value of `Label`. This is shown in the following screenshot:
 
-![Reverse Binding.](binding-mode-images/reversebinding.png)
+:::image type="content" source="media/binding-mode/reversebinding.png" alt-text="Reverse binding.":::
 
 But you might be surprised that the `Slider` continues to work. This seems to suggest that the data binding works better when the `Slider` is the binding target rather than the `Label` because the initialization works like we might expect.
 
@@ -251,7 +252,7 @@ The `Value` property of the `Slider`, however, is `TwoWay`. This allows each `Sl
 
 When the program is first run, the `BoxView`, `Label`, and three `Slider` elements are all set from the ViewModel based on the initial `Color` property set when the ViewModel was instantiated. This is shown in the following screenshot:
 
-![Simple Color Selector.](binding-mode-images/simplecolorselector.png)
+:::image type="content" source="media/binding-mode/simplecolorselector.png" alt-text="Simple color selector.":::
 
 As you manipulate the sliders, the `BoxView` and `Label` are updated accordingly.
 
@@ -663,7 +664,7 @@ public partial class SampleSettingsPage : ContentPage
 
 The following screenshot shows the program when it's first run. The constructor in `SampleSettingsViewModel` initializes the background color to white, and that's what's selected in the `ListView`:
 
-![Sample Settings.](binding-mode-images/samplesettings.png)
+:::image type="content" source="media/binding-mode/samplesettings.png" alt-text="Sample settings.":::
 
 When experimenting with this page, remember to put the program to sleep or to terminate it on the device or emulator that it's running. Terminating the program from the Visual Studio debugger will not cause the `OnSleep` override in the `App` class to be called.
 

@@ -6,8 +6,10 @@ ms.date: 01/19/2022
 
 # Binding Path
 
-A .NET Multi-platform App UI (.NET MAUI) 
+A .NET Multi-platform App UI (.NET MAUI)
+
 In all the previous data-binding examples, the `Path` property of the `Binding` class (or the `Path` property of the `Binding` markup extension) has been set to a single property. It's actually possible to set `Path` to a *sub-property* (a property of a property), or to a member of a collection.
+
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
 For example, suppose your page contains a `TimePicker`:
@@ -128,7 +130,7 @@ That child is a `Label`, which has a `Text` property of type `String`, which has
 
 Here's the program running:
 
-![Path Variations.](binding-path-images/pathvariations.png)
+:::image type="content" source="media/binding-path/pathvariations.png" alt-text="Path variations.":::
 
 ## Debugging Complex Paths
 
