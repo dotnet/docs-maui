@@ -1,7 +1,7 @@
 ---
 title: "Editing Android Virtual Device Properties"
 description: "Learn how to use the Android Device Manager to edit the profile properties of an Android virtual device when you create a .NET MAUI app."
-ms.date: 05/30/2018
+ms.date: 01/19/2022
 ---
 
 # Editing Android Virtual Device Properties
@@ -67,6 +67,6 @@ You can change properties by using the following guidelines:
 
 The following table provides a detailed explanation of the properties listed in the **New Device** and **Device Editor** screens:
 
-[!include[](../includes/emulator-properties.md)]
+[!INCLUDE [emulator-properties](../includes/emulator-properties.md)]
 
 For more information about these properties, see [Hardware Profile Properties](https://developer.android.com/studio/run/managing-avds.html#hpproperties).

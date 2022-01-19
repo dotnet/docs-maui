@@ -1,10 +1,11 @@
 ---
 title: "Enable hardware acceleration for the Android emulator (Hyper-V & HAXM)"
-description: "When developing a .NET MAUI app, you'll want to use your computer's hardware acceleration features to maximize Android emulator performance."
-ms.date: 12/02/2021
+description: "Learn how to enable hardware acceleration features to maximize Android emulator performance for a .NET MAUI app."
+ms.date: 01/19/2022
+ms.topic: how-to
 ---
 
-# Hardware acceleration for better emulator performance (Hyper-V & HAXM)
+# How to enable hardware acceleration with Android emulators (Hyper-V & HAXM)
 
 This article explains how to use your computer's hardware acceleration features to maximize Android emulator performance.
 

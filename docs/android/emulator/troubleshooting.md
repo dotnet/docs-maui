@@ -71,13 +71,13 @@ The following sections cover these scenarios in more detail.
 
 When you start a virtual device, and you don't have hardware acceleration enabled, the Device Manager displays an error dialog similar to the following image:
 
-:::image type="content" source="media/troubleshooting/win/01-dev-mgr-warning-w158.png" alt-text="Andorid device manager warning about Hyper-V not enabled on .NET MAUI.":::
+:::image type="content" source="media/troubleshooting/win/01-dev-mgr-warning-w158.png" alt-text="Android device manager warning about Hyper-V not enabled on .NET MAUI.":::
 
 To fix this error, follow the troubleshooting steps in the [Hardware acceleration issues](#hardware-acceleration-issues) section.
 
 ### Acceleration is enabled but the emulator runs too slowly
 
-A common cause for this problem isn't using an x86-based image in your virtual device (AVD). When you [create a virtual device](device-manager.md), be sure to select an x86-based system image:
+A common cause for this problem is not using an x86-based image in your virtual device (AVD). When you [create a virtual device](device-manager.md), be sure to select an x86-based system image:
 
 :::image type="content" source="media/troubleshooting/win/02-x86-virtual-device-w158-sml.png" alt-text="Select an x86 image for Android and .NET MAUI.":::
 

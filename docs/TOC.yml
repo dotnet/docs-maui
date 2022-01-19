@@ -23,6 +23,21 @@
           href: fundamentals/app-startup.md
         - name: Single project
           href: fundamentals/single-project.md
+    - name: Emulators
+      items:
+        - name: Android
+          items:
+            - name: Overview
+              href: android/emulator/index.md
+            - name: Manage and create virtual devices
+              href: android/emulator/device-manager.md
+            - name: Edit virtual devices
+              href: android/emulator/device-properties.md
+            - name: Troubleshoot common problems
+              href: android/emulator/troubleshooting.md
+            - name: How to enable hardware acceleration
+              href: android/emulator/index.md
+                  
     - name: User interface
       items:
         - name: Brushes
