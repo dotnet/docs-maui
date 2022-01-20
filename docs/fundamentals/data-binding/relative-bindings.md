@@ -1,14 +1,12 @@
 ---
-title: "Relative Bindings"
-description: "This article explains how to create relative bindings by using the RelativeSource markup extension to set the binding source relative to the position of the binding target."
+title: "Relative bindings"
+description: ".NET MAUI relative bindings are created with the RelativeSource markup extension, which sets the binding source relative to the position of the binding target."
 ms.date: 01/19/2022
 ---
 
-# Relative Bindings
+# Relative bindings
 
-A .NET Multi-platform App UI (.NET MAUI)
-
-Relative bindings provide the ability to set the binding source relative to the position of the binding target. They are created with the `RelativeSource` markup extension, and set as the `Source` property of a binding expression.
+.NET Multi-platform App UI (.NET MAUI) relative bindings provide the ability to set the binding source relative to the position of the binding target. They are created with the `RelativeSource` markup extension, and set as the `Source` property of a binding expression.
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
@@ -93,7 +91,7 @@ The following XAML shows an example where the `Mode` property will be implicitly
                             <Button Text="Delete"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type local:PeopleViewModel}}, Path=DeleteEmployeeCommand}"
                                     CommandParameter="{Binding}"
-                                    HorizontalOptions="EndAndExpand" />
+                                    HorizontalOptions="End" />
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
