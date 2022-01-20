@@ -18,13 +18,11 @@ The following example shows a data binding defined on a `Slider`:
              x:Class="DataBindingDemos.ReverseBindingPage"
              Title="Reverse Binding">
     <StackLayout Padding="10, 0">
-
         <Label x:Name="label"
                Text="TEXT"
                FontSize="80"
                HorizontalOptions="Center"
                VerticalOptions="Center" />
-
         <Slider x:Name="slider"
                 VerticalOptions="Center"
                 Value="{Binding Source={x:Reference label},
