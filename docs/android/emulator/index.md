@@ -10,20 +10,20 @@ The Android Emulator can be run in a variety of configurations to simulate diffe
 
 The following articles are available to help manage and setup your Android emulator:
 
-- [Hardware Acceleration for Emulator Performance](hardware-acceleration.md)
+- [How to enable hardware acceleration with Android emulators (Hyper-V & HAXM)](hardware-acceleration.md)
 
   How to prepare your computer for maximum Android Emulator performance by using either Hyper-V or HAXM virtualization technology. Because the Android Emulator can be prohibitively slow without hardware acceleration, we recommend that you enable hardware acceleration on your computer before you use the emulator.
 
-- [Managing Virtual Devices with the Android Device Manager](device-manager.md)
+- [Managing virtual devices with the Android Device Manager](device-manager.md)
 
   How to use the Android Device Manager to create and customize virtual devices.
 
-- [Editing Android Virtual Device Properties](device-properties.md)
+- [Editing Android virtual device properties](device-properties.md)
 
   How to use the Android Device Manager to edit the profile properties of a virtual device.
 
-- [Android Emulator Troubleshooting](troubleshooting.md)
+- [Android emulator troubleshooting](troubleshooting.md)
 
   In this article, the most common warning messages and issues that occur while running the Android Emulator are described, along with workarounds and tips.
 
-After you have configured the Android Emulator, see [Debugging on the Android Emulator](~/android/deploy-test/debugging/debug-on-emulator.md) for information about how to launch the emulator and use it for testing and debugging your app.
+After you have configured the Android Emulator, see [Debugging on the Android Emulator](debug-on-emulator.md) for information about how to launch the emulator and use it for testing and debugging your app.

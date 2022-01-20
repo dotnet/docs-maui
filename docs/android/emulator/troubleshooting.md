@@ -132,7 +132,7 @@ If problems still occur because of issues related to Hyper-V and HAXM, see the f
 
 In some cases, enabling both **Hyper-V** and **Windows Hypervisor Platform** in the **Turn Windows features on or off** dialog may not properly enable Hyper-V. To verify that Hyper-V is enabled, use the following steps:
 
-01. Enter **powershell** in the Windows search box.
+01. Enter **PowerShell** in the Windows search box.
 
 01. Right-click **Windows PowerShell** in the search results and select **Run as administrator**.
 
