@@ -13,7 +13,7 @@ Sometimes data bindings fail, because the binding source can't be resolved, or b
 > [!NOTE]
 > Use of the `FallbackValue` and `TargetNullValue` properties in a binding expression is optional.
 
-## Define fallback value
+## Define a fallback value
 
 The `FallbackValue` property allows a fallback value to be defined that will be used when the binding *source* can't be resolved. A common scenario for setting this property is when binding to source properties that might not exist on all objects in a bound collection of heterogeneous types.
 
