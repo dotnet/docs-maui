@@ -40,6 +40,8 @@ landingContent:
             url: fundamentals/app-lifecycle.md
           - text: App startup
             url: fundamentals/app-startup.md
+          - text: Data binding
+            url: fundamentals/data-binding/index.md
           - text: Single project
             url: fundamentals/single-project.md
   - title: User interface
