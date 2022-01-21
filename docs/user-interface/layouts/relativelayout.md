@@ -10,7 +10,7 @@ ms.date: 01/21/2022
 
 :::image type="content" source="media/relativelayout/layouts.png" alt-text=".NET MAUI RelativeLayout." border="false":::
 
-The .NET Multi-platform App UI (.NET MAUI) `RelativeLayout` is used to position and size children relative to properties of the layout or sibling elements. This allows UIs to be created that scale proportionally across device sizes. In addition, unlike some other layout classes, `RelativeLayout` is able to position children so that overlap.
+The .NET Multi-platform App UI (.NET MAUI) `RelativeLayout`, which is available in the `Microsoft.Maui.Controls.Compatibility` namespace, is used to position and size children relative to properties of the layout or sibling elements. This allows UIs to be created that scale proportionally across device sizes. In addition, unlike some other layout classes, `RelativeLayout` is able to position children so that overlap.
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
@@ -25,9 +25,6 @@ The `RelativeLayout` class defines the following properties:
 These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings and styled. <!-- For more information about attached properties, see [.NET MAUI Attached Properties](~/xamarin-forms/xaml/attached-properties.md). -->
 
 The `RelativeLayout` class derives from the `Layout<T>` class, which defines a `Children` property of type `IList<T>`. The `Children` property is the `ContentProperty` of the `Layout<T>` class, and therefore does not need to be explicitly set from XAML.
-
-> [!IMPORTANT]
-> The `RelativeLayout` class is available in the `Microsoft.Maui.Controls.Compatibility` namespace.
 
 The width and height of a child in a `RelativeLayout` can also be specified through the child's `WidthRequest` and `HeightRequest` properties, instead of the `WidthConstraint` and `HeightConstraint` attached properties.
 
