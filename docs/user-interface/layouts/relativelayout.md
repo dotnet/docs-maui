@@ -10,7 +10,7 @@ ms.date: 01/21/2022
 
 :::image type="content" source="media/relativelayout/layouts.png" alt-text=".NET MAUI RelativeLayout." border="false":::
 
-The .NET Multi-platform App UI (.NET MAUI) `RelativeLayout`, which is available in the `Microsoft.Maui.Controls.Compatibility` namespace, is used to position and size children relative to properties of the layout or sibling elements. This allows UIs to be created that scale proportionally across device sizes. In addition, unlike some other layout classes, `RelativeLayout` is able to position children so that overlap.
+The .NET Multi-platform App UI (.NET MAUI) `RelativeLayout`, which is available in the `Microsoft.Maui.Controls.Compatibility` namespace, is used to position and size children relative to properties of the layout or sibling elements. This allows UIs to be created that scale proportionally across device sizes. In addition, unlike some other layout classes, `RelativeLayout` is able to position children so that they overlap.
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
