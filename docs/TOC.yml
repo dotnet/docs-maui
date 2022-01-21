@@ -49,6 +49,8 @@
               items:
                 - name: Overview
                   href: user-interface/layouts/index.md
+                - name: AbsoluteLayout
+                  href: user-interface/layouts/absolutelayout.md
                 - name: FlexLayout
                   href: user-interface/layouts/flexlayout.md
                 - name: GridLayout
