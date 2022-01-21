@@ -1,13 +1,12 @@
 ---
-title: "Multi-Bindings"
-description: "This article explains how to attach a collection of Binding objects to a single binding target property using the MultiBinding class."
+title: "Multi-bindings"
+description: "In .NET MAUI, a collection of Binding objects can be attached to a single binding target property using the MultiBinding class."
 ms.date: 01/19/2022
 ---
 
-# Multi-Bindings
+# Multi-bindings
 
-A .NET Multi-platform App UI (.NET MAUI)
-Multi-bindings provide the ability to attach a collection of `Binding` objects to a single binding target property. They are created with the `MultiBinding` class, which evaluates all of its `Binding` objects, and returns a single value through a `IMultiValueConverter` instance provided by your application. In addition, `MultiBinding` reevaluates all of its `Binding` objects when any of the bound data changes.
+.NET Multi-platform App UI (.NET MAUI) multi-bindings provide the ability to attach a collection of `Binding` objects to a single binding target property. They are created with the `MultiBinding` class, which evaluates all of its `Binding` objects and returns a single value through a `IMultiValueConverter` instance provided by your app. In addition, `MultiBinding` reevaluates all of its `Binding` objects when any of the bound data changes.
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
@@ -98,7 +97,7 @@ The `Convert` method returns an `object` that represents a converted value. This
 - `null` to indicate that the converter cannot perform the conversion, and that the binding will use the `TargetNullValue`.
 
 > [!IMPORTANT]
-> A `MultiBinding` that receives `BindableProperty.UnsetValue` from a `Convert` method must define its `FallbackValue` property. Similarly, a `MultiBinding` that receives `null` from a `Convert` method must define its `TargetNullValue` propety.
+> A `MultiBinding` that receives `BindableProperty.UnsetValue` from a `Convert` method must define its `FallbackValue` property. Similarly, a `MultiBinding` that receives `null` from a `Convert` method must define its `TargetNullValue` property.
 
 The `ConvertBack` method converts a binding target to the source binding values. This method accepts four arguments:
 
@@ -115,7 +114,7 @@ The `ConvertBack` method returns an array of values, of type `object[]`, that ha
 
 ## Consume a IMultiValueConverter
 
-A `IMultiValueConverter` is consumed by instantiating it in a resource dictionary, and then referencing it using the `StaticResource` markup extension to set the `MultiBinding.Converter` property:
+A `IMultiValueConverter` is typically consumed by instantiating it in a resource dictionary, and then referencing it using the `StaticResource` markup extension to set the `MultiBinding.Converter` property:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -262,30 +261,29 @@ In this example, the `MultiBinding` object uses its `AnyTrueMultiConverter` inst
 
 ```xaml
 <ContentPage ...
-             xmlns:local="clr-namespace:DataBindingDemos"
-             xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit">
+             xmlns:local="clr-namespace:DataBindingDemos">
     <ContentPage.Resources>
         <local:AllTrueMultiConverter x:Key="AllTrueConverter" />
 
         <ControlTemplate x:Key="CardViewExpanderControlTemplate">
-            <xct:Expander BindingContext="{Binding Source={RelativeSource TemplatedParent}}"
-                          IsExpanded="{Binding IsExpanded, Source={RelativeSource TemplatedParent}}"
-                          BackgroundColor="{Binding CardColor}">
-                <xct:Expander.IsVisible>
+            <local:Expander BindingContext="{Binding Source={RelativeSource TemplatedParent}}"
+                            IsExpanded="{Binding IsExpanded, Source={RelativeSource TemplatedParent}}"
+                            BackgroundColor="{Binding CardColor}"
+                            RowDefinitions="Auto,Auto"
+                            Padding="8">
+                <local:Expander.IsVisible>
                     <MultiBinding Converter="{StaticResource AllTrueConverter}">
                         <Binding Path="IsExpanded" />
                         <Binding Path="IsEnabled" />
                     </MultiBinding>
-                </xct:Expander.IsVisible>
-                <xct:Expander.Header>
-                    <Grid>
-                        <!-- XAML that defines Expander header goes here -->
-                    </Grid>
-                </xct:Expander.Header>
+                </local:Expander.IsVisible>
+                <Grid>
+                    <!-- XAML that defines Expander header goes here -->
+                </Grid>
                 <Grid>
                     <!-- XAML that defines Expander content goes here -->
                 </Grid>
-            </xct:Expander>
+            </local:Expander>
         </ControlTemplate>
     </ContentPage.Resources>
 
@@ -301,9 +299,6 @@ In this example, the `MultiBinding` object uses its `AnyTrueMultiConverter` inst
     </StackLayout>
 </ContentPage>
 ```
-
-> [!NOTE]
-> The `Expander` control is now part of the Xamarin Community Toolkit.
 
 In this example, the `TemplatedParent` relative binding mode is used to bind from within a control template to the runtime object instance to which the template is applied. The `Expander`, which is the root element of the `ControlTemplate`, has its `BindingContext` set to the runtime object instance to which the template is applied. Therefore, the `Expander` and its children resolve their binding expressions, and `Binding` objects, against the properties of the `CardViewExpander` object. The `MultiBinding` uses the `AllTrueMultiConverter` instance to set the `Expander.IsVisible` property to `true` provided that the two `Binding` objects evaluate to `true`. Otherwise, the `Expander.IsVisible` property is set to `false`.
 
