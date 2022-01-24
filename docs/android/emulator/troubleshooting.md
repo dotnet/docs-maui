@@ -212,11 +212,11 @@ If `STATE` isn't set to `RUNNING`, see [How to Use the Intel Hardware Accelerate
 
 HAXM can conflict with other technologies that use virtualization, such as Hyper-V, Windows Device Guard, and some antivirus software:
 
-- **Hyper-V** &ndash; If you're using a version of Windows before the **Windows 10 April 2018 update (build 1803)** and Hyper-V is enabled, follow the steps in [Disabling Hyper-V](#disabling-hyper-v) so that HAXM can be enabled.
+- **Hyper-V**—If you're using a version of Windows before the **Windows 10 April 2018 update (build 1803)** and Hyper-V is enabled, follow the steps in [Disabling Hyper-V](#disabling-hyper-v) so that HAXM can be enabled.
 
-- **Device Guard** &ndash; Device Guard and Credential Guard can prevent Hyper-V from being disabled on Windows machines. To disable Device Guard and Credential Guard, see [Disabling Device Guard](#disabling-device-guard).
+- **Device Guard**—Device Guard and Credential Guard can prevent Hyper-V from being disabled on Windows machines. To disable Device Guard and Credential Guard, see [Disabling Device Guard](#disabling-device-guard).
 
-- **Antivirus Software** &ndash; If you're running antivirus software that uses hardware-assisted virtualization (such as Avast), disable or uninstall this software, reboot, and retry the Android emulator.
+- **Antivirus Software**—If you're running antivirus software that uses hardware-assisted virtualization (such as Avast), disable or uninstall this software, reboot, and retry the Android emulator.
 
 #### Incorrect BIOS settings
 

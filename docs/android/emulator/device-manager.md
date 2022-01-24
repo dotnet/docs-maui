@@ -18,7 +18,7 @@ This article explains how to use the Android Device Manager to create and config
 
 ## Android Device Manager on Windows
 
-You use the Android Device Manager to create and configure an Android Virtual Devices (AVD) that run in the [Android Emulator](../deployment/debug-on-emulator.md). Each AVD is an emulator configuration that simulates a physical Android device. This makes it possible to run and test your app in a variety of configurations that simulate different physical Android devices.
+You use the Android Device Manager to create and configure an Android Virtual Devices (AVD) that run in the [Android Emulator](debug-on-emulator.md). Each AVD is an emulator configuration that simulates a physical Android device. This makes it possible to run and test your app in a variety of configurations that simulate different physical Android devices.
 
 :::image type="content" source="media/device-manager/win/01-devices-dialog-sml.png" alt-text="Screenshot of the Android Device Manager in the Devices tab." lightbox="media/device-manager/win/01-devices-dialog.png":::
 
@@ -137,7 +137,7 @@ The additional options menu contains the following items:
 
 - **Repair** &ndash; TODO
 
-- **Factory Reset** &ndash; Resets the selected device to its default settings, erasing any user changes made to the internal state of the device while it was running. This action also erases the current [Quick Boot](../deployment/debug-on-emulator.md#quick-boot) snapshot if it exists. This change doesn't alter modifications that you make to the virtual device during creation and editing. A dialog box will appear with the reminder that this reset cannot be undone &ndash; press **Factory Reset** to confirm the reset.
+- **Factory Reset** &ndash; Resets the selected device to its default settings, erasing any user changes made to the internal state of the device while it was running. This action also erases the current [Quick Boot](debug-on-emulator.md#quick-boot) snapshot if it exists. This change doesn't alter modifications that you make to the virtual device during creation and editing. A dialog box will appear with the reminder that this reset cannot be undone &ndash; press **Factory Reset** to confirm the reset.
 
 - **Delete** &ndash; Permanently deletes the selected virtual device. A dialog box will appear with the reminder that deleting a device cannot be undone. Press **Delete** if you are certain that you want to delete the device.
 
@@ -229,7 +229,7 @@ This article explains how to use the Android Device Manager to create, duplicate
 
 :::image type="content" source="media/device-manager/mac/01-devices-dialog-sml.png" alt-text="Screenshot of the Android Device Manager in the Devices tab." lightbox="media/device-manager/mac/01-devices-dialog.png":::
 
-You use the Android Device Manager to create and configure *Android Virtual Devices* (AVDs) that run in the [Android Emulator](../deployment/debug-on-emulator.md). Each AVD is an emulator configuration that simulates a physical Android device. This makes it possible to run and test your app in a variety of configurations that simulate different physical Android devices.
+You use the Android Device Manager to create and configure *Android Virtual Devices* (AVDs) that run in the [Android Emulator](debug-on-emulator.md). Each AVD is an emulator configuration that simulates a physical Android device. This makes it possible to run and test your app in a variety of configurations that simulate different physical Android devices.
 
 ## Requirements
 
@@ -277,7 +277,7 @@ When you stop the emulator, you may get a prompt asking if you want to save the 
 
 :::image type="content" source="media/device-manager/mac/08-save-for-quick-boot-m76.png" alt-text="Save current state for Quick Boot dialog.":::
 
-Saving the current state will make the emulator boot faster when this virtual device is launched again. For more information about Quick Boot, see [Quick Boot](../deployment/debug-on-emulator.md#quick-boot).
+Saving the current state will make the emulator boot faster when this virtual device is launched again. For more information about Quick Boot, see [Quick Boot](debug-on-emulator.md#quick-boot).
 
 ### New device
 
@@ -373,7 +373,7 @@ The additional options menu contains the following items:
 
   :::image type="content" source="media/device-manager/mac/26-reveal-in-finder-sml.png" alt-text="Results of pressing Reveal in Finder." lightbox="media/device-manager/mac/26-reveal-in-finder.png":::
 
-- **Factory Reset** &ndash; Resets the selected device to its default settings, erasing any user changes made to the internal state of the device while it was running (this also erases the current [Quick Boot](../deployment/debug-on-emulator.md#quick-boot) snapshot, if any). This change doesn't alter modifications that you make to the virtual device during creation and editing. A dialog box will appear with the reminder that this reset cannot be undone. Press **Factory Reset** to confirm the reset.
+- **Factory Reset** &ndash; Resets the selected device to its default settings, erasing any user changes made to the internal state of the device while it was running (this also erases the current [Quick Boot](debug-on-emulator.md#quick-boot) snapshot, if any). This change doesn't alter modifications that you make to the virtual device during creation and editing. A dialog box will appear with the reminder that this reset cannot be undone. Press **Factory Reset** to confirm the reset.
 
   :::image type="content" source="media/device-manager/mac/27-factory-reset-m76.png" alt-text="Factory reset dialog.":::
 

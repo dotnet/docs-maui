@@ -15,18 +15,21 @@
           href: get-started/migrate.md
         - name: Android
           items:
-            - name: Overview
-              href: android/emulator/index.md
-            - name: Manage and create virtual devices
-              href: android/emulator/device-manager.md
-            - name: Edit virtual devices
-              href: android/emulator/device-properties.md
-            - name: Debug on a virtual device
-              href: android/emulator/debug-on-emulator.md
-            - name: Troubleshoot common problems
-              href: android/emulator/troubleshooting.md
-            - name: How to enable hardware acceleration
-              href: android/emulator/index.md
+            - name: Emulator
+              expanded: true
+              items:
+                - name: Overview
+                  href: android/emulator/index.md
+                - name: Manage and create virtual devices
+                  href: android/emulator/device-manager.md
+                - name: Edit virtual devices
+                  href: android/emulator/device-properties.md
+                - name: Debug on a virtual device
+                  href: android/emulator/debug-on-emulator.md
+                - name: Troubleshoot common problems
+                  href: android/emulator/troubleshooting.md
+                - name: How to enable hardware acceleration
+                  href: android/emulator/index.md
     - name: Fundamentals
       items:
         - name: Accessibility

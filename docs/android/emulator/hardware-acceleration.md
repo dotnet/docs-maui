@@ -47,7 +47,7 @@ For the best experience on Windows, it's recommended you use WHPX to accelerate 
 > [!IMPORTANT]
 > You can't run a VM-accelerated emulator inside another VM, such as a VM hosted by VirtualBox, VMware, or Docker (unless using WSL2). You must run the Android emulator [directly on your system hardware](https://developer.android.com/studio/run/emulator-acceleration.html#extensions).
 
-For information about launching and debugging with the Android emulator, see [Debugging on the Android Emulator](../deployment/debug-on-emulator.md).
+For information about launching and debugging with the Android emulator, see [Debugging on the Android Emulator](debug-on-emulator.md).
 
 ## Accelerating with Hyper-V
 
