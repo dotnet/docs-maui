@@ -13,18 +13,6 @@
           href: get-started/first-app.md
         - name: Migrate from Xamarin.Forms
           href: get-started/migrate.md
-    - name: Fundamentals
-      items:
-        - name: Accessibility
-          href: fundamentals/accessibility.md
-        - name: App lifecycle
-          href: fundamentals/app-lifecycle.md
-        - name: App startup
-          href: fundamentals/app-startup.md
-        - name: Single project
-          href: fundamentals/single-project.md
-    - name: Emulators
-      items:
         - name: Android
           items:
             - name: Overview
@@ -39,7 +27,16 @@
               href: android/emulator/troubleshooting.md
             - name: How to enable hardware acceleration
               href: android/emulator/index.md
-                  
+    - name: Fundamentals
+      items:
+        - name: Accessibility
+          href: fundamentals/accessibility.md
+        - name: App lifecycle
+          href: fundamentals/app-lifecycle.md
+        - name: App startup
+          href: fundamentals/app-startup.md
+        - name: Single project
+          href: fundamentals/single-project.md
     - name: User interface
       items:
         - name: Brushes

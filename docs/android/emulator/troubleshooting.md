@@ -308,7 +308,7 @@ If the emulator isn't already running, you can start it from the command line (r
 You can launch the emulator with an AVD image from this location by passing in the folder name of the AVD. For example, this command launches an AVD named **Pixel_API_27**:
 
 ```cmd
-"C:\Program Files (x86)\Android\android-sdk\emulator\emulator.exe" -partition-size 512 -no-boot-anim -verbose -feature WindowsHypervisorPlatform -avd Pixel_API_27 -prop monodroid.avdname=Pixel_API_27
+"C:\Program Files (x86)\Android\android-sdk\emulator\emulator.exe" -partition-size 2000 -no-boot-anim -verbose -feature WindowsHypervisorPlatform -avd pixel_5_-_api_30 -prop monodroid.avdname=pixel_5_-_api_30
 ```
 
 This command assumes that the Android SDK is installed at the default location of _C:\\Program Files (x86)\\Android\\android-sdk_. If the Android SDK is installed elsewhere, modify the preceding command to the correct location.

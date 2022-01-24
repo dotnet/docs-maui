@@ -49,12 +49,6 @@ Open the Android Device Manager in Visual Studio from the **Tools** menu by pres
 
 :::image type="content" source="media/device-manager/win/03-tools-menu.png" alt-text="Launching the Device manager from the Tools menu.":::
 
-<!-- TODO: Is this still applicable? -->
-
-If the following error dialog is presented on launch, see the [Troubleshooting](#troubleshooting) section for workaround instructions:
-
-:::image type="content" source="media/device-manager/win/04-sdk-error.png" alt-text="Android SDK instance error dialog.":::
-
 ## Main screen
 
 When you run the Android Device Manager, it presents a screen that displays all currently-configured virtual devices. For each virtual device, the **Name**, **OS** (Android Version), **Processor**, **Memory** size, and screen **Resolution** are displayed:
