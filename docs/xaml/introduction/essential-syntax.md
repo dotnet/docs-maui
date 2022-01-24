@@ -201,7 +201,7 @@ Many classes also have `ContentProperty` attribute definitions. For example, the
             <On Platform="Android" Value="10, 20, 20, 10" />
         </OnPlatform>
     </ContentPage.Padding>
-  ...
+    ...
 </ContentPage>
 ```
 
@@ -213,19 +213,18 @@ In addition, the `Platform` property of `On` is of type `IList<string>`, so you 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="...">
-
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness">
             <On Platform="iOS, Android" Value="10, 20, 20, 10" />
         </OnPlatform>
     </ContentPage.Padding>
-  ...
+    ...
 </ContentPage>
 ```
 
 This is the standard way to set a platform-dependent `Padding` property in XAML.
 
 > [!NOTE]
-> If the `Value` property can't be represented by a single string, you can define property elements for it.
+> If the `Value` property of an `On` object can't be represented by a single string, you can define property elements for it.
 
 <!-- For more information, see [OnPlatform Markup Extension](~/xamarin-forms/xaml/markup-extensions/consuming.md#onplatform-markup-extension). -->
