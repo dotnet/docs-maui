@@ -33,4 +33,4 @@ The following XAML shows examples of setting the attribute:
 ```
 
 > [!IMPORTANT]
-> The `x:FieldModifier` attribute cannot be used to specify the access level of a XAML class.
+> The `x:FieldModifier` attribute cannot be used to specify the access level of a .NET MAUI XAML class.
