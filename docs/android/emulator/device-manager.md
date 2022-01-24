@@ -137,7 +137,7 @@ The additional options menu contains the following items:
 
 - **Repair** &ndash; TODO
 
-- **Factory Reset** &ndash; Resets the selected device to its default settings, erasing any user changes made to the internal state of the device while it was running. This action also erases the current [Quick Boot](debug-on-emulator.md#quick-boot) snapshot if it exists. This change doesn't alter modifications that you make to the virtual device during creation and editing. A dialog box will appear with the reminder that this reset cannot be undone &ndash; press **Factory Reset** to confirm the reset.
+- **Factory Reset** &ndash; Resets the selected device to its default settings, erasing any user changes made to the internal state of the device while it was running. This action also erases the current [Fast Boot](debug-on-emulator.md#fast-boot) snapshot if it exists. This change doesn't alter modifications that you make to the virtual device during creation and editing. A dialog box will appear with the reminder that this reset cannot be undone &ndash; press **Factory Reset** to confirm the reset.
 
 - **Delete** &ndash; Permanently deletes the selected virtual device. A dialog box will appear with the reminder that deleting a device cannot be undone. Press **Delete** if you are certain that you want to delete the device.
 
