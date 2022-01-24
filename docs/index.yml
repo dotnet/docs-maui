@@ -74,6 +74,8 @@ landingContent:
     linkLists:
       - linkListType: concept
         links:
+          - text: introduction
+            url: xaml/introduction/get-started.md
           - text: Field modifiers
             url: xaml/field-modifiers.md
           - text: Generics

@@ -133,6 +133,20 @@
           href: platform-integration/invoke-platform-code.md
     - name: XAML
       items:
+        - name: Overview
+          href: xaml/index.md
+        - name: Introduction
+          items:
+            - name: Get started
+              href: /xaml/introduction/get-started.md
+            - name: Essential syntax
+              href: /xaml/introduction/essential-syntax.md
+            - name: Markup extensions
+              href: /xaml/introduction/markup-extensions.md
+            - name: Data binding basics
+              href: /xaml/introduction/data-binding-basics.md
+            - name: MVVM
+              href: /xaml/introduction/mvvm.md            
         - name: Field modifiers
           href: xaml/field-modifiers.md
         - name: Generics
