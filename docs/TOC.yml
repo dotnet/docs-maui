@@ -135,5 +135,7 @@
       items:
         - name: Field modifiers
           href: xaml/field-modifiers.md
+        - name: Generics
+          href: xaml/generics.md
         - name: Pass arguments
           href: xaml/pass-arguments.md

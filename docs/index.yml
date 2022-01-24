@@ -76,5 +76,7 @@ landingContent:
         links:
           - text: Field modifiers
             url: xaml/field-modifiers.md
+          - text: Generics
+            url: xaml/generics.md
           - text: Pass arguments
             url: xaml/pass-arguments.md
