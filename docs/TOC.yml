@@ -133,5 +133,7 @@
           href: platform-integration/invoke-platform-code.md
     - name: XAML
       items:
+        - name: Field modifiers
+          href: xaml/field-modifiers.md
         - name: Pass arguments
           href: xaml/pass-arguments.md
