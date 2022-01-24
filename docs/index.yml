@@ -70,3 +70,9 @@ landingContent:
             url: platform-integration/configure-multi-targeting.md
           - text: Invoke platform code
             url: platform-integration/invoke-platform-code.md
+  - title: XAML
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Pass arguments
+            url: xaml/pass-arguments.md
