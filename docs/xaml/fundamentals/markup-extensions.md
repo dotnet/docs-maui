@@ -285,3 +285,10 @@ Several markup extensions are intrinsic to XAML and supported in .NET MAUI XAML.
 - You can define arrays in XAML using the `x:Array` markup extension. This markup extension has a required attribute named `Type` that indicates the type of the elements in the array.
 
 <!-- For more information about XAML markup extensions, see [](). -->
+
+## Next steps
+
+.NET MAUI data bindings allow properties of two objects to be linked so that a change in one causes a change in the other.
+
+> [!div class="nextstepaction"]
+> [Data binding basics](data-binding-basics.md)
