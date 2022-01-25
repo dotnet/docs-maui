@@ -1,33 +1,18 @@
 ---
-title: "Data bindings with MVVM"
-description: "The MVVM pattern enforces a separation between three software layers — the XAML user interface, called the View; the underlying data, called the Model; and an intermediary between the View and the Model, called the ViewModel."
+title: "Data binding and MVVM"
+description: "The Model-View-ViewModel (MVVM) pattern enforces a separation between three software layers — the XAML user interface, called the view, the underlying data, called the model, and an intermediary between the view and the model, called the viewmodel."
 ms.date: 01/26/2022
 ---
 
-# Data bindings with MVVM
+# Data binding and MVVM
 
-The Model-View-ViewModel (MVVM) architectural pattern was invented with XAML in mind. The pattern enforces a separation between three software layers — the XAML user interface, called the View; the underlying data, called the Model; and an intermediary between the View and the Model, called the ViewModel. The View and the ViewModel are often connected through data bindings defined in the XAML file. The BindingContext for the View is usually an instance of the ViewModel.
+The Model-View-ViewModel (MVVM) pattern enforces a separation between three software layers — the XAML user interface, called the view, the underlying data, called the model, and an intermediary between the view and the model, called the viewmodel. The view and the viewmodel are often connected through data bindings defined in XAML. The `BindingContext` for the view is usually an instance of the viewmodel.
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
-## A Simple ViewModel
+## Simple MVVM
 
-As an introduction to ViewModels, let’s first look at a program without one.
-Earlier you saw how to define a new XML namespace declaration to allow a XAML file to reference classes in other assemblies. Here’s a program that defines an XML namespace declaration for the `System` namespace:
-
-```csharp
-xmlns:sys="clr-namespace:System;assembly=netstandard"
-```
-
-The program can use `x:Static` to obtain the current date and time from the static `DateTime.Now` property and set that `DateTime` value to the `BindingContext` on a `StackLayout`:
-
-```xaml
-<StackLayout BindingContext="{x:Static sys:DateTime.Now}" …>
-```
-
-`BindingContext` is a special property: When you set the `BindingContext` on an element, it is inherited by all the children of that element. This means that all the children of the `StackLayout` have this same `BindingContext`, and they can contain simple bindings to properties of that object.
-
-In the **One-Shot DateTime** program, two of the children contain bindings to properties of that `DateTime` value, but two other children contain bindings that seem to be missing a binding path. This means that the `DateTime` value itself is used for the `StringFormat`:
+In [XAML markup extensions](markup-extensions.md) you saw how to define a new XML namespace declaration to allow a XAML file to reference classes in other assemblies. The following example uses the `x:Static` markup extension to obtain the current date and time from the static `DateTime.Now` property in the `System` namespace:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -35,29 +20,27 @@ In the **One-Shot DateTime** program, two of the children contain bindings to pr
              xmlns:sys="clr-namespace:System;assembly=netstandard"
              x:Class="XamlSamples.OneShotDateTimePage"
              Title="One-Shot DateTime Page">
-
     <StackLayout BindingContext="{x:Static sys:DateTime.Now}"
                  HorizontalOptions="Center"
                  VerticalOptions="Center">
-
         <Label Text="{Binding Year, StringFormat='The year is {0}'}" />
         <Label Text="{Binding StringFormat='The month is {0:MMMM}'}" />
         <Label Text="{Binding Day, StringFormat='The day is {0}'}" />
         <Label Text="{Binding StringFormat='The time is {0:T}'}" />
-
     </StackLayout>
 </ContentPage>
 ```
 
-The problem is that the date and time are set once when the page is first built, and never change:
+In this example, the retrieved `DateTime` value is set as the `BindingContext` on a `StackLayout`. When you set the `BindingContext` on an element, it is inherited by all the children of that element. This means that all the children of the `StackLayout` have the same `BindingContext`, and they can contain bindings to properties of that object:
 
-![View Displaying Date and Time.](data-bindings-to-mvvm-images/oneshotdatetime.png)
+:::image type="content" source="media/mvvm/oneshotdatetime.png" alt-text="Screenshot of a page displaying the date and time.":::
 
-A XAML file can display a clock that always shows the current time, but it needs some code to help out. When thinking in terms of MVVM, the Model and ViewModel are classes written entirely in code. The View is often a XAML file that references properties defined in the ViewModel through data bindings.
+However, the problem is that the date and time are set once when the page is constructed and initialized, and never change.
 
-A proper Model is ignorant of the ViewModel, and a proper ViewModel is ignorant of the View. However, often a programmer tailors the data types exposed by the ViewModel to the data types associated with particular user interfaces. For example, if a Model accesses a database that contains 8-bit character ASCII strings, the ViewModel would need to convert between those strings to Unicode strings to accommodate the exclusive use of Unicode in the user interface.
+A XAML page can display a clock that always shows the current time, but it requires additional code. The MVVM pattern is a natural choice for .NET MAUI apps when data binding from properties between visual objects and the underlying data. When thinking in terms of MVVM, the model and viewmodel are classes written entirely in code. The view is often a XAML file that references properties defined in the viewmodel through data bindings. In MVVM, a model is ignorant of the viewmodel, and a viewmodel is ignorant of the view. However, often you tailor the types exposed by the viewmodel to the types associated with the UI.
 
-In simple examples of MVVM (such as those shown here), often there is no Model at all, and the pattern involves just a View and ViewModel linked with data bindings.
+> [!NOTE]
+> In simple examples of MVVM, such as those shown here, often there is no model at all, and the pattern involves just a view and viewmodel linked with data bindings.
 
 Here’s a ViewModel for a clock with just a single property named `DateTime`, which updates that `DateTime` property every second:
 
@@ -134,7 +117,7 @@ Notice how the `ClockViewModel` is set to the `BindingContext` of the `Label` us
 
 The `Binding` markup extension on the `Text` property of the `Label` formats the `DateTime` property. Here’s the display:
 
-![View Displaying Date and Time via ViewModel.](data-bindings-to-mvvm-images/clock.png)
+:::image type="content" source="media/mvvm/clock.png" alt-text="Screenshot of a page displaying the date and time via a viewmodel.":::
 
 It’s also possible to access individual properties of the `DateTime` property of the ViewModel by separating the properties with periods:
 
@@ -284,7 +267,7 @@ The following XAML file contains a `BoxView` whose `Color` property is bound to 
 
 The binding on each `Label` is the default `OneWay`. It only needs to display the value. But the binding on each `Slider` is `TwoWay`. This allows the `Slider` to be initialized from the ViewModel. Notice that the `Color` property is set to `Aqua` when the ViewModel is instantiated. But a change in the `Slider` also needs to set a new value for the property in the ViewModel, which then calculates a new color.
 
-![MVVM using Two-Way Data Bindings.](data-bindings-to-mvvm-images/hslcolorscroll.png)
+:::image type="content" source="media/mvvm/hslcolorscroll.png" alt-text="MVVM using two-way data bindings.":::
 
 ## Commanding with ViewModels
 
@@ -545,9 +528,9 @@ The following keypad is not as visually sophisticated as it could be. Instead, t
 
 The `Command` property of the first `Button` that appears in this markup is bound to the `DeleteCharCommand`; the rest are bound to the `AddCharCommand` with a `CommandParameter` that is the same as the character that appears on the `Button` face. Here’s the program in action:
 
-![Calculator using MVVM and Commands.](data-bindings-to-mvvm-images/keypad.png)
+:::image type="content" source="media/mvvm/keypad.png" alt-text="Screenshot of a calculator using MVVM and commands.":::
 
-### Invoking Asynchronous Methods
+### Invoke asynchronous methods
 
 Commands can also invoke asynchronous methods. This is achieved by using the `async` and `await` keywords when specifying the `Execute` method:
 
@@ -566,124 +549,5 @@ async Task DownloadAsync ()
 void Download ()
 {
     ...
-}
-```
-
-## Implementing a Navigation Menu
-
-The [XamlSamples](/samples/xamarin/xamarin-forms-samples/xamlsamples) program that contains all the source code in this series of articles uses a ViewModel for its home page. This ViewModel is a definition of a short class with three properties named `Type`, `Title`, and `Description` that contain the type of each of the sample pages, a title, and a short description. In addition, the ViewModel defines a static property named `All` that is a collection of all the pages in the program:
-
-```csharp
-public class PageDataViewModel
-{
-    public PageDataViewModel(Type type, string title, string description)
-    {
-        Type = type;
-        Title = title;
-        Description = description;
-    }
-
-    public Type Type { private set; get; }
-
-    public string Title { private set; get; }
-
-    public string Description { private set; get; }
-
-    static PageDataViewModel()
-    {
-        All = new List<PageDataViewModel>
-        {
-            // Part 1. Getting Started with XAML
-            new PageDataViewModel(typeof(HelloXamlPage), "Hello, XAML",
-                                  "Display a Label with many properties set"),
-
-            new PageDataViewModel(typeof(XamlPlusCodePage), "XAML + Code",
-                                  "Interact with a Slider and Button"),
-
-            // Part 2. Essential XAML Syntax
-            new PageDataViewModel(typeof(GridDemoPage), "Grid Demo",
-                                  "Explore XAML syntax with the Grid"),
-
-            new PageDataViewModel(typeof(AbsoluteDemoPage), "Absolute Demo",
-                                  "Explore XAML syntax with AbsoluteLayout"),
-
-            // Part 3. XAML Markup Extensions
-            new PageDataViewModel(typeof(SharedResourcesPage), "Shared Resources",
-                                  "Using resource dictionaries to share resources"),
-
-            new PageDataViewModel(typeof(StaticConstantsPage), "Static Constants",
-                                  "Using the x:Static markup extensions"),
-
-            new PageDataViewModel(typeof(RelativeLayoutPage), "Relative Layout",
-                                  "Explore XAML markup extensions"),
-
-            // Part 4. Data Binding Basics
-            new PageDataViewModel(typeof(SliderBindingsPage), "Slider Bindings",
-                                  "Bind properties of two views on the page"),
-
-            new PageDataViewModel(typeof(SliderTransformsPage), "Slider Transforms",
-                                  "Use Sliders with reverse bindings"),
-
-            new PageDataViewModel(typeof(ListViewDemoPage), "ListView Demo",
-                                  "Use a ListView with data bindings"),
-
-            // Part 5. From Data Bindings to MVVM
-            new PageDataViewModel(typeof(OneShotDateTimePage), "One-Shot DateTime",
-                                  "Obtain the current DateTime and display it"),
-
-            new PageDataViewModel(typeof(ClockPage), "Clock",
-                                  "Dynamically display the current time"),
-
-            new PageDataViewModel(typeof(HslColorScrollPage), "HSL Color Scroll",
-                                  "Use a view model to select HSL colors"),
-
-            new PageDataViewModel(typeof(KeypadPage), "Keypad",
-                                  "Use a view model for numeric keypad logic")
-        };
-    }
-
-    public static IList<PageDataViewModel> All { private set; get; }
-}
-```
-
-The XAML file for `MainPage` defines a `ListBox` whose `ItemsSource` property is set to that `All` property and which contains a `TextCell` for displaying the `Title` and `Description` properties of each page:
-
-```xaml
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:XamlSamples"
-             x:Class="XamlSamples.MainPage"
-             Padding="5, 0"
-             Title="XAML Samples">
-
-    <ListView ItemsSource="{x:Static local:PageDataViewModel.All}"
-              ItemSelected="OnListViewItemSelected">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <TextCell Text="{Binding Title}"
-                          Detail="{Binding Description}" />
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
-</ContentPage>
-```
-
-The pages are shown in a scrollable list:
-
-![Scrollable list of pages.](data-bindings-to-mvvm-images/mainpage.png)
-
-The handler in the code-behind file is triggered when the user selects an item. The handler sets the `SelectedItem` property of the `ListBox` back to `null` and then instantiates the selected page and navigates to it:
-
-```csharp
-private async void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs args)
-{
-    (sender as ListView).SelectedItem = null;
-
-    if (args.SelectedItem != null)
-    {
-        PageDataViewModel pageData = args.SelectedItem as PageDataViewModel;
-        Page page = (Page)Activator.CreateInstance(pageData.Type);
-        await Navigation.PushAsync(page);
-    }
 }
 ```

@@ -327,4 +327,4 @@ If properties of the items themselves change during runtime, then the items in t
 Data bindings provide a powerful mechanism for linking properties between two objects within a page, or between visual objects and underlying data. But when the application begins working with data sources, a popular app architectural pattern begins to emerge as a useful paradigm.
 
 > [!div class="nextstepaction"]
-> [Data bindings with MVVM](mvvm.md)
+> [Data binding and MVVM](mvvm.md)

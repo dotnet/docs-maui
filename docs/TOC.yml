@@ -145,8 +145,8 @@
               href: /xaml/fundamentals/markup-extensions.md
             - name: Data binding basics
               href: /xaml/fundamentals/data-binding-basics.md
-            - name: MVVM
-              href: /xaml/fundamentals/mvvm.md            
+            - name: Data binding and MVVM
+              href: /xaml/fundamentals/mvvm.md
         - name: Field modifiers
           href: xaml/field-modifiers.md
         - name: Generics
