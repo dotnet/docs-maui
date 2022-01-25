@@ -17,7 +17,7 @@ XAML markup extensions are so named because they are backed by code in classes t
 In many cases, XAML markup extensions are instantly recognizable in XAML files because they appear as attribute values delimited by curly braces, { and }, but sometimes markup extensions also appear in markup as conventional elements.
 
 > [!IMPORTANT]
-> No quotation marks must appear within the curly braces of a markup extension.
+> Markup extensions can have properties, but they are not set like XML attributes. In a markup extension, property settings are separated by commas, and no quotation marks appear within the curly braces.
 
 ## Shared resources
 
@@ -285,6 +285,3 @@ Several markup extensions are intrinsic to XAML and supported in .NET MAUI XAML.
 - You can define arrays in XAML using the `x:Array` markup extension. This markup extension has a required attribute named `Type` that indicates the type of the elements in the array.
 
 <!-- For more information about XAML markup extensions, see [](). -->
-
-> [!NOTE]
-> Markup extensions can have properties, but they are not set like XML attributes. In a markup extension, property settings are separated by commas, and no quotation marks appear within the curly braces.
