@@ -247,3 +247,10 @@ async void OnButtonClicked(object sender, EventArgs args)
 ```
 
 The `OnButtonClicked` method is defined as `async` because the `DisplayAlert` method is asynchronous and should be prefaced with the `await` operator, which returns when the method completes. Because this method obtains the `Button` firing the event from the `sender` argument, the same handler could be used for multiple buttons.
+
+## Next steps
+
+XAML is mostly designed for instantiating and initializing objects. But often, properties must be set to complex objects that cannot easily be represented as XML strings, and sometimes properties defined by one class must be set on a child class. These two needs require the essential XAML syntax features of *property elements* and *attached properties*.
+
+> [!div class="nextstepaction"]
+> [Essential XAML syntax](essential-syntax.md)
