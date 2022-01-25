@@ -228,3 +228,10 @@ This is the standard way to set a platform-dependent `Padding` property in XAML.
 > If the `Value` property of an `On` object can't be represented by a single string, you can define property elements for it.
 
 <!-- For more information, see [OnPlatform Markup Extension](~/xamarin-forms/xaml/markup-extensions/consuming.md#onplatform-markup-extension). -->
+
+## Next steps
+
+.NET MAUI XAML markup extensions enable properties to be set to objects or values that are referenced indirectly from other sources. XAML markup extensions are particularly important for sharing objects, and referencing constants used throughout an app.
+
+> [!div class="nextstepaction"]
+> [XAML markup extensions](markup-extensions.md)
