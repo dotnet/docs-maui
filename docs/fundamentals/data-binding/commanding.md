@@ -17,7 +17,7 @@ To allow a data binding between a `Button` and a viewmodel, the `Button` defines
 - `Command` of type [`System.Windows.Input.ICommand`](xref:System.Windows.Input.ICommand)
 - `CommandParameter` of type `Object`
 
-To use the command interface, you define a data binding that targets the `Command` property of the `Button` where the source is a property in the viewnodel of type `ICommand`. The viewmodel contains code associated with that `ICommand` property that is executed when the button is clicked. You can set the `CommandParameter` property to arbitrary data to distinguish between multiple buttons if they are all bound to the same `ICommand` property in the viewmodel.
+To use the command interface, you define a data binding that targets the `Command` property of the `Button` where the source is a property in the viewmodel of type `ICommand`. The viewmodel contains code associated with that `ICommand` property that is executed when the button is clicked. You can set the `CommandParameter` property to arbitrary data to distinguish between multiple buttons if they are all bound to the same `ICommand` property in the viewmodel.
 
 Many other views also define `Command` and `CommandParameter` properties. All these commands can be handled within a viewmodel using an approach that doesn't depend on the user-interface object in the view.
 
