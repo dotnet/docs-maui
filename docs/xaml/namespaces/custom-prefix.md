@@ -6,7 +6,7 @@ ms.date: 01/26/2022
 
 # Custom namespace prefixes
 
-The `XmlnsPrefixAttribute` class can be used by control authors to specify a recommended prefix to associate with a XAML namespace, for XAML usage. The prefix is useful when supporting object tree serialization to XAML, or when interacting with a design environment that has XAML editing features. For example:
+.The NET Multi-platform App UI (.NET MAUI) `XmlnsPrefixAttribute` class can be used by control authors to specify a recommended prefix to associate with a XAML namespace, for XAML usage. The prefix is useful when supporting object tree serialization to XAML, or when interacting with a design environment that has XAML editing features. For example:
 
 - XAML text editors could use the `XmlnsPrefixAttribute` as a hint for an initial XAML namespace `xmlns` mapping.
 - XAML design environments could use the `XmlnsPrefixAttribute` to add mappings to the XAML when dragging objects out of a toolbox and onto a visual design surface.

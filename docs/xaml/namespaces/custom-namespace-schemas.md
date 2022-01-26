@@ -6,7 +6,7 @@ ms.date: 01/26/2022
 
 # Custom namespace schemas
 
-Types in a library can be referenced in XAML by declaring an XML namespace for the library, with the namespace declaration specifying the Common Language Runtime (CLR) namespace name and an assembly name:
+Types in a .NET Multi-platform App UI (.NET MAUI) library can be referenced in XAML by declaring an XML namespace for the library, with the namespace declaration specifying the Common Language Runtime (CLR) namespace name and an assembly name:
 
 ```xaml
 <ContentPage ...

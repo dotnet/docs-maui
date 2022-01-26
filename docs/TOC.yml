@@ -29,6 +29,8 @@
               href: xaml/fundamentals/data-binding-basics.md
             - name: Data binding and MVVM
               href: xaml/fundamentals/mvvm.md
+        - name: Compilation
+          href: xaml/xamlc.md
         - name: Field modifiers
           href: xaml/field-modifiers.md
         - name: Generics
