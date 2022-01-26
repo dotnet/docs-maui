@@ -31,7 +31,7 @@ XAML compilation can also be enabled at the class level:
 
 ```csharp
 [XamlCompilation (XamlCompilationOptions.Compile)]
-public class MyPage : ContentPage
+public partial class MyPage : ContentPage
 {
     ...
 }
@@ -56,7 +56,7 @@ XAML compilation can also be disabled at the class level:
 
 ```csharp
 [XamlCompilation (XamlCompilationOptions.Skip)]
-public class MyPage : ContentPage
+public partial class MyPage : ContentPage
 {
     ...
 }
