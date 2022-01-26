@@ -52,9 +52,9 @@ public partial class MainPage : ContentPage
 
 The `MainPage` class derives from `ContentPage`, and is a partial class definition.
 
-When Visual Studio builds the project, it parses the XAML files and generates corresponding C# code files. For `MainPage.xaml` the generated code file will be named `MainPage.xaml.g.cs`, with the `g` meaning generated. This is the other partial class definition of `MainPage` that contains the definition of the `InitializeComponent` method called from the `MainPage` constructor. The two partial `MainPage` class definitions can then be compiled together. Depending on whether the XAML is compiled or not, either the XAML file or a binary form of the XAML file is embedded in the app package.
+When Visual Studio builds the project, a source generator generates new C# source that contains the definition of the `InitializeComponent` method that's called from the `MainPage` constructor and adds it to the compilation object.
 
-At runtime, code in the `MauiProgram` class bootstraps the app and executes the `App` class constructor, which instantiates `MainPage`. The constructor of that class calls `InitializeComponent`, which then calls the `LoadFromXaml` method that initializes all the objects defined in the XAML file, connects them all together in parent-child relationships, attaches event handlers defined in code to events set in the XAML file, and sets the resultant tree of objects as the content of the page.
+At runtime, code in the `MauiProgram` class bootstraps the app and executes the `App` class constructor, which instantiates `MainPage`. The `MainPage` constructor calls `InitializeComponent`, which initializes all the objects defined in the XAML file, connects them all together in parent-child relationships, attaches event handlers defined in code to events set in the XAML file, and sets the resultant tree of objects as the content of the page.
 
 ## Set page content
 
