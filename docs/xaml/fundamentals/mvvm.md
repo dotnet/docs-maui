@@ -42,58 +42,53 @@ A XAML page can display a clock that always shows the current time, but it requi
 > [!NOTE]
 > In simple examples of MVVM, such as those shown here, often there is no model at all, and the pattern involves just a view and viewmodel linked with data bindings.
 
-Here’s a ViewModel for a clock with just a single property named `DateTime`, which updates that `DateTime` property every second:
+The following example shows a viewmodel for a clock, with a single property named `DateTime` that's updated every second:
 
 ```csharp
-using System;
 using System.ComponentModel;
-using Xamarin.Forms;
 
 namespace XamlSamples
 {
-    class ClockViewModel : INotifyPropertyChanged
+    public class ClockViewModel : INotifyPropertyChanged
     {
         DateTime dateTime;
-
         public event PropertyChangedEventHandler PropertyChanged;
 
         public ClockViewModel()
         {
             this.DateTime = DateTime.Now;
-
             Device.StartTimer(TimeSpan.FromSeconds(1), () =>
-                {
-                    this.DateTime = DateTime.Now;
-                    return true;
-                });
+            {
+                this.DateTime = DateTime.Now;
+                return true;
+            });
         }
 
         public DateTime DateTime
         {
+            get
+            {
+                return dateTime;
+            }
             set
             {
                 if (dateTime != value)
                 {
                     dateTime = value;
-
                     if (PropertyChanged != null)
                     {
                         PropertyChanged(this, new PropertyChangedEventArgs("DateTime"));
                     }
                 }
             }
-            get
-            {
-                return dateTime;
-            }
         }
     }
 }
 ```
 
-ViewModels generally implement the `INotifyPropertyChanged` interface, which means that the class fires a `PropertyChanged` event whenever one of its properties changes. The data binding mechanism in .NET MAUI attaches a handler to this `PropertyChanged` event so it can be notified when a property changes and keep the target updated with the new value.
+Viewmodels typically implement the `INotifyPropertyChanged` interface, which provides the ability for a class to fire the `PropertyChanged` event whenever one of its properties changes. The data binding mechanism in .NET MAUI attaches a handler to this `PropertyChanged` event so it can be notified when a property changes and keep the target updated with the new value.
 
-A clock based on this ViewModel can be as simple as this:
+The following example shows XAML that consumes `ClockViewModel`:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -101,25 +96,24 @@ A clock based on this ViewModel can be as simple as this:
              xmlns:local="clr-namespace:XamlSamples;assembly=XamlSamples"
              x:Class="XamlSamples.ClockPage"
              Title="Clock Page">
+    <ContentPage.BindingContext>
+        <local:ClockViewModel />
+    </ContentPage.BindingContext>
 
     <Label Text="{Binding DateTime, StringFormat='{0:T}'}"
            FontSize="Large"
            HorizontalOptions="Center"
-           VerticalOptions="Center">
-        <Label.BindingContext>
-            <local:ClockViewModel />
-        </Label.BindingContext>
-    </Label>
+           VerticalOptions="Center" />
 </ContentPage>
 ```
 
-Notice how the `ClockViewModel` is set to the `BindingContext` of the `Label` using property element tags. Alternatively, you can instantiate the `ClockViewModel` in a `Resources` collection and set it to the `BindingContext` via a `StaticResource` markup extension. Or, the code-behind file can instantiate the ViewModel.
+In this example, `ClockViewModel` is set to the `BindingContext` of the `ContentPage` using property element tags. Alternatively, the code-behind file could instantiate the viewmodel.
 
-The `Binding` markup extension on the `Text` property of the `Label` formats the `DateTime` property. Here’s the display:
+The `Binding` markup extension on the `Text` property of the `Label` formats the `DateTime` property. The following screenshot shows the result:
 
 :::image type="content" source="media/mvvm/clock.png" alt-text="Screenshot of a page displaying the date and time via a viewmodel.":::
 
-It’s also possible to access individual properties of the `DateTime` property of the ViewModel by separating the properties with periods:
+In addition, it’s possible to access individual properties of the `DateTime` property of the viewmodel by separating the properties with periods:
 
 ```xaml
 <Label Text="{Binding DateTime.Second, StringFormat='{0}'}" … >
@@ -129,96 +123,86 @@ It’s also possible to access individual properties of the `DateTime` property 
 
 MVVM is often used with two-way data bindings for an interactive view based on an underlying data model.
 
-Here’s a class named `HslViewModel` that converts a `Color` value into `Hue`, `Saturation`, and `Luminosity` values, and vice versa:
+The following example shows the `HslViewModel` that converts a `Color` value into `Hue`, `Saturation`, and `Luminosity` values, and back again:
 
 ```csharp
-using System;
 using System.ComponentModel;
-using Xamarin.Forms;
 
 namespace XamlSamples
 {
     public class HslViewModel : INotifyPropertyChanged
     {
-        double hue, saturation, luminosity;
+        float hue, saturation, luminosity;
         Color color;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public double Hue
+        public float Hue
         {
-            set
-            {
-                if (hue != value)
-                {
-                    hue = value;
-                    OnPropertyChanged("Hue");
-                    SetNewColor();
-                }
-            }
             get
             {
                 return hue;
             }
-        }
-
-        public double Saturation
-        {
             set
             {
-                if (saturation != value)
+                if (hue != value)
                 {
-                    saturation = value;
-                    OnPropertyChanged("Saturation");
-                    SetNewColor();
+                    Color = Color.FromHsla(value, saturation, luminosity);
                 }
             }
+        }
+
+        public float Saturation
+        {
             get
             {
                 return saturation;
             }
+            set
+            {
+                if (saturation != value)
+                {
+                    Color = Color.FromHsla(hue, value, luminosity);
+                }
+            }
         }
 
-        public double Luminosity
+        public float Luminosity
         {
+            get
+            {
+                return luminosity;
+            }
             set
             {
                 if (luminosity != value)
                 {
-                    luminosity = value;
-                    OnPropertyChanged("Luminosity");
-                    SetNewColor();
+                    Color = Color.FromHsla(hue, saturation, value);
                 }
-            }
-            get
-            {
-                return luminosity;
             }
         }
 
         public Color Color
         {
+            get
+            {
+                return color;
+            }
             set
             {
                 if (color != value)
                 {
                     color = value;
-                    OnPropertyChanged("Color");
+                    hue = color.GetHue();
+                    saturation = color.GetSaturation();
+                    luminosity = color.GetLuminosity();
 
-                    Hue = value.Hue;
-                    Saturation = value.Saturation;
-                    Luminosity = value.Luminosity;
+                    OnPropertyChanged("Hue");
+                    OnPropertyChanged("Saturation");
+                    OnPropertyChanged("Luminosity");
+                    OnPropertyChanged("Color");
                 }
             }
-            get
-            {
-                return color;
-            }
-        }
-
-        void SetNewColor()
-        {
-            Color = Color.FromHsla(Hue, Saturation, Luminosity);
         }
 
         protected virtual void OnPropertyChanged(string propertyName)
@@ -229,92 +213,80 @@ namespace XamlSamples
 }
 ```
 
-Changes to the `Hue`, `Saturation`, and `Luminosity` properties cause the `Color` property to change, and changes to `Color` causes the other three properties to change. This might seem like an infinite loop, except that the class doesn't invoke the `PropertyChanged` event unless the property has changed. This puts an end to the otherwise uncontrollable feedback loop.
+In this example, changes to the `Hue`, `Saturation`, and `Luminosity` properties cause the `Color` property to change, and changes to the `Color` property causes the other three properties to change. This might seem like an infinite loop, except that the viewmodel doesn't invoke the `PropertyChanged` event unless the property has changed.
 
-The following XAML file contains a `BoxView` whose `Color` property is bound to the `Color` property of the ViewModel, and three `Slider` and three `Label` views bound to the `Hue`, `Saturation`, and `Luminosity` properties:
+The following XAML example contains a `BoxView` whose `Color` property is bound to the `Color` property of the viewmodel, and three `Slider` and three `Label` views bound to the `Hue`, `Saturation`, and `Luminosity` properties:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:XamlSamples;assembly=XamlSamples"
              x:Class="XamlSamples.HslColorScrollPage"
-             Title="HSL Color Scroll Page">
+             Title="HSL Color Scroll Page">    
     <ContentPage.BindingContext>
         <local:HslViewModel Color="Aqua" />
     </ContentPage.BindingContext>
 
-    <StackLayout Padding="10, 0">
+    <StackLayout Padding="10, 0, 10, 30">
         <BoxView Color="{Binding Color}"
-                 VerticalOptions="FillAndExpand" />
-
+                 HeightRequest="100"
+                 WidthRequest="100"
+                 HorizontalOptions="Center" />
         <Label Text="{Binding Hue, StringFormat='Hue = {0:F2}'}"
                HorizontalOptions="Center" />
-
-        <Slider Value="{Binding Hue, Mode=TwoWay}" />
-
+        <Slider Value="{Binding Hue}"
+                Margin="20,0,20,0" />
         <Label Text="{Binding Saturation, StringFormat='Saturation = {0:F2}'}"
                HorizontalOptions="Center" />
-
-        <Slider Value="{Binding Saturation, Mode=TwoWay}" />
-
+        <Slider Value="{Binding Saturation}"
+                Margin="20,0,20,0" />
         <Label Text="{Binding Luminosity, StringFormat='Luminosity = {0:F2}'}"
                HorizontalOptions="Center" />
-
-        <Slider Value="{Binding Luminosity, Mode=TwoWay}" />
+        <Slider Value="{Binding Luminosity}"
+                Margin="20,0,20,0" />
     </StackLayout>
 </ContentPage>
 ```
 
-The binding on each `Label` is the default `OneWay`. It only needs to display the value. But the binding on each `Slider` is `TwoWay`. This allows the `Slider` to be initialized from the ViewModel. Notice that the `Color` property is set to `Aqua` when the ViewModel is instantiated. But a change in the `Slider` also needs to set a new value for the property in the ViewModel, which then calculates a new color.
+The binding on each `Label` is the default `OneWay`. It only needs to display the value. However, the default binding on each `Slider` is `TwoWay`. This allows the `Slider` to be initialized from the viewmodel. When the viewmodel is instantiated it's `Color` property is set to `Aqua`. A change in a `Slider` sets a new value for the property in the viewmodel, which then calculates a new color:
 
 :::image type="content" source="media/mvvm/hslcolorscroll.png" alt-text="MVVM using two-way data bindings.":::
 
-## Commanding with ViewModels
+## Commanding
 
-In many cases, the MVVM pattern is restricted to the manipulation of data items: User-interface objects in the View parallel data objects in the ViewModel.
+Sometimes an app has needs that go beyond these property bindings by requiring the user to initiate commands that affect something in the viewmodel. These commands are generally signaled by button clicks or finger taps, and traditionally they are processed in the code-behind file in a handler for the `Clicked` event of the `Button` or the `Tapped` event of a `TapGestureRecognizer`.
 
-However, sometimes the View needs to contain buttons that trigger various actions in the ViewModel. But the ViewModel must not contain `Clicked` handlers for the buttons because that would tie the ViewModel to a particular user-interface paradigm.
+The commanding interface provides an alternative approach to implementing commands that is much better suited to the MVVM architecture. The viewmodel can contain commands, which are methods that are executed in reaction to a specific activity in the view such as a `Button` click. Data bindings are defined between these commands and the `Button`.
 
-To allow ViewModels to be more independent of particular user interface objects but still allow methods to be called within the ViewModel, a *command* interface exists. This command interface is supported by the following elements in .NET MAUI:
+To allow a data binding between a `Button` and a viewmodel, the `Button` defines two properties:
 
-- `Button`
-- `MenuItem`
-- `ToolbarItem`
-- `SearchBar`
-- `TextCell` (and hence also `ImageCell`
-- `ListView`
-- `TapGestureRecognizer`
+- `Command` of type [`System.Windows.Input.ICommand`](xref:System.Windows.Input.ICommand)
+- `CommandParameter` of type `Object`
 
-With the exception of the `SearchBar` and `ListView` element, these elements define two properties:
+> [!NOTE]
+> Many other controls also define `Command` and `CommandParameter` properties.
 
-- `Command` of type  `System.Windows.Input.ICommand`
-- `CommandParameter` of type  `Object`
-
-The `SearchBar` defines `SearchCommand` and `SearchCommandParameter` properties, while the `ListView` defines a `RefreshCommand` property of type `ICommand`.
-
-The `ICommand` interface defines two methods and one event:
+The [`ICommand`](xref:System.Windows.Input.ICommand) interface is defined in the [System.Windows.Input](xref:System.Windows.Input) namespace, and consists of two methods and one event:
 
 - `void Execute(object arg)`
 - `bool CanExecute(object arg)`
 - `event EventHandler CanExecuteChanged`
 
-The ViewModel can define properties of type `ICommand`. You can then bind these properties to the `Command` property of each `Button` or other element, or perhaps a custom view that implements this interface. You can optionally set the `CommandParameter` property to identify individual `Button` objects (or other elements) that are bound to this ViewModel property. Internally, the `Button` calls the `Execute` method whenever the user taps the `Button`, passing to the `Execute` method its `CommandParameter`.
+The viewnodel can define properties of type `ICommand`. You can then bind these properties to the `Command` property of each `Button` or other element, or perhaps a custom view that implements this interface. You can optionally set the `CommandParameter` property to identify individual `Button` objects (or other elements) that are bound to this viewnodel property. Internally, the `Button` calls the `Execute` method whenever the user taps the `Button`, passing to the `Execute` method its `CommandParameter`.
 
 The `CanExecute` method and `CanExecuteChanged` event are used for cases where a `Button` tap might be currently invalid, in which case the `Button` should disable itself. The `Button` calls `CanExecute` when the `Command` property is first set and whenever the `CanExecuteChanged` event is fired. If `CanExecute` returns `false`, the `Button` disables itself and doesn’t generate `Execute` calls.
 
-For help with adding commanding to your ViewModels, .NET MAUI defines two classes that implement `ICommand`: `Command` and `Command<T>` where `T` is the type of the arguments to `Execute` and `CanExecute`. These two classes define several constructors plus a `ChangeCanExecute` method that the ViewModel can call to force the `Command` object to fire the `CanExecuteChanged` event.
+You can use the `Command` or `Command<T>` class included in .NET MAUI to implement the `ICommand` interface. These two classes define several constructors plus a `ChangeCanExecute` method that the viewnodel can call to force the `Command` object to fire the `CanExecuteChanged` event.
 
-Here is a ViewModel for a simple keypad that is intended for entering telephone numbers. Notice that the `Execute` and `CanExecute` method are defined as lambda functions right in the constructor:
+The following example shows a viewmodel for a simple keypad that is intended for entering telephone numbers:
 
 ```csharp
-using System;
 using System.ComponentModel;
 using System.Windows.Input;
-using Xamarin.Forms;
 
 namespace XamlSamples
 {
-    class KeypadViewModel : INotifyPropertyChanged
+    public class KeypadViewModel : INotifyPropertyChanged
     {
         string inputString = "";
         string displayText = "";
@@ -322,31 +294,13 @@ namespace XamlSamples
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        // Constructor
-        public KeypadViewModel()
-        {
-            AddCharCommand = new Command<string>((key) =>
-                {
-                    // Add the key to the input string.
-                    InputString += key;
-                });
+        public ICommand AddCharCommand { get; private set; }
+        public ICommand DeleteCharCommand { get; private set; }
 
-            DeleteCharCommand = new Command(() =>
-                {
-                    // Strip a character from the input string.
-                    InputString = InputString.Substring(0, InputString.Length - 1);
-                },
-                () =>
-                {
-                    // Return true if there's something to delete.
-                    return InputString.Length > 0;
-                });
-        }
-
-        // Public properties
         public string InputString
         {
-            protected set
+            get { return inputString; }
+            private set
             {
                 if (inputString != value)
                 {
@@ -358,13 +312,12 @@ namespace XamlSamples
                     ((Command)DeleteCharCommand).ChangeCanExecute();
                 }
             }
-
-            get { return inputString; }
         }
 
         public string DisplayText
         {
-            protected set
+            get { return displayText; }
+            private set
             {
                 if (displayText != value)
                 {
@@ -372,13 +325,27 @@ namespace XamlSamples
                     OnPropertyChanged("DisplayText");
                 }
             }
-            get { return displayText; }
         }
 
-        // ICommand implementations
-        public ICommand AddCharCommand { protected set; get; }
+        public KeypadViewModel()
+        {
+            AddCharCommand = new Command<string>((key) =>
+            {
+                // Add the key to the input string.
+                InputString += key;
+            });
 
-        public ICommand DeleteCharCommand { protected set; get; }
+            DeleteCharCommand = new Command(() =>
+            {
+                // Strip a character from the input string.
+                InputString = InputString.Substring(0, InputString.Length - 1);
+            },
+            () =>
+            {
+                // Return true if there's something to delete.
+                return InputString.Length > 0;  
+            });
+        }
 
         string FormatText(string str)
         {
@@ -390,16 +357,11 @@ namespace XamlSamples
             }
             else if (str.Length < 8)
             {
-                formatted = String.Format("{0}-{1}",
-                                          str.Substring(0, 3),
-                                          str.Substring(3));
+                formatted = string.Format("{0}-{1}", str.Substring(0, 3), str.Substring(3));
             }
             else
             {
-                formatted = String.Format("({0}) {1}-{2}",
-                                          str.Substring(0, 3),
-                                          str.Substring(3, 3),
-                                          str.Substring(6));
+                formatted = string.Format("({0}) {1}-{2}", str.Substring(0, 3), str.Substring(3, 3), str.Substring(6));
             }
             return formatted;
         }
@@ -412,11 +374,9 @@ namespace XamlSamples
 }
 ```
 
-This ViewModel assumes that the `AddCharCommand` property is bound to the `Command` property of several buttons (or anything else that has a command interface), each of which is identified by the `CommandParameter`. These buttons add characters to an `InputString` property, which is then formatted as a phone number for the `DisplayText` property.
+In this example, the `Execute` and `CanExecute` methods for the commands are defined as lambda functions in the constructor. The viewmodel assumes that the `AddCharCommand` property is bound to the `Command` property of several buttons (or anything other controls that have a command interface), each of which is identified by the `CommandParameter`. These buttons add characters to an `InputString` property, which is then formatted as a phone number for the `DisplayText` property. There's also a second property of type `ICommand` named `DeleteCharCommand`. This is bound to a back-spacing button, but the button should be disabled if there are no characters to delete.
 
-There is also a second property of type `ICommand` named `DeleteCharCommand`. This is bound to a back-spacing button, but the button should be disabled if there are no characters to delete.
-
-The following keypad is not as visually sophisticated as it could be. Instead, the markup has been reduced to a minimum to demonstrate more clearly the use of the command interface:
+The following example shows the XAML that consumes the `KeypadViewModel`:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -424,13 +384,12 @@ The following keypad is not as visually sophisticated as it could be. Instead, t
              xmlns:local="clr-namespace:XamlSamples;assembly=XamlSamples"
              x:Class="XamlSamples.KeypadPage"
              Title="Keypad Page">
+    <ContentPage.BindingContext>
+        <local:KeypadViewModel />
+    </ContentPage.BindingContext>
 
     <Grid HorizontalOptions="Center"
           VerticalOptions="Center">
-        <Grid.BindingContext>
-            <local:KeypadViewModel />
-        </Grid.BindingContext>
-
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -438,86 +397,66 @@ The following keypad is not as visually sophisticated as it could be. Instead, t
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="80" />
             <ColumnDefinition Width="80" />
             <ColumnDefinition Width="80" />
         </Grid.ColumnDefinitions>
 
-        <!-- Internal Grid for top row of items -->
-        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-
-            <Frame Grid.Column="0"
-                   OutlineColor="Accent">
-                <Label Text="{Binding DisplayText}" />
-            </Frame>
-
-            <Button Text="&#x21E6;"
-                    Command="{Binding DeleteCharCommand}"
-                    Grid.Column="1"
-                    BorderWidth="0" />
-        </Grid>
-
+        <Label Text="{Binding DisplayText}"
+               Margin="0,0,10,0"
+               FontSize="32"
+               LineBreakMode="HeadTruncation"
+               VerticalTextAlignment="Center"
+               HorizontalTextAlignment="End"
+               Grid.ColumnSpan="2" />
+        <Button Text="&#x21E6;"
+                Command="{Binding DeleteCharCommand}"
+                Grid.Column="2"/>
         <Button Text="1"
                 Command="{Binding AddCharCommand}"
                 CommandParameter="1"
-                Grid.Row="1" Grid.Column="0" />
-
+                Grid.Row="1" />
         <Button Text="2"
                 Command="{Binding AddCharCommand}"
                 CommandParameter="2"
                 Grid.Row="1" Grid.Column="1" />
-
         <Button Text="3"
                 Command="{Binding AddCharCommand}"
                 CommandParameter="3"
                 Grid.Row="1" Grid.Column="2" />
-
         <Button Text="4"
                 Command="{Binding AddCharCommand}"
                 CommandParameter="4"
-                Grid.Row="2" Grid.Column="0" />
-
+                Grid.Row="2" />
         <Button Text="5"
                 Command="{Binding AddCharCommand}"
                 CommandParameter="5"
                 Grid.Row="2" Grid.Column="1" />
-
         <Button Text="6"
                 Command="{Binding AddCharCommand}"
                 CommandParameter="6"
                 Grid.Row="2" Grid.Column="2" />
-
         <Button Text="7"
                 Command="{Binding AddCharCommand}"
                 CommandParameter="7"
-                Grid.Row="3" Grid.Column="0" />
-
+                Grid.Row="3" />
         <Button Text="8"
                 Command="{Binding AddCharCommand}"
                 CommandParameter="8"
                 Grid.Row="3" Grid.Column="1" />
-
         <Button Text="9"
                 Command="{Binding AddCharCommand}"
                 CommandParameter="9"
                 Grid.Row="3" Grid.Column="2" />
-
         <Button Text="*"
                 Command="{Binding AddCharCommand}"
                 CommandParameter="*"
-                Grid.Row="4" Grid.Column="0" />
-
+                Grid.Row="4" />
         <Button Text="0"
                 Command="{Binding AddCharCommand}"
                 CommandParameter="0"
                 Grid.Row="4" Grid.Column="1" />
-
         <Button Text="#"
                 Command="{Binding AddCharCommand}"
                 CommandParameter="#"
@@ -526,28 +465,6 @@ The following keypad is not as visually sophisticated as it could be. Instead, t
 </ContentPage>
 ```
 
-The `Command` property of the first `Button` that appears in this markup is bound to the `DeleteCharCommand`; the rest are bound to the `AddCharCommand` with a `CommandParameter` that is the same as the character that appears on the `Button` face. Here’s the program in action:
+In this example, the `Command` property of the first `Button` that is bound to the `DeleteCharCommand`. The other buttons are bound to the `AddCharCommand` with a `CommandParameter` that's the same as the character that appears on the `Button`:
 
 :::image type="content" source="media/mvvm/keypad.png" alt-text="Screenshot of a calculator using MVVM and commands.":::
-
-### Invoke asynchronous methods
-
-Commands can also invoke asynchronous methods. This is achieved by using the `async` and `await` keywords when specifying the `Execute` method:
-
-```csharp
-DownloadCommand = new Command (async () => await DownloadAsync ());
-```
-
-This indicates that the `DownloadAsync` method is a `Task` and should be awaited:
-
-```csharp
-async Task DownloadAsync ()
-{
-    await Task.Run (() => Download ());
-}
-
-void Download ()
-{
-    ...
-}
-```
