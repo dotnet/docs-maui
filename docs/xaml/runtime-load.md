@@ -8,11 +8,7 @@ ms.date: 01/26/2022
 
 <!-- Sample link goes here -->
 
-The .NET Multi-platform App UI (.NET MAUI) `Extensions` class, in the `Microsoft.Maui.Controls.Xaml` namespace, includes `LoadFromXaml` extension methods that can be used to load and parse XAML at runtime.
-
-## Background
-
-When a .NET MAUI XAML class is constructed, a `LoadFromXaml` method is indirectly called. This occurs because the code-behind file for a XAML class calls the `InitializeComponent` method from its constructor:
+When a .NET Multi-platform App UI (.NET MAUI) XAML class is constructed, a `LoadFromXaml` method is indirectly called. This occurs because the code-behind file for a XAML class calls the `InitializeComponent` method from its constructor:
 
 ```csharp
 public partial class MainPage : ContentPage
@@ -38,7 +34,7 @@ The `InitializeComponent` method calls the `LoadFromXaml` method to extract the 
 
 ## Load XAML at runtime
 
-The `LoadFromXaml` methods are `public`, and therefore can be called from .NET MAUI applications to load, and parse XAML at runtime. This enables scenarios such as an app downloading XAML from a web service, creating the required view from the XAML, and displaying it in the app.
+The `Extensions` class, in the `Microsoft.Maui.Controls.Xaml` namespace, includes `LoadFromXaml` extension methods that can be used to load and parse XAML at runtime. The `LoadFromXaml` methods are `public`, and therefore can be called from .NET MAUI applications to load, and parse XAML at runtime. This enables scenarios such as an app downloading XAML from a web service, creating the required view from the XAML, and displaying it in the app.
 
 > [!WARNING]
 > Loading XAML at runtime has a significant performance cost, and generally should be avoided.
