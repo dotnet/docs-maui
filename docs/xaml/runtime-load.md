@@ -1,0 +1,83 @@
+---
+title: "Load XAML at runtime"
+description: "In .NET MAUI, XAML can be loaded and parsed at runtime with the LoadFromXaml extension methods."
+ms.date: 01/26/2022
+---
+
+# Load XAML at runtime
+
+<!-- Sample link goes here -->
+
+The .NET Multi-platform App UI (.NET MAUI) `Extensions` class, in the `Microsoft.Maui.Controls.Xaml` namespace, includes `LoadFromXaml` extension methods that can be used to load and parse XAML at runtime.
+
+## Background
+
+When a .NET MAUI XAML class is constructed, a `LoadFromXaml` method is indirectly called. This occurs because the code-behind file for a XAML class calls the `InitializeComponent` method from its constructor:
+
+```csharp
+public partial class MainPage : ContentPage
+{
+    public MainPage()
+    {
+        InitializeComponent();
+    }
+}
+```
+
+When Visual Studio builds a project containing a XAML file, a source generator generates new C# source that contains the definition of the `InitializeComponent` method and adds it to the compilation object. The following example shows the generated `InitializeComponent` method for the `MainPage` class:
+
+```csharp
+private void InitializeComponent()
+{
+    global::Microsoft.Maui.Controls.Xaml.Extensions.LoadFromXaml(this, typeof(MainPage));
+    ...
+}
+```
+
+The `InitializeComponent` method calls the `LoadFromXaml` method to extract the XAML compiled binary (or its file) from the app package. After extraction, it initializes all of the objects defined in the XAML, connects them all together in parent-child relationships, attaches event handlers defined in code to events set in the XAML file, and sets the resultant tree of objects as the content of the page.
+
+## Load XAML at runtime
+
+The `LoadFromXaml` methods are `public`, and therefore can be called from .NET MAUI applications to load, and parse XAML at runtime. This enables scenarios such as an app downloading XAML from a web service, creating the required view from the XAML, and displaying it in the app.
+
+> [!WARNING]
+> Loading XAML at runtime has a significant performance cost, and generally should be avoided.
+
+The following code example shows a simple usage:
+
+```csharp
+string navigationButtonXAML = "<Button Text=\"Navigate\" />";
+Button navigationButton = new Button().LoadFromXaml(navigationButtonXAML);
+...
+stackLayout.Add(navigationButton);
+```
+
+In this example, a `Button` instance is created, with its `Text` property value being set from the XAML defined in the `string`. The `Button` is then added to a `StackLayout` that has been defined in the XAML for the page.
+
+> [!NOTE]
+> The `LoadFromXaml` extension methods allow a generic type argument to be specified. However, it's rarely necessary to specify the type argument, as it will be inferred from the type of the instance it's operating on.
+
+The `LoadFromXaml` method can be used to inflate any XAML, with the following example inflating a `ContentPage` and then navigating to it:
+
+```csharp
+// See the sample for the full XAML string
+string pageXAML = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<ContentPage xmlns=\"http://schemas.microsoft.com/dotnet/2021/maui\"\nxmlns:x=\"http://schemas.microsoft.com/winfx/2009/xaml\"\nx:Class=\"LoadRuntimeXAML.CatalogItemsPage\"\nTitle=\"Catalog Items\">\n</ContentPage>";
+
+ContentPage page = new ContentPage().LoadFromXaml(pageXAML);
+await Navigation.PushAsync(page);
+```
+
+## Access elements
+
+Loading XAML at runtime with the `LoadFromXaml` method does not allow strongly-typed access to the XAML elements that have specified runtime object names (using `x:Name`). However, these XAML elements can be retrieved using the `FindByName` method, and then accessed as required:
+
+```csharp
+// See the sample for the full XAML string
+string pageXAML = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<ContentPage xmlns=\"http://schemas.microsoft.com/dotnet/2021/maui\"\nxmlns:x=\"http://schemas.microsoft.com/winfx/2009/xaml\"\nx:Class=\"LoadRuntimeXAML.CatalogItemsPage\"\nTitle=\"Catalog Items\">\n<StackLayout>\n<Label x:Name=\"monkeyName\"\n />\n</StackLayout>\n</ContentPage>";
+ContentPage page = new ContentPage().LoadFromXaml(pageXAML);
+
+Label monkeyLabel = page.FindByName<Label>("monkeyName");
+monkeyLabel.Text = "Seated Monkey";
+```
+
+In this example, the XAML for a `ContentPage` is inflated. This XAML includes a `Label` named `monkeyName`, which is retrieved using the `FindByName` method, before its `Text` property is set.
