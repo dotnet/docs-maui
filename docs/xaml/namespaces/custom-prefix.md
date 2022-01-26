@@ -1,10 +1,10 @@
 ---
-title: "Custom namespace recommended prefixes in .NET MAUI"
+title: "Custom namespace prefixes in .NET MAUI"
 description: "The .NET MAUI XmlnsPrefixAttribute class can be used by control authors to specify a recommended prefix to associate with a XAML namespace, for XAML usage."
 ms.date: 01/26/2022
 ---
 
-# Custom namespace recommended prefixes
+# Custom namespace prefixes
 
 The `XmlnsPrefixAttribute` class can be used by control authors to specify a recommended prefix to associate with a XAML namespace, for XAML usage. The prefix is useful when supporting object tree serialization to XAML, or when interacting with a design environment that has XAML editing features. For example:
 
