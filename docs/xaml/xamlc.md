@@ -22,7 +22,7 @@ XAML compilation can be enabled by passing `XamlCompilationOptions.Compile` to t
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 ```
 
-In this example, XAML compilation is enabled for all of the XAML contained within the assembly, with XAML errors being reported at compile-time rather than run-time.
+In this example, XAML compilation is enabled for all of the XAML contained within the assembly, with XAML errors being reported at compile-time rather than runtime.
 
 > [!TIP]
 > While the `XamlCompilationAttribute` can be placed anywhere, a good place to put it is in **AssemblyInfo.cs**.
@@ -50,7 +50,7 @@ XAML compilation can be disabled by passing `XamlCompilationOptions.Skip` to the
 [assembly: XamlCompilation(XamlCompilationOptions.Skip)]
 ```
 
-In this example, XAML compilation is disabled within the assembly, with XAML errors being reported at run-time rather than compile-time.
+In this example, XAML compilation is disabled within the assembly, with XAML errors being reported at runtime rather than compile-time.
 
 XAML compilation can also be disabled at the class level:
 
