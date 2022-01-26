@@ -13,6 +13,36 @@
           href: get-started/first-app.md
         - name: Migrate from Xamarin.Forms
           href: get-started/migrate.md
+    - name: XAML
+      items:
+        - name: Overview
+          href: xaml/index.md
+        - name: Fundamentals
+          items:
+            - name: Get started
+              href: /xaml/fundamentals/get-started.md
+            - name: Essential syntax
+              href: /xaml/fundamentals/essential-syntax.md
+            - name: Markup extensions
+              href: /xaml/fundamentals/markup-extensions.md
+            - name: Data binding basics
+              href: /xaml/fundamentals/data-binding-basics.md
+            - name: Data binding and MVVM
+              href: /xaml/fundamentals/mvvm.md
+        - name: Field modifiers
+          href: xaml/field-modifiers.md
+        - name: Generics
+          href: xaml/generics.md
+        - name: Namespaces
+          items:
+            - name: Overview
+              href: xaml/namespaces/index.md
+            - name: Custom namespace schemas
+              href: xaml/namespaces/custom-namespace-schemas.md
+            - name: Custom namespace prefixes
+              href: xaml/namespaces/custom-prefix.md
+        - name: Pass arguments
+          href: xaml/pass-arguments.md
     - name: Fundamentals
       items:
         - name: Accessibility
@@ -131,25 +161,3 @@
           href: platform-integration/configure-multi-targeting.md
         - name: Invoke platform code
           href: platform-integration/invoke-platform-code.md
-    - name: XAML
-      items:
-        - name: Overview
-          href: xaml/index.md
-        - name: Fundamentals
-          items:
-            - name: Get started
-              href: /xaml/fundamentals/get-started.md
-            - name: Essential syntax
-              href: /xaml/fundamentals/essential-syntax.md
-            - name: Markup extensions
-              href: /xaml/fundamentals/markup-extensions.md
-            - name: Data binding basics
-              href: /xaml/fundamentals/data-binding-basics.md
-            - name: Data binding and MVVM
-              href: /xaml/fundamentals/mvvm.md
-        - name: Field modifiers
-          href: xaml/field-modifiers.md
-        - name: Generics
-          href: xaml/generics.md
-        - name: Pass arguments
-          href: xaml/pass-arguments.md

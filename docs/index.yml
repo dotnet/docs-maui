@@ -30,6 +30,20 @@ landingContent:
         links:
           - text: Migrate from Xamarin.Forms
             url: get-started/migrate.md
+  - title: XAML
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Fundamentals
+            url: xaml/fundamentals/get-started.md
+          - text: Field modifiers
+            url: xaml/field-modifiers.md
+          - text: Generics
+            url: xaml/generics.md
+          - text: Namespaces
+            url: xaml/namespaces/index.md
+          - text: Pass arguments
+            url: xaml/pass-arguments.md            
   - title: Fundamentals
     linkLists:
       - linkListType: concept
@@ -70,15 +84,3 @@ landingContent:
             url: platform-integration/configure-multi-targeting.md
           - text: Invoke platform code
             url: platform-integration/invoke-platform-code.md
-  - title: XAML
-    linkLists:
-      - linkListType: concept
-        links:
-          - text: Fundamentals
-            url: xaml/fundamentals/get-started.md
-          - text: Field modifiers
-            url: xaml/field-modifiers.md
-          - text: Generics
-            url: xaml/generics.md
-          - text: Pass arguments
-            url: xaml/pass-arguments.md
