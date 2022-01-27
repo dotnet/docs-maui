@@ -37,8 +37,6 @@
           href: xaml/generics.md
         - name: Markup extensions
           items:
-            - name: Overview
-              href: xaml/markup-extensions/index.md
             - name: Consume markup extensions
               href: xaml/markup-extensions/consume.md
             - name: Create markup extensions

@@ -1,10 +1,10 @@
 ---
-title: "XAML overview"
+title: "XAML"
 description: ".NET MAUI XAML enables you to define app user interfaces using markup rather than code."
 ms.date: 01/24/2022
 ---
 
-# Overview
+# XAML
 
 The eXtensible Application Markup Language (XAML) is an XML-based language that's an alternative to programming code for instantiating and initializing objects, and organizing those objects in parent-child hierarchies.
 
