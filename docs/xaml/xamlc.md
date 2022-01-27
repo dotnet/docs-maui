@@ -63,3 +63,6 @@ public partial class MyPage : ContentPage
 ```
 
 In this example, XAML compilation is disabled only for the `MyPage` class.
+
+> [!WARNING]
+> Disabling XAML compilation is not recommended because XAML is then parsed and interpreted at runtime, which will reduce app performance.
