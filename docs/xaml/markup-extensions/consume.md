@@ -341,11 +341,7 @@ The **OnPlatform Demo** page shows how to use the `OnPlatform` markup extension:
          HorizontalOptions="Center" />
 ```
 
-In this example, all three `OnPlatform` expressions use the abbreviated version of the `OnPlatformExtension` class name. The three `OnPlatform` markup extensions set the `Color`, `WidthRequest`, and `HeightRequest` properties of the `BoxView` to different values on iOS and Android:
-
-:::image type="content" source="media/consume/onplatformdemo.png" alt-text="OnPlatform demo.":::
-
-The markup extensions also provide default values for these properties on the platforms that aren't specified, while eliminating the `Default=` part of the expression.
+In this example, all three `OnPlatform` expressions use the abbreviated version of the `OnPlatformExtension` class name. The three `OnPlatform` markup extensions set the `Color`, `WidthRequest`, and `HeightRequest` properties of the `BoxView` to different values on iOS and Android. The markup extensions also provide default values for these properties on the platforms that aren't specified, while eliminating the `Default=` part of the expression.
 
 ## OnIdiom markup extension
 
@@ -377,11 +373,7 @@ The following XAML example shows how to use the `OnIdiom` markup extension:
          HorizontalOptions="Center" />
 ```
 
-In this example, all three `OnIdiom` expressions use the abbreviated version of the `OnIdiomExtension` class name. The three `OnIdiom` markup extensions set the `Color`, `WidthRequest`, and `HeightRequest` properties of the `BoxView` to different values on the phone, tablet, and desktop idioms:
-
-:::image type="content" source="media/consume/onidiomdemo.png" alt-text="OnIdiom demo.":::
-
-The markup extensions also provide default values for these properties on the idioms that aren't specified, while eliminating the `Default=` part of the expression.
+In this example, all three `OnIdiom` expressions use the abbreviated version of the `OnIdiomExtension` class name. The three `OnIdiom` markup extensions set the `Color`, `WidthRequest`, and `HeightRequest` properties of the `BoxView` to different values on the phone, tablet, and desktop idioms. The markup extensions also provide default values for these properties on the idioms that aren't specified, while eliminating the `Default=` part of the expression.
 
 ## DataTemplate markup extension
 
