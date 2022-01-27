@@ -40,10 +40,12 @@ landingContent:
             url: xaml/field-modifiers.md
           - text: Generics
             url: xaml/generics.md
+          - text: Markup extensions
+            url: xaml/markup-extensions/index.md
           - text: Namespaces
             url: xaml/namespaces/index.md
           - text: Pass arguments
-            url: xaml/pass-arguments.md            
+            url: xaml/pass-arguments.md
   - title: Fundamentals
     linkLists:
       - linkListType: concept

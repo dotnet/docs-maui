@@ -6,7 +6,11 @@ ms.date: 01/24/2022
 
 # Field modifiers
 
-The .NET Multi-platform App UI (.NET MAUI) `x:FieldModifier` attribute specifies the access level for generated fields for named XAML elements. Valid values of the attribute are:
+The .NET Multi-platform App UI (.NET MAUI) `x:FieldModifier` attribute specifies the access level for generated fields for named XAML elements.
+
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
+
+Valid values of the `x:FieldModifier` attribute are:
 
 - `private` – specifies that the generated field for the XAML element is accessible only within the body of the class in which it is declared.
 - `public`  – specifies that the generated field for the XAML element has no access restrictions.

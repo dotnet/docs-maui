@@ -15,7 +15,7 @@ In addition, the `x:TypeArguments` attribute can be used to specify the generic 
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
-Arguments can be passed to constructors and factory methods using the following .NET MAUI language primitives:
+Arguments can be passed to constructors and factory methods using the following .NET MAUI XAML language primitives:
 
 - `x:Array`, which corresponds to [`Array`](xref:System.Array).
 - `x:Boolean`, which corresponds to [`Boolean`](xref:System.Boolean).

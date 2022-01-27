@@ -35,6 +35,14 @@
           href: xaml/field-modifiers.md
         - name: Generics
           href: xaml/generics.md
+        - name: Markup extensions
+          items:
+            - name: Overview
+              href: xaml/markup-extensions/index.md
+            - name: Consume markup extensions
+              href: xaml/markup-extensions/consume.md
+            - name: Create markup extensions
+              href: xaml/markup-extensions/create.md
         - name: Namespaces
           items:
             - name: Overview
@@ -46,7 +54,7 @@
         - name: Pass arguments
           href: xaml/pass-arguments.md
         - name: Runtime loading
-          href: xaml/runtime-load.md          
+          href: xaml/runtime-load.md
     - name: Fundamentals
       items:
         - name: Accessibility
