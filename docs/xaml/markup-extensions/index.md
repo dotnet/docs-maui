@@ -1,5 +1,5 @@
 ---
-title: "XAML markup extensions"
+title: "XAML markup extensions overview"
 description: ".NET MAUI XAML markup extensions extend the power and flexibility of XAML by allowing element attributes to be set from sources other than literal text strings."
 ms.date: 01/27/2022
 ---
