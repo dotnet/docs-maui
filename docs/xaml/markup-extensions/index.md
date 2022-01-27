@@ -1,10 +1,10 @@
 ---
-title: "XAML markup extensions"
-description: "The article explains how to use .NET MAUI XAML markup extensions to extend the power and flexibility of XAML by allowing element attributes to be set from sources other than literal text strings."
+title: "XAML markup extensions overview"
+description: ".NET MAUI XAML markup extensions extend the power and flexibility of XAML by allowing element attributes to be set from sources other than literal text strings."
 ms.date: 01/27/2022
 ---
 
-# XAML markup extensions
+# Overview
 
 .NET Multi-platform App UI (.NET MAUI) XAML markup extensions extend the power and flexibility of XAML by allowing element attributes to be set from sources other than literal text strings.
 

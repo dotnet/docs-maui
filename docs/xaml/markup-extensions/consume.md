@@ -196,7 +196,7 @@ public partial class TypeDemoPage : ContentPage
 
 When a `Button` is pressed a new instance of the `CommandParameter` argument is created and added to the `StackLayout`. The three `Button` objects then share the page with dynamically created views:
 
-:::image type="content" source="media/consume/typedmeo.png" alt-text="x:Type demo.":::
+:::image type="content" source="media/consume/typedemo.png" alt-text="x:Type demo.":::
 
 ## x:Array markup extension
 
