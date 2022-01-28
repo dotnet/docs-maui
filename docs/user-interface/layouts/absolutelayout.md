@@ -10,7 +10,7 @@ ms.date: 01/14/2022
 
 :::image type="content" source="media/absolutelayout/layouts.png" alt-text=".NET MAUI AbsoluteLayout." border="false":::
 
-An `AbsoluteLayout` is used to position and size children using explicit values. The position is specified by the upper-left corner of the child relative to the upper-left corner of the `AbsoluteLayout`, in device-independent units. `AbsoluteLayout` also implements a proportional positioning and sizing feature. In addition, unlike some other layout classes, `AbsoluteLayout` is able to position children so that they overlap.
+The .NET Multi-platform App UI (.NET MAUI) `AbsoluteLayout` is used to position and size children using explicit values. The position is specified by the upper-left corner of the child relative to the upper-left corner of the `AbsoluteLayout`, in device-independent units. `AbsoluteLayout` also implements a proportional positioning and sizing feature. In addition, unlike some other layout classes, `AbsoluteLayout` is able to position children so that they overlap.
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
