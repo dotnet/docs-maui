@@ -319,8 +319,8 @@ The `OnPlatform` markup extension is supported by the `OnPlatformExtension` clas
 - `iOS` of type `object`, that you set to a value to be applied on iOS.
 - `macOS` of type `object`, that you set to a value to be applied on macOS.
 - `Tizen` of type `object`, that you set to a value to be applied on the Tizen platform.
-<!-- - `UWP` of type `object`, that you set to a value to be applied on the Universal Windows Platform.
-- `WPF` of type `object`, that you set to a value to be applied on the Windows Presentation Foundation platform. -->
+<!-- - `UWP` of type `object`, that you set to a value to be applied on the Universal Windows Platform.-->
+<!-- - `WPF` of type `object`, that you set to a value to be applied on the Windows Presentation Foundation platform. -->
 - `Converter` of type `IValueConverter`, that can be set to an `IValueConverter` implementation.
 - `ConverterParameter` of type `object`, that can be set to a value to pass to the `IValueConverter` implementation.
 
