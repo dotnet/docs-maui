@@ -1,6 +1,6 @@
 ---
 title: "StackLayout"
-description: "A .NET MAUI StackLayout organizes child views in a one-dimensional stack, either horizontally or vertically."
+description: "The .NET MAUI StackLayout organizes child views in a one-dimensional stack, either horizontally or vertically."
 ms.date: 12/28/2021
 ---
 
@@ -10,7 +10,7 @@ ms.date: 12/28/2021
 
 :::image type="content" source="media/stacklayout/layouts.png" alt-text=".NET MAUI StackLayout." border="false":::
 
-A .NET Multi-platform App UI (.NET MAUI) `StackLayout` organizes child views in a one-dimensional stack, either horizontally or vertically. By default, a `StackLayout` is oriented vertically. In addition, a `StackLayout` can be used as a parent layout that contains other child layouts.
+The .NET Multi-platform App UI (.NET MAUI) `StackLayout` organizes child views in a one-dimensional stack, either horizontally or vertically. By default, a `StackLayout` is oriented vertically. In addition, a `StackLayout` can be used as a parent layout that contains other child layouts.
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
