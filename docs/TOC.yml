@@ -45,6 +45,12 @@
                 href: fundamentals/data-binding/commanding.md
               - name: Compiled bindings
                 href: fundamentals/data-binding/compiled-bindings.md
+        - name: Properties
+          items:
+              - name: Bindable properties
+                href: fundamentals/bindable-properties.md
+              - name: Attached properties
+                href: fundamentals/attached-properties.md
         - name: Single project
           href: fundamentals/single-project.md
     - name: User interface
