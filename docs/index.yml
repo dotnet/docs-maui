@@ -7,7 +7,7 @@ metadata:
   title: .NET Multi-Platform App UI documentation
   description: .NET Multi-platform App UI (.NET MAUI) lets you build native apps using a .NET cross-platform UI toolkit that targets the mobile and desktop form factors on Android, iOS, macOS, Windows, and Tizen.
   ms.topic: landing-page
-  ms.date: 12/24/2021
+  ms.date: 01/28/2022
 
 landingContent:
   - title: Overview
@@ -30,6 +30,26 @@ landingContent:
         links:
           - text: Migrate from Xamarin.Forms
             url: get-started/migrate.md
+  - title: XAML
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Overview
+            url: xaml/index.md
+          - text: Fundamentals
+            url: xaml/fundamentals/get-started.md
+          - text: Compilation
+            url: xaml/xamlc.md
+          - text: Field modifiers
+            url: xaml/field-modifiers.md
+          - text: Generics
+            url: xaml/generics.md
+          - text: Markup extensions
+            url: xaml/markup-extensions/consume.md
+          - text: Namespaces
+            url: xaml/namespaces/index.md
+          - text: Pass arguments
+            url: xaml/pass-arguments.md
   - title: Fundamentals
     linkLists:
       - linkListType: concept
@@ -42,6 +62,8 @@ landingContent:
             url: fundamentals/app-startup.md
           - text: Data binding
             url: fundamentals/data-binding/index.md
+          - text: Resource dictionaries
+            url: fundamentals/resource-dictionaries.md            
           - text: Single project
             url: fundamentals/single-project.md
   - title: User interface
