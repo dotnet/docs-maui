@@ -254,7 +254,7 @@ When the user first presses the **New** button, this enables the entry form but 
 
 All the logic for the **New**, **Submit**, and **Cancel** buttons is handled in `PersonCollectionViewModel` through definitions of the `NewCommand`, `SubmitCommand`, and `CancelCommand` properties. The constructor of the `PersonCollectionViewModel` sets these three properties to objects of type `Command`.  
 
-A constructor of the `Command` class allows you to pass arguments of type `Action` and `Func<bool>` corresponding to the `Execute` and `CanExecute` methods. This action and function can be definedn as lambda functions in the `Command` constructor:
+A constructor of the `Command` class allows you to pass arguments of type `Action` and `Func<bool>` corresponding to the `Execute` and `CanExecute` methods. This action and function can be defined as lambda functions in the `Command` constructor:
 
 ```csharp
 public class PersonCollectionViewModel : INotifyPropertyChanged
