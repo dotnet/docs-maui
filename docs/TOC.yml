@@ -85,6 +85,8 @@
                 href: fundamentals/data-binding/commanding.md
               - name: Compiled bindings
                 href: fundamentals/data-binding/compiled-bindings.md
+        - name: Resource dictionaries
+          href: xaml/resource-dictionaries.md
         - name: Single project
           href: fundamentals/single-project.md
     - name: User interface
