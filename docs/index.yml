@@ -63,7 +63,7 @@ landingContent:
           - text: Data binding
             url: fundamentals/data-binding/index.md
           - text: Resource dictionaries
-            url: xaml/resource-dictionaries.md            
+            url: fundamentals/resource-dictionaries.md            
           - text: Single project
             url: fundamentals/single-project.md
   - title: User interface
