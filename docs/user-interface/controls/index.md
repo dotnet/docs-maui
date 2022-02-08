@@ -1,7 +1,7 @@
 ---
 title: "Controls"
 description: "The user interface of a .NET MAUI app is constructed from pages, layouts, and views."
-ms.date: 01/14/2022
+ms.date: 02/08/2022
 ---
 
 # Controls
@@ -38,8 +38,10 @@ The main control groups used to create the user interface of a .NET MAUI app are
 
 | View | Description |
 | --- | --- |
+| `ActivityIndicator` | `ActivityIndicator` uses an animation to show that the app is engaged in a lengthy activity, without giving any indication of progress. For more information, see [ActivityIndicator](~/user-interface/controls/activityindicator.md). |
 | `BlazorWebView` | `BlazorWebView` enables you to host a Blazor web app in your .NET MAUI app. For more information, see [BlazorWebView](~/user-interface/controls/blazorwebview.md). |
 | `Border` | `Border` is a container control that draws a border, background, or both, around another control. For more information, see [Border](~/user-interface/controls/border.md). |
 | `ContentView` | `ContentView` is a control that enables the creation of custom, reusable controls. For more information, see [ContentView](~/user-interface/controls/contentview.md). |
 | `Frame` | `Frame` is used to wrap a view or layout with a border that can be configured with color, shadow, and other options. For more information, see [Frame](~/user-interface/controls/frame.md). |
 | `GraphicsView` | `GraphicsView` is a graphics canvas on which 2D graphics can be drawn using types from the `Microsoft.Maui.Graphics` namespace. For more information, see [GraphicsView](~/user-interface/controls/graphicsview.md). |
+| `ProgressBar` | `ProgressBar` uses an animation to show that the app is progressing through a lengthy activity. For more information, see [ProgressBar](~/user-interface/controls/progressbar.md). |
