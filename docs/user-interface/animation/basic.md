@@ -48,10 +48,6 @@ image.Rotation = 0;
 
 In this example, an `Image` instance is rotated up to 360 degrees over 2 seconds (2000 milliseconds). The `RotateTo` method obtains the current `Rotation` property value of the element for the start of the animation, and then rotates from that value to its first argument (360). Once the animation is complete, the image's `Rotation` property is reset to 0. This ensures that the `Rotation` property doesn't remain at 360 after the animation concludes, which would prevent additional rotations.
 
-The following screenshot shows the rotation in progress:
-
-![Rotation Animation.](simple-images/rotateto.png)
-
 > [!NOTE]
 > In addition to the `RotateTo` method, there are also `RotateXTo` and `RotateYTo` methods that animate the `RotationX` and `RotationY` properties, respectively.
 
