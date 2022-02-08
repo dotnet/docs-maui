@@ -6,7 +6,7 @@ ms.date: 02/08/2022
 
 # Basic animation
 
-.NET Multi-platform App UI (.NET MAUI) animation classes target different properties of visual elements, with a typical basic animation progressively changing a property from one value to another over a period of time.
+.NET Multi-platform App UI (.NET MAUI) animation methods target different properties of visual elements, with a typical basic animation progressively changing a property from one value to another over a period of time.
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 

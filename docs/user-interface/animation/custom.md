@@ -22,7 +22,7 @@ Running an animation created with the `Animation` class, which may or may not in
 When creating an `Animation` object, typically, a minimum of three parameters are required, as demonstrated in the following code example:
 
 ```csharp
-var animation = new Animation (v => image.Scale = v, 1, 2);
+var animation = new Animation(v => image.Scale = v, 1, 2);
 ```
 
 In this example, an animation of the `Scale` property of an `Image` instance is defined from a value of 1 to a value of 2. The animated value is passed to the callback specified as the first argument, where it's used to change the value of the `Scale` property.
@@ -30,7 +30,7 @@ In this example, an animation of the `Scale` property of an `Image` instance is 
 The animation is started with a call to the `Commit` method:
 
 ```csharp
-animation.Commit (this, "SimpleAnimation", 16, 2000, Easing.Linear, (v, c) => image.Scale = 1, () => true);
+animation.Commit(this, "SimpleAnimation", 16, 2000, Easing.Linear, (v, c) => image.Scale = 1, () => true);
 ```
 
 > [!NOTE]
