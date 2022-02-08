@@ -6,7 +6,7 @@ ms.date: 02/08/2022
 
 # ActivityIndicator
 
-The .NET Multi-platform App UI (.NET MAUI) `ActivityIndicator` displays an animation to show that the application is engaged in a lengthy activity. Unlike the `ProgressBar`, the `ActivityIndicator` gives no indication of progress.
+The .NET Multi-platform App UI (.NET MAUI) `ActivityIndicator` displays an animation to show that the application is engaged in a lengthy activity. Unlike `ProgressBar`, `ActivityIndicator` gives no indication of progress.
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
