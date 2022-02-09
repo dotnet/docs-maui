@@ -151,8 +151,12 @@
                       href: user-interface/controls/graphicsview.md
                 - name: Set values
                   items:
+                    - name: CheckBox
+                      href: user-interface/controls/checkbox.md
                     - name: DatePicker
                       href: user-interface/controls/datepicker.md
+                    - name: Switch
+                      href: user-interface/controls/switch.md
                     - name: TimePicker
                       href: user-interface/controls/timepicker.md
         - name: Graphics
