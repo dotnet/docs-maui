@@ -92,7 +92,7 @@
               - name: Attached properties
                 href: fundamentals/attached-properties.md
         - name: Resource dictionaries
-          href: fundamentals/resource-dictionaries.md              
+          href: fundamentals/resource-dictionaries.md
         - name: Single project
           href: fundamentals/single-project.md
     - name: User interface
@@ -149,6 +149,12 @@
                       href: user-interface/controls/frame.md
                     - name: GraphicsView
                       href: user-interface/controls/graphicsview.md
+                - name: Set values
+                  items:
+                    - name: DatePicker
+                      href: user-interface/controls/datepicker.md
+                    - name: TimePicker
+                      href: user-interface/controls/timepicker.md
         - name: Graphics
           items:
             - name: Overview
