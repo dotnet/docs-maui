@@ -40,10 +40,10 @@ The main control groups used to create the user interface of a .NET MAUI app are
 | --- | --- |
 | `BlazorWebView` | `BlazorWebView` enables you to host a Blazor web app in your .NET MAUI app. For more information, see [BlazorWebView](~/user-interface/controls/blazorwebview.md). |
 | `Border` | `Border` is a container control that draws a border, background, or both, around another control. For more information, see [Border](~/user-interface/controls/border.md). |
-| `CheckBox` | `CheckBox` enables you to select a boolean value using a type of button that can either be checked or empty. For more information, see [CheckBox](~user-interface/controls/checkbox.md). |
+| `CheckBox` | `CheckBox` enables you to select a boolean value using a type of button that can either be checked or empty. For more information, see [CheckBox](~/user-interface/controls/checkbox.md). |
 | `ContentView` | `ContentView` is a control that enables the creation of custom, reusable controls. For more information, see [ContentView](~/user-interface/controls/contentview.md). |
 | `DatePicker` | `DatePicker` enables you to select a date with the platform date picker. For more information, see [DatePicker](~/user-interface/controls/datepicker.md). |
 | `Frame` | `Frame` is used to wrap a view or layout with a border that can be configured with color, shadow, and other options. For more information, see [Frame](~/user-interface/controls/frame.md). |
 | `GraphicsView` | `GraphicsView` is a graphics canvas on which 2D graphics can be drawn using types from the `Microsoft.Maui.Graphics` namespace. For more information, see [GraphicsView](~/user-interface/controls/graphicsview.md). |
-| `Switch` | `Switch` enables you to select a boolean value using a type of button that can either be on or off. For more information, see [Switch](~user-interface/controls/switch.md). |
+| `Switch` | `Switch` enables you to select a boolean value using a type of button that can either be on or off. For more information, see [Switch](~/user-interface/controls/switch.md). |
 | `TimePicker` | `TimePicker` enables you to select a time with the platform time picker. For more information, see [TimePicker](~/user-interface/controls/timepicker.md). |
