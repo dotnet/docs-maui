@@ -155,6 +155,10 @@
                       href: user-interface/controls/checkbox.md
                     - name: DatePicker
                       href: user-interface/controls/datepicker.md
+                    - name: Slider
+                      href: user-interface/controls/slider.md
+                    - name: Stepper
+                      href: user-interface/controls/stepper.md
                     - name: Switch
                       href: user-interface/controls/switch.md
                     - name: TimePicker
