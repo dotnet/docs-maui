@@ -1,12 +1,7 @@
 ---
-post_title: 'Preparing Libraries for .NET 6'
-username: davidortinau
-microsoft_alias: daortin
-featured_image: path/relative/to/your/post/image.png
-categories: Android, Announcements, Case Studies, Cloud, Developers, DevOps, Education, Events, Integrations, iOS, Leadership, macOS, Podcasts, Visual Studio, watchOS, Xamarin Platform, Xamarin.Forms, XAML
-tags: tag1,tag2
-summary: Summary of your post, shown on the home page next to the featured image
-desired_publication_date: The date you want to publish the post, such as 'YYYY-MM-DD'
+title: "Preparing Libraries for .NET MAUI"
+description: "Check if your libraries are .NET 6 compatible, and upgrade them as needed."
+ms.date: 02/08/2022
 ---
 
 From the time that Xamarin became part of Microsoft, our technology has been moving from being an exception to being the rule. In .NET 6 the SDKs and libraries we maintain for Apple and Google platforms, the runtime that makes this all work, and our cross-platform UI framework are all unified with the rest of .NET that also enables world class console, web, and desktop applications. This is a huge transition that gives you, the .NET developer the latest C# language enhancements, build and runtime improvements, and the most productive Visual Studio productivity features in 2022. In this post, I'll cover the steps you need to take to bring your .NET dependencies
