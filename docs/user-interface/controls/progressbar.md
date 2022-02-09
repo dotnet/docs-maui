@@ -55,7 +55,7 @@ The equivalent C# code is:
 ProgressBar progressBar = new ProgressBar
 {
     Progress = 0.5,
-    ProgressColor = Color.Orange
+    ProgressColor = Colors.Orange
 };
 ```
 
