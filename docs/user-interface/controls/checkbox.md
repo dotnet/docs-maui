@@ -98,7 +98,7 @@ The `CheckedChanged` event handler can be eliminated by using data binding and t
 
 In this example, the `Label` uses a binding expression in a data trigger to monitor the `IsChecked` property of the `CheckBox`. When this property becomes `true`, the `FontAttributes` and `FontSize` properties of the `Label` change. When the `IsChecked` property returns to `false`, the `FontAttributes` and `FontSize` properties of the `Label` are reset to their initial state.
 
-In the following screenshots, the iOS screenshot shows the `Label` formatting when the `CheckBox` is empty, while the Android screenshot shows the `Label` formatting when the `CheckBox` is checked:
+The following screenshot shows the `Label` formatting when the `CheckBox` is checked:
 
 :::image type="content" source="media/checkbox/checkbox-databinding.png" alt-text="Screenshot of a data bound CheckBox.":::
 
@@ -116,7 +116,7 @@ In addition to the properties that `CheckBox` inherits from the `View` class, `C
 <CheckBox Color="Red" />
 ```
 
-The following screenshot showsa series of checked `CheckBox` objects, where each object has its `Color` property set to a different `Color`:
+The following screenshot shows a series of checked `CheckBox` objects, where each object has its `Color` property set to a different `Color`:
 
 :::image type="content" source="media/checkbox/checkbox-colors.png" alt-text="Screenshot of colored CheckBoxes.":::
 
