@@ -1,7 +1,7 @@
 ---
 title: "Stepper"
 description: "The .NET MAUI Stepper allows you to select a numeric value from a range of values. It consists of two buttons labeled with minus and plus signs. Manipulating the two buttons changes the selected value incrementally."
-ms.date: 02/09/2022
+ms.date: 02/10/2022
 ---
 
 # Stepper
@@ -17,78 +17,15 @@ The `Stepper` defines four properties of type `double`:
 - `Maximum` is the maximum of the range, with a default value of 100.
 - `Value` is the stepper's value, which can range between `Minimum` and `Maximum` and has a default value of 0.
 
-All of these properties are backed by `BindableProperty` objects. The `Value` property has a default binding mode of `BindingMode.TwoWay`, which means that it's suitable as a binding source in an application that uses the Model-View-ViewModel (MVVM) architecture.
+All of these properties are backed by `BindableProperty` objects. The `Value` property has a default binding mode of `BindingMode.TwoWay`, which means that it's suitable as a binding source in an application that uses the Model-View-ViewModel (MVVM) pattern.
 
-> [!WARNING]
-> Internally, the `Stepper` ensures that `Minimum` is less than `Maximum`. If `Minimum` or `Maximum` are ever set so that `Minimum` is not less than `Maximum`, an exception is raised. For more information on setting the `Minimum` and `Maximum` properties, see [Precautions](#precautions) section.
+The `Stepper` coerces the `Value` property so that it is between `Minimum` and `Maximum`, inclusive. If the `Minimum` property is set to a value greater than the `Value` property, the `Stepper` sets the `Value` property to `Minimum`. Similarly, if `Maximum` is set to a value less than `Value`, then `Stepper` sets the `Value` property to `Maximum`. Internally, the `Stepper` ensures that `Minimum` is less than `Maximum`. If `Minimum` or `Maximum` are ever set so that `Minimum` is not less than `Maximum`, an exception is raised. For more information on setting the `Minimum` and `Maximum` properties, see [Precautions](#precautions).
 
-The `Stepper` coerces the `Value` property so that it is between `Minimum` and `Maximum`, inclusive. If the `Minimum` property is set to a value greater than the `Value` property, the `Stepper` sets the `Value` property to `Minimum`. Similarly, if `Maximum` is set to a value less than `Value`, then `Stepper` sets the `Value` property to `Maximum`.
+`Stepper` defines a `ValueChanged` event that is fired when the `Value` changes, either through user manipulation of the `Stepper` or when the application sets the `Value` property directly. A `ValueChanged` event is also fired when the `Value` property is coerced as previously described. The `ValueChangedEventArgs` object that accompanies the `ValueChanged` event has `OldValue` and `NewValue`, of type `double`. At the time the event is fired, the value of `NewValue` is the same as the `Value` property of the `Stepper` object.
 
-`Stepper` defines a `ValueChanged` event that is fired when the `Value` changes, either through user manipulation of the `Stepper` or when the application sets the `Value` property directly. A `ValueChanged` event is also fired when the `Value` property is coerced as described in the previous paragraph.
+## Create a Stepper
 
-The `ValueChangedEventArgs` object that accompanies the `ValueChanged` event has two properties, both of type `double`: `OldValue` and `NewValue`. At the time the event is fired, the value of `NewValue` is the same as the `Value` property of the `Stepper` object.
-
-## Basic Stepper code and markup
-
-The [**StepperDemos**](/samples/xamarin/xamarin-forms-samples/userinterface-stepperdemos) sample contains three pages that are functionally identical, but are implemented in different ways. The first page uses only C# code, the second uses XAML with an event handler in code, and third is able to avoid the event handler by using data binding in the XAML file.
-
-### Creating a Stepper in code
-
-The **Basic Stepper Code** page in the [**StepperDemos**](/samples/xamarin/xamarin-forms-samples/userinterface-stepperdemos) sample shows how to create a `Stepper` and two `Label` objects in code:
-
-```csharp
-public class BasicStepperCodePage : ContentPage
-{
-    public BasicStepperCodePage()
-    {
-        Label rotationLabel = new Label
-        {
-            Text = "ROTATING TEXT",
-            FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
-            HorizontalOptions = LayoutOptions.Center,
-            VerticalOptions = LayoutOptions.CenterAndExpand
-        };
-
-        Label displayLabel = new Label
-        {
-            Text = "(uninitialized)",
-            HorizontalOptions = LayoutOptions.Center,
-            VerticalOptions = LayoutOptions.CenterAndExpand
-        };
-
-        Stepper stepper = new Stepper
-        {
-            Maximum = 360,
-            Increment = 30,
-            HorizontalOptions = LayoutOptions.Center
-        };
-        stepper.ValueChanged += (sender, e) =>
-        {
-            rotationLabel.Rotation = stepper.Value;
-            displayLabel.Text = string.Format("The Stepper value is {0}", e.NewValue);
-        };
-
-        Title = "Basic Stepper Code";
-        Content = new StackLayout
-        {
-            Margin = new Thickness(20),
-            Children = { rotationLabel, stepper, displayLabel }
-        };
-    }
-}
-```
-
-The `Stepper` is initialized to have a `Maximum` property of 360, and an `Increment` property of 30. Manipulating the `Stepper` changes the selected value incrementally between `Minimum` to `Maximum` based on the value of the `Increment` property. The `ValueChanged` handler of the `Stepper` uses the `Value` property of the `stepper` object to set the `Rotation` property of the first `Label`  and uses the `string.Format` method with the `NewValue` property of the event arguments to set the `Text` property of the second `Label`. These two approaches to obtain the current value of the `Stepper` are interchangeable.
-
-The following screenshot shows the **Basic Stepper Code** page:
-
-[![Basic Stepper Code.](stepper-images/basic-stepper-code.png "Basic Stepper Code."](stepper-images/basic-stepper-code-large.png#lightbox)
-
-The second `Label`  displays the text "(uninitialized)" until the `Stepper` is manipulated, which causes the first `ValueChanged` event to be fired.
-
-### Creating a Stepper in XAML
-
-The **Basic Stepper XAML** page is functionally the same as **Basic Stepper Code** but implemented mostly in XAML:
+The following example shows how to create a `Stepper`, with two `Label` objects:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -100,7 +37,7 @@ The **Basic Stepper XAML** page is functionally the same as **Basic Stepper Code
                Text="ROTATING TEXT"
                FontSize="Large"
                HorizontalOptions="Center"
-               VerticalOptions="CenterAndExpand" />
+               VerticalOptions="Center" />
         <Stepper Maximum="360"
                  Increment="30"
                  HorizontalOptions="Center"
@@ -108,10 +45,12 @@ The **Basic Stepper XAML** page is functionally the same as **Basic Stepper Code
         <Label x:Name="_displayLabel"
                Text="(uninitialized)"
                HorizontalOptions="Center"
-               VerticalOptions="CenterAndExpand" />        
+               VerticalOptions="Center" />        
     </StackLayout>
 </ContentPage>
 ```
+
+In this example, the `Stepper` is initialized to have a `Maximum` property of 360, and an `Increment` property of 30. Manipulating the `Stepper` changes the selected value incrementally between `Minimum` to `Maximum` based on the value of the `Increment` property. The second `Label` displays the text "(uninitialized)" until the `Stepper` is manipulated, which causes the first `ValueChanged` event to be fired.
 
 The code-behind file contains the handler for the `ValueChanged` event:
 
@@ -132,6 +71,10 @@ public partial class BasicStepperXAMLPage : ContentPage
 }
 ```
 
+The `ValueChanged` handler of the `Stepper` uses the `Value` property of the `stepper` object to set the `Rotation` property of the first `Label`  and uses the `string.Format` method with the `NewValue` property of the event arguments to set the `Text` property of the second `Label`:
+
+:::image type="content" source="media/stepper/slider-basic.png" alt-text=".NET MAUI Stepper screenshot.":::
+
 It's also possible for the event handler to obtain the `Stepper` that is firing the event through the `sender` argument. The `Value` property contains the current value:
 
 ```csharp
@@ -144,9 +87,25 @@ If the `Stepper` object were given a name in the XAML file with an `x:Name` attr
 double value = stepper.Value;
 ```
 
-### Data binding the Stepper
+The equivalent C# code for creating a `Stepper` is:
 
-The **Basic Stepper Bindings** page shows how to write a nearly equivalent application that eliminates the `Value` event handler by using [Data Binding](~/xamarin-forms/app-fundamentals/data-binding/index.md):
+```csharp
+Stepper stepper = new Stepper
+{
+    Maximum = 360,
+    Increment = 30,
+    HorizontalOptions = LayoutOptions.Center
+};
+stepper.ValueChanged += (sender, e) =>
+{
+    rotationLabel.Rotation = stepper.Value;
+    displayLabel.Text = string.Format("The Stepper value is {0}", e.NewValue);
+};
+```
+
+## Data bind a Stepper
+
+The `ValueChanged` event handler can be eliminated by using data binding to respond to the `Stepper` value changing:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -158,23 +117,23 @@ The **Basic Stepper Bindings** page shows how to write a nearly equivalent appli
                Rotation="{Binding Source={x:Reference _stepper}, Path=Value}"
                FontSize="Large"
                HorizontalOptions="Center"
-               VerticalOptions="CenterAndExpand" />
+               VerticalOptions="Center" />
         <Stepper x:Name="_stepper"
                  Maximum="360"
                  Increment="30"
                  HorizontalOptions="Center" />
         <Label Text="{Binding Source={x:Reference _stepper}, Path=Value, StringFormat='The Stepper value is {0:F0}'}"
                HorizontalOptions="Center"
-               VerticalOptions="CenterAndExpand" />
+               VerticalOptions="Center" />
     </StackLayout>
 </ContentPage>
 ```
 
-The `Rotation` property of the first `Label` is bound to the `Value` property of the `Stepper`, as is the `Text` property of the second `Label` with a `StringFormat` specification. The **Basic Stepper Bindings** page functions a little differently from the two previous pages: When the page first appears, the second `Label` displays the text string with the value. This is a benefit of using data binding. To display text without data binding, you'd need to specifically initialize the `Text` property of the `Label` or simulate a firing of the `ValueChanged` event by calling the event handler from the class constructor.
+In this example, the `Rotation` property of the first `Label` is bound to the `Value` property of the `Stepper`, as is the `Text` property of the second `Label` with a `StringFormat` specification. When the page first appears, the second `Label` displays the text string with the value. To display text without data binding, you'd need to specifically initialize the `Text` property of the `Label` or simulate a firing of the `ValueChanged` event by calling the event handler from the class constructor.
 
 ## Precautions
 
-The value of the `Minimum` property must always be less than the value of the `Maximum` property. The following code snippet causes the `Stepper` to raise an exception:
+The value of the `Minimum` property must always be less than the value of the `Maximum` property. The following code example causes the `Stepper` to raise an exception:
 
 ```csharp
 // Throws an exception!
@@ -195,7 +154,7 @@ Stepper stepper = new Stepper
 };
 ```
 
-Setting `Maximum` to 360 is not a problem because it is greater than the default `Minimum` value of 0. When `Minimum` is set, the value is less than the `Maximum` value of 360.
+In this example, setting `Maximum` to 360 is not a problem because it is greater than the default `Minimum` value of 0. When `Minimum` is set, the value is less than the `Maximum` value of 360.
 
 The same problem exists in XAML. Set the properties in an order that ensures that `Maximum` is always greater than `Minimum`:
 
@@ -211,7 +170,7 @@ You can set the `Minimum` and `Maximum` values to negative numbers, but only in 
          Maximum="-180" ... />
 ```
 
-The `Value` property is always greater than or equal to the `Minimum` value and less than or equal to `Maximum`. If `Value` is set to a value outside that range, the value will be coerced to lie within the range, but no exception is raised. For example, this code will *not* raise an exception:
+The `Value` property is always greater than or equal to the `Minimum` value and less than or equal to `Maximum`. If `Value` is set to a value outside that range, the value will be coerced to lie within the range, but no exception is raised. For example, this code won't raise an exception:
 
 ```csharp
 Stepper stepper = new Stepper
@@ -222,7 +181,7 @@ Stepper stepper = new Stepper
 
 Instead, the `Value` property is coerced to the `Maximum` value of 100.
 
-Here's a code snippet shown above:
+A previous example set `Maximum` to 360 and `Minimum` to 180:
 
 ```csharp
 Stepper stepper = new Stepper
@@ -234,7 +193,7 @@ Stepper stepper = new Stepper
 
 When `Minimum` is set to 180, then `Value` is also set to 180.
 
-If a `ValueChanged` event handler has been attached at the time that the `Value` property is coerced to something other than its default value of 0, then a `ValueChanged` event is fired. Here's a snippet of XAML:
+If a `ValueChanged` event handler has been attached at the time that the `Value` property is coerced to something other than its default value of 0, then a `ValueChanged` event is fired:
 
 ```xaml
 <Stepper ValueChanged="OnStepperValueChanged"
