@@ -9,8 +9,6 @@ Binding projects are the same method used by the .NET team to provide Android an
 ## Binding a Minimal or Custom API
 
 
-
-
 ## Full Bindings
 
 
