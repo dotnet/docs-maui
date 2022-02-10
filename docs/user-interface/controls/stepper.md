@@ -73,7 +73,7 @@ public partial class BasicStepperXAMLPage : ContentPage
 
 The `ValueChanged` handler of the `Stepper` uses the `Value` property of the `stepper` object to set the `Rotation` property of the first `Label`  and uses the `string.Format` method with the `NewValue` property of the event arguments to set the `Text` property of the second `Label`:
 
-:::image type="content" source="media/stepper/slider-basic.png" alt-text=".NET MAUI Stepper screenshot.":::
+:::image type="content" source="media/stepper/stepper-basic.png" alt-text=".NET MAUI Stepper screenshot.":::
 
 It's also possible for the event handler to obtain the `Stepper` that is firing the event through the `sender` argument. The `Value` property contains the current value:
 
