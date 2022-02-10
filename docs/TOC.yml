@@ -143,8 +143,8 @@
                       href: user-interface/controls/blazorwebview.md
                     - name: Border
                       href: user-interface/controls/border.md
-                    - name: ContentView
-                      href: user-interface/controls/contentview.md
+                    - name: BoxView
+                      href: user-interface/controls/boxview.md
                     - name: Frame
                       href: user-interface/controls/frame.md
                     - name: GraphicsView
@@ -163,6 +163,8 @@
                       href: user-interface/controls/switch.md
                     - name: TimePicker
                       href: user-interface/controls/timepicker.md
+                - name: ContentView
+                  href: user-interface/controls/contentview.md
         - name: Graphics
           items:
             - name: Overview
