@@ -1,12 +1,12 @@
 ---
 title: "BoxView"
-description: "The .NET MAUI BoxView renders a simple rectangle or square, of a specified width, height, and color."
+description: "The .NET MAUI BoxView draws a simple rectangle or square, of a specified width, height, and color."
 ms.date: 02/10/2022
 ---
 
 # BoxView
 
-The .NET Multi-platform App UI (.NET MAUI) `BoxView` renders a simple rectangle or square, of a specified width, height, and color.
+The .NET Multi-platform App UI (.NET MAUI) `BoxView` draws a simple rectangle or square, of a specified width, height, and color.
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
@@ -16,8 +16,6 @@ The .NET Multi-platform App UI (.NET MAUI) `BoxView` renders a simple rectangle 
 - `CornerRadius`, of type `CornerRadius`, which defines the corner radius of the `BoxView`. This property can be set to a single `double` uniform corner radius value, or a `CornerRadius` structure defined by four `double` values that are applied to the top left, top right, bottom left, and bottom right of the `BoxView`.
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
-
-A `BoxView` can also be sized to resemble a line of a specific width and thickness.
 
 > [!NOTE]
 > Although `BoxView` can mimic simple graphics, a better alternative is to use .NET MAUI Shapes or [.NET MAUI Graphics](~/user-interface/graphics/index.md).
@@ -50,3 +48,5 @@ The `WidthRequest` and `HeightRequest` properties are measured in device-indepen
 
 > [!NOTE]
 > A `BoxView` can also be a child of an `AbsoluteLayout`. In this case, both the location and size of the `BoxView` are set using the `LayoutBounds` attached bindable property.
+
+A `BoxView` can also be sized to resemble a line of a specific width and thickness.
