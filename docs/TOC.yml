@@ -163,6 +163,10 @@
                       href: user-interface/controls/switch.md
                     - name: TimePicker
                       href: user-interface/controls/timepicker.md
+                - name: Display collections
+                  items:
+                    - name: Picker
+                      href: user-interface/controls/picker.md
                 - name: ContentView
                   href: user-interface/controls/contentview.md
         - name: Graphics

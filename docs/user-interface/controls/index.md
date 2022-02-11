@@ -1,7 +1,7 @@
 ---
 title: "Controls"
 description: "The user interface of a .NET MAUI app is constructed from pages, layouts, and views."
-ms.date: 02/09/2022
+ms.date: 02/11/2022
 ---
 
 # Controls
@@ -46,6 +46,7 @@ The main control groups used to create the user interface of a .NET MAUI app are
 | `DatePicker` | `DatePicker` enables you to select a date with the platform date picker. For more information, see [DatePicker](~/user-interface/controls/datepicker.md). |
 | `Frame` | `Frame` is used to wrap a view or layout with a border that can be configured with color, shadow, and other options. For more information, see [Frame](~/user-interface/controls/frame.md). |
 | `GraphicsView` | `GraphicsView` is a graphics canvas on which 2D graphics can be drawn using types from the `Microsoft.Maui.Graphics` namespace. For more information, see [GraphicsView](~/user-interface/controls/graphicsview.md). |
+| `Picker` | `Picker` displays a short list of items, from which an item can be selected. For more information, see [Picker](~/user-interface/controls/picker.md). |
 | `Slider` | `Slider` enables you to select a `double` value from a continuous range. For more information, see [Slider](~/user-interface/controls/slider.md). |
 | `Stepper` | `Stepper` enables you to select a `double` value from a range of incremental values. For more information, see [Stepper](~/user-interface/controls/stepper.md). |
 | `Switch` | `Switch` enables you to select a boolean value using a type of button that can either be on or off. For more information, see [Switch](~/user-interface/controls/switch.md). |
