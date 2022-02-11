@@ -64,7 +64,7 @@ namespace MyMauiApp
 
 # [iOS](#tab/ios)
 
-On iOS, the splash screen is added to the app package as a storyboard named `MauiSplash.storyboard`, which is set as value of the `UILaunchStoryboardName` key in the app package's **Info.plist**:
+On iOS, the splash screen is added to the app package as a storyboard named `MauiSplash.storyboard`, which is set as value of the `UILaunchStoryboardName` key in the app package's *Info.plist*:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -79,7 +79,7 @@ On iOS, the splash screen is added to the app package as a storyboard named `Mau
 </plist>
 ```
 
-Therefore, you shouldn't set the `UILaunchStoryboardName` key in your **Info.plist** file and you shouldn't add a `LaunchScreen.storyboard` to your app.
+Therefore, you shouldn't set the `UILaunchStoryboardName` key in your *Info.plist* file and you shouldn't add a `LaunchScreen.storyboard` to your app.
 
 ---
 
