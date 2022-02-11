@@ -43,10 +43,10 @@ The `Picker` fires a `SelectedIndexChanged` event when the user selects an item.
 
 There are two techniques for populating a `Picker` with data:
 
-- Setting the `ItemsSource` property to the data to be displayed. This is the recommended technique for adding data to a `Picker`. For more information, see [Set a Picker's ItemsSource property](#set-a-pickers-itemssource-property).
-- Adding the data to be displayed to the `Items` collection. For more information, see [Add data to a Picker's Items collection](#add-data-to-a-pickers-items-collection).
+- Setting the `ItemsSource` property to the data to be displayed. This is the recommended technique for adding data to a `Picker`. For more information, see [Set the ItemsSource property](#set-the-itemssource-property).
+- Adding the data to be displayed to the `Items` collection. For more information, see [Add data to the Items collection](#add-data-to-the-items-collection).
 
-## Set a Picker's ItemsSource property
+## Set the ItemsSource property
 
 A `Picker` can be populated with data by setting its `ItemsSource` property to an `IList` collection. Each item in the collection must be of, or derived from, type `object`. Items can be added in XAML by initializing the `ItemsSource` property from an array of items:
 
@@ -201,7 +201,7 @@ The `SelectedItem` property data binds to the `SelectedMonkey` property of the b
 > [!NOTE]
 > The `SelectedItem` and `SelectedIndex` properties both support two-way bindings by default.
 
-## Add data to a Picker's Items collection
+## Add data to the Items collection
 
 An alternative process for populating a `Picker` with data is to add the data to be displayed to the read-only `Items` collection, which is of type `IList<string>`. Each item in the collection must be of type `string`. Items can be added in XAML by initializing the `Items` property with a list of `x:String` items:
 
