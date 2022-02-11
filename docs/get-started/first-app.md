@@ -18,7 +18,7 @@ Visual Studio for Mac support will arrive in a future release.
 
 ## Prerequisites
 
-- The latest preview of Visual Studio 2022 17.2 with the required workloads. For more information, see [Installation](installation.md).
+- The latest preview of Visual Studio 2022 17.2 with the required workload. For more information, see [Installation](installation.md).
 
 ## Get started with Visual Studio 2022 17.2 (Preview)
 
