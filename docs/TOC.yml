@@ -153,6 +153,8 @@
                   items:
                     - name: Button
                       href: user-interface/controls/button.md
+                    - name: ImageButton
+                      href: user-interface/controls/imagebutton.md
                 - name: Set values
                   items:
                     - name: CheckBox

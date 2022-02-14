@@ -1,12 +1,12 @@
 ---
 title: "Button"
-description: "The .NET MAUI Button responds to a tap or click that directs an app to carry out a particular task."
+description: "The .NET MAUI Button displays text and responds to a tap or click that directs an app to carry out a task."
 ms.date: 02/14/2022
 ---
 
 # Button
 
-The .NET Multi-platform App UI (.NET MAUI) `Button` responds to a tap or click that directs the app to carry out a particular task. A `Button` usually displays a short text string indicating a command, but it can also display a bitmap image, or a combination of text and an image. When the `Button` is pressed with a finger or clicked with a mouse it initiates that command.
+The .NET Multi-platform App UI (.NET MAUI) `Button` displays text and responds to a tap or click that directs the app to carry out a task. A `Button` usually displays a short text string indicating a command, but it can also display a bitmap image, or a combination of text and an image. When the `Button` is pressed with a finger or clicked with a mouse it initiates that command.
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
@@ -31,6 +31,9 @@ The .NET Multi-platform App UI (.NET MAUI) `Button` responds to a tap or click t
 - `TextTransform`, of type `TextTransform`, defines the casing of the button's text.
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+
+> [!NOTE]
+> While `Button` defines an `ImageSource` property, that allows you to display a image on the `Button`, this property is intended to be used when displaying a small icon next to the `Button` text.
 
 In addition, `Button` defines `Clicked`, `Pressed`, and `Released` events. The `Clicked` event is raised when a `Button` tap with a finger or mouse pointer is released from the button's surface. The `Pressed` event is raised when a finger presses on a `Button`, or a mouse button is pressed with the pointer positioned over the `Button`. The `Released` event is raised when the finger or mouse button is released. Generally, a `Clicked` event is also fired at the same time as the `Released` event, but if the finger or mouse pointer slides away from the surface of the `Button` before being released, the `Clicked` event might not occur.
 
@@ -94,7 +97,6 @@ Button button = new Button
 };
 button.Clicked += async (sender, args) => await label.RelRotateTo(360, 1000);
 ```
-
 
 ## Use the command interface
 
@@ -286,14 +288,12 @@ The following XAML example shows how to define a visual state for the `Pressed` 
                             Value="1" />
                 </VisualState.Setters>
             </VisualState>
-
             <VisualState x:Name="Pressed">
                 <VisualState.Setters>
                     <Setter Property="Scale"
                             Value="0.8" />
                 </VisualState.Setters>
             </VisualState>
-
         </VisualStateGroup>
     </VisualStateManager.VisualStateGroups>
 </Button>
@@ -305,7 +305,7 @@ In this example, the `Pressed` `VisualState` specifies that when the `Button` is
 
 ## Use bitmaps with buttons
 
-The `Button` class defines an `ImageSource` property that allows you to display a bitmap image on the `Button`, either alone or in combination with text. You can also specify how the text and image are arranged. The `ImageSource` property is of type `ImageSource`, which means that the bitmaps can be loaded from a file, embedded resource, URI, or stream.
+The `Button` class defines an `ImageSource` property that allows you to display a small bitmap image on the `Button`, either alone or in combination with text. You can also specify how the text and image are arranged. The `ImageSource` property is of type `ImageSource`, which means that the bitmaps can be loaded from a file, embedded resource, URI, or stream.
 
 <!-- > [!NOTE]
 > While a `Button` can load an animated GIF, it will only display the first frame of the GIF. -->
