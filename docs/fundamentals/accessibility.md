@@ -339,7 +339,7 @@ However, none of these tools can perfectly emulate the screen reader user experi
 Each platform has a different default screen reader to narrate accessibility values:
 
 - Android has TalkBack. For information on enabling TalkBack, see [Enable TalkBack](#enable-talkback).
-- iOS and macOS have VoiceOver. For information on enabling VoiceOver, see [Enable Narrator](#enable-voiceover).
+- iOS and macOS have VoiceOver. For information on enabling VoiceOver, see [Enable VoiceOver](#enable-voiceover).
 - Windows has Narrator. For information on enabling Narrator, see [Enable Narrator](#enable-narrator).
 
 ### Enable TalkBack
