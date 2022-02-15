@@ -43,3 +43,4 @@ The main control groups used to create the user interface of a .NET MAUI app are
 | `ContentView` | `ContentView` is a control that enables the creation of custom, reusable controls. For more information, see [ContentView](~/user-interface/controls/contentview.md). |
 | `Frame` | `Frame` is used to wrap a view or layout with a border that can be configured with color, shadow, and other options. For more information, see [Frame](~/user-interface/controls/frame.md). |
 | `GraphicsView` | `GraphicsView` is a graphics canvas on which 2D graphics can be drawn using types from the `Microsoft.Maui.Graphics` namespace. For more information, see [GraphicsView](~/user-interface/controls/graphicsview.md). |
+| `SwipeView` | `SwipeView` is a container control that wraps around an item of content, and provides context menu items that are revealed by a swipe gesture. For more information, see [SwipeView](~/user-interface/controls/swipeview.md). |
