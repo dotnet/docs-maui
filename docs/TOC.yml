@@ -92,7 +92,7 @@
               - name: Attached properties
                 href: fundamentals/attached-properties.md
         - name: Resource dictionaries
-          href: fundamentals/resource-dictionaries.md              
+          href: fundamentals/resource-dictionaries.md
         - name: Single project
           href: fundamentals/single-project.md
     - name: User interface
@@ -149,6 +149,10 @@
                       href: user-interface/controls/frame.md
                     - name: GraphicsView
                       href: user-interface/controls/graphicsview.md
+            - name: Initiate commands
+              items:
+                - name: RefreshView
+                  href: user-interface/controls/refreshview.md
         - name: Graphics
           items:
             - name: Overview
