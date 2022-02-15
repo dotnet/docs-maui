@@ -81,7 +81,7 @@ In addition to the properties that `RefreshView` inherits from the `VisualElemen
              ... />
 ```
 
-The following screenshot shows a `RefreshView` with the `RefreshColor` property set on Android:
+The following Android screenshot shows a `RefreshView` with the `RefreshColor` property:
 
 :::image type="content" source="media/refreshview/teal-progress-circle.png" alt-text="Screenshot of a RefreshView with a teal progress circle.":::
 
