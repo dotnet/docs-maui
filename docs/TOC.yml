@@ -29,7 +29,7 @@
                 - name: Troubleshoot common problems
                   href: android/emulator/troubleshooting.md
                 - name: How to enable hardware acceleration
-                  href: android/emulator/index.md
+                  href: android/emulator/hardware-acceleration.md
     - name: XAML
       items:
         - name: Overview
