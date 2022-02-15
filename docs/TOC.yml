@@ -30,6 +30,46 @@
                   href: android/emulator/troubleshooting.md
                 - name: How to enable hardware acceleration
                   href: android/emulator/index.md
+    - name: XAML
+      items:
+        - name: Overview
+          href: xaml/index.md
+        - name: Fundamentals
+          items:
+            - name: Get started
+              href: xaml/fundamentals/get-started.md
+            - name: Essential syntax
+              href: xaml/fundamentals/essential-syntax.md
+            - name: Markup extensions
+              href: xaml/fundamentals/markup-extensions.md
+            - name: Data binding basics
+              href: xaml/fundamentals/data-binding-basics.md
+            - name: Data binding and MVVM
+              href: xaml/fundamentals/mvvm.md
+        - name: Compilation
+          href: xaml/xamlc.md
+        - name: Field modifiers
+          href: xaml/field-modifiers.md
+        - name: Generics
+          href: xaml/generics.md
+        - name: Markup extensions
+          items:
+            - name: Consume markup extensions
+              href: xaml/markup-extensions/consume.md
+            - name: Create markup extensions
+              href: xaml/markup-extensions/create.md
+        - name: Namespaces
+          items:
+            - name: Overview
+              href: xaml/namespaces/index.md
+            - name: Custom namespace schemas
+              href: xaml/namespaces/custom-namespace-schemas.md
+            - name: Custom namespace prefixes
+              href: xaml/namespaces/custom-prefix.md
+        - name: Pass arguments
+          href: xaml/pass-arguments.md
+        - name: Runtime loading
+          href: xaml/runtime-load.md
     - name: Fundamentals
       items:
         - name: Accessibility
@@ -38,6 +78,38 @@
           href: fundamentals/app-lifecycle.md
         - name: App startup
           href: fundamentals/app-startup.md
+        - name: Data binding
+          items:
+              - name: Overview
+                href: fundamentals/data-binding/index.md
+              - name: Basic bindings
+                href: fundamentals/data-binding/basic-bindings.md
+              - name: Binding mode
+                href: fundamentals/data-binding/binding-mode.md
+              - name: String formatting
+                href: fundamentals/data-binding/string-formatting.md
+              - name: Binding path
+                href: fundamentals/data-binding/binding-path.md
+              - name: Binding value converters
+                href: fundamentals/data-binding/converters.md
+              - name: Relative bindings
+                href: fundamentals/data-binding/relative-bindings.md
+              - name: Binding fallbacks
+                href: fundamentals/data-binding/binding-fallbacks.md
+              - name: Multi-bindings
+                href: fundamentals/data-binding/multibinding.md
+              - name: Commanding
+                href: fundamentals/data-binding/commanding.md
+              - name: Compiled bindings
+                href: fundamentals/data-binding/compiled-bindings.md
+        - name: Properties
+          items:
+              - name: Bindable properties
+                href: fundamentals/bindable-properties.md
+              - name: Attached properties
+                href: fundamentals/attached-properties.md
+        - name: Resource dictionaries
+          href: fundamentals/resource-dictionaries.md
         - name: Single project
           href: fundamentals/single-project.md
     - name: User interface
@@ -66,12 +138,16 @@
               items:
                 - name: Overview
                   href: user-interface/layouts/index.md
+                - name: AbsoluteLayout
+                  href: user-interface/layouts/absolutelayout.md
                 - name: FlexLayout
                   href: user-interface/layouts/flexlayout.md
-                - name: GridLayout
-                  href: user-interface/layouts/gridlayout.md
+                - name: Grid
+                  href: user-interface/layouts/grid.md
                 - name: HorizontalStackLayout
                   href: user-interface/layouts/horizontalstacklayout.md
+                - name: RelativeLayout
+                  href: user-interface/layouts/relativelayout.md
                 - name: StackLayout
                   href: user-interface/layouts/stacklayout.md
                 - name: VerticalStackLayout

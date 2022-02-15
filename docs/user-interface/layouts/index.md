@@ -1,7 +1,7 @@
 ---
 title: "Layouts"
 description: ".NET MAUI layout classes allow you to arrange and group UI controls in your app."
-ms.date: 01/04/2022
+ms.date: 01/28/2022
 ---
 
 # Layouts
@@ -98,9 +98,9 @@ In a `VerticalStackLayout`, if an element's size is not explicitly set, it expan
 
 For more information, see [VerticalStackLayout](verticalstacklayout.md).
 
-## GridLayout
+## Grid
 
-A `GridLayout`, or `Grid`, is used for displaying elements in rows and columns, which can have proportional or absolute sizes. A grid's rows and columns are specified with the `RowDefinitions` and `ColumnDefinitions` properties.
+A `Grid` is used for displaying elements in rows and columns, which can have proportional or absolute sizes. A grid's rows and columns are specified with the `RowDefinitions` and `ColumnDefinitions` properties.
 
 To position elements in specific `Grid` cells, use the `Grid.Column` and `Grid.Row` attached properties. To make elements span across multiple rows and columns, use the `Grid.RowSpan` and `Grid.ColumnSpan` attached properties.
 
@@ -141,7 +141,7 @@ Space can be distributed within a column or row by using auto sizing, which lets
 > [!CAUTION]
 > Try to ensure that as few rows and columns as possible are set to `Auto` size. Each auto-sized row or column will cause the layout engine to perform additional layout calculations. Instead, use fixed size rows and columns if possible. Alternatively, set rows and columns to occupy a proportional amount of space with the `GridUnitType.Star` enumeration value.
 
-For more information, see [Grid](gridlayout.md).
+For more information, see [Grid](grid.md).
 
 ## FlexLayout
 
@@ -167,7 +167,6 @@ In this example, layout works as follows:
 
 For more information, see [FlexLayout](flexlayout.md).
 
-<!--
 ## AbsoluteLayout
 
 An `AbsoluteLayout` is used to position and size elements using explicit values, or values relative to the size of the layout. The position is specified by the upper-left corner of the child relative to the upper-left corner of the `AbsoluteLayout`.
@@ -257,6 +256,7 @@ In this example, layout works as follows:
 
 For more information, see [RelativeLayout](relativelayout.md).
 
+<!--
 ## BindableLayout
 
 ## Layout options
