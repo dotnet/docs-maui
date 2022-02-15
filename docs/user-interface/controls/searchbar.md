@@ -1,7 +1,7 @@
 ---
 title: "SearchBar"
 description: "The .NET MAUI SearchBar is a user input control that is used for initiating a search. The SearchBar control supports placeholder text, query input, execution, and cancellation."
-ms.date: 04/15/2022
+ms.date: 02/15/2022
 ---
 
 # SearchBar
