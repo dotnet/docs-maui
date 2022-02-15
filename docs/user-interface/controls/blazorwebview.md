@@ -6,7 +6,7 @@ ms.date: 12/08/2021
 
 # BlazorWebView
 
-The .NET Multi-platform App UI (.NET MAUI) `BlazorWebView` is a control that enables you to host a Blazor web app in your .NET MAUI app. These apps, known as .NET MAUI Blazor apps, enable a Blazor web app to be integrated with platform features and UI controls. The `BlazorWebView` control can be added to any page of a .NET MAUI app, and pointed to the root of the Blazor app. The Blazor components run natively in the .NET process and render web UI to an embedded web view control. .NET MAUI Blazor apps can run on all the platforms supported by .NET MAUI.
+The .NET Multi-platform App UI (.NET MAUI) `BlazorWebView` is a control that enables you to host a Blazor web app in your .NET MAUI app. These apps, known as .NET MAUI Blazor apps, enable a Blazor web app to be integrated with platform features and UI controls. The `BlazorWebView` control can be added to any page of a .NET MAUI app, and pointed to the root of the Blazor app. The [Razor components](/aspnet/core/blazor/components/) run natively in the .NET process and render web UI to an embedded web view control. .NET MAUI Blazor apps can run on all the platforms supported by .NET MAUI.
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
@@ -21,7 +21,7 @@ The `RootComponent` class defines the following properties:
 - `ComponentType`, of type `Type?`, which defines the type of the root component.
 - `Parameters`, of type `IDictionary<string, object?>?`, which represents an optional dictionary of parameters to pass to the root component.
 
-Existing Blazor components can be used in a .NET MAUI Blazor app by moving the code into the app, or by referencing an existing class library or package that contains the component.
+Existing [Razor components](/aspnet/core/blazor/components/) can be used in a .NET MAUI Blazor app by moving the code into the app, or by referencing an existing class library or package that contains the component.
 
 For information about Blazor apps, see [Introduction to ASP.NET Core Blazor](/aspnet/core/blazor/).
 
@@ -53,7 +53,7 @@ This project template creates a multi-targeted .NET MAUI Blazor app that can be 
 </ContentPage>
 ```
 
-The root Blazor component for the app is in *Main.razor*, which Razor compiles into a type named `Main` in the application's root namespace. The rest of the Blazor components are in the *Pages* and *Shared* project folders, and are identical to the components used in the default Blazor web template. Static web assets for the app are in the *wwwroot* folder.
+The root [Razor component](/aspnet/core/blazor/components/) for the app is in *Main.razor*, which Razor compiles into a type named `Main` in the application's root namespace. The rest of the [Razor components](/aspnet/core/blazor/components/) are in the *Pages* and *Shared* project folders, and are identical to the components used in the default Blazor web template. Static web assets for the app are in the *wwwroot* folder.
 
 ## Add a BlazorWebView to an existing app
 
@@ -67,8 +67,8 @@ The process to add a `BlazorWebView` to an existing .NET MAUI app is as follows:
 
     The Razor SDK is required to build and package projects containing Razor files for Blazor projects.
 
-1. Add the root Blazor component for the app to the project.
-1. Add your Blazor components to project folders named *Pages* and *Shared*.
+1. Add the root [Razor component](/aspnet/core/blazor/components/) for the app to the project.
+1. Add your [Razor components](/aspnet/core/blazor/components/) to project folders named *Pages* and *Shared*.
 1. Add your static web assets to a project folder named *wwwroot*.
 1. Add any optional *_Imports.razor* files to your project.
 1. Add a `BlazorWebView` to a page in your .NET MAUI app, and point it to the root of the Blazor app:
