@@ -105,9 +105,7 @@ In this example, `RadioButton` objects are implicitly grouped inside the same pa
 
 :::image type="content" source="media/radiobutton/radiobuttons-view.png" alt-text="Screenshot of view-based RadioButtons.":::
 
-On Android, `RadioButton` objects will display a string-based representation of the `View` object that's been set as content:
-
-:::image type="content" source="media/radiobutton/radiobutton-view-android.png" alt-text="Screenshot of view-based RadioButton on Android.":::
+On Android, `RadioButton` objects will display a string-based representation of the `View` object that's been set as content.
 
 > [!NOTE]
 > When a `ControlTemplate` is applied to a `RadioButton`, a `View` can be assigned to the `RadioButton.Content` property on all platforms. For more information, see [Redefine RadioButton appearance](#redefine-radiobutton-appearance).
