@@ -92,7 +92,7 @@
               - name: Attached properties
                 href: fundamentals/attached-properties.md
         - name: Resource dictionaries
-          href: fundamentals/resource-dictionaries.md              
+          href: fundamentals/resource-dictionaries.md
         - name: Single project
           href: fundamentals/single-project.md
     - name: User interface
@@ -125,8 +125,8 @@
                   href: user-interface/layouts/absolutelayout.md
                 - name: FlexLayout
                   href: user-interface/layouts/flexlayout.md
-                - name: GridLayout
-                  href: user-interface/layouts/gridlayout.md
+                - name: Grid
+                  href: user-interface/layouts/grid.md
                 - name: HorizontalStackLayout
                   href: user-interface/layouts/horizontalstacklayout.md
                 - name: RelativeLayout
