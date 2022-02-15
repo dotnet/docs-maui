@@ -78,7 +78,7 @@ systeminfo
 
 If all listed Hyper-V requirements have a value of **Yes**, then your computer can support Hyper-V. For example:
 
-:::image type="content" source="media/hardware-acceleration/win/02-systeminfo-w158.png" alt-text="Example of systeminfo output when checking Hyper-V support for .NET MAUI." lightbox="media/hardware-acceleration/win/02-systeminfo-w158-sml.png":::
+:::image type="content" source="media/hardware-acceleration/win/systeminfo-small.png" alt-text="Example of systeminfo output when checking Hyper-V support for .NET MAUI." lightbox="media/hardware-acceleration/win/systeminfo.png":::
 
 ### Enabling Hyper-V acceleration
 
@@ -86,7 +86,7 @@ If your computer meets the above criteria, use the following steps to accelerate
 
 01. Enter **windows features** in the Windows search box and select **Turn Windows features on or off** in the search results. In the **Windows Features** dialog, enable both **Hyper-V** and **Windows Hypervisor Platform**:
 
-    :::image type="content" source="media/hardware-acceleration/win/03-hyper-v-settings-w158.png" alt-text="Enabling Hyper-V and Windows Hypervisor Platform for .NET MAUI.":::
+    :::image type="content" source="media/hardware-acceleration/win/windows-features.png" alt-text="Enabling Hyper-V and Windows Hypervisor Platform for .NET MAUI.":::
 
     After making these changes, reboot your computer.
 
@@ -116,7 +116,7 @@ To determine if your hardware supports HAXM, follow the steps in [Does My Proces
 
 01. Examine the output to see if the HAXM process is running. If it is, you should see output listing the `intelhaxm` state as `RUNNING`. For example:
 
-    :::image type="content" source="media/hardware-acceleration/win/05-sc_query-w158.png" alt-text="Output from sc query command when HAXM is available.":::
+    :::image type="content" source="media/hardware-acceleration/win/sc-query.png" alt-text="Output from sc query command when HAXM is available.":::
 
     If `STATE` isn't set to `RUNNING`, then HAXM isn't installed.
 
