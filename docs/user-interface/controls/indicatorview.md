@@ -124,7 +124,7 @@ The elements specified in the `DataTemplate` define the appearance of each indic
 
 The following screenshot shows indicators rendered using a font icon:
 
-:::image type="content" source="media/indicatorview/templated.png" alt-text="Screenshot of a templated IndicatorView.":::
+:::image type="content" source="media/indicatorview/template.png" alt-text="Screenshot of a templated IndicatorView.":::
 
 ## Set visual states
 
@@ -177,8 +177,6 @@ The following screenshot shows indicators rendered using a font icon:
 ```
 
 In this example, the `Selected` visual state specifies that the indicator that represents the current position will have its `TextColor` set to black. Otherwise the `TextColor` of the indicator will be light gray:
-
-![Screenshot of IndicatorView selected visual state.](indicatorview-images/visual-state.png)
 
 :::image type="content" source="media/indicatorview/visual-state.png" alt-text="Screenshot of IndicatorView selected visual state.":::
 
