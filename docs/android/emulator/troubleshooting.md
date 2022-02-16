@@ -111,7 +111,7 @@ If hardware acceleration isn't available, a message like the following example w
 HAXM isn't installed on this machine
 ```
 
-If hardware acceleration isn't available, see [Enabling Hyper-V acceleration](hardware-acceleration.md#enabling-hyper-v-acceleration) to learn how to enable hardware acceleration on your computer.
+If hardware acceleration isn't available, see [Enabling Hyper-V acceleration](hardware-acceleration.md#enabling-hyper-v-acceleration-in-windows-and-the-emulator) to learn how to enable hardware acceleration on your computer.
 
 ### Incorrect BIOS settings
 
