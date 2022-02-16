@@ -80,7 +80,9 @@ If all listed Hyper-V requirements have a value of **Yes**, then your computer c
 
 :::image type="content" source="media/hardware-acceleration/win/systeminfo-small.png" alt-text="Example of systeminfo output when checking Hyper-V support for .NET MAUI." lightbox="media/hardware-acceleration/win/systeminfo.png":::
 
-### Enabling Hyper-V acceleration
+If the Hyper-V result indicate that a hypervisor is currently running, Hyper-V is already enabled.
+
+### Enabling Hyper-V acceleration in Windows and the emulator
 
 If your computer meets the above criteria, use the following steps to accelerate the Android emulator with Hyper-V:
 
