@@ -76,11 +76,14 @@ To paint an object with an image, load the image and assign it to the `Image` pr
 The following example shows how to load an image and fill a rectangle with it:
 
 ```csharp
+using Microsoft.Maui.Graphics.Platform;
+...
+
 IImage image;
 var assembly = GetType().GetTypeInfo().Assembly;
 using (var stream = assembly.GetManifestResourceStream("GraphicsViewDemos.Resources.Images.dotnet_bot.png"))
 {
-    image = GraphicsPlatform.CurrentService.LoadImageFromStream(stream);
+    image = PlatformImage.FromStream(stream);
 }
 
 if (image != null)
