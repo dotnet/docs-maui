@@ -284,11 +284,14 @@ Images can be drawn on an `ICanvas` using the `DrawImage` method, which requires
 The following example shows how to load an image and draw it to the canvas:
 
 ```csharp
+using Microsoft.Maui.Graphics.Platform;
+...
+
 IImage image;
 Assembly assembly = GetType().GetTypeInfo().Assembly;
 using (Stream stream = assembly.GetManifestResourceStream("GraphicsViewDemos.Resources.Images.dotnet_bot.png"))
 {
-    image = GraphicsPlatform.CurrentService.LoadImageFromStream(stream);
+    image = PlatformImage.FromStream(stream);
 }
 
 if (image != null)
@@ -306,7 +309,7 @@ In this example, an image is retrieved from the assembly and loaded as a stream.
 
 ## Draw a string
 
-Strings can be drawn on an `ICanvas` using one of the `DrawString` overloads. The appearance of each string can be defined by setting the `FontName`, `FontColor`, and `FontSize` properties. String alignment can be specified by horizontal and vertical alignment options that perform alignment within the string's bounding box.
+Strings can be drawn on an `ICanvas` using one of the `DrawString` overloads. The appearance of each string can be defined by setting the `Font`, `FontColor`, and `FontSize` properties. String alignment can be specified by horizontal and vertical alignment options that perform alignment within the string's bounding box.
 
 > [!NOTE]
 > The bounding box for a string is defined by its `x`, `y`, `width`, and `height` arguments.
@@ -317,15 +320,15 @@ The following examples show how to draw strings:
 canvas.FontColor = Colors.Blue;
 canvas.FontSize = 18;
 
-canvas.SetToSystemFont();
+canvas.Font = Font.Default;
 canvas.DrawString("Text is left aligned.", 20, 20, 380, 100, HorizontalAlignment.Left, VerticalAlignment.Top);
 canvas.DrawString("Text is centered.", 20, 60, 380, 100, HorizontalAlignment.Center, VerticalAlignment.Top);
 canvas.DrawString("Text is right aligned.", 20, 100, 380, 100, HorizontalAlignment.Right, VerticalAlignment.Top);
 
-canvas.SetToBoldSystemFont();
+canvas.Font = Font.DefaultBold;
 canvas.DrawString("This text is displayed using the bold system font.", 20, 140, 350, 100, HorizontalAlignment.Left, VerticalAlignment.Top);
 
-canvas.FontName = "Arial";
+canvas.Font = new Font("Arial");
 canvas.FontColor = Colors.Black;
 canvas.SetShadow(new SizeF(6, 6), 4, Colors.Gray);
 canvas.DrawString("This text has a shadow.", 20, 200, 300, 100, HorizontalAlignment.Left, VerticalAlignment.Top);
@@ -350,7 +353,7 @@ The following example shows how to draw attributed text:
 using Microsoft.Maui.Graphics.Text;
 ...
 
-canvas.FontName = "Arial";
+canvas.Font = new Font("Arial");
 canvas.FontSize = 18;
 canvas.FontColor = Colors.Blue;
 
@@ -514,11 +517,14 @@ Graphical objects that are drawn to an `ICanvas` can be clipped prior to drawing
 The following example shows how to use the `ClipPath` method to clip an image:
 
 ```csharp
+using Microsoft.Maui.Graphics.Platform;
+...
+
 IImage image;
 var assembly = GetType().GetTypeInfo().Assembly;
 using (var stream = assembly.GetManifestResourceStream("GraphicsViewDemos.Resources.Images.dotnet_bot.png"))
 {
-    image = GraphicsPlatform.CurrentService.LoadImageFromStream(stream);
+    image = PlatformImage.FromStream(stream);
 }
 
 if (image != null)
@@ -540,11 +546,14 @@ In this example, the image is clipped using a `PathF` object that defines a circ
 The following example shows how to use the `SubtractFromClip` method to clip an image:
 
 ```csharp
+using Microsoft.Maui.Graphics.Platform;
+...
+
 IImage image;
 var assembly = GetType().GetTypeInfo().Assembly;
 using (var stream = assembly.GetManifestResourceStream("MyMauiApp.Resources.Images.dotnet_bot.png"))
 {
-    image = GraphicsPlatform.CurrentService.LoadImageFromStream(stream);
+    image = PlatformImage.FromStream(stream);
 }
 
 if (image != null)
