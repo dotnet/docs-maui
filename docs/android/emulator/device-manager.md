@@ -125,17 +125,19 @@ Additional options for working with devices are available from the **Additional 
 
 The additional options menu contains the following items:
 
+<!-- TODO: Clarify the shorter descriptions -->
+
 - **Duplicate and Edit** &ndash; Duplicates the currently-selected device and opens it in the **New Device** screen with a new name that's similar to the existing device. For example, selecting **Pixel 2 - API 28** and pressing **Duplicate and Edit** appends a counter to the name: **Pixel 2 - API 28 (1)**.
 
-- **Start with Factory Defaults** &ndash; TODO
+- **Start with Factory Defaults** &ndash; Starts the device with the factory default settings, but without doing a factory reset.
 
-- **Start with Kernel Logs** &ndash; TODO
+- **Start with Kernel Logs** &ndash; Starts the device and enables kernel logging.
 
 - **Download System Image** &ndash; Downloads the Android OS system image for the device, if it's not already downloaded.
 
 - **Reveal in Explorer** &ndash; Opens Windows Explorer and navigates to the folder that holds the files for the virtual device.
 
-- **Repair** &ndash; TODO
+- **Repair** &ndash; Initiates an OS repair on the device.
 
 - **Factory Reset** &ndash; Resets the selected device to its default settings, erasing any user changes made to the internal state of the device while it was running. This action also erases the current [Fast Boot](debug-on-emulator.md#fast-boot) snapshot if it exists. This change doesn't alter modifications that you make to the virtual device during creation and editing. A dialog box will appear with the reminder that this reset cannot be undone &ndash; press **Factory Reset** to confirm the reset.
 
