@@ -23,7 +23,7 @@ Behaviors enable you to implement code that you would normally have to write as 
 
 ## Attached behaviors
 
-Attached behaviors are static classes with one or more attached properties. An attached property is a special type of bindable property. They are defined in one class but attached to other objects, and they are recognizable in XAML as attributes that contain a class and a property name separated by a period. For more information about attached properties, see [Attached properties](~/user-interface/fundamentals/attached-properties.md).
+Attached behaviors are static classes with one or more attached properties. An attached property is a special type of bindable property. They are defined in one class but attached to other objects, and they are recognizable in XAML as attributes that contain a class and a property name separated by a period. For more information about attached properties, see [Attached properties](~/fundamentals/attached-properties.md).
 
 An attached property can define a `propertyChanged` delegate that will be executed when the value of the property changes, such as when the property is set on a control. When the `propertyChanged` delegate executes, it's passed a reference to the control on which it is being attached, and parameters that contain the old and new values for the property. This delegate can be used to add new functionality to the control that the property is attached to by manipulating the reference that is passed in, as follows:
 
