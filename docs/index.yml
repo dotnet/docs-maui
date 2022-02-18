@@ -68,6 +68,8 @@ landingContent:
             url: fundamentals/resource-dictionaries.md
           - text: Single project
             url: fundamentals/single-project.md
+          - text: Triggers
+            url: fundamentals/triggers.md
   - title: User interface
     linkLists:
       - linkListType: concept

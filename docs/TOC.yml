@@ -97,6 +97,8 @@
           href: fundamentals/resource-dictionaries.md
         - name: Single project
           href: fundamentals/single-project.md
+        - name: Triggers
+          href: fundamentals/triggers.md
     - name: User interface
       items:
         - name: Brushes
