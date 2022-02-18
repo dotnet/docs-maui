@@ -99,6 +99,10 @@
           href: fundamentals/resource-dictionaries.md
         - name: Single project
           href: fundamentals/single-project.md
+        - name: Templates
+          items:
+              - name: Control templates
+                href: fundamentals/templates/controltemplates.md
         - name: Triggers
           href: fundamentals/triggers.md
     - name: User interface
