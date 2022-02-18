@@ -30,6 +30,11 @@
                   href: android/emulator/troubleshooting.md
                 - name: How to enable hardware acceleration
                   href: android/emulator/hardware-acceleration.md
+            - name: Devices
+              expanded: true
+              items:
+                - name: How to setup a physical device
+                  href: android/device/setup.md
     - name: XAML
       items:
         - name: Overview
