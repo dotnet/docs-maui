@@ -10,7 +10,7 @@ no-loc: ["user.config"]
 This article explains how to use the Android Device Manager to create and configure Android Virtual Devices (AVDs) that emulate physical Android devices. You can use these virtual devices to run and test your app without having to rely on a physical device.
 
 > [!IMPORTANT]
-> Enable hardware acceleration for the android devices. For more information, see [Hardware Acceleration for Emulator Performance](hardware-acceleration.md).
+> Enable hardware acceleration for the Android devices. For more information, see [Hardware Acceleration for Emulator Performance](hardware-acceleration.md).
 
 <!--
 ::: zone pivot="windows"
@@ -26,7 +26,7 @@ You use the Android Device Manager to create and configure an Android Virtual De
 
 To use the Android Device Manager, you'll need the following items:
 
-- Visual Studio 2022 version 17.1 Preview 3. Visual Studio Community, Professional, and Enterprise editions are supported.
+- Visual Studio 2022: Community, Professional, and Enterprise editions are supported.
 
 - The **Android SDK API Level 30** or later. Be sure to install the Android SDK at its default location if it isn't already installed: _C:\\Program Files (x86)\\Android\\android-sdk_.
 
@@ -41,7 +41,7 @@ To use the Android Device Manager, you'll need the following items:
 
   :::image type="content" source="media/device-manager/win/02-sdk-tools.png" alt-text="Installing Android SDK Tools.":::
 
-When you install the **Mobile development with .NET** workload in Visual Studio, and select the optional **.NET MAUI (Preview)** workload, everything is installed for you. For more information on setting up .NET MAUI with Visual Studio, see [Installation](../../get-started/installation.md).
+When you install the **Mobile development with .NET** workload in Visual Studio, everything is installed for you. For more information on setting up .NET MAUI with Visual Studio, see [Installation](../../get-started/installation.md).
 
 ## Open the device manager
 

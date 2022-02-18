@@ -45,7 +45,7 @@ If your computer isn't recognizing the device when it's plugged in, try installi
 
 :::image type="content" source="media/setup/google-usb-driver.png" alt-text="Android SKD Manager with the Google USB device driver selected.":::
 
-## Alternatively enable WiFi debugging
+## Enable WiFi debugging
 
 It's possible to debug an android device over WiFi, without keeping the device physically connected to the computer. This technique requires more effort, but could be useful when the device is too far from the computer to remain constantly plugged-in via a cable.
 
@@ -100,15 +100,3 @@ Next, use adb to connect to your device, first through a USB connection:
     ```command
     adb devices
     ```
-
-## Summary
-
-This article discussed how to configure an Android device for development by enabling debugging on the device. It also covered how to connect the device to a computer using either USB or WiFi.
-
-## Related Links
-
-- [Android Debug Bridge](https://developer.android.com/studio/command-line/adb)
-- [Using Hardware Devices](https://developer.android.com/studio/run/device)
-- [Samsung Driver Downloads](https://www.samsung.com/us/support/downloads/)
-- [OEM USB Drivers](https://developer.android.com/studio/run/oem-usb#Drivers)
-- [Google USB Driver](https://developer.android.com/studio/run/win-usb)

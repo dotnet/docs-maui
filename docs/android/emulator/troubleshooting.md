@@ -144,7 +144,7 @@ In some cases, enabling both **Hyper-V** and **Windows Hypervisor Platform** in 
 
     If Hyper-V isn't enabled, a message similar to the following example will be displayed to indicate that the state of Hyper-V is **Disabled**:
 
-    ```
+    ```cmd
     FeatureName      : Microsoft-Hyper-V-All
     DisplayName      : Hyper-V
     Description      : Provides services and management tools for creating and running virtual machines and their resources.
@@ -161,7 +161,7 @@ In some cases, enabling both **Hyper-V** and **Windows Hypervisor Platform** in 
 
     If the Hypervisor isn't enabled, a message similar to the following example will be displayed to indicate that the state of HypervisorPlatform is **Disabled**:
 
-    ```
+    ```cmd
     FeatureName      : HypervisorPlatform
     DisplayName      : Windows Hypervisor Platform
     Description      : Enables virtualization software to run on the Windows hypervisor
@@ -218,7 +218,7 @@ HAXM can conflict with other technologies that use virtualization, such as Hyper
 
 - **Antivirus Software**—If you're running antivirus software that uses hardware-assisted virtualization (such as Avast), disable or uninstall this software, reboot, and retry the Android emulator.
 
-#### Incorrect BIOS settings
+#### Incorrect BIOS settings for HAXM
 
 On Windows, HAXM won't work unless virtualization technology (Intel VT-x) is enabled in the BIOS. If VT-x is disabled, you'll get an error similar to the following when you attempt to start the Android Emulator:
 
@@ -258,7 +258,7 @@ Device Guard and Credential Guard can prevent Hyper-V from being disabled on Win
 
 01. In the **System Summary**, look to see if **Device Guard Virtualization based security** is present and is in the **Running** state:
 
-   :::image type="content" source="media/troubleshooting/win/04-device-guard-sml.png" alt-text="Check if Device Guard is running for .NET MAUI." lightbox="media/troubleshooting/win/04-device-guard.png":::
+    :::image type="content" source="media/troubleshooting/win/04-device-guard-sml.png" alt-text="Check if Device Guard is running for .NET MAUI." lightbox="media/troubleshooting/win/04-device-guard.png":::
 
 If Device Guard is enabled, use the following steps to disable it:
 
@@ -268,7 +268,7 @@ If Device Guard is enabled, use the following steps to disable it:
 
 01. In the **Local Group Policy Editor**, navigate to **Computer Configuration > Administrative Templates > System > Device Guard**:
 
-   :::image type="content" source="media/troubleshooting/win/05-group-policy-editor-sml.png" alt-text="Check if Device Guard is enabled in the Local Group Policy editor for .NET MAUI." lightbox="media/troubleshooting/win/05-group-policy-editor.png":::
+    :::image type="content" source="media/troubleshooting/win/05-group-policy-editor-sml.png" alt-text="Check if Device Guard is enabled in the Local Group Policy editor for .NET MAUI." lightbox="media/troubleshooting/win/05-group-policy-editor.png":::
 
 01. Change **Turn On Virtualization Based Security** to **Disabled** (as shown above) and exit the **Local Group Policy Editor**.
 
