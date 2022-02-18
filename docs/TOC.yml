@@ -91,6 +91,8 @@
                 href: fundamentals/bindable-properties.md
               - name: Attached properties
                 href: fundamentals/attached-properties.md
+        - name: Publish and subscribe to messages
+          href: fundamentals/messagingcenter.md
         - name: Resource dictionaries
           href: fundamentals/resource-dictionaries.md
         - name: Single project

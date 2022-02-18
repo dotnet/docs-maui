@@ -62,8 +62,10 @@ landingContent:
             url: fundamentals/app-startup.md
           - text: Data binding
             url: fundamentals/data-binding/index.md
+          - text: Publish and subscribe to messages
+            url: fundamentals/messagingcenter.md
           - text: Resource dictionaries
-            url: fundamentals/resource-dictionaries.md            
+            url: fundamentals/resource-dictionaries.md
           - text: Single project
             url: fundamentals/single-project.md
   - title: User interface
