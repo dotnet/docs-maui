@@ -41,7 +41,7 @@ The `CardView` class, which derives from the `ContentView` class, represents a c
 
 A control template is created with the `ControlTemplate` type. When you create a `ControlTemplate`, you combine `View` objects to build the UI for a custom control, or page. A `ControlTemplate` must have only one `View` as its root element. However, the root element usually contains other `View` objects. The combination of objects makes up the control's visual structure.
 
-While a `ControlTemplate` can be defined inline, the typical approach to declaring a `ControlTemplate` is as a resource in a resource dictionary. Because control templates are resources, they obey the same scoping rules that apply to all resources. For example, if you declare a control template in your app-level resource dictionary, the template can be used anywhere in your app. If you define the template in a page, only that page can use the control template. For more information about resources, see [Resource dictionaries](~resource-dictionaries.md).
+While a `ControlTemplate` can be defined inline, the typical approach to declaring a `ControlTemplate` is as a resource in a resource dictionary. Because control templates are resources, they obey the same scoping rules that apply to all resources. For example, if you declare a control template in your app-level resource dictionary, the template can be used anywhere in your app. If you define the template in a page, only that page can use the control template. For more information about resources, see [Resource dictionaries](resource-dictionaries.md).
 
 The following XAML example shows a `ControlTemplate` for `CardView` objects:
 
@@ -142,7 +142,7 @@ In this example, the controls in the `CardViewControlTemplate` become part of th
 
 The following screenshot shows the `CardViewControlTemplate` applied to the three `CardView` objects:
 
-:::image type="content" source="media/controltempate/relativesource-controltemplate.png" alt-text="Screenshot of two templated CardView objects.":::
+:::image type="content" source="media/controltemplate/relativesource-controltemplate.png" alt-text="Screenshot of two templated CardView objects.":::
 
 > [!IMPORTANT]
 > The point in time that a `ControlTemplate` is applied to a control instance can be detected by overriding the `OnApplyTemplate` method in the templated custom control, or templated page. For more information, see [Get a named element from a template](#get-a-named-element-from-a-template).
@@ -233,7 +233,7 @@ The following XAML example shows a `ControlTemplate` for `CardView` objects, tha
 
 In this example, the `TemplateBinding` markup extension resolves binding expressions against the properties of each `CardView` object. The following screenshot shows the `CardViewControlTemplate` applied to the `CardView` objects:
 
-:::image type="content" source="media/controltempate/templatebinding-controltemplate.png" alt-text="Screenshot of templated CardView objects.":::
+:::image type="content" source="media/controltemplate/templatebinding-controltemplate.png" alt-text="Screenshot of templated CardView objects.":::
 
 > [!IMPORTANT]
 > Using the `TemplateBinding` markup extension is equivalent to setting the `BindingContext` of the root element in the template to its templated parent with the `RelativeSource` markup extension, and then resolving bindings of child objects with the `Binding` markup extension. In fact, the `TemplateBinding` markup extension creates a `Binding` whose `Source` is `RelativeBindingSource.TemplatedParent`.
@@ -393,13 +393,13 @@ However, the controls that comprise this UI can be replaced by defining a new vi
 
 In this example, the visual structure of the `CardViewUI` object is redefined in a `ControlTemplate` that provides a more compact visual structure that's suitable for a condensed list:
 
-:::image type="content" source="media/controltempate/redefine-controltemplate.png" alt-text="Screenshot of templated CardViewUI objects.":::
+:::image type="content" source="media/controltemplate/redefine-controltemplate.png" alt-text="Screenshot of templated CardViewUI objects.":::
 
 ## Substitute content into a ContentPresenter
 
 A `ContentPresenter` can be placed in a control template to mark where content to be displayed by the templated custom control or templated page will appear. The custom control or page that consumes the control template will then define content to be displayed by the `ContentPresenter`. The following diagram illustrates a `ControlTemplate` for a page that contains a number of controls, including a `ContentPresenter` marked by a blue rectangle:
 
-:::image type="content" source="media/controltempate/controltemplate.png" alt-text="Control template for a ContentPage." border="false":::
+:::image type="content" source="media/controltemplate/controltemplate.png" alt-text="Control template for a ContentPage." border="false":::
 
 The following XAML shows a control template named `TealTemplate` that contains a `ContentPresenter` in its visual structure:
 
@@ -462,7 +462,7 @@ The following example shows `TealTemplate` assigned to the `ControlTemplate` pro
 
 At runtime, when `TealTemplate` is applied to the page, the page content is substituted into the `ContentPresenter` defined in the control template:
 
-:::image type="content" source="media/controltempate/tealtemplate-contentpage.png" alt-text="Screenshot of templated page object.":::
+:::image type="content" source="media/controltemplate/tealtemplate-contentpage.png" alt-text="Screenshot of templated page object.":::
 
 ## Get a named element from a template
 
@@ -518,7 +518,7 @@ public partial class AccessTemplateElementPage : HeaderFooterPage
 
 In this example, the `Label` object named `changeThemeLabel` is retrieved once the `ControlTemplate` has been instantiated. `changeThemeLabel` can then be accessed and manipulated by the `AccessTemplateElementPage` class. The following screenshot shows that the text displayed by the `Label` has been changed:
 
-:::image type="content" source="media/controltempate/get-named-element.png" alt-text="Screenshot of templated page object that's changed.":::
+:::image type="content" source="media/controltemplate/get-named-element.png" alt-text="Screenshot of templated page object that's changed.":::
 
 ## Bind to a viewmodel
 
@@ -594,7 +594,7 @@ In this example, the `BindingContext` of the page is set to a `PeopleViewModel` 
 
 In this example, the root element of the `ControlTemplate` is a `Frame` object. The `Frame` object uses the `RelativeSource` markup extension to set its `BindingContext` to the templated parent. The binding expressions of the `Frame` object and its children resolve against `CardView` properties, due to inheriting the `BindingContext` from the root `Frame` element. The following screenshot shows the page displaying the `People` collection:
 
-:::image type="content" source="media/controltempate/viewmodel-controltemplate.png" alt-text="Screenshot of three templated CardView objects that bind to a viewmodel.":::
+:::image type="content" source="media/controltemplate/viewmodel-controltemplate.png" alt-text="Screenshot of three templated CardView objects that bind to a viewmodel.":::
 
 While the objects in the `ControlTemplate` bind to properties on its templated parent, the `Button` within the control template binds to both its templated parent, and to the `DeletePersonCommand` in the viewmodel. This is because the `Button.Command` property redefines its binding source to be the binding context of the ancestor whose binding context type is `PeopleViewModel`, which is the `StackLayout`. The `Path` part of the binding expressions can then resolve the `DeletePersonCommand` property. However, the `Button.CommandParameter` property doesn't alter its binding source, instead inheriting it from its parent in the `ControlTemplate`. Therefore, the `CommandParameter` property binds to the `CardTitle` property of the `CardView`.
 
