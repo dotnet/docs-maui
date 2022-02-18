@@ -60,6 +60,8 @@ landingContent:
             url: fundamentals/app-lifecycle.md
           - text: App startup
             url: fundamentals/app-startup.md
+          - text: Behaviors
+            url: fundamentals/behaviors.md
           - text: Data binding
             url: fundamentals/data-binding/index.md
           - text: Publish and subscribe to messages

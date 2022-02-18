@@ -61,6 +61,8 @@
           href: fundamentals/app-lifecycle.md
         - name: App startup
           href: fundamentals/app-startup.md
+        - name: Behaviors
+          href: fundamentals/behaviors.md
         - name: Data binding
           items:
               - name: Overview
