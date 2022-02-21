@@ -21,15 +21,14 @@ public class Person
 }
 ```
 
-The `Person` class defines `Name`, `Age`, and `Location` properties, which can be set when a `Person` object is created. A `ListView` can be used to display the collection of `Person` objects:
+The `Person` class defines `Name`, `Age`, and `Location` properties, which can be set when a `Person` object is created. A control that displays collections, such as `ListView`, can be used to display `Person` objects:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:DataTemplates"
-             ...>
+             x:Class=""DataTemplates.WithoutDataTemplatePage>
     <StackLayout>
-        ...
         <ListView>
             <ListView.ItemsSource>
                 <x:Array Type="{x:Type local:Person}">
@@ -46,7 +45,7 @@ The `Person` class defines `Name`, `Age`, and `Location` properties, which can b
 </ContentPage>
 ```
 
-In this example, items are added to the `ListView` by initializing its `ItemsSource` property from an array of `Person` instances. The `ListView` calls `ToString` when displaying the objects in the collection. Because there is no `Person.ToString` override, `ToString` returns the type name of each object:
+In this example, items are added to the `ListView` by initializing its `ItemsSource` property from an array of `Person` objects. `ListView` calls `ToString` when displaying the objects in the collection. However, because there is no `Person.ToString` override, `ToString` returns the type name of each object:
 
 :::image type="content" source="media/datatemplate/no-data-template.png" alt-text="Screenshot of a ListView without a data template.":::
 
@@ -67,7 +66,7 @@ This results in the `ListView` displaying the `Person.Name` property value for e
 
 :::image type="content" source="media/datatemplate/override-tostring.png" alt-text="Screenshot of a ListView that overrides the Person.ToString method.":::
 
-The `Person.ToString` override could return a formatted string consisting of the `Name`, `Age`, and `Location` properties. However, this approach offers only a limited control over the appearance of each item of data. For more flexibility, a `DataTemplate` can be created that defines the appearance of the data.
+The `Person.ToString` override could return a formatted string consisting of the `Name`, `Age`, and `Location` properties. However, this approach only offers limited control over the appearance of each item of data. For more flexibility, a `DataTemplate` can be created that defines the appearance of the data.
 
 ## Create a DataTemplate
 
@@ -82,11 +81,7 @@ A `DataTemplate` that's defined inline in a control is known as an *inline templ
 > [!NOTE]
 > Data templates lower in the view hierarchy take precedence over those defined higher up when they share `x:Key` attributes. For example, an app-level data template will be overridden by a page-level data template, and a page-level data template will be overridden by a control-level data template, or an inline data template.
 
-Regardless of where a `DataTemplate` is defined, .NET MAUI supports three approaches to creating data templates:
-
-- [Create an inline DataTemplate](#create-an-inline-datatemplate).
-- [Create a DataTemplate with a type](#create-a-datatemplate-with-a-type).
-- [Create a DataTemplate as a resource](#create-a-datatemplate-as-a-resource).
+Regardless of where a `DataTemplate` is defined, they can be created inline, with a type, or as a resource.
 
 ### Create an inline DataTemplate
 
