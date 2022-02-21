@@ -6,7 +6,7 @@ ms.date: 01/24/2022
 
 # Set up Android device for debugging
 
-While the [Android emulator](../emulator/index.md) is a great way to rapidly develop and test your app, you'll want to test your apps on a real Android device. To run on a device, you'll need to enable developer mode on the device and connect it to your computer.
+While the [Android emulator](../emulator/debug-on-emulator.md) is a great way to rapidly develop and test your app, you'll want to test your apps on a real Android device. To run on a device, you'll need to enable developer mode on the device and connect it to your computer.
 
 > [!IMPORTANT]
 > The steps in this article are written generically, to work on as many devices as possible. If you can't find these settings on your device, consult your device manufacturer's documentation.
