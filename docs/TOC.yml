@@ -17,8 +17,6 @@
           items:
             - name: Emulator
               items:
-                - name: Overview
-                  href: android/emulator/index.md
                 - name: How to enable hardware acceleration
                   href: android/emulator/hardware-acceleration.md
                 - name: Manage and create virtual devices
