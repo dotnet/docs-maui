@@ -48,7 +48,7 @@ The `Person` class defines `Name`, `Age`, and `Location` properties, which can b
 
 In this example, items are added to the `ListView` by initializing its `ItemsSource` property from an array of `Person` instances. The `ListView` calls `ToString` when displaying the objects in the collection. Because there is no `Person.ToString` override, `ToString` returns the type name of each object:
 
-:::image type="content" source="media/datattemplate/no-data-template.png" alt-text="Screenshot of a ListView without a data template.":::
+:::image type="content" source="media/datatemplate/no-data-template.png" alt-text="Screenshot of a ListView without a data template.":::
 
 The `Person` object can override the `ToString` method to display meaningful data:
 
@@ -65,9 +65,7 @@ public class Person
 
 This results in the `ListView` displaying the `Person.Name` property value for each object in the collection:
 
-![ListView with a Data Template.](introduction-images/override-tostring.png)
-
-:::image type="content" source="media/datattemplate/override-tostring.png" alt-text="Screenshot of a ListView that overrides the Person.ToString method.":::
+:::image type="content" source="media/datatemplate/override-tostring.png" alt-text="Screenshot of a ListView that overrides the Person.ToString method.":::
 
 The `Person.ToString` override could return a formatted string consisting of the `Name`, `Age`, and `Location` properties. However, this approach offers only a limited control over the appearance of each item of data. For more flexibility, a `DataTemplate` can be created that defines the appearance of the data.
 
@@ -123,7 +121,7 @@ The `ListView.ItemTemplate` property can be set to an inline `DataTemplate`. An 
 
 In a `ListView`, the child of an inline `DataTemplate` must be of, or derive from, type `Cell`. In this example, a `ViewCell`, which derives from `Cell` is used. Layout inside the `ViewCell` is managed here by a `Grid`. The `Grid` contains three `Label` instances that bind their `Text` properties to the appropriate properties of each `Person` object in the collection. The following screenshot shows the resulting appearance:
 
-:::image type="content" source="media/datattemplate/data-template-appearance.png" alt-text="Screenshot of a ListView with a data template.":::
+:::image type="content" source="media/datatemplate/data-template-appearance.png" alt-text="Screenshot of a ListView with a data template.":::
 
 ### Create a DataTemplate with a type
 
@@ -287,6 +285,6 @@ At runtime, the `ListView` calls the `PersonDataTemplateSelector.OnSelectTemplat
 
 The following screenshot shows the result of the `ListView` applying the `PersonDataTemplateSelector` to each object in the underlying collection:
 
-:::image type="content" source="media/datattemplate/data-template-selector.png" alt-text="Screenshot of a ListView with a data template selector.":::
+:::image type="content" source="media/datatemplate/data-template-selector.png" alt-text="Screenshot of a ListView with a data template selector.":::
 
 Any `Person` object that has a `DateOfBirth` property value greater than or equal to 1980 is displayed in green, with the remaining objects being displayed in red.
