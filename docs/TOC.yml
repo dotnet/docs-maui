@@ -102,7 +102,9 @@
         - name: Templates
           items:
               - name: Control templates
-                href: fundamentals/templates/controltemplate.md
+                href: fundamentals/controltemplate.md
+              - name: Data templates
+                href: fundamentals/datatemplate.md
         - name: Triggers
           href: fundamentals/triggers.md
     - name: User interface
