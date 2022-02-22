@@ -75,12 +75,6 @@ When you start a virtual device, and you don't have hardware acceleration enable
 
 To fix this error, follow the troubleshooting steps in the [Hardware acceleration issues](#hardware-acceleration-issues) section.
 
-### Acceleration is enabled but the emulator runs too slowly
-
-A common cause for this problem is not using an x86-based image in your virtual device (AVD). When you [create a virtual device](device-manager.md), be sure to select an x86-based system image:
-
-:::image type="content" source="media/troubleshooting/win/02-x86-virtual-device-w158-sml.png" alt-text="Select an x86 image for Android and .NET MAUI.":::
-
 ## Hardware acceleration issues
 
 When using hardware acceleration, you may run into configuration problems or conflicts with other software on your computer. The first step in troubleshooting is verifying that hardware acceleration is enabled. You can use the Android's SDK to check this setting. Open a command prompt and entering the following command:
