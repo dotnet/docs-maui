@@ -91,6 +91,8 @@
                 href: fundamentals/gestures/drag-and-drop.md
               - name: Pan
                 href: fundamentals/gestures/pan.md
+              - name: Pinch
+                href: fundamentals/gestures/pinch.md
               - name: Swipe
                 href: fundamentals/gestures/swipe.md
         - name: Properties

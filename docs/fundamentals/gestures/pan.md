@@ -25,18 +25,18 @@ To make a `View` recognize a pan gesture, create a `PanGestureRecognizer` object
 
 ```xaml
 <Image Source="monkey.jpg">
-  <Image.GestureRecognizers>
-    <PanGestureRecognizer PanUpdated="OnPanUpdated" />
-  </Image.GestureRecognizers>
+    <Image.GestureRecognizers>
+        <PanGestureRecognizer PanUpdated="OnPanUpdated" />
+    </Image.GestureRecognizers>
 </Image>
 ```
 
 The code for the `OnPanUpdated` event handler is then added to the code-behind file:
 
 ```csharp
-void OnPanUpdated (object sender, PanUpdatedEventArgs e)
+void OnPanUpdated(object sender, PanUpdatedEventArgs e)
 {
-  // Handle the pan
+    // Handle the pan
 }
 ```
 
@@ -106,4 +106,4 @@ The `PanContainer` class can be wrapped around a `View` so that a recognized pan
 </ContentPage>
 ```
 
-In this example, when the `Image` element receives a pan gesture, the displayed image will be panned.
+In this example, when the `Image` receives a pan gesture, the displayed image will be panned.
