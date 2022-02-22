@@ -89,6 +89,8 @@
           items:
               - name: Recognize a drag and drop gesture
                 href: fundamentals/gestures/drag-and-drop.md
+              - name: Recognize a swipe gesture
+                href: fundamentals/gestures/swipe.md
         - name: Properties
           items:
               - name: Bindable properties
