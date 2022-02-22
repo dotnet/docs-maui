@@ -12,7 +12,7 @@ A .NET Multi-platform App UI (.NET MAUI) pan gesture recognizer detects the move
 
 In .NET MAUI, pan gesture recognition is provided by the `PanGestureRecognizer` class. This class defines the `TouchPoints` property, of type `int`, which represents the number of touch points in the gesture. The default value of this property is 1. This property is backed by a `BindableProperty` object, which means that it can be the target of data bindings, and styled.
 
-The `PanGestureRecognizer` class also defines a `PanUpdated` event that's raised when XXXX. The `PanUpdatedEventArgs` object that accompanies this eevent defines the following properties:
+The `PanGestureRecognizer` class also defines a `PanUpdated` event that's raised when the detected pan gesture changes. The `PanUpdatedEventArgs` object that accompanies this event defines the following properties:
 
 - `GestureId`, of type `int`, which represents the id of the gesture that raised the event.
 - `StatusType`, of type `GestureStatus`, which indicates if the event has fired for a newly started gesture, a running gesture, a completed gesture, or a canceled gesture.
