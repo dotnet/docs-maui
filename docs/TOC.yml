@@ -123,6 +123,8 @@
                   href: user-interface/layouts/index.md
                 - name: AbsoluteLayout
                   href: user-interface/layouts/absolutelayout.md
+                - name: BindableLayout
+                  href: user-interface/layouts/bindablelayout.md
                 - name: FlexLayout
                   href: user-interface/layouts/flexlayout.md
                 - name: Grid
