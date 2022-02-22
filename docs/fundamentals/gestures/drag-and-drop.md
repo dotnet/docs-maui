@@ -10,10 +10,10 @@ A .NET Multi-platform App UI (.NET MAUI) drag and drop gesture enables items, an
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
+The *drag source*, which is the element on which the drag gesture is initiated, can provide data to be transferred by populating a data package object. When the drag source is released, drop occurs. The *drop target*, which is the element under the drag source, then processes the data package.
+
 > [!IMPORTANT]
 > On iOS a minimum platform of iOS 11 is required.
-
-The *drag source*, which is the element on which the drag gesture is initiated, can provide data to be transferred by populating a data package object. When the drag source is released, drop occurs. The *drop target*, which is the element under the drag source, then processes the data package.
 
 The process for enabling drag and drop in an app is as follows:
 
