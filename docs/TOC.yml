@@ -85,6 +85,10 @@
                 href: fundamentals/data-binding/commanding.md
               - name: Compiled bindings
                 href: fundamentals/data-binding/compiled-bindings.md
+        - name: Gestures
+          items:
+              - name: Recognize a drag and drop gesture
+                href: fundamentals/gestures/drag-and-drop.md
         - name: Properties
           items:
               - name: Bindable properties
