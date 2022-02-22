@@ -162,20 +162,13 @@ In this example, when the `BoxView` receives a swipe gesture, the `Swiped` event
 The equivalent C# code is:
 
 ```csharp
-public class SwipeContainerPageCode : ContentPage
+BoxView boxView = new BoxView { Color = Colors.Teal, ... };
+SwipeContainer swipeContainer = new SwipeContainer { Content = boxView, ... };
+swipeContainer.Swipe += (sender, e) =>
 {
-    public SwipeContainerPageCode()
-    {
-        BoxView boxView = new BoxView { Color = Colors.Teal, ... };
-        SwipeContainer swipeContainer = new SwipeContainer { Content = boxView, ... };
-        swipeContainer.Swipe += (sender, e) =>
-        {
-          // Handle the swipe
-        };
+  // Handle the swipe
+};
 
-        StackLayout stackLayout = new StackLayout();
-        stackLayout.Add(swipeContainer);
-        Content = stackLayout;
-    }
-}
+StackLayout stackLayout = new StackLayout();
+stackLayout.Add(swipeContainer);
 ```
