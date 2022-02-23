@@ -95,6 +95,8 @@
                 href: fundamentals/gestures/pinch.md
               - name: Swipe
                 href: fundamentals/gestures/swipe.md
+              - name: Tap
+                href: fundamentals/gestures/tap.md
         - name: Properties
           items:
               - name: Bindable properties

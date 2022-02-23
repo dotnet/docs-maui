@@ -19,7 +19,7 @@ In .NET MAUI, drag gesture recognition is provided by the `SwipeGestureRecognize
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
-The `SwipeGestureRecognizer` also defines a `Swiped` event that's raised when when a swipe is recognized. The `SwipedEventArgs` object that accompanies the `Swiped` event defines the following properties:
+The `SwipeGestureRecognizer` also defines a `Swiped` event that's raised when a swipe is recognized. The `SwipedEventArgs` object that accompanies the `Swiped` event defines the following properties:
 
 - `Direction`, of type `SwipeDirection`, indicates the direction of the swipe gesture.
 - `Parameter`, of type `object`, indicates the value passed by the `CommandParameter` property, if defined.

@@ -31,7 +31,7 @@ To make a `View` recognize a pan gesture, create a `PanGestureRecognizer` object
 </Image>
 ```
 
-The code for the `OnPanUpdated` event handler is then added to the code-behind file:
+The code for the `OnPanUpdated` event handler should be added to the code-behind file:
 
 ```csharp
 void OnPanUpdated(object sender, PanUpdatedEventArgs e)

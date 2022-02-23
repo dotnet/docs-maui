@@ -28,7 +28,7 @@ To make a `View` recognize a pinch gesture, create a `PinchGestureRecognizer` ob
 </Image>
 ```
 
-The code for the `OnPinchUpdated` event handler is then added to the code-behind file:
+The code for the `OnPinchUpdated` event handler should be added to the code-behind file:
 
 ```csharp
 void OnPinchUpdated(object sender, PinchGestureUpdatedEventArgs e)
