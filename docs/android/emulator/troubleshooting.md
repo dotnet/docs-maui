@@ -65,7 +65,7 @@ For example, this virtual device will include Google Play Services and Google Pl
 Performance issues are typically caused by one of the following problems:
 
 - The emulator is running without hardware acceleration.
-- The virtual device running in the emulator using an ARM-based image.
+- The virtual device running in the emulator using an Arm-based image.
 
 The following sections cover these scenarios in more detail.
 
