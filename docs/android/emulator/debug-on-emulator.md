@@ -1,7 +1,7 @@
 ---
 title: "Debugging on the Android Emulator"
 description: "This guide explains how to launch and debug .NET MAUI apps in Visual Studio using the Android Emulator."
-ms.date: 01/19/2022
+ms.date: 02/23/2022
 ---
 
 # Debug on the Android Emulator

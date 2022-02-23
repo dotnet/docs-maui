@@ -2,7 +2,7 @@
 title: "Android Emulator Troubleshooting"
 description: "This article explains how to diagnose and work around problems that may occur when using the Android Emulator to deploy and run your .NET MAUI app."
 zone_pivot_groups: platform
-ms.date: 12/03/2021
+ms.date: 02/23/2022
 ---
 
 # Android emulator troubleshooting
@@ -65,7 +65,7 @@ For example, this virtual device will include Google Play Services and Google Pl
 Performance issues are typically caused by one of the following problems:
 
 - The emulator is running without hardware acceleration.
-- The virtual device running in the emulator isn't using an x86-based system image.
+- The virtual device running in the emulator using an ARM-based image.
 
 The following sections cover these scenarios in more detail.
 

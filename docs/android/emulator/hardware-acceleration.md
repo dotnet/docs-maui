@@ -1,7 +1,7 @@
 ---
 title: "Enable hardware acceleration for the Android emulator (Hyper-V & HAXM)"
 description: "Learn how to enable hardware acceleration features to maximize Android emulator performance for a .NET MAUI app."
-ms.date: 01/19/2022
+ms.date: 02/23/2022
 ms.topic: how-to
 ---
 
@@ -11,7 +11,7 @@ This article explains how to use your computer's hardware acceleration features 
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
-With Visual Studio, you can easily test and debug your .NET MAUI app for Android in situations where an Android device isn't available. However, if hardware acceleration isn't available or enabled, the emulator will run too slow. You can drastically improve the performance of the emulator by enabling hardware acceleration and using special x86 virtual device images.
+With Visual Studio, you can easily test and debug your .NET MAUI app for Android in situations where an Android device isn't available. However, if hardware acceleration isn't available or enabled, the emulator will run too slow. You can drastically improve the performance of the emulator by enabling hardware acceleration and using **x86-64** or **x86** virtual device images.
 
 <!-- TODO: What are the virtualization extensions on the new M1 ARM processors for Mac?
 -->
@@ -44,7 +44,7 @@ For the best experience on Windows, it's recommended you use WHPX to accelerate 
 
 - Hardware acceleration is available and enabled on your development computer.
 
-- The emulator is running a system image created for an **x86**-based virtual device.
+- The emulator is running a system image created for an **x86-64** or **x86**-based virtual device.
 
 > [!IMPORTANT]
 > You can't run a VM-accelerated emulator inside another VM, such as a VM hosted by VirtualBox, VMware, or Docker (unless using WSL2). You must run the Android emulator [directly on your system hardware](https://developer.android.com/studio/run/emulator-acceleration.html#extensions).
@@ -97,7 +97,7 @@ If your computer meets the above criteria, use the following steps to accelerate
 > [!IMPORTANT]
 > On Windows 10 October 2018 Update (RS5) and higher, you only need to enable Hyper-V, as it will use Windows Hypervisor Platform (WHPX) automatically.
 
-01. Make sure that the virtual device you [created in the Android Device Manager](device-manager.md) is an **x86**-based system image. If you use an Arm-based system image, the virtual device won't be accelerated and will run slowly.
+01. Make sure that the virtual device you [created in the Android Device Manager](device-manager.md) is an **x86-64** or **x86**-based system image. If you use an Arm-based system image, the virtual device won't be accelerated and will run slowly.
 
 After Hyper-V is enabled, you'll be able to run your accelerated Android emulator.
 
@@ -134,7 +134,7 @@ HAXM install packages for Windows are available from the [Intel Hardware Acceler
 
 01. Run **intelhaxm-android.exe** to start the HAXM installer. Accept the default values in the installer dialogs.
 
-When you [create a virtual device](device-manager.md), be sure to select an **x86**-based system image. If you use an ARM-based system image, the virtual device will not be accelerated and will run slowly.
+When you [create a virtual device](device-manager.md), be sure to select an **x86_64** or **x86**-based system image. If you use an Arm-based system image, the virtual device will not be accelerated and will run slowly.
 
 ## Troubleshooting
 

@@ -1,7 +1,7 @@
 ---
 title: "Managing Virtual Devices with the Android Device Manager"
 description: "This article explains how to use the Android Device Manager to create and configure Android Virtual Devices (AVDs) that emulate physical Android devices, for .NET MAUI. You can use these virtual devices to run and test your app without having to rely on a physical device"
-ms.date: 11/18/2021
+ms.date: 02/23/2022
 no-loc: ["user.config"]
 ---
 
@@ -32,7 +32,7 @@ To use the Android Device Manager, you'll need the following items:
 
 - The **Android SDK API Level 30** or later. Be sure to install the Android SDK at its default location if it isn't already installed: _C:\\Program Files (x86)\\Android\\android-sdk_.
 
-- The following packages must be installed in the:
+- The following packages must be installed:
 
   - **Android SDK Tools 5.0** or later
   - **Android SDK Platform-Tools 31.0.3** or later
@@ -65,14 +65,14 @@ To create a new device, press the **New** button:
 
 The **New Device** window is displayed. To configure the device, follow these steps:
 
-01. Give the device a new name. In the following example, the new device is named _Pixel 2 - API 28_.
+01. Give the device a new name. In the following example, the new device is named _Pixel 3a - API 31_.
 
     :::image type="content" source="media/device-manager/win/09-device-props-sml.png" alt-text="New Device screen of the Device Manager." lightbox="media/device-manager/win/09-device-props.png":::
 
 01. Select a physical device to emulate by selecting a device in the **Base Device** box.
 01. Select a processor type for this virtual device with the **Processor** box.
 
-    Selecting **x86** will provide the best performance because it enables the emulator to take advantage of [hardware acceleration](hardware-acceleration.md). The **x86_64** option will also make use of hardware acceleration, but it runs slightly slower than **x86** (**x86_64** is normally used for testing 64-bit apps).
+    It's recommended that you choose **x86_64** and enable [hardware acceleration](hardware-acceleration.md).
 
 01. Select the Android version (API level) with the **OS** box.
 
@@ -81,7 +81,7 @@ The **New Device** window is displayed. To configure the device, follow these st
 01. If you want to include Google Play Services APIs in your virtual device, select the **Google APIs** option. To include the Google Play Store app on the virtual device, select the **Google Play Store** option
 
     > [!NOTE]
-    > Google Play Store images are available only for some base device types such as Pixel, Pixel 2, Nexus 5, and Nexus 5X. This is indicated by the text `(+ Store)` in the image name.
+    > Google Play Store images are available only for some base device types such as Pixel, Pixel 2, Pixel 3, and Nexus 5. This is indicated by the text `(+ Store)` in the image name.
 
 01. Use the property list to change some of the most commonly-modified properties. To make changes to properties, see [Editing Android Virtual Device Properties](device-properties.md).
 
@@ -127,7 +127,7 @@ Additional options for working with devices are available from the **Additional 
 
 The additional options menu contains the following items:
 
-- **Duplicate and Edit** &ndash; Duplicates the currently-selected device and opens it in the **New Device** screen with a new name that's similar to the existing device. For example, selecting **Pixel 2 - API 28** and pressing **Duplicate and Edit** appends a counter to the name: **Pixel 2 - API 28 (1)**.
+- **Duplicate and Edit** &ndash; Duplicates the currently-selected device and opens it in the **New Device** screen with a new name that's similar to the existing device. For example, selecting **Pixel 3a - API 31** and pressing **Duplicate and Edit** appends a counter to the name: **Pixel 3a - API 31 (1)**.
 
 - **Start with Factory Defaults** &ndash; Starts the device with a cold boot.
 

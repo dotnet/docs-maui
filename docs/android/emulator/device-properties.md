@@ -1,7 +1,7 @@
 ---
 title: "Editing Android Virtual Device Properties"
 description: "Learn how to use the Android Device Manager to edit the profile properties of an Android virtual device when you create a .NET MAUI app."
-ms.date: 01/19/2022
+ms.date: 02/23/2022
 ---
 
 # Editing Android virtual device properties
