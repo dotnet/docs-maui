@@ -36,7 +36,7 @@ To make a `View` recognize a tap gesture, create a `TapGestureRecognizer` object
 The code for the `OnTapGestureRecognizerTapped` event handler should be added to the code-behind file:
 
 ```csharp
-void OnTapGestureRecognizerTapped(object sender, TappedEventArgs args)
+void OnTapGestureRecognizerTapped(object sender, EventArgs args)
 {
     // Handle the tap
 }
