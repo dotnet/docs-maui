@@ -6,7 +6,7 @@ ms.date: 02/22/2022
 
 # Recognize a swipe gesture
 
-A .NET Multi-platform App UI (.NET MAUI) swipe gesture occurs when a finger is moved across the screen in a horizontal or vertical direction, and is often used to initiate navigation through content.
+A .NET Multi-platform App UI (.NET MAUI) swipe gesture recognizer detects when a finger is moved across the screen in a horizontal or vertical direction, and is often used to initiate navigation through content.
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 

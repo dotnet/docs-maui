@@ -6,7 +6,7 @@ ms.date: 02/21/2022
 
 # Recognize a pinch gesture
 
-A .NET Multi-platform App UI (.NET MAUI) pinch gesture is used for performing interactive zoom. A common scenario for the pinch gesture is to perform interactive zoom of an image at the pinch location. This is accomplished by scaling the content of the viewport.
+A .NET Multi-platform App UI (.NET MAUI) pinch gesture recognizer is used for performing interactive zoom. A common scenario for the pinch gesture is to perform interactive zoom of an image at the pinch location. This is accomplished by scaling the content of the viewport.
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
@@ -48,7 +48,7 @@ pinchGesture.PinchUpdated += (s, e) =>
 image.GestureRecognizers.Add(pinchGesture);
 ```
 
-## Creating a pinch container
+## Create a pinch container
 
 The `PinchToZoomContainer` class, which is shown in the following example, is a generalized helper class that can be used to interactively zoom a `View`:
 

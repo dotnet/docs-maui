@@ -6,7 +6,7 @@ ms.date: 02/22/2022
 
 # Recognize a drag and drop gesture
 
-A .NET Multi-platform App UI (.NET MAUI) drag and drop gesture enables items, and their associated data packages, to be dragged from one onscreen location to another location using a continuous gesture. Drag and drop can take place in a single application, or it can start in one application and end in another.
+A .NET Multi-platform App UI (.NET MAUI) drag and drop gesture recognizer enables items, and their associated data packages, to be dragged from one onscreen location to another location using a continuous gesture. Drag and drop can take place in a single application, or it can start in one application and end in another.
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
