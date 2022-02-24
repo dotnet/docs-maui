@@ -12,7 +12,7 @@ ms.date: 02/24/2022
 - It removes some of the load and instantiation time for XAML elements.
 - It helps to reduce the file size of the final assembly by no longer including .xaml files.
 
-XAML compilation is enabled by default in .NET MAUI apps. For apps built using debug configuration, XAML compilation provides compile time validation of XAML, but does not convert the XAML to IL in the assembly. Instead, XAML files are included as embedded resources in the app package, and evaluated at runtime. For apps built using release configuration, XAML compilation provides compile time validation of XAML, and converts the XAML to IL that's written to the assembly. However, XAML compilation behavior can be overridden in both configurations with the `XamlCompilationAttribute` class.
+XAML compilation is enabled by default in .NET MAUI apps. For apps built using debug configuration, XAML compilation provides compile-time validation of XAML, but does not convert the XAML to IL in the assembly. Instead, XAML files are included as embedded resources in the app package, and evaluated at runtime. For apps built using release configuration, XAML compilation provides compile-time validation of XAML, and converts the XAML to IL that's written to the assembly. However, XAML compilation behavior can be overridden in both configurations with the `XamlCompilationAttribute` class.
 
 ## Enable compilation
 
