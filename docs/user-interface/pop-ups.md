@@ -18,11 +18,9 @@ All .NET MAUI-supported platforms have a modal pop-up to alert the user or ask s
 await DisplayAlert("Alert", "You have been alerted", "OK");
 ```
 
-The alert is displayed modally:
+The alert is displayed modally, and once dismissed the user continues interacting with the app:
 
 :::image type="content" source="media/pop-ups/simple-alert.png" alt-text="Screenshot of an alert dialog with one button.":::
-
-This example does not collect information from the user. The alert displays modally and once dismissed the user continues interacting with the app.
 
 The `DisplayAlert` method can also be used to capture a user's response by presenting two buttons and returning a `bool`. To get a response from an alert, supply text for both buttons and `await` the method:
 
@@ -33,7 +31,7 @@ Debug.WriteLine("Answer: " + answer);
 
 :::image type="content" source="media/pop-ups/two-button-alert.png" alt-text="Screenshot of an alert dialog with two buttons.":::
 
-After the user selects one of the options the response will be returned to your code.
+After the user selects one of the options the response will be returned as a `bool`.
 
 The `DisplayAlert` method also has overloads that accept a `FlowDirection` argument that specifies the direction in which UI elements flow within the alert. <!--For more information about flow direction, see [Right-to-left localization](~/fundamentals/localization/right-to-left.md).-->
 
@@ -49,13 +47,13 @@ string action = await DisplayActionSheet("ActionSheet: Send to?", "Cancel", null
 Debug.WriteLine("Action: " + action);
 ```
 
-The `DisplayActionSheet` method returns the string label of the button that was clicked by the user.
-
 The action sheet will be displayed modally:
 
 :::image type="content" source="media/pop-ups/simple-actionsheet.png" alt-text="Screenshot of an action sheet dialog.":::
 
-Action sheets support a destroy button, which is a button that represents destructive behavior. The destroy button can be specified as the third string argument to the `DisplayActionSheet` method, or can be left `null`. The following example specifies a destroy button:
+After the user taps one of the buttons, the button label will be returned as a `string`.
+
+Action sheets also support a destroy button, which is a button that represents destructive behavior. The destroy button can be specified as the third string argument to the `DisplayActionSheet` method, or can be left `null`. The following example specifies a destroy button:
 
 ```csharp
 async void OnActionSheetCancelDeleteClicked(object sender, EventArgs e)
