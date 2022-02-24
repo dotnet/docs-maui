@@ -65,7 +65,7 @@ async void OnActionSheetCancelDeleteClicked(object sender, EventArgs e)
 }
 ```
 
-:::image type="content" source="media/pop-ups/actionsheet-destroy-buttone.png" alt-text="Screenshot of an action sheet with a destroy button.":::
+:::image type="content" source="media/pop-ups/actionsheet-destroy-button.png" alt-text="Screenshot of an action sheet with a destroy button.":::
 
 > [!NOTE]
 > On iOS, the destroy button is rendered differently to the other buttons in the action sheet.
