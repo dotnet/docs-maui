@@ -1,7 +1,7 @@
 ---
 title: "Build your first .NET MAUI app"
 description: "Learn how to create and run your first .NET MAUI app on Android."
-ms.date: 01/19/2021
+ms.date: 02/24/2021
 ---
 
 <!-- zone_pivot_groups: preview-platforms -->
@@ -19,6 +19,7 @@ Visual Studio for Mac support will arrive in a future release.
 ## Prerequisites
 
 - The latest preview of Visual Studio 2022 17.2 with the required workload. For more information, see [Installation](installation.md).
+- Hardware acceleration must be enabled to maximize Android emulator performance. For more information, see [How to enable hardware acceleration with Android emulators (Hyper-V & HAXM)](~/android/emulator/hardware-acceleration.md).
 
 ## Get started with Visual Studio 2022 17.2 (Preview)
 
@@ -77,6 +78,9 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
     :::image type="content" source="media/first-app/pixel5-api30.png" alt-text="Pixel 5 API 30 emulator button.":::
 
    Visual Studio will start the Android emulator, build the app, and deploy the app to the emulator.
+
+   > [!WARNING]
+   > Hardware acceleration must be enabled to maximize Android emulator performance. Failure to do this will result in the emulator running very slowly. For more information, see [How to enable hardware acceleration with Android emulators (Hyper-V & HAXM)](~/android/emulator/hardware-acceleration.md).
 
 1. In the running app in the Android emulator, press the **CLICK ME** button several times and observe that the count of the number of button clicks is incremented.
 
