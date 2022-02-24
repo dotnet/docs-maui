@@ -1,7 +1,7 @@
 ---
 title: "XAML compilation"
 description: ".NET MAUI XAML is compiled directly into intermediate language (IL) with the XAML compiler (XAMLC)."
-ms.date: 01/26/2022
+ms.date: 02/24/2022
 ---
 
 # XAML compilation
@@ -12,7 +12,7 @@ ms.date: 01/26/2022
 - It removes some of the load and instantiation time for XAML elements.
 - It helps to reduce the file size of the final assembly by no longer including .xaml files.
 
-XAML compilation is enabled by default in .NET MAUI apps that are built in release configuration, and disabled by default in apps that are built in debug configuration. However, these defaults can be overridden with the `XamlCompilationAttribute` class.
+XAML compilation is enabled by default in .NET MAUI apps. For apps built using debug configuration, XAML compilation provides compile time validation of XAML, but does not convert the XAML to IL in the assembly. Instead, XAML files are included as embedded resources in the app package, and evaluated at runtime. For apps built using release configuration, XAML compilation provides compile time validation of XAML, and converts the XAML to IL that's written to the assembly. However, XAML compilation behavior can be overridden in both configurations with the `XamlCompilationAttribute` class.
 
 ## Enable compilation
 
@@ -27,7 +27,7 @@ In this example, XAML compilation is enabled for all of the XAML contained withi
 > [!TIP]
 > While the `XamlCompilationAttribute` can be placed anywhere, a good place to put it is in **AssemblyInfo.cs**.
 
-XAML compilation can also be enabled at the class level:
+XAML compilation can also be enabled at the type level:
 
 ```csharp
 [XamlCompilation (XamlCompilationOptions.Compile)]
@@ -52,7 +52,7 @@ XAML compilation can be disabled by passing `XamlCompilationOptions.Skip` to the
 
 In this example, XAML compilation is disabled within the assembly, with XAML errors being reported at runtime rather than compile-time.
 
-XAML compilation can also be disabled at the class level:
+XAML compilation can also be disabled at the type level:
 
 ```csharp
 [XamlCompilation (XamlCompilationOptions.Skip)]
