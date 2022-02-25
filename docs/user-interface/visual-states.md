@@ -40,7 +40,7 @@ You can attach the Visual State Manager markup to an individual view, or you can
 
 ### Define visual states on a view
 
-The `VisualStateManager` class defines a `VisualStateGroups` attached property, that's used to attach visual states to a view. The `VisualStateGroups` property is of type `VisualStateGroupList`, which is a collection of `VisualStateGroup` objects. Therefore, the child of the `VisualStateManager.VisualStateGroup` attached property is a `VisualStateGroup` object. This object defines an `x:Name` attribute that indicates the name of the group. Alternatively, the `VisualStateGroup` class defines a `Name` property that you can use instead.
+The `VisualStateManager` class defines a `VisualStateGroups` attached property, that's used to attach visual states to a view. The `VisualStateGroups` property is of type `VisualStateGroupList`, which is a collection of `VisualStateGroup` objects. Therefore, the child of the `VisualStateManager.VisualStateGroup` attached property is a `VisualStateGroup` object. This object defines an `x:Name` attribute that indicates the name of the group. Alternatively, the `VisualStateGroup` class defines a `Name` property that you can use instead. For more information about attached properties, see [Attached properties](~/fundamentals/attached-properties.md).
 
 The `VisualStateGroup` class defines a property named `States`, which is a collection of `VisualState` objects. `States` is the content property of the `VisualStateGroups` class so you can include the `VisualState` objects as children of the `VisualStateGroup`. Each `VisualState` object should be identified using `x:Name` or `Name`.
 
@@ -93,8 +93,6 @@ If you want the `Entry` to have a lime background in the `Focused` state, add an
     </VisualState.Setters>
 </VisualState>
 ```
-
-For more information about attached properties, see [Attached properties](~/fundamentals/attached-properties.md).
 
 ### Define visual states in a style
 
