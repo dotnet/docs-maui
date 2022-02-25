@@ -193,6 +193,8 @@
               href: user-interface/images/splashscreen.md
         - name: Shadows
           href: user-interface/shadow.md
+        - name: Visual states
+          href: user-interface/visual-states.md
     - name: Platform integration
       items:
         - name: Configure multi-targeting
