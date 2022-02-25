@@ -79,7 +79,7 @@ The following example shows visual states defined on an `Entry`:
 
 The following screenshot shows the `Entry` in its three defined visual states:
 
-:::image type="content" source="media/visualstates/visualsmonviewdisabled.png" alt-text="Screenshot of the three defined visual states on the Entry.":::
+:::image type="content" source="media/visualstates/commonstates.png" alt-text="Screenshot of the three defined visual states on the Entry.":::
 
 When the `Entry` is in the `Normal` state, its background is lime. When the the `Entry` gains input focus its font size doubles. When the `Entry` becomes disabled, its background becomes pink. The `Entry` does not retain doesn't retain its lime background when it gains input focus. As the Visual State Manager switches between the visual states, the properties set by the previous state are unset. Therefore, the visual states are mutually exclusive.
 
@@ -145,7 +145,7 @@ The following table lists the visual states that are defined in .NET MAUI:
 | `ImageButton` | `Pressed` | [ImageButton visual states](~/user-interface/controls/imagebutton.md#imagebutton-visual-states) |
 | `RadioButton` | `Checked`, `Unchecked` | [RadioButton visual states](~/user-interface/controls/radiobutton.md#radiobutton-visual-states) |
 | `Switch` | `On`, `Off` | [Switch visual states](~/user-interface/controls/switch.md#switch-visual-states) |
-| `VisualElement` | `Normal`, `Disabled`, `Focused` | [Common states](#common-states) |
+| `VisualElement` | `Normal`, `Disabled`, `Focused` | [Common states](#common-visual-states) |
 
 ## Set state on multiple elements
 
