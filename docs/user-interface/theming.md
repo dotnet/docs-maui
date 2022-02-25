@@ -84,7 +84,7 @@ An app requires a default theme, so that controls have values for the resources 
 </Application>
 ```
 
-For more information about merging resource dictionaries, see [Merged resource dictionaries](~/fundamentals/resource-dictionaries.md#merged-resource-dictionaries).
+For more information about merging resource dictionaries, see [Merged resource dictionaries](~/fundamentals/resource-dictionaries.md#merge-resource-dictionaries).
 
 ## Consume theme resources
 
