@@ -71,7 +71,7 @@ In addition, resources defined in a `ResourceDictionary` can be consumed with th
 
 In this example, the background color of the `Grid` and the `Button` style changes based on whether the device is using its light theme or dark theme.
 
-For more information about the `AppThemeBinding` markup extension, see [AppThemeBinding markup extension](~/xaml/markup-extensions/consuming.md#appthemebinding-markup-extension).
+For more information about the `AppThemeBinding` markup extension, see [AppThemeBinding markup extension](~/xaml/markup-extensions/consume.md#appthemebinding-markup-extension).
 
 ### Extension methods
 
