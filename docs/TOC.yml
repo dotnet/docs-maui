@@ -197,6 +197,8 @@
           items:
             - name: Theme an app
               href: user-interface/theming.md
+            - name: Respond to system theme changes
+              href: user-interface/system-theme-changes.md
     - name: Platform integration
       items:
         - name: Configure multi-targeting
