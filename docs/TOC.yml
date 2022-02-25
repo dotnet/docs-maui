@@ -193,6 +193,10 @@
               href: user-interface/images/splashscreen.md
         - name: Shadows
           href: user-interface/shadow.md
+        - name: Theming
+          items:
+            - name: Theme an app
+              href: user-interface/theming.md
     - name: Platform integration
       items:
         - name: Configure multi-targeting

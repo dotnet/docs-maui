@@ -63,7 +63,7 @@ landingContent:
           - text: Data binding
             url: fundamentals/data-binding/index.md
           - text: Resource dictionaries
-            url: fundamentals/resource-dictionaries.md            
+            url: fundamentals/resource-dictionaries.md
           - text: Single project
             url: fundamentals/single-project.md
   - title: User interface
@@ -84,6 +84,8 @@ landingContent:
             url: user-interface/shadow.md
           - text: Splash screen
             url: user-interface/images/splashscreen.md
+          - text: Theming
+            url: user-interface/theming.md
   - title: Platform integration
     linkLists:
       - linkListType: concept
