@@ -14,9 +14,10 @@ The system theme may change for a variety of reasons, depending on the device co
 
 .NET Multi-platform App UI (.NET MAUI) apps can respond to system theme changes by consuming resources with the `AppThemeBinding` markup extension, and the `SetAppThemeColor` and `SetOnAppTheme<T>`  extension methods.
 
-.NET MAUI apps can respond to system theme changes on iOS 13 or greater, Android 10 (API 29) or greater, macOS 10.14 or greater, and Windows 10 or greater.
+> [!NOTE]
+> .NET MAUI apps can respond to system theme changes on iOS 13 or greater, Android 10 (API 29) or greater, macOS 10.14 or greater, and Windows 10 or greater.
 
-The following screenshot shows themed pages, with the iOS app using a light theme and the Android app using a dark theme:
+The following screenshot shows themed pages, for the light system theme on iOS and the dark system theme on Android:
 
 :::image type="content" source="media/system-theme-changes/main-page-both-themes.png" alt-text="Screenshot of the main page of a themed app.":::
 
