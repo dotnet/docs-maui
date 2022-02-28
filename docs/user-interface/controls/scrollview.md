@@ -229,7 +229,7 @@ The following XAML example shows a `ScrollView` that sets an event handler for t
 
 ```xaml
 <ScrollView Scrolled="OnScrollViewScrolled">
-		...
+    ...
 </ScrollView>
 ```
 
