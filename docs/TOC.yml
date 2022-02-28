@@ -115,6 +115,14 @@
           href: fundamentals/single-project.md
     - name: User interface
       items:
+        - name: Animation
+          items:
+            - name: Basic animation
+              href: user-interface/animation/basic.md
+            - name: Easing functions
+              href: user-interface/animation/easing.md
+            - name: Custom animation
+              href: user-interface/animation/custom.md
         - name: Brushes
           items:
             - name: Overview
