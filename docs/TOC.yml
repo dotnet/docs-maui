@@ -79,6 +79,8 @@
           href: fundamentals/app-lifecycle.md
         - name: App startup
           href: fundamentals/app-startup.md
+        - name: Behaviors
+          href: fundamentals/behaviors.md
         - name: Data binding
           items:
               - name: Overview
@@ -103,18 +105,48 @@
                 href: fundamentals/data-binding/commanding.md
               - name: Compiled bindings
                 href: fundamentals/data-binding/compiled-bindings.md
+        - name: Gestures
+          items:
+              - name: Drag and drop
+                href: fundamentals/gestures/drag-and-drop.md
+              - name: Pan
+                href: fundamentals/gestures/pan.md
+              - name: Pinch
+                href: fundamentals/gestures/pinch.md
+              - name: Swipe
+                href: fundamentals/gestures/swipe.md
+              - name: Tap
+                href: fundamentals/gestures/tap.md
         - name: Properties
           items:
               - name: Bindable properties
                 href: fundamentals/bindable-properties.md
               - name: Attached properties
                 href: fundamentals/attached-properties.md
+        - name: Publish and subscribe to messages
+          href: fundamentals/messagingcenter.md
         - name: Resource dictionaries
           href: fundamentals/resource-dictionaries.md
         - name: Single project
           href: fundamentals/single-project.md
+        - name: Templates
+          items:
+              - name: Control templates
+                href: fundamentals/controltemplate.md
+              - name: Data templates
+                href: fundamentals/datatemplate.md
+        - name: Triggers
+          href: fundamentals/triggers.md
     - name: User interface
       items:
+        - name: Animation
+          items:
+            - name: Basic animation
+              href: user-interface/animation/basic.md
+            - name: Easing functions
+              href: user-interface/animation/easing.md
+            - name: Custom animation
+              href: user-interface/animation/custom.md
         - name: Brushes
           items:
             - name: Overview
@@ -141,6 +173,8 @@
                   href: user-interface/layouts/index.md
                 - name: AbsoluteLayout
                   href: user-interface/layouts/absolutelayout.md
+                - name: BindableLayout
+                  href: user-interface/layouts/bindablelayout.md
                 - name: FlexLayout
                   href: user-interface/layouts/flexlayout.md
                 - name: Grid
@@ -167,6 +201,14 @@
                       href: user-interface/controls/frame.md
                     - name: GraphicsView
                       href: user-interface/controls/graphicsview.md
+                - name: Indicate activity
+                  items:
+                    - name: ActivityIndicator
+                      href: user-interface/controls/activityindicator.md
+                    - name: ProgressBar
+                      href: user-interface/controls/progressbar.md
+        - name: Display pop-ups
+          href: user-interface/pop-ups.md
         - name: Graphics
           items:
             - name: Overview
@@ -193,6 +235,12 @@
               href: user-interface/images/splashscreen.md
         - name: Shadows
           href: user-interface/shadow.md
+        - name: Theming
+          items:
+            - name: Theme an app
+              href: user-interface/theming.md
+            - name: Respond to system theme changes
+              href: user-interface/system-theme-changes.md
         - name: Visual states
           href: user-interface/visual-states.md
     - name: Platform integration
