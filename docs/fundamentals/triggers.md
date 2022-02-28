@@ -175,7 +175,7 @@ An alternative approach to implementing changes when a trigger occurs is by spec
 The `EnterActions` collection, of type `IList<TriggerAction>`, defines a collection that will be invoked when the trigger condition is met. The `ExitActions` collection, of type `IList<TriggerAction>`, defines a collection that will be invoked after the trigger condition is no longer met.
 
 > [!NOTE]
-> The `TriggerAction` objects defined in the `EnterActions` and `ExitActions` collections are ignored by the `EventTrigger` class.    
+> The `TriggerAction` objects defined in the `EnterActions` and `ExitActions` collections are ignored by the `EventTrigger` class.
 
 The following example shows a property trigger that specifies an `EnterAction` and an `ExitAction`:
 
