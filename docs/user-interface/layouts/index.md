@@ -1,7 +1,7 @@
 ---
 title: "Layouts"
 description: ".NET MAUI layout classes allow you to arrange and group UI controls in your app."
-ms.date: 01/04/2022
+ms.date: 01/28/2022
 ---
 
 # Layouts
@@ -98,9 +98,9 @@ In a `VerticalStackLayout`, if an element's size is not explicitly set, it expan
 
 For more information, see [VerticalStackLayout](verticalstacklayout.md).
 
-## GridLayout
+## Grid
 
-A `GridLayout`, or `Grid`, is used for displaying elements in rows and columns, which can have proportional or absolute sizes. A grid's rows and columns are specified with the `RowDefinitions` and `ColumnDefinitions` properties.
+A `Grid` is used for displaying elements in rows and columns, which can have proportional or absolute sizes. A grid's rows and columns are specified with the `RowDefinitions` and `ColumnDefinitions` properties.
 
 To position elements in specific `Grid` cells, use the `Grid.Column` and `Grid.Row` attached properties. To make elements span across multiple rows and columns, use the `Grid.RowSpan` and `Grid.ColumnSpan` attached properties.
 
@@ -141,7 +141,7 @@ Space can be distributed within a column or row by using auto sizing, which lets
 > [!CAUTION]
 > Try to ensure that as few rows and columns as possible are set to `Auto` size. Each auto-sized row or column will cause the layout engine to perform additional layout calculations. Instead, use fixed size rows and columns if possible. Alternatively, set rows and columns to occupy a proportional amount of space with the `GridUnitType.Star` enumeration value.
 
-For more information, see [Grid](gridlayout.md).
+For more information, see [Grid](grid.md).
 
 ## FlexLayout
 
@@ -167,7 +167,6 @@ In this example, layout works as follows:
 
 For more information, see [FlexLayout](flexlayout.md).
 
-<!--
 ## AbsoluteLayout
 
 An `AbsoluteLayout` is used to position and size elements using explicit values, or values relative to the size of the layout. The position is specified by the upper-left corner of the child relative to the upper-left corner of the `AbsoluteLayout`.
@@ -258,6 +257,32 @@ In this example, layout works as follows:
 For more information, see [RelativeLayout](relativelayout.md).
 
 ## BindableLayout
+
+A `BindableLayout` enables any layout class that derives from the `Layout` class to generate its content by binding to a collection of items, with the option to set the appearance of each item with a `DataTemplate`.
+
+A bindable layout is populated with data by setting its `ItemsSource` property to any collection that implements `IEnumerable`, and attaching it to a `Layout`-derived class. The appearance of each item in the bindable layout can be defined by setting the `BindableLayout.ItemTemplate` attached property to a `DataTemplate`.
+
+The following XAML shows how to bind a `StackLayout` to a collection of items, and define their appearance with a `DataTemplate`:
+
+```xaml
+<StackLayout BindableLayout.ItemsSource="{Binding User.TopFollowers}"
+             Orientation="Horizontal">
+    <BindableLayout.ItemTemplate>
+        <DataTemplate>
+            <Image Source="{Binding}"
+                   Aspect="AspectFill"
+                   WidthRequest="44"
+                   HeightRequest="44" />
+        </DataTemplate>
+    </BindableLayout.ItemTemplate>
+</StackLayout>
+```
+
+Bindable layouts should only be used when the collection of items to be displayed is small, and scrolling and selection isn't required.
+
+For more information, see [BindableLayout](bindablelayout.md).
+
+<!--
 
 ## Layout options
 

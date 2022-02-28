@@ -10,7 +10,8 @@
       "open_to_public_contributors": true,
       "xref_query_tags": [
         "/dotnet",
-        "/uwp/api"
+        "/uwp/api",
+        "/windows/winui/api"
       ],
       "type_mapping": {
         "Conceptual": "Content",

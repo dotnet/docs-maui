@@ -50,8 +50,8 @@ In .NET MAUI, the `GraphicsView` enables consumption of the `Microsoft.Maui.Grap
 - `BlendMode`, of type `BlendMode`, defines the blend mode, which determines what happens when an object is rendered on top of an existing object.
 - `DisplayScale`, of type `float`, represents the scaling factor to scale the UI by on a canvas.
 - `FillColor`, of type `Color`, indicates the color used to paint an object's interior.
+- `Font`, of type `IFont`, defines the font when drawing text.
 - `FontColor`, of type `Color`, specifies the font color when drawing text.
-- `FontName`, of type `string`, defines the font when drawing text.
 - `FontSize`, of type `float`, defines the size of the font when drawing text.
 - `MiterLimit`, of type `float`, specifies the limit of the miter length of line joins in an object.
 - `StrokeColor`, of type `Color`, indicates the color used to paint an object's outline.
