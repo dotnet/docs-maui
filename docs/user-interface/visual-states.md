@@ -138,12 +138,13 @@ The following table lists the visual states that are defined in .NET MAUI:
 | ----- | ------ | ---------------- |
 | `Button` | `Pressed` | [Button visual states](~/user-interface/controls/button.md#button-visual-states) |
 | `CheckBox` | `IsChecked` | [CheckBox visual states](~/user-interface/controls/checkbox.md#checkbox-visual-states) |
-<!-- | `CarouselView` | `DefaultItem`, `CurrentItem`, `PreviousItem`, `NextItem` | [CarouselView visual states](~/user-interface/controls/carouselview/interaction.md#define-visual-states) |
-| `CollectionView` | `Selected` | [CollecionView visual states](~/user-interface/controls/collectionview/selection.md#change-selected-item-color) | -->
 | `ImageButton` | `Pressed` | [ImageButton visual states](~/user-interface/controls/imagebutton.md#imagebutton-visual-states) |
 | `RadioButton` | `Checked`, `Unchecked` | [RadioButton visual states](~/user-interface/controls/radiobutton.md#radiobutton-visual-states) |
 | `Switch` | `On`, `Off` | [Switch visual states](~/user-interface/controls/switch.md#switch-visual-states) |
 | `VisualElement` | `Normal`, `Disabled`, `Focused` | [Common states](#common-visual-states) |
+
+<!-- | `CarouselView` | `DefaultItem`, `CurrentItem`, `PreviousItem`, `NextItem` | [CarouselView visual states](~/user-interface/controls/carouselview/interaction.md#define-visual-states) |
+| `CollectionView` | `Selected` | [CollecionView visual states](~/user-interface/controls/collectionview/selection.md#change-selected-item-color) | -->
 
 ## Set state on multiple elements
 
