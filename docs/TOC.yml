@@ -201,6 +201,8 @@
                       href: user-interface/controls/frame.md
                     - name: GraphicsView
                       href: user-interface/controls/graphicsview.md
+                    - name: ScrollView
+                      href: user-interface/controls/scrollview.md                      
                 - name: Initiate commands
                   items:
                     - name: Button
