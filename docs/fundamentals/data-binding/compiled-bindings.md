@@ -17,7 +17,7 @@ Compiled bindings improve data binding performance in .NET MAUI applications by 
 
 The process for using compiled bindings is to:
 
-1. Ensure that XAML compilation is enabled. <!--For more information about XAML compilation, see [XAML Compilation](~/xaml/xamlc.md).-->
+1. Ensure that XAML compilation is enabled. For more information about XAML compilation, see [XAML Compilation](~/xaml/xamlc.md).
 1. Set an `x:DataType` attribute on a `VisualElement` to the type of the object that the `VisualElement` and its children will bind to.
 
 > [!NOTE]
