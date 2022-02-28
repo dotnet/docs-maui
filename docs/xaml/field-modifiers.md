@@ -16,7 +16,7 @@ Valid values of the `x:FieldModifier` attribute are:
 - `Public`  – specifies that the generated field for the XAML element has no access restrictions.
 - `Protected` – specifies that the generated field for the XAML element is accessible within its class and by derived class instances.
 - `Internal` – specifies that the generated field for the XAML element is accessible only within types in the same assembly.
-- `NotPublic` – specifies that the generated field for the XAML element is accessible only within types in the same assembly.
+- `NotPublic` – identical to `Internal`.
 
 By default, if the value of the attribute isn't set, the generated field for the element will be `private`.
 
