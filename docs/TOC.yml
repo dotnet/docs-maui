@@ -13,6 +13,24 @@
           href: get-started/first-app.md
         - name: Migrate from Xamarin.Forms
           href: get-started/migrate.md
+        - name: Android
+          items:
+            - name: Emulator
+              items:
+                - name: How to enable hardware acceleration
+                  href: android/emulator/hardware-acceleration.md
+                - name: Manage and create virtual devices
+                  href: android/emulator/device-manager.md
+                - name: Edit virtual devices
+                  href: android/emulator/device-properties.md
+                - name: Debug on a virtual device
+                  href: android/emulator/debug-on-emulator.md
+                - name: Troubleshoot common problems
+                  href: android/emulator/troubleshooting.md
+            - name: Devices
+              items:
+                - name: How to setup a physical device
+                  href: android/device/setup.md
     - name: XAML
       items:
         - name: Overview
@@ -85,6 +103,18 @@
                 href: fundamentals/data-binding/commanding.md
               - name: Compiled bindings
                 href: fundamentals/data-binding/compiled-bindings.md
+        - name: Gestures
+          items:
+              - name: Drag and drop
+                href: fundamentals/gestures/drag-and-drop.md
+              - name: Pan
+                href: fundamentals/gestures/pan.md
+              - name: Pinch
+                href: fundamentals/gestures/pinch.md
+              - name: Swipe
+                href: fundamentals/gestures/swipe.md
+              - name: Tap
+                href: fundamentals/gestures/tap.md
         - name: Properties
           items:
               - name: Bindable properties
@@ -97,6 +127,14 @@
           href: fundamentals/single-project.md
     - name: User interface
       items:
+        - name: Animation
+          items:
+            - name: Basic animation
+              href: user-interface/animation/basic.md
+            - name: Easing functions
+              href: user-interface/animation/easing.md
+            - name: Custom animation
+              href: user-interface/animation/custom.md
         - name: Brushes
           items:
             - name: Overview
@@ -123,10 +161,12 @@
                   href: user-interface/layouts/index.md
                 - name: AbsoluteLayout
                   href: user-interface/layouts/absolutelayout.md
+                - name: BindableLayout
+                  href: user-interface/layouts/bindablelayout.md
                 - name: FlexLayout
                   href: user-interface/layouts/flexlayout.md
-                - name: GridLayout
-                  href: user-interface/layouts/gridlayout.md
+                - name: Grid
+                  href: user-interface/layouts/grid.md
                 - name: HorizontalStackLayout
                   href: user-interface/layouts/horizontalstacklayout.md
                 - name: RelativeLayout
@@ -155,6 +195,8 @@
                       href: user-interface/controls/activityindicator.md
                     - name: ProgressBar
                       href: user-interface/controls/progressbar.md
+        - name: Display pop-ups
+          href: user-interface/pop-ups.md
         - name: Graphics
           items:
             - name: Overview
@@ -181,6 +223,12 @@
               href: user-interface/images/splashscreen.md
         - name: Shadows
           href: user-interface/shadow.md
+        - name: Theming
+          items:
+            - name: Theme an app
+              href: user-interface/theming.md
+            - name: Respond to system theme changes
+              href: user-interface/system-theme-changes.md
     - name: Platform integration
       items:
         - name: Configure multi-targeting
