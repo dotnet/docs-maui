@@ -26,11 +26,14 @@ Image loading functionality is provided by the `GraphicsService` class. Images c
 The following example shows how to load an image:
 
 ```csharp
+using Microsoft.Maui.Graphics.Platform;
+...
+
 IImage image;
 Assembly assembly = GetType().GetTypeInfo().Assembly;
 using (Stream stream = assembly.GetManifestResourceStream("GraphicsViewDemos.Resources.Images.dotnet_bot.png"))
 {
-    image = GraphicsPlatform.CurrentService.LoadImageFromStream(stream);
+    image = PlatformImage.FromStream(stream);
 }
 
 if (image != null)
@@ -60,11 +63,14 @@ The `ResizeMode` enumeration defines the following members, which specify how to
 The following example shows how to resize an image:
 
 ```csharp
+using Microsoft.Maui.Graphics.Platform;
+...
+
 IImage image;
 Assembly assembly = GetType().GetTypeInfo().Assembly;
 using (Stream stream = assembly.GetManifestResourceStream("GraphicsViewDemos.Resources.Images.dotnet_bot.png"))
 {
-    image = GraphicsPlatform.CurrentService.LoadImageFromStream(stream);
+    image = PlatformImage.FromStream(stream);
 }
 
 if (image != null)
@@ -85,11 +91,14 @@ The `Downsize` overloads also accept an optional `bool` argument that controls w
 The following example shows how to downsize an image:
 
 ```csharp
+using Microsoft.Maui.Graphics.Platform;
+...
+
 IImage image;
 Assembly assembly = GetType().GetTypeInfo().Assembly;
 using (Stream stream = assembly.GetManifestResourceStream("GraphicsViewDemos.Resources.Images.dotnet_bot.png"))
 {
-    image = GraphicsPlatform.CurrentService.LoadImageFromStream(stream);
+    image = PlatformImage.FromStream(stream);
 }
 
 if (image != null)
@@ -108,11 +117,14 @@ Images can be saved by the `IImage.Save` and `IImage.SaveAsync` methods. Each me
 The following example shows how to save an image:
 
 ```csharp
+using Microsoft.Maui.Graphics.Platform;
+...
+
 IImage image;
 Assembly assembly = GetType().GetTypeInfo().Assembly;
 using (Stream stream = assembly.GetManifestResourceStream("GraphicsViewDemos.Resources.Images.dotnet_bot.png"))
 {
-    image = GraphicsPlatform.CurrentService.LoadImageFromStream(stream);
+    image = PlatformImage.FromStream(stream);
 }
 
 // Save image to a memory stream
