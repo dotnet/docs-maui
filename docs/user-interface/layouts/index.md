@@ -256,8 +256,33 @@ In this example, layout works as follows:
 
 For more information, see [RelativeLayout](relativelayout.md).
 
-<!--
 ## BindableLayout
+
+A `BindableLayout` enables any layout class that derives from the `Layout` class to generate its content by binding to a collection of items, with the option to set the appearance of each item with a `DataTemplate`.
+
+A bindable layout is populated with data by setting its `ItemsSource` property to any collection that implements `IEnumerable`, and attaching it to a `Layout`-derived class. The appearance of each item in the bindable layout can be defined by setting the `BindableLayout.ItemTemplate` attached property to a `DataTemplate`.
+
+The following XAML shows how to bind a `StackLayout` to a collection of items, and define their appearance with a `DataTemplate`:
+
+```xaml
+<StackLayout BindableLayout.ItemsSource="{Binding User.TopFollowers}"
+             Orientation="Horizontal">
+    <BindableLayout.ItemTemplate>
+        <DataTemplate>
+            <Image Source="{Binding}"
+                   Aspect="AspectFill"
+                   WidthRequest="44"
+                   HeightRequest="44" />
+        </DataTemplate>
+    </BindableLayout.ItemTemplate>
+</StackLayout>
+```
+
+Bindable layouts should only be used when the collection of items to be displayed is small, and scrolling and selection isn't required.
+
+For more information, see [BindableLayout](bindablelayout.md).
+
+<!--
 
 ## Layout options
 
