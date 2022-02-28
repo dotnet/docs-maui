@@ -207,6 +207,8 @@
                       href: user-interface/controls/button.md
                     - name: ImageButton
                       href: user-interface/controls/imagebutton.md
+                    - name: SearchBar
+                      href: user-interface/controls/searchbar.md
                 - name: Set values
                   items:
                     - name: CheckBox
