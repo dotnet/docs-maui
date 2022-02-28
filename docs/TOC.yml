@@ -175,6 +175,8 @@
                       href: user-interface/controls/frame.md
                     - name: GraphicsView
                       href: user-interface/controls/graphicsview.md
+        - name: Display pop-ups
+          href: user-interface/pop-ups.md
         - name: Graphics
           items:
             - name: Overview
