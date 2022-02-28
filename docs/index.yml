@@ -63,13 +63,15 @@ landingContent:
           - text: Data binding
             url: fundamentals/data-binding/index.md
           - text: Resource dictionaries
-            url: fundamentals/resource-dictionaries.md            
+            url: fundamentals/resource-dictionaries.md
           - text: Single project
             url: fundamentals/single-project.md
   - title: User interface
     linkLists:
       - linkListType: concept
         links:
+          - text: Animation
+            url: user-interface/animation/basic.md
           - text: Brushes
             url: user-interface/brushes/index.md
           - text: Controls
