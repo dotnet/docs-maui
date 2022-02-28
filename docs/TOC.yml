@@ -195,18 +195,56 @@
                       href: user-interface/controls/blazorwebview.md
                     - name: Border
                       href: user-interface/controls/border.md
-                    - name: ContentView
-                      href: user-interface/controls/contentview.md
+                    - name: BoxView
+                      href: user-interface/controls/boxview.md
                     - name: Frame
                       href: user-interface/controls/frame.md
                     - name: GraphicsView
                       href: user-interface/controls/graphicsview.md
+                    - name: ScrollView
+                      href: user-interface/controls/scrollview.md                      
+                - name: Initiate commands
+                  items:
+                    - name: Button
+                      href: user-interface/controls/button.md
+                    - name: ImageButton
+                      href: user-interface/controls/imagebutton.md
+                    - name: RadioButton
+                      href: user-interface/controls/radiobutton.md
+                    - name: RefreshView
+                      href: user-interface/controls/refreshview.md
+                    - name: SearchBar
+                      href: user-interface/controls/searchbar.md
+                    - name: SwipeView
+                      href: user-interface/controls/swipeview.md                      
+                - name: Set values
+                  items:
+                    - name: CheckBox
+                      href: user-interface/controls/checkbox.md
+                    - name: DatePicker
+                      href: user-interface/controls/datepicker.md
+                    - name: Slider
+                      href: user-interface/controls/slider.md
+                    - name: Stepper
+                      href: user-interface/controls/stepper.md
+                    - name: Switch
+                      href: user-interface/controls/switch.md
+                    - name: TimePicker
+                      href: user-interface/controls/timepicker.md
                 - name: Indicate activity
                   items:
                     - name: ActivityIndicator
                       href: user-interface/controls/activityindicator.md
                     - name: ProgressBar
                       href: user-interface/controls/progressbar.md
+                - name: Display collections
+                  items:
+                    - name: IndicatorView
+                      href: user-interface/controls/indicatorview.md
+                    - name: Picker
+                      href: user-interface/controls/picker.md
+                - name: ContentView
+                  href: user-interface/controls/contentview.md
         - name: Display pop-ups
           href: user-interface/pop-ups.md
         - name: Graphics
