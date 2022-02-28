@@ -279,6 +279,8 @@
               href: user-interface/theming.md
             - name: Respond to system theme changes
               href: user-interface/system-theme-changes.md
+        - name: Visual states
+          href: user-interface/visual-states.md
     - name: Platform integration
       items:
         - name: Configure multi-targeting
