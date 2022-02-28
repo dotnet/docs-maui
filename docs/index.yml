@@ -60,16 +60,24 @@ landingContent:
             url: fundamentals/app-lifecycle.md
           - text: App startup
             url: fundamentals/app-startup.md
+          - text: Behaviors
+            url: fundamentals/behaviors.md
           - text: Data binding
             url: fundamentals/data-binding/index.md
+          - text: Publish and subscribe to messages
+            url: fundamentals/messagingcenter.md
           - text: Resource dictionaries
-            url: fundamentals/resource-dictionaries.md            
+            url: fundamentals/resource-dictionaries.md
           - text: Single project
             url: fundamentals/single-project.md
+          - text: Triggers
+            url: fundamentals/triggers.md
   - title: User interface
     linkLists:
       - linkListType: concept
         links:
+          - text: Animation
+            url: user-interface/animation/basic.md
           - text: Brushes
             url: user-interface/brushes/index.md
           - text: Controls
@@ -84,6 +92,8 @@ landingContent:
             url: user-interface/shadow.md
           - text: Splash screen
             url: user-interface/images/splashscreen.md
+          - text: Theming
+            url: user-interface/theming.md
   - title: Platform integration
     linkLists:
       - linkListType: concept
