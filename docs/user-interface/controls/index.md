@@ -57,4 +57,3 @@ The main control groups used to create the user interface of a .NET MAUI app are
 | `Stepper` | `Stepper` enables you to select a `double` value from a range of incremental values. For more information, see [Stepper](~/user-interface/controls/stepper.md). |
 | `Switch` | `Switch` enables you to select a boolean value using a type of button that can either be on or off. For more information, see [Switch](~/user-interface/controls/switch.md). |
 | `TimePicker` | `TimePicker` enables you to select a time with the platform time picker. For more information, see [TimePicker](~/user-interface/controls/timepicker.md). |
-

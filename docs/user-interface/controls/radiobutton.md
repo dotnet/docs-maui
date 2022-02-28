@@ -39,7 +39,7 @@ These properties are backed by `BindableProperty` objects, which means that they
 
 `RadioButton` grouping can be managed by the `RadioButtonGroup` class, which defines the following attached properties:
 
--	`GroupName`, of type `string`, which defines the group name for `RadioButton` objects in an `ILayout`.
+- `GroupName`, of type `string`, which defines the group name for `RadioButton` objects in an `ILayout`.
 - `SelectedValue`, of type `object`, which represents the value of the checked `RadioButton` object within an `ILayout` group. This attached property uses a `TwoWay` binding by default.
 
 For more information about the `GroupName` attached property, see [Group RadioButtons](#group-radiobuttons). For more information about the `SelectedValue` attached property, see [Respond to RadioButton state changes](#respond-to-radiobutton-state-changes).
