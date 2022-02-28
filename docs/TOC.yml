@@ -235,6 +235,8 @@
                       href: user-interface/controls/progressbar.md
                 - name: Display collections
                   items:
+                    - name: IndicatorView
+                      href: user-interface/controls/indicatorview.md
                     - name: Picker
                       href: user-interface/controls/picker.md
                 - name: ContentView
