@@ -211,6 +211,8 @@
                       href: user-interface/controls/radiobutton.md
                     - name: SearchBar
                       href: user-interface/controls/searchbar.md
+                    - name: SwipeView
+                      href: user-interface/controls/swipeview.md                      
                 - name: Set values
                   items:
                     - name: CheckBox
