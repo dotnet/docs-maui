@@ -79,7 +79,7 @@ On iOS, the splash screen is added to the app package as a storyboard named `Mau
 </plist>
 ```
 
-Therefore, you shouldn't set the `UILaunchStoryboardName` key in your **Info.plist** file and you shouldn't add a `LaunchScreen.storyboard` to your app.
+Therefore, you shouldn't set the `UILaunchStoryboardName` key in your *Info.plist* file and you shouldn't add a `LaunchScreen.storyboard` to your app.
 
 ---
 
