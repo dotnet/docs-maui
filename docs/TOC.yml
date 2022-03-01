@@ -202,7 +202,7 @@
                     - name: GraphicsView
                       href: user-interface/controls/graphicsview.md
                     - name: ScrollView
-                      href: user-interface/controls/scrollview.md                      
+                      href: user-interface/controls/scrollview.md
                 - name: Initiate commands
                   items:
                     - name: Button
@@ -216,7 +216,7 @@
                     - name: SearchBar
                       href: user-interface/controls/searchbar.md
                     - name: SwipeView
-                      href: user-interface/controls/swipeview.md                      
+                      href: user-interface/controls/swipeview.md
                 - name: Set values
                   items:
                     - name: CheckBox
@@ -273,6 +273,12 @@
               href: user-interface/images/splashscreen.md
         - name: Shadows
           href: user-interface/shadow.md
+        - name: Styles
+          items:
+            - name: Style apps using XAML
+              href: user-interface/styles/xaml.md
+            - name: Style apps using CSS
+              href: user-interface/styles/css.md
         - name: Theming
           items:
             - name: Theme an app
