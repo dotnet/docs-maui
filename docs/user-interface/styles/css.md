@@ -72,9 +72,9 @@ In .NET MAUI, CSS style sheets are parsed and evaluated at runtime, rather than 
 
 ## Consume a style sheet
 
-The process for adding a style sheet to a solution is as follows:
+The process for adding a style sheet to a .NET MAUI app is as follows:
 
-1. Add an empty CSS file to your .NET MAUI app project.
+1. Add an empty CSS file to your .NET MAUI app project. The CSS file can be placed in any folder, with the *Resources* folder being the recommended location.
 1. Set the build action of the CSS file to **MauiCss**.
 
 ### Loading a style sheet
