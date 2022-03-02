@@ -195,7 +195,7 @@ Label bothLabel = new Label { Text = "This is underlined text with strikethrough
 
 The following screenshot shows the `TextDecorations` enumeration members applied to `Label` instances:
 
-:::image type="content" source="media/label/text-decorations.png" alt-text="Screenshot of Labels with text decorations.":::
+:::image type="content" source="media/label/textdecorations.png" alt-text="Screenshot of Labels with text decorations.":::
 
 > [!NOTE]
 > Text decorations can also be applied to `Span` instances. For more information about the `Span` class, see [Use formatted text](#use-formatted-text).
