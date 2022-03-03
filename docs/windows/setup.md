@@ -42,4 +42,23 @@ In Visual Studio, set the **Debug Target** to **Framework (...)** > **net6.0-win
 
 The desktop framework used for a MAUI .NET Windows app is [WinUI 3](/windows/apps/winui/winui3/). When you run and debug in Visual Studio, the app is installed and registered with Windows. You'll see an entry in the start menu for the app. This is different from other Windows UI frameworks, which typically don't install the app.
 
-The Windows app deployment settings are configured in the _Platforms\\Windows\\Package.appxmanifest_ file, such as the entry name and description. Some settings, such as the app icon, are set in the project file.
+The Windows app deployment settings are configured in the project file and the _Platforms\\Windows\\Package.appxmanifest_ file:
+
+- Project file
+
+  In the project file, you can set which icon is displayed in the Start Menu entry by changing the `<MauiIcon>` element:
+
+  ```xml
+  <MauiIcon Include="Resources\appicon.svg" ForegroundFile="Resources\appiconfg.svg" Color="#512BD4" />
+  ```
+
+- App manifest
+
+  In the _Package.appxmanifest_ file, you can set the display name and description used for the Start Menu entry by changing the `<uap:VisualElements>` element:
+
+  ```xml
+        <uap:VisualElements
+          DisplayName="My MAUI App"
+          Description="MauiApp3"
+          ... >
+  ```
