@@ -128,6 +128,29 @@ The following XAML example demonstrates setting the `MaxLines` property on a `La
        MaxLines="2" />
 ```
 
+## Set line height
+
+The vertical height of a `Label` can be customized by setting the `Label.LineHeight` property to a `double` value.
+
+> [!NOTE]
+>
+> - On iOS, the `Label.LineHeight` property changes the line height of text that fits on a single line, and text that wraps onto multiple lines.
+> - On Android, the `Label.LineHeight` property only changes the line height of text that wraps onto multiple lines.
+> - On Windows, the `Label.LineHeight` property changes the line height of text that wraps onto multiple lines.
+
+The following example demonstrates setting the `LineHeight` property on a `Label`:
+
+```xaml
+<Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis nulla eu felis fringilla vulputate. Nullam porta eleifend lacinia. Donec at iaculis tellus."
+       LineBreakMode="WordWrap"
+       LineHeight="1.8" />
+```
+
+
+The following screenshot shows the result of setting the `Label.LineHeight` property to 1.8:
+
+:::image type="content" source="media/label/lineheight.png" alt-text="Screenshot of Labels line height example.":::
+
 ## Display HTML
 
 The `Label` class has a `TextType` property, which determines whether the `Label` object should display plain text, or HTML text. This property should be set to one of the members of the `TextType` enumeration:
@@ -220,6 +243,9 @@ The following example shows transforming text to uppercase:
 
 `Label` exposes a `FormattedText` property that allows the presentation of text with multiple fonts and colors in the same view. The `FormattedText` property is of type `FormattedString`, which comprises one or more `Span` instances, set via the `Spans` property.
 
+> [!NOTE]
+> It's not possible to display HTML in a `Span`.
+
 `Span` defines the following properties:
 
 - `BackgroundColor`, of type `Color`, which represents the color of the span background.
@@ -237,10 +263,10 @@ The following example shows transforming text to uppercase:
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
-In addition, the `GestureRecognizers` property can be used to define a collection of gesture recognizers that will respond to gestures on the `Span`.
-
 > [!NOTE]
-> It's not possible to display HTML in a `Span`.
+> The `Span.LineHeight` property has no effect on Windows.
+
+In addition, the `GestureRecognizers` property can be used to define a collection of gesture recognizers that will respond to gestures on the `Span`.
 
 The following XAML example demonstrates a `FormattedText` property that consists of three `Span` instances:
 
@@ -279,29 +305,6 @@ The following screenshot shows the resulting `Label` that contains three `Span` 
 :::image type="content" source="media/label/formattedtext.png" alt-text="Screenshot of Label consisting of three spans.":::
 
 A `Span` can also respond to any gestures that are added to the span's `GestureRecognizers` collection. For example, a `TapGestureRecognizer` has been added to the second `Span` in the above examples. Therefore, when this `Span` is tapped the `TapGestureRecognizer` will respond by executing the `ICommand` defined by the `Command` property. For more information about tap gesture recognition, see [Recognize a tap gesture](~/fundamentals/gestures/tap.md).
-
-## Set line height
-
-The vertical height of a `Label` and a `Span` can be customized by setting the `Label.LineHeight` property or `Span.LineHeight` to a `double` value.
-
-> [!NOTE]
->
-> - On iOS, the `Label.LineHeight` and `Span.LineHeight` properties change the line height of text that fits on a single line, and text that wraps onto multiple lines.
-> - On Android, the `Label.LineHeight` and `Span.LineHeight` properties only change the line height of text that wraps onto multiple lines.
-> - On Windows, the `Label.LineHeight` property changes the line height of text that wraps onto multiple lines, and the `Span.LineHeight` property has no effect.
-
-The following example demonstrates setting the `LineHeight` property on a `Label`:
-
-```xaml
-<Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis nulla eu felis fringilla vulputate. Nullam porta eleifend lacinia. Donec at iaculis tellus."
-       LineBreakMode="WordWrap"
-       LineHeight="1.8" />
-```
-
-
-The following screenshot shows the result of setting the `Label.LineHeight` property to 1.8:
-
-:::image type="content" source="media/label/lineheight.png" alt-text="Screenshot of Labels line height example.":::
 
 ## Create a hyperlink
 
@@ -346,7 +349,7 @@ using System.Windows.Input;
 
 public partial class MainPage : ContentPage
 {
-    // Launcher.OpenAsync is provided by Xamarin.Essentials.
+    // Launcher.OpenAsync is provided by Essentials.
     public ICommand TapCommand => new Command<string>(async (url) => await Launcher.OpenAsync(url));
 
     public MainPage()
@@ -383,7 +386,7 @@ public class HyperlinkSpan : Span
         TextColor = Color.Blue;
         GestureRecognizers.Add(new TapGestureRecognizer
         {
-            // Launcher.OpenAsync is provided by Xamarin.Essentials.
+            // Launcher.OpenAsync is provided by Essentials.
             Command = new Command(async () => await Launcher.OpenAsync(Url))
         });
     }
