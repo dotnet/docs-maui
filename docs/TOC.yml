@@ -233,6 +233,10 @@
                       href: user-interface/controls/switch.md
                     - name: TimePicker
                       href: user-interface/controls/timepicker.md
+                - name: Edit text
+                  items:
+                    - name: Entry
+                      href: user-interface/controls/entry.md
                 - name: Indicate activity
                   items:
                     - name: ActivityIndicator
