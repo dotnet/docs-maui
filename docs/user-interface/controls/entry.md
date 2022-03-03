@@ -1,12 +1,12 @@
 ---
 title: "Entry"
-description: "This article explains how to use the .NET MAUI Entry class to accept single-line text or password input in an application."
+description: "The .NET MAUI Entry is a view that allows the user to enter and edit a single line of text."
 ms.date: 03/03/2022
 ---
 
 # Entry
 
-The .NET Multi-platform App UI (.NET MAUI) `Entry` is used for single-line text input. The `Entry`, like the `Editor` view, supports multiple keyboard types. Additionally, the `Entry` can be used as a password field.
+The .NET Multi-platform App UI (.NET MAUI) `Entry` is a view that allows the user to enter and edit a single line of text. In addition, the `Entry` can be used as a password field.
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
@@ -47,7 +47,6 @@ In addition, `Entry` defines a `Completed` event, which is raised when the user 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
 In addition, `InputView` defines a `TextChanged` event, which is raised when the text in the `Entry` changes. The `TextChangedEventArgs` object that accompanies the `TextChanged` event has `NewTextValue` and `OldTextValue` properties, which specify the new and old text, respectively.
-`TextChanged` event, `TextChangedEventArgs`
 
 <!-- For information about specifying fonts on an `Entry`, see [Fonts](~/user-interface/fonts.md). -->
 
@@ -74,7 +73,7 @@ The following screenshot shows the resulting `Entry` on Android:
 
 :::image type="content" source="media/entry/entry.png" alt-text="Screenshot of a basic Entry on Android.":::
 
-Entered text can then be accessed by reading the `Text` property. Event handlers for the `TextChanged` and `Completed` events are the ideal location to read entered text.
+Entered text can then be accessed by reading the `Text` property, and the `TextChanged` and `Completed` events signal that user input has changed or been completed.
 
 The `TextChanged` event is raised when the text in the `Entry` changes, and the `TextChangedEventArgs` provide the text before and after the change via the `OldTextValue` and `NewTextValue` properties:
 
@@ -120,7 +119,8 @@ The result is that characters in the text displayed by the `Entry` are spaced `C
 The `MaxLength` property can be used to limit the input length that's permitted for the `Entry`. This property should be set to a positive integer:
 
 ```xaml
-<Entry ... MaxLength="10" />
+<Entry ...
+       MaxLength="10" />
 ```
 
 A `MaxLength` property value of 0 indicates that no input will be allowed, and a value of `int.MaxValue`, which is the default value for an `Entry`, indicates that there is no effective limit on the number of characters that may be entered.

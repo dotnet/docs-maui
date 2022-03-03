@@ -235,6 +235,8 @@
                       href: user-interface/controls/timepicker.md
                 - name: Edit text
                   items:
+                    - name: Editor
+                      href: user-interface/controls/editor.md
                     - name: Entry
                       href: user-interface/controls/entry.md
                 - name: Indicate activity
