@@ -61,7 +61,7 @@ The following example shows how to create an `Editor`:
 The equivalent C# code is:
 
 ```csharp
-Editor editor = new Editor { Placeholder = "Enter text" };
+Editor editor = new Editor { Placeholder = "Enter text", HeightRequest = 250 };
 editor.TextChanged += OnTextChanged;
 editor.Completed += OnTextCompleted;
 ```
@@ -70,7 +70,7 @@ The following screenshot shows the resulting `Editor` on Android:
 
 :::image type="content" source="media/editor/editor.png" alt-text="Screenshot of a basic Editor on Android.":::
 
-Entered text can then be accessed by reading the `Text` property, and the `TextChanged` and `Completed` events signal that user input has changed or been completed.
+Entered text can be accessed by reading the `Text` property, and the `TextChanged` and `Completed` events signal that the text has changed or been completed.
 
 The `TextChanged` event is raised when the text in the `Editor` changes, and the `TextChangedEventArgs` provide the text before and after the change via the `OldTextValue` and `NewTextValue` properties:
 
@@ -79,7 +79,7 @@ void OnEditorTextChanged(object sender, TextChangedEventArgs e)
 {
     string oldText = e.OldTextValue;
     string newText = e.NewTextValue;
-    string myText = entry.Text;
+    string myText = editor.Text;
 }
 ```
 

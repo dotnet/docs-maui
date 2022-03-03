@@ -73,7 +73,7 @@ The following screenshot shows the resulting `Entry` on Android:
 
 :::image type="content" source="media/entry/entry.png" alt-text="Screenshot of a basic Entry on Android.":::
 
-Entered text can then be accessed by reading the `Text` property, and the `TextChanged` and `Completed` events signal that user input has changed or been completed.
+Entered text can be accessed by reading the `Text` property, and the `TextChanged` and `Completed` events signal that the text has changed or been completed.
 
 The `TextChanged` event is raised when the text in the `Entry` changes, and the `TextChangedEventArgs` provide the text before and after the change via the `OldTextValue` and `NewTextValue` properties:
 
