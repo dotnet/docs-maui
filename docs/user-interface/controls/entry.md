@@ -1,12 +1,12 @@
 ---
 title: "Entry"
-description: "The .NET MAUI Entry is a view that allows the user to enter and edit a single line of text."
+description: "The .NET MAUI Entry allows you to enter and edit a single line of text."
 ms.date: 03/03/2022
 ---
 
 # Entry
 
-The .NET Multi-platform App UI (.NET MAUI) `Entry` is a view that allows the user to enter and edit a single line of text. In addition, the `Entry` can be used as a password field.
+The .NET Multi-platform App UI (.NET MAUI) `Entry` allows you to enter and edit a single line of text. In addition, the `Entry` can be used as a password field.
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 

@@ -1,12 +1,12 @@
 ---
 title: "Label"
-description: "The .NET MAUI Label is used for displaying single-line and multi-line text in an app."
+description: "The .NET MAUI Label displays single-line and multi-line text in an app."
 ms.date: 03/02/2022
 ---
 
 # Label
 
-The .NET Multi-platform App UI (.NET MAUI) `Label` is used for displaying single-line and multi-line text. Text displayed by a `Label` can be colored, spaced, and can have text decorations.
+The .NET Multi-platform App UI (.NET MAUI) `Label` displays single-line and multi-line text. Text displayed by a `Label` can be colored, spaced, and can have text decorations.
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
