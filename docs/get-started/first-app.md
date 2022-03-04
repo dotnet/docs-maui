@@ -111,7 +111,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
 01. In the running app, press the **CLICK ME** button several times and observe that the count of the number of button clicks is incremented.
 
-    :::image type="content" source="media/first-app/windows-running-app.png" alt-text="Select the Windows Machine debugging target for .NET MAUI.":::
+    :::image type="content" source="media/first-app/windows-running-app.png" alt-text=".NET MAUI app running on Windows.":::
 
 :::zone-end
 <!-- ## Build and debug iOS apps
