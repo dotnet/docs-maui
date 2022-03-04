@@ -109,13 +109,21 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 :::zone pivot="devices-windows"
 
 <!-- markdownlint-disable MD029 -->
-07. In the Visual Studio toolbar, select the **Debug Target** to **Windows Machine** and then press the button to deploy and run the app.
+07. In the Visual Studio toolbar, use the **Debug Target** drop down to select**Framework** and then the **net6.0-windows** entry.
 
     :::image type="content" source="media/first-app/windows-debug-target.png" alt-text="Select the Windows Machine debugging target for .NET MAUI.":::
 
 <!-- markdownlint-enable MD029 -->
 
-01. In the running app, press the **CLICK ME** button several times and observe that the count of the number of button clicks is incremented.
+01. Press the **Windows Machine** button to deploy the app.
+
+    :::image type="content" source="media/first-app/windows-run-button.png" alt-text="Run .NET MAUI app in Visual Studio button.":::
+
+    If you've not enabled Developer Mode, the Settings app should open to the appropriate page. Turn on **Developer Mode** and accept the disclaimer.
+
+    :::image type="content" source="media/first-app/windows-developer-mode-win11.png" alt-text="Developer Mode toggle on the Windows 11 settings app.":::
+
+01. In the running app, press the **Click me** button several times and observe that the count of the number of button clicks is incremented.
 
     :::image type="content" source="media/first-app/windows-running-app.png" alt-text=".NET MAUI app running on Windows.":::
 
