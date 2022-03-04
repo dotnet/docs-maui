@@ -34,6 +34,7 @@
         - name: Windows
           items:
             - name: How to set up Windows for debugging
+              href: windows/setup.md
     - name: XAML
       items:
         - name: Overview
