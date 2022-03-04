@@ -66,7 +66,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
 :::zone pivot="devices-android"
 
-01. In the Visual Studio toolbar, press the **Android Emulator** button to build the app:
+07. In the Visual Studio toolbar, press the **Android Emulator** button to build the app:
 
     :::image type="content" source="media/first-app/android-emulator-button.png" alt-text="Android emulator button.":::
 
@@ -105,7 +105,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
 :::zone pivot="devices-windows"
 
-01. In the Visual Studio toolbar, select the **Debug Target** to **Windows Machine** and then press the button to deploy and run the app.
+07. In the Visual Studio toolbar, select the **Debug Target** to **Windows Machine** and then press the button to deploy and run the app.
 
     :::image type="content" source="media/first-app/windows-debug-target.png" alt-text="Select the Windows Machine debugging target for .NET MAUI.":::
 
