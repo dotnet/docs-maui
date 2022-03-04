@@ -50,7 +50,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
     :::zone pivot="devices-windows"
 
     > [!NOTE]
-    > Even though you're going to run your app directly on Windows, you must install the Android SDK for a complete setup.
+    > Even though you're going to run your app directly on Windows, you'll be prompted to install the Android SDK. The default build target for a new .NET MAUI project is Android. If you want to also target and run on Android in addition to Windows, navigate to the start of this article and select Android. Then, complete this tutorial which will teach you how to install the Android SDK and create a virtual Android device. Afterwards, switch this article back to Windows and continue where you left off.
 
     :::zone-end
 
@@ -66,9 +66,12 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
 :::zone pivot="devices-android"
 
+<!-- markdownlint-disable MD029 -->
 07. In the Visual Studio toolbar, press the **Android Emulator** button to build the app:
 
     :::image type="content" source="media/first-app/android-emulator-button.png" alt-text="Android emulator button.":::
+
+<!-- markdownlint-enable MD029 -->
 
 01. In the **User Account Control** dialog, press the **Yes** button:
 
@@ -105,9 +108,12 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
 :::zone pivot="devices-windows"
 
+<!-- markdownlint-disable MD029 -->
 07. In the Visual Studio toolbar, select the **Debug Target** to **Windows Machine** and then press the button to deploy and run the app.
 
     :::image type="content" source="media/first-app/windows-debug-target.png" alt-text="Select the Windows Machine debugging target for .NET MAUI.":::
+
+<!-- markdownlint-enable MD029 -->
 
 01. In the running app, press the **CLICK ME** button several times and observe that the count of the number of button clicks is incremented.
 
