@@ -1,12 +1,12 @@
 ---
 title: "Image"
-description: "The .NET MAUI Image displays an image that can be loaded from a local file, an embedded resource, a URI, or a stream."
+description: "The .NET MAUI Image displays an image that can be loaded from a local file, a URI, an embedded resource, or a stream."
 ms.date: 03/04/2022
 ---
 
 # Image
 
-The .NET Multi-platform App UI (.NET MAUI) `Image` displays an image that can be loaded from a local file, an embedded resource, a URI, or a stream. The standard platform image formats are supported, including animated GIFs, and local Scalable Vector Graphics (SVG) files are also supported.
+The .NET Multi-platform App UI (.NET MAUI) `Image` displays an image that can be loaded from a local file, a URI, an embedded resource, or a stream. The standard platform image formats are supported, including animated GIFs, and local Scalable Vector Graphics (SVG) files are also supported.
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
@@ -27,19 +27,19 @@ The `ImageSource` class defines the following methods that can be used to load a
 
 - `FromFile` returns a `FileImageSource` that reads an image from a local file.
 - `FromUri` returns an `UriImageSource` that downloads and reads an image from a specified URI.
-- `FromStream` returns a `StreamImageSource` that reads an image from a stream that supplies image data.
 - `FromResource` returns a `StreamImageSource` that reads an image file embedded in an assembly.
+- `FromStream` returns a `StreamImageSource` that reads an image from a stream that supplies image data.
 
-Alternatively, in XAML images can be loaded from files and URIs by specifying the filename or URI as a string value for the `Source` property. Images can also be loaded from streams or resources in XAML through the use of markup extensions.
+In XAML, images can be loaded from files and URIs by specifying the filename or URI as a string value for the `Source` property. Images can also be loaded from resources or streams in XAML through custom markup extensions.
 
 > [!IMPORTANT]
-> Images will be displayed at their full resolution unless the size of the `Image` is constrained by its layout, or the `HeightRequest` or `WidthRequest` property is specified on the `Image`.
+> Images will be displayed at their full resolution unless the size of the `Image` is constrained by its layout, or the `HeightRequest` or `WidthRequest` property of the `Image` is specified.
 
 For information about adding app icons and a splash screen to your app, see [App icons](~/user-interface/images/app-icons.md) and [Splash screen](~/user-interface/images/splashscreen.md).
 
 ## Load a local image
 
-Images can be added to your app project by dragging them to the _Resources\Images_ folder of your project, and ensuring their build action is set to **MauiImage** in the **Properties** window. At build time, images are resized to the correct resolutions for the target platform and device and added to your app package. This is because different platforms support different image resolutions, where the operating system chooses the appropriate image at runtime based on the device's capabilities.
+Images can be added to your app project by dragging them to the _Resources\Images_ folder of your project, and ensuring their build action is set to **MauiImage** in the **Properties** window. At build time, images are resized to the correct resolutions for the target platform and device and added to your app package. This is necessary because different platforms support different image resolutions, and the operating system chooses the appropriate image resolution at runtime based on the device's capabilities.
 
 To comply with Android resource naming rules, all local image filenames must be lowercase, start and end with a letter character, and contain only alphanumeric characters or underscores. For more information, see [App resources overview](https://developer.android.com/guide/topics/resources/providing-resources) on developer.android.com.
 
@@ -66,7 +66,7 @@ Image image = new Image { Source = "dotnet_bot.png" };
 
 ## Load a remote image
 
-Remote images can be downloaded and displayed by specifying a URI as the value of the `Image.Source` property:
+Remote images can be downloaded and displayed by specifying a URI as the value of the `Source` property:
 
 ```xaml
 <Image Source="https://aka.ms/campus.jpg" />
@@ -129,7 +129,7 @@ Embedded images can be added to an assembly as a resource by dragging them into 
 
 Embedded images are loaded based on their resource ID, which is compromised of the name of the project and its location in the project. For example, placing *dotnet_bot.png* in the root folder of a project named *MyProject* will result in a resource ID of *MyProject.dotnet_bot.png*. Similarly, placing *dotnet_bot.png* in the *Assets* folder of a project named *MyProject* will result in a resource ID of *MyProject.Assets.dotnet_bot.png*.
 
-The `ImageSource.FromResource` method can be used to load an image that's been embedded into an assembly as a resource:
+The `ImageSource.FromResource` method can be used to load an image that's embedded into an assembly as a resource:
 
 ```csharp
 Image image = new Image
@@ -190,7 +190,7 @@ namespace ImageDemos
 
 The `ImageResourceExtension` class is used to access an embedded image in XAML, and uses the `Source` property to call the `ImageSource.FromResource` method. The argument to the `ProvideValue` method is an `IServiceProvider` object that can be used to obtain an `IXmlLineInfoProvider` object that can provide line and character information indicating where an error has been detected. This object is used to raise an exception when the `Image.Source` property hasn't been set.
 
-The markup extension can then be consumed in XAML to load an embedded image:
+The markup extension can be consumed in XAML to load an embedded image:
 
 ```xaml
 <ContentPage ...
@@ -217,7 +217,7 @@ Image image = new Image
 
 ## Load animated GIFs
 
-.NET MAUI includes support for displaying small, animated GIFs. This is accomplished by setting the `Image.Source` property to an animated GIF file:
+.NET MAUI includes support for displaying small, animated GIFs. This is accomplished by setting the `Source` property to an animated GIF file:
 
 ```xaml
 <Image Source="demo.gif" />
