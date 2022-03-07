@@ -12,7 +12,8 @@ groups:
   title: Devices
   prompt: Choose your deployment device
   pivots:
-    - id: devices-windows
-      title: Windows
     - id: devices-android
       title: Android
+    - id: devices-windows
+      title: Windows
+
