@@ -14,7 +14,11 @@ In this tutorial, you'll learn how to create and run your first .NET Multi-platf
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
+:::zone pivot="devices-android"
+
 Visual Studio for Mac support will arrive in a future release.
+
+:::zone-end
 
 <!-- ::: zone pivot="windows" -->
 
@@ -51,7 +55,9 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
     :::zone pivot="devices-windows"
 
     > [!NOTE]
-    > Even though you're going to run your app directly on Windows, you'll be prompted to install the Android SDK. The default build target for a new .NET MAUI project is Android. If you want to also target and run on Android in addition to Windows, navigate to the start of this article and select Android. Then, complete this tutorial which will teach you how to install the Android SDK and create a virtual Android device. Afterwards, switch this article back to Windows and continue where you left off.
+    > Even though you're going to run your app directly on Windows, you may be prompted to install the Android SDK, if this is the first time you've created a .NET MAUI app.
+    >
+    > The default build target for a new .NET MAUI project is Android. If you want to also target and run on Android in addition to Windows, navigate to the start of this article and select Android. Then, complete this tutorial which will teach you how to install the Android SDK and create a virtual Android device. Afterwards, switch this article back to Windows and continue where you left off.
 
     :::zone-end
 
@@ -72,7 +78,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
     :::image type="content" source="media/first-app/android-emulator-button.png" alt-text="Android emulator button.":::
 
-<!-- markdownlint-enable MD029 -->
+    <!-- markdownlint-enable MD029 -->
 
 01. In the **User Account Control** dialog, press the **Yes** button:
 
@@ -114,7 +120,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
     :::image type="content" source="media/first-app/windows-debug-target.png" alt-text="Select the Windows Machine debugging target for .NET MAUI.":::
 
-<!-- markdownlint-enable MD029 -->
+    <!-- markdownlint-enable MD029 -->
 
 01. Press the **Windows Machine** button to deploy the app.
 
