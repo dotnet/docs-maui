@@ -60,3 +60,4 @@ The main control groups used to create the user interface of a .NET MAUI app are
 | `SwipeView` | `SwipeView` is a container control that wraps around an item of content, and provides context menu items that are revealed by a swipe gesture. For more information, see [SwipeView](~/user-interface/controls/swipeview.md). |
 | `Switch` | `Switch` enables you to select a boolean value using a type of button that can either be on or off. For more information, see [Switch](~/user-interface/controls/switch.md). |
 | `TimePicker` | `TimePicker` enables you to select a time with the platform time picker. For more information, see [TimePicker](~/user-interface/controls/timepicker.md). |
+| `WebView` | `WebView` displays web pages or local HTML content. For more information, see [WebView](~/user-interface/controls/webview.md). |
