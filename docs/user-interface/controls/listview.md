@@ -303,6 +303,54 @@ The `MonkeyDataTemplateSelector` class defines `AmericanMonkey` and `OtherMonkey
 
 For more information about data template selectors, see [Create a DataTemplateSelector](~/fundamentals/datatemplate.md#create-a-datatemplateselector).
 
+## Respond to item selection
+
+By default, `ListView` selection is enabled. However, this behavior can be changed by setting the `SelectionMode` property. The `ListViewSelectionMode` enumeration defines the following members:
+
+- `None` – indicates that items cannot be selected.
+- `Single` – indicates that a single item can be selected, with the selected item being highlighted. This is the default value.
+
+`ListView` defines an `ItemSelected` event that's raised when the `SelectedItem` property changes, either due to the user selecting an item from the list, or when an app sets the property. The `SelectedItemChangedEventArgs` object that accompanies this event has `SelectedItem` and `SelectedItemIndex` properties.
+
+When the `SelectionMode` property is set to `Single`, a single item in the `ListView` can be selected. When an item is selected, the `SelectedItem` property will be set to the value of the selected item. When this property changes, the `ItemSelected` event is raised.
+
+The following example shows a `ListView` that can respond to single item selection:
+
+```xaml
+<ListView ItemsSource="{Binding Monkeys}"
+          ItemSelected="OnItemSelected">
+    ...
+</ListView>
+```
+
+In this example, the `OnItemSelected` event handler is executed when the `ItemSelected` event fires, with the event handler retrieving the selected item:
+
+```csharp
+void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+{
+    Monkey item = args.SelectedItem as Monkey;
+}
+```
+
+The following screenshot shows single item selection in a `ListView`:
+
+:::image type="content" source="media/listview/selection.png" alt-text="Screenshot of a ListView with a selection.":::
+
+### Clear the selection
+
+The `SelectedItem` property can be cleared by setting it, or the object it binds to, to `null`.
+
+### Disable selection
+
+`ListView` selection is enabled by default. However, it can be disabled by setting the `SelectionMode` property to `None`:
+
+```xaml
+<ListView ...
+          SelectionMode="None" />
+```
+
+When the `SelectionMode` property is set to `None`, items in the `ListView` cannot be selected, the `SelectedItem` property will remain `null`, and the `ItemSelected` event will not be fired.
+
 ## Cache data
 
 `ListView` is a powerful view for displaying data, but it has some limitations. Scrolling performance can suffer when using custom cells, especially when they contain deeply nested view hierarchies or use certain layouts that require complex measurement. Fortunately, there are techniques you can use to avoid poor performance.
@@ -425,63 +473,6 @@ Then the `ListViewCachingStrategy` enumeration value can be specified from XAML 
     </x:Arguments>
 </local:CustomListView>
 ```
-
-## Add context menus
-
-`ListView` supports context menus items, which are defined as `MenuItem` objects that are added to the `ViewCell.ContextActions` collection in the `DataTemplate` for each item:
-
-```xaml
-<ListView x:Name="listView"
-          ItemsSource="{Binding Monkeys}">
-    <ListView.ItemTemplate>
-        <DataTemplate>
-            <ViewCell>
-                <ViewCell.ContextActions>
-                    <MenuItem Text="Favorite"
-                              Command="{Binding Source={x:Reference listView}, Path=BindingContext.FavoriteCommand}"
-                              CommandParameter="{Binding}" />
-                    <MenuItem Text="Delete"
-                              Command="{Binding Source={x:Reference listView}, Path=BindingContext.DeleteCommand}"
-                              CommandParameter="{Binding}" />
-                </ViewCell.ContextActions>
-
-                ...
-            </ViewCell>
-        </DataTemplate>
-    </ListView.ItemTemplate>
-</ListView>
-```
-
-The `MenuItem` objects are revealed when an item in the `ListView` is right-clicked:
-
-:::image type="content" source="media/listview/contextmenuitems.png" alt-text="Screenshot of CollectionView context menu items.":::
-
-<!-- For more information about menu items, see [](). -->
-
-## Pull to refresh
-
-`ListView` supports pull to refresh functionality, which enables the data being displayed to be refreshed by pulling down on the list of items.
-
-To enable pull to refresh, set the `IsPullToRefreshEnabled` property to `true`. When a refresh is triggered, `ListView` raises the `Refreshing` event, and the `IsRefreshing` property will be set to `true`. The code required to refresh the contents of the `ListView` should then be executed by the handler for the `Refreshing` event, or by the `ICommand` implementation the `RefreshCommand` executes. Once the `ListView` is refreshed, the `IsRefreshing` property should be set to `false`, or the `EndRefresh` method should be called on the `ListView`, to indicate that the refresh is complete.
-
-The following example shows a `ListView` that uses pull to refresh:
-
-```xaml
-<ListView ItemsSource="{Binding Animals}"
-          IsPullToRefreshEnabled="true"
-          RefreshCommand="{Binding RefreshCommand}"
-          IsRefreshing="{Binding IsRefreshing}">
-    <ListView.ItemTemplate>
-        <DataTemplate>
-            <ViewCell>
-                ...
-            </ViewCell>
-        </DataTemplate>
-    </ListView.ItemTemplate>
-</ListView>
-```
-
-In this example, when the user initiates a refresh, the `ICommand` defined by the `RefreshCommand` property is executed, which should refresh the items being displayed. A refresh visualization is shown while the refresh occurs, which consists of an animated progress circle. The value of the `IsRefreshing` property indicates the current state of the refresh operation. When a refresh is triggered, this property will automatically transition to `true`. Once the refresh completes, you should reset the property to `false`.
 
 ## Headers and footers
 
@@ -639,54 +630,6 @@ In this example, the `OnImageTapped` event handler is executed in response to an
 
 The default `FlowDirection` for an element with a parent is `MatchParent`. Therefore, the `ListView` inherits the `FlowDirection` property value from the `StackLayout`, which in turn inherits the `FlowDirection` property value from the `ContentPage`.
 
-## Item selection
-
-By default, `ListView` selection is enabled. However, this behavior can be changed by setting the `SelectionMode` property. The `ListViewSelectionMode` enumeration defines the following members:
-
-- `None` – indicates that items cannot be selected.
-- `Single` – indicates that a single item can be selected, with the selected item being highlighted. This is the default value.
-
-`ListView` defines an `ItemSelected` event that's raised when the `SelectedItem` property changes, either due to the user selecting an item from the list, or when an app sets the property. The `SelectedItemChangedEventArgs` object that accompanies this event has `SelectedItem` and `SelectedItemIndex` properties.
-
-When the `SelectionMode` property is set to `Single`, a single item in the `ListView` can be selected. When an item is selected, the `SelectedItem` property will be set to the value of the selected item. When this property changes, the `ItemSelected` event is raised.
-
-The following example shows a `ListView` that can respond to single item selection:
-
-```xaml
-<ListView ItemsSource="{Binding Monkeys}"
-          ItemSelected="OnItemSelected">
-    ...
-</ListView>
-```
-
-In this example, the `OnItemSelected` event handler is executed when the `ItemSelected` event fires, with the event handler retrieving the selected item:
-
-```csharp
-void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
-{
-    Monkey item = args.SelectedItem as Monkey;
-}
-```
-
-The following screenshot shows single item selection in a `ListView`:
-
-:::image type="content" source="media/listview/selection.png" alt-text="Screenshot of a ListView with a selection.":::
-
-### Clear selections
-
-The `SelectedItem` property can be cleared by setting it, or the object it binds to, to `null`.
-
-### Disable selection
-
-`ListView` selection is enabled by default. However, it can be disabled by setting the `SelectionMode` property to `None`:
-
-```xaml
-<ListView ...
-          SelectionMode="None" />
-```
-
-When the `SelectionMode` property is set to `None`, items in the `ListView` cannot be selected, the `SelectedItem` property will remain `null`, and the `ItemSelected` event will not be fired.
-
 ## Display grouped data
 
 Large data sets can often become unwieldy when presented in a continually scrolling list. In this scenario, organizing the data into groups can improve the user experience by making it easier to navigate the data.
@@ -791,8 +734,6 @@ Animals.Add(new AnimalGroup("Monkeys", new List<Animal>
 ```
 
 This code creates two groups in the `Animals` collection. The first `AnimalGroup` is named `Bears`, and contains a `List<Animal>` collection of bear details. The second `AnimalGroup` is named `Monkeys`, and contains a `List<Animal>` collection of monkey details.
-
-### Display grouped data
 
 `ListView` will display grouped data, provided that the data has been grouped correctly, by setting the `IsGroupingEnabled` property to `true`:
 
@@ -1002,3 +943,60 @@ listView.ScrollTo(monkey, position: ScrollToPosition.End, animate: true);
 - `Default` indicates the default scroll bar behavior for the platform, and is the default value for the `HorizontalScrollBarVisibility` and `VerticalScrollBarVisibility` properties.
 - `Always` indicates that scroll bars will be visible, even when the content fits in the view.
 - `Never` indicates that scroll bars will not be visible, even if the content doesn't fit in the view.
+
+## Add context menus
+
+`ListView` supports context menus items, which are defined as `MenuItem` objects that are added to the `ViewCell.ContextActions` collection in the `DataTemplate` for each item:
+
+```xaml
+<ListView x:Name="listView"
+          ItemsSource="{Binding Monkeys}">
+    <ListView.ItemTemplate>
+        <DataTemplate>
+            <ViewCell>
+                <ViewCell.ContextActions>
+                    <MenuItem Text="Favorite"
+                              Command="{Binding Source={x:Reference listView}, Path=BindingContext.FavoriteCommand}"
+                              CommandParameter="{Binding}" />
+                    <MenuItem Text="Delete"
+                              Command="{Binding Source={x:Reference listView}, Path=BindingContext.DeleteCommand}"
+                              CommandParameter="{Binding}" />
+                </ViewCell.ContextActions>
+
+                ...
+            </ViewCell>
+        </DataTemplate>
+    </ListView.ItemTemplate>
+</ListView>
+```
+
+The `MenuItem` objects are revealed when an item in the `ListView` is right-clicked:
+
+:::image type="content" source="media/listview/contextmenuitems.png" alt-text="Screenshot of CollectionView context menu items.":::
+
+<!-- For more information about menu items, see [](). -->
+
+## Pull to refresh
+
+`ListView` supports pull to refresh functionality, which enables the data being displayed to be refreshed by pulling down on the list of items.
+
+To enable pull to refresh, set the `IsPullToRefreshEnabled` property to `true`. When a refresh is triggered, `ListView` raises the `Refreshing` event, and the `IsRefreshing` property will be set to `true`. The code required to refresh the contents of the `ListView` should then be executed by the handler for the `Refreshing` event, or by the `ICommand` implementation the `RefreshCommand` executes. Once the `ListView` is refreshed, the `IsRefreshing` property should be set to `false`, or the `EndRefresh` method should be called on the `ListView`, to indicate that the refresh is complete.
+
+The following example shows a `ListView` that uses pull to refresh:
+
+```xaml
+<ListView ItemsSource="{Binding Animals}"
+          IsPullToRefreshEnabled="true"
+          RefreshCommand="{Binding RefreshCommand}"
+          IsRefreshing="{Binding IsRefreshing}">
+    <ListView.ItemTemplate>
+        <DataTemplate>
+            <ViewCell>
+                ...
+            </ViewCell>
+        </DataTemplate>
+    </ListView.ItemTemplate>
+</ListView>
+```
+
+In this example, when the user initiates a refresh, the `ICommand` defined by the `RefreshCommand` property is executed, which should refresh the items being displayed. A refresh visualization is shown while the refresh occurs, which consists of an animated progress circle. The value of the `IsRefreshing` property indicates the current state of the refresh operation. When a refresh is triggered, this property will automatically transition to `true`. Once the refresh completes, you should reset the property to `false`.
