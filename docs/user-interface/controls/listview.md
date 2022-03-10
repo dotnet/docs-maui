@@ -351,7 +351,7 @@ public class CustomCell : ViewCell
         View = image;
     }
 
-    protected override void OnBindingContextChanged )
+    protected override void OnBindingContextChanged()
     {
         base.OnBindingContextChanged();
 
@@ -363,8 +363,6 @@ public class CustomCell : ViewCell
     }
 }
 ```
-
-For more information, see [Binding context changes](#binding-context-changes).
 
 <!-- On iOS and Android, if cells use custom renderers, they must ensure that property change notification is correctly implemented. When cells are reused their property values will change when the binding context is updated to that of an available cell, with `PropertyChanged` events being raised. -->
 
@@ -512,7 +510,7 @@ The `Header` and `Footer` properties can be set to `string` values, as shown in 
 
 The following screenshot shows the resulting header:
 
-:::image type="content" source="media/layout/header-text.png" alt-text="Screenshot of a ListView string header.":::
+:::image type="content" source="media/listview/header-text.png" alt-text="Screenshot of a ListView string header.":::
 
 ### Display views in the header and footer
 
@@ -542,7 +540,7 @@ The `Header` and `Footer` properties can each be set to a view. This can be a si
 
 The following screenshot shows the resulting header:
 
-:::image type="content" source="media/layout/header-view.png" alt-text="Screenshot of CollectionView header and footer using views.":::
+:::image type="content" source="media/listview/header-view.png" alt-text="Screenshot of CollectionView header and footer using views.":::
 
 ### Display a templated header and footer
 
@@ -672,7 +670,7 @@ void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
 
 The following screenshot shows single item selection in a `ListView`:
 
-:::image type="content" source="media/selection/selection.png" alt-text="Screenshot of a ListView with a selection.":::
+:::image type="content" source="media/listview/selection.png" alt-text="Screenshot of a ListView with a selection.":::
 
 ### Clear selections
 
@@ -844,11 +842,11 @@ listView.SetBinding(ItemsView.ItemsSourceProperty, "Animals");
 // ...
 ```
 
-The appearance of each item in the `ListView` is defined by setting its `ItemTemplate` property to a `DataTemplate`. For more information, see [Define item appearance](populate-data.md#define-item-appearance).
+The appearance of each item in the `ListView` is defined by setting its `ItemTemplate` property to a `DataTemplate`. For more information, see [Define item appearance](#define-item-appearance).
 
 The following screenshot shows the `ListView` displaying grouped data:
 
-:::image type="content" source="media/grouping/grouped-data.png" alt-text="Screenshot of grouped data in a ListView.":::
+:::image type="content" source="media/listview/grouped-data.png" alt-text="Screenshot of grouped data in a ListView.":::
 
 > [!NOTE]
 > By default, `ListView` will display the group name in the group header. This behavior can be changed by customizing the group header.
@@ -876,7 +874,7 @@ The appearance of each group header can be customized by setting the `ListView.G
 
 In this example, each group header is set to a `Label` that displays the group name, and that has other appearance properties set. The following screenshot shows the customized group header:
 
-:::image type="content" source="media/grouping/customized-header.png" alt-text="Screenshot of a customized group header in a ListView.":::
+:::image type="content" source="media/listview/customized-header.png" alt-text="Screenshot of a customized group header in a ListView.":::
 
 ### Group without templates
 
