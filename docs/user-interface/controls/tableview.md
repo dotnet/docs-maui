@@ -139,7 +139,7 @@ The following screenshot shows the resulting cell appearance:
 
 :::image type="content" source="media/tableview/imagecell.png" alt-text="Screenshot of TableView where each item is an ImageCell.":::
 
-## Switch cell
+### Switch cell
 
 A `SwitchCell` displays text and a switch that can be switched on or off. `SwitchCell` defines the following properties:
 
@@ -170,7 +170,7 @@ The following screenshot shows the resulting cell appearance:
 
 :::image type="content" source="media/tableview/switchcell.png" alt-text="Screenshot of TableView where each item is a SwitchCell.":::
 
-## Entry cell
+### Entry cell
 
 An `EntryCell` displays text data that is editable. `EntryCell` defines the following properties:
 
