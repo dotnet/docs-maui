@@ -6,7 +6,7 @@ ms.date: 03/10/2022
 
 # ListView
 
-The .NET Multi-platform App UI (.NET MAUI) `ListView` displays a scrollable vertical list of selectable data items. While `ListView` manages the appearance of the list, the appearance of each item in the list is defined by a `DataTemplate` that uses a `Cell` to display items. There are cell types defined to display combinations of text and images, but you can also define custom cells that display any content you want. `ListView` also includes support for displaying headers and footers, grouped data, pull-to-refresh, and context menu items.
+The .NET Multi-platform App UI (.NET MAUI) `ListView` displays a scrollable vertical list of selectable data items. While `ListView` manages the appearance of the list, the appearance of each item in the list is defined by a `DataTemplate` that uses a `Cell` to display items. .NET MAUI includes cell types to display combinations of text and images, and you can also define custom cells that display any content you want. `ListView` also includes support for displaying headers and footers, grouped data, pull-to-refresh, and context menu items.
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
@@ -141,11 +141,11 @@ For more information about data templates, see [Data templates](~/fundamentals/d
 
 The appearance of each item in a `ListView` is defined by a `DataTemplate`, and the `DataTemplate` must reference a `Cell` class to display items. Each cell represents an item of data in the `ListView`. .NET MAUI includes the following built-in cells:
 
-- A `TextCell` displays primary and secondary text on separate lines.
-- An `ImageCell` displays an image with primary and secondary text on separate lines.
-- A `SwitchCell` displays text and a switch that can be switched on or off.
-- An `EntryCell` displays text that is editable.
-- A `ViewCell` is a custom cell whose appearance is defined by a `View`. This cell type should be used when you want to fully define the appearance of each item in a `ListView`.
+- `TextCell`, which displays primary and secondary text on separate lines.
+- `ImageCell`, which displays an image with primary and secondary text on separate lines.
+- `SwitchCell`, which displays text and a switch that can be switched on or off.
+- `EntryCell`, which displays a label and text that's editable.
+- `ViewCell`, which is a custom cell whose appearance is defined by a `View`. This cell type should be used when you want to fully define the appearance of each item in a `ListView`.
 
 Typically, `SwitchCell` and `EntryCell` will only be used in a `TableView` and won't be used in a `ListView`. For more information about `SwitchCell` and `EntryCell`, see [TableView](tableview.md).
 
@@ -181,7 +181,7 @@ The following screenshot shows the resulting cell appearance:
 
 #### Image cell
 
-An `ImageCell` displays an image with primary and secondary text on separate lines. `ImageCell` inherits the properties from `TextCell`, and defines the `ImageSource` property, of type `ImageSource`, which defines the image to be displayed in the cell. This property is backed by a `BindableProperty` object, which means it can be the target of data bindings, and be styled.
+An `ImageCell` displays an image with primary and secondary text on separate lines. `ImageCell` inherits the properties from `TextCell`, and defines the `ImageSource` property, of type `ImageSource`, which specifies the image to be displayed in the cell. This property is backed by a `BindableProperty` object, which means it can be the target of data bindings, and be styled.
 
 The following example shows using an `ImageCell` to define the appearance of items in a `ListView`:
 
@@ -585,9 +585,7 @@ In addition, when the separator is enabled, it's color can be set with the `Sepa
 
 By default, all items in a `ListView` have the same height, which is derived from the contents of the `DataTemplate` that defines the appearance of each item. However, this behavior can be changed with the `HasUnevenRows` and `RowHeight` properties. By default, the `HasUnevenRows` property is `false`.
 
-The `RowHeight` property can be set to an `int` that represents the height of each item in the `ListView`, provided that `HasUnevenRows` is `false`.
-
-When `HasUnevenRows` is set to `true`, each item in the `ListView` can have a different height. The height of each item will be derived from the contents of the item's `DataTemplate`, and so each item will be sized to its content.
+The `RowHeight` property can be set to an `int` that represents the height of each item in the `ListView`, provided that `HasUnevenRows` is `false`. When `HasUnevenRows` is set to `true`, each item in the `ListView` can have a different height. The height of each item will be derived from the contents of the item's `DataTemplate`, and so each item will be sized to its content.
 
 Individual `ListView` items can be programmatically resized at runtime by changing layout related properties of elements within the `DataTemplate`, provided that the `HasUnevenRows` property is `true`. The following example changes the height of an `Image` object when it's tapped:
 
@@ -605,7 +603,7 @@ void OnImageTapped(object sender, EventArgs args)
 }
 ```
 
-In this example, the `OnImageTapped` event handler is executed in response to an `Image` object being tapped. The event handler updates the height of the `Image` and then the `Cell.ForceUpdateSize` method updates the cell's size, even when it isn't currently visible.
+In this example, the `OnImageTapped` event handler is executed in response to an `Image` object being tapped. The event handler updates the height of the `Image` and the `Cell.ForceUpdateSize` method updates the cell's size, even when it isn't currently visible.
 
 > [!WARNING]
 > Overuse of dynamic item sizing can cause `ListView` performance to degrade.

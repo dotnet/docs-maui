@@ -6,17 +6,17 @@ ms.date: 03/11/2022
 
 # TableView
 
-The .NET Multi-platform App UI (.NET MAUI) `TableView` displays a table of scrollable items that can be grouped into sections. While `TableView` manages the appearance of the table, the appearance of each item is defined by a `Cell`. There are cell types defined to display combinations of text and images, but you can also define custom cells that display any content you want.
+The .NET Multi-platform App UI (.NET MAUI) `TableView` displays a table of scrollable items that can be grouped into sections. While `TableView` manages the appearance of the table, the appearance of each item in the table is defined by a `Cell`. .NET MAUI includes cell types defined to display combinations of text and images, and you can also define custom cells that display any content you want.
 
-A `TableView` is typically used for showing items where each row has a different appearance, such as presenting a table of settings.
+A `TableView` is typically used for displaying items where each row has a different appearance, such as presenting a table of settings.
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
 `TableView` defines the following properties:
 
-- `Intent`, of type `TableIntent`, defines the intent of the table.
+- `Intent`, of type `TableIntent`, defines the purpose of the table.
 - `HasUnevenRows`, of type `bool`, indicates whether items in the table can have rows of different heights. The default value of this property is `false`.
-- `Root`, of type `TableRoot`, defines the root of the table.
+- `Root`, of type `TableRoot`, defines the child of the `TableView`.
 - `RowHeight`, of type `int`, determines the height of each row when `HasUnevenRows` is `false`.
 
 The `HasUnevenRows` and `RowHeight` properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
@@ -64,11 +64,11 @@ In this example, the `TableView` defines a menu using `TextCell` objects:
 
 Each item in a `TableView` is defined by a `Cell` object, and the `Cell` type used defines the appearance of the cell's data. .NET MAUI includes the following built-in cells:
 
-- A `TextCell` displays primary and secondary text on separate lines.
-- An `ImageCell` displays an image with primary and secondary text on separate lines.
-- A `SwitchCell` displays text and a switch that can capture on/off states.
-- An `EntryCell` displays text that is editable.
-- A `ViewCell` is a custom cell whose appearance is defined by a `View`. This cell type should be used when you want to fully define the appearance of each item in a `TableView`.
+- `TextCell`, which displays primary and secondary text on separate lines.
+- `ImageCell`, which displays an image with primary and secondary text on separate lines.
+- `SwitchCell`, which displays text and a switch that can be switched on or off.
+- `EntryCell`, which displays a label and text that's editable.
+- `ViewCell`, which is a custom cell whose appearance is defined by a `View`. This cell type should be used when you want to fully define the appearance of each item in a `TableView`.
 
 ### Text cell
 
@@ -110,9 +110,9 @@ The following screenshot shows the resulting cell appearance:
 
 ### Image cell
 
-An `ImageCell` displays an image with primary and secondary text on separate lines. `ImageCell` inherits the properties from `TextCell`, and defines the `ImageSource` property, of type `ImageSource`, which defines the image to be displayed in the cell. This property is backed by a `BindableProperty` object, which means it can be the target of data bindings, and be styled.
+An `ImageCell` displays an image with primary and secondary text on separate lines. `ImageCell` inherits the properties from `TextCell`, and defines the `ImageSource` property, of type `ImageSource`, which specifies the image to be displayed in the cell. This property is backed by a `BindableProperty` object, which means it can be the target of data bindings, and be styled.
 
-The following example shows using an `ImageCell` to define the appearance of an item in a `TableView`:
+The following example shows using an `ImageCell` to define the appearance of items in a `TableView`:
 
 ```xaml
 <TableView Intent="Menu">
@@ -145,7 +145,7 @@ A `SwitchCell` displays text and a switch that can be switched on or off. `Switc
 
 - `Text`, of type `string`, defines the text to display next to the switch.
 - `On`, of type `bool`, represents whether the switch is on or off.
-- `OnColor`, of type `Color`, indicates the color of the switch when it it's on position.
+- `OnColor`, of type `Color`, indicates the color of the switch when in it's on position.
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
@@ -172,7 +172,7 @@ The following screenshot shows the resulting cell appearance:
 
 ### Entry cell
 
-An `EntryCell` displays text data that is editable. `EntryCell` defines the following properties:
+An `EntryCell` displays a label and text data that's editable. `EntryCell` defines the following properties:
 
 - `HorizontalTextAlignment`, of type `TextAlignment`, represents the horizontal alignment of the text.
 - `Keyboard`, of type `Keyboard`, determines the keyboard to display when entering text.
@@ -246,9 +246,7 @@ Inside the `ViewCell`, layout can be managed by any .NET MAUI layout. The follow
 
 By default, all cells of the same type in a `TableView` have the same height. However, this behavior can be changed with the `HasUnevenRows` and `RowHeight` properties. By default, the `HasUnevenRows` property is `false`.
 
-The `RowHeight` property can be set to an `int` that represents the height of each item in the `TableView`, provided that `HasUnevenRows` is `false`.
-
-When `HasUnevenRows` is set to `true`, each item in the `TableView` can have a different height. The height of each item will be derived from the contents of each cell, and so each item will be sized to its content.
+The `RowHeight` property can be set to an `int` that represents the height of each item in the `TableView`, provided that `HasUnevenRows` is `false`. When `HasUnevenRows` is set to `true`, each item in the `TableView` can have a different height. The height of each item will be derived from the contents of each cell, and so each item will be sized to its content.
 
 Individual cells can be programmatically resized at runtime by changing layout related properties of elements within the cell, provided that the `HasUnevenRows` property is `true`. The following example changes the height of the cell when it's tapped:
 
@@ -260,7 +258,7 @@ void OnViewCellTapped(object sender, EventArgs e)
 }
 ```
 
-In this example, the `OnViewCellTapped` event handler is executed in response to the cell being tapped. The event handler updates the visibility of the `Label` object and then the `Cell.ForceUpdateSize` method updates the cell's size. If the `Label` has been made visible the cell's height will increase. If the `Label` has been made invisible the cell's height will decrease.
+In this example, the `OnViewCellTapped` event handler is executed in response to the cell being tapped. The event handler updates the visibility of the `Label` object and the `Cell.ForceUpdateSize` method updates the cell's size. If the `Label` has been made visible the cell's height will increase. If the `Label` has been made invisible the cell's height will decrease.
 
 > [!WARNING]
 > Overuse of dynamic item sizing can cause `TableView` performance to degrade.
