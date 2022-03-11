@@ -6,7 +6,7 @@ ms.date: 03/10/2022
 
 # ListView
 
-The .NET Multi-platform App UI (.NET MAUI) `ListView` displays a scrollable vertical list of selectable data items. `ListView` supports displaying headers and footers, grouped data, pull-to-refresh, and context menu items.
+The .NET Multi-platform App UI (.NET MAUI) `ListView` displays a scrollable vertical list of selectable data items. While `ListView` manages the appearance of the list, the appearance of each item in the list is defined by a `DataTemplate` that uses a `Cell` to display items. There are cell types defined to display combinations of text and images, but you can also define custom cells that display any content you want. `ListView` also includes support for displaying headers and footers, grouped data, pull-to-refresh, and context menu items.
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
@@ -20,7 +20,7 @@ The `ListView` class derives from the `ItemsView<Cell>` class, from which it inh
 - `Footer`, of type `object`, specifies the string or view that will be displayed at the end of the list.
 - `FooterTemplate`, of type `DataTemplate`, specifies the `DataTemplate` to use to format the `Footer`.
 - `GroupHeaderTemplate`, of type `DataTemplate`, defines the `DataTemplate` used to define the appearance of the header of each group.
-- `HasUnevenRows`, of type `bool`, indicates whether items in the list can have different rows of different heights. The default value of this property is `false`.
+- `HasUnevenRows`, of type `bool`, indicates whether items in the list can have rows of different heights. The default value of this property is `false`.
 - `Header`, of type `object`, specifies the string or view that will be displayed at the start of the list.
 - `HeaderTemplate`, of type `DataTemplate`, specifies the `DataTemplate` to use to format the `Header`.
 - `HorizontalScrollBarVisibility`, of type `ScrollBarVisibility`, indicates when the horizontal scroll bar will be visible.
@@ -143,11 +143,11 @@ The appearance of each item in a `ListView` is defined by a `DataTemplate`, and 
 
 - A `TextCell` displays primary and secondary text on separate lines.
 - An `ImageCell` displays an image with primary and secondary text on separate lines.
-- A `SwitchCell` displays text and a switch that can capture on/off states.
+- A `SwitchCell` displays text and a switch that can be switched on or off.
 - An `EntryCell` displays text that is editable.
 - A `ViewCell` is a custom cell whose appearance is defined by a `View`. This cell type should be used when you want to fully define the appearance of each item in a `ListView`.
 
-Typically, `SwitchCell` and `EntryCell` will only be used in a `TableView` and won't be used in a `ListView`. <!--For more information about `TableView`, see [TableView]().-->
+Typically, `SwitchCell` and `EntryCell` will only be used in a `TableView` and won't be used in a `ListView`. For more information about `SwitchCell` and `EntryCell`, see [TableView](tableview.md).
 
 #### Text cell
 
