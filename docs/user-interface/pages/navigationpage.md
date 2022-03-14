@@ -56,7 +56,7 @@ An optional icon can be displayed between the back button and the title.
 
 Navigation methods are exposed by the `Navigation` property on any `Page` derived types. These methods provide the ability to push pages onto the navigation stack, to pop pages from the stack, and to manipulate the stack. However, it's recommended that a `NavigationPage` should only be populated with `ContentPage` objects.
 
-## Create the root page
+### Create the root page
 
 An app that is structured around multiple pages always has a *root* page, which is the first page added to the navigation stack. This is accomplished by creating a `NavigationPage` object whose constructor argument is the root page of the app, and setting the resulting object as the value of the `App.MainPage` property:
 
