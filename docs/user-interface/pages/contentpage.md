@@ -17,16 +17,16 @@ The .NET Multi-platform App UI (.NET MAUI) `ContentPage` displays a single view,
 > [!NOTE]
 > The `Content` property is the content property of the `ContentPage` class, and therefore does not need to be explicitly set from XAML.
 
-A `ContentPage` can be templated with a control template. For more information, see [Control templates](~/fundamentals/controltemplate.md).
-
 .NET MAUI apps typically contain multiple pages that derive from `ContentPage`, and navigation between these pages can be performed. For more information about page navigation, see [NavigationPage](navigationpage.md).
+
+A `ContentPage` can be templated with a control template. For more information, see [Control templates](~/fundamentals/controltemplate.md).
 
 ## Create a ContentPage
 
 To add a `ContentPage` to a .NET MAUI app:
 
 1. In **Solution Explorer** right-click on your project or folder in your project, and select **New Item...**.
-1. In the **Add New Item** dialog, expand **Installed > C# Items**, select **.NET MAUI**, select the **.NET MAUI ContentPage (XAML)** item template, enter a suitable page name, and click the **Add** button:
+1. In the **Add New Item** dialog, expand **Installed > C# Items**, select **.NET MAUI**, and select the **.NET MAUI ContentPage (XAML)** item template, enter a suitable page name, and click the **Add** button:
 
     :::image type="content" source="media/contentpage/item-template.png" alt-text=".NET MAUI ContentPage item template.":::
 
@@ -47,7 +47,7 @@ Visual Studio then creates a new `ContentPage`-derived page, which will be simil
 </ContentPage>
 ```
 
-The child of a `ContentPage` is typically a layout, such as `Grid` or `StackLayout`, with the layout typically containing multiple views. However, sometimes the child of the `ContentPage` may be a view that displays a collection, such as `CollectionView`.
+The child of a `ContentPage` is typically a layout, such as `Grid` or `StackLayout`, with the layout typically containing multiple views. However, the child of the `ContentPage` can be a view that displays a collection, such as `CollectionView`.
 
 > [!NOTE]
 > The value of the `Title` property will be shown on the navigation bar, when the app performs navigation using a `NavigationPage`. For more information, see [NavigationPage](navigationpage.md).

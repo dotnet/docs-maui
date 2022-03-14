@@ -34,7 +34,7 @@ The `NavigationPage` class also defines three events:
 - `Popped` is raised when when a page is popped from the navigation stack.
 - `PoppedToRoot` is raised when the last non-root page is popped from the navigation stack.
 
-All three events have `NavigationEventArgs` arguments that define a read-only `Page` property, which retrieves the page that was popped from the navigation stack, or the newly visible page on the stack.
+All three events receive `NavigationEventArgs` objects that define a read-only `Page` property, which retrieves the page that was popped from the navigation stack, or the newly visible page on the stack.
 
 ## Perform modeless navigation
 
@@ -48,13 +48,16 @@ When the second page returns back to the first page, a page is popped from the s
 
 :::image type="content" source="media/navigationpage/popping.png" alt-text="Popping a page from the navigation stack." border="false":::
 
-A `NavigationPage` consists of a navigation bar, with the `ContentPage` object being displayed below the navigation bar. The following diagram shows the main components of the navigation bar:
+A `NavigationPage` consists of a navigation bar, with the active page being displayed below the navigation bar. The following diagram shows the main components of the navigation bar:
 
 :::image type="content" source="media/navigationpage/components.png" alt-text="NavigationPage components." border="false":::
 
 An optional icon can be displayed between the back button and the title.
 
-Navigation methods are exposed by the `Navigation` property on any `Page` derived types. These methods provide the ability to push pages onto the navigation stack, to pop pages from the stack, and to manipulate the stack. However, it's recommended that a `NavigationPage` should only be populated with `ContentPage` objects.
+Navigation methods are exposed by the `Navigation` property on any `Page` derived types. These methods provide the ability to push pages onto the navigation stack, to pop pages from the stack, and to manipulate the stack.
+
+> [!TIP]
+> It's recommended that a `NavigationPage` should only be populated with `ContentPage` objects.
 
 ### Create the root page
 
@@ -65,9 +68,9 @@ public partial class App : Application
 {
   	public App()
   	{
-    		InitializeComponent();
+  		InitializeComponent();
 
-    		MainPage = new NavigationPage(new MainPage());
+  		MainPage = new NavigationPage(new MainPage());
   	}
 }
 ```
@@ -90,7 +93,7 @@ In this example, the `DetailsPage` object is pushed onto the navigation stack, w
 
 ### Pop pages from the navigation stack
 
-The active page can be popped from the navigation stack by pressing the *Back* button on adevice, regardless of whether this is a physical button on the device or an on-screen button.
+The active page can be popped from the navigation stack by pressing the *Back* button on a device, regardless of whether this is a physical button on the device or an on-screen button.
 
 To programmatically return to the previous page, the `PopAsync` method should be called on the `Navigation` property of the current page:
 
@@ -104,6 +107,20 @@ In this example, the current page is removed from the navigation stack, with the
 > The `PopAsync` method has an override that includes a `bool` argument that specifies whether to display a page transition during navigation. The `PopAsync` method that lacks the `bool` argument enables the page transition by default.
 
 In addition, the `Navigation` property of each page also exposes a `PopToRootAsync` method that pops all but the root page off the navigation stack, therefore making the app's root page the active page.
+
+## Manipulate the navigation stack
+
+The `Navigation` property of a `Page` exposes a `NavigationStack` property from which the pages in the navigation stack can be obtained. While .NET MAUI maintains access to the navigation stack, the `Navigation` property provides the `InsertPageBefore` and `RemovePage` methods for manipulating the stack by inserting pages or removing them.
+
+The `InsertPageBefore` method inserts a specified page in the navigation stack before an existing specified page, as shown in the following diagram:
+
+:::image type="content" source="media/navigationpage/insert-page-before.png" alt-text="Inserting a page in the navigation stack." border="false":::
+
+The `RemovePage` method removes the specified page from the navigation stack, as shown in the following diagram:
+
+:::image type="content" source="media/navigationpage/remove-page.png" alt-text="Removing a page from the navigation stack." border="false":::
+
+Together, these methods enable a custom navigation experience, such as replacing a login page with a new page following a successful login.
 
 ## Perform modal navigation
 
@@ -156,7 +173,7 @@ On Android, you an always return to the previous page by pressing the standard *
 
 ## Pass data during navigation
 
-Sometimes it's necessary for a page to pass data to another page during navigation. Two techniques for accomplishing this are passing data through a page constructor, and by setting the new page's `BindingContext` to the data.
+Sometimes it's necessary for a page to pass data to another page during navigation. Two standard techniques for accomplishing this are passing data through a page constructor, and by setting the new page's `BindingContext` to the data.
 
 ### Pass data through a page constructor
 
@@ -189,13 +206,13 @@ Contact contact = new Contact
     Country = "USA"
 };
 
-DetailsPage detailsPage = new DetailsPage();
-detailsPage.BindingContext = contact;
-
-await Navigation.PushAsync(detailsPage);
+await Navigation.PushAsync(new DetailsPage
+{
+    BindingContext = contact  
+});
 ```
 
-The advantage of passing data during navigation via a page's `BindingContext` is that the new page can use data binding to display the data:
+The advantage of passing navigation data via a page's `BindingContext` is that the new page can use data binding to display the data:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -211,20 +228,6 @@ The advantage of passing data during navigation via a page's `BindingContext` is
 
 For more information about data binding, see [Data binding](~/fundamentals/data-binding/index.md).
 
-## Manipulate the navigation stack
-
-The `Navigation` property of a `Page` exposes a `NavigationStack` property from which the pages in the navigation stack can be obtained. While .NET MAUI maintains access to the navigation stack, the `Navigation` property provides the `InsertPageBefore` and `RemovePage` methods for manipulating the stack by inserting pages or removing them.
-
-The `InsertPageBefore` method inserts a specified page in the navigation stack before an existing specified page, as shown in the following diagram:
-
-:::image type="content" source="media/navigationpage/insert-page-before.png" alt-text="Inserting a page in the navigation stack." border="false":::
-
-The `RemovePage` method removes the specified page from the navigation stack, as shown in the following diagram:
-
-:::image type="content" source="media/navigationpage/remove-page.png" alt-text="Removing a page from the navigation stack." border="false":::
-
-Together, these methods enable a custom navigation experience, such as replacing a login page with a new page following a successful login.
-
 ## Display views in the navigation bar
 
 Any .NET MAUI `View` can be displayed in the navigation bar of a `NavigationPage`. This is accomplished by setting the `NavigationPage.TitleView` attached property to a `View`. This attached property can be set on any `Page`, and when the `Page` is pushed onto a `NavigationPage`, the `NavigationPage` will respect the value of the property.
@@ -236,7 +239,8 @@ The following example shows how to set the `NavigationPage.TitleView` attached p
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NavigationPageTitleView.TitleViewPage">
     <NavigationPage.TitleView>
-        <Slider HeightRequest="44" WidthRequest="300" />
+        <Slider HeightRequest="44"
+                WidthRequest="300" />
     </NavigationPage.TitleView>
     ...
 </ContentPage>
