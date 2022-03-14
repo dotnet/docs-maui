@@ -191,6 +191,16 @@
                   href: user-interface/layouts/stacklayout.md
                 - name: VerticalStackLayout
                   href: user-interface/layouts/verticalstacklayout.md
+            - name: Pages
+              items:
+                - name: ContentPage
+                  href: user-interface/pages/contentpage.md
+                - name: FlyoutPage
+                  href: user-interface/pages/flyoutpage.md
+                - name: NavigationPage
+                  href: user-interface/pages/navigationpage.md
+                - name: TabbedPage
+                  href: user-interface/pages/tabbedpage.md
             - name: Views
               items:
                 - name: Present data
@@ -206,7 +216,7 @@
                     - name: GraphicsView
                       href: user-interface/controls/graphicsview.md
                     - name: ScrollView
-                      href: user-interface/controls/scrollview.md                      
+                      href: user-interface/controls/scrollview.md
                 - name: Initiate commands
                   items:
                     - name: Button
@@ -220,7 +230,7 @@
                     - name: SearchBar
                       href: user-interface/controls/searchbar.md
                     - name: SwipeView
-                      href: user-interface/controls/swipeview.md                      
+                      href: user-interface/controls/swipeview.md
                 - name: Set values
                   items:
                     - name: CheckBox
