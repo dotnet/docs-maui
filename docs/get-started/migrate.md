@@ -12,7 +12,7 @@ You don't need to rewrite your Xamarin.Forms apps to move them to .NET Multi-pla
 
 The process for migrating a Xamarin.Forms app to .NET MAUI is expected to be:
 
-1. Use the .NET upgrade assistant for .NET MAUI to migrate your Xamarin.Forms projects to .NET MAUI single project, and perform well-known code namespace changes.
+1. Use the [.NET Upgrade Assistant](https://dotnet.microsoft.com/platform/upgrade-assistant) for .NET MAUI to migrate your Xamarin.Forms projects to .NET MAUI single project, and perform well-known code namespace changes.
 1. Update any dependencies to .NET 6 and .NET MAUI compatible versions.
 1. Register any compatibility services or renderers.
 1. Build and fix any issues.
