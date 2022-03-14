@@ -17,7 +17,7 @@ The .NET Multi-platform App UI (.NET MAUI) `CheckBox` is a type of button that c
 
 These properties are backed by `BindableProperty` objects, which means that they can be styled, and be the target of data bindings.
 
-`CheckBox` defines a `CheckedChanged` event that's fired when the `IsChecked` property changes, either through user manipulation or when an application sets the `IsChecked` property. The `CheckedChangedEventArgs` object that accompanies the `CheckedChanged` event has a single property named `Value`, of type `bool`. When the event is fired, the value of the `Value` property is set to the new value of the `IsChecked` property.
+`CheckBox` defines a `CheckedChanged` event that's raised when the `IsChecked` property changes, either through user manipulation or when an application sets the `IsChecked` property. The `CheckedChangedEventArgs` object that accompanies the `CheckedChanged` event has a single property named `Value`, of type `bool`. When the event is raised, the value of the `Value` property is set to the new value of the `IsChecked` property.
 
 ## Create a CheckBox
 

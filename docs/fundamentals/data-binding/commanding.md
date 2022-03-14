@@ -51,7 +51,7 @@ When the user presses the `Button`, the `Button` calls the `Execute` method in t
 
 When the binding is first defined on the `Command` property of the `Button`, and when the data binding changes in some way, the `Button` calls the `CanExecute` method in the `ICommand` object. If `CanExecute` returns `false`, then the `Button` disables itself. This indicates that the particular command is currently unavailable or invalid.
 
-The `Button` also attaches a handler on the `CanExecuteChanged` event of `ICommand`. The event is fired from within the viewmodel. When that event is fired, the `Button` calls `CanExecute` again. The `Button` enables itself if `CanExecute` returns `true` and disables itself if `CanExecute` returns `false`.
+The `Button` also attaches a handler on the `CanExecuteChanged` event of `ICommand`. The event is raised from within the viewmodel. When that event is raised, the `Button` calls `CanExecute` again. The `Button` enables itself if `CanExecute` returns `true` and disables itself if `CanExecute` returns `false`.
 
 > [!WARNING]
 > Do not use the `IsEnabled` property of `Button` if you're using the command interface.  
@@ -162,7 +162,7 @@ public class PersonCollectionViewModel : INotifyPropertyChanged
 }
 ```
 
-In this example, changes to the three `ICommand` properties and the `Persons` property do not result in `PropertyChanged` events being fired. These properties are all set when the class is first created and do not change.
+In this example, changes to the three `ICommand` properties and the `Persons` property do not result in `PropertyChanged` events being raised. These properties are all set when the class is first created and do not change.
 
 The following example shows the XAML that consumes the `PersonCollectionViewModel`:
 

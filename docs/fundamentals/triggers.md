@@ -289,7 +289,7 @@ The following XAML example shows a `Style` that includes `StateTrigger` objects:
 
 In this example, the implicit `Style` targets `Grid` objects. When the `IsToggled` property of the bound object is `true`, the background color of the `Grid` is set to black. When the `IsToggled` property of the bound object becomes `false`, a `VisualState` change is triggered, and the background color of the `Grid` becomes white.
 
-In addition, every time a `VisualState` change occurs, the `IsActiveChanged` event for the `VisualState` is fired. Each `VisualState` registers an event handler for this event:
+In addition, every time a `VisualState` change occurs, the `IsActiveChanged` event for the `VisualState` is raised. Each `VisualState` registers an event handler for this event:
 
 ```csharp
 void OnCheckedStateIsActiveChanged(object sender, EventArgs e)
@@ -305,7 +305,7 @@ void OnUncheckedStateIsActiveChanged(object sender, EventArgs e)
 }
 ```
 
-In this example, when a handler for the `IsActiveChanged` event is fired, the handler outputs whether the `VisualState` is active or not. For example, the following messages are output to the console window when changing from the `Checked` visual state to the `Unchecked` visual state:
+In this example, when a handler for the `IsActiveChanged` event is raised, the handler outputs whether the `VisualState` is active or not. For example, the following messages are output to the console window when changing from the `Checked` visual state to the `Unchecked` visual state:
 
 ```
 Checked state active: False
