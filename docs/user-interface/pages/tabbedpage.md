@@ -33,7 +33,7 @@ Two approaches can be used to create a `TabbedPage`:
 - Assign a collection to the `ItemsSource` property and assign a `DataTemplate` to the `ItemTemplate` property to return pages for objects in the collection. For more information, see [Populate a TabbedPage with a DataTemplate](#populate-a-tabbedpage-with-a-datatemplate).
 
 > [!IMPORTANT]
-> A `TabbedPage` should only be populated with `NavigationPage` and `ContentPage` objects. This will help to ensure a consistent user experience across all platforms.
+> A `TabbedPage` should only be populated with `NavigationPage` and `ContentPage` objects.
 
 Regardless of the approach taken, the location of the tab bar in a `TabbedPage` is platform-dependent:
 
@@ -43,7 +43,7 @@ Regardless of the approach taken, the location of the tab bar in a `TabbedPage` 
 
 ### Populate a TabbedPage with a Page collection
 
-A `TabbedPage` can be populated with a collection of child `Page` objects, which will typically be `ContentPage` objects. This is achieved by adding the `ContentPage` objects as children of the `TabbedPage`:
+A `TabbedPage` can be populated with a collection of child `Page` objects, which will typically be `ContentPage` objects. This is achieved by adding `ContentPage` objects as children of the `TabbedPage`:
 
 ```xaml
 <TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -58,7 +58,7 @@ A `TabbedPage` can be populated with a collection of child `Page` objects, which
 
 `Page` objects that are added as child elements of `TabbedPage` are added to the `Children` collection. The `Children` property of the `MultiPage<T>` class, from which `TabbedPage` derives, is the `ContentProperty` of `MultiPage<T>`. Therefore, in XAML it's not necessary to explicitly assign the `Page` objects to the `Children` property.
 
-The following screenshot shows the appearance of the resulting `TabbedPage`:
+The following screenshot shows the appearance of the resulting tab bar on the `TabbedPage`:
 
 :::image type="content" source="media/tabbedpage/tabbar.png" alt-text=".NET MAUI tab bar on a TabbedPage.":::
 
@@ -66,7 +66,7 @@ The page content for a tab appears when the tab is selected.
 
 ### Populate a TabbedPage with a DataTemplate
 
-`TabbedPage` inherits `ItemsSource`, `ItemTemplate`, and `SelectedItem` bindable properties from the `MultiPage<T>` class. These properties enable you to generate the `TabbedPage` children dynamically, by setting the `ItemsSource` property to an `IEnumerable` collection of objects with public properties suitable for data bindings, and by setting the `ItemTemplate` property to a `DataTemplate` with a page type as the root element.
+`TabbedPage` inherits `ItemsSource`, `ItemTemplate`, and `SelectedItem` bindable properties from the `MultiPage<T>` class. These properties enable you to generate `TabbedPage` children dynamically, by setting the `ItemsSource` property to an `IEnumerable` collection of objects with public properties suitable for data bindings, and by setting the `ItemTemplate` property to a `DataTemplate` with a page type as the root element.
 
 The following example shows generating `TabbedPage` children dynamically:
 
@@ -76,10 +76,6 @@ The following example shows generating `TabbedPage` children dynamically:
             xmlns:local="clr-namespace:TabbedPageDemo"
             x:Class="TabbedPageDemo.MainPage"
             ItemsSource="{x:Static local:MonkeyDataModel.All}">
-    <TabbedPage.Resources>
-        <local:NonNullToBooleanConverter x:Key="booleanConverter" />
-    </TabbedPage.Resources>
-
     <TabbedPage.ItemTemplate>
         <DataTemplate>
             <ContentPage Title="{Binding Name}"
@@ -133,7 +129,7 @@ Navigation can be performed within a tab, provided that the `ContentPage` object
 
 In this example, the `TabbedPage` is populated with two `Page` objects. The first child is a `ContentPage` object, and the second child is a `NavigationPage` object containing a `ContentPage` object.
 
-When a `ContentPage` is wrapped in a `NavigationPage`, page navigation can be performed by calling the `PushAsync` method on the `Navigation` property of the `ContentPage` object:
+When a `ContentPage` is wrapped in a `NavigationPage`, forwards page navigation can be performed by calling the `PushAsync` method on the `Navigation` property of the `ContentPage` object:
 
 ```csharp
 await Navigation.PushAsync(new UpcomingAppointmentsPage());
