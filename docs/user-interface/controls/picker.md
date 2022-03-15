@@ -21,7 +21,7 @@ The .NET Multi-platform App UI (.NET MAUI) `Picker` displays a short list of ite
 - `ItemsSource` of type `IList`, the source list of items to display, which defaults to `null`.
 - `SelectedIndex` of type `int`, the index of the selected item, which defaults to -1.
 - `SelectedItem` of type `object`, the selected item, which defaults to `null`.
-- `TextColor` of type `Color`, the color used to display the text, which defaults to `Color.Default`.
+- `TextColor` of type `Color`, the color used to display the text.
 - `TextTransform`, of type `TextTransform`, which defines whether to transform the casing of text.
 - `Title` of type `string`, which defaults to `null`.
 - `TitleColor` of type `Color`, the color used to display the `Title` text.

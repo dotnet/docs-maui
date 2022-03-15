@@ -186,7 +186,7 @@ public class NumericValidationBehavior : Behavior<Entry>
     {
         double result;
         bool isValid = double.TryParse(args.NewTextValue, out result);
-        ((Entry)sender).TextColor = isValid ? Color.Default : Color.Red;
+        ((Entry)sender).TextColor = isValid ? Colors.Black : Colors.Red;
     }
 }
 ```
