@@ -226,11 +226,9 @@ The following screenshot shows the .NET MAUI behavior responding to invalid inpu
 
 .NET MAUI behaviors can be consumed by an explicit or implicit style. However, creating a style that sets the `Behaviors` property of a control is not possible because the property is read-only. The solution is to add an attached property to the behavior class that controls adding and removing the behavior. The process is as follows:
 
-1. Add an attached property to the behavior class that will be used to control the addition or removal of the behavior to the control to which the behavior will attached. Ensure that the attached property registers a `propertyChanged` delegate that will be executed when the value of the property changes.
+1. Add an attached property to the behavior class that will be used to control the addition or removal of the behavior to the control to which the behavior will be attached. Ensure that the attached property registers a `propertyChanged` delegate that will be executed when the value of the property changes.
 1. Create a `static` getter and setter for the attached property.
 1. Implement logic in the `propertyChanged` delegate to add and remove the behavior.
-
-The following code example shows an attached property that controls adding and removing the `NumericValidationBehavior`:
 
 The following example shows the `NumericValidationStyleBehavior` class, which has an attached property that controls adding and removing the behavior:
 
