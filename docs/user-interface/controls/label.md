@@ -146,7 +146,6 @@ The following example demonstrates setting the `LineHeight` property on a `Label
        LineHeight="1.8" />
 ```
 
-
 The following screenshot shows the result of setting the `Label.LineHeight` property to 1.8:
 
 :::image type="content" source="media/label/lineheight.png" alt-text="Screenshot of Labels line height example.":::
