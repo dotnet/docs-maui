@@ -66,12 +66,11 @@ An app that is structured around multiple pages always has a *root* page, which 
 ```csharp
 public partial class App : Application
 {
-  	public App()
-  	{
-  		InitializeComponent();
-
-  		MainPage = new NavigationPage(new MainPage());
-  	}
+    public App()
+    {
+        InitializeComponent();
+        MainPage = new NavigationPage(new MainPage());
+    }
 }
 ```
 
