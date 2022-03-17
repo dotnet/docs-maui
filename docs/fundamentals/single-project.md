@@ -1,10 +1,10 @@
 ---
-title: ".NET MAUI single project"
+title: "Target multiple platforms from a single project"
 description: "Learn about the .NET MAUI single project, which brings all the platform-specific experiences across Android, iOS, macOS, and Windows, into one shared project."
 ms.date: 03/01/2022
 ---
 
-# Single project
+# Target multiple platforms from a single project
 
 .NET Multi-platform App UI (.NET MAUI) single project takes the platform-specific development experiences you typically encounter while developing apps and abstracts them into a single shared project that can target Android, iOS, macOS, and Windows.
 
@@ -125,10 +125,10 @@ For more information, see [Splash screens](~/user-interface/images/splashscreen.
 
 ### Raw assets
 
-Raw asset files, such as HTML, JSON, and videos, can be added to your app project by dragging them into the _Resources_ folder of your project (or a sub-folder, such as _Resources\Assets_), and setting their build action to `MauiAsset` in the **Properties** window. This creates a corresponding entry per asset in your project file:
+Raw asset files, such as HTML, JSON, and videos, can be added to your app project by dragging them into the _Resources_ folder of your project (or a sub-folder, such as _Resources\Raw_), and setting their build action to `MauiAsset` in the **Properties** window. This creates a corresponding entry per asset in your project file:
 
 ```xml
-<MauiAsset Include="Resources\Assets\index.html" />
+<MauiAsset Include="Resources\Raw\index.html" />
 ```
 
 Raw assets can then be consumed by controls, as required:

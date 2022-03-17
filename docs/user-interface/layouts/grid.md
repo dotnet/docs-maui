@@ -183,7 +183,7 @@ public class BasicGridPage : ContentPage
         // Grid to obtain the default row and column settings.
         grid.Add(new BoxView
         {
-            Color = Color.Green
+            Color = Colors.Green
         });
         grid.Add(new Label
         {
@@ -196,7 +196,7 @@ public class BasicGridPage : ContentPage
         // to the Add method.
         grid.Add(new BoxView
         {
-            Color = Color.Blue
+            Color = Colors.Blue
         }, 1, 0);
         grid.Add(new Label
         {
@@ -210,7 +210,7 @@ public class BasicGridPage : ContentPage
         // to the Add method overload.
         grid.Add(new BoxView
         {
-            Color = Color.Teal
+            Color = Colors.Teal
         }, 0, 1);
         grid.Add(new Label
         {
@@ -223,7 +223,7 @@ public class BasicGridPage : ContentPage
         // to the Add method overload.
         grid.Add(new BoxView
         {
-            Color = Color.Purple
+            Color = Colors.Purple
         }, 1, 1);
         grid.Add(new Label
         {
@@ -235,7 +235,7 @@ public class BasicGridPage : ContentPage
         // Row 2
         // Alternatively, the BoxView and Label can be positioned in cells with the Grid.SetRow
         // and Grid.SetColumn methods.
-        BoxView boxView = new BoxView { Color = Color.Red };
+        BoxView boxView = new BoxView { Color = Colors.Red };
         Grid.SetRow(boxView, 2);
         Grid.SetColumnSpan(boxView, 2);
         Label label = new Label
@@ -438,7 +438,7 @@ public class GridAlignmentPage : ContentPage
         // Row 0
         grid.Add(new BoxView
         {
-            Color = Color.AliceBlue
+            Color = Colors.AliceBlue
         });
         grid.Add(new Label
         {
@@ -449,7 +449,7 @@ public class GridAlignmentPage : ContentPage
 
         grid.Add(new BoxView
         {
-            Color = Color.LightSkyBlue
+            Color = Colors.LightSkyBlue
         }, 1, 0);
         grid.Add(new Label
         {
@@ -460,7 +460,7 @@ public class GridAlignmentPage : ContentPage
 
         grid.Add(new BoxView
         {
-            Color = Color.CadetBlue
+            Color = Colors.CadetBlue
         }, 2, 0);
         grid.Add(new Label
         {
@@ -472,7 +472,7 @@ public class GridAlignmentPage : ContentPage
         // Row 1
         grid.Add(new BoxView
         {
-            Color = Color.CornflowerBlue
+            Color = Colors.CornflowerBlue
         }, 0, 1);
         grid.Add(new Label
         {
@@ -483,7 +483,7 @@ public class GridAlignmentPage : ContentPage
 
         grid.Add(new BoxView
         {
-            Color = Color.DodgerBlue
+            Color = Colors.DodgerBlue
         }, 1, 1);
         grid.Add(new Label
         {
@@ -494,7 +494,7 @@ public class GridAlignmentPage : ContentPage
 
         grid.Add(new BoxView
         {
-            Color = Color.DarkSlateBlue
+            Color = Colors.DarkSlateBlue
         }, 2, 1);
         grid.Add(new Label
         {
@@ -506,7 +506,7 @@ public class GridAlignmentPage : ContentPage
         // Row 2
         grid.Add(new BoxView
         {
-            Color = Color.SteelBlue
+            Color = Colors.SteelBlue
         }, 0, 2);
         grid.Add(new Label
         {
@@ -517,7 +517,7 @@ public class GridAlignmentPage : ContentPage
 
         grid.Add(new BoxView
         {
-            Color = Color.LightBlue
+            Color = Colors.LightBlue
         }, 1, 2);
         grid.Add(new Label
         {
@@ -528,7 +528,7 @@ public class GridAlignmentPage : ContentPage
 
         grid.Add(new BoxView
         {
-            Color = Color.BlueViolet
+            Color = Colors.BlueViolet
         }, 2, 2);
         grid.Add(new Label
         {
@@ -653,7 +653,7 @@ public class ColorSlidersGridPage : ContentPage
             }
         };
 
-        boxView = new BoxView { Color = Color.Black };
+        boxView = new BoxView { Color = Colors.Black };
         rootGrid.Add(boxView);
 
         // Child page layout

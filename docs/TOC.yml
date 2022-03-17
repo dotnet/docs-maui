@@ -29,8 +29,12 @@
                   href: android/emulator/troubleshooting.md
             - name: Devices
               items:
-                - name: How to setup a physical device
+                - name: How to set up a physical device
                   href: android/device/setup.md
+        - name: Windows
+          items:
+            - name: How to set up Windows for debugging
+              href: windows/setup.md
     - name: XAML
       items:
         - name: Overview
@@ -201,8 +205,14 @@
                       href: user-interface/controls/frame.md
                     - name: GraphicsView
                       href: user-interface/controls/graphicsview.md
+                    - name: Image
+                      href: user-interface/controls/image.md
+                    - name: Label
+                      href: user-interface/controls/label.md
                     - name: ScrollView
                       href: user-interface/controls/scrollview.md
+                    - name: WebView
+                      href: user-interface/controls/webview.md
                 - name: Initiate commands
                   items:
                     - name: Button
@@ -231,6 +241,12 @@
                       href: user-interface/controls/switch.md
                     - name: TimePicker
                       href: user-interface/controls/timepicker.md
+                - name: Edit text
+                  items:
+                    - name: Editor
+                      href: user-interface/controls/editor.md
+                    - name: Entry
+                      href: user-interface/controls/entry.md
                 - name: Indicate activity
                   items:
                     - name: ActivityIndicator
@@ -241,8 +257,12 @@
                   items:
                     - name: IndicatorView
                       href: user-interface/controls/indicatorview.md
+                    - name: ListView
+                      href: user-interface/controls/listview.md
                     - name: Picker
                       href: user-interface/controls/picker.md
+                    - name: TableView
+                      href: user-interface/controls/tableview.md
                 - name: ContentView
                   href: user-interface/controls/contentview.md
         - name: Display pop-ups

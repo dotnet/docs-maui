@@ -108,7 +108,7 @@ The examples shown here so far have demonstrated animations that could equally b
 ```csharp
 new Animation (callback: v => BackgroundColor = Color.FromHsla (v, 1, 0.5),
   start: 0,
-  end: 1).Commit (this, "Animation", 16, 4000, Easing.Linear, (v, c) => BackgroundColor = Color.Default);
+  end: 1).Commit (this, "Animation", 16, 4000, Easing.Linear, (v, c) => BackgroundColor = Colors.Black);
 ```
 
 The resulting animation provides the appearance of advancing the page background through the colors of the rainbow.
@@ -154,10 +154,10 @@ The `Animate` method requires a `transform` argument, which is a callback method
 
 ```csharp
 await Task.WhenAll(
-  label.ColorTo(Color.Red, Color.Blue, c => label.TextColor = c, 5000),
-  label.ColorTo(Color.Blue, Color.Red, c => label.BackgroundColor = c, 5000));
+  label.ColorTo(Colors.Red, Colors.Blue, c => label.TextColor = c, 5000),
+  label.ColorTo(Colors.Blue, Colors.Red, c => label.BackgroundColor = c, 5000));
 await this.ColorTo(Color.FromRgb(0, 0, 0), Color.FromRgb(255, 255, 255), c => BackgroundColor = c, 5000);
-await boxView.ColorTo(Color.Blue, Color.Red, c => boxView.Color = c, 4000);
+await boxView.ColorTo(Colors.Blue, Colors.Red, c => boxView.Color = c, 4000);
 ```
 
 In this code example, the `ColorTo` method animates the `TextColor` and `BackgroundColor` properties of a `Label`, the `BackgroundColor` property of a page, and the `Color` property of a `BoxView`.

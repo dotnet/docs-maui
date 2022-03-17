@@ -70,7 +70,7 @@ The following example shows a `DataTrigger` that disables a `Button` when the `E
 ```xaml
 <Entry x:Name="entry"
        Text=""
-       Placeholder="Enter text />
+       Placeholder="Enter text" />
 <Button Text="Save">
     <Button.Triggers>
         <DataTrigger TargetType="Button"
