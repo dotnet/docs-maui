@@ -13,6 +13,68 @@
           href: get-started/first-app.md
         - name: Migrate from Xamarin.Forms
           href: get-started/migrate.md
+        - name: Android
+          items:
+            - name: Emulator
+              items:
+                - name: How to enable hardware acceleration
+                  href: android/emulator/hardware-acceleration.md
+                - name: Manage and create virtual devices
+                  href: android/emulator/device-manager.md
+                - name: Edit virtual devices
+                  href: android/emulator/device-properties.md
+                - name: Debug on a virtual device
+                  href: android/emulator/debug-on-emulator.md
+                - name: Troubleshoot common problems
+                  href: android/emulator/troubleshooting.md
+            - name: Devices
+              items:
+                - name: How to set up a physical device
+                  href: android/device/setup.md
+        - name: Windows
+          items:
+            - name: How to set up Windows for debugging
+              href: windows/setup.md
+    - name: XAML
+      items:
+        - name: Overview
+          href: xaml/index.md
+        - name: Fundamentals
+          items:
+            - name: Get started
+              href: xaml/fundamentals/get-started.md
+            - name: Essential syntax
+              href: xaml/fundamentals/essential-syntax.md
+            - name: Markup extensions
+              href: xaml/fundamentals/markup-extensions.md
+            - name: Data binding basics
+              href: xaml/fundamentals/data-binding-basics.md
+            - name: Data binding and MVVM
+              href: xaml/fundamentals/mvvm.md
+        - name: Compilation
+          href: xaml/xamlc.md
+        - name: Field modifiers
+          href: xaml/field-modifiers.md
+        - name: Generics
+          href: xaml/generics.md
+        - name: Markup extensions
+          items:
+            - name: Consume markup extensions
+              href: xaml/markup-extensions/consume.md
+            - name: Create markup extensions
+              href: xaml/markup-extensions/create.md
+        - name: Namespaces
+          items:
+            - name: Overview
+              href: xaml/namespaces/index.md
+            - name: Custom namespace schemas
+              href: xaml/namespaces/custom-namespace-schemas.md
+            - name: Custom namespace prefixes
+              href: xaml/namespaces/custom-prefix.md
+        - name: Pass arguments
+          href: xaml/pass-arguments.md
+        - name: Runtime loading
+          href: xaml/runtime-load.md
     - name: Fundamentals
       items:
         - name: Accessibility
@@ -21,10 +83,74 @@
           href: fundamentals/app-lifecycle.md
         - name: App startup
           href: fundamentals/app-startup.md
+        - name: Behaviors
+          href: fundamentals/behaviors.md
+        - name: Data binding
+          items:
+              - name: Overview
+                href: fundamentals/data-binding/index.md
+              - name: Basic bindings
+                href: fundamentals/data-binding/basic-bindings.md
+              - name: Binding mode
+                href: fundamentals/data-binding/binding-mode.md
+              - name: String formatting
+                href: fundamentals/data-binding/string-formatting.md
+              - name: Binding path
+                href: fundamentals/data-binding/binding-path.md
+              - name: Binding value converters
+                href: fundamentals/data-binding/converters.md
+              - name: Relative bindings
+                href: fundamentals/data-binding/relative-bindings.md
+              - name: Binding fallbacks
+                href: fundamentals/data-binding/binding-fallbacks.md
+              - name: Multi-bindings
+                href: fundamentals/data-binding/multibinding.md
+              - name: Commanding
+                href: fundamentals/data-binding/commanding.md
+              - name: Compiled bindings
+                href: fundamentals/data-binding/compiled-bindings.md
+        - name: Gestures
+          items:
+              - name: Drag and drop
+                href: fundamentals/gestures/drag-and-drop.md
+              - name: Pan
+                href: fundamentals/gestures/pan.md
+              - name: Pinch
+                href: fundamentals/gestures/pinch.md
+              - name: Swipe
+                href: fundamentals/gestures/swipe.md
+              - name: Tap
+                href: fundamentals/gestures/tap.md
+        - name: Properties
+          items:
+              - name: Bindable properties
+                href: fundamentals/bindable-properties.md
+              - name: Attached properties
+                href: fundamentals/attached-properties.md
+        - name: Publish and subscribe to messages
+          href: fundamentals/messagingcenter.md
+        - name: Resource dictionaries
+          href: fundamentals/resource-dictionaries.md
         - name: Single project
           href: fundamentals/single-project.md
+        - name: Templates
+          items:
+              - name: Control templates
+                href: fundamentals/controltemplate.md
+              - name: Data templates
+                href: fundamentals/datatemplate.md
+        - name: Triggers
+          href: fundamentals/triggers.md
     - name: User interface
       items:
+        - name: Animation
+          items:
+            - name: Basic animation
+              href: user-interface/animation/basic.md
+            - name: Easing functions
+              href: user-interface/animation/easing.md
+            - name: Custom animation
+              href: user-interface/animation/custom.md
         - name: Brushes
           items:
             - name: Overview
@@ -49,16 +175,32 @@
               items:
                 - name: Overview
                   href: user-interface/layouts/index.md
+                - name: AbsoluteLayout
+                  href: user-interface/layouts/absolutelayout.md
+                - name: BindableLayout
+                  href: user-interface/layouts/bindablelayout.md
                 - name: FlexLayout
                   href: user-interface/layouts/flexlayout.md
-                - name: GridLayout
-                  href: user-interface/layouts/gridlayout.md
+                - name: Grid
+                  href: user-interface/layouts/grid.md
                 - name: HorizontalStackLayout
                   href: user-interface/layouts/horizontalstacklayout.md
+                - name: RelativeLayout
+                  href: user-interface/layouts/relativelayout.md
                 - name: StackLayout
                   href: user-interface/layouts/stacklayout.md
                 - name: VerticalStackLayout
                   href: user-interface/layouts/verticalstacklayout.md
+            - name: Pages
+              items:
+                - name: ContentPage
+                  href: user-interface/pages/contentpage.md
+                - name: FlyoutPage
+                  href: user-interface/pages/flyoutpage.md
+                - name: NavigationPage
+                  href: user-interface/pages/navigationpage.md
+                - name: TabbedPage
+                  href: user-interface/pages/tabbedpage.md
             - name: Views
               items:
                 - name: Display collections
@@ -83,12 +225,90 @@
                       href: user-interface/controls/blazorwebview.md
                     - name: Border
                       href: user-interface/controls/border.md
-                    - name: ContentView
-                      href: user-interface/controls/contentview.md
+                    - name: BoxView
+                      href: user-interface/controls/boxview.md
                     - name: Frame
                       href: user-interface/controls/frame.md
                     - name: GraphicsView
                       href: user-interface/controls/graphicsview.md
+                    - name: Image
+                      href: user-interface/controls/image.md
+                    - name: Label
+                      href: user-interface/controls/label.md
+                    - name: ScrollView
+                      href: user-interface/controls/scrollview.md
+                    - name: WebView
+                      href: user-interface/controls/webview.md
+                - name: Initiate commands
+                  items:
+                    - name: Button
+                      href: user-interface/controls/button.md
+                    - name: ImageButton
+                      href: user-interface/controls/imagebutton.md
+                    - name: RadioButton
+                      href: user-interface/controls/radiobutton.md
+                    - name: RefreshView
+                      href: user-interface/controls/refreshview.md
+                    - name: SearchBar
+                      href: user-interface/controls/searchbar.md
+                    - name: SwipeView
+                      href: user-interface/controls/swipeview.md
+                - name: Set values
+                  items:
+                    - name: CheckBox
+                      href: user-interface/controls/checkbox.md
+                    - name: DatePicker
+                      href: user-interface/controls/datepicker.md
+                    - name: Slider
+                      href: user-interface/controls/slider.md
+                    - name: Stepper
+                      href: user-interface/controls/stepper.md
+                    - name: Switch
+                      href: user-interface/controls/switch.md
+                    - name: TimePicker
+                      href: user-interface/controls/timepicker.md
+                - name: Edit text
+                  items:
+                    - name: Editor
+                      href: user-interface/controls/editor.md
+                    - name: Entry
+                      href: user-interface/controls/entry.md
+                - name: Indicate activity
+                  items:
+                    - name: ActivityIndicator
+                      href: user-interface/controls/activityindicator.md
+                    - name: ProgressBar
+                      href: user-interface/controls/progressbar.md
+                - name: Display collections
+                  items:
+                    - name: CollectionView
+                      items:
+                          - name: Overview
+                            href: user-interface/controls/collectionview/index.md
+                          - name: Data
+                            href: user-interface/controls/collectionview/populate-data.md
+                          - name: Layout
+                            href: user-interface/controls/collectionview/layout.md
+                          - name: Selection
+                            href: user-interface/controls/collectionview/selection.md
+                          - name: EmptyView
+                            href: user-interface/controls/collectionview/emptyview.md
+                          - name: Scrolling
+                            href: user-interface/controls/collectionview/scrolling.md
+                          - name: Grouping
+                            href: user-interface/controls/collectionview/grouping.md
+                    - name: IndicatorView
+                      href: user-interface/controls/indicatorview.md
+                    - name: ListView
+                      href: user-interface/controls/listview.md
+                    - name: Picker
+                      href: user-interface/controls/picker.md
+                    - name: TableView
+                      href: user-interface/controls/tableview.md
+                - name: ContentView
+                  href: user-interface/controls/contentview.md
+        - name: Display pop-ups
+          href: user-interface/pop-ups.md
         - name: Graphics
           items:
             - name: Overview
@@ -115,6 +335,20 @@
               href: user-interface/images/splashscreen.md
         - name: Shadows
           href: user-interface/shadow.md
+        - name: Styles
+          items:
+            - name: Style apps using XAML
+              href: user-interface/styles/xaml.md
+            - name: Style apps using CSS
+              href: user-interface/styles/css.md
+        - name: Theming
+          items:
+            - name: Theme an app
+              href: user-interface/theming.md
+            - name: Respond to system theme changes
+              href: user-interface/system-theme-changes.md
+        - name: Visual states
+          href: user-interface/visual-states.md
     - name: Platform integration
       items:
         - name: Configure multi-targeting

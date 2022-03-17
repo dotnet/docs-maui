@@ -114,7 +114,7 @@ The following XAML example sets alignment preferences on each child view in the 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             StackLayoutDemos.Views.VerticalStackLayoutPage>
+             x:Class="StackLayoutDemos.Views.VerticalStackLayoutPage">
     <VerticalStackLayout Margin="20"
                          Spacing="6">
         <Label Text="Start"
