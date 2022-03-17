@@ -214,7 +214,7 @@ The following example demonstrates how `x:Static` can explicitly reference stati
 <Label Text="Hello, XAML!"
        VerticalOptions="{x:Static LayoutOptions.Start}"
        HorizontalTextAlignment="{x:Static TextAlignment.Center}"
-       TextColor="{x:Static Color.Aqua}" />
+       TextColor="{x:Static Colors.Aqua}" />
 ```
 
 The main use of the `x:Static` markup extension is in referencing static fields or properties from your own code. For example, here’s an `AppConstants` class that contains some static fields that you might want to use on multiple pages throughout an app:
@@ -224,8 +224,8 @@ namespace XamlSamples
 {
     static class AppConstants
     {
-        public static readonly Color BackgroundColor = Color.Aqua;
-        public static readonly Color ForegroundColor = Color.Brown;
+        public static readonly Color BackgroundColor = Colors.Aqua;
+        public static readonly Color ForegroundColor = Colors.Brown;
     }
 }
 ```

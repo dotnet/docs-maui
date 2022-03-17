@@ -43,7 +43,7 @@ The following example demonstrates using compiled bindings between .NET MAUI vie
         <local:HslColorViewModel Color="Sienna" />
     </ContentPage.BindingContext>
     ...
-    <StackLayout Margin=20>
+    <StackLayout>
         <BoxView Color="{Binding Color}"
                  ... />
         <StackLayout Margin="10, 0">
