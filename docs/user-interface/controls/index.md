@@ -48,6 +48,7 @@ The main control groups used to create the user interface of a .NET MAUI app are
 | `DatePicker` | `DatePicker` enables you to select a date with the platform date picker. For more information, see [DatePicker](~/user-interface/controls/datepicker.md). |
 | `Frame` | `Frame` is used to wrap a view or layout with a border that can be configured with color, shadow, and other options. For more information, see [Frame](~/user-interface/controls/frame.md). |
 | `GraphicsView` | `GraphicsView` is a graphics canvas on which 2D graphics can be drawn using types from the `Microsoft.Maui.Graphics` namespace. For more information, see [GraphicsView](~/user-interface/controls/graphicsview.md). |
+| `Image` | `Image` displays an image that can be loaded from a local file, a URI, an embedded resource, or a stream. For more information, see [Image](~/user-interface/controls/image.md). |
 | `ImageButton` | `ImageButton` displays an image and responds to a tap or click that direct an app to carry out a task. For more information, see [ImageButton](~/user-interface/controls/imagebutton.md). |
 | `IndicatorView` | `IndicatorView` displays indicators that represent the number of items in a `CarouselView`. For more information, see [IndicatorView](~/user-interface/controls/indicatorview.md). |
 | `ListView` | `ListView` displays a scrollable list of selectable data items. For more information, see [ListView](~/user-interface/controls/listview.md). |
@@ -62,3 +63,4 @@ The main control groups used to create the user interface of a .NET MAUI app are
 | `Switch` | `Switch` enables you to select a boolean value using a type of button that can either be on or off. For more information, see [Switch](~/user-interface/controls/switch.md). |
 | `TableView` | `TableView` displays a table of scrollable items that can be grouped into sections. For more information, see [TableView](~/user-interface/controls/tableview.md). |
 | `TimePicker` | `TimePicker` enables you to select a time with the platform time picker. For more information, see [TimePicker](~/user-interface/controls/timepicker.md). |
+| `WebView` | `WebView` displays web pages or local HTML content. For more information, see [WebView](~/user-interface/controls/webview.md). |
