@@ -35,7 +35,7 @@ However, on some platforms a `RadioButton` can display a `View`, and on all plat
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
-`RadioButton` also defines a `CheckedChanged` event that's fired when the `IsChecked` property changes, either through user or programmatic manipulation. The `CheckedChangedEventArgs` object that accompanies the `CheckedChanged` event has a single property named `Value`, of type `bool`. When the event is fired, the value of the `CheckedChangedEventArgs.Value` property is set to the new value of the `IsChecked` property.
+`RadioButton` also defines a `CheckedChanged` event that's raised when the `IsChecked` property changes, either through user or programmatic manipulation. The `CheckedChangedEventArgs` object that accompanies the `CheckedChanged` event has a single property named `Value`, of type `bool`. When the event is raised, the value of the `CheckedChangedEventArgs.Value` property is set to the new value of the `IsChecked` property.
 
 `RadioButton` grouping can be managed by the `RadioButtonGroup` class, which defines the following attached properties:
 

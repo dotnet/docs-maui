@@ -14,7 +14,7 @@ In .NET MAUI, pinch gesture recognition is provided by the `PinchGestureRecogniz
 
 - `Scale`, of type `double`, which indicates the relative size of the pinch gesture since the last update was received.
 - `ScaleOrigin`, of type `Point`, which indicates the updated origin of the pinch's gesture.
-- `Status`, of type `GestureStatus`, which indicates if the event has fired for a newly started gesture, a running gesture, a completed gesture, or a canceled gesture.
+- `Status`, of type `GestureStatus`, which indicates if the event has been raised for a newly started gesture, a running gesture, a completed gesture, or a canceled gesture.
 
 ## Create a PinchGestureRecognizer
 

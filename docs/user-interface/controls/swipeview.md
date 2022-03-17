@@ -26,9 +26,9 @@ In addition, the `SwipeView` inherits the `Content` property from the `ContentVi
 
 The `SwipeView` class also defines three events:
 
-- `SwipeStarted` is fired when a swipe starts. The `SwipeStartedEventArgs` object that accompanies this event has a `SwipeDirection` property, of type `SwipeDirection`.
-- `SwipeChanging` is fired as the swipe moves. The `SwipeChangingEventArgs` object that accompanies this event has a `SwipeDirection` property, of type `SwipeDirection`, and an `Offset` property of type `double`.
-- `SwipeEnded` is fired when a swipe ends. The `SwipeEndedEventArgs` object that accompanies this event has a `SwipeDirection` property, of type `SwipeDirection`, and an `IsOpen` property of type `bool`.
+- `SwipeStarted` is raised when a swipe starts. The `SwipeStartedEventArgs` object that accompanies this event has a `SwipeDirection` property, of type `SwipeDirection`.
+- `SwipeChanging` is raised as the swipe moves. The `SwipeChangingEventArgs` object that accompanies this event has a `SwipeDirection` property, of type `SwipeDirection`, and an `Offset` property of type `double`.
+- `SwipeEnded` is raised when a swipe ends. The `SwipeEndedEventArgs` object that accompanies this event has a `SwipeDirection` property, of type `SwipeDirection`, and an `IsOpen` property of type `bool`.
 
 In addition, `SwipeView` includes `Open` and `Close` methods, which programmatically open and close the swipe items, respectively.
 
@@ -136,7 +136,7 @@ These properties are backed by `BindableProperty` objects, which means that they
 Each swipe item is defined as a `SwipeItem` object that's placed into one of the four `SwipeItems` directional collections. The `SwipeItem` class derives from the `MenuItem` class, and adds the following members:
 
 - A `BackgroundColor` property, of type `Color`, that defines the background color of the swipe item. This property is backed by a bindable property.
-- An `Invoked` event, which is fired when the swipe item is executed.
+- An `Invoked` event, which is raised when the swipe item is executed.
 
 > [!IMPORTANT]
 > The `MenuItem` class defines several properties, including `Command`, `CommandParameter`, `IconImageSource`, and `Text`. These properties can be set on a `SwipeItem` object to define its appearance, and to define an `ICommand` that executes when the swipe item is invoked. <!--For more information, see [MenuItem](~/user-interface/menuitem.md).-->
@@ -299,7 +299,7 @@ Custom swipe items can be defined with the `SwipeItemView` type. The `SwipeItemV
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
-The `SwipeItemView` class also defines an `Invoked` event that's fired when the item is tapped, after the `Command` is executed.
+The `SwipeItemView` class also defines an `Invoked` event that's raised when the item is tapped, after the `Command` is executed.
 
 The following example shows a `SwipeItemView` object in the `LeftItems` collection of a `SwipeView`:
 

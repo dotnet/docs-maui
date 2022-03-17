@@ -29,9 +29,9 @@ These properties are backed by `BindableProperty` objects. The `Value` property 
 
 The `Slider` coerces the `Value` property so that it is between `Minimum` and `Maximum`, inclusive. If the `Minimum` property is set to a value greater than the `Value` property, the `Slider` sets the `Value` property to `Minimum`. Similarly, if `Maximum` is set to a value less than `Value`, then `Slider` sets the `Value` property to `Maximum`. Internally, the `Slider` ensures that `Minimum` is less than `Maximum`. If `Minimum` or `Maximum` are ever set so that `Minimum` is not less than `Maximum`, an exception is raised. For more information on setting the `Minimum` and `Maximum` properties, see [Precautions](#precautions).
 
-`Slider` defines a `ValueChanged` event that is fired when the `Value` changes, either through user manipulation of the `Slider` or when the program sets the `Value` property directly. A `ValueChanged` event is also fired when the `Value` property is coerced as described in the previous paragraph. The `ValueChangedEventArgs` object that accompanies the `ValueChanged` event has `OldValue` and `NewValue` properties, of type `double`. At the time the event is fired, the value of `NewValue` is the same as the `Value` property of the `Slider` object.
+`Slider` defines a `ValueChanged` event that's raised when the `Value` changes, either through user manipulation of the `Slider` or when the program sets the `Value` property directly. A `ValueChanged` event is also raised when the `Value` property is coerced as described in the previous paragraph. The `ValueChangedEventArgs` object that accompanies the `ValueChanged` event has `OldValue` and `NewValue` properties, of type `double`. At the time the event is raised, the value of `NewValue` is the same as the `Value` property of the `Slider` object.
 
-`Slider` also defines `DragStarted` and `DragCompleted` events, that are fired at the beginning and end of the drag action. Unlike the `ValueChanged` event, the `DragStarted` and `DragCompleted` events are only fired through user manipulation of the `Slider`. When the `DragStarted` event fires, the `DragStartedCommand`, of type `ICommand`, is executed. Similarly, when the `DragCompleted` event fires, the `DragCompletedCommand`, of type `ICommand`, is executed.
+`Slider` also defines `DragStarted` and `DragCompleted` events, that are raised at the beginning and end of the drag action. Unlike the `ValueChanged` event, the `DragStarted` and `DragCompleted` events are only raised through user manipulation of the `Slider`. When the `DragStarted` event fires, the `DragStartedCommand`, of type `ICommand`, is executed. Similarly, when the `DragCompleted` event fires, the `DragCompletedCommand`, of type `ICommand`, is executed.
 
 > [!WARNING]
 > Do not use unconstrained horizontal layout options of `Center`, `Start`, or `End` with `Slider`. Keep the default `HorizontalOptions` setting of `Fill`, and don't use a width of `Auto` when putting `Slider` in a `Grid` layout.
@@ -62,7 +62,7 @@ The following example shows how to create a `Slider`, with two `Label` objects:
 </ContentPage>
 ```
 
-In this example, the `Slider` is initialized to have a `Maximum` property of 360. The second `Label` displays the text "(uninitialized)" until the `Slider` is manipulated, which causes the first `ValueChanged` event to be fired.
+In this example, the `Slider` is initialized to have a `Maximum` property of 360. The second `Label` displays the text "(uninitialized)" until the `Slider` is manipulated, which causes the first `ValueChanged` event to be raised.
 
 The code-behind file contains the handler for the `ValueChanged` event:
 
@@ -206,7 +206,7 @@ Slider slider = new Slider
 
 When `Minimum` is set to 10, then `Value` is also set to 10.
 
-If a `ValueChanged` event handler has been attached at the time that the `Value` property is coerced to something other than its default value of 0, then a `ValueChanged` event is fired:
+If a `ValueChanged` event handler has been attached at the time that the `Value` property is coerced to something other than its default value of 0, then a `ValueChanged` event is raised:
 
 ```xaml
 <Slider ValueChanged="OnSliderValueChanged"
@@ -214,4 +214,4 @@ If a `ValueChanged` event handler has been attached at the time that the `Value`
         Minimum="10" />
 ```
 
-When `Minimum` is set to 10, `Value` is also set to 10, and the `ValueChanged` event is fired. This might occur before the rest of the page has been constructed, and the handler might attempt to reference other elements on the page that have not yet been created. You might want to add some code to the `ValueChanged` handler that checks for `null` values of other elements on the page. Or, you can set the `ValueChanged` event handler after the `Slider` values have been initialized.
+When `Minimum` is set to 10, `Value` is also set to 10, and the `ValueChanged` event is raised. This might occur before the rest of the page has been constructed, and the handler might attempt to reference other elements on the page that have not yet been created. You might want to add some code to the `ValueChanged` handler that checks for `null` values of other elements on the page. Or, you can set the `ValueChanged` event handler after the `Slider` values have been initialized.

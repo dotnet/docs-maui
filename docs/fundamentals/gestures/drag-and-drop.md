@@ -114,7 +114,7 @@ The following XAML example shows a `DragGestureRecognizer` that registers a hand
 </Path>
 ```
 
-In this example, the `DragGestureRecognizer` is attached to a `Path` object. The `DragStarting` event is fired when a drag gesture is detected on the `Path`, which executes the `OnDragStarting` event handler:
+In this example, the `DragGestureRecognizer` is attached to a `Path` object. The `DragStarting` event is raised when a drag gesture is detected on the `Path`, which executes the `OnDragStarting` event handler:
 
 ```csharp
 void OnDragStarting(object sender, DragStartingEventArgs e)
@@ -143,7 +143,7 @@ The following XAML example shows a `DragGestureRecognizer` that registers a hand
 </Rectangle>
 ```
 
-In this example, the `DragGestureRecognizer` is attached to a `Rectangle` object. The `DragStarting` event is fired when a drag gesture is detected on the `Rectangle`, which executes the `OnDragStarting` event handler:
+In this example, the `DragGestureRecognizer` is attached to a `Rectangle` object. The `DragStarting` event is raised when a drag gesture is detected on the `Rectangle`, which executes the `OnDragStarting` event handler:
 
 ```csharp
 void OnDragStarting(object sender, DragStartingEventArgs e)
@@ -221,7 +221,7 @@ The following XAML example shows a `DropGestureRecognizer` that registers a hand
 </Image>
 ```
 
-In this example, the `DropGestureRecognizer` is attached to an `Image` object. The `DragOver` event is fired when a drag source is dragged over the drop target, but hasn't been dropped, which executes the `OnDragOver` event handler:
+In this example, the `DropGestureRecognizer` is attached to an `Image` object. The `DragOver` event is raised when a drag source is dragged over the drop target, but hasn't been dropped, which executes the `OnDragOver` event handler:
 
 ```csharp
 void OnDragOver(object sender, DragEventArgs e)
@@ -234,7 +234,7 @@ In this example, the `AcceptedOperation` property of the `DragEventArgs` object 
 
 ## Process the data package
 
-The `Drop` event is fired when a drag source is released over a drop target. When this occurs, .NET MAUI will automatically attempt to retrieve data from the data package, when a drag source is dropped onto the following controls:
+The `Drop` event is raised when a drag source is released over a drop target. When this occurs, .NET MAUI will automatically attempt to retrieve data from the data package, when a drag source is dropped onto the following controls:
 
 - Text controls. Text values can be dropped onto `CheckBox`, `DatePicker`, `Editor`, `Entry`, `Label`, `RadioButton`, `Switch`, and `TimePicker` objects.
 - Image controls. Images can be dropped onto `Button`, `Image`, and `ImageButton` controls.
