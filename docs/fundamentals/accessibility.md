@@ -1,10 +1,10 @@
 ---
-title: "Semantics for accessibility"
+title: "Build accessible apps with semantic properties"
 description: "Learn how to use the SemanticProperties class in a .NET MAUI app, so that a screen reader can speak about the user interface elements on a page."
 ms.date: 12/16/2021
 ---
 
-# Semantics for accessibility
+# Build accessible apps with semantic properties
 
 <!-- Sample link goes here -->
 
