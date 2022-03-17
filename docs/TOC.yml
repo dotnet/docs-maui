@@ -207,6 +207,8 @@
                       href: user-interface/controls/graphicsview.md
                     - name: Image
                       href: user-interface/controls/image.md
+                    - name: Label
+                      href: user-interface/controls/label.md
                     - name: ScrollView
                       href: user-interface/controls/scrollview.md
                     - name: WebView
@@ -239,6 +241,12 @@
                       href: user-interface/controls/switch.md
                     - name: TimePicker
                       href: user-interface/controls/timepicker.md
+                - name: Edit text
+                  items:
+                    - name: Editor
+                      href: user-interface/controls/editor.md
+                    - name: Entry
+                      href: user-interface/controls/entry.md
                 - name: Indicate activity
                   items:
                     - name: ActivityIndicator

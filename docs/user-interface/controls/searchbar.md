@@ -34,7 +34,7 @@ The .NET Multi-platform App UI (.NET MAUI) `SearchBar` is a user input control u
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
-In addition, `SearchBar` defines a `SearchButtonPressed` event, which is called when the search button is clicked, or the enter key is pressed.
+In addition, `SearchBar` defines a `SearchButtonPressed` event, which is raised when the search button is clicked, or the enter key is pressed.
 
 > [!NOTE]
 >`SearchBar` derives from the `InputView` class, from which it inherits additional properties and events.
