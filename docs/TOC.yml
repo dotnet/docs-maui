@@ -221,6 +221,32 @@
                       href: user-interface/controls/label.md
                     - name: ScrollView
                       href: user-interface/controls/scrollview.md
+                    - name: Shapes
+                      items:
+                        - name: Overview
+                          href: user-interface/controls/shapes/index.md
+                        - name: Ellipse
+                          href: user-interface/controls/shapes/ellipse.md
+                        - name: Fill rules
+                          href: user-interface/controls/shapes/fillrules.md
+                        - name: Geometries
+                          href: user-interface/controls/shapes/geometries.md
+                        - name: Line
+                          href: user-interface/controls/shapes/line.md
+                        - name: Paths
+                          items:
+                            - name: Path
+                              href: user-interface/controls/shapes/path.md
+                            - name: Path markup syntax
+                              href: user-interface/controls/shapes/path-markup-syntax.md
+                            - name: Path transforms
+                              href: user-interface/controls/shapes/path-transforms.md
+                        - name: Polygon
+                          href: user-interface/controls/shapes/polygon.md
+                        - name: Polyline
+                          href: user-interface/controls/shapes/polyline.md
+                        - name: Rectangle
+                          href: user-interface/controls/shapes/rectangle.md
                     - name: WebView
                       href: user-interface/controls/webview.md
                 - name: Initiate commands
@@ -278,7 +304,7 @@
                           - name: EmptyView
                             href: user-interface/controls/carouselview/emptyview.md
                           - name: Scrolling
-                            href: user-interface/controls/carouselview/scrolling.md                    
+                            href: user-interface/controls/carouselview/scrolling.md
                     - name: CollectionView
                       items:
                           - name: Overview
