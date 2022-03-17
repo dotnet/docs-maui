@@ -249,8 +249,12 @@
                   items:
                     - name: IndicatorView
                       href: user-interface/controls/indicatorview.md
+                    - name: ListView
+                      href: user-interface/controls/listview.md
                     - name: Picker
                       href: user-interface/controls/picker.md
+                    - name: TableView
+                      href: user-interface/controls/tableview.md
                 - name: ContentView
                   href: user-interface/controls/contentview.md
         - name: Display pop-ups
