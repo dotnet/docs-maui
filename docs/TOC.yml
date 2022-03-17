@@ -205,8 +205,10 @@
                       href: user-interface/controls/frame.md
                     - name: GraphicsView
                       href: user-interface/controls/graphicsview.md
+                    - name: Image
+                      href: user-interface/controls/image.md
                     - name: ScrollView
-                      href: user-interface/controls/scrollview.md                      
+                      href: user-interface/controls/scrollview.md
                 - name: Initiate commands
                   items:
                     - name: Button
@@ -220,7 +222,7 @@
                     - name: SearchBar
                       href: user-interface/controls/searchbar.md
                     - name: SwipeView
-                      href: user-interface/controls/swipeview.md                      
+                      href: user-interface/controls/swipeview.md
                 - name: Set values
                   items:
                     - name: CheckBox
