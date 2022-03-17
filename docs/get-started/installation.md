@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI installation"
 description: "Installation instructions for .NET MAUI."
-ms.date: 11/08/2021
+ms.date: 02/11/2021
 ---
 
 # Installation
@@ -12,7 +12,7 @@ To create .NET Multi-platform App UI (.NET MAUI) apps, you need the latest previ
 
 ## Visual Studio
 
-To create .NET MAUI apps, you'll need [Visual Studio 17.1 Preview 1](https://visualstudio.microsoft.com/vs/preview/). Either install Visual Studio, or modify your installation, and install the following **workload**:
+To create .NET MAUI apps, you'll need the latest [Visual Studio 2022 17.2 Preview](https://visualstudio.microsoft.com/vs/preview/). Either install Visual Studio, or modify your installation, and install the following workload:
 
 - Mobile development with .NET
 

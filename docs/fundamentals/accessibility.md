@@ -1,10 +1,10 @@
 ---
-title: "Semantics for accessibility"
+title: "Build accessible apps with semantic properties"
 description: "Learn how to use the SemanticProperties class in a .NET MAUI app, so that a screen reader can speak about the user interface elements on a page."
 ms.date: 12/16/2021
 ---
 
-# Semantics for accessibility
+# Build accessible apps with semantic properties
 
 <!-- Sample link goes here -->
 
@@ -339,7 +339,7 @@ However, none of these tools can perfectly emulate the screen reader user experi
 Each platform has a different default screen reader to narrate accessibility values:
 
 - Android has TalkBack. For information on enabling TalkBack, see [Enable TalkBack](#enable-talkback).
-- iOS and macOS have VoiceOver. For information on enabling VoiceOver, see [Enable Narrator](#enable-voiceover).
+- iOS and macOS have VoiceOver. For information on enabling VoiceOver, see [Enable VoiceOver](#enable-voiceover).
 - Windows has Narrator. For information on enabling Narrator, see [Enable Narrator](#enable-narrator).
 
 ### Enable TalkBack

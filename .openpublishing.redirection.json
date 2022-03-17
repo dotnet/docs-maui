@@ -1,0 +1,8 @@
+{
+  "redirections": [
+    {
+      "source_path": "docs/user-interface/layouts/gridlayout.md",
+      "redirect_url": "/dotnet/maui/user-interface/layouts/grid"
+    }
+  ]
+}
