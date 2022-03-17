@@ -57,6 +57,7 @@ The main control groups used to create the user interface of a .NET MAUI app are
 | `Border` | `Border` is a container control that draws a border, background, or both, around another control. For more information, see [Border](~/user-interface/controls/border.md). |
 | `BoxView` | `BoxView` draws a rectangle or square, of a specified width, height, and color. For more information, see [BoxView](~/user-interface/controls/boxview.md). |
 | `Button` | `Button` displays text and responds to a tap or click that directs an app to carry out a task. For more information, see [Button](~/user-interface/controls/button.md). |
+| `CarouselView` | `CarouselView` displays a scrollable list of data items, where users swipe to move through the collection. For more information, see [CarouselView](~/user-interface/controls/carouselview/index.md). |
 | `CheckBox` | `CheckBox` enables you to select a boolean value using a type of button that can either be checked or empty. For more information, see [CheckBox](~/user-interface/controls/checkbox.md). |
 | `CollectionView` | `CollectionView` displays a scollable list of selectable data items, using different layout specifications. For more information, see [CollectionView](~/user-interface/controls/collectionview/index.md). |
 | `ContentView` | `ContentView` is a control that enables the creation of custom, reusable controls. For more information, see [ContentView](~/user-interface/controls/contentview.md). |
