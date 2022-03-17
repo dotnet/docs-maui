@@ -39,12 +39,12 @@ The following table shows how to specify constraints in XAML and C#:
 
 |     | XAML | C# |
 | --- | ---- | -- |
-| **Absolute values** | Absolute constraints are specified by setting the `RelativeLayout` attached properties to `double` values. | Absolute constraints are specified by the `Constraint.Constant` method, or by using the `Children.Add` overload that requires a `Func<Rectangle>` argument. |
+| **Absolute values** | Absolute constraints are specified by setting the `RelativeLayout` attached properties to `double` values. | Absolute constraints are specified by the `Constraint.Constant` method, or by using the `Children.Add` overload that requires a `Func<Rect>` argument. |
 | **Relative values** | Relative constraints are specified by setting the `RelativeLayout` attached properties to `Constraint` objects that are returned by the `ConstraintExpression` markup extension. | Relative constraints are specified by `Constraint` objects that are returned by methods of the `Constraint` class. |
 
 For more information about specifying constraints using absolute values, see [Absolute positioning and sizing](#absolute-positioning-and-sizing). For more information about specifying constraints using relative values, see [Relative positioning and sizing](#relative-positioning-and-sizing).
 
-In C#, children can be added to `RelativeLayout` by three `Add` overloads. The first overload requires a `Expression<Func<Rectangle>>` to specify the position and size of a child. The second overload requires optional `Expression<Func<double>>` objects for the `x`, `y`, `width`, and `height` arguments. The third overload requires optional `Constraint` objects for the `x`, `y`, `width`, and `height` arguments.
+In C#, children can be added to `RelativeLayout` by three `Add` overloads. The first overload requires a `Expression<Func<Rect>>` to specify the position and size of a child. The second overload requires optional `Expression<Func<double>>` objects for the `x`, `y`, `width`, and `height` arguments. The third overload requires optional `Constraint` objects for the `x`, `y`, `width`, and `height` arguments.
 
 It's possible to change the position and size of a child in a `RelativeLayout` with the `SetXConstraint`, `SetYConstraint`, `SetWidthConstraint`, and `SetHeightConstraint` methods. The first argument to each of these methods is the child, and the second is a `Constraint` object. In addition, the `SetBoundsConstraint` method can also be used to change the position and size of a child. The first argument to this method is the child, and the second is a `BoundsConstraint` object.
 
@@ -113,22 +113,22 @@ public class StylishHeaderDemoPage : ContentPage
         relativeLayout.Children.Add(new BoxView
         {
             Color = Colors.Silver
-        }, () => new Rectangle(0, 10, 200, 5));
+        }, () => new Rect(0, 10, 200, 5));
 
         relativeLayout.Children.Add(new BoxView
         {
             Color = Colors.Silver
-        }, () => new Rectangle(0, 20, 200, 5));
+        }, () => new Rect(0, 20, 200, 5));
 
         relativeLayout.Children.Add(new BoxView
         {
             Color = Colors.Silver
-        }, () => new Rectangle(10, 0, 5, 65));
+        }, () => new Rect(10, 0, 5, 65));
 
         relativeLayout.Children.Add(new BoxView
         {
             Color = Colors.Silver
-        }, () => new Rectangle(20, 0, 5, 65));
+        }, () => new Rect(20, 0, 5, 65));
 
         relativeLayout.Children.Add(new Label
         {
@@ -142,7 +142,7 @@ public class StylishHeaderDemoPage : ContentPage
 }
 ```
 
-In this example, `BoxView` objects are added to the `RelativeLayout` using an `Add` overload that requires a `Expression<Func<Rectangle>>` to specify the position and size of each child. The position of the `Label` is defined using an `Add` overload that requires optional `Constraint` objects, in this case created by the `Constraint.Constant` method.
+In this example, `BoxView` objects are added to the `RelativeLayout` using an `Add` overload that requires a `Expression<Func<Rect>>` to specify the position and size of each child. The position of the `Label` is defined using an `Add` overload that requires optional `Constraint` objects, in this case created by the `Constraint.Constant` method.
 
 > [!NOTE]
 > A `RelativeLayout` that uses absolute values can position and size children so that they don't fit within the bounds of the layout.
@@ -234,7 +234,7 @@ The `Constraint` class defines the following public static methods, which return
 - `RelativeToParent`, which constrains a child relative to its parent's size.
 - `RelativeToView`, which constrains a child relative to the size of a view.
 
-In addition, the `BoundsConstraint` class defines a single method, `FromExpression`, which returns a `BoundsConstraint` that constrains a child's position and size with a `Expression<Func<Rectangle>>`. This method can be used to set the `BoundsConstraint` attached property.
+In addition, the `BoundsConstraint` class defines a single method, `FromExpression`, which returns a `BoundsConstraint` that constrains a child's position and size with a `Expression<Func<Rect>>`. This method can be used to set the `BoundsConstraint` attached property.
 
 The following C# code shows a `RelativeLayout` whose children are constrained by `Constraint` objects:
 
