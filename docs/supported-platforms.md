@@ -1,10 +1,10 @@
 ---
-title: ".NET MAUI supported platforms"
-description: ".NET MAUI platform and development system requirements."
+title: "Supported platforms for .NET MAUI apps"
+description: ".NET MAUI supports developing apps for Android, iOS, macOS Catalyst, and Windows."
 ms.date: 06/07/2021
 ---
 
-# Supported platforms
+# Supported platforms for .NET MAUI apps
 
 .NET Multi-platform App UI (.NET MAUI) apps can be written for the following platforms:
 
@@ -21,7 +21,7 @@ ms.date: 06/07/2021
 
 ## Additional platform support
 
-.NET MAUI supports additional platforms beyond iOS, Android, and Windows:
+.NET MAUI supports additional platforms beyond Android, iOS, macOS and Windows:
 
 - Tizen, supported by Samsung.
 - Linux, supported by the community.

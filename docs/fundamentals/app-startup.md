@@ -1,10 +1,10 @@
 ---
-title: ".NET MAUI app startup"
+title: "Configure fonts, services, and handlers at startup"
 description: ".NET MAUI apps are bootstrapped using HostBuilder from the Microsoft.Extensions library, enabling apps to be initialized from a single location."
 ms.date: 09/14/2021
 ---
 
-# App startup
+# Configure fonts, services, and handlers at startup
 
 .NET Multi-platform App UI (.NET MAUI) apps are bootstrapped using the [.NET Generic Host](/dotnet/core/extensions/generic-host). This enables apps to be initialized from a single location, and provides the ability to configure fonts, services, and third-party libraries.
 
@@ -172,7 +172,7 @@ namespace MyMauiApp
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
-                #if __ANDROID__
+                #if ANDROID
                 .ConfigureMauiHandlers(handlers =>
                 {
                     handlers.AddCompatibilityRenderer(typeof(Microsoft.Maui.Controls.BoxView),
@@ -180,7 +180,7 @@ namespace MyMauiApp
                     handlers.AddCompatibilityRenderer(typeof(Microsoft.Maui.Controls.Frame),
                         typeof(Microsoft.Maui.Controls.Compatibility.Platform.Android.FastRenderers.FrameRenderer));
                 });
-                #elif __IOS__
+                #elif IOS
                 .ConfigureMauiHandlers(handlers =>
                 {
                     handlers.AddCompatibilityRenderer(typeof(Microsoft.Maui.Controls.BoxView),
