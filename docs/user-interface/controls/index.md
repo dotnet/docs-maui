@@ -63,6 +63,7 @@ The main control groups used to create the user interface of a .NET MAUI app are
 | `ContentView` | `ContentView` is a control that enables the creation of custom, reusable controls. For more information, see [ContentView](~/user-interface/controls/contentview.md). |
 | `DatePicker` | `DatePicker` enables you to select a date with the platform date picker. For more information, see [DatePicker](~/user-interface/controls/datepicker.md). |
 | `Editor` | `Editor` enables you to enter and edit multiple lines of text. For more information, see [Editor](~/user-interface/controls/editor.md). |
+| `Ellipse` | `Ellipse` displays an ellipse or circle. For more information, see [Ellipse](~/user-interface/controls/shapes/ellipse.md). |
 | `Entry` | `Entry` enables you to enter and edit a single line of text. For more information, see [Entry](~/user-interface/controls/entry.md). |
 | `Frame` | `Frame` is used to wrap a view or layout with a border that can be configured with color, shadow, and other options. For more information, see [Frame](~/user-interface/controls/frame.md). |
 | `GraphicsView` | `GraphicsView` is a graphics canvas on which 2D graphics can be drawn using types from the `Microsoft.Maui.Graphics` namespace. For more information, see [GraphicsView](~/user-interface/controls/graphicsview.md). |
@@ -70,11 +71,17 @@ The main control groups used to create the user interface of a .NET MAUI app are
 | `ImageButton` | `ImageButton` displays an image and responds to a tap or click that direct an app to carry out a task. For more information, see [ImageButton](~/user-interface/controls/imagebutton.md). |
 | `IndicatorView` | `IndicatorView` displays indicators that represent the number of items in a `CarouselView`. For more information, see [IndicatorView](~/user-interface/controls/indicatorview.md). |
 | `Label` | `Label` displays single-line and multi-line text. For more information, see [Label](~/user-interface/controls/label.md).
+| `Line` | `Line` displays a line from a start point to an end point. For more information, see [Line](~/user-interface/controls/shapes/line.md). |
 | `ListView` | `ListView` displays a scrollable list of selectable data items. For more information, see [ListView](~/user-interface/controls/listview.md). |
+| `Path` | `Path` display curves and complex shapes. For more information, see [Path](~/user-interface/controls/shapes/path.md). |
 | `Picker` | `Picker` displays a short list of items, from which an item can be selected. For more information, see [Picker](~/user-interface/controls/picker.md). |
+| `Polygon` | `Polygon` displays a polygon. For more information, see [Polygon](~/user-interface/controls/shapes/polygon.md). |
+| `Polyline` | `Polyline` displays a series of connected straight lines. For more information, see [Polyline](~/user-interface/controls/shapes/polyline.md). |
 | `ProgressBar` | `ProgressBar` uses an animation to show that the app is progressing through a lengthy activity. For more information, see [ProgressBar](~/user-interface/controls/progressbar.md). |
 | `RadioButton` | `RadioButton` is a type of button that allows the selection of one option from a set. For more information, see [RadioButton](~/user-interface/controls/radiobutton.md). |
+| `Rectangle` | `Rectangle` displays a rectangle or square. For more information, see [Rectangle](~/user-interface/controls/shapes/rectangle.md). |
 | `RefreshView` | `RefreshView` is a container control that provides pull-to-refresh functionality for scrollable content. For more information, see [RefreshView](~/user-interface/controls/refreshview.md). |
+| `RoundRectangle` | `RoundRectangle` displays a rectangle or square with rounded corners. For more information, see [Rectangle](~/user-interface/controls/shapes/rectangle.md). |
 | `ScrollView` | `ScrollView` provides scrolling of its content, which is typically a layout. For more information, see [ScrollView](~/user-interface/controls/scrollview.md). |
 | `SearchBar` | `SearchBar` is a user input control used to initiate a search. For more information, see [SearchBar](~/user-interface/controls/searchbar.md). |
 | `Slider` | `Slider` enables you to select a `double` value from a continuous range. For more information, see [Slider](~/user-interface/controls/slider.md). |
