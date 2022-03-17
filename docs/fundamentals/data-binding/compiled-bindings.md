@@ -6,7 +6,7 @@ ms.date: 01/19/2022
 
 # Compiled bindings
 
-.NET Multi-platform App UI (.NET MAUI) data bindings have two main problems:
+.NET Multi-platform App UI (.NET MAUI) data bindings have two main issues:
 
 1. There's no compile-time validation of binding expressions. Instead, bindings are resolved at runtime. Therefore, any invalid bindings aren't detected until runtime when the application doesn't behave as expected or error messages appear.
 1. They aren't cost efficient. Bindings are resolved at runtime using general-purpose object inspection (reflection), and the overhead of doing this varies from platform to platform.
@@ -27,6 +27,8 @@ To use compiled bindings, the `x:DataType` attribute must be set to a string lit
 
 > [!IMPORTANT]
 > Compiled bindings are disabled for any binding expressions that define the `Source` property. This is because the `Source` property is always set using the `x:Reference` markup extension, which can't be resolved at compile time.
+>
+> In addition, compiled bindings are currently unsupported on multi-bindings.
 
 ## Use compiled bindings
 
