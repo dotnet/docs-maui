@@ -128,10 +128,10 @@ For more information, see [Splash screens](~/user-interface/images/splashscreen.
 
 ### Raw assets
 
-Raw asset files, such as HTML, JSON, and videos, can be added to your app project by dragging them into the _Resources_ folder of your project (or a sub-folder, such as _Resources\Assets_), and setting their build action to `MauiAsset` in the **Properties** window. This creates a corresponding entry per asset in your project file:
+Raw asset files, such as HTML, JSON, and videos, can be added to your app project by dragging them into the _Resources_ folder of your project (or a sub-folder, such as _Resources\Raw_), and setting their build action to `MauiAsset` in the **Properties** window. This creates a corresponding entry per asset in your project file:
 
 ```xml
-<MauiAsset Include="Resources\Assets\index.html" />
+<MauiAsset Include="Resources\Raw\index.html" />
 ```
 
 Raw assets can then be consumed by controls, as required:

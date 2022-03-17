@@ -209,6 +209,8 @@
                       href: user-interface/controls/image.md
                     - name: ScrollView
                       href: user-interface/controls/scrollview.md
+                    - name: WebView
+                      href: user-interface/controls/webview.md
                 - name: Initiate commands
                   items:
                     - name: Button
