@@ -82,16 +82,12 @@ landingContent:
             url: user-interface/brushes/index.md
           - text: Controls
             url: user-interface/controls/index.md
-          - text: Customize controls
-            url: user-interface/handlers/customize.md
           - text: Graphics
             url: user-interface/graphics/index.md
           - text: Layouts
             url: user-interface/layouts/index.md
-          - text: Shadows
-            url: user-interface/shadow.md
-          - text: Splash screen
-            url: user-interface/images/splashscreen.md
+          - text: Pages
+            url: user-interface/pages/contentpage.md
           - text: Styles
             url: user-interface/styles/xaml.md
           - text: Theming
