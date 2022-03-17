@@ -8,3 +8,12 @@ groups:
       title: Visual Studio 2022
     - id: dotnet-cli
       title: .NET CLI
+- id: devices-set-one
+  title: Devices
+  prompt: Choose your deployment device
+  pivots:
+    - id: devices-android
+      title: Android
+    - id: devices-windows
+      title: Windows
+
