@@ -33,7 +33,7 @@ The `Aspect` property can be set to one of the members of the `Aspect` enumerati
 - `AspectFit` - letterboxes the image (if necessary) so that the entire image fits into the `ImageButton`, with blank space added to the top/bottom or sides depending on whether the image is wide or tall. This is the default value of the `Aspect` enumeration.
 - `Center` - centers the image in the `ImageButton` while preserving the aspect ratio.
 
-In addition, `ImageButton` defines `Clicked`, `Pressed`, and `Released` events. The `Clicked` event is raised when an `ImageButton` tap with a finger or mouse pointer is released from the button's surface. The `Pressed` event is raised when a finger presses on an `ImageButton`, or a mouse button is pressed with the pointer positioned over the `ImageButton`. The `Released` event is raised when the finger or mouse button is released. Generally, a `Clicked` event is also fired at the same time as the `Released` event, but if the finger or mouse pointer slides away from the surface of the `ImageButton` before being released, the `Clicked` event might not occur.
+In addition, `ImageButton` defines `Clicked`, `Pressed`, and `Released` events. The `Clicked` event is raised when an `ImageButton` tap with a finger or mouse pointer is released from the button's surface. The `Pressed` event is raised when a finger presses on an `ImageButton`, or a mouse button is pressed with the pointer positioned over the `ImageButton`. The `Released` event is raised when the finger or mouse button is released. Generally, a `Clicked` event is also raised at the same time as the `Released` event, but if the finger or mouse pointer slides away from the surface of the `ImageButton` before being released, the `Clicked` event might not occur.
 
 > [!IMPORTANT]
 > An `ImageButton` must have its `IsEnabled` property set to `true` for it to respond to taps.
@@ -116,7 +116,7 @@ This approach is suitable in connection with data-binding, and particularly when
 
 ## Press and release an ImageButton
 
-The `Pressed` event is raised when a finger presses on a `ImageButton`, or a mouse button is pressed with the pointer positioned over the `ImageButton`. The `Released` event is raised when the finger or mouse button is released. Generally, the `Clicked` event is also fired at the same time as the `Released` event, but if the finger or mouse pointer slides away from the surface of the `ImageButton` before being released, the `Clicked` event might not occur.
+The `Pressed` event is raised when a finger presses on a `ImageButton`, or a mouse button is pressed with the pointer positioned over the `ImageButton`. The `Released` event is raised when the finger or mouse button is released. Generally, the `Clicked` event is also raised at the same time as the `Released` event, but if the finger or mouse pointer slides away from the surface of the `ImageButton` before being released, the `Clicked` event might not occur.
 
 For more information about these events, see [Press and release the button](button.md#press-and-release-the-button) in the [Button](button.md) article.
 

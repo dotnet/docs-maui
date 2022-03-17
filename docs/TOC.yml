@@ -191,6 +191,16 @@
                   href: user-interface/layouts/stacklayout.md
                 - name: VerticalStackLayout
                   href: user-interface/layouts/verticalstacklayout.md
+            - name: Pages
+              items:
+                - name: ContentPage
+                  href: user-interface/pages/contentpage.md
+                - name: FlyoutPage
+                  href: user-interface/pages/flyoutpage.md
+                - name: NavigationPage
+                  href: user-interface/pages/navigationpage.md
+                - name: TabbedPage
+                  href: user-interface/pages/tabbedpage.md
             - name: Views
               items:
                 - name: Present data

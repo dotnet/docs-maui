@@ -220,7 +220,7 @@ public class BlackCatPage : ContentPage
 
 ## Detect scrolling
 
-`ScrollView` defines a `Scrolled` event that is fired to indicate that scrolling occurred. The `ScrolledEventArgs` object that accompanies the `Scrolled` event has `ScrollX` and `ScrollY` properties, both of type `double`.
+`ScrollView` defines a `Scrolled` event that's raised to indicate that scrolling occurred. The `ScrolledEventArgs` object that accompanies the `Scrolled` event has `ScrollX` and `ScrollY` properties, both of type `double`.
 
 > [!IMPORTANT]
 > The `ScrolledEventArgs.ScrollX` and `ScrolledEventArgs.ScrollY` properties can have negative values, due to the bounce effect that occurs when scrolling back to the start of a `ScrollView`.
@@ -252,7 +252,7 @@ void OnScrollViewScrolled(object sender, ScrolledEventArgs e)
 In this example, the `OnScrollViewScrolled` event handler outputs the values of the `ScrolledEventArgs` object that accompanies the event.
 
 > [!NOTE]
-> The `Scrolled` event is fired for user initiated scrolls, and for programmatic scrolls.
+> The `Scrolled` event is raised for user initiated scrolls, and for programmatic scrolls.
 
 ## Scroll programmatically
 

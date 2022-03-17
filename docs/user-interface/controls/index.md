@@ -1,7 +1,7 @@
 ---
 title: "Controls"
 description: "The user interface of a .NET MAUI app is constructed from pages, layouts, and views."
-ms.date: 02/11/2022
+ms.date: 03/18/2022
 ---
 
 # Controls
@@ -15,9 +15,22 @@ The main control groups used to create the user interface of a .NET MAUI app are
 > [!NOTE]
 > `ListView` and `TableView` also support the use of cells. Cells are specialized elements used for items in a table, that describe how each item should be rendered.
 
+## Pages
+
+.NET MAUI apps consist of one or more pages. A page usually occupies all of the screen, or window, and each page typically contains at least one layout.
+
+.NET MAUI contains the following pages:
+
+| Page | Description |
+| --- | --- |
+| `ContentPage` | `ContentPage` displays a single view, and is the most common page type. For more information, see [ContentPage](~/user-interface/pages/contentpage.md). |
+| `FlyoutPage` | `FlyoutPage` is a page that manages two related pages of information – a flyout page that presents items, and a detail page that presents details about items on the flyout page. For more information, see [FlyoutPage](~/user-interface/pages/flyoutpage.md). |
+| `NavigationPage` | `NavigationPage` provides a hierarchical navigation experience where you're able to navigate through pages, forwards and backwards, as desired. For more information, see [ContentPage](~/user-interface/pages/navigationpage.md). |
+| `TabbedPage` | `TabbedPage` consists of a series of pages that are navigable by tabs across the top or bottom of the page, with each tab loading the page content. For more information, see [ContentPage](~/user-interface/pages/tabbedpage.md). |
+
 ## Layouts
 
-.NET MAUI layouts are used to compose user-interface controls into visual structures. Layout classes typically contain logic to set the position and size of child elements.
+.NET MAUI layouts are used to compose user-interface controls into visual structures, and each layout typically contains multiple views. Layout classes typically contain logic to set the position and size of child elements.
 
 .NET MAUI contains the following layouts:
 
