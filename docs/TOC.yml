@@ -293,6 +293,12 @@
               href: user-interface/images/splashscreen.md
         - name: Shadows
           href: user-interface/shadow.md
+        - name: Styles
+          items:
+            - name: Style apps using XAML
+              href: user-interface/styles/xaml.md
+            - name: Style apps using CSS
+              href: user-interface/styles/css.md
         - name: Theming
           items:
             - name: Theme an app

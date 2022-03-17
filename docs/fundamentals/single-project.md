@@ -1,7 +1,7 @@
 ---
 title: "Target multiple platforms from a single project"
 description: "Learn about the .NET MAUI single project, which brings all the platform-specific experiences across Android, iOS, macOS, and Windows, into one shared project."
-ms.date: 11/30/2021
+ms.date: 03/01/2022
 ---
 
 # Target multiple platforms from a single project
@@ -24,14 +24,12 @@ ms.date: 11/30/2021
 
 Resource management for cross-platform app development has traditionally been problematic. Each platform has its own approach to managing resources, that must be implemented on each platform. For example, each platform has differing image requirements that typically involves creating multiple versions of each image at different resolutions. Therefore, a single image typically has to be duplicated multiple times per platform, at different resolutions, with the resulting images having to use different filename and folder conventions on each platform.
 
-.NET MAUI single project enables resource files to be stored in a single location while being consumed on each platform. This includes fonts, images, the app icon, the splash screen, and raw assets.
-
-<!-- Removed mention of CSS files, to avoid confusion with Blazor hybrid apps -->
+.NET MAUI single project enables resource files to be stored in a single location while being consumed on each platform. This includes fonts, images, the app icon, the splash screen, raw assets, and CSS files for styling .NET MAUI apps.
 
 > [!IMPORTANT]
 > Each image resource file is used as a source image, from which images of the required resolutions are generated for each platform at build time.
 
-Resource files should be placed in the _Resources_ folder of your .NET MAUI app project, or child folders of the _Resources_ folder, and must have their build action set correctly. The following table shows the build actions for each resource file type:
+Resource files should typically be placed in the _Resources_ folder of your .NET MAUI app project, or child folders of the _Resources_ folder, and must have their build action set correctly. The following table shows the build actions for each resource file type:
 
 | Resource | Build action |
 | -------- | ------------ |
@@ -40,13 +38,12 @@ Resource files should be placed in the _Resources_ folder of your .NET MAUI app 
 | Images | MauiImage |
 | Splash screen | MauiSplashScreen |
 | Raw assets | MauiAsset |
-
-<!--| CSS files | MauiCss | -->
+| CSS files | MauiCss |
 
 > [!NOTE]
 > XAML files are also stored in your .NET MAUI app project, and are automatically assigned the **MauiXaml** build action when created by project and item templates. However, XAML files will not typically be located in the _Resources_ folder of the app project.
 
-When a resource file is added to a .NET MAUI app project, a corresponding entry for the resource is created in the project (.csproj) file. After adding a resource file, its build action can be set in the **Properties** window. The following screenshot shows a _Resources_ folder containing image and font resources in child folders:
+When a resource file is added to a .NET MAUI app project, a corresponding entry for the resource is created in the project (.csproj) file, with the exception of CSS files. After adding a resource file, its build action can be set in the **Properties** window. The following screenshot shows a _Resources_ folder containing image and font resources in child folders:
 
 :::image type="content" source="media/single-project/resources.png" alt-text="Image and font resources screenshot.":::
 
@@ -142,26 +139,21 @@ Raw assets can then be consumed by controls, as required:
 
 At build time, raw assets are copied to your app package.
 
-<!--
 ### CSS files
 
-Cascading Style Sheet (CSS) files can be added to your app project by dragging them into the _Resources_ folder of your project, and setting their build action to `MauiCss` in the **Properties** window. This creates a corresponding entry per CSS file in your project file:
-
-```xml
-<MauiCss Include="Resources\styles.css" />
-```
+.NET MAUI apps can be partially styled with Cascading Style Sheet (CSS) files. CSS files can be added to your app project by dragging them into any folder of your project, and setting their build action to `MauiCss` in the **Properties** window.
 
 CSS files must be loaded by the `StyleSheet` class before being added to a `ResourceDictionary`:
 
 ```xaml
 <Application ...>
     <Application.Resources>
-        <StyleSheet Source="styles.css" />
+        <StyleSheet Source="/Resources/styles.css" />
     </Application.Resources>
 </Application>
 ```
 
-For more information, see [](). -->
+For more information, see [Style apps with CSS](~/user-interface/styles/css.md).
 
 ## Platform-specific code
 

@@ -92,6 +92,8 @@ landingContent:
             url: user-interface/shadow.md
           - text: Splash screen
             url: user-interface/images/splashscreen.md
+          - text: Styles
+            url: user-interface/styles/xaml.md
           - text: Theming
             url: user-interface/theming.md
   - title: Platform integration
