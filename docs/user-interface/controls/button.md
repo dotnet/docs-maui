@@ -24,7 +24,7 @@ The .NET Multi-platform App UI (.NET MAUI) `Button` displays text and responds t
 - `FontFamily`, of type `string`, defines the font family.
 - `FontSize`, of type `double`, defines the font size.
 - `ImageSource`, of type `ImageSource`, specifies a bitmap image to display as the content of the button.
-- `LineBreakMode`, of type `LineaBreakMode`, determine's how text should be handled when it can't fit on one line.
+- `LineBreakMode`, of type `LineaBreakMode`, determines how text should be handled when it can't fit on one line.
 - `Padding`, of type `Thickness`, determines the button's padding.
 - `Text`, of type `string`, defines the text displayed as the content of the button.
 - `TextColor`, of type `Color`, describes the color of the button's text.

@@ -70,7 +70,7 @@ The equivalent C# code is:
 Frame frame = new Frame
 {
     Background = Brush.Indigo,
-    BorderColor = Color.LightGray,
+    BorderColor = Colors.LightGray,
     // ...
 };
 ```
