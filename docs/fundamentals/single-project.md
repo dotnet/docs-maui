@@ -1,10 +1,10 @@
 ---
-title: ".NET MAUI single project"
+title: "Target multiple platforms from a single project"
 description: "Learn about the .NET MAUI single project, which brings all the platform-specific experiences across Android, iOS, macOS, and Windows, into one shared project."
 ms.date: 11/30/2021
 ---
 
-# Single project
+# Target multiple platforms from a single project
 
 .NET Multi-platform App UI (.NET MAUI) single project takes the platform-specific development experiences you typically encounter while developing apps and abstracts them into a single shared project that can target Android, iOS, macOS, and Windows.
 
