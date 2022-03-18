@@ -101,10 +101,10 @@ In this example, the `Image` displays `lightlogo.png` when the device is using i
 The current system theme can be detected by getting the value of the `Application.RequestedTheme` property:
 
 ```csharp
-OSAppTheme currentTheme = Application.Current.RequestedTheme;
+AppTheme currentTheme = Application.Current.RequestedTheme;
 ```
 
-The `RequestedTheme` property returns an `OSAppTheme` enumeration member. The `OSAppTheme` enumeration defines the following members:
+The `RequestedTheme` property returns an `AppTheme` enumeration member. The `AppTheme` enumeration defines the following members:
 
 - `Unspecified`, which indicates that the device is using an unspecified theme.
 - `Light`, which indicates that the device is using its light theme.
@@ -112,16 +112,16 @@ The `RequestedTheme` property returns an `OSAppTheme` enumeration member. The `O
 
 ## Set the current user theme
 
-The theme used by the app can be set with the `Application.UserAppTheme` property, which is of type `OSAppTheme`, regardless of which system theme is currently operational:
+The theme used by the app can be set with the `Application.UserAppTheme` property, which is of type `AppTheme`, regardless of which system theme is currently operational:
 
 ```csharp
-Application.Current.UserAppTheme = OSAppTheme.Dark;
+Application.Current.UserAppTheme = AppTheme.Dark;
 ```
 
 In this example, the app is set to use the theme defined for the system dark mode, regardless of which system theme is currently operational.
 
 > [!NOTE]
-> Set the `UserAppTheme` property to `OSAppTheme.Unspecified` to default to the operational system theme.
+> Set the `UserAppTheme` property to `AppTheme.Unspecified` to default to the operational system theme.
 
 ## React to theme changes
 
@@ -134,7 +134,7 @@ Application.Current.RequestedThemeChanged += (s, a) =>
 };
 ```
 
-The `AppThemeChangedEventArgs` object, which accompanies the `RequestedThemeChanged` event, has a single property named `RequestedTheme`, of type `OSAppTheme`. This property can be examined to detect the requested system theme.
+The `AppThemeChangedEventArgs` object, which accompanies the `RequestedThemeChanged` event, has a single property named `RequestedTheme`, of type `AppTheme`. This property can be examined to detect the requested system theme.
 
 > [!IMPORTANT]
 > To respond to theme changes on Android your `MainActivity` class must include the `ConfigChanges.UiMode` flag in the `Activity` attribute. .NET MAUI apps created with the Visual Studio project templates automatically include this flag.

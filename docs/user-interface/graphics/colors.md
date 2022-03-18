@@ -123,7 +123,7 @@ The equivalent C# code is:
 ```csharp
 ActivityIndicator activityIndicator = new ActivityIndicator
 {
-    Color = Device.RuntimePlatform == Device.iOS ? Colors.MidnightBlue : Colors.AliceBlue,
+    Color = DeviceInfo.Platform == DevicePlatform.iOS ? Colors.MidnightBlue : Colors.AliceBlue,
     IsRunning = true
 };
 ```

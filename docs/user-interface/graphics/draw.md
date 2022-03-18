@@ -100,7 +100,7 @@ The `FillColor` property of the `ICanvas` object must be set to a `Color` before
 Filled circles can also be drawn with the `FillCircle` method.
 
 > [!NOTE]
-> There are `DrawEllipse` and `FillEllipse` overloads that take `Rectangle` and `RectangleF` arguments. In addition, there are also `DrawCircle` and `FillCircle` overloads.
+> There are `DrawEllipse` and `FillEllipse` overloads that take `Rect` and `RectF` arguments. In addition, there are also `DrawCircle` and `FillCircle` overloads.
 
 ## Draw a rectangle
 
@@ -146,7 +146,7 @@ In this example, a dark blue filled rectangle with dimensions 100x50 is drawn at
 The `FillColor` property of the `ICanvas` object must be set to a `Color` before invoking the `FillRectangle` method.
 
 > [!NOTE]
-> There are `DrawRectangle` and `FillRectangle` overloads that take `Rectangle` and `RectangleF` arguments.
+> There are `DrawRectangle` and `FillRectangle` overloads that take `Rect` and `RectF` arguments.
 
 ## Draw a rounded rectangle
 
@@ -180,7 +180,7 @@ In this example, a green filled rectangle with rounded corners and dimensions 10
 The `FillColor` property of the `ICanvas` object must be set to a `Color` before invoking the `FillRoundedRectangle` method.
 
 > [!NOTE]
-> There are `DrawRoundedRectangle` and `FillRoundedRectangle` overloads that take `Rectangle` and `RectangleF` arguments, and overloads that enable the radius of each corner to be separately specified.
+> There are `DrawRoundedRectangle` and `FillRoundedRectangle` overloads that take `Rect` and `RectF` arguments, and overloads that enable the radius of each corner to be separately specified.
 
 ## Draw an arc
 
@@ -214,7 +214,7 @@ In this example, a filled teal arc of dimensions 100x100 is drawn at (10,10). Th
 The `FillColor` property of the `ICanvas` object must be set to a `Color` before invoking the `FillArc` method.
 
 > [!NOTE]
-> There are `DrawArc` and `FillArc` overloads that take `Rectangle` and `RectangleF` arguments.
+> There are `DrawArc` and `FillArc` overloads that take `Rect` and `RectF` arguments.
 
 ## Draw a path
 
@@ -511,8 +511,8 @@ In this example, the blue `PathF` object has rounded joins at its vertices:
 Graphical objects that are drawn to an `ICanvas` can be clipped prior to drawing, with the following methods:
 
 - `ClipPath` clips an object so that only the area that's within the region of a `PathF` object will be visible.
-- `ClipRectangle` clips an object so that only the area that's within the region of a rectangle will be visible. The rectangle can be specified using `float` arguments, or by a `Rectangle` or `RectangleF` argument.
-- `SubtractFromClip` clips an object so that only the area that's outside the region of a rectangle will be visible. The rectangle can be specified using `float` arguments, or by a `Rectangle` or `RectangleF` argument.
+- `ClipRectangle` clips an object so that only the area that's within the region of a rectangle will be visible. The rectangle can be specified using `float` arguments, or by a `Rect` or `RectF` argument.
+- `SubtractFromClip` clips an object so that only the area that's outside the region of a rectangle will be visible. The rectangle can be specified using `float` arguments, or by a `Rect` or `RectF` argument.
 
 The following example shows how to use the `ClipPath` method to clip an image:
 
