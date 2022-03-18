@@ -194,8 +194,8 @@ The `CoerceAngle` method checks the value of the `MaximumAngle` property, and if
 A `Func` can be used to initialize the default value of a bindable property, as demonstrated in the following example:
 
 ```csharp
-public static readonly BindableProperty SizeProperty =
-    BindableProperty.Create ("Size", typeof(double), typeof(HomePage), 0.0, defaultValueCreator: bindable => Device.GetNamedSize(NamedSize.Large, (Label)bindable));
+public static readonly BindableProperty DateProperty =
+    BindableProperty.Create ("Date", typeof(DateTime), typeof(MyPage), default(DateTime), BindingMode.TwoWay, defaultValueCreator: bindable => DateTime.Today);
 ```
 
-The `defaultValueCreator` parameter is set to a `Func` that invokes the `Device.GetNamedSize` method to return a `double` that represents the named size for the font that is used on a `Label` on the native platform.
+The `defaultValueCreator` parameter is set to a `Func` that returns a `DateTime` that represents today's date.
