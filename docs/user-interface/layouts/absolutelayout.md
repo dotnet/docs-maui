@@ -18,7 +18,7 @@ An `AbsoluteLayout` should be regarded as a special-purpose layout to be used on
 
 The `AbsoluteLayout` class defines the following properties:
 
-- `LayoutBounds`, of type `Rectangle`, which is an attached property that represents the position and size of a child. The default value of this property is (0,0,AutoSize,AutoSize).
+- `LayoutBounds`, of type `Rect`, which is an attached property that represents the position and size of a child. The default value of this property is (0,0,AutoSize,AutoSize).
 - `LayoutFlags`, of type `AbsoluteLayoutFlags`, which is an attached property that indicates whether properties of the layout bounds used to position and size the child are interpreted proportionally. The default value of this property is `AbsoluteLayoutFlags.None`.
 
 These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings and styled. <!--For more information about attached properties, see [.NET MAUI Attached Properties](~/xaml/attached-properties.md).-->
@@ -93,19 +93,19 @@ public class StylishHeaderDemoPage : ContentPage
         absoluteLayout.Add(new BoxView
         {
             Color = Colors.Silver
-        }, new Rectangle(0, 10, 200, 5));
+        }, new Rect(0, 10, 200, 5));
         absoluteLayout.Add(new BoxView
         {
             Color = Colors.Silver
-        }, new Rectangle(0, 20, 200, 5));
+        }, new Rect(0, 20, 200, 5));
         absoluteLayout.Add(new BoxView
         {
             Color = Colors.Silver
-        }, new Rectangle(10, 0, 5, 65));
+        }, new Rect(10, 0, 5, 65));
         absoluteLayout.Add(new BoxView
         {
             Color = Colors.Silver
-        }, new Rectangle(20, 0, 5, 65));
+        }, new Rect(20, 0, 5, 65));
 
         absoluteLayout.Add(new Label
         {
@@ -119,9 +119,9 @@ public class StylishHeaderDemoPage : ContentPage
 }
 ```
 
-In this example, the position and size of each `BoxView` is defined using a `Rectangle` object. The position of the `Label` is defined using a `Point` object.
+In this example, the position and size of each `BoxView` is defined using a `Rect` object. The position of the `Label` is defined using a `Point` object.
 
-In C#, it's also possible to set the position and size of a child of an `AbsoluteLayout` after it has been added to the layout, using the `AbsoluteLayout.SetLayoutBounds` method. The first argument to this method is the child, and the second is a `Rectangle` object.
+In C#, it's also possible to set the position and size of a child of an `AbsoluteLayout` after it has been added to the layout, using the `AbsoluteLayout.SetLayoutBounds` method. The first argument to this method is the child, and the second is a `Rect` object.
 
 > [!NOTE]
 > An `AbsoluteLayout` that uses absolute values can position and size children so that they don't fit within the bounds of the layout.
@@ -189,23 +189,23 @@ public class ProportionalDemoPage : ContentPage
     public ProportionalDemoPage()
     {
         BoxView blue = new BoxView { Color = Colors.Blue };
-        AbsoluteLayout.SetLayoutBounds(blue, new Rectangle(0.5, 0, 100, 25));
+        AbsoluteLayout.SetLayoutBounds(blue, new Rect(0.5, 0, 100, 25));
         AbsoluteLayout.SetLayoutFlags(blue, AbsoluteLayoutFlags.PositionProportional);
 
         BoxView green = new BoxView { Color = Colors.Green };
-        AbsoluteLayout.SetLayoutBounds(green, new Rectangle(0, 0.5, 25, 100));
+        AbsoluteLayout.SetLayoutBounds(green, new Rect(0, 0.5, 25, 100));
         AbsoluteLayout.SetLayoutFlags(green, AbsoluteLayoutFlags.PositionProportional);
 
         BoxView red = new BoxView { Color = Colors.Red };
-        AbsoluteLayout.SetLayoutBounds(red, new Rectangle(1, 0.5, 25, 100));
+        AbsoluteLayout.SetLayoutBounds(red, new Rect(1, 0.5, 25, 100));
         AbsoluteLayout.SetLayoutFlags(red, AbsoluteLayoutFlags.PositionProportional);
 
         BoxView black = new BoxView { Color = Colors.Black };
-        AbsoluteLayout.SetLayoutBounds(black, new Rectangle(0.5, 1, 100, 25));
+        AbsoluteLayout.SetLayoutBounds(black, new Rect(0.5, 1, 100, 25));
         AbsoluteLayout.SetLayoutFlags(black, AbsoluteLayoutFlags.PositionProportional);
 
         Label label = new Label { Text = "Centered text" };
-        AbsoluteLayout.SetLayoutBounds(label, new Rectangle(0.5, 0.5, 110, 25));
+        AbsoluteLayout.SetLayoutBounds(label, new Rect(0.5, 0.5, 110, 25));
         AbsoluteLayout.SetLayoutFlags(label, AbsoluteLayoutFlags.PositionProportional);
 
         Title = "Proportional demo";
@@ -217,7 +217,7 @@ public class ProportionalDemoPage : ContentPage
 }
 ```
 
-In this example, the position and size of each child is set with the `AbsoluteLayout.SetLayoutBounds` method. The first argument to the method is the child, and the second is a `Rectangle` object. The position of each child is set with proportional values, while the size of each child is set with absolute values, using device-independent units.
+In this example, the position and size of each child is set with the `AbsoluteLayout.SetLayoutBounds` method. The first argument to the method is the child, and the second is a `Rect` object. The position of each child is set with proportional values, while the size of each child is set with absolute values, using device-independent units.
 
 > [!NOTE]
 > An `AbsoluteLayout` that uses proportional values can position and size children so that they don't fit within the bounds of the layout by using values outside the 0-1 range.

@@ -294,7 +294,7 @@ formattedString.Spans.Add (new Span { Text = "Red bold, ", TextColor = Colors.Re
 Span span = new Span { Text = "default, " };
 span.GestureRecognizers.Add(new TapGestureRecognizer { Command = new Command(async () => await DisplayAlert("Tapped", "This is a tapped Span.", "OK")) });
 formattedString.Spans.Add(span);
-formattedString.Spans.Add (new Span { Text = "italic small.", FontAttributes = FontAttributes.Italic, FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)) });
+formattedString.Spans.Add (new Span { Text = "italic small.", FontAttributes = FontAttributes.Italic, FontSize = 14 });
 
 Label label = new Label { FormattedText = formattedString };
 ```

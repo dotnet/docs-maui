@@ -36,7 +36,7 @@ The color of a `SolidPaint` object is typically specified through its constructo
 ```csharp
 SolidPaint solidPaint = new SolidPaint(Colors.Silver);
 
-RectangleF solidRectangle = new RectangleF(100, 100, 200, 100);
+RectF solidRectangle = new RectF(100, 100, 200, 100);
 canvas.SetFillPaint(solidPaint, solidRectangle);
 canvas.SetShadow(new SizeF(10, 10), 10, Colors.Grey);
 canvas.FillRoundedRectangle(solidRectangle, 12);
@@ -54,7 +54,7 @@ SolidPaint solidPaint = new SolidPaint
     Color = Colors.Silver
 };
 
-RectangleF solidRectangle = new RectangleF(100, 100, 200, 100);
+RectF solidRectangle = new RectF(100, 100, 200, 100);
 canvas.SetFillPaint(solidPaint, solidRectangle);
 canvas.SetShadow(new SizeF(10, 10), 10, Colors.Grey);
 canvas.FillRoundedRectangle(solidRectangle, 12);
@@ -92,7 +92,7 @@ if (image != null)
     {
         Image = image.Downsize(100)
     };
-    canvas.SetFillPaint(imagePaint, RectangleF.Zero);
+    canvas.SetFillPaint(imagePaint, RectF.Zero);
     canvas.FillRectangle(0, 0, 240, 300);
 }
 ```
@@ -145,7 +145,7 @@ PatternPaint patternPaint = new PatternPaint
 {
     Pattern = pattern
 };
-canvas.SetFillPaint(patternPaint, RectangleF.Zero);
+canvas.SetFillPaint(patternPaint, RectF.Zero);
 canvas.FillRectangle(10, 10, 250, 250);
 ```
 
@@ -193,7 +193,7 @@ LinearGradientPaint linearGradientPaint = new LinearGradientPaint
 linearGradientPaint.AddOffset(0.25f, Colors.Red);
 linearGradientPaint.AddOffset(0.75f, Colors.Blue);
 
-RectangleF linearRectangle = new RectangleF(10, 10, 200, 100);
+RectF linearRectangle = new RectF(10, 10, 200, 100);
 canvas.SetFillPaint(linearGradientPaint, linearRectangle);
 canvas.SetShadow(new SizeF(10, 10), 10, Colors.Grey);
 canvas.FillRoundedRectangle(linearRectangle, 12);                                                     
@@ -239,7 +239,7 @@ LinearGradientPaint linearGradientPaint = new LinearGradientPaint
     EndPoint = new Point(1, 0)
 };
 
-RectangleF linearRectangle = new RectangleF(10, 10, 200, 100);
+RectF linearRectangle = new RectF(10, 10, 200, 100);
 canvas.SetFillPaint(linearGradientPaint, linearRectangle);
 canvas.SetShadow(new SizeF(10, 10), 10, Colors.Grey);
 canvas.FillRoundedRectangle(linearRectangle, 12);
@@ -264,7 +264,7 @@ LinearGradientPaint linearGradientPaint = new LinearGradientPaint
     EndPoint = new Point(0, 1)
 };
 
-RectangleF linearRectangle = new RectangleF(10, 10, 200, 100);
+RectF linearRectangle = new RectF(10, 10, 200, 100);
 canvas.SetFillPaint(linearGradientPaint, linearRectangle);
 canvas.SetShadow(new SizeF(10, 10), 10, Colors.Grey);
 canvas.FillRoundedRectangle(linearRectangle, 12);
@@ -289,7 +289,7 @@ LinearGradientPaint linearGradientPaint = new LinearGradientPaint
     // EndPoint is already (1,1)
 };
 
-RectangleF linearRectangle = new RectangleF(10, 10, 200, 100);
+RectF linearRectangle = new RectF(10, 10, 200, 100);
 canvas.SetFillPaint(linearGradientPaint, linearRectangle);
 canvas.SetShadow(new SizeF(10, 10), 10, Colors.Grey);
 canvas.FillRoundedRectangle(linearRectangle, 12);
@@ -325,7 +325,7 @@ RadialGradientPaint radialGradientPaint = new RadialGradientPaint
     // Radius is already 0.5
 };
 
-RectangleF radialRectangle = new RectangleF(10, 10, 200, 100);
+RectF radialRectangle = new RectF(10, 10, 200, 100);
 canvas.SetFillPaint(radialGradientPaint, radialRectangle);
 canvas.SetShadow(new SizeF(10, 10), 10, Colors.Grey);
 canvas.FillRoundedRectangle(radialRectangle, 12);
@@ -346,7 +346,7 @@ RadialGradientPaint radialGradientPaint = new RadialGradientPaint
     // Radius is already 0.5
 };
 
-RectangleF radialRectangle = new RectangleF(10, 10, 200, 100);
+RectF radialRectangle = new RectF(10, 10, 200, 100);
 canvas.SetFillPaint(radialGradientPaint, radialRectangle);
 canvas.SetShadow(new SizeF(10, 10), 10, Colors.Grey);
 canvas.FillRoundedRectangle(radialRectangle, 12);
@@ -367,7 +367,7 @@ RadialGradientPaint radialGradientPaint = new RadialGradientPaint
     // Radius is already 0.5
 };
 
-RectangleF radialRectangle = new RectangleF(10, 10, 200, 100);
+RectF radialRectangle = new RectF(10, 10, 200, 100);
 canvas.SetFillPaint(radialGradientPaint, radialRectangle);
 canvas.SetShadow(new SizeF(10, 10), 10, Colors.Grey);
 canvas.FillRoundedRectangle(radialRectangle, 12);

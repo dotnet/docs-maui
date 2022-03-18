@@ -54,16 +54,6 @@ namespace XamlSamples
         DateTime dateTime;
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public ClockViewModel()
-        {
-            this.DateTime = DateTime.Now;
-            Device.StartTimer(TimeSpan.FromSeconds(1), () =>
-            {
-                this.DateTime = DateTime.Now;
-                return true;
-            });
-        }
-
         public DateTime DateTime
         {
             get
@@ -81,6 +71,14 @@ namespace XamlSamples
                     }
                 }
             }
+        }
+
+        public ClockViewModel()
+        {
+            this.DateTime = DateTime.Now;
+            
+            // Update the DateTime property every second.
+            Timer timer = new Timer(new TimerCallback((s) => this.DateTime = DateTime.Now), null, 0, 1000);
         }
     }
 }

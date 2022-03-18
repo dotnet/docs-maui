@@ -356,7 +356,7 @@ public class CombinedStackLayoutPage : ContentPage
             Spacing = 15
         };
         frame1StackLayout.Add(new BoxView { Color = Colors.Red, WidthRequest = 40 });
-        frame1StackLayout.Add(new Label { Text = "Red", FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)), VerticalOptions = LayoutOptions.Center });
+        frame1StackLayout.Add(new Label { Text = "Red", FontSize = 22, VerticalOptions = LayoutOptions.Center });
         frame1.Content = frame1StackLayout;
 
         Frame frame2 = new Frame
@@ -370,7 +370,7 @@ public class CombinedStackLayoutPage : ContentPage
             Spacing = 15
         };
         frame2StackLayout.Add(new BoxView { Color = Colors.Yellow, WidthRequest = 40 });
-        frame2StackLayout.Add(new Label { Text = "Yellow", FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)), VerticalOptions = LayoutOptions.Center });
+        frame2StackLayout.Add(new Label { Text = "Yellow", FontSize = 22, VerticalOptions = LayoutOptions.Center });
         frame2.Content = frame2StackLayout;
 
         Frame frame3 = new Frame
@@ -384,7 +384,7 @@ public class CombinedStackLayoutPage : ContentPage
             Spacing = 15
         };
         frame3StackLayout.Add(new BoxView { Color = Colors.Blue, WidthRequest = 40 });
-        frame3StackLayout.Add(new Label { Text = "Blue", FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)), VerticalOptions = LayoutOptions.Center });
+        frame3StackLayout.Add(new Label { Text = "Blue", FontSize = 22, VerticalOptions = LayoutOptions.Center });
         frame3.Content = frame3StackLayout;
 
         ...

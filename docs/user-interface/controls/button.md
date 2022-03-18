@@ -241,30 +241,31 @@ The code-behind file animates the `Label` when a `Pressed` event occurs, but sus
 ```csharp
 public partial class PressAndReleaseButtonPage : ContentPage
 {
-    bool animationInProgress = false;
+    IDispatcherTimer timer;
     Stopwatch stopwatch = new Stopwatch();
 
-    public PressAndReleaseButtonPage ()
+    public PressAndReleaseButtonPage()
     {
-        InitializeComponent ();
+        InitializeComponent();
+
+        timer = Dispatcher.CreateTimer();
+        timer.Interval = TimeSpan.FromMilliseconds(16);
+        timer.Tick += (s, e) =>
+        {
+            label.Rotation = 360 * (stopwatch.Elapsed.TotalSeconds % 1);
+        };
     }
 
     void OnButtonPressed(object sender, EventArgs args)
     {
         stopwatch.Start();
-        animationInProgress = true;
-
-        Device.StartTimer(TimeSpan.FromMilliseconds(16), () =>
-        {
-            label.Rotation = 360 * (stopwatch.Elapsed.TotalSeconds % 1);
-            return animationInProgress;
-        });
+        timer.Start();
     }
 
     void OnButtonReleased(object sender, EventArgs args)
     {
-        animationInProgress = false;
         stopwatch.Stop();
+        timer.Stop();
     }
 }
 ```
