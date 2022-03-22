@@ -36,7 +36,7 @@ The following table describes how each project setting maps to the manifest file
 | Project setting | Manifest setting |
 | --- | --- |
 | `ApplicationId` | The `package` attribute of the `<manifest>` node: `<manifest ... package="com.companyname.myproject"`. |
-| `ApplicationVersion` | The `android:versionCode` attribute of the `<manifest>` node: `<manifest ... android:versionCode="1".`. |
+| `ApplicationVersion` | The `android:versionCode` attribute of the `<manifest>` node: `<manifest ... android:versionCode="1"`. |
 
 Here's an example of an automatically generated manifest file with the package and version information specified:
 
