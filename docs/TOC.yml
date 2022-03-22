@@ -294,4 +294,4 @@
     - name: Publish
       items:
         - name: Android
-          href: android/deployment/index.md
+          href: android/deployment/overview.md
