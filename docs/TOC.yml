@@ -291,7 +291,7 @@
           href: platform-integration/configure-multi-targeting.md
         - name: Invoke platform code
           href: platform-integration/invoke-platform-code.md
-    - name: Package and deploy
+    - name: Publish
       items:
         - name: Android
           href: android/deployment/index.md
