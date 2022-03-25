@@ -44,7 +44,7 @@ You must use a signing certificate for use in publishing your app. This certific
                               -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.3", "2.5.29.19={text}")
     ```
 
-01. Query the certificate store for the certificate that was created. Use the following PowerShell:
+01. Use the following PowerShell command to query the certificate store for the certificate that was created:
 
     ```powershell
     Get-ChildItem "Cert:\CurrentUser\My" | Format-Table Subject, FriendlyName, Thumbprint
@@ -59,15 +59,12 @@ You must use a signing certificate for use in publishing your app. This certific
     A6CA34FD0BA6B439787391F51C87B1AD0C9E7FAE CN=someone@microsoft.com
     94D93DBC97D4F7E4364A215F15C6ACFEFC71E569 CN=localhost                             ASP.NET Core HTTPS development certificate
     F14211566DACE867DA0BF9C2F9C47C01E3CF1D9B CN=john
-    6E85836139D0C7476D286DCB91C242700A720FC8 CN=76b1f078-ef8a-8ec7-9be6-c6f14e580b    Microsoft Your Phone
-    4CA8A9545F17D552DDB173AFEFEE673D0FDCA439 CN=John Smith, OU=MSE, OU=Users, DC=com
     568027317BE8EE5E6AACDE5079D2DE76EC46EB88 CN=e1f823e2-4674-03d2-aaad-21ab23ad84ae
     DC602EE83C95FEDF280835980E22306067EFCA96 CN=John Smith, OU=MSE, OU=Users, DC=com
     07AD38F3B646F5AAC16F2F2570CAE40F4842BBE0 CN=Contoso                               My temp dev cert
-    7D7EA451E049D11A67CF17A9DF54014F524151CD CN=10bbbeef-9e51-40f3-4575-535c52404d    Microsoft Your Phone
     ```
 
-01. The **Thumbprint** of your certificate will be used later, copy it to your clipboard. Use **Thumbprint** value whose entry matches the **Subject** and **FriendlyName** of your certificate.
+01. The **Thumbprint** of your certificate will be used later, copy it to your clipboard. It's the **Thumbprint** value whose entry matches the **Subject** and **FriendlyName** of your certificate.
 
 For more information, see [Create a certificate for package signing](/windows/msix/package/create-certificate-package-signing).
 
