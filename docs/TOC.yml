@@ -295,3 +295,5 @@
       items:
         - name: Android
           href: android/deployment/overview.md
+        - name: Windows
+          href: windows/deployment/overview.md
