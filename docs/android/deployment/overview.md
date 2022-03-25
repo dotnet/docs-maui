@@ -6,6 +6,11 @@ ms.date: 03/17/2022
 
 # Publish a .NET MAUI App for Android
 
+> [!div class="op_single_selector"]
+>
+> - [Publish for Android](overview.md)
+> - [Publish for Windows](../../windows/deployment/overview.md)
+
 When distributing your .NET MAUI app for Android, you generate an _apk_ (Android Package) or an _aab_ (Android App Bundle) file. The _apk_ is used for installing your app to an Android device, and the _aab_ is used to publish your app to an Android store.
 
 With just a few configuration changes to your project, your app can be packaged for distribution.
@@ -104,7 +109,7 @@ If either of those conditions fail, the settings aren't processed. More importan
 
 ## Publish
 
-At this time, publishing is only supported through the .NET CLI.
+At this time, publishing is only supported through the .NET command line interface.
 
 To publish your app, open a terminal and navigate to the project's folder. Run the `dotnet publish` command, providing the following parameters:
 
@@ -127,5 +132,6 @@ To learn how to upload a signed Android App Bundle to the Google Play Store, see
 
 ## See also
 
+- [GitHub discussion and feedback: .NET MAUI Android target publishing/archiving](https://github.com/dotnet/maui/issues/4377)
 - [Android Developers: About Android App Bundles](https://developer.android.com/guide/app-bundle)
 - [Android Developers: Meet Google Play's target API level requirement](https://developer.android.com/google/play/requirements/target-sdk)
