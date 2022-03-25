@@ -9,7 +9,7 @@ ms.date: 03/25/2022
 > [!div class="op_single_selector"]
 >
 > - [Publish for Android](../../android/deployment/overview.md)
-> - [Publish for Windows](windows.md)
+> - [Publish for Windows](overview.md)
 
 When distributing your .NET MAUI app for Windows, you can publish the app and its dependencies to a folder for deployment to another system. You can also package the app into an MSIX package, which has numerous benefits for the users installing your app. For more information about the benefits of MSIX, see [What is MSIX?](/windows/msix/overview)
 
@@ -19,7 +19,7 @@ The current preview of .NET MAUI only allows publishing an MSIX package. You can
 
 ## Prerequisites
 
-In addition to the .NET MAUI workload, you'll need to add the latest Visual C++ build tools. Open the Visual Studio 2022 installer and add the **MSVC v143 - VS2022 C++ x64/x86 build tools (latest)** individual component. For more information on how to install an individual component, see [Modify Visual Studio workloads, components, and language packs](/visualstudio/install/modify-visual-studio?view=vs-2022).
+In addition to the .NET MAUI workload, you'll need to add the latest Visual C++ build tools. Open the Visual Studio 2022 installer and add the **MSVC v143 - VS2022 C++ x64/x86 build tools (latest)** individual component. For more information on how to install an individual component, see [Modify Visual Studio workloads, components, and language packs](/visualstudio/install/modify-visual-studio?view=vs-2022&preserve-view=true).
 
 :::image type="content" source="media/overview/individual-component-small.png" alt-text="Visual Studio individual component highlighting the latest C++ build tools." lightbox="media/overview/individual-component.png":::
 
@@ -31,7 +31,7 @@ You must use a signing certificate for use in publishing your app. This certific
 > When you create and use a self-signed certificate only users who install and trust your certificate can run your application. This is easy to implement for testing but it may prevent additional users from installing your application. When you are ready to publish your application we recommend that you use a certificate issued by a trusted source. This system of centralized trust helps to ensure that the application ecosystem has levels of verification to protect users from malicious actors.
 
 01. Open a PowerShell terminal and navigate to the directory with your project.
-01. Use the [`New-SelfSignedCertificate`](/powershell/module/pki/new-selfsignedcertificate?view=windowsserver2019-ps) command to generate a self-signed certificate.
+01. Use the [`New-SelfSignedCertificate`](/powershell/module/pki/new-selfsignedcertificate?view=windowsserver2019-ps&preserve-view=true) command to generate a self-signed certificate.
 
     The `<PublisherName>` value is displayed to the user when they install your app, supply your own value and omit the `< >` characters. You can set the `FriendlyName` parameter to any string of text you want.
 
