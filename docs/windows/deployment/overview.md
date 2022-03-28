@@ -25,10 +25,10 @@ In addition to the .NET MAUI workload, you'll need to add the latest Visual C++ 
 
 ## Create a signing certificate
 
-You must use a signing certificate for use in publishing your app. This certificate is used to sign the MSIX package. The following steps demonstrate how to create and install a self-signed certificate with PowerShell.
+You must use a signing certificate for use in publishing your app. This certificate is used to sign the MSIX package. The following steps demonstrate how to create and install a self-signed certificate with PowerShell:
 
 > [!NOTE]
-> When you create and use a self-signed certificate only users who install and trust your certificate can run your application. This is easy to implement for testing but it may prevent additional users from installing your application. When you are ready to publish your application we recommend that you use a certificate issued by a trusted source. This system of centralized trust helps to ensure that the application ecosystem has levels of verification to protect users from malicious actors.
+> When you create and use a self-signed certificate only users who install and trust your certificate can run your app. This is easy to implement for testing but it may prevent additional users from installing your app. When you are ready to publish your app we recommend that you use a certificate issued by a trusted source. This system of centralized trust helps to ensure that the app ecosystem has levels of verification to protect users from malicious actors.
 
 01. Open a PowerShell terminal and navigate to the directory with your project.
 01. Use the [`New-SelfSignedCertificate`](/powershell/module/pki/new-selfsignedcertificate?view=windowsserver2019-ps&preserve-view=true) command to generate a self-signed certificate.
@@ -91,9 +91,9 @@ You can use the thumbprint of the certificate to sign your package later, or you
 
 ## Configure the project build settings
 
-The project file is a good place to put Windows-specific build settings. Some settings you may not want to put into the project file, such as passwords. The settings described in this section can be passed on the command line with the `/p:name=value` format. If the setting is already defined in the project file, a setting passed on the command line will override the project setting.
+The project file is a good place to put Windows-specific build settings. You may not want to put some settings into the project file, such as passwords. The settings described in this section can be passed on the command line with the `/p:name=value` format. If the setting is already defined in the project file, a setting passed on the command line will override the project setting.
 
-Add the following `<PropertyGroup>` node to your project file. This property group is only processed when the target framework is Windows and the configuration is set to `Release`. Technically this config section runs whenever a build or publish in `Release` mode.
+Add the following `<PropertyGroup>` node to your project file. This property group is only processed when the target framework is Windows and the configuration is set to `Release`. This config section runs whenever a build or publish in `Release` mode.
 
 ```xml
 <PropertyGroup Condition="$(TargetFramework.Contains('-windows')) and '$(Configuration)' == 'Release'">

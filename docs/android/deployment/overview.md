@@ -19,9 +19,9 @@ With just a few configuration changes to your project, your app can be packaged 
 
 ## Validate package settings
 
-Every Android app specifies a unique package identifier and a version. These identifiers are generally set in the android manifest file, which is located in your project folder at _.\\Platforms\\Android\\AndroidManifest.xml_. However, these specific settings are provided by the project file itself. When a .NET MAUI app is built, the final _AndroidManifest.xml_ file is automatically generated using the project file and the original _AndroidManifest.xml_ file.
+Every Android app specifies a unique package identifier and a version. These identifiers are generally set in the Android app manifest file, which is located in your project folder at _.\\Platforms\\Android\\AndroidManifest.xml_. However, these specific settings are provided by the project file itself. When a .NET MAUI app is built, the final _AndroidManifest.xml_ file is automatically generated using the project file and the original _AndroidManifest.xml_ file.
 
-Your project file must declare `<ApplicationId>` and `<ApplicationVersion>` within a `<PropertyGroup>` node. These items should have been generated for you when the project was created. Just validate that they exist and are set to valid values.
+Your project file must declare `<ApplicationId>` and `<ApplicationVersion>` within a `<PropertyGroup>` node. These items should have been generated for you when the project was created. Just validate that they exist and are set to valid values:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -40,8 +40,8 @@ The following table describes how each project setting maps to the manifest file
 
 | Project setting | Manifest setting |
 | --- | --- |
-| `ApplicationId` | The `package` attribute of the `<manifest>` node: `<manifest ... package="com.companyname.myproject"`. |
-| `ApplicationVersion` | The `android:versionCode` attribute of the `<manifest>` node: `<manifest ... android:versionCode="1"`. |
+| `ApplicationId` | The `package` attribute of the `<manifest>` node: `<manifest ... package="com.companyname.myproject>"`. |
+| `ApplicationVersion` | The `android:versionCode` attribute of the `<manifest>` node: `<manifest ... android:versionCode="1">`. |
 
 Here's an example of an automatically generated manifest file with the package and version information specified:
 
@@ -59,9 +59,9 @@ For more information about the manifest, see [Google Android App Manifest Overvi
 
 ## Create a keystore file
 
-Your app package should be signed. You use a keystore file to sign your package. The Java/Android SDKs includes the tools you need to generate a keystore. After generating a keystore file, you'll add it to your project and configure your project file to reference it.
+Your app package should be signed. You use a keystore file to sign your package. The Java/Android SDKs includes the tools you need to generate a keystore. After generating a keystore file, you'll add it to your project and configure your project file to reference it. The Java SDK should be in your system path so that you can run the _keytool.exe_ tool.
 
-The Java SDK should be in your system path so that you can run the _keytool.exe_ tool.
+Perform the following steps to create a keystore file:
 
 01. Open a terminal and navigate to the folder of your project.
 
@@ -78,9 +78,9 @@ The Java SDK should be in your system path so that you can run the _keytool.exe_
 
     The tool generates a _myapp.keystore_ file, which should be located in the same folder as your project.
 
-## Add reference to the keystore file
+## Add a reference to the keystore file
 
-There are project-level settings you must set to sign your Android app with the keystore file. These settings are configured in a `<PropertyGroup>` node.
+There are project-level settings you must set to sign your Android app with the keystore file. These settings are configured in a `<PropertyGroup>` node:
 
 - `<AndroidKeyStore>` &ndash; Set to `True` to sign the app.
 - `<AndroidSigningKeyStore>` &ndash; The keystore file created in the previous section: **myapp.keystore**.
