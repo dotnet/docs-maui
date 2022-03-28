@@ -48,7 +48,7 @@ In addition to these events, the `Window` class also has the following overridab
 
 - `OnCreated`, which is invoked when the `Created` event is raised.
 - `OnActivated`, which is invoked when the `Activated` event is raised.
-- `OnDeactivated`, which is invoked when the `OnDeactivated` event is raised.
+- `OnDeactivated`, which is invoked when the `Deactivated` event is raised.
 - `OnStopped`, which is invoked when the `Stopped` event is raised.
 - `OnResumed`, which is invoked when the `Resumed` event is raised.
 - `OnDestroying`, which is invoked when the `Destroying` event is raised.
