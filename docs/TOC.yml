@@ -379,3 +379,9 @@
           href: platform-integration/configure-multi-targeting.md
         - name: Invoke platform code
           href: platform-integration/invoke-platform-code.md
+    - name: Publish
+      items:
+        - name: Android
+          href: android/deployment/overview.md
+        - name: Windows
+          href: windows/deployment/overview.md
