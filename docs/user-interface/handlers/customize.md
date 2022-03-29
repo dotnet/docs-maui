@@ -56,7 +56,7 @@ The following example removes the underline from all `Entry` controls in the app
 
 ```csharp
 using Android.Content.Res;
-using Microsoft.Maui.Controls.Compatibility.Platform.Android;
+using Microsoft.Maui.Platform;
 
 public partial class MainPage : ContentPage
 {
@@ -66,7 +66,7 @@ public partial class MainPage : ContentPage
 #if ANDROID
         Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping("NoUnderline", (h, v) =>
         {
-            h.PlatformView.BackgroundTintList = ColorStateList.ValueOf(Colors.Transparent.ToAndroid());
+            h.PlatformView.BackgroundTintList = ColorStateList.ValueOf(Colors.Transparent.ToPlatform());
         });
 #endif
     }
