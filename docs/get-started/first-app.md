@@ -18,15 +18,7 @@ In this tutorial, you'll learn how to create and run your first .NET Multi-platf
 
 Visual Studio for Mac support will arrive in a future release.
 
-:::zone-end
-
-<!-- ::: zone pivot="windows" -->
-
 ## Prerequisites
-
-- The latest preview of Visual Studio 2022 17.2 with the required workload. For more information, see [Installation](installation.md).
-
-:::zone pivot="devices-android"
 
 - Hardware acceleration must be enabled to maximize Android emulator performance. For more information, see [How to enable hardware acceleration with Android emulators (Hyper-V & HAXM)](~/android/emulator/hardware-acceleration.md).
 
@@ -34,7 +26,21 @@ Visual Studio for Mac support will arrive in a future release.
 
 ## Get started with Visual Studio 2022 17.2 (Preview)
 
+:::zone pivot="devices-android"
+
 In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 17.2 Preview, and run it on an Android emulator:
+
+01. To create .NET MAUI apps, you'll need the latest [Visual Studio 2022 17.2 Preview](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Community&channel=Preview&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2303). Either install Visual Studio, or modify your installation, and install the Mobile development with .NET workload:
+
+:::zone pivot="devices-windows"
+
+In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 17.2 Preview, and run it on Windows:
+
+01. To create .NET MAUI apps, you'll need the latest [Visual Studio 2022 17.2 Preview](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Community&channel=Preview&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2302). Either install Visual Studio, or modify your installation, and install the Mobile development with .NET workload:
+
+:::zone-end
+
+    :::image type="content" source="media/first-app/vs-workloads.png" alt-text="Visual Studio workloads for .NET MAUI.":::
 
 01. Launch Visual Studio 2022 17.2 Preview, and in the start window click **Create a new project** to create a new project:
 
