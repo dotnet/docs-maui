@@ -157,11 +157,6 @@ If, while connecting Visual Studio to your Mac through Xamarin Mac Agent (XMA), 
 ::: zone-end
 ::: zone pivot="dotnet-cli"
 
-## Prerequisites
-
-- The latest preview of Visual Studio 2022, with the required workloads. For more information, see [Installation](installation.md).
-- A configured Android emulator.
-
 ## Get started with .NET command-line interface
 
 In this tutorial, you'll create and run your first .NET MAUI app using the .NET command-line interface (CLI):
