@@ -126,7 +126,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 :::zone pivot="devices-windows"
 
 <!-- markdownlint-disable MD029 -->
-07. In the Visual Studio toolbar, use the **Debug Target** drop down to select**Framework** and then the **net6.0-windows** entry.
+08. In the Visual Studio toolbar, use the **Debug Target** drop down to select**Framework** and then the **net6.0-windows** entry.
 
     :::image type="content" source="media/first-app/windows-debug-target.png" alt-text="Select the Windows Machine debugging target for .NET MAUI.":::
 
