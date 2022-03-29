@@ -32,6 +32,8 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
 01. To create .NET MAUI apps, you'll need the latest [Visual Studio 2022 17.2 Preview](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Community&channel=Preview&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2303). Either install Visual Studio, or modify your installation, and install the Mobile development with .NET workload:
 
+    :::image type="content" source="media/first-app/vs-workloads.png" alt-text="Visual Studio workloads for .NET MAUI.":::
+
 :::zone-end
 
 :::zone pivot="devices-windows"
@@ -40,9 +42,9 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
 01. To create .NET MAUI apps, you'll need the latest [Visual Studio 2022 17.2 Preview](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Community&channel=Preview&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2302). Either install Visual Studio, or modify your installation, and install the Mobile development with .NET workload:
 
-:::zone-end
-
     :::image type="content" source="media/first-app/vs-workloads.png" alt-text="Visual Studio workloads for .NET MAUI.":::
+
+:::zone-end
 
 01. Launch Visual Studio 2022 17.2 Preview, and in the start window click **Create a new project** to create a new project:
 
