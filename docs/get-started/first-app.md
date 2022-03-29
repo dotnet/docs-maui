@@ -84,7 +84,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 :::zone pivot="devices-android"
 
 <!-- markdownlint-disable MD029 -->
-07. In the Visual Studio toolbar, press the **Android Emulator** button to build the app:
+08. In the Visual Studio toolbar, press the **Android Emulator** button to build the app:
 
     :::image type="content" source="media/first-app/android-emulator-button.png" alt-text="Android emulator button.":::
 
