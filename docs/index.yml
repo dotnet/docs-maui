@@ -22,8 +22,6 @@ landingContent:
     linkLists:
       - linkListType: how-to-guide
         links:
-          - text: Installation
-            url: get-started/installation.md
           - text: Build your first app
             url: get-started/first-app.md
       - linkListType: concept

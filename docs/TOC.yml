@@ -7,8 +7,6 @@
       href: supported-platforms.md
     - name: Get started
       items:
-        - name: Installation
-          href: get-started/installation.md
         - name: Build your first app
           href: get-started/first-app.md
         - name: Migrate from Xamarin.Forms

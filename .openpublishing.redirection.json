@@ -3,6 +3,10 @@
     {
       "source_path": "docs/user-interface/layouts/gridlayout.md",
       "redirect_url": "/dotnet/maui/user-interface/layouts/grid"
+    },
+    {
+      "source_path": "docs/get-started/installation.md",
+      "redirect_url": "/dotnet/maui/get-started/first-app"
     }
   ]
 }
