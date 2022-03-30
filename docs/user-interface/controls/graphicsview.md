@@ -80,6 +80,7 @@ These properties can be used to position and size graphical objects on the `ICan
 graphicsView.Invalidate();
 ```
 
+<!--
 ## Convert the drawable to an image
 
 Graphical objects that are drawn on a `GraphicsView` can be converted to an image by the `ToImage` method, which is available in the `Microsoft.Maui.Graphics` namespace. This method requires `width` and `height` arguments, of type `float`, that specify the dimensions of the image.
@@ -99,4 +100,4 @@ In code, the `Drawable` property of the `GraphicsView` object can then be access
 IImage image = graphicsView.Drawable.ToImage(400, 500);
 ```
 
-For information about image handling in `Microsoft.Maui.Graphics`, see [Images](~/user-interface/graphics/images.md).
+For information about image handling in `Microsoft.Maui.Graphics`, see [Images](~/user-interface/graphics/images.md). -->
