@@ -43,7 +43,7 @@ To use the Android Device Manager, you'll need the following items:
 
   :::image type="content" source="media/device-manager/win/02-sdk-tools.png" alt-text="Installing Android SDK Tools.":::
 
-When you install the **Mobile development with .NET** workload in Visual Studio, everything is installed for you. For more information on setting up .NET MAUI with Visual Studio, see [Installation](../../get-started/installation.md).
+When you install the **Mobile development with .NET** workload in Visual Studio, everything is installed for you. For more information on setting up .NET MAUI with Visual Studio, see [Build your first app](../../get-started/first-app.md).
 
 ## Open the device manager
 
@@ -191,8 +191,6 @@ If you see that error dialog, press **Open SDK Manager** to open the Android SDK
 - **Android SDK Platform-Tools 31.0.3** or later
 - **Android SDK Build-Tools 30.0.3** or later
 
-For more information, see [Installation](../../get-started/installation.md).
-
 ### Snapshot disables Wi=Fi on Android Oreo
 
 If you've an AVD configured for Android Oreo with simulated Wi-Fi access, restarting the AVD after a snapshot may cause Wi-Fi access to become disabled.
@@ -244,7 +242,7 @@ To use the Android Device Manager, you'll need the following items:
 - The following packages must be installed (via the [Android SDK Manager](~/android/get-started/installation/android-sdk.md)):
 
   - **SDK tools version 26.1.1** or later
-  - **Android SDK Platform-Tools 28.0.1** or later 
+  - **Android SDK Platform-Tools 28.0.1** or later
   - **Android SDK Build-Tools 26.0.3** or later
 
   These packages should be displayed with **Installed** status as seen in the following screenshot:

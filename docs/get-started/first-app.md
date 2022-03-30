@@ -18,15 +18,7 @@ In this tutorial, you'll learn how to create and run your first .NET Multi-platf
 
 Visual Studio for Mac support will arrive in a future release.
 
-:::zone-end
-
-<!-- ::: zone pivot="windows" -->
-
 ## Prerequisites
-
-- The latest preview of Visual Studio 2022 17.2 with the required workload. For more information, see [Installation](installation.md).
-
-:::zone pivot="devices-android"
 
 - Hardware acceleration must be enabled to maximize Android emulator performance. For more information, see [How to enable hardware acceleration with Android emulators (Hyper-V & HAXM)](~/android/emulator/hardware-acceleration.md).
 
@@ -34,11 +26,32 @@ Visual Studio for Mac support will arrive in a future release.
 
 ## Get started with Visual Studio 2022 17.2 (Preview)
 
+:::zone pivot="devices-android"
+
 In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 17.2 Preview, and run it on an Android emulator:
 
-01. Launch Visual Studio 2022 17.2 Preview, and in the start window click **Create a new project** to create a new project:
+01. To create .NET MAUI apps, you'll need the latest [Visual Studio 2022 17.2 Preview](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Community&channel=Preview&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2303). Either install Visual Studio, or modify your installation, and install the Mobile development with .NET workload:
+
+    :::image type="content" source="media/first-app/vs-workloads.png" alt-text="Visual Studio workloads for .NET MAUI.":::
+
+:::zone-end
+
+:::zone pivot="devices-windows"
+
+In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 17.2 Preview, and run it on Windows:
+
+01. To create .NET MAUI apps, you'll need the latest [Visual Studio 2022 17.2 Preview](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Community&channel=Preview&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2302). Either install Visual Studio, or modify your installation, and install the Mobile development with .NET workload:
+
+    :::image type="content" source="media/first-app/vs-workloads.png" alt-text="Visual Studio workloads for .NET MAUI.":::
+
+:::zone-end
+
+<!-- markdownlint-disable MD029 -->
+02. Launch Visual Studio 2022 17.2 Preview, and in the start window click **Create a new project** to create a new project:
 
     :::image type="content" source="media/first-app/new-solution.png" alt-text="New solution.":::
+
+    <!-- markdownlint-enable MD029 -->
 
 01. In the **Create a new project** window, select **MAUI** in the **Project type** drop-down, select the **.NET MAUI App (Preview)** template, and click the **Next** button:
 
@@ -74,7 +87,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 :::zone pivot="devices-android"
 
 <!-- markdownlint-disable MD029 -->
-07. In the Visual Studio toolbar, press the **Android Emulator** button to build the app:
+08. In the Visual Studio toolbar, press the **Android Emulator** button to build the app:
 
     :::image type="content" source="media/first-app/android-emulator-button.png" alt-text="Android emulator button.":::
 
@@ -116,7 +129,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 :::zone pivot="devices-windows"
 
 <!-- markdownlint-disable MD029 -->
-07. In the Visual Studio toolbar, use the **Debug Target** drop down to select**Framework** and then the **net6.0-windows** entry.
+08. In the Visual Studio toolbar, use the **Debug Target** drop down to select**Framework** and then the **net6.0-windows** entry.
 
     :::image type="content" source="media/first-app/windows-debug-target.png" alt-text="Select the Windows Machine debugging target for .NET MAUI.":::
 
@@ -144,11 +157,6 @@ If, while connecting Visual Studio to your Mac through Xamarin Mac Agent (XMA), 
 
 ::: zone-end
 ::: zone pivot="dotnet-cli"
-
-## Prerequisites
-
-- The latest preview of Visual Studio 2022, with the required workloads. For more information, see [Installation](installation.md).
-- A configured Android emulator.
 
 ## Get started with .NET command-line interface
 
