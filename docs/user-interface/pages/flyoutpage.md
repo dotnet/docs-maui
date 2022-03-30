@@ -97,7 +97,18 @@ The following example shows the definition of the `FlyoutMenuPage` object, which
 </ContentPage>
 ```
 
-In this example, the flyout page consists of a `ListView` that's populated with data by setting its `ItemsSource` property to an array of `FlyoutPageItem` objects. Each `FlyoutPageItem` defines `Title`, `IconSource`, and `TargetType` properties. A `DataTemplate` is assigned to the `ListView.ItemTemplate` property, to display each `FlyoutPageItem`. The `DataTemplate` contains a `ViewCell` that consists of an `Image` and a `Label`. The `Image` displays the `IconSource` property value, and the `Label` displays the `Title` property value, for each `FlyoutPageItem`. In addition, the flyout page has its `Title` and `IconImageSource` properties set. The icon will appear on the detail page, provided that the detail page has a title bar.
+In this example, the flyout page consists of a `ListView` that's populated with data by setting its `ItemsSource` property to an array of `FlyoutPageItem` objects. The following example shows the definition of the `FlyoutPageItem` class:
+
+```csharp
+public class FlyoutPageItem
+{
+    public string Title { get; set; }
+    public string IconSource { get; set; }
+    public Type TargetType { get; set; }
+}
+```
+
+A `DataTemplate` is assigned to the `ListView.ItemTemplate` property, to display each `FlyoutPageItem`. The `DataTemplate` contains a `ViewCell` that consists of an `Image` and a `Label`. The `Image` displays the `IconSource` property value, and the `Label` displays the `Title` property value, for each `FlyoutPageItem`. In addition, the flyout page has its `Title` and `IconImageSource` properties set. The icon will appear on the detail page, provided that the detail page has a title bar.
 
 > [!NOTE]
 > The `Flyout` page must have its `Title` property set, or an exception will occur.
