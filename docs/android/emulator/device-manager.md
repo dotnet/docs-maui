@@ -53,7 +53,7 @@ Open the Android Device Manager in Visual Studio from the **Tools** menu by pres
 
 ## Main screen
 
-When you run the Android Device Manager, it presents a screen that displays all currently-configured virtual devices. For each virtual device, the **Name**, **OS** (Android Version), **Processor**, **Memory** size, and screen **Resolution** are displayed:
+When you run the Android Device Manager, it presents a screen that displays all currently configured virtual devices. For each virtual device, the **Name**, **OS** (Android Version), **Processor**, **Memory** size, and screen **Resolution** are displayed:
 
 When you select a device in the list, the **Start** button appears on the right. Press the **Start** button to launch the emulator with this virtual device. If the emulator is running with the selected virtual device, the **Start** button changes to a **Stop** button that you can use to halt the emulator.
 
@@ -83,7 +83,7 @@ The **New Device** window is displayed. To configure the device, follow these st
     > [!NOTE]
     > Google Play Store images are available only for some base device types such as Pixel, Pixel 2, Pixel 3, and Nexus 5. This is indicated by the text `(+ Store)` in the image name.
 
-01. Use the property list to change some of the most commonly-modified properties. To make changes to properties, see [Editing Android Virtual Device Properties](device-properties.md).
+01. Use the property list to change some of the most commonly modified properties. To make changes to properties, see [Editing Android Virtual Device Properties](device-properties.md).
 
 01. Add any additional properties that you need to explicitly set with the **Add Property** box at the bottom of the window:
 
@@ -127,7 +127,7 @@ Additional options for working with devices are available from the **Additional 
 
 The additional options menu contains the following items:
 
-- **Duplicate and Edit** &ndash; Duplicates the currently-selected device and opens it in the **New Device** screen with a new name that's similar to the existing device. For example, selecting **Pixel 3a - API 31** and pressing **Duplicate and Edit** appends a counter to the name: **Pixel 3a - API 31 (1)**.
+- **Duplicate and Edit** &ndash; Duplicates the currently selected device and opens it in the **New Device** screen with a new name that's similar to the existing device. For example, selecting **Pixel 3a - API 31** and pressing **Duplicate and Edit** appends a counter to the name: **Pixel 3a - API 31 (1)**.
 
 - **Start with Factory Defaults** &ndash; Starts the device with a cold boot.
 
@@ -181,7 +181,7 @@ After making this change to **user.config**, you should be able to launch the An
 
 ### Wrong version of Android SDK Tools
 
-If you have thew wrong Android SDK tools installed, installed, you may see this error dialog on launch:
+If you have the wrong Android SDK tools installed, installed, you may see this error dialog on launch:
 
 :::image type="content" source="media/device-manager/win/32-sdk-instance-error.png" alt-text="Screenshot shows the Android SDK instance error dialog box.":::
 
