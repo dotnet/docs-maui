@@ -377,6 +377,70 @@
           href: platform-integration/configure-multi-targeting.md
         - name: Invoke platform code
           href: platform-integration/invoke-platform-code.md
+        - name: Platform-specifics
+          items:
+            - name: iOS
+              items:
+                - name: Overview
+                  href: ios/platform-specifics/index.md
+                - name: Accessibility scaling for font sizes
+                  href: ios/platform-specifics/named-font-sizes.md
+                - name: Cell background color
+                  href: ios/platform-specifics/cell-background-color.md
+                - name: DatePicker item selection
+                  href: ios/platform-specifics/datepicker-selection.md
+                - name: Entry cursor color
+                  href: ios/platform-specifics/entry-cursor-color.md
+                - name: Entry font size
+                  href: ios/platform-specifics/entry-font-size.md
+                - name: FlyoutPage shadow
+                  href: ios/platform-specifics/flyoutpage-shadow.md
+                - name: Large page titles
+                  href: ios/platform-specifics/page-large-title.md
+                - name: ListView group header style
+                  href: ios/platform-specifics/listview-group-header-style.md
+                - name: ListView row animations
+                  href: ios/platform-specifics/listview-row-animations.md
+                - name: ListView separator style
+                  href: ios/platform-specifics/listview-separator-style.md
+                - name: Main thread control updates
+                  href: ios/platform-specifics/main-thread-updates-ui.md
+                - name: Modal page presentation style
+                  href: ios/platform-specifics/page-presentation-style.md                  
+                - name: NavigationPage bar separator
+                  href: ios/platform-specifics/navigation-bar-separator.md
+                - name: NavigationPage bar translucency
+                  href: ios/platform-specifics/navigation-bar-translucent.md
+                - name: Page home indicator visibility
+                  href: ios/platform-specifics/page-home-indicator.md
+                - name: Page status bar visibility
+                  href: ios/platform-specifics/page-status-bar-visibility.md
+                - name: Picker item selection
+                  href: ios/platform-specifics/picker-selection.md
+                - name: Safe area layout guide
+                  href: ios/platform-specifics/page-safe-area-layout.md
+                - name: ScrollView content touches
+                  href: ios/platform-specifics/scrollview-content-touches.md
+                - name: SearchBar style
+                  href: ios/platform-specifics/searchbar-style.md
+                - name: Simultaneous pan gesture recognition
+                  href: ios/platform-specifics/application-pan-gesture.md
+                - name: Slider thumb tap
+                  href: ios/platform-specifics/slider-thumb.md
+                - name: SwipeView swipe transition mode
+                  href: ios/platform-specifics/swipeview-swipetransitionmode.md
+                - name: TabbedPage translucent tabbar
+                  href: ios/platform-specifics/tabbedpage-translucent-tabbar.md
+                - name: TimePicker item selection
+                  href: ios/platform-specifics/timepicker-selection.md
+                - name: VisualElement blur
+                  href: ios/platform-specifics/visualelement-blur.md
+                - name: VisualElement drop shadows
+                  href: ios/platform-specifics/visualelement-drop-shadow.md
+                - name: VisualElement legacy color mode
+                  href: ios/platform-specifics/legacy-color-mode.md
+                - name: VisualElement first responder
+                  href: ios/platform-specifics/visualelement-first-responder.md
     - name: Publish
       items:
         - name: Android
