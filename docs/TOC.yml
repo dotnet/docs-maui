@@ -384,7 +384,7 @@
                 - name: Overview
                   href: ios/platform-specifics/index.md
                 - name: Accessibility scaling for font sizes
-                  href: ios/platform-specifics/named-font-sizes.md
+                  href: ios/platform-specifics/named-font-size-scaling.md
                 - name: Cell background color
                   href: ios/platform-specifics/cell-background-color.md
                 - name: DatePicker item selection
@@ -406,7 +406,7 @@
                 - name: Main thread control updates
                   href: ios/platform-specifics/main-thread-updates-ui.md
                 - name: Modal page presentation style
-                  href: ios/platform-specifics/page-presentation-style.md                  
+                  href: ios/platform-specifics/page-presentation-style.md
                 - name: NavigationPage bar separator
                   href: ios/platform-specifics/navigation-bar-separator.md
                 - name: NavigationPage bar translucency
