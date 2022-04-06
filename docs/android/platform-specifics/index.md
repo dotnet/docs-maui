@@ -4,7 +4,7 @@ description: "Learn how to consume Android platform-specifics in .NET MAUI apps.
 ms.date: 04/05/2022
 ---
 
-# Android platform-specifics
+# Android platform-specifics in .NET MAUI
 
 .NET Multi-platform App UI (.NET MAUI) platform-specifics allow you to consume functionality that's only available on a specific platform, without customizing handlers.
 

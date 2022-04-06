@@ -4,7 +4,7 @@ description: "This article explains how to consume the .NET MAUI Android platfor
 ms.date: 04/05/2022
 ---
 
-# TabbedPage toolbar placement and color on Android
+# TabbedPage toolbar placement on Android
 
 These .NET Multi-platform App UI (.NET MAUI) Android platform-specifics are used to set the placement of the toolbar on a `TabbedPage`. They are consumed in XAML by setting the `TabbedPage.ToolbarPlacement` attached property to a value of the `ToolbarPlacement` enumeration:
 
