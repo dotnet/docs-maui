@@ -481,29 +481,29 @@
               items:
                 - name: Overview
                   href: windows/platform-specifics/index.md
-                - name: Default Image Directory
+                - name: Default image directory
                   href: windows/platform-specifics/default-image-directory.md
-                - name: FlyoutPage Navigation Bar
+                - name: FlyoutPage navigation bar
                   href: windows/platform-specifics/flyoutpage-navigation-bar.md
-                - name: InputView Reading Order
+                - name: InputView reading order
                   href: windows/platform-specifics/inputview-reading-order.md
                 - name: ListView SelectionMode
                   href: windows/platform-specifics/listview-selectionmode.md
-                - name: Page Toolbar Placement
+                - name: Page toolbar placement
                   href: windows/platform-specifics/page-toolbar-placement.md
-                - name: RefreshView Pull Direction
+                - name: RefreshView pull direction
                   href: windows/platform-specifics/refreshview-pulldirection.md
-                - name: SearchBar Spell Check
+                - name: SearchBar spell check
                   href: windows/platform-specifics/searchbar-spell-check.md
-                - name: TabbedPage Icons
+                - name: TabbedPage icons
                   href: windows/platform-specifics/tabbedpage-icons.md
-                - name: VisualElement Access Keys
+                - name: VisualElement access keys
                   href: windows/platform-specifics/visualelement-access-keys.md
-                - name: VisualElement Legacy Color Mode
+                - name: VisualElement legacy color mode
                   href: windows/platform-specifics/legacy-color-mode.md
-                - name: WebView Execution Mode
+                - name: WebView execution mode
                   href: windows/platform-specifics/webview-executionmode.md
-                - name: WebView JavaScript Alerts
+                - name: WebView JavaScript alerts
                   href: windows/platform-specifics/webview-javascript-alert.md
     - name: Publish
       items:
