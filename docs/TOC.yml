@@ -477,6 +477,34 @@
                   href: ios/platform-specifics/legacy-color-mode.md
                 - name: VisualElement first responder
                   href: ios/platform-specifics/visualelement-first-responder.md
+            - name: Windows
+              items:
+                - name: Overview
+                  href: windows/platform-specifics/index.md
+                - name: Default Image Directory
+                  href: windows/platform-specifics/default-image-directory.md
+                - name: FlyoutPage Navigation Bar
+                  href: windows/platform-specifics/flyoutpage-navigation-bar.md
+                - name: InputView Reading Order
+                  href: windows/platform-specifics/inputview-reading-order.md
+                - name: ListView SelectionMode
+                  href: windows/platform-specifics/listview-selectionmode.md
+                - name: Page Toolbar Placement
+                  href: windows/platform-specifics/page-toolbar-placement.md
+                - name: RefreshView Pull Direction
+                  href: windows/platform-specifics/refreshview-pulldirection.md
+                - name: SearchBar Spell Check
+                  href: windows/platform-specifics/searchbar-spell-check.md
+                - name: TabbedPage Icons
+                  href: windows/platform-specifics/tabbedpage-icons.md
+                - name: VisualElement Access Keys
+                  href: windows/platform-specifics/visualelement-access-keys.md
+                - name: VisualElement Legacy Color Mode
+                  href: windows/platform-specifics/legacy-color-mode.md
+                - name: WebView Execution Mode
+                  href: windows/platform-specifics/webview-executionmode.md
+                - name: WebView JavaScript Alerts
+                  href: windows/platform-specifics/webview-javascript-alert.md
     - name: Publish
       items:
         - name: Android
