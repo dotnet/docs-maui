@@ -62,4 +62,4 @@ The `ImageButton.On<Microsoft.Maui.Controls.PlatformConfiguration.Android>` meth
 
 The result is that a drop shadow can be enabled on a `ImageButton`:
 
-:::image type="content" source="media/imagebutton-drop-shadow/imagebutton-drop-shadow.pngg" alt-text="ImageButton with drop shadow.":::
+:::image type="content" source="media/imagebutton-drop-shadow/imagebutton-drop-shadow.png" alt-text="ImageButton with drop shadow.":::

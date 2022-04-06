@@ -13,45 +13,45 @@ ms.date: 04/05/2022
 
 The following platform-specific functionality is provided for .NET MAUI views, pages, and layouts on iOS:
 
-- Blur support for any `VisualElement`. For more information, see [VisualElement Blur on iOS](visualelement-blur.md).
-- Disabling legacy color mode on a supported `VisualElement`. For more information, see [VisualElement Legacy Color Mode on iOS](legacy-color-mode.md).
-- Enabling a drop shadow on a `VisualElement`. For more information, see [VisualElement Drop Shadows on iOS](visualelement-drop-shadow.md).
-- Enabling a `VisualElement` object to become the first responder to touch events. For more information, see [VisualElement First Responder](visualelement-first-responder.md).
+- Blur support for any `VisualElement`. For more information, see [VisualElement blur on iOS](visualelement-blur.md).
+- Disabling legacy color mode on a supported `VisualElement`. For more information, see [VisualElement legacy color mode on iOS](legacy-color-mode.md).
+- Enabling a drop shadow on a `VisualElement`. For more information, see [VisualElement drop shadows on iOS](visualelement-drop-shadow.md).
+- Enabling a `VisualElement` object to become the first responder to touch events. For more information, see [VisualElement first responder](visualelement-first-responder.md).
 
 The following platform-specific functionality is provided for .NET MAUI views on iOS:
 
-- Setting the `Cell` background color. For more information, see [Cell Background Color on iOS](cell-background-color.md).
-- Controlling when item selection occurs in a `DatePicker`. For more information, see [DatePicker Item Selection on iOS](datepicker-selection.md).
-- Ensuring that inputted text fits into an `Entry` by adjusting the font size. For more information, see [Entry Font Size on iOS](entry-font-size.md).
-- Setting the cursor color in a `Entry`. For more information, see [Entry Cursor Color on iOS](entry-cursor-color.md).
-- Controlling whether `ListView` header cells float during scrolling. For more information, see [ListView Group Header Style on iOS](listview-group-header-style.md).
-- Controlling whether row animations are disabled when the `ListView` items collection is being updated. For more information, see [ListView Row Animations on iOS](listview-row-animations.md).
-- Setting the separator style on a `ListView`. For more information, see [ListView Separator Style on iOS](listview-separator-style.md).
-- Controlling when item selection occurs in a `Picker`. For more information, see [Picker Item Selection on iOS](picker-selection.md).
+- Setting the `Cell` background color. For more information, see [Cell background color on iOS](cell-background-color.md).
+- Controlling when item selection occurs in a `DatePicker`. For more information, see [DatePicker item selection on iOS](datepicker-selection.md).
+- Ensuring that inputted text fits into an `Entry` by adjusting the font size. For more information, see [Entry font size on iOS](entry-font-size.md).
+- Setting the cursor color in a `Entry`. For more information, see [Entry cursor color on iOS](entry-cursor-color.md).
+- Controlling whether `ListView` header cells float during scrolling. For more information, see [ListView group header style on iOS](listview-group-header-style.md).
+- Controlling whether row animations are disabled when the `ListView` items collection is being updated. For more information, see [ListView row animations on iOS](listview-row-animations.md).
+- Setting the separator style on a `ListView`. For more information, see [ListView separator style on iOS](listview-separator-style.md).
+- Controlling when item selection occurs in a `Picker`. For more information, see [Picker item selection on iOS](picker-selection.md).
 - Controlling whether a `SearchBar` has a background. For more information, see [SearchBar style on iOS](searchbar-style.md).
-- Enabling the `Slider.Value` property to be set by tapping on a position on the `Slider` bar, rather than by having to drag the `Slider` thumb. For more information, see [Slider Thumb Tap on iOS](slider-thumb.md).
-- Controlling the transition that's used when opening a `SwipeView`. For more information, see [SwipeView Swipe Transition Mode](swipeview-swipetransitionmode.md).
-- Controlling when item selection occurs in a `TimePicker`. For more information, see [TimePicker Item Selection on iOS](timepicker-selection.md).
+- Enabling the `Slider.Value` property to be set by tapping on a position on the `Slider` bar, rather than by having to drag the `Slider` thumb. For more information, see [Slider thumb tap on iOS](slider-thumb.md).
+- Controlling the transition that's used when opening a `SwipeView`. For more information, see [SwipeView swipe transition mode](swipeview-swipetransitionmode.md).
+- Controlling when item selection occurs in a `TimePicker`. For more information, see [TimePicker item selection on iOS](timepicker-selection.md).
 
 The following platform-specific functionality is provided for .NET MAUI pages on iOS:
 
-- Controlling whether the detail page of a `FlyoutPage` has shadow applied to it, when revealing the flyout page. For more information, see [FlyoutPage Shadow](flyoutpage-shadow.md).
-- Hiding the navigation bar separator on a `NavigationPage`. For more information, see [NavigationPage Bar Separator on iOS](navigation-bar-separator.md).
-- Controlling whether the navigation bar is translucent. For more information, see [Navigation Bar Translucency on iOS](navigation-bar-translucent.md).
-- Controlling whether the status bar text color on a `NavigationPage` is adjusted to match the luminosity of the navigation bar. For more information, see [NavigationPage Bar Text Color Mode on iOS](status-bar-text-color.md).
-- Controlling whether the page title is displayed as a large title in the page navigation bar. For more information, see [Large Page Titles on iOS](page-large-title.md).
-- Setting the visibility of the home indicator on a `Page`. For more information, see [Home Indicator Visibility on iOS](page-home-indicator.md).
-- Setting the status bar visibility on a `Page`. For more information, see [Page Status Bar Visibility on iOS](page-status-bar-visibility.md).
-- Ensuring that page content is positioned on an area of the screen that is safe for all iOS devices. For more information, see [Safe Area Layout Guide on iOS](page-safe-area-layout.md).
-- Setting the presentation style of modal pages. For more information, see [Modal Page Presentation Style](page-presentation-style.md).
-- Setting the translucency mode of the tab bar on a `TabbedPage`. For more information, see [TabbedPage Translucent TabBar on iOS](tabbedpage-translucent-tabbar.md).
+- Controlling whether the detail page of a `FlyoutPage` has shadow applied to it, when revealing the flyout page. For more information, see [FlyoutPage shadow](flyoutpage-shadow.md).
+- Hiding the navigation bar separator on a `NavigationPage`. For more information, see [NavigationPage bar separator on iOS](navigation-bar-separator.md).
+- Controlling whether the navigation bar is translucent. For more information, see [Navigation bar translucency on iOS](navigation-bar-translucent.md).
+- Controlling whether the status bar text color on a `NavigationPage` is adjusted to match the luminosity of the navigation bar. For more information, see [NavigationPage bar text color mode on iOS](status-bar-text-color.md).
+- Controlling whether the page title is displayed as a large title in the page navigation bar. For more information, see [Large page titles on iOS](page-large-title.md).
+- Setting the visibility of the home indicator on a `Page`. For more information, see [Home indicator visibility on iOS](page-home-indicator.md).
+- Setting the status bar visibility on a `Page`. For more information, see [Page status bar visibility on iOS](page-status-bar-visibility.md).
+- Ensuring that page content is positioned on an area of the screen that is safe for all iOS devices. For more information, see [Safe area layout guide on iOS](page-safe-area-layout.md).
+- Setting the presentation style of modal pages. For more information, see [Modal page presentation style](page-presentation-style.md).
+- Setting the translucency mode of the tab bar on a `TabbedPage`. For more information, see [TabbedPage translucent TabBar on iOS](tabbedpage-translucent-tabbar.md).
 
 The following platform-specific functionality is provided for .NET MAUI layouts on iOS:
 
-- Controlling whether a `ScrollView` handles a touch gesture or passes it to its content. For more information, see [ScrollView Content Touches on iOS](scrollview-content-touches.md).
+- Controlling whether a `ScrollView` handles a touch gesture or passes it to its content. For more information, see [ScrollView content touches on iOS](scrollview-content-touches.md).
 
 The following platform-specific functionality is provided for the .NET MAUI `Application` class on iOS:
 
-- Disabling accessibility scaling for named font sizes. For more information, see [Accessibility Scaling for Named Font Sizes on iOS](named-font-size-scaling.md).
-- Enabling control layout and rendering updates to be performed on the main thread. For more information, see [Main Thread Control Updates on iOS](main-thread-updates-ui.md).
-- Enabling a `PanGestureRecognizer` in a scrolling view to capture and share the pan gesture with the scrolling view. For more information, see [Simultaneous Pan Gesture Recognition on iOS](application-pan-gesture.md).
+- Disabling accessibility scaling for named font sizes. For more information, see [Accessibility scaling for named font sizes on iOS](named-font-size-scaling.md).
+- Enabling control layout and rendering updates to be performed on the main thread. For more information, see [Main thread control updates on iOS](main-thread-updates-ui.md).
+- Enabling a `PanGestureRecognizer` in a scrolling view to capture and share the pan gesture with the scrolling view. For more information, see [Simultaneous pan gesture recognition on iOS](application-pan-gesture.md).

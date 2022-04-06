@@ -72,4 +72,4 @@ The `Button.On<Microsoft.Maui.Controls.PlatformConfiguration.Android>` method sp
 
 The result is that the elevation of visual elements can be controlled so that visual elements with higher Z values occlude visual elements with lower Z values. Therefore, in this example the second `Button` is rendered above the `BoxView` because it has a higher elevation value:
 
-:::image type="content" source="media/visualelement-elevation-images/elevation.png" alt-text="VisualElement elevation screenshot.":::
+:::image type="content" source="media/visualelement-elevation/elevation.png" alt-text="VisualElement elevation screenshot.":::
