@@ -18,10 +18,6 @@ In this tutorial, you'll learn how to create and run your first .NET Multi-platf
 
 Visual Studio for Mac support will arrive in a future release.
 
-## Prerequisites
-
-- Hardware acceleration must be enabled to maximize Android emulator performance. For more information, see [How to enable hardware acceleration with Android emulators (Hyper-V & HAXM)](~/android/emulator/hardware-acceleration.md).
-
 :::zone-end
 
 ## Get started with Visual Studio 2022 17.2 (Preview)
@@ -53,7 +49,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
     [![Download Visual Studio Community Preview](media/first-app/download-community-preview.png)](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Community&channel=Preview&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2302)
 
     [![Download Visual Studio Professional Preview](media/first-app/download-professional-preview.png)](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Professional&channel=Preview&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2302)
-    
+
     [![Download Visual Studio Enterprise Preview](media/first-app/download-enterprise-preview.png)](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Enterprise&channel=Preview&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2302)
 
     Either install Visual Studio, or modify your installation, and install the Mobile development with .NET workload:
@@ -106,6 +102,9 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 08. In the Visual Studio toolbar, press the **Android Emulator** button to build the app:
 
     :::image type="content" source="media/first-app/android-emulator-button.png" alt-text="Android emulator button.":::
+
+    > [!IMPORTANT]
+    > Hardware acceleration must be enabled to maximize Android emulator performance. For more information, see [How to enable hardware acceleration with Android emulators (Hyper-V & HAXM)](~/android/emulator/hardware-acceleration.md).
 
     <!-- markdownlint-enable MD029 -->
 
