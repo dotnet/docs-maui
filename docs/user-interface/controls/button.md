@@ -214,7 +214,7 @@ It's also possible for two or more `Button` elements to be bound to the same `IC
 
 The `Pressed` event is raised when a finger presses on a `Button`, or a mouse button is pressed with the pointer positioned over the `Button`. The `Released` event is raised when the finger or mouse button is released. Generally, a `Clicked` event is also raised at the same time as the `Released` event, but if the finger or mouse pointer slides away from the surface of the `Button` before being released, the `Clicked` event might not occur.
 
-The following XAML example sjpws a `Label` and a `Button` with handlers attached for the `Pressed` and `Released` events:
+The following XAML example shows a `Label` and a `Button` with handlers attached for the `Pressed` and `Released` events:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
