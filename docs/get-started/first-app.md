@@ -30,7 +30,13 @@ Visual Studio for Mac support will arrive in a future release.
 
 In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 17.2 Preview, and run it on an Android emulator:
 
-01. To create .NET MAUI apps, you'll need the latest [Visual Studio 2022 17.2 Preview](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Community&channel=Preview&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2303). Either install Visual Studio, or modify your installation, and install the Mobile development with .NET workload:
+01. To create .NET MAUI apps, you'll need the latest Visual Studio 2022 17.2 Preview:
+
+[![Download Visual Studio Community Preview](media/first-app/download-community-preview.svg)](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Community&channel=Preview&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2303)
+[![Download Visual Studio Professional Preview](media/first-app/download-professional-preview.svg)](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Professional&channel=Preview&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2303)
+[![Download Visual Studio Enterprise Preview](media/first-app/download-enterprise-preview.svg)](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Enterprise&channel=Preview&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2303)
+
+    Either install Visual Studio, or modify your installation, and install the Mobile development with .NET workload:
 
     :::image type="content" source="media/first-app/vs-workloads.png" alt-text="Visual Studio workloads for .NET MAUI.":::
 
