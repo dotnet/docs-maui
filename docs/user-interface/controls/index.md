@@ -25,8 +25,8 @@ The main control groups used to create the user interface of a .NET MAUI app are
 | --- | --- |
 | `ContentPage` | `ContentPage` displays a single view, and is the most common page type. For more information, see [ContentPage](~/user-interface/pages/contentpage.md). |
 | `FlyoutPage` | `FlyoutPage` is a page that manages two related pages of information – a flyout page that presents items, and a detail page that presents details about items on the flyout page. For more information, see [FlyoutPage](~/user-interface/pages/flyoutpage.md). |
-| `NavigationPage` | `NavigationPage` provides a hierarchical navigation experience where you're able to navigate through pages, forwards and backwards, as desired. For more information, see [ContentPage](~/user-interface/pages/navigationpage.md). |
-| `TabbedPage` | `TabbedPage` consists of a series of pages that are navigable by tabs across the top or bottom of the page, with each tab loading the page content. For more information, see [ContentPage](~/user-interface/pages/tabbedpage.md). |
+| `NavigationPage` | `NavigationPage` provides a hierarchical navigation experience where you're able to navigate through pages, forwards and backwards, as desired. For more information, see [NavigationPage](~/user-interface/pages/navigationpage.md). |
+| `TabbedPage` | `TabbedPage` consists of a series of pages that are navigable by tabs across the top or bottom of the page, with each tab loading the page content. For more information, see [TabbedPage](~/user-interface/pages/tabbedpage.md). |
 
 ## Layouts
 
