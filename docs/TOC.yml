@@ -129,6 +129,24 @@
           href: fundamentals/messagingcenter.md
         - name: Resource dictionaries
           href: fundamentals/resource-dictionaries.md
+        - name: Shell
+          items:
+            - name: Overview
+              href: undamentals/shell/index.md
+            - name: Create a Shell app
+              href: fundamentals/shell/create.md
+            - name: Flyout
+              href: fundamentals/shell/flyout.md
+            - name: Tabs
+              href: fundamentals/shell/tabs.md
+            - name: Pages
+              href: fundamentals/shell/pages.md
+            - name: Navigation
+              href: fundamentals/shell/navigation.md
+            - name: Search
+              href: fundamentals/shell/search.md
+            - name: Lifecycle
+              href: fundamentals/shell/lifecycle.md
         - name: Single project
           href: fundamentals/single-project.md
         - name: Templates

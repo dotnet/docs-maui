@@ -24,6 +24,9 @@ The `IsGestureEnabled`, `IsPresented`, and `FlyoutLayoutBehavior` properties are
 
 `FlyoutPage` also defines an `IsPresentedChanged` event, that's raised when the `IsPresented` property changes value.
 
+> [!IMPORTANT]
+> `FlyoutPage` should not be used in .NET MAUI Shell apps. For more information about Shell apps, see [Shell](~/fundamentals/shell/index.md).
+
 ## Create a FlyoutPage
 
 To create a flyout page, create a `FlyoutPage` object and set it's `Flyout` and `Detail` properties. The `Flyout` property should be set to `ContentPage` object, and the `Detail` property should be set to a `TabbedPage`, `NavigationPage`, or `ContentPage` object. This will help to ensure a consistent user experience across all platforms.
