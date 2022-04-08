@@ -147,7 +147,7 @@ The following screenshot shows the result of templating each item in the suggest
 
 :::image type="content" source="media/search/search-results-template.png" alt-text="Screenshot of templated search results in a Shell SearchHandler.":::
 
-For more information about data templates, see [Data templates](~/app-fundamentals/datatemplate.md).
+For more information about data templates, see [Data templates](~/fundamentals/datatemplate.md).
 
 ## Search box visibility
 

@@ -132,7 +132,7 @@
         - name: Shell
           items:
             - name: Overview
-              href: undamentals/shell/index.md
+              href: fundamentals/shell/index.md
             - name: Create a Shell app
               href: fundamentals/shell/create.md
             - name: Flyout
