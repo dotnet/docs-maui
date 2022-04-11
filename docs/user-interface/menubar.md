@@ -1,10 +1,10 @@
 ---
-title: "Display a menu bars in a .NET MAUI desktop app"
+title: "Display a menu bar in a .NET MAUI desktop app"
 description: "Learn how to add a .NET MAUI menu bar at the top of a desktop app."
 ms.date: 04/11/2022
 ---
 
-# Display a menu bars in a .NET MAUI desktop app
+# Display a menu bar in a .NET MAUI desktop app
 
 A .NET Multi-platform App UI (.NET MAUI) menu bar is a container that presents a set of menus in a horizontal row, at the top of a desktop app.
 
