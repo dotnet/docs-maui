@@ -73,6 +73,6 @@ Additional menu items, beyond the 50 limit, can be added to a menu bar by adding
 [Export("MenuItem50: ")]
 internal void MenuItem50(UICommand uICommand)
 {
-	 uICommand.SendClicked();
+    uICommand.SendClicked();
 }
 ```
