@@ -147,7 +147,7 @@ The child of most `ContentPage` derivatives is a layout, such as a `StackLayout`
     <StackLayout>
         <Slider VerticalOptions="Center" />
         <Label Text="A simple Label"
-               Font="Large"
+               FontSize="Large"
                HorizontalOptions="Center"
                VerticalOptions="Center" />
         <Button Text="Click Me!"
@@ -201,7 +201,7 @@ Back in the XAML file, the `Slider` and `Button` tags need to include attributes
                 ValueChanged="OnSliderValueChanged" />
         <Label x:Name="valueLabel"
                Text="A simple Label"
-               Font="Large"
+               FontSize="Large"
                HorizontalOptions="Center"
                VerticalOptions="Center" />
         <Button Text="Click Me!"
