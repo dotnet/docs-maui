@@ -197,10 +197,6 @@ While this property can be set on a subclassed `Shell` object, it's typically se
 </ContentPage>
 ```
 
-This results in the navigation bar becoming invisible when the page is presented:
-
-:::image type="content" source="media/pages/navigationbar-invisible.png" alt-text="Screenshot of Shell page with an invisible navigation bar.":::
-
 ## Display views in the navigation bar
 
 The `Shell.TitleView` attached property, of type `View`, enables any `View` to be displayed in the navigation bar.
