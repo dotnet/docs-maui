@@ -1,7 +1,7 @@
 ---
 title: "FlyoutPage"
 description: "The .NET MAUI FlyoutPage is a page that manages two related pages of information – a flyout page that presents items, and a detail page that presents details about items on the flyout page."
-ms.date: 03/15/2022
+ms.date: 04/11/2022
 ---
 
 # FlyoutPage
@@ -63,9 +63,10 @@ The following example shows the definition of the `FlyoutMenuPage` object, which
              Padding="0,40,0,0"
              IconImageSource="hamburger.png"
              Title="Personal Organiser">
-    <ListView x:Name="listView"
-              x:FieldModifier="public">
-        <ListView.ItemsSource>
+    <CollectionView x:Name="collectionView"
+                    x:FieldModifier="public"
+                    SelectionMode="Single">
+        <CollectionView.ItemsSource>
             <x:Array Type="{x:Type local:FlyoutPageItem}">
                 <local:FlyoutPageItem Title="Contacts"
                                       IconSource="contacts.png"
@@ -77,27 +78,29 @@ The following example shows the definition of the `FlyoutMenuPage` object, which
                                       IconSource="reminders.png"
                                       TargetType="{x:Type local:ReminderPage}" />
             </x:Array>
-        </ListView.ItemsSource>
-        <ListView.ItemTemplate>
+        </CollectionView.ItemsSource>
+        <CollectionView.ItemTemplate>
             <DataTemplate>
-                <ViewCell>
-                    <Grid Padding="5,10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="30"/>
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Image Source="{Binding IconSource}" />
-                        <Label Grid.Column="1"
-                               Text="{Binding Title}" />
-                    </Grid>
-                </ViewCell>
+                <Grid Padding="5,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Source="{Binding IconSource}" />
+                    <Label Grid.Column="1"
+                           Margin="20,0"
+                           Text="{Binding Title}"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           VerticalOptions="Center" />
+                </Grid>
             </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
 </ContentPage>
 ```
 
-In this example, the flyout page consists of a `ListView` that's populated with data by setting its `ItemsSource` property to an array of `FlyoutPageItem` objects. The following example shows the definition of the `FlyoutPageItem` class:
+In this example, the flyout page consists of a `CollectionView` that's populated with data by setting its `ItemsSource` property to an array of `FlyoutPageItem` objects. The following example shows the definition of the `FlyoutPageItem` class:
 
 ```csharp
 public class FlyoutPageItem
@@ -108,7 +111,7 @@ public class FlyoutPageItem
 }
 ```
 
-A `DataTemplate` is assigned to the `ListView.ItemTemplate` property, to display each `FlyoutPageItem`. The `DataTemplate` contains a `ViewCell` that consists of an `Image` and a `Label`. The `Image` displays the `IconSource` property value, and the `Label` displays the `Title` property value, for each `FlyoutPageItem`. In addition, the flyout page has its `Title` and `IconImageSource` properties set. The icon will appear on the detail page, provided that the detail page has a title bar.
+A `DataTemplate` is assigned to the `CollectionView.ItemTemplate` property, to display each `FlyoutPageItem`. The `DataTemplate` contains a `Grid` that consists of an `Image` and a `Label`. The `Image` displays the `IconSource` property value, and the `Label` displays the `Title` property value, for each `FlyoutPageItem`. In addition, the flyout page has its `Title` and `IconImageSource` properties set. The icon will appear on the detail page, provided that the detail page has a title bar.
 
 > [!NOTE]
 > The `Flyout` page must have its `Title` property set, or an exception will occur.
@@ -119,7 +122,7 @@ The following screenshot shows the resulting flyout:
 
 ### Create and display the detail page
 
-The `FlyoutMenuPage` object contains a `ListView` that's referenced from the `MainPage` class. This allows the `MainPage` class to register a handler for `ItemSelected` event. This enables the `MainPage` object to set the `Detail` property to the page that represents the selected `ListView` item. The following example shows the event handler:
+The `FlyoutMenuPage` object contains a `CollectionView` that's referenced from the `MainPage` class. This allows the `MainPage` class to register a handler for the `SelectionChanged` event. This enables the `MainPage` object to set the `Detail` property to the page that represents the selected `CollectionView` item. The following example shows the event handler:
 
 ```csharp
 public partial class MainPage : FlyoutPage
@@ -127,23 +130,22 @@ public partial class MainPage : FlyoutPage
     public MainPage()
     {
         ...
-        flyoutPage.listView.ItemSelected += OnItemSelected;
+        flyoutPage.collectionView.SelectionChanged += OnSelectionChanged;
     }
 
-    void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+    void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        FlyoutPageItem item = e.SelectedItem as FlyoutPageItem;
+        var item = e.CurrentSelection.FirstOrDefault() as FlyoutPageItem;
         if (item != null)
-        {
+        {            
             Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargetType));
-            flyoutPage.listView.SelectedItem = null;
             IsPresented = false;
         }
     }
 }
 ```
 
-In this example, the `OnItemSelected` event handler retrieves the `SelectedItem` from the `ListView` object and sets the detail page to an instance of the page type stored in the `TargetType` property of the `FlyoutPageItem`. The detail page is displayed by setting the `FlyoutPage.IsPresented` property to `false`.
+In this example, the `OnSelectionChanged` event handler retrieves the `CurrentSelection` from the `CollectionView` object and sets the detail page to an instance of the page type stored in the `TargetType` property of the `FlyoutPageItem`. The detail page is displayed by setting the `FlyoutPage.IsPresented` property to `false`.
 
 ## Control detail page layout behavior
 
