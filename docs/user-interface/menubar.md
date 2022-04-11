@@ -1,10 +1,10 @@
 ---
-title: "Menu bars in .NET MAUI desktop apps"
+title: "Display a menu bars in a .NET MAUI desktop app"
 description: "Learn how to add a .NET MAUI menu bar at the top of a desktop app."
 ms.date: 04/11/2022
 ---
 
-# Menu bars in .NET MAUI desktop apps
+# Display a menu bars in a .NET MAUI desktop app
 
 A .NET Multi-platform App UI (.NET MAUI) menu bar is a container that presents a set of menus in a horizontal row, at the top of a desktop app.
 
@@ -19,7 +19,7 @@ These properties are backed by `BindableProperty` objects, which means that they
 
 An item in a menu is represented by a `MenuFlyoutItem`, and a sub menu for a menu is represented by a `MenuFlyoutSubItem`. `MenuFlyoutSubItem` derives from `MenuFlyoutItem`, which in turn derives from `MenuItem`. `MenuItem` defines multiple properties that enable the appearance and behavior of a menu item to be specified. <!-- For more information, see [Menu items](). -->
 
-## Create menu items
+## Create menu bar items
 
 `MenuBarItem` objects can be added to the `MenuBarItems` collection, of type `IList<MenuBarItem>`, on a `ContentPage`. .NET MAUI desktop apps will display a menu bar, containing menu items, when they are added to any `ContentPage` that's hosted in a `NavigationPage` or a Shell app.
 
