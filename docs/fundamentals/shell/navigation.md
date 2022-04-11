@@ -340,7 +340,7 @@ In this example, an action sheet is displayed that invites the user to complete 
 
 ## Pass data
 
-Data can be passed as query parameters when performing URI-based programmatic navigation. This is achieved by appending `?` after a route, followed by a query parameter id, `=`, and a value:
+Primitive data can be passed as string-based query parameters when performing URI-based programmatic navigation. This is achieved by appending `?` after a route, followed by a query parameter id, `=`, and a value:
 
 ```csharp
 async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -350,7 +350,23 @@ async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEvent
 }
 ```
 
-This code example retrieves the currently selected elephant in the `CollectionView`, and navigates to the `elephantdetails` route, passing `elephantName` as a query parameter.
+This example retrieves the currently selected elephant in the `CollectionView`, and navigates to the `elephantdetails` route, passing `elephantName` as a query parameter.
+
+Object-based navigation data can be passed with a `GoToAsync` overload that specifies an `IDictionary<string, object>` argument:
+
+```csharp
+async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
+{
+    Animal animal = e.CurrentSelection.FirstOrDefault() as Animal;
+    var navigationParameter = new Dictionary<string, object>
+    {
+        { "Bear", animal }
+    };
+    await Shell.Current.GoToAsync($"beardetails", navigationParameter);
+}
+```
+
+This example retrieves the currently selected bear in the `CollectionView`, as an `Animal`. The `Animal` object is added to a `Dictionary` with the key `Bear`. Then, navigation to the `beardetails` route is performed, with the `Dictionary` being passed as a navigation parameter.
 
 There are two approaches to receiving navigation data:
 
@@ -359,44 +375,39 @@ There are two approaches to receiving navigation data:
 
 ### Process navigation data using query property attributes
 
-Navigation data can be received by decorating the receiving class with a `QueryPropertyAttribute` for each query parameter:
+Navigation data can be received by decorating the receiving class with a `QueryPropertyAttribute` for each string-based query parameter and object-based navigation parameter:
 
 ```csharp
-[QueryProperty(nameof(Name), "name")]
-public partial class ElephantDetailPage : ContentPage
+[QueryProperty(nameof(Bear), "Bear")]
+public partial class BearDetailPage : ContentPage
 {
-    public string Name
+    Animal bear;
+    public Animal Bear
     {
+        get => bear;
         set
         {
-            LoadAnimal(value);
+            bear = value;
+            OnPropertyChanged();
         }
     }
-    ...
 
-    void LoadAnimal(string name)
+    public BearDetailPage()
     {
-        try
-        {
-            Animal animal = ElephantData.Elephants.FirstOrDefault(a => a.Name == name);
-            BindingContext = animal;
-        }
-        catch (Exception)
-        {
-            Console.WriteLine("Failed to load animal.");
-        }
-    }    
+        InitializeComponent();
+        BindingContext = this;
+    }
 }
 ```
 
-The first argument for the `QueryPropertyAttribute` specifies the name of the property that will receive the data, with the second argument specifying the query parameter id. Therefore, the `QueryPropertyAttribute` in the above example specifies that the `Name` property will receive the data passed in the `name` query parameter from the URI in the `GoToAsync` method call. The `Name` property setter calls the `LoadAnimal` method to retrieve the `Animal` object for the `name`, and sets it as the `BindingContext` of the page.
+In this example the first argument for the `QueryPropertyAttribute` specifies the name of the property that will receive the data, with the second argument specifying the parameter id. Therefore, the `QueryPropertyAttribute` in the above example specifies that the `Bear` property will receive the data passed in the `Bear` navigation parameter in the `GoToAsync` method call.
 
 > [!NOTE]
-> Query parameter values that are received via the `QueryPropertyAttribute` are automatically URL decoded.
+> String-based query parameter values that are received via the `QueryPropertyAttribute` are automatically URL decoded.
 
 ### Process navigation data using a single method
 
-Navigation data can be received by implementing the `IQueryAttributable` interface on the receiving class. The `IQueryAttributable` interface specifies that the implementing class must implement the `ApplyQueryAttributes` method. This method has a `query` argument, of type `IDictionary<string, string>`, that contains any data passed during navigation. Each key in the dictionary is a query parameter id, with its value being the query parameter value. The advantage of using this approach is that navigation data can be processed using a single method, which can be useful when you have multiple items of navigation data that require processing as a whole.
+Navigation data can be received by implementing the `IQueryAttributable` interface on the receiving class. The `IQueryAttributable` interface specifies that the implementing class must implement the `ApplyQueryAttributes` method. This method has a `query` argument, of type `IDictionary<string, object>`, that contains any data passed during navigation. Each key in the dictionary is a query parameter id, with its value corresponding to the object that represents the data. The advantage of using this approach is that navigation data can be processed using a single method, which can be useful when you have multiple items of navigation data that require processing as a whole.
 
 The following example shows a view model class that implements the `IQueryAttributable` interface:
 
@@ -405,37 +416,23 @@ public class MonkeyDetailViewModel : IQueryAttributable, INotifyPropertyChanged
 {
     public Animal Monkey { get; private set; }
 
-    public void ApplyQueryAttributes(IDictionary<string, string> query)
+    public void ApplyQueryAttributes(IDictionary<string, object> query)
     {
-        // The query parameter requires URL decoding.
-        string name = HttpUtility.UrlDecode(query["name"]);
-        LoadAnimal(name);
-    }
-
-    void LoadAnimal(string name)
-    {
-        try
-        {
-            Monkey = MonkeyData.Monkeys.FirstOrDefault(a => a.Name == name);
-            OnPropertyChanged("Monkey");
-        }
-        catch (Exception)
-        {
-            Console.WriteLine("Failed to load animal.");
-        }
+        Monkey = query["Monkey"] as Animal;
+        OnPropertyChanged("Monkey");
     }
     ...
 }
 ```
 
-In this example, the `ApplyQueryAttributes` method retrieves the value of the `name` query parameter from the URI in the `GoToAsync` method call. Then, the `LoadAnimal` method is called to retrieve the `Animal` object, where its set as the value of the `Monkey` property that is data bound to.
+In this example, the `ApplyQueryAttributes` method retrieves the object that corresponds to the `Monkey` key in the `query` dictionary, which was passed as an argument to the `GoToAsync` method call.
 
 > [!IMPORTANT]
-> Query parameter values that are received via the `IQueryAttributable` interface aren't automatically URL decoded.
+> String-based query parameter values that are received via the `IQueryAttributable` interface aren't automatically URL decoded.
 
-#### Pass and process multiple query parameters
+#### Pass and process multiple items of data
 
-Multiple query parameters can be passed by connecting them with `&`. For example, the following code passes two data items:
+Multiple string-based query parameters can be passed by connecting them with `&`. For example, the following code passes two data items:
 
 ```csharp
 async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -448,7 +445,7 @@ async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEvent
 
 This code example retrieves the currently selected elephant in the `CollectionView`, and navigates to the `elephantdetails` route, passing `elephantName` and `elephantLocation` as query parameters.
 
-To receive multiple items of data, the class that represents the page being navigated to, or the class for the page's `BindingContext`, can be decorated with a `QueryPropertyAttribute` for each query parameter:
+To receive multiple items of data, the class that represents the page being navigated to, or the class for the page's `BindingContext`, can be decorated with a `QueryPropertyAttribute` for each string-based query parameter:
 
 ```csharp
 [QueryProperty(nameof(Name), "name")]
@@ -494,6 +491,9 @@ public class ElephantDetailViewModel : IQueryAttributable, INotifyPropertyChange
 ```
 
 In this example, the `ApplyQueryAttributes` method retrieves the value of the `name` and `location` query parameters from the URI in the `GoToAsync` method call.
+
+> [!NOTE]
+> String-based query parameters and object-based navigation parameters can be simultaneously passed when performing route-based navigation.
 
 ## Back button behavior
 
