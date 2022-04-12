@@ -66,6 +66,8 @@ landingContent:
             url: fundamentals/messagingcenter.md
           - text: Resource dictionaries
             url: fundamentals/resource-dictionaries.md
+          - text: Shell
+            url: fundamentals/shell/index.md
           - text: Single project
             url: fundamentals/single-project.md
           - text: Triggers
