@@ -55,13 +55,13 @@ Now that remote login is enabled, connect Visual Studio 2022 to the Mac:
 
     - Use the **Pair to Mac** button iOS toolbar:
 
-      :::image type="content" source="media/pair-to-mac/ios-toolbar.png alt-text="The iOS toolbar, with the Pair to Mac button highlighted.":::
+      :::image type="content" source="media/pair-to-mac/ios-toolbar.png" alt-text="The iOS toolbar, with the Pair to Mac button highlighted.":::
 
     - Or, select **Tools > iOS > Pair to Mac**.
 
     - The **Pair to Mac** dialog displays a list of all previously-connected and currently-available Mac build hosts:
 
-      :::image type="content" source="media/pair-to-mac/pairtomac.png alt-text="The Pair to Mac dialog.":::
+      :::image type="content" source="media/pair-to-mac/pairtomac.png" alt-text="The Pair to Mac dialog.":::
 
 1. Select a Mac in the list. Click **Connect**.
 
@@ -69,7 +69,7 @@ Now that remote login is enabled, connect Visual Studio 2022 to the Mac:
 
     - The first time you connect to any particular Mac, you are prompted to enter your username and password for that machine:
 
-      :::image type="content" source="media/pair-to-mac/auth.png alt-text="Entering a username and password for the Mac.":::
+      :::image type="content" source="media/pair-to-mac/auth.png" alt-text="Entering a username and password for the Mac.":::
 
       > [!TIP]
       > When logging in, use your system username.
@@ -82,7 +82,7 @@ Now that remote login is enabled, connect Visual Studio 2022 to the Mac:
 
     - When Visual Studio 2022 is connected to a Mac, that Mac's item in the **Pair to Mac** dialog displays an icon indicating that it is currently connected:
 
-      :::image type="content" source="media/pair-to-mac/connected.png alt-text="A connected Mac.":::
+      :::image type="content" source="media/pair-to-mac/connected.png" alt-text="A connected Mac.":::
 
       There can be only one connected Mac at a time.
 
@@ -95,7 +95,7 @@ Now that remote login is enabled, connect Visual Studio 2022 to the Mac:
 
 If you have successfully paired to a Mac build host, you are ready to build .NET MAUI iOS apps in Visual Studio 2022. <!-- For more information, see [](). -->
 
-If you have not been able to pair a Mac, try [manually adding aMac](#manually-add-a-mac) or take a look at the [troubleshooting advice](#troubleshooting).
+If you have not been able to pair a Mac, try [manually adding aMac](#manually-add-a-mac).
 
 ## Manually add a Mac
 
@@ -105,7 +105,7 @@ If you do not see a particular Mac listed in the **Pair to Mac** dialog, add it 
 
     - Open **System Preferences > Sharing > Remote Login** on your Mac:
 
-      [:::image type="content" source="media/pairtomac/remote-login.png" alt-text="The Mac's IP address in System Preferences > Sharing.:::
+      [:::image type="content" source="media/pairtomac/remote-login.png" alt-text="The Mac's IP address in System Preferences > Sharing.":::
 
     - Alternatively, use the command line. In Terminal, issue this command:
 
@@ -118,15 +118,15 @@ If you do not see a particular Mac listed in the **Pair to Mac** dialog, add it 
 
 1. In Visual Studio 2022's **Pair to Mac** dialog, select **Add Mac...**:
 
-    :::image type="content" source="media/pairtomac/addtomac.png" alt-text="The Add Mac button in the Pair to Mac dialog."":::
+    :::image type="content" source="media/pairtomac/addtomac.png" alt-text="The Add Mac button in the Pair to Mac dialog.:::
 
 1. Enter the Mac's IP address and click **Add**:
 
-    :::image type="content" source="media/enteripaddress.png alt-text="Entering the Mac's IP address.":::
+    :::image type="content" source="media/enteripaddress.png" alt-text="Entering the Mac's IP address.":::
 
 1. Enter your username and password for the Mac:
 
-    :::image type="content" source="media/pairtomacauth.png  alt-text="Enter a username and password.":::
+    :::image type="content" source="media/pairtomacauth.png" alt-text="Enter a username and password.":::
 
    > [!TIP]
    > When logging in, use your system username.
