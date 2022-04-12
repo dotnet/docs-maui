@@ -1,7 +1,7 @@
 ---
 title: "Build your first .NET MAUI app"
 description: "Learn how to create and run your first .NET MAUI app on Android."
-ms.date: 02/24/2021
+ms.date: 04/07/2021
 ms.custom: updateeachrelease
 zone_pivot_groups: devices-set-one
 ---
@@ -18,10 +18,6 @@ In this tutorial, you'll learn how to create and run your first .NET Multi-platf
 
 Visual Studio for Mac support will arrive in a future release.
 
-## Prerequisites
-
-- Hardware acceleration must be enabled to maximize Android emulator performance. For more information, see [How to enable hardware acceleration with Android emulators (Hyper-V & HAXM)](~/android/emulator/hardware-acceleration.md).
-
 :::zone-end
 
 ## Get started with Visual Studio 2022 17.2 (Preview)
@@ -30,7 +26,15 @@ Visual Studio for Mac support will arrive in a future release.
 
 In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 17.2 Preview, and run it on an Android emulator:
 
-01. To create .NET MAUI apps, you'll need the latest [Visual Studio 2022 17.2 Preview](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Community&channel=Preview&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2303). Either install Visual Studio, or modify your installation, and install the Mobile development with .NET workload:
+01. To create .NET MAUI apps, you'll need the latest Visual Studio 2022 17.2 Preview:
+
+    :::image type="content" source="media/first-app/download-community-preview.png" alt-text="Download Visual Studio 2022 Community Preview" link="https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Community&channel=Preview&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2303":::
+
+    :::image type="content" source="media/first-app/download-professional-preview.png" alt-text="Download Visual Studio 2022 Professional Preview" link="https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Professional&channel=Preview&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2303":::
+
+    :::image type="content" source="media/first-app/download-enterprise-preview.png" alt-text="Download Visual Studio 2022 Enterprise Preview" link="https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Enterprise&channel=Preview&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2303":::
+
+    Either install Visual Studio, or modify your installation, and install the Mobile development with .NET workload:
 
     :::image type="content" source="media/first-app/vs-workloads.png" alt-text="Visual Studio workloads for .NET MAUI.":::
 
@@ -40,7 +44,15 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
 In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 17.2 Preview, and run it on Windows:
 
-01. To create .NET MAUI apps, you'll need the latest [Visual Studio 2022 17.2 Preview](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Community&channel=Preview&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2302). Either install Visual Studio, or modify your installation, and install the Mobile development with .NET workload:
+01. To create .NET MAUI apps, you'll need the latest Visual Studio 2022 17.2 Preview:
+
+    :::image type="content" source="media/first-app/download-community-preview.png" alt-text="Download Visual Studio 2022 Community Preview" link="https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Community&channel=Preview&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2302":::
+
+    :::image type="content" source="media/first-app/download-professional-preview.png" alt-text="Download Visual Studio 2022 Professional Preview" link="https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Professional&channel=Preview&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2302":::
+
+    :::image type="content" source="media/first-app/download-enterprise-preview.png" alt-text="Download Visual Studio 2022 Enterprise Preview" link="https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Enterprise&channel=Preview&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2302":::
+
+    Either install Visual Studio, or modify your installation, and install the Mobile development with .NET workload:
 
     :::image type="content" source="media/first-app/vs-workloads.png" alt-text="Visual Studio workloads for .NET MAUI.":::
 
@@ -90,6 +102,9 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 08. In the Visual Studio toolbar, press the **Android Emulator** button to build the app:
 
     :::image type="content" source="media/first-app/android-emulator-button.png" alt-text="Android emulator button.":::
+
+    > [!IMPORTANT]
+    > Hardware acceleration must be enabled to maximize Android emulator performance. For more information, see [How to enable hardware acceleration with Android emulators (Hyper-V & HAXM)](~/android/emulator/hardware-acceleration.md).
 
     <!-- markdownlint-enable MD029 -->
 
