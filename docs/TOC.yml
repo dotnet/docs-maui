@@ -347,6 +347,8 @@
                       href: user-interface/controls/tableview.md
                 - name: ContentView
                   href: user-interface/controls/contentview.md
+        - name: Display a menu bar
+          href: user-interface/menubar.md
         - name: Display pop-ups
           href: user-interface/pop-ups.md
         - name: Graphics
