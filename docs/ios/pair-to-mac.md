@@ -105,7 +105,7 @@ If you do not see a particular Mac listed in the **Pair to Mac** dialog, add it 
 
     - Open **System Preferences > Sharing > Remote Login** on your Mac:
 
-      :::image type="content" source="media/pairtomac/remote-login.png" alt-text="The Mac's IP address in System Preferences > Sharing.":::
+      :::image type="content" source="media/pair-to-mac/remote-login.png" alt-text="The Mac's IP address in System Preferences > Sharing.":::
 
     - Alternatively, use the command line. In Terminal, issue this command:
 
@@ -118,15 +118,15 @@ If you do not see a particular Mac listed in the **Pair to Mac** dialog, add it 
 
 1. In Visual Studio 2022's **Pair to Mac** dialog, select **Add Mac...**:
 
-    :::image type="content" source="media/pairtomac/addtomac.png" alt-text="The Add Mac button in the Pair to Mac dialog.":::
+    :::image type="content" source="media/pair-to-mac/addtomac.png" alt-text="The Add Mac button in the Pair to Mac dialog.":::
 
 1. Enter the Mac's IP address and click **Add**:
 
-    :::image type="content" source="media/pairtomac/enteripaddress.png" alt-text="Entering the Mac's IP address.":::
+    :::image type="content" source="media/pair-to-mac/enteripaddress.png" alt-text="Entering the Mac's IP address.":::
 
 1. Enter your username and password for the Mac:
 
-    :::image type="content" source="media/pairtomac/auth.png" alt-text="Enter a username and password.":::
+    :::image type="content" source="media/pair-to-mac/auth.png" alt-text="Enter a username and password.":::
 
    > [!TIP]
    > When logging in, use your system username.
