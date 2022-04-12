@@ -1,7 +1,7 @@
 ---
 title: "Border"
 description: "Learn how to use the .NET MAUI Border class, which is a container control that draws a border, background, or both, around another control."
-ms.date: 12/13/2021
+ms.date: 04/12/2022
 ---
 
 # Border
@@ -51,6 +51,34 @@ The following XAML example shows how to draw a border around a `Label`:
 </Border>
 ```
 
+The equivalent C# code is:
+
+```csharp
+using Microsoft.Maui.Controls.Shapes;
+using GradientStop = Microsoft.Maui.Controls.GradientStop;
+...
+
+Border border = new Border
+{
+    Stroke = Color.FromArgb("#C49B33"),
+    Background = Color.FromArgb("#2B0B98"),
+    StrokeThickness = 4,
+    Padding = new Thickness(16, 8),
+    HorizontalOptions = LayoutOptions.Center,
+    StrokeShape = new RoundRectangle
+    {
+        CornerRadius = new CornerRadius(40, 0, 0, 40)
+    },
+    Content = new Label
+    {
+        Text = ".NET MAUI",
+        TextColor = Colors.White,
+        FontSize = 18,
+        FontAttributes = FontAttributes.Bold
+    }
+};
+```
+
 In this example, a border with rounded top-left and bottom-right corners is drawn around a `Label`. The border shape is defined as a `RoundRectangle` object, whose `CornerRadius` property is set to a `Thickness` value that enables independent control of each corner of the rectangle:
 
 :::image type="content" source="media/border/border.png" alt-text="Border around a Label screenshot.":::
@@ -80,6 +108,42 @@ Because the `Stroke` property is of type `Brush`, borders can also be drawn usin
            FontSize="18"
            FontAttributes="Bold" />
 </Border>
+```
+
+The equivalent C# code is:
+
+```csharp
+using Microsoft.Maui.Controls.Shapes;
+using GradientStop = Microsoft.Maui.Controls.GradientStop;
+...
+
+Border gradientBorder = new Border
+{
+    StrokeThickness = 4,
+    Background = Color.FromArgb("#2B0B98"),
+    Padding = new Thickness(16, 8),
+    HorizontalOptions = LayoutOptions.Center,
+    StrokeShape = new RoundRectangle
+    {
+        CornerRadius = new CornerRadius(40, 0, 0, 40)
+    },
+    Stroke = new LinearGradientBrush
+    {
+        EndPoint = new Point(0, 1),
+        GradientStops = new GradientStopCollection
+        {
+            new GradientStop { Color = Colors.Orange, Offset = 0.1f },
+            new GradientStop { Color = Colors.Brown, Offset = 1.0f }
+        },
+    },
+    Content = new Label
+    {
+        Text = ".NET MAUI",
+        TextColor = Colors.White,
+        FontSize = 18,
+        FontAttributes = FontAttributes.Bold
+    }
+};
 ```
 
 In this example, a border that uses a linear gradient is drawn around a `Label`:
