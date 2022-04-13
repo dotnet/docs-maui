@@ -12,8 +12,8 @@ The remote iOS Simulator for Windows allows you to test your apps on an iOS simu
 
 The remote iOS Simulator for Windows is installed automatically as part of the Mobile development with .NET workload in Visual Studio 2022. To use it, follow these steps:
 
-1. Pair Visual Studio 2022 to a Mac Build host. For more information, see [Pair to Mac](pair-to-mac.md).
-1. Ensure that the remote iOS simulator for Windows is enabled. For more information, see [Enable the remote iOS simulator for Windows](#enable-the-remote-ios-simulator-for-windows).
+1. Launch Visual Studio 2022 and create or load a .NET MAUI app project.
+1. In Visual Studio 2022, pair the IDE to a Mac Build host if you haven't previously. For more information, see [Pair to Mac for .NET MAUI iOS development](pair-to-mac.md).
 1. In the Visual Studio toolbar, use the **Debug Target** drop down to select **iOS Simulators** and then a specific iOS simulator:
 
     :::image type="content" source="media/remote-simulator/debug-target.png" alt-text="Visual Studio iOS simulators debug targets.":::
@@ -28,7 +28,7 @@ The remote iOS Simulator for Windows is installed automatically as part of the M
 
 ## Enable the remote iOS simulator for Windows
 
-To check that the remote iOS simulator for Windows is enabled, in Visual Studio navigate to **Tools > Options > Xamarin > iOS Settings** and and ensure that **Remote Simulator to Windows** is checked:
+The remote iOS simulator for Windows is enabled by default. However, if it's been previously disabled it can be enabled in Visual Studio by navigating to **Tools > Options > Xamarin > iOS Settings** and and ensuring that **Remote Simulator to Windows** is checked:
 
 :::image type="content" source="media/remote-simulator/enable-remote-simulator.png" alt-text="Visual Studio checkbox to enable the iOS remote simulator.":::
 
@@ -45,9 +45,9 @@ The buttons are as follows:
 
 - **Home** – simulates the home button on an iOS device.
 - **Lock** – locks the simulator (swipe to unlock).
-- **Take Screenshot** – saves a screenshot of the simulator (stored in **\Users\{User}\Pictures\Xamarin\iOS Simulator**).
+- **Take Screenshot** – saves a screenshot of the simulator to **\Users\{User}\Pictures\Xamarin\iOS Simulator**.
 - **Settings** – displays keyboard and other settings.
-- **Other options** – displays various simulator options such as rotation, shake gestures, and Touch ID.
+- **Other options** – displays various simulator options such as rotation, and shake gesture.
 
 Clicking the toolbar's **Settings** button (the gear icon) opens the **Settings** window:
 
