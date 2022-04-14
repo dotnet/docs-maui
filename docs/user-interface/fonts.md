@@ -21,6 +21,8 @@ All controls that display text define properties that can be set to change font 
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
+All controls that display text automatically use font scaling, which means that an app's UI reflects text scaling preferences set in the operating system.
+
 ## Register fonts
 
 True type format (TTF) and open type font (OTF) fonts can be added to your app and referenced by filename or alias, with registration being performed in the `CreateMauiApp` method in the `MauiProgram` class. This is accomplished by invoking the `ConfigureFonts` method on the `MauiAppBuilder` object. Then, on the `IFontCollection` object, call the `AddFont` method to add the required font to your app:
@@ -231,7 +233,7 @@ Image image = new Image { BackgroundColor = Color.FromArgb("#D1D1D1") };
 image.Source = new FontImageSource
 {
     Glyph = "\uf30c",
-    FontFamily = Device.RuntimePlatform == Device.iOS ? "Ionicons" : "ionicons.ttf#",
+    FontFamily = DeviceInfo.Platform == DevicePlatform.iOS ? "Ionicons" : "ionicons.ttf#",
     Size = 44
 };
 ```
