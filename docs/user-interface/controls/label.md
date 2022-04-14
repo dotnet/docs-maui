@@ -274,12 +274,12 @@ The following XAML example demonstrates a `FormattedText` property that consists
     <Label.FormattedText>
         <FormattedString>
             <Span Text="Red Bold, " TextColor="Red" FontAttributes="Bold" />
-            <Span Text="default, " FontSize="Medium">
+            <Span Text="default, " FontSize="14">
                 <Span.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding TapCommand}" />
                 </Span.GestureRecognizers>
             </Span>
-            <Span Text="italic small." FontAttributes="Italic" FontSize="Small" />
+            <Span Text="italic small." FontAttributes="Italic" FontSize="12" />
         </FormattedString>
     </Label.FormattedText>
 </Label>

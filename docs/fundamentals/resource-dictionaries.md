@@ -82,7 +82,7 @@ The following XAML example shows how to consume resources, and also define an ad
         <StackLayout.Resources>
             <!-- Implicit style -->
             <Style TargetType="Button">
-                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontSize" Value="14" />
                 <Setter Property="BackgroundColor" Value="#1976D2" />
                 <Setter Property="TextColor" Value="White" />
                 <Setter Property="CornerRadius" Value="5" />

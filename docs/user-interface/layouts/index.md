@@ -72,7 +72,7 @@ The following XAML shows how to create a `HorizontalStackLayout` containing diff
               HeightRequest="30"
               WidthRequest="30" />
    <Label Text="Red"
-          FontSize="Large" />
+          FontSize="18" />
 </HorizontalStackLayout>
 ```
 

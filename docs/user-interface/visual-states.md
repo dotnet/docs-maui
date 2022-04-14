@@ -236,17 +236,17 @@ The following example shows how to use the Visual State Manager for input valida
                 </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>
         <Label Text="Enter a U.S. phone number:"
-               FontSize="Large" />
+               FontSize="18" />
         <Entry x:Name="entry"
                Placeholder="555-555-5555"
-               FontSize="Large"
+               FontSize="18"
                Margin="30, 0, 0, 0"
                TextChanged="OnTextChanged" />
         <Label x:Name="helpLabel"
                Text="Phone number must be of the form 555-555-5555, and not begin with a 0 or 1" />
         <Button x:Name="submitButton"
                 Text="Submit"
-                FontSize="Large"
+                FontSize="18"
                 Margin="0, 20"
                 VerticalOptions="Center"
                 HorizontalOptions="Center" />

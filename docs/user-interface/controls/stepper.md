@@ -35,7 +35,7 @@ The following example shows how to create a `Stepper`, with two `Label` objects:
     <StackLayout Margin="20">
         <Label x:Name="_rotatingLabel"
                Text="ROTATING TEXT"
-               FontSize="Large"
+               FontSize="18"
                HorizontalOptions="Center"
                VerticalOptions="Center" />
         <Stepper Maximum="360"
@@ -115,7 +115,7 @@ The `ValueChanged` event handler can be eliminated by using data binding to resp
     <StackLayout Margin="20">
         <Label Text="ROTATING TEXT"
                Rotation="{Binding Source={x:Reference _stepper}, Path=Value}"
-               FontSize="Large"
+               FontSize="18"
                HorizontalOptions="Center"
                VerticalOptions="Center" />
         <Stepper x:Name="_stepper"

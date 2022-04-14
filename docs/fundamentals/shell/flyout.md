@@ -262,7 +262,7 @@ Flyout items, which represent the flyout content, can optionally be replaced wit
                 <DataTemplate>
                     <Label Text="{Binding Title}"
                            TextColor="White"
-                           FontSize="Large" />
+                           FontSize="18" />
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
@@ -290,7 +290,7 @@ Alternatively, flyout content can be defined by setting the `Shell.FlyoutContent
                     <DataTemplate>
                         <Label Text="{Binding Title}"
                                TextColor="White"
-                               FontSize="Large" />
+                               FontSize="18" />
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

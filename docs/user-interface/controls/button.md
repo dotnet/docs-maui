@@ -58,7 +58,7 @@ The following XAML example show how to create a `Button`:
                 Clicked="OnButtonClicked" />
         <Label x:Name="label"
                Text="Click the Button above"
-               FontSize="Large"
+               FontSize="18"
                VerticalOptions="Center"
                HorizontalOptions="Center" />
     </StackLayout>
@@ -159,7 +159,7 @@ The following XAML example consumes the `CommandDemoViewModel` class:
 
     <StackLayout>
         <Label Text="{Binding Number, StringFormat='Value is now {0}'}"
-               FontSize="Large"
+               FontSize="18"
                VerticalOptions="Center"
                HorizontalOptions="Center" />
         <Button Text="Multiply by 2"
@@ -229,7 +229,7 @@ The following XAML example shows a `Label` and a `Button` with handlers attached
                 Released="OnButtonReleased" />
         <Label x:Name="label"
                Text="Press and hold the Button above"
-               FontSize="Large"
+               FontSize="18"
                VerticalOptions="Center"
                HorizontalOptions="Center" />
     </StackLayout>

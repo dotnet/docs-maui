@@ -86,7 +86,7 @@ The following XAML example shows a `ControlTemplate` for `CardView` objects:
                   <Label Grid.Column="1"
                          Text="{Binding CardTitle}"
                          FontAttributes="Bold"
-                         FontSize="Large"
+                         FontSize="18"
                          VerticalTextAlignment="Center"
                          HorizontalTextAlignment="Start" />
                   <BoxView Grid.Row="1"
@@ -209,7 +209,7 @@ The following XAML example shows a `ControlTemplate` for `CardView` objects, tha
                     <Label Grid.Column="1"
                            Text="{TemplateBinding CardTitle}"
                            FontAttributes="Bold"
-                           FontSize="Large"
+                           FontSize="18"
                            VerticalTextAlignment="Center"
                            HorizontalTextAlignment="Start" />
                     <BoxView Grid.Row="1"
@@ -324,7 +324,7 @@ For example, the `CardViewUI` custom control defines its user interface using th
             <Label Grid.Column="1"
                    Text="{Binding CardTitle, FallbackValue='Card title'}"
                    FontAttributes="Bold"
-                   FontSize="Large"
+                   FontSize="18"
                    VerticalTextAlignment="Center"
                    HorizontalTextAlignment="Start" />
             <BoxView Grid.Row="1"
@@ -415,7 +415,7 @@ The following XAML shows a control template named `TealTemplate` that contains a
         <Label Margin="20,0,0,0"
                Text="{TemplateBinding HeaderText}"
                TextColor="White"
-               FontSize="Title"
+               FontSize="24"
                VerticalOptions="Center" />
         <ContentPresenter Grid.Row="1" />
         <BoxView Grid.Row="2"
@@ -571,7 +571,7 @@ In this example, the `BindingContext` of the page is set to a `PeopleViewModel` 
             </Grid.RowDefinitions>
             <Label Text="{Binding CardTitle}"
                    FontAttributes="Bold"
-                   FontSize="Large"
+                   FontSize="18"
                    VerticalTextAlignment="Center"
                    HorizontalTextAlignment="Start" />
             <BoxView Grid.Row="1"

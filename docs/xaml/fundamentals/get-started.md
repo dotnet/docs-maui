@@ -71,7 +71,7 @@ The following example shows a `ContentPage` containing a `Label`:
            VerticalOptions="Center"
            HorizontalTextAlignment="Center"
            Rotation="-15"
-           FontSize="Large"
+           FontSize="18"
            FontAttributes="Bold"
            TextColor="Blue" />
 </ContentPage>
@@ -84,7 +84,6 @@ Many shortcuts exist to set the values of these properties. Some properties are 
 For properties of more complex types, however, converters are used for parsing the XAML. These are classes in .NET MAUI that derive from `TypeConverter`. For the example above, several .NET MAUI converters are automatically applied to convert string values to their correct type:
 
 - `LayoutOptionsConverter` for the `VerticalOptions` property. This converter converts the names of public static fields of the `LayoutOptions` structure to values of type `LayoutOptions`.
-- `FontSizeConverter` for the `FontSize` property. The converter converts a `NamedSize` member or a numeric font size.
 - `ColorTypeConverter` for the `TextColor` property. This converter converts the names of public static fields of the `Colors` structure or hexadecimal RGB values, with or without an alpha channel.
 
 ## Page navigation
@@ -147,7 +146,7 @@ The child of most `ContentPage` derivatives is a layout, such as a `StackLayout`
     <StackLayout>
         <Slider VerticalOptions="Center" />
         <Label Text="A simple Label"
-               FontSize="Large"
+               FontSize="18"
                HorizontalOptions="Center"
                VerticalOptions="Center" />
         <Button Text="Click Me!"
@@ -201,7 +200,7 @@ Back in the XAML file, the `Slider` and `Button` tags need to include attributes
                 ValueChanged="OnSliderValueChanged" />
         <Label x:Name="valueLabel"
                Text="A simple Label"
-               FontSize="Large"
+               FontSize="18"
                HorizontalOptions="Center"
                VerticalOptions="Center" />
         <Button Text="Click Me!"

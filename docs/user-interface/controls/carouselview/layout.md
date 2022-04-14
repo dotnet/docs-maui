@@ -52,7 +52,7 @@ By default, `CarouselView` will display its items horizontally. Therefore, it's 
                     <StackLayout>
                         <Label Text="{Binding Name}"
                                FontAttributes="Bold"
-                               FontSize="Large"
+                               FontSize="18"
                                HorizontalOptions="Center"
                                VerticalOptions="Center" />
                         <Image Source="{Binding ImageUrl}"
@@ -120,7 +120,7 @@ This results in a layout that grows horizontally as new items are added.
                     <StackLayout>
                         <Label Text="{Binding Name}"
                                FontAttributes="Bold"
-                               FontSize="Large"
+                               FontSize="18"
                                HorizontalOptions="Center"
                                VerticalOptions="Center" />
                         <Image Source="{Binding ImageUrl}"
