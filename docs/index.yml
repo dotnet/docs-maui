@@ -7,7 +7,7 @@ metadata:
   title: .NET Multi-Platform App UI documentation
   description: .NET Multi-platform App UI (.NET MAUI) lets you build native apps using a .NET cross-platform UI toolkit that targets the mobile and desktop form factors on Android, iOS, macOS, Windows, and Tizen.
   ms.topic: landing-page
-  ms.date: 12/24/2021
+  ms.date: 01/28/2022
 
 landingContent:
   - title: Overview
@@ -22,44 +22,76 @@ landingContent:
     linkLists:
       - linkListType: how-to-guide
         links:
-          - text: Installation
-            url: get-started/installation.md
           - text: Build your first app
             url: get-started/first-app.md
       - linkListType: concept
         links:
           - text: Migrate from Xamarin.Forms
             url: get-started/migrate.md
+  - title: XAML
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Overview
+            url: xaml/index.md
+          - text: Fundamentals
+            url: xaml/fundamentals/get-started.md
+          - text: Compilation
+            url: xaml/xamlc.md
+          - text: Field modifiers
+            url: xaml/field-modifiers.md
+          - text: Generics
+            url: xaml/generics.md
+          - text: Markup extensions
+            url: xaml/markup-extensions/consume.md
+          - text: Namespaces
+            url: xaml/namespaces/index.md
+          - text: Pass arguments
+            url: xaml/pass-arguments.md
   - title: Fundamentals
     linkLists:
       - linkListType: concept
         links:
           - text: Accessibility
             url: fundamentals/accessibility.md
+          - text: App lifecycle
+            url: fundamentals/app-lifecycle.md
           - text: App startup
             url: fundamentals/app-startup.md
+          - text: Behaviors
+            url: fundamentals/behaviors.md
+          - text: Data binding
+            url: fundamentals/data-binding/index.md
+          - text: Publish and subscribe to messages
+            url: fundamentals/messagingcenter.md
+          - text: Resource dictionaries
+            url: fundamentals/resource-dictionaries.md
+          - text: Shell
+            url: fundamentals/shell/index.md
           - text: Single project
             url: fundamentals/single-project.md
+          - text: Triggers
+            url: fundamentals/triggers.md
   - title: User interface
     linkLists:
       - linkListType: concept
         links:
-          - text: BlazorWebView
-            url: user-interface/controls/blazorwebview.md
-          - text: Border
-            url: user-interface/controls/border.md
-          - text: Customize controls
-            url: user-interface/handlers/customize.md
-          - text: GraphicsView
-            url: user-interface/controls/graphicsview.md
+          - text: Animation
+            url: user-interface/animation/basic.md
+          - text: Brushes
+            url: user-interface/brushes/index.md
+          - text: Controls
+            url: user-interface/controls/index.md
           - text: Graphics
             url: user-interface/graphics/index.md
           - text: Layouts
             url: user-interface/layouts/index.md
-          - text: Shadows
-            url: user-interface/shadow.md
-          - text: Splash screen
-            url: user-interface/images/splashscreen.md
+          - text: Pages
+            url: user-interface/pages/contentpage.md
+          - text: Styles
+            url: user-interface/styles/xaml.md
+          - text: Theming
+            url: user-interface/theming.md
   - title: Platform integration
     linkLists:
       - linkListType: concept

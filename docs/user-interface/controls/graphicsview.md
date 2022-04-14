@@ -23,7 +23,7 @@ namespace MyMauiApp
 {
     public class GraphicsDrawable : IDrawable
     {
-        public void Draw(ICanvas canvas, RectangleF dirtyRect)
+        public void Draw(ICanvas canvas, RectF dirtyRect)
         {
             // Drawing code goes here
         }      
@@ -31,7 +31,7 @@ namespace MyMauiApp
 }
 ```
 
-The `Draw` method has `ICanvas` and `RectangleF` arguments. The `ICanvas` argument is the drawing canvas on which you draw graphical objects. The `RectangleF` argument is a `struct` that contains data about the size and location of the drawing canvas. For more information about drawing on an `ICanvas`, see [Draw graphical objects](~/user-interface/graphics/draw.md).
+The `Draw` method has `ICanvas` and `RectF` arguments. The `ICanvas` argument is the drawing canvas on which you draw graphical objects. The `RectF` argument is a `struct` that contains data about the size and location of the drawing canvas. For more information about drawing on an `ICanvas`, see [Draw graphical objects](~/user-interface/graphics/draw.md).
 
 In XAML, the `IDrawable` object should be declared as a resource, and then consumed by a `GraphicsView` by specifying its key:
 
@@ -53,9 +53,9 @@ In XAML, the `IDrawable` object should be declared as a resource, and then consu
 
 ## Position and size graphical objects
 
-The location and size of the `ICanvas` on a page can be determined by examining properties of the `RectangleF` argument in the `Draw` method.
+The location and size of the `ICanvas` on a page can be determined by examining properties of the `RectF` argument in the `Draw` method.
 
-The `RectangleF` struct defines the following properties:
+The `RectF` struct defines the following properties:
 
 - `Bottom`, of type `float`, which represents the y-coordinate of the bottom edge of the canvas.
 - `Center`, of type `PointF`. which specifies the coordinates of the center of the canvas.
@@ -80,6 +80,7 @@ These properties can be used to position and size graphical objects on the `ICan
 graphicsView.Invalidate();
 ```
 
+<!--
 ## Convert the drawable to an image
 
 Graphical objects that are drawn on a `GraphicsView` can be converted to an image by the `ToImage` method, which is available in the `Microsoft.Maui.Graphics` namespace. This method requires `width` and `height` arguments, of type `float`, that specify the dimensions of the image.
@@ -99,4 +100,4 @@ In code, the `Drawable` property of the `GraphicsView` object can then be access
 IImage image = graphicsView.Drawable.ToImage(400, 500);
 ```
 
-For information about image handling in `Microsoft.Maui.Graphics`, see [Images](~/user-interface/graphics/images.md).
+For information about image handling in `Microsoft.Maui.Graphics`, see [Images](~/user-interface/graphics/images.md). -->

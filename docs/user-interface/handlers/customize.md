@@ -32,16 +32,18 @@ Handlers are typically customized to augment the appearance and behavior of a na
 The following example customizes the background color of every control in the app, on Android, to cyan:
 
 ```csharp
+using Microsoft.Maui.Platform;
+
 public partial class App : Application
 {
     public App()
     {
         InitializeComponent();
 
-#if __ANDROID__
+#if ANDROID
         Microsoft.Maui.Handlers.ViewHandler.ViewMapper.AppendToMapping(nameof(IView.Background), (h, v) =>
         {
-            (h.NativeView as Android.Views.View).SetBackgroundColor(Microsoft.Maui.Graphics.Colors.Cyan.ToNative());
+            (h.PlatformView as Android.Views.View).SetBackgroundColor(Microsoft.Maui.Graphics.Colors.Cyan.ToPlatform());
         });
 #endif
     }
@@ -53,15 +55,18 @@ public partial class App : Application
 The following example removes the underline from all `Entry` controls in the app, on Android:
 
 ```csharp
+using Android.Content.Res;
+using Microsoft.Maui.Platform;
+
 public partial class MainPage : ContentPage
 {
     public MainPage()
     {
         InitializeComponent();
-#if __ANDROID__
-        Microsoft.Maui.Handlers.EntryHandler.EntryMapper.AppendToMapping("NoUnderline", (h, v) =>
+#if ANDROID
+        Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping("NoUnderline", (h, v) =>
         {
-            h.NativeView.BackgroundTintList = ColorStateList.ValueOf(Colors.Transparent.ToAndroid());
+            h.PlatformView.BackgroundTintList = ColorStateList.ValueOf(Colors.Transparent.ToPlatform());
         });
 #endif
     }
@@ -84,6 +89,8 @@ namespace MyMauiApp
 You can then customize the `EntryHandler` to perform the desired modification to `MyEntry` instances:
 
 ```csharp
+using Microsoft.Maui.Platform;
+
 namespace MauiApp1
 {
     public partial class App : Application
@@ -92,17 +99,17 @@ namespace MauiApp1
         {
             InitializeComponent();
 
-            Microsoft.Maui.Handlers.EntryHandler.EntryMapper.AppendToMapping(nameof(IView.Background), (handler, view) =>
+            Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping(nameof(IView.Background), (handler, view) =>
             {
                 if (view is MyEntry)
                 {
-#if __ANDROID__
-                  handler.NativeView.SetBackgroundColor(Colors.Red.ToNative());
-#elif __IOS__
-                  handler.NativeView.BackgroundColor = Colors.Red.ToNative();
-                  handler.NativeView.BorderStyle = UIKit.UITextBorderStyle.Line;
+#if ANDROID
+                  handler.PlatformView.SetBackgroundColor(Colors.Red.ToPlatform());
+#elif IOS
+                  handler.PlatformView.BackgroundColor = Colors.Red.ToPlatform();
+                  handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.Line;
 #elif WINDOWS
-                  handler.NativeView.Background = Colors.Red.ToNative();
+                  handler.PlatformView.Background = Colors.Red.ToPlatform();
 #endif
                 }
             });

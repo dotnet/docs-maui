@@ -41,10 +41,10 @@ You can also use the following static methods to create `Color` objects:
 
 Once created, a `Color` object is immutable. The characteristics of the color can be obtained from the following `float` properties, that range from 0 to 1:
 
-- `R`, which represents the red channel of the color.
-- `G`, which represents the green channel of the color.
-- `B`, which represents the blue channel of the color.
-- `A`, which represents the alpha channel of the color.
+- `Red`, which represents the red channel of the color.
+- `Green`, which represents the green channel of the color.
+- `Blue`, which represents the blue channel of the color.
+- `Alpha`, which represents the alpha channel of the color.
 
 In addition, the characteristics of the color can be obtained from the following methods:
 
@@ -123,7 +123,7 @@ The equivalent C# code is:
 ```csharp
 ActivityIndicator activityIndicator = new ActivityIndicator
 {
-    Color = Device.RuntimePlatform == Device.iOS ? Colors.MidnightBlue : Colors.AliceBlue,
+    Color = DeviceInfo.Platform == DevicePlatform.iOS ? Colors.MidnightBlue : Colors.AliceBlue,
     IsRunning = true
 };
 ```
