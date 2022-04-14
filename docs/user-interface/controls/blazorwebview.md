@@ -1,7 +1,7 @@
 ---
 title: "Host a Blazor web app in a .NET MAUI app using BlazorWebView"
 description: "The .NET MAUI BlazorWebView control enables you to host a Blazor web app in your .NET MAUI app, and integrate the app with device features."
-ms.date: 12/08/2021
+ms.date: 04/14/2022
 ---
 
 # Host a Blazor web app in a .NET MAUI app using BlazorWebView
@@ -89,13 +89,7 @@ The process to add a `BlazorWebView` to an existing .NET MAUI app is as follows:
     </ContentPage>
     ```
 
-1. Modify your `MauiProgram` class to add `using` directives for the `Microsoft.AspNetCore.Components.WebView.Maui` namespace:
-
-    ```csharp
-    using Microsoft.AspNetCore.Components.WebView.Maui;
-    ```
-
-1. Modify the `CreateMauiApp` method of your `MauiProgram` class to register the `BlazorWebView` control for use in your app. To do this, call the `RegisterBlazorMauiWebView` method on the `MauiAppBuilder` object. Then, on the `IServiceCollection` object, call the `AddBlazorWebView` method to add component web view services to the services collection:
+1. Modify the `CreateMauiApp` method of your `MauiProgram` class to register the `BlazorWebView` control for use in your app. To do this, on the `IServiceCollection` object, call the `AddMauiBlazorWebView` method to add component web view services to the services collection:
 
     ```csharp
     public static class MauiProgram
@@ -104,14 +98,13 @@ The process to add a `BlazorWebView` to an existing .NET MAUI app is as follows:
         {
             var builder = MauiApp.CreateBuilder();
             builder
-                .RegisterBlazorMauiWebView()
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 });
 
-            builder.Services.AddBlazorWebView();
+            builder.Services.AddMauiBlazorWebView();
             // Register any app services on the IServiceCollection object
             // e.g. builder.Services.AddSingleton<WeatherForecastService>();
 
