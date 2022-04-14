@@ -99,7 +99,7 @@ The following example shows XAML that consumes `ClockViewModel`:
     </ContentPage.BindingContext>
 
     <Label Text="{Binding DateTime, StringFormat='{0:T}'}"
-           FontSize="Large"
+           FontSize="18"
            HorizontalOptions="Center"
            VerticalOptions="Center" />
 </ContentPage>

@@ -39,7 +39,7 @@ The following XAML shows multiple examples of binding to sub-properties:
              x:Name="page">
     <ContentPage.Resources>
         <Style TargetType="Label">
-            <Setter Property="FontSize" Value="Large" />
+            <Setter Property="FontSize" Value="18" />
             <Setter Property="HorizontalTextAlignment" Value="Center" />
             <Setter Property="VerticalOptions" Value="Center" />
         </Style>

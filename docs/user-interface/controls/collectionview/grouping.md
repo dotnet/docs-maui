@@ -185,7 +185,7 @@ The appearance of each group header can be customized by setting the `Collection
         <DataTemplate>
             <Label Text="{Binding Name}"
                    BackgroundColor="LightGray"
-                   FontSize="Large"
+                   FontSize="18"
                    FontAttributes="Bold" />
         </DataTemplate>
     </CollectionView.GroupHeaderTemplate>

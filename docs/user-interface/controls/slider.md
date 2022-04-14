@@ -49,7 +49,7 @@ The following example shows how to create a `Slider`, with two `Label` objects:
     <StackLayout>
         <Label x:Name="rotatingLabel"
                Text="ROTATING TEXT"
-               FontSize="Large"
+               FontSize="18"
                HorizontalOptions="Center"
                VerticalOptions="Center" />
         <Slider Maximum="360"
@@ -127,7 +127,7 @@ The `ValueChanged` event handler can be eliminated by using data binding to resp
         <Label Text="ROTATING TEXT"
                Rotation="{Binding Source={x:Reference slider},
                                   Path=Value}"
-               FontSize="Large"
+               FontSize="18"
                HorizontalOptions="Center"
                VerticalOptions="Center" />
         <Slider x:Name="slider"

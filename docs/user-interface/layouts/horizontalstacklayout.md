@@ -32,7 +32,7 @@ The following XAML shows how to create a `HorizontalStackLayout` that contains d
                   HeightRequest="30"
                   WidthRequest="30" />
        <Label Text="Red"
-              FontSize="Large" />
+              FontSize="18" />
     </HorizontalStackLayout>
 </ContentPage>
 ```
@@ -58,7 +58,7 @@ The spacing between child views in a `HorizontalStackLayout` can be changed by s
                   HeightRequest="30"
                   WidthRequest="30" />
        <Label Text="Red"
-              FontSize="Large" />
+              FontSize="18" />
     </HorizontalStackLayout>
 </ContentPage>
 ```

@@ -216,7 +216,7 @@ A `FlexLayout` can substitute for a `StackLayout`:
                 AlignItems="Center"
                 JustifyContent="SpaceEvenly">        
         <Label Text="FlexLayout in Action"
-               FontSize="Large" />
+               FontSize="18" />
         <Image Source="dotnet_bot_branded.png"
                HeightRequest="300" />
         <Button Text="Do-Nothing Button" />
@@ -276,7 +276,7 @@ The following example shows an implementation of this layout using a `FlexLayout
 
         <!-- Header -->
         <Label Text="HEADER"
-               FontSize="Large"
+               FontSize="18"
                BackgroundColor="Aqua"
                HorizontalTextAlignment="Center" />
 
@@ -285,7 +285,7 @@ The following example shows an implementation of this layout using a `FlexLayout
 
             <!-- Content -->
             <Label Text="CONTENT"
-                   FontSize="Large"
+                   FontSize="18"
                    BackgroundColor="Gray"
                    HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center"
@@ -304,7 +304,7 @@ The following example shows an implementation of this layout using a `FlexLayout
 
         <!-- Footer -->
         <Label Text="FOOTER"
-               FontSize="Large"
+               FontSize="18"
                BackgroundColor="Pink"
                HorizontalTextAlignment="Center" />
     </FlexLayout>

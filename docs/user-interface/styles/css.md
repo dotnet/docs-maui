@@ -36,7 +36,7 @@ grid {
 }
 .mainPageTitle {
     font-style: bold;
-    font-size: medium;
+    font-size: 14;
 }
 
 .mainPageSubtitle {
@@ -45,7 +45,7 @@ grid {
 
 .detailPageTitle {
     font-style: bold;
-    font-size: medium;
+    font-size: 14;
     text-align: center;
 }
 
@@ -220,7 +220,7 @@ Elements with a specific class attribute can be selected with the case sensitive
 ```css
 .detailPageTitle {
     font-style: bold;
-    font-size: medium;
+    font-size: 14;
     text-align: center;
 }
 
@@ -370,7 +370,7 @@ The following CSS properties are supported by .NET MAUI (in the **Values** colum
 |`flex-shrink`|`VisualElement`|_float_ \| `initial`|`flex-shrink: 1;`|
 |`flex-wrap`|`VisualElement`| `nowrap` \| `wrap` \| `reverse` \| `wrap-reverse` \| `initial`|`flex-wrap: wrap-reverse;`|
 |`font-family`|`Button`, `DatePicker`, `Editor`, `Entry`, `Label`, `Picker`, `SearchBar`, `TimePicker`, `Span`|_string_ \| `initial` |`font-family: Consolas;`|
-|`font-size`|`Button`, `DatePicker`, `Editor`, `Entry`, `Label`, `Picker`, `SearchBar`, `TimePicker`, `Span`|_double_  \| _namedsize_ \| `initial` |`font-size: 12;`|
+|`font-size`|`Button`, `DatePicker`, `Editor`, `Entry`, `Label`, `Picker`, `SearchBar`, `TimePicker`, `Span`|_double_ \| `initial` |`font-size: 12;`|
 |`font-style`|`Button`, `DatePicker`, `Editor`, `Entry`, `Label`, `Picker`, `SearchBar`, `TimePicker`, `Span`|`bold` \| `italic` \| `initial` |`font-style: bold;`|
 |`height`|`VisualElement`|_double_ \| `initial` |`min-height: 250;`|
 |`justify-content`|`FlexLayout`| `start` \| `center` \| `end` \| `spacebetween` \| `spacearound` \| `spaceevenly` \| `flex-start` \| `flex-end` \| `space-between` \| `space-around` \| `initial`|`justify-content: flex-end;`|
@@ -479,23 +479,6 @@ One, two, three, or four `thickness` values are supported, each separated by whi
 
 > [!NOTE]
 > CSS `thickness` values differ from XAML `Thickness` values. For example, in XAML a two-value `Thickness` indicates horizontal then vertical thickness, while a four-value `Thickness` indicates left, then top, then right, then bottom thickness. In addition, XAML `Thickness` values are comma delimited.
-
-### NamedSize
-
-The following case insensitive `namedsize` values are supported:
-
-- `default`
-- `micro`
-- `small`
-- `medium`
-- `large`
-- `body`
-- `header`
-- `title`
-- `subtitle`
-- `caption`
-
-The exact meaning of each `namedsize` value is platform-dependent and view-dependent.
 
 ## Functions
 
