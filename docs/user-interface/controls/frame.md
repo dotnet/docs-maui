@@ -69,7 +69,7 @@ The following XAML shows how to create a card with a `Frame`:
        Padding="8">
   <StackLayout>
     <Label Text="Card Example"
-           FontSize="Medium"
+           FontSize="14"
            FontAttributes="Bold" />
     <BoxView Color="Gray"
              HeightRequest="2"

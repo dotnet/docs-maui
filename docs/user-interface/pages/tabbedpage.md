@@ -83,7 +83,7 @@ The following example shows generating `TabbedPage` children dynamically:
                 <StackLayout Padding="5, 25">
                     <Label Text="{Binding Name}"
                            FontAttributes="Bold"
-                           FontSize="Large"
+                           FontSize="18"
                            HorizontalOptions="Center" />
                     <Image Source="{Binding PhotoUrl}"
                            HorizontalOptions="Center"

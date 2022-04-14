@@ -100,7 +100,7 @@ The `Toggled` event handler can be eliminated by using data binding and triggers
             <Setter Property="FontAttributes"
                     Value="Italic, Bold" />
             <Setter Property="FontSize"
-                    Value="Large" />
+                    Value="18" />
         </DataTrigger>
     </Label.Triggers>
 </Label>
