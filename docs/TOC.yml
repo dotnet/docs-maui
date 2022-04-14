@@ -351,6 +351,8 @@
           href: user-interface/menubar.md
         - name: Display pop-ups
           href: user-interface/pop-ups.md
+        - name: Fonts
+          href: user-interface/fonts.md
         - name: Graphics
           items:
             - name: Overview

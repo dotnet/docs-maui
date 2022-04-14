@@ -1,10 +1,10 @@
 ---
-title: "Fonts"
+title: "Fonts in .NET MAUI"
 description: "This article explains how to specify font information on controls that display text in .NET MAUI apps."
 ms.date: 12/23/2021
 ---
 
-# Fonts
+# Fonts in .NET MAUI
 
 <!-- Sample link (if any), goes here -->
 
@@ -26,9 +26,6 @@ These properties are backed by `BindableProperty` objects, which means that they
 True type format (TTF) and open type font (OTF) fonts can be added to your app and referenced by filename or alias, with registration being performed in the `CreateMauiApp` method in the `MauiProgram` class. This is accomplished by invoking the `ConfigureFonts` method on the `MauiAppBuilder` object. Then, on the `IFontCollection` object, call the `AddFont` method to add the required font to your app:
 
 ```csharp
-using Microsoft.Maui.Controls.Hosting;
-using Microsoft.Maui.Hosting;
-
 namespace MyMauiApp
 {
     public static class MauiProgram
@@ -129,47 +126,25 @@ Label label2 = new Label
 
 ## Set the font size
 
-Controls that display text can set the `FontSize` property to specify the font size. The `FontSize` property can be set to a `double` value directly, or by a `NamedSize` enumeration value:
+Controls that display text can set the `FontSize` property to specify the font size. The `FontSize` property can be set to a `double` value:
 
 ```xaml
 <Label Text="Font size 24"
        FontSize="24" />
-<Label Text="Large font size"
-       FontSize="Large" />
 ```
 
 The equivalent C# code is:
 
 ```csharp
-Label label1 = new Label
+Label label = new Label
 {
     Text = "Font size 24",
     FontSize = 24
 };
-
-Label label2 = new Label
-{
-    Text = "Large font size",
-    FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label))
-};
-```
-
-<!-- Todo: Check Device.GetNamedSize survives the cull -->
-
-Alternatively, the `Device.GetNamedSize` method has an override that specifies the second argument as an `Element`:
-
-```csharp
-Label myLabel = new Label
-{
-    Text = "Large font size",
-};
-myLabel.FontSize = Device.GetNamedSize(NamedSize.Large, myLabel);
 ```
 
 > [!NOTE]
-> The `FontSize` value, when specified as a `double`, is measured in device-independent units. <!--For more information, see [Units of Measurement](~/xamarin-forms/user-interface/controls/common-properties.md#units-of-measurement).-->
-
-For more information about named font sizes, see [Understand named font sizes](#understand-named-font-sizes).
+> The `FontSize` value is measured in device-independent units. <!--For more information, see [Units of Measurement](~/xamarin-forms/user-interface/controls/common-properties.md#units-of-measurement).-->
 
 ## Disable font auto scaling
 
@@ -196,20 +171,18 @@ The `OnPlatform` and `On` classes can be used in XAML to set font properties per
 
 ```xaml
 <Label Text="Different font properties on different platforms"
-       FontSize="{OnPlatform iOS=20, Android=Medium, UWP=24}">
+       FontSize="{OnPlatform iOS=20, Android=22, WinUI=24}">
     <Label.FontFamily>
         <OnPlatform x:TypeArguments="x:String">
             <On Platform="iOS" Value="MarkerFelt-Thin" />
             <On Platform="Android" Value="Lobster-Regular" />
-            <On Platform="UWP" Value="ArimaMadurai-Black" />
+            <On Platform="WinUI" Value="ArimaMadurai-Black" />
         </OnPlatform>
     </Label.FontFamily>
 </Label>
 ```
 
-<!-- Todo: Device.RuntimePlatform will most likely be deprecated in favour of Essentials -->
-
-The `Device.RuntimePlatform` property can be used in code to set font properties per platform:
+The `DeviceInfo.Platform` property can be used in code to set font properties per platform:
 
 ```csharp
 Label label = new Label
@@ -217,37 +190,13 @@ Label label = new Label
     Text = "Different font properties on different platforms"
 };
 
-label.FontSize = Device.RuntimePlatform == Device.iOS ? 20 :
-    Device.RuntimePlatform == Device.Android ? Device.GetNamedSize(NamedSize.Medium, label) : 24;
-label.FontFamily = Device.RuntimePlatform == Device.iOS ? "MarkerFelt-Thin" :
-   Device.RuntimePlatform == Device.Android ? "Lobster-Regular" : "ArimaMadurai-Black";
+label.FontSize = DeviceInfo.Platform == DevicePlatform.iOS ? 20 :
+    DeviceInfo.Platform == DevicePlatform.Android ? 22 : 24;  
+label.FontFamily = DeviceInfo.Platform == DevicePlatform.iOS ? "MarkerFelt-Thin" :
+    DeviceInfo.Platform == DevicePlatform.Android ? "Lobster-Regular" : "ArimaMadurai-Black";
 ```
 
 <!-- For more information about providing platform-specific values, see [Provide platform-specific values](~/xamarin-forms/platform/device.md#provide-platform-specific-values). For information about the `OnPlatform` markup extension, see [OnPlatform markup extension](~/xamarin-forms/xaml/markup-extensions/consuming.md#onplatform-markup-extension). -->
-
-## Understand named font sizes
-
-<!-- Todo: Confirm that these sizes are still valid -->
-
-.NET MAUI defines fields in the `NamedSize` enumeration that represent specific font sizes. The following table shows the `NamedSize` members, and their default sizes on iOS, Android, and Windows:
-
-| Member | iOS | Android | Windows |
-| --- | --- | --- | --- |
-| `Default` | 17 | 14 | 14 |
-| `Micro` | 12 | 10 | 15.667 |
-| `Small` | 14 | 14 | 18.667 |
-| `Medium` | 17 | 17 | 22.667 |
-| `Large` | 22 | 22 | 32 |
-| `Body` | 17 | 16 | 14 |
-| `Header` | 17 | 96 | 46 |
-| `Title` | 28 | 24 | 24 |
-| `Subtitle` | 22 | 16 | 20 |
-| `Caption` | 12 | 12 | 12 |
-
-The size values are measured in device-independent units. <!-- For more information, see [Units of Measurement](~/xamarin-forms/user-interface/controls/common-properties.md#units-of-measurement). -->
-
-> [!NOTE]
-> On iOS and Android, named font sizes will autoscale based on operating system accessibility options. This behavior can be disabled on iOS with a platform-specific. <!-- For more information, see [Accessibility Scaling for Named Font Sizes on iOS](~/xamarin-forms/platform/ios/named-font-size-scaling.md). -->
 
 ## Display font icons
 
