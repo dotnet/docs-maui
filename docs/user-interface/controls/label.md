@@ -274,7 +274,7 @@ The following XAML example demonstrates a `FormattedText` property that consists
     <Label.FormattedText>
         <FormattedString>
             <Span Text="Red Bold, " TextColor="Red" FontAttributes="Bold" />
-            <Span Text="default, " Style="{DynamicResource BodyStyle}">
+            <Span Text="default, " FontSize="Medium">
                 <Span.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding TapCommand}" />
                 </Span.GestureRecognizers>
