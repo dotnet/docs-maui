@@ -15,7 +15,7 @@ ms.date: 04/19/2022
 - A single shared project that can target Android, iOS, macOS, and Windows.
 - A simplified debug target selection for running your .NET MAUI apps.
 - Shared resource files within the single project.
-- A single app manifest that describes the app title, id, and version.
+- A single app manifest that specifies the app title, id, and version.
 - Access to platform-specific APIs and tools when required.
 - A single cross-platform app entry point.
 
