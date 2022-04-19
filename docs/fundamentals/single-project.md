@@ -164,7 +164,7 @@ To specify the shared app manifest data for a project, open the shortcut menu fo
 
 :::image type="content" source="media/single-project/manifest.png" alt-text=".NET MAUI app manifest screenshot.":::
 
-At build time the shared app manifest data is merged with the native app manifest file to produce the manifest file that ships with the app.
+At build time the shared app manifest data is merged with platform-specific data in the native app manifest file, to produce the manifest file that ships with the app.
 
 ## Platform-specific code
 
