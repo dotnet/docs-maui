@@ -96,7 +96,7 @@ Regardless of how your `Window` object is created, it will be the parent of the 
 
 ## Multi-window support
 
-Multiple windows can be opened on Android, iOS on iPad (iPadOS), Mac Catalyst, and Windows. This can be achieved by creating a `Window` object and opening it using the `OpenWindow` method on the `Application` object:
+Multiple windows can be simultaneously opened on Android, iOS on iPad (iPadOS), Mac Catalyst, and Windows. This can be achieved by creating a `Window` object and opening it using the `OpenWindow` method on the `Application` object:
 
 ```csharp
 Window secondWindow = new Window(new MyPage());
