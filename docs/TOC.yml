@@ -157,6 +157,8 @@
                 href: fundamentals/datatemplate.md
         - name: Triggers
           href: fundamentals/triggers.md
+        - name: Windows
+          href: fundamentals/windows.md
     - name: User interface
       items:
         - name: Animation
