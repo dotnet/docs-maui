@@ -36,7 +36,7 @@ In addition to the markup extensions discussed in this article, the following ma
 - `Binding` - establish a link between properties of two objects. For more information, see [Data binding**](~/fundamentals/data-binding/index.md).
 - `TemplateBinding` - performs data binding from a control template. <!--For more information, see [Control templates**](~/fundamentals/templates/control-template.md).-->
 - `RelativeSource` - sets the binding source relative to the position of the binding target. For more information, see [Relative bindings](~/fundamentals/data-binding/relative-bindings.md).
-- `ConstraintExpression` - relates the position and size of a child in a `RelativeLayout` to its parent, or a sibling. <!--For more information, see [RelativeLayout](~/user-interface/layouts/relativelayout.md).-->
+<!-- - `ConstraintExpression` - relates the position and size of a child in a `RelativeLayout` to its parent, or a sibling. For more information, see [RelativeLayout](~/user-interface/layouts/relativelayout.md).-->
 
 ## x:Static markup extension
 
