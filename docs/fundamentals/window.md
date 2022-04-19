@@ -1,19 +1,19 @@
 ---
-title: ".NET MAUI Window"
-description: "The .NET MAUI Window class provides the ability to create, configure, show, and manage Windows."
-ms.date: 04/14/2022
+title: ".NET MAUI windows"
+description: "Learn how to use the .NET MAUI Window class to create, configure, show, and manage multi-window apps."
+ms.date: 04/19/2022
 ---
 
-# .NET MAUI Window
+# .NET MAUI windows
 
-The .NET Multi-platform App UI (.NET MAUI) `Window` class provides the ability to create, configure, show, and manage Windows.
+The .NET Multi-platform App UI (.NET MAUI) `Window` class provides the ability to create, configure, show, and manage multiple windows.
 
 `Window` defines the following properties:
 
 - `Title`, of type `string`, represents the title of the window.
 - `Page`, of type `Page`, indicates the page being displayed by the window. This property is the content property of the `Window` class, and therefore does not need to be explicitly set.
 - `FlowDirection`, of type `FlowDirection`, defines the direction in which the UI element of the window are laid out.
-- `Overlays`, of type `IReadOnlyCollection<IWindowOverlay>`, represents the collection window overlays.
+- `Overlays`, of type `IReadOnlyCollection<IWindowOverlay>`, represents the collection of window overlays.
 
 These properties, with the exception of the `Overlays` property, are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
@@ -21,11 +21,11 @@ These properties, with the exception of the `Overlays` property, are backed by `
 
 The `Window` class defines the following modal navigation events:
 
-- `ModalPopped`, with `ModalPoppedEventArgs`
-- `ModalPopping`, with `ModalPoppingEventArgs`
-- `ModalPushed`, with `ModalPushedEventArgs`
-- `ModalPushing`, with `ModalPushingEventArgs`
-- `PopCanceled`
+- `ModalPopped`, with `ModalPoppedEventArgs`, which is raised when a view has been popped modally.
+- `ModalPopping`, with `ModalPoppingEventArgs`, which is raised when a view is modally popped.
+- `ModalPushed`, with `ModalPushedEventArgs`, which is raised after a view has been pushed modally.
+- `ModalPushing`, with `ModalPushingEventArgs`, which is raised when a view is modally pushed.
+- `PopCanceled`, which is raised when a modal pop is cancelled.
 
 The `Window` class also defines the following lifecycle events:
 
@@ -96,10 +96,66 @@ Regardless of how your `Window` object is created, it will be the parent of the 
 
 ## Multi-window support
 
-https://devblogs.microsoft.com/dotnet/announcing-dotnet-maui-preview-11/#multi-window-apps
-https://github.com/dotnet/maui/pull/2811
-https://vladislavantonyuk.azurewebsites.net/articles/.net-maui-multi-window-support
+Multiple windows can be opened on Android, iOS on iPad (iPadOS), Mac Catalyst, and Windows. This can be achieved by creating a `Window` object and opening it using the `OpenWindow` method on the `Application` object:
 
+```csharp
+Window secondWindow = new Window(new MyPage());
+Application.Current.OpenWindow(secondWindow);
+```
 
-<!-- Todo: Multi-Window support (once added)
-           Eventually there'll be a mechanism for getting from a View to a Window -->
+The `Application.Current.Windows` collection, of type `IReadOnlyList<Window>` maintains references to all `Window` objects that are registered with the `Application` object.
+
+Windows can be closed with the `Application.Current.CloseWindow` method:
+
+```csharp
+// Close a specific window
+Application.Current.CloseWindow(secondWindow);
+
+// Close the active window
+Application.Current.CloseWindow(GetParentWindow());
+```
+
+> [!IMPORTANT]
+> Multi-window support works on Android and Windows without additional configuration. However, additional configuration is required on iPadOS and Mac Catalyst.
+
+### iPadOS and macOS configuration
+
+To use multi-window support on iPadOS and Mac Catalyst, add a class named `SceneDelegate` to the **Platforms > iOS** and **Platforms > MacCatalyst** folders:
+
+```csharp
+using Foundation;
+using Microsoft.Maui;
+using UIKit;
+
+namespace MyMauiApp;
+
+[Register("SceneDelegate")]
+public class SceneDelegate : MauiUISceneDelegate
+{
+}
+```
+
+Then, in the XML editor, open the **Platforms > iOS > Info.plist** file and the **Platforms > MacCatalyst > Info.plist** file and add the following XML to the end of each file:
+
+```xml
+<key>UIApplicationSceneManifest</key>
+<dict>
+	<key>UIApplicationSupportsMultipleScenes</key>
+	<true/>
+	<key>UISceneConfigurations</key>
+	<dict>
+		<key>UIWindowSceneSessionRoleApplication</key>
+		<array>
+			<dict>
+				<key>UISceneConfigurationName</key>
+				<string>__MAUI_DEFAULT_SCENE_CONFIGURATION__</string>
+				<key>UISceneDelegateClassName</key>
+				<string>SceneDelegate</string>
+			</dict>
+		</array>
+	</dict>
+</dict>
+```
+
+> [!IMPORTANT]
+> Multi-window support doesn't work on iOS for iPhone.
