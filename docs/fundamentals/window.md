@@ -140,20 +140,20 @@ Then, in the XML editor, open the **Platforms > iOS > Info.plist** file and the 
 ```xml
 <key>UIApplicationSceneManifest</key>
 <dict>
-	<key>UIApplicationSupportsMultipleScenes</key>
-	<true/>
-	<key>UISceneConfigurations</key>
-	<dict>
-		<key>UIWindowSceneSessionRoleApplication</key>
-		<array>
-			<dict>
-				<key>UISceneConfigurationName</key>
-				<string>__MAUI_DEFAULT_SCENE_CONFIGURATION__</string>
-				<key>UISceneDelegateClassName</key>
-				<string>SceneDelegate</string>
-			</dict>
-		</array>
-	</dict>
+  <key>UIApplicationSupportsMultipleScenes</key>
+  <true/>
+  <key>UISceneConfigurations</key>
+  <dict>
+    <key>UIWindowSceneSessionRoleApplication</key>
+    <array>
+      <dict>
+        <key>UISceneConfigurationName</key>
+        <string>__MAUI_DEFAULT_SCENE_CONFIGURATION__</string>
+        <key>UISceneDelegateClassName</key>
+        <string>SceneDelegate</string>
+      </dict>
+    </array>
+  </dict>
 </dict>
 ```
 
