@@ -1,7 +1,7 @@
 ---
 title: "Target multiple platforms from a single project"
 description: "Learn about the .NET MAUI single project, which brings all the platform-specific experiences across Android, iOS, macOS, and Windows, into one shared project."
-ms.date: 03/01/2022
+ms.date: 04/19/2022
 ---
 
 # Target multiple platforms from a single project
@@ -15,6 +15,7 @@ ms.date: 03/01/2022
 - A single shared project that can target Android, iOS, macOS, and Windows.
 - A simplified debug target selection for running your .NET MAUI apps.
 - Shared resource files within the single project.
+- A single app manifest that describes the app title, id, and version.
 - Access to platform-specific APIs and tools when required.
 - A single cross-platform app entry point.
 
@@ -154,6 +155,16 @@ CSS files must be loaded by the `StyleSheet` class before being added to a `Reso
 ```
 
 For more information, see [Style apps with CSS](~/user-interface/styles/css.md).
+
+## App manifest
+
+Each platform uses its own native app manifest file to specify information such as the app title, id, version, and more. .NET MAUI single project enables you to specify this common app data in a single location in the project file (.csproj).
+
+To specify the shared app manifest data for a project, open the shortcut menu for the project in **Solution Explorer**, and then choose **Properties**. The app title, id, and version can then be specified in **MAUI Shared > General**:
+
+:::image type="content" source="media/single-project/manifest.png" alt-text=".NET MAUI app manifest screenshot.":::
+
+At build time the shared app manifest data is merged with the native app manifest file to produce the manifest file that ships with the app.
 
 ## Platform-specific code
 
