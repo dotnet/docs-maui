@@ -1,12 +1,10 @@
 ---
 title: "Images"
 description: ".NET MAUI graphics includes functionality to load, save, resize, and downsize images."
-ms.date: 12/16/2021
+ms.date: 04/22/2022
 ---
 
 # Images
-
-<!-- Sample link goes here -->
 
 .NET Multi-platform App UI (.NET MAUI) graphics includes functionality to load, save, resize, and downsize images. Supported image formats are dependent on the underlying platform.
 
@@ -18,6 +16,9 @@ Images are represented by the `IImage` type, which defines the following propert
 - `Height`, of type `float`, that defines the height of an image.
 
 An optional `ImageFormat` argument can be specified when loading and saving images. The `ImageFormat` enumeration defines `Png`, `Jpeg`, `Gif`, `Tiff`, and `Bmp` members. However, this argument is only used when the image format is supported by the underlying platform.
+
+> [!NOTE]
+> .NET MAUI contains two different `IImage` interfaces. `Microsoft.Maui.Graphics.IImage` is used for image display, manipulation, and persistence in a `GraphicsView`. `Microsoft.Maui.IImage` is the interface that abstracts the `Image` control.
 
 ## Load an image
 
