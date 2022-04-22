@@ -53,25 +53,25 @@ namespace CustomizeHandlersDemo;
 
 public partial class CustomizeEntryPage : ContentPage
 {
-  	public CustomizeEntryPage()
-  	{
-    		InitializeComponent();
+	public CustomizeEntryPage()
+	{
+		InitializeComponent();
 
-    		ModifyEntry();
-  	}
+		ModifyEntry();
+	}
 
-  	void ModifyEntry()
+	void ModifyEntry()
     {
-    		Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping("MyCustomization", (handler, view) =>
-    		{
-    #if ANDROID
-    			 handler.PlatformView.SetBackgroundColor(Colors.Transparent.ToPlatform());
-    #elif iOS
-    			 handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.None;
-    #elif WINDOWS
-    			 handler.PlatformView.FontWeight = Microsoft.UI.Text.FontWeights.Thin;
-    #endif
-    		});
+		Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping("MyCustomization", (handler, view) =>
+		{
+#if ANDROID
+			handler.PlatformView.SetBackgroundColor(Colors.Transparent.ToPlatform());
+#elif iOS
+			handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.None;
+#elif WINDOWS
+			handler.PlatformView.FontWeight = Microsoft.UI.Text.FontWeights.Thin;
+#endif
+		});
     }
 }
 ```
@@ -222,35 +222,36 @@ In this example, the two event handlers call partial methods named `ChangedHandl
 ```csharp
 using Microsoft.Maui.Platform;
 
-namespace CustomizeHandlersDemo;
-
-public partial class CustomizeEntryPage : ContentPage
+namespace CustomizeHandlersDemo
 {
-    partial void ChangedHandler(object sender, EventArgs e)
+    public partial class CustomizeEntryPage : ContentPage
     {
-    	 ((sender as Entry).Handler.PlatformView as Android.Views.View).FocusChange += OnFocusChange;
-    }
+        partial void ChangedHandler(object sender, EventArgs e)
+        {
+            ((sender as Entry).Handler.PlatformView as Android.Views.View).FocusChange += OnFocusChange;
+        }
 
-    partial void ChangingHandler(object sender, HandlerChangingEventArgs e)
-    {
-      	if (e.OldHandler != null)
-      	{
-      		  (e.OldHandler.PlatformView as Android.Views.View).FocusChange -= OnFocusChange;
-      	}
-    }
+        partial void ChangingHandler(object sender, HandlerChangingEventArgs e)
+        {
+            if (e.OldHandler != null)
+            {
+                (e.OldHandler.PlatformView as Android.Views.View).FocusChange -= OnFocusChange;
+            }
+        }
 
-    void OnFocusChange(object sender, EventArgs e)
-    {
-      	var nativeView = sender as AndroidX.AppCompat.Widget.AppCompatEditText;
+        void OnFocusChange(object sender, EventArgs e)
+        {
+            var nativeView = sender as AndroidX.AppCompat.Widget.AppCompatEditText;
 
-      	if (nativeView.IsFocused)
-      	{
-      		  nativeView.SetBackgroundColor(Colors.LightPink.ToPlatform());
-      	}
-      	else
-      	{
-      		  nativeView.SetBackgroundColor(Colors.Transparent.ToPlatform());
-      	}
+            if (nativeView.IsFocused)
+            {
+                nativeView.SetBackgroundColor(Colors.LightPink.ToPlatform());
+            }
+            else
+            {
+                nativeView.SetBackgroundColor(Colors.Transparent.ToPlatform());
+            }
+        }
     }
 }
 ```
