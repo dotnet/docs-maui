@@ -309,7 +309,7 @@ The interfaces in the table above are in the `Microsoft.Maui` namespace.
 
 <!-- Remove the text above once their are API docs that can be linked into -->
 
-## Renderer-based viewsa
+## Renderer-based views
 
 The following legacy Xamarin.Forms views are backed by renderers, rather than handlers, and use a different customization approach:
 
