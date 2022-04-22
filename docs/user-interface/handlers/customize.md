@@ -51,25 +51,25 @@ namespace CustomizeHandlersDemo;
 
 public partial class CustomizeEntryPage : ContentPage
 {
-	public CustomizeEntryPage()
-	{
-		InitializeComponent();
-
-		ModifyEntry();
-	}
-
-	void ModifyEntry()
+    public CustomizeEntryPage()
     {
-		Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping("MyCustomization", (handler, view) =>
-		{
+        InitializeComponent();
+
+        ModifyEntry();
+    }
+
+    void ModifyEntry()
+    {
+        Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping("MyCustomization", (handler, view) =>
+        {
 #if ANDROID
-			handler.PlatformView.SetBackgroundColor(Colors.Transparent.ToPlatform());
+            handler.PlatformView.SetBackgroundColor(Colors.Transparent.ToPlatform());
 #elif iOS
-			handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.None;
+            handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.None;
 #elif WINDOWS
-			handler.PlatformView.FontWeight = Microsoft.UI.Text.FontWeights.Thin;
+            handler.PlatformView.FontWeight = Microsoft.UI.Text.FontWeights.Thin;
 #endif
-		});
+        });
     }
 }
 ```
@@ -200,17 +200,17 @@ namespace CustomizeHandlersDemo;
 
 public partial class CustomizeEntryPage : ContentPage
 {
-  	public CustomizePartialEntryPage()
-  	{
-  		  InitializeComponent();
-  	}
+    public CustomizePartialEntryPage()
+    {
+        InitializeComponent();
+    }
 
-  	partial void ChangedHandler(object sender, EventArgs e);
-  	partial void ChangingHandler(object sender, HandlerChangingEventArgs e);
+    partial void ChangedHandler(object sender, EventArgs e);
+    partial void ChangingHandler(object sender, HandlerChangingEventArgs e);
 
-  	void OnHandlerChanged(object sender, EventArgs e) => ChangedHandler(sender, e);
+    void OnHandlerChanged(object sender, EventArgs e) => ChangedHandler(sender, e);
 
-  	void OnHandlerChanging(object sender, HandlerChangingEventArgs e) => ChangingHandler(sender, e);
+    void OnHandlerChanging(object sender, HandlerChangingEventArgs e) => ChangingHandler(sender, e);
 }
 ```
 
