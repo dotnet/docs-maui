@@ -12,9 +12,9 @@ ms.date: 04/20/2022
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
-Handlers can be accessed through a control-specific interface provided by .NET MAUI, such as `IButton` for a `Button`. This avoids the cross-platform control having to reference its handler, and the handler having to reference the cross-platform control. The mapping of the cross-platform control API to the native control API is provided by a *mapper*.
+Handlers are accessed through their control-specific interface, such as `IButton` for a `Button`. This avoids the cross-platform control having to reference its handler, and the handler having to reference the cross-platform control. Each handler provides a *mapper* that maps the cross-platform control API to the native control API.
 
-Most handler types are located in the `Microsoft.Maui.Handlers` namespace, although a small number of them are located in the `Microsoft.Maui.Controls.Handlers.*` namespaces. Each handler provides a mapper that maps each cross-platform control property to a method that applies the property value to the native control. The mapper for each control's handler can be modified with one of the following methods:
+Handlers can be customized to augment the appearance and behavior of a .NET MAUI control beyond the customization that's possible through the control's API. This is achieved by modifying the mapper for a handler with one of the following methods:
 
 - `PrependToMapping`, which modifies the mapper for a control before the .NET MAUI mappings have been applied.
 - `ModifyMapping`, which modifies an existing mapping.
@@ -22,17 +22,17 @@ Most handler types are located in the `Microsoft.Maui.Handlers` namespace, altho
 
 Each method has an identical signature that requires two arguments:
 
-- A `string`-based key. This key doesn't have to correspond to the name of a property exposed by a type, or a property on a native control, and can therefore be arbitrary when calling the `PrependToMapping` or `AppendToMapping` methods. For example, `MyCustomization` can be specified as a key, with any native control modification being performed as the customization. However, to modify an existing mapping the key used by .NET MAUI must be specified.
+- A `string`-based key. This key doesn't have to correspond to the name of a property exposed by a type, or a property on a native control, and can therefore be arbitrary when calling the `PrependToMapping` or `AppendToMapping` methods. For example, `MyCustomization` can be specified as a key, with any native control modification being performed as the customization. However, the key used by .NET MAUI must be specified when modifying an existing .NET MAUI mapping.
 - An `Action` that represents the method that performs the handler customization. The `Action` specifies two arguments:
   - A `handler` argument that provides an instance of the handler being customized.
   - A `view` argument that provides an instance of the cross-platform control that the handler implements.
 
 > [!NOTE]
-> The key values used for .NET MAUI control mappings are based on interface and property names, for example `nameof(IEntry.IsPassword)`. The interfaces that abstract each cross-platform control can be found [here](https://github.com/dotnet/maui/tree/main/src/Core/src/Core).
+> The key values used for .NET MAUI control mappings are based on interface and property names, for example `nameof(IEntry.IsPassword)`. The interfaces, and their properties, that abstract each cross-platform control can be found [here](https://github.com/dotnet/maui/tree/main/src/Core/src/Core).
 
 Each handler class exposes the native control that implements the cross-platform control via its `PlatformView` property. This property can be accessed to set native control properties, invoke native control methods, and subscribe to native control events. In addition, the cross-platform control implemented by the handler is exposed via its `VirtualView` property.
 
-Handlers can be customized to augment the appearance and behavior of a .NET MAUI control beyond the customization that's possible through the control's API. Handler customizations are global and aren't scoped to a specific UI control. Handler customization is allowed to happen anywhere in your app. Once a handler is customized, it affects all controls of that type, everywhere in your app.
+Handler customizations are global and aren't scoped to a specific UI control. Handler customization is allowed to happen anywhere in your app. Once a handler is customized, it affects all controls of that type, everywhere in your app.
 
 Handlers can be customized per platform by using compiler preprocessor directives, to multi-target code based on the platform. Alternatively, you can use partial classes to organize your code into platform-specific folders and files. For more information about conditional compilation, see [Conditional compilation](/dotnet/csharp/language-reference/preprocessor-directives#conditional-compilation).
 
@@ -132,7 +132,7 @@ In addition to these events, each cross-platform control also has an overridable
 
 A handlers `PlatformView` property can be accessed to set native control properties, invoke native control methods, and subscribe to native control events. Subscribing to a native control event should occur when the `HandlerChanged` event is raised, which indicates that the native control that implements the cross-platform control is available and initialized. Similarly, unsubscribing from the native event should occur when the `HandlerChanging` event is raised, which indicates that the control's handler is about to be removed from the cross-platform control. For more information about handler lifecycle events, see [Handler lifecycle](#handler-lifecycle).
 
-To subscribe to, and unsubscribe from, native control events you must register event handlers for the `HandlerChanged` and `HandlerChanging` events on the .NET MAUI control being customized:
+To subscribe to, and unsubscribe from, native control events you must register event handlers for the `HandlerChanged` and `HandlerChanging` events on the cross-platform control being customized:
 
 ```xaml
 <Entry HandlerChanged="OnHandlerChanged"
@@ -299,6 +299,15 @@ The following table lists the names of the types that implement handler-based vi
 | `Switch` | `ISwitch` | `SwitchHandler` | `Mapper` |
 | `TimePicker` | `ITimePicker` | `TimePickerHandler` | `TimePickerMapper` |
 | `WebView` | `IWebView` | `WebViewHandler` | `Mapper` |
+
+All handlers are in the `Microsoft.Maui.Handlers` namespace, with the following exceptions:
+
+- `CarouselViewHandler` and `CollectionViewHandler` are in the `Microsoft.Maui.Controls.Handlers.Items` namespace.
+- `LineHandler`, `PathHandler`, `PolygonHandler`, `PolylineHandler`, `RectangleHandler`, and `RoundRectangleHandler` are in the `Microsoft.Maui.Controls.Handlers` namespace.
+
+The interfaces in the table above are in the `Microsoft.Maui` namespace.
+
+<!-- Remove the text above once their are API docs that can be linked into -->
 
 ## Renderer-based viewsa
 
