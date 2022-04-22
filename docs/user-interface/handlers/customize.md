@@ -6,7 +6,7 @@ ms.date: 04/20/2022
 
 # Customize .NET MAUI controls with handlers
 
-.NET Multi-platform App UI (.NET MAUI) provides a collection of controls that can be used to display data, initiate actions, indicate activity, display collections, pick data, and more. Each control has an interface representation, that abstracts the control. Cross-platform controls that implement these interfaces are known as *virtual views*. *Handlers* map these cross-platform controls to native controls on each platform, and are responsible for creating the underlying native control, and mapping their properties to the cross-platform controls. For example, on iOS a .NET MAUI handler maps a .NET MAUI `Button` to an iOS `UIButton` control. On Android, the `Button` is mapped to an `AppCompatButton` control:
+.NET Multi-platform App UI (.NET MAUI) provides a collection of controls that can be used to display data, initiate actions, indicate activity, display collections, pick data, and more. Each control has an interface representation, that abstracts the control. Cross-platform controls that implement these interfaces are known as *virtual views*. *Handlers* map these virtual views to native controls on each platform, and are responsible for creating the underlying native control, and mapping their properties to the cross-platform control. For example, on iOS a .NET MAUI handler maps a .NET MAUI `Button` to an iOS `UIButton` control. On Android, the `Button` is mapped to an `AppCompatButton` control:
 
 :::image type="content" source="media/customize/button-handler.png" alt-text="Button handler architecture." border="false":::
 
@@ -14,25 +14,23 @@ ms.date: 04/20/2022
 
 Handlers are accessed through their control-specific interface, such as `IButton` for a `Button`. This avoids the cross-platform control having to reference its handler, and the handler having to reference the cross-platform control. Each handler provides a *mapper* that maps the cross-platform control API to the native control API.
 
-Handlers can be customized to augment the appearance and behavior of a .NET MAUI control beyond the customization that's possible through the control's API. This is achieved by modifying the mapper for a handler with one of the following methods:
+Handlers can be customized to augment the appearance and behavior of a cross-platform control beyond the customization that's possible through the control's API. This customization is achieved by modifying the mapper for a handler, with one of the following methods:
 
-- `PrependToMapping`, which modifies the mapper for a control before the .NET MAUI mappings have been applied.
+- `PrependToMapping`, which modifies the mapper for a handler before the .NET MAUI control mappings have been applied.
 - `ModifyMapping`, which modifies an existing mapping.
-- `AppendToMapping`, which modifies the mapper for a control after the .NET MAUI mappings have been applied.
+- `AppendToMapping`, which modifies the mapper for a handler after the .NET MAUI control mappings have been applied.
 
-Each method has an identical signature that requires two arguments:
+Each of these methods has an identical signature that requires two arguments:
 
-- A `string`-based key. This key doesn't have to correspond to the name of a property exposed by a type, or a property on a native control, and can therefore be arbitrary when calling the `PrependToMapping` or `AppendToMapping` methods. For example, `MyCustomization` can be specified as a key, with any native control modification being performed as the customization. However, the key used by .NET MAUI must be specified when modifying an existing .NET MAUI mapping.
+- A `string`-based key. When modifying one of the mappings provided by .NET MAUI, the key used by .NET MAUI must be specified. The key values used by .NET MAUI control mappings are based on interface and property names, for example `nameof(IEntry.IsPassword)`. The interfaces, and their properties, that abstract each cross-platform control can be found [here](https://github.com/dotnet/maui/tree/main/src/Core/src/Core). Otherwise, this key can be an arbitrary value that doesn't have to correspond to the name of a property exposed by a type. For example, `MyCustomization` can be specified as a key, with any native control modification being performed as the customization.
 - An `Action` that represents the method that performs the handler customization. The `Action` specifies two arguments:
   - A `handler` argument that provides an instance of the handler being customized.
   - A `view` argument that provides an instance of the cross-platform control that the handler implements.
 
-> [!NOTE]
-> The key values used for .NET MAUI control mappings are based on interface and property names, for example `nameof(IEntry.IsPassword)`. The interfaces, and their properties, that abstract each cross-platform control can be found [here](https://github.com/dotnet/maui/tree/main/src/Core/src/Core).
+> [!IMPORTANT]
+> Handler customizations are global and aren't scoped to a specific control instance. Handler customization is allowed to happen anywhere in your app. Once a handler is customized, it affects all controls of that type, everywhere in your app.
 
 Each handler class exposes the native control that implements the cross-platform control via its `PlatformView` property. This property can be accessed to set native control properties, invoke native control methods, and subscribe to native control events. In addition, the cross-platform control implemented by the handler is exposed via its `VirtualView` property.
-
-Handler customizations are global and aren't scoped to a specific UI control. Handler customization is allowed to happen anywhere in your app. Once a handler is customized, it affects all controls of that type, everywhere in your app.
 
 Handlers can be customized per platform by using compiler preprocessor directives, to multi-target code based on the platform. Alternatively, you can use partial classes to organize your code into platform-specific folders and files. For more information about conditional compilation, see [Conditional compilation](/dotnet/csharp/language-reference/preprocessor-directives#conditional-compilation).
 
@@ -87,11 +85,10 @@ In this example, the `Entry` customization occurs in a page class. Therefore, al
 Handlers are global, and customizing a handler for a control will result in all controls of the same type being customized in your app. However, handlers for specific control instances can be customized by subclassing the control, and then by modifying the handler for the base control type only when the control is of the subclassed type. For example, to customize a specific `Entry` control on a page that contains multiple `Entry` controls, you should first subclass the `Entry` control:
 
 ```csharp
-namespace HandlersDemos.Controls
+namespace CustomizeHandlersDemo;
+
+public class MyEntry : Entry
 {
-    public class MyEntry : Entry
-    {
-    }
 }
 ```
 
@@ -222,45 +219,44 @@ In this example, the two event handlers call partial methods named `ChangedHandl
 ```csharp
 using Microsoft.Maui.Platform;
 
-namespace CustomizeHandlersDemo
+namespace CustomizeHandlersDemo;
+
+public partial class CustomizeEntryPage : ContentPage
 {
-    public partial class CustomizeEntryPage : ContentPage
+    partial void ChangedHandler(object sender, EventArgs e)
     {
-        partial void ChangedHandler(object sender, EventArgs e)
+        ((sender as Entry).Handler.PlatformView as Android.Views.View).FocusChange += OnFocusChange;
+    }
+
+    partial void ChangingHandler(object sender, HandlerChangingEventArgs e)
+    {
+        if (e.OldHandler != null)
         {
-            ((sender as Entry).Handler.PlatformView as Android.Views.View).FocusChange += OnFocusChange;
+            (e.OldHandler.PlatformView as Android.Views.View).FocusChange -= OnFocusChange;
         }
+    }
 
-        partial void ChangingHandler(object sender, HandlerChangingEventArgs e)
+    void OnFocusChange(object sender, EventArgs e)
+    {
+        var nativeView = sender as AndroidX.AppCompat.Widget.AppCompatEditText;
+
+        if (nativeView.IsFocused)
         {
-            if (e.OldHandler != null)
-            {
-                (e.OldHandler.PlatformView as Android.Views.View).FocusChange -= OnFocusChange;
-            }
+            nativeView.SetBackgroundColor(Colors.LightPink.ToPlatform());
         }
-
-        void OnFocusChange(object sender, EventArgs e)
+        else
         {
-            var nativeView = sender as AndroidX.AppCompat.Widget.AppCompatEditText;
-
-            if (nativeView.IsFocused)
-            {
-                nativeView.SetBackgroundColor(Colors.LightPink.ToPlatform());
-            }
-            else
-            {
-                nativeView.SetBackgroundColor(Colors.Transparent.ToPlatform());
-            }
+            nativeView.SetBackgroundColor(Colors.Transparent.ToPlatform());
         }
     }
 }
 ```
 
-The advantage of this approach is that compiler preprocessing directives aren't required, and that the partial methods don't have to be implemented on each platform. If an implementation isn't provided on a platform, the compiler removes the signature at compile time. For information about partial methods, see [Partial methods](/dotnet/csharp/programming-guide/classes-and-structs/partial-classes-and-methods#partial-methods).
+The advantage of this approach is that compiler preprocessing directives aren't required, and that the partial methods don't have to be implemented on each platform. If an implementation isn't provided on a platform, then the method and all calls to the method are removed at compile time. For information about partial methods, see [Partial methods](/dotnet/csharp/programming-guide/classes-and-structs/partial-classes-and-methods#partial-methods).
 
 ## Handler-based views
 
-The following table lists the names of the types that implement handler-based views in .NET MAUI:
+The following table lists the types that implement handler-based views in .NET MAUI:
 
 | View | Interface | Handler | Mapper |
 | -- | -- | -- | -- |
