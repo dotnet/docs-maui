@@ -27,6 +27,9 @@ Each method has an identical signature that requires two arguments:
   - A `handler` argument that provides an instance of the handler being customized.
   - A `view` argument that provides an instance of the cross-platform control that the handler implements.
 
+> [!NOTE]
+> The key values used for .NET MAUI control mappings are based on interface and property names, for example `nameof(IEntry.IsPassword)`. The interfaces that abstract each cross-platform control can be found [here](https://github.com/dotnet/maui/tree/main/src/Core/src/Core).
+
 Each handler class exposes the native control that implements the cross-platform control via its `PlatformView` property. This property can be accessed to set native control properties, invoke native control methods, and subscribe to native control events. In addition, the cross-platform control implemented by the handler is exposed via its `VirtualView` property.
 
 Handlers can be customized to augment the appearance and behavior of a .NET MAUI control beyond the customization that's possible through the control's API. Handler customizations are global and aren't scoped to a specific UI control. Handler customization is allowed to happen anywhere in your app. Once a handler is customized, it affects all controls of that type, everywhere in your app.
@@ -296,7 +299,7 @@ The following table lists the names of the types that implement handler-based vi
 | `TimePicker` | `ITimePicker` | `TimePickerHandler` | `TimePickerMapper` |
 | `WebView` | `IWebView` | `WebViewHandler` | `Mapper` |
 
-## Renderer-based controls
+## Renderer-based viewsa
 
 The following legacy Xamarin.Forms views are backed by renderers, rather than handlers, and use a different customization approach:
 
