@@ -1,25 +1,27 @@
 ---
-title: ".NET MAUI supported platforms"
-description: ".NET MAUI platform and development system requirements."
-ms.date: 08/16/2021
+title: "Supported platforms for .NET MAUI apps"
+description: ".NET MAUI supports developing apps for Android, iOS, Mac Catalyst, and Windows."
+ms.date: 04/13/2022
 ---
 
-# .NET MAUI supported platforms
+# Supported platforms for .NET MAUI apps
 
-.NET Multi-platform App UI (MAUI) apps can be written for the following platforms:
+.NET Multi-platform App UI (.NET MAUI) apps can be written for the following platforms:
 
-- Android 5.0 (API 21) or higher.
-- iOS 10 or higher.
-- macOS 11 (Big Sur) or higher.
-- Windows desktop, using Windows UI Library (WinUI) 3.
+- Android 5.0 (API 21) or higher. For .NET MAUI Blazor apps, Android 6 (API 23) or higher is required.
+- iOS 10 or higher. For .NET MAUI Blazor apps, iOS 11 or higher is required.
+- macOS 10.13 or higher, using Mac Catalyst.
+- Windows 11 and Windows 10 version 1809 or higher, using [Windows UI Library (WinUI) 3](/windows/apps/winui/winui3/).
 
-.NET MAUI apps for Android, iOS, and Windows can be built in Visual Studio. However, a networked Mac is required for iOS development. From .NET MAUI Preview 6, the minimum required version of Xcode is 13.0 Beta 1.
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
-.NET MAUI apps for Android, iOS, and macOS can be built in Visual Studio for Mac.
+.NET MAUI apps for Android, iOS, and Windows can be built in Visual Studio. However, a networked Mac is required for iOS development. <!--From .NET MAUI Preview 6, the minimum required version of Xcode is 13.0 Beta 1.-->
+
+<!-- .NET MAUI apps for Android, iOS, and macOS can be built in Visual Studio for Mac.-->
 
 ## Additional platform support
 
-.NET MAUI supports additional platforms beyond iOS, Android, and Windows:
+.NET MAUI supports additional platforms beyond Android, iOS, macOS and Windows:
 
 - Tizen, supported by Samsung.
 - Linux, supported by the community.

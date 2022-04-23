@@ -47,12 +47,21 @@
       "extendBreadcrumb": true,
       "feedback_system": "GitHub",
       "feedback_github_repo": "dotnet/docs-maui",
+      "feedback_product_url": "https://developercommunity.visualstudio.com/",
       "ms.author": "dabritch",
       "ms.prod": "dotnet-mobile",
       "ms.technology": "dotnet-maui",
-      "zone_pivot_group_filename": "maui/zone-pivot-groups.json"
+      "zone_pivot_group_filename": "maui/zone-pivot-groups.json",
+      "titleSuffix": ".NET MAUI",
+      "searchScope": [ ".NET MAUI" ]
     },
-    "fileMetadata": {},
+    "fileMetadata": {
+        "titleSuffix": {
+            "**.md": ".NET MAUI",
+            "essentials/**.md": ".NET MAUI Essentials",
+            "user-interface/graphics/**.md": ".NET MAUI Graphics"
+        }
+    },
     "template": [],
     "dest": "docs-maui-public",
     "markdownEngineName": "markdig"

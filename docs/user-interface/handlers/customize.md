@@ -1,14 +1,18 @@
 ---
 title: ".NET MAUI control customization with handlers"
 description: ".NET MAUI handlers map cross-platform controls to performant native controls on each platform."
-ms.date: 06/10/2021
+ms.date: 11/29/2021
 ---
 
-# Customize .NET MAUI controls with handlers
+# Customize controls with handlers
 
-.NET Multi-platform App UI (MAUI) provides a collection of controls that can be used to display data, initiate actions, indicate activity, display collections, pick data, and more. By default, *handlers* map these cross-platform controls to native controls on each platform. For example, on iOS a .NET MAUI handler will map a .NET MAUI `Button` to an iOS `UIButton`. On Android, the `Button` will be mapped to a `AppCompatButton`:
+.NET Multi-platform App UI (.NET MAUI) provides a collection of controls that can be used to display data, initiate actions, indicate activity, display collections, pick data, and more. By default, *handlers* map these cross-platform controls to native controls on each platform.
 
-:::image type="content" source="customize-images/button-handler.png" alt-text="Button handler architecture." border="false":::
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
+
+For example, on iOS a .NET MAUI handler will map a .NET MAUI `Button` to an iOS `UIButton`. On Android, the `Button` will be mapped to a `AppCompatButton`:
+
+:::image type="content" source="media/customize/button-handler.png" alt-text="Button handler architecture." border="false":::
 
 Handlers can be accessed through a control-specific interface provided by .NET MAUI, such as `IButton` for a `Button`. This avoids the cross-platform control having to reference its handler, and the handler having to reference the cross-platform control. The mapping of the cross-platform control API to the platform API is provided by a *mapper*.
 
@@ -28,8 +32,7 @@ Handlers are typically customized to augment the appearance and behavior of a na
 The following example customizes the background color of every control in the app, on Android, to cyan:
 
 ```csharp
-using Microsoft.Maui;
-using Microsoft.Maui.Controls;
+using Microsoft.Maui.Platform;
 
 public partial class App : Application
 {
@@ -37,11 +40,11 @@ public partial class App : Application
     {
         InitializeComponent();
 
-#if __ANDROID__
-        Microsoft.Maui.Handlers.ViewHandler.ViewMapper[nameof(IView.Background)] = (h, v) =>
+#if ANDROID
+        Microsoft.Maui.Handlers.ViewHandler.ViewMapper.AppendToMapping(nameof(IView.Background), (h, v) =>
         {
-            (h.NativeView as Android.Views.View).SetBackgroundColor(Microsoft.Maui.Graphics.Colors.Cyan.ToNative());
-        };
+            (h.PlatformView as Android.Views.View).SetBackgroundColor(Microsoft.Maui.Graphics.Colors.Cyan.ToPlatform());
+        });
 #endif
     }
 }
@@ -52,19 +55,19 @@ public partial class App : Application
 The following example removes the underline from all `Entry` controls in the app, on Android:
 
 ```csharp
-using Microsoft.Maui;
-using Microsoft.Maui.Controls;
+using Android.Content.Res;
+using Microsoft.Maui.Platform;
 
-public partial class MainPage : ContentPage, IPage
+public partial class MainPage : ContentPage
 {
     public MainPage()
     {
         InitializeComponent();
-#if __ANDROID__
-        Handlers.EntryHandler.EntryMapper[nameof(IEntry.Background)] = (h, v) =>
+#if ANDROID
+        Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping("NoUnderline", (h, v) =>
         {
-            (h.NativeView as global::Android.Views.Entry).UnderlineVisible = false;
-        };
+            h.PlatformView.BackgroundTintList = ColorStateList.ValueOf(Colors.Transparent.ToPlatform());
+        });
 #endif
     }
 }
@@ -75,8 +78,6 @@ public partial class MainPage : ContentPage, IPage
 Handlers for specific control instances can be customized by subclassing the control, and then by modifying the handler for the parent control only when the control is of the subclassed type. For example, to customize specific `Entry` controls on a page that contains multiple `Entry` controls, you should first subclass the `Entry` control:
 
 ```csharp
-using Microsoft.Maui.Controls;
-
 namespace MyMauiApp
 {
     public class MyEntry : Entry
@@ -88,34 +89,32 @@ namespace MyMauiApp
 You can then customize the `EntryHandler` to perform the desired modification to `MyEntry` instances:
 
 ```csharp
-using Microsoft.Maui;
-using Microsoft.Maui.Controls;
-using Microsoft.Maui.Graphics;
+using Microsoft.Maui.Platform;
 
 namespace MauiApp1
 {
-  	public partial class App : Application
-  	{
-  		public App()
-  		{
-          InitializeComponent();
+    public partial class App : Application
+    {
+        public App()
+        {
+            InitializeComponent();
 
-          Microsoft.Maui.Handlers.EntryHandler.EntryMapper[nameof(IView.Background)] = (handler, view) =>
-          {
-              if (view is MyEntry)
-              {
-#if __ANDROID__
-                  handler.NativeView.SetBackgroundColor(Colors.Red.ToNative());
-#elif __IOS__
-                  handler.NativeView.BackgroundColor = Colors.Red.ToNative();
-                  handler.NativeView.BorderStyle = UIKit.UITextBorderStyle.Line;
+            Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping(nameof(IView.Background), (handler, view) =>
+            {
+                if (view is MyEntry)
+                {
+#if ANDROID
+                  handler.PlatformView.SetBackgroundColor(Colors.Red.ToPlatform());
+#elif IOS
+                  handler.PlatformView.BackgroundColor = Colors.Red.ToPlatform();
+                  handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.Line;
 #elif WINDOWS
-                  handler.NativeView.Background = Colors.Red.ToNative();
+                  handler.PlatformView.Background = Colors.Red.ToPlatform();
 #endif
-              }
-          };
-  		}
-  	}
+                }
+            });
+        }
+    }
 }
 ```
 
