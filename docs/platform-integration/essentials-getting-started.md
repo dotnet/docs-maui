@@ -5,6 +5,8 @@ ms.date: 08/11/2021
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
+TODO: This was part of the original /essentials/ folder. I'm not yet sure what config there will be. It seems this article was required for Android config. We'll have to see what is required for "Init" since essentials is now gone and the code base is just directly integrated into .net maui.
+
 # Get started with .NET MAUI Essentials
 
 .NET Multi-platform App UI (.NET MAUI) Essentials provides a single cross-platform API that works with any iOS, Android, or Windows application. Essentials is accessed from cross-platform friendly code that is ignorant of the platform it's run on. Some APIs do require platform-specific configure or setup, but that's the exception rather than the rule. For more information about platform and operating system support, see [.NET MAUI supported platforms](../../supported-platforms.md).

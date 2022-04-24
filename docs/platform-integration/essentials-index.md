@@ -5,6 +5,9 @@ ms.date: 02/26/2020
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
 ---
 
+
+TODO: This was part of the original /essentials/ folder. This should be deleted or converted into an proper overview explaining the various facets of device feature access from .NET MAUI. This could also be broken into multiple index.md files in each "essentials" sub section. But it shouldn't be a link farm, it should be a proper overview of the device feature category.
+
 # Xamarin.Essentials
 
 Xamarin.Essentials provides developers with cross-platform APIs for their mobile applications.
