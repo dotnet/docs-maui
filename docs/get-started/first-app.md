@@ -191,7 +191,7 @@ In this tutorial, you'll create your first .NET MAUI app with .NET Command Line 
     dotnet new maui -n "MyMauiApp"
     ```
 
-1. In **Terminal**, change directory to the *MyMauiApp* directory, and run the app:
+1. In **Terminal**, change directory to *MyMauiApp*, and build and run the app:
 
     ```zsh
     cd MyMauiApp
