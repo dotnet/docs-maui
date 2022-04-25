@@ -12,11 +12,19 @@ In this tutorial, you'll learn how to create and run your first .NET Multi-platf
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
-:::zone pivot="devices-android"
+:::zone pivot="devices-android,devices-maccatalyst"
 
 Visual Studio 2022 for Mac, with .NET MAUI support, is currently available as a [preview release](https://visualstudio.microsoft.com/vs/mac/preview/).
 
+:::zone-end
+
+:::zone pivot="devices-android, devices-windows"
+
 ## Get started with Visual Studio 2022 17.2 (Preview)
+
+:::zone-end
+
+:::zone pivot="devices-android"
 
 In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 17.2 Preview, and run it on an Android emulator:
 
@@ -156,8 +164,6 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 :::zone-end
 
 :::zone pivot="devices-maccatalyst"
-
-Visual Studio 2022 for Mac, with .NET MAUI support, is currently available as a [preview release](https://visualstudio.microsoft.com/vs/mac/preview/).
 
 ## Get started with .NET CLI
 
