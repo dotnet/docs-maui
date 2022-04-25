@@ -200,7 +200,7 @@ In this tutorial, you'll create your first .NET MAUI app with .NET Command Line 
 
     The `dotnet build` command will restore the project the dependencies, build the app, and launch it.
 
-1. In the running app, press the **Click me** button several times and observe that the count of the number of button clicks is incremented.    
+1. In the running app, press the **Click me** button several times and observe that the count of the number of button clicks is incremented.
 
     :::image type="content" source="media/first-app/maccatalyst-running-app.png" alt-text=".NET MAUI app running on Mac.":::
 
