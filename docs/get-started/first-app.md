@@ -1,12 +1,10 @@
 ---
 title: "Build your first .NET MAUI app"
 description: "Learn how to create and run your first .NET MAUI app on Android."
-ms.date: 04/07/2021
+ms.date: 04/25/2022
 ms.custom: updateeachrelease
 zone_pivot_groups: devices-set-one
 ---
-
-<!-- zone_pivot_groups: preview-platforms -->
 
 # Build your first app
 
@@ -16,13 +14,9 @@ In this tutorial, you'll learn how to create and run your first .NET Multi-platf
 
 :::zone pivot="devices-android"
 
-Visual Studio for Mac support will arrive in a future release.
-
-:::zone-end
+Visual Studio 2022 for Mac, with .NET MAUI support, is currently available as a [preview release](https://visualstudio.microsoft.com/vs/mac/preview/).
 
 ## Get started with Visual Studio 2022 17.2 (Preview)
-
-:::zone pivot="devices-android"
 
 In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 17.2 Preview, and run it on an Android emulator:
 
@@ -41,6 +35,8 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 :::zone-end
 
 :::zone pivot="devices-windows"
+
+## Get started with Visual Studio 2022 17.2 (Preview)
 
 In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 17.2 Preview, and run it on Windows:
 
@@ -163,6 +159,54 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
     :::image type="content" source="media/first-app/windows-running-app.png" alt-text=".NET MAUI app running on Windows.":::
 
 :::zone-end
+
+:::zone pivot="devices-maccatalyst"
+
+Visual Studio 2022 for Mac, with .NET MAUI support, is currently available as a [preview release](https://visualstudio.microsoft.com/vs/mac/preview/).
+
+## Get started with .NET CLI
+
+In this tutorial, you'll create your first .NET MAUI app with .NET Command Line Interface (CLI), and run it on a Mac:
+
+1. To create .NET MAUI apps, you'll need to download and run the [installer](https://github.com/dotnet/installer/blob/main/README.md#installers-and-binaries) for the latest .NET 6 runtime.
+
+    You'll also need to download and install the latest version of [Xcode 13](https://xcodereleases.com), which is also available from the App Store app on your Mac.
+
+1. On your Mac, open **Terminal** and check that you have the latest .NET 6 runtime installed:
+
+    ```zsh
+    dotnet --version
+    ```
+
+1. In **Terminal**, install the latest public build of .NET MAUI:
+
+    ```zsh
+    sudo dotnet workload install maui --source https://api.nuget.org/v3/index.json
+    ```
+
+    This command will install the latest released version of .NET MAUI, including the required platform SDKs.
+
+1. In **Terminal**, create a new .NET MAUI app using .NET CLI:
+
+    ```zsh
+    dotnet new maui -n "MyMauiApp"
+    ```
+
+1. In **Terminal**, change directory to the *MyMauiApp* directory, and run the app:
+
+    ```zsh
+    cd MyMauiApp
+    dotnet build -t:Run -f net6.0-maccatalyst
+    ```
+
+    The `dotnet build` command will restore the project the dependencies, build the app, and launch it.
+
+1. In the running app, press the **Click me** button several times and observe that the count of the number of button clicks is incremented.    
+
+    :::image type="content" source="media/first-app/maccatalyst-running-app.png" alt-text=".NET MAUI app running on Mac.":::
+
+:::zone-end
+
 <!-- ## Build and debug iOS apps
 
 If, while connecting Visual Studio to your Mac through Xamarin Mac Agent (XMA), you are prompted to install a different version of the SDK, you can ignore the prompt since it refers to a legacy version of XMA.
@@ -172,6 +216,8 @@ If, while connecting Visual Studio to your Mac through Xamarin Mac Agent (XMA), 
 
 ::: zone-end
 ::: zone pivot="dotnet-cli"
+
+Visual Studio 2022 for Mac, with .NET MAUI support, is currently available as a [preview release](https://visualstudio.microsoft.com/vs/mac/preview/).
 
 ## Get started with .NET command-line interface
 
