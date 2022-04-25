@@ -3,7 +3,7 @@ title: "Build your first .NET MAUI app"
 description: "Learn how to create and run your first .NET MAUI app on Android."
 ms.date: 04/25/2022
 ms.custom: updateeachrelease
-zone_pivot_groups: devices-set-one
+zone_pivot_groups: deployment-devices
 ---
 
 # Build your first app
