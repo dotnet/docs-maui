@@ -10,9 +10,9 @@ Images are a crucial part of app navigation, usability, and branding. However, e
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
-In a .NET Multi-platform App UI (.NET MAUI) app project, images can be specified in a single location in your app project, and at build time they can be automatically resized to the correct resolutions for the target platform and device, and added to your app package. This avoids having to manually duplicate and name images on a per platform basis. By default, bitmap (non-vector) image formats are not automatically resized by .NET MAUI.
+In a .NET Multi-platform App UI (.NET MAUI) app project, images can be specified in a single location in your app project, and at build time they can be automatically resized to the correct resolution for the target platform and device, and added to your app package. This avoids having to manually duplicate and name images on a per platform basis. By default, bitmap (non-vector) image formats are not automatically resized by .NET MAUI.
 
-.NET Multi-platform App UI (.NET MAUI) images can use any of the standard platform image formats, including Scalable Vector Graphics (SVG) files.
+.NET MAUI images can use any of the standard platform image formats, including Scalable Vector Graphics (SVG) files.
 
 > [!IMPORTANT]
 > .NET MAUI converts SVG files to PNG files. Therefore, when adding an SVG file to your .NET MAUI app project, it should be referenced from XAML or C# with a .png extension.
@@ -36,9 +36,7 @@ The base size of the image can be specified by setting the `BaseSize` attribute 
 <MauiImage Include="Resources\Images\logo.jpg" BaseSize="376,678" />
 ```
 
-The value of the `BaseSize` attribute represents the baseline density of the image, and is effectively the 1.0 scale factor for the image (the size you would typically use in your code to specify the image size) from which all other density sizes are derived. This value will be used to ensure that images are correctly resized to different display densities. If you don't specify a `BaseSize` for a bitmap image, the image isn't resized. If you don't specify a `BaseSize` value for a vector image, the dimensions specified in the SVG are assumed to be the base size.
-
-To stop vector images being resized, set the `Resize` attribute to `false`:
+The value of the `BaseSize` attribute represents the baseline density of the image, and is effectively the 1.0 scale factor for the image (the size you would typically use in your code to specify the image size) from which all other density sizes are derived. This value will be used to ensure that images are correctly resized to different display densities. If you don't specify a `BaseSize` for a bitmap image, the image isn't resized. If you don't specify a `BaseSize` value for a vector image, the dimensions specified in the SVG are assumed to be the base size. To stop vector images being resized, set the `Resize` attribute to `false`:
 
 ```xml
 <MauiImage Include="Resources\Images\logo.svg" Resize="false" />

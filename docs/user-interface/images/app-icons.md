@@ -1,7 +1,7 @@
 ---
 title: "Add an app icon to a .NET MAUI app project"
 description: "Learn how to add a .NET MAUI app icon to your app, which is the logo that represents your app in multiple places."
-ms.date: 01/14/2022
+ms.date: 04/26/2022
 ---
 
 # Add an app icon to a .NET MAUI app project
@@ -10,7 +10,9 @@ Every app has a logo icon that represents it, and that icon typically appears in
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
-A .NET Multi-platform App UI (.NET MAUI) app icon is a composite of an image and a background color. The standard platform image formats are supported, including Scalable Vector Graphics (SVG) files.
+In a .NET Multi-platform App UI (.NET MAUI) app project, an app icon can be specified in a single location in your app project, and at build time it can be automatically resized to the correct resolution for the target platform and device, and added to your app package. This avoids having to manually duplicate and name the app icon on a per platform basis. By default, bitmap (non-vector) image formats are not automatically resized by .NET MAUI.
+
+A .NET MAUI app icon can use any of the standard platform image formats, including Scalable Vector Graphics (SVG) files.
 
 > [!IMPORTANT]
 > .NET MAUI converts SVG files to PNG files. Therefore, when adding an SVG file to your .NET MAUI app project, it should be referenced from XAML or C# with a .png extension.
@@ -23,18 +25,39 @@ An app icon can be added to your app project by dragging an image into the _Reso
 </ItemGroup>
 ```
 
+> [!NOTE]
+> An app icons can also be added to other folders of your app project.
+
 To comply with Android resource naming rules, app icon filenames must be lowercase, start and end with a letter character, and contain only alphanumeric characters or underscores. For more information, see [App resources overview](https://developer.android.com/guide/topics/resources/providing-resources) on developer.android.com.
+
+The base size of the app icon can be specified by setting the `BaseSize` attribute to values that are divisible by 8:
+
+```xml
+<MauiIcon Include="Resources\Images\appicon.jpg" BaseSize="64,64" />
+```
+
+The value of the `BaseSize` attribute represents the baseline density of the image, and is effectively the 1.0 scale factor for the image from which all other density sizes are derived. This value will be used to ensure that the app icon is correctly resized to different display densities. If you don't specify a `BaseSize` for a bitmap-based app icon, the image isn't resized. If you don't specify a `BaseSize` value for a vector-based app icon, the dimensions specified in the SVG are assumed to be the base size. To stop vector images being resized, set the `Resize` attribute to `false`:
+
+```xml
+<MauiIcon Include="Resources\Images\appicon.svg" Resize="false" />
+```
+
+To add a tint to your app icon, which is useful when you have an icon or simple image you'd like to render in a different color to the source, set the `TintColor` attribute:
+
+```xml
+<MauiIcon Include="Resources\Images\appicon.svg" TintColor="#66B3FF" />
+```
 
 A background color for the app icon can also be specified:
 
 ```xml
- <MauiIcon Include="Resources\Images\appicon.svg" Color="#512BD4" />
+<MauiIcon Include="Resources\Images\appicon.svg" Color="#512BD4" />
 ```
 
 <!-- Valid color values are actually derived from the SKColor struct, rather than Microsoft.Maui.Graphics.Colors. -->
 Color values can be specified in hexadecimal, or as a .NET MAUI color. For example, `Color="Red"` is valid.
 
-At build time, the app icon is resized to the correct sizes for the target platform and device. The resized app icons are then added to your app package.
+At build time, the app icon can be resized to the correct resolutions for the target platform and device. The resulting app icon is then added to your app package.
 
 <!-- markdownlint-disable MD025 -->
 
