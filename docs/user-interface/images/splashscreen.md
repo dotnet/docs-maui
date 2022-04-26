@@ -1,10 +1,10 @@
 ---
-title: "Splash screen"
+title: "Add a splash screen to a .NET MAUI app project"
 description: "A .NET MAUI splash screen can be displayed on Android and iOS when an app is launched, while the app's initialization process completes."
 ms.date: 12/24/2021
 ---
 
-# Add a splash screen to a .NET MAUI app rpoject
+# Add a splash screen to a .NET MAUI app project
 
 <!-- Todo: Move this content into the images doc, once it migrates over? -->
 

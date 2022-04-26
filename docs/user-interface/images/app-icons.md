@@ -1,5 +1,5 @@
 ---
-title: "App icons"
+title: "Add an app icon to a .NET MAUI app project"
 description: "Learn how to add a .NET MAUI app icon to your app, which is the logo that represents your app in multiple places."
 ms.date: 01/14/2022
 ---

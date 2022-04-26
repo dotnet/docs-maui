@@ -1,5 +1,5 @@
 ---
-title: ".NET MAUI images"
+title: "Add images to a .NET MAUI app project"
 description: "Learn how to add images to your .NET MAUI app, and control their resizing."
 ms.date: 04/26/2022
 ---
