@@ -51,7 +51,7 @@ To add a tint to your images, which is useful when you have icons or simple imag
 A background color for an image can also be specified:
 
 ```xml
- <MauiIcon Include="Resources\Images\appicon.svg" Color="#512BD4" />
+<MauiImage Include="Resources\Images\logo.svg" Color="#512BD4" />
 ```
 
 <!-- Valid color values are actually derived from the SKColor struct, rather than Microsoft.Maui.Graphics.Colors. -->
