@@ -38,6 +38,12 @@ The base size of the image can be specified by setting the `BaseSize` attribute 
 
 The value of the `BaseSize` attribute represents the baseline density of the image, and is effectively the 1.0 scale factor for the image (the size you would typically use in your code to specify the image size) from which all other density sizes are derived. This value will be used to ensure that images are correctly resized to different display densities. If you don't specify a `BaseSize` for a bitmap image, the image isn't resized. If you don't specify a `BaseSize` value for a vector image, the dimensions specified in the SVG are assumed to be the base size.
 
+To stop vector images being resized, set the `Resize` attribute to `false`:
+
+```xml
+<MauiImage Include="Resources\Images\logo.svg" Resize="false" />
+```
+
 To add a tint to your images, which is useful when you have icons or simple images you'd like to render in a different color to the source, set the `TintColor` attribute:
 
 ```xml
@@ -54,9 +60,3 @@ A background color for an image can also be specified:
 Color values can be specified in hexadecimal, or as a .NET MAUI color. For example, `Color="Red"` is valid.
 
 At build time, images can be resized to the correct resolutions for the target platform and device. The resulting images are then added to your app package.
-
-To stop vector images being resized, set the `Resize` attribute to `false`:
-
-```xml
-<MauiImage Include="Resources\Images\logo.png" Resize="false" />
-```
