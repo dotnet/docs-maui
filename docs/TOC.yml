@@ -375,6 +375,8 @@
           items:
             - name: App icons
               href: user-interface/images/app-icons.md
+            - name: Images
+              href: user-interface/images/images.md
             - name: Splash screen
               href: user-interface/images/splashscreen.md
         - name: Shadows
