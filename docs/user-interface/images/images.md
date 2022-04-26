@@ -4,7 +4,7 @@ description: "Learn how to add images to your .NET MAUI app, and control their r
 ms.date: 04/26/2022
 ---
 
-# Images
+# Add images to a .NET MAUI app project
 
 Images are a crucial part of app navigation, usability, and branding. However, each platform has differing image requirements that typically involve creating multiple versions of each image at different resolutions. Therefore, a single image typically has to be duplicated multiple times per platform, at different resolutions, with the resulting images having to use different filename and folder conventions on each platform.
 

@@ -4,7 +4,7 @@ description: "Learn how to add a .NET MAUI app icon to your app, which is the lo
 ms.date: 01/14/2022
 ---
 
-# App icons
+# Add an app icon to a .NET MAUI app project
 
 Every app has a logo icon that represents it, and that icon typically appears in multiple places. For example, on iOS the app icon appears on the Home screen and throughout the system, such as in Settings, notifications, and search results, and in the App Store. On Android, the app icon appears as a launcher icon and throughout the system, such as on the action bar and in notifications, and in the Google Play Store. On Windows the app icon appears in the app list in the start menu, on the taskbar and task manager, on the app's tile, and in the Microsoft Store.
 

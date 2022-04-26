@@ -4,7 +4,7 @@ description: "A .NET MAUI splash screen can be displayed on Android and iOS when
 ms.date: 12/24/2021
 ---
 
-# Splash screens
+# Add a splash screen to a .NET MAUI app rpoject
 
 <!-- Todo: Move this content into the images doc, once it migrates over? -->
 
