@@ -90,13 +90,13 @@ For more information, see [App icons](~/user-interface/images/app-icons.md).
 
 ### Images
 
-Images can be added to your app project by dragging them to the _Resources\Images_ folder of your project,  where their build action will automatically be set to **MauiImage**. This creates a corresponding entry per image in your project file:
+Images can be added to your app project by dragging them to the _Resources\Images_ folder of your project, where their build action will automatically be set to **MauiImage**. This creates a corresponding entry per image in your project file:
 
 ```xml
 <MauiImage Include="Resources\Images\logo.jpg" />
 ```
 
-At build time, vector images are resized to the correct resolutions for the target platform and device. The resulting images, whether vector-based or not, are then added to your app package.
+At build time, images can be resized to the correct resolutions for the target platform and device. The resulting images are then added to your app package.
 
 For more information, see [Images](~/user-interface/images/images.md).
 

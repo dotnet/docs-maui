@@ -10,7 +10,7 @@ Images are a crucial part of app navigation, usability, and branding. However, e
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
-In a .NET Multi-platform App UI (.NET MAUI) app project, images can be specified in a single location in your app project, and at build time they can be automatically resized to the correct resolutions for the target platform and device, and added to your app package. This avoids having to manually duplicate and name images on a per platform basis. By default, non-vector image formats are not automatically resized by .NET MAUI.
+In a .NET Multi-platform App UI (.NET MAUI) app project, images can be specified in a single location in your app project, and at build time they can be automatically resized to the correct resolutions for the target platform and device, and added to your app package. This avoids having to manually duplicate and name images on a per platform basis. By default, bitmap (non-vector) image formats are not automatically resized by .NET MAUI.
 
 .NET Multi-platform App UI (.NET MAUI) images can use any of the standard platform image formats, including Scalable Vector Graphics (SVG) files.
 
@@ -28,7 +28,7 @@ An image can be added to your app project by dragging it into the *Resources\Ima
 > [!NOTE]
 > Images can also be added to other folders of your app project. However, in this scenario their build action must be manually set to **MauiImage** in the **Properties** window.
 
-To comply with Android resource naming rules, app icon filenames must be lowercase, start and end with a letter character, and contain only alphanumeric characters or underscores. For more information, see [App resources overview](https://developer.android.com/guide/topics/resources/providing-resources) on developer.android.com.
+To comply with Android resource naming rules, image filenames must be lowercase, start and end with a letter character, and contain only alphanumeric characters or underscores. For more information, see [App resources overview](https://developer.android.com/guide/topics/resources/providing-resources) on developer.android.com.
 
 The base size of the image can be specified by setting the `BaseSize` attribute to values that are divisible by 8:
 
@@ -53,13 +53,10 @@ A background color for an image can also be specified:
 <!-- Valid color values are actually derived from the SKColor struct, rather than Microsoft.Maui.Graphics.Colors. -->
 Color values can be specified in hexadecimal, or as a .NET MAUI color. For example, `Color="Red"` is valid.
 
-At build time, vector images are resized to the correct resolutions for the target platform and device. The resulting images, whether vector-based or not, are then added to your app package.
+At build time, images can be resized to the correct resolutions for the target platform and device. The resulting images are then added to your app package.
 
 To stop vector images being resized, set the `Resize` attribute to `false`:
 
 ```xml
 <MauiImage Include="Resources\Images\logo.png" Resize="false" />
 ```
-
-> [!NOTE]
-> To force a non-vector image to be resized, set the `Resize` attribute to `true` and optionally set the `BaseSize` attribute.
