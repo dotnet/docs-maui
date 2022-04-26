@@ -12,8 +12,8 @@ Every app has a logo icon that represents it, and that icon typically appears in
 
 A .NET Multi-platform App UI (.NET MAUI) app icon is a composite of an image and a background color. The standard platform image formats are supported, including Scalable Vector Graphics (SVG) files.
 
-> [!TIP]
-> The SVG format is the recommended image format for .NET MAUI app icons.
+> [!IMPORTANT]
+> .NET MAUI converts SVG files to PNG files. Therefore, when adding an SVG file to your .NET MAUI app project, it should be referenced from XAML or C# with a .png extension.
 
 An app icon can be added to your app project by dragging an image into the _Resources\Images_ folder of the project, and setting the build action of the image to `MauiIcon` in the **Properties** window. This creates a corresponding entry in your project file:
 

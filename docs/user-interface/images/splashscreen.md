@@ -16,8 +16,8 @@ Once the app is ready for interaction, its splash screen is dismissed.
 
 Splash screens are a composite of an image and a background color. The standard platform image formats are supported, including Scalable Vector Graphics (SVG) files.
 
-> [!TIP]
-> The SVG format is the recommended image format for .NET MAUI splash screens.
+> [!IMPORTANT]
+> .NET MAUI converts SVG files to PNG files. Therefore, when adding an SVG file to your .NET MAUI app project, it should be referenced from XAML or C# with a .png extension.
 
 .NET MAUI splash screens can be added to your app project by dragging an image into the _Resources\Images_ folder of the project, and setting the build action of the image to **MauiSplashScreen** in the **Properties** window. This creates a corresponding entry in your project file:
 

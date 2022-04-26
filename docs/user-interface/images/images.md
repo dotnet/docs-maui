@@ -14,8 +14,8 @@ In a .NET Multi-platform App UI (.NET MAUI) app project, images can be specified
 
 .NET Multi-platform App UI (.NET MAUI) images can use any of the standard platform image formats, including Scalable Vector Graphics (SVG) files.
 
-> [!TIP]
-> The SVG format is the recommended image format for .NET MAUI images.
+> [!IMPORTANT]
+> .NET MAUI converts SVG files to PNG files. Therefore, when adding an SVG file to your .NET MAUI app project, it should be referenced from XAML or C# with a .png extension.
 
 An image can be added to your app project by dragging it into the *Resources\Images* folder of the project, where its build action will automatically be set to **MauiImage**. This creates a corresponding entry in your project file:
 
@@ -30,13 +30,13 @@ An image can be added to your app project by dragging it into the *Resources\Ima
 
 To comply with Android resource naming rules, app icon filenames must be lowercase, start and end with a letter character, and contain only alphanumeric characters or underscores. For more information, see [App resources overview](https://developer.android.com/guide/topics/resources/providing-resources) on developer.android.com.
 
-By default, a .NET MAUI image maps to the *drawable-mdpi* resolution on Android, the *@1x* resolution on iOS, and the *scale-100* resolution on Windows. This behavior can be overridden by setting the `BaseSize` attribute to values that are divisible by 8:
+The base size of the image can be specified by setting the `BaseSize` attribute to values that are divisible by 8:
 
 ```xml
 <MauiImage Include="Resources\Images\logo.jpg" BaseSize="376,678" />
 ```
 
-The value of the `BaseSize` attribute represents the baseline density of the image, and is effectively the 1.0 scale factor for the image (the size you would typically use in your code to specify the image size) from which all other density sizes are derived. This value will be used to ensure that vector images are correctly resized to different display densities.
+The value of the `BaseSize` attribute represents the baseline density of the image, and is effectively the 1.0 scale factor for the image (the size you would typically use in your code to specify the image size) from which all other density sizes are derived. This value will be used to ensure that images are correctly resized to different display densities. If you don't specify a `BaseSize` for a bitmap image, the image isn't resized. If you don't specify a `BaseSize` value for a vector image, the dimensions specified in the SVG are assumed to be the base size.
 
 To add a tint to your images, which is useful when you have icons or simple images you'd like to render in a different color to the source, set the `TintColor` attribute:
 

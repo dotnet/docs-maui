@@ -39,9 +39,12 @@ For information about adding app icons and a splash screen to your app, see [App
 
 ## Load a local image
 
-Images can be added to your app project by dragging them to the _Resources\Images_ folder of your project, and ensuring their build action is set to **MauiImage** in the **Properties** window. At build time, images are resized to the correct resolutions for the target platform and device and added to your app package. This is necessary because different platforms support different image resolutions, and the operating system chooses the appropriate image resolution at runtime based on the device's capabilities.
+Images can be added to your app project by dragging them to the _Resources\Images_ folder of your project, where its build action will automatically be set to **MauiImage**. At build time, vector images are resized to the correct resolutions for the target platform and device, and added to your app package. This is necessary because different platforms support different image resolutions, and the operating system chooses the appropriate image resolution at runtime based on the device's capabilities.
 
 To comply with Android resource naming rules, all local image filenames must be lowercase, start and end with a letter character, and contain only alphanumeric characters or underscores. For more information, see [App resources overview](https://developer.android.com/guide/topics/resources/providing-resources) on developer.android.com.
+
+> [!IMPORTANT]
+> .NET MAUI converts SVG files to PNG files. Therefore, when adding an SVG file to your .NET MAUI app project, it should be referenced from XAML or C# with a .png extension.
 
 Adhering to these rules for file naming and placement enables the following XAML to load and display an image:
 
