@@ -1,6 +1,6 @@
 ---
 title: "Align and position .NET MAUI controls"
-description: "Learn how to align .NET MAUI views in a layout, with the HorizontalOptions and VerticalOptions properties, and how to position controls with the Margin and Padding properties."
+description: "Learn how to align .NET MAUI views in a layout with the HorizontalOptions and VerticalOptions properties, and how to position controls with the Margin and Padding properties."
 ms.date: 04/26/2022
 ---
 
