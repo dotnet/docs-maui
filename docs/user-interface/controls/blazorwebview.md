@@ -103,9 +103,9 @@ The process to add a `BlazorWebView` to an existing .NET MAUI app is as follows:
                 });
 
             builder.Services.AddMauiBlazorWebView();
-#if DEBUG
+    #if DEBUG
             builder.Services.AddMauiBlazorWebViewDeveloperTools();
-#endif
+    #endif
             // Register any app services on the IServiceCollection object
             // e.g. builder.Services.AddSingleton<WeatherForecastService>();
 
