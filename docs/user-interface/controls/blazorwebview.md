@@ -1,7 +1,7 @@
 ---
 title: "Host a Blazor web app in a .NET MAUI app using BlazorWebView"
 description: "The .NET MAUI BlazorWebView control enables you to host a Blazor web app in your .NET MAUI app, and integrate the app with device features."
-ms.date: 04/14/2022
+ms.date: 04/27/2022
 ---
 
 # Host a Blazor web app in a .NET MAUI app using BlazorWebView
@@ -13,7 +13,7 @@ The .NET Multi-platform App UI (.NET MAUI) `BlazorWebView` is a control that ena
 `BlazorWebView` defines the following properties:
 
 - `HostPage`, of type `string?`, which defines the root page of the Blazor web app.
-- `RootComponents`, of type `ObservableCollection<RootComponent>`, which specifies the collection of root components that can be added to the control.
+- `RootComponents`, of type `RootComponentsCollection`, which specifies the collection of root components that can be added to the control.
 
 The `RootComponent` class defines the following properties:
 
@@ -39,16 +39,15 @@ This project template creates a multi-targeted .NET MAUI Blazor app that can be 
 ```xaml
 <ContentPage xmlns=http://schemas.microsoft.com/dotnet/2021/maui
              xmlns:x=http://schemas.microsoft.com/winfx/2009/xaml
-             xmlns:b="clr-namespace:Microsoft.AspNetCore.Components.WebView.Maui;assembly=Microsoft.AspNetCore.Components.WebView.Maui"
              xmlns:local="clr-namespace:BlazorWebViewDemo"
              x:Class="BlazorWebViewDemo.MainPage"
              BackgroundColor="{DynamicResource PageBackgroundColor}">
 
-    <b:BlazorWebView HostPage="wwwroot/index.html">
-        <b:BlazorWebView.RootComponents>
-            <b:RootComponent Selector="app" ComponentType="{x:Type local:Main}" />
-        </b:BlazorWebView.RootComponents>
-    </b:BlazorWebView>
+    <BlazorWebView HostPage="wwwroot/index.html">
+        <BlazorWebView.RootComponents>
+            <RootComponent Selector="#app" ComponentType="{x:Type local:Main}" />
+        </BlazorWebView.RootComponents>
+    </BlazorWebView>
 
 </ContentPage>
 ```
@@ -76,15 +75,14 @@ The process to add a `BlazorWebView` to an existing .NET MAUI app is as follows:
     ```xaml
     <ContentPage xmlns=http://schemas.microsoft.com/dotnet/2021/maui
                  xmlns:x=http://schemas.microsoft.com/winfx/2009/xaml
-                 xmlns:b="clr-namespace:Microsoft.AspNetCore.Components.WebView.Maui;assembly=Microsoft.AspNetCore.Components.WebView.Maui"
                  xmlns:local="clr-namespace:MyBlazorApp"
                  x:Class="MyBlazorApp.MainPage">
 
-        <b:BlazorWebView HostPage="wwwroot/index.html">
-            <b:BlazorWebView.RootComponents>
-                <b:RootComponent Selector="app" ComponentType="{x:Type local:Main}" />
-            </b:BlazorWebView.RootComponents>
-        </b:BlazorWebView>
+        <BlazorWebView HostPage="wwwroot/index.html">
+            <BlazorWebView.RootComponents>
+                <RootComponent Selector="app" ComponentType="{x:Type local:Main}" />
+            </BlazorWebView.RootComponents>
+        </BlazorWebView>
 
     </ContentPage>
     ```
@@ -105,6 +103,9 @@ The process to add a `BlazorWebView` to an existing .NET MAUI app is as follows:
                 });
 
             builder.Services.AddMauiBlazorWebView();
+#if DEBUG
+            builder.Services.AddMauiBlazorWebViewDeveloperTools();
+#endif
             // Register any app services on the IServiceCollection object
             // e.g. builder.Services.AddSingleton<WeatherForecastService>();
 
