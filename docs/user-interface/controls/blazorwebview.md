@@ -21,6 +21,12 @@ The `RootComponent` class defines the following properties:
 - `ComponentType`, of type `Type?`, which defines the type of the root component.
 - `Parameters`, of type `IDictionary<string, object?>?`, which represents an optional dictionary of parameters to pass to the root component.
 
+In addition, `BlazorWebView` defines the following events:
+
+- `BlazorWebViewInitializing`, with an accompanying `BlazorWebViewInitializingEventArgs` object, which is raised before the `BlazorWebView` is initialized. This event enables customization of the `BlazorWebView` configuration.
+- `BlazorWebViewInitialized`, with an accompanying `BlazorWebViewInitializedEventArgs` object, which is raised after the `BlazorWebView` is initialized but before any component has been rendered. This event enables retrieval of the platform-specific web view instance.
+- `UrlLoading`, with an accompanying `UrlLoadingEventArgs` object, is raised when a hyperlink is clicked within a `BlazorWebView`. This event enables customization of whether a hyperlink is opened in the `BlazorWebView`, in an external app, or whether the URL loading attempt is cancelled.
+
 Existing [Razor components](/aspnet/core/blazor/components/) can be used in a .NET MAUI Blazor app by moving the code into the app, or by referencing an existing class library or package that contains the component.
 
 For information about Blazor apps, see [Introduction to ASP.NET Core Blazor](/aspnet/core/blazor/).
