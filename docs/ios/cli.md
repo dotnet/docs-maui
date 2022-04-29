@@ -56,11 +56,11 @@ A .NET MAUI iOS app can be launched on a specific iOS simulator by providing its
 
 1. On your Mac, open *Xcode*, select the **Windows > Devices and Simulators** menu item, and then the **Simulators** tab.
 
-:::image type="content" source="media/cli/xcode-simulators.png" alt-text="Screenshot of Xcode simulators tab.":::
+    :::image type="content" source="media/cli/xcode-simulators.png" alt-text="Screenshot of Xcode simulators tab.":::
 
 1. Right-click on your chosen simulator, and select **Copy Identifier** to copy the UDID to the clipboard.
 
-:::image type="content" source="media/cli/xcode-copy-identifier.png" alt-text="Screenshot of copy identifier menu option in Xcode.":::
+    :::image type="content" source="media/cli/xcode-copy-identifier.png" alt-text="Screenshot of copy identifier menu option in Xcode.":::
 
     Alternatively, you can retrieve a list of UDID values by executing the `simctl list` command:
 
