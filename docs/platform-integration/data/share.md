@@ -11,7 +11,7 @@ This article describes how you can use the .NET Multi-platform App UI (.NET MAUI
 
 When a share request is made, the device displays a share window, prompting the user to choose an app to share with:
 
-:::image type="content" source="images/share.png" alt-text="Share from your app to a different app":::
+:::image type="content" source="media/share/share.png" alt-text="Share from your app to a different app":::
 
 ## Get started
 

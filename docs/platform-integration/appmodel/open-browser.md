@@ -84,7 +84,7 @@ await Browser.OpenAsync(uri, new BrowserLaunchOptions
                 });
 ```
 
-:::image type="content" source="images/browser-options.png" alt-text="Demonstration of the browser options used with Browser.OpenAsync":::
+:::image type="content" source="media/open-browser/browser-options.png" alt-text="Demonstration of the browser options used with Browser.OpenAsync":::
 
 ## Platform differences
 

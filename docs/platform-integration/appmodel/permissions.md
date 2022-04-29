@@ -14,7 +14,7 @@ This article describes how you can use the .NET Multi-platform App UI (.NET MAUI
 
 [!INCLUDE [get-started](../essentials/includes/get-started.md)]
 
-[!INCLUDE [essentials-namespace](../essentials/includes/essentials-namespace.md)]
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
 [!INCLUDE [android-permissions](includes/android-permissions.md)]
 
@@ -262,19 +262,19 @@ This section describes the platform-specific differences with the permissions AP
 
 Permissions must have the matching attributes set in the Android Manifest file. Permission status defaults to `Denied`.
 
-For more information, see [Permissions in .NET MAUI for Android](../android/app-fundamentals/permissions.md).
+<!-- TODO For more information, see [Permissions in .NET MAUI for Android](../../android/app-fundamentals/permissions.md). -->
 
 # [iOS](#tab/ios)
 
 Permissions must have a matching string in the _Info.plist_ file. Once a permission is requested and denied, a pop-up will no longer appear if you request the permission a second time. You must prompt your user to manually adjust the setting in the applications settings screen in iOS. Permission status defaults to `Unknown`.
 
-For more information, see [iOS Security and Privacy Features](../ios/app-fundamentals/security-privacy.md).
+<!-- TODO For more information, see [iOS Security and Privacy Features](../ios/app-fundamentals/security-privacy.md). -->
 
 # [Windows](#tab/windows)
 
 Permissions must have matching capabilities declared in the package manifest. Permission status defaults to `Unknown` in most instances.
 
-For more information, see [App Capability Declaration](/windows/uwp/packaging/app-capability-declarations).
+<!-- TODO For more information, see [App Capability Declaration](/windows/uwp/packaging/app-capability-declarations). -->
 
 -----
 <!-- markdownlint-enable MD025 -->

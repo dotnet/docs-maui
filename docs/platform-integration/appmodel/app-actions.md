@@ -102,7 +102,7 @@ The following properties can be set on an `AppAction`:
 - **Subtitle**: If supported a sub-title to display under the title.
 - **Icon**: Must match icons in the corresponding resources directory on each platform.
 
-:::image type="content" source="images/appactions.png" alt-text="App actions on home screen.":::
+:::image type="content" source="media/app-actions/appactions.png" alt-text="App actions on home screen.":::
 
 ## Responding to actions
 
