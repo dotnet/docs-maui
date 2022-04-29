@@ -11,9 +11,9 @@ This article describes how you can use the .NET Multi-platform App UI (.NET MAUI
 
 ## Get started
 
-[!INCLUDE [get-started](../essentials/includes/get-started.md)]
+[!INCLUDE [get-started](../includes/get-started.md)]
 
-[!INCLUDE [essentials-namespace](../essentials/includes/essentials-namespace.md)]
+[!INCLUDE [essentials-namespace](../includes/essentials-namespace.md)]
 
 To access the **Geolocation** functionality, the following platform-specific setup is required:
 
@@ -69,7 +69,7 @@ To access the **Geolocation** functionality, the following platform-specific set
 > [!TIP]
 > Be sure to read the [Android documentation on background location updates](https://developer.android.com/training/location/permissions), as there are many restrictions that need to be considered.
 
-[!INCLUDE [android-permissions](includes/android-permissions.md)]
+[!INCLUDE [android-permissions](../includes/android-permissions.md)]
 
 # [iOS](#tab/ios)
 

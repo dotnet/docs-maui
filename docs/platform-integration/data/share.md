@@ -15,9 +15,9 @@ When a share request is made, the device displays a share window, prompting the 
 
 ## Get started
 
-[!INCLUDE [get-started](../essentials/includes/get-started.md)]
+[!INCLUDE [get-started](../includes/get-started.md)]
 
-[!INCLUDE [essentials-namespace](../essentials/includes/essentials-namespace.md)]
+[!INCLUDE [essentials-namespace](../includes/essentials-namespace.md)]
 
 To access the **Share** functionality, the following platform-specific setup is required:
 
@@ -108,7 +108,7 @@ await Share.RequestAsync(new ShareMultipleFilesRequest
 
 ## Presentation location
 
-[!INCLUDE [ios-PresentationSourceBounds](includes/ios-PresentationSourceBounds.md)]
+[!INCLUDE [ios-PresentationSourceBounds](../includes/ios-PresentationSourceBounds.md)]
 
 ## Platform differences
 

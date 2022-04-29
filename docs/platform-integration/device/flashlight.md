@@ -11,9 +11,9 @@ This article describes how you can use the .NET Multi-platform App UI (.NET MAUI
 
 ## Get started
 
-[!INCLUDE [get-started](../essentials/includes/get-started.md)]
+[!INCLUDE [get-started](../includes/get-started.md)]
 
-[!INCLUDE [essentials-namespace](../essentials/includes/essentials-namespace.md)]
+[!INCLUDE [essentials-namespace](../includes/essentials-namespace.md)]
 
 To access the flashlight functionality the following platform-specific setup is required.
 
@@ -56,7 +56,7 @@ By adding these permissions, [Google Play will automatically filter out devices]
 [assembly: UsesFeature("android.hardware.camera.autofocus", Required = false)]
 ```
 
-[!INCLUDE [android-permissions](includes/android-permissions.md)]
+[!INCLUDE [android-permissions](../includes/android-permissions.md)]
 
 # [iOS](#tab/ios)
 

@@ -11,9 +11,9 @@ The `Geocoding` class provides APIs to geocode a placemark to a positional coord
 
 ## Get started
 
-[!INCLUDE [get-started](../essentials/includes/get-started.md)]
+[!INCLUDE [get-started](../includes/get-started.md)]
 
-[!INCLUDE [essentials-namespace](../essentials/includes/essentials-namespace.md)]
+[!INCLUDE [essentials-namespace](../includes/essentials-namespace.md)]
 
 To access the **Geocoding** functionality the following platform-specific setup is required.
 

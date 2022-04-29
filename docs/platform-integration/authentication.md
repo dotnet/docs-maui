@@ -29,9 +29,9 @@ The best practice here's to use a web backend as a middle layer between your mob
 
 ## Get started
 
-[!INCLUDE [get-started](essentials/includes/get-started.md)]
+[!INCLUDE [get-started](includes/get-started.md)]
 
-[!INCLUDE [essentials-namespace](essentials/includes/essentials-namespace.md)]
+[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
 To access the **WebAuthenticator** functionality the following platform-specific setup is required.
 

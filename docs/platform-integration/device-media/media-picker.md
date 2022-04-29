@@ -11,9 +11,9 @@ This article describes how you can use the .NET Multi-platform App UI (.NET MAUI
 
 ## Get started
 
-[!INCLUDE [get-started](../essentials/includes/get-started.md)]
+[!INCLUDE [get-started](../includes/get-started.md)]
 
-[!INCLUDE [essentials-namespace](../essentials/includes/essentials-namespace.md)]
+[!INCLUDE [essentials-namespace](../includes/essentials-namespace.md)]
 
 To access the media picker functionality, the following platform-specific setup is required.
 
@@ -148,7 +148,7 @@ async Task<string> LoadPhotoAsync(FileResult photo)
 }
 ```
 
-[!INCLUDE [tip-file-result](includes/tip-file-result.md)]
+[!INCLUDE [tip-file-result](../includes/tip-file-result.md)]
 
 ## API
 

@@ -11,9 +11,9 @@ This article describes how you can use the .NET Multi-platform App UI (.NET MAUI
 
 ## Get started
 
-[!INCLUDE [get-started](../essentials/includes/get-started.md)]
+[!INCLUDE [get-started](../includes/get-started.md)]
 
-[!INCLUDE [essentials-namespace](../essentials/includes/essentials-namespace.md)]
+[!INCLUDE [essentials-namespace](../includes/essentials-namespace.md)]
 
 To access the **FilePicker** functionality, the following platform specific setup is required.
 
@@ -116,7 +116,7 @@ PickOptions options = new()
 
 If you want the user to pick multiple files, call the `FilePicker.PickMultipleAsync` method. This method also takes a `PickOptions` parameter to specify additional information. The results are the same as `PickAsync`, but instead of the `FileResult` type returned, an `IEnumerable<FileResult>` type is returned with all of the selected files.
 
-[!INCLUDE [tip-file-result](includes/tip-file-result.md)]
+[!INCLUDE [tip-file-result](../includes/tip-file-result.md)]
 
 ## API
 
