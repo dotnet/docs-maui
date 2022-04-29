@@ -1,7 +1,7 @@
 ---
 title: "Supported platforms for .NET MAUI apps"
 description: ".NET MAUI supports developing apps for Android, iOS, Mac Catalyst, and Windows."
-ms.date: 04/13/2022
+ms.date: 04/29/2022
 ---
 
 # Supported platforms for .NET MAUI apps
@@ -42,45 +42,45 @@ The table below describes the .NET MAUI Essential features that are supported by
 
 | Feature                                         | Android | iOS | Windows | Tizen | macOS |
 |-------------------------------------------------|:-------:|:---:|:-------:|:-----:|:-----:|
-| [Accelerometer](sensors.md#accelerometer)       | ✔️     | ✔️  | ✔️     | ✔️    | ❌    |
-| [App Actions](app-actions.md)                   | ✔️     | ✔️  | ✔️     | ❌     | ❌    |
-| [App Information](app-information.md)           | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
-| [App Theme](app-theme.md)                       | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
-| [Barometer](sensors.md#barometer)               | ✔️     | ✔️  | ✔️     | ✔️    | ❌    |
-| [Battery](battery.md)                           | ✔️     | ✔️  | ✔️     | ⚠️    | ✔️   |
-| [Clipboard](clipboard.md)                       | ✔️     | ✔️  | ✔️     | ❌     | ✔️   |
-| [Color Converters](color-converters.md)         | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
-| [Compass](sensors.md#compass)                   | ✔️     | ✔️  | ✔️     | ✔️    | ❌    |
-| [Connectivity](connectivity.md)                 | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
-| [Contacts](contacts.md)                         | ✔️     | ✔️  | ✔️     | ✔️    | ❌    |
-| [Detect Shake](sensors.md#shake)                | ✔️     | ✔️  | ✔️     | ✔️    | ❌    |
-| [Device Display Information](device-display.md) | ✔️     | ✔️  | ✔️     | ❌     | ✔️   |
-| [Device Information](device-information.md)     | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
-| [Email](email.md)                               | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
-| [File Picker](file-picker.md)                   | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
-| [File System Helpers](file-system-helpers.md)   | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
-| [Flashlight](flashlight.md)                     | ✔️     | ✔️  | ✔️     | ✔️    | ❌    |
-| [Geocoding](geocoding.md)                       | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
-| [Geolocation](geolocation.md)                   | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
-| [Gyroscope](sensors.md#gyroscope)               | ✔️     | ✔️  | ✔️     | ✔️    | ❌    |
-| [Haptic Feedback](haptic-feedback.md)           | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
-| [Launcher](launcher.md)                         | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
-| [Magnetometer](sensors.md#magnetometer)         | ✔️     | ✔️  | ✔️     | ✔️    | ❌    |
-| [MainThread](main-thread.md)                    | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
-| [Maps](maps.md)                                 | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
-| [Media Picker](media-picker.md)                 | ✔️     | ✔️  | ✔️     | ✔️    | ⚠️   |
-| [Open Browser](open-browser.md)                 | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
-| [Orientation Sensor](sensors.md#orientation)    | ✔️     | ✔️  | ✔️     | ✔️    | ❌    |
-| [Permissions](permissions.md)                   | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
-| [Phone Dialer](phone-dialer.md)                 | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
-| [Platform Extensions](platform-extensions.md)   | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
-| [Preferences](preferences.md)                   | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
-| [Screenshot](screenshot.md)                     | ✔️     | ✔️  | ✔️     | ❌     | ❌    |
-| [Secure Storage](secure-storage.md)             | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
-| [Share](share.md)                               | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
-| [SMS](sms.md)                                   | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
-| [Text-to-Speech](text-to-speech.md)             | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
-| [Unit Converters](unit-converters.md)           | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
-| [Version Tracking](version-tracking.md)         | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
-| [Vibrate](vibrate.md)                           | ✔️     | ✔️  | ✔️     | ✔️    | ❌    |
-| [Web Authenticator](web-authenticator.md)       | ✔️     | ✔️  | ✔️     | ❌     | ✔️   |
+| [Accelerometer](platform-integration/sensors/index.md#accelerometer)       | ✔️     | ✔️  | ✔️     | ✔️    | ❌    |
+| [App Actions](platform-integration/appmodel/app-actions.md)                   | ✔️     | ✔️  | ✔️     | ❌     | ❌    |
+| [App Information](platform-integration/appmodel/app-information.md)           | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
+| [App Theme](platform-integration/appmodel/app-theme.md)                       | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
+| [Barometer](platform-integration/sensors/index.md#barometer)               | ✔️     | ✔️  | ✔️     | ✔️    | ❌    |
+| [Battery](platform-integration/device/battery.md)                           | ✔️     | ✔️  | ✔️     | ⚠️    | ✔️   |
+| [Clipboard](platform-integration/data/clipboard.md)                       | ✔️     | ✔️  | ✔️     | ❌     | ✔️   |
+| Color Converters         | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
+| [Compass](platform-integration/sensors/index.md#compass)                   | ✔️     | ✔️  | ✔️     | ✔️    | ❌    |
+| [Connectivity](platform-integration/networking.md)                 | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
+| [Contacts](platform-integration/communication/contacts.md)                         | ✔️     | ✔️  | ✔️     | ✔️    | ❌    |
+| [Shake](platform-integration/sensors/index.md#shake)                | ✔️     | ✔️  | ✔️     | ✔️    | ❌    |
+| [Device display information](platform-integration/device/device-display.md) | ✔️     | ✔️  | ✔️     | ❌     | ✔️   |
+| [Device information](platform-integration/device/device-information.md)     | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
+| [Email](platform-integration/communication/email.md)                              | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
+| [File Picker](platform-integration/storage/file-picker.md)                   | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
+| [File system helpers](platform-integration/storage/file-system-helpers.md)   | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
+| [Flashlight](platform-integration/device/flashlight.md)                     | ✔️     | ✔️  | ✔️     | ✔️    | ❌    |
+| [Geocoding](platform-integration/sensors/geocoding.md)                       | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
+| [Geolocation](platform-integration/sensors/geolocation.md)                   | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
+| [Gyroscope](platform-integration/sensors/index.md#gyroscope)               | ✔️     | ✔️  | ✔️     | ✔️    | ❌    |
+| [Haptic Feedback](platform-integration/device/haptic-feedback.md)           | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
+| [Launcher](platform-integration/appmodel/launcher.md)                         | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
+| [Magnetometer](platform-integration/sensors/index.md#magnetometer)         | ✔️     | ✔️  | ✔️     | ✔️    | ❌    |
+| [MainThread](platform-integration/appmodel/main-thread.md)                    | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
+| [Map](platform-integration/appmodel/maps.md)                                 | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
+| [Media Picker](platform-integration/device-media/media-picker.md)                 | ✔️     | ✔️  | ✔️     | ✔️    | ⚠️   |
+| [Browser](platform-integration/appmodel/open-browser.md)                 | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
+| [Orientation Sensor](platform-integration/sensors/index.md#orientation)    | ✔️     | ✔️  | ✔️     | ✔️    | ❌    |
+| [Permissions](platform-integration/appmodel/permissions.md)                   | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
+| [Phone Dialer](platform-integration/communication/phone-dialer.md)                 | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
+| [Platform Extensions](platform-integration/appmodel/platform-extensions.md)   | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
+| [Preferences](platform-integration/storage/preferences.md)                   | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
+| [Screenshot](platform-integration/device-media/screenshot.md)                     | ✔️     | ✔️  | ✔️     | ❌     | ❌    |
+| [Secure storage](platform-integration/storage/secure-storage.md)             | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
+| [Share](platform-integration/data/share.md)                               | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
+| [SMS](platform-integration/communication/sms.md)                                   | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
+| [Text-to-Speech](platform-integration/device-media/text-to-speech.md)             | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
+| [Unit Converters](platform-integration/device-media/unit-converters.md)           | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
+| [Version Tracking](platform-integration/appmodel/version-tracking.md)         | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
+| [Vibration](platform-integration/device/vibrate.md)                           | ✔️     | ✔️  | ✔️     | ✔️    | ❌    |
+| [Web Authenticator](platform-integration/authentication.md)       | ✔️     | ✔️  | ✔️     | ❌     | ✔️   |

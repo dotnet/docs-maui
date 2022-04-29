@@ -400,7 +400,7 @@
         - name: Invoke platform code
           href: platform-integration/invoke-platform-code.md
         - name: Device sensors
-          href: platform-integration/essentials/sensors.md
+          href: platform-integration/sensors/index.md
     - name: Publish
       items:
         - name: Android
