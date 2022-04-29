@@ -31,7 +31,7 @@
                   href: android/device/setup.md
         - name: macOS
           items:
-            - name: Build a Mac Catalyst app using .NET CLI
+            - name: Build a Mac Catalyst app with .NET CLI
               href: macos/cli.md
         - name: Windows
           items:
