@@ -61,7 +61,7 @@ Examples:
 
 ### Platform-specific information (Accelerometer)
 
-There is no platform-specific information related to the Accelerometer sensor.
+There is no platform-specific information related to the accelerometer sensor.
 
 ## Barometer
 
@@ -160,7 +160,7 @@ The following code example demonstrates monitoring the accelerometer for the `Sh
 
 ### Platform-specific information (Shake)
 
-There is no platform-specific information related to the Accelerometer sensor.
+There is no platform-specific information related to the accelerometer sensor.
 
 ## Gyroscope
 
@@ -174,7 +174,7 @@ The following code example demonstrates monitoring the gyroscope. The `Gyroscope
 
 ### Platform-specific information (Gyroscope)
 
-There is no platform-specific information related to the Gyroscope sensor.
+There is no platform-specific information related to the gyroscope sensor.
 
 ## Magnetometer
 
@@ -188,7 +188,7 @@ The following code example demonstrates monitoring the magnetometer. The `Magnet
 
 ### Platform-specific information (Magnetometer)
 
-There is no platform-specific information related to the Magnetometer sensor.
+There is no platform-specific information related to the magnetometer sensor.
 
 ## Orientation
 
@@ -237,4 +237,4 @@ Examples:
 
 ### Platform-specific information (Orientation)
 
-There is no platform-specific information related to the Orientation sensor.
+There is no platform-specific information related to the orientation sensor.
