@@ -11,6 +11,10 @@ show_latex: true
 
 Devices have all sorts of sensors that are available to you. Some sensors can detect movement, others changes in the environment, such as light. Monitoring and reacting to these sensors makes your app dynamic in adapting to how the device is being used. You can also respond to changes in the sensors and alert the user. This article gives you a brief overview of the common sensors supported by .NET Multi-User Application (.NET MAUI).
 
+Device sensor-related types are available in the `Microsoft.Maui.Devices.Sensors` namespace.
+
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
+
 ## Sensor speed
 
 Sensor speed sets the speed in which a sensor will return data to your app. When you start a sensor, you provide the desired sensor speed with the `SensorSpeed` enumeration.
