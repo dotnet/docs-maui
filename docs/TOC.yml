@@ -29,6 +29,10 @@
               items:
                 - name: How to set up a physical device
                   href: android/device/setup.md
+        - name: iOS
+          items:
+            - name: Build an iOS app on macOS with .NET CLI
+              href: ios/cli.md
         - name: Windows
           items:
             - name: How to set up Windows for debugging
