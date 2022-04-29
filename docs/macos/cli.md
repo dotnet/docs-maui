@@ -6,7 +6,7 @@ ms.date: 04/29/2022
 
 # Build a Mac Catalyst app with .NET CLI
 
-In this tutorial, you'll learn how to create and run a .NET Multi-platform App UI (.NET MAUI) app on Mac Catalyst using .NET CLI:
+In this tutorial, you'll learn how to create and run a .NET Multi-platform App UI (.NET MAUI) app on Mac Catalyst using .NET Command Line Interface (CLI):
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
