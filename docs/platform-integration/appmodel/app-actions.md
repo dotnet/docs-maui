@@ -11,7 +11,7 @@ The `Microsoft.Maui.Essentials.AppActions` class lets you create and respond to 
 
 ## Get started
 
-[!INCLUDE [get-started](includes/get-started.md)]
+[!INCLUDE [get-started](../essentials/includes/get-started.md)]
 
 To access the `AppActions` functionality the following platform specific setup is required.
 
@@ -76,7 +76,7 @@ protected override void OnLaunched(LaunchActivatedEventArgs args)
 
 ## Create actions
 
-[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
+[!INCLUDE [essentials-namespace](../essentials/includes/essentials-namespace.md)]
 
 App Actions can be created at any time, but are often created when an application starts. Call the `SetAsync` method to create the list of actions for your app.
 

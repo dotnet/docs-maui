@@ -11,11 +11,11 @@ The `RequestedTheme` API is part of the [`AppInfo`](app-information.md) class an
 
 ## Get started
 
-[!INCLUDE [get-started](includes/get-started.md)]
+[!INCLUDE [get-started](../essentials/includes/get-started.md)]
 
 ## Using RequestedTheme
 
-[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
+[!INCLUDE [essentials-namespace](../essentials/includes/essentials-namespace.md)]
 
 ## Read the theme setting
 

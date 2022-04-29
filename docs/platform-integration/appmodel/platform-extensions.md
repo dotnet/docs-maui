@@ -12,11 +12,11 @@ Xamarin.Essentials provides several platform extension methods when having to wo
 
 ## Get started
 
-[!INCLUDE [get-started](includes/get-started.md)]
+[!INCLUDE [get-started](../essentials/includes/get-started.md)]
 
 ## Using Platform Extensions
 
-[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
+[!INCLUDE [essentials-namespace](../essentials/includes/essentials-namespace.md)]
 
 All platform extensions can only be called from the iOS, Android, or UWP project.
 
