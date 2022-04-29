@@ -6,12 +6,9 @@ ms.date: 04/29/2022
 
 # Build an iOS app on macOS with .NET CLI
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 In this tutorial, you'll learn how to create and run a .NET Multi-platform App UI (.NET MAUI) app on iOS using .NET CLI on macOS:
 
-> [!NOTE]
-> Visual Studio 2022 for Mac, with .NET MAUI support, is currently available as an early [preview release](https://visualstudio.microsoft.com/vs/mac/preview/).
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
 1. To create .NET MAUI apps, you'll need to download and run the [installer](https://github.com/dotnet/installer/blob/main/README.md#installers-and-binaries) for the latest .NET 6 runtime.
 
