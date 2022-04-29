@@ -36,7 +36,7 @@ Rate suitable for general user interface.
 
 ### Sensor event handlers
 
-Event handlers added to sensors with either the `Game` or `Fastest` speeds **aren't** guaranteed to run on the UI thread. If the event handler needs to access user-interface elements, use the [`MainThread.BeginInvokeOnMainThread`](main-thread.md) method to run that code on the UI thread.
+Event handlers added to sensors with either the `Game` or `Fastest` speeds **aren't** guaranteed to run on the UI thread. If the event handler needs to access user-interface elements, use the [`MainThread.BeginInvokeOnMainThread`](../appmodel/main-thread.md) method to run that code on the UI thread.
 
 ## Accelerometer
 
@@ -199,7 +199,7 @@ There is no platform-specific information related to the magnetometer sensor.
 The orientation sensor monitors the orientation of a device in 3D space.
 
 > [!NOTE]
-> This sensor isn't used for determining if the device's video display is in portrait or landscape mode. Use the `Orientation` property of the `ScreenMetrics` object available from the [`DeviceDisplay`](device-display.md) class.
+> This sensor isn't used for determining if the device's video display is in portrait or landscape mode. Use the `Orientation` property of the `ScreenMetrics` object available from the [`DeviceDisplay`](../device/device-display.md) class.
 
 To start monitoring the orientation sensor, call the `IOrientationSensor.Start` method. .NET MAUI sends orientation data changes to your app by raising the `IOrientationSensor.ReadingChanged` event. Use the `IOrientationSensor.Stop` method to stop monitoring the sensor. You can detect the monitoring state of the orientation with the `IOrientationSensor.IsMonitoring` property, which will be `true` if the orientation was started and is currently being monitored.
 
