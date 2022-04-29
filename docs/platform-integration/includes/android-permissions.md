@@ -5,7 +5,7 @@ ms.date: 08/04/2021
 
 ### Android permissions
 
-This API uses runtime permissions on Android. Please ensure that .NET MAUI Essentials is fully initialized and permission handling is setup in your app. For more information, see [Get Started with .NET MAUI Essentials](../get-started.md).
+This API uses runtime permissions on Android. Please ensure that .NET MAUI Essentials is fully initialized and permission handling is setup in your app. For more information, see Get Started with .NET MAUI Essentials. <!-- TODO: Is there setup for android still? -->
 
 In the Android project's `MainLauncher` or any `Activity` that is launched, .NET MAUI Essentials must be initialized in the `OnCreate` method:
 

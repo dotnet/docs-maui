@@ -64,7 +64,7 @@ var buildHistory = VersionTracking.BuildHistory;
 
 <!-- TODO: file name contains xamarin, what is it? the secure-storage article also has this./ -->
 
-All version information is stored using the [Preferences](preferences.md) API, and is stored with a filename of _[YOUR-APP-PACKAGE-ID].xamarinessentials_.versiontracking** and follows the same data persistence outlined in the [Preferences](preferences.md#persistence) documentation.
+All version information is stored using the [Preferences](../storage/preferences.md) API, and is stored with a filename of _[YOUR-APP-PACKAGE-ID].xamarinessentials_.versiontracking** and follows the same data persistence outlined in the [Preferences](../storage/preferences.md#persistence) documentation.
 
 ## API
 

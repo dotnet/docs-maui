@@ -76,7 +76,7 @@ Activity states are the following:
 * Started
 * Stopped
 
-Read the [Activity Lifecycle](../android/app-fundamentals/activity-lifecycle/index.md) documentation to learn more.
+<!-- TODO Read the [Activity Lifecycle](../android/app-fundamentals/activity-lifecycle/index.md) documentation to learn more.-->
 
 ## iOS Extensions
 

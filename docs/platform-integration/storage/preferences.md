@@ -115,7 +115,7 @@ All data is stored into [**Shared Preferences**](https://developer.android.com/t
 
 # [iOS](#tab/ios)
 
-[NSUserDefaults](../ios/app-fundamentals/user-defaults.md) is used to store values on iOS devices. If no `sharedName` is specified, the `StandardUserDefaults` are used. Otherwise, the name is used to create a new `NSUserDefaults` with the specified name used for the `NSUserDefaultsType.SuiteName`.
+**NSUserDefaults** <!-- TODO link (../ios/app-fundamentals/user-defaults.md) --> is used to store values on iOS devices. If no `sharedName` is specified, the `StandardUserDefaults` are used. Otherwise, the name is used to create a new `NSUserDefaults` with the specified name used for the `NSUserDefaultsType.SuiteName`.
 
 # [Windows](#tab/windows)
 

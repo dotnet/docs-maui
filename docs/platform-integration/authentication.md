@@ -158,7 +158,7 @@ catch (TaskCanceledException e)
 
 The `WebAuthenticator` API takes care of launching the url in the browser and waiting until the callback is received:
 
-![Typical Web Authentication Flow.](images/web-authenticator.png)
+:::image type="content" source="media/authentication/web-authenticator.png" alt-text="Typical web authentication flow.":::
 
 If the user cancels the flow at any point, a `TaskCanceledException` is thrown.
 
@@ -220,7 +220,7 @@ On WinUI 3, the `WebAuthenticationBroker` is used, if supported, otherwise the s
 
 ## Apple Sign In
 
-According to [Apple's review guidelines](https://developer.apple.com/app-store/review/guidelines/#sign-in-with-apple), if your app uses any social login service to authenticate, it must also offer Apple Sign In as an option. To add Apple Sign In to your apps, first you'll need to [configure your app to use Apple Sign In](../ios/platform/ios13/sign-in.md).
+According to [Apple's review guidelines](https://developer.apple.com/app-store/review/guidelines/#sign-in-with-apple), if your app uses any social login service to authenticate, it must also offer Apple Sign In as an option. To add Apple Sign In to your apps, first you'll need to configure your app to use Apple Sign In. <!-- TODO link to [configure your app to use Apple Sign In](../ios/platform/ios13/sign-in.md). -->
 
 For iOS 13 and higher, call the `AppleSignInAuthenticator.AuthenticateAsync()` method. This will use automatically the native Apple Sign in APIs so your users get the best experience possible on these devices. For example, you can write your shared code to use the correct API at runtime:
 

@@ -54,7 +54,7 @@ public class ClipboardTest
 ```
 
 > [!TIP]
-> Access to the clipboard must be done on the main user interface thread. For more information on how to invoke methods on the main user interface thread, see [MainThread](main-thread.md).
+> Access to the clipboard must be done on the main user interface thread. For more information on how to invoke methods on the main user interface thread, see [MainThread](../appmodel/main-thread.md).
 
 ## API
 

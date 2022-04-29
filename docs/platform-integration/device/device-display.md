@@ -78,7 +78,7 @@ No platform differences.
 
 # [iOS](#tab/ios)
 
-- Accessing `DeviceDisplay` must be done on the UI thread or else an exception will be thrown. You can use the [`MainThread.BeginInvokeOnMainThread`](main-thread.md) method to run that code on the UI thread.
+- Accessing `DeviceDisplay` must be done on the UI thread or else an exception will be thrown. You can use the [`MainThread.BeginInvokeOnMainThread`](../appmodel/main-thread.md) method to run that code on the UI thread.
 
 # [Windows](#tab/windows)
 
