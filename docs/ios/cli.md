@@ -10,29 +10,10 @@ In this tutorial, you'll learn how to create and run a .NET Multi-platform App U
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
-1. To create .NET MAUI apps, you'll need to download and run the [installer](https://github.com/dotnet/installer/blob/main/README.md#installers-and-binaries) for the latest .NET 6 runtime. You'll also need to download and install the latest version of [Xcode 13](https://xcodereleases.com), which is also available from the App Store app on your Mac.
+[!INCLUDE [Install .NET MAUI on macOS](~/includes/install-create-macos.md)]
 
-1. On your Mac, open **Terminal** and check that you have the latest .NET 6 runtime installed:
-
-    ```zsh
-    dotnet --version
-    ```
-
-1. In **Terminal**, install the latest public build of .NET MAUI:
-
-    ```zsh
-    sudo dotnet workload install maui --source https://api.nuget.org/v3/index.json
-    ```
-
-    This command will install the latest released version of .NET MAUI, including the required platform SDKs.
-
-1. In **Terminal**, create a new .NET MAUI app using .NET CLI:
-
-    ```zsh
-    dotnet new maui -n "MyMauiApp"
-    ```
-
-1. In **Terminal**, change directory to *MyMauiApp*, and build and run the app:
+<!-- markdownlint-disable MD029 -->
+5. In **Terminal**, change directory to *MyMauiApp*, and build and run the app:
 
     ```zsh
     cd MyMauiApp
@@ -40,7 +21,8 @@ In this tutorial, you'll learn how to create and run a .NET Multi-platform App U
     ```
 
     The `dotnet build` command will restore the project the dependencies, build the app, and launch it in the default simulator.
-
+    <!-- markdownlint-enable MD029 -->
+    
 1. In the default simulator, press the **Click me** button several times and observe that the count of the number of button clicks is incremented.
 
     :::image type="content" source="media/cli/default-simulator.png" alt-text=".NET MAUI app running in the default iOS simulator.":::
