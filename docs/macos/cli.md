@@ -10,13 +10,9 @@ In this tutorial, you'll learn how to create and run a .NET Multi-platform App U
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
-[!INCLUDE [Install .NET MAUI on macOS]](~/includes/install-macos.md)
+[!INCLUDE [Install .NET MAUI on macOS](~/includes/install-macos.md)]
 
-1. In **Terminal**, create a new .NET MAUI app using .NET CLI:
-
-    ```zsh
-    dotnet new maui -n "MyMauiApp"
-    ```
+[!INCLUDE [Create a new .NET MAUI app](~/includes/cli-create-app.md)]
 
 1. In **Terminal**, change directory to *MyMauiApp*, and build and run the app:
 
