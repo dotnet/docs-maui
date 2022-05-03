@@ -20,7 +20,7 @@ In this tutorial, you'll learn how to create and run a .NET Multi-platform App U
     dotnet build -t:Run -f net6.0-maccatalyst
     ```
 
-    The `dotnet build` command will restore the project the dependencies, build the app, and launch it.
+    The `dotnet build` command will restore the project dependencies, build the app, and launch it.
 
     <!-- markdownlint-enable MD029 -->
 
