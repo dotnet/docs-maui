@@ -6,7 +6,8 @@
     <ScrollView>
         <VerticalStackLayout Spacing="25" Padding="30">
 
-            <Button Text="Sensors" Clicked="Button_Clicked" />
+            <Button Text="Sensors" Clicked="Sensors_Clicked" />
+            <Button Text="Battery" Clicked="Battery_Clicked" />
 
             <Label 
                 Text="Hello, World!"

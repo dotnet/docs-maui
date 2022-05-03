@@ -17,9 +17,15 @@ public partial class MainPage : ContentPage
 		SemanticScreenReader.Announce(CounterLabel.Text);
 	}
 
-    private void Button_Clicked(object sender, EventArgs e)
+    private void Battery_Clicked(object sender, EventArgs e)
+	{
+		Navigation.PushAsync(new BatteryTestPage());
+    }
+
+    private void Sensors_Clicked(object sender, EventArgs e)
     {
 		Navigation.PushAsync(new SensorsPage());
-    }
+
+	}
 }
 

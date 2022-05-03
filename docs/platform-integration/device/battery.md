@@ -1,8 +1,8 @@
 ---
 title: "Battery"
-description: "Learn how to use the .NET MAUI Battery class in the Microsoft.Maui.Essentials namespace. You can check the device's battery information and monitor for changes."
-ms.date: 08/05/2021
-no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
+description: "Learn how to use the .NET MAUI Battery class in the Microsoft.Maui.Devices namespace. You can check the device's battery information and monitor for changes."
+ms.date: 05/03/2022
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices"]
 ---
 
 # Battery
@@ -12,11 +12,9 @@ This article describes how you can use the .NET Multi-platform App UI (.NET MAUI
 > [!IMPORTANT]
 > Applications should avoid background processing if the device's energy-saver status is on.
 
+The `Battery` class is available in the `Microsoft.Maui.Devices` namespace.
+
 ## Get started
-
-[!INCLUDE [get-started](../includes/get-started.md)]
-
-[!INCLUDE [essentials-namespace](../includes/essentials-namespace.md)]
 
 To access the **Battery** functionality the following platform-specific setup is required.
 
@@ -37,17 +35,19 @@ The `Battery` permission is required and must be configured in the Android proje
 
 - Update the Android Manifest:
 
-  Open the _AndroidManifest.xml_ file under the **Properties** folder and add the following in the `manifest` node:
+  In the **Solution Explorer**, open the _AndroidManifest.xml_ file. This is typically located in the **Your-project** > **Platforms** > **Android** folder. Add the following node as a child to the `<manifest>` node:
 
   ```xml
   <uses-permission android:name="android.permission.BATTERY_STATS" />
   ```
 
+<!-- TODO not yet supported>
   \- or -
 
 - Use the Android project properties:
 
   Right-click on the Android project and open the project's properties. Under _Android Manifest_ find the **Required permissions:** area and check the **Battery** permission. This will automatically update the _AndroidManifest.xml_ file.
+-->
 
 # [iOS](#tab/ios)
 
@@ -60,110 +60,36 @@ No setup is required.
 -----
 <!-- markdownlint-enable MD025 -->
 
-## Using Battery
+## Check the battery status
 
-The following example demonstrates checking the state of the battery:
+The battery status can be checked by accessing the default implementation of the `IBattery` interface. This implementation is available from the `Microsoft.Maui.Devices.Battery.Default` property. The interface defines the `BatteryInfoChanged` event which is raised when the state of the battery changed. Outside of this event, you can still check the state of the battery at any time by using the various properties defined by the interface.
 
-```csharp
-double level = Battery.ChargeLevel; // returns 0.0 to 1.0 or 1.0 when on AC or no battery.
+The following example demonstrates how to use the monitor the `BatteryInfoChanged` event and report the battery status two `Label` controls:
 
-BatteryState state = Battery.State;
+:::code language="csharp" source="../snippets/shared_1/BatteryTestPage.xaml.cs" id="watch_battery":::
 
-switch (state)
-{
-    case BatteryState.Charging:
-        // Currently charging
-        break;
-    case BatteryState.Full:
-        // Battery is full
-        break;
-    case BatteryState.Discharging:
-    case BatteryState.NotCharging:
-        // Currently discharging battery or not being charged
-        break;
-    case BatteryState.NotPresent:
-        // Battery doesn't exist in device (desktop computer)
-        break;
-    case BatteryState.Unknown:
-        // Unable to detect battery state
-        break;
-}
+The `ChargeLevel` property returns a value between **0.0** and **1.0**, indicating the battery's charge level from empty to full, respectively.
 
-var source = Battery.PowerSource;
-
-switch (source)
-{
-    case BatteryPowerSource.Battery:
-        // Being powered by the battery
-        break;
-    case BatteryPowerSource.AC:
-        // Being powered by A/C unit
-        break;
-    case BatteryPowerSource.Usb:
-        // Being powered by USB cable
-        break;
-    case BatteryPowerSource.Wireless:
-        // Powered via wireless charging
-        break;
-    case BatteryPowerSource.Unknown:
-        // Unable to detect power source
-        break;
-}
-```
-
-The `Battery` class also provides the `BatteryInfoChanged` event, with which you can detect changes to the battery:
-
-```csharp
-public class BatteryTest
-{
-    public BatteryTest()
-    {
-        // Register for battery changes, be sure to unsubscribe when needed
-        Battery.BatteryInfoChanged += Battery_BatteryInfoChanged;
-    }
-
-    void Battery_BatteryInfoChanged(object sender, BatteryInfoChangedEventArgs   e)
-    {
-        double level = e.ChargeLevel;
-        BatteryState state = e.State;
-        BatteryPowerSource source = e.PowerSource;
-
-        Console.WriteLine($"Reading: Level: {level}, State: {state}, Source: {source}");
-    }
-}
-```
+## Low-power energy-saver mode
 
 Devices that run on batteries can be put into a low-power energy-saver mode. Sometimes devices are switched into this mode automatically, like when the battery drops below 20% capacity. The operating system responds to energy-saver mode by reducing activities that tend to deplete the battery. Applications can help by avoiding background processing or other high-power activities when energy-saver mode is on.
 
+The energy-saver status of the device can be read by accessing the `EnergySaverStatus` property, which is either `On`, `Off`, or `Unknown`. If the status is `On`, the application should avoid background processing or other activities that may consume a lot of power.
+
+The battery will raise the `EnergySaverStatusChanged` event when the battery enters or leaves energy-saver mode.
 You can also obtain the current energy-saver status of the device using the static `Battery.EnergySaverStatus` property:
 
-```csharp
-// Get energy saver status
-EnergySaverStatus status = Battery.EnergySaverStatus;
-```
+The following code example monitors the energy-saver status and sets a property accordingly.
 
-This property returns a member of the `EnergySaverStatus` enumeration, which is either `On`, `Off`, or `Unknown`. If the property returns `On`, the application should avoid background processing or other activities that might consume too much power.
+:::code language="csharp" source="../snippets/shared_1/BatteryTestPage.xaml.cs" id="energy_saver":::
 
-The application should also install an event handler. The `Battery` class exposes an event that is triggered when the energy-saver status changes:
+## Power source
 
-```csharp
-public class EnergySaverTest
-{
-    public EnergySaverTest()
-    {
-        // Subscribe to changes of energy-saver status
-        Battery.EnergySaverStatusChanged += OnEnergySaverStatusChanged;
-    }
+The `PowerSource` property returns a `BatteryPowerSource` enumeration that indicates how the device is being charged, if at all. If it's not being charged, the status will be `Battery`. The `AC`, `Usb`, and `Wireless` values indicate that the battery is being charged.
 
-    private void OnEnergySaverStatusChanged(EnergySaverStatusChangedEventArgs e)
-    {
-        // Process change
-        EnergySaverStatus status = e.EnergySaverStatus;
-    }
-}
-```
+The following code example sets the text of a `Label` control based on power source.
 
-If the energy-saver status changes to `On`, the application should stop doing background processing. If the status changes to `Unknown` or `Off`, the application can resume background processing.
+:::code language="csharp" source="../snippets/shared_1/BatteryTestPage.xaml.cs" id="charge_mode":::
 
 ## Platform differences
 

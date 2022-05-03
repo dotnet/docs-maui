@@ -399,6 +399,10 @@
           href: platform-integration/configure-multi-targeting.md
         - name: Invoke platform code
           href: platform-integration/invoke-platform-code.md
+        - name: Device features
+          items:
+          - name: Battery
+            href: platform-integration/device/battery.md
         - name: Device sensors
           href: platform-integration/sensors/index.md
     - name: Publish
