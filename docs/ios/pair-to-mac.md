@@ -17,7 +17,7 @@ Pair to Mac enables the following software development workflow:
 - You can write .NET MAUI iOS code in Visual Studio 2022.
 - Visual Studio 2022 opens a network connection to a Mac build host and uses the build tools on that machine to compile and sign the iOS app.
 - There is no need to run a separate application on the Mac – Visual Studio 2022 invokes Mac builds securely over SSH.
-- Visual Studio 2022 is notified of changes as soon as they happen. For example, when an iOS device is plugged in to the Mac or becomes available on the network, the iOS Toolbar updates instantly.
+- Visual Studio 2022 is notified of changes as soon as they happen. For example, when an iOS device is plugged into the Mac or becomes available on the network, the iOS Toolbar updates instantly.
 - Multiple instances of Visual Studio 2022 can connect to the Mac simultaneously.
 - It's possible to use the Windows command-line to build iOS apps.
 
@@ -138,7 +138,7 @@ If you do not see a specific Mac listed in the **Pair to Mac** dialog, add it ma
 Pair to Mac automatically provisions a Mac with software necessary for building .NET MAUI iOS apps. This includes .NET and various Xcode-related tools (but not Xcode itself).
 
 > [!IMPORTANT]
-> - Pair to Mac cannot install Xcode, you must manually install it on the Mac build host. It's required for .NET MAUI iOS development.
+> - Pair to Mac can't install Xcode, you must manually install it on the Mac build host. It's required for .NET MAUI iOS development.
 > - Automatic Mac provisioning requires that remote login is enabled on the Mac, and the Mac must be network-accessible to the Windows machine.
 > - Automatic Mac provisioning requires sufficient free space on the Mac to install .NET.
 
