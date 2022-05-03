@@ -2,18 +2,19 @@
 title: Accessing device sensors overview
 description: "Learn how to use and monitor sensors provided by your device, with .NET MAUI. You can monitor the following sensors: accelerometer, barometer, compass, shake, gyroscope, magnetometer, orientation."
 ms.topic: overview
-ms.date: 08/09/2021
+ms.date: 05/03/2022
 ms.custom: template-overview
 show_latex: true
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices"]
 ---
 
 # Accessing device sensors
 
 Devices have all sorts of sensors that are available to you. Some sensors can detect movement, others changes in the environment, such as light. Monitoring and reacting to these sensors makes your app dynamic in adapting to how the device is being used. You can also respond to changes in the sensors and alert the user. This article gives you a brief overview of the common sensors supported by .NET Multi-User Application (.NET MAUI).
 
-Device sensor-related types are available in the `Microsoft.Maui.Devices.Sensors` namespace.
-
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
+
+Device sensor-related types are available in the `Microsoft.Maui.Devices.Sensors` namespace.
 
 ## Sensor speed
 
