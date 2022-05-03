@@ -10,21 +10,7 @@ In this tutorial, you'll learn how to create and run a .NET Multi-platform App U
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
-1. To create .NET MAUI apps, you'll need to download and run the [installer](https://github.com/dotnet/installer/blob/main/README.md#installers-and-binaries) for the latest .NET 6 runtime. You'll also need to download and install the latest version of [Xcode 13](https://xcodereleases.com), which is also available from the App Store app on your Mac.
-
-1. On your Mac, open **Terminal** and check that you have the latest .NET 6 runtime installed:
-
-    ```zsh
-    dotnet --version
-    ```
-
-1. In **Terminal**, install the latest public build of .NET MAUI:
-
-    ```zsh
-    sudo dotnet workload install maui --source https://api.nuget.org/v3/index.json
-    ```
-
-    This command will install the latest released version of .NET MAUI, including the required platform SDKs.
+[!INCLUDE [Install .NET MAUI on macOS]](~/includes/install-macos.md)
 
 1. In **Terminal**, create a new .NET MAUI app using .NET CLI:
 
