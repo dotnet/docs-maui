@@ -10,11 +10,9 @@ In this tutorial, you'll learn how to create and run a .NET Multi-platform App U
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
-[!INCLUDE [Install .NET MAUI on macOS](~/includes/install-macos.md)]
+[!INCLUDE [Install .NET MAUI on macOS](~/includes/install-create-macos.md)]
 
-[!INCLUDE [Create a new .NET MAUI app](~/includes/cli-create-app.md)]
-
-1. In **Terminal**, change directory to *MyMauiApp*, and build and run the app:
+5. In **Terminal**, change directory to *MyMauiApp*, and build and run the app:
 
     ```zsh
     cd MyMauiApp
@@ -23,6 +21,6 @@ In this tutorial, you'll learn how to create and run a .NET Multi-platform App U
 
     The `dotnet build` command will restore the project the dependencies, build the app, and launch it.
 
-1. In the running app, press the **Click me** button several times and observe that the count of the number of button clicks is incremented.
+6. In the running app, press the **Click me** button several times and observe that the count of the number of button clicks is incremented.
 
     :::image type="content" source="media/cli/maccatalyst-running-app.png" alt-text=".NET MAUI app running on Mac.":::

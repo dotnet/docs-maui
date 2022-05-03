@@ -14,3 +14,9 @@
     ```
 
     This command will install the latest released version of .NET MAUI, including the required platform SDKs.
+
+1. In **Terminal**, create a new .NET MAUI app using .NET CLI:
+
+    ```zsh
+    dotnet new maui -n "MyMauiApp"
+    ```
