@@ -138,6 +138,7 @@ If you do not see a specific Mac listed in the **Pair to Mac** dialog, add it ma
 Pair to Mac automatically provisions a Mac with software necessary for building .NET MAUI iOS apps. This includes .NET and various Xcode-related tools (but not Xcode itself).
 
 > [!IMPORTANT]
+>
 > - Pair to Mac can't install Xcode, you must manually install it on the Mac build host. It's required for .NET MAUI iOS development.
 > - Automatic Mac provisioning requires that remote login is enabled on the Mac, and the Mac must be network-accessible to the Windows machine.
 > - Automatic Mac provisioning requires sufficient free space on the Mac to install .NET.
