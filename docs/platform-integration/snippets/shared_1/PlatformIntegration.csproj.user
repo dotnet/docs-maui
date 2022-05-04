@@ -15,6 +15,9 @@
     <MauiXaml Update="BatteryTestPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="DeviceDetailsPage.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="SensorsPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>

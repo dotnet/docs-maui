@@ -8,6 +8,7 @@
 
             <Button Text="Sensors" Clicked="Sensors_Clicked" />
             <Button Text="Battery" Clicked="Battery_Clicked" />
+            <Button Text="Device Details 1" Clicked="Details1_Clicked" />
 
             <Label 
                 Text="Hello, World!"

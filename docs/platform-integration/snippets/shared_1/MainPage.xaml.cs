@@ -27,5 +27,10 @@ public partial class MainPage : ContentPage
 		Navigation.PushAsync(new SensorsPage());
 
 	}
+
+    private void Details1_Clicked(object sender, EventArgs e)
+    {
+		Navigation.PushAsync(new DeviceDetailsPage());
+	}
 }
 
