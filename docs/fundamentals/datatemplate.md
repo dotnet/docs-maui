@@ -27,7 +27,7 @@ The `Person` class defines `Name`, `Age`, and `Location` properties, which can b
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:DataTemplates"
-             x:Class=""DataTemplates.WithoutDataTemplatePage>
+             x:Class="DataTemplates.WithoutDataTemplatePage">
     <StackLayout>
         <CollectionView>
             <CollectionView.ItemsSource>

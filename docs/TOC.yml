@@ -33,6 +33,16 @@
           items:
             - name: Build an iOS app with .NET CLI
               href: ios/cli.md
+            - name: Pair to Mac
+              href: ios/pair-to-mac.md
+            - name: Simulators
+              items:
+              - name: Remote iOS simulator for Windows
+                href: ios/remote-simulator.md
+        - name: macOS
+          items:
+            - name: Build a Mac Catalyst app with .NET CLI
+              href: macos/cli.md
         - name: Windows
           items:
             - name: How to set up Windows for debugging
