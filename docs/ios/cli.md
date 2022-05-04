@@ -22,7 +22,7 @@ In this tutorial, you'll learn how to create and run a .NET Multi-platform App U
 
     The `dotnet build` command will restore the project the dependencies, build the app, and launch it in the default simulator.
     <!-- markdownlint-enable MD029 -->
-    
+
 1. In the default simulator, press the **Click me** button several times and observe that the count of the number of button clicks is incremented.
 
     :::image type="content" source="media/cli/default-simulator.png" alt-text=".NET MAUI app running in the default iOS simulator.":::
