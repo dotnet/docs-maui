@@ -408,7 +408,7 @@
           - name: Device information
             href: platform-integration/device/information.md
           - name: Flashlight
-            href: platform-integration/device/feedback.md
+            href: platform-integration/device/flashlight.md
           - name: Vibration
             href: platform-integration/device/vibrate.md
           - name: Haptic feedback
