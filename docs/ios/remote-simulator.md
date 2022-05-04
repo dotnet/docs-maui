@@ -33,7 +33,7 @@ The remote iOS Simulator for Windows is installed automatically as part of the M
 
 ## Enable the remote iOS simulator for Windows
 
-The remote iOS simulator for Windows is enabled by default. However, if it's been previously disabled it can be enabled in Visual Studio by navigating to **Tools > Options > Xamarin > iOS Settings** and and ensuring that **Remote Simulator to Windows** is checked:
+The remote iOS simulator for Windows is enabled by default. However, if it's been previously disabled it can be enabled in Visual Studio by navigating to **Tools > Options > Xamarin > iOS Settings** and ensuring that **Remote Simulator to Windows** is checked:
 
 :::image type="content" source="media/remote-simulator/enable-remote-simulator.png" alt-text="Visual Studio checkbox to enable the iOS remote simulator.":::
 
