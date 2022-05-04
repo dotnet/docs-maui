@@ -10,10 +10,10 @@ The remote iOS Simulator for Windows allows you to test your apps on an iOS simu
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
+## Get started
+
 > [!IMPORTANT]
 > It's not currently possible to use the remote iOS Simulator to test your iOS apps in Windows. However, if you disable the Simulator in Windows, targeting an app against an iOS Simulator will result in the iOS Simulator opening on the connected Mac build host. For more information, see [Enable the remote iOS simulator for Windows](#enable-the-remote-ios-simulator-for-windows).
-
-## Get started
 
 The remote iOS Simulator for Windows is installed automatically as part of the Mobile development with .NET workload in Visual Studio 2022. To use it, follow these steps:
 
