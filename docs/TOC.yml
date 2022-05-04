@@ -29,6 +29,10 @@
               items:
                 - name: How to set up a physical device
                   href: android/device/setup.md
+        - name: iOS
+          items:
+            - name: Pair to Mac
+              href: ios/pair-to-mac.md
         - name: macOS
           items:
             - name: Build a Mac Catalyst app with .NET CLI
