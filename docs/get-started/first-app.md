@@ -52,7 +52,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
     :::image type="content" source="media/first-app/vs-workloads.png" alt-text="Visual Studio workloads for .NET MAUI.":::
 
-:::zone end
+:::zone-end
 
 :::zone pivot="devices-windows"
 
@@ -204,4 +204,4 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
    :::image type="content" source="media/first-app/ios-running-app.png" alt-text=".NET MAUI app running in iOS Simulator on a Mac.":::
 
-:::zone end
+:::zone-end
