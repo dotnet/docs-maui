@@ -298,7 +298,7 @@ The following XAML shows an example of nesting `StackLayout` objects:
                 <BoxView Color="Red"
                          WidthRequest="40" />
                 <Label Text="Red"
-                       FontSize="Large"
+                       FontSize="18"
                        VerticalOptions="Center" />
             </StackLayout>
         </Frame>
@@ -309,7 +309,7 @@ The following XAML shows an example of nesting `StackLayout` objects:
                 <BoxView Color="Yellow"
                          WidthRequest="40" />
                 <Label Text="Yellow"
-                       FontSize="Large"
+                       FontSize="18"
                        VerticalOptions="Center" />
             </StackLayout>
         </Frame>
@@ -320,7 +320,7 @@ The following XAML shows an example of nesting `StackLayout` objects:
                 <BoxView Color="Blue"
                          WidthRequest="40" />
                 <Label Text="Blue"
-                       FontSize="Large"
+                       FontSize="18"
                        VerticalOptions="Center" />
             </StackLayout>
         </Frame>

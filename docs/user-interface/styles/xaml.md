@@ -12,15 +12,15 @@ ms.date: 03/01/2022
 <Label Text="These labels"
        HorizontalOptions="Center"
        VerticalOptions="Center"
-       FontSize="Large" />
+       FontSize="18" />
 <Label Text="are not"
        HorizontalOptions="Center"
        VerticalOptions="Center"
-       FontSize="Large" />
+       FontSize="18" />
 <Label Text="using styles"
        HorizontalOptions="Center"
        VerticalOptions="Center"
-       FontSize="Large" />
+       FontSize="18" />
 ```
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
@@ -55,7 +55,7 @@ When creating a `Style`, the `TargetType` property is always required. The follo
 <Style x:Key="labelStyle" TargetType="Label">
     <Setter Property="HorizontalOptions" Value="Center" />
     <Setter Property="VerticalOptions" Value="Center" />
-    <Setter Property="FontSize" Value="Large" />
+    <Setter Property="FontSize" Value="18" />
 </Style>
 ```
 
@@ -82,21 +82,21 @@ The following example shows *explicit* styles in a page's `ResourceDictionary`, 
                TargetType="Label">
             <Setter Property="HorizontalOptions" Value="Center" />
             <Setter Property="VerticalOptions" Value="Center" />
-            <Setter Property="FontSize" Value="Large" />
+            <Setter Property="FontSize" Value="18" />
             <Setter Property="TextColor" Value="Red" />
         </Style>
         <Style x:Key="labelGreenStyle"
                TargetType="Label">
             <Setter Property="HorizontalOptions" Value="Center" />
             <Setter Property="VerticalOptions" Value="Center" />
-            <Setter Property="FontSize" Value="Large" />
+            <Setter Property="FontSize" Value="18" />
             <Setter Property="TextColor" Value="Green" />
         </Style>
         <Style x:Key="labelBlueStyle"
                TargetType="Label">
             <Setter Property="HorizontalOptions" Value="Center" />
             <Setter Property="VerticalOptions" Value="Center" />
-            <Setter Property="FontSize" Value="Large" />
+            <Setter Property="FontSize" Value="18" />
             <Setter Property="TextColor" Value="Blue" />
         </Style>
     </ContentPage.Resources>
@@ -244,7 +244,7 @@ The following example shows *explicit* style inheritance:
             <Style x:Key="labelStyle"
                    TargetType="Label"
                    BasedOn="{StaticResource baseStyle}">
-                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="FontSize" Value="18" />
                 <Setter Property="FontAttributes" Value="Italic" />
                 <Setter Property="TextColor" Value="Teal" />
             </Style>

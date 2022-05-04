@@ -142,7 +142,7 @@ The following XAML example has a `ScrollView` as a child layout to a `Grid`:
     <Grid Margin="20"
           RowDefinitions="Auto,*,Auto">
         <Label Text="THE BLACK CAT by Edgar Allan Poe"
-               FontSize="Medium"
+               FontSize="14"
                FontAttributes="Bold"
                HorizontalOptions="Center" />
         <ScrollView x:Name="scrollView"

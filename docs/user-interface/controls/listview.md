@@ -513,7 +513,7 @@ The `Header` and `Footer` properties can each be set to a view. This can be a si
         <StackLayout BackgroundColor="LightGray">
             <Label Margin="10,0,0,0"
                    Text="Monkeys"
-                   FontSize="Small"
+                   FontSize="12"
                    FontAttributes="Bold" />
         </StackLayout>
     </ListView.Header>
@@ -521,7 +521,7 @@ The `Header` and `Footer` properties can each be set to a view. This can be a si
         <StackLayout BackgroundColor="LightGray">
             <Label Margin="10,0,0,0"
                    Text="Friends of Monkey"
-                   FontSize="Small"
+                   FontSize="12"
                    FontAttributes="Bold" />
         </StackLayout>
     </ListView.Footer>
@@ -546,7 +546,7 @@ The `HeaderTemplate` and `FooterTemplate` properties can be set to `DataTemplate
             <StackLayout BackgroundColor="LightGray">
                 <Label Margin="10,0,0,0"
                        Text="Monkeys"
-                       FontSize="Small"
+                       FontSize="12"
                        FontAttributes="Bold" />
             </StackLayout>
         </DataTemplate>
@@ -556,7 +556,7 @@ The `HeaderTemplate` and `FooterTemplate` properties can be set to `DataTemplate
             <StackLayout BackgroundColor="LightGray">
                 <Label Margin="10,0,0,0"
                        Text="Friends of Monkey"
-                       FontSize="Small"
+                       FontSize="12"
                        FontAttributes="Bold" />
             </StackLayout>
         </DataTemplate>
@@ -802,7 +802,7 @@ The appearance of each group header can be customized by setting the `ListView.G
             <ViewCell>
                 <Label Text="{Binding Name}"
                        BackgroundColor="LightGray"
-                       FontSize="Large"
+                       FontSize="18"
                        FontAttributes="Bold" />
             </ViewCell>
         </DataTemplate>

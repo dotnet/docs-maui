@@ -12,6 +12,9 @@ A .NET Multi-platform App UI (.NET MAUI) `ResourceDictionary` is a repository fo
 
 XAML resources that are stored in a `ResourceDictionary` can be referenced and applied to elements by using the `StaticResource` or `DynamicResource` markup extension. In C#, resources can also be defined in a `ResourceDictionary` and then referenced and applied to elements by using a string-based indexer. However, there's little advantage to using a `ResourceDictionary` in C#, as shared objects can be stored as fields or properties, and accessed directly without having to first retrieve them from a dictionary.
 
+> [!TIP]
+> In Visual Studio, a XAML-based `ResourceDictionary` file that's backed by a code-behind file can be added to your project by the **.NET MAUI ResourceDictionary (XAML)** item template.
+
 ## Create resources
 
 Every `VisualElement` derived object has a `Resources` property, which is a `ResourceDictionary` that can contain resources. Similarly, an `Application` derived object has a `Resources` property, which is a `ResourceDictionary` that can contain resources.
@@ -82,7 +85,7 @@ The following XAML example shows how to consume resources, and also define an ad
         <StackLayout.Resources>
             <!-- Implicit style -->
             <Style TargetType="Button">
-                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontSize" Value="14" />
                 <Setter Property="BackgroundColor" Value="#1976D2" />
                 <Setter Property="TextColor" Value="White" />
                 <Setter Property="CornerRadius" Value="5" />
@@ -120,16 +123,16 @@ When resources share keys, resources defined lower in the visual tree will take 
 
 ## Stand-alone resource dictionaries
 
-A class derived from `ResourceDictionary` can also be in a stand-alone XAML file that doesn't have a corresponding code-behind file.
-
-To create a stand-alone `ResourceDictionary`, add a new XAML file to the project and delete its code-behind file. Then, in the XAML file change the name of the base class to `ResourceDictionary`. In addition, remove the `x:Class` attribute from the root tag of the file.
+A `ResourceDictionary` can also be created as a stand-alone XAML file that isn't backed by a code-behind file. To create a stand-alone `ResourceDictionary`, add a new `ResourceDictionary` file to the project with the **.NET MAUI ResourceDictionary (XAML)** item template and delete its code-behind file. Then, in the XAML file remove the `x:Class` attribute from the `ResourceDictionary` tag near the start of the file. In addition, add `<?xaml-comp compile="true" ?>` after the XML header to ensure that the XAML will be compiled.
 
 > [!NOTE]
 > A stand-alone `ResourceDictionary` must have a build action of **MauiXaml**.
 
-The following XAML example shows a `ResourceDictionary` named **MyResourceDictionary.xaml**:
+The following XAML example shows a stand-alone `ResourceDictionary` named **MyResourceDictionary.xaml**:
 
 ```xaml
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
 <ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <DataTemplate x:Key="PersonDataTemplate">

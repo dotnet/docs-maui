@@ -33,6 +33,10 @@
           items:
             - name: Pair to Mac
               href: ios/pair-to-mac.md
+        - name: macOS
+          items:
+            - name: Build a Mac Catalyst app with .NET CLI
+              href: macos/cli.md
         - name: Windows
           items:
             - name: How to set up Windows for debugging
@@ -161,6 +165,8 @@
                 href: fundamentals/datatemplate.md
         - name: Triggers
           href: fundamentals/triggers.md
+        - name: Windows
+          href: fundamentals/windows.md
     - name: User interface
       items:
         - name: Animation
@@ -205,8 +211,6 @@
                   href: user-interface/layouts/grid.md
                 - name: HorizontalStackLayout
                   href: user-interface/layouts/horizontalstacklayout.md
-                - name: RelativeLayout
-                  href: user-interface/layouts/relativelayout.md
                 - name: StackLayout
                   href: user-interface/layouts/stacklayout.md
                 - name: VerticalStackLayout
@@ -355,6 +359,8 @@
           href: user-interface/menubar.md
         - name: Display pop-ups
           href: user-interface/pop-ups.md
+        - name: Fonts
+          href: user-interface/fonts.md
         - name: Graphics
           items:
             - name: Overview

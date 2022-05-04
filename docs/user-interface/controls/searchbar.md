@@ -20,7 +20,7 @@ The .NET Multi-platform App UI (.NET MAUI) `SearchBar` is a user input control u
 - `FontAttributes` is a `FontAttributes` enum value that determines whether the `SearchBar` font is bold, italic, or neither.
 - `FontAutoScalingEnabled` is a `bool` which defines whether an app's UI reflects text scaling preferences set in the operating system.
 - `FontFamily` is a `string` that determines the font family used by the `SearchBar`.
-- `FontSize` can be a `NamedSize` enum value or a `double` value that represents specific font sizes across platforms.
+- `FontSize` is a `double` value that represents specific font sizes across platforms.
 - `HorizontalTextAlignment` is a `TextAlignment` enum value that defines the horizontal alignment of the query text.
 - `IsTextPredictionEnabled` is a `bool` that determines whether text prediction and automatic text correction is enabled.
 - `Placeholder` is a `string` that defines the placeholder text, such as "Search...".

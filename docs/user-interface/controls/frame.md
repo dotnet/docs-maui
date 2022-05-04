@@ -21,7 +21,7 @@ These properties are backed by `BindableProperty` objects, which means that they
 The `Frame` class inherits from `ContentView`, which provides a `Content` bindable property. The `Content` property is the `ContentProperty` of the `Frame` class, and therefore does not need to be explicitly set from XAML.
 
 > [!NOTE]
-> The `Frame` class existed in Xamarin.Forms and is present in .NET MAUI for users who are migrating their apps from Xamarin.Forms to .NET MAUI. If you're building a new .NET MAUI app it's recommended to use `Border` instead. For more information, see [Border](border.md).
+> The `Frame` class existed in Xamarin.Forms and is present in .NET MAUI for users who are migrating their apps from Xamarin.Forms to .NET MAUI. If you're building a new .NET MAUI app it's recommended to use `Border` instead, and to set shadows using the `Shadow` bindable property on `VisualElement`. For more information, see [Border](border.md) and [Shadow](../shadow.md).
 
 ## Create a Frame
 
@@ -69,7 +69,7 @@ The following XAML shows how to create a card with a `Frame`:
        Padding="8">
   <StackLayout>
     <Label Text="Card Example"
-           FontSize="Medium"
+           FontSize="14"
            FontAttributes="Bold" />
     <BoxView Color="Gray"
              HeightRequest="2"

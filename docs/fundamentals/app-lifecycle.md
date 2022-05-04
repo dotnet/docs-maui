@@ -253,17 +253,18 @@ The following table lists the .NET MAUI delegates that are invoked in response t
 | `OnClosed` | `Microsoft.UI.Xaml.Window`, `Microsoft.UI.Xaml.WindowEventArgs` | Invoked when the platform [`Closed`](xref:Microsoft.UI.Xaml.Window.Closed) event is raised. |
 | `OnLaunched` | `Microsoft.UI.Xaml.Window`, `Microsoft.UI.Xaml.LaunchActivatedEventArgs` | Invoked by .NET MAUI's [`Application.OnLaunched`](xref:Microsoft.UI.Xaml.Application.OnLaunched*) override once the native window has been created and activated. |
 | `OnLaunching` | `Microsoft.UI.Xaml.Window`, `Microsoft.UI.Xaml.LaunchActivatedEventArgs` | Invoked by .NET MAUI's [`Application.OnLaunched`](xref:Microsoft.UI.Xaml.Application.OnLaunched*) override before the native window has been created and activated. |
-| `OnNativeMessage` | `Microsoft.UI.Xaml.Window`, `WindowsNativeMessageEventArgs` | Invoked when .NET MAUI's `NativeMessage` event is raised. |
+| `OnPlatformMessage` | `Microsoft.UI.Xaml.Window`, `WindowsPlatformMessageEventArgs` | Invoked when .NET MAUI receives specific native Windows messages. |
+| `OnPlatformWindowSubclassed` | `Microsoft.UI.Xaml.Window`, `WindowsPlatformWindowSubclassedEventArgs` | Invoked by .NET MAUI when the Win32 window is subclassed. |
 | `OnResumed` | `Microsoft.UI.Xaml.Window` | Invoked when the platform [`Activated`](xref:Microsoft.UI.Xaml.Window.Activated) event is raised, if the app is resuming. |
 | `OnVisibilityChanged` | `Microsoft.UI.Xaml.Window`, `Microsoft.UI.Xaml.WindowVisibilityChangedEventArgs` | Invoked when the platform [`VisibilityChanged`](xref:Microsoft.UI.Xaml.Window.VisibilityChanged) event is raised. |
 | `OnWindowCreated` | `Microsoft.UI.Xaml.Window` | Invoked when the native window is created for the cross-platform `Window`. |
 
-The `NativeMessage` event is specific to .NET MAUI, and enables native Windows messages to be exposed as a lifecycle event. The `WindowsNativeMessageEventArgs` object that accompanies the `NativeMessage` event includes a `MessageId` property, of type `uint`. The value of this property can be examined to determine which message has been passed to your app window. For more information about windows messages, see [Windows Messages (Get Started with Win32 and C++)](/windows/win32/learnwin32/window-messages). For a list of window message constants, see [Window notifications](/windows/win32/winmsg/window-notifications).
+.NET MAUI exposes specific native Windows messages as a lifecycle event with the `OnPlatformMessage` delegate. The `WindowsPlatformMessageEventArgs` object that accompanies this delegate includes a `MessageId` property, of type `uint`. The value of this property can be examined to determine which message has been passed to your app window. For more information about windows messages, see [Windows Messages (Get Started with Win32 and C++)](/windows/win32/learnwin32/window-messages). For a list of window message constants, see [Window notifications](/windows/win32/winmsg/window-notifications).
 
 > [!IMPORTANT]
 > Each delegate has a corresponding identically named extension method, that can be called to register a handler for the delegate.
 
-To respond to a Windows lifecycle delegate being invoked, call the `ConfigureLifecycleEvents` method on the `MauiAppBuilder` object in the `CreateMauiapp` method of your `MauiProgram` class. Then, on the `ILifecycleBuilder` object, call the `AddWindows` method and specify the `Action` that registers handlers for the required delegates:
+To respond to a Windows lifecycle delegate being invoked, call the `ConfigureLifecycleEvents` method on the `MauiAppBuilder` object in the `CreateMauiApp` method of your `MauiProgram` class. Then, on the `ILifecycleBuilder` object, call the `AddWindows` method and specify the `Action` that registers handlers for the required delegates:
 
 ```csharp
 using Microsoft.Maui.LifecycleEvents;
@@ -286,7 +287,7 @@ namespace PlatformLifecycleDemo
                           .OnLaunched((window, args) => LogEvent("OnLaunched"))
                           .OnLaunching((window, args) => LogEvent("OnLaunching"))
                           .OnVisibilityChanged((window, args) => LogEvent("OnVisibilityChanged"))
-                          .OnNativeMessage((window, args) =>
+                          .OnPlatformMessage((window, args) =>
                           {
                               if (args.MessageId == Convert.ToUInt32("0x02E0"))
                               {
