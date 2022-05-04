@@ -1,19 +1,19 @@
 ---
 title: "Flashlight"
-description: "Learn how to use the .NET MAUI Flashlight class in the Microsoft.Maui.Essentials namespace. This class provides the ability to turn on or off the device's camera flash, to emulate a flashlight."
-ms.date: 08/19/2021
-no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
+description: "Learn how to use the .NET MAUI Flashlight class in the Microsoft.Maui.Devices namespace. This class provides the ability to turn on or off the device's camera flash, to emulate a flashlight."
+ms.date: 05/03/2022
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices"]
 ---
 
 # Flashlight
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `Flashlight` class. With this class, you can toggle the device's camera flash on and off, to emulate a flashlight.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `Flashlight` class. With this class, you can toggle the device's camera flash on and off, to emulate a flashlight.
+
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
+
+The `Flashlight` class is available in the `Microsoft.Maui.Devices` namespace.
 
 ## Get started
-
-[!INCLUDE [get-started](../includes/get-started.md)]
-
-[!INCLUDE [essentials-namespace](../includes/essentials-namespace.md)]
 
 To access the flashlight functionality the following platform-specific setup is required.
 
@@ -42,12 +42,15 @@ There are two permissions to configure in your project: `Flashlight` and `Camera
   <uses-permission android:name="android.permission.CAMERA" />
   ```
 
+<!-- TODO unsupported right now
   \- or -
 
 - Use the Android project properties:
 
-  <!-- TODO: Check on this value -->
+  <!-- TODO: Check on this value
   Right-click on the Android project and open the project's properties. Under _Android Manifest_ find the **Required permissions:** area and check the **FLASHLIGHT** and **CAMERA** permissions. This will automatically update the _AndroidManifest.xml_ file.
+
+-->
 
 By adding these permissions, [Google Play will automatically filter out devices](https://developer.android.com/guide/topics/manifest/uses-feature-element.html#permissions-features) without specific hardware. You can get around this by adding the following to your _AssemblyInfo.cs_ file in your Android project:
 
@@ -71,33 +74,9 @@ No setup is required.
 
 ## Use Flashlight
 
-The flashlight can be turned on and off through the `TurnOnAsync` and `TurnOffAsync` methods:
+The flashlight can be turned on and off through the `TurnOnAsync` and `TurnOffAsync` methods. The following code example ties the flashlight's on or off state to a `Switch` control:
 
-```csharp
-try
-{
-    // Turn on
-    await Flashlight.TurnOnAsync();
-
-    // Pause for 3 seconds
-    await Task.Delay(TimeSpan.FromSeconds(3));
-
-    // Turn off
-    await Flashlight.TurnOffAsync();
-}
-catch (FeatureNotSupportedException fnsEx)
-{
-    // Handle not supported on device exception
-}
-catch (PermissionException pEx)
-{
-    // Handle permission exception
-}
-catch (Exception ex)
-{
-    // Unable to turn on/off flashlight
-}
-```
+:::code language="csharp" source="../snippets/shared_1/DeviceDetailsPage.xaml.cs" id="flashlight":::
 
 ## Platform differences
 

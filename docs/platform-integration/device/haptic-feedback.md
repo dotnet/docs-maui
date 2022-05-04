@@ -1,19 +1,19 @@
 ---
 title: "Haptic Feedback"
-description: "Learn how to use the .NET MAUI HapticFeedback class in the Microsoft.Maui.Essentials namespace. This class lets you control haptic feedback on a device."
-ms.date: 08/19/2021
-no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
+description: "Learn how to use the .NET MAUI HapticFeedback class in the Microsoft.Maui.Devices namespace. This class lets you control haptic feedback on a device."
+ms.date: 05/03/2022
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices"]
 ---
 
 # Haptic Feedback
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `HapticFeedback` class to control haptic feedback on a device.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `HapticFeedback` class to control haptic feedback on a device. Haptic feedback is generally manifested by a gentle vibration sensation provided by the device to give a response to the user. Some examples of haptic feedback are when a user types on a virtual keyboard or when they play a game where the player's character has an encounter with an enemy character.
+
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
+
+The `HapticFeedback` class is available in the `Microsoft.Maui.Devices` namespace.
 
 ## Get started
-
-[!INCLUDE [get-started](../includes/get-started.md)]
-
-[!INCLUDE [essentials-namespace](../includes/essentials-namespace.md)]
 
 To access the haptic feedback functionality, the following platform-specific setup is required.
 
@@ -42,9 +42,13 @@ The `Vibrate` permission is required and must be configured in the Android proje
 
   \- or -
 
+<!-- TODO not yet supported
+
 - Use the Android project properties:
 
   Right-click on the Android project and open the project's properties. Under _Android Manifest_ find the **Required permissions:** area and check the **VIBRATE** permission. This will automatically update the _AndroidManifest.xml_ file.
+
+-->
 
 # [iOS](#tab/ios)
 
@@ -59,26 +63,9 @@ No setup is required.
 
 ## Use haptic feedback
 
-The haptic feedback functionality can be performed with a `Click` or `LongPress` feedback type.
+The haptic feedback functionality is performed in two modes: a short `Click` or a `LongPress`. The following code example initiates a `Click` or `LongPress` haptic feedback response to the user based on which `Button` they click:
 
-```csharp
-try
-{
-    // Perform click feedback
-    HapticFeedback.Perform(HapticFeedbackType.Click);
-
-    // Or use long press    
-    HapticFeedback.Perform(HapticFeedbackType.LongPress);
-}
-catch (FeatureNotSupportedException ex)
-{
-    // Feature not supported on device
-}
-catch (Exception ex)
-{
-    // Other error has occurred.
-}
-```
+:::code language="csharp" source="../snippets/shared_1/DeviceDetailsPage.xaml.cs" id="hapticfeedback":::
 
 ## API
 

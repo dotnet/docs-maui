@@ -1,19 +1,19 @@
 ---
 title: "Vibration"
 description: "Learn how to use the .NET MAUI Vibration class, which lets you start and stop the vibrate functionality for a desired amount of time."
-ms.date: 09/17/2021
-no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
+ms.date: 05/03/2022
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices"]
 ---
 
 # Vibration
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `Vibration` class. This class lets you start and stop the vibrate functionality for a desired amount of time.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `Vibration` class. This class lets you start and stop the vibrate functionality for a desired amount of time.
+
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
+
+The `HapticFeedback` class is available in the `Microsoft.Maui.Devices` namespace.
 
 ## Get started
-
-[!INCLUDE [get-started](../includes/get-started.md)]
-
-[!INCLUDE [essentials-namespace](../includes/essentials-namespace.md)]
 
 To access the Vibration functionality, the following platform specific setup is required.
 
@@ -40,11 +40,13 @@ The `VIBRATE` permission is required, and must be configured in the Android proj
   <uses-permission android:name="android.permission.VIBRATE" />
   ```
 
+<!-- TODO not yet supported
   \- or -
 
 - Use the Android project properties:
 
   Right-click on the Android project and open the project's properties. Under _Android Manifest_ find the **Required permissions:** area and check the appropriate permissions. This will automatically update the _AndroidManifest.xml_ file.
+-->
 
 # [iOS](#tab/ios)
 
@@ -58,44 +60,9 @@ No additional setup required.
 
 ## Vibrate the device
 
-The vibration functionality can be requested for a set amount of time or the default of 500 milliseconds.
+The vibration functionality can be requested for a set amount of time or the default of 500 milliseconds. The following code example randomly vibrates the device between one and seven seconds:
 
-```csharp
-try
-{
-    // Use default vibration length
-    Vibration.Vibrate();
-
-    // Or use specified time
-    var duration = TimeSpan.FromSeconds(1);
-    Vibration.Vibrate(duration);
-}
-catch (FeatureNotSupportedException ex)
-{
-    // Feature not supported on device
-}
-catch (Exception ex)
-{
-    // Other error has occurred.
-}
-```
-
-Cancellation of device vibration can be requested with the `Cancel` method:
-
-```csharp
-try
-{
-    Vibration.Cancel();
-}
-catch (FeatureNotSupportedException ex)
-{
-    // Feature not supported on device
-}
-catch (Exception ex)
-{
-    // Other error has occurred.
-}
-```
+:::code language="csharp" source="../snippets/shared_1/DeviceDetailsPage.xaml.cs" id="vibrate":::
 
 ## Platform differences
 

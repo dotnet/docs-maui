@@ -403,6 +403,18 @@
           items:
           - name: Battery
             href: platform-integration/device/battery.md
+          - name: Device display
+            href: platform-integration/device/display.md
+          - name: Device information
+            href: platform-integration/device/information.md
+          - name: Flashlight
+            href: platform-integration/device/feedback.md
+          - name: Vibration
+            href: platform-integration/device/vibrate.md
+          - name: Haptic feedback
+            href: platform-integration/device/haptic-feedback.md
+          - name: Battery
+            href: platform-integration/device/battery.md
         - name: Device sensors
           href: platform-integration/sensors/index.md
     - name: Publish

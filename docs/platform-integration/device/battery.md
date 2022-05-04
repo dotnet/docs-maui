@@ -7,10 +7,9 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices"]
 
 # Battery
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `Battery` class to check the device's battery information and monitor for changes. This class also provides information about the device's energy-saver status, which indicates if the device is running in a low-power mode.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `Battery` class to check the device's battery information and monitor for changes. This class also provides information about the device's energy-saver status, which indicates if the device is running in a low-power mode.
 
-> [!IMPORTANT]
-> Applications should avoid background processing if the device's energy-saver status is on.
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
 The `Battery` class is available in the `Microsoft.Maui.Devices` namespace.
 
@@ -73,6 +72,9 @@ The `ChargeLevel` property returns a value between **0.0** and **1.0**, indicati
 ## Low-power energy-saver mode
 
 Devices that run on batteries can be put into a low-power energy-saver mode. Sometimes devices are switched into this mode automatically, like when the battery drops below 20% capacity. The operating system responds to energy-saver mode by reducing activities that tend to deplete the battery. Applications can help by avoiding background processing or other high-power activities when energy-saver mode is on.
+
+> [!IMPORTANT]
+> Applications should avoid background processing if the device's energy-saver status is on.
 
 The energy-saver status of the device can be read by accessing the `EnergySaverStatus` property, which is either `On`, `Off`, or `Unknown`. If the status is `On`, the application should avoid background processing or other activities that may consume a lot of power.
 
