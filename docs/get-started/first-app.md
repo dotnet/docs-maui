@@ -94,7 +94,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
     :::zone pivot="devices-windows,devices-ios"
 
     > [!NOTE]
-    > If this is the first time you've created a .NET MAUI app, you may be prompted to install the Android SDK. This is because the default build target a new .NET MAUI app is Android.
+    > If this is the first time you've created a .NET MAUI app, you may be prompted to install the Android SDK. This is because the default build target for a new .NET MAUI app is Android.
     >
     > If you want to also target and run on Android, navigate to the start of this article and select Android. Then, complete this tutorial which will teach you how to install the Android SDK and create a virtual Android device..
 
@@ -186,22 +186,22 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
 01. In Visual Studio, navigate to **Tools > Options > Xamarin > iOS Settings** and disable the **Remote Simulator to Windows** checkbox:
 
-     :::image type="content" source="media/first-app/ios-disable-remote-simulator.png" alt-text="Disable the remote simulator in the iOS settings.":::
+    :::image type="content" source="media/first-app/ios-disable-remote-simulator.png" alt-text="Disable the remote simulator in the iOS settings.":::
 
     For more about the remote iOS Simulator for Windows, see [Remote iOS Simulator for Windows](~/ios/remote-simulator.md).
 
 01. In the Visual Studio toolbar, use the **Debug Target** drop down to select **iOS Simulators** and then a specific iOS simulator:
 
-     :::image type="content" source="media/first-app/ios-debug-target.png" alt-text="Visual Studio iOS simulators debug targets.":::
+    :::image type="content" source="media/first-app/ios-debug-target.png" alt-text="Visual Studio iOS simulators debug targets.":::
 
 01. In the Visual Studio toolbar, press the green Start button for your chosen iOS simulator:
 
-   :::image type="content" source="media/first-app/ios-chosen-debug-target.png" alt-text="Visual Studio iOS simulator debug target choice.":::
+    :::image type="content" source="media/first-app/ios-chosen-debug-target.png" alt-text="Visual Studio iOS simulator debug target choice.":::
 
-   Visual Studio will build the app, start the iOS simulator on the paired Mac, and deploy the app to the simulator.
+    Visual Studio will build the app, start the iOS simulator on the paired Mac, and deploy the app to the simulator.
 
 01. In the running app, press the **Click me** button several times and observe that the count of the number of button clicks is incremented.
 
-   :::image type="content" source="media/first-app/ios-running-app.png" alt-text=".NET MAUI app running in iOS Simulator on a Mac.":::
+    :::image type="content" source="media/first-app/ios-running-app.png" alt-text=".NET MAUI app running in iOS Simulator on a Mac.":::
 
 :::zone-end
