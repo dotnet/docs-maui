@@ -31,8 +31,10 @@
                   href: android/device/setup.md
         - name: iOS
           items:
-            - name: Remote iOS simulator for Windows
-              href: ios/remote-simulator.md
+            - name: Simulators
+              items:
+              - name: Remote iOS simulator for Windows
+                href: ios/remote-simulator.md
         - name: Windows
           items:
             - name: How to set up Windows for debugging

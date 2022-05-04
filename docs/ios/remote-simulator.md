@@ -8,12 +8,14 @@ ms.date: 04/13/2022
 
 The remote iOS Simulator for Windows allows you to test your apps on an iOS simulator displayed in Windows alongside Visual Studio 2022.
 
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
+
 ## Get started
 
 The remote iOS Simulator for Windows is installed automatically as part of the Mobile development with .NET workload in Visual Studio 2022. To use it, follow these steps:
 
 1. Launch Visual Studio 2022 and create or load a .NET MAUI app project.
-1. In Visual Studio 2022, pair the IDE to a Mac Build host if you haven't previously. For more information, see [Pair to Mac for .NET MAUI iOS development](pair-to-mac.md).
+1. In Visual Studio 2022, pair the IDE to a Mac Build host if you haven't previously. For more information, see [Pair to Mac for iOS development](pair-to-mac.md).
 1. In the Visual Studio toolbar, use the **Debug Target** drop down to select **iOS Simulators** and then a specific iOS simulator:
 
     :::image type="content" source="media/remote-simulator/debug-target.png" alt-text="Visual Studio iOS simulators debug targets.":::
@@ -74,7 +76,7 @@ Sounds played by the simulator will come from the host Mac's speakers. iOS sound
 
 ## Troubleshooting
 
-If you experience issues with the remote iOS Simulator, you can view the logs in these locations:
+If you experience issues with the remote iOS Simulator, you can view the logs in the following locations:
 
 - **Mac** – `~/Library/Logs/Xamarin/Simulator.Server`
 - **Windows** – `%LOCALAPPDATA%\Xamarin\Logs\Xamarin.Simulator`
