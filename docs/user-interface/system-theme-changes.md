@@ -1,6 +1,6 @@
 ---
 title: "Respond to system theme changes"
-description: ".NET MAUI app can respond to operating system theme changes by using the AppThemeBinding markup extension, and the SetAppThemeColor and SetOnAppTheme extension methods."
+description: ".NET MAUI app can respond to operating system theme changes by using the AppThemeBinding markup extension, and the SetAppThemeColor and SetAppTheme extension methods."
 ms.date: 02/25/2022
 ---
 
@@ -12,7 +12,7 @@ Devices typically include light and dark themes, which each refer to a broad set
 
 The system theme may change for a variety of reasons, depending on the device configuration. This includes the system theme being explicitly changed by the user, it changing due to the time of day, and it changing due to environmental factors such as low light.
 
-.NET Multi-platform App UI (.NET MAUI) apps can respond to system theme changes by consuming resources with the `AppThemeBinding` markup extension, and the `SetAppThemeColor` and `SetOnAppTheme<T>`  extension methods.
+.NET Multi-platform App UI (.NET MAUI) apps can respond to system theme changes by consuming resources with the `AppThemeBinding` markup extension, and the `SetAppThemeColor` and `SetAppTheme<T>`  extension methods.
 
 > [!NOTE]
 > .NET MAUI apps can respond to system theme changes on iOS 13 or greater, Android 10 (API 29) or greater, macOS 10.14 or greater, and Windows 10 or greater.
@@ -23,7 +23,7 @@ The following screenshot shows themed pages, for the light system theme on iOS a
 
 ## Define and consume theme resources
 
-Resources for light and dark themes can be consumed with the `AppThemeBinding` markup extension, and the `SetAppThemeColor` and `SetOnAppTheme<T>` extension methods. With these approaches, resources are automatically applied based on the value of the current system theme. In addition, objects that consume these resources are automatically updated if the system theme changes while an app is running.
+Resources for light and dark themes can be consumed with the `AppThemeBinding` markup extension, and the `SetAppThemeColor` and `SetAppTheme<T>` extension methods. With these approaches, resources are automatically applied based on the value of the current system theme. In addition, objects that consume these resources are automatically updated if the system theme changes while an app is running.
 
 ### AppThemeBinding markup extension
 
@@ -76,7 +76,7 @@ For more information about the `AppThemeBinding` markup extension, see [AppTheme
 
 ### Extension methods
 
-.NET MAUI includes `SetAppThemeColor` and `SetOnAppTheme<T>` extension methods that enable `VisualElement` objects to respond to system theme changes.
+.NET MAUI includes `SetAppThemeColor` and `SetAppTheme<T>` extension methods that enable `VisualElement` objects to respond to system theme changes.
 
 The `SetAppThemeColor` method enables `Color` objects to be specified that will be set on a target property based on the current system theme:
 
@@ -87,11 +87,11 @@ label.SetAppThemeColor(Label.TextColorProperty, Colors.Green, Colors.Red);
 
 In this example, the text color of the `Label` is set to green when the device is using its light theme, and is set to red when the device is using its dark theme.
 
-The `SetOnAppTheme<T>` method enables objects of type `T` to be specified that will be set on a target property based on the current system theme:
+The `SetAppTheme<T>` method enables objects of type `T` to be specified that will be set on a target property based on the current system theme:
 
 ```csharp
 Image image = new Image();
-image.SetOnAppTheme<FileImageSource>(Image.SourceProperty, "lightlogo.png", "darklogo.png");
+image.SetAppTheme<FileImageSource>(Image.SourceProperty, "lightlogo.png", "darklogo.png");
 ```
 
 In this example, the `Image` displays `lightlogo.png` when the device is using its light theme, and `darklogo.png` when the device is using its dark theme.

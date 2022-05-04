@@ -18,7 +18,7 @@ In .NET Multi-platform App UI (.NET MAUI) XAML, properties of classes are normal
 <Label Text="Hello, XAML!"
        VerticalOptions="Center"
        FontAttributes="Bold"
-       FontSize="Large"
+       FontSize="18"
        TextColor="Aqua" />
 ```
 
@@ -28,7 +28,7 @@ However, there is an alternative way to set a property in XAML:
 <Label Text="Hello, XAML!"
        VerticalOptions="Center"
        FontAttributes="Bold"
-       FontSize="Large">
+       FontSize="18">
     <Label.TextColor>
         Aqua
     </Label.TextColor>

@@ -364,7 +364,7 @@ The `Header` and `Footer` properties can each be set to a view. This can be a si
         <StackLayout BackgroundColor="LightGray">
             <Label Margin="10,0,0,0"
                    Text="Monkeys"
-                   FontSize="Small"
+                   FontSize="12"
                    FontAttributes="Bold" />
         </StackLayout>
     </CollectionView.Header>
@@ -372,7 +372,7 @@ The `Header` and `Footer` properties can each be set to a view. This can be a si
         <StackLayout BackgroundColor="LightGray">
             <Label Margin="10,0,0,0"
                    Text="Friends of Xamarin Monkey"
-                   FontSize="Small"
+                   FontSize="12"
                    FontAttributes="Bold" />
         </StackLayout>
     </CollectionView.Footer>
@@ -413,7 +413,7 @@ The `HeaderTemplate` and `FooterTemplate` properties can be set to `DataTemplate
             <StackLayout BackgroundColor="LightGray">
                 <Label Margin="10,0,0,0"
                        Text="Monkeys"
-                       FontSize="Small"
+                       FontSize="12"
                        FontAttributes="Bold" />
             </StackLayout>
         </DataTemplate>
@@ -423,7 +423,7 @@ The `HeaderTemplate` and `FooterTemplate` properties can be set to `DataTemplate
             <StackLayout BackgroundColor="LightGray">
                 <Label Margin="10,0,0,0"
                        Text="Friends of Xamarin Monkey"
-                       FontSize="Small"
+                       FontSize="12"
                        FontAttributes="Bold" />
             </StackLayout>
         </DataTemplate>

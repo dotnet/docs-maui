@@ -37,7 +37,7 @@ The following example contains a `Slider` and two `Label` views, one of which is
                BindingContext="{x:Reference slider}"
                Rotation="{Binding Path=Value}"
                FontAttributes="Bold"
-               FontSize="Large"
+               FontSize="18"
                HorizontalOptions="Center"
                VerticalOptions="Center" />
         <Slider x:Name="slider"
@@ -46,7 +46,7 @@ The following example contains a `Slider` and two `Label` views, one of which is
         <Label BindingContext="{x:Reference slider}"
                Text="{Binding Value, StringFormat='The angle is {0:F0} degrees'}"
                FontAttributes="Bold"
-               FontSize="Large"
+               FontSize="18"
                HorizontalOptions="Center"
                VerticalOptions="Center" />
     </StackLayout>
@@ -233,7 +233,7 @@ The item template can be expanded to display more information and the actual col
                                      VerticalOptions="Center">
                             <Label Text="{Binding FriendlyName}"
                                    FontAttributes="Bold"
-                                   FontSize="Medium" />
+                                   FontSize="14" />
                             <StackLayout Orientation="Horizontal"
                                          Spacing="0">
                                 <Label Text="{Binding Color.Red,

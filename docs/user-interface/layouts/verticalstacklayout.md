@@ -168,7 +168,7 @@ The following XAML shows an example of nesting `HorizontalStackLayout` objects i
                           HeightRequest="30"
                           WidthRequest="30" />
                <Label Text="Red"
-                      FontSize="Large" />
+                      FontSize="18" />
            </HorizontalStackLayout>
        </Frame>
        <Frame BorderColor="Black"
@@ -178,7 +178,7 @@ The following XAML shows an example of nesting `HorizontalStackLayout` objects i
                           HeightRequest="30"
                           WidthRequest="30" />
                <Label Text="Yellow"
-                      FontSize="Large" />
+                      FontSize="18" />
            </HorizontalStackLayout>
        </Frame>
        <Frame BorderColor="Black"
@@ -188,7 +188,7 @@ The following XAML shows an example of nesting `HorizontalStackLayout` objects i
                           HeightRequest="30"
                           WidthRequest="30" />
                <Label Text="Blue"
-                      FontSize="Large" />
+                      FontSize="18" />
            </HorizontalStackLayout>
        </Frame>
     </VerticalStackLayout>

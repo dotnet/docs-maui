@@ -1,7 +1,7 @@
 ---
 title: "Host a Blazor web app in a .NET MAUI app using BlazorWebView"
 description: "The .NET MAUI BlazorWebView control enables you to host a Blazor web app in your .NET MAUI app, and integrate the app with device features."
-ms.date: 12/08/2021
+ms.date: 04/27/2022
 ---
 
 # Host a Blazor web app in a .NET MAUI app using BlazorWebView
@@ -13,13 +13,19 @@ The .NET Multi-platform App UI (.NET MAUI) `BlazorWebView` is a control that ena
 `BlazorWebView` defines the following properties:
 
 - `HostPage`, of type `string?`, which defines the root page of the Blazor web app.
-- `RootComponents`, of type `ObservableCollection<RootComponent>`, which specifies the collection of root components that can be added to the control.
+- `RootComponents`, of type `RootComponentsCollection`, which specifies the collection of root components that can be added to the control.
 
 The `RootComponent` class defines the following properties:
 
 - `Selector`, of type `string?`, which defines the CSS selector string that specifies where in the document the component should be placed.
 - `ComponentType`, of type `Type?`, which defines the type of the root component.
 - `Parameters`, of type `IDictionary<string, object?>?`, which represents an optional dictionary of parameters to pass to the root component.
+
+In addition, `BlazorWebView` defines the following events:
+
+- `BlazorWebViewInitializing`, with an accompanying `BlazorWebViewInitializingEventArgs` object, which is raised before the `BlazorWebView` is initialized. This event enables customization of the `BlazorWebView` configuration.
+- `BlazorWebViewInitialized`, with an accompanying `BlazorWebViewInitializedEventArgs` object, which is raised after the `BlazorWebView` is initialized but before any component has been rendered. This event enables retrieval of the platform-specific web view instance.
+- `UrlLoading`, with an accompanying `UrlLoadingEventArgs` object, is raised when a hyperlink is clicked within a `BlazorWebView`. This event enables customization of whether a hyperlink is opened in the `BlazorWebView`, in an external app, or whether the URL loading attempt is cancelled.
 
 Existing [Razor components](/aspnet/core/blazor/components/) can be used in a .NET MAUI Blazor app by moving the code into the app, or by referencing an existing class library or package that contains the component.
 
@@ -39,16 +45,15 @@ This project template creates a multi-targeted .NET MAUI Blazor app that can be 
 ```xaml
 <ContentPage xmlns=http://schemas.microsoft.com/dotnet/2021/maui
              xmlns:x=http://schemas.microsoft.com/winfx/2009/xaml
-             xmlns:b="clr-namespace:Microsoft.AspNetCore.Components.WebView.Maui;assembly=Microsoft.AspNetCore.Components.WebView.Maui"
              xmlns:local="clr-namespace:BlazorWebViewDemo"
              x:Class="BlazorWebViewDemo.MainPage"
              BackgroundColor="{DynamicResource PageBackgroundColor}">
 
-    <b:BlazorWebView HostPage="wwwroot/index.html">
-        <b:BlazorWebView.RootComponents>
-            <b:RootComponent Selector="app" ComponentType="{x:Type local:Main}" />
-        </b:BlazorWebView.RootComponents>
-    </b:BlazorWebView>
+    <BlazorWebView HostPage="wwwroot/index.html">
+        <BlazorWebView.RootComponents>
+            <RootComponent Selector="#app" ComponentType="{x:Type local:Main}" />
+        </BlazorWebView.RootComponents>
+    </BlazorWebView>
 
 </ContentPage>
 ```
@@ -76,26 +81,19 @@ The process to add a `BlazorWebView` to an existing .NET MAUI app is as follows:
     ```xaml
     <ContentPage xmlns=http://schemas.microsoft.com/dotnet/2021/maui
                  xmlns:x=http://schemas.microsoft.com/winfx/2009/xaml
-                 xmlns:b="clr-namespace:Microsoft.AspNetCore.Components.WebView.Maui;assembly=Microsoft.AspNetCore.Components.WebView.Maui"
                  xmlns:local="clr-namespace:MyBlazorApp"
                  x:Class="MyBlazorApp.MainPage">
 
-        <b:BlazorWebView HostPage="wwwroot/index.html">
-            <b:BlazorWebView.RootComponents>
-                <b:RootComponent Selector="app" ComponentType="{x:Type local:Main}" />
-            </b:BlazorWebView.RootComponents>
-        </b:BlazorWebView>
+        <BlazorWebView HostPage="wwwroot/index.html">
+            <BlazorWebView.RootComponents>
+                <RootComponent Selector="app" ComponentType="{x:Type local:Main}" />
+            </BlazorWebView.RootComponents>
+        </BlazorWebView>
 
     </ContentPage>
     ```
 
-1. Modify your `MauiProgram` class to add `using` directives for the `Microsoft.AspNetCore.Components.WebView.Maui` namespace:
-
-    ```csharp
-    using Microsoft.AspNetCore.Components.WebView.Maui;
-    ```
-
-1. Modify the `CreateMauiApp` method of your `MauiProgram` class to register the `BlazorWebView` control for use in your app. To do this, call the `RegisterBlazorMauiWebView` method on the `MauiAppBuilder` object. Then, on the `IServiceCollection` object, call the `AddBlazorWebView` method to add component web view services to the services collection:
+1. Modify the `CreateMauiApp` method of your `MauiProgram` class to register the `BlazorWebView` control for use in your app. To do this, on the `IServiceCollection` object, call the `AddMauiBlazorWebView` method to add component web view services to the services collection:
 
     ```csharp
     public static class MauiProgram
@@ -104,14 +102,16 @@ The process to add a `BlazorWebView` to an existing .NET MAUI app is as follows:
         {
             var builder = MauiApp.CreateBuilder();
             builder
-                .RegisterBlazorMauiWebView()
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 });
 
-            builder.Services.AddBlazorWebView();
+            builder.Services.AddMauiBlazorWebView();
+    #if DEBUG
+            builder.Services.AddMauiBlazorWebViewDeveloperTools();
+    #endif
             // Register any app services on the IServiceCollection object
             // e.g. builder.Services.AddSingleton<WeatherForecastService>();
 

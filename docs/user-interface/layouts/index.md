@@ -1,7 +1,7 @@
 ---
 title: "Layouts"
 description: ".NET MAUI layout classes allow you to arrange and group UI controls in your app."
-ms.date: 01/28/2022
+ms.date: 04/19/2022
 ---
 
 # Layouts
@@ -72,7 +72,7 @@ The following XAML shows how to create a `HorizontalStackLayout` containing diff
               HeightRequest="30"
               WidthRequest="30" />
    <Label Text="Red"
-          FontSize="Large" />
+          FontSize="18" />
 </HorizontalStackLayout>
 ```
 
@@ -206,7 +206,7 @@ In this example, layout works as follows:
 > Avoid using the `AbsoluteLayout.AutoSize` property whenever possible, as it will cause the layout engine to perform additional layout calculations.
 
 For more information, see [AbsoluteLayout](absolutelayout.md).
-
+<!--
 ## RelativeLayout
 
 A `RelativeLayout` is used to position and size elements relative to properties of the layout or sibling elements. By default, an element is positioned in the upper left corner of the layout. A `RelativeLayout` can be used to create UIs that scale proportionally across device sizes.
@@ -254,7 +254,7 @@ In this example, layout works as follows:
 > [!WARNING]
 > Avoid using a `RelativeLayout` whenever possible. It will result in the CPU having to perform significantly more work.
 
-For more information, see [RelativeLayout](relativelayout.md).
+For more information, see [RelativeLayout](relativelayout.md). -->
 
 ## BindableLayout
 

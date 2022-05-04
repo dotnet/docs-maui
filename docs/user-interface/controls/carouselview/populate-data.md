@@ -65,7 +65,7 @@ The appearance of each item in the `CarouselView` can be defined by setting the 
                     <StackLayout>
                         <Label Text="{Binding Name}"
                                FontAttributes="Bold"
-                               FontSize="Large"
+                               FontSize="18"
                                HorizontalOptions="Center"
                                VerticalOptions="Center" />
                         <Image Source="{Binding ImageUrl}"
