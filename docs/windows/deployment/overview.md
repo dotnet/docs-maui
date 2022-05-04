@@ -109,12 +109,10 @@ The `<GenerateAppxPackageOnBuild>` set to `true` packages the app and signs it w
 
 ## Publish
 
-At this time, publishing is only supported through `msbuild`, not `dotnet`.
-
-To publish your app, open the **Developer Command Prompt for VS 2022 Preview** terminal and navigate to the project's folder. Run `msbuild` in publish mode:  
+To publish your app, open the **Developer Command Prompt for VS 2022 Preview** terminal and navigate to the project's folder. Run `dotnet` in publish mode:  
 
 ```console
-msbuild /restore /t:Publish /p:TargetFramework=net6.0-windows10.0.19041 /p:configuration=release
+dotnet publish /p:TargetFramework=net6.0-windows10.0.19041 /p:configuration=release
 ```
 
 The following table defines the parameters used by the previous command:
@@ -173,18 +171,6 @@ The following list describes the current limitations with publishing and packagi
 
 01. The published app doesn't work if you try to run it directly with the executable file out of the publish folder.
 01. The way to run the app is to first install it through the packaged _MSIX_ file.
-
-## .NET MAUI Blazor app considerations
-
-Currently, .NET MAUI Blazor apps won't run when deployed to another computer. There's one more config section to add to your project to make the published app work on other computers:
-
-```xml
-<Target Name="_RemoveStaticWebAssetsDevelopmentManifest" BeforeTargets="GetCopyToOutputDirectoryItems">
-    <ItemGroup>
-        <ContentWithTargetPath Remove="$(StaticWebAssetDevelopmentManifestPath)" />
-    </ItemGroup>
-</Target>
-```
 
 ## See also
 
