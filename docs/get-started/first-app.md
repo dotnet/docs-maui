@@ -1,20 +1,18 @@
 ---
 title: "Build your first .NET MAUI app"
-description: "Learn how to create and run your first .NET MAUI app on Android."
-ms.date: 04/07/2021
+description: "Learn how to create and run your first .NET MAUI app in Visual Studio 2022 on Windows."
+ms.date: 05/04/2022
 ms.custom: updateeachrelease
-zone_pivot_groups: devices-set-one
+zone_pivot_groups: devices-deployment
 ---
-
-<!-- zone_pivot_groups: preview-platforms -->
 
 # Build your first app
 
-In this tutorial, you'll learn how to create and run your first .NET Multi-platform App UI (.NET MAUI) app.
+In this tutorial, you'll learn how to create and run your first .NET Multi-platform App UI (.NET MAUI) app in Visual Studio 2022 on Windows.
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
-:::zone pivot="devices-android"
+:::zone pivot="devices-android,devices-ios"
 
 Visual Studio for Mac support will arrive in a future release.
 
@@ -39,6 +37,22 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
     :::image type="content" source="media/first-app/vs-workloads.png" alt-text="Visual Studio workloads for .NET MAUI.":::
 
 :::zone-end
+
+:::zone pivot="devices-ios"
+
+01. In this tutorial, you'll create your first .NET MAUI app in Visual Studio 17.2 Preview, and run it on an iOS simulator:
+
+    :::image type="content" source="media/first-app/download-community-preview.png" alt-text="Download Visual Studio 2022 Community Preview" link="https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Community&channel=Preview&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2303":::
+
+    :::image type="content" source="media/first-app/download-professional-preview.png" alt-text="Download Visual Studio 2022 Professional Preview" link="https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Professional&channel=Preview&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2303":::
+
+    :::image type="content" source="media/first-app/download-enterprise-preview.png" alt-text="Download Visual Studio 2022 Enterprise Preview" link="https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Enterprise&channel=Preview&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2303":::
+
+    Either install Visual Studio, or modify your installation, and install the Mobile development with .NET workload:
+
+    :::image type="content" source="media/first-app/vs-workloads.png" alt-text="Visual Studio workloads for .NET MAUI.":::
+
+:::zone end
 
 :::zone pivot="devices-windows"
 
@@ -77,12 +91,12 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
     :::image type="content" source="media/first-app/restored-dependencies.png" alt-text="Restored dependencies.":::
 
-    :::zone pivot="devices-windows"
+    :::zone pivot="devices-windows,devices-ios"
 
     > [!NOTE]
-    > Even though you're going to run your app directly on Windows, you may be prompted to install the Android SDK, if this is the first time you've created a .NET MAUI app.
+    > If this is the first time you've created a .NET MAUI app, you may be prompted to install the Android SDK. This is because the default build target a new .NET MAUI app is Android.
     >
-    > The default build target for a new .NET MAUI project is Android. If you want to also target and run on Android in addition to Windows, navigate to the start of this article and select Android. Then, complete this tutorial which will teach you how to install the Android SDK and create a virtual Android device. Afterwards, switch this article back to Windows and continue where you left off.
+    > If you want to also target and run on Android, navigate to the start of this article and select Android. Then, complete this tutorial which will teach you how to install the Android SDK and create a virtual Android device..
 
     :::zone-end
 
@@ -163,66 +177,31 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
     :::image type="content" source="media/first-app/windows-running-app.png" alt-text=".NET MAUI app running on Windows.":::
 
 :::zone-end
-<!-- ## Build and debug iOS apps
 
-If, while connecting Visual Studio to your Mac through Xamarin Mac Agent (XMA), you are prompted to install a different version of the SDK, you can ignore the prompt since it refers to a legacy version of XMA.
+:::zone pivot="devices-ios"
 
-> [!NOTE]
-> Visual Studio 2022 can only currently deploy .NET MAUI iOS apps to the iOS simulator, and not to physical devices.
+<!-- markdownlint-disable MD029 -->
+08. In Visual Studio, pair the IDE to a Mac Build host. For more information, see [Pair to Mac for iOS development](pair-to-mac.md).
+    <!-- markdownlint-enable MD029 -->
 
-::: zone-end
-::: zone pivot="dotnet-cli"
+01. In Visual Studio, navigate to **Tools > Options > Xamarin > iOS Settings** and disable the **Remote Simulator to Windows** checkbox:
 
-## Get started with .NET command-line interface
+     :::image type="content" source="media/first-app/ios-disable-remote-simulator.png" alt-text="Disable the remote simulator in the iOS settings.":::
 
-In this tutorial, you'll create and run your first .NET MAUI app using the .NET command-line interface (CLI):
+    For more about the remote iOS Simulator for Windows, see [Remote iOS Simulator for Windows](~/ios/remote-simulator.md).
 
-01. In the .NET CLI, create a new .NET MAUI app:
+01. In the Visual Studio toolbar, use the **Debug Target** drop down to select **iOS Simulators** and then a specific iOS simulator:
 
-    ```dotnetcli
-    dotnet new maui -n HelloMauiPreview
-    ```
+     :::image type="content" source="media/first-app/ios-debug-target.png" alt-text="Visual Studio iOS simulators debug targets.":::
 
-01. In the .NET CLI, change directory to the newly created project:
+01. In the Visual Studio toolbar, press the green Start button for your chosen iOS simulator:
 
-    ```dotnetcli
-    cd HelloMauiPreview
-    ```
+   :::image type="content" source="media/remote-simulator/ios-chosen-debug-target.png" alt-text="Visual Studio iOS simulator debug target choice.":::
 
-01. In the .NET CLI, change directory to the single project and restore its dependencies:
+   Visual Studio will build the app, start the iOS simulator on the paired Mac, and deploy the app to the simulator.
 
-    ```dotnetcli
-    cd HelloMauiPreview
-    dotnet restore
-    ```
+01. In the running app, press the **Click me** button several times and observe that the count of the number of button clicks is incremented.
 
-01. In the .NET CLI, build and launch the app on your chosen platform:
+   :::image type="content" source="media/first-app/ios-running-app.png" alt-text=".NET MAUI app running in iOS Simulator on a Mac.":::
 
-    ```dotnetcli
-    dotnet build -t:Run -f net6.0-android
-    dotnet build -t:Run -f net6.0-ios
-    dotnet build -t:Run -f net6.0-maccatalyst
-    ```
-
-    > [!NOTE]
-    > These commands will launch the app on the default platform device, if one can be found. On Android, it's recommended to start an emulator before building and launching your app.
-
-## Select an iOS simulator
-
-It's possible to specify which simulator is launched and used for net6.0-ios by specifying the `_DeviceName` MSBuild property:
-
-```dotnetcli
-dotnet build -t:Run -f net6.0-ios -p:_DeviceName=:v2:udid=<UDID>
-```
-
-You can retrieve a list of possible unique device id (UDID) values by executing the `simctl list` command:
-
-```console
-/Applications/Xcode.app/Contents/Developer/usr/bin/simctl list
-```
-
-The default iOS simulator will be launched if you don't specify a UDID.
-
-::: zone-end
-
--->
+:::zone end
