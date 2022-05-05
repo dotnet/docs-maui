@@ -112,17 +112,15 @@ The `<GenerateAppxPackageOnBuild>` set to `true` packages the app and signs it w
 To publish your app, open the **Developer Command Prompt for VS 2022 Preview** terminal and navigate to the project's folder. Run `dotnet` in publish mode:  
 
 ```console
-dotnet publish /p:TargetFramework=net6.0-windows10.0.19041.0 /p:configuration=release
+dotnet publish -f net6.0-windows10.0.19041.0 -c Release
 ```
 
 The following table defines the parameters used by the previous command:
 
-| Parameter                  | Value                                                                               |
-|----------------------------|-------------------------------------------------------------------------------------|
-| `/restore`                 | Restores any dependencies referenced by the project.                                |
-| `/t:Publish`               | Runs the publish command.                                                           |
-| `/p:TargetFramework`       | The target framework, which is a Windows TFM, such as `net6.0-windows10.0.19041.0`. Make sure this value is the exact same between what is in your cspoj file (in the `<TargetFrameworks>` node) and this command-line argument. |
-| `/p:configuration=Release` | Sets the build configuration, which is `Release`.                                   |
+| Parameter                    | Value                                                                               |
+|------------------------------|-------------------------------------------------------------------------------------|
+| `-f net6.0-windows{version}` | The target framework, which is a Windows TFM, such as `net6.0-windows10.0.19041.0`. Make sure this value is the exact same between what is in your cspoj file (in the `<TargetFrameworks>` node) and this command-line argument.           |
+| `-c Release`                 | Sets the build configuration, which is `Release`.                                   |
 
 Publishing builds and packages the app, copying the signed package to the _bin\\Release\\net6.0-windows10.0.19041.0\\win10-x64\\AppPackages\\\<appname>\\_ folder. Where \<appname> is a folder named after both your project and version. In this folder there's an _msix_ file, that's the app package.
 
