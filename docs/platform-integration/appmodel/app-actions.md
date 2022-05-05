@@ -66,7 +66,7 @@ The following properties can be set on an `AppAction`:
 
 When your application starts, add handle the `AppActions.Current.AppActionActivated` event. When a user invokes an App Action, the event is raised with information about the action.
 
-:::code language="csharp" source="../snippets/shared_2/App.xaml.cs" id="app_action_handler" highlight="6":::
+:::code language="csharp" source="../snippets/shared_2/App.xaml.cs" id="app_action_handler" highlight="7":::
 
 ## GetActions
 
