@@ -124,7 +124,7 @@ The following table defines the parameters used by the previous command:
 | Parameter                    | Value                                                                               |
 |------------------------------|-------------------------------------------------------------------------------------|
 | `MyMauiApp.csproj`           | Path to the project file of your .NET MAUI app                                      |
-| `-f net6.0-windows{version}` | The target framework, which is a Windows TFM, such as `net6.0-windows10.0.19041.0`. Make sure this value is the exact same between what is in your cspoj file (in the `<TargetFrameworks>` node) and this command-line argument.           |
+| `-f net6.0-windows{version}` | The target framework, which is a Windows TFM, such as `net6.0-windows10.0.19041.0`. Ensure that this value is identical to the value in the `<TargetFrameworks>` node in your .csproj.           |
 | `-c Release`                 | Sets the build configuration, which is `Release`.                                   |
 
 Publishing builds and packages the app, copying the signed package to the _bin\\Release\\net6.0-windows10.0.19041.0\\win10-x64\\AppPackages\\\<appname>\\_ folder. Where \<appname> is a folder named after both your project and version. In this folder there's an _msix_ file, that's the app package.
