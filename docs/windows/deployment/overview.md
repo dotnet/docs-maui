@@ -72,7 +72,7 @@ For more information, see [Create a certificate for package signing](/windows/ms
 <!--
 ### Optionally export a PFX file
 
-You can use the thumbprint of the certificate to sign your package later, or you export the certificate to a Personal Information Exchange (PFX) file. The PFX file is secured with a password and can be referenced by your project. To export the certificate as a PFX file, do the following:
+You can use the thumbprint of the certificate to sign your package later, or you export the certificate to a Personal Information Exchange (PFX) file. The PFX file is secured with a password and can be referenced by your project. If you want to do signing from an automated build pipeline, you will need to have this file. To export the certificate as a PFX file, do the following:
 
 01. In the same PowerShell terminal session in the [Create a signing certificate](#create-a-signing-certificate) section, create a security password and assign it to the `$password` variable:
 
@@ -99,6 +99,7 @@ Add the following `<PropertyGroup>` node to your project file. This property gro
 <PropertyGroup Condition="$(TargetFramework.Contains('-windows')) and '$(Configuration)' == 'Release'">
     <GenerateAppxPackageOnBuild>true</GenerateAppxPackageOnBuild>
     <AppxPackageSigningEnabled>true</AppxPackageSigningEnabled>
+    <PackageCertificateKeyFile>myCert.pfx</PackageCertificateKeyFile> <!-- Optional if you want to use the exported PFX file -->
     <PackageCertificateThumbprint>A10612AF095FD8F8255F4C6691D88F79EF2B135E</PackageCertificateThumbprint>
 </PropertyGroup>
 ```
@@ -112,13 +113,17 @@ The `<GenerateAppxPackageOnBuild>` set to `true` packages the app and signs it w
 To publish your app, open the **Developer Command Prompt for VS 2022 Preview** terminal and navigate to the project's folder. Run `dotnet` in publish mode:  
 
 ```console
-dotnet publish -f net6.0-windows10.0.19041.0 -c Release
+dotnet publish MyMauiApp.csproj -f net6.0-windows10.0.19041.0 -c Release
 ```
+
+> [!NOTE]
+> When running the `dotnet publish` command without specifying the `.csproj` file, it will start publishing the solution (the `.sln` file) which is unsupported.
 
 The following table defines the parameters used by the previous command:
 
 | Parameter                    | Value                                                                               |
 |------------------------------|-------------------------------------------------------------------------------------|
+| `MyMauiApp.csproj`           | Path to the project file of your .NET MAUI app                                      |
 | `-f net6.0-windows{version}` | The target framework, which is a Windows TFM, such as `net6.0-windows10.0.19041.0`. Make sure this value is the exact same between what is in your cspoj file (in the `<TargetFrameworks>` node) and this command-line argument.           |
 | `-c Release`                 | Sets the build configuration, which is `Release`.                                   |
 
