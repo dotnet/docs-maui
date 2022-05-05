@@ -10,8 +10,8 @@ namespace PlatformIntegration;
 [IntentFilter(actions: new[] { Microsoft.Maui.ApplicationModel.Platform.Intent.ActionAppAction },
               Categories = new[] { global::Android.Content.Intent.CategoryDefault })]
 public class MainActivity : MauiAppCompatActivity
-{
 //</intent_filter_1>
+{
 
     //<intent_implementation>
     protected override void OnResume()
@@ -29,6 +29,4 @@ public class MainActivity : MauiAppCompatActivity
     }
     //</intent_implementation>
 
-//<intent_filter_2>
 }
-//</intent_filter_2>

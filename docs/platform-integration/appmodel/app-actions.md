@@ -23,7 +23,7 @@ To access the `AppActions` functionality the following platform specific setup i
 
 In the _Platforms/Android/MainActivity.cs_ file, add the following `IntentFilter` attribute to the `MainActivity` class:
 
-:::code language="csharp" source="../snippets/shared_2/Platforms/Android/MainActivity.cs" id="intent_filter_1,intent_filter_2":::
+:::code language="csharp" source="../snippets/shared_2/Platforms/Android/MainActivity.cs" id="intent_filter_1":::
 
 Then add the following logic to handle actions:
 
