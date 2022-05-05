@@ -60,7 +60,7 @@ No additional setup required.
 
 ## Vibrate the device
 
-The vibration functionality can be requested for a set amount of time or the default of 500 milliseconds. The following code example randomly vibrates the device between one and seven seconds:
+Haptic feedback is accessed through default implementation of the `IVibration` interface, available from the `Microsoft.Maui.Devices.Vibration.Default` property. The vibration functionality can be requested for a set amount of time or the default of 500 milliseconds. The following code example randomly vibrates the device between one and seven seconds:
 
 :::code language="csharp" source="../snippets/shared_1/DeviceDetailsPage.xaml.cs" id="vibrate":::
 

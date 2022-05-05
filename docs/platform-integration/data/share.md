@@ -1,23 +1,23 @@
 ---
 title: "Share"
 description: "Learn how to use the .NET MAUI Share class, which can share data, such as web links, to other applications on the device."
-ms.date: 09/13/2021
-no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
+ms.date: 05/04/2022
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel.DataTransfer"]
 ---
 
 # Share
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `Share` class. This class provides an API to send date, such as text or web links, to the devices share function.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `Share` class. This class provides an API to send date, such as text or web links, to the devices share function.
+
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
+
+The `Share` class is available in the `Microsoft.Maui.ApplicationModel.DataTransfer` namespace.
 
 When a share request is made, the device displays a share window, prompting the user to choose an app to share with:
 
 :::image type="content" source="media/share/share.png" alt-text="Share from your app to a different app":::
 
 ## Get started
-
-[!INCLUDE [get-started](../includes/get-started.md)]
-
-[!INCLUDE [essentials-namespace](../includes/essentials-namespace.md)]
 
 To access the **Share** functionality, the following platform-specific setup is required:
 
@@ -49,25 +49,7 @@ No setup is required.
 
 The share functionality works by calling the `RequestAsync` method with a data payload that includes information to share to other applications. `Text` and `Uri` can be mixed and each platform will handle filtering based on content.
 
-```csharp
-public async Task ShareText(string text)
-{
-    await Share.RequestAsync(new ShareTextRequest
-    {
-        Text = text,
-        Title = "Share Text"
-    });
-}
-
-public async Task ShareUri(string uri)
-{
-    await Share.RequestAsync(new ShareTextRequest
-    {
-        Uri = uri,
-        Title = "Share Web Link"
-    });
-}
-```
+:::code language="csharp" source="../snippets/shared_1/DataPage.xaml.cs" id="share_text_uri":::
 
 ## Share a file
 
@@ -75,36 +57,13 @@ You can also share files to other applications on the device. .NET MAUI automati
 
 The following code example writes a text file to the device, and then requests a share:
 
-```csharp
-string fn = "Attachment.txt";
-string file = Path.Combine(FileSystem.CacheDirectory, fn);
-
-File.WriteAllText(file, "Hello World");
-
-await Share.RequestAsync(new ShareFileRequest
-{
-    Title = "Share text file",
-    File = new ShareFile(file)
-});
-```
+:::code language="csharp" source="../snippets/shared_1/DataPage.xaml.cs" id="share_file":::
 
 ## Share multiple files
 
 Sharing multiple files is slightly different from sharing a single file. Instead of using the `File` property of the share request, use the `Files` property:
 
-```csharp
-string file1 = Path.Combine(FileSystem.CacheDirectory, "Attachment1.txt");
-string file2 = Path.Combine(FileSystem.CacheDirectory, "Attachment2.txt");
-            
-File.WriteAllText(file1, "Content 1");
-File.WriteAllText(file2, "Content 2");
-
-await Share.RequestAsync(new ShareMultipleFilesRequest
-{
-    Title = "Share multiple files",
-    Files = new List<ShareFile> { new ShareFile(file1), new ShareFile(file2) }
-});
-```
+:::code language="csharp" source="../snippets/shared_1/DataPage.xaml.cs" id="share_file_multiple":::
 
 ## Presentation location
 
