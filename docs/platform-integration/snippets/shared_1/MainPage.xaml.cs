@@ -32,5 +32,10 @@ public partial class MainPage : ContentPage
     {
 		Navigation.PushAsync(new DeviceDetailsPage());
 	}
+
+    private void Data_Clicked(object sender, EventArgs e)
+    {
+		Navigation.PushAsync(new DataPage());
+    }
 }
 
