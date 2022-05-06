@@ -403,6 +403,8 @@
           items:
           - name: App Actions
             href: platform-integration/appmodel/app-actions.md
+          - name: App information
+            href: platform-integration/appmodel/app-information.md
         - name: Device features
           items:
           - name: Battery

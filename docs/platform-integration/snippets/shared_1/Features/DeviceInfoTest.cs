@@ -39,7 +39,7 @@ namespace PlatformIntegration.Features
                 Console.WriteLine("The current OS is Android");
             else if (DeviceInfo.Platform == DevicePlatform.iOS)
                 Console.WriteLine("The current OS is iOS");
-            else if (DeviceInfo.Platform == DevicePlatform.UWP)
+            else if (DeviceInfo.Platform == DevicePlatform.WinUI)
                 Console.WriteLine("The current OS is Windows");
             else if (DeviceInfo.Platform == DevicePlatform.Tizen)
                 Console.WriteLine("The current OS is Tizen");

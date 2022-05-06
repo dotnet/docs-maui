@@ -1,54 +1,42 @@
 ---
 title: "App Information"
-description: "Describes the AppInfo class in Microsoft.Maui.Essentials, which provides information about your application. For example, it exposes the app name and version."
-ms.date: 08/04/2021
-no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
+description: "Describes the AppInfo class in the Microsoft.Maui.ApplicationModel namespace, which provides information about your application. For example, it exposes the app name and version."
+ms.date: 05/05/2022
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel"]
 ---
 
 # App Information
 
-The `AppInfo` class provides information about your application.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IAppInfo` interface, which provides information about your application. The `IAppInfo` interface is exposed through the `AppInfo.Current` property.
 
-## Get started
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
-[!INCLUDE [get-started](../includes/get-started.md)]
-
-## Using AppInfo
-
-[!INCLUDE [essentials-namespace](../includes/essentials-namespace.md)]
+The `AppInfo` class is available in the `Microsoft.Maui.ApplicationModel` namespace.
 
 ## Read the app information
 
-The following information is exposed through the API:
+There are four properties exposed by the `IAppInfo` interface:
 
-```csharp
-// Application Name
-var appName = AppInfo.Name;
+- `IAppInfo.Name` &mdash; The application name
+- `IAppInfo.PackageName` &mdash; The package name or application identifier, such as `com.microsoft.myapp`.
+- `IAppInfo.VersionString` &mdash; The application version, such as `1.0.0`.
+- `IAppInfo.BuildString` &mdash; The build number of the version, such as `1000`.
 
-// Package Name/Application Identifier (com.microsoft.testapp)
-var packageName = AppInfo.PackageName;
+The following code example demonstrates accessing these properties:
 
-// Application Version (1.0.0)
-var version = AppInfo.VersionString;
-
-// Application Build Number (1)
-var build = AppInfo.BuildString;
-```
+:::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="read_info":::
 
 ## Display app settings
 
-The `AppInfo` class can also display a page of settings maintained by the operating system for the application:
+The `IAppInfo` class can also display a page of settings maintained by the operating system for the application:
 
-```csharp
-// Display settings page
-AppInfo.ShowSettingsUI();
-```
+:::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="show_settings":::
 
 This settings page allows the user to change application permissions and perform other platform-specific tasks.
 
 ## Platform implementation specifics
 
-This section describes platform-specific implementation details related to the `AppInfo` type.
+This section describes platform-specific implementation details related to the `IAppInfo` interface.
 
 <!-- markdownlint-disable MD025 -->
 

@@ -42,7 +42,7 @@ public partial class DataPage : ContentPage
     }
     //</clipboard_event>
 
-    private async Task ShareButton_Clicked(object sender, EventArgs e)
+    private async void ShareButton_Clicked(object sender, EventArgs e)
     {
         await ShareText("Hello, welcome to the show.", Share.Default);
         await ShareUri("http://www.microsoft.com", Share.Default);

@@ -10,6 +10,7 @@
             <Button Text="Battery" Clicked="Battery_Clicked" />
             <Button Text="Device Details 1" Clicked="Details1_Clicked" />
             <Button Text="Data" Clicked="Data_Clicked" />
+            <Button Text="App Model" Clicked="AppModel_Clicked" />
 
             <Label 
                 Text="Hello, World!"

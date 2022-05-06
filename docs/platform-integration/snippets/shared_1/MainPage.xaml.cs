@@ -37,5 +37,10 @@ public partial class MainPage : ContentPage
     {
 		Navigation.PushAsync(new DataPage());
     }
+
+    private void AppModel_Clicked(object sender, EventArgs e)
+    {
+		Navigation.PushAsync(new AppModelPage());
+    }
 }
 
