@@ -24,15 +24,15 @@ Publishing a .NET MAUI app for iOS builds on top of Apple's provisioning process
 
 The process for publishing a .NET MAUI iOS app is as follows:
 
-- Create a certificate signing request on your Mac.
-- Create a distribution certificate in your Apple Developer Account.
-- Create a distribution profile in your Apple Developer Account.
-- Download provisioning profiles on your Mac.
-- Add any required entitlements to your app.
-- Add the code signing data to your app project.
-- Validate package settings.
-- Connect Visual Studio 2022 to a Mac build host.
-- Publish your app using .NET CLI.
+1. Create a certificate signing request on your Mac.
+1. Create a distribution certificate in your Apple Developer Account.
+1. Create a distribution profile in your Apple Developer Account.
+1. Download provisioning profiles on your Mac.
+1. Add any required entitlements to your app.
+1. Add the code signing data to your app project.
+1. Validate package settings.
+1. Connect Visual Studio 2022 to a Mac build host.
+1. Publish your app using .NET CLI.
 
 ## Create a certificate signing request
 
@@ -55,21 +55,21 @@ To publish a .NET MAUI iOS app, your Mac build host must contain the provisionin
 1. In the **Preferences** dialog, select the **Accounts** tab.
 1. In the **Accounts** tab, click the **+** button to add your Apple Developer Account details:
 
-    :::image type="content" source="media/deployment/overview/accounts-dialog.png" alt-text="Xcode Accounts dialog in preferences.":::
+    :::image type="content" source="media/overview/accounts-dialog.png" alt-text="Xcode Accounts dialog in preferences.":::
 
 1. In the account type popup, select **Apple ID** and then click the **Continue** button:
 
-    :::image type="content" source="media/deployment/overview/account-type.png" alt-text="Xcode select the type of account you'd like to add popup.":::
+    :::image type="content" source="media/overview/account-type.png" alt-text="Xcode select the type of account you'd like to add popup.":::
 
 1. In the sign in popup, enter your Apple ID and click the **Next** button.
 1. In the sign in popup, enter your Apple ID password and click the **Next** button:
 
-    :::image type="content" source="media/deployment/overview/sign-in.png" alt-text="Xcode Apple account sign-in.":::
+    :::image type="content" source="media/overview/sign-in.png" alt-text="Xcode Apple account sign-in.":::
 
 1. In the **Accounts** tab, click the **Manage Certificates...** button to ensure that your distribution certificate has been downloaded.
 1. In the **Accounts** tab, click the **Download Manual Profiles** button to download your provisioning profile:
 
-    :::image type="content" source="media/deployment/overview/account-details.png" alt-text="Xcode Apple Developer Program account details.":::
+    :::image type="content" source="media/overview/account-details.png" alt-text="Xcode Apple Developer Program account details.":::
 
 1. Close Xcode.
 
