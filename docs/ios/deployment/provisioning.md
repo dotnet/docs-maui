@@ -118,7 +118,7 @@ Once you've created a distribution certificate and an App ID you'll be able to c
 
 1. In the **Generate a Provisioning Profile** page, enter a name for the provisioning profile before clicking the **Generate** button:
 
-    :::image type="content" source="media/provisioning/create-app-id.png" alt-text="Create an App ID.":::
+    :::image type="content" source="media/provisioning/generate-profile.png" alt-text="Generate the provisioning profile.":::
 
     > [!NOTE]
     > Make a note of the provisioning profile name, as it will be required when signing your app.

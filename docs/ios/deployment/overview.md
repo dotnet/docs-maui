@@ -67,7 +67,7 @@ To publish a .NET MAUI iOS app, your Mac build host must contain the provisionin
     :::image type="content" source="media/overview/sign-in.png" alt-text="Xcode Apple account sign-in.":::
 
 1. In the **Accounts** tab, click the **Manage Certificates...** button to ensure that your distribution certificate has been downloaded.
-1. In the **Accounts** tab, click the **Download Manual Profiles** button to download your provisioning profile:
+1. In the **Accounts** tab, click the **Download Manual Profiles** button to download your provisioning profileS:
 
     :::image type="content" source="media/overview/account-details.png" alt-text="Xcode Apple Developer Program account details.":::
 
@@ -75,7 +75,7 @@ To publish a .NET MAUI iOS app, your Mac build host must contain the provisionin
 
 ## Add entitlements to your app
 
-In iOS, apps run in a sandbox that provides a set of rules that limit access between the app and system resources or user data. *Entitlements* are used to request the expansion of the sandbox to give your app additional capabilities.
+In iOS, apps run in a sandbox that provides a set of rules that limit access between the app and system resources or user data. *Entitlements* are used to request the expansion of the sandbox to give your app additional capabilities. Any entitlements used by your app must be specified in an entitlements file.
 
 For more information about entitlements, see [Entitlements](../entitlements.md).
 
@@ -100,9 +100,9 @@ The following example shows a typical property group for building and signing yo
 
 ```xml
 <PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">
-	<RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
+  <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
   <CodesignKey>iPhone Distribution: John Smith (AY2GDE9QM7)</CodesignKey>
-	<CodesignProvision>MyMauiApp</CodesignProvision>
+  <CodesignProvision>MyMauiApp</CodesignProvision>
   <ArchiveOnBuild>true</ArchiveOnBuild>
   <TcpPort>58181</TcpPort>
 </PropertyGroup>
