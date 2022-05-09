@@ -399,16 +399,14 @@
           href: platform-integration/configure-multi-targeting.md
         - name: Invoke platform code
           href: platform-integration/invoke-platform-code.md
-        - name: iOS
-          items:
-            - name: Entitlements
-              href: ios/entitlements.md
     - name: Publish
       items:
         - name: Android
           href: android/deployment/overview.md
         - name: iOS
           items:
+            - name: Entitlements and capabilities
+              href: ios/deployment/entitlements.md
             - name: Provisioning for app store distribution
               href: ios/deployment/provisioning.md
             - name: Publish an iOS app

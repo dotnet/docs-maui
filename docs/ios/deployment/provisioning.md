@@ -94,7 +94,7 @@ An App ID is required to identify the app that you are distributing. An app ID c
     > [!IMPORTANT]
     > The Bundle ID you enter must correspond to the Bundle ID defined in the **Info.plist** file in your app project.
 
-1. On the **Register an App ID** page, select any capabilities or app services that the app uses. Any capabilities, or app services, must be configured both on this page and in the **Entitlements.plist** file in your app project.
+1. On the **Register an App ID** page, select any capabilities that the app uses. Any capabilities must be configured both on this page and in the **Entitlements.plist** file in your app project.
 1. On the **Register an App ID** page, click the **Continue** button.
 1. On the **Confirm your App ID** page, click the **Register** button.
 
