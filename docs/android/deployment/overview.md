@@ -4,14 +4,15 @@ description: "Learn how to package and publish an Android .NET MAUI app."
 ms.date: 03/17/2022
 ---
 
-# Publish a .NET MAUI App for Android
+# Publish a .NET MAUI app for Android
 
 > [!div class="op_single_selector"]
 >
 > - [Publish for Android](overview.md)
+> - [Publish for macOS](../../macos/deployment/overview.md)
 > - [Publish for Windows](../../windows/deployment/overview.md)
 
-When distributing your .NET MAUI app for Android, you generate an _apk_ (Android Package) or an _aab_ (Android App Bundle) file. The _apk_ is used for installing your app to an Android device, and the _aab_ is used to publish your app to an Android store.
+When distributing your .NET Multi-platform App UI (.NET MAUI) app for Android, you generate an _apk_ (Android Package) or an _aab_ (Android App Bundle) file. The _apk_ is used for installing your app to an Android device, and the _aab_ is used to publish your app to an Android store.
 
 With just a few configuration changes to your project, your app can be packaged for distribution.
 

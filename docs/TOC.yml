@@ -195,6 +195,8 @@
           items:
             - name: Overview
               href: user-interface/controls/index.md
+            - name: Align and position controls
+              href: user-interface/align-position.md
             - name: Customize controls
               href: user-interface/handlers/customize.md
             - name: Layouts
@@ -411,5 +413,7 @@
       items:
         - name: Android
           href: android/deployment/overview.md
+        - name: macOS
+          href: macos/deployment/overview.md
         - name: Windows
           href: windows/deployment/overview.md
