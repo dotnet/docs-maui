@@ -89,7 +89,7 @@ An App ID is required to identify the app that you are distributing:
 
 1. On the **Register an App ID** page, enter a description, and select either the **Explicit** or **Wildcard** Bundle ID radio button. Then, enter the Bundle ID for your app in reverse DS format:
 
-    :::image type="content" source="media/provisioning/specify-bundle-id.png" alt-text="Create a new certificate.":::
+    :::image type="content" source="media/provisioning/specify-bundle-id.png" alt-text="Specify the bundle identifier for the app.":::
 
     > [!IMPORTANT]
     > The Bundle ID you enter must correspond to the Bundle ID defined in the **Info.plist** file in your app project.
