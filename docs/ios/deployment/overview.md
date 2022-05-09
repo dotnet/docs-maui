@@ -76,7 +76,7 @@ After creating the provisioning profile, it must be added to your Mac build host
 
 ## Add entitlements to your app
 
-In iOS, apps run in a sandbox that provides a set of rules that limit access between the app and system resources or user data. *Entitlements* are used to request the expansion of the sandbox to give your app additional capabilities. Any entitlements used by your app must be specified in an entitlements file. For more information about entitlements, see [Entitlements](../entitlements.md).
+In iOS, apps run in a sandbox that provides a set of rules that limit access between the app and system resources or user data. *Entitlements* are used to request the expansion of the sandbox to give your app additional capabilities. Any entitlements used by your app must be specified in an entitlements file. For more information about entitlements, see [Entitlements](entitlements.md).
 
 ## Add code signing data to your app project
 
@@ -142,7 +142,7 @@ The following table describes how each project setting maps to the *Info.plist* 
 
 ## Connect Visual Studio 2022 to your Mac build host
 
-Building native iOS apps using .NET MAUI requires access to Apple's build tools, which only run on a Mac. Because of this, Visual Studio 2022 must connect to a network-accessible Mac to build .NET MAUI iOS apps. For more information, see [Pair to Mac for iOS development](pair-to-mac.md).
+Building native iOS apps using .NET MAUI requires access to Apple's build tools, which only run on a Mac. Because of this, Visual Studio 2022 must connect to a network-accessible Mac to build .NET MAUI iOS apps. For more information, see [Pair to Mac for iOS development](../pair-to-mac.md).
 
 > [!NOTE]
 > The first time Pair to Mac logs into a Mac build host from Visual Studio 2022, it sets up SSH keys. With these keys, future logins will not require a username or password.
