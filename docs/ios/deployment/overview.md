@@ -185,7 +185,7 @@ dotnet publish -f:net6.0-ios -c:Release /p:ServerAddress={macOS build host IP ad
 
 Publishing builds the app, and then copies the *.ipa* to the *bin\\Release\\net6.0-ios\\ios-arm64\\publish* folder. During the publishing process it maybe necessary to allow `codesign` to run on your paired Mac:
 
-:::image type="content" source="media/deployment/overview/codesign.png" alt-text="Allow codesign to sign your app on your paired Mac.":::
+:::image type="content" source="media/overview/codesign.png" alt-text="Allow codesign to sign your app on your paired Mac.":::
 
 The *.ipa* file can then be uploaded to the App Store using App Store Connect. To learn how to use App Store Connect, see [App Store Connect workload](https://help.apple.com/app-store-connect/#/dev300c2c5bf).
 
