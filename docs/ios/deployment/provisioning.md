@@ -6,13 +6,13 @@ ms.date: 05/09/2022
 
 # Provisioning an iOS app for app store distribution
 
-Distributing a .NET Multi-platform App UI (.NET MAUI) on iOS requires that the app is provisioned using a *provisioning profile*. Provisioning profiles are files that contain code signing information, as well as the identity of the app and its intended distribution mechanism.
+Distributing a .NET Multi-platform App UI (.NET MAUI) app on iOS requires that the app is provisioned using a *provisioning profile*. Provisioning profiles are files that contain code signing information, as well as the identity of the app and its intended distribution mechanism.
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
 To publish a .NET MAUI iOS app, you'll need to build a *Distribution Provisioning Profile* specific to it. This profile enables the app to be digitally signed for release so that it can be installed on an iOS device. A distribution provisioning profile contains an app ID and a distribution certificate.
 
-The process for creating a distribution provisioning profile is to:
+The process for creating a distribution provisioning profile is as follows:
 
 1. Create a certificate signing request.
 1. Create a distribution certificate.
@@ -21,7 +21,7 @@ The process for creating a distribution provisioning profile is to:
 
 ## Create a certificate signing request
 
-To create a distribution certificate, you'll first need to create a certificate signing request (CSR) in Keychain Access on a Mac. A CSR can be created with the following steps:
+To create a distribution certificate, you'll first need to create a certificate signing request (CSR) in Keychain Access on a Mac:
 
 1. On your Mac, launch Keychain Access.
 1. In Keychain Access, select the **Keychain Access > Certificate Assistant > Request a Certificate from a Certificate Authority...** menu item.
@@ -37,7 +37,7 @@ To create a distribution certificate, you'll first need to create a certificate 
 
 ## Create a distribution certificate
 
-A distribution certificate can be created with the following steps:
+The CSR allows you to generate a distribution certificate, which confirms your identity. The distribution certificate must be created using the Apple ID for your Apple Developer Account:
 
 1. In a web browser, login to your [Apple Developer Account](https://developer.apple.com/account/).
 1. In your Apple Developer Account, select the **Certificates, IDs & Profiles** tab.
@@ -59,22 +59,22 @@ A distribution certificate can be created with the following steps:
 
     :::image type="content" source="media/provisioning/download-certificate.png" alt-text="Download your distribution certificate.":::
 
-    The certificate file (a file with a `.cer` extension) is downloaded.
+    The certificate file (a file with a `.cer` extension) will be downloaded to your chosen location.
 
-1. To install the certificate in your keychain, double-click the downloaded certificate file. The certificate appears in the **My Certificates** category in **Keychain Access**, and begins with **iPhone Distribution**::
+1. On your Mac, double-click the downloaded certificate file to install the certificate to your keychain. The certificate appears in the **My Certificates** category in **Keychain Access**, and begins with **iPhone Distribution**:
 
     :::image type="content" source="media/provisioning/keychain-access.png" alt-text="Keychain Access showing distribution certificate.":::
 
     > [!NOTE]
-    > Make a note of the distribution certificate name in Keychain Access. It will be required when signing your app.
+    > Make a note of the full distribution certificate name in Keychain Access. It will be required when signing your app.
 
 ## Create a distribution profile
 
-To create a distribution profile you must create an App ID and a provisioning profile.
+A distribution provisioning profile enables your .NET MAUI iOS app to be digitally signed for release, so that it can be installed on an iOS device. A distribution provisioning profile contains an app ID and a distribution certificate.
 
 ### Create an App ID
 
-An App ID is required to identify the app that you are distributing. An app ID can be created with the following steps:
+An App ID is required to identify the app that you are distributing:
 
 1. In your Apple Developer Account, select the **Certificates, IDs & Profiles** tab.
 1. On the **Certificates, Identifiers & Profiles** page, select the **Identifiers** tab.
@@ -100,7 +100,7 @@ An App ID is required to identify the app that you are distributing. An app ID c
 
 ### Create a provisioning profile
 
-Once you've created a distribution certificate and an App ID you'll be able to create a provisioning profile. A provisioning profile can be created with the following steps:
+Once you've created a distribution certificate and an App ID you'll be able to create a provisioning profile:
 
 1. In your Apple Developer Account, select the **Profiles** tab.
 1. In the **Profiles** tab, click the **+** button to create a new profile.

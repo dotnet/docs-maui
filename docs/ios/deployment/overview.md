@@ -36,11 +36,11 @@ The process for publishing a .NET MAUI iOS app is as follows:
 
 ## Create a certificate signing request
 
-To publish a .NET MAUI iOS app you'll first need to create a certificate signing request (CSR) in Keychain Access on a Mac. For more information, see [Create a certificate signing request](provisioning.md#create-a-certificate-signing-request).
+To sign a .NET MAUI iOS app you must first create a certificate signing request (CSR) in Keychain Access on a Mac. For more information, see [Create a certificate signing request](provisioning.md#create-a-certificate-signing-request).
 
 ## Create a distribution certificate
 
-A distribution certificate is required to build a provisioning profile for your .NET MAUI iOS app. The distribution certificate confirms your identity, and must be created using the Apple ID for your Apple Developer Account. For more information, see [Create a distribution certificate](provisioning.md#create-a-distribution-certificate).
+The CSR allows you to generate a distribution certificate, which will be used to confirm your identity. The distribution certificate must be created using the Apple ID for your Apple Developer Account. For more information, see [Create a distribution certificate](provisioning.md#create-a-distribution-certificate).
 
 ## Create a distribution profile
 
@@ -48,12 +48,12 @@ To publish a .NET MAUI iOS app, you'll need to build a *Distribution Provisionin
 
 ## Download the provisioning profile on your Mac build host
 
-To publish a .NET MAUI iOS app, your Mac build host must contain the provisioning profile for your app. This profile can be added to your Mac build host with the following steps:
+After creating the provisioning profile, it must be added to your Mac build host. The profile can be downloaded to your Mac build host with the following steps:
 
 1. On your Mac, launch Xcode.
 1. In Xcode, select the **Xcode > Preferences...** menu item.
 1. In the **Preferences** dialog, select the **Accounts** tab.
-1. In the **Accounts** tab, click the **+** button to add your Apple Developer Account details:
+1. In the **Accounts** tab, click the **+** button to add your Apple Developer Account to Xcode:
 
     :::image type="content" source="media/overview/accounts-dialog.png" alt-text="Xcode Accounts dialog in preferences.":::
 
@@ -67,7 +67,7 @@ To publish a .NET MAUI iOS app, your Mac build host must contain the provisionin
     :::image type="content" source="media/overview/sign-in.png" alt-text="Xcode Apple account sign-in.":::
 
 1. In the **Accounts** tab, click the **Manage Certificates...** button to ensure that your distribution certificate has been downloaded.
-1. In the **Accounts** tab, click the **Download Manual Profiles** button to download your provisioning profileS:
+1. In the **Accounts** tab, click the **Download Manual Profiles** button to download your provisioning profiles:
 
     :::image type="content" source="media/overview/account-details.png" alt-text="Xcode Apple Developer Program account details.":::
 
@@ -75,9 +75,7 @@ To publish a .NET MAUI iOS app, your Mac build host must contain the provisionin
 
 ## Add entitlements to your app
 
-In iOS, apps run in a sandbox that provides a set of rules that limit access between the app and system resources or user data. *Entitlements* are used to request the expansion of the sandbox to give your app additional capabilities. Any entitlements used by your app must be specified in an entitlements file.
-
-For more information about entitlements, see [Entitlements](../entitlements.md).
+In iOS, apps run in a sandbox that provides a set of rules that limit access between the app and system resources or user data. *Entitlements* are used to request the expansion of the sandbox to give your app additional capabilities. Any entitlements used by your app must be specified in an entitlements file. For more information about entitlements, see [Entitlements](../entitlements.md).
 
 ## Add code signing data to your app project
 
@@ -86,15 +84,15 @@ There are project-level settings you must set to sign your iOS app with its prov
 - `<RuntimeIdentifier>` – the runtime identifier (RID) for the project. Set to `ios-arm64`.
 - `<CodesignKey>` – the name of the distribution certificate you installed into Keychain Access on your Mac build host.
 - `<CodesignProvision>` – the provisioning profile name.
-- `<CodesignEntitlement>` – the name of the entitlements file. Set to `Entitlements.plist`. This is an optional setting.
+- `<CodesignEntitlement>` – the name of the entitlements file. Set to `Entitlements.plist`. This setting need only be specified if you're using entitlements.
 - `<ArchiveOnBuild>` – a boolean value that indicates whether to build the app package. Set to `true`.
 - `<TcpPort>` – the TCP port on which to communicate with your Mac build host. Set to `58181`.
 - `<ServerAddress>` – the IP address of your Mac build host.
-- `<ServerUser>` – the username to use when logging into your Mac build host.
+- `<ServerUser>` – the username to use when logging into your Mac build host. Use your system username rather than your full name.
 - `<ServerPassword>` – the password for the username used to log into the Mac build host.
-- `<_DotNetRootRemoteDirectory>` – the folder on the Mac build host that contains the .NET SDK.
+- `<_DotNetRootRemoteDirectory>` – the folder on the Mac build host that contains the .NET SDK. Set to `/Users/{macOS username}/Library/Caches/Xamarin/XMA/SDKs/dotnet/`.
 
-For security reasons, you might not want to supply a value for all these settings in the project file. You can also provide these values on the command line when you publish the app. For example, values for `<ServerAddress>`, `<ServerUser>`, `<ServerPassword`, and `<_DotNetRootRemoteDirectory>` will typically be provided on the command line. An example of this can be found in the [Publish](#publish) section.
+For security reasons, you might not want to supply a value for all these settings in the project file. You can also provide these values on the command line when you publish the app. For example, values for `<ServerAddress>`, `<ServerUser>`, `<ServerPassword>`, and `<_DotNetRootRemoteDirectory>` will typically be provided on the command line. An example of this can be found in the [Publish](#publish) section.
 
 The following example shows a typical property group for building and signing your iOS app with its provisioning profile:
 
@@ -117,7 +115,7 @@ If either of these conditions fail, the settings aren't processed. More importan
 
 ## Validate package settings
 
-Every iOS app specifies a unique package identifier and a version. These identifiers are generally set in your project file, from where they are copied to your *Info.plist* file that's located in your project folder at _.\\Platforms\\iOS\\Info.plist_.
+Every iOS app specifies a unique package identifier and a version. These identifiers are generally set in your project file, from where they are copied to your *Info.plist* file that's located in your project folder at _Platforms\\iOS\\Info.plist_.
 
 Your project file must declare `<ApplicationId>` and `ApplicationVersion` within a `<PropertyGroup>` node. These items should have been generated for you when the project was created. Just validate that they exist and are set to valid values:
 
@@ -166,7 +164,7 @@ In addition, the following common parameters can be specified on the command lin
 | `/p:RuntimeIdentifier` | The runtime identifier (RID) for the project. Use `ios-arm64`. |
 | `/p:CodesignKey` | The name of the distribution certificate you installed into Keychain Access on your Mac build host. |
 | `/p:CodesignProvision` | The provisioning profile name. |
-| `/p:CodesignEntitlement` | The name of the entitlements file. |
+| `/p:CodesignEntitlement` | The name of the entitlements file. Use *Entitlements.plist*. |
 | `/p:ArchiveOnBuild` | A boolean value that indicates whether to produce the archive. Use `true` to produce the *.ipa*. |
 | `/p:TcpPort` | The TCP port to use to communicate with the Mac build host, which is 58181. |
 | `/p:ServerAddress` | The IP address of the Mac build host. |
@@ -187,7 +185,7 @@ Publishing builds the app, and then copies the *.ipa* to the *bin\\Release\\net6
 
 :::image type="content" source="media/overview/codesign.png" alt-text="Allow codesign to sign your app on your paired Mac.":::
 
-The *.ipa* file can then be uploaded to the App Store using App Store Connect. To learn how to use App Store Connect, see [App Store Connect workload](https://help.apple.com/app-store-connect/#/dev300c2c5bf).
+The *.ipa* file can then be uploaded to the App Store using App Store Connect. To learn how to use App Store Connect, see [App Store Connect workflow](https://help.apple.com/app-store-connect/#/dev300c2c5bf).
 
 ## See also
 

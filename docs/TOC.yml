@@ -405,11 +405,11 @@
           href: android/deployment/overview.md
         - name: iOS
           items:
-            - name: Entitlements and capabilities
-              href: ios/deployment/entitlements.md
-            - name: Provisioning for app store distribution
-              href: ios/deployment/provisioning.md
             - name: Publish an iOS app
               href: ios/deployment/overview.md
+            - name: Provisioning for app store distribution
+              href: ios/deployment/provisioning.md
+            - name: Entitlements and capabilities
+              href: ios/deployment/entitlements.md
         - name: Windows
           href: windows/deployment/overview.md
