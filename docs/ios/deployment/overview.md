@@ -10,6 +10,7 @@ ms.date: 05/09/2022
 >
 > - [Publish for Android](../../android/deployment/overview.md)
 > - [Publish for iOS](overview.md)
+> - [Publish for macOS](../../macos/deployment/overview.md)
 > - [Publish for Windows](../../windows/deployment/overview.md)
 
 When distributing your .NET Multi-platform App UI (.NET MAUI) app for iOS, you generate an *.ipa* file. An *.ipa* file is an iOS app archive file that stores an iOS app. With just a few configuration changes to your project, your app can be packaged for distribution.
