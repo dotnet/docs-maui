@@ -9,6 +9,7 @@ ms.date: 03/17/2022
 > [!div class="op_single_selector"]
 >
 > - [Publish for Android](overview.md)
+> - [Publish for iOS](../../ios/deployment/overview.md)
 > - [Publish for Windows](../../windows/deployment/overview.md)
 
 When distributing your .NET MAUI app for Android, you generate an _apk_ (Android Package) or an _aab_ (Android App Bundle) file. The _apk_ is used for installing your app to an Android device, and the _aab_ is used to publish your app to an Android store.
