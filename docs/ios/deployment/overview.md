@@ -72,7 +72,7 @@ After creating the provisioning profile, it must be added to your Mac build host
 
     :::image type="content" source="media/overview/account-details.png" alt-text="Xcode Apple Developer Program account details.":::
 
-1. Close Xcode.
+1. Wait for the download to complete and then close Xcode.
 
 ## Add entitlements to your app
 
@@ -84,7 +84,7 @@ There are project-level settings you must set to sign your iOS app with its prov
 
 - `<RuntimeIdentifier>` – the runtime identifier (RID) for the project. Set to `ios-arm64`.
 - `<CodesignKey>` – the name of the distribution certificate you installed into Keychain Access on your Mac build host.
-- `<CodesignProvision>` – the provisioning profile name.
+- `<CodesignProvision>` – the provisioning profile name. This is the name you entered in the Apple Developer portal when creating your provisioning profile.
 - `<CodesignEntitlement>` – the name of the entitlements file. Set to `Entitlements.plist`. This setting need only be specified if you're using entitlements.
 - `<ArchiveOnBuild>` – a boolean value that indicates whether to build the app package. Set to `true`.
 - `<TcpPort>` – the TCP port on which to communicate with your Mac build host. Set to `58181`.
@@ -93,7 +93,8 @@ There are project-level settings you must set to sign your iOS app with its prov
 - `<ServerPassword>` – the password for the username used to log into the Mac build host.
 - `<_DotNetRootRemoteDirectory>` – the folder on the Mac build host that contains the .NET SDK. Set to `/Users/{macOS username}/Library/Caches/Xamarin/XMA/SDKs/dotnet/`.
 
-For security reasons, you might not want to supply a value for all these settings in the project file. You can also provide these values on the command line when you publish the app. For example, values for `<ServerAddress>`, `<ServerUser>`, `<ServerPassword>`, and `<_DotNetRootRemoteDirectory>` will typically be provided on the command line. An example of this can be found in the [Publish](#publish) section.
+> [!IMPORTANT]
+> Values for these settings don't have to be provided in the project file. They can also be provided on the command line when you publish the app. This enables you to omit specific values from your project file. For example, values for `<ServerAddress>`, `<ServerUser>`, `<ServerPassword>`, and `<_DotNetRootRemoteDirectory>` will typically be provided on the command line for security reasons. An example of this can be found in the [Publish](#publish) section.
 
 The following example shows a typical property group for building and signing your iOS app with its provisioning profile:
 
@@ -172,6 +173,9 @@ In addition, the following common parameters can be specified on the command lin
 | `/p:ServerUser` | The username to use when logging into the Mac build host. Use your system username rather than your full name. |
 | `/p:ServerPassword` | The password for the username used to log into the Mac build host. |
 | `/p:_DotNetRootRemoteDirectory` | The folder on the Mac build host that contains the .NET SDK. Use `/Users/{macOS username}/Library/Caches/Xamarin/XMA/SDKs/dotnet/`. |
+
+> [!IMPORTANT]
+> Values for these parameters don't have to be provided on the command line. They can also be provided in the project file. For more information, see [Add code signing data to your app project](#add-code-signing-data-to-your-app-project.).
 
 For example, use the following command to create an *.ipa*:
 

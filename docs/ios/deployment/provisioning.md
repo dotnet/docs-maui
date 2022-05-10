@@ -126,4 +126,4 @@ Once you've created a distribution certificate and an App ID you'll be able to c
 1. In the **Generate a Provisioning Profile** page, optionally click the **Download** button to download your provisioning profile.
 
     > [!NOTE]
-    > It's not necessary to download your provisioning profile.
+    > It's not necessary to download your provisioning profile now. Instead, you will do this later from Xcode.
