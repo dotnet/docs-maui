@@ -29,6 +29,14 @@
               items:
                 - name: How to set up a physical device
                   href: android/device/setup.md
+        - name: iOS
+          items:
+            - name: Pair to Mac
+              href: ios/pair-to-mac.md
+        - name: macOS
+          items:
+            - name: Build a Mac Catalyst app with .NET CLI
+              href: macos/cli.md
         - name: Windows
           items:
             - name: How to set up Windows for debugging
@@ -187,6 +195,8 @@
           items:
             - name: Overview
               href: user-interface/controls/index.md
+            - name: Align and position controls
+              href: user-interface/align-position.md
             - name: Customize controls
               href: user-interface/handlers/customize.md
             - name: Layouts
@@ -403,5 +413,7 @@
       items:
         - name: Android
           href: android/deployment/overview.md
+        - name: macOS
+          href: macos/deployment/overview.md
         - name: Windows
           href: windows/deployment/overview.md
