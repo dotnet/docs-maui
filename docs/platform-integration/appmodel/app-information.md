@@ -102,8 +102,3 @@ Windows applications respect the `RequestedTheme` property setting in the Window
 --------------
 
 <!-- markdownlint-enable MD025 -->
-
-## API
-
-- [AppInfo source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/AppInfo)
-<!-- - [AppInfo API documentation](xref:Microsoft.Maui.Essentials.AppInfo)-->

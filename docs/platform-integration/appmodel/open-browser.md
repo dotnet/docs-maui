@@ -99,8 +99,3 @@ The user's default browser will always be launched regardless of the `BrowserLau
 -----
 <!-- markdownlint-enable MD024 -->
 <!-- markdownlint-enable MD025 -->
-
-## API
-
-- [Browser source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/Browser)
-<!-- - [Browser API documentation](xref:Microsoft.Maui.Essentials.Browser)-->

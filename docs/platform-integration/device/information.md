@@ -76,8 +76,3 @@ No platform differences.
 
 -----
 <!-- markdownlint-enable MD025 -->
-
-## API
-
-- [DeviceInfo source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/DeviceInfo)
-<!-- - [DeviceInfo API documentation](xref:Microsoft.Maui.Essentials.DeviceInfo)-->

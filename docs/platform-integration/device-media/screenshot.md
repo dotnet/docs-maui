@@ -32,8 +32,3 @@ async Task<ImageSource> CaptureScreenshot()
 ## Limitations
 
 Not all views support being captured at a screen level, such as an OpenGL view.
-
-## API
-
-- [Screenshot source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/Screenshot)
-<!-- - [Screenshot API documentation](xref:Microsoft.Maui.Essentials.Screenshot)-->

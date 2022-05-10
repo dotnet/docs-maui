@@ -289,8 +289,3 @@ On Windows, altitude is returned in meters. For more information, see the [Altit
 -----
 <!-- markdownlint-enable MD024 -->
 <!-- markdownlint-enable MD025 -->
-
-## API
-
-- [Geolocation source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/Geolocation)
-<!-- - [Geolocation API documentation](xref:Microsoft.Maui.Essentials.Geolocation)-->

@@ -107,8 +107,3 @@ The <xref:Windows.Devices.Lights.Lamp> API is used to turn on or off the first d
 -----
 <!-- markdownlint-enable MD024 -->
 <!-- markdownlint-enable MD025 -->
-
-## API
-
-- [Flashlight source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/Flashlight)
-<!-- - [Flashlight API documentation](xref:Microsoft.Maui.Essentials.Flashlight)-->

@@ -87,8 +87,3 @@ No platform differences.
 -----
 <!-- markdownlint-enable MD024 -->
 <!-- markdownlint-enable MD025 -->
-
-## API
-
-- [Vibration source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/Vibration)
-<!-- - [Vibration API documentation](xref:Microsoft.Maui.Essentials.Vibration)-->

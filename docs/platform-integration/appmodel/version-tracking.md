@@ -61,8 +61,3 @@ var buildHistory = VersionTracking.BuildHistory;
 <!-- TODO: file name contains xamarin, what is it? the secure-storage article also has this./ -->
 
 All version information is stored using the [Preferences](../storage/preferences.md) API, and is stored with a filename of _[YOUR-APP-PACKAGE-ID].xamarinessentials_.versiontracking** and follows the same data persistence outlined in the [Preferences](../storage/preferences.md#persistence) documentation.
-
-## API
-
-- [Version Tracking source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/VersionTracking)
-<!-- - [Version Tracking API documentation](xref:Microsoft.Maui.Essentials.VersionTracking)-->

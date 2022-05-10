@@ -29,12 +29,7 @@ namespace PlatformIntegration
 #if WINDOWS
     public class ReadWriteStoragePerms : Permissions.BasePlatformPermission
     {
-        public override (string androidPermission, bool isRuntime)[] RequiredPermissions =>
-            new List<(string androidPermission, bool isRuntime)>
-            {
-            (global::Android.Manifest.Permission.ReadExternalStorage, true),
-            (global::Android.Manifest.Permission.WriteExternalStorage, true)
-            }.ToArray();
+
     }
 #endif
 #if IOS

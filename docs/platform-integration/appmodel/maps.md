@@ -64,8 +64,3 @@ Android uses the `geo:` Uri scheme to launch the maps application on the device.
 
 -----
 <!-- markdownlint-enable MD025 -->
-
-## API
-
-- [Map source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/Map)
-<!-- - [Map API documentation](xref:Microsoft.Maui.Essentials.Map)-->

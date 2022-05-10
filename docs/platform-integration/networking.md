@@ -135,8 +135,3 @@ public class ConnectivityTest
 ## Limitations
 
 It's important to know that it's possible that `Internet` is reported by `NetworkAccess` but full access to the web isn't available. Because of how connectivity works on each platform, it can only guarantee that a connection is available. For instance, the device may be connected to a Wi-Fi network, but the router is disconnected from the internet. In this instance `Internet` may be reported, but an active connection isn't available.
-
-## API
-
-- [Connectivity source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/Connectivity)
-<!-- - [Connectivity API documentation](xref:Microsoft.Maui.Essentials.Connectivity)-->

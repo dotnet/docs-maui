@@ -117,8 +117,3 @@ PickOptions options = new()
 If you want the user to pick multiple files, call the `FilePicker.PickMultipleAsync` method. This method also takes a `PickOptions` parameter to specify additional information. The results are the same as `PickAsync`, but instead of the `FileResult` type returned, an `IEnumerable<FileResult>` type is returned with all of the selected files.
 
 [!INCLUDE [tip-file-result](../includes/tip-file-result.md)]
-
-## API
-
-- [FilePicker source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/FilePicker)
-<!-- - [FilePicker API documentation](xref:Microsoft.Maui.Essentials.FilePicker)-->

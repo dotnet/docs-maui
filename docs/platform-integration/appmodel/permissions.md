@@ -5,7 +5,6 @@ ms.date: 05/09/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel"]
 ---
 
-<!-- TODO update article -->
 # Permissions
 
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `Permissions` class. This class allows you to check and request permissions at run-time. The `Permissions` type is available in the `Microsoft.Maui.ApplicationModel` namespace.
@@ -186,8 +185,3 @@ Permissions must have matching capabilities declared in the package manifest. Pe
 
 -----
 <!-- markdownlint-enable MD025 -->
-
-## API
-
-- [Permissions source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Permissions)
-<!-- - [Permissions API documentation](xref:Microsoft.Maui.Essentials.Permissions)-->

@@ -131,10 +131,3 @@ var platform = system.ToPlatformRectangle();
 // Back to System.Drawing.Rectangle
 var system2 = platform.ToSystemRectangle();
 ```
-
-## API
-
-- [Converters source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/Types/PlatformExtensions)
-<!-- - [Point Converters API documentation](xref:Microsoft.Maui.Essentials.PointExtensions)-->
-<!-- - [Rectangle Converters API documentation](xref:Microsoft.Maui.Essentials.RectangleExtensions)-->
-<!-- - [Size Converters API documentation](xref:Microsoft.Maui.Essentials.SizeExtensions)-->

@@ -149,8 +149,3 @@ async Task<string> LoadPhotoAsync(FileResult photo)
 ```
 
 [!INCLUDE [tip-file-result](../includes/tip-file-result.md)]
-
-## API
-
-- [MediaPicker source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/MediaPicker)
-<!-- - [MediaPicker API documentation](xref:Microsoft.Maui.Essentials.MediaPicker)-->

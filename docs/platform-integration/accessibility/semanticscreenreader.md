@@ -28,8 +28,3 @@ SemanticScreenReader.Announce("This is the announcement text.");
 The default platform screen reader must be enabled for text to be read aloud.
 
 <!-- Todo: insert link to relevant section of accessibility doc that discusses enabling screen readers. -->
-
-## API
-
-- [Screenshot source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/SemanticScreenReader)
-<!-- - [Screenshot API documentation](xref:Microsoft.Maui.Essentials.SemanticScreenReader)-->

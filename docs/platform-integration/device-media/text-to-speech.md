@@ -136,8 +136,3 @@ public async Task SpeakNow()
 
 - Utterance queueing is not guaranteed if called across multiple threads.
 - Background audio playback is not officially supported.
-
-## API
-
-- [TextToSpeech source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/TextToSpeech)
-<!-- - [TextToSpeech API documentation](xref:Microsoft.Maui.Essentials.TextToSpeech)-->

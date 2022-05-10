@@ -93,8 +93,3 @@ public partial class SmsTest
     }
 }
 ```
-
-## API
-
-- [Sms source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/Sms)
-<!-- - [Sms API documentation](xref:Microsoft.Maui.Essentials.Sms)-->

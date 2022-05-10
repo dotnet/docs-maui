@@ -175,8 +175,3 @@ Encrypted values are stored in `ApplicationData.Current.LocalSettings`, inside a
 ## Limitations
 
 This API is intended to store small amounts of text. Performance may be slow if you try to use it to store large amounts of text.
-
-## API
-
-- [SecureStorage source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/SecureStorage)
-<!-- - [SecureStorage API documentation](xref:Microsoft.Maui.Essentials.SecureStorage)-->

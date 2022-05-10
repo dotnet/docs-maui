@@ -69,8 +69,3 @@ public void PlacePhoneCall(string number)
     }
 }
 ```
-
-## API
-
-- [Phone Dialer source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/PhoneDialer)
-<!-- - [Phone Dialer API documentation](xref:Microsoft.Maui.Essentials.PhoneDialer)-->

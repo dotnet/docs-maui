@@ -92,8 +92,3 @@ Add any file into the root in the Windows project, and mark the **Build Action**
 
 -----
 <!-- markdownlint-enable MD025 -->
-
-## API
-
-- [File System Helpers source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/FileSystem)
-<!-- - [File System API documentation](xref:Microsoft.Maui.Essentials.FileSystem)-->

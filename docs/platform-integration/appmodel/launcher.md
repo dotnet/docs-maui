@@ -93,8 +93,3 @@ No platform differences.
 -----
 <!-- markdownlint-enable MD024 -->
 <!-- markdownlint-enable MD025 -->
-
-## API
-
-- [Launcher source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/Launcher)
-<!-- - [Launcher API documentation](xref:Microsoft.Maui.Essentials.Launcher)-->

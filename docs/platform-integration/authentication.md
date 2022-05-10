@@ -46,7 +46,7 @@ using Android.Content.PM;
 
 namespace YourRootNamespace
 {
-    [Activity(NoHistory = true, LaunchMode = LaunchMode.SingleTop)]
+    [Activity(NoHistory = true, LaunchMode = LaunchMode.SingleTop, Exported = tru)]
     [IntentFilter(new[] { Android.Content.Intent.ActionView },
                   Categories = new[] { Android.Content.Intent.CategoryDefault, Android.Content.Intent.CategoryBrowsable },
                   DataScheme = CALLBACK_SCHEME)]
@@ -320,9 +320,3 @@ Check out the [full controller sample](https://github.com/dotnet/maui/tree/main/
 
 > [!NOTE]
 > The above sample demonstrates how to return the access token from the 3rd party authentication (ie: OAuth) provider. To obtain a token you can use to authorize web requests to the web backend itself, you should create your own token in your web app, and return that instead. The [Overview of ASP.NET Core authentication](/aspnet/core/security/authentication) has more information about advanced authentication scenarios in ASP.NET Core.
-
-## API
-
-- [WebAuthenticator source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/WebAuthenticator)
-<!-- - [WebAuthenticator API documentation](xref:Microsoft.Maui.Essentials.WebAuthenticator)-->
-- [ASP.NET Core Server Sample](https://github.com/dotnet/maui/tree/main/src/Essentials/samples/Sample.Server.WebAuthenticator)

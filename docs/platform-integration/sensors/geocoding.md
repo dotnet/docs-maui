@@ -110,8 +110,3 @@ catch (Exception ex)
 ## Get the distance between two locations
 
 The `Location` and `LocationExtensions` classes define methods to calculate the distance between two locations. For an example of getting the distance between two locations, see [Distance between two locations](geolocation.md#distance-between-two-locations).
-
-## API
-
-- [Geocoding source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/Geocoding)
-<!-- - [Geocoding API documentation](xref:Microsoft.Maui.Essentials.Geocoding)-->

@@ -48,8 +48,3 @@ No platform differences.
 
 -----
 <!-- markdownlint-enable MD025 -->
-
-## API
-
-- [DeviceDisplay source code](https://github.com/xamarin/Essentials/tree/main/Xamarin.Essentials/DeviceDisplay)
-<!-- - [DeviceDisplay API documentation](xref:Microsoft.Maui.Essentials.DeviceDisplay)-->

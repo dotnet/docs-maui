@@ -139,8 +139,3 @@ No platform differences.
 -----
 <!-- markdownlint-enable MD024 -->
 <!-- markdownlint-enable MD025 -->
-
-## API
-
-- [Contacts source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/Contacts)
-<!-- - [Contacts API documentation](xref:Microsoft.Maui.Essentials.Contacts)-->

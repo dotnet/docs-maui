@@ -54,8 +54,3 @@ Here is a list of available conversions:
 - PoundsToKilograms
 - StonesToPounds
 - PoundsToStones
-
-## API
-
-- [Unit Converters source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/UnitConverters.shared.cs)
-<!-- - [Unit Converters API documentation](xref:Microsoft.Maui.Essentials.UnitConverters)-->

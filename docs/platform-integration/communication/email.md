@@ -137,8 +137,3 @@ Not all email clients support sending attachments. For more information, see [Se
 -----
 <!-- markdownlint-enable MD024 -->
 <!-- markdownlint-enable MD025 -->
-
-## API
-
-- [Email source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/Email)
-<!-- - [Email API documentation](xref:Microsoft.Maui.Essentials.Email)-->

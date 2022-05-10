@@ -46,8 +46,3 @@ The `MainThread` class includes the following additional `static` methods that c
 | `InvokeOnMainThreadAsync<T>` | `Func<Task<T>>` | `Task<T>` | Invokes a `Func<Task<T>>` on the main thread, and waits for it to complete. |
 | `InvokeOnMainThreadAsync`    | `Func<Task>`    | `Task`    | Invokes a `Func<Task>` on the main thread, and waits for it to complete.    |
 | `GetMainThreadSynchronizationContextAsync` |               | `Task<SynchronizationContext>` | Returns the `SynchronizationContext` for the main thread.                   |
-
-## API
-
-- [MainThread source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/MainThread)
-<!-- - [MainThread API documentation](xref:Microsoft.Maui.Essentials.MainThread)-->

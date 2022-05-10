@@ -91,8 +91,3 @@ This section describes the platform-specific differences with the share API.
 -----
 <!-- markdownlint-enable MD024 -->
 <!-- markdownlint-enable MD025 -->
-
-## API
-
-- [Share source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/Share)
-<!-- - [Share API documentation](xref:Microsoft.Maui.Essentials.Share)-->

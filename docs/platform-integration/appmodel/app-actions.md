@@ -71,8 +71,3 @@ When your application starts, add handle the `AppActions.Current.AppActionActiva
 ## GetActions
 
 You can get the current list of App Actions by calling `AppActions.Current.GetAsync()`.
-
-## API
-
-- [AppActions source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/AppActions)
-<!-- - [AppActions API documentation](xref:Microsft.Maui.Essentials.AppActions) -->

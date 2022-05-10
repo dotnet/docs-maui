@@ -134,8 +134,3 @@ Uninstalling the application causes all _preferences_ to be removed, except when
 ## Limitations
 
 When storing a string, this API is intended to store small amounts of text. Performance may be subpar if you try to use it to store large amounts of text.
-
-## API
-
-- [Preferences source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/Preferences)
-<!-- - [Preferences API documentation](xref:Microsoft.Maui.Essentials.Preferences)-->

@@ -39,8 +39,3 @@ You can clear the clipboard by passing `null` to the `SetTextAsync` method, as t
 The `IClipboard` interface provides the `ClipboardContentChanged` event. When this event is raised, the clipboard content has changed. The following code example adds a handler to the event when the content page is loaded:
 
 :::code language="csharp" source="../snippets/shared_1/DataPage.xaml.cs" id="clipboard_event":::
-
-## API
-
-- [Clipboard source code](https://github.com/dotnet/maui/tree/main/src/Essentials/src/Clipboard)
-<!-- - [Clipboard API documentation](xref:Microsoft.Maui.Essentials.Clipboard)-->
