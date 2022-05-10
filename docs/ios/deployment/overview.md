@@ -110,7 +110,7 @@ The following example shows a typical property group for building and signing yo
 
 This example `<PropertyGroup>` adds a condition check, preventing the settings from being processed unless the condition check passes. The condition check looks for two items:
 
-1. The target framework is set so something containing the text `-ios`.
+1. The target framework is set to something containing the text `-ios`.
 1. The build configuration is set to `Release`.
 
 If either of these conditions fail, the settings aren't processed. More importantly, the `<CodesignKey>` and `<CodesignProvision>` settings aren't set, preventing the app from being signed.
