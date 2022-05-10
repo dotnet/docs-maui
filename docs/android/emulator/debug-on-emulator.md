@@ -6,7 +6,7 @@ ms.date: 02/23/2022
 
 # Debug on the Android Emulator
 
-The Android Emulator, installed as part of the **Mobile development with .NET** workload, can be run in various configurations to simulate different Android devices. Each one of these configurations is created as a _virtual device_. In this article, you'll learn how to launch the emulator from Visual Studio and run your app in a virtual device. For more information about how to create and configure a virtual device, see [Managing virtual devices with the Android Device Manager](device-manager.md).
+The Android Emulator, installed as part of the **.NET Multi-Platform App UI development** workload, can be run in various configurations to simulate different Android devices. Each one of these configurations is created as a _virtual device_. In this article, you'll learn how to launch the emulator from Visual Studio and run your app in a virtual device. For more information about how to create and configure a virtual device, see [Managing virtual devices with the Android Device Manager](device-manager.md).
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
