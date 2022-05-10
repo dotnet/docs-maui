@@ -1,28 +1,26 @@
 ---
 title: "Open the browser"
-description: "The Browser class in the Microsoft.Maui.Essentials namespace enables an application to open a web link in the optimized system preferred browser or the external browser."
-ms.date: 08/25/2021
-no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
+description: "The Browser class in the Microsoft.Maui.ApplicationModel namespace enables an application to open a web link in the optimized system preferred browser or the external browser."
+ms.date: 05/09/2022
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel"]
 ---
 
 # Browser
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `Browser` class. This class enables an application to open a web link in the optimized system preferred browser or the external browser.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IBrowser` interface. This interface enables an application to open a web link in the system-preferred browser or the external browser. A default implementation of the `IBrowser` interface is exposed through the `Browser.Default` property.
+
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
 ## Get started
-
-[!INCLUDE [get-started](../includes/get-started.md)]
-
-[!INCLUDE [essentials-namespace](../includes/essentials-namespace.md)]
 
 To access the browser functionality, the following platform-specific setup is required.
 
 <!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
 
-If your project's Target Android version is set to **Android 11 (R API 30)** you must update your _Android Manifest_ with queries that are used with the new [package visibility requirements](https://developer.android.com/preview/privacy/package-visibility).
+If your project's Target Android version is set to **Android 11 (R API 30)** or higher, you must update your _Android Manifest_ with queries that use Android's [package visibility requirements](https://developer.android.com/preview/privacy/package-visibility).
 
-Open the _AndroidManifest.xml_ file in the **Properties** folder of the project, and add the following in the **manifest** node:
+In the _Platforms/Android/AndroidManifest.xml_ file, add the following `queries/intent` nodes the `manifest` node:
 
 ```xml
 <queries>
@@ -52,19 +50,7 @@ No setup is required.
 
 The browser is opened by calling the `Browser.OpenAsync` method with the `Uri` and the type of `BrowserLaunchMode`. The following code example demonstrates opening the browser:
 
-```csharp
-public async Task OpenBrowser(Uri uri)
-{
-    try
-    {
-        await Browser.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
-    }
-    catch(Exception ex)
-    {
-        // An unexpected error occured. No browser may be installed on the device.
-    }
-}
-```
+:::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="browser_open":::
 
 This method returns after the browser is launched, not after it was closed by the user.  `Browser.OpenAsync` returns a `bool` value to indicate if the browser was successfully launched.
 
@@ -74,17 +60,7 @@ When using the system preferred browser, there are several customization options
 
 These options are specified using `BrowserLaunchOptions` when calling `OpenAsync`.
 
-```csharp
-await Browser.OpenAsync(uri, new BrowserLaunchOptions
-                {
-                    LaunchMode = BrowserLaunchMode.SystemPreferred,
-                    TitleMode = BrowserTitleMode.Show,
-                    PreferredToolbarColor = Color.AliceBlue,
-                    PreferredControlColor = Color.Violet
-                });
-```
-
-:::image type="content" source="media/open-browser/browser-options.png" alt-text="Demonstration of the browser options used with Browser.OpenAsync":::
+:::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="browser_open_custom":::
 
 ## Platform differences
 

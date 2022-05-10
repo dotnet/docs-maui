@@ -1,6 +1,6 @@
 ---
 title: "App Information"
-description: "Describes the AppInfo class in the Microsoft.Maui.ApplicationModel namespace, which provides information about your application. For example, it exposes the app name and version."
+description: "Describes the IAppInfo interface in the Microsoft.Maui.ApplicationModel namespace, which provides information about your application. For example, it exposes the app name and version."
 ms.date: 05/05/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel"]
 ---
@@ -11,7 +11,7 @@ This article describes how you can use the .NET Multi-platform App UI (.NET MAUI
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
-The `AppInfo` class is available in the `Microsoft.Maui.ApplicationModel` namespace.
+The `AppInfo` and `IAppInfo` types are available in the `Microsoft.Maui.ApplicationModel` namespace.
 
 ## Read the app information
 
@@ -25,6 +25,20 @@ There are four properties exposed by the `IAppInfo` interface:
 The following code example demonstrates accessing these properties:
 
 :::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="read_info":::
+
+## Read the current theme
+
+The `RequestedTheme` property provides the current requested theme by the system for your application. One of the following values is returned:
+
+- `Unspecified`
+- `Light`
+- `Dark`
+
+`Unspecified` is returned when the operating system doesn't have a specific user interface style. An example of this is on devices running versions of iOS older than 13.0.
+
+The following code example demonstrates reading the theme:
+
+:::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="read_theme":::
 
 ## Display app settings
 
@@ -44,28 +58,46 @@ This section describes platform-specific implementation details related to the `
 
 App information is taken from the _AndroidManifest.xml_ for the following fields:
 
-- **Build** – `android:versionCode` in `manifest` node
-- **Name** - `android:label` in the `application` node
-- **PackageName**: `package` in the `manifest` node
-- **VersionString** – `android:versionName` in the `application` node
+- **Build** &mdash; `android:versionCode` in `manifest` node
+- **Name** &mdash; `android:label` in the `application` node
+- **PackageName** &mdash; `package` in the `manifest` node
+- **VersionString** &mdash; `android:versionName` in the `application` node
+
+### Requested theme
+
+Android uses configuration modes to specify the type of theme to request from the user. Based on the version of Android, it can be changed by the user or may be changed when battery saver mode is enabled.
+
+You can read more on the official [Android documentation for Dark Theme](https://developer.android.com/guide/topics/ui/look-and-feel/darktheme).
 
 # [iOS](#tab/ios)
 
 App information is taken from the _Info.plist_ for the following fields:
 
-- **Build** – `CFBundleVersion`
-- **Name** - `CFBundleDisplayName` if set, else `CFBundleName`
-- **PackageName**: `CFBundleIdentifier`
-- **VersionString** – `CFBundleShortVersionString`
+- **Build** &mdash; `CFBundleVersion`
+- **Name** &mdash; `CFBundleDisplayName` if set, else `CFBundleName`
+- **PackageName** &mdash; `CFBundleIdentifier`
+- **VersionString** &mdash; `CFBundleShortVersionString`
+
+### Requested theme
+
+_Unspecified_ is always returned on versions of iOS older than 13.0
 
 # [Windows](#tab/windows)
 
 App information is taken from the _Package.appxmanifest_ for the following fields:
 
-- **Build** – Uses the `Build` from the `Version` on the `Identity` node
-- **Name** - `DisplayName` on the `Properties` node
-- **PackageName**: `Name` on the `Identity` node
-- **VersionString** – `Version` on the `Identity` node
+- **Build** &mdash; Uses the `Build` from the `Version` on the `Identity` node
+- **Name** &mdash; `DisplayName` on the `Properties` node
+- **PackageName** &mdash; `Name` on the `Identity` node
+- **VersionString** &mdash; `Version` on the `Identity` node
+
+### Requested theme
+
+Code that accesses the `IAppInfo.RequestedTheme` property must be called on the UI thread or an exception will be thrown.
+
+Windows applications respect the `RequestedTheme` property setting in the Windows _App.xaml_. If it's set to a specific theme, this API always returns this setting. To use the dynamic theme of the OS, remove this property from your application. When your app is run, it returns the theme set by the user in Windows settings: **Settings** > **Personalization** > **Colors** > **Choose your default app mode**.
+
+<!-- TODO: You can read more on the [UWP Requested Theme Documentation](/uwp/api/windows.ui.xaml.application.requestedtheme). -->
 
 --------------
 

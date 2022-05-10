@@ -405,6 +405,16 @@
             href: platform-integration/appmodel/app-actions.md
           - name: App information
             href: platform-integration/appmodel/app-information.md
+          - name: Launcher
+            href: platform-integration/appmodel/launcher.md
+          - name: Main thread
+            href: platform-integration/appmodel/main-thread.md
+          - name: Maps
+            href: platform-integration/appmodel/maps.md
+          - name: Browser
+            href: platform-integration/appmodel/open-browser.md
+          - name: Permissions
+            href: platform-integration/appmodel/permissions.md
         - name: Device features
           items:
           - name: Battery

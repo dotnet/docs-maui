@@ -1,105 +1,47 @@
 ---
 title: "Map"
-description: "Learn how to use the .NET MAUI Map class in the Microsoft.Maui.Essentials namespace. This class enables an application to open the installed map application to a specific location or placemark."
-ms.date: 08/24/2021
-no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
+description: "Learn how to use the .NET MAUI Map class in the Microsoft.Maui.ApplicationModel namespace. This class enables an application to open the installed map application to a specific location or placemark."
+ms.date: 05/09/2022
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel"]
 ---
 
 # Map
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `Map` class. This class enables an application to open the installed map application to a specific location or placemark.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IMap` interface. This interface enables an application to open the installed map application to a specific location or placemark. A default implementation of the `IMap` interface is exposed through the `Map.Default` property.
 
-## Get started
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
-[!INCLUDE [get-started](../includes/get-started.md)]
-
-[!INCLUDE [essentials-namespace](../includes/essentials-namespace.md)]
+The `IMap` and `Map` types are available in the `Microsoft.Maui.ApplicationModel` namespace.
 
 ## Using the map
 
 The map functionality works by calling the `Map.OpenAsync` method, and passing either an instance of the `Location` or `Placemark` type. The following example opens the installed map app at a specific GPS location:
 
-```csharp
-public async Task NavigateToBuilding25()
-{
-    var location = new Location(47.645160, -122.1306032);
-    var options = new MapLaunchOptions { Name = "Microsoft Building 25" };
+:::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="navigate_building":::
 
-    try
-    {
-        await Map.OpenAsync(location, options);
-    }
-    catch (Exception ex)
-    {
-        // No map application available to open
-    }
-}
-```
+> [!TIP]
+> The `Location` and `Placemark` types are in the `Microsoft.Maui.Devices.Sensors` namespace.
 
-When using a `Placemark`, more information is required. The information helps the map app search for the place you're looking for. The following information is required:
+When you use a `Placemark` to open the map, more information is required. The information helps the map app search for the place you're looking for. The following information is required:
 
 - `CountryName`
 - `AdminArea`
 - `Thoroughfare`
 - `Locality`
 
-```csharp
-public async Task NavigateToBuilding25()
-{
-    var placemark = new Placemark
-    {
-        CountryName = "United States",
-        AdminArea = "WA",
-        Thoroughfare = "Microsoft Building 25",
-        Locality = "Redmond"
-    };
-    var options = new MapLaunchOptions { Name = "Microsoft Building 25" };
+:::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="navigate_building_placemark":::
 
-    try
-    {
-        await Map.OpenAsync(placemark, options);
-    }
-    catch (Exception ex)
-    {
-        // No map application available to open or placemark can not be located
-    }
-}
-```
+## Extension methods
 
-## Extension Methods
+As long as the `Microsoft.Maui.Devices.Sensors` namespace is imported, which a new .NET MAUI project automatically does, you can use the built-in extension method `OpenMapAsync` to open the map:
 
-If you already have a reference to a `Location` or `Placemark`, you can use the built-in extension method `OpenMapAsync` with optional `MapLaunchOptions`:
-
-```csharp
-public class MapTest
-{
-    public async Task OpenPlacemarkOnMap(Placemark placemark)
-    {
-        try
-        {
-            await placemark.OpenMapAsync();
-        }
-        catch (Exception ex)
-        {
-            // No map application available to open
-        }
-    }
-}
-```
+:::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="navigate_building_placemark_extension":::
 
 ## Add navigation
 
 When you open the map, you can calculate a route from the device's current location to the specified location. Pass the `MapLaunchOptions` type to the `Map.OpenAsync` method, specifying the navigation mode. The following example opens the map app and specifies a driving navigation mode:
 
-```csharp
-public async Task NavigateToBuilding25()
-{
-    var location = new Location(47.645160, -122.1306032);
-    var options =  new MapLaunchOptions { NavigationMode = NavigationMode.Driving };
-
-    await Map.OpenAsync(location, options);
-}
-```
+:::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="navigate_building_driving":::
 
 ## Platform differences
 

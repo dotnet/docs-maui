@@ -9,5 +9,25 @@
             <Button Text="Read" Clicked="ReadAppInfoButton_Clicked" />
             <Label x:Name="AppInfoLabel" VerticalOptions="Center" />
         </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Label Text="Theme" VerticalOptions="Center" />
+            <Button Text="Read" Clicked="ReadThemeButton_Clicked" />
+            <Label x:Name="ThemeInfoLabel" VerticalOptions="Center" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Label Text="Launcher" VerticalOptions="Center" />
+            <Button Text="Open LYFT" Clicked="OpenRideShareButton_Clicked" />
+            <Button Text="Open LYFT 2" Clicked="OpenRideShare2Button_Clicked" />
+            <Button Text="Open File" Clicked="OpenFileButton_Clicked" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Label Text="Maps" VerticalOptions="Center" />
+            <Button Text="Open MS Building" Clicked="Navigate1_Clicked" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Label Text="Browser" VerticalOptions="Center" />
+            <Button Text="Open" Clicked="BrowserOpen_Clicked" />
+            <Button Text="Open Customized" Clicked="BrowserCustomOpen_Clicked" />
+        </HorizontalStackLayout>
     </StackLayout>
 </ContentPage>

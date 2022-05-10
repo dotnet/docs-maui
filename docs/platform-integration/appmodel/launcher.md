@@ -1,19 +1,20 @@
 ---
 title: "Launcher"
-description: "Learn how to use the .NET MAUI Launcher class in the Microsoft.Maui.Essentials namespace, which can open another application by URI."
-ms.date: 08/20/2019
-no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
+description: "Learn how to use the .NET MAUI ILauncher interface in the Microsoft.Maui.ApplicationModel namespace, which can open another application by URI."
+ms.date: 05/06/2022
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel"]
 ---
 
 # Launcher
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `Launcher` class. This class enables an application to open a URI by the system. This is often used when deep linking into another application's custom URI schemes. If you're looking to open the browser to a website, use the [Browser](open-browser.md) API instead.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `ILauncher` interface. This interface enables an application to open a URI by the system. This is often used when deep linking into another application's custom URI schemes. The `ILauncher` interface is exposed through the `Launcher.Default` property.
+
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
+
+> [!IMPORTANT]
+> To open the browser to a website, use the [Browser](open-browser.md) API instead.
 
 ## Get started
-
-[!INCLUDE [get-started](../includes/get-started.md)]
-
-[!INCLUDE [essentials-namespace](../includes/essentials-namespace.md)]
 
 To access the launcher functionality, the following platform-specific setup is required.
 
@@ -24,7 +25,7 @@ No setup is required.
 
 # [iOS](#tab/ios)
 
-In iOS 9 and greater, Apple restricts what schemes an application can query for. To specify which schemes you would like to use, you must specify `LSApplicationQueriesSchemes` in your _Info.plist_ file:
+Apple requires that you define the schemes you want to use. Add the `LSApplicationQueriesSchemes` key and schemes to the _Platforms/iOS/Info.plist_ file:
 
 ```xml
 <key>LSApplicationQueriesSchemes</key>
@@ -34,7 +35,7 @@ In iOS 9 and greater, Apple restricts what schemes an application can query for.
 </array>
 ```
 
-The `<string>` elements are the URI schemes preregistered with your app. You can't query for schemes outside of this list.
+The `<string>` elements are the URI schemes preregistered with your app. You can't use schemes outside of this list.
 
 # [Windows](#tab/windows)
 
@@ -47,28 +48,11 @@ No setup is required.
 
 To use the Launcher functionality, call the `Launcher.OpenAsync` method and pass in a `string` or `Uri` representing the app to open. Optionally, the `Launcher.CanOpenAsync` method can be used to check if the URI scheme can be handled by an app on the device. The following code demonstrates how to check if a URI scheme is supported or not, and then opens the URI:
 
-```csharp
-public class LauncherTest
-{
-    public async Task OpenRideShareAsync()
-    {
-        var supportsUri = await Launcher.CanOpenAsync("lyft://");
-
-        if (supportsUri)
-            await Launcher.OpenAsync("lyft://ridetype?id=lyft_line");
-    }
-}
-```
+:::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="launcher_open":::
 
 The previous code example can be simplified by using the `TryOpenAsync`, which checks if the URI scheme can be opened, before opening it:
 
-```csharp
-public class LauncherTest
-{
-    public async Task<bool> OpenRideShareAsync() =>
-        await Launcher.TryOpenAsync("lyft://ridetype?id=lyft_line");
-}
-```
+:::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="launcher_open_try":::
 
 ## Open another app via a file
 
@@ -76,21 +60,7 @@ The launcher can also be used to open an app with a selected file. .NET MAUI aut
 
 The following code example writes text to a file, and opens the text file with the launcher:
 
-```csharp
-public class LauncherTest
-{
-    public async Task OpenTextFile()
-    {
-        string popoverTitle = "Read text file";
-        string name = "File.txt";
-        string file = System.IO.Path.Combine(FileSystem.CacheDirectory, name);
-
-        System.IO.File.WriteAllText(file, "Hello World");
-
-        await Launcher.OpenAsync(new OpenFileRequest(popoverTitle, new ReadOnlyFile(file)));
-    }
-}
-```
+:::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="launcher_open_file":::
 
 ## Set the launcher location
 

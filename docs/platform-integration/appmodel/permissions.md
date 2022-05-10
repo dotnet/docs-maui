@@ -1,20 +1,20 @@
 ---
 title: "Permissions"
-description: "Learn how to use the .NET MAUI Permissions class, to check and request permissions. This class is in the Microsoft.Maui.Essentials namespace."
-ms.date: 08/27/2021
-no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
+description: "Learn how to use the .NET MAUI Permissions class, to check and request permissions. This class is in the Microsoft.Maui.ApplicationModel namespace."
+ms.date: 05/09/2022
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel"]
 ---
 
 <!-- TODO update article -->
 # Permissions
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `Permissions` class. This class allows you to check and request permissions at run-time.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `Permissions` class. This class allows you to check and request permissions at run-time. The `Permissions` type is available in the `Microsoft.Maui.ApplicationModel` namespace.
+
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
 ## Get started
 
-[!INCLUDE [get-started](../includes/get-started.md)]
-
-[!INCLUDE [essentials-namespace](../includes/essentials-namespace.md)]
+The following information applies to Android platforms.
 
 [!INCLUDE [android-permissions](../includes/android-permissions.md)]
 
@@ -22,32 +22,28 @@ This article describes how you can use the .NET Multi-platform App UI (.NET MAUI
 
 .NET MAUI attempts to abstract as many permissions as possible. However, each operating system has a different set of permissions. Even though the API allows access to a common permission, there may be differences between operating systems related to that permission. The following table describes the available permissions:
 
-Icon Guide:
-
-<!-- TODO: X = not supported or required?! why required? That doesn't make sense. -->
-- ✔️ - Supported
-- ❌ - Not supported/required
+The following table uses ✔️ to indicate that the permission is supported and ❌ to indicate the permission isn't supported or isn't required:
 
 | Permission        | Android | iOS | UWP | watchOS | tvOS | Tizen |
-|-------------------|:-------:|:---:|:---:|:-------:|:----:|:-----:|:-:|
-| CalendarRead      | ✔️     | ✔️  | ❌  | ✔️      | ❌   | ❌     |
-| CalendarWrite     | ✔️     | ✔️  | ❌  | ✔️      | ❌   | ❌     |
-| Camera            | ✔️     | ✔️  | ❌  | ❌       | ❌   | ✔️    |
-| ContactsRead      | ✔️     | ✔️  | ✔️ | ❌       | ❌   | ❌     |
-| ContactsWrite     | ✔️     | ✔️  | ✔️ | ❌       | ❌   | ❌     |
-| Flashlight        | ✔️     | ❌   | ❌  | ❌       | ❌   | ✔️    |
-| LocationWhenInUse | ✔️     | ✔️  | ✔️ | ✔️      | ✔️  | ✔️    |
-| LocationAlways    | ✔️     | ✔️  | ✔️ | ✔️      | ❌   | ✔️    |
-| Media             | ❌      | ✔️  | ❌  | ❌       | ❌   | ❌     |
-| Microphone        | ✔️     | ✔️  | ✔️ | ❌       | ❌   | ✔️    |
-| Phone             | ✔️     | ✔️  | ❌  | ❌       | ❌   | ❌     |
-| Photos            | ❌      | ✔️  | ❌  | ❌       | ✔️  | ❌     |
-| Reminders         | ❌      | ✔️  | ❌  | ✔️      | ❌   | ❌     |
-| Sensors           | ✔️     | ✔️  | ✔️ | ✔️      | ❌   | ❌     |
-| Sms               | ✔️     | ✔️  | ❌  | ❌       | ❌   | ❌     |
-| Speech            | ✔️     | ✔️  | ❌  | ❌       | ❌   | ❌     |
-| StorageRead       | ✔️     | ❌   | ❌  | ❌       | ❌   | ❌     |
-| StorageWrite      | ✔️     | ❌   | ❌  | ❌       | ❌   | ❌     |
+|-------------------|:-------:|:---:|:---:|:-------:|:----:|:-----:|
+| CalendarRead      | ✔️     | ✔️  | ❌  | ✔️     | ❌   | ❌   |
+| CalendarWrite     | ✔️     | ✔️  | ❌  | ✔️     | ❌   | ❌   |
+| Camera            | ✔️     | ✔️  | ❌  | ❌     | ❌   | ✔️   |
+| ContactsRead      | ✔️     | ✔️  | ✔️  | ❌     | ❌   | ❌   |
+| ContactsWrite     | ✔️     | ✔️  | ✔️  | ❌     | ❌   | ❌   |
+| Flashlight        | ✔️     | ❌  | ❌  | ❌     | ❌   | ✔️   |
+| LocationWhenInUse | ✔️     | ✔️  | ✔️  | ✔️     | ✔️   | ✔️   |
+| LocationAlways    | ✔️     | ✔️  | ✔️  | ✔️     | ❌   | ✔️   |
+| Media             | ❌     | ✔️  | ❌  | ❌     | ❌   | ❌   |
+| Microphone        | ✔️     | ✔️  | ✔️  | ❌     | ❌   | ✔️   |
+| Phone             | ✔️     | ✔️  | ❌  | ❌     | ❌   | ❌   |
+| Photos            | ❌     | ✔️  | ❌  | ❌     | ✔️   | ❌   |
+| Reminders         | ❌     | ✔️  | ❌  | ✔️     | ❌   | ❌   |
+| Sensors           | ✔️     | ✔️  | ✔️  | ✔️     | ❌   | ❌   |
+| Sms               | ✔️     | ✔️  | ❌  | ❌     | ❌   | ❌   |
+| Speech            | ✔️     | ✔️  | ❌  | ❌     | ❌   | ❌   |
+| StorageRead       | ✔️     | ❌  | ❌  | ❌     | ❌   | ❌   |
+| StorageWrite      | ✔️     | ❌  | ❌  | ❌     | ❌   | ❌   |
 
 If a permission is marked as ❌, it will always return `Granted` when checked or requested.
 
@@ -55,9 +51,7 @@ If a permission is marked as ❌, it will always return `Granted` when checked o
 
 To check the current status of a permission, use the `Permissions.CheckStatusAsync` method along with the specific permission to get the status for. The following example checks the status of the `LocationWhenInUse` permission:
 
-```csharp
-PermissionStatus status = await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
-```
+:::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="permission_check":::
 
 A `PermissionException` is thrown if the required permission isn't declared.
 
@@ -68,7 +62,7 @@ It's best to check the status of the permission before requesting it. Each opera
 When using `CheckStatusAsync` or `RequestAsync`, a `PermissionStatus` is returned that can be used to determine the next steps:
 
 - `Unknown`\
-The permission is in an unknown state.
+The permission is in an unknown state, or on iOS, the user has never been prompted.
 
 - `Denied`\
 The user denied the permission request.
@@ -86,9 +80,7 @@ In a restricted state.
 
 To request a permission from the users, use the `Permissions.RequestAsync` method along with the specific permission to request. If the user previously granted permission, and hasn't revoked it, then this method will return `Granted` without showing a dialog to the user. The following example requests the `LocationWhenInUse` permission:
 
-```csharp
-PermissionStatus status = await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
-```
+:::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="permission_request":::
 
 A `PermissionException` is thrown if the required permission isn't declared.
 
@@ -103,116 +95,31 @@ It's best practice to explain to your user why your application needs a specific
 
 The following code presents the general usage pattern for determining whether a permission has been granted, and then requesting it if it hasn't.
 
-```csharp
-public async Task<PermissionStatus> CheckAndRequestLocationPermission()
-{
-    PermissionStatus status = await Permissions.CheckStatusAsync<Permissions.LocationWhenInUse>();
-
-    if (status == PermissionStatus.Granted)
-        return status;
-
-    if (status == PermissionStatus.Denied && DeviceInfo.Platform == DevicePlatform.iOS)
-    {
-        // Prompt the user to turn on in settings
-        // On iOS once a permission has been denied it may not be requested again from the application
-        return status;
-    }
-
-    if (Permissions.ShouldShowRationale<Permissions.LocationWhenInUse>())
-    {
-        // Prompt the user with additional information as to why the permission is needed
-    }
-
-    status = await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
-
-    return status;
-}
-```
-
-Each permission type can have an instance of it created that the methods can be called directly.
-
-```csharp
-#nullable enable
-public async Task<Location?> GetLocationAsync()
-{
-    PermissionStatus status = await CheckAndRequestPermissionAsync(new Permissions.LocationWhenInUse());
-    if (status != PermissionStatus.Granted)
-    {
-        // Notify user permission was denied
-        return null;
-    }
-
-    return await Geolocation.GetLocationAsync();
-}
-
-public async Task<PermissionStatus> CheckAndRequestPermissionAsync<T>(T permission)
-            where T : Permissions.BasePermission
-{
-    PermissionStatus status = await permission.CheckStatusAsync();
-            
-    if (status != PermissionStatus.Granted)
-        status = await permission.RequestAsync();
-
-    return status;
-}
-#nullable restore
-```
+:::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="permission_check_and_request":::
 
 ## Extending permissions
 
 The Permissions API was created to be flexible and extensible for applications that require more validation or permissions that aren't included in .NET MAUI. Create a class that inherits from `Permissions.BasePermission`, and implement the required abstract methods. The following example code demonstrates the basic abstract members, but without implementation:
 
-```csharp
-public class MyPermission : Permissions.BasePermission
-{
-    // This method checks if current status of the permission.
-    public override Task<PermissionStatus> CheckStatusAsync()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    // This method is optional and a PermissionException is often thrown if a permission is not declared.
-    public override void EnsureDeclared()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    // Requests the user to accept or deny a permission.
-    public override Task<PermissionStatus> RequestAsync()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    // Indicates that the requestor should prompt the user as to why the app requires the permission, because the
-    // user has previously denied this permission.
-    public override bool ShouldShowRationale()
-    {
-        throw new NotImplementedException();
-    }
-}
-```
+:::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="permission_class":::
 
 When implementing a permission in a specific platform, the `BasePlatformPermission` class can be inherited from. This class provides extra platform helper methods to automatically check the permission declarations. This helps when creating custom permissions that do groupings, for example requesting both **Read** and **Write** access to storage on Android. The following code example demonstrates requesting **Read** and **Write** storage access:
 
-```csharp
-public class ReadWriteStoragePerms: Microsoft.Maui.Essentials.Permissions.BasePlatformPermission
-{
-    public override (string androidPermission, bool isRuntime)[] RequiredPermissions =>
-        new List<(string androidPermission, bool isRuntime)>
-        {
-            (global::Android.Manifest.Permission.ReadExternalStorage, true),
-            (global::Android.Manifest.Permission.WriteExternalStorage, true)
-        }.ToArray();
-}
-```
+:::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="permission_readwrite":::
 
 You then check the permission in the same way as any other permission type provided by .NET MAUI:
 
-```csharp
-await Permissions.RequestAsync<ReadWriteStoragePermission>();
-```
+:::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="permission_readwrite_request":::
 
-<!-- TODO: Is this still the same? Does shared code just pull in the platform specific code at compile time and thus you don't need an interface as long as you've declared the type in all platforms you're compiling for? (The rest of this section was not processed for this update and needs to be updated)-->
+<!-- Cutting this
+     It should be updated to demonstrate creating a class in each of the platform project folders, or by simply using #if OS checks
+     However, at this time VS isn't giving me the correct APIs when I swap from Android to Windows, so I can't even try to write
+     any code outside of Android
+
+     Also, this talks about the "shared" project concept which isn't required in .NET MAUI. I would also assume that
+     using DependencyService.Register isn't required. So this code will have to be updated too.
+>
+
 If you wanted to call this API from your shared code, you could create an interface and use a dependency service to register and get the implementation.
 
 ```csharp
@@ -226,7 +133,7 @@ public interface IReadWritePermission
 Then implement the interface in your platform project:
 
 ```csharp
-public class ReadWriteStoragePermission : Xamarin.Essentials.Permissions.BasePlatformPermission, IReadWritePermission
+public class ReadWriteStoragePermission : Permissions.BasePlatformPermission, IReadWritePermission
 {
     public override (string androidPermission, bool isRuntime)[] RequiredPermissions => new List<(string androidPermission, bool isRuntime)>
     {
@@ -252,6 +159,7 @@ if (status != PermissionStatus.Granted)
     status = await readWritePermission.RequestAsync();
 }
 ```
+-->
 
 ## Platform differences
 

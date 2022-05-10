@@ -1,74 +1,35 @@
 ---
 title: Run code on the main UI thread
 description: "In .NET MAUI, event handlers may be called on a secondary thread. The MainThread class allows an application to run code on the main UI thread. This article describes how to use the MainThread class."
-ms.date: 08/12/2021
-no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
+ms.date: 05/06/2022
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel"]
 ---
 
 # MainThread
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `MainThread` class to run code on the main UI thread. Most operating systems use a single-threading model for code involving the user interface. This model is necessary to properly serialize user-interface events, including keystrokes and touch input. This thread is often called the _main thread_, the _user-interface thread_, or the _UI thread_. The disadvantage of this model is that all code that accesses user interface elements must run on the application's main thread.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `MainThread` class to run code on the main UI thread. Most operating systems use a single-threading model for code involving the user interface. This model is necessary to properly serialize user-interface events, including keystrokes and touch input. This thread is often called the _main thread_, the _user-interface thread_, or the _UI thread_. The disadvantage of this model is that all code that accesses user interface elements must run on the application's main thread.
+
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
 ## When is it required
 
 Applications sometimes need to use events that call the event handler on a secondary thread, such as the [`Accelerometer`](../sensors/index.md#accelerometer) or [`Compass`](../sensors/index.md#compass) sensors. All sensors might return information on a secondary thread when used with faster sensing speeds. If the event handler needs to access user-interface elements, it must invoke code on the main thread.
 
-## Get started
-
-[!INCLUDE [get-started](../includes/get-started.md)]
-
-[!INCLUDE [essentials-namespace](../includes/essentials-namespace.md)]
-
 ## Run code on the UI thread
 
 To run code on the main thread, call the static `MainThread.BeginInvokeOnMainThread` method. The argument is an [`Action`](xref:System.Action) object, which is simply a method with no arguments and no return value:
 
-```csharp
-MainThread.BeginInvokeOnMainThread(() =>
-{
-    // Code to run on the main thread
-});
-```
+:::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="runcode_lambda":::
 
-It is also possible to define a separate method for the code that must run on the main thread:
+It is also possible to define a separate method for the code, and then call that code with the `BeginInvokeOnMainThread` method:
 
-```csharp
-void MyMainThreadCode()
-{
-    // Code to run on the main thread
-}
-```
-
-You can then run this method on the main thread by referencing it in the `BeginInvokeOnMainThread` method:
-
-```csharp
-MainThread.BeginInvokeOnMainThread(MyMainThreadCode);
-```
+:::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="runcode_func_pointer":::
 
 ## Determine if invocation is required
 
-With the `MainThread` class, you can determine if the current code is running on the main thread. The `MainThread.IsMainThread` property returns `true` if the code calling the property is running on the main thread, and `false` if it isn't. A program can use this property to run different code for the main thread or a secondary thread:
+With the `MainThread` class, you can determine if the current code is running on the main thread. The `MainThread.IsMainThread` property returns `true` if the code calling the property is running on the main thread, and `false` if it isn't. It's logical to assume that you need to determine if the code is running on the main thread before calling `BeginInvokeOnMainThread`. For example, the following code uses the `MainThread.IsMainThread` to detect if the `MyMainThreadCode` method should be called directly if the code is running on the main thread. If it isn't running on the main thread, the method is passed to `MainThread.BeginInvokeOnMainThread`:
 
-```csharp
-if (MainThread.IsMainThread)
-{
-    // Code to run if this is the main thread
-}
-else
-{
-    // Code to run if this is a secondary thread
-}
-```
-
-It's logical to assume that you need to determine if the code is running on the main thread before calling `BeginInvokeOnMainThread`. For example, the following code uses the `MainThread.IsMainThread` to detect if the `MyMainThreadCode` method should be called directly if the code is running on the main thread. If it isn't running on the main thread, the method is passed to `MainThread.BeginInvokeOnMainThread`:
-
-```csharp
-if (MainThread.IsMainThread)
-    MyMainThreadCode();
-
-else
-    MainThread.BeginInvokeOnMainThread(MyMainThreadCode);
-```
+:::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="runcode_test_thread":::
 
 This check isn't necessary. `BeginInvokeOnMainThread` itself tests if the current code is running on the main thread or not. If the code is running on the main thread, `BeginInvokeOnMainThread` just calls the provided method directly. If the code is running on a secondary thread, `BeginInvokeOnMainThread` invokes the provided method on the main thread. Therefore, if the code you run is the same, regardless of the main or secondary thread, simply call `BeginInvokeOnMainThread` without checking if it's required. There is negligible overhead in doing so.
 
@@ -84,7 +45,7 @@ The `MainThread` class includes the following additional `static` methods that c
 | `InvokeOnMainThreadAsync`    | `Action`        | `Task`    | Invokes an `Action` on the main thread, and waits for it to complete.       |
 | `InvokeOnMainThreadAsync<T>` | `Func<Task<T>>` | `Task<T>` | Invokes a `Func<Task<T>>` on the main thread, and waits for it to complete. |
 | `InvokeOnMainThreadAsync`    | `Func<Task>`    | `Task`    | Invokes a `Func<Task>` on the main thread, and waits for it to complete.    |
-| `GetMainThreadSynchronizationContextAsync` |                 | `Task<SynchronizationContext>` | Returns the `SynchronizationContext` for the main thread.                   |
+| `GetMainThreadSynchronizationContextAsync` |               | `Task<SynchronizationContext>` | Returns the `SynchronizationContext` for the main thread.                   |
 
 ## API
 
