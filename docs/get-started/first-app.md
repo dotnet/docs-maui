@@ -24,13 +24,13 @@ Visual Studio for Mac support will arrive in a future release.
 
 :::zone-end
 
-## Get started with Visual Studio 2022 17.2 (Preview)
+## Get started with Visual Studio 2022 17.3 (Preview)
 
 :::zone pivot="devices-android"
 
-In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 17.2 Preview, and run it on an Android emulator:
+In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 17.3 Preview, and run it on an Android emulator:
 
-01. To create .NET MAUI apps, you'll need the latest Visual Studio 2022 17.2 Preview:
+01. To create .NET MAUI apps, you'll need the latest Visual Studio 2022 17.3 Preview:
 
     :::image type="content" source="media/first-app/download-community-preview.png" alt-text="Download Visual Studio 2022 Community Preview" link="https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Community&channel=Preview&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2303":::
 
@@ -38,7 +38,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
     :::image type="content" source="media/first-app/download-enterprise-preview.png" alt-text="Download Visual Studio 2022 Enterprise Preview" link="https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Enterprise&channel=Preview&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2303":::
 
-    Either install Visual Studio, or modify your installation, and install the Mobile development with .NET workload:
+    Either install Visual Studio, or modify your installation, and install the .NET Multi-Platform App UI development workload with its default optional installation options:
 
     :::image type="content" source="media/first-app/vs-workloads.png" alt-text="Visual Studio workloads for .NET MAUI.":::
 
@@ -64,9 +64,9 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 17.2 P
 
 :::zone pivot="devices-windows"
 
-In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 17.2 Preview, and run it on Windows:
+In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 17.3 Preview, and run it on Windows:
 
-01. To create .NET MAUI apps, you'll need the latest Visual Studio 2022 17.2 Preview:
+01. To create .NET MAUI apps, you'll need the latest Visual Studio 2022 17.3 Preview:
 
     :::image type="content" source="media/first-app/download-community-preview.png" alt-text="Download Visual Studio 2022 Community Preview" link="https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Community&channel=Preview&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2302":::
 
@@ -74,14 +74,14 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
     :::image type="content" source="media/first-app/download-enterprise-preview.png" alt-text="Download Visual Studio 2022 Enterprise Preview" link="https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Enterprise&channel=Preview&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2302":::
 
-    Either install Visual Studio, or modify your installation, and install the Mobile development with .NET workload:
+    Either install Visual Studio, or modify your installation, and install the .NET Multi-Platform App UI development workload with its default optional installation options:
 
     :::image type="content" source="media/first-app/vs-workloads.png" alt-text="Visual Studio workloads for .NET MAUI.":::
 
 :::zone-end
 
 <!-- markdownlint-disable MD029 -->
-02. Launch Visual Studio 2022 17.2 Preview, and in the start window click **Create a new project** to create a new project:
+02. Launch Visual Studio 2022 17.3 Preview, and in the start window click **Create a new project** to create a new project:
 
     :::image type="content" source="media/first-app/new-solution.png" alt-text="New solution.":::
 
