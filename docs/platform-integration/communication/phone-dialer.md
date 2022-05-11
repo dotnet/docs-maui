@@ -9,11 +9,11 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel.Communication"]
 
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `IPhoneDialer` interface. This interface enables an application to open a phone number in the dialer. The `IPhoneDialer` interface is exposed through the `PhoneDialer.Default` property.
 
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
+
+The `PhoneDialer` and `IPhoneDialer` types are available in the `Microsoft.Maui.ApplicationModel.Communication` namespace.
+
 ## Get started
-
-[!INCLUDE [get-started](../includes/get-started.md)]
-
-[!INCLUDE [essentials-namespace](../includes/essentials-namespace.md)]
 
 To access the phone dialer functionality, the following platform-specific setup is required.
 
