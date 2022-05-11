@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlatformIntegration.CommsPage"
+             Title="CommsPage">
+    <StackLayout>
+        <HorizontalStackLayout>
+            <Button Text="SelectContact" Clicked="SelectContactButton_Clicked" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Button Text="OpenEmail" Clicked="SendEmailButton_Clicked" />
+            <Button Text="OpenEmailAttach" Clicked="SendEmailPictureButton_Clicked" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Button Text="OpenSMS" Clicked="SendSmsButton_Clicked" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Button Text="OpenPhone" Clicked="DialPhoneButton_Clicked" />
+        </HorizontalStackLayout>
+    </StackLayout>
+</ContentPage>

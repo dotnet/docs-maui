@@ -29,5 +29,21 @@
             <Button Text="Open" Clicked="BrowserOpen_Clicked" />
             <Button Text="Open Customized" Clicked="BrowserCustomOpen_Clicked" />
         </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Button Text="Read Version" Clicked="ReadVersion_Clicked" />
+            <VerticalStackLayout>
+                <Label x:Name="labelIsFirst" />
+                <Label x:Name="labelCurrentVersionIsFirst" />
+                <Label x:Name="labelCurrentBuildIsFirst" />
+                <Label x:Name="labelCurrentVersion" />
+                <Label x:Name="labelCurrentBuild" />
+                <Label x:Name="labelPreviousVersion" />
+                <Label x:Name="labelPreviousBuild" />
+                <Label x:Name="labelFirstInstalledVer" />
+                <Label x:Name="labelFirstInstalledBuild" />
+                <Label x:Name="labelVersionHistory" />
+                <Label x:Name="labelBuildHistory" />
+            </VerticalStackLayout>
+        </HorizontalStackLayout>
     </StackLayout>
 </ContentPage>

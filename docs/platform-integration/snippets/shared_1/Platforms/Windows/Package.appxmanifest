@@ -28,6 +28,7 @@
 
   <Capabilities>
     <rescap:Capability Name="runFullTrust" />
+	<uap:Capability Name="contacts"/>
   </Capabilities>
 
 </Package>

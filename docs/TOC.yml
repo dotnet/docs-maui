@@ -415,6 +415,16 @@
             href: platform-integration/appmodel/open-browser.md
           - name: Permissions
             href: platform-integration/appmodel/permissions.md
+        - name: Communication
+          items:
+          - name: Contacts
+            href: platform-integration/communication/contacts.md
+          - name: Email
+            href: platform-integration/communication/email.md
+          - name: Phone
+            href: platform-integration/communication/phone-dialer.md
+          - name: SMS (messaging)
+            href: platform-integration/communication/sms.md
         - name: Device features
           items:
           - name: Battery

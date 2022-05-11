@@ -27,10 +27,10 @@ namespace PlatformIntegration
         }
 #endif
 #if WINDOWS
-    public class ReadWriteStoragePerms : Permissions.BasePlatformPermission
-    {
+        public class ReadWriteStoragePerms : Permissions.BasePlatformPermission
+        {
 
-    }
+        }
 #endif
 #if IOS
 #endif

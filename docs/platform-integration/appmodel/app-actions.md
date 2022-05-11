@@ -15,7 +15,7 @@ The `AppActions` class is available in the `Microsoft.Maui.ApplicationModel` nam
 
 ## Get started
 
-To access the `AppActions` functionality the following platform specific setup is required.
+To access the `AppActions` functionality, the following platform specific setup is required.
 
 <!-- markdownlint-disable MD025 -->
 

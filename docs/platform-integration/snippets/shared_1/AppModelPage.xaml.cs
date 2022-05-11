@@ -231,11 +231,6 @@ public partial class AppModelPage : ContentPage
     }
     //</browser_open_custom>
 
-    private async void otht()
-    {
-        
-    }
-
     private async void CheckLocationPermission()
     {
         try
@@ -428,4 +423,25 @@ public partial class AppModelPage : ContentPage
             // Permission not declared
         }
     }
+
+
+    //<version_read>
+    private void ReadVersion_Clicked(object sender, EventArgs e)
+    {
+        labelIsFirst.Text = VersionTracking.IsFirstLaunchEver.ToString();
+        labelCurrentVersionIsFirst.Text = VersionTracking.IsFirstLaunchForCurrentVersion.ToString();
+        labelCurrentBuildIsFirst.Text = VersionTracking.IsFirstLaunchForCurrentBuild.ToString();
+        labelCurrentVersion.Text = VersionTracking.CurrentVersion.ToString();
+        labelCurrentBuild.Text = VersionTracking.CurrentBuild.ToString();
+        labelFirstInstalledVer.Text = VersionTracking.FirstInstalledVersion.ToString();
+        labelFirstInstalledBuild.Text = VersionTracking.FirstInstalledBuild.ToString();
+        labelVersionHistory.Text = String.Join(',', VersionTracking.VersionHistory);
+        labelBuildHistory.Text = String.Join(',', VersionTracking.BuildHistory);
+
+        // These two properties may be null if this is the first version
+        labelPreviousVersion.Text = VersionTracking.PreviousVersion?.ToString() ?? "none";
+        labelPreviousBuild.Text = VersionTracking.PreviousBuild?.ToString() ?? "none";
+    }
+    //</version_read>
+
 }

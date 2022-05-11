@@ -1,19 +1,20 @@
 ---
 title: "Contacts"
-description: "Learn how to use the .NET MAUI Contacts class in the Microsoft.Maui.Essentials namespace, which lets a pick a contact and retrieve information about it."
-ms.date: 08/16/2021
-no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
+description: "Learn how to use the .NET MAUI Contacts class in the Microsoft.Maui.ApplicationModel.Communication namespace, which lets a pick a contact and retrieve information about it."
+ms.date: 05/11/2022
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel.Communication"]
 ---
 
 # Contacts
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `Contacts` class to select a contact and read information about it.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IContacts` interface to select a contact and read information about it.
+The `IContacts` interface is exposed through the `Contacts.Default` property.
+
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
+
+The `Contacts` and `IContacts` types are available in the `Microsoft.Maui.ApplicationModel.Communication` namespace.
 
 ## Get started
-
-[!INCLUDE [get-started](../includes/get-started.md)]
-
-[!INCLUDE [essentials-namespace](../includes/essentials-namespace.md)]
 
 To access the **Contacts** functionality the following platform-specific setup is required.
 
@@ -40,15 +41,19 @@ The `ReadContacts` permission is required and must be configured in the Android 
   <uses-permission android:name="android.permission.READ_CONTACTS" />
   ```
 
+<!-- TODO not yet supported>
+
   \- or -
 
 - Use the Android project properties:
 
   Right-click on the Android project and open the project's properties. Under **Android Manifest** find the **Required permissions:** area and check the **Contacts** permission. This will automatically update the **AndroidManifest.xml** file.
 
+-->
+
 # [iOS](#tab/ios)
 
-In your _Info.plist_ file, add the following keys:
+In the **Solution Explorer** pane, right-click on the _Platforms/iOS/Info.plist_ file. Select **Open With** and then select the **XML (Text) Editor** item. Press the **OK** button. In the file, add the following key and value:
 
 ```xml
 <key>NSContactsUsageDescription</key>
@@ -59,63 +64,22 @@ The `<string>` element is the description specific to your app and is shown to t
 
 # [Windows](#tab/windows)
 
-In the _Package.appxmanifest_, under **Capabilities**, ensure that the **Contact** capability is checked.
+In the **Solution Explorer** pane, right-click on the _Platforms/Windows/Package.appxmanifest_ file, and select **View Code**. Under the `<Capabilities>` node, add `<uap:Capability Name="contacts"/>`.
 
 -----
 <!-- markdownlint-enable MD025 -->
 
 ## Pick a contact
 
-You can request the user to pick a contact by calling the `Contacts.PickContactAsync` method. A contact dialog will appear on the device allowing the user to select a contact. If the user doesn't select a contact, `null` is returned.
+You can request the user to pick a contact by calling the `PickContactAsync` method. A contact dialog will appear on the device allowing the user to select a contact. If the user doesn't select a contact, `null` is returned.
 
-```csharp
-try
-{
-    var contact = await Contacts.PickContactAsync();
-
-    if(contact == null)
-        return;
-
-    var id = contact.Id;
-    var namePrefix = contact.NamePrefix;
-    var givenName = contact.GivenName;
-    var middleName = contact.MiddleName;
-    var familyName = contact.FamilyName;
-    var nameSuffix = contact.NameSuffix;
-    var displayName = contact.DisplayName;
-    var phones = contact.Phones; // List of phone numbers
-    var emails = contact.Emails; // List of email addresses
-}
-catch (Exception ex)
-{
-    // Handle exception here.
-}
-```
+:::code language="csharp" source="../snippets/shared_1/CommsPage.xaml.cs" id="contact_select":::
 
 ## Get all contacts
 
-The `Contacts.GetAllAsync` method returns a collection of contacts.
+The `GetAllAsync` method returns a collection of contacts.
 
-```csharp
-ObservableCollection<Contact> contactsCollect = new ObservableCollection<Contact>();
-
-try
-{
-    // cancellationToken parameter is optional
-    var cancellationToken = default(CancellationToken);
-    var contacts = await Contacts.GetAllAsync(cancellationToken);
-
-    if (contacts == null)
-        return;
-
-    foreach (var contact in contacts)
-        contactsCollect.Add(contact);
-}
-catch (Exception ex)
-{
-    // Handle exception here.
-}
-```
+:::code language="csharp" source="../snippets/shared_1/CommsPage.xaml.cs" id="contact_all":::
 
 ## Platform differences
 
@@ -125,11 +89,11 @@ This section describes the platform-specific differences with the contacts API.
 <!-- markdownlint-disable MD024 -->
 # [Android](#tab/android)
 
-- The `cancellationToken` parameter in the `GetAllAsync` method is only used on Windows.
+- The `cancellationToken` parameter in the `GetAllAsync` method isn't supported.
 
 # [iOS](#tab/ios)
 
-- The `cancellationToken` parameter in the `GetAllAsync` method is only used on Windows.
+- The `cancellationToken` parameter in the `GetAllAsync` method isn't supported.
 - The iOS platform doesn't support the `DisplayName` property natively, thus, the `DisplayName` value is constructed as "GivenName FamilyName".
 
 # [Windows](#tab/windows)
