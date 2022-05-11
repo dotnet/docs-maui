@@ -43,5 +43,10 @@ public partial class MainPage : ContentPage
     {
         Navigation.PushAsync(new CommsPage());
     }
+
+    private void Reader_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new ScreenReaderPage());
+    }
 }
 

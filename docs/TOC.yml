@@ -443,6 +443,8 @@
             href: platform-integration/device/battery.md
         - name: Device sensors
           href: platform-integration/sensors/index.md
+        - name: Semantic screen reader
+          href: platform-integration/accessibility/semantic-screen-reader.md
     - name: Publish
       items:
         - name: Android

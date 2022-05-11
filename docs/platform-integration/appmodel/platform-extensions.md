@@ -1,24 +1,24 @@
 ---
-title: "Xamarin.Essentials Platform Extensions"
-description: "Xamarin.Essentials provides several platform extension methods when having to work with platform types such as Rect, Size, and Point."
+title: "Platform extensions"
+description: ".NET MAUI provides several platform extension methods that help when working with platform-specific types such as Rect, Size, and Point."
 ms.date: 03/13/2019
-no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui."]
 ---
 
-<!-- TODO update article -->
-# Platform Extensions
+<!-- TODO update article
+
+These may have been removed from MAUI...
+
+ -->
+# Platform extensions
 
 Xamarin.Essentials provides several platform extension methods when having to work with platform types such as Rect, Size, and Point. This means that you can convert between the `System` version of these types for their iOS, Android, and UWP specific types.
-
-## Get started
-
-[!INCLUDE [get-started](../includes/get-started.md)]
 
 ## Using Platform Extensions
 
 [!INCLUDE [essentials-namespace](../includes/essentials-namespace.md)]
 
-All platform extensions can only be called from the iOS, Android, or UWP project.
+All platform extensions can only be called from the iOS, Android, or Windows projects.
 
 ## Android Extensions
 
@@ -68,13 +68,13 @@ void Platform_ActivityStateChanged(object sender, Xamarin.Essentials.ActivitySta
 
 Activity states are the following:
 
-* Created
-* Resumed
-* Paused
-* Destroyed
-* SaveInstanceState
-* Started
-* Stopped
+- Created
+- Resumed
+- Paused
+- Destroyed
+- SaveInstanceState
+- Started
+- Stopped
 
 <!-- TODO Read the [Activity Lifecycle](../android/app-fundamentals/activity-lifecycle/index.md) documentation to learn more.-->
 
