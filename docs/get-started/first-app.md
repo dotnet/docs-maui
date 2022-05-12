@@ -140,7 +140,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
     > [!WARNING]
     > Hardware acceleration must be enabled to maximize Android emulator performance. Failure to do this will result in the emulator running very slowly. For more information, see [How to enable hardware acceleration with Android emulators (Hyper-V & HAXM)](~/android/emulator/hardware-acceleration.md).
 
-01. In the running app in the Android emulator, press the **CLICK ME** button several times and observe that the count of the number of button clicks is incremented.
+01. In the running app in the Android emulator, press the button several times and observe that the count of the number of button clicks is incremented.
 
     :::image type="content" source="media/first-app/running-app.png" alt-text="App running in the Android emulator." lightbox="media/first-app/running-app-large.png":::
 
@@ -163,7 +163,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
     :::image type="content" source="media/first-app/windows-developer-mode-win11.png" alt-text="Developer Mode toggle on the Windows 11 settings app.":::
 
-01. In the running app, press the **Click me** button several times and observe that the count of the number of button clicks is incremented.
+01. In the running app, press the button several times and observe that the count of the number of button clicks is incremented.
 
     :::image type="content" source="media/first-app/windows-running-app.png" alt-text=".NET MAUI app running on Windows.":::
 
