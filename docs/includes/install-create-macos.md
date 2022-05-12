@@ -1,4 +1,3 @@
-
 1. To create .NET MAUI apps, you'll need to download and run the [installer](https://github.com/dotnet/installer/blob/main/README.md#installers-and-binaries) for the latest .NET 6 runtime. You'll also need to download and install the latest version of [Xcode 13](https://xcodereleases.com), which is also available from the App Store app on your Mac.
 
 1. On your Mac, open **Terminal** and check that you have the latest .NET 6 runtime installed:

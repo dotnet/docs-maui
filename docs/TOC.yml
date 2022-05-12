@@ -31,6 +31,8 @@
                   href: android/device/setup.md
         - name: iOS
           items:
+            - name: Build an iOS app with .NET CLI
+              href: ios/cli.md
             - name: Pair to Mac
               href: ios/pair-to-mac.md
             - name: Simulators
