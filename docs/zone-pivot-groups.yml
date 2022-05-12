@@ -1,19 +1,12 @@
 ### YamlMime:ZonePivotGroups
 groups:
-- id: preview-platforms
-  title: Platform
-  prompt: Choose your development environment
-  pivots:
-    - id: windows
-      title: Visual Studio 2022
-    - id: dotnet-cli
-      title: .NET CLI
-- id: devices-set-one
+- id: devices-deployment
   title: Devices
   prompt: Choose your deployment device
   pivots:
     - id: devices-android
       title: Android
+    - id: devices-ios
+      title: iOS
     - id: devices-windows
       title: Windows
-
