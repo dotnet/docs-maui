@@ -201,6 +201,8 @@
           items:
             - name: Overview
               href: user-interface/controls/index.md
+            - name: Align and position controls
+              href: user-interface/align-position.md
             - name: Customize controls
               href: user-interface/handlers/customize.md
             - name: Layouts
@@ -417,5 +419,15 @@
       items:
         - name: Android
           href: android/deployment/overview.md
+        - name: iOS
+          items:
+            - name: Publish an iOS app
+              href: ios/deployment/overview.md
+            - name: Provision for app store distribution
+              href: ios/deployment/provision.md
+            - name: Entitlements and capabilities
+              href: ios/deployment/entitlements.md
+        - name: macOS
+          href: macos/deployment/overview.md
         - name: Windows
           href: windows/deployment/overview.md
