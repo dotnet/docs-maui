@@ -1,7 +1,7 @@
 ---
 title: "Publish a .NET MAUI app for Windows"
 description: "Learn how to package and publish a Windows .NET MAUI app."
-ms.date: 03/25/2022
+ms.date: 05/12/2022
 ---
 
 # Publish a .NET MAUI app for Windows
@@ -17,13 +17,7 @@ When distributing your .NET Multi-platform App UI (.NET MAUI) app for Windows, y
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
-The current preview of .NET MAUI only allows publishing an MSIX package. You can't yet publish a Windows executable file for distribution.
-
-## Prerequisites
-
-In addition to the .NET MAUI workload, you'll need to add the latest Visual C++ build tools. Open the Visual Studio 2022 installer and add the **MSVC v143 - VS2022 C++ x64/x86 build tools (latest)** individual component. For more information on how to install an individual component, see [Modify Visual Studio workloads, components, and language packs](/visualstudio/install/modify-visual-studio?view=vs-2022&preserve-view=true).
-
-:::image type="content" source="media/overview/individual-component-small.png" alt-text="Visual Studio individual component highlighting the latest C++ build tools." lightbox="media/overview/individual-component.png":::
+.NET MAUI currently only allows publishing an MSIX package. You can't yet publish a Windows executable file for distribution.
 
 ## Create a signing certificate
 
@@ -101,21 +95,22 @@ Add the following `<PropertyGroup>` node to your project file. This property gro
 <PropertyGroup Condition="$(TargetFramework.Contains('-windows')) and '$(Configuration)' == 'Release'">
     <GenerateAppxPackageOnBuild>true</GenerateAppxPackageOnBuild>
     <AppxPackageSigningEnabled>true</AppxPackageSigningEnabled>
-    <PackageCertificateKeyFile>myCert.pfx</PackageCertificateKeyFile> <!-- Optional if you want to use the exported PFX file -->
     <PackageCertificateThumbprint>A10612AF095FD8F8255F4C6691D88F79EF2B135E</PackageCertificateThumbprint>
 </PropertyGroup>
 ```
 
+<!-- Place in PropertyGroup above once pfx export works: <PackageCertificateKeyFile>myCert.pfx</PackageCertificateKeyFile> <!-- Optional if you want to use the exported PFX file -->
+
 Replace the `<PackageCertificateThumbprint>` property value with the certificate thumbprint you previously generated. Alternatively, you can remove this setting from the project file and provide it on the command line. For example: `/p:PackageCertificateThumbprint=A10612AF095FD8F8255F4C6691D88F79EF2B135E`.
 
-The `<GenerateAppxPackageOnBuild>` set to `true` packages the app and signs it with the certificate that matches the `<PackageCertificateThumbprint>` value. Signing only happens if the `<AppxPackageSigningEnabled>` setting is `true`.
+Setting the `<GenerateAppxPackageOnBuild>` property to `true` packages the app and signs it with the certificate that matches the `<PackageCertificateThumbprint>` value. Signing only happens if the `<AppxPackageSigningEnabled>` setting is `true`.
 
 ## Publish
 
 To publish your app, open the **Developer Command Prompt for VS 2022 Preview** terminal and navigate to the project's folder. Run `dotnet` in publish mode:  
 
 ```console
-dotnet publish MyMauiApp.csproj -f net6.0-windows10.0.19041.0 -c Release
+dotnet publish -f net6.0-windows10.0.19041.0 -c Release
 ```
 
 > [!NOTE]
@@ -125,7 +120,6 @@ The following table defines the parameters used by the previous command:
 
 | Parameter                    | Value                                                                               |
 |------------------------------|-------------------------------------------------------------------------------------|
-| `MyMauiApp.csproj`           | Path to the project file of your .NET MAUI app                                      |
 | `-f net6.0-windows{version}` | The target framework, which is a Windows TFM, such as `net6.0-windows10.0.19041.0`. Ensure that this value is identical to the value in the `<TargetFrameworks>` node in your .csproj.           |
 | `-c Release`                 | Sets the build configuration, which is `Release`.                                   |
 
