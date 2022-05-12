@@ -92,33 +92,40 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
 01. In the **User Account Control** dialog, press the **Yes** button:
 
-    :::image type="content" source="media/first-app/user-account-control.png" alt-text="User Account Control dialog.":::
+    :::image type="content" source="media/first-app/android-sdk-license-uac.png" alt-text="Android SDK license user account control dialog.":::
 
     Wait for Visual Studio to download the Android SDK and Android Emulator.
+
+01. In the **User Account Control** dialog, press the **Yes** button:
+
+    :::image type="content" source="media/first-app/android-sdk-license-uac.png" alt-text="Windows command processor user account control dialog.":::
+
+    Wait for Visual Studio to download the Android SDK and Android Emulator.    
 
 :::zone pivot="devices-android"
 
 <!-- markdownlint-disable MD029 -->
-08. In the Visual Studio toolbar, press the **Android Emulator** button to build the app:
+
+08. In the Visual Studio toolbar, use the **Debug Target** drop down to ensure that the **Android Emulators > Android Emulator** entry is selected:
+
+    :::image type="content" source="media/first-app/android-debug-target.png" alt-text="Select the Android Emulator debugging target for .NET MAUI.":::
+
+    <!-- markdownlint-enable MD029 -->
+
+01. In the Visual Studio toolbar, press the **Android Emulator** button to build the app:
 
     :::image type="content" source="media/first-app/android-emulator-button.png" alt-text="Android emulator button.":::
 
     > [!IMPORTANT]
     > Hardware acceleration must be enabled to maximize Android emulator performance. For more information, see [How to enable hardware acceleration with Android emulators (Hyper-V & HAXM)](~/android/emulator/hardware-acceleration.md).
 
-    <!-- markdownlint-enable MD029 -->
-
 01. In the **User Account Control** dialog, press the **Yes** button:
 
-    :::image type="content" source="media/first-app/user-account-control.png" alt-text="User Account Control dialog.":::
+    :::image type="content" source="media/first-app/android-device-manager-uac.png" alt-text="Android Device Manager user account control dialog.":::
 
 01. In the **New Device** window, press the **Create** button:
 
     :::image type="content" source="media/first-app/new-android-device.png" alt-text="New Android Device window.":::
-
-01. In the **License Acceptance** window, press the **Accept** button:
-
-    :::image type="content" source="media/first-app/license-acceptance.png" alt-text="License Acceptance window.":::
 
     Wait for Visual Studio to download, unzip, and create an Android emulator.
 
