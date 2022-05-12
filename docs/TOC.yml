@@ -417,6 +417,14 @@
       items:
         - name: Android
           href: android/deployment/overview.md
+        - name: iOS
+          items:
+            - name: Publish an iOS app
+              href: ios/deployment/overview.md
+            - name: Provision for app store distribution
+              href: ios/deployment/provision.md
+            - name: Entitlements and capabilities
+              href: ios/deployment/entitlements.md
         - name: macOS
           href: macos/deployment/overview.md
         - name: Windows

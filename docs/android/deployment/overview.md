@@ -9,6 +9,7 @@ ms.date: 03/17/2022
 > [!div class="op_single_selector"]
 >
 > - [Publish for Android](overview.md)
+> - [Publish for iOS](../../ios/deployment/overview.md)
 > - [Publish for macOS](../../macos/deployment/overview.md)
 > - [Publish for Windows](../../windows/deployment/overview.md)
 
