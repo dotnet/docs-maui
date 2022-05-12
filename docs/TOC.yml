@@ -465,6 +465,9 @@
           href: platform-integration/sensors/geolocation.md
         - name: Semantic screen reader
           href: platform-integration/accessibility/semantic-screen-reader.md
+        - name: Web authentication
+          href: platform-integration/authentication.md
+            
     - name: Publish
       items:
         - name: Android

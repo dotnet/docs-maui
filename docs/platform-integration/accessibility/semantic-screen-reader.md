@@ -1,15 +1,13 @@
 ---
 title: "SemanticScreenReader"
 description: "Learn how to make a screen reader read out text, using .NET MAUI. The SemanticScreenReader class in Microsoft.Maui.Accessability namespace is used to instruct a screen reader to announce the specified text."
-ms.date: 10/05/2021
+ms.date: 05/12/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Accessability"]
 ---
 
 # SemanticScreenReader
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `SemanticScreenReader` class. This class lets you instruct a screen reader to announce the specified text.
-
-The `ISemanticScreenReader` interface is exposed through the `SemanticScreenReader.Default` property.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `SemanticScreenReader` class. This class lets you instruct a screen reader to announce the specified text. The `ISemanticScreenReader` interface is exposed through the `SemanticScreenReader.Default` property.
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 

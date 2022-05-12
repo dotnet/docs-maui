@@ -1,13 +1,17 @@
 ---
 title: "Web Authenticator"
 description: "Learn how to use the .NET MAUI the WebAuthenticator class, which lets you start browser-based authentication flows, which listen for a callback to the app."
-ms.date: 09/21/2021
-no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
+ms.date: 05/12/2022
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Authentication"]
 ---
 
 # Web Authenticator
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials the `WebAuthenticator` class. This class lets you start browser-based authentication flows, which listen for a callback to a specific URL registered to the app.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) the `IWebAuthenticator` interface. This interface lets you start browser-based authentication flows, which listen for a callback to a specific URL registered to the app. The `IWebAuthenticator` interface is exposed through the `WebAuthenticator.Default` property.
+
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
+
+The `WebAuthenticator` and `IWebAuthenticator` types are available in the `Microsoft.Maui.Authentication` namespace.
 
 ## Overview
 
@@ -18,20 +22,16 @@ Many apps require adding user authentication, and this often means enabling your
 
 If you're interested in using your own web service for authentication, it's possible to use **WebAuthenticator** to implement the client-side functionality.
 
-## Why use a server back end?
+## Why use a server back end
 
-Many authentication providers have moved to only offering explicit or two-legged authentication flows to ensure better security. This means you'll need a **client secret** from the provider to complete the authentication flow. Unfortunately, mobile apps aren't a great place to store secrets and anything stored in a mobile app's code, binaries, or otherwise is considered to be insecure.
+Many authentication providers have moved to only offering explicit or two-legged authentication flows to ensure better security. This means you'll need a **client secret** from the provider to complete the authentication flow. Unfortunately, mobile apps aren't a great place to store secrets and anything stored in a mobile app's code, binaries, or otherwise, is considered to be insecure.
 
 The best practice here's to use a web backend as a middle layer between your mobile app and the authentication provider.
 
 > [!IMPORTANT]
-> We strongly recommend against using older mobile-only authentication libraries and patterns which do not leverage a web backend in the authentication flow due to their inherent lack of security for storing client secrets.
+> We strongly recommend against using older mobile-only authentication libraries and patterns which do not leverage a web backend in the authentication flow, due to their inherent lack of security for storing client secrets.
 
 ## Get started
-
-[!INCLUDE [get-started](includes/get-started.md)]
-
-[!INCLUDE [essentials-namespace](includes/essentials-namespace.md)]
 
 To access the **WebAuthenticator** functionality the following platform-specific setup is required.
 
@@ -50,7 +50,7 @@ namespace YourRootNamespace
     [IntentFilter(new[] { Android.Content.Intent.ActionView },
                   Categories = new[] { Android.Content.Intent.CategoryDefault, Android.Content.Intent.CategoryBrowsable },
                   DataScheme = CALLBACK_SCHEME)]
-    public class WebAuthenticationCallbackActivity : Microsoft.Maui.Essentials.WebAuthenticatorCallbackActivity
+    public class WebAuthenticationCallbackActivity : Microsoft.Maui.WebAuthenticatorCallbackActivity
     {
         const string CALLBACK_SCHEME = "myapp";
 
@@ -58,21 +58,21 @@ namespace YourRootNamespace
 }
 ```
 
-If your project's target Android version is set to **Android 11 (R API 30)**, you must update your Android Manifest with queries that are used with the new [package visibility requirements](https://developer.android.com/preview/privacy/package-visibility).
+If your project's Target Android version is set to **Android 11 (R API 30)** or higher, you must update your _Android Manifest_ with queries that use Android's [package visibility requirements](https://developer.android.com/preview/privacy/package-visibility).
 
-Open the _AndroidManifest.xml_ file under the **Properties** folder and add the following in the `manifest` node:
+In the _Platforms/Android/AndroidManifest.xml_ file, add the following `queries/intent` nodes the `manifest` node:
 
 ```xml
 <queries>
-    <intent>
-        <action android:name="android.support.customtabs.action.CustomTabsService" />
-    </intent>
+  <intent>
+    <action android:name="android.support.customtabs.action.CustomTabsService" />
+  </intent>
 </queries>
 ```
 
 # [iOS](#tab/ios)
 
-Add your app's callback URI pattern to your _Info.plist_, such as:
+Add your app's callback URI pattern to the _Platforms/iOS/Info.plist_ file:
 
 ```xml
 <key>CFBundleURLTypes</key>
@@ -90,12 +90,12 @@ Add your app's callback URI pattern to your _Info.plist_, such as:
 </array>
 ```
 
-You'll also need to override your `AppDelegate.OpenUrl` and `AppDelegate.ContinueUserActivity` methods in the `AppDelegate.cs` file to use the Essentials call first:
+You'll also need to override your `AppDelegate.OpenUrl` and `AppDelegate.ContinueUserActivity` methods in the `AppDelegate.cs`, calling the `Platform` methods first:
 
 ```csharp
 public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
 {
-    if (Microsoft.Maui.Essentials.Platform.OpenUrl(app, url, options))
+    if (Microsoft.Maui.ApplicationModel.Platform.OpenUrl(app, url, options))
         return true;
 
     return base.OpenUrl(app, url, options);
@@ -103,7 +103,7 @@ public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
 
 public override bool ContinueUserActivity(UIApplication application, NSUserActivity userActivity, UIApplicationRestorationHandler completionHandler)
 {
-    if (Microsoft.Maui.Essentials.Platform.ContinueUserActivity(application, userActivity, completionHandler))
+    if (Microsoft.Maui.ApplicationModel.Platform.ContinueUserActivity(application, userActivity, completionHandler))
         return true;
 
     return base.ContinueUserActivity(application, userActivity, completionHandler);
@@ -142,7 +142,7 @@ The result is a `WebAuthenticatorResult`, which includes any query parameters pa
 ```csharp
 try
 {
-    WebAuthenticatorResult authResult = await WebAuthenticator.AuthenticateAsync(
+    WebAuthenticatorResult authResult = await WebAuthenticator.Default.AuthenticateAsync(
         new Uri("https://mysite.com/mobileauth/Microsoft"),
         new Uri("myapp://"));
 
@@ -169,7 +169,7 @@ iOS 13 introduced an ephemeral web browser API for developers to launch the auth
 ```csharp
 try
 {
-    WebAuthenticatorResult authResult = await WebAuthenticator.AuthenticateAsync(
+    WebAuthenticatorResult authResult = await WebAuthenticator.Default.AuthenticateAsync(
         new WebAuthenticatorOptions()
         {
             Url = new Uri("https://mysite.com/mobileauth/Microsoft"),
@@ -242,7 +242,7 @@ else
     var authUrl = new Uri($"{authUrlRoot}{scheme}");
     var callbackUrl = new Uri("myapp://");
 
-    result = await WebAuthenticator.AuthenticateAsync(authUrl, callbackUrl);
+    result = await WebAuthenticator.Default.AuthenticateAsync(authUrl, callbackUrl);
 }
 
 var authToken = string.Empty;
@@ -285,7 +285,7 @@ services.AddAuthentication(o =>
 ```
 
 > [!TIP]
-> If you'd like to include Apple Sign In, you can use the `AspNet.Security.OAuth.Apple` NuGet package. You can view the full [Startup.cs sample](https://github.com/dotnet/maui/tree/main/src/Essentials/samples/Sample.Server.WebAuthenticator/Startup.cs#L33-L64) in the Essentials GitHub repository.
+> If you'd like to include Apple Sign In, you can use the `AspNet.Security.OAuth.Apple` NuGet package. You can view the full [Startup.cs sample](https://github.com/dotnet/maui/tree/main/src/Essentials/samples/Sample.Server.WebAuthenticator/Startup.cs#L33-L64).
 
 ### Add a custom mobile auth controller
 
@@ -316,7 +316,7 @@ The purpose of this controller is to infer the scheme (provider) the app is requ
 
 Sometimes you may want to return data such as the provider's `access_token` back to the app, which you can do via the callback URI's query parameters. Or, you may want to instead create your own identity on your server and pass back your own token to the app. What and how you do this part is up to you!
 
-Check out the [full controller sample](https://github.com/dotnet/maui/tree/main/src/Essentials/samples/Sample.Server.WebAuthenticator/Controllers/MobileAuthController.cs) in the Essentials repository.
+Check out the [full controller sample](https://github.com/dotnet/maui/tree/main/src/Essentials/samples/Sample.Server.WebAuthenticator/Controllers/MobileAuthController.cs).
 
 > [!NOTE]
 > The above sample demonstrates how to return the access token from the 3rd party authentication (ie: OAuth) provider. To obtain a token you can use to authorize web requests to the web backend itself, you should create your own token in your web app, and return that instead. The [Overview of ASP.NET Core authentication](/aspnet/core/security/authentication) has more information about advanced authentication scenarios in ASP.NET Core.

@@ -1,7 +1,7 @@
 ---
 title: "Phone dialer"
 description: "Learn how to open the phone dialer to a specific number, in .NET MAUI. The PhoneDialer class in the Microsoft.Maui.ApplicationModel.Communication namespace is used to open the phone dialer."
-ms.date: 08/25/2021
+ms.date: 05/12/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel.Communication"]
 ---
 
