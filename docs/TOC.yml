@@ -33,6 +33,10 @@
           items:
             - name: Pair to Mac
               href: ios/pair-to-mac.md
+            - name: Simulators
+              items:
+              - name: Remote iOS simulator for Windows
+                href: ios/remote-simulator.md
         - name: macOS
           items:
             - name: Build a Mac Catalyst app with .NET CLI
