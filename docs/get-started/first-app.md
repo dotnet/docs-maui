@@ -100,13 +100,11 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
     :::image type="content" source="media/first-app/windows-command-processor-uac.png" alt-text="Windows command processor user account control dialog.":::
 
-    Wait for Visual Studio to download the Android SDK and Android Emulator.    
-
 :::zone pivot="devices-android"
 
 <!-- markdownlint-disable MD029 -->
 
-08. In the Visual Studio toolbar, use the **Debug Target** drop down to ensure that the **Android Emulators > Android Emulator** entry is selected:
+09. In the Visual Studio toolbar, use the **Debug Target** drop down to ensure that the **Android Emulators > Android Emulator** entry is selected:
 
     :::image type="content" source="media/first-app/android-debug-target.png" alt-text="Select the Android Emulator debugging target for .NET MAUI.":::
 
