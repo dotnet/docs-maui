@@ -120,7 +120,6 @@ The following table defines the parameters used by the previous command:
 
 | Parameter                    | Value                                                                               |
 |------------------------------|-------------------------------------------------------------------------------------|
-| `MyMauiApp.csproj`           | Path to the project file of your .NET MAUI app                                      |
 | `-f net6.0-windows{version}` | The target framework, which is a Windows TFM, such as `net6.0-windows10.0.19041.0`. Ensure that this value is identical to the value in the `<TargetFrameworks>` node in your .csproj.           |
 | `-c Release`                 | Sets the build configuration, which is `Release`.                                   |
 
