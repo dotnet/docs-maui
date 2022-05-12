@@ -417,8 +417,8 @@
           items:
             - name: Publish an iOS app
               href: ios/deployment/overview.md
-            - name: Provisioning for app store distribution
-              href: ios/deployment/provisioning.md
+            - name: Provision for app store distribution
+              href: ios/deployment/provision.md
             - name: Entitlements and capabilities
               href: ios/deployment/entitlements.md
         - name: macOS

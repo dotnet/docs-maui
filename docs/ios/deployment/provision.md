@@ -1,10 +1,10 @@
 ---
-title: "Provisioning a .NET MAUI iOS app for app store distribution"
+title: "Provision a .NET MAUI iOS app for app store distribution"
 description: "Learn how to provision a .NET MAUI iOS app for app store distribution."
 ms.date: 05/09/2022
 ---
 
-# Provisioning an iOS app for app store distribution
+# Provision an iOS app for app store distribution
 
 Distributing a .NET Multi-platform App UI (.NET MAUI) app on iOS requires that the app is provisioned using a *provisioning profile*. Provisioning profiles are files that contain code signing information, as well as the identity of the app and its intended distribution mechanism.
 
