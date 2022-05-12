@@ -415,6 +415,8 @@
             href: platform-integration/appmodel/open-browser.md
           - name: Permissions
             href: platform-integration/appmodel/permissions.md
+          - name: Version tracking
+            href: platform-integration/appmodel/version-tracking.md
         - name: Communication
           items:
           - name: Contacts
@@ -425,6 +427,12 @@
             href: platform-integration/communication/phone-dialer.md
           - name: SMS (messaging)
             href: platform-integration/communication/sms.md
+        - name: Sharing
+          items:
+          - name: Clipboard
+            href: platform-integration/data/clipboard.md
+          - name: Share files and text
+            href: platform-integration/data/share.md
         - name: Device features
           items:
           - name: Battery
@@ -439,10 +447,22 @@
             href: platform-integration/device/vibrate.md
           - name: Haptic feedback
             href: platform-integration/device/haptic-feedback.md
-          - name: Battery
-            href: platform-integration/device/battery.md
+        - name: Media
+          items:
+          - name: Photo picker
+            href: platform-integration/device-media/picker.md
+          - name: Screenshot
+            href: platform-integration/device-media/screenshot.md
+          - name: Text-to-speech
+            href: platform-integration/device-media/text-to-speech.md
+          - name: Unit converters
+            href: platform-integration/device-media/unit-converters.md
         - name: Device sensors
           href: platform-integration/sensors/index.md
+        - name: Geocoding
+          href: platform-integration/sensors/geocoding.md
+        - name: Geolocation
+          href: platform-integration/sensors/geolocation.md
         - name: Semantic screen reader
           href: platform-integration/accessibility/semantic-screen-reader.md
     - name: Publish
