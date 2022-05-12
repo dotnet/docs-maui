@@ -8,15 +8,15 @@ zone_pivot_groups: devices-deployment
 
 # Build your first app
 
-In this tutorial, you'll learn how to create and run your first .NET Multi-platform App UI (.NET MAUI) app in Visual Studio 2022 on Windows.
+In this tutorial, you'll learn how to create and run your first .NET Multi-platform App UI (.NET MAUI) app in Visual Studio 2022 17.3 Preview on Windows.
+
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
 :::zone pivot="devices-ios"
 
 Developing .NET MAUI apps for iOS requires a Mac build host. If you don't specifically need to target iOS and don't have a Mac, consider getting started with Android or Windows instead.
 
 :::zone-end
-
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
 :::zone pivot="devices-android,devices-ios"
 
@@ -104,7 +104,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
     > [!NOTE]
     > If this is the first time you've created a .NET MAUI app, you may be prompted to install the Android SDK. This is because the default build target for a new .NET MAUI app is Android.
     >
-    > If you want to also target and run on Android, navigate to the start of this article and select Android. Then, complete this tutorial which will teach you how to install the Android SDK and create a virtual Android device..
+    > If you want to also target and run on Android, navigate to the start of this article and select Android to learn how to install the Android SDK and create a virtual Android device.
 
     :::zone-end
 
@@ -162,7 +162,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
     > [!WARNING]
     > Hardware acceleration must be enabled to maximize Android emulator performance. Failure to do this will result in the emulator running very slowly. For more information, see [How to enable hardware acceleration with Android emulators (Hyper-V & HAXM)](~/android/emulator/hardware-acceleration.md).
 
-01. In the running app in the Android emulator, press the button several times and observe that the count of the number of button clicks is incremented.
+01. In the running app in the Android emulator, press the **Click me** button several times and observe that the count of the number of button clicks is incremented.
 
     :::image type="content" source="media/first-app/running-app.png" alt-text="App running in the Android emulator." lightbox="media/first-app/running-app-large.png":::
 
@@ -185,7 +185,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
     :::image type="content" source="media/first-app/windows-developer-mode-win11.png" alt-text="Developer Mode toggle on the Windows 11 settings app.":::
 
-01. In the running app, press the button several times and observe that the count of the number of button clicks is incremented.
+01. In the running app, press the **Click me** button several times and observe that the count of the number of button clicks is incremented.
 
     :::image type="content" source="media/first-app/windows-running-app.png" alt-text=".NET MAUI app running on Windows.":::
 
@@ -201,7 +201,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
     :::image type="content" source="media/first-app/ios-disable-remote-simulator.png" alt-text="Disable the remote simulator in the iOS settings.":::
 
-    For more about the remote iOS Simulator for Windows, see [Remote iOS Simulator for Windows](~/ios/remote-simulator.md).
+    For more information about the remote iOS Simulator for Windows, see [Remote iOS Simulator for Windows](~/ios/remote-simulator.md).
 
 01. In the Visual Studio toolbar, use the **Debug Target** drop down to select **iOS Simulators** and then a specific iOS simulator:
 
