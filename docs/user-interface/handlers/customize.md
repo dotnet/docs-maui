@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI control customization with handlers"
 description: "Learn how to customize .NET MAUI handlers, which map cross-platform controls to performant native controls on each platform."
-ms.date: 04/20/2022
+ms.date: 05/12/2022
 ---
 
 # Customize .NET MAUI controls with handlers
@@ -264,9 +264,9 @@ The following table lists the types that implement handler-based views in .NET M
 | `BlazorWebView` | `IBlazorWebView` | `BlazorWebViewHandler` | `BlazorWebViewMapper` |
 | `Border` | `IBorderView` | `BorderHandler` | `Mapper` |
 | `Button` | `IButton` | `ButtonHandler` | `Mapper` |
-| `CarouselView` | | `CarouselViewHandler` | `CarouselViewMapper` |
+| `CarouselView` | | `CarouselViewHandler` | `Mapper` |
 | `CheckBox` | `ICheckBox` | `CheckBoxHandler` | `Mapper` |
-| `CollectionView` |  | `CollectionViewHandler` | `CollectionViewMapper` |
+| `CollectionView` |  | `CollectionViewHandler` | `Mapper` |
 | `ContentView` | `IContentView` | `ContentViewHandler` | `Mapper` |
 | `DatePicker` | `IDatePicker` | `DatePickerHandler` | `Mapper` |
 | `Editor` | `IEditor` | `EditorHandler` | `Mapper` |
@@ -277,23 +277,23 @@ The following table lists the types that implement handler-based views in .NET M
 | `ImageButton` | `IImageButton` | `ImageButtonHandler` | `Mapper` |
 | `IndicatorView` | `IIndicatorView` | `IndicatorViewHandler` | `Mapper` |
 | `Label` | `ILabel` | `LabelHandler` | `Mapper` |
-| `Line` | | `LineHandler` | `LineMapper` |
-| `Path` | | `PathHandler` | `PathMapper` |
+| `Line` | | `LineHandler` | `Mapper` |
+| `Path` | | `PathHandler` | `Mapper` |
 | `Picker` | `IPicker` | `PickerHandler` | `Mapper` |
-| `Polygon` | | `PolygonHandler` | `PolygonMapper` |
-| `Polyline` | | `PolylineHandler` | `PolylineMapper` |
+| `Polygon` | | `PolygonHandler` | `Mapper` |
+| `Polyline` | | `PolylineHandler` | `Mapper` |
 | `ProgressBar` | `IProgress` | `ProgressBarHandler` | `Mapper` |
 | `RadioButton` | `IRadioButton` | `RadioButtonHandler` | `Mapper` |
-| `Rectangle` | | `RectangleHandler` | `RectangleMapper` |
+| `Rectangle` | | `RectangleHandler` | `Mapper` |
 | `RefreshView` | `IRefreshView` | `RefreshViewHandler` | `Mapper` |
-| `RoundRectangle` | | `RoundRectangleHandler` | `RoundRectangleMapper` |
+| `RoundRectangle` | | `RoundRectangleHandler` | `Mapper` |
 | `ScrollView` | `IScrollView` | `ScrollViewHandler` | `Mapper` |
 | `SearchBar` | `ISearchBar` | `SearchBarHandler` | `Mapper` |
 | `Slider` | `ISlider` | `SliderHandler` | `Mapper` |
 | `Stepper` | `IStepper` | `StepperHandler` | `Mapper` |
 | `SwipeView` | `ISwipeView` | `SwipeViewHandler` | `Mapper` |
 | `Switch` | `ISwitch` | `SwitchHandler` | `Mapper` |
-| `TimePicker` | `ITimePicker` | `TimePickerHandler` | `TimePickerMapper` |
+| `TimePicker` | `ITimePicker` | `TimePickerHandler` | `Mapper` |
 | `WebView` | `IWebView` | `WebViewHandler` | `Mapper` |
 
 All handlers are in the `Microsoft.Maui.Handlers` namespace, with the following exceptions:
