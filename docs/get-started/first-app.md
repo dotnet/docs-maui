@@ -65,7 +65,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
     <!-- markdownlint-enable MD029 -->
 
-01. In the **Create a new project** window, select **MAUI** in the **Project type** drop-down, select the **.NET MAUI App (Preview)** template, and click the **Next** button:
+01. In the **Create a new project** window, select **MAUI** in the **All project types** drop-down, select the **.NET MAUI App (Preview)** template, and click the **Next** button:
 
     :::image type="content" source="media/first-app/new-project.png" alt-text="Choose a template.":::
 
@@ -98,7 +98,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
 01. In the **User Account Control** dialog, press the **Yes** button:
 
-    :::image type="content" source="media/first-app/android-sdk-license-uac.png" alt-text="Windows command processor user account control dialog.":::
+    :::image type="content" source="media/first-app/windows-command-processor-uac.png" alt-text="Windows command processor user account control dialog.":::
 
     Wait for Visual Studio to download the Android SDK and Android Emulator.    
 
