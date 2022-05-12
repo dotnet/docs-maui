@@ -39,5 +39,12 @@
             <Switch Toggled="ShakeSwitch_Toggled" VerticalOptions="Center" />
             <Label x:Name="ShakeLabel" VerticalOptions="Center" LineBreakMode="MiddleTruncation"  />
         </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Button Text="Geocoding" Clicked="Geocoding_Clicked" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Button Text="Get last geolocation" Clicked="Geolocation1_Clicked" />
+            <Label x:Name="LastLocationLabel" />
+        </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

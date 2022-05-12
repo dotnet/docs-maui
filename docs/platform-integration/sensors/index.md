@@ -5,7 +5,7 @@ ms.topic: overview
 ms.date: 05/03/2022
 ms.custom: template-overview
 show_latex: true
-no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices"]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices", "Microsoft.Maui.Devices.Sensors"]
 ---
 
 # Accessing device sensors

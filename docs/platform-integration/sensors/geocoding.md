@@ -1,19 +1,19 @@
 ---
 title: "Geocoding"
-description: "Learn how to use the .NET MAUI Geocoding class in the Microsoft.Maui.Essentials namespace. This class provides APIs to both geocode a placemark to a positional coordinate, and reverse geocode coordinates to a placemark."
-ms.date: 05/28/2019
-no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
+description: "Learn how to use the .NET MAUI Geocoding class in the Microsoft.Maui.Devices.Sensors namespace. This class provides APIs to both geocode a placemark to a positional coordinate, and reverse geocode coordinates to a placemark."
+ms.date: 05/12/2022
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices", "Microsoft.Maui.Devices.Sensors"]
 ---
 
 # Geocoding
 
-The `Geocoding` class provides APIs to geocode a placemark to a positional coordinates and reverse geocode coordinates to a placemark.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IGeocoding` interface. This interfaces provides APIs to geocode a placemark to a positional coordinates and reverse geocode coordinates to a placemark. The `IGeocoding` interface is exposed through the `Geocoding.Default` property.
+
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
+
+The `Geocoding` and `IGeocoding` types are available in the `Microsoft.Maui.Devices.Sensors` namespace.
 
 ## Get started
-
-[!INCLUDE [get-started](../includes/get-started.md)]
-
-[!INCLUDE [essentials-namespace](../includes/essentials-namespace.md)]
 
 To access the **Geocoding** functionality the following platform-specific setup is required.
 
@@ -43,26 +43,7 @@ Platform.MapServiceToken = "YOUR-KEY-HERE";
 
 The following example demonstrates how to get the location coordinates for an address:
 
-```csharp
-try
-{
-    var address = "Microsoft Building 25 Redmond WA USA";
-    var locations = await Geocoding.GetLocationsAsync(address);
-
-    var location = locations?.FirstOrDefault();
-
-    if (location != null)
-        Console.WriteLine($"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}");
-}
-catch (FeatureNotSupportedException fnsEx)
-{
-    // Feature not supported on device
-}
-catch (Exception ex)
-{
-    // Handle exception that may have occurred in geocoding
-}
-```
+:::code language="csharp" source="../snippets/shared_1/SensorsPage.xaml.cs" id="geocoding_location":::
 
 The altitude isn't always available. If it isn't available, the `Altitude` property might be `null`, or the value might be `0`. If the altitude is available, the value is in meters above sea level.
 
@@ -70,42 +51,7 @@ The altitude isn't always available. If it isn't available, the `Altitude` prope
 
 Reverse geocoding is the process of getting placemarks for an existing set of coordinates. The following example demonstrates getting placemarks:
 
-```csharp
-try
-{
-    var lat = 47.673988;
-    var lon = -122.121513;
-
-    var placemarks = await Geocoding.GetPlacemarksAsync(lat, lon);
-
-    var placemark = placemarks?.FirstOrDefault();
-                
-    if (placemark != null)
-    {
-        var geocodeAddress =
-            $"AdminArea:       {placemark.AdminArea}\n" +
-            $"CountryCode:     {placemark.CountryCode}\n" +
-            $"CountryName:     {placemark.CountryName}\n" +
-            $"FeatureName:     {placemark.FeatureName}\n" +
-            $"Locality:        {placemark.Locality}\n" +
-            $"PostalCode:      {placemark.PostalCode}\n" +
-            $"SubAdminArea:    {placemark.SubAdminArea}\n" +
-            $"SubLocality:     {placemark.SubLocality}\n" +
-            $"SubThoroughfare: {placemark.SubThoroughfare}\n" +
-            $"Thoroughfare:    {placemark.Thoroughfare}\n";
-
-        Console.WriteLine(geocodeAddress);
-    }
-}
-catch (FeatureNotSupportedException fnsEx)
-{
-    // Feature not supported on device
-}
-catch (Exception ex)
-{
-    // Handle exception that may have occurred in geocoding
-}
-```
+:::code language="csharp" source="../snippets/shared_1/SensorsPage.xaml.cs" id="geocoding_reverse":::
 
 ## Get the distance between two locations
 

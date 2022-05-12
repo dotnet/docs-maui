@@ -48,5 +48,10 @@ public partial class MainPage : ContentPage
     {
         Navigation.PushAsync(new ScreenReaderPage());
     }
+
+    private void Media_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new MediaPage());
+    }
 }
 

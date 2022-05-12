@@ -1,33 +1,23 @@
 ---
 title: "Screenshot"
-description: "Learn how to take a screenshot of the app, using .NET MAUI. The Screenshot class in Microsoft.Maui.Essentials namespace is used to capture of the current displayed screen of the app."
-ms.date: 08/27/2021
-no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
+description: "Learn how to use the Screenshot class in the Microsoft.Maui.Media namespace, to capture of the current displayed screen of the app."
+ms.date: 05/11/2022
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Media", "ScreenShot"]
 ---
 
 # Screenshot
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `Screenshot` class. This class lets you take a capture of the current displayed screen of the app.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IScreenshot` interface. This interfaces lets you take a capture of the current displayed screen of the app. The `IScreenshot` interface is exposed through the `Screenshot.Default` property.
 
-## Get started
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
-[!INCLUDE [get-started](../includes/get-started.md)]
+The `Screenshot` and `IScreenshot` types are available in the `Microsoft.Maui.Media` namespace.
 
-[!INCLUDE [essentials-namespace](../includes/essentials-namespace.md)]
+## Capture a screenshot
 
-## Using Screenshot
+To capture a screenshot of the current app, use the `CaptureAsync` method. This method returns a `IScreenshotResult`, which contains information about the capture, such as the width and height of the screenshot. `IScreenshotResult` also includes a `Stream` property that is used to convert the screenshot into an image object for use by your app. The following example demonstrates a method that captures a screenshot and returns it as an `ImageSource`.
 
-To capture a screenshot of the current app, use the `ScreenShot.CaptureAsync` method. This method returns a `ScreenshotResult`, which contains information about the capture, such as the width and height of the screenshot. `ScreenshotResult` also includes a `Stream` property that is used to convert the screenshot into an image object for use by your app. The following example demonstrates a method that captures a screenshot and returns it as an `ImageSource`.
-
-```csharp
-async Task<ImageSource> CaptureScreenshot()
-{
-    ScreenshotResult screenshot = await Screenshot.CaptureAsync();
-    Stream stream = await screenshot.OpenReadAsync();
-
-    return ImageSource.FromStream(() => stream);
-}
-```
+:::code language="csharp" source="../snippets/shared_1/MediaPage.cs" id="screenshot":::
 
 ## Limitations
 

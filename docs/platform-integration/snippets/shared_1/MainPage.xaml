@@ -13,6 +13,7 @@
             <Button Text="App Model" Clicked="AppModel_Clicked" />
             <Button Text="Communications" Clicked="Comms_Clicked" />
             <Button Text="SymaticReader" Clicked="Reader_Clicked" />
+            <Button Text="Media" Clicked="Media_Clicked" />
 
         </VerticalStackLayout>
     </ScrollView>

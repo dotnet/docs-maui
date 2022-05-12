@@ -256,4 +256,138 @@ public partial class SensorsPage : ContentPage
     }
     //</toggle_shake>
     #endregion
+
+    #region Geocoding
+    private async void Geocoding_Clicked(object sender, EventArgs e)
+    {
+        //<geocoding_location>
+        string address = "Microsoft Building 25 Redmond WA USA";
+        IEnumerable<Location> locations = await Geocoding.Default.GetLocationsAsync(address);
+
+        Location location = locations?.FirstOrDefault();
+
+        if (location != null)
+            Console.WriteLine($"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}");
+        //</geocoding_location>
+    }
+
+    //<geocoding_reverse>
+    private async Task<string> GetGeocodeReverseData(double latitude = 47.673988, double longitude = -122.121513)
+    {
+        IEnumerable<Placemark> placemarks = await Geocoding.Default.GetPlacemarksAsync(latitude, longitude);
+
+        Placemark placemark = placemarks?.FirstOrDefault();
+
+        if (placemark != null)
+        {
+            return
+                $"AdminArea:       {placemark.AdminArea}\n" +
+                $"CountryCode:     {placemark.CountryCode}\n" +
+                $"CountryName:     {placemark.CountryName}\n" +
+                $"FeatureName:     {placemark.FeatureName}\n" +
+                $"Locality:        {placemark.Locality}\n" +
+                $"PostalCode:      {placemark.PostalCode}\n" +
+                $"SubAdminArea:    {placemark.SubAdminArea}\n" +
+                $"SubLocality:     {placemark.SubLocality}\n" +
+                $"SubThoroughfare: {placemark.SubThoroughfare}\n" +
+                $"Thoroughfare:    {placemark.Thoroughfare}\n";
+
+        }
+
+        return "";
+    }
+    //</geocoding_reverse>
+    #endregion
+
+    #region Geolocation
+
+    private async void Geolocation1_Clicked(object sender, EventArgs e)
+    {
+        LastLocationLabel.Text = await GetCachedLocation();
+    }
+
+    //<geolocation_cached>
+    public async Task<string> GetCachedLocation()
+    {
+        try
+        {
+            Location location = await Geolocation.Default.GetLastKnownLocationAsync();
+
+            if (location != null)
+                return $"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}";
+        }
+        catch (FeatureNotSupportedException fnsEx)
+        {
+            // Handle not supported on device exception
+        }
+        catch (FeatureNotEnabledException fneEx)
+        {
+            // Handle not enabled on device exception
+        }
+        catch (PermissionException pEx)
+        {
+            // Handle permission exception
+        }
+        catch (Exception ex)
+        {
+            // Unable to get location
+        }
+
+        return "None";
+    }
+    //</geolocation_cached>
+
+    //<geolocation_get>
+    private CancellationTokenSource _cancelTokenSource;
+    private bool _isCheckingLocation;
+
+    public async Task GetCurrentLocation()
+    {
+        try
+        {
+            _isCheckingLocation = true;
+
+            GeolocationRequest request = new GeolocationRequest(GeolocationAccuracy.Medium, TimeSpan.FromSeconds(10));
+
+            _cancelTokenSource = new CancellationTokenSource();
+
+            Location location = await Geolocation.Default.GetLocationAsync(request, _cancelTokenSource.Token);
+
+            if (location != null)
+                Console.WriteLine($"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}");
+        }
+        // Catch one of the following exceptions:
+        //   FeatureNotSupportedException
+        //   FeatureNotEnabledException
+        //   PermissionException
+        catch (Exception ex)
+        {
+            // Unable to get location
+        }
+        finally
+        {
+            _isCheckingLocation = false;
+        }
+    }
+
+    public void CancelRequest()
+    {
+        if (_isCheckingLocation && _cancelTokenSource != null && _cancelTokenSource.IsCancellationRequested == false)
+            _cancelTokenSource.Cancel();
+    }
+    //</geolocation_get>
+
+    //<geolocation_ismock>
+    public async Task CheckMock()
+    {
+        GeolocationRequest request = new GeolocationRequest(GeolocationAccuracy.Medium);
+        Location location = await Geolocation.Default.GetLocationAsync(request);
+
+        if (location != null && location.IsFromMockProvider)
+        {
+            // location is from a mock provider
+        }
+    }
+    //</geolocation_ismock>
+    #endregion
 }
