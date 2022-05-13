@@ -23,7 +23,6 @@ Text-to-Speech will automatically queue speech requests from the same thread.
 
 :::code language="csharp" source="../snippets/shared_1/MediaPage.cs" id="speak_queue":::
 
-
 ## Settings
 
 To control the volume, pitch, and locale of the voice, use the `SpeechOptions` class. Pass an instance of that class to the `SpeakAsync` method. the `GetLocalesAsync` method retrieves a collection of the locales provided by the operating system.
