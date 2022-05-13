@@ -433,6 +433,16 @@
             href: platform-integration/data/clipboard.md
           - name: Share files and text
             href: platform-integration/data/share.md
+        - name: Storage
+          items:
+          - name: File picker
+            href: platform-integration/storage/file-picker.md
+          - name: File system helpers
+            href: platform-integration/storage/file-system-helpers.md
+          - name: Preferences
+            href: platform-integration/storage/preferences.md
+          - name: Secure storage
+            href: platform-integration/storage/secure-storage.md
         - name: Device features
           items:
           - name: Battery

@@ -1,13 +1,19 @@
 ---
 title: "Preferences"
 description: "Learn how to read and write application preferences, in .NET MAUI. The Preferences class can save and load application preferences in a key/value store."
-ms.date: 08/27/2021
-no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
+ms.date: 05/13/2022
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Storage", "Preferences"]
 ---
 
 # Preferences
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `Preferences` class. This class helps store app preferences in a key/value store.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `IPreferences` interface. This interface helps store app preferences in a key/value store. The `IPreferences` interface is exposed through the `Preferences.Default` property.
+
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
+
+The `Preferences` and `IPreferences` types are available in the `Microsoft.Maui.Storage` namespace.
+
+## Storage types
 
 Preferences are stored with a <xref:System.String> key. The value of a preference must be one of the following data types:
 
@@ -26,64 +32,38 @@ Values of `DateTime` are stored in a 64-bit binary (long integer) format using t
 
 See the documentation of these methods for adjustments that might be made to decoded values when a `DateTime` is stored that isn't a Coordinated Universal Time (UTC) value.
 
-## Get started
-
-[!INCLUDE [get-started](../includes/get-started.md)]
-
-[!INCLUDE [essentials-namespace](../includes/essentials-namespace.md)]
-
 ## Set preferences
 
 Preferences are set by calling the `Preferences.Set` method, providing the key and value:
 
-```csharp
-// Set a string value:
-Preferences.Set("first_name", "John");
-
-// Set an numerical value:
-Preferences.Set("age", 28);
-
-// Set a boolean value:
-Preferences.Set("has_pets", true);
-```
+:::code language="csharp" source="../snippets/shared_1/Storage.cs" id="prefs_set":::
 
 ## Get preferences
 
 To retrieve a value from preferences, you pass the key of the preference, followed by the default value when the key doesn't exist:
 
-```csharp
-string firstName = Preferences.Get("first_name", "Unknown");
-int age = Preferences.Get("age", -1);
-bool hasPets = Preferences.Get("has_pets", false);
-```
+:::code language="csharp" source="../snippets/shared_1/Storage.cs" id="prefs_defaults":::
 
 ## Check for a key
 
-It may be useful to check if a key exists in the preferences or not. Even though `Preferences.Get` has you set a default value when the key doesn't exist, there may be cases where the key existed, but the value of the key matched the default value. So you can't rely on the default value as an indicator that the key doesn't exist. Use the `Preferences.ContainsKey` method to determine if a key exists:
+It may be useful to check if a key exists in the preferences or not. Even though `Get` has you set a default value when the key doesn't exist, there may be cases where the key existed, but the value of the key matched the default value. So you can't rely on the default value as an indicator that the key doesn't exist. Use the `ContainsKey` method to determine if a key exists:
 
-```csharp
-bool hasKey = Preferences.ContainsKey("my_key");
-```
+:::code language="csharp" source="../snippets/shared_1/Storage.cs" id="prefs_containskey":::
 
 ## Remove one or all keys
 
-Use the `Preferences.Remove` method to remove a specific key from preferences:
+Use the `Remove` method to remove a specific key from preferences:
 
-```csharp
-Preferences.Remove("first_name");
-```
+:::code language="csharp" source="../snippets/shared_1/Storage.cs" id="prefs_remove":::
 
-To remove all keys, use the `Preferences.Clear` method:
+To remove all keys, use the `Clear` method:
 
-```csharp
-Preferences.Clear();
-```
+:::code language="csharp" source="../snippets/shared_1/Storage.cs" id="prefs_clear":::
 
 ## Shared keys
 
-<!-- TODO: What is the difference between an extension and a different app? I'm confused (and new to .NET MAUI) -->
-<!-- TODO: Verify my statement about container is accurate -->
-The preferences stored by your app are only visible to your app. However, you can also create a **shared** preference that can be used by other extensions or a watch app. When you set, remove, or retrieve a preference, an optional string parameter can be supplied to specify the name of the container the preference will be stored in.
+<!-- TODO: What is the difference between an extension and a different app? -->
+The preferences stored by your app are only visible to your app. However, you can also create a **shared** preference that can be used by other extensions or a watch app. When you set, remove, or retrieve a preference, an optional string parameter can be supplied to specify the name of the container the preference is stored in.
 
 The following methods take a string parameter named `sharedName`:
 
@@ -122,7 +102,7 @@ All data is stored into [**Shared Preferences**](https://developer.android.com/t
 [ApplicationDataContainer](/uwp/api/windows.storage.applicationdatacontainer) is used to store the values on the device. If no `sharedName` is specified, the `LocalSettings` are used. Otherwise the name is used to create a new container inside of `LocalSettings`.
 
 <!-- TODO: This makes no sense to me. the way the word setting was used here didn't make sense. I edited this to try and make sense of it but I suspect I'm wrong! -->
-`LocalSettings` restricts the preference key names to 255 characters or less. Each preference value can be up to 8K bytes in size, and each composite setting can be up to 64K bytes in size.
+`LocalSettings` restricts the preference key names to 255 characters or less. Each preference value can be up to 8K bytes in size, and each composite setting can be up to 64 K bytes in size.
 
 -----
 <!-- markdownlint-enable MD025 -->
@@ -133,4 +113,4 @@ Uninstalling the application causes all _preferences_ to be removed, except when
 
 ## Limitations
 
-When storing a string, this API is intended to store small amounts of text. Performance may be subpar if you try to use it to store large amounts of text.
+Performance may be impacted if you store large amounts of text, as the API was designed to store small amounts of text.

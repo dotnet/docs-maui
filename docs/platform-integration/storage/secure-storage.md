@@ -2,25 +2,26 @@
 title: "Secure storage"
 description: "Learn how to use the .NET MAUI SecureStorage class, which helps securely store simple key/value pairs. This article discusses how to use the class, platform implementation specifics, and its limitations."
 ms.date: 08/27/2021
-no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Storage", "SecureStorage"]
+#acrolinx score 95
 ---
 
 # Secure storage
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `SecureStorage` class. This class helps securely store simple key/value pairs.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `ISecureStorage` interface. This interface helps securely store simple key/value pairs. The `ISecureStorage` interface is exposed through the `SecureStorage.Default` property.
+
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
+
+The `SecureStorage` and `ISecureStorage` types are available in the `Microsoft.Maui.Storage` namespace.
 
 ## Get started
-
-[!INCLUDE [get-started](../includes/get-started.md)]
-
-[!INCLUDE [essentials-namespace](../includes/essentials-namespace.md)]
 
 To access the **SecureStorage** functionality, the following platform-specific setup is required:
 
 <!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
 
-[Auto Backup for Apps](https://developer.android.com/guide/topics/data/autobackup) is a feature of Android 6.0 (API level 23) and later that backs up user's app data (shared preferences, files in the app's internal storage, and other specific files). Data is restored when an app is re-installed or installed on a new device. This can impact `SecureStorage` which utilizes share preferences that are backed up and cannot be decrypted when the restore occurs. .NET MAUI automatically handles this case by removing the key so it can be reset, but you can take an additional step by disabling Auto Backup.
+[Auto Backup for Apps](https://developer.android.com/guide/topics/data/autobackup) is a feature of Android 6.0 (API level 23) and later that backs up user's app data (shared preferences, files in the app's internal storage, and other specific files). Data is restored when an app is reinstalled or installed on a new device. This can affect `SecureStorage`, which utilizes share preferences that are backed up and can't be decrypted when the restore occurs. .NET MAUI automatically handles this case by removing the key so it can be reset. Alternatively, you can disable Auto Backup.
 
 ### Enable or disable backup
 
@@ -86,53 +87,26 @@ The following code examples demonstrate how to use secure storage.
 
 To save a value for a given _key_ in secure storage:
 
-```csharp
-try
-{
-    await SecureStorage.SetAsync("oauth_token", "secret-oauth-token-value");
-}
-catch (Exception ex)
-{
-    // Possible that device doesn't support secure storage on device.
-}
-```
+:::code language="csharp" source="../snippets/shared_1/Storage.cs" id="secstorage_set":::
 
 ### Read a value
 
 To retrieve a value from secure storage:
 
-```csharp
-try
-{
-    string oauthToken = await SecureStorage.GetAsync("oauth_token");
+:::code language="csharp" source="../snippets/shared_1/Storage.cs" id="secstorage_get":::
 
-    if (oauthToken == null)
-    {
-        // No value is associated with the key "oauth_token"
-    }
-}
-catch (Exception ex)
-{
-    // Possible that device doesn't support secure storage on device.
-}
-```
-
-> [!NOTE]
-> If there isn't a value associated with the requested key, `GetAsync` returns `null`.
+> [!TIP]
+> If there isn't a value associated with the key, `GetAsync` returns `null`.
 
 ### Remove a value
 
 To remove a specific value, remove the key:
 
-```csharp
-SecureStorage.Remove("oauth_token");
-```
+:::code language="csharp" source="../snippets/shared_1/Storage.cs" id="secstorage_remove":::
 
 To remove all values, use the `RemoveAll` method:
 
-```csharp
-SecureStorage.RemoveAll();
-```
+:::code language="csharp" source="../snippets/shared_1/Storage.cs" id="secstorage_remove_all":::
 
 ## Platform differences
 
@@ -142,7 +116,7 @@ This section describes the platform-specific differences with the secure storage
 <!-- markdownlint-disable MD024 -->
 # [Android](#tab/android)
 
-The [Android KeyStore](https://developer.android.com/training/articles/keystore.html) is used to store the cipher key used to encrypt the value before it's saved into a [Shared Preferences](https://developer.android.com/training/data-storage/shared-preferences.html) with a filename of _[YOUR-APP-PACKAGE-ID].xamarinessentials_. The value-key used in the shared preferences file is a _MD5 Hash_ of the key passed into the `SecureStorage` APIs.
+The [Android KeyStore](https://developer.android.com/training/articles/keystore.html) is used to store the cipher key used to encrypt the value before it's saved into a [Shared Preferences](https://developer.android.com/training/data-storage/shared-preferences.html) with a filename of _[YOUR-APP-PACKAGE-ID].xamarinessentials_. The value-key used in the shared preferences file is an **MD5** hash of the key passed into the `SecureStorage` APIs.
 
 - **API Level 23 and Higher**
 
@@ -166,7 +140,7 @@ In some cases, KeyChain data is synchronized with iCloud, and uninstalling the a
 
 Encrypted values are stored in `ApplicationData.Current.LocalSettings`, inside a container with a name of _[YOUR-APP-ID].xamarinessentials_.
 
-**SecureStorage** uses the [Preferences](preferences.md) API and follows the same data persistence outlined in the [Preferences](preferences.md#persistence) documentation. It also uses `LocalSettings`, which has a restriction that a setting name length may be 255 characters at the most. Each setting can be up to 8K bytes in size, and each composite setting can be up to 64K bytes in size.
+**SecureStorage** uses the [Preferences](preferences.md) API and follows the same data persistence outlined in the [Preferences](preferences.md#persistence) documentation. It also uses `LocalSettings`, which has a restriction that a setting name length may be 255 characters at the most. Each setting can be up to 8K bytes in size, and each composite setting can be up to 64 K bytes in size.
 
 -----
 <!-- markdownlint-enable MD024 -->
@@ -174,4 +148,4 @@ Encrypted values are stored in `ApplicationData.Current.LocalSettings`, inside a
 
 ## Limitations
 
-This API is intended to store small amounts of text. Performance may be slow if you try to use it to store large amounts of text.
+Performance may be impacted if you store large amounts of text, as the API was designed to store small amounts of text.

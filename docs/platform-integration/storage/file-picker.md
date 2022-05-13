@@ -1,19 +1,19 @@
 ---
 title: "File picker"
-description: "Learn how to use the .NET MAUI FilePicker class in the Microsoft.Maui.Essentials namespace, which lets a user choose one or more files from the device."
-ms.date: 08/17/2021
-no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
+description: "Learn how to use the .NET MAUI FilePicker class in the Microsoft.Maui.Storage namespace, which lets a user choose one or more files from the device."
+ms.date: 05/13/2022
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Storage", "FilePicker"]
 ---
 
 # File picker
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `FilePicker` class. With the `FilePicker` class, you can prompt the user to pick one or more files from the device.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IFilePicker` interface. With the `IFilePicker` interface, you can prompt the user to pick one or more files from the device. The `IFilePicker` interface is exposed through the `FilePicker.Default` property.
+
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
+
+The `FilePicker` and `IFilePicker` types are available in the `Microsoft.Maui.Storage` namespace.
 
 ## Get started
-
-[!INCLUDE [get-started](../includes/get-started.md)]
-
-[!INCLUDE [essentials-namespace](../includes/essentials-namespace.md)]
 
 To access the **FilePicker** functionality, the following platform specific setup is required.
 
@@ -24,7 +24,7 @@ The `ReadExternalStorage` permission is required and must be configured in the A
 
 - Add the assembly-based permission:
 
-  Open the _AssemblyInfo.cs_ file under the **Properties** folder and add:
+  Open the _Platforms/Android/MainApplication.cs_ file and add the following assembly attributes after `using` directives:
 
   ```csharp
   [assembly: UsesPermission(Android.Manifest.Permission.ReadExternalStorage)]
@@ -34,22 +34,26 @@ The `ReadExternalStorage` permission is required and must be configured in the A
 
 - Update the Android Manifest:
 
-  Open the _AndroidManifest.xml_ file under the **Properties** folder and add the following in the `manifest` node:
+  Open the _Platforms/Android/AndroidManifest.xml_ file and add the following in the `manifest` node:
 
   ```xml
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
   ```
-
+<!-- NOT SUPPORTED
   \- or -
 
 - Use the Android project properties:
 
-  <!-- TODO: Check on this value -->
+  TODO: Check on this value
+  
   Right-click on the Android project and open the project's properties. Under _Android Manifest_ find the **Required permissions:** area and check the **ReadExternalStorage** permission. This will automatically update the _AndroidManifest.xml_ file.
+-->
 
 # [iOS](#tab/ios)
 
-To enable iCloud capabilities in the file picker, <!-- TODO: follow these [directions](../ios/platform/document-picker.md#enabling-icloud-in-maui). -->
+Enable iCloud capabilities.
+
+<!-- To enable iCloud capabilities in the file picker, TODO: follow these [directions](../ios/platform/document-picker.md#enabling-icloud-in-maui). -->
 
 # [Windows](#tab/windows)
 
@@ -59,58 +63,17 @@ No setup is required.
 <!-- markdownlint-enable MD025 -->
 
 > [!IMPORTANT]
-> All methods must be called on the UI thread because permission checks and requests are automatically handled by .NET MAUI Essentials.
+> All methods must be called on the UI thread because permission checks and requests are automatically handled by .NET MAUI.
 
 ## Pick a file
 
-The `FilePicker.PickAsync` method prompts the user to pick a file from the device. Use the `PickOptions` type to specify the title and file types allowed with the picker. The following example demonstrates opening the picker and processing the selected image:
+The `PickAsync` method prompts the user to pick a file from the device. Use the `PickOptions` type to specify the title and file types allowed with the picker. The following example demonstrates opening the picker and processing the selected image:
 
-```csharp
-async Task<FileResult> PickAndShow(PickOptions options)
-{
-    try
-    {
-        var result = await FilePicker.PickAsync(options);
-        if (result != null)
-        {
-            if (result.FileName.EndsWith("jpg", StringComparison.OrdinalIgnoreCase) ||
-                result.FileName.EndsWith("png", StringComparison.OrdinalIgnoreCase))
-            {
-                using var stream = await result.OpenReadAsync();
-                var image = ImageSource.FromStream(() => stream);
-            }
-        }
+:::code language="csharp" source="../snippets/shared_1/Storage.cs" id="file_pick":::
 
-        return result;
-    }
-    catch (Exception ex)
-    {
-        // The user canceled or something went wrong
-    }
+Default file types are provided with `FilePickerFileType.Images`, `FilePickerFileType.Png`, and `FilePickerFilerType.Videos`. You can specify custom file types per platform, by creating an instance of the `FilePickerFileType` class. The constructor of this class takes a dictionary that is keyed by the `DevicePlatform` type to identify the platform. The value of the dictionary key is a collection of strings representing the file types. For example here's how you would specify specific comic file types:
 
-    return null;
-}
-```
-
-Default file types are provided with `FilePickerFileType.Images`, `FilePickerFileType.Png`, and `FilePickerFilerType.Videos`. You can specify custom file types per platform, by creating an instance of the `FilePickerFileType` class. The constructor of this class takes a dictionary that is keyed by the `DevicePlatform` type to identify the platform. The value of the dictionary key is a collection of strings representing the file types. For example here is how you would specify specific comic file types:
-
-```csharp
-var customFileType = new FilePickerFileType(
-                        new Dictionary<DevicePlatform, IEnumerable<string>>
-                        {
-                            { DevicePlatform.iOS, new[] { "public.my.comic.extension" } }, // or general UTType values
-                            { DevicePlatform.Android, new[] { "application/comics" } },
-                            { DevicePlatform.UWP, new[] { ".cbr", ".cbz" } },
-                            { DevicePlatform.Tizen, new[] { "*/*" } },
-                            { DevicePlatform.macOS, new[] { "cbr", "cbz" } }, // or general UTType values
-                        });
-
-PickOptions options = new()
-{
-    PickerTitle = "Please select a comic file",
-    FileTypes = customFileType,
-};
-```
+:::code language="csharp" source="../snippets/shared_1/Storage.cs" id="file_types":::
 
 ## Pick multiple files
 

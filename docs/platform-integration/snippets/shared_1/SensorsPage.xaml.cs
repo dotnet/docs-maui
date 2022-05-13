@@ -389,5 +389,15 @@ public partial class SensorsPage : ContentPage
         }
     }
     //</geolocation_ismock>
+
+    public void CheckDistance()
+    {
+        //<geolocation_distance>
+        Location boston = new Location(42.358056, -71.063611);
+        Location sanFrancisco = new Location(37.783333, -122.416667);
+
+        double miles = Location.CalculateDistance(boston, sanFrancisco, DistanceUnits.Miles);
+        //</geolocation_distance>
+    }
     #endregion
 }

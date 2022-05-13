@@ -1,53 +1,39 @@
 ---
 title: "File system helpers"
-description: "Learn how to use the .NET MAUI FileSystem class in the Microsoft.Maui.Essentials namespace. This class contains helper methods that access the application's cache and data directories, and helps open files in the app package."
-ms.date: 08/18/2021
-no-loc: ["Microsoft.Maui", "Microsoft.Maui.Essentials"]
+description: "Learn how to use the .NET MAUI FileSystem class in the Microsoft.Maui.Storage namespace. This class contains helper methods that access the application's cache and data directories, and helps open files in the app package."
+ms.date: 05/13/2022
+no-loc: ["Microsoft.Maui", "Microsoft.Maui.Storage", "FileSystem"]
 ---
 
 # File system helpers
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `FileSystem` class. This class provides helper methods that access the app's cache and data directories, and helps access files in the app package.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IFileSystem` interface. This interface provides helper methods that access the app's cache and data directories, and helps access files in the app package. The `IFileSystem` interface is exposed through the `FileSystem.Current` property.
 
-## Get started
+[!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
-[!INCLUDE [get-started](../includes/get-started.md)]
-
-[!INCLUDE [essentials-namespace](../includes/essentials-namespace.md)]
+The `FileSystem` and `IFileSystem` types are available in the `Microsoft.Maui.Storage` namespace.
 
 ## Using file system helpers
 
-Each operating system will have unique paths to the app cache and app data directories. The `FileSystem` class provides a cross-platform API for accessing these directory paths.
+Each operating system will have unique paths to the app cache and app data directories. The `IFileSystem` interface provides a cross-platform API for accessing these directory paths.
 
 ### Cache directory
 
 To get the application's directory to store **cache data**. Cache data can be used for any data that needs to persist longer than temporary data, but shouldn't be data that is required to operate the app, as the operating system may clear this storage.
 
-```csharp
-string cacheDir = FileSystem.CacheDirectory;
-```
+:::code language="csharp" source="../snippets/shared_1/Storage.cs" id="filesys_cache":::
 
 ### App data directory
 
 To get the app's top-level directory for any files that aren't user data files. These files are backed up with the operating system syncing framework.
 
-```csharp
-string  mainDir = FileSystem.AppDataDirectory;
-```
+:::code language="csharp" source="../snippets/shared_1/Storage.cs" id="filesys_appdata":::
 
 ## Bundled files
 
-To open a file that is bundled into the app package, use the `FileSystem.OpenAppPackageFileAsync` method and pass the file name. This method returns an <xref:System.IO.Stream> representing the file contents. The following example demonstrates using a method to read the text contents of a file:
+To open a file that is bundled into the app package, use the `OpenAppPackageFileAsync` method and pass the file name. This method returns an <xref:System.IO.Stream> representing the file contents. The following example demonstrates using a method to read the text contents of a file:
 
-```csharp
-public async Task<string> ReadTextFile(string filePath)
-{
-    using Stream fileStream = await FileSystem.OpenAppPackageFileAsync(filePath);
-    using StreamReader reader = new StreamReader(fileStream);
-
-    return await reader.ReadToEndAsync();
-}
-```
+:::code language="csharp" source="../snippets/shared_1/Storage.cs" id="filesys_readtxtfile":::
 
 ## Platform differences
 

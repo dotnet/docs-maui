@@ -112,6 +112,9 @@ public override bool ContinueUserActivity(UIApplication application, NSUserActiv
 
 # [Windows](#tab/windows)
 
+> [!CAUTION]
+> At the moment, WebAuthenticator isn't working on Windows. For more information, see [GitHub issue #2702](https://github.com/dotnet/maui/issues/2702).
+
 For WinUI 3, you'll need to declare your callback URI protocol in your _Package.appxmanifest_ file:
 
 ```xml
@@ -211,6 +214,9 @@ Depending on the iOS version, the behavior is slightly different:
   `SFSafariViewController` is used if available, otherwise **Safari** is used.
 
 # [Windows](#tab/windows)
+
+> [!CAUTION]
+> At the moment, WebAuthenticator isn't working on Windows. For more information, see [GitHub issue #2702](https://github.com/dotnet/maui/issues/2702).
 
 On WinUI 3, the `WebAuthenticationBroker` is used, if supported, otherwise the system browser is used.
 
