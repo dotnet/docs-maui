@@ -164,7 +164,7 @@ In this example, a border that uses a linear gradient is drawn around a `Label`:
 
 ## Define the border shape with a string
 
-The value of the `StrokeShape` property can be defined using property-tag syntax, or as a `string`. Valid `string` values for the `StrokeShape` property are:
+In XAML, the value of the `StrokeShape` property can be defined using property-tag syntax, or as a `string`. Valid `string` values for the `StrokeShape` property are:
 
 - `Ellipse`
 - `Line`, followed by one or two x- and y-coordinate pairs. For example, `Line 10 20` draws a line from (10,20) to (0,0), and `Line 10 20, 100 120` draws a line from (10,20) to (100,120).
