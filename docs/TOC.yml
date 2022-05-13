@@ -473,6 +473,8 @@
           href: platform-integration/sensors/geocoding.md
         - name: Geolocation
           href: platform-integration/sensors/geolocation.md
+        - name: Networking
+          href: platform-integration/networking.md
         - name: Semantic screen reader
           href: platform-integration/accessibility/semantic-screen-reader.md
         - name: Web authentication
