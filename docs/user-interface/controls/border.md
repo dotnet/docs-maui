@@ -1,7 +1,7 @@
 ---
 title: "Border"
 description: "Learn how to use the .NET MAUI Border class, which is a container control that draws a border, background, or both, around another control."
-ms.date: 04/12/2022
+ms.date: 05/13/2022
 ---
 
 # Border
@@ -16,7 +16,7 @@ The .NET Multi-platform App UI (.NET MAUI) `Border` is a container control that 
 
 - `Content`, of type `IView`, represents the content to display in the border. This property is the `ContentProperty` of the `Border` class, and therefore does not need to be explicitly set from XAML.
 - `Padding`, of type `Thickness`, represents the distance between the border and its child element.
-- `StrokeShape`, of type `IShape`, describes the shape of the border.
+- `StrokeShape`, of type `IShape`, describes the shape of the border. This property has a type converter applied to it that can convert a string to its equivalent `IShape`.
 - `Stroke`, of type `Brush`, indicates the brush used to paint the border.
 - `StrokeThickness`, of type `double`, indicates the width of the border. The default value of this property is 1.0.
 - `StrokeDashArray`, of type `DoubleCollection`, which represents a collection of `double` values that indicate the pattern of dashes and gaps that make up the border.
@@ -34,6 +34,22 @@ These properties are backed by `BindableProperty` objects, which means that they
 To draw a border, create a `Border` object and set its properties to define its appearance. Then, set its child to the control to which the border should be added.
 
 The following XAML example shows how to draw a border around a `Label`:
+
+```xaml
+<Border Stroke="#C49B33"
+        StrokeThickness="4"
+        StrokeShape="RoundRectangle 40,0,0,40"
+        Background="#2B0B98"
+        Padding="16,8"
+        HorizontalOptions="Center">
+    <Label Text=".NET MAUI"
+           TextColor="White"
+           FontSize="18"
+           FontAttributes="Bold" />
+</Border>
+```
+
+Alternatively, the `StrokeShape` property value can be specified using property tag syntax:
 
 ```xaml
 <Border Stroke="#C49B33"
@@ -83,18 +99,14 @@ In this example, a border with rounded top-left and bottom-right corners is draw
 
 :::image type="content" source="media/border/border.png" alt-text="Border around a Label screenshot.":::
 
-<!-- Todo (potentially): .NET MAUI may add a markup extension for setting the stroke shape directly, rather than having to instantiate one. See https://github.com/dotnet/maui/pull/3256 -->
-
 Because the `Stroke` property is of type `Brush`, borders can also be drawn using gradients:
 
 ```xaml
 <Border StrokeThickness="4"
+        StrokeShape="RoundRectangle 40,0,0,40"
         Background="#2B0B98"
         Padding="16,8"
         HorizontalOptions="Center">
-    <Border.StrokeShape>
-        <RoundRectangle CornerRadius="40,0,0,40" />
-    </Border.StrokeShape>
     <Border.Stroke>
         <LinearGradientBrush EndPoint="0,1">
             <GradientStop Color="Orange"
@@ -149,3 +161,18 @@ Border gradientBorder = new Border
 In this example, a border that uses a linear gradient is drawn around a `Label`:
 
 :::image type="content" source="media/border/linear-gradient-border.png" alt-text="Linear gradient border around a Label screenshot.":::
+
+## Define the border shape with a string
+
+The value of the `StrokeShape` property can be defined using property-tag syntax, or as a `string`. Valid `string` values for the `StrokeShape` property are:
+
+- `Ellipse`
+- `Line`, followed by one or two x- and y-coordinate pairs. For example, `Line 10 20` draws a line from (10,20) to (0,0), and `Line 10 20, 100, 120` draws a line from (10,20) to (100,120).
+- `Path`, followed by path markup syntax data. For example, `Path M 10,100 L 100,100 100,50Z` will draw a triangular border. For more information about path markup syntax, see [Path markup syntax](shapes/path-markup-syntax.md).
+- `Polygon`, followed by a collection of x- and y-coordinate pairs. For example, `Polygon 40 10, 70 80, 10 50`.
+- `Polyline`, followed by a collection x- and y-coordinate pairs. For example, `Polyline 0,0 10,30 15,0 18,60 23,30 35,30 40,0 43,60 48,30 100,30`.
+- `Rectangle`
+- `RoundRectangle`, optionally followed by a corner radius. For example, `RoundRectangle 40` or `RoundRectangle 40,0,0,40`.
+
+> [!NOTE]
+> `String`-based x- and y-coordinate pairs can be delimited by a single comma and/or one or more spaces. For example, "40,10 70,80" and "40 10, 70 80" are both valid. Coordinate pairs will be converted to `Point` objects that define `X` and `Y` properties, of type `double`.

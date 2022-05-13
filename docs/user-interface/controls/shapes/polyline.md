@@ -29,7 +29,7 @@ To draw a polyline, create a `Polyline` object and set its `Points` property to 
 The following XAML example shows how to draw a polyline:
 
 ```xaml
-<Polyline Points="0,0 10,30, 15,0 18,60 23,30 35,30 40,0 43,60 48,30 100,30"
+<Polyline Points="0,0 10,30 15,0 18,60 23,30 35,30 40,0 43,60 48,30 100,30"
           Stroke="Red" />
 ```
 
@@ -40,7 +40,7 @@ In this example, a red polyline is drawn:
 The following XAML example shows how to draw a dashed polyline:
 
 ```xaml
-<Polyline Points="0,0 10,30, 15,0 18,60 23,30 35,30 40,0 43,60 48,30 100,30"
+<Polyline Points="0,0 10,30 15,0 18,60 23,30 35,30 40,0 43,60 48,30 100,30"
           Stroke="Red"
           StrokeThickness="2"
           StrokeDashArray="1,1"
