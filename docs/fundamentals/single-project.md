@@ -86,19 +86,19 @@ An app icon can be added to your app project by dragging an image into the _Reso
 
 At build time, the app icon is resized to the correct sizes for the target platform and device. The resized app icons are then added to your app package. App icons are resized to multiple resolutions because they have multiple uses, including being used to represent the app on the device, and in the app store.
 
-<!-- For more information, see [App icons](~/user-interface/app-icons.md). -->
+For more information, see [Add an app icon to a .NET MAUI app project](~/user-interface/images/app-icons.md).
 
 ### Images
 
-Images can be added to your app project by dragging them to the _Resources\Images_ folder of your project, and setting their build action to **MauiImage** in the **Properties** window. This creates a corresponding entry per image in your project file:
+Images can be added to your app project by dragging them to the _Resources\Images_ folder of your project, where their build action will automatically be set to **MauiImage**. This creates a corresponding entry per image in your project file:
 
 ```xml
 <MauiImage Include="Resources\Images\logo.jpg" />
 ```
 
-At build time, images are resized to the correct resolutions for the target platform and device. The resized images are then added to your app package.
+At build time, images can be resized to the correct resolutions for the target platform and device. The resulting images are then added to your app package.
 
-<!-- For more information, see [Images](~/user-interface/images.md). -->
+For more information, see [Add images to a .NET MAUI app project](~/user-interface/images/images.md).
 
 ### Fonts
 
@@ -110,7 +110,7 @@ True type format (TTF) and open type font (OTF) fonts can be added to your app p
 
 At build time, the fonts are copied to your app package.
 
-<!-- For more information, see [Fonts](~/user-interface/fonts.md). -->
+For more information, see [Fonts](~/user-interface/fonts.md).
 
 ### Splash screen
 
@@ -122,7 +122,7 @@ A slash screen can be added to your app project by dragging an image into the _R
 
 At build time, the splash screen image is resized to the correct size for the target platform and device. The resized splash screen is then added to your app package.
 
-For more information, see [Splash screens](~/user-interface/images/splashscreen.md).
+For more information, see [Add a splash screen to a .NET MAUI app project](~/user-interface/images/splashscreen.md).
 
 ### Raw assets
 
