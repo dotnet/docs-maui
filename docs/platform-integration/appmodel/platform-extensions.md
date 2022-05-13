@@ -16,8 +16,6 @@ Xamarin.Essentials provides several platform extension methods when having to wo
 
 ## Using Platform Extensions
 
-[!INCLUDE [essentials-namespace](../includes/essentials-namespace.md)]
-
 All platform extensions can only be called from the iOS, Android, or Windows projects.
 
 ## Android Extensions
