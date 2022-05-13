@@ -61,7 +61,7 @@ No setup is required.
 
 You can determine the scope of the current network by checking the `NetworkAccess` property.
 
-:::code language="csharp" source="../snippets/shared_1/Network.cs" id="network_test":::
+:::code language="csharp" source="../snippets/shared_1/NetworkingPage.cs" id="network_test":::
 
 Network access falls into the following categories:
 
@@ -73,11 +73,11 @@ Network access falls into the following categories:
 
 You can check what type of connection profile the device is actively using:
 
-:::code language="csharp" source="../snippets/shared_1/Network.cs" id="network_profiles":::
+:::code language="csharp" source="../snippets/shared_1/NetworkingPage.cs" id="network_profiles":::
 
 Whenever the connection profile or network access changes, the `ConnectivityChanged` event is raised:
 
-:::code language="csharp" source="../snippets/shared_1/Network.cs" id="network_implementation":::
+:::code language="csharp" source="../snippets/shared_1/NetworkingPage.cs" id="network_implementation":::
 
 ## Limitations
 

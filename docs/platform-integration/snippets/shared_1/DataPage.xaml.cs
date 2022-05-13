@@ -27,7 +27,7 @@ public partial class DataPage : ContentPage
     //<clipboard_clear>
     private async Task ClearClipboard() =>
         await Clipboard.Default.SetTextAsync(null);
-    //<clipboard_clear>
+    //</clipboard_clear>
     //</clipboard_read>
 
     //<clipboard_event>

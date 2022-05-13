@@ -45,7 +45,6 @@ The table below describes the .NET MAUI Essential features that are supported by
 | [Accelerometer](platform-integration/sensors/index.md#accelerometer)       | ✔️     | ✔️  | ✔️     | ✔️    | ❌    |
 | [App Actions](platform-integration/appmodel/app-actions.md)                   | ✔️     | ✔️  | ✔️     | ❌     | ❌    |
 | [App Information](platform-integration/appmodel/app-information.md)           | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
-| [App Theme](platform-integration/appmodel/app-theme.md)                       | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
 | [Barometer](platform-integration/sensors/index.md#barometer)               | ✔️     | ✔️  | ✔️     | ✔️    | ❌    |
 | [Battery](platform-integration/device/battery.md)                           | ✔️     | ✔️  | ✔️     | ⚠️    | ✔️   |
 | [Clipboard](platform-integration/data/clipboard.md)                       | ✔️     | ✔️  | ✔️     | ❌     | ✔️   |
@@ -54,8 +53,8 @@ The table below describes the .NET MAUI Essential features that are supported by
 | [Connectivity](platform-integration/networking.md)                 | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
 | [Contacts](platform-integration/communication/contacts.md)                         | ✔️     | ✔️  | ✔️     | ✔️    | ❌    |
 | [Shake](platform-integration/sensors/index.md#shake)                | ✔️     | ✔️  | ✔️     | ✔️    | ❌    |
-| [Device display information](platform-integration/device/device-display.md) | ✔️     | ✔️  | ✔️     | ❌     | ✔️   |
-| [Device information](platform-integration/device/device-information.md)     | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
+| [Device display information](platform-integration/device/display.md) | ✔️     | ✔️  | ✔️     | ❌     | ✔️   |
+| [Device information](platform-integration/device/information.md)     | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
 | [Email](platform-integration/communication/email.md)                              | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
 | [File Picker](platform-integration/storage/file-picker.md)                   | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
 | [File system helpers](platform-integration/storage/file-system-helpers.md)   | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
@@ -68,7 +67,7 @@ The table below describes the .NET MAUI Essential features that are supported by
 | [Magnetometer](platform-integration/sensors/index.md#magnetometer)         | ✔️     | ✔️  | ✔️     | ✔️    | ❌    |
 | [MainThread](platform-integration/appmodel/main-thread.md)                    | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
 | [Map](platform-integration/appmodel/maps.md)                                 | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
-| [Media Picker](platform-integration/device-media/media-picker.md)                 | ✔️     | ✔️  | ✔️     | ✔️    | ⚠️   |
+| [Media Picker](platform-integration/device-media/picker.md)                 | ✔️     | ✔️  | ✔️     | ✔️    | ⚠️   |
 | [Browser](platform-integration/appmodel/open-browser.md)                 | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
 | [Orientation Sensor](platform-integration/sensors/index.md#orientation)    | ✔️     | ✔️  | ✔️     | ✔️    | ❌    |
 | [Permissions](platform-integration/appmodel/permissions.md)                   | ✔️     | ✔️  | ✔️     | ✔️    | ✔️   |
