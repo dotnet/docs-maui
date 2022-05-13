@@ -48,20 +48,20 @@ The `SemanticProperties.Description` attached property represents a short, descr
 
 ```xaml
 <Image Source="dotnet_bot.png"
-       SemanticProperties.Description="Image of dotnet bot." />
+       SemanticProperties.Description="Cute dot net bot waving hi to you!" />
 ```
 
 Alternatively, it can be set in C#:
 
 ```csharp
 Image image = new Image { Source = "dotnet_bot.png" };
-SemanticProperties.SetDescription(image, "Image of dotnet bot.");
+SemanticProperties.SetDescription(image, "Cute dot net bot waving hi to you!");
 ```
 
 In addition, the `SetValue` method can also be used to set the `SemanticProperties.Description` attached property:
 
 ```csharp
-image.SetValue(SemanticProperties.DescriptionProperty, "Image of dotnet bot.");
+image.SetValue(SemanticProperties.DescriptionProperty, "Cute dot net bot waving hi to you!");
 ```
 
 > [!WARNING]
