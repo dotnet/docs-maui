@@ -59,7 +59,7 @@ In a .NET MAUI app, you write code that primarily interacts with the .NET MAUI A
 - Cross-platform APIs for accessing native device features. These APIs enable apps to access device features such as the GPS, the accelerometer, and battery and network states. For more information, see [Cross-platform APIs for device features](#cross-platform-apis-for-device-features).
 - Cross-platform graphics functionality, that provides a drawing canvas that supports drawing and painting shapes and images, compositing operations, and graphical object transforms.
 - A single project system that uses multi-targeting to target Android, iOS, macOS, and Windows. For more information, see [.NET MAUI Single project](#net-maui-single-project).
-- .NET hot reload, so that you can modify both your XAML and your managed source code while the app is running, then observe the result of your modifications without rebuilding the app. For more information, see [.NET hot reload](#net-hot-reload).
+- .NET hot reload, so that you can modify both your XAML and your managed source code while the app is running, then observe the result of your modifications without rebuilding the app. For more information, see [.NET hot reload](#hot-reload).
 
 ### Cross-platform APIs for device features
 
@@ -76,7 +76,7 @@ In a .NET MAUI app, you write code that primarily interacts with the .NET MAUI A
 
 <!-- For more information, see .NET MAUI essentials. -->
 
-### .NET MAUI single project
+### Single project
 
 .NET MAUI single project takes the platform-specific development experiences you typically encounter while developing apps and abstracts them into a single shared project that can target Android, iOS, macOS, and Windows.
 
@@ -91,7 +91,7 @@ In a .NET MAUI app, you write code that primarily interacts with the .NET MAUI A
 
 .NET MAUI single project is enabled using multi-targeting and the use of SDK-style projects in .NET 6. For more information about .NET MAUI single project, see [.NET MAUI single project](~/fundamentals/single-project.md).
 
-### .NET hot reload
+### Hot reload
 
 .NET MAUI includes support for .NET hot reload, which enables you to modify your managed source code while the app is running, without the need to manually pause or hit a breakpoint. Then, your code edits can be applied to your running app without recompilation.
 
