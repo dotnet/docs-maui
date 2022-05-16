@@ -1,7 +1,7 @@
 ---
 title: "Host a Blazor web app in a .NET MAUI app using BlazorWebView"
 description: "The .NET MAUI BlazorWebView control enables you to host a Blazor web app in your .NET MAUI app, and integrate the app with device features."
-ms.date: 04/27/2022
+ms.date: 05/16/2022
 ---
 
 # Host a Blazor web app in a .NET MAUI app using BlazorWebView
@@ -29,7 +29,7 @@ In addition, `BlazorWebView` defines the following events:
 
 Existing [Razor components](/aspnet/core/blazor/components/) can be used in a .NET MAUI Blazor app by moving the code into the app, or by referencing an existing class library or package that contains the component.
 
-For information about Blazor apps, see [Introduction to ASP.NET Core Blazor](/aspnet/core/blazor/).
+For more information about Blazor Hybrid apps, see [ASP.NET Core Blazor Hybrid](/aspnet/core/blazor/hybrid).
 
 > [!NOTE]
 > While Visual Studio installs all the required tooling to develop .NET MAUI Blazor apps, end users of .NET MAUI Blazor apps on Windows must install the [WebView2](https://developer.microsoft.com/microsoft-edge/webview2/) runtime.
@@ -40,7 +40,9 @@ A .NET MAUI Blazor app can be created in Visual Studio by the **.NET MAUI Blazor
 
 :::image type="content" source="media/blazorwebview/blazorwebapp-template.png" alt-text=".NET MAUI Blazor app project template screenshot.":::
 
-This project template creates a multi-targeted .NET MAUI Blazor app that can be deployed to Android, iOS, macOS, and Windows. The `BlazorWebView` is defined in *MainPage.xaml* in the created project, and points to the root of the Blazor app:
+This project template creates a multi-targeted .NET MAUI Blazor app that can be deployed to Android, iOS, macOS, and Windows. For step-by-step instructions on creating a .NET MAUI Blazor app, see [Build a .NET MAUI Blazor app](/aspnet/core/blazor/hybrid/tutorials/maui).
+
+The `BlazorWebView` created by the project template is defined in *MainPage.xaml*, and points to the root of the Blazor app:
 
 ```xaml
 <ContentPage xmlns=http://schemas.microsoft.com/dotnet/2021/maui
