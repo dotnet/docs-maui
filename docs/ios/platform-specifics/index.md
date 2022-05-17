@@ -2,7 +2,6 @@
 title: "iOS platform-specifics in .NET MAUI"
 description: "Learn how to consume iOS platform-specifics in .NET MAUI apps."
 ms.date: 04/05/2022
-
 ---
 
 # iOS platform-specifics in .NET MAUI
@@ -10,13 +9,6 @@ ms.date: 04/05/2022
 .NET Multi-platform App UI (.NET MAUI) platform-specifics allow you to consume functionality that's only available on a specific platform, without customizing handlers.
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
-The following platform-specific functionality is provided for .NET MAUI views, pages, and layouts on iOS:
-
-- Blur support for any `VisualElement`. For more information, see [VisualElement blur on iOS](visualelement-blur.md).
-- Disabling legacy color mode on a supported `VisualElement`. For more information, see [VisualElement legacy color mode on iOS](legacy-color-mode.md).
-- Enabling a drop shadow on a `VisualElement`. For more information, see [VisualElement drop shadows on iOS](visualelement-drop-shadow.md).
-- Enabling a `VisualElement` object to become the first responder to touch events. For more information, see [VisualElement first responder](visualelement-first-responder.md).
 
 The following platform-specific functionality is provided for .NET MAUI views on iOS:
 
@@ -36,13 +28,8 @@ The following platform-specific functionality is provided for .NET MAUI views on
 The following platform-specific functionality is provided for .NET MAUI pages on iOS:
 
 - Controlling whether the detail page of a `FlyoutPage` has shadow applied to it, when revealing the flyout page. For more information, see [FlyoutPage shadow](flyoutpage-shadow.md).
-- Hiding the navigation bar separator on a `NavigationPage`. For more information, see [NavigationPage bar separator on iOS](navigation-bar-separator.md).
 - Controlling whether the navigation bar is translucent. For more information, see [Navigation bar translucency on iOS](navigation-bar-translucent.md).
-- Controlling whether the status bar text color on a `NavigationPage` is adjusted to match the luminosity of the navigation bar. For more information, see [NavigationPage bar text color mode on iOS](status-bar-text-color.md).
 - Controlling whether the page title is displayed as a large title in the page navigation bar. For more information, see [Large page titles on iOS](page-large-title.md).
-- Setting the visibility of the home indicator on a `Page`. For more information, see [Home indicator visibility on iOS](page-home-indicator.md).
-- Setting the status bar visibility on a `Page`. For more information, see [Page status bar visibility on iOS](page-status-bar-visibility.md).
-- Ensuring that page content is positioned on an area of the screen that is safe for all iOS devices. For more information, see [Safe area layout guide on iOS](page-safe-area-layout.md).
 - Setting the presentation style of modal pages. For more information, see [Modal page presentation style](page-presentation-style.md).
 - Setting the translucency mode of the tab bar on a `TabbedPage`. For more information, see [TabbedPage translucent TabBar on iOS](tabbedpage-translucent-tabbar.md).
 
@@ -52,6 +39,4 @@ The following platform-specific functionality is provided for .NET MAUI layouts 
 
 The following platform-specific functionality is provided for the .NET MAUI `Application` class on iOS:
 
-- Disabling accessibility scaling for named font sizes. For more information, see [Accessibility scaling for named font sizes on iOS](named-font-size-scaling.md).
-- Enabling control layout and rendering updates to be performed on the main thread. For more information, see [Main thread control updates on iOS](main-thread-updates-ui.md).
 - Enabling a `PanGestureRecognizer` in a scrolling view to capture and share the pan gesture with the scrolling view. For more information, see [Simultaneous pan gesture recognition on iOS](application-pan-gesture.md).
