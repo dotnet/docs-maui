@@ -509,28 +509,16 @@
                   href: windows/platform-specifics/index.md
                 - name: Default image directory
                   href: windows/platform-specifics/default-image-directory.md
-                - name: FlyoutPage navigation bar
-                  href: windows/platform-specifics/flyoutpage-navigation-bar.md
                 - name: InputView reading order
                   href: windows/platform-specifics/inputview-reading-order.md
                 - name: ListView SelectionMode
                   href: windows/platform-specifics/listview-selectionmode.md
-                - name: Page toolbar placement
-                  href: windows/platform-specifics/page-toolbar-placement.md
                 - name: RefreshView pull direction
                   href: windows/platform-specifics/refreshview-pulldirection.md
                 - name: SearchBar spell check
                   href: windows/platform-specifics/searchbar-spell-check.md
-                - name: TabbedPage icons
-                  href: windows/platform-specifics/tabbedpage-icons.md
                 - name: VisualElement access keys
                   href: windows/platform-specifics/visualelement-access-keys.md
-                - name: VisualElement legacy color mode
-                  href: windows/platform-specifics/legacy-color-mode.md
-                - name: WebView execution mode
-                  href: windows/platform-specifics/webview-executionmode.md
-                - name: WebView JavaScript alerts
-                  href: windows/platform-specifics/webview-javascript-alert.md
     - name: Publish
       items:
         - name: Android
