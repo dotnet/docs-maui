@@ -17,41 +17,41 @@ A .NET MAUI app icon can use any of the standard platform image formats, includi
 > [!IMPORTANT]
 > .NET MAUI converts SVG files to PNG files. Therefore, when adding an SVG file to your .NET MAUI app project, it should be referenced from XAML or C# with a .png extension.
 
-An app icon can be added to your app project by dragging an image into the _Resources\Images_ folder of the project, and setting the build action of the image to `MauiIcon` in the **Properties** window. This creates a corresponding entry in your project file:
+An app icon can be added to your app project by dragging an image into the _Resources\AppIcon_ folder of the project, where its build action will automatically be set to **MauiIcon**. This creates a corresponding entry in your project file:
 
 ```xml
 <ItemGroup>
-    <MauiIcon Include="Resources\Images\appicon.svg" />
+    <MauiIcon Include="Resources\AppIcon\appicon.svg" />
 </ItemGroup>
 ```
 
 > [!NOTE]
-> An app icons can also be added to other folders of your app project.
+> An app icon can also be added to other folders of your app project. However, in this scenario its build action must be manually set to **MauiIcon** in the **Properties** window.
 
 To comply with Android resource naming rules, app icon filenames must be lowercase, start and end with a letter character, and contain only alphanumeric characters or underscores. For more information, see [App resources overview](https://developer.android.com/guide/topics/resources/providing-resources) on developer.android.com.
 
 The base size of the app icon can be specified by setting the `BaseSize` attribute to values that are divisible by 8:
 
 ```xml
-<MauiIcon Include="Resources\Images\appicon.jpg" BaseSize="64,64" />
+<MauiIcon Include="Resources\AppIcon\appicon.jpg" BaseSize="64,64" />
 ```
 
 The value of the `BaseSize` attribute represents the baseline density of the image, and is effectively the 1.0 scale factor for the image from which all other density sizes are derived. This value will be used to ensure that the app icon is correctly resized to different display densities. If you don't specify a `BaseSize` for a bitmap-based app icon, the image isn't resized. If you don't specify a `BaseSize` value for a vector-based app icon, the dimensions specified in the SVG are assumed to be the base size. To stop vector images being resized, set the `Resize` attribute to `false`:
 
 ```xml
-<MauiIcon Include="Resources\Images\appicon.svg" Resize="false" />
+<MauiIcon Include="Resources\AppIcon\appicon.svg" Resize="false" />
 ```
 
 To add a tint to your app icon, which is useful when you have an icon or simple image you'd like to render in a different color to the source, set the `TintColor` attribute:
 
 ```xml
-<MauiIcon Include="Resources\Images\appicon.svg" TintColor="#66B3FF" />
+<MauiIcon Include="Resources\AppIcon\appicon.svg" TintColor="#66B3FF" />
 ```
 
 A background color for the app icon can also be specified:
 
 ```xml
-<MauiIcon Include="Resources\Images\appicon.svg" Color="#512BD4" />
+<MauiIcon Include="Resources\AppIcon\appicon.svg" Color="#512BD4" />
 ```
 
 <!-- Valid color values are actually derived from the SKColor struct, rather than Microsoft.Maui.Graphics.Colors. -->
@@ -68,10 +68,10 @@ At build time, the app icon can be resized to the correct resolutions for the ta
 Adaptive launcher icons are defined using a background layer and a foreground layer, and an optional scaling value:
 
 ```xml
-<MauiIcon Include="Resources\Images\appiconback.svg" ForegroundFile="Resources\Images\appiconfore.svg" ForegroundScale="0.65" Color="#512BD4" />
+<MauiIcon Include="Resources\AppIcon\appiconback.svg" ForegroundFile="Resources\AppIcon\appiconfore.svg" ForegroundScale="0.65" Color="#512BD4" />
 ```
 
-The `ForegroundFile` attribute defines the main content of the icon. The `Include` attribute is used to specify the background layer, and is typically set to a color or pattern. In addition, the `ForegroundScale` attribute can be optionally specified to change the scaling of the foreground layer being rendered over the background layer.
+The `ForegroundFile` attribute defines the main content of the icon, and the file referenced from this attribute doesn't require a build action to be set. The `Include` attribute is used to specify the background layer, and is typically set to a color or pattern. In addition, the `ForegroundScale` attribute can be optionally specified to change the scaling of the foreground layer being rendered over the background layer.
 
 > [!IMPORTANT]
 > The `Color` attribute can still be specified when producing an adaptive launcher icon on Android so that a background color is generated for the app icon on other platforms.
