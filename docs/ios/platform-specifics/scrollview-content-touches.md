@@ -4,7 +4,7 @@ description: "This article explains how to consume the .NET MAUI iOS platform-sp
 ms.date: 04/05/2022
 ---
 
-# ScrollView Content Touches on iOS
+# ScrollView content touches on iOS
 
 An implicit timer is triggered when a touch gesture begins in a `ScrollView` on iOS and the `ScrollView` decides, based on the user action within the timer span, whether it should handle the gesture or pass it to its content. By default, the iOS `ScrollView` delays content touches, but this can cause problems in some circumstances with the `ScrollView` content not winning the gesture when it should. Therefore, this .NET Multi-platform App UI (.NET MAUI) platform-specific controls whether a `ScrollView` handles a touch gesture or passes it to its content. It's consumed in XAML by setting the `ScrollView.ShouldDelayContentTouches` attached property to a `boolean` value:
 

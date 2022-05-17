@@ -4,7 +4,7 @@ description: "Learn how to consume iOS platform-specifics in .NET MAUI apps."
 ms.date: 04/05/2022
 ---
 
-# iOS platform-specifics in .NET MAUI
+# iOS platform-specifics
 
 .NET Multi-platform App UI (.NET MAUI) platform-specifics allow you to consume functionality that's only available on a specific platform, without customizing handlers.
 

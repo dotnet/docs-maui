@@ -4,7 +4,7 @@ description: "Learn how to consume Windows platform-specifics in .NET MAUI apps.
 ms.date: 04/06/2022
 ---
 
-# Windows platform-specifics in .NET MAUI
+# Windows platform-specifics
 
 .NET Multi-platform App UI (.NET MAUI) platform-specifics allow you to consume functionality that's only available on a specific platform, without customizing handlers.
 
