@@ -423,18 +423,10 @@
               items:
                 - name: Overview
                   href: android/platform-specifics/index.md
-                - name: Button padding and shadows
-                  href: android/platform-specifics/button-padding-shadow.md
                 - name: Entry input method editor options
                   href: android/platform-specifics/entry-ime-options.md
-                - name: ImageButton drop shadows
-                  href: android/platform-specifics/imagebutton-drop-shadow.md
                 - name: ListView fast scrolling
                   href: android/platform-specifics/listview-fast-scrolling.md
-                - name: NavigationPage bar height
-                  href: android/platform-specifics/navigationpage-bar-height.md
-                - name: Page lifecycle events
-                  href: android/platform-specifics/page-lifecycle-events.md
                 - name: Soft keyboard input mode
                   href: android/platform-specifics/soft-keyboard-input-mode.md
                 - name: SwipeView swipe transition mode
@@ -445,12 +437,6 @@
                   href: android/platform-specifics/tabbedpage-transition-animations.md
                 - name: TabbedPage toolbar placement
                   href: android/platform-specifics/tabbedpage-toolbar-placement.md
-                - name: ViewCell context actions
-                  href: android/platform-specifics/viewcell-context-actions.md
-                - name: VisualElement elevation
-                  href: android/platform-specifics/visualelement-elevation.md
-                - name: VisualElement legacy color mode
-                  href: android/platform-specifics/legacy-color-mode.md
                 - name: WebView mixed content
                   href: android/platform-specifics/webview-mixed-content.md
                 - name: WebView zoom
