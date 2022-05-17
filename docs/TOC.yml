@@ -29,6 +29,20 @@
               items:
                 - name: How to set up a physical device
                   href: android/device/setup.md
+        - name: iOS
+          items:
+            - name: Build an iOS app with .NET CLI
+              href: ios/cli.md
+            - name: Pair to Mac
+              href: ios/pair-to-mac.md
+            - name: Simulators
+              items:
+              - name: Remote iOS simulator for Windows
+                href: ios/remote-simulator.md
+        - name: macOS
+          items:
+            - name: Build a Mac Catalyst app with .NET CLI
+              href: macos/cli.md
         - name: Windows
           items:
             - name: How to set up Windows for debugging
@@ -129,6 +143,24 @@
           href: fundamentals/messagingcenter.md
         - name: Resource dictionaries
           href: fundamentals/resource-dictionaries.md
+        - name: Shell
+          items:
+            - name: Overview
+              href: fundamentals/shell/index.md
+            - name: Create a Shell app
+              href: fundamentals/shell/create.md
+            - name: Flyout
+              href: fundamentals/shell/flyout.md
+            - name: Tabs
+              href: fundamentals/shell/tabs.md
+            - name: Pages
+              href: fundamentals/shell/pages.md
+            - name: Navigation
+              href: fundamentals/shell/navigation.md
+            - name: Search
+              href: fundamentals/shell/search.md
+            - name: Lifecycle
+              href: fundamentals/shell/lifecycle.md
         - name: Single project
           href: fundamentals/single-project.md
         - name: Templates
@@ -139,6 +171,8 @@
                 href: fundamentals/datatemplate.md
         - name: Triggers
           href: fundamentals/triggers.md
+        - name: Windows
+          href: fundamentals/windows.md
     - name: User interface
       items:
         - name: Animation
@@ -167,6 +201,8 @@
           items:
             - name: Overview
               href: user-interface/controls/index.md
+            - name: Align and position controls
+              href: user-interface/align-position.md
             - name: Customize controls
               href: user-interface/handlers/customize.md
             - name: Layouts
@@ -183,8 +219,6 @@
                   href: user-interface/layouts/grid.md
                 - name: HorizontalStackLayout
                   href: user-interface/layouts/horizontalstacklayout.md
-                - name: RelativeLayout
-                  href: user-interface/layouts/relativelayout.md
                 - name: StackLayout
                   href: user-interface/layouts/stacklayout.md
                 - name: VerticalStackLayout
@@ -329,8 +363,12 @@
                       href: user-interface/controls/tableview.md
                 - name: ContentView
                   href: user-interface/controls/contentview.md
+        - name: Display a menu bar
+          href: user-interface/menubar.md
         - name: Display pop-ups
           href: user-interface/pop-ups.md
+        - name: Fonts
+          href: user-interface/fonts.md
         - name: Graphics
           items:
             - name: Overview
@@ -353,6 +391,8 @@
           items:
             - name: App icons
               href: user-interface/images/app-icons.md
+            - name: Images
+              href: user-interface/images/images.md
             - name: Splash screen
               href: user-interface/images/splashscreen.md
         - name: Shadows
@@ -509,5 +549,15 @@
       items:
         - name: Android
           href: android/deployment/overview.md
+        - name: iOS
+          items:
+            - name: Publish an iOS app
+              href: ios/deployment/overview.md
+            - name: Provision for app store distribution
+              href: ios/deployment/provision.md
+            - name: Entitlements and capabilities
+              href: ios/deployment/entitlements.md
+        - name: macOS
+          href: macos/deployment/overview.md
         - name: Windows
           href: windows/deployment/overview.md

@@ -1,7 +1,7 @@
 ---
 title: "What is .NET MAUI?"
 description: ".NET Multi-platform App UI (.NET MAUI) is a cross-platform framework for creating native mobile and desktop apps with C# and XAML."
-ms.date: 06/07/2021
+ms.date: 05/13/2022
 ---
 
 # What is .NET MAUI?
@@ -56,14 +56,14 @@ In a .NET MAUI app, you write code that primarily interacts with the .NET MAUI A
 - Multiple page types for creating rich navigation types, like drawers.
 - Support for data-binding, for more elegant and maintainable development patterns.
 - The ability to customize handlers to enhance the way in which UI elements are presented.
-- Essential cross-platform APIs for accessing native device features. These APIs enable apps to access device features such as the GPS, the accelerometer, and battery and network states. For more information, see [.NET MAUI essentials](#net-maui-essentials).
-- Cross-platform graphics functionality, that provides a drawing canvas that supports drawing and painting shapes an images, compositing operations, and graphical object transforms.
-- A single project system that uses multi-targeting to target Android, iOS, macOS, and Windows. For more information, see [.NET MAUI Single project](#net-maui-single-project).
-- .NET hot reload, so that you can modify both your XAML and your managed source code while the app is running, then observe the result of your modifications without rebuilding the app. For more information, see [.NET hot reload](#net-hot-reload).
+- Cross-platform APIs for accessing native device features. These APIs enable apps to access device features such as the GPS, the accelerometer, and battery and network states. For more information, see [Cross-platform APIs for device features](#cross-platform-apis-for-device-features).
+- Cross-platform graphics functionality, that provides a drawing canvas that supports drawing and painting shapes and images, compositing operations, and graphical object transforms.
+- A single project system that uses multi-targeting to target Android, iOS, macOS, and Windows. For more information, see [.NET MAUI Single project](#single-project).
+- .NET hot reload, so that you can modify both your XAML and your managed source code while the app is running, then observe the result of your modifications without rebuilding the app. For more information, see [.NET hot reload](#hot-reload).
 
-### .NET MAUI essentials
+### Cross-platform APIs for device features
 
-.NET MAUI provides cross-platform APIs for native device features. Examples of functionality provided by .NET MAUI essentials includes:
+.NET MAUI provides cross-platform APIs for native device features. Examples of functionality provided by .NET MAUI for accessing device features includes:
 
 - Access to sensors, such as the accelerometer, compass, and gyroscope on devices.
 - Ability to check the device's network connectivity state, and detect changes.
@@ -76,19 +76,22 @@ In a .NET MAUI app, you write code that primarily interacts with the .NET MAUI A
 
 <!-- For more information, see .NET MAUI essentials. -->
 
-### .NET MAUI single project
+### Single project
 
-.NET MAUI apps typically consist of a single project that can target Android, iOS, macOS, and Windows. This delivers the following benefits:
+.NET MAUI single project takes the platform-specific development experiences you typically encounter while developing apps and abstracts them into a single shared project that can target Android, iOS, macOS, and Windows.
 
-- One project that targets multiple platforms and devices.
-- One location to manage resources such as fonts and images.
-- Multi-targeting to organize platform-specific code.
+.NET MAUI single project provides a simplified and consistent cross-platform development experience, regardless of the platforms being targeted. .NET MAUI single project provides the following features:
 
-:::image type="content" source="media/what-is-maui/single-project.png" alt-text=".NET MAUI single project.":::
+- A single shared project that can target Android, iOS, macOS, and Windows.
+- A simplified debug target selection for running your .NET MAUI apps.
+- Shared resource files within the single project.
+- A single app manifest that specifies the app title, id, and version.
+- Access to platform-specific APIs and tools when required.
+- A single cross-platform app entry point.
 
-For more information about .NET MAUI single project, see [.NET MAUI single project](~/fundamentals/single-project.md).
+.NET MAUI single project is enabled using multi-targeting and the use of SDK-style projects in .NET 6. For more information about .NET MAUI single project, see [.NET MAUI single project](~/fundamentals/single-project.md).
 
-### .NET hot reload
+### Hot reload
 
 .NET MAUI includes support for .NET hot reload, which enables you to modify your managed source code while the app is running, without the need to manually pause or hit a breakpoint. Then, your code edits can be applied to your running app without recompilation.
 

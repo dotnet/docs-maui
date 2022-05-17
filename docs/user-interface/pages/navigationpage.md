@@ -36,6 +36,9 @@ The `NavigationPage` class also defines three events:
 
 All three events receive `NavigationEventArgs` objects that define a read-only `Page` property, which retrieves the page that was popped from the navigation stack, or the newly visible page on the stack.
 
+> [!WARNING]
+> `NavigationPage` is incompatible with .NET MAUI Shell apps, and an exception will be thrown if you attempt to use `NavigationPage` in a Shell app. For more information about Shell apps, see [Shell](~/fundamentals/shell/index.md).
+
 ## Perform modeless navigation
 
 .NET MAUI supports modeless page navigation. A modeless page stays on screen and remains available until you navigate to another page.

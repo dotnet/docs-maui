@@ -36,7 +36,7 @@ In addition to the markup extensions discussed in this article, the following ma
 - `Binding` - establish a link between properties of two objects. For more information, see [Data binding**](~/fundamentals/data-binding/index.md).
 - `TemplateBinding` - performs data binding from a control template. <!--For more information, see [Control templates**](~/fundamentals/templates/control-template.md).-->
 - `RelativeSource` - sets the binding source relative to the position of the binding target. For more information, see [Relative bindings](~/fundamentals/data-binding/relative-bindings.md).
-- `ConstraintExpression` - relates the position and size of a child in a `RelativeLayout` to its parent, or a sibling. <!--For more information, see [RelativeLayout](~/user-interface/layouts/relativelayout.md).-->
+<!-- - `ConstraintExpression` - relates the position and size of a child in a `RelativeLayout` to its parent, or a sibling. For more information, see [RelativeLayout](~/user-interface/layouts/relativelayout.md).-->
 
 ## x:Static markup extension
 
@@ -315,12 +315,10 @@ The `OnPlatform` markup extension is supported by the `OnPlatformExtension` clas
 
 - `Default` of type `object`, that you set to a default value to be applied to the properties that represent platforms.
 - `Android` of type `object`, that you set to a value to be applied on Android.
-<!-- - `GTK` of type `object`, that you set to a value to be applied on GTK platforms. -->
 - `iOS` of type `object`, that you set to a value to be applied on iOS.
-- `macOS` of type `object`, that you set to a value to be applied on macOS.
+- `MacCatalyst` of type `object`, that you set to a value to be applied on Mac Catalyst.
 - `Tizen` of type `object`, that you set to a value to be applied on the Tizen platform.
-<!-- - `UWP` of type `object`, that you set to a value to be applied on the Universal Windows Platform.-->
-<!-- - `WPF` of type `object`, that you set to a value to be applied on the Windows Presentation Foundation platform. -->
+- `WinUI` of type `object`, that you set to a value to be applied on WinUI.
 - `Converter` of type `IValueConverter`, that can be set to an `IValueConverter` implementation.
 - `ConverterParameter` of type `object`, that can be set to a value to pass to the `IValueConverter` implementation.
 

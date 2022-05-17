@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI GraphicsView"
 description: "The .NET MAUI GraphicsView is a graphics canvas on which 2D graphics can be drawn using types from the Microsoft.Maui.Graphics namespace."
-ms.date: 12/17/2021
+ms.date: 04/19/2022
 ---
 
 # GraphicsView
@@ -13,6 +13,16 @@ The .NET Multi-platform App UI (.NET MAUI) `GraphicsView` is a graphics canvas o
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
 `GraphicsView` defines the `Drawable` property, of type `IDrawable`, which specifies the content that will be drawn. This property is backed by a `BindableProperty`, which means it can be the target of data binding, and styled.
+
+`GraphicsView` defines the following events:
+
+- `StartHoverInteraction`, with `TouchEventArgs`, which is raised when a pointer enters the hit test area of the `GraphicsView`.
+- `MoveHoverInteraction`, with `TouchEventArgs`, which is raised when a pointer moves while the pointer remains within the hit test area of the `GraphicsView`.
+- `EndHoverInteraction`, which is raised when a pointer leaves the hit test area of the `GraphicsView`.
+- `StartInteraction`, with `TouchEventArgs`, which is raised when the `GraphicsView` is pressed.
+- `DragInteraction`, with `TouchEventArgs`, which is raised when the `GraphicsView` is dragged.
+- `EndInteraction`, with `TouchEventArgs`, which is raised when the press that raised the `StartInteraction` event is released.
+- `CancelInteraction`, which is raised when the press that made contact with the `GraphicsView` loses contact.
 
 ## Create a GraphicsView
 

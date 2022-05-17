@@ -22,8 +22,10 @@ The .NET Multi-platform App UI (.NET MAUI) `TabbedPage` maintains a collection o
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
+In a `TabbedPage`, each `Page` object is created when the `TabbedPage` is constructed. This can lead to a poor user experience, particularly if the `TabbedPage` is the root page of your app. However, .NET MAUI Shell enables pages accessed through a tab bar to be created on demand, in response to navigation. For more information about Shell apps, see [Shell](~/fundamentals/shell/index.md).
+
 > [!WARNING]
-> In a `TabbedPage`, each `Page` object is created when the `TabbedPage` is constructed. This can lead to a poor user experience, particularly if the `TabbedPage` is the root page of the app. However, .NET MAUI Shell enables pages accessed through a tab bar to be created on demand, in response to navigation. <!--For more information, see [.NET MAUI Shell](~/fundamentals/shell/introduction.md).-->
+> `TabbedPage` is incompatible with .NET MAUI Shell apps, and an exception will be thrown if you attempt to use `TabbedPage` in a Shell app.
 
 ## Create a TabbedPage
 
@@ -83,7 +85,7 @@ The following example shows generating `TabbedPage` children dynamically:
                 <StackLayout Padding="5, 25">
                     <Label Text="{Binding Name}"
                            FontAttributes="Bold"
-                           FontSize="Large"
+                           FontSize="18"
                            HorizontalOptions="Center" />
                     <Image Source="{Binding PhotoUrl}"
                            HorizontalOptions="Center"

@@ -1,10 +1,10 @@
 ---
-title: "Target multiple platforms from a single project"
+title: "Target multiple platforms from .NET MAUI single project"
 description: "Learn about the .NET MAUI single project, which brings all the platform-specific experiences across Android, iOS, macOS, and Windows, into one shared project."
-ms.date: 03/01/2022
+ms.date: 04/19/2022
 ---
 
-# Target multiple platforms from a single project
+# Target multiple platforms from .NET MAUI single project
 
 .NET Multi-platform App UI (.NET MAUI) single project takes the platform-specific development experiences you typically encounter while developing apps and abstracts them into a single shared project that can target Android, iOS, macOS, and Windows.
 
@@ -15,6 +15,7 @@ ms.date: 03/01/2022
 - A single shared project that can target Android, iOS, macOS, and Windows.
 - A simplified debug target selection for running your .NET MAUI apps.
 - Shared resource files within the single project.
+- A single app manifest that specifies the app title, id, and version.
 - Access to platform-specific APIs and tools when required.
 - A single cross-platform app entry point.
 
@@ -85,19 +86,19 @@ An app icon can be added to your app project by dragging an image into the _Reso
 
 At build time, the app icon is resized to the correct sizes for the target platform and device. The resized app icons are then added to your app package. App icons are resized to multiple resolutions because they have multiple uses, including being used to represent the app on the device, and in the app store.
 
-<!-- For more information, see [App icons](~/user-interface/app-icons.md). -->
+For more information, see [Add an app icon to a .NET MAUI app project](~/user-interface/images/app-icons.md).
 
 ### Images
 
-Images can be added to your app project by dragging them to the _Resources\Images_ folder of your project, and setting their build action to **MauiImage** in the **Properties** window. This creates a corresponding entry per image in your project file:
+Images can be added to your app project by dragging them to the _Resources\Images_ folder of your project, where their build action will automatically be set to **MauiImage**. This creates a corresponding entry per image in your project file:
 
 ```xml
 <MauiImage Include="Resources\Images\logo.jpg" />
 ```
 
-At build time, images are resized to the correct resolutions for the target platform and device. The resized images are then added to your app package.
+At build time, images can be resized to the correct resolutions for the target platform and device. The resulting images are then added to your app package.
 
-<!-- For more information, see [Images](~/user-interface/images.md). -->
+For more information, see [Add images to a .NET MAUI app project](~/user-interface/images/images.md).
 
 ### Fonts
 
@@ -109,7 +110,7 @@ True type format (TTF) and open type font (OTF) fonts can be added to your app p
 
 At build time, the fonts are copied to your app package.
 
-<!-- For more information, see [Fonts](~/user-interface/fonts.md). -->
+For more information, see [Fonts](~/user-interface/fonts.md).
 
 ### Splash screen
 
@@ -121,7 +122,7 @@ A slash screen can be added to your app project by dragging an image into the _R
 
 At build time, the splash screen image is resized to the correct size for the target platform and device. The resized splash screen is then added to your app package.
 
-For more information, see [Splash screens](~/user-interface/images/splashscreen.md).
+For more information, see [Add a splash screen to a .NET MAUI app project](~/user-interface/images/splashscreen.md).
 
 ### Raw assets
 
@@ -154,6 +155,16 @@ CSS files must be loaded by the `StyleSheet` class before being added to a `Reso
 ```
 
 For more information, see [Style apps with CSS](~/user-interface/styles/css.md).
+
+## App manifest
+
+Each platform uses its own native app manifest file to specify information such as the app title, id, version, and more. .NET MAUI single project enables you to specify this common app data in a single location in the project file (.csproj).
+
+To specify the shared app manifest data for a project, open the shortcut menu for the project in **Solution Explorer**, and then choose **Properties**. The app title, id, and version can then be specified in **MAUI Shared > General**:
+
+:::image type="content" source="media/single-project/manifest.png" alt-text=".NET MAUI app manifest screenshot.":::
+
+At build time the shared app manifest data is merged with platform-specific data in the native app manifest file, to produce the manifest file that ships with the app.
 
 ## Platform-specific code
 
