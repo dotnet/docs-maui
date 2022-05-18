@@ -167,7 +167,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
     :::image type="content" source="media/first-app/windows-debug-target.png" alt-text="Select the Windows Machine debugging target for .NET MAUI.":::
 
-01. In the Visual Studio toolbar, press the **Windows Machine** button to deploy the app:
+01. In the Visual Studio toolbar, press the **Windows Machine** button to build and run the app:
 
     :::image type="content" source="media/first-app/windows-run-button.png" alt-text="Run .NET MAUI app in Visual Studio button.":::
 
