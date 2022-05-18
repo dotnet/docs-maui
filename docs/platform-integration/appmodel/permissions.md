@@ -23,26 +23,26 @@ The following information applies to Android platforms.
 
 The following table uses ✔️ to indicate that the permission is supported and ❌ to indicate the permission isn't supported or isn't required:
 
-| Permission        | Android | iOS | UWP | watchOS | tvOS | Tizen |
-|-------------------|:-------:|:---:|:---:|:-------:|:----:|:-----:|
-| CalendarRead      | ✔️     | ✔️  | ❌  | ✔️     | ❌   | ❌   |
-| CalendarWrite     | ✔️     | ✔️  | ❌  | ✔️     | ❌   | ❌   |
-| Camera            | ✔️     | ✔️  | ❌  | ❌     | ❌   | ✔️   |
-| ContactsRead      | ✔️     | ✔️  | ✔️  | ❌     | ❌   | ❌   |
-| ContactsWrite     | ✔️     | ✔️  | ✔️  | ❌     | ❌   | ❌   |
-| Flashlight        | ✔️     | ❌  | ❌  | ❌     | ❌   | ✔️   |
-| LocationWhenInUse | ✔️     | ✔️  | ✔️  | ✔️     | ✔️   | ✔️   |
-| LocationAlways    | ✔️     | ✔️  | ✔️  | ✔️     | ❌   | ✔️   |
-| Media             | ❌     | ✔️  | ❌  | ❌     | ❌   | ❌   |
-| Microphone        | ✔️     | ✔️  | ✔️  | ❌     | ❌   | ✔️   |
-| Phone             | ✔️     | ✔️  | ❌  | ❌     | ❌   | ❌   |
-| Photos            | ❌     | ✔️  | ❌  | ❌     | ✔️   | ❌   |
-| Reminders         | ❌     | ✔️  | ❌  | ✔️     | ❌   | ❌   |
-| Sensors           | ✔️     | ✔️  | ✔️  | ✔️     | ❌   | ❌   |
-| Sms               | ✔️     | ✔️  | ❌  | ❌     | ❌   | ❌   |
-| Speech            | ✔️     | ✔️  | ❌  | ❌     | ❌   | ❌   |
-| StorageRead       | ✔️     | ❌  | ❌  | ❌     | ❌   | ❌   |
-| StorageWrite      | ✔️     | ❌  | ❌  | ❌     | ❌   | ❌   |
+| Permission        | Android | iOS | Windows | tvOS |
+|-------------------|:-------:|:---:|:-------:|:----:|
+| CalendarRead      | ✔️     | ✔️  | ❌      | ❌   |
+| CalendarWrite     | ✔️     | ✔️  | ❌      | ❌   |
+| Camera            | ✔️     | ✔️  | ❌      | ❌   |
+| ContactsRead      | ✔️     | ✔️  | ✔️      | ❌   |
+| ContactsWrite     | ✔️     | ✔️  | ✔️      | ❌   |
+| Flashlight        | ✔️     | ❌  | ❌      | ❌   |
+| LocationWhenInUse | ✔️     | ✔️  | ✔️      | ✔️   |
+| LocationAlways    | ✔️     | ✔️  | ✔️      | ❌   |
+| Media             | ❌     | ✔️  | ❌      | ❌   |
+| Microphone        | ✔️     | ✔️  | ✔️      | ❌   |
+| Phone             | ✔️     | ✔️  | ❌      | ❌   |
+| Photos            | ❌     | ✔️  | ❌      | ✔️   |
+| Reminders         | ❌     | ✔️  | ❌      | ❌   |
+| Sensors           | ✔️     | ✔️  | ✔️      | ❌   |
+| Sms               | ✔️     | ✔️  | ❌      | ❌   |
+| Speech            | ✔️     | ✔️  | ❌      | ❌   |
+| StorageRead       | ✔️     | ❌  | ❌      | ❌   |
+| StorageWrite      | ✔️     | ❌  | ❌      | ❌   |
 
 If a permission is marked as ❌, it will always return `Granted` when checked or requested.
 

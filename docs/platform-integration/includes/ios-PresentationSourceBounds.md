@@ -68,7 +68,7 @@ async void Share(Microsoft.Maui.Controls.View element)
 {
     try
     {
-        await Microsoft.Maui.Essentials.Share.RequestAsync(new ShareTextRequest
+        await Share.Default.RequestAsync(new ShareTextRequest
         {
             PresentationSourceBounds = element.GetAbsoluteBounds(),
             Title = "Title",

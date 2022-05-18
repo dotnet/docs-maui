@@ -97,7 +97,7 @@ Code that accesses the `IAppInfo.RequestedTheme` property must be called on the 
 
 Windows applications respect the `RequestedTheme` property setting in the Windows _App.xaml_. If it's set to a specific theme, this API always returns this setting. To use the dynamic theme of the OS, remove this property from your application. When your app is run, it returns the theme set by the user in Windows settings: **Settings** > **Personalization** > **Colors** > **Choose your default app mode**.
 
-<!-- TODO: You can read more on the [UWP Requested Theme Documentation](/uwp/api/windows.ui.xaml.application.requestedtheme). -->
+<!-- TODO: You can read more on the [Windows Requested Theme Documentation](/uwp/api/windows.ui.xaml.application.requestedtheme). -->
 
 --------------
 

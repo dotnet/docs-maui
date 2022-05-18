@@ -13,7 +13,7 @@ TODO: This was part of the original /essentials/ folder. This should be deleted 
 
 Xamarin.Essentials provides developers with cross-platform APIs for their mobile applications.
 
-Android, iOS, and UWP offer unique operating system and platform APIs that developers have access to all in C# leveraging Xamarin. Xamarin.Essentials provides a single cross-platform API that works with any Xamarin.Forms, Android, iOS, or UWP application that can be accessed from shared code no matter how the user interface is created.
+Android, iOS, and Windows offer unique operating system and platform APIs that developers have access to all in C# leveraging Xamarin. Xamarin.Essentials provides a single cross-platform API that works with any Xamarin.Forms, Android, iOS, or Windows application that can be accessed from shared code no matter how the user interface is created.
 
 ## Feature Guides
 

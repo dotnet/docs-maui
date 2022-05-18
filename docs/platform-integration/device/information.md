@@ -26,7 +26,7 @@ The `IDeviceInfo.Platform` property represents the operating system the app is r
 - `DevicePlatform.iOS`
 - `DevicePlatform.Android`
 - `DevicePlatform.macOS`
-- `DevicePlatform.UWP` (Windows)
+- `DevicePlatform.WinUI`
 - `DevicePlatform.tvOS`
 - `DevicePlatform.watchOS`
 - `DevicePlatform.Tizen`

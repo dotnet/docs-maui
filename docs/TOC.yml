@@ -427,6 +427,10 @@
             href: platform-integration/communication/phone-dialer.md
           - name: SMS (messaging)
             href: platform-integration/communication/sms.md
+          - name: Networking
+            href: platform-integration/communication/networking.md
+          - name: Web authentication
+            href: platform-integration/communication/authentication.md
         - name: Sharing
           items:
           - name: Clipboard
@@ -457,6 +461,12 @@
             href: platform-integration/device/vibrate.md
           - name: Haptic feedback
             href: platform-integration/device/haptic-feedback.md
+          - name: Device sensors
+            href: platform-integration/device/sensors.md
+          - name: Geocoding
+            href: platform-integration/device/geocoding.md
+          - name: Geolocation
+            href: platform-integration/device/geolocation.md
         - name: Media
           items:
           - name: Photo picker
@@ -467,18 +477,8 @@
             href: platform-integration/device-media/text-to-speech.md
           - name: Unit converters
             href: platform-integration/device-media/unit-converters.md
-        - name: Device sensors
-          href: platform-integration/sensors/index.md
-        - name: Geocoding
-          href: platform-integration/sensors/geocoding.md
-        - name: Geolocation
-          href: platform-integration/sensors/geolocation.md
-        - name: Networking
-          href: platform-integration/networking.md
         - name: Semantic screen reader
           href: platform-integration/accessibility/semantic-screen-reader.md
-        - name: Web authentication
-          href: platform-integration/authentication.md
             
     - name: Publish
       items:

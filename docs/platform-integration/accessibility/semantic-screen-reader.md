@@ -7,7 +7,7 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Accessability"]
 
 # SemanticScreenReader
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) Essentials `SemanticScreenReader` class. This class lets you instruct a screen reader to announce the specified text. The `ISemanticScreenReader` interface is exposed through the `SemanticScreenReader.Default` property.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `ISemanticScreenReader` interface. This interface lets you instruct a screen reader to announce the specified text. The `ISemanticScreenReader` interface is exposed through the `SemanticScreenReader.Default` property.
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
