@@ -106,6 +106,8 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
     :::image type="content" source="media/first-app/android-emulator-button.png" alt-text="Android emulator button.":::
 
+    Visual Studio will start to install the default Android SDK and Android Emulator.
+
 01. In the **Android SDK - License Agreement** window, press the **Accept** button:
 
     :::image type="content" source="media/first-app/android-sdk-license1.png" alt-text="First Android SDK License Agreement window.":::
@@ -127,6 +129,8 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 01. In the Visual Studio toolbar, press the **Android Emulator** button:
 
     :::image type="content" source="media/first-app/android-emulator-button.png" alt-text="Android emulator button.":::
+
+    Visual Studio will start to create a default Android emulator.
 
 01. In the **User Account Control** dialog, press the **Yes** button:
 
