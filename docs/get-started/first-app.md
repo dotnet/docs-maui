@@ -1,7 +1,7 @@
 ---
 title: "Build your first .NET MAUI app"
 description: "Learn how to create and run your first .NET MAUI app in Visual Studio 2022 on Windows."
-ms.date: 05/12/2022
+ms.date: 05/18/2022
 ms.custom: updateeachrelease
 zone_pivot_groups: devices-deployment
 ---
@@ -108,19 +108,23 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
     :::zone-end
 
-01. In the **Android SDK License Acceptance** window, press the **Accept** button:
+01. In the **Android SDK - License Agreement** window, press the **Accept** button:
 
-    :::image type="content" source="media/first-app/android-sdk-license.png" alt-text="Android SDK License Acceptance window.":::
+    :::image type="content" source="media/first-app/android-sdk-license1.png" alt-text="First Android SDK License Agreement window.":::
+
+01. In the **Android SDK - License Agreement** window, press the **Accept** button:
+
+    :::image type="content" source="media/first-app/android-sdk-license2.png" alt-text="Second Android SDK License Agreement window.":::
 
 01. In the **User Account Control** dialog, press the **Yes** button:
 
     :::image type="content" source="media/first-app/android-sdk-license-uac.png" alt-text="Android SDK license user account control dialog.":::
 
+01. In the **License Acceptance** window, press the **Accept** button:
+
+    :::image type="content" source="media/first-app/android-device-license.png" alt-text="Android device license window.":::
+
     Wait for Visual Studio to download the Android SDK and Android Emulator.
-
-01. In the **User Account Control** dialog, press the **Yes** button:
-
-    :::image type="content" source="media/first-app/windows-command-processor-uac.png" alt-text="Windows command processor user account control dialog.":::
 
 :::zone pivot="devices-android"
 
@@ -152,6 +156,9 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 01. Close the **Android Device Manager** window:
 
     :::image type="content" source="media/first-app/android-device-manager.png" alt-text="Android Device Manager window.":::
+
+    > [!NOTE]
+    > It may be necessary to restart Visual Studio to ensure that the newly created Android emulator shows up as a debug target in the Visual Studio toolbar.
 
 01. In the Visual Studio toolbar, press the **Pixel 5 - API 30 (Android 11.0 - API 30)** button to build and run the app:
 
