@@ -195,7 +195,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
     :::image type="content" source="media/first-app/ios-debug-target.png" alt-text="Visual Studio iOS simulators debug targets.":::
 
-01. In the Visual Studio toolbar, press the green Start button for your chosen iOS simulator:
+01. In the Visual Studio toolbar, press the Start button for your chosen iOS simulator to build and run your app:
 
     :::image type="content" source="media/first-app/ios-chosen-debug-target.png" alt-text="Visual Studio iOS simulator debug target choice.":::
 
