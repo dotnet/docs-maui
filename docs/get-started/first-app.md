@@ -99,11 +99,9 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
     :::image type="content" source="media/first-app/restored-dependencies.png" alt-text="Restored dependencies.":::
 
-:::zone-end
-
 :::zone pivot="devices-android"
 
-05. In the **Android SDK - License Agreement** window, press the **Accept** button:
+06. In the **Android SDK - License Agreement** window, press the **Accept** button:
 
     :::image type="content" source="media/first-app/android-sdk-license1.png" alt-text="First Android SDK License Agreement window.":::
 
@@ -167,7 +165,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 :::zone pivot="devices-windows"
 
 <!-- markdownlint-disable MD029 -->
-05. In the Visual Studio toolbar, use the **Debug Target** drop down to select **Framework** and then the **net6.0-windows** entry:
+06. In the Visual Studio toolbar, use the **Debug Target** drop down to select **Framework** and then the **net6.0-windows** entry:
 
     :::image type="content" source="media/first-app/windows-debug-target.png" alt-text="Select the Windows Machine debugging target for .NET MAUI.":::
 
@@ -190,7 +188,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 :::zone pivot="devices-ios"
 
 <!-- markdownlint-disable MD029 -->
-05. In Visual Studio, pair the IDE to a Mac Build host. For more information, see [Pair to Mac for iOS development](~/ios/pair-to-mac.md).
+06. In Visual Studio, pair the IDE to a Mac Build host. For more information, see [Pair to Mac for iOS development](~/ios/pair-to-mac.md).
     <!-- markdownlint-enable MD029 -->
 
 01. In Visual Studio, navigate to **Tools > Options > Xamarin > iOS Settings** and disable the **Remote Simulator to Windows** checkbox:
