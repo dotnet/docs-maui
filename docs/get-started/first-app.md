@@ -80,12 +80,9 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
 :::zone-end
 
-<!-- markdownlint-disable MD029 -->
 02. Launch Visual Studio 2022 17.3 Preview, and in the start window click **Create a new project** to create a new project:
 
     :::image type="content" source="media/first-app/new-solution.png" alt-text="New solution.":::
-
-    <!-- markdownlint-enable MD029 -->
 
 01. In the **Create a new project** window, select **MAUI** in the **All project types** drop-down, select the **.NET MAUI App** template, and click the **Next** button:
 
@@ -101,7 +98,15 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
 :::zone pivot="devices-android"
 
-06. In the **Android SDK - License Agreement** window, press the **Accept** button:
+06. In the Visual Studio toolbar, use the **Debug Target** drop down to select **Android Emulators** and then the **Android Emulator** entry:
+
+    :::image type="content" source="media/first-app/android-debug-target.png" alt-text="Select the Android Emulator debugging target for .NET MAUI.":::
+
+01. In the Visual Studio toolbar, press the **Android Emulator** button:
+
+    :::image type="content" source="media/first-app/android-emulator-button.png" alt-text="Android emulator button.":::
+
+01. In the **Android SDK - License Agreement** window, press the **Accept** button:
 
     :::image type="content" source="media/first-app/android-sdk-license1.png" alt-text="First Android SDK License Agreement window.":::
 
@@ -119,16 +124,9 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
     Wait for Visual Studio to download the Android SDK and Android Emulator.
 
-01. In the Visual Studio toolbar, use the **Debug Target** drop down to select **Android Emulators** and then the **Android Emulator** entry:
-
-    :::image type="content" source="media/first-app/android-debug-target.png" alt-text="Select the Android Emulator debugging target for .NET MAUI.":::
-
-01. In the Visual Studio toolbar, press the **Android Emulator** button to build the app:
+01. In the Visual Studio toolbar, press the **Android Emulator** button:
 
     :::image type="content" source="media/first-app/android-emulator-button.png" alt-text="Android emulator button.":::
-
-    > [!IMPORTANT]
-    > Hardware acceleration must be enabled to maximize Android emulator performance. For more information, see [How to enable hardware acceleration with Android emulators (Hyper-V & HAXM)](~/android/emulator/hardware-acceleration.md).
 
 01. In the **User Account Control** dialog, press the **Yes** button:
 
@@ -143,9 +141,6 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 01. Close the **Android Device Manager** window:
 
     :::image type="content" source="media/first-app/android-device-manager.png" alt-text="Android Device Manager window.":::
-
-    > [!NOTE]
-    > It may be necessary to restart Visual Studio to ensure that the newly created Android emulator shows up as a debug target in the Visual Studio toolbar.
 
 01. In the Visual Studio toolbar, press the **Pixel 5 - API 30 (Android 11.0 - API 30)** button to build and run the app:
 
@@ -164,12 +159,9 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
 :::zone pivot="devices-windows"
 
-<!-- markdownlint-disable MD029 -->
 06. In the Visual Studio toolbar, use the **Debug Target** drop down to select **Framework** and then the **net6.0-windows** entry:
 
     :::image type="content" source="media/first-app/windows-debug-target.png" alt-text="Select the Windows Machine debugging target for .NET MAUI.":::
-
-    <!-- markdownlint-enable MD029 -->
 
 01. In the Visual Studio toolbar, press the **Windows Machine** button to deploy the app:
 
@@ -187,9 +179,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
 :::zone pivot="devices-ios"
 
-<!-- markdownlint-disable MD029 -->
 06. In Visual Studio, pair the IDE to a Mac Build host. For more information, see [Pair to Mac for iOS development](~/ios/pair-to-mac.md).
-    <!-- markdownlint-enable MD029 -->
 
 01. In Visual Studio, navigate to **Tools > Options > Xamarin > iOS Settings** and disable the **Remote Simulator to Windows** checkbox:
 
