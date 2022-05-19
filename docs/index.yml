@@ -23,7 +23,7 @@ landingContent:
       - linkListType: how-to-guide
         links:
           - text: Build your first app
-            url: get-started/first-app.md
+            url: get-started/first-app.md?pivots=devices-windows
           - text: Debug on an Android emulator
             url: android/emulator/debug-on-emulator.md
           - text: Setup an Android device for debugging

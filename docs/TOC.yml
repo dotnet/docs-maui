@@ -8,7 +8,7 @@
     - name: Get started
       items:
         - name: Build your first app
-          href: get-started/first-app.md
+          href: get-started/first-app.md?pivots=devices-windows          
         - name: Migrate from Xamarin.Forms
           href: get-started/migrate.md
         - name: Android
