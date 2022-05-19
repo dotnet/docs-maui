@@ -112,7 +112,15 @@ Alternatively, it can be consumed by referencing its alias:
        FontFamily="OpenSansRegular" />
 ```
 
-<!-- ## Configure Essentials
+## Configure Essentials
+
+.NET MAUI has a few internal features collectively known as **essentials**. There are three aspects to **essentials**:
+
+- Version tracking
+- App actions
+- (Windows only) Map services token
+
+You can enable and configure these services by invoking the `ConfigureEssentials` method on the `MauiAppBuilder` object. Then, on the `IEssentialsBuilder` object, call the various methods to enable or configure these features:
 
 ```csharp
 builder
@@ -121,9 +129,20 @@ builder
     {
         essentials
             .UseVersionTracking()
-            .UseMapServiceToken("YOUR-KEY-HERE");
+#if WINDOWS
+            .UseMapServiceToken("YOUR-KEY-HERE")
+#endif
+            .AddAppAction("app_info", "App Info", icon: "app_info_action_icon")
+            .AddAppAction("battery_info", "Battery Info")
+            .OnAppAction(App.HandleAppActions);
     });
-``` -->
+```
+
+For more information about these features, see the following articles:
+
+- [Track your app versions](../platform-integration/appmodel/version-tracking.md)
+- [Create and handle app actions](../platform-integration/appmodel/app-actions.md)
+- [Use maps in your app](../platform-integration/appmodel/maps.md)
 
 ## Register handlers
 
