@@ -171,9 +171,15 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
     :::image type="content" source="media/first-app/windows-run-button.png" alt-text="Run .NET MAUI app in Visual Studio button.":::
 
-    If you've not enabled Developer Mode, the Settings app should open to the appropriate page. Turn on **Developer Mode** and accept the disclaimer:
+    If you've not enabled Developer Mode, Visual Studio will prompt you to enable it. In the **Enable Developer Mode for Windows** dialog, click **settings for developers** to open the Settings app:
+
+    :::image type="content" source="media/first-app/windows-enable-developer-mode.png" alt-text="Enable Windows developer mode dialog.":::
+
+    In the Settings app, turn on **Developer Mode** and accept the disclaimer:
 
     :::image type="content" source="media/first-app/windows-developer-mode-win11.png" alt-text="Developer Mode toggle on the Windows 11 settings app.":::
+
+    Close the Settings app, and then close the **Enable Developer Mode for Windows** dialog.
 
 01. In the running app, press the **Click me** button several times and observe that the count of the number of button clicks is incremented:
 
