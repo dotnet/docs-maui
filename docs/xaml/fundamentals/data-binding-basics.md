@@ -179,7 +179,7 @@ namespace XamlSamples
         public string FriendlyName { get; private set; }
         public Color Color { get; private set; }
 
-        public static IEnumerable<NamedColor> All {  get; private set; }
+        public static IEnumerable<NamedColor> All { get; private set; }
 
         static NamedColor()
         {
