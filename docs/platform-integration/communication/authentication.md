@@ -90,26 +90,6 @@ Add your app's callback URI pattern to the _Platforms/iOS/Info.plist_ file:
 </array>
 ```
 
-You'll also need to override your `AppDelegate.OpenUrl` and `AppDelegate.ContinueUserActivity` methods in the `AppDelegate.cs`, calling the `Platform` methods first:
-
-```csharp
-public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
-{
-    if (Microsoft.Maui.ApplicationModel.Platform.OpenUrl(app, url, options))
-        return true;
-
-    return base.OpenUrl(app, url, options);
-}
-
-public override bool ContinueUserActivity(UIApplication application, NSUserActivity userActivity, UIApplicationRestorationHandler completionHandler)
-{
-    if (Microsoft.Maui.ApplicationModel.Platform.ContinueUserActivity(application, userActivity, completionHandler))
-        return true;
-
-    return base.ContinueUserActivity(application, userActivity, completionHandler);
-}
-```
-
 # [Windows](#tab/windows)
 
 > [!CAUTION]

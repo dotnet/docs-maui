@@ -65,7 +65,7 @@ Use the `EmailMessage.Attachments` collection to manage the files attached to an
 
 The following example demonstrates adding arbitrary text to a file, and then adding it to the email.
 
-:::code language="csharp" source="../snippets/shared_1/CommsPage.xaml.cs" id="email_picture" highlight="16":::
+:::code language="csharp" source="../snippets/shared_1/CommsPage.xaml.cs" id="email_picture" highlight="18":::
 
 <!-- markdownlint-disable MD025 -->
 <!-- markdownlint-disable MD024 -->
