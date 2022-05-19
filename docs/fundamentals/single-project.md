@@ -201,6 +201,40 @@ For more information about conditional compilation, see [Conditional compilation
 
 ## App entry point
 
-While the *Platforms* folders contain platform-specific code that starts the app on each platform, .NET MAUI apps have a single cross-platform app entry point. Each platform entry point calls a `CreateMauiApp` method on the static `MauiProgram` class in your app project, and returns a `MauiApp`, which is the entry point for your app. The `CreateMauiApp` method bootstraps the app using the [.NET Generic Host](/dotnet/core/extensions/generic-host). This provides the ability to configure the app, services, and third-party libraries from a single location.
+While the *Platforms* folders contain platform-specific code that starts the app on each platform, .NET MAUI apps have a single cross-platform app entry point. Each platform entry point calls a `CreateMauiApp` method on the static `MauiProgram` class in your app project, and returns a `MauiApp`, which is the entry point for your app.
 
-For more information, see [App startup](~/fundamentals/app-startup.md).
+The `MauiProgram` class must at a minimum provide an app to run:
+
+```csharp
+namespace MyMauiApp;
+
+public static class MauiProgram
+{
+    public static MauiApp CreateMauiApp()
+    {
+        var builder = MauiApp.CreateBuilder();
+        builder
+            .UseMauiApp<App>();
+
+        return builder.Build();
+    }
+}  
+```
+
+The `App` class derives from the `Application` class:
+
+```csharp
+namespace MyMauiApp;
+
+public class App : Application
+{
+    public App()
+    {
+        InitializeComponent();
+
+        MainPage = new AppShell();
+    }
+}
+```
+
+In the example above, the `MainPage` property is set to the `AppShell` object. `AppShell` is a subclassed `Shell` class, that describes the visual hierarchy of the app. For more information, see [Create a .NET MAUI Shell app](shell/create.md).

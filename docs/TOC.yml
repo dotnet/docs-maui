@@ -8,7 +8,7 @@
     - name: Get started
       items:
         - name: Build your first app
-          href: get-started/first-app.md?pivots=devices-windows          
+          href: get-started/first-app.md?pivots=devices-windows
         - name: Migrate from Xamarin.Forms
           href: get-started/migrate.md
         - name: Android
@@ -93,8 +93,6 @@
           href: fundamentals/accessibility.md
         - name: App lifecycle
           href: fundamentals/app-lifecycle.md
-        - name: App startup
-          href: fundamentals/app-startup.md
         - name: Behaviors
           href: fundamentals/behaviors.md
         - name: Data binding
