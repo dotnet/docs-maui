@@ -49,7 +49,7 @@ Returns the [CacheDir](https://developer.android.com/reference/android/content/C
 Returns the [FilesDir](https://developer.android.com/reference/android/content/Context.html#getFilesDir) of the current context, which are backed up using [Auto Backup](https://developer.android.com/guide/topics/data/autobackup.html) starting on API 23 and above.
 
 - `FileSystem.OpenAppPackageFileAsync`\
-Add any file into the _Assets_ folder in the Android project, and mark the **Build Action** as **AndroidAsset** to use it with `OpenAppPackageFileAsync`.
+Files that were added to the project with the **Build Action** of **MauiAsset** can be opened with this method. .NET MAUI projects will process any file in the _Platform\Resources\Raw_ folder as a **MauiAsset**.
 
 # [iOS](#tab/ios)
 
@@ -63,7 +63,7 @@ Returns the [Library](https://developer.apple.com/library/content/documentation/
 > In the iOS Simulator, the Application ID (which is part of the directory name) changes on every build so you have to retrieve the correct ID each time you build your application for the Simulator.
 
 - `FileSystem.OpenAppPackageFileAsync`\
-Add any file into the _Resources_ folder in the iOS project, and mark the **Build Action** as **BundledResource** to use it with `OpenAppPackageFileAsync`.
+Files that were added to the project with the **Build Action** of **MauiAsset** can be opened with this method. .NET MAUI projects will process any file in the _Platform\Resources\Raw_ folder as a **MauiAsset**.
 
 # [Windows](#tab/windows)
 
@@ -74,7 +74,7 @@ Returns the [LocalCacheFolder](/uwp/api/windows.storage.applicationdata.localcac
 Returns the [LocalFolder](/uwp/api/windows.storage.applicationdata.localfolder#Windows_Storage_ApplicationData_LocalFolder) directory that is backed up to the cloud.
 
 - `FileSystem.OpenAppPackageFileAsync`\
-Add any file into the root in the Windows project, and mark the **Build Action** as **Content** to use it with `OpenAppPackageFileAsync`.
+Files that were added to the project with the **Build Action** of **MauiAsset** can be opened with this method. .NET MAUI projects will process any file in the _Platform\Resources\Raw_ folder as a **MauiAsset**.
 
 -----
 <!-- markdownlint-enable MD025 -->
