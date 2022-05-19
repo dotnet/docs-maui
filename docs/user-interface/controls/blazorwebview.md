@@ -38,7 +38,7 @@ For more information about Blazor Hybrid apps, see [ASP.NET Core Blazor Hybrid](
 
 A .NET MAUI Blazor app can be created in Visual Studio by the **.NET MAUI Blazor app** template:
 
-:::image type="content" source="media/blazorwebview/blazorwebapp-template.png" alt-text=".NET MAUI Blazor app project template screenshot.":::
+:::image type="content" source="media/blazorwebview/project-template.png" alt-text=".NET MAUI Blazor app project template screenshot.":::
 
 This project template creates a multi-targeted .NET MAUI Blazor app that can be deployed to Android, iOS, macOS, and Windows. For step-by-step instructions on creating a .NET MAUI Blazor app, see [Build a .NET MAUI Blazor app](/aspnet/core/blazor/hybrid/tutorials/maui).
 
