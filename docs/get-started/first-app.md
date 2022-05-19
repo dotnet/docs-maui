@@ -206,3 +206,9 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
     :::image type="content" source="media/first-app/ios-running-app.png" alt-text=".NET MAUI app running in iOS Simulator on a Mac.":::
 
 :::zone-end
+
+## Next steps
+
+In this tutorial, you've learnt how to create and run your first .NET Multi-platform App UI (.NET MAUI) app in Visual Studio 2022 17.3 Preview on Windows.
+
+To learn the fundamentals of building an app with .NET MAUI, and more advanced topics such as local data storage and invoking REST-based web services, see [Build mobile and desktop apps with .NET MAUI](/learn/paths/build-apps-with-dotnet-maui/).
