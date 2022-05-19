@@ -5,7 +5,7 @@ ms.date: 05/10/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel"]
 ---
 
-# Version Tracking
+# Version tracking
 
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IVersionTracking` interface. This class lets you check the applications version and build numbers along with seeing additional information such as if it's the first time the application launched. The `IVersionTracking` interface is exposed through the `VersionTracking.Default` property.
 

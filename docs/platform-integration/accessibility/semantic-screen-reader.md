@@ -5,7 +5,7 @@ ms.date: 05/12/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Accessability"]
 ---
 
-# SemanticScreenReader
+# Use the semantic screen reader
 
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `ISemanticScreenReader` interface. This interface lets you instruct a screen reader to announce the specified text. The `ISemanticScreenReader` interface is exposed through the `SemanticScreenReader.Default` property.
 

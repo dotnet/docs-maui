@@ -5,7 +5,7 @@ ms.date: 05/06/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel"]
 ---
 
-# MainThread
+# Create a thread on the .NET MAUI UI thread
 
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `MainThread` class to run code on the main UI thread. Most operating systems use a single-threading model for code involving the user interface. This model is necessary to properly serialize user-interface events, including keystrokes and touch input. This thread is often called the _main thread_, the _user-interface thread_, or the _UI thread_. The disadvantage of this model is that all code that accesses user interface elements must run on the application's main thread.
 
