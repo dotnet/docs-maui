@@ -75,7 +75,7 @@ The following methods take a string parameter named `sharedName`:
 > [!IMPORTANT]
 > Please read the platform implementation specifics, as shared preferences have behavior-specific implementations
 
-## Integrate with System Settings
+## Integrate with system settings
 
 Preferences are stored natively, which allows you to integrate your settings into the native system settings. Follow the platform documentation and samples to integrate with the platform:
 

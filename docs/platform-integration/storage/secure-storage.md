@@ -116,7 +116,7 @@ This section describes the platform-specific differences with the secure storage
 <!-- markdownlint-disable MD024 -->
 # [Android](#tab/android)
 
-The [Android KeyStore](https://developer.android.com/training/articles/keystore.html) is used to store the cipher key used to encrypt the value before it's saved into a [Shared Preferences](https://developer.android.com/training/data-storage/shared-preferences.html) with a filename of _[YOUR-APP-PACKAGE-ID].xamarinessentials_. The value-key used in the shared preferences file is an **MD5** hash of the key passed into the `SecureStorage` APIs.
+The [Android KeyStore](https://developer.android.com/training/articles/keystore.html) is used to store the cipher key used to encrypt the value before it's saved into a [Shared Preferences](https://developer.android.com/training/data-storage/shared-preferences.html) with a filename of _[YOUR-APP-PACKAGE-ID].microsoft.maui.essentials.preferences_. The value-key used in the shared preferences file is an **MD5** hash of the key passed into the `SecureStorage` APIs.
 
 - **API Level 23 and Higher**
 
@@ -130,7 +130,7 @@ The [Android KeyStore](https://developer.android.com/training/articles/keystore.
 
 # [iOS](#tab/ios)
 
-[KeyChain](xref:Security.SecKeyChain) is used to store values securely on iOS devices. The `SecRecord` used to store the value has a `Service` value set to _[YOUR-APP-BUNDLE-ID].xamarinessentials_.
+[KeyChain](xref:Security.SecKeyChain) is used to store values securely on iOS devices. The `SecRecord` used to store the value has a `Service` value set to _[YOUR-APP-BUNDLE-ID].microsoft.maui.essentials.preferences_.
 
 In some cases, KeyChain data is synchronized with iCloud, and uninstalling the application may not remove the secure values from user devices.
 
@@ -138,7 +138,7 @@ In some cases, KeyChain data is synchronized with iCloud, and uninstalling the a
 
 [DataProtectionProvider](/uwp/api/windows.security.cryptography.dataprotection.dataprotectionprovider) is used to encrypt values securely on Windows devices.
 
-Encrypted values are stored in `ApplicationData.Current.LocalSettings`, inside a container with a name of _[YOUR-APP-ID].xamarinessentials_.
+Encrypted values are stored in `ApplicationData.Current.LocalSettings`, inside a container with a name of _[YOUR-APP-ID].microsoft.maui.essentials.preferences_.
 
 **SecureStorage** uses the [Preferences](preferences.md) API and follows the same data persistence outlined in the [Preferences](preferences.md#persistence) documentation. It also uses `LocalSettings`, which has a restriction that a setting name length may be 255 characters at the most. Each setting can be up to 8K bytes in size, and each composite setting can be up to 64 K bytes in size.
 

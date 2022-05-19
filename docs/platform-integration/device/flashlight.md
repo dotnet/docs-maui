@@ -59,8 +59,6 @@ By adding these permissions, [Google Play will automatically filter out devices]
 [assembly: UsesFeature("android.hardware.camera.autofocus", Required = false)]
 ```
 
-[!INCLUDE [android-permissions](../includes/android-permissions.md)]
-
 # [iOS](#tab/ios)
 
 No setup is required.

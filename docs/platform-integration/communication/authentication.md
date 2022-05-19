@@ -20,7 +20,7 @@ Many apps require adding user authentication, and this often means enabling your
 > [!TIP]
 > [Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/msal-overview) provides an excellent turn-key solution to adding authentication to your app.
 
-If you're interested in using your own web service for authentication, it's possible to use **WebAuthenticator** to implement the client-side functionality.
+If you're interested in using your own web service for authentication, it's possible to use `WebAuthenticator` to implement the client-side functionality.
 
 ## Why use a server back end
 
@@ -33,7 +33,7 @@ The best practice here's to use a web backend as a middle layer between your mob
 
 ## Get started
 
-To access the **WebAuthenticator** functionality the following platform-specific setup is required.
+To access the `WebAuthenticator` functionality the following platform-specific setup is required.
 
 <!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
@@ -46,7 +46,7 @@ using Android.Content.PM;
 
 namespace YourRootNamespace
 {
-    [Activity(NoHistory = true, LaunchMode = LaunchMode.SingleTop, Exported = tru)]
+    [Activity(NoHistory = true, LaunchMode = LaunchMode.SingleTop, Exported = true)]
     [IntentFilter(new[] { Android.Content.Intent.ActionView },
                   Categories = new[] { Android.Content.Intent.CategoryDefault, Android.Content.Intent.CategoryBrowsable },
                   DataScheme = CALLBACK_SCHEME)]
@@ -113,7 +113,7 @@ public override bool ContinueUserActivity(UIApplication application, NSUserActiv
 # [Windows](#tab/windows)
 
 > [!CAUTION]
-> At the moment, WebAuthenticator isn't working on Windows. For more information, see [GitHub issue #2702](https://github.com/dotnet/maui/issues/2702).
+> At the moment, `WebAuthenticator` isn't working on Windows. For more information, see [GitHub issue #2702](https://github.com/dotnet/maui/issues/2702).
 
 For WinUI 3, you'll need to declare your callback URI protocol in your _Package.appxmanifest_ file:
 
@@ -216,7 +216,7 @@ Depending on the iOS version, the behavior is slightly different:
 # [Windows](#tab/windows)
 
 > [!CAUTION]
-> At the moment, WebAuthenticator isn't working on Windows. For more information, see [GitHub issue #2702](https://github.com/dotnet/maui/issues/2702).
+> At the moment, `WebAuthenticator` isn't working on Windows. For more information, see [GitHub issue #2702](https://github.com/dotnet/maui/issues/2702).
 
 On WinUI 3, the `WebAuthenticationBroker` is used, if supported, otherwise the system browser is used.
 

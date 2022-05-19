@@ -5,7 +5,7 @@ ms.date: 05/03/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices"]
 ---
 
-# Haptic Feedback
+# Haptic feedback
 
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `HapticFeedback` class to control haptic feedback on a device. Haptic feedback is generally manifested by a gentle vibration sensation provided by the device to give a response to the user. Some examples of haptic feedback are when a user types on a virtual keyboard or when they play a game where the player's character has an encounter with an enemy character.
 
@@ -40,9 +40,9 @@ The `Vibrate` permission is required and must be configured in the Android proje
   <uses-permission android:name="android.permission.VIBRATE" />
   ```
 
-  \- or -
-
 <!-- TODO not yet supported
+
+  \- or -
 
 - Use the Android project properties:
 

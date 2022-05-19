@@ -27,4 +27,4 @@ After the initial `Track` is called, version information can be read. The follow
 
 <!-- TODO: file name contains xamarin, what is it? the secure-storage article also has this./ -->
 
-All version information is stored using the [Preferences](../storage/preferences.md) API, and is stored with a filename of _[YOUR-APP-PACKAGE-ID].xamarinessentials_.versiontracking** and follows the same data persistence outlined in the [Preferences](../storage/preferences.md#persistence) documentation.
+All version information is stored using the [Preferences](../storage/preferences.md) API, and is stored with a filename of _[YOUR-APP-PACKAGE-ID].microsoft.maui.essentials.versiontracking_ and follows the same data persistence outlined in the [Preferences](../storage/preferences.md#persistence) documentation.

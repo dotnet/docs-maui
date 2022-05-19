@@ -423,7 +423,7 @@
             href: platform-integration/communication/contacts.md
           - name: Email
             href: platform-integration/communication/email.md
-          - name: Phone
+          - name: Phone dialer
             href: platform-integration/communication/phone-dialer.md
           - name: SMS (messaging)
             href: platform-integration/communication/sms.md

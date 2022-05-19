@@ -1,11 +1,11 @@
 ---
 title: "Media picker"
-description: "Learn how to use the MediaPicker class in the Microsoft.Maui.Media namespace, to prompt the user to select or take a photo or video"
+description: "Learn how to use the MediaPicker class in the Microsoft.Maui.Media namespace, to prompt the user to select or take a photo or video."
 ms.date: 05/11/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Media", "MediaPicker"]
 ---
 
-# Media Picker
+# Media picker
 
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IMediaPicker` interface. This interfaces lets a user pick or take a photo or video on the device. The `IMediaPicker` interface is exposed through the `MediaPicker.Default` property.
 
@@ -87,7 +87,7 @@ In the **Solution Explorer** pane, right-click on the _Platforms/Windows/Package
 -----
 <!-- markdownlint-enable MD025 -->
 
-## Using Media Picker
+## Using media picker
 
 The `IMediaPicker` interface has the following methods that all return a `FileResult`, which can be used to get the file's location or read it.
 

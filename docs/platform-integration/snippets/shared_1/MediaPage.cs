@@ -25,7 +25,7 @@ public class MediaPage : ContentPage
             new Button { Text = "Take photo",
                             Command = new Command(TakePhoto) },
             new Button { Text = "Take screenshot",
-                            Command = new Command(() => { ImageItem = TakeScreenshot().Result; }) },
+                            Command = new Command(() => { ImageItem = TakeScreenshotAsync().Result; }) },
             new Button { Text = "Text to speech",
                             Command = new Command(Speak) },
         };
@@ -53,7 +53,7 @@ public class MediaPage : ContentPage
     //</photo_take_and_save>
 
     //<screenshot>
-    public async Task<ImageSource> TakeScreenshot()
+    public async Task<ImageSource> TakeScreenshotAsync()
     {
         if (Screenshot.Default.IsCaptureSupported)
         {
@@ -92,7 +92,7 @@ public class MediaPage : ContentPage
     //<speak_cancel>
     CancellationTokenSource cts;
 
-    public async Task SpeakNowDefaultSettings()
+    public async Task SpeakNowDefaultSettingsAsync()
     {
         cts = new CancellationTokenSource();
         await TextToSpeech.Default.SpeakAsync("Hello World", cancelToken: cts.Token);

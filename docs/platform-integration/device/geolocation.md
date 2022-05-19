@@ -71,8 +71,6 @@ To access the **Geolocation** functionality, the following platform-specific set
 > [!TIP]
 > Be sure to read the [Android documentation on background location updates](https://developer.android.com/training/location/permissions), as there are many restrictions that need to be considered.
 
-[!INCLUDE [android-permissions](../includes/android-permissions.md)]
-
 # [iOS](#tab/ios)
 
 In the _Platforms/iOS/Info.plist_ file, add the following keys and values:
