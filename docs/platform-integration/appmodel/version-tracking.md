@@ -13,18 +13,22 @@ This article describes how you can use the .NET Multi-platform App UI (.NET MAUI
 
 The `VersionTracking` and `IVersionTracking` types are available in the `Microsoft.Maui.ApplicationModel` namespace.
 
+## Get started
+
+To enable version tracking in your app, add the `ConfigureEssentials` step to the `CreateMauiApp` bootstrap code. The app startup code is configured in the _MauiProgram.cs_ file. Call the `UseVersionTracking` method to enable version tracking.
+
+:::code language="csharp" source="../snippets/shared_1/MauiProgram.cs" id="bootstrap_versiontracking" highlight="12-15":::
+
+For more information, see [Configure fonts, services, and handlers at startup](../../fundamentals/app-startup.md).
+
 ## Check the version
 
-The first time you use the `VersionTracking` class, it starts tracking the current version. You must call `Track` early in your application's lifecycle, and each time it's loaded to ensure the current version information is tracked. A good place to track your version would be in the `App` class:
-
-:::code language="csharp" source="../snippets/shared_1/App.xaml.cs" id="version_track":::
-
-After the initial `Track` is called, version information can be read. The following example writes the tracking information to labels on the page:
+The `IVersionTracking` interface provides many properties that describe the current version of the app and how it relates to the previous version. The following example writes the tracking information to labels on the page:
 
 :::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="version_read":::
 
-## Platform differences
+The first time the app is run after version tracking is enabled, the `IsFirstLaunchEver` property will return `true`. If you add version tracking in a newer version of an already released app, `IsFirstLaunchEver` may incorrectly report `true`. This property always returns `true` the first time version tracking is enabled and the user runs the app. You can't fully rely on this property if users have upgraded from older versions that weren't tracking the version.
 
-<!-- TODO: file name contains xamarin, what is it? the secure-storage article also has this./ -->
+## Platform differences
 
 All version information is stored using the [Preferences](../storage/preferences.md) API, and is stored with a filename of _[YOUR-APP-PACKAGE-ID].microsoft.maui.essentials.versiontracking_ and follows the same data persistence outlined in the [Preferences](../storage/preferences.md#persistence) documentation.

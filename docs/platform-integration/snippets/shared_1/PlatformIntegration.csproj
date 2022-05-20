@@ -12,15 +12,15 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 
 		<!-- Display name -->
-		<ApplicationTitle>PlatformIntegration</ApplicationTitle>
+		<ApplicationTitle>PlatformIntegrationa</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.platformintegration</ApplicationId>
-		<ApplicationIdGuid>B668375E-5F70-4844-BB98-583AB74C06E2</ApplicationIdGuid>
+		<ApplicationId>com.companyname.platformintegrationa</ApplicationId>
+		<ApplicationIdGuid>B668375E-5F70-4844-BB98-583AB74C06E1</ApplicationIdGuid>
 
 		<!-- Versions -->
-		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
-		<ApplicationVersion>1</ApplicationVersion>
+		<ApplicationDisplayVersion>3.0</ApplicationDisplayVersion>
+		<ApplicationVersion>3</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>

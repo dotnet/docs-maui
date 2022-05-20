@@ -1,5 +1,5 @@
 ---
-title: "App Actions"
+title: "App actions (shortcuts)"
 description: "The AppActions class in the Microsoft.Maui.ApplicationModel namespace lets you create and respond to app shortcuts from the app icon."
 ms.date: 05/05/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel", "AppDelegate.cs", "AppActions", "Platforms/Android/MainActivity.cs", "Platforms/iOS/AppDelegate.cs", "Platforms/Windows/App.xaml.cs", "Id", "Title", "Subtitle", "Icon"]
@@ -7,7 +7,7 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel", "AppDelegate.cs", 
 
 # App actions
 
-The `Microsoft.Maui.ApplicationModel.AppActions` class lets you create and respond to app shortcuts from the app icon. App shortcuts are helpful to users because they allow you, as the app developer, to present them with additional ways of starting your app. For example, if you were developing an email and calendar app, you could present two different app actions, one to open the app directly to the current day of the calendar, and another to open to the email inbox folder.
+The `Microsoft.Maui.ApplicationModel.AppActions` class lets you create and respond to app shortcuts from the app icon. App shortcuts are helpful to users because they allow you, as the app developer, to present them with extra ways of starting your app. For example, if you were developing an email and calendar app, you could present two different app actions, one to open the app directly to the current day of the calendar, and another to open to the email inbox folder.
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
@@ -25,21 +25,13 @@ In the _Platforms/Android/MainActivity.cs_ file, add the following `IntentFilter
 
 :::code language="csharp" source="../snippets/shared_2/Platforms/Android/MainActivity.cs" id="intent_filter_1":::
 
-Then add the following logic to handle actions:
-
-:::code language="csharp" source="../snippets/shared_2/Platforms/Android/MainActivity.cs" id="intent_implementation":::
-
 # [iOS](#tab/ios)
 
-In the _Platforms/iOS/AppDelegate.cs_ file, add the following logic to the `AppDelegate` class to handle actions:
-
-:::code language="csharp" source="../snippets/shared_2/Platforms/iOS/AppDelegate.cs" id="perform_action":::
+No setup is required.
 
 # [Windows](#tab/windows)
 
-In the _Platforms/Windows/App.xaml.cs_ file, override the `OnLaunched` method in the `App` class. Add the following logic at the bottom of the method:
-
-:::code language="csharp" source="../snippets/shared_2/Platforms/Windows/App.xaml.cs" id="launched":::
+No setup is required.
 
 -----
 
@@ -47,28 +39,52 @@ In the _Platforms/Windows/App.xaml.cs_ file, override the `OnLaunched` method in
 
 ## Create actions
 
-App Actions can be created at any time, but are often created when an application starts. App Actions are accessed through the default implementation of the `IAppActions` interface, available from the `Microsoft.Maui.ApplicationModel.AppActions.Current` property. To create App Actions, call the `SetAsync` method:
+App actions can be created at any time, but are often created when an app starts. To configure app actions, add the `ConfigureEssentials` step to the `CreateMauiApp` bootstrap code. The app startup code is configured in the _MauiProgram.cs_ file. There are two methods you must call to enable an app action:
+
+01. `AddAppAction`
+
+    This method creates an action. It takes an `id` string to uniquely identify the action, and a `title` string that's displayed to the user. You can optionally provide a subtitle and an icon.
+
+01. `OnAppAction`
+
+    The delegate passed to this method is called when the user invokes an app action, provided the app action instance. Check the `Id` property of the action to determine which app action was started by the user.
+
+The following code demonstrates how to configure the app actions at app startup:
+
+:::code language="csharp" source="../snippets/shared_1/MauiProgram.cs" id="bootstrap_appaction" highlight="12-18":::
+
+## Responding to actions
+
+After app actions [have been configured](#create-actions), the `OnAppAction` method is called for all app actions invoked by the user. Use the `Id` property to differentiate them. The following code demonstrates handling an app action:
+
+:::code language="csharp" source="../snippets/shared_1/App.xaml.cs" id="appaction_handle":::
+
+For more information about app startup, see [Configure fonts, services, and handlers at startup](../../fundamentals/app-startup.md).
+
+### Check if app actions are supported
+
+When you create an app action, either at app startup or while the app is being used, check to see if app actions are supported by reading the `AppActions.Current.IsSupported` property.
+
+### Create an app action outside of the startup bootstrap
+
+To create app actions, call the `SetAsync` method:
 
 :::code language="csharp" source="../snippets/shared_2/MainPage.xaml.cs" id="app_actions":::
 
-If App Actions aren't supported on the specific version of the operating system, a `FeatureNotSupportedException` will be thrown.
+### More information about app actions
+
+If app actions aren't supported on the specific version of the operating system, a `FeatureNotSupportedException` will be thrown.
 
 The following properties can be set on an `AppAction`:
 
 - **Id**: A unique identifier used to respond to the action tap.
 - **Title**: the visible title to display.
-- **Subtitle**: If supported a sub-title to display under the title.
+- **Subtitle**: If supported a subtitle to display under the title.
 - **Icon**: Must match icons in the corresponding resources directory on each platform.
 
 <!-- TODO icon in image needs update -->
 :::image type="content" source="media/app-actions/appactions.png" alt-text="App actions on home screen.":::
 
-## Responding to actions
+## Get actions
 
-When your application starts, add handle the `AppActions.Current.AppActionActivated` event. When a user invokes an App Action, the event is raised with information about the action.
-
-:::code language="csharp" source="../snippets/shared_2/App.xaml.cs" id="app_action_handler" highlight="7":::
-
-## GetActions
-
-You can get the current list of App Actions by calling `AppActions.Current.GetAsync()`.
+You can get the current list of app actions by calling `AppActions.Current.GetAsync()`.
