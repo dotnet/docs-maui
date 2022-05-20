@@ -58,8 +58,7 @@
     },
     "fileMetadata": {
         "titleSuffix": {
-            "**.md": ".NET MAUI",
-            "user-interface/graphics/**.md": ".NET MAUI Graphics"
+            "**.md": ".NET MAUI"
         }
     },
     "template": [],
