@@ -50,6 +50,7 @@
       "feedback_product_url": "https://developercommunity.visualstudio.com/",
       "ms.author": "dabritch",
       "ms.prod": "dotnet-mobile",
+      "ms.topic": "conceptual",
       "ms.technology": "dotnet-maui",
       "zone_pivot_group_filename": "maui/zone-pivot-groups.json",
       "titleSuffix": ".NET MAUI",

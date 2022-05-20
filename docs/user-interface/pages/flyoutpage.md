@@ -24,8 +24,8 @@ The `IsGestureEnabled`, `IsPresented`, and `FlyoutLayoutBehavior` properties are
 
 `FlyoutPage` also defines an `IsPresentedChanged` event, that's raised when the `IsPresented` property changes value.
 
-> [!IMPORTANT]
-> `FlyoutPage` should not be used in .NET MAUI Shell apps. For more information about Shell apps, see [Shell](~/fundamentals/shell/index.md).
+> [!WARNING]
+> `FlyoutPage` is incompatible with .NET MAUI Shell apps, and an exception will be thrown if you attempt to use `FlyoutPage` in a Shell app. For more information about Shell apps, see [Shell](~/fundamentals/shell/index.md).
 
 ## Create a FlyoutPage
 

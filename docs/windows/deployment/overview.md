@@ -1,27 +1,23 @@
 ---
 title: "Publish a .NET MAUI app for Windows"
 description: "Learn how to package and publish a Windows .NET MAUI app."
-ms.date: 03/25/2022
+ms.date: 05/12/2022
 ---
 
-# Publish a .NET MAUI App for Windows
+# Publish a .NET MAUI app for Windows
 
 > [!div class="op_single_selector"]
 >
 > - [Publish for Android](../../android/deployment/overview.md)
+> - [Publish for iOS](../../ios/deployment/overview.md)
+> - [Publish for macOS](../../macos/deployment/overview.md)
 > - [Publish for Windows](overview.md)
 
-When distributing your .NET MAUI app for Windows, you can publish the app and its dependencies to a folder for deployment to another system. You can also package the app into an MSIX package, which has numerous benefits for the users installing your app. For more information about the benefits of MSIX, see [What is MSIX?](/windows/msix/overview)
+When distributing your .NET Multi-platform App UI (.NET MAUI) app for Windows, you can publish the app and its dependencies to a folder for deployment to another system. You can also package the app into an MSIX package, which has numerous benefits for the users installing your app. For more information about the benefits of MSIX, see [What is MSIX?](/windows/msix/overview)
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
-The current preview of .NET MAUI only allows publishing an MSIX package. You can't yet publish a Windows executable file for distribution.
-
-## Prerequisites
-
-In addition to the .NET MAUI workload, you'll need to add the latest Visual C++ build tools. Open the Visual Studio 2022 installer and add the **MSVC v143 - VS2022 C++ x64/x86 build tools (latest)** individual component. For more information on how to install an individual component, see [Modify Visual Studio workloads, components, and language packs](/visualstudio/install/modify-visual-studio?view=vs-2022&preserve-view=true).
-
-:::image type="content" source="media/overview/individual-component-small.png" alt-text="Visual Studio individual component highlighting the latest C++ build tools." lightbox="media/overview/individual-component.png":::
+.NET MAUI currently only allows publishing an MSIX package. You can't yet publish a Windows executable file for distribution.
 
 ## Create a signing certificate
 
@@ -72,7 +68,7 @@ For more information, see [Create a certificate for package signing](/windows/ms
 <!--
 ### Optionally export a PFX file
 
-You can use the thumbprint of the certificate to sign your package later, or you export the certificate to a Personal Information Exchange (PFX) file. The PFX file is secured with a password and can be referenced by your project. To export the certificate as a PFX file, do the following:
+You can use the thumbprint of the certificate to sign your package later, or you export the certificate to a Personal Information Exchange (PFX) file. The PFX file is secured with a password and can be referenced by your project. If you want to do signing from an automated build pipeline, you will need to have this file. To export the certificate as a PFX file, do the following:
 
 01. In the same PowerShell terminal session in the [Create a signing certificate](#create-a-signing-certificate) section, create a security password and assign it to the `$password` variable:
 
@@ -103,30 +99,31 @@ Add the following `<PropertyGroup>` node to your project file. This property gro
 </PropertyGroup>
 ```
 
+<!-- Place in PropertyGroup above once pfx export works: <PackageCertificateKeyFile>myCert.pfx</PackageCertificateKeyFile> <!-- Optional if you want to use the exported PFX file -->
+
 Replace the `<PackageCertificateThumbprint>` property value with the certificate thumbprint you previously generated. Alternatively, you can remove this setting from the project file and provide it on the command line. For example: `/p:PackageCertificateThumbprint=A10612AF095FD8F8255F4C6691D88F79EF2B135E`.
 
-The `<GenerateAppxPackageOnBuild>` set to `true` packages the app and signs it with the certificate that matches the `<PackageCertificateThumbprint>` value. Signing only happens if the `<AppxPackageSigningEnabled>` setting is `true`.
+Setting the `<GenerateAppxPackageOnBuild>` property to `true` packages the app and signs it with the certificate that matches the `<PackageCertificateThumbprint>` value. Signing only happens if the `<AppxPackageSigningEnabled>` setting is `true`.
 
 ## Publish
 
-At this time, publishing is only supported through `msbuild`, not `dotnet`.
-
-To publish your app, open the **Developer Command Prompt for VS 2022 Preview** terminal and navigate to the project's folder. Run `msbuild` in publish mode:  
+To publish your app, open the **Developer Command Prompt for VS 2022 Preview** terminal and navigate to the project's folder. Run `dotnet` in publish mode:  
 
 ```console
-msbuild /restore /t:Publish /p:TargetFramework=net6.0-windows10.0.19041 /p:configuration=release
+dotnet publish -f net6.0-windows10.0.19041.0 -c Release
 ```
+
+> [!NOTE]
+> When running the `dotnet publish` command without specifying the `.csproj` file, it will start publishing the solution (the `.sln` file) which is unsupported.
 
 The following table defines the parameters used by the previous command:
 
-| Parameter                  | Value                                                                             |
-|----------------------------|-----------------------------------------------------------------------------------|
-| `/restore`                 | Restores any dependencies referenced by the project.                              |
-| `/t:Publish`               | Runs the publish command.                                                         |
-| `/p:TargetFramework`       | The target framework, which is a Windows TFM, such as `net6.0-windows10.0.19041`. |
-| `/p:configuration=Release` | Sets the build configuration, which is `Release`.                                 |
+| Parameter                    | Value                                                                               |
+|------------------------------|-------------------------------------------------------------------------------------|
+| `-f net6.0-windows{version}` | The target framework, which is a Windows TFM, such as `net6.0-windows10.0.19041.0`. Ensure that this value is identical to the value in the `<TargetFrameworks>` node in your .csproj.           |
+| `-c Release`                 | Sets the build configuration, which is `Release`.                                   |
 
-Publishing builds and packages the app, copying the signed package to the _bin\\Release\\net6.0-windows10.0.19041\\win10-x64\\AppPackages\\\<appname>\\_ folder. Where \<appname> is a folder named after both your project and version. In this folder there's an _msix_ file, that's the app package.
+Publishing builds and packages the app, copying the signed package to the _bin\\Release\\net6.0-windows10.0.19041.0\\win10-x64\\AppPackages\\\<appname>\\_ folder. Where \<appname> is a folder named after both your project and version. In this folder there's an _msix_ file, that's the app package.
 
 ## Installing the app
 
@@ -173,18 +170,6 @@ The following list describes the current limitations with publishing and packagi
 
 01. The published app doesn't work if you try to run it directly with the executable file out of the publish folder.
 01. The way to run the app is to first install it through the packaged _MSIX_ file.
-
-## .NET MAUI Blazor app considerations
-
-Currently, .NET MAUI Blazor apps won't run when deployed to another computer. There's one more config section to add to your project to make the published app work on other computers:
-
-```xml
-<Target Name="_RemoveStaticWebAssetsDevelopmentManifest" BeforeTargets="GetCopyToOutputDirectoryItems">
-    <ItemGroup>
-        <ContentWithTargetPath Remove="$(StaticWebAssetDevelopmentManifestPath)" />
-    </ItemGroup>
-</Target>
-```
 
 ## See also
 

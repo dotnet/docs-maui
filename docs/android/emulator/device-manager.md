@@ -43,7 +43,7 @@ To use the Android Device Manager, you'll need the following items:
 
   :::image type="content" source="media/device-manager/win/02-sdk-tools.png" alt-text="Installing Android SDK Tools.":::
 
-When you install the **Mobile development with .NET** workload in Visual Studio, everything is installed for you. For more information on setting up .NET MAUI with Visual Studio, see [Build your first app](../../get-started/first-app.md).
+When you install the **.NET Multi-Platform App UI development** workload in Visual Studio, everything is installed for you. For more information on setting up .NET MAUI with Visual Studio, see [Build your first app](../../get-started/first-app.md).
 
 ## Open the device manager
 

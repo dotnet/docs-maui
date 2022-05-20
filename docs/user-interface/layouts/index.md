@@ -1,7 +1,7 @@
 ---
 title: "Layouts"
 description: ".NET MAUI layout classes allow you to arrange and group UI controls in your app."
-ms.date: 04/19/2022
+ms.date: 05/13/2022
 ---
 
 # Layouts
@@ -282,16 +282,13 @@ Bindable layouts should only be used when the collection of items to be displaye
 
 For more information, see [BindableLayout](bindablelayout.md).
 
-<!--
-
-## Layout options
-
 ## Input transparency
 
-Each visual element has an `InputTransparent` property that's used to define whether the element receives input. Its default value is `false`, ensuring that the element receives input.
+Each visual element has an `InputTransparent` bindable property that's used to define whether the element can receive input. Its default value is `false`, ensuring that the element can receive input. When this property is `true` on an element, the element won't receive any input. Instead, input will be passed to any elements that are visually behind the element.
 
-When this property is set on a layout class, its value transfers to child elements. Therefore, setting the `InputTransparent` property to `true` on a layout class will result in all elements within the layout not receiving input.
+The `Layout` class, from which all layouts derive, has a `CascadeInputTransparent` bindable property that controls whether child elements inherit the input transparency of the layout. Its default value is `true`, ensuring that setting the `InputTransparent` property to `true` on a layout class will result in all elements within the layout not receiving any input.
 
+<!--
 ## Layout performance
 
 To obtain the best possible layout performance, follow the guidelines at [Optimize layout performance](~/xamarin-forms/deploy-test/performance.md#optimize-layout-performance).
