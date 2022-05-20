@@ -1,7 +1,7 @@
 ---
 title: "Build your first .NET MAUI app"
 description: "Learn how to create and run your first .NET MAUI app in Visual Studio 2022 on Windows."
-ms.date: 05/18/2022
+ms.date: 05/20/2022
 ms.custom: updateeachrelease
 zone_pivot_groups: devices-deployment
 ---
@@ -191,12 +191,6 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
 06. In Visual Studio, pair the IDE to a Mac Build host. For more information, see [Pair to Mac for iOS development](~/ios/pair-to-mac.md).
 
-01. In Visual Studio, navigate to **Tools > Options > Xamarin > iOS Settings** and disable the **Remote Simulator to Windows** checkbox:
-
-    :::image type="content" source="media/first-app/ios-disable-remote-simulator.png" alt-text="Disable the remote simulator in the iOS settings.":::
-
-    For more information about the remote iOS Simulator for Windows, see [Remote iOS Simulator for Windows](~/ios/remote-simulator.md).
-
 01. In the Visual Studio toolbar, use the **Debug Target** drop down to select **iOS Simulators** and then a specific iOS simulator:
 
     :::image type="content" source="media/first-app/ios-debug-target.png" alt-text="Visual Studio iOS simulators debug targets.":::
@@ -205,7 +199,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
     :::image type="content" source="media/first-app/ios-chosen-debug-target.png" alt-text="Visual Studio iOS simulator debug target choice.":::
 
-    Visual Studio will build the app, start the iOS simulator on the paired Mac, and deploy the app to the simulator.
+    Visual Studio will build the app, start the remote iOS Simulator for Windows, and deploy the app to the remote simulator. For more information about the remote iOS Simulator for Windows, see [Remote iOS Simulator for Windows](~/ios/remote-simulator.md).
 
 01. In the running app, press the **Click me** button several times and observe that the count of the number of button clicks is incremented.
 
