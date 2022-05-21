@@ -198,3 +198,5 @@ For more information about conditional compilation, see [Conditional compilation
 ## App entry point
 
 While the _Platforms_ folders contain platform-specific code that starts the app on each platform, .NET MAUI apps have a single cross-platform app entry point. Each platform entry point calls a `CreateMauiApp` method on the static `MauiProgram` class in your app project, and returns a `MauiApp`, which is the entry point for your app. The `CreateMauiApp` method bootstraps the app using the [.NET Generic Host](/dotnet/core/extensions/generic-host). This provides the ability to configure the app, services, and third-party libraries from a single location.
+
+For more information, see [App startup](~/fundamentals/app-startup.md).
