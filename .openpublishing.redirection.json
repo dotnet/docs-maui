@@ -9,6 +9,10 @@
       "redirect_url": "/dotnet/maui/get-started/first-app"
     },
     {
+      "source_path": "docs/supported-platforms.md",
+      "redirect_url": "/dotnet/maui/what-is-maui"
+    },
+    {
       "source_path": "docs/user-interface/layouts/relativelayout.md",
       "redirect_url": "/dotnet/maui/user-interface/layouts"
     }
