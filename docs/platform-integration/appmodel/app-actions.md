@@ -1,17 +1,17 @@
 ---
 title: "App actions (shortcuts)"
-description: "The AppActions class in the Microsoft.Maui.ApplicationModel namespace lets you create and respond to app shortcuts from the app icon."
+description: "Describes the IAppActions interface in the Microsoft.Maui.ApplicationModel namespace, which lets you create and respond to app shortcuts from the app icon."
 ms.date: 05/05/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel", "AppDelegate.cs", "AppActions", "Platforms/Android/MainActivity.cs", "Platforms/iOS/AppDelegate.cs", "Platforms/Windows/App.xaml.cs", "Id", "Title", "Subtitle", "Icon"]
 ---
 
 # App actions
 
-The `Microsoft.Maui.ApplicationModel.AppActions` class lets you create and respond to app shortcuts from the app icon. App shortcuts are helpful to users because they allow you, as the app developer, to present them with extra ways of starting your app. For example, if you were developing an email and calendar app, you could present two different app actions, one to open the app directly to the current day of the calendar, and another to open to the email inbox folder.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IAppActions` interface, which lets you create and respond to app shortcuts. App shortcuts are helpful to users because they allow you, as the app developer, to present them with extra ways of starting your app. For example, if you were developing an email and calendar app, you could present two different app actions, one to open the app directly to the current day of the calendar, and another to open to the email inbox folder.
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
-The `AppActions` class is available in the `Microsoft.Maui.ApplicationModel` namespace.
+The `IAppActions` interface is exposed through the `AppActions.Current` property, and is available in the `Microsoft.Maui.ApplicationModel` namespace.
 
 ## Get started
 

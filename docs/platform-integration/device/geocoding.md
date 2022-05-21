@@ -30,11 +30,9 @@ No setup is required.
 
 A Bing Maps API key is required to use geocoding functionality. Sign up for a free [Bing Maps](https://www.bingmapsportal.com/) account. Under **My account** > **My keys**, create a new key and fill out information based on your application type, which should be **Windows Application**.
 
-Early on in your application's life before calling any `Geocoding` methods, set the API key, which is only available on Windows:
+To enable version tracking in your app, add the `ConfigureEssentials` step to the `CreateMauiApp` bootstrap code. The app startup code is configured in the _MauiProgram.cs_ file. Call the `UseMapServiceToken` method to enable version tracking:
 
-```csharp
-Platform.MapServiceToken = "YOUR-KEY-HERE";
-```
+:::code language="csharp" source="../snippets/shared_1/MauiProgram.cs" id="bootstrap_maptoken" highlight="12-15":::
 
 -----
 <!-- markdownlint-enable MD025 -->

@@ -11,6 +11,8 @@ This article describes how you can use the .NET Multi-platform App UI (.NET MAUI
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
+The `MainThread` class is available in the `Microsoft.Maui.ApplicationModel` namespace.
+
 ## When is it required
 
 Applications sometimes need to use events that call the event handler on a secondary thread, such as the [`Accelerometer`](../device/sensors.md#accelerometer) or [`Compass`](../device/sensors.md#compass) sensors. All sensors might return information on a secondary thread when used with faster sensing speeds. If the event handler needs to access user-interface elements, it must invoke code on the main thread.

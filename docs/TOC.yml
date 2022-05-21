@@ -493,9 +493,6 @@
             href: platform-integration/device-media/text-to-speech.md
           - name: Unit converters
             href: platform-integration/device-media/unit-converters.md
-        - name: Semantic screen reader
-          href: platform-integration/accessibility/semantic-screen-reader.md
-            
     - name: Publish
       items:
         - name: Android
