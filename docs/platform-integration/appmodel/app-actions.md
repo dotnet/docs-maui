@@ -59,8 +59,6 @@ After app actions [have been configured](#create-actions), the `OnAppAction` met
 
 :::code language="csharp" source="../snippets/shared_1/App.xaml.cs" id="appaction_handle":::
 
-For more information about app startup, see [Configure fonts, services, and handlers at startup](../../fundamentals/app-startup.md).
-
 ### Check if app actions are supported
 
 When you create an app action, either at app startup or while the app is being used, check to see if app actions are supported by reading the `AppActions.Current.IsSupported` property.

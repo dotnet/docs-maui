@@ -415,9 +415,9 @@
           href: platform-integration/configure-multi-targeting.md
         - name: Invoke platform code
           href: platform-integration/invoke-platform-code.md
-        - name: Application Model
+        - name: Application model
           items:
-          - name: App Actions
+          - name: App actions
             href: platform-integration/appmodel/app-actions.md
           - name: App information
             href: platform-integration/appmodel/app-information.md

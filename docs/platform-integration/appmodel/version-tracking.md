@@ -19,8 +19,6 @@ To enable version tracking in your app, add the `ConfigureEssentials` step to th
 
 :::code language="csharp" source="../snippets/shared_1/MauiProgram.cs" id="bootstrap_versiontracking" highlight="12-15":::
 
-For more information, see [Configure fonts, services, and handlers at startup](../../fundamentals/app-startup.md).
-
 ## Check the version
 
 The `IVersionTracking` interface provides many properties that describe the current version of the app and how it relates to the previous version. The following example writes the tracking information to labels on the page:

@@ -79,4 +79,29 @@ public static class MauiProgram
         }
         //</bootstrap_appaction>
     }
+
+    private static class BootstrapMapToken
+    {
+        //<bootstrap_maptoken>
+        public static MauiApp CreateMauiApp()
+        {
+            var builder = MauiApp.CreateBuilder();
+
+            builder
+                .UseMauiApp<App>()
+                .ConfigureFonts(fonts =>
+                {
+                    fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                    fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                })
+                .ConfigureEssentials(essentials =>
+                {
+                    essentials.UseMapServiceToken("YOUR-API-TOKEN");
+                });
+
+            return builder.Build();
+        }
+        //</bootstrap_maptoken>
+    }
+}
 }
