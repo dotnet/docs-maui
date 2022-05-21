@@ -21,6 +21,8 @@ To access the **SecureStorage** functionality, the following platform-specific s
 <!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
 
+.NET MAUI secure storage is only supported with Android 6.0 (API level 23) and later.
+
 [Auto Backup for Apps](https://developer.android.com/guide/topics/data/autobackup) is a feature of Android 6.0 (API level 23) and later that backs up user's app data (shared preferences, files in the app's internal storage, and other specific files). Data is restored when an app is reinstalled or installed on a new device. This can affect `SecureStorage`, which utilizes share preferences that are backed up and can't be decrypted when the restore occurs. .NET MAUI automatically handles this case by removing the key so it can be reset. Alternatively, you can disable Auto Backup.
 
 ### Enable or disable backup
@@ -62,7 +64,7 @@ Auto Backup can be configured to disable specific content from backing up. You c
 
 When developing on the **iOS simulator**, enable the **Keychain** entitlement and add a keychain access group for the application's bundle identifier.
 
-Open the _Entitlements.plist_ in the project and find the **Keychain** entitlement and enable it. This will automatically add the application's identifier as a group.
+Create or open the _Entitlements.plist_ in the project and find the **Keychain** entitlement and enable it. This will automatically add the application's identifier as a group. For more information about editing the _Entitlements.plist_ file, see [Entitlements and capabilities](../../ios/deployment/entitlements.md).
 
 In the project properties, under **iOS Bundle Signing** set the **Custom Entitlements** to **Entitlements.plist**.
 
@@ -116,17 +118,9 @@ This section describes the platform-specific differences with the secure storage
 <!-- markdownlint-disable MD024 -->
 # [Android](#tab/android)
 
-The [Android KeyStore](https://developer.android.com/training/articles/keystore.html) is used to store the cipher key used to encrypt the value before it's saved into a [Shared Preferences](https://developer.android.com/training/data-storage/shared-preferences.html) with a filename of _[YOUR-APP-PACKAGE-ID].microsoft.maui.essentials.preferences_. The value-key used in the shared preferences file is an **MD5** hash of the key passed into the `SecureStorage` APIs.
+The [Android KeyStore](https://developer.android.com/training/articles/keystore.html) is used to store the cipher key used to encrypt the value before it's saved into a [Shared Preferences](https://developer.android.com/training/data-storage/shared-preferences.html) with a filename of _[YOUR-APP-PACKAGE-ID].microsoft.maui.essentials.preferences_.
 
-- **API Level 23 and Higher**
-
-  On newer API levels, an **AES** key is obtained from the Android KeyStore and used with an **AES/GCM/NoPadding** cipher to encrypt the value before it's stored in the shared preferences file.
-
-- **API Level 22 and Lower**
-
-  On older API levels, the Android KeyStore only supports storing **RSA** keys, which is used with an **RSA/ECB/PKCS1Padding** cipher to encrypt an **AES** key, which is randomly generated at runtime. The **AES** key is stored in the shared preferences file under the key _SecureStorageKey_, but only if one wasn't already generated.
-
-**SecureStorage** uses the [Preferences](preferences.md) API and follows the same data persistence outlined in the [Preferences](preferences.md#persistence) documentation. If a device upgrades from API level 22 or lower, to API level 23 and higher, API Level 22 encryption is used unless the app is uninstalled or **RemoveAll** is called.
+**SecureStorage** uses the [Preferences](preferences.md) API and follows the same data persistence outlined in the [Preferences](preferences.md#persistence) documentation, however, the data is encrypted by using the [Android `EncryptedSharedPreferences` class](https://developer.android.com/reference/androidx/security/crypto/EncryptedSharedPreferences). If a device upgrades from API level 22 or lower, to API level 23 and higher, API Level 22 encryption is used unless the app is uninstalled or **RemoveAll** is called.
 
 # [iOS](#tab/ios)
 
