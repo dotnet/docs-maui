@@ -103,7 +103,7 @@ landingContent:
           - text: App information
             url: platform-integration/appmodel/app-information.md
           - text: Clipboard
-            url: platform-integreation/data/clipboard.md
+            url: platform-integration/data/clipboard.md
           - text: Device information
             url: platform-integration/device/information.md
           - text: Device sensors
@@ -119,7 +119,7 @@ landingContent:
           - text: Preferences
             url: platform-integration/storage/preferences.md
           - text: Web authenticator
-            url: platform-integration/communication/authentication.md                        
+            url: platform-integration/communication/authentication.md
   - title: Publish
     linkLists:
       - linkListType: concept
