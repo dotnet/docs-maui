@@ -200,7 +200,8 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
 <!-- markdownlint-disable MD029 -->
 06. In Visual Studio, pair the IDE to a Mac Build host. For more information, see [Pair to Mac for iOS development](~/ios/pair-to-mac.md).
-<!-- markdownlint-enable MD029 -->
+
+    <!-- markdownlint-enable MD029 -->
 
 01. In the Visual Studio toolbar, use the **Debug Target** drop down to select **iOS Simulators** and then a specific iOS simulator:
 
