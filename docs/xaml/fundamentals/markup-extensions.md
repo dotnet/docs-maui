@@ -151,7 +151,7 @@ The following example shows the three buttons accessing six shared values:
                     x:TypeArguments="Color">
             <On Platform="iOS" Value="Red" />
             <On Platform="Android" Value="Aqua" />
-            <On Platform="UWP" Value="#80FF80" />
+            <On Platform="WinUI" Value="#80FF80" />
         </OnPlatform>
     </ContentPage.Resources>
 

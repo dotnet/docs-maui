@@ -8,8 +8,6 @@ ms.date: 04/29/2022
 
 In this tutorial, you'll learn how to create and run a .NET Multi-platform App UI (.NET MAUI) app on iOS using .NET Command Line Interface (CLI) on macOS:
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 [!INCLUDE [Install .NET MAUI on macOS](~/includes/install-create-macos.md)]
 
 <!-- markdownlint-disable MD029 -->

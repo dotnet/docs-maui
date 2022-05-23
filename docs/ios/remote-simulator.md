@@ -1,7 +1,7 @@
 ---
 title: "Remote iOS Simulator for Windows"
 description: "Learn how the remote iOS Simulator for Windows allows you to test your apps on an iOS simulator displayed in Windows alongside Visual Studio 2022."
-ms.date: 04/13/2022
+ms.date: 05/20/2022
 ---
 
 # Remote iOS Simulator for Windows
@@ -12,10 +12,7 @@ The remote iOS Simulator for Windows allows you to test your apps on an iOS simu
 
 ## Get started
 
-> [!IMPORTANT]
-> It's not currently possible to use the remote iOS Simulator to test your iOS apps in Windows. However, if you disable the Simulator in Windows, targeting an app against an iOS Simulator will result in the iOS Simulator opening on the connected Mac build host. For more information, see [Enable the remote iOS simulator for Windows](#enable-the-remote-ios-simulator-for-windows).
-
-The remote iOS Simulator for Windows is installed automatically as part of the .NET Multi-Platform App UI development workload in Visual Studio 2022. To use it, follow these steps:
+The remote iOS Simulator for Windows is installed automatically as part of the .NET Multi-platform App UI development workload in Visual Studio 2022. To use it, follow these steps:
 
 1. Launch Visual Studio 2022 and create or load a .NET MAUI app project.
 1. In Visual Studio 2022, pair the IDE to a Mac Build host if you haven't previously. For more information, see [Pair to Mac for iOS development](pair-to-mac.md).
@@ -78,6 +75,15 @@ Similarly, the remote iOS Simulator for Windows treats Windows Stylus input as A
 Sounds played by the simulator will come from the host Mac's speakers. iOS sounds are not heard on Windows.
 
 ## Troubleshooting
+
+In some circumstances, an Xcode configuration problem can result in the remote iOS Simulator for Windows getting stuck in a Connecting to Mac...Checking Server...Connected... loop. When this occurs, you need to remove and reset the Simulators on your Mac build host:
+
+- Ensure that Xamarin Mac Agent (XMA) and Xcode aren't running.
+- Delete your *~/Library/Developer/CoreSimulator/Devices* folder.
+- Run `killall -9 com.apple.CoreSimulator.CoreSimulatorService`.
+- Run `xcrun simctl list devices`.
+
+### Logs
 
 If you experience issues with the remote iOS Simulator, you can view the logs in the following locations:
 

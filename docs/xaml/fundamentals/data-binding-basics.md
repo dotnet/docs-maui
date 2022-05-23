@@ -165,7 +165,69 @@ However, the binding for the `Scale` property is `TwoWay`. This is because the `
 
 However, the items in the `ListView` collection can be displayed any way you want through the use of a *template*, which involves a class that derives from `Cell`. The template is cloned for every item in the `ListView`, and data bindings that have been set on the template are transferred to the individual clones. Custom cells can be created for items using the `ViewCell` class.
 
-Included in the XamlSamples project is a class called `NamedColor`. Each `NamedColor` object has `Name` and `FriendlyName` properties of type `string`, and a `Color` property of type `Color`. In addition, the `NamedColor` static constructor creates an `IEnumerable<NamedColor>` collection that contains `NamedColor` objects corresponding to the fields of type `Color` in the `Colors` class, and assigns it to its public static `All` property.
+`ListView` can display a list of every named color that's available in .NET MAUI, with the help of the `NamedColor` class:
+
+```csharp
+using System.Reflection;
+using System.Text;
+
+namespace XamlSamples
+{
+    public class NamedColor
+    {
+        public string Name { get; private set; }
+        public string FriendlyName { get; private set; }
+        public Color Color { get; private set; }
+
+        public static IEnumerable<NamedColor> All { get; private set; }
+
+        static NamedColor()
+        {
+            List<NamedColor> all = new List<NamedColor>();
+            StringBuilder stringBuilder = new StringBuilder();
+
+            // Loop through the public static fields of the Color structure.
+            foreach (FieldInfo fieldInfo in typeof(Colors).GetRuntimeFields())
+            {
+                if (fieldInfo.IsPublic &&
+                    fieldInfo.IsStatic &&
+                    fieldInfo.FieldType == typeof(Color))
+                {
+                    // Convert the name to a friendly name.
+                    string name = fieldInfo.Name;
+                    stringBuilder.Clear();
+                    int index = 0;
+
+                    foreach (char ch in name)
+                    {
+                        if (index != 0 && Char.IsUpper(ch))
+                        {
+                            stringBuilder.Append(' ');
+                        }
+                        stringBuilder.Append(ch);
+                        index++;
+                    }
+
+                    // Instantiate a NamedColor object.
+                    NamedColor namedColor = new NamedColor
+                    {
+                        Name = name,
+                        FriendlyName = stringBuilder.ToString(),
+                        Color = (Color)fieldInfo.GetValue(null)
+                    };
+
+                    // Add it to the collection.
+                    all.Add(namedColor);
+                }
+            }
+            all.TrimExcess();
+            All = all;
+        }
+    }
+}
+```
+
+Each `NamedColor` object has `Name` and `FriendlyName` properties of type `string`, and a `Color` property of type `Color`. In addition, the `NamedColor` static constructor creates an `IEnumerable<NamedColor>` collection that contains `NamedColor` objects corresponding to the fields of type `Color` in the `Colors` class, and assigns it to its public static `All` property.
 
 Setting the static `NamedColor.All` property to the `ItemsSource` of a `ListView` can be achieved using the `x:Static` markup extension:
 

@@ -15,7 +15,7 @@ The `VersionTracking` and `IVersionTracking` types are available in the `Microso
 
 ## Get started
 
-To enable version tracking in your app, add the `ConfigureEssentials` step to the `CreateMauiApp` bootstrap code. The app startup code is configured in the _MauiProgram.cs_ file. Call the `UseVersionTracking` method to enable version tracking.
+To enable version tracking in your app, invoke the `ConfigureEssentials` method on the `MauiAppBuilder` object in the _MauiProgram.cs_ file. Then, on the `IEssentialsBuilder` object, call the `UseVersionTracking` method:
 
 :::code language="csharp" source="../snippets/shared_1/MauiProgram.cs" id="bootstrap_versiontracking" highlight="12-15":::
 

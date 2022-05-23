@@ -16,12 +16,14 @@ landingContent:
         links:
           - text: What is .NET Multi-platform App UI?
             url: what-is-maui.md
+          - text: Supported platforms
+            url: supported-platforms.md
   - title: Get started
     linkLists:
       - linkListType: how-to-guide
         links:
           - text: Build your first app
-            url: get-started/first-app.md
+            url: get-started/first-app.md?pivots=devices-windows
           - text: Debug on an Android emulator
             url: android/emulator/debug-on-emulator.md
           - text: Setup an Android device for debugging
@@ -100,16 +102,26 @@ landingContent:
     linkLists:
       - linkListType: concept
         links:
-          - text: Configure multi-targeting
-            url: platform-integration/configure-multi-targeting.md
-          - text: Invoke platform code
-            url: platform-integration/invoke-platform-code.md
-          - text: Android platform-specifics
-            url: android/platform-specifics/index.md
-          - text: iOS platform-specifics
-            url: ios/platform-specifics/index.md
-          - text: Windows platform-specifics
-            url: windows/platform-specifics/index.md
+          - text: App information
+            url: platform-integration/appmodel/app-information.md
+          - text: Clipboard
+            url: platform-integration/data/clipboard.md
+          - text: Device information
+            url: platform-integration/device/information.md
+          - text: Device sensors
+            url: platform-integration/device/sensors.md
+          - text: File picker
+            url: platform-integration/storage/file-picker.md
+          - text: Network connectivity
+            url: platform-integration/communication/networking.md
+          - text: Permissions
+            url: platform-integration/appmodel/permissions.md
+          - text: Photo picker
+            url: platform-integration/device-media/picker.md
+          - text: Preferences
+            url: platform-integration/storage/preferences.md
+          - text: Web authenticator
+            url: platform-integration/communication/authentication.md
   - title: Publish
     linkLists:
       - linkListType: concept

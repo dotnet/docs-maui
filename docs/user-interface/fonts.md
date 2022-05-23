@@ -50,13 +50,15 @@ namespace MyMauiApp
 
 In the example above, the first argument to the `AddFont` method is the font filename, while the second argument represents an optional alias by which the font can be referenced when consuming it.
 
-Any fonts consumed by an app must be placed in the **Resources** > **Fonts** folder of the app's project, with a build action of **MauiFont**. This creates a corresponding entry per font in your project file. Alternatively, all fonts in the app can be registered by using a wildcard in your project file:
+A font can be added to your app project by dragging it into the *Resources\Fonts* folder of the project, where its build action will automatically be set to **MauiFont**. This creates a corresponding entry in your project file. Alternatively, all fonts in the app can be registered by using a wildcard in your project file:
 
 ```xml
 <ItemGroup>
    <MauiFont Include="Resources\Fonts\*" />
 </ItemGroup>
 ```
+
+Fonts can also be added to other folders of your app project. However, in this scenario their build action must be manually set to **MauiFont** in the **Properties** window.
 
 At build time, fonts are copied to your app package.
 
@@ -168,8 +170,6 @@ This approach is useful when you want to guarantee that text is displayed at a s
 ## Set font properties per platform
 
 The `OnPlatform` and `On` classes can be used in XAML to set font properties per platform. The example below sets different font families and sizes:
-
-<!-- Todo: UWP refs in code below -->
 
 ```xaml
 <Label Text="Different font properties on different platforms"
