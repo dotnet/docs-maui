@@ -441,7 +441,7 @@
             href: platform-integration/communication/phone-dialer.md
           - name: SMS (messaging)
             href: platform-integration/communication/sms.md
-          - name: Web authentication
+          - name: Web authenticator
             href: platform-integration/communication/authentication.md
         - name: Device features
           items:
@@ -554,7 +554,7 @@
                 - name: SearchBar spell check
                   href: windows/platform-specifics/searchbar-spell-check.md
                 - name: VisualElement access keys
-                  href: windows/platform-specifics/visualelement-access-keys.md            
+                  href: windows/platform-specifics/visualelement-access-keys.md
         - name: Sharing
           items:
           - name: Clipboard
