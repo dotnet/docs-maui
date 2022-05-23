@@ -3,6 +3,8 @@
   items:
     - name: What is .NET Multi-platform App UI?
       href: what-is-maui.md
+    - name: Supported platforms
+      href: supported-platforms.md      
     - name: Get started
       items:
         - name: Build your first app
