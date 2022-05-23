@@ -4,7 +4,7 @@
     - name: What is .NET Multi-platform App UI?
       href: what-is-maui.md
     - name: Supported platforms
-      href: supported-platforms.md      
+      href: supported-platforms.md
     - name: Get started
       items:
         - name: Build your first app
@@ -413,10 +413,6 @@
           href: user-interface/visual-states.md
     - name: Platform integration
       items:
-        - name: Configure multi-targeting
-          href: platform-integration/configure-multi-targeting.md
-        - name: Invoke platform code
-          href: platform-integration/invoke-platform-code.md
         - name: Application model
           items:
           - name: App actions
@@ -449,22 +445,6 @@
             href: platform-integration/communication/sms.md
           - name: Web authentication
             href: platform-integration/communication/authentication.md
-        - name: Sharing
-          items:
-          - name: Clipboard
-            href: platform-integration/data/clipboard.md
-          - name: Share files and text
-            href: platform-integration/data/share.md
-        - name: Storage
-          items:
-          - name: File picker
-            href: platform-integration/storage/file-picker.md
-          - name: File system helpers
-            href: platform-integration/storage/file-system-helpers.md
-          - name: Preferences
-            href: platform-integration/storage/preferences.md
-          - name: Secure storage
-            href: platform-integration/storage/secure-storage.md
         - name: Device features
           items:
           - name: Battery
@@ -495,6 +475,26 @@
             href: platform-integration/device-media/text-to-speech.md
           - name: Unit converters
             href: platform-integration/device-media/unit-converters.md
+        - name: Sharing
+          items:
+          - name: Clipboard
+            href: platform-integration/data/clipboard.md
+          - name: Share files and text
+            href: platform-integration/data/share.md
+        - name: Storage
+          items:
+          - name: File picker
+            href: platform-integration/storage/file-picker.md
+          - name: File system helpers
+            href: platform-integration/storage/file-system-helpers.md
+          - name: Preferences
+            href: platform-integration/storage/preferences.md
+          - name: Secure storage
+            href: platform-integration/storage/secure-storage.md
+        - name: Configure multi-targeting
+          href: platform-integration/configure-multi-targeting.md
+        - name: Invoke platform code
+          href: platform-integration/invoke-platform-code.md
     - name: Publish
       items:
         - name: Android
