@@ -80,9 +80,12 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
 :::zone-end
 
+<!-- markdownlint-disable MD029 -->
 02. Launch Visual Studio 2022 17.3 Preview, and in the start window click **Create a new project** to create a new project:
 
     :::image type="content" source="media/first-app/new-solution.png" alt-text="New solution.":::
+
+    <!-- markdownlint-enable MD029 -->
 
 01. In the **Create a new project** window, select **MAUI** in the **All project types** drop-down, select the **.NET MAUI App** template, and click the **Next** button:
 
@@ -98,9 +101,12 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
 :::zone pivot="devices-android"
 
+<!-- markdownlint-disable MD029 -->
 06. In the Visual Studio toolbar, use the **Debug Target** drop down to select **Android Emulators** and then the **Android Emulator** entry:
 
     :::image type="content" source="media/first-app/android-debug-target.png" alt-text="Select the Android Emulator debugging target for .NET MAUI.":::
+
+    <!-- markdownlint-enable MD029 -->
 
 01. In the Visual Studio toolbar, press the **Android Emulator** button:
 
@@ -163,9 +169,12 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
 :::zone pivot="devices-windows"
 
+<!-- markdownlint-disable MD029 -->
 06. In the Visual Studio toolbar, use the **Debug Target** drop down to select **Framework** and then the **net6.0-windows** entry:
 
     :::image type="content" source="media/first-app/windows-debug-target.png" alt-text="Select the Windows Machine debugging target for .NET MAUI.":::
+
+    <!-- markdownlint-enable MD029 -->
 
 01. In the Visual Studio toolbar, press the **Windows Machine** button to build and run the app:
 
@@ -189,7 +198,9 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
 :::zone pivot="devices-ios"
 
+<!-- markdownlint-disable MD029 -->
 06. In Visual Studio, pair the IDE to a Mac Build host. For more information, see [Pair to Mac for iOS development](~/ios/pair-to-mac.md).
+<!-- markdownlint-enable MD029 -->
 
 01. In the Visual Studio toolbar, use the **Debug Target** drop down to select **iOS Simulators** and then a specific iOS simulator:
 
