@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlatformIntegration.SensorsPage"
+             Title="Sensors" Loaded="ContentPage_Loaded">
+    <VerticalStackLayout>
+        <HorizontalStackLayout>
+            <Label Text="Accel" VerticalOptions="Center" />
+            <Switch Toggled="AccelSwitch_Toggled" VerticalOptions="Center" />
+            <Label x:Name="AccelLabel" VerticalOptions="Center" LineBreakMode="CharacterWrap"  />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Label Text="Barom" VerticalOptions="Center" />
+            <Switch Toggled="BarometerSwitch_Toggled" VerticalOptions="Center" />
+            <Label x:Name="BarometerLabel" VerticalOptions="Center" LineBreakMode="CharacterWrap"  />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Label Text="Compass" VerticalOptions="Center" />
+            <Switch Toggled="CompassSwitch_Toggled" VerticalOptions="Center" />
+            <Label x:Name="CompassLabel" VerticalOptions="Center" LineBreakMode="MiddleTruncation"  />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Label Text="Gyroscope" VerticalOptions="Center" />
+            <Switch Toggled="GyroscopeSwitch_Toggled" VerticalOptions="Center" />
+            <Label x:Name="GyroscopeLabel" VerticalOptions="Center" LineBreakMode="MiddleTruncation"  />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Label Text="Magnetometer" VerticalOptions="Center" />
+            <Switch Toggled="MagnetometerSwitch_Toggled" VerticalOptions="Center" />
+            <Label x:Name="MagnetometerLabel" VerticalOptions="Center" LineBreakMode="MiddleTruncation"  />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Label Text="Orientation" VerticalOptions="Center" />
+            <Switch Toggled="OrientationSwitch_Toggled" VerticalOptions="Center" />
+            <Label x:Name="OrientationLabel" VerticalOptions="Center" LineBreakMode="MiddleTruncation"  />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Label Text="Shake" VerticalOptions="Center" />
+            <Switch Toggled="ShakeSwitch_Toggled" VerticalOptions="Center" />
+            <Label x:Name="ShakeLabel" VerticalOptions="Center" LineBreakMode="MiddleTruncation"  />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Button Text="Geocoding" Clicked="Geocoding_Clicked" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Button Text="Get last geolocation" Clicked="Geolocation1_Clicked" />
+            <Label x:Name="LastLocationLabel" />
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

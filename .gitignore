@@ -1,9 +1,11 @@
 log/
+bin/
 obj/
 _site/
 .optemp/
 _themes*/
 _repo.*/
+.vs/
 
 .openpublishing.buildcore.ps1
 .DS_Store
