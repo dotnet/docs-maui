@@ -393,12 +393,20 @@ public partial class AppModelPage : ContentPage
 #elif WINDOWS
     public class ReadWriteStoragePerms : Permissions.BasePlatformPermission
     {
-        public override (string androidPermission, bool isRuntime)[] RequiredPermissions =>
-            new List<(string androidPermission, bool isRuntime)>
-            {
-            //(global::Android.Manifest.Permission.ReadExternalStorage, true),
-            //(global::Android.Manifest.Permission.WriteExternalStorage, true)
-            }.ToArray();
+        protected override Func<IEnumerable<string>> RequiredDeclarations => () =>
+            new[] { "ReadExternalStorage", "WriteExternalStorage" }; // TODO: Need correct values here.
+    }
+#elif MACCATALYST
+    public class ReadWriteStoragePerms : Permissions.BasePlatformPermission
+    {
+        protected override Func<IEnumerable<string>> RequiredInfoPlistKeys => () =>
+            new[] { "ReadExternalStorage", "WriteExternalStorage" }; // TODO: Need correct values here.
+    }
+#elif IOS
+    public class ReadWriteStoragePerms : Permissions.BasePlatformPermission
+    {
+        protected override Func<IEnumerable<string>> RequiredInfoPlistKeys => () =>
+            new[] { "ReadExternalStorage", "WriteExternalStorage" }; // TODO: Need correct values here.
     }
 #endif
 
