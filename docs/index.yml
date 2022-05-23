@@ -16,8 +16,6 @@ landingContent:
         links:
           - text: What is .NET Multi-platform App UI?
             url: what-is-maui.md
-          - text: Supported platforms
-            url: supported-platforms.md
   - title: Get started
     linkLists:
       - linkListType: how-to-guide
@@ -106,6 +104,12 @@ landingContent:
             url: platform-integration/configure-multi-targeting.md
           - text: Invoke platform code
             url: platform-integration/invoke-platform-code.md
+          - text: Android platform-specifics
+            url: android/platform-specifics/index.md
+          - text: iOS platform-specifics
+            url: ios/platform-specifics/index.md
+          - text: Windows platform-specifics
+            url: windows/platform-specifics/index.md
   - title: Publish
     linkLists:
       - linkListType: concept
