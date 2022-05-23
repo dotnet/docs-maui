@@ -413,6 +413,84 @@
           href: user-interface/visual-states.md
     - name: Platform integration
       items:
+        - name: Application model
+          items:
+          - name: App actions
+            href: platform-integration/appmodel/app-actions.md
+          - name: App information
+            href: platform-integration/appmodel/app-information.md
+          - name: Browser
+            href: platform-integration/appmodel/open-browser.md
+          - name: Launcher
+            href: platform-integration/appmodel/launcher.md
+          - name: Main thread
+            href: platform-integration/appmodel/main-thread.md
+          - name: Maps
+            href: platform-integration/appmodel/maps.md
+          - name: Permissions
+            href: platform-integration/appmodel/permissions.md
+          - name: Version tracking
+            href: platform-integration/appmodel/version-tracking.md
+        - name: Communication
+          items:
+          - name: Contacts
+            href: platform-integration/communication/contacts.md
+          - name: Email
+            href: platform-integration/communication/email.md
+          - name: Networking
+            href: platform-integration/communication/networking.md
+          - name: Phone dialer
+            href: platform-integration/communication/phone-dialer.md
+          - name: SMS (messaging)
+            href: platform-integration/communication/sms.md
+          - name: Web authentication
+            href: platform-integration/communication/authentication.md
+        - name: Device features
+          items:
+          - name: Battery
+            href: platform-integration/device/battery.md
+          - name: Device display
+            href: platform-integration/device/display.md
+          - name: Device information
+            href: platform-integration/device/information.md
+          - name: Device sensors
+            href: platform-integration/device/sensors.md
+          - name: Flashlight
+            href: platform-integration/device/flashlight.md
+          - name: Geocoding
+            href: platform-integration/device/geocoding.md
+          - name: Geolocation
+            href: platform-integration/device/geolocation.md
+          - name: Haptic feedback
+            href: platform-integration/device/haptic-feedback.md
+          - name: Vibration
+            href: platform-integration/device/vibrate.md
+        - name: Media
+          items:
+          - name: Photo picker
+            href: platform-integration/device-media/picker.md
+          - name: Screenshot
+            href: platform-integration/device-media/screenshot.md
+          - name: Text-to-speech
+            href: platform-integration/device-media/text-to-speech.md
+          - name: Unit converters
+            href: platform-integration/device-media/unit-converters.md
+        - name: Sharing
+          items:
+          - name: Clipboard
+            href: platform-integration/data/clipboard.md
+          - name: Share files and text
+            href: platform-integration/data/share.md
+        - name: Storage
+          items:
+          - name: File picker
+            href: platform-integration/storage/file-picker.md
+          - name: File system helpers
+            href: platform-integration/storage/file-system-helpers.md
+          - name: Preferences
+            href: platform-integration/storage/preferences.md
+          - name: Secure storage
+            href: platform-integration/storage/secure-storage.md
         - name: Configure multi-targeting
           href: platform-integration/configure-multi-targeting.md
         - name: Invoke platform code

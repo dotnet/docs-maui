@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlatformIntegration.BatteryTestPage"
+             Title="BatteryTestPage">
+    <StackLayout>
+        <HorizontalStackLayout>
+            <Label Text="Battery" VerticalOptions="Center" />
+            <Switch Toggled="BatterySwitch_Toggled" VerticalOptions="Center" />
+            <VerticalStackLayout>
+                <Label x:Name="BatteryStateLabel" VerticalOptions="Center" LineBreakMode="CharacterWrap"  />
+                <Label x:Name="BatteryLevelLabel" VerticalOptions="Center" LineBreakMode="CharacterWrap"  />
+            </VerticalStackLayout>
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Label Text="Battery Saver Monitor" VerticalOptions="Center" />
+            <Switch Toggled="BatterySaverSwitch_Toggled" VerticalOptions="Center" />
+            <Label x:Name="BatterySaverLabel" VerticalOptions="Center" LineBreakMode="CharacterWrap" TextColor="Green"  />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Button Text="Update battery source" Clicked="BatSourceButton_Clicked" />
+            <Label x:Name="BatteryPowerSourceLabel" VerticalOptions="Center" LineBreakMode="CharacterWrap" TextColor="Green"  />
+        </HorizontalStackLayout>
+    </StackLayout>
+</ContentPage>

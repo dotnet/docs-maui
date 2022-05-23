@@ -156,7 +156,7 @@ To publish your app, open a terminal and navigate to the project's folder. Run t
 
 | Parameter                    | Value                                                                                           |
 |------------------------------|-------------------------------------------------------------------------------------------------|
-| `-f` or `--framework`        | The target framework, which is `net6.0-maccatalyst`.                                            |
+| `-f` or `--framework`        | The target framework, which is `net6.0-ios`.                                                    |
 | `-c` or `--configuration`    | The build configuration, which is `Release`.                                                    |
 
 In addition, the following common parameters can be specified on the command line if they aren't provided in a `<PropertyGroup>` in your project file:

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlatformIntegration.DeviceDetailsPage"
+             Title="DeviceDetailsPage" Loaded="ContentPage_Loaded">
+    <StackLayout>
+        <HorizontalStackLayout>
+            <Label Text="Display Orientation" VerticalOptions="Center" />
+            <Label x:Name="DisplayDetailsLabel" VerticalOptions="Center" LineBreakMode="CharacterWrap" TextColor="Green"  />
+            <Label x:Name="DisplayDeviceLabel" VerticalOptions="Center" LineBreakMode="CharacterWrap" TextColor="Green"  />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Label Text="Display always on? " VerticalOptions="Center" />
+            <Switch x:Name="AlwaysOnSwitch" Toggled="AlwaysOnSwitch_Toggled" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Label Text="Flashlight" VerticalOptions="Center" />
+            <Switch x:Name="FlashlightSwitch" Toggled="FlashlightSwitch_Toggled" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Label Text="Haptic" VerticalOptions="Center" />
+            <Button Text="Click" Clicked="HapticShortButton_Clicked" />
+            <Button Text="Long" Clicked="HapticLongButton_Clicked" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <Label Text="Vibration" VerticalOptions="Center" />
+            <Button Text="Start" Clicked="VibrateStartButton_Clicked" />
+            <Button Text="Force stop" Clicked="VibrateStopButton_Clicked" />
+        </HorizontalStackLayout>
+    </StackLayout>
+</ContentPage>
