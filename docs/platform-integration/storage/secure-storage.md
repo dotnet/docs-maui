@@ -21,7 +21,8 @@ To access the **SecureStorage** functionality, the following platform-specific s
 <!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
 
-.NET MAUI secure storage is only supported with Android 6.0 (API level 23) and later.
+<!-- .NET MAUI secure storage is only supported with Android 6.0 (API level 23) and later. -->
+<!-- The above is true when using v1.0.0 of AndroidX.Security.Crypto. But MAUI is currently using v1.1.0-alpha03, which supports API21+. -->
 
 [Auto Backup for Apps](https://developer.android.com/guide/topics/data/autobackup) is a feature of Android 6.0 (API level 23) and later that backs up user's app data (shared preferences, files in the app's internal storage, and other specific files). Data is restored when an app is reinstalled or installed on a new device. This can affect `SecureStorage`, which utilizes share preferences that are backed up and can't be decrypted when the restore occurs. .NET MAUI automatically handles this case by removing the key so it can be reset. Alternatively, you can disable Auto Backup.
 
@@ -118,9 +119,12 @@ This section describes the platform-specific differences with the secure storage
 <!-- markdownlint-disable MD024 -->
 # [Android](#tab/android)
 
-The [Android KeyStore](https://developer.android.com/training/articles/keystore.html) is used to store the cipher key used to encrypt the value before it's saved into a [Shared Preferences](https://developer.android.com/training/data-storage/shared-preferences.html) with a filename of _[YOUR-APP-PACKAGE-ID].microsoft.maui.essentials.preferences_.
+`SecureStorage` uses the [Preferences](preferences.md) API and follows the same data persistence outlined in the [Preferences](preferences.md#persistence) documentation, with a filename of _[YOUR-APP-PACKAGE-ID].microsoft.maui.essentials.preferences_. However, data is encrypted with the Android [`EncryptedSharedPreferences`](https://developer.android.com/reference/androidx/security/crypto/EncryptedSharedPreferences) class, from the Android Security library, which wraps the `SharedPreferences` class and automatically encrypts keys and values using a two-scheme approach:
 
-**SecureStorage** uses the [Preferences](preferences.md) API and follows the same data persistence outlined in the [Preferences](preferences.md#persistence) documentation, however, the data is encrypted by using the [Android `EncryptedSharedPreferences` class](https://developer.android.com/reference/androidx/security/crypto/EncryptedSharedPreferences). If a device upgrades from API level 22 or lower, to API level 23 and higher, API Level 22 encryption is used unless the app is uninstalled or **RemoveAll** is called.
+- Keys are deterministically encrypted, so that the key can be encrypted and properly looked up.
+- Values are non-deterministically encrypted using AES-256 GCM.
+
+For more information about the Android Security library, see [Work with data more securely](https://developer.android.com/topic/security/data) on developer.android.com.
 
 # [iOS](#tab/ios)
 
