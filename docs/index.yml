@@ -16,6 +16,8 @@ landingContent:
         links:
           - text: What is .NET Multi-platform App UI?
             url: what-is-maui.md
+          - text: Supported platforms
+            url: supported-platforms.md
   - title: Get started
     linkLists:
       - linkListType: how-to-guide
