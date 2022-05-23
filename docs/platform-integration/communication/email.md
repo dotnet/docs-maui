@@ -84,7 +84,7 @@ Both `EmailBodyFormat.Html` and `EmailBodyFormat.PlainText` are supported.
 
 Only supports `EmailBodyFormat.PlainText` as the EmailBodyFormat.`BodyFormat`. Attempting to send an `Html` email throws the exception: `FeatureNotSupportedException`.
 
-Not all email clients support sending attachments. For more information, see [Sending emails](/windows/uwp/contacts-and-calendar/sending-email).
+Not all email clients support sending attachments. <!-- For more information, see [Sending emails](/windows/uwp/contacts-and-calendar/sending-email).-->
 
 -----
 <!-- markdownlint-enable MD024 -->

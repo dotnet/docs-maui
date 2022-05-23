@@ -81,7 +81,6 @@ Preferences are stored natively, which allows you to integrate your settings int
 
 - Apple: [Implementing an iOS Settings Bundle](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/UserDefaults/Preferences/Preferences.html)
 - [iOS Application Preferences Sample](/samples/xamarin/ios-samples/appprefs/)
-- [watchOS Settings](https://developer.xamarin.com/guides/ios/watch/working-with/settings/)
 - Android: [Getting Started with Settings Screens](https://developer.android.com/guide/topics/ui/settings.html)
 
 ## Platform differences
@@ -99,7 +98,7 @@ All data is stored into [**Shared Preferences**](https://developer.android.com/t
 
 # [Windows](#tab/windows)
 
-[ApplicationDataContainer](/uwp/api/windows.storage.applicationdatacontainer) is used to store the values on the device. If no `sharedName` is specified, the `LocalSettings` are used. Otherwise the name is used to create a new container inside of `LocalSettings`.
+`ApplicationDataContainer` is used to store the values on the device. If no `sharedName` is specified, the `LocalSettings` are used. Otherwise the name is used to create a new container inside of `LocalSettings`. <!-- (/uwp/api/windows.storage.applicationdatacontainer) -->
 
 <!-- TODO: This makes no sense to me. the way the word setting was used here didn't make sense. I edited this to try and make sense of it but I suspect I'm wrong! -->
 `LocalSettings` restricts the preference key names to 255 characters or less. Each preference value can be up to 8K bytes in size, and each composite setting can be up to 64 K bytes in size.

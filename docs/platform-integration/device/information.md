@@ -23,14 +23,14 @@ Information about your device's is accessed by the default implementation of the
 
 The `IDeviceInfo.Platform` property represents the operating system the app is running on. The `DevicePlatform` type provides a property for each operating system:
 
-- `DevicePlatform.iOS`
 - `DevicePlatform.Android`
+- `DevicePlatform.iOS`
 - `DevicePlatform.macOS`
 - `DevicePlatform.MacCatalyst`
-- `DevicePlatform.WinUI`
 - `DevicePlatform.tvOS`
-- `DevicePlatform.watchOS`
 - `DevicePlatform.Tizen`
+- `DevicePlatform.WinUI`
+- `DevicePlatform.watchOS`
 - `DevicePlatform.Unknown`
 
 The following example demonstrates checking if the `DeviceInfo.Platform` property matches the `Android` operating system:

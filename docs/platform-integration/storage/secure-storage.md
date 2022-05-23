@@ -134,7 +134,7 @@ In some cases, KeyChain data is synchronized with iCloud, and uninstalling the a
 
 # [Windows](#tab/windows)
 
-[DataProtectionProvider](/uwp/api/windows.security.cryptography.dataprotection.dataprotectionprovider) is used to encrypt values securely on Windows devices.
+`DataProtectionProvider` is used to encrypt values securely on Windows devices. <!-- (/uwp/api/windows.security.cryptography.dataprotection.dataprotectionprovider) -->
 
 Encrypted values are stored in `ApplicationData.Current.LocalSettings`, inside a container with a name of _[YOUR-APP-ID].microsoft.maui.essentials.preferences_.
 

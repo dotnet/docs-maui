@@ -201,7 +201,7 @@ On iOS, [altitude](https://developer.apple.com/documentation/corelocation/clloca
 
 # [Windows](#tab/windows)
 
-On Windows, altitude is returned in meters. For more information, see the [AltitudeReferenceSystem](/uwp/api/windows.devices.geolocation.geopoint.altitudereferencesystem#Windows_Devices_Geolocation_Geopoint_AltitudeReferenceSystem) reference documentation.
+On Windows, altitude is returned in meters. <!-- For more information, see the [AltitudeReferenceSystem](/uwp/api/windows.devices.geolocation.geopoint.altitudereferencesystem#Windows_Devices_Geolocation_Geopoint_AltitudeReferenceSystem) reference documentation.-->
 
 -----
 <!-- markdownlint-enable MD024 -->

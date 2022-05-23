@@ -68,10 +68,10 @@ Files that were added to the project with the **Build Action** of **MauiAsset** 
 # [Windows](#tab/windows)
 
 - `FileSystem.CacheDirectory`\
-Returns the [LocalCacheFolder](/uwp/api/windows.storage.applicationdata.localcachefolder#Windows_Storage_ApplicationData_LocalCacheFolder) directory..
+Returns the `LocalCacheFolder` directory. <!-- (/uwp/api/windows.storage.applicationdata.localcachefolder#Windows_Storage_ApplicationData_LocalCacheFolder) -->
 
 - `FileSystem.AppDataDirectory`\
-Returns the [LocalFolder](/uwp/api/windows.storage.applicationdata.localfolder#Windows_Storage_ApplicationData_LocalFolder) directory that is backed up to the cloud.
+Returns the `LocalFolder` directory that is backed up to the cloud. <!-- (/uwp/api/windows.storage.applicationdata.localfolder#Windows_Storage_ApplicationData_LocalFolder) -->
 
 - `FileSystem.OpenAppPackageFileAsync`\
 Files that were added to the project with the **Build Action** of **MauiAsset** can be opened with this method. .NET MAUI projects will process any file in the _Platform\Resources\Raw_ folder as a **MauiAsset**.

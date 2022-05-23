@@ -90,4 +90,4 @@ You can pass in the calling element when the `Command` is triggered:
         CommandParameter="{Binding Source={RelativeSource Self}}"/>
 ```
 
-For an example of the `ViewHelpers` class, see the [.NET MAUI Essentials Samples hosted on GitHub](https://github.com/dotnet/maui/blob/main/src/Essentials/samples/Samples/Helpers/ViewHelpers.cs).
+For an example of the `ViewHelpers` class, see the [.NET MAUI Sample hosted on GitHub](https://github.com/dotnet/maui/blob/main/src/Essentials/samples/Samples/Helpers/ViewHelpers.cs).
