@@ -8,7 +8,7 @@
     - name: Get started
       items:
         - name: Build your first app
-          href: get-started/first-app.md
+          href: get-started/first-app.md?pivots=devices-windows
         - name: Migrate from Xamarin.Forms
           href: get-started/migrate.md
         - name: Android
@@ -93,8 +93,6 @@
           href: fundamentals/accessibility.md
         - name: App lifecycle
           href: fundamentals/app-lifecycle.md
-        - name: App startup
-          href: fundamentals/app-startup.md
         - name: Behaviors
           href: fundamentals/behaviors.md
         - name: Data binding
@@ -443,7 +441,7 @@
             href: platform-integration/communication/phone-dialer.md
           - name: SMS (messaging)
             href: platform-integration/communication/sms.md
-          - name: Web authentication
+          - name: Web authenticator
             href: platform-integration/communication/authentication.md
         - name: Device features
           items:
@@ -556,7 +554,7 @@
                 - name: SearchBar spell check
                   href: windows/platform-specifics/searchbar-spell-check.md
                 - name: VisualElement access keys
-                  href: windows/platform-specifics/visualelement-access-keys.md            
+                  href: windows/platform-specifics/visualelement-access-keys.md
         - name: Sharing
           items:
           - name: Clipboard
