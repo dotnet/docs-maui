@@ -475,26 +475,6 @@
             href: platform-integration/device-media/text-to-speech.md
           - name: Unit converters
             href: platform-integration/device-media/unit-converters.md
-        - name: Sharing
-          items:
-          - name: Clipboard
-            href: platform-integration/data/clipboard.md
-          - name: Share files and text
-            href: platform-integration/data/share.md
-        - name: Storage
-          items:
-          - name: File picker
-            href: platform-integration/storage/file-picker.md
-          - name: File system helpers
-            href: platform-integration/storage/file-system-helpers.md
-          - name: Preferences
-            href: platform-integration/storage/preferences.md
-          - name: Secure storage
-            href: platform-integration/storage/secure-storage.md
-        - name: Configure multi-targeting
-          href: platform-integration/configure-multi-targeting.md
-        - name: Invoke platform code
-          href: platform-integration/invoke-platform-code.md
         - name: Platform-specifics
           items:
             - name: Android
@@ -576,7 +556,27 @@
                 - name: SearchBar spell check
                   href: windows/platform-specifics/searchbar-spell-check.md
                 - name: VisualElement access keys
-                  href: windows/platform-specifics/visualelement-access-keys.md
+                  href: windows/platform-specifics/visualelement-access-keys.md            
+        - name: Sharing
+          items:
+          - name: Clipboard
+            href: platform-integration/data/clipboard.md
+          - name: Share files and text
+            href: platform-integration/data/share.md
+        - name: Storage
+          items:
+          - name: File picker
+            href: platform-integration/storage/file-picker.md
+          - name: File system helpers
+            href: platform-integration/storage/file-system-helpers.md
+          - name: Preferences
+            href: platform-integration/storage/preferences.md
+          - name: Secure storage
+            href: platform-integration/storage/secure-storage.md
+        - name: Configure multi-targeting
+          href: platform-integration/configure-multi-targeting.md
+        - name: Invoke platform code
+          href: platform-integration/invoke-platform-code.md
     - name: Publish
       items:
         - name: Android
