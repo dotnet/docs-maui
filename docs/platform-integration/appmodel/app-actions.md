@@ -39,7 +39,7 @@ No setup is required.
 
 ## Create actions
 
-App actions can be created at any time, but are often created when an app starts. To configure app actions, add the `ConfigureEssentials` step to the `CreateMauiApp` bootstrap code. The app startup code is configured in the _MauiProgram.cs_ file. There are two methods you must call to enable an app action:
+App actions can be created at any time, but are often created when an app starts. To configure app actions, invoke the `ConfigureEssentials` method on the `MauiAppBuilder` object in the _MauiProgram.cs_ file. There are two methods you must call on the `IEssentialsBuilder` object to enable an app action:
 
 01. `AddAppAction`
 
