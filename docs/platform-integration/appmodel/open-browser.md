@@ -1,7 +1,7 @@
 ---
 title: "Open the browser"
 description: "The Browser class in the Microsoft.Maui.ApplicationModel namespace enables an application to open a web link in the optimized system preferred browser or the external browser."
-ms.date: 05/09/2022
+ms.date: 05/23/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel"]
 ---
 

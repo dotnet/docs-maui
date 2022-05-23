@@ -1,7 +1,7 @@
 ---
 title: "Haptic Feedback"
 description: "Learn how to use the .NET MAUI HapticFeedback class in the Microsoft.Maui.Devices namespace. This class lets you control haptic feedback on a device."
-ms.date: 05/03/2022
+ms.date: 05/23/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices"]
 ---
 

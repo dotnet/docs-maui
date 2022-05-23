@@ -1,7 +1,7 @@
 ---
 title: "Email"
 description: "Learn how to use the .NET MAUI Email class in the Microsoft.Maui.ApplicationModel.Communication namespace to open the default email application. The subject, body, and recipients of an email can be set."
-ms.date: 05/11/2022
+ms.date: 05/23/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel.Communication"]
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Geocoding"
 description: "Learn how to use the .NET MAUI Geocoding class in the Microsoft.Maui.Devices.Sensors namespace. This class provides APIs to both geocode a placemark to a positional coordinate, and reverse geocode coordinates to a placemark."
-ms.date: 05/12/2022
+ms.date: 05/23/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices", "Microsoft.Maui.Devices.Sensors"]
 ---
 

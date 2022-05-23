@@ -1,7 +1,7 @@
 ---
 title: "Clipboard"
 description: "Learn how to use the .NET MAUI Clipboard class in the Microsoft.Maui.ApplicationModel.DataTransfer namespace, which lets you copy and paste text to the system clipboard."
-ms.date: 05/04/2022
+ms.date: 05/23/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel.DataTransfer"]
 ---
 

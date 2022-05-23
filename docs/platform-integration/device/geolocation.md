@@ -1,7 +1,7 @@
 ---
 title: "Geolocation"
 description: "Learn how to use the .NET MAUI Geolocation class in the Microsoft.Maui.Devices.Sensors namespace. This class provides API to retrieve the device's current geolocation coordinates."
-ms.date: 05/12/2022
+ms.date: 05/23/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices", "Microsoft.Maui.Devices.Sensors"]
 ---
 
@@ -64,7 +64,7 @@ To access the **Geolocation** functionality, the following platform-specific set
   \- or -
 
 - Use the Android project properties:
-  
+
   Right-click on the Android project and open the project's properties. Under _Android Manifest_ find the **Required permissions:** area and check the **ACCESS_COARSE_LOCATION** and **ACCESS_FINE_LOCATION** permissions. This will automatically update the _AndroidManifest.xml_ file.
 -->
 

@@ -1,7 +1,7 @@
 ---
 title: "Vibration"
 description: "Learn how to use the .NET MAUI Vibration class, which lets you start and stop the vibrate functionality for a desired amount of time."
-ms.date: 05/03/2022
+ms.date: 05/23/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices"]
 ---
 

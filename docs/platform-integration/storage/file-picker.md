@@ -1,7 +1,7 @@
 ---
 title: "File picker"
 description: "Learn how to use the .NET MAUI FilePicker class in the Microsoft.Maui.Storage namespace, which lets a user choose one or more files from the device."
-ms.date: 05/13/2022
+ms.date: 05/23/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Storage", "FilePicker"]
 ---
 
@@ -45,7 +45,7 @@ The `ReadExternalStorage` permission is required and must be configured in the A
 - Use the Android project properties:
 
   TODO: Check on this value
-  
+
   Right-click on the Android project and open the project's properties. Under _Android Manifest_ find the **Required permissions:** area and check the **ReadExternalStorage** permission. This will automatically update the _AndroidManifest.xml_ file.
 -->
 

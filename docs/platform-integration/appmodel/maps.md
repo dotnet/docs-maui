@@ -1,7 +1,7 @@
 ---
 title: "Map"
 description: "Learn how to use the .NET MAUI Map class in the Microsoft.Maui.ApplicationModel namespace. This class enables an application to open the installed map application to a specific location or placemark."
-ms.date: 05/09/2022
+ms.date: 05/23/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel"]
 ---
 

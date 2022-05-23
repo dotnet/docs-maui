@@ -1,7 +1,7 @@
 ---
 title: "Connectivity"
 description: "Learn how to use the .NET MAUI Connectivity interface in the Microsoft.Maui.Networking namespace. With this interface, you can determine if you can communicate with the internet and which network devices are connected"
-ms.date: 05/13/2022
+ms.date: 05/23/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Networking", "Connectivity"]
 ---
 
@@ -25,7 +25,7 @@ The `AccessNetworkState` permission is required and must be configured in the An
 - Add the assembly-based permission:
 
   Open the _Platforms/Android/MainApplication.cs_ file and add the following assembly attributes after `using` directives:
-  
+
   ```csharp
   [assembly: UsesPermission(Android.Manifest.Permission.AccessNetworkState)]
   ```
@@ -35,7 +35,7 @@ The `AccessNetworkState` permission is required and must be configured in the An
 - Update the Android Manifest:
 
   Open the _Platforms/Android/AndroidManifest.xml_ file and add the following in the `manifest` node:
-  
+
   ```xml
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   ```

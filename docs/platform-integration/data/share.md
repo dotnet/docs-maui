@@ -1,7 +1,7 @@
 ---
 title: "Share"
 description: "Learn how to use the .NET MAUI Share class, which can share data, such as web links, to other applications on the device."
-ms.date: 05/04/2022
+ms.date: 05/23/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel.DataTransfer"]
 ---
 

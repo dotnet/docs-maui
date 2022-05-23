@@ -1,7 +1,7 @@
 ---
 title: "Flashlight"
 description: "Learn how to use the .NET MAUI Flashlight class in the Microsoft.Maui.Devices namespace. This class provides the ability to turn on or off the device's camera flash, to emulate a flashlight."
-ms.date: 05/03/2022
+ms.date: 05/23/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices"]
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Text-to-Speech"
 description: "Learn how to use the .NET MAUI TextToSpeech class, which enables an application utilize the built in text-to-speech engines to speak back text from the device."
-ms.date: 05/12/2022
+ms.date: 05/23/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Media", "TextToSpeech"]
 ---
 

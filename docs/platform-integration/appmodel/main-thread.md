@@ -1,7 +1,7 @@
 ---
 title: Run code on the main UI thread
 description: "In .NET MAUI, event handlers may be called on a secondary thread. The MainThread class allows an application to run code on the main UI thread. This article describes how to use the MainThread class."
-ms.date: 05/06/2022
+ms.date: 05/23/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel"]
 ---
 

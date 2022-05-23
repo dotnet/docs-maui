@@ -1,7 +1,7 @@
 ---
 title: "Media picker"
 description: "Learn how to use the MediaPicker class in the Microsoft.Maui.Media namespace, to prompt the user to select or take a photo or video."
-ms.date: 05/11/2022
+ms.date: 05/23/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Media", "MediaPicker"]
 ---
 

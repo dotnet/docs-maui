@@ -1,7 +1,7 @@
 ---
 title: "Secure storage"
 description: "Learn how to use the .NET MAUI SecureStorage class, which helps securely store simple key/value pairs. This article discusses how to use the class, platform implementation specifics, and its limitations."
-ms.date: 08/27/2021
+ms.date: 05/23/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Storage", "SecureStorage"]
 #acrolinx score 95
 ---

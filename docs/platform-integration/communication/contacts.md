@@ -1,7 +1,7 @@
 ---
 title: "Contacts"
 description: "Learn how to use the .NET MAUI Contacts class in the Microsoft.Maui.ApplicationModel.Communication namespace, which lets a pick a contact and retrieve information about it."
-ms.date: 05/11/2022
+ms.date: 05/23/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel.Communication"]
 ---
 

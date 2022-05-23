@@ -1,7 +1,7 @@
 ---
 title: "Screenshot"
 description: "Learn how to use the Screenshot class in the Microsoft.Maui.Media namespace, to capture of the current displayed screen of the app."
-ms.date: 05/11/2022
+ms.date: 05/23/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Media", "ScreenShot"]
 ---
 

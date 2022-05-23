@@ -1,7 +1,7 @@
 ---
 title: "Web Authenticator"
 description: "Learn how to use the .NET MAUI WebAuthenticator class, which lets you start browser-based authentication flows, which listen for a callback to the app."
-ms.date: 05/12/2022
+ms.date: 05/23/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Authentication"]
 ---
 

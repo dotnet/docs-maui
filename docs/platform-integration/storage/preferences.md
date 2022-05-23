@@ -1,7 +1,7 @@
 ---
 title: "Preferences"
 description: "Learn how to read and write application preferences, in .NET MAUI. The Preferences class can save and load application preferences in a key/value store."
-ms.date: 05/13/2022
+ms.date: 05/23/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Storage", "Preferences"]
 ---
 

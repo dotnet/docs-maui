@@ -1,7 +1,7 @@
 ---
 title: "File system helpers"
 description: "Learn how to use the .NET MAUI FileSystem class in the Microsoft.Maui.Storage namespace. This class contains helper methods that access the application's cache and data directories, and helps open files in the app package."
-ms.date: 05/13/2022
+ms.date: 05/23/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Storage", "FileSystem"]
 ---
 
