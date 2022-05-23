@@ -475,6 +475,88 @@
             href: platform-integration/device-media/text-to-speech.md
           - name: Unit converters
             href: platform-integration/device-media/unit-converters.md
+        - name: Platform-specifics
+          items:
+            - name: Android
+              items:
+                - name: Overview
+                  href: android/platform-specifics/index.md
+                - name: Entry input method editor options
+                  href: android/platform-specifics/entry-ime-options.md
+                - name: ListView fast scrolling
+                  href: android/platform-specifics/listview-fast-scrolling.md
+                - name: Soft keyboard input mode
+                  href: android/platform-specifics/soft-keyboard-input-mode.md
+                - name: SwipeView swipe transition mode
+                  href: android/platform-specifics/swipeview-swipetransitionmode.md
+                - name: TabbedPage page swiping
+                  href: android/platform-specifics/tabbedpage-page-swiping.md
+                - name: TabbedPage page transition animations
+                  href: android/platform-specifics/tabbedpage-transition-animations.md
+                - name: TabbedPage toolbar placement
+                  href: android/platform-specifics/tabbedpage-toolbar-placement.md
+                - name: WebView mixed content
+                  href: android/platform-specifics/webview-mixed-content.md
+                - name: WebView zoom
+                  href: android/platform-specifics/webview-zoom-controls.md
+            - name: iOS
+              items:
+                - name: Overview
+                  href: ios/platform-specifics/index.md
+                - name: Cell background color
+                  href: ios/platform-specifics/cell-background-color.md
+                - name: DatePicker item selection
+                  href: ios/platform-specifics/datepicker-selection.md
+                - name: Entry cursor color
+                  href: ios/platform-specifics/entry-cursor-color.md
+                - name: Entry font size
+                  href: ios/platform-specifics/entry-font-size.md
+                - name: FlyoutPage shadow
+                  href: ios/platform-specifics/flyoutpage-shadow.md
+                - name: Large page titles
+                  href: ios/platform-specifics/page-large-title.md
+                - name: ListView group header style
+                  href: ios/platform-specifics/listview-group-header-style.md
+                - name: ListView row animations
+                  href: ios/platform-specifics/listview-row-animations.md
+                - name: ListView separator style
+                  href: ios/platform-specifics/listview-separator-style.md
+                - name: Modal page presentation style
+                  href: ios/platform-specifics/page-presentation-style.md
+                - name: NavigationPage bar translucency
+                  href: ios/platform-specifics/navigation-bar-translucent.md
+                - name: Picker item selection
+                  href: ios/platform-specifics/picker-selection.md
+                - name: ScrollView content touches
+                  href: ios/platform-specifics/scrollview-content-touches.md
+                - name: SearchBar style
+                  href: ios/platform-specifics/searchbar-style.md
+                - name: Simultaneous pan gesture recognition
+                  href: ios/platform-specifics/application-pan-gesture.md
+                - name: Slider thumb tap
+                  href: ios/platform-specifics/slider-thumb.md
+                - name: SwipeView swipe transition mode
+                  href: ios/platform-specifics/swipeview-swipetransitionmode.md
+                - name: TabbedPage translucent tabbar
+                  href: ios/platform-specifics/tabbedpage-translucent-tabbar.md
+                - name: TimePicker item selection
+                  href: ios/platform-specifics/timepicker-selection.md
+            - name: Windows
+              items:
+                - name: Overview
+                  href: windows/platform-specifics/index.md
+                - name: Default image directory
+                  href: windows/platform-specifics/default-image-directory.md
+                - name: InputView reading order
+                  href: windows/platform-specifics/inputview-reading-order.md
+                - name: ListView SelectionMode
+                  href: windows/platform-specifics/listview-selectionmode.md
+                - name: RefreshView pull direction
+                  href: windows/platform-specifics/refreshview-pulldirection.md
+                - name: SearchBar spell check
+                  href: windows/platform-specifics/searchbar-spell-check.md
+                - name: VisualElement access keys
+                  href: windows/platform-specifics/visualelement-access-keys.md            
         - name: Sharing
           items:
           - name: Clipboard
