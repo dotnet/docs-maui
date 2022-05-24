@@ -1,7 +1,7 @@
 ---
 title: "Build your first .NET MAUI app"
 description: "Learn how to create and run your first .NET MAUI app in Visual Studio 2022 on Windows."
-ms.date: 05/20/2022
+ms.date: 05/24/2022
 ms.custom: updateeachrelease
 zone_pivot_groups: devices-deployment
 ---
@@ -90,6 +90,9 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 01. In the **Create a new project** window, select **MAUI** in the **All project types** drop-down, select the **.NET MAUI App** template, and click the **Next** button:
 
     :::image type="content" source="media/first-app/new-project.png" alt-text="Choose a template.":::
+
+    > [!NOTE]
+    > The .NET MAUI templates might not appear in Visual Studio if you also have .NET 7 Preview installed. For more information, see [.NET MAUI templates do not appear in Visual Studio](https://github.com/dotnet/maui/wiki/Known-Issues#net-maui-templates-do-not-appear-in-visual-studio).
 
 01. In the **Configure your new project** window, name your project, choose a suitable location for it, and click the **Create** button:
 
