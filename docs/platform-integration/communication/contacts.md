@@ -1,7 +1,7 @@
 ---
 title: "Contacts"
 description: "Learn how to use the .NET MAUI Contacts class in the Microsoft.Maui.ApplicationModel.Communication namespace, which lets a pick a contact and retrieve information about it."
-ms.date: 05/23/2022
+ms.date: 05/25/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel.Communication"]
 ---
 
@@ -13,6 +13,18 @@ The `IContacts` interface is exposed through the `Contacts.Default` property.
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
 The `Contacts` and `IContacts` types are available in the `Microsoft.Maui.ApplicationModel.Communication` namespace.
+
+> [!IMPORTANT]
+> Because of a namespace conflict, the `Contacts` type must be fully qualified when targeting iOS or macOS: `Microsoft.Maui.ApplicationModel.Communication.Contacts`. New projects automatically target these platforms, along with Android and Windows.
+>
+> To write cross-platform code, always fully qualify the `Contacts` type, or provide a `using` directive to map the `Communication` namespace:
+>
+> ```csharp
+> using Communication = Microsoft.Maui.ApplicationModel.Communication;
+>
+> // Code that uses the namespace:
+> var contact = await Communication.Contacts.Default.PickContactAsync();
+> ```
 
 ## Get started
 
@@ -85,6 +97,8 @@ The `GetAllAsync` method returns a collection of contacts.
 
 This section describes the platform-specific differences with the contacts API.
 
+The iOS and 
+
 <!-- markdownlint-disable MD025 -->
 <!-- markdownlint-disable MD024 -->
 # [Android](#tab/android)
@@ -92,6 +106,9 @@ This section describes the platform-specific differences with the contacts API.
 - The `cancellationToken` parameter in the `GetAllAsync` method isn't supported.
 
 # [iOS](#tab/ios)
+
+> [!IMPORTANT]
+> Because of a namespace conflict, the `Contacts` type must be fully qualified when targeting iOS or macOS: `Microsoft.Maui.ApplicationModel.Communication.Contacts`.
 
 - The `cancellationToken` parameter in the `GetAllAsync` method isn't supported.
 - The iOS platform doesn't support the `DisplayName` property natively, thus, the `DisplayName` value is constructed as "GivenName FamilyName".
