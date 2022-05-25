@@ -118,7 +118,7 @@ public partial class DeviceDetailsPage : ContentPage
 	{
 		int secondsToVibrate = Random.Shared.Next(1, 7);
 		TimeSpan vibrationLength = TimeSpan.FromSeconds(secondsToVibrate);
-
+		
 		Vibration.Default.Vibrate(vibrationLength);
 	}
 

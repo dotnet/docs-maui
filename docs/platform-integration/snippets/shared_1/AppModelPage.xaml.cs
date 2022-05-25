@@ -378,6 +378,12 @@ public partial class AppModelPage : ContentPage
     }
     //</permission_class>
 
+    //public class ReadWriteStoragePerms : Permissions.BasePlatformPermission
+    //{
+    //    protected override Func<IEnumerable<string>> RequiredDeclarations => () =>
+    //        new[] { "ReadExternalStorage", "WriteExternalStorage" }; // TODO: Need correct values here.
+    //}
+
 #if ANDROID
     //<permission_readwrite>
     public class ReadWriteStoragePerms : Permissions.BasePlatformPermission

@@ -1,3 +1,5 @@
+using Communication = Microsoft.Maui.ApplicationModel.Communication;
+
 namespace PlatformIntegration;
 
 public partial class CommsPage : ContentPage
@@ -16,7 +18,7 @@ public partial class CommsPage : ContentPage
 
             if (contact == null)
                 return;
-
+            
             string id = contact.Id;
             string namePrefix = contact.NamePrefix;
             string givenName = contact.GivenName;
@@ -37,7 +39,7 @@ public partial class CommsPage : ContentPage
     //<contact_all>
     public async IAsyncEnumerable<string> GetContactNames()
     {
-        var contacts = await Contacts.GetAllAsync();
+        var contacts = await Contacts.Default.GetAllAsync();
 
         // No contacts
         if (contacts == null)
