@@ -97,8 +97,6 @@ The `GetAllAsync` method returns a collection of contacts.
 
 This section describes the platform-specific differences with the contacts API.
 
-The iOS and 
-
 <!-- markdownlint-disable MD025 -->
 <!-- markdownlint-disable MD024 -->
 # [Android](#tab/android)
