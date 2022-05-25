@@ -17,7 +17,7 @@ The `Contacts` and `IContacts` types are available in the `Microsoft.Maui.Applic
 > [!IMPORTANT]
 > Because of a namespace conflict, the `Contacts` type must be fully qualified when targeting iOS or macOS: `Microsoft.Maui.ApplicationModel.Communication.Contacts`. New projects automatically target these platforms, along with Android and Windows.
 >
-> To write cross-platform code, always fully qualify the `Contacts` type, or provide a `using` directive to map the `Communication` namespace:
+> To write code that will compile for iOS and macOS, fully qualify the `Contacts` type. Alternatively, provide a `using` directive to map the `Communication` namespace:
 >
 > ```csharp
 > using Communication = Microsoft.Maui.ApplicationModel.Communication;
