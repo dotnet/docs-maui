@@ -75,7 +75,7 @@ This implicit conversion automatically wraps each `ShellContent` object in `Tab`
 The `FlyoutItem.FlyoutDisplayOptions` property configures how a flyout item and its children are displayed in the flyout. This property should be set to a `FlyoutDisplayOptions` enumeration member:
 
 - `AsSingleItem`, indicates that the item will be visible as a single item. This is the default value of the `FlyoutDisplayOptions` property.
-- `AsMultipleItems`, indicates that the item and its children will be visible in the flyout as a group of items.
+- `AsMultipleItems`, indicates that the item and its direct children will be visible in the flyout as a group of items.
 
 A flyout item for each `Tab` object within a `FlyoutItem` can be displayed by setting the `FlyoutItem.FlyoutDisplayOptions` property to `AsMultipleItems`:
 
