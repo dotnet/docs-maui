@@ -337,6 +337,19 @@ public partial class SensorsPage : ContentPage
     }
     //</geolocation_cached>
 
+    public async Task GetCurrentLocationiOS()
+    {
+        //<geolocation_request_full>
+        GeolocationRequest request = new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromSeconds(10));
+        
+        #if IOS
+        request.RequestFullAccuracy = true;
+        #endif
+
+        Location location = await Geolocation.Default.GetLocationAsync(request);
+        //</geolocation_request_full>
+    }
+
     //<geolocation_get>
     private CancellationTokenSource _cancelTokenSource;
     private bool _isCheckingLocation;
