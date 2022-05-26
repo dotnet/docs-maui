@@ -106,10 +106,10 @@ public partial class DeviceDetailsPage : ContentPage
 
 	//<hapticfeedback>
 	private void HapticShortButton_Clicked(object sender, EventArgs e) =>
-		HapticFeedback.Current.Perform(HapticFeedbackType.Click);
+		HapticFeedback.Default.Perform(HapticFeedbackType.Click);
 
 	private void HapticLongButton_Clicked(object sender, EventArgs e) =>
-		HapticFeedback.Current.Perform(HapticFeedbackType.LongPress);
+		HapticFeedback.Default.Perform(HapticFeedbackType.LongPress);
 	//</hapticfeedback>
 
 
@@ -118,7 +118,7 @@ public partial class DeviceDetailsPage : ContentPage
 	{
 		int secondsToVibrate = Random.Shared.Next(1, 7);
 		TimeSpan vibrationLength = TimeSpan.FromSeconds(secondsToVibrate);
-
+		
 		Vibration.Default.Vibrate(vibrationLength);
 	}
 
