@@ -5,6 +5,8 @@
       href: what-is-maui.md
     - name: Supported platforms
       href: supported-platforms.md
+    - name: Troubleshoot common problems
+      href: troubleshooting.md
     - name: Get started
       items:
         - name: Build your first app
