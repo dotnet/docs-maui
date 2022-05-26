@@ -104,4 +104,3 @@ public static class MauiProgram
         //</bootstrap_maptoken>
     }
 }
-}
