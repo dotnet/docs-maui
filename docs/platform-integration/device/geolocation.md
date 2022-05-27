@@ -82,6 +82,22 @@ In the _Platforms/iOS/Info.plist_ file, add the following keys and values:
 
 The `<string>` element is the reason the app is requesting access to location information. This text is shown to the user.
 
+### Full accuracy location permission
+
+If you're going to request full accuracy with the `GeolocationRequest.RequestFullAccuracy` property, add the following dictionary to the _Platforms/iOS/Info.plist_ file:
+
+```xml
+<key>NSLocationTemporaryUsageDescriptionDictionary</key>
+<array>
+  <dict>
+    <key>TemporaryFullAccuracyUsageDescription</key>
+    <string>Fill in a reason why your app needs full accuracy</string>
+  </dict>
+</array>
+```
+
+The `<string>` element is the reason the app is requesting access to location information with full accuracy. This text is shown to the user.
+
 <!-- NOT SUPPORTED
 An alternative to editing the _Info.plist_ file directly is opening the plist editor. In the editor you can add the **Privacy - Location When In Use Usage Description** property, and fill in a value to display to the user.
 -->
