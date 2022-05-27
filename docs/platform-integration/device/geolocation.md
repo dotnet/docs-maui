@@ -92,7 +92,7 @@ An alternative to editing the _Info.plist_ file directly is opening the plist ed
 In the `Package.appxmanifest` under **Capabilities** ensure that `Location` capability are checked.
 -->
 
-In the **Solution Explorer** pane, right-click on the _Platforms/Windows/Package.appxmanifest_ file, and select **View Code**. Under the `<Capabilities>` node, add the `<uap:Capability Name="location"/>` element.
+In the **Solution Explorer** pane, right-click on the _Platforms/Windows/Package.appxmanifest_ file, and select **View Code**. Under the `<Capabilities>` node, add the `<DeviceCapability Name="location"/>` element.
 
 -----
 <!-- markdownlint-enable MD025 -->
