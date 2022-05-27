@@ -4,7 +4,7 @@ description: "Describes the known issues and troubleshooting you can do to resol
 ms.date: 05/25/2022
 ---
 
-# Troubleshooting known issues guide
+# Troubleshooting known issues
 
 This article describes some of the known issues with .NET MAUI, and how you can solve or work around them. The [.NET MAUI code repository](https://github.com/dotnet/maui/wiki/Known-Issues) also details some known issues.
 
@@ -59,6 +59,8 @@ Use a `global.json` config file in the folder where you'll create the project. T
 
 01. Open the project in Visual Studio.
 
+Until this issue is resolved by Microsoft, you'll need to do this for every project.
+
 ## ERROR Platform version is not present.
 
 Visual Studio may not be resolving the required workloads if you try to compile a project and receive an error similar to the following:
@@ -86,6 +88,8 @@ Use a `global.json` config file in the same folder as your current project. This
 01. Open a terminal and navigate to the folder where your project is located.
 01. Run the following command: `dotnet new globaljson --sdk-version 6.0.300`
 01. Reopen the project in Visual Studio.
+
+Until this issue is resolved by Microsoft, you'll need to do this for every project.
 
 ## The WINDOWS `#if` directive is broken
 
