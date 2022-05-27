@@ -591,3 +591,5 @@
           href: macos/deployment/overview.md
         - name: Windows
           href: windows/deployment/overview.md
+    - name: Troubleshooting
+      href: troubleshooting.md
