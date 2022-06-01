@@ -480,10 +480,10 @@ public class ElephantDetailViewModel : IQueryAttributable, INotifyPropertyChange
 {
     public Animal Elephant { get; private set; }
 
-    public void ApplyQueryAttributes(IDictionary<string, string> query)
+    public void ApplyQueryAttributes(IDictionary<string, object> query)
     {
-        string name = HttpUtility.UrlDecode(query["name"]);
-        string location = HttpUtility.UrlDecode(query["location"]);
+        string name = HttpUtility.UrlDecode(query["name"].ToString());
+        string location = HttpUtility.UrlDecode(query["location"].ToString());
         ...        
     }
     ...
