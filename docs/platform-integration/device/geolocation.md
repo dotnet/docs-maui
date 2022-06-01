@@ -82,6 +82,22 @@ In the _Platforms/iOS/Info.plist_ file, add the following keys and values:
 
 The `<string>` element is the reason the app is requesting access to location information. This text is shown to the user.
 
+### Full accuracy location permission
+
+If you're going to request full accuracy with the `GeolocationRequest.RequestFullAccuracy` property, add the following dictionary to the _Platforms/iOS/Info.plist_ file:
+
+```xml
+<key>NSLocationTemporaryUsageDescriptionDictionary</key>
+<array>
+  <dict>
+    <key>TemporaryFullAccuracyUsageDescription</key>
+    <string>Fill in a reason why your app needs full accuracy</string>
+  </dict>
+</array>
+```
+
+The `<string>` element is the reason the app is requesting access to location information with full accuracy. This text is shown to the user.
+
 <!-- NOT SUPPORTED
 An alternative to editing the _Info.plist_ file directly is opening the plist editor. In the editor you can add the **Privacy - Location When In Use Usage Description** property, and fill in a value to display to the user.
 -->
@@ -99,7 +115,7 @@ In the **Solution Explorer** pane, right-click on the _Platforms/Windows/Package
 
 ## Get the last known location
 
-The device may have cached the most recent location of the device. Use the `GetLastKnownLocationAsync` method to access the cached location, if available. This is often faster then doing a full location query, but can be less accurate. If no cached location exists, this method returns `null`.
+The device may have cached the most recent location of the device. Use the `GetLastKnownLocationAsync` method to access the cached location, if available. This is often faster than doing a full location query, but can be less accurate. If no cached location exists, this method returns `null`.
 
 > [!NOTE]
 > When necessary, the Geolocation API prompts the user for permissions.
@@ -126,6 +142,9 @@ Not all location values may be available, depending on the device. For example, 
 ## Accuracy
 
 The following sections outline the location accuracy distance, per platform:
+
+> [!IMPORTANT]
+> iOS has some limitations regarding accuracy. For more information, see the [Platform differences](#platform-differences) section.
 
 ### Lowest
 
@@ -195,13 +214,21 @@ Altitude is calculated differently on each platform.
 
 On Android, [altitude](https://developer.android.com/reference/android/location/Location#getAltitude()), if available, is returned in meters above the WGS 84 reference ellipsoid. If this location doesn't have an altitude, `0.0` is returned.
 
+The `Location.ReducedAccuracy` property is only used by iOS and returns `false` on all other platforms.
+
 # [iOS](#tab/ios)
 
 On iOS, [altitude](https://developer.apple.com/documentation/corelocation/cllocation/1423820-altitude) is measured in meters. Positive values indicate altitudes above sea level, while negative values indicate altitudes below sea level.
 
+Starting with iOS 14, the user may restrict your app from detecting a location with full accuracy. The `Location.ReducedAccuracy` property indicates whether or not the location is using reduced accuracy. To request full accuracy, set the `GeolocationRequest.RequestFullAccuracy` property to `true`:
+
+:::code language="csharp" source="../snippets/shared_1/SensorsPage.xaml.cs" id="geolocation_request_full":::
+
 # [Windows](#tab/windows)
 
 On Windows, altitude is returned in meters. <!-- For more information, see the [AltitudeReferenceSystem](/uwp/api/windows.devices.geolocation.geopoint.altitudereferencesystem#Windows_Devices_Geolocation_Geopoint_AltitudeReferenceSystem) reference documentation.-->
+
+The `Location.ReducedAccuracy` property is only used by iOS and returns `false` on all other platforms.
 
 -----
 <!-- markdownlint-enable MD024 -->
