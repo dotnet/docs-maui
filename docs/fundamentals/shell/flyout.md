@@ -506,7 +506,7 @@ The `FlyoutFooter` type is shown in the following example:
 ```
 
 > [!IMPORTANT]
-> The previous XAML example defined a new XAML namespace named `sys`: `xmlns:sys="clr-namespace:System;assembly=netstandard"`. This XAML namespace maps `sys` to the .NET `System` namespace. The mapping allows you to use the .NET types defined in that namespace, such as `DateTime`, in the XAML. For more information, see [XAML Namespaces](../../xaml/namespaces.md).
+> The previous XAML example defined a new XAML namespace named `sys`: `xmlns:sys="clr-namespace:System;assembly=netstandard"`. This XAML namespace maps `sys` to the .NET `System` namespace. The mapping allows you to use the .NET types defined in that namespace, such as `DateTime`, in the XAML. For more information, see [XAML Namespaces](../../xaml/namespaces/index.md).
 
 This results in the following flyout footer:
 
