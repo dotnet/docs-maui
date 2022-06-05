@@ -20,7 +20,7 @@ In the simplest case, data flows from the source to the target, which means that
 
 ## Bindings with a binding context
 
-Consider the following XAML example, whose intent is to rotate a `Label` my manipulating a `Slider`:
+Consider the following XAML example, whose intent is to rotate a `Label` by manipulating a `Slider`:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
