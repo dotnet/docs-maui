@@ -19,7 +19,7 @@ ms.date: 04/13/2022
 - iOS 14 or higher is required.
 - macOS 11 or higher, using Mac Catalyst.
 
-.NET MAUI Blazor apps also require an updated platform specific Web View control. See [Blazor supported platforms](/aspnet/core/blazor/supported-platforms) for additional details.
+.NET MAUI Blazor apps also require an updated platform specific WebView control. For more information, see [Blazor supported platforms](/aspnet/core/blazor/supported-platforms).
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
