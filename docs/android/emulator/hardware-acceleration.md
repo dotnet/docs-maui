@@ -11,7 +11,7 @@ This article explains how to use your computer's hardware acceleration features 
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
-With Visual Studio, you can easily test and debug your .NET MAUI app for Android in situations where an Android device isn't available. However, if hardware acceleration isn't available or enabled, the emulator will run too slow. You can drastically improve the performance of the emulator by enabling hardware acceleration and using **x86-64** or **x86** virtual device images.
+With Visual Studio, you can easily test and debug your .NET MAUI app for Android in situations where an Android device isn't available. However, if hardware acceleration isn't available or enabled, the emulator will run too slowly. You can drastically improve the performance of the emulator by enabling hardware acceleration and using **x86-64** or **x86** virtual device images.
 
 <!-- TODO: What are the virtualization extensions on the new M1 ARM processors for Mac?
 -->
