@@ -17,7 +17,7 @@ Shell apps respect the .NET Multi-platform App UI (.NET MAUI) lifecycle, and add
 
 In a Shell app, pushing a page onto the navigation stack will result in the currently visible `ShellContent` object, and its page content, raising the `Disappearing` event. Similarly, popping the last page from the navigation stack will result in the newly visible `ShellContent` object, and its page content, raising the `Appearing` event.
 
-For more information about modeless navigation, see [Perform modeless navigation](~/user-interface/pages/navigationpage.md#perform-modal-navigation).
+For more information about modeless navigation, see [Perform modeless navigation](~/user-interface/pages/navigationpage.md#perform-modeless-navigation).
 
 ## Modal navigation
 
