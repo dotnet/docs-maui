@@ -119,7 +119,7 @@ Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs from Ma
 
 ### Updated articles
 
-- [Border](../user-interface/controls/border.md) - Issues
+- [Border](../user-interface/controls/border.md)
 - [Add an app icon to a .NET MAUI app project](../user-interface/images/app-icons.md)
 - [Customize .NET MAUI controls with handlers](../user-interface/handlers/customize.md)
 
