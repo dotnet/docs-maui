@@ -18,6 +18,11 @@ landingContent:
             url: what-is-maui.md
           - text: Supported platforms
             url: supported-platforms.md
+          - text: Troubleshooting
+            url: troubleshooting.md
+      - linkListType: whats-new
+          - text: What's new in .NET MAUI docs?
+            url: whats-new/index.yml
   - title: Get started
     linkLists:
       - linkListType: how-to-guide
