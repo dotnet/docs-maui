@@ -1,0 +1,18 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=netstandard"
+             x:Class="XamlExample.MainPage"
+             Title="One-Shot DateTime Page">
+
+    <VerticalStackLayout BindingContext="{x:Static sys:DateTime.Now}"
+                         Spacing="25" Padding="30,0"
+                         VerticalOptions="Center" HorizontalOptions="Center">
+
+        <Label Text="{Binding Year, StringFormat='The year is {0}'}" />
+        <Label Text="{Binding StringFormat='The month is {0:MMMM}'}" />
+        <Label Text="{Binding Day, StringFormat='The day is {0}'}" />
+        <Label Text="{Binding StringFormat='The time is {0:T}'}" />
+
+    </VerticalStackLayout>
+ 
+</ContentPage>
