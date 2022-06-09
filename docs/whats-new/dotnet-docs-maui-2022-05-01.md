@@ -12,7 +12,7 @@ Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs from Ma
 
 ### New articles
 
-- [Troubleshooting known issues](troubleshooting.md)
+- [Troubleshooting known issues](../troubleshooting.md)
 
 ## Get started
 
