@@ -29,7 +29,7 @@ class ClockViewModel: INotifyPropertyChanged
 
         // Update the DateTime property every second.
         _timer = new Timer(new TimerCallback((s) => this.DateTime = DateTime.Now),
-                          null, TimeSpan.Zero, TimeSpan.FromSeconds(1));
+                           null, TimeSpan.Zero, TimeSpan.FromSeconds(1));
     }
 
     ~ClockViewModel() =>

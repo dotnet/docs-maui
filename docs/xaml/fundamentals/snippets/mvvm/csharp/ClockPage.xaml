@@ -6,6 +6,7 @@
     <ContentPage.BindingContext>
         <local:ClockViewModel />
     </ContentPage.BindingContext>
+
     <Label Text="{Binding DateTime, StringFormat='{0:T}'}"
            FontSize="18"
            HorizontalOptions="Center"

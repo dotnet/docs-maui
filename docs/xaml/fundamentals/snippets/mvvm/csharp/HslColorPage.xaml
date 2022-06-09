@@ -6,6 +6,7 @@
     <ContentPage.BindingContext>
         <local:HslViewModel Color="Aqua" />
     </ContentPage.BindingContext>
+
     <VerticalStackLayout Padding="10, 0, 10, 30">
         <BoxView Color="{Binding Color}"
                  HeightRequest="100"
