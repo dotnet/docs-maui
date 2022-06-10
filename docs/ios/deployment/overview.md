@@ -156,6 +156,7 @@ To publish your app, open a terminal and navigate to the project's folder. Run t
 
 | Parameter                    | Value                                                                                           |
 |------------------------------|-------------------------------------------------------------------------------------------------|
+| `YourProject.csproj`         | The `csproj` file of your .NET MAUI app project                                                 |
 | `-f` or `--framework`        | The target framework, which is `net6.0-ios`.                                                    |
 | `-c` or `--configuration`    | The build configuration, which is `Release`.                                                    |
 
@@ -180,11 +181,14 @@ In addition, the following common parameters can be specified on the command lin
 For example, use the following command to create an *.ipa*:
 
 ```console
-dotnet publish -f:net6.0-ios -c:Release /p:ServerAddress={macOS build host IP address} /p:ServerUser={macOS username} /p:ServerPassword={macOS password} /p:TcpPort=58181 /p:ArchiveOnBuild=true /p:_DotNetRootRemoteDirectory=/Users/{macOS username}/Library/Caches/Xamarin/XMA/SDKs/dotnet/
+dotnet publish YourProject.csproj -f:net6.0-ios -c:Release /p:ServerAddress={macOS build host IP address} /p:ServerUser={macOS username} /p:ServerPassword={macOS password} /p:TcpPort=58181 /p:ArchiveOnBuild=true /p:_DotNetRootRemoteDirectory=/Users/{macOS username}/Library/Caches/Xamarin/XMA/SDKs/dotnet/
 ```
 
 > [!NOTE]
 > If the `ServerPassword` parameter is omitted from a command line build invocation, Pair to Mac attempts to log in to the Mac build host using the saved SSH keys.
+
+> [!NOTE]
+> When running the `dotnet publish` command without specifying the `.csproj` file, it will try and publish all projects separately which will cause issues when you've added other project types to your solution. To prevent issues, always specify the `csproj` file of your .NET MAUI app project as a parameter. 
 
 Publishing builds the app, and then copies the *.ipa* to the *bin\\Release\\net6.0-ios\\ios-arm64\\publish* folder. During the publishing process it maybe necessary to allow `codesign` to run on your paired Mac:
 
