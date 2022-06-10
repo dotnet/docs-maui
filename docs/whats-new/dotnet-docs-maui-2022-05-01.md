@@ -1,12 +1,12 @@
 ---
-title: ".NET Multi-platform App UI (.NET MAUI) docs: What's new for May 1, 2022 - May 31, 2022"
-description: "What's new in the .NET Multi-platform App UI (.NET MAUI) docs for May 1, 2022 - May 31, 2022."
+title: ".NET Multi-platform App UI (.NET MAUI) docs: What's new for May 2022"
+description: "What's new in the .NET Multi-platform App UI (.NET MAUI) docs for May 2022."
 ms.date: 06/09/2022
 ---
 
-# .NET Multi-platform App UI (.NET MAUI) docs: What's new for May 1, 2022 - May 31, 2022
+# .NET Multi-platform App UI (.NET MAUI) docs: What's new for May 2022
 
-Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs from May 1, 2022 through May 31, 2022. This article lists some of the major changes to docs during this period.
+Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for May 2022. This article lists some of the major changes to docs during this period.
 
 ## Home
 
