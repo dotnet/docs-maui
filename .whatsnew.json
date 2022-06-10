@@ -1,0 +1,50 @@
+{
+    "$schema": "https://whatsnewapi.azurewebsites.net/schema",
+    "docSetProductName": ".NET Multi-platform App UI (.NET MAUI)",
+    "rootDirectory": "docs/",
+    "docLinkSettings": {
+        "linkFormat": "relative",
+        "relativeLinkPrefix": "../"
+    },
+    "inclusionCriteria": {
+        "maxFilesChanged": 400,
+        "minAdditionsToFile": 30
+    },
+    "navigationOptions": {
+        "maximumNumberOfArticles": 6,
+        "tocParentNode": "What's new",
+        "repoTocFolder": "docs/whats-new",
+        "indexParentNode": "Find .NET MAUI doc updates",
+        "repoIndexFolder": "docs/whats-new"
+    },
+    "areas": [
+        {
+            "names": [ "." ],
+            "heading": "Home"
+        },
+        {
+            "names": [ "get-started" ],
+            "heading": "Get started"
+        },
+        {
+            "names": [ "fundamentals" ],
+            "heading": "Fundamentals"
+        },
+        {
+            "names": [ "android", "ios", "macos", "windows" ],
+            "heading": "Platforms"
+        },
+        {
+            "names": [ "platform-integration" ],
+            "heading": "Platform integration"
+        },
+        {
+            "names": [ "user-interface" ],
+            "heading": "User interface"
+        },
+        {
+            "names": [ "xaml" ],
+            "heading": "XAML"
+        }
+    ]
+}
