@@ -1,0 +1,60 @@
+### YamlMime:Landing
+
+title: .NET Multi-platform App UI (.NET MAUI) documentation - what's new?
+summary: Welcome to what's new in .NET MAUI docs. Use this page to quickly find the latest changes.
+metadata:
+  title: .NET MAUI documentation what's new?
+  description: Learn about new and updated content in .NET MAUI docs.
+  ms.date: 06/09/2022
+  ms.topic: landing-page
+landingContent:
+- title: Find .NET MAUI doc updates
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: May 2022
+      url: dotnet-docs-maui-2022-05-01.md
+- title: Get involved - contribute
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: .NET MAUI docs repository
+      url: https://github.com/dotnet/docs-maui/blob/main/README.md
+    - text: .NET Foundation
+      url: https://dotnetfoundation.org/
+  - linkListType: concept
+    links:
+    - text: Microsoft docs contributor guide
+      url: /contribute
+    - text: .NET docs contributor guide
+      url: /contribute/dotnet/dotnet-contribute
+- title: .NET developers
+  linkLists:
+  - linkListType: download
+    links:
+    - text: Download the .NET SDK
+      url: https://dotnet.microsoft.com/download
+  - linkListType: sample
+    links:
+    - text: .NET samples browser
+      url: /samples/browse/?products=dotnet
+  - linkListType: get-started
+    links:
+    - text: .NET MAUI on Q&A
+      url: /answers/topics/dotnet-maui.html
+    - text: .NET tech community forums
+      url: https://techcommunity.microsoft.com/t5/net/ct-p/dotnet
+  - linkListType: whats-new
+    links:
+    - text: Community
+      url: https://dotnet.microsoft.com/platform/community
+- title: Related what's new pages
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: .NET docs updates
+      url: /dotnet/docs/whats-new/
+    - text: ASP.NET Core docs updates
+      url: /aspnet/core/whats-new/
+    - text: .NET MAUI release notes
+      url: https://github.com/dotnet/maui/releases

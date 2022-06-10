@@ -1,0 +1,7 @@
+items:
+- name: What's new
+  href: index.yml
+  expanded: true
+  items:
+  - name: May 2022
+    href: dotnet-docs-maui-2022-05-01.md
