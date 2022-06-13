@@ -17,7 +17,7 @@ The appearance of a `ProgressBar` is platform-dependent, and the following scree
 `ProgressBar` defines two properties:
 
 - `Progress` is a `double` value that represents the current progress as a value from 0 to 1. `Progress` values less than 0 will be clamped to 0, values greater than 1 will be clamped to 1. The default value of this property is 0.
-- `ProgressColor` is a `Color` values that defines the color of the `ProgrssBar`.
+- `ProgressColor` is a `Color` values that defines the color of the `ProgressBar`.
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
