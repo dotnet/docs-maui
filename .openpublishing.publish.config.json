@@ -11,7 +11,7 @@
       "xref_query_tags": [
         "/dotnet",
         "/uwp/api",
-        "/windows/windows-app-sdk/api"
+        "/windows/windows-app-sdk/api/winrt"
       ],
       "type_mapping": {
         "Conceptual": "Content",
