@@ -107,23 +107,25 @@ Setting the `<GenerateAppxPackageOnBuild>` property to `true` packages the app a
 
 ## Publish
 
-To publish your app, open the **Developer Command Prompt for VS 2022 Preview** terminal and navigate to the project's folder. Run `dotnet` in publish mode:  
-
-```console
-dotnet publish -f net6.0-windows10.0.19041.0 -c Release
-```
-
-> [!NOTE]
-> When running the `dotnet publish` command without specifying the `.csproj` file, it will start publishing the solution (the `.sln` file) which is unsupported.
-
-The following table defines the parameters used by the previous command:
+To publish your app, open the **Developer Command Prompt for VS 2022 Preview** terminal and navigate to the folder for your .NET MAUI app project. Run the `dotnet publish` command, providing the following parameters:
 
 | Parameter                    | Value                                                                               |
 |------------------------------|-------------------------------------------------------------------------------------|
 | `-f net6.0-windows{version}` | The target framework, which is a Windows TFM, such as `net6.0-windows10.0.19041.0`. Ensure that this value is identical to the value in the `<TargetFrameworks>` node in your .csproj.           |
 | `-c Release`                 | Sets the build configuration, which is `Release`.                                   |
 
+> [!WARNING]
+> Attempting to publish a .NET MAUI solution will result in the `dotnet publish` command attempting to publish each project in the solution individually, which cam cause issues when you've added other project types to your solution. Therefore, the `dotnet publish` command should be scoped to your .NET MAUI app project.
+
+For example:
+
+```console
+dotnet publish -f net6.0-windows10.0.19041.0 -c Release
+```
+
 Publishing builds and packages the app, copying the signed package to the _bin\\Release\\net6.0-windows10.0.19041.0\\win10-x64\\AppPackages\\\<appname>\\_ folder. Where \<appname> is a folder named after both your project and version. In this folder there's an _msix_ file, that's the app package.
+
+For more information about the `dotnet publish` command, see [dotnet publish](/dotnet/core/tools/dotnet-publish).
 
 ## Installing the app
 

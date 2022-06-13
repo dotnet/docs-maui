@@ -1,7 +1,7 @@
 ---
 title: "Publish a .NET MAUI app for iOS"
 description: "Learn how to package and publish a iOS .NET MAUI app."
-ms.date: 05/09/2022
+ms.date: 06/13/2022
 ---
 
 # Publish a .NET MAUI app for iOS
@@ -152,13 +152,15 @@ Building native iOS apps using .NET MAUI requires access to Apple's build tools,
 
 At this time, publishing is only supported through the .NET command line interface.
 
-To publish your app, open a terminal and navigate to the project's folder. Run the `dotnet publish` command, providing the following parameters:
+To publish your app, open a terminal and navigate to the folder for your .NET MAUI app project. Run the `dotnet publish` command, providing the following parameters:
 
 | Parameter                    | Value                                                                                           |
 |------------------------------|-------------------------------------------------------------------------------------------------|
-| `YourProject.csproj`         | The `csproj` file of your .NET MAUI app project                                                 |
 | `-f` or `--framework`        | The target framework, which is `net6.0-ios`.                                                    |
 | `-c` or `--configuration`    | The build configuration, which is `Release`.                                                    |
+
+> [!WARNING]
+> Attempting to publish a .NET MAUI solution will result in the `dotnet publish` command attempting to publish each project in the solution individually, which cam cause issues when you've added other project types to your solution. Therefore, the `dotnet publish` command should be scoped to your .NET MAUI app project.
 
 In addition, the following common parameters can be specified on the command line if they aren't provided in a `<PropertyGroup>` in your project file:
 
@@ -181,20 +183,19 @@ In addition, the following common parameters can be specified on the command lin
 For example, use the following command to create an *.ipa*:
 
 ```console
-dotnet publish YourProject.csproj -f:net6.0-ios -c:Release /p:ServerAddress={macOS build host IP address} /p:ServerUser={macOS username} /p:ServerPassword={macOS password} /p:TcpPort=58181 /p:ArchiveOnBuild=true /p:_DotNetRootRemoteDirectory=/Users/{macOS username}/Library/Caches/Xamarin/XMA/SDKs/dotnet/
+dotnet publish -f:net6.0-ios -c:Release /p:ServerAddress={macOS build host IP address} /p:ServerUser={macOS username} /p:ServerPassword={macOS password} /p:TcpPort=58181 /p:ArchiveOnBuild=true /p:_DotNetRootRemoteDirectory=/Users/{macOS username}/Library/Caches/Xamarin/XMA/SDKs/dotnet/
 ```
 
 > [!NOTE]
 > If the `ServerPassword` parameter is omitted from a command line build invocation, Pair to Mac attempts to log in to the Mac build host using the saved SSH keys.
-
-> [!NOTE]
-> When running the `dotnet publish` command without specifying the `.csproj` file, it will try and publish all projects separately which will cause issues when you've added other project types to your solution. To prevent issues, always specify the `csproj` file of your .NET MAUI app project as a parameter.
 
 Publishing builds the app, and then copies the *.ipa* to the *bin\\Release\\net6.0-ios\\ios-arm64\\publish* folder. During the publishing process it maybe necessary to allow `codesign` to run on your paired Mac:
 
 :::image type="content" source="media/overview/codesign.png" alt-text="Allow codesign to sign your app on your paired Mac.":::
 
 The *.ipa* file can then be uploaded to the App Store using App Store Connect. To learn how to use App Store Connect, see [App Store Connect workflow](https://help.apple.com/app-store-connect/#/dev300c2c5bf).
+
+For more information about the `dotnet publish` command, see [dotnet publish](/dotnet/core/tools/dotnet-publish).
 
 ## See also
 

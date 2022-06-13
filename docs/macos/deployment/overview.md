@@ -21,7 +21,7 @@ When distributing your .NET Multi-platform App UI (.NET MAUI) app for macOS, you
 
 At this time, publishing is only supported through the .NET command line interface.
 
-To publish your app, open a terminal and navigate to the project's folder. Run the `dotnet build` command, providing the following parameters:
+To publish your app, open a terminal and navigate to the folder for your .NET MAUI app project. Run the `dotnet build` command, providing the following parameters:
 
 <!-- dotnet publish doesn't work at the time of writing -->
 
@@ -30,6 +30,9 @@ To publish your app, open a terminal and navigate to the project's folder. Run t
 | `-f` or `--framework`        | The target framework, which is `net6.0-maccatalyst`.                                            |
 | `-c` or `--configuration`    | The build configuration, which is `Release`.                                                    |
 | `/p:CreatePackage`           | An optional parameter that controls whether to create an .app or a .pkg. Use `true` for a .pkg. |
+
+> [!WARNING]
+> Attempting to publish a .NET MAUI solution will result in the `dotnet publish` command attempting to publish each project in the solution individually, which cam cause issues when you've added other project types to your solution. Therefore, the `dotnet publish` command should be scoped to your .NET MAUI app project.
 
 For example, use the following command to create an *.app*:
 
@@ -44,6 +47,8 @@ dotnet build -f:net6.0-maccatalyst -c:Release /p:CreatePackage=true
 ```
 
 Publishing builds the app, and then copies the *.app* or *.pkg* to the *bin/Release/net6.0-maccatalyst/maccatalyst-x64* folder.
+
+For more information about the `dotnet publish` command, see [dotnet publish](/dotnet/core/tools/dotnet-publish).
 
 ## Run the unsigned app
 

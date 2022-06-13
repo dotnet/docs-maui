@@ -113,7 +113,7 @@ If either of those conditions fail, the settings aren't processed. More importan
 
 At this time, publishing is only supported through the .NET command line interface.
 
-To publish your app, open a terminal and navigate to the project's folder. Run the `dotnet publish` command, providing the following parameters:
+To publish your app, open a terminal and navigate to the folder for your .NET MAUI app project. Run the `dotnet publish` command, providing the following parameters:
 
 | Parameter                    | Value                                                                                                                                     |
 |------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
@@ -122,6 +122,9 @@ To publish your app, open a terminal and navigate to the project's folder. Run t
 | `/p:AndroidSigningKeyPass`   | This is the value used for the `<AndroidSigningKeyPass>` project setting, the password you provided when you created the keystore file.   |
 | `/p:AndroidSigningStorePass` | This is the value used for the `<AndroidSigningStorePass>` project setting, the password you provided when you created the keystore file. |
 
+> [!WARNING]
+> Attempting to publish a .NET MAUI solution will result in the `dotnet publish` command attempting to publish each project in the solution individually, which cam cause issues when you've added other project types to your solution. Therefore, the `dotnet publish` command should be scoped to your .NET MAUI app project.
+
 For example:
 
 ```console
@@ -129,6 +132,8 @@ dotnet publish -f:net6.0-android -c:Release /p:AndroidSigningKeyPass=mypassword 
 ```
 
 Publishing builds the app, and then copies the _aab_ and _apk_ files to the _bin\\Release\\net6.0-android\\publish_ folder. There are two _aab_ files, one unsigned and another signed. The signed variant has **-signed** in the file name.
+
+For more information about the `dotnet publish` command, see [dotnet publish](/dotnet/core/tools/dotnet-publish).
 
 To learn how to upload a signed Android App Bundle to the Google Play Store, see [Upload your app to the Play Console](https://developer.android.com/studio/publish/upload-bundle).
 
