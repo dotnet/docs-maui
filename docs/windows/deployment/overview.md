@@ -115,7 +115,7 @@ To publish your app, open the **Developer Command Prompt for VS 2022 Preview** t
 | `-c Release`                 | Sets the build configuration, which is `Release`.                                   |
 
 > [!WARNING]
-> Attempting to publish a .NET MAUI solution will result in the `dotnet publish` command attempting to publish each project in the solution individually, which cam cause issues when you've added other project types to your solution. Therefore, the `dotnet publish` command should be scoped to your .NET MAUI app project.
+> Attempting to publish a .NET MAUI solution will result in the `dotnet publish` command attempting to publish each project in the solution individually, which can cause issues when you've added other project types to your solution. Therefore, the `dotnet publish` command should be scoped to your .NET MAUI app project.
 
 For example:
 

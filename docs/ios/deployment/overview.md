@@ -160,7 +160,7 @@ To publish your app, open a terminal and navigate to the folder for your .NET MA
 | `-c` or `--configuration`    | The build configuration, which is `Release`.                                                    |
 
 > [!WARNING]
-> Attempting to publish a .NET MAUI solution will result in the `dotnet publish` command attempting to publish each project in the solution individually, which cam cause issues when you've added other project types to your solution. Therefore, the `dotnet publish` command should be scoped to your .NET MAUI app project.
+> Attempting to publish a .NET MAUI solution will result in the `dotnet publish` command attempting to publish each project in the solution individually, which can cause issues when you've added other project types to your solution. Therefore, the `dotnet publish` command should be scoped to your .NET MAUI app project.
 
 In addition, the following common parameters can be specified on the command line if they aren't provided in a `<PropertyGroup>` in your project file:
 

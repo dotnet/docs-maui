@@ -123,7 +123,7 @@ To publish your app, open a terminal and navigate to the folder for your .NET MA
 | `/p:AndroidSigningStorePass` | This is the value used for the `<AndroidSigningStorePass>` project setting, the password you provided when you created the keystore file. |
 
 > [!WARNING]
-> Attempting to publish a .NET MAUI solution will result in the `dotnet publish` command attempting to publish each project in the solution individually, which cam cause issues when you've added other project types to your solution. Therefore, the `dotnet publish` command should be scoped to your .NET MAUI app project.
+> Attempting to publish a .NET MAUI solution will result in the `dotnet publish` command attempting to publish each project in the solution individually, which can cause issues when you've added other project types to your solution. Therefore, the `dotnet publish` command should be scoped to your .NET MAUI app project.
 
 For example:
 
