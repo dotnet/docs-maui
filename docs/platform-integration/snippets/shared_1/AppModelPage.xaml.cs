@@ -132,7 +132,6 @@ public partial class AppModelPage : ContentPage
 
         try
         {
-            Map.Default.TryOpenAsync(location, options);
             await Map.Default.OpenAsync(location, options);
         }
         catch (Exception ex)
