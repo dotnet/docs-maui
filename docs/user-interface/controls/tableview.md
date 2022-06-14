@@ -14,14 +14,14 @@ While `TableView` manages the appearance of the table, the appearance of each it
 
 `TableView` defines the following properties:
 
-- `Intent`, of type `TableIntent`, defines the purpose of the table.
+- `Intent`, of type `TableIntent`, defines the purpose of the table on iOS.
 - `HasUnevenRows`, of type `bool`, indicates whether items in the table can have rows of different heights. The default value of this property is `false`.
 - `Root`, of type `TableRoot`, defines the child of the `TableView`.
 - `RowHeight`, of type `int`, determines the height of each row when `HasUnevenRows` is `false`.
 
 The `HasUnevenRows` and `RowHeight` properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
-The value of the `Intent` property helps to define the `TableView` appearance on each platform. This property should be set to a value of the `TableIntent` enumeration, which defines the following members:
+The value of the `Intent` property helps to define the `TableView` appearance on iOS only. This property should be set to a value of the `TableIntent` enumeration, which defines the following members:
 
 - `Menu`, for presenting a selectable menu.
 - `Settings`, for presenting a table of configuration settings.
