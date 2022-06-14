@@ -22,7 +22,7 @@ To access the browser functionality, the following platform-specific setup is re
 
 Android uses the `geo:` Uri scheme to launch the maps application on the device. This may prompt the user to select from an existing app that supports this Uri scheme. Google Maps supports this scheme.
 
-In the _Platforms/Android/AndroidManifest.xml_ file, add the following `queries/intent` nodes the `manifest` node:
+In the _Platforms/Android/AndroidManifest.xml_ file, add the following `queries/intent` nodes to the `manifest` node:
 
 ```xml
 <queries>
