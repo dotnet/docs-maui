@@ -111,6 +111,19 @@ public partial class AppModelPage : ContentPage
         NavigateToBuilding25().Wait();
     }
 
+    public async Task TryOpenMap()
+    {
+        //<navigate_tryopen>
+        var location = new Location(47.645160, -122.1306032);
+        var options = new MapLaunchOptions { Name = "Microsoft Building 25" };
+        
+        if (await Map.Default.TryOpenAsync(location, options) == false)
+        {
+            // Map failed to open
+        }
+        //</navigate_tryopen>
+    }
+
     //<navigate_building>
     public async Task NavigateToBuilding25()
     {

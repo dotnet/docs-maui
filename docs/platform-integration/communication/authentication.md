@@ -40,23 +40,7 @@ To access the `WebAuthenticator` functionality the following platform-specific s
 
 Android requires an **Intent Filter** setup to handle your callback URI. This is accomplished by inheriting from the `WebAuthenticatorCallbackActivity` class:
 
-```csharp
-using Android.App;
-using Android.Content.PM;
-
-namespace YourRootNamespace
-{
-    [Activity(NoHistory = true, LaunchMode = LaunchMode.SingleTop, Exported = true)]
-    [IntentFilter(new[] { Android.Content.Intent.ActionView },
-                  Categories = new[] { Android.Content.Intent.CategoryDefault, Android.Content.Intent.CategoryBrowsable },
-                  DataScheme = CALLBACK_SCHEME)]
-    public class WebAuthenticationCallbackActivity : Microsoft.Maui.WebAuthenticatorCallbackActivity
-    {
-        const string CALLBACK_SCHEME = "myapp";
-
-    }
-}
-```
+:::code language="csharp" source="../snippets/shared_1/Platforms/Android/WebAuthActivity.cs":::
 
 If your project's Target Android version is set to **Android 11 (R API 30)** or higher, you must update your _Android Manifest_ with queries that use Android's [package visibility requirements](https://developer.android.com/preview/privacy/package-visibility).
 
