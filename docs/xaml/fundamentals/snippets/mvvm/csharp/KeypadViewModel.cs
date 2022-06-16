@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
-namespace XamlExample;
+namespace XamlSamples;
 
 class KeypadViewModel: INotifyPropertyChanged
 {

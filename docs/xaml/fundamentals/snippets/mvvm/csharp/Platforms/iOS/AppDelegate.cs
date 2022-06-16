@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace XamlExample;
+namespace XamlSamples;
 
 [Register("AppDelegate")]
 public class AppDelegate : MauiUIApplicationDelegate

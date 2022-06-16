@@ -1,4 +1,4 @@
-﻿namespace XamlExample;
+﻿namespace XamlSamples;
 
 public static class MauiProgram
 {

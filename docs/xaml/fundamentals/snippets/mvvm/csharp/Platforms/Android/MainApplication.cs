@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.Runtime;
 
-namespace XamlExample;
+namespace XamlSamples;
 
 [Application]
 public class MainApplication : MauiApplication

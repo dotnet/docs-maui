@@ -1,4 +1,4 @@
-namespace XamlExample;
+namespace XamlSamples;
 
 public partial class KeypadPage : ContentPage
 {

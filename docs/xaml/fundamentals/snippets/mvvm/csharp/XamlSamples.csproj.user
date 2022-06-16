@@ -9,7 +9,7 @@
     <MauiXaml Update="ClockPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
-    <MauiXaml Update="HslColorPage.xaml">
+    <MauiXaml Update="HslColorScrollPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
     <MauiXaml Update="KeypadPage.xaml">

@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.companyname.XamlExample" version="1.0.0" api-version="7" xmlns="http://tizen.org/ns/packages">
+<manifest package="com.companyname.XamlSamples" version="1.0.0" api-version="7" xmlns="http://tizen.org/ns/packages">
   <profile name="common" />
-  <ui-application appid="com.companyname.XamlExample" exec="XamlExample.dll" multiple="false" nodisplay="false" taskmanage="true" type="dotnet" launch_mode="single">
-    <label>XamlExample</label>
+  <ui-application appid="com.companyname.XamlSamples" exec="XamlSamples.dll" multiple="false" nodisplay="false" taskmanage="true" type="dotnet" launch_mode="single">
+    <label>XamlSamples</label>
     <icon>appicon.xhigh.png</icon>
     <metadata key="http://tizen.org/metadata/prefer_dotnet_aot" value="true" />
   </ui-application>

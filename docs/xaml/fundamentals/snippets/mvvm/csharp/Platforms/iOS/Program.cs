@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespace XamlExample;
+namespace XamlSamples;
 
 public class Program
 {

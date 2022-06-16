@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XamlExample", "XamlExample.csproj", "{C28C15C2-0AAF-48A1-8C7E-F5F6EEAC7D8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XamlSamples", "XamlSamples.csproj", "{C28C15C2-0AAF-48A1-8C7E-F5F6EEAC7D8E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
