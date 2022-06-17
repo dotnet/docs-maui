@@ -61,7 +61,7 @@ For more information about the manifest, see [Google Android App Manifest Overvi
 
 ## Create a keystore file
 
-Your app package should be signed. You use a keystore file to sign your package. The Java/Android SDKs includes the tools you need to generate a keystore. After generating a keystore file, you'll add it to your project and configure your project file to reference it. The Java SDK should be in your system path so that you can run the _keytool.exe_ tool.
+Your app package should be signed. You use a keystore file to sign your package. The Java/Android SDKs includes the tools you need to generate a keystore. After generating a keystore file, you'll add it to your project and configure your project file to reference it. The Java SDK should be in your system path so that you can run the _keytool_ tool.
 
 Perform the following steps to create a keystore file:
 
@@ -86,7 +86,7 @@ There are project-level settings you must set to sign your Android app with the 
 
 - `<AndroidKeyStore>` &ndash; Set to `True` to sign the app.
 - `<AndroidSigningKeyStore>` &ndash; The keystore file created in the previous section: **myapp.keystore**.
-- `<AndroidSigningKeyAlias>` &ndash; The `-alias` parameter value passed to the _keytool.exe_ tool: **key**.
+- `<AndroidSigningKeyAlias>` &ndash; The `-alias` parameter value passed to the _keytool_ tool: **key**.
 - `<AndroidSigningKeyPass>` &ndash; The password you provided when creating the keystore file.
 - `<AndroidSigningStorePass>` &ndash; The password you provided when creating the keystore file.
 
