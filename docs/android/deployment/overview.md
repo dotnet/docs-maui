@@ -70,10 +70,10 @@ Perform the following steps to create a keystore file:
     > [!TIP]
     > If Visual Studio is open, use the **View** > **Terminal** menu to open a terminal at the location of the solution or project. Navigate to the project folder.
 
-01. Run the _keytool.exe_ tool with the following parameters:
+01. Run the _keytool_ tool with the following parameters:
 
     ```console
-    keytool.exe -genkey -v -keystore myapp.keystore -alias key -keyalg RSA -keysize 2048 -validity 10000
+    keytool -genkey -v -keystore myapp.keystore -alias key -keyalg RSA -keysize 2048 -validity 10000
     ```
 
     You'll be prompted to provide and confirm a password, followed by other settings.
