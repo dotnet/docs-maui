@@ -25,10 +25,10 @@ ms.date: 05/17/2022
 
 Resource management for cross-platform app development has traditionally been problematic. Each platform has its own approach to managing resources, that must be implemented on each platform. For example, each platform has differing image requirements that typically involves creating multiple versions of each image at different resolutions. Therefore, a single image typically has to be duplicated multiple times per platform, at different resolutions, with the resulting images having to use different filename and folder conventions on each platform.
 
-.NET MAUI single project enables resource files to be stored in a single location while being consumed on each platform. This includes fonts, images, the app icon, the splash screen, raw assets, and CSS files for styling .NET MAUI apps.
+.NET MAUI single project enables resource files to be stored in a single location while being consumed on each platform. This includes fonts, images, the app icon, the splash screen, raw assets, and CSS files for styling .NET MAUI apps. Each image resource file is used as a source image, from which images of the required resolutions are generated for each platform at build time.
 
-> [!IMPORTANT]
-> Each image resource file is used as a source image, from which images of the required resolutions are generated for each platform at build time.
+> [!NOTE]
+> iOS Asset Catalogs are currently unsupported in .NET MAUI single projects.
 
 Resource files should typically be placed in the _Resources_ folder of your .NET MAUI app project, or child folders of the _Resources_ folder, and must have their build action set correctly. The following table shows the build actions for each resource file type:
 

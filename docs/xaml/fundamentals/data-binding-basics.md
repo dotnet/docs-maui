@@ -179,6 +179,11 @@ namespace XamlSamples
         public string FriendlyName { get; private set; }
         public Color Color { get; private set; }
 
+        // Expose the Color fields as properties
+        public float Red => Color.Red;
+        public float Green => Color.Green;
+        public float Blue => Color.Blue;
+
         public static IEnumerable<NamedColor> All { get; private set; }
 
         static NamedColor()
@@ -227,7 +232,7 @@ namespace XamlSamples
 }
 ```
 
-Each `NamedColor` object has `Name` and `FriendlyName` properties of type `string`, and a `Color` property of type `Color`. In addition, the `NamedColor` static constructor creates an `IEnumerable<NamedColor>` collection that contains `NamedColor` objects corresponding to the fields of type `Color` in the `Colors` class, and assigns it to its public static `All` property.
+Each `NamedColor` object has `Name` and `FriendlyName` properties of type `string`, a `Color` property of type `Color`, and `Red`, `Green`, and `Blue` properties. In addition, the `NamedColor` static constructor creates an `IEnumerable<NamedColor>` collection that contains `NamedColor` objects corresponding to the fields of type `Color` in the `Colors` class, and assigns it to its public static `All` property.
 
 Setting the static `NamedColor.All` property to the `ItemsSource` of a `ListView` can be achieved using the `x:Static` markup extension:
 
@@ -298,15 +303,15 @@ The item template can be expanded to display more information and the actual col
                                    FontSize="14" />
                             <StackLayout Orientation="Horizontal"
                                          Spacing="0">
-                                <Label Text="{Binding Color.Red,
+                                <Label Text="{Binding Red,
                                                       Converter={StaticResource intConverter},
                                                       ConverterParameter=255,
                                                       StringFormat='R={0:X2}'}" />                                
-                                <Label Text="{Binding Color.Green,
+                                <Label Text="{Binding Green,
                                                       Converter={StaticResource intConverter},
                                                       ConverterParameter=255,
                                                       StringFormat=', G={0:X2}'}" />                                
-                                <Label Text="{Binding Color.Blue,
+                                <Label Text="{Binding Blue,
                                                       Converter={StaticResource intConverter},
                                                       ConverterParameter=255,
                                                       StringFormat=', B={0:X2}'}" />
@@ -322,7 +327,7 @@ The item template can be expanded to display more information and the actual col
 
 ## Binding value converters
 
-The previous XAML example displays the individual `Red`, `Green`, and `Blue` properties of the .NET MAUI `Color` class. These properties are of type `float` and range from 0 to 1. If you want to display the hexadecimal values, you can’t simply use `StringFormat` with an “X2” formatting specification. That only works for integers and besides, the `float` values need to be multiplied by 255.
+The previous XAML example displays the individual `Red`, `Green`, and `Blue` properties of each `NamedColor`. These properties are of type `float` and range from 0 to 1. If you want to display the hexadecimal values, you can’t simply use `StringFormat` with an “X2” formatting specification. That only works for integers and besides, the `float` values need to be multiplied by 255.
 
 This issue can be solved with a *value converter*, also called a *binding converter*. This is a class that implements the `IValueConverter` interface, which means it has two methods named `Convert` and `ConvertBack`. The `Convert` method is called when a value is transferred from source to target. The `ConvertBack` method is called for transfers from target to source in `OneWayToSource` or `TwoWay` bindings:
 
@@ -370,7 +375,7 @@ The converter is instantiated in the page's resource dictionary so it can be sha
 Three data bindings reference this single instance:
 
 ```xaml
-<Label Text="{Binding Color.Red,
+<Label Text="{Binding Red,
                       Converter={StaticResource intConverter},
                       ConverterParameter=255,
                       StringFormat='R={0:X2}'}" />
