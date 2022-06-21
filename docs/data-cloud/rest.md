@@ -35,7 +35,7 @@ The example REST service is written using ASP.NET Core and provides the followin
 |Update a todo item|PUT|/api/todoitems/|A JSON formatted TodoItem|
 |Delete a todo item|DELETE|/api/todoitems/{id}|
 
-The .NET MAUI app uses the `TodoItem` class to model the data that is displayed and sent to the web service for storage:
+The .NET MAUI app and web service uses the `TodoItem` class to model the data that is displayed and sent to the web service for storage:
 
 ```csharp
 public class TodoItem
@@ -67,7 +67,7 @@ public class RestService : IRestService
 
     public RestService()
     {
-        client = new HttpClient();
+        _client = new HttpClient();
         _serializerOptions = new JsonSerializerOptions
         {
             PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
@@ -158,7 +158,7 @@ The REST service sends a HTTP status code in its response, which can be obtained
 The `HttpClient.PutAsync` method is used to send a PUT request to the web service specified by the URI, and then receive the response from the web service:
 
 ```csharp
-public async Task SaveTodoItemAsync (TodoItem item, bool isNewItem = false)
+public async Task SaveTodoItemAsync(TodoItem item, bool isNewItem = false)
 {
   ...
   response = await _client.PutAsync(uri, content);
