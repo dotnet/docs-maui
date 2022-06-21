@@ -82,7 +82,7 @@ public class VerticalStackLayoutPage : ContentPage
 ```
 
 > [!NOTE]
-> The value of the `Margin` property represents the distance between an element and its adjacent elements. <!--For more information, see [Margin and Padding](margin-and-padding.md).-->
+> The value of the `Margin` property represents the distance between an element and its adjacent elements. For more information, see [Position controls](~/user-interface/align-position.md#position-controls).
 
 ## Horizontal orientation
 

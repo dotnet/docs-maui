@@ -196,7 +196,7 @@ Although it's common to define the `Resources` collection at the top of the page
 </StackLayout>
 ```
 
-One of the most common types of objects stored in resource dictionaries is the .NET MAUI `Style`, which defines a collection of property settings. <!--For more information about styles, see []().-->
+One of the most common types of objects stored in resource dictionaries is the .NET MAUI `Style`, which defines a collection of property settings. For more information about styles, see [Style apps using XAML](~/user-interface/styles/xaml.md).
 
 > [!NOTE]
 > The purpose of a resource dictionary is to share objects. Therefore, it doesn't make sense to put controls such as a `Label` or `Button` in a resource dictionary. Visual elements can't be shared because the same instance can't appear twice on a page.
