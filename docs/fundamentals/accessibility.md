@@ -41,6 +41,7 @@ The `SemanticProperties` class defines the following attached properties:
 - `HeadingLevel`, of type `SemanticHeadingLevel`, which enables an element to be marked as a heading to organize the UI and make it easier to navigate. For more information, see [Heading levels](#heading-levels).
 
 These attached properties set platform accessibility values so that a screen reader can speak about the element. For more information about attached properties, see [Attached properties](~/fundamentals/attached-properties.md).
+
 ### Description
 
 The `SemanticProperties.Description` attached property represents a short, descriptive `string` that a screen reader uses to announce an element. This property should be set for elements that have a meaning that's important for understanding the content or interacting with the user interface. Setting this property can be accomplished in XAML:
