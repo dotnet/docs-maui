@@ -421,7 +421,7 @@ In this example, the abbreviated version of the `FontImageExtension` class name 
 
 While the unicode character for the icon is `\uf30c`, it has to be escaped in XAML and so becomes `&#xf30c;`.
 
-<!-- For information about displaying font icons by specifying the font icon data in a `FontImageSource` object, see [Display font icons](~/user-interface/text/fonts.md#display-font-icons). -->
+For information about displaying font icons by specifying the font icon data in a `FontImageSource` object, see [Display font icons](~/user-interface/fonts.md#display-font-icons).
 
 ## AppThemeBinding markup extension
 

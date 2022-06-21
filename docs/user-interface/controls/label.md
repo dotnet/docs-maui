@@ -32,7 +32,7 @@ The .NET Multi-platform App UI (.NET MAUI) `Label` displays single-line and mult
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
-<!-- For information about specifying fonts on a `Label`, see [Fonts](~/user-interface/fonts.md). -->
+For information about specifying fonts on a `Label`, see [Fonts](~/user-interface/fonts.md).
 
 ## Create a Label
 

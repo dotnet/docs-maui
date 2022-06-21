@@ -48,7 +48,7 @@ These properties are backed by `BindableProperty` objects, which means that they
 
 In addition, `InputView` defines a `TextChanged` event, which is raised when the text in the `Entry` changes. The `TextChangedEventArgs` object that accompanies the `TextChanged` event has `NewTextValue` and `OldTextValue` properties, which specify the new and old text, respectively.
 
-<!-- For information about specifying fonts on an `Entry`, see [Fonts](~/user-interface/fonts.md). -->
+For information about specifying fonts on an `Entry`, see [Fonts](~/user-interface/fonts.md).
 
 ## Create an Entry
 

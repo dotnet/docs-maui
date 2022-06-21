@@ -14,7 +14,7 @@ The .NET Multi-platform App UI (.NET MAUI) `Grid`, is a layout that organizes it
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
-The `Grid` should not be confused with tables, and is not intended to present tabular data. Unlike HTML tables, a `Grid` is intended for laying out content. <!-- For displaying tabular data, consider using a [ListView](~/xamarin-forms/user-interface/listview/index.md), [CollectionView](~/xamarin-forms/user-interface/collectionview/introduction.md), or [TableView](~/xamarin-forms/user-interface/tableview.md).-->
+The `Grid` should not be confused with tables, and is not intended to present tabular data. Unlike HTML tables, a `Grid` is intended for laying out content. For displaying tabular data, consider using a [ListView](~/user-interface/controls/listview.md) or [CollectionView](~/user-interface/controls/collectionview/index.md).
 
 The `Grid` class defines the following properties:
 

@@ -108,7 +108,7 @@ The `Toggled` event handler can be eliminated by using data binding and triggers
 
 In this example, the `Label` uses a binding expression in a `DataTrigger` to monitor the `IsToggled` property of the `Switch` named `styleSwitch`. When this property becomes `true`, the `FontAttributes` and `FontSize` properties of the `Label` are changed. When the `IsToggled` property returns to `false`, the `FontAttributes` and `FontSize` properties of the `Label` are reset to their initial state.
 
-<!-- For information about triggers, see [Triggers](~/fundamentals/triggers.md). -->
+For information about triggers, see [Triggers](~/fundamentals/triggers.md).
 
 ## Switch visual states
 
