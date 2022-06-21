@@ -128,6 +128,12 @@ landingContent:
             url: platform-integration/storage/preferences.md
           - text: Web authenticator
             url: platform-integration/communication/authentication.md
+  - title: Data & cloud services
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Consume a RESTful web service
+            url: data-cloud/rest.md
   - title: Publish
     linkLists:
       - linkListType: concept

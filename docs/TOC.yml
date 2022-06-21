@@ -575,6 +575,12 @@
           href: platform-integration/configure-multi-targeting.md
         - name: Invoke platform code
           href: platform-integration/invoke-platform-code.md
+    - name: Data & cloud services
+      items:
+        - name: Web services
+          items:
+            - name: REST
+              href: data-cloud/rest.md
     - name: Publish
       items:
         - name: Android
