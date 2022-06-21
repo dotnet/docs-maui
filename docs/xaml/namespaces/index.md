@@ -35,10 +35,10 @@ The following table outlines the `x` constructs supported by .NET MAUI:
 |`x:Name`|Specifies a runtime object name for the XAML element. Setting `x:Name` is similar to declaring a variable in code.|
 |`x:TypeArguments`|Specifies the generic type arguments to the constructor of a generic type.|
 
-<!-- For more information about the `x:DataType` attribute, see [Compiled bindings](~/fundamentals/data-binding/compiled-bindings.md). For more information about the `x:FieldModifier` attribute, see [Field modifiers](~/xaml/field-modifiers.md). For more information about the `x:Arguments` and `x:FactoryMethod` attributes, see [Pass arguments](~/xaml/pass-arguments.md). For more information about the `x:TypeArguments` attribute, see [Generics](~/xaml/generics.md). -->
+For more information about the `x:DataType` attribute, see [Compiled bindings](~/fundamentals/data-binding/compiled-bindings.md). For more information about the `x:FieldModifier` attribute, see [Field modifiers](~/xaml/field-modifiers.md). For more information about the `x:Arguments` and `x:FactoryMethod` attributes, see [Pass arguments](~/xaml/pass-arguments.md). For more information about the `x:TypeArguments` attribute, see [Generics](~/xaml/generics.md).
 
 > [!NOTE]
-> In addition to the constructs listed above, .NET MAUI also includes markup extensions that can be consumed through the `x` namespace prefix. <!--For more information, see [Consuming XAML Markup Extensions](~/xaml/markup-extensions/consuming.md).-->
+> In addition to the constructs listed above, .NET MAUI also includes markup extensions that can be consumed through the `x` namespace prefix. For more information, see [Consume XAML Markup Extensions](~/xaml/markup-extensions/consume.md).
 
 In XAML, namespace declarations inherit from parent element to child element. Therefore, when defining a namespace in the root element of a XAML file, all elements within that file inherit the namespace declaration.
 

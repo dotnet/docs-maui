@@ -14,7 +14,7 @@ The following screenshot shows a `CollectionView` that uses a two column vertica
 
 :::image type="content" source="media/verticalgrid-multipleselection.png" alt-text="Screenshot of a CollectionView vertical grid layout.":::
 
-`CollectionView` should be used for presenting lists of data that require scrolling or selection. A bindable layout can be used when the data to be displayed doesn't require scrolling or selection. <!-- For more information, see [BindableLayout](~/user-interface/controls/layouts/bindablelayout.md). -->
+`CollectionView` should be used for presenting lists of data that require scrolling or selection. A bindable layout can be used when the data to be displayed doesn't require scrolling or selection. For more information, see [BindableLayout](~/user-interface/layouts/bindablelayout.md).
 
 ## CollectionView and ListView differences
 

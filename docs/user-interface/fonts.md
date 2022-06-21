@@ -198,7 +198,7 @@ label.FontFamily = DeviceInfo.Platform == DevicePlatform.iOS ? "MarkerFelt-Thin"
     DeviceInfo.Platform == DevicePlatform.Android ? "Lobster-Regular" : "ArimaMadurai-Black";
 ```
 
-<!-- For more information about providing platform-specific values, see [Provide platform-specific values](~/xamarin-forms/platform/device.md#provide-platform-specific-values). For information about the `OnPlatform` markup extension, see [OnPlatform markup extension](~/xamarin-forms/xaml/markup-extensions/consuming.md#onplatform-markup-extension). -->
+For more information about providing platform-specific values, see [Device information](~/platform-integration/device/information.md). For information about the `OnPlatform` markup extension, see [OnPlatform markup extension](~//xaml/markup-extensions/consume.md#onplatform-markup-extension).
 
 ## Display font icons
 

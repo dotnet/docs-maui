@@ -82,7 +82,7 @@ public class VerticalStackLayoutPage : ContentPage
 ```
 
 > [!NOTE]
-> The value of the `Margin` property represents the distance between an element and its adjacent elements. <!--For more information, see [Margin and Padding](margin-and-padding.md).-->
+> The value of the `Margin` property represents the distance between an element and its adjacent elements. For more information, see [Position controls](~/user-interface/align-position.md#position-controls).
 
 ## Horizontal orientation
 
@@ -276,7 +276,7 @@ public class AlignmentPage : ContentPage
 }
 ```
 
-<!-- For more information about alignment, see [Layout Options in .NET MAUI](layout-options.md). -->
+For more information about alignment, see [Align views in layouts](~/user-interface/align-position.md#align-views-in-layouts).
 
 ## Nested StackLayout objects
 

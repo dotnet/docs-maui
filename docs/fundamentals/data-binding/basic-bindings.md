@@ -68,7 +68,7 @@ public partial class BasicCodeBindingPage : ContentPage
 The `Label` object is the binding target so that's the object on which this property is set and on which the method is called. The `BindingContext` property indicates the binding source, which is the `Slider`. The `SetBinding` method is called on the binding target but specifies both the target property and the source property. The target property is specified as a `BindableProperty` object: `Label.RotationProperty`. The source property is specified as a string and indicates the `Value` property of `Slider`.
 
 > [!IMPORTANT]
-> The target property must be backed by a bindable property. Therefore, the target object must be an instance of a class that derives from `BindableObject`. <!-- For more information, see [Bindable properties](~/fundamentals/properties/bindable-properties.md). -->
+> The target property must be backed by a bindable property. Therefore, the target object must be an instance of a class that derives from `BindableObject`. For more information, see [Bindable properties](~/fundamentals/bindable-properties.md).
 
 The source property is specified as a string. Internally, reflection is used to access the actual property. In this particular case, however, the `Value` property is also backed by a bindable property.
 
@@ -103,7 +103,7 @@ Just as in code, the data binding is set on the target object, which is the `Lab
 - The `x:Reference` markup extension is required to reference the source object, which is the `Slider` named `slider`.
 - The `Binding` markup extension links the `Rotation` property of the `Label` to the `Value` property of the `Slider`.
 
-<!-- For more information about XAML markup extensions, see [XAML Markup Extensions](~/xaml/markup-extensions/index.md). -->
+For more information about XAML markup extensions, see [Consume XAML markup extensions](~/xaml/markup-extensions/consume.md).
 
 > [!NOTE]
 > The source property is specified with the `Path` property of the `Binding` markup extension, which corresponds with the `Path` property of the `Binding` class.

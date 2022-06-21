@@ -110,7 +110,7 @@ The fourth `Label` does something similar but for the culture associated with Fr
 </Label>
 ```
 
-<!-- For more information about specifying constructor arguments in XAML, see [Passing Constructor Arguments](~/xaml/passing-arguments.md#passing-constructor-arguments). -->
+For more information about specifying constructor arguments in XAML, see [Pass constructor arguments](~/xaml/pass-arguments.md#pass-constructor-arguments).
 
 The last `Label` is similar to the second, except that it references one of the children of the `StackLayout`:
 

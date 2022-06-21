@@ -20,7 +20,7 @@ The main usage scenarios for setting the `EmptyView` property are displaying use
 > [!NOTE]
 > The `EmptyView` property can be set to a view that includes interactive content if required.
 
-<!-- For more information about data templates, see [Data Templates](~/fundamentals/templates/data-templates/introduction.md). -->
+For more information about data templates, see [Data templates](~/fundamentals/datatemplate.md).
 
 ## Display a string when data is unavailable
 
@@ -247,7 +247,7 @@ The `ToggleEmptyView` method sets the `EmptyView` property of the `collectionVie
 
 :::image type="content" source="media/emptyview/swap.png" alt-text="Screenshot of a CollectionView vertical list with swapped empty views.":::
 
-<!-- For more information about resource dictionaries, see [Resource Dictionaries](~/xaml/resource-dictionaries.md). -->
+For more information about resource dictionaries, see [Resource dictionaries](~/fundamentals/resource-dictionaries.md).
 
 ## Choose an EmptyViewTemplate at runtime
 
@@ -318,4 +318,4 @@ The `SearchTermTemplateSelector` class defines `DefaultTemplate` and `OtherTempl
 
 :::image type="content" source="media/emptyview/datatemplateselector.png" alt-text="Screenshot of a CollectionView runtime empty view template selection.":::
 
-<!-- For more information about data template selectors, see [Create a DataTemplateSelector](~/fundamentals/templates/data-templates/selector.md). -->
+For more information about data template selectors, see [Create a DataTemplateSelector](~/fundamentals/datatemplate.md#create-a-datatemplateselector).

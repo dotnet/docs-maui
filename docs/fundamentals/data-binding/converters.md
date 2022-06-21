@@ -221,7 +221,7 @@ In this example, in the last of the three `Switch` and `Label` pairs, the generi
 :::image type="content" source="media/converters/switchindicators.png" alt-text="Switch indicators.":::
 
 > [!NOTE]
-> It's also possible to use triggers to implement changes in the user-interface based on other views. <!-- For more information, see [Triggers](~/fundamentals/triggers.md). -->
+> It's also possible to use triggers to implement changes in the user-interface based on other views. For more information, see [Triggers](~/fundamentals/triggers.md).
 
 ## Binding converter parameters
 

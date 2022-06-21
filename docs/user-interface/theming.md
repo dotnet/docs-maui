@@ -171,7 +171,7 @@ These styles are then consumed by pages:
 
 When a theme resource is consumed directly, it should be consumed with the `DynamicResource` markup extension. However, when a style that uses the `DynamicResource` markup extension is consumed, it should be consumed with the `StaticResource` markup extension.
 
-<!-- For more information about styling, see [Styling .NET MAUI Apps using XAML Styles](~/user-interface/styles/xaml/introduction.md). For more information about the `DynamicResource` markup extension, see [Dynamic Styles in .NET MAUI](~/user-interface/styles/xaml/dynamic.md). -->
+For more information about styling, see [Style apps using XAML](~/user-interface/styles/xaml.md). For more information about the `DynamicResource` markup extension, see [Dynamic styles](~/user-interface/styles/xaml.md#dynamic-styles).
 
 ## Load a theme at runtime
 

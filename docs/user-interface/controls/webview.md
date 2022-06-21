@@ -275,4 +275,4 @@ It's possible to open a URI in the system web browser with the `Launcher` class,
 await Launcher.OpenAsync("https://docs.microsoft.com/dotnet/maui");
 ```
 
-<!-- For more information, see [Launcher](). -->
+For more information, see [Launcher](~/platform-integration/appmodel/launcher.md).

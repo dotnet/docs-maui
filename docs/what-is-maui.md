@@ -74,8 +74,6 @@ In a .NET MAUI app, you write code that primarily interacts with the .NET MAUI A
 - Utilize built-in text-to-speech engines to read text from the device.
 - Initiate browser-based authentication flows that listen for a callback to a specific app registered URL.
 
-<!-- For more information, see .NET MAUI essentials. -->
-
 ### Single project
 
 .NET MAUI single project takes the platform-specific development experiences you typically encounter while developing apps and abstracts them into a single shared project that can target Android, iOS, macOS, and Windows.

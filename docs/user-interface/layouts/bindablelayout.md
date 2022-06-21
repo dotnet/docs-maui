@@ -87,7 +87,7 @@ In this example, every item in the `TopFollowers` collection will be displayed b
 
 :::image type="content" source="media/bindablelayout/top-followers.png" alt-text=".NET MAUI bindable layout with a DataTemplate.":::
 
-<!-- For more information about data templates, see [Data templates](~/fundamentals/datatemplate.md). -->
+For more information about data templates, see [Data templates](~/fundamentals/datatemplate.md).
 
 ## Choose item appearance at runtime
 
@@ -127,7 +127,7 @@ The `TechItemTemplateSelector` class defines `DefaultTemplate` and `MAUITemplate
 
 :::image type="content" source="media/bindablelayout/favorite-tech.png" alt-text=".NET MAUI bindable layout with a DataTemplateSelector.":::
 
-<!-- For more information about data template selectors, see [Create a DataTemplateSelector](~/fundamentals/datatemplate.md#create-a-datatemplateselector). -->
+For more information about data template selectors, see [Create a DataTemplateSelector](~/fundamentals/datatemplate.md#create-a-datatemplateselector).
 
 ## Display a string when data is unavailable
 
