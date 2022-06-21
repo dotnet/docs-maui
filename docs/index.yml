@@ -7,7 +7,7 @@ metadata:
   title: .NET Multi-platform App UI documentation
   description: .NET Multi-platform App UI (.NET MAUI) lets you build native apps using a .NET cross-platform UI toolkit that targets the mobile and desktop form factors on Android, iOS, macOS, Windows, and Tizen.
   ms.topic: landing-page
-  ms.date: 05/13/2022
+  ms.date: 06/21/2022
 
 landingContent:
   - title: Overview
@@ -30,6 +30,8 @@ landingContent:
         links:
           - text: Build your first app
             url: get-started/first-app.md?pivots=devices-windows
+          - text: Learning resources
+            url: get-started/resources.md
           - text: Debug on an Android emulator
             url: android/emulator/debug-on-emulator.md
           - text: Setup an Android device for debugging
