@@ -26,12 +26,10 @@ landingContent:
             url: whats-new/index.yml
   - title: Get started
     linkLists:
-      - linkListType: get-started
+      - linkListType: how-to-guide
         links:
           - text: Build your first app
             url: get-started/first-app.md?pivots=devices-windows
-          - text: Learning resources
-            url: get-started/resources.md
           - text: Debug on an Android emulator
             url: android/emulator/debug-on-emulator.md
           - text: Setup an Android device for debugging
@@ -46,6 +44,10 @@ landingContent:
             url: ios/remote-simulator.md
           - text: Setup Windows for debugging
             url: windows/setup.md
+      - linkListType: get-started
+        links:
+          - text: Learning resources
+            url: get-started/resources.md
   - title: XAML
     linkLists:
       - linkListType: concept
