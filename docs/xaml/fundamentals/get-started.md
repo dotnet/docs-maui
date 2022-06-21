@@ -132,7 +132,7 @@ When you compile and deploy the new version of this app, a button appears on the
 You can navigate back to `MainPage` using the navigation bar that appears on each platform.
 
 > [!NOTE]
-> An alternative to this navigation model is to use .NET MAUI Shell. <!-- For more information, see [Shell]().-->
+> An alternative to this navigation model is to use .NET MAUI Shell. For more information, see [.NET MAUI Shell overview](~/fundamentals/shell/index.md).
 
 ## XAML and code interactions
 

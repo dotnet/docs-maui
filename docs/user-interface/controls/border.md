@@ -8,7 +8,7 @@ ms.date: 05/13/2022
 
 <!-- Sample link, if any, goes here -->
 
-The .NET Multi-platform App UI (.NET MAUI) `Border` is a container control that draws a border, background, or both, around another control. A `Border` can only contain one child object. If you want to put a border around multiple objects, wrap them in a container object such as a layout. <!-- For more information about layouts, see [](). -->
+The .NET Multi-platform App UI (.NET MAUI) `Border` is a container control that draws a border, background, or both, around another control. A `Border` can only contain one child object. If you want to put a border around multiple objects, wrap them in a container object such as a layout.  For more information about layouts, see [Layouts](~/user-interface/layouts/index.md).
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
@@ -27,7 +27,7 @@ The .NET Multi-platform App UI (.NET MAUI) `Border` is a container control that 
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
-<!-- For more information about the properties that control the shape and stroke of the border, see [Shapes](). -->
+For more information about the properties that control the shape and stroke of the border, see [Shapes](~/user-interface/controls/shapes/index.md).
 
 ## Create a Border
 

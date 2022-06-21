@@ -296,7 +296,7 @@ In this example, the implicit `Style` targets `RadioButton` objects. The `Checke
 
 :::image type="content" source="media/radiobutton/radiobuttons-visualstates.png" alt-text="Screenshot of RadioButton visual states.":::
 
-<!-- For more information about visual states, see [Visual State Manager](~/user-interface/visual-state-manager.md). -->
+For more information about visual states, see [Visual states](~/user-interface/visual-states.md).
 
 ## Redefine RadioButton appearance
 
@@ -443,7 +443,7 @@ In this example, the visual structure defined for each `RadioButton` is replaced
 
 :::image type="content" source="media/radiobutton/radiobuttons-templated.png" alt-text="Screenshot of templated RadioButtons.":::
 
-<!-- For more information about control templates, see [Control templates](~/fundamentals/templates/control-template.md). -->
+For more information about control templates, see [Control templates](~/fundamentals/controltemplate.md).
 
 ## Disable a RadioButton
 

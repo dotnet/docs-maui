@@ -227,7 +227,7 @@ This is the standard way to set a platform-dependent `Padding` property in XAML.
 > [!NOTE]
 > If the `Value` property of an `On` object can't be represented by a single string, you can define property elements for it.
 
-<!-- For more information, see [OnPlatform Markup Extension](~/xamarin-forms/xaml/markup-extensions/consuming.md#onplatform-markup-extension). -->
+For more information, see [OnPlatform Markup Extension](~/xaml/markup-extensions/consume.md#onplatform-markup-extension).
 
 ## Next steps
 

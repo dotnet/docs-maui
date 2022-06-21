@@ -17,7 +17,7 @@ There are many similarities between the functionality provided by `Microsoft.Mau
 - `Microsoft.Maui.Graphics` functionality must be consumed on a drawing canvas, enables performant graphics to be drawn, and provides a convenient approach for writing graphics-based controls. For example, a control that replicates the GitHub contribution profile can be more easily implemented using `Microsoft.Maui.Graphics` than by using .NET MAUI shapes.
 - .NET MAUI shapes can be consumed directly on a page, and brushes can be consumed by all controls. This functionality is provided to help you produce an attractive UI.
 
-<!-- For more information about .NET MAUI shapes, see [Shapes](). -->
+For more information about .NET MAUI shapes, see [Shapes](~/user-interface/controls/shapes/index.md).
 
 <!-- ## Platform abstractions
 

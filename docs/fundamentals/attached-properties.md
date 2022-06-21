@@ -80,7 +80,7 @@ public static void SetHasShadow (BindableObject view, bool value)
 
 ### Consume an attached property
 
-Once an attached property has been created, it can be consumed from XAML or code. In XAML, this is achieved by declaring a namespace with a prefix, with the namespace declaration indicating the Common Language Runtime (CLR) namespace name, and optionally an assembly name. <!-- For more information, see [XAML Namespaces](~/xamarin-forms/xaml/namespaces.md).-->
+Once an attached property has been created, it can be consumed from XAML or code. In XAML, this is achieved by declaring a namespace with a prefix, with the namespace declaration indicating the Common Language Runtime (CLR) namespace name, and optionally an assembly name. For more information, see [XAML Namespaces](~/xaml/namespaces/index.md).
 
 The following example demonstrates a XAML namespace for a custom type that contains an attached property, which is defined within the same assembly as the app code that's referencing the custom type:
 
@@ -121,7 +121,7 @@ The `Style` can be applied to a `Label` by setting its `Style` property to the `
 <Label Text="Label with shadow" Style="{StaticResource ShadowStyle}" />
 ```
 
-<!-- For more information about styles, see [Styles](~/xamarin-forms/user-interface/styles/xaml/introduction.md). -->
+For more information about styles, see [Styles](~/user-interface/styles/xaml.md).
 
 ## Advanced scenarios
 

@@ -64,7 +64,7 @@ DatePicker datePicker = new DatePicker
 };
 ```
 
-<!-- For information about setting font properties, see [Fonts](~/user-interface/fonts.md). -->
+For information about setting font properties, see [Fonts](~/user-interface/fonts.md).
 
 ## DatePicker and layout
 

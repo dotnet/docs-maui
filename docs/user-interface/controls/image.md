@@ -21,7 +21,7 @@ The .NET Multi-platform App UI (.NET MAUI) `Image` displays an image that can be
 These properties are backed by `BindableProperty` objects, which means that they can be styled, and be the target of data bindings.
 
 > [!NOTE]
-> Font icons can be displayed by an `Image` by specifying the font icon data as a `FontImageSource` object. <!-- For more information, see [Display font icons](~/user-interface/fonts.md#display-font-icons).-->
+> Font icons can be displayed by an `Image` by specifying the font icon data as a `FontImageSource` object. For more information, see [Display font icons](~/user-interface/fonts.md#display-font-icons).
 
 The `ImageSource` class defines the following methods that can be used to load an image from different sources:
 
