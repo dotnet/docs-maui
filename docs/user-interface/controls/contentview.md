@@ -69,7 +69,7 @@ public partial class CardView : ContentView
 }
 ```
 
-<!-- For more information about `BindableProperty` objects, see [Bindable Properties](~/xaml/bindable-properties.md). -->
+For more information about `BindableProperty` objects, see [Bindable properties](~/fundamentals/bindable-properties.md).
 
 ### Define the UI
 
@@ -102,7 +102,7 @@ The custom control UI can be defined in the XAML file for the `ContentView`-deri
 </ContentView>
 ```
 
-The `ContentView` element sets the `x:Name` property to `this`, which can be used to access the object bound to the `CardView` instance. Elements in the layout set bindings on their properties to values defined on the bound object. <!-- For more information about data binding, see [Data Binding](~/fundamentals/data-binding/index.md).-->
+The `ContentView` element sets the `x:Name` property to `this`, which can be used to access the object bound to the `CardView` instance. Elements in the layout set bindings on their properties to values defined on the bound object. For more information about data binding, see [Data ninding](~/fundamentals/data-binding/index.md).
 
 > [!NOTE]
 > The `FallbackValue` property in the `Binding` expression provides a default value in case the binding is `null`.

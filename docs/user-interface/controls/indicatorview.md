@@ -180,4 +180,4 @@ In this example, the `Selected` visual state specifies that the indicator that r
 
 :::image type="content" source="media/indicatorview/visual-state.png" alt-text="Screenshot of IndicatorView selected visual state.":::
 
-<!-- For more information about visual states, see [Visual State Manager](visual-state-manager.md). -->
+For more information about visual states, see [Visual states](~/user-interface/visual-state.md).

@@ -40,8 +40,7 @@ The `SemanticProperties` class defines the following attached properties:
 - `Hint`, of type `string`, which is similar to `Description`, but provides additional context such as the purpose of a control. For more information, see [Hint](#hint).
 - `HeadingLevel`, of type `SemanticHeadingLevel`, which enables an element to be marked as a heading to organize the UI and make it easier to navigate. For more information, see [Heading levels](#heading-levels).
 
-These attached properties set platform accessibility values so that a screen reader can speak about the element. <!-- For more information about attached properties, see [Attached properties]().-->
-
+These attached properties set platform accessibility values so that a screen reader can speak about the element. For more information about attached properties, see [Attached properties](~/fundamentals/attached-properties.md).
 ### Description
 
 The `SemanticProperties.Description` attached property represents a short, descriptive `string` that a screen reader uses to announce an element. This property should be set for elements that have a meaning that's important for understanding the content or interacting with the user interface. Setting this property can be accomplished in XAML:
@@ -206,7 +205,7 @@ The `AutomationProperties` class defines the following attached properties:
 - `HelpText`, of type `string`, represents a longer description of the element, which can be thought of as tooltip text that's associated with the element. For more information, see [HelpText](#helptext).
 - `LabeledBy`, of type `VisualElement`, which enables another element to define accessibility information for the current element. For more information, see [LabeledBy](#labeledby).
 
-These attached properties set platform accessibility values so that a screen reader can speak about the element. <!-- For more information about attached properties, see [Attached Properties](~/xamarin-forms/xaml/attached-properties.md). -->
+These attached properties set platform accessibility values so that a screen reader can speak about the element. For more information about attached properties, see [Attached properties](~/fundamentals/attached-properties.md).
 
 Different screen readers read different accessibility values. Therefore, when using automation properties it's recommended that thorough accessibility testing is carried out on each platform to ensure an optimal experience.
 

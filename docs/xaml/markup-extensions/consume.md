@@ -390,7 +390,7 @@ A typical usage of this markup extension is in a Shell application, as shown in 
 
 In this example, `MonkeysPage` is converted from a `ContentPage` to a `DataTemplate`, which is set as the value of the `ShellContent.ContentTemplate` property. This ensures that `MonkeysPage` is only created when navigation to the page occurs, rather than at application startup.
 
-<!-- For more information about Shell applications, see [Shell](~/fundamentals/shell/introduction.md). -->
+For more information about Shell apps, see [Shell](~/fundamentals/shell/index.md).
 
 ## FontImage markup extension
 

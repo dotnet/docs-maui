@@ -284,7 +284,7 @@ Several markup extensions are intrinsic to XAML and supported in .NET MAUI XAML.
 - If a property is of type `Type`, you can assign it to a `Type` object using the markup extension `{x:Type someClass}`.
 - You can define arrays in XAML using the `x:Array` markup extension. This markup extension has a required attribute named `Type` that indicates the type of the elements in the array.
 
-<!-- For more information about XAML markup extensions, see [](). -->
+For more information about XAML markup extensions, see [Consume XAML markup extensions](markup-extensions/consume.md).
 
 ## Next steps
 

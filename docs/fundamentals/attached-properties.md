@@ -121,7 +121,7 @@ The `Style` can be applied to a `Label` by setting its `Style` property to the `
 <Label Text="Label with shadow" Style="{StaticResource ShadowStyle}" />
 ```
 
-<!-- For more information about styles, see [Styles](~/xamarin-forms/user-interface/styles/xaml/introduction.md). -->
+For more information about styles, see [Styles](~/user-interface/styles/xaml.md).
 
 ## Advanced scenarios
 

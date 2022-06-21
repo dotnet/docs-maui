@@ -22,7 +22,7 @@ The following screenshot shows a `CollectionView` displaying grouped data:
 
 :::image type="content" source="media/grouping/grouped-data.png" alt-text="Screenshot of grouped data in a CollectionView.":::
 
-<!-- For more information about data templates, see [Data Templates](~/fundamentals/templates/data-templates/introduction.md). -->
+For more information about data templates, see [Data templates](~/fundamentals/datatemplate.md).
 
 ## Group data
 

@@ -243,7 +243,7 @@ If multiple triggers are simultaneously active (for example, two custom triggers
 > [!NOTE]
 > State triggers can be set in a `Style`, or directly on elements.
 
-<!-- For more information about visual states, see [Visual State Manager](~/user-interface/visual-state-manager.md). -->
+For more information about visual states, see [Visual states](~/user-interface/visual-state.md).
 
 ### State trigger
 

@@ -103,7 +103,7 @@ Just as in code, the data binding is set on the target object, which is the `Lab
 - The `x:Reference` markup extension is required to reference the source object, which is the `Slider` named `slider`.
 - The `Binding` markup extension links the `Rotation` property of the `Label` to the `Value` property of the `Slider`.
 
-<!-- For more information about XAML markup extensions, see [XAML Markup Extensions](~/xaml/markup-extensions/index.md). -->
+For more information about XAML markup extensions, see [Consume XAML markup extensions](~/xaml/markup-extensions/consume.md).
 
 > [!NOTE]
 > The source property is specified with the `Path` property of the `Binding` markup extension, which corresponds with the `Path` property of the `Binding` class.

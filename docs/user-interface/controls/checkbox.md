@@ -102,7 +102,7 @@ The following screenshot shows the `Label` formatting when the `CheckBox` is che
 
 :::image type="content" source="media/checkbox/checkbox-databinding.png" alt-text="Screenshot of a data bound CheckBox.":::
 
-<!-- For more information about triggers, see [Triggers](~/fundamentals/triggers.md). -->
+For more information about triggers, see [Triggers](~/fundamentals/triggers.md).
 
 ## Disable a Checkbox
 
@@ -150,4 +150,4 @@ The following XAML example shows how to define a visual state for the `IsChecked
 
 In this example, the `IsChecked` `VisualState` specifies that when the `CheckBox` is checked, its `Color` property will be set to green. The `Normal` `VisualState` specifies that when the `CheckBox` is in a normal state, its `Color` property will be set to red. Therefore, the overall effect is that the `CheckBox` is red when it's empty, and green when it's checked.
 
-<!-- For more information about visual states, see [Visual State Manager](~/user-interface/visual-state-manager.md). -->
+For more information about visual states, see [Visual states](~/user-interface/visual-state.md).

@@ -142,7 +142,7 @@ In this example, the `On` `VisualState` specifies that when the `IsToggled` prop
 :::image type="content" source="media/switch/on-visualstate.png" alt-text="Screenshot of Switch on VisualState.":::
 :::image type="content" source="media/switch/off-visualstate.png" alt-text="Screenshot of Switch off VisualState.":::
 
-<!-- For more information about visual states, see [Visual state manager](~/user-interface/visual-state-manager.md). -->
+For more information about visual states, see [Visual states](~/user-interface/visual-state.md).
 
 ## Disable a Switch
 

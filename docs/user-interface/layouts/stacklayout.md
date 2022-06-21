@@ -276,7 +276,7 @@ public class AlignmentPage : ContentPage
 }
 ```
 
-<!-- For more information about alignment, see [Layout Options in .NET MAUI](layout-options.md). -->
+For more information about alignment, see [Align views in layouts](~/user-inteface/align-position.md#align-views-in-layouts). 
 
 ## Nested StackLayout objects
 

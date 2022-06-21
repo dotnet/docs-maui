@@ -292,7 +292,7 @@ The `Style` can be applied to an `Entry` by setting its `Style` property to the 
 <Entry Placeholder="Enter a System.Double" Style="{StaticResource NumericValidationStyle}">
 ```
 
-<!-- For more information about styles, see [Styles](~/user-interface/styles/xaml/index.md). -->
+For more information about styles, see [Styles](~/user-interface/styles/xaml.md).
 
 > [!NOTE]
 > While you can add bindable properties to a behavior that is set or queried in XAML, if you do create behaviors that have state they should not be shared between controls in a `Style` in a `ResourceDictionary`.

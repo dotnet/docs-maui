@@ -28,7 +28,7 @@ The `Mode` property should be set to one of the `RelativeBindingSourceMode` enum
 
 The `Mode` property is the content property of the `RelativeSourceExtension` class. Therefore, for XAML markup expressions expressed with curly braces, you can eliminate the `Mode=` part of the expression.
 
-<!-- For more information about .NET MAUI markup extensions, see [XAML Markup Extensions](~/xaml/markup-extensions/index.md). -->
+For more information about .NET MAUI markup extensions, see [Consume XAML markup extensions](~/xaml/markup-extensions/consume.md).
 
 ## Bind to self
 

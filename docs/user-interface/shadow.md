@@ -72,7 +72,7 @@ In this example, a black shadow is painted around the outline of the `EllipseGeo
 
 :::image type="content" source="media/shadow/clipped-image.png" alt-text="Screenshot of a clipped image with a shadow applied.":::
 
-<!-- For more information about clipping an element, see [Clip with a Geometry](). -->
+For more information about clipping an element, see [Clip with a Geometry](~/user-interface/controls/shapes/geometries.md#clip-with-a-geometry).
 
 <!-- Todo: Only currently supported on Android
 
