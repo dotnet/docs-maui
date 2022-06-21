@@ -47,9 +47,13 @@ namespace InvokePlatformCodeDemos.Services
 
 The partial class is named `DeviceOrientationService`, which includes a partial method named `GetOrientation`.
 
+The code file for this class must be outside of the _Platforms_ folder. Place the code file in the root of the project, as illustrated by the following screenshot:
+
+:::image type="content" source="media/invoke-platform-code/create-api.png" alt-text="DeviceOrientationService class in the root folder screenshot.":::
+
 ## Implement the API per platform
 
-After defining the cross-platform API, it must be implemented on your required platforms by defining the same partial class and the same partial method signatures, while also providing the method implementations.
+After defining the cross-platform API, it must be implemented on all platforms you're targeting by defining the same partial class and the same partial method signatures, while also providing the method implementations.
 
 Platform implementations should be placed in the correct _Platforms_ child folders to ensure that the build system only attempts to build platform code when building for the specific platform. The following table lists the default folder locations for platform implementations:
 
