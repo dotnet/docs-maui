@@ -334,7 +334,7 @@ The following screenshot shows the `CurrentItem`, `PreviousItem`, and `NextItem`
 
 :::image type="content" source="media/interaction/visual-states.png" alt-text="Screenshot of a CarouselView using visual states.":::
 
-For more information about visual states, see [Visual states](~/user-interface/visual-state.md).
+For more information about visual states, see [Visual states](~/user-interface/visual-states.md).
 
 ## Clear the current item
 

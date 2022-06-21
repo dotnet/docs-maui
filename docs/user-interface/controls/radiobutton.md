@@ -296,7 +296,7 @@ In this example, the implicit `Style` targets `RadioButton` objects. The `Checke
 
 :::image type="content" source="media/radiobutton/radiobuttons-visualstates.png" alt-text="Screenshot of RadioButton visual states.":::
 
-For more information about visual states, see [Visual states](~/user-interface/visual-state.md).
+For more information about visual states, see [Visual states](~/user-interface/visual-states.md).
 
 ## Redefine RadioButton appearance
 

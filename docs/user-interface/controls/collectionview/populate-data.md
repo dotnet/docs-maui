@@ -192,7 +192,7 @@ The `MonkeyDataTemplateSelector` class defines `AmericanMonkey` and `OtherMonkey
 
 :::image type="content" source="media/populate-data/datatemplateselector.png" alt-text="Screenshot of CollectionView runtime item template selection.":::
 
-For more information about data template selectors, see [Create a DataTemplateSelector](~/fundamentals/datatemplate.md#create-a-DataTemplateSelector).
+For more information about data template selectors, see [Create a DataTemplateSelector](~/fundamentals/datatemplate.md#create-a-datatemplateselector).
 
 > [!IMPORTANT]
 > When using `CollectionView`, never set the root element of your `DataTemplate` objects to a `ViewCell`. This will result in an exception being thrown because `CollectionView` has no concept of cells.

@@ -318,4 +318,4 @@ The `SearchTermTemplateSelector` class defines `DefaultTemplate` and `OtherTempl
 
 :::image type="content" source="media/emptyview/datatemplateselector.png" alt-text="Screenshot of a CollectionView runtime empty view template selection.":::
 
-For more information about data template selectors, see [Create a DataTemplateSelector](~/fundamentals/datatemplate.md#create-a-DataTemplateSelector).
+For more information about data template selectors, see [Create a DataTemplateSelector](~/fundamentals/datatemplate.md#create-a-datatemplateselector).

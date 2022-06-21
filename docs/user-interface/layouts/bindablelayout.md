@@ -127,7 +127,7 @@ The `TechItemTemplateSelector` class defines `DefaultTemplate` and `MAUITemplate
 
 :::image type="content" source="media/bindablelayout/favorite-tech.png" alt-text=".NET MAUI bindable layout with a DataTemplateSelector.":::
 
-For more information about data template selectors, see [Create a DataTemplateSelector](~/fundamentals/datatemplate.md#create-a-DataTemplateSelector).
+For more information about data template selectors, see [Create a DataTemplateSelector](~/fundamentals/datatemplate.md#create-a-datatemplateselector).
 
 ## Display a string when data is unavailable
 

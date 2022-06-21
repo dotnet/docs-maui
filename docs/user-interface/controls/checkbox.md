@@ -150,4 +150,4 @@ The following XAML example shows how to define a visual state for the `IsChecked
 
 In this example, the `IsChecked` `VisualState` specifies that when the `CheckBox` is checked, its `Color` property will be set to green. The `Normal` `VisualState` specifies that when the `CheckBox` is in a normal state, its `Color` property will be set to red. Therefore, the overall effect is that the `CheckBox` is red when it's empty, and green when it's checked.
 
-For more information about visual states, see [Visual states](~/user-interface/visual-state.md).
+For more information about visual states, see [Visual states](~/user-interface/visual-states.md).

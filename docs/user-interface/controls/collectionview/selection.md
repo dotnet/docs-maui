@@ -297,7 +297,7 @@ In this example, the `Style.TargetType` property value is set to `Grid` because 
 
 :::image type="content" source="media/selection/single-selection-color.png" alt-text="Screenshot of a CollectionView vertical list with a custom single selection color.":::
 
-For more information about visual states, see [Visual states](~/user-interface/visual-state.md).
+For more information about visual states, see [Visual states](~/user-interface/visual-states.md).
 
 ## Disable selection
 
