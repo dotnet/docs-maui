@@ -6,7 +6,7 @@ ms.date: 06/21/2022
 
 # Resources for learning .NET MAUI
 
-There are many different resources available for you to use to learn .NET Multi-platform App UI (.NET MAUI). There are Microsoft Learn modules, workshops, videos, and podcasts. Each vary in their depth, and the topics they cover.
+There are many different resources available for you to use to learn .NET Multi-platform App UI (.NET MAUI). There are Microsoft Learn modules, workshops, videos, and podcasts. Each varies in its depth and the topics it covers.
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
