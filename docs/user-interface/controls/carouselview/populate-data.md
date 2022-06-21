@@ -42,7 +42,7 @@ carouselView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
 In this example, the `ItemsSource` property data binds to the `Monkeys` property of the connected viewmodel.
 
 > [!NOTE]
-> Compiled bindings can be enabled to improve data binding performance in .NET MAUI applications. <!-- For more information, see [Compiled Bindings](~/xamarin-forms/app-fundamentals/data-binding/compiled-bindings.md). -->
+> Compiled bindings can be enabled to improve data binding performance in .NET MAUI applications. For more information, see [Compiled nindings](~/fundamentals/data-binding/compiled-bindings.md).
 
 For information on how to change the `CarouselView` orientation, see [Specify CarouselView layout](layout.md). For information on how to define the appearance of each item in the `CarouselView`, see [Define item appearance](#define-item-appearance). <!-- For more information about data binding, see [Data Binding](~/xamarin-forms/app-fundamentals/data-binding/index.md). -->
 

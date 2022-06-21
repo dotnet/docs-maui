@@ -84,7 +84,7 @@ After enabling remote login on the Mac, connect Visual Studio 2022 to the Mac:
     >
     > If you choose **Forget this Mac**, your credentials for the selected Mac will be forgotten. To reconnect to that Mac, you will need to re-enter your username and password.
 
-If you have successfully paired to a Mac build host, you are ready to build .NET MAUI iOS apps in Visual Studio 2022. <!-- For more information, see [](). -->
+If you have successfully paired to a Mac build host, you are ready to build .NET MAUI iOS apps in Visual Studio 2022. For more information, see [Build your first app](~/get-started/first-app.md?pivots=devices-ios).
 
 If you have not been able to pair a Mac, try [manually adding a Mac](#manually-add-a-mac).
 
