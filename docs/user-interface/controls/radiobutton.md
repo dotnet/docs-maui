@@ -443,7 +443,7 @@ In this example, the visual structure defined for each `RadioButton` is replaced
 
 :::image type="content" source="media/radiobutton/radiobuttons-templated.png" alt-text="Screenshot of templated RadioButtons.":::
 
-<!-- For more information about control templates, see [Control templates](~/fundamentals/templates/control-template.md). -->
+For more information about control templates, see [Control templates](~/fundamentals/controltemplate.md).
 
 ## Disable a RadioButton
 

@@ -169,4 +169,4 @@ In this example, the `Frame`, which is the root element of the `ControlTemplate`
 
 :::image type="content" source="media/relative-bindings/templatedparent-relative-binding.png" alt-text="Screenshot of a TemplatedParent mode relative binding.":::
 
-<!-- For more information about control templates, see [Control Templates](~/fundamentals/templates/control-template.md). -->
+For more information about control templates, see [Control templates](~/fundamentals/controltemplate.md).

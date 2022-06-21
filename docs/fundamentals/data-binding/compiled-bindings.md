@@ -61,7 +61,7 @@ The following example demonstrates using compiled bindings between .NET MAUI vie
 </ContentPage>
 ```
 
-The `ContentPage` instantiates the `HslColorViewModel` and initializes the `Color` property within property element tags for the `BindingContext` property. The `ContentPage` also defines the `x:DataType` attribute as the viewmodel type, indicating that any binding expressions in the `ContentPage` view hierarchy will be compiled. This can be verified by changing any of the binding expressions to bind to a non-existent viewmodel property, which will result in a build error. While this example sets the `x:DataType` attribute to a string literal, it can also be set to a type with the `x:Type` markup extension. For more information about the `x:Type` markup extension, see [x:Type Markup Extension](~/xaml/markup-extensions/consuming.md#xtype-markup-extension).
+The `ContentPage` instantiates the `HslColorViewModel` and initializes the `Color` property within property element tags for the `BindingContext` property. The `ContentPage` also defines the `x:DataType` attribute as the viewmodel type, indicating that any binding expressions in the `ContentPage` view hierarchy will be compiled. This can be verified by changing any of the binding expressions to bind to a non-existent viewmodel property, which will result in a build error. While this example sets the `x:DataType` attribute to a string literal, it can also be set to a type with the `x:Type` markup extension. For more information about the `x:Type` markup extension, see [x:Type Markup Extension](~/xaml/markup-extensions/consume.md#xtype-markup-extension).
 
 > [!IMPORTANT]
 > The `x:DataType` attribute can be re-defined at any point in a view hierarchy.
@@ -149,7 +149,7 @@ Careful structuring of `x:DataType` attributes can therefore lead to a page usin
 
 The root `StackLayout` sets the `x:DataType` attribute to be the `HslColorViewModel` type, indicating that any binding expression in the root `StackLayout` view hierarchy will be compiled. However, the inner `StackLayout` redefines the `x:DataType` attribute to `null` with the `x:Null` markup expression. Therefore, the binding expressions within the inner `StackLayout` use classic bindings. Only the `BoxView`, within the root `StackLayout` view hierarchy, uses compiled bindings.
 
-<!-- For more information about the `x:Null` markup expression, see [x:Null Markup Extension](~/xaml/markup-extensions/consuming.md#xnull-markup-extension). -->
+<!-- For more information about the `x:Null` markup expression, see [x:Null Markup Extension](~/xaml/markup-extensions/consume.md#xnull-markup-extension). -->
 
 ## Performance
 

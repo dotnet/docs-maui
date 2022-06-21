@@ -179,4 +179,4 @@ The following screenshot shows a standard `CardView` instance, and multiple `Car
 
 :::image type="content" source="media/contentview/cardview-controltemplates.png" alt-text="Screenshot of CardView overridden with a ControlTemplate.":::
 
-<!-- For more information about control templates, see [Control Templates](~/fundamentals/templates/control-template.md). -->
+For more information about control templates, see [Control templates](~/fundamentals/controltemplate.md).
