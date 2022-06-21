@@ -132,7 +132,7 @@ landingContent:
     linkLists:
       - linkListType: concept
         links:
-          - text: Consume a RESTful web service
+          - text: Consume a REST-based web service
             url: data-cloud/rest.md
   - title: Publish
     linkLists:

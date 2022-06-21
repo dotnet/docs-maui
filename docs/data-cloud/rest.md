@@ -1,10 +1,10 @@
 ---
-title: "Consume a RESTful web service"
-description: "Learn how to consume a RESTful web service from a .NET MAUI app."
+title: "Consume a REST-based web service"
+description: "Learn how to consume a REST-based web service from a .NET MAUI app."
 ms.date: 06/21/2022
 ---
 
-# Consume a RESTful web service
+# Consume a REST-based web service
 
 <!-- [![View sample.](~/media/shared/download.png) View the sample](/samples/xamarin/xamarin-forms-samples/webservices-todorest) -->
 
@@ -18,13 +18,13 @@ Representational State Transfer (REST) is an architectural style for building we
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
-Web service APIs that adhere to REST are called RESTful APIs, and are defined using:
+Web service APIs that adhere to REST are defined using:
 
 - A base URI.
 - HTTP methods, such as GET, POST, PUT, PATCH, or DELETE.
 - A media type for the data, such as JavaScript Object Notation (JSON).
 
-RESTful web services typically use JSON messages to return data to the client. JSON is a text-based data-interchange format that produces compact payloads, which results in reduced bandwidth requirements when sending data. The simplicity of REST has helped make it the primary method for accessing web services in mobile apps.
+REST-based web services typically use JSON messages to return data to the client. JSON is a text-based data-interchange format that produces compact payloads, which results in reduced bandwidth requirements when sending data. The simplicity of REST has helped make it the primary method for accessing web services in mobile apps.
 
 ## Web service operations
 
@@ -55,7 +55,7 @@ When the Web API framework receives a request it routes the request to an action
 
 ## Create the HTTPClient object
 
-A .NET Multi-platform App UI (.NET MAUI) app can consume a RESTful web service by sending requests to the web service with the [`HttpClient`](xref:System.Net.Http.HttpClient) class. This class provides functionality for sending HTTP requests and receiving HTTP responses from a URI identified resource. Each request is sent as an asynchronous operation.
+A .NET Multi-platform App UI (.NET MAUI) app can consume a REST-based web service by sending requests to the web service with the [`HttpClient`](xref:System.Net.Http.HttpClient) class. This class provides functionality for sending HTTP requests and receiving HTTP responses from a URI identified resource. Each request is sent as an asynchronous operation.
 
 The `HttpClient` object should be declared at the class-level so that it lives for as long as the app needs to make HTTP requests:
 
