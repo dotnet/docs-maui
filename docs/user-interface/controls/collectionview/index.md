@@ -1,6 +1,6 @@
 ---
 title: "CollectionView"
-description: "The .NET MAUI CollectionView displays a scollable list of selectable data items, using different layout specifications."
+description: "The .NET MAUI CollectionView displays a scrollable list of selectable data items, using different layout specifications."
 ms.date: 01/18/2022
 ---
 
@@ -10,7 +10,7 @@ The .NET Multi-platform App UI (.NET MAUI) `CollectionView` is a view for presen
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
-The following screenshot shows a `CollectionView` that uses a two column vertical grid, and which allows multiple selection:
+The following screenshot shows a `CollectionView` that uses a two-column vertical grid and allows multiple selections:
 
 :::image type="content" source="media/verticalgrid-multipleselection.png" alt-text="Screenshot of a CollectionView vertical grid layout.":::
 
@@ -45,4 +45,4 @@ While the `CollectionView` and `ListView` APIs are similar, there are some notab
 | Grouping | `GroupDisplayBinding`, `GroupHeaderTemplate`, `GroupShortNameBinding`, `IsGroupingEnabled` | `CollectionView` displays correctly grouped data by setting its `IsGrouped` property to `true`. Group headers and group footers can be customized by setting the `GroupHeaderTemplate` and `GroupFooterTemplate` properties to  `DataTemplate` objects. For more information, see [Display grouped data in a CollectionView](grouping.md). |
 | Pull to refresh | `IsPullToRefreshEnabled`, `IsRefreshing`, `RefreshAllowed`, `RefreshCommand`, `RefreshControlColor`, `BeginRefresh()`, `EndRefresh()` | Pull to refresh functionality is supported by setting a `CollectionView` as the child of a `RefreshView`. For more information, see [Pull to refresh](populate-data.md#pull-to-refresh). |
 | Context menu items | `ContextActions` | Context menu items are supported by setting a `SwipeView` as the root view in the `DataTemplate` that defines the appearance of each item of data in the `CollectionView`. For more information, see [Context menus](populate-data.md#context-menus). |
-| Scrolling | `ScrollTo()` | `CollectionView` defines `ScrollTo` methods, that scroll items into view. For more information, see [Control scrolling in a CollectionView](scrolling.md). |
+| Scrolling | `ScrollTo()` | `CollectionView` defines `ScrollTo` methods, which scroll items into view. For more information, see [Control scrolling in a CollectionView](scrolling.md). |

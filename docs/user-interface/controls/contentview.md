@@ -39,12 +39,12 @@ Any control properties, events, and other logic should be defined in the code-be
 
 The `CardView` custom control defines the following properties:
 
-- `CardTitle`, of type `string`, that represents the title shown on the card.
-- `CardDescription`, of type `string`, that represents the description shown on the card.
-- `IconImageSource`, of type `ImageSource`, that represents the image shown on the card.
-- `IconBackgroundColor`, of type `Color`, that represents the background color for the image shown on the card.
-- `BorderColor`, of type `Color`, that represents the color of the card border, image border, and divider line.
-- `CardColor`, of type `Color`, that represents the background color of the card.
+- `CardTitle`, of type `string`, which represents the title shown on the card.
+- `CardDescription`, of type `string`, which represents the description shown on the card.
+- `IconImageSource`, of type `ImageSource`, which represents the image shown on the card.
+- `IconBackgroundColor`, of type `Color`, which represents the background color for the image shown on the card.
+- `BorderColor`, of type `Color`, which represents the color of the card border, image border, and divider line.
+- `CardColor`, of type `Color`, which represents the background color of the card.
 
 Each property is backed by a `BindableProperty` instance.
 
@@ -102,7 +102,7 @@ The custom control UI can be defined in the XAML file for the `ContentView`-deri
 </ContentView>
 ```
 
-The `ContentView` element sets the `x:Name` property to `this`, which can be used to access the object bound to the `CardView` instance. Elements in the layout set bindings on their properties to values defined on the bound object. For more information about data binding, see [Data ninding](~/fundamentals/data-binding/index.md).
+The `ContentView` element sets the `x:Name` property to `this`, which can be used to access the object bound to the `CardView` instance. Elements in the layout set bindings on their properties to values defined on the bound object. For more information about data binding, see [Data binding](~/fundamentals/data-binding/index.md).
 
 > [!NOTE]
 > The `FallbackValue` property in the `Binding` expression provides a default value in case the binding is `null`.

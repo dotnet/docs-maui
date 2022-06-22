@@ -105,7 +105,7 @@ Shadow.SetHasShadow (label, true);
 
 ### Consume an attached property with a style
 
-Attached properties can also be added to a control by a style. The following XAML code example shows an *explicit* style that uses the `HasShadow` attached property, that can be applied to `Label` controls:
+Attached properties can also be added to a control by a style. The following XAML code example shows an *explicit* style for `Label` controls that uses the `HasShadow` attached property:
 
 ```xaml
 <Style x:Key="ShadowStyle" TargetType="Label">
@@ -125,4 +125,4 @@ For more information about styles, see [Styles](~/user-interface/styles/xaml.md)
 
 ## Advanced scenarios
 
-When creating an attached property, there are a number of optional parameters that can be set to enable advanced attached property scenarios. This includes detecting property changes, validating property values, and coercing property values. For more information, see [Advanced scenarios](bindable-properties.md#advanced-scenarios).
+When creating an attached property, there are some optional parameters that can be set to enable advanced attached property scenarios. This includes detecting property changes, validating property values, and coercing property values. For more information, see [Advanced scenarios](bindable-properties.md#advanced-scenarios).
