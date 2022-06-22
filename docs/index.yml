@@ -136,10 +136,10 @@ landingContent:
     linkLists:
       - linkListType: concept
         links:
+          - text: Connect to local web services
+            url: data-cloud/local-web-services.md          
           - text: Consume a REST-based web service
             url: data-cloud/rest.md
-          - text: Connect to local web services
-            url: data-cloud/local-web-services.md
   - title: Publish
     linkLists:
       - linkListType: concept
