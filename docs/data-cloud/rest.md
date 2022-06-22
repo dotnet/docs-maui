@@ -6,7 +6,7 @@ ms.date: 06/21/2022
 
 # Consume a REST-based web service
 
-<!-- [![View sample.](~/media/shared/download.png) View the sample](/samples/xamarin/xamarin-forms-samples/webservices-todorest) -->
+<!-- [![View sample.](~/media/shared/download.png) View the sample](/samples/dotnet-maui/webservices-rest) -->
 
 Representational State Transfer (REST) is an architectural style for building web services. REST requests are typically made over HTTPS using the same HTTP verbs that web browsers use to retrieve web pages and to send data to servers. The verbs are:
 

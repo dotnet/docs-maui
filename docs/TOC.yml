@@ -583,6 +583,8 @@
           items:
             - name: REST
               href: data-cloud/rest.md
+            - name: Connect to local web services
+              href: data-cloud/local-web-services.md
     - name: Publish
       items:
         - name: Android
