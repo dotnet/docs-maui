@@ -6,7 +6,7 @@ ms.date: 06/22/2022
 
 # Connect to local web services from Android emulators and iOS simulators
 
-<!-- [![View sample.](~/media/shared/download.png) View the sample](/samples/dotnet-maui/webservices-rest) -->
+[![Browse sample.](~/media/shared/download.png) Browse the sample](/samples/dotnet/maui-samples/webservices-rest)
 
 Many mobile and desktop apps consume web services. During the software development phase, it's common to deploy a web service locally and consume it from an app running in the Android emulator or iOS simulator. This avoids having to deploy the web service to a hosted endpoint, and enables a straightforward debugging experience because both the app and web service are running locally.
 
