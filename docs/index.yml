@@ -62,6 +62,8 @@ landingContent:
             url: xaml/field-modifiers.md
           - text: Generics
             url: xaml/generics.md
+          - text: Hot Reload`
+            url: xaml/hot-reload.md
           - text: Markup extensions
             url: xaml/markup-extensions/consume.md
           - text: Namespaces
