@@ -18,17 +18,17 @@ Provided that Hot Reload is enabled, the **Live Visual Tree** window will displa
 
 ## Just My XAML
 
-The view of the UI elements is simplified by default using a feature called Just My XAML. Clicking the **Show Just My XAML** button shows all UI elements in the visual tree:
+The view of the UI elements is simplified by default using a feature called Just My XAML. Clicking the **Show Just My XAML** button disables the feature and shows all UI elements in the visual tree:
 
 :::image type="content" source="media/live-visual-tree/just-my-xaml.png" alt-text="Screenshot of all UI elements in the Live Visual Tree window.":::
 
-Just My XAML can be disabled by selecting **Debug > Options > XAML Hot Reload** from the Visual Studio menu bar. Next, in the **Options** dialog box, ensure that **Enable Just My XAML in Live Visual Tree** is disabled:
+Just My XAML can be permanently disabled by selecting **Debug > Options > XAML Hot Reload** from the Visual Studio menu bar. Next, in the **Options** dialog box, ensure that **Enable Just My XAML in Live Visual Tree** is disabled:
 
 :::image type="content" source="media/live-visual-tree/just-my-xaml-disabled.png" alt-text="Screenshot of Just My XAML button disabled in the Live Visual Tree window.":::
 
 ## Find a UI element
 
-The structure of a XAML UI has a lot of elements that you're probably not directly interested in, and if you don't have a full understanding of the app's source code you might have a difficult time navigating the visual tree to find what you're looking for. Therefore, the **Live Visual Tree** window has multiple approaches that let you use the app's UI to help you find the element you want to examine:
+The structure of a XAML UI has a lot of elements that you may not be interested in, and if you don't have a full understanding of the app's source code you might have a difficult time navigating the visual tree to find the UI element that you're looking for. Therefore, the **Live Visual Tree** window has multiple approaches that let you use the app's UI to help you find the element you want to examine:
 
 - **Select element in the running application**. You can enable this mode by clicking the **Select Element in the Running Application** button in the **Live Visual Tree** toolbar:
 
