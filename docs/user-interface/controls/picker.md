@@ -8,8 +8,6 @@ ms.date: 02/11/2022
 
 The .NET Multi-platform App UI (.NET MAUI) `Picker` displays a short list of items, from which the user can select an item.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 `Picker` defines the following properties:
 
 - `CharacterSpacing`, of type `double`, is the spacing between characters of the item displayed by the `Picker`.

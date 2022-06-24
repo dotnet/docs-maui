@@ -8,8 +8,6 @@ ms.date: 06/09/2022
 
 The Model-View-ViewModel (MVVM) pattern enforces a separation between three software layers — the XAML user interface, called the view, the underlying data, called the model, and an intermediary between the view and the model, called the viewmodel. The view and the viewmodel are often connected through data bindings defined in XAML. The `BindingContext` for the view is usually an instance of the viewmodel.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 ## Simple MVVM
 
 In [XAML markup extensions](markup-extensions.md) you saw how to define a new XML namespace declaration to allow a XAML file to reference classes in other assemblies. The following example uses the `x:Static` markup extension to obtain the current date and time from the static `DateTime.Now` property in the `System` namespace:
@@ -31,7 +29,7 @@ In [XAML markup extensions](markup-extensions.md) you saw how to define a new XM
         <Label Text="{Binding StringFormat='The time is {0:T}'}" />
 
     </VerticalStackLayout>
- 
+
 </ContentPage>
 ```
 
@@ -57,7 +55,7 @@ namespace XamlSamples;
 class ClockViewModel: INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler PropertyChanged;
-    
+
     private DateTime _dateTime;
     private Timer _timer;
 
@@ -369,7 +367,7 @@ The following example shows the XAML that consumes the `KeypadViewModel`:
     <ContentPage.BindingContext>
         <local:KeypadViewModel />
     </ContentPage.BindingContext>
-    
+
     <Grid HorizontalOptions="Center" VerticalOptions="Center">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -394,11 +392,11 @@ The following example shows the XAML that consumes the `KeypadViewModel`:
         <Button Text="1" Command="{Binding AddCharCommand}" CommandParameter="1" Grid.Row="1" />
         <Button Text="2" Command="{Binding AddCharCommand}" CommandParameter="2" Grid.Row="1" Grid.Column="1" />
         <Button Text="3" Command="{Binding AddCharCommand}" CommandParameter="3" Grid.Row="1" Grid.Column="2" />
-        
+
         <Button Text="4" Command="{Binding AddCharCommand}" CommandParameter="4" Grid.Row="2" />
         <Button Text="5" Command="{Binding AddCharCommand}" CommandParameter="5" Grid.Row="2" Grid.Column="1" />
         <Button Text="6" Command="{Binding AddCharCommand}" CommandParameter="6" Grid.Row="2" Grid.Column="2" />
-        
+
         <Button Text="7" Command="{Binding AddCharCommand}" CommandParameter="7" Grid.Row="3" />
         <Button Text="8" Command="{Binding AddCharCommand}" CommandParameter="8" Grid.Row="3" Grid.Column="1" />
         <Button Text="9" Command="{Binding AddCharCommand}" CommandParameter="9" Grid.Row="3" Grid.Column="2" />

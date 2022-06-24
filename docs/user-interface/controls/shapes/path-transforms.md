@@ -8,8 +8,6 @@ ms.date: 01/12/2022
 
 A .NET Multi-platform App UI (.NET MAUI) `Transform` defines how to transform a `Path` object from one coordinate space to another coordinate space. When a transform is applied to a `Path` object, it changes how the object is rendered in the UI.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 Transforms can be categorized into four general classifications: rotation, scaling, skew, and translation. .NET MAUI defines a class for each of these transform classifications:
 
 - `RotateTransform`, which rotates a `Path` by a specified `Angle`.

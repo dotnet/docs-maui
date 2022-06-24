@@ -10,8 +10,6 @@ ms.date: 05/12/2022
 
 :::image type="content" source="media/customize/button-handler.png" alt-text="Button handler architecture." border="false":::
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 Handlers are accessed through their control-specific interface, such as `IButton` for a `Button`. This avoids the cross-platform control having to reference its handler, and the handler having to reference the cross-platform control. Each handler provides a *mapper* that maps the cross-platform control API to the native control API.
 
 Handlers can be customized to augment the appearance and behavior of a cross-platform control beyond the customization that's possible through the control's API. This customization is achieved by modifying the mapper for a handler, with one of the following methods:

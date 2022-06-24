@@ -8,8 +8,6 @@ ms.date: 04/06/2022
 
 .NET Multi-platform App UI (.NET MAUI) platform-specifics allow you to consume functionality that's only available on a specific platform, without customizing handlers.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The following platform-specific functionality is provided for .NET MAUI views, pages, and layouts on Windows:
 
 - Setting an access key for a `VisualElement`. For more information, see [VisualElement Access Keys on Windows](visualelement-access-keys.md).

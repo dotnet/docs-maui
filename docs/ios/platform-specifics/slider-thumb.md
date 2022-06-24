@@ -8,8 +8,6 @@ ms.date: 04/05/2022
 
 This .NET Multi-platform App UI (.NET MAUI) iOS platform-specific enables the `Slider.Value` property to be set by tapping on a position on the `Slider` bar, rather than by having to drag the `Slider` thumb. It's consumed in XAML by setting the `Slider.UpdateOnTap` bindable property to `true`:
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 ```xaml
 <ContentPage ...
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls">

@@ -11,8 +11,6 @@ While the [Android emulator](../emulator/debug-on-emulator.md) is a great way to
 > [!IMPORTANT]
 > The steps in this article are written generically, to work on as many devices as possible. If you can't find these settings on your device, consult your device manufacturer's documentation.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 ## Enable developer mode on the device
 
 A device must enable Developer mode in order to deploy and test an Android app. Developer mode is enabled by following these steps:

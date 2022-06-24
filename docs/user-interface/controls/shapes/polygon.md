@@ -8,8 +8,6 @@ ms.date: 01/12/2022
 
 The .NET Multi-platform App UI (.NET MAUI) `Polygon` class derives from the `Shape` class, and can be used to draw polygons, which are connected series of lines that form closed shapes. For information on the properties that the `Polygon` class inherits from the `Shape` class, see [Shapes](index.md).
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 `Polygon` defines the following properties:
 
 - `Points`, of type `PointCollection`, which is a collection of `Point` structures that describe the vertex points of the polygon.

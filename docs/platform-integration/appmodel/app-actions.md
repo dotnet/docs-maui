@@ -9,8 +9,6 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel", "AppDelegate.cs", 
 
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IAppActions` interface, which lets you create and respond to app shortcuts. App shortcuts are helpful to users because they allow you, as the app developer, to present them with extra ways of starting your app. For example, if you were developing an email and calendar app, you could present two different app actions, one to open the app directly to the current day of the calendar, and another to open to the email inbox folder.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The `IAppActions` interface is exposed through the `AppActions.Current` property, and is available in the `Microsoft.Maui.ApplicationModel` namespace.
 
 ## Get started

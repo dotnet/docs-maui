@@ -8,8 +8,6 @@ ms.date: 01/11/2022
 
 The .NET Multi-platform App UI (.NET MAUI)  `LinearGradientBrush` class derives from the `GradientBrush` class, and paints an area with a linear gradient, which blends two or more colors along a line known as the gradient axis. `GradientStop` objects are used to specify the colors in the gradient and their positions. For more information about `GradientStop` objects, see [Gradients](gradient.md).
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The `LinearGradientBrush` class defines the following properties:
 
 - `StartPoint`, of type `Point`, which represents the starting two-dimensional coordinates of the linear gradient. The default value of this property is (0,0).

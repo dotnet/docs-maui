@@ -8,8 +8,6 @@ ms.date: 01/19/2022
 
 In a .NET Multi-platform App UI (.NET MAUI) app that uses the Model-View-ViewModel (MVVM) pattern, data bindings are defined between properties in the viewmodel, which is typically a class that derives from `INotifyPropertyChanged`, and properties in the view, which is typically the XAML file. Sometimes an app has needs that go beyond these property bindings by requiring the user to initiate commands that affect something in the viewmodel. These commands are generally signaled by button clicks or finger taps, and traditionally they are processed in the code-behind file in a handler for the `Clicked` event of the `Button` or the `Tapped` event of a `TapGestureRecognizer`.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The commanding interface provides an alternative approach to implementing commands that is much better suited to the MVVM architecture. The viewmodel can contain commands, which are methods that are executed in reaction to a specific activity in the view such as a `Button` click. Data bindings are defined between these commands and the `Button`.
 
 To allow a data binding between a `Button` and a viewmodel, the `Button` defines two properties:

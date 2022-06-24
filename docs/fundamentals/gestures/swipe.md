@@ -8,8 +8,6 @@ ms.date: 02/22/2022
 
 A .NET Multi-platform App UI (.NET MAUI) swipe gesture recognizer detects when a finger is moved across the screen in a horizontal or vertical direction, and is often used to initiate navigation through content.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 In .NET MAUI, drag gesture recognition is provided by the `SwipeGestureRecognizer` class. This class defines the following properties:
 
 - `Command`, of type `ICommand`, which is executed when a swipe gesture is recognized.

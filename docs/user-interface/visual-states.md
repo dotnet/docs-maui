@@ -8,8 +8,6 @@ ms.date: 02/25/2022
 
 The .NET Multi-platform App UI (.NET MAUI) Visual State Manager provides a structured way to make visual changes to the user interface from code. In most cases, the user interface of an app is defined in XAML, and this XAML can include markup describing how the Visual State Manager affects the visuals of the user interface.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The Visual State Manager introduces the concept of *visual states*. A .NET MAUI view such as a `Button` can have several different visual appearances depending on its underlying state — whether it's disabled, or pressed, or has input focus. These are the button's states. Visual states are collected in *visual state groups*. All the visual states within a visual state group are mutually exclusive. Both visual states and visual state groups are identified by simple text strings.
 
 The .NET MAUI Visual State Manager defines a visual state group named `CommonStates` with the following visual states:

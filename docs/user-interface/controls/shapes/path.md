@@ -8,8 +8,6 @@ ms.date: 01/12/2022
 
 The .NET Multi-platform App UI (.NET MAUI) `Path` class derives from the `Shape` class, and can be used to draw curves and complex shapes. These curves and shapes are often described using `Geometry` objects. For information on the properties that the `Path` class inherits from the `Shape` class, see [Shapes](index.md).
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 `Path` defines the following properties:
 
 - `Data`, of type `Geometry`, which specifies the shape to be drawn.

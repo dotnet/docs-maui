@@ -8,8 +8,6 @@ ms.date: 04/05/2022
 
 .NET Multi-platform App UI (.NET MAUI) platform-specifics allow you to consume functionality that's only available on a specific platform, without customizing handlers.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The following platform-specific functionality is provided for .NET MAUI views on Android:
 
 - Setting the input method editor options for the soft keyboard for an `Entry`. For more information, see [Entry input method editor options on Android](entry-ime-options.md).

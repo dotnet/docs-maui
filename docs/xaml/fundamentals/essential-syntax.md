@@ -8,8 +8,6 @@ ms.date: 01/24/2022
 
 XAML is mostly designed for instantiating and initializing objects. But often, properties must be set to complex objects that cannot easily be represented as XML strings, and sometimes properties defined by one class must be set on a child class. These two needs require the essential XAML syntax features of *property elements* and *attached properties*.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 ## Property elements
 
 In .NET Multi-platform App UI (.NET MAUI) XAML, properties of classes are normally set as XML attributes:

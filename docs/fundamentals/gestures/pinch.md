@@ -8,8 +8,6 @@ ms.date: 02/21/2022
 
 A .NET Multi-platform App UI (.NET MAUI) pinch gesture recognizer is used for performing interactive zoom. A common scenario for the pinch gesture is to perform interactive zoom of an image at the pinch location. This is accomplished by scaling the content of the viewport.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 In .NET MAUI, pinch gesture recognition is provided by the `PinchGestureRecognizer` class, which defines a `PinchUpdated` event that's raised when the detected pinch gesture changes. The `PinchGestureUpdatedEventArgs` object that accompanies the `PinchUpdated` event defines the following properties:
 
 - `Scale`, of type `double`, which indicates the relative size of the pinch gesture since the last update was received.

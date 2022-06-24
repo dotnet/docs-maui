@@ -8,8 +8,6 @@ ms.date: 12/13/2021
 
 .NET Multi-platform App UI (.NET MAUI) apps generally have four execution states: *not running*, *running*, *deactivated*, and *stopped*. .NET MAUI raises cross-platform lifecycle events on the `Window` class when an app transitions from the not running state to the running state, the running state to the deactivated state, the deactivated state to the stopped state, the stopped state to the running state, and the stopped state to the not running state.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The following diagram shows an overview of the .NET MAUI app lifecycle:
 
 :::image type="content" source="media/app-lifecycle/app-lifecycle.png" alt-text=".NET MAUI app lifecycle" border="false":::

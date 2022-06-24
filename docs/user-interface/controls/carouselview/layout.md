@@ -13,8 +13,6 @@ The .NET Multi-platform App UI (.NET MAUI) `CarouselView` defines the following 
 
 These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 By default, a `CarouselView` will display its items in a horizontal orientation. A single item will be displayed on screen, with swipe gestures resulting in forwards and backwards navigation through the collection of items. However, a vertical orientation is also possible. This is because the `ItemsLayout` property is of type `LinearItemsLayout`, which inherits from the `ItemsLayout` class. The `ItemsLayout` class defines the following properties:
 
 - `Orientation`, of type `ItemsLayoutOrientation`, specifies the direction in which the `CarouselView` expands as items are added.

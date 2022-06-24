@@ -8,8 +8,6 @@ ms.date: 03/08/2022
 
 The .NET Multi-platform App UI (.NET MAUI) `WebView` displays remote web pages, local HTML files, and HTML strings, in an app. The content displayed a `WebView` includes support for Cascading Style Sheets (CSS), and JavaScript. By default, .NET MAUI projects include the platform permissions required for a `WebView` to display a remote web page.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 `WebView` defines the following properties:
 
 - `Cookies`, of type `CookieContainer`, provides storage for a collection of cookies.

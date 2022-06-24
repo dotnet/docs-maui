@@ -12,8 +12,6 @@ ms.date: 12/28/2021
 
 The .NET Multi-platform App UI (.NET MAUI) `StackLayout` organizes child views in a one-dimensional stack, either horizontally or vertically. By default, a `StackLayout` is oriented vertically. In addition, a `StackLayout` can be used as a parent layout that contains other child layouts.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The `StackLayout` class defines the following properties:
 
 - `Orientation`, of type `StackOrientation`, represents the direction in which child views are positioned. The default value of this property is `Vertical`.

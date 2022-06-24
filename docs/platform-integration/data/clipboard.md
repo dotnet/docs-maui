@@ -9,8 +9,6 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel.DataTransfer"]
 
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `Clipboard` class. With this class, you can copy and paste text to and from the system clipboard.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The `Clipboard` class is available in the `Microsoft.Maui.ApplicationModel.DataTransfer` namespace.
 
 > [!TIP]

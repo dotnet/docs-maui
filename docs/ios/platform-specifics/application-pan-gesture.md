@@ -8,8 +8,6 @@ ms.date: 04/05/2022
 
 When a `PanGestureRecognizer` is attached to a view inside a scrolling view, all of the pan gestures are captured by the `PanGestureRecognizer` and aren't passed to the scrolling view. Therefore, the scrolling view will no longer scroll.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 This .NET Multi-platform App UI (.NET MAUI) iOS platform-specific enables a `PanGestureRecognizer` in a scrolling view to capture and share the pan gesture with the scrolling view. It's consumed in XAML by setting the `Application.PanGestureRecognizerShouldRecognizeSimultaneously` attached property to `true`:
 
 ```xaml

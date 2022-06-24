@@ -10,8 +10,6 @@ The .NET Multi-platform App UI (.NET MAUI) `SearchBar` is a user input control u
 
 :::image type="content" source="media/searchbar/searchbar.png" alt-text="Screenshot of a SearchBar.":::
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 `SearchBar` defines the following properties:
 
 - `CancelButtonColor` is a `Color` that defines the color of the cancel button.

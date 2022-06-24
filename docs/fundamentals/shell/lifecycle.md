@@ -8,8 +8,6 @@ ms.date: 04/07/2022
 
 Shell apps respect the .NET Multi-platform App UI (.NET MAUI) lifecycle, and additionally fire an `Appearing` event when a page is about to appear on the screen, and a `Disappearing` event when a page is about to disappear from the screen. These events are propagated to pages, and can be handled by overriding the `OnAppearing` or `OnDisappearing` methods on the page.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 > [!NOTE]
 > In a Shell app, the `Appearing` and `Disappearing` events are raised from cross-platform code, prior to platform code making a page visible, or removing a page from the screen.
 

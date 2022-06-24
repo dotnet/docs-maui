@@ -8,8 +8,6 @@ ms.date: 04/11/2022
 
 A .NET Multi-platform App UI (.NET MAUI) menu bar is a container that presents a set of menus in a horizontal row, at the top of a desktop app.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 Each top-level menu in the menu bar is represented by a `MenuBarItem` object. `MenuBarItem` defines the following properties:
 
 - `Text`, of type `string`, defines the menu text.

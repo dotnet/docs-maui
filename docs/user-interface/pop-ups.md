@@ -8,8 +8,6 @@ ms.date: 02/24/2022
 
 Displaying an alert, asking a user to make a choice, or displaying a prompt is a common UI task. .NET Multi-platform App UI (.NET MAUI) has three methods on the `Page` class for interacting with the user via a pop-up: `DisplayAlert`, `DisplayActionSheet`, and `DisplayPromptAsync`. Pop-ups are rendered with native controls on each platform.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 ## Display an alert
 
 All .NET MAUI-supported platforms have a modal pop-up to alert the user or ask simple questions of them. To display alerts, use the `DisplayAlert` method on any `Page`. The following example shows a simple message to the user:

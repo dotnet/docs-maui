@@ -9,8 +9,6 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel"]
 
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `MainThread` class to run code on the main UI thread. Most operating systems use a single-threading model for code involving the user interface. This model is necessary to properly serialize user-interface events, including keystrokes and touch input. This thread is often called the _main thread_, the _user-interface thread_, or the _UI thread_. The disadvantage of this model is that all code that accesses user interface elements must run on the application's main thread.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The `MainThread` class is available in the `Microsoft.Maui.ApplicationModel` namespace.
 
 ## When is it required

@@ -23,8 +23,6 @@ ms.date: 03/01/2022
        FontSize="18" />
 ```
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 In this example, each `Label` object has identical property values for controlling the appearance of the text displayed by the `Label`. However, setting the appearance of each individual control can be repetitive and error prone. Instead, a style can be created that defines the appearance, and then applied to the required controls.
 
 ## Introduction to styles

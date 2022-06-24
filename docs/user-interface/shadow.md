@@ -10,8 +10,6 @@ ms.date: 12/13/2021
 
 The .NET Multi-platform App UI (.NET MAUI) `Shadow` class paints a shadow around a layout or view. The `VisualElement` class has a `Shadow` bindable property, of type `Shadow`, that enables a shadow to be added to any layout or view.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The `Shadow` class defines the following properties:
 
 - `Radius`, of type `float`, defines the radius of the blur used to generate the shadow. The default value of this property is 10.

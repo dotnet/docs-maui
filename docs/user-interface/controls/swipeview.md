@@ -10,8 +10,6 @@ The .NET Multi-platform App UI (.NET MAUI) `SwipeView` is a container control th
 
 :::image type="content" source="media/swipeview/swipeview-collectionview.png" alt-text="Screenshot of SwipeView swipe items in a CollectionView.":::
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 `SwipeView` defines the following properties:
 
 - `LeftItems`, of type `SwipeItems`, which represents the swipe items that can be invoked when the control is swiped from the left side.

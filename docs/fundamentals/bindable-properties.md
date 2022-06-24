@@ -8,8 +8,6 @@ ms.date: 01/24/2022
 
 .NET Multi-platform App UI (.NET MAUI) bindable properties extend Common Language Runtime (CLR) property functionality by backing a property with a `BindableProperty` type, instead of with a field. The purpose of bindable properties is to provide a property system that supports data binding, styles, templates, and values set through parent-child relationships. In addition, bindable properties can provide default values, validation of property values, and callbacks that monitor property changes.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 In .NET MAUI apps, properties should be implemented as bindable properties to support one or more of the following features:
 
 - Acting as a valid *target* property for data binding.
