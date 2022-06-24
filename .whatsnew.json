@@ -8,7 +8,7 @@
     },
     "inclusionCriteria": {
         "maxFilesChanged": 400,
-        "minAdditionsToFile": 30
+        "minAdditionsToFile": 20
     },
     "navigationOptions": {
         "maximumNumberOfArticles": 6,
@@ -25,6 +25,10 @@
         {
             "names": [ "get-started" ],
             "heading": "Get started"
+        },
+        {
+            "names": [ "data-cloud" ],
+            "heading": "Data & cloud services"
         },
         {
             "names": [ "fundamentals" ],

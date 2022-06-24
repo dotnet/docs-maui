@@ -585,6 +585,14 @@
           href: platform-integration/configure-multi-targeting.md
         - name: Invoke platform code
           href: platform-integration/invoke-platform-code.md
+    - name: Data & cloud services
+      items:
+        - name: Web services
+          items:
+            - name: Consume a REST-based web service
+              href: data-cloud/rest.md
+            - name: Connect to local web services
+              href: data-cloud/local-web-services.md
     - name: Publish
       items:
         - name: Android
