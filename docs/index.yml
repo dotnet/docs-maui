@@ -68,6 +68,8 @@ landingContent:
             url: xaml/namespaces/index.md
           - text: Pass arguments
             url: xaml/pass-arguments.md
+          - text: XAML Hot Reload`
+            url: xaml/hot-reload.md
   - title: Fundamentals
     linkLists:
       - linkListType: concept
