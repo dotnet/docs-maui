@@ -6,6 +6,8 @@ ms.date: 01/12/2022
 
 # Shapes
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-shapes)
+
 A .NET Multi-platform App UI (.NET MAUI) `Shape` is a type of `View` that enables you to draw a shape to the screen. `Shape` objects can be used inside layout classes and most controls, because the `Shape` class derives from the `View` class. .NET MAUI Shapes is available in the `Microsoft.Maui.Controls.Shapes` namespace.
 
 `Shape` defines the following properties:

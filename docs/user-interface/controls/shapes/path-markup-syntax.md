@@ -6,6 +6,8 @@ ms.date: 01/12/2022
 
 # Path markup syntax
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-shapes)
+
 .NET Multi-platform App UI (.NET MAUI) path markup syntax enables you to compactly specify path geometries in XAML.
 
 Path markup syntax is specified as a string value to the `Path.Data` property:

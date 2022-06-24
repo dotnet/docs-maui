@@ -6,6 +6,8 @@ ms.date: 01/12/2022
 
 # Line
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-shapes)
+
 The .NET Multi-platform App UI (.NET MAUI) `Line` class derives from the `Shape` class, and can be used to draw lines. For information on the properties that the `Line` class inherits from the `Shape` class, see [Shapes](index.md).
 
 `Line` defines the following properties:

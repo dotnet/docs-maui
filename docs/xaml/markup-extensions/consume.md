@@ -6,6 +6,8 @@ ms.date: 01/27/2022
 
 # Consume XAML markup extensions
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/xaml-markupextensions)
+
 .NET Multi-platform App UI (.NET MAUI) XAML markup extensions help enhance the power and flexibility of XAML by allowing element attributes to be set from a variety of sources.
 
 For example, you typically set the `Color` property of `BoxView` like this:
