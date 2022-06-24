@@ -1,10 +1,10 @@
 ---
-title: "Live Visual Tree for .NET MAUI"
+title: "Inspect the visual tree of a .NET MAUI app"
 description: "Learn how to examine a visual tree of the UI elements in your running .NET MAUI app."
 ms.date: 06/23/2022
 ---
 
-# Live Visual Tree for .NET MAUI
+# Inspect the visual tree of a .NET MAUI app
 
 .NET Multi-platform App UI (.NET MAUI) Live Visual Tree is a Visual Studio feature that provides a tree view of the UI elements in your running .NET MAUI app.
 
