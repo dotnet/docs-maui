@@ -395,8 +395,6 @@
               href: user-interface/images/images.md
             - name: Splash screen
               href: user-interface/images/splashscreen.md
-        - name: Inspect the visual tree
-          href: user-interface/live-visual-tree.md
         - name: Shadows
           href: user-interface/shadow.md
         - name: Styles
@@ -411,6 +409,10 @@
               href: user-interface/theming.md
             - name: Respond to system theme changes
               href: user-interface/system-theme-changes.md
+        - name: Tooling
+          items:
+            - name: Inspect the visual tree
+              href: user-interface/live-visual-tree.md
         - name: Visual states
           href: user-interface/visual-states.md
     - name: Platform integration
