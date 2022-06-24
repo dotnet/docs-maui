@@ -8,8 +8,6 @@ ms.date: 01/12/2022
 
 Several .NET Multi-platform App UI (.NET MAUI) Shapes classes have `FillRule` properties, of type `FillRule`. These include `Polygon`, `Polyline`, and `GeometryGroup`.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The `FillRule` enumeration defines `EvenOdd` and `Nonzero` members. Each member represents a different rule for determining whether a point is in the fill region of a shape.
 
 > [!IMPORTANT]

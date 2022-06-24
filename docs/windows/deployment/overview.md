@@ -15,8 +15,6 @@ ms.date: 05/12/2022
 
 When distributing your .NET Multi-platform App UI (.NET MAUI) app for Windows, you can publish the app and its dependencies to a folder for deployment to another system. You can also package the app into an MSIX package, which has numerous benefits for the users installing your app. For more information about the benefits of MSIX, see [What is MSIX?](/windows/msix/overview)
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 .NET MAUI currently only allows publishing an MSIX package. You can't yet publish a Windows executable file for distribution.
 
 ## Create a signing certificate

@@ -10,8 +10,6 @@ ms.date: 05/13/2022
 
 The .NET Multi-platform App UI (.NET MAUI) `Border` is a container control that draws a border, background, or both, around another control. A `Border` can only contain one child object. If you want to put a border around multiple objects, wrap them in a container object such as a layout.  For more information about layouts, see [Layouts](~/user-interface/layouts/index.md).
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 `Border` defines the following properties:
 
 - `Content`, of type `IView`, represents the content to display in the border. This property is the `ContentProperty` of the `Border` class, and therefore does not need to be explicitly set from XAML.

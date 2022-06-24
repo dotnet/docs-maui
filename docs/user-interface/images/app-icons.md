@@ -8,8 +8,6 @@ ms.date: 04/26/2022
 
 Every app has a logo icon that represents it, and that icon typically appears in multiple places. For example, on iOS the app icon appears on the Home screen and throughout the system, such as in Settings, notifications, and search results, and in the App Store. On Android, the app icon appears as a launcher icon and throughout the system, such as on the action bar and in notifications, and in the Google Play Store. On Windows the app icon appears in the app list in the start menu, on the taskbar and task manager, on the app's tile, and in the Microsoft Store.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 In a .NET Multi-platform App UI (.NET MAUI) app project, an app icon can be specified in a single location in your app project, and at build time it can be automatically resized to the correct resolution for the target platform and device, and added to your app package. This avoids having to manually duplicate and name the app icon on a per platform basis. By default, bitmap (non-vector) image formats are not automatically resized by .NET MAUI.
 
 A .NET MAUI app icon can use any of the standard platform image formats, including Scalable Vector Graphics (SVG) files.

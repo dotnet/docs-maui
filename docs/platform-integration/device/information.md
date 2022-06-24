@@ -9,8 +9,6 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices"]
 
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `DeviceInfo` class to read information about the device the app is running on.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The `DeviceInfo` class is available in the `Microsoft.Maui.Devices` namespace.
 
 ## Read device info

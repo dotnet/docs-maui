@@ -8,8 +8,6 @@ ms.date: 04/26/2022
 
 Every .NET Multi-platform App UI (.NET MAUI) control that derives from `View`, which includes views and layouts, has `HorizontalOptions` and `VerticalOptions` properties, of type `LayoutOptions`. The `LayoutOptions` structure encapsulates a view's preferred alignment, which determines its position and size within its parent layout when the parent layout contains unused space (that is, the parent layout is larger than the combined size of all its children).
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 In addition, the `Margin` and `Padding` properties position controls relative to adjacent, or child controls. For more information, see [Position controls](#position-controls).
 
 ## Align views in layouts

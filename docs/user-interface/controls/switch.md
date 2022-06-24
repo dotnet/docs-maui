@@ -8,8 +8,6 @@ ms.date: 02/09/2022
 
 The .NET Multi-platform App UI (.NET MAUI) `Switch` control is a horizontal toggle button that can be manipulated by the user to toggle between on and off states, which are represented by a `boolean` value.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The following screenshot shows a `Switch` control in its on and off toggle states:
 
 :::image type="content" source="media/switch/switch-states-default.png" alt-text="Screenshot of Switches in on and off states.":::

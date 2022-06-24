@@ -15,8 +15,6 @@ ms.date: 06/13/2022
 
 When distributing your .NET Multi-platform App UI (.NET MAUI) app for iOS, you generate an *.ipa* file. An *.ipa* file is an iOS app archive file that stores an iOS app. With just a few configuration changes to your project, your app can be packaged for distribution.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 Publishing a .NET MAUI app for iOS builds on top of Apple's provisioning process, which requires you to have:
 
 - Created an Apple ID. For more information, see [Create Your Apple ID](https://appleid.apple.com/account).

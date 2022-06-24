@@ -8,8 +8,6 @@ ms.date: 02/14/2022
 
 The .NET Multi-platform App UI (.NET MAUI) `ImageButton` view combines the `Button` view and `Image` view to create a button whose content is an image. When you press the `ImageButton` with a finger or click it with a mouse, it directs the app to carry out a task. However, unlike the `Button` the `ImageButton` view has no concept of text and text appearance.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 `ImageButton` defines the following properties:
 
 - `Aspect`, of type `Aspect`, determines how the image will be scaled to fit the display area.

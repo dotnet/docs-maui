@@ -9,8 +9,6 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices"]
 
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `Vibration` class. This class lets you start and stop the vibrate functionality for a desired amount of time.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The `HapticFeedback` class is available in the `Microsoft.Maui.Devices` namespace.
 
 ## Get started

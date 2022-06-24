@@ -21,8 +21,6 @@ The .NET Multi-platform App UI (.NET MAUI) `CarouselView` defines the following 
 
 All of these properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 `CarouselView` defines a `CurrentItemChanged` event that's fired when the `CurrentItem` property changes, either due to user scrolling, or when an application sets the property. The `CurrentItemChangedEventArgs` object that accompanies the `CurrentItemChanged` event has two properties, both of type `object`:
 
 - `PreviousItem` – the previous item, after the property change.

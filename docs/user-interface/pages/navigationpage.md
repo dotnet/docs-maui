@@ -10,8 +10,6 @@ ms.date: 03/14/2022
 
 The .NET Multi-platform App UI (.NET MAUI) `NavigationPage` provides a hierarchical navigation experience where you're able to navigate through pages, forwards and backwards, as desired. `NavigationPage` provides navigation as a last-in, first-out (LIFO) stack of `Page` objects.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 `NavigationPage` defines the following properties:
 
 - `BarBackground`, of type `Brush`, specifies the background of the navigation bar as a `Brush`.

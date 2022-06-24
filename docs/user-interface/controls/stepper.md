@@ -8,8 +8,6 @@ ms.date: 02/10/2022
 
 The .NET Multi-platform App UI (.NET MAUI) `Stepper` enables a numeric value to be selected from a range of values. It consists of two buttons labeled with minus and plus signs. These buttons can be manipulated by the user to incrementally select a `double` value from a range of values.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The `Stepper` defines four properties of type `double`:
 
 - `Increment` is the amount to change the selected value by, with a default value of 1.

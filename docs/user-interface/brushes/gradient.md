@@ -8,8 +8,6 @@ ms.date: 01/11/2022
 
 The .NET Multi-platform App UI (.NET MAUI) `GradientBrush` class derives from the `Brush` class, and is an abstract class that describes a gradient, which is composed of gradient stops. A gradient brush paints an area with multiple colors that blend into each other along an axis.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 Classes that derive from `GradientBrush` describe different ways of interpreting gradient stops, and .NET MAUI provides the following gradient brushes:
 
 - `LinearGradientBrush`, which paints an area with a linear gradient. For more information, see [Linear gradient brushes](lineargradient.md).

@@ -8,8 +8,6 @@ ms.date: 03/04/2022
 
 The .NET Multi-platform App UI (.NET MAUI) `Image` displays an image that can be loaded from a local file, a URI, an embedded resource, or a stream. The standard platform image formats are supported, including animated GIFs, and local Scalable Vector Graphics (SVG) files are also supported. For more information about adding images to a .NET MAUI app project, see [Add images to a .NET MAUI app project](../images/images.md).
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 `Image` defines the following properties:
 
 - `Aspect`, of type `Aspect`, defines the scaling mode of the image.

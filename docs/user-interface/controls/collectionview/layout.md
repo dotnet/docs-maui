@@ -13,8 +13,6 @@ The .NET Multi-platform App UI (.NET MAUI) `CollectionView` defines the followin
 
 These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 By default, a `CollectionView` will display its items in a vertical list. However, any of the following layouts can be used:
 
 - Vertical list – a single column list that grows vertically as new items are added.

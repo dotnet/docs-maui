@@ -13,8 +13,6 @@ The .NET Multi-platform App UI (.NET MAUI) `CarouselView` includes the following
 
 These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 `CarouselView` defines a `ItemsUpdatingScrollMode` property that represents the scrolling behavior of the `CarouselView` when new items are added to it. For more information about this property, see [Control scroll position when new items are added](scrolling.md#control-scroll-position-when-new-items-are-added).
 
 `CarouselView` supports incremental data virtualization as the user scrolls. For more information, see [Load data incrementally](#load-data-incrementally).

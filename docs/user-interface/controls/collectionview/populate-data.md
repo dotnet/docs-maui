@@ -13,8 +13,6 @@ The .NET Multi-platform App UI (.NET MAUI) `CollectionView` includes the followi
 
 These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 `CollectionView` defines a `ItemsUpdatingScrollMode` property that represents the scrolling behavior of the `CollectionView` when new items are added to it. For more information about this property, see [Control scroll position when new items are added](scrolling.md#control-scroll-position-when-new-items-are-added).
 
 `CollectionView` supports incremental data virtualization as the user scrolls. For more information, see [Load data incrementally](#load-data-incrementally).

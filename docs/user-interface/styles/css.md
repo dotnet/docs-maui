@@ -8,8 +8,6 @@ ms.date: 03/01/2022
 
 .NET Multi-platform App UI (.NET MAUI) apps can be styled using Cascading Style Sheets (CSS). A style sheet consists of a list of rules, with each rule consisting of one or more selectors and a declaration block. A declaration block consists of a list of declarations in braces, with each declaration consisting of a property, a colon, and a value. When there are multiple declarations in  a block, a semi-colon is inserted as a separator.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The following  example shows some .NET MAUI compliant CSS:
 
 ```css

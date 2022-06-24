@@ -9,8 +9,6 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel.Communication"]
 
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `ISms` interface to open the default SMS app and preload it with a message and recipient. The `ISms` interface is exposed through the `Sms.Default` property.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The `Sms` and `ISms` types are available in the `Microsoft.Maui.ApplicationModel.Communication` namespace.
 
 ## Get started

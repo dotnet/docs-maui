@@ -9,8 +9,6 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Storage", "FilePicker"]
 
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IFilePicker` interface. With the `IFilePicker` interface, you can prompt the user to pick one or more files from the device. The `IFilePicker` interface is exposed through the `FilePicker.Default` property.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The `FilePicker` and `IFilePicker` types are available in the `Microsoft.Maui.Storage` namespace.
 
 ## Get started

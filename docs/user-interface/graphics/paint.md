@@ -10,8 +10,6 @@ ms.date: 12/16/2021
 
 .NET Multi-platform App UI (.NET MAUI) graphics includes the ability to paint graphical objects with solid colors, gradients, repeating images, and patterns.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The `Paint` class is an abstract class that paints an object with its output. Classes that derive from `Paint` describe different ways of painting an object. The following list describes the different paint types available in .NET MAUI graphics:
 
 - `SolidPaint`, which paints an object with a solid color. For more information, see [Paint a solid color](#paint-a-solid-color).

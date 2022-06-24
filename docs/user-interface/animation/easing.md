@@ -8,8 +8,6 @@ ms.date: 02/08/2022
 
 .NET Multi-platform App UI (.NET MAUI) includes an `Easing` class that enables you to specify a transfer function that controls how animations speed up or slow down as they're running.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The `Easing` class defines a number of easing functions that can be consumed by animations:
 
 - The `BounceIn` easing function bounces the animation at the beginning.

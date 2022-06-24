@@ -16,8 +16,6 @@ This .NET Multi-platform App UI (.NET MAUI) platform-specific controls whether t
 </FlyoutPage>
 ```
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 Alternatively, it can be consumed from C# using the fluent API:
 
 ```csharp

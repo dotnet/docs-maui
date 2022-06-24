@@ -14,8 +14,6 @@ However, on some platforms a `RadioButton` can display a `View`, and on all plat
 
 :::image type="content" source="media/radiobutton/radiobuttons-controltemplate.png" alt-text="Screenshot of re-defined RadioButtons.":::
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 `RadioButton` defines the following properties:
 
 - `Content`, of type `object`, which defines the `string` or `View` to be displayed by the `RadioButton`.

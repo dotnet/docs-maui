@@ -10,8 +10,6 @@ The navigation experience provided by .NET Multi-platform App UI (.NET MAUI) She
 
 :::image type="content" source="media/flyout/flyout-annotated.png" alt-text="Screenshot of a Shell annotated flyout.":::
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 ## Flyout items
 
 One or more flyout items can be added to the flyout, and each flyout item is represented by a `FlyoutItem` object. Each `FlyoutItem` object should be a child of the subclassed `Shell` object. Flyout items appear at the top of the flyout when a flyout header isn't present.
