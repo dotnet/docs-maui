@@ -16,8 +16,6 @@ Representational State Transfer (REST) is an architectural style for building we
 - **PATCH** – this operation is used to update an item of data on the web service by describing a set of instructions about how the item should be modified.
 - **DELETE** – this operation is used to delete an item of data on the web service.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 Web service APIs that adhere to REST are defined using:
 
 - A base URI.

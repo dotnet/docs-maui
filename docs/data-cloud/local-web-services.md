@@ -10,9 +10,7 @@ ms.date: 06/22/2022
 
 Many mobile and desktop apps consume web services. During the software development phase, it's common to deploy a web service locally and consume it from an app running in the Android emulator or iOS simulator. This avoids having to deploy the web service to a hosted endpoint, and enables a straightforward debugging experience because both the app and web service are running locally.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
-.NET Multi-platform App UI (.NET MAUI) apps that run on Windows or MacCatalyst can consume ASP.NET Core web services that are running locally over HTTP or HTTPS without any additional work. However, additional work is required when the app is running in the Android emulator or iOS simulator, and the process is different depending on whether the web service is running over HTTP or HTTPS.
+.NET Multi-platform App UI (.NET MAUI) apps that run on Windows or MacCatalyst can consume ASP.NET Core web services that are running locally over HTTP or HTTPS without any additional work, provided that you've [trusted your development certificate](#trust-your-development-certificate). However, additional work is required when the app is running in the Android emulator or iOS simulator, and the process is different depending on whether the web service is running over HTTP or HTTPS.
 
 ## Local machine address
 
@@ -114,13 +112,13 @@ For more information about ATS, see [Preventing Insecure Network Connections](ht
 
 A .NET MAUI app running in the Android emulator or iOS simulator can consume an ASP.NET Core web service that's running locally over HTTPS. The process to enable this is as follows:
 
-1. Create a self-signed development certificate on your machine. For more information, see [Create a development certificate](#create-a-development-certificate).
+1. Trust the self-signed development certificate on your machine. For more information, see [Trust your development certificate](#trust-your-development-certificate).
 1. Specify the address of your local machine. For more information, see [Specify the local machine address](#specify-the-local-machine-address).
 1. Bypass the local development certificate security check. For more information, see [Bypass the certificate security check](#bypass-the-certificate-security-check).
 
 Each item will be discussed in turn.
 
-### Create a development certificate
+### Trust your development certificate
 
 Installing the .NET Core SDK installs the ASP.NET Core HTTPS development certificate to your local user certificate store. However, while the certificate has been installed, it's not trusted. To trust the certificate, perform the following one-time step to run the dotnet `dev-certs` tool:
 
