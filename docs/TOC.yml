@@ -89,10 +89,8 @@
           href: xaml/pass-arguments.md
         - name: Runtime loading
           href: xaml/runtime-load.md
-        - name: Tooling
-          items:
-            - name: XAML Hot Reload
-              href: xaml/hot-reload.md
+        - name: XAML Hot Reload
+          href: xaml/hot-reload.md
     - name: Fundamentals
       items:
         - name: Accessibility

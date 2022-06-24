@@ -10,23 +10,27 @@ ms.date: 06/23/2022
 
 [!INCLUDE [docs under construction](~/includes/preview-note.md)]
 
-When your app is running, XAML Hot Reload parses your XAML edits and sends those changes to the running app. It preserves your UI state, since it doesn't recreate the UI for the full page, and updates changed properties on controls affected by edits. In addition, your navigate state and data will be maintained, enabling you to quickly iterate on your UI without losing your location in the app. Therefore, you'll spend less time rebuilding and deploying your apps to validate UI changes.
+When your .NET MAUI app is running in debug configuration, with the debugger attached, XAML Hot Reload parses your XAML edits and sends those changes to the running app. It preserves your UI state, since it doesn't recreate the UI for the full page, and updates changed properties on controls affected by edits. In addition, your navigate state and data will be maintained, enabling you to quickly iterate on your UI without losing your location in the app. Therefore, you'll spend less time rebuilding and deploying your apps to validate UI changes.
 
 By default, you don't need to save your XAML file to see the results of your edits. Instead, updates are applied immediately as you type. However, you can change this behavior to update only on file save. This can be accomplished by checking the **Apply XAML Hot Reload on document save** checkbox in the Hot Reload IDE settings available by selecting **Debug > Options> XAML Hot Reload** from the Visual Studio menu bar. Only updating on file save can sometimes be useful if you make bigger XAML updates and don't wish them to be displayed until they are complete.
 
-XAML Hot Reload supports simultaneous debugging of multiple platforms in Visual Studio. You can deploy an Android, iOS, and WinUI target at the same time to see your changes reflected on all three platforms at once. To debug on multiple platforms, see [How To: Set multiple startup projects](/visualstudio/ide/how-to-set-multiple-startup-projects).
+<!-- XAML Hot Reload supports simultaneous debugging of multiple platforms in Visual Studio. You can deploy an Android, iOS, and WinUI target at the same time to see your changes reflected on all three platforms at once. To debug on multiple platforms, see [How To: Set multiple startup projects](/visualstudio/ide/how-to-set-multiple-startup-projects). -->
+
+<!-- The above is commented out for now for the following reason: In MAUI if you have separate head projects, you could deploy to multiple platforms simultaneously and hot reload would work. But deploying to multiple platforms currently isn't possible with single project. -->
 
 <!-- **Mac** [Set multiple startup projects](/visualstudio/mac/set-startup-projects?view=vsmac-2019) -->
 
 > [!NOTE]
-> If you're writing a native UWP or WPF app, without using .NET MAUI, see [What is XAML Hot Reload for WPF and UWP apps?for UWP and WPF](/visualstudio/xaml-tools/xaml-hot-reload).
+> If you're writing a native UWP or WPF app, without using .NET MAUI, see [What is XAML Hot Reload for WPF and UWP apps?](/visualstudio/xaml-tools/xaml-hot-reload).
 
 <!-- XAML Hot Reload is available in both Visual Studio 2022 and Visual Studio 2022 for Mac. -->
 
-XAML Hot Reload is available on Android, iOS, and WinUI on emulators, simulators, and physical devices.
+On Windows, XAML Hot Reload is available on Android, iOS, and WinUI on emulators, simulators, and physical devices.
 
 > [!IMPORTANT]
-> XAML Hot Reload can't reload C# code, including event handlers, custom controls, page code-behind, and additional classes.
+> XAML Hot Reload doesn't reload C# code, including event handlers.
+
+<!-- XAML Hot Reload does work in collaboration with C# Hot Reload, but there's no official doc to link to, to explain the limitations. -->
 
 ## Enable XAML Hot Reload
 
