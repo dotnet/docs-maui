@@ -8,8 +8,6 @@ ms.date: 01/12/2022
 
 The .NET Multi-platform App UI (.NET MAUI) `Ellipse` class derives from the `Shape` class, and can be used to draw ellipses and circles. For information on the properties that the `Ellipse` class inherits from the `Shape` class, see [Shapes](index.md).
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The `Ellipse` class sets the `Aspect` property, inherited from the `Shape` class, to `Stretch.Fill`. For more information about the `Aspect` property, see [Stretch shapes](index.md#stretch-shapes).
 
 ## Create an Ellipse

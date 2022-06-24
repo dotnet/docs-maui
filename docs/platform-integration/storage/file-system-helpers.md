@@ -9,8 +9,6 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Storage", "FileSystem"]
 
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IFileSystem` interface. This interface provides helper methods that access the app's cache and data directories, and helps access files in the app package. The `IFileSystem` interface is exposed through the `FileSystem.Current` property.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The `FileSystem` and `IFileSystem` types are available in the `Microsoft.Maui.Storage` namespace.
 
 ## Using file system helpers

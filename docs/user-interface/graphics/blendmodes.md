@@ -10,8 +10,6 @@ ms.date: 12/16/2021
 
 .NET Multi-platform App UI (.NET MAUI) graphics enables different compositing operations for graphical objects to be specified by the `ICanvas.BlendMode` property. This property determines what happens when a graphical object (called the *source*), is rendered on top of an existing graphical object (called the *destination*).
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 By default, the last drawn object obscures the objects drawn underneath it:
 
 :::image type="content" source="media/blendmodes/normal.png" alt-text="Screenshot of a three colored circles, using the normal blend mode.":::

@@ -30,8 +30,6 @@ An implicit timer is triggered when a touch gesture begins in a `ScrollView` on 
 </FlyoutPage>
 ```
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 Alternatively, it can be consumed from C# using the fluent API:
 
 ```csharp

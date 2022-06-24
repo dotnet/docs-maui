@@ -8,8 +8,6 @@ ms.date: 04/12/2022
 
 The .NET Multi-platform App UI (.NET MAUI) `Frame` is used to wrap a view or layout with a border that can be configured with color, shadow, and other options. Frames can be used to create borders around controls but can also be used to create more complex UI.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The `Frame` class defines the following properties:
 
 - `BorderColor`, of type `Color`, determines the color of the `Frame` border.

@@ -8,8 +8,6 @@ ms.date: 04/26/2022
 
 Images are a crucial part of app navigation, usability, and branding. However, each platform has differing image requirements that typically involve creating multiple versions of each image at different resolutions. Therefore, a single image typically has to be duplicated multiple times per platform, at different resolutions, with the resulting images having to use different filename and folder conventions on each platform.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 In a .NET Multi-platform App UI (.NET MAUI) app project, images can be specified in a single location in your app project, and at build time they can be automatically resized to the correct resolution for the target platform and device, and added to your app package. This avoids having to manually duplicate and name images on a per platform basis. By default, bitmap (non-vector) image formats, including animated GIFs, are not automatically resized by .NET MAUI.
 
 .NET MAUI images can use any of the standard platform image formats, including Scalable Vector Graphics (SVG) files.

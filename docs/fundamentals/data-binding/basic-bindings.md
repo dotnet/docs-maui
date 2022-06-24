@@ -11,8 +11,6 @@ A .NET Multi-platform App UI (.NET MAUI) data binding links a pair of properties
 - The *target* is the object (and property) on which the data binding is set.
 - The *source* is the object (and property) referenced by the data binding.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 In the simplest case, data flows from the source to the target, which means that the value of the target property is set from the value of the source property. However, in some cases, data can alternatively flow from the target to the source, or in both directions.
 
 > [!IMPORTANT]

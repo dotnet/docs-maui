@@ -15,8 +15,6 @@ ms.date: 04/25/2022
 
 When distributing your .NET Multi-platform App UI (.NET MAUI) app for macOS, you generate an *.app* or a *.pkg* file. An *.app* file is a self-contained app that can be run without installation, whereas a *.pkg* is an app packaged in an installer.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 ## Publish an unsigned app
 
 At this time, publishing is only supported through the .NET command line interface.

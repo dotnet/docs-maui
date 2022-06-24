@@ -8,8 +8,6 @@ ms.date: 02/14/2022
 
 The .NET Multi-platform App UI (.NET MAUI) `Button` displays text and responds to a tap or click that directs the app to carry out a task. A `Button` usually displays a short text string indicating a command, but it can also display a bitmap image, or a combination of text and an image. When the `Button` is pressed with a finger or clicked with a mouse it initiates that command.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 `Button` defines the following properties:
 
 - `BorderColor`, of type `Color`, describes the border color of the button.

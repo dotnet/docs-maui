@@ -9,8 +9,6 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices"]
 
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `Flashlight` class. With this class, you can toggle the device's camera flash on and off, to emulate a flashlight.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The `Flashlight` class is available in the `Microsoft.Maui.Devices` namespace.
 
 ## Get started

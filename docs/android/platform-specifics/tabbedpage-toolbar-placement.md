@@ -16,8 +16,6 @@ These .NET Multi-platform App UI (.NET MAUI) Android platform-specifics are used
 </TabbedPage>
 ```
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 Alternatively, they can be consumed from C# using the fluent API:
 
 ```csharp

@@ -17,8 +17,6 @@ This .NET Multi-platform App UI (.NET MAUI) Android platform-specific enables pi
 </ContentPage>
 ```
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The `WebView.EnableZoomControls` bindable property controls whether pinch-to-zoom is enabled on the `WebView`, and the `WebView.DisplayZoomControls` bindable property controls whether zoom controls are overlaid on the `WebView`.
 
 Alternatively, the platform-specific can be consumed from C# using the fluent API:

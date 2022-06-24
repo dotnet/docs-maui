@@ -10,8 +10,6 @@ ms.date: 12/23/2021
 
 By default, .NET Multi-platform App UI (.NET MAUI) apps use the Open Sans font on each platform. However, this default can be changed, and additional fonts can be registered for use in an app.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 All controls that display text define properties that can be set to change font appearance:
 
 - `FontFamily`, of type `string`.

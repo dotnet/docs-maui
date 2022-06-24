@@ -13,8 +13,6 @@ The .NET Multi-platform App UI (.NET MAUI) `CollectionView` defines the followin
 
 These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The main usage scenarios for setting the `EmptyView` property are displaying user feedback when a filtering operation on a `CollectionView` yields no data, and displaying user feedback while data is being retrieved from a web service.
 
 > [!NOTE]

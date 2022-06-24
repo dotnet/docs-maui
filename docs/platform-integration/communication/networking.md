@@ -9,8 +9,6 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Networking", "Connectivity"]
 
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IConnectivity` interface to inspect the network accessibility of the device. The network connection may have access to the internet. Devices also contain different kinds of network connections, such as Bluetooth, cellular, or WiFi. The `IConnectivity` interface has an event to monitor changes in the devices connection state. The `IConnectivity` interface is exposed through the `Connectivity.Current` property.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The `Connectivity` and `IConnectivity` types are available in the `Microsoft.Maui.Networking` namespace.
 
 ## Get started

@@ -12,8 +12,6 @@ ms.date: 12/28/2021
 
 The .NET Multi-platform App UI (.NET MAUI) `Grid`, is a layout that organizes its children into rows and columns, which can have proportional or absolute sizes. By default, a `Grid` contains one row and one column. In addition, a `Grid` can be used as a parent layout that contains other child layouts.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The `Grid` should not be confused with tables, and is not intended to present tabular data. Unlike HTML tables, a `Grid` is intended for laying out content. For displaying tabular data, consider using a [ListView](~/user-interface/controls/listview.md) or [CollectionView](~/user-interface/controls/collectionview/index.md).
 
 The `Grid` class defines the following properties:

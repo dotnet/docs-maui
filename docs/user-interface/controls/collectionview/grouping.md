@@ -8,8 +8,6 @@ ms.date: 01/18/2022
 
 Large data sets can often become unwieldy when presented in a continually scrolling list. In this scenario, organizing the data into groups can improve the user experience by making it easier to navigate the data.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The .NET Multi-platform App UI (.NET MAUI) `CollectionView` supports displaying grouped data, and defines the following properties that control how it will be presented:
 
 - `IsGrouped`, of type `bool`, indicates whether the underlying data should be displayed in groups. The default value of this property is `false`.

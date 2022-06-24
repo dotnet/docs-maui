@@ -8,8 +8,6 @@ ms.date: 01/18/2022
 
 The .NET Multi-platform App UI (.NET MAUI) `CarouselView` is a view for presenting data in a scrollable layout, where users can swipe to move through a collection of items.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 By default, `CarouselView` will display its items in a horizontal orientation. A single item will be displayed on screen, with swipe gestures resulting in forwards and backwards navigation through the collection of items. In addition, indicators can be displayed that represent each item in the `CarouselView`:
 
 :::image type="content" source="media/populate-data/indicators.png" alt-text="Screenshot of a CarouselView and IndicatorView.":::

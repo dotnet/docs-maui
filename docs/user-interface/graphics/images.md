@@ -8,8 +8,6 @@ ms.date: 04/22/2022
 
 .NET Multi-platform App UI (.NET MAUI) graphics includes functionality to load, save, resize, and downsize images. Supported image formats are dependent on the underlying platform.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 Images are represented by the `IImage` type, which defines the following properties:
 
 - `Width`, of type `float`, that defines the width of an image.

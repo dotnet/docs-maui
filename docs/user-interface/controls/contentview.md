@@ -10,8 +10,6 @@ ms.date: 01/13/2022
 
 The .NET Multi-platform App UI (.NET MAUI) `ContentView` is a control that enables the creation of custom, reusable controls.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The `ContentView` class defines a `Content` property, of type `View`, which represents the content of the `ContentView`. This property is backed by a `BindableProperty` object, which means that it can be the target of data bindings, and styled.
 
 The `ContentView` class derives from the `TemplatedView` class, which defines the `ControlTemplate` bindable property, of type `ControlTemplate`, which defines the appearance of the control. For more information about the `ControlTemplate` property, see [Customize appearance with a ControlTemplate](#customize-appearance-with-a-controltemplate).

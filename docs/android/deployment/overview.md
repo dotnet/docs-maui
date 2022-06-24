@@ -17,8 +17,6 @@ When distributing your .NET Multi-platform App UI (.NET MAUI) app for Android, y
 
 With just a few configuration changes to your project, your app can be packaged for distribution.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 ## Validate package settings
 
 Every Android app specifies a unique package identifier and a version. These identifiers are generally set in the Android app manifest file, which is located in your project folder at _.\\Platforms\\Android\\AndroidManifest.xml_. However, these specific settings are provided by the project file itself. When a .NET MAUI app is built, the final _AndroidManifest.xml_ file is automatically generated using the project file and the original _AndroidManifest.xml_ file.

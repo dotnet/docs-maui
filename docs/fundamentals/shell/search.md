@@ -10,8 +10,6 @@ ms.date: 04/07/2022
 
 :::image type="content" source="media/search/searchhandler.png" alt-text="Screenshot of a Shell SearchHandler.":::
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 When a query is entered into the search box, the `Query` property is updated, and on each update the `OnQueryChanged` method is executed. This method can be overridden to populate the search suggestions area with data:
 
 :::image type="content" source="media/search/search-suggestions.png" alt-text="Screenshot of a search results in a Shell SearchHandler.":::

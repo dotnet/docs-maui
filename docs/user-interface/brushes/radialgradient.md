@@ -8,8 +8,6 @@ ms.date: 01/11/2022
 
 The .NET Multi-platform App UI (.NET MAUI) `RadialGradientBrush` class derives from the `GradientBrush` class, and paints an area with a radial gradient, which blends two or more colors across a circle. `GradientStop` objects are used to specify the colors in the gradient and their positions. For more information about `GradientStop` objects, see [Gradients](gradient.md).
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The `RadialGradientBrush` class defines the following properties:
 
 - `Center`, of type `Point`, which represents the center point of the circle for the radial gradient. The default value of this property is (0.5,0.5).

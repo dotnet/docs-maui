@@ -8,8 +8,6 @@ ms.date: 02/10/2022
 
 The .NET Multi-platform App UI (.NET MAUI) `BoxView` draws a simple rectangle or square, of a specified width, height, and color.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 `BoxView` defines the following properties:
 
 - `Color`, of type `Color`, which defines the color of the `BoxView`.

@@ -8,8 +8,6 @@ ms.date: 01/18/2022
 
 The .NET Multi-platform App UI (.NET MAUI) `CollectionView` is a view for presenting lists of data using different layout specifications. It aims to provide a more flexible, and performant alternative to `ListView`.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The following screenshot shows a `CollectionView` that uses a two-column vertical grid and allows multiple selections:
 
 :::image type="content" source="media/verticalgrid-multipleselection.png" alt-text="Screenshot of a CollectionView vertical grid layout.":::

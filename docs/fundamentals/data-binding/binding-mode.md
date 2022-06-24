@@ -8,8 +8,6 @@ ms.date: 01/19/2022
 
 Every .NET Multi-platform App UI (.NET MAUI) bindable property has a default binding mode that is set when the bindable property is created, and which is available from the `DefaultBindingMode` property of the `BindableProperty` object. This default binding mode indicates the mode in effect when that property is a data-binding target. The default binding mode for most properties such as `Rotation`, `Scale`, and `Opacity` is `OneWay`. When these properties are data-binding targets, then the target property is set from the source.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The following example shows a data binding defined on a `Slider`:
 
 ```xaml
