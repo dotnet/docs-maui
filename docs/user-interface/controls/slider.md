@@ -8,8 +8,6 @@ ms.date: 02/09/2022
 
 The .NET Multi-platform App UI (.NET MAUI) `Slider` is a horizontal bar that you can manipulate to select a `double` value from a continuous range.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 `Slider` defines the following properties:
 
 - `Minimum`, of type `double`, is the minimum of the range, with a default value of 0.

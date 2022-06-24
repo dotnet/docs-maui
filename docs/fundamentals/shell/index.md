@@ -13,8 +13,6 @@ ms.date: 04/07/2022
 - A URI-based navigation scheme that permits navigation to any page in the app.
 - An integrated search handler.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 ## App visual hierarchy
 
 In a .NET MAUI Shell app, the visual hierarchy of the app is described in a class that subclasses the `Shell` class. This class can consist of three main hierarchical objects:

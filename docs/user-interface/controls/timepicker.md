@@ -8,8 +8,6 @@ ms.date: 02/09/2022
 
 The .NET Multi-platform App UI (.NET MAUI) `TimePicker` invokes the platform's time-picker control and allows you to select a time.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 `TimePicker` defines the following properties:
 
 - `Time` of type `TimeSpan`, the selected time, which defaults to a `TimeSpan` of 0. The `TimeSpan` type indicates a duration of time since midnight.

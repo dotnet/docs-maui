@@ -10,8 +10,6 @@ ms.date: 03/14/2022
 
 The .NET Multi-platform App UI (.NET MAUI) `ContentPage` displays a single view, which is often a layout such as as `Grid` or `StackLayout`, and is the most common page type.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 `ContentPage` defines a `Content` property, of type `View`, which defines the view that represents the page's content. This property is backed by a `BindableProperty` object, which means that it can be the target of data bindings, and styled. In addition, `ContentPage` inherits `Title`, `IconImageSource`, `BackgroundImageSource`, `IsBusy`, and `Padding` bindable properties from the `Page` class.
 
 > [!NOTE]

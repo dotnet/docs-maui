@@ -8,8 +8,6 @@ ms.date: 01/28/2022
 
 A .NET Multi-platform App UI (.NET MAUI) `ResourceDictionary` is a repository for resources that are used by a .NET MAUI app. Typical resources that are stored in a `ResourceDictionary` include styles, control templates, data templates, converters, and colors.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 XAML resources that are stored in a `ResourceDictionary` can be referenced and applied to elements by using the `StaticResource` or `DynamicResource` markup extension. In C#, resources can also be defined in a `ResourceDictionary` and then referenced and applied to elements by using a string-based indexer. However, there's little advantage to using a `ResourceDictionary` in C#, as shared objects can be stored as fields or properties, and accessed directly without having to first retrieve them from a dictionary.
 
 > [!TIP]

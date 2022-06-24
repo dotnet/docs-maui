@@ -9,8 +9,6 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Storage", "Preferences"]
 
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IPreferences` interface. This interface helps store app preferences in a key/value store. The `IPreferences` interface is exposed through the `Preferences.Default` property.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The `Preferences` and `IPreferences` types are available in the `Microsoft.Maui.Storage` namespace.
 
 ## Storage types

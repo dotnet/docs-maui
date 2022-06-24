@@ -8,8 +8,6 @@ ms.date: 02/21/2022
 
 .NET Multi-platform App UI (.NET MAUI) data templates provide the ability to define the presentation of data on supported controls.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 Consider a `CollectionView` that displays a collection of `Person` objects. The following example shows the definition of the `Person` class:
 
 ```csharp

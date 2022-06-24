@@ -9,8 +9,6 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel"]
 
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IAppInfo` interface, which provides information about your application. The `IAppInfo` interface is exposed through the `AppInfo.Current` property.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The `AppInfo` and `IAppInfo` types are available in the `Microsoft.Maui.ApplicationModel` namespace.
 
 ## Read the app information

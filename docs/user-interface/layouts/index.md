@@ -10,8 +10,6 @@ ms.date: 05/13/2022
 
 .NET Multi-platform App UI (.NET MAUI) layout classes allow you to arrange and group UI controls in your application. Choosing a layout class requires knowledge of how the layout positions its child elements, and how the layout sizes its child elements. In addition, it may be necessary to nest layouts to create your desired layout.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 ## StackLayout
 
 A `StackLayout` organizes elements in a one-dimensional stack, either horizontally or vertically. The `Orientation` property specifies the direction of the elements, and the default orientation is `Vertical`. `StackLayout` is typically used to arrange a subsection of the UI on a page.

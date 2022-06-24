@@ -8,8 +8,6 @@ ms.date: 02/08/2022
 
 The .NET Multi-platform App UI (.NET MAUI) `Animation` class is the building block of all .NET MAUI animations, with the extension methods in the `ViewExtensions` class creating one or more `Animation` objects.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 A number of parameters must be specified when creating an `Animation` object, including start and end values of the property being animated, and a callback that changes the value of the property. An `Animation` object can also maintain a collection of child animations that can be run and synchronized. For more information, see [Child animations](#child-animations).
 
 Running an animation created with the `Animation` class, which may or may not include child animations, is achieved by calling the `Commit` method. This method specifies the duration of the animation, and amongst other items, a callback that controls whether to repeat the animation.

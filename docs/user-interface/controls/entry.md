@@ -8,8 +8,6 @@ ms.date: 03/03/2022
 
 The .NET Multi-platform App UI (.NET MAUI) `Entry` allows you to enter and edit a single line of text. In addition, the `Entry` can be used as a password field.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 `Entry` defines the following properties:
 
 - `CharacterSpacing`, of type `double`, sets the spacing between characters in the entered text.

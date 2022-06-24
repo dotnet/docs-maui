@@ -8,8 +8,6 @@ ms.date: 02/09/2022
 
 The .NET Multi-platform App UI (.NET MAUI) `CheckBox` is a type of button that can either be checked or empty. When a checkbox is checked, it's considered to be on. When a checkbox is empty, it's considered to be off.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 `CheckBox` defines the following properties:
 
 - `IsChecked`, of type `bool`, which indicates whether the `CheckBox` is checked. This property has a default binding mode of `TwoWay`.

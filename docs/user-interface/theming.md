@@ -8,8 +8,6 @@ ms.date: 02/25/2022
 
 .NET Multi-platform App UI (.NET MAUI) apps can respond to style changes dynamically at runtime by using the `DynamicResource` markup extension. This markup extension is similar to the `StaticResource` markup extension, in that both use a dictionary key to fetch a value from a `ResourceDictionary`. However, while the `StaticResource` markup extension performs a single dictionary lookup, the `DynamicResource` markup extension maintains a link to the dictionary key. Therefore, if the value associated with the key is replaced, the change is applied to the `VisualElement`. This enables runtime theming to be implemented in .NET MAUI apps.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The process for implementing runtime theming in a .NET MAUI app is as follows:
 
 1. Define the resources for each theme in a `ResourceDictionary`. For more information, see [Define themes](#define-themes).

@@ -9,8 +9,6 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices"]
 
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `Battery` class to check the device's battery information and monitor for changes. This class also provides information about the device's energy-saver status, which indicates if the device is running in a low-power mode.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The `Battery` class is available in the `Microsoft.Maui.Devices` namespace.
 
 ## Get started

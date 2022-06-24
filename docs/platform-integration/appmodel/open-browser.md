@@ -9,8 +9,6 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel"]
 
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IBrowser` interface. This interface enables an application to open a web link in the system-preferred browser or the external browser. A default implementation of the `IBrowser` interface is exposed through the `Browser.Default` property.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 ## Get started
 
 To access the browser functionality, the following platform-specific setup is required.

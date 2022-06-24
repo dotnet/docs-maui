@@ -8,8 +8,6 @@ ms.date: 01/18/2022
 
 The .NET Multi-platform App UI (.NET MAUI) `CollectionView` defines the following properties that control item selection:
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 - `SelectionMode`, of type `SelectionMode`, the selection mode.
 - `SelectedItem`, of type `object`, the selected item in the list. This property has a default binding mode of `TwoWay`, and has a `null` value when no item is selected.
 - `SelectedItems`, of type `IList<object>`, the selected items in the list. This property has a default binding mode of `OneWay`, and has a `null` value when no items are selected.

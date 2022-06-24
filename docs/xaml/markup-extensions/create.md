@@ -13,8 +13,6 @@ At the developer level, a .NET Multi-platform App UI (.NET MAUI) XAML markup ext
 - `DynamicResourceExtension` derives from `IMarkupExtension<DynamicResource>`
 - `BindingExtension` derives from `IMarkupExtension<BindingBase>`
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The two `IMarkupExtension` interfaces define only one method each, named `ProvideValue`:
 
 ```csharp

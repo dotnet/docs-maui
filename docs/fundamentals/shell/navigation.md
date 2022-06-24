@@ -8,8 +8,6 @@ ms.date: 04/07/2022
 
 .NET Multi-platform App UI (.NET MAUI) Shell includes a URI-based navigation experience that uses routes to navigate to any page in the app, without having to follow a set navigation hierarchy. In addition, it also provides the ability to navigate backwards without having to visit all of the pages on the navigation stack.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The `Shell` class defines the following navigation-related properties:
 
 - `BackButtonBehavior`, of type `BackButtonBehavior`, an attached property that defines the behavior of the back button.

@@ -10,8 +10,6 @@ ms.date: 04/19/2022
 
 The .NET Multi-platform App UI (.NET MAUI) `GraphicsView` is a graphics canvas on which 2D graphics can be drawn using types from the `Microsoft.Maui.Graphics` namespace. For more information about `Microsoft.Maui.Graphics`, see [Graphics](~/user-interface/graphics/index.md).
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 `GraphicsView` defines the `Drawable` property, of type `IDrawable`, which specifies the content that will be drawn. This property is backed by a `BindableProperty`, which means it can be the target of data binding, and styled.
 
 `GraphicsView` defines the following events:

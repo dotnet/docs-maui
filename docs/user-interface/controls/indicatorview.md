@@ -10,8 +10,6 @@ The .NET Multi-platform App UI (.NET MAUI) `IndicatorView` is a control that dis
 
 :::image type="content" source="media/indicatorview/circles.png" alt-text="Screenshot of a CarouselView and IndicatorView.":::
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 `IndicatorView` defines the following properties:
 
 - `Count`, of type `int`, the number of indicators.

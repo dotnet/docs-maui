@@ -8,8 +8,6 @@ ms.date: 12/13/2021
 
 .NET Multi-platform App UI (.NET MAUI) apps can combine multi-targeting with partial classes and partial methods to invoke platform code from cross-platform code.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The project for a .NET MAUI app contains a _Platforms_ folder, with each child folder representing a platform that .NET MAUI can target:
 
 :::image type="content" source="media/invoke-platform-code/platform-folders.png" alt-text="Platform folders screenshot.":::

@@ -21,8 +21,6 @@ This .NET MAUI Windows platform-specific controls whether items in a `ListView` 
 </ContentPage>
 ```
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 Alternatively, it can be consumed from C# using the fluent API:
 
 ```csharp

@@ -9,8 +9,6 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel"]
 
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IMap` interface. This interface enables an application to open the installed map application to a specific location or place mark. A default implementation of the `IMap` interface is exposed through the `Map.Default` property.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The `IMap` and `Map` types are available in the `Microsoft.Maui.ApplicationModel` namespace.
 
 ## Get started

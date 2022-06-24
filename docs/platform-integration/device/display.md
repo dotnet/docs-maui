@@ -9,8 +9,6 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices"]
 
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `DeviceDisplay` class to read information about the device's screen metrics. This class can be used to request the screen stays awake while the app is running.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The `DeviceDisplay` class is available in the `Microsoft.Maui.Devices` namespace.
 
 ## Main display info

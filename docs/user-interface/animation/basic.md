@@ -8,8 +8,6 @@ ms.date: 02/08/2022
 
 The .NET Multi-platform App UI (.NET MAUI) animation classes target different properties of visual elements, with a typical basic animation progressively changing a property from one value to another over a period of time.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 Basic animations can be created with extension methods provided by the `ViewExtensions` class, in the `Microsoft.Maui.Controls` namespace, which operate on `VisualElement` objects:
 
 - `CancelAnimations` cancels any animations.

@@ -8,8 +8,6 @@ ms.date: 04/05/2022
 
 .NET Multi-platform App UI (.NET MAUI) platform-specifics allow you to consume functionality that's only available on a specific platform, without customizing handlers.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The following platform-specific functionality is provided for .NET MAUI views on iOS:
 
 - Setting the `Cell` background color. For more information, see [Cell background color on iOS](cell-background-color.md).

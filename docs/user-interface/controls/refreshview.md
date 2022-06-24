@@ -9,8 +9,6 @@ no-loc: [RefreshView]
 
 The .NET Multi-platform App UI (.NET MAUI) `RefreshView` is a container control that provides pull to refresh functionality for scrollable content. Therefore, the child of a `RefreshView` must be a scrollable control, such as `ScrollView`, `CollectionView`, or `ListView`.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 `RefreshView` defines the following properties:
 
 - `Command`, of type `ICommand`, which is executed when a refresh is triggered.

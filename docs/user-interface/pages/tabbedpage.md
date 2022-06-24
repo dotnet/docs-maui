@@ -10,8 +10,6 @@ ms.date: 03/15/2022
 
 The .NET Multi-platform App UI (.NET MAUI) `TabbedPage` maintains a collection of children of type `Page`, only one of which is fully visible at a time. Each child is identified by a series of tabs across the top or bottom of the page. Typically, each child will be a `ContentPage` and when its tab is selected the page content is displayed.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 `TabbedPage` defines the following properties:
 
 - `BarBackground`, of type `Brush`, defines the background of the tab bar.

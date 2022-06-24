@@ -10,8 +10,6 @@ ms.date: 04/11/2022
 
 The .NET Multi-platform App UI (.NET MAUI) `FlyoutPage` is a page that manages two related pages of information – a flyout page that presents items, and a detail page that presents details about items on the flyout page. Selecting an item on the flyout page will navigate to the corresponding detail page.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 `FlyoutPage` defines the following properties:
 
 - `Detail`, of type `Page`, defines the detail page displayed for the selected item in the flyout page.

@@ -10,8 +10,6 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Storage", "SecureStorage"]
 
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `ISecureStorage` interface. This interface helps securely store simple key/value pairs. The `ISecureStorage` interface is exposed through the `SecureStorage.Default` property.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 The `SecureStorage` and `ISecureStorage` types are available in the `Microsoft.Maui.Storage` namespace.
 
 ## Get started

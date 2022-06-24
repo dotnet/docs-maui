@@ -8,8 +8,6 @@ ms.date: 01/12/2022
 
 .NET Multi-platform App UI (.NET MAUI) path markup syntax enables you to compactly specify path geometries in XAML.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 Path markup syntax is specified as a string value to the `Path.Data` property:
 
 ```xaml

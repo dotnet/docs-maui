@@ -8,8 +8,6 @@ ms.date: 05/09/2022
 
 In iOS, apps run in a sandbox that provides a set of rules that limit access between the app and system resources or user data. *Entitlements* are used to request the expansion of the sandbox to give your app additional capabilities. Any entitlements used by your app must be specified in the app's entitlements file. For more information about entitlements, see [Entitlements](https://developer.apple.com/documentation/bundleresources/entitlements).
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 Apple provides *capabilities*, also known as *app services*, as a means of extending functionality and widening the scope of what iOS apps can do. Capabilities allow you to add a deeper integration with platform features to your app, such as integration with Siri. For more information about capabilities, see [Capabilities](https://developer.apple.com/documentation/xcode/capabilities).
 
 To extend the capabilities of your app, an entitlement must be provided in your app's *Entitlements.plist* file. Entitlements are a key/value pair, and generally only one entitlement is required per capability. In addition to specifying entitlements, the *Entitlements.plist* file is used to sign the app.

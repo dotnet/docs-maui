@@ -8,8 +8,6 @@ ms.date: 01/25/2022
 
 .NET Multi-platform App UI (.NET MAUI) XAML markup extensions enable properties to be set to objects or values that are referenced indirectly from other sources. XAML markup extensions are particularly important for sharing objects, and referencing constants used throughout an app, but they find their greatest utility in data bindings.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 Typically, you use XAML to set properties of an object to explicit values, such as a string, a number, an enumeration member, or a string that is converted to a value behind the scenes. Sometimes, however, properties must instead reference values defined somewhere else, or which might require a little processing by code at runtime. For these purposes, XAML *markup extensions* are available.
 
 XAML markup extensions are so named because they are backed by code in classes that implement `IMarkupExtension`. It's also possible to write your own custom markup extensions.

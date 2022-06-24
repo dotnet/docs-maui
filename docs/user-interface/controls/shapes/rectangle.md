@@ -8,8 +8,6 @@ ms.date: 01/12/2022
 
 The .NET Multi-platform App UI (.NET MAUI) `Rectangle` class derives from the `Shape` class, and can be used to draw rectangles and squares. For information on the properties that the `Rectangle` class inherits from the `Shape` class, see [.NET MAUI Shapes](index.md).
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 `Rectangle` defines the following properties:
 
 - `RadiusX`, of type `double`, which is the x-axis radius that's used to round the corners of the rectangle. The default value of this property is 0.0.

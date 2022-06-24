@@ -8,8 +8,6 @@ ms.date: 04/07/2022
 
 The navigation experience provided by .NET Multi-platform App UI (.NET MAUI) Shell is based on flyouts and tabs. The top level of navigation in a Shell app is either a flyout or a bottom tab bar, depending on the navigation requirements of the app. When the navigation experience for an app begins with bottom tabs, the child of the subclassed `Shell` object should be a `TabBar` object, which represents the bottom tab bar.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 A `TabBar` object can contain one or more `Tab` objects, with each `Tab` object representing a tab on the bottom tab bar. Each `Tab` object can contain one or more `ShellContent` objects, with each `ShellContent` object displaying a single `ContentPage`. When more than one `ShellContent` object is present in a `Tab` object, the `ContentPage` objects will be navigable by top tabs. Within a tab, additional `ContentPage` objects that are known as detail pages, can be navigated to.
 
 > [!IMPORTANT]

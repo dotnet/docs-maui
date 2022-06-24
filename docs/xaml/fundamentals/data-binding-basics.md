@@ -8,8 +8,6 @@ ms.date: 01/25/2022
 
 .NET Multi-platform App UI (.NET MAUI) data bindings allow properties of two objects to be linked so that a change in one causes a change in the other. This is a very valuable tool, and while data bindings can be defined entirely in code, XAML provides shortcuts and convenience.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 ## Data bindings
 
 Data bindings connect properties of two objects, called the *source* and the *target*. In code, two steps are required:

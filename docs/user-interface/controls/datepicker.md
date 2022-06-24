@@ -8,8 +8,6 @@ ms.date: 02/09/2022
 
 The .NET Multi-platform App UI (.NET MAUI) `DatePicker` invokes the platform's date-picker control and allows you to select a date.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 `DatePicker` defines eight properties:
 
 - `MinimumDate` of type [`DateTime`](xref:System.DateTime), which defaults to the first day of the year 1900.
