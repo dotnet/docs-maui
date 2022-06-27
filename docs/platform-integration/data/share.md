@@ -7,7 +7,7 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel.DataTransfer"]
 
 # Share
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `Share` class. This class provides an API to send date, such as text or web links, to the devices share function.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `Share` class. This class provides an API to send data, such as text or web links, to the devices share function.
 
 The `Share` class is available in the `Microsoft.Maui.ApplicationModel.DataTransfer` namespace.
 
