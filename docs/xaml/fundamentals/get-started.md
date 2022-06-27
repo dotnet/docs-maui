@@ -1,7 +1,7 @@
 ---
 title: "Get started with .NET MAUI XAML"
 description: "In a .NET MAUI app, XAML is mostly used to define the visual contents of a page and works together with a code-behind file."
-ms.date: 01/24/2022
+ms.date: 06/27/2022
 ---
 
 # Get started with XAML
@@ -10,13 +10,13 @@ In a .NET Multi-platform App UI (.NET MAUI) app, XAML is mostly used to define t
 
 ## Anatomy of a XAML file
 
-A new .NET MAUI app contains two XAML files, and their associated code-behind files:
+A new .NET MAUI app contains three XAML files, and their associated code-behind files:
 
 :::image type="content" source="media/get-started/new-solution.png" alt-text="Screenshot of the structure of a new .NET MAUI app.":::
 
-The first file pairing is **App.xaml**, a XAML file, and **App.xaml.cs**, a C# *code-behind* file associated with the XAML file. Both **App.xaml** and **App.xaml.cs** contribute to a class named `App` that derives from `Application`. Most other classes with XAML files contribute to a class that derives from `ContentPage`, and define the UI of a page. This is true of the **MainPage.xaml** and **MainPage.xaml.cs** files.
+The first file pairing is *App.xaml*, a XAML file, and *App.xaml.cs*, a C# *code-behind* file associated with the XAML file. Both *App.xaml* and *App.xaml.cs* contribute to a class named `App` that derives from `Application`. The second file pairing is *AppShell.xaml* and *AppShell.xaml.cs*, which contribute to a class named `AppShell` that derives from `Shell`. Most other classes with XAML files contribute to a class that derives from `ContentPage`, and define the UI of a page. This is true of the *MainPage.xaml* and *MainPage.xaml.cs* files.
 
-The **MainPage.xaml** file has the following structure:
+The *MainPage.xaml* file has the following structure:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -34,7 +34,7 @@ At the end of the first tag, the `x` prefix is used for an attribute named `Clas
 
 The `x:Class` attribute can only appear in the root element of a XAML file to define a derived C# class. This is the only new class defined in the XAML file. Everything else that appears in a XAML file is instead simply instantiated from existing classes and initialized.
 
-The **MainPage.xaml.cs** file looks similar to this:
+The *MainPage.xaml.cs* file looks similar to this:
 
 ```csharp
 namespace MyMauiApp;
@@ -52,7 +52,10 @@ The `MainPage` class derives from `ContentPage`, and is a partial class definiti
 
 When Visual Studio builds the project, a source generator generates new C# source that contains the definition of the `InitializeComponent` method that's called from the `MainPage` constructor and adds it to the compilation object.
 
-At runtime, code in the `MauiProgram` class bootstraps the app and executes the `App` class constructor, which instantiates `MainPage`. The `MainPage` constructor calls `InitializeComponent`, which initializes all the objects defined in the XAML file, connects them all together in parent-child relationships, attaches event handlers defined in code to events set in the XAML file, and sets the resultant tree of objects as the content of the page.
+At runtime, code in the `MauiProgram` class bootstraps the app and executes the `App` class constructor, which instantiates `AppShell`. The `AppShell` class instantiates the first page of the app to be displayed, which is `MainPage`. The `MainPage` constructor calls `InitializeComponent`, which initializes all the objects defined in the XAML file, connects them all together in parent-child relationships, attaches event handlers defined in code to events set in the XAML file, and sets the resultant tree of objects as the content of the page.
+
+> [!NOTE]
+> The `AppShell` class uses .NET MAUI Shell to set the first page of the app to be displayed. However, Shell is beyond the scope of this introduction to XAML. For more information, see [.NET MAUI Shell](~/fundamentals/shell/index.md).
 
 ## Set page content
 
@@ -86,21 +89,9 @@ For properties of more complex types, however, converters are used for parsing t
 
 ## Page navigation
 
-When you run a .NET MAUI app, the `MainPage` is typically displayed. To see a different page you can either set that as the new startup page in the **App.xaml.cs** file, or navigate to the new page from `MainPage`.
+When you run a .NET MAUI app, the `MainPage` is typically displayed. To see a different page you can either set that as the new startup page in the *AppShell.xaml* file, or navigate to the new page from `MainPage`.
 
-To implement navigation, first change code in the **App.xaml.cs** constructor so that a `NavigationPage` object is created:
-
-```csharp
-public App()
-{
-    InitializeComponent();
-    MainPage = new NavigationPage(new MainPage());
-}
-```
-
-The `NavigationPage` constructor takes a `Page` argument that specifies the initial page that will be displayed.
-
-In the **MainPage.xaml.cs** constructor, you can create a simple `Button` and use the event handler to navigate to `HelloXamlPage`:
+To implement navigation, in the *MainPage.xaml.cs* constructor, you can create a simple `Button` and use the event handler to navigate to `HelloXamlPage`:
 
 ```csharp
 public MainPage()
