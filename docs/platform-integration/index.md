@@ -52,7 +52,7 @@ Each platform that .NET Multi-platform App UI (.NET MAUI) supports offers unique
 | Geocoding | The `Geocoding` class provides APIs to geocode a place mark to a positional coordinate, and reverse geocode a coordinate to a place mark. For more information, see [Geocoding](device/geocoding.md). |
 | Geolocation | The `Geolocation` class provides APIs to retrieve the device's current geolocation coordinates. For more information, see [Geolocation](device/geolocation.md). |
 | Haptic feedback | The `HapticFeedback` class control's haptic feedback on a device, which is generally manifested as a gentle vibration sensation to give a response to the user. For more information, see [Haptic feedback](device/haptic-feedback.md). |
-| Vibration | The `Vibration` class lets you start and stop the vibrate functionality for a desired amount of time. For more information, see [Vibration](device/)vibrate.md. |
+| Vibration | The `Vibration` class lets you start and stop the vibrate functionality for a desired amount of time. For more information, see [Vibration](device/vibrate.md). |
 
 ## Media
 
@@ -60,10 +60,10 @@ Each platform that .NET Multi-platform App UI (.NET MAUI) supports offers unique
 
 | Feature | Description |
 | ------- | ----------- |
-| Media picker | The `MediaPicker` class lets a user pick or take a photo or video on the device. For more information, see [Media picker](device-media/). |
-| Screenshot | The `Screenshot` class lets you take a capture of the current displayed screen of the app. For more information, see [Screenshot](device-media/). |
-| Text-to-speech | The `TextToSpeech` class enables an app to utilize the built-in text-to-speech engines to speak back text from the device. For more information, see [Text-to-Speech](device-media/). |
-| Unit converters | The `UnitConverters` class provides unit converters to help you convert from one unit of measurement to another. For more information, see [Unit converters](device-media/). |
+| Media picker | The `MediaPicker` class lets a user pick or take a photo or video on the device. For more information, see [Media picker](device-media/picker.md). |
+| Screenshot | The `Screenshot` class lets you take a capture of the current displayed screen of the app. For more information, see [Screenshot](device-media/screenshot.md). |
+| Text-to-speech | The `TextToSpeech` class enables an app to utilize the built-in text-to-speech engines to speak back text from the device. For more information, see [Text-to-Speech](device-media/text-to-speech.md). |
+| Unit converters | The `UnitConverters` class provides unit converters to help you convert from one unit of measurement to another. For more information, see [Unit converters](device-media/unit-converters.md). |
 
 ## Sharing
 
@@ -87,7 +87,7 @@ Each platform that .NET Multi-platform App UI (.NET MAUI) supports offers unique
 
 ## Platform-specifics
 
-.NET MAUI platform-specifics allow you to consume functionality that's only available on a specific platform. For more information, see [Android platform-specifics](~/android/platfom-specifics/index.md), [iOS platform-specifics](~/ios/platform-specifics/index.md), and [Windows platform-specifics](~/windows/platform-specifics/index.md).
+.NET MAUI platform-specifics allow you to consume functionality that's only available on a specific platform. For more information, see [Android platform-specifics](~/android/platform-specifics/index.md), [iOS platform-specifics](~/ios/platform-specifics/index.md), and [Windows platform-specifics](~/windows/platform-specifics/index.md).
 
 ## Access platform APIs
 
