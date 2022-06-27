@@ -420,6 +420,7 @@
         - name: Visual states
           href: user-interface/visual-states.md
     - name: Platform integration
+      href: platform-integration/index.md
       items:
         - name: Application model
           items:
@@ -475,7 +476,7 @@
             href: platform-integration/device/vibrate.md
         - name: Media
           items:
-          - name: Photo picker
+          - name: Media picker
             href: platform-integration/device-media/picker.md
           - name: Screenshot
             href: platform-integration/device-media/screenshot.md
