@@ -89,4 +89,4 @@ Each platform that .NET Multi-platform App UI (.NET MAUI) supports offers unique
 
 .NET MAUI platform-specifics allow you to consume specific functionality that's only available on a specific platform. For more information, see [Android platform-specifics](~/android/platform-specifics/index.md), [iOS platform-specifics](~/ios/platform-specifics/index.md), and [Windows platform-specifics](~/windows/platform-specifics/index.md).
 
-In situations where .NET MAUI doesn't provide any APIs for accessing platform APIs, you can write your own code to access the required platform APIs. For more information, see [Invoke platform code](invoke-platform-code.md).
+In situations where .NET MAUI doesn't provide any APIs for accessing specific platform APIs, you can write your own code to access the required platform APIs. For more information, see [Invoke platform code](invoke-platform-code.md).
