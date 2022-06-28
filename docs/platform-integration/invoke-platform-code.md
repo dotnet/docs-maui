@@ -14,7 +14,7 @@ Platform code can be invoked from cross-platform code by using conditional compi
 
 ## Conditional compilation
 
-Platform code can be invoked from cross-platform code by creating a class that uses conditional compilation to target different platforms.
+Platform code can be invoked from cross-platform code by using conditional compilation to target different platforms.
 
 The following example shows the `DeviceOrientation` enumeration, which will be used to specify the orientation of your device:
 
@@ -66,7 +66,7 @@ namespace InvokePlatformCodeDemos.Services.ConditionalCompilation
 }
 ```
 
-In this example, platform implementations of the `GetOrientation` method are provided for Android and iOS. On other platforms, `DeviceOrientation.Undefined` is returned. Alternatively, rather than returning `DeviceOrientation.Undefined` on platforms other than Android and iOS, you could throw a `PlatformNotSupportedException` that specifies the platforms that implementations are provided for:
+In this example, platform implementations of the `GetOrientation` method are provided for Android and iOS. On other platforms, `DeviceOrientation.Undefined` is returned. Alternatively, rather than returning `DeviceOrientation.Undefined` you could throw a `PlatformNotSupportedException` that specifies the platforms that implementations are provided for:
 
 ```csharp
 throw new PlatformNotSupportedException("GetOrientation is only supported on Android and iOS.");
@@ -76,7 +76,7 @@ The `DeviceOrientationService.GetOrientation` method can then be invoked from cr
 
 ```csharp
 using InvokePlatformCodeDemos.Services;
-using InvokePlatformCodeDemos.Services.ConditionalCompilation.DeviceOrientationService;
+using InvokePlatformCodeDemos.Services.ConditionalCompilation;
 ...
 
 DeviceOrientationService deviceOrientationService = new DeviceOrientationService();
@@ -89,7 +89,7 @@ For more information about conditional compilation, see [Conditional compilation
 
 ## Partial classes and methods
 
-The project for a .NET MAUI app contains a _Platforms_ folder, with each child folder representing a platform that .NET MAUI can target:
+A .NET MAUI app project contains a _Platforms_ folder, with each child folder representing a platform that .NET MAUI can target:
 
 :::image type="content" source="media/invoke-platform-code/platform-folders.png" alt-text="Platform folders screenshot.":::
 
@@ -207,7 +207,7 @@ After providing the platform implementations, the API can be invoked from cross-
 
 ```csharp
 using InvokePlatformCodeDemos.Services;
-using InvokePlatformCodeDemos.Services.PartialMethods.DeviceOrientationService;
+using InvokePlatformCodeDemos.Services.PartialMethods;
 ...
 
 DeviceOrientationService deviceOrientationService = new DeviceOrientationService();
