@@ -49,7 +49,7 @@ public class TodoItem
 
 The `ID` property is used to uniquely identify each `TodoItem` object, and is used by the web service to identify data to be updated or deleted. For example, to delete the `TodoItem` whose ID is `6bb8a868-dba1-4f1a-93b7-24ebce87e243`, the .NET MAUI app sends a DELETE request to `https://hostname/api/todoitems/6bb8a868-dba1-4f1a-93b7-24ebce87e243`.
 
-When the Web API framework receives a request it routes the request to an action. These actions are public methods in the `TodoItemsController` class. The Web API framework use routing middleware to match the URLs of incoming requests and map them to actions. REST APIs should use attribute routing to model the app's functionality as a set of resources whose operations are represented by HTTP verbs. Attribute routing uses a set of attributes to map actions directly to route templates. For more information about attribute routing, see [Attribute routing for REST APIs](/aspnet/core/mvc/controllers/routing#ar). For more information about building the REST service using ASP.NET Core, see [Creating backend services for native mobile applications](/aspnet/core/mobile/native-mobile-backend/).
+When the Web API framework receives a request, it routes the request to an action. These actions are public methods in the `TodoItemsController` class. The Web API framework uses routing middleware to match the URLs of incoming requests and map them to actions. REST APIs should use attribute routing to model the app's functionality as a set of resources whose operations are represented by HTTP verbs. Attribute routing uses a set of attributes to map actions directly to route templates. For more information about attribute routing, see [Attribute routing for REST APIs](/aspnet/core/mvc/controllers/routing#ar). For more information about building the REST service using ASP.NET Core, see [Creating backend services for native mobile applications](/aspnet/core/mobile/native-mobile-backend/).
 
 ## Create the HTTPClient object
 
@@ -108,7 +108,7 @@ public async Task<List<TodoItem>> RefreshDataAsync()
 }
 ```
 
-Data is received from the web service as a [`HttpResponseMessage`](xref:System.Net.Http.HttpResponseMessage) object. It contains information about the response, including the status code, headers, and any body. The REST service sends a HTTP status code in its response, which can be obtained from the `HttpResponseMessage.IsSuccessStatusCode` property, to indicate whether the HTTP request succeeded or failed. For this operation the REST service sends HTTP status code 200 (OK) in the response, which indicates that the request succeeded and that the requested information is in the response.
+Data is received from the web service as a [`HttpResponseMessage`](xref:System.Net.Http.HttpResponseMessage) object. It contains information about the response, including the status code, headers, and any body. The REST service sends an HTTP status code in its response, which can be obtained from the `HttpResponseMessage.IsSuccessStatusCode` property, to indicate whether the HTTP request succeeded or failed. For this operation the REST service sends HTTP status code 200 (OK) in the response, which indicates that the request succeeded and that the requested information is in the response.
 
 If the HTTP operation was successful, the content of the response is read. The `HttpResponseMessage.Content` property represents the content of the response, and is of type [`HttpContent`](xref:System.Net.Http.HttpContent). The `HttpContent` class represents the HTTP body and content headers, such as `Content-Type` and `Content-Encoding`. The content is then read into a `string` using the [`HttpContent.ReadAsStringAsync`](xref:System.Net.Http.HttpContent.ReadAsStringAsync) method. The `string` is then deserialized from JSON to a `List` of `TodoItem` objects.
 
@@ -147,7 +147,7 @@ public async Task SaveTodoItemAsync(TodoItem item, bool isNewItem = false)
 
 In this example, the `TodoItem` instance is serialized to a JSON payload for sending to the web service. This payload is then embedded in the body of the HTTP content that will be sent to the web service before the request is made with the `PostAsync` method.
 
-The REST service sends a HTTP status code in its response, which can be obtained from the `HttpResponseMessage.IsSuccessStatusCode` property, to indicate whether the HTTP request succeeded or failed. The typical responses for this operation are:
+The REST service sends an HTTP status code in its response, which can be obtained from the `HttpResponseMessage.IsSuccessStatusCode` property, to indicate whether the HTTP request succeeded or failed. The typical responses for this operation are:
 
 - **201 (CREATED)** – the request resulted in a new resource being created before the response was sent.
 - **400 (BAD REQUEST)** – the request is not understood by the server.
@@ -204,4 +204,4 @@ The REST service sends an HTTP status code in its response, which can be obtaine
 
 ## Local development
 
-If you are developing your REST web service locally with a framework such as ASP.NET Core Web API, you can debug your web service and .NET MAUI app at the same time. In this scenario, to consume your web service over HTTP from Android emulators and iOS simulators, you must enable clear-text HTTP traffic in your .NET MAUI app. For more information, see [Connect to local web services from Android emulators and iOS simulators](local-web-services.md).
+If you're developing a REST web service locally with a framework such as ASP.NET Core Web API, you can debug your web service and .NET MAUI app at the same time. In this scenario, to consume your web service over HTTP from Android emulators and iOS simulators, you must enable clear-text HTTP traffic in your .NET MAUI app. For more information, see [Connect to local web services from Android emulators and iOS simulators](local-web-services.md).
