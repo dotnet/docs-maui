@@ -57,7 +57,25 @@ Alternatively, the app icon can be composed of two images, one image representin
 
 .NET MAUI uses your icon across multiple platforms and devices, and does its best to resize the icon according to those platforms and devices. The app icon is also used to represent different things, such as a store entry for your app or the icon used to represent the app after it's installed on a device.
 
-The base size of your icon represents baseline density of the image, and is effectively the 1.0 scale factor that all other sizes are derived. If you don't specify the base size for a bitmap-based app icon, such as a PNG file, the image isn't resized. If you don't specify the base size for a vector-based app icon, such as an SVG file, the dimensions specified in the image are used as the base size. To stop a vector image from being resized, set the `Resize`.
+The base size of your icon represents baseline density of the image, and is effectively the 1.0 scale factor that all other sizes are derived. If you don't specify the base size for a bitmap-based app icon, such as a PNG file, the image isn't resized. If you don't specify the base size for a vector-based app icon, such as an SVG file, the dimensions specified in the image are used as the base size. To stop a vector image from being resized, set the `Resize` attribute to `false`.
+
+The following figure illustrates how base size affects an image:
+
+:::image type="content" source="media/app-icons/base-size.png" alt-text="How base size affects an app icon for .NET MAUI":::
+
+The previous figure is processed by .NET MAUI in the following steps:
+
+- **:::no-loc text="A":::**
+
+  The image is added as the .NET MAUI icon and has the dimensions of 210x260, and the base size is set to 420x520.
+
+- **:::no-loc text="B":::**
+
+  .NET MAUI automatically scales the image to match the base size of 420x520.
+
+- **:::no-loc text="C":::**
+
+  As different target platforms require different sizes of the image, .NET MAUI automatically scales the image from the base size to different sizes.
 
 The base size is specified with the `BaseSize="W,H"` attribute, where `W` is the width of the icon and `H` is the height of the icon. The value specified as the base size must be divisible by 8. The following example sets the base size:
 
