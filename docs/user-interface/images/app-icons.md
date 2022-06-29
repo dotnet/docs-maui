@@ -30,10 +30,15 @@ The icon defined by your app can be composed of a single image, by specifying th
 </ItemGroup>
 ```
 
-> [!TIP]
-> You can specify the icon in Visual Studio by using the **Solution Explorer** pane. First, select the file, then in the **Properties** pane, set the **Build Action** to **MauiIcon**. Be careful though, your this adds an additional icon to your project file without removing the previous icon. Only the first `<MauiIcon>` defined by the project file is respected. It's generally easier to manually specify the icon in the project file, or by simply replacing the _appicon.svg_ file that is created by the project template.
+> [!IMPORTANT]
+> You can specify the icon in Visual Studio by using the **Solution Explorer** pane. First, select the file, then in the **Properties** pane, set the **Build Action** to **MauiIcon**. Be careful though, your this adds an additional icon to your project file without removing the previous icon. Only the first `<MauiIcon>` item defined by the project file is respected. It's generally easier to manually specify the icon in the project file, or by simply replacing the _appicon.svg_ file that is created by the project template.
 
-After changing the icon, either the content of the image resources or by specifying a new image resource file, you may need to clean the project in Visual Studio. To clean the project, right-click on the project file in the **Solution Explorer** pane, and choose **Clean**. You also may need to uninstall the app from the target platform you're testing with.
+After changing the icon, by either changing the content of the image resources or by specifying a new image resource file, you may need to clean the project in Visual Studio. To clean the project, right-click on the project file in the **Solution Explorer** pane, and choose **Clean**. You also may need to uninstall the app from the target platform you're testing with.
+
+> [!CAUTION]
+> If you don't clean the project and uninstall the app from the target platform, you may not see your new icon.
+
+After changing the icon, review the [Platform specific configuration](#platform-specific-configuration) information.
 
 ### Composed icon
 
@@ -46,7 +51,7 @@ Alternatively, the app icon can be composed of two images, one image representin
 ```
 
 > [!IMPORTANT]
-> The background image (`Include` attribute) must be specified for the `<MauiIcon>`. The foreground image (`ForegroundFile` attribute) is optional.
+> The background image (`Include` attribute) must be specified for the `<MauiIcon>` item. The foreground image (`ForegroundFile` attribute) is optional.
 
 ## Set the base size
 
@@ -94,7 +99,30 @@ If the app icon is composed of a background (`Include`) image and a foreground (
 
 Color values can be specified in hexadecimal, using the format: `#RRGGBB` or `#AARRGGBB`. The value of `RR` represents the red channel, `GG` the green channel, `BB` the blue channel, and `AA` the alpha channel. Instead of a hexadecimal value, you may use a named .NET MAUI color, such as `Red` or `PaleVioletRed`. The named colors are from the <xref:SkiaSharp.SKColors?displayProperty=fullName> type.
 
-## Use a different icon for a specific platform
+## Use a different icon per platform
+
+If you want to use different icon resources or settings per platform, add the `Condition` attribute to the `<MauiIcon>` item, and query for the specific platform. If the condition is met, the `<MauiIcon>` item is processed. Only the first valid `<MauiIcon>` item is used by .NET MAUI, so all conditional items should be declared first, followed by a default `<MauiIcon>` item without a condition. The following XML demonstrates declare a specific icon for Windows and a fallback icon for all other platforms:
+
+```xml
+<ItemGroup>
+    <!-- App icon for Windows -->
+    <MauiIcon Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'"
+              Include="Resources\AppIcon\backicon.png" ForegroundFile="Resources\AppIcon\appiconfg.svg" TintColor="#40FF00FF" />
+
+    <!-- App icon for all other platforms -->
+    <MauiIcon Include="Resources\AppIcon\appicon.png" ForegroundFile="Resources\AppIcon\appiconfg.svg" TintColor="Yellow" />
+</ItemGroup>
+```
+
+You can set the target platform by changing the value compared in the condition to one of the following values:
+
+- `'ios'`
+- `'maccatalyst'`
+- `'android'`
+- `'windows'`
+- `'tizen'`
+
+For example, a condition that targets Android would be `Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'"`.
 
 ## Platform specific configuration
 
@@ -104,7 +132,7 @@ While the project file declares which resources the app icon is composed from, y
 
 # [Android](#tab/android)
 
-The icon Android uses is specified in the Android manifest, which is located at _Platforms\\Android\\AndroidManifest.xml_. The `manifest/application` node contains two attributes to define the icon: `android:icon` and `android:roundIcon`. The values of these two attributes follow this format: `@mipmap/{name}` and `@mipmap/{name}_round`, respectively. The value for `{name}` is derived from the .NET MAUI project file's `<MauiIcon>` entry, specifically the file name defined by the `Include` attribute, without its path or extension.
+The icon Android uses is specified in the Android manifest, which is located at _Platforms\\Android\\AndroidManifest.xml_. The `manifest/application` node contains two attributes to define the icon: `android:icon` and `android:roundIcon`. The values of these two attributes follow this format: `@mipmap/{name}` and `@mipmap/{name}_round`, respectively. The value for `{name}` is derived from the .NET MAUI project file's `<MauiIcon>` item, specifically the file name defined by the `Include` attribute, without its path or extension.
 
 Consider the following example, which defines the resource `Resources\AppIcon\healthapp.png` as the icon:
 
@@ -149,7 +177,7 @@ The app icon defined by your .NET MAUI app is used to generate an asset catalog 
 
 # [Tizen](#tab/tizen)
 
-The icon Tizen uses is specified in the Tizen manifest, which is located at _Platforms\\Tizen\\tizen-manifest.xml_. The `manifest/ui-application/icon` node value identifies the icon resource. The value of this node follows this format: `{name}.xhigh.png`. The value for `{name}` is derived from the .NET MAUI project file's `<MauiIcon>` entry, specifically the file name defined by the `Include` attribute, without its path or extension.
+The icon Tizen uses is specified in the Tizen manifest, which is located at _Platforms\\Tizen\\tizen-manifest.xml_. The `manifest/ui-application/icon` node value identifies the icon resource. The value of this node follows this format: `{name}.xhigh.png`. The value for `{name}` is derived from the .NET MAUI project file's `<MauiIcon>` item, specifically the file name defined by the `Include` attribute, without its path or extension.
 
 Consider the following example, which defines the resource `Resources\AppIcon\healthapp.png` as the icon:
 
