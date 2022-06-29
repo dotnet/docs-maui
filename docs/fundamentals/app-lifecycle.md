@@ -247,14 +247,14 @@ The following table lists the .NET MAUI delegates that are invoked in response t
 
 | Delegate | Arguments | Description |
 | -- | -- | -- |
-| `OnActivated` | `Microsoft.UI.Xaml.Window`, `Microsoft.UI.Xaml.WindowActivatedEventArgs` | Invoked when the platform [`Activated`](xref:Microsoft.UI.Xaml.Window.Activated) event is raised, if the app isn't resuming. |
-| `OnClosed` | `Microsoft.UI.Xaml.Window`, `Microsoft.UI.Xaml.WindowEventArgs` | Invoked when the platform [`Closed`](xref:Microsoft.UI.Xaml.Window.Closed) event is raised. |
-| `OnLaunched` | `Microsoft.UI.Xaml.Window`, `Microsoft.UI.Xaml.LaunchActivatedEventArgs` | Invoked by .NET MAUI's [`Application.OnLaunched`](xref:Microsoft.UI.Xaml.Application.OnLaunched*) override once the native window has been created and activated. |
-| `OnLaunching` | `Microsoft.UI.Xaml.Window`, `Microsoft.UI.Xaml.LaunchActivatedEventArgs` | Invoked by .NET MAUI's [`Application.OnLaunched`](xref:Microsoft.UI.Xaml.Application.OnLaunched*) override before the native window has been created and activated. |
+| `OnActivated` | `Microsoft.UI.Xaml.Window`, `Microsoft.UI.Xaml.WindowActivatedEventArgs` | Invoked when the platform <xref:Microsoft.UI.Xaml.Window.Activated> event is raised, if the app isn't resuming. |
+| `OnClosed` | `Microsoft.UI.Xaml.Window`, `Microsoft.UI.Xaml.WindowEventArgs` | Invoked when the platform <xref:Microsoft.UI.Xaml.Window.Closed> event is raised. |
+| `OnLaunched` | `Microsoft.UI.Xaml.Window`, `Microsoft.UI.Xaml.LaunchActivatedEventArgs` | Invoked by .NET MAUI's <xref:Microsoft.UI.Xaml.Application.OnLaunched%2A?displayProperty=nameWithType> override once the native window has been created and activated. |
+| `OnLaunching` | `Microsoft.UI.Xaml.Window`, `Microsoft.UI.Xaml.LaunchActivatedEventArgs` | Invoked by .NET MAUI's <xref:Microsoft.UI.Xaml.Application.OnLaunched%2A?displayProperty=nameWithType> override before the native window has been created and activated. |
 | `OnPlatformMessage` | `Microsoft.UI.Xaml.Window`, `WindowsPlatformMessageEventArgs` | Invoked when .NET MAUI receives specific native Windows messages. |
 | `OnPlatformWindowSubclassed` | `Microsoft.UI.Xaml.Window`, `WindowsPlatformWindowSubclassedEventArgs` | Invoked by .NET MAUI when the Win32 window is subclassed. |
 | `OnResumed` | `Microsoft.UI.Xaml.Window` | Invoked when the platform [`Activated`](xref:Microsoft.UI.Xaml.Window.Activated) event is raised, if the app is resuming. |
-| `OnVisibilityChanged` | `Microsoft.UI.Xaml.Window`, `Microsoft.UI.Xaml.WindowVisibilityChangedEventArgs` | Invoked when the platform [`VisibilityChanged`](xref:Microsoft.UI.Xaml.Window.VisibilityChanged) event is raised. |
+| `OnVisibilityChanged` | `Microsoft.UI.Xaml.Window`, `Microsoft.UI.Xaml.WindowVisibilityChangedEventArgs` | Invoked when the platform <xref:Microsoft.UI.Xaml.Window.VisibilityChanged> event is raised. |
 | `OnWindowCreated` | `Microsoft.UI.Xaml.Window` | Invoked when the native window is created for the cross-platform `Window`. |
 
 .NET MAUI exposes specific native Windows messages as a lifecycle event with the `OnPlatformMessage` delegate. The `WindowsPlatformMessageEventArgs` object that accompanies this delegate includes a `MessageId` property, of type `uint`. The value of this property can be examined to determine which message has been passed to your app window. For more information about windows messages, see [Windows Messages (Get Started with Win32 and C++)](/windows/win32/learnwin32/window-messages). For a list of window message constants, see [Window notifications](/windows/win32/winmsg/window-notifications).
@@ -349,9 +349,9 @@ Then, apps that want to receive notification of the platform lifecycle event sho
 
 ### Example
 
-The WinUI 3 [`Window.SizeChanged`](xref:Microsoft.UI.Xaml.Window.SizeChanged) event occurs when the native app window has first rendered, or has changed its rendering size. .NET MAUI doesn't expose this platform event as a lifecycle event. However, apps can receive notification when this platform event is raised by using the following approach:
+The WinUI 3 <xref:Microsoft.UI.Xaml.Window.SizeChanged?displayProperty=nameWithType> event occurs when the native app window has first rendered, or has changed its rendering size. .NET MAUI doesn't expose this platform event as a lifecycle event. However, apps can receive notification when this platform event is raised by using the following approach:
 
-- Register an event handler for the [`Window.SizeChanged`](xref:Microsoft.UI.Xaml.Window.SizeChanged) platform lifecycle event:
+- Register an event handler for the <xref:Microsoft.UI.Xaml.Window.SizeChanged?displayProperty=nameWithType> platform lifecycle event:
 
     ```csharp
     using Microsoft.Maui.LifecycleEvents;
