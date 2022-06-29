@@ -22,8 +22,8 @@ There are many different resources available for you to use to learn .NET Multi-
 
 - [.NET MAUI Samples](https://docs.microsoft.com/samples/browse/?expanded=dotnet&products=dotnet-maui)
   
-  Explore .NET MAUI samples and full example application and try them out locally. 
-
+  Explore .NET MAUI samples and full example application and try them out locally.
+  
 - [.NET MAUI podcast](https://www.dotnetmauipodcast.com)
 
   Keep up with the latest news in the world of mobile and desktop development with the official .NET MAUI podcast.
