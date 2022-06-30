@@ -65,17 +65,9 @@ The following figure illustrates how base size affects an image:
 
 The previous figure is processed by .NET MAUI in the following steps:
 
-- **:::no-loc text="A":::**
-
-  The image is added as the .NET MAUI icon and has the dimensions of 210x260, and the base size is set to 420x520.
-
-- **:::no-loc text="B":::**
-
-  .NET MAUI automatically scales the image to match the base size of 420x520.
-
-- **:::no-loc text="C":::**
-
-  As different target platforms require different sizes of the image, .NET MAUI automatically scales the image from the base size to different sizes.
+- **:::no-loc text="A":::**: The image is added as the .NET MAUI icon and has the dimensions of 210x260, and the base size is set to 420x520.
+- **:::no-loc text="B":::**: .NET MAUI automatically scales the image to match the base size of 420x520.
+- **:::no-loc text="C":::**: As different target platforms require different sizes of the image, .NET MAUI automatically scales the image from the base size to different sizes.
 
 The base size is specified with the `BaseSize="W,H"` attribute, where `W` is the width of the icon and `H` is the height of the icon. The value specified as the base size must be divisible by 8. The following example sets the base size:
 
