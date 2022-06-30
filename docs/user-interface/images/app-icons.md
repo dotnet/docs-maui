@@ -33,7 +33,7 @@ The icon defined by your app can be composed of a single image, by specifying th
 > [!IMPORTANT]
 > You can specify the icon in Visual Studio by using the **Solution Explorer** pane. First, select the file, then in the **Properties** pane, set the **Build Action** to **MauiIcon**. Be careful though, your this adds an additional icon to your project file without removing the previous icon. Only the first `<MauiIcon>` item defined by the project file is respected. It's generally easier to manually specify the icon in the project file, or by simply replacing the _appicon.svg_ file that is created by the project template.
 
-After changing the icon, by either changing the content of the image resources or by specifying a new image resource file, you may need to clean the project in Visual Studio. To clean the project, right-click on the project file in the **Solution Explorer** pane, and choose **Clean**. You also may need to uninstall the app from the target platform you're testing with.
+After changing the icon, by either changing the content of the image resources or by specifying a new image resource file, you may need to clean the project in Visual Studio. To clean the project, right-click on the project file in the **Solution Explorer** pane, and select **Clean**. You also may need to uninstall the app from the target platform you're testing with.
 
 > [!CAUTION]
 > If you don't clean the project and uninstall the app from the target platform, you may not see your new icon.
@@ -181,13 +181,12 @@ The `ForegroundScale` attribute can be optionally specified to change the scalin
 
 # [iOS & macOS](#tab/ios)
 
-There aren't any other settings to configure for iOS and macOS.
+The app icon defined by your .NET MAUI app is used to generate an asset catalog icon set for both iOS and macOS platforms. The name of the icon set is defined in the plist file, which on iOS is located at _Platforms\\iOS\\Info.plist_. For macOS, the plist file is located at _Platforms\\MacCatalyst\\Info.plist_.
 
-The app icon defined by your .NET MAUI app is used to generate an asset catalog icon set.
+> [!TIP]
+> To edit the plist file in Visual Studio, the plist editor presented when you double click on the plist file may not work. You may need to right-click the file in the **Solution Explorer** pane, and select **Open With...**. Next, choose **XML (Text) Editor** and select **OK**.
 
-# [Tizen](#tab/tizen)
-
-The icon Tizen uses is specified in the Tizen manifest, which is located at _Platforms\\Tizen\\tizen-manifest.xml_. The `manifest/ui-application/icon` node value identifies the icon resource. The value of this node follows this format: `{name}.xhigh.png`. The value for `{name}` is derived from the .NET MAUI project file's `<MauiIcon>` item, specifically the file name defined by the `Include` attribute, without its path or extension.
+The plist file contains a `<key>XSAppIconAssets</key>` entry, with a corresponding `<string>` node defined right after it. The value of this `<string>` node follows this format: `Assets.xcassets/{name}.appiconset` The value for `{name}` is derived from the .NET MAUI project file's `<MauiIcon>` item, specifically the file name defined by the `Include` attribute, without its path or extension.
 
 Consider the following example, which defines the resource `Resources\AppIcon\healthapp.png` as the icon:
 
@@ -197,19 +196,11 @@ Consider the following example, which defines the resource `Resources\AppIcon\he
 </ItemGroup>
 ```
 
-The transformed name, the resource without the path or extension, is `healthapp`. The value in the manifest would be `healthapp.xhigh.png`, as demonstrated in the following XML:
+The transformed name, the resource without the path or extension, is `healthapp`. The value in the manifest would be `Assets.xcassets/healthapp.appiconset`, as demonstrated in the following XML:
 
 ```xml
-<manifest package="com.companyname.MauiApp5" version="1.0.0" api-version="7" xmlns="http://tizen.org/ns/packages">
-  <profile name="common" />
-  <ui-application appid="com.companyname.MauiApp5" exec="MauiApp5.dll" multiple="false" nodisplay="false" taskmanage="true" type="dotnet" launch_mode="single">
-    <label>MauiApp5</label>
-    <icon>appicon.xhigh.png</icon>
-    <metadata key="http://tizen.org/metadata/prefer_dotnet_aot" value="true" />
-  </ui-application>
-
-  ... other settings ...
-</manifest>
+<key>XSAppIconAssets</key>
+<string>Assets.xcassets/healthapp.appiconset</string>
 ```
 
 > [!TIP]
