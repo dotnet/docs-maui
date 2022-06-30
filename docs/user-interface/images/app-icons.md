@@ -1,11 +1,11 @@
 ---
-title: "Add an app icon to a .NET MAUI app project"
-description: "Learn how to add a .NET MAUI app icon to your app, which is the logo that represents your app in multiple places."
+title: "Change the app icon"
+description: "Learn how to change the.NET MAUI app icon. The icon is the logo that represents your app in multiple places, such as the Store, launcher, or app shortcut."
 ms.date: 06/28/2022
 no-loc: ["MauiIcon"]
 ---
 
-# Add an app icon to a .NET MAUI app project
+# Change the app icon in .NET MAUI
 
 Every app has a logo icon that represents it, and that icon typically appears in multiple places. For example, on iOS the app icon appears on the Home screen and throughout the system, such as in Settings, notifications, and search results, and in the App Store. On Android, the app icon appears as a launcher icon and throughout the system, such as on the action bar, notifications, and in the Google Play Store. On Windows, the app icon appears in the app list in the start menu, the taskbar, the app's tile, and in the Microsoft Store.
 
@@ -14,11 +14,11 @@ In a .NET Multi-platform App UI (.NET MAUI) app project, an app icon can be spec
 A .NET MAUI app icon can use any of the standard platform image formats, including Scalable Vector Graphics (SVG) files.
 
 > [!IMPORTANT]
-> .NET MAUI converts SVG files to Portable Network Graphic (PNG) files. Therefore, when adding an SVG file to your .NET MAUI app project, it should be referenced from XAML or C# with a .png extension.
+> .NET MAUI converts SVG files to Portable Network Graphic (PNG) files. Therefore, when adding an SVG file to your .NET MAUI app project, it should be referenced from XAML or C# with a _.png_ extension.
 
-## Set the icon
+## Change the icon
 
-In your project file, the `<MauiIcon>` item designates the icon to use for your app. You may only have one app icon defined for your app. Any subsequent `<MauiIcon>` items are ignored.
+In your project file, the `<MauiIcon>` item designates the icon to use for your app. You may only have one icon defined for your app. Any subsequent `<MauiIcon>` items are ignored.
 
 To comply with Android resource naming rules, app icon filenames must be lowercase, start and end with a letter character, and contain only alphanumeric characters or underscores. For more information, see [App resources overview](https://developer.android.com/guide/topics/resources/providing-resources) on developer.android.com.
 
