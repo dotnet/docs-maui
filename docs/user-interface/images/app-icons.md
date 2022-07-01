@@ -5,7 +5,7 @@ ms.date: 06/28/2022
 no-loc: ["MauiIcon"]
 ---
 
-# Change the app icon in .NET MAUI
+# Change a .NET MAUI app icon
 
 Every app has a logo icon that represents it, and that icon typically appears in multiple places. For example, on iOS the app icon appears on the Home screen and throughout the system, such as in Settings, notifications, and search results, and in the App Store. On Android, the app icon appears as a launcher icon and throughout the system, such as on the action bar, notifications, and in the Google Play Store. On Windows, the app icon appears in the app list in the start menu, the taskbar, the app's tile, and in the Microsoft Store.
 
@@ -31,9 +31,9 @@ The icon defined by your app can be composed of a single image, by specifying th
 ```
 
 > [!IMPORTANT]
-> You can specify the icon in Visual Studio by using the **Solution Explorer** pane. First, select the file, then in the **Properties** pane, set the **Build Action** to **MauiIcon**. Be careful though, your this adds an additional icon to your project file without removing the previous icon. Only the first `<MauiIcon>` item defined by the project file is respected. It's generally easier to manually specify the icon in the project file, or by simply replacing the _appicon.svg_ file that is created by the project template.
+> Only the first `<MauiIcon>` item defined in the project file is processed by .NET MAUI. If you want to use a different file as the icon, first delete the existing icon from your project, and then add the new icon. Next, in the **Solution Explorer** pane, select the file, and then in the **Properties** pane, set the **Build Action** to **MauiIcon**. Instead of adding a new icon file to the project, consider replacing the existing icon file instead.
 
-After changing the icon, by either changing the content of the image resources or by specifying a new image resource file, you may need to clean the project in Visual Studio. To clean the project, right-click on the project file in the **Solution Explorer** pane, and select **Clean**. You also may need to uninstall the app from the target platform you're testing with.
+After changing the icon file, you may need to clean the project in Visual Studio. To clean the project, right-click on the project file in the **Solution Explorer** pane, and select **Clean**. You also may need to uninstall the app from the target platform you're testing with.
 
 > [!CAUTION]
 > If you don't clean the project and uninstall the app from the target platform, you may not see your new icon.
@@ -42,7 +42,7 @@ After changing the icon, review the [Platform specific configuration](#platform-
 
 ### Composed icon
 
-Alternatively, the app icon can be composed of two images, one image representing the background and another representing the foreground. Since icons are transformed into png files, the composed app icon will be first layered with the background image, typically an image of a pattern or solid color, followed by the foreground image. In this case, the `Include` attribute represents the icon background image, and the `Foreground` attribute represents the foreground image:
+Alternatively, the app icon can be composed of two images, one image representing the background and another representing the foreground. Since icons are transformed into PNG files, the composed app icon will be first layered with the background image, typically an image of a pattern or solid color, followed by the foreground image. In this case, the `Include` attribute represents the icon background image, and the `Foreground` attribute represents the foreground image:
 
 ```xml
 <ItemGroup>
@@ -55,7 +55,7 @@ Alternatively, the app icon can be composed of two images, one image representin
 
 ## Set the base size
 
-.NET MAUI uses your icon across multiple platforms and devices, and does its best to resize the icon according to those platforms and devices. The app icon is also used to represent different things, such as a store entry for your app or the icon used to represent the app after it's installed on a device.
+.NET MAUI uses your icon across multiple platforms and devices, and attempts to resize the icon according for each platform and device. The app icon is also used for different purposes, such as a store entry for your app or the icon used to represent the app after it's installed on a device.
 
 The base size of your icon represents baseline density of the image, and is effectively the 1.0 scale factor that all other sizes are derived. If you don't specify the base size for a bitmap-based app icon, such as a PNG file, the image isn't resized. If you don't specify the base size for a vector-based app icon, such as an SVG file, the dimensions specified in the image are used as the base size. To stop a vector image from being resized, set the `Resize` attribute to `false`.
 
@@ -63,11 +63,14 @@ The following figure illustrates how base size affects an image:
 
 :::image type="content" source="media/app-icons/base-size.png" alt-text="How base size affects an app icon for .NET MAUI":::
 
-The previous figure is processed by .NET MAUI in the following steps:
+The process shown in the previous figure follows these steps:
 
-- **:::no-loc text="A":::**: The image is added as the .NET MAUI icon and has the dimensions of 210x260, and the base size is set to 420x520.
-- **:::no-loc text="B":::**: .NET MAUI automatically scales the image to match the base size of 420x520.
+- **:::no-loc text="A":::**: The image is added as the .NET MAUI icon and has dimensions of 210x260, and the base size is set to 424x520.
+- **:::no-loc text="B":::**: .NET MAUI automatically scales the image to match the base size of 424x520.
 - **:::no-loc text="C":::**: As different target platforms require different sizes of the image, .NET MAUI automatically scales the image from the base size to different sizes.
+
+> [!TIP]
+> Use an SVG image as your icon. SVG images can upscale to larger sizes and still look crisp and clean. Bitmap-based images, such a PNG or JPG image, look blurry when upscaled.
 
 The base size is specified with the `BaseSize="W,H"` attribute, where `W` is the width of the icon and `H` is the height of the icon. The value specified as the base size must be divisible by 8. The following example sets the base size:
 
@@ -107,11 +110,11 @@ If the app icon is composed of a background (`Include`) image and a foreground (
 </ItemGroup>
 ```
 
-Color values can be specified in hexadecimal, using the format: `#RRGGBB` or `#AARRGGBB`. The value of `RR` represents the red channel, `GG` the green channel, `BB` the blue channel, and `AA` the alpha channel. Instead of a hexadecimal value, you may use a named .NET MAUI color, such as `Red` or `PaleVioletRed`. The named colors are from the <xref:SkiaSharp.SKColors?displayProperty=fullName> type.
+Color values can be specified in hexadecimal, using the format: `#RRGGBB` or `#AARRGGBB`. The value of `RR` represents the red channel, `GG` the green channel, `BB` the blue channel, and `AA` the alpha channel. Instead of a hexadecimal value, you may use a named .NET MAUI color, such as `Red` or `PaleVioletRed`.
 
 ## Use a different icon per platform
 
-If you want to use different icon resources or settings per platform, add the `Condition` attribute to the `<MauiIcon>` item, and query for the specific platform. If the condition is met, the `<MauiIcon>` item is processed. Only the first valid `<MauiIcon>` item is used by .NET MAUI, so all conditional items should be declared first, followed by a default `<MauiIcon>` item without a condition. The following XML demonstrates declare a specific icon for Windows and a fallback icon for all other platforms:
+If you want to use different icon resources or settings per platform, add the `Condition` attribute to the `<MauiIcon>` item, and query for the specific platform. If the condition is met, the `<MauiIcon>` item is processed. Only the first valid `<MauiIcon>` item is used by .NET MAUI, so all conditional items should be declared first, followed by a default `<MauiIcon>` item without a condition. The following XML demonstrates declaring a specific icon for Windows and a fallback icon for all other platforms:
 
 ```xml
 <ItemGroup>
@@ -130,13 +133,12 @@ You can set the target platform by changing the value compared in the condition 
 - `'maccatalyst'`
 - `'android'`
 - `'windows'`
-- `'tizen'`
 
 For example, a condition that targets Android would be `Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'"`.
 
-## Platform specific configuration
+## Platform-specific configuration
 
-While the project file declares which resources the app icon is composed from, you're still required to update the individual platform configurations with reference to those app icons. The following information describes those platform-specific settings.
+While the project file declares which resources the app icon is composed from, you're still required to update the individual platform configurations with reference to those app icons. The following information describes these platform-specific settings.
 
 <!-- markdownlint-disable MD025 -->
 
@@ -181,12 +183,12 @@ The `ForegroundScale` attribute can be optionally specified to change the scalin
 
 # [iOS & macOS](#tab/ios)
 
-The app icon defined by your .NET MAUI app is used to generate an asset catalog icon set for both iOS and macOS platforms. The name of the icon set is defined in the plist file, which on iOS is located at _Platforms\\iOS\\Info.plist_. For macOS, the plist file is located at _Platforms\\MacCatalyst\\Info.plist_.
+The app icon defined by your .NET MAUI app is used to generate an asset catalog icon set for both iOS and macOS platforms. The name of the icon set is defined in the _Info.plist_ file, which on iOS is located at _Platforms\\iOS\\Info.plist_. For macOS, the _Info.plist_ file is located at _Platforms\\MacCatalyst\\Info.plist_.
 
 > [!TIP]
-> To edit the plist file in Visual Studio, the plist editor presented when you double click on the plist file may not work. You may need to right-click the file in the **Solution Explorer** pane, and select **Open With...**. Next, choose **XML (Text) Editor** and select **OK**.
+> To manually edit the _Info.plist_ file in Visual Studio, right-click the file in the **Solution Explorer** pane, and select **Open With...**. Next, choose **XML (Text) Editor** and select **OK**. Otherwise, double-click the file to open it in the plist Visual Editor.
 
-The plist file contains a `<key>XSAppIconAssets</key>` entry, with a corresponding `<string>` node defined right after it. The value of this `<string>` node follows this format: `Assets.xcassets/{name}.appiconset` The value for `{name}` is derived from the .NET MAUI project file's `<MauiIcon>` item, specifically the file name defined by the `Include` attribute, without its path or extension.
+The _Info.plist_ file contains a `<key>XSAppIconAssets</key>` entry, with a corresponding `<string>` node defined after it. The value of this `<string>` node follows this format: `Assets.xcassets/{name}.appiconset` The value for `{name}` is derived from the .NET MAUI project file's `<MauiIcon>` item, specifically the file name defined by the `Include` attribute, without its path or extension.
 
 Consider the following example, which defines the resource `Resources\AppIcon\healthapp.png` as the icon:
 
@@ -210,6 +212,6 @@ The transformed name, the resource without the path or extension, is `healthapp`
 
 There aren't any other settings to configure for Windows.
 
-The app icon defined by your .NET MAUI app is used to generate an asset catalog icon set.
+The app icon defined by project is used to generate your app's icon assets.
 
 ---
