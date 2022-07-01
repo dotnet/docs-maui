@@ -23,7 +23,7 @@ No setup is required.
 
 # [iOS\macOS](#tab/ios)
 
-Apple requires that you define the schemes you want to use. Add the `LSApplicationQueriesSchemes` key and schemes to the _Platforms/iOS/Info.plist_ file:
+Apple requires that you define the schemes you want to use. Add the `LSApplicationQueriesSchemes` key and schemes to the _Platforms/iOS/Info.plist_ and _Platforms/MacCatalyst/Info.plist files:
 
 ```xml
 <key>LSApplicationQueriesSchemes</key>

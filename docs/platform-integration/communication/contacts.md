@@ -63,7 +63,7 @@ The `ReadContacts` permission is required and must be configured in the Android 
 
 # [iOS\macOS](#tab/ios)
 
-In the **Solution Explorer** pane, right-click on the _Platforms/iOS/Info.plist_ file. Select **Open With** and then select the **XML (Text) Editor** item. Press the **OK** button. In the file, add the following key and value:
+In the **Solution Explorer** pane, right-click on the _Platforms/iOS/Info.plist_ or _Platforms/MacCatalyst/Info.plist file. Select **Open With** and then select the **XML (Text) Editor** item. Press the **OK** button. In the file, add the following key and value:
 
 ```xml
 <key>NSContactsUsageDescription</key>

@@ -26,7 +26,7 @@ No setup is required.
 
 # [iOS\macOS](#tab/ios)
 
-If your application is going to share media files, such as photos and videos, you must add the following keys to your _Info.plist_ file:
+If your application is going to share media files, such as photos and videos, you must add the following keys to your _Platforms/iOS/Info.plist_ and _Platforms/MacCatalyst/Info.plist files:
 
 ```xml
 <key>NSPhotoLibraryAddUsageDescription</key>
