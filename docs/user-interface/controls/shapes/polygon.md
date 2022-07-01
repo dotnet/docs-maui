@@ -6,6 +6,8 @@ ms.date: 01/12/2022
 
 # Polygon
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-shapes)
+
 The .NET Multi-platform App UI (.NET MAUI) `Polygon` class derives from the `Shape` class, and can be used to draw polygons, which are connected series of lines that form closed shapes. For information on the properties that the `Polygon` class inherits from the `Shape` class, see [Shapes](index.md).
 
 `Polygon` defines the following properties:

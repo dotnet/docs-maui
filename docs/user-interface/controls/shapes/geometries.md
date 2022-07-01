@@ -6,6 +6,8 @@ ms.date: 01/12/2022
 
 # Geometries
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-shapes)
+
 The .NET Multi-platform App UI (.NET MAUI) `Geometry` class, and the classes that derive from it, enable you to describe the geometry of a 2D shape. `Geometry` objects can be simple, such as rectangles and circles, or composite, created from two or more geometry objects. In addition, more complex geometries can be created that include arcs and curves.
 
 The `Geometry` class is the parent class for several classes that define different categories of geometries:

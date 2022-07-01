@@ -6,6 +6,8 @@ ms.date: 01/12/2022
 
 # Polyline
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-shapes)
+
 The .NET Multi-platform App UI (.NET MAUI) `Polyline` class derives from the `Shape` class, and can be used to draw a series of connected straight lines. A polyline is similar to a polygon, except the last point in a polyline is not connected to the first point. For information on the properties that the `Polyline` class inherits from the `Shape` class, see [Shapes](index.md).
 
 `Polyline` defines the following properties:

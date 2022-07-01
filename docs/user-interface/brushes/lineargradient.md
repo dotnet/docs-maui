@@ -6,6 +6,8 @@ ms.date: 01/11/2022
 
 # Linear gradient brushes
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-brushes)
+
 The .NET Multi-platform App UI (.NET MAUI)  `LinearGradientBrush` class derives from the `GradientBrush` class, and paints an area with a linear gradient, which blends two or more colors along a line known as the gradient axis. `GradientStop` objects are used to specify the colors in the gradient and their positions. For more information about `GradientStop` objects, see [Gradients](gradient.md).
 
 The `LinearGradientBrush` class defines the following properties:

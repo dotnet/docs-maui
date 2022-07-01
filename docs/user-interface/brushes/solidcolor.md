@@ -6,6 +6,8 @@ ms.date: 01/11/2022
 
 # Solid color brushes
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-brushes)
+
 The .NET Multi-platform App UI (.NET MAUI) `SolidColorBrush` class derives from the `Brush` class, and is used to paint an area with a solid color. There are a variety of approaches to specifying the color of a `SolidColorBrush`. For example, you can specify its color with a `Color` value or by using one of the predefined `SolidColorBrush` objects provided by the `Brush` class.
 
 The `SolidColorBrush` class defines the `Color` property, of type `Color`, which represents the color of the brush. This property is backed by a `BindableProperty` object, which means that it can be the target of data bindings, and styled.
