@@ -6,6 +6,8 @@ ms.date: 01/12/2022
 
 # Rectangle
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-shapes)
+
 The .NET Multi-platform App UI (.NET MAUI) `Rectangle` class derives from the `Shape` class, and can be used to draw rectangles and squares. For information on the properties that the `Rectangle` class inherits from the `Shape` class, see [.NET MAUI Shapes](index.md).
 
 `Rectangle` defines the following properties:

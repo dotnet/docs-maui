@@ -6,6 +6,8 @@ ms.date: 01/12/2022
 
 # Path
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-shapes)
+
 The .NET Multi-platform App UI (.NET MAUI) `Path` class derives from the `Shape` class, and can be used to draw curves and complex shapes. These curves and shapes are often described using `Geometry` objects. For information on the properties that the `Path` class inherits from the `Shape` class, see [Shapes](index.md).
 
 `Path` defines the following properties:

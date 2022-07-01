@@ -6,6 +6,8 @@ ms.date: 01/11/2022
 
 # Radial gradient brushes
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-brushes)
+
 The .NET Multi-platform App UI (.NET MAUI) `RadialGradientBrush` class derives from the `GradientBrush` class, and paints an area with a radial gradient, which blends two or more colors across a circle. `GradientStop` objects are used to specify the colors in the gradient and their positions. For more information about `GradientStop` objects, see [Gradients](gradient.md).
 
 The `RadialGradientBrush` class defines the following properties:

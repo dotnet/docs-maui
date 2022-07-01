@@ -6,6 +6,8 @@ ms.date: 01/27/2022
 
 # Create XAML markup extensions
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/xaml-markupextensions)
+
 At the developer level, a .NET Multi-platform App UI (.NET MAUI) XAML markup extension is a class that implements the `IMarkupExtension` or `IMarkupExtension<T>` interface. It's also possible to define your own custom XAML markup extensions by deriving from `IMarkupExtension` or `IMarkupExtension<T>`. Use the generic form if the markup extension obtains a value of a particular type. This is the case with several of the .NET MAUI markup extensions:
 
 - `TypeExtension` derives from `IMarkupExtension<Type>`
