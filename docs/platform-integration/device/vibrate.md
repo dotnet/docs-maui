@@ -46,7 +46,7 @@ The `VIBRATE` permission is required, and must be configured in the Android proj
   Right-click on the Android project and open the project's properties. Under _Android Manifest_ find the **Required permissions:** area and check the appropriate permissions. This will automatically update the _AndroidManifest.xml_ file.
 -->
 
-# [iOS](#tab/ios)
+# [iOS\macOS](#tab/ios)
 
 No additional setup required.
 
@@ -72,7 +72,7 @@ This section describes the platform-specific differences with the vibration API.
 
 No platform differences.
 
-# [iOS](#tab/ios)
+# [iOS\macOS](#tab/ios)
 
 - Only vibrates when device is set to "Vibrate on ring".
 - Always vibrates for 500 milliseconds.

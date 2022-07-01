@@ -163,7 +163,7 @@ Permissions must have the matching attributes set in the Android Manifest file. 
 
 <!-- TODO For more information, see [Permissions in .NET MAUI for Android](../../android/app-fundamentals/permissions.md). -->
 
-# [iOS](#tab/ios)
+# [iOS\macOS](#tab/ios)
 
 Permissions must have a matching string in the _Info.plist_ file. Once a permission is requested and denied, a pop-up will no longer appear if you request the permission a second time. You must prompt your user to manually adjust the setting in the applications settings screen in iOS. Permission status defaults to `Unknown`.
 

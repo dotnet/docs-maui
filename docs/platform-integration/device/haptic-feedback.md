@@ -48,7 +48,7 @@ The `Vibrate` permission is required and must be configured in the Android proje
 
 -->
 
-# [iOS](#tab/ios)
+# [iOS\macOS](#tab/ios)
 
 No setup is required.
 

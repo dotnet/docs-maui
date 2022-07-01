@@ -23,7 +23,7 @@ In the _Platforms/Android/MainActivity.cs_ file, add the following `IntentFilter
 
 :::code language="csharp" source="../snippets/shared_2/Platforms/Android/MainActivity.cs" id="intent_filter_1":::
 
-# [iOS](#tab/ios)
+# [iOS\macOS](#tab/ios)
 
 No setup is required.
 
