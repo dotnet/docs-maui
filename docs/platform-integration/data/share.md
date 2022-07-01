@@ -24,9 +24,9 @@ To access the **Share** functionality, the following platform-specific setup is 
 
 No setup is required.
 
-# [iOS](#tab/ios)
+# [iOS\macOS](#tab/ios)
 
-If your application is going to share media files, such as photos and videos, you must add the following keys to your _Info.plist_ file:
+If your application is going to share media files, such as photos and videos, you must add the following keys to your _Platforms/iOS/Info.plist_ and _Platforms/MacCatalyst/Info.plist_ files:
 
 ```xml
 <key>NSPhotoLibraryAddUsageDescription</key>
@@ -77,7 +77,7 @@ This section describes the platform-specific differences with the share API.
 
 - The `Subject` property is used for the desired subject of a message.
 
-# [iOS](#tab/ios)
+# [iOS\macOS](#tab/ios)
 
 - The `Subject` property isn't used.
 

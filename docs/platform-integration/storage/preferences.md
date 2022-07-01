@@ -90,7 +90,7 @@ This section describes the platform-specific differences with the preferences AP
 
 All data is stored into [**Shared Preferences**](https://developer.android.com/training/data-storage/shared-preferences.html). If no `sharedName` is specified, the default **Shared Preferences** are used. Otherwise, the name is used to get a **private Shared Preferences** with the specified name.
 
-# [iOS](#tab/ios)
+# [iOS\macOS](#tab/ios)
 
 **NSUserDefaults** <!-- TODO link (../ios/app-fundamentals/user-defaults.md) --> is used to store values on iOS devices. If no `sharedName` is specified, the `StandardUserDefaults` are used. Otherwise, the name is used to create a new `NSUserDefaults` with the specified name used for the `NSUserDefaultsType.SuiteName`.
 

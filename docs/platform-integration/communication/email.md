@@ -31,9 +31,9 @@ In the _Platforms/Android/AndroidManifest.xml_ file, add the following `queries/
 </queries>
 ```
 
-# [iOS](#tab/ios)
+# [iOS\macOS](#tab/ios)
 
-Apple requires that you define the schemes you want to use. Add the `LSApplicationQueriesSchemes` key and schemes to the _Platforms/iOS/Info.plist_ file:
+Apple requires that you define the schemes you want to use. Add the `LSApplicationQueriesSchemes` key and schemes to the _Platforms/iOS/Info.plist_ and _Platforms/MacCatalyst/Info.plist_ files:
 
 ```xml
 <key>LSApplicationQueriesSchemes</key>
@@ -71,7 +71,7 @@ The following example demonstrates adding arbitrary text to a file, and then add
 
 Not all email clients for Android support `EmailBodyFormat.Html`, since there is no way to detect this, we recommend using `EmailBodyFormat.PlainText` when sending emails.
 
-# [iOS](#tab/ios)
+# [iOS\macOS](#tab/ios)
 
 Both `EmailBodyFormat.Html` and `EmailBodyFormat.PlainText` are supported.
 

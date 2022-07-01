@@ -65,7 +65,7 @@ This section describes the platform-specific differences with the device informa
 
 No platform differences.
 
-# [iOS](#tab/ios)
+# [iOS\macOS](#tab/ios)
 
 iOS doesn't expose an API for developers to get the model of the specific iOS device. Instead, a hardware identifier is returned, like _iPhone10,6_, which refers to the iPhone X. A mapping of these identifiers isn't provided by Apple, but can be found on the internet such as at [The iPhone Wiki](https://www.theiphonewiki.com/wiki/Models) and [Get iOS Model](https://github.com/dannycabrera/Get-iOS-Model) websites.
 

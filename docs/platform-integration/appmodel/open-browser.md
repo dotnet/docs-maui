@@ -33,7 +33,7 @@ In the _Platforms/Android/AndroidManifest.xml_ file, add the following `queries/
 </queries>
 ```
 
-# [iOS](#tab/ios)
+# [iOS\macOS](#tab/ios)
 
 No setup is required.
 
@@ -78,7 +78,7 @@ The `BrowserLaunchOptions.LaunchMode` determines how the browser is launched:
 
   An `Intent` is used to request the Uri be opened through the system's normal browser.
 
-# [iOS](#tab/ios)
+# [iOS\macOS](#tab/ios)
 
 The `BrowserLaunchOptions.LaunchMode` determines how the browser is launched:
 

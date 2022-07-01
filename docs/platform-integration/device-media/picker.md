@@ -57,9 +57,9 @@ In the _Platforms/Android/AndroidManifest.xml_ file, add the following `queries/
 </queries>
 ```
 
-# [iOS](#tab/ios)
+# [iOS\macOS](#tab/ios)
 
-In the _Platforms/iOS/Info.plist_ file, add the following keys and values:
+In the _Platforms/iOS/Info.plist_ and _Platforms/MacCatalyst/Info.plist_ files, add the following keys and values:
 
 ```xml
 <key>NSCameraUsageDescription</key>
