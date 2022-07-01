@@ -20,6 +20,10 @@ There are many different resources available for you to use to learn .NET Multi-
 
   Learn how to build a .NET MAUI app that displays a list of monkeys from around the world. You'll start by building the business logic backend that retrieves JSON-encoded data from a REST-based endpoint. You then use .NET MAUI to find the closest monkey to you, and show the monkey on a map. You'll also examine how to display data using different approaches, and then finally fully theme the app.
 
+- [.NET MAUI Samples](/samples/browse/?expanded=dotnet&products=dotnet-maui)
+  
+  Download and explore the code of different example .NET MAUI applications.
+  
 - [.NET MAUI podcast](https://www.dotnetmauipodcast.com)
 
   Keep up with the latest news in the world of mobile and desktop development with the official .NET MAUI podcast.
