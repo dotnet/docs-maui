@@ -52,7 +52,7 @@ In the _Platforms/Android/AndroidManifest.xml_ file, add the following `queries/
 </queries>
 ```
 
-# [iOS](#tab/ios)
+# [iOS\macOS](#tab/ios)
 
 Add your app's callback URI pattern to the _Platforms/iOS/Info.plist_ file:
 
@@ -162,7 +162,7 @@ This section describes the platform-specific differences with the web authentica
 
 **Custom Tabs** are used whenever available, otherwise an **Intent** is started for the URL.
 
-# [iOS](#tab/ios)
+# [iOS\macOS](#tab/ios)
 
 Depending on the iOS version, the behavior is slightly different:
 

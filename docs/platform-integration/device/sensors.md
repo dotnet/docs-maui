@@ -87,7 +87,7 @@ This section describes platform-specific implementation details related to the b
 
 No platform-specific implementation details.
 
-# [iOS](#tab/ios)
+# [iOS\macOS](#tab/ios)
 
 This API uses [CMAltimeter](https://developer.apple.com/documentation/coremotion/cmaltimeter#//apple_ref/occ/cl/CMAltimeter) to monitor pressure changes, which is a hardware feature that was added to iPhone 6 and newer devices. A `FeatureNotSupportedException` will be thrown on devices that don't support the altimeter, the sensor used to report air pressure.
 
@@ -136,7 +136,7 @@ Compass.Default.Start(SensorSpeed.UI, applyLowPassFilter: true);
 
 This is only applied on the Android platform, and the parameter is ignored on iOS and Windows. For more information, see [this GitHub issue comment](https://github.com/xamarin/Essentials/pull/354#issuecomment-405316860).
 
-# [iOS](#tab/ios)
+# [iOS\macOS](#tab/ios)
 
 No platform-specific implementation details.
 

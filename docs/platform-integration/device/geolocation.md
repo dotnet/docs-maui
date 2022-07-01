@@ -69,7 +69,7 @@ To access the **Geolocation** functionality, the following platform-specific set
 > [!TIP]
 > Be sure to read the [Android documentation on background location updates](https://developer.android.com/training/location/permissions), as there are many restrictions that need to be considered.
 
-# [iOS](#tab/ios)
+# [iOS\macOS](#tab/ios)
 
 In the _Platforms/iOS/Info.plist_ file, add the following keys and values:
 
@@ -214,7 +214,7 @@ On Android, [altitude](https://developer.android.com/reference/android/location/
 
 The `Location.ReducedAccuracy` property is only used by iOS and returns `false` on all other platforms.
 
-# [iOS](#tab/ios)
+# [iOS\macOS](#tab/ios)
 
 On iOS, [altitude](https://developer.apple.com/documentation/corelocation/cllocation/1423820-altitude) is measured in meters. Positive values indicate altitudes above sea level, while negative values indicate altitudes below sea level.
 

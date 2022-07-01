@@ -61,7 +61,7 @@ The `ReadContacts` permission is required and must be configured in the Android 
 
 -->
 
-# [iOS](#tab/ios)
+# [iOS\macOS](#tab/ios)
 
 In the **Solution Explorer** pane, right-click on the _Platforms/iOS/Info.plist_ file. Select **Open With** and then select the **XML (Text) Editor** item. Press the **OK** button. In the file, add the following key and value:
 
@@ -101,7 +101,7 @@ This section describes the platform-specific differences with the contacts API.
 
 - The `cancellationToken` parameter in the `GetAllAsync` method isn't supported.
 
-# [iOS](#tab/ios)
+# [iOS\macOS](#tab/ios)
 
 > [!IMPORTANT]
 > Because of a namespace conflict, the `Contacts` type must be fully qualified when targeting iOS or macOS: `Microsoft.Maui.ApplicationModel.Communication.Contacts`.

@@ -49,7 +49,7 @@ Returns the [FilesDir](https://developer.android.com/reference/android/content/C
 - `FileSystem.OpenAppPackageFileAsync`\
 Files that were added to the project with the **Build Action** of **MauiAsset** can be opened with this method. .NET MAUI projects will process any file in the _Platform\Resources\Raw_ folder as a **MauiAsset**.
 
-# [iOS](#tab/ios)
+# [iOS\macOS](#tab/ios)
 
 - `FileSystem.CacheDirectory`\
 Returns the [Library/Caches](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html) directory.

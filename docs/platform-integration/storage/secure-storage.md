@@ -59,7 +59,7 @@ Auto Backup can be configured to disable specific content from backing up. You c
     </full-backup-content>
     ```
 
-# [iOS](#tab/ios)
+# [iOS\macOS](#tab/ios)
 
 When developing on the **iOS simulator**, enable the **Keychain** entitlement and add a keychain access group for the application's bundle identifier.
 
@@ -124,7 +124,7 @@ This section describes the platform-specific differences with the secure storage
 
 For more information about the Android Security library, see [Work with data more securely](https://developer.android.com/topic/security/data) on developer.android.com.
 
-# [iOS](#tab/ios)
+# [iOS\macOS](#tab/ios)
 
 [KeyChain](xref:Security.SecKeyChain) is used to store values securely on iOS devices. The `SecRecord` used to store the value has a `Service` value set to _[YOUR-APP-BUNDLE-ID].microsoft.maui.essentials.preferences_.
 

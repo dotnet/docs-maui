@@ -21,7 +21,7 @@ To access the launcher functionality, the following platform-specific setup is r
 
 No setup is required.
 
-# [iOS](#tab/ios)
+# [iOS\macOS](#tab/ios)
 
 Apple requires that you define the schemes you want to use. Add the `LSApplicationQueriesSchemes` key and schemes to the _Platforms/iOS/Info.plist_ file:
 
@@ -74,7 +74,7 @@ This section describes the platform-specific differences with the launcher API.
 
 The `Task` returned from `CanOpenAsync` completes immediately.
 
-# [iOS](#tab/ios)
+# [iOS\macOS](#tab/ios)
 
 The `Task` returned from `CanOpenAsync` completes immediately.
 
