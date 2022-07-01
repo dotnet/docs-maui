@@ -71,7 +71,7 @@ To access the **Geolocation** functionality, the following platform-specific set
 
 # [iOS\macOS](#tab/ios)
 
-In the _Platforms/iOS/Info.plist_ and _Platforms/MacCatalyst/Info.plist files, add the following keys and values:
+In the _Platforms/iOS/Info.plist_ and _Platforms/MacCatalyst/Info.plist_ files, add the following keys and values:
 
 ```xml
 <key>NSLocationWhenInUseUsageDescription</key>
@@ -82,7 +82,7 @@ The `<string>` element is the reason the app is requesting access to location in
 
 ### Full accuracy location permission
 
-If you're going to request full accuracy with the `GeolocationRequest.RequestFullAccuracy` property, add the following dictionary to the _Platforms/iOS/Info.plist_ and _Platforms/MacCatalyst/Info.plist files:
+If you're going to request full accuracy with the `GeolocationRequest.RequestFullAccuracy` property, add the following dictionary to the _Platforms/iOS/Info.plist_ and _Platforms/MacCatalyst/Info.plist_ files:
 
 ```xml
 <key>NSLocationTemporaryUsageDescriptionDictionary</key>
@@ -97,7 +97,7 @@ If you're going to request full accuracy with the `GeolocationRequest.RequestFul
 The `<string>` element is the reason the app is requesting access to location information with full accuracy. This text is shown to the user.
 
 <!-- NOT SUPPORTED
-An alternative to editing the _Platforms/iOS/Info.plist_ and _Platforms/MacCatalyst/Info.plist files directly is opening the plist editor. In the editor you can add the **Privacy - Location When In Use Usage Description** property, and fill in a value to display to the user.
+An alternative to editing the _Platforms/iOS/Info.plist_ and _Platforms/MacCatalyst/Info.plist_ files directly is opening the plist editor. In the editor you can add the **Privacy - Location When In Use Usage Description** property, and fill in a value to display to the user.
 -->
 
 # [Windows](#tab/windows)
