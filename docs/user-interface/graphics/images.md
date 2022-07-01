@@ -41,6 +41,9 @@ if (image != null)
 }
 ```
 
+> [!WARNING]
+> The `PlatformImage` type isn't supported on Windows.
+
 In this example, the image is retrieved from the assembly, loaded as a stream, and displayed.
 
 > [!IMPORTANT]
@@ -79,6 +82,9 @@ if (image != null)
 }
 ```
 
+> [!WARNING]
+> The `PlatformImage` type isn't supported on Windows.
+
 In this example, the image is retrieved from the assembly and loaded as a stream. The image is resized using the `Resize` method, with its arguments specifying the new size, and that it should be stretched to fill the available space. In addition, the source image is disposed. The resized image is then drawn at actual size at (10,10).
 
 ## Downsize an image
@@ -106,6 +112,9 @@ if (image != null)
     canvas.DrawImage(newImage, 10, 10, newImage.Width, newImage.Height);
 }
 ```
+
+> [!WARNING]
+> The `PlatformImage` type isn't supported on Windows.
 
 In this example, the image is retrieved from the assembly and loaded as a stream. The image is downsized using the `Downsize` method, with the argument specifying that its largest dimension should be set to 100 pixels. In addition, the source image is disposed. The downsized image is then drawn at actual size at (10,10).
 
@@ -136,5 +145,8 @@ if (image != null)
     }
 }
 ```
+
+> [!WARNING]
+> The `PlatformImage` type isn't supported on Windows.
 
 In this example, the image is retrieved from the assembly and loaded as a stream. The image is downsized using the `Downsize` method, with the argument specifying that its largest dimension should be set to 150 pixels. In addition, the source image is disposed. The downsized image is then saved to a stream.
