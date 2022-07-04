@@ -40,7 +40,7 @@ In addition, `Button` defines `Clicked`, `Pressed`, and `Released` events. The `
 
 ## Create a Button
 
-To create a button, create a `Button` object and handle it's `Clicked` event.
+To create a button, create a `Button` object and handle its `Clicked` event.
 
 The following XAML example show how to create a `Button`:
 
