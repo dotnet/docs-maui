@@ -248,7 +248,7 @@ Therefore, when the `CollectionView` appears, the second, fourth, and fifth item
 
 ## Clear selections
 
-The `SelectedItem` and `SelectedItems` properties can be cleared by setting them, or the objects they bind to, to `null`.
+The `SelectedItem` and `SelectedItems` properties can be cleared by setting them, or the objects they bind to, to `null`. When either of these properties are cleared, the `SelectionChanged` event will be raised with an empty `CurrentSelection` property, and the `SelectionChangedCommand` will be executed.
 
 ## Change selected item color
 
