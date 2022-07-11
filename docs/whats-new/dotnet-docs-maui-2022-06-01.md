@@ -6,7 +6,7 @@ ms.date: 07/11/2022
 
 # .NET Multi-platform App UI (.NET MAUI) docs: What's new for June 2022
 
-Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs from June 1, 2022 through June 30, 2022. This article lists some of the major changes to docs during this period.
+Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for June 2022. This article lists some of the major changes to docs during this period.
 
 ## Get started
 
