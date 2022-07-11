@@ -646,7 +646,7 @@ These are iOS-specific .NET MAUI settings.
 
 - **Run Options**
 
-  Options related to running the app on an iOS or Mac OS device.
+  Options related to running the app on an iOS or macOS device.
 
   - **Execution mode**
 
