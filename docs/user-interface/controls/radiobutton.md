@@ -6,6 +6,8 @@ ms.date: 02/15/2022
 
 # RadioButton
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-radiobutton)
+
 The .NET Multi-platform App UI (.NET MAUI) `RadioButton` is a type of button that allows users to select one option from a set. Each option is represented by one radio button, and you can only select one radio button in a group. By default, each `RadioButton` displays text:
 
 :::image type="content" source="media/radiobutton/radiobuttons-default.png" alt-text="Screenshot of RadioButtons.":::

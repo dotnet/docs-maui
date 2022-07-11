@@ -6,6 +6,8 @@ ms.date: 02/22/2022
 
 # BindableLayout
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-bindablelayout)
+
 .NET Multi-platform App UI (.NET MAUI) bindable layouts enable any layout class that derives from the `Layout` class to generate its content by binding to a collection of items, with the option to set the appearance of each item with a `DataTemplate`.
 
 Bindable layouts are provided by the `BindableLayout` class, which exposes the following attached properties:

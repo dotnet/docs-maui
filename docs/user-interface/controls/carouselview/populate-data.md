@@ -6,6 +6,8 @@ ms.date: 01/18/2022
 
 # Populate a CarouselView with data
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-carouselview)
+
 The .NET Multi-platform App UI (.NET MAUI) `CarouselView` includes the following properties that define the data to be displayed, and its appearance:
 
 - `ItemsSource`, of type `IEnumerable`, specifies the collection of items to be displayed, and has a default value of `null`.

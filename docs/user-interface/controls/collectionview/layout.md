@@ -6,6 +6,8 @@ ms.date: 01/18/2022
 
 # Specify CollectionView layout
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-collectionview)
+
 The .NET Multi-platform App UI (.NET MAUI) `CollectionView` defines the following properties that control layout:
 
 - `ItemsLayout`, of type `IItemsLayout`, specifies the layout to be used.

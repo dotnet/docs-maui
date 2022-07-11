@@ -6,6 +6,8 @@ ms.date: 01/18/2022
 
 # Configure CollectionView item selection
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-collectionview)
+
 The .NET Multi-platform App UI (.NET MAUI) `CollectionView` defines the following properties that control item selection:
 
 - `SelectionMode`, of type `SelectionMode`, the selection mode.

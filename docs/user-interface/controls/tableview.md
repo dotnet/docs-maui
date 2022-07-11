@@ -6,6 +6,8 @@ ms.date: 03/11/2022
 
 # TableView
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-tableview)
+
 The .NET Multi-platform App UI (.NET MAUI) `TableView` displays a table of scrollable items that can be grouped into sections. A `TableView` is typically used for displaying items where each row has a different appearance, such as presenting a table of settings.
 
 While `TableView` manages the appearance of the table, the appearance of each item in the table is defined by a `Cell`. .NET MAUI includes five cell types that are used to display different combinations of data, and you can also define custom cells that display any content you want.

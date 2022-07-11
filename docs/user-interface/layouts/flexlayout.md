@@ -6,7 +6,7 @@ ms.date: 12/31/2021
 
 # FlexLayout
 
-<!-- Sample link goes here -->
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-flexlayout)
 
 :::image type="content" source="media/flexlayout/layouts.png" alt-text=".NET MAUI FlexLayout." border="false":::
 

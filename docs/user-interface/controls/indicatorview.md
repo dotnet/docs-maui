@@ -6,6 +6,8 @@ ms.date: 02/15/2022
 
 # IndicatorView
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-indicatorview)
+
 The .NET Multi-platform App UI (.NET MAUI) `IndicatorView` is a control that displays indicators that represent the number of items, and current position, in a `CarouselView`:
 
 :::image type="content" source="media/indicatorview/circles.png" alt-text="Screenshot of a CarouselView and IndicatorView.":::

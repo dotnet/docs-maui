@@ -6,7 +6,7 @@ ms.date: 12/28/2021
 
 # StackLayout
 
-<!-- Sample link goes here -->
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-stacklayout)
 
 :::image type="content" source="media/stacklayout/layouts.png" alt-text=".NET MAUI StackLayout." border="false":::
 
