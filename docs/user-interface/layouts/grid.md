@@ -6,7 +6,7 @@ ms.date: 12/28/2021
 
 # Grid
 
-<!-- Sample link goes here -->
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-grid)
 
 :::image type="content" source="media/grid/layouts.png" alt-text=".NET MAUI Grid." border="false":::
 

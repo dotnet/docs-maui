@@ -6,6 +6,8 @@ ms.date: 02/15/2022
 
 # SwipeView
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-swipeview)
+
 The .NET Multi-platform App UI (.NET MAUI) `SwipeView` is a container control that wraps around an item of content, and provides context menu items that are revealed by a swipe gesture:
 
 :::image type="content" source="media/swipeview/swipeview-collectionview.png" alt-text="Screenshot of SwipeView swipe items in a CollectionView.":::

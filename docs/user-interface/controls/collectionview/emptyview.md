@@ -6,6 +6,8 @@ ms.date: 01/18/2022
 
 # Define an EmptyView for a CollectionView
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-collectionview)
+
 The .NET Multi-platform App UI (.NET MAUI) `CollectionView` defines the following properties that can be used to provide user feedback when there's no data to display:
 
 - `EmptyView`, of type `object`, the string, binding, or view that will be displayed when the `ItemsSource` property is `null`, or when the collection specified by the `ItemsSource` property is `null` or empty. The default value is `null`.
