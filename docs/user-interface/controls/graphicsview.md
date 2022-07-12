@@ -6,7 +6,7 @@ ms.date: 04/19/2022
 
 # GraphicsView
 
-<!-- Sample link goes here -->
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-graphicsview)
 
 The .NET Multi-platform App UI (.NET MAUI) `GraphicsView` is a graphics canvas on which 2D graphics can be drawn using types from the `Microsoft.Maui.Graphics` namespace. For more information about `Microsoft.Maui.Graphics`, see [Graphics](~/user-interface/graphics/index.md).
 
