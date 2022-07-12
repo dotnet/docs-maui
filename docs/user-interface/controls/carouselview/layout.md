@@ -6,6 +6,8 @@ ms.date: 01/18/2022
 
 # Specify CarouselView layout
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-carouselview)
+
 The .NET Multi-platform App UI (.NET MAUI) `CarouselView` defines the following properties that control layout:
 
 - `ItemsLayout`, of type `LinearItemsLayout`, specifies the layout to be used.

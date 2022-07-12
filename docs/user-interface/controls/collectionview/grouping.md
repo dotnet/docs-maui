@@ -6,6 +6,8 @@ ms.date: 01/18/2022
 
 # Display grouped data in a CollectionView
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-collectionview)
+
 Large data sets can often become unwieldy when presented in a continually scrolling list. In this scenario, organizing the data into groups can improve the user experience by making it easier to navigate the data.
 
 The .NET Multi-platform App UI (.NET MAUI) `CollectionView` supports displaying grouped data, and defines the following properties that control how it will be presented:

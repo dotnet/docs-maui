@@ -6,6 +6,8 @@ ms.date: 01/18/2022
 
 # Configure CarouselView interaction
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-carouselview)
+
 The .NET Multi-platform App UI (.NET MAUI) `CarouselView` defines the following properties that control user interaction:
 
 - `CurrentItem`, of type `object`, the current item being displayed. This property has a default binding mode of `TwoWay`, and has a `null` value when there isn't any data to display.

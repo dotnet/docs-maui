@@ -6,7 +6,7 @@ ms.date: 12/16/2021
 
 # Draw graphical objects
 
-<!-- Sample link goes here -->
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-graphicsview)
 
 .NET Multi-platform App UI (.NET MAUI) graphics, in the `Microsoft.Maui.Graphics` namespace, enables you to draw graphical objects on a canvas that's defined as an `ICanvas` object.
 

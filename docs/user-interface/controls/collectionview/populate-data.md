@@ -6,6 +6,8 @@ ms.date: 01/18/2022
 
 # Populate a CollectionView with data
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-collectionview)
+
 The .NET Multi-platform App UI (.NET MAUI) `CollectionView` includes the following properties that define the data to be displayed, and its appearance:
 
 - `ItemsSource`, of type `IEnumerable`, specifies the collection of items to be displayed, and has a default value of `null`.
