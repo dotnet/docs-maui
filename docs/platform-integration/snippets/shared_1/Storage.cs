@@ -17,7 +17,32 @@ public class StoragePage : ContentPage
 
         Content = new VerticalStackLayout
         {
+            Children = {
+                new Button { Text = "Read",
+                             Command = new Command(PickAndShow) }
+            }
         };
+    }
+
+    private void PickAndShow()
+    {
+        var customFileType = new FilePickerFileType(
+                        new Dictionary<DevicePlatform, IEnumerable<string>>
+                        {
+                            { DevicePlatform.iOS, new[] { "public.my.comic.extension" } }, // or general UTType values
+                            { DevicePlatform.Android, new[] { "application/comics" } },
+                            { DevicePlatform.WinUI, new[] { ".cbr", ".cbz" } },
+                            { DevicePlatform.Tizen, new[] { "*/*" } },
+                            { DevicePlatform.macOS, new[] { "cbr", "cbz" } }, // or general UTType values
+                        });
+
+        PickOptions options = new()
+        {
+            PickerTitle = "Please select a comic file",
+            FileTypes = customFileType,
+        };
+
+        PickAndShow(options);
     }
 
     //<file_pick>

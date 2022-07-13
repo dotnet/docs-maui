@@ -53,5 +53,10 @@ public partial class MainPage : ContentPage
     {
         Navigation.PushAsync(new MediaPage());
     }
+
+    private void Storage_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new StoragePage());
+    }
 }
 

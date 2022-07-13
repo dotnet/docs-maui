@@ -78,3 +78,28 @@ Default file types are provided with `FilePickerFileType.Images`, `FilePickerFil
 If you want the user to pick multiple files, call the `FilePicker.PickMultipleAsync` method. This method also takes a `PickOptions` parameter to specify additional information. The results are the same as `PickAsync`, but instead of the `FileResult` type returned, an `IEnumerable<FileResult>` type is returned with all of the selected files.
 
 [!INCLUDE [tip-file-result](../includes/tip-file-result.md)]
+
+## Platform differences
+
+This section describes the platform-specific differences with the file picker.
+
+<!-- markdownlint-disable MD025 -->
+# [Android](#tab/android)
+
+The `PickOptions.PickerTitle` is displayed on the initial prompt to the user, but not in the picker dialog itself.
+
+# [iOS\macOS](#tab/ios)
+
+- **iOS**
+
+  The `PickOptions.PickerTitle` isn't displayed to the user.
+
+- **macOS**
+
+  The `PickOptions.PickerTitle` is displayed to the user.
+
+# [Windows](#tab/windows)
+
+The `PickOptions.PickerTitle` isn't displayed to the user.
+
+-----
