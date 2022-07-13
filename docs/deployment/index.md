@@ -61,7 +61,7 @@ Settings related to target platforms.
 
 - **Conditional compilation symbols**
 
-  Specifies symbols on which to perform conditional compilation. Separate symbols with a semi-colon (`;`). Symbols can be broken up into target platforms
+  Specifies symbols on which to perform conditional compilation. Separate symbols with a semicolon `;`. Symbols can be broken up into target platforms
 
 - **Platform target**
 
@@ -460,11 +460,11 @@ Miscellaneous options for building an Android app.
   Selects the code shrinker to use.
 
   - `ProGuard` (default) is considered the legacy code shrinker.
-  - `r8` is the next-generation tool which converts Java bytecode to optimized dex code.
+  - `r8` is the next-generation tool which converts Java byte code to optimized dex code.
 
 - **Uncompressed resources**
 
-  Leaves the specified resource extensions uncompressed. Separate extensions with a semi-colon (`;`). For example: `.mp3;.dll;.png`.
+  Leaves the specified resource extensions uncompressed. Separate extensions with a semicolon `;`. For example: `.mp3;.dll;.png`.
 
 - **Developer instrumentation**
 
@@ -629,11 +629,11 @@ Settings related to on-demand resources. For more information, see [Apple Develo
 
 - **Initial Tags**
 
-  The tags of the on-demand resources that are downloaded at the same time the app is downloaded from the app store. Separate tags with a semi-colon (`;`).
+  The tags of the on-demand resources that are downloaded at the same time the app is downloaded from the app store. Separate tags with a semicolon `;`.
 
 - **Pre-fetch Order**
 
-  The tags of the on-demand resources that are downloaded after the app is installed. Separate tags with a semi-colon (`;`).
+  The tags of the on-demand resources that are downloaded after the app is installed. Separate tags with a semicolon `;`.
 
 - **Embed**
 
