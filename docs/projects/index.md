@@ -579,7 +579,6 @@ These are iOS-specific .NET MAUI settings.
     Configures the signing scheme for the bundle. It can be set to one of the following values:
 
     - `Manual provisioning`: With this value, you'll be responsible for setting provisioning profiles and signing certificates yourself.
-
     - `Automatic provisioning`: (default) With this value, Visual Studio will set provisioning profiles and signing certificates for you to simplify app testing on a device.
 
   - **Signing identity**
@@ -626,19 +625,19 @@ These are iOS-specific .NET MAUI settings.
 
 - **On Demand Resources**
 
-  Settings related to resources.
+  Settings related to on-demand resources. For more information, see [Apple Developer Documentation - On-Demand Resources Essentials](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/On_Demand_Resources_Guide/index.html).
 
   - **Initial Tags**
 
-    Unknown
+    The tags of the on-demand resources that are downloaded at the same time the app is downloaded from the app store. Separate tags with a semi-colon (`;`).
 
   - **Pre-fetch Order**
 
-    Unknown
+    The tags of the on-demand resources that are downloaded after the app is installed. Separate tags with a semi-colon (`;`).
 
   - **Embed**
 
-    When enabled, embeds on-demand resources in the app bundle. This is enabled by default.
+    When enabled, embeds on-demand resources in the app bundle. This is enabled by default. Disable this setting to use the **Web server**.
 
   - **Web server**
 
@@ -663,3 +662,5 @@ These are iOS-specific .NET MAUI settings.
   - **Environment variables**
 
     Name-value pairs of environment variables to set when the app is run on the device.
+
+[tfm]: /dotnet/standard/frameworks
