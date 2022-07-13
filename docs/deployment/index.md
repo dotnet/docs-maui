@@ -55,257 +55,257 @@ The **Application** section describes some settings related to which platforms y
 
 The **Build** section describes settings related to compiling your app.
 
-- **General**
+### General
 
-  Settings related to target platforms.
+Settings related to target platforms.
 
-  - **Conditional compilation symbols**
-  
-    Specifies symbols on which to perform conditional compilation. Separate symbols with a semi-colon (`;`). Symbols can be broken up into target platforms
+- **Conditional compilation symbols**
 
-  - **Platform target**
+  Specifies symbols on which to perform conditional compilation. Separate symbols with a semi-colon (`;`). Symbols can be broken up into target platforms
 
-    Specifies the processor to be targeted by the output file. Choose `Any CPU` to specify that any processor is acceptable, allowing the application to run on the broadest range of hardware.
+- **Platform target**
 
-    Typically this is set to `Any CPU` and the runtime identifier setting is used to target a CPU platform.
+  Specifies the processor to be targeted by the output file. Choose `Any CPU` to specify that any processor is acceptable, allowing the application to run on the broadest range of hardware.
 
-    | Option | Description |
-    | ------ | ----------- |
-    | `Any CPU` | (Default) Compiles your assembly to run on any platform. Your application runs as a 64-bit process whenever possible and falls back to 32-bit when only that mode is available. |
-    | `x86` | Compiles your assembly to be run by the 32-bit, x86-compatible runtime. |
-    | `x64` | Compiles your assembly to be run by the 64-bit runtime on a computer that supports the AMD64 or EM64T instruction set. |
-    | `ARM32` | Compiles your assembly to run on a computer that has an Advanced RISC Machine (ARM) processor. |
-    | `ARM64` | Compiles your assembly to run by the 64-bit runtime on a computer that has an Advanced RISC Machine (ARM) processor that supports the A64 instruction set. |
+  Typically this is set to `Any CPU` and the runtime identifier setting is used to target a CPU platform.
 
-  - **Nullable**
+  | Option | Description |
+  | ------ | ----------- |
+  | `Any CPU` | (Default) Compiles your assembly to run on any platform. Your application runs as a 64-bit process whenever possible and falls back to 32-bit when only that mode is available. |
+  | `x86` | Compiles your assembly to be run by the 32-bit, x86-compatible runtime. |
+  | `x64` | Compiles your assembly to be run by the 64-bit runtime on a computer that supports the AMD64 or EM64T instruction set. |
+  | `ARM32` | Compiles your assembly to run on a computer that has an Advanced RISC Machine (ARM) processor. |
+  | `ARM64` | Compiles your assembly to run by the 64-bit runtime on a computer that has an Advanced RISC Machine (ARM) processor that supports the A64 instruction set. |
 
-    Specifies the project-wide C# nullable context. For more information, see [Nullable References](/dotnet/csharp/nullable-references#nullable-contexts).
+- **Nullable**
 
-    | Option        | Description |
-    | ------------- | ----------- |
-    | Unset         | (Default) If this setting isn't set, the default is `Disable`. |
-    | `Disable`     | Nullable warnings are disabled. All reference type variables are nullable reference types. |
-    | `Enable`      | The compiler enables all null reference analysis and all language features. |
-    | `Warnings`    | The compiler performs all null analysis and emits warnings when code might dereference null. |
-    | `Annotations` | The compiler doesn't perform null analysis or emit warnings when code might dereference null. |
+  Specifies the project-wide C# nullable context. For more information, see [Nullable References](/dotnet/csharp/nullable-references#nullable-contexts).
 
-  - **Implicit global usings**
+  | Option        | Description |
+  | ------------- | ----------- |
+  | Unset         | (Default) If this setting isn't set, the default is `Disable`. |
+  | `Disable`     | Nullable warnings are disabled. All reference type variables are nullable reference types. |
+  | `Enable`      | The compiler enables all null reference analysis and all language features. |
+  | `Warnings`    | The compiler performs all null analysis and emits warnings when code might dereference null. |
+  | `Annotations` | The compiler doesn't perform null analysis or emit warnings when code might dereference null. |
 
-    Enables implicit global usings to be declared by the project SDK. This is enabled by default. Imports many of the .NET MAUI namespaces automatically to all code files.
+- **Implicit global usings**
 
-  - **Unsafe code**
+  Enables implicit global usings to be declared by the project SDK. This is enabled by default. Imports many of the .NET MAUI namespaces automatically to all code files.
 
-    Allow code that uses the `unsafe` keyword to compile. This is disabled by default.
+- **Unsafe code**
 
-  - **Optimize code**
+  Allow code that uses the `unsafe` keyword to compile. This is disabled by default.
 
-    Enable compiler optimizations for smaller, faster, and more efficient output. There is an option for each target platform, in Debug or Release mode. Generally, this is enabled for Release mode, as the code is optimized for speed at the expense of helpful debugging information.
+- **Optimize code**
 
-  - **Debug symbols**
+  Enable compiler optimizations for smaller, faster, and more efficient output. There is an option for each target platform, in Debug or Release mode. Generally, this is enabled for Release mode, as the code is optimized for speed at the expense of helpful debugging information.
 
-    Specifies the kind of debug symbols produced during build.
+- **Debug symbols**
 
-- **Errors and warnings**
+  Specifies the kind of debug symbols produced during build.
 
-  Settings related to how errors and warnings are treated and reported during compilation.
+### Errors and warnings
 
-  - **Warning level**
+Settings related to how errors and warnings are treated and reported during compilation.
 
-    Specifies the level to display for compiler warnings.
+- **Warning level**
 
-  - **Suppress specific warnings**
+  Specifies the level to display for compiler warnings.
 
-    Blocks the compiler from generating the specified warnings. Separate multiple warning numbers with a comma `,` or a semicolon `;`.
+- **Suppress specific warnings**
 
-  - **Treat warnings as errors**
+  Blocks the compiler from generating the specified warnings. Separate multiple warning numbers with a comma `,` or a semicolon `;`.
 
-    When enabled, instructs the compiler to treat warnings as errors. This is disabled by default.
+- **Treat warnings as errors**
 
-  - **Treat specific warnings as errors**
+  When enabled, instructs the compiler to treat warnings as errors. This is disabled by default.
 
-    Specifies which warnings are treated as errors. Separate multiple warning numbers with a comma `,` or a semicolon `;`.
+- **Treat specific warnings as errors**
 
-- **Output**
+  Specifies which warnings are treated as errors. Separate multiple warning numbers with a comma `,` or a semicolon `;`.
 
-  Settings related to generating the output file.
+## Output
 
-  - **Base output path**
+Settings related to generating the output file.
 
-    Specifies the base location for the project's output during build. Subfolders will be appended to this path to differentiate project configuration.
+- **Base output path**
 
-    Defaults to `.\bin\`.
+  Specifies the base location for the project's output during build. Subfolders will be appended to this path to differentiate project configuration.
 
-  - **Base intermediate output path**
+  Defaults to `.\bin\`.
 
-    Specifies the base location for the project's intermediate output during build. Subfolders will be appended to the path to differentiate project configuration.
+- **Base intermediate output path**
 
-    Defaults to `.\obj\`.
+  Specifies the base location for the project's intermediate output during build. Subfolders will be appended to the path to differentiate project configuration.
 
-  - **Reference assembly**
+  Defaults to `.\obj\`.
 
-    When enabled, produces a reference assembly containing the public API of the project. This is disabled by default.
+- **Reference assembly**
 
-  - **Documentation file**
+  When enabled, produces a reference assembly containing the public API of the project. This is disabled by default.
 
-    When enabled, generates a file containing API documentation. This is disabled by default.
+- **Documentation file**
 
-- **Events**
+  When enabled, generates a file containing API documentation. This is disabled by default.
 
-  In this section you can add commands that run during the build.
+### Events
 
-  - **Pre-build event**
+In this section you can add commands that run during the build.
 
-    Specifies commands that run before the build starts. Does not run if the project is up-to-date. A non-zero exit code will fail the build before it runs.
+- **Pre-build event**
 
-  - **Post-build event**
+  Specifies commands that run before the build starts. Does not run if the project is up-to-date. A non-zero exit code will fail the build before it runs.
 
-    Specifies commands that run before the build starts. Does not run if the project is up-to-date. A non-zero exit code will fail the build before it runs.
+- **Post-build event**
 
-  - **When to run the post-build event**
+  Specifies commands that run before the build starts. Does not run if the project is up-to-date. A non-zero exit code will fail the build before it runs.
 
-    Specifies under which condition the post-build even will be run.
+- **When to run the post-build event**
 
-- **Strong naming**
+  Specifies under which condition the post-build even will be run.
 
-  Settings related to signing the assembly.
+### Strong naming
 
-  - **Sign the assembly**
+Settings related to signing the assembly.
 
-    When enabled, signs the output assembly to give it a strong name.
+- **Sign the assembly**
 
-- **Advanced**
+  When enabled, signs the output assembly to give it a strong name.
 
-  Additional settings related to the build.
+### Advanced
 
-  - **Language version**
+Additional settings related to the build.
 
-    The version of the language available to the code in the project. Defaults to `10.0`.
+- **Language version**
 
-  - **Check for arithmetic overflow**
+  The version of the language available to the code in the project. Defaults to `10.0`.
 
-    Throw exceptions when integer arithmetic produces out of range values. This setting is available for each platform. The default is disabled for each platform.
+- **Check for arithmetic overflow**
 
-  - **Deterministic**
+  Throw exceptions when integer arithmetic produces out of range values. This setting is available for each platform. The default is disabled for each platform.
 
-    Produce identical compilation output for identical inputs. This setting is available for each platform. The default is enabled for each platform.
+- **Deterministic**
 
-  - **Internal compiler error reporting**
+  Produce identical compilation output for identical inputs. This setting is available for each platform. The default is enabled for each platform.
 
-    Send internal compiler error reports to Microsoft. Defaults to `Prompt before sending`.
+- **Internal compiler error reporting**
 
-  - **File alignment**
+  Send internal compiler error reports to Microsoft. Defaults to `Prompt before sending`.
 
-    Specifies, in bytes, where to align the sections of the output file. This setting is available for each platform. The default is `512` for each platform.
+- **File alignment**
+
+  Specifies, in bytes, where to align the sections of the output file. This setting is available for each platform. The default is `512` for each platform.
 
 ## Package
 
 The **Package** section describes settings related to generating a NuGet package.
 
-- **General**
+## General
 
-  Settings related the NuGet package.
+Settings related the NuGet package.
 
-  - **Generate NuGet package on build**
+- **Generate NuGet package on build**
 
-    When enabled, produces a NuGet package file during build operations. This is disabled by default.
+  When enabled, produces a NuGet package file during build operations. This is disabled by default.
 
-  - **Package ID**
+- **Package ID**
 
-    The case-insensitive package identifier, which must be unique across nuget.org or whatever gallery the package resides in. IDs may not contain spaces or characters that aren't valid for a URL, and generally follow .NET namespace rules.
+  The case-insensitive package identifier, which must be unique across nuget.org or whatever gallery the package resides in. IDs may not contain spaces or characters that aren't valid for a URL, and generally follow .NET namespace rules.
 
-    Defaults to the MSBuild value of `$(AssemblyName)`.
+  Defaults to the MSBuild value of `$(AssemblyName)`.
 
-  - **Title**
+- **Title**
 
-    A human-friendly title of the package, typically used in UI displays as on nuget.org and the Package Manager in Visual Studio.
+  A human-friendly title of the package, typically used in UI displays as on nuget.org and the Package Manager in Visual Studio.
 
-  - **Package Version**
+- **Package Version**
 
-    The version of the package, following the `major.minor.patch` pattern. Version numbers may include a pre-release suffix.
+  The version of the package, following the `major.minor.patch` pattern. Version numbers may include a pre-release suffix.
 
-    Defaults to the MSBuild value of `$(ApplicationDisplayVersion)`.
+  Defaults to the MSBuild value of `$(ApplicationDisplayVersion)`.
 
-  - **Authors**
+- **Authors**
 
-    A comma-separated list of authors, matching the profile names on nuget.org. These are displayed in the NuGet Gallery on nuget.org and are used to cross-reference packages by the same authors.
+  A comma-separated list of authors, matching the profile names on nuget.org. These are displayed in the NuGet Gallery on nuget.org and are used to cross-reference packages by the same authors.
 
-    Defaults to the MSBuild value of `$(AssemblyName)`.
+  Defaults to the MSBuild value of `$(AssemblyName)`.
 
-  - **Company**
+- **Company**
 
-    The name of the company associated with the NuGet package.
+  The name of the company associated with the NuGet package.
 
-    Defaults to the MSBuild value of `$(Authors)`.
+  Defaults to the MSBuild value of `$(Authors)`.
 
-  - **Product**
+- **Product**
 
-    The name of the product associated with the NuGet package.
+  The name of the product associated with the NuGet package.
 
-    Defaults to the MSBuild value of `$(AssemblyName)`.
+  Defaults to the MSBuild value of `$(AssemblyName)`.
 
-  - **Description**
+- **Description**
 
-    A description of the package for UI display.
+  A description of the package for UI display.
 
-  - **Copyright**
+- **Copyright**
 
-    Copyright details for the package.
+  Copyright details for the package.
 
-  - **Project URL**
+- **Project URL**
 
-    A URL for the package's home page, often shown in UI displays as well as nuget.org.
+  A URL for the package's home page, often shown in UI displays as well as nuget.org.
 
-  - **Icon**
+- **Icon**
 
-    The icon image for the package. Image file size is limited to 1 MB. Supported file formats include JPEG and PNG. An image resolution of 128x128 is recommended.
+  The icon image for the package. Image file size is limited to 1 MB. Supported file formats include JPEG and PNG. An image resolution of 128x128 is recommended.
 
-  - **README**
+- **README**
 
-    The README document for the package. Must be a Markdown (.md) file.
+  The README document for the package. Must be a Markdown (.md) file.
 
-  - **Repository URL**
+- **Repository URL**
 
-    Specifies the URL for the repository where the source code for the package resides and/or from which it's being built. For linking to the project page, use the 'Project URL' field, instead.
+  Specifies the URL for the repository where the source code for the package resides and/or from which it's being built. For linking to the project page, use the 'Project URL' field, instead.
 
-  - **Repository type**
+- **Repository type**
 
-    Specifies the type of the repository. Default is 'git'.
+  Specifies the type of the repository. Default is 'git'.
 
-  - **Tags**
+- **Tags**
 
-    A semicolon-delimited list of tags and keywords that describe the package and aid discoverability of the packages through search and filtering.
+  A semicolon-delimited list of tags and keywords that describe the package and aid discoverability of the packages through search and filtering.
 
-  - **Release notes**
+- **Release notes**
 
-    A description of the changes made in the release of the package, often used in UI like the Updates tab of the Visual Studio Package Manager in place of the package description.
+  A description of the changes made in the release of the package, often used in UI like the Updates tab of the Visual Studio Package Manager in place of the package description.
 
-  - **Pack as a .NET tool**
+- **Pack as a .NET tool**
 
-    When enabled, packs the project as a special package that contains a console application that may be installed via the "dotnet tool" command. This is disabled by default.
+  When enabled, packs the project as a special package that contains a console application that may be installed via the "dotnet tool" command. This is disabled by default.
 
-  - **Package Output Path**
+- **Package Output Path**
 
-    Determines the output path in which the package will be dropped.
+  Determines the output path in which the package will be dropped.
 
-    Defaults to the MSBuild value of `$(OutputPath)`.
+  Defaults to the MSBuild value of `$(OutputPath)`.
 
-  - **Assembly neutral language**
+- **Assembly neutral language**
 
-    Which language code is considered the neutral language. Defaults to unset.
+  Which language code is considered the neutral language. Defaults to unset.
 
-  - **Assembly version**
+- **Assembly version**
 
-    The version of the assembly, defaults to `1.0.0.0` if not set.
+  The version of the assembly, defaults to `1.0.0.0` if not set.
 
-  - **File version**
+- **File version**
 
-    The version associated with the file, defaults to `1.0.0.0` if not set.
+  The version associated with the file, defaults to `1.0.0.0` if not set.
 
-- **License**
+### License
 
-  - **Package License**
+- **Package License**
 
-    Specify a license fo the project's package. Defaults to `None`.
+  Specify a license fo the project's package. Defaults to `None`.
 
 - **Symbols**
 
@@ -317,350 +317,350 @@ The **Package** section describes settings related to generating a NuGet package
 
 Settings related to code analysis.
 
-- **All analyzers**
+### All analyzers
 
-  Settings related to when analysis runs.
+Settings related to when analysis runs.
 
-  - **Run on build**
+- **Run on build**
 
-    When enabled, runs code analysis on build. Defaults to enabled.
+  When enabled, runs code analysis on build. Defaults to enabled.
 
-  - **Run on live analysis**
+- **Run on live analysis**
 
-    When enabled, runs code analysis live in the editor as you type. Defaults to enabled.
+  When enabled, runs code analysis live in the editor as you type. Defaults to enabled.
 
-- **.NET analysis**
+### .NET analysis
 
-  Settings related to .NET analyzers.
+Settings related to .NET analyzers.
 
-  - **Enforce code style on build (experimental)**
+- **Enforce code style on build (experimental)**
 
-    When enabled, produces diagnostics about code style on build. This is disabled by default.
+  When enabled, produces diagnostics about code style on build. This is disabled by default.
 
-  - **Enable .NET analyzers**
+- **Enable .NET analyzers**
 
-    When enabled, runs .NET analyzers to help with API usage. Defaults to enabled.
+  When enabled, runs .NET analyzers to help with API usage. Defaults to enabled.
 
-  - **Analysis level**
+- **Analysis level**
 
-    The set of analyzers that should be run in the project. Defaults to `Latest`. For more information, see [MSBuild: AnalysisLevel](/dotnet/core/project-sdk/msbuild-props#analysislevel).
+  The set of analyzers that should be run in the project. Defaults to `Latest`. For more information, see [MSBuild: AnalysisLevel](/dotnet/core/project-sdk/msbuild-props#analysislevel).
 
 ## MAUI Shared
 
 These are project settings for .NET MAUI that are shared across all target platforms.
 
-- **General**
+### General
 
-  General settings related to .NET MAUI.
+General settings related to .NET MAUI.
 
-  - **Application Title**
+- **Application Title**
 
-    The display name of the application.
+  The display name of the application.
 
-  - **Application ID**
+- **Application ID**
 
-    The identifier of the application in reverse domain name format, for example: `com.microsoft.maui`.
+  The identifier of the application in reverse domain name format, for example: `com.microsoft.maui`.
 
-  - **Application ID (GUID)**
+- **Application ID (GUID)**
 
-    The identifier of the application GUID format.
+  The identifier of the application GUID format.
 
-  - **Application Display Version**
+- **Application Display Version**
 
-    The version of the application. This should be a single digit integer. Defaults to `1`.
+  The version of the application. This should be a single digit integer. Defaults to `1`.
 
 ## Android
 
 These are Android-specific .NET MAUI settings.
 
-- **Manifest**
+### Manifest
 
-  Settings related to the Android manifest.
+Settings related to the Android manifest.
 
-  - **Application name**
+- **Application name**
 
-    The string that's displayed as the name of the application. This is the name that's shown in the app's title bar. If not set, the label of the app's MainActivity is used as the application name. The default setting is `@string/app_name` refers to the string resource `app_name` location in `Resources/values/Strings.xaml`.
+  The string that's displayed as the name of the application. This is the name that's shown in the app's title bar. If not set, the label of the app's MainActivity is used as the application name. The default setting is `@string/app_name` refers to the string resource `app_name` location in `Resources/values/Strings.xaml`.
 
-  - **Application package name**
+- **Application package name**
 
-    A string that's used to uniquely identify the application. Typically, the package name is based on a reversed internet domain name convention, such as `com.company.appname`.
+  A string that's used to uniquely identify the application. Typically, the package name is based on a reversed internet domain name convention, such as `com.company.appname`.
 
-  - **Application icon**
+- **Application icon**
 
-    Specifies the application icon resource that will be displayed for the app. The setting `@drawable/icon` refers to the image file `icon.png` located in the `Resources/mipmap` folder.
+  Specifies the application icon resource that will be displayed for the app. The setting `@drawable/icon` refers to the image file `icon.png` located in the `Resources/mipmap` folder.
 
-  - **Application theme**
+- **Application theme**
 
-    Sets the UI style that's applied to the entire app. Every view in the app applies to the style attributes that are defined in the selected theme.
+  Sets the UI style that's applied to the entire app. Every view in the app applies to the style attributes that are defined in the selected theme.
 
-  - **Application version number**
+- **Application version number**
 
-    An integer value greater than zero that defines the version number of the app. Higher numbers indicate more recent versions. This value is evaluated programmatically by Android and by other apps, it isn't shown to users.
+  An integer value greater than zero that defines the version number of the app. Higher numbers indicate more recent versions. This value is evaluated programmatically by Android and by other apps, it isn't shown to users.
 
-  - **Application version name**
+- **Application version name**
 
-    A string that specifies the version of the app to users. The version name can be a raw string or a reference to a string resource.
+  A string that specifies the version of the app to users. The version name can be a raw string or a reference to a string resource.
 
-  - **Install location**
+- **Install location**
 
-    Indicates preference as to where the app should be stored, whether in internal or external storage. Internal-only:  Prefer external:
+  Indicates preference as to where the app should be stored, whether in internal or external storage. Internal-only:  Prefer external:
 
-    | Option | Description |
-    | -- | -- |
-    | `Internal-only` | (Default) Specifies that the app can't be installed or moved to external storage. |
-    | `Prefer external` | Specifies that the app should be installed in external storage, if possible. |
-    | `Prefer internal` | Specifies that the app should be installed in internal storage, if possible. |
+  | Option | Description |
+  | -- | -- |
+  | `Internal-only` | (Default) Specifies that the app can't be installed or moved to external storage. |
+  | `Prefer external` | Specifies that the app should be installed in external storage, if possible. |
+  | `Prefer internal` | Specifies that the app should be installed in internal storage, if possible. |
 
-  - **Minimum Android version**
+- **Minimum Android version**
 
-    The oldest API level of an Android device that can install and run the app. Also referred to as `minSdkVersion`.
+  The oldest API level of an Android device that can install and run the app. Also referred to as `minSdkVersion`.
 
-  - **Target Android version**
+- **Target Android version**
 
-    The target API level of the Android device where the app expects to run. This API level is used at run-time, unlike Target Framework, which is used at build time. Android uses this version as a way to provide forward compatibility. Also referred to as `targetSdkVersion`, this should match Target Framework `compileSdkVersion`.
+  The target API level of the Android device where the app expects to run. This API level is used at run-time, unlike Target Framework, which is used at build time. Android uses this version as a way to provide forward compatibility. Also referred to as `targetSdkVersion`, this should match Target Framework `compileSdkVersion`.
 
-- **Options**
+### Options
 
-  Miscellaneous options for building an Android app.
+Miscellaneous options for building an Android app.
 
-  - **Android package format**
+- **Android package format**
 
-    Either `apk` or `bundle`, which packages the Android application as an APK file or Android App Bundle, respectively. This can be set for individually for both Debug and Release modes.
+  Either `apk` or `bundle`, which packages the Android application as an APK file or Android App Bundle, respectively. This can be set for individually for both Debug and Release modes.
 
-    App Bundles are the latest format for Android release builds that are intended for submission on Google Play.
+  App Bundles are the latest format for Android release builds that are intended for submission on Google Play.
 
-    The default value is `apk`.
+  The default value is `apk`.
 
-    When `bundle` is selected, other MSBuild properties are set:
+  When `bundle` is selected, other MSBuild properties are set:
 
-    - `AndroidUseAapt2` is set to `True`.
-    - `AndroidUseApkSigner` is set to `False`.
-    - `AndroidCreatePackagePerAbi` is set to `False`.
+  - `AndroidUseAapt2` is set to `True`.
+  - `AndroidUseApkSigner` is set to `False`.
+  - `AndroidCreatePackagePerAbi` is set to `False`.
 
-  - **Fast deployment (debug mode only)**
+- **Fast deployment (debug mode only)**
 
-    When enabled, deploys the app faster than normal to the target device. This process speeds up the build/deploy/debug cycle because the package isn't reinstalled when only assemblies are changed. Only the updated assemblies are resynchronized to the target device.
+  When enabled, deploys the app faster than normal to the target device. This process speeds up the build/deploy/debug cycle because the package isn't reinstalled when only assemblies are changed. Only the updated assemblies are resynchronized to the target device.
 
-    This is enabled by default.
+  This is enabled by default.
 
-  - **Generate per ABI**
+- **Generate per ABI**
 
-    When enabled, generates one Android package (apk) per selected Application Binary Interface (ABI). This is disabled by default.
+  When enabled, generates one Android package (apk) per selected Application Binary Interface (ABI). This is disabled by default.
 
-  - **Use incremental packaging**
+- **Use incremental packaging**
 
-    When enabled, uses the incremental Android packaging system (aapt2). This is enabled by default.
+  When enabled, uses the incremental Android packaging system (aapt2). This is enabled by default.
 
-  - **Multi-dex**
+- **Multi-dex**
 
-    When enabled, allows the Android build system to use multidex. The default is disabled.
+  When enabled, allows the Android build system to use multidex. The default is disabled.
 
-  - **Code shrinker**
+- **Code shrinker**
 
-    Selects the code shrinker to use.
+  Selects the code shrinker to use.
 
-    - `ProGuard` (default) is considered the legacy code shrinker.
-    - `r8` is the next-generation tool which converts Java bytecode to optimized dex code.
+  - `ProGuard` (default) is considered the legacy code shrinker.
+  - `r8` is the next-generation tool which converts Java bytecode to optimized dex code.
 
-  - **Uncompressed resources**
+- **Uncompressed resources**
 
-    Leaves the specified resource extensions uncompressed. Separate extensions with a semi-colon (`;`). For example: `.mp3;.dll;.png`.
+  Leaves the specified resource extensions uncompressed. Separate extensions with a semi-colon (`;`). For example: `.mp3;.dll;.png`.
 
-  - **Developer instrumentation**
+- **Developer instrumentation**
 
-    When enabled, developer instrumentation is provided for debugging and profiling. This can be set for individually for both Debug and Release modes.
+  When enabled, developer instrumentation is provided for debugging and profiling. This can be set for individually for both Debug and Release modes.
 
-    The default is enabled for Debug builds.
+  The default is enabled for Debug builds.
 
-  - **Debugger**
+- **Debugger**
 
-    Selects which debugger to use. The default is `.NET (Xamarin)`, which is used for managed code. The C++ debugger can be selected to debug native libraries used by the app.
+  Selects which debugger to use. The default is `.NET (Xamarin)`, which is used for managed code. The C++ debugger can be selected to debug native libraries used by the app.
 
-  - **AOT**
+- **AOT**
 
-    Enables Ahead-of-Time (AOT) compilation. This can be set for individually for both Debug and Release modes.
+  Enables Ahead-of-Time (AOT) compilation. This can be set for individually for both Debug and Release modes.
 
-    The default is enabled for Release builds.
+  The default is enabled for Release builds.
 
-  - **LLVM**
+- **LLVM**
 
-    Enables the LLVM optimizing compiler. The default is disabled.
+  Enables the LLVM optimizing compiler. The default is disabled.
 
-  - **Startup Tracing**
+- **Startup Tracing**
 
-    Enables startup tracing. This can be set for individually for both Debug and Release modes.
+  Enables startup tracing. This can be set for individually for both Debug and Release modes.
 
-    The default is enabled for Release builds.
+  The default is enabled for Release builds.
 
-  - **Garbage Collection**
+- **Garbage Collection**
 
-    When enabled, uses the concurrent garbage collector. Defaults to enabled.
+  When enabled, uses the concurrent garbage collector. Defaults to enabled.
 
-  - **Enable trimming**
+- **Enable trimming**
 
-    When enabled, trims the application during publishing. This can be set for individually for both Debug and Release modes.
+  When enabled, trims the application during publishing. This can be set for individually for both Debug and Release modes.
 
-    The default is enabled for Release builds.
+  The default is enabled for Release builds.
 
-  - **Trimming granularity**
+- **Trimming granularity**
 
-    Controls how aggressively IL is discarded. There are two modes to select from:
+  Controls how aggressively IL is discarded. There are two modes to select from:
 
-    - `Link` enables member-level trimming, which removes unused members from types.
-    - `CopyUsed` (default) enableds assembly-level trimming, which keeps an entire assembly if any part of it is used.
+  - `Link` enables member-level trimming, which removes unused members from types.
+  - `CopyUsed` (default) enableds assembly-level trimming, which keeps an entire assembly if any part of it is used.
 
-  - **Java max heap size**
+- **Java max heap size**
 
-    Set this value to increase the size of memory that an app can use. For example, a value of `2G` increases the heap size to 2 gigabytes. Note that there isn't a guarantee of how large the heap will be, and requesting too much heap memory may force other apps to terminate prematurely.
+  Set this value to increase the size of memory that an app can use. For example, a value of `2G` increases the heap size to 2 gigabytes. Note that there isn't a guarantee of how large the heap will be, and requesting too much heap memory may force other apps to terminate prematurely.
 
-    The default is `1G`/
+  The default is `1G`/
 
-  - **Additional Java options**
+- **Additional Java options**
 
-    Specifies additional command-line options to pass to the Java compiler when building a _.dex_ file. From the command line, you can type `java -help` to see the available options.
+  Specifies additional command-line options to pass to the Java compiler when building a _.dex_ file. From the command line, you can type `java -help` to see the available options.
 
-- **Package Signing**
+### Package Signing
 
-  When enabled, signs the _.APK_ file using the keystore details. This is disabled by default.
+When enabled, signs the _.APK_ file using the keystore details. This is disabled by default.
 
 ## iOS
 
 These are iOS-specific .NET MAUI settings.
 
-- **Build**
+### Build
 
-  Settings related to building the iOS app.
+Settings related to building the iOS app.
 
-  - **Linker behavior**
+- **Linker behavior**
 
-    The linker can strip out unused methods, properties, fields, events, structs, and even classes in order to reduce the overall size of the application. You can add a `Preserve` attribute to any of these in order to prevent the linker from stripping it out if it's needed for serialization or reflection.
+  The linker can strip out unused methods, properties, fields, events, structs, and even classes in order to reduce the overall size of the application. You can add a `Preserve` attribute to any of these in order to prevent the linker from stripping it out if it's needed for serialization or reflection.
 
-    > [!WARNING]
-    > Enabling this feature may hinder debugging, as it may strip out property accessors that would allow you to inspect the state of your objects.
+  > [!WARNING]
+  > Enabling this feature may hinder debugging, as it may strip out property accessors that would allow you to inspect the state of your objects.
 
-    Options are:
+  Options are:
 
-    - `Don't link`
-    - `Link Framework SDKs only` (default)
-    - `Link All`
+  - `Don't link`
+  - `Link Framework SDKs only` (default)
+  - `Link All`
 
-  - **LLVM**
+- **LLVM**
 
-    When enabled, uses the LLVM optimized compiler. This can be set for individually for both Debug and Release modes.
+  When enabled, uses the LLVM optimized compiler. This can be set for individually for both Debug and Release modes.
 
-    The default is enabled for Release builds.
+  The default is enabled for Release builds.
 
-  - **Float operations**
+- **Float operations**
 
-    Performs all 32-bit float operations as 64-bit float operations.
+  Performs all 32-bit float operations as 64-bit float operations.
 
-  - **Symbols**
+- **Symbols**
 
-    When enabled, strips native debugging symbols from the output. This is enabled by default.
+  When enabled, strips native debugging symbols from the output. This is enabled by default.
 
-  - **Garbage collector**
+- **Garbage collector**
 
-    When enabled, uses the concurrent garbage collector. This is disabled by default.
+  When enabled, uses the concurrent garbage collector. This is disabled by default.
 
-  - **Additional arguments**
+- **Additional arguments**
 
-    Additional command line arguments to be passed to the application bundling code.
+  Additional command line arguments to be passed to the application bundling code.
 
-  - **Optimization**
+- **Optimization**
 
-    When enabled, optimizes _.PNG_ images. This is enabled by default.
+  When enabled, optimizes _.PNG_ images. This is enabled by default.
 
-- **Bundle Signing**
+### Bundle Signing
 
-  These settings are related to generating and signing the app bundle.
+These settings are related to generating and signing the app bundle.
 
-  - **Scheme**
+- **Scheme**
 
-    Configures the signing scheme for the bundle. It can be set to one of the following values:
+  Configures the signing scheme for the bundle. It can be set to one of the following values:
 
-    - `Manual provisioning`: With this value, you'll be responsible for setting provisioning profiles and signing certificates yourself.
-    - `Automatic provisioning`: (default) With this value, Visual Studio will set provisioning profiles and signing certificates for you to simplify app testing on a device.
+  - `Manual provisioning`: With this value, you'll be responsible for setting provisioning profiles and signing certificates yourself.
+  - `Automatic provisioning`: (default) With this value, Visual Studio will set provisioning profiles and signing certificates for you to simplify app testing on a device.
 
-  - **Signing identity**
+- **Signing identity**
 
-    A signing identity is the certificate and private key pair that's used for code-signing app bundle using Apple's codesign utility.
+  A signing identity is the certificate and private key pair that's used for code-signing app bundle using Apple's codesign utility.
 
-    - `Developer (automatic)` (default)
-    - `Distribution (automatic)`
+  - `Developer (automatic)` (default)
+  - `Distribution (automatic)`
 
-  - **Provisioning profile**
+- **Provisioning profile**
 
-    Provisioning profiles are a way of tying together a team of developers with an App ID and, potentially, a list of test devices. The provisioning profiles list is filtered to only show provisioning profiles that match both the chosen identity and the App ID (aka bundle identifier) set in the _Info.plist_. If the provisioning profile that you're looking for isn't in the list, make sure that you've chosen a compatible identity and double-check that the bundle identifier set in your _Info.plist_ is correct.
+  Provisioning profiles are a way of tying together a team of developers with an App ID and, potentially, a list of test devices. The provisioning profiles list is filtered to only show provisioning profiles that match both the chosen identity and the App ID (aka bundle identifier) set in the _Info.plist_. If the provisioning profile that you're looking for isn't in the list, make sure that you've chosen a compatible identity and double-check that the bundle identifier set in your _Info.plist_ is correct.
 
-  - **Custom Entitlements**
+- **Custom Entitlements**
 
-    The plist file to use for entitlements.
+  The plist file to use for entitlements.
 
-  - **Custom Resource Rules**
+- **Custom Resource Rules**
 
-    The plist file containing custom rules used by Apple's codesign utility.
+  The plist file containing custom rules used by Apple's codesign utility.
 
-    > [!NOTE]
-    > As of Mac OSX 10.10, Apple has deprecated the use of custom resource rules. So, this setting should be avoided unless absolutely necessary.
+  > [!NOTE]
+  > As of Mac OSX 10.10, Apple has deprecated the use of custom resource rules. So, this setting should be avoided unless absolutely necessary.
 
-  - **Additional arguments**
+- **Additional arguments**
 
-    Additional command line arguments to be passed to Apple's codesign utility during the code-signing phase of the build.
+  Additional command line arguments to be passed to Apple's codesign utility during the code-signing phase of the build.
 
-- **Debug**
+### Debug
 
-  These are settings related to debugging.
-  
-  - **Debugging**
-  
-    When enabled, turns on debugging. The default is based on the current profile. Debug profiles enabled debugging, while Release disables debugging.
-  
-  - **Profiling**
-  
-    When enabled, turns on profiling.
+These are settings related to debugging.
 
-- **IPA Options**
+- **Debugging**
 
-  When enabled, builds an iTunes Package Archive (IPA).
+  When enabled, turns on debugging. The default is based on the current profile. Debug profiles enabled debugging, while Release disables debugging.
 
-- **On Demand Resources**
+- **Profiling**
 
-  Settings related to on-demand resources. For more information, see [Apple Developer Documentation - On-Demand Resources Essentials](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/On_Demand_Resources_Guide/index.html).
+  When enabled, turns on profiling.
 
-  - **Initial Tags**
+### IPA Options
 
-    The tags of the on-demand resources that are downloaded at the same time the app is downloaded from the app store. Separate tags with a semi-colon (`;`).
+When enabled, builds an iTunes Package Archive (IPA).
 
-  - **Pre-fetch Order**
+### On Demand Resources
 
-    The tags of the on-demand resources that are downloaded after the app is installed. Separate tags with a semi-colon (`;`).
+Settings related to on-demand resources. For more information, see [Apple Developer Documentation - On-Demand Resources Essentials](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/On_Demand_Resources_Guide/index.html).
 
-  - **Embed**
+- **Initial Tags**
 
-    When enabled, embeds on-demand resources in the app bundle. This is enabled by default. Disable this setting to use the **Web server**.
+  The tags of the on-demand resources that are downloaded at the same time the app is downloaded from the app store. Separate tags with a semi-colon (`;`).
 
-  - **Web server**
+- **Pre-fetch Order**
 
-    The URI of a web server that hosts on-demand resources.
+  The tags of the on-demand resources that are downloaded after the app is installed. Separate tags with a semi-colon (`;`).
 
-- **Run Options**
+- **Embed**
 
-  Options related to running the app on an iOS or macOS device.
+  When enabled, embeds on-demand resources in the app bundle. This is enabled by default. Disable this setting to use the **Web server**.
 
-  - **Execution mode**
+- **Web server**
 
-    This setting determines how the app is run on the target device.
+  The URI of a web server that hosts on-demand resources.
 
-  - **Start arguments**
+### Run Options
 
-    Additional command line arguments to be passed to the app when it's started on the device.
+Options related to running the app on an iOS or macOS device.
 
-  - **Extra mlaunch arguments**
+- **Execution mode**
 
-    Additional command line arguments to be passed to **mlaunch**.
+  This setting determines how the app is run on the target device.
 
-  - **Environment variables**
+- **Start arguments**
 
-    Name-value pairs of environment variables to set when the app is run on the device.
+  Additional command line arguments to be passed to the app when it's started on the device.
+
+- **Extra mlaunch arguments**
+
+  Additional command line arguments to be passed to **mlaunch**.
+
+- **Environment variables**
+
+  Name-value pairs of environment variables to set when the app is run on the device.
 
 [tfm]: /dotnet/standard/frameworks
