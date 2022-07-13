@@ -598,7 +598,7 @@
     - name: Publish
       items:
         - name: Visual Studio project settings
-          href: deployment/index.md
+          href: deployment/visual-studio-properties.md
         - name: Android
           href: android/deployment/overview.md
         - name: iOS
