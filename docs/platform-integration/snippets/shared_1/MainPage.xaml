@@ -14,6 +14,7 @@
             <Button Text="Communications" Clicked="Comms_Clicked" />
             <Button Text="SymaticReader" Clicked="Reader_Clicked" />
             <Button Text="Media" Clicked="Media_Clicked" />
+            <Button Text="Storage" Clicked="Storage_Clicked" />
 
         </VerticalStackLayout>
     </ScrollView>

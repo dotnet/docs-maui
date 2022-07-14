@@ -1,3 +1,5 @@
+using System.Security.AccessControl;
+
 namespace PlatformIntegration;
 
 public class StoragePage : ContentPage
@@ -17,7 +19,18 @@ public class StoragePage : ContentPage
 
         Content = new VerticalStackLayout
         {
+            new Button { Text = "ToUpperFile",
+                Command = new Command(ToUpperFile) },
         };
+    }
+
+    async void ToUpperFile(object param1)
+    {
+        await ConvertFileToUpperCase("AboutAssets.txt", "NewAssets.txt");
+
+        string targetFile = System.IO.Path.Combine(FileSystem.Current.AppDataDirectory, "NewAssets.txt");
+
+        ((VerticalStackLayout)Content).Children.Add(new Label() { Text = System.IO.File.ReadAllText(targetFile) });
     }
 
     //<file_pick>
@@ -87,6 +100,28 @@ public class StoragePage : ContentPage
         return await reader.ReadToEndAsync();
     }
     //</filesys_readtxtfile>
+
+    //<filesys_toupper>
+    public async Task ConvertFileToUpperCase(string sourceFile, string targetFileName)
+    {
+        // Read the source file
+        using Stream fileStream = await FileSystem.Current.OpenAppPackageFileAsync(sourceFile);
+        using StreamReader reader = new StreamReader(fileStream);
+
+        string content = await reader.ReadToEndAsync();
+
+        // Transform file content to upper case text
+        content = content.ToUpperInvariant();
+
+        // Write the file content to the app data directory
+        string targetFile = System.IO.Path.Combine(FileSystem.Current.AppDataDirectory, targetFileName);
+
+        using FileStream outputStream = System.IO.File.OpenWrite(targetFile);
+        using StreamWriter streamWriter = new StreamWriter(outputStream);
+
+        await streamWriter.WriteAsync(content);
+    }
+    //</filesys_toupper>
 
     public void PreferencesSet()
     {
