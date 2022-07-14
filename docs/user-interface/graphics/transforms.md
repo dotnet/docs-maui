@@ -29,7 +29,7 @@ The .NET MAUI `VisualElement` class also supports the following transform proper
 
 The translate transform shifts graphical objects in the horizontal and vertical directions. Translation can be considered unnecessary because the same result can be accomplished by changing the coordinates of the drawing method you're using. However, when displaying a path, all the coordinates are encapsulated in the path, and so it's often easier to apply a translate transform to shift the entire path.
 
-The `Translate` method requires `x` and `y` arguments, of type `float`, that cause subsequently drawn graphic objects to be shifted horizontally and vertically. Negative `x` values move an object to the left, while positive values move an object to the right. Negative `y` values move an object up, while positive values move an object down.
+The `Translate` method requires `x` and `y` arguments, of type `float`, that cause subsequently drawn graphic objects to be shifted horizontally and vertically. Negative `x` values move an object to the left, while positive values move an object to the right. Negative `y` values move up an object, while positive values move down an object.
 
 A common use of the translate transform is for rendering a graphical object that has been originally created using coordinates that are convenient for drawing. The following example creates a `PathF` object for an 11-pointed star:
 
