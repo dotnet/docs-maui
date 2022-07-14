@@ -6,9 +6,7 @@ ms.date: 02/23/2022
 
 # Recognize a tap gesture
 
-A .NET Multi-platform App UI (.NET MAUI) tap gesture recognizer is used for tap detection and is implemented with the `TapGestureRecognizer` class.
-
-In .NET MAUI, drag gesture recognition is provided by the `SwipeGestureRecognizer` class. This class defines the following properties:
+A .NET Multi-platform App UI (.NET MAUI) tap gesture recognizer is used for tap detection and is implemented with the `TapGestureRecognizer` class. This class defines the following properties:
 
 - `Command`, of type `ICommand`, which is executed when a tap is recognized.
 - `CommandParameter`, of type `object`, which is the parameter that's passed to the `Command`.
