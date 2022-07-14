@@ -80,7 +80,7 @@ Each `<string>` element represents the reason the app is requesting access to th
 In the `Package.appxmanifest` under **Capabilities** ensure that `Microphone` and `Webcam` capabilities are checked.
 -->
 
-In the **Solution Explorer** pane, right-click on the _Platforms/Windows/Package.appxmanifest_ file, and select **View Code**. Under the `<Capabilities>` node, add `<uap:Capability Name="microphone"/>` and `<uap:Capability Name="webcam"/>` elements.
+In the **Solution Explorer** pane, right-click on the _Platforms/Windows/Package.appxmanifest_ file, and select **View Code**. Under the `<Capabilities>` node, add `<DeviceCapability Name="microphone"/>` and `<DeviceCapability Name="webcam"/>` elements.
 
 -----
 <!-- markdownlint-enable MD025 -->
