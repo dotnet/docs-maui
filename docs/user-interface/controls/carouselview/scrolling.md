@@ -6,6 +6,8 @@ ms.date: 01/18/2022
 
 # Control scrolling in a CarouselView
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-carouselview)
+
 The .NET Multi-platform App UI (.NET MAUI) `CarouselView` defines the following scroll related properties:
 
 - `HorizontalScrollBarVisibility`, of type `ScrollBarVisibility`, which specifies when the horizontal scroll bar is visible.

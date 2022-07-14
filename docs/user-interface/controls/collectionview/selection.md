@@ -6,6 +6,8 @@ ms.date: 01/18/2022
 
 # Configure CollectionView item selection
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-collectionview)
+
 The .NET Multi-platform App UI (.NET MAUI) `CollectionView` defines the following properties that control item selection:
 
 - `SelectionMode`, of type `SelectionMode`, the selection mode.
@@ -248,7 +250,7 @@ Therefore, when the `CollectionView` appears, the second, fourth, and fifth item
 
 ## Clear selections
 
-The `SelectedItem` and `SelectedItems` properties can be cleared by setting them, or the objects they bind to, to `null`.
+The `SelectedItem` and `SelectedItems` properties can be cleared by setting them, or the objects they bind to, to `null`. When either of these properties are cleared, the `SelectionChanged` event will be raised with an empty `CurrentSelection` property, and the `SelectionChangedCommand` will be executed.
 
 ## Change selected item color
 

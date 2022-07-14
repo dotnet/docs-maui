@@ -6,7 +6,7 @@ ms.date: 12/16/2021
 
 # Graphics
 
-<!-- Sample link goes here -->
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-graphicsview)
 
 .NET Multi-platform App UI (.NET MAUI) provides a cross-platform graphics canvas on which 2D graphics can be drawn using types from the `Microsoft.Maui.Graphics` namespace. This canvas supports drawing and painting shapes and images, compositing operations, and graphical object transforms.
 

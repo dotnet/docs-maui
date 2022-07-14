@@ -6,7 +6,7 @@ ms.date: 01/14/2022
 
 # AbsoluteLayout
 
-<!-- Sample link goes here -->
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-absolutelayout)
 
 :::image type="content" source="media/absolutelayout/layouts.png" alt-text=".NET MAUI AbsoluteLayout." border="false":::
 

@@ -6,6 +6,8 @@ ms.date: 01/18/2022
 
 # CollectionView
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-collectionview)
+
 The .NET Multi-platform App UI (.NET MAUI) `CollectionView` is a view for presenting lists of data using different layout specifications. It aims to provide a more flexible, and performant alternative to `ListView`.
 
 The following screenshot shows a `CollectionView` that uses a two-column vertical grid and allows multiple selections:

@@ -17,7 +17,7 @@ The .NET Multi-platform App UI (.NET MAUI) `Label` displays single-line and mult
 - `FontSize`, of type `double`, defines the font size.
 - `FormattedText`, of type `FormattedString`, specifies the presentation of text with multiple presentation options such as fonts and colors.
 - `HorizontalTextAlignment`, of type `TextAlignment`, defines the horizontal alignment of the displayed text.
-- `LineBreakMode`, of type `LineaBreakMode`, determines how text should be handled when it can't fit on one line.
+- `LineBreakMode`, of type `LineBreakMode`, determines how text should be handled when it can't fit on one line.
 - `LineHeight`, of type `double`, specifies the multiplier to apply to the default line height when displaying text.
 - `MaxLines`, of type `int`, indicates the maximum number of lines allowed in the `Label`.
 - `Padding`, of type `Thickness`, determines the label's padding.

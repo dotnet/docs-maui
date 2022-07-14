@@ -6,7 +6,7 @@ ms.date: 07/26/2021
 
 # Transforms
 
-<!-- Sample link goes here -->
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-graphicsview)
 
 .NET Multi-platform App UI (.NET MAUI) graphics supports traditional graphics transforms, which are implemented as methods on the `ICanvas` object. Mathematically, transforms alter the coordinates and sizes that you specify in `ICanvas` drawing methods, when the graphical objects are rendered.
 

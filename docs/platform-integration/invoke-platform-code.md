@@ -6,7 +6,7 @@ ms.date: 06/28/2022
 
 # Invoke platform code
 
-<!-- [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-invokeplatformcode) -->
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-invokeplatformcode)
 
 In situations where .NET Multi-platform App UI (.NET MAUI) doesn't provide any APIs for accessing specific platform APIs, you can write your own code to access the required platform APIs. This requires knowledge of [Apple's iOS and MacCatalyst APIs](https://developer.apple.com/documentation/technologies?language=objc), [Google's Android APIs](https://developer.android.com/reference), and [Microsoft's Windows App SDK APIs](/windows/windows-app-sdk/api/winrt).
 
