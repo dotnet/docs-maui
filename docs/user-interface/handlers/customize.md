@@ -62,7 +62,7 @@ public partial class CustomizeEntryPage : ContentPage
         {
 #if ANDROID
             handler.PlatformView.SetBackgroundColor(Colors.Transparent.ToPlatform());
-#elif iOS
+#elif IOS
             handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.None;
 #elif WINDOWS
             handler.PlatformView.FontWeight = Microsoft.UI.Text.FontWeights.Thin;
