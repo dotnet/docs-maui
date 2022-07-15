@@ -1,13 +1,13 @@
 ---
 title: "Geocoding"
-description: "Learn how to use the .NET MAUI Geocoding class in the Microsoft.Maui.Devices.Sensors namespace. This class provides APIs to both geocode a place mark to a positional coordinate, and reverse geocode coordinates to a place mark."
+description: "Learn how to use the .NET MAUI Geocoding class in the Microsoft.Maui.Devices.Sensors namespace. This class provides APIs to both geocode a placemark to a positional coordinate, and reverse geocode coordinates to a placemark."
 ms.date: 05/23/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices", "Microsoft.Maui.Devices.Sensors"]
 ---
 
 # Geocoding
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IGeocoding` interface. This interfaces provides APIs to geocode a place mark to a positional coordinates and reverse geocode coordinates to a place mark. The `IGeocoding` interface is exposed through the `Geocoding.Default` property.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IGeocoding` interface. This interfaces provides APIs to geocode a placemark to a positional coordinates and reverse geocode coordinates to a placemark. The `IGeocoding` interface is exposed through the `Geocoding.Default` property.
 
 The `Geocoding` and `IGeocoding` types are available in the `Microsoft.Maui.Devices.Sensors` namespace.
 
@@ -45,7 +45,7 @@ The altitude isn't always available. If it isn't available, the `Altitude` prope
 
 ## Reverse geocoding
 
-Reverse geocoding is the process of getting place marks for an existing set of coordinates. The following example demonstrates getting place marks:
+Reverse geocoding is the process of getting placemarks for an existing set of coordinates. The following example demonstrates getting placemarks:
 
 :::code language="csharp" source="../snippets/shared_1/SensorsPage.xaml.cs" id="geocoding_reverse":::
 
