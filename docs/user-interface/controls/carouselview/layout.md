@@ -212,7 +212,7 @@ CarouselView carouselView = new CarouselView
 };
 ```
 
-This code results in a vertical layout, that has a spacing of 20 between items.
+This code results in a vertical layout that has a spacing of 20 between items.
 
 ## Dynamic resizing of items
 

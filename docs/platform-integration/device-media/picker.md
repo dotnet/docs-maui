@@ -7,7 +7,7 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Media", "MediaPicker"]
 
 # Media picker
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IMediaPicker` interface. This interfaces lets a user pick or take a photo or video on the device. The `IMediaPicker` interface is exposed through the `MediaPicker.Default` property.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IMediaPicker` interface. This interface lets a user pick or take a photo or video on the device. The `IMediaPicker` interface is exposed through the `MediaPicker.Default` property.
 
 The `MediaPicker` and `IMediaPicker` types are available in the `Microsoft.Maui.Media` namespace.
 

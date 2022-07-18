@@ -487,7 +487,7 @@ CollectionView collectionView = new CollectionView
 };
 ```
 
-This code results in a vertical single column list, that has a spacing of 20 between items:
+This code results in a vertical single column list that has a spacing of 20 between items:
 
 :::image type="content" source="media/layout/vertical-list-spacing.png" alt-text="Screenshot of CollectionView with item spacing.":::
 
@@ -506,7 +506,7 @@ When a `CollectionView` sets its `ItemsLayout` property to a `GridItemsLayout` o
 ```
 
 > [!NOTE]
-> The `GridItemsLayout.VerticalItemSpacing` and `GridItemsLayout.HorizontalItemSpacing` properties have validation callbacks set, which ensure that the values of the properties are always greater than or equal to 0.
+> The `GridItemsLayout.VerticalItemSpacing` and `GridItemsLayout.HorizontalItemSpacing` properties have validation callbacks set, which ensures that the values of the properties are always greater than or equal to 0.
 
 The equivalent C# code is:
 
@@ -522,7 +522,7 @@ CollectionView collectionView = new CollectionView
 };
 ```
 
-This code results in a vertical two-column grid, that has a vertical spacing of 20 between items, and a horizontal spacing of 30 between items:
+This code results in a vertical two-column grid that has a vertical spacing of 20 between items and a horizontal spacing of 30 between items:
 
 :::image type="content" source="media/layout/vertical-grid-spacing.png" alt-text="Screenshot of a CollectionView with grid item spacing.":::
 

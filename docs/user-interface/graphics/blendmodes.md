@@ -18,20 +18,20 @@ In this example, the cyan circle is drawn first, followed by the magenta circle,
 
 The 28 members of the `BlendMode` enumeration can be divided into three categories:
 
-| Separable | Non-Separable | Porter-Duff |
-| -- | -- | -- |
-| `Normal` | `Hue` | `Clear` |
-| `Multiply` | `Saturation` | `Copy` |
-| `Screen` | `Color` | `SourceIn` |
-| `Overlay` | `Luminosity` | `SourceOut` |
-| `Darken` |  | `SourceAtop` |
-| `Lighten` |  | `DestinationOver` |
-| `ColorDodge` |  | `DestinationIn` |
-| `ColorBurn` |  | `DestinationOut` |
-| `SoftLight` |  | `DestinationAtop` |
-| `HardLight` |  | `Xor` |
-| `Difference` |  | `PlusDarker` |
-| `Exclusion` |  | `PlusLighter` |
+| Separable    | Non-Separable | Porter-Duff       |
+|--------------|---------------|-------------------|
+| `Normal`     | `Hue`         | `Clear`           |
+| `Multiply`   | `Saturation`  | `Copy`            |
+| `Screen`     | `Color`       | `SourceIn`        |
+| `Overlay`    | `Luminosity`  | `SourceOut`       |
+| `Darken`     |               | `SourceAtop`      |
+| `Lighten`    |               | `DestinationOver` |
+| `ColorDodge` |               | `DestinationIn`   |
+| `ColorBurn`  |               | `DestinationOut`  |
+| `SoftLight`  |               | `DestinationAtop` |
+| `HardLight`  |               | `Xor`             |
+| `Difference` |               | `PlusDarker`      |
+| `Exclusion`  |               | `PlusLighter`     |
 
 The order that the members are listed in the table above is the same as in the `BlendMode` enumeration. The first column lists the 12 *separable* blend modes, while the second column lists the *non-separable* blend modes. Finally, the third column lists the *Porter-Duff* blend modes.
 
