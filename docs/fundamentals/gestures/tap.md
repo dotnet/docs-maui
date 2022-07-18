@@ -49,4 +49,4 @@ tapGestureRecognizer.Tapped += (s, e) =>
 image.GestureRecognizers.Add(tapGestureRecognizer);
 ```
 
-By default the `Image` will respond to single taps. When the `NumberOfTapsRequired` property is set above one, the event handler will only be executed if the taps occur within a set period of time. If the second (or subsequent) taps do not occur within that period they are effectively ignored.
+By default the `Image` will respond to single taps. When the `NumberOfTapsRequired` property is set above one, the event handler will only be executed if the taps occur within a set period of time. If the second (or subsequent) taps don't occur within that period, they are effectively ignored.
