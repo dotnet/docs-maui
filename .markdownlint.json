@@ -42,6 +42,7 @@
         "style": "fenced"
     },
     "MD049": false,
+    "MD051": false,
     "proper-names": {
         "code_blocks": false,
         "names": [
