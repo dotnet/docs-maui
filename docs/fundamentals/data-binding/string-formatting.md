@@ -6,6 +6,8 @@ ms.date: 01/19/2022
 
 # String formatting
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-databinding)
+
 In a .NET Multi-platform App UI (.NET MAUI) app, it's sometimes convenient to use data bindings to display the string representation of an object or value. For example, you might want to use a `Label` to display the current value of a `Slider`. In this data binding, the `Slider` is the source, and the target is the `Text` property of the `Label`.
 
 String formatting in code is typically accomplished with the static [`String.Format`](xref:System.String.Format(System.String,System.Object)) method. The formatting string includes formatting codes specific to various types of objects, and you can include other text along with the values being formatted. For more information, see [Formatting Types in .NET](/dotnet/standard/base-types/formatting-types/) for more information on string formatting.

@@ -6,6 +6,8 @@ ms.date: 01/19/2022
 
 # Basic bindings
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-databinding)
+
 A .NET Multi-platform App UI (.NET MAUI) data binding links a pair of properties between two objects, at least one of which is usually a user-interface object. These two objects are called the *target* and the *source*:
 
 - The *target* is the object (and property) on which the data binding is set.

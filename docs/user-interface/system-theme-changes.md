@@ -6,6 +6,8 @@ ms.date: 02/25/2022
 
 # Respond to system theme changes
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-systemthemes)
+
 Devices typically include light and dark themes, which each refer to a broad set of appearance preferences that can be set at the operating system level. Apps should respect these system themes, and respond immediately when the system theme changes.
 
 The system theme may change for a variety of reasons, depending on the device configuration. This includes the system theme being explicitly changed by the user, it changing due to the time of day, and it changing due to environmental factors such as low light.

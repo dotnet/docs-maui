@@ -6,6 +6,8 @@ ms.date: 02/09/2022
 
 # CheckBox
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-checkbox)
+
 The .NET Multi-platform App UI (.NET MAUI) `CheckBox` is a type of button that can either be checked or empty. When a checkbox is checked, it's considered to be on. When a checkbox is empty, it's considered to be off.
 
 `CheckBox` defines the following properties:

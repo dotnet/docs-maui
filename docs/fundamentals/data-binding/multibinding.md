@@ -6,6 +6,8 @@ ms.date: 01/19/2022
 
 # Multi-bindings
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-databinding)
+
 .NET Multi-platform App UI (.NET MAUI) multi-bindings provide the ability to attach a collection of `Binding` objects to a single binding target property. They are created with the `MultiBinding` class, which evaluates all of its `Binding` objects and returns a single value through a `IMultiValueConverter` instance provided by your app. In addition, `MultiBinding` reevaluates all of its `Binding` objects when any of the bound data changes.
 
 The `MultiBinding` class defines the following properties:
