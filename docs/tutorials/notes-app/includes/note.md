@@ -45,7 +45,7 @@ Open the _NotePage.xaml.cs_ code-behind file. You can open the code-behind for t
 
 When you add a new XAML file, the code-behind contains a single line in the constructor, a call to the `InitializeComponent` method:
 
-```xaml
+```csharp
 namespace Notes;
 
 public partial class NotePage : ContentPage
