@@ -1,0 +1,94 @@
+---
+author: adegeo
+ms.author: adegeo
+ms.date: 07/29/2022
+ms.topic: include
+---
+
+Now that the app contains the `MainPage` and `AboutPage`, you can start creating the rest of the app. First, you'll create a page that represents a note, and then you'll create the code to load and save the note.
+
+## Create the "note" page
+
+The note page will display the note and allow you to either save or delete it. First, add the new page to the project:
+
+01. In the **Solution Explorer** pane of Visual Studio, right-click on the **Notes** project > **Add** > **New Item...**.
+
+01. In the **Add New Item** dialog, select **.NET MAUI** in the template list on the left-side of the window. Next, select the **.NET MAUI ContentPage (XAML)** template. Name the file _NotePage.xaml_, and then select **Add**.
+
+The _NotePage.xaml_ file will open in a new tab, displaying all of the XAML markup that represents the UI of the page. Replace the XAML code markup the following markup:
+
+:::code language="xaml" source="../snippets/note/csharp/Notes/NotePage.xaml":::
+
+Save the file by pressing <kbd>CTRL + S</kbd> or by selecting the menu **File** > **Save NotePage.xaml**.
+
+Let's break down the key parts of the XAML controls placed on the page:
+
+- `<VerticalStackLayout>` arranges its children controls vertically, one after the other.
+- `<Editor>` is a text editor control, and is the first control inside of `VerticalStackLayout`.
+- `<Grid>` is a layout control, and is the second control inside of `VerticalStackLayout`.
+
+  This control defines columns and rows to create cells. Its child controls are placed within those cells.
+
+  The `Grid` starts with a single row and column, creating a single cell. Columns are defined with a width, and the `*` value for width tells the column to fill up as much space as possible. The previous snippet defined two columns, both using as much space as possible, which evenly distributes the columns in the allotted space: `ColumnDefinitions="*,*"`. The column sizes are separated by a `,` character.
+
+  Columns and rows defined by a grid are indexed starting at 0. So the first column would be index 0, the second column is index 1, and so on.
+
+- Two `<Button>` controls. These are inside the `<Grid>` and assigned which column they belong to. If the control doesn't define a column assignment, it's automatically assigned to the first column. In this markup, the first button is the "Save" button and automatically assigned to the first column, column 0. The second button is the "Delete" button and assigned to the second column, column 1.
+
+## Load and save a note
+
+Open the _NotePage.xaml.cs_ code-behind file. You can open the code-behind for the __NotePage.xaml_ file in three ways:
+
+- If the _NotePage_xaml_ is open and is the active document being edited, press <kbd>F7</kbd>.
+- If the _NotePage_xaml_ is open and is the active document being edited, right-click in the text editor and select the **View Code** menu item.
+- Use the **Solution Explorer** to expand the _NotePage_xaml_ entry, revealing the _NotePage.xaml.cs_ file. Double-click the file to open it.
+
+When you add a new XAML file, the code-behind contains a single line in the constructor, a call to the `InitializeComponent` method:
+
+```xaml
+namespace Notes;
+
+public partial class NotePage : ContentPage
+{
+    public NotePage()
+    {
+        InitializeComponent();
+    }
+}
+```
+
+The `InitializeComponent` method reads the XAML markup and initializes all of the objects defined by the markup. The objects are connected to their parent-child relationships, and the event handlers defined in code are attached to events set in the XAML.
+
+Next, add code to the code-behind file to load and save the notes file, and to handle the button `Clicked` events:
+
+01. The note will be loaded from and saved to a file on the device, which will be stored in the `_fileName` variable:
+
+    :::code language="csharp" source="../snippets/note/csharp/Notes/NotePage.xaml.cs" id="filename_variable":::
+
+    The code above constructs a path to the file, storing it in the app data directory of the device. The file name is _notes.txt_.
+
+01. In the constructor of the class, after the `InitializeComponent` method is called, read the file from the device and store its contents in the `TextEditor` control's `Text` property:
+
+    :::code language="csharp" source="../snippets/note/csharp/Notes/NotePage.xaml.cs" id="load_note":::
+
+01. Next, add the code to handle the `Clicked` events defined in the XAML:
+
+    :::code language="csharp" source="../snippets/note/csharp/Notes/NotePage.xaml.cs" id="buttons":::
+
+    The `SaveButton_Clicked` method writes the text in the editor control, to the file represented by the `_fileName` variable.
+
+    The `DeleteButton_Clicked` method first checks if the file represented by the `_fileName` variable, and if it exists, deletes it. Next, the `TextEditor` control's text is cleared.
+
+01. Save the file by pressing <kbd>CTRL + S</kbd> or by selecting the menu **File** > **Save NotePage.xaml.cs**.
+
+The final code for the code-behind file should look like that following:
+
+:::code language="csharp" source="../snippets/note/csharp/Notes/NotePage.xaml.cs":::
+
+## Test the note
+
+With the node loading and saving code finish, test it out. Open the _AppShell.xaml_ file, and change the first `ShellContent` entry to point to the `NotePage` instead of `MainPage`:
+
+:::code language="xaml" source="../snippets/note/csharp/Notes/AppShell.xaml" highlight="12":::
+
+Save the file and run the app. Try typing into the entry box and pressing the **Save** button. Next, close the app and rerun it. The previously saved note should be loaded.
