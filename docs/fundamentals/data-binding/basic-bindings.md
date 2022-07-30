@@ -271,4 +271,4 @@ The following XAML example demonstrates binding context inheritance:
 
 In this example, the `BindingContext` property of the `StackLayout` is set to the `slider` object. This binding context is inherited by both the `Label` and the `BoxView`, both of which have their `Rotation` properties set to the `Value` property of the `Slider`:
 
-:::image type="content" source="media/basic-bindings/bindingcontextinheritance.png" alt-text="Binding context inheritance.":::
+![Binding context inheritance](media/basic-bindings/bindingcontextinheritance.png)

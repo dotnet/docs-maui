@@ -108,7 +108,7 @@ The fourth `Label` does something similar but for the culture associated with Fr
 </Label>
 ```
 
-For more information about specifying constructor arguments in XAML, see [Pass constructor arguments](~/xaml/pass-arguments.md#pass-constructor-arguments).
+For more information about specifying constructor arguments in XAML, see [Pass constructor arguments](../../xaml/pass-arguments.md#pass-constructor-arguments).
 
 The last `Label` is similar to the second, except that it references one of the children of the `StackLayout`:
 
@@ -120,7 +120,7 @@ The last `Label` is similar to the second, except that it references one of the 
 
 That child is a `Label`, which has a `Text` property of type `String`, which has a `Length` property. The first `Label` reports the `TimeSpan` set in the `TimePicker`, so when that text changes, the final `Label` changes as well:
 
-:::image type="content" source="media/binding-path/pathvariations.png" alt-text="Path variations.":::
+![Path variations](media/binding-path/pathvariations.png)
 
 ## Debug complex paths
 

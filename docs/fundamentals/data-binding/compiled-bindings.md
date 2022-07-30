@@ -68,7 +68,7 @@ The `BoxView`, `Label` elements, and `Slider` views inherit the binding context 
 
 When the example is first run, the `BoxView`, `Label` elements, and `Slider` elements are all set from the viewmodel based on the initial `Color` property set when the viewmodel was instantiated. As the sliders are manipulated, the `BoxView` and `Label` elements are updated accordingly:
 
-:::image type="content" source="media/compiled-bindings/compiledcolorselector.png" alt-text="Compiled color selector.":::
+![Compiled color selector](media/compiled-bindings/compiledcolorselector.png)
 
 For more information about this color selector, see [ViewModels and property-change notifications](binding-mode.md#viewmodels-and-property-change-notifications).
 
@@ -115,7 +115,7 @@ The `DataTemplate` defines the `x:DataType` attribute to be the `NamedColor` typ
 
 When the example is first run, the `ListView` is populated with `NamedColor` instances. When an item in the `ListView` is selected, the `BoxView.Color` property is set to the color of the selected item in the `ListView`:
 
-:::image type="content" source="media/compiled-bindings/compiledcolorlist.png" alt-text="Compiled color list.":::
+![Compiled color list](media/compiled-bindings/compiledcolorlist.png)
 
 Selecting other items in the `ListView` updates the color of the `BoxView`.
 

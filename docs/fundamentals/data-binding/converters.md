@@ -219,7 +219,7 @@ In this example, in the last of the three `Switch` and `Label` pairs, the generi
 :::image type="content" source="media/converters/switchindicators.png" alt-text="Switch indicators.":::
 
 > [!NOTE]
-> It's also possible to use triggers to implement changes in the user-interface based on other views. For more information, see [Triggers](~/fundamentals/triggers.md).
+> It's also possible to use triggers to implement changes in the user-interface based on other views. For more information, see [Triggers](../../fundamentals/triggers.md).
 
 ## Binding converter parameters
 
@@ -413,4 +413,4 @@ The following XAML example instantiates `FloatToIntConverter` in its resource di
 
 The values of the `Red` and `Green` properties are displayed with a `Binding` markup extension. The `Blue` property, however, instantiates the `Binding` class to demonstrate how an explicit `float` value can be set to `ConverterParameter` property:
 
-:::image type="content" source="media/converters/rgbcolorselector.png" alt-text="RGB color selector.":::
+![RGB color selector](media/converters/rgbcolorselector.png)
