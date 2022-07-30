@@ -196,7 +196,7 @@ Although it's common to define the `Resources` collection at the top of the page
 </StackLayout>
 ```
 
-One of the most common types of objects stored in resource dictionaries is the .NET MAUI `Style`, which defines a collection of property settings. For more information about styles, see [Style apps using XAML](~/user-interface/styles/xaml.md).
+One of the most common types of objects stored in resource dictionaries is the .NET MAUI `Style`, which defines a collection of property settings. For more information about styles, see [Style apps using XAML](../../user-interface/styles/xaml.md).
 
 > [!NOTE]
 > The purpose of a resource dictionary is to share objects. Therefore, it doesn't make sense to put controls such as a `Label` or `Button` in a resource dictionary. Visual elements can't be shared because the same instance can't appear twice on a page.
@@ -284,7 +284,7 @@ Several markup extensions are intrinsic to XAML and supported in .NET MAUI XAML.
 - If a property is of type `Type`, you can assign it to a `Type` object using the markup extension `{x:Type someClass}`.
 - You can define arrays in XAML using the `x:Array` markup extension. This markup extension has a required attribute named `Type` that indicates the type of the elements in the array.
 
-For more information about XAML markup extensions, see [Consume XAML markup extensions](~/xaml/markup-extensions/consume.md).
+For more information about XAML markup extensions, see [Consume XAML markup extensions](../../xaml/markup-extensions/consume.md).
 
 ## Next steps
 

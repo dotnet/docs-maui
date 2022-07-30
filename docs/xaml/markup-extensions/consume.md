@@ -31,11 +31,11 @@ Any attribute value in curly braces is *always* a XAML markup extension. However
 
 In addition to the markup extensions discussed in this article, the following markup extensions are included in .NET MAUI and discussed in other articles:
 
-- `StaticResource` - reference objects from a resource dictionary. For more information, see [Resource dictionaries**](~/fundamentals/resource-dictionaries.md).
-- `DynamicResource` - respond to changes in objects in a resource dictionary. For more information, see [Dynamic styles**](~/user-interface/styles/xaml.md#dynamic-styles).
-- `Binding` - establish a link between properties of two objects. For more information, see [Data binding**](~/fundamentals/data-binding/index.md).
-- `TemplateBinding` - performs data binding from a control template. For more information, see [Control templates](~/fundamentals/controltemplate.md).
-- `RelativeSource` - sets the binding source relative to the position of the binding target. For more information, see [Relative bindings](~/fundamentals/data-binding/relative-bindings.md).
+- `StaticResource` - reference objects from a resource dictionary. For more information, see [Resource dictionaries**](../../fundamentals/resource-dictionaries.md).
+- `DynamicResource` - respond to changes in objects in a resource dictionary. For more information, see [Dynamic styles**](../../user-interface/styles/xaml.md#dynamic-styles).
+- `Binding` - establish a link between properties of two objects. For more information, see [Data binding**](../../fundamentals/data-binding/index.md).
+- `TemplateBinding` - performs data binding from a control template. For more information, see [Control templates](../../fundamentals/controltemplate.md).
+- `RelativeSource` - sets the binding source relative to the position of the binding target. For more information, see [Relative bindings](../../fundamentals/data-binding/relative-bindings.md).
 <!-- - `ConstraintExpression` - relates the position and size of a child in a `RelativeLayout` to its parent, or a sibling. For more information, see [RelativeLayout](~/user-interface/layouts/relativelayout.md).-->
 
 ## x:Static markup extension
@@ -121,7 +121,7 @@ The following screenshot shows the XAML output:
 
 ## x:Reference markup extension
 
-The `x:Reference` markup extension is supported by the `ReferenceExtension` class. The class has a single property named `Name` of type `string` that you set to the name of an element on the page that has been given a name with `x:Name`. This `Name` property is the content property of `ReferenceExtension`, so `Name=` is not required when `x:Reference` appears in curly braces. The `x:Reference` markup extension is used exclusively with data bindings. For more information about data bindings, see [Data binding](~/fundamentals/data-binding/index.md).
+The `x:Reference` markup extension is supported by the `ReferenceExtension` class. The class has a single property named `Name` of type `string` that you set to the name of an element on the page that has been given a name with `x:Name`. This `Name` property is the content property of `ReferenceExtension`, so `Name=` is not required when `x:Reference` appears in curly braces. The `x:Reference` markup extension is used exclusively with data bindings. For more information about data bindings, see [Data binding](../../fundamentals/data-binding/index.md).
 
 The following XAML example shows two uses of `x:Reference` with data bindings, the first where it's used to set the `Source` property of the `Binding` object, and the second where it's used to set the `BindingContext` property for two data bindings:
 
@@ -272,7 +272,7 @@ In this example, the `ViewCell` creates a simple `BoxView` for each color entry:
 :::image type="content" source="media/consume/arraydemo.png" alt-text="x:Array demo.":::
 
 > [!NOTE]
-> When defining arrays of common types like strings or numbers, use the XAML language primitives tags listed in [Pass arguments](~/xaml/pass-arguments.md).
+> When defining arrays of common types like strings or numbers, use the XAML language primitives tags listed in [Pass arguments](../../xaml/pass-arguments.md).
 
 ## x:Null markup extension
 
@@ -390,7 +390,7 @@ A typical usage of this markup extension is in a Shell application, as shown in 
 
 In this example, `MonkeysPage` is converted from a `ContentPage` to a `DataTemplate`, which is set as the value of the `ShellContent.ContentTemplate` property. This ensures that `MonkeysPage` is only created when navigation to the page occurs, rather than at application startup.
 
-For more information about Shell apps, see [Shell](~/fundamentals/shell/index.md).
+For more information about Shell apps, see [Shell](../../fundamentals/shell/index.md).
 
 ## FontImage markup extension
 
@@ -421,7 +421,7 @@ In this example, the abbreviated version of the `FontImageExtension` class name 
 
 While the unicode character for the icon is `\uf30c`, it has to be escaped in XAML and so becomes `&#xf30c;`.
 
-For information about displaying font icons by specifying the font icon data in a `FontImageSource` object, see [Display font icons](~/user-interface/fonts.md#display-font-icons).
+For information about displaying font icons by specifying the font icon data in a `FontImageSource` object, see [Display font icons](../../user-interface/fonts.md#display-font-icons).
 
 ## AppThemeBinding markup extension
 
@@ -468,4 +468,5 @@ The following XAML example shows how to use the `AppThemeBinding` markup extensi
 
 In this example, the text color of the first `Label` is set to green when the device is using its light theme, and is set to red when the device is using its dark theme. The second `Label` has its `TextColor` property set through a `Style`. This `Style` sets the text color of the `Label` to black by default, to blue when the device is using its light theme, and to teal when the device is using its dark theme:
 
-:::image type="content" source="media/consume/appthemebindingdemo.png" alt-text="AppThemeBinding demo.":::
+![AppThemeBinding demo](media/consume/appthemebindingdemo.png)
+

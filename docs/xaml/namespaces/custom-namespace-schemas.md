@@ -124,4 +124,4 @@ To find the custom namespace schema types, .NET MAUI will search referenced asse
 
 The result is that two `CircleButton` instances are displayed:
 
-:::image type="content" source="media/custom-namespace-schemas/circle-buttons.png" alt-text="Screenshot of two circle buttons.":::
+![Screenshot of two circle buttons](media/custom-namespace-schemas/circle-buttons.png)

@@ -57,7 +57,7 @@ When Visual Studio builds the project, a source generator generates new C# sourc
 At runtime, code in the `MauiProgram` class bootstraps the app and executes the `App` class constructor, which instantiates `AppShell`. The `AppShell` class instantiates the first page of the app to be displayed, which is `MainPage`. The `MainPage` constructor calls `InitializeComponent`, which initializes all the objects defined in the XAML file, connects them all together in parent-child relationships, attaches event handlers defined in code to events set in the XAML file, and sets the resultant tree of objects as the content of the page.
 
 > [!NOTE]
-> The `AppShell` class uses .NET MAUI Shell to set the first page of the app to be displayed. However, Shell is beyond the scope of this introduction to XAML. For more information, see [.NET MAUI Shell](~/fundamentals/shell/index.md).
+> The `AppShell` class uses .NET MAUI Shell to set the first page of the app to be displayed. However, Shell is beyond the scope of this introduction to XAML. For more information, see [.NET MAUI Shell](../../fundamentals/shell/index.md).
 
 ## Set page content
 
@@ -123,7 +123,7 @@ When you compile and deploy the new version of this app, a button appears on the
 You can navigate back to `MainPage` using the navigation bar that appears on each platform.
 
 > [!NOTE]
-> An alternative to this navigation model is to use .NET MAUI Shell. For more information, see [.NET MAUI Shell overview](~/fundamentals/shell/index.md).
+> An alternative to this navigation model is to use .NET MAUI Shell. For more information, see [.NET MAUI Shell overview](../../fundamentals/shell/index.md).
 
 ## XAML and code interactions
 

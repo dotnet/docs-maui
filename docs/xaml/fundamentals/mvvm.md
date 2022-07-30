@@ -412,4 +412,4 @@ The following example shows the XAML that consumes the `KeypadViewModel`:
 
 In this example, the `Command` property of the first `Button` that is bound to the `DeleteCharCommand`. The other buttons are bound to the `AddCharCommand` with a `CommandParameter` that's the same as the character that appears on the `Button`:
 
-:::image type="content" source="media/mvvm/keypad.png" alt-text="Screenshot of a calculator using MVVM and commands.":::
+![Screenshot of a calculator using MVVM and commands](media/mvvm/keypad.png)

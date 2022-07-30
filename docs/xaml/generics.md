@@ -16,7 +16,7 @@ Type arguments are specified as a string, and are typically prefixed, such as `s
 Multiple type arguments can be specified by using a comma delimiter. In addition, if a generic constraint uses generic types, the nested constraint type arguments should be contained in parentheses.
 
 > [!NOTE]
-> The `x:Type` markup extension supplies a Common Language Runtime (CLR) type reference for a generic type, and has a similar function to the `typeof` operator in C#. For more information, see [x:Type markup extension](~/xaml/markup-extensions/consume.md#xtype-markup-extension).
+> The `x:Type` markup extension supplies a Common Language Runtime (CLR) type reference for a generic type, and has a similar function to the `typeof` operator in C#. For more information, see [x:Type markup extension](markup-extensions/consume.md#xtype-markup-extension).
 
 ## Single primitive type argument
 
