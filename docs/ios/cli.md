@@ -58,4 +58,3 @@ A .NET MAUI iOS app can be launched on a specific iOS simulator by providing its
 1. In your chosen simulator, press the **Click me** button several times and observe that the count of the number of button clicks is incremented.
 
     ![.NET MAUI app running in iPhone 13 Pro simulator](media/cli/chosen-simulator.png)
- 
