@@ -106,7 +106,7 @@ If you do not see a specific Mac listed in the **Pair to Mac** dialog, add it ma
 
 1. In Visual Studio 2022's **Pair to Mac** dialog, select **Add Mac...**:
 
-    ![The Add Mac button in the Pair to Mac dialog](media/pair-to-mac/addtomac.png) 
+    ![The Add Mac button in the Pair to Mac dialog](media/pair-to-mac/addtomac.png)
 
 1. Enter the Mac's IP address and click **Add**:
 
