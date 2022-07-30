@@ -50,4 +50,4 @@ switch (timePicker.On<iOS>().UpdateMode())
 
 The result is that a specified `UpdateMode` is applied to the `TimePicker`, which controls when item selection occurs:
 
-:::image type="content" source="media/timepicker-selection/timepicker-updatemode.png" alt-text="Screenshot of TimePicker update modes.":::
+![Screenshot of TimePicker update modes](media/timepicker-selection/timepicker-updatemode.png)

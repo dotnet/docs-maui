@@ -39,4 +39,4 @@ entry.On<iOS>().SetAdjustsFontSizeToFitWidth(!entry.On<iOS>().AdjustsFontSizeToF
 
 The result is that the font size of the `Entry` is scaled to ensure that the inputted text fits in the control:
 
-:::image type="content" source="media/entry-font-size/entry-font-size.png" alt-text="Adjust Entry Font Size Platform-Specific.":::
+![Adjust Entry Font Size Platform-Specific](media/entry-font-size/entry-font-size.png)

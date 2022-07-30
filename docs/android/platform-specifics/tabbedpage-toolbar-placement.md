@@ -36,4 +36,4 @@ The `TabbedPage.On<Microsoft.Maui.Controls.PlatformConfiguration.Android>` metho
 
 The result is that the toolbar placement can be set on a `TabbedPage`:
 
-:::image type="content" source="media/tabbedpage-toolbar-placement/tabbedpage-toolbar-placement.png" alt-text="TabbedPage toolbar configuration.":::
+![TabbedPage toolbar configuration](media/tabbedpage-toolbar-placement/tabbedpage-toolbar-placement.png)

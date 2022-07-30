@@ -36,4 +36,4 @@ In addition, the `GetTranslucencyMode` method can be used to retrieve the curren
 
 The result is that the translucency mode of the tab bar on a `TabbedPage` can be set:
 
-:::image type="content" source="media/tabbedpage-translucent-tabbar/translucencymodes.png" alt-text="Screenshot of translucent and opaque tab bars on iOS.":::
+![Screenshot of translucent and opaque tab bars on iOS](media/tabbedpage-translucent-tabbar/translucencymodes.png)

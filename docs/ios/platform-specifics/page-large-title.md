@@ -84,4 +84,4 @@ switch (On<iOS>().LargeTitleDisplay())
 
 The result is that a specified `LargeTitleDisplayMode` is applied to the `Page`, which controls the large title behavior:
 
-:::image type="content" source="media/page-large-title/large-title.png" alt-text="Page title as a large title.":::
+![Page title as a large title](media/page-large-title/large-title.png)

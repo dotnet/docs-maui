@@ -32,4 +32,4 @@ The `Entry.On<iOS>` method specifies that this platform-specific will only run o
 
 The result is that the cursor color in a `Entry` can be set to a specific `Color`:
 
-:::image type="content" source="media/entry-cursor-color/entry-cursorcolor.png" alt-text="Entry cursor color.":::
+![Entry cursor color](media/entry-cursor-color/entry-cursorcolor.png)

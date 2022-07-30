@@ -34,7 +34,7 @@ The `WebView.On<Microsoft.Maui.Controls.PlatformConfiguration.Android>` method s
 
 The result is that pinch-to-zoom can be enabled on a `WebView`, and zoom controls can be overlaid on the `WebView`:
 
-:::image type="content" source="media/webview-zoom-controls/webview-zoom.png" alt-text="Screenshot of zoomed WebView on Android.":::
+![Screenshot of zoomed WebView on Android](media/webview-zoom-controls/webview-zoom.png)
 
 > [!IMPORTANT]
 > Zoom controls must be both enabled and displayed, via the respective bindable properties or methods, to be overlaid on a `WebView`.

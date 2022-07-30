@@ -32,4 +32,4 @@ The `TabbedPage.On<Microsoft.Maui.Controls.PlatformConfiguration.Android>` metho
 
 The result is that swipe paging through the pages displayed by a `TabbedPage` is enabled:
 
-:::image type="content" source="media/tabbedpage-page-swiping/tabbedpage-swipe.png" alt-text="Swipe paging through a TabbedPage.":::
+![Swipe paging through a TabbedPage](media/tabbedpage-page-swiping/tabbedpage-swipe.png)

@@ -29,4 +29,4 @@ The `Application.On<Microsoft.Maui.Controls.PlatformConfiguration.Android>` meth
 
 The result is that the soft keyboard input area operating mode can be set when an input control has focus:
 
-:::image type="content" source="media/soft-keyboard-input-mode/pan-resize.png" alt-text="Soft Keyboard Operating Mode Platform-Specific.":::
+![Soft Keyboard Operating Mode Platform-Specific](media/soft-keyboard-input-mode/pan-resize.png)

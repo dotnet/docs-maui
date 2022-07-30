@@ -38,4 +38,4 @@ The `NavigationPage.On<iOS>` method specifies that this platform-specific will o
 
 The result is that the transparency of the navigation bar can be changed:
 
-:::image type="content" source="media/navigation-bar-translucent/translucent-navigation-bar.png" alt-text="Translucent Navigation Bar Platform-Specific.":::
+![Translucent Navigation Bar Platform-Specific](media/navigation-bar-translucent/translucent-navigation-bar.png)

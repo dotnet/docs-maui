@@ -44,7 +44,7 @@ In addition, the `GetModalPresentationStyle` method can be used to retrieve the 
 
 The result is that the modal presentation style on a `Page` can be set:
 
-:::image type="content" source="media/page-presentation-style/modal-presentation-style.png" alt-text="Modal presentation styles.":::
+![Modal presentation styles](media/page-presentation-style/modal-presentation-style.png)
 
 > [!NOTE]
-> Pages that use this platform-specific to set the modal presentation style must use modal navigation. For more information, see [Perform modal navigation](~/user-interface/pages/navigationpage.md#perform-modal-navigation).
+> Pages that use this platform-specific to set the modal presentation style must use modal navigation. For more information, see [Perform modal navigation](../../user-interface/pages/navigationpage.md#perform-modal-navigation).

@@ -51,4 +51,4 @@ switch (datePicker.On<iOS>().UpdateMode())
 
 The result is that a specified `UpdateMode` is applied to the `DatePicker`, which controls when item selection occurs:
 
-:::image type="content" source="media/datepicker-selection/datepicker-updatemode.png" alt-text="Screenshot of DatePicker update modes.":::
+![Screenshot of DatePicker update modes](media/datepicker-selection/datepicker-updatemode.png)

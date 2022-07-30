@@ -48,4 +48,4 @@ In addition, the `SwipeView.GetSwipeTransitionMode` method can be used to return
 
 The result is that a specified `SwipeTransitionMode` value is applied to the `SwipeView`, which controls the transition that's used when opening the `SwipeView`:
 
-:::image type="content" source="media/swipeview-swipetransitionmode/swipetransitionmode.png" alt-text="Screenshot of SwipeView SwipeTransitionModes, on iOS.":::
+![Screenshot of SwipeView SwipeTransitionModes, on iOS](media/swipeview-swipetransitionmode/swipetransitionmode.png)

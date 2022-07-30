@@ -33,4 +33,4 @@ The `Slider.On<iOS>` method specifies that this platform-specific will only run 
 
 The result is that a tap on the `Slider` bar can move the `Slider` thumb and set the `Slider.Value` property:
 
-:::image type="content" source="media/slider-thumb/slider-updateontap.png" alt-text="Slider Update on Tap enabled.":::
+![Slider Update on Tap enabled](media/slider-thumb/slider-updateontap.png)

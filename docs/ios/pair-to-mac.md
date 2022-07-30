@@ -8,7 +8,7 @@ ms.date: 04/12/2022
 
 Building native iOS applications using .NET Multi-platform App UI (.NET MAUI) requires access to Apple's build tools, which only run on a Mac. Because of this, Visual Studio 2022 must connect to a network-accessible Mac to build .NET MAUI iOS apps.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
+[!INCLUDE [docs under construction](../includes/preview-note.md)]
 
 Visual Studio 2022's Pair to Mac feature discovers, connects to, authenticates with, and remembers Mac build hosts so that you can work productively on Windows.
 
@@ -34,7 +34,7 @@ To set up the Mac build host, first enable remote login:
 
 1. Check **Remote Login** in the **Service** list.
 
-    :::image type="content" source="media/pair-to-mac/sharing.png" alt-text="Enabling remote login.":::
+    ![Enabling remote login](media/pair-to-mac/sharing.png)
 
     Make sure that it is configured to allow access for **All users**, or that your Mac username or group is included in the list of allowed users.
 
@@ -50,19 +50,19 @@ After enabling remote login on the Mac, connect Visual Studio 2022 to the Mac:
 
 1. Open the **Pair to Mac** dialog with the **Pair to Mac** button iOS toolbar:
 
-    :::image type="content" source="media/pair-to-mac/ios-toolbar.png" alt-text="The iOS toolbar, with the Pair to Mac button highlighted.":::
+    ![The iOS toolbar, with the Pair to Mac button highlighted](media/pair-to-mac/ios-toolbar.png)
 
     Alternatively, select **Tools > iOS > Pair to Mac**.
 
     The **Pair to Mac** dialog displays a list of all previously-connected and currently-available Mac build hosts:
 
-    :::image type="content" source="media/pair-to-mac/pairtomac.png" alt-text="The Pair to Mac dialog.":::
+    ![The Pair to Mac dialog](media/pair-to-mac/pairtomac.png)
 
 1. Select a Mac in the list and click the **Connect** button.
 
 1. Enter your username and password. The first time you connect to any particular Mac, you are prompted to enter your username and password for that machine:
 
-    :::image type="content" source="media/pair-to-mac/auth.png" alt-text="Entering a username and password for the Mac.":::
+    ![Entering a username and password for the Mac](media/pair-to-mac/auth.png)
 
     > [!TIP]
     > When logging in, use your system username.
@@ -73,14 +73,14 @@ After enabling remote login on the Mac, connect Visual Studio 2022 to the Mac:
 
 1. Examine the connection status icon. When Visual Studio 2022 is connected to a Mac, that Mac's item in the **Pair to Mac** dialog displays an icon indicating that it is currently connected:
 
-    :::image type="content" source="media/pair-to-mac/connected.png" alt-text="A connected Mac.":::
+    ![A connected Mac](media/pair-to-mac/connected.png)
 
     There can be only one connected Mac at a time.
 
     > [!TIP]
     > Right-clicking any Mac in the **Pair to Mac** list brings up a context menu that allows you to **Connect...**, **Forget this Mac**, or **Disconnect**:
     >
-    > :::image type="content" source="media/pair-to-mac/contextmenu.png" alt-text="The Pair to Mac context menus.":::
+    > ![The Pair to Mac context menus](media/pair-to-mac/contextmenu.png)
     >
     > If you choose **Forget this Mac**, your credentials for the selected Mac will be forgotten. To reconnect to that Mac, you will need to re-enter your username and password.
 
@@ -94,7 +94,7 @@ If you do not see a specific Mac listed in the **Pair to Mac** dialog, add it ma
 
 1. Open **System Preferences > Sharing > Remote Login** on your Mac to locate your Mac’s IP address:
 
-    :::image type="content" source="media/pair-to-mac/remote-login.png" alt-text="The Mac's IP address in System Preferences > Sharing.":::
+    ![The Mac's IP address in System Preferences > Sharing](media/pair-to-mac/remote-login.png)
 
     Alternatively, use the command line. In **Terminal**, issue the following command:
 
@@ -106,15 +106,15 @@ If you do not see a specific Mac listed in the **Pair to Mac** dialog, add it ma
 
 1. In Visual Studio 2022's **Pair to Mac** dialog, select **Add Mac...**:
 
-    :::image type="content" source="media/pair-to-mac/addtomac.png" alt-text="The Add Mac button in the Pair to Mac dialog.":::
+    ![The Add Mac button in the Pair to Mac dialog](media/pair-to-mac/addtomac.png)    
 
 1. Enter the Mac's IP address and click **Add**:
 
-    :::image type="content" source="media/pair-to-mac/enteripaddress.png" alt-text="Entering the Mac's IP address.":::
+    ![Entering the Mac's IP address](media/pair-to-mac/enteripaddress.png)
 
 1. Enter your username and password for the Mac:
 
-    :::image type="content" source="media/pair-to-mac/auth.png" alt-text="Enter a username and password.":::
+    ![Enter a username and password](media/pair-to-mac/auth.png)
 
    > [!TIP]
    > When logging in, use your system username.

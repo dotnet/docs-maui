@@ -45,4 +45,4 @@ The `Entry.On<Microsoft.Maui.Controls.PlatformConfiguration.Android>` method spe
 
 The result is that a specified `ImeFlags` value is applied to the soft keyboard for the `Entry`, which sets the input method editor options:
 
-:::image type="content" source="media/entry-ime-options/entry-imeoptions.png" alt-text="Entry input method editor platform-specific.":::
+![Entry input method editor platform-specific](media/entry-ime-options/entry-imeoptions.png)

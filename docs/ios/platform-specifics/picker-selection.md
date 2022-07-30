@@ -51,4 +51,4 @@ switch (picker.On<iOS>().UpdateMode())
 
 The result is that a specified `UpdateMode` is applied to the `Picker`, which controls when item selection occurs:
 
-:::image type="content" source="media/picker-selection/picker-updatemode.png" alt-text="Picker UpdateMode Platform-Specific.":::
+![Picker UpdateMode Platform-Specific](media/picker-selection/picker-updatemode.png)

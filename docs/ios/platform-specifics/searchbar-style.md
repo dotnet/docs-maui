@@ -40,8 +40,8 @@ In addition, the `SearchBar.GetSearchBarStyle` method can be used to return the 
 
 The result is that a specified `UISearchBarStyle` member is applied to a `SearchBar`, which controls whether the `SearchBar` has a background:
 
-:::image type="content" source="media/searchbar-style/searchbar-styles.png" alt-text="Screenshot of SearchBar styles, on iOS.":::
+![Screenshot of SearchBar styles, on iOS](media/searchbar-style/searchbar-styles.png)
 
 The following screenshot shows the `UISearchBarStyle` members applied to `SearchBar` objects that have their `BackgroundColor` property set:
 
-:::image type="content" source="media/searchbar-style/searchbar-background-styles.png" alt-text="Screenshot of SearchBar styles with background color, on iOS.":::
+![Screenshot of SearchBar styles with background color, on iOS](media/searchbar-style/searchbar-background-styles.png)

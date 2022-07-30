@@ -43,4 +43,4 @@ listView.On<Microsoft.Maui.Controls.PlatformConfiguration.Android>().SetIsFastSc
 
 The result is that fast scrolling through data in a `ListView` can be enabled, which changes the size of the scroll thumb:
 
-:::image type="content" source="media/listview-fast-scrolling/fastscroll.png" alt-text="ListView FastScroll Platform-Specific.":::
+![ListView FastScroll Platform-Specific](media/listview-fast-scrolling/fastscroll.png)

@@ -8,7 +8,7 @@ ms.date: 05/20/2022
 
 The remote iOS Simulator for Windows allows you to test your apps on an iOS simulator displayed in Windows alongside Visual Studio 2022.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
+[!INCLUDE [docs under construction](../includes/preview-note.md)]
 
 ## Get started
 

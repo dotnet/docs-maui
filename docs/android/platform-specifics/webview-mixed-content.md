@@ -32,4 +32,4 @@ The `WebView.On<Microsoft.Maui.Controls.PlatformConfiguration.Android>` method s
 
 The result is that a specified `MixedContentHandling` value is applied to the `WebView`, which controls whether mixed content can be displayed:
 
-:::image type="content" source="media/webview-mixed-content/webview-mixedcontent.png" alt-text="WebView mixed content handling platform-specific.":::
+![WebView mixed content handling platform-specific](media/webview-mixed-content/webview-mixedcontent.png)

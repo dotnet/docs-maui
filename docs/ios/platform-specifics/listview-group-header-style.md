@@ -38,4 +38,4 @@ In addition, the `ListView.GetGroupHeaderStyle` method can be used to return the
 
 The result is that a specified `GroupHeaderStyle` value is applied to the `ListView`, which controls whether header cells float during scrolling:
 
-:::image type="content" source="media/listview-group-header-style/group-header-styles.png" alt-text="Screenshot of floating and non-floating ListView header cells, on iOS.":::
+![Screenshot of floating and non-floating ListView header cells, on iOS](media/listview-group-header-style/group-header-styles.png)

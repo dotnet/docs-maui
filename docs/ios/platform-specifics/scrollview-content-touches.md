@@ -48,4 +48,4 @@ scrollView.On<iOS>().SetShouldDelayContentTouches(!scrollView.On<iOS>().ShouldDe
 
 The result is that a `ScrollView` can disable delaying receiving content touches, so that in this scenario the `Slider` receives the gesture rather than the `Detail` page of the `FlyoutPage`:
 
-:::image type="content" source="media/scrollview-content-touches/scrollview-delay-content-touches.png" alt-text="ScrollView Delay Content Touches Platform-Specific.":::
+![ScrollView Delay Content Touches Platform-Specific](media/scrollview-content-touches/scrollview-delay-content-touches.png)

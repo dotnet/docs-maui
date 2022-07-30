@@ -36,7 +36,7 @@ The `ListView.On<iOS>` method specifies that this platform-specific will only ru
 
 The result is that a specified `SeparatorStyle` value is applied to the `ListView`, which controls the width of the separator between cells:
 
-:::image type="content" source="media/listview-separator-style/listview-separatorstyle.png" alt-text="ListView SeparatorStyle Platform-Specific.":::
+![ListView SeparatorStyle Platform-Specific](media/listview-separator-style/listview-separatorstyle.png)
 
 > [!NOTE]
 > Once the separator style has been set to `FullWidth`, it cannot be changed back to `Default` at runtime.

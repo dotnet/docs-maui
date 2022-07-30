@@ -36,4 +36,4 @@ The `FlyoutPage.On<iOS>` method specifies that this platform-specific will only 
 
 The result is that the detail page of a `FlyoutPage` can have shadow applied to it, when revealing the flyout page:
 
-:::image type="content" source="media/flyoutpage-shadow/shadow.png" alt-text="Screenshot of a FlyoutPage with and without shadow.":::
+![Screenshot of a FlyoutPage with and without shadow](media/flyoutpage-shadow/shadow.png)

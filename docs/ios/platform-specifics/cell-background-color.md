@@ -44,4 +44,4 @@ The `ListView.On<iOS>` method specifies that this platform-specific will only ru
 
 The result is that the background color in a `Cell` can be set to a specific `Color`:
 
-:::image type="content" source="media/cell-background-color/group-header-cell-color.png" alt-text="Screenshot of the Teal group header cells, on iOS.":::
+![Screenshot of the Teal group header cells, on iOS](media/cell-background-color/group-header-cell-color.png)
