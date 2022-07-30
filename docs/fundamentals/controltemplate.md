@@ -35,11 +35,11 @@ public class CardView : ContentView
 }
 ```
 
-The `CardView` class, which derives from the `ContentView` class, represents a custom control that displays data in a card-like layout. The class contains properties, which are backed by bindable properties, for the data it displays. However, the `CardView` class does not define any UI. Instead, the UI will be defined with a control template. For more information about creating `ContentView` derived custom controls, see [ContentView](~/user-interface/controls/contentview.md).
+The `CardView` class, which derives from the `ContentView` class, represents a custom control that displays data in a card-like layout. The class contains properties, which are backed by bindable properties, for the data it displays. However, the `CardView` class does not define any UI. Instead, the UI will be defined with a control template. For more information about creating `ContentView` derived custom controls, see [ContentView](../user-interface/controls/contentview.md).
 
 A control template is created with the `ControlTemplate` type. When you create a `ControlTemplate`, you combine `View` objects to build the UI for a custom control, or page. A `ControlTemplate` must have only one `View` as its root element. However, the root element usually contains other `View` objects. The combination of objects makes up the control's visual structure.
 
-While a `ControlTemplate` can be defined inline, the typical approach to declaring a `ControlTemplate` is as a resource in a resource dictionary. Because control templates are resources, they obey the same scoping rules that apply to all resources. For example, if you declare a control template in your app-level resource dictionary, the template can be used anywhere in your app. If you define the template in a page, only that page can use the control template. For more information about resources, see [Resource dictionaries](~/fundamentals/resource-dictionaries.md).
+While a `ControlTemplate` can be defined inline, the typical approach to declaring a `ControlTemplate` is as a resource in a resource dictionary. Because control templates are resources, they obey the same scoping rules that apply to all resources. For example, if you declare a control template in your app-level resource dictionary, the template can be used anywhere in your app. If you define the template in a page, only that page can use the control template. For more information about resources, see [Resource dictionaries](../fundamentals/resource-dictionaries.md).
 
 The following XAML example shows a `ControlTemplate` for `CardView` objects:
 
@@ -106,7 +106,7 @@ The following XAML example shows a `ControlTemplate` for `CardView` objects:
 </ContentPage>
 ```
 
-When a `ControlTemplate` is declared as a resource, it must have a key specified with the `x:Key` attribute so that it can be identified in the resource dictionary. In this example, the root element of the `CardViewControlTemplate` is a `Frame` object. The `Frame` object uses the `RelativeSource` markup extension to set its `BindingContext` to the runtime object instance to which the template will be applied, which is known as the *templated parent*. The `Frame` object uses a combination of `Grid`, `Frame`, `Image`, `Label`, and `BoxView` objects to define the visual structure of a `CardView` object. The binding expressions of these objects resolve against `CardView` properties, due to inheriting the `BindingContext` from the root `Frame` element. For more information about the `RelativeSource` markup extension, see [Relative bindings](~/fundamentals/data-binding/relative-bindings.md).
+When a `ControlTemplate` is declared as a resource, it must have a key specified with the `x:Key` attribute so that it can be identified in the resource dictionary. In this example, the root element of the `CardViewControlTemplate` is a `Frame` object. The `Frame` object uses the `RelativeSource` markup extension to set its `BindingContext` to the runtime object instance to which the template will be applied, which is known as the *templated parent*. The `Frame` object uses a combination of `Grid`, `Frame`, `Image`, `Label`, and `BoxView` objects to define the visual structure of a `CardView` object. The binding expressions of these objects resolve against `CardView` properties, due to inheriting the `BindingContext` from the root `Frame` element. For more information about the `RelativeSource` markup extension, see [Relative bindings](../fundamentals/data-binding/relative-bindings.md).
 
 ## Consume a ControlTemplate
 
@@ -160,7 +160,7 @@ The `TemplateBinding` markup extension defines the following properties:
 - `ConverterParameter`, of type `object`, the parameter to the binding value converter.
 - `StringFormat`, of type `string`, the string format for the binding.
 
-The `ContentProperty` for the `TemplateBinding` markup extension is `Path`. Therefore, the "Path=" part of the markup extension can be omitted if the path is the first item in the `TemplateBinding` expression. For more information about using these properties in a binding expression, see [Data binding](~/fundamentals/data-binding/index.md).
+The `ContentProperty` for the `TemplateBinding` markup extension is `Path`. Therefore, the "Path=" part of the markup extension can be omitted if the path is the first item in the `TemplateBinding` expression. For more information about using these properties in a binding expression, see [Data binding](../fundamentals/data-binding/index.md).
 
 > [!WARNING]
 > The `TemplateBinding` markup extension should only be used within a `ControlTemplate`. However, attempting to use a `TemplateBinding` expression outside of a `ControlTemplate` will not result in a build error or an exception being thrown.
@@ -274,7 +274,7 @@ The following XAML example shows an *implicit* style that consumes the `CardView
 
 In this example, the *implicit* `Style` is automatically applied to each `CardView` object, and sets the `ControlTemplate` property of each `CardView` to `CardViewControlTemplate`.
 
-For more information about styles, see [Styles](~/user-interface/styles/xaml.md).
+For more information about styles, see [Styles](../user-interface/styles/xaml.md).
 
 ## Redefine a control’s UI
 
@@ -598,4 +598,4 @@ While the objects in the `ControlTemplate` bind to properties on its templated p
 
 The overall effect of the `Button` bindings is that when the `Button` is tapped, the `DeletePersonCommand` in the `PeopleViewModel` class is executed, with the value of the `CardName` property being passed to the `DeletePersonCommand`. This results in the specified `CardView` being removed from the bindable layout.
 
-For more information about relative bindings, see [Relative bindings](~/fundamentals/data-binding/relative-bindings.md).
+For more information about relative bindings, see [Relative bindings](../fundamentals/data-binding/relative-bindings.md).

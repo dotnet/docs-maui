@@ -32,14 +32,14 @@ Resource management for cross-platform app development has traditionally been pr
 
 Resource files should typically be placed in the _Resources_ folder of your .NET MAUI app project, or child folders of the _Resources_ folder, and must have their build action set correctly. The following table shows the build actions for each resource file type:
 
-| Resource | Build action |
-| -------- | ------------ |
-| App icon | MauiIcon |
-| Fonts | MauiFont |
-| Images | MauiImage |
+| Resource      | Build action     |
+| ------------- | ---------------- |
+| App icon      | MauiIcon         |
+| Fonts         | MauiFont         |
+| Images        | MauiImage        |
 | Splash screen | MauiSplashScreen |
-| Raw assets | MauiAsset |
-| CSS files | MauiCss |
+| Raw assets    | MauiAsset        |
+| CSS files     | MauiCss          |
 
 > [!NOTE]
 > XAML files are also stored in your .NET MAUI app project, and are automatically assigned the **MauiXaml** build action when created by project and item templates. However, only XAML resource dictionaries will typically be placed in the _Resources_ folder of the app project.
@@ -88,7 +88,7 @@ An app icon can be added to your app project by dragging an image into the _Reso
 
 At build time, the app icon can be resized to the correct sizes for the target platform and device. The resized app icons are then added to your app package. App icons are resized to multiple resolutions because they have multiple uses, including being used to represent the app on the device, and in the app store.
 
-For more information, see [Add an app icon to a .NET MAUI app project](~/user-interface/images/app-icons.md).
+For more information, see [Add an app icon to a .NET MAUI app project](../user-interface/images/app-icons.md).
 
 ### Images
 
@@ -100,7 +100,7 @@ An image can be added to your app project by dragging it into the *Resources\Ima
 
 At build time, images can be resized to the correct resolutions for the target platform and device. The resulting images are then added to your app package.
 
-For more information, see [Add images to a .NET MAUI app project](~/user-interface/images/images.md).
+For more information, see [Add images to a .NET MAUI app project](../user-interface/images/images.md).
 
 ### Fonts
 
@@ -112,7 +112,7 @@ A true type format (TTF) or open type font (OTF) font can be added to your app p
 
 At build time, the fonts are copied to your app package.
 
-For more information, see [Fonts](~/user-interface/fonts.md).
+For more information, see [Fonts](../user-interface/fonts.md).
 
 ### Splash screen
 
@@ -126,7 +126,7 @@ A splash screen can be added to your app project by dragging an image into the *
 
 At build time, the splash screen image is resized to the correct size for the target platform and device. The resized splash screen is then added to your app package.
 
-For more information, see [Add a splash screen to a .NET MAUI app project](~/user-interface/images/splashscreen.md).
+For more information, see [Add a splash screen to a .NET MAUI app project](../user-interface/images/splashscreen.md).
 
 ### Raw assets
 
@@ -158,7 +158,7 @@ CSS files must be loaded by the `StyleSheet` class before being added to a `Reso
 </Application>
 ```
 
-For more information, see [Style apps with CSS](~/user-interface/styles/css.md).
+For more information, see [Style apps with CSS](../user-interface/styles/css.md).
 
 ## App manifest
 
@@ -166,7 +166,7 @@ Each platform uses its own native app manifest file to specify information such 
 
 To specify the shared app manifest data for a project, open the shortcut menu for the project in **Solution Explorer**, and then choose **Properties**. The app title, id, and version can then be specified in **MAUI Shared > General**:
 
-:::image type="content" source="media/single-project/manifest.png" alt-text=".NET MAUI app manifest screenshot.":::
+![.NET MAUI app manifest screenshot](media/single-project/manifest.png)
 
 At build time the shared app manifest data is merged with platform-specific data in the native app manifest file, to produce the manifest file for the app package.
 
@@ -174,15 +174,15 @@ At build time the shared app manifest data is merged with platform-specific data
 
 A .NET MAUI app project contains a *Platforms* folder, with each child folder representing a platform that .NET MAUI can target:
 
-:::image type="content" source="media/single-project/platform-folders.png" alt-text="Platform folders screenshot.":::
+![Platform folders screenshot](media/single-project/platform-folders.png)
 
 The folders for each platform contain platform-specific resources, and code and that starts the app on each platform:
 
-:::image type="content" source="media/single-project/platform-code.png" alt-text="Platform-specific code screenshot.":::
+![Platform-specific code screenshot](media/single-project/platform-code.png)
 
-At build time, the build system only includes the code from each folder when building for that specific platform. For example, when you build for Android the files in the *Platforms\Android* folder will be built into the app package, but the files in the other *Platforms* folders won't be. This approach uses multi-targeting to target multiple platforms from a single project. Multi-targeting can be combined with partial classes and partial methods to invoke native platform functionality from cross-platform code. For more information, see [Invoke platform code](~/platform-integration/invoke-platform-code.md).
+At build time, the build system only includes the code from each folder when building for that specific platform. For example, when you build for Android the files in the *Platforms\Android* folder will be built into the app package, but the files in the other *Platforms* folders won't be. This approach uses multi-targeting to target multiple platforms from a single project. Multi-targeting can be combined with partial classes and partial methods to invoke native platform functionality from cross-platform code. For more information, see [Invoke platform code](../platform-integration/invoke-platform-code.md).
 
-In addition to this default multi-targeting approach, .NET MAUI apps can also be multi-targeted based on your own filename and folder criteria. This enables you to structure your .NET MAUI app project so that you don't have to place your platform code into child-folders of the *Platforms* folder. For more information, see [Configure multi-targeting](~/platform-integration/configure-multi-targeting.md).
+In addition to this default multi-targeting approach, .NET MAUI apps can also be multi-targeted based on your own filename and folder criteria. This enables you to structure your .NET MAUI app project so that you don't have to place your platform code into child-folders of the *Platforms* folder. For more information, see [Configure multi-targeting](../platform-integration/configure-multi-targeting.md).
 
 Multi-targeting can also be combined with conditional compilation so that code is targeted to specific platforms:
 

@@ -69,7 +69,7 @@ In this example, the resource dictionary defines a `Thickness` resource, multipl
 
 Each resource has a key that is specified using the `x:Key` attribute, which becomes its dictionary key in the `ResourceDictionary`. The key is used to reference a resource from the `ResourceDictionary` with the `StaticResource` or `DynamicResource` XAML markup extension.
 
-The `StaticResource` markup extension is similar to the `DynamicResource` markup extension in that both use a dictionary key to reference a value from a resource dictionary. However, while the `StaticResource` markup extension performs a single dictionary lookup, the `DynamicResource` markup extension maintains a link to the dictionary key. Therefore, if the dictionary entry associated with the key is replaced, the change is applied to the visual element. This enables runtime resource changes to be made in an app. For more information about markup extensions, see [XAML markup extensions](~/xaml/markup-extensions/consume.md).
+The `StaticResource` markup extension is similar to the `DynamicResource` markup extension in that both use a dictionary key to reference a value from a resource dictionary. However, while the `StaticResource` markup extension performs a single dictionary lookup, the `DynamicResource` markup extension maintains a link to the dictionary key. Therefore, if the dictionary entry associated with the key is replaced, the change is applied to the visual element. This enables runtime resource changes to be made in an app. For more information about markup extensions, see [XAML markup extensions](../xaml/markup-extensions/consume.md).
 
 The following XAML example shows how to consume resources, and also define an additional resource in a `StackLayout`:
 

@@ -68,7 +68,7 @@ The `Person.ToString` override could return a formatted string consisting of the
 
 ## Create a DataTemplate
 
-A `DataTemplate` is used to specify the appearance of data, and typically uses data binding to display data. A common usage scenario for data templates is when displaying data from a collection of objects in a control such as a `CollectionView` or `CarouselView`. For example, when a `CollectionView` is bound to a collection of `Person` objects, the `CollectionView.ItemTemplate` property can be set to a `DataTemplate` that defines the appearance of each `Person` object in the `CollectionView`. The `DataTemplate` will contain objects that bind to property values of each `Person` object. For more information about data binding, see [Data binding](~/fundamentals/data-binding/index.md).
+A `DataTemplate` is used to specify the appearance of data, and typically uses data binding to display data. A common usage scenario for data templates is when displaying data from a collection of objects in a control such as a `CollectionView` or `CarouselView`. For example, when a `CollectionView` is bound to a collection of `Person` objects, the `CollectionView.ItemTemplate` property can be set to a `DataTemplate` that defines the appearance of each `Person` object in the `CollectionView`. The `DataTemplate` will contain objects that bind to property values of each `Person` object. For more information about data binding, see [Data binding](../fundamentals/data-binding/index.md).
 
 A `DataTemplate` that's defined inline in a control is known as an *inline template*. Alternatively, data templates can be defined as a control-level, page-level, or app-level resource. Choosing where to define a `DataTemplate` impacts where it can be used:
 
@@ -162,7 +162,7 @@ In this example, the `CollectionView.ItemTemplate` property is set to a `DataTem
 
 In this example, layout within the `ContentView` is managed by a `Grid`. The `Grid` contains three `Label` objects that bind their `Text` properties to properties of each `Person` object in the collection.
 
-For more information about creating custom views, see [ContentView](~/user-interface/controls/contentview.md).
+For more information about creating custom views, see [ContentView](../user-interface/controls/contentview.md).
 
 ### Create a DataTemplate as a resource
 
@@ -270,6 +270,6 @@ At runtime, the `CollectionView` calls the `PersonDataTemplateSelector.OnSelectT
 
 The following screenshot shows the result of the `CollectionView` applying the `PersonDataTemplateSelector` to each object in the underlying collection:
 
-:::image type="content" source="media/datatemplate/data-template-selector.png" alt-text="Screenshot of a CollectionView with a data template selector.":::
+![Screenshot of a CollectionView with a data template selector](media/datatemplate/data-template-selector.png)
 
 In this example, any `Person` object that has a `DateOfBirth` property value greater than or equal to 1980 is displayed in green, with the remaining objects being displayed in red.
