@@ -115,4 +115,4 @@ The following XAML example shows a diagonal `LinearGradientBrush` that's set as 
 
 In this example, the background of the `Frame` is painted with a `LinearGradientBrush` that interpolates from yellow to green diagonally:
 
-:::image type="content" source="media/lineargradient/diagonal.png" alt-text="Screenshot of a Frame painted with a diagonal LinearGradientBrush.":::
+![Screenshot of a Frame painted with a diagonal LinearGradientBrush](media/lineargradient/diagonal.png)

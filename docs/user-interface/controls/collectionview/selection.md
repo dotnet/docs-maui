@@ -72,7 +72,7 @@ void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e
 
 The following screenshot shows single item selection in a `CollectionView`:
 
-:::image type="content" source="media/selection/single-selection.png" alt-text="Screenshot of a CollectionView vertical list with single selection.":::
+![Screenshot of a CollectionView vertical list with single selection](media/selection/single-selection.png)
 
 ## Multiple selection
 
@@ -178,7 +178,7 @@ public class MonkeysViewModel : INotifyPropertyChanged
 
 Therefore, when the `CollectionView` appears, the fourth item in the list is pre-selected:
 
-:::image type="content" source="media/selection/single-pre-selection.png" alt-text="Screenshot of a CollectionView vertical list with single pre-selection.":::
+![Screenshot of a CollectionView vertical list with single pre-selection](media/selection/single-pre-selection.png)
 
 ## Multiple pre-selection
 
@@ -246,7 +246,7 @@ namespace CollectionViewDemos.ViewModels
 
 Therefore, when the `CollectionView` appears, the second, fourth, and fifth items in the list are pre-selected:
 
-:::image type="content" source="media/selection/multiple-pre-selection.png" alt-text="Screenshot of a CollectionView vertical list with multiple pre-selection.":::
+![Screenshot of a CollectionView vertical list with multiple pre-selection](media/selection/multiple-pre-selection.png)
 
 ## Clear selections
 
@@ -295,9 +295,9 @@ The `SelectedItem` and `SelectedItems` properties can be cleared by setting them
 
 In this example, the `Style.TargetType` property value is set to `Grid` because the root element of the `ItemTemplate` is a `Grid`. The `Selected` `VisualState` specifies that when an item in the `CollectionView` is selected, the `BackgroundColor` of the item will be set to `LightSkyBlue`:
 
-:::image type="content" source="media/selection/single-selection-color.png" alt-text="Screenshot of a CollectionView vertical list with a custom single selection color.":::
+![Screenshot of a CollectionView vertical list with a custom single selection color](media/selection/single-selection-color.png)
 
-For more information about visual states, see [Visual states](~/user-interface/visual-states.md).
+For more information about visual states, see [Visual states](../../../user-interface/visual-states.md).
 
 ## Disable selection
 

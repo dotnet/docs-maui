@@ -20,7 +20,7 @@ The main usage scenarios for setting the `EmptyView` property are displaying use
 > [!NOTE]
 > The `EmptyView` property can be set to a view that includes interactive content if required.
 
-For more information about data templates, see [Data templates](~/fundamentals/datatemplate.md).
+For more information about data templates, see [Data templates](../../../fundamentals/datatemplate.md).
 
 ## Display a string when data is unavailable
 
@@ -234,7 +234,7 @@ void ToggleEmptyView(bool isToggled)
 
 The `ToggleEmptyView` method sets the `EmptyView` property of the `carouselView` object to one of the two `ContentView` objects stored in the `ResourceDictionary`, based on the value of the `Switch.IsToggled` property. When the `SearchBar` executes the `FilterCommand`, the collection displayed by the `CarouselView` is filtered for the search term stored in the `SearchBar.Text` property. If the filtering operation yields no data, the `ContentView` object set as the `EmptyView` property is displayed.
 
-For more information about resource dictionaries, see [Resource dictionaries](~/fundamentals/resource-dictionaries.md).
+For more information about resource dictionaries, see [Resource dictionaries](../../../fundamentals/resource-dictionaries.md).
 
 ## Choose an EmptyViewTemplate at runtime
 
@@ -307,4 +307,4 @@ public class SearchTermDataTemplateSelector : DataTemplateSelector
 
 The `SearchTermTemplateSelector` class defines `DefaultTemplate` and `OtherTemplate` `DataTemplate` properties that are set to different data templates. The `OnSelectTemplate` override returns `DefaultTemplate`, which displays a message to the user, when the search query isn't equal to "xamarin". When the search query is equal to "xamarin", the `OnSelectTemplate` override returns `OtherTemplate`, which displays a basic message to the user.
 
-For more information about data template selectors, see [Create a DataTemplateSelector](~/fundamentals/datatemplate.md#create-a-datatemplateselector).
+For more information about data template selectors, see [Create a DataTemplateSelector](../../../fundamentals/datatemplate.md#create-a-datatemplateselector).

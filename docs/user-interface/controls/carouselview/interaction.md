@@ -332,9 +332,9 @@ In this example, the `CurrentItem` visual state specifies that the current item 
 
 The following screenshot shows the `CurrentItem`, `PreviousItem`, and `NextItem` visual states:
 
-:::image type="content" source="media/interaction/visual-states.png" alt-text="Screenshot of a CarouselView using visual states.":::
+![Screenshot of a CarouselView using visual states](media/interaction/visual-states.png)
 
-For more information about visual states, see [Visual states](~/user-interface/visual-states.md).
+For more information about visual states, see [Visual states](../../../user-interface/visual-states.md).
 
 ## Clear the current item
 

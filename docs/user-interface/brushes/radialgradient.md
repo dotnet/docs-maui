@@ -83,4 +83,4 @@ The following XAML example moves the center of the radial gradient to the bottom
 
 In this example, the background of the `Frame` is painted with a `RadialGradientBrush` that interpolates from red to dark blue. The center of the radial gradient is positioned in the bottom-right of the `Frame`:
 
-:::image type="content" source="media/radialgradient/bottom-right.png" alt-text="Screenshot of a Frame painted with a bottom-right RadialGradientBrush.":::
+![Screenshot of a Frame painted with a bottom-right RadialGradientBrush](media/radialgradient/bottom-right.png)

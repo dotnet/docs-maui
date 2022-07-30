@@ -106,7 +106,7 @@ In this example, the background of the `Frame` is painted with a salmon-colored 
 
 :::image type="content" source="media/solidcolor/hex.png" alt-text="Screenshot of a Frame painted with a SolidColorBrush created with hexadecimal notation.":::
 
-For other ways of describing color, see [Colors](~/user-interface/graphics/colors.md).
+For other ways of describing color, see [Colors](../../user-interface/graphics/colors.md).
 
 ## Solid color brushes
 
