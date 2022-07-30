@@ -23,7 +23,7 @@ In this tutorial, you'll learn how to create and run a .NET Multi-platform App U
 
 1. In the default simulator, press the **Click me** button several times and observe that the count of the number of button clicks is incremented.
 
-    :::image type="content" source="media/cli/default-simulator.png" alt-text=".NET MAUI app running in the default iOS simulator.":::
+    ![.NET MAUI app running in the default iOS simulator](media/cli/default-simulator.png)
 
 ## Launch the app on a specific simulator
 
@@ -57,4 +57,5 @@ A .NET MAUI iOS app can be launched on a specific iOS simulator by providing its
 
 1. In your chosen simulator, press the **Click me** button several times and observe that the count of the number of button clicks is incremented.
 
-    :::image type="content" source="media/cli/chosen-simulator.png" alt-text=".NET MAUI app running in iPhone 13 Pro simulator.":::
+    ![.NET MAUI app running in iPhone 13 Pro simulator](media/cli/chosen-simulator.png)
+    
