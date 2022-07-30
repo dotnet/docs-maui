@@ -469,4 +469,3 @@ The following XAML example shows how to use the `AppThemeBinding` markup extensi
 In this example, the text color of the first `Label` is set to green when the device is using its light theme, and is set to red when the device is using its dark theme. The second `Label` has its `TextColor` property set through a `Style`. This `Style` sets the text color of the `Label` to black by default, to blue when the device is using its light theme, and to teal when the device is using its dark theme:
 
 ![AppThemeBinding demo](media/consume/appthemebindingdemo.png)
-
