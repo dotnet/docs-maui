@@ -15,7 +15,7 @@ Compiled bindings improve data binding performance in .NET MAUI applications by 
 
 The process for using compiled bindings is to:
 
-1. Ensure that XAML compilation is enabled. For more information about XAML compilation, see [XAML Compilation](~/xaml/xamlc.md).
+1. Ensure that XAML compilation is enabled. For more information about XAML compilation, see [XAML Compilation](../../xaml/xamlc.md).
 1. Set an `x:DataType` attribute on a `VisualElement` to the type of the object that the `VisualElement` and its children will bind to.
 
 > [!NOTE]
@@ -59,7 +59,7 @@ The following example demonstrates using compiled bindings between .NET MAUI vie
 </ContentPage>
 ```
 
-The `ContentPage` instantiates the `HslColorViewModel` and initializes the `Color` property within property element tags for the `BindingContext` property. The `ContentPage` also defines the `x:DataType` attribute as the viewmodel type, indicating that any binding expressions in the `ContentPage` view hierarchy will be compiled. This can be verified by changing any of the binding expressions to bind to a non-existent viewmodel property, which will result in a build error. While this example sets the `x:DataType` attribute to a string literal, it can also be set to a type with the `x:Type` markup extension. For more information about the `x:Type` markup extension, see [x:Type Markup Extension](~/xaml/markup-extensions/consume.md#xtype-markup-extension).
+The `ContentPage` instantiates the `HslColorViewModel` and initializes the `Color` property within property element tags for the `BindingContext` property. The `ContentPage` also defines the `x:DataType` attribute as the viewmodel type, indicating that any binding expressions in the `ContentPage` view hierarchy will be compiled. This can be verified by changing any of the binding expressions to bind to a non-existent viewmodel property, which will result in a build error. While this example sets the `x:DataType` attribute to a string literal, it can also be set to a type with the `x:Type` markup extension. For more information about the `x:Type` markup extension, see [x:Type Markup Extension](../../xaml/markup-extensions/consume.md#xtype-markup-extension).
 
 > [!IMPORTANT]
 > The `x:DataType` attribute can be re-defined at any point in a view hierarchy.
@@ -111,7 +111,7 @@ The following example demonstrates using compiled bindings in a `DataTemplate`:
 
 The `ListView.ItemsSource` property is set to the static `NamedColor.All` property. The `NamedColor` class uses .NET reflection to enumerate all the static public fields in the `Colors` class, and to store them with their names in a collection that is accessible from the static `All` property. Therefore, the `ListView` is filled with all of the `NamedColor` instances. For each item in the `ListView`, the binding context for the item is set to a `NamedColor` object. The `BoxView` and `Label` elements in the `ViewCell` are bound to `NamedColor` properties.
 
-The `DataTemplate` defines the `x:DataType` attribute to be the `NamedColor` type, indicating that any binding expressions in the `DataTemplate` view hierarchy will be compiled. This can be verified by changing any of the binding expressions to bind to a non-existent `NamedColor` property, which will result in a build error.  While this example sets the `x:DataType` attribute to a string literal, it can also be set to a type with the `x:Type` markup extension. For more information about the `x:Type` markup extension, see [x:Type Markup Extension](~/xaml/markup-extensions/consume.md#xtype-markup-extension).
+The `DataTemplate` defines the `x:DataType` attribute to be the `NamedColor` type, indicating that any binding expressions in the `DataTemplate` view hierarchy will be compiled. This can be verified by changing any of the binding expressions to bind to a non-existent `NamedColor` property, which will result in a build error.  While this example sets the `x:DataType` attribute to a string literal, it can also be set to a type with the `x:Type` markup extension. For more information about the `x:Type` markup extension, see [x:Type Markup Extension](../../xaml/markup-extensions/consume.md#xtype-markup-extension).
 
 When the example is first run, the `ListView` is populated with `NamedColor` instances. When an item in the `ListView` is selected, the `BoxView.Color` property is set to the color of the selected item in the `ListView`:
 
@@ -147,7 +147,7 @@ Careful structuring of `x:DataType` attributes can therefore lead to a page usin
 
 The root `StackLayout` sets the `x:DataType` attribute to be the `HslColorViewModel` type, indicating that any binding expression in the root `StackLayout` view hierarchy will be compiled. However, the inner `StackLayout` redefines the `x:DataType` attribute to `null` with the `x:Null` markup expression. Therefore, the binding expressions within the inner `StackLayout` use classic bindings. Only the `BoxView`, within the root `StackLayout` view hierarchy, uses compiled bindings.
 
-For more information about the `x:Null` markup expression, see [x:Null Markup Extension](~/xaml/markup-extensions/consume.md#xnull-markup-extension).
+For more information about the `x:Null` markup expression, see [x:Null Markup Extension](../../xaml/markup-extensions/consume.md#xnull-markup-extension).
 
 ## Performance
 

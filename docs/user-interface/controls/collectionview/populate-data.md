@@ -42,9 +42,9 @@ collectionView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
 In this example, the `ItemsSource` property data binds to the `Monkeys` property of the connected viewmodel.
 
 > [!NOTE]
-> Compiled bindings can be enabled to improve data binding performance in .NET MAUI applications. For more information, see [Compiled nindings](~/fundamentals/data-binding/compiled-bindings.md).
+> Compiled bindings can be enabled to improve data binding performance in .NET MAUI applications. For more information, see [Compiled nindings](../../../fundamentals/data-binding/compiled-bindings.md).
 
-For information on how to change the `CollectionView` layout, see [Specify CollectionView layout](layout.md). For information on how to define the appearance of each item in the `CollectionView`, see [Define item appearance](#define-item-appearance). For more information about data binding, see [Data binding](~/fundamentals/data-binding/index.md).
+For information on how to change the `CollectionView` layout, see [Specify CollectionView layout](layout.md). For information on how to define the appearance of each item in the `CollectionView`, see [Define item appearance](#define-item-appearance). For more information about data binding, see [Data binding](../../../fundamentals/data-binding/index.md).
 
 > [!WARNING]
 > `CollectionView` will throw an exception if its `ItemsSource` is updated off the UI thread.
@@ -135,7 +135,7 @@ The following screenshot shows the result of templating each item in the list:
 
 :::image type="content" source="media/populate-data/datatemplate.png" alt-text="Screenshot of CollectionView where each item is templated.":::
 
-For more information about data templates, see [Data templates](~/fundamentals/datatemplate.md).
+For more information about data templates, see [Data templates](../../../fundamentals/datatemplate.md).
 
 ## Choose item appearance at runtime
 
@@ -192,7 +192,7 @@ The `MonkeyDataTemplateSelector` class defines `AmericanMonkey` and `OtherMonkey
 
 :::image type="content" source="media/populate-data/datatemplateselector.png" alt-text="Screenshot of CollectionView runtime item template selection.":::
 
-For more information about data template selectors, see [Create a DataTemplateSelector](~/fundamentals/datatemplate.md#create-a-datatemplateselector).
+For more information about data template selectors, see [Create a DataTemplateSelector](../../../fundamentals/datatemplate.md#create-a-datatemplateselector).
 
 > [!IMPORTANT]
 > When using `CollectionView`, never set the root element of your `DataTemplate` objects to a `ViewCell`. This will result in an exception being thrown because `CollectionView` has no concept of cells.
@@ -274,7 +274,7 @@ In this example, the `SwipeView` content is a `Grid` that defines the appearance
 
 `SwipeView` supports four different swipe directions, with the swipe direction being defined by the directional `SwipeItems` collection the `SwipeItems` objects are added to. By default, a swipe item is executed when it's tapped by the user. In addition, once a swipe item has been executed the swipe items are hidden and the `SwipeView` content is re-displayed. However, these behaviors can be changed.
 
-For more information about the `SwipeView` control, see [SwipeView](~/user-interface/controls/swipeview.md).
+For more information about the `SwipeView` control, see [SwipeView](../../../user-interface/controls/swipeview.md).
 
 ## Pull to refresh
 
@@ -313,7 +313,7 @@ When the user initiates a refresh, the `ICommand` defined by the `Command` prope
 
 The value of the `RefreshView.IsRefreshing` property indicates the current state of the `RefreshView`. When a refresh is triggered by the user, this property will automatically transition to `true`. Once the refresh completes, you should reset the property to `false`.
 
-For more information about `RefreshView`, see [RefreshView](~/user-interface/controls/refreshview.md).
+For more information about `RefreshView`, see [RefreshView](../../../user-interface/controls/refreshview.md).
 
 ## Load data incrementally
 

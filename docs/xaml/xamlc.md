@@ -40,7 +40,7 @@ public partial class MyPage : ContentPage
 In this example, XAML compilation is enabled only for the `MyPage` class.
 
 > [!NOTE]
-> Compiled bindings can be enabled to improve data binding performance in .NET MAUI applications. For more information, see [Compiled Bindings](~/fundamentals/data-binding/compiled-bindings.md).
+> Compiled bindings can be enabled to improve data binding performance in .NET MAUI applications. For more information, see [Compiled Bindings](../fundamentals/data-binding/compiled-bindings.md).
 
 ## Disable compilation
 

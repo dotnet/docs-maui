@@ -77,9 +77,9 @@ listView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
 In this example, the `ItemsSource` property data binds to the `Monkeys` property of the connected viewmodel.
 
 > [!NOTE]
-> Compiled bindings can be enabled to improve data binding performance in .NET MAUI applications. For more information, see [Compiled bindings](~/fundamentals/data-binding/compiled-bindings.md).
+> Compiled bindings can be enabled to improve data binding performance in .NET MAUI applications. For more information, see [Compiled bindings](../../fundamentals/data-binding/compiled-bindings.md).
 
-For more information about data binding, see [Data binding](~/fundamentals/data-binding/index.md).
+For more information about data binding, see [Data binding](../../fundamentals/data-binding/index.md).
 
 ## Define item appearance
 
@@ -135,7 +135,7 @@ The following screenshot shows the result of templating each item in the list:
 
 :::image type="content" source="media/listview/datatemplate.png" alt-text="Screenshot of ListView where each item is templated.":::
 
-For more information about data templates, see [Data templates](~/fundamentals/datatemplate.md).
+For more information about data templates, see [Data templates](../../fundamentals/datatemplate.md).
 
 ### Cells
 
@@ -301,7 +301,7 @@ The `MonkeyDataTemplateSelector` class defines `AmericanMonkey` and `OtherMonkey
 
 :::image type="content" source="media/listview/datatemplateselector.png" alt-text="Screenshot of ListView runtime item template selection.":::
 
-For more information about data template selectors, see [Create a DataTemplateSelector](~/fundamentals/datatemplate.md#create-a-datatemplateselector).
+For more information about data template selectors, see [Create a DataTemplateSelector](../../fundamentals/datatemplate.md#create-a-datatemplateselector).
 
 ## Respond to item selection
 
