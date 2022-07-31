@@ -226,9 +226,7 @@ Instead of loading the note in the constructor, create a new `LoadNote` method. 
 
 01. Update the class constructor to call `LoadNote`. The file name for the note should be a randomly generated name to be created in the app data directory of the device.
 
-    :::code language="csharp" source="../snippets/navigation/csharp/Notes/Views/NotePage.xaml.cs" id="load_note_ctor" highlight="8":::
-
-01. Delete the `_fileName` variable from top of the code, as it's no longer used by the class.
+    :::code language="csharp" source="../snippets/navigation/csharp/Notes/Views/NotePage.xaml.cs" id="load_note_ctor" highlight="5-8":::
 
 ## Multiple notes and navigation
 
@@ -241,51 +239,64 @@ Currently the **note** view displays a single note, and there isn't a view that 
 
 ### Code the AllNotes model
 
-First, the model should be created to represent the data required to display multiple notes. This data would be a property that represents a collection of notes. The collection will be an `ObservableCollection` which .NET MAUI controls understand as a collection of objects that can change. When an `ObservableCollection` is bound to a list control, the control adds and removes items automatically to stay in sync with the collection.
+The new model will represent the data required to display multiple notes. This data would be a property that represents a collection of notes. The collection will be an `ObservableCollection` which is a specialized collection. When a control lists multiple items, such as a `ListView`, is bound to an `ObservableCollection`, the two work together to automatically keep the list of items in sync with the collection. If the list adds an item, the collection is updated. If the collection adds an item, the control is automatically updated with a new item.
 
-Paste the following code in the _Models\\AllNotes.cs_ class:
+01. In the **Solution Explorer** pane, open the _Models\\AllNotes.cs_ file.
+01. Replace the code with the following snippet:
 
-:::code language="csharp" source="../snippets/navigation/csharp/Notes/Models/AllNotes.cs":::
+    :::code language="csharp" source="../snippets/navigation/csharp/Notes/Models/AllNotes.cs":::
 
-The constructor of the class calls the `LoadNotes` method. This method uses Linq extensions to load, transform, and sort the data into the `Notes` collection.
+The previous code declares a collection, named `Notes`, and uses the `LoadNotes` method to load notes from the device. This method uses Linq extensions to load, transform, and sort the data into the `Notes` collection.
 
 ### Design the AllNotes page
 
-Next, the view needs to be designed for the **AllNotes** model.
+Next, the view needs to be designed to support the **AllNotes** model.
 
-Paste the following code in the _Views\\AllNotesPage.xaml_ page:
+01. In the **Solution Explorer** pane, open the _Views\\AllNotesPage.xaml_ file.
+01. Replace the code with the following markup:
 
-:::code language="xaml" source="../snippets/navigation/csharp/Notes/Views/AllNotesPage.xaml":::
+    :::code language="xaml" source="../snippets/navigation/csharp/Notes/Views/AllNotesPage.xaml":::
 
 The previous XAML introduces a few new concepts:
 
 - The `ContentPage.ToolbarItems` property contains a `ToolbarItem`. The buttons defined here usually display at the top of the app, along the page title. Depending on the device, though, it may be in a different position. When one of these buttons is pressed, the `Clicked` event is raised, just like a normal button.
 - The `CollectionView` control displays a collection of items, and in this case, is bound to the model's `Notes` property. The way each item is presented by the collection view is set through the  `CollectionView.ItemsLayout` and `CollectionView.ItemTemplate` properties.
 
-  For each item in the collection, the `CollectionView.ItemTemplate` generates the declared XAML. The `BindingContext` of that XAML becomes the item itself, in this case, each individual note. The template for the note uses two labels, which are bound to the note's `Text` and `Date` properties.
+  For each item in the collection, the `CollectionView.ItemTemplate` generates the declared XAML. The `BindingContext` of that XAML becomes the collection item itself, in this case, each individual note. The template for the note uses two labels, which are bound to the note's `Text` and `Date` properties.
 
-The code-behind for the view needs to be written. Open the _Views\\AlLNotesPage.xaml.cs_ file and paste the following code:
+- The `CollectionView` handles the `SelectionChanged` event, which is raised when an item in the collection view is selected.
 
-:::code language="csharp" source="../snippets/navigation/csharp/Notes/Views/AllNotesPage.xaml.cs":::
+The code-behind for the view needs to be written to load the notes and handle the events.
 
-This code uses the constructor to set the `BindingContext` of the page to the model. The `OnAppearing` method is overridden from the base class. This method is automatically called whenever the page is shown, such as when the page is first loaded or navigated to. The code here tells the model to load the notes. Because the `CollectionView` in the **AllNotes view** is bound to the **AllNotes model's** `Notes` property, which is an `ObservableCollection`, whenever the notes are loaded, the `CollectionView` is automatically updated.
+01. In the **Solution Explorer** pane, open the _Views/AllNotesPage.xaml.cs_ file.
+01. Replace the code with the following snippet:
 
-The `Add_Clicked` handler introduces another new concept, navigation. Because the app is using the .NET MAUI Shell, you can navigate to new pages by calling the `Shell.Current.GoToAsync` method. Notice that the handler was also modified to use the `async` keyword, which allows the use of the `await` keyword when navigating. This handler navigates to the `NotePage`.
+    :::code language="csharp" source="../snippets/navigation/csharp/Notes/Views/AllNotesPage.xaml.cs":::
 
-The last piece of code in the previous snippet is the `notesCollection_SelectionChanged` handler. This method takes the currently selected item, a **Note** model, and uses its information to navigate to the `NotePage` while providing a parameter, the file name of the note. `GoToAsync` uses a string, representing a URI, for navigation. In this case, `nameof(NotePage)` is used to generate a string value of `"NotePage"`. The URI can also contain query string parameters, which are key-value pairs representing date passed to the destination page. The interpolated string representing the URI ends up looking similar to `NotePage?ItemId=path\on\device\XYZ.notes.txt`, where the `ItemId` parameter is set to the file name of the note.
+This code uses the constructor to set the `BindingContext` of the page to the model.
 
-The next step is modifying the **Note view** to load the model based on the `ItemId` parameter.
+The `OnAppearing` method is overridden from the base class. This method is automatically called whenever the page is shown, such as when the page is navigated to. The code here tells the model to load the notes. Because the `CollectionView` in the **AllNotes view** is bound to the **AllNotes model's** `Notes` property, which is an `ObservableCollection`, whenever the notes are loaded, the `CollectionView` is automatically updated.
+
+The `Add_Clicked` handler introduces another new concept, navigation. Because the app is using the .NET MAUI Shell, you can navigate to new pages by calling the `Shell.Current.GoToAsync` method. Notice that the handler is declared with the `async` keyword, which allows the use of the `await` keyword when navigating. This handler navigates to the `NotePage`.
+
+The last piece of code in the previous snippet is the `notesCollection_SelectionChanged` handler. This method takes the currently selected item, a **Note** model, and uses its information to navigate to the `NotePage`. `GoToAsync` uses a URI string for navigation. In this case, a string is constructed that uses a query string parameter to set a property on the destination page. The interpolated string representing the URI ends up looking similar to the following string:
+
+```csharp
+NotePage?ItemId=path\on\device\XYZ.notes.txt
+```
+
+The `ItemId=` parameter is set to the file name on the device where the note is stored.
+
+Visual Studio may be indicating that the `NotePage.ItemId` property doesn't exist, which it doesn't. The next step is modifying the **Note view** to load the model based on the `ItemId` parameter that you'll create.
 
 ### Query string parameters
 
-The **Note view** needs to support the query string parameter, `ItemId`. To handle this, open the _Views\\NotePage.xaml.cs_ and perform the following changes:
+The **Note view** needs to support the query string parameter, `ItemId`. Create it now:
 
-01. Add the `QueryProperty` attribute to the class, providing the name of the query string property, and the class property it maps to, `ItemId` and `ItemId` respectively:
+01. In the **Solution Explorer** pane, open the _Views/NotePage.xaml.cs_ file.
+01. Add the `QueryProperty` attribute to the class keyword, providing the name of the query string property, and the class property it maps to, `ItemId` and `ItemId` respectively:
 
     :::code language="csharp" source="../snippets/navigation/csharp/Notes/Views/NotePage.xaml.cs" id="query_prop":::
-
-    > [!TIP]
-    > The names for both the query string property and the class property are kept in sync by using the `nameof(ItemId)` expression. If the class property name changes, the code will error in all of the `nameof(ItemId)` references, preventing you from accidentally disconnecting a query string parameter from its backing class property.
 
 01. Add a new `string` property named `ItemId`. This property calls the `LoadNote` method, passing the value of the property, which in turn, should be the file name of the note:
 
@@ -297,15 +308,22 @@ The **Note view** needs to support the query string parameter, `ItemId`. To hand
 
     The buttons are now `async`. After they're pressed, the page navigates back to the previous page by using a URI of `..`.
 
+01. Delete the `_fileName` variable from top of the code, as it's no longer used by the class.
+
 ## Modify the Shell
 
 The Shell is still loading the single note page, instead, it needs to load the **AllPages view**. Open the _AppShell.xaml_ file and change the first `ShellContent` entry to point to the `AllNotesPage` instead of `NotePage`:
 
 :::code language="xaml" source="../snippets/navigation/csharp/Notes/AppShell.xaml" highlight="13":::
 
-If you run the app now, you'll notice it crashes if you press the **Add** button, complaining that it can't navigate to `NotesPage`. Every page that can be navigated to by the shell, except the first page, which is automatically registered, needs to be registered with the Shell. Open the _AppShell.xaml.cs_ file and add a line to the constructor that registers the navigation route.
+If you run the app now, you'll notice it crashes if you press the **Add** button, complaining that it can't navigate to `NotesPage`. Every page that can be navigated to by the Shell, needs to be registered with the Shell. The `AllNotesPage` page is automatically registered with the Shell because it was added to it in the XAML with `<ShellContent>`.
 
-:::code language="csharp" source="../snippets/navigation/csharp/Notes/AppShell.xaml.cs" highlight="9":::
+Register the `NotesPage` with the shell:
+
+01. In the **Solution Explorer** pane, open the _Views/AppShell.xaml.cs_ file.
+01. Add a line to the constructor that registers the navigation route:
+
+    :::code language="csharp" source="../snippets/navigation/csharp/Notes/AppShell.xaml.cs" highlight="9":::
 
 The `Routing.RegisterRoute` method takes two parameters:
 
