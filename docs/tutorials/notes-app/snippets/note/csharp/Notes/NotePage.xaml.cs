@@ -1,3 +1,4 @@
+//<full>
 namespace Notes;
 
 //<filename_variable>
@@ -33,3 +34,4 @@ public partial class NotePage : ContentPage
     }
     //</buttons>
 }
+//</full>

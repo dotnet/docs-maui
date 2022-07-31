@@ -14,7 +14,6 @@ public partial class AboutPage : ContentPage
 		{
             // Navigate to the specified URL in the system browser.
             await Launcher.Default.OpenAsync(about.MoreInfoUrl);
-			
         }
     }
     //</learn_more>
