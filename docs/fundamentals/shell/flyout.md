@@ -6,6 +6,8 @@ ms.date: 04/07/2022
 
 # .NET MAUI Shell flyout
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-shell)
+
 The navigation experience provided by .NET Multi-platform App UI (.NET MAUI) Shell is based on flyouts and tabs. A flyout is the optional root menu for a Shell app, and is fully customizable. It's accessible through an icon or by swiping from the side of the screen. The flyout consists of an optional header, flyout items, optional menu items, and an optional footer:
 
 :::image type="content" source="media/flyout/flyout-annotated.png" alt-text="Screenshot of a Shell annotated flyout.":::

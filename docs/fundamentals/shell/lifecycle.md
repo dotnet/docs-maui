@@ -6,6 +6,8 @@ ms.date: 04/07/2022
 
 # .NET MAUI Shell lifecycle
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-shell)
+
 Shell apps respect the .NET Multi-platform App UI (.NET MAUI) lifecycle, and additionally fire an `Appearing` event when a page is about to appear on the screen, and a `Disappearing` event when a page is about to disappear from the screen. These events are propagated to pages, and can be handled by overriding the `OnAppearing` or `OnDisappearing` methods on the page.
 
 > [!NOTE]

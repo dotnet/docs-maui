@@ -6,6 +6,8 @@ ms.date: 04/07/2022
 
 # .NET MAUI Shell search
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-shell)
+
 .NET Multi-platform App UI (.NET MAUI) Shell includes integrated search functionality that's provided by the `SearchHandler` class. Search capability can be added to a page by setting the `Shell.SearchHandler` attached property to a subclassed `SearchHandler` object. This results in a search box being added at the top of the page:
 
 :::image type="content" source="media/search/searchhandler.png" alt-text="Screenshot of a Shell SearchHandler.":::

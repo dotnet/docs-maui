@@ -6,6 +6,8 @@ ms.date: 01/19/2022
 
 # Compiled bindings
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-databinding)
+
 .NET Multi-platform App UI (.NET MAUI) data bindings have two main issues:
 
 1. There's no compile-time validation of binding expressions. Instead, bindings are resolved at runtime. Therefore, any invalid bindings aren't detected until runtime when the application doesn't behave as expected or error messages appear.

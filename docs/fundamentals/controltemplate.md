@@ -6,6 +6,8 @@ ms.date: 02/18/2022
 
 # Control templates
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-controltemplates)
+
 .NET Multi-platform App UI (.NET MAUI) control templates enable you to define the visual structure of `ContentView` derived custom controls, and `ContentPage` derived pages. Control templates separate the user interface (UI) for a custom control, or page, from the logic that implements the control or page. Additional content can also be inserted into the templated custom control, or templated page, at a pre-defined location.
 
 For example, a control template can be created that redefines the UI provided by a custom control. The control template can then be consumed by the required custom control instance. Alternatively, a control template can be created that defines any common UI that will be used by multiple pages in an app. The control template can then be consumed by multiple pages, with each page still displaying its unique content.

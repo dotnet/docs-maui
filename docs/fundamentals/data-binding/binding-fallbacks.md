@@ -6,6 +6,8 @@ ms.date: 01/19/2022
 
 # Binding fallbacks
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-databinding)
+
 Sometimes data bindings fail, because the binding source can't be resolved, or because the binding succeeds but returns a `null` value. While these scenarios can be handled with value converters, or other additional code, data bindings can be made more robust by defining fallback values to use if the binding process fails. In a .NET Multi-platform App UI (.NET MAUI) app this can be accomplished by defining the `FallbackValue` and `TargetNullValue` properties in a binding expression. Because these properties reside in the `BindingBase` class, they can be used with bindings, multi-bindings, compiled bindings, and with the `Binding` markup extension.
 
 > [!NOTE]
