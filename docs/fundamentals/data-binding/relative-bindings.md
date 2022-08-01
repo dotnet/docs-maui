@@ -6,6 +6,8 @@ ms.date: 01/19/2022
 
 # Relative bindings
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-databinding)
+
 .NET Multi-platform App UI (.NET MAUI) relative bindings provide the ability to set the binding source relative to the position of the binding target. They are created with the `RelativeSource` markup extension, and set as the `Source` property of a binding expression.
 
 The `RelativeSource` markup extension is supported by the `RelativeSourceExtension` class, which defines the following properties:
