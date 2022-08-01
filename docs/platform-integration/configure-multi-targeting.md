@@ -73,6 +73,9 @@ This XML configures the build system to remove platform-based folder patterns un
 - Don't compile C# code that's located in the _iOS_ folder, or sub-folder of the _iOS_ folder, if you aren't building for iOS or MacCatalyst.
 - Don't compile C# code that's located in the _Windows_ folder, or sub-folder of the _Windows_ folder, if you aren't building for Windows.
 
+> [!NOTE]
+> The _Platforms_ folder gets a special handling so that files in _Platforms/iOS_ are **only** used on iOS even if you configured here that all files within any _iOS_ folder are also used for Mac Catalyst. If you want files to be used on iOS **and** Mac Catalyst, then don't place them within _Platforms_.
+
 > [!IMPORTANT]
 > Folder-based multi-targeting can be combined with filename-based multi-targeting. For more information, see [Combine filename and folder multi-targeting](#combine-filename-and-folder-multi-targeting).
 
@@ -108,3 +111,6 @@ This XML configures the build system to remove platform-based filename and folde
 - Don't compile C# code whose filename ends with _.Android.cs_, or that's located in the _Android_ folder or sub-folder of the _Android_ folder, if you aren't building for Android.
 - Don't compile C# code whose filename ends with _.iOS.cs_, or that's located in the _iOS_ folder or sub-folder of the _iOS_ folder, if you aren't building for iOS or MacCatalyst.
 - Don't compile C# code whose filename ends with _.Windows.cs_, or that's located in the _Windows_ folder or sub-folder of the _Windows_ folder, if you aren't building for Windows.
+
+> [!NOTE]
+> The _Platforms_ folder gets a special handling so that files in _Platforms/iOS_ are **only** used on iOS even if you configured here that all files within any _iOS_ folder are also used for Mac Catalyst. If you want files to be used on iOS **and** Mac Catalyst, then don't place them within _Platforms_.
