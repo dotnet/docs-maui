@@ -132,6 +132,9 @@ Your project file must declare `<ApplicationId>` and `ApplicationVersion` within
 </Project>
 ```
 
+> [!TIP]
+> Some settings are available in the **Project Properties** editor in Visual Studio to change values. Right-click on the project in the **Solution Explorer** pane and choose **Properties**. For more information, see [Project configuration in .NET MAUI](../../deployment/visual-studio-properties.md).
+
 The following table describes how each project setting maps to the *Info.plist* file:
 
 | Project setting | Info.plist manifest field |
