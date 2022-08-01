@@ -79,7 +79,7 @@ The following screenshot shows the `Entry` in its three defined visual states:
 
 :::image type="content" source="media/visualstates/commonstates.png" alt-text="Screenshot of the three defined visual states on the Entry.":::
 
-When the `Entry` is in the `Normal` state, its background is lime. When the the `Entry` gains input focus its font size doubles. When the `Entry` becomes disabled, its background becomes pink. The `Entry` does not retain doesn't retain its lime background when it gains input focus. As the Visual State Manager switches between the visual states, the properties set by the previous state are unset. Therefore, the visual states are mutually exclusive.
+When the `Entry` is in the `Normal` state, its background is lime. When the `Entry` gains input focus its font size doubles. When the `Entry` becomes disabled, its background becomes pink. The `Entry` doesn't retain its lime background when it gains input focus. As the Visual State Manager switches between the visual states, the properties set by the previous state are unset. Therefore, the visual states are mutually exclusive.
 
 If you want the `Entry` to have a lime background in the `Focused` state, add another `Setter` to that visual state:
 
