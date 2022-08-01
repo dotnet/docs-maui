@@ -27,6 +27,8 @@ The following screenshot shows themed pages, with the iOS app using a light them
 > [!NOTE]
 > Changing a theme at runtime requires the use of XAML styles, and is not possible using CSS.
 
+.NET MAUI also has the ability to respond to system theme changes. The system theme may change for a variety of reasons, depending on the device configuration. This includes the system theme being explicitly changed by the user, it changing due to the time of day, and it changing due to environmental factors such as low light. For more information, see [Respond to system theme changes](system-theme-changes.md).
+
 ## Define themes
 
 A theme is defined as a collection of resource objects stored in a `ResourceDictionary`.
