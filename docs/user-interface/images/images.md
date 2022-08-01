@@ -13,7 +13,7 @@ In a .NET Multi-platform App UI (.NET MAUI) app project, images can be specified
 .NET MAUI images can use any of the standard platform image formats, including Scalable Vector Graphics (SVG) files.
 
 > [!IMPORTANT]
-> .NET MAUI converts SVG files to PNG files. Therefore, when adding an SVG file to your .NET MAUI app project, it should be referenced from XAML or C# with a .png extension.
+> .NET MAUI converts SVG files to PNG files. Therefore, when adding an SVG file to your .NET MAUI app project, it should be referenced from XAML or C# with a .png extension. The only reference to the SVG file should be in your project file.
 
 An image can be added to your app project by dragging it into the *Resources\Images* folder of the project, where its build action will automatically be set to **MauiImage**. This creates a corresponding entry in your project file:
 
