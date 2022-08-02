@@ -1,3 +1,5 @@
+using System.Security.AccessControl;
+
 namespace PlatformIntegration;
 
 public class StoragePage : ContentPage
@@ -17,7 +19,43 @@ public class StoragePage : ContentPage
 
         Content = new VerticalStackLayout
         {
+            Children = {
+                new Button { Text = "Read",
+                             Command = new Command(PickAndShow) },
+                new Button { Text = "ToUpperFile",
+                             Command = new Command(ToUpperFile) },
+            }
         };
+    }
+
+    private void PickAndShow()
+    {
+        var customFileType = new FilePickerFileType(
+                        new Dictionary<DevicePlatform, IEnumerable<string>>
+                        {
+                            { DevicePlatform.iOS, new[] { "public.my.comic.extension" } }, // or general UTType values
+                            { DevicePlatform.Android, new[] { "application/comics" } },
+                            { DevicePlatform.WinUI, new[] { ".cbr", ".cbz" } },
+                            { DevicePlatform.Tizen, new[] { "*/*" } },
+                            { DevicePlatform.macOS, new[] { "cbr", "cbz" } }, // or general UTType values
+                        });
+
+        PickOptions options = new()
+        {
+            PickerTitle = "Please select a comic file",
+            FileTypes = customFileType,
+        };
+
+        PickAndShow(options);
+    }
+
+    async void ToUpperFile(object param1)
+    {
+        await ConvertFileToUpperCase("AboutAssets.txt", "NewAssets.txt");
+
+        string targetFile = System.IO.Path.Combine(FileSystem.Current.AppDataDirectory, "NewAssets.txt");
+
+        ((VerticalStackLayout)Content).Children.Add(new Label() { Text = System.IO.File.ReadAllText(targetFile) });
     }
 
     //<file_pick>
@@ -87,6 +125,28 @@ public class StoragePage : ContentPage
         return await reader.ReadToEndAsync();
     }
     //</filesys_readtxtfile>
+
+    //<filesys_toupper>
+    public async Task ConvertFileToUpperCase(string sourceFile, string targetFileName)
+    {
+        // Read the source file
+        using Stream fileStream = await FileSystem.Current.OpenAppPackageFileAsync(sourceFile);
+        using StreamReader reader = new StreamReader(fileStream);
+
+        string content = await reader.ReadToEndAsync();
+
+        // Transform file content to upper case text
+        content = content.ToUpperInvariant();
+
+        // Write the file content to the app data directory
+        string targetFile = System.IO.Path.Combine(FileSystem.Current.AppDataDirectory, targetFileName);
+
+        using FileStream outputStream = System.IO.File.OpenWrite(targetFile);
+        using StreamWriter streamWriter = new StreamWriter(outputStream);
+
+        await streamWriter.WriteAsync(content);
+    }
+    //</filesys_toupper>
 
     public void PreferencesSet()
     {

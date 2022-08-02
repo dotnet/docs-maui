@@ -6,6 +6,8 @@ ms.date: 04/07/2022
 
 # .NET MAUI Shell overview
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-shell)
+
 .NET Multi-platform App UI (.NET MAUI) Shell reduces the complexity of app development by providing the fundamental features that most apps require, including:
 
 - A single place to describe the visual hierarchy of an app.

@@ -6,6 +6,8 @@ ms.date: 01/19/2022
 
 # Binding path
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-databinding)
+
 In .NET Multi-platform App UI (.NET MAUI), the `Path` property of the `Binding` class (or the `Path` property of the `Binding` markup extension) can be set to a single property, to a *sub-property* (a property of a property), or to a member of a collection.
 
 For example, suppose a page contains a `TimePicker`:

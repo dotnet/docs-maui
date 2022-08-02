@@ -6,6 +6,8 @@ ms.date: 01/13/2022
 
 # ScrollView
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-scrollview)
+
 The .NET Multi-platform App UI (.NET MAUI) `ScrollView` is a view that's capable of scrolling its content. By default, `ScrollView` scrolls its content vertically. A `ScrollView` can only have a single child, although this can be other layouts.
 
 `ScrollView` defines the following properties:

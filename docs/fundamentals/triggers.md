@@ -6,6 +6,8 @@ ms.date: 02/18/2022
 
 # Triggers
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-triggers)
+
 .NET Multi-platform App UI (.NET MAUI) triggers allow you to express actions declaratively in XAML that change the appearance of controls based on events or data changes. In addition, state triggers, which are a specialized group of triggers, define when a `VisualState` should be applied.
 
 You can assign a trigger directly to a control's `Triggers` collection, or add it to a page-level or app-level resource dictionary to be applied to multiple controls.
