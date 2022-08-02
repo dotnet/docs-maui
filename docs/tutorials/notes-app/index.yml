@@ -6,14 +6,18 @@ metadata:
   audience: Developer
   level: Beginner
   ms.topic: interactive-tutorial
-  ms.date: 07/29/2022
+  ms.date: 08/02/2022
   author: adegeo
   ms.author: adegeo
   #no-loc: [Xamarin.Forms, Xamarin.Essentials]
 items:
-- durationInMinutes: 5
+- durationInMinutes: 1
   content: |
     [!INCLUDE [](includes/intro.md)]
+- title: Create a new project
+  durationInMinutes: 5
+  content: |
+    [!INCLUDE [](includes/project.md)]
 - title: Customize the app shell
   durationInMinutes: 10
   content: |
@@ -32,4 +36,9 @@ items:
 
     ## Next steps
 
-    - Do something...
+    The following links provide more information related to some of the concepts you learned in this tutorial:
+
+    - [.NET MAUI Shell overview](../../fundamentals/shell/index.md)
+    - [.NET MAUI Shell pages](../../fundamentals/shell/pages.md)
+    - [Basic bindings](../../fundamentals/data-binding/basic-bindings.md)
+    - [Editor control](../../user-interface/controls/editor.md)
