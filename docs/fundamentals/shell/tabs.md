@@ -10,7 +10,7 @@ ms.date: 04/07/2022
 
 The navigation experience provided by .NET Multi-platform App UI (.NET MAUI) Shell is based on flyouts and tabs. The top level of navigation in a Shell app is either a flyout or a bottom tab bar, depending on the navigation requirements of the app. When the navigation experience for an app begins with bottom tabs, the child of the subclassed `Shell` object should be a `TabBar` object, which represents the bottom tab bar.
 
-A `TabBar` object can contain one or more `Tab` objects, with each `Tab` object representing a tab on the bottom tab bar. Each `Tab` object can contain one or more `ShellContent` objects, with each `ShellContent` object displaying a single `ContentPage`. When more than one `ShellContent` object is present in a `Tab` object, the `ContentPage` objects will be navigable by top tabs. Within a tab, additional `ContentPage` objects that are known as detail pages, can be navigated to.
+A `TabBar` object can contain one or more `Tab` objects, with each `Tab` object representing a tab on the bottom tab bar. Each `Tab` object can contain one or more `ShellContent` objects, with each `ShellContent` object displaying a single `ContentPage`. When more than one `ShellContent` object is present in a `Tab` object, the `ContentPage` objects are navigable by top tabs. Within a tab, you can navigate to other `ContentPage` objects that are known as detail pages.
 
 > [!IMPORTANT]
 > The `TabBar` type disables the flyout.
@@ -36,7 +36,7 @@ This example results in the following single page app:
 
 :::image type="content" source="media/tabs/single-page-app.png" alt-text="Screenshot of a Shell single page app.":::
 
-Shell has implicit conversion operators that enable the Shell visual hierarchy to be simplified, without introducing additional views into the visual tree. This is possible because a subclassed `Shell` object can only ever contain `FlyoutItem` objects or a `TabBar` object, which can only ever contain `Tab` objects, which can only ever contain `ShellContent` objects. These implicit conversion operators can be used to remove the `Tab` objects from the previous example:
+Shell has implicit-conversion operators that enable the Shell visual hierarchy to be simplified, without introducing more views into the visual tree. This is possible because a subclassed `Shell` object can only ever contain `FlyoutItem` objects or a `TabBar` object, which can only ever contain `Tab` objects, which can only ever contain `ShellContent` objects. These implicit-conversion operators can be used to remove the `Tab` objects from the previous example:
 
 ```xaml
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -56,7 +56,7 @@ This implicit conversion automatically wraps the `ShellContent` object in a `Tab
 
 ## Bottom tabs
 
-`Tab` objects are rendered as bottom tabs, provided that there are multiple `Tab` objects in a single `TabBar` object:
+If there are multiple `Tab` objects in a single `TabBar` object, `Tab` objects are rendered as bottom tabs:
 
 ```xaml
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -80,7 +80,7 @@ The `Title` property, of type `string`, defines the tab title. The `Icon` proper
 
 :::image type="content" source="media/tabs/two-page-app-bottom-tabs.png" alt-text="Screenshot of a Shell two page app with bottom tabs.":::
 
-When there are more than five tabs on a `TabBar`, a **More** tab will appear, which can be used to access the additional tabs:
+When there are more than five tabs on a `TabBar`, a **More** tab will appear, which can be used to access the other tabs:
 
 :::image type="content" source="media/tabs/more-tabs.png" alt-text="Screenshot of a Shell app with a More tab.":::
 
@@ -132,7 +132,7 @@ When more than one `ShellContent` object is present in a `Tab` object, a top tab
 </Shell>
 ```
 
-This results in the layout shown in the following screenshot:
+This code results in the layout shown in the following screenshot:
 
 :::image type="content" source="media/tabs/two-page-app-top-tabs.png" alt-text="Screenshot of a Shell two page app with top and bottom tabs.":::
 

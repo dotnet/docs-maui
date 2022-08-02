@@ -14,7 +14,7 @@ A .NET Multi-platform App UI (.NET MAUI) tap gesture recognizer is used for tap 
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
-The `TapGestureRecognizer` class also defines a `Tapped` event that's raised when a tap is recognized. The `TappedEventArgs` object that accompanies the `Tapped` event defines a `Parameter` property, of type `object`, that indicates the value passed by the `CommandParameter` property, if defined.
+The `TapGestureRecognizer` class also defines a `Tapped` event that's raised when a tap is recognized. The `TappedEventArgs` object that accompanies the `Tapped` event defines a `Parameter` property of type `object` that indicates the value passed by the `CommandParameter` property, if defined.
 
 ## Create a TapGestureRecognizer
 
@@ -49,4 +49,4 @@ tapGestureRecognizer.Tapped += (s, e) =>
 image.GestureRecognizers.Add(tapGestureRecognizer);
 ```
 
-By default the `Image` will respond to single taps. When the `NumberOfTapsRequired` property is set above one, the event handler will only be executed if the taps occur within a set period of time. If the second (or subsequent) taps don't occur within that period, they are effectively ignored.
+By default the `Image` will respond to single taps. When the `NumberOfTapsRequired` property is set above one, the event handler will only be executed if the taps occur within a set period of time. If the second (or subsequent) taps don't occur within that period, they're effectively ignored.

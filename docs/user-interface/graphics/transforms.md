@@ -23,13 +23,13 @@ The .NET MAUI `VisualElement` class also supports the following transform proper
 
 - `Microsoft.Maui.Graphics` transforms are methods, while `VisualElement` transforms are properties. Therefore, `Microsoft.Maui.Graphics` transforms perform an operation while `VisualElement` transforms set a state. `Microsoft.Maui.Graphics` transforms apply to subsequently drawn graphics objects, but not to graphics objects that are drawn before the transform is applied. In contrast, a `VisualElement` transform applies to a previously rendered element as soon as the property is set. Therefore, `Microsoft.Maui.Graphics` transforms are cumulative as methods are called, while `VisualElement` transforms are replaced when the property is set with another value.
 - `Microsoft.Maui.Graphics` transforms are applied to the `ICanvas` object, while `VisualElement` transforms are applied to a `VisualElement` derived object.
-- `Microsoft.Maui.Graphics` transforms are relative to the upper-left corner of the `ICanvas`, while `VisualElement` transforms are relative to the upper-left corner of the `VisualElement` to which they are applied.
+- `Microsoft.Maui.Graphics` transforms are relative to the upper-left corner of the `ICanvas`, while `VisualElement` transforms are relative to the upper-left corner of the `VisualElement` to which they're applied.
 
 ## Translate transform
 
 The translate transform shifts graphical objects in the horizontal and vertical directions. Translation can be considered unnecessary because the same result can be accomplished by changing the coordinates of the drawing method you're using. However, when displaying a path, all the coordinates are encapsulated in the path, and so it's often easier to apply a translate transform to shift the entire path.
 
-The `Translate` method requires `x` and `y` arguments, of type `float`, that cause subsequently drawn graphic objects to be shifted horizontally and vertically. Negative `x` values move an object to the left, while positive values move an object to the right. Negative `y` values move up an object, while positive values move down an object.
+The `Translate` method requires `x` and `y` arguments of type `float` that cause subsequently drawn graphic objects to be shifted horizontally and vertically. Negative `x` values move an object to the left, while positive values move an object to the right. Negative `y` values move up an object, while positive values move down an object.
 
 A common use of the translate transform is for rendering a graphical object that has been originally created using coordinates that are convenient for drawing. The following example creates a `PathF` object for an 11-pointed star:
 
@@ -59,7 +59,7 @@ The center of the star is at (0,0), and the points of the star are on a circle s
 
 The scale transform changes the size of a graphical object, and can also often cause coordinates to move when a graphical object is made larger.
 
-The `Scale` method requires `x` and `y` arguments, of type `float`, that let you specify different values for horizontal and vertical scaling, otherwise known as *anisotropic* scaling. The values of `x` and `y` have a significant impact on the resulting scaling:
+The `Scale` method requires `x` and `y` arguments of type `float` that let you specify different values for horizontal and vertical scaling, otherwise known as *anisotropic* scaling. The values of `x` and `y` have a significant impact on the resulting scaling:
 
 - Values between 0 and 1 decrease the width and height of the scaled object.
 - Values greater than 1 increase the width and height of the scaled object.
@@ -98,13 +98,13 @@ The text and the rounded rectangle are both subject to the same scaling factors.
 > [!NOTE]
 > Anisotropic scaling causes the stroke size to become different for lines aligned with the horizontal and vertical axes.
 
-Order matters when you combine `Translate` and `Scale` calls. If the `Translate` call comes after the `Scale` call, the translation factors are scaled by the scaling factors. If the `Translate` call comes before the `Scale` call, the translation factors are not scaled.
+Order matters when you combine `Translate` and `Scale` calls. If the `Translate` call comes after the `Scale` call, the translation factors are scaled by the scaling factors. If the `Translate` call comes before the `Scale` call, the translation factors aren't scaled.
 
 ## Rotate transform
 
 The rotate transform rotates a graphical object around a point. Rotation is clockwise for increasing angles. Negative angles and angles greater than 360 degrees are allowed.
 
-There are two `Rotate` overloads. The first requires a `degrees` argument, of type `float`, that defines the rotation angle, and centers the rotation around the upper-left corner of the canvas (0,0). The following example demonstrates this `Rotate` method:
+There are two `Rotate` overloads. The first requires a `degrees` argument of type `float` that defines the rotation angle, and centers the rotation around the upper-left corner of the canvas (0,0). The following example demonstrates this `Rotate` method:
 
 ```csharp
 canvas.FontColor = Colors.Blue;
@@ -118,7 +118,7 @@ In this example, ".NET MAUI" is rotated 45 degrees clockwise:
 
 :::image type="content" source="media/transforms/rotate.png" alt-text="Screenshot of rotated text.":::
 
-Alternatively, graphical objects can be rotated centered around a specific point. This requires the `Rotate` overload that accepts `degrees`, `x`, and `y` arguments, of type `float`:
+Alternatively, graphical objects can be rotated centered around a specific point. To rotate around a specific point, use the `Rotate` overload that accepts `degrees`, `x`, and `y` arguments of type `float`:
 
 ```csharp
 canvas.FontColor = Colors.Blue;
@@ -176,7 +176,7 @@ canvas.RestoreState();
 
 In this example, the `Translate` and `Scale` calls apply globally to the clock, and so are called before the `Rotate` method
 
-There are 60 marks of two different sizes that are drawn in a circle around the clock. The `FillCircle` call draws that circle at (0,-90), which relative to the center of the clock corresponds to 12:00. The `Rotate` call increments the rotation angle by 6 degrees after every tick mark. The `angle` variable is used solely to determine if a large circle or a small circle is drawn. Finally, the current time is obtained and rotation degrees are calculated for the hour, minute, and second hands. Each hand is drawn in the 12:00 position so that the rotation angle is relative to that:
+There are 60 marks of two different sizes that are drawn in a circle around the clock. The `FillCircle` call draws that circle at (0,-90), which relative to the center of the clock corresponds to 12:00. The `Rotate` call increments the rotation angle by 6 degrees after every tick mark. The `angle` variable is used solely to determine if a large circle or a small circle is drawn. Finally, the current time is obtained and rotation degrees are calculated for the hour, minute, and second hands. Each hand is drawn in the 12:00 position so that the rotation angle is relative to that position:
 
 :::image type="content" source="media/transforms/clock.png" alt-text="Screenshot of an analog clock.":::
 
