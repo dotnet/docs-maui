@@ -6,7 +6,7 @@ ms.date: 07/11/2022
 
 # Project configuration in .NET MAUI
 
-.NET MAUI uses a [single-project system](../fundamentals/single-project.md) to manage most of your multi-platform app. This is different from .NET MAUI's predecessor, Xamarin, which used multiple projects, one for each platform. Project configuration in .NET MAUI is similar to other projects in Visual Studio, right-click on the project in the **Solution Explorer**, and select **Properties**.
+.NET MAUI uses a [single-project system](../fundamentals/single-project.md) to manage your multi-platform app. Project configuration in .NET MAUI is similar to other projects in Visual Studio, right-click on the project in the **Solution Explorer**, and select **Properties**.
 
 ## Application
 
@@ -61,7 +61,7 @@ Settings related to target platforms.
 
 - **Conditional compilation symbols**
 
-  Specifies symbols on which to perform conditional compilation. Separate symbols with a semicolon `;`. Symbols can be broken up into target platforms
+  Specifies symbols on which to perform conditional compilation. Separate symbols with a semicolon `;`. Symbols can be broken up into target platforms. For more information, see [Conditional compilation](/dotnet/csharp/language-reference/preprocessor-directives#conditional-compilation).
 
 - **Platform target**
 
@@ -91,7 +91,7 @@ Settings related to target platforms.
 
 - **Implicit global usings**
 
-  Enables implicit global usings to be declared by the project SDK. This is enabled by default. Imports many of the .NET MAUI namespaces automatically to all code files.
+  Enables implicit global usings to be declared by the project SDK. This is enabled by default. Imports many of the .NET MAUI namespaces automatically to all code files. Code files don't need to add `using` statements for common .NET MAUI namespaces. For more information, see [MSBuild properties - ImplicitUsings](/dotnet/core/project-sdk/msbuild-props#implicitusings).
 
 - **Unsafe code**
 
@@ -125,7 +125,7 @@ Settings related to how errors and warnings are treated and reported during comp
 
   Specifies which warnings are treated as errors. Separate multiple warning numbers with a comma `,` or a semicolon `;`.
 
-## Output
+### Output
 
 Settings related to generating the output file.
 
@@ -201,9 +201,9 @@ Additional settings related to the build.
 
 The **Package** section describes settings related to generating a NuGet package.
 
-## General
+### General
 
-Settings related the NuGet package.
+Settings related to generating a NuGet package.
 
 - **Generate NuGet package on build**
 
@@ -211,7 +211,7 @@ Settings related the NuGet package.
 
 - **Package ID**
 
-  The case-insensitive package identifier, which must be unique across nuget.org or whatever gallery the package resides in. IDs may not contain spaces or characters that aren't valid for a URL, and generally follow .NET namespace rules.
+  The case-insensitive package identifier, which must be unique across the NuGet package gallery, such as nuget.org. IDs may not contain spaces or characters that aren't valid for a URL, and generally follow .NET namespace rules.
 
   Defaults to the MSBuild value of `$(AssemblyName)`.
 
@@ -363,7 +363,7 @@ General settings related to .NET MAUI.
 
 - **Application ID (GUID)**
 
-  The identifier of the application GUID format.
+  The identifier of the application in GUID format.
 
 - **Application Display Version**
 
@@ -379,7 +379,7 @@ Settings related to the Android manifest.
 
 - **Application name**
 
-  The string that's displayed as the name of the application. This is the name that's shown in the app's title bar. If not set, the label of the app's MainActivity is used as the application name. The default setting is `@string/app_name` refers to the string resource `app_name` location in `Resources/values/Strings.xaml`.
+  The string that's displayed as the name of the application. This is the name that's shown in the app's title bar. If not set, the label of the app's MainActivity is used as the application name. The default setting is `@string/app_name`, which refers to the string resource `app_name` location in `Resources/values/Strings.xaml`.
 
 - **Application package name**
 
@@ -425,7 +425,7 @@ Miscellaneous options for building an Android app.
 
 - **Android package format**
 
-  Either `apk` or `bundle`, which packages the Android application as an APK file or Android App Bundle, respectively. This can be set for individually for both Debug and Release modes.
+  Either `apk` or `bundle`, which packages the Android application as an APK file or Android App Bundle, respectively. This can be set individually for both Debug and Release modes.
 
   App Bundles are the latest format for Android release builds that are intended for submission on Google Play.
 
@@ -513,7 +513,7 @@ Miscellaneous options for building an Android app.
 
   Set this value to increase the size of memory that an app can use. For example, a value of `2G` increases the heap size to 2 gigabytes. Note that there isn't a guarantee of how large the heap will be, and requesting too much heap memory may force other apps to terminate prematurely.
 
-  The default is `1G`/
+  The default is `1G`.
 
 - **Additional Java options**
 
@@ -579,7 +579,7 @@ These settings are related to generating and signing the app bundle.
   Configures the signing scheme for the bundle. It can be set to one of the following values:
 
   - `Manual provisioning`: With this value, you'll be responsible for setting provisioning profiles and signing certificates yourself.
-  - `Automatic provisioning`: (default) With this value, Visual Studio will set provisioning profiles and signing certificates for you to simplify app testing on a device.
+  - `Automatic provisioning`: (default) With this value, Visual Studio will set provisioning profiles and signing certificates for you, which simplifies app deployment when testing on a device.
 
 - **Signing identity**
 
@@ -594,7 +594,7 @@ These settings are related to generating and signing the app bundle.
 
 - **Custom Entitlements**
 
-  The plist file to use for entitlements.
+  The plist file to use for entitlements. For more information, see [Entitlements and capabilities](../ios/deployment/entitlements.md).
 
 - **Custom Resource Rules**
 
@@ -613,7 +613,7 @@ These are settings related to debugging.
 
 - **Debugging**
 
-  When enabled, turns on debugging. The default is based on the current profile. Debug profiles enabled debugging, while Release disables debugging.
+  When enabled, turns on debugging. The default is based on the current profile. Debug profiles enable debugging, while Release profiles disable debugging.
 
 - **Profiling**
 
