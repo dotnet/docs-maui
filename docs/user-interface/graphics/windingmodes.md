@@ -17,7 +17,7 @@ The `WindingMode` enumeration defines `NonZero` and `EvenOdd` members. Each memb
 
 ## NonZero
 
-The `NonZero` winding mode draws a hypothetical ray from the point to infinity in any direction and then examines the places where a path contour crosses the ray. Starting with a count of zero, the count is incremented each time a contour crosses the ray from left to right and decremented each time a contour crosses the ray from right to left. After counting the crossings, if the result is zero then the area isn't filled. Otherwise, the area is filled.
+The `NonZero` winding mode draws a hypothetical ray from the point to infinity in any direction and then examines the places where a path contour crosses the ray. The count starts at zero and is incremented each time a contour crosses the ray from left to right and decremented each time a contour crosses the ray from right to left. If the count of crossings is zero, the area isn't filled. Otherwise, the area is filled.
 
 The following example fills a five-pointed star using the `NonZero` winding mode:
 
@@ -76,6 +76,6 @@ canvas.FillPath(path, WindingMode.EvenOdd);
 canvas.DrawPath(path);
 ```
 
-In this example, the path is drawn twice. The `FillPath` method is used to fill the path with blue, while the `DrawPath` method outlines the path with a red stroke. The `FillPath` overload used specifies that the `EvenOdd` winding mode is used. This results in the central area of the star not being filled:
+In this example, the path is drawn twice. The `FillPath` method is used to fill the path with blue, while the `DrawPath` method outlines the path with a red stroke. The `FillPath` overload used specifies that the `EvenOdd` winding mode is used. This mode results in the central area of the star not being filled:
 
 :::image type="content" source="media/windingmodes/evenodd.png" alt-text="Screenshot of a five-pointed star, using the even-odd winding mode.":::
