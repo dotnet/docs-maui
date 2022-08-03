@@ -91,7 +91,7 @@ Settings related to target platforms.
 
 - **Implicit global usings**
 
-  Enables implicit global usings to be declared by the project SDK. This is enabled by default. Imports many of the .NET MAUI namespaces automatically to all code files. Code files don't need to add `using` statements for common .NET MAUI namespaces. For more information, see [MSBuild properties - ImplicitUsings](/dotnet/core/project-sdk/msbuild-props#implicitusings).
+  Enables implicit global usings to be declared by the project SDK. This is enabled by default and imports many of the .NET MAUI namespaces automatically to all code files. Code files don't need to add `using` statements for common .NET MAUI namespaces. For more information, see [MSBuild properties - ImplicitUsings](/dotnet/core/project-sdk/msbuild-props#implicitusings).
 
 - **Unsafe code**
 
