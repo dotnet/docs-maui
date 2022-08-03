@@ -14,7 +14,7 @@ In a .NET Multi-platform App UI (.NET MAUI) app project, an app icon can be spec
 A .NET MAUI app icon can use any of the standard platform image formats, including Scalable Vector Graphics (SVG) files.
 
 > [!IMPORTANT]
-> .NET MAUI converts SVG files to Portable Network Graphic (PNG) files. Therefore, when adding an SVG file to your .NET MAUI app project, it should be referenced from XAML or C# with a _.png_ extension.
+> .NET MAUI converts SVG files to Portable Network Graphic (PNG) files. Therefore, when adding an SVG file to your .NET MAUI app project, it should be referenced from XAML or C# with a _.png_ extension. The only reference to the SVG file should be in your project file.
 
 ## Change the icon
 
