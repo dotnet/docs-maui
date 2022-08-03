@@ -65,26 +65,26 @@ The upper-right and lower-left rectangles are always blank because both the dest
 
 The following table lists the Porter-Duff blend modes provided by `Microsoft.Maui.Graphics`, and how they color each of the three non-blank areas in the diagram above:
 
-| Blend mode | Destination | Intersection | Source |
-| -- | -- | -- | -- |
-| `Clear` |  |  |  |
-| `Copy` |  | Source | X |
-| `SourceIn` |  | Source |  |
-| `SourceOut` |  |  | X |
-| `SourceAtop` | X | Source |  |
-| `DestinationOver` | X | Destination | X |
-| `DestinationIn` |  | Destination |  |
-| `DestinationOut` | X |  |  |
-| `DestinationAtop` |  | Destination | X |
-| `Xor` | X |  | X |
-| `PlusDarker` | X | Sum | X |
-| `PlusLighter` | X | Sum | X |
+| Blend mode        | Destination | Intersection | Source |
+|-------------------|-------------|--------------|--------|
+| `Clear`           |             |              |        |
+| `Copy`            |             | Source       | X      |
+| `SourceIn`        |             | Source       |        |
+| `SourceOut`       |             |              | X      |
+| `SourceAtop`      | X           | Source       |        |
+| `DestinationOver` | X           | Destination  | X      |
+| `DestinationIn`   |             | Destination  |        |
+| `DestinationOut`  | X           |              |        |
+| `DestinationAtop` |             | Destination  | X      |
+| `Xor`             | X           |              | X      |
+| `PlusDarker`      | X           | Sum          | X      |
+| `PlusLighter`     | X           | Sum          | X      |
 
 The naming convention of the modes follows a few simple rules:
 
 - The *Over* suffix indicates what is visible in the intersection. Either the source or destination is drawn over the other.
 - The *In* suffix means that only the intersection is colored. The output is restricted to only the part of the source or destination that is in the other.
-- The *Out* suffix means that the intersection is not colored. The output is only the part of the source or destination that is out of the intersection.
+- The *Out* suffix means that the intersection isn't colored. The output is only the part of the source or destination that is out of the intersection.
 - The *Atop* suffix is the union of *In* and *Out*. It includes the area where the source or destination is atop of the other.
 
 > [!NOTE]
@@ -96,22 +96,22 @@ The `PlusLighter` blend mode sums the source and destination. Then, for values a
 
 The separable blend modes alter the individual red, green, and blue color components of a graphical object.
 
-The following table shows the separable blend modes, with brief explanations of what they do. In the table, *Dc* and *Sc* refer to the destination and source colors, and the second column shows the source color that produces no change:
+The following table shows the separable blend modes, with brief explanations of what they do. In the table, `Dc` and `Sc` refer to the destination and source colors, and the second column shows the source color that produces no change:
 
-| Blend mode | No change | Operation |
-| -- | -- | -- |
-| `Normal` |  | No blending, source selected |
-| `Multiply` | `White` | Darkens by multiplying Sc-Dc |
-| `Screen` | `Black` | Complements the product of complements: Sc + Dc - Sc.Dc |
-| `Overlay` | `Gray` | Inverse of `HardLight` |
-| `Darken` | `White` | Minimum of colors: min(Sc, Dc) |
-| `Lighten` | `Black` | Maximum of colors: max(Sc, Dc) |
-| `ColorDodge` | `Black` | Brightens the destination based on the source |
-| `ColorBurn` | `White` | Darkens the destination based on the source |
-| `SoftLight` | `Gray` | Similar to the effect of a soft spotlight |
-| `HardLight` | `Gray` | Similar to the effect of a harsh spotlight |
-| `Difference` | `Black` | Subtracts the darker color from the lighter color: Abs(Dc - Sc) |
-| `Exclusion` | `Black` | Similar to `Difference` but lower contrast |
+| Blend mode   | No change | Operation                                                         |
+|--------------|-----------|-------------------------------------------------------------------|
+| `Normal`     |           | No blending, source selected                                      |
+| `Multiply`   | `White`   | Darkens by multiplying `Sc-Dc`                                      |
+| `Screen`     | `Black`   | Complements the product of complements: `Sc + Dc - Sc.Dc`         |
+| `Overlay`    | `Gray`    | Inverse of `HardLight`                                            |
+| `Darken`     | `White`   | Minimum of colors: `min(Sc, Dc)`                                  |
+| `Lighten`    | `Black`   | Maximum of colors: `max(Sc, Dc)`                                  |
+| `ColorDodge` | `Black`   | Brightens the destination based on the source                     |
+| `ColorBurn`  | `White`   | Darkens the destination based on the source                       |
+| `SoftLight`  | `Gray`    | Similar to the effect of a soft spotlight                         |
+| `HardLight`  | `Gray`    | Similar to the effect of a harsh spotlight                        |
+| `Difference` | `Black`   | Subtracts the darker color from the lighter color: `Abs(Dc - Sc)` |
+| `Exclusion`  | `Black`   | Similar to `Difference` but lower contrast                        |
 
 > [!NOTE]
 > If the source is transparent, then the separable blend modes have no effect.
@@ -164,9 +164,9 @@ The non-separable blend modes conceptually perform the following steps:
 
 The following table lists how which HSL components are composited for each non-separable blend mode:
 
-| Blend mode | Source components | Destination components |
-| -- | -- | -- |
-| `Hue` | Hue | Saturation and Luminosity |
-| `Saturation` | Saturation | Hue and Luminosity |
-| `Color` | Hue and Saturation | Luminosity |
-| `Luminosity` | Luminosity | Hue and Saturation |
+| Blend mode   | Source components  | Destination components    |
+|--------------|--------------------|---------------------------|
+| `Hue`        | Hue                | Saturation and Luminosity |
+| `Saturation` | Saturation         | Hue and Luminosity        |
+| `Color`      | Hue and Saturation | Luminosity                |
+| `Luminosity` | Luminosity         | Hue and Saturation        |
