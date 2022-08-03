@@ -597,6 +597,8 @@
               href: data-cloud/local-web-services.md
     - name: Publish
       items:
+        - name: Visual Studio project settings
+          href: deployment/visual-studio-properties.md
         - name: Android
           href: android/deployment/overview.md
         - name: iOS
