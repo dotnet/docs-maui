@@ -403,7 +403,7 @@ Settings related to the Android manifest.
 
 - **Install location**
 
-  Indicates preference as to where the app should be stored, whether in internal or external storage. Internal-only:  Prefer external:
+  Indicates a preference as to where the app should be stored, whether in internal or external storage.
 
   | Option | Description |
   | -- | -- |
@@ -498,7 +498,7 @@ Miscellaneous options for building an Android app.
 
 - **Enable trimming**
 
-  When enabled, trims the application during publishing. This can be set for individually for both Debug and Release modes.
+  When enabled, trims the application during publishing. This can be set for individually for both Debug and Release modes. For more information, see [Trim self-contained deployments and executables](/dotnet/core/deploying/trimming/trim-self-contained) and [Trim options](/dotnet/core/deploying/trimming/trimming-options).
 
   The default is enabled for Release builds.
 
