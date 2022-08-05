@@ -102,6 +102,8 @@ landingContent:
             url: user-interface/controls/index.md
           - text: Graphics
             url: user-interface/graphics/index.md
+          - text: Handlers
+            url: user-interface/handlers/index.md
           - text: Layouts
             url: user-interface/layouts/index.md
           - text: Pages
@@ -141,7 +143,7 @@ landingContent:
           - text: Consume a REST-based web service
             url: data-cloud/rest.md
           - text: Connect to local web services
-            url: data-cloud/local-web-services.md            
+            url: data-cloud/local-web-services.md
   - title: Publish
     linkLists:
       - linkListType: concept

@@ -1,16 +1,12 @@
 ---
 title: ".NET MAUI control customization with handlers"
-description: "Learn how to customize .NET MAUI handlers, which map cross-platform controls to performant native controls on each platform."
-ms.date: 05/12/2022
+description: "Learn how to customize .NET MAUI handlers, to augment the appearance and behavior of a cross-platform control."
+ms.date: 08/05/2022
 ---
 
 # Customize .NET MAUI controls with handlers
 
-.NET Multi-platform App UI (.NET MAUI) provides a collection of controls that can be used to display data, initiate actions, indicate activity, display collections, pick data, and more. Each control has an interface representation, that abstracts the control. Cross-platform controls that implement these interfaces are known as *virtual views*. *Handlers* map these virtual views to native controls on each platform, and are responsible for creating the underlying native control, and mapping their properties to the cross-platform control. For example, on iOS a .NET MAUI handler maps a .NET MAUI `Button` to an iOS `UIButton` control. On Android, the `Button` is mapped to an `AppCompatButton` control:
-
-:::image type="content" source="media/customize/button-handler.png" alt-text="Button handler architecture." border="false":::
-
-Handlers are accessed through their control-specific interface, such as `IButton` for a `Button`. This avoids the cross-platform control having to reference its handler, and the handler having to reference the cross-platform control. Each handler provides a *mapper* that maps the cross-platform control API to the native control API.
+<!-- sample link goes here -->
 
 Handlers can be customized to augment the appearance and behavior of a cross-platform control beyond the customization that's possible through the control's API. This customization is achieved by modifying the mapper for a handler, with one of the following methods:
 
@@ -28,13 +24,11 @@ Each of these methods has an identical signature that requires two arguments:
 > [!IMPORTANT]
 > Handler customizations are global and aren't scoped to a specific control instance. Handler customization is allowed to happen anywhere in your app. Once a handler is customized, it affects all controls of that type, everywhere in your app.
 
-Each handler class exposes the native control that implements the cross-platform control via its `PlatformView` property. This property can be accessed to set native control properties, invoke native control methods, and subscribe to native control events. In addition, the cross-platform control implemented by the handler is exposed via its `VirtualView` property.
+Each handler class exposes the native view that implements the cross-platform view via its `PlatformView` property. This property can be accessed to set native view properties, invoke native view methods, and subscribe to native view events. In addition, the cross-platform view implemented by the handler is exposed via its `VirtualView` property.
 
-Handlers can be customized per platform by using compiler preprocessor directives, to multi-target code based on the platform. Alternatively, you can use partial classes to organize your code into platform-specific folders and files. For more information about conditional compilation, see [Conditional compilation](/dotnet/csharp/language-reference/preprocessor-directives#conditional-compilation).
+Handlers can be customized per platform by using conditional compilation, to multi-target code based on the platform. Alternatively, you can use partial classes to organize your code into platform-specific folders and files. For more information about conditional compilation, see [Conditional compilation](/dotnet/csharp/language-reference/preprocessor-directives#conditional-compilation).
 
-For a list of the type names that implement handler-based .NET MAUI views, see [Handler-based views](#handler-based-views).
-
-## Customize a control with a mapper
+## Customize a control with a property mapper
 
 The .NET MAUI `Entry` is a single-line text input control, that implements the `IEntry` interface. On iOS, the `EntryHandler` maps the `Entry` to an iOS `UITextField` control. On Android, the `Entry` is mapped to an `AppCompatEditText` control, and on Windows the `Entry` is mapped to a `TextBox` control:
 
@@ -43,16 +37,13 @@ The .NET MAUI `Entry` is a single-line text input control, that implements the `
 The `Entry` mapper, in the `EntryHandler` class, maps the cross-platform control API to the native control API. This mapper can be modified to customize the control on each platform:
 
 ```csharp
-using Microsoft.Maui.Platform;
-
-namespace CustomizeHandlersDemo;
+namespace CustomizeHandlersDemo.Views;
 
 public partial class CustomizeEntryPage : ContentPage
 {
     public CustomizeEntryPage()
     {
         InitializeComponent();
-
         ModifyEntry();
     }
 
@@ -61,55 +52,64 @@ public partial class CustomizeEntryPage : ContentPage
         Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping("MyCustomization", (handler, view) =>
         {
 #if ANDROID
-            handler.PlatformView.SetBackgroundColor(Colors.Transparent.ToPlatform());
-#elif IOS
-            handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.None;
+            handler.PlatformView.SetSelectAllOnFocus(true);
+#elif IOS || MACCATALYST
+            handler.PlatformView.EditingDidBegin += (s, e) =>
+            {
+                handler.PlatformView.PerformSelector(new ObjCRuntime.Selector("selectAll"), null, 0.0f);
+            };
 #elif WINDOWS
-            handler.PlatformView.FontWeight = Microsoft.UI.Text.FontWeights.Thin;
+            handler.PlatformView.GotFocus += (s, e) =>
+            {
+                handler.PlatformView.SelectAll();
+            };
 #endif
         });
     }
 }
+
 ```
 
-In this example, the `Entry` customization occurs in a page class. Therefore, all `Entry` controls on Android, iOS, and Windows will be customized once an instance of the `CustomizeEntryPage` is created. The following customization is performed by using compiler preprocessing directives:
-
-- On Android, the background color of the `Entry` is set to transparent.
-- On iOS, the border is removed from the `Entry`.
-- On Windows, the thickness of the font in the `Entry` is set to thin.
+In this example, the `Entry` customization occurs in a page class. Therefore, all `Entry` controls on Android, iOS, and Windows will be customized once an instance of the `CustomizeEntryPage` is created. Customization is performed with platform code, which selects all of the text in the `Entry` when it gains focus.
 
 ## Customize specific control instances
 
 Handlers are global, and customizing a handler for a control will result in all controls of the same type being customized in your app. However, handlers for specific control instances can be customized by subclassing the control, and then by modifying the handler for the base control type only when the control is of the subclassed type. For example, to customize a specific `Entry` control on a page that contains multiple `Entry` controls, you should first subclass the `Entry` control:
 
 ```csharp
-namespace CustomizeHandlersDemo;
-
-public class MyEntry : Entry
+namespace CustomizeHandlersDemo.Controls
 {
+    internal class MyEntry : Entry
+    {
+    }
 }
 ```
 
-You can then customize the `EntryHandler`, via its mapper, to perform the desired modification to `MyEntry` instances:
+You can then customize the `EntryHandler`, via its mapper, to perform the desired modification only to `MyEntry` instances:
 
 ```csharp
-Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping(nameof(IView.Background), (handler, view) =>
+Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping("MyCustomization", (handler, view) =>
 {
     if (view is MyEntry)
     {
 #if ANDROID
-        handler.PlatformView.SetBackgroundColor(Colors.Red.ToPlatform());
-#elif IOS
-        handler.PlatformView.BackgroundColor = Colors.Red.ToPlatform();
-        handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.Line;
+        handler.PlatformView.SetSelectAllOnFocus(true);
+#elif IOS || MACCATALYST
+        handler.PlatformView.EditingDidBegin += (s, e) =>
+        {
+            handler.PlatformView.PerformSelector(new ObjCRuntime.Selector("selectAll"), null, 0.0f);
+        };
 #elif WINDOWS
-        handler.PlatformView.Background = Colors.Red.ToPlatform();
+        handler.PlatformView.GotFocus += (s, e) =>
+        {
+            handler.PlatformView.SelectAll();
+        };
 #endif
     }
 });
 ```
 
-Any `MyEntry` instances in the app will then be customized as per the handler modification.
+If the handler customization is performed in your `App` class, any `MyEntry` instances in the app will be customized as per the handler modification.
 
 ## Handler lifecycle
 
@@ -130,75 +130,90 @@ A handlers `PlatformView` property can be accessed to set native control propert
 To subscribe to, and unsubscribe from, native control events you must register event handlers for the `HandlerChanged` and `HandlerChanging` events on the cross-platform control being customized:
 
 ```xaml
-<Entry HandlerChanged="OnHandlerChanged"
-       HandlerChanging="OnHandlerChanging" />
+<Entry HandlerChanged="OnEntryHandlerChanged"
+       HandlerChanging="OnEntryHandlerChanging" />
 ```
 
-Handlers can be customized per platform by using compiler preprocessor directives, or by using partial classes to organize your code into platform-specific folders and files. Each approach will be discussed in turn, by customizing an `Entry` on Android.
+Handlers can be customized per platform by using conditional compilation, or by using partial classes to organize your code into platform-specific folders and files. Each approach will be discussed in turn, by customizing an `Entry` on Android.
 
-### Using preprocessor directives
+### Conditional compilation
 
-The code-behind file containing the event handlers for the `HandlerChanged` and `HandlerChanging` events is shown in the following example, which uses preprocessor directives:
+The code-behind file containing the event handlers for the `HandlerChanged` and `HandlerChanging` events is shown in the following example, which uses conditional compilation:
 
 ```csharp
-using Microsoft.Maui.Platform;
+#if ANDROID
+using AndroidX.AppCompat.Widget;
+#elif IOS || MACCATALYST
+using UIKit;
+#elif WINDOWS
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml;
+#endif
 
-namespace CustomizeHandlersDemo;
+namespace CustomizeHandlersDemo.Views;
 
-public partial class CustomizeEntryPage : ContentPage
+public partial class CustomizeEntryHandlerLifecyclePage : ContentPage
 {
-    public CustomizeEntryPage()
+    public CustomizeEntryHandlerLifecyclePage()
     {
         InitializeComponent();
     }
 
-    void OnHandlerChanged(object sender, EventArgs e)
+    void OnEntryHandlerChanged(object sender, EventArgs e)
     {
 #if ANDROID
-        ((sender as Entry).Handler.PlatformView as Android.Views.View).FocusChange += OnFocusChange;
+        ((sender as Entry).Handler.PlatformView as AppCompatEditText).SetSelectAllOnFocus(true);
+#elif IOS || MACCATALYST
+		((sender as Entry).Handler.PlatformView as UITextField).EditingDidBegin += OnEditingDidBegin;
+#elif WINDOWS
+        ((sender as Entry).Handler.PlatformView as TextBox).GotFocus += OnGotFocus;
 #endif
     }
 
-    void OnHandlerChanging(object sender, HandlerChangingEventArgs e)
+    void OnEntryHandlerChanging(object sender, HandlerChangingEventArgs e)
     {
         if (e.OldHandler != null)
         {
-#if ANDROID
-            (e.OldHandler.PlatformView as Android.Views.View).FocusChange -= OnFocusChange;
+#if IOS || MACCATALYST
+			(e.OldHandler.PlatformView as UITextField).EditingDidBegin -= OnEditingDidBegin;
+#elif WINDOWS
+			(e.OldHandler.PlatformView as TextBox).GotFocus -= OnGotFocus;
 #endif
         }
     }
 
-#if ANDROID
-    void OnFocusChange(object sender, EventArgs e)
-    {
-        var nativeView = sender as AndroidX.AppCompat.Widget.AppCompatEditText;
-
-        if (nativeView.IsFocused)
-            nativeView.SetBackgroundColor(Colors.LightPink.ToPlatform());
-        else
-            nativeView.SetBackgroundColor(Colors.Transparent.ToPlatform());
-    }
-#endif        
+#if IOS || MACCATALYST                   
+	void OnEditingDidBegin(object sender, EventArgs e)
+	{
+		var nativeView = sender as UITextField;
+		nativeView.PerformSelector(new ObjCRuntime.Selector("selectAll"), null, 0.0f);
+	}
+#elif WINDOWS
+	void OnGotFocus(object sender, RoutedEventArgs e)
+	{
+		var nativeView = sender as TextBox;
+		nativeView.SelectAll();
+	}
+#endif
 }
 ```
 
-The `HandlerChanged` event is raised after the native control that implements the cross-platform control has been created and initialized. Therefore, its event handler is where native event subscriptions should be performed. This requires casting the `PlatformView` property of the handler to the type, or base type, of the native control so that native events can be accessed. In this example, the `OnHandlerChanged` event subscribes to the native control's `FocusChange` event.
+The `HandlerChanged` event is raised after the native control that implements the cross-platform control has been created and initialized. Therefore, its event handler is where native event subscriptions should be performed. This requires casting the `PlatformView` property of the handler to the type, or base type, of the native control so that native events can be accessed. In this example, on iOS, Mac Catalyst, and Windows, the `OnHandlerChanged` event subscribes to native control events that are raised when the native controls that implement the `Entry` gain focus.
 
-The `OnFocusChange` event handler accesses the native control for the `Entry` and sets its background color as the control gains and loses focus.
+The `OnEditingDidBegin` and `OnGotFocus` event handlers access the native control for the `Entry` on their respective platforms, and select all text that's in the `Entry`.
 
-The `HandlerChanging` event is raised before the existing handler is removed from the cross-platform control, and before the new handler for the cross-platform control is created. Therefore, its event handler is where native event subscriptions should be removed, and other cleanup should be performed. The `HandlerChangingEventArgs` object that accompanies this event has `OldHandler` and `NewHandler` properties, which will be set to the old and new handlers respectively. In this example, the `OnHandlerChanging` event removes the subscription to the native `FocusChange` event.
+The `HandlerChanging` event is raised before the existing handler is removed from the cross-platform control, and before the new handler for the cross-platform control is created. Therefore, its event handler is where native event subscriptions should be removed, and other cleanup should be performed. The `HandlerChangingEventArgs` object that accompanies this event has `OldHandler` and `NewHandler` properties, which will be set to the old and new handlers respectively. In this example, the `OnHandlerChanging` event removes the subscription to the native control events on iOS, Mac Catalyst, and Windows.
 
-### Using partial classes
+### Partial classes
 
-Rather than using compiler preprocessor directives to conditionally compile your app, it's also possible use partial classes to organize your control customization code into platform-specific folders and files. With this approach, your customization code is separated into a cross-platform partial class, and a platform-specific partial class. The following example shows the cross-platform partial class:
+Rather than using conditional compilation, it's also possible use partial classes to organize your control customization code into platform-specific folders and files. With this approach, your customization code is separated into a cross-platform partial class and a platform-specific partial class. The following example shows the cross-platform partial class:
 
 ```csharp
-namespace CustomizeHandlersDemo;
+namespace CustomizeHandlersDemo.Views;
 
-public partial class CustomizeEntryPage : ContentPage
+public partial class CustomizeEntryPartialMethodsPage : ContentPage
 {
-    public CustomizePartialEntryPage()
+    public CustomizeEntryPartialMethodsPage()
     {
         InitializeComponent();
     }
@@ -206,108 +221,44 @@ public partial class CustomizeEntryPage : ContentPage
     partial void ChangedHandler(object sender, EventArgs e);
     partial void ChangingHandler(object sender, HandlerChangingEventArgs e);
 
-    void OnHandlerChanged(object sender, EventArgs e) => ChangedHandler(sender, e);
-
-    void OnHandlerChanging(object sender, HandlerChangingEventArgs e) => ChangingHandler(sender, e);
+    void OnEntryHandlerChanged(object sender, EventArgs e) => ChangedHandler(sender, e);
+    void OnEntryHandlerChanging(object sender, HandlerChangingEventArgs e) => ChangingHandler(sender, e);
 }
 ```
 
-In this example, the two event handlers call partial methods named `ChangedHandler` and `ChangingHandler`, whose signatures are defined in the cross-platform partial class. The partial method implementations are then defined in the platform-specific partial class, that's located in the **Platforms** > **Android** folder of the project:
+> [!IMPORTANT]
+> The cross-platform partial class shouldn't be placed in any of the *Platforms* child folders of your project.
+
+In this example, the two event handlers call partial methods named `ChangedHandler` and `ChangingHandler`, whose signatures are defined in the cross-platform partial class. The partial method implementations are then defined in the platform-specific partial classes, which should be placed in the correct *Platforms* child folders to ensure that the build system only attempts to build platform code when building for the specific platform. For example, the following code shows the `CustomizeEntryPartialMethodsPage` class in the *Platforms* > *Windows* folder of the project:
 
 ```csharp
-using Microsoft.Maui.Platform;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 
-namespace CustomizeHandlersDemo;
-
-public partial class CustomizeEntryPage : ContentPage
+namespace CustomizeHandlersDemo.Views
 {
-    partial void ChangedHandler(object sender, EventArgs e)
+    public partial class CustomizeEntryPartialMethodsPage : ContentPage
     {
-        ((sender as Entry).Handler.PlatformView as Android.Views.View).FocusChange += OnFocusChange;
-    }
-
-    partial void ChangingHandler(object sender, HandlerChangingEventArgs e)
-    {
-        if (e.OldHandler != null)
+        partial void ChangedHandler(object sender, EventArgs e)
         {
-            (e.OldHandler.PlatformView as Android.Views.View).FocusChange -= OnFocusChange;
+            ((sender as Entry).Handler.PlatformView as TextBox).GotFocus += OnGotFocus;
         }
-    }
 
-    void OnFocusChange(object sender, EventArgs e)
-    {
-        var nativeView = sender as AndroidX.AppCompat.Widget.AppCompatEditText;
-
-        if (nativeView.IsFocused)
+        partial void ChangingHandler(object sender, HandlerChangingEventArgs e)
         {
-            nativeView.SetBackgroundColor(Colors.LightPink.ToPlatform());
+            if (e.OldHandler != null)
+            {
+                (e.OldHandler.PlatformView as TextBox).GotFocus -= OnGotFocus;
+            }
         }
-        else
+
+        void OnGotFocus(object sender, RoutedEventArgs e)
         {
-            nativeView.SetBackgroundColor(Colors.Transparent.ToPlatform());
+            var nativeView = sender as TextBox;
+            nativeView.SelectAll();
         }
     }
 }
 ```
 
-The advantage of this approach is that compiler preprocessing directives aren't required, and that the partial methods don't have to be implemented on each platform. If an implementation isn't provided on a platform, then the method and all calls to the method are removed at compile time. For information about partial methods, see [Partial methods](/dotnet/csharp/programming-guide/classes-and-structs/partial-classes-and-methods#partial-methods).
-
-## Handler-based views
-
-The following table lists the types that implement handler-based views in .NET MAUI:
-
-| View | Interface | Handler | Mapper |
-| -- | -- | -- | -- |
-| `ActivityIndicator` | `IActivityIndicator` | `ActivityIndicatorHandler` | `Mapper` |
-| `BlazorWebView` | `IBlazorWebView` | `BlazorWebViewHandler` | `BlazorWebViewMapper` |
-| `Border` | `IBorderView` | `BorderHandler` | `Mapper` |
-| `Button` | `IButton` | `ButtonHandler` | `Mapper` |
-| `CarouselView` | | `CarouselViewHandler` | `Mapper` |
-| `CheckBox` | `ICheckBox` | `CheckBoxHandler` | `Mapper` |
-| `CollectionView` |  | `CollectionViewHandler` | `Mapper` |
-| `ContentView` | `IContentView` | `ContentViewHandler` | `Mapper` |
-| `DatePicker` | `IDatePicker` | `DatePickerHandler` | `Mapper` |
-| `Editor` | `IEditor` | `EditorHandler` | `Mapper` |
-| `Ellipse` | | `ShapeViewHandler` | `Mapper` |
-| `Entry` | `IEntry` | `EntryHandler` | `Mapper` |
-| `GraphicsView` | `IGraphicsView` | `GraphicsViewHandler` | `Mapper` |
-| `Image` | `IImage` | `ImageHandler` | `Mapper` |
-| `ImageButton` | `IImageButton` | `ImageButtonHandler` | `Mapper` |
-| `IndicatorView` | `IIndicatorView` | `IndicatorViewHandler` | `Mapper` |
-| `Label` | `ILabel` | `LabelHandler` | `Mapper` |
-| `Line` | | `LineHandler` | `Mapper` |
-| `Path` | | `PathHandler` | `Mapper` |
-| `Picker` | `IPicker` | `PickerHandler` | `Mapper` |
-| `Polygon` | | `PolygonHandler` | `Mapper` |
-| `Polyline` | | `PolylineHandler` | `Mapper` |
-| `ProgressBar` | `IProgress` | `ProgressBarHandler` | `Mapper` |
-| `RadioButton` | `IRadioButton` | `RadioButtonHandler` | `Mapper` |
-| `Rectangle` | | `RectangleHandler` | `Mapper` |
-| `RefreshView` | `IRefreshView` | `RefreshViewHandler` | `Mapper` |
-| `RoundRectangle` | | `RoundRectangleHandler` | `Mapper` |
-| `ScrollView` | `IScrollView` | `ScrollViewHandler` | `Mapper` |
-| `SearchBar` | `ISearchBar` | `SearchBarHandler` | `Mapper` |
-| `Slider` | `ISlider` | `SliderHandler` | `Mapper` |
-| `Stepper` | `IStepper` | `StepperHandler` | `Mapper` |
-| `SwipeView` | `ISwipeView` | `SwipeViewHandler` | `Mapper` |
-| `Switch` | `ISwitch` | `SwitchHandler` | `Mapper` |
-| `TimePicker` | `ITimePicker` | `TimePickerHandler` | `Mapper` |
-| `WebView` | `IWebView` | `WebViewHandler` | `Mapper` |
-
-All handlers are in the `Microsoft.Maui.Handlers` namespace, with the following exceptions:
-
-- `CarouselViewHandler` and `CollectionViewHandler` are in the `Microsoft.Maui.Controls.Handlers.Items` namespace.
-- `LineHandler`, `PathHandler`, `PolygonHandler`, `PolylineHandler`, `RectangleHandler`, and `RoundRectangleHandler` are in the `Microsoft.Maui.Controls.Handlers` namespace.
-
-The interfaces in the table above are in the `Microsoft.Maui` namespace.
-
-<!-- Remove the text above once their are API docs that can be linked into -->
-
-## Renderer-based views
-
-The following legacy Xamarin.Forms views are backed by renderers, rather than handlers, and use a different customization approach:
-
-- `BoxView`
-- `Frame`
-- `ListView`
-- `TableView`
+The advantage of this approach is that conditional compilation isn't required, and that the partial methods don't have to be implemented on each platform. If an implementation isn't provided on a platform, then the method and all calls to the method are removed at compile time. For information about partial methods, see [Partial methods](/dotnet/csharp/programming-guide/classes-and-structs/partial-classes-and-methods#partial-methods).
