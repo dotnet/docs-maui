@@ -208,6 +208,7 @@
             - name: Align and position controls
               href: user-interface/align-position.md
             - name: Handlers
+              items:
                 - name: Overview
                   href: user-inteface/handlers/index.md
                 - name: Create custom controls
