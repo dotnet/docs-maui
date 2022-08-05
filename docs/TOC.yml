@@ -210,7 +210,7 @@
             - name: Handlers
               items:
                 - name: Overview
-                  href: user-inteface/handlers/index.md
+                  href: user-interface/handlers/index.md
                 - name: Create custom controls
                   href: user-interface/handlers/create.md
                 - name: Customize controls
