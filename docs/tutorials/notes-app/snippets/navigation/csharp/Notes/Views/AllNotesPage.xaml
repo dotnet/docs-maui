@@ -5,7 +5,7 @@
              Title="Your Notes">
     <!-- Add an item to the toolbar -->
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Clicked="Add_Clicked" />
+        <ToolbarItem Text="Add" Clicked="Add_Clicked" IconImageSource="{FontImage Glyph='&#x002B;', Color=White, Size=22}" />
     </ContentPage.ToolbarItems>
 
     <!-- Display notes in a list -->
@@ -24,8 +24,8 @@
         <CollectionView.ItemTemplate>
             <DataTemplate>
                 <StackLayout>
-                    <Label Text="{Binding Text}" FontSize="Medium"/>
-                    <Label Text="{Binding Date}" FontSize="Small" TextColor="Silver"/>
+                    <Label Text="{Binding Text}" FontSize="22"/>
+                    <Label Text="{Binding Date}" FontSize="14" TextColor="Silver"/>
                 </StackLayout>
             </DataTemplate>
         </CollectionView.ItemTemplate>

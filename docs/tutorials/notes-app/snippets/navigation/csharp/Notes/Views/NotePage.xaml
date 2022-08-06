@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Notes.Views.NotePage"
              Title="Note">
-    <VerticalStackLayout>
+    <VerticalStackLayout Spacing="10" Margin="10">
         <Editor x:Name="TextEditor"
                 Placeholder="Enter your note"
                 Text="{Binding Text}"
@@ -11,11 +11,11 @@
 
         <Grid ColumnDefinitions="*,*">
             <Button Text="Save"
-                    Clicked="SaveButton_Clicked" />
+                    Clicked="SaveButton_Clicked" Margin="2" />
 
             <Button Grid.Column="1"
                     Text="Delete"
-                    Clicked="DeleteButton_Clicked"/>
+                    Clicked="DeleteButton_Clicked" Margin="2" />
         </Grid>
     </VerticalStackLayout>
 </ContentPage>

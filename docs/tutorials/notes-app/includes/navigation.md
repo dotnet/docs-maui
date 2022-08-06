@@ -1,7 +1,7 @@
 ---
 author: adegeo
 ms.author: adegeo
-ms.date: 07/29/2022
+ms.date: 08/05/2022
 ms.topic: include
 ---
 
@@ -260,6 +260,9 @@ Next, the view needs to be designed to support the **AllNotes** model.
 The previous XAML introduces a few new concepts:
 
 - The `ContentPage.ToolbarItems` property contains a `ToolbarItem`. The buttons defined here usually display at the top of the app, along the page title. Depending on the device, though, it may be in a different position. When one of these buttons is pressed, the `Clicked` event is raised, just like a normal button.
+
+  The `ToolbarItem.IconImageSource` property sets the icon to display on the button. The icon can be any image resource defined by the project, however, in this example, a `FontImage` is used. A `FontImage` can use a single glyph from a font as an image.
+
 - The `CollectionView` control displays a collection of items, and in this case, is bound to the model's `Notes` property. The way each item is presented by the collection view is set through the  `CollectionView.ItemsLayout` and `CollectionView.ItemTemplate` properties.
 
   For each item in the collection, the `CollectionView.ItemTemplate` generates the declared XAML. The `BindingContext` of that XAML becomes the collection item itself, in this case, each individual note. The template for the note uses two labels, which are bound to the note's `Text` and `Date` properties.

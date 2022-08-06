@@ -1,7 +1,7 @@
 ---
 author: adegeo
 ms.author: adegeo
-ms.date: 08/01/2022
+ms.date: 08/05/2022
 ms.topic: include
 ---
 
@@ -19,4 +19,4 @@ In this tutorial, you learn how to:
 
 You'll use Visual Studio 2022 to create an application with which you can enter a note and save it to device storage. The final application is shown below:
 
-:::image type="content" source="../media/intro/screenshots1-sml.png" alt-text="Final screenshot of the notes app, listing the notes." lightbox="../media/intro/screenshots1.png"::: :::image type="content" source="../media/intro/screenshots2-sml.png" alt-text="Final screenshot of the notes app, adding a note." lightbox="../media/intro/screenshots2.png":::
+:::image type="content" source="../media/intro/final-notelist-small.png" alt-text="Final screenshot of the notes app, listing the notes." lightbox="../media/intro/final-notelist.png"::: :::image type="content" source="../media/intro/final-note-small.png" alt-text="Final screenshot of the notes app, adding a note." lightbox="../media/intro/final-note.png":::
