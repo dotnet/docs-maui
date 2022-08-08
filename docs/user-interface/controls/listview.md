@@ -326,7 +326,7 @@ The following example shows a `ListView` that can respond to single item selecti
 In this example, the `OnItemSelected` event handler is executed when the `ItemSelected` event fires, with the event handler retrieving the selected item:
 
 ```csharp
-void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
 {
     Monkey item = args.SelectedItem as Monkey;
 }
