@@ -27,10 +27,7 @@ ms.date: 04/13/2022
 
 ## Additional platform support
 
-.NET MAUI supports additional platforms beyond Android, iOS, macOS and Windows:
-
-- Tizen, supported by Samsung.
-- Linux, supported by the community.
+.NET MAUI also includes Tizen support, which is provided by Samsung. 
 
 <!-- ## Android platform support
 
