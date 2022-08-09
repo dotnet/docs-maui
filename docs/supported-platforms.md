@@ -27,7 +27,7 @@ ms.date: 04/13/2022
 
 ## Additional platform support
 
-.NET MAUI also includes Tizen support, which is provided by Samsung. 
+.NET MAUI also includes Tizen support, which is provided by Samsung.
 
 <!-- ## Android platform support
 
