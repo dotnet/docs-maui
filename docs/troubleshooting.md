@@ -8,8 +8,6 @@ ms.date: 05/25/2022
 
 This article describes some of the known issues with .NET MAUI, and how you can solve or work around them. The [.NET MAUI code repository](https://github.com/dotnet/maui/wiki/Known-Issues) also details some known issues.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 ## Templates are missing
 
 If you've installed Visual Studio 2022 and the **.NET Multi-platform App UI development** workload, but the .NET MAUI templates are missing, you most likely have a conflict with a .NET 7 preview version. To see if .NET 7 is being resolved as your current version of .NET, perform the following steps:
@@ -36,9 +34,9 @@ Use a `global.json` config file in the folder where you'll create the project. T
 
     ```dotnetcli
     dotnet new maui --list
-    
+
     These templates matched your input: 'maui'
-    
+
     Template Name                        Short Name        Language  Tags
     -----------------------------------  ----------------  --------  ---------------------------------------------------------
     .NET MAUI App                        maui              [C#]      MAUI/Android/iOS/macOS/Mac Catalyst/Windows/Tizen

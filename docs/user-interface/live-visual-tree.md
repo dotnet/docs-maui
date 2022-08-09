@@ -8,8 +8,6 @@ ms.date: 06/23/2022
 
 .NET Multi-platform App UI (.NET MAUI) Live Visual Tree is a Visual Studio feature that provides a tree view of the UI elements in your running .NET MAUI app.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 When your .NET MAUI app is running in debug configuration, with the debugger attached, the Live Visual Tree window can be opened by selecting **Debug > Windows > Live Visual Tree** from the Visual Studio menu bar:
 
 :::image type="content" source="media/live-visual-tree/live-visual-tree.png" alt-text="Screenshot of the Live Visual Tree window.":::

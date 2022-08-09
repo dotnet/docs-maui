@@ -105,7 +105,7 @@ Setting the `<GenerateAppxPackageOnBuild>` property to `true` packages the app a
 
 ## Publish
 
-To publish your app, open the **Developer Command Prompt for VS 2022 Preview** terminal and navigate to the folder for your .NET MAUI app project. Run the `dotnet publish` command, providing the following parameters:
+To publish your app, open the **Developer Command Prompt for VS 2022** terminal and navigate to the folder for your .NET MAUI app project. Run the `dotnet publish` command, providing the following parameters:
 
 | Parameter                    | Value                                                                               |
 |------------------------------|-------------------------------------------------------------------------------------|

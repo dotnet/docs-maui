@@ -8,8 +8,6 @@ ms.date: 02/23/2022
 
 The Android Emulator, installed as part of the **.NET Multi-Platform App UI development** workload, can be run in various configurations to simulate different Android devices. Each one of these configurations is created as a _virtual device_. In this article, you'll learn how to launch the emulator from Visual Studio and run your app in a virtual device. For more information about how to create and configure a virtual device, see [Managing virtual devices with the Android Device Manager](device-manager.md).
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 ## Launching the Emulator
 
 Near the top of Visual Studio, there's the **Solution Configurations** drop-down menu that can be used to select **Debug** or **Release** mode. Choosing **Debug** causes the debugger to attach to the application process running inside the emulator after the app starts. Choosing **Release** mode disables the debugger. When in release mode, you'll need to rely on app logging for debugging.
