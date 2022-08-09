@@ -10,8 +10,6 @@ zone_pivot_groups: devices-deployment
 
 In this tutorial, you'll learn how to create and run your first .NET Multi-platform App UI (.NET MAUI) app in Visual Studio 2022 17.3 Preview on Windows.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 :::zone pivot="devices-ios"
 
 Developing .NET MAUI apps for iOS requires a Mac build host. If you don't specifically need to target iOS and don't have a Mac, consider getting started with Android or Windows instead.
