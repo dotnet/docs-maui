@@ -8,7 +8,7 @@ zone_pivot_groups: devices-deployment
 
 # Build your first app
 
-In this tutorial, you'll learn how to create and run your first .NET Multi-platform App UI (.NET MAUI) app in Visual Studio 2022 17.3 Preview on Windows.
+In this tutorial, you'll learn how to create and run your first .NET Multi-platform App UI (.NET MAUI) app in Visual Studio 2022 17.3 on Windows.
 
 :::zone pivot="devices-ios"
 
@@ -22,19 +22,19 @@ Visual Studio for Mac support will arrive in a future release.
 
 :::zone-end
 
-## Get started with Visual Studio 2022 17.3 (Preview)
+## Get started with Visual Studio 2022 17.3
 
 :::zone pivot="devices-android"
 
-In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 17.3 Preview, and run it on an Android emulator:
+In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 17.3, and run it on an Android emulator:
 
-01. To create .NET MAUI apps, you'll need the latest Visual Studio 2022 17.3 Preview:
+01. To create .NET MAUI apps, you'll need the latest Visual Studio 2022 17.3:
 
-    - [Download 2022 Community Preview](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Community&channel=Preview&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2303)
+    - [Download 2022 Community](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Community&channel=Release&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2303)
 
-    - [Download 2022 Professional Preview](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Professional&channel=Preview&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2303)
+    - [Download 2022 Professional](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Professional&channel=Release&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2303)
 
-    - [Download 2022 Enterprise Preview](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Enterprise&channel=Preview&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2303)
+    - [Download 2022 Enterprise ](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Enterprise&channel=Release&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2303)
 
     Either install Visual Studio, or modify your installation, and install the .NET Multi-platform App UI development workload with its default optional installation options:
 
@@ -44,15 +44,15 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
 :::zone pivot="devices-ios"
 
-In this tutorial, you'll create your first .NET MAUI app in Visual Studio 17.3 Preview, and run it on an iOS simulator:
+In this tutorial, you'll create your first .NET MAUI app in Visual Studio 17.3, and run it on an iOS simulator:
 
-01. To create .NET MAUI apps, you'll need the latest Visual Studio 2022 17.3 Preview:
+01. To create .NET MAUI apps, you'll need the latest Visual Studio 2022 17.3:
 
-    - [Download 2022 Community Preview](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Community&channel=Preview&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2304)
+    - [Download 2022 Community](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Community&channel=Release&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2304)
 
-    - [Download 2022 Professional Preview](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Professional&channel=Preview&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2304)
+    - [Download 2022 Professional](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Professional&channel=Release&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2304)
 
-    - [Download 2022 Enterprise Preview](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Enterprise&channel=Preview&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2304)
+    - [Download 2022 Enterprise](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Enterprise&channel=Release&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2304)
 
     Either install Visual Studio, or modify your installation, and install the .NET Multi-platform App UI development workload with its default optional installation options:
 
@@ -62,15 +62,15 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 17.3 P
 
 :::zone pivot="devices-windows"
 
-In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 17.3 Preview, and run it on Windows:
+In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 17.3, and run it on Windows:
 
-01. To create .NET MAUI apps, you'll need the latest Visual Studio 2022 17.3 Preview:
+01. To create .NET MAUI apps, you'll need the latest Visual Studio 2022 17.3:
 
-    - [Download 2022 Community Preview](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Community&channel=Preview&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2302)
+    - [Download 2022 Community](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Community&channel=Release&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2302)
 
-    - [Download 2022 Professional Preview](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Professional&channel=Preview&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2302)
+    - [Download 2022 Professional](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Professional&channel=Release&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2302)
 
-    - [Download 2022 Enterprise Preview](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Enterprise&channel=Preview&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2302)
+    - [Download 2022 Enterprise](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Enterprise&channel=Release&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2302)
 
     Either install Visual Studio, or modify your installation, and install the .NET Multi-platform App UI development workload with its default optional installation options:
 
@@ -79,7 +79,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 :::zone-end
 
 <!-- markdownlint-disable MD029 -->
-02. Launch Visual Studio 2022 17.3 Preview, and in the start window click **Create a new project** to create a new project:
+02. Launch Visual Studio 2022 17.3, and in the start window click **Create a new project** to create a new project:
 
     :::image type="content" source="media/first-app/new-solution.png" alt-text="New solution.":::
 
@@ -226,6 +226,6 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
 ## Next steps
 
-In this tutorial, you've learnt how to create and run your first .NET Multi-platform App UI (.NET MAUI) app in Visual Studio 2022 17.3 Preview on Windows.
+In this tutorial, you've learnt how to create and run your first .NET Multi-platform App UI (.NET MAUI) app in Visual Studio 2022 17.3 on Windows.
 
 To learn the fundamentals of building an app with .NET MAUI, and more advanced topics such as local data storage and invoking REST-based web services, see [Build mobile and desktop apps with .NET MAUI](/learn/paths/build-apps-with-dotnet-maui/).
