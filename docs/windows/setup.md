@@ -10,8 +10,6 @@ ms.custom: updateeachrelease
 
 You can use your local Windows development computer to deploy and debug a .NET Multi-platform App UI (.NET MAUI) app. This article describes how to configure Windows to debug a .NET MAUI app.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 ## Configure Windows
 
 You must enable Developer Mode in Windows. Both Windows 10 and Windows 11 are supported.
@@ -42,7 +40,7 @@ In Visual Studio, set the **Debug Target** to **Framework (...)** > **net6.0-win
 
 :::image type="content" source="media/setup/vs-target-windows.png" alt-text="Visual Studio debug target set to Windows for .NET MAUI app.":::
 
-<!-- 
+<!--
 ## Start Menu entry
 
 The desktop framework used for a .NET MAUI Windows app is [WinUI 3](/windows/apps/winui/winui3/). When you run and debug in Visual Studio, the app is installed and registered with Windows. You'll see an entry in the start menu for the app, which you can uninstall when you're done working with the project.

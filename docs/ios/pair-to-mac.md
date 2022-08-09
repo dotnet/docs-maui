@@ -8,8 +8,6 @@ ms.date: 04/12/2022
 
 Building native iOS applications using .NET Multi-platform App UI (.NET MAUI) requires access to Apple's build tools, which only run on a Mac. Because of this, Visual Studio 2022 must connect to a network-accessible Mac to build .NET MAUI iOS apps.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 Visual Studio 2022's Pair to Mac feature discovers, connects to, authenticates with, and remembers Mac build hosts so that you can work productively on Windows.
 
 Pair to Mac enables the following software development workflow:

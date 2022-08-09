@@ -8,8 +8,6 @@ ms.date: 05/17/2022
 
 .NET Multi-platform App UI (.NET MAUI) single project takes the platform-specific development experiences you typically encounter while developing apps and abstracts them into a single shared project that can target Android, iOS, macOS, and Windows.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 .NET MAUI single project provides a simplified and consistent cross-platform development experience, regardless of the platforms being targeted. .NET MAUI single project provides the following features:
 
 - A single shared project that can target Android, iOS, macOS, Tizen, and Windows.
