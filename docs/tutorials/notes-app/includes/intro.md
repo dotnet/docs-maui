@@ -12,7 +12,7 @@ In this tutorial, you learn how to:
 > [!div class="checklist"]
 >
 > - Create a .NET MAUI Shell app.
-> - Run your app in the Android emulator.
+> - Run your app on your chosen platform.
 > - Define the user interface with eXtensible Application Markup Language (XAML), and interact with XAML elements through code.
 > - Create views and bind them to data.
 > - Use navigation to move to and from pages.

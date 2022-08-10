@@ -14,7 +14,7 @@ items:
 - durationInMinutes: 1
   content: |
     [!INCLUDE [](includes/intro.md)]
-- title: Create a new project
+- title: Create a project
   durationInMinutes: 5
   content: |
     [!INCLUDE [](includes/project.md)]

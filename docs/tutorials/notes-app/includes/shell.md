@@ -5,7 +5,7 @@ ms.date: 07/29/2022
 ms.topic: include
 ---
 
-When Visual Studio creates a .NET MAUI project, four important files are generated. These can be seen in the **Solution Explorer** pane of Visual Studio:
+When Visual Studio creates a .NET MAUI project, four important code files are generated. These can be seen in the **Solution Explorer** pane of Visual Studio:
 
 :::image type="content" source="../media/shell/vs-solution-explorer.png" alt-text="Solution Explorer showing the files for a .NET MAUI project in Visual Studio.":::
 
@@ -13,13 +13,13 @@ These files help get the .NET MAUI app configured and running. Each file serves 
 
 - _MauiProgram.cs_
 
-  This is a code file that bootstraps your app. The code in this file serves as the entry point of the app, which configures and starts the app. The template startup code points to the `App` class defined by the _App.xaml_ file.
+  This is a code file that bootstraps your app. The code in this file serves as the cross-platform entry point of the app, which configures and starts the app. The template startup code points to the `App` class defined by the _App.xaml_ file.
 
 - _App.xaml_ and _App.xaml.cs_
 
-  Just to keep things simple, both of these files are referred to as a single file. There are generally two files with any XAML file, the _.xaml_ file itself, and a corresponding code file that is a child item of it in the **Solution Explorer**. The _.xaml_ file contains XAML markup and the code file contains code created by the user for the XAML markup.
+  Just to keep things simple, both of these files are referred to as a single file. There are generally two files with any XAML file, the _.xaml_ file itself, and a corresponding code file that is a child item of it in the **Solution Explorer**. The _.xaml_ file contains XAML markup and the code file contains code created by the user to interact with the XAML markup.
 
-  The _App.xaml_ file contains app-wide XAML resources, such as colors, styles, or templates. The _App.xaml.cs_ file generally contains code that instantiates the Shell application and handles the lifecycle events of the app. In this project, it points to the `AppShell` class.
+  The _App.xaml_ file contains app-wide XAML resources, such as colors, styles, or templates. The _App.xaml.cs_ file generally contains code that instantiates the Shell application. In this project, it points to the `AppShell` class.
 
 - _AppShell.xaml_ and _AppShell.xaml.cs_
 
