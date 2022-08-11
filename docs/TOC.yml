@@ -223,7 +223,6 @@
                       href: user-interface/handlers/custom-transport-controls.md
                     - name: Register and consume the custom control
                       href: user-interface/handlers/register-and-consume.md
-                  href: user-interface/handlers/create.md
                 - name: Customize controls
                   href: user-interface/handlers/customize.md
             - name: Layouts

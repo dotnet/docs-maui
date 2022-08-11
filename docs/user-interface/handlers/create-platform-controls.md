@@ -4,6 +4,8 @@ description: ""
 ms.date: 08/02/2022
 ---
 
+https://github.com/xamarin/docs-archive/blob/master/Docs/Video%20Player/player-creation.md
+
 # Create platform controls
 
 .NET Multi-platform App UI (.NET MAUI)
