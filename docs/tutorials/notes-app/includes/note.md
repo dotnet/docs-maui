@@ -5,7 +5,7 @@ ms.date: 07/29/2022
 ms.topic: include
 ---
 
-Now that the app contains the `MainPage` and `AboutPage`, you can start creating the rest of the app. First, you'll create a page that represents a note, and then you'll create the code to load and save the note.
+Now that the app contains the `MainPage` and `AboutPage`, you can start creating the rest of the app. First, you'll create a page that allows a user to create and display note, and then you'll write the code to load and save the note.
 
 The note page will display the note and allow you to either save or delete it. First, add the new page to the project:
 
@@ -13,23 +13,24 @@ The note page will display the note and allow you to either save or delete it. F
 
 01. In the **Add New Item** dialog, select **.NET MAUI** in the template list on the left-side of the window. Next, select the **.NET MAUI ContentPage (XAML)** template. Name the file _NotePage.xaml_, and then select **Add**.
 
-The _NotePage.xaml_ file will open in a new tab, displaying all of the XAML markup that represents the UI of the page. Replace the XAML code markup the following markup:
+01. The _NotePage.xaml_ file will open in a new tab, displaying all of the XAML markup that represents the UI of the page. Replace the XAML code markup the following markup:
 
-:::code language="xaml" source="../snippets/note/csharp/Notes/NotePage.xaml":::
+    TODO: Update this with grid spacing
+    :::code language="xaml" source="../snippets/note/csharp/Notes/NotePage.xaml":::
 
-Save the file by pressing <kbd>CTRL + S</kbd> or by selecting the menu **File** > **Save NotePage.xaml**.
+01. Save the file by pressing <kbd>CTRL + S</kbd> or by selecting the menu **File** > **Save NotePage.xaml**.
 
 Let's break down the key parts of the XAML controls placed on the page:
 
-- `<VerticalStackLayout>` arranges its children controls vertically, one after the other.
-- `<Editor>` is a text editor control, and is the first control inside of `VerticalStackLayout`.
+- `<VerticalStackLayout>` arranges its children controls vertically, one below the other.
+- `<Editor>` is a multi-line text editor control, and is the first control inside of `VerticalStackLayout`.
 - `<Grid>` is a layout control, and is the second control inside of `VerticalStackLayout`.
 
   This control defines columns and rows to create cells. Child controls are placed within those cells.
 
-  The `Grid` starts with a single row and column, creating a single cell. Columns are defined with a width, and the `*` value for width tells the column to fill up as much space as possible. The previous snippet defined two columns, both using as much space as possible, which evenly distributes the columns in the allotted space: `ColumnDefinitions="*,*"`. The column sizes are separated by a `,` character.
+  By default, the `Grid` control contains a single row and column, creating a single cell. Columns are defined with a width, and the `*` value for width tells the column to fill up as much space as possible. The previous snippet defined two columns, both using as much space as possible, which evenly distributes the columns in the allotted space: `ColumnDefinitions="*,*"`. The column sizes are separated by a `,` character.
 
-  Columns and rows defined by a grid are indexed starting at 0. So the first column would be index 0, the second column is index 1, and so on.
+  Columns and rows defined by a `Grid` are indexed starting at 0. So the first column would be index 0, the second column is index 1, and so on.
 
 - Two `<Button>` controls are inside the `<Grid>` and assigned a column. If a child control doesn't define a column assignment, it's automatically assigned to the first column. In this markup, the first button is the "Save" button and automatically assigned to the first column, column 0. The second button is the "Delete" button and assigned to the second column, column 1.
 
@@ -57,7 +58,7 @@ public partial class NotePage : ContentPage
 }
 ```
 
-The `InitializeComponent` method reads the XAML markup and initializes all of the objects defined by the markup. The objects are connected to their parent-child relationships, and the event handlers defined in code are attached to events set in the XAML.
+The `InitializeComponent` method reads the XAML markup and initializes all of the objects defined by the markup. The objects are connected in their parent-child relationships, and the event handlers defined in code are attached to events set in the XAML.
 
 Now that you understand a little more about code-behind files, you're going to add code to the _NotePage.xaml.cs_ code-behind file to handle loading and saving notes.
 
@@ -65,7 +66,7 @@ Now that you understand a little more about code-behind files, you're going to a
 
     :::code language="csharp" source="../snippets/note/csharp/Notes/NotePage.xaml.cs" id="filename_variable" highlight="3":::
 
-    The code above constructs a path to the file, storing it in the app data directory of the device. The file name is _notes.txt_.
+    The code above constructs a path to the file, storing it in the app's local data directory. The file name is _notes.txt_.
 
 01. In the constructor of the class, after the `InitializeComponent` method is called, read the file from the device and store its contents in the `TextEditor` control's `Text` property:
 
@@ -75,13 +76,13 @@ Now that you understand a little more about code-behind files, you're going to a
 
     :::code language="csharp" source="../snippets/note/csharp/Notes/NotePage.xaml.cs" id="buttons":::
 
-    The `SaveButton_Clicked` method writes the text in the editor control, to the file represented by the `_fileName` variable.
+    The `SaveButton_Clicked` method writes the text in the `Editor` control, to the file represented by the `_fileName` variable.
 
-    The `DeleteButton_Clicked` method first checks if the file represented by the `_fileName` variable, and if it exists, deletes it. Next, the `TextEditor` control's text is cleared.
+    The `DeleteButton_Clicked` method first checks if the file represented by the `_fileName` variable, and if it exists, deletes it. Next, the `Editor` control's text is cleared.
 
 01. Save the file by pressing <kbd>CTRL + S</kbd> or by selecting the menu **File** > **Save NotePage.xaml.cs**.
 
-The final code for the code-behind file should look like that following:
+The final code for the code-behind file should look like the following:
 
 :::code language="csharp" source="../snippets/note/csharp/Notes/NotePage.xaml.cs" id="full":::
 

@@ -23,19 +23,11 @@ These files help get the .NET MAUI app configured and running. Each file serves 
 
 - _AppShell.xaml_ and _AppShell.xaml.cs_
 
-  This file defines the `AppShell` class, which is used as visual hierarchy of the app. The code-behind file, _AppShell.xaml.cs_ creates a navigation route to display _MainPage.xaml_ as the startup page of the app.
+  This file defines the `AppShell` class, which is used to define visual hierarchy of the app.
 
 - _MainPage.xaml_ and _MainPage.xaml.cs_
 
   This is the startup page displayed by the app. The _MainPage.xaml_ file defines the UI (user interface) of the page. _MainPage.xaml.cs_ contains the code-behind for the XAML, like code for a button click event.
-
-The default template for .NET MAUI creates a counting app, feel free to run the app by pressing <kbd>F5</kbd> or pressing the play button at the top of Visual Studio:
-
-:::image type="content" source="../media/shell/vs-debug-button.png" alt-text="Visual Studio's Debug Target button with the text Windows Machine.":::
-
-After you're done testing the default app, close it and return to Visual Studio. If you're using the Android emulator, terminate the app in the virtual device or press the stop button at the top of Visual Studio:
-
-:::image type="content" source="../media/shell/vs-stop-button.png" alt-text="Visual Studio's stop debugging button.":::
 
 ## Add an "about" page
 
@@ -49,20 +41,20 @@ The first customization you'll do is adding another page to the project. This pa
 
     :::image type="content" source="../media/shell/vs-about-page.png" alt-text="Adding a new ContentPage to the project. The ContentPage is named AboutPage.xaml.":::
 
-The _AboutPage.xaml_ file will open a new document tab, displaying all of the XAML markup that represents the UI of the page. Replace the XAML markup with the following markup:
+01. The _AboutPage.xaml_ file will open a new document tab, displaying all of the XAML markup that represents the UI of the page. Replace the XAML markup with the following markup:
 
-:::code language="xaml" source="../snippets/shell/csharp/Notes/AboutPage.xaml":::
+    :::code language="xaml" source="../snippets/shell/csharp/Notes/AboutPage.xaml":::
 
-Save the file by pressing <kbd>CTRL+S</kbd> or by selecting the menu **File** > **Save AboutPage.xaml**.
+01. Save the file by pressing <kbd>CTRL+S</kbd> or by selecting the menu **File** > **Save AboutPage.xaml**.
 
 Let's break down the key parts of the XAML controls placed on the page:
 
 - `<ContentPage>` is the root object for the `AboutPage` class.
-- `<VerticalStackLayout>` is the only child object of the `ContentPage`. `ContentPage` can only have one child object. The `VerticalStackLayout` type can have multiple children. This control arranges its children vertically, one after the other.
+- `<VerticalStackLayout>` is the only child object of the `ContentPage`. `ContentPage` can only have one child object. The `VerticalStackLayout` type can have multiple children. This layout control arranges its children vertically, one after the other.
 - `<HorizontalStackLayout>` operates the same as a `<VerticalStackLayout>`, except its children are arranged horizontally.
 - `<Image>` displays an image, in this case it's using the `dotnet_bot.png` image that comes with every .NET MAUI project.
 - `<Label>` controls display text.
-- `<Button>` controls can be pressed by the user, which raises the `Clicked` event. You can run code in response to the `Clicked` event.
+- `<Button>` controls can be pressed by the user, which raise the `Clicked` event. You can run code in response to the `Clicked` event.
 - `Clicked="LearnMore_Clicked"`
 
   The `Clicked` event of the button is assigned to the `LearnMore_Clicked` event handler, defined in the code-behind file. You'll create this code in the next step.
@@ -96,22 +88,34 @@ Now that the XAML and code-behind of the `AboutPage` is complete, you'll need to
 
 ## Modify the app Shell
 
-As noted at the start of this article, the `AppShell` class defines an app's visual hierarchy, the XAML markup used in creating the UI of the app. Double-click the _AppShell.xaml_ file in the **Solution Explorer** pane to open the XAML editor. Replace the XAML markup with the following code:
+As noted at the start of this article, the `AppShell` class defines an app's visual hierarchy, the XAML markup used in creating the UI of the app. Update the XAML to add a `TabBar` control:
 
-:::code language="xaml" source="../snippets/shell/csharp/Notes/AppShell.xaml":::
+01. Double-click the _AppShell.xaml_ file in the **Solution Explorer** pane to open the XAML editor. Replace the XAML markup with the following code:
 
-Save the file by pressing <kbd>CTRL+S</kbd> or by selecting the menu **File** > **Save AppShell.xaml**.
+    :::code language="xaml" source="../snippets/shell/csharp/Notes/AppShell.xaml":::
+
+01. Save the file by pressing <kbd>CTRL+S</kbd> or by selecting the menu **File** > **Save AppShell.xaml**.
 
 Let's break down the key parts of the XAML:
 
-- `<Shell>` is the root object of this class type.
+- `<Shell>` is the root object of the XAML markup.
 - `<TabBar>` is the content of the `Shell`.
-- Two `<ShellContent>` objects inside of the `<TabBar>`. Before you replaced the template code, there was a single `<ShellContent>` object, pointing to the `MainPage` page.
+- Two `<ShellContent>` objects inside of the `<TabBar>`. Before you replaced the template code, there was a single `<ShellContent>` object, pointing to the `MainPage` page. The page is only created when it's navigated.
 
 The `TabBar` and its children don't represent any user interface elements, but rather the organization of the app's visual hierarchy. Shell will take these objects and produce the user interface for the content.
 
 Each `<ShellContent>` object is pointing to a page to display. This is set by the `ContentTemplate` property.
 
-Run the app and you'll see that there are two tabs: **Notes** and **About**. Press the **About** tab and the app navigates to the `AboutPage` you created. Press on the **Learn More...** button to open the web browser.
+## Run the app
 
-Stop the app and return to Visual Studio.
+Run the app by pressing <kbd>F5</kbd> or pressing the play button at the top of Visual Studio:
+
+:::image type="content" source="../media/shell/vs-debug-button.png" alt-text="Visual Studio's Debug Target button with the text Windows Machine.":::
+
+You'll see that there are two tabs: **Notes** and **About**. Press the **About** tab and the app navigates to the `AboutPage` you created. Press on the **Learn More...** button to open the web browser.
+
+TODO: Add screenshot
+
+Close the app and return to Visual Studio. If you're using the Android emulator, terminate the app in the virtual device or press the stop button at the top of Visual Studio:
+
+:::image type="content" source="../media/shell/vs-stop-button.png" alt-text="Visual Studio's stop debugging button.":::
