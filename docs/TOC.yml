@@ -212,6 +212,17 @@
                 - name: Overview
                   href: user-interface/handlers/index.md
                 - name: Create custom controls
+                  items:
+                    - name: Create the control and its handler
+                      href: user-interface/handlers/create-handler.md
+                    - name: Create the platform controls
+                      href: user-interface/handlers/create-platform-controls.md
+                    - name: Play video
+                      href: user-interface/handlers/play-video.md
+                    - name: Custom transport controls
+                      href: user-interface/handlers/custom-transport-controls.md
+                    - name: Register and consume the custom control
+                      href: user-interface/handlers/register-and-consume.md
                   href: user-interface/handlers/create.md
                 - name: Customize controls
                   href: user-interface/handlers/customize.md
