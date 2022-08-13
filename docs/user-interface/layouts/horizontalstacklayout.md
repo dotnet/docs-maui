@@ -153,7 +153,7 @@ The following XAML shows an example of nesting `VerticalStackLayout` objects in 
 </ContentPage>
 ```
 
-In this example, the parent `HorizontalStackLayout` contains two nested `HorizontalStackLayout` objects:
+In this example, the parent `HorizontalStackLayout` contains two nested `VerticalStackLayout` objects:
 
 :::image type="content" source="media/horizontalstacklayout/nested.png" alt-text="HorizontalStackLayout displaying two nested HorizontalStackLayout objects screenshot.":::
 
