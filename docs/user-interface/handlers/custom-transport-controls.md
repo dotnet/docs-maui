@@ -86,7 +86,7 @@ In this example, the `Video` control sets the `AreTransportControlsEnabled` prop
 
 When the video is playing, the play button is updated to a pause button:
 
-:::image type="content" source="media/custom-transport-controls/pause-stop.png" alt-text="Screenshot of pause and stop buttons.:::
+:::image type="content" source="media/custom-transport-controls/pause-stop.png" alt-text="Screenshot of pause and stop buttons.":::
 
 The UI also includes an `ActivityIndicator` that's displayed while the video is loading. Data triggers are used to enable and disable the `ActivityIndicator` and the buttons, and to switch the first button between play and pause. For more information about data triggers, see [Data triggers](~/fundamentals/triggers.md#data-triggers).
 

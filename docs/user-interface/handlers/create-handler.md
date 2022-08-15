@@ -4,15 +4,13 @@ description: ""
 ms.date: 08/02/2022
 ---
 
-https://github.com/dotnet/maui/wiki/Porting-Custom-Renderers-to-Handlers
-
-Each handler class exposes the native view that implements the cross-platform view via its `PlatformView` property. This property can be accessed to set native view properties, invoke native view methods, and subscribe to native view events. In addition, the cross-platform view implemented by the handler is exposed via its `VirtualView` property.
-
----
-
 # Create custom controls
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-createhandler)
+
+https://github.com/dotnet/maui/wiki/Porting-Custom-Renderers-to-Handlers
+
+Each handler class exposes the native view that implements the cross-platform view via its `PlatformView` property. This property can be accessed to set native view properties, invoke native view methods, and subscribe to native view events. In addition, the cross-platform view implemented by the handler is exposed via its `VirtualView` property.
 
 .NET Multi-platform App UI (.NET MAUI)
 
@@ -43,7 +41,7 @@ The process for creating a cross-platform .NET MAUI custom control, whose platfo
 1. In your handler class, create the `PropertyMapper` dictionary, which defines the actions to take when cross-platform property changes occur. For more information, see [Property mappers](#property-mappers).
 1. Optionally, in your handler class, create the `CommandMapper` dictionary, which defines the actions to take when the cross-platform control sends instructions to the native views that implement the control. For more information, see [Command mappers](#command-mappers).
 1. Create `partial` handler classes for each platform, create the native views that implement the cross-platform control. For more information, see [Create platform controls](create-platform-controls.md).
-1. Register the handler using the `ConfigureMauiHandlers` and `AddHandler` methods in your app's `MauiProgram` class. For more information, see [Register the handler](#register-the-handler).
+1. Register the handler using the `ConfigureMauiHandlers` and `AddHandler` methods in your app's `MauiProgram` class. For more information, see [Register the handler](register-and-consume.md).
 
 Then, the cross-platform control can be consumed. For more information, see []().
 
@@ -177,7 +175,7 @@ namespace VideoDemos.Handlers
 }
 ```
 
-The handler class is a partial class whose implementation will be completed on each platform in an additional partial class. It implements the `VirtualView` and `PlatformView` properties that are defined in the interface, using [expression-bodied members](/dotnet/csharp/programming-guide/statements-expressions-operators/expression-bodied-members) to return `VirtualView` and `PlatformView` properties that are defined in .NET MAUI's generic `ViewHandler` class. This will be discussed further in [Implement the handler per platform](#implement-the-handler-per-platform).
+The handler class is a partial class whose implementation will be completed on each platform in an additional partial class. It implements the `VirtualView` and `PlatformView` properties that are defined in the interface, using [expression-bodied members](/dotnet/csharp/programming-guide/statements-expressions-operators/expression-bodied-members) to return `VirtualView` and `PlatformView` properties that are defined in .NET MAUI's generic `ViewHandler` class. This will be discussed further in [Create platform controls](create-platform-controls.md).
 
 The conditional `using` statements are identical to those defined in the handler interface, and define the native view that implements the cross-platform control on each platform. As with the interface, the final conditional `using` statement defines `PlatformView` to be equal to `System.Object`. This is necessary so that the `PlatformView` type can be used within the class for usage across all platforms. The alternative would be to have to define the `PlatformView` property once per platform, using conditional compilation.
 
