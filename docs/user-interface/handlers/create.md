@@ -33,7 +33,7 @@ The process for creating a cross-platform .NET MAUI custom control, whose platfo
 1. Create a `partial` handler class, that implements the handler interface. For more information, see [Create the handler](#create-the-handler).
 1. In the handler class, create a `PropertyMapper` dictionary, which defines the actions to take when cross-platform property changes occur. For more information, see [Create the property mapper](#create-the-property-mapper).
 1. Optionally, in your handler class, create a `CommandMapper` dictionary, which defines the actions to take when the cross-platform control sends instructions to the native views that implement the cross-platform control. For more information, see [Create the command mapper](#create-the-command-mapper).
-1. Create `partial` handler classes for each platform, that create the native views that implement the cross-platform control. For more information, see [Create platform controls](#create-platform-controls).
+1. Create `partial` handler classes for each platform, that create the native views that implement the cross-platform control. For more information, see [Create the platform controls](#create-the-platform-controls).
 1. Register the handler using the `ConfigureMauiHandlers` and `AddHandler` methods in your app's `MauiProgram` class. For more information, see [Register the handler](#register-the-handler).
 
 Then, the cross-platform control can be consumed. For more information, see [Consume the cross-platform control](#consume-the-cross-platform-control).
@@ -42,7 +42,7 @@ The architecture of the `Video` control is shown in the following diagram:
 
 :::image type="content" source="media/create/video-handler.png" alt-text="Video handler architecture." border="false":::
 
-The `Video` control implements the `IVideo` interface. Mapping of the cross-platform APIs to the native view APIs is performed by the `VideoHandler` class on each platform, which maps the `Video` control to the `MauiVideoPlayer` class. On iOS and Mac Catalyst, the `MauiVideoPlayer` class uses the `AVPlayer` type to provide video playback. On Android, the `MauiVideoPlayer` class uses the `VideoView` type to provide video playback.
+The `Video` control implements the `IVideo` interface. Mapping of the cross-platform APIs to the native view APIs is performed by the `VideoHandler` class on each platform, which maps the `IVideo` interface to the `MauiVideoPlayer` class. On iOS and Mac Catalyst, the `MauiVideoPlayer` class uses the `AVPlayer` type to provide video playback. On Android, the `MauiVideoPlayer` class uses the `VideoView` type to provide video playback.
 
 ## Create the cross-platform control interface
 
@@ -174,7 +174,7 @@ namespace VideoDemos.Handlers
 }
 ```
 
-The handler class is a partial class whose implementation will be completed on each platform in an additional partial class. It implements the `VirtualView` and `PlatformView` properties that are defined in the interface, using [expression-bodied members](/dotnet/csharp/programming-guide/statements-expressions-operators/expression-bodied-members) to return `VirtualView` and `PlatformView` properties that are defined in .NET MAUI's generic `ViewHandler` class. This will be discussed further in [Create platform controls](create-platform-controls.md).
+The handler class is a partial class whose implementation will be completed on each platform in an additional partial class. It implements the `VirtualView` and `PlatformView` properties that are defined in the interface, using [expression-bodied members](/dotnet/csharp/programming-guide/statements-expressions-operators/expression-bodied-members) to return `VirtualView` and `PlatformView` properties that are defined in .NET MAUI's generic `ViewHandler` class. This will be discussed further in [Create the platform controls](#create-the-platform-controls).
 
 The conditional `using` statements are identical to those defined in the handler interface, and define the native view that implements the cross-platform control on each platform. As with the interface, the final conditional `using` statement defines `PlatformView` to be equal to `System.Object`. This is necessary so that the `PlatformView` type can be used within the class for usage across all platforms. The alternative would be to have to define the `PlatformView` property once per platform, using conditional compilation.
 
@@ -276,7 +276,7 @@ Each of the platform handler implementations should override the following metho
 - `DisconnectHandler`, which should perform any native view cleanup, such as unsubscribing from events and disposing objects.
 
 > [!IMPORTANT]
-> The `DisconnectHandler` method is intentionally not invoked by .NET MAUI. Instead, you must invoke it yourself from a suitable location in your app's lifecycle. For more information, see [Consume the cross-platform control](register-and-consume.md#consume-the-cross-platform-control).
+> The `DisconnectHandler` method is intentionally not invoked by .NET MAUI. Instead, you must invoke it yourself from a suitable location in your app's lifecycle. For more information, see [Consume the cross-platform control](consume-the-cross-platform-control).
 
 In addition, each platform handler implementation should implement the Actions that are defined in the property mapper and command mapper dictionaries.
 
@@ -510,7 +510,7 @@ public class MauiVideoPlayer : CoordinatorLayout
 
 The transport controls fade out if they're not used but can be restored by tapping on the video.
 
-If the `AreTransportControlsEnabled` property of the `Video` control is set to `false`, the `MediaController` is removed as the media player of the `VideoView`. In this scenario, you can then control video playback programmatically or supply your own transport controls. For more information, see [Custom transport controls](custom-transport-controls.md).
+If the `AreTransportControlsEnabled` property of the `Video` control is set to `false`, the `MediaController` is removed as the media player of the `VideoView`. In this scenario, you can then control video playback programmatically or supply your own transport controls. For more information, see [Custom transport controls](#custom-transport-controls).
 
 ### iOS
 
@@ -714,7 +714,7 @@ public class MauiVideoPlayer : UIView
 
 The transport controls fade out if they're not used but can be restored by tapping on the video.
 
-If the `AreTransportControlsEnabled` property of the `Video` control is set to `false`, the `AVPlayerViewController` doesn't show its playback controls. In this scenario, you can then control video playback programmatically or supply your own transport controls. For more information, see [Custom transport controls](custom-transport-controls.md).
+If the `AreTransportControlsEnabled` property of the `Video` control is set to `false`, the `AVPlayerViewController` doesn't show its playback controls. In this scenario, you can then control video playback programmatically or supply your own transport controls. For more information, see [Custom transport controls](#custom-transport-controls).
 
 ### Windows
 
