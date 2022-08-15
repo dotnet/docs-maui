@@ -426,7 +426,7 @@ namespace VideoDemos.Platforms.Android
                 }
             };
 
-            // Create a ViedoView and position it in the RelativeLayout
+            // Create a VideoView and position it in the RelativeLayout
             _videoView = new VideoView(context)
             {
                 LayoutParameters = new RelativeLayout.LayoutParams(LayoutParams.MatchParent, LayoutParams.MatchParent)
