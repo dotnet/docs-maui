@@ -4,7 +4,7 @@ description: "Learn how to customize .NET MAUI handlers, to augment the appearan
 ms.date: 08/15/2022
 ---
 
-# Customize .NET MAUI controls with handlers
+# Customize controls with handlers
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-customizehandler)
 
@@ -73,7 +73,7 @@ In this example, the `Entry` customization occurs in a page class. Therefore, al
 
 For more information about mappers, see [Mappers](index.md#mappers).
 
-## Customize specific control instances
+## Customize a specific control instance
 
 Handlers are global, and customizing a handler for a control will result in all controls of the same type being customized in your app. However, handlers for specific control instances can be customized by subclassing the control, and then by modifying the handler for the base control type only when the control is of the subclassed type. For example, to customize a specific `Entry` control on a page that contains multiple `Entry` controls, you should first subclass the `Entry` control:
 
@@ -112,19 +112,18 @@ Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping("MyCustomization", (
 
 If the handler customization is performed in your `App` class, any `MyEntry` instances in the app will be customized as per the handler modification.
 
-<!--
-## Subscribe to native view events
+## Customize a control using the handler lifecycle
 
-A handlers `PlatformView` property provides access to the native view that implements the cross-platform control on each platform. This property enables you to set native view properties, invoke native view methods, and subscribe to native view events. Subscribing to a native view event should occur when the `HandlerChanged` event is raised, which indicates that the native view that implements the cross-platform control is available and initialized. Similarly, unsubscribing from the native event should occur when the `HandlerChanging` event is raised, which indicates that the control's handler is about to be removed from the cross-platform control. For more information about handler lifecycle events, see [Handler lifecycle](index.md#handler-lifecycle).
+All handler-based .NET MAUI controls support `HandlerChanging` and `HandlerChanged` events. The `HandlerChanged` event is raised when the native view that implements the cross-platform control is available and initialized. The `HandlerChanging` event is raised when the control's handler is about to be removed from the cross-platform control. For more information about handler lifecycle events, see [Handler lifecycle](index.md#handler-lifecycle).
 
-To subscribe to, and unsubscribe from, native view events you must register event handlers for the `HandlerChanged` and `HandlerChanging` events on the cross-platform control being customized:
+The handler lifecycle can be used to perform handler customization. For example, to subscribe to, and unsubscribe from, native view events you must register event handlers for the `HandlerChanged` and `HandlerChanging` events on the cross-platform control being customized:
 
 ```xaml
 <Entry HandlerChanged="OnEntryHandlerChanged"
        HandlerChanging="OnEntryHandlerChanging" />
 ```
 
-Handlers can be customized per platform by using conditional compilation, or by using partial classes to organize your code into platform-specific folders and files. Each approach will be discussed in turn, by customizing an `Entry` on Android.
+Handlers can be customized per platform by using conditional compilation, or by using partial classes to organize your code into platform-specific folders and files. Each approach will be discussed in turn, by customizing an `Entry` so that all of its text is selected when it gains focus.
 
 ### Conditional compilation
 
@@ -252,5 +251,3 @@ namespace CustomizeHandlersDemo.Views
 ```
 
 The advantage of this approach is that conditional compilation isn't required, and that the partial methods don't have to be implemented on each platform. If an implementation isn't provided on a platform, then the method and all calls to the method are removed at compile time. For information about partial methods, see [Partial methods](/dotnet/csharp/programming-guide/classes-and-structs/partial-classes-and-methods#partial-methods).
-
--->
