@@ -6,7 +6,7 @@ ms.date: 08/02/2022
 
 ## Register the handler
 
-<!-- sample link goes here -->
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-createhandler)
 
 A custom control and its handler must be registered with an app, before it can be consumed in the app. This should occur in the `CreateMauiApp` in the `MauiProgram` class in your app project, which is the cross-platform entry point for the app:
 

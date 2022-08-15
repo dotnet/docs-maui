@@ -7,7 +7,7 @@ ms.date: 08/02/2022
 
 # Create platform controls
 
-<!-- sample link goes here -->
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-createhandler)
 
 .NET Multi-platform App UI (.NET MAUI)
 

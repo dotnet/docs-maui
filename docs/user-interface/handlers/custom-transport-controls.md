@@ -6,7 +6,7 @@ ms.date: 08/02/2022
 
 # Custom transport controls
 
-<!-- sample link goes here -->
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-createhandler)
 
 The transport controls of a video player include buttons that play, pause, and stop the video. These buttons are often identified with familiar icons rather than text, and the play and pause buttons are often combined into one button.
 
