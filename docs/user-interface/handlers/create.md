@@ -24,6 +24,12 @@ Video controls require *transport controls*, which are buttons for playing and p
 
 A more sophisticated video control would have additional features, such as a volume control, a mechanism to interrupt video playback when a call is received, and a way of keeping the screen active during playback.
 
+The architecture of the `Video` control is shown in the following diagram:
+
+:::image type="content" source="media/create/video-handler.png" alt-text="Video handler architecture." border="false":::
+
+The `Video` control implements the `IVideo` interface. Mapping of the cross-platform APIs to the native view APIs is performed by the `VideoHandler` class on each platform, which maps the `IVideo` interface to the `MauiVideoPlayer` class. On iOS and Mac Catalyst, the `MauiVideoPlayer` class uses the `AVPlayer` type to provide video playback. On Android, the `MauiVideoPlayer` class uses the `VideoView` type to provide video playback.
+
 The process for creating a cross-platform .NET MAUI custom control, whose platform implementations are provided by handlers, is as follows:
 
 1. Create an interface for the cross-platform control. For more information, see [Create the cross-platform control interface](#create-the-cross-platform-control-interface).
@@ -37,12 +43,6 @@ The process for creating a cross-platform .NET MAUI custom control, whose platfo
 1. Register the handler using the `ConfigureMauiHandlers` and `AddHandler` methods in your app's `MauiProgram` class. For more information, see [Register the handler](#register-the-handler).
 
 Then, the cross-platform control can be consumed. For more information, see [Consume the cross-platform control](#consume-the-cross-platform-control).
-
-The architecture of the `Video` control is shown in the following diagram:
-
-:::image type="content" source="media/create/video-handler.png" alt-text="Video handler architecture." border="false":::
-
-The `Video` control implements the `IVideo` interface. Mapping of the cross-platform APIs to the native view APIs is performed by the `VideoHandler` class on each platform, which maps the `IVideo` interface to the `MauiVideoPlayer` class. On iOS and Mac Catalyst, the `MauiVideoPlayer` class uses the `AVPlayer` type to provide video playback. On Android, the `MauiVideoPlayer` class uses the `VideoView` type to provide video playback.
 
 ## Create the cross-platform control interface
 
@@ -276,7 +276,7 @@ Each of the platform handler implementations should override the following metho
 - `DisconnectHandler`, which should perform any native view cleanup, such as unsubscribing from events and disposing objects.
 
 > [!IMPORTANT]
-> The `DisconnectHandler` method is intentionally not invoked by .NET MAUI. Instead, you must invoke it yourself from a suitable location in your app's lifecycle. For more information, see [Consume the cross-platform control](consume-the-cross-platform-control).
+> The `DisconnectHandler` method is intentionally not invoked by .NET MAUI. Instead, you must invoke it yourself from a suitable location in your app's lifecycle. For more information, see [Consume the cross-platform control](#consume-the-cross-platform-control).
 
 In addition, each platform handler implementation should implement the Actions that are defined in the property mapper and command mapper dictionaries.
 
@@ -909,7 +909,7 @@ public static void MapSource(IVideoHandler handler, IVideo video)
 
 The `MapSource` method in turns calls the `UpdateSource` method on the handler's `PlatformView` property. The `PlatformView` property, which is of type `MauiVideoPlayer`, represents the native view that provides the video player implementation on each platform.
 
-#### Android
+##### Android
 
 Video is played on Android with a `VideoView`. The following code example shows how the `UpdateSource` method handles the `Source` property when it's of type `UriVideoSource`:
 
@@ -963,7 +963,7 @@ When processing objects of type `UriVideoSource`, the `SetVideoUri` method of `V
 
 The `AutoPlay` property has no equivalent on `VideoView`, so the `Start` method is called if a new video has been set.
 
-#### iOS and Mac Catalyst
+##### iOS and Mac Catalyst
 
 To play a video on iOS and Mac Catalyst, an object of type `AVAsset` is created to encapsulate the video, and that is used to create an `AVPlayerItem`, which is then handed off to the `AVPlayer` object. The following code example shows how the `UpdateSource` method handles the `Source` property when it's of type `UriVideoSource`:
 
@@ -1036,7 +1036,7 @@ protected override void Dispose(bool disposing)
 }
 ```
 
-## Play a video resource
+### Play a video resource
 
 Video files that are embedded in the *Resources\Raw* folder of the app, with a **MauiAsset** build action, can be played by the `Video` control:
 
@@ -1063,7 +1063,7 @@ void OnContentPageUnloaded(object sender, EventArgs e)
 }
 ```
 
-### Resource video sources
+#### Resource video sources
 
 The `ResourceVideoSource` class is used to access video files that are embedded in the app. It defines a `Path` property of type `string`:
 
@@ -1095,7 +1095,7 @@ public static void MapSource(IVideoHandler handler, IVideo video)
 
 The `MapSource` method in turns calls the `UpdateSource` method on the handler's `PlatformView` property. The `PlatformView` property, which is of type `MauiVideoPlayer`, represents the native view that provides the video player implementation on each platform.
 
-### Android
+##### Android
 
 The following code example shows how the `UpdateSource` method handles the `Source` property when it's of type `ResourceVideoSource`:
 
@@ -1187,7 +1187,7 @@ namespace VideoDemos.Platforms.Android
 }
 ```
 
-### iOS and Mac Catalyst
+##### iOS and Mac Catalyst
 
 The following code example shows how the `UpdateSource` method handles the `Source` property when it's of type `ResourceVideoSource`:
 
@@ -1254,7 +1254,7 @@ protected override void Dispose(bool disposing)
 }
 ```
 
-## Play a video file from the device's library
+### Play a video file from the device's library
 
 Video files that are stored on the device can be retrieved and then played by the `Video` control:
 
@@ -1308,7 +1308,7 @@ void OnContentPageUnloaded(object sender, EventArgs e)
 }
 ```
 
-### File video source
+#### File video source
 
 The `FileVideoSource` class is used to access videos in the device's video library. It defines a `File` property of type `string`:
 
@@ -1340,7 +1340,7 @@ public static void MapSource(IVideoHandler handler, IVideo video)
 
 The `MapSource` method in turns calls the `UpdateSource` method on the handler's `PlatformView` property. The `PlatformView` property, which is of type `MauiVideoPlayer`, represents the native view that provides the video player implementation on each platform.
 
-### Android
+##### Android
 
 The following code example shows how the `UpdateSource` method handles the `Source` property when it's of type `FileVideoSource`:
 
@@ -1388,7 +1388,7 @@ namespace VideoDemos.Platforms.Android
 
 When processing objects of type `FileVideoSource`, the `SetVideoPath` method of `VideoView` is used to specify the file on the device.
 
-### iOS and Mac Catalyst
+##### iOS and Mac Catalyst
 
 The following code example shows how the `UpdateSource` method handles the `Source` property when it's of type `FileVideoSource`:
 
