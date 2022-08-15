@@ -12,6 +12,8 @@ Each handler class exposes the native view that implements the cross-platform vi
 
 # Create custom controls
 
+<!-- sample link goes here -->
+
 .NET Multi-platform App UI (.NET MAUI)
 
 A standard requirement for apps is the ability to play videos. This article discuses how to write a handler for Android, iOS, Mac Catalyst, and Windows for a .NET MAUI custom control named `Video`. This control can play video from three sources:
@@ -197,7 +199,7 @@ public partial class VideoHandler : IVideoHandler
     {
         [nameof(IVideo.AreTransportControlsEnabled)] = MapAreTransportControlsEnabled,
         [nameof(IVideo.Source)] = MapSource,
-        ...
+        [nameof(IVideo.Position)] = MapPosition
     };
 
     IVideo IVideoHandler.VirtualView => VirtualView;
@@ -231,14 +233,15 @@ public partial class VideoHandler : IVideoHandler
     {
         [nameof(IVideo.AreTransportControlsEnabled)] = MapAreTransportControlsEnabled,
         [nameof(IVideo.Source)] = MapSource,
-        ...
+        [nameof(IVideo.Position)] = MapPosition
     };
 
     public static CommandMapper<IVideo, IVideoHandler> CommandMapper = new(ViewCommandMapper)
     {
         [nameof(IVideo.UpdateStatus)] = MapUpdateStatus,
         [nameof(IVideo.PlayRequested)] = MapPlayRequested,
-        ...
+        [nameof(IVideo.PauseRequested)] = MapPauseRequested,
+        [nameof(IVideo.StopRequested)] = MapStopRequested
     };
 
     IVideo IVideoHandler.VirtualView => VirtualView;

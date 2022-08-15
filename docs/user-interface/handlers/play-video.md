@@ -6,6 +6,8 @@ ms.date: 08/02/2022
 
 # Play video
 
+<!-- sample link goes here -->
+
 The `Video` class defines a `Source` property that's used to specify the source of the video file, as well as an `AutoPlay` property. `AutoPlay` defaults to `true`, which means that the video should begin playing automatically after `Source` has been set.
 
 ```csharp

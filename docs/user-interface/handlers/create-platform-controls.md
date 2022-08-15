@@ -4,15 +4,42 @@ description: ""
 ms.date: 08/02/2022
 ---
 
-https://github.com/xamarin/docs-archive/blob/master/Docs/Video%20Player/player-creation.md
 
 # Create platform controls
 
+<!-- sample link goes here -->
+
 .NET Multi-platform App UI (.NET MAUI)
 
-Implement `CreatePlatformView`, `ConnectHandler`, `DisconnectHandler` and the actions defined in the property mapper and command mapper.
+After creating the property mapper and optional command mapper for your handler, you must provide handler implementations on all platforms. This can be accomplished by adding partial class handler implementations in the child folders of the *Platforms* folder. Alternatively you could configure your project to support filename-based multi-targeting, or folder-based multi-targeting, or both. For more information, see [Configure multi-targeting](~/platform-integration/configure-multi-targeting.md).
+
+The sample application is configured to support filename-based multi-targeting, so that the handler classes all are located in a single folder:
+
+:::image type="content" source="media/create-platform-controls/handlers-folder.png" alt-text="Screenshot of the files in the Handlers folder of the project.":::
+
+The `VideoHandler` class containing the mappers is named *VideoHandler.cs*. Then its platform implementations are in the *VideoHandler.Android.cs*, *VideoHandler.iOS.cs*, and *VideoHandler.Windows.cs* files.
+
+Each platform handler class should be a partial class and derive from the generic `ViewHandler` class, that requires two type arguments:
+
+- The interface for the cross-platform control, that implements `IView`.
+- The type of the native view that implements cross-platform control on this platform. This should be identical to the type of the `PlatformView` property in the handler interface.
+
+Each of the platform handler implementations should override the following methods:
+
+- `CreatePlatformView`, which should create and return the native view that implements the cross-platform control.
+- `ConnectHandler`, which should perform any native view setup, such as initializing the native view and performing event subscriptions.
+- `DisconnectHandler`, which should perform any native view cleanup, such as unsubscribing from events and disposing objects.
+
+> [!IMPORTANT]
+> The `DisconnectHandler` method is intentionally not invoked by .NET MAUI. Instead, you must invoke it yourself from a suitable location in your app's lifecycle. For more information, see []().
+
+In addition, each platform handler implementation should implement the Actions that are defined in the property mapper and command mapper dictionaries.
+
+Each platform handler implementation should also provide additional code, as required, to implement the functionality of the cross-platform control on the platform. Alternatively, this can be provided by an additional type, which is the approach adopted here.
 
 ### Android
+
+Video is played on Android with a `VideoView`. However, here, the `VideoView` has been encapsulated in a `MauiVideoPlayer` type to keep the native view separated from its handler. The following example shows the `VideoHandler` partial class for Android, with its three overrides:
 
 ```csharp
 using Microsoft.Maui.Handlers;
@@ -37,61 +64,85 @@ namespace VideoDemos.Handlers
             platformView.Dispose();
             base.DisconnectHandler(platformView);
         }
-
-        public static void MapAreTransportControlsEnabled(IVideoHandler handler, IVideo video)
-        {
-            handler.PlatformView?.UpdateTransportControlsEnabled();
-        }
-
-        public static void MapSource(IVideoHandler handler, IVideo video)
-        {
-            handler.PlatformView?.UpdateSource();
-        }
-
-        public static void MapPosition(IVideoHandler handler, IVideo video)
-        {
-            handler.PlatformView?.UpdatePosition();
-        }
-
-        public static void MapUpdateStatus(IVideoHandler handler, IVideo video, object? args)
-        {
-            handler.PlatformView?.UpdateStatus();
-        }
-
-        public static void MapPlayRequested(IVideoHandler handler, IVideo video, object? args)
-        {
-            if (args is not VideoPositionEventArgs)
-                return;
-
-            TimeSpan position = ((VideoPositionEventArgs)args).Position;
-            handler.PlatformView?.PlayRequested(position);
-        }
-
-        public static void MapPauseRequested(IVideoHandler handler, IVideo video, object? args)
-        {
-            if (args is not VideoPositionEventArgs)
-                return;
-
-            TimeSpan position = ((VideoPositionEventArgs)args).Position;
-            handler.PlatformView?.PauseRequested(position);
-        }
-
-        public static void MapStopRequested(IVideoHandler handler, IVideo video, object? args)
-        {
-            if (args is not VideoPositionEventArgs)
-                return;
-
-            TimeSpan position = ((VideoPositionEventArgs)args).Position;
-            handler.PlatformView?.StopRequested(position);
-        }
+        ...
     }
 }
 ```
 
-On Android, the `VideoView` class provides video playback functionality. However,
+`VideoHandler` derives from the `ViewHandler` class, with the generic `IVideo` argument specifying the interface for the cross-platform control, and the `MauiVideoPlayer` argument specifying the type of the native view that encapsulates the `VideoView` control.
 
-On Android, the `MauiVideoPlayer` class implements the video control, which derives from `CoordinatorLayout`. The ability to play video is provided by the `AVPlayerViewController` and `AVPlayer` types:
+The `CreatePlatformView` override creates and returns a `MauiVideoPlayer` object. The `ConnectHandler` override is the location to perform any required native view setup instance. The `DisconnectHandler` override is the location to perform any native view cleanup, and calls the `Dispose` method of the `MauiVideoPlayer` instance.
 
+The platform handler also has to implement the Actions defined in the property mapper dictionary:
+
+```csharp
+public partial class VideoHandler : ViewHandler<IVideo, MauiVideoPlayer>
+{
+    ...
+    public static void MapAreTransportControlsEnabled(IVideoHandler handler, IVideo video)
+    {
+        handler.PlatformView?.UpdateTransportControlsEnabled();
+    }
+
+    public static void MapSource(IVideoHandler handler, IVideo video)
+    {
+        handler.PlatformView?.UpdateSource();
+    }
+
+    public static void MapPosition(IVideoHandler handler, IVideo video)
+    {
+        handler.PlatformView?.UpdatePosition();
+    }
+    ...
+}
+```
+
+Each Action is executed in response to a property changing on the cross-platform control, and is a `static` method that requires the handler interface and cross-platform control interface as arguments. In each case, each Action calls a method defined in the `MauiVideoPlayer` type.
+
+The platform handler also has to implement the Actions defined in the command mapper dictionary:
+
+```csharp
+public partial class VideoHandler : ViewHandler<IVideo, MauiVideoPlayer>
+{
+    ...
+    public static void MapUpdateStatus(IVideoHandler handler, IVideo video, object? args)
+    {
+        handler.PlatformView?.UpdateStatus();
+    }
+
+    public static void MapPlayRequested(IVideoHandler handler, IVideo video, object? args)
+    {
+        if (args is not VideoPositionEventArgs)
+            return;
+
+        TimeSpan position = ((VideoPositionEventArgs)args).Position;
+        handler.PlatformView?.PlayRequested(position);
+    }
+
+    public static void MapPauseRequested(IVideoHandler handler, IVideo video, object? args)
+    {
+        if (args is not VideoPositionEventArgs)
+            return;
+
+        TimeSpan position = ((VideoPositionEventArgs)args).Position;
+        handler.PlatformView?.PauseRequested(position);
+    }
+
+    public static void MapStopRequested(IVideoHandler handler, IVideo video, object? args)
+    {
+        if (args is not VideoPositionEventArgs)
+            return;
+
+        TimeSpan position = ((VideoPositionEventArgs)args).Position;
+        handler.PlatformView?.StopRequested(position);
+    }
+    ...
+}
+```
+
+Each Action is executed in response to a command being sent from the cross-platform control, and is a `static` method that requires the handler interface, cross-platform control interface, and optional data as arguments. In each case, each Action calls a method defined in the `MauiVideoPlayer` class, after extracting the optional data.
+
+On Android, the `MauiVideoPlayer` class encapsulates the `VideoView` to keep the native video control separated from its handler:
 
 ```csharp
 using Android.Content;
@@ -141,200 +192,84 @@ namespace VideoDemos.Platforms.Android
             // Handle events
             _videoView.Prepared += OnVideoViewPrepared;
         }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                _videoView.Prepared -= OnVideoViewPrepared;
-                _videoView.Dispose();
-                _videoView = null;
-                _video = null;
-            }
-
-            base.Dispose(disposing);
-        }
-
-        public void UpdateTransportControlsEnabled()
-        {
-            if (_video.AreTransportControlsEnabled)
-            {
-                _mediaController = new MediaController(_context);
-                _mediaController.SetMediaPlayer(_videoView);
-                _videoView.SetMediaController(_mediaController);
-            }
-            else
-            {
-                _videoView.SetMediaController(null);
-                if (_mediaController != null)
-                {
-                    _mediaController.SetMediaPlayer(null);
-                    _mediaController = null;
-                }
-            }
-        }
-
-        public void UpdateSource()
-        {
-            _isPrepared = false;
-            bool hasSetSource = false;
-
-            if (_video.Source is UriVideoSource)
-            {
-                string uri = (_video.Source as UriVideoSource).Uri;
-                if (!string.IsNullOrWhiteSpace(uri))
-                {
-                    _videoView.SetVideoURI(Uri.Parse(uri));
-                    hasSetSource = true;
-                }
-            }
-            else if (_video.Source is FileVideoSource)
-            {
-                string filename = (_video.Source as FileVideoSource).File;
-                if (!string.IsNullOrWhiteSpace(filename))
-                {
-                    _videoView.SetVideoPath(filename);
-                    hasSetSource = true;
-                }
-            }
-            else if (_video.Source is ResourceVideoSource)
-            {
-                string package = Context.PackageName;
-                string path = (_video.Source as ResourceVideoSource).Path;
-                if (!string.IsNullOrWhiteSpace(path))
-                {
-                    string assetFilePath = "content://" + package + "/" + path;
-                    _videoView.SetVideoPath(assetFilePath);
-                    hasSetSource = true;
-                }
-            }
-
-            if (hasSetSource && _video.AutoPlay)
-            {
-                _videoView.Start();
-            }
-        }
-
-        public void UpdatePosition()
-        {
-            if (Math.Abs(_videoView.CurrentPosition - _video.Position.TotalMilliseconds) > 1000)
-            {
-                _videoView.SeekTo((int)_video.Position.TotalMilliseconds);
-            }
-        }
-
-        void OnVideoViewPrepared(object sender, EventArgs args)
-        {
-            _isPrepared = true;
-            ((IVideoController)_video).Duration = TimeSpan.FromMilliseconds(_videoView.Duration);
-        }
-
-        public void UpdateStatus()
-        {
-            VideoStatus status = VideoStatus.NotReady;
-
-            if (_isPrepared)
-            {
-                status = _videoView.IsPlaying ? VideoStatus.Playing : VideoStatus.Paused;
-            }
-
-            ((IVideoController)_video).Status = status;
-
-            // Set Position property
-            TimeSpan timeSpan = TimeSpan.FromMilliseconds(_videoView.CurrentPosition);
-            _video.Position = timeSpan;
-        }
-
-        public void PlayRequested(TimeSpan position)
-        {
-            _videoView.Start();
-            System.Diagnostics.Debug.WriteLine($"Video playback from {position.Hours:X2}:{position.Minutes:X2}:{position.Seconds:X2}.");
-        }
-
-        public void PauseRequested(TimeSpan position)
-        {
-            _videoView.Pause();
-            System.Diagnostics.Debug.WriteLine($"Video paused at {position.Hours:X2}:{position.Minutes:X2}:{position.Seconds:X2}.");
-        }
-
-        public void StopRequested(TimeSpan position)
-        {
-            // Stops and releases the media player
-            _videoView.StopPlayback();
-            System.Diagnostics.Debug.WriteLine($"Video stopped at {position.Hours:X2}:{position.Minutes:X2}:{position.Seconds:X2}.");
-
-            // Ensure the video can be played again
-            _videoView.Resume();
-        }
+        ...
     }
 }
 ```
+
+`MauiVideoPlayer` derives from `CoordinatorLayout`, because the root native view in a .NET MAUI app on Android is `CoordinatorLayout`. While the `MauiVideoPlayer` class could derive from other native Android types, it can be difficult to control native view positioning in some scenarios.
+
+The `VideoView` could be added directly to the `CoordinatorLayout`, and positioned in the layout as required. However, here, an Android `RelativeLayout` is added to the `CoordinatorLayout`, and the `VideoView` is added to the `RelativeLayout`. Layout parameters are set on both the `RelativeLayout` and `VideoView` so that the `VideoView` is centered in the page, and expands to fill the available space while maintaining its aspect ratio.
+
+The constructor also subscribes to the `VideoView.Prepared` event. This event is raised when the video is ready for playback, and is unsubscribed from in the `Dispose` override:
 
 ```csharp
-using Android.Content;
-using Android.Content.Res;
-using Android.Database;
-using Debug = System.Diagnostics.Debug;
-using Uri = Android.Net.Uri;
-
-namespace VideoDemos.Platforms.Android
+public class MauiVideoPlayer : CoordinatorLayout
 {
-    [ContentProvider(new string[] { "com.companyname.videodemos" })]
-    public class VideoProvider : ContentProvider
+    VideoView _videoView;
+    IVideo _video;
+    ...
+
+    protected override void Dispose(bool disposing)
     {
-        public override AssetFileDescriptor OpenAssetFile(Uri uri, string mode)
+        if (disposing)
         {
-            var assets = Context.Assets;
-            string fileName = uri.LastPathSegment;
-            if (fileName == null)
-                throw new FileNotFoundException();
-
-            AssetFileDescriptor afd = null;
-            try
-            {
-                afd = assets.OpenFd(fileName);
-            }
-            catch (IOException ex)
-            {
-                Debug.WriteLine(ex);
-            }
-            return afd;
+            _videoView.Prepared -= OnVideoViewPrepared;
+            _videoView.Dispose();
+            _videoView = null;
+            _video = null;
         }
 
-        public override int Delete(Uri uri, string selection, string[] selectionArgs)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override string GetType(Uri uri)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override Uri Insert(Uri uri, ContentValues values)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override bool OnCreate()
-        {
-            return false;
-        }
-
-        public override ICursor Query(Uri uri, string[] projection, string selection, string[] selectionArgs, string sortOrder)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override int Update(Uri uri, ContentValues values, string selection, string[] selectionArgs)
-        {
-            throw new NotImplementedException();
-        }
+        base.Dispose(disposing);
     }
+    ...
 }
 ```
 
+In addition to unsubscribing from the `Prepared` event, the `Dispose` override also performs native view cleanup.
+
+> [!NOTE]
+> The `Dispose` override is called by the handler's `DisconnectHandler` override.
+
+The platform transport controls include buttons that play, pause, and stop the video, and are provided by Android's `MediaController` type. Provided that the `AreTransportControlsEnabled` property of the `Video` control is set to `true`, a `MediaController` is set as the media player of the `VideoView`. This occurs because when the `AreTransportControlsEnabled` property is set, the handler's property mapper ensures that the `MapAreTransportControlsEnabled` method is invoked, which in turn calls the `UpdateTransportControlsEnabled` method in `MauiVideoPlayer`:
+
+```csharp
+public class MauiVideoPlayer : CoordinatorLayout
+{
+    VideoView _videoView;
+    MediaController _mediaController;    // Used to display transport controls
+    IVideo _video;
+    ...
+
+    public void UpdateTransportControlsEnabled()
+    {
+        if (_video.AreTransportControlsEnabled)
+        {
+            _mediaController = new MediaController(_context);
+            _mediaController.SetMediaPlayer(_videoView);
+            _videoView.SetMediaController(_mediaController);
+        }
+        else
+        {
+            _videoView.SetMediaController(null);
+            if (_mediaController != null)
+            {
+                _mediaController.SetMediaPlayer(null);
+                _mediaController = null;
+            }
+        }
+    }
+    ...
+}
+```
+
+The transport controls fade out if they're not used but can be restored by tapping on the video.
+
+If the `AreTransportControlsEnabled` property of the `Video` control is set to `false`, the `MediaController` is removed as the media player of the `VideoView`. In this scenario, you can then control video playback programmatically or supply your own transport controls. For more information, see []().
+
 ### iOS
+
+Video is played on iOS and Mac Catalyst with an `AVPlayer` and an `AVPlayerViewController`. However, here, these types are encapsulated in a `MauiVideoPlayer` type to keep the native views separated from their handler. The following example shows the `VideoHandler` partial class for iOS, with its three overrides:
 
 ```csharp
 using Microsoft.Maui.Handlers;
@@ -359,58 +294,85 @@ namespace VideoDemos.Handlers
             platformView.Dispose();
             base.DisconnectHandler(platformView);
         }
-
-        public static void MapAreTransportControlsEnabled(IVideoHandler handler, IVideo video)
-        {
-            handler?.PlatformView.UpdateTransportControlsEnabled();
-        }
-
-        public static void MapSource(IVideoHandler handler, IVideo video)
-        {
-            handler?.PlatformView.UpdateSource();
-        }
-
-        public static void MapPosition(IVideoHandler handler, IVideo video)
-        {
-            handler?.PlatformView.UpdatePosition();
-        }
-
-        public static void MapUpdateStatus(IVideoHandler handler, IVideo video, object? args)
-        {
-            handler.PlatformView?.UpdateStatus();
-        }
-
-        public static void MapPlayRequested(IVideoHandler handler, IVideo video, object? args)
-        {
-            if (args is not VideoPositionEventArgs)
-                return;
-
-            TimeSpan position = ((VideoPositionEventArgs)args).Position;
-            handler.PlatformView?.PlayRequested(position);
-        }
-
-        public static void MapPauseRequested(IVideoHandler handler, IVideo video, object? args)
-        {
-            if (args is not VideoPositionEventArgs)
-                return;
-
-            TimeSpan position = ((VideoPositionEventArgs)args).Position;
-            handler.PlatformView?.PauseRequested(position);
-        }
-
-        public static void MapStopRequested(IVideoHandler handler, IVideo video, object? args)
-        {
-            if (args is not VideoPositionEventArgs)
-                return;
-
-            TimeSpan position = ((VideoPositionEventArgs)args).Position;
-            handler.PlatformView?.StopRequested(position);
-        }
+        ...
     }
 }
 ```
 
-On iOS, the `MauiVideoPlayer` class implements the video control, which derives from `UIView`. The ability to play video is provided by the `AVPlayerViewController` and `AVPlayer` types:
+`VideoHandler` derives from the `ViewHandler` class, with the generic `IVideo` argument specifying the interface for the cross-platform control, and the `MauiVideoPlayer` argument specifying the type of the native view that encapsulates the `AVPlayer` and `AVPlayerViewController` controls.
+
+The `CreatePlatformView` override creates and returns a `MauiVideoPlayer` object. The `ConnectHandler` override is the location to perform any required native view setup instance. The `DisconnectHandler` override is the location to perform any native view cleanup, and calls the `Dispose` method of the `MauiVideoPlayer` instance.
+
+The platform handler also has to implement the Actions defined in the property mapper dictionary:
+
+```csharp
+public partial class VideoHandler : ViewHandler<IVideo, MauiVideoPlayer>
+{
+    ...
+    public static void MapAreTransportControlsEnabled(IVideoHandler handler, IVideo video)
+    {
+        handler?.PlatformView.UpdateTransportControlsEnabled();
+    }
+
+    public static void MapSource(IVideoHandler handler, IVideo video)
+    {
+        handler?.PlatformView.UpdateSource();
+    }
+
+    public static void MapPosition(IVideoHandler handler, IVideo video)
+    {
+        handler?.PlatformView.UpdatePosition();
+    }
+    ...
+}
+```
+
+Each Action is executed in response to a property changing on the cross-platform control, and is a `static` method that requires the handler interface and cross-platform control interface as arguments. In each case, each Action calls a method defined in the `MauiVideoPlayer` type.
+
+The platform handler also has to implement the Actions defined in the command mapper dictionary:
+
+```csharp
+public partial class VideoHandler : ViewHandler<IVideo, MauiVideoPlayer>
+{
+    ...
+    public static void MapUpdateStatus(IVideoHandler handler, IVideo video, object? args)
+    {
+        handler.PlatformView?.UpdateStatus();
+    }
+
+    public static void MapPlayRequested(IVideoHandler handler, IVideo video, object? args)
+    {
+        if (args is not VideoPositionEventArgs)
+            return;
+
+        TimeSpan position = ((VideoPositionEventArgs)args).Position;
+        handler.PlatformView?.PlayRequested(position);
+    }
+
+    public static void MapPauseRequested(IVideoHandler handler, IVideo video, object? args)
+    {
+        if (args is not VideoPositionEventArgs)
+            return;
+
+        TimeSpan position = ((VideoPositionEventArgs)args).Position;
+        handler.PlatformView?.PauseRequested(position);
+    }
+
+    public static void MapStopRequested(IVideoHandler handler, IVideo video, object? args)
+    {
+        if (args is not VideoPositionEventArgs)
+            return;
+
+        TimeSpan position = ((VideoPositionEventArgs)args).Position;
+        handler.PlatformView?.StopRequested(position);
+    }
+    ...
+}
+```
+
+Each Action is executed in response to a command being sent from the cross-platform control, and is a `static` method that requires the handler interface, cross-platform control interface, and optional data as arguments. In each case, each Action calls a method defined in the `MauiVideoPlayer` class, after extracting the optional data.
+
+On iOS and Mac Catalyst, the `MauiVideoPlayer` class encapsulates the `AVPlayer` and `AVPlayerViewController` types to keep the native video controls separated from their handler:
 
 ```csharp
 using AVFoundation;
@@ -426,9 +388,9 @@ namespace VideoDemos.Platforms.MaciOS
     public class MauiVideoPlayer : UIView
     {
         AVPlayer _player;
-        AVPlayerItem _playerItem;
         AVPlayerViewController _playerViewController;
         IVideo _video;
+        ...
 
         public MauiVideoPlayer(IVideo video)
         {
@@ -445,138 +407,73 @@ namespace VideoDemos.Platforms.MaciOS
             _playerViewController.View.Frame = this.Bounds;
             AddSubview(_playerViewController.View);
         }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                if (_player != null)
-                {
-                    _player.ReplaceCurrentItemWithPlayerItem(null);
-                    _player.Dispose();
-                }
-                if (_playerViewController != null)
-                    _playerViewController.Dispose();
-
-                _video = null;
-            }
-
-            base.Dispose(disposing);
-        }
-
-        public void UpdateTransportControlsEnabled()
-        {
-            _playerViewController.ShowsPlaybackControls = _video.AreTransportControlsEnabled;
-        }
-
-        public void UpdateSource()
-        {
-            AVAsset asset = null;
-
-            if (_video.Source is UriVideoSource)
-            {
-                string uri = (_video.Source as UriVideoSource).Uri;
-                if (!string.IsNullOrWhiteSpace(uri))
-                    asset = AVAsset.FromUrl(new NSUrl(uri));
-            }
-            else if (_video.Source is FileVideoSource)
-            {
-                string uri = (_video.Source as FileVideoSource).File;
-                if (!string.IsNullOrWhiteSpace(uri))
-                    asset = AVAsset.FromUrl(new NSUrl(uri));
-            }
-            else if (_video.Source is ResourceVideoSource)
-            {
-                string path = (_video.Source as ResourceVideoSource).Path;
-                if (!string.IsNullOrWhiteSpace(path))
-                {
-                    string directory = Path.GetDirectoryName(path);
-                    string filename = Path.GetFileNameWithoutExtension(path);
-                    string extension = Path.GetExtension(path).Substring(1);
-                    NSUrl url = NSBundle.MainBundle.GetUrlForResource(filename, extension, directory);
-                    asset = AVAsset.FromUrl(url);
-                }
-            }
-
-            if (asset != null)
-                _playerItem = new AVPlayerItem(asset);
-            else
-                _playerItem = null;
-
-            _player.ReplaceCurrentItemWithPlayerItem(_playerItem);
-            if (_playerItem != null && _video.AutoPlay)
-            {
-                _player.Play();
-            }
-        }
-
-        public void UpdatePosition()
-        {
-            TimeSpan controlPosition = ConvertTime(_player.CurrentTime);
-            if (Math.Abs((controlPosition - _video.Position).TotalSeconds) > 1)
-            {
-                _player.Seek(CMTime.FromSeconds(_video.Position.TotalSeconds, 1));
-            }
-        }
-
-        TimeSpan ConvertTime(CMTime cmTime)
-        {
-            return TimeSpan.FromSeconds(Double.IsNaN(cmTime.Seconds) ? 0 : cmTime.Seconds);
-        }
-
-        public void UpdateStatus()
-        {
-            VideoStatus videoStatus = VideoStatus.NotReady;
-
-            switch (_player.Status)
-            {
-                case AVPlayerStatus.ReadyToPlay:
-                    switch (_player.TimeControlStatus)
-                    {
-                        case AVPlayerTimeControlStatus.Playing:
-                            videoStatus = VideoStatus.Playing;
-                            break;
-
-                        case AVPlayerTimeControlStatus.Paused:
-                            videoStatus = VideoStatus.Paused;
-                            break;
-                    }
-                    break;
-            }
-            ((IVideoController)_video).Status = videoStatus;
-
-            if (_playerItem != null)
-            {
-                ((IVideoController)_video).Duration = ConvertTime(_playerItem.Duration);
-                _video.Position = ConvertTime(_playerItem.CurrentTime);
-            }
-        }
-
-        public void PlayRequested(TimeSpan position)
-        {
-            _player.Play();
-            Debug.WriteLine($"Video playback from {position.Hours:X2}:{position.Minutes:X2}:{position.Seconds:X2}.");
-        }
-
-        public void PauseRequested(TimeSpan position)
-        {
-            _player.Pause();
-            Debug.WriteLine($"Video paused at {position.Hours:X2}:{position.Minutes:X2}:{position.Seconds:X2}.");
-        }
-
-        public void StopRequested(TimeSpan position)
-        {
-            _player.Pause();
-            _player.Seek(new CMTime(0, 1));
-            Debug.WriteLine($"Video stopped at {position.Hours:X2}:{position.Minutes:X2}:{position.Seconds:X2}.");
-        }
+        ...
     }
 }
 ```
 
+`MauiVideoPlayer` derives from `UIView`, which is the base class for objects that display content and handler user interaction with that content. The constructor creates an `AVPlayer` object, which manages the playback and timing of a media file, and sets it as the `Player` property value of an `AVPlayerViewController`. The `AVPlayerViewController` displays content from the `AVPlayer` and presents transport controls and other features. The size and location of the control is then set which ensures that the video is centered in the page, and expands to fill the available space while maintaining its aspect ratio. The native control, which is the view from the `AVPlayerViewController` is then added to the page.
 
+The `Dispose` method is responsible for performing native view cleanup:
+
+```csharp
+public class MauiVideoPlayer : UIView
+{
+    AVPlayer _player;
+    AVPlayerViewController _playerViewController;
+    IVideo _video;
+    ...
+
+    protected override void Dispose(bool disposing)
+    {
+        if (disposing)
+        {
+            if (_player != null)
+            {
+                _player.ReplaceCurrentItemWithPlayerItem(null);
+                _player.Dispose();
+            }
+            if (_playerViewController != null)
+                _playerViewController.Dispose();
+
+            _video = null;
+        }
+
+        base.Dispose(disposing);
+    }
+    ...
+}
+```
+
+In some scenarios, videos continue playing after a video playback page has been navigated away from. To stop the video, the `ReplaceCurrentItemWIthPlayerItem` is set to `null` in the `Dispose` override, and other native view cleanup is performed.
+
+> [!NOTE]
+> The `Dispose` override is called by the handler's `DisconnectHandler` override.
+
+The platform transport controls include buttons that play, pause, and stop the video, and are provided by the `AVPlayerViewController` type. Provided that the `AreTransportControlsEnabled` property of the `Video` control is set to `true`, the `AVPlayerViewController` will display its playback controls. This occurs because when the `AreTransportControlsEnabled` property is set, the handler's property mapper ensures that the `MapAreTransportControlsEnabled` method is invoked, which in turn calls the `UpdateTransportControlsEnabled` method in `MauiVideoPlayer`:
+
+```csharp
+public class MauiVideoPlayer : UIView
+{
+    AVPlayerViewController _playerViewController;
+    IVideo _video;
+    ...
+
+    public void UpdateTransportControlsEnabled()
+    {
+        _playerViewController.ShowsPlaybackControls = _video.AreTransportControlsEnabled;
+    }
+    ...
+}
+```
+
+The transport controls fade out if they're not used but can be restored by tapping on the video.
+
+If the `AreTransportControlsEnabled` property of the `Video` control is set to `false`, the `AVPlayerViewController` doesn't show its playback controls. In this scenario, you can then control video playback programmatically or supply your own transport controls. For more information, see []().
 
 ### Windows
+
+WinUI 3 currently lacks a control capable of playing video. However, it's still necessary to provide a handler implementation on Windows that overrides the `CreatePlatformView` method and that provides methods for the Actions defined in the property mapper and command mapper dictionaries. In all cases, these methods can throw `PlatformNotSupportedException` exceptions:
 
 ```csharp
 using Microsoft.Maui.Handlers;
@@ -598,3 +495,5 @@ namespace VideoDemos.Handlers
     }
 }
 ```
+
+A type must still be specified that represents the native view for the `Video` control, and this is provided here by the `FrameworkElement` class, which is a base type for WinUI controls.

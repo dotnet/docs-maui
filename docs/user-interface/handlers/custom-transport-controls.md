@@ -6,6 +6,8 @@ ms.date: 08/02/2022
 
 # Custom transport controls
 
+<!-- sample link goes here -->
+
 The transport controls of a video player include buttons that play, pause, and stop the video. These buttons are often identified with familiar icons rather than text, and the play and pause buttons are often combined into one button.
 
 By default, the `Video` control displays transport controls supported by each platform. However, when you set the `AreTransportControlsEnabled` property to `false`, these controls are suppressed. You can then control the `Video` control programmatically or supply your own transport controls.
@@ -78,9 +80,13 @@ The following XAML example shows custom transport controls that play, pause, and
 </ContentPage>
 ```
 
-In this example, the `Video` control sets the `AreTransportControlsEnabled` property to `false` and defines a `Button` that plays and pauses the video, and a `Button` that stop video playback. Button appearance is defined using unicode characters and their text equivalents, to create buttons that consist of an icon and text.
+In this example, the `Video` control sets the `AreTransportControlsEnabled` property to `false` and defines a `Button` that plays and pauses the video, and a `Button` that stop video playback. Button appearance is defined using unicode characters and their text equivalents, to create buttons that consist of an icon and text:
 
-SCREENSHOTS GOES HERE
+:::image type="content" source="media/custom-transport-controls/play-stop.png" alt-text="Screenshot of play and pause buttons.":::
+
+When the video is playing, the play button is updated to a pause button:
+
+:::image type="content" source="media/custom-transport-controls/pause-stop.png" alt-text="Screenshot of pause and stop buttons.:::
 
 The UI also includes an `ActivityIndicator` that's displayed while the video is loading. Data triggers are used to enable and disable the `ActivityIndicator` and the buttons, and to switch the first button between play and pause. For more information about data triggers, see [Data triggers](~/fundamentals/triggers.md#data-triggers).
 
@@ -339,9 +345,7 @@ namespace VideoDemos.Platforms.Android
             if (disposing)
             {
                 _videoView.Prepared -= OnVideoViewPrepared;
-                _videoView.Dispose();
-                _videoView = null;
-                _video = null;
+                ...
             }
 
             base.Dispose(disposing);
