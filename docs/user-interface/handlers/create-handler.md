@@ -43,7 +43,7 @@ The process for creating a cross-platform .NET MAUI custom control, whose platfo
 1. Create `partial` handler classes for each platform, create the native views that implement the cross-platform control. For more information, see [Create platform controls](create-platform-controls.md).
 1. Register the handler using the `ConfigureMauiHandlers` and `AddHandler` methods in your app's `MauiProgram` class. For more information, see [Register the handler](register-and-consume.md).
 
-Then, the cross-platform control can be consumed. For more information, see []().
+Then, the cross-platform control can be consumed. For more information, see [Consume the cross-platform control](register-and-consume.md#consume-the-cross-platform-control).
 
 ## Cross-platform control interface
 
