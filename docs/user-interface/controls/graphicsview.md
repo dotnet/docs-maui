@@ -88,6 +88,8 @@ These properties can be used to position and size graphical objects on the `ICan
 graphicsView.Invalidate();
 ```
 
+.NET MAUI automatically invalidates the `GraphicsView` as needed by the UI. For example, when the element is first shown, comes into view, or is revealed by moving an element from on top of it, it's redrawn. The only time you need to call `Invalidate` is when you want to force the `GraphicsView` to redraw itself, such as if you have changed its content while it's still visible.
+
 <!--
 ## Convert the drawable to an image
 
