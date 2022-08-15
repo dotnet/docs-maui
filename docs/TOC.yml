@@ -213,8 +213,8 @@
                   href: user-interface/handlers/index.md
                 - name: Create custom controls
                   items:
-                    - name: Create the control and its handler
-                      href: user-interface/handlers/create-handler.md
+                    - name: Create the custom control and its handler
+                      href: user-interface/handlers/create.md
                     - name: Create the platform controls
                       href: user-interface/handlers/create-platform-controls.md
                     - name: Play video

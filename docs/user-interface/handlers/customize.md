@@ -30,7 +30,7 @@ Handlers can be customized per platform by using conditional compilation, to mul
 
 ## Customize a control
 
-The .NET MAUI `Entry` is a single-line text input control, that implements the `IEntry` interface. On iOS, the `EntryHandler` maps the `Entry` to an iOS `UITextField` control. On Android, the `Entry` is mapped to an `AppCompatEditText` control, and on Windows the `Entry` is mapped to a `TextBox` control:
+The .NET MAUI `Entry` is a single-line text input control, that implements the `IEntry` interface. On iOS, the `EntryHandler` maps the `Entry` to an iOS `UITextField` native view. On Android, the `Entry` is mapped to an `AppCompatEditText` native view, and on Windows the `Entry` is mapped to a `TextBox` native view:
 
 :::image type="content" source="media/customize/entry-handler.png" alt-text="Entry handler architecture." border="false":::
 
