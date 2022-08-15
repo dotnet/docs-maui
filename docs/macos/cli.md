@@ -22,7 +22,7 @@ In this tutorial, you'll learn how to create and run a .NET Multi-platform App U
 
     <!-- markdownlint-enable MD029 -->
     
-    If you see a build error and a warning that the Xcode app bundle could not be found, you may need to enter:
+    If you see a build error and a warning that the Xcode app bundle could not be found, you may need to run the following command:
     
     ```
     xcode-select --reset
