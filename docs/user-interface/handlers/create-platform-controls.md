@@ -4,7 +4,6 @@ description: ""
 ms.date: 08/02/2022
 ---
 
-
 # Create platform controls
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-createhandler)
@@ -31,7 +30,7 @@ Each of the platform handler implementations should override the following metho
 - `DisconnectHandler`, which should perform any native view cleanup, such as unsubscribing from events and disposing objects.
 
 > [!IMPORTANT]
-> The `DisconnectHandler` method is intentionally not invoked by .NET MAUI. Instead, you must invoke it yourself from a suitable location in your app's lifecycle. For more information, see []().
+> The `DisconnectHandler` method is intentionally not invoked by .NET MAUI. Instead, you must invoke it yourself from a suitable location in your app's lifecycle. For more information, see [Consume the cross-platform control](register-and-consume.md#consume-the-cross-platform-control).
 
 In addition, each platform handler implementation should implement the Actions that are defined in the property mapper and command mapper dictionaries.
 
@@ -265,7 +264,7 @@ public class MauiVideoPlayer : CoordinatorLayout
 
 The transport controls fade out if they're not used but can be restored by tapping on the video.
 
-If the `AreTransportControlsEnabled` property of the `Video` control is set to `false`, the `MediaController` is removed as the media player of the `VideoView`. In this scenario, you can then control video playback programmatically or supply your own transport controls. For more information, see []().
+If the `AreTransportControlsEnabled` property of the `Video` control is set to `false`, the `MediaController` is removed as the media player of the `VideoView`. In this scenario, you can then control video playback programmatically or supply your own transport controls. For more information, see [Custom transport controls](custom-transport-controls.md).
 
 ### iOS
 
@@ -469,7 +468,7 @@ public class MauiVideoPlayer : UIView
 
 The transport controls fade out if they're not used but can be restored by tapping on the video.
 
-If the `AreTransportControlsEnabled` property of the `Video` control is set to `false`, the `AVPlayerViewController` doesn't show its playback controls. In this scenario, you can then control video playback programmatically or supply your own transport controls. For more information, see []().
+If the `AreTransportControlsEnabled` property of the `Video` control is set to `false`, the `AVPlayerViewController` doesn't show its playback controls. In this scenario, you can then control video playback programmatically or supply your own transport controls. For more information, see [Custom transport controls](custom-transport-controls.md).
 
 ### Windows
 

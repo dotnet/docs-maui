@@ -35,14 +35,14 @@ Explain that it's a video control implemented on everything but Windows.
 
 The process for creating a cross-platform .NET MAUI custom control, whose platform implementations are provided by a handler is as follows:
 
-1. Create an interface for your cross-platform control, that implements `IView`. For more information, see []().
-1. Create a class for your custom cross-platform control, that derives from `View` and that implements your control interface. For more information, see []().
+1. Create an interface for your cross-platform control, that implements `IView`. For more information, see [Cross-platform control interface](#cross-platform-control-interface).
+1. Create a class for your custom cross-platform control, that derives from `View` and that implements your control interface. For more information, see [Cross-platform control](#cross-platform-control).
 1. Optionally, create any required additional cross-platform types.
-1. Create an interface for your handler, that implements `IViewHandler`. For more information, see []().
-1. Create a `partial` handler class, that implements your handler interface. For more information, see []().
-1. In your handler class, create the `PropertyMapper` dictionary, which defines the actions to take when cross-platform property changes occur. For more information, see []().
-1. Optionally, in your handler class, create the `CommandMapper` dictionary, which defines the actions to take when the cross-platform control sends instructions to the native views that implement the control. For more information, see []().
-1. Create `partial` handler classes for each platform, create the native views that implement the cross-platform control. For more information, see []().
+1. Create an interface for your handler, that implements `IViewHandler`. For more information, see [Handler interface](#handler-interface).
+1. Create a `partial` handler class, that implements your handler interface. For more information, see [Handler class](#handler-class).
+1. In your handler class, create the `PropertyMapper` dictionary, which defines the actions to take when cross-platform property changes occur. For more information, see [Property mappers](#property-mappers).
+1. Optionally, in your handler class, create the `CommandMapper` dictionary, which defines the actions to take when the cross-platform control sends instructions to the native views that implement the control. For more information, see [Command mappers](#command-mappers).
+1. Create `partial` handler classes for each platform, create the native views that implement the cross-platform control. For more information, see [Create platform controls](create-platform-controls.md).
 1. Register the handler using the `ConfigureMauiHandlers` and `AddHandler` methods in your app's `MauiProgram` class. For more information, see [Register the handler](#register-the-handler).
 
 Then, the cross-platform control can be consumed. For more information, see []().

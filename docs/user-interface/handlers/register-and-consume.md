@@ -4,7 +4,7 @@ description: ""
 ms.date: 08/02/2022
 ---
 
-## Register the handler
+# Register the handler
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-createhandler)
 

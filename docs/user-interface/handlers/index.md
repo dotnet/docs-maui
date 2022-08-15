@@ -16,7 +16,7 @@ Each handler class exposes the native view that implements the cross-platform co
 
 Handler can be customized to augment the appearance and behavior of existing cross-platform controls beyond the customization that's possible through a control's API. Handlers are global, and customizing a handler for a control will result in all control of the same type being customized in your app. For more information, see [Customize .NET MAUI controls with handlers](customize.md).
 
-Handlers can also be used to create custom controls whose implementations are backed by native views. For more information, see [Create custom controls with .NET MAUI handlers](create.md).
+Handlers can also be used to create custom controls whose implementations are backed by native views. For more information, see [Create custom controls with .NET MAUI handlers](create-handler.md).
 
 ## Mappers
 
