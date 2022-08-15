@@ -153,7 +153,7 @@ public partial class CustomizeEntryHandlerLifecyclePage : ContentPage
 #if ANDROID
         ((sender as Entry).Handler.PlatformView as AppCompatEditText).SetSelectAllOnFocus(true);
 #elif IOS || MACCATALYST
-		((sender as Entry).Handler.PlatformView as UITextField).EditingDidBegin += OnEditingDidBegin;
+        ((sender as Entry).Handler.PlatformView as UITextField).EditingDidBegin += OnEditingDidBegin;
 #elif WINDOWS
         ((sender as Entry).Handler.PlatformView as TextBox).GotFocus += OnGotFocus;
 #endif
@@ -164,9 +164,9 @@ public partial class CustomizeEntryHandlerLifecyclePage : ContentPage
         if (e.OldHandler != null)
         {
 #if IOS || MACCATALYST
-			(e.OldHandler.PlatformView as UITextField).EditingDidBegin -= OnEditingDidBegin;
+            (e.OldHandler.PlatformView as UITextField).EditingDidBegin -= OnEditingDidBegin;
 #elif WINDOWS
-			(e.OldHandler.PlatformView as TextBox).GotFocus -= OnGotFocus;
+            (e.OldHandler.PlatformView as TextBox).GotFocus -= OnGotFocus;
 #endif
         }
     }
@@ -174,14 +174,14 @@ public partial class CustomizeEntryHandlerLifecyclePage : ContentPage
 #if IOS || MACCATALYST                   
 	void OnEditingDidBegin(object sender, EventArgs e)
 	{
-		var nativeView = sender as UITextField;
-		nativeView.PerformSelector(new ObjCRuntime.Selector("selectAll"), null, 0.0f);
+		  var nativeView = sender as UITextField;
+		  nativeView.PerformSelector(new ObjCRuntime.Selector("selectAll"), null, 0.0f);
 	}
 #elif WINDOWS
 	void OnGotFocus(object sender, RoutedEventArgs e)
 	{
-		var nativeView = sender as TextBox;
-		nativeView.SelectAll();
+      var nativeView = sender as TextBox;
+      nativeView.SelectAll();
 	}
 #endif
 }
