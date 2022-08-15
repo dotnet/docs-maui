@@ -21,13 +21,13 @@ In this tutorial, you'll learn how to create and run a .NET Multi-platform App U
     The `dotnet build` command will restore the project dependencies, build the app, and launch it.
 
     <!-- markdownlint-enable MD029 -->
-    
+
     If you see a build error and a warning that the Xcode app bundle could not be found, you may need to run the following command:
-    
-    ```
+
+    ```zsh
     xcode-select --reset
     ```
-    
+
 1. In the running app, press the **Click me** button several times and observe that the count of the number of button clicks is incremented.
 
     :::image type="content" source="media/cli/maccatalyst-running-app.png" alt-text=".NET MAUI app running on Mac.":::
