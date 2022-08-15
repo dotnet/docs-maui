@@ -1,12 +1,12 @@
 ---
 title: ".NET MAUI handlers"
 description: "Learn about .NET MAUI handlers, which map cross-platform controls to performant native controls on each platform."
-ms.date: 08/02/2022
+ms.date: 08/15/2022
 ---
 
-# Overview
+# Handlers
 
-.NET Multi-platform App UI (.NET MAUI) provides a collection of controls that can be used to display data, initiate actions, indicate activity, display collections, pick data, and more. Each control has an interface representation, that abstracts the control. Cross-platform controls that implement these interfaces are known as *virtual views*. *Handlers* map these virtual views to native views on each platform, and are responsible for creating the underlying native view, and mapping the cross-platform view API to the native view API. For example, on iOS a .NET MAUI handler maps a .NET MAUI `Button` to an iOS `UIButton`. On Android, the `Button` is mapped to an `AppCompatButton`:
+.NET Multi-platform App UI (.NET MAUI) provides a collection of cross-platform controls that can be used to display data, initiate actions, indicate activity, display collections, pick data, and more. Each control has an interface representation, that abstracts the control. Cross-platform controls that implement these interfaces are known as *virtual views*. *Handlers* map these virtual views to native views on each platform, and are responsible for creating the underlying native view, and mapping the cross-platform control API to the native view API. For example, on iOS a .NET MAUI handler maps a .NET MAUI `Button` to an iOS `UIButton`. On Android, the `Button` is mapped to an `AppCompatButton`:
 
 :::image type="content" source="media/overview/button-handler.png" alt-text="Button handler architecture." border="false":::
 
@@ -14,19 +14,19 @@ Handlers are accessed through their control-specific interface, such as `IButton
 
 Each handler class exposes the native view that implements the cross-platform control via its `PlatformView` property. This property can be accessed to set native view properties, invoke native view methods, and subscribe to native view events. In addition, the cross-platform control implemented by the handler is exposed via its `VirtualView` property.
 
-Handler can be customized to augment the appearance and behavior of existing cross-platform controls beyond the customization that's possible through a control's API. Handlers are global, and customizing a handler for a control will result in all control of the same type being customized in your app. For more information, see [Customize .NET MAUI controls with handlers](customize.md).
+When creating a custom cross-platform control, whose implementation is provided on each platform by native views, a handler should be implemented that maps the cross-platform control API to the native view APIs. For more information, see [Create custom controls with .NET MAUI handlers](create-handler.md).
 
-Handlers can also be used to create custom controls whose implementations are backed by native views. For more information, see [Create custom controls with .NET MAUI handlers](create-handler.md).
+Handlers can also be customized to augment the appearance and behavior of existing cross-platform controls beyond the customization that's possible through the control's API. Handlers are global, and customizing a handler for a control will result in all controls of the same type being customized in your app. For more information, see [Customize .NET MAUI controls with handlers](customize.md).
 
 ## Mappers
 
-Each handler typically provides a *property mapper*, and sometimes a *command mapper*, that maps the cross-platform control's API to the native view's API.
+A key concept of .NET MAUI handlers is mappers. Each handler typically provides a *property mapper*, and sometimes a *command mapper*, that maps the cross-platform control's API to the native view's API.
 
-A *property mapper* defines what actions to take when a property change occurs in the cross-platform control. It's a `Dictionary` that maps the cross-platform control's interface properties to their associated Actions. Each platform handler implementation then provides implementations of the Actions, which manipulate the native view API. The overall effect is that when a property is set on a cross-platform control, the underlying native view is updated as required.
+A *property mapper* defines what actions to take when a property change occurs in the cross-platform control. It's a `Dictionary` that maps the cross-platform control's interface properties to their associated Actions. Each platform handler implementation then provides implementations of the Actions, which manipulate the native view API. This ensures that when a property is set on a cross-platform control, the underlying native view is updated as required.
 
-A *command mapper* maps cross-platform control commands to native view APIs via mapper methods. Command mappers provide a way for cross-platform controls to send instructions to native views on each platform. They're similar to property mappers, but allow for additional data to be passed. Commands, in this context, doesn't mean `ICommand` implementations. Instead, a command is just an instruction, and optionally its data, that's sent to a native view. For example, in .NET MAUI the `ScrollViewHandler`, which provides the platform implementations for the `ScrollView`, uses a command mapper for the `ScrollView` to request its handler to instruct the underlying native views to scroll to a specific location, and passes the required scroll arguments. The `ScrollViewHandler` on each platform parses the scroll arguments and invokes native view functionality to perform the required scroll.
+A *command mapper* defines what actions to take when the cross-platform control sends commands to native views. They're similar to property mappers, but allow for additional data to be passed. Commands, in this context, doesn't mean `ICommand` implementations. Instead, a command is just an instruction, and optionally its data, that's sent to a native view. The command mapper is a `Dictionary` that maps the cross-platform control's command to their associated Actions. Each handler implementation then provides implementations of the Actions, which manipulate the native view API. This ensures that when a cross-platform control sends a command to its native view, the native view is updated as required. For example, in .NET MAUI the `ScrollViewHandler`, which provides the platform implementations for the `ScrollView`, uses a command mapper for the `ScrollView` to request its handler to instruct the underlying native views to scroll to a specific location, and passes the required scroll arguments. The `ScrollViewHandler` on each platform parses the scroll arguments and invokes native view functionality to perform the required scroll.
 
-The advantage of using *mappers* is that native views can be decoupled from cross-platform controls, removing the need for native views to subscribe to cross-platform control events. It also allows for easy customization because mappers can be modified without subclassing.
+The advantage of using *mappers* to update native views, is that native views can be decoupled from cross-platform controls. This removes the need for native views to subscribe to cross-platform control events. It also allows for easy customization because mappers can be modified without subclassing.
 
 ## Handler lifecycle
 
@@ -44,43 +44,43 @@ In addition to these events, each cross-platform control also has an overridable
 
 The following table lists the types that implement handler-based views in .NET MAUI:
 
-| View | Interface | Handler | Mapper |
-| -- | -- | -- | -- |
-| `ActivityIndicator` | `IActivityIndicator` | `ActivityIndicatorHandler` | `Mapper` |
-| `BlazorWebView` | `IBlazorWebView` | `BlazorWebViewHandler` | `BlazorWebViewMapper` |
-| `Border` | `IBorderView` | `BorderHandler` | `Mapper` |
-| `Button` | `IButton` | `ButtonHandler` | `Mapper` |
+| View | Interface | Handler | Property Mapper | Command Mapper |
+| -- | -- | -- | -- | -- |
+| `ActivityIndicator` | `IActivityIndicator` | `ActivityIndicatorHandler` | `Mapper` | `CommandMapper` |
+| `BlazorWebView` | `IBlazorWebView` | `BlazorWebViewHandler` | `BlazorWebViewMapper` | |
+| `Border` | `IBorderView` | `BorderHandler` | `Mapper` | `CommandMapper` |
+| `Button` | `IButton` | `ButtonHandler` | `ImageButtonMapper`. `TextButtonMapper`, `Mapper` | `CommandMapper` |
 | `CarouselView` | | `CarouselViewHandler` | `Mapper` |
-| `CheckBox` | `ICheckBox` | `CheckBoxHandler` | `Mapper` |
+| `CheckBox` | `ICheckBox` | `CheckBoxHandler` | `Mapper` | `CommandMapper` |
 | `CollectionView` |  | `CollectionViewHandler` | `Mapper` |
-| `ContentView` | `IContentView` | `ContentViewHandler` | `Mapper` |
-| `DatePicker` | `IDatePicker` | `DatePickerHandler` | `Mapper` |
-| `Editor` | `IEditor` | `EditorHandler` | `Mapper` |
-| `Ellipse` | | `ShapeViewHandler` | `Mapper` |
-| `Entry` | `IEntry` | `EntryHandler` | `Mapper` |
-| `GraphicsView` | `IGraphicsView` | `GraphicsViewHandler` | `Mapper` |
-| `Image` | `IImage` | `ImageHandler` | `Mapper` |
-| `ImageButton` | `IImageButton` | `ImageButtonHandler` | `Mapper` |
-| `IndicatorView` | `IIndicatorView` | `IndicatorViewHandler` | `Mapper` |
-| `Label` | `ILabel` | `LabelHandler` | `Mapper` |
-| `Line` | | `LineHandler` | `Mapper` |
-| `Path` | | `PathHandler` | `Mapper` |
-| `Picker` | `IPicker` | `PickerHandler` | `Mapper` |
-| `Polygon` | | `PolygonHandler` | `Mapper` |
-| `Polyline` | | `PolylineHandler` | `Mapper` |
-| `ProgressBar` | `IProgress` | `ProgressBarHandler` | `Mapper` |
-| `RadioButton` | `IRadioButton` | `RadioButtonHandler` | `Mapper` |
-| `Rectangle` | | `RectangleHandler` | `Mapper` |
-| `RefreshView` | `IRefreshView` | `RefreshViewHandler` | `Mapper` |
-| `RoundRectangle` | | `RoundRectangleHandler` | `Mapper` |
-| `ScrollView` | `IScrollView` | `ScrollViewHandler` | `Mapper` |
-| `SearchBar` | `ISearchBar` | `SearchBarHandler` | `Mapper` |
-| `Slider` | `ISlider` | `SliderHandler` | `Mapper` |
-| `Stepper` | `IStepper` | `StepperHandler` | `Mapper` |
-| `SwipeView` | `ISwipeView` | `SwipeViewHandler` | `Mapper` |
-| `Switch` | `ISwitch` | `SwitchHandler` | `Mapper` |
-| `TimePicker` | `ITimePicker` | `TimePickerHandler` | `Mapper` |
-| `WebView` | `IWebView` | `WebViewHandler` | `Mapper` |
+| `ContentView` | `IContentView` | `ContentViewHandler` | `Mapper` | `CommandMapper` |
+| `DatePicker` | `IDatePicker` | `DatePickerHandler` | `Mapper` | `CommandMapper` |
+| `Editor` | `IEditor` | `EditorHandler` | `Mapper` | `CommandMapper` |
+| `Ellipse` | | `ShapeViewHandler` | `Mapper` | `CommandMapper` |
+| `Entry` | `IEntry` | `EntryHandler` | `Mapper` | `CommandMapper` |
+| `GraphicsView` | `IGraphicsView` | `GraphicsViewHandler` | `Mapper` | `CommandMapper` |
+| `Image` | `IImage` | `ImageHandler` | `Mapper` | `CommandMapper` |
+| `ImageButton` | `IImageButton` | `ImageButtonHandler` | `ImageMapper`, `Mapper` |
+| `IndicatorView` | `IIndicatorView` | `IndicatorViewHandler` | `Mapper` | `CommandMapper` |
+| `Label` | `ILabel` | `LabelHandler` | `Mapper` | `CommandMapper` |
+| `Line` | | `LineHandler` | `Mapper` | |
+| `Path` | | `PathHandler` | `Mapper` | |
+| `Picker` | `IPicker` | `PickerHandler` | `Mapper` | `CommandMapper` |
+| `Polygon` | | `PolygonHandler` | `Mapper` | |
+| `Polyline` | | `PolylineHandler` | `Mapper` | |
+| `ProgressBar` | `IProgress` | `ProgressBarHandler` | `Mapper` | `CommandMapper` |
+| `RadioButton` | `IRadioButton` | `RadioButtonHandler` | `Mapper` | `CommandMapper` |
+| `Rectangle` | | `RectangleHandler` | `Mapper` | |
+| `RefreshView` | `IRefreshView` | `RefreshViewHandler` | `Mapper` | `CommandMapper` |
+| `RoundRectangle` | | `RoundRectangleHandler` | `Mapper` | |
+| `ScrollView` | `IScrollView` | `ScrollViewHandler` | `Mapper` | `CommandMapper` |
+| `SearchBar` | `ISearchBar` | `SearchBarHandler` | `Mapper` | `CommandMapper` |
+| `Slider` | `ISlider` | `SliderHandler` | `Mapper` | `CommandMapper` |
+| `Stepper` | `IStepper` | `StepperHandler` | `Mapper` | `CommandMapper` |
+| `SwipeView` | `ISwipeView` | `SwipeViewHandler` | `Mapper` | `CommandMapper` |
+| `Switch` | `ISwitch` | `SwitchHandler` | `Mapper` | `CommandMapper` |
+| `TimePicker` | `ITimePicker` | `TimePickerHandler` | `Mapper` | `CommandMapper` |
+| `WebView` | `IWebView` | `WebViewHandler` | `Mapper` | `CommandMapper` |
 
 All handlers are in the `Microsoft.Maui.Handlers` namespace, with the following exceptions:
 

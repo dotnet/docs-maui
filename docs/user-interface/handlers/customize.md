@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI control customization with handlers"
 description: "Learn how to customize .NET MAUI handlers, to augment the appearance and behavior of a cross-platform control."
-ms.date: 08/05/2022
+ms.date: 08/15/2022
 ---
 
 # Customize .NET MAUI controls with handlers

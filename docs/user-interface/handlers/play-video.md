@@ -1,7 +1,7 @@
 ---
 title: "Play video"
 description: "Learn how to play web, resource, and file-based videos in a custom .NET MAUI video control."
-ms.date: 08/02/2022
+ms.date: 08/15/2022
 ---
 
 # Play video

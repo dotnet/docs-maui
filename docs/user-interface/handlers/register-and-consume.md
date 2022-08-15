@@ -1,7 +1,7 @@
 ---
 title: "Register and consume the custom control"
 description: ""
-ms.date: 08/02/2022
+ms.date: 08/15/2022
 ---
 
 # Register the handler

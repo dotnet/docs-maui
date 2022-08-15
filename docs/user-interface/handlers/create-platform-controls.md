@@ -1,7 +1,7 @@
 ---
 title: "Create platform controls"
 description: ""
-ms.date: 08/02/2022
+ms.date: 08/15/2022
 ---
 
 # Create platform controls

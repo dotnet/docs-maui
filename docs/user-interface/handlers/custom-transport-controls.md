@@ -1,7 +1,7 @@
 ---
 title: "Custom transport controls and positioning bar"
 description: "Learn how to implement custom transport controls in a video control, using .NET MAUI."
-ms.date: 08/02/2022
+ms.date: 08/15/2022
 ---
 
 # Custom transport controls
