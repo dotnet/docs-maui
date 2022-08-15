@@ -46,7 +46,7 @@ Then, the cross-platform control can be consumed. For more information, see [Con
 
 ## Create the cross-platform control interface
 
-Before creating your custom cross-platform control type, you must first create its interface. This can be achieved by creating an interface that implements `IView`:
+Before creating your cross-platform control, you must first create its interface. This can be achieved by creating an interface that implements `IView`:
 
 ```csharp
 public interface IVideo : IView
@@ -73,7 +73,7 @@ Within the interface, you should define the public API of your custom control th
 
 ## Create the cross-platform control
 
-After defining your custom control's interface, you should create the type for your custom control. This type should derive from `View`, and implement your control's interface:
+After defining your control's interface, you should create the cross-platform control. It should derive from `View`, and implement your control's interface:
 
 ```csharp
 using System.ComponentModel;
@@ -114,9 +114,11 @@ namespace VideoDemos.Controls
 }
 ```
 
+The control must implement its interface, but can also add additional public APIs that will be accessed by control consumers, but not by its handler.
+
 ## Create the handler interface
 
-After creating the type for your custom control, you should create an interface for your handler. This can be achieved by creating an interface that implements `IViewHandler`:
+After creating your cross-platform control, you should create an interface for its handler. This can be achieved by creating an interface that implements `IViewHandler`:
 
 ```csharp
 #if IOS || MACCATALYST
@@ -140,9 +142,9 @@ namespace VideoDemos.Handlers
 }
 ```
 
-The interface should define read-only `VirtualView` and `PlatformView` properties. The `VirtualView` property, of type `IVideo`, is used to access the cross-platform control from its handler. The `PlatformView` property, of type `PlatformView`, is used to access the native view that implements the cross-platform control. The conditional `using` statements define the `PlatformView` type on each platform. On Android, iOS, and Mac Catalyst, the native views are provided by the custom `MauiVideoPlayer` class. On Windows, which currently lacks a video player control, there is no video player implementation. However, a native view must be specified for compilation purposes, and this is provided by the `FrameworkElement` class.
+The interface should define read-only `VirtualView` and `PlatformView` properties. The `VirtualView` property, of type `IVideo`, is used to access the cross-platform control from its handler. The `PlatformView` property, of type `PlatformView`, is used to access the native view on each platform that implements the cross-platform control. The conditional `using` statements define the `PlatformView` type on each platform. On Android, iOS, and Mac Catalyst, the native views are provided by the custom `MauiVideoPlayer` class. On Windows, which currently lacks a video control, there is no video player implementation. However, a native view must be specified for compilation purposes, and this is provided by the `FrameworkElement` class.
 
-The final conditional `using` statement defines `PlatformView` to be equal to `System.Object`. This is necessary so that the `PlatformView` type can be used within the interface for usage across all platforms. The alternative would be to have to define the `PlatformView` property once per platform, using conditional compilation.
+The final conditional `using` statement defines `PlatformView` to be equal to `System.Object`. This is necessary so that the `PlatformView` type can be used within the interface definition for usage across all platforms. The alternative would be to have to define the `PlatformView` property once per platform, within the interface definition, using conditional compilation.
 
 > [!NOTE]
 > The `new` keyword on the `VirtualView` and `PlatformView` properties tells the compiler that the interface definition hides the definition contained in the interface being extended.
@@ -152,7 +154,7 @@ The final conditional `using` statement defines `PlatformView` to be equal to `S
 After creating an interface for your handler, you should create a `partial` type for your handler that implements its interface:
 
 ```csharp
-#if __IOS__ || MACCATALYST
+#if IOS || MACCATALYST
 using PlatformView = VideoDemos.Platforms.MaciOS.MauiVideoPlayer;
 #elif ANDROID
 using PlatformView = VideoDemos.Platforms.Android.MauiVideoPlayer;
@@ -174,13 +176,13 @@ namespace VideoDemos.Handlers
 }
 ```
 
-The handler class is a partial class whose implementation will be completed on each platform in an additional partial class. It implements the `VirtualView` and `PlatformView` properties that are defined in the interface, using [expression-bodied members](/dotnet/csharp/programming-guide/statements-expressions-operators/expression-bodied-members) to return `VirtualView` and `PlatformView` properties that are defined in .NET MAUI's generic `ViewHandler` class. This will be discussed further in [Create the platform controls](#create-the-platform-controls).
+The handler class is a partial class whose implementation will be completed on each platform with an additional partial class. It implements the `VirtualView` and `PlatformView` properties that are defined in the interface, using [expression-bodied members](/dotnet/csharp/programming-guide/statements-expressions-operators/expression-bodied-members) to return `VirtualView` and `PlatformView` properties that are defined in .NET MAUI's generic `ViewHandler` class. For more information, see [Create the platform controls](#create-the-platform-controls).
 
-The conditional `using` statements are identical to those defined in the handler interface, and define the native view that implements the cross-platform control on each platform. As with the interface, the final conditional `using` statement defines `PlatformView` to be equal to `System.Object`. This is necessary so that the `PlatformView` type can be used within the class for usage across all platforms. The alternative would be to have to define the `PlatformView` property once per platform, using conditional compilation.
+The conditional `using` statements are identical to those defined in the handler interface, and define the native view that implements the cross-platform control on each platform. As with the interface, the final conditional `using` statement defines `PlatformView` to be equal to `System.Object`. This is necessary so that the `PlatformView` type can be used within the class definition for usage across all platforms. The alternative would be to have to define the `PlatformView` property once per platform, within the class definition, using conditional compilation.
 
 ## Create the property mapper
 
-Each handler typically provides a *property mapper*, which defines what actions to take when a property change occurs in the cross-platform control. `PropertyMapper` is a `Dictionary` that maps the cross-platform control's interface properties to their associated Actions.
+Each handler typically provides a *property mapper*, which defines what actions to take when a property change occurs in the cross-platform control. The `PropertyMapper` type is a `Dictionary` that maps the cross-platform control's interface properties to their associated Actions.
 
 `PropertyMapper` is defined in .NET MAUI's generic `ViewHandler` class, and requires two generic arguments to be supplied:
 
@@ -210,11 +212,11 @@ public partial class VideoHandler : IVideoHandler
 
 The `PropertyMapper` is a `Dictionary` whose key is a `string` and whose value is a generic `Action`. The `string` represents the property name, accessed via it's cross-platform interface, and the `Action` represents a `static` method that requires the handler interface and cross-platform control interface as arguments. For example, the signature of the `MapSource` method is `public static void MapSource(IVideoHandler handler, IVideo video)`.
 
-Each platform handler implementation will then provide implementations of the Actions, which manipulate the native view API. The overall effect is that when a property is set on a cross-platform control, the underlying native view will be updated as required. The advantage of this approach is that it enables native views to be decoupled from cross-platform controls, because the cross-platform control doesn't reference its handler, and the handler doesn't reference the cross-platform control. In addition, it allows for easy customisation because the property mapper can be modified by consumers without subclassing.
+Each platform handler implementation then must provide implementations of the Actions, which manipulate the native view APIs. This ensures that when a property is set on a cross-platform control, the underlying native view will be updated as required. The advantage of this approach is that it enables native views to be decoupled from cross-platform controls, because the cross-platform control doesn't reference its handler, and the handler doesn't reference the cross-platform control. In addition, it allows for easy customisation because the property mapper can be modified by cross-platform control consumers without subclassing.
 
 ## Create the command mapper
 
-Each handler can also provide a *command mapper*, which provide a way for cross-platform controls to send instructions to native views on each platform. They're similar to property mappers, but allow for additional data to be passed. In this context a command is an instruction, and optionally its data, that's sent to a native view. `CommandMapper` is a `Dictionary` that maps cross-platform control interface members to their associated Actions.
+Each handler can also provide a *command mapper*, which defines what actions to take when the cross-platform control sends commands to native views. Command mappers are similar to property mappers, but allow for additional data to be passed. In this context a command is an instruction, and optionally its data, that's sent to a native view. The `CommandMapper` type is a `Dictionary` that maps cross-platform control interface members to their associated Actions.
 
 `CommandMapper` is defined in .NET MAUI's generic `ViewHandler` class, and requires two generic arguments to be supplied:
 
@@ -252,22 +254,22 @@ public partial class VideoHandler : IVideoHandler
 
 The `CommandMapper` is a `Dictionary` whose key is a `string` and whose value is a generic `Action`. The `string` represents the command name, accessed via it's cross-platform interface, and the `Action` represents a `static` method that requires the handler interface, cross-platform control interface, and optional data as arguments. For example, the signature of the `MapPlayRequested` method is `public static void MapPlayRequested(IVideoHandler handler, IVideo video, object? args)`.
 
-Each platform handler implementation will then provide implementations of the Actions, which manipulate the native view API. The overall effect is that when a command is sent from the cross-platform control, the underlying native view will be manipulated as required. The advantage of this approach is that it enables native views to be decoupled from cross-platform controls, because the cross-platform control can send a command to its native views without referencing its handler, and the handler doesn't reference the cross-platform control. This removes the need for native views to subscribe to cross-platform control events. In addition, it allows for easy customisation because the command mapper can be modified by consumers without subclassing.
+Each platform handler implementation then must provide implementations of the Actions, which manipulate the native view APIs. This ensures that when a command is sent from the cross-platform control, the underlying native view will be manipulated as required. The advantage of this approach is that it enables native views to be decoupled from cross-platform controls, because the cross-platform control can send a command to its native views without referencing its handler, and the handler doesn't reference the cross-platform control. This removes the need for native views to subscribe to cross-platform control events. In addition, it allows for easy customisation because the command mapper can be modified by cross-platform control consumers without subclassing.
 
 ## Create the platform controls
 
-After creating the property mapper and optional command mapper for your handler, you must provide handler implementations on all platforms. This can be accomplished by adding partial class handler implementations in the child folders of the *Platforms* folder. Alternatively you could configure your project to support filename-based multi-targeting, or folder-based multi-targeting, or both. For more information, see [Configure multi-targeting](~/platform-integration/configure-multi-targeting.md).
+After creating the mapper sfor your handler, you must provide handler implementations on all platforms. This can be accomplished by adding partial class handler implementations in the child folders of the *Platforms* folder. Alternatively you could configure your project to support filename-based multi-targeting, or folder-based multi-targeting, or both. For more information, see [Configure multi-targeting](~/platform-integration/configure-multi-targeting.md).
 
 The sample application is configured to support filename-based multi-targeting, so that the handler classes all are located in a single folder:
 
 :::image type="content" source="media/create/handlers-folder.png" alt-text="Screenshot of the files in the Handlers folder of the project.":::
 
-The `VideoHandler` class containing the mappers is named *VideoHandler.cs*. Then its platform implementations are in the *VideoHandler.Android.cs*, *VideoHandler.iOS.cs*, and *VideoHandler.Windows.cs* files.
+The `VideoHandler` class containing the mappers is named *VideoHandler.cs*. Its platform implementations are in the *VideoHandler.Android.cs*, *VideoHandler.iOS.cs*, and *VideoHandler.Windows.cs* files.
 
 Each platform handler class should be a partial class and derive from the generic `ViewHandler` class, that requires two type arguments:
 
 - The interface for the cross-platform control, that implements `IView`.
-- The type of the native view that implements cross-platform control on this platform. This should be identical to the type of the `PlatformView` property in the handler interface.
+- The type of the native view that implements cross-platform control on the platform. This should be identical to the type of the `PlatformView` property in the handler interface.
 
 Each of the platform handler implementations should override the following methods:
 
@@ -278,9 +280,9 @@ Each of the platform handler implementations should override the following metho
 > [!IMPORTANT]
 > The `DisconnectHandler` method is intentionally not invoked by .NET MAUI. Instead, you must invoke it yourself from a suitable location in your app's lifecycle. For more information, see [Consume the cross-platform control](#consume-the-cross-platform-control).
 
-In addition, each platform handler implementation should implement the Actions that are defined in the property mapper and command mapper dictionaries.
+Each platform handler implementation should also implement the Actions that are defined in the mapper dictionaries.
 
-Each platform handler implementation should also provide additional code, as required, to implement the functionality of the cross-platform control on the platform. Alternatively, this can be provided by an additional type, which is the approach adopted here.
+In addition, each platform handler implementation should also provide code, as required, to implement the functionality of the cross-platform control on the platform. Alternatively, this can be provided by an additional type, which is the approach adopted here.
 
 ### Android
 
@@ -512,7 +514,7 @@ The transport controls fade out if they're not used but can be restored by tappi
 
 If the `AreTransportControlsEnabled` property of the `Video` control is set to `false`, the `MediaController` is removed as the media player of the `VideoView`. In this scenario, you can then control video playback programmatically or supply your own transport controls. For more information, see [Custom transport controls](#custom-transport-controls).
 
-### iOS
+### iOS and Mac Catalyst
 
 Video is played on iOS and Mac Catalyst with an `AVPlayer` and an `AVPlayerViewController`. However, here, these types are encapsulated in a `MauiVideoPlayer` type to keep the native views separated from their handler. The following example shows the `VideoHandler` partial class for iOS, with its three overrides:
 
