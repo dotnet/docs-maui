@@ -172,17 +172,17 @@ public partial class CustomizeEntryHandlerLifecyclePage : ContentPage
     }
 
 #if IOS || MACCATALYST                   
-	void OnEditingDidBegin(object sender, EventArgs e)
-	{
-		  var nativeView = sender as UITextField;
-		  nativeView.PerformSelector(new ObjCRuntime.Selector("selectAll"), null, 0.0f);
-	}
+    void OnEditingDidBegin(object sender, EventArgs e)
+    {
+        var nativeView = sender as UITextField;
+        nativeView.PerformSelector(new ObjCRuntime.Selector("selectAll"), null, 0.0f);
+    }
 #elif WINDOWS
-	void OnGotFocus(object sender, RoutedEventArgs e)
-	{
-      var nativeView = sender as TextBox;
-      nativeView.SelectAll();
-	}
+    void OnGotFocus(object sender, RoutedEventArgs e)
+    {
+        var nativeView = sender as TextBox;
+        nativeView.SelectAll();
+    }
 #endif
 }
 ```
