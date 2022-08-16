@@ -226,6 +226,12 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
 :::zone-end
 
+:::zone pivot="devices-maccatalyst"
+
+Mac Catalyst development isn't possible using Visual Studio.
+
+:::zone-end
+
 # [Visual Studio for Mac](#tab/vsmac)
 
 CONTENT GOES HERE
@@ -245,6 +251,12 @@ iOS
 :::zone pivot="devices-maccatalyst"
 
 Mac Catalyst
+
+:::zone-end
+
+:::zone pivot="devices-maccatalyst"
+
+Windows development isn't possible using Visual Studio for Mac.
 
 :::zone-end
 
