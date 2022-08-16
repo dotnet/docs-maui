@@ -230,6 +230,8 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
 CONTENT GOES HERE
 
+---
+
 ## Next steps
 
 In this tutorial, you've learnt how to create and run your first .NET Multi-platform App UI (.NET MAUI) app in Visual Studio 2022 17.3 on Windows.
