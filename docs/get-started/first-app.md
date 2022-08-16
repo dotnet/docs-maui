@@ -1,14 +1,14 @@
 ---
 title: "Build your first .NET MAUI app"
 description: "Learn how to create and run your first .NET MAUI app in Visual Studio 2022 on Windows."
-ms.date: 06/15/2022
+ms.date: 08/16/2022
 ms.custom: updateeachrelease
 zone_pivot_groups: devices-deployment
 ---
 
 # Build your first app
 
-In this tutorial, you'll learn how to create and run your first .NET Multi-platform App UI (.NET MAUI) app in Visual Studio 2022 17.3 on Windows.
+In this tutorial, you'll learn how to create and run your first .NET Multi-platform App UI (.NET MAUI) app in Visual Studio 2022 17.3 on Windows, or Visual Studio Mac 17.4 Preview.
 
 :::zone pivot="devices-ios"
 
@@ -21,6 +21,8 @@ Developing .NET MAUI apps for iOS requires a Mac build host. If you don't specif
 Visual Studio for Mac support will arrive in a future release.
 
 :::zone-end
+
+# [Visual Studio](#tab/vswin)
 
 ## Get started with Visual Studio 2022 17.3
 
@@ -223,6 +225,10 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
     :::image type="content" source="media/first-app/ios-running-app.png" alt-text=".NET MAUI app running in iOS Simulator on a Mac.":::
 
 :::zone-end
+
+# [Visual Studio for Mac](#tab/vsmac)
+
+CONTENT GOES HERE
 
 ## Next steps
 
