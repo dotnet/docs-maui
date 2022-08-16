@@ -230,6 +230,24 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
 CONTENT GOES HERE
 
+:::zone pivot="devices-android"
+
+Android
+
+:::zone-end
+
+:::zone pivot="devices-ios"
+
+iOS
+
+:::zone-end
+
+:::zone pivot="devices-maccatalyst"
+
+Mac Catalyst
+
+:::zone-end
+
 ---
 
 ## Next steps
