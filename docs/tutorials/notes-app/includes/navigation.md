@@ -7,13 +7,13 @@ ms.topic: include
 
 This portion of the tutorial introduces the concepts of views, models, and in-app navigation.
 
-In the previous steps of the tutorial, you added two pages to the project: `NotePage` and `AboutPage`. The pages represent a view of data. The `NotePage` is a "view" that displays a "note data" and the `AboutPage` is a "view" that displays "app information data." Both of these views have a model of that data hardcoded, or embedded in them, and you'll need to separate the data model from the view.
+In the previous steps of the tutorial, you added two pages to the project: `NotePage` and `AboutPage`. The pages represent a view of data. The `NotePage` is a "view" that displays "note data" and the `AboutPage` is a "view" that displays "app information data." Both of these views have a model of that data hardcoded, or embedded in them, and you'll need to separate the data model from the view.
 
-What is the benefit of separating the model from the view? It allows you to design the view to represent and interact with any portion of the model, without worrying about corrupting model. This is accomplished using data binding, something that will be presented later in this tutorial. For now, though, lets restructure the project.
+What is the benefit of separating the model from the view? It allows you to design the view to represent and interact with any portion of the model, without worrying about actual code that implements of model. This is accomplished using data binding, something that will be presented later in this tutorial. For now, though, lets restructure the project.
 
 ## Separate the view and model
 
-Refactor the existing code to separate the model from the view. The next few steps will organize the code so that views and models are defined separate from each other.
+Refactor the existing code to separate the model from the view. The next few steps will organize the code so that views and models are defined separately from each other.
 
 01. Delete _MainPage.xaml_ and _MainPage.xaml.cs_ from your project, they're no longer needed. In the **Solution Explorer** pane, find the entry for **MainPage.xaml**, right-click it and select **Delete**.
 
@@ -82,7 +82,7 @@ The _AppShell.xaml_ defines two tabs, one for the `NotesPage` and another for `A
 </Shell>
 ```
 
-A .NET namespace is imported into the XAML through an XML namespace declaration. In the previous XAML markup, it's the `xmlns:local="clr-namespace:Notes"` attribute in the root element: `<Shell>`. The format of declaring an XML namespace to import a .NET namespace is
+A .NET namespace is imported into the XAML through an XML namespace declaration. In the previous XAML markup, it's the `xmlns:local="clr-namespace:Notes"` attribute in the root element: `<Shell>`. The format of declaring an XML namespace to import a .NET namespace in the same assembly is:
 
 ```xml
 xmlns:{XML namespace name}="clr-namespace:{.NET namespace}"
@@ -144,7 +144,7 @@ Next, create the about page's model:
 
 ## Update About page
 
-The about page will be the quickest to update and you'll be able to run the app and see how it loads data from the model.
+The about page will be the quickest page to update and you'll be able to run the app and see how it loads data from the model.
 
 01. In the **Solution Explorer** pane, open the _Views\\AboutPage.xaml_ file.
 01. Replace the content with the following snippet:
@@ -157,17 +157,16 @@ Let's look at the changed lines, which are highlighted in the previous snippet:
 
   This line maps the `Notes.Models` .NET namespace to the `models` XML namespace.
 
-- The `BindingContext` was .
-- The `BindingContext` property of the `ContentPage` is set to an instance of the `Note.Models.About` class, using the XML namespace and object of `models:About`. This was set using object markup instead of an XML attribute.
+- The `BindingContext` property of the `ContentPage` is set to an instance of the `Note.Models.About` class, using the XML namespace and object of `models:About`. This was set using **property element syntax** instead of an XML attribute.
 
   > [!IMPORTANT]
-  > Until now, properties have been set using an XML attribute. This works great for simple values, such as a `Label.FontSize` property. But if the property value is more complex, you must use XAML markup to create the object. Consider the following example of a creating a label with its `FontSize` property set:
+  > Until now, properties have been set using an XML attribute. This works great for simple values, such as a `Label.FontSize` property. But if the property value is more complex, you must use **property element syntax** to create the object. Consider the following example of a creating a label with its `FontSize` property set:
   >
   > ```xaml
   > <Label FontSize="22" />
   > ```
   >
-  > The same `FontSize` property can be set using XAML markup:
+  > The same `FontSize` property can be set using **property element syntax**:
   >
   > ```xaml
   > <Label>
@@ -179,7 +178,7 @@ Let's look at the changed lines, which are highlighted in the previous snippet:
 
 - Three `<Label>` controls had their `Text` property value changed from a hardcoded string to binding syntax: `{Binding PATH}`.
 
-  `{Binding}` syntax is processed at run-time, allowing the value returned from the binding to be dynamic. The `PATH` portion of `{Binding PATH}` is the property path to bind to. The property comes from the current control's `BindingContext`. With the `<Label>` control, `BindingContext` is unset. When the context is unset, .NET MAUI checks the parent control for a context, and so on, walking up the control hierarchy looking for a valid context. Eventually the `ContentPage` as the root object is discovered with a set `BindingContext`.
+  `{Binding}` syntax is processed at run-time, allowing the value returned from the binding to be dynamic. The `PATH` portion of `{Binding PATH}` is the property path to bind to. The property comes from the current control's `BindingContext`. With the `<Label>` control, `BindingContext` is unset. Context is inherited from the parent when it's unset by the control, which in this case, the parent object setting context is the root object: `ContentPage`.
 
   The object in the `BindingContext` is an instance of the `About` model. The binding path of one of the labels binds the `Label.Text` property to the `About.Title` property.
 
@@ -228,7 +227,7 @@ Instead of loading the note in the constructor, create a new `LoadNote` method. 
 
     :::code language="csharp" source="../snippets/navigation/csharp/Notes/Views/NotePage.xaml.cs" id="load_note_by_file":::
 
-01. Update the class constructor to call `LoadNote`. The file name for the note should be a randomly generated name to be created in the app data directory of the device.
+01. Update the class constructor to call `LoadNote`. The file name for the note should be a randomly generated name to be created in the app's local data directory.
 
     :::code language="csharp" source="../snippets/navigation/csharp/Notes/Views/NotePage.xaml.cs" id="load_note_ctor" highlight="5-8":::
 
@@ -243,14 +242,14 @@ Currently the **note** view displays a single note, and there isn't a view that 
 
 ### Code the AllNotes model
 
-The new model will represent the data required to display multiple notes. This data would be a property that represents a collection of notes. The collection will be an `ObservableCollection` which is a specialized collection. When a control lists multiple items, such as a `ListView`, is bound to an `ObservableCollection`, the two work together to automatically keep the list of items in sync with the collection. If the list adds an item, the collection is updated. If the collection adds an item, the control is automatically updated with a new item.
+The new model will represent the data required to display multiple notes. This data will be a property that represents a collection of notes. The collection will be an `ObservableCollection` which is a specialized collection. When a control lists multiple items, such as a `ListView`, is bound to an `ObservableCollection`, the two work together to automatically keep the list of items in sync with the collection. If the list adds an item, the collection is updated. If the collection adds an item, the control is automatically updated with a new item.
 
 01. In the **Solution Explorer** pane, open the _Models\\AllNotes.cs_ file.
 01. Replace the code with the following snippet:
 
     :::code language="csharp" source="../snippets/navigation/csharp/Notes/Models/AllNotes.cs":::
 
-The previous code declares a collection, named `Notes`, and uses the `LoadNotes` method to load notes from the device. This method uses Linq extensions to load, transform, and sort the data into the `Notes` collection.
+The previous code declares a collection, named `Notes`, and uses the `LoadNotes` method to load notes from the device. This method uses LINQ extensions to load, transform, and sort the data into the `Notes` collection.
 
 ### Design the AllNotes page
 
@@ -263,7 +262,7 @@ Next, the view needs to be designed to support the **AllNotes** model.
 
 The previous XAML introduces a few new concepts:
 
-- The `ContentPage.ToolbarItems` property contains a `ToolbarItem`. The buttons defined here usually display at the top of the app, along the page title. Depending on the device, though, it may be in a different position. When one of these buttons is pressed, the `Clicked` event is raised, just like a normal button.
+- The `ContentPage.ToolbarItems` property contains a `ToolbarItem`. The buttons defined here are usually display at the top of the app, along the page title. Depending on the platform, though, it may be in a different position. When one of these buttons is pressed, the `Clicked` event is raised, just like a normal button.
 
   The `ToolbarItem.IconImageSource` property sets the icon to display on the button. The icon can be any image resource defined by the project, however, in this example, a `FontImage` is used. A `FontImage` can use a single glyph from a font as an image.
 
@@ -284,11 +283,11 @@ This code uses the constructor to set the `BindingContext` of the page to the mo
 
 The `OnAppearing` method is overridden from the base class. This method is automatically called whenever the page is shown, such as when the page is navigated to. The code here tells the model to load the notes. Because the `CollectionView` in the **AllNotes view** is bound to the **AllNotes model's** `Notes` property, which is an `ObservableCollection`, whenever the notes are loaded, the `CollectionView` is automatically updated.
 
-The `Add_Clicked` handler introduces another new concept, navigation. Because the app is using the .NET MAUI Shell, you can navigate to new pages by calling the `Shell.Current.GoToAsync` method. Notice that the handler is declared with the `async` keyword, which allows the use of the `await` keyword when navigating. This handler navigates to the `NotePage`.
+The `Add_Clicked` handler introduces another new concept, navigation. Because the app is using .NET MAUI Shell, you can navigate to pages by calling the `Shell.Current.GoToAsync` method. Notice that the handler is declared with the `async` keyword, which allows the use of the `await` keyword when navigating. This handler navigates to the `NotePage`.
 
 The last piece of code in the previous snippet is the `notesCollection_SelectionChanged` handler. This method takes the currently selected item, a **Note** model, and uses its information to navigate to the `NotePage`. `GoToAsync` uses a URI string for navigation. In this case, a string is constructed that uses a query string parameter to set a property on the destination page. The interpolated string representing the URI ends up looking similar to the following string:
 
-```csharp
+```text
 NotePage?ItemId=path\on\device\XYZ.notes.txt
 ```
 
@@ -301,7 +300,7 @@ Visual Studio may be indicating that the `NotePage.ItemId` property doesn't exis
 The **Note view** needs to support the query string parameter, `ItemId`. Create it now:
 
 01. In the **Solution Explorer** pane, open the _Views/NotePage.xaml.cs_ file.
-01. Add the `QueryProperty` attribute to the class keyword, providing the name of the query string property, and the class property it maps to, `ItemId` and `ItemId` respectively:
+01. Add the `QueryProperty` attribute to the `class` keyword, providing the name of the query string property, and the class property it maps to, `ItemId` and `ItemId` respectively:
 
     :::code language="csharp" source="../snippets/navigation/csharp/Notes/Views/NotePage.xaml.cs" id="query_prop":::
 
@@ -317,15 +316,15 @@ The **Note view** needs to support the query string parameter, `ItemId`. Create 
 
 01. Delete the `_fileName` variable from top of the code, as it's no longer used by the class.
 
-## Modify the Shell
+## Modify the app's visual tree
 
-The Shell is still loading the single note page, instead, it needs to load the **AllPages view**. Open the _AppShell.xaml_ file and change the first `ShellContent` entry to point to the `AllNotesPage` instead of `NotePage`:
+The `AppShell` is still loading the single note page, instead, it needs to load the **AllPages view**. Open the _AppShell.xaml_ file and change the first `ShellContent` entry to point to the `AllNotesPage` instead of `NotePage`:
 
 :::code language="xaml" source="../snippets/navigation/csharp/Notes/AppShell.xaml" highlight="12":::
 
-If you run the app now, you'll notice it crashes if you press the **Add** button, complaining that it can't navigate to `NotesPage`. Every page that can be navigated to by the Shell, needs to be registered with the Shell. The `AllNotesPage` page is automatically registered with the Shell because it was added to it in the XAML with `<ShellContent>`.
+If you run the app now, you'll notice it crashes if you press the **Add** button, complaining that it can't navigate to `NotesPage`. Every page that can be navigated to from another page, needs to be registered with the navigation system. The `AllNotesPage` and `AboutPage` pages are automatically registered with the navigation system by being declared in the `TabBar`.
 
-Register the `NotesPage` with the shell:
+Register the `NotesPage` with the navigation system:
 
 01. In the **Solution Explorer** pane, open the _Views/AppShell.xaml.cs_ file.
 01. Add a line to the constructor that registers the navigation route:
