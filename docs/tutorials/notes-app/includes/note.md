@@ -89,6 +89,8 @@ The final code for the code-behind file should look like that following:
 
 Now that **note page** is finished, you need a way to present it to the user. Open the _AppShell.xaml_ file, and change the first `ShellContent` entry to point to the `NotePage` instead of `MainPage`:
 
-:::code language="xaml" source="../snippets/note/csharp/Notes/AppShell.xaml" highlight="13":::
+:::code language="xaml" source="../snippets/note/csharp/Notes/AppShell.xaml" highlight="12":::
 
 Save the file and run the app. Try typing into the entry box and press the **Save** button. Close the app, and reopen it. The note you entered should be loaded from the device's storage.
+
+:::image type="content" source="../media/note/final.png" alt-text="Note entry page in .NET MAUI app.":::

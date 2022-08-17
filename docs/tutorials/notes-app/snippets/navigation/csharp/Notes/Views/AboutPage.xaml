@@ -18,5 +18,5 @@
         <Label Text="{Binding Message}" />
         <Button Text="Learn more..." Clicked="LearnMore_Clicked" />
     </VerticalStackLayout>
-    
+
 </ContentPage>

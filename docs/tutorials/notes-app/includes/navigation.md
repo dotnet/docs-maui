@@ -65,17 +65,18 @@ The _AppShell.xaml_ defines two tabs, one for the `NotesPage` and another for `A
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Notes"
-    WidthRequest="400"
     Shell.FlyoutBehavior="Disabled">
 
     <TabBar>
         <ShellContent
             Title="Notes"
-            ContentTemplate="{DataTemplate local:NotePage}" />
-        
+            ContentTemplate="{DataTemplate local:NotePage}"
+            Icon="icon_notes" />
+
         <ShellContent
             Title="About"
-            ContentTemplate="{DataTemplate local:AboutPage}" />
+            ContentTemplate="{DataTemplate local:AboutPage}"
+            Icon="icon_about" />
     </TabBar>
 
 </Shell>
@@ -89,7 +90,9 @@ xmlns:{XML namespace name}="clr-namespace:{.NET namespace}"
 
 So the previous declaration maps the XML namespace of `local` to the .NET namespace of `Notes`. It's common practice to map the name `local` to the root namespace of your project.
 
-Edit the `local` XML namespace declaration and set the .NET namespace to `Notes.Views`. Your XAML should now look like the following snippet:
+Remove the `local` XML namespace and add a new one. This new XML namespace will map to the .NET namespace of `Notes.Views`, so name it `views`. The declaration should look like teh following attribute: `xmlns:views="clr-namespace:Notes.Views"`.
+
+The `local` XML namespace was used by the `ShellContent.ContentTemplate` properties, change them to `views`. Your XAML should now look like the following snippet:
 
 ```xaml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -97,18 +100,19 @@ Edit the `local` XML namespace declaration and set the .NET namespace to `Notes.
     x:Class="Notes.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:Notes.Views"
-    WidthRequest="400"
+    xmlns:views="clr-namespace:Notes.Views"
     Shell.FlyoutBehavior="Disabled">
 
     <TabBar>
         <ShellContent
             Title="Notes"
-            ContentTemplate="{DataTemplate local:NotePage}" />
-        
+            ContentTemplate="{DataTemplate views:NotePage}"
+            Icon="icon_notes" />
+
         <ShellContent
             Title="About"
-            ContentTemplate="{DataTemplate local:AboutPage}" />
+            ContentTemplate="{DataTemplate views:AboutPage}"
+            Icon="icon_about" />
     </TabBar>
 
 </Shell>
@@ -317,7 +321,7 @@ The **Note view** needs to support the query string parameter, `ItemId`. Create 
 
 The Shell is still loading the single note page, instead, it needs to load the **AllPages view**. Open the _AppShell.xaml_ file and change the first `ShellContent` entry to point to the `AllNotesPage` instead of `NotePage`:
 
-:::code language="xaml" source="../snippets/navigation/csharp/Notes/AppShell.xaml" highlight="13":::
+:::code language="xaml" source="../snippets/navigation/csharp/Notes/AppShell.xaml" highlight="12":::
 
 If you run the app now, you'll notice it crashes if you press the **Add** button, complaining that it can't navigate to `NotesPage`. Every page that can be navigated to by the Shell, needs to be registered with the Shell. The `AllNotesPage` page is automatically registered with the Shell because it was added to it in the XAML with `<ShellContent>`.
 

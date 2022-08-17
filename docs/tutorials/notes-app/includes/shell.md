@@ -94,6 +94,34 @@ The next step is to add the code for the button's `Clicked` event.
 
 Now that the XAML and code-behind of the `AboutPage` is complete, you'll need to get it displayed in the app.
 
+## Add image resources
+
+Some controls can use images, which enhances how users interact with your app. In this section you'll download and add two images for to your app.
+
+Download these two images:
+
+- [Icon: About](https://raw.githubusercontent.com/dotnet/docs-maui/main/docs/tutorials/notes-app/snippets/shell/csharp/Notes/Resources/Images/icon_about.png)\
+  This image is used as an icon for the about page you created earlier.
+
+- [Icon: Notes](https://raw.githubusercontent.com/dotnet/docs-maui/main/docs/tutorials/notes-app/snippets/shell/csharp/Notes/Resources/Images/icon_notes.png)\
+  This image is used as an icon for the notes page you'll create in the next part of this tutorial.
+
+After you've downloaded the images, you can move them with File Explorer to the _Resources\Images_ folder of the project. Any file in this folder is automatically included in the project as a **MauiImage** resource. You can also use Visual Studio to add the images to your project. If you move the images by hand, skip the following procedure.
+
+### Move the images with Visual Studio
+
+01. In the **Solution Explorer** pane of Visual Studio, expand the **Resources** folder, which reveals the **Images** folder.
+
+    > [!TIP]
+    > You can use File Explorer to drag-and-drop the images directly into the **Solution Explorer** pane, on top of the **Images** folder. This automatically moves the files to the folder, and includes them in the project. If you choose to drag-and-drop the files, ignore the rest of this procedure.
+
+01. Right-click on **Images** and select **Add** > **Existing Item...**.
+01. Navigate to the folder that contains the downloaded images.
+01. Change the filter to file type filter to **Image Files**.
+01. Hold down <kbd>CTRL</kbd> and click on each of the three images you downloaded, then press **Add**
+
+:::image type="content" source="../media/shell/vs-add-image.png" alt-text="Add three icon images to .NET MAUI project.":::
+
 ## Modify the app Shell
 
 As noted at the start of this article, the `AppShell` class defines an app's visual hierarchy, the XAML markup used in creating the UI of the app. Double-click the _AppShell.xaml_ file in the **Solution Explorer** pane to open the XAML editor. Replace the XAML markup with the following code:
@@ -108,10 +136,14 @@ Let's break down the key parts of the XAML:
 - `<TabBar>` is the content of the `Shell`.
 - Two `<ShellContent>` objects inside of the `<TabBar>`. Before you replaced the template code, there was a single `<ShellContent>` object, pointing to the `MainPage` page.
 
+  - Each `<ShellContent>` sets the `Icon` property to an image resource. This is the name of the file in the _Resources\Images_ folder, without an extension.
+
 The `TabBar` and its children don't represent any user interface elements, but rather the organization of the app's visual hierarchy. Shell will take these objects and produce the user interface for the content.
 
 Each `<ShellContent>` object is pointing to a page to display. This is set by the `ContentTemplate` property.
 
 Run the app and you'll see that there are two tabs: **Notes** and **About**. Press the **About** tab and the app navigates to the `AboutPage` you created. Press on the **Learn More...** button to open the web browser.
+
+:::image type="content" source="../media/shell/final.png" alt-text="About page of .NET MAUI app tutorial.":::
 
 Stop the app and return to Visual Studio.

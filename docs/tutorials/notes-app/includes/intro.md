@@ -5,7 +5,7 @@ ms.date: 08/05/2022
 ms.topic: include
 ---
 
-This tutorial series is designed to demonstrate how to create a .NET Multi-platform App UI (.NET MAUI) app that doesn't use any platform-specific code. Meaning, the code you write won't be specific to Windows, Android, iOS, or macOS. The app you'll create will be a note taking app, where the user can create, save, and load multiple notes.
+This tutorial series is designed to demonstrate how to create a .NET Multi-platform App UI (.NET MAUI) app that only uses cross-platform code. Meaning, the code you write won't be specific to Windows, Android, iOS, or macOS. The app you'll create will be a note taking app, where the user can create, save, and load multiple notes.
 
 In this tutorial, you learn how to:
 
