@@ -22,7 +22,7 @@ Pair to Mac enables the following software development workflow:
 > [!NOTE]
 > Before following the instructions in this article, on a Mac, [install Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12) and optionally the latest [Visual Studio 2022 for Mac Preview](https://visualstudio.microsoft.com/vs/mac/preview/). You must manually open Xcode after installation so that it can add any additional components.
 >
-> If you would prefer not to install Visual Studio 2022  for Mac, Visual Studio 2022 can automatically configure the Mac build host. However, you must still install and run Xcode.
+> If you would prefer not to install Visual Studio 2022 for Mac, Visual Studio 2022 can automatically configure the Mac build host. However, you must still install and run Xcode.
 
 ## Enable remote login on the Mac
 
