@@ -15,7 +15,6 @@ The note page will display the note and allow you to either save or delete it. F
 
 01. The _NotePage.xaml_ file will open in a new tab, displaying all of the XAML markup that represents the UI of the page. Replace the XAML code markup the following markup:
 
-    TODO: Update this with grid spacing
     :::code language="xaml" source="../snippets/note/csharp/Notes/NotePage.xaml":::
 
 01. Save the file by pressing <kbd>CTRL + S</kbd> or by selecting the menu **File** > **Save NotePage.xaml**.
