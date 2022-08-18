@@ -277,9 +277,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 f
 
     :::image type="content" source="media/first-app/vsmac/android-sdk-license-acceptance.png" alt-text="Accept the Android SDK license.":::
 
-01. Wait for Visual Studio 2022 for Mac 17.4 Preview to download the Android SDK:
-
-    :::image type="content" source="media/first-app/vsmac/android-sdk-downloaded.png" alt-text="Message indicating that the Android SDK has successfully downloaded.":::
+    Wait for Visual Studio 2022 for Mac 17.4 Preview to download the Android SDK:
 
 01. In the Visual Studio 2022 for Mac toolbar (CHECK IT'S CALLED THIS), change the debug target to **Android Emulator**:
 
