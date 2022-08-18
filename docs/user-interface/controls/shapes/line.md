@@ -23,7 +23,7 @@ For information about controlling how line ends are drawn, see [Control line end
 
 ## Create a Line
 
-To draw a line, create a `Line` object and set its `X1` and `Y1` properties to its start point, and its `X2` and `Y` properties to its end point. In addition, set its `Stroke` property to a `Brush`-derived object because a line without a stroke is invisible. For more information about `Brush` objects, see [Brushes](~/user-interface/brushes/index.md).
+To draw a line, create a `Line` object and set its `X1` and `Y1` properties to its start point, and its `X2` and `Y2` properties to its end point. In addition, set its `Stroke` property to a `Brush`-derived object because a line without a stroke is invisible. For more information about `Brush` objects, see [Brushes](~/user-interface/brushes/index.md).
 
 > [!NOTE]
 > Setting the `Fill` property of a `Line` has no effect, because a line has no interior.
