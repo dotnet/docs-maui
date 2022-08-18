@@ -222,6 +222,7 @@ A `FlexLayout` can substitute for a `StackLayout`:
     </FlexLayout>
 </ContentPage>
 ```
+
 In this example, the `Direction` property is set to `Column`, which causes the children of the `FlexLayout` to be arranged in a single column. The `AlignItems` property is set to `Center`, which causes each child to be horizontally centered. The `JustifyContent` property is set to `SpaceEvenly` which allocates all leftover vertical space equally between all the children, above the first child and below the last child:
 
 :::image type="content" source="media/flexlayout/stack.png" alt-text="Vertically oriented .NET MAUI FlexLayout.":::
