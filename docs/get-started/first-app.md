@@ -225,9 +225,9 @@ It's not possible to launch and debug Mac Catalyst apps from Visual Studio 2022.
 
 # [Visual Studio for Mac](#tab/vsmac)
 
-In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 for Mac 17.4 Preview, and run it on your chosen platform.
+In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 for Mac 17.4 Preview, and run it on your chosen platform:
 
-01. To create .NET MAUI apps, you'll need the latest Visual Studio 2022 for Mac 17.4 Preview. Either install [Visual Studio 2022 or Mac 17.4 Preview](https://aka.ms/installer/preview), or modify your existing installation, and ensure that the following workloads are installed:
+01. To create .NET MAUI apps, you'll need the latest Visual Studio 2022 for Mac 17.4 Preview. Either install [Visual Studio 2022 for Mac 17.4 Preview](https://aka.ms/installer/preview), or modify your existing installation, and ensure that the following workloads are installed:
 
     - .NET
     - .NET MAUI
