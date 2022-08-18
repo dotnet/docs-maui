@@ -219,7 +219,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
 :::zone pivot="devices-maccatalyst"
 
-It's not possible to launch and debug Mac Catalyst apps from Visual Studio 2022.
+Mac Catalyst apps can only be launched and debugged using Visual Studio 2022 for Mac.
 
 :::zone-end
 
@@ -363,7 +363,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 f
 
 :::zone pivot="devices-windows"
 
-It's not possible to launch and debug Windows apps from Visual Studio 2022 for Mac.
+Windows apps can only be launched and debugged using Visual Studio 2022.
 
 :::zone-end
 
