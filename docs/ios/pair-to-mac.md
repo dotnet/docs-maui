@@ -14,7 +14,7 @@ Pair to Mac enables the following software development workflow:
 
 - You can write .NET MAUI iOS code in Visual Studio 2022.
 - Visual Studio 2022 opens a network connection to a Mac build host and uses the build tools on that machine to compile and sign the iOS app.
-- There is no need to run a separate application on the Mac – Visual Studio 2022 invokes Mac builds securely over SSH.
+- There's no need to run a separate application on the Mac – Visual Studio 2022 invokes Mac builds securely over SSH.
 - Visual Studio 2022 is notified of changes as soon as they happen. For example, when an iOS device is plugged into the Mac or becomes available on the network, the iOS Toolbar updates instantly.
 - Multiple instances of Visual Studio 2022 can connect to the Mac simultaneously.
 - It's possible to use the Windows command-line to build iOS apps.
@@ -34,9 +34,9 @@ To set up the Mac build host, first enable remote login:
 
     :::image type="content" source="media/pair-to-mac/sharing.png" alt-text="Enabling remote login.":::
 
-    Make sure that it is configured to allow access for **All users**, or that your Mac username or group is included in the list of allowed users.
+    Make sure that it's configured to allow access for **All users**, or that your Mac username or group is included in the list of allowed users.
 
-1. If prompted, configure the macOS firewall. If you have set the macOS firewall to block incoming connections, you may need to allow `mono-sgen` to receive incoming connections. An alert appears to prompt you if this is the case.
+1. If prompted, configure the macOS firewall. If you have set the macOS firewall to block incoming connections, you may need to allow `mono-sgen` to receive incoming connections. An alert appears to prompt you if so.
 
 1. If it's on the same network as the Windows machine, the Mac should now be discoverable by Visual Studio 2022. If the Mac is still not discoverable, try [manually adding a Mac](#manually-add-a-mac).
 
@@ -52,24 +52,24 @@ After enabling remote login on the Mac, connect Visual Studio 2022 to the Mac:
 
     Alternatively, select **Tools > iOS > Pair to Mac**.
 
-    The **Pair to Mac** dialog displays a list of all previously-connected and currently-available Mac build hosts:
+    The **Pair to Mac** dialog displays a list of all previously connected and currently available Mac build hosts:
 
     :::image type="content" source="media/pair-to-mac/pairtomac.png" alt-text="The Pair to Mac dialog.":::
 
-1. Select a Mac in the list and click the **Connect** button.
+1. Select a Mac in the list and select **Connect**.
 
-1. Enter your username and password. The first time you connect to any particular Mac, you are prompted to enter your username and password for that machine:
+1. Enter your username and password. The first time you connect to any particular Mac, you're prompted to enter your username and password for that machine:
 
     :::image type="content" source="media/pair-to-mac/auth.png" alt-text="Entering a username and password for the Mac.":::
 
     > [!TIP]
     > When logging in, use your system username.
 
-    Pair to Mac uses these credentials to create a new SSH connection to the Mac. If it succeeds, a key is added to the **authorized_keys** file on the Mac. Subsequent connections to the same Mac will login automatically.
+    Pair to Mac uses these credentials to create a new SSH connection to the Mac. If it succeeds, a key is added to the **authorized_keys** file on the Mac. Subsequent connections to the same Mac will log in automatically.
 
 1. Pair to Mac automatically configures the Mac. Visual Studio 2022 installs or updates pre-requisites on a connected Mac build host as needed. However, Xcode must still be installed manually.
 
-1. Examine the connection status icon. When Visual Studio 2022 is connected to a Mac, that Mac's item in the **Pair to Mac** dialog displays an icon indicating that it is currently connected:
+1. Examine the connection status icon. When Visual Studio 2022 is connected to a Mac, that Mac's item in the **Pair to Mac** dialog displays an icon indicating that it's currently connected:
 
     :::image type="content" source="media/pair-to-mac/connected.png" alt-text="A connected Mac.":::
 
@@ -82,13 +82,13 @@ After enabling remote login on the Mac, connect Visual Studio 2022 to the Mac:
     >
     > If you choose **Forget this Mac**, your credentials for the selected Mac will be forgotten. To reconnect to that Mac, you will need to re-enter your username and password.
 
-If you have successfully paired to a Mac build host, you are ready to build .NET MAUI iOS apps in Visual Studio 2022. For more information, see [Build your first app](~/get-started/first-app.md?pivots=devices-ios).
+If you've successfully paired to a Mac build host, you're ready to build .NET MAUI iOS apps in Visual Studio 2022. For more information, see [Build your first app](~/get-started/first-app.md?pivots=devices-ios).
 
-If you have not been able to pair a Mac, try [manually adding a Mac](#manually-add-a-mac).
+If you haven't been able to pair a Mac, try [manually adding a Mac](#manually-add-a-mac).
 
 ## Manually add a Mac
 
-If you do not see a specific Mac listed in the **Pair to Mac** dialog, add it manually:
+If you don't see a specific Mac listed in the **Pair to Mac** dialog, add it manually:
 
 1. Open **System Preferences > Sharing > Remote Login** on your Mac to locate your Mac’s IP address:
 
@@ -100,13 +100,13 @@ If you do not see a specific Mac listed in the **Pair to Mac** dialog, add it ma
     ipconfig getifaddr en0
     ```
 
-    Depending on your network configuration, you may need to use an interface name other than `en0`. For example `en1` or `en2`.
+    Depending on your network configuration, you may need to use an interface name other than `en0`, for example, `en1` or `en2`.
 
 1. In Visual Studio 2022's **Pair to Mac** dialog, select **Add Mac...**:
 
     :::image type="content" source="media/pair-to-mac/addtomac.png" alt-text="The Add Mac button in the Pair to Mac dialog.":::
 
-1. Enter the Mac's IP address and click **Add**:
+1. Enter the Mac's IP address and select **Add**:
 
     :::image type="content" source="media/pair-to-mac/enteripaddress.png" alt-text="Entering the Mac's IP address.":::
 
@@ -117,7 +117,7 @@ If you do not see a specific Mac listed in the **Pair to Mac** dialog, add it ma
    > [!TIP]
    > When logging in, use your system username.
 
-1. Click **Login** to connect Visual Studio 2022 to the Mac over SSH and add it to the list of known machines.
+1. Select **Login** to connect Visual Studio 2022 to the Mac over SSH and add it to the list of known machines.
 
 ## Automatic Mac provisioning
 
@@ -133,7 +133,7 @@ In addition, Pair to Mac performs required software installations and updates to
 
 ### Xcode tools and license
 
-Pair to Mac will also check to determine whether Xcode has been installed and its license accepted. While Pair to Mac does not install Xcode, it does prompt for license acceptance.
+Pair to Mac will also check to determine whether Xcode has been installed and its license accepted. While Pair to Mac doesn't install Xcode, it does prompt for license acceptance.
 
 In addition, Pair to Mac will install or update various packages distributed with Xcode. The installation of these packages happens quickly and without a prompt.
 
@@ -156,6 +156,6 @@ The parameters passed to `dotnet` in the above example are:
 - `ServerPassword` – the password to use when logging in to the Mac build host.
 - `_DotNetRootRemoteDirectory` - the folder on the Mac build host that contains the .NET SDK.
 
-The first time Pair to Mac logs in to a Mac build host from either Visual Studio 2022 or the command-line, it sets up SSH keys. With these keys, future logins will not require a username or password. Newly created keys are stored in **%LOCALAPPDATA%\Xamarin\MonoTouch**.
+The first time Pair to Mac logs in to a Mac build host from either Visual Studio 2022 or the command-line, it sets up SSH keys. With these keys, future logins won't require a username or password. Newly created keys are stored in **%LOCALAPPDATA%\Xamarin\MonoTouch**.
 
 If the `ServerPassword` parameter is omitted from a command-line build invocation, Pair to Mac attempts to log in to the Mac build host using the saved SSH keys.
