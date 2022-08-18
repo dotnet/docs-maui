@@ -49,6 +49,10 @@
           items:
             - name: How to set up Windows for debugging
               href: windows/setup.md
+    - name: Tutorials
+      items:
+        - name: Create a .NET MAUI app
+          href: tutorials/notes-app/index.yml
     - name: XAML
       items:
         - name: Overview
