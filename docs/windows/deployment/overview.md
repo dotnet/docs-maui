@@ -109,7 +109,7 @@ To publish your app, open the **Developer Command Prompt for VS 2022** terminal 
 
 | Parameter                    | Value                                                                               |
 |------------------------------|-------------------------------------------------------------------------------------|
-| `-f net6.0-windows{version}` | The target framework, which is a Windows TFM, such as `net6.0-windows10.0.19041.0`. Ensure that this value is identical to the value in the `<TargetFrameworks>` node in your .csproj.           |
+| `-f net6.0-windows{version}` | The target framework, which is a Windows TFM, such as `net6.0-windows10.0.19041.0`. Ensure that this value is identical to the value in the `<TargetFrameworks>` node in your *.csproj* file.           |
 | `-c Release`                 | Sets the build configuration, which is `Release`.                                   |
 
 > [!WARNING]
@@ -121,7 +121,7 @@ For example:
 dotnet publish -f net6.0-windows10.0.19041.0 -c Release
 ```
 
-Publishing builds and packages the app, copying the signed package to the _bin\\Release\\net6.0-windows10.0.19041.0\\win10-x64\\AppPackages\\\<appname>\\_ folder. Where \<appname> is a folder named after both your project and version. In this folder there's an _msix_ file, that's the app package.
+Publishing builds and packages the app, copying the signed package to the _bin\\Release\\net6.0-windows10.0.19041.0\\win10-x64\\AppPackages\\\<appname>\\_ folder. \<appname> is a folder named after both your project and version. In this folder, there's an _msix_ file, and that's the app package.
 
 For more information about the `dotnet publish` command, see [dotnet publish](/dotnet/core/tools/dotnet-publish).
 

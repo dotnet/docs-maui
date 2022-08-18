@@ -31,7 +31,7 @@ After the emulator starts, Visual Studio deploys the app to the virtual device. 
 
 :::image type="content" source="media/debug-on-emulator/emulator-running.png" alt-text="Default .NET MAUI app running on an Android emulator.":::
 
-When you're finished debugging and running your app, you can leave the emulator running. The first time a .NET MAUI app is run in the emulator, the .NET MAUI shared runtime for the targeted API level is installed, followed by the app. The runtime installation may take a few moments to install. By leaving the emulator running, later debugging sessions start faster as the runtime is already present on the device. If the device is restarted, the runtime will be redeployed to the device.
+When you're finished debugging and running your app, you can leave the emulator running. The first time a .NET MAUI app is run in the emulator, the .NET MAUI shared runtime for the targeted API level is installed, followed by the app. The runtime installation may take a few moments to install. If you leave the emulator running, later debugging sessions start faster as the runtime is already present on the device. If the device is restarted, the runtime will be redeployed to the device.
 
 ## Fast boot
 
