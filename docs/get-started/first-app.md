@@ -262,7 +262,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 f
 
     :::image type="content" source="media/first-app/vsmac/project-dependencies-restored.png" alt-text="Ensure the project dependencies have been restored.":::
 
-:::zone end
+:::zone-end
 
 :::zone pivot="devices-android"
 
