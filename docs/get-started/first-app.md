@@ -373,4 +373,4 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 f
 
 In this tutorial, you've learnt how to create and run your first .NET Multi-platform App UI (.NET MAUI) app.
 
-To learn the fundamentals of building an app with .NET MAUI, see [Create a .NET MAUI app](~/tutorials/notes-app/index.md).
+To learn the fundamentals of building an app with .NET MAUI, see [Create a .NET MAUI app](~/tutorials/notes-app/index.yml).
