@@ -7,15 +7,15 @@ zone_pivot_groups: devices-deployment
 
 # Build your first app
 
-In this tutorial, you'll learn how to create and run your first .NET Multi-platform App UI (.NET MAUI) app in Visual Studio 2022 17.3 on Windows, or Visual Studio 2022 for Mac 17.4 Preview.
+In this tutorial, you'll learn how to create and run your first .NET Multi-platform App UI (.NET MAUI) app in Visual Studio 2022 on Windows, or Visual Studio 2022 for Mac 17.4 Preview.
 
 # [Visual Studio](#tab/vswin)
 
 :::zone pivot="devices-android"
 
-In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 17.3, and run it on an Android emulator:
+In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022, and run it on an Android emulator:
 
-01. To create .NET MAUI apps, you'll need the latest Visual Studio 2022 17.3:
+01. To create .NET MAUI apps, you'll need the latest Visual Studio 2022:
 
     - [Download 2022 Community](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Community&channel=Release&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2303)
 
@@ -33,9 +33,9 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 
 Developing .NET MAUI apps for iOS on Windows requires a Mac build host. If you don't specifically need to target iOS and don't have a Mac, consider getting started with Android or Windows instead.
 
-In this tutorial, you'll create your first .NET MAUI app in Visual Studio 17.3, and run it on an iOS simulator:
+In this tutorial, you'll create your first .NET MAUI app in Visual Studio, and run it on an iOS simulator:
 
-01. To create .NET MAUI apps, you'll need the latest Visual Studio 2022 17.3:
+01. To create .NET MAUI apps, you'll need the latest Visual Studio 2022:
 
     - [Download 2022 Community](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Community&channel=Release&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2304)
 
@@ -51,9 +51,9 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 17.3, 
 
 :::zone pivot="devices-windows"
 
-In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 17.3, and run it on Windows:
+In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022, and run it on Windows:
 
-01. To create .NET MAUI apps, you'll need the latest Visual Studio 2022 17.3:
+01. To create .NET MAUI apps, you'll need the latest Visual Studio 2022:
 
     - [Download 2022 Community](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Community&channel=Release&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2302)
 
@@ -70,7 +70,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 1
 :::zone pivot="devices-android, devices-ios, devices-windows"
 
 <!-- markdownlint-disable MD029 -->
-02. Launch Visual Studio 2022 17.3, and in the start window click **Create a new project** to create a new project:
+02. Launch Visual Studio 2022, and in the start window click **Create a new project** to create a new project:
 
     :::image type="content" source="media/first-app/vs/new-solution.png" alt-text="New solution.":::
 
@@ -371,6 +371,6 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 f
 
 ## Next steps
 
-In this tutorial, you've learnt how to create and run your first .NET Multi-platform App UI (.NET MAUI) app in Visual Studio 2022 17.3 on Windows.
+In this tutorial, you've learnt how to create and run your first .NET Multi-platform App UI (.NET MAUI) app.
 
-To learn the fundamentals of building an app with .NET MAUI, and more advanced topics such as local data storage and invoking REST-based web services, see [Build mobile and desktop apps with .NET MAUI](/learn/paths/build-apps-with-dotnet-maui/).
+To learn the fundamentals of building an app with .NET MAUI, see [Create a .NET MAUI app](~/tutorials/notes-app/index.md).
