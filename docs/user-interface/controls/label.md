@@ -25,7 +25,7 @@ The .NET Multi-platform App UI (.NET MAUI) `Label` displays single-line and mult
 - `TextColor`, of type `Color`, defines the color of the displayed text.
 - `TextDecorations`, of type `TextDecorations`, specifies the text decorations (underline and strikethrough) that can be applied.
 - `TextTransform`, of type `TextTransform`, specifies the casing of the displayed text.
-- `TextType`, of type `TextType`, determines whether the `Label` should display plain text of HTML text.
+- `TextType`, of type `TextType`, determines whether the `Label` should display plain text or HTML text.
 - `VerticalTextAlignment`, of type `TextAlignment`, defines the vertical alignment of the displayed text.
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
