@@ -33,7 +33,7 @@ In addition, `CollectionView` has a `UpdateSelectedItems` method that updates th
 
 ## Single selection
 
-When the `SelectionMode` property is set to `Single`, a single item in the `CollectionView` can be selected. When an item is selected, the `SelectedItem` property will be set to the value of the selected item. When this property changes, the `SelectionChangedCommand` is executed (with the value of the `SelectionChangedCommandParameter` being passed to the `ICommand`, and the `SelectionChanged` event fires.
+When the `SelectionMode` property is set to `Single`, a single item in the `CollectionView` can be selected. When an item is selected, the `SelectedItem` property will be set to the value of the selected item. When this property changes, the `SelectionChangedCommand` is executed (with the value of the `SelectionChangedCommandParameter` being passed to the `ICommand`), and the `SelectionChanged` event fires.
 
 The following XAML example shows a `CollectionView` that can respond to single item selection:
 
