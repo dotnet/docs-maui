@@ -223,7 +223,9 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022, 
 
 :::zone-end
 
+<!-- markdownlint-disable MD025 -->
 # [Visual Studio for Mac](#tab/vsmac)
+<!-- markdownlint-enable MD025 -->
 
 :::zone pivot="devices-android, devices-ios, devices-maccatalyst"
 
