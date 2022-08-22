@@ -8,8 +8,6 @@ ms.date: 02/23/2022
 
 This article explains how to use the Android Device Manager (AVD) to edit the profile properties of an Android virtual device.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 <!-- ::: zone pivot="windows" -->
 
 ## Android Device Manager on Windows

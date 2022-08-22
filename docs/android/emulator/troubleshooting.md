@@ -9,8 +9,6 @@ ms.date: 02/23/2022
 
 This article describes the most common warning messages and issues that occur while configuring and running the Android Emulator. Also, it describes solutions for resolving these errors and various troubleshooting tips to help you diagnose emulator problems.
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 <!--
 ::: zone pivot="windows"
 -->

@@ -17,7 +17,7 @@ The `LinearGradientBrush` class defines the following properties:
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
-The `LinearGradientBrush` class also as an `IsEmpty` method that returns a `bool` that represents whether the brush has been assigned any `GradientStop` objects.
+The `LinearGradientBrush` class also has an `IsEmpty` method that returns a `bool` that represents whether the brush has been assigned any `GradientStop` objects.
 
 > [!NOTE]
 > Linear gradients can also be created with the `linear-gradient()` CSS function.
