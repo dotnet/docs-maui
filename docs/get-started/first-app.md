@@ -9,7 +9,9 @@ zone_pivot_groups: devices-deployment
 
 In this tutorial, you'll learn how to create and run your first .NET Multi-platform App UI (.NET MAUI) app in Visual Studio 2022 on Windows, or Visual Studio 2022 for Mac 17.4 Preview.
 
+<!-- markdownlint-disable MD025 -->
 # [Visual Studio](#tab/vswin)
+<!-- markdownlint-enable MD025 -->
 
 :::zone pivot="devices-android"
 
