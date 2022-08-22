@@ -599,23 +599,27 @@
               href: data-cloud/rest.md
             - name: Connect to local web services
               href: data-cloud/local-web-services.md
-    - name: Publish
+    - name: Deployment
       items:
+        - name: Overview
+          href: deployment/index.md
         - name: Visual Studio project settings
           href: deployment/visual-studio-properties.md
-        - name: Android
-          href: android/deployment/overview.md
-        - name: iOS
+        - name: Publish
           items:
-            - name: Publish an iOS app
-              href: ios/deployment/overview.md
-            - name: Provision for app store distribution
-              href: ios/deployment/provision.md
-            - name: Entitlements and capabilities
-              href: ios/deployment/entitlements.md
-        - name: macOS
-          href: macos/deployment/overview.md
-        - name: Windows
-          href: windows/deployment/overview.md
+            - name: Android
+              href: android/deployment/overview.md
+            - name: iOS
+              items:
+                - name: Publish an iOS app
+                  href: ios/deployment/overview.md
+                - name: Provision for app store distribution
+                  href: ios/deployment/provision.md
+                - name: Entitlements and capabilities
+                  href: ios/deployment/entitlements.md
+            - name: macOS
+              href: macos/deployment/overview.md
+            - name: Windows
+              href: windows/deployment/overview.md
     - name: Troubleshooting
       href: troubleshooting.md

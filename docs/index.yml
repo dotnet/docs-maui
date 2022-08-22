@@ -141,11 +141,13 @@ landingContent:
           - text: Consume a REST-based web service
             url: data-cloud/rest.md
           - text: Connect to local web services
-            url: data-cloud/local-web-services.md            
-  - title: Publish
+            url: data-cloud/local-web-services.md
+  - title: Deployment
     linkLists:
       - linkListType: concept
         links:
+          - text: Project configuration
+            url: deployment/visual-studio-properties.md
           - text: Publish Android apps
             url: android/deployment/overview.md
           - text: Publish iOS apps
