@@ -4,9 +4,9 @@ description: "Describes the Visual Studio project properties available to a .NET
 ms.date: 07/11/2022
 ---
 
-# Project configuration in .NET MAUI
+# Project configuration for .NET MAUI apps
 
-.NET MAUI uses a [single-project system](../fundamentals/single-project.md) to manage your multi-platform app. Project configuration in .NET MAUI is similar to other projects in Visual Studio, right-click on the project in the **Solution Explorer**, and select **Properties**.
+.NET MAUI uses a [single-project system](../fundamentals/single-project.md) to manage the configuration of your cross-platform app. Project configuration in .NET MAUI is similar to other projects in Visual Studio, right-click on the project in the **Solution Explorer**, and select **Properties**.
 
 ## Application
 
