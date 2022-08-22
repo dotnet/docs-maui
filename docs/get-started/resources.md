@@ -22,7 +22,8 @@ There are many different resources available for you to use to learn .NET Multi-
 
 - [Enterprise application patterns using .NET MAUI](/dotnet/architecture/maui/)  
 
-  This book provides real world solutions for addressing challenges faced when building an enterprise app using .NET MAUI. The book covers topics such as:  
+  This book provides real world solutions for addressing challenges faced when building an enterprise app using .NET MAUI. The book covers topics such as:
+  
   
   - Model-View-ViewModel (MVVM) pattern
   - Dependency injection
