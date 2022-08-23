@@ -77,7 +77,7 @@ Perform the following steps to configure hot restart:
 
     The **Name**, **Issuer ID**, and **Key ID** data can be found in [App Store Connect](https://appstoreconnect.apple.com/) by selecting **Users and Access** and then the **Keys** tab. The **Private key** can also be downloaded from this location:
 
-    :::image type="content" source="media/hot-restart/app-store-connect-details.png" lightbox="media/hot-restart/appstore-connect-details-large.png" alt-text="Screenshot of Apple App Store Connect API details.":::
+    :::image type="content" source="media/hot-restart/app-store-connect-details.png" alt-text="Screenshot of Apple App Store Connect API details." lightbox="media/hot-restart/appstore-connect-details-large.png":::
 
 1. In the **Individual account...** dialog, click the **Add** button. The **Individual account...** dialog will close.
 
