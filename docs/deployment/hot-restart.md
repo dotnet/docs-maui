@@ -1,6 +1,6 @@
 ---
 title: ".NET MAUI hot restart for iOS device deployment"
-description: "Hot restart enables you to quickly deploy an iOS app to a local device, from Visual Studio 2022, without requiring a Mac build host."
+description: "Hot restart enables you to quickly deploy a .NET MAUI iOS app to a local device, from Visual Studio 2022, without requiring a Mac build host."
 ms.date: 08/23/2022
 ---
 
@@ -73,7 +73,7 @@ Perform the following steps to configure hot restart:
 
 1. In the **Individual account...** dialog, enter your App Store Connect API key data:
 
-    :::image type="content" source="media/hot-restart/appstore-connect-api-data-completed.png" alt-text="Screenshot of the completed dialog for adding an Apple Individual account.":::
+    :::image type="content" source="media/hot-restart/appstore-connect-api-data-completed.png" lightbox="media/hot-restart/appstore-connect-api-data-completed.png" alt-text="Screenshot of the completed dialog for adding an Apple Individual account.":::
 
     The **Name**, **Issuer ID**, and **Key ID** data can be found in [App Store Connect](https://appstoreconnect.apple.com/) by selecting **Users and Access** and then the **Keys** tab. The **Private key** can also be downloaded from this location:
 
