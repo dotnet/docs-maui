@@ -604,7 +604,7 @@
         - name: Overview
           href: deployment/index.md
         - name: Hot restart
-          href: hot-restart.md
+          href: deployment/hot-restart.md
         - name: Visual Studio project settings
           href: deployment/visual-studio-properties.md
         - name: Publish
