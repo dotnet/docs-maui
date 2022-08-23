@@ -29,7 +29,7 @@ When a user swipes to initiate a scroll, the end position of the scroll can be c
 - `HorizontalOffset`, of type `double`, defines the amount by which the list is horizontally offset from its origin.
 - `VerticalOffset`, of type `double`, defines the amount by which the list is vertically offset from its origin.
 - `FirstVisibleItemIndex`, of type `int`, is the index of the first item that's visible in the list.
-- `CenterItemIndex`, of type `int`, is the index of the the center item that's visible in the list.
+- `CenterItemIndex`, of type `int`, is the index of the center item that's visible in the list.
 - `LastVisibleItemIndex`, of type `int`, is the index of the last item that's visible in the list.
 
 The following XAML example shows a `CollectionView` that sets an event handler for the `Scrolled` event:
