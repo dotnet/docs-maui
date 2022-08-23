@@ -73,7 +73,7 @@ canvas.StrokeSize = 4;
 canvas.DrawEllipse(10, 10, 100, 100);
 ```
 
-In this example, a red circle with dimensions 150x150 is drawn at (10,10):
+In this example, a red circle with dimensions 100x100 is drawn at (10,10):
 
 :::image type="content" source="media/draw/circle.png" alt-text="Screenshot of a red circle.":::
 
