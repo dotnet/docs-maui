@@ -365,7 +365,7 @@ For alternative methods of enabling TalkBack, see [Turn Talkback on or off](http
 VoiceOver is the primary screen reader used on iOS and macOS. On iOS, VoiceOver can be enabled as follows:
 
 1. Open the **Settings** app.
-1. Select **Accessibility** > **TalkBack**.
+1. Select **General** > **Accessibility** > **VoiceOver**.
 1. Turn **VoiceOver** on.
 1. Select **OK**.
 
