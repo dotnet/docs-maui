@@ -4,7 +4,7 @@ description: "Hot restart enables you to quickly deploy an iOS app to a local de
 ms.date: 08/23/2022
 ---
 
-# Deploy an iOS app to a local device using hot restart
+# Deploy an iOS app using hot restart
 
 Typically when building an app, your code is compiled and combined with other project resources to build an app bundle that's deployed to your simulator or device. With this model, when you make a change to your app, a new app package has to be built and deployed. While incremental builds can help reduce compilation time, deployments usually take the same amount of time regardless of the size of the change.
 
@@ -32,7 +32,7 @@ Perform the following steps to configure hot restart:
 
     :::image type="content" source="media/hot-restart/run-local-device.png" alt-text="Screenshot of the initial debug target chosen for hot restart.":::
 
-  The **Setup Hot Restart** setup wizard will appear, which will guide you through setting up a local iOS device for deployment.
+    The **Setup Hot Restart** setup wizard will appear, which will guide you through setting up a local iOS device for deployment.
 
 1. In the **Setup Hot Restart** setup wizard, click the **Next** button:
 
@@ -122,7 +122,7 @@ When you are debugging your app, you can edit your C# code and press the restart
 
 :::image type="content" source="media/hot-restart/restart-button.png" alt-text="Screenshot of the restart button on the Visual Studio toolbar.":::
 
-## Prevent code from executing with hot restart
+## Prevent code from executing
 
 You can use the `HOTRESTART` preprocessor symbol to prevent specific code from executing when debugging with hot restart:
 
@@ -144,6 +144,6 @@ Hot restart is enabled by default in Visual Studio 2022. It it's been previously
 
 iOS uses a watchdog that monitors launch times and app responsiveness, and terminates unresponsive apps. For example, the watchdog terminates apps that block the main thread for a significant time. On old iOS devices, the watchdog may terminate the app before the debugger has connected to it. The workaround is to reduce the amount of processing performed in the app's startup path, and use a more recent iOS device.
 
-.NET MAUI apps that use iOS asset catalogs are currently not supported.
+.NET MAUI apps that use iOS asset catalogs are currently unsupported by hot restart.
 
 To report additional issues, please use the feedback tool at [Help > Send Feedback > Report a Problem](https://developercommunity.visualstudio.com/home#report-a-problem&preserve-view=true).
