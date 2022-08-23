@@ -6,23 +6,23 @@ ms.date: 08/23/2022
 
 # Deploy an iOS app using hot restart
 
-Typically when building an app, your code is compiled and combined with other project resources to build an app bundle that's deployed to your simulator or device. With this model, when you make a change to your app, a new app package has to be built and deployed. While incremental builds can help reduce compilation time, deployments usually take the same amount of time regardless of the size of the change.
+Typically when building an app, your code is compiled and combined with other project resources to build an app bundle that's deployed to your simulator or device. With this model, when you make a change to your app, a new app bundle has to be built and deployed. While incremental builds can help to reduce compilation time, deployments usually take the same amount of time regardless of the size of the change.
 
-Hot restart enables you to quickly deploy an iOS app to a 64-bit local device, from Visual Studio 2022, without requiring a Mac build host. It removes the need for a full package rebuild by pushing new changes to the existing app bundle that's already present on your locally connected iOS device. It supports changes to code files, resources, and project references, enabling you to quickly test changes to your app during its development.
+.NET Multi-platform App UI (.NET MAUI) hot restart enables you to quickly deploy a .NET MAUI app to a 64-bit local iOS device, from Visual Studio 2022, without requiring a Mac build host. It removes the need for a full app bundle rebuild by pushing changes to the existing app bundle that's already present on your locally connected iOS device. It supports changes to code files, resources, and project references, enabling you to quickly test changes to your app during its development.
 
 > [!IMPORTANT]
-> Hot restart can only be used to deploy app's that use the debug build configuration. You'll still need a Mac build host build, sign, and deploy your app for production purposes.
+> Hot restart can only be used to deploy apps that use the debug build configuration. You'll still need a Mac build host to build, sign, and deploy your app for production purposes.
 
 There are a number of requirements that must be met to use hot restart to deploy a .NET MAUI app to a locally connected iOS device:
 
 - You must be using Visual Studio 2022 version 17.3 or greater.
-- You must have iTunes (Microsoft Store or 64-bit versions) installed on your development machine.
+- You must have iTunes (Microsoft Store or 64-bit version) installed on your development machine.
 - You must have an [Apple Developer account](https://appleid.apple.com/account) and paid [Apple Developer Program](https://developer.apple.com/programs) enrolment.
 - You must have an [App Store Connect API key](https://developer.apple.com/documentation/appstoreconnectapi/creating_api_keys_for_app_store_connect_api).
 
-## Initial setup
+## Setup
 
-Perform the following steps to configure hot restart:
+Perform the following steps to setup hot restart:
 
 1. In the Visual Studio toolbar, use the **Debug Target** drop down to select **iOS Local Devices** and then the **Local Device** entry:
 
@@ -32,7 +32,7 @@ Perform the following steps to configure hot restart:
 
     :::image type="content" source="media/hot-restart/run-local-device.png" alt-text="Screenshot of the initial debug target chosen for hot restart.":::
 
-    The **Setup Hot Restart** setup wizard will appear, which will guide you through setting up a local iOS device for deployment.
+    The **Setup Hot Restart** setup wizard will appear, which will guide you through setting up a local iOS device for hot restart deployment.
 
 1. In the **Setup Hot Restart** setup wizard, click the **Next** button:
 
@@ -45,7 +45,7 @@ Perform the following steps to configure hot restart:
     > [!NOTE]
     > iTunes can either be installed from the Microsoft Store, or by downloading it from [Apple](https://www.apple.com/itunes/).
 
-    Wait for iTunes to download and then install it. If you install it from the Microsoft Store, once the installation completes please open it, follow additional prompts, to enable it to discover locally connected devices.
+    Wait for iTunes to download and then install it. If you install it from the Microsoft Store, once the installation completes please open it, then follow additional prompts to enable it to discover locally connected devices.
 
 1. In the **Setup Hot Restart** setup wizard, click the **Next** button to move to the next step of the wizard that will prompt you to connect a local iOS device:
 
@@ -65,11 +65,11 @@ Perform the following steps to configure hot restart:
     :::image type="content" source="media/hot-restart/setup-wizard-4-add-account.png" alt-text="Screenshot of the initial fourth step in the setup hot restart wizard.":::
 
     > [!NOTE]
-    > While these instructions focus on using an individual account, hot restart does also work with an enterprise account.
+    > While these instructions focus on using an individual Apple Developer account, hot restart also works with an enterprise account.
 
     The **Individual account...** dialog appears.
 
-1. Create an App Store Connect API key. This will require you to have an [Apple Developer account](https://appleid.apple.com/account), and paid [Apple Developer Program](https://developer.apple.com/programs) enrolment. For more information about creating an App Store Connect API key, see [Creating API Keys for App Store Connect API](https://developer.apple.com/documentation/appstoreconnectapi/creating_api_keys_for_app_store_connect_api).
+1. Create an App Store Connect API key. This will require you to have an [Apple Developer account](https://appleid.apple.com/account), and paid [Apple Developer Program](https://developer.apple.com/programs) enrolment. For more information about creating an App Store Connect API key, see [Creating API Keys for App Store Connect API](https://developer.apple.com/documentation/appstoreconnectapi/creating_api_keys_for_app_store_connect_api) on developer.apple.com.
 
 1. In the **Individual account...** dialog, enter your App Store Connect API key data:
 
@@ -77,7 +77,7 @@ Perform the following steps to configure hot restart:
 
     The **Name**, **Issuer ID**, and **Key ID** data can be found in [App Store Connect](https://appstoreconnect.apple.com/) by selecting **Users and Access** and then the **Keys** tab. The **Private key** can also be downloaded from this location:
 
-    :::image type="content" source="media/hot-restart/app-store-connect-details.png" alt-text="Screenshot of Apple App Store Connect API details." lightbox="media/hot-restart/appstore-connect-details-large.png":::
+    :::image type="content" source="media/hot-restart/app-store-connect-details.png" lightbox="media/hot-restart/app-store-connect-details-large.png" alt-text="Screenshot of Apple App Store Connect API details.":::
 
 1. In the **Individual account...** dialog, click the **Add** button. The **Individual account...** dialog will close.
 
@@ -101,11 +101,11 @@ Perform the following steps to configure hot restart:
     Visual Studio will complete the automatic provisioning process. Then, click the **Ok** button to dismiss the **Configure Automatic Provisioning** dialog.
 
     > [!NOTE]
-    > Using automatic provisioning is recommended so that additional iOS devices can be easily configured for deployment. However, you can use manual provisioning if the correct provisioning profiles are present.
+    > Using automatic provisioning is recommended so that additional iOS devices can be easily configured for deployment. However, you can use manual provisioning if the correct provisioning profiles are present on your machine.
 
 ## Deploy and debug using hot restart
 
-After the initial setup, your local connected iOS device will appear in the debug target drop down menu. To quickly deploy and debug your app:
+After performing the initial setup, your local connected iOS device will appear in the debug target drop down menu. To deploy and debug your app:
 
 1. Ensure that your local connected iOS device is unlocked.
 1. In the Visual Studio toolbar, select your local connected iOS device in the debug target drop down, and click the **Run** button to build your app and deploy it to your local iOS device:
@@ -118,21 +118,21 @@ After the initial setup, your local connected iOS device will appear in the debu
 
     Launch the app on your device and Visual Studio will connect the debugger to your running app, and the **Connecting Debugger** dialog will be dismissed.
 
-When you are debugging your app, you can edit your C# code and press the restart button in the Visual Studio toolbar to restart your debug session with the new changes applied:
+While you are debugging your app, you can edit your C# code and press the restart button in the Visual Studio toolbar to restart your debug session with the new changes applied:
 
 :::image type="content" source="media/hot-restart/restart-button.png" alt-text="Screenshot of the restart button on the Visual Studio toolbar.":::
 
 ## Prevent code from executing
 
-You can use the `HOTRESTART` preprocessor symbol to prevent specific code from executing when debugging with hot restart:
+Storyboard and XIB files are not supported when using hot restart, and your app may crash if it attempts to load these at runtime. Similarly, static iOS libraries and frameworks are not supported and you may see runtime errors or crashes if your app attempts to load these.
+
+In these scenarios, the `HOTRESTART` preprocessor symbol can be used to prevent code from executing when debugging with hot restart:
 
 ```csharp
 #if !HOTRESTART
   // Code here won't be executed when debugging with hot restart
 #endif
 ```
-
-For example, storyboard and XIB files are not supported and the app may crash if it attempts to load these at runtime. Similarly, static iOS libraries and frameworks are not supported and you may see runtime errors or crashes if your app attempts to load these. In both situations, the `HOTRESTART` preprocessor symbol can be used to prevent such code from executing.
 
 ## Enable hot restart
 
@@ -142,8 +142,8 @@ Hot restart is enabled by default in Visual Studio 2022. It it's been previously
 
 ## Troubleshoot
 
-iOS uses a watchdog that monitors launch times and app responsiveness, and terminates unresponsive apps. For example, the watchdog terminates apps that block the main thread for a significant time. On old iOS devices, the watchdog may terminate the app before the debugger has connected to it. The workaround is to reduce the amount of processing performed in the app's startup path, and use a more recent iOS device.
-
 .NET MAUI apps that use iOS asset catalogs are currently unsupported by hot restart.
+
+iOS uses a watchdog that monitors app launch times and responsiveness, and terminates unresponsive apps. For example, the watchdog terminates apps that block the main thread for a significant time. On old iOS devices, the watchdog may terminate an app that's been deployed using hot restart before the debugger has connected to it. The workaround is to reduce the amount of processing performed in the app's startup path, and to use a more recent iOS device.
 
 To report additional issues, please use the feedback tool at [Help > Send Feedback > Report a Problem](https://developercommunity.visualstudio.com/home#report-a-problem&preserve-view=true).
