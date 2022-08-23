@@ -32,7 +32,7 @@ On Windows, XAML Hot Reload is available on Android, iOS, and WinUI on emulators
 
 ## Enable XAML Hot Reload
 
-XAML Hot Reload is enabled by default in Visual Studio 2022. If it's been previously disabled, it can be enabled by selecting **Debug > Options> XAML Hot Reload** from the Visual Studio menu bar. Next, in the **Options** dialog box, ensure that the **Enable XAML Hot Reload**, **WinUI (including .NET MAUI)**, and **Android and iOS (.NET MAUI)** options are checked:
+XAML Hot Reload is enabled by default in Visual Studio 2022. If it's been previously disabled, it can be enabled by selecting **Debug > Options > XAML Hot Reload** from the Visual Studio menu bar. Next, in the **Options** dialog box, ensure that the **Enable XAML Hot Reload**, **WinUI (including .NET MAUI)**, and **Android and iOS (.NET MAUI)** options are checked:
 
 :::image type="content" source="media/hot-reload/options.png" alt-text="XAML Hot Reload options for .NET MAUI.":::
 

@@ -8,6 +8,8 @@ ms.date: 08/19/2022
 
 .NET Multi-platform App UI (.NET MAUI) uses a single-project system to manage the configuration of your cross-platform app. This configuration includes properties and settings that control building and packaging the app on each platform. For more information, see [Project configuration for .NET MAUI apps](visual-studio-properties.md).
 
+Hot restart enables you to quickly deploy an iOS app to a 64-bit local device, from Visual Studio 2022, without requiring a Mac build host. It removes the need for a full package rebuild by pushing new changes to the existing app bundle that's already present on your locally connected iOS device. It supports changes to code files, resources, and project references, enabling you to quickly test changes to your app during its development. For more information, see [Deploy an iOS app to a local device using hot restart](hot-restart.md).
+
 ## Publishing
 
 When distributing your .NET MAUI app for Android, you generate an *apk* (Android Package) or an *aab* (Android App Bundle) file. The *apk* is used for installing your app to an Android device, and the *aab* is used to publish your app to an Android store. With just a few configuration changes to your project, your app can be packaged for distribution. For more information, see [Publish a .NET MAUI app for Android](~/android/deployment/overview.md).

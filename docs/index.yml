@@ -146,6 +146,8 @@ landingContent:
     linkLists:
       - linkListType: concept
         links:
+          - text: Hot restart
+            url: deployment/hot-restart.md
           - text: Project configuration
             url: deployment/visual-studio-properties.md
           - text: Publish Android apps
