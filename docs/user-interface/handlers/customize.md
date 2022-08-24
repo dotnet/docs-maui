@@ -195,7 +195,7 @@ The `HandlerChanging` event is raised before the existing handler is removed fro
 
 ### Partial classes
 
-Rather than using conditional compilation, it's also possible use partial classes to organize your control customization code into platform-specific folders and files. With this approach, your customization code is separated into a cross-platform partial class and a platform-specific partial class. The following example shows the cross-platform partial class:
+Rather than using conditional compilation, it's also possible to use partial classes to organize your control customization code into platform-specific folders and files. With this approach, your customization code is separated into a cross-platform partial class and a platform-specific partial class. The following example shows the cross-platform partial class:
 
 ```csharp
 namespace CustomizeHandlersDemo.Views;
