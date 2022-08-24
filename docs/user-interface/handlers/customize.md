@@ -150,12 +150,13 @@ public partial class CustomizeEntryHandlerLifecyclePage : ContentPage
 
     void OnEntryHandlerChanged(object sender, EventArgs e)
     {
+        Entry entry = sender as Entry;
 #if ANDROID
-        ((sender as Entry).Handler.PlatformView as AppCompatEditText).SetSelectAllOnFocus(true);
+        (entry.Handler.PlatformView as AppCompatEditText).SetSelectAllOnFocus(true);
 #elif IOS || MACCATALYST
-        ((sender as Entry).Handler.PlatformView as UITextField).EditingDidBegin += OnEditingDidBegin;
+        (entry.Handler.PlatformView as UITextField).EditingDidBegin += OnEditingDidBegin;
 #elif WINDOWS
-        ((sender as Entry).Handler.PlatformView as TextBox).GotFocus += OnGotFocus;
+        (entry.Handler.PlatformView as TextBox).GotFocus += OnGotFocus;
 #endif
     }
 
@@ -230,7 +231,8 @@ namespace CustomizeHandlersDemo.Views
     {
         partial void ChangedHandler(object sender, EventArgs e)
         {
-            ((sender as Entry).Handler.PlatformView as TextBox).GotFocus += OnGotFocus;
+            Entry entry = sender as Entry;
+            (entry.Handler.PlatformView as TextBox).GotFocus += OnGotFocus;
         }
 
         partial void ChangingHandler(object sender, HandlerChangingEventArgs e)
@@ -251,3 +253,5 @@ namespace CustomizeHandlersDemo.Views
 ```
 
 The advantage of this approach is that conditional compilation isn't required, and that the partial methods don't have to be implemented on each platform. If an implementation isn't provided on a platform, then the method and all calls to the method are removed at compile time. For information about partial methods, see [Partial methods](/dotnet/csharp/programming-guide/classes-and-structs/partial-classes-and-methods#partial-methods).
+
+For information about the organization of the *Platforms* folder in a .NET MAUI project, see [Partial classes and methods](~/platform-integration/invoke-platform-code.md#partial-classes-and-methods). For information about how to configure multi-targeting so that you don't have to place platform code into sub-folders of the *Platforms* folder, see [Configure multi-targeting](~/platform-integration/configure-multi-targeting.md).
