@@ -36,8 +36,8 @@ The process for creating a cross-platform .NET MAUI custom control, whose platfo
 1. Create any required additional cross-platform types.
 1. Create an interface for the handler. For more information, see [Create the handler interface](#create-the-handler-interface).
 1. Create a `partial` handler class, that implements the handler interface. For more information, see [Create the handler](#create-the-handler).
-1. In the handler class, create a `PropertyMapper` dictionary, which defines the actions to take when cross-platform property changes occur. For more information, see [Create the property mapper](#create-the-property-mapper).
-1. Optionally, in your handler class, create a `CommandMapper` dictionary, which defines the actions to take when the cross-platform control sends instructions to the native views that implement the cross-platform control. For more information, see [Create the command mapper](#create-the-command-mapper).
+1. In the handler class, create a `PropertyMapper` dictionary, which defines the Actions to take when cross-platform property changes occur. For more information, see [Create the property mapper](#create-the-property-mapper).
+1. Optionally, in your handler class, create a `CommandMapper` dictionary, which defines the Actions to take when the cross-platform control sends instructions to the native views that implement the cross-platform control. For more information, see [Create the command mapper](#create-the-command-mapper).
 1. Create `partial` handler classes for each platform, that create the native views that implement the cross-platform control. For more information, see [Create the platform controls](#create-the-platform-controls).
 1. Register the handler using the `ConfigureMauiHandlers` and `AddHandler` methods in your app's `MauiProgram` class. For more information, see [Register the handler](#register-the-handler).
 
@@ -184,7 +184,7 @@ The conditional `using` statements are identical to those defined in the handler
 
 ## Create the property mapper
 
-Each handler typically provides a *property mapper*, which defines what actions to take when a property change occurs in the cross-platform control. The `PropertyMapper` type is a `Dictionary` that maps the cross-platform control's interface properties to their associated Actions.
+Each handler typically provides a *property mapper*, which defines what Actions to take when a property change occurs in the cross-platform control. The `PropertyMapper` type is a `Dictionary` that maps the cross-platform control's interface properties to their associated Actions.
 
 `PropertyMapper` is defined in .NET MAUI's generic `ViewHandler` class, and requires two generic arguments to be supplied:
 
@@ -214,11 +214,11 @@ public partial class VideoHandler : IVideoHandler
 
 The `PropertyMapper` is a `Dictionary` whose key is a `string` and whose value is a generic `Action`. The `string` represents the property name, accessed via it's cross-platform interface, and the `Action` represents a `static` method that requires the handler interface and cross-platform control interface as arguments. For example, the signature of the `MapSource` method is `public static void MapSource(IVideoHandler handler, IVideo video)`.
 
-Each platform handler implementation must provide implementations of the Actions, which manipulate the native view APIs. This ensures that when a property is set on a cross-platform control, the underlying native view will be updated as required. The advantage of this approach is that it enables native views to be decoupled from cross-platform controls, because the cross-platform control doesn't reference its handler, and the handler doesn't reference the cross-platform control. In addition, it allows for easy customisation because the property mapper can be modified by cross-platform control consumers without subclassing.
+Each platform handler must provide implementations of the Actions, which manipulate the native view APIs. This ensures that when a property is set on a cross-platform control, the underlying native view will be updated as required. The advantage of this approach is that it enables native views to be decoupled from cross-platform controls, because the cross-platform control doesn't reference its handler, and the handler doesn't reference the cross-platform control. In addition, it allows for easy customisation because the property mapper can be modified by cross-platform control consumers without subclassing.
 
 ## Create the command mapper
 
-Each handler can also provide a *command mapper*, which defines what actions to take when the cross-platform control sends commands to native views. Command mappers are similar to property mappers, but allow for additional data to be passed. In this context a command is an instruction, and optionally its data, that's sent to a native view. The `CommandMapper` type is a `Dictionary` that maps cross-platform control interface members to their associated Actions.
+Each handler can also provide a *command mapper*, which defines what Actions to take when the cross-platform control sends commands to native views. Command mappers are similar to property mappers, but allow for additional data to be passed. In this context a command is an instruction, and optionally its data, that's sent to a native view. The `CommandMapper` type is a `Dictionary` that maps cross-platform control interface members to their associated Actions.
 
 `CommandMapper` is defined in .NET MAUI's generic `ViewHandler` class, and requires two generic arguments to be supplied:
 
@@ -256,7 +256,7 @@ public partial class VideoHandler : IVideoHandler
 
 The `CommandMapper` is a `Dictionary` whose key is a `string` and whose value is a generic `Action`. The `string` represents the command name, accessed via it's cross-platform interface, and the `Action` represents a `static` method that requires the handler interface, cross-platform control interface, and optional data as arguments. For example, the signature of the `MapPlayRequested` method is `public static void MapPlayRequested(IVideoHandler handler, IVideo video, object? args)`.
 
-Each platform handler implementation then must provide implementations of the Actions, which manipulate the native view APIs. This ensures that when a command is sent from the cross-platform control, the underlying native view will be manipulated as required. The advantage of this approach is that it enables native views to be decoupled from cross-platform controls, because the cross-platform control can send a command to its native views without referencing its handler, and the handler doesn't reference the cross-platform control. This removes the need for native views to subscribe to cross-platform control events. In addition, it allows for easy customisation because the command mapper can be modified by cross-platform control consumers without subclassing.
+Each platform handler must provide implementations of the Actions, which manipulate the native view APIs. This ensures that when a command is sent from the cross-platform control, the underlying native view will be manipulated as required. The advantage of this approach is that it enables native views to be decoupled from cross-platform controls, because the cross-platform control can send a command to its native views without referencing its handler, and the handler doesn't reference the cross-platform control. This removes the need for native views to subscribe to cross-platform control events. In addition, it allows for easy customisation because the command mapper can be modified by cross-platform control consumers without subclassing.
 
 ## Create the platform controls
 
@@ -282,9 +282,9 @@ Each of the platform handler implementations should override the following metho
 > [!IMPORTANT]
 > The `DisconnectHandler` method is intentionally not invoked by .NET MAUI. Instead, you must invoke it yourself from a suitable location in your app's lifecycle. For more information, see [Native view cleanup](#native-view-cleanup).
 
-Each platform handler implementation should also implement the Actions that are defined in the mapper dictionaries.
+Each platform handler should also implement the Actions that are defined in the mapper dictionaries.
 
-In addition, each platform handler implementation should also provide code, as required, to implement the functionality of the cross-platform control on the platform. Alternatively, this can be provided by an additional type, which is the approach adopted here.
+In addition, each platform handler should also provide code, as required, to implement the functionality of the cross-platform control on the platform. Alternatively, this can be provided by an additional type, which is the approach adopted here.
 
 ### Android
 

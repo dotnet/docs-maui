@@ -8,7 +8,7 @@ ms.date: 08/15/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-customizehandler)
 
-Handlers can be customized to augment the appearance and behavior of a cross-platform control beyond the customization that's possible through the control's API. This customization is achieved by modifying the mapper for a handler, with one of the following methods:
+Handlers can be customized to augment the appearance and behavior of a cross-platform control beyond the customization that's possible through the control's API. This customization, which modifies the native views for the cross-platform control, is achieved by modifying the mapper for a handler with one of the following methods:
 
 - `PrependToMapping`, which modifies the mapper for a handler before the .NET MAUI control mappings have been applied.
 - `ModifyMapping`, which modifies an existing mapping.
