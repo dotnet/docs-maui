@@ -19,8 +19,7 @@ A standard requirement for apps is the ability to play videos. This article exam
 
 Video controls require *transport controls*, which are buttons for playing and pausing the video, and a positioning bar that shows the progress through the video and allows the user to move quickly to a different location. The `Video` control can either use the transport controls and positioning bar provided by the platform, or you can supply custom transport controls and a positioning bar. The following screenshots show the control on iOS, with and without custom transport controls:
 
-:::image type="content" source="media/create/play-video.png" alt-text="Screenshot of video playback on iOS.":::
-:::image type="content" source="media/create/custom-transport-controls.png" alt-text="Screenshot of video playback using custom transport controls on iOS.":::
+:::image type="content" source="media/create/play-video.png" alt-text="Screenshot of video playback on iOS."::: :::image type="content" source="media/create/custom-transport-controls.png" alt-text="Screenshot of video playback using custom transport controls on iOS.":::
 
 A more sophisticated video control would have additional features, such as a volume control, a mechanism to interrupt video playback when a call is received, and a way of keeping the screen active during playback.
 
