@@ -12,7 +12,7 @@ ms.date: 08/15/2022
 
 Handlers are accessed through their control-specific interface, such as `IButton` for a `Button`. This avoids the cross-platform control having to reference its handler, and the handler having to reference the cross-platform control.
 
-Each handler class exposes the native view that implements the cross-platform control via its `PlatformView` property. This property can be accessed to set native view properties, invoke native view methods, and subscribe to native view events. In addition, the cross-platform control implemented by the handler is exposed via its `VirtualView` property.
+Each handler class exposes the native view for the cross-platform control via its `PlatformView` property. This property can be accessed to set native view properties, invoke native view methods, and subscribe to native view events. In addition, the cross-platform control implemented by the handler is exposed via its `VirtualView` property.
 
 When creating a cross-platform control, whose implementation is provided on each platform by native views, a handler should be implemented that maps the cross-platform control API to the native view APIs. For more information, see [Create custom controls with handlers](create.md).
 

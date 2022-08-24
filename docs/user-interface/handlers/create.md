@@ -68,7 +68,7 @@ namespace VideoDemos.Controls
 }
 ```
 
-Within the interface, you should define the public API of your custom control that will be accessed by its handler.
+Within the interface, you should define the public API of your custom control that will be accessed by its handler. All cross-platform control interfaces should implement `IView`, which represents a visual element that's used to place layouts and controls on the screen.
 
 > [!NOTE]
 > Handlers are accessed through their control-specific interface. This avoids the cross-platform control having to reference its handler, and the handler having to reference the cross-platform control.
