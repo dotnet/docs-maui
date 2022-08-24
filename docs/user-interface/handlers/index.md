@@ -14,7 +14,7 @@ Handlers are accessed through their control-specific interface, such as `IButton
 
 Each handler class exposes the native view that implements the cross-platform control via its `PlatformView` property. This property can be accessed to set native view properties, invoke native view methods, and subscribe to native view events. In addition, the cross-platform control implemented by the handler is exposed via its `VirtualView` property.
 
-When creating a custom cross-platform control, whose implementation is provided on each platform by native views, a handler should be implemented that maps the cross-platform control API to the native view APIs. For more information, see [Create custom controls with handlers](create.md).
+When creating a cross-platform control, whose implementation is provided on each platform by native views, a handler should be implemented that maps the cross-platform control API to the native view APIs. For more information, see [Create custom controls with handlers](create.md).
 
 Handlers can also be customized to augment the appearance and behavior of existing cross-platform controls beyond the customization that's possible through the control's API. Handlers are global, and customizing a handler for a control will result in all controls of the same type being customized in your app. For more information, see [Customize .NET MAUI controls with handlers](customize.md).
 

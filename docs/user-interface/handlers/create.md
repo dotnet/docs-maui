@@ -49,20 +49,23 @@ Then, the cross-platform control can be consumed. For more information, see [Con
 Before creating your cross-platform control, you must first create its interface. This can be achieved by creating an interface that implements `IView`:
 
 ```csharp
-public interface IVideo : IView
+namespace VideoDemos.Controls
 {
-    bool AreTransportControlsEnabled { get; }
-    VideoSource Source { get; }
-    bool AutoPlay { get; }
-    VideoStatus Status { get; }
-    TimeSpan Duration { get; }
-    TimeSpan Position { get; set; }
-    TimeSpan TimeToEnd { get; }
+    public interface IVideo : IView
+    {
+        bool AreTransportControlsEnabled { get; }
+        VideoSource Source { get; }
+        bool AutoPlay { get; }
+        VideoStatus Status { get; }
+        TimeSpan Duration { get; }
+        TimeSpan Position { get; set; }
+        TimeSpan TimeToEnd { get; }
 
-    event EventHandler UpdateStatus;
-    event EventHandler<VideoPositionEventArgs> PlayRequested;
-    event EventHandler<VideoPositionEventArgs> PauseRequested;
-    event EventHandler<VideoPositionEventArgs> StopRequested;
+        event EventHandler UpdateStatus;
+        event EventHandler<VideoPositionEventArgs> PlayRequested;
+        event EventHandler<VideoPositionEventArgs> PauseRequested;
+        event EventHandler<VideoPositionEventArgs> StopRequested;
+    }
 }
 ```
 
