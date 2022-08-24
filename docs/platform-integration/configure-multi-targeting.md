@@ -27,10 +27,10 @@ A standard multi-targeting pattern is to include the platform as an extension in
   <None Include="**\**\*.Android.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 </ItemGroup>
 
-<!-- Both iOS and MacCatalyst -->
+<!-- Both iOS and Mac Catalyst -->
 <ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-ios')) != true AND $(TargetFramework.StartsWith('net6.0-maccatalyst')) != true">
-  <Compile Remove="**\**\*.Apple.cs" />
-  <None Include="**\**\*.Apple.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+  <Compile Remove="**\**\*.MaciOS.cs" />
+  <None Include="**\**\*.MaciOS.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 </ItemGroup>
 
 <!-- iOS -->
@@ -39,7 +39,7 @@ A standard multi-targeting pattern is to include the platform as an extension in
   <None Include="**\**\*.iOS.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 </ItemGroup>
 
-<!-- MacCatalyst -->
+<!-- Mac Catalyst -->
 <ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-maccatalyst')) != true">
   <Compile Remove="**\**\*.MacCatalyst.cs" />
   <None Include="**\**\*.MacCatalyst.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
@@ -55,7 +55,9 @@ A standard multi-targeting pattern is to include the platform as an extension in
 This XML configures the build system to remove platform-based filename patterns under specific conditions:
 
 - Don't compile C# code whose filename ends with _.Android.cs_, if you aren't building for Android.
-- Don't compile C# code whose filename ends with _.iOS.cs_, if you aren't building for iOS or MacCatalyst.
+- Don't compile C# code whose filename ends with _.MaciOS.cs_, if you aren't building for iOS and Mac Catalyst.
+- Don't compile C# code whose filename ends with _.iOS.cs_, if you aren't building for iOS.
+- Don't compile C# code whose filename ends with _.MacCatalyst.cs_, if you aren't building for Mac Catalyst.
 - Don't compile C# code whose filename ends with _.Windows.cs_, if you aren't building for Windows.
 
 > [!IMPORTANT]
@@ -72,10 +74,10 @@ Another standard multi-targeting pattern is to include the platform as a folder 
   <None Include="**\Android\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 </ItemGroup>
 
-<!-- Both iOS and MacCatalyst -->
+<!-- Both iOS and Mac Catalyst -->
 <ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-ios')) != true AND $(TargetFramework.StartsWith('net6.0-maccatalyst')) != true">
-  <Compile Remove="**\Apple\**\*.cs" />
-  <None Include="**\Apple\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+  <Compile Remove="**\MaciOS\**\*.cs" />
+  <None Include="**\MaciOS\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 </ItemGroup>
 
 <!-- iOS -->
@@ -84,7 +86,7 @@ Another standard multi-targeting pattern is to include the platform as a folder 
   <None Include="**\iOS\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 </ItemGroup>
 
-<!-- MacCatalyst -->
+<!-- Mac Catalyst -->
 <ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-maccatalyst')) != true">
   <Compile Remove="**\MacCatalyst\**\*.cs" />
   <None Include="**\MacCatalyst\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
@@ -100,7 +102,9 @@ Another standard multi-targeting pattern is to include the platform as a folder 
 This XML configures the build system to remove platform-based folder patterns under specific conditions:
 
 - Don't compile C# code that's located in the _Android_ folder, or sub-folder of the _Android_ folder, if you aren't building for Android.
-- Don't compile C# code that's located in the _iOS_ folder, or sub-folder of the _iOS_ folder, if you aren't building for iOS or MacCatalyst.
+- Don't compile C# code that's located in the _MaciOS_ folder, or sub-folder of the _MaciOS_ folder, if you aren't building for iOS and Mac Catalyst.
+- Don't compile C# code that's located in the _iOS_ folder, or sub-folder of the _iOS_ folder, if you aren't building for iOS.
+- Don't compile C# code that's located in the _MacCatalyst_ folder, or sub-folder of the _MacCatalyst_ folder, if you aren't building for Mac Catalyst.
 - Don't compile C# code that's located in the _Windows_ folder, or sub-folder of the _Windows_ folder, if you aren't building for Windows.
 
 > [!IMPORTANT]
@@ -119,12 +123,12 @@ Filename-based multi-targeting can be combined with folder-based multi-targeting
   <None Include="**\Android\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />  
 </ItemGroup>
 
-<!-- Both iOS and MacCatalyst -->
+<!-- Both iOS and Mac Catalyst -->
 <ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-ios')) != true AND $(TargetFramework.StartsWith('net6.0-maccatalyst')) != true">
-  <Compile Remove="**\**\*.Apple.cs" />
-  <None Include="**\**\*.Apple.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
-  <Compile Remove="**\Apple\**\*.cs" />
-  <None Include="**\Apple\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+  <Compile Remove="**\**\*.MaciOS.cs" />
+  <None Include="**\**\*.MaciOS.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+  <Compile Remove="**\MaciOS\**\*.cs" />
+  <None Include="**\MaciOS\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 </ItemGroup>
 
 <!-- iOS -->
@@ -135,7 +139,7 @@ Filename-based multi-targeting can be combined with folder-based multi-targeting
   <None Include="**\iOS\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />  
 </ItemGroup>
 
-<!-- MacCatalyst -->
+<!-- Mac Catalyst -->
 <ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-maccatalyst')) != true">
   <Compile Remove="**\**\*.MacCatalyst.cs" />
   <None Include="**\**\*.MacCatalyst.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
@@ -155,5 +159,7 @@ Filename-based multi-targeting can be combined with folder-based multi-targeting
 This XML configures the build system to remove platform-based filename and folder patterns under specific conditions:
 
 - Don't compile C# code whose filename ends with _.Android.cs_, or that's located in the _Android_ folder or sub-folder of the _Android_ folder, if you aren't building for Android.
-- Don't compile C# code whose filename ends with _.iOS.cs_, or that's located in the _iOS_ folder or sub-folder of the _iOS_ folder, if you aren't building for iOS or MacCatalyst.
+- Don't compile C# code whose filename ends with _.MaciOS.cs_, or that's located in the _MaciOS_ folder or sub-folder of the _MaciOS_ folder, if you aren't building for iOS and Mac Catalyst.
+- Don't compile C# code whose filename ends with _.iOS.cs_, or that's located in the _iOS_ folder or sub-folder of the _iOS_ folder, if you aren't building for iOS.
+- Don't compile C# code whose filename ends with _.MacCatalyst.cs_, or that's located in the _MacCatalyst_ folder or sub-folder of the _MacCatalyst_ folder, if you aren't building for Mac Catalyst.
 - Don't compile C# code whose filename ends with _.Windows.cs_, or that's located in the _Windows_ folder or sub-folder of the _Windows_ folder, if you aren't building for Windows.
