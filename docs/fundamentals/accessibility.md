@@ -367,7 +367,6 @@ VoiceOver is the primary screen reader used on iOS and macOS. On iOS, VoiceOver 
 1. Open the **Settings** app.
 1. Select **Accessibility** > **VoiceOver**.
 1. Turn **VoiceOver** on.
-1. Select **OK**.
 
 A VoiceOver tutorial can be opened by selecting **VoiceOver Practice**, once VoiceOver is enabled.
 
