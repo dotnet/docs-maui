@@ -1,7 +1,7 @@
 ---
 title: "Configure .NET MAUI multi-targeting"
 description: "Learn how to configure multi-targeting in a .NET MAUI app, based on your own filename and folder criteria."
-ms.date: 11/29/2021
+ms.date: 08/19/2022
 ---
 
 # Configure multi-targeting
@@ -21,16 +21,31 @@ In addition to this default multi-targeting approach, .NET MAUI apps can also be
 A standard multi-targeting pattern is to include the platform as an extension in the filename for the platform code. For example, _MyService.Android.cs_ would represent an Android-specific implementation of the `MyService` class. The build system can be configured to use this pattern by adding the following XML to your .NET MAUI app project (.csproj) file as children of the `<Project>` node:
 
 ```xml
+<!-- Android -->
 <ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-android')) != true">
   <Compile Remove="**\**\*.Android.cs" />
   <None Include="**\**\*.Android.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 </ItemGroup>
 
+<!-- Both iOS and Mac Catalyst -->
 <ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-ios')) != true AND $(TargetFramework.StartsWith('net6.0-maccatalyst')) != true">
+  <Compile Remove="**\**\*.MaciOS.cs" />
+  <None Include="**\**\*.MaciOS.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+</ItemGroup>
+
+<!-- iOS -->
+<ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-ios')) != true">
   <Compile Remove="**\**\*.iOS.cs" />
   <None Include="**\**\*.iOS.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 </ItemGroup>
 
+<!-- Mac Catalyst -->
+<ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-maccatalyst')) != true">
+  <Compile Remove="**\**\*.MacCatalyst.cs" />
+  <None Include="**\**\*.MacCatalyst.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+</ItemGroup>
+
+<!-- Windows -->
 <ItemGroup Condition="$(TargetFramework.Contains('-windows')) != true ">
   <Compile Remove="**\*.Windows.cs" />
   <None Include="**\*.Windows.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
@@ -40,7 +55,9 @@ A standard multi-targeting pattern is to include the platform as an extension in
 This XML configures the build system to remove platform-based filename patterns under specific conditions:
 
 - Don't compile C# code whose filename ends with _.Android.cs_, if you aren't building for Android.
-- Don't compile C# code whose filename ends with _.iOS.cs_, if you aren't building for iOS or MacCatalyst.
+- Don't compile C# code whose filename ends with _.MaciOS.cs_, if you aren't building for iOS and Mac Catalyst.
+- Don't compile C# code whose filename ends with _.iOS.cs_, if you aren't building for iOS.
+- Don't compile C# code whose filename ends with _.MacCatalyst.cs_, if you aren't building for Mac Catalyst.
 - Don't compile C# code whose filename ends with _.Windows.cs_, if you aren't building for Windows.
 
 > [!IMPORTANT]
@@ -51,16 +68,31 @@ This XML configures the build system to remove platform-based filename patterns 
 Another standard multi-targeting pattern is to include the platform as a folder name. For example, a folder named _Android_ would contain Android-specific code. The build system can be configured to use this pattern by adding the following XML to your .NET MAUI app project (.csproj) file as children of the `<Project>` node:
 
 ```xml
+<!-- Android -->
 <ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-android')) != true">
   <Compile Remove="**\Android\**\*.cs" />
   <None Include="**\Android\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 </ItemGroup>
 
+<!-- Both iOS and Mac Catalyst -->
 <ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-ios')) != true AND $(TargetFramework.StartsWith('net6.0-maccatalyst')) != true">
+  <Compile Remove="**\MaciOS\**\*.cs" />
+  <None Include="**\MaciOS\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+</ItemGroup>
+
+<!-- iOS -->
+<ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-ios')) != true">
   <Compile Remove="**\iOS\**\*.cs" />
   <None Include="**\iOS\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 </ItemGroup>
 
+<!-- Mac Catalyst -->
+<ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-maccatalyst')) != true">
+  <Compile Remove="**\MacCatalyst\**\*.cs" />
+  <None Include="**\MacCatalyst\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+</ItemGroup>
+
+<!-- Windows -->
 <ItemGroup Condition="$(TargetFramework.Contains('-windows')) != true ">
   <Compile Remove="**\Windows\**\*.cs" />
   <None Include="**\Windows\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
@@ -70,7 +102,9 @@ Another standard multi-targeting pattern is to include the platform as a folder 
 This XML configures the build system to remove platform-based folder patterns under specific conditions:
 
 - Don't compile C# code that's located in the _Android_ folder, or sub-folder of the _Android_ folder, if you aren't building for Android.
-- Don't compile C# code that's located in the _iOS_ folder, or sub-folder of the _iOS_ folder, if you aren't building for iOS or MacCatalyst.
+- Don't compile C# code that's located in the _MaciOS_ folder, or sub-folder of the _MaciOS_ folder, if you aren't building for iOS and Mac Catalyst.
+- Don't compile C# code that's located in the _iOS_ folder, or sub-folder of the _iOS_ folder, if you aren't building for iOS.
+- Don't compile C# code that's located in the _MacCatalyst_ folder, or sub-folder of the _MacCatalyst_ folder, if you aren't building for Mac Catalyst.
 - Don't compile C# code that's located in the _Windows_ folder, or sub-folder of the _Windows_ folder, if you aren't building for Windows.
 
 > [!IMPORTANT]
@@ -81,6 +115,7 @@ This XML configures the build system to remove platform-based folder patterns un
 Filename-based multi-targeting can be combined with folder-based multi-targeting if required. The build system can be configured to use this pattern by adding the following XML to your .NET MAUI app project (.csproj) file as children of the `<Project>` node:
 
 ```xml
+<!-- Android -->
 <ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-android')) != true">
   <Compile Remove="**\**\*.Android.cs" />
   <None Include="**\**\*.Android.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
@@ -88,13 +123,31 @@ Filename-based multi-targeting can be combined with folder-based multi-targeting
   <None Include="**\Android\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />  
 </ItemGroup>
 
+<!-- Both iOS and Mac Catalyst -->
 <ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-ios')) != true AND $(TargetFramework.StartsWith('net6.0-maccatalyst')) != true">
+  <Compile Remove="**\**\*.MaciOS.cs" />
+  <None Include="**\**\*.MaciOS.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+  <Compile Remove="**\MaciOS\**\*.cs" />
+  <None Include="**\MaciOS\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+</ItemGroup>
+
+<!-- iOS -->
+<ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-ios')) != true>
   <Compile Remove="**\**\*.iOS.cs" />
   <None Include="**\**\*.iOS.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
   <Compile Remove="**\iOS\**\*.cs" />
   <None Include="**\iOS\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />  
 </ItemGroup>
 
+<!-- Mac Catalyst -->
+<ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-maccatalyst')) != true">
+  <Compile Remove="**\**\*.MacCatalyst.cs" />
+  <None Include="**\**\*.MacCatalyst.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+  <Compile Remove="**\MacCatalyst\**\*.cs" />
+  <None Include="**\MacCatalyst\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+</ItemGroup>
+
+<!-- Windows -->
 <ItemGroup Condition="$(TargetFramework.Contains('-windows')) != true ">
   <Compile Remove="**\*.Windows.cs" />
   <None Include="**\*.Windows.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
@@ -106,5 +159,7 @@ Filename-based multi-targeting can be combined with folder-based multi-targeting
 This XML configures the build system to remove platform-based filename and folder patterns under specific conditions:
 
 - Don't compile C# code whose filename ends with _.Android.cs_, or that's located in the _Android_ folder or sub-folder of the _Android_ folder, if you aren't building for Android.
-- Don't compile C# code whose filename ends with _.iOS.cs_, or that's located in the _iOS_ folder or sub-folder of the _iOS_ folder, if you aren't building for iOS or MacCatalyst.
+- Don't compile C# code whose filename ends with _.MaciOS.cs_, or that's located in the _MaciOS_ folder or sub-folder of the _MaciOS_ folder, if you aren't building for iOS and Mac Catalyst.
+- Don't compile C# code whose filename ends with _.iOS.cs_, or that's located in the _iOS_ folder or sub-folder of the _iOS_ folder, if you aren't building for iOS.
+- Don't compile C# code whose filename ends with _.MacCatalyst.cs_, or that's located in the _MacCatalyst_ folder or sub-folder of the _MacCatalyst_ folder, if you aren't building for Mac Catalyst.
 - Don't compile C# code whose filename ends with _.Windows.cs_, or that's located in the _Windows_ folder or sub-folder of the _Windows_ folder, if you aren't building for Windows.
