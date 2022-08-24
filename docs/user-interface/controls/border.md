@@ -25,6 +25,9 @@ The .NET Multi-platform App UI (.NET MAUI) `Border` is a container control that 
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
+> [!IMPORTANT]
+> When creating a border using a shape, such as a `Rectangle` or `Polygon`, only closed shapes should be used. Therefore, open shapes such as `Line` are unsupported.
+
 For more information about the properties that control the shape and stroke of the border, see [Shapes](~/user-interface/controls/shapes/index.md).
 
 ## Create a Border
@@ -172,5 +175,7 @@ In XAML, the value of the `StrokeShape` property can be defined using property-t
 - `Rectangle`
 - `RoundRectangle`, optionally followed by a corner radius. For example, `RoundRectangle 40` or `RoundRectangle 40,0,0,40`.
 
-> [!NOTE]
-> `String`-based x- and y-coordinate pairs can be delimited by a single comma and/or one or more spaces. For example, "40,10 70,80" and "40 10, 70 80" are both valid. Coordinate pairs will be converted to `Point` objects that define `X` and `Y` properties, of type `double`.
+> [!IMPORTANT]
+> While `Line` is a valid `string` value for the `StrokeShape` property, its use is not supported.
+
+`String`-based x- and y-coordinate pairs can be delimited by a single comma and/or one or more spaces. For example, "40,10 70,80" and "40 10, 70 80" are both valid. Coordinate pairs will be converted to `Point` objects that define `X` and `Y` properties, of type `double`.

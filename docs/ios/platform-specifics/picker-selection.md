@@ -32,7 +32,7 @@ picker.On<iOS>().SetUpdateMode(UpdateMode.WhenFinished);
 
 The `Picker.On<iOS>` method specifies that this platform-specific will only run on iOS. The `Picker.SetUpdateMode` method, in the `Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific` namespace, is used to control when item selection occurs, with the `UpdateMode` enumeration providing two possible values:
 
-- `Immediately` – item selection occurs as the user browses items in the `Picker`. This is the default behavior in Xamarin.Forms.
+- `Immediately` – item selection occurs as the user browses items in the `Picker`. This is the default behavior in .NET MAUI.
 - `WhenFinished` – item selection only occurs once the user has pressed the **Done** button in the `Picker`.
 
 In addition, the `SetUpdateMode` method can be used to toggle the enumeration values by calling the `UpdateMode` method, which returns the current `UpdateMode`:

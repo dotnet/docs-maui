@@ -6,7 +6,7 @@ ms.date: 02/24/2022
 
 # XAML compilation
 
-.NET Multi-platform App UI (.NET MAUI) XAML is compiled directly into intermediate language (IL) with the XAML compiler (XAMLC). XAML compilation offers a number of a benefits:
+.NET Multi-platform App UI (.NET MAUI) XAML is compiled directly into intermediate language (IL) with the XAML compiler (XAMLC). XAML compilation offers a number of benefits:
 
 - It performs compile-time checking of XAML, notifying you of any errors.
 - It removes some of the load and instantiation time for XAML elements.

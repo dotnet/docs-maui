@@ -12,8 +12,6 @@ This article explains how to use the Android Device Manager to create and config
 > [!IMPORTANT]
 > Enable hardware acceleration for the Android devices. For more information, see [Hardware Acceleration for Emulator Performance](hardware-acceleration.md).
 
-[!INCLUDE [docs under construction](~/includes/preview-note.md)]
-
 <!--
 ::: zone pivot="windows"
 -->

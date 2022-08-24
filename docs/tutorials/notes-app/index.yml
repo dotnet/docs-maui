@@ -1,0 +1,44 @@
+### YamlMime:Tutorial
+title: "Create a new .NET MAUI app - Tutorial"
+metadata:
+  title: "Tutorial: Create a new .NET MAUI app"
+  description: Learn how to create a new .NET MAUI app that lets a user store and retrieve notes. This tutorial demonstrates creating an app that doesn't use any platform-specific code.
+  audience: Developer
+  level: Beginner
+  ms.topic: interactive-tutorial
+  ms.date: 08/02/2022
+  author: adegeo
+  ms.author: adegeo
+  #no-loc: [Xamarin.Forms, Xamarin.Essentials]
+items:
+- durationInMinutes: 1
+  content: |
+    [!INCLUDE [](includes/intro.md)]
+- title: Create a project
+  durationInMinutes: 5
+  content: |
+    [!INCLUDE [](includes/project.md)]
+- title: Customize the app shell
+  durationInMinutes: 10
+  content: |
+    [!INCLUDE [](includes/shell.md)]
+- title: Create a new page for a note
+  durationInMinutes: 10
+  content: |
+    [!INCLUDE [](includes/note.md)]
+- title: Bind data to the UI and navigate pages
+  durationInMinutes: 25
+  content: |
+    [!INCLUDE [](includes/navigation.md)]
+   
+- content: |
+    You've completed the Create a new .NET MAUI app tutorial!
+
+    ## Next steps
+
+    The following links provide more information related to some of the concepts you learned in this tutorial:
+
+    - [.NET MAUI Shell overview](../../fundamentals/shell/index.md)
+    - [.NET MAUI Shell pages](../../fundamentals/shell/pages.md)
+    - [Basic bindings](../../fundamentals/data-binding/basic-bindings.md)
+    - [Editor control](../../user-interface/controls/editor.md)
