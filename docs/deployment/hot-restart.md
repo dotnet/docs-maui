@@ -18,7 +18,6 @@ There are a number of requirements that must be met to use hot restart to deploy
 - You must be using Visual Studio 2022 version 17.3 or greater.
 - You must have iTunes (Microsoft Store or 64-bit version) installed on your development machine.
 - You must have an [Apple Developer account](https://appleid.apple.com/account) and paid [Apple Developer Program](https://developer.apple.com/programs) enrolment.
-- You must have an [App Store Connect API key](https://developer.apple.com/documentation/appstoreconnectapi/creating_api_keys_for_app_store_connect_api).
 
 ## Setup
 
@@ -60,16 +59,16 @@ Perform the following steps to setup hot restart:
     > [!NOTE]
     > If the setup wizard fails to detect your local iOS device, disconnect then reconnect your local iOS device from your development machine. In addition, ensure that iTunes recognizes your local iOS device.
 
-1. In the **Setup Hot Restart** setup wizard, click the **Sign in with an individual account** hyperlink to sign into your individual Apple Developer Program account:
+1. In the **Setup Hot Restart** setup wizard, click the **Sign in with an individual account** hyperlink to configure hot restart to use your individual Apple Developer Program account:
 
     :::image type="content" source="media/hot-restart/setup-wizard-4-add-account.png" alt-text="Screenshot of the initial fourth step in the setup hot restart wizard.":::
 
-    > [!NOTE]
-    > While these instructions focus on using an individual Apple Developer account, hot restart also works with an enterprise account.
-
     The **Individual account...** dialog appears.
 
-1. Create an App Store Connect API key. This will require you to have an [Apple Developer account](https://appleid.apple.com/account), and paid [Apple Developer Program](https://developer.apple.com/programs) enrolment. For more information about creating an App Store Connect API key, see [Creating API Keys for App Store Connect API](https://developer.apple.com/documentation/appstoreconnectapi/creating_api_keys_for_app_store_connect_api) on developer.apple.com.
+    > [!NOTE]
+    > Alternatively, to configure hot restart to use an enterprise Apple Developer account, click the **Sign in with an enterprise account** hyperlink and enter your credentials in the dialog that appears. Then proceed to step 12.
+
+1. Create an App Store Connect API key. This will require you to have an [Apple Developer account](https://appleid.apple.com/account), and paid [Apple Developer Program](https://developer.apple.com/programs) enrolment. For information about creating an App Store Connect API key, see [Creating API Keys for App Store Connect API](https://developer.apple.com/documentation/appstoreconnectapi/creating_api_keys_for_app_store_connect_api) on developer.apple.com.
 
 1. In the **Individual account...** dialog, enter your App Store Connect API key data:
 
