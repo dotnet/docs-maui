@@ -61,7 +61,7 @@ canvas.StrokeSize = 4;
 canvas.DrawEllipse(10, 10, 100, 50);
 ```
 
-In this example, a red ellipse with dimensions 150x50 is drawn at (10,10):
+In this example, a red ellipse with dimensions 100x50 is drawn at (10,10):
 
 :::image type="content" source="media/draw/ellipse.png" alt-text="Screenshot of a red ellipse.":::
 
