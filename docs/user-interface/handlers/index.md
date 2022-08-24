@@ -52,7 +52,7 @@ The following table lists the types that implement handler-based views in .NET M
 | `Button` | `IButton` | `ButtonHandler` | `ImageButtonMapper`. `TextButtonMapper`, `Mapper` | `CommandMapper` |
 | `CarouselView` | | `CarouselViewHandler` | `Mapper` | |
 | `CheckBox` | `ICheckBox` | `CheckBoxHandler` | `Mapper` | `CommandMapper` |
-| `CollectionView` |  | `CollectionViewHandler` | `Mapper` |
+| `CollectionView` |  | `CollectionViewHandler` | `Mapper` | |
 | `ContentView` | `IContentView` | `ContentViewHandler` | `Mapper` | `CommandMapper` |
 | `DatePicker` | `IDatePicker` | `DatePickerHandler` | `Mapper` | `CommandMapper` |
 | `Editor` | `IEditor` | `EditorHandler` | `Mapper` | `CommandMapper` |
