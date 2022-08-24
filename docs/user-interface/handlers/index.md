@@ -50,9 +50,9 @@ The following table lists the types that implement handler-based views in .NET M
 | `BlazorWebView` | `IBlazorWebView` | `BlazorWebViewHandler` | `BlazorWebViewMapper` | |
 | `Border` | `IBorderView` | `BorderHandler` | `Mapper` | `CommandMapper` |
 | `Button` | `IButton` | `ButtonHandler` | `ImageButtonMapper`. `TextButtonMapper`, `Mapper` | `CommandMapper` |
-| `CarouselView` | | `CarouselViewHandler` | `Mapper` |
+| `CarouselView` | | `CarouselViewHandler` | `Mapper` | |
 | `CheckBox` | `ICheckBox` | `CheckBoxHandler` | `Mapper` | `CommandMapper` |
-| `CollectionView` |  | `CollectionViewHandler` | `Mapper` |
+| `CollectionView` |  | `CollectionViewHandler` | `Mapper` | |
 | `ContentView` | `IContentView` | `ContentViewHandler` | `Mapper` | `CommandMapper` |
 | `DatePicker` | `IDatePicker` | `DatePickerHandler` | `Mapper` | `CommandMapper` |
 | `Editor` | `IEditor` | `EditorHandler` | `Mapper` | `CommandMapper` |
@@ -60,7 +60,7 @@ The following table lists the types that implement handler-based views in .NET M
 | `Entry` | `IEntry` | `EntryHandler` | `Mapper` | `CommandMapper` |
 | `GraphicsView` | `IGraphicsView` | `GraphicsViewHandler` | `Mapper` | `CommandMapper` |
 | `Image` | `IImage` | `ImageHandler` | `Mapper` | `CommandMapper` |
-| `ImageButton` | `IImageButton` | `ImageButtonHandler` | `ImageMapper`, `Mapper` |
+| `ImageButton` | `IImageButton` | `ImageButtonHandler` | `ImageMapper`, `Mapper` | |
 | `IndicatorView` | `IIndicatorView` | `IndicatorViewHandler` | `Mapper` | `CommandMapper` |
 | `Label` | `ILabel` | `LabelHandler` | `Mapper` | `CommandMapper` |
 | `Line` | | `LineHandler` | `Mapper` | |
