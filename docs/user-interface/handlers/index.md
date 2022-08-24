@@ -60,7 +60,7 @@ The following table lists the types that implement handler-based views in .NET M
 | `Entry` | `IEntry` | `EntryHandler` | `Mapper` | `CommandMapper` |
 | `GraphicsView` | `IGraphicsView` | `GraphicsViewHandler` | `Mapper` | `CommandMapper` |
 | `Image` | `IImage` | `ImageHandler` | `Mapper` | `CommandMapper` |
-| `ImageButton` | `IImageButton` | `ImageButtonHandler` | `ImageMapper`, `Mapper` |
+| `ImageButton` | `IImageButton` | `ImageButtonHandler` | `ImageMapper`, `Mapper` | |
 | `IndicatorView` | `IIndicatorView` | `IndicatorViewHandler` | `Mapper` | `CommandMapper` |
 | `Label` | `ILabel` | `LabelHandler` | `Mapper` | `CommandMapper` |
 | `Line` | | `LineHandler` | `Mapper` | |
