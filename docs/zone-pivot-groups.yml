@@ -8,5 +8,7 @@ groups:
       title: Android
     - id: devices-ios
       title: iOS
+    - id: devices-maccatalyst
+      title: Mac Catalyst
     - id: devices-windows
       title: Windows
