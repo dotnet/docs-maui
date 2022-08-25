@@ -32,7 +32,7 @@ The `Video` control implements the `IVideo` interface. Mapping of the cross-plat
 The process for creating a cross-platform .NET MAUI custom control, whose platform implementations are provided by handlers, is as follows:
 
 1. Create an interface for the cross-platform control. For more information, see [Create the cross-platform control interface](#create-the-cross-platform-control-interface).
-1. Create a class for the cross-platform control, that implements the control interface. For more information, see [Create the cross-platform control](#create-the-cross-platform-control).
+1. Create a type for the cross-platform control, that implements the control interface. For more information, see [Create the cross-platform control](#create-the-cross-platform-control).
 1. Create any required additional cross-platform types.
 1. Create an interface for the handler. For more information, see [Create the handler interface](#create-the-handler-interface).
 1. Create a `partial` handler class, that implements the handler interface. For more information, see [Create the handler](#create-the-handler).
@@ -184,7 +184,7 @@ The conditional `using` statements are identical to those defined in the handler
 
 ## Create the property mapper
 
-Each handler typically provides a *property mapper*, which defines what Actions to take when a property change occurs in the cross-platform control. The `PropertyMapper` type is a `Dictionary` that maps the cross-platform control's interface properties to their associated Actions.
+Each handler typically provides a *property mapper*, which defines what Actions to take when a property change occurs in the cross-platform control. The `PropertyMapper` type is a `Dictionary` that maps the cross-platform control's properties to their associated Actions.
 
 `PropertyMapper` is defined in .NET MAUI's generic `ViewHandler` class, and requires two generic arguments to be supplied:
 
