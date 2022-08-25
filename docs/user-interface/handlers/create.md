@@ -42,7 +42,7 @@ The process for creating a cross-platform .NET MAUI custom control, whose platfo
 Then, the cross-platform control can be consumed. For more information, see [Consume the cross-platform control](#consume-the-cross-platform-control).
 
 > [!IMPORTANT]
-> .NET MAUI decouples its handlers from its cross-platform controls through interfaces. This enables experimental frameworks such as Comet to provide its own cross-platform controls, based on the interfaces, while still using .NET MAUI's handlers. Creating an interface for your cross-platform control is only necessary if you need to decouple your handler from its cross-platform control for a similar purpose, or for testing purposes.
+> .NET MAUI decouples its handlers from its cross-platform controls through interfaces. This enables experimental frameworks such as Comet to provide their own cross-platform controls, that implement the interfaces, while still using .NET MAUI's handlers. Creating an interface for your cross-platform control is only necessary if you need to decouple your handler from its cross-platform control for a similar purpose, or for testing purposes.
 
 ## Create the cross-platform control
 
