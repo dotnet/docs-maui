@@ -29,9 +29,12 @@ The architecture of the `Video` control is shown in the following diagram:
 
 The `Video` class provides the cross-platform API for the control. Mapping of the cross-platform API to the native view APIs is performed by the `VideoHandler` class on each platform, which maps the `Video` class to the `MauiVideoPlayer` class. On iOS and Mac Catalyst, the `MauiVideoPlayer` class uses the `AVPlayer` type to provide video playback. On Android, the `MauiVideoPlayer` class uses the `VideoView` type to provide video playback.
 
+> [!IMPORTANT]
+> .NET MAUI decouples its handlers from its cross-platform controls through interfaces. This enables experimental frameworks such as Comet and Fabulous to provide their own cross-platform controls, that implement the interfaces, while still using .NET MAUI's handlers. Creating an interface for your cross-platform control is only necessary if you need to decouple your handler from its cross-platform control for a similar purpose, or for testing purposes.
+
 The process for creating a cross-platform .NET MAUI custom control, whose platform implementations are provided by handlers, is as follows:
 
-1. Create a type for the cross-platform control, that provides the control's public API. For more information, see [Create the cross-platform control](#create-the-cross-platform-control).
+1. Create a class for the cross-platform control, that provides the control's public API. For more information, see [Create the cross-platform control](#create-the-cross-platform-control).
 1. Create any required additional cross-platform types.
 1. Create a `partial` handler class. For more information, see [Create the handler](#create-the-handler).
 1. In the handler class, create a `PropertyMapper` dictionary, which defines the Actions to take when cross-platform property changes occur. For more information, see [Create the property mapper](#create-the-property-mapper).
@@ -41,12 +44,9 @@ The process for creating a cross-platform .NET MAUI custom control, whose platfo
 
 Then, the cross-platform control can be consumed. For more information, see [Consume the cross-platform control](#consume-the-cross-platform-control).
 
-> [!IMPORTANT]
-> .NET MAUI decouples its handlers from its cross-platform controls through interfaces. This enables experimental frameworks such as Comet to provide their own cross-platform controls, that implement the interfaces, while still using .NET MAUI's handlers. Creating an interface for your cross-platform control is only necessary if you need to decouple your handler from its cross-platform control for a similar purpose, or for testing purposes.
-
 ## Create the cross-platform control
 
-To create a cross-platform control you should create a type that derives from `View`:
+To create a cross-platform control you should create a class that derives from `View`:
 
 ```csharp
 using System.ComponentModel;
@@ -87,11 +87,11 @@ namespace VideoDemos.Controls
 }
 ```
 
-The control should provide a public API that will be accessed by its handler, and control consumers. All cross-platform controls should derive from `View`, which represents a visual element that's used to place layouts and controls on the screen.
+The control should provide a public API that will be accessed by its handler, and control consumers. Cross-platform controls should derive from `View`, which represents a visual element that's used to place layouts and views on the screen.
 
 ## Create the handler
 
-After creating your cross-platform control, you should create a `partial` type for your handler:
+After creating your cross-platform control, you should create a `partial` class for your handler:
 
 ```csharp
 #if IOS || MACCATALYST
@@ -202,6 +202,8 @@ Each platform handler class should be a partial class and derive from the generi
 
 - The class for the cross-platform control, that derives from `View`.
 - The type of the native view that implements the cross-platform control on the platform. This should be identical to the type of the `PlatformView` property in the handler.
+
+The `ViewHandler` class provides `VirtualView` and `PlatformView` properties. The `VirtualView` property is used to access the cross-platform control from its handler. The `PlatformView` property, is used to access the native view on each platform that implements the cross-platform control.
 
 Each of the platform handler implementations should override the following methods:
 
