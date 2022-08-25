@@ -190,20 +190,44 @@ Each platform handler must provide implementations of the Actions, which manipul
 
 ## Create the platform controls
 
-After creating the mappers for your handler, you must provide handler implementations on all platforms. This can be accomplished by adding partial class handler implementations in the child folders of the *Platforms* folder. Alternatively you could configure your project to support filename-based multi-targeting, or folder-based multi-targeting, or both. For more information, see [Configure multi-targeting](~/platform-integration/configure-multi-targeting.md).
+After creating the mappers for your handler, you must provide handler implementations on all platforms. This can be accomplished by adding partial class handler implementations in the child folders of the *Platforms* folder. Alternatively you could configure your project to support filename-based multi-targeting, or folder-based multi-targeting, or both.
 
-The sample application is configured to support filename-based multi-targeting, so that the handler classes all are located in a single folder:
+The sample app is configured to support filename-based multi-targeting, so that the handler classes all are located in a single folder:
 
 :::image type="content" source="media/create/handlers-folder.png" alt-text="Screenshot of the files in the Handlers folder of the project.":::
 
-The `VideoHandler` class containing the mappers is named *VideoHandler.cs*. Its platform implementations are in the *VideoHandler.Android.cs*, *VideoHandler.iOS.cs*, and *VideoHandler.Windows.cs* files.
+The `VideoHandler` class containing the mappers is named *VideoHandler.cs*. Its platform implementations are in the *VideoHandler.Android.cs*, *VideoHandler.MaciOS.cs*, and *VideoHandler.Windows.cs* files. This filename-based multi-targeting is configured by adding the following XML to the project file, as children of the `<Project>` node:
+
+```xml
+<!-- Android -->
+<ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-android')) != true">
+  <Compile Remove="**\**\*.Android.cs" />
+  <None Include="**\**\*.Android.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+</ItemGroup>
+
+<!-- iOS and Mac Catalyst -->
+<ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-ios')) != true AND $(TargetFramework.StartsWith('net6.0-maccatalyst')) != true">
+  <Compile Remove="**\**\*.MaciOS.cs" />
+  <None Include="**\**\*.MaciOS.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+</ItemGroup>
+
+<!-- Windows -->
+<ItemGroup Condition="$(TargetFramework.Contains('-windows')) != true ">
+  <Compile Remove="**\*.Windows.cs" />
+  <None Include="**\*.Windows.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+</ItemGroup>
+
+```
+
+For more information about configuring multi-targeting, see [Configure multi-targeting](~/platform-integration/configure-multi-targeting.md).
 
 Each platform handler class should be a partial class and derive from the generic `ViewHandler` class, that requires two type arguments:
 
 - The class for the cross-platform control, that derives from `View`.
 - The type of the native view that implements the cross-platform control on the platform. This should be identical to the type of the `PlatformView` property in the handler.
 
-The `ViewHandler` class provides `VirtualView` and `PlatformView` properties. The `VirtualView` property is used to access the cross-platform control from its handler. The `PlatformView` property, is used to access the native view on each platform that implements the cross-platform control.
+> [!IMPORTANT]
+> The `ViewHandler` class provides `VirtualView` and `PlatformView` properties. The `VirtualView` property is used to access the cross-platform control from its handler. The `PlatformView` property, is used to access the native view on each platform that implements the cross-platform control.
 
 Each of the platform handler implementations should override the following methods:
 
