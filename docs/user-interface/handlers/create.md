@@ -27,15 +27,13 @@ The architecture of the `Video` control is shown in the following diagram:
 
 :::image type="content" source="media/create/video-handler.png" alt-text="Video handler architecture." border="false":::
 
-The `Video` control implements the `IVideo` interface. Mapping of the cross-platform APIs to the native view APIs is performed by the `VideoHandler` class on each platform, which maps the `IVideo` interface to the `MauiVideoPlayer` class. On iOS and Mac Catalyst, the `MauiVideoPlayer` class uses the `AVPlayer` type to provide video playback. On Android, the `MauiVideoPlayer` class uses the `VideoView` type to provide video playback.
+The `Video` class provides the cross-platform API for the control. Mapping of the cross-platform API to the native view APIs is performed by the `VideoHandler` class on each platform, which maps the `Video` class to the `MauiVideoPlayer` class. On iOS and Mac Catalyst, the `MauiVideoPlayer` class uses the `AVPlayer` type to provide video playback. On Android, the `MauiVideoPlayer` class uses the `VideoView` type to provide video playback.
 
 The process for creating a cross-platform .NET MAUI custom control, whose platform implementations are provided by handlers, is as follows:
 
-1. Create an interface for the cross-platform control. For more information, see [Create the cross-platform control interface](#create-the-cross-platform-control-interface).
-1. Create a type for the cross-platform control, that implements the control interface. For more information, see [Create the cross-platform control](#create-the-cross-platform-control).
+1. Create a type for the cross-platform control, that provides the control's public API. For more information, see [Create the cross-platform control](#create-the-cross-platform-control).
 1. Create any required additional cross-platform types.
-1. Create an interface for the handler. For more information, see [Create the handler interface](#create-the-handler-interface).
-1. Create a `partial` handler class, that implements the handler interface. For more information, see [Create the handler](#create-the-handler).
+1. Create a `partial` handler class. For more information, see [Create the handler](#create-the-handler).
 1. In the handler class, create a `PropertyMapper` dictionary, which defines the Actions to take when cross-platform property changes occur. For more information, see [Create the property mapper](#create-the-property-mapper).
 1. Optionally, in your handler class, create a `CommandMapper` dictionary, which defines the Actions to take when the cross-platform control sends instructions to the native views that implement the cross-platform control. For more information, see [Create the command mapper](#create-the-command-mapper).
 1. Create `partial` handler classes for each platform, that create the native views that implement the cross-platform control. For more information, see [Create the platform controls](#create-the-platform-controls).
@@ -43,46 +41,19 @@ The process for creating a cross-platform .NET MAUI custom control, whose platfo
 
 Then, the cross-platform control can be consumed. For more information, see [Consume the cross-platform control](#consume-the-cross-platform-control).
 
-## Create the cross-platform control interface
-
-Before creating your cross-platform control, you must first create its interface. This can be achieved by creating an interface that implements `IView`:
-
-```csharp
-namespace VideoDemos.Controls
-{
-    public interface IVideo : IView
-    {
-        bool AreTransportControlsEnabled { get; }
-        VideoSource Source { get; }
-        bool AutoPlay { get; }
-        VideoStatus Status { get; }
-        TimeSpan Duration { get; }
-        TimeSpan Position { get; set; }
-        TimeSpan TimeToEnd { get; }
-
-        event EventHandler UpdateStatus;
-        event EventHandler<VideoPositionEventArgs> PlayRequested;
-        event EventHandler<VideoPositionEventArgs> PauseRequested;
-        event EventHandler<VideoPositionEventArgs> StopRequested;
-    }
-}
-```
-
-Within the interface, you should define the public API of your custom control that will be accessed by its handler. All cross-platform control interfaces should implement `IView`, which represents a visual element that's used to place layouts and controls on the screen.
-
-> [!NOTE]
-> Handlers are accessed through their control-specific interface. This avoids the cross-platform control having to reference its handler, and the handler having to reference the cross-platform control.
+> [!IMPORTANT]
+> .NET MAUI decouples its handlers from its cross-platform controls through interfaces. This enables experimental frameworks such as Comet to provide its own cross-platform controls, based on the interfaces, while still using .NET MAUI's handlers. Creating an interface for your cross-platform control is only necessary if you need to decouple your handler from its cross-platform control for a similar purpose, or for testing purposes.
 
 ## Create the cross-platform control
 
-After defining your control's interface, you should create the cross-platform control. It should derive from `View`, and implement your control's interface:
+To create a cross-platform control you should create a type that derives from `View`:
 
 ```csharp
 using System.ComponentModel;
 
 namespace VideoDemos.Controls
 {
-    public class Video : View, IVideo, IVideoController
+    public class Video : View, IVideoController
     {
         public static readonly BindableProperty AreTransportControlsEnabledProperty =
             BindableProperty.Create(nameof(AreTransportControlsEnabled), typeof(bool), typeof(Video), true);
@@ -116,44 +87,11 @@ namespace VideoDemos.Controls
 }
 ```
 
-The control must implement its interface, but can also add additional public APIs that will be accessed by control consumers, but not by its handler.
-
-## Create the handler interface
-
-After creating your cross-platform control, you should create an interface for its handler. This can be achieved by creating an interface that implements `IViewHandler`:
-
-```csharp
-#if IOS || MACCATALYST
-using PlatformView = VideoDemos.Platforms.MaciOS.MauiVideoPlayer;
-#elif ANDROID
-using PlatformView = VideoDemos.Platforms.Android.MauiVideoPlayer;
-#elif WINDOWS
-using PlatformView = Microsoft.UI.Xaml.FrameworkElement;
-#elif (NETSTANDARD || !PLATFORM) || (NET6_0 && !IOS && !ANDROID)
-using PlatformView = System.Object;
-#endif
-using VideoDemos.Controls;
-
-namespace VideoDemos.Handlers
-{
-    public interface IVideoHandler : IViewHandler
-    {
-        new IVideo VirtualView { get; }
-        new PlatformView PlatformView { get; }
-    }
-}
-```
-
-The interface should define read-only `VirtualView` and `PlatformView` properties. The `VirtualView` property, of type `IVideo`, is used to access the cross-platform control from its handler. The `PlatformView` property, of type `PlatformView`, is used to access the native view on each platform that implements the cross-platform control. The conditional `using` statements define the `PlatformView` type on each platform. On Android, iOS, and Mac Catalyst, the native views are provided by the custom `MauiVideoPlayer` class. On Windows, which currently lacks a video control, there is no video player implementation. However, a native view must be specified for compilation purposes, and this is provided by the `FrameworkElement` class.
-
-The final conditional `using` statement defines `PlatformView` to be equal to `System.Object`. This is necessary so that the `PlatformView` type can be used within the interface definition for usage across all platforms. The alternative would be to have to define the `PlatformView` property once per platform, within the interface definition, using conditional compilation.
-
-> [!NOTE]
-> The `new` keyword on the `VirtualView` and `PlatformView` properties tells the compiler that the interface definition hides the definition contained in the interface being extended.
+The control should provide a public API that will be accessed by its handler, and control consumers. All cross-platform controls should derive from `View`, which represents a visual element that's used to place layouts and controls on the screen.
 
 ## Create the handler
 
-After creating an interface for your handler, you should create a `partial` type for your handler that implements its interface:
+After creating your cross-platform control, you should create a `partial` type for your handler:
 
 ```csharp
 #if IOS || MACCATALYST
@@ -170,17 +108,15 @@ using Microsoft.Maui.Handlers;
 
 namespace VideoDemos.Handlers
 {
-    public partial class VideoHandler : IVideoHandler
+    public partial class VideoHandler
     {
-        IVideo IVideoHandler.VirtualView => VirtualView;
-        PlatformView IVideoHandler.PlatformView => PlatformView;
     }
 }
 ```
 
-The handler class is a partial class whose implementation will be completed on each platform with an additional partial class. It implements the `VirtualView` and `PlatformView` properties that are defined in the interface, using [expression-bodied members](/dotnet/csharp/programming-guide/statements-expressions-operators/expression-bodied-members) to return `VirtualView` and `PlatformView` properties that are defined in .NET MAUI's generic `ViewHandler` class. For more information, see [Create the platform controls](#create-the-platform-controls).
+The handler class is a partial class whose implementation will be completed on each platform with an additional partial class.
 
-The conditional `using` statements are identical to those defined in the handler interface, and define the native view that implements the cross-platform control on each platform. As with the interface, the final conditional `using` statement defines `PlatformView` to be equal to `System.Object`. This is necessary so that the `PlatformView` type can be used within the class definition for usage across all platforms. The alternative would be to have to define the `PlatformView` property once per platform, within the class definition, using conditional compilation.
+The conditional `using` statements define the `PlatformView` type on each platform. On Android, iOS, and Mac Catalyst, the native views are provided by the custom `MauiVideoPlayer` class. On Windows, which currently lacks a video control, there is no video player implementation. However, a native view must be specified for compilation purposes, and this is provided by the `FrameworkElement` class. The final conditional `using` statement defines `PlatformView` to be equal to `System.Object`. This is necessary so that the `PlatformView` type can be used within the handler for usage across all platforms. The alternative would be to have to define the `PlatformView` property once per platform, using conditional compilation.
 
 ## Create the property mapper
 
@@ -188,23 +124,20 @@ Each handler typically provides a *property mapper*, which defines what Actions 
 
 `PropertyMapper` is defined in .NET MAUI's generic `ViewHandler` class, and requires two generic arguments to be supplied:
 
-- The interface for the cross-platform control, that implements `IView`.
-- The interface for the handler, that implements `IViewHandler`.
+- The class for the cross-platform control, that derives from `View`.
+- The class for the handler.
 
 The following code example shows the `VideoHandler` class extended with the `PropertyMapper` definition:
 
 ```csharp
-public partial class VideoHandler : IVideoHandler
+public partial class VideoHandler
 {
-    public static IPropertyMapper<IVideo, IVideoHandler> PropertyMapper = new PropertyMapper<IVideo, IVideoHandler>(ViewHandler.ViewMapper)
+    public static IPropertyMapper<Video, VideoHandler> PropertyMapper = new PropertyMapper<Video, VideoHandler>(ViewHandler.ViewMapper)
     {
-        [nameof(IVideo.AreTransportControlsEnabled)] = MapAreTransportControlsEnabled,
-        [nameof(IVideo.Source)] = MapSource,
-        [nameof(IVideo.Position)] = MapPosition
+        [nameof(Video.AreTransportControlsEnabled)] = MapAreTransportControlsEnabled,
+        [nameof(Video.Source)] = MapSource,
+        [nameof(Video.Position)] = MapPosition
     };
-
-    IVideo IVideoHandler.VirtualView => VirtualView;
-    PlatformView IVideoHandler.PlatformView => PlatformView;
 
     public VideoHandler() : base(PropertyMapper)
     {
@@ -212,41 +145,38 @@ public partial class VideoHandler : IVideoHandler
 }
 ```
 
-The `PropertyMapper` is a `Dictionary` whose key is a `string` and whose value is a generic `Action`. The `string` represents the property name, accessed via it's cross-platform interface, and the `Action` represents a `static` method that requires the handler interface and cross-platform control interface as arguments. For example, the signature of the `MapSource` method is `public static void MapSource(IVideoHandler handler, IVideo video)`.
+The `PropertyMapper` is a `Dictionary` whose key is a `string` and whose value is a generic `Action`. The `string` represents the cross-platform control's property name, and the `Action` represents a `static` method that requires the handler and cross-platform control as arguments. For example, the signature of the `MapSource` method is `public static void MapSource(VideoHandler handler, Video video)`.
 
-Each platform handler must provide implementations of the Actions, which manipulate the native view APIs. This ensures that when a property is set on a cross-platform control, the underlying native view will be updated as required. The advantage of this approach is that it enables native views to be decoupled from cross-platform controls, because the cross-platform control doesn't reference its handler, and the handler doesn't reference the cross-platform control. In addition, it allows for easy customisation because the property mapper can be modified by cross-platform control consumers without subclassing.
+Each platform handler must provide implementations of the Actions, which manipulate the native view APIs. This ensures that when a property is set on a cross-platform control, the underlying native view will be updated as required. The advantage of this approach is that it allows for easy cross-platform control customisation, because the property mapper can be modified by cross-platform control consumers without subclassing.
 
 ## Create the command mapper
 
-Each handler can also provide a *command mapper*, which defines what Actions to take when the cross-platform control sends commands to native views. Command mappers are similar to property mappers, but allow for additional data to be passed. In this context a command is an instruction, and optionally its data, that's sent to a native view. The `CommandMapper` type is a `Dictionary` that maps cross-platform control interface members to their associated Actions.
+Each handler can also provide a *command mapper*, which defines what Actions to take when the cross-platform control sends commands to native views. Command mappers are similar to property mappers, but allow for additional data to be passed. In this context a command is an instruction, and optionally its data, that's sent to a native view. The `CommandMapper` type is a `Dictionary` that maps cross-platform control members to their associated Actions.
 
 `CommandMapper` is defined in .NET MAUI's generic `ViewHandler` class, and requires two generic arguments to be supplied:
 
-- The interface for the cross-platform control, that implements `IView`.
-- The interface for the handler, that implements `IViewHandler`.
+- The class for the cross-platform control, that derives from `View`.
+- The class for the handler.
 
 The following code example shows the `VideoHandler` class extended with the `CommandMapper` definition:
 
 ```csharp
-public partial class VideoHandler : IVideoHandler
+public partial class VideoHandler
 {
-    public static IPropertyMapper<IVideo, IVideoHandler> PropertyMapper = new PropertyMapper<IVideo, IVideoHandler>(ViewHandler.ViewMapper)
+    public static IPropertyMapper<Video, VideoHandler> PropertyMapper = new PropertyMapper<Video, VideoHandler>(ViewHandler.ViewMapper)
     {
-        [nameof(IVideo.AreTransportControlsEnabled)] = MapAreTransportControlsEnabled,
-        [nameof(IVideo.Source)] = MapSource,
-        [nameof(IVideo.Position)] = MapPosition
+        [nameof(Video.AreTransportControlsEnabled)] = MapAreTransportControlsEnabled,
+        [nameof(Video.Source)] = MapSource,
+        [nameof(Video.Position)] = MapPosition
     };
 
-    public static CommandMapper<IVideo, IVideoHandler> CommandMapper = new(ViewCommandMapper)
+    public static CommandMapper<Video, VideoHandler> CommandMapper = new(ViewCommandMapper)
     {
-        [nameof(IVideo.UpdateStatus)] = MapUpdateStatus,
-        [nameof(IVideo.PlayRequested)] = MapPlayRequested,
-        [nameof(IVideo.PauseRequested)] = MapPauseRequested,
-        [nameof(IVideo.StopRequested)] = MapStopRequested
+        [nameof(Video.UpdateStatus)] = MapUpdateStatus,
+        [nameof(Video.PlayRequested)] = MapPlayRequested,
+        [nameof(Video.PauseRequested)] = MapPauseRequested,
+        [nameof(Video.StopRequested)] = MapStopRequested
     };
-
-    IVideo IVideoHandler.VirtualView => VirtualView;
-    PlatformView IVideoHandler.PlatformView => PlatformView;
 
     public VideoHandler() : base(PropertyMapper, CommandMapper)
     {
@@ -254,9 +184,9 @@ public partial class VideoHandler : IVideoHandler
 }
 ```
 
-The `CommandMapper` is a `Dictionary` whose key is a `string` and whose value is a generic `Action`. The `string` represents the command name, accessed via it's cross-platform interface, and the `Action` represents a `static` method that requires the handler interface, cross-platform control interface, and optional data as arguments. For example, the signature of the `MapPlayRequested` method is `public static void MapPlayRequested(IVideoHandler handler, IVideo video, object? args)`.
+The `CommandMapper` is a `Dictionary` whose key is a `string` and whose value is a generic `Action`. The `string` represents the cross-platform control's command name, and the `Action` represents a `static` method that requires the handler, cross-platform control, and optional data as arguments. For example, the signature of the `MapPlayRequested` method is `public static void MapPlayRequested(VideoHandler handler, Video video, object? args)`.
 
-Each platform handler must provide implementations of the Actions, which manipulate the native view APIs. This ensures that when a command is sent from the cross-platform control, the underlying native view will be manipulated as required. The advantage of this approach is that it enables native views to be decoupled from cross-platform controls, because the cross-platform control can send a command to its native views without referencing its handler, and the handler doesn't reference the cross-platform control. This removes the need for native views to subscribe to cross-platform control events. In addition, it allows for easy customisation because the command mapper can be modified by cross-platform control consumers without subclassing.
+Each platform handler must provide implementations of the Actions, which manipulate the native view APIs. This ensures that when a command is sent from the cross-platform control, the underlying native view will be manipulated as required. The advantage of this approach is that it removes the need for native views to subscribe to and unsubscribe from cross-platform control events. In addition, it allows for easy customisation because the command mapper can be modified by cross-platform control consumers without subclassing.
 
 ## Create the platform controls
 
@@ -270,8 +200,8 @@ The `VideoHandler` class containing the mappers is named *VideoHandler.cs*. Its 
 
 Each platform handler class should be a partial class and derive from the generic `ViewHandler` class, that requires two type arguments:
 
-- The interface for the cross-platform control, that implements `IView`.
-- The type of the native view that implements cross-platform control on the platform. This should be identical to the type of the `PlatformView` property in the handler interface.
+- The class for the cross-platform control, that derives from `View`.
+- The type of the native view that implements the cross-platform control on the platform. This should be identical to the type of the `PlatformView` property in the handler.
 
 Each of the platform handler implementations should override the following methods:
 
@@ -291,13 +221,14 @@ In addition, each platform handler should also provide code, as required, to imp
 Video is played on Android with a `VideoView`. However, here, the `VideoView` has been encapsulated in a `MauiVideoPlayer` type to keep the native view separated from its handler. The following example shows the `VideoHandler` partial class for Android, with its three overrides:
 
 ```csharp
+#nullable enable
 using Microsoft.Maui.Handlers;
 using VideoDemos.Controls;
 using VideoDemos.Platforms.Android;
 
 namespace VideoDemos.Handlers
 {
-    public partial class VideoHandler : ViewHandler<IVideo, MauiVideoPlayer>
+    public partial class VideoHandler : ViewHandler<Video, MauiVideoPlayer>
     {
         protected override MauiVideoPlayer CreatePlatformView() => new MauiVideoPlayer(Context, VirtualView);
 
@@ -318,27 +249,27 @@ namespace VideoDemos.Handlers
 }
 ```
 
-`VideoHandler` derives from the `ViewHandler` class, with the generic `IVideo` argument specifying the interface for the cross-platform control, and the `MauiVideoPlayer` argument specifying the type that encapsulates the `VideoView` native view.
+`VideoHandler` derives from the `ViewHandler` class, with the generic `Video` argument specifying the cross-platform control type, and the `MauiVideoPlayer` argument specifying the type that encapsulates the `VideoView` native view.
 
 The `CreatePlatformView` override creates and returns a `MauiVideoPlayer` object. The `ConnectHandler` override is the location to perform any required native view setup. The `DisconnectHandler` override is the location to perform any native view cleanup, and so calls the `Dispose` method on the `MauiVideoPlayer` instance.
 
 The platform handler also has to implement the Actions defined in the property mapper dictionary:
 
 ```csharp
-public partial class VideoHandler : ViewHandler<IVideo, MauiVideoPlayer>
+public partial class VideoHandler : ViewHandler<Video, MauiVideoPlayer>
 {
     ...
-    public static void MapAreTransportControlsEnabled(IVideoHandler handler, IVideo video)
+    public static void MapAreTransportControlsEnabled(VideoHandler handler, Video video)
     {
         handler.PlatformView?.UpdateTransportControlsEnabled();
     }
 
-    public static void MapSource(IVideoHandler handler, IVideo video)
+    public static void MapSource(VideoHandler handler, Video video)
     {
         handler.PlatformView?.UpdateSource();
     }
 
-    public static void MapPosition(IVideoHandler handler, IVideo video)
+    public static void MapPosition(VideoHandler handler, Video video)
     {
         handler.PlatformView?.UpdatePosition();
     }
@@ -346,20 +277,20 @@ public partial class VideoHandler : ViewHandler<IVideo, MauiVideoPlayer>
 }
 ```
 
-Each Action is executed in response to a property changing on the cross-platform control, and is a `static` method that requires the handler interface and cross-platform control interface as arguments. In each case, the Action calls a method defined in the `MauiVideoPlayer` type.
+Each Action is executed in response to a property changing on the cross-platform control, and is a `static` method that requires handler and cross-platform control instances as arguments. In each case, the Action calls a method defined in the `MauiVideoPlayer` type.
 
 The platform handler also has to implement the Actions defined in the command mapper dictionary:
 
 ```csharp
-public partial class VideoHandler : ViewHandler<IVideo, MauiVideoPlayer>
+public partial class VideoHandler : ViewHandler<Video, MauiVideoPlayer>
 {
     ...
-    public static void MapUpdateStatus(IVideoHandler handler, IVideo video, object? args)
+    public static void MapUpdateStatus(VideoHandler handler, Video video, object? args)
     {
         handler.PlatformView?.UpdateStatus();
     }
 
-    public static void MapPlayRequested(IVideoHandler handler, IVideo video, object? args)
+    public static void MapPlayRequested(VideoHandler handler, Video video, object? args)
     {
         if (args is not VideoPositionEventArgs)
             return;
@@ -368,7 +299,7 @@ public partial class VideoHandler : ViewHandler<IVideo, MauiVideoPlayer>
         handler.PlatformView?.PlayRequested(position);
     }
 
-    public static void MapPauseRequested(IVideoHandler handler, IVideo video, object? args)
+    public static void MapPauseRequested(VideoHandler handler, Video video, object? args)
     {
         if (args is not VideoPositionEventArgs)
             return;
@@ -377,7 +308,7 @@ public partial class VideoHandler : ViewHandler<IVideo, MauiVideoPlayer>
         handler.PlatformView?.PauseRequested(position);
     }
 
-    public static void MapStopRequested(IVideoHandler handler, IVideo video, object? args)
+    public static void MapStopRequested(VideoHandler handler, Video video, object? args)
     {
         if (args is not VideoPositionEventArgs)
             return;
@@ -389,7 +320,7 @@ public partial class VideoHandler : ViewHandler<IVideo, MauiVideoPlayer>
 }
 ```
 
-Each Action is executed in response to a command being sent from the cross-platform control, and is a `static` method that requires the handler interface, cross-platform control interface, and optional data as arguments. In each case, the Action calls a method defined in the `MauiVideoPlayer` class, after extracting the optional data.
+Each Action is executed in response to a command being sent from the cross-platform control, and is a `static` method that requires handler and cross-platform control instances, and optional data as arguments. In each case, the Action calls a method defined in the `MauiVideoPlayer` class, after extracting the optional data.
 
 On Android, the `MauiVideoPlayer` class encapsulates the `VideoView` to keep the native view separated from its handler:
 
@@ -410,9 +341,9 @@ namespace VideoDemos.Platforms.Android
         MediaController _mediaController;
         bool _isPrepared;
         Context _context;
-        IVideo _video;
+        Video _video;
 
-        public MauiVideoPlayer(Context context, IVideo video) : base(context)
+        public MauiVideoPlayer(Context context, Video video) : base(context)
         {
             _context = context;
             _video = video;
@@ -456,7 +387,7 @@ The constructor also subscribes to the `VideoView.Prepared` event. This event is
 public class MauiVideoPlayer : CoordinatorLayout
 {
     VideoView _videoView;
-    IVideo _video;
+    Video _video;
     ...
 
     protected override void Dispose(bool disposing)
@@ -486,8 +417,8 @@ The platform transport controls include buttons that play, pause, and stop the v
 public class MauiVideoPlayer : CoordinatorLayout
 {
     VideoView _videoView;
-    MediaController _mediaController;    // Used to display transport controls
-    IVideo _video;
+    MediaController _mediaController;
+    Video _video;
     ...
 
     public void UpdateTransportControlsEnabled()
@@ -527,7 +458,7 @@ using VideoDemos.Platforms.MaciOS;
 
 namespace VideoDemos.Handlers
 {
-    public partial class VideoHandler : ViewHandler<IVideo, MauiVideoPlayer>
+    public partial class VideoHandler : ViewHandler<Video, MauiVideoPlayer>
     {
         protected override MauiVideoPlayer CreatePlatformView() => new MauiVideoPlayer(VirtualView);
 
@@ -548,27 +479,27 @@ namespace VideoDemos.Handlers
 }
 ```
 
-`VideoHandler` derives from the `ViewHandler` class, with the generic `IVideo` argument specifying the interface for the cross-platform control, and the `MauiVideoPlayer` argument specifying the type that encapsulates the `AVPlayer` and `AVPlayerViewController` native views.
+`VideoHandler` derives from the `ViewHandler` class, with the generic `Video` argument specifying the cross-platform control type, and the `MauiVideoPlayer` argument specifying the type that encapsulates the `AVPlayer` and `AVPlayerViewController` native views.
 
 The `CreatePlatformView` override creates and returns a `MauiVideoPlayer` object. The `ConnectHandler` override is the location to perform any required native view setup. The `DisconnectHandler` override is the location to perform any native view cleanup, and so calls the `Dispose` method on the `MauiVideoPlayer` instance.
 
 The platform handler also has to implement the Actions defined in the property mapper dictionary:
 
 ```csharp
-public partial class VideoHandler : ViewHandler<IVideo, MauiVideoPlayer>
+public partial class VideoHandler : ViewHandler<Video, MauiVideoPlayer>
 {
     ...
-    public static void MapAreTransportControlsEnabled(IVideoHandler handler, IVideo video)
+    public static void MapAreTransportControlsEnabled(VideoHandler handler, Video video)
     {
         handler?.PlatformView.UpdateTransportControlsEnabled();
     }
 
-    public static void MapSource(IVideoHandler handler, IVideo video)
+    public static void MapSource(VideoHandler handler, Video video)
     {
         handler?.PlatformView.UpdateSource();
     }
 
-    public static void MapPosition(IVideoHandler handler, IVideo video)
+    public static void MapPosition(VideoHandler handler, Video video)
     {
         handler?.PlatformView.UpdatePosition();
     }
@@ -576,20 +507,20 @@ public partial class VideoHandler : ViewHandler<IVideo, MauiVideoPlayer>
 }
 ```
 
-Each Action is executed in response to a property changing on the cross-platform control, and is a `static` method that requires the handler interface and cross-platform control interface as arguments. In each case, the Action calls a method defined in the `MauiVideoPlayer` type.
+Each Action is executed in response to a property changing on the cross-platform control, and is a `static` method that requires handler and cross-platform control instances as arguments. In each case, the Action calls a method defined in the `MauiVideoPlayer` type.
 
 The platform handler also has to implement the Actions defined in the command mapper dictionary:
 
 ```csharp
-public partial class VideoHandler : ViewHandler<IVideo, MauiVideoPlayer>
+public partial class VideoHandler : ViewHandler<Video, MauiVideoPlayer>
 {
     ...
-    public static void MapUpdateStatus(IVideoHandler handler, IVideo video, object? args)
+    public static void MapUpdateStatus(VideoHandler handler, Video video, object? args)
     {
         handler.PlatformView?.UpdateStatus();
     }
 
-    public static void MapPlayRequested(IVideoHandler handler, IVideo video, object? args)
+    public static void MapPlayRequested(VideoHandler handler, Video video, object? args)
     {
         if (args is not VideoPositionEventArgs)
             return;
@@ -598,7 +529,7 @@ public partial class VideoHandler : ViewHandler<IVideo, MauiVideoPlayer>
         handler.PlatformView?.PlayRequested(position);
     }
 
-    public static void MapPauseRequested(IVideoHandler handler, IVideo video, object? args)
+    public static void MapPauseRequested(VideoHandler handler, Video video, object? args)
     {
         if (args is not VideoPositionEventArgs)
             return;
@@ -607,7 +538,7 @@ public partial class VideoHandler : ViewHandler<IVideo, MauiVideoPlayer>
         handler.PlatformView?.PauseRequested(position);
     }
 
-    public static void MapStopRequested(IVideoHandler handler, IVideo video, object? args)
+    public static void MapStopRequested(VideoHandler handler, Video video, object? args)
     {
         if (args is not VideoPositionEventArgs)
             return;
@@ -619,7 +550,7 @@ public partial class VideoHandler : ViewHandler<IVideo, MauiVideoPlayer>
 }
 ```
 
-Each Action is executed in response to a command being sent from the cross-platform control, and is a `static` method that requires the handler interface, cross-platform control interface, and optional data as arguments. In each case, the Action calls a method defined in the `MauiVideoPlayer` class, after extracting the optional data.
+Each Action is executed in response to a command being sent from the cross-platform control, and is a `static` method that requires handler and cross-platform control instances, and optional data as arguments. In each case, the Action calls a method defined in the `MauiVideoPlayer` class, after extracting the optional data.
 
 On iOS and Mac Catalyst, the `MauiVideoPlayer` class encapsulates the `AVPlayer` and `AVPlayerViewController` types to keep the native views separated from their handler:
 
@@ -638,10 +569,10 @@ namespace VideoDemos.Platforms.MaciOS
     {
         AVPlayer _player;
         AVPlayerViewController _playerViewController;
-        IVideo _video;
+        Video _video;
         ...
 
-        public MauiVideoPlayer(IVideo video)
+        public MauiVideoPlayer(Video video)
         {
             _video = video;
 
@@ -661,7 +592,7 @@ namespace VideoDemos.Platforms.MaciOS
 }
 ```
 
-`MauiVideoPlayer` derives from `UIView`, which is the base class no iOS and Mac Catalyst for objects that display content and handle user interaction with that content. The constructor creates an `AVPlayer` object, which manages the playback and timing of a media file, and sets it as the `Player` property value of an `AVPlayerViewController`. The `AVPlayerViewController` displays content from the `AVPlayer` and presents transport controls and other features. The size and location of the control is then set, which ensures that the video is centered in the page and expands to fill the available space while maintaining its aspect ratio. The native view, which is the view from the `AVPlayerViewController`, is then added to the page.
+`MauiVideoPlayer` derives from `UIView`, which is the base class on iOS and Mac Catalyst for objects that display content and handle user interaction with that content. The constructor creates an `AVPlayer` object, which manages the playback and timing of a media file, and sets it as the `Player` property value of an `AVPlayerViewController`. The `AVPlayerViewController` displays content from the `AVPlayer` and presents transport controls and other features. The size and location of the control is then set, which ensures that the video is centered in the page and expands to fill the available space while maintaining its aspect ratio. The native view, which is the view from the `AVPlayerViewController`, is then added to the page.
 
 The `Dispose` method is responsible for performing native view cleanup:
 
@@ -670,7 +601,7 @@ public class MauiVideoPlayer : UIView
 {
     AVPlayer _player;
     AVPlayerViewController _playerViewController;
-    IVideo _video;
+    Video _video;
     ...
 
     protected override void Dispose(bool disposing)
@@ -705,7 +636,7 @@ The platform transport controls include buttons that play, pause, and stop the v
 public class MauiVideoPlayer : UIView
 {
     AVPlayerViewController _playerViewController;
-    IVideo _video;
+    Video _video;
     ...
 
     public void UpdateTransportControlsEnabled()
@@ -731,16 +662,16 @@ using VideoDemos.Controls;
 
 namespace VideoDemos.Handlers
 {
-    public partial class VideoHandler : ViewHandler<IVideo, FrameworkElement>
+    public partial class VideoHandler : ViewHandler<Video, FrameworkElement>
     {
         protected override FrameworkElement CreatePlatformView() => throw new PlatformNotSupportedException("No MediaElement control on Windows.");
-        public static void MapAreTransportControlsEnabled(IVideoHandler handler, IVideo video) => throw new PlatformNotSupportedException("No MediaElement control on Windows.");
-        public static void MapSource(IVideoHandler handler, IVideo video) => throw new PlatformNotSupportedException("No MediaElement control on Windows.");
-        public static void MapPosition(IVideoHandler handler, IVideo video) => throw new PlatformNotSupportedException("No MediaElement control on Windows.");
-        public static void MapUpdateStatus(IVideoHandler handler, IVideo video, object? arg) => throw new PlatformNotSupportedException("No MediaElement control on Windows.");
-        public static void MapPlayRequested(IVideoHandler handler, IVideo video, object? arg) => throw new PlatformNotSupportedException("No MediaElement control on Windows.");
-        public static void MapPauseRequested(IVideoHandler handler, IVideo video, object? arg) => throw new PlatformNotSupportedException("No MediaElement control on Windows.");
-        public static void MapStopRequested(IVideoHandler handler, IVideo video, object? arg) => throw new PlatformNotSupportedException("No MediaElement control on Windows.");
+        public static void MapAreTransportControlsEnabled(VideoHandler handler, Video video) => throw new PlatformNotSupportedException("No MediaElement control on Windows.");
+        public static void MapSource(VideoHandler handler, Video video) => throw new PlatformNotSupportedException("No MediaElement control on Windows.");
+        public static void MapPosition(VideoHandler handler, Video video) => throw new PlatformNotSupportedException("No MediaElement control on Windows.");
+        public static void MapUpdateStatus(VideoHandler handler, Video video, object? arg) => throw new PlatformNotSupportedException("No MediaElement control on Windows.");
+        public static void MapPlayRequested(VideoHandler handler, Video video, object? arg) => throw new PlatformNotSupportedException("No MediaElement control on Windows.");
+        public static void MapPauseRequested(VideoHandler handler, Video video, object? arg) => throw new PlatformNotSupportedException("No MediaElement control on Windows.");
+        public static void MapStopRequested(VideoHandler handler, Video video, object? arg) => throw new PlatformNotSupportedException("No MediaElement control on Windows.");
     }
 }
 ```
@@ -828,7 +759,7 @@ namespace VideoDemos.Controls
 When the `Source` property is set to a `UriVideoSource`, the handler's property mapper ensures that the `MapSource` method is invoked:
 
 ```csharp
-public static void MapSource(IVideoHandler handler, IVideo video)
+public static void MapSource(VideoHandler handler, Video video)
 {
     handler?.PlatformView.UpdateSource();
 }
@@ -855,7 +786,7 @@ namespace VideoDemos.Platforms.Android
     {
         VideoView _videoView;
         bool _isPrepared;
-        IVideo _video;
+        Video _video;
         ...
 
         public void UpdateSource()
@@ -907,7 +838,7 @@ namespace VideoDemos.Platforms.MaciOS
     {
         AVPlayer _player;
         AVPlayerItem _playerItem;
-        IVideo _video;
+        Video _video;
         ...
 
         public void UpdateSource()
@@ -984,7 +915,7 @@ namespace VideoDemos.Controls
 When the `Source` property is set to a `ResourceVideoSource`, the handler's property mapper ensures that the `MapSource` method is invoked:
 
 ```csharp
-public static void MapSource(IVideoHandler handler, IVideo video)
+public static void MapSource(VideoHandler handler, Video video)
 {
     handler?.PlatformView.UpdateSource();
 }
@@ -1012,7 +943,7 @@ namespace VideoDemos.Platforms.Android
         VideoView _videoView;
         bool _isPrepared;
         Context _context;
-        IVideo _video;
+        Video _video;
         ...
 
         public void UpdateSource()
@@ -1100,7 +1031,7 @@ namespace VideoDemos.Platforms.MaciOS
 {
     public class MauiVideoPlayer : UIView
     {
-        IVideo _video;
+        Video _video;
         ...
 
         public void UpdateSource()
@@ -1171,7 +1102,7 @@ namespace VideoDemos.Controls
 When the `Source` property is set to a `FileVideoSource`, the handler's property mapper ensures that the `MapSource` method is invoked:
 
 ```csharp
-public static void MapSource(IVideoHandler handler, IVideo video)
+public static void MapSource(VideoHandler handler, Video video)
 {
     handler?.PlatformView.UpdateSource();
 }
@@ -1198,7 +1129,7 @@ namespace VideoDemos.Platforms.Android
     {
         VideoView _videoView;
         bool _isPrepared;
-        IVideo _video;
+        Video _video;
         ...
 
         public void UpdateSource()
@@ -1242,7 +1173,7 @@ namespace VideoDemos.Platforms.MaciOS
 {
     public class MauiVideoPlayer : UIView
     {
-        IVideo _video;
+        Video _video;
         ...
 
         public void UpdateSource()
@@ -1276,7 +1207,7 @@ Implementing your own transport controls requires the `Video` class to be able t
 ```csharp
 namespace VideoDemos.Controls
 {
-    public class Video : View, IVideo, IVideoController
+    public class Video : View, IVideoController
     {
         ...
         public event EventHandler<VideoPositionEventArgs> PlayRequested;
@@ -1287,21 +1218,21 @@ namespace VideoDemos.Controls
         {
             VideoPositionEventArgs args = new VideoPositionEventArgs(Position);
             PlayRequested?.Invoke(this, args);
-            Handler?.Invoke(nameof(IVideo.PlayRequested), args);
+            Handler?.Invoke(nameof(Video.PlayRequested), args);
         }
 
         public void Pause()
         {
             VideoPositionEventArgs args = new VideoPositionEventArgs(Position);
             PauseRequested?.Invoke(this, args);
-            Handler?.Invoke(nameof(IVideo.PauseRequested), args);
+            Handler?.Invoke(nameof(Video.PauseRequested), args);
         }
 
         public void Stop()
         {
             VideoPositionEventArgs args = new VideoPositionEventArgs(Position);
             StopRequested?.Invoke(this, args);
-            Handler?.Invoke(nameof(IVideo.StopRequested), args);
+            Handler?.Invoke(nameof(Video.StopRequested), args);
         }
     }
 }
@@ -1309,7 +1240,7 @@ namespace VideoDemos.Controls
 
 The `VideoPositionEventArgs` class defines a `Position` property that can be set through its constructor. This property represents the position at which video playback was started, been paused, or stopped.
 
-The final line in the `Play`, `Pause`, and `Stop` methods sends a command and associated data to `VideoHandler`. The `CommandMapper` for `VideoHandler` maps command names to Actions that are executed when a command is received. For example, when `VideoHandler` receives the `PlayRequested` command, it executes its `MapPlayRequested` method. The advantage of this approach is that it enables native views to be decoupled from cross-platform controls, because the cross-platform control can send a command to its native view without referencing its handler, and the handler doesn't reference the cross-platform control. This removes the need for native views to subscribe to cross-platform control events. In addition, it allows for easy customisation because the command mapper can be modified by cross-platform control consumers without subclassing. For more information about `CommandMapper`, see [Create the command mapper](create.md#create-the-command-mapper).
+The final line in the `Play`, `Pause`, and `Stop` methods sends a command and associated data to `VideoHandler`. The `CommandMapper` for `VideoHandler` maps command names to Actions that are executed when a command is received. For example, when `VideoHandler` receives the `PlayRequested` command, it executes its `MapPlayRequested` method. The advantage of this approach is that it removes the need for native views to subscribe to and unsubscribe from cross-platform control events. In addition, it allows for easy customisation because the command mapper can be modified by cross-platform control consumers without subclassing. For more information about `CommandMapper`, see [Create the command mapper](create.md#create-the-command-mapper).
 
 The `MauiVideoPlayer` implementation on Android, iOS and Mac Catalyst, has `PlayRequested`, `PauseRequested`, and `StopRequested` methods that are executed in response to the `Video` control sending `PlayRequested`, `PauseRequested`, and `StopRequested` commands. Each method invokes a method on its native view to play, pause, or stop the video. For example, the following code shows the `PlayRequested`, `PauseRequested`, and `StopRequested` methods on iOS and Mac Catalyst:
 
@@ -1375,7 +1306,7 @@ The `Video` class defines a read-only bindable property named `Status` of type `
 ```csharp
 namespace VideoDemos.Controls
 {
-    public class Video : View, IVideo, IVideoController
+    public class Video : View, IVideoController
     {
         ...
         private static readonly BindablePropertyKey StatusPropertyKey =
@@ -1419,7 +1350,7 @@ using System.ComponentModel;
 
 namespace VideoDemos.Controls
 {
-    public class Video : View, IVideo, IVideoController
+    public class Video : View, IVideoController
     {
         ...
         public event EventHandler UpdateStatus;
@@ -1439,7 +1370,7 @@ namespace VideoDemos.Controls
         void OnTimerTick(object sender, EventArgs e)
         {
             UpdateStatus?.Invoke(this, EventArgs.Empty);
-            Handler?.Invoke(nameof(IVideo.UpdateStatus));
+            Handler?.Invoke(nameof(Video.UpdateStatus));
         }
         ...
     }
@@ -1451,7 +1382,7 @@ The `OnTimerTick` event handler is executed every tenth of a second, which raise
 When the `UpdateStatus` command is sent from the `Video` control to its handler, the handler's command mapper ensures that the `MapUpdateStatus` method is invoked:
 
 ```csharp
-public static void MapUpdateStatus(IVideoHandler handler, IVideo video, object? args)
+public static void MapUpdateStatus(VideoHandler handler, Video video, object? args)
 {
     handler.PlatformView?.UpdateStatus();
 }
@@ -1478,10 +1409,10 @@ namespace VideoDemos.Platforms.Android
     {
         VideoView _videoView;
         bool _isPrepared;
-        IVideo _video;
+        Video _video;
         ...
 
-        public MauiVideoPlayer(Context context, IVideo video) : base(context)
+        public MauiVideoPlayer(Context context, Video video) : base(context)
         {
             _video = video;
             ...
@@ -1520,7 +1451,7 @@ namespace VideoDemos.Platforms.Android
 }
 ```
 
-The `VideoView.IsPlaying` property is a boolean that indicates if the video is playing or paused. To determine if the `VideoView` can neither play nor pause the video, it's `Prepared` event must be handled. This event is raised when the media source is ready for playback. The event is subscribed to in the `MauiVideoPlayer` constructor, and unsubscribed from in its `Dispose` override. The `UpdateStatus` method then uses the `isPrepared` field and the `VideoView.IsPlaying` property to set the `Status` property on the `IVideo` object by casting it to `IVideoController`.
+The `VideoView.IsPlaying` property is a boolean that indicates if the video is playing or paused. To determine if the `VideoView` can neither play nor pause the video, it's `Prepared` event must be handled. This event is raised when the media source is ready for playback. The event is subscribed to in the `MauiVideoPlayer` constructor, and unsubscribed from in its `Dispose` override. The `UpdateStatus` method then uses the `isPrepared` field and the `VideoView.IsPlaying` property to set the `Status` property on the `Video` object by casting it to `IVideoController`.
 
 #### iOS and Mac Catalyst
 
@@ -1540,7 +1471,7 @@ namespace VideoDemos.Platforms.MaciOS
     public class MauiVideoPlayer : UIView
     {
         AVPlayer _player;
-        IVideo _video;
+        Video _video;
         ...
 
         public void UpdateStatus()
@@ -1570,7 +1501,7 @@ namespace VideoDemos.Platforms.MaciOS
 }
 ```
 
-Two properties of `AVPlayer` must be accessed to set the `Status` property - the `Status` property of type `AVPlayerStatus` and the `TimeControlStatus` property of type `AVPlayerTimeControlStatus`. The `Status` property can then be set on the `IVideo` object by casting it to `IVideoController`.
+Two properties of `AVPlayer` must be accessed to set the `Status` property - the `Status` property of type `AVPlayerStatus` and the `TimeControlStatus` property of type `AVPlayerTimeControlStatus`. The `Status` property can then be set on the `Video` object by casting it to `IVideoController`.
 
 ### Positioning bar
 
@@ -1585,7 +1516,7 @@ One item of information that the `Video` control needs to support a custom posit
 ```csharp
 namespace VideoDemos.Controls
 {
-    public class Video : View, IVideo, IVideoController
+    public class Video : View, IVideoController
     {
         ...
         private static readonly BindablePropertyKey DurationPropertyKey =
@@ -1646,7 +1577,7 @@ namespace VideoDemos.Platforms.Android
     public class MauiVideoPlayer : CoordinatorLayout
     {
         VideoView _videoView;
-        IVideo _video;
+        Video _video;
         ...
 
         void OnVideoViewPrepared(object sender, EventArgs args)
@@ -1707,7 +1638,7 @@ The `Video` control also needs a `Position` property that increases from zero to
 ```csharp
 namespace VideoDemos.Controls
 {
-    public class Video : View, IVideo, IVideoController
+    public class Video : View, IVideoController
     {
         ...
         public static readonly BindableProperty PositionProperty =
@@ -1751,7 +1682,7 @@ namespace VideoDemos.Platforms.Android
     public class MauiVideoPlayer : CoordinatorLayout
     {
         VideoView _videoView;
-        IVideo _video;
+        Video _video;
         ...
 
         public void UpdateStatus()
@@ -1794,7 +1725,7 @@ namespace VideoDemos.Platforms.MaciOS
     {
         AVPlayer _player;
         AVPlayerItem _playerItem;
-        IVideo _video;
+        Video _video;
         ...
 
         TimeSpan ConvertTime(CMTime cmTime)
@@ -1836,7 +1767,7 @@ The `Video` class includes a read-only `TimeToEnd` property that's calculated ba
 ```csharp
 namespace VideoDemos.Controls
 {
-    public class Video : View, IVideo, IVideoController
+    public class Video : View, IVideoController
     {
         ...
         private static readonly BindablePropertyKey TimeToEndPropertyKey =
