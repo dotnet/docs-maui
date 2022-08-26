@@ -102,6 +102,8 @@ landingContent:
             url: user-interface/controls/index.md
           - text: Graphics
             url: user-interface/graphics/index.md
+          - text: Handlers
+            url: user-interface/handlers/index.md
           - text: Layouts
             url: user-interface/layouts/index.md
           - text: Pages
