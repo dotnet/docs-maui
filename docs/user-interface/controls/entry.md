@@ -84,7 +84,7 @@ void OnEntryTextChanged(object sender, TextChangedEventArgs e)
 }
 ```
 
-The `Completed` event is raised when the user has ended input by pressing the <kdb>Return</kbd> key on the keyboard, or by pressing the Tab key on Windows. The handler for the event is a generic event handler:
+The `Completed` event is raised when the user has ended input by pressing the <kbd>Return</kbd> key on the keyboard, or by pressing the Tab key on Windows. The handler for the event is a generic event handler:
 
 ```csharp
 void OnEntryCompleted(object sender, EventArgs e)
@@ -261,7 +261,7 @@ The following XAML example shows how to set the return key:
 > [!NOTE]
 > The exact appearance of the return key is dependent upon the platform. On iOS, the return key is a text-based button. However, on Android and Windows, the return key is a icon-based button.
 
-When the <kdb>Return</kbd> key is pressed, the `Completed` event is raised and any `ICommand` specified by the `ReturnCommand` property is executed. In addition, any `object` specified by the `ReturnCommandParameter` property will be passed to the `ICommand` as a parameter. For more information about commands, see [Commanding](~/fundamentals/data-binding/commanding.md).
+When the <kbd>Return</kbd> key is pressed, the `Completed` event is raised and any `ICommand` specified by the `ReturnCommand` property is executed. In addition, any `object` specified by the `ReturnCommandParameter` property will be passed to the `ICommand` as a parameter. For more information about commands, see [Commanding](~/fundamentals/data-binding/commanding.md).
 
 ## Enable and disable spell checking
 
