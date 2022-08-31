@@ -90,7 +90,7 @@ xmlns:{XML namespace name}="clr-namespace:{.NET namespace}"
 
 So the previous declaration maps the XML namespace of `local` to the .NET namespace of `Notes`. It's common practice to map the name `local` to the root namespace of your project.
 
-Remove the `local` XML namespace and add a new one. This new XML namespace will map to the .NET namespace of `Notes.Views`, so name it `views`. The declaration should look like teh following attribute: `xmlns:views="clr-namespace:Notes.Views"`.
+Remove the `local` XML namespace and add a new one. This new XML namespace will map to the .NET namespace of `Notes.Views`, so name it `views`. The declaration should look like the following attribute: `xmlns:views="clr-namespace:Notes.Views"`.
 
 The `local` XML namespace was used by the `ShellContent.ContentTemplate` properties, change them to `views`. Your XAML should now look like the following snippet:
 
