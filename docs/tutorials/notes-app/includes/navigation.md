@@ -9,7 +9,7 @@ This portion of the tutorial introduces the concepts of views, models, and in-ap
 
 In the previous steps of the tutorial, you added two pages to the project: `NotePage` and `AboutPage`. The pages represent a view of data. The `NotePage` is a "view" that displays "note data" and the `AboutPage` is a "view" that displays "app information data." Both of these views have a model of that data hardcoded, or embedded in them, and you'll need to separate the data model from the view.
 
-What is the benefit of separating the model from the view? It allows you to design the view to represent and interact with any portion of the model, without worrying about actual code that implements of model. This is accomplished using data binding, something that will be presented later in this tutorial. For now, though, lets restructure the project.
+What is the benefit of separating the model from the view? It allows you to design the view to represent and interact with any portion of the model without worrying about the actual code that implements the model. This is accomplished using data binding, something that will be presented later in this tutorial. For now, though, lets restructure the project.
 
 ## Separate the view and model
 
