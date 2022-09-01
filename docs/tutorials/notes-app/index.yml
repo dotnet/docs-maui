@@ -1,15 +1,14 @@
 ### YamlMime:Tutorial
-title: "Create a new .NET MAUI app - Tutorial"
+title: "Create a .NET MAUI app"
 metadata:
-  title: "Tutorial: Create a new .NET MAUI app"
-  description: Learn how to create a new .NET MAUI app that lets a user store and retrieve notes. This tutorial demonstrates creating an app that doesn't use any platform-specific code.
+  title: "Tutorial: Create a .NET MAUI app"
+  description: Learn how to create a .NET MAUI app that lets you store and retrieve notes. This tutorial demonstrates creating an app that doesn't use any platform-specific code.
   audience: Developer
   level: Beginner
   ms.topic: interactive-tutorial
   ms.date: 08/02/2022
   author: adegeo
   ms.author: adegeo
-  #no-loc: [Xamarin.Forms, Xamarin.Essentials]
 items:
 - durationInMinutes: 1
   content: |
@@ -22,7 +21,7 @@ items:
   durationInMinutes: 10
   content: |
     [!INCLUDE [](includes/shell.md)]
-- title: Create a new page for a note
+- title: Create a page for a note
   durationInMinutes: 10
   content: |
     [!INCLUDE [](includes/note.md)]
@@ -30,9 +29,9 @@ items:
   durationInMinutes: 25
   content: |
     [!INCLUDE [](includes/navigation.md)]
-   
+
 - content: |
-    You've completed the Create a new .NET MAUI app tutorial!
+    You've completed the Create a .NET MAUI app tutorial!
 
     ## Next steps
 
