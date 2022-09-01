@@ -25,7 +25,7 @@ XAML compilation can be enabled by passing `XamlCompilationOptions.Compile` to t
 In this example, XAML compilation is enabled for all of the XAML contained within the assembly, with XAML errors being reported at compile-time rather than runtime.
 
 > [!TIP]
-> While the `XamlCompilationAttribute` can be placed anywhere, a good place to put it is in **AssemblyInfo.cs**.
+> While the `XamlCompilationAttribute` can be placed anywhere, a good place to put it is in **MauiProgram.cs**.
 
 XAML compilation can also be enabled at the type level:
 
