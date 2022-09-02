@@ -1,16 +1,16 @@
 ---
 title: "Secure storage"
-description: "Learn how to use the .NET MAUI SecureStorage class, which helps securely store simple key/value pairs. This article discusses how to use the class, platform implementation specifics, and its limitations."
-ms.date: 05/23/2022
+description: "Learn how to use the .NET MAUI ISecureStorage interface, which helps securely store simple key/value pairs. This article discusses how to use the ISecureStorage, platform implementation specifics, and its limitations."
+ms.date: 09/02/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Storage", "SecureStorage"]
 #acrolinx score 95
 ---
 
 # Secure storage
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `ISecureStorage` interface. This interface helps securely store simple key/value pairs. The `ISecureStorage` interface is exposed through the `SecureStorage.Default` property.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `ISecureStorage` interface. This interface helps securely store simple key/value pairs.
 
-The `SecureStorage` and `ISecureStorage` types are available in the `Microsoft.Maui.Storage` namespace.
+The default implementation of the `ISecureStorage` interface is available through the `SecureStorage.Default` property. Both the `ISecureStorage` interface and `SecureStorage` class are contained in the `Microsoft.Maui.Storage` namespace.
 
 ## Get started
 

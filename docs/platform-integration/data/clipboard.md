@@ -1,22 +1,22 @@
 ---
 title: "Clipboard"
-description: "Learn how to use the .NET MAUI Clipboard class in the Microsoft.Maui.ApplicationModel.DataTransfer namespace, which lets you copy and paste text to the system clipboard."
-ms.date: 05/23/2022
+description: "Learn how to use the .NET MAUI IClipboard interface in the Microsoft.Maui.ApplicationModel.DataTransfer namespace, which lets you copy and paste text to the system clipboard."
+ms.date: 09/02/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel.DataTransfer"]
 ---
 
 # Clipboard
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `Clipboard` class. With this class, you can copy and paste text to and from the system clipboard.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IClipboard` interface. With this interface, you can copy and paste text to and from the system clipboard.
 
-The `Clipboard` class is available in the `Microsoft.Maui.ApplicationModel.DataTransfer` namespace.
+The default implementation of the `IClipboard` interface is available through the `Clipboard.Default` property. Both the `IClipboard` interface and `Clipboard` class are contained in the `Microsoft.Maui.ApplicationModel.DataTransfer` namespace.
 
 > [!TIP]
 > Access to the clipboard must be done on the main user interface thread. For more information on how to invoke methods on the main user interface thread, see [MainThread](../appmodel/main-thread.md).
 
 ## Using Clipboard
 
-The clipboard is accessed through default implementation of the `IClipboard` interface, available from the `Microsoft.Maui.ApplicationModel.DataTransfer.Clipboard.Default` property. Access to the clipboard is limited to string data. You can check if the clipboard contains data, set or clear the data, and read the data. The `ClipboardContentChanged` event is raised whenever the clipboard data changes.
+ Access to the clipboard is limited to string data. You can check if the clipboard contains data, set or clear the data, and read the data. The `ClipboardContentChanged` event is raised whenever the clipboard data changes.
 
 The following code example demonstrates using a button to set the clipboard data:
 

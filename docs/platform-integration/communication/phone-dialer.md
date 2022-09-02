@@ -1,15 +1,15 @@
 ---
 title: "Phone dialer"
-description: "Learn how to open the phone dialer to a specific number, in .NET MAUI. The PhoneDialer class in the Microsoft.Maui.ApplicationModel.Communication namespace is used to open the phone dialer."
-ms.date: 05/23/2022
+description: "Learn how to open the phone dialer to a specific number, in .NET MAUI. The IPhoneDialer interface in the Microsoft.Maui.ApplicationModel.Communication namespace is used to open the phone dialer."
+ms.date: 09/02/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel.Communication"]
 ---
 
 # Phone dialer
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IPhoneDialer` interface. This interface enables an application to open a phone number in the dialer. The `IPhoneDialer` interface is exposed through the `PhoneDialer.Default` property.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IPhoneDialer` interface. This interface enables an application to open a phone number in the dialer.
 
-The `PhoneDialer` and `IPhoneDialer` types are available in the `Microsoft.Maui.ApplicationModel.Communication` namespace.
+The default implementation of the `IPhoneDialer` interface is available through the `PhoneDialer.Default` property. Both the `IPhoneDialer` interface and `PhoneDialer` class are contained in the `Microsoft.Maui.ApplicationModel.Communication` namespace.
 
 ## Get started
 

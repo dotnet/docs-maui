@@ -1,15 +1,15 @@
 ---
 title: "Vibration"
-description: "Learn how to use the .NET MAUI Vibration class, which lets you start and stop the vibrate functionality for a desired amount of time."
-ms.date: 05/23/2022
+description: "Learn how to use the .NET MAUI IVibration interface, which lets you start and stop the vibrate functionality for a desired amount of time."
+ms.date: 09/02/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices"]
 ---
 
 # Vibration
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `Vibration` class. This class lets you start and stop the vibrate functionality for a desired amount of time.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IVibration` interface. This interface lets you start and stop the vibrate functionality for a desired amount of time.
 
-The `HapticFeedback` class is available in the `Microsoft.Maui.Devices` namespace.
+The default implementation of the `IVibration` interface is available through the `Vibration.Default` property. Both the `IVibration` interface and `Vibration` class are contained in the `Microsoft.Maui.Devices` namespace.
 
 ## Get started
 
@@ -58,7 +58,7 @@ No additional setup required.
 
 ## Vibrate the device
 
-Haptic feedback is accessed through default implementation of the `IVibration` interface, available from the `Microsoft.Maui.Devices.Vibration.Default` property. The vibration functionality can be requested for a set amount of time or the default of 500 milliseconds. The following code example randomly vibrates the device between one and seven seconds:
+The vibration functionality can be requested for a set amount of time or the default of 500 milliseconds. The following code example randomly vibrates the device between one and seven seconds:
 
 :::code language="csharp" source="../snippets/shared_1/DeviceDetailsPage.xaml.cs" id="vibrate":::
 

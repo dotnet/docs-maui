@@ -465,19 +465,19 @@ public partial class AppModelPage : ContentPage
     //<version_read>
     private void ReadVersion_Clicked(object sender, EventArgs e)
     {
-        labelIsFirst.Text = VersionTracking.IsFirstLaunchEver.ToString();
-        labelCurrentVersionIsFirst.Text = VersionTracking.IsFirstLaunchForCurrentVersion.ToString();
-        labelCurrentBuildIsFirst.Text = VersionTracking.IsFirstLaunchForCurrentBuild.ToString();
-        labelCurrentVersion.Text = VersionTracking.CurrentVersion.ToString();
-        labelCurrentBuild.Text = VersionTracking.CurrentBuild.ToString();
-        labelFirstInstalledVer.Text = VersionTracking.FirstInstalledVersion.ToString();
-        labelFirstInstalledBuild.Text = VersionTracking.FirstInstalledBuild.ToString();
-        labelVersionHistory.Text = String.Join(',', VersionTracking.VersionHistory);
-        labelBuildHistory.Text = String.Join(',', VersionTracking.BuildHistory);
+        labelIsFirst.Text = VersionTracking.Default.IsFirstLaunchEver.ToString();
+        labelCurrentVersionIsFirst.Text = VersionTracking.Default.IsFirstLaunchForCurrentVersion.ToString();
+        labelCurrentBuildIsFirst.Text = VersionTracking.Default.IsFirstLaunchForCurrentBuild.ToString();
+        labelCurrentVersion.Text = VersionTracking.Default.CurrentVersion.ToString();
+        labelCurrentBuild.Text = VersionTracking.Default.CurrentBuild.ToString();
+        labelFirstInstalledVer.Text = VersionTracking.Default.FirstInstalledVersion.ToString();
+        labelFirstInstalledBuild.Text = VersionTracking.Default.FirstInstalledBuild.ToString();
+        labelVersionHistory.Text = String.Join(',', VersionTracking.Default.VersionHistory);
+        labelBuildHistory.Text = String.Join(',', VersionTracking.Default.BuildHistory);
 
         // These two properties may be null if this is the first version
-        labelPreviousVersion.Text = VersionTracking.PreviousVersion?.ToString() ?? "none";
-        labelPreviousBuild.Text = VersionTracking.PreviousBuild?.ToString() ?? "none";
+        labelPreviousVersion.Text = VersionTracking.Default.PreviousVersion?.ToString() ?? "none";
+        labelPreviousBuild.Text = VersionTracking.Default.PreviousBuild?.ToString() ?? "none";
     }
     //</version_read>
 

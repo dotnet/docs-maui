@@ -2,7 +2,7 @@
 title: Accessing device sensors overview
 description: "Learn how to use and monitor sensors provided by your device, with .NET MAUI. You can monitor the following sensors: accelerometer, barometer, compass, shake, gyroscope, magnetometer, orientation."
 ms.topic: overview
-ms.date: 05/23/2022
+ms.date: 09/02/2022
 ms.custom: template-overview
 show_latex: true
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices", "Microsoft.Maui.Devices.Sensors"]
@@ -41,9 +41,11 @@ Event handlers added to sensors with either the `Game` or `Fastest` speeds **are
 
 The accelerometer sensor measures the acceleration of the device along its three axes. The data reported by the sensor represents how the user is moving the device.
 
+The `IAccelerometer` interface provides access to the sensor, and is available through the `Accelerometer.Default` property. Both the `IAccelerometer` interface and `Accelerometer` class are contained in the `Microsoft.Maui.Devices.Sensors` namespace.
+
 To start monitoring the accelerometer sensor, call the `IAccelerometer.Start` method. .NET MAUI sends accelerometer data changes to your app by raising the `IAccelerometer.ReadingChanged` event. Use the `IAccelerometer.Stop` method to stop monitoring the sensor. You can detect the monitoring state of the accelerometer with the `IAccelerometer.IsMonitoring` property, which will be `true` if the accelerometer was started and is currently being monitored.
 
-The following code example demonstrates monitoring the accelerometer for changes. The `Accelerometer.Default` instance would be passed to the `ToggleAccelerometer` method:
+The following code example demonstrates monitoring the accelerometer for changes:
 
 :::code language="csharp" source="../snippets/shared_1/SensorsPage.xaml.cs" id="toggle_accelerometer":::
 
@@ -70,11 +72,13 @@ There is no platform-specific information related to the accelerometer sensor.
 
 The barometer sensor measures the ambient air pressure. The data reported by the sensor represents the current air pressure. This data is reported the first time you start monitoring the sensor and then each time the pressure changes.
 
+The `IBarometer` interface provides access to the sensor, and is available through the `Barometer.Default` property. Both the `IBarometer` interface and `Barometer` class are contained in the `Microsoft.Maui.Devices.Sensors` namespace.
+
 To start monitoring the barometer sensor, call the `IBarometer.Start` method. .NET MAUI sends air pressure readings to your app by raising the `IBarometer.ReadingChanged` event. Use the `IBarometer.Stop` method to stop monitoring the sensor. You can detect the monitoring state of the barometer with the `IBarometer.IsMonitoring` property, which will be `true` if the barometer is currently being monitored.
 
 The pressure reading is represented in hectopascals.
 
-The following code example demonstrates monitoring the barometer for changes. The `Barometer.Default` instance would be passed to the `ToggleBarometer` method:
+The following code example demonstrates monitoring the barometer for changes:
 
 :::code language="csharp" source="../snippets/shared_1/SensorsPage.xaml.cs" id="toggle_barometer":::
 
@@ -104,9 +108,11 @@ No platform-specific implementation details.
 
 The compass sensor monitors the device's magnetic north heading.
 
-To start monitoring the compass sensor, call the `Compass.Start` method. .NET MAUI raises the `Compass.ReadingChanged` event when the compass heading changes. Use the `Compass.Stop` method to stop monitoring the sensor. You can detect the monitoring state of the compass with the `Compass.IsMonitoring` property, which will be `true` if the compass is currently being monitored.
+The `ICompass` interface provides access to the sensor, and is available through the `Compass.Default` property. Both the `ICompass` interface and `Compass` class are contained in the `Microsoft.Maui.Devices.Sensors` namespace.
 
-The following code example demonstrates monitoring the compass for changes. The `Compass.Default` instance would be passed to the `ToggleCompass` method:
+To start monitoring the compass sensor, call the `ICompass.Start` method. .NET MAUI raises the `ICompass.ReadingChanged` event when the compass heading changes. Use the `ICompass.Stop` method to stop monitoring the sensor. You can detect the monitoring state of the compass with the `ICompass.IsMonitoring` property, which will be `true` if the compass is currently being monitored.
+
+The following code example demonstrates monitoring the compass for changes:
 
 :::code language="csharp" source="../snippets/shared_1/SensorsPage.xaml.cs" id="toggle_compass":::
 
@@ -151,13 +157,15 @@ No platform-specific implementation details.
 
 Even though this article is listing **shake** as a sensor, it isn't. The [accelerometer](#accelerometer) is used to detect when the device is shaken.
 
+The `IAccelerometer` interface provides access to the sensor, and is available through the `Accelerometer.Default` property. Both the `IAccelerometer` interface and `Accelerometer` class are contained in the `Microsoft.Maui.Devices.Sensors` namespace.
+
 The detect shake API uses raw readings from the accelerometer to calculate acceleration. It uses a simple queue mechanism to detect if 3/4ths of the recent accelerometer events occurred in the last half second. Acceleration is calculated by adding the square of the X, Y, and Z ($x^2+y^2+z^2$) readings from the accelerometer and comparing it to a specific threshold.
 
 To start monitoring the accelerometer sensor, call the `IAccelerometer.Start` method. When a shake is detected, the `IAccelerometer.ShakeDetected` event is raised.  Use the `IAccelerometer.Stop` method to stop monitoring the sensor. You can detect the monitoring state of the accelerometer with the `IAccelerometer.IsMonitoring` property, which will be `true` if the accelerometer was started and is currently being monitored.
 
 It's recommended to use `Game` or faster for the `SensorSpeed`.
 
-The following code example demonstrates monitoring the accelerometer for the `ShakeDetected` event. The `Accelerometer.Default` instance would be passed to the `ToggleShake` method:
+The following code example demonstrates monitoring the accelerometer for the `ShakeDetected` event:
 
 :::code language="csharp" source="../snippets/shared_1/SensorsPage.xaml.cs" id="toggle_shake":::
 
@@ -169,9 +177,11 @@ There is no platform-specific information related to the accelerometer sensor.
 
 The gyroscope sensor measures the angular rotation speed around the device's three primary axes.
 
+The `IGyroscope` interface provides access to the sensor, and is available through the `Gyroscope.Default` property. Both the `IGyroscope` interface and `Gyroscope` class are contained in the `Microsoft.Maui.Devices.Sensors` namespace.
+
 To start monitoring the gyroscope sensor, call the `IGyroscope.Start` method. .NET MAUI sends gyroscope data changes to your app by raising the `IGyroscope.ReadingChanged` event. The data provided by this event is measured in rad/s (radian per second). Use the `IGyroscope.Stop` method to stop monitoring the sensor. You can detect the monitoring state of the gyroscope with the `IGyroscope.IsMonitoring` property, which will be `true` if the gyroscope was started and is currently being monitored.
 
-The following code example demonstrates monitoring the gyroscope. The `Gyroscope.Default` instance would be passed to the `ToggleGyroscope` method:
+The following code example demonstrates monitoring the gyroscope:
 
 :::code language="csharp" source="../snippets/shared_1/SensorsPage.xaml.cs" id="toggle_gyroscope":::
 
@@ -183,9 +193,11 @@ There is no platform-specific information related to the gyroscope sensor.
 
 The magnetometer sensor indicates the device's orientation relative to Earth's magnetic field.
 
+The `IMagnetometer` interface provides access to the sensor, and is available through the `Magnetometer.Default` property. Both the `IMagnetometer` interface and `Magnetometer` class are contained in the `Microsoft.Maui.Devices.Sensors` namespace.
+
 To start monitoring the magnetometer sensor, call the `IMagnetometer.Start` method. .NET MAUI sends magnetometer data changes to your app by raising the `IMagnetometer.ReadingChanged` event. The data provided by this event is measured in $µT$ (microteslas). Use the `IMagnetometer.Stop` method to stop monitoring the sensor. You can detect the monitoring state of the magnetometer with the `IMagnetometer.IsMonitoring` property, which will be `true` if the magnetometer was started and is currently being monitored.
 
-The following code example demonstrates monitoring the magnetometer. The `Magnetometer.Default` instance would be passed to the `ToggleMagnetometer` method:
+The following code example demonstrates monitoring the magnetometer:
 
 :::code language="csharp" source="../snippets/shared_1/SensorsPage.xaml.cs" id="toggle_magnetometer":::
 
@@ -200,9 +212,11 @@ The orientation sensor monitors the orientation of a device in 3D space.
 > [!NOTE]
 > This sensor isn't used for determining if the device's video display is in portrait or landscape mode. Use the `Orientation` property of the `ScreenMetrics` object available from the [`DeviceDisplay`](../device/display.md) class.
 
+The `IOrientationSensor` interface provides access to the sensor, and is available through the `OrientationSensor.Default` property. Both the `IOrientationSensor` interface and `OrientationSensor` class are contained in the `Microsoft.Maui.Devices.Sensors` namespace.
+
 To start monitoring the orientation sensor, call the `IOrientationSensor.Start` method. .NET MAUI sends orientation data changes to your app by raising the `IOrientationSensor.ReadingChanged` event. Use the `IOrientationSensor.Stop` method to stop monitoring the sensor. You can detect the monitoring state of the orientation with the `IOrientationSensor.IsMonitoring` property, which will be `true` if the orientation was started and is currently being monitored.
 
-The following code example demonstrates monitoring the orientation sensor. The `OrientationSensor.Default` instance would be passed to the `ToggleOrientation` method:
+The following code example demonstrates monitoring the orientation sensor:
 
 :::code language="csharp" source="../snippets/shared_1/SensorsPage.xaml.cs" id="toggle_orientation":::
 

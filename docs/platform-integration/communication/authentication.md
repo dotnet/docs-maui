@@ -1,15 +1,15 @@
 ---
 title: "Web Authenticator"
-description: "Learn how to use the .NET MAUI WebAuthenticator class, which lets you start browser-based authentication flows, which listen for a callback to the app."
-ms.date: 05/23/2022
+description: "Learn how to use the .NET MAUI IWebAuthenticator interface, which lets you start browser-based authentication flows, which listen for a callback to the app."
+ms.date: 09/02/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Authentication"]
 ---
 
 # Web authenticator
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) the `IWebAuthenticator` interface. This interface lets you start browser-based authentication flows, which listen for a callback to a specific URL registered to the app. The `IWebAuthenticator` interface is exposed through the `WebAuthenticator.Default` property.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) the `IWebAuthenticator` interface. This interface lets you start browser-based authentication flows, which listen for a callback to a specific URL registered to the app.
 
-The `WebAuthenticator` and `IWebAuthenticator` types are available in the `Microsoft.Maui.Authentication` namespace.
+The default implementation of the `IWebAuthenticator` interface is available through the `WebAuthenticator.Default` property. Both the `IWebAuthenticator` interface and `WebAuthenticator` class are contained in the `Microsoft.Maui.Authentication` namespace.
 
 ## Overview
 
