@@ -91,7 +91,6 @@ Add the following `<PropertyGroup>` node to your project file. This property gro
 
 ```xml
 <PropertyGroup Condition="$(TargetFramework.Contains('-windows')) and '$(Configuration)' == 'Release'">
-    <GenerateAppxPackageOnBuild>true</GenerateAppxPackageOnBuild>
     <AppxPackageSigningEnabled>true</AppxPackageSigningEnabled>
     <PackageCertificateThumbprint>A10612AF095FD8F8255F4C6691D88F79EF2B135E</PackageCertificateThumbprint>
 </PropertyGroup>
@@ -100,8 +99,6 @@ Add the following `<PropertyGroup>` node to your project file. This property gro
 <!-- Place in PropertyGroup above once pfx export works: <PackageCertificateKeyFile>myCert.pfx</PackageCertificateKeyFile> <!-- Optional if you want to use the exported PFX file -->
 
 Replace the `<PackageCertificateThumbprint>` property value with the certificate thumbprint you previously generated. Alternatively, you can remove this setting from the project file and provide it on the command line. For example: `/p:PackageCertificateThumbprint=A10612AF095FD8F8255F4C6691D88F79EF2B135E`.
-
-Setting the `<GenerateAppxPackageOnBuild>` property to `true` packages the app and signs it with the certificate that matches the `<PackageCertificateThumbprint>` value. Signing only happens if the `<AppxPackageSigningEnabled>` setting is `true`.
 
 ## Publish
 
