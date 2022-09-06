@@ -46,7 +46,7 @@ A standard multi-targeting pattern is to include the platform as an extension in
 </ItemGroup>
 
 <!-- Windows -->
-<ItemGroup Condition="$(TargetFramework.Contains('-windows')) != true ">
+<ItemGroup Condition="$(TargetFramework.Contains('-windows')) != true">
   <Compile Remove="**\*.Windows.cs" />
   <None Include="**\*.Windows.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 </ItemGroup>
@@ -93,7 +93,7 @@ Another standard multi-targeting pattern is to include the platform as a folder 
 </ItemGroup>
 
 <!-- Windows -->
-<ItemGroup Condition="$(TargetFramework.Contains('-windows')) != true ">
+<ItemGroup Condition="$(TargetFramework.Contains('-windows')) != true">
   <Compile Remove="**\Windows\**\*.cs" />
   <None Include="**\Windows\**\*.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 </ItemGroup>
@@ -132,7 +132,7 @@ Filename-based multi-targeting can be combined with folder-based multi-targeting
 </ItemGroup>
 
 <!-- iOS -->
-<ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-ios')) != true>
+<ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-ios')) != true">
   <Compile Remove="**\**\*.iOS.cs" />
   <None Include="**\**\*.iOS.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
   <Compile Remove="**\iOS\**\*.cs" />
@@ -148,7 +148,7 @@ Filename-based multi-targeting can be combined with folder-based multi-targeting
 </ItemGroup>
 
 <!-- Windows -->
-<ItemGroup Condition="$(TargetFramework.Contains('-windows')) != true ">
+<ItemGroup Condition="$(TargetFramework.Contains('-windows')) != true">
   <Compile Remove="**\*.Windows.cs" />
   <None Include="**\*.Windows.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
   <Compile Remove="**\Windows\**\*.cs" />
