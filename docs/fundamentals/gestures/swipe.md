@@ -46,7 +46,7 @@ boxView.GestureRecognizers.Add(leftSwipeGesture);
 
 ## Recognize the swipe direction
 
-The `SwipeGestureRecognizer.Direction` property can be set to a single value from the `SwipeDirection` enumeration, or multiple values. This enables the `Swiped` event to be raised in response to a swipe in more than one direction.However, the constraint is that a single `SwipeGestureRecognizer` can only recognize swipes that occur on the same axis. Therefore, swipes that occur on the horizontal axis can be recognized by setting the `Direction` property to `Left` and `Right`:
+The `SwipeGestureRecognizer.Direction` property can be set to a single value from the `SwipeDirection` enumeration, or multiple values. This enables the `Swiped` event to be raised in response to a swipe in more than one direction. However, the constraint is that a single `SwipeGestureRecognizer` can only recognize swipes that occur on the same axis. Therefore, swipes that occur on the horizontal axis can be recognized by setting the `Direction` property to `Left` and `Right`:
 
 ```xaml
 <SwipeGestureRecognizer Direction="Left,Right" Swiped="OnSwiped"/>
