@@ -112,7 +112,7 @@ When creating a `BindableProperty` instance, there are a number of optional para
 
 A `static` property-changed callback method can be registered with a bindable property by specifying the `propertyChanged` parameter for the `BindableProperty.Create` method. The specified callback method will be invoked when the value of the bindable property changes.
 
-The following code example shows how the `EventName` bindable property registers the `OnEventNameChanged` method as a property-changed callback method:
+The following code example shows how the `IsExpanded` bindable property registers the `OnIsExpandedChanged` method as a property-changed callback method:
 
 ```csharp
 public static readonly BindableProperty IsExpandedProperty =
@@ -146,7 +146,7 @@ static bool IsValidValue(BindableObject view, object value)
 }
 ```
 
-Validation callbacks are provided with a value, and should return `true` if the value is valid for the property, otherwise `false`. An exception will be raised if a validation callback returns `false`, which you should be handled. A typical use of a validation callback method is constraining the values of integers or doubles when the bindable property is set. For example, the `IsValidValue` method checks that the property value is a `double` within the range 0 to 360.
+Validation callbacks are provided with a value, and should return `true` if the value is valid for the property, otherwise `false`. An exception will be raised if a validation callback returns `false`, which you should handle. A typical use of a validation callback method is constraining the values of integers or doubles when the bindable property is set. For example, the `IsValidValue` method checks that the property value is a `double` within the range 0 to 360.
 
 ### Coerce value callbacks
 

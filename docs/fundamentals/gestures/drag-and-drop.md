@@ -17,7 +17,7 @@ The process for enabling drag and drop in an app is as follows:
 
 1. Enable drag on an element by adding a `DragGestureRecognizer` object to its `GestureRecognizers` collection. For more information, see [Enable drag](#enable-drag).
 1. [optional] Build a data package. .NET MAUI automatically populates the data package for image and text controls, but for other content you'll need to construct your own data package. For more information, see [Build a data package](#build-a-data-package).
-1. Enable drop on an element by adding a `DropGestureRecognizer` object its `GestureRecognizers` collection. For more information, see [Enable drop](#enable-drop).
+1. Enable drop on an element by adding a `DropGestureRecognizer` object to its `GestureRecognizers` collection. For more information, see [Enable drop](#enable-drop).
 1. [optional] Handle the `DropGestureRecognizer.DragOver` event to indicate the type of operation allowed by the drop target. For more information, see [Handle the DragOver event](#handle-the-dragover-event).
 1. [optional] Process the data package to receive the dropped content. .NET MAUI will automatically retrieve image and text data from the data package, but for other content you'll need to process the data package. For more information, see [Process the data package](#process-the-data-package).
 
