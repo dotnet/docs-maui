@@ -45,7 +45,7 @@ For more information about the `DeviceInfo` class, see [Device information](~/pl
 
 In addition, to run your app on Android you must add the required network security configuration, and to run your app on iOS you must opt-out of Apple Transport Security (ATS). For more information, see [Android network security configuration](#android-network-security-configuration) and [iOS ATS configuration](#ios-ats-configuration).
 
-You must ensure also ensure that your ASP.NET Core web service is configured to allow HTTP traffic. This can be achieved by adding a HTTP profile to the `profiles` section of *launchSettings.json* in your ASP.NET Core web service project:
+You must also ensure that your ASP.NET Core web service is configured to allow HTTP traffic. This can be achieved by adding a HTTP profile to the `profiles` section of *launchSettings.json* in your ASP.NET Core web service project:
 
 ```json
 {
