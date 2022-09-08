@@ -1,15 +1,15 @@
 ---
 title: "Battery"
-description: "Learn how to use the .NET MAUI Battery class in the Microsoft.Maui.Devices namespace. You can check the device's battery information and monitor for changes."
-ms.date: 05/23/2022
+description: "Learn how to use the .NET MAUI IBattery interface in the Microsoft.Maui.Devices namespace. You can check the device's battery information and monitor for changes."
+ms.date: 09/02/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices"]
 ---
 
 # Battery
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `Battery` class to check the device's battery information and monitor for changes. This class also provides information about the device's energy-saver status, which indicates if the device is running in a low-power mode.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IBattery` interface to check the device's battery information and monitor for changes. This interface also provides information about the device's energy-saver status, which indicates if the device is running in a low-power mode.
 
-The `Battery` class is available in the `Microsoft.Maui.Devices` namespace.
+The default implementation of the `IBattery` interface is available through the `Battery.Default` property. Both the `IBattery` interface and `Battery` class are contained in the `Microsoft.Maui.Devices` namespace.
 
 ## Get started
 
@@ -59,7 +59,7 @@ No setup is required.
 
 ## Check the battery status
 
-The battery status can be checked by accessing the default implementation of the `IBattery` interface. This implementation is available from the `Microsoft.Maui.Devices.Battery.Default` property. The interface defines the `BatteryInfoChanged` event which is raised when the state of the battery changed. Outside of this event, you can still check the state of the battery at any time by using the various properties defined by the interface.
+The battery status can be checked by accessing the `Battery.Default` property, which is the default implementation of the `IBattery` interface. This interface defines various properties to provide information about the state of the battery. The `BatteryInfoChanged` event is also available, and is raised when the state of the battery changed.
 
 The following example demonstrates how to use the monitor the `BatteryInfoChanged` event and report the battery status two `Label` controls:
 
@@ -77,7 +77,7 @@ Devices that run on batteries can be put into a low-power energy-saver mode. Som
 The energy-saver status of the device can be read by accessing the `EnergySaverStatus` property, which is either `On`, `Off`, or `Unknown`. If the status is `On`, the application should avoid background processing or other activities that may consume a lot of power.
 
 The battery will raise the `EnergySaverStatusChanged` event when the battery enters or leaves energy-saver mode.
-You can also obtain the current energy-saver status of the device using the static `Battery.EnergySaverStatus` property:
+You can also obtain the current energy-saver status of the device using the `EnergySaverStatus` property:
 
 The following code example monitors the energy-saver status and sets a property accordingly.
 

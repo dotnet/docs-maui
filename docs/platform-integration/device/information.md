@@ -1,19 +1,19 @@
 ---
 title: "Device information"
-description: "Learn how to use the .NET MAUI DeviceInfo class in the Microsoft.Maui.Devices namespace, which provides information about the device the app is running on."
-ms.date: 05/23/2022
+description: "Learn how to use the .NET MAUI IDeviceInfo interface in the Microsoft.Maui.Devices namespace, which provides information about the device the app is running on."
+ms.date: 09/02/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices"]
 ---
 
 # Device information
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `DeviceInfo` class to read information about the device the app is running on.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IDeviceInfo` interface to read information about the device the app is running on.
 
-The `DeviceInfo` class is available in the `Microsoft.Maui.Devices` namespace.
+The default implementation of the `IDeviceInfo` interface is available through the `DeviceInfo.Current` property. Both the `IDeviceInfo` interface and `DeviceInfo` class are contained in the `Microsoft.Maui.Devices` namespace.
 
 ## Read device info
 
-Information about your device's is accessed by the default implementation of the `IDeviceInfo` interface, which is available by accessing the `Microsoft.Maui.Devices.DeviceInfo.Current` property. The `IDeviceInfo` interface provides many properties that describe the device, such as the manufacturer and idiom. The following example demonstrates reading the device info properties:
+The `IDeviceInfo` interface provides many properties that describe the device, such as the manufacturer and idiom. The following example demonstrates reading the device info properties:
 
 :::code language="csharp" source="../snippets/shared_1/DeviceDetailsPage.xaml.cs" id="read_info":::
 

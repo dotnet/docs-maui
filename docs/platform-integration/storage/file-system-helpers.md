@@ -1,15 +1,15 @@
 ---
 title: "File system helpers"
-description: "Learn how to use the .NET MAUI FileSystem class in the Microsoft.Maui.Storage namespace. This class contains helper methods that access the application's cache and data directories, and helps open files in the app package."
-ms.date: 07/14/2022
+description: "Learn how to use the .NET MAUI IFileSystem interface in the Microsoft.Maui.Storage namespace. This interface contains helper methods that access the application's cache and data directories, and helps open files in the app package."
+ms.date: 09/02/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Storage", "FileSystem"]
 ---
 
 # File system helpers
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IFileSystem` interface. This interface provides helper methods that access the app's cache and data directories, and helps access files in the app package. The `IFileSystem` interface is exposed through the `FileSystem.Current` property.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IFileSystem` interface. This interface provides helper methods that access the app's cache and data directories, and helps access files in the app package.
 
-The `FileSystem` and `IFileSystem` types are available in the `Microsoft.Maui.Storage` namespace.
+The default implementation of the `IFileSystem` interface is available through the `FileSystem.Current` property. Both the `IFileSystem` interface and `FileSystem` class are contained in the `Microsoft.Maui.Storage` namespace.
 
 ## Using file system helpers
 

@@ -1,15 +1,15 @@
 ---
 title: "Screenshot"
-description: "Learn how to use the Screenshot class in the Microsoft.Maui.Media namespace, to capture of the current displayed screen of the app."
-ms.date: 05/23/2022
+description: "Learn how to use the IScreenshot interface in the Microsoft.Maui.Media namespace, to capture of the current displayed screen of the app."
+ms.date: 09/02/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Media", "ScreenShot"]
 ---
 
 # Screenshot
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IScreenshot` interface. This interfaces lets you take a capture of the current displayed screen of the app. The `IScreenshot` interface is exposed through the `Screenshot.Default` property.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IScreenshot` interface. This interfaces lets you take a capture of the current displayed screen of the app.
 
-The `Screenshot` and `IScreenshot` types are available in the `Microsoft.Maui.Media` namespace.
+The default implementation of the `IScreenshot` interface is available through the `Screenshot.Default` property. Both the `IScreenshot` interface and `Screenshot` class are contained in the `Microsoft.Maui.Media` namespace.
 
 ## Capture a screenshot
 

@@ -1,15 +1,15 @@
 ---
 title: "App Information"
 description: "Describes the IAppInfo interface in the Microsoft.Maui.ApplicationModel namespace, which provides information about your application. For example, it exposes the app name and version."
-ms.date: 05/23/2022
+ms.date: 09/02/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel"]
 ---
 
 # App information
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IAppInfo` interface, which provides information about your application. The `IAppInfo` interface is exposed through the `AppInfo.Current` property.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IAppInfo` interface, which provides information about your application.
 
-The `AppInfo` and `IAppInfo` types are available in the `Microsoft.Maui.ApplicationModel` namespace.
+The default implementation of the `IAppInfo` interface is available through the `AppInfo.Current` property. Both the `IAppInfo` interface and `AppInfo` class are contained in the `Microsoft.Maui.ApplicationModel` namespace.
 
 ## Read the app information
 

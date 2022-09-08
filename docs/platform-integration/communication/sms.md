@@ -1,15 +1,15 @@
 ---
 title: "SMS"
-description: "Learn how to use the .NET MAUI Sms class in Microsoft.Maui.ApplicationModel.Communication to open the default SMS application. The text message can be preloaded with a message and recipient."
-ms.date: 05/23/2022
+description: "Learn how to use the .NET MAUI ISms interface in Microsoft.Maui.ApplicationModel.Communication to open the default SMS application. The text message can be preloaded with a message and recipient."
+ms.date: 09/02/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel.Communication"]
 ---
 
 # SMS
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `ISms` interface to open the default SMS app and preload it with a message and recipient. The `ISms` interface is exposed through the `Sms.Default` property.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `ISms` interface to open the default SMS app and preload it with a message and recipient.
 
-The `Sms` and `ISms` types are available in the `Microsoft.Maui.ApplicationModel.Communication` namespace.
+The default implementation of the `ISms` interface is available through the `Sms.Default` property. Both the `ISms` interface and `Sms` class are contained in the `Microsoft.Maui.ApplicationModel.Communication` namespace.
 
 ## Get started
 

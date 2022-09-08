@@ -1,15 +1,15 @@
 ---
 title: "Text-to-Speech"
-description: "Learn how to use the .NET MAUI TextToSpeech class, which enables an application utilize the built in text-to-speech engines to speak back text from the device."
-ms.date: 05/23/2022
+description: "Learn how to use the .NET MAUI ITextToSpeech interface, which enables an application utilize the built in text-to-speech engines to speak back text from the device."
+ms.date: 09/02/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Media", "TextToSpeech"]
 ---
 
 # Text-to-Speech
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `ITextToSpeech` interface. This interface enables an application to utilize the built-in text-to-speech engines to speak back text from the device. You can also use it to query for available languages. The `ITextToSpeech` interface is exposed through the `TextToSpeech.Default` property.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `ITextToSpeech` interface. This interface enables an application to utilize the built-in text-to-speech engines to speak back text from the device. You can also use it to query for available languages.
 
-The `TextToSpeech` and `ITextToSpeech` types are available in the `Microsoft.Maui.Media` namespace.
+The default implementation of the `ITextToSpeech` interface is available through the `TextToSpeech.Default` property. Both the `ITextToSpeech` interface and `TextToSpeech` class are contained in the `Microsoft.Maui.Media` namespace.
 
 ## Using Text-to-Speech
 

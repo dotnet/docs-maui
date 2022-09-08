@@ -9,20 +9,20 @@ public partial class BatteryTestPage : ContentPage
 
     //<watch_battery>
     private void BatterySwitch_Toggled(object sender, ToggledEventArgs e) =>
-        WatchBattery(Battery.Default);
+        WatchBattery();
 
     private bool _isBatteryWatched;
 
-    private void WatchBattery(IBattery battery)
+    private void WatchBattery()
     {
         
         if (!_isBatteryWatched)
         {
-            battery.BatteryInfoChanged += Battery_BatteryInfoChanged;
+            Battery.Default.BatteryInfoChanged += Battery_BatteryInfoChanged;
         }
         else
         {
-            battery.BatteryInfoChanged -= Battery_BatteryInfoChanged;
+            Battery.Default.BatteryInfoChanged -= Battery_BatteryInfoChanged;
         }
 
         _isBatteryWatched = !_isBatteryWatched;

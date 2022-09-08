@@ -1,15 +1,15 @@
 ---
 title: "Geolocation"
-description: "Learn how to use the .NET MAUI Geolocation class in the Microsoft.Maui.Devices.Sensors namespace. This class provides API to retrieve the device's current geolocation coordinates."
-ms.date: 05/23/2022
+description: "Learn how to use the .NET MAUI IGeolocation interface in the Microsoft.Maui.Devices.Sensors namespace. This interface provides API to retrieve the device's current geolocation coordinates."
+ms.date: 09/02/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices", "Microsoft.Maui.Devices.Sensors"]
 ---
 
 # Geolocation
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IGeolocation` class. This class provides APIs to retrieve the device's current geolocation coordinates. The `IGeolocation` interface is exposed through the `Geolocation.Default` property.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IGeolocation` interface. This interface provides APIs to retrieve the device's current geolocation coordinates.
 
-The `Geolocation` and `IGeolocation` types are available in the `Microsoft.Maui.Devices.Sensors` namespace.
+The default implementation of the `IGeolocation` interface is available through the `Geolocation.Default` property. Both the `IGeolocation` interface and `Geolocation` class are contained in the `Microsoft.Maui.Devices.Sensors` namespace.
 
 ## Get started
 
