@@ -1,13 +1,15 @@
 ---
 title: "Open the browser"
-description: "The Browser class in the Microsoft.Maui.ApplicationModel namespace enables an application to open a web link in the optimized system preferred browser or the external browser."
-ms.date: 05/23/2022
+description: "The IBrowser interface in the Microsoft.Maui.ApplicationModel namespace enables an application to open a web link in the optimized system preferred browser or the external browser."
+ms.date: 09/02/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel"]
 ---
 
 # Browser
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IBrowser` interface. This interface enables an application to open a web link in the system-preferred browser or the external browser. A default implementation of the `IBrowser` interface is exposed through the `Browser.Default` property.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IBrowser` interface. This interface enables an application to open a web link in the system-preferred browser or the external browser.
+
+The default implementation of the `IBrowser` interface is available through the `Browser.Default` property. Both the `IBrowser` interface and `Browser` class are contained in the `Microsoft.Maui.ApplicationModel` namespace.
 
 ## Get started
 

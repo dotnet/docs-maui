@@ -1,15 +1,15 @@
 ---
 title: "Connectivity"
-description: "Learn how to use the .NET MAUI Connectivity interface in the Microsoft.Maui.Networking namespace. With this interface, you can determine if you can communicate with the internet and which network devices are connected"
-ms.date: 05/23/2022
+description: "Learn how to use the .NET MAUI IConnectivity interface in the Microsoft.Maui.Networking namespace. With this interface, you can determine if you can communicate with the internet and which network devices are connected"
+ms.date: 09/02/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Networking", "Connectivity"]
 ---
 
 # Connectivity
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IConnectivity` interface to inspect the network accessibility of the device. The network connection may have access to the internet. Devices also contain different kinds of network connections, such as Bluetooth, cellular, or WiFi. The `IConnectivity` interface has an event to monitor changes in the devices connection state. The `IConnectivity` interface is exposed through the `Connectivity.Current` property.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IConnectivity` interface to inspect the network accessibility of the device. The network connection may have access to the internet. Devices also contain different kinds of network connections, such as Bluetooth, cellular, or WiFi. The `IConnectivity` interface has an event to monitor changes in the devices connection state.
 
-The `Connectivity` and `IConnectivity` types are available in the `Microsoft.Maui.Networking` namespace.
+The default implementation of the `IConnectivity` interface is available through the `Connectivity.Current` property. Both the `IConnectivity` interface and `Connectivity` class are contained in the `Microsoft.Maui.Networking` namespace.
 
 ## Get started
 

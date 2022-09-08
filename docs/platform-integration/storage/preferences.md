@@ -1,15 +1,15 @@
 ---
 title: "Preferences"
-description: "Learn how to read and write application preferences, in .NET MAUI. The Preferences class can save and load application preferences in a key/value store."
-ms.date: 05/23/2022
+description: "Learn how to read and write application preferences, in .NET MAUI. The IPreferences interface can save and load application preferences in a key/value store."
+ms.date: 09/02/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Storage", "Preferences"]
 ---
 
 # Preferences
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IPreferences` interface. This interface helps store app preferences in a key/value store. The `IPreferences` interface is exposed through the `Preferences.Default` property.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IPreferences` interface. This interface helps store app preferences in a key/value store.
 
-The `Preferences` and `IPreferences` types are available in the `Microsoft.Maui.Storage` namespace.
+The default implementation of the `IPreferences` interface is available through the `Preferences.Default` property. Both the `IPreferences` interface and `Preferences` class are contained in the `Microsoft.Maui.Storage` namespace.
 
 ## Storage types
 

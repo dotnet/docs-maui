@@ -1,15 +1,15 @@
 ---
 title: "Share"
-description: "Learn how to use the .NET MAUI Share class, which can share data, such as web links, to other applications on the device."
-ms.date: 05/23/2022
+description: "Learn how to use the .NET MAUI IShare interface, which can share data, such as web links, to other applications on the device."
+ms.date: 09/02/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel.DataTransfer"]
 ---
 
 # Share
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `Share` class. This class provides an API to send data, such as text or web links, to the devices share function.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IShare` interface. This interface provides an API to send data, such as text or web links, to the devices share function.
 
-The `Share` class is available in the `Microsoft.Maui.ApplicationModel.DataTransfer` namespace.
+The default implementation of the `IShare` interface is available through the `Share.Default` property. Both the `IShare` interface and `Share` class are contained in the `Microsoft.Maui.ApplicationModel.DataTransfer` namespace.
 
 When a share request is made, the device displays a share window, prompting the user to choose an app to share with:
 

@@ -1,19 +1,17 @@
 ---
 title: "Device Display Information"
-description: "Learn how to use the .NET MAUI DeviceDisplay class in the Microsoft.Maui.Devices namespace, which provides screen metrics for the device on which the app is running."
-ms.date: 05/23/2022
+description: "Learn how to use the .NET MAUI IDeviceDisplay interface in the Microsoft.Maui.Devices namespace, which provides screen metrics for the device on which the app is running."
+ms.date: 09/02/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices"]
 ---
 
 # Device display information
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `DeviceDisplay` class to read information about the device's screen metrics. This class can be used to request the screen stays awake while the app is running.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IDeviceDisplay` interface to read information about the device's screen metrics. This interface can be used to request the screen stays awake while the app is running.
 
-The `DeviceDisplay` class is available in the `Microsoft.Maui.Devices` namespace.
+The default implementation of the `IDeviceDisplay` interface is available through the `DeviceDisplay.Current` property. Both the `IDeviceDisplay` interface and `DeviceDisplay` class are contained in the `Microsoft.Maui.Devices` namespace.
 
 ## Main display info
-
-Information about your device's screen is accessed by the default implementation of the `IDeviceDisplay` interface, which is available by accessing the `Microsoft.Maui.Devices.DeviceDisplay.Current` property.
 
 The `IDeviceDisplay.MainDisplayInfo` property returns information about the screen and orientation. The following code example uses the `Loaded` event of a page to read information about the current screen:
 

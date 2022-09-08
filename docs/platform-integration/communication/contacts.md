@@ -1,16 +1,15 @@
 ---
 title: "Contacts"
-description: "Learn how to use the .NET MAUI Contacts class in the Microsoft.Maui.ApplicationModel.Communication namespace, which lets a pick a contact and retrieve information about it."
-ms.date: 05/25/2022
+description: "Learn how to use the .NET MAUI Contacts interface in the Microsoft.Maui.ApplicationModel.Communication namespace, which lets a pick a contact and retrieve information about it."
+ms.date: 09/02/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel.Communication"]
 ---
 
 # Contacts
 
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IContacts` interface to select a contact and read information about it.
-The `IContacts` interface is exposed through the `Contacts.Default` property.
 
-The `Contacts` and `IContacts` types are available in the `Microsoft.Maui.ApplicationModel.Communication` namespace.
+The default implementation of the `IContacts` interface is available through the `Contacts.Default` property. Both the `IContacts` interface and `Contacts` class are contained in the `Microsoft.Maui.ApplicationModel.Communication` namespace.
 
 > [!IMPORTANT]
 > Because of a namespace conflict, the `Contacts` type must be fully qualified when targeting iOS or macOS: `Microsoft.Maui.ApplicationModel.Communication.Contacts`. New projects automatically target these platforms, along with Android and Windows.
