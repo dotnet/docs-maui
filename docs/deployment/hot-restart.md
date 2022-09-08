@@ -17,27 +17,27 @@ There are a number of requirements that must be met to use hot restart to deploy
 
 - You must be using Visual Studio 2022 version 17.3 or greater.
 - You must have iTunes (Microsoft Store or 64-bit version) installed on your development machine.
-- You must have an [Apple Developer account](https://appleid.apple.com/account) and paid [Apple Developer Program](https://developer.apple.com/programs) enrolment.
+- You must have an [Apple Developer account](https://appleid.apple.com/account) and paid [Apple Developer Program](https://developer.apple.com/programs) enrollment.
 
 ## Setup
 
-Perform the following steps to setup hot restart:
+Perform the following steps to set up hot restart:
 
 1. In the Visual Studio toolbar, use the **Debug Target** drop down to select **iOS Local Devices** and then the **Local Device** entry:
 
     :::image type="content" source="media/hot-restart/local-device-debug-target.png" alt-text="Screenshot of choosing the initial debug target for hot restart.":::
 
-1. In the Visual Studio toolbar, press the **Local Device** button:
+1. In the Visual Studio toolbar, select **Local Device**:
 
     :::image type="content" source="media/hot-restart/run-local-device.png" alt-text="Screenshot of the initial debug target chosen for hot restart.":::
 
     The **Setup Hot Restart** setup wizard will appear, which will guide you through setting up a local iOS device for hot restart deployment.
 
-1. In the **Setup Hot Restart** setup wizard, click the **Next** button:
+1. In the **Setup Hot Restart** setup wizard, select **Next**:
 
     :::image type="content" source="media/hot-restart/setup-wizard-1.png" alt-text="Screenshot of the first step in the setup hot restart wizard.":::
 
-1. If you don't have iTunes installed, the setup wizard will prompt you to install it. In the **Setup Hot Restart** setup wizard, click the **Download iTunes** button:
+1. If you don't have iTunes installed, the setup wizard will prompt you to install it. In the **Setup Hot Restart** setup wizard, select **Download iTunes**:
 
     :::image type="content" source="media/hot-restart/setup-wizard-2.png" alt-text="Screenshot of the second step in the setup hot restart wizard.":::
 
@@ -46,13 +46,13 @@ Perform the following steps to setup hot restart:
 
     Wait for iTunes to download and then install it. If you install it from the Microsoft Store, once the installation completes please open it, then follow additional prompts to enable it to discover locally connected devices.
 
-1. In the **Setup Hot Restart** setup wizard, click the **Next** button to move to the next step of the wizard that will prompt you to connect a local iOS device:
+1. In the **Setup Hot Restart** setup wizard, select **Next** to move to the next step of the wizard that will prompt you to connect a local iOS device:
 
     :::image type="content" source="media/hot-restart/setup-wizard-3-no-device.png" alt-text="Screenshot of the initial third step in the setup hot restart wizard.":::
 
 1. Connect your iOS device to your development machine via a USB cable. A prompt may appear on your device asking you to trust your development machine. On your device, click **Trust** and follow any additional device prompts.
 
-1. In the **Setup Hot Restart** setup wizard, click the **Next** button once your local iOS device is detected:
+1. In the **Setup Hot Restart** setup wizard, select **Next** once your local iOS device is detected:
 
     :::image type="content" source="media/hot-restart/setup-wizard-3-device-found.png" alt-text="Screenshot of the completed third step in the setup hot restart wizard.":::
 
@@ -63,14 +63,14 @@ Perform the following steps to setup hot restart:
 
     :::image type="content" source="media/hot-restart/setup-wizard-4-add-account.png" alt-text="Screenshot of the initial fourth step in the setup hot restart wizard.":::
 
-    The **Individual account...** dialog appears.
+    The **Individual account** dialog appears.
 
     > [!NOTE]
     > Alternatively, to configure hot restart to use an enterprise Apple Developer account, click the **Sign in with an enterprise account** hyperlink and enter your credentials in the dialog that appears. Then proceed to step 12.
 
-1. Create an App Store Connect API key. This will require you to have an [Apple Developer account](https://appleid.apple.com/account), and paid [Apple Developer Program](https://developer.apple.com/programs) enrolment. For information about creating an App Store Connect API key, see [Creating API Keys for App Store Connect API](https://developer.apple.com/documentation/appstoreconnectapi/creating_api_keys_for_app_store_connect_api) on developer.apple.com.
+1. Create an App Store Connect API key. This will require you to have an [Apple Developer account](https://appleid.apple.com/account) and paid [Apple Developer Program](https://developer.apple.com/programs) enrollment. For information about creating an App Store Connect API key, see [Creating API Keys for App Store Connect API](https://developer.apple.com/documentation/appstoreconnectapi/creating_api_keys_for_app_store_connect_api) on developer.apple.com.
 
-1. In the **Individual account...** dialog, enter your App Store Connect API key data:
+1. In the **Individual account** dialog, enter your App Store Connect API key data:
 
     :::image type="content" source="media/hot-restart/appstore-connect-api-data-completed.png" alt-text="Screenshot of the completed dialog for adding an Apple Individual account.":::
 
@@ -78,7 +78,7 @@ Perform the following steps to setup hot restart:
 
     :::image type="content" source="media/hot-restart/app-store-connect-details.png" lightbox="media/hot-restart/app-store-connect-details-large.png" alt-text="Screenshot of Apple App Store Connect API details.":::
 
-1. In the **Individual account...** dialog, click the **Add** button. The **Individual account...** dialog will close.
+1. In the **Individual account** dialog, click the **Add** button. The **Individual account** dialog will close.
 
 1. In the **Setup Hot Restart** setup wizard, click the **Finish** button:
 
@@ -104,7 +104,7 @@ Perform the following steps to setup hot restart:
 
 ## Deploy and debug using hot restart
 
-After performing the initial setup, your local connected iOS device will appear in the debug target drop down menu. To deploy and debug your app:
+After performing the initial setup, your local connected iOS device will appear in the debug target drop-down menu. To deploy and debug your app:
 
 1. Ensure that your local connected iOS device is unlocked.
 1. In the Visual Studio toolbar, select your local connected iOS device in the debug target drop down, and click the **Run** button to build your app and deploy it to your local iOS device:
@@ -117,13 +117,13 @@ After performing the initial setup, your local connected iOS device will appear 
 
     Launch the app on your device and Visual Studio will connect the debugger to your running app, and the **Connecting Debugger** dialog will be dismissed.
 
-While you are debugging your app, you can edit your C# code and press the restart button in the Visual Studio toolbar to restart your debug session with the new changes applied:
+While you're debugging your app, you can edit your C# code and press the restart button in the Visual Studio toolbar to restart your debug session with the new changes applied:
 
 :::image type="content" source="media/hot-restart/restart-button.png" alt-text="Screenshot of the restart button on the Visual Studio toolbar.":::
 
 ## Prevent code from executing
 
-Storyboard and XIB files are not supported when using hot restart, and your app may crash if it attempts to load these at runtime. Similarly, static iOS libraries and frameworks are not supported and you may see runtime errors or crashes if your app attempts to load these.
+Storyboard and XIB files aren't supported when using hot restart, and your app may crash if it attempts to load these at runtime. Similarly, static iOS libraries and frameworks aren't supported and you may see runtime errors or crashes if your app attempts to load these.
 
 In these scenarios, the `HOTRESTART` preprocessor symbol can be used to prevent code from executing when debugging with hot restart:
 
@@ -135,7 +135,7 @@ In these scenarios, the `HOTRESTART` preprocessor symbol can be used to prevent 
 
 ## Enable hot restart
 
-Hot restart is enabled by default in Visual Studio 2022. It it's been previously disabled, it can be enabled by selecting **Tools > Options** from the Visual Studio menu bar. Next, in the **Options** dialog box, expand **Xamarin** and select **iOS Settings**. Then, ensure that **Enable Hot Restart** is checked:
+Hot restart is enabled by default in Visual Studio 2022. If it's been previously disabled, it can be enabled by selecting **Tools > Options** from the Visual Studio menu bar. Next, in the **Options** dialog box, expand **Xamarin** and select **iOS Settings**. Then, ensure that **Enable Hot Restart** is checked:
 
 :::image type="content" source="media/hot-restart/enable-hot-restart.png" alt-text="Screenshot of how to enable hot restart within Visual Studio.":::
 
