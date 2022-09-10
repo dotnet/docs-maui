@@ -30,7 +30,13 @@ Handlers can be customized per platform by using conditional compilation, to mul
 
 ## Customize a control
 
-The .NET MAUI `Entry` is a single-line text input control, that implements the `IEntry` interface. On iOS, the `EntryHandler` maps the `Entry` to an iOS `UITextField`. On Android, the `Entry` is mapped to an `AppCompatEditText`, and on Windows the `Entry` is mapped to a `TextBox`:
+The .NET MAUI `Entry` view is a single-line text input control, that implements the `IEntry` interface. The `EntryHandler` maps the `Entry` view to a native view for each platform:
+
+- **iOS/macOS**: `UITextField`
+- **Android**: `AppCompatEditText`
+- **Windows**: `TextBox`
+
+The `EntryHandler` is illustrated in the following figure:
 
 :::image type="content" source="media/customize/entry-handler.png" alt-text="Entry handler architecture." border="false":::
 
@@ -71,13 +77,17 @@ public partial class CustomizeEntryPage : ContentPage
 }
 ```
 
-In this example, the `Entry` customization occurs in a page class. Therefore, all `Entry` controls on Android, iOS, and Windows will be customized once an instance of the `CustomizeEntryPage` is created. Customization is performed by accessing the handlers `PlatformView` property, which provides access to the native view that implements the cross-platform control on each platform. Native code then customizes the handler by selecting all of the text in the `Entry` when it gains focus.
+In this example, the `Entry` customization occurs in a page class. Therefore, all `Entry` controls on Android, iOS, and Windows will be customized once an instance of the `CustomizeEntryPage` is created. Customization is performed by accessing the handlers `PlatformView` property, which provides access to the native view that maps to the cross-platform control on each platform. Native code then customizes the handler by selecting all of the text in the `Entry` when it gains focus.
+
+<!-- Note: What happens when the Page instance is killed off? Is it stuck in memory because of the event handlers? Do the mappers still apply? What happens when multiple instances of the page are created? I think these details should be covered -->
 
 For more information about mappers, see [Mappers](index.md#mappers).
 
 ## Customize a specific control instance
 
 Handlers are global, and customizing a handler for a control will result in all controls of the same type being customized in your app. However, handlers for specific control instances can be customized by subclassing the control, and then by modifying the handler for the base control type only when the control is of the subclassed type. For example, to customize a specific `Entry` control on a page that contains multiple `Entry` controls, you should first subclass the `Entry` control:
+
+<!-- Note: I don't think this is customizing a specific instance because you have to create a new type and only those types are customized. The header really indicates that you can take a specific Entry and customize that one via mappers, which isn't true. Perhaps this section needs to be more like "Customize a subset of controls" or something? -->
 
 ```csharp
 namespace CustomizeHandlersDemo.Controls
