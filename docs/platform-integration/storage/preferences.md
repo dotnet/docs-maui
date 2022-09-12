@@ -106,7 +106,7 @@ All data is stored into [**Shared Preferences**](https://developer.android.com/t
 
 ## Persistence
 
-Uninstalling the application causes all _preferences_ to be removed, except when the app runs on Android 6.0 (API level 23) or later, while using the [**Auto Backup**`](https://developer.android.com/guide/topics/data/autobackup) feature. This feature is on by default and preserves app data, including **Shared Preferences**, which is what the **Preferences** API uses. You can disable this by following Google's [Auto Backup documentation](https://developer.android.com/guide/topics/data/autobackup).
+Uninstalling the application causes all _preferences_ to be removed, except when the app runs on Android 6.0 (API level 23) or later, while using the [**Auto Backup**](https://developer.android.com/guide/topics/data/autobackup) feature. This feature is on by default and preserves app data, including **Shared Preferences**, which is what the **Preferences** API uses. You can disable this by following Google's [Auto Backup documentation](https://developer.android.com/guide/topics/data/autobackup).
 
 ## Limitations
 
