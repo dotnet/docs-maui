@@ -292,7 +292,7 @@ carouselView.ItemTemplate = new DataTemplate(() =>
     {
         Text = "Favorite",
         IconImageSource = "favorite.png",
-        BackgroundColor = Color.LightGreen
+        BackgroundColor = Colors.LightGreen
     };
     favoriteSwipeItem.SetBinding(MenuItem.CommandProperty, new Binding("BindingContext.FavoriteCommand", source: carouselView));
     favoriteSwipeItem.SetBinding(MenuItem.CommandParameterProperty, ".");
@@ -301,7 +301,7 @@ carouselView.ItemTemplate = new DataTemplate(() =>
     {
         Text = "Delete",
         IconImageSource = "delete.png",
-        BackgroundColor = Color.LightPink
+        BackgroundColor = Colors.LightPink
     };
     deleteSwipeItem.SetBinding(MenuItem.CommandProperty, new Binding("BindingContext.DeleteCommand", source: carouselView));
     deleteSwipeItem.SetBinding(MenuItem.CommandParameterProperty, ".");
