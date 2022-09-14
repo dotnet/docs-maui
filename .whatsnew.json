@@ -27,8 +27,16 @@
             "heading": "Get started"
         },
         {
+            "names": [ "tutorials" ],
+            "heading": "Tutorials"
+        },
+        {
             "names": [ "data-cloud" ],
             "heading": "Data & cloud services"
+        },
+        {
+            "names": [ "deployment" ],
+            "heading": "Deployment"
         },
         {
             "names": [ "fundamentals" ],
@@ -41,6 +49,22 @@
         {
             "names": [ "platform-integration" ],
             "heading": "Platform integration"
+        },
+        {
+            "names": [ "android" ],
+            "heading": "Android"
+        },
+        {
+            "names": [ "ios" ],
+            "heading": "iOS"
+        },
+        {
+            "names": [ "macos" ],
+            "heading": "MacOS"
+        },
+        {
+            "names": [ "windows" ],
+            "heading": "Windows"
         },
         {
             "names": [ "user-interface" ],
