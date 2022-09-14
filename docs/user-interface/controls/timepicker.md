@@ -76,7 +76,7 @@ This section describes the platform-specific differences with the `TimePicker` c
 <!-- markdownlint-disable MD024 -->
 # [Android](#tab/android)
 
-On Android, the `Format` property is respected and displayed by the control. However, when the control pressed, showing the picker control, the picker only allows you to change the hour, minute, and time of day.
+On Android, the `Format` property is respected and displayed by the control. However, when the picker control is shown by pressing on the control, only the hour, minute, and time of day can be changed.
 
 # [iOS\macOS](#tab/ios)
 
