@@ -162,21 +162,21 @@ public class StoragePage : ContentPage
         //</prefs_set>
 
         //<prefs_defaults>
-        string firstName = Preferences.Get("first_name", "Unknown");
-        int age = Preferences.Get("age", -1);
-        bool hasPets = Preferences.Get("has_pets", false);
+        string firstName = Preferences.Default.Get("first_name", "Unknown");
+        int age = Preferences.Default.Get("age", -1);
+        bool hasPets = Preferences.Default.Get("has_pets", false);
         //</prefs_defaults>
 
         //<prefs_containskey>
-        bool hasKey = Preferences.ContainsKey("my_key");
+        bool hasKey = Preferences.Default.ContainsKey("my_key");
         //</prefs_containskey>
 
         //<prefs_remove>
-        Preferences.Remove("first_name");
+        Preferences.Default.Remove("first_name");
         //</prefs_remove>
 
         //<prefs_clear>
-        Preferences.Clear();
+        Preferences.Default.Clear();
         //</prefs_clear>
     }
 
