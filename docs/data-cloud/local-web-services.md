@@ -218,8 +218,8 @@ The resulting `HttpClientHandler` object can then be passed as an argument to th
 
 ```csharp
 #if DEBUG
-            HttpMessageHandler handler = new HttpsClientHandlerService();
-            HTTPClient client = new HttpClient(handler.GetPlatformMessageHandler());
+            HttpsClientHandlerService handler = new HttpsClientHandlerService();
+            HttpClient client = new HttpClient(handler.GetPlatformMessageHandler());
 #else
             client = new HttpClient();
 #endif
