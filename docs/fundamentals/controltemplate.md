@@ -435,7 +435,7 @@ The following XAML shows a control template named `TealTemplate` that contains a
                                  Margin="0,0,20,0"
                                  Text="Help"
                                  TextColor="White"
-                                 Url="https://docs.microsoft.com/dotnet/maui/"
+                                 Url="https://learn.microsoft.com/dotnet/maui/"
                                  HorizontalOptions="End"
                                  VerticalOptions="Center" />
     </Grid>

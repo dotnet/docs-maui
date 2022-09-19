@@ -324,7 +324,7 @@ The following example, shows a `Label` whose content is set from multiple `Span`
                   TextDecorations="Underline">
                 <Span.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding TapCommand}"
-                                          CommandParameter="https://docs.microsoft.com/dotnet/maui/" />
+                                          CommandParameter="https://learn.microsoft.com/dotnet/maui/" />
                 </Span.GestureRecognizers>
             </Span>
             <Span Text=" to view .NET MAUI documentation." />
@@ -406,7 +406,7 @@ The `HyperlinkSpan` class can be consumed by adding an instance of the class to 
                 <FormattedString>
                     <Span Text="Alternatively, click " />
                     <local:HyperlinkSpan Text="here"
-                                         Url="https://docs.microsoft.com/dotnet/" />
+                                         Url="https://learn.microsoft.com/dotnet/" />
                     <Span Text=" to view .NET documentation." />
                 </FormattedString>
             </Label.FormattedText>
