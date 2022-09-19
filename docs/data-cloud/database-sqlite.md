@@ -44,7 +44,6 @@ In addition to **sqlite-net-pcl** we _temporarily_ need to install the underlyin
 - **Owners:** Eric Sink
 - **NuGet link:** [SQLitePCLRaw.bundle_green](https://www.nuget.org/packages/SQLitePCLRaw.bundle_green/)
 
-
 ## Configure app constants
 
 The sample project includes a **Constants.cs** file that provides common configuration data:
@@ -111,7 +110,6 @@ public class TodoItemDatabase
     //...
 }
 ```
-
 
 In order to start the database initialization, avoid blocking execution, and have the opportunity to catch exceptions, the sample application uses asynchronous lazy initalization, represented by the `AsyncLazy<T>` class:
 
@@ -268,7 +266,6 @@ In general, moving, renaming, or copying a database file is the same process as 
 
 - All database connections should be closed before attempting to move the database file.
 - If you use [Write-Ahead Logging](#write-ahead-logging), SQLite will create a Shared Memory Access (.shm) file and a (Write Ahead Log) (.wal) file. Ensure that you apply any changes to these files as well.
-
 
 ## Related links
 
