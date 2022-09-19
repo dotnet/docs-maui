@@ -187,7 +187,7 @@ public class TodoItemDatabase
 }
 ```
 
-## Access data in .NET MAUI
+## Access data
 
 The `TodoItemDatabase` class can be registered as a `Singleton` that can be used throughout the application if you are using dependency injection. For example you could register your pages and the databse:
 
