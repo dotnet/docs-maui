@@ -10,7 +10,7 @@ ms.date: 09/20/2022
 # [Visual Studio](#tab/vswin)
 <!-- markdownlint-enable MD025 -->
 
-To start developing native, cross-platform .NET Multi-platform App UI (.NET MAUI) apps on Windows, install Visual Studio 2022 by following the steps below.
+To start developing native, cross-platform .NET Multi-platform App UI (.NET MAUI) apps on Windows, install Visual Studio 2022 17.3 or greater by following the steps below.
 
 For information about what's new in Visual Studio 2022, see the [release notes](/visualstudio/releases/2022/release-notes).
 
@@ -26,27 +26,20 @@ To build .NET MAUI apps for iOS, you'll also need:
 
 ## Installation
 
-1. Download the installer for your chosen version of Visual Studio 2022:
+1. To create .NET MAUI apps, you'll need the latest version of Visual Studio 2022:
 
     > [!div class="button"]
-    > [Download Visual Studio 2022 Community(https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Community&channel=Release&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2303)
+    > [Download Visual Studio 2022 Community](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Community&channel=Release&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2303)
 
     > [!div class="button"]
-    > [Download Visual Studio 2022 Professional(https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Professional&channel=Release&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2303)
+    > [Download Visual Studio 2022 Professional](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Professional&channel=Release&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2303)
 
     > [!div class="button"]
-    > [Download Visual Studio 2022 Enterprise(https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Enterprise&channel=Release&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2303)
+    > [Download Visual Studio 2022 Enterprise](https://c2rsetup.officeapps.live.com/c2r/downloadVS.aspx?sku=Enterprise&channel=Release&Version=VS2022&source=VSLandingPage&add=Microsoft.VisualStudio.Workload.CoreEditor&add=Microsoft.VisualStudio.Workload.NetCrossPlat;includeRecommended&cid=2303)
 
-1. From your **Downloads** folder, double-click the downloaded installer bootstrapper.
-1. Acknowledge the Microsoft [License Terms](https://visualstudio.microsoft.com/license-terms/) and the Microsoft [Privacy Statement](https://privacy.microsoft.com/privacystatement). Choose **Continue**.
-
-    :::image type="content" source="media/installation/vs/privacy-and-license-terms.png" alt-text="Screenshot showing the Microsoft License Terms and Privacy Statement.":::
-
-1. In the Visual Studio Installer, select the .NET Multi-platform App UI development workload with its default optional installation options:
+1. Either install Visual Studio, or modify your existing installation, and install the .NET Multi-platform App UI development workload with its default optional installation options:
 
     :::image type="content" source="media/first-app/vs/vs-workloads.png" alt-text="Visual Studio workloads for .NET MAUI.":::
-
-1. After choosing the workload, select **Install**.
 
     Status screens will appear that show the progress of your Visual Studio 2022 installation.
 
@@ -72,24 +65,12 @@ To build .NET MAUI apps for iOS or macOS, you'll also need:
 
 ## Installation
 
-1. Download the installer:
+1. To create .NET MAUI apps, you'll need the latest Visual Studio for Mac 17.4 Preview:
 
     > [!div class="button"]
     > [Download Visual Studio 2022 for Mac 17.4 Preview](https://aka.ms/installer/preview)
 
-1. Once the download is complete, click the **visualstudioformacpreviewinstaller_<build_number>.dmg** to mount the installer, then run it by double-clicking the arrow logo:
-
-    :::image type="content" source="media/installation/vsmac/install-installer.png" alt-text="Click the large arrow to begin installation.":::
-
-1. You may be presented with a warning about the application being downloaded from the Internet. Select **Open**.
-
-    :::image type="content" source="media/installation/vsmac/installer-internet-warning.png" alt-text="Warning about app being downloaded from the internet.":::
-
-1. An alert will appear asking you to acknowledge the privacy and license terms. Follow the links to read them, then select **Continue** if you agree:
-
-    :::image type="content" source="media/installation/vsmac/installer-privacy.png" alt-text="Follow the links to the privacy and terms, then continue if you agree.":::
-
-1. The list of available workloads is displayed. Select the following workloads:
+1. Either install Visual Studio 2022 for Mac 17.4 Preview, or modify your existing installation, and ensure that the following workloads are installed:
 
     - .NET
     - .NET MAUI
@@ -101,21 +82,6 @@ To build .NET MAUI apps for iOS or macOS, you'll also need:
     :::image type="content" source="media/installation/vsmac/legacy-workloads.png" alt-text="Visual Studio for Mac legacy workloads.":::
 
     <!-- The legacy workloads shouldn't be required in 17.4 P2 -->
-
-1. After you've made your selections, select the **Install** button.
-1. The installer will display progress as it downloads and installs Visual Studio 2022 for Mac Preview and the selected workloads. You'll be prompted to enter your password to grant the privileges necessary for installation.
-
-    :::image type="content" source="media/installation/vsmac/installer-progress.png" alt-text="Screenshot from the Visual Studio Mac Installer showing an installation progress screen.":::
-
-1. Once installed, Visual Studio 2022 for Mac Preview will prompt you to personalize your installation by signing in and selecting the key bindings that you'd like to use:
-
-    :::image type="content" source="media/installation/vsmac/installer-sign-in.png" alt-text="Sign in to the IDE.":::
-
-    :::image type="content" source="media/installation/vsmac/installer-keyboard-shortcuts.png" alt-text="Choose which keyboard shortcuts you would like to use":::
-
-1. Visual Studio 2022 for Mac Preview will launch, and you can open a project or create a new one.
-
-    :::image type="content" source="media/installation/vsmac/launch.png" alt-text="Visual Studio for Mac launches.":::
 
 If you have network trouble while installing in a corporate environment, review the [installing behind a firewall or proxy](#install-visual-studio-for-mac-behind-a-firewall-or-proxy-server) instructions.
 
