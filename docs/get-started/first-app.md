@@ -233,19 +233,6 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022, 
 
 In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 for Mac 17.4 Preview, and run it on your chosen platform:
 
-01. To create .NET MAUI apps, you'll need the latest Visual Studio 2022 for Mac 17.4 Preview. Either install [Visual Studio 2022 for Mac 17.4 Preview](https://aka.ms/installer/preview), or modify your existing installation, and ensure that the following workloads are installed:
-
-    - .NET
-    - .NET MAUI
-    - Android
-    - iOS
-
-    :::image type="content" source="media/first-app/vsmac/maui-workloads.png" alt-text="Visual Studio for Mac .NET MAUI workloads.":::
-
-    :::image type="content" source="media/first-app/vsmac/legacy-workloads.png" alt-text="Visual Studio for Mac legacy workloads.":::
-
-    <!-- The legacy workloads shouldn't be required in 17.4 P2 -->
-
 01. Launch Visual Studio 2022 for Mac 17.4 Preview, and in the start window click **New** to create a new project:
 
     :::image type="content" source="media/first-app/vsmac/new-project.png" alt-text="Create a new project in Visual Studio for Mac.":::
@@ -271,7 +258,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 f
 :::zone pivot="devices-android"
 
 <!-- markdownlint-disable MD029 -->
-07. Visual Studio 2022 for Mac will display an infobar if your Mac lacks the Android SDK components. Click the **Install** button to install the Android SDK:
+06. Visual Studio 2022 for Mac will display an infobar if your Mac lacks the Android SDK components. Click the **Install** button to install the Android SDK:
 
     :::image type="content" source="media/first-app/vsmac/android-install-sdk.png" alt-text="Install the missing Android SDK components.":::
 
@@ -330,7 +317,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 f
 :::zone pivot="devices-ios"
 
 <!-- markdownlint-disable MD029 -->
-07. In the Visual Studio 2022 for Mac toolbar, ensure that the debug target is set to an iOS simulator:
+06. In the Visual Studio 2022 for Mac toolbar, ensure that the debug target is set to an iOS simulator:
 
     :::image type="content" source="media/first-app/vsmac/ios-debug-target.png" alt-text="Ensure the debug target is set to an iOS simulator.":::
 
@@ -351,7 +338,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 f
 :::zone pivot="devices-maccatalyst"
 
 <!-- markdownlint-disable MD029 -->
-07. In the Visual Studio 2022 for Mac toolbar, ensure that the debug target is set to **My Mac**:
+06. In the Visual Studio 2022 for Mac toolbar, ensure that the debug target is set to **My Mac**:
 
     :::image type="content" source="media/first-app/vsmac/mac-debug-target.png" alt-text="Ensure the debug target is set to My Mac.":::
 

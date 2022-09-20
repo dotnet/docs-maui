@@ -74,7 +74,7 @@ To build .NET MAUI apps for iOS or macOS, you'll also need:
 
     <!-- The legacy workloads shouldn't be required in 17.4 P2 -->
 
-If you have network trouble while installing in a corporate environment, review the [installing behind a firewall or proxy](#install-visual-studio-for-mac-behind-a-firewall-or-proxy-server) instructions.
+If you have network trouble while installing in a corporate environment, review the [installing behind a firewall or proxy](#installation-behind-a-firewall-or-proxy-server) instructions.
 
 ## Installation behind a firewall or proxy server
 
