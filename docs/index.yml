@@ -144,6 +144,8 @@ landingContent:
             url: data-cloud/rest.md
           - text: Connect to local web services
             url: data-cloud/local-web-services.md
+          - text: Local databases
+            url: data-cloud/database-sqlite.md
   - title: Deployment
     linkLists:
       - linkListType: concept
