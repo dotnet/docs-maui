@@ -1,18 +1,14 @@
 ---
-title: ".NET MAUI Local Databases"
+title: ".NET MAUI local databases"
 description: ".NET MAUI supports database-driven applications using the SQLite database engine, which makes it possible to load and save objects in shared code. This article describes how .NET MAUI applications can read and write data to a local SQLite database using SQLite-net"
 ms.date: 09/19/2022
 ---
 
-# .NET MAUI Local Databases
+# .NET MAUI local databases
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/database-sqlite)
 
-The SQLite database engine allows .NET MAUI applications to load and save data objects in shared code. The sample application uses a SQLite database table to store todo items. This article describes how to use the sqlite-net NuGet in shared code to store and retrieve information in a local database.
-
-[![Screenshots of the Todolist app on iOS, Android, and Windows](database-images/todo-list-sml.png)](database-images/todo-list.png#lightbox "Todolist app on iOS, Android, and Windows")
-
-Integrate SQLite.NET into mobile apps by following these steps:
+The SQLite database engine allows .NET Multi-platform App UI (.NET MAUI) apps to load and save data objects in shared code. You can integrate SQLite.NET into .NET MAUI apps, to store and retrieve information in a local database, by following these steps:
 
 1. [Install the NuGet package](#install-the-sqlite-nuget-package).
 1. [Configure constants](#configure-app-constants).
@@ -20,9 +16,11 @@ Integrate SQLite.NET into mobile apps by following these steps:
 1. [Access data](#access-data).
 1. [Advanced configuration](#advanced-configuration).
 
+The sample app uses an SQLite database table to store todo items.
+
 ## Install the SQLite NuGet package
 
-Use the NuGet package manager to search for **sqlite-net-pcl** and add the latest version to the shared code project.
+Use the NuGet package manager to search for the **sqlite-net-pcl** package and add the latest version to your .NET MAUI app project.
 
 There are a number of NuGet packages with similar names. The correct package has these attributes:
 
@@ -32,11 +30,11 @@ There are a number of NuGet packages with similar names. The correct package has
 - **NuGet link:** [sqlite-net-pcl](https://www.nuget.org/packages/sqlite-net-pcl/)
 
 > [!NOTE]
-> Despite the package name, use the **sqlite-net-pcl** NuGet package even in .NET MAUI, .NET 6, and .NET Standard projects.
+> Despite the package name, use the **sqlite-net-pcl** NuGet package even in .NET MAUI projects.
 
 ### Install SQlitePCLRaw.bundle_green
 
-In addition to **sqlite-net-pcl** we _temporarily_ need to install the underlying dependency that exposes SQLite on each platform.
+In addition to **sqlite-net-pcl**, you _temporarily_ need to install the underlying dependency that exposes SQLite on each platform:
 
 - **ID:** SQLitePCLRaw.bundle_green
 - **Version:** 2.1.2
@@ -46,7 +44,7 @@ In addition to **sqlite-net-pcl** we _temporarily_ need to install the underlyin
 
 ## Configure app constants
 
-The sample project includes a **Constants.cs** file that provides common configuration data:
+Configuration data, such as database filename and path, can be stored as constants in your app. The sample project includes a **Constants.cs** file that provides common configuration data:
 
 ```csharp
 public static class Constants
@@ -61,12 +59,12 @@ public static class Constants
         // enable multi-threaded database access
         SQLite.SQLiteOpenFlags.SharedCache;
 
-    public static string DatabasePath => 
+    public static string DatabasePath =>
         Path.Combine(FileSystem.AppDataDirectory, DatabaseFilename);
 }
 ```
 
-The constants file specifies default `SQLiteOpenFlag` enum values that are used to initialize the database connection. The `SQLiteOpenFlag` enum supports these values:
+In this example, the constants file specifies default `SQLiteOpenFlag` enum values that are used to initialize the database connection. The `SQLiteOpenFlag` enum supports these values:
 
 - `Create`: The connection will automatically create the database file if it doesn't exist.
 - `FullMutex`: The connection is opened in serialized threading mode.
@@ -83,11 +81,11 @@ You may need to specify different flags depending on how your database will be u
 
 ## Create a database access class
 
-A database wrapper class abstracts the data access layer from the rest of the app. This class centralizes query logic and simplifies the management of database initialization, making it easier to refactor or expand data operations as the app grows. The Todo app defines a `TodoItemDatabase` class for this purpose.
+A database wrapper class abstracts the data access layer from the rest of the app. This class centralizes query logic and simplifies the management of database initialization, making it easier to refactor or expand data operations as the app grows. The sample app defines a `TodoItemDatabase` class for this purpose.
 
 ### Lazy initialization
 
-The `TodoItemDatabase` uses asynchronous lazy initialization to delay initialization of the database until it's first accessed with a simple `Init` method that gets called by each method i nthe class:
+The `TodoItemDatabase` uses asynchronous lazy initialization to delay initialization of the database until it's first accessed, with a simple `Init` method that gets called by each method in the class:
 
 ```csharp
 public class TodoItemDatabase
@@ -106,12 +104,11 @@ public class TodoItemDatabase
         Database = new SQLiteAsyncConnection(Constants.DatabasePath, Constants.Flags);
         var result = await Database.CreateTableAsync<TodoItem>();
     }
-
-    //...
+    ...
 }
 ```
 
-In order to start the database initialization, avoid blocking execution, and have the opportunity to catch exceptions, the sample application uses asynchronous lazy initalization, represented by the `AsyncLazy<T>` class:
+In order to start database initialization, avoid blocking execution, and have the opportunity to catch exceptions, the sample app uses asynchronous lazy initalization, represented by the `AsyncLazy<T>` class:
 
 ```csharp
 public class AsyncLazy<T>
@@ -141,11 +138,13 @@ The `AsyncLazy` class combines the `Lazy<T>` and `Task<T>` types to create a laz
 
 The `TodoItemDatabase` class includes methods for the four types of data manipulation: create, read, edit, and delete. The SQLite.NET library provides a simple Object Relational Map (ORM) that allows you to store and retrieve objects without writing SQL statements.
 
+The following example shows the data manipulation methods in the sample app:
+
 ```csharp
 public class TodoItemDatabase
 {
-    // ...
-       public async Task<List<TodoItem>> GetItemsAsync()
+    ...
+    public async Task<List<TodoItem>> GetItemsAsync()
     {
         await Init();
         return await Database.Table<TodoItem>().ToListAsync();
@@ -155,7 +154,7 @@ public class TodoItemDatabase
     {
         await Init();
         return await Database.Table<TodoItem>().Where(t => t.Done).ToListAsync();
-        
+
         // SQL queries are also possible
         //return await Database.QueryAsync<TodoItem>("SELECT * FROM [TodoItem] WHERE [Done] = 0");
     }
@@ -170,13 +169,9 @@ public class TodoItemDatabase
     {
         await Init();
         if (item.ID != 0)
-        {
             return await Database.UpdateAsync(item);
-        }
         else
-        {
             return await Database.InsertAsync(item);
-        }
     }
 
     public async Task<int> DeleteItemAsync(TodoItem item)
@@ -189,7 +184,7 @@ public class TodoItemDatabase
 
 ## Access data
 
-The `TodoItemDatabase` class can be registered as a `Singleton` that can be used throughout the application if you are using dependency injection. For example you could register your pages and the databse:
+The `TodoItemDatabase` class can be registered as a singleton that can be used throughout the app if you are using dependency injection. For example, you can register your pages and the database access class as services on the `IServiceCollection` object, in **MauiProgram.cs**, with the `AddSingleton` and `AddTransient` methods:
 
 ```csharp
 builder.Services.AddSingleton<TodoListPage>();
@@ -198,10 +193,11 @@ builder.Services.AddTransient<TodoItemPage>();
 builder.Services.AddSingleton<TodoItemDatabase>();
 ```
 
-Then it could be injected into each class' constructor and accessed:
+These services can then be automatically injected into class constructors, and accessed:
 
 ```csharp
 TodoItemDatabase database;
+
 public TodoItemPage(TodoItemDatabase todoItemDatabase)
 {
     InitializeComponent();
@@ -221,10 +217,11 @@ async void OnSaveClicked(object sender, EventArgs e)
 }
 ```
 
-Or a new instance could be created:
+Alternatively, new instances of the database access class can be created:
 
 ```csharp
 TodoItemDatabase database;
+
 public TodoItemPage()
 {
     InitializeComponent();
@@ -266,9 +263,3 @@ In general, moving, renaming, or copying a database file is the same process as 
 
 - All database connections should be closed before attempting to move the database file.
 - If you use [Write-Ahead Logging](#write-ahead-logging), SQLite will create a Shared Memory Access (.shm) file and a (Write Ahead Log) (.wal) file. Ensure that you apply any changes to these files as well.
-
-## Related links
-
-- [Todo sample application](/samples/dotnet-maui/dotnet-maui-samples/todo)
-- [SQLite.NET NuGet package](https://www.nuget.org/packages/sqlite-net-pcl/)
-- [SQLite documentation](https://www.sqlite.org/docs.html)
