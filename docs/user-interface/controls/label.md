@@ -6,6 +6,8 @@ ms.date: 03/02/2022
 
 # Label
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-hyperlinks)
+
 The .NET Multi-platform App UI (.NET MAUI) `Label` displays single-line and multi-line text. Text displayed by a `Label` can be colored, spaced, and can have text decorations.
 
 `Label` defines the following properties:
