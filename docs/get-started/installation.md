@@ -22,7 +22,7 @@ To build .NET MAUI apps for iOS, you'll also need:
 
 - A Mac that is compatible with the latest version of Xcode. See Apple's [minimum requirements documentation](https://developer.apple.com/support/xcode/)
 - The latest version of [Xcode](https://developer.apple.com/xcode).
-- An Apple ID. If you don't have an Apple ID already, you can create a new one at https://appleid.apple.com. An Apple ID is required to deploy apps to devices, and to submit apps to the Apple Store.
+- An Apple ID. If you don't have an Apple ID already, you can create a new one at [Apple ID](https://appleid.apple.com). An Apple ID is required to deploy apps to devices, and to submit apps to the Apple Store.
 
 ## Installation
 
@@ -48,9 +48,9 @@ To start developing native, cross-platform .NET MAUI apps on macOS, install Visu
 
 - Visual Studio 2022 for Mac 17.4 Preview, with the .NET, .NET MAUI, Android, and iOS workloads installed. For information about supported operating systems, hardware, supported languages, and additional requirements and guidance, see [Visual Studio 2022 for Mac System Requirements](/visualstudio/releases/2022/mac-system-requirements).
 
-To build .NET MAUI apps for iOS or macOS, you'll need:
+To build .NET MAUI apps for iOS or macOS, you'll also need:
 
-- A Mac that is compatible with the latest version of Xcode. See Apple's [minimum requirements documentation](https://developer.apple.com/support/xcode/)
+- A Mac that is compatible with the latest version of Xcode. For more information, see Apple's [minimum requirements documentation](https://developer.apple.com/support/xcode/)
 - The latest version of [Xcode](https://developer.apple.com/xcode).
 - An Apple ID. If you don't have an Apple ID already, you can create a new one at [Apple ID](https://appleid.apple.com). An Apple ID is required to deploy apps to devices, and to submit apps to the Apple Store.
 
@@ -75,9 +75,6 @@ To build .NET MAUI apps for iOS or macOS, you'll need:
     <!-- The legacy workloads shouldn't be required in 17.4 P2 -->
 
 If you have network trouble while installing in a corporate environment, review the [installing behind a firewall or proxy](#install-visual-studio-for-mac-behind-a-firewall-or-proxy-server) instructions.
-
-> [!NOTE]
-> If you chose not to install a platform or tool during the original installation (by unselecting it in step #6), you must run the installer again if you wish to add the components later.
 
 ## Installation behind a firewall or proxy server
 
