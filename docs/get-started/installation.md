@@ -6,19 +6,19 @@ ms.date: 09/20/2022
 
 # Installation
 
+In this article, you'll learn how to install Visual Studio 2022 on Windows, or Visual Studio 2022 for Mac 17.4 Preview, so that you can develop native, cross-platform apps using .NET Multi-platform App UI (.NET MAUI).
+
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio](#tab/vswin)
 <!-- markdownlint-enable MD025 -->
 
-To start developing native, cross-platform .NET Multi-platform App UI (.NET MAUI) apps on Windows, install Visual Studio 2022 17.3 or greater by following the steps below.
+To start developing native, cross-platform .NET Multi-platform App UI (.NET MAUI) apps on Windows, install Visual Studio 2022 17.3 or greater by following the steps below. For information about supported operating systems, hardware, supported languages, and additional requirements and guidance, see [Visual Studio 2022 System Requirements](/visualstudio/releases/2022/system-requirements).
 
 For information about what's new in Visual Studio 2022, see the [release notes](/visualstudio/releases/2022/release-notes).
 
 ## Prerequisites
 
-- See [Visual Studio 2022 System Requirements](/visualstudio/releases/2022/system-requirements) for supported operating systems, hardware, supported languages, and additional requirements and guidance.
-
-To build .NET MAUI apps for iOS, you'll also need:
+To build .NET MAUI apps for iOS, you'll need:
 
 - A Mac that is compatible with the latest version of Xcode. See Apple's [minimum requirements documentation](https://developer.apple.com/support/xcode/)
 - The latest version of [Xcode](https://developer.apple.com/xcode). It may be possible to [use an older version of Xcode](/xamarin/ios/troubleshooting/questions/old-version-xcode) if your Mac isn't compatible with the latest version.
@@ -49,15 +49,13 @@ After your Visual Studio 2022 installation is complete, select the **Launch** bu
 # [Visual Studio for Mac](#tab/vsmac)
 <!-- markdownlint-enable MD025 -->
 
-To start developing native, cross-platform .NET Multi-platform App UI (.NET MAUI) apps on macOS, install Visual Studio 2022 for Mac 17.4 Preview by following the steps below.
+To start developing native, cross-platform .NET Multi-platform App UI (.NET MAUI) apps on macOS, install Visual Studio 2022 for Mac 17.4 Preview by following the steps below. For information about supported operating systems, hardware, supported languages, and additional requirements and guidance, see [Visual Studio 2022 for Mac System Requirements](/visualstudio/releases/2022/mac-system-requirements).
 
 For information about what's new in Visual Studio 2022 for Mac Preview, see the [release notes](/visualstudio/releases/2022/mac-release-notes).
 
 ## Prerequisites
 
-- See [Visual Studio 2022 for Mac System Requirements](/visualstudio/releases/2022/mac-system-requirements) for supported operating systems, hardware, supported languages, and additional requirements and guidance.
-
-To build .NET MAUI apps for iOS or macOS, you'll also need:
+To build .NET MAUI apps for iOS or macOS, you'll need:
 
 - A Mac that is compatible with the latest version of Xcode. See Apple's [minimum requirements documentation](https://developer.apple.com/support/xcode/)
 - The latest version of [Xcode](https://developer.apple.com/xcode). It may be possible to [use an older version of Xcode](/xamarin/ios/troubleshooting/questions/old-version-xcode) if your Mac isn't compatible with the latest version.
