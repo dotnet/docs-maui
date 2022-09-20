@@ -174,7 +174,7 @@ A .NET MAUI app project contains a *Platforms* folder, with each child folder re
 
 :::image type="content" source="media/single-project/platform-folders.png" alt-text="Platform folders screenshot.":::
 
-The folders for each platform contain platform-specific resources, and code and that starts the app on each platform:
+The folders for each platform contain platform-specific resources, and code that starts the app on each platform:
 
 :::image type="content" source="media/single-project/platform-code.png" alt-text="Platform-specific code screenshot.":::
 
