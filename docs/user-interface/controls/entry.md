@@ -55,16 +55,16 @@ The following example shows how to create an `Entry`:
 ```xaml
 <Entry x:Name="entry"
        Placeholder="Enter text"
-       TextChanged="OnTextChanged"
-       Completed="OnTextCompleted" />
+       TextChanged="OnEntryTextChanged"
+       Completed="OnEntryCompleted" />
 ```
 
 The equivalent C# code is:
 
 ```csharp
 Entry entry = new Entry { Placeholder = "Enter text" };
-entry.TextChanged += OnTextChanged;
-entry.Completed += OnTextCompleted;
+entry.TextChanged += OnEntryTextChanged;
+entry.Completed += OnEntryCompleted;
 ```
 
 The following screenshot shows the resulting `Entry` on Android:
