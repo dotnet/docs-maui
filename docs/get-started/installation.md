@@ -16,7 +16,7 @@ To start developing native, cross-platform .NET MAUI apps on Windows, install Vi
 
 ## Prerequisites
 
-- Visual Studio 2022 17.3 or greater, with the .NET Multi-platform App UI development workload installed. For information about supported operating systems, hardware, supported languages, and additional requirements and guidance, see [Visual Studio 2022 System Requirements](/visualstudio/releases/2022/system-requirements).
+- Visual Studio 2022 17.3 or greater. For information about supported operating systems, hardware, supported languages, and additional requirements and guidance, see [Visual Studio 2022 System Requirements](/visualstudio/releases/2022/system-requirements).
 
 To build .NET MAUI apps for iOS, you'll also need:
 
@@ -46,7 +46,7 @@ To start developing native, cross-platform .NET MAUI apps on macOS, install Visu
 
 ## Prerequisites
 
-- Visual Studio 2022 for Mac 17.4 Preview, with the .NET, .NET MAUI, Android, and iOS workloads installed. For information about supported operating systems, hardware, supported languages, and additional requirements and guidance, see [Visual Studio 2022 for Mac System Requirements](/visualstudio/releases/2022/mac-system-requirements).
+- Visual Studio 2022 for Mac 17.4 Preview. For information about supported operating systems, hardware, supported languages, and additional requirements and guidance, see [Visual Studio 2022 for Mac System Requirements](/visualstudio/releases/2022/mac-system-requirements).
 
 To build .NET MAUI apps for iOS or macOS, you'll also need:
 
