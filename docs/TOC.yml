@@ -599,6 +599,8 @@
           href: platform-integration/invoke-platform-code.md
     - name: Data & cloud services
       items:
+        - name: Local databases
+          href: data-cloud/database-sqlite.md
         - name: Web services
           items:
             - name: Consume a REST-based web service
