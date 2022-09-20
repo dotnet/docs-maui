@@ -234,7 +234,7 @@ In this example, the `CurrentItem` property, of type `FlyoutItem`, displays the 
 
 The `Tab` class defines a `Stack` property, of type `IReadOnlyList<Page>`, which represents the current navigation stack within the `Tab`. The class also provides the following overridable navigation methods:
 
-- `GetNavigationStack`, returns `IReadOnlyList<Page`>, the current navigation stack.
+- `GetNavigationStack`, returns `IReadOnlyList<Page>`, the current navigation stack.
 - `OnInsertPageBefore`, that's called when `INavigation.InsertPageBefore` is called.
 - `OnPopAsync`, returns `Task<Page>`, and is called when `INavigation.PopAsync` is called.
 - `OnPopToRootAsync`, returns `Task`, and is called when `INavigation.OnPopToRootAsync` is called.
@@ -277,7 +277,7 @@ The `Shell` class also defines the `Navigated` event, which is fired when naviga
 |---|---|---|
 | `Current`  | `ShellNavigationState` | The URI of the current page. |
 | `Previous` | `ShellNavigationState` | The URI of the previous page. |
-| `Source` | `ShellNavigationState` | The type of navigation that occurred. |
+| `Source` | `ShellNavigationSource` | The type of navigation that occurred. |
 
 > [!IMPORTANT]
 > The `OnNavigating` method is called when the `Navigating` event fires. Similarly, the `OnNavigated` method is called when the `Navigated` event fires. Both methods can be overridden in your `Shell` subclass to intercept navigation requests.
