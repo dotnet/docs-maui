@@ -52,16 +52,16 @@ The following example shows how to create an `Editor`:
 <Editor x:Name="editor"
         Placeholder="Enter your response here"
         HeightRequest="250"
-        TextChanged="OnTextChanged"
-        Completed="OnTextCompleted" />
+        TextChanged="OnEditorTextChanged"
+        Completed="OnEditorCompleted" />
 ```
 
 The equivalent C# code is:
 
 ```csharp
 Editor editor = new Editor { Placeholder = "Enter text", HeightRequest = 250 };
-editor.TextChanged += OnTextChanged;
-editor.Completed += OnTextCompleted;
+editor.TextChanged += OnEditorTextChanged;
+editor.Completed += OnEditorCompleted;
 ```
 
 The following screenshot shows the resulting `Editor` on Android:
