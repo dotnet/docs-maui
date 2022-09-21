@@ -18,11 +18,15 @@ To start developing native, cross-platform .NET MAUI apps on Windows, install Vi
 
 - Visual Studio 2022 17.3 or greater. For information about supported operating systems, hardware, supported languages, and additional requirements and guidance, see [Visual Studio 2022 System Requirements](/visualstudio/releases/2022/system-requirements).
 
-To build .NET MAUI apps for iOS, you'll also need:
+To build, sign, and deploy .NET MAUI apps for iOS, you'll also need:
 
 - A Mac that is compatible with the latest version of Xcode. See Apple's [minimum requirements documentation](https://developer.apple.com/support/xcode/)
-- The latest version of [Xcode](https://developer.apple.com/xcode).
-- An Apple ID. If you don't have an Apple ID already, you can create a new one at [Apple ID](https://appleid.apple.com). An Apple ID is required to deploy apps to devices, and to submit apps to the Apple Store.
+- The latest version of [Xcode](https://developer.apple.com/xcode) 13. Xcode 14 support will appear in a future release. For more information, see [Xcode 14.0 Support](https://github.com/xamarin/xamarin-macios/issues/15954).
+- An [Apple ID](https://appleid.apple.com/account) and paid [Apple Developer Program](https://developer.apple.com/programs) enrollment. An Apple ID is required to deploy apps to devices, and to submit apps to the Apple Store.
+
+Alternatively, to deploy debug builds of your app directly from Windows to your iOS device with [hot restart](~/deployment/hot-restart.md), you'll need:
+
+- An [Apple Developer account](https://appleid.apple.com/account) and paid [Apple Developer Program](https://developer.apple.com/programs) enrollment.
 
 ## Installation
 
@@ -51,8 +55,8 @@ To start developing native, cross-platform .NET MAUI apps on macOS, install Visu
 To build .NET MAUI apps for iOS or macOS, you'll also need:
 
 - A Mac that is compatible with the latest version of Xcode. For more information, see Apple's [minimum requirements documentation](https://developer.apple.com/support/xcode/)
-- The latest version of [Xcode](https://developer.apple.com/xcode).
-- An Apple ID. If you don't have an Apple ID already, you can create a new one at [Apple ID](https://appleid.apple.com). An Apple ID is required to deploy apps to devices, and to submit apps to the Apple Store.
+- The latest version of [Xcode](https://developer.apple.com/xcode) 13. Xcode 14 support will appear in a future release. For more information, see [Xcode 14.0 Support](https://github.com/xamarin/xamarin-macios/issues/15954).
+- An [Apple ID](https://appleid.apple.com/account) and paid [Apple Developer Program](https://developer.apple.com/programs) enrollment. An Apple ID is required to deploy apps to devices, and to submit apps to the Apple Store.
 
 ## Installation
 

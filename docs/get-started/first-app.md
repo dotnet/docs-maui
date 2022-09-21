@@ -13,6 +13,10 @@ In this tutorial, you'll learn how to create and run your first .NET Multi-platf
 # [Visual Studio](#tab/vswin)
 <!-- markdownlint-enable MD025 -->
 
+## Prerequisites
+
+- Visual Studio 2022 17.3 or greater, with the .NET Multi-platform App UI workload installed. For more information, see [Installation](installation.md).
+
 :::zone pivot="devices-android"
 
 In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022, and run it on an Android emulator:
@@ -189,6 +193,10 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022, 
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio for Mac](#tab/vsmac)
 <!-- markdownlint-enable MD025 -->
+
+## Prerequisites
+
+- Visual Studio 2022 for Mac 17.4 Preview, with the .NET, .NET MAUI, Android, and iOS workloads installed. For more information, see [Installation](installation.md).
 
 :::zone pivot="devices-android, devices-ios, devices-maccatalyst"
 
