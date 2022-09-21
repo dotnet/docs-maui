@@ -108,32 +108,6 @@ public class TodoItemDatabase
 }
 ```
 
-In order to start database initialization, avoid blocking execution, and have the opportunity to catch exceptions, the sample app uses asynchronous lazy initalization, represented by the `AsyncLazy<T>` class:
-
-```csharp
-public class AsyncLazy<T>
-{
-    readonly Lazy<Task<T>> instance;
-
-    public AsyncLazy(Func<T> factory)
-    {
-        instance = new Lazy<Task<T>>(() => Task.Run(factory));
-    }
-
-    public AsyncLazy(Func<Task<T>> factory)
-    {
-        instance = new Lazy<Task<T>>(() => Task.Run(factory));
-    }
-
-    public TaskAwaiter<T> GetAwaiter()
-    {
-        return instance.Value.GetAwaiter();
-    }
-}
-```
-
-The `AsyncLazy` class combines the `Lazy<T>` and `Task<T>` types to create a lazy-initialized task that represents the initialization of a resource. The factory delegate that's passed to the constructor can either be synchronous or asynchronous. Factory delegates will run on a thread pool thread, and will not be executed more than once (even when multiple threads attempt to start them simultaneously). When a factory delegate completes, the lazy-initialized value is available, and any methods awaiting the `AsyncLazy<T>` instance receive the value. For more information, see [AsyncLazy](https://devblogs.microsoft.com/pfxteam/asynclazyt/).
-
 ### Data manipulation methods
 
 The `TodoItemDatabase` class includes methods for the four types of data manipulation: create, read, edit, and delete. The SQLite.NET library provides a simple Object Relational Map (ORM) that allows you to store and retrieve objects without writing SQL statements.
