@@ -9,14 +9,13 @@ zone_pivot_groups: devices-deployment
 
 In this tutorial, you'll learn how to create and run your first .NET Multi-platform App UI (.NET MAUI) app in Visual Studio 2022 on Windows, or Visual Studio 2022 for Mac 17.4 Preview.
 
-## Prerequisites
-
-- An installation of Visual Studio 2022 17.3 or greater, with the .NET Multi-platform App UI workload installed, to develop cross-platform apps on Windows. For more information, see [Installation](installation.md?tabs=vswin).
-- An installation of Visual Studio 2022 for Mac 17.4 Preview, with the .NET, .NET MAUI, Android, and iOS workloads installed, to develop cross-platform apps on a Mac. For more information, see [Installation](installation.md?tabs=vsmac).
-
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio](#tab/vswin)
 <!-- markdownlint-enable MD025 -->
+
+## Prerequisites
+
+- Visual Studio 2022 17.3 or greater, with the .NET Multi-platform App UI workload installed. For more information, see [Installation](installation.md?tabs=vswin).
 
 :::zone pivot="devices-android"
 
@@ -194,6 +193,10 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022, 
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio for Mac](#tab/vsmac)
 <!-- markdownlint-enable MD025 -->
+
+## Prerequisites
+
+- Visual Studio 2022 for Mac 17.4 Preview, with the .NET, .NET MAUI, Android, and iOS workloads installed. For more information, see [Installation](installation.md?tabs=vsmac).
 
 :::zone pivot="devices-android, devices-ios, devices-maccatalyst"
 
