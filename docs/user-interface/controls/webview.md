@@ -29,7 +29,7 @@ The `Source` property can be set to an `UrlWebViewSource` object or a `HtmlWebVi
 To display a remote web page, set the `Source` property to a `string` that specifies the URI:
 
 ```xaml
-<WebView Source="https://docs.microsoft.com/dotnet/maui" />
+<WebView Source="https://learn.microsoft.com/dotnet/maui" />
 ```
 
 The equivalent C# code is:
@@ -37,7 +37,7 @@ The equivalent C# code is:
 ```csharp
 WebView webvView = new WebView
 {
-    Source = "https://docs.microsoft.com/dotnet/maui"
+    Source = "https://learn.microsoft.com/dotnet/maui"
 };
 ```
 
@@ -214,7 +214,7 @@ Cookies can be set on a `WebView`, which are then sent with the web request to t
 using System.Net;
 
 CookieContainer cookieContainer = new CookieContainer();
-Uri uri = new Uri("https://docs.microsoft.com/dotnet/maui", UriKind.RelativeOrAbsolute);
+Uri uri = new Uri("https://learn.microsoft.com/dotnet/maui", UriKind.RelativeOrAbsolute);
 
 Cookie cookie = new Cookie
 {
@@ -270,7 +270,7 @@ function factorial(num) {
 It's possible to open a URI in the system web browser with the `Launcher` class, that's provided by `Microsoft.Maui.Essentials`. This is achieved by calling it's `OpenAsync` method, passing in a `string` or `Uri` argument that represents the URI to open:
 
 ```csharp
-await Launcher.OpenAsync("https://docs.microsoft.com/dotnet/maui");
+await Launcher.OpenAsync("https://learn.microsoft.com/dotnet/maui");
 ```
 
 For more information, see [Launcher](~/platform-integration/appmodel/launcher.md).

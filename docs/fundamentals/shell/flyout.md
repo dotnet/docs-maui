@@ -316,7 +316,7 @@ The `MenuItem` class has a `Clicked` event, and a `Command` property. Therefore,
     <MenuItem Text="Help"
               IconImageSource="help.png"
               Command="{Binding HelpCommand}"
-              CommandParameter="https://docs.microsoft.com/dotnet/maui/fundamentals/shell" />    
+              CommandParameter="https://learn.microsoft.com/dotnet/maui/fundamentals/shell" />    
 </Shell>
 ```
 
@@ -352,7 +352,7 @@ The appearance of each `MenuItem` can be customized by setting the `Shell.MenuIt
     <MenuItem Text="Help"
               IconImageSource="help.png"
               Command="{Binding HelpCommand}"
-              CommandParameter="https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell" />  
+              CommandParameter="https://learn.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell" />  
 </Shell>
 ```
 
