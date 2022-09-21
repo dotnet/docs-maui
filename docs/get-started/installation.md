@@ -82,7 +82,7 @@ If you have network trouble while installing in a corporate environment, review 
 
 ## Installation behind a firewall or proxy server
 
-To install Visual Studio 2022 for Mac Preview behind a firewall, certain endpoints must be made accessible in order to allow downloads of the required tools and updates for your software. For more information about configuring your network to allow access to the required endpoints, see [Install and use Visual Studio for Mac behind a firewall or proxy server](/visualstudio/mac/install-behind-a-firewall-or-proxy-server?view=vsmac-2022).
+To install Visual Studio 2022 for Mac Preview behind a firewall, certain endpoints must be made accessible in order to allow downloads of the required tools and updates for your software. For more information about configuring your network to allow access to the required endpoints, see [Install and use Visual Studio for Mac behind a firewall or proxy server](/visualstudio/mac/install-behind-a-firewall-or-proxy-server).
 
 ---
 
