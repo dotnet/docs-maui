@@ -32,7 +32,7 @@ There are a number of NuGet packages with similar names. The correct package has
 > [!NOTE]
 > Despite the package name, use the **sqlite-net-pcl** NuGet package even in .NET MAUI projects.
 
-### Install SQlitePCLRaw.bundle_green
+### Install SQLitePCLRaw.bundle_green
 
 In addition to **sqlite-net-pcl**, you _temporarily_ need to install the underlying dependency that exposes SQLite on each platform:
 
