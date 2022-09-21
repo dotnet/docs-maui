@@ -32,7 +32,7 @@ There are a number of NuGet packages with similar names. The correct package has
 > [!NOTE]
 > Despite the package name, use the **sqlite-net-pcl** NuGet package even in .NET MAUI projects.
 
-### Install SQlitePCLRaw.bundle_green
+### Install SQLitePCLRaw.bundle_green
 
 In addition to **sqlite-net-pcl**, you _temporarily_ need to install the underlying dependency that exposes SQLite on each platform:
 
@@ -107,32 +107,6 @@ public class TodoItemDatabase
     ...
 }
 ```
-
-In order to start database initialization, avoid blocking execution, and have the opportunity to catch exceptions, the sample app uses asynchronous lazy initalization, represented by the `AsyncLazy<T>` class:
-
-```csharp
-public class AsyncLazy<T>
-{
-    readonly Lazy<Task<T>> instance;
-
-    public AsyncLazy(Func<T> factory)
-    {
-        instance = new Lazy<Task<T>>(() => Task.Run(factory));
-    }
-
-    public AsyncLazy(Func<Task<T>> factory)
-    {
-        instance = new Lazy<Task<T>>(() => Task.Run(factory));
-    }
-
-    public TaskAwaiter<T> GetAwaiter()
-    {
-        return instance.Value.GetAwaiter();
-    }
-}
-```
-
-The `AsyncLazy` class combines the `Lazy<T>` and `Task<T>` types to create a lazy-initialized task that represents the initialization of a resource. The factory delegate that's passed to the constructor can either be synchronous or asynchronous. Factory delegates will run on a thread pool thread, and will not be executed more than once (even when multiple threads attempt to start them simultaneously). When a factory delegate completes, the lazy-initialized value is available, and any methods awaiting the `AsyncLazy<T>` instance receive the value. For more information, see [AsyncLazy](https://devblogs.microsoft.com/pfxteam/asynclazyt/).
 
 ### Data manipulation methods
 
