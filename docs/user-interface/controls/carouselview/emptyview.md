@@ -78,7 +78,7 @@ The `EmptyView` property can be set to a view, which will be displayed when the 
 </StackLayout>
 ```
 
-In this example, what looks like a redundant has been added as the root element of the [`EmptyView`. This is because internally, the `EmptyView` is added to a native container that doesn't provide any context for .NET MAUI layout. Therefore, to position the views that comprise your `EmptyView`, you must add a root layout, whose child is a layout that can position itself within the root layout.
+In this example, what looks like a redundant has been added as the root element of the `EmptyView`. This is because internally, the `EmptyView` is added to a native container that doesn't provide any context for .NET MAUI layout. Therefore, to position the views that comprise your `EmptyView`, you must add a root layout, whose child is a layout that can position itself within the root layout.
 
 The equivalent C# code is:
 
