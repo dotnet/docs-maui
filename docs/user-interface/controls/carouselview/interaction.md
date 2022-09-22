@@ -226,7 +226,7 @@ In this example, the `CurrentItem` property is set to the fourth item in the `Mo
 
 ## Preset the position
 
-The displayed item `CarouselView` can be programmatically set by setting the `Position` property to the index of the item in the underlying collection. The following XAML example shows a `CarouselView` that sets the displayed item:
+The displayed item in a `CarouselView` can be programmatically set by setting the `Position` property to the index of the item in the underlying collection. The following XAML example shows a `CarouselView` that sets the displayed item:
 
 ```xaml
 <CarouselView ItemsSource="{Binding Monkeys}"
