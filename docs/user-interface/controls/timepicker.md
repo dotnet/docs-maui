@@ -21,7 +21,7 @@ The .NET Multi-platform App UI (.NET MAUI) `TimePicker` invokes the platform's t
 All of these properties are backed by `BindableProperty` objects, which means that they can be styled, and the properties can be targets of data bindings. The `Time` property has a default binding mode of `BindingMode.TwoWay`, which means that it can be a target of a data binding in an application that uses the Model-View-ViewModel (MVVM) pattern.
 
 > [!NOTE]
-> The `TimePicker` doesn't include an event to indicate a new selected `Time` value. If you need to be notified of this, you can add a handler for the `PropertyChanged` event. For more information about handlers, see [.NET MAUI Handlers](../handlers/index.md)
+> The `TimePicker` doesn't include an event to indicate a new selected `Time` value. If you need to be notified of this, you can add an event handler for the `PropertyChanged` event.
 
 ## Create a TimePicker
 
