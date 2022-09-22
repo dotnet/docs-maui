@@ -34,4 +34,4 @@ Entitlements can be configured in Visual Studio by double-clicking the *Entitlem
 
 :::image type="content" source="media/entitlements/editor.png" alt-text="Visual Studio iOS entitlements editors.":::
 
-When a .NET MAUI iOS app uses entitlements, the *Entitlements.plist* file must be referenced from the `<CodesignEntitlement>` node within a `<PropertyGroup>`. For more information, see [Add code signing data to your app project](overview.md#add-code-signing-data-to-your-app-project).
+When a .NET MAUI iOS app uses entitlements, the *Entitlements.plist* file must be referenced from the `<CodesignEntitlements>` node within a `<PropertyGroup>`. For more information, see [Add code signing data to your app project](overview.md#add-code-signing-data-to-your-app-project).
