@@ -83,7 +83,7 @@ There are project-level settings you must set to sign your iOS app with its prov
 - `<RuntimeIdentifier>` – the runtime identifier (RID) for the project. Set to `ios-arm64`.
 - `<CodesignKey>` – the name of the distribution certificate you installed into Keychain Access on your Mac build host.
 - `<CodesignProvision>` – the provisioning profile name. This is the name you entered in the Apple Developer portal when creating your provisioning profile.
-- `<CodesignEntitlement>` – the name of the entitlements file. Set to `Entitlements.plist`. This setting need only be specified if you're using entitlements.
+- `<CodesignEntitlements>` – the name of the entitlements file. Set to `Entitlements.plist`. This setting need only be specified if you're using entitlements.
 - `<ArchiveOnBuild>` – a boolean value that indicates whether to build the app package. Set to `true`.
 - `<TcpPort>` – the TCP port on which to communicate with your Mac build host. Set to `58181`.
 - `<ServerAddress>` – the IP address of your Mac build host.
@@ -170,7 +170,7 @@ In addition, the following common parameters can be specified on the command lin
 | `/p:RuntimeIdentifier` | The runtime identifier (RID) for the project. Use `ios-arm64`. |
 | `/p:CodesignKey` | The name of the distribution certificate you installed into Keychain Access on your Mac build host. |
 | `/p:CodesignProvision` | The provisioning profile name. |
-| `/p:CodesignEntitlement` | The name of the entitlements file. Use *Entitlements.plist*. |
+| `/p:CodesignEntitlements` | The name of the entitlements file. Use *Entitlements.plist*. |
 | `/p:ArchiveOnBuild` | A boolean value that indicates whether to produce the archive. Use `true` to produce the *.ipa*. |
 | `/p:TcpPort` | The TCP port to use to communicate with the Mac build host, which is 58181. |
 | `/p:ServerAddress` | The IP address of the Mac build host. |
