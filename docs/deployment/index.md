@@ -10,7 +10,7 @@ ms.date: 09/22/2022
 
 ## Android
 
-You can debug and test your apps on the Android Emulator, which can be run in a variety of configurations to simulate different devices. Each configuration is called a *virtual device*. When you deploy and test your apps on the emulator, you select a pre-configured or custom virtual device that simulates a physical Android device such as a Pixel phone. For more information, see [Debug on the Android Emulator](~/android/emulator/debug-on-emulator.md).
+You can debug and test your apps on the Android emulator, which can be run in a variety of configurations to simulate different devices. Each configuration is called a *virtual device*. When you deploy and test your apps on the emulator, you select a pre-configured or custom virtual device that simulates a physical Android device such as a Pixel phone. For more information, see [Debug on the Android Emulator](~/android/emulator/debug-on-emulator.md).
 
 While the Android emulator enables you to rapidly develop and test your apps, you'll also want to test your apps on a real Android device. To run on a device, you'll need to enable developer mode on the device and connect it to your development machine. For more information, see [Set up Android device for debugging](~/android/device/setup.md).
 
