@@ -88,7 +88,7 @@ The following example shows a `DataTrigger` that disables a `Button` when the `E
 In this example, when the length of the `Entry` is zero, the trigger is activated.
 
 > [!TIP]
-> When evaluating `Path=Text.Length` always provide a default value for the target property (eg. `Text=""`> because otherwise it will be `null` and the trigger won't work like you expect.
+> When evaluating `Path=Text.Length` always provide a default value for the target property (eg. `Text=""`) because otherwise it will be `null` and the trigger won't work like you expect.
 
 In addition, optional `EnterActions` and `ExitActions` collections can be specified. For more information, see [EnterActions and ExitActions](#enteractions-and-exitactions).
 
