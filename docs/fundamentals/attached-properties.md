@@ -20,7 +20,7 @@ For more information about bindable properties, see [Bindable properties](bindab
 The process for creating an attached property is as follows:
 
 1. Create a `BindableProperty` instance with one of the `CreateAttached` method overloads.
-1. Provide `static` `Get`*PropertyName* and `Set`*PropertyName* methods as accessors for the attached property.
+1. Provide `static` `GetPropertyName` and `SetPropertyName` methods as accessors for the attached property.
 
 ### Create a property
 
