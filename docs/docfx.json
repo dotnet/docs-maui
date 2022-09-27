@@ -17,7 +17,9 @@
           "LICENSE",
           "LICENSE-CODE",
           "ThirdPartyNotices.md"
-        ]
+        ],
+        "group": "net-dest",
+        "src": "."
       }
     ],
     "resource": [
@@ -36,7 +38,9 @@
           "_themes.pdf/**",
           "**/docfx.json",
           "_repo.en-us/**"
-        ]
+        ],
+        "group": "net-dest",
+        "src": "."
       }
     ],
     "overwrite": [],
