@@ -18,7 +18,7 @@
           "LICENSE-CODE",
           "ThirdPartyNotices.md"
         ],
-        "group": "net-dest",
+        "group": "net",
         "src": "."
       }
     ],
@@ -39,7 +39,7 @@
           "**/docfx.json",
           "_repo.en-us/**"
         ],
-        "group": "net-dest",
+        "group": "net",
         "src": "."
       }
     ],
