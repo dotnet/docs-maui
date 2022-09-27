@@ -134,7 +134,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022, 
 
 ## Troubleshooting
 
-If your app fails to compile, review [Troubleshooting known issues](../troubleshooting.md), which may have a solution to your problem. If the problem is related to Android specifically, see [Android emulator troubleshooting](../android/emulator/troubleshooting.md).
+If your app fails to compile, review [Troubleshooting known issues](../troubleshooting.md), which may have a solution to your problem. If the problem is related to the Android emulator, see [Android emulator troubleshooting](../android/emulator/troubleshooting.md).
 
 :::zone-end
 
