@@ -447,7 +447,7 @@
             href: platform-integration/appmodel/launcher.md
           - name: Main thread
             href: platform-integration/appmodel/main-thread.md
-          - name: Maps
+          - name: Map
             href: platform-integration/appmodel/maps.md
           - name: Permissions
             href: platform-integration/appmodel/permissions.md
