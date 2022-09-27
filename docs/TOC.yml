@@ -267,6 +267,8 @@
                       href: user-interface/controls/image.md
                     - name: Label
                       href: user-interface/controls/label.md
+                    - name: Map
+                      href: user-interface/controls/map.md
                     - name: ScrollView
                       href: user-interface/controls/scrollview.md
                     - name: Shapes

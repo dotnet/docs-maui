@@ -1,6 +1,7 @@
 ---
 title: "Map"
 description: "Learn how to use the Map control, which is a cross-platform view for displaying and annotating maps. The Map control is available in the Microsoft.Maui.Controls.Maps NuGet package."
+monikerRange: ">=net-maui-7.0"
 ms.date: 09/26/2022
 ---
 
@@ -15,7 +16,7 @@ The .NET Multi-platform App UI (.NET MAUI) `Map` control is a cross-platform vie
 > [!IMPORTANT]
 > The `Map` control isn't supported on Windows due to lack of a map control in WinUI. However, you can still launch the native map app from your .NET MAUI app on WinUI, to display a map at a specific location or to perform navigation. For more information, see [Launch the native map app](#launch-the-native-map-app).
 
-## Initialization and configuration
+## Setup
 
 The `Map` control uses the native map control on each platform. This provides a fast, familiar maps experience for users, but means that some configuration steps are needed to adhere to each platforms API requirements.
 
