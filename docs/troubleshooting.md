@@ -1,7 +1,7 @@
 ---
 title: "Troubleshoot known issues"
 description: "Describes the known issues and troubleshooting you can do to resolve these issues for a .NET Multi-platform App UI (.NET MAUI) app."
-ms.date: 05/25/2022
+ms.date: 09/27/2022
 ---
 
 # Troubleshooting known issues
@@ -15,21 +15,32 @@ If you've installed Visual Studio 2022 and the **.NET Multi-platform App UI deve
 01. Open a terminal.
 01. Run the `dotnet --version` command.
 
-    If the result starts with `7.0`, you're running in the context of .NET 7. Use one of the fixes below.
+    If the result starts with `7.0` and includes the value `-preview`, you're running in the context of a .NET 7 preview release. Use one of the fixes below.
+
+    If the result starts with `7.0` and includes the value `-rc`, you're running in the context of a .NET 7 release candidate, which fully supports .NET MAUI, and includes .NET MAUI templates. You may just need to install the .NET MAUI workload. Review the [Installation instructions](get-started/installation.md) and ensure that the **.NET Multi-platform App UI development** workload is enabled.
 
 > [!TIP]
 > You can see all versions of .NET installed with the `dotnet --info` command.
 
-### Fix (1)
+### Fix: Uninstall or upgrade .NET 7 preview
 
-Uninstall the .NET 7 preview.
+You may have a preview release of .NET 7 on your computer, which doesn't contain any .NET MAUI templates. However, the latest .NET 7 release candidate does contain .NET MAUI templates. You have two options:
 
-### Fix (2)
+- Remove .NET 7. Once .NET 7 is officially released, install it.
 
-Use a `global.json` config file in the folder where you'll create the project. This config file can force the context of .NET 6, allowing you to create a new project:
+  \- or -
+
+- Remove .NET 7 and install the latest .NET 7 release candidate.
+
+> [!IMPORTANT]
+> The latest Visual Studio 2022 17.4 previews include the .NET 7 release candidate and fully support .NET MAUI.
+
+### Fix: Use a global.json config file
+
+Use a `global.json` config file in the folder where you'll create the project. This config file can force the context of .NET 6, which contains .NET MAUI templates:
 
 01. Open a terminal and navigate to a folder where you want to create a project.
-01. Run the following command: `dotnet new globaljson --sdk-version 6.0.300`
+01. Run the following command: `dotnet new globaljson --sdk-version 6.0.0 --roll-forward major`
 01. Run `dotnet new maui --list` to show a list of projects you can create. For example, you may see the following output:
 
     ```dotnetcli
@@ -57,43 +68,29 @@ Use a `global.json` config file in the folder where you'll create the project. T
 
 01. Open the project in Visual Studio.
 
-Until this issue is resolved by Microsoft, you'll need to do this for every project.
-
 ## ERROR Platform version is not present.
 
-Visual Studio may not be resolving the required workloads if you try to compile a project and receive an error similar to the following:
+Visual Studio may not be resolving the required workloads if you try to compile a project and receive an error similar to the following text:
 
-```
-Platform version is not present for one or more target frameworks, even though they have specified a platform: net6.0-android, net6.0-ios, net6.0-maccatalyst
-```
+> Platform version is not present for one or more target frameworks, even though they have specified a platform: net6.0-android, net6.0-ios, net6.0-maccatalyst
 
-This may be caused by having the .NET 7 preview installed. To see if .NET 7 is being resolved as your current version of .NET, perform the following steps:
+This problem is generally caused by one of the following scenarios:
 
-01. Open a terminal.
-01. Run the `dotnet --version` command.
+- You have a .NET 7 preview installed, which doesn't support .NET MAUI.
 
-    If the result shows a `7.0.XXX` value, you're running in the context of .NET 7. Use one of the fixes below.
+  There are a few options to fix this issue, you can either upgrade to a .NET 7 release candidate or remove the .NET 7 preview. Review the steps in the [Templates are missing](#templates-are-missing) section.
 
-### Fix (1)
+  There are a few options to fix this issue, which are described in the [Templates are missing](#templates-are-missing) section. You can either upgrade to a .NET 7 release candidate or remove the .NET 7 preview.
 
-Uninstall the .NET 7 preview.
+- You have both an x86 and x64 SDK installed, and the x86 version is being used.
 
-### Fix (2)
-
-Use a `global.json` config file in the same folder as your current project. This config file can force the context of .NET 6, allowing you to keep a .NET 7 preview version installed:
-
-01. Close Visual Studio.
-01. Open a terminal and navigate to the folder where your project is located.
-01. Run the following command: `dotnet new globaljson --sdk-version 6.0.300`
-01. Reopen the project in Visual Studio.
-
-Until this issue is resolved by Microsoft, you'll need to do this for every project.
-
+  Visual Studio and .NET MAUI require the x64 .NET SDK. If your operating system has a system-wide `PATH` variable that is resolving the x86 SDK first, you'll need to fix that by either removing the x86 .NET SDK from the `PATH` variable, or promoting the x64 .NET SDK so that it resolves first. For more information on troubleshooting x86 vs x64 SDK resolution, see [Install .NET on Windows - Troubleshooting](/dotnet/core/install/windows#it-was-not-possible-to-find-any-installed-net-core-sdks).
+  
 ## The WINDOWS `#if` directive is broken
 
 The `WINDOWS` definition doesn't resolve correctly in the latest release of .NET MAUI. To work around this issue, add the following entry to the `<PropertyGroup>` element of your project file.
 
-```
+```xml
 <DefineConstants Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">$(DefineConstants);WINDOWS</DefineConstants>
 ```
 
