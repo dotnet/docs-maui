@@ -169,7 +169,7 @@ These properties, with the exception of the `MapElements`, `Pins`, and `VisibleR
 
 The `Map` class also defines a `MapClicked` event that's fired when the map is tapped. The `MapClickedEventArgs` object that accompanies the event has a single property named `Location`, of type `Location`. When the event is fired, the `Location` property is set to the map location that was tapped. For information about the `Location` class, see [Location and distance](#location-and-distance).
 
-For information about the `ItemsSource`, `ItemTemplate`, and `ItemTemplateSelector` properties, see [Display a pin collection](display-a-pin-collection).
+For information about the `ItemsSource`, `ItemTemplate`, and `ItemTemplateSelector` properties, see [Display a pin collection](#display-a-pin-collection).
 
 ### Display a map
 
@@ -279,7 +279,7 @@ The result is that when the map is displayed, it's centered on a specific locati
 
 ### Create a MapSpan object
 
-There are a number of approaches for creating `MapSpan` objects. A common approach is supply the required arguments to the `MapSpan` constructor. These are a latitude and longitude represented by a `Location` object, and `double` values that represent the degrees of latitude and longitude that are spanned by the `MapSpan`. For information about the `Position` struct, see [Map Position and Distance](position-distance.md).
+There are a number of approaches for creating `MapSpan` objects. A common approach is supply the required arguments to the `MapSpan` constructor. These are a latitude and longitude represented by a `Location` object, and `double` values that represent the degrees of latitude and longitude that are spanned by the `MapSpan`. For information about the `Location` class, see [Location and distance](#location-and-distance).
 
 Alternatively, there are three methods in the `MapSpan` class that return new `MapSpan` objects:
 
@@ -287,7 +287,7 @@ Alternatively, there are three methods in the `MapSpan` class that return new `M
 1. `FromCenterAndRadius` returns a `MapSpan` that is defined by its `Location` and `Distance` arguments.
 1. `WithZoom` returns a `MapSpan` with the same center as the method's class instance, but with a radius multiplied by its `double` argument.
 
-For information about the `Distance` struct, see [Map Position and Distance](position-distance.md).
+For information about the `Distance` struct, see [Location and distance](#location-and-distance).
 
 Once a `MapSpan` has been created, the following properties can be accessed to retrieve data about it:
 
