@@ -80,8 +80,6 @@ This problem is generally caused by one of the following scenarios:
 
   There are a few options to fix this issue, you can either upgrade to a .NET 7 release candidate or remove the .NET 7 preview. Review the steps in the [Templates are missing](#templates-are-missing) section.
 
-  There are a few options to fix this issue, which are described in the [Templates are missing](#templates-are-missing) section. You can either upgrade to a .NET 7 release candidate or remove the .NET 7 preview.
-
 - You have both an x86 and x64 SDK installed, and the x86 version is being used.
 
   Visual Studio and .NET MAUI require the x64 .NET SDK. If your operating system has a system-wide `PATH` variable that is resolving the x86 SDK first, you'll need to fix that by either removing the x86 .NET SDK from the `PATH` variable, or promoting the x64 .NET SDK so that it resolves first. For more information on troubleshooting x86 vs x64 SDK resolution, see [Install .NET on Windows - Troubleshooting](/dotnet/core/install/windows#it-was-not-possible-to-find-any-installed-net-core-sdks).
