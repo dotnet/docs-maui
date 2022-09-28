@@ -11,8 +11,6 @@ ms.date: 09/26/2022
 
 The .NET Multi-platform App UI (.NET MAUI) `Map` control is a cross-platform view for displaying and annotating maps. The `Map` control uses the native map control on each platform, and is provided by the [Microsoft.Maui.Controls.Maps NuGet package](https://www.nuget.org/packages/Microsoft.Maui.Controls.Maps/).
 
-:::image type="content" source="media/map/map-default.png" alt-text="Screenshot of map control with default location.":::
-
 > [!IMPORTANT]
 > The `Map` control isn't supported on Windows due to lack of a map control in WinUI. However, you can still launch the native map app from your .NET MAUI app on WinUI, to display a map at a specific location or to perform navigation. For more information, see [Launch the native map app](#launch-the-native-map-app).
 
@@ -46,15 +44,15 @@ public static class MauiProgram
 }
 ```
 
-Once the NuGet package has been added and initialized, map APIs can be used in your project.
+Once the NuGet package has been added and initialized, `Map` APIs can be used in your project.
 
 ### Platform configuration
 
-Additional configuration is required on Android before the map will display. In addition, on iOS, Android, and Mac Catalyst, accessing the user's location requires location permissions to have been granted to the app.
+Additional configuration is required on Android before the map will display. In addition, on iOS, Android, and Mac Catalyst, accessing the user's location requires location permissions to have been granted to your app.
 
 #### iOS and Mac Catalyst
 
-Displaying and interacting with a map on iOS and Mac Catalyst doesn't require any additional configuration. However, to access location services, you should set the required location services requests in **Info.plist**. These will typically be:
+Displaying and interacting with a map on iOS and Mac Catalyst doesn't require any additional configuration. However, to access location services, you should set the required location services requests in **Info.plist**. These will typically be one or more of the following:
 
 - [`NSLocationAlwaysAndWhenInUseUsageDescription`](https://developer.apple.com/documentation/bundleresources/information_property_list/nslocationalwaysandwheninuseusagedescription) – for using location services at all times.
 - [`NSLocationWhenInUseUsageDescription`](https://developer.apple.com/library/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW26) – for using location services when the app is in use.
@@ -67,12 +65,12 @@ The XML representation for these keys in **Info.plist** is shown below. You shou
 <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 <string>Can we use your location at all times?</string>
 <key>NSLocationWhenInUseUsageDescription</key>
-<string>Can we use your location when your application is being used?</string>
+<string>Can we use your location when your app is being used?</string>
 ```
 
 A prompt is then displayed when your app attempts to access the user's location, requesting access:
 
-:::image type="content" source="media/map/permission-ios.png" alt-text="Screenshot of location permission request on iOS.":::
+:::image type="content" source="media/map/permission-ios.png" lightbox="media/map/permission-ios-large.png" alt-text="Screenshot of location permission request on iOS.":::
 
 #### Android
 
@@ -85,9 +83,9 @@ The configuration process for displaying and interacting with a map on Android i
 
 ##### Get a Google Maps API key
 
-To use the [Google Maps SDK](https://developers.google.com/maps/documentation/android/) on Android you must generate an API key. To do this, follow the instructions in [Set up in the Google Cloud Console](https://developers.google.com/maps/documentation/android-sdk/cloud-setup) and [Use API Keys](https://developers.google.com/maps/documentation/android-sdk/get-api-key) on developers.google.com.
+To use the `Map` control on Android you must generate an API key, which will be consumed by the [Google Maps SDK](https://developers.google.com/maps/documentation/android/) on which the `Map` control relies on Android. To do this, follow the instructions in [Set up in the Google Cloud Console](https://developers.google.com/maps/documentation/android-sdk/cloud-setup) and [Use API Keys](https://developers.google.com/maps/documentation/android-sdk/get-api-key) on developers.google.com.
 
-Once you've obtained an API key it must be added within the `<application>` element of your **Platforms/Android/AndroidManifest.xml** file:
+Once you've obtained an API key it must be added within the `<application>` element of your **Platforms/Android/AndroidManifest.xml** file, by specifying it as the value of the `com.google.android.geo.API_KEY` metadata:
 
 ```xml
 <application android:allowBackup="true" android:icon="@mipmap/appicon" android:roundIcon="@mipmap/appicon_round" android:supportsRtl="true">
@@ -114,11 +112,11 @@ This embeds the version of Google Play services that the app was compiled with, 
 
 ##### Specify location permissions
 
-If your app needs to access the user's location, you must request permission by adding the `ACCESS_COARSE_LOCATION` or `ACCESS_FINE_LOCATION` permissions to the manifest (or both), as a child of the `<manifest>` element:
+If your app needs to access the user's location, you must request permission by adding the `ACCESS_COARSE_LOCATION` or `ACCESS_FINE_LOCATION` permissions (or both) to the manifest, as a child of the `<manifest>` element:
 
 ```xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-  ...
+	...
 	<!-- Required to access the user's location -->
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -129,7 +127,7 @@ The `ACCESS_COARSE_LOCATION` permission allows the API to use WiFi or mobile dat
 
 A prompt is then displayed when your app attempts to access the user's location, requesting access:
 
-:::image type="content" source="media/map/permission-android.png" alt-text="Screenshot of location permission request on Android.":::
+:::image type="content" source="media/map/permission-android.png" lightbox="media/map/permission-android-large.png" alt-text="Screenshot of location permission request on Android.":::
 
 <!-- Alternatively, these permissions can be enabled by using the manifest editor to add the following permissions:
 
@@ -142,7 +140,7 @@ These are shown in the screenshot below:
 
 #### Specify the WRITE_EXTERNAL_STORAGE permission
 
-If your app targets API 22 or lower, it may be necessary to add the `WRITE_EXTERNAL_STORAGE` permission to the manifest, as a child of the `<manifest>` element:
+If your app targets API 22 or lower, it will be necessary to add the `WRITE_EXTERNAL_STORAGE` permission to the manifest, as a child of the `<manifest>` element:
 
 ```xml
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -155,12 +153,12 @@ This is not required if your app targets API 23 or greater.
 The `Map` class defines the following properties that control map appearance and behavior:
 
 - `IsShowingUser`, of type `bool`, indicates whether the map is showing the user's current location.
-- `ItemsSource`, of type `IEnumerable`, which specifies the collection of `IEnumerable` items to be displayed.
-- `ItemTemplate`, of type `DataTemplate`, which specifies the `DataTemplate` to apply to each item in the collection of displayed items.
-- `ItemTemplateSelector`, of type `DataTemplateSelector`, which specifies the `DataTemplateSelector` that will be used to choose a `DataTemplate` for an item at runtime.
-- `IsScrollEnabled`, of type `bool`, determines whether the map is allowed to scroll. The default value of this property is `true`.
+- `ItemsSource`, of type `IEnumerable`, which specifies the collection of `IEnumerable` pin items to be displayed.
+- `ItemTemplate`, of type `DataTemplate`, which specifies the `DataTemplate` to apply to each item in the collection of displayed pins.
+- `ItemTemplateSelector`, of type `DataTemplateSelector`, which specifies the `DataTemplateSelector` that will be used to choose a `DataTemplate` for a pin at runtime.
+- `IsScrollEnabled`, of type `bool`, determines whether the map is allowed to scroll.
 - `IsTrafficEnabled`, of type `bool`, indicates whether traffic data is overlaid on the map.
-- `IsZoomEnabled`, of type `bool`, determines whether the map is allowed to zoom. The default value of this property is `true`.
+- `IsZoomEnabled`, of type `bool`, determines whether the map is allowed to zoom.
 - `MapElements`, of type `IList<MapElement>`, represents the list of elements on the map, such as polygons and polylines.
 - `MapType`, of type `MapType`, indicates the display style of the map.
 - `Pins`, of type `IList<Pin>`, represents the list of pins on the map.
@@ -446,11 +444,11 @@ The `Location` class encapsulates a location stored as latitude and longitude va
 - `Altitude`, of type `double?`, which represents the altitude in meters in a reference system that's specified by the `AltitudeReferenceSystem` property.
 - `AltitudeReferenceSystem`, of type `AltitudeReferenceSystem`, which specifies the reference system in which the altitude value is provided.
 - `Course`, of type `double?`, which indicates the degrees value relative to true north.
-- `IsFromMockProvider`, of type `bool`, which indicates if the location is from the GPS or from a mock.
+- `IsFromMockProvider`, of type `bool`, which indicates if the location is from the GPS or from a mock location provider.
 - `Latitude`, of type `double`, which represents the latitude of the location in decimal degrees.
 - `Longitude`, of type `double`, which represents the longitude of the location in decimal degrees.
 - `Speed`, of type `double?`, which represents the speed in meters per second.
-- `Timestamp`, of type `DateTimeOffset`, which represents the timestamp the `Location` was created.
+- `Timestamp`, of type `DateTimeOffset`, which represents the timestamp when the `Location` was created.
 - `VerticalAccuracy`, of type `double?`, which specifies the vertical accuracy of the `Location`, in meters.
 
 `Location` objects are created with one of the `Location` constructor overloads, which typically require at a minimum latitude and longitude arguments specified as `double` values:
@@ -643,9 +641,9 @@ However, setting the `Pin.Type` property to any `PinType` member does not change
 
 The `Map` class defines the following bindable properties:
 
-- `ItemsSource`, of type `IEnumerable`, which specifies the collection of `IEnumerable` items to be displayed.
-- `ItemTemplate`, of type `DataTemplate`, which specifies the `DataTemplate` to apply to each item in the collection of displayed items.
-- `ItemTemplateSelector`, of type `DataTemplateSelector`, which specifies the `DataTemplateSelector` that will be used to choose a `DataTemplate` for an item at runtime.
+- `ItemsSource`, of type `IEnumerable`, which specifies the collection of `IEnumerable` pin items to be displayed.
+- `ItemTemplate`, of type `DataTemplate`, which specifies the `DataTemplate` to apply to each item in the collection of displayed pins.
+- `ItemTemplateSelector`, of type `DataTemplateSelector`, which specifies the `DataTemplateSelector` that will be used to choose a `DataTemplate` for a pin at runtime.
 
 > [!IMPORTANT]
 > The `ItemTemplate` property takes precedence when both the `ItemTemplate` and `ItemTemplateSelector` properties are set.
@@ -747,8 +745,7 @@ For more information about data template selectors, see [Create a DataTemplateSe
 
 `Polygon`, `Polyline`, and `Circle` elements allow you to highlight specific areas on a map. A `Polygon` is a fully enclosed shape that can have a stroke and fill color. A `Polyline` is a line that does not fully enclose an area. A `Circle` highlights a circular area of the map:
 
-:::image type="content" source="media/map/polygon-polyline.png" alt-text="Polygon and polyline on a map.":::
-:::image type="content" source="media/map/circle.png" alt-text="Circle on a map.":::
+:::image type="content" source="media/map/polygon-polyline.png" alt-text="Polygon and polyline on a map."::: :::image type="content" source="media/map/circle.png" alt-text="Circle on a map.":::
 
 The `Polygon`, `Polyline`, and `Circle` classes derive from the `MapElement` class, which exposes the following bindable properties:
 
@@ -809,12 +806,9 @@ using Microsoft.Maui.Maps;
 using Map = Microsoft.Maui.Controls.Maps.Map;
 ...
 
-Map map = new Map
-{
-    ...
-};
+Map map = new Map();
 
-// instantiate a polygon
+// Instantiate a polygon
 Polygon polygon = new Polygon
 {
     StrokeWidth = 8,
@@ -828,7 +822,7 @@ Polygon polygon = new Polygon
     }
 };
 
-// add the polygon to the map's MapElements collection
+// Add the polygon to the map's MapElements collection
 map.MapElements.Add(polygon);
 ```
 
@@ -876,10 +870,7 @@ using Microsoft.Maui.Maps;
 using Map = Microsoft.Maui.Controls.Maps.Map;
 ...
 
-Map map = new Map
-{
-  // ...
-};
+Map map = new Map();
 
 // instantiate a polyline
 Polyline polyline = new Polyline
@@ -894,7 +885,7 @@ Polyline polyline = new Polyline
     }
 };
 
-// add the polyline to the map's MapElements collection
+// Add the Polyline to the map's MapElements collection
 map.MapElements.Add(polyline);
 ```
 
@@ -970,7 +961,7 @@ The `Geolocation` class, in the `Microsoft.Maui.Devices.Sensors` namespace, can 
 
 ## Launch the native map app
 
-The native map app on each platform can be launched from a .NET MAUI application by the `Launcher` class. This class enables an app to open another app through its custom URI scheme. The launcher functionality can be invoked with the `OpenAsync` method, passing in a `string` or `Uri` argument that represents the custom URL scheme to open. For more information about the `Launcher` class, see [Launcher](~/platform-integration/appmodel/launcher.md).
+The native map app on each platform can be launched from a .NET MAUI app by the `Launcher` class. This class enables an app to open another app through its custom URI scheme. The launcher functionality can be invoked with the `OpenAsync` method, passing in a `string` or `Uri` argument that represents the custom URL scheme to open. For more information about the `Launcher` class, see [Launcher](~/platform-integration/appmodel/launcher.md).
 
 > [!NOTE]
 > An alternative to using the `Launcher` class is to use `Map` class from the `Microsoft.Maui.ApplicationModel` namespace. For more information, see [Map](~/platform-integration/appmodel/maps.md).
