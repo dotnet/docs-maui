@@ -1211,7 +1211,7 @@ namespace VideoDemos.Platforms.MaciOS
             {
                 string uri = (_video.Source as FileVideoSource).File;
                 if (!string.IsNullOrWhiteSpace(uri))
-                    asset = AVAsset.FromUrl(new NSUrl(uri));
+                    asset = AVAsset.FromUrl(NSUrl.CreateFileUrl(new [] { uri }));
             }
             ...
         }
@@ -1220,7 +1220,7 @@ namespace VideoDemos.Platforms.MaciOS
 }
 ```
 
-When processing objects of type `FileVideoSource`, the static `AVAsset.FromUrl` method is used to specify the video file to be played, with an iOS `NSUrl` object created from the string URI.
+When processing objects of type `FileVideoSource`, the static `AVAsset.FromUrl` method is used to specify the video file to be played, with the `NSUrl.CreateFileUrl` method creating an iOS `NSUrl` object from the string URI.
 
 ## Create custom transport controls
 
