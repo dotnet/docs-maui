@@ -1,7 +1,7 @@
 ---
 title: "Controls"
 description: "The user interface of a .NET MAUI app is constructed from pages, layouts, and views."
-ms.date: 03/18/2022
+ms.date: 09/26/2022
 ---
 
 # Controls
@@ -73,6 +73,7 @@ The main control groups used to create the user interface of a .NET MAUI app are
 | `Label` | `Label` displays single-line and multi-line text. For more information, see [Label](~/user-interface/controls/label.md).
 | `Line` | `Line` displays a line from a start point to an end point. For more information, see [Line](~/user-interface/controls/shapes/line.md). |
 | `ListView` | `ListView` displays a scrollable list of selectable data items. For more information, see [ListView](~/user-interface/controls/listview.md). |
+| `Map` | `Map` displays a map, and requires the **Microsoft.Maui.Controls.Maps** NuGet package to be installed in your app. |
 | `Path` | `Path` display curves and complex shapes. For more information, see [Path](~/user-interface/controls/shapes/path.md). |
 | `Picker` | `Picker` displays a short list of items, from which an item can be selected. For more information, see [Picker](~/user-interface/controls/picker.md). |
 | `Polygon` | `Polygon` displays a polygon. For more information, see [Polygon](~/user-interface/controls/shapes/polygon.md). |

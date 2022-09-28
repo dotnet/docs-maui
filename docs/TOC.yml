@@ -267,6 +267,8 @@
                       href: user-interface/controls/image.md
                     - name: Label
                       href: user-interface/controls/label.md
+                    - name: Map
+                      href: user-interface/controls/map.md
                     - name: ScrollView
                       href: user-interface/controls/scrollview.md
                     - name: Shapes
@@ -447,7 +449,7 @@
             href: platform-integration/appmodel/launcher.md
           - name: Main thread
             href: platform-integration/appmodel/main-thread.md
-          - name: Maps
+          - name: Map
             href: platform-integration/appmodel/maps.md
           - name: Permissions
             href: platform-integration/appmodel/permissions.md
