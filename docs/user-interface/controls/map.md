@@ -27,20 +27,20 @@ After installing the NuGet package, it must be initialized in your app by callin
 ```csharp
 public static class MauiProgram
 {
-		public static MauiApp CreateMauiApp()
-		{
-				var builder = MauiApp.CreateBuilder();
-				builder
-						.UseMauiApp<App>()
-						.ConfigureFonts(fonts =>
-						{
-								fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-								fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-						})
-						.UseMauiMaps();
+    public static MauiApp CreateMauiApp()
+    {
+        var builder = MauiApp.CreateBuilder();
+        builder
+		        .UseMauiApp<App>()
+		        .ConfigureFonts(fonts =>
+		        {
+				        fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+				        fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+		        })
+		        .UseMauiMaps();
 
-				return builder.Build();
-		}
+        return builder.Build();
+    }
 }
 ```
 
@@ -116,10 +116,10 @@ If your app needs to access the user's location, you must request permission by 
 
 ```xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-		...
-		<!-- Required to access the user's location -->
-		<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-		<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+  ...
+  <!-- Required to access the user's location -->
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 </manifest>
 ```
 
