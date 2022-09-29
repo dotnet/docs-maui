@@ -14,15 +14,12 @@ The .NET Multi-platform App UI (.NET MAUI) `Border` is a container control that 
 
 - `Content`, of type `IView`, represents the content to display in the border. This property is the `ContentProperty` of the `Border` class, and therefore does not need to be explicitly set from XAML.
 - `Padding`, of type `Thickness`, represents the distance between the border and its child element.
-
 ::: moniker range="=net-maui-6.0"
 - `StrokeShape`, of type `IShape`, describes the shape of the border. This property has a type converter applied to it that can convert a string to its equivalent `IShape`.
 ::: moniker-end
-
 ::: moniker range=">=net-maui-7.0"
 - `StrokeShape`, of type `IShape`, describes the shape of the border. This property has a type converter applied to it that can convert a string to its equivalent `IShape`. The default value of this property is `Rectangle`.
 ::: moniker-end
-
 - `Stroke`, of type `Brush`, indicates the brush used to paint the border.
 - `StrokeThickness`, of type `double`, indicates the width of the border. The default value of this property is 1.0.
 - `StrokeDashArray`, of type `DoubleCollection`, which represents a collection of `double` values that indicate the pattern of dashes and gaps that make up the border.
