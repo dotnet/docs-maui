@@ -1,7 +1,7 @@
 ---
 title: "Border"
 description: "Learn how to use the .NET MAUI Border class, which is a container control that draws a border, background, or both, around another control."
-ms.date: 05/13/2022
+ms.date: 09/29/2022
 ---
 
 # Border
@@ -14,12 +14,7 @@ The .NET Multi-platform App UI (.NET MAUI) `Border` is a container control that 
 
 - `Content`, of type `IView`, represents the content to display in the border. This property is the `ContentProperty` of the `Border` class, and therefore does not need to be explicitly set from XAML.
 - `Padding`, of type `Thickness`, represents the distance between the border and its child element.
-::: moniker range="=net-maui-6.0"
 - `StrokeShape`, of type `IShape`, describes the shape of the border. This property has a type converter applied to it that can convert a string to its equivalent `IShape`.
-::: moniker-end
-::: moniker range=">=net-maui-7.0"
-- `StrokeShape`, of type `IShape`, describes the shape of the border. This property has a type converter applied to it that can convert a string to its equivalent `IShape`. The default value of this property is `Rectangle`.
-::: moniker-end
 - `Stroke`, of type `Brush`, indicates the brush used to paint the border.
 - `StrokeThickness`, of type `double`, indicates the width of the border. The default value of this property is 1.0.
 - `StrokeDashArray`, of type `DoubleCollection`, which represents a collection of `double` values that indicate the pattern of dashes and gaps that make up the border.
@@ -32,6 +27,12 @@ These properties are backed by `BindableProperty` objects, which means that they
 
 > [!IMPORTANT]
 > When creating a border using a shape, such as a `Rectangle` or `Polygon`, only closed shapes should be used. Therefore, open shapes such as `Line` are unsupported.
+
+::: moniker range=">=net-maui-7.0"
+
+The default value of the `StrokeShape` property is `Rectangle`. Therefore, a `Border` will be rectangular by default.
+
+::: moniker-end
 
 For more information about the properties that control the shape and stroke of the border, see [Shapes](~/user-interface/controls/shapes/index.md).
 
