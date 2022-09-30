@@ -81,10 +81,11 @@ On Android, the `Format` property is respected and displayed by the control. How
 # [iOS\macOS](#tab/ios)
 
 <!-- David, maybe you can fill this out? -->
+None.
 
 # [Windows](#tab/windows)
 
-On Windows, the `Format` property doesn't affect what is displayed by the control. When the picker is shown by pressing on the control, only the hour, minute, and time of day can be changed. For more information about the Windows control, see [Time picker - Windows apps](/windows/apps/design/controls/time-picker).
+On Windows, the `Format` property only affects whether the hour is formatted for 12-hours or 24-hours. Other settings from the `Format` property are ignored. When the picker is shown by pressing on the control, only the hour, minute, and time of day can be changed. For more information about the Windows control, see [Time picker - Windows apps](/windows/apps/design/controls/time-picker).
 
 -----
 <!-- markdownlint-enable MD024 -->
