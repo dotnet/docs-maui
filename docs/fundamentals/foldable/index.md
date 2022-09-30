@@ -2,7 +2,7 @@
 title: "Supporting foldable devices with adaptive layouts"
 description: "Learn how to use build apps that adapt to foldable devices (for example in the Android ecosystem)."
 monikerRange: ">= net-maui-7.0"
-ms.date: 11/01/2022
+ms.date: 10/01/2022
 ---
 # Foldable device support overview
 
@@ -19,26 +19,26 @@ Follow these instructions to create a foldable layout in your .NET MAUI app:
 1. Open the **NuGet Package Manager** dialog for your solution.
 2. Under the **Browse** tab, search for `Microsoft.Maui.Controls.Foldable`.
 3. Install the `Microsoft.Maui.Controls.Foldable` package to your solution.
-4. Add the following initialization method call to the project's `MauiApp` class, in the `CreateMauiApp` method:
+4. Add the `UseFoldable()` initialization method (and namespace) call to the project's `MauiApp` class, in the `CreateMauiApp` method:
 
     ```csharp
-    using Microsoft.Maui.Foldable;
+    using Microsoft.Maui.Foldable; // ADD THIS NAMESPACE
     ...
     public static MauiApp CreateMauiApp()
     {
         var builder = MauiApp.CreateBuilder();
         ...
-        builder.UseFoldable();
+        builder.UseFoldable(); // ADD THIS LINE TO THE TEMPLATE
         return builder.Build();
     }
     ```
 
     The `UseFoldable()` initialization is required for the app to be able to detect changes in the app's state, such as being spanned across a fold.
 
-5. Update the `[Activity()]` attribute on the `MainActivity` class in **Platforms/Android**, so that it includes _all_ these `ConfigurationChanges` options:
+5. Update the `[Activity(...)]` attribute on the `MainActivity` class in **Platforms/Android**, so that it includes _all_ these `ConfigurationChanges` options:
 
-    ```@csharp
-    ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation
+    ```csharp
+    ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.ScreenSize
         | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize | ConfigChanges.UiMode
     ```
 

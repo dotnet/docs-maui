@@ -2,15 +2,17 @@
 title: "TwoPaneView foldable and large-screen layout control"
 description: "Learn how to use the SemanticProperties class in a .NET MAUI app, so that a screen reader can speak about the user interface elements on a page."
 monikerRange: ">= net-maui-7.0"
-ms.date: 11/01/2022
+ms.date: 10/01/2022
 ---
 # .NET MAUI TwoPaneView layout
 
-[![Browse sample.](~/media/code-sample.png) Browse the sample](https://github.com/conceptdev/dotnet-maui-samples/blob)
+[![Browse sample.](~/media/code-sample.png) Browse the sample](https://github.com/conceptdev/dotnet-maui-samples/)
 
 The `TwoPaneView` class represents a container with two views that size and position content in the available space, either side-by-side or top-to-bottom. `TwoPaneView` inherits from `Grid` so the easiest way to think about these properties is as if they are being applied to a grid.
 
-is provided by the [Microsoft.Maui.Controls.Foldable NuGet package](https://www.nuget.org/packages/Microsoft.Maui.Controls.Foldable/).
+![Surface Duo dual-screen emulator showing a basic TwoPaneView test app](media/emulator-foldable-maui-app.png)
+
+The layout control is provided by the [Microsoft.Maui.Controls.Foldable NuGet package](https://www.nuget.org/packages/Microsoft.Maui.Controls.Foldable/).
 
 > [!IMPORTANT]
 > The `TwoPaneView` control only adapts to Android foldable devices that support the Jetpack Window Manager API provided by Google (such as Microsoft Surface Duo). On all other platforms and devices it acts like a configurable and responsive split view that can dynamically show one or two panes, proportionally sized on the screen.
