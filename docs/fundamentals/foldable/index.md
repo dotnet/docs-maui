@@ -4,7 +4,7 @@ description: "Learn how to use build apps that adapt to foldable devices (for ex
 monikerRange: ">= net-maui-7.0"
 ms.date: 11/01/2022
 ---
-# Overview
+# Foldable device support overview
 
 Foldable devices include the Microsoft Surface Duo and Android devices from other manufacturers. They bridge the gap between phones and larger screens like tablets and desktops because apps might need to adjust to a variety of screen sizes and orientations on the same device, including adapting to a hinge or fold in the screen.
 
@@ -14,22 +14,23 @@ Visit the [dual-screen developer docs](/dual-screen/) for more information about
 
 ## Get started
 
+Follow these instructions to create a foldable layout in your .NET MAUI app:
 
 1. Open the **NuGet Package Manager** dialog for your solution.
-2. Under the **Browse** tab, search for `Xamarin.Forms.DualScreen`.
-3. Install the `Xamarin.Forms.DualScreen` package to your solution.
+2. Under the **Browse** tab, search for `Microsoft.Maui.Controls.Foldable`.
+3. Install the `Microsoft.Maui.Controls.Foldable` package to your solution.
 4. Add the following initialization method call to the project's `MauiApp` class, in the `CreateMauiApp` method:
 
     ```csharp
     using Microsoft.Maui.Foldable;
     ...
     public static MauiApp CreateMauiApp()
-	{
-		var builder = MauiApp.CreateBuilder();
+    {
+        var builder = MauiApp.CreateBuilder();
         ...
         builder.UseFoldable();
         return builder.Build();
-	}
+    }
     ```
 
     The `UseFoldable()` initialization is required for the app to be able to detect changes in the app's state, such as being spanned across a fold.

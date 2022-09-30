@@ -45,7 +45,6 @@ To add the TwoPaneView layout to your page:
     </foldable:TwoPaneView>
     ```
 
-
 ## Understand TwoPaneView modes
 
 Only one of these modes can be active:
