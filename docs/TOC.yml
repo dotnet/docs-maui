@@ -149,6 +149,12 @@
                 href: fundamentals/bindable-properties.md
               - name: Attached properties
                 href: fundamentals/attached-properties.md
+        - name: Foldable devices
+          items:
+              - name: Overview
+                href: fundamentals/foldable/index.md
+              - name: TwoPaneView
+                href: fundamentals/foldable/twopaneview.md
         - name: Publish and subscribe to messages
           href: fundamentals/messagingcenter.md
         - name: Resource dictionaries
