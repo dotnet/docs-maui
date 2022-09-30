@@ -142,6 +142,8 @@ landingContent:
     linkLists:
       - linkListType: concept
         links:
+          - text: Azure mobile apps
+            url: /azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui/
           - text: Consume a REST-based web service
             url: data-cloud/rest.md
           - text: Connect to local web services
