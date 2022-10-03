@@ -94,3 +94,5 @@ Now that **note page** is finished, you need a way to present it to the user. Op
 Save the file and run the app. Try typing into the entry box and press the **Save** button. Close the app, and reopen it. The note you entered should be loaded from the device's storage.
 
 :::image type="content" source="../media/note/final.png" alt-text="Note entry page in .NET MAUI app.":::
+
+[![Explore the code.](~/media/code-sample.png) Explore the code for this step of the tutorial.](https://github.com/dotnet/maui-samples/tree/main/6.0/Tutorials/CreateNetMauiApp/step3)
