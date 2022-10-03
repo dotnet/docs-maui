@@ -10,7 +10,7 @@ ms.date: 10/03/2022
 A .NET Multi-platform App UI (.NET MAUI) tooltip is a small rectangular popup that displays a brief description of a view's purpose, when the user rests the pointer on the [view](~/user-interface/controls/index.md#views). Tooltips display automatically, typically when the user hovers the pointer over the associated view:
 
 - On Android, tooltips are displayed when users long press the view. Tooltips remain visible for a few seconds after the long press is released.
-- On iOS, tooltips are displayed when the pointer is positioned over the view for a few seconds. Tooltips on iOS require the use of iOS 15.0+.
+- On iOS, to show a tooltip your app must be an iPhone or iPad app running on a Mac with Apple silicon. Providing this criteria is met, tooltips are displayed when the pointer is positioned over the view for a few seconds, and remain visible until the pointer moves away from the view. Tooltips on iOS require the use of iOS 15.0+. For more information about using iPhone and iPad apps on a Mac with Apple silicon, see [Use iPhone and iPad apps on Mac with Apple silicon](https://support.apple.com/guide/app-store/fird2c7092da/mac).
 - On Mac Catalyst, tooltips are displayed when the pointer is positioned over the view for a few seconds. Tooltips remain visible until the pointer moves away from the view. Tooltips on Mac Catalyst require the use of Mac Catalyst 15.0+.
 - On Windows, tooltips are displayed when the pointer hovers over the view. Tooltips remain visible for a few seconds, or until the pointer stops hovering over the view.
 
