@@ -24,7 +24,7 @@ The `PointerGestureRecognizer` class also defines the following events:
 - `PointerExited`, that's raised when the pointer that's in the view's bounding area leaves that bounding area.
 - `PointerMoved`, that's raised when the pointer moves while remaining within the bounding area of the view.
 
-A `PointerEventArgs` object accompanies all three events, and defines a `GetPosition` method that returns a `Point?` object that represents the position of the pointer when the gesture was detected.
+A `PointerEventArgs` object accompanies all three events, and defines a `GetPosition` method that returns a `Point?` object that represents the position of the pointer when the gesture was detected. For more information about the `GetPosition` method, see [Get the pointer position](#get-the-pointer-position).
 
 > [!IMPORTANT]
 > Pointer gesture recognition is only supported on iPadOS, Mac Catalyst, and Windows.
@@ -88,11 +88,20 @@ image.GestureRecognizers.Add(pointerGestureRecognizer);
 
 ## Get the pointer position
 
-The position at which a pointer gesture occurred can be obtained by calling the `GetPosition` method on a `PointerEventArgs` object:
+The position at which a pointer gesture occurred can be obtained by calling the `GetPosition` method on a `PointerEventArgs` object. The `GetPosition` method accepts an `Element?` argument, and returns a position as a `Point?` object:
 
 ```csharp
 void OnPointerExited(object sender, PointerEventArgs e)
 {
-    Point? position = e.GetPosition((View)sender);
+    // Position inside window
+    Point? windowPosition = e.GetPosition(null);
+
+    // Position relative to an Image
+    Point? relativeToImagePosition = e.GetPosition(image);
+
+    // Position relative to the container view
+    Point? relativeToContainerPosition = e.GetPosition((View)sender);
 }
 ```
+
+The `Element?` argument defines the element the position should be obtained relative to. Supplying a `null` value as this argument means that the `GetPosition` method returns a `Point?` object that defines the position of the gesture inside the window.
