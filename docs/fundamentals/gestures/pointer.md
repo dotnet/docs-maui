@@ -1,6 +1,7 @@
 ---
 title: "Recognize a pointer gesture"
 description: "Learn how to use the PointerGestureRecognizer class, to detect when the pointer enters, exits, and moves within a view on iPadOS, Mac Catalyst, and Windows."
+monikerRange: ">= net-maui-7.0"
 ms.date: 10/03/2022
 ---
 
