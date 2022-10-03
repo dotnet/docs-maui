@@ -23,12 +23,12 @@ A .NET Multi-platform App UI (.NET MAUI) tap gesture recognizer is used for tap 
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
+::: moniker range="=net-maui-6.0"
 The `TapGestureRecognizer` class also defines a `Tapped` event that's raised when a tap is recognized. The `TappedEventArgs` object that accompanies the `Tapped` event defines a `Parameter` property of type `object` that indicates the value passed by the `CommandParameter` property, if defined.
+::: moniker-end
 
 ::: moniker range=">=net-maui-7.0"
-
-The `TappedEventArgs` object also defines a `Buttons` property, and a `GetPosition` method. The `Buttons` property is of type `ButtonsMask`, and can be used to determine whether the primary or secondary mouse button triggered the gesture recognizer on Windows. The `GetPosition` method returns a `Point?` object that represents the position at which the tap gesture was detected. For more information about button masks, see [Button masks](#button-masks). For more information about the `GetPosition` method, see [Get the gesture position](#get-the-pointer-position).
-
+The `TapGestureRecognizer` class also defines a `Tapped` event that's raised when a tap is recognized. The `TappedEventArgs` object that accompanies the `Tapped` event defines a `Parameter` property of type `object` that indicates the value passed by the `CommandParameter` property, if defined. The `TappedEventArgs` object also defines a `Buttons` property, and a `GetPosition` method. The `Buttons` property is of type `ButtonsMask`, and can be used to determine whether the primary or secondary mouse button triggered the gesture recognizer on Mac Catalyst and Windows. The `GetPosition` method returns a `Point?` object that represents the position at which the tap gesture was detected. For more information about button masks, see [Define the button mask](#define-the-button-mask). For more information about the `GetPosition` method, see [Get the gesture position](#get-the-gesture-position).
 ::: moniker-end
 
 ## Create a TapGestureRecognizer
@@ -65,13 +65,13 @@ Image image = new Image();
 image.GestureRecognizers.Add(tapGestureRecognizer);
 ```
 
-By default the `Image` will respond to single taps. When the `NumberOfTapsRequired` property is set to above one, the event handler will only be executed if the taps occur within a set period of time. If the second (or subsequent) taps don't occur within that period, they're effectively ignored.
+By default the `Image` will respond to single taps. When the `NumberOfTapsRequired` property is set to greater than one, the event handler will only be executed if the taps occur within a set period of time. If the second (or subsequent) taps don't occur within that period, they're effectively ignored.
 
 ::: moniker range=">=net-maui-7.0"
 
-## Button masks
+## Define the button mask
 
-A `TapGestureRecognizer` object has a `Buttons` property, of type `ButtonsMask`, which defines whether the primary or secondary mouse button, or both, triggers the gesture on Mac Catalyst and Windows. The `ButtonsMask` enumeration defines the following members:
+A `TapGestureRecognizer` object has a `Buttons` property, of type `ButtonsMask`, that defines whether the primary or secondary mouse button, or both, triggers the gesture on Mac Catalyst and Windows. The `ButtonsMask` enumeration defines the following members:
 
 - `Primary` represents the primary mouse button, which is typically the left mouse button.
 - `Secondary` represents the secondary mouse button, which is typically the right mouse button.
@@ -87,7 +87,7 @@ The following example shows a `TapGestureRecognizer` that detects taps with the 
 </Image>
 ```
 
-The code for the `OnTapGestureRecognizerTapped` event handler can determine which button triggered the gesture:
+The event handler for the `Tapped` event can determine which button triggered the gesture:
 
 ```csharp
 void OnTapGestureRecognizerTapped(object sender, TappedEventArgs args)
@@ -120,7 +120,7 @@ image.GestureRecognizers.Add(tapGestureRecognizer);
 ```
 
 > [!WARNING]
-> A `TapGestureRecognizer` that sets the `Buttons` property to `Secondary` currently doesn't work when the `NumberOfTapsRequired` required property is set to above one.
+> A `TapGestureRecognizer` that sets the `Buttons` property to `Secondary` doesn't respect the `NumberOfTapsRequired` property when it's greater than one.
 
 In addition, a `TapGestureRecognizer` can be defined so that either the primary or secondary mouse button triggers the gesture on Windows:
 
