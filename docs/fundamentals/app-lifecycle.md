@@ -46,7 +46,7 @@ In addition, the `Windows` class also defines the following events that are only
 
 | Event | Description | Action to take |
 | -- | -- | -- |
-| `Backgrounding` | This event is raised on iOS and Mac Catalyst when the Window is closed or enters a background state, and is accompanied by a `BackgroundingEventArgs` object. | Persist any `string` state to the `State` property of the `BackgroundingEventArgs` object, which the OS will preserve until it's time to resume the window. When the window is resumed the state is provided by the `IActivationState` argument to the `Window.CreateWindow` override. |
+| `Backgrounding` | This event is raised on iOS and Mac Catalyst when the Window is closed or enters a background state, and is accompanied by a `BackgroundingEventArgs` object. | Persist any `string` state to the `State` property of the `BackgroundingEventArgs` object, which the OS will preserve until it's time to resume the window. When the window is resumed the state is provided by the `IActivationState` argument to the `CreateWindow` override. |
 | `DisplayDensityChanged` | This event is raised on Android and Windows when the effective dots per inch (DPI) for the window has changed, and is accompanied by a `DisplayDensityChangedEventArgs` object. | |
 
 In addition to these events, the `Window` class also has the following overridable methods:
