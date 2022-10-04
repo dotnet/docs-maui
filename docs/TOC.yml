@@ -139,6 +139,8 @@
                 href: fundamentals/gestures/pan.md
               - name: Pinch
                 href: fundamentals/gestures/pinch.md
+              - name: Pointer
+                href: fundamentals/gestures/pointer.md
               - name: Swipe
                 href: fundamentals/gestures/swipe.md
               - name: Tap

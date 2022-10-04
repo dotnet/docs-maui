@@ -651,7 +651,7 @@ public class MauiVideoPlayer : UIView
 }
 ```
 
-In some scenarios, videos continue playing after a video playback page has been navigated away from. To stop the video, the `ReplaceCurrentItemWIthPlayerItem` is set to `null` in the `Dispose` override, and other native view cleanup is performed.
+In some scenarios, videos continue playing after a video playback page has been navigated away from. To stop the video, the `ReplaceCurrentItemWithPlayerItem` is set to `null` in the `Dispose` override, and other native view cleanup is performed.
 
 > [!NOTE]
 > The `Dispose` override is called by the handler's `DisconnectHandler` override.
@@ -899,7 +899,7 @@ When processing objects of type `UriVideoSource`, the static `AVAsset.FromUrl` m
 
 The `AutoPlay` property has no equivalent in the iOS video classes, so the property is examined at the end of the `UpdateSource` method to call the `Play` method on the `AVPlayer` object.
 
-In some cases on iOS, videos continue playing after the video playback page has been navigated away from. To stop the video, the `ReplaceCurrentItemWIthPlayerItem` is set to `null` in the `Dispose` override:
+In some cases on iOS, videos continue playing after the video playback page has been navigated away from. To stop the video, the `ReplaceCurrentItemWithPlayerItem` is set to `null` in the `Dispose` override:
 
 ```csharp
 protected override void Dispose(bool disposing)
@@ -1086,7 +1086,7 @@ namespace VideoDemos.Platforms.MaciOS
 
 When processing objects of type `FileVideoSource`, the `GetUrlForResource` method of `NSBundle` is used to retrieve the file from the app package. The complete path must be divided into a filename, extension, and directory.
 
-In some cases on iOS, videos continue playing after the video playback page has been navigated away from. To stop the video, the `ReplaceCurrentItemWIthPlayerItem` is set to `null` in the `Dispose` override:
+In some cases on iOS, videos continue playing after the video playback page has been navigated away from. To stop the video, the `ReplaceCurrentItemWithPlayerItem` is set to `null` in the `Dispose` override:
 
 ```csharp
 protected override void Dispose(bool disposing)
@@ -1211,7 +1211,7 @@ namespace VideoDemos.Platforms.MaciOS
             {
                 string uri = (_video.Source as FileVideoSource).File;
                 if (!string.IsNullOrWhiteSpace(uri))
-                    asset = AVAsset.FromUrl(new NSUrl(uri));
+                    asset = AVAsset.FromUrl(NSUrl.CreateFileUrl(new [] { uri }));
             }
             ...
         }
@@ -1220,7 +1220,7 @@ namespace VideoDemos.Platforms.MaciOS
 }
 ```
 
-When processing objects of type `FileVideoSource`, the static `AVAsset.FromUrl` method is used to specify the video file to be played, with an iOS `NSUrl` object created from the string URI.
+When processing objects of type `FileVideoSource`, the static `AVAsset.FromUrl` method is used to specify the video file to be played, with the `NSUrl.CreateFileUrl` method creating an iOS `NSUrl` object from the string URI.
 
 ## Create custom transport controls
 
@@ -1316,7 +1316,7 @@ This mechanism ensures that when the `Play`, `Pause`, or `Stop` method is invoke
 
 Implementing play, pause, and stop functionality isn't sufficient for supporting custom transport controls. Often the play and pause functionality should be implemented with the same button, which changes its appearance to indicate whether the video is currently playing or paused. In addition, the button shouldn't even be enabled if the video hasn't yet loaded.
 
-These requirements imply that that video player needs to make available a current status indicating if it's playing or paused, or if it's not yet ready to play a video. This status can be represented by an enumeration:
+These requirements imply that video player needs to make available a current status indicating if it's playing or paused, or if it's not yet ready to play a video. This status can be represented by an enumeration:
 
 ```csharp
 public enum VideoStatus
