@@ -207,8 +207,6 @@ The following table lists the .NET MAUI delegates that are invoked in response t
 
 ::: moniker-end
 
-::: moniker range=">=net-maui-7.0"
-
 | Delegate | Arguments | Description |
 | -- | -- | -- |
 | `ApplicationSignificantTimeChange` | `UIKit.UIApplication` | Invoked when a significant time change occurs, such as midnight, carrier-changed time, or the start or stop of daylight savings. |
@@ -235,8 +233,6 @@ The following table lists the .NET MAUI delegates that are invoked in response t
 | `WillFinishLaunching` | `UIKit.UIApplication`, `Foundation.NSDictionary` | Invoked when app launching has begun, but state restoration has not yet occurred. |
 | `WillTerminate` | `UIKit.UIApplication` | Invoked if the app is being terminated due to memory constraints, or directly by the user. |
 | `WindowSceneDidUpdateCoordinateSpace` | `UIKit.UIWindowScene`, `UIKit.IUICoordinateSpace, `UIKit.UIInterfaceOrientation`, `UIKit.UITraitCollection` | Invoked when the size, orientation, or traits of a scene change. |
-
-::: moniker-end
 
 > [!IMPORTANT]
 > Each delegate has a corresponding identically named extension method, that can be called to register a handler for the delegate.
