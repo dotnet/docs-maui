@@ -189,6 +189,7 @@ For more information about the Android app lifecycle, see [Understand the Activi
 The following table lists the .NET MAUI delegates that are invoked in response to iOS lifecycle events being raised:
 
 ::: moniker range="=net-maui-6.0"
+
 | Delegate | Arguments | Description |
 | -- | -- | -- |
 | `ContinueUserActivity` | `UIKit.UIApplication`, `Foundation.NSUserActivity`, `UIKit.UIApplicationRestorationHandler` | Invoked when the app receives data associated with a user activity, such as transferring an activity from a different device using Handoff. |
@@ -203,9 +204,11 @@ The following table lists the .NET MAUI delegates that are invoked in response t
 | `WillEnterForeground` | `UIKit.UIApplication` | Invoked if the app will be returning from a backgrounded state. |
 | `WillFinishLaunching` | `UIKit.UIApplication`, `Foundation.NSDictionary` | Invoked when app launching has begun, but state restoration has not yet occurred. |
 | `WillTerminate` | `UIKit.UIApplication` | Invoked if the app is being terminated due to memory constraints, or directly by the user. |
+
 ::: moniker-end
 
 ::: moniker range=">=net-maui-7.0"
+
 | Delegate | Arguments | Description |
 | -- | -- | -- |
 | `ApplicationSignificantTimeChange` | `UIKit.UIApplication` | Invoked when a significant time change occurs, such as midnight, carrier-changed time, or the start or stop of daylight savings. |
@@ -231,6 +234,8 @@ The following table lists the .NET MAUI delegates that are invoked in response t
 | `WillEnterForeground` | `UIKit.UIApplication` | Invoked if the app will be returning from a backgrounded state. |
 | `WillFinishLaunching` | `UIKit.UIApplication`, `Foundation.NSDictionary` | Invoked when app launching has begun, but state restoration has not yet occurred. |
 | `WillTerminate` | `UIKit.UIApplication` | Invoked if the app is being terminated due to memory constraints, or directly by the user. |
+| `WindowSceneDidUpdateCoordinateSpace` | `UIKit.UIWindowScene`, `UIKit.IUICoordinateSpace, `UIKit.UIInterfaceOrientation`, `UIKit.UITraitCollection` | Invoked when the size, orientation, or traits of a scene change. |
+
 ::: moniker-end
 
 
