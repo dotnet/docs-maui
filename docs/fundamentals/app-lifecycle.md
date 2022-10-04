@@ -42,6 +42,13 @@ These cross-platform events map to different platform events, and the following 
 | `Resumed` | `OnRestart` | `WillEnterForeground` | `Resumed` |
 | `Destroying` | `OnDestroy` | `WillTerminate` | `Closed` |
 
+In addition, the `Windows` class also defines the following events that are only raised on specific platforms:
+
+| Event | Description | Action to take |
+| -- | -- | -- |
+| `Backgrounding` | This event is raised on iOS and Mac Catalyst when the Window is closed or enters a background state, and is accompanied by a `BackgroundingEventArgs` object. | Persist any `string` state to the `State` property of the `BackgroundingEventArgs` object, which the OS will preserve until it's time to resume the window. When the window is resumed the state is provided by the `IActivationState` argument to the `Window.CreateWindow` override. |
+| `DisplayDensityChanged` | This event is raised on Android and Windows when the effective dots per inch (DPI) for the window has changed, and is accompanied by a `DisplayDensityChangedEventArgs` object. | |
+
 In addition to these events, the `Window` class also has the following overridable methods:
 
 - `OnCreated`, which is invoked when the `Created` event is raised.
@@ -50,6 +57,8 @@ In addition to these events, the `Window` class also has the following overridab
 - `OnStopped`, which is invoked when the `Stopped` event is raised.
 - `OnResumed`, which is invoked when the `Resumed` event is raised.
 - `OnDestroying`, which is invoked when the `Destroying` event is raised.
+- `OnBackgrounding`, which is invoked when the `Backgrounding` event is raised.
+- `OnDisplayDensityChanged`, which is invoked when the `DisplayDensityChanged` event is raised.
 
 To subscribe to the `Window` lifecycle events, override the `CreateWindow` method in your `App` class to create a `Window` instance on which you can subscribe to events:
 
@@ -324,9 +333,9 @@ namespace PlatformLifecycleDemo
                           .OnVisibilityChanged((window, args) => LogEvent("OnVisibilityChanged"))
                           .OnPlatformMessage((window, args) =>
                           {
-                              if (args.MessageId == Convert.ToUInt32("0x02E0"))
+                              if (args.MessageId == Convert.ToUInt32("0x031A"))
                               {
-                                  // DPI has changed
+                                  // System theme has changed
                               }
                           }));
 #endif
