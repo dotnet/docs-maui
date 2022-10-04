@@ -188,8 +188,6 @@ For more information about the Android app lifecycle, see [Understand the Activi
 
 The following table lists the .NET MAUI delegates that are invoked in response to iOS lifecycle events being raised:
 
-::: moniker range="=net-maui-6.0"
-
 | Delegate | Arguments | Description |
 | -- | -- | -- |
 | `ContinueUserActivity` | `UIKit.UIApplication`, `Foundation.NSUserActivity`, `UIKit.UIApplicationRestorationHandler` | Invoked when the app receives data associated with a user activity, such as transferring an activity from a different device using Handoff. |
@@ -205,7 +203,6 @@ The following table lists the .NET MAUI delegates that are invoked in response t
 | `WillFinishLaunching` | `UIKit.UIApplication`, `Foundation.NSDictionary` | Invoked when app launching has begun, but state restoration has not yet occurred. |
 | `WillTerminate` | `UIKit.UIApplication` | Invoked if the app is being terminated due to memory constraints, or directly by the user. |
 
-::: moniker-end
 
 | Delegate | Arguments | Description |
 | -- | -- | -- |
