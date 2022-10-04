@@ -9,16 +9,20 @@ ms.date: 10/03/2022
 A .NET Multi-platform App UI (.NET MAUI) tap gesture recognizer is used for tap detection and is implemented with the `TapGestureRecognizer` class. This class defines the following properties:
 
 ::: moniker range="=net-maui-6.0"
+
 - `Command`, of type `ICommand`, which is executed when a tap is recognized.
 - `CommandParameter`, of type `object`, which is the parameter that's passed to the `Command`.
 - `NumberOfTapsRequired`, of type `int`, which represents the number of taps required to recognize a tap gesture. The default value of this property is 1.
+
 ::: moniker-end
 
 ::: moniker range=">=net-maui-7.0"
+
 - `Buttons`, of type `ButtonsMask`, which defines whether the primary or secondary mouse button, or both, triggers the gesture on Mac Catalyst and Windows. For more information, see [Define the button masks](#define-the-button-mask).
 - `Command`, of type `ICommand`, which is executed when a tap is recognized.
 - `CommandParameter`, of type `object`, which is the parameter that's passed to the `Command`.
 - `NumberOfTapsRequired`, of type `int`, which represents the number of taps required to recognize a tap gesture. The default value of this property is 1.
+
 ::: moniker-end
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
