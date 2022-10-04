@@ -238,7 +238,6 @@ The following table lists the .NET MAUI delegates that are invoked in response t
 
 ::: moniker-end
 
-
 > [!IMPORTANT]
 > Each delegate has a corresponding identically named extension method, that can be called to register a handler for the delegate.
 
