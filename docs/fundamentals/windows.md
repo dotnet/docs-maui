@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI windows"
 description: "Learn how to use the .NET MAUI Window class to create, configure, show, and manage multi-window apps."
-ms.date: 04/19/2022
+ms.date: 10/04/2022
 ---
 
 # .NET MAUI windows
@@ -35,8 +35,8 @@ The `Window` class also defines the following lifecycle events:
 - `Deactivated`, which is raised when the Window is deactivated.
 - `Stopped`, which is raised when the Window is stopped.
 - `Destroying`, which is raised when the Window is destroyed.
-- `Backgrounding`, with `BackgroundingEventArgs`, which is raised when the Window is entering a background state.
-- `DisplayDensityChanged`, with `DisplayDensityChangedEventArgs`, which is raised when the effective dots per inch (DPI) for the Window has changed.
+- `Backgrounding`, with an accompanying `BackgroundingEventArgs` object, which is raised on iOS and Mac Catalyst when the Window is closed or enters a background state. This event can be used to persist any `string` state to the `State` property of the `BackgroundingEventArgs` object, which the OS will preserve until it's time to resume the window. When the window is resumed the state is provided via the `IActivationState` argument to the `CreateWindow` method.
+- `DisplayDensityChanged`, with an accompanying `DisplayDensityChangedEventArgs` object, which is raised on Android and Windows when the effective dots per inch (DPI) for the window has changed.
 
 For more information about the lifecycle events, and their associated overrides, see [App lifecycle](app-lifecycle.md).
 
