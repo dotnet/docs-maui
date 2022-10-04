@@ -120,9 +120,9 @@ image.GestureRecognizers.Add(tapGestureRecognizer);
 ```
 
 > [!WARNING]
-> A `TapGestureRecognizer` that sets the `Buttons` property to `Secondary` doesn't respect the `NumberOfTapsRequired` property when it's greater than one.
+> On Windows, a `TapGestureRecognizer` that sets the `Buttons` property to `Secondary` doesn't respect the `NumberOfTapsRequired` property when it's greater than one.
 
-In addition, a `TapGestureRecognizer` can be defined so that either the primary or secondary mouse button triggers the gesture on Windows:
+In addition, a `TapGestureRecognizer` can be defined so that either the primary or secondary mouse button triggers the gesture:
 
 ```xaml
 <TapGestureRecognizer Tapped="OnTapGestureRecognizerTapped"
@@ -134,7 +134,7 @@ The equivalent C# code is:
 ```csharp
 TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer
 {
-    Buttons = ButtonsMask.Secondary | ButtonsMask.Primary
+    Buttons = ButtonsMask.Primary | ButtonsMask.Secondary
 };
 ```
 
