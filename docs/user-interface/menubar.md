@@ -19,7 +19,7 @@ An item in a menu is represented by a `MenuFlyoutItem`, and a sub menu for a men
 
 ::: moniker range=">=net-maui-7.0"
 In addition, a horizontal line that separates items in a menu is represented by a `MenuFlyoutSeparator`.
-::: moniker end
+::: moniker-end
 
 ## Create menu bar items
 
@@ -64,7 +64,7 @@ This example defines three top-level menus. Each top-level menu has menu items, 
 
 :::image type="content" source="media/menubar/menubar-net6.png" alt-text="Screenshot of menu bar in .NET 6.":::
 
-::: moniker end
+::: moniker-end
 
 ::: moniker range=">=net-maui-7.0"
 ```xaml
@@ -108,7 +108,7 @@ This example defines three top-level menus. Each top-level menu has menu items, 
 
 :::image type="content" source="media/menubar/menubar-net7.png" alt-text="Screenshot of menu bar in .NET 7.":::
 
-::: moniker end
+::: moniker-end
 
 Each `MenuFlyoutItem` defines a menu item that executes an `ICommand` when selected.
 
