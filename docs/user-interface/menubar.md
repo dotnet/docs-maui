@@ -110,7 +110,7 @@ This example defines three top-level menus. Each top-level menu has menu items, 
 
 ::: moniker-end
 
-Each `MenuFlyoutItem` defines a menu item that executes an `ICommand` when selected.
+In this example, each `MenuFlyoutItem` defines a menu item that executes an `ICommand` when selected.
 
 ## Mac Catalyst limitations
 
