@@ -7,7 +7,7 @@ ms.date: 10/06/2022
 
 # Display a context menu in a .NET MAUI desktop app
 
-A context menu, often known as a right-click menu, offers contextual commands that are specific to the element being clicked on. In .NET Multi-platform App UI (.NET MAUI), a context menu can be added to any control that derives from `Element`, on Mac Catalyst and Windows. This includes all pages, layouts, and views.
+A context menu, often known as a right-click menu, offers contextual commands that are specific to the control being clicked on. In .NET Multi-platform App UI (.NET MAUI), a context menu can be added to any control that derives from `Element`, on Mac Catalyst and Windows. This includes all pages, layouts, and views.
 
 A context menu is defined with a `MenuFlyout`, which can consist of the following children:
 
@@ -22,7 +22,7 @@ A context menu is defined with a `MenuFlyout`, which can consist of the followin
 
 ## Create context menu items
 
-A `MenuFlyout` object can be added to the `FlyoutBase.ContextFlyout` attached property of any control that derives from `Element`. When the user right-clicks on the element, the context menu will appear at the location where the pointer was right-clicked.
+A `MenuFlyout` object can be added to the `FlyoutBase.ContextFlyout` attached property of any control that derives from `Element`. When the user right-clicks on the control, the context menu will appear at the location where the pointer was clicked.
 
 The following example shows a `WebView` that defines a context menu:
 
@@ -52,14 +52,14 @@ When a menu item is clicked upon, the `OnWebViewGoToRepoClicked` event handler i
 ```csharp
 void OnWebViewGoToRepoClicked(object sender, EventArgs e)
 {
-  MenuFlyoutItem menuItem = sender as MenuFlyoutItem;
-  string repo = menuItem.CommandParameter as string;
-  string url = repo == "docs" ? "docs-maui" : "maui";
-  webView.Source = new UrlWebViewSource { Url = $"https://github.com/dotnet/{url}" };
+    MenuFlyoutItem menuItem = sender as MenuFlyoutItem;
+    string repo = menuItem.CommandParameter as string;
+    string url = repo == "docs" ? "docs-maui" : "maui";
+    webView.Source = new UrlWebViewSource { Url = $"https://github.com/dotnet/{url}" };
 }
 ```
 
-The `OnWebViewGoToRepoClicked` event handler retrieves the `CommandParameter` property value for the `MenuFlyoutItem` object that was clicked, and uses it's value to build the URL that the `WebView` navigates to.
+The `OnWebViewGoToRepoClicked` event handler retrieves the `CommandParameter` property value for the `MenuFlyoutItem` object that was clicked, and uses its value to build the URL that the `WebView` navigates to.
 
 > [!WARNING]
 > It's not currently possible to add items to, or remove items from, the `MenuFlyout` at runtime.
@@ -120,7 +120,7 @@ void OnLabelClicked(object sender, EventArgs e)
 
 ## Display icons on menu items
 
-An `IconImageSource` property is settable on `MenuFlyoutItem` and `MenuFlyoutSubItem` objects, to a small icon that's displayed next to the text for a context menu item. This icon can either be an image, or a font icon. For information about adding images to .NET MAUI projects, see [Add images to a .NET MAUI app project](~/user-interface/images/images.md). For more information about displaying font icons, see [Display font icons](~/user-interface/fonts.md#display-font-icons).
+`MenuFlyoutItem` and `MenuFlyoutSubItem` inherit the `IconImageSource` property from `MenuItem`, which enables a small icon to be displayed next to the text for a context menu item. This icon can either be an image, or a font icon.
 
 > [!WARNING]
 > Mac Catalyst does not support displaying icons on context menu items.
@@ -154,3 +154,5 @@ The following example shows a context menu, where the icons for menu items are d
 In this example, the context menu defines two menu items that display an icon and text on Windows:
 
 :::image type="content" source="media/context-menu/icons.png" alt-text="Screenshot of a context menu that uses icons.":::
+
+For more information about displaying font icons, see [Display font icons](~/user-interface/fonts.md#display-font-icons). For information about adding images to .NET MAUI projects, see [Add images to a .NET MAUI app project](~/user-interface/images/images.md).

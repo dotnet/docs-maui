@@ -6,7 +6,7 @@ ms.date: 10/05/2022
 
 # Display a menu bar in a .NET MAUI desktop app
 
-A .NET Multi-platform App UI (.NET MAUI) menu bar is a container that presents a set of menus in a horizontal row, at the top of an app on Windows and Mac Catalyst.
+A .NET Multi-platform App UI (.NET MAUI) menu bar is a container that presents a set of menus in a horizontal row, at the top of an app on Mac Catalyst and Windows.
 
 Each top-level menu in the menu bar, known as a menu bar item, is represented by a `MenuBarItem` object. `MenuBarItem` defines the following properties:
 
@@ -15,7 +15,7 @@ Each top-level menu in the menu bar, known as a menu bar item, is represented by
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
-A menu bar item can consist of the following children:
+A `MenuBarItem` can consist of the following children:
 
 ::: moniker range="=net-maui-6.0"
 
@@ -127,7 +127,7 @@ In this example, each `MenuFlyoutItem` defines a menu item that executes an `ICo
 
 ## Display icons on menu items
 
-An `IconImageSource` property is settable on `MenuFlyoutItem` and `MenuFlyoutSubItem` objects, to a small icon that's displayed next to the text for a menu item. This icon can either be an image, or a font icon. For information about adding images to .NET MAUI projects, see [Add images to a .NET MAUI app project](~/user-interface/images/images.md). For more information about displaying font icons, see [Display font icons](~/user-interface/fonts.md#display-font-icons).
+`MenuFlyoutItem` and `MenuFlyoutSubItem` inherit the `IconImageSource` property from `MenuItem`, which enables a small icon to be displayed next to the text for a menu item. This icon can either be an image, or a font icon.
 
 > [!WARNING]
 > Mac Catalyst does not support displaying icons on menu items.
@@ -162,6 +162,8 @@ The following example shows a menu bar item, where the icons for menu items are 
 ```
 
 In this example, the menu bar item defines three menu items that display an icon and text on Windows.
+
+For more information about displaying font icons, see [Display font icons](~/user-interface/fonts.md#display-font-icons). For information about adding images to .NET MAUI projects, see [Add images to a .NET MAUI app project](~/user-interface/images/images.md).
 
 ## Mac Catalyst limitations
 
