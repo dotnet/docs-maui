@@ -15,7 +15,7 @@ A context menu is defined with a `MenuFlyout`, which can consist of the followin
 - `MenuFlyoutSubItem`, which represents a sub-menu item that can be clicked.
 - `MenuFlyoutSeparator`, which is a horizontal line that separates items in the menu.
 
-`MenuFlyoutSubItem` derives from `MenuFlyoutItem`, which in turn derives from `MenuItem`. `MenuItem` defines multiple properties that enable the appearance and behavior of a menu item to be specified. The appearance of a menu item, or sub-item, can be defined by setting the `Text`, and `IconImageSource` properties. The response to a menu item, or sub-item, click can be defined by setting the `Clicked`, `Command`, and `CommandParameter` properties.
+`MenuFlyoutSubItem` derives from `MenuFlyoutItem`, which in turn derives from `MenuItem`. `MenuItem` defines multiple properties that enable the appearance and behavior of a menu item to be specified. The appearance of a menu item, or sub-item, can be defined by setting the `Text`, and `IconImageSource` properties. The response to a menu item, or sub-item, click can be defined by setting the `Clicked`, `Command`, and `CommandParameter` properties. <!-- For more information about menu items, see [Menu items](). -->
 
 > [!WARNING]
 > A context menu on an `Entry` is currently unsupported on Mac Catalyst.
@@ -48,8 +48,6 @@ In this example, the context menu defines two menu items:
 :::image type="content" source="media/context-menu/webview.png" alt-text="Screenshot of a context menu on a WebView.":::
 
 When a menu item is clicked upon, the `OnWebViewGoToRepoClicked` event handler is executed:
-
-The following example shows the event handler that's executed when a context menu item is clicked:
 
 ```csharp
 void OnWebViewGoToRepoClicked(object sender, EventArgs e)

@@ -420,7 +420,7 @@
             - name: Display a context menu
               href: user-interface/context-menu.md
             - name: Display a menu bar
-              href: user-interface/menubar.md
+              href: user-interface/menu-bar.md
         - name: Shadows
           href: user-interface/shadow.md
         - name: Styles
