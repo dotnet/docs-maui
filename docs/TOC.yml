@@ -383,8 +383,6 @@
                       href: user-interface/controls/tableview.md
                 - name: ContentView
                   href: user-interface/controls/contentview.md
-        - name: Display a menu bar
-          href: user-interface/menubar.md
         - name: Display pop-ups
           href: user-interface/pop-ups.md
         - name: Display tooltips
@@ -417,6 +415,12 @@
               href: user-interface/images/images.md
             - name: Splash screen
               href: user-interface/images/splashscreen.md
+        - name: Menus
+          items:
+            - name: Display a context menu
+              href: user-interface/context-menu.md
+            - name: Display a menu bar
+              href: user-interface/menu-bar.md
         - name: Shadows
           href: user-interface/shadow.md
         - name: Styles
