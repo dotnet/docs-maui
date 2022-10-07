@@ -19,7 +19,7 @@ These properties are backed by `BindableProperty` objects, which means that they
 
 The `Source` property can be set to an `UrlWebViewSource` object or a `HtmlWebViewSource` object, which both derive from `WebViewSource`. A `UrlWebViewSource` is used for loading a web page specified with a URL, while a `HtmlWebViewSource` object is used for loading a local HTML file, or local HTML.
 
-`WebView` defines a `Navigating` event that's raised when page navigation starts, and a `Navigated` event that's raised when page navigation completes. The `WebNavigatingEventArgs` object that accompanies the `Navigating` event defines a `Cancel` property, of type `bool`, that can be used to cancel navigation. The `WebNavigatedEventArgs` object that accompanies the `Navigated` event defines a `Result` property, of type `WebNavigationResult`, that indicates the navigation result.
+`WebView` defines a `Navigating` event that's raised when page navigation starts, and a `Navigated` event that's raised when page navigation completes. The `WebNavigatingEventArgs` object that accompanies the `Navigating` event defines a `Cancel` property of type `bool` that can be used to cancel navigation. The `WebNavigatedEventArgs` object that accompanies the `Navigated` event defines a `Result` property of type `WebNavigationResult` that indicates the navigation result.
 
 > [!IMPORTANT]
 > A `WebView` must specify its `HeightRequest` and `WidthRequest` properties when contained in a `HorizontalStackLayout`, `StackLayout`, or `VerticalStackLayout`. If you fail to specify these properties, the `WebView` will not render.
@@ -162,7 +162,7 @@ To display a local HTML file, add the file to the *Resources\Raw* folder of your
 </WebView>
 ```
 
-The local HTML file can load Cascading Style Sheets (CSS), JavaScript, and images, provided that they've also been added to your app project with the **MauiAsset** build action.
+The local HTML file can load Cascading Style Sheets (CSS), JavaScript, and images, if they've also been added to your app project with the **MauiAsset** build action.
 
 For more information about raw assets, see [Raw assets](~/fundamentals/single-project.md#raw-assets).
 
@@ -203,12 +203,12 @@ if (webView.CanGoForward)
 
 When page navigation occurs in a `WebView`, either initiated programmatically or by the user, the following events occur:
 
-- `Navigating`, which is raised when page navigation starts. The `WebNavigatingEventArgs` object that accompanies the `Navigating` event defines a `Cancel` property, of type `bool`, that can be used to cancel navigation.
-- `Navigated`, which is raised when page navigation completes. The `WebNavigatedEventArgs` object that accompanies the `Navigated` event defines a `Result` property, of type `WebNavigationResult`, that indicates the navigation result.
+- `Navigating`, which is raised when page navigation starts. The `WebNavigatingEventArgs` object that accompanies the `Navigating` event defines a `Cancel` property of type `bool` that can be used to cancel navigation.
+- `Navigated`, which is raised when page navigation completes. The `WebNavigatedEventArgs` object that accompanies the `Navigated` event defines a `Result` property of type `WebNavigationResult` that indicates the navigation result.
 
 ## Set cookies
 
-Cookies can be set on a `WebView`, which are then sent with the web request to the specified URL. This is accomplished by adding `Cookie` objects to a `CookieContainer`, which is then set as the value of the `WebView.Cookies` bindable property. The following code shows an example of this:
+Cookies can be set on a `WebView` so that they are sent with the web request to the specified URL. Set the cookies by adding `Cookie` objects to a `CookieContainer`, and then set the container as the value of the `WebView.Cookies` bindable property. The following code shows an example:
 
 ```csharp
 using System.Net;
@@ -233,7 +233,7 @@ In this example, a single `Cookie` is added to the `CookieContainer` object, whi
 
 ## Invoke JavaScript
 
-`WebView` includes the ability to invoke a JavaScript function from C#, and return any result to the calling C# code. This is accomplished with the `EvaluateJavaScriptAsync` method, which is shown in the following example:
+`WebView` includes the ability to invoke a JavaScript function from C# and return any result to the calling C# code. This interop is accomplished with the `EvaluateJavaScriptAsync` method, which is shown in the following example:
 
 ```csharp
 Entry numberEntry = new Entry { Text = "5" };
@@ -267,7 +267,7 @@ function factorial(num) {
 
 ## Launch the system browser
 
-It's possible to open a URI in the system web browser with the `Launcher` class, that's provided by `Microsoft.Maui.Essentials`. This is achieved by calling it's `OpenAsync` method, passing in a `string` or `Uri` argument that represents the URI to open:
+It's possible to open a URI in the system web browser with the `Launcher` class, which is provided by `Microsoft.Maui.Essentials`. Call the launcher's `OpenAsync` method and pass in a `string` or `Uri` argument that represents the URI to open:
 
 ```csharp
 await Launcher.OpenAsync("https://learn.microsoft.com/dotnet/maui");

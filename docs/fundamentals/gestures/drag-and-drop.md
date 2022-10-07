@@ -36,7 +36,7 @@ In .NET MAUI, drag gesture recognition is provided by the `DragGestureRecognizer
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
-The `DragGestureRecognizer` class also defines `DragStarting` and `DropCompleted` events that fire provided that the `CanDrag` property is `true`. When a `DragGestureRecognizer` object detects a drag gesture, it executes the `DragStartingCommand` and invokes the `DragStarting` event. Then, when the `DragGestureRecognizer` object detects the completion of a drop gesture, it executes the `DropCompletedCommand` and invokes the `DropCompleted` event.
+The `DragGestureRecognizer` class also defines `DragStarting` and `DropCompleted` events that fire if the `CanDrag` property is `true`. When a `DragGestureRecognizer` object detects a drag gesture, it executes the `DragStartingCommand` and invokes the `DragStarting` event. Then, when the `DragGestureRecognizer` object detects the completion of a drop gesture, it executes the `DropCompletedCommand` and invokes the `DropCompleted` event.
 
 The `DragStartingEventArgs` object that accompanies the `DragStarting` event defines the following properties:
 
@@ -96,7 +96,7 @@ The `DataPackagePropertySet` class represents a property bag stored as a `Dictio
 
 ### Store image or text data
 
-Image or text data can be associated with a drag source by storing the data in the `DataPackage.Image` or `DataPackage.Text` property. This can be accomplished in the handler for the `DragStarting` event.
+Image or text data can be associated with a drag source by storing the data in the `DataPackage.Image` or `DataPackage.Text` property. You can add the data in the handler for the `DragStarting` event.
 
 The following XAML example shows a `DragGestureRecognizer` that registers a handler for the `DragStarting` event:
 
@@ -125,7 +125,7 @@ The `DragStartingEventArgs` object that accompanies the `DragStarting` event has
 
 ### Store data in the property bag
 
-Any data, including images and text, can be associated with a drag source by storing the data in the `DataPackage.Properties` collection. This can be accomplished in the handler for the `DragStarting` event.
+Any data, including images and text, can be associated with a drag source by storing the data in the `DataPackage.Properties` collection. You can add the data in the handler for the `DragStarting` event.
 
 The following XAML example shows a `DragGestureRecognizer` that registers a handler for the `DragStarting` event:
 
@@ -151,7 +151,7 @@ void OnDragStarting(object sender, DragStartingEventArgs e)
 }
 ```
 
-The `DragStartingEventArgs` object that accompanies the `DragStarting` event has a `Data` property, of type `DataPackage`. The `Properties` collection of the `DataPackage` object, which is a `Dictionary<string, object>` collection, can be modified to store any required data. In this example, the `Properties` dictionary is modified to store a `Square` object, that represents the size of the `Rectangle`, against a "Square" key.
+The `DragStartingEventArgs` object that accompanies the `DragStarting` event has a `Data` property, of type `DataPackage`. The `Properties` collection of the `DataPackage` object, which is a `Dictionary<string, object>` collection, can be modified to store any required data. In this example, the `Properties` dictionary is modified to store a `Square` object that represents the size of the `Rectangle` against a "Square" key.
 
 ## Enable drop
 
@@ -167,12 +167,12 @@ In .NET MAUI, drop gesture recognition is provided by the `DropGestureRecognizer
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
-The `DropGestureRecognizer` class also defines `DragOver`, `DragLeave`, and `Drop` events that fire provided that the `AllowDrop` property is `true`. When a `DropGestureRecognizer` recognizes a drag source over the drop target, it executes the `DragOverCommand` and invokes the `DragOver` event. Then, if the drag source is dragged off the drop target, the `DropGestureRecognizer` executes the `DragLeaveCommand` and invokes the `DragLeave` event. Finally, when the `DropGestureRecognizer` recognizes a drop gesture over the drop target, it executes the `DropCommand` and invokes the `Drop` event.
+The `DropGestureRecognizer` class also defines `DragOver`, `DragLeave`, and `Drop` events that fire if the `AllowDrop` property is `true`. When a `DropGestureRecognizer` recognizes a drag source over the drop target, it executes the `DragOverCommand` and invokes the `DragOver` event. Then, if the drag source is dragged off the drop target, the `DropGestureRecognizer` executes the `DragLeaveCommand` and invokes the `DragLeave` event. Finally, when the `DropGestureRecognizer` recognizes a drop gesture over the drop target, it executes the `DropCommand` and invokes the `Drop` event.
 
-The `DragEventArgs` class, that accompanies the `DragOver` and `DragLeave` events, defines the following properties:
+The `DragEventArgs` class, which accompanies the `DragOver` and `DragLeave` events, defines the following properties:
 
 - `Data`, of type `DataPackage`, which contains the data associated with the drag source. This property is read-only.
-- `AcceptedOperation`, of type `DataPackageOperation`, that specifies which operations are allowed by the drop target.
+- `AcceptedOperation`, of type `DataPackageOperation`, which specifies which operations are allowed by the drop target.
 
 For information about the `DataPackageOperation` enumeration, see [Handle the DragOver event](#handle-the-dragover-event).
 
@@ -193,11 +193,11 @@ The following XAML example shows a `DropGestureRecognizer` attached to an `Image
 </Image>
 ```
 
-In this example, when a drag source is dropped on the `Image` drop target, the drag source will be copied to the drop target, provided that the drag source is an `ImageSource`. This occurs because .NET MAUI automatically copies dragged images, and text, to compatible drop targets.
+In this example, when a drag source is dropped on the `Image` drop target, the drag source will be copied to the drop target if the drag source is an `ImageSource`. .NET MAUI automatically copies dragged images, and text, to compatible drop targets.
 
 ## Handle the DragOver event
 
-The `DropGestureRecognizer.DragOver` event can be optionally handled to indicate which type of operations are allowed by the drop target. This can be accomplished by setting the `AcceptedOperation` property, of type `DataPackageOperation`, of the `DragEventArgs` object that accompanies the `DragOver` event.
+The `DropGestureRecognizer.DragOver` event can be optionally handled to indicate which type of operations are allowed by the drop target. You can indicate the allowable operations by setting the `AcceptedOperation` property, of type `DataPackageOperation`, on the `DragEventArgs` object that accompanies the `DragOver` event.
 
 The `DataPackageOperation` enumeration defines the following members:
 
@@ -228,16 +228,16 @@ void OnDragOver(object sender, DragEventArgs e)
 }
 ```
 
-In this example, the `AcceptedOperation` property of the `DragEventArgs` object is set to `DataPackageOperation.None`. This ensures that no action is taken when a drag source is dropped over the drop target.
+In this example, the `AcceptedOperation` property of the `DragEventArgs` object is set to `DataPackageOperation.None`. This value ensures that no action is taken when a drag source is dropped over the drop target.
 
 ## Process the data package
 
-The `Drop` event is raised when a drag source is released over a drop target. When this occurs, .NET MAUI will automatically attempt to retrieve data from the data package, when a drag source is dropped onto the following controls:
+The `Drop` event is raised when a drag source is released over a drop target. .NET MAUI automatically attempts to retrieve data from the data package when a drag source is dropped onto the following controls:
 
 - Text controls. Text values can be dropped onto `CheckBox`, `DatePicker`, `Editor`, `Entry`, `Label`, `RadioButton`, `Switch`, and `TimePicker` objects.
 - Image controls. Images can be dropped onto `Button`, `Image`, and `ImageButton` controls.
 
-The following table shows the properties that are set, and any conversion that's attempted, when a text-based drag source is dropped on a text control:
+The following table shows the properties that are set and any conversion that's attempted when a text-based drag source is dropped on a text control:
 
 | Control | Property | Conversion |
 | --- | --- | --- |
@@ -258,7 +258,7 @@ The `DropEventArgs` class that accompanies the `Drop` event defines a `Data` pro
 
 Image or text data can be retrieved from a data package in the handler for the `Drop` event, using methods defined in the `DataPackageView` class.
 
-The `DataPackageView` class includes `GetImageAsync` and `GetTextAsync` methods. The `GetImageAsync` method retrieves an image from the data package, that was stored in the `DataPackage.Image` property, and returns `Task<ImageSource>`. Similarly, the `GetTextAsync` method retrieves text from the data package, that was stored in the `DataPackage.Text` property, and returns `Task<string>`.
+The `DataPackageView` class includes `GetImageAsync` and `GetTextAsync` methods. The `GetImageAsync` method retrieves an image from the data package that was stored in the `DataPackage.Image` property and returns `Task<ImageSource>`. Similarly, the `GetTextAsync` method retrieves text from the data package that was stored in the `DataPackage.Text` property and returns `Task<string>`.
 
 The following example shows a `Drop` event handler that retrieves text from the data package for a `Path`:
 
