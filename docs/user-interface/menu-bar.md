@@ -41,6 +41,7 @@ A `MenuBarItem` can consist of the following children:
 The following example shows a `ContentPage` that defines menu bar items:
 
 ::: moniker range="=net-maui-6.0"
+
 ```xaml
 <ContentPage ...>
     <ContentPage.MenuBarItems>
@@ -80,6 +81,7 @@ This example defines three top-level menus. Each top-level menu has menu items, 
 ::: moniker-end
 
 ::: moniker range=">=net-maui-7.0"
+
 ```xaml
 <ContentPage ...>
     <ContentPage.MenuBarItems>
