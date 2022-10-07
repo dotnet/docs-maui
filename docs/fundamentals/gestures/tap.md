@@ -35,6 +35,9 @@ The `TapGestureRecognizer` class also defines a `Tapped` event that's raised whe
 The `TapGestureRecognizer` class also defines a `Tapped` event that's raised when a tap is recognized. The `TappedEventArgs` object that accompanies the `Tapped` event defines a `Parameter` property of type `object` that indicates the value passed by the `CommandParameter` property, if defined. The `TappedEventArgs` object also defines a `Buttons` property, and a `GetPosition` method. The `Buttons` property is of type `ButtonsMask`, and can be used to determine whether the primary or secondary mouse button triggered the gesture recognizer on Mac Catalyst and Windows. The `GetPosition` method returns a `Point?` object that represents the position at which the tap gesture was detected. For more information about button masks, see [Define the button mask](#define-the-button-mask). For more information about the `GetPosition` method, see [Get the gesture position](#get-the-gesture-position).
 ::: moniker-end
 
+> [!WARNING]
+> A `TapGestureRecognizer` can't recognize more than a double tap on Windows.
+
 ## Create a TapGestureRecognizer
 
 To make a `View` recognize a tap gesture, create a `TapGestureRecognizer` object, handle the `Tapped` event, and add the new gesture recognizer to the `GestureRecognizers` collection on the view. The following code example shows a `TapGestureRecognizer` attached to an `Image`:
