@@ -82,7 +82,7 @@ On Android, the `Format` property is respected and displayed by the control. How
 
 On iOS, the `Format` property is respected and displayed by the control.
 
-On macOS, the `Format` property has no affect on the control.
+On macOS, the `Format` property has no effect on the control.
 
 # [Windows](#tab/windows)
 
