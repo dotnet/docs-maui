@@ -61,7 +61,7 @@ landingContent:
   - linkListType: whats-new
     links:
     - text: .NET docs updates
-      url: /dotnet/docs/whats-new/
+      url: /dotnet/whats-new/
     - text: ASP.NET Core docs updates
       url: /aspnet/core/whats-new/
     - text: .NET MAUI release notes
