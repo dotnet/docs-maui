@@ -1316,7 +1316,7 @@ This mechanism ensures that when the `Play`, `Pause`, or `Stop` method is invoke
 
 Implementing play, pause, and stop functionality isn't sufficient for supporting custom transport controls. Often the play and pause functionality should be implemented with the same button, which changes its appearance to indicate whether the video is currently playing or paused. In addition, the button shouldn't even be enabled if the video hasn't yet loaded.
 
-These requirements imply that video player needs to make available a current status indicating if it's playing or paused, or if it's not yet ready to play a video. This status can be represented by an enumeration:
+These requirements imply that the video player needs to make available a current status indicating if it's playing or paused, or if it's not yet ready to play a video. This status can be represented by an enumeration:
 
 ```csharp
 public enum VideoStatus
