@@ -7,7 +7,7 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel"]
 
 # Launcher
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `ILauncher` interface. This interface enables an application to open a URI by the system. This way of opening is often used when deep linking into another application's custom URI schemes.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `ILauncher` interface. This interface enables an application to open a URI by the system. This way of opening an application is often used when deep linking into another application's custom URI schemes.
 
 The default implementation of the `ILauncher` interface is available through the `Launcher.Default` property. Both the `ILauncher` interface and `Launcher` class are contained in the `Microsoft.Maui.ApplicationModel` namespace.
 
