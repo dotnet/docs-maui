@@ -205,7 +205,7 @@ Then, in the XML editor, open the **Platforms > iOS > Info.plist** file and the 
 
 ## Position and size a Window
 
-When a .NET MAUI desktop app is launched, its previous position and size is automatically restored. In addition, the position and size of a window can be programmatically defined for a .NET MAUI app on Windows by setting the `X`, `Y`, `Width`, and `Height` properties on a `Window` object.
+The position and size of a window can be programmatically defined for a .NET MAUI app on Windows by setting the `X`, `Y`, `Width`, and `Height` properties on a `Window` object.
 
 > [!WARNING]
 > Mac Catalyst doesn't support resizing or repositioning windows programmatically by setting the `X`, `Y`, `Width`, and `Height` properties.
