@@ -42,14 +42,9 @@ These cross-platform events map to different platform events, and the following 
 | `Resumed` | `OnRestart` | `WillEnterForeground` | `Resumed` |
 | `Destroying` | `OnDestroy` | `WillTerminate` | `Closed` |
 
-In addition, the `Windows` class also defines the following events that are only raised on specific platforms:
+In addition, the `Windows` class also defines a `Backgrounding` event that's raised on iOS and Mac Catalyst when the Window is closed or enters a background state. A `BackgroundingEventArgs` object accompanies this event, and any `string` state should be persisted to the `State` property of the `BackgroundingEventArgs` object, which the OS will preserve until it's time to resume the window. When the window is resumed the state is provided by the `IActivationState` argument to the `CreateWindow` override.
 
-| Event | Description | Action to take |
-| -- | -- | -- |
-| `Backgrounding` | This event is raised on iOS and Mac Catalyst when the Window is closed or enters a background state, and is accompanied by a `BackgroundingEventArgs` object. | Persist any `string` state to the `State` property of the `BackgroundingEventArgs` object, which the OS will preserve until it's time to resume the window. When the window is resumed the state is provided by the `IActivationState` argument to the `CreateWindow` override. |
-| `DisplayDensityChanged` | This event is raised on Android and Windows when the effective dots per inch (DPI) for the window has changed, and is accompanied by a `DisplayDensityChangedEventArgs` object. | |
-
-In addition to these events, the `Window` class also has the following overridable methods:
+In addition to these events, the `Window` class also has the following overridable lifecycle methods:
 
 - `OnCreated`, which is invoked when the `Created` event is raised.
 - `OnActivated`, which is invoked when the `Activated` event is raised.
@@ -58,7 +53,6 @@ In addition to these events, the `Window` class also has the following overridab
 - `OnResumed`, which is invoked when the `Resumed` event is raised.
 - `OnDestroying`, which is invoked when the `Destroying` event is raised.
 - `OnBackgrounding`, which is invoked when the `Backgrounding` event is raised.
-- `OnDisplayDensityChanged`, which is invoked when the `DisplayDensityChanged` event is raised.
 
 To subscribe to the `Window` lifecycle events, override the `CreateWindow` method in your `App` class to create a `Window` instance on which you can subscribe to events:
 
