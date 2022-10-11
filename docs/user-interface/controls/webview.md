@@ -1,7 +1,7 @@
 ---
 title: "WebView"
 description: "This article explains how to use the .NET MAUI WebView to display remote web pages, local HTML files, and HTML strings."
-ms.date: 03/08/2022
+ms.date: 10/11/2022
 ---
 
 # WebView
@@ -274,3 +274,32 @@ await Launcher.OpenAsync("https://learn.microsoft.com/dotnet/maui");
 ```
 
 For more information, see [Launcher](~/platform-integration/appmodel/launcher.md).
+
+::: moniker range=">=net-maui-7.0"
+
+## Configure the native WebView on iOS and Mac Catalyst
+
+On iOS and Mac Catalyst the native `WebView` control is a `MauiWKWebView`, which derives from `WKWebView`. One of the `MauiWKWebView` constructor overloads enables a `WKWebViewConfiguration` object to be specified, which provides information about how to configure the `WKWebView` object. Typical configurations include setting the user agent, specifying cookies to make available to your web content, and injecting custom scripts into your web content.
+
+You can create a `WKWebViewConfiguration` object in your app, and then configure its properties as required. Alternatively, you can call the static `MauiWKWebView.CreateConfiguration` method to retrieve .NET MAUI's `WKWebViewConfiguration` object and then modify it. The `WKWebViewConfiguration` object can then be passed to the `MauiWKWebView` constructor overload by modifying the factory method that `WebViewHandler` uses to create its native control on each platform:
+
+```csharp
+#if IOS || MACCATALYST
+using WebKit;
+using CoreGraphics;
+using Microsoft.Maui.Platform;
+using Microsoft.Maui.Handlers;
+#endif
+...
+
+#if IOS || MACCATALYST
+		WKWebViewConfiguration config = MauiWKWebView.CreateConfiguration();
+		config.ApplicationNameForUserAgent = "MyProduct/1.0.0";
+    WebViewHandler.PlatformViewFactory =
+			handler => new MauiWKWebView(CGRect.Empty, (WebViewHandler)handler, config);
+#endif
+```
+
+You should configure `MauiWKWebView` with a `WKWebViewConfiguration` object before a `WebView` is displayed in your app. Suitable locations to do this are in your app's startup path, such as in *MauiProgram.cs* or *App.xaml.cs**. <!-- For more information about configuring a native .NET MAUI control, see [Customize controls](~/user-interface/handlers/customize.md). -->
+
+::: moniker-end
