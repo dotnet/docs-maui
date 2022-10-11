@@ -296,10 +296,11 @@ using Microsoft.Maui.Handlers;
     WKWebViewConfiguration config = MauiWKWebView.CreateConfiguration();
     config.ApplicationNameForUserAgent = "MyProduct/1.0.0";
     WebViewHandler.PlatformViewFactory =
-      handler => new MauiWKWebView(CGRect.Empty, (WebViewHandler)handler, config);
+        handler => new MauiWKWebView(CGRect.Empty, (WebViewHandler)handler, config);
 #endif
 ```
 
-You should configure `MauiWKWebView` with a `WKWebViewConfiguration` object before a `WebView` is displayed in your app. Suitable locations to do this are in your app's startup path, such as in *MauiProgram.cs* or *App.xaml.cs**. <!-- For more information about configuring a native .NET MAUI control, see [Customize controls](~/user-interface/handlers/customize.md). -->
+> [!NOTE]
+> You should configure `MauiWKWebView` with a `WKWebViewConfiguration` object before a `WebView` is displayed in your app. Suitable locations to do this are in your app's startup path, such as in *MauiProgram.cs* or *App.xaml.cs*. <!-- For more information about configuring a native .NET MAUI control, see [Customize controls](~/user-interface/handlers/customize.md). -->
 
 ::: moniker-end
