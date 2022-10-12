@@ -265,16 +265,6 @@ function factorial(num) {
 </html>
 ```
 
-## Launch the system browser
-
-It's possible to open a URI in the system web browser with the `Launcher` class, that's provided by `Microsoft.Maui.Essentials`. This is achieved by calling it's `OpenAsync` method, passing in a `string` or `Uri` argument that represents the URI to open:
-
-```csharp
-await Launcher.OpenAsync("https://learn.microsoft.com/dotnet/maui");
-```
-
-For more information, see [Launcher](~/platform-integration/appmodel/launcher.md).
-
 ::: moniker range=">=net-maui-7.0"
 
 ## Configure the native WebView on iOS and Mac Catalyst
@@ -304,3 +294,13 @@ using Microsoft.Maui.Handlers;
 > You should configure `MauiWKWebView` with a `WKWebViewConfiguration` object before a `WebView` is displayed in your app. Suitable locations to do this are in your app's startup path, such as in *MauiProgram.cs* or *App.xaml.cs*. <!-- For more information about configuring a native .NET MAUI control, see [Customize controls](~/user-interface/handlers/customize.md). -->
 
 ::: moniker-end
+
+## Launch the system browser
+
+It's possible to open a URI in the system web browser with the `Launcher` class, that's provided by `Microsoft.Maui.Essentials`. This is achieved by calling it's `OpenAsync` method, passing in a `string` or `Uri` argument that represents the URI to open:
+
+```csharp
+await Launcher.OpenAsync("https://learn.microsoft.com/dotnet/maui");
+```
+
+For more information, see [Launcher](~/platform-integration/appmodel/launcher.md).
