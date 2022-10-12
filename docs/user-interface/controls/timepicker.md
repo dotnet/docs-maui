@@ -21,7 +21,7 @@ The .NET Multi-platform App UI (.NET MAUI) `TimePicker` invokes the platform's t
 All of these properties are backed by `BindableProperty` objects, which means that they can be styled, and the properties can be targets of data bindings. The `Time` property has a default binding mode of `BindingMode.TwoWay`, which means that it can be a target of a data binding in an application that uses the Model-View-ViewModel (MVVM) pattern.
 
 > [!NOTE]
-> The `TimePicker` doesn't include an event to indicate a new selected `Time` value. If you need to be notified of this, you can add a handler for the `PropertyChanged` event.
+> The `TimePicker` doesn't include an event to indicate a new selected `Time` value. If you need to be notified of this, you can add an event handler for the `PropertyChanged` event.
 
 ## Create a TimePicker
 
@@ -67,3 +67,27 @@ However, this is not recommended. Depending on the setting of the `Format` prope
 <!--
 > [!TIP]
 > On Android, the `TimePicker` dialog can be customized by overriding the `CreateTimePickerDialog` method in a custom renderer. This allows, for example, additional buttons to be added to the dialog. -->
+
+## Platform differences
+
+This section describes the platform-specific differences with the `TimePicker` control.
+
+<!-- markdownlint-disable MD025 -->
+<!-- markdownlint-disable MD024 -->
+# [Android](#tab/android)
+
+On Android, the `Format` property is respected and displayed by the control. However, when the picker control is shown by pressing on the control, only the hour, minute, and time of day can be changed.
+
+# [iOS\macOS](#tab/ios)
+
+On iOS, the `Format` property is respected and displayed by the control.
+
+On macOS, the `Format` property has no effect on the control.
+
+# [Windows](#tab/windows)
+
+On Windows, the `Format` property only affects whether the hour is formatted for 12-hours or 24-hours. Other settings from the `Format` property are ignored. When the picker is shown by pressing on the control, only the hour, minute, and time of day can be changed. For more information about the Windows control, see [Time picker - Windows apps](/windows/apps/design/controls/time-picker).
+
+-----
+<!-- markdownlint-enable MD024 -->
+<!-- markdownlint-enable MD025 -->

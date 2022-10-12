@@ -1,6 +1,6 @@
 ---
 title: "Text-to-Speech"
-description: "Learn how to use the .NET MAUI ITextToSpeech interface, which enables an application utilize the built in text-to-speech engines to speak back text from the device."
+description: "Learn how to use the .NET MAUI ITextToSpeech interface, which enables an application utilize the built-in text-to-speech engines to speak back text from the device."
 ms.date: 09/02/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Media", "TextToSpeech"]
 ---
@@ -40,5 +40,5 @@ The following are supported values for these parameters:
 
 ## Limitations
 
-- Utterance queueing is not guaranteed if called across multiple threads.
-- Background audio playback is not officially supported.
+- Utterance queueing isn't guaranteed if called across multiple threads.
+- Background audio playback isn't officially supported.

@@ -18,7 +18,7 @@ To access the **Battery** functionality the following platform-specific setup is
 <!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
 
-The `Battery` permission is required and must be configured in the Android project. This can be added in the following ways:
+The `Battery` permission is required and must be configured in the Android project. You can configure the permission in the following ways:
 
 - Add the assembly-based permission:
 
@@ -32,7 +32,7 @@ The `Battery` permission is required and must be configured in the Android proje
 
 - Update the Android Manifest:
 
-  In the **Solution Explorer**, open the _AndroidManifest.xml_ file. This is typically located in the **Your-project** > **Platforms** > **Android** folder. Add the following node as a child to the `<manifest>` node:
+  In **Solution Explorer**, open the _AndroidManifest.xml_ file. This file is typically located in the **Your-project** > **Platforms** > **Android** folder. Add the following node as a child to the `<manifest>` node:
 
   ```xml
   <uses-permission android:name="android.permission.BATTERY_STATS" />
