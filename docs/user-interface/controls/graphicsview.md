@@ -66,7 +66,7 @@ The location and size of the `ICanvas` on a page can be determined by examining 
 The `RectF` struct defines the following properties:
 
 - `Bottom`, of type `float`, which represents the y-coordinate of the bottom edge of the canvas.
-- `Center`, of type `PointF`. which specifies the coordinates of the center of the canvas.
+- `Center`, of type `PointF`, which specifies the coordinates of the center of the canvas.
 - `Height`, of type `float`, which defines the height of the canvas.
 - `IsEmpty`, of type `bool`, which indicates whether the canvas has a zero size and location.
 - `Left`, of type `float`, which represents the x-coordinate of the left edge of the canvas.
