@@ -46,7 +46,7 @@ After the build target is set to Windows, you can publish your project. Perform 
 
     :::image type="content" source="media/publish-visual-studio/vs-2-cert-sign.png" alt-text="Package signing method dialog in Visual Studio.":::
 
-    01. Select **Create**
+    01. Select **Create**.
 
         You can create a temporary self-signed certificate for testing. This certificate shouldn't be used to distribute your app package, it should only be used for testing your app's installation process.
 
@@ -94,5 +94,5 @@ After the build target is set to Windows, you can publish your project. Perform 
 
 The following list describes the current limitations with publishing and packaging:
 
-01. The published app doesn't work if you try to run it directly with the executable file out of the publish folder.
-01. The way to run the app is to first install it through the packaged _MSIX_ file.
+- The published app doesn't work if you try to run it directly with the executable file out of the publish folder.
+- The way to run the app is to first install it through the packaged _MSIX_ file.

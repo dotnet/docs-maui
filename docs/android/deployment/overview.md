@@ -8,10 +8,10 @@ ms.date: 10/07/2022
 
 > [!div class="op_single_selector"]
 >
-> - [Publish for Android](../../android/deployment/overview.md)
+> - [Publish for Android](overview.md)
 > - [Publish for iOS](../../ios/deployment/overview.md)
 > - [Publish for macOS](../../macos/deployment/overview.md)
-> - [Publish for Windows](overview.md)
+> - [Publish for Windows](../../windows/deployment/overview.md)
 
 The final step in the development of a .NET MAUI app is to publish it. Publishing is the process of creating a package that contains the app and is ready for users to install on their devices. Packaging and deployment involve two essential tasks:
 

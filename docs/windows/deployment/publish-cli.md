@@ -145,7 +145,7 @@ To trust the certificate of app package, perform the following steps:
     :::image type="content" source="media/publish-cli/properties-digital-signatures.png" alt-text="Properties pane of an MSIX file with the digital signatures tab selected.":::
 
 01. Select **View Certificate**.
-01. Select **Install Certificate...**
+01. Select **Install Certificate...**.
 01. Choose **Local Machine** then select **Next**.
 
     If you're prompted by User Account Control to **Do you want to allow this app to make changes to your device?**, select **Yes**.
@@ -171,5 +171,5 @@ Select the **Install** button if you would like to install the app.
 
 The following list describes the current limitations with publishing and packaging:
 
-01. The published app doesn't work if you try to run it directly with the executable file out of the publish folder.
-01. The way to run the app is to first install it through the packaged _MSIX_ file.
+- The published app doesn't work if you try to run it directly with the executable file out of the publish folder.
+- The way to run the app is to first install it through the packaged _MSIX_ file.
