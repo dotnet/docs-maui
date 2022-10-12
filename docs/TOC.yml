@@ -620,7 +620,11 @@
         - name: Publish
           items:
             - name: Android
-              href: android/deployment/overview.md
+              items:
+              - name: Overview
+                href: android/deployment/overview.md
+              - name: Publish with the .NET CLI
+                href: android/deployment/publish-cli.md
             - name: iOS
               items:
                 - name: Publish an iOS app
@@ -632,6 +636,12 @@
             - name: macOS
               href: macos/deployment/overview.md
             - name: Windows
-              href: windows/deployment/overview.md
+              items:
+              - name: Overview
+                href: windows/deployment/overview.md
+              - name: Publish with the .NET CLI
+                href: windows/deployment/publish-cli.md
+              - name: Publish with Visual Studio to a folder
+                href: windows/deployment/publish-visual-studio-folder.md
     - name: Troubleshooting
       href: troubleshooting.md
