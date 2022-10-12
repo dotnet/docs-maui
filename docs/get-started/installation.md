@@ -21,7 +21,7 @@ To start developing native, cross-platform .NET MAUI apps on Windows, install Vi
 To build, sign, and deploy .NET MAUI apps for iOS, you'll also need:
 
 - A Mac that is compatible with the latest version of Xcode. For more information, see Apple's [minimum requirements documentation](https://developer.apple.com/support/xcode/)
-- The latest version of [Xcode](https://developer.apple.com/xcode) 13. Xcode 14 support will appear in a future release. For more information, see [Xcode 14.0 Support](https://github.com/xamarin/xamarin-macios/issues/15954).
+- The latest version of [Xcode](https://developer.apple.com/xcode).
 - An [Apple ID](https://appleid.apple.com/account) and paid [Apple Developer Program](https://developer.apple.com/programs) enrollment. An Apple ID is required to deploy apps to devices, and to submit apps to the Apple Store.
 
 Alternatively, to deploy debug builds of your app directly from Windows to your iOS device with [hot restart](~/deployment/hot-restart.md), you'll need:
@@ -55,7 +55,7 @@ To start developing native, cross-platform .NET MAUI apps on macOS, install Visu
 To build, sign, and deploy .NET MAUI apps for iOS or macOS, you'll also need:
 
 - A Mac that is compatible with the latest version of Xcode. For more information, see Apple's [minimum requirements documentation](https://developer.apple.com/support/xcode/)
-- The latest version of [Xcode](https://developer.apple.com/xcode) 13. Xcode 14 support will appear in a future release. For more information, see [Xcode 14.0 Support](https://github.com/xamarin/xamarin-macios/issues/15954).
+- The latest version of [Xcode](https://developer.apple.com/xcode).
 - An [Apple ID](https://appleid.apple.com/account) and paid [Apple Developer Program](https://developer.apple.com/programs) enrollment. An Apple ID is required to deploy apps to devices, and to submit apps to the Apple Store.
 
 ## Installation
