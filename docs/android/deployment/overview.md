@@ -17,7 +17,7 @@ The final step in the development of a .NET MAUI app is to publish it. Publishin
 
 - **Preparing for publication**
 
-  A release version of the app is created that can be deployed to Android-powered devices (see [Preparing an app for release](~/android/deploy-test/release-prep/index.md) for more information about release preparation).
+  A release version of the app is created that can be deployed to Android-powered devices.
 
 - **Distribution**
 

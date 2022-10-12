@@ -1,10 +1,10 @@
 ---
-title: "Publish a .NET MAUI app for Android"
-description: "Learn how to package and publish an Android .NET MAUI app."
+title: "Use the CLI to publish for Android"
+description: "Learn how to package and publish a Android .NET MAUI app with the dotnet publish command."
 ms.date: 03/17/2022
 ---
 
-# Publish a .NET MAUI app for Android
+# Publish a .NET MAUI app for Android with the CLI
 
 > [!div class="op_single_selector"]
 >

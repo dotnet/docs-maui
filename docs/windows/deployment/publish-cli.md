@@ -1,5 +1,5 @@
 ---
-title: "Use the CLI to publish a .NET MAUI app"
+title: "Use the CLI to publish for Windows"
 description: "Learn how to package and publish a Windows .NET MAUI app with the dotnet publish command."
 ms.date: 10/12/2022
 ---
@@ -132,7 +132,7 @@ For more information about the `dotnet publish` command, see [dotnet publish](/d
 
 To install the app, it must be signed with a certificate that you already trust. If it isn't, Windows won't let you install the app. You'll be presented with a dialog similar to the following, with the Install button disabled:
 
-:::image type="content" source="media/overview/install-untrusted.png" alt-text="Installing an untrusted app.":::
+:::image type="content" source="media/publish-cli/install-untrusted.png" alt-text="Installing an untrusted app.":::
 
 Notice that in the previous image, the Publisher was "unknown."
 
@@ -142,7 +142,7 @@ To trust the certificate of app package, perform the following steps:
 01. Select the **Digital Signatures** tab.
 01. Choose the certificate then press **Details**.
 
-    :::image type="content" source="media/overview/properties-digital-signatures.png" alt-text="Properties pane of an MSIX file with the digital signatures tab selected.":::
+    :::image type="content" source="media/publish-cli/properties-digital-signatures.png" alt-text="Properties pane of an MSIX file with the digital signatures tab selected.":::
 
 01. Select **View Certificate**.
 01. Select **Install Certificate...**
@@ -153,17 +153,17 @@ To trust the certificate of app package, perform the following steps:
 01. In the **Certificate Import Wizard** window, select **Place all certificates in the following store**.
 01. Select **Browse...** and then choose the **Trusted People** store. Select **OK** to close the dialog.
 
-    :::image type="content" source="media/overview/certificate-import.png" alt-text="Certificate import wizard window is shown while selecting the Trusted People store.":::
+    :::image type="content" source="media/publish-cli/certificate-import.png" alt-text="Certificate import wizard window is shown while selecting the Trusted People store.":::
 
 01. Select **Next** and then **Finish**. You should see a dialog that says: **The import was successful**.
 
-    :::image type="content" source="media/overview/certificate-import-success.png" alt-text="Certificate import wizard window with a successful import message.":::
+    :::image type="content" source="media/publish-cli/certificate-import-success.png" alt-text="Certificate import wizard window with a successful import message.":::
 
 01. Select **OK** on any window opened as part of this process, to close them all.
 
 Now, try opening the package file again to install the app. You should see a dialog similar to the following, with the Publisher correctly displayed:
 
-:::image type="content" source="media/overview/install-trusted.png" alt-text="Installing a trusted app.":::
+:::image type="content" source="media/publish-cli/install-trusted.png" alt-text="Installing a trusted app.":::
 
 Select the **Install** button if you would like to install the app.
 

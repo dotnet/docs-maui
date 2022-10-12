@@ -37,9 +37,10 @@ After the build target is set to Windows, you can publish your project. Perform 
     :::image type="content" source="media/publish-visual-studio/vs-1-how-distribute.png" alt-text="The sideloading option selected on Create App Packages dialog box in Visual Studio to publish a .NET MAUI app.":::
 
     The **Enable automatic updates** checkbox is optional.
-
+<!--
     > [!TIP]
     > Publishing to the Microsoft Store is described in the article [Publish a .NET MAUI app to the Microsoft Store](publish-visual-studio-store.md).
+-->
 
 01. In the **Select Signing Method** dialog, select **Yes, select a certificate**. You can choose a certificate from a variety of sources. This article will create a temporary self-signed certificate for testing.
 
