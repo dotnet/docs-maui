@@ -4,7 +4,7 @@ description: "Learn how to use the TwoPaneView control to create adaptive layout
 monikerRange: ">= net-maui-7.0"
 author: conceptdev
 ms.author: crdun
-ms.date: 10/01/2022
+ms.date: 10/13/2022
 ---
 # .NET MAUI TwoPaneView layout
 
@@ -12,7 +12,7 @@ ms.date: 10/01/2022
 
 The `TwoPaneView` class represents a container with two views that size and position content in the available space, either side-by-side or top-to-bottom. `TwoPaneView` inherits from `Grid` so the easiest way to think about these properties is as if they are being applied to a grid.
 
-![Surface Duo dual-screen emulator showing a basic TwoPaneView test app](media/twopaneview/foldable-maui-app.png)
+:::image type="content" source="media/twopaneview/foldable-maui-app.png" alt-text="Surface Duo dual-screen emulator showing a basic TwoPaneView test app":::
 
 The layout control is provided by the [Microsoft.Maui.Controls.Foldable NuGet package](https://www.nuget.org/packages/Microsoft.Maui.Controls.Foldable/).
 
