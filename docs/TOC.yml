@@ -149,12 +149,6 @@
                 href: fundamentals/bindable-properties.md
               - name: Attached properties
                 href: fundamentals/attached-properties.md
-        - name: Foldable devices
-          items:
-              - name: Overview
-                href: fundamentals/foldable/index.md
-              - name: TwoPaneView
-                href: fundamentals/foldable/twopaneview.md
         - name: Publish and subscribe to messages
           href: fundamentals/messagingcenter.md
         - name: Resource dictionaries
@@ -387,6 +381,8 @@
                       href: user-interface/controls/tableview.md
                 - name: ContentView
                   href: user-interface/controls/contentview.md
+                - name: TwoPaneView
+                  href: user-interface/controls/twopaneview.md
         - name: Display a menu bar
           href: user-interface/menubar.md
         - name: Display pop-ups
