@@ -11,6 +11,10 @@
     {
       "source_path": "docs/fundamentals/app-startup.md",
       "redirect_url": "/dotnet/maui/fundamentals/single-project#app-entry-point"
+    },
+    {
+      "source_path": "docs/user-interface/menubar.md",
+      "redirect_url": "/dotnet/maui/user-interface/menu-bar"
     }
   ]
 }

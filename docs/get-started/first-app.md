@@ -1,7 +1,7 @@
 ---
 title: "Build your first .NET MAUI app"
 description: "Learn how to create and run your first .NET MAUI app in Visual Studio 2022 on Windows, or Visual Studio 2022 for Mac."
-ms.date: 08/19/2022
+ms.date: 09/27/2022
 zone_pivot_groups: devices-deployment
 ---
 
@@ -16,6 +16,8 @@ In this tutorial, you'll learn how to create and run your first .NET Multi-platf
 ## Prerequisites
 
 - Visual Studio 2022 17.3 or greater, with the .NET Multi-platform App UI workload installed. For more information, see [Installation](installation.md?tabs=vswin).
+
+## Create an app
 
 :::zone pivot="devices-android"
 
@@ -130,6 +132,10 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022, 
 
     :::image type="content" source="media/first-app/vs/running-app.png" alt-text="App running in the Android emulator." lightbox="media/first-app/vs/running-app-large.png":::
 
+## Troubleshooting
+
+If your app fails to compile, review [Troubleshooting known issues](../troubleshooting.md), which may have a solution to your problem. If the problem is related to the Android emulator, see [Android emulator troubleshooting](../android/emulator/troubleshooting.md).
+
 :::zone-end
 
 :::zone pivot="devices-windows"
@@ -159,6 +165,10 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022, 
 
     :::image type="content" source="media/first-app/vs/windows-running-app.png" alt-text=".NET MAUI app running on Windows.":::
 
+## Troubleshooting
+
+If your app fails to compile, review [Troubleshooting known issues](../troubleshooting.md), which may have a solution to your problem.
+
 :::zone-end
 
 :::zone pivot="devices-ios"
@@ -182,6 +192,10 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022, 
 
     :::image type="content" source="media/first-app/vs/ios-running-app.png" alt-text=".NET MAUI app running in iOS Simulator on a Mac.":::
 
+## Troubleshooting
+
+If your app fails to compile, review [Troubleshooting known issues](../troubleshooting.md), which may have a solution to your problem.
+
 :::zone-end
 
 :::zone pivot="devices-maccatalyst"
@@ -197,6 +211,8 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022, 
 ## Prerequisites
 
 - Visual Studio 2022 for Mac 17.4 Preview, with the .NET, .NET MAUI, Android, and iOS workloads installed. For more information, see [Installation](installation.md?tabs=vsmac).
+
+## Create an app
 
 :::zone pivot="devices-android, devices-ios, devices-maccatalyst"
 

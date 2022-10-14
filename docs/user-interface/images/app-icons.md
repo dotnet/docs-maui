@@ -33,10 +33,14 @@ The icon defined by your app can be composed of a single image, by specifying th
 > [!IMPORTANT]
 > Only the first `<MauiIcon>` item defined in the project file is processed by .NET MAUI. If you want to use a different file as the icon, first delete the existing icon from your project, and then add the new icon. Next, in the **Solution Explorer** pane, select the file, and then in the **Properties** pane, set the **Build Action** to **MauiIcon**. Instead of adding a new icon file to the project, consider replacing the existing icon file instead.
 
+::: moniker range="=net-maui-6.0"
+
 After changing the icon file, you may need to clean the project in Visual Studio. To clean the project, right-click on the project file in the **Solution Explorer** pane, and select **Clean**. You also may need to uninstall the app from the target platform you're testing with.
 
 > [!CAUTION]
 > If you don't clean the project and uninstall the app from the target platform, you may not see your new icon.
+
+::: moniker-end
 
 After changing the icon, review the [Platform specific configuration](#platform-specific-configuration) information.
 

@@ -238,7 +238,7 @@ Currently the **note** view displays a single note, and there isn't a view that 
 01. In the **Solution Explorer** pane, right-click on the **Views** folder and select **Add** > **New Item...**
 01. In the **Add New Item** dialog, select **.NET MAUI** in the template list on the left-side of the window. Next, select the **.NET MAUI ContentPage (XAML)** template. Name the file _AllNotesPage.xaml_, and then select **Add**.
 01. In the **Solution Explorer** pane, right-click on the **Models** folder and select **Add** > **Class...**
-01. Name the class **AllNotes.cs** and press **Add**.
+01. Name the class _AllNotes.cs_ and press **Add**.
 
 ### Code the AllNotes model
 
@@ -337,3 +337,5 @@ The `Routing.RegisterRoute` method takes two parameters:
 - The second parameter is the type of page to load when `"NotePage"` is navigated to.
 
 Now you can run your app. Try adding new notes, navigating back and forth between notes, and deleting notes.
+
+[![Explore the code.](~/media/code-sample.png) Explore the code for this step of the tutorial.](https://github.com/dotnet/maui-samples/tree/main/6.0/Tutorials/CreateNetMauiApp/step4)
