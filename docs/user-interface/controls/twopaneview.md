@@ -20,9 +20,7 @@ The layout control is provided by the [Microsoft.Maui.Controls.Foldable NuGet pa
 
 Foldable devices include the Microsoft Surface Duo and Android devices from other manufacturers. They bridge the gap between phones and larger screens like tablets and desktops because apps might need to adjust to a variety of screen sizes and orientations on the same device, including adapting to a hinge or fold in the screen.
 
-.NET MAUI provides the **Microsoft.Maui.Controls.Foldable** NuGet to help developers build adaptive user interfaces that can present content on a small screen, on a large screen, or in a split view that is aligned to the fold.
-
-Visit the [dual-screen developer docs](/dual-screen/) for more information about building apps that target foldable devices, including design patterns and user experiences.
+Visit the [dual-screen developer docs](/dual-screen/) for more information about building apps that target foldable devices, including [design patterns and user experiences](/dual-screen/design/). There is also a [Surface Duo emulator](/dual-screen/android/emulator/) you can download for Windows, Mac, and Linux.
 
 > [!IMPORTANT]
 > The `TwoPaneView` control only adapts to Android foldable devices that support the Jetpack Window Manager API provided by Google (such as Microsoft Surface Duo). On all other platforms and devices it acts like a configurable and responsive split view that can dynamically show one or two panes, proportionally sized on the screen.
