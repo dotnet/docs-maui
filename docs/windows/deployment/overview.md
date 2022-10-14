@@ -19,12 +19,12 @@ When distributing your .NET Multi-platform App UI (.NET MAUI) app for Windows, y
 
 ## Configuration
 
-The MSIX package is configured by the _Platforms\\Windows\\Package.appxmanifest_ (the manifest) file in your project. The manifest is used by the MSIX installer, the Microsoft store, and by Windows, to configure and display your app. .NET MAUI does use some shared settings across platforms, such as the app name and icon, which is set in the manifest at build-time. Besides those few settings, you'll need to edit the manifest to configure the app package to create a nice installer experience. The Microsoft Store has its own requires, set in the manifest, when submitting your app.
+The MSIX package is configured by the _Platforms\\Windows\\Package.appxmanifest_ (the manifest) file in your project. The manifest is used by the MSIX installer, the Microsoft store, and by Windows, to configure and display your app. .NET MAUI does use some shared settings across platforms, such as the app name and icon, which is set in the manifest at build-time. Besides those few settings, you'll need to edit the manifest to configure the app package to create a nice installer experience. The Microsoft Store has its own requirements, set in the manifest, when submitting your app.
 
-Use can use the Manifest Designer feature of Visual Studio to visually edit the _Package.appxmanifest_ file, with affects how the app is displayed in the Microsoft Store and in Windows. You can also edit the _Package.appxmanifest_ file using the XML editor.
+You can use the Manifest Designer feature of Visual Studio to visually edit the _Package.appxmanifest_ file, which affects how the app is displayed in the Microsoft Store and in Windows. You can also edit the _Package.appxmanifest_ file using the XML editor.
 
 - To use the Manifest Designer, find the **Solution Explorer** pane, then right-click **Platforms\\Windows\\Package.appxmanifest** > **Properties**.
-- To use an XML editor, find the **Solution Explorer** pane, then right-click **Platforms\\Windows\\Package.appxmanifest** > **View Code**.
+- To use the XML editor, find the **Solution Explorer** pane, then right-click **Platforms\\Windows\\Package.appxmanifest** > **View Code**.
 
 > [!IMPORTANT]
 > The Manifest Designer for .NET MAUI projects can't edit app capabilities. For the time being, you'll need to use the XML editor.

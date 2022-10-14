@@ -13,14 +13,14 @@ ms.date: 10/06/2022
 > - [Publish for Windows](publish-visual-studio-folder.md)
 -->
 
-This article describes how to use Visual Studio to publish your .NET MAUI app for Windows. .NET MAUI apps are packaged into an MSIX package, which is used for installing Windows or for submission to the Microsoft Store. For more information about the benefits of MSIX, see [What is MSIX?](/windows/msix/overview).
+This article describes how to use Visual Studio to publish your .NET MAUI app for Windows. .NET MAUI apps are packaged into an MSIX package, which is used for installing in Windows or for submission to the Microsoft Store. For more information about the benefits of MSIX, see [What is MSIX?](/windows/msix/overview).
 
 > [!TIP]
 > .NET MAUI currently only allows publishing an MSIX package. You can't yet publish a Windows executable file for distribution.
 
 ## Set the build target
 
-In Visual Studio, you can only publish for one platform at a time. The target platform is selected with the **Debug Target** dropdown in the Visual Studio toolbar. Set the target to **Windows Machine** or to **Framework** > **net6.0-windows**, as illustrated in the following image:
+In Visual Studio, you can only publish to one platform at a time. The target platform is selected with the **Debug Target** dropdown in the Visual Studio toolbar. Set the target to **Windows Machine** or to **Framework** > **net6.0-windows**, as illustrated in the following image:
 
 :::image type="content" source="media/publish-visual-studio/vs-debugtarget.png" alt-text="Selecting the Windows debug target for a .NET MAUI app in Visual Studio.":::
 
@@ -37,10 +37,10 @@ After the build target is set to Windows, you can publish your project. Perform 
     :::image type="content" source="media/publish-visual-studio/vs-1-how-distribute.png" alt-text="The sideloading option selected on Create App Packages dialog box in Visual Studio to publish a .NET MAUI app.":::
 
     The **Enable automatic updates** checkbox is optional.
-<!--
+    <!--
     > [!TIP]
     > Publishing to the Microsoft Store is described in the article [Publish a .NET MAUI app to the Microsoft Store](publish-visual-studio-store.md).
--->
+    -->
 
 01. In the **Select Signing Method** dialog, select **Yes, select a certificate**. You can choose a certificate from a variety of sources. This article will create a temporary self-signed certificate for testing.
 
@@ -64,7 +64,7 @@ After the build target is set to Windows, you can publish your project. Perform 
 
     :::image type="content" source="media/publish-visual-studio/vs-4-configure.png" alt-text="Showing the New publishing profile item in Visual Studio.":::
 
-    01. In the **Create a new MSIX Publish Profile** dialog, the default options should what you want selected.
+    01. In the **Create a new MSIX Publish Profile** dialog, the default options should be what you want selected.
 
         :::image type="content" source="media/publish-visual-studio/vs-4_1-publish-profile.png" alt-text="Creating a new publishing profile in Visual Studio.":::
 
@@ -74,9 +74,9 @@ After the build target is set to Windows, you can publish your project. Perform 
 
     :::image type="content" source="media/publish-visual-studio/vs-5-configure-done.png" alt-text="Showing the New publishing profile item with a publish profile selected, in Visual Studio.":::
 
-01. If you chose the option to enable automatic updates for your package, the select the **Next** button. If you didn't select automatic updates, the button reads **Create**, select it, and skip the next step.
+01. If you chose the option to enable automatic updates for your package, then select the **Next** button. If you didn't select automatic updates, the button reads **Create**, select it, and skip the next step.
 
-01. The next dialog displayed is the **Configure update settings** dialog. Here is where you configure the central location of your app, and how often the app should check for updates.
+01. The next dialog displayed is the **Configure update settings** dialog. This is where you configure the installer location for your app, and how often the app should check for updates.
 
     Whenever you publish an updated version of the app, it overwrites the previous version of the app at the **Installer location**. When users run your app, and based on how often your app checks for updates, the app checks this location for an updated version, and if found, installs it.
 
@@ -84,7 +84,7 @@ After the build target is set to Windows, you can publish your project. Perform 
 
     Once you select an **Installer location**, select **Create**.
 
-01. After pressing **Create**, the **Finished creating package** dialog is displayed, which summarizes your package.
+01. After pressing **Create**, the installer is created and the **Finished creating package** dialog is displayed, which summarizes your package.
 
     :::image type="content" source="media/publish-visual-studio/vs-7-complete.png" alt-text="The finished creating a package dialog in Visual Studio.":::
 

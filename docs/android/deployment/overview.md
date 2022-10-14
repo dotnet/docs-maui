@@ -39,11 +39,11 @@ Multiple channels can distribute a .NET MAUI app simultaneously. For example, an
 
 Making your app available for direct download is most useful for a controlled subset of users, such as an enterprise environment or an app that is only meant for a small or well-specified set of users. Server and email distribution are also simpler publishing models, requiring less preparation to publish an app, though apps may be blocked as an email attachment.
 
-The Amazon Mobile App Distribution Program enables mobile app developers to distribute and sell their applications on Amazon. Users can discover and shop for apps on their Android-powered devices by using the Amazon App Store application.
+The Amazon Mobile App Distribution Program enables mobile app developers to distribute and sell their applications on Amazon. Users can discover and shop for apps on their Android devices by using the Amazon App Store application.
 
 Google Play is arguably the most comprehensive and popular marketplace for Android applications. Google Play allows users to discover, download, rate, and pay for applications by clicking a single icon either on their device or on their computer. Google Play also provides tools to help in the analysis of sales and market trends and to control which devices and users may download an application.
 
-## Related Links
+## See also
 
 This section links to articles that may help in publishing an app to an app store such as Google Play.
 
@@ -59,7 +59,6 @@ This section links to articles that may help in publishing an app to an app stor
 
 - [Publishing on Google Play](https://developer.android.com/distribute/googleplay/publish/index.html)
 - [Google Application Licensing](https://developer.android.com/guide/google/play/licensing/index.html)
-- [Android.Play.ExpansionLibrary](https://github.com/mattleibow/Android.Play.ExpansionLibrary)
 
 ### Amazon app store
 
