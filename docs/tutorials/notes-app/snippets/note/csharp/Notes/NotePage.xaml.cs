@@ -4,7 +4,7 @@ namespace Notes;
 //<filename_variable>
 public partial class NotePage : ContentPage
 {
-    string _fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "notes.txt");
+    string _fileName = Path.Combine(FileSystem.AppDataDirectory, "notes.txt");
 //</filename_variable>
 
     //<load_note>

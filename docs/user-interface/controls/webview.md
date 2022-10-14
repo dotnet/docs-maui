@@ -1,7 +1,7 @@
 ---
 title: "WebView"
 description: "This article explains how to use the .NET MAUI WebView to display remote web pages, local HTML files, and HTML strings."
-ms.date: 03/08/2022
+ms.date: 10/11/2022
 ---
 
 # WebView
@@ -19,7 +19,7 @@ These properties are backed by `BindableProperty` objects, which means that they
 
 The `Source` property can be set to an `UrlWebViewSource` object or a `HtmlWebViewSource` object, which both derive from `WebViewSource`. A `UrlWebViewSource` is used for loading a web page specified with a URL, while a `HtmlWebViewSource` object is used for loading a local HTML file, or local HTML.
 
-`WebView` defines a `Navigating` event that's raised when page navigation starts, and a `Navigated` event that's raised when page navigation completes. The `WebNavigatingEventArgs` object that accompanies the `Navigating` event defines a `Cancel` property, of type `bool`, that can be used to cancel navigation. The `WebNavigatedEventArgs` object that accompanies the `Navigated` event defines a `Result` property, of type `WebNavigationResult`, that indicates the navigation result.
+`WebView` defines a `Navigating` event that's raised when page navigation starts, and a `Navigated` event that's raised when page navigation completes. The `WebNavigatingEventArgs` object that accompanies the `Navigating` event defines a `Cancel` property of type `bool` that can be used to cancel navigation. The `WebNavigatedEventArgs` object that accompanies the `Navigated` event defines a `Result` property of type `WebNavigationResult` that indicates the navigation result.
 
 > [!IMPORTANT]
 > A `WebView` must specify its `HeightRequest` and `WidthRequest` properties when contained in a `HorizontalStackLayout`, `StackLayout`, or `VerticalStackLayout`. If you fail to specify these properties, the `WebView` will not render.
@@ -162,7 +162,7 @@ To display a local HTML file, add the file to the *Resources\Raw* folder of your
 </WebView>
 ```
 
-The local HTML file can load Cascading Style Sheets (CSS), JavaScript, and images, provided that they've also been added to your app project with the **MauiAsset** build action.
+The local HTML file can load Cascading Style Sheets (CSS), JavaScript, and images, if they've also been added to your app project with the **MauiAsset** build action.
 
 For more information about raw assets, see [Raw assets](~/fundamentals/single-project.md#raw-assets).
 
@@ -203,12 +203,12 @@ if (webView.CanGoForward)
 
 When page navigation occurs in a `WebView`, either initiated programmatically or by the user, the following events occur:
 
-- `Navigating`, which is raised when page navigation starts. The `WebNavigatingEventArgs` object that accompanies the `Navigating` event defines a `Cancel` property, of type `bool`, that can be used to cancel navigation.
-- `Navigated`, which is raised when page navigation completes. The `WebNavigatedEventArgs` object that accompanies the `Navigated` event defines a `Result` property, of type `WebNavigationResult`, that indicates the navigation result.
+- `Navigating`, which is raised when page navigation starts. The `WebNavigatingEventArgs` object that accompanies the `Navigating` event defines a `Cancel` property of type `bool` that can be used to cancel navigation.
+- `Navigated`, which is raised when page navigation completes. The `WebNavigatedEventArgs` object that accompanies the `Navigated` event defines a `Result` property of type `WebNavigationResult` that indicates the navigation result.
 
 ## Set cookies
 
-Cookies can be set on a `WebView`, which are then sent with the web request to the specified URL. This is accomplished by adding `Cookie` objects to a `CookieContainer`, which is then set as the value of the `WebView.Cookies` bindable property. The following code shows an example of this:
+Cookies can be set on a `WebView` so that they are sent with the web request to the specified URL. Set the cookies by adding `Cookie` objects to a `CookieContainer`, and then set the container as the value of the `WebView.Cookies` bindable property. The following code shows an example:
 
 ```csharp
 using System.Net;
@@ -233,7 +233,7 @@ In this example, a single `Cookie` is added to the `CookieContainer` object, whi
 
 ## Invoke JavaScript
 
-`WebView` includes the ability to invoke a JavaScript function from C#, and return any result to the calling C# code. This is accomplished with the `EvaluateJavaScriptAsync` method, which is shown in the following example:
+`WebView` includes the ability to invoke a JavaScript function from C# and return any result to the calling C# code. This interop is accomplished with the `EvaluateJavaScriptAsync` method, which is shown in the following example:
 
 ```csharp
 Entry numberEntry = new Entry { Text = "5" };
@@ -265,9 +265,39 @@ function factorial(num) {
 </html>
 ```
 
+::: moniker range=">=net-maui-7.0"
+
+## Configure the native WebView on iOS and Mac Catalyst
+
+The native `WebView` control is a `MauiWKWebView` on iOS and Mac Catalyst, which derives from `WKWebView`. One of the `MauiWKWebView` constructor overloads enables a `WKWebViewConfiguration` object to be specified, which provides information about how to configure the `WKWebView` object. Typical configurations include setting the user agent, specifying cookies to make available to your web content, and injecting custom scripts into your web content.
+
+You can create a `WKWebViewConfiguration` object in your app, and then configure its properties as required. Alternatively, you can call the static `MauiWKWebView.CreateConfiguration` method to retrieve .NET MAUI's `WKWebViewConfiguration` object and then modify it. The `WKWebViewConfiguration` object can then be passed to the `MauiWKWebView` constructor overload by modifying the factory method that `WebViewHandler` uses to create its native control on each platform:
+
+```csharp
+#if IOS || MACCATALYST
+using WebKit;
+using CoreGraphics;
+using Microsoft.Maui.Platform;
+using Microsoft.Maui.Handlers;
+#endif
+...
+
+#if IOS || MACCATALYST
+    WKWebViewConfiguration config = MauiWKWebView.CreateConfiguration();
+    config.ApplicationNameForUserAgent = "MyProduct/1.0.0";
+    WebViewHandler.PlatformViewFactory =
+        handler => new MauiWKWebView(CGRect.Empty, (WebViewHandler)handler, config);
+#endif
+```
+
+> [!NOTE]
+> You should configure `MauiWKWebView` with a `WKWebViewConfiguration` object before a `WebView` is displayed in your app. Suitable locations to do this are in your app's startup path, such as in *MauiProgram.cs* or *App.xaml.cs*. <!-- For more information about configuring a native .NET MAUI control, see [Customize controls](~/user-interface/handlers/customize.md). -->
+
+::: moniker-end
+
 ## Launch the system browser
 
-It's possible to open a URI in the system web browser with the `Launcher` class, that's provided by `Microsoft.Maui.Essentials`. This is achieved by calling it's `OpenAsync` method, passing in a `string` or `Uri` argument that represents the URI to open:
+It's possible to open a URI in the system web browser with the `Launcher` class, which is provided by `Microsoft.Maui.Essentials`. Call the launcher's `OpenAsync` method and pass in a `string` or `Uri` argument that represents the URI to open:
 
 ```csharp
 await Launcher.OpenAsync("https://learn.microsoft.com/dotnet/maui");

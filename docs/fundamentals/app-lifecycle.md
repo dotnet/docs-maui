@@ -1,7 +1,7 @@
 ---
 title: "App lifecycle"
 description: ".NET MAUI raises cross-platform lifecycle events when an app transitions between its different execution states."
-ms.date: 12/13/2021
+ms.date: 10/04/2022
 ---
 
 # App lifecycle
@@ -42,7 +42,9 @@ These cross-platform events map to different platform events, and the following 
 | `Resumed` | `OnRestart` | `WillEnterForeground` | `Resumed` |
 | `Destroying` | `OnDestroy` | `WillTerminate` | `Closed` |
 
-In addition to these events, the `Window` class also has the following overridable methods:
+In addition, the `Windows` class also defines a `Backgrounding` event that's raised on iOS and Mac Catalyst when the Window is closed or enters a background state. A `BackgroundingEventArgs` object accompanies this event, and any `string` state should be persisted to the `State` property of the `BackgroundingEventArgs` object, which the OS will preserve until it's time to resume the window. When the window is resumed the state is provided by the `IActivationState` argument to the `CreateWindow` override.
+
+In addition to these events, the `Window` class also has the following overridable lifecycle methods:
 
 - `OnCreated`, which is invoked when the `Created` event is raised.
 - `OnActivated`, which is invoked when the `Activated` event is raised.
@@ -50,6 +52,7 @@ In addition to these events, the `Window` class also has the following overridab
 - `OnStopped`, which is invoked when the `Stopped` event is raised.
 - `OnResumed`, which is invoked when the `Resumed` event is raised.
 - `OnDestroying`, which is invoked when the `Destroying` event is raised.
+- `OnBackgrounding`, which is invoked when the `Backgrounding` event is raised.
 
 To subscribe to the `Window` lifecycle events, override the `CreateWindow` method in your `App` class to create a `Window` instance on which you can subscribe to events:
 
@@ -188,6 +191,8 @@ For more information about the Android app lifecycle, see [Understand the Activi
 
 The following table lists the .NET MAUI delegates that are invoked in response to iOS lifecycle events being raised:
 
+::: moniker range="=net-maui-6.0"
+
 | Delegate | Arguments | Description |
 | -- | -- | -- |
 | `ContinueUserActivity` | `UIKit.UIApplication`, `Foundation.NSUserActivity`, `UIKit.UIApplicationRestorationHandler` | Invoked when the app receives data associated with a user activity, such as transferring an activity from a different device using Handoff. |
@@ -197,9 +202,44 @@ The following table lists the .NET MAUI delegates that are invoked in response t
 | `OnResignActivation` | `UIKit.UIApplication` | Invoked when the app is about to enter the background, be suspended, or when the user receives an interruption such as a phone call or text. |
 | `OpenUrl` | `UIKit.UIApplication`, `Foundation.NSDictionary` | Invoked when the app should open a specified URL. |
 | `PerformActionForShortcutItem` | `UIKit.UIApplication`, `UIKit.UIApplicationShortcutItem`, `UIKit.UIOperationHandler` | Invoked when a Home screen quick action is initiated. |
+| `SceneDidDisconnect` | `UIKit.UIScene` | Invoked when a scene is removed from the app. |
+| `SceneWillConnect` | `UIKit.UIScene`, `UIKit.UISceneSession`, `UIKit.UISceneConnectionOptions` | Invoked when a scene is added to the app. |
 | `WillEnterForeground` | `UIKit.UIApplication` | Invoked if the app will be returning from a backgrounded state. |
 | `WillFinishLaunching` | `UIKit.UIApplication`, `Foundation.NSDictionary` | Invoked when app launching has begun, but state restoration has not yet occurred. |
 | `WillTerminate` | `UIKit.UIApplication` | Invoked if the app is being terminated due to memory constraints, or directly by the user. |
+
+::: moniker-end
+
+::: moniker range=">=net-maui-7.0"
+
+| Delegate | Arguments | Description |
+| -- | -- | -- |
+| `ApplicationSignificantTimeChange` | `UIKit.UIApplication` | Invoked when a significant time change occurs, such as midnight, carrier-changed time, or the start or stop of daylight savings. |
+| `ContinueUserActivity` | `UIKit.UIApplication`, `Foundation.NSUserActivity`, `UIKit.UIApplicationRestorationHandler` | Invoked when the app receives data associated with a user activity, such as transferring an activity from a different device using Handoff. |
+| `DidEnterBackground` | `UIKit.UIApplication` | Invoked when the app has entered the background. |
+| `FinishedLaunching` | `UIKit.UIApplication`, `Foundation.NSDictionary` | Invoked when the app has launched. |
+| `OnActivated` | `UIKit.UIApplication` | Invoked when the app is launched and every time the app returns to the foreground. |
+| `OnResignActivation` | `UIKit.UIApplication` | Invoked when the app is about to enter the background, be suspended, or when the user receives an interruption such as a phone call or text. |
+| `OpenUrl` | `UIKit.UIApplication`, `Foundation.NSDictionary` | Invoked when the app should open a specified URL. |
+| `PerformActionForShortcutItem` | `UIKit.UIApplication`, `UIKit.UIApplicationShortcutItem`, `UIKit.UIOperationHandler` | Invoked when a Home screen quick action is initiated. |
+| `SceneContinueUserActivity` | `UIKit.UIScene`, `Foundation.NSUserActivity` | Invoked to handle the specified Handoff-related activity. |
+| `SceneDidDisconnect` | `UIKit.UIScene` | Invoked when a scene is removed from the app. |
+| `SceneDidEnterBackground` | `UIKit.UIScene` | Invoked when a scene is running in the background and isn't onscreen. |
+| `SceneDidFailToContinueUserActivity` | `UIKit.UIScene`, `string`, `Foundation.NSError` | Invoked to inform the user that the activity couldn't be completed. |
+| `SceneDidUpdateUserActivity` | `UIKit.UIScene`, `Foundation.NSUserActivity` | Invoked when the specified activity is updated. |
+| `SceneOnActivated` | `UIKit.UIScene` | Invoked when the scene becomes active and able to respond to user events. |
+| `SceneOnResignActivation` | `UIKit.UIScene` | Invoked when the scene is about to resign the active state and stop responding to user events. |
+| `SceneOpenUrl` | `UIKit.UIScene`, `Foundation.NSSet<UIKit.UIOpenUrlContext>` | Invoked when a scene asks to open one or more URLs. |
+| `SceneRestoreInteractionState` | `UIKit.UIScene`, `Foundation.NSUserActivity` | Invoked to restore the activity state. |
+| `SceneWillConnect` | `UIKit.UIScene`, `UIKit.UISceneSession`, `UIKit.UISceneConnectionOptions` | Invoked when a scene is added to the app. |
+| `SceneWillContinueUserActivity` | `UIKit.UIScene`, `string` | Invoked to prepare to receive Handoff-related data. |
+| `SceneWillEnterForeground` | `UIKit.UIScene` | Invoked when a scene is about to run in the foreground and become visible to the user. |
+| `WillEnterForeground` | `UIKit.UIApplication` | Invoked if the app will be returning from a backgrounded state. |
+| `WillFinishLaunching` | `UIKit.UIApplication`, `Foundation.NSDictionary` | Invoked when app launching has begun, but state restoration has not yet occurred. |
+| `WillTerminate` | `UIKit.UIApplication` | Invoked if the app is being terminated due to memory constraints, or directly by the user. |
+| `WindowSceneDidUpdateCoordinateSpace` | `UIKit.UIWindowScene`, `UIKit.IUICoordinateSpace`, `UIKit.UIInterfaceOrientation`, `UIKit.UITraitCollection` | Invoked when the size, orientation, or traits of a scene change. |
+
+::: moniker-end
 
 > [!IMPORTANT]
 > Each delegate has a corresponding identically named extension method, that can be called to register a handler for the delegate.
@@ -287,9 +327,9 @@ namespace PlatformLifecycleDemo
                           .OnVisibilityChanged((window, args) => LogEvent("OnVisibilityChanged"))
                           .OnPlatformMessage((window, args) =>
                           {
-                              if (args.MessageId == Convert.ToUInt32("0x02E0"))
+                              if (args.MessageId == Convert.ToUInt32("0x031A"))
                               {
-                                  // DPI has changed
+                                  // System theme has changed
                               }
                           }));
 #endif
