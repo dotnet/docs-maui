@@ -85,7 +85,7 @@ In this example, a `Path` object draws a heart. The `Path` object's `WidthReques
 
 `Shape` objects have a `StrokeDashArray` property, of type `DoubleCollection`. This property represents a collection of `double` values that indicate the pattern of dashes and gaps that are used to outline a shape. A `DoubleCollection` is an `ObservableCollection` of `double` values. Each `double` in the collection specifies the length of a dash or gap. The first item in the collection, which is located at index 0, specifies the length of a dash. The second item in the collection, which is located at index 1, specifies the length of a gap. Therefore, objects with an even index value specify dashes, while objects with an odd index value specify gaps.
 
-`Shape` objects also have a `StrokeDashOffset` property , of type `double`, which specifies the distance within the dash pattern where a dash begins. Failure to set this property will result in the `Shape` having a solid outline.
+`Shape` objects also have a `StrokeDashOffset` property, of type `double`, which specifies the distance within the dash pattern where a dash begins. Failure to set this property will result in the `Shape` having a solid outline.
 
 Dashed shapes can be drawn by setting both the `StrokeDashArray` and `StrokeDashOffset` properties. The `StrokeDashArray` property should be set to one or more `double` values, with each pair delimited by a single comma and/or one or more spaces. For example, "0.5 1.0" and "0.5,1.0" are both valid.
 
