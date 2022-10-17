@@ -104,7 +104,7 @@ For information about creating an elliptical arc as a `PathGeometry` object, see
 
 ### Cubic Bezier curve command
 
-The cubic Bezier curve command creates a cubic Bezier curve between the current point and the specified end point by using the two specified control point. The syntax for this command is: `C` *controlPoint1* *controlPoint2* *endPoint* or `c` *controlPoint1* *controlPoint2* *endPoint*.
+The cubic Bezier curve command creates a cubic Bezier curve between the current point and the specified end point by using the two specified control points. The syntax for this command is: `C` *controlPoint1* *controlPoint2* *endPoint* or `c` *controlPoint1* *controlPoint2* *endPoint*.
 
 In this syntax:
 
@@ -163,7 +163,7 @@ The syntax for the close command is: `Z` or `z`.
 Instead of a standard numerical value, you can also use the following case-sensitive special values:
 
 - `Infinity` represents `double.PositiveInfinity`.
-- `-Infinity`represents `double.NegativeInfinity`.
+- `-Infinity` represents `double.NegativeInfinity`.
 - `NaN` represents `double.NaN`.
 
 In addition, you may also use case-insensitive scientific notation. Therefore, `+1.e17` is a valid value.
