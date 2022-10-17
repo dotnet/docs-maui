@@ -137,6 +137,9 @@ The following code example demonstrates how to request the device's location, wh
 
 Not all location values may be available, depending on the device. For example, the `Altitude` property might be `null`, have a value of 0, or have a positive value indicating the meters above sea level. Other values that may not be present include `Speed` and `Course`.
 
+> [!WARNING]
+> `GetLocationAsync` can return `null` in some scenarios. This indicates that the underlying platform is unable to obtain the current location.
+
 ## Accuracy
 
 The following sections outline the location accuracy distance, per platform:
