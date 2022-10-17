@@ -2,7 +2,7 @@
 title: "Android Emulator Troubleshooting"
 description: "This article explains how to diagnose and work around problems that may occur when using the Android Emulator to deploy and run your .NET MAUI app."
 zone_pivot_groups: platform
-ms.date: 02/23/2022
+ms.date: 10/14/2022
 ---
 
 # Android emulator troubleshooting
@@ -84,6 +84,9 @@ When using hardware acceleration, you may run into configuration problems or con
 ```
 
 This command assumes that the Android SDK is installed at the default location of _C:\\Program Files (x86)\\Android\\android-sdk_. If the Android SDK is installed elsewhere, modify the preceding command to the correct location.
+
+> [!TIP]
+> Make sure the Android Emulator is up to date. From Visual Studio, press **Tools** > **Android** > **Android SDK Manager**. Select the **Tools** tab and see if the **Android Emulator** entry has an update available.
 
 ### Hardware acceleration not available
 
