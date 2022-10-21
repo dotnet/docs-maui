@@ -106,7 +106,7 @@ To set a specific cache period, set the `Source` property to an `UriImageSource`
 <Image>
     <Image.Source>
         <UriImageSource Uri="https://aka.ms/campus.jpg"
-                        CacheValidity="10.00:00:00" />
+                        CacheValidity="10:00:00:00" />
     </Image.Source>
 </Image>
 ```
