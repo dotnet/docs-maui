@@ -144,7 +144,7 @@ Encrypted values are stored in `ApplicationData.Current.LocalSettings`, inside a
 
 ::: moniker range=">=net-maui-7.0"
 
-Encrypted values are stored in JSON format in the *AppData\\Roaming* folder, inside a container with a name of *Settings\securestorage.dat*.
+Encrypted values are stored in JSON format in `securestorage.dat` inside the app's data folder.
 
 ::: moniker-end
 

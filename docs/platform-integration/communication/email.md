@@ -44,7 +44,7 @@ Apple requires that you define the schemes you want to use. Add the `LSApplicati
 
 # [Windows](#tab/windows)
 
-No additional setup required.
+No setup is required.
 
 -----
 <!-- markdownlint-enable MD025 -->

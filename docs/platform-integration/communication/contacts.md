@@ -1,7 +1,7 @@
 ---
 title: "Contacts"
 description: "Learn how to use the .NET MAUI Contacts interface in the Microsoft.Maui.ApplicationModel.Communication namespace, which lets a pick a contact and retrieve information about it."
-ms.date: 09/02/2022
+ms.date: 10/24/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel.Communication"]
 ---
 
@@ -73,7 +73,17 @@ The `<string>` element is the description specific to your app and is shown to t
 
 # [Windows](#tab/windows)
 
+::: moniker range="=net-maui-6.0"
+
 In the **Solution Explorer** pane, right-click on the _Platforms/Windows/Package.appxmanifest_ file, and select **View Code**. Under the `<Capabilities>` node, add `<uap:Capability Name="contacts"/>`.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-7.0"
+
+No setup is required.
+
+::: moniker-end
 
 -----
 <!-- markdownlint-enable MD025 -->

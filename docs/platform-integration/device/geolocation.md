@@ -114,11 +114,21 @@ An alternative to editing the _Platforms/iOS/Info.plist_ and _Platforms/MacCatal
 
 # [Windows](#tab/windows)
 
+::: moniker range="=net-maui-6.0"
+
 <!-- NOT SUPPORTED>
 In the `Package.appxmanifest` under **Capabilities** ensure that `Location` capability are checked.
 -->
 
 In the **Solution Explorer** pane, right-click on the _Platforms/Windows/Package.appxmanifest_ file, and select **View Code**. Under the `<Capabilities>` node, add the `<DeviceCapability Name="location"/>` element.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-7.0"
+
+No setup is required.
+
+::: moniker-end
 
 -----
 <!-- markdownlint-enable MD025 -->
