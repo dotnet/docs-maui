@@ -20,13 +20,13 @@ To access the **Geolocation** functionality, the following platform-specific set
 
 ::: moniker range="=net-maui-6.0"
 
-Coarse *and* fine location permissions are required and must be configured in the Android project.
+Coarse *and* fine location permissions are required and should be configured in the Android project.
 
 ::: moniker-end
 
 ::: moniker range=">=net-maui-7.0"
 
-Coarse *or* fine location permissions, or both, can be specified and must be configured in the Android project.
+Coarse *or* fine location permissions, or both, must be specified and should be configured in the Android project.
 
 ::: moniker-end
 
