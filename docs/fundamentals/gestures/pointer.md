@@ -2,7 +2,7 @@
 title: "Recognize a pointer gesture"
 description: "Learn how to use the PointerGestureRecognizer class, to detect when the pointer enters, exits, and moves within a view on iPadOS, Mac Catalyst, and Windows."
 monikerRange: ">= net-maui-7.0"
-ms.date: 10/03/2022
+ms.date: 10/24/2022
 ---
 
 # Recognize a pointer gesture
@@ -28,6 +28,8 @@ A `PointerEventArgs` object accompanies all three events, and defines a `GetPosi
 
 > [!IMPORTANT]
 > Pointer gesture recognition is only supported on iPadOS, Mac Catalyst, and Windows.
+
+.NET MAUI also defines a `PointerOver` visual state, that can change the visual appearance of a view when it has a mouse cursor hovering over it, but isn't pressed. For more information, see [Visual states](~/user-interface/visual-states.md).
 
 ## Create a PointerGestureRecognizer
 
