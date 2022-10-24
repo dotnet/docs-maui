@@ -48,11 +48,11 @@ The `VIBRATE` permission is required, and must be configured in the Android proj
 
 # [iOS\macOS](#tab/ios)
 
-No additional setup required.
+No setup is required.
 
 # [Windows](#tab/windows)
 
-No additional setup required.
+No setup is required.
 
 -----
 
