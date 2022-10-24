@@ -16,7 +16,3 @@ The default implementation of the `IScreenshot` interface is available through t
 To capture a screenshot of the current app, use the `CaptureAsync` method. This method returns a `IScreenshotResult`, which contains information about the capture, such as the width and height of the screenshot. `IScreenshotResult` also includes a `Stream` property that's used to convert the screenshot into an image object for use by your app. The following example demonstrates a method that captures a screenshot and returns it as an `ImageSource`.
 
 :::code language="csharp" source="../snippets/shared_1/MediaPage.cs" id="screenshot":::
-
-## Limitations
-
-Not all views support being captured at a screen level, such as an OpenGL view.
