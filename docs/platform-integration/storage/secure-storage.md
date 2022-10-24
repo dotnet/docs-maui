@@ -1,7 +1,7 @@
 ---
 title: "Secure storage"
 description: "Learn how to use the .NET MAUI ISecureStorage interface, which helps securely store simple key/value pairs. This article discusses how to use the ISecureStorage, platform implementation specifics, and its limitations."
-ms.date: 09/02/2022
+ms.date: 10/24/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Storage", "SecureStorage"]
 #acrolinx score 95
 ---
