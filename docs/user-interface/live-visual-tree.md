@@ -46,7 +46,7 @@ Just My XAML can be permanently disabled by selecting **Debug > Options > XAML H
 # [Visual Studio for Mac](#tab/vsmac)
 <!-- markdownlint-enable MD025 -->
 
-The view of the UI elements can be simplified using a feature called Just My XAML. Clicking the **Show Just My XAML** button enables the feature and shows all UI elements in the visual tree:
+The view of the UI elements can be simplified using a feature called Just My XAML. Clicking the **Show Just My XAML** button enables the feature and shows just the UI elements from your XAML in the visual tree:
 
 :::image type="content" source="media/live-visual-tree/just-my-xaml-vsmac.png" alt-text="Screenshot of all UI elements in the Live Visual Tree window in Visual Studio for Mac.":::
 
