@@ -6,7 +6,7 @@ ms.date: 03/03/2022
 
 # Editor
 
-The .NET Multi-platform App UI (.NET MAUI) `Editor` allows you to enter and edit multiple lines of text.]
+The .NET Multi-platform App UI (.NET MAUI) `Editor` allows you to enter and edit multiple lines of text.
 
 `Editor` defines the following properties:
 
