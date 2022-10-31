@@ -10,7 +10,7 @@ In this tutorial, you'll learn how to create and run a .NET Multi-platform App U
 
 [!INCLUDE [Install .NET MAUI on macOS](~/includes/install-create-macos.md)]
 
-::: moniker-range="=net-maui-6.0"
+::: moniker range="=net-maui-6.0"
 
 <!-- markdownlint-disable MD029 -->
 5. In **Terminal**, change directory to *MyMauiApp*, and build and run the app:
@@ -23,9 +23,9 @@ In this tutorial, you'll learn how to create and run a .NET Multi-platform App U
     The `dotnet build` command will restore the project the dependencies, build the app, and launch it in the default simulator.
     <!-- markdownlint-enable MD029 -->
 
-::: moniker end
+::: moniker-end
 
-::: moniker-range="=net-maui-7.0"
+::: moniker range="=net-maui-7.0"
 
 <!-- markdownlint-disable MD029 -->
 5. In **Terminal**, change directory to *MyMauiApp*, and build and run the app:
@@ -38,8 +38,7 @@ In this tutorial, you'll learn how to create and run a .NET Multi-platform App U
     The `dotnet build` command will restore the project the dependencies, build the app, and launch it in the default simulator.
     <!-- markdownlint-enable MD029 -->
 
-::: moniker end
-
+::: moniker-end
 
 1. In the default simulator, press the **Click me** button several times and observe that the count of the number of button clicks is incremented.
 
@@ -63,7 +62,7 @@ A .NET MAUI iOS app can be launched on a specific iOS simulator by providing its
     /Applications/Xcode.app/Contents/Developer/usr/bin/simctl list
     ```
 
-::: moniker-range="=net-maui-6.0"
+::: moniker range="=net-maui-6.0"
 
 1. In **Terminal**, build the app and run it on your chosen simulator by specifying the `_DeviceName` MSBuild property using the `-p` [MSBuild option](/dotnet/core/tools/dotnet-build#msbuild):
 
@@ -77,9 +76,9 @@ A .NET MAUI iOS app can be launched on a specific iOS simulator by providing its
     dotnet build -t:Run -f net6.0-ios -p:_DeviceName=:v2:udid=E25BBE37-69BA-4720-B6FD-D54C97791E79
     ```
 
-::: moniker end
+::: moniker-end
 
-::: moniker-range="=net-maui-7.0"
+::: moniker range="=net-maui-7.0"
 
 1. In **Terminal**, build the app and run it on your chosen simulator by specifying the `_DeviceName` MSBuild property using the `-p` [MSBuild option](/dotnet/core/tools/dotnet-build#msbuild):
 
@@ -93,7 +92,7 @@ A .NET MAUI iOS app can be launched on a specific iOS simulator by providing its
     dotnet build -t:Run -f net7.0-ios -p:_DeviceName=:v2:udid=E25BBE37-69BA-4720-B6FD-D54C97791E79
     ```
 
-::: moniker end
+::: moniker-end
 
 1. In your chosen simulator, press the **Click me** button several times and observe that the count of the number of button clicks is incremented.
 

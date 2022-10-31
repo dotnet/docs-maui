@@ -157,7 +157,7 @@ To publish your app, open a terminal and navigate to the folder for your .NET MA
 
 | Parameter                    | Value                                                                                           |
 |------------------------------|-------------------------------------------------------------------------------------------------|
-| `-f` or `--framework`        | The target framework, which is `net6.0-ios`.                                                    |
+| `-f` or `--framework`        | The target framework, which is `net6.0-ios` or `net7.0-ios`.                                    |
 | `-c` or `--configuration`    | The build configuration, which is `Release`.                                                    |
 
 > [!WARNING]
@@ -181,7 +181,7 @@ In addition, the following common parameters can be specified on the command lin
 > [!IMPORTANT]
 > Values for these parameters don't have to be provided on the command line. They can also be provided in the project file. For more information, see [Add code signing data to your app project](#add-code-signing-data-to-your-app-project).
 
-For example, use the following command to create an *.ipa*:
+For example, use the following command to create an *.ipa* on .NET 6:
 
 ```console
 dotnet publish -f:net6.0-ios -c:Release /p:ServerAddress={macOS build host IP address} /p:ServerUser={macOS username} /p:ServerPassword={macOS password} /p:TcpPort=58181 /p:ArchiveOnBuild=true /p:_DotNetRootRemoteDirectory=/Users/{macOS username}/Library/Caches/Xamarin/XMA/SDKs/dotnet/
