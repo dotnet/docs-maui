@@ -151,7 +151,7 @@ Pair to Mac supports building .NET MAUI apps from the command line. Navigate to 
 dotnet build -f:net6.0-ios /p:ServerAddress={macOS build host IP address} /p:ServerUser={macOS username} /p:ServerPassword={macOS password} /p:TcpPort=58181 /p:_DotNetRootRemoteDirectory=/Users/{macOS username}/Library/Caches/Xamarin/XMA/SDKs/dotnet/
 ```
 
-::: moniker end
+::: moniker-end
 
 ::: moniker range="=net-maui-6.0"
 
@@ -159,7 +159,7 @@ dotnet build -f:net6.0-ios /p:ServerAddress={macOS build host IP address} /p:Ser
 dotnet build -f:net7.0-ios /p:ServerAddress={macOS build host IP address} /p:ServerUser={macOS username} /p:ServerPassword={macOS password} /p:TcpPort=58181 /p:_DotNetRootRemoteDirectory=/Users/{macOS username}/Library/Caches/Xamarin/XMA/SDKs/dotnet/
 ```
 
-::: moniker end
+::: moniker-end
 
 The parameters passed to `dotnet` in the above example are:
 
