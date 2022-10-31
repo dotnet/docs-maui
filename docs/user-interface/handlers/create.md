@@ -198,6 +198,8 @@ The sample app is configured to support filename-based multi-targeting, so that 
 
 The `VideoHandler` class containing the mappers is named *VideoHandler.cs*. Its platform implementations are in the *VideoHandler.Android.cs*, *VideoHandler.MaciOS.cs*, and *VideoHandler.Windows.cs* files. This filename-based multi-targeting is configured by adding the following XML to the project file, as children of the `<Project>` node:
 
+::: moniker range="=net-maui-6.0"
+
 ```xml
 <!-- Android -->
 <ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-android')) != true">
@@ -216,8 +218,33 @@ The `VideoHandler` class containing the mappers is named *VideoHandler.cs*. Its 
   <Compile Remove="**\*.Windows.cs" />
   <None Include="**\*.Windows.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 </ItemGroup>
-
 ```
+
+::: moniker-end
+
+::: moniker range="=net-maui-7.0"
+
+```xml
+<!-- Android -->
+<ItemGroup Condition="$(TargetFramework.StartsWith('net7.0-android')) != true">
+  <Compile Remove="**\**\*.Android.cs" />
+  <None Include="**\**\*.Android.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+</ItemGroup>
+
+<!-- iOS and Mac Catalyst -->
+<ItemGroup Condition="$(TargetFramework.StartsWith('net7.0-ios')) != true AND $(TargetFramework.StartsWith('net7.0-maccatalyst')) != true">
+  <Compile Remove="**\**\*.MaciOS.cs" />
+  <None Include="**\**\*.MaciOS.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+</ItemGroup>
+
+<!-- Windows -->
+<ItemGroup Condition="$(TargetFramework.Contains('-windows')) != true ">
+  <Compile Remove="**\*.Windows.cs" />
+  <None Include="**\*.Windows.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+</ItemGroup>
+```
+
+::: moniker-end
 
 For more information about configuring multi-targeting, see [Configure multi-targeting](~/platform-integration/configure-multi-targeting.md).
 

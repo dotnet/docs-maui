@@ -111,8 +111,8 @@ To publish your app, open the **Developer Command Prompt for VS 2022** terminal 
 
 | Parameter                    | Value                                                                               |
 |------------------------------|-------------------------------------------------------------------------------------|
-| `-f net6.0-windows{version}` | The target framework, which is a Windows TFM, such as `net6.0-windows10.0.19041.0`. Ensure that this value is identical to the value in the `<TargetFrameworks>` node in your *.csproj* file.           |
-| `-c Release`                 | Sets the build configuration, which is `Release`.                                   |
+| `-f net6.0-windows{version}` | The target framework, which is `net6.0-windows{version}` or `net7.0-windws{version}`. This is a Windows TFM, such as `net6.0-windows10.0.19041.0`. Ensure that this value is identical to the value in the `<TargetFrameworks>` node in your *.csproj* file.           |
+| `-c`                 | The build configuration, which is `Release`.                                   |
 | `/p:RuntimeIdentifierOverride=win10-x64`<br>- or -<br>`/p:RuntimeIdentifierOverride=win10-x86` | Avoids the bug detailed in [WindowsAppSDK Issue #2940](https://github.com/microsoft/WindowsAppSDK/issues/2940). Choose the `-x64` or `-x86` version of the parameter based on your target platform.
 
 > [!WARNING]
@@ -120,11 +120,25 @@ To publish your app, open the **Developer Command Prompt for VS 2022** terminal 
 
 For example:
 
+::: moniker range="=net-maui-6.0"
+
 ```console
 dotnet publish -f net6.0-windows10.0.19041.0 -c Release /p:RuntimeIdentifierOverride=win10-x64
 ```
 
 Publishing builds and packages the app, copying the signed package to the _bin\\Release\\net6.0-windows10.0.19041.0\\win10-x64\\AppPackages\\\<appname>\\_ folder. \<appname> is a folder named after both your project and version. In this folder, there's an _msix_ file, and that's the app package.
+
+::: moniker-end
+
+::: moniker range="=net-maui-7.0"
+
+```console
+dotnet publish -f net7.0-windows10.0.19041.0 -c Release /p:RuntimeIdentifierOverride=win10-x64
+```
+
+Publishing builds and packages the app, copying the signed package to the _bin\\Release\\net7.0-windows10.0.19041.0\\win10-x64\\AppPackages\\\<appname>\\_ folder. \<appname> is a folder named after both your project and version. In this folder, there's an _msix_ file, and that's the app package.
+
+::: moniker-end
 
 For more information about the `dotnet publish` command, see [dotnet publish](/dotnet/core/tools/dotnet-publish).
 
