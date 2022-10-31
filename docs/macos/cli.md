@@ -49,8 +49,8 @@ In this tutorial, you'll learn how to create and run a .NET Multi-platform App U
 
 ::: moniker-end
 
-<!-- markdownlint-enable MD029 -->
-
-1. In the running app, press the **Click me** button several times and observe that the count of the number of button clicks is incremented.
+6. In the running app, press the **Click me** button several times and observe that the count of the number of button clicks is incremented.
 
     :::image type="content" source="media/cli/maccatalyst-running-app.png" alt-text=".NET MAUI app running on Mac.":::
+
+<!-- markdownlint-enable MD029 -->
