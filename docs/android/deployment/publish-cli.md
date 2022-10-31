@@ -126,13 +126,29 @@ To publish your app, open a terminal and navigate to the folder for your .NET MA
 > [!WARNING]
 > Attempting to publish a .NET MAUI solution will result in the `dotnet publish` command attempting to publish each project in the solution individually, which can cause issues when you've added other project types to your solution. Therefore, the `dotnet publish` command should be scoped to your .NET MAUI app project.
 
-For example, to publish the app with .NET 6:
+::: moniker range="=net-maui-6.0"
+
+For example:
 
 ```console
 dotnet publish -f:net6.0-android -c:Release /p:AndroidSigningKeyPass=mypassword /p:AndroidSigningStorePass=mypassword
 ```
 
 Publishing builds the app, and then copies the _aab_ and _apk_ files to the _bin\\Release\\net6.0-android\\publish_ folder. There are two _aab_ files, one unsigned and another signed. The signed variant has **-signed** in the file name.
+
+::: moniker-end
+
+::: moniker range="=net-maui-7.0"
+
+For example:
+
+```console
+dotnet publish -f:net7.0-android -c:Release /p:AndroidSigningKeyPass=mypassword /p:AndroidSigningStorePass=mypassword
+```
+
+Publishing builds the app, and then copies the _aab_ and _apk_ files to the _bin\\Release\\net7.0-android\\publish_ folder. There are two _aab_ files, one unsigned and another signed. The signed variant has **-signed** in the file name.
+
+::: moniker-end
 
 For more information about the `dotnet publish` command, see [dotnet publish](/dotnet/core/tools/dotnet-publish).
 

@@ -181,7 +181,9 @@ In addition, the following common parameters can be specified on the command lin
 > [!IMPORTANT]
 > Values for these parameters don't have to be provided on the command line. They can also be provided in the project file. For more information, see [Add code signing data to your app project](#add-code-signing-data-to-your-app-project).
 
-For example, use the following command to create an *.ipa* on .NET 6:
+::: moniker range="=net-maui-6.0"
+
+For example, use the following command to create an *.ipa*:
 
 ```console
 dotnet publish -f:net6.0-ios -c:Release /p:ServerAddress={macOS build host IP address} /p:ServerUser={macOS username} /p:ServerPassword={macOS password} /p:TcpPort=58181 /p:ArchiveOnBuild=true /p:_DotNetRootRemoteDirectory=/Users/{macOS username}/Library/Caches/Xamarin/XMA/SDKs/dotnet/
@@ -190,7 +192,26 @@ dotnet publish -f:net6.0-ios -c:Release /p:ServerAddress={macOS build host IP ad
 > [!NOTE]
 > If the `ServerPassword` parameter is omitted from a command line build invocation, Pair to Mac attempts to log in to the Mac build host using the saved SSH keys.
 
-Publishing builds the app, and then copies the *.ipa* to the *bin\\Release\\net6.0-ios\\ios-arm64\\publish* folder. During the publishing process it maybe necessary to allow `codesign` to run on your paired Mac:
+Publishing builds the app, and then copies the *.ipa* to the *bin\\Release\\net6.0-ios\\ios-arm64\\publish* folder.
+
+::: moniker end
+
+::: moniker range="=net-maui-7.0"
+
+For example, use the following command to create an *.ipa*:
+
+```console
+dotnet publish -f:net7.0-ios -c:Release /p:ServerAddress={macOS build host IP address} /p:ServerUser={macOS username} /p:ServerPassword={macOS password} /p:TcpPort=58181 /p:ArchiveOnBuild=true /p:_DotNetRootRemoteDirectory=/Users/{macOS username}/Library/Caches/Xamarin/XMA/SDKs/dotnet/
+```
+
+> [!NOTE]
+> If the `ServerPassword` parameter is omitted from a command line build invocation, Pair to Mac attempts to log in to the Mac build host using the saved SSH keys.
+
+Publishing builds the app, and then copies the *.ipa* to the *bin\\Release\\net6.0-ios\\ios-arm64\\publish* folder.
+
+::: moniker end
+
+During the publishing process it maybe necessary to allow `codesign` to run on your paired Mac:
 
 :::image type="content" source="media/overview/codesign.png" alt-text="Allow codesign to sign your app on your paired Mac.":::
 
