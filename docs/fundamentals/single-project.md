@@ -17,7 +17,7 @@ ms.date: 05/17/2022
 - Access to platform-specific APIs and tools when required.
 - A single cross-platform app entry point.
 
-.NET MAUI single project is enabled using multi-targeting and the use of SDK-style projects in .NET 6.
+.NET MAUI single project is enabled using multi-targeting and the use of SDK-style projects.
 
 ## Resource files
 
