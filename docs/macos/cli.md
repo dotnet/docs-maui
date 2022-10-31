@@ -11,6 +11,9 @@ In this tutorial, you'll learn how to create and run a .NET Multi-platform App U
 [!INCLUDE [Install .NET MAUI on macOS](~/includes/install-create-macos.md)]
 
 <!-- markdownlint-disable MD029 -->
+
+::: moniker range="=net-maui-6.0"
+
 5. In **Terminal**, change directory to *MyMauiApp*, and build and run the app:
 
     ```zsh
@@ -20,8 +23,22 @@ In this tutorial, you'll learn how to create and run a .NET Multi-platform App U
 
     The `dotnet build` command will restore the project dependencies, build the app, and launch it.
 
-    <!-- markdownlint-enable MD029 -->
+::: moniker-end
 
+::: moniker range="=net-maui-7.0"
+
+5. In **Terminal**, change directory to *MyMauiApp*, and build and run the app:
+
+    ```zsh
+    cd MyMauiApp
+    dotnet build -t:Run -f net7.0-maccatalyst
+    ```
+
+    The `dotnet build` command will restore the project dependencies, build the app, and launch it.
+
+::: moniker-end
+
+    <!-- markdownlint-enable MD029 -->
     If you see a build error and a warning that the Xcode app bundle could not be found, you may need to run the following command:
 
     ```zsh

@@ -118,7 +118,7 @@ To publish your app, open a terminal and navigate to the folder for your .NET MA
 
 | Parameter                    | Value                                                                                                                                     |
 |------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
-| `-f` or `--framework`        | The target framework, which is `net6.0-android` or 'net7.0-android'.                                                                      |
+| `-f` or `--framework`        | The target framework, which is `net6.0-android` or `net7.0-android`.                                                                      |
 | `-c` or `--configuration`    | The build configuration, which is `Release`.                                                                                              |
 | `/p:AndroidSigningKeyPass`   | This is the value used for the `<AndroidSigningKeyPass>` project setting, the password you provided when you created the keystore file.   |
 | `/p:AndroidSigningStorePass` | This is the value used for the `<AndroidSigningStorePass>` project setting, the password you provided when you created the keystore file. |

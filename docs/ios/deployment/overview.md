@@ -194,7 +194,7 @@ dotnet publish -f:net6.0-ios -c:Release /p:ServerAddress={macOS build host IP ad
 
 Publishing builds the app, and then copies the *.ipa* to the *bin\\Release\\net6.0-ios\\ios-arm64\\publish* folder.
 
-::: moniker end
+::: moniker-end
 
 ::: moniker range="=net-maui-7.0"
 
@@ -209,7 +209,7 @@ dotnet publish -f:net7.0-ios -c:Release /p:ServerAddress={macOS build host IP ad
 
 Publishing builds the app, and then copies the *.ipa* to the *bin\\Release\\net7.0-ios\\ios-arm64\\publish* folder.
 
-::: moniker end
+::: moniker-end
 
 During the publishing process it maybe necessary to allow `codesign` to run on your paired Mac:
 
