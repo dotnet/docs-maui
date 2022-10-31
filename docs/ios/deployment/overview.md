@@ -207,7 +207,7 @@ dotnet publish -f:net7.0-ios -c:Release /p:ServerAddress={macOS build host IP ad
 > [!NOTE]
 > If the `ServerPassword` parameter is omitted from a command line build invocation, Pair to Mac attempts to log in to the Mac build host using the saved SSH keys.
 
-Publishing builds the app, and then copies the *.ipa* to the *bin\\Release\\net6.0-ios\\ios-arm64\\publish* folder.
+Publishing builds the app, and then copies the *.ipa* to the *bin\\Release\\net7.0-ios\\ios-arm64\\publish* folder.
 
 ::: moniker end
 
