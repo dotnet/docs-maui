@@ -63,7 +63,7 @@ To build, sign, and deploy .NET MAUI apps for iOS or macOS, you'll also need:
 1. To create .NET MAUI apps, you'll need the latest Visual Studio for Mac:
 
     > [!div class="button"]
-    > [Download Visual Studio 2022 for Mac](https://visualstudio.microsoft.com/vs/mac/
+    > [Download Visual Studio 2022 for Mac](https://visualstudio.microsoft.com/vs/mac/)
 
 1. Either install Visual Studio 2022 for Mac, or modify your existing installation, and ensure that the following workloads are installed:
 
