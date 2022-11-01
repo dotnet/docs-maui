@@ -28,6 +28,7 @@ In this tutorial, you'll learn how to create and run a .NET Multi-platform App U
     ```zsh
     xcode-select --reset
     ```
+
 ::: moniker-end
 
 ::: moniker range="=net-maui-7.0"
