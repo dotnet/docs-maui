@@ -53,31 +53,13 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022, 
 
     :::image type="content" source="media/first-app/vs/configure-project.png" alt-text="Configure the project.":::
 
-<!-- markdownlint-disable MD029 -->
-::: moniker range="=net-maui-6.0"
+01. In the **Additional information** window, choose the version of .NET you'd like to target, and click the **Create** button:
 
-04. In the **Additional information** window, click the **Create** button:
-
-    :::image type="content" source="media/first-app/vs/additional-information-net6.png" alt-text="Additional information on .NET 6.":::
+    :::image type="content" source="media/first-app/vs/additional-information.png" alt-text="Additional information.":::
 
 01. Wait for the project to be created, and its dependencies to be restored:
 
-    :::image type="content" source="media/first-app/vs/restored-dependencies-net6.png" alt-text="Restored dependencies on .NET 6.":::
-
-::: moniker-end
-
-::: moniker range="=net-maui-7.0"
-
-04. In the **Additional information** window, click the **Create** button:
-
-    :::image type="content" source="media/first-app/vs/additional-information-net7.png" alt-text="Additional information on .NET 7.":::
-
-01. Wait for the project to be created, and its dependencies to be restored:
-
-    :::image type="content" source="media/first-app/vs/restored-dependencies-net7.png" alt-text="Restored dependencies on .NET 7.":::
-
-::: moniker-end
-<!-- markdownlint-enable MD029 -->
+    :::image type="content" source="media/first-app/vs/restored-dependencies.png" alt-text="Restored dependencies.":::
 
 :::zone-end
 
