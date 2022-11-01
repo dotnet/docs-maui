@@ -53,7 +53,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022, 
 
     :::image type="content" source="media/first-app/vs/configure-project.png" alt-text="Configure the project.":::
 
-01. In the **Additional information** window, choose the version of .NET you'd like to target, and click the **Create** button:
+01. In the **Additional information** window, choose the version of .NET that you'd like to target, and click the **Create** button:
 
     :::image type="content" source="media/first-app/vs/additional-information.png" alt-text="Additional information.":::
 
@@ -223,7 +223,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 f
 
     :::image type="content" source="media/first-app/vsmac/choose-template.png" alt-text="Choose the .NET MAUI App project template.":::
 
-01. In the **Configure your new .NET MAUI App** window, ensure that **.NET 6.0** appears in the **Target framework** dropdown and click the **Continue** button:
+01. In the **Configure your new .NET MAUI App** window, choose the version of .NET that you'd like to target, and click the **Continue** button:
 
     :::image type="content" source="media/first-app/vsmac/select-target-framework.png" alt-text="Select the target framework for your .NET MAUI app.":::
 
