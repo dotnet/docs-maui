@@ -56,6 +56,7 @@
       "ms.prod": "dotnet-mobile",
       "ms.topic": "conceptual",
       "ms.technology": "dotnet-maui",
+      "uhfHeaderId": "MSDocsHeader-DotNet",
       "zone_pivot_group_filename": "maui/zone-pivot-groups.json",
       "titleSuffix": ".NET MAUI",
       "searchScope": [ ".NET MAUI" ]

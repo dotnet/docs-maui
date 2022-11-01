@@ -43,8 +43,8 @@ This project template creates a multi-targeted .NET MAUI Blazor app that can be 
 The `BlazorWebView` created by the project template is defined in *MainPage.xaml*, and points to the root of the Blazor app:
 
 ```xaml
-<ContentPage xmlns=http://schemas.microsoft.com/dotnet/2021/maui
-             xmlns:x=http://schemas.microsoft.com/winfx/2009/xaml
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:BlazorWebViewDemo"
              x:Class="BlazorWebViewDemo.MainPage"
              BackgroundColor="{DynamicResource PageBackgroundColor}">
@@ -79,8 +79,8 @@ The process to add a `BlazorWebView` to an existing .NET MAUI app is as follows:
 1. Add a `BlazorWebView` to a page in your .NET MAUI app, and point it to the root of the Blazor app:
 
     ```xaml
-    <ContentPage xmlns=http://schemas.microsoft.com/dotnet/2021/maui
-                 xmlns:x=http://schemas.microsoft.com/winfx/2009/xaml
+    <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                  xmlns:local="clr-namespace:MyBlazorApp"
                  x:Class="MyBlazorApp.MainPage">
 
