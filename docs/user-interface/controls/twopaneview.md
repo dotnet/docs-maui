@@ -26,6 +26,7 @@ Visit the [dual-screen developer docs](/dual-screen/) for more information about
 > The `TwoPaneView` control only adapts to Android foldable devices that support the Jetpack Window Manager API provided by Google (such as Microsoft Surface Duo).
 >
 > On all other platforms and devices (i.e. other Android devices, iOS, macOS, Windows) it acts like a configurable and responsive split view that can dynamically show one or two panes, proportionally sized on the screen.
+
 ## Add and configure the Foldable support NuGet
 
 1. Open the **NuGet Package Manager** dialog for your solution.
