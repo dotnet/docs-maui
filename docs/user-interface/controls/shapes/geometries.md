@@ -184,8 +184,8 @@ These properties are backed by `BindableProperty` objects, which means that they
 
 The `SweepDirection` enumeration defines the following members:
 
-- `CounterClockwise`, which specifies that arcs are drawn in a clockwise direction.
-- `Clockwise`, which specifies that arcs are drawn in a counter clockwise direction.
+- `CounterClockwise`, which specifies that arcs are drawn in a counter clockwise direction.
+- `Clockwise`, which specifies that arcs are drawn in a clockwise direction.
 
 The following example shows how to create and render an `ArcSegment` in a `Path` object:
 
@@ -533,7 +533,7 @@ Composite geometry objects can be created using a `GeometryGroup`. The `Geometry
 
 The `GeometryGroup` class defines the following properties:
 
-- `Children`, of type `GeometryCollection`, which species the objects that define the `GeomtryGroup`. A `GeometryCollection` is an `ObservableCollection` of `Geometry` objects.
+- `Children`, of type `GeometryCollection`, which specifies the objects that define the `GeomtryGroup`. A `GeometryCollection` is an `ObservableCollection` of `Geometry` objects.
 - `FillRule`, of type `FillRule`, which specifies how the intersecting areas in the `GeometryGroup` are combined. The default value of this property is `FillRule.EvenOdd`.
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
