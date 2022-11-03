@@ -106,6 +106,7 @@ The following properties apply when the `TwoPaneView` is occupying a single scre
 
 > [!IMPORTANT]
 > If the `TwoPaneView` is spanned across a hinge or fold these properties have no effect.
+
 ### Properties that apply when on one screen or two
 
 The following properties apply when the `TwoPaneView` is occupying a single screen or two screens:
