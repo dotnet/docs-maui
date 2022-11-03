@@ -73,10 +73,12 @@ To build, sign, and deploy .NET MAUI apps for iOS or macOS, you'll also need:
     - iOS
 
     :::image type="content" source="media/installation/vsmac/maui-workloads.png" alt-text="Visual Studio for Mac .NET MAUI workloads.":::
-
     :::image type="content" source="media/installation/vsmac/legacy-workloads.png" alt-text="Visual Studio for Mac legacy workloads.":::
 
-    <!-- The legacy workloads shouldn't be required in 17.4 P2 -->
+    > [!IMPORTANT]
+    > For new installations of Visual Studio 2022 for Mac, selecting the .NET MAUI workload will automatically select the Android and iOS workloads, which are currently required for .NET MAUI development.
+
+    <!-- At some point, the legacy workloads shouldn't be required. -->
 
 If you have network trouble while installing in a corporate environment, review the [installing behind a firewall or proxy](#installation-behind-a-firewall-or-proxy-server) instructions.
 
