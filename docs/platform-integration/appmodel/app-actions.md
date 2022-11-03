@@ -19,7 +19,7 @@ To access the `AppActions` functionality, the following platform specific setup 
 
 # [Android](#tab/android)
 
-In the _Platforms/Android/MainActivity.cs_ file, add the `OnResume` and `OnNewIntent` overrides to the `MainActivity` class, and the following `IntentFilter` attribute:
+In the _Platforms/Android/MainActivity.cs_ file, add the following `IntentFilter` attribute to the `MainActivity` class:
 
 :::code language="csharp" source="../snippets/shared_2/Platforms/Android/MainActivity.cs" id="intent_filter_1":::
 
