@@ -59,7 +59,7 @@ App information is taken from the _AndroidManifest.xml_ for the following fields
 - **Build** &mdash; `android:versionCode` in `manifest` node
 - **Name** &mdash; `android:label` in the `application` node
 - **PackageName** &mdash; `package` in the `manifest` node
-- **VersionString** &mdash; `android:versionName` in the `manifest` node
+- **VersionString** &mdash; `android:versionName` in the `application` node
 
 ### Requested theme
 
