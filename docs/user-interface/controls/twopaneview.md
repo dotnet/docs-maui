@@ -4,7 +4,7 @@ description: "Learn how to use the TwoPaneView control to create adaptive layout
 monikerRange: ">= net-maui-7.0"
 author: conceptdev
 ms.author: crdun
-ms.date: 10/13/2022
+ms.date: 11/03/2022
 ---
 # .NET MAUI TwoPaneView layout
 
@@ -23,7 +23,9 @@ Foldable devices include the Microsoft Surface Duo and Android devices from othe
 Visit the [dual-screen developer docs](/dual-screen/) for more information about building apps that target foldable devices, including [design patterns and user experiences](/dual-screen/design/). There is also a [Surface Duo emulator](/dual-screen/android/emulator/) you can download for Windows, Mac, and Linux.
 
 > [!IMPORTANT]
-> The `TwoPaneView` control only adapts to Android foldable devices that support the Jetpack Window Manager API provided by Google (such as Microsoft Surface Duo). On all other platforms and devices it acts like a configurable and responsive split view that can dynamically show one or two panes, proportionally sized on the screen.
+> The `TwoPaneView` control only adapts to Android foldable devices that support the Jetpack Window Manager API provided by Google (such as Microsoft Surface Duo).
+>
+> On all other platforms and devices (i.e. other Android devices, iOS, macOS, Windows) it acts like a configurable and responsive split view that can dynamically show one or two panes, proportionally sized on the screen.
 
 ## Add and configure the Foldable support NuGet
 
@@ -53,7 +55,7 @@ Visit the [dual-screen developer docs](/dual-screen/) for more information about
         | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize | ConfigChanges.UiMode
     ```
 
-    These values are required so that configuration changes and span state can be more reliably reported. By default only two are added to Xamarin.Forms projects, so remember to add the rest for reliable dual-screen support.
+    These values are required so that configuration changes and span state can be more reliably reported for reliable dual-screen support.
 
 ## Set up TwoPaneView
 
