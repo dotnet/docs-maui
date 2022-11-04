@@ -7,7 +7,7 @@ ms.date: 09/26/2022
 
 # Map
 
-[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-maps)
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-map)
 
 The .NET Multi-platform App UI (.NET MAUI) `Map` control is a cross-platform view for displaying and annotating maps. The `Map` control uses the native map control on each platform, and is provided by the [Microsoft.Maui.Controls.Maps NuGet package](https://www.nuget.org/packages/Microsoft.Maui.Controls.Maps/).
 
