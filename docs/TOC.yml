@@ -633,5 +633,13 @@
               href: macos/deployment/overview.md
             - name: Windows
               href: windows/deployment/overview.md
+    - name: Upgrading from Xamarin
+      items:
+        - name: Overview
+          href: upgrading/index.md
+        - name: Xamarin Projects
+          href: upgrading/xamarin-projects.md
+        - name: Xamarin.Forms Projects
+          href: upgrading/forms-projects.md
     - name: Troubleshooting
       href: troubleshooting.md

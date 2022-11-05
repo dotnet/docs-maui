@@ -11,7 +11,7 @@ In order to upgrade your Xamarin.Android and Xamarin.iOS projects to .NET you wi
 **Checklist:**
 
 * Update your csproj to SDK Style
-* Upgrade or replace incompatible dependencies with .NET 6 versions
+* Upgrade or replace incompatible dependencies with .NET 6 (or newer) versions
 * Compile and test your app
 
 To simplify the upgrade, we recommend creating a new .NET project of the same type and name as your Xamarin project, and then copying in your code. This is the approach we will describe below.
