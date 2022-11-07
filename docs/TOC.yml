@@ -383,6 +383,8 @@
                       href: user-interface/controls/tableview.md
                 - name: ContentView
                   href: user-interface/controls/contentview.md
+                - name: TwoPaneView
+                  href: user-interface/controls/twopaneview.md
         - name: Display pop-ups
           href: user-interface/pop-ups.md
         - name: Display tooltips
