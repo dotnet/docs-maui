@@ -102,7 +102,7 @@ The following properties apply when the `TwoPaneView` is occupying a single scre
 - `MinTallModeHeight` indicates the minimum height the control must be to enter `Tall` mode.
 - `MinWideModeWidth` indicates the minimum width the control must be to enter `Wide` mode.
 - `Pane1Length` sets the width of Pane1 in `Wide` mode, the height of Pane1 in `Tall` mode, and has no effect in `SinglePane` mode.
-- `Pane2Length` sets the width of Pane2 in Wide mode, the height of Pane2 in Tall mode, and has no effect in SinglePane mode.
+- `Pane2Length` sets the width of Pane2 in `Wide` mode, the height of Pane2 in `Tall` mode, and has no effect in `SinglePane` mode.
 
 > [!IMPORTANT]
 > If the `TwoPaneView` is spanned across a hinge or fold these properties have no effect.
