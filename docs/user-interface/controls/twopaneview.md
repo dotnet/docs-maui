@@ -48,7 +48,7 @@ Visit the [dual-screen developer docs](/dual-screen/) for more information about
 
     The `UseFoldable()` initialization is required for the app to be able to detect changes in the app's state, such as being spanned across a fold.
 
-5. Update the `[Activity(...)]` attribute on the `MainActivity` class in **Platforms/Android**, so that it includes _all_ these `ConfigurationChanges` options:
+5. Update the `[Activity(...)]` attribute on the `MainActivity` class in *Platforms/Android*, so that it includes _all_ these `ConfigurationChanges` options:
 
     ```csharp
     ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.ScreenSize
