@@ -1,7 +1,7 @@
 ---
 title: "Permissions"
 description: "Learn how to use the .NET MAUI Permissions class, to check and request permissions. This class is in the Microsoft.Maui.ApplicationModel namespace."
-ms.date: 05/23/2022
+ms.date: 10/24/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel"]
 ---
 
@@ -14,6 +14,8 @@ This article describes how you can use the .NET Multi-platform App UI (.NET MAUI
 .NET MAUI attempts to abstract as many permissions as possible. However, each operating system has a different set of permissions. Even though the API allows access to a common permission, there may be differences between operating systems related to that permission. The following table describes the available permissions:
 
 The following table uses ✔️ to indicate that the permission is supported and ❌ to indicate the permission isn't supported or isn't required:
+
+::: moniker range="=net-maui-6.0"
 
 | Permission        | Android | iOS | Windows | tvOS |
 |-------------------|:-------:|:---:|:-------:|:----:|
@@ -35,6 +37,33 @@ The following table uses ✔️ to indicate that the permission is supported and
 | Speech            | ✔️     | ✔️  | ❌      | ❌   |
 | StorageRead       | ✔️     | ❌  | ❌      | ❌   |
 | StorageWrite      | ✔️     | ❌  | ❌      | ❌   |
+
+::: moniker-end
+
+::: moniker range=">=net-maui-7.0"
+
+| Permission        | Android | iOS | Windows | tvOS |
+|-------------------|:-------:|:---:|:-------:|:----:|
+| CalendarRead      | ✔️     | ✔️  | ❌      | ❌   |
+| CalendarWrite     | ✔️     | ✔️  | ❌      | ❌   |
+| Camera            | ✔️     | ✔️  | ❌      | ❌   |
+| ContactsRead      | ✔️     | ✔️  | ❌      | ❌   |
+| ContactsWrite     | ✔️     | ✔️  | ❌      | ❌   |
+| Flashlight        | ✔️     | ❌  | ❌      | ❌   |
+| LocationWhenInUse | ✔️     | ✔️  | ❌      | ✔️   |
+| LocationAlways    | ✔️     | ✔️  | ❌      | ❌   |
+| Media             | ❌     | ✔️  | ❌      | ❌   |
+| Microphone        | ✔️     | ✔️  | ❌      | ❌   |
+| Phone             | ✔️     | ✔️  | ❌      | ❌   |
+| Photos            | ❌     | ✔️  | ❌      | ✔️   |
+| Reminders         | ❌     | ✔️  | ❌      | ❌   |
+| Sensors           | ✔️     | ✔️  | ❌      | ❌   |
+| Sms               | ✔️     | ✔️  | ❌      | ❌   |
+| Speech            | ✔️     | ✔️  | ❌      | ❌   |
+| StorageRead       | ✔️     | ❌  | ❌      | ❌   |
+| StorageWrite      | ✔️     | ❌  | ❌      | ❌   |
+
+::: moniker-end
 
 If a permission is marked as ❌, it will always return `Granted` when checked or requested.
 
@@ -171,9 +200,19 @@ Permissions must have a matching string in the _Info.plist_ file. Once a permiss
 
 # [Windows](#tab/windows)
 
+::: moniker range="=net-maui-6.0"
+
 Permissions must have matching capabilities declared in the package manifest. Permission status defaults to `Unknown` in most instances.
 
 <!-- TODO For more information, see [App Capability Declaration](/windows/uwp/packaging/app-capability-declarations). -->
+
+::: moniker-end
+
+::: moniker range=">=net-maui-7.0"
+
+No platform differences.
+
+::: moniker-end
 
 -----
 <!-- markdownlint-enable MD025 -->

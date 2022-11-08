@@ -1,13 +1,13 @@
 ---
 title: "Build your first .NET MAUI app"
 description: "Learn how to create and run your first .NET MAUI app in Visual Studio 2022 on Windows, or Visual Studio 2022 for Mac."
-ms.date: 09/27/2022
+ms.date: 11/01/2022
 zone_pivot_groups: devices-deployment
 ---
 
 # Build your first app
 
-In this tutorial, you'll learn how to create and run your first .NET Multi-platform App UI (.NET MAUI) app in Visual Studio 2022 on Windows, or Visual Studio 2022 for Mac 17.4 Preview.
+In this tutorial, you'll learn how to create and run your first .NET Multi-platform App UI (.NET MAUI) app in Visual Studio 2022 on Windows, or Visual Studio 2022 for Mac.
 
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio](#tab/vswin)
@@ -49,14 +49,11 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022, 
 
     :::image type="content" source="media/first-app/vs/new-project.png" alt-text="Choose a template.":::
 
-    > [!NOTE]
-    > The .NET MAUI templates might not appear in Visual Studio if you also have .NET 7 Preview installed. For more information, see [.NET MAUI templates do not appear in Visual Studio](https://github.com/dotnet/maui/wiki/Known-Issues#net-maui-templates-do-not-appear-in-visual-studio).
-
 01. In the **Configure your new project** window, name your project, choose a suitable location for it, and click the **Next** button:
 
     :::image type="content" source="media/first-app/vs/configure-project.png" alt-text="Configure the project.":::
 
-01. In the **Additional information** window, click the **Create** button:
+01. In the **Additional information** window, choose the version of .NET that you'd like to target, and click the **Create** button:
 
     :::image type="content" source="media/first-app/vs/additional-information.png" alt-text="Additional information.":::
 
@@ -200,7 +197,7 @@ If your app fails to compile, review [Troubleshooting known issues](../troublesh
 
 :::zone pivot="devices-maccatalyst"
 
-.NET MAUI apps that target Mac Catalyst can only be launched and debugged using Visual Studio 2022 for Mac 17.4 Preview.
+.NET MAUI apps that target Mac Catalyst can only be launched and debugged using Visual Studio 2022 for Mac.
 
 :::zone-end
 
@@ -210,15 +207,15 @@ If your app fails to compile, review [Troubleshooting known issues](../troublesh
 
 ## Prerequisites
 
-- Visual Studio 2022 for Mac 17.4 Preview, with the .NET, .NET MAUI, Android, and iOS workloads installed. For more information, see [Installation](installation.md?tabs=vsmac).
+- Visual Studio 2022 for Mac 17.4 or greater, with the .NET, .NET MAUI, Android, and iOS workloads installed. For more information, see [Installation](installation.md?tabs=vsmac).
 
 ## Create an app
 
 :::zone pivot="devices-android, devices-ios, devices-maccatalyst"
 
-In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 for Mac 17.4 Preview, and run it on your chosen platform:
+In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 for Mac, and run it on your chosen platform:
 
-01. Launch Visual Studio 2022 for Mac 17.4 Preview, and in the start window click **New** to create a new project:
+01. Launch Visual Studio 2022 for Mac, and in the start window click **New** to create a new project:
 
     :::image type="content" source="media/first-app/vsmac/new-project.png" alt-text="Create a new project in Visual Studio for Mac.":::
 
@@ -226,7 +223,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 f
 
     :::image type="content" source="media/first-app/vsmac/choose-template.png" alt-text="Choose the .NET MAUI App project template.":::
 
-01. In the **Configure your new .NET MAUI App** window, ensure that **.NET 6.0** appears in the **Target framework** dropdown and click the **Continue** button:
+01. In the **Configure your new .NET MAUI App** window, choose the version of .NET that you'd like to target, and click the **Continue** button:
 
     :::image type="content" source="media/first-app/vsmac/select-target-framework.png" alt-text="Select the target framework for your .NET MAUI app.":::
 
