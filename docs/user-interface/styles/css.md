@@ -370,7 +370,7 @@ The following CSS properties are supported by .NET MAUI (in the **Values** colum
 |`font-family`|`Button`, `DatePicker`, `Editor`, `Entry`, `Label`, `Picker`, `SearchBar`, `TimePicker`, `Span`|_string_ \| `initial` |`font-family: Consolas;`|
 |`font-size`|`Button`, `DatePicker`, `Editor`, `Entry`, `Label`, `Picker`, `SearchBar`, `TimePicker`, `Span`|_double_ \| `initial` |`font-size: 12;`|
 |`font-style`|`Button`, `DatePicker`, `Editor`, `Entry`, `Label`, `Picker`, `SearchBar`, `TimePicker`, `Span`|`bold` \| `italic` \| `initial` |`font-style: bold;`|
-|`height`|`VisualElement`|_double_ \| `initial` |`min-height: 250;`|
+|`height`|`VisualElement`|_double_ \| `initial` |`height: 250;`|
 |`justify-content`|`FlexLayout`| `start` \| `center` \| `end` \| `spacebetween` \| `spacearound` \| `spaceevenly` \| `flex-start` \| `flex-end` \| `space-between` \| `space-around` \| `initial`|`justify-content: flex-end;`|
 |`letter-spacing`|`Button`, `DatePicker`, `Editor`, `Entry`, `Label`, `Picker`, `SearchBar`, `SearchHandler`, `Span`, `TimePicker`|_double_ \| `initial`|`letter-spacing: 2.5;`|
 |`line-height`|`Label`, `Span`|_double_ \| `initial` |`line-height: 1.8;`|
@@ -398,7 +398,7 @@ The following CSS properties are supported by .NET MAUI (in the **Values** colum
 |`transform-origin`|`VisualElement`| _double_, _double_ \| `initial` |`transform-origin: 7.5, 12.5;`|
 |`vertical-align`|`Label`|`left` \| `top` \| `right` \| `bottom` \| `start` \| `center` \| `middle` \| `end` \| `initial`|`vertical-align: bottom;`|
 |`visibility`|`VisualElement`|`true` \| `visible` \| `false` \| `hidden` \| `collapse` \| `initial`|`visibility: hidden;`|
-|`width`|`VisualElement`|_double_ \| `initial`|`min-width: 320;`|
+|`width`|`VisualElement`|_double_ \| `initial`|`width: 320;`|
 
 <!-- Todo: Can also set `background`, on a `VisualElement`, to a `Brush` -->
 
@@ -422,20 +422,20 @@ The following .NET MAUI specific CSS properties are also supported (in the **Val
 
 |Property|Applies to|Values|Example|
 |---|---|---|---|
-|`-maui-bar-background-color`|`NavigationPage`, `TabbedPage`|_color_ \| `initial` |`-xf-bar-background-color: teal;`|
-|`-maui-bar-text-color`|`NavigationPage`, `TabbedPage`|_color_ \| `initial` |`-xf-bar-text-color: gray`|
-|`-maui-horizontal-scroll-bar-visibility`|`ScrollView`| `default` \| `always` \| `never` \| `initial` |`-xf-horizontal-scroll-bar-visibility: never;`|
-|`-maui-max-length`|`Entry`, `Editor`, `SearchBar`|_int_ \| `initial` |`-xf-max-length: 20;`|
-|`-maui-max-track-color`|`Slider`|_color_ \| `initial` |`-xf-max-track-color: red;`|
-|`-maui-min-track-color`|`Slider`|_color_ \| `initial` |`-xf-min-track-color: yellow;`|
-|`-maui-orientation`|`ScrollView`, `StackLayout`| `horizontal` \| `vertical` \| `both` \| `initial`. `both` is only supported on a `ScrollView`. |`-xf-orientation: horizontal;`|
-|`-maui-placeholder`|`Entry`, `Editor`, `SearchBar`|_quoted text_ \| `initial` |`-xf-placeholder: Enter name;`|
-|`-maui-placeholder-color`|`Entry`, `Editor`, `SearchBar`|_color_ \| `initial` |`-xf-placeholder-color: green;`|
-|`-maui-spacing`|`StackLayout`|_double_ \| `initial` |`-xf-spacing: 8;`|
-|`-maui-thumb-color`|`Slider`, `Switch`|_color_ \| `initial` |`-xf-thumb-color: limegreen;`|
-|`-maui-vertical-scroll-bar-visibility`|`ScrollView`| `default` \| `always` \| `never` \| `initial` |`-xf-vertical-scroll-bar-visibility: always;`|
-|`-maui-vertical-text-alignment`|`Label`| `start` \| `center` \| `end` \| `initial`|`-xf-vertical-text-alignment: end;`|
-|`-maui-visual`|`VisualElement`|_string_ \| `initial` |`-xf-visual: material;`|
+|`-maui-bar-background-color`|`NavigationPage`, `TabbedPage`|_color_ \| `initial` |`-maui-bar-background-color: teal;`|
+|`-maui-bar-text-color`|`NavigationPage`, `TabbedPage`|_color_ \| `initial` |`-maui-bar-text-color: gray`|
+|`-maui-horizontal-scroll-bar-visibility`|`ScrollView`| `default` \| `always` \| `never` \| `initial` |`-maui-horizontal-scroll-bar-visibility: never;`|
+|`-maui-max-length`|`Entry`, `Editor`, `SearchBar`|_int_ \| `initial` |`-maui-max-length: 20;`|
+|`-maui-max-track-color`|`Slider`|_color_ \| `initial` |`-maui-max-track-color: red;`|
+|`-maui-min-track-color`|`Slider`|_color_ \| `initial` |`-maui-min-track-color: yellow;`|
+|`-maui-orientation`|`ScrollView`, `StackLayout`| `horizontal` \| `vertical` \| `both` \| `initial`. `both` is only supported on a `ScrollView`. |`-maui-orientation: horizontal;`|
+|`-maui-placeholder`|`Entry`, `Editor`, `SearchBar`|_quoted text_ \| `initial` |`-maui-placeholder: Enter name;`|
+|`-maui-placeholder-color`|`Entry`, `Editor`, `SearchBar`|_color_ \| `initial` |`-maui-placeholder-color: green;`|
+|`-maui-spacing`|`StackLayout`|_double_ \| `initial` |`-maui-spacing: 8;`|
+|`-maui-thumb-color`|`Slider`, `Switch`|_color_ \| `initial` |`-maui-thumb-color: limegreen;`|
+|`-maui-vertical-scroll-bar-visibility`|`ScrollView`| `default` \| `always` \| `never` \| `initial` |`-maui-vertical-scroll-bar-visibility: always;`|
+|`-maui-vertical-text-alignment`|`Label`| `start` \| `center` \| `end` \| `initial`|`-maui-vertical-text-alignment: end;`|
+|`-maui-visual`|`VisualElement`|_string_ \| `initial` |`-maui-visual: material;`|
 
 ### .NET MAUI Shell specific properties
 
@@ -443,17 +443,17 @@ The following .NET MAUI Shell specific CSS properties are also supported (in the
 
 |Property|Applies to|Values|Example|
 |---|---|---|---|
-|`-maui-flyout-background`|`Shell`|_color_ \| `initial` |`-xf-flyout-background: red;`|
-|`-maui-shell-background`|`Element`|_color_ \| `initial` |`-xf-shell-background: green;`|
-|`-maui-shell-disabled`|`Element`|_color_ \| `initial` |`-xf-shell-disabled: blue;`|
-|`-maui-shell-foreground`|`Element`|_color_ \| `initial` |`-xf-shell-foreground: yellow;`|
-|`-maui-shell-tabbar-background`|`Element`|_color_ \| `initial` |`-xf-shell-tabbar-background: white;`|
-|`-maui-shell-tabbar-disabled`|`Element`|_color_ \| `initial` |`-xf-shell-tabbar-disabled: black;`|
-|`-maui-shell-tabbar-foreground`|`Element`|_color_ \| `initial` |`-xf-shell-tabbar-foreground: gray;`|
-|`-maui-shell-tabbar-title`|`Element`|_color_ \| `initial` |`-xf-shell-tabbar-title: lightgray;`|
-|`-maui-shell-tabbar-unselected`|`Element`|_color_ \| `initial` |`-xf-shell-tabbar-unselected: cyan;`|
-|`-maui-shell-title`|`Element`|_color_ \| `initial` |`-xf-shell-title: teal;`|
-|`-maui-shell-unselected`|`Element`|_color_ \| `initial` |`-xf-shell-unselected: limegreen;`|
+|`-maui-flyout-background`|`Shell`|_color_ \| `initial` |`-maui-flyout-background: red;`|
+|`-maui-shell-background`|`Element`|_color_ \| `initial` |`-maui-shell-background: green;`|
+|`-maui-shell-disabled`|`Element`|_color_ \| `initial` |`-maui-shell-disabled: blue;`|
+|`-maui-shell-foreground`|`Element`|_color_ \| `initial` |`-maui-shell-foreground: yellow;`|
+|`-maui-shell-tabbar-background`|`Element`|_color_ \| `initial` |`-maui-shell-tabbar-background: white;`|
+|`-maui-shell-tabbar-disabled`|`Element`|_color_ \| `initial` |`-maui-shell-tabbar-disabled: black;`|
+|`-maui-shell-tabbar-foreground`|`Element`|_color_ \| `initial` |`-maui-shell-tabbar-foreground: gray;`|
+|`-maui-shell-tabbar-title`|`Element`|_color_ \| `initial` |`-maui-shell-tabbar-title: lightgray;`|
+|`-maui-shell-tabbar-unselected`|`Element`|_color_ \| `initial` |`-maui-shell-tabbar-unselected: cyan;`|
+|`-maui-shell-title`|`Element`|_color_ \| `initial` |`-maui-shell-title: teal;`|
+|`-maui-shell-unselected`|`Element`|_color_ \| `initial` |`-maui-shell-unselected: limegreen;`|
 
 ### Color
 
