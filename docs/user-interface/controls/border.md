@@ -1,7 +1,7 @@
 ---
 title: "Border"
 description: "Learn how to use the .NET MAUI Border class, which is a container control that draws a border, background, or both, around another control."
-ms.date: 05/13/2022
+ms.date: 09/29/2022
 ---
 
 # Border
@@ -27,6 +27,12 @@ These properties are backed by `BindableProperty` objects, which means that they
 
 > [!IMPORTANT]
 > When creating a border using a shape, such as a `Rectangle` or `Polygon`, only closed shapes should be used. Therefore, open shapes such as `Line` are unsupported.
+
+::: moniker range=">=net-maui-7.0"
+
+The default value of the `StrokeShape` property is `Rectangle`. Therefore, a `Border` will be rectangular by default.
+
+::: moniker-end
 
 For more information about the properties that control the shape and stroke of the border, see [Shapes](~/user-interface/controls/shapes/index.md).
 

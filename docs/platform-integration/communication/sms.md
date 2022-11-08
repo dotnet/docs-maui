@@ -33,11 +33,11 @@ In the _Platforms/Android/AndroidManifest.xml_ file, add the following `queries/
 
 # [iOS\macOS](#tab/ios)
 
-No additional setup required.
+No setup is required.
 
 # [Windows](#tab/windows)
 
-No additional setup required.
+No setup is required.
 
 -----
 <!-- markdownlint-enable MD025 -->

@@ -64,6 +64,7 @@ The following table lists the types that implement handler-based views in .NET M
 | `IndicatorView` | `IIndicatorView` | `IndicatorViewHandler` | `Mapper` | `CommandMapper` |
 | `Label` | `ILabel` | `LabelHandler` | `Mapper` | `CommandMapper` |
 | `Line` | | `LineHandler` | `Mapper` | |
+| `Map` | `IMap` | `MapHandler` | `Mapper` | `CommandMapper` |
 | `Path` | | `PathHandler` | `Mapper` | |
 | `Picker` | `IPicker` | `PickerHandler` | `Mapper` | `CommandMapper` |
 | `Polygon` | | `PolygonHandler` | `Mapper` | |
@@ -86,6 +87,7 @@ All handlers are in the `Microsoft.Maui.Handlers` namespace, with the following 
 
 - `CarouselViewHandler` and `CollectionViewHandler` are in the `Microsoft.Maui.Controls.Handlers.Items` namespace.
 - `LineHandler`, `PathHandler`, `PolygonHandler`, `PolylineHandler`, `RectangleHandler`, and `RoundRectangleHandler` are in the `Microsoft.Maui.Controls.Handlers` namespace.
+- `MapHandler` is in the `Microsoft.Maui.Maps.Handlers` namespace.
 
 The interfaces listed in the table above are in the `Microsoft.Maui` namespace.
 
