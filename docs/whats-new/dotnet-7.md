@@ -42,9 +42,7 @@ For more information, see [.NET 7 Performance Improvements in .NET MAUI](https:/
 
 ## Upgrading from .NET 6
 
-To upgrade your projects from .NET 6 to .NET 7, open your *.csproj* file and change the Target Framework Monikers (TFMs) from 6 to 7.
-
-The following example shows the TFMs for a .NET 6 project:
+To upgrade your projects from .NET 6 to .NET 7, open your *.csproj* file and change the Target Framework Monikers (TFMs) from 6 to 7. The following example shows the TFMs for a .NET 6 project:
 
 ```xml
 <TargetFrameworks>net6.0-ios;net6.0-android;net6.0-maccatalyst;net6.0-tizen</TargetFrameworks>
