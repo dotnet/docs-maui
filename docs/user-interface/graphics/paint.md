@@ -178,7 +178,7 @@ The `GradientStop` class defines the following properties:
 > [!IMPORTANT]
 > The coordinate system used by gradients is relative to a bounding box for the graphical object. 0 indicates 0 percent of the bounding box, and 1 indicates 100 percent of the bounding box. Therefore, (0.5,0.5) describes a point in the middle of the bounding box, and (1,1) describes a point at the bottom right of the bounding box.
 
-Gradient stops can be added to a `GradientPoint` object with the `AddOffset` method.
+Gradient stops can be added to a `GradientPaint` object with the `AddOffset` method.
 
 The following example creates a diagonal `LinearGradientPaint` with four colors:
 
