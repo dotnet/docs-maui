@@ -60,4 +60,4 @@ The following example shows the TFMs for a .NET 7 project:
 
 - [Release notes for .NET MAUI in .NET 7](https://github.com/dotnet/maui/releases/tag/7.0.49)
 - [Release notes for .NET for iOS, tvOS, macOS, and Mac Catalyst](https://github.com/xamarin/xamarin-macios/wiki/.NET-7-release-notes)
-<!-- - [Release notes for .NET for Android](https://github.com/xamarin/xamarin-android/releases/tag/33.0.4) -->
+- [Release notes for .NET for Android](https://github.com/xamarin/xamarin-android/releases/tag/33.0.4)
