@@ -340,7 +340,7 @@ The behavior of a `Map` can be customized by setting some of its properties, and
 The `Map` class defines a `IsTrafficEnabled` property of type `bool`. By default this property is `false`, which indicates that traffic data won't be overlaid on the map. When this property is set to `true`, traffic data is overlaid on the map:
 
 ```xaml
-<maps:Map TrafficEnabled="true" />
+<maps:Map IsTrafficEnabled="true" />
 ```
 
 The equivalent C# code is:
@@ -348,7 +348,7 @@ The equivalent C# code is:
 ```csharp
 Map map = new Map
 {
-    TrafficEnabled = true
+    IsTrafficEnabled = true
 };
 ```
 
