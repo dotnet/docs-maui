@@ -147,14 +147,14 @@ To consume .NET MAUI types that derive from <xref:Microsoft.Maui.Controls.Elemen
 
 ### Android
 
-On Android, `ToPlatform` converts the .NET MAUI control to a <xref:Android.Views.View> object:
+On Android, `ToPlatform` converts the .NET MAUI control to an Android <xref:Android.Views.View> object:
 
 ```csharp
 MyMauiPage myMauiPage = new MyMauiPage();
 Android.Views.View view = myMauiPage.ToPlatform(_mauiContext);
 ```
 
-In this example, a <xref:Microsoft.Maui.Controls.ContentPage>-derived object is converted to a <xref:Android.Views.View> object.
+In this example, a <xref:Microsoft.Maui.Controls.ContentPage>-derived object is converted to an Android <xref:Android.Views.View> object.
 
 Alternatively, a <xref:Microsoft.Maui.Controls.ContentPage>-derived object can be converted to a `Fragment` with the following `CreateSupportFragment` extension method:
 
