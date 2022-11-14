@@ -599,6 +599,8 @@
           href: platform-integration/configure-multi-targeting.md
         - name: Invoke platform code
           href: platform-integration/invoke-platform-code.md
+        - name: Native embedding
+          href: platform-integration/native-embedding.md
     - name: Data & cloud services
       items:
         - name: Local databases
