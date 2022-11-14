@@ -6,12 +6,12 @@ ms.date: 11/07/2022
 
 # Native embedding
 
-Typically, a .NET Multi-platform App UI (.NET MAUI) app includes pages that contains layouts, such as <xref:Microsoft.Maui.Controls.Grid>, and layouts that contain view, such as <xref:Microsoft.Maui.Controls.Button>. Pages, layout, and views, all derive from <xref:Microsoft.Maui.Controls.Element>. Native embedding enables any .NET MAUI controls that derive from <xref:Microsoft.Maui.Controls.Element> to be consumed in .NET for iOS, .NET for Android, and WinUI native apps. 
+Typically, a .NET Multi-platform App UI (.NET MAUI) app includes pages that contains layouts, such as <xref:Microsoft.Maui.Controls.Grid>, and layouts that contain view, such as <xref:Microsoft.Maui.Controls.Button>. Pages, layout, and views, all derive from <xref:Microsoft.Maui.Controls.Element>. Native embedding enables any .NET MAUI controls that derive from <xref:Microsoft.Maui.Controls.Element> to be consumed in .NET for iOS, .NET for Android, and WinUI native apps.
 
 The process for consuming a .NET MAUI control in a native project is as follows:
 
 1. Add `<UseMaui>true</UseMaui>` to the native project.
-1. Call the <xref:Microsoft.Maui.Embedding.AppHostBuilderExtensions.UseMauiEmbedding> method.
+1. Call the <xref:Microsoft.Maui.Embedding.AppHostBuilderExtensions.UseMauiEmbedding*> method.
 1. Add your .NET MAUI code, such as a <xref:Microsoft.Maui.Controls.ContentPage>, and any dependencies, to the native project.
 1. Construct an instance of the .NET MAUI control and convert it to the appropriate native type with one of the following extension methods: `ToUIViewController` or `ToPlatform` on iOS, or `ToPlatform` on Android or WinUI.
 
@@ -35,11 +35,11 @@ A consequence of adding `<UseMaui>true</UseMaui>` to a native app project is tha
 
 ## Initialize .NET MAUI
 
-.NET MAUI must be initialized by calling the <xref:Microsoft.Maui.Embedding.AppHostBuilderExtensions.UseMauiEmbedding> method before a native project can construct a .NET MAUI control. Choosing when to do this primarily depends on when it's most convenient in your app flow - it could be performed at startup, or just before a .NET MAUI control is constructed.
+.NET MAUI must be initialized by calling the <xref:Microsoft.Maui.Embedding.AppHostBuilderExtensions.UseMauiEmbedding*> method before a native project can construct a .NET MAUI control. Choosing when to do this primarily depends on when it's most convenient in your app flow - it could be performed at startup, or just before a .NET MAUI control is constructed.
 
-Typically, the pattern for initializing .NET MAUI in a native app project is to create a <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object, invoke the <xref:Microsoft.Maui.Embedding.AppHostBuilderExtensions.UseMauiEmbedding> method on it, and then create a <xref:Microsoft.Maui.Hosting.MauiApp> object by invoking the <xref:Microsoft.Maui.Host.MauiAPpBuilder.Build> method on the <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object. In addition, a <xref:Microsoft.Maui.MauiContext> object should then be created from the <xref:Microsoft.Maui.Hosting.MauiApp> object. The <xref:Microsoft.Maui.MauiContext> object is used to create platform UI.
+Typically, the pattern for initializing .NET MAUI in a native app project is to create a <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object, invoke the <xref:Microsoft.Maui.Embedding.AppHostBuilderExtensions.UseMauiEmbedding*> method on it, and then create a <xref:Microsoft.Maui.Hosting.MauiApp> object by invoking the <xref:Microsoft.Maui.Host.MauiAppBuilder.Build> method on the <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object. In addition, a <xref:Microsoft.Maui.MauiContext> object should then be created from the <xref:Microsoft.Maui.Hosting.MauiApp> object. The <xref:Microsoft.Maui.MauiContext> object is used to create platform UI.
 
-The examples in the following sections show the <xref:Microsoft.Maui.Embedding.AppHostBuilderExtensions.UseMauiEmbedding> method being invoked at app startup.
+The examples in the following sections show the <xref:Microsoft.Maui.Embedding.AppHostBuilderExtensions.UseMauiEmbedding*> method being invoked at app startup.
 
 ### Android
 
