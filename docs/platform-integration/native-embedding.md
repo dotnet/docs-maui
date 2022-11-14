@@ -1,12 +1,12 @@
 ---
 title: "Native embedding"
 description: "Learn how to consume .NET MAUI controls inside .NET for iOS, .NET for Android, and WinUI native apps."
-ms.date: 11/07/2022
+ms.date: 11/14/2022
 ---
 
 # Native embedding
 
-Typically, a .NET Multi-platform App UI (.NET MAUI) app includes pages that contains layouts, such as <xref:Microsoft.Maui.Controls.Grid>, and layouts that contain views, such as <xref:Microsoft.Maui.Controls.Button>. Pages, layout, and views, all derive from <xref:Microsoft.Maui.Controls.Element>. Native embedding enables any .NET MAUI controls that derive from <xref:Microsoft.Maui.Controls.Element> to be consumed in .NET for iOS, .NET for Android, and WinUI native apps.
+Typically, a .NET Multi-platform App UI (.NET MAUI) app includes pages that contains layouts, such as <xref:Microsoft.Maui.Controls.Grid>, and layouts that contain views, such as <xref:Microsoft.Maui.Controls.Button>. Pages, layout, and views, all derive from <xref:Microsoft.Maui.Controls.Element>. Native embedding enables any .NET MAUI controls that derive from <xref:Microsoft.Maui.Controls.Element> to be consumed in .NET for Android, .NET for iOS, .NET for Mac Catalyst, and WinUI native apps.
 
 The process for consuming a .NET MAUI control in a native app is as follows:
 
@@ -20,7 +20,7 @@ The process for consuming a .NET MAUI control in a native app is as follows:
 
 ## Enable .NET MAUI support
 
-To consume .NET MAUI controls that derive from <xref:Microsoft.Maui.Controls.Element> in a .NET for iOS, .NET for Android, or WinUI app, you must first enable .NET MAUI support in the native app's project file. This can be accomplished by adding `<UseMaui>true</UseMaui>` to the first `<PropertyGroup>` node in the *.csproj*:
+To consume .NET MAUI controls that derive from <xref:Microsoft.Maui.Controls.Element> in a .NET for Android, .NET for iOS, .NET for Mac Catalyst, or WinUI app, you must first enable .NET MAUI support in the native app's project file. This can be accomplished by adding `<UseMaui>true</UseMaui>` to the first `<PropertyGroup>` node in the *.csproj*:
 
 ```xml
 <PropertyGroup>
@@ -74,16 +74,16 @@ public class MainActivity : AppCompatActivity
 }
 ```
 
-### iOS
+### iOS and Mac Catalyst
 
-On iOS, the `FinishedLaunching` override in the `AppDelegate` class is typically the place to perform app startup related tasks. It's called after the app has launched, and is usually overridden to configure the main window and view controller. The following code example shows .NET MAUI being initialized in the `AppDelegate` class:
+On iOS and Mac Catalyst, the `FinishedLaunching` override in the `AppDelegate` class is typically the place to perform app startup related tasks. It's called after the app has launched, and is usually overridden to configure the main window and view controller. The following code example shows .NET MAUI being initialized in the `AppDelegate` class:
 
 ```csharp
 using Foundation;
 using Microsoft.Maui.Embedding;
 using UIKit;
 
-namespace Notes.iOS;
+namespace Notes.MaciOS;
 
 [Register("AppDelegate")]
 public class AppDelegate : UIApplicationDelegate
@@ -204,9 +204,9 @@ The resulting `Fragment` can then be managed by Android's `FragmentManager` clas
 
 For more information about Fragments, see [Fragments](https://developer.android.com/guide/fragments) on developer.android.com.
 
-### iOS
+### iOS and Mac Catalyst
 
-On iOS, `ToPlatform` converts the .NET MAUI control to a <xref:UIKit.UIView> object:
+On iOS and Mac Catalyst, `ToPlatform` converts the .NET MAUI control to a <xref:UIKit.UIView> object:
 
 ```csharp
 Button myButton = new Button { Text = ".NET MAUI" };
@@ -215,7 +215,7 @@ UIView button = myButton.ToPlatform(_mauiContext);
 
 In this example, a <xref:Microsoft.Maui.Controls.Button> is converted to a <xref:UIKit.UIView> object.
 
-In addition, iOS has a `ToUIViewController` extension method that attempts to convert a .NET MAUI control to a <xref:UIKit.UIViewController>:
+In addition, a `ToUIViewController` extension method can be used to attempt to convert a .NET MAUI control to a <xref:UIKit.UIViewController>:
 
 ```csharp
 MyMauiPage myMauiPage = new MyMauiPage();
