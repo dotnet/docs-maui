@@ -30,7 +30,13 @@ Handlers can be customized per platform by using conditional compilation, to mul
 
 ## Customize a control
 
-The .NET MAUI `Entry` is a single-line text input control, that implements the `IEntry` interface. On iOS, the `EntryHandler` maps the `Entry` to an iOS `UITextField`. On Android, the `Entry` is mapped to an `AppCompatEditText`, and on Windows the `Entry` is mapped to a `TextBox`:
+The .NET MAUI `Entry` view is a single-line text input control, that implements the `IEntry` interface. The `EntryHandler` maps the `Entry` view to the following native views for each platform:
+
+- **iOS/Mac Catalyst**: `UITextField`
+- **Android**: `AppCompatEditText`
+- **Windows**: `TextBox`
+
+The following diagrams shows how the `Entry` view is mapped to its native views via the `EntryHandler`:
 
 :::image type="content" source="media/customize/entry-handler.png" alt-text="Entry handler architecture." border="false":::
 
@@ -71,7 +77,7 @@ public partial class CustomizeEntryPage : ContentPage
 }
 ```
 
-In this example, the `Entry` customization occurs in a page class. Therefore, all `Entry` controls on Android, iOS, and Windows will be customized once an instance of the `CustomizeEntryPage` is created. Customization is performed by accessing the handlers `PlatformView` property, which provides access to the native view that implements the cross-platform control on each platform. Native code then customizes the handler by selecting all of the text in the `Entry` when it gains focus.
+In this example, the `Entry` customization occurs in a page class. Therefore, all `Entry` controls on Android, iOS, and Windows will be customized once an instance of the `CustomizeEntryPage` is created. Customization is performed by accessing the handlers `PlatformView` property, which provides access to the native view that maps to the cross-platform control on each platform. Native code then customizes the handler by selecting all of the text in the `Entry` when it gains focus.
 
 For more information about mappers, see [Mappers](index.md#mappers).
 
