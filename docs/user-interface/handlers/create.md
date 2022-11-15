@@ -15,7 +15,7 @@ A standard requirement for apps is the ability to play videos. This article exam
 - A file, from the device's video library.
 
 > [!IMPORTANT]
-> The Windows App SDK v1.2 includes a control to play video. However, .NET MAUI currently uses an earlier of the Windows App SDK. Therefore, the Windows App SDK v1.2 must be added to your .NET MAUI app project, with the NuGet package manager, if you want to play video on Windows.
+> The Windows App SDK v1.2 includes a control to play video. However, .NET MAUI currently uses an earlier of the Windows App SDK. Therefore, the Windows App SDK v1.2 must be added to your .NET MAUI app project with the NuGet package manager, if you want to play video on Windows.
 
 Video controls require *transport controls*, which are buttons for playing and pausing the video, and a positioning bar that shows the progress through the video and allows the user to move quickly to a different location. The `Video` control can either use the transport controls and positioning bar provided by the platform, or you can supply custom transport controls and a positioning bar. The following screenshots show the control on iOS, with and without custom transport controls:
 
