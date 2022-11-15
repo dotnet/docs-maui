@@ -35,6 +35,8 @@
                   href: android/device/setup.md
         - name: iOS
           items:
+            - name: Apple account management
+              href: ios/apple-account-management.md
             - name: Build an iOS app with .NET CLI
               href: ios/cli.md
             - name: Pair to Mac
