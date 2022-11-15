@@ -1588,15 +1588,172 @@ When processing objects of type `FileVideoSource`, the video filename is convert
 
 ## Loop a video
 
+The `Video` class defines an `IsLooping` property, which enables the control to automatically set the video position to the start after reaching its end. It defaults to `false`, which indicates that videos don't automatically loop.
+
+When the `IsLooping` property is set, the handler's property mapper ensures that the `MapIsLooping` method is invoked:
+
+```csharp
+public static void MapIsLooping(VideoHandler handler, Video video)
+{
+    handler.PlatformView?.UpdateIsLooping();
+}  
+```
+
+The `MapIsLooping` method in turn calls the `UpdateIsLooping` method on the handler's `PlatformView` property. The `PlatformView` property, which is of type `MauiVideoPlayer`, represents the native view that provides the video player implementation on each platform.
+
 ### Android
 
+The following code example shows how the `UpdateIsLooping` method on Android enables video looping:
+
+```csharp
+using Android.Content;
+using Android.Media;
+using Android.Views;
+using Android.Widget;
+using AndroidX.CoordinatorLayout.Widget;
+using VideoDemos.Controls;
+using Color = Android.Graphics.Color;
+using Uri = Android.Net.Uri;
+
+namespace VideoDemos.Platforms.Android
+{
+    public class MauiVideoPlayer : CoordinatorLayout, MediaPlayer.IOnPreparedListener
+    {
+        VideoView _videoView;
+        Video _video;
+        ...
+
+        public void UpdateIsLooping()
+        {
+            if (_video.IsLooping)
+            {
+                _videoView.SetOnPreparedListener(this);
+            }
+            else
+            {
+                _videoView.SetOnPreparedListener(null);
+            }
+        }
+
+        public void OnPrepared(MediaPlayer mp)
+        {
+            mp.Looping = _video.IsLooping;
+        }
+        ...
+    }
+}
+```
+
+To enable video looping, the `MauiVideoPlayer` class implements the `MediaPlayer.IOnPreparedListener` interface. This interface defines an `OnPrepared` callback that's invoked when the media source is ready for playback. When the `Video.IsLooping` property is `true`, the `UpdateIsLooping` method sets `MauiVideoPlayer` as the object that provides the `OnPrepared` callback. The callback sets the `MediaPlayer.IsLooping` property to the value of the `Video.IsLooping` property.
 
 ### iOS and Mac Catalyst
 
+The following code example shows how the `UpdateIsLooping` method on iOS and Mac Catalyst enables video looping:
+
+```csharp
+using System.Diagnostics;
+using AVFoundation;
+using AVKit;
+using CoreMedia;
+using Foundation;
+using UIKit;
+using VideoDemos.Controls;
+
+namespace VideoDemos.Platforms.MaciOS
+{
+    public class MauiVideoPlayer : UIView
+    {
+        AVPlayer _player;
+        AVPlayerViewController _playerViewController;
+        Video _video;
+        NSObject? _playedToEndObserver;
+        ...
+
+        public void UpdateIsLooping()
+        {
+            DestroyPlayedToEndObserver();
+            if (_video.IsLooping)
+            {
+                _player.ActionAtItemEnd = AVPlayerActionAtItemEnd.None;
+                _playedToEndObserver = NSNotificationCenter.DefaultCenter.AddObserver(AVPlayerItem.DidPlayToEndTimeNotification, PlayedToEnd);
+            }
+            else
+                _player.ActionAtItemEnd = AVPlayerActionAtItemEnd.Pause;
+        }
+
+        void PlayedToEnd(NSNotification notification)
+        {
+            if (_video == null || notification.Object != _playerViewController.Player?.CurrentItem)
+                return;
+
+            _playerViewController.Player?.Seek(CMTime.Zero);
+        }
+        ...
+    }
+}
+```
+
+On iOS and Mac Catalyst, a notification is used to execute a callback when the video has been played to the end. When the `Video.IsLooping` property is `true`, the `UpdateIsLooping` method adds an observer for the `AVPlayerItem.DidPlayToEndTimeNotification` notification, and executes the `PlayedToEnd` method when the notification is received. In turn, this method resumes playback from the beginning of the video. If the `Video.IsLooping` property is `false`, the video pauses at the end of playback.
+
+Because `MauiVideoPlayer` adds an observer for a notification it must also remove the observer when performing native view cleanup. This is accomplished in the `Dispose` override:
+
+```csharp
+public class MauiVideoPlayer : UIView
+{
+    AVPlayer _player;
+    AVPlayerViewController _playerViewController;
+    Video _video;
+    NSObject? _playedToEndObserver;
+    ...
+
+    protected override void Dispose(bool disposing)
+    {
+        if (disposing)
+        {
+            if (_player != null)
+            {
+                DestroyPlayedToEndObserver();
+                ...
+            }
+            ...
+        }
+
+        base.Dispose(disposing);
+    }
+
+    void DestroyPlayedToEndObserver()
+    {
+        if (_playedToEndObserver != null)
+        {
+            NSNotificationCenter.DefaultCenter.RemoveObserver(_playedToEndObserver);
+            DisposeObserver(ref _playedToEndObserver);
+        }
+    }
+
+    void DisposeObserver(ref NSObject? disposable)
+    {
+        disposable?.Dispose();
+        disposable = null;
+    }
+    ...
+}
+```
+
+The `Dispose` override calls the `DestroyPlayedToEndObserver` method that removes the observer for the `AVPlayerItem.DidPlayToEndTimeNotification` notification, and which also invokes the `Dispose` method on the `NSObject`.
 
 ### Windows
 
+The following code example shows how the `UpdateIsLooping` method on Windows enables video looping:
 
+```csharp
+public void UpdateIsLooping()
+{
+    if (_isMediaPlayerAttached)
+        _mediaPlayerElement.MediaPlayer.IsLoopingEnabled = _video.IsLooping;
+}
+```
+
+To enable video looping, the `UpdateIsLooping` method sets the `MediaPlayerElement.MediaPlayer.IsLoopingEnabled` property to the value of the `Video.IsLooping` property.
 
 ## Create custom transport controls
 
