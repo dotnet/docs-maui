@@ -226,7 +226,7 @@ In this example, a <xref:Microsoft.Maui.Controls.ContentPage>-derived object is 
 
 ### Windows
 
-On Windows, `ToPlatform` converts the .NET MAUI control to a `FrameworkElement` object.
+On Windows, `ToPlatform` converts the .NET MAUI control to a `FrameworkElement` object:
 
 ```csharp
 MyMauiPage myMauiPage = new MyMauiPage();
