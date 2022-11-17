@@ -20,7 +20,7 @@ To access the browser functionality, the following platform-specific setup is re
 
 If your project's Target Android version is set to **Android 11 (R API 30)** or higher, you must update your _Android Manifest_ with queries that use Android's [package visibility requirements](https://developer.android.com/preview/privacy/package-visibility).
 
-In the _Platforms/Android/AndroidManifest.xml_ file, add the following `queries/intent` nodes inside of the `manifest` node:
+In the _Platforms/Android/AndroidManifest.xml_ file, add the following `queries/intent` nodes in the `manifest` node:
 
 ```xml
 <queries>
