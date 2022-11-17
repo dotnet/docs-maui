@@ -8,16 +8,13 @@ ms.date: 11/15/2022
 
 When developing a .NET Multi-platform App UI (.NET MAUI) iOS app it's essential to test it by deploying it to a physical device, prior to uploading it to the App Store for distribution. Both of these tasks require you to have an [Apple ID](https://appleid.apple.com/account), and have enrolled your Apple ID in the [Apple Developer Program](https://developer.apple.com/programs).
 
-> [!NOTE]
-> If you have an individual Apple Developer account, as opposed to an enterprise account, you'll also need to create an App Store Connect API key. For information about creating an App Store Connect API key, see [Creating API Keys for App Store Connect API](https://developer.apple.com/documentation/appstoreconnectapi/creating_api_keys_for_app_store_connect_api) on developer.apple.com.
-
 The Apple account management interface in Visual Studio and Visual Studio for Mac enables you to add your Apple ID, and provides the ability to view information about development teams associated with the Apple ID, view signing certificates and provisioning profiles, create new signing certificates, and download existing provisioning profiles.
 
 ## Add an Apple developer account
 
 Before you begin, ensure that you've accepted any user license agreements in the [Apple Developer portal](https://developer.apple.com/account/).
 
-If you have an individual Apple account, as opposed to an Enterprise , you'll also need to create an App Store Connect API key. This will require you to have an Apple Developer account and paid Apple Developer Program enrollment. For information about creating an App Store Connect API key, see Creating API Keys for App Store Connect API on developer.apple.com.
+If you have an individual Apple Developer account, as opposed to an enterprise account, you'll also need to create an App Store Connect API key. For information about creating an App Store Connect API key, see [Creating API Keys for App Store Connect API](https://developer.apple.com/documentation/appstoreconnectapi/creating_api_keys_for_app_store_connect_api) on developer.apple.com.
 
 # [Visual Studio](#tab/vs)
 
