@@ -56,7 +56,7 @@ This method returns after the browser is launched, not after it was closed by th
 
 ## Customization
 
-When using the system-preferred browser, there are several customization options available for iOS and Android. These options include a `TitleMode` (Android only) and preferred color for the `Toolbar` (iOS and Android) and `Controls` (iOS only) that appear.
+If you're using the system-preferred browser, there are several customization options available for iOS and Android. These options include a `TitleMode` (Android only) and preferred color for the `Toolbar` (iOS and Android) and `Controls` (iOS only) that appear.
 
 Specify these options using `BrowserLaunchOptions` when you call `OpenAsync`.
 

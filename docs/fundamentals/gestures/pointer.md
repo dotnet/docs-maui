@@ -29,14 +29,14 @@ A `PointerEventArgs` object accompanies all three events, and defines a `GetPosi
 > [!IMPORTANT]
 > Pointer gesture recognition is only supported on iPadOS, Mac Catalyst, and Windows.
 
-.NET MAUI also defines a `PointerOver` visual state, that can change the visual appearance of a view when it has a mouse cursor hovering over it, but isn't pressed. For more information, see [Visual states](~/user-interface/visual-states.md).
+.NET MAUI also defines a `PointerOver` visual state. This state can change the visual appearance of a view when it has a mouse cursor hovering over it, but isn't pressed. For more information, see [Visual states](~/user-interface/visual-states.md).
 
 ## Create a PointerGestureRecognizer
 
 To make a `View` recognize pointer gestures, create a `PointerGestureRecognizer` object, handle the required events, and add the gesture recognizer to the `GestureRecognizers` collection on the view.
 Alternatively, create a `PointerGestureRecognizer` object, and bind the required commands to `ICommand` implementations, and add the gesture recognizer to the `GestureRecognizers` collection on the view.
 
-The following code example shows a `PointerGestureRecognizer` attached to an `Image`, that uses events to respond to the detection of pointer gestures:
+The following code example shows a `PointerGestureRecognizer` attached to an `Image`. The `PointerGestureRecognizer` uses events to respond to the detection of pointer gestures:
 
 ```xaml
 <Image Source="dotnet_bot.png">
