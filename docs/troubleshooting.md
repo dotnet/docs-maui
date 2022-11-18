@@ -1,7 +1,7 @@
 ---
 title: "Troubleshoot known issues"
 description: "Describes the known issues and troubleshooting you can do to resolve these issues for a .NET Multi-platform App UI (.NET MAUI) app."
-ms.date: 09/27/2022
+ms.date: 11/18/2022
 ---
 
 # Troubleshooting known issues
@@ -121,4 +121,16 @@ using Communication = Microsoft.Maui.ApplicationModel.Communication;
 
 // Code that uses the namespace:
 var contact = await Communication.Contacts.Default.PickContactAsync();
+```
+
+## Xcode is not currently installed or could not be found
+
+After installing the Xcode command line tools, using `xcode-select --install`, Visual Studio for Mac might show a "Xcode is not currently installed or could not be found" message when attempting to build .NET MAUI apps that target iOS or Mac Catalyst. In this scenario, check that you also have Xcode installed from the App Store. Then, launch Xcode and go to **Xcode > Preferences > Locations > Command Line Tools** and check if the drop-down is empty. If it is empty, select the drop-down and then select the location of the Xcode command line tools. Then close Xcode and restart Visual Studio for Mac.
+
+## Could not find a valid Xcode app bundle
+
+If you receive the error "Could not find a valid Xcode app bundle at '/Library/Developer/CommandLineTools'", when attempting to build .NET MAUI apps that target iOS or Mac Catalyst, you should try the solution described in [Xcode is not currently installed or could not be found](#xcode-is-not-currently-installed-or-could-not-be-found). If you're still unable to access the **Xcode > Preferences > Locations > Command Line Tools** drop-down, run the following command:
+
+```zsh
+sudo xcode-select --reset
 ```
