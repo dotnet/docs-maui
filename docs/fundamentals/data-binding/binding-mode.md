@@ -46,7 +46,7 @@ If the default binding mode on the target property is not suitable for a particu
 - `TwoWay` — data goes both ways between source and target
 - `OneWay` — data goes from source to target
 - `OneWayToSource` — data goes from target to source
-- `OneTime` — data goes from source to target, but only when the `BindingContext` changes (new with .NET MAUI 3.0)
+- `OneTime` — data goes from source to target, but only when the `BindingContext` changes
 
 ## Two-way bindings
 
