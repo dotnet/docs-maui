@@ -6,7 +6,7 @@ ms.date: 11/14/2022
 
 # Native embedding
 
-Typically, a .NET Multi-platform App UI (.NET MAUI) app includes **pages** that contain layouts, such as <xref:Microsoft.Maui.Controls.Grid>, and **layouts** that contain views, such as <xref:Microsoft.Maui.Controls.Button>. Pages, layouts, and views all derive from <xref:Microsoft.Maui.Controls.Element>. Native embedding enables any .NET MAUI controls that derive from <xref:Microsoft.Maui.Controls.Element> to be consumed in .NET for Android, .NET for iOS, .NET for Mac Catalyst, and WinUI native apps.
+Typically, a .NET Multi-platform App UI (.NET MAUI) app includes pages that contain layouts, such as <xref:Microsoft.Maui.Controls.Grid>, and layouts that contain views, such as <xref:Microsoft.Maui.Controls.Button>. Pages, layouts, and views all derive from <xref:Microsoft.Maui.Controls.Element>. Native embedding enables any .NET MAUI controls that derive from <xref:Microsoft.Maui.Controls.Element> to be consumed in .NET for Android, .NET for iOS, .NET for Mac Catalyst, and WinUI native apps.
 
 The process for consuming a .NET MAUI control in a native app is as follows:
 
