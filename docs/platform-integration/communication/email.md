@@ -20,7 +20,7 @@ To access the email functionality, the following platform specific setup is requ
 
 If your project's Target Android version is set to **Android 11 (R API 30)** or higher, you must update your _Android Manifest_ with queries that use Android's [package visibility requirements](https://developer.android.com/preview/privacy/package-visibility).
 
-In the _Platforms/Android/AndroidManifest.xml_ file, add the following `queries/intent` nodes the `manifest` node:
+In the _Platforms/Android/AndroidManifest.xml_ file, add the following `queries/intent` nodes in the `manifest` node:
 
 ```xml
 <queries>
@@ -61,12 +61,14 @@ When creating the email provided to the email client, you can add file attachmen
 
 Use the `EmailMessage.Attachments` collection to manage the files attached to an email.
 
-The following example demonstrates adding arbitrary text to a file, and then adding it to the email.
+The following example demonstrates adding an image file to the email attachments.
 
 :::code language="csharp" source="../snippets/shared_1/CommsPage.xaml.cs" id="email_picture" highlight="18":::
 
 <!-- markdownlint-disable MD025 -->
 <!-- markdownlint-disable MD024 -->
+## Platform Differences
+
 # [Android](#tab/android)
 
 Not all email clients for Android support `EmailBodyFormat.Html`, since there is no way to detect this, we recommend using `EmailBodyFormat.PlainText` when sending emails.
@@ -80,7 +82,7 @@ Both `EmailBodyFormat.Html` and `EmailBodyFormat.PlainText` are supported.
 
 # [Windows](#tab/windows)
 
-Only supports `EmailBodyFormat.PlainText` as the EmailBodyFormat.`BodyFormat`. Attempting to send an `Html` email throws the exception: `FeatureNotSupportedException`.
+Only supports `EmailBodyFormat.PlainText` as the `EmailMessage.BodyFormat`. Attempting to send an `Html` email throws the exception: `FeatureNotSupportedException`.
 
 Not all email clients support sending attachments. <!-- For more information, see [Sending emails](/windows/uwp/contacts-and-calendar/sending-email).-->
 
