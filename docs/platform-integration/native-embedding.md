@@ -6,13 +6,13 @@ ms.date: 11/14/2022
 
 # Native embedding
 
-Typically, a .NET Multi-platform App UI (.NET MAUI) app includes pages that contains layouts, such as <xref:Microsoft.Maui.Controls.Grid>, and layouts that contain views, such as <xref:Microsoft.Maui.Controls.Button>. Pages, layout, and views, all derive from <xref:Microsoft.Maui.Controls.Element>. Native embedding enables any .NET MAUI controls that derive from <xref:Microsoft.Maui.Controls.Element> to be consumed in .NET for Android, .NET for iOS, .NET for Mac Catalyst, and WinUI native apps.
+Typically, a .NET Multi-platform App UI (.NET MAUI) app includes pages that contain layouts, such as <xref:Microsoft.Maui.Controls.Grid>, and layouts that contain views, such as <xref:Microsoft.Maui.Controls.Button>. Pages, layouts, and views all derive from <xref:Microsoft.Maui.Controls.Element>. Native embedding enables any .NET MAUI controls that derive from <xref:Microsoft.Maui.Controls.Element> to be consumed in .NET for Android, .NET for iOS, .NET for Mac Catalyst, and WinUI native apps.
 
 The process for consuming a .NET MAUI control in a native app is as follows:
 
 1. Enable .NET MAUI support by adding `<UseMaui>true</UseMaui>` to the native app's project file.
-1. Initialize .NET MAUI by calling the <xref:Microsoft.Maui.Embedding.AppHostBuilderExtensions.UseMauiEmbedding*> method.
-1. Add your .NET MAUI code, such as a page's, and any dependencies, to the native project.
+1. Initialize .NET MAUI by calling the <xref:Microsoft.Maui.Embedding.AppHostBuilderExtensions.UseMauiEmbedding%2A> method.
+1. Add your .NET MAUI code, such as code for a page, and any dependencies to the native project.
 1. Create an instance of the .NET MAUI control and convert it to the appropriate native type with the `ToPlatform` extension method.
 
 > [!NOTE]
@@ -31,7 +31,7 @@ To consume .NET MAUI controls that derive from <xref:Microsoft.Maui.Controls.Ele
 </PropertyGroup>
 ```
 
-A consequence of doing this is that it will replace the native implicit namespace support with .NET MAUI's, and so you'll have to explicitly add `using` statements to your code files for native types.
+A consequence of doing this is that it will replace the native implicit namespace support with .NET MAUI's, so you'll have to explicitly add `using` statements to your code files for native types.
 
 ## Initialize .NET MAUI
 
