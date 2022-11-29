@@ -1,7 +1,7 @@
 ---
 title: "Visual states"
 description: "The .NET MAUI visual state manager can be used to make changes to XAML elements based on visual states set from code."
-ms.date: 02/25/2022
+ms.date: 10/24/2022
 ---
 
 # Visual states
@@ -16,8 +16,9 @@ The .NET MAUI Visual State Manager defines a visual state group named `CommonSta
 - Disabled
 - Focused
 - Selected
+- PointerOver
 
-The `Normal`, `Disabled`, and `Focused` visual states are supported on all classes that derive from `VisualElement`, which is the base class for `View` and `Page`. In addition, you can also define your own visual state groups and visual states.
+The `Normal`, `Disabled`, `Focused`, and `PointerOver` visual states are supported on all classes that derive from `VisualElement`, which is the base class for `View` and `Page`. In addition, you can also define your own visual state groups and visual states.
 
 The advantage of using the Visual State Manager to define appearance, rather than accessing visual elements directly from code-behind, is that you can control how visual elements react to different state entirely in XAML, which keeps all of the UI design in one location.
 
@@ -26,13 +27,14 @@ The advantage of using the Visual State Manager to define appearance, rather tha
 
 ## Common visual states
 
-The Visual State Manager allows you to include markup in your XAML file that can change the visual appearance of a view if the view is normal, or disabled, has input focus, or is selected. These are known as the _common states_.
+The Visual State Manager allows you to include markup in your XAML file that can change the visual appearance of a view if the view is normal, disabled, has input focus, is selected, or has the mouse cursor hovering over it but not pressed. These are known as the _common states_.
 
 For example, suppose you have an `Entry` view on your page, and you want the visual appearance of the `Entry` to change in the following ways:
 
 - The `Entry` should have a pink background when the `Entry` is disabled.
 - The `Entry` should have a lime background normally.
 - The `Entry` should expand to twice its normal height when it has input focus.
+- The `Entry` should have a light blue background when it has the mouse cursor hovering over it but not pressed.
 
 You can attach the Visual State Manager markup to an individual view, or you can define it in a style if it applies to multiple views.
 
@@ -70,16 +72,22 @@ The following example shows visual states defined on an `Entry`:
                     <Setter Property="BackgroundColor" Value="Pink" />
                 </VisualState.Setters>
             </VisualState>
+
+            <VisualState x:Name="PointerOver">
+                <VisualState.Setters>
+                    <Setter Property="BackgroundColor" Value="LightBlue" />
+                </VisualState.Setters>
+            </VisualState>
         </VisualStateGroup>
     </VisualStateManager.VisualStateGroups>
 </Entry>
 ```
 
-The following screenshot shows the `Entry` in its three defined visual states:
+The following screenshot shows the `Entry` in its four defined visual states:
 
 :::image type="content" source="media/visualstates/commonstates.png" alt-text="Screenshot of the three defined visual states on the Entry.":::
 
-When the `Entry` is in the `Normal` state, its background is lime. When the `Entry` gains input focus its font size doubles. When the `Entry` becomes disabled, its background becomes pink. The `Entry` doesn't retain its lime background when it gains input focus. As the Visual State Manager switches between the visual states, the properties set by the previous state are unset. Therefore, the visual states are mutually exclusive.
+When the `Entry` is in the `Normal` state, its background is lime. When the `Entry` gains input focus its font size doubles. When the `Entry` becomes disabled, its background becomes pink. The `Entry` doesn't retain its lime background when it gains input focus. When the mouse pointer hovers over the `Entry`, but isn't pressed, the `Entry` background becomes light blue. As the Visual State Manager switches between the visual states, the properties set by the previous state are unset. Therefore, the visual states are mutually exclusive.
 
 If you want the `Entry` to have a lime background in the `Focused` state, add another `Setter` to that visual state:
 
@@ -120,6 +128,11 @@ The following example shows an implicit style for an `Entry` that defines the co
                         <Setter Property="BackgroundColor" Value="Pink" />
                     </VisualState.Setters>
                 </VisualState>
+                <VisualState x:Name="PointerOver">
+                    <VisualState.Setters>
+                        <Setter Property="BackgroundColor" Value="LightBlue" />
+                    </VisualState.Setters>
+                </VisualState>
             </VisualStateGroup>
         </VisualStateGroupList>
     </Setter>
@@ -135,14 +148,13 @@ The following table lists the visual states that are defined in .NET MAUI:
 | Class | States | More Information |
 | ----- | ------ | ---------------- |
 | `Button` | `Pressed` | [Button visual states](~/user-interface/controls/button.md#button-visual-states) |
+| `CarouselView` | `DefaultItem`, `CurrentItem`, `PreviousItem`, `NextItem` | [CarouselView visual states](~/user-interface/controls/carouselview/interaction.md#define-visual-states) |
 | `CheckBox` | `IsChecked` | [CheckBox visual states](~/user-interface/controls/checkbox.md#checkbox-visual-states) |
+| `CollectionView` | `Selected` | [CollectionView visual states](~/user-interface/controls/collectionview/selection.md#change-selected-item-color) |
 | `ImageButton` | `Pressed` | [ImageButton visual states](~/user-interface/controls/imagebutton.md#imagebutton-visual-states) |
 | `RadioButton` | `Checked`, `Unchecked` | [RadioButton visual states](~/user-interface/controls/radiobutton.md#radiobutton-visual-states) |
 | `Switch` | `On`, `Off` | [Switch visual states](~/user-interface/controls/switch.md#switch-visual-states) |
-| `VisualElement` | `Normal`, `Disabled`, `Focused` | [Common states](#common-visual-states) |
-
-<!-- | `CarouselView` | `DefaultItem`, `CurrentItem`, `PreviousItem`, `NextItem` | [CarouselView visual states](~/user-interface/controls/carouselview/interaction.md#define-visual-states) |
-| `CollectionView` | `Selected` | [CollecionView visual states](~/user-interface/controls/collectionview/selection.md#change-selected-item-color) | -->
+| `VisualElement` | `Normal`, `Disabled`, `Focused`, `PointerOver` | [Common states](#common-visual-states) |
 
 ## Set state on multiple elements
 

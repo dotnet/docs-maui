@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI windows"
 description: "Learn how to use the .NET MAUI Window class to create, configure, show, and manage multi-window apps."
-ms.date: 04/19/2022
+ms.date: 10/10/2022
 ---
 
 # .NET MAUI windows
@@ -10,16 +10,68 @@ The .NET Multi-platform App UI (.NET MAUI) `Window` class provides the ability t
 
 `Window` defines the following properties:
 
-- `Title`, of type `string`, represents the title of the window.
-- `Page`, of type `Page`, indicates the page being displayed by the window. This property is the content property of the `Window` class, and therefore does not need to be explicitly set.
+::: moniker range="=net-maui-6.0"
+
 - `FlowDirection`, of type `FlowDirection`, defines the direction in which the UI element of the window are laid out.
 - `Overlays`, of type `IReadOnlyCollection<IWindowOverlay>`, represents the collection of window overlays.
+- `Page`, of type `Page`, indicates the page being displayed by the window. This property is the content property of the `Window` class, and therefore does not need to be explicitly set.
+- `Title`, of type `string`, represents the title of the window.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-7.0"
+
+- `FlowDirection`, of type `FlowDirection`, defines the direction in which the UI element of the window are laid out.
+- `Height`, of type `double`, specifies the height of the window on Windows.
+- `MaximumHeight`, of type `double`, represents the maximum height of the window on desktop platforms. Valid values are between 0 and `double.PositiveInfinity`.
+- `MaximumWidth`, of type `double`, represents the maximum width of the window on desktop platforms. Valid values are between 0 and `double.PositiveInfinity`.
+- `MinimumHeight`, of type `double`, represents the minimum height of the window on desktop platforms. Valid values are between 0 and `double.PositiveInfinity`.
+- `MinimumWidth`, of type `double`, represents the minimum width of the window on desktop platforms. Valid values are between 0 and `double.PositiveInfinity`.
+- `Overlays`, of type `IReadOnlyCollection<IWindowOverlay>`, represents the collection of window overlays.
+- `Page`, of type `Page`, indicates the page being displayed by the window. This property is the content property of the `Window` class, and therefore does not need to be explicitly set.
+- `Title`, of type `string`, represents the title of the window.
+- `Width`, of type `double`, specifies the width of the window on Windows.
+- `X`, of type `double`, specifies the X coordinate of the window on Windows.
+- `Y`, of type `double`, specifies the Y coordinate of the window on Windows.
+
+::: moniker-end
 
 These properties, with the exception of the `Overlays` property, are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
 <!-- Todo: Is/will Title be shown on desktop platforms? -->
 
-The `Window` class defines the following modal navigation events:
+The `Window` class defines the following events:
+
+::: moniker range="=net-maui-6.0"
+
+- `Created`, which is raised when the window is created.
+- `Resumed`, which is raised when the window is resumed from a sleeping state.
+- `Activated`, which is raised when the window is activated.
+- `Deactivated`, which is raised when the window is deactivated.
+- `Stopped`, which is raised when the window is stopped.
+- `Destroying`, which is raised when the window is destroyed.
+- `Backgrounding`, with an accompanying `BackgroundingEventArgs` object, which is raised on iOS and Mac Catalyst when the window is closed or enters a background state. This event can be used to persist any `string` state to the `State` property of the `BackgroundingEventArgs` object, which the OS will preserve until it's time to resume the window. When the window is resumed the state is provided via the `IActivationState` argument to the `CreateWindow` method.
+- `DisplayDensityChanged`, with an accompanying `DisplayDensityChangedEventArgs` object, which is raised on Android and Windows when the effective dots per inch (DPI) for the window has changed.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-7.0"
+
+- `Created`, which is raised when the window is created.
+- `Resumed`, which is raised when the window is resumed from a sleeping state.
+- `Activated`, which is raised when the window is activated.
+- `Deactivated`, which is raised when the window is deactivated.
+- `Stopped`, which is raised when the window is stopped.
+- `Destroying`, which is raised when the window is destroyed.
+- `SizeChanged`, which is raised on desktop platforms when the window changes size.
+- `Backgrounding`, with an accompanying `BackgroundingEventArgs` object, which is raised on iOS and Mac Catalyst when the window is closed or enters a background state. This event can be used to persist any `string` state to the `State` property of the `BackgroundingEventArgs` object, which the OS will preserve until it's time to resume the window. When the window is resumed the state is provided via the `IActivationState` argument to the `CreateWindow` method.
+- `DisplayDensityChanged`, with an accompanying `DisplayDensityChangedEventArgs` object, which is raised on Android and Windows when the effective dots per inch (DPI) for the window has changed.
+
+::: moniker-end
+
+For more information about the lifecycle events, and their associated overrides, see [App lifecycle](app-lifecycle.md).
+
+The `Window` class also defines the following modal navigation events:
 
 - `ModalPopped`, with `ModalPoppedEventArgs`, which is raised when a view has been popped modally.
 - `ModalPopping`, with `ModalPoppingEventArgs`, which is raised when a view is modally popped.
@@ -27,18 +79,7 @@ The `Window` class defines the following modal navigation events:
 - `ModalPushing`, with `ModalPushingEventArgs`, which is raised when a view is modally pushed.
 - `PopCanceled`, which is raised when a modal pop is cancelled.
 
-The `Window` class also defines the following lifecycle events:
-
-- `Created`, which is raised when the Window is created.
-- `Resumed`, which is raised when the Window is resumed from a sleeping state.
-- `Activated`, which is raised when the Window is activated.
-- `Deactivated`, which is raised when the Window is deactivated.
-- `Stopped`, which is raised when the Window is stopped.
-- `Destroying`, which is raised when the Window is destroyed.
-- `Backgrounding`, with `BackgroundingEventArgs`, which is raised when the Window is entering a background state.
-- `DisplayDensityChanged`, with `DisplayDensityChangedEventArgs`, which is raised when the effective dots per inch (DPI) for the Window has changed.
-
-For more information about the lifecycle events, and their associated overrides, see [App lifecycle](app-lifecycle.md).
+The `VisualElement` class has a `Window` property that exposes the parent `Window` object. This property can be accessed from any page, layout, or view, to manipulate `Window` objects.
 
 ## Create a Window
 
@@ -159,3 +200,68 @@ Then, in the XML editor, open the **Platforms > iOS > Info.plist** file and the 
 
 > [!IMPORTANT]
 > Multi-window support doesn't work on iOS for iPhone.
+
+::: moniker range=">=net-maui-7.0"
+
+## Position and size a Window
+
+The position and size of a window can be programmatically defined for a .NET MAUI app on Windows by setting the `X`, `Y`, `Width`, and `Height` properties on a `Window` object.
+
+> [!WARNING]
+> Mac Catalyst doesn't support resizing or repositioning windows programmatically by setting the `X`, `Y`, `Width`, and `Height` properties.
+
+For example, to set the window position and size on launch you should override the `CreateWindow` method in your `App` class and set the `X`, `Y`, `Width`, and `Height` properties on a `Window` object:
+
+```csharp
+public partial class App : Application
+{
+    public App()
+    {
+        InitializeComponent();
+    }
+
+    protected override Window CreateWindow(IActivationState activationState) =>
+        new Window(new AppShell())
+        {
+            Width = 700,
+            Height = 500,
+            X = 100,
+            Y = 100
+        };
+}
+```
+
+Alternatively, a window can be positioned and sized by accessing the `Window` property from any page, layout, or view. For example, the following code shows how to position a window in the center of the screen:
+
+```csharp
+// Get display size
+var displayInfo = DeviceDisplay.Current.MainDisplayInfo;
+
+// Center the window
+Window.X = (displayInfo.Width / displayInfo.Density - Window.Width) / 2;
+Window.Y = (displayInfo.Height / displayInfo.Density - Window.Height) / 2;
+```
+
+For information about obtaining the device's screen metrics, see [Device display information](~/platform-integration/device/display.md).
+
+### Mac Catalyst
+
+Mac Catalyst doesn't support resizing or repositioning windows programmatically. However, a workaround to enable resizing is to set the `MinimumWidth` and `MaximumWidth` properties to the desired width of the window, and the `MinimumHeight` and `MaximumHeight` properties to the desired height of the window. This will trigger a resize, and you can then revert the properties back to their original values:
+
+```csharp
+Window.MinimumWidth = 700;
+Window.MaximumWidth = 700;
+Window.MinimumHeight = 500;
+Window.MaximumHeight = 500;
+
+// Give the Window time to resize
+Dispatcher.Dispatch(() =>
+{
+    Window.MinimumWidth = 0;
+    Window.MinimumHeight = 0;
+    Window.MaximumWidth = double.PositiveInfinity;
+    Window.MaximumHeight = double.PositiveInfinity;
+});
+```
+
+::: moniker-end

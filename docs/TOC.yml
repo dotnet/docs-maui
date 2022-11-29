@@ -139,6 +139,8 @@
                 href: fundamentals/gestures/pan.md
               - name: Pinch
                 href: fundamentals/gestures/pinch.md
+              - name: Pointer
+                href: fundamentals/gestures/pointer.md
               - name: Swipe
                 href: fundamentals/gestures/swipe.md
               - name: Tap
@@ -267,6 +269,8 @@
                       href: user-interface/controls/image.md
                     - name: Label
                       href: user-interface/controls/label.md
+                    - name: Map
+                      href: user-interface/controls/map.md
                     - name: ScrollView
                       href: user-interface/controls/scrollview.md
                     - name: Shapes
@@ -379,10 +383,12 @@
                       href: user-interface/controls/tableview.md
                 - name: ContentView
                   href: user-interface/controls/contentview.md
-        - name: Display a menu bar
-          href: user-interface/menubar.md
+                - name: TwoPaneView
+                  href: user-interface/controls/twopaneview.md
         - name: Display pop-ups
           href: user-interface/pop-ups.md
+        - name: Display tooltips
+          href: user-interface/tooltips.md
         - name: Fonts
           href: user-interface/fonts.md
         - name: Graphics
@@ -411,6 +417,12 @@
               href: user-interface/images/images.md
             - name: Splash screen
               href: user-interface/images/splashscreen.md
+        - name: Menus
+          items:
+            - name: Display a context menu
+              href: user-interface/context-menu.md
+            - name: Display a menu bar
+              href: user-interface/menu-bar.md
         - name: Shadows
           href: user-interface/shadow.md
         - name: Styles
@@ -447,7 +459,7 @@
             href: platform-integration/appmodel/launcher.md
           - name: Main thread
             href: platform-integration/appmodel/main-thread.md
-          - name: Maps
+          - name: Map
             href: platform-integration/appmodel/maps.md
           - name: Permissions
             href: platform-integration/appmodel/permissions.md
@@ -599,6 +611,8 @@
           href: platform-integration/configure-multi-targeting.md
         - name: Invoke platform code
           href: platform-integration/invoke-platform-code.md
+        - name: Native embedding
+          href: platform-integration/native-embedding.md
     - name: Data & cloud services
       items:
         - name: Local databases
@@ -620,7 +634,11 @@
         - name: Publish
           items:
             - name: Android
-              href: android/deployment/overview.md
+              items:
+              - name: Overview
+                href: android/deployment/overview.md
+              - name: Publish with the .NET CLI
+                href: android/deployment/publish-cli.md
             - name: iOS
               items:
                 - name: Publish an iOS app
@@ -632,6 +650,12 @@
             - name: macOS
               href: macos/deployment/overview.md
             - name: Windows
-              href: windows/deployment/overview.md
+              items:
+              - name: Overview
+                href: windows/deployment/overview.md
+              - name: Publish with the .NET CLI
+                href: windows/deployment/publish-cli.md
+              - name: Publish with Visual Studio to a folder
+                href: windows/deployment/publish-visual-studio-folder.md
     - name: Troubleshooting
       href: troubleshooting.md

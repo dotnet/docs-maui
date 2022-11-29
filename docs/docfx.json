@@ -17,7 +17,9 @@
           "LICENSE",
           "LICENSE-CODE",
           "ThirdPartyNotices.md"
-        ]
+        ],
+        "group": "net",
+        "src": "."
       }
     ],
     "resource": [
@@ -36,7 +38,9 @@
           "_themes.pdf/**",
           "**/docfx.json",
           "_repo.en-us/**"
-        ]
+        ],
+        "group": "net",
+        "src": "."
       }
     ],
     "overwrite": [],
@@ -52,6 +56,7 @@
       "ms.prod": "dotnet-mobile",
       "ms.topic": "conceptual",
       "ms.technology": "dotnet-maui",
+      "uhfHeaderId": "MSDocsHeader-DotNet",
       "zone_pivot_group_filename": "maui/zone-pivot-groups.json",
       "titleSuffix": ".NET MAUI",
       "searchScope": [ ".NET MAUI" ]
@@ -63,6 +68,12 @@
     },
     "template": [],
     "dest": "docs-maui-public",
-    "markdownEngineName": "markdig"
+    "markdownEngineName": "markdig",
+    "groups": {
+      "net": {
+        "dest": "net-dest",
+        "moniker_range": ">=net-maui-6.0"
+      }
+    }
   }
 }

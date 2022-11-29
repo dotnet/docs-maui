@@ -1,7 +1,7 @@
 ---
 title: "Troubleshoot known issues"
 description: "Describes the known issues and troubleshooting you can do to resolve these issues for a .NET Multi-platform App UI (.NET MAUI) app."
-ms.date: 09/27/2022
+ms.date: 11/18/2022
 ---
 
 # Troubleshooting known issues
@@ -72,7 +72,17 @@ Use a `global.json` config file in the folder where you'll create the project. T
 
 Visual Studio may not be resolving the required workloads if you try to compile a project and receive an error similar to the following text:
 
+::: moniker range="=net-maui-6.0"
+
 > Platform version is not present for one or more target frameworks, even though they have specified a platform: net6.0-android, net6.0-ios, net6.0-maccatalyst
+
+::: moniker-end
+
+::: moniker range="=net-maui-7.0"
+
+> Platform version is not present for one or more target frameworks, even though they have specified a platform: net7.0-android, net7.0-ios, net7.0-maccatalyst
+
+::: moniker-end
 
 This problem is generally caused by one of the following scenarios:
 
@@ -83,7 +93,7 @@ This problem is generally caused by one of the following scenarios:
 - You have both an x86 and x64 SDK installed, and the x86 version is being used.
 
   Visual Studio and .NET MAUI require the x64 .NET SDK. If your operating system has a system-wide `PATH` variable that is resolving the x86 SDK first, you'll need to fix that by either removing the x86 .NET SDK from the `PATH` variable, or promoting the x64 .NET SDK so that it resolves first. For more information on troubleshooting x86 vs x64 SDK resolution, see [Install .NET on Windows - Troubleshooting](/dotnet/core/install/windows#it-was-not-possible-to-find-any-installed-net-core-sdks).
-  
+
 ## The WINDOWS `#if` directive is broken
 
 The `WINDOWS` definition doesn't resolve correctly in the latest release of .NET MAUI. To work around this issue, add the following entry to the `<PropertyGroup>` element of your project file.
@@ -111,4 +121,16 @@ using Communication = Microsoft.Maui.ApplicationModel.Communication;
 
 // Code that uses the namespace:
 var contact = await Communication.Contacts.Default.PickContactAsync();
+```
+
+## Xcode is not currently installed or could not be found
+
+After installing the Xcode command line tools, using `xcode-select --install`, Visual Studio for Mac might show a "Xcode is not currently installed or could not be found" message when attempting to build .NET MAUI apps that target iOS or Mac Catalyst. In this scenario, check that you also have Xcode installed from the App Store. Then, launch Xcode and go to **Xcode > Preferences > Locations > Command Line Tools** and check if the drop-down is empty. If it is empty, select the drop-down and then select the location of the Xcode command line tools. Then close Xcode and restart Visual Studio for Mac.
+
+## Could not find a valid Xcode app bundle
+
+If you receive the error "Could not find a valid Xcode app bundle at '/Library/Developer/CommandLineTools'", when attempting to build .NET MAUI apps that target iOS or Mac Catalyst, you should try the solution described in [Xcode is not currently installed or could not be found](#xcode-is-not-currently-installed-or-could-not-be-found). If you're still unable to access the **Xcode > Preferences > Locations > Command Line Tools** drop-down, run the following command:
+
+```zsh
+sudo xcode-select --reset
 ```

@@ -20,7 +20,7 @@ To access the browser functionality, the following platform-specific setup is re
 
 If your project's Target Android version is set to **Android 11 (R API 30)** or higher, you must update your _Android Manifest_ with queries that use Android's [package visibility requirements](https://developer.android.com/preview/privacy/package-visibility).
 
-In the _Platforms/Android/AndroidManifest.xml_ file, add the following `queries/intent` nodes the `manifest` node:
+In the _Platforms/Android/AndroidManifest.xml_ file, add the following `queries/intent` nodes in the `manifest` node:
 
 ```xml
 <queries>
@@ -56,7 +56,7 @@ This method returns after the browser is launched, not after it was closed by th
 
 ## Customization
 
-When using the system-preferred browser, there are several customization options available for iOS and Android. These options include a `TitleMode` (Android only) and preferred color for the `Toolbar` (iOS and Android) and `Controls` (iOS only) that appear.
+If you're using the system-preferred browser, there are several customization options available for iOS and Android. These options include a `TitleMode` (Android only) and preferred color for the `Toolbar` (iOS and Android) and `Controls` (iOS only) that appear.
 
 Specify these options using `BrowserLaunchOptions` when you call `OpenAsync`.
 
