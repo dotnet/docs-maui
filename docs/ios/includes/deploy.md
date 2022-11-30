@@ -1,3 +1,8 @@
+---
+ms.topic: include
+ms.date: 11/30/2022
+---
+
 ## Deploy to device
 
 After configuring provisioning in your .NET MAUI app project, the app can be deployed to a device.
