@@ -19,13 +19,13 @@ Once you've added an Apple ID, you can use any associated team. This allows cert
 
 1. In **Solution Explorer**, right-click on your .NET MAUI app project and select **Properties**. Then, navigate to the **iOS Bundle Signing** tab and ensure that **Automatic Provisioning** is selected in the **Scheme** drop-down:
 
-    :::image type="content" source="media/device-provisioning/automatic-provisioning/vs/bundle-signing.png" alt-text="Screenshot of bundle signing tab for iOS in Visual Studio.":::
+    :::image type="content" source="media/automatic-provisioning/vs/bundle-signing.png" alt-text="Screenshot of bundle signing tab for iOS in Visual Studio.":::
 
 1. In the **Bundle Signing** settings, click the **Configure Automatic Provisioning** hyperlink.
 
 1. In the **Configure Automatic Provisioning** dialog, select your team. Visual Studio will attempt to automatically provision your project and will indicate if the process completed successfully:
 
-    :::image type="content" source="media/device-provisioning/automatic-provisioning/vs/automatic-provisioning-configured.png" alt-text="Screenshot of the automatic provisioning dialog when it's correctly configured.":::
+    :::image type="content" source="media/automatic-provisioning/vs/automatic-provisioning-configured.png" alt-text="Screenshot of the automatic provisioning dialog when it's correctly configured.":::
 
 1. In the **Configure Automatic Provisioning** dialog, click the **Ok** button to dismiss the dialog.
 
@@ -35,11 +35,11 @@ Once you've added an Apple ID, you can use any associated team. This allows cert
 
 1. In the **Info.plist** editor, change from the **Source** view to the **Application** view:
 
-    :::image type="content" source="media/device-provisioning/automatic-provisioning/vsmac/source-view.png" alt-text="Screenshot of source view in Info.plist editor in Visual Studio for Mac.":::
+    :::image type="content" source="media/automatic-provisioning/vsmac/source-view.png" alt-text="Screenshot of source view in Info.plist editor in Visual Studio for Mac.":::
 
 1. In the **Signing** section of the **Application** view, select **Automatic Provisioning**, and then select your team from the **Team** drop-down. Visual Studio for Mac will attempt to automatically provision your project and will indicate if the process completed successfully:
 
-    :::image type="content" source="media/device-provisioning/automatic-provisioning/vsmac/application-view.png" alt-text="Screenshot of application view in Info.plist editor in Visual Studio for Mac.":::
+    :::image type="content" source="media/automatic-provisioning/vsmac/application-view.png" alt-text="Screenshot of application view in Info.plist editor in Visual Studio for Mac.":::
 
     If the automatic signing fails the **Automatic signing** window will display the reason for the error.
 
@@ -92,21 +92,23 @@ If your app uses one of these entitlements, Visual Studio will attempt to create
 
 If you use multiple machines for development, you may receive the following error message when attempting to configure automatic provisioning on a machine: "There was an error while trying to automatically provision the project: 'Certificate: Apple Development: Create via API (Key ID)' already exists but cannot be found in the local Keychain. It may have been created on another development machine. Import the certificate and private key from that machine or revoke it and try again to automatically create a new one.'":
 
-:::image type="content" source="media/device-provisioning/automatic-provisioning/vs/automatic-provisioning-failure.png" alt-text="Screenshot of automatic provisioning failure when the certificate can't be found.":::
+:::image type="content" source="media/automatic-provisioning/vs/automatic-provisioning-failure.png" alt-text="Screenshot of automatic provisioning failure when the certificate can't be found.":::
 
 This can occur because automatic provisioning doesn't remove the need to manually copy certificates between machines, when you're using multiple machines for development. This is because the private key that created a certificate only exists on the machine that created the certificate.
 
 To discover if a required certificate is missing from your development machine, in Visual Studio go to **Tools > Options > Xamarin > Apple Accounts**. Then, in the **Apple Developer Accounts** dialog, select a team and click the **View Details...** button:
 
-:::image type="content" source="media/device-provisioning/automatic-provisioning/vs/certificate-missing.png" alt-text="Screenshot of Details window when the certificate isn't in the keychain.":::
+:::image type="content" source="media/automatic-provisioning/vs/certificate-missing.png" alt-text="Screenshot of Details window when the certificate isn't in the keychain.":::
 
 If the required certificate isn't installed on the machine, the **Details** window will show a "Not in Keychain" status for the certificate. The specific certificate must be exported from the machine that created it, in .p12 format, and then imported into Visual Studio with the **Import Certificate** button.
 
 > [!NOTE]
-> Certificates on a Mac can be exported from, and imported to Keychain Access.
+> - To copy a certificate from a Mac to another Mac, export the certificate from Keychain Access on the first Mac and then import it into Keychain Access on the second Mac.
+> - To copy a certificate from a Mac to a Windows machine, export the certificate from Keychain Access on the Mac and then import it into Visual Studio with the **Import Certificate** button.
+> - To copy a certificate from a Windows machine to a Windows machine, copy the certificate from the C:\Users\{User}\AppData\Local\Xamarin\iOS\Provisioning\Certificates folder and then import it into Visual Studio with the **Import Certificate** button.
 
 After the certificate has been imported, Visual Studio will show its status as "Valid":
 
-:::image type="content" source="media/device-provisioning/automatic-provisioning/vs/certificate-added.png" alt-text="Screenshot of Details window when the certificate has been added to the keychain.":::
+:::image type="content" source="media/automatic-provisioning/vs/certificate-added.png" alt-text="Screenshot of Details window when the certificate has been added to the keychain.":::
 
 It should then be possible for Visual Studio to automatically provision your project.

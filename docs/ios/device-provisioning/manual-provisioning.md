@@ -57,7 +57,7 @@ When creating a provisioning profile for development, you must state which devic
 1. In Xcode, select the **Devices** tab, and select the device from the list of connected devices.
 1. In Xcode, copy the **Identifier** value to the clipboard:
 
-    :::image type="content" source="media/device-provisioning/manual-provisioning/xcode-devices.png" alt-text="Xcode devices and simulator window with the iOS identifier string location highlighted.":::
+    :::image type="content" source="media/manual-provisioning/xcode-devices.png" alt-text="Xcode devices and simulator window with the iOS identifier string location highlighted.":::
 
 1. In a web browser, go to the [Devices](https://developer.apple.com/account/resources/devices/list) section of Apple's developer portal and click the **+** button.
 1. In the **Register a New Device** page, set the correct **Platform** and provide a name for the new device. Then paste the identifier from the clipboard into the **Device ID (UDID)** field.
@@ -81,7 +81,7 @@ A wildcard App ID can be created with the following steps:
 1. In the **Register a new identifier** page, select the **App** type and click the **Continue** button.
 1. In the **Register an App ID** page, provide a **Description** and set the **Bundle ID** to **Wildcard**. Then, enter an App ID in the format `com.domainname.*`:
 
-    :::image type="content" source="media/device-provisioning/manual-provisioning/register-app-id.png" alt-text="Screenshot of new App ID registration page with required fields populated.":::
+    :::image type="content" source="media/manual-provisioning/register-app-id.png" alt-text="Screenshot of new App ID registration page with required fields populated.":::
 
 1. In the **Register an App ID** page, click the **Continue** button.
 1. In the **Confirm your App ID** page, review the information and then click the **Register** button.
@@ -132,7 +132,7 @@ After manually creating the provisioning profile, and installing it in Visual St
 1. In **Solution Explorer** right-click on your .NET MAUI app project and select **Properties**. Then, navigate to the **MAUI Shared > General** tab and ensure that the value of the **Application ID** field corresponds to the format of the App ID you created earlier.
 1. In the project properties, navigate to the **iOS Bundle Signing** tab and ensure that **Manual Provisioning** is selected in the **Scheme** drop-down:
 
-    :::image type="content" source="media/device-provisioning/manual-provisioning/vs/bundle-signing.png" alt-text="Screenshot of bundle signing tab for iOS in Visual Studio.":::
+    :::image type="content" source="media/manual-provisioning/vs/bundle-signing.png" alt-text="Screenshot of bundle signing tab for iOS in Visual Studio.":::
 
 1. In the **Bundle Signing** properties, select your **Signing identity** and **Provisioning profile**, or set both to **Automatic**. When **Signing identity** and **Provisioning profile** are both set to **Automatic**, Visual Studio will select the signing identity and provisioning profile based on the **Bundle identifier** in **Info.plist**.
 
@@ -143,16 +143,16 @@ After manually creating the provisioning profile, and installing it in Visual St
 1. In the **Solution Window**, double-click the **Info.plist** file from the **Platforms > iOS** folder of your .NET MAUI app project to open it in the editor.
 1. In the **Info.plist** editor, change from the **Source** view to the **Application** view:
 
-    :::image type="content" source="media/device-provisioning/manual-provisioning/vsmac/source-view.png" alt-text="Screenshot of source view in Info.plist editor in Visual Studio for Mac.":::
+    :::image type="content" source="media/manual-provisioning/vsmac/source-view.png" alt-text="Screenshot of source view in Info.plist editor in Visual Studio for Mac.":::
 
 1. In the **Signing** section of the **Application** view, select **Manual Provisioning**:
 
-    :::image type="content" source="media/device-provisioning/manual-provisioning/vsmac/manual-provisioning.png" alt-text="Screenshot of manual provisioning selected as the signing scheme in Visual Studio for Mac.":::
+    :::image type="content" source="media/manual-provisioning/vsmac/manual-provisioning.png" alt-text="Screenshot of manual provisioning selected as the signing scheme in Visual Studio for Mac.":::
 
 1. In the **Signing** section of the **Application** view, click the **Bundle Signing Options...** button.
 1. In the **Project Properties** window, select your **Signing Identity** and **Provisioning profile**, or leave both as **Automatic**:
 
-    :::image type="content" source="media/device-provisioning/manual-provisioning/vsmac/bundle-signing.png" alt-text="Screenshot of bundle signing options in Visual Studio for Mac.":::
+    :::image type="content" source="media/manual-provisioning/vsmac/bundle-signing.png" alt-text="Screenshot of bundle signing options in Visual Studio for Mac.":::
 
     When **Signing Identity** and **Provisioning profile** are both set to **Automatic**, Visual Studio for Mac will select the signing identity and provisioning profile based on the **Bundle identifier** in **Info.plist**.
 
