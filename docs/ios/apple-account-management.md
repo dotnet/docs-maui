@@ -12,7 +12,7 @@ The Apple account management interface in Visual Studio and Visual Studio for Ma
 
 ## Add an Apple developer account
 
-Before you begin, ensure that you've accepted any user license agreements in the [Apple Developer portal](https://developer.apple.com/account/).
+Before you begin, ensure that you've accepted any user license agreements in the [Apple Developer portal](https://developer.apple.com/account/) and [App Store Connect](https://appstoreconnect.apple.com/).
 
 If you have an individual Apple Developer account, as opposed to an enterprise account, you'll also need to create an App Store Connect API key. For information about creating an App Store Connect API key, see [Creating API Keys for App Store Connect API](https://developer.apple.com/documentation/appstoreconnectapi/creating_api_keys_for_app_store_connect_api) on developer.apple.com.
 
@@ -75,7 +75,7 @@ If you have an individual Apple Developer account, as opposed to an enterprise a
 When you select an Apple Developer Account and a Team name, the **View Details...** button becomes enabled. Clicking it opens the team details dialog that displays a list of signing identifies and provisioning profiles that are installed on your machine. This dialog organizes the signing identities by type, with the **Status** column advising you if the certificate is:
 
 - **Valid**. The signing identity (both the certificate and the private key) is installed on your machine and has not expired.
-- **Not in Keychain**. Apple holds a valid signing identity. To install this on your machine, it must be exported from another machine. You cannot download the signing identity from the Apple Developer Portal as it will not contain the private key.
+- **Not in Keychain**. Apple holds a valid signing identity. To install this on your machine, it must be exported from another machine. You cannot download the signing identity from the Apple Developer portal as it will not contain the private key.
 - **Private key is missing**. A certificate with no private key is installed in the keychain.
 - **Expired**. The certificate is expired. You should remove this from your keychain.
 

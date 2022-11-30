@@ -8,10 +8,6 @@ ms.date: 11/28/2022
 
 While developing a .NET Multi-platform App UI (.NET MAUI) app it's essential to test it by deploying the app to a physical device, in addition to the simulator. Device-only bugs and performance issues can transpire when running on a device, due to hardware limitations such as memory or network connectivity. To test an app on a physical device, the device must be *provisioned*, and Apple must be informed that the device will be used for testing.
 
-The following image shows the steps required to setup iOS provisioning:
-
-IMAGE GOES HERE
-
 Before deploying an app to a device, you need to have an active subscription to Apple's Developer Program. Apple offers two program options:
 
 - **Apple Developer Program**. Regardless of whether you are an individual or represent an organization, the [Apple Developer Program](https://developer.apple.com/programs/) enables you to develop, test, and distribute apps.
@@ -34,7 +30,7 @@ These checks ensure that everything that is created or used during the developme
 There are two approaches to provisioning your iOS device:
 
 - **Automatically**. Signing identities, app IDs, and provisioning profiles will be automatically created and managed by Visual Studio. This is the recommended approach for provisioning an iOS device. For more information, see [Automatic provisioning](automatic-provisioning.md).
-- **Manually**. Signing identities, app IDs, and provisioning profiles will be created and managed via your [Apple Developer Account](https://developer.apple.com/account). For more information, see [Manual provisioning](manual-provisioning.md).
+- **Manually**. Signing identities, app IDs, and provisioning profiles will be created and managed in the [Apple Developer portal](https://developer.apple.com/account). For more information, see [Manual provisioning](manual-provisioning.md).
 
 ## Provisioning for application services
 
