@@ -45,6 +45,10 @@
               items:
               - name: Overview
                 href: ios/device-provisioning/index.md
+              - name: Automatic provisioning
+                href: ios/device-provisioning/automatic-provisioning.md
+              - name: Manual provisioning
+                href: ios/device-provisioning/manual-provisioning.md
             - name: Simulators
               items:
               - name: Remote iOS simulator for Windows
