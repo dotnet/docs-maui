@@ -161,16 +161,4 @@ After manually creating the provisioning profile, and installing it in Visual St
 
 ---
 
-## Deploy to device
-
-After configuring provisioning in your .NET MAUI app project, the app can be deployed to a device.
-
-# [Visual Studio](#tab/vs)
-
-[!INCLUDE [Deploy the app to your device from Visual Studio](~/ios/includes/deploy-vs.md)]
-
-# [Visual Studio for Mac](#tab/vsmac)
-
-[!INCLUDE [Deploy the app to your device from Visual Studio for Mac](~/ios/includes/deploy-vsmac.md)]
-
----
+[!INCLUDE [Deploy the app to your device](~/ios/includes/deploy.md)]
