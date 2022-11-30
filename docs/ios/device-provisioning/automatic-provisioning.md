@@ -1,7 +1,6 @@
 ---
 title: "Automatic provisioning for .NET MAUI iOS apps"
 description: "Learn how to use automatic provisioning to request development certificates and profiles for .NET MAUI iOS apps."
-and profiles."
 ms.date: 11/28/2022
 ---
 
