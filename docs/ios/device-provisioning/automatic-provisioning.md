@@ -47,7 +47,19 @@ Once you've added an Apple ID, you can use any associated team. This allows cert
 
 ---
 
-[!INCLUDE [Deploy the app to your device](~/ios/includes/deploy.md)]
+## Deploy to device
+
+After configuring provisioning in your .NET MAUI app project, the app can be deployed to a device.
+
+# [Visual Studio](#tab/vs)
+
+[!INCLUDE [Deploy the app to your device from Visual Studio](~/ios/includes/deploy-vs.md)]
+
+# [Visual Studio for Mac](#tab/vsmac)
+
+[!INCLUDE [Deploy the app to your device from Visual Studio for Mac](~/ios/includes/deploy-vsmac.md)]
+
+---
 
 ## Run automatic provisioning
 
