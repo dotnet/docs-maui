@@ -162,3 +162,8 @@ After manually creating the provisioning profile, and installing it in Visual St
 ---
 
 [!INCLUDE [Deploy the app to your device](~/ios/includes/deploy.md)]
+
+
+## Provisioning for application services
+
+Apple provides a selection of application services, known as capabilities, that can be activated for a .NET MAUI iOS app. These capabilities must be configured in both your provisioning profile, when the **App ID** is created, and in the **Entitlements.plist** file that should be added to the .NET MAUI app project. For more information about capabilities, see [Entitlements and capabilities](~/ios/deployment/entitlements.md), and [Capabilites]((https://developer.apple.com/documentation/xcode/capabilities) on developer.apple.com.
