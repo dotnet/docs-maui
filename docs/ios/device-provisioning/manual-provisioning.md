@@ -58,11 +58,10 @@ When creating a provisioning profile for development, the profile must include w
     :::image type="content" source="media/manual-provisioning/xcode-devices.png" alt-text="Xcode devices and simulator window with the iOS identifier string location highlighted.":::
 
 1. In a web browser, go to the [Devices](https://developer.apple.com/account/resources/devices/list) section of Apple's developer portal and click the **+** button.
-1. In the **Register a New Device** page, set the correct **Platform** and provide a name for the new device. Then paste the identifier from the clipboard into the **Device ID (UDID)** field:
+1. In the **Register a New Device** page, set the correct **Platform** and provide a name for the new device. Then paste the identifier from the clipboard into the **Device ID (UDID)** field, and click the **Continue** button:
 
     :::image type="content" source="media/manual-provisioning/add-device.png" alt-text="Register a device by naming it and entering its unique device identifier.":::
 
-1. In the **Register a New Device** page, click the **Continue** button.
 1. In the **Register a New Device** page, review the information and then click the **Register** button.
 
 Repeat the above steps for any iOS device that you'll use to test or debug a .NET MAUI iOS app.
@@ -90,11 +89,10 @@ A wildcard App ID can be created with the following steps:
 1. In a web browser, go to the [Identifiers](https://developer.apple.com/account/resources/identifiers/list) section of Apple's developer portal and click the **+** button.
 1. In the **Register a new identifier** page, select **App IDs** and click the **Continue** button.
 1. In the **Register a new identifier** page, select the **App** type and click the **Continue** button.
-1. In the **Register an App ID** page, provide a **Description** and set the **Bundle ID** to **Wildcard**. Then, enter an App ID in the format `com.domainname.*`:
+1. In the **Register an App ID** page, provide a **Description** and set the **Bundle ID** to **Wildcard**. Then, enter an App ID in the format `com.domainname.*` and click the **Continue** button:
 
     :::image type="content" source="media/manual-provisioning/register-app-id.png" alt-text="Screenshot of new App ID registration page with required fields populated.":::
 
-1. In the **Register an App ID** page, click the **Continue** button.
 1. In the **Confirm your App ID** page, review the information and then click the **Register** button.
 
 ### Create a development provisioning profile
@@ -104,11 +102,26 @@ Once the App ID has been created, you should create a development provisioning p
 A development provisioning profile can be created with the following steps:
 
 1. In a web browser, go to the [Profiles](https://developer.apple.com/account/resources/profiles/list) section of Apple's developer portal and click the **+** button.
-1. In the **Register a New Provisioning Profile** page, in the **Development** section, select **iOS App Development** and click the **Continue** button.
+1. In the **Register a New Provisioning Profile** page, in the **Development** section, select **iOS App Development** and click the **Continue** button:
+
+    :::image type="content" source="media/manual-provisioning/provisioning-profile-ios.png" alt-text="Screenshot of creating a provisioning profile for iOS app development.":::
+
 1. In the **Generate a Provisioning Profile** page, select the **App ID** to use and then click the **Continue** button.
+
+    :::image type="content" source="media/manual-provisioning/provisioning-profile-appid.png" alt-text="Screenshot of adding an App ID to a provisioning profile.":::
+
 1. In the **Generate a Provisioning Profile** page, select the certificates to include in the provisioning profile and then click the **Continue** button.
+
+    :::image type="content" source="media/manual-provisioning/provisioning-profile-certificates.png" alt-text="Screenshot of adding a certificate to a provisioning profile.":::
+
 1. In the **Generate a Provisioning Profile** page, select the devices that the app will be installed on and then click the **Continue** button.
+
+    :::image type="content" source="media/manual-provisioning/provisioning-profile-devices.png" alt-text="Screenshot of adding a device to a provisioning profile.":::
+
 1. In the **Generate a Provisioning Profile** page, provide a provisioning profile name and then click the **Generate** button.
+
+    :::image type="content" source="media/manual-provisioning/provisioning-profile-name.png" alt-text="Screenshot of naming a provisioning profile.":::
+
 1. In the **Generate a Provisioning Profile** page, you can optionally click the **Download** button to download the provisioning profile.
 
 ## Download provisioning profiles in Visual Studio
