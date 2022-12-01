@@ -6,7 +6,7 @@ ms.date: 11/15/2022
 
 # Apple account management
 
-When developing a .NET Multi-platform App UI (.NET MAUI) iOS app it's essential to test it by deploying it to a physical device, prior to uploading it to the App Store for distribution. Both of these tasks require you to have an [Apple ID](https://appleid.apple.com/account), and have enrolled your Apple ID in the [Apple Developer Program](https://developer.apple.com/programs).
+When developing a .NET Multi-platform App UI (.NET MAUI) iOS app it's essential to test it by deploying it to a device, prior to uploading it to the App Store for distribution. Both of these tasks require you to have an [Apple ID](https://appleid.apple.com/account), and have enrolled your Apple ID in the [Apple Developer Program](https://developer.apple.com/programs).
 
 The Apple account management interface in Visual Studio and Visual Studio for Mac enables you to add your Apple ID, and provides the ability to view information about development teams associated with the Apple ID, view signing certificates and provisioning profiles, create new signing certificates, and download existing provisioning profiles.
 
@@ -75,7 +75,7 @@ If you have an individual Apple Developer account, as opposed to an enterprise a
 When you select an Apple Developer Account and a Team name, the **View Details...** button becomes enabled. Clicking it opens the team details dialog that displays a list of signing identifies and provisioning profiles that are installed on your machine. This dialog organizes the signing identities by type, with the **Status** column advising you if the certificate is:
 
 - **Valid**. The signing identity (both the certificate and the private key) is installed on your machine and has not expired.
-- **Not in Keychain**. Apple holds a valid signing identity. To install this on your machine, it must be exported from another machine. You cannot download the signing identity from the Apple Developer portal as it will not contain the private key.
+- **Not in Keychain**. Apple holds a valid signing identity. To install this on your machine, it must be exported from another machine. You cannot download the signing identity from the Apple Developer portal as it doesn't contain the private key.
 - **Private key is missing**. A certificate with no private key is installed in the keychain.
 - **Expired**. The certificate is expired. You should remove this from your keychain.
 
