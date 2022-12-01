@@ -14,7 +14,7 @@ The remote iOS Simulator for Windows is installed automatically as part of the .
 
 1. Launch Visual Studio 2022 and create or load a .NET MAUI app project.
 1. In Visual Studio 2022, pair the IDE to a Mac Build host if you haven't previously. For more information, see [Pair to Mac for iOS development](pair-to-mac.md).
-1. In the Visual Studio toolbar, use the **Debug Target** drop down to select **iOS Simulators** and then a specific iOS simulator:
+1. In the Visual Studio toolbar, use the **Debug Target** drop-down to select **iOS Simulators** and then a specific iOS simulator:
 
     :::image type="content" source="media/remote-simulator/debug-target.png" alt-text="Visual Studio iOS simulators debug targets.":::
 

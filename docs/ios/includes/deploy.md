@@ -9,9 +9,9 @@ After configuring provisioning in your .NET MAUI app project, the app can be dep
 
 # [Visual Studio](#tab/vs)
 
-1. In Visual Studio, pair the IDE to a Mac Build host if you haven't previously. For more information, see [Pair to Mac for iOS development](~/ios/pair-to-mac.md).
+1. In Visual Studio, ensure that the IDE is paired to a Mac Build host. For more information, see [Pair to Mac for iOS development](~/ios/pair-to-mac.md).
 1. Ensure that your iOS device is connect to your Mac build host via USB or WiFi.
-1. In the Visual Studio toolbar, use the **Debug Target** drop down to select **iOS Remote Devices** and then the device that's connected to your Mac build host:
+1. In the Visual Studio toolbar, use the **Debug Target** drop-down to select **iOS Remote Devices** and then the device that's connected to your Mac build host:
 
     :::image type="content" source="../device-provisioning/media/automatic-provisioning/vs/select-remote-device.png" alt-text="Select your remote device in Visual Studio.":::
 
@@ -37,8 +37,8 @@ After configuring provisioning in your .NET MAUI app project, the app can be dep
     > [!IMPORTANT]
     > The deployment target value must be identical to the **Minimum iOS version** value that's defined in the **Project Properties** dialog under the **Build > Target Platforms** tab.
 
-1. Ensure that your iOS device is connected to Visual Studio for Mac via USB or WiFi.
+1. Ensure that your iOS device is connected to your Mac via USB or WiFi.
 
-1. In The Visual Studio for Mac toolbar, ensure that the debug target is set to your connected iOS device, and then press the **Play** button to launch the app on your device.
+1. In the Visual Studio for Mac toolbar, ensure that the debug target is set to your connected iOS device, and then press the **Play** button to launch the app on your device.
 
 ---

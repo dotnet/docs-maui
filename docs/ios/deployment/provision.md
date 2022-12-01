@@ -106,7 +106,7 @@ Once you've created a distribution certificate and an App ID you'll be able to c
 
     :::image type="content" source="media/provisioning/register-provisioning-profile.png" alt-text="Register a provisioning profile for app store distribution.":::
 
-1. In the **Generate a Provisioning Profile** page, in the **App ID** drop down, select the App ID that you previously created before clicking the **Continue** button:
+1. In the **Generate a Provisioning Profile** page, in the **App ID** drop-down, select the App ID that you previously created before clicking the **Continue** button:
 
     :::image type="content" source="media/provisioning/select-app-id.png" alt-text="Select your App ID.":::
 

@@ -6,18 +6,20 @@ ms.date: 11/28/2022
 
 # Automatic provisioning for iOS apps
 
-Automatic provisioning is the recommended approach for deploying an app to a device. With this approach, Visual Studio automatically creates and manages signing identifies, app IDs, and provisioning profiles. Before starting the automatic provisioning process, you should ensure that you've added your Apple developer account to Visual Studio. For more information, see [Apple account management](~/ios/apple-account-management.md).
+Automatic provisioning is the recommended approach for deploying a .NET Multi-platform App UI (.NET MAUI) iOS app to a device. With this approach, Visual Studio automatically creates and manages signing identifies, app IDs, and provisioning profiles. Before starting the automatic provisioning process, you should ensure that you've added your Apple developer account to Visual Studio. For more information, see [Apple account management](~/ios/apple-account-management.md).
 
-Once you've added an Apple ID, you can use any associated team. This allows certificates, profiles, and other IDs to be created against the team. The team ID is also used to create a prefix for an App ID that will be included in the provisioning profile. This enables Apple to verify that an app can be deployed to a device.
+Once you've added your Apple developer account to Visual Studio, you can use any associated team. Certificates, app IDs, and profiles can then be created against the team. The team ID is also used to create a prefix for the app ID that will be included in the provisioning profile, which enables Apple to verify that an app can be deployed to a device.
 
-> [!NOTE]
+> [!IMPORTANT]
 > Before you begin, ensure that you've accepted any user license agreements in the [Apple Developer portal](https://developer.apple.com/account/) and [App Store Connect](https://appstoreconnect.apple.com/).
 
 ## Enable automatic provisioning
 
+Once you've added your Apple developer account to Visual Studio, you need to enable automatic provisioning for the .NET MAUI app project.
+
 # [Visual Studio](#tab/vs)
 
-1. In **Solution Explorer**, right-click on your .NET MAUI app project and select **Properties**. Then, navigate to the **iOS Bundle Signing** tab and ensure that **Automatic Provisioning** is selected in the **Scheme** drop-down:
+1. In **Solution Explorer**, right-click on your .NET MAUI app project and select **Properties**. Then, navigate to the **iOS > Bundle Signing** tab and ensure that **Automatic Provisioning** is selected in the **Scheme** drop-down:
 
     :::image type="content" source="media/automatic-provisioning/vs/bundle-signing.png" alt-text="Screenshot of bundle signing tab for iOS in Visual Studio.":::
 
@@ -26,6 +28,8 @@ Once you've added an Apple ID, you can use any associated team. This allows cert
 1. In the **Configure Automatic Provisioning** dialog, select your team. Visual Studio will attempt to automatically provision your project and will indicate if the process completed successfully:
 
     :::image type="content" source="media/automatic-provisioning/vs/automatic-provisioning-configured.png" alt-text="Screenshot of the automatic provisioning dialog when it's correctly configured.":::
+
+    If the automatic provisioning fails the **Configure Automatic Provisioning** dialog will display the reason for the error.
 
 1. In the **Configure Automatic Provisioning** dialog, click the **Ok** button to dismiss the dialog.
 
@@ -41,7 +45,7 @@ Once you've added an Apple ID, you can use any associated team. This allows cert
 
     :::image type="content" source="media/automatic-provisioning/vsmac/application-view.png" alt-text="Screenshot of application view in Info.plist editor in Visual Studio for Mac.":::
 
-    If the automatic signing fails the **Automatic signing** window will display the reason for the error.
+    If the automatic provisioning fails the **Automatic signing** window will display the reason for the error.
 
 1. Close the **Info.plist** file.
 
@@ -53,19 +57,15 @@ Once you've added an Apple ID, you can use any associated team. This allows cert
 
 When automatic provisioning is enabled, Visual Studio will re-run the automatic provisioning process if necessary when any of the following occur:
 
-- An iOS device is plugged into your Mac
-  - This automatically checks to see if the device is registered on the Apple Developer Portal. If it isn't, it will add it and generate a new provisioning profile that contains it.
-- The Bundle ID of your app is changed
-  - This updates the app ID. A new provisioning profile containing this app ID is created.
-- A supported capability is enabled in the **Entitlements.plist** file.
-  - This capability will be added to the app ID and a new provisioning profile with the updated app ID is generated.
-  - Not all capabilities are currently supported. <!-- For more information on the ones that are supported, check out the [Working with Capabilities](~/ios/deploy-test/provisioning/capabilities/index.md) guide.-->
+- An iOS device is plugged into your Mac. This automatically checks to see if the device is registered on the Apple's developer portal. If it isn't, it will add it and generate a new provisioning profile that contains it.
+- The Bundle ID of your app is changed. This updates the app ID and so a new provisioning profile containing this app ID is created.
+- A supported capability is enabled in the **Entitlements.plist** file. This capability will be added to the app ID and a new provisioning profile with the updated app ID is generated. Not all capabilities are currently supported. <!-- For more information on the ones that are supported, check out the [Working with Capabilities](~/ios/deploy-test/provisioning/capabilities/index.md) guide.-->
 
-## Wildcard App IDs
+## Wildcard app IDs
 
-By default automatic provisioning will attempt to create and use a wildcard App ID and provisioning profile instead of an explicit App ID based on the **Bundle Identifier** specified in **Info.plist**. Wildcard App IDs reduce the number of profiles and IDs to maintain in the Apple Developer portal.
+By default automatic provisioning will attempt to create and use a wildcard app ID and provisioning profile instead of an explicit app ID based on the app's bundle identifier. Wildcard App IDs reduce the number of profiles and IDs to maintain in the Apple developer portal.
 
-In some cases, an app's entitlements require an explicit App ID. The following entitlements do not support wildcard App IDs:
+In some cases, an app's entitlements require an explicit app ID. The following entitlements do not support wildcard App IDs:
 
 - App Groups
 - Associated Domains
@@ -85,8 +85,9 @@ If your app uses one of these entitlements, Visual Studio will attempt to create
 
 ## Troubleshoot
 
-- It may take several hours for a new Apple developer account to be approved. You will not be able to enable automatic provisioning until the account has been approved.
-- If the automatic provisioning process fails with the error message `Authentication Service Is Unavailable`, sign in to either [App Store Connect](https://appstoreconnect.apple.com/) or your [Apple Developer account](https://appleid.apple.com/account) to check that you have accepted the latest service agreements.
+It may take several hours for a new Apple developer account to be approved. You won't be able to enable automatic provisioning until the account has been approved.
+
+If the automatic provisioning process fails with the error message `Authentication Service Is Unavailable`, sign in to either [App Store Connect](https://appstoreconnect.apple.com/) or your [Apple Developer account](https://appleid.apple.com/account) to check that you have accepted the latest service agreements.
 
 ### Certificate can't be found in local keychain
 
@@ -94,18 +95,18 @@ If you use multiple machines for development, you may receive the following erro
 
 :::image type="content" source="media/automatic-provisioning/vs/automatic-provisioning-failure.png" alt-text="Screenshot of automatic provisioning failure when the certificate can't be found.":::
 
-This can occur because automatic provisioning doesn't remove the need to manually copy certificates between machines, when you're using multiple machines for development. This is because the private key that created a certificate only exists on the machine that created the certificate.
+This can occur because automatic provisioning doesn't remove the need to manually copy certificates between machines, when you're using multiple machines for development. This is because the private key that creates a certificate only exists on the machine that created the certificate.
 
 To discover if a required certificate is missing from your development machine, in Visual Studio go to **Tools > Options > Xamarin > Apple Accounts**. Then, in the **Apple Developer Accounts** dialog, select a team and click the **View Details...** button:
 
 :::image type="content" source="media/automatic-provisioning/vs/certificate-missing.png" alt-text="Screenshot of Details window when the certificate isn't in the keychain.":::
 
-If the required certificate isn't installed on the machine, the **Details** window will show a "Not in Keychain" status for the certificate. The specific certificate must be exported from the machine that created it, in .p12 format, and then imported into Visual Studio with the **Import Certificate** button.
+If the required certificate isn't installed on the machine, the **Details** window will show a "Not in Keychain" status for the certificate. In this scenario, the specific certificate must be exported from the machine that created it, in .p12 format, and then imported into Visual Studio with the **Import Certificate** button.
 
 > [!NOTE]
-> - To copy a certificate from a Mac to another Mac, export the certificate from Keychain Access on the first Mac and then import it into Keychain Access on the second Mac.
-> - To copy a certificate from a Mac to a Windows machine, export the certificate from Keychain Access on the Mac and then import it into Visual Studio with the **Import Certificate** button.
-> - To copy a certificate from a Windows machine to a Windows machine, copy the certificate from the *C:\Users\{User}\AppData\Local\Xamarin\iOS\Provisioning\Certificates* folder and then import it into Visual Studio with the **Import Certificate** button.
+> - To copy a certificate from a Mac to another Mac, export the certificate from Keychain Access on the Mac that created the certificate and then import it into Keychain Access on the other Mac.
+> - To copy a certificate from a Mac to a Windows machine, export the certificate from Keychain Access on the Mac and then on the Windows machine import it into Visual Studio with the **Import Certificate** button.
+> - To copy a certificate from a Windows machine to a Windows machine, copy the certificate from the *C:\Users\{User}\AppData\Local\Xamarin\iOS\Provisioning\Certificates* folder and then on the other Windows machine import it into Visual Studio with the **Import Certificate** button.
 
 After the certificate has been imported, Visual Studio will show its status as "Valid":
 
