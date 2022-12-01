@@ -43,7 +43,7 @@ The CSR allows you to generate a distribution certificate, which will be used to
 
 ## Create a distribution profile
 
-To publish a .NET MAUI iOS app, you'll need to build a *Distribution Provisioning Profile* specific to it. This profile enables the app to be digitally signed for release so that it can be installed on an iOS device. A distribution provisioning profile contains an app ID and a distribution certificate. For more information, see [Create a distribution profile](provision.md#create-a-distribution-profile).
+To publish a .NET MAUI iOS app, you'll need to build a *Distribution Provisioning Profile* specific to it. This profile enables the app to be digitally signed for release so that it can be installed on an iOS device. A distribution provisioning profile contains an App ID and a distribution certificate. For more information, see [Create a distribution profile](provision.md#create-a-distribution-profile).
 
 ## Download the provisioning profile on your Mac build host
 

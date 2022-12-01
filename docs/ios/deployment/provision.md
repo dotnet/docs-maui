@@ -8,7 +8,7 @@ ms.date: 05/09/2022
 
 Distributing a .NET Multi-platform App UI (.NET MAUI) app on iOS requires that the app is provisioned using a *provisioning profile*. Provisioning profiles are files that contain code signing information, as well as the identity of the app and its intended distribution mechanism.
 
-To publish a .NET MAUI iOS app, you'll need to build a *Distribution Provisioning Profile* specific to it. This profile enables the app to be digitally signed for release so that it can be installed on an iOS device. A distribution provisioning profile contains an app ID and a distribution certificate.
+To publish a .NET MAUI iOS app, you'll need to build a *Distribution Provisioning Profile* specific to it. This profile enables the app to be digitally signed for release so that it can be installed on an iOS device. A distribution provisioning profile contains an App ID and a distribution certificate.
 
 The process for creating a distribution provisioning profile is as follows:
 
@@ -68,7 +68,7 @@ The CSR allows you to generate a distribution certificate, which confirms your i
 
 ## Create a distribution profile
 
-A distribution provisioning profile enables your .NET MAUI iOS app to be digitally signed for release, so that it can be installed on an iOS device. A distribution provisioning profile contains an app ID and a distribution certificate.
+A distribution provisioning profile enables your .NET MAUI iOS app to be digitally signed for release, so that it can be installed on an iOS device. A distribution provisioning profile contains an App ID and a distribution certificate.
 
 ### Create an App ID
 

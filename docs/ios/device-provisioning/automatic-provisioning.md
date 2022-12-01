@@ -6,9 +6,9 @@ ms.date: 11/28/2022
 
 # Automatic provisioning for iOS apps
 
-Automatic provisioning is the recommended approach for deploying a .NET Multi-platform App UI (.NET MAUI) iOS app to a device. With this approach, Visual Studio automatically creates and manages signing identifies, app IDs, and provisioning profiles. Before starting the automatic provisioning process, you should ensure that you've added your Apple developer account to Visual Studio. For more information, see [Apple account management](~/ios/apple-account-management.md).
+Automatic provisioning is the recommended approach for deploying a .NET Multi-platform App UI (.NET MAUI) iOS app to a device. With this approach, Visual Studio automatically creates and manages signing identifies, App IDs, and provisioning profiles. Before starting the automatic provisioning process, you should ensure that you've added your Apple developer account to Visual Studio. For more information, see [Apple account management](~/ios/apple-account-management.md).
 
-Once you've added your Apple developer account to Visual Studio, you can use any associated team. Certificates, app IDs, and profiles can then be created against the team. The team ID is also used to create a prefix for the app ID that will be included in the provisioning profile, which enables Apple to verify that an app can be deployed to a device.
+Once you've added your Apple developer account to Visual Studio, you can use any associated team. Certificates, App IDs, and profiles can then be created against the team. The team ID is also used to create a prefix for the App ID that will be included in the provisioning profile, which enables Apple to verify that an app can be deployed to a device.
 
 > [!IMPORTANT]
 > Before you begin, ensure that you've accepted any user license agreements in the [Apple Developer portal](https://developer.apple.com/account/) and [App Store Connect](https://appstoreconnect.apple.com/).
@@ -58,14 +58,14 @@ Once you've added your Apple developer account to Visual Studio, you need to ena
 When automatic provisioning is enabled, Visual Studio will re-run the automatic provisioning process if necessary when any of the following occur:
 
 - An iOS device is plugged into your Mac. This automatically checks to see if the device is registered on the Apple's developer portal. If it isn't, it will add it and generate a new provisioning profile that contains it.
-- The Bundle ID of your app is changed. This updates the app ID and so a new provisioning profile containing this app ID is created.
-- A supported capability is enabled in the **Entitlements.plist** file. This capability will be added to the app ID and a new provisioning profile with the updated app ID is generated. Not all capabilities are currently supported. <!-- For more information on the ones that are supported, check out the [Working with Capabilities](~/ios/deploy-test/provisioning/capabilities/index.md) guide.-->
+- The Bundle ID of your app is changed. This updates the App ID and so a new provisioning profile containing this App ID is created.
+- A supported capability is enabled in the **Entitlements.plist** file. This capability will be added to the App ID and a new provisioning profile with the updated App ID is generated. Not all capabilities are currently supported. <!-- For more information on the ones that are supported, check out the [Working with Capabilities](~/ios/deploy-test/provisioning/capabilities/index.md) guide.-->
 
-## Wildcard app IDs
+## Wildcard App IDs
 
-By default automatic provisioning will attempt to create and use a wildcard app ID and provisioning profile instead of an explicit app ID based on the app's bundle identifier. Wildcard App IDs reduce the number of profiles and IDs to maintain in the Apple developer portal.
+By default automatic provisioning will attempt to create and use a wildcard App ID and provisioning profile instead of an explicit App ID based on the app's bundle identifier. Wildcard App IDs reduce the number of profiles and IDs to maintain in the Apple developer portal. For more information about wildcard App IDs, see [Create a development provisioning profile](manual-provisioning.md#create-a-development-provisioning-profile).
 
-In some cases, an app's entitlements require an explicit app ID. The following entitlements do not support wildcard App IDs:
+In some cases, an app's entitlements require an explicit App ID. The following entitlements do not support wildcard App IDs:
 
 - App Groups
 - Associated Domains
