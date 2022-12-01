@@ -10,7 +10,7 @@ While developing a .NET Multi-platform App UI (.NET MAUI) app it's essential to 
 
 The following diagram shows the steps required to provision an app so that it can be deployed to a device:
 
-:::image type="content" source="media/provisioning.png" alt-text="Steps required to provision an app for deployment to an iOS device.":::
+:::image type="content" source="media/provisioning.png" alt-text="Steps required to provision an app for deployment to an iOS device." border="false":::
 
 Before deploying an app to a device, you need to have an active subscription to Apple's Developer Program. Apple offers two program options:
 
