@@ -58,7 +58,10 @@ When creating a provisioning profile for development, the profile must include w
     :::image type="content" source="media/manual-provisioning/xcode-devices.png" alt-text="Xcode devices and simulator window with the iOS identifier string location highlighted.":::
 
 1. In a web browser, go to the [Devices](https://developer.apple.com/account/resources/devices/list) section of Apple's developer portal and click the **+** button.
-1. In the **Register a New Device** page, set the correct **Platform** and provide a name for the new device. Then paste the identifier from the clipboard into the **Device ID (UDID)** field.
+1. In the **Register a New Device** page, set the correct **Platform** and provide a name for the new device. Then paste the identifier from the clipboard into the **Device ID (UDID)** field:
+
+    :::image type="content" source="media/manual-provisioning/add-device.png" alt-text="Register a device by naming it and entering its unique device identifier.":::
+
 1. In the **Register a New Device** page, click the **Continue** button.
 1. In the **Register a New Device** page, review the information and then click the **Register** button.
 
@@ -71,7 +74,8 @@ After adding a device to Apple's developer portal, you should create an *App ID*
 > [!IMPORTANT]
 > The bundle identifier for a .NET MAUI app is stored in the .csproj file as the **Application ID** property:
 > - In Visual Studio, in **Solution Explorer** right-click on your .NET MAUI app project and select **Properties**. Then, navigate to the **MAUI Shared > General** tab. The **Application ID** field lists the bundle identifier.
-> - In Visual Studio for Mac, in the **Solution Window**, right-click on your .NET MAUI app project and select **Properties**. Then, n the **Project Properties** window, select the **Build > App Info** tab. The **Application ID** field lists the bundle identifier.
+> - In Visual Studio for Mac, in the **Solution Window**, right-click on your .NET MAUI app project and select **Properties**. Then, in the **Project Properties** window, select the **Build > App Info** tab. The **Application ID** field lists the bundle identifier.
+>
 > When the value of the **Application ID** field is updated, the value of the **Bundle identifier** in the **Info.plist** will be automatically updated.
 
 There are two types of App ID:
