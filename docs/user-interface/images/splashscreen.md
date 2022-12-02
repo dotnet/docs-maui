@@ -35,7 +35,7 @@ To comply with Android resource naming rules, splash screen files names must be 
 The base size of the splash screen can be specified by setting the `BaseSize` attribute to values that are divisible by 8:
 
 ```xml
-<MauiSplashScreen Include="Resources\Splash\splashscreen.jpg" BaseSize="128,128" />
+<MauiSplashScreen Include="Resources\Splash\splashscreen.svg" BaseSize="128,128" />
 ```
 
 The value of the `BaseSize` attribute represents the baseline density of the splash screen, and is effectively the 1.0 scale factor for the splash screen from which all other density sizes are derived. This value will be used to ensure that splash screens are correctly resized to different display densities. If you don't specify a `BaseSize` for a bitmap-based splash screen, the image isn't resized. If you don't specify a `BaseSize` value for a vector-based splash screen, the dimensions specified in the SVG are assumed to be the base size. To stop vector images being resized, set the `Resize` attribute to `false`:
