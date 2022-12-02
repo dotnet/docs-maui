@@ -32,7 +32,7 @@ After configuring provisioning in your .NET MAUI app project, the app can be dep
 
 1. In the **Info.plist** editor, change from the **Source** view to the **Application** view:
 
-    :::image type="content" source="../device-provisioning/media/automatic-provisioning/vsmac/source-view.png" alt-text="Screenshot of source view in Info.plist editor in Visual Studio for Mac.":::
+    :::image type="content" source="../device-provisioning/media/automatic-provisioning/vsmac/source-view.png" alt-text="Screenshot of Info.plist editor source view in Visual Studio for Mac.":::
 
 1. In the **Deployment Info** section of the **Application** view, set the deployment target to the minimum supported iOS version for your app, using the **Deployment target** drop-down:
 
