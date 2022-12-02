@@ -66,7 +66,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022, 
 :::zone pivot="devices-android"
 
 <!-- markdownlint-disable MD029 -->
-06. In the Visual Studio toolbar, use the **Debug Target** drop down to select **Android Emulators** and then the **Android Emulator** entry:
+06. In the Visual Studio toolbar, use the **Debug Target** drop-down to select **Android Emulators** and then the **Android Emulator** entry:
 
     :::image type="content" source="media/first-app/vs/android-debug-target.png" alt-text="Select the Android Emulator debugging target for .NET MAUI.":::
 
@@ -138,7 +138,7 @@ If your app fails to compile, review [Troubleshooting known issues](../troublesh
 :::zone pivot="devices-windows"
 
 <!-- markdownlint-disable MD029 -->
-06. In the Visual Studio toolbar, use the **Debug Target** drop down to select **Framework** and then the **net6.0-windows** entry:
+06. In the Visual Studio toolbar, use the **Debug Target** drop-down to select **Framework** and then the **net6.0-windows** entry:
 
     :::image type="content" source="media/first-app/vs/windows-debug-target.png" alt-text="Select the Windows Machine debugging target for .NET MAUI.":::
 
@@ -175,7 +175,7 @@ If your app fails to compile, review [Troubleshooting known issues](../troublesh
 
     <!-- markdownlint-enable MD029 -->
 
-01. In the Visual Studio toolbar, use the **Debug Target** drop down to select **iOS Simulators** and then a specific iOS simulator:
+01. In the Visual Studio toolbar, use the **Debug Target** drop-down to select **iOS Simulators** and then a specific iOS simulator:
 
     :::image type="content" source="media/first-app/vs/ios-debug-target.png" alt-text="Visual Studio iOS simulators debug targets.":::
 

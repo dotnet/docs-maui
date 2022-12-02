@@ -65,7 +65,7 @@ Depending on the UI your device is running, the **Wireless debugging** option ma
 
 Next, use adb to connect to your device, first through a USB connection:
 
-01. Determine the IP address of your Android device. One way to find out the IP address is to look under **Settings > Network & internet > Wi-Fi**, then tap on the WiFi network that the device is connected to, and then tap on **Advanced**. This will open a dropdown showing information about the network connection, similar to what is seen in the screenshot below:
+01. Determine the IP address of your Android device. One way to find out the IP address is to look under **Settings > Network & internet > Wi-Fi**, then tap on the WiFi network that the device is connected to, and then tap on **Advanced**. This will open a drop-down showing information about the network connection, similar to what is seen in the screenshot below:
 
     :::image type="content" source="media/setup/ip-settings-sml.png" alt-text="Android status screen with IP address." lightbox="media/setup/ip-settings.png":::
 

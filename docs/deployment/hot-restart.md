@@ -23,7 +23,7 @@ There are a number of requirements that must be met to use hot restart to deploy
 
 Perform the following steps to set up hot restart:
 
-1. In the Visual Studio toolbar, use the **Debug Target** drop down to select **iOS Local Devices** and then the **Local Device** entry:
+1. In the Visual Studio toolbar, use the **Debug Target** drop-down to select **iOS Local Devices** and then the **Local Device** entry:
 
     :::image type="content" source="media/hot-restart/local-device-debug-target.png" alt-text="Screenshot of choosing the initial debug target for hot restart.":::
 
@@ -87,7 +87,7 @@ Perform the following steps to set up hot restart:
     Your Apple Developer Program account will be added to Visual Studio and the **Setup Hot Restart** setup wizard will close.
 
 1. In **Solution Explorer**, right-click on your project and select **Properties**.
-1. In the project properties, expand **iOS** and select **Bundle Signing**. Use the **Scheme** drop down to select **Automatic Provisioning** and then click the **Configure Automatic Provisioning** hyperlink:
+1. In the project properties, expand **iOS** and select **Bundle Signing**. Use the **Scheme** drop-down to select **Automatic Provisioning** and then click the **Configure Automatic Provisioning** hyperlink:
 
     :::image type="content" source="media/hot-restart/bundle-signing-automatic-provisioning.png" alt-text="Screenshot of automatic provisioning enabled within the iOS property page in Visual Studio.":::
 
@@ -107,7 +107,7 @@ Perform the following steps to set up hot restart:
 After performing the initial setup, your local connected iOS device will appear in the debug target drop-down menu. To deploy and debug your app:
 
 1. Ensure that your local connected iOS device is unlocked.
-1. In the Visual Studio toolbar, select your local connected iOS device in the debug target drop down, and click the **Run** button to build your app and deploy it to your local iOS device:
+1. In the Visual Studio toolbar, select your local connected iOS device in the debug target drop-down, and click the **Run** button to build your app and deploy it to your local iOS device:
 
     :::image type="content" source="media/hot-restart/recognized-device-debug-target.png" alt-text="Screenshot of the chosen debug target for hot restart.":::
 
