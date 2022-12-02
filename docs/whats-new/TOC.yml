@@ -3,8 +3,6 @@ items:
   href: index.yml
   expanded: true
   items:
-  - name: November 2022
-    href: dotnet-docs-maui-2022-11-01.md
   - name: Releases
     expanded: true
     items:
