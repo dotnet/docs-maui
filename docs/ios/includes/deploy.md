@@ -7,7 +7,9 @@ ms.date: 11/30/2022
 
 After configuring provisioning in your .NET MAUI app project, the app can be deployed to a device.
 
+<!-- markdownlint-disable MD025 -->
 # [Visual Studio](#tab/vs)
+<!-- markdownlint-enable MD025 -->
 
 1. In Visual Studio, ensure that the IDE is paired to a Mac Build host. For more information, see [Pair to Mac for iOS development](~/ios/pair-to-mac.md).
 1. Ensure that your iOS device is connect to your Mac build host via USB or WiFi.
@@ -22,7 +24,9 @@ After configuring provisioning in your .NET MAUI app project, the app can be dep
 > [!NOTE]
 > An alternative approach to deploying a .NET MAUI iOS app to a device is to use hot restart. Hot restart enables you to deploy a .NET MAUI app to a 64-bit local iOS device, from Visual Studio, without requiring a Mac build host. For more information, see [Deploy an iOS app using hot restart](~/deployment/hot-restart.md).
 
+<!-- markdownlint-disable MD025 -->
 # [Visual Studio for Mac](#tab/vsmac)
+<!-- markdownlint-enable MD025 -->
 
 1. In the **Solution Window**, double-click the **Info.plist** file from the **Platforms > iOS** folder of your .NET MAUI app project to open it in the editor.
 

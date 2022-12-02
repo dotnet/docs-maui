@@ -16,7 +16,9 @@ Before you begin, ensure that you've accepted any user license agreements in the
 
 If you have an individual Apple Developer account, as opposed to an enterprise account, you'll also need to create an App Store Connect API key. For information about creating an App Store Connect API key, see [Creating API Keys for App Store Connect API](https://developer.apple.com/documentation/appstoreconnectapi/creating_api_keys_for_app_store_connect_api) on developer.apple.com.
 
+<!-- markdownlint-disable MD025 -->
 # [Visual Studio](#tab/vs)
+<!-- markdownlint-enable MD025 -->
 
 1. In Visual Studio, go to **Tools > Options > Xamarin > Apple Accounts**, click on the **Add** button and select **Individual Account...** or **Enterprise Account...**:
 
@@ -42,7 +44,9 @@ If you have an individual Apple Developer account, as opposed to an enterprise a
 
     :::image type="content" source="media/apple-account-management/vs/account.png" alt-text="Apple Developer Account added to Visual Studio.":::
 
+<!-- markdownlint-disable MD025 -->
 # [Visual Studio for Mac](#tab/vsmac)
+<!-- markdownlint-enable MD025 -->
 
 1. In Visual Studio for Mac, go to **Visual Studio > Preferences > Publishing > Apple Developer Account**, click on the **Add** button and select **Individual Account...** or **Enterprise Account...**:
 

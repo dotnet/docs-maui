@@ -17,7 +17,9 @@ Once you've added your Apple developer account to Visual Studio, you can use any
 
 Once you've added your Apple developer account to Visual Studio, you need to enable automatic provisioning for the .NET MAUI app project.
 
+<!-- markdownlint-disable MD025 -->
 # [Visual Studio](#tab/vs)
+<!-- markdownlint-enable MD025 -->
 
 1. In **Solution Explorer**, right-click on your .NET MAUI app project and select **Properties**. Then, navigate to the **iOS > Bundle Signing** tab and ensure that **Automatic Provisioning** is selected in the **Scheme** drop-down:
 
@@ -33,7 +35,9 @@ Once you've added your Apple developer account to Visual Studio, you need to ena
 
 1. In the **Configure Automatic Provisioning** dialog, click the **Ok** button to dismiss the dialog.
 
+<!-- markdownlint-disable MD025 -->
 # [Visual Studio for Mac](#tab/vsmac)
+<!-- markdownlint-enable MD025 -->
 
 1. In the **Solution Window**, double-click the **Info.plist** file from the **Platforms > iOS** folder of your .NET MAUI app project to open it in the editor.
 
