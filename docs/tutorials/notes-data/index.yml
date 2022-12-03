@@ -1,0 +1,40 @@
+### YamlMime:Tutorial
+title: "TODO"
+metadata:
+  title: "Tutorial: TODO"
+  description: TODO
+  audience: Developer
+  level: Beginner
+  ms.topic: interactive-tutorial
+  ms.date: 08/02/2022
+  author: adegeo
+  ms.author: adegeo
+items:
+- durationInMinutes: 1
+  content: |
+    [!INCLUDE [](includes/intro.md)]
+- title: TODO
+  durationInMinutes: 0
+  content: |
+    [!INCLUDE [](includes/model.md)]
+- title: TODO
+  durationInMinutes: 0
+  content: |
+    [!INCLUDE [](includes/viewmodel.md)]
+- title: TODO
+  durationInMinutes: 0
+  content: |
+    [!INCLUDE [](includes/notifications.md)]
+
+- content: |
+    TODO
+    You've completed the Create a .NET MAUI app tutorial!
+
+    ## Next steps
+
+    The following links provide more information related to some of the concepts you learned in this tutorial:
+
+    - [.NET MAUI Shell overview](../../fundamentals/shell/index.md)
+    - [.NET MAUI Shell pages](../../fundamentals/shell/pages.md)
+    - [Basic bindings](../../fundamentals/data-binding/basic-bindings.md)
+    - [Editor control](../../user-interface/controls/editor.md)
