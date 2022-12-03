@@ -1,4 +1,5 @@
-﻿namespace Notes.Models;
+﻿//<full>
+namespace Notes.Models;
 
 internal class Note
 {
@@ -63,3 +64,4 @@ internal class Note
     }
     //</load_all>
 }
+//</full>

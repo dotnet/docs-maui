@@ -143,7 +143,7 @@ Based on what the **AllNotes view** requires, the **Notes view model** needs to 
 
 The code for the class should look like the following snippet:
 
-:::code language="csharp" source="../snippets/viewmodel/csharp/Notes/ViewModels/Notes.cs":::
+:::code language="csharp" source="../snippets/viewmodel/csharp/Notes/ViewModels/Notes.cs" id="full":::
 
 ### AllNotes view
 
@@ -256,7 +256,7 @@ Based on what the **Note view** requires, the **Note view model** needs to provi
 
 The code for the class should look like the following snippet:
 
-:::code language="csharp" source="../snippets/viewmodel/csharp/Notes/ViewModels/Note.cs":::
+:::code language="csharp" source="../snippets/viewmodel/csharp/Notes/ViewModels/Note.cs" id="full":::
 
 ### Note view
 

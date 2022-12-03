@@ -75,6 +75,6 @@ The `Note` model is going to be expanded to handle loading, saving, and deleting
 
 The `Note` class code should look like the following:
 
-:::code language="csharp" source="../snippets/model/csharp/Notes/Models/Note.cs":::
+:::code language="csharp" source="../snippets/model/csharp/Notes/Models/Note.cs" id="full":::
 
 Now that the `Note` model is complete, the view models can be created.

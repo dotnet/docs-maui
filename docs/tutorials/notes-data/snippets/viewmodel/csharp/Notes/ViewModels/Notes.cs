@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿//<full>
+using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
@@ -34,3 +35,4 @@ internal class Notes
     }
     //</commands>
 }
+//</full>
