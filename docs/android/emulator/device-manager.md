@@ -189,7 +189,7 @@ If you see that error dialog, press **Open SDK Manager** to open the Android SDK
 - **Android SDK Platform-Tools 31.0.3** or later
 - **Android SDK Build-Tools 30.0.3** or later
 
-### Snapshot disables Wi=Fi on Android Oreo
+### Snapshot disables Wi-Fi on Android Oreo
 
 If you've an AVD configured for Android Oreo with simulated Wi-Fi access, restarting the AVD after a snapshot may cause Wi-Fi access to become disabled.
 
