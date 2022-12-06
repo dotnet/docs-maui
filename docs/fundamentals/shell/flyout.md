@@ -171,8 +171,11 @@ The default `DataTemplate` used for each `FlyoutItem` is shown below:
             <VisualStateGroupList>
                 <VisualStateGroup x:Name="CommonStates">
                     <VisualState x:Name="Normal">
-                          <Setter Property="BackgroundColor"
-                                  Value="Transparent" />                    
+                          <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="Transparent" />
+                            </VisualState.Setters>
+                        </VisualState>          
                     </VisualState>
                     <VisualState x:Name="Selected">
                         <VisualState.Setters>
