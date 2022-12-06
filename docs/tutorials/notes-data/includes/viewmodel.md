@@ -144,7 +144,7 @@ Now that the viewmodel has been created, update the **AllNotes view** to point t
 01. In the **Solution Explorer** pane of Visual Studio, double-click on **Views\\AllNotesPage.xaml**.
 01. Paste in the following code:
 
-    :::code language="xaml" source="../snippets/viewmodel/csharp/Notes/Views/AllNotesPage.xaml" id="full" highlight="4,8,15,22-23":::
+    :::code language="xaml" source="../snippets/viewmodel/csharp/Notes/Views/AllNotesPage.xaml" id="full" highlight="4,8,13,21-22":::
 
 The `CollectionView` supports commanding with the `SelectionChangedCommand` and `SelectionChangedCommandParameter` properties. In the updated XAML, the `SelectionChangedCommand` property is bound to the viewmodel's `SelectNodeCommand`, which means the command is invoked when the selected item changes. When the command is invoked, the `SelectionChangedCommandParameter` property value is passed to the command. The XAML value for the property uses `{RelativeSource Self}` binding to bind directly to the `CollectionView.SelectedItem` property. Meaning, when the command is invoked, the item that's currently selected in the collection view is passed to the command as a parameter.
 
@@ -246,7 +246,7 @@ Now that the viewmodel has been created, update the **Note view**. In the _Views
 01. In the **Solution Explorer** pane of Visual Studio, double-click on **Views\\NotePage.xaml** to open the XAML editor.
 01. Paste in the following code:
 
-:::code language="xaml" source="../snippets/viewmodel/csharp/Notes/Views/NotePage.xaml" highlight="4,7-9,18,21":::
+:::code language="xaml" source="../snippets/viewmodel/csharp/Notes/Views/NotePage.xaml" highlight="4,7-9,18,22":::
 
 Previously, this view didn't declare a binding context, as it was supplied by the code-behind of the page itself. Setting the binding context directly in the XAML provides two things:
 
