@@ -6,11 +6,12 @@ ms.topic: include
 no-loc: ["communitytoolkit", "CommunityToolkit.Mvvm", "AllNotes", "Notes", "About"]
 ---
 
-Before adding view models to the project, add reference to the MVVM Community Toolkit. This library is available on NuGet and provides types and systems that help implement the MVVM pattern.
+Before adding view models to the project, add reference to the MVVM Community Toolkit. This library is available on NuGet, and provides types and systems that help implement the MVVM pattern.
 
 01. In the **Solution Explorer** pane of Visual Studio, right-click on the **Notes** project > **Manage NuGet Packages**.
 01. Select the **Browse** tab.
 01. Search for **communitytoolkit mvvm** and select the `CommunityToolkit.Mvvm` package, which should be the first result.
+01. Make sure that version **8.0.0** is selected.
 01. Next, select **Install** and accept any prompts that are displayed.
 
     :::image type="content" source="../media/viewmodel/nuget.png" alt-text="Searching for the CommunityToolkit.Mvvm package in NuGet.":::
@@ -19,11 +20,11 @@ Now you're ready to start updating the project by adding view models.
 
 ## Decouple with view models
 
-The view-to-viewmodel relationship relies heavily on the binding system provided by .NET MAUI. The app is already using binding in the views to display a list of notes and to present the text and date of a single note. The app logic is currently provided by the view's code-behind and is directly tied to the view. For example, when a user is editing a note and presses the **Save** button, the `Clicked` event for the button is raised. The code-behind for the event handler saves the note text to a file and navigates to the previous screen.
+The view-to-viewmodel relationship relies heavily on the binding system provided by .NET MAUI. The app is already using binding in the views to display a list of notes and to present the text and date of a single note. The app logic is currently provided by the view's code-behind and is directly tied to the view. For example, when a user is editing a note and presses the **Save** button, the `Clicked` event for the button is raised. Then, the code-behind for the event handler saves the note text to a file and navigates to the previous screen.
 
-Having app logic in the code-behind of a view can become an issue when the view changes. For example if the button is replaced with a different input control, or the name of a control is changed, event handlers may need to be recoded. In the end, no matter what control is used, the purpose of the view is to invoke some sort of app logic and to present information to the user. For this app, it's saving the note and then navigating back to the previous screen.
+Having app logic in the code-behind of a view can become an issue when the view changes. For example if the button is replaced with a different input control, or the name of a control is changed, event handlers may become invalid. Regardless of how the view is designed, the purpose of the view is to invoke some sort of app logic and to present information to the user. For this app, it's saving the note and then navigating back to the previous screen.
 
-The viewmodel gives the app a specific place to code the app logic regardless of how the UI is designed, and regardless of how the data is being loaded or saved. The viewmodel is the glue that represents and interacts with the data model on behalf of the UI.
+The viewmodel gives the app a specific place to code the app logic regardless of how the UI is designed, and regardless of how the data is being loaded or saved. The viewmodel is the glue that represents and interacts with the data model on behalf of the view.
 
 The view models are stored in a _ViewModels_ folder.
 
@@ -49,9 +50,9 @@ Create the **About view model**:
 
     :::code language="csharp" source="../snippets/viewmodel/csharp/Notes/ViewModels/About.cs":::
 
-The previous code snippet contains some properties that represent information about the app, such as the name and version. This snippet is exactly the same as the **About model** we deleted earlier. However, this viewmodel contains a new concept, the `ShowMoreInfoCommand` command property.
+The previous code snippet contains some properties that represent information about the app, such as the name and version. This snippet is exactly the same as the **About model** you deleted earlier. However, this viewmodel contains a new concept, the `ShowMoreInfoCommand` command property.
 
-Commands are bindable actions that invoke code. The code invoked by a command is a great place to put app logic, since the view can bind to a command. In this example, the `ShowMoreInfoCommand` points to the `ShowMoreInfo` method, which opens the web browser to a specific page. You'll learn more about the command system in the next section.
+Commands are bindable actions that invoke code, and are a great place to put app logic. In this example, the `ShowMoreInfoCommand` points to the `ShowMoreInfo` method, which opens the web browser to a specific page. You'll learn more about the command system in the next section.
 
 ### About view
 
@@ -64,13 +65,13 @@ The **About view** needs to be changed slightly to hook it up to the viewmodel t
 01. In the **Solution Explorer** pane of Visual Studio, double-click on **Views\\AboutPage.xaml**.
 01. Paste in the following code:
 
-    :::code language="xaml" source="../snippets/viewmodel/csharp/Notes/Views/AboutPage.xaml" highlight="4,7,20":::
+    :::code language="xaml" source="../snippets/viewmodel/csharp/Notes/Views/AboutPage.xaml" highlight="4,7,19":::
 
     The previous code snippet highlights the lines that have changed in this version of the view.
 
-Notice that the button is using the `Command` property. Many different controls support a `Command` property that is invoked when the user interacts with the control. When used with a button, the command is invoked when a user presses the button, similar to how the `Clicked` event handler is invoked, except that you can bind `Command` to the viewmodel.
+Notice that the button is using the `Command` property. Many controls support a `Command` property that is invoked when the user interacts with the control. When used with a button, the command is invoked when a user presses the button, similar to how the `Clicked` event handler is invoked, except that you can bind `Command` to the viewmodel.
 
-When the user presses the button, the `Command` is invoked, which is bound to the `ShowMoreInfoCommand` property in the viewmodel. The `ShowMoreInfoCommand` invokes the `ShowMoreInfo` method and opens the web browser to a specific page.
+In this view, when the user presses the button, the `Command` is invoked. The `Command` is bound to the `ShowMoreInfoCommand` property in the viewmodel, and when invoked, runs the code in the `ShowMoreInfo` method, which opens the web browser to a specific page.
 
 ### Clean up the About code-behind
 
@@ -80,27 +81,11 @@ The `ShowMoreInfo` button isn't using the event handler, so the `LearnMore_Click
 
 ## Notes viewmodel and AllNotes view
 
-The **AllNotes view** is going to use the **Notes view model**. Currently though, it's binding data directly to the model, which was deleted at the start of this tutorial. Let's start by analyzing how the **AllNotes view** is designed:
-
-- Binds a `CollectionView` control to the `Notes` collection.
-  - The `CollectionView` uses the `SelectionChanged` event to navigate to the note page, which allows the user to edit a note.
-- Uses a `DataTemplate` to generate XAML for each individual note presented in the `CollectionView`.
-  - Binds a `Label` control to the `Text` property of the note.
-  - Binds a `Label` control to the `Date` property of the note.
-- Adding a new note is triggered through a toolbar button with the `Clicked` event.
-
-The following is declared in the code-behind for the XAML:
-
-- The `BindingContext` property is set when the page is first created.
-- The `OnAppearing` method is overridden to refresh the list of notes.
-- The `Add_Clicked` button handler navigates to the page that creates a new note.
-- The `notesCollection_SelectionChanged` handler gets the selected note and navigates to a new page, providing the note ID.
-
-The goal in updating the **AllNotes view** is to move as much functionality as possible out of the XAML code-behind and put it in the viewmodel. Again, the benefit being that the view can change its design with little effect to your code.
+The **AllNotes view** is going to use the **Notes viewmodel**. Currently though, it's binding directly to the model, which was deleted at the start of this tutorial. The goal in updating the **AllNotes view** is to move as much functionality as possible out of the XAML code-behind and put it in the viewmodel. Again, the benefit being that the view can change its design with little effect to your code.
 
 ### Notes viewmodel
 
-Based on what the **AllNotes view** requires, the **Notes view model** needs to provide the following items:
+Based on what the **AllNotes view** is going to display and what interactions the user will do, the **Notes viewmodel** must provide the following items:
 
 - A collection of notes.
 - A command to handle navigating to a note.
@@ -121,27 +106,29 @@ Based on what the **AllNotes view** requires, the **Notes view model** needs to 
     }
     ```
 
-    This code is the blank `Notes` viewmodel where we'll add properties and commands to support the `AllNotes` view. Notice that the `CommunityToolkit.Mvvm.Input` namespace is being imported. This namespace provides some command types that help with running asynchronously.
+    This code is the blank `Notes` viewmodel where you'll add properties and commands to support the `AllNotes` view. Notice that the `CommunityToolkit.Mvvm.Input` namespace is being imported. This namespace provides some command-types that invoke methods asynchronously.
 
 01. In the `Notes` class code, add the following properties:
 
     :::code language="csharp" source="../snippets/viewmodel/csharp/Notes/ViewModels/Notes.cs" id="properties":::
 
-    The `AllNotes` property is an `ObservableCollection` that all of the notes loaded from the device will be stored for the view to read. The two commands will be used by the view to trigger the actions of creating a new note or selecting an existing note for edit.
+    The `AllNotes` property is an `ObservableCollection` that stores all of the notes loaded from the device. The two commands will be used by the view to trigger the actions of creating a new note or selecting an existing note.
 
 01. Add a parameterless constructor to the class, which initializes the commands and loads the notes from the model:
 
     :::code language="csharp" source="../snippets/viewmodel/csharp/Notes/ViewModels/Notes.cs" id="ctor":::
 
-    Notice that the `AllNotes` collection uses the `Models.Note.LoadAll` method seed the observable collection with notes. The `LoadAll` method returns the notes as the `Models.Note` type, but the observable collection is a collection of `ViewModel.Note` types. The code uses the `Select` Linq extension to instantiate individual viewmodel instances from the model instances returned from `LoadAll`.
+    Notice that the `AllNotes` collection uses the `Models.Note.LoadAll` method fill the observable collection with notes. The `LoadAll` method returns the notes as the `Models.Note` type, but the observable collection is a collection of `ViewModel.Note` types. The code uses the `Select` Linq extension to create viewmodel instances from the note models returned from `LoadAll`.
 
 01. Create the methods targeted by the commands:
 
     :::code language="csharp" source="../snippets/viewmodel/csharp/Notes/ViewModels/Notes.cs" id="commands":::
 
-    The code here's relatively the same as the previous tutorial, with just a slight difference in the name of the query attribute. Instead of using a property name, the query string was set directly, `load`. The query string data will be read differently from the **Note viewmodel** than it was in the previous tutorial.
+    Notice that the `NewNoteAsync` method doesn't take a parameter while the `SelectNoteAsync` does. Commands can optionally have a single parameter that is provided when the command is invoked. For the `SelectNoteAsync` method, you want to provide the note that's being selected.
 
-The code for the class should look like the following snippet:
+    The code for `SelectNoteAsync` that navigates to an existing note is relatively the same as the previous tutorial, with just a slight difference in the query attribute. Instead of mapping a property name to a query string attribute, the query string is just being set directly: `load={note.Identifier}`. The query string data will be read differently in the **Note viewmodel** than it was in the previous tutorial.
+
+Don't worry that the code won't compile, you'll fix it later. The code for the class should look like the following snippet:
 
 :::code language="csharp" source="../snippets/viewmodel/csharp/Notes/ViewModels/Notes.cs" id="full":::
 
@@ -157,11 +144,13 @@ Now that the viewmodel has been created, update the **AllNotes view** to point t
 01. In the **Solution Explorer** pane of Visual Studio, double-click on **Views\\AllNotesPage.xaml**.
 01. Paste in the following code:
 
-    :::code language="xaml" source="../snippets/viewmodel/csharp/Notes/Views/AllNotesPage.xaml" highlight="4,8,21-22":::
+    :::code language="xaml" source="../snippets/viewmodel/csharp/Notes/Views/AllNotesPage.xaml" id="full" highlight="4,8,15,22-23":::
 
-The `CollectionView` supports commanding with the `SelectionChangedCommand` and `SelectionChangedCommandParameter` properties. In the updated XAML, the `SelectionChangedCommand` property is bound to the viewmodel's `SelectNodeCommand`, which means the command is invoked when the selected item changes. When the command is invoked, the `SelectionChangedCommandParameter` property value is passed to the command. The XAML value for the property uses `{RelativeSource Self}` binding to bind directly to the `CollectionView` element's `SelectedItem` property. When the command is invoked, the item that's currently selected in the collection view is passed to the command as a parameter.
+The `CollectionView` supports commanding with the `SelectionChangedCommand` and `SelectionChangedCommandParameter` properties. In the updated XAML, the `SelectionChangedCommand` property is bound to the viewmodel's `SelectNodeCommand`, which means the command is invoked when the selected item changes. When the command is invoked, the `SelectionChangedCommandParameter` property value is passed to the command. The XAML value for the property uses `{RelativeSource Self}` binding to bind directly to the `CollectionView.SelectedItem` property. Meaning, when the command is invoked, the item that's currently selected in the collection view is passed to the command as a parameter.
 
 :::code language="xaml" source="../snippets/viewmodel/csharp/Notes/Views/AllNotesPage.xaml" id="CollectionView" highlight="5-6":::
+
+The toolbar no longer uses the `Clicked` event and instead uses a command.
 
 ### Clean up the AllNotes code-behind
 
@@ -171,23 +160,11 @@ Now that the interaction with the view has changed from event handlers to comman
 
 ## Note viewmodel and Note view
 
-The final viewmodel-view pair is the **Note view model** and **Note view**. The XAML of the **Note view** is designed in the following ways:
-
-- Binds the note's `Text` property to the `Editor` control so the user can input the note's text.
-- Has two buttons, `Save` and `Delete`, which use the `Clicked` event to save or delete the note, respectively.
-
-The following is declared in the code-behind for the XAML:
-
-- Has an `ItemId` property that only uses the `set` property accessor, and is used to load a note by calling the `LoadNote` method.
-- The constructor of the class loads an empty note by default.
-- Provides the `LoadNote` method that loaded a note from device storage.
-- `Clicked` event handlers that saved or deleted the note to or from device storage, respectively.
-
-Again, the goal in updating the **Note view** is to move as much functionality as possible out of the XAML code-behind and put it in the viewmodel.
+The final viewmodel-view pair is the **Note viewmodel** and **Note view**. Again, the goal in updating the **Note view** is to move as much functionality as possible out of the XAML code-behind and put it in the viewmodel.
 
 ### Note viewmodel
 
-Based on what the **Note view** requires, the **Note view model** needs to provide the following items:
+Based on what the **Note view** requires, the **Note viewmodel** needs to provide the following items:
 
 - The text of the note.
 - The date/time the note was created or last updated.
@@ -211,7 +188,7 @@ Based on what the **Note view** requires, the **Note view model** needs to provi
     }
     ```
 
-    This code is the blank `Note` viewmodel where we'll add properties and commands to support the `Note` view. Notice that the `CommunityToolkit.Mvvm.ComponentModel` namespace is being imported. This namespace provides the `ObservableObject` used as the base class, this class is important and is provided by the community toolkit. You'll learn more about `ObservableObject` in the next step.
+    This code is the blank `Note` viewmodel where you'll add properties and commands to support the `Note` view. Notice that the `CommunityToolkit.Mvvm.ComponentModel` namespace is being imported. This namespace provides the `ObservableObject` used as the base class. You'll learn more about `ObservableObject` in the next step.
 
     The `Models.Note` model is being stored as a private field, the next step is to map public properties to the model.
 
@@ -222,11 +199,11 @@ Based on what the **Note view** requires, the **Note view model** needs to provi
     The `Date` and `Identifier` properties are simple properties that just retrieve the corresponding values from the model.
 
     > [!TIP]
-    > For properties, the `=>` syntax greats a `get` only property where the statement to the right evaluates to a value.
+    > For properties, the `=>` syntax creates a `get`-only property where the statement to the right of `=>` must evaluate to a value to return.
 
-    The `Text` property does first checks if the value being set is a different value, if it is, it's set and the `OnPropertyChanged` method is called.
+    The `Text` property first checks if the value being set is a different value. If the value is different, it's set to the property and the `OnPropertyChanged` method is called.
 
-    The `OnPropertyChanged` method is provided by the `ObservableObject` base class. This method detects the name of the calling code, which is the name of the property: **Text**. `OnPropertyChanged` then raises the `ObservableObject.PropertyChanged` event. The binding system provided by .NET MAUI recognizes that event, and updates any related bindings in the UI. For example, when the `Text` property changes, any UI element that is bound to that property will be notified that the value changed.
+    The `OnPropertyChanged` method is provided by the `ObservableObject` base class. This method uses the name of the calling code, in this case the property name of **Text**, and raises the `ObservableObject.PropertyChanged` event. This event supplies the name of the property to any event subscribers. The binding system provided by .NET MAUI recognizes this event, and updates any related bindings in the UI. In the example of this code, when the `Text` property changes, the event is raised, and any UI element that is bound to the `Text` property is notified that the property changed.
 
 01. Add the following command-properties to the class, which are the commands that the view can bind to:
 
@@ -236,23 +213,23 @@ Based on what the **Note view** requires, the **Note view model** needs to provi
 
     :::code language="csharp" source="../snippets/viewmodel/csharp/Notes/ViewModels/Note.cs" id="ctor":::
 
-    The two constructors are used to either seed the viewmodel instance with an empty note, or allows the calling code to provide a model instance. The constructors also use the `SetupCommands` method, which will be implemented soon.
+    These two constructors are used to either create the viewmodel as an empty note, or to load the viewmodel from the supplied model. The constructors also use the `SetupCommands` method, which you'll add next.
 
-01. Add the following method to the class:
+01. Create the `SetupCommands` method, along with the methods that the commands will reference:
+
+    :::code language="csharp" source="../snippets/viewmodel/csharp/Notes/ViewModels/Note.cs" id="command_methods":::
+
+    These commands invoke the specified action on the underlying model, and navigate to the previous page.
+
+01. Finally, add the following methods to the class:
 
     :::code language="csharp" source="../snippets/viewmodel/csharp/Notes/ViewModels/Note.cs" id="methods":::
 
-    The `ApplyQueryAttributes` method satisfies the `IQueryAttributable` interface that is declared on the class. When a page or the binding context of a page, implements this interface, the query parameters used in navigation are passed to the `ApplyQueryAttributes` method. This viewmodel will be used as the binding context for the **Note view**.
+    The `ApplyQueryAttributes` method satisfies the `IQueryAttributable` interface that is declared on the class. When a page or the binding context of a page implements this interface, the query parameters used in navigation are passed to the `ApplyQueryAttributes` method. This viewmodel is used as the binding context for the **Note view**. When the **Note view** is navigated to, that binding context (this viewmodel) is passed the query string parameters used during navigation.
 
-    In the `ApplyQueryAttributes` method, the `load` key is checked in the `query` dictionary. If this key is found, the value of that key is supposed to be the identifier (the file name) of the note to load. That note is loaded and set as the underlying model object of the viewmodel.
+    This code checks if the `load` key was provided in the `query` dictionary. If this key is found, the value should be the identifier (the file name) of the note to load. That note is loaded and set as the underlying model object of this viewmodel instance.
 
-    The `RefreshProperties` method is a helper method that any subscribers bound to this object are notified that the `Text` and `Date` properties have changed. Since the underlying model (the `_note` field) is changed when the note is loaded during navigation, the `Text` and `Date` properties aren't directly set. Since these properties aren't directly set, any bindings attached to those properties wouldn't be notified. `RefreshProperties` ensures bindings to these properties are refreshed.
-
-01. Create the methods targeted by the commands, including the `SetupCommands` method that was referenced in the constructors:
-
-    :::code language="csharp" source="../snippets/viewmodel/csharp/Notes/ViewModels/Notes.cs" id="command_methods":::
-
-    These commands invoke the specified action on the underlying model, and navigate to the previous page.
+    The `RefreshProperties` method is a helper method to ensure that any subscribers bound to this object are notified that the `Text` and `Date` properties have changed. Since the underlying model (the `_note` field) is changed when the note is loaded during navigation, the `Text` and `Date` properties aren't actually set to new values. Since these properties aren't directly set, any bindings attached to those properties wouldn't be notified because `OnPropertyChanged` isn't called for each property. `RefreshProperties` ensures bindings to these properties are refreshed.
 
 The code for the class should look like the following snippet:
 
@@ -273,9 +250,9 @@ Now that the viewmodel has been created, update the **Note view**. In the _Views
 
 Previously, this view didn't declare a binding context, as it was supplied by the code-behind of the page itself. Setting the binding context directly in the XAML provides two things:
 
-- The intellisense in the XAML editor shows the available properties as soon as you start typing `{Binding` syntax. The syntax is also validated and alerts you of an invalid value. Try changing the binding syntax for the `SaveCommand` to `Save123Command`. If you move the mouse over the text, you'll notice that a tooltip is displayed informing you that **Save123Command** isn't found. This problem isn't an error because bindings are dynamic, it's really a small warning that may help you notice when you typed in the wrong property.
+- At run-time, when the page is navigated to, it displays a blank note. This is because the default constructor for the note viewmodel is invoked, not the constructor that loads a note viewmodel from a model.
 
-- At run-time, when the page is navigated to, it displays a blank note.
+- The intellisense in the XAML editor shows the available properties as soon as you start typing `{Binding` syntax. The syntax is also validated and alerts you of an invalid value. Try changing the binding syntax for the `SaveCommand` to `Save123Command`. If you hover the mouse cursor over the text, you'll notice that a tooltip is displayed informing you that **Save123Command** isn't found. This notification isn't considered an error because bindings are dynamic, it's really a small warning that may help you notice when you typed the wrong property.
 
 ### Clean up the Note code-behind
 

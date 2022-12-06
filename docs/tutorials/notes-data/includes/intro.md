@@ -9,7 +9,7 @@ This tutorial series is designed to continue the [previous tutorial](../../notes
 
 > [!div class="checklist"]
 >
-> - Implement the model-view-viewmodel pattern
+> - Implement the model-view-viewmodel (MVVM) pattern
 > - Add database storage
 > - Rewrite file code to use database
 > - Add cloud storage for backups

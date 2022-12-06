@@ -34,35 +34,18 @@ internal class Note : ObservableObject, IQueryAttributable
     //</commands>
 
     //<ctor>
-    public Note(Models.Note note)
-    {
-        _note = note;
-        SetupCommands();
-    }
-
     public Note()
     {
         _note = new Models.Note();
         SetupCommands();
     }
+    
+    public Note(Models.Note note)
+    {
+        _note = note;
+        SetupCommands();
+    }
     //</ctor>
-
-    //<methods>
-    public void ApplyQueryAttributes(IDictionary<string, object> query)
-    {
-        if (query.ContainsKey("load"))
-        {
-            _note = Models.Note.Load(query["load"].ToString());
-            RefreshProperties();
-        }
-    }
-
-    private void RefreshProperties()
-    {
-        OnPropertyChanged(nameof(Text));
-        OnPropertyChanged(nameof(Date));
-    }
-    //</methods>
 
     //<command_methods>
     private void SetupCommands()
@@ -83,5 +66,22 @@ internal class Note : ObservableObject, IQueryAttributable
         await Shell.Current.GoToAsync("..");
     }
     //</command_methods>
+
+    //<methods>
+    public void ApplyQueryAttributes(IDictionary<string, object> query)
+    {
+        if (query.ContainsKey("load"))
+        {
+            _note = Models.Note.Load(query["load"].ToString());
+            RefreshProperties();
+        }
+    }
+
+    private void RefreshProperties()
+    {
+        OnPropertyChanged(nameof(Text));
+        OnPropertyChanged(nameof(Date));
+    }
+    //</methods>
 }
 //</full>
