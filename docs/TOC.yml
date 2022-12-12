@@ -41,7 +41,7 @@
               href: ios/cli.md
             - name: Pair to Mac
               href: ios/pair-to-mac.md
-            - name: Setup device for development
+            - name: Set up device for development
               items:
               - name: Overview
                 href: ios/device-provisioning/index.md
