@@ -5,15 +5,15 @@ ms.date: 12/03/2022
 ms.topic: include
 ---
 
-In the previous step of the tutorial, the notes app was updated to use MVVM concepts. However, the app isn't updating the list of notes after a note is created or deleted. To fix this, you'll need to implement a notification system.
+In the previous step of the tutorial, the notes app was updated to use MVVM concepts. However, the app isn't updating the list of notes after a note is created or deleted. To fix this problem you'll need to implement a notification system.
 
 The notification system provides a way for your view models to let other parts of your application know what action it took. For example, if the **Note viewmodel** deletes a note, it would send a notification to the **Notes viewmodel** telling it the note was deleted. The **Notes viewmodel** could then remove the note from the collection.
 
 ## Message types
 
-The MVVM Community Toolkit added in the last step of the tutorial includes a messaging system that lets you send messages from one object to another. It's a bit similar to how events work in .NET, except that the recipient of the message doesn't need to know anything about the object that sent the message. This lets you decouple the objects from one another.
+The previous step of the tutorial added the MVVM Community Toolkit to the project. This toolkit includes a messaging system that lets you send messages from one object to another. It's a bit similar to how events work in .NET, except that the recipient of the message doesn't need to know about the object that sent the message. This lets you decouple the message sender from the receiver.
 
-Messages contain payload data, and for this app, there'll be two message types related to the **Note viewmodel**:
+Messages contain payload data, and for this app, there will be two message types related to the **Note viewmodel**:
 
 - Saved
 - Deleted
@@ -31,7 +31,7 @@ Create a class for each message:
 
     :::code language="csharp" source="../snippets/notifications/csharp/Messages/NoteDeleted.cs":::
 
-The code for both message payloads is pretty much the same, the only difference is the type name itself. The payload has a single property named `Note` which is the **Note viewmodel** related to the message.
+The code for both message payloads is mostly the same, the only difference is the type name itself. The payload has a single property named `Note`, which is the **Note viewmodel** related to the message.
 
 ## Senders
 
@@ -56,7 +56,7 @@ The next step is to register an object as a recipient of each message. Really, o
 
 The **Notes viewmodel** isn't specifying a base class like the **Note viewmodel** does, because there wasn't really any benefit to do so. However, the `ObservableRecipient` base class provided by the MVVM Community Toolkit provides a framework for an object to receive messages, so this is a suitable base class for the **Notes viewmodel**.
 
-The toolkit also provides the `IRecipient<Type>` interface to register an object as a listener to specific messages. This interface has to be implemented for each message type. The interface defines a method named `Receive` which takes the message type as a parameter. For example, if the class implements `IRecipient<string>`, then the following method would be added to the class:
+The toolkit also provides the `IRecipient<Type>` interface to register an object as a listener to specific messages. This interface has to be implemented for each message type. The interface defines a method named `Receive`, which takes the message type as a parameter. For example, if the class implements `IRecipient<string>`, then the following method would be added to the class:
 
 ```csharp
 public void Receive(string message)
@@ -89,7 +89,7 @@ Update the **Notes viewmodel** to receive the messages:
 
     :::code language="csharp" source="../snippets/notifications/csharp/ViewModels/Notes.cs" id="notesaved":::
 
-    This method handles both notes that are created and those that are updated. If updated, the existing note needs to be removed from the `AllNotes` collection, and then the new note added. You may think that you should just remove the note instance directly from the `AllNotes` collection, like so:
+    This method handles notes that are both created and updated. If updated, the existing note needs to be removed from the `AllNotes` collection, and then the new note added. You may think that you can just remove the note instance directly from the `AllNotes` collection, like so:
 
     ```csharp
     AllNotes.Remove(message.Note);
@@ -97,12 +97,12 @@ Update the **Notes viewmodel** to receive the messages:
 
     However, that code won't work. The reason being that the `message.Note` instance isn't the same viewmodel instance that's in the `AllNotes` collection. When a note is selected and the note-editing page is navigated to, only the unique identifier of the note is provided, not the viewmodel instance. The unique identifier is used to load the note from storage, into the new viewmodel instance. When saved, the message is sent with the new viewmodel instance.
 
-    If the new note is added to the `AllNotes` collection, both the old note and the new note will be in the collection, being visible in the UI list. The old note instance must be removed from the collection prior to adding in the new instance. Since both the old and new instances of the note share the same identifier, the code uses it to find the old note, if it exists, and removes it.
+    If the new note is added to the `AllNotes` collection, both the old note and the new note will be in the collection. The old note instance must be removed from the collection prior to adding in the new instance. Since both the old and new instances of the note share the same identifier, the code uses it to find the old note, and if it exists, removes it.
 
 01. Implement the `Receive` method for the `Messages.NoteDeleted` message.
 
     :::code language="csharp" source="../snippets/notifications/csharp/ViewModels/Notes.cs" id="notedeleted":::
 
-    This code searches the `AllNotes` collection for a matching note identifier, and removes it.
+    This code searches the `AllNotes` collection for a matching note identifier and removes it.
 
 Run the project. Notice that when you create, edit, or delete a note, the list of notes is updated.

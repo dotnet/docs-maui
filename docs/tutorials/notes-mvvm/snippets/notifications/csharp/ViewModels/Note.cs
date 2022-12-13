@@ -76,7 +76,7 @@ internal class Note : ObservableObject, IQueryAttributable
         
         await Shell.Current.GoToAsync("..");
     }
-    //<delete>
+    //</delete>
 
     public void ApplyQueryAttributes(IDictionary<string, object> query)
     {
