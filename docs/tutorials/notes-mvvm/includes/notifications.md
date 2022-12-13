@@ -1,11 +1,11 @@
 ---
 author: adegeo
 ms.author: adegeo
-ms.date: 12/03/2022
+ms.date: 12/12/2022
 ms.topic: include
 ---
 
-In the previous step of the tutorial, the notes app was updated to use MVVM concepts. However, the app isn't updating the list of notes after a note is created or deleted. To fix this problem you'll need to implement a notification system.
+In the previous step of the tutorial, the notes app was updated to use MVVM concepts. However, the app isn't updating the list of notes after a note is created or deleted. To fix this problem, you'll need to implement a notification system.
 
 The notification system provides a way for your view models to let other parts of your application know what action it took. For example, if the **Note viewmodel** deletes a note, it would send a notification to the **Notes viewmodel** telling it the note was deleted. The **Notes viewmodel** could then remove the note from the collection.
 
