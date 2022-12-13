@@ -54,7 +54,9 @@
     - name: Tutorials
       items:
         - name: Create a .NET MAUI app
-          href: tutorials/notes-app/index.yml
+          href: tutorials/notes-app/index.yml?
+        - name: Use MVVM principles
+          href: tutorials/notes-mvvm/index.yml?
     - name: XAML
       items:
         - name: Overview

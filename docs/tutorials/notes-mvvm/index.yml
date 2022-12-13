@@ -1,0 +1,48 @@
+### YamlMime:Tutorial
+title: "Upgrade your app with MVVM concepts"
+metadata:
+  title: "Tutorial: Use the MVVM toolkit to update the Notes app"
+  description: TODO
+  audience: Developer
+  level: Beginner
+  ms.topic: interactive-tutorial
+  ms.date: 12/12/2022
+  author: adegeo
+  ms.author: adegeo
+items:
+- durationInMinutes: 1
+  content: |
+    [!INCLUDE [](includes/intro.md)]
+- title: Update the model
+  durationInMinutes: 0
+  content: |
+    [!INCLUDE [](includes/model.md)]
+- title: About viewmodel and About view
+  durationInMinutes: 0
+  content: |
+    [!INCLUDE [](includes/viewmodel-about.md)]
+- title: Notes viewmodel and AllNotes view
+  durationInMinutes: 0
+  content: |
+    [!INCLUDE [](includes/viewmodel-notes.md)]
+- title: Note viewmodel and Note view
+  durationInMinutes: 0
+  content: |
+    [!INCLUDE [](includes/viewmodel-note.md)]
+- title: Communicate between view models
+  durationInMinutes: 0
+  content: |
+    [!INCLUDE [](includes/notifications.md)]
+
+- content: |
+    TODO
+    You've completed the Create a .NET MAUI app tutorial!
+
+    ## Next steps
+
+    The following links provide more information related to some of the concepts you learned in this tutorial:
+
+    - [.NET MAUI Shell overview](../../fundamentals/shell/index.md)
+    - [.NET MAUI Shell pages](../../fundamentals/shell/pages.md)
+    - [Basic bindings](../../fundamentals/data-binding/basic-bindings.md)
+    - [Editor control](../../user-interface/controls/editor.md)
