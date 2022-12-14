@@ -27,7 +27,7 @@ Based on what the **Note view** requires, the **Note viewmodel** needs to provid
     
     namespace Notes.ViewModels;
     
-    internal class Note : ObservableObject, IQueryAttributable
+    internal class NoteViewModel : ObservableObject, IQueryAttributable
     {
         private Models.Note _note;
 
@@ -40,7 +40,7 @@ Based on what the **Note view** requires, the **Note viewmodel** needs to provid
 
 01. Add the following properties to the class:
 
-    :::code language="csharp" source="../snippets/viewmodel-note/csharp/Notes/ViewModels/Note.cs" id="properties":::
+    :::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/ViewModels/NoteViewModel.cs" id="properties":::
 
     The `Date` and `Identifier` properties are simple properties that just retrieve the corresponding values from the model.
 
@@ -53,33 +53,35 @@ Based on what the **Note view** requires, the **Note viewmodel** needs to provid
 
 01. Add the following command-properties to the class, which are the commands that the view can bind to:
 
-    :::code language="csharp" source="../snippets/viewmodel-note/csharp/Notes/ViewModels/Note.cs" id="commands":::
+    :::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/ViewModels/NoteViewModel.cs" id="commands":::
 
 01. Add the following constructors to the class:
 
-    :::code language="csharp" source="../snippets/viewmodel-note/csharp/Notes/ViewModels/Note.cs" id="ctor":::
+    :::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/ViewModels/NoteViewModel.cs" id="ctor":::
 
     These two constructors are used to either create the viewmodel as an empty note, or to load the viewmodel from the supplied model. The constructors also use the `SetupCommands` method, which you'll add next.
 
 01. Create the `SetupCommands` method, along with the methods that the commands will reference:
 
-    :::code language="csharp" source="../snippets/viewmodel-note/csharp/Notes/ViewModels/Note.cs" id="command_methods":::
+    :::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/ViewModels/NoteViewModel.cs" id="command_methods":::
 
-    These commands invoke the specified action on the underlying model, and navigate to the previous page.
+    These commands invoke the specified action on the underlying model, and navigates to the previous page. A query string parameter is added to the `..` path, indicating which action was taken and the note's unique identifier.
 
 01. Finally, add the following methods to the class:
 
-    :::code language="csharp" source="../snippets/viewmodel-note/csharp/Notes/ViewModels/Note.cs" id="methods":::
+    :::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/ViewModels/NoteViewModel.cs" id="methods":::
 
     The `ApplyQueryAttributes` method satisfies the `IQueryAttributable` interface that is declared on the class. When a page or the binding context of a page implements this interface, the query parameters used in navigation are passed to the `ApplyQueryAttributes` method. This viewmodel is used as the binding context for the **Note view**. When the **Note view** is navigated to, that binding context (this viewmodel) is passed the query string parameters used during navigation.
 
     This code checks if the `load` key was provided in the `query` dictionary. If this key is found, the value should be the identifier (the file name) of the note to load. That note is loaded and set as the underlying model object of this viewmodel instance.
 
-    The `RefreshProperties` method is a helper method to ensure that any subscribers bound to this object are notified that the `Text` and `Date` properties have changed. Since the underlying model (the `_note` field) is changed when the note is loaded during navigation, the `Text` and `Date` properties aren't actually set to new values. Since these properties aren't directly set, any bindings attached to those properties wouldn't be notified because `OnPropertyChanged` isn't called for each property. `RefreshProperties` ensures bindings to these properties are refreshed.
+    The `Reload` method is a helper method that refreshes the backing model object.
+
+    The `RefreshProperties` method is another helper method to ensure that any subscribers bound to this object are notified that the `Text` and `Date` properties have changed. Since the underlying model (the `_note` field) is changed when the note is loaded during navigation, the `Text` and `Date` properties aren't actually set to new values. Since these properties aren't directly set, any bindings attached to those properties wouldn't be notified because `OnPropertyChanged` isn't called for each property. `RefreshProperties` ensures bindings to these properties are refreshed.
 
 The code for the class should look like the following snippet:
 
-:::code language="csharp" source="../snippets/viewmodel-note/csharp/Notes/ViewModels/Note.cs" id="full":::
+:::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/ViewModels/NoteViewModel.cs" id="full":::
 
 ## Note view
 
@@ -92,7 +94,7 @@ Now that the viewmodel has been created, update the **Note view**. In the _Views
 01. In the **Solution Explorer** pane of Visual Studio, double-click on **Views\\NotePage.xaml** to open the XAML editor.
 01. Paste in the following code:
 
-:::code language="xaml" source="../snippets/viewmodel-note/csharp/Notes/Views/NotePage.xaml" highlight="4,7-9,18,22":::
+:::code language="xaml" source="../snippets/viewmodel-shared/csharp/Notes/Views/NotePage.xaml" highlight="4,7-9,18,22":::
 
 Previously, this view didn't declare a binding context, as it was supplied by the code-behind of the page itself. Setting the binding context directly in the XAML provides two things:
 
@@ -104,8 +106,4 @@ Previously, this view didn't declare a binding context, as it was supplied by th
 
 Now that the interaction with the view has changed from event handlers to commands, open the _Views\\NotePage.xaml.cs_ file and replace all the code with the following snippet:
 
-:::code language="csharp" source="../snippets/viewmodel-note/csharp/Notes/Views/NotePage.xaml.cs":::
-
-## Run the app
-
-You can now run the app. Notice that when you add or delete a note, the **AllNotes view** isn't updated. If you restart the app, you'll see the list is updated. Obviously you want the list immediately updated when a note is added or deleted. You'll fix this problem in the next step of the tutorial by introducing a notification system.
+:::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/Views/NotePage.xaml.cs":::

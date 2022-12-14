@@ -21,18 +21,18 @@ items:
   durationInMinutes: 0
   content: |
     [!INCLUDE [](includes/viewmodel-about.md)]
-- title: Notes viewmodel and AllNotes view
-  durationInMinutes: 0
-  content: |
-    [!INCLUDE [](includes/viewmodel-notes.md)]
 - title: Note viewmodel and Note view
   durationInMinutes: 0
   content: |
     [!INCLUDE [](includes/viewmodel-note.md)]
-- title: Communicate between view models
+- title: Notes viewmodel and AllNotes view
   durationInMinutes: 0
   content: |
-    [!INCLUDE [](includes/notifications.md)]
+    [!INCLUDE [](includes/viewmodel-notes.md)]
+- title: Fix the final bug
+  durationInMinutes: 0
+  content: |
+    [!INCLUDE [](includes/bug.md)]
 
 - content: |
     TODO

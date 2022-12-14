@@ -30,9 +30,9 @@ The view models are stored in a _ViewModels_ folder.
 
 01. Find the **Solution Explorer** pane of Visual Studio.
 01. Right-click on the **Notes** project and select **Add** > **New Folder**. Name the folder **ViewModels**.
-01. Right-click on the **ViewModels** folder > **Add** > **Class** and name it **About.cs**.
-    - **Note.cs**
-    - **Notes.cs**
+01. Right-click on the **ViewModels** folder > **Add** > **Class** and name it **AboutViewModel.cs**.
+    - **NoteViewModel.cs**
+    - **NotesViewModel.cs**
 
 Your project structure should look like the following image:
 
@@ -42,12 +42,12 @@ Your project structure should look like the following image:
 
 The **About view** displays some data on the screen and optionally navigates to a website with more information. Since this view doesn't have any data to change, like with an entry control or selecting items from a list, it's a good candidate to demonstrate adding a viewmodel. For the **About viewmodel**, there isn't a backing model.
 
-Create the **About view model**:
+Create the **About viewmodel**:
 
 01. In the **Solution Explorer** pane of Visual Studio, double-click on **ViewModels\\About.cs**.
 01. Paste in the following code:
 
-    :::code language="csharp" source="../snippets/viewmodel-about/csharp/Notes/ViewModels/About.cs":::
+    :::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/ViewModels/AboutViewModel.cs":::
 
 The previous code snippet contains some properties that represent information about the app, such as the name and version. This snippet is exactly the same as the **About model** you deleted earlier. However, this viewmodel contains a new concept, the `ShowMoreInfoCommand` command property.
 
@@ -64,7 +64,7 @@ The **About view** needs to be changed slightly to hook it up to the viewmodel t
 01. In the **Solution Explorer** pane of Visual Studio, double-click on **Views\\AboutPage.xaml**.
 01. Paste in the following code:
 
-    :::code language="xaml" source="../snippets/viewmodel-about/csharp/Notes/Views/AboutPage.xaml" highlight="4,7,19":::
+    :::code language="xaml" source="../snippets/viewmodel-shared/csharp/Notes/Views/AboutPage.xaml" highlight="4,7,19":::
 
     The previous code snippet highlights the lines that have changed in this version of the view.
 
@@ -76,4 +76,4 @@ In this view, when the user presses the button, the `Command` is invoked. The `C
 
 The `ShowMoreInfo` button isn't using the event handler, so the `LearnMore_Clicked` code should be removed from the _Views\\AboutPage.xaml.cs_ file. Delete that code. The class should only contain the constructor:
 
-:::code language="csharp" source="../snippets/viewmodel-about/csharp/Notes/Views/AboutPage.xaml.cs":::
+:::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/Views/AboutPage.xaml.cs":::
