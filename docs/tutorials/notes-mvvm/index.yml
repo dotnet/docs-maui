@@ -13,22 +13,32 @@ items:
 - durationInMinutes: 1
   content: |
     [!INCLUDE [](includes/intro.md)]
+
+- title: Upgrade the app from .NET 6 to .NET 7
+  durationInMinutes: 0
+  content: |
+    [!INCLUDE [](includes/upgrade.md)]
+
 - title: Update the model
   durationInMinutes: 0
   content: |
     [!INCLUDE [](includes/model.md)]
+
 - title: About viewmodel and About view
   durationInMinutes: 0
   content: |
     [!INCLUDE [](includes/viewmodel-about.md)]
+
 - title: Note viewmodel and Note view
   durationInMinutes: 0
   content: |
     [!INCLUDE [](includes/viewmodel-note.md)]
+
 - title: Notes viewmodel and AllNotes view
   durationInMinutes: 0
   content: |
     [!INCLUDE [](includes/viewmodel-notes.md)]
+
 - title: Fix the final bug
   durationInMinutes: 0
   content: |

@@ -7,6 +7,8 @@ ms.topic: include
 
 In this first part of the tutorial, you'll implement the model-view-viewmodel (MVVM) pattern. This pattern decouples the model (data) from the view (presentation) into a layer called the view model. The role of the view model in MVVM is to transform the model into a format that the view can use. This separation is beneficial when creating complex apps, it allows you to change how the data is presented without being concerned with where the data is coming from or what format the data is in.
 
+To start modifying the app, open the _Notes.csproj_ project in Visual Studio. You may have a _Notes.sln_ solution file, you can open that instead.
+
 ## Clean up the model
 
 In the previous tutorial, the model types were acting both as the model (data) and as a view model (data preparation), which was mapped directly to a view. The following table describes the model:

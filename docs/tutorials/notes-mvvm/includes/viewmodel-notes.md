@@ -17,6 +17,8 @@ Based on what the **AllNotes view** is going to display and what interactions th
 - A command to create a new note.
 - Update the list of notes when one is created, deleted, or changed.
 
+Create the **Notes viewmodel**:
+
 01. In the **Solution Explorer** pane of Visual Studio, double-click on **ViewModels\\Notes.cs**.
 01. Replace the code in this file with the following code:
 
@@ -72,6 +74,8 @@ Now that the viewmodel has been created, update the **AllNotes view** to point t
 - Add a `BindingContext` to the page.
 - Remove the toolbar button's `Clicked` event and use the `Command` property.
 - Change the `CollectionView` to use commanding to react to when the selected item changes.
+
+Create the **AllNotes view**:
 
 01. In the **Solution Explorer** pane of Visual Studio, double-click on **Views\\AllNotesPage.xaml**.
 01. Paste in the following code:

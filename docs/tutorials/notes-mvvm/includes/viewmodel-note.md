@@ -17,6 +17,8 @@ Based on what the **Note view** requires, the **Note viewmodel** needs to provid
 - A command to that saves the note.
 - A command to that deletes the note.
 
+Create the **Note viewmodel**:
+
 01. In the **Solution Explorer** pane of Visual Studio, double-click on **ViewModels\\Note.cs**.
 01. Replace the code in this file with the following snippet:
 
@@ -90,6 +92,8 @@ Now that the viewmodel has been created, update the **Note view**. In the _Views
 - Add the `xmlns:viewModels` XML namespace that targets the `Notes.ViewModels` .NET namespace.
 - Add a `BindingContext` to the page.
 - Remove the delete and save button `Clicked` event handlers and replace them with commands.
+
+Create the **Note view**:
 
 01. In the **Solution Explorer** pane of Visual Studio, double-click on **Views\\NotePage.xaml** to open the XAML editor.
 01. Paste in the following code:
