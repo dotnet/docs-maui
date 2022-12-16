@@ -30,7 +30,7 @@ items:
     [!INCLUDE [](includes/viewmodel-about.md)]
 
 - title: Note viewmodel and Note view
-  durationInMinutes: 0
+  durationInMinutes: 15
   content: |
     [!INCLUDE [](includes/viewmodel-note.md)]
 

@@ -37,23 +37,19 @@ internal class NoteViewModel : ObservableObject, IQueryAttributable
     public NoteViewModel()
     {
         _note = new Models.Note();
-        SetupCommands();
+        SaveCommand = new AsyncRelayCommand(Save);
+        DeleteCommand = new AsyncRelayCommand(Delete);
     }
     
     public NoteViewModel(Models.Note note)
     {
         _note = note;
-        SetupCommands();
+        SaveCommand = new AsyncRelayCommand(Save);
+        DeleteCommand = new AsyncRelayCommand(Delete);
     }
     //</ctor>
 
     //<command_methods>
-    private void SetupCommands()
-    {
-        SaveCommand = new AsyncRelayCommand(Save);
-        DeleteCommand = new AsyncRelayCommand(Delete);
-    }
-
     public async Task Save()
     {
         _note.Date = DateTime.Now;
@@ -68,7 +64,7 @@ internal class NoteViewModel : ObservableObject, IQueryAttributable
     }
     //</command_methods>
 
-    //<methods>
+    //<iquery>
     public void ApplyQueryAttributes(IDictionary<string, object> query)
     {
         if (query.ContainsKey("load"))
@@ -77,7 +73,9 @@ internal class NoteViewModel : ObservableObject, IQueryAttributable
             RefreshProperties();
         }
     }
+    //</iquery>
 
+    //<helpers>
     public void Reload()
     {
         _note = Models.Note.Load(_note.Filename);
@@ -89,6 +87,6 @@ internal class NoteViewModel : ObservableObject, IQueryAttributable
         OnPropertyChanged(nameof(Text));
         OnPropertyChanged(nameof(Date));
     }
-    //</methods>
+    //</helpers>
 }
 //</full>

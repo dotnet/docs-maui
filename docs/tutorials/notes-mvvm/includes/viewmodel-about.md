@@ -77,12 +77,12 @@ In this view, when the user presses the button, the `Command` is invoked. The `C
 
 ### Clean up the About code-behind
 
-The `ShowMoreInfo` button isn't using the event handler, so the `LearnMore_Clicked` code should be removed from the _Views\\AboutPage.xaml.cs_ file. Delete that code. The class should only contain the constructor:
+The `ShowMoreInfo` button isn't using the event handler, so the `LearnMore_Clicked` code should be removed from the _Views\\AboutPage.xaml.cs_ file. Delete that code, the class should only contain the constructor:
 
 01. In the **Solution Explorer** pane of Visual Studio, double-click on **Views\\AboutPage.xaml.cs**.
 
     > [!TIP]
-    > You may need to expand the **Views\\AboutPage.xaml** to show the file.
+    > You may need to expand **Views\\AboutPage.xaml** to show the file.
 
 01. Replace the code with the following snippet:
 

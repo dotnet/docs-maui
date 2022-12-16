@@ -6,7 +6,7 @@ ms.topic: include
 no-loc: ["communitytoolkit", "CommunityToolkit.Mvvm", "AllNotes", "Notes", "About"]
 ---
 
-The **AllNotes view** is going to use the **Notes viewmodel**. Currently though, it's binding directly to the model, which was deleted at the start of this tutorial. The goal in updating the **AllNotes view** is to move as much functionality as possible out of the XAML code-behind and put it in the viewmodel. Again, the benefit being that the view can change its design with little effect to your code.
+The final viewmodel-view pair is the **Notes viewmodel** and **AllNotes view**. Currently though, the view is binding directly to the model, which was deleted at the start of this tutorial. The goal in updating the **AllNotes view** is to move as much functionality as possible out of the XAML code-behind and put it in the viewmodel. Again, the benefit being that the view can change its design with little effect to your code.
 
 ## Notes viewmodel
 
@@ -19,7 +19,7 @@ Based on what the **AllNotes view** is going to display and what interactions th
 
 Create the **Notes viewmodel**:
 
-01. In the **Solution Explorer** pane of Visual Studio, double-click on **ViewModels\\Notes.cs**.
+01. In the **Solution Explorer** pane of Visual Studio, double-click on **ViewModels\\NotesViewModel.cs**.
 01. Replace the code in this file with the following code:
 
     ```csharp
@@ -90,12 +90,12 @@ The toolbar no longer uses the `Clicked` event and instead uses a command.
 
 ## Clean up the AllNotes code-behind
 
-Now that the interaction with the view has changed from event handlers to commands, open the _Views\\AllNotesPage.xaml.cs_ file and replace all the code with the following snippet:
+Now that the interaction with the view has changed from event handlers to commands, open the _Views\\AllNotesPage.xaml.cs_ file and replace all the code with a class that only contains the constructor:
 
 01. In the **Solution Explorer** pane of Visual Studio, double-click on **Views\\AllNotesPage.xaml.cs**.
 
     > [!TIP]
-    > You may need to expand the **Views\\AllNotesPage.xaml** to show the file.
+    > You may need to expand **Views\\AllNotesPage.xaml** to show the file.
 
 01. Replace the code with the following snippet:
 
