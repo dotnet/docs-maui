@@ -15,17 +15,17 @@ items:
     [!INCLUDE [](includes/intro.md)]
 
 - title: Upgrade the app from .NET 6 to .NET 7
-  durationInMinutes: 0
+  durationInMinutes: 3
   content: |
     [!INCLUDE [](includes/upgrade.md)]
 
 - title: Update the model
-  durationInMinutes: 0
+  durationInMinutes: 7
   content: |
     [!INCLUDE [](includes/model.md)]
 
 - title: About viewmodel and About view
-  durationInMinutes: 0
+  durationInMinutes: 10
   content: |
     [!INCLUDE [](includes/viewmodel-about.md)]
 

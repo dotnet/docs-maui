@@ -7,7 +7,7 @@ ms.topic: include
 
 In this first part of the tutorial, you'll implement the model-view-viewmodel (MVVM) pattern. This pattern decouples the model (data) from the view (presentation) into a layer called the view model. The role of the view model in MVVM is to transform the model into a format that the view can use. This separation is beneficial when creating complex apps, it allows you to change how the data is presented without being concerned with where the data is coming from or what format the data is in.
 
-To start modifying the app, open the _Notes.csproj_ project in Visual Studio. You may have a _Notes.sln_ solution file, you can open that instead.
+To start, open the _Notes.csproj_ project in Visual Studio. You may have a _Notes.sln_ solution file, you can open that instead.
 
 ## Clean up the model
 
@@ -69,7 +69,7 @@ The `Note` model is going to be expanded to handle loading, saving, and deleting
 
     :::code language="csharp" source="../snippets/model/csharp/Notes/Models/Note.cs" id="load_all":::
 
-    This code returns an enumerable collection of `Note` model types by retrieving the files on the device that match the notes file pattern: _*.notes.txt_. Each file name is passed to the `Load` method that loads a single note. Finally, the collection of notes is ordered by the date of each note and returned to the caller.
+    This code returns an enumerable collection of `Note` model types by retrieving the files on the device that match the notes file pattern: _*.notes.txt_. Each file name is passed to the `Load` method, loading an individual note. Finally, the collection of notes is ordered by the date of each note and returned to the caller.
 
 01. Lastly, add a constructor to the class which sets the default values for the properties, including a random file name:
 

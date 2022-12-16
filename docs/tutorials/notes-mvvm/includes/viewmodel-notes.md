@@ -75,7 +75,7 @@ Now that the viewmodel has been created, update the **AllNotes view** to point t
 - Remove the toolbar button's `Clicked` event and use the `Command` property.
 - Change the `CollectionView` to use commanding to react to when the selected item changes.
 
-Create the **AllNotes view**:
+Update the **AllNotes view**:
 
 01. In the **Solution Explorer** pane of Visual Studio, double-click on **Views\\AllNotesPage.xaml**.
 01. Paste in the following code:
@@ -92,7 +92,14 @@ The toolbar no longer uses the `Clicked` event and instead uses a command.
 
 Now that the interaction with the view has changed from event handlers to commands, open the _Views\\AllNotesPage.xaml.cs_ file and replace all the code with the following snippet:
 
-:::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/Views/AllNotesPage.xaml.cs":::
+01. In the **Solution Explorer** pane of Visual Studio, double-click on **Views\\AllNotesPage.xaml.cs**.
+
+    > [!TIP]
+    > You may need to expand the **Views\\AllNotesPage.xaml** to show the file.
+
+01. Replace the code with the following snippet:
+
+    :::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/Views/AllNotesPage.xaml.cs":::
 
 ## Run the app
 

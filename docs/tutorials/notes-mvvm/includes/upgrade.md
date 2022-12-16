@@ -13,16 +13,16 @@ To upgrade your app to .NET 7:
 01. Find the `Project/PropertyGroup/TargetFrameworks` element and change it to the following:
 
     ```xml
-    <TargetFrameworks>net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
+    <TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
     ```
 
 01. Find the `Project/PropertyGroup/TargetFrameworks` element with a `condition` specifying Windows, and change it to the following:
 
     ```xml
-    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net6.0-windows10.0.19041.0</TargetFrameworks>
+    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
     ```
 
-01. Update the minimum operating system versions required for iOS and Mac. Replace the two `SupportedOSPlatformVersion` elements with the following:
+01. Change the minimum operating system versions required for iOS and Mac. Replace the two `SupportedOSPlatformVersion` elements with the following:
 
     ```xml
     <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>

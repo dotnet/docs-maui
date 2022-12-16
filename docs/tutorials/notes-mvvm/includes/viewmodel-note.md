@@ -93,7 +93,7 @@ Now that the viewmodel has been created, update the **Note view**. In the _Views
 - Add a `BindingContext` to the page.
 - Remove the delete and save button `Clicked` event handlers and replace them with commands.
 
-Create the **Note view**:
+Update the **Note view**:
 
 01. In the **Solution Explorer** pane of Visual Studio, double-click on **Views\\NotePage.xaml** to open the XAML editor.
 01. Paste in the following code:
@@ -110,4 +110,11 @@ Previously, this view didn't declare a binding context, as it was supplied by th
 
 Now that the interaction with the view has changed from event handlers to commands, open the _Views\\NotePage.xaml.cs_ file and replace all the code with the following snippet:
 
-:::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/Views/NotePage.xaml.cs":::
+01. In the **Solution Explorer** pane of Visual Studio, double-click on **Views\\NotePage.xaml.cs**.
+
+    > [!TIP]
+    > You may need to expand the **Views\\NotePage.xaml** to show the file.
+
+01. Replace the code with the following snippet:
+
+    :::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/Views/NotePage.xaml.cs":::
