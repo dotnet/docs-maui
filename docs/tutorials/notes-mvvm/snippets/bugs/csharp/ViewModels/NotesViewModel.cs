@@ -42,10 +42,11 @@ internal class NotesViewModel : IQueryAttributable
         }
         else if (query.ContainsKey("saved"))
         {
+            //<insert>
+            //<move>
             string noteId = query["saved"].ToString();
             NoteViewModel matchedNote = AllNotes.Where((n) => n.Identifier == noteId).FirstOrDefault();
 
-            //<move>
             // If note is found, update it
             if (matchedNote != null)
             {
@@ -53,7 +54,6 @@ internal class NotesViewModel : IQueryAttributable
                 AllNotes.Move(AllNotes.IndexOf(matchedNote), 0);
             }
             //</move>
-            //<insert>
             // If note isn't found, it's new; add it.
             else
                 AllNotes.Insert(0, new NoteViewModel(Models.Note.Load(noteId)));
