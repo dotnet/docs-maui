@@ -25,9 +25,9 @@ To get the new or updated items to the top of the list, perform the following st
 
     :::code language="csharp" source="../snippets/bugs/csharp/ViewModels/NotesViewModel.cs" id="insert" highlight="12":::
 
-The `ApplyQueryAttributes` method should look like the following code snippet. The changed lines have been highlighted:
+The `ApplyQueryAttributes` method should look like the following code snippet:
 
-:::code language="csharp" source="../snippets/bugs/csharp/ViewModels/NotesViewModel.cs" id="query" highlight="20,22-23,28":::
+:::code language="csharp" source="../snippets/bugs/csharp/ViewModels/NotesViewModel.cs" id="query":::
 
 ## Allow selecting a note twice
 
@@ -35,7 +35,7 @@ In the **AllNotes view**, the `CollectionView` lists all of the notes, but doesn
 
 The problem you have to solve now is related to navigation. No matter how the **Allnotes view** is navigated to, the `NavigatedTo` event is raised for the page. This event is a perfect place to forcibly unselect the selected item in the `CollectionView`.
 
-However, with the MVVM pattern being applied here, the viewmodel can't trigger something directly on the view, such as clearing the selected item after the note is saved. So how do you get that to happen? A good implementation of the MVVM pattern minimizes the code-behind in the view. There are a few different ways to solve this problem in a way that supports the MVVM separation pattern. However, it's also OK to put code in the code-behind of the view, especially when it's directly tied to the view, and when doing so saves you time coding. MVVM has many great designs and concepts that help you compartmentalize your app, improving maintainability and making it easier for you to add new features. However, in some cases, you may find that MVVM encourages overengineering.
+However, with the MVVM pattern being applied here, the viewmodel can't trigger something directly on the view, such as clearing the selected item after the note is saved. So how do you get that to happen? A good implementation of the MVVM pattern minimizes the code-behind in the view. There are a few different ways to solve this problem to support the MVVM separation pattern. However, it's also OK to put code in the code-behind of the view, especially when it's directly tied to the view, and when doing so saves you time coding. MVVM has many great designs and concepts that help you compartmentalize your app, improving maintainability and making it easier for you to add new features. However, in some cases, you may find that MVVM encourages overengineering.
 
 Don't overengineer a solution for this problem, and just use the `NavigatedTo` event to clear the selected item from the `CollectionView`.
 
@@ -44,12 +44,12 @@ Don't overengineer a solution for this problem, and just use the `NavigatedTo` e
 
     :::code language="xaml" source="../snippets/bugs/csharp/Views/AllNotesPage.xaml" range="1-9" highlight="6":::
 
-01. You can add a default event handler by right-clicking on the event method name, `ContentPage_NavigatedTo`, and then selecting **Go To Definition**. This action opens the _Views\\AllNotesPage.xaml.cs_ in the code editor.
+01. You can add a default event handler by right-clicking on the event method name, `ContentPage_NavigatedTo`, and selecting **Go To Definition**. This action opens the _Views\\AllNotesPage.xaml.cs_ in the code editor.
 
 01. Replace the event handler code with the following snippet:
 
-    :::code language="xaml" source="../snippets/bugs/csharp/Views/AllNotesPage.xaml.cs" id="event":::
+    :::code language="csharp" source="../snippets/bugs/csharp/Views/AllNotesPage.xaml.cs" id="event":::
 
-    In the XAML, the `CollectionView` was given the name of `notesCollection`. This code uses that name to access the `CollectionView`, and set the `SelectedItem` to `null`. The selected item is cleared every time the page is navigated to.
+    In the XAML, the `CollectionView` was given the name of `notesCollection`. This code uses that name to access the `CollectionView`, and set `SelectedItem` to `null`. The selected item is cleared every time the page is navigated to.
 
 Now, run your app. Try to navigate to a note, press the back button, and select the same note a second time. The bug is fixed!
