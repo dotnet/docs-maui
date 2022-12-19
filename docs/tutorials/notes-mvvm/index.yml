@@ -39,10 +39,10 @@ items:
   content: |
     [!INCLUDE [](includes/viewmodel-notes.md)]
 
-- title: Fix the final bug
+- title: Fix the final bugs
   durationInMinutes: 5
   content: |
-    [!INCLUDE [](includes/bug.md)]
+    [!INCLUDE [](includes/bugs.md)]
 
 - content: |
     TODO
