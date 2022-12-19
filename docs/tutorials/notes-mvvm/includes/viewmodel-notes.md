@@ -34,13 +34,13 @@ Create the **Notes viewmodel**:
     }
     ```
 
-    This code is the blank `NotesViewModel` where you'll add properties and commands to support the `AllNotes` view. Notice that the `CommunityToolkit.Mvvm.Input` namespace is being imported. This namespace provides some command-types that invoke methods asynchronously.
+    This code is the blank `NotesViewModel` where you'll add properties and commands to support the `AllNotes` view.
 
 01. In the `Notes` class code, add the following properties:
 
     :::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/ViewModels/NotesViewModel.cs" id="properties":::
 
-    The `AllNotes` property is an `ObservableCollection` that stores all of the notes loaded from the device. The two commands will be used by the view to trigger the actions of creating a new note or selecting an existing note.
+    The `AllNotes` property is an `ObservableCollection` that stores all of the notes loaded from the device. The two commands will be used by the view to trigger the actions of creating a note or selecting an existing note.
 
 01. Add a parameterless constructor to the class, which initializes the commands and loads the notes from the model:
 
@@ -52,17 +52,19 @@ Create the **Notes viewmodel**:
 
     :::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/ViewModels/NotesViewModel.cs" id="commands":::
 
-    Notice that the `NewNoteAsync` method doesn't take a parameter while the `SelectNoteAsync` does. Commands can optionally have a single parameter that is provided when the command is invoked. For the `SelectNoteAsync` method, you want to provide the note that's being selected.
-
-    The code for `SelectNoteAsync` that navigates to an existing note is relatively the same as the previous tutorial, with just a slight difference in the query attribute. Instead of mapping a property name to a query string attribute, the query string is just being set directly: `load={note.Identifier}`. The query string data will be read differently in the **Note viewmodel** than it was in the previous tutorial.
+    Notice that the `NewNoteAsync` method doesn't take a parameter while the `SelectNoteAsync` does. Commands can optionally have a single parameter that is provided when the command is invoked. For the `SelectNoteAsync` method, the parameter represents the note that's being selected.
 
 01. Finally, implement the `IQueryAttributable.ApplyQueryAttributes` method:
 
     :::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/ViewModels/NotesViewModel.cs" id="query":::
 
-    After a note is created, updated, or deleted, this page is navigated to with a query string parameter indicating the action and note identifier.
+    The **Note viewmodel** created in the previous tutorial step, used navigation when the note was saved or deleted. The viewmodel navigated back to the **AllNotes view**, which this viewmodel is associated with. This code detects if the query string contained either the `deleted` or `saved` key. The value of the key is the unique identifier of the note that was handled.
 
-Don't worry that the code won't compile, you'll fix it later. The code for the class should look like the following snippet:
+    If the note was **deleted**, that note is matched in the `AllNotes` collection by the provided identifier, and removed.
+
+    There are two possible reasons a note is **saved**. The note was either just created or an existing note was changed. If the note is already in the `AllNotes` collection, it's a note that was updated. In this case, the note instance in the collection just needs to be refreshed. If the note is missing from the collection, it's a new note and must be added to the collection.
+
+The code for the class should look like the following snippet:
 
 :::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/ViewModels/NotesViewModel.cs" id="full":::
 
@@ -82,11 +84,15 @@ Update the **AllNotes view**:
 
     :::code language="xaml" source="../snippets/viewmodel-shared/csharp/Notes/Views/AllNotesPage.xaml" id="full" highlight="4,8,13,21-22":::
 
-The `CollectionView` supports commanding with the `SelectionChangedCommand` and `SelectionChangedCommandParameter` properties. In the updated XAML, the `SelectionChangedCommand` property is bound to the viewmodel's `SelectNodeCommand`, which means the command is invoked when the selected item changes. When the command is invoked, the `SelectionChangedCommandParameter` property value is passed to the command. The XAML value for the property uses `{RelativeSource Self}` binding to bind directly to the `CollectionView.SelectedItem` property. Meaning, when the command is invoked, the item that's currently selected in the collection view is passed to the command as a parameter.
+The toolbar no longer uses the `Clicked` event and instead uses a command.
+
+The `CollectionView` supports commanding with the `SelectionChangedCommand` and `SelectionChangedCommandParameter` properties. In the updated XAML, the `SelectionChangedCommand` property is bound to the viewmodel's `SelectNodeCommand`, which means the command is invoked when the selected item changes. When the command is invoked, the `SelectionChangedCommandParameter` property value is passed to the command.
+
+Look at the binding used for the `CollectionView`:
 
 :::code language="xaml" source="../snippets/viewmodel-shared/csharp/Notes/Views/AllNotesPage.xaml" id="CollectionView" highlight="5-6":::
 
-The toolbar no longer uses the `Clicked` event and instead uses a command.
+The `SelectionChangedCommandParameter` property uses `Source={RelativeSource Self}` binding. The `Self` references the current object, which is the `CollectionView`. Notice that the binding path is the `SelectedItem` property. When the command is invoked by changing the selected item, the `SelectNoteCommand` command is invoked and the selected item is passed to the command as a parameter.
 
 ## Clean up the AllNotes code-behind
 
@@ -103,4 +109,9 @@ Now that the interaction with the view has changed from event handlers to comman
 
 ## Run the app
 
-You can now run the app, and everything is working. There is one flaw. If you select a note, which opens the editor, press **Save**, and then try to select the note again, it doesn't work. This problem is solved in the next step.
+You can now run the app, and everything is working. However, there are two problems with how the app behaves:
+
+- If you select a note, which opens the editor, press **Save**, and then try to select the same note, it doesn't work.
+- Whenever a note is changed or added, the list of notes isn't reordered to show the latest notes at the top.
+
+These two problems are fixed in the next tutorial step.

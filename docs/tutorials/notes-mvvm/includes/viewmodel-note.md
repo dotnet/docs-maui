@@ -36,7 +36,7 @@ Create the **Note viewmodel**:
     }
     ```
 
-    This code is the blank `Note` viewmodel where you'll add properties and commands to support the `Note` view. Notice that the `CommunityToolkit.Mvvm.ComponentModel` namespace is being imported. This namespace provides the `ObservableObject` used as the base class. You'll learn more about `ObservableObject` in the next step.
+    This code is the blank `Note` viewmodel where you'll add properties and commands to support the `Note` view. Notice that the `CommunityToolkit.Mvvm.ComponentModel` namespace is being imported. This namespace provides the `ObservableObject` used as the base class. You'll learn more about `ObservableObject` in the next step. The `CommunityToolkit.Mvvm.Input` namespace is also imported. This namespace provides some command-types that invoke methods asynchronously.
 
     The `Models.Note` model is being stored as a private field. The properties and methods of this class will use this field.
 
@@ -51,7 +51,7 @@ Create the **Note viewmodel**:
 
     The `Text` property first checks if the value being set is a different value. If the value is different, that value is passed on to the model's property, and the `OnPropertyChanged` method is called.
 
-    The `OnPropertyChanged` method is provided by the `ObservableObject` base class. This method uses the name of the calling code, in this case the property name of **Text**, and raises the `ObservableObject.PropertyChanged` event. This event supplies the name of the property to any event subscribers. The binding system provided by .NET MAUI recognizes this event, and updates any related bindings in the UI. For the **note viewmodel**, when the `Text` property changes, the event is raised, and any UI element that is bound to the `Text` property is notified that the property changed.
+    The `OnPropertyChanged` method is provided by the `ObservableObject` base class. This method uses the name of the calling code, in this case, the property name of **Text**, and raises the `ObservableObject.PropertyChanged` event. This event supplies the name of the property to any event subscribers. The binding system provided by .NET MAUI recognizes this event, and updates any related bindings in the UI. For the **note viewmodel**, when the `Text` property changes, the event is raised, and any UI element that is bound to the `Text` property is notified that the property changed.
 
 01. Add the following command-properties to the class, which are the commands that the view can bind to:
 

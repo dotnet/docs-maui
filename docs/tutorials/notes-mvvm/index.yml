@@ -35,12 +35,12 @@ items:
     [!INCLUDE [](includes/viewmodel-note.md)]
 
 - title: Notes viewmodel and AllNotes view
-  durationInMinutes: 0
+  durationInMinutes: 10
   content: |
     [!INCLUDE [](includes/viewmodel-notes.md)]
 
 - title: Fix the final bug
-  durationInMinutes: 0
+  durationInMinutes: 5
   content: |
     [!INCLUDE [](includes/bug.md)]
 

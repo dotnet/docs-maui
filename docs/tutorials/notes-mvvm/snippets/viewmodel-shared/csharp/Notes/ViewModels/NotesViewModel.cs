@@ -17,7 +17,7 @@ internal class NotesViewModel: IQueryAttributable
     //<ctor>
     public NotesViewModel()
     {
-        AllNotes = new ObservableCollection<ViewModels.NoteViewModel>(Models.Note.LoadAll().Select(x => new NoteViewModel(x)));
+        AllNotes = new ObservableCollection<ViewModels.NoteViewModel>(Models.Note.LoadAll().Select(n => new NoteViewModel(n)));
         NewCommand = new AsyncRelayCommand(NewNoteAsync);
         SelectNoteCommand = new AsyncRelayCommand<ViewModels.NoteViewModel>(SelectNoteAsync);
     }

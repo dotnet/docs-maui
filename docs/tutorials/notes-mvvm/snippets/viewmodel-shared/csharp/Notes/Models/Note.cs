@@ -38,7 +38,7 @@ internal class Note
             {
                 Filename = Path.GetFileName(filename),
                 Text = File.ReadAllText(filename),
-                Date = File.GetCreationTime(filename)
+                Date = File.GetLastWriteTime(filename)
             };
     }
     //</load_single>
