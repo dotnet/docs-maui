@@ -1,7 +1,6 @@
 ---
-title: "Wireless Deployment for Xamarin.iOS and tvOS Apps"
-description: "This document describes how to wirelessly deploy a Xamarin.iOS app to an iOS device from either Visual Studio for Mac or Visual Studio 2019."
-ms.prod: xamarin
+title: "Wireless deployment for .NET MAUI iOS apps"
+description: "Learn how to wirelessly deploy your .NET MAUI iOS apps to a provisioned device that's paired to Xcode."
 ms.date: 12/19/2022
 ---
 
@@ -42,8 +41,6 @@ On your Mac build host, the following components should be installed:
 In order to deploy and debug wirelessly on your device, you must pair your iOS device or Apple TV with Xcode on your Mac. Once paired, you can select it from the device target list in Visual Studio.
 
 The following pairing process should only need to happen once per device. Xcode will retain the connection settings.
-
-<a name="pair"></a>
 
 ### Pairing an iOS device with Xcode
 
@@ -94,12 +91,6 @@ Wireless debugging is automatically enabled after wireless deployment, so you ca
 
 4. If you have problems with this feature that can't be fixed by the previous steps, please file an issue in [Developer Community](https://developercommunity.visualstudio.com/spaces/41/index.html).
 
-## Related Links
+## Related links
 
 - [Pair a wireless device with Xcode](https://help.apple.com/xcode/mac/9.0/index.html?localePath=en.lproj#/devbc48d1bad)
-
-## Related Video
-
-> [!Video https://learn.microsoft.com/shows/XamarinShow/Debug-to-iOS-Devices-Over-Wi-Fi/player]
-
-[!include[](~/essentials/includes/xamarin-show-essentials.md)]
