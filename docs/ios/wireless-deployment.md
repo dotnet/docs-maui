@@ -6,53 +6,102 @@ ms.date: 12/19/2022
 
 # Wireless deployment for .NET MAUI iOS apps
 
-An important part of the developer workflow is deploying to a device. Xcode 9 introduced the option of deploying to an iOS device or Apple TV through a network, rather than having to hardwire your devices every time you want to deploy and debug your app. This feature has been introduced in Visual Studio for Mac 7.4 and Visual Studio 15.6 release.
+Rather than having to hardwire an iOS device to your Mac to deploy and debug a .NET Multi-platform App UI (.NET MAUI) app, Visual Studio and Visual Studio for Mac can deploy .NET MAUI iOS apps to devices wirelessly, and debug them wirelessly. To do this you must pair your iOS device with Xcode on your Mac. Once paired, the device can be selected from the device target list in Visual Studio.
 
-Wireless deployment is available as a feature in both Visual Studio for Mac and Visual Studio.
+> [!IMPORTANT]
+> A .NET MAUI iOS app must have been provisioned before it can be deployed to a device for testing and debugging. For more information, see [Device provisioning for iOS](~/ios/device-provisioning/index.md).
 
-## Connect a device
+## Pair an iOS device
 
-In order to deploy and debug wirelessly on your device, you must pair your iOS device or Apple TV with Xcode on your Mac. Once paired, you can select it from the device target list in Visual Studio.
+Perform the following steps to pair an iOS device to Xcode on your Mac:
 
-The following pairing process should only need to happen once per device. Xcode will retain the connection settings.
+1. Ensure that your iOS device is connected to the same wireless network as your Mac.
+1. Plug your iOS device into your Mac using a USB cable.
 
-## Pair an iOS device with Xcode
+    > [!NOTE]
+    > The first time you connect an iOS device to your Mac, you'll need to tap the **Trust** button in the **Trust This Computer** dialog on your device.
 
-1. Open Xcode and go to **Window > Devices and Simulators**.
-2. Plug your iOS device into your Mac using a lightning cable. You may need to select to **Trust This Computer** on your device.
-3. Select your device and then select the **Connect via network** checkbox to pair your device:
-    ![Device and Simulator window showing Connect via network option](wireless-deployment-images/image2.png)
+1. Open **Xcode** and click **Window > Devices and Simulators**. In the window that appears, click **Devices**.
+1. In the **Devices and Simulators** window, in the left column, select your device. Then in the detail area select the **Connect via network** checkbox:
 
-## Deploy to a device
+    :::image type="content" source="media/wireless-deployment/xcode.png" alt-text="Screenshot of Devices and Simulators window showing Connect via network option.":::
 
-When a device is connected wirelessly and ready to be used for deployment, it shows up in the device target list, as if the device were connected through USB.
+    Xcode pairs with the iOS device.
 
-To test on a physical device, the device must be [provisioned](~/ios/get-started/installation/device-provisioning/index.md). Make sure to do this before attempting to deploy to a device.
+1. In the **Devices and Simulators** window, in the left column, a network icon will appear next to any connected device that's paired:
 
-To deploy to an iOS or tvOS device, use the following steps:
+    :::image type="content" source="media/wireless-deployment/xcode-paired.png" alt-text="Screenshot of Devices and Simulators window showing a paired iOS device.":::
 
-1. Ensure that your deployment machine and target device are on the same wireless network.
+1. Disconnect the USB cable and check that the device remains paired.
 
-2. Select your device from the target device list and run the application.
+Xcode will retain the pairing settings, and so the device shouldn't need to be paired again.
 
-3. If your device is locked, you'll be prompted to unlock your device. Once the device is unlocked, your app is deployed to the device.
+## Unpair an iOS device
 
-Wireless debugging is automatically enabled after wireless deployment, so you can use previously set breakpoints and continue your debugging workflow as you've always done.
+Perform the following steps to unpair an iOS device from Xcode on your Mac:
 
-## Troubles
+1. Ensure that your iOS device is connected to the same wireless network as your Mac.
+1. Open **Xcode** and click **Window > Devices and Simulators**. In the window that appears, click **Devices**.
+1. In the **Devices and Simulators** window, in the left column, select your paired device. Then right-click the device and select the **Unpair Device** item.
 
-1. Always ensure that your iOS device or Apple TV are connected to the same network as your Mac.
+## Deploy to device
 
-2. If the device does not show in Visual Studio, check Xcode's **Devices and Simulators** window.
+After wirelessly pairing your device to Xcode, provisioned .NET MAUI iOS apps can be wirelessly deployed to the device.
 
-    - If Xcode **does not** show your device as connected, try to [pair](#pair) your device again.
+<!-- markdownlint-disable MD025 -->
+# [Visual Studio](#tab/vs)
+<!-- markdownlint-enable MD025 -->
 
-    - If Xcode does show the device as connected, try restarting Visual Studio and your device.
+1. In Visual Studio, ensure that the IDE is paired to a Mac Build host. For more information, see [Pair to Mac for iOS development](~/ios/pair-to-mac.md).
+1. Ensure that your iOS device is wirelessly paired to your Mac build host. For more information, see [Pair an iOS device](#pair-an-ios-device).
+1. In the Visual Studio toolbar, use the **Debug Target** drop-down to select **iOS Remote Devices** and then the device that's connected to your Mac build host:
 
-3. If you have not yet done so, you will need to [provision](~/ios/get-started/installation/device-provisioning/index.md) your device.
+    :::image type="content" source="media/wireless-deployment/vs/select-remote-device.png" alt-text="Select your remote device in Visual Studio.":::
 
-4. If you have problems with this feature that can't be fixed by the previous steps, please file an issue in [Developer Community](https://developercommunity.visualstudio.com/spaces/41/index.html).
+1. In the Visual Studio toolbar, press the green Start button to launch the app on your remote device:
 
-## Related links
+    :::image type="content" source="media/wireless-deployment/vs/chosen-debug-target.png" alt-text="Visual Studio iOS device debug target choice.":::
 
-- [Pair a wireless device with Xcode](https://help.apple.com/xcode/mac/9.0/index.html?localePath=en.lproj#/devbc48d1bad)
+> [!NOTE]
+> An alternative approach to deploying a .NET MAUI iOS app to a device is to use hot restart. Hot restart enables you to deploy a .NET MAUI app to a 64-bit local iOS device, from Visual Studio, without requiring a Mac build host. For more information, see [Deploy an iOS app using hot restart](~/ios/hot-restart.md).
+
+<!-- markdownlint-disable MD025 -->
+# [Visual Studio for Mac](#tab/vsmac)
+<!-- markdownlint-enable MD025 -->
+
+1. Ensure that your iOS device is wirelessly paired to your Mac build host. For more information, see [Pair an iOS device](#pair-an-ios-device).
+1. In the Visual Studio for Mac toolbar, ensure that the debug target is set to your connected iOS device:
+
+    :::image type="content" source="media/wireless-deployment/vsmac/select-device.png" alt-text="Select your remote device in Visual Studio for Mac.":::
+
+1. In the Visual Studio for Mac toolbar, press the **Play** button to launch the app on your device:
+
+    :::image type="content" source="media/wireless-deployment/vsmac/chosen-debug-target.png" alt-text="Visual Studio for Mac iOS device debug target choice.":::
+
+---
+
+## Troubleshoot
+
+- Ensure that your iOS device is connected to the same network as your Mac.
+- Ensure that your device is provisioned. For more information about provisioning, see [Device provisioning for iOS](~/ios/device-provisioning/index.md).
+- Verify that Xcode can see the device:
+    - In Xcode, choose **Window > Devices and Simulators**, and in window that appears click **Devices**. The device should appear under **Connected**.
+- Ping the device:
+    - Find the device's IP address. On the device open **Settings**, tap **Wi-Fi**, and then tap the information button next to the network that's active.
+    - On a Mac, open **Terminal** and type `ping` followed by the device's IP address. Provided that your Mac can see the device, you'll receive output similar to:
+
+    ```zsh
+    PING 192.168.1.107 (192.168.1.107): 56 data bytes
+    64 bytes from 192.168.1.107: icmp_seq=0 ttl=64 time=121.015 ms
+    64 bytes from 192.168.1.107: icmp_seq=1 ttl=64 time=28.387 ms
+    64 bytes from 192.168.1.107: icmp_seq=2 ttl=64 time=49.890 ms
+    64 bytes from 192.168.1.107: icmp_seq=3 ttl=64 time=72.283 ms
+    ```
+
+    If there's an error, the output will be `Request timeout for icmp_seq 0`. If you can't ping the device, then the Internet Control Message Protocol (ICMP) is blocked or there's another connectivity issue.
+- Ensure that port 62078 is open.
+- Connect the device to the network using an Ethernet cable:
+    - Use the Lightning to USB Camera Adapter and a USB to Ethernet adapter.
+- Re-pair the iOS device:
+    - Unpair the device. For more information, see [Unpair an iOS device](#unpair-an-ios-device).
+    - Pair the iOS device with Xcode. For more information, see [Pair an iOS device](#pair-an-ios-device).
