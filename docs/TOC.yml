@@ -640,7 +640,7 @@
         - name: iOS
           items:
             - name: Hot restart
-              href: deployment/hot-restart.md
+              href: ios/hot-restart.md
             - name: Wireless deployment
               href: ios/wireless-deployment.md
         - name: Project configuration
