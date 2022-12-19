@@ -637,8 +637,12 @@
       items:
         - name: Overview
           href: deployment/index.md
-        - name: Hot restart
-          href: deployment/hot-restart.md
+        - name: iOS
+          items:
+            - name: Hot restart
+              href: deployment/hot-restart.md
+            - name: Wireless deployment
+              href: ios/wireless-deployment.md
         - name: Project configuration
           href: deployment/visual-studio-properties.md
         - name: Publish
