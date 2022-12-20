@@ -46,42 +46,51 @@ The following table lists the types that implement handler-based views in .NET M
 
 | View | Interface | Handler | Property Mapper | Command Mapper |
 | -- | -- | -- | -- | -- |
-| `ActivityIndicator` | `IActivityIndicator` | `ActivityIndicatorHandler` | `Mapper` | `CommandMapper` |
-| `BlazorWebView` | `IBlazorWebView` | `BlazorWebViewHandler` | `BlazorWebViewMapper` | |
-| `Border` | `IBorderView` | `BorderHandler` | `Mapper` | `CommandMapper` |
-| `Button` | `IButton` | `ButtonHandler` | `ImageButtonMapper`. `TextButtonMapper`, `Mapper` | `CommandMapper` |
-| `CarouselView` | | `CarouselViewHandler` | `Mapper` | |
-| `CheckBox` | `ICheckBox` | `CheckBoxHandler` | `Mapper` | `CommandMapper` |
-| `CollectionView` |  | `CollectionViewHandler` | `Mapper` | |
-| `ContentView` | `IContentView` | `ContentViewHandler` | `Mapper` | `CommandMapper` |
-| `DatePicker` | `IDatePicker` | `DatePickerHandler` | `Mapper` | `CommandMapper` |
-| `Editor` | `IEditor` | `EditorHandler` | `Mapper` | `CommandMapper` |
-| `Ellipse` | | `ShapeViewHandler` | `Mapper` | `CommandMapper` |
-| `Entry` | `IEntry` | `EntryHandler` | `Mapper` | `CommandMapper` |
-| `GraphicsView` | `IGraphicsView` | `GraphicsViewHandler` | `Mapper` | `CommandMapper` |
-| `Image` | `IImage` | `ImageHandler` | `Mapper` | `CommandMapper` |
-| `ImageButton` | `IImageButton` | `ImageButtonHandler` | `ImageMapper`, `Mapper` | |
-| `IndicatorView` | `IIndicatorView` | `IndicatorViewHandler` | `Mapper` | `CommandMapper` |
-| `Label` | `ILabel` | `LabelHandler` | `Mapper` | `CommandMapper` |
-| `Line` | | `LineHandler` | `Mapper` | |
-| `Map` | `IMap` | `MapHandler` | `Mapper` | `CommandMapper` |
-| `Path` | | `PathHandler` | `Mapper` | |
-| `Picker` | `IPicker` | `PickerHandler` | `Mapper` | `CommandMapper` |
-| `Polygon` | | `PolygonHandler` | `Mapper` | |
-| `Polyline` | | `PolylineHandler` | `Mapper` | |
-| `ProgressBar` | `IProgress` | `ProgressBarHandler` | `Mapper` | `CommandMapper` |
-| `RadioButton` | `IRadioButton` | `RadioButtonHandler` | `Mapper` | `CommandMapper` |
-| `Rectangle` | | `RectangleHandler` | `Mapper` | |
-| `RefreshView` | `IRefreshView` | `RefreshViewHandler` | `Mapper` | `CommandMapper` |
-| `RoundRectangle` | | `RoundRectangleHandler` | `Mapper` | |
-| `ScrollView` | `IScrollView` | `ScrollViewHandler` | `Mapper` | `CommandMapper` |
-| `SearchBar` | `ISearchBar` | `SearchBarHandler` | `Mapper` | `CommandMapper` |
-| `Slider` | `ISlider` | `SliderHandler` | `Mapper` | `CommandMapper` |
-| `Stepper` | `IStepper` | `StepperHandler` | `Mapper` | `CommandMapper` |
-| `SwipeView` | `ISwipeView` | `SwipeViewHandler` | `Mapper` | `CommandMapper` |
-| `Switch` | `ISwitch` | `SwitchHandler` | `Mapper` | `CommandMapper` |
-| `TimePicker` | `ITimePicker` | `TimePickerHandler` | `Mapper` | `CommandMapper` |
-| `WebView` | `IWebView` | `WebViewHandler` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.ActivityIndicator> | `IActivityIndicator` | `ActivityIndicatorHandler` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> | `IBlazorWebView` | `BlazorWebViewHandler` | `BlazorWebViewMapper` | |
+| <xref:Microsoft.Maui.Controls.Border> | `IBorderView` | `BorderHandler` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.Button> | `IButton` | `ButtonHandler` | `ImageButtonMapper`. `TextButtonMapper`, `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.CarouselView> | | `CarouselViewHandler` | `Mapper` | |
+| <xref:Microsoft.Maui.Controls.Cell> | | `CellRenderer` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.CheckBox> | `ICheckBox` | `CheckBoxHandler` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.CollectionView> |  | `CollectionViewHandler` | `Mapper` | |
+| <xref:Microsoft.Maui.Controls.ContentView> | `IContentView` | `ContentViewHandler` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.DatePicker> | `IDatePicker` | `DatePickerHandler` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.Editor> | `IEditor` | `EditorHandler` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.Ellipse> | | `ShapeViewHandler` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.Entry> | `IEntry` | `EntryHandler` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.EntryCell> | | `EntryCellRenderer` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.Frame> | | `FrameRenderer` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.GraphicsView> | `IGraphicsView` | `GraphicsViewHandler` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.Image> | `IImage` | `ImageHandler` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.ImageButton> | `IImageButton` | `ImageButtonHandler` | `ImageMapper`, `Mapper` | |
+| <xref:Microsoft.Maui.Controls.ImageCell> | | `ImageCellRenderer` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.IndicatorView> | `IIndicatorView` | `IndicatorViewHandler` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.Label> | `ILabel` | `LabelHandler` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.Line> | | `LineHandler` | `Mapper` | |
+| <xref:Microsoft.Maui.Controls.ListView> | | `ListViewRenderer` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.Map> | `IMap` | `MapHandler` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.Path> | | `PathHandler` | `Mapper` | |
+| <xref:Microsoft.Maui.Controls.Picker> | `IPicker` | `PickerHandler` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.Polygon> | | `PolygonHandler` | `Mapper` | |
+| <xref:Microsoft.Maui.Controls.Polyline> | | `PolylineHandler` | `Mapper` | |
+| <xref:Microsoft.Maui.Controls.ProgressBar> | `IProgress` | `ProgressBarHandler` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.RadioButton> | `IRadioButton` | `RadioButtonHandler` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.Rectangle> | | `RectangleHandler` | `Mapper` | |
+| <xref:Microsoft.Maui.Controls.RefreshView> | `IRefreshView` | `RefreshViewHandler` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.RoundRectangle> | | `RoundRectangleHandler` | `Mapper` | |
+| <xref:Microsoft.Maui.Controls.ScrollView> | `IScrollView` | `ScrollViewHandler` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.SearchBar> | `ISearchBar` | `SearchBarHandler` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.Slider> | `ISlider` | `SliderHandler` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.Stepper> | `IStepper` | `StepperHandler` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.SwipeView> | `ISwipeView` | `SwipeViewHandler` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.Switch> | `ISwitch` | `SwitchHandler` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.SwitchCell> | | `SwitchCellRenderer` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.TableView> | | `TableViewRenderer` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.TextCell> | | `TextCellRenderer` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.TimePicker> | `ITimePicker` | `TimePickerHandler` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.ViewCell> | | `ViewCellRenderer` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.WebView> | `IWebView` | `WebViewHandler` | `Mapper` | `CommandMapper` |
 
 All handlers are in the `Microsoft.Maui.Handlers` namespace, with the following exceptions:
 
