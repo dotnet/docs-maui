@@ -57,7 +57,7 @@ The following table lists the types that implement handler-based views in .NET M
 | <xref:Microsoft.Maui.Controls.ContentView> | `IContentView` | `ContentViewHandler` | `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.DatePicker> | `IDatePicker` | `DatePickerHandler` | `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.Editor> | `IEditor` | `EditorHandler` | `Mapper` | `CommandMapper` |
-| <xref:Microsoft.Maui.Controls.Ellipse> | | `ShapeViewHandler` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.Shapes.Ellipse> | | `ShapeViewHandler` | `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.Entry> | `IEntry` | `EntryHandler` | `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.EntryCell> | | `EntryCellRenderer` | `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.Frame> | | `FrameRenderer` | `Mapper` | `CommandMapper` |
@@ -67,18 +67,18 @@ The following table lists the types that implement handler-based views in .NET M
 | <xref:Microsoft.Maui.Controls.ImageCell> | | `ImageCellRenderer` | `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.IndicatorView> | `IIndicatorView` | `IndicatorViewHandler` | `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.Label> | `ILabel` | `LabelHandler` | `Mapper` | `CommandMapper` |
-| <xref:Microsoft.Maui.Controls.Line> | | `LineHandler` | `Mapper` | |
+| <xref:Microsoft.Maui.Controls.Line> | | <xref:Microsoft.Maui.Controls.Handlers.LineHandler> | `Mapper` | |
 | <xref:Microsoft.Maui.Controls.ListView> | | `ListViewRenderer` | `Mapper` | `CommandMapper` |
-| <xref:Microsoft.Maui.Controls.Map> | `IMap` | `MapHandler` | `Mapper` | `CommandMapper` |
-| <xref:Microsoft.Maui.Controls.Path> | | `PathHandler` | `Mapper` | |
+| <xref:Microsoft.Maui.Controls.Maps.Map> | `IMap` | `MapHandler` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.Shapes.Path> | | <xref:Microsoft.Maui.Controls.Handlers.PathHandler> | `Mapper` | |
 | <xref:Microsoft.Maui.Controls.Picker> | `IPicker` | `PickerHandler` | `Mapper` | `CommandMapper` |
-| <xref:Microsoft.Maui.Controls.Polygon> | | `PolygonHandler` | `Mapper` | |
-| <xref:Microsoft.Maui.Controls.Polyline> | | `PolylineHandler` | `Mapper` | |
+| <xref:Microsoft.Maui.Controls.Shapes.Polygon> | | <xref:Microsoft.Maui.Controls.Handlers.PolygonHandler> | `Mapper` | |
+| <xref:Microsoft.Maui.Controls.Shapes.Polyline> | | <xref:Microsoft.Maui.Controls.Handlers.PolylineHandler> | `Mapper` | |
 | <xref:Microsoft.Maui.Controls.ProgressBar> | `IProgress` | `ProgressBarHandler` | `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.RadioButton> | `IRadioButton` | `RadioButtonHandler` | `Mapper` | `CommandMapper` |
-| <xref:Microsoft.Maui.Controls.Rectangle> | | `RectangleHandler` | `Mapper` | |
+| <xref:Microsoft.Maui.Controls.Shapes.Rectangle> | | <xref:Microsoft.Maui.Controls.Handlers.RectangleHandler> | `Mapper` | |
 | <xref:Microsoft.Maui.Controls.RefreshView> | `IRefreshView` | `RefreshViewHandler` | `Mapper` | `CommandMapper` |
-| <xref:Microsoft.Maui.Controls.RoundRectangle> | | `RoundRectangleHandler` | `Mapper` | |
+| <xref:Microsoft.Maui.Controls.Shapes.RoundRectangle> | | <xref:Microsoft.Maui.Controls.Handlers.RoundRectangleHandler> | `Mapper` | |
 | <xref:Microsoft.Maui.Controls.ScrollView> | `IScrollView` | `ScrollViewHandler` | `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.SearchBar> | `ISearchBar` | `SearchBarHandler` | `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.Slider> | `ISlider` | `SliderHandler` | `Mapper` | `CommandMapper` |
@@ -95,7 +95,6 @@ The following table lists the types that implement handler-based views in .NET M
 All handlers are in the `Microsoft.Maui.Handlers` namespace, with the following exceptions:
 
 - `CarouselViewHandler` and `CollectionViewHandler` are in the `Microsoft.Maui.Controls.Handlers.Items` namespace.
-- `LineHandler`, `PathHandler`, `PolygonHandler`, `PolylineHandler`, `RectangleHandler`, and `RoundRectangleHandler` are in the `Microsoft.Maui.Controls.Handlers` namespace.
 - `MapHandler` is in the `Microsoft.Maui.Maps.Handlers` namespace.
 
 The interfaces listed in the table above are in the `Microsoft.Maui` namespace.
