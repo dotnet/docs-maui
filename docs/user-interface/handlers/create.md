@@ -17,7 +17,7 @@ A standard requirement for apps is the ability to play videos. This article exam
 ::: moniker range="=net-maui-6.0"
 
 > [!IMPORTANT]
-> The Windows App SDK v1.2 includes a control to play video. However, .NET MAUI 6.0 uses an earlier of this SDK. Therefore, to play video on Windows from a .NET MAUI 6.0 app you must add the Windows App SDK v1.2 to your app project with the NuGet package manager. Alternatively, use .NET MAUI 7.0 which automatically uses the Windows App SDK v1.2.
+> The Windows App SDK v1.2 includes a control to play video. However, .NET MAUI 6.0 uses an earlier of this SDK. Therefore, to play video on Windows from a .NET MAUI 6.0 app requires you to add the Windows App SDK v1.2 to your app project with the NuGet package manager. Alternatively, use .NET MAUI 7.0 which automatically uses the Windows App SDK v1.2.
 
 ::: moniker-end
 
