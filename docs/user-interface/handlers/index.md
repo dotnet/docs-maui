@@ -47,7 +47,7 @@ The following table lists the types that implement handler-based views in .NET M
 | View | Interface | Handler | Property Mapper | Command Mapper |
 | -- | -- | -- | -- | -- |
 | <xref:Microsoft.Maui.Controls.ActivityIndicator> | <xref:Microsoft.Maui.IActivityIndicator> | <xref:Microsoft.Maui.Handlers.ActivityIndicatorHandler> | `Mapper` | `CommandMapper` |
-| <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> | `IBlazorWebView` | <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebViewHandler> | <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebViewHandler.BlazorWebViewMapper> | |
+| <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> | <xref:Microsoft.AspNetCore.Components.WebView.Maui.IBlazorWebView> | <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebViewHandler> | <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebViewHandler.BlazorWebViewMapper> | |
 | <xref:Microsoft.Maui.Controls.Border> | <xref:Microsoft.Maui.IBorderView> | <xref:Microsoft.Maui.Handlers.BorderHandler> | `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.Button> | <xref:Microsoft.Maui.IButton> | <xref:Microsoft.Maui.Handlers.ButtonHandler> | `ImageButtonMapper`. `TextButtonMapper`, `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.CarouselView> | | <xref:Microsoft.Maui.Controls.Handlers.Items.CarouselViewHandler> | `Mapper` | |
@@ -69,7 +69,7 @@ The following table lists the types that implement handler-based views in .NET M
 | <xref:Microsoft.Maui.Controls.Label> | <xref:Microsoft.Maui.ILabel> | <xref:Microsoft.Maui.Handlers.LabelHandler> | `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.Shapes.Line> | | <xref:Microsoft.Maui.Controls.Handlers.LineHandler> | `Mapper` | |
 | <xref:Microsoft.Maui.Controls.ListView> | | `ListViewRenderer` | `Mapper` | `CommandMapper` |
-| <xref:Microsoft.Maui.Controls.Maps.Map> | `IMap` | <xref:Microsoft.Maui.Maps.Handlers.MapHandler> | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.Maps.Map> | <xref:Microsoft.Maui.Maps.IMap> | <xref:Microsoft.Maui.Maps.Handlers.MapHandler> | `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.Shapes.Path> | | <xref:Microsoft.Maui.Controls.Handlers.PathHandler> | `Mapper` | |
 | <xref:Microsoft.Maui.Controls.Picker> | <xref:Microsoft.Maui.IPicker> | <xref:Microsoft.Maui.Handlers.PickerHandler> | `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.Shapes.Polygon> | | <xref:Microsoft.Maui.Controls.Handlers.PolygonHandler> | `Mapper` | |
@@ -88,6 +88,6 @@ The following table lists the types that implement handler-based views in .NET M
 | <xref:Microsoft.Maui.Controls.SwitchCell> | | `SwitchCellRenderer` | `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.TableView> | | `TableViewRenderer` | `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.TextCell> | | `TextCellRenderer` | `Mapper` | `CommandMapper` |
-| <xref:Microsoft.Maui.Controls.TimePicker> | `ITimePicker` | <xref:Microsoft.Maui.Handlers.TimePickerHandler> | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.TimePicker> | <xref:Microsoft.Maui.ITimePicker> | <xref:Microsoft.Maui.Handlers.TimePickerHandler> | `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.ViewCell> | | `ViewCellRenderer` | `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.WebView> | <xref:Microsoft.Maui.IWebView> | <xref:Microsoft.Maui.Handlers.WebViewHandler> | `Mapper` | `CommandMapper` |
