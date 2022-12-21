@@ -185,7 +185,7 @@ The following screenshot verifies the consistent styling:
 
 :::image type="content" source="media/markup-extensions/sharedresources.png" alt-text="Screenshot of styled controls.":::
 
-Although it's common to define the `Resources` collection at the top of the page, you can have `Resources` collections on other elements on the page. For example, the following example shows resources added to a `StackLayout`:
+Although it's common to define the `Resources` collection at the top of the page, you can have `Resources` collections on other elements on the page. For example, the following example shows resources added to a <xref:Microsoft.Maui.Controls.StackLayout>:
 
 ```xaml
 <StackLayout>

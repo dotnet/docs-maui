@@ -356,7 +356,7 @@ The following XAML example shows a `Style` that includes `AdaptiveTrigger` objec
 </Style>
 ```
 
-In this example, the implicit `Style` targets `StackLayout` objects. When the window width is between 0 and 800 device-independent units, `StackLayout` objects to which the `Style` is applied will have a vertical orientation. When the window width is >= 800 device-independent units, the `VisualState` change is triggered, and the `StackLayout` orientation changes to horizontal.
+In this example, the implicit `Style` targets <xref:Microsoft.Maui.Controls.StackLayout> objects. When the window width is between 0 and 800 device-independent units, <xref:Microsoft.Maui.Controls.StackLayout> objects to which the `Style` is applied will have a vertical orientation. When the window width is >= 800 device-independent units, the `VisualState` change is triggered, and the <xref:Microsoft.Maui.Controls.StackLayout> orientation changes to horizontal.
 
 The `MinWindowHeight` and `MinWindowWidth` properties can be used independently or in conjunction with each other. The following XAML shows an example of setting both properties:
 

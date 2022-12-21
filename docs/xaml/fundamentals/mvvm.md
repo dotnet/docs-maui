@@ -35,7 +35,7 @@ In [XAML markup extensions](markup-extensions.md) you saw how to define a new XM
 </ContentPage>
 ```
 
-In this example, the retrieved `DateTime` value is set as the `BindingContext` on a `StackLayout`. When you set the `BindingContext` on an element, it is inherited by all the children of that element. This means that all the children of the `StackLayout` have the same `BindingContext`, and they can contain bindings to properties of that object:
+In this example, the retrieved `DateTime` value is set as the `BindingContext` on a <xref:Microsoft.Maui.Controls.StackLayout>. When you set the `BindingContext` on an element, it is inherited by all the children of that element. This means that all the children of the <xref:Microsoft.Maui.Controls.StackLayout> have the same `BindingContext`, and they can contain bindings to properties of that object:
 
 :::image type="content" source="media/mvvm/oneshotdatetime.png" alt-text="Screenshot of a page displaying the date and time.":::
 

@@ -203,7 +203,7 @@ The following examples demonstrate common uses of <xref:Microsoft.Maui.Controls.
 
 ### Stack
 
-A <xref:Microsoft.Maui.Controls.FlexLayout> can substitute for a `StackLayout`:
+A <xref:Microsoft.Maui.Controls.FlexLayout> can substitute for a <xref:Microsoft.Maui.Controls.StackLayout>:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"

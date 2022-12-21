@@ -187,7 +187,7 @@ The `RadioButtonGroup` class defines a `GroupName` attached property, of type `s
 </StackLayout>
 ```
 
-In this example, each `RadioButton` in the `StackLayout` will have its `GroupName` property set to `colors`, and will be mutually exclusive.
+In this example, each `RadioButton` in the <xref:Microsoft.Maui.Controls.StackLayout> will have its `GroupName` property set to `colors`, and will be mutually exclusive.
 
 > [!NOTE]
 > When an `ILayout` object that sets the `RadioButtonGroup.GroupName` attached property contains a `RadioButton` that sets its `GroupName` property, the value of the `RadioButton.GroupName` property will take precedence.

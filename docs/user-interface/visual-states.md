@@ -264,11 +264,11 @@ The following example shows how to use the Visual State Manager for input valida
 </ContentPage>
 ```
 
-In this example, visual states are attached to the `StackLayout`, and there are two mutually-exclusive states named `Valid` and `Invalid`. If the `Entry` does not contain a valid phone number, then the current state is `Invalid`, and so the `Entry` has a pink background, the second `Label` is visible, and the `Button` is disabled. When a valid phone number is entered, then the current state becomes `Valid`. The `Entry` gets a lime background, the second `Label` disappears, and the `Button` is now enabled:
+In this example, visual states are attached to the <xref:Microsoft.Maui.Controls.StackLayout>, and there are two mutually-exclusive states named `Valid` and `Invalid`. If the `Entry` does not contain a valid phone number, then the current state is `Invalid`, and so the `Entry` has a pink background, the second `Label` is visible, and the `Button` is disabled. When a valid phone number is entered, then the current state becomes `Valid`. The `Entry` gets a lime background, the second `Label` disappears, and the `Button` is now enabled:
 
 :::image type="content" source="media/visualstates/validation.png" alt-text="Screenshot of the visual state validation example.":::
 
-The code-behind file is responsible for handling the `TextChanged` event from the `Entry`. The handler uses a regular expression to determine if the input string is valid or not. The `GoToState` method in the code-behind file calls the static `VisualStateManager.GoToState` method on the `StackLayout` object:
+The code-behind file is responsible for handling the `TextChanged` event from the `Entry`. The handler uses a regular expression to determine if the input string is valid or not. The `GoToState` method in the code-behind file calls the static `VisualStateManager.GoToState` method on the <xref:Microsoft.Maui.Controls.StackLayout> object:
 
 ```csharp
 public partial class VsmValidationPage : ContentPage

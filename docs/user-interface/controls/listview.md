@@ -376,7 +376,7 @@ The `RetainElement` caching strategy specifies that the `ListView` will generate
 - The cell template changes frequently.
 - Testing reveals that the `RecycleElement` caching strategy results in a reduced execution speed.
 
-It's important to recognize the consequences of the `RetainElement` caching strategy when working with custom cells. Any cell initialization code will need to run for each cell creation, which may be multiple times per second. In this circumstance, layout techniques that were fine on a page, like using multiple nested `StackLayout` objects, become performance bottlenecks when they're set up and destroyed in real time as the user scrolls.
+It's important to recognize the consequences of the `RetainElement` caching strategy when working with custom cells. Any cell initialization code will need to run for each cell creation, which may be multiple times per second. In this circumstance, layout techniques that were fine on a page, like using multiple nested <xref:Microsoft.Maui.Controls.StackLayout> objects, become performance bottlenecks when they're set up and destroyed in real time as the user scrolls.
 
 ### Recycle elements
 
@@ -505,7 +505,7 @@ The following screenshot shows the resulting header:
 
 ### Display views in the header and footer
 
-The `Header` and `Footer` properties can each be set to a view. This can be a single view, or a view that contains multiple child views. The following example shows the `Header` and `Footer` properties each set to a `StackLayout` object that contains a `Label` object:
+The `Header` and `Footer` properties can each be set to a view. This can be a single view, or a view that contains multiple child views. The following example shows the `Header` and `Footer` properties each set to a <xref:Microsoft.Maui.Controls.StackLayout> object that contains a `Label` object:
 
 ```xaml
 <ListView ItemsSource="{Binding Monkeys}">
@@ -626,7 +626,7 @@ In this example, the `OnImageTapped` event handler is executed in response to an
 </ContentPage>
 ```
 
-The default `FlowDirection` for an element with a parent is `MatchParent`. Therefore, the `ListView` inherits the `FlowDirection` property value from the `StackLayout`, which in turn inherits the `FlowDirection` property value from the <xref:Microsoft.Maui.Controls.ContentPage>.
+The default `FlowDirection` for an element with a parent is `MatchParent`. Therefore, the `ListView` inherits the `FlowDirection` property value from the <xref:Microsoft.Maui.Controls.StackLayout>, which in turn inherits the `FlowDirection` property value from the <xref:Microsoft.Maui.Controls.ContentPage>.
 
 ## Display grouped data
 

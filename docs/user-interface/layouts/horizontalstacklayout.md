@@ -6,7 +6,7 @@ ms.date: 12/06/2021
 
 # HorizontalStackLayout
 
-The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.HorizontalStackLayout> organizes child views in a one-dimensional horizontal stack, and is a more performant alternative to a `StackLayout`. In addition, a <xref:Microsoft.Maui.Controls.HorizontalStackLayout> can be used as a parent layout that contains other child layouts.
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.HorizontalStackLayout> organizes child views in a one-dimensional horizontal stack, and is a more performant alternative to a <xref:Microsoft.Maui.Controls.StackLayout>. In addition, a <xref:Microsoft.Maui.Controls.HorizontalStackLayout> can be used as a parent layout that contains other child layouts.
 
 The <xref:Microsoft.Maui.Controls.HorizontalStackLayout> defines the following properties:
 

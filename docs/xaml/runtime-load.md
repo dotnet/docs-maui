@@ -48,7 +48,7 @@ Button navigationButton = new Button().LoadFromXaml(navigationButtonXAML);
 stackLayout.Add(navigationButton);
 ```
 
-In this example, a `Button` instance is created, with its `Text` property value being set from the XAML defined in the `string`. The `Button` is then added to a `StackLayout` that has been defined in the XAML for the page.
+In this example, a `Button` instance is created, with its `Text` property value being set from the XAML defined in the `string`. The `Button` is then added to a <xref:Microsoft.Maui.Controls.StackLayout> that has been defined in the XAML for the page.
 
 > [!NOTE]
 > The `LoadFromXaml` extension methods allow a generic type argument to be specified. However, it's rarely necessary to specify the type argument, as it will be inferred from the type of the instance it's operating on.

@@ -41,7 +41,7 @@ The main control groups used to create the user interface of a .NET MAUI app are
 | <xref:Microsoft.Maui.Controls.FlexLayout>| <xref:Microsoft.Maui.Controls.FlexLayout> enables its children to be stacked or wrapped with different alignment and orientation options. <xref:Microsoft.Maui.Controls.FlexLayout> is based on the CSS Flexible Box Layout Module, known as *flex layout* or *flex-box*. For more information, see [FlexLayout](~/user-interface/layouts/flexlayout.md). |
 | <xref:Microsoft.Maui.Controls.Grid> | <xref:Microsoft.Maui.Controls.Grid> positions its child elements in a grid of rows and columns. For more information, see [Grid](~/user-interface/layouts/grid.md). |
 | <xref:Microsoft.Maui.Controls.HorizontalStackLayout> | <xref:Microsoft.Maui.Controls.HorizontalStackLayout> positions child elements in a horizontal stack. For more information, see [HorizontalStackLayout](~/user-interface/layouts/horizontalstacklayout.md). |
-| `StackLayout` | `StackLayout` positions child elements in either a vertical or horizontal stack. For more information, see [StackLayout](~/user-interface/layouts/stacklayout.md). |
+| <xref:Microsoft.Maui.Controls.StackLayout> | <xref:Microsoft.Maui.Controls.StackLayout> positions child elements in either a vertical or horizontal stack. For more information, see [StackLayout](~/user-interface/layouts/stacklayout.md). |
 | `VerticalStackLayout` | `VerticalStackLayout` positions child elements in a vertical stack. For more information, see [VerticalStackLayout](~/user-interface/layouts/verticalstacklayout.md). |
 
 ## Views

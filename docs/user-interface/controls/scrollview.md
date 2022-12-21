@@ -36,7 +36,7 @@ The `Content` property is the `ContentProperty` of the `ScrollView` class, and t
 
 A `ScrollView` can only have a single child, which can be other layouts. It's therefore common for a `ScrollView` to be the root layout on a page. To scroll its child content, `ScrollView` computes the difference between the height of its content and its own height. That difference is the amount that the `ScrollView` can scroll its content.
 
-A `StackLayout` will often be the child of a `ScrollView`. In this scenario, the `ScrollView` causes the `StackLayout` to be as tall as the sum of the heights of its children. Then the `ScrollView` can determine the amount that its content can be scrolled. For more information about the `StackLayout`, see [StackLayout](~/user-interface/layouts/stacklayout.md).
+A <xref:Microsoft.Maui.Controls.StackLayout> will often be the child of a `ScrollView`. In this scenario, the `ScrollView` causes the <xref:Microsoft.Maui.Controls.StackLayout> to be as tall as the sum of the heights of its children. Then the `ScrollView` can determine the amount that its content can be scrolled. For more information about the <xref:Microsoft.Maui.Controls.StackLayout>, see [StackLayout](~/user-interface/layouts/stacklayout.md).
 
 > [!CAUTION]
 > In a vertical `ScrollView`, avoid setting the `VerticalOptions` property to `Start`, `Center`, or `End`. Doing so tells the `ScrollView` to be only as tall as it needs to be, which could be zero. While .NET MAUI protects against this eventuality, it's best to avoid code that suggests something you don't want to happen.
@@ -70,7 +70,7 @@ The following XAML example has a `ScrollView` as a root layout on a page:
 
 ```
 
-In this example, the `ScrollView` has its content set to a `StackLayout` that uses a bindable layout to display the `Color` fields defined by .NET MAUI. By default, a `ScrollView` scrolls vertically, which reveals more content:
+In this example, the `ScrollView` has its content set to a <xref:Microsoft.Maui.Controls.StackLayout> that uses a bindable layout to display the `Color` fields defined by .NET MAUI. By default, a `ScrollView` scrolls vertically, which reveals more content:
 
 :::image type="content" source="media/scrollview/root-layout.png" alt-text="Screenshot of a root ScrollView layout.":::
 
@@ -161,7 +161,7 @@ The following XAML example has a `ScrollView` as a child layout to a <xref:Micro
 </ContentPage>
 ```
 
-In this example, the root layout is a <xref:Microsoft.Maui.Controls.Grid> that has a `Label`, `ScrollView`, and `Button` as its children. The `ScrollView` has a `StackLayout` as its content, with the `StackLayout` containing multiple `Label` objects. This arrangement ensures that the first `Label` is always on-screen, while text displayed by the other `Label` objects can be scrolled:
+In this example, the root layout is a <xref:Microsoft.Maui.Controls.Grid> that has a `Label`, `ScrollView`, and `Button` as its children. The `ScrollView` has a <xref:Microsoft.Maui.Controls.StackLayout> as its content, with the <xref:Microsoft.Maui.Controls.StackLayout> containing multiple `Label` objects. This arrangement ensures that the first `Label` is always on-screen, while text displayed by the other `Label` objects can be scrolled:
 
 :::image type="content" source="media/scrollview/child-layout.png" alt-text="Screenshot of a child ScrollView layout.":::
 

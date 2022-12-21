@@ -56,7 +56,7 @@ The `RowDefinition` class defines a `Height` property, of type `GridLength`, and
 - `Auto` – the row height or column width is autosized based on the cell contents (`Auto` in XAML).
 - `Star` – leftover row height or column width is allocated proportionally (a number followed by `*` in XAML).
 
-A <xref:Microsoft.Maui.Controls.Grid> row with a `Height` property of `Auto` constrains the height of views in that row in the same way as a vertical `StackLayout`. Similarly, a column with a `Width` property of `Auto` works much like a horizontal `StackLayout`.
+A <xref:Microsoft.Maui.Controls.Grid> row with a `Height` property of `Auto` constrains the height of views in that row in the same way as a vertical <xref:Microsoft.Maui.Controls.StackLayout>. Similarly, a column with a `Width` property of `Auto` works much like a horizontal <xref:Microsoft.Maui.Controls.StackLayout>.
 
 > [!CAUTION]
 > Try to ensure that as few rows and columns as possible are set to `Auto` size. Each auto-sized row or column will cause the layout engine to perform additional layout calculations. Instead, use fixed size rows and columns if possible. Alternatively, set rows and columns to occupy a proportional amount of space with the `GridUnitType.Star` enumeration value.

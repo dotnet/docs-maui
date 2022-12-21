@@ -24,14 +24,14 @@ The `Start`, `Center`, `End`, and `Fill` fields are used to define the view's al
 > [!NOTE]
 > The default value of a view's `HorizontalOptions` and `VerticalOptions` properties is `LayoutOptions.Fill`.
 
-A `StackLayout` only respects the `Start`, `Center`, `End`, and `Fill` `LayoutOptions` fields on child views that are in the opposite direction to the `StackLayout` orientation. Therefore, child views within a vertically oriented `StackLayout` can set their `HorizontalOptions` properties to one of the `Start`, `Center`, `End`, or `Fill` fields. Similarly, child views within a horizontally oriented `StackLayout` can set their `VerticalOptions` properties to one of the `Start`, `Center`, `End`, or `Fill` fields.
+A <xref:Microsoft.Maui.Controls.StackLayout> only respects the `Start`, `Center`, `End`, and `Fill` `LayoutOptions` fields on child views that are in the opposite direction to the <xref:Microsoft.Maui.Controls.StackLayout> orientation. Therefore, child views within a vertically oriented <xref:Microsoft.Maui.Controls.StackLayout> can set their `HorizontalOptions` properties to one of the `Start`, `Center`, `End`, or `Fill` fields. Similarly, child views within a horizontally oriented <xref:Microsoft.Maui.Controls.StackLayout> can set their `VerticalOptions` properties to one of the `Start`, `Center`, `End`, or `Fill` fields.
 
-A `StackLayout` does not respect the `Start`, `Center`, `End`, and `Fill` `LayoutOptions` fields on child views that are in the same direction as the `StackLayout` orientation. Therefore, a vertically oriented `StackLayout` ignores the `Start`, `Center`, `End`, or `Fill` fields if they are set on the `VerticalOptions` properties of child views. Similarly, a horizontally oriented `StackLayout` ignores the `Start`, `Center`, `End`, or `Fill` fields if they are set on the `HorizontalOptions` properties of child views.
+A <xref:Microsoft.Maui.Controls.StackLayout> does not respect the `Start`, `Center`, `End`, and `Fill` `LayoutOptions` fields on child views that are in the same direction as the <xref:Microsoft.Maui.Controls.StackLayout> orientation. Therefore, a vertically oriented <xref:Microsoft.Maui.Controls.StackLayout> ignores the `Start`, `Center`, `End`, or `Fill` fields if they are set on the `VerticalOptions` properties of child views. Similarly, a horizontally oriented <xref:Microsoft.Maui.Controls.StackLayout> ignores the `Start`, `Center`, `End`, or `Fill` fields if they are set on the `HorizontalOptions` properties of child views.
 
 > [!IMPORTANT]
 > `LayoutOptions.Fill` generally overrides size requests specified using the  `HeightRequest` and `WidthRequest` properties.
 
-The following XAML example demonstrates a vertically oriented `StackLayout` where each child `Label` sets its `HorizontalOptions` property to one of the four alignment fields from the `LayoutOptions` structure:
+The following XAML example demonstrates a vertically oriented <xref:Microsoft.Maui.Controls.StackLayout> where each child `Label` sets its `HorizontalOptions` property to one of the four alignment fields from the `LayoutOptions` structure:
 
 ```xaml
 <StackLayout>

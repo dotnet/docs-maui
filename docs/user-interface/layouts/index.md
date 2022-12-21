@@ -12,9 +12,9 @@ ms.date: 05/13/2022
 
 ## StackLayout
 
-A `StackLayout` organizes elements in a one-dimensional stack, either horizontally or vertically. The `Orientation` property specifies the direction of the elements, and the default orientation is `Vertical`. `StackLayout` is typically used to arrange a subsection of the UI on a page.
+A <xref:Microsoft.Maui.Controls.StackLayout> organizes elements in a one-dimensional stack, either horizontally or vertically. The `Orientation` property specifies the direction of the elements, and the default orientation is `Vertical`. <xref:Microsoft.Maui.Controls.StackLayout> is typically used to arrange a subsection of the UI on a page.
 
-The following XAML shows how to create a vertical `StackLayout` containing three `Label` objects:
+The following XAML shows how to create a vertical <xref:Microsoft.Maui.Controls.StackLayout> containing three `Label` objects:
 
 ```xaml
 <StackLayout Margin="20,35,20,25">
@@ -24,9 +24,9 @@ The following XAML shows how to create a vertical `StackLayout` containing three
 </StackLayout>
 ```
 
-In a `StackLayout`, if an element's size is not explicitly set, it expands to fill the available width, or height if the `Orientation` property is set to `Horizontal`.
+In a <xref:Microsoft.Maui.Controls.StackLayout>, if an element's size is not explicitly set, it expands to fill the available width, or height if the `Orientation` property is set to `Horizontal`.
 
-A `StackLayout` is often used as a parent layout, which contains other child layouts. However, a `StackLayout` should not be used to reproduce a <xref:Microsoft.Maui.Controls.Grid> layout by using a combination of `StackLayout` objects. The following code shows an example of this bad practice:
+A <xref:Microsoft.Maui.Controls.StackLayout> is often used as a parent layout, which contains other child layouts. However, a <xref:Microsoft.Maui.Controls.StackLayout> should not be used to reproduce a <xref:Microsoft.Maui.Controls.Grid> layout by using a combination of <xref:Microsoft.Maui.Controls.StackLayout> objects. The following code shows an example of this bad practice:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -60,7 +60,7 @@ For more information, see [StackLayout](stacklayout.md).
 
 ## HorizontalStackLayout
 
-A <xref:Microsoft.Maui.Controls.HorizontalStackLayout> organizes child views in a one-dimensional horizontal stack, and is a more performant alternative to a `StackLayout`. <xref:Microsoft.Maui.Controls.HorizontalStackLayout> is typically used to arrange a subsection of the UI on a page.
+A <xref:Microsoft.Maui.Controls.HorizontalStackLayout> organizes child views in a one-dimensional horizontal stack, and is a more performant alternative to a <xref:Microsoft.Maui.Controls.StackLayout>. <xref:Microsoft.Maui.Controls.HorizontalStackLayout> is typically used to arrange a subsection of the UI on a page.
 
 The following XAML shows how to create a <xref:Microsoft.Maui.Controls.HorizontalStackLayout> containing different child views:
 
@@ -80,7 +80,7 @@ For more information, see [HorizontalStackLayout](horizontalstacklayout.md).
 
 ## VerticalStackLayout
 
-A `VerticalStackLayout` organizes child views in a one-dimensional vertical stack, and is a more performant alternative to a `StackLayout`. `VerticalStackLayout` is typically used to arrange a subsection of the UI on a page.
+A `VerticalStackLayout` organizes child views in a one-dimensional vertical stack, and is a more performant alternative to a <xref:Microsoft.Maui.Controls.StackLayout>. `VerticalStackLayout` is typically used to arrange a subsection of the UI on a page.
 
 The following XAML shows how to create a `VerticalStackLayout` containing three `Label` objects:
 
@@ -143,7 +143,7 @@ For more information, see [Grid](grid.md).
 
 ## FlexLayout
 
-A <xref:Microsoft.Maui.Controls.FlexLayout> is similar to a `StackLayout` in that it displays child elements either horizontally or vertically in a stack. However, a <xref:Microsoft.Maui.Controls.FlexLayout> can also wrap its children if there are too many to fit in a single row or column, and also enables more granular control of the size, orientation, and alignment of its child elements.
+A <xref:Microsoft.Maui.Controls.FlexLayout> is similar to a <xref:Microsoft.Maui.Controls.StackLayout> in that it displays child elements either horizontally or vertically in a stack. However, a <xref:Microsoft.Maui.Controls.FlexLayout> can also wrap its children if there are too many to fit in a single row or column, and also enables more granular control of the size, orientation, and alignment of its child elements.
 
 The following XAML shows how to create a <xref:Microsoft.Maui.Controls.FlexLayout> that displays its views in a single column:
 
@@ -260,7 +260,7 @@ A <xref:Microsoft.Maui.Controls.BindableLayout> enables any layout class that de
 
 A bindable layout is populated with data by setting its `ItemsSource` property to any collection that implements `IEnumerable`, and attaching it to a `Layout`-derived class. The appearance of each item in the bindable layout can be defined by setting the `BindableLayout.ItemTemplate` attached property to a `DataTemplate`.
 
-The following XAML shows how to bind a `StackLayout` to a collection of items, and define their appearance with a `DataTemplate`:
+The following XAML shows how to bind a <xref:Microsoft.Maui.Controls.StackLayout> to a collection of items, and define their appearance with a `DataTemplate`:
 
 ```xaml
 <StackLayout BindableLayout.ItemsSource="{Binding User.TopFollowers}"

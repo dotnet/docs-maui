@@ -57,7 +57,7 @@ The following screenshot shows the example `Frame`:
 
 ## Create a card with a Frame
 
-Combining a `Frame` object with a layout such as a `StackLayout` enables the creation of more complex UI.
+Combining a `Frame` object with a layout such as a <xref:Microsoft.Maui.Controls.StackLayout> enables the creation of more complex UI.
 
 The following XAML shows how to create a card with a `Frame`:
 

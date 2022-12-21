@@ -77,7 +77,7 @@ The following XAML shows multiple examples of binding to sub-properties:
 </ContentPage>
 ```
 
-In the second `Label`, the binding source is the page itself. The `Content` property is of type `StackLayout`, which has a `Children` property of type `IList<View>`, which has a `Count` property indicating the number of children.
+In the second `Label`, the binding source is the page itself. The `Content` property is of type <xref:Microsoft.Maui.Controls.StackLayout>, which has a `Children` property of type `IList<View>`, which has a `Count` property indicating the number of children.
 
 ## Paths with indexers
 
@@ -112,7 +112,7 @@ The fourth `Label` does something similar but for the culture associated with Fr
 
 For more information about specifying constructor arguments in XAML, see [Pass constructor arguments](~/xaml/pass-arguments.md#pass-constructor-arguments).
 
-The last `Label` is similar to the second, except that it references one of the children of the `StackLayout`:
+The last `Label` is similar to the second, except that it references one of the children of the <xref:Microsoft.Maui.Controls.StackLayout>:
 
 ```xaml
 <Label Text="{Binding Source={x:Reference page},

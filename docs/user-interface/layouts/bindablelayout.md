@@ -27,7 +27,7 @@ In addition, the <xref:Microsoft.Maui.Controls.BindableLayout> class exposes the
 > [!NOTE]
 > The `EmptyViewTemplate` property takes precedence when both the `EmptyView` and `EmptyViewTemplate` properties are set.
 
-All of these properties can be attached to the <xref:Microsoft.Maui.Controls.AbsoluteLayout>, <xref:Microsoft.Maui.Controls.FlexLayout>, <xref:Microsoft.Maui.Controls.Grid>, <xref:Microsoft.Maui.Controls.HorizontalStackLayout>, `StackLayout`, and `VerticalStackLayout` classes, which all derive from the `Layout` class.
+All of these properties can be attached to the <xref:Microsoft.Maui.Controls.AbsoluteLayout>, <xref:Microsoft.Maui.Controls.FlexLayout>, <xref:Microsoft.Maui.Controls.Grid>, <xref:Microsoft.Maui.Controls.HorizontalStackLayout>, <xref:Microsoft.Maui.Controls.StackLayout>, and `VerticalStackLayout` classes, which all derive from the `Layout` class.
 
 When the `BinableLayout.ItemsSource` property is set to a collection of items and attached to a `Layout`-derived class, each item in the collection is added to the `Layout`-derived class for display. The `Layout`-derived class will then update its child views when the underlying collection changes. <!-- For more information about the .NET MAUI layout cycle, see [Creating a Custom Layout](~/user-interface/layouts/custom.md).-->
 
@@ -164,7 +164,7 @@ The `EmptyView` property can be set to a view, which will be displayed when the 
 </StackLayout>
 ```
 
-The result is that when the data bound collection is `null`, the `StackLayout` and its child views are displayed.
+The result is that when the data bound collection is `null`, the <xref:Microsoft.Maui.Controls.StackLayout> and its child views are displayed.
 
 :::image type="content" source="media/bindablelayout/emptyview-views.png" alt-text="Screenshot of a bindable layout empty view with multiple views.":::
 
@@ -236,4 +236,4 @@ void ToggleEmptyView(bool isToggled)
 }
 ```
 
-The `ToggleEmptyView` method sets the `EmptyView` property of the `stackLayout` object to one of the two `ContentView` objects stored in the `ResourceDictionary`, based on the value of the `Switch.IsToggled` property. Then, when the data bound collection is `null`, the `ContentView` object set as the `EmptyView` property is displayed.
+The `ToggleEmptyView` method sets the `EmptyView` property of the <xref:Microsoft.Maui.Controls.StackLayout> object to one of the two `ContentView` objects stored in the `ResourceDictionary`, based on the value of the `Switch.IsToggled` property. Then, when the data bound collection is `null`, the `ContentView` object set as the `EmptyView` property is displayed.

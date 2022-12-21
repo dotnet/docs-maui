@@ -166,7 +166,7 @@ stacklayout {
 }
 ```
 
-This selector identifies any `StackLayout` elements on pages that consume the style sheet, and sets their margins to a uniform thickness of 20.
+This selector identifies any <xref:Microsoft.Maui.Controls.StackLayout> elements on pages that consume the style sheet, and sets their margins to a uniform thickness of 20.
 
 > [!NOTE]
 > The `element` selector does not identify subclasses of the specified type.
@@ -294,7 +294,7 @@ stacklayout>image {
 }
 ```
 
-This selector identifies any `Image` elements that are direct children of `StackLayout` elements, and sets their height and width to 200. Therefore, in the following example, the `stacklayout>image` selector will identify the `Image` that's a direct child of the `StackLayout`, and sets its height and width to 200.
+This selector identifies any `Image` elements that are direct children of <xref:Microsoft.Maui.Controls.StackLayout> elements, and sets their height and width to 200. Therefore, in the following example, the `stacklayout>image` selector will identify the `Image` that's a direct child of the <xref:Microsoft.Maui.Controls.StackLayout>, and sets its height and width to 200.
 
 ```xaml
 <ContentPage ...>
@@ -326,8 +326,8 @@ The following CSS selectors are supported by .NET MAUI:
 |`element`|`label`|Selects all elements of type `Label`, but not subclasses. This selector is case insensitive.|
 |`^base`|`^contentpage`|Selects all elements with <xref:Microsoft.Maui.Controls.ContentPage> as the base class, including <xref:Microsoft.Maui.Controls.ContentPage> itself. This selector is case insensitive and isn't part of the CSS specification.|
 |`element,element`|`label,button`|Selects all `Button` elements and all `Label` elements. This selector is case insensitive.|
-|`element element`|`stacklayout label`|Selects all `Label` elements inside a `StackLayout`. This selector is case insensitive.|
-|`element>element`|`stacklayout>label`|Selects all `Label` elements with `StackLayout` as a direct parent. This selector is case insensitive.|
+|`element element`|`stacklayout label`|Selects all `Label` elements inside a <xref:Microsoft.Maui.Controls.StackLayout>. This selector is case insensitive.|
+|`element>element`|`stacklayout>label`|Selects all `Label` elements with <xref:Microsoft.Maui.Controls.StackLayout> as a direct parent. This selector is case insensitive.|
 |`element+element`|`label+entry`|Selects all `Entry` elements directly after a `Label`. This selector is case insensitive.|
 |`element~element`|`label~entry`|Selects all `Entry` elements preceded by a `Label`. This selector is case insensitive.|
 
@@ -428,7 +428,7 @@ The following .NET MAUI specific CSS properties are also supported (in the **Val
 |`-maui-max-length`|`Entry`, `Editor`, `SearchBar`|_int_ \| `initial` |`-maui-max-length: 20;`|
 |`-maui-max-track-color`|`Slider`|_color_ \| `initial` |`-maui-max-track-color: red;`|
 |`-maui-min-track-color`|`Slider`|_color_ \| `initial` |`-maui-min-track-color: yellow;`|
-|`-maui-orientation`|`ScrollView`, `StackLayout`| `horizontal` \| `vertical` \| `both` \| `initial`. `both` is only supported on a `ScrollView`. |`-maui-orientation: horizontal;`|
+|`-maui-orientation`|`ScrollView`, <xref:Microsoft.Maui.Controls.StackLayout>| `horizontal` \| `vertical` \| `both` \| `initial`. `both` is only supported on a `ScrollView`. |`-maui-orientation: horizontal;`|
 |`-maui-placeholder`|`Entry`, `Editor`, `SearchBar`|_quoted text_ \| `initial` |`-maui-placeholder: Enter name;`|
 |`-maui-placeholder-color`|`Entry`, `Editor`, `SearchBar`|_color_ \| `initial` |`-maui-placeholder-color: green;`|
 |`-maui-spacing`|`StackLayout`|_double_ \| `initial` |`-maui-spacing: 8;`|
