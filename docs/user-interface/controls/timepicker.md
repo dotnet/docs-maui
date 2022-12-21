@@ -62,7 +62,7 @@ It's possible to use an unconstrained horizontal layout option such as `Center`,
 However, this is not recommended. Depending on the setting of the `Format` property, selected times might require different display widths. For example, the "T" format string causes the `TimePicker` view to display times in a long format, and "4:15:26 AM" requires a greater display width than the short time format ("t") of "4:15 AM". Depending on the platform, this difference might cause the `TimePicker` view to change width in layout, or for the display to be truncated.
 
 > [!TIP]
-> It's best to use the default `HorizontalOptions` setting of `Fill` with `TimePicker`, and not to use a width of `Auto` when putting `TimePicker` in a `Grid` cell.
+> It's best to use the default `HorizontalOptions` setting of `Fill` with `TimePicker`, and not to use a width of `Auto` when putting `TimePicker` in a <xref:Microsoft.Maui.Controls.Grid> cell.
 
 <!--
 > [!TIP]

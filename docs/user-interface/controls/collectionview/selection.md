@@ -293,7 +293,7 @@ The `SelectedItem` and `SelectedItems` properties can be cleared by setting them
 > [!IMPORTANT]
 > The `Style` that contains the `Selected` `VisualState` must have a `TargetType` property value that's the type of the root element of the `DataTemplate`, which is set as the `ItemTemplate` property value.
 
-In this example, the `Style.TargetType` property value is set to `Grid` because the root element of the `ItemTemplate` is a `Grid`. The `Selected` `VisualState` specifies that when an item in the `CollectionView` is selected, the `BackgroundColor` of the item will be set to `LightSkyBlue`:
+In this example, the `Style.TargetType` property value is set to <xref:Microsoft.Maui.Controls.Grid> because the root element of the `ItemTemplate` is a <xref:Microsoft.Maui.Controls.Grid>. The `Selected` `VisualState` specifies that when an item in the `CollectionView` is selected, the `BackgroundColor` of the item will be set to `LightSkyBlue`:
 
 :::image type="content" source="media/selection/single-selection-color.png" alt-text="Screenshot of a CollectionView vertical list with a custom single selection color.":::
 

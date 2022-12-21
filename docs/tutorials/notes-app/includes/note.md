@@ -27,9 +27,9 @@ Let's break down the key parts of the XAML controls placed on the page:
 
   This control defines columns and rows to create cells. Child controls are placed within those cells.
 
-  By default, the `Grid` control contains a single row and column, creating a single cell. Columns are defined with a width, and the `*` value for width tells the column to fill up as much space as possible. The previous snippet defined two columns, both using as much space as possible, which evenly distributes the columns in the allotted space: `ColumnDefinitions="*,*"`. The column sizes are separated by a `,` character.
+  By default, the <xref:Microsoft.Maui.Controls.Grid> control contains a single row and column, creating a single cell. Columns are defined with a width, and the `*` value for width tells the column to fill up as much space as possible. The previous snippet defined two columns, both using as much space as possible, which evenly distributes the columns in the allotted space: `ColumnDefinitions="*,*"`. The column sizes are separated by a `,` character.
 
-  Columns and rows defined by a `Grid` are indexed starting at 0. So the first column would be index 0, the second column is index 1, and so on.
+  Columns and rows defined by a <xref:Microsoft.Maui.Controls.Grid> are indexed starting at 0. So the first column would be index 0, the second column is index 1, and so on.
 
 - Two `<Button>` controls are inside the `<Grid>` and assigned a column. If a child control doesn't define a column assignment, it's automatically assigned to the first column. In this markup, the first button is the "Save" button and automatically assigned to the first column, column 0. The second button is the "Delete" button and assigned to the second column, column 1.
 

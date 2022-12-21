@@ -119,7 +119,7 @@ collectionView.ItemTemplate = new DataTemplate(() =>
 });
 ```
 
-The elements specified in the `DataTemplate` define the appearance of each item in the list. In the example, layout within the `DataTemplate` is managed by a `Grid`. The `Grid` contains an `Image` object, and two `Label` objects, that all bind to properties of the `Monkey` class:
+The elements specified in the `DataTemplate` define the appearance of each item in the list. In the example, layout within the `DataTemplate` is managed by a <xref:Microsoft.Maui.Controls.Grid>. The <xref:Microsoft.Maui.Controls.Grid> contains an `Image` object, and two `Label` objects, that all bind to properties of the `Monkey` class:
 
 ```csharp
 public class Monkey
@@ -268,7 +268,7 @@ collectionView.ItemTemplate = new DataTemplate(() =>
 });
 ```
 
-In this example, the `SwipeView` content is a `Grid` that defines the appearance of each item in the `CollectionView`. The swipe items are used to perform actions on the `SwipeView` content, and are revealed when the control is swiped from the left side:
+In this example, the `SwipeView` content is a <xref:Microsoft.Maui.Controls.Grid> that defines the appearance of each item in the `CollectionView`. The swipe items are used to perform actions on the `SwipeView` content, and are revealed when the control is swiped from the left side:
 
 :::image type="content" source="media/populate-data/swipeview.png" alt-text="Screenshot of CollectionView context menu items.":::
 

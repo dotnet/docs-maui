@@ -32,7 +32,7 @@ The `Slider` coerces the `Value` property so that it is between `Minimum` and `M
 `Slider` also defines `DragStarted` and `DragCompleted` events, that are raised at the beginning and end of the drag action. Unlike the `ValueChanged` event, the `DragStarted` and `DragCompleted` events are only raised through user manipulation of the `Slider`. When the `DragStarted` event fires, the `DragStartedCommand`, of type `ICommand`, is executed. Similarly, when the `DragCompleted` event fires, the `DragCompletedCommand`, of type `ICommand`, is executed.
 
 > [!WARNING]
-> Do not use unconstrained horizontal layout options of `Center`, `Start`, or `End` with `Slider`. Keep the default `HorizontalOptions` setting of `Fill`, and don't use a width of `Auto` when putting `Slider` in a `Grid` layout.
+> Do not use unconstrained horizontal layout options of `Center`, `Start`, or `End` with `Slider`. Keep the default `HorizontalOptions` setting of `Fill`, and don't use a width of `Auto` when putting `Slider` in a <xref:Microsoft.Maui.Controls.Grid> layout.
 
 ## Create a Slider
 

@@ -130,9 +130,9 @@ For more information about bindable layouts, see [BindableLayout](~/user-interfa
 
 A `ScrollView` can be a child layout to a different parent layout.
 
-A `ScrollView` will often be the child of a `Grid`. A `ScrollView` requires a specific height to compute the difference between the height of its content and its own height, with the difference being the amount that the `ScrollView` can scroll its content. When a `ScrollView` is the child of a `Grid`, it doesn't receive a specific height. The `Grid` wants the `ScrollView` to be as short as possible, which is either the height of the `ScrollView` contents or zero. To handle this scenario, the `RowDefinition` of the `Grid` row that contains the `ScrollView` should be set to `*`. This will cause the `Grid` to give the `ScrollView` all the extra space not required by the other children, and the `ScrollView` will then have a specific height.
+A `ScrollView` will often be the child of a <xref:Microsoft.Maui.Controls.Grid>. A `ScrollView` requires a specific height to compute the difference between the height of its content and its own height, with the difference being the amount that the `ScrollView` can scroll its content. When a `ScrollView` is the child of a <xref:Microsoft.Maui.Controls.Grid>, it doesn't receive a specific height. The <xref:Microsoft.Maui.Controls.Grid> wants the `ScrollView` to be as short as possible, which is either the height of the `ScrollView` contents or zero. To handle this scenario, the `RowDefinition` of the <xref:Microsoft.Maui.Controls.Grid> row that contains the `ScrollView` should be set to `*`. This will cause the <xref:Microsoft.Maui.Controls.Grid> to give the `ScrollView` all the extra space not required by the other children, and the `ScrollView` will then have a specific height.
 
-The following XAML example has a `ScrollView` as a child layout to a `Grid`:
+The following XAML example has a `ScrollView` as a child layout to a <xref:Microsoft.Maui.Controls.Grid>:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -161,7 +161,7 @@ The following XAML example has a `ScrollView` as a child layout to a `Grid`:
 </ContentPage>
 ```
 
-In this example, the root layout is a `Grid` that has a `Label`, `ScrollView`, and `Button` as its children. The `ScrollView` has a `StackLayout` as its content, with the `StackLayout` containing multiple `Label` objects. This arrangement ensures that the first `Label` is always on-screen, while text displayed by the other `Label` objects can be scrolled:
+In this example, the root layout is a <xref:Microsoft.Maui.Controls.Grid> that has a `Label`, `ScrollView`, and `Button` as its children. The `ScrollView` has a `StackLayout` as its content, with the `StackLayout` containing multiple `Label` objects. This arrangement ensures that the first `Label` is always on-screen, while text displayed by the other `Label` objects can be scrolled:
 
 :::image type="content" source="media/scrollview/child-layout.png" alt-text="Screenshot of a child ScrollView layout.":::
 

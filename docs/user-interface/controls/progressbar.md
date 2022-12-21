@@ -38,7 +38,7 @@ ProgressBar progressBar = new ProgressBar { Progress = 0.5 };
 ```
 
 > [!WARNING]
-> Do not use unconstrained horizontal layout options such as `Center`, `Start`, or `End` with `ProgressBar`. Keep the default `HorizontalOptions` value of `Fill`. <!-- and don't use a width of `Auto` when putting a `ProgressBar` in a `Grid` layout.-->
+> Do not use unconstrained horizontal layout options such as `Center`, `Start`, or `End` with `ProgressBar`. Keep the default `HorizontalOptions` value of `Fill`. <!-- and don't use a width of `Auto` when putting a `ProgressBar` in a <xref:Microsoft.Maui.Controls.Grid> layout.-->
 
 The following XAML example shows how to change the color of a `ProgressBar`:
 

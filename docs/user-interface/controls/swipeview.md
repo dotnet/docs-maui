@@ -109,7 +109,7 @@ SwipeView swipeView = new SwipeView
 };
 ```
 
-In this example, the `SwipeView` content is a `Grid` that contains a `Label`:
+In this example, the `SwipeView` content is a <xref:Microsoft.Maui.Controls.Grid> that contains a `Label`:
 
 :::image type="content" source="media/swipeview/swipeview-content.png" alt-text="Screenshot of SwipeView content.":::
 

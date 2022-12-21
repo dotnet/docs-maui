@@ -119,7 +119,7 @@ The appearance of each item in the `ListView` can be defined by setting the `Ite
 </ListView>
 ```
 
-The elements specified in the `DataTemplate` define the appearance of each item in the list, and the child of the `DataTemplate` must be a `Cell` object. In the example, layout within the `DataTemplate` is managed by a `Grid`. The `Grid` contains an `Image` object, and two `Label` objects, that all bind to properties of the `Monkey` class:
+The elements specified in the `DataTemplate` define the appearance of each item in the list, and the child of the `DataTemplate` must be a `Cell` object. In the example, layout within the `DataTemplate` is managed by a <xref:Microsoft.Maui.Controls.Grid>. The <xref:Microsoft.Maui.Controls.Grid> contains an `Image` object, and two `Label` objects, that all bind to properties of the `Monkey` class:
 
 ```csharp
 public class Monkey
@@ -244,7 +244,7 @@ The following example shows using a `ViewCell` to define the appearance of items
 </ListView>
 ```
 
-Inside the `ViewCell`, layout can be managed by any .NET MAUI layout. In this example, layout is managed by a `Grid`. The `Grid` contains an `Image` object, and two `Label` objects, that all bind to properties of the `Monkey` class.
+Inside the `ViewCell`, layout can be managed by any .NET MAUI layout. In this example, layout is managed by a <xref:Microsoft.Maui.Controls.Grid>. The <xref:Microsoft.Maui.Controls.Grid> contains an `Image` object, and two `Label` objects, that all bind to properties of the `Monkey` class.
 
 The following screenshot shows the result of templating each item in the list:
 

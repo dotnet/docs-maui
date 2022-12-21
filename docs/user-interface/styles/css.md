@@ -360,7 +360,7 @@ The following CSS properties are supported by .NET MAUI (in the **Values** colum
 |`border-radius`|`BoxView`, `Button`, `Frame`, `ImageButton`|_double_ \| `initial` |`border-radius: 10;`|
 |`border-width`|`Button`, `ImageButton`|_double_ \| `initial` |`border-width: .5;`|
 |`color`|`ActivityIndicator`, `BoxView`, `Button`, `CheckBox`, `DatePicker`, `Editor`, `Entry`, `Label`, `Picker`, `ProgressBar`, `SearchBar`, `Switch`, `TimePicker`|_color_ \| `initial` |`color: rgba(255, 0, 0, 0.3);`|
-|`column-gap`|`Grid`|_double_ \| `initial`|`column-gap: 9;`|
+|`column-gap`|<xref:Microsoft.Maui.Controls.Grid>|_double_ \| `initial`|`column-gap: 9;`|
 |`direction`|`VisualElement`|`ltr` \| `rtl` \| `inherit` \| `initial` |`direction: rtl;`|
 |`flex-direction`|<xref:Microsoft.Maui.Controls.FlexLayout>| `column` \| `columnreverse` \| `row` \| `rowreverse` \| `row-reverse` \| `column-reverse` \| `initial`|`flex-direction: column-reverse;`|
 |`flex-basis`|`VisualElement`|_float_ \| `auto` \| `initial`. In addition, a percentage in the range 0% to 100% can be specified with the `%` sign.|`flex-basis: 25%;`|
@@ -390,7 +390,7 @@ The following CSS properties are supported by .NET MAUI (in the **Values** colum
 |`padding-right`|`Button`, `ImageButton`, `Layout`, `Page`| _double_ \| `initial` |`padding-right: 2;`|
 |`padding-bottom`|`Button`, `ImageButton`, `Layout`, `Page`| _double_ \| `initial` |`padding-bottom: 6;`|
 |`position`|<xref:Microsoft.Maui.Controls.FlexLayout>| `relative` \| `absolute` \| `initial`|`position: absolute;`|
-|`row-gap`|`Grid`| _double_ \| `initial`|`row-gap: 12;`|
+|`row-gap`|<xref:Microsoft.Maui.Controls.Grid>| _double_ \| `initial`|`row-gap: 12;`|
 |`text-align`| `Entry`, `EntryCell`, `Label`, `SearchBar`|`left` \| `top` \| `right` \| `bottom` \| `start` \| `center` \| `middle` \| `end` \| `initial`. `left` and `right` should be avoided in right-to-left environments.| `text-align: right;`|
 |`text-decoration`|`Label`, `Span`|`none` \| `underline` \| `strikethrough` \| `line-through` \| `initial`|`text-decoration: underline, line-through;`|
 |`text-transform`|`Button`,`Editor`, `Entry`, `Label`, `SearchBar`, `SearchHandler`|`none` \| `default` \| `uppercase` \| `lowercase` \| `initial` |`text-transform: uppercase;`|

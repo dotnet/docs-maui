@@ -8,7 +8,7 @@ ms.date: 03/14/2022
 
 :::image type="content" source="media/contentpage/pages.png" alt-text=".NET MAUI ContentPage." border="false":::
 
-The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.ContentPage> displays a single view, which is often a layout such as as `Grid` or `StackLayout`, and is the most common page type.
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.ContentPage> displays a single view, which is often a layout such as as <xref:Microsoft.Maui.Controls.Grid> or `StackLayout`, and is the most common page type.
 
 <xref:Microsoft.Maui.Controls.ContentPage> defines a `Content` property, of type `View`, which defines the view that represents the page's content. This property is backed by a `BindableProperty` object, which means that it can be the target of data bindings, and styled. In addition, <xref:Microsoft.Maui.Controls.ContentPage> inherits `Title`, `IconImageSource`, `BackgroundImageSource`, `IsBusy`, and `Padding` bindable properties from the `Page` class.
 
@@ -45,7 +45,7 @@ Visual Studio then creates a new <xref:Microsoft.Maui.Controls.ContentPage>-deri
 </ContentPage>
 ```
 
-The child of a <xref:Microsoft.Maui.Controls.ContentPage> is typically a layout, such as `Grid` or `StackLayout`, with the layout typically containing multiple views. However, the child of the <xref:Microsoft.Maui.Controls.ContentPage> can be a view that displays a collection, such as `CollectionView`.
+The child of a <xref:Microsoft.Maui.Controls.ContentPage> is typically a layout, such as <xref:Microsoft.Maui.Controls.Grid> or `StackLayout`, with the layout typically containing multiple views. However, the child of the <xref:Microsoft.Maui.Controls.ContentPage> can be a view that displays a collection, such as `CollectionView`.
 
 > [!NOTE]
 > The value of the `Title` property will be shown on the navigation bar, when the app performs navigation using a <xref:Microsoft.Maui.Controls.NavigationPage>. For more information, see [NavigationPage](navigationpage.md).

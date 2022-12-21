@@ -243,7 +243,7 @@ The default `DataTemplate` used for each `FlyoutItem` is shown below:
 
 This template can be used for as a basis for making alterations to the existing flyout layout, and also shows the visual states that are implemented for flyout items.
 
-In addition, the `Grid`, `Image`, and `Label` elements all have `x:Name` values and so can be targeted with the Visual State Manager. For more information, see [Set state on multiple elements](~/user-interface/visual-states.md#set-state-on-multiple-elements).
+In addition, the <xref:Microsoft.Maui.Controls.Grid>, `Image`, and `Label` elements all have `x:Name` values and so can be targeted with the Visual State Manager. For more information, see [Set state on multiple elements](~/user-interface/visual-states.md#set-state-on-multiple-elements).
 
 > [!NOTE]
 > The same template can also be used for `MenuItem` objects.

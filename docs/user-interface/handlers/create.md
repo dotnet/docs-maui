@@ -874,7 +874,7 @@ namespace VideoDemos.Platforms.Windows
 }
 ```
 
-`MauiVideoPlayer` derives from `Grid`, and the `MediaPlayerElement` is added as a child of the `Grid`. This enables the `MediaPlayerElement` to automatically size to fill all available space.
+`MauiVideoPlayer` derives from <xref:Microsoft.Maui.Controls.Grid>, and the `MediaPlayerElement` is added as a child of the <xref:Microsoft.Maui.Controls.Grid>. This enables the `MediaPlayerElement` to automatically size to fill all available space.
 
 The `Dispose` method is responsible for performing native view cleanup:
 

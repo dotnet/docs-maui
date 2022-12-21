@@ -244,7 +244,7 @@ The following example shows the XAML that consumes the `PersonCollectionViewMode
 </ContentPage>
 ```
 
-In this example, the page's `BindingContext` property is set to the `PersonCollectionViewModel`. The `Grid` contains a `Button` with the text **New** with its `Command` property bound to the `NewCommand` property in the viewmodel, an entry form with properties bound to the `IsEditing` property, as well as properties of `PersonViewModel`, and two more buttons bound to the `SubmitCommand` and `CancelCommand` properties of the viewmodel. The `ListView` displays the collection of persons already entered:
+In this example, the page's `BindingContext` property is set to the `PersonCollectionViewModel`. The <xref:Microsoft.Maui.Controls.Grid> contains a `Button` with the text **New** with its `Command` property bound to the `NewCommand` property in the viewmodel, an entry form with properties bound to the `IsEditing` property, as well as properties of `PersonViewModel`, and two more buttons bound to the `SubmitCommand` and `CancelCommand` properties of the viewmodel. The `ListView` displays the collection of persons already entered:
 
 The following screenshot shows the **Submit** button enabled after an age has been set:
 

@@ -287,7 +287,7 @@ The following XAML example shows a `Style` that includes `StateTrigger` objects:
 </Style>
 ```
 
-In this example, the implicit `Style` targets `Grid` objects. When the `IsToggled` property of the bound object is `true`, the background color of the `Grid` is set to black. When the `IsToggled` property of the bound object becomes `false`, a `VisualState` change is triggered, and the background color of the `Grid` becomes white.
+In this example, the implicit `Style` targets <xref:Microsoft.Maui.Controls.Grid> objects. When the `IsToggled` property of the bound object is `true`, the background color of the <xref:Microsoft.Maui.Controls.Grid> is set to black. When the `IsToggled` property of the bound object becomes `false`, a `VisualState` change is triggered, and the background color of the <xref:Microsoft.Maui.Controls.Grid> becomes white.
 
 In addition, every time a `VisualState` change occurs, the `IsActiveChanged` event for the `VisualState` is raised. Each `VisualState` registers an event handler for this event:
 
@@ -425,7 +425,7 @@ The following XAML example shows a `Style` that includes `CompareStateTrigger` o
 </Grid>
 ```
 
-In this example, the implicit `Style` targets `Grid` objects. When the `IsChecked` property of the `CheckBox` is `false`, the background color of the `Grid` is set to white. When the `CheckBox.IsChecked` property becomes `true`, a `VisualState` change is triggered, and the background color of the `Grid` becomes black.
+In this example, the implicit `Style` targets <xref:Microsoft.Maui.Controls.Grid> objects. When the `IsChecked` property of the `CheckBox` is `false`, the background color of the <xref:Microsoft.Maui.Controls.Grid> is set to white. When the `CheckBox.IsChecked` property becomes `true`, a `VisualState` change is triggered, and the background color of the <xref:Microsoft.Maui.Controls.Grid> becomes black.
 
 ### Device state trigger
 

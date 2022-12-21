@@ -6,7 +6,7 @@ ms.date: 01/24/2022
 
 # Attached properties
 
-.NET Multi-platform App UI (.NET MAUI) attached properties enable an object to assign a value for a property that its own class doesn't define. For example, child elements can use attached properties to inform their parent element of how they are to be presented in the user interface. The `Grid` layout enables the row and column of a child to be specified by setting the `Grid.Row` and `Grid.Column` attached properties. `Grid.Row` and `Grid.Column` are attached properties because they are set on elements that are children of a `Grid`, rather than on the `Grid` itself.
+.NET Multi-platform App UI (.NET MAUI) attached properties enable an object to assign a value for a property that its own class doesn't define. For example, child elements can use attached properties to inform their parent element of how they are to be presented in the user interface. The <xref:Microsoft.Maui.Controls.Grid> layout enables the row and column of a child to be specified by setting the `Grid.Row` and `Grid.Column` attached properties. `Grid.Row` and `Grid.Column` are attached properties because they are set on elements that are children of a <xref:Microsoft.Maui.Controls.Grid>, rather than on the <xref:Microsoft.Maui.Controls.Grid> itself.
 
 Bindable properties should be implemented as attached properties in the following scenarios:
 

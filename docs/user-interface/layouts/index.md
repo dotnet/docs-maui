@@ -26,7 +26,7 @@ The following XAML shows how to create a vertical `StackLayout` containing three
 
 In a `StackLayout`, if an element's size is not explicitly set, it expands to fill the available width, or height if the `Orientation` property is set to `Horizontal`.
 
-A `StackLayout` is often used as a parent layout, which contains other child layouts. However, a `StackLayout` should not be used to reproduce a `Grid` layout by using a combination of `StackLayout` objects. The following code shows an example of this bad practice:
+A `StackLayout` is often used as a parent layout, which contains other child layouts. However, a `StackLayout` should not be used to reproduce a <xref:Microsoft.Maui.Controls.Grid> layout by using a combination of `StackLayout` objects. The following code shows an example of this bad practice:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -54,7 +54,7 @@ A `StackLayout` is often used as a parent layout, which contains other child lay
 </ContentPage>
 ```
 
-This is wasteful because unnecessary layout calculations are performed. Instead, the desired layout can be better achieved by using a `Grid`.
+This is wasteful because unnecessary layout calculations are performed. Instead, the desired layout can be better achieved by using a <xref:Microsoft.Maui.Controls.Grid>.
 
 For more information, see [StackLayout](stacklayout.md).
 
@@ -98,14 +98,14 @@ For more information, see [VerticalStackLayout](verticalstacklayout.md).
 
 ## Grid
 
-A `Grid` is used for displaying elements in rows and columns, which can have proportional or absolute sizes. A grid's rows and columns are specified with the `RowDefinitions` and `ColumnDefinitions` properties.
+A <xref:Microsoft.Maui.Controls.Grid> is used for displaying elements in rows and columns, which can have proportional or absolute sizes. A grid's rows and columns are specified with the `RowDefinitions` and `ColumnDefinitions` properties.
 
-To position elements in specific `Grid` cells, use the `Grid.Column` and `Grid.Row` attached properties. To make elements span across multiple rows and columns, use the `Grid.RowSpan` and `Grid.ColumnSpan` attached properties.
+To position elements in specific <xref:Microsoft.Maui.Controls.Grid> cells, use the `Grid.Column` and `Grid.Row` attached properties. To make elements span across multiple rows and columns, use the `Grid.RowSpan` and `Grid.ColumnSpan` attached properties.
 
 > [!NOTE]
-> A `Grid` layout should not be confused with tables, and is not intended to present tabular data.
+> A <xref:Microsoft.Maui.Controls.Grid> layout should not be confused with tables, and is not intended to present tabular data.
 
-The following XAML shows how to create a `Grid` with two rows and two columns:
+The following XAML shows how to create a <xref:Microsoft.Maui.Controls.Grid> with two rows and two columns:
 
 ```xaml
 <Grid>

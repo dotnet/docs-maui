@@ -127,7 +127,7 @@ You can navigate back to `MainPage` using the navigation bar that appears on eac
 
 ## XAML and code interactions
 
-The child of most <xref:Microsoft.Maui.Controls.ContentPage> derivatives is a layout, such as a `StackLayout` or a `Grid`, and the layout can contain multiple children. In XAML, these parent-child relationships are established with normal XML hierarchy:
+The child of most <xref:Microsoft.Maui.Controls.ContentPage> derivatives is a layout, such as a `StackLayout` or a <xref:Microsoft.Maui.Controls.Grid>, and the layout can contain multiple children. In XAML, these parent-child relationships are established with normal XML hierarchy:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
