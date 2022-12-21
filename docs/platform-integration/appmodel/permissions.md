@@ -94,7 +94,10 @@ The feature is disabled on the device.
 The user granted permission or is automatically granted.
 
 - `Restricted`\
-In a restricted state.
+In a restricted state. Only iOS returns this status.
+
+- `Limited`\
+In a limited state. Only iOS returns this status.
 
 ## Requesting permissions
 
