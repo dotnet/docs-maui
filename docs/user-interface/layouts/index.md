@@ -167,16 +167,16 @@ For more information, see [FlexLayout](flexlayout.md).
 
 ## AbsoluteLayout
 
-An `AbsoluteLayout` is used to position and size elements using explicit values, or values relative to the size of the layout. The position is specified by the upper-left corner of the child relative to the upper-left corner of the `AbsoluteLayout`.
+An <xref:Microsoft.Maui.Controls.AbsoluteLayout> is used to position and size elements using explicit values, or values relative to the size of the layout. The position is specified by the upper-left corner of the child relative to the upper-left corner of the <xref:Microsoft.Maui.Controls.AbsoluteLayout>.
 
-An `AbsoluteLayout` should be regarded as a special-purpose layout to be used only when you can impose a size on children, or when the element's size doesn't affect the positioning of other children. A standard use of this layout is to create an overlay, which covers the page with other controls, perhaps to protect the user from interacting with the normal controls on the page.
+An <xref:Microsoft.Maui.Controls.AbsoluteLayout> should be regarded as a special-purpose layout to be used only when you can impose a size on children, or when the element's size doesn't affect the positioning of other children. A standard use of this layout is to create an overlay, which covers the page with other controls, perhaps to protect the user from interacting with the normal controls on the page.
 
 > [!IMPORTANT]
-> The `HorizontalOptions` and `VerticalOptions` properties have no effect on children of an `AbsoluteLayout`.
+> The `HorizontalOptions` and `VerticalOptions` properties have no effect on children of an <xref:Microsoft.Maui.Controls.AbsoluteLayout>.
 
-Within an `AbsoluteLayout`, the `AbsoluteLayout.LayoutBounds` attached property is used to specify the horizontal position, vertical position, width and height of an element. In addition, the `AbsoluteLayout.LayoutFlags` attached property specifies how the layout bounds will be interpreted.
+Within an <xref:Microsoft.Maui.Controls.AbsoluteLayout>, the `AbsoluteLayout.LayoutBounds` attached property is used to specify the horizontal position, vertical position, width and height of an element. In addition, the `AbsoluteLayout.LayoutFlags` attached property specifies how the layout bounds will be interpreted.
 
-The following XAML shows how to arrange elements in an `AbsoluteLayout`:
+The following XAML shows how to arrange elements in an <xref:Microsoft.Maui.Controls.AbsoluteLayout>:
 
 ```xaml
 <AbsoluteLayout Margin="40">

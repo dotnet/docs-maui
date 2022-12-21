@@ -36,7 +36,7 @@ The main control groups used to create the user interface of a .NET MAUI app are
 
 | Layout | Description |
 | --- | --- |
-| `AbsoluteLayout` | `AbsoluteLayout` positions child elements at specific locations relative to its parent. For more information, see [AbsoluteLayout](~/user-interface/layouts/absolutelayout.md). |
+| <xref:Microsoft.Maui.Controls.AbsoluteLayout> | <xref:Microsoft.Maui.Controls.AbsoluteLayout> positions child elements at specific locations relative to its parent. For more information, see [AbsoluteLayout](~/user-interface/layouts/absolutelayout.md). |
 | `BindableLayout` | `BindableLayout` enables any layout class to generate its content by binding to a collection of items, with the option to set the appearance of each item. For more information, see [BindableLayout](~/user-interface/layouts/bindablelayout.md).
 | `FlexLayout`| `FlexLayout` enables its children to be stacked or wrapped with different alignment and orientation options. `FlexLayout` is based on the CSS Flexible Box Layout Module, known as *flex layout* or *flex-box*. For more information, see [FlexLayout](~/user-interface/layouts/flexlayout.md). |
 | `Grid` | `Grid` positions its child elements in a grid of rows and columns. For more information, see [Grid](~/user-interface/layouts/grid.md). |

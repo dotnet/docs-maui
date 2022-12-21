@@ -45,6 +45,6 @@ In this example, a cornflower blue `BoxView` is displayed in the center of the p
 The `WidthRequest` and `HeightRequest` properties are measured in device-independent units.
 
 > [!NOTE]
-> A `BoxView` can also be a child of an `AbsoluteLayout`. In this case, both the location and size of the `BoxView` are set using the `LayoutBounds` attached bindable property.
+> A `BoxView` can also be a child of an <xref:Microsoft.Maui.Controls.AbsoluteLayout>. In this case, both the location and size of the `BoxView` are set using the `LayoutBounds` attached bindable property.
 
 A `BoxView` can also be sized to resemble a line of a specific width and thickness.

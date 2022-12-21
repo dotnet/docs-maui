@@ -213,7 +213,7 @@ Different screen readers read different accessibility values. Therefore, when us
 
 ### ExcludedWithChildren
 
-The `AutomationProperties.ExcludeWithChildren` attached property, of type `bool?`, determines if an element and its children should be excluded from the accessibility tree. This enables scenarios such as displaying an `AbsoluteLayout` over another layout such as a `StackLayout`, with the `StackLayout` being excluded from the accessibility tree when it's not visible. It can be used from XAML as follows:
+The `AutomationProperties.ExcludeWithChildren` attached property, of type `bool?`, determines if an element and its children should be excluded from the accessibility tree. This enables scenarios such as displaying an <xref:Microsoft.Maui.Controls.AbsoluteLayout> over another layout such as a `StackLayout`, with the `StackLayout` being excluded from the accessibility tree when it's not visible. It can be used from XAML as follows:
 
 ```xaml
 <StackLayout AutomationProperties.ExcludedWithChildren="true">
