@@ -29,7 +29,7 @@ The following platform-specific functionality is provided for .NET MAUI pages on
 - Controlling whether the navigation bar is translucent. For more information, see [Navigation bar translucency on iOS](navigation-bar-translucent.md).
 - Controlling whether the page title is displayed as a large title in the page navigation bar. For more information, see [Large page titles on iOS](page-large-title.md).
 - Setting the presentation style of modal pages. For more information, see [Modal page presentation style](page-presentation-style.md).
-- Setting the translucency mode of the tab bar on a `TabbedPage`. For more information, see [TabbedPage translucent TabBar on iOS](tabbedpage-translucent-tabbar.md).
+- Setting the translucency mode of the tab bar on a <xref:Microsoft.Maui.Controls.TabbedPage>. For more information, see [TabbedPage translucent TabBar on iOS](tabbedpage-translucent-tabbar.md).
 
 The following platform-specific functionality is provided for .NET MAUI layouts on iOS:
 

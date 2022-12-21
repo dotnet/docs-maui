@@ -27,7 +27,7 @@ The `IsGestureEnabled`, `IsPresented`, and `FlyoutLayoutBehavior` properties are
 
 ## Create a FlyoutPage
 
-To create a flyout page, create a <xref:Microsoft.Maui.Controls.FlyoutPage> object and set it's `Flyout` and `Detail` properties. The `Flyout` property should be set to <xref:Microsoft.Maui.Controls.ContentPage> object, and the `Detail` property should be set to a `TabbedPage`, <xref:Microsoft.Maui.Controls.NavigationPage>, or <xref:Microsoft.Maui.Controls.ContentPage> object. This will help to ensure a consistent user experience across all platforms.
+To create a flyout page, create a <xref:Microsoft.Maui.Controls.FlyoutPage> object and set it's `Flyout` and `Detail` properties. The `Flyout` property should be set to <xref:Microsoft.Maui.Controls.ContentPage> object, and the `Detail` property should be set to a <xref:Microsoft.Maui.Controls.TabbedPage>, <xref:Microsoft.Maui.Controls.NavigationPage>, or <xref:Microsoft.Maui.Controls.ContentPage> object. This will help to ensure a consistent user experience across all platforms.
 
 > [!IMPORTANT]
 > A <xref:Microsoft.Maui.Controls.FlyoutPage> is designed to be the root page of an app, and using it as a child page in other page types could result in unexpected and inconsistent behavior.

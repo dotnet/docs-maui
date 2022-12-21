@@ -18,9 +18,9 @@ The following platform-specific functionality is provided for .NET MAUI views on
 
 The following platform-specific functionality is provided for .NET MAUI pages on Android:
 
-- Disabling transition animations when navigating through pages in a `TabbedPage`. For more information, see [TabbedPage page transition animations on Android](tabbedpage-transition-animations.md).
-- Enabling swiping between pages in a `TabbedPage`. For more information, see [TabbedPage page swiping on Android](tabbedpage-page-swiping.md).
-- Setting the toolbar placement and color on a `TabbedPage`. For more information, see [TabbedPage toolbar placement on android](tabbedpage-toolbar-placement.md).
+- Disabling transition animations when navigating through pages in a <xref:Microsoft.Maui.Controls.TabbedPage>. For more information, see [TabbedPage page transition animations on Android](tabbedpage-transition-animations.md).
+- Enabling swiping between pages in a <xref:Microsoft.Maui.Controls.TabbedPage>. For more information, see [TabbedPage page swiping on Android](tabbedpage-page-swiping.md).
+- Setting the toolbar placement and color on a <xref:Microsoft.Maui.Controls.TabbedPage>. For more information, see [TabbedPage toolbar placement on android](tabbedpage-toolbar-placement.md).
 
 The following platform-specific functionality is provided for the .NET MAUI `Application` class on Android:
 
