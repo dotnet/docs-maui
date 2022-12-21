@@ -8,7 +8,7 @@ ms.date: 03/15/2022
 
 :::image type="content" source="media/tabbedpage/pages.png" alt-text=".NET MAUI TabbedPage." border="false":::
 
-The .NET Multi-platform App UI (.NET MAUI) `TabbedPage` maintains a collection of children of type `Page`, only one of which is fully visible at a time. Each child is identified by a series of tabs across the top or bottom of the page. Typically, each child will be a `ContentPage` and when its tab is selected the page content is displayed.
+The .NET Multi-platform App UI (.NET MAUI) `TabbedPage` maintains a collection of children of type `Page`, only one of which is fully visible at a time. Each child is identified by a series of tabs across the top or bottom of the page. Typically, each child will be a <xref:Microsoft.Maui.Controls.ContentPage> and when its tab is selected the page content is displayed.
 
 `TabbedPage` defines the following properties:
 
@@ -29,11 +29,11 @@ In a `TabbedPage`, each `Page` object is created when the `TabbedPage` is constr
 
 Two approaches can be used to create a `TabbedPage`:
 
-- Populate the `TabbedPage` with a collection of child `Page` objects, such as a collection of `ContentPage` objects. For more information, see [Populate a TabbedPage with a Page collection](#populate-a-tabbedpage-with-a-page-collection).
+- Populate the `TabbedPage` with a collection of child `Page` objects, such as a collection of <xref:Microsoft.Maui.Controls.ContentPage> objects. For more information, see [Populate a TabbedPage with a Page collection](#populate-a-tabbedpage-with-a-page-collection).
 - Assign a collection to the `ItemsSource` property and assign a `DataTemplate` to the `ItemTemplate` property to return pages for objects in the collection. For more information, see [Populate a TabbedPage with a DataTemplate](#populate-a-tabbedpage-with-a-datatemplate).
 
 > [!IMPORTANT]
-> A `TabbedPage` should only be populated with `NavigationPage` and `ContentPage` objects.
+> A `TabbedPage` should only be populated with `NavigationPage` and <xref:Microsoft.Maui.Controls.ContentPage> objects.
 
 Regardless of the approach taken, the location of the tab bar in a `TabbedPage` is platform-dependent:
 
@@ -43,7 +43,7 @@ Regardless of the approach taken, the location of the tab bar in a `TabbedPage` 
 
 ### Populate a TabbedPage with a Page collection
 
-A `TabbedPage` can be populated with a collection of child `Page` objects, which will typically be `ContentPage` objects. This is achieved by adding `ContentPage` objects as children of the `TabbedPage`:
+A `TabbedPage` can be populated with a collection of child `Page` objects, which will typically be <xref:Microsoft.Maui.Controls.ContentPage> objects. This is achieved by adding <xref:Microsoft.Maui.Controls.ContentPage> objects as children of the `TabbedPage`:
 
 ```xaml
 <TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -104,13 +104,13 @@ The following example shows generating `TabbedPage` children dynamically:
 </TabbedPage>
 ```
 
-In this example, each tab consists of a `ContentPage` object that uses `Image` and `Label` objects to display data for the tab:
+In this example, each tab consists of a <xref:Microsoft.Maui.Controls.ContentPage> object that uses `Image` and `Label` objects to display data for the tab:
 
 :::image type="content" source="media/tabbedpage/tabbedpage.png" alt-text="Screenshot of a .NET MAUI TabbedPage.":::
 
 ## Navigate within a tab
 
-Navigation can be performed within a tab, provided that the `ContentPage` object is wrapped in a `NavigationPage` object:
+Navigation can be performed within a tab, provided that the <xref:Microsoft.Maui.Controls.ContentPage> object is wrapped in a `NavigationPage` object:
 
 ```xaml
 <TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -127,9 +127,9 @@ Navigation can be performed within a tab, provided that the `ContentPage` object
 </TabbedPage>
 ```
 
-In this example, the `TabbedPage` is populated with two `Page` objects. The first child is a `ContentPage` object, and the second child is a `NavigationPage` object containing a `ContentPage` object.
+In this example, the `TabbedPage` is populated with two `Page` objects. The first child is a <xref:Microsoft.Maui.Controls.ContentPage> object, and the second child is a `NavigationPage` object containing a <xref:Microsoft.Maui.Controls.ContentPage> object.
 
-When a `ContentPage` is wrapped in a `NavigationPage`, forwards page navigation can be performed by calling the `PushAsync` method on the `Navigation` property of the `ContentPage` object:
+When a <xref:Microsoft.Maui.Controls.ContentPage> is wrapped in a `NavigationPage`, forwards page navigation can be performed by calling the `PushAsync` method on the `Navigation` property of the <xref:Microsoft.Maui.Controls.ContentPage> object:
 
 ```csharp
 await Navigation.PushAsync(new UpcomingAppointmentsPage());

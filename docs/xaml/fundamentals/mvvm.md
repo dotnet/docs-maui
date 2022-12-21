@@ -112,7 +112,7 @@ The following example shows XAML that consumes `ClockViewModel`:
 </ContentPage>
 ```
 
-In this example, `ClockViewModel` is set to the `BindingContext` of the `ContentPage` using property element tags. Alternatively, the code-behind file could instantiate the viewmodel.
+In this example, `ClockViewModel` is set to the `BindingContext` of the <xref:Microsoft.Maui.Controls.ContentPage> using property element tags. Alternatively, the code-behind file could instantiate the viewmodel.
 
 The `Binding` markup extension on the `Text` property of the `Label` formats the `DateTime` property. The following screenshot shows the result:
 

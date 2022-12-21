@@ -27,7 +27,7 @@ The `IsGestureEnabled`, `IsPresented`, and `FlyoutLayoutBehavior` properties are
 
 ## Create a FlyoutPage
 
-To create a flyout page, create a `FlyoutPage` object and set it's `Flyout` and `Detail` properties. The `Flyout` property should be set to `ContentPage` object, and the `Detail` property should be set to a `TabbedPage`, `NavigationPage`, or `ContentPage` object. This will help to ensure a consistent user experience across all platforms.
+To create a flyout page, create a `FlyoutPage` object and set it's `Flyout` and `Detail` properties. The `Flyout` property should be set to <xref:Microsoft.Maui.Controls.ContentPage> object, and the `Detail` property should be set to a `TabbedPage`, `NavigationPage`, or <xref:Microsoft.Maui.Controls.ContentPage> object. This will help to ensure a consistent user experience across all platforms.
 
 > [!IMPORTANT]
 > A `FlyoutPage` is designed to be the root page of an app, and using it as a child page in other page types could result in unexpected and inconsistent behavior.
@@ -52,9 +52,9 @@ The following example shows a `FlyoutPage` that sets the `Flyout` and `Detail` p
 </FlyoutPage>
 ```
 
-In this example, the `Flyout` property is set to a `ContentPage` object, and the `Detail` property is set to a `NavigationPage` containing a `ContentPage` object.
+In this example, the `Flyout` property is set to a <xref:Microsoft.Maui.Controls.ContentPage> object, and the `Detail` property is set to a `NavigationPage` containing a <xref:Microsoft.Maui.Controls.ContentPage> object.
 
-The following example shows the definition of the `FlyoutMenuPage` object, which is of type `ContentPage`:
+The following example shows the definition of the `FlyoutMenuPage` object, which is of type <xref:Microsoft.Maui.Controls.ContentPage>:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"

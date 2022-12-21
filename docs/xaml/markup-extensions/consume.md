@@ -388,7 +388,7 @@ A typical usage of this markup extension is in a Shell application, as shown in 
               ContentTemplate="{DataTemplate views:MonkeysPage}" />
 ```
 
-In this example, `MonkeysPage` is converted from a `ContentPage` to a `DataTemplate`, which is set as the value of the `ShellContent.ContentTemplate` property. This ensures that `MonkeysPage` is only created when navigation to the page occurs, rather than at application startup.
+In this example, `MonkeysPage` is converted from a <xref:Microsoft.Maui.Controls.ContentPage> to a `DataTemplate`, which is set as the value of the `ShellContent.ContentTemplate` property. This ensures that `MonkeysPage` is only created when navigation to the page occurs, rather than at application startup.
 
 For more information about Shell apps, see [Shell](~/fundamentals/shell/index.md).
 

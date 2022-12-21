@@ -133,7 +133,7 @@ Complex path definitions can be difficult to construct. You need to know the typ
                       StringFormat='{0}'}" />
 ```
 
-That displays the type of the binding source, or `DataBindingDemos.PathVariationsPage`. You know `PathVariationsPage` derives from `ContentPage`, so it has a `Content` property:
+That displays the type of the binding source, or `DataBindingDemos.PathVariationsPage`. You know `PathVariationsPage` derives from <xref:Microsoft.Maui.Controls.ContentPage>, so it has a `Content` property:
 
 ```xaml
 <Label Text="{Binding Source={x:Reference page},

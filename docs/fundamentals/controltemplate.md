@@ -8,7 +8,7 @@ ms.date: 02/18/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-controltemplates)
 
-.NET Multi-platform App UI (.NET MAUI) control templates enable you to define the visual structure of `ContentView` derived custom controls, and `ContentPage` derived pages. Control templates separate the user interface (UI) for a custom control, or page, from the logic that implements the control or page. Additional content can also be inserted into the templated custom control, or templated page, at a pre-defined location.
+.NET Multi-platform App UI (.NET MAUI) control templates enable you to define the visual structure of `ContentView` derived custom controls, and <xref:Microsoft.Maui.Controls.ContentPage> derived pages. Control templates separate the user interface (UI) for a custom control, or page, from the logic that implements the control or page. Additional content can also be inserted into the templated custom control, or templated page, at a pre-defined location.
 
 For example, a control template can be created that redefines the UI provided by a custom control. The control template can then be consumed by the required custom control instance. Alternatively, a control template can be created that defines any common UI that will be used by multiple pages in an app. The control template can then be consumed by multiple pages, with each page still displaying its unique content.
 
@@ -112,7 +112,7 @@ When a `ControlTemplate` is declared as a resource, it must have a key specified
 
 ## Consume a ControlTemplate
 
-A `ControlTemplate` can be applied to a `ContentView` derived custom control by setting its `ControlTemplate` property to the control template object. Similarly, a `ControlTemplate` can be applied to a `ContentPage` derived page by setting its `ControlTemplate` property to the control template object. At runtime, when a `ControlTemplate` is applied, all of the controls that are defined in the `ControlTemplate` are added to the visual tree of the templated custom control, or templated page.
+A `ControlTemplate` can be applied to a `ContentView` derived custom control by setting its `ControlTemplate` property to the control template object. Similarly, a `ControlTemplate` can be applied to a <xref:Microsoft.Maui.Controls.ContentPage> derived page by setting its `ControlTemplate` property to the control template object. At runtime, when a `ControlTemplate` is applied, all of the controls that are defined in the `ControlTemplate` are added to the visual tree of the templated custom control, or templated page.
 
 The following example shows the `CardViewControlTemplate` being assigned to the `ControlTemplate` property of each `CardView` object:
 
@@ -280,7 +280,7 @@ For more information about styles, see [Styles](~/user-interface/styles/xaml.md)
 
 ## Redefine a control’s UI
 
-When a `ControlTemplate` is instantiated and assigned to the `ControlTemplate` property of a `ContentView` derived custom control, or a `ContentPage` derived page, the visual structure defined for the custom control or page is replaced with the visual structure defined in the `ControlTemplate`.
+When a `ControlTemplate` is instantiated and assigned to the `ControlTemplate` property of a `ContentView` derived custom control, or a <xref:Microsoft.Maui.Controls.ContentPage> derived page, the visual structure defined for the custom control or page is replaced with the visual structure defined in the `ControlTemplate`.
 
 For example, the `CardViewUI` custom control defines its user interface using the following XAML:
 
@@ -442,7 +442,7 @@ The following XAML shows a control template named `TealTemplate` that contains a
 </ControlTemplate>
 ```
 
-The following example shows `TealTemplate` assigned to the `ControlTemplate` property of a `ContentPage` derived page:
+The following example shows `TealTemplate` assigned to the `ControlTemplate` property of a <xref:Microsoft.Maui.Controls.ContentPage> derived page:
 
 ```xaml
 <controls:HeaderFooterPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -473,7 +473,7 @@ After a control template has been instantiated, the template's `OnApplyTemplate`
 > [!IMPORTANT]
 > The `GetTemplateChild` method should only be called after the `OnApplyTemplate` method has been called.
 
-The following XAML shows a control template named `TealTemplate` that can be applied to `ContentPage` derived pages:
+The following XAML shows a control template named `TealTemplate` that can be applied to <xref:Microsoft.Maui.Controls.ContentPage> derived pages:
 
 ```xaml
 <ControlTemplate x:Key="TealTemplate">

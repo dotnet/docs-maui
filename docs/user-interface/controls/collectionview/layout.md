@@ -589,7 +589,7 @@ The `OnImageTapped` event handler is executed in response to an `Image` object b
 </ContentPage>
 ```
 
-The default `FlowDirection` for an element with a parent is `MatchParent`. Therefore, the `CollectionView` inherits the `FlowDirection` property value from the `StackLayout`, which in turn inherits the `FlowDirection` property value from the `ContentPage`. This results in the right-to-left layout shown in the following screenshot:
+The default `FlowDirection` for an element with a parent is `MatchParent`. Therefore, the `CollectionView` inherits the `FlowDirection` property value from the `StackLayout`, which in turn inherits the `FlowDirection` property value from the <xref:Microsoft.Maui.Controls.ContentPage>. This results in the right-to-left layout shown in the following screenshot:
 
 :::image type="content" source="media/layout/vertical-list-rtl.png" alt-text="Screenshot of a CollectionView right-to-left vertical list layout.":::
 

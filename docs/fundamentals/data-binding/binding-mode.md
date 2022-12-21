@@ -218,7 +218,7 @@ The following XAML consumes the `HslColorViewModel`:
 </ContentPage>
 ```
 
-In this example, the `HslColorViewModel` is instantiated, and `Color` property set, and set as the page's `BindingContext`. The `BoxView`, `Label`, and three `Slider` views inherit the binding context from the `ContentPage`. These views are all binding targets that reference source properties in the viewmodel. For the `Color` property of the `BoxView`, and the `Text` property of the `Label`, the data bindings are `OneWay` - the properties in the view are set from the properties in the viewmodel. The `Value` property of the `Slider`, however, uses a `TwoWay` binding mode. This enables each `Slider` to be set from the viewmodel, and also for the viewmodel to be set from each `Slider`.
+In this example, the `HslColorViewModel` is instantiated, and `Color` property set, and set as the page's `BindingContext`. The `BoxView`, `Label`, and three `Slider` views inherit the binding context from the <xref:Microsoft.Maui.Controls.ContentPage>. These views are all binding targets that reference source properties in the viewmodel. For the `Color` property of the `BoxView`, and the `Text` property of the `Label`, the data bindings are `OneWay` - the properties in the view are set from the properties in the viewmodel. The `Value` property of the `Slider`, however, uses a `TwoWay` binding mode. This enables each `Slider` to be set from the viewmodel, and also for the viewmodel to be set from each `Slider`.
 
 When the example is first run, the `BoxView`, `Label`, and three `Slider` elements are all set from the viewmodel based on the initial `Color` property set when the viewmodel was instantiated:
 

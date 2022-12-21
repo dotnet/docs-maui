@@ -468,7 +468,7 @@ The following XAML example shows a `Style` that includes `DeviceStateTrigger` ob
 </Style>
 ```
 
-In this example, the explicit `Style` targets `ContentPage` objects. `ContentPage` objects that consume the style set their background color to silver on iOS, and to pale blue on Android.
+In this example, the explicit `Style` targets <xref:Microsoft.Maui.Controls.ContentPage> objects. <xref:Microsoft.Maui.Controls.ContentPage> objects that consume the style set their background color to silver on iOS, and to pale blue on Android.
 
 ### Orientation state trigger
 
@@ -511,4 +511,4 @@ The following XAML example shows a `Style` that includes `OrientationStateTrigge
 </Style>
 ```
 
-In this example, the explicit `Style` targets `ContentPage` objects. `ContentPage` objects that consume the style set their background color to silver when the orientation is portrait, and set their background color to white when the orientation is landscape.
+In this example, the explicit `Style` targets <xref:Microsoft.Maui.Controls.ContentPage> objects. <xref:Microsoft.Maui.Controls.ContentPage> objects that consume the style set their background color to silver when the orientation is portrait, and set their background color to white when the orientation is landscape.

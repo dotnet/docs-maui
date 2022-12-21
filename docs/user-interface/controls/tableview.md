@@ -279,4 +279,4 @@ In this example, the `OnViewCellTapped` event handler is executed in response to
 </ContentPage>
 ```
 
-The default `FlowDirection` for an element with a parent is `MatchParent`. Therefore, the `TableView` inherits the `FlowDirection` property value from the `ContentPage`.
+The default `FlowDirection` for an element with a parent is `MatchParent`. Therefore, the `TableView` inherits the `FlowDirection` property value from the <xref:Microsoft.Maui.Controls.ContentPage>.

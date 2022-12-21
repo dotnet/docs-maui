@@ -97,7 +97,7 @@ The following XAML example shows how to consume resources, and also define an ad
 </ContentPage>
 ```
 
-In this example, the `ContentPage` object consumes the implicit style defined in the application level resource dictionary. The `StackLayout` object consumes the `PageMargin` resource defined in the application level resource dictionary, while the `Button` object consumes the implicit style defined in the `StackLayout` resource dictionary. This results in the appearance shown in the following screenshot:
+In this example, the <xref:Microsoft.Maui.Controls.ContentPage> object consumes the implicit style defined in the application level resource dictionary. The `StackLayout` object consumes the `PageMargin` resource defined in the application level resource dictionary, while the `Button` object consumes the implicit style defined in the `StackLayout` resource dictionary. This results in the appearance shown in the following screenshot:
 
 :::image type="content" source="media/resource-dictionaries/consuming.png" alt-text="Consuming resource dictionary resources.":::
 

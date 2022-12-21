@@ -181,7 +181,7 @@ Elements in the visual tree can be selected by base class with the case insensit
 }
 ```
 
-This selector identifies any `ContentPage` elements that consume the style sheet, and sets their background color to `lightgray`.
+This selector identifies any <xref:Microsoft.Maui.Controls.ContentPage> elements that consume the style sheet, and sets their background color to `lightgray`.
 
 > [!NOTE]
 > The `^base` selector is specific to .NET MAUI, and isn't part of the CSS specification.
@@ -324,7 +324,7 @@ The following CSS selectors are supported by .NET MAUI:
 |`#id`|`#email`|Selects all elements with `StyleId` set to `email`. If `StyleId` is not set, fallback to `x:Name`. When using XAML, `x:Name` is preferred over `StyleId`. This selector is case sensitive.|
 |`*`|`*`|Selects all elements.|
 |`element`|`label`|Selects all elements of type `Label`, but not subclasses. This selector is case insensitive.|
-|`^base`|`^contentpage`|Selects all elements with `ContentPage` as the base class, including `ContentPage` itself. This selector is case insensitive and isn't part of the CSS specification.|
+|`^base`|`^contentpage`|Selects all elements with <xref:Microsoft.Maui.Controls.ContentPage> as the base class, including <xref:Microsoft.Maui.Controls.ContentPage> itself. This selector is case insensitive and isn't part of the CSS specification.|
 |`element,element`|`label,button`|Selects all `Button` elements and all `Label` elements. This selector is case insensitive.|
 |`element element`|`stacklayout label`|Selects all `Label` elements inside a `StackLayout`. This selector is case insensitive.|
 |`element>element`|`stacklayout>label`|Selects all `Label` elements with `StackLayout` as a direct parent. This selector is case insensitive.|

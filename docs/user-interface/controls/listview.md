@@ -626,7 +626,7 @@ In this example, the `OnImageTapped` event handler is executed in response to an
 </ContentPage>
 ```
 
-The default `FlowDirection` for an element with a parent is `MatchParent`. Therefore, the `ListView` inherits the `FlowDirection` property value from the `StackLayout`, which in turn inherits the `FlowDirection` property value from the `ContentPage`.
+The default `FlowDirection` for an element with a parent is `MatchParent`. Therefore, the `ListView` inherits the `FlowDirection` property value from the `StackLayout`, which in turn inherits the `FlowDirection` property value from the <xref:Microsoft.Maui.Controls.ContentPage>.
 
 ## Display grouped data
 

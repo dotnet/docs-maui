@@ -157,7 +157,7 @@ Let's look at the changed lines, which are highlighted in the previous snippet:
 
   This line maps the `Notes.Models` .NET namespace to the `models` XML namespace.
 
-- The `BindingContext` property of the `ContentPage` is set to an instance of the `Note.Models.About` class, using the XML namespace and object of `models:About`. This was set using **property element syntax** instead of an XML attribute.
+- The `BindingContext` property of the <xref:Microsoft.Maui.Controls.ContentPage> is set to an instance of the `Note.Models.About` class, using the XML namespace and object of `models:About`. This was set using **property element syntax** instead of an XML attribute.
 
   > [!IMPORTANT]
   > Until now, properties have been set using an XML attribute. This works great for simple values, such as a `Label.FontSize` property. But if the property value is more complex, you must use **property element syntax** to create the object. Consider the following example of a creating a label with its `FontSize` property set:
@@ -178,7 +178,7 @@ Let's look at the changed lines, which are highlighted in the previous snippet:
 
 - Three `<Label>` controls had their `Text` property value changed from a hardcoded string to binding syntax: `{Binding PATH}`.
 
-  `{Binding}` syntax is processed at run-time, allowing the value returned from the binding to be dynamic. The `PATH` portion of `{Binding PATH}` is the property path to bind to. The property comes from the current control's `BindingContext`. With the `<Label>` control, `BindingContext` is unset. Context is inherited from the parent when it's unset by the control, which in this case, the parent object setting context is the root object: `ContentPage`.
+  `{Binding}` syntax is processed at run-time, allowing the value returned from the binding to be dynamic. The `PATH` portion of `{Binding PATH}` is the property path to bind to. The property comes from the current control's `BindingContext`. With the `<Label>` control, `BindingContext` is unset. Context is inherited from the parent when it's unset by the control, which in this case, the parent object setting context is the root object: <xref:Microsoft.Maui.Controls.ContentPage>.
 
   The object in the `BindingContext` is an instance of the `About` model. The binding path of one of the labels binds the `Label.Text` property to the `About.Title` property.
 

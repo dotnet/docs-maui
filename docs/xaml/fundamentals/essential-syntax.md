@@ -158,7 +158,7 @@ Attached properties are recognizable in XAML as attributes containing both a cla
 
 ## Content properties
 
-In the previous example, the `Grid` object was set to the `Content` property of the `ContentPage`. However, the `Content` property wasn't referenced in the XAML but can be:
+In the previous example, the `Grid` object was set to the `Content` property of the <xref:Microsoft.Maui.Controls.ContentPage>. However, the `Content` property wasn't referenced in the XAML but can be:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -183,7 +183,7 @@ public class ContentPage : TemplatedPage
 }
 ```
 
-Any property specified as the `ContentProperty` of a class means that the property-element tags for the property are not required. Therefore, the example above specifies that any XAML content that appears between the start and end `ContentPage` tags is assigned to the `Content` property.
+Any property specified as the `ContentProperty` of a class means that the property-element tags for the property are not required. Therefore, the example above specifies that any XAML content that appears between the start and end <xref:Microsoft.Maui.Controls.ContentPage> tags is assigned to the `Content` property.
 
 Many classes also have `ContentProperty` attribute definitions. For example, the content property of `Label` is `Text`. <!--For more information, see the [API documentation]().-->
 

@@ -248,6 +248,6 @@ The `OnImageTapped` event handler is executed in response to an `Image` object b
 </ContentPage>
 ```
 
-The default `FlowDirection` for an element with a parent is `MatchParent`. Therefore, the `CarouselView` inherits the `FlowDirection` property value from the `ContentPage`.
+The default `FlowDirection` for an element with a parent is `MatchParent`. Therefore, the `CarouselView` inherits the `FlowDirection` property value from the <xref:Microsoft.Maui.Controls.ContentPage>.
 
 <!-- For more information about flow direction, see [Right-to-left localization](~/fundamentals/localization/right-to-left.md). -->

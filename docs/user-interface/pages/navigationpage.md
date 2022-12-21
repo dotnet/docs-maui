@@ -41,7 +41,7 @@ All three events receive `NavigationEventArgs` objects that define a read-only `
 
 .NET MAUI supports modeless page navigation. A modeless page stays on screen and remains available until you navigate to another page.
 
-A `NavigationPage` is typically used to navigate through a stack of `ContentPage` objects. When one page navigates to another, the new page is pushed on the stack and becomes the active page:
+A `NavigationPage` is typically used to navigate through a stack of <xref:Microsoft.Maui.Controls.ContentPage> objects. When one page navigates to another, the new page is pushed on the stack and becomes the active page:
 
 :::image type="content" source="media/navigationpage/pushing.png" alt-text="Pushing a page to the navigation stack." border="false":::
 
@@ -58,7 +58,7 @@ An optional icon can be displayed between the back button and the title.
 Navigation methods are exposed by the `Navigation` property on any `Page` derived types. These methods provide the ability to push pages onto the navigation stack, to pop pages from the stack, and to manipulate the stack.
 
 > [!TIP]
-> It's recommended that a `NavigationPage` should only be populated with `ContentPage` objects.
+> It's recommended that a `NavigationPage` should only be populated with <xref:Microsoft.Maui.Controls.ContentPage> objects.
 
 ### Create the root page
 

@@ -16,7 +16,7 @@ A new .NET MAUI app contains three XAML files, and their associated code-behind 
 
 :::image type="content" source="media/get-started/new-solution.png" alt-text="Screenshot of the structure of a new .NET MAUI app.":::
 
-The first file pairing is *App.xaml*, a XAML file, and *App.xaml.cs*, a C# *code-behind* file associated with the XAML file. Both *App.xaml* and *App.xaml.cs* contribute to a class named `App` that derives from `Application`. The second file pairing is *AppShell.xaml* and *AppShell.xaml.cs*, which contribute to a class named `AppShell` that derives from `Shell`. Most other classes with XAML files contribute to a class that derives from `ContentPage`, and define the UI of a page. This is true of the *MainPage.xaml* and *MainPage.xaml.cs* files.
+The first file pairing is *App.xaml*, a XAML file, and *App.xaml.cs*, a C# *code-behind* file associated with the XAML file. Both *App.xaml* and *App.xaml.cs* contribute to a class named `App` that derives from `Application`. The second file pairing is *AppShell.xaml* and *AppShell.xaml.cs*, which contribute to a class named `AppShell` that derives from `Shell`. Most other classes with XAML files contribute to a class that derives from <xref:Microsoft.Maui.Controls.ContentPage>, and define the UI of a page. This is true of the *MainPage.xaml* and *MainPage.xaml.cs* files.
 
 The *MainPage.xaml* file has the following structure:
 
@@ -30,9 +30,9 @@ The *MainPage.xaml* file has the following structure:
 
 The two XML namespace (`xmlns`) declarations refer to URIs on microsoft.com. However, there's no content at these URIs, and they basically function as version identifiers.
 
-The first XML namespace declaration means that tags defined within the XAML file with no prefix refer to classes in .NET MAUI, for example `ContentPage`. The second namespace declaration defines a prefix of `x`. This is used for several elements and attributes that are intrinsic to XAML itself and which are supported by other implementations of XAML. However, these elements and attributes are slightly different depending on the year embedded in the URI. .NET MAUI supports the [2009 XAML specification](/dotnet/desktop/xaml-services/xaml-2009-language-features).
+The first XML namespace declaration means that tags defined within the XAML file with no prefix refer to classes in .NET MAUI, for example <xref:Microsoft.Maui.Controls.ContentPage>. The second namespace declaration defines a prefix of `x`. This is used for several elements and attributes that are intrinsic to XAML itself and which are supported by other implementations of XAML. However, these elements and attributes are slightly different depending on the year embedded in the URI. .NET MAUI supports the [2009 XAML specification](/dotnet/desktop/xaml-services/xaml-2009-language-features).
 
-At the end of the first tag, the `x` prefix is used for an attribute named `Class`. Because the use of this `x` prefix is virtually universal for the XAML namespace, XAML attributes such as `Class` are almost always referred to as `x:Class`. The `x:Class` attribute specifies a fully qualified .NET class name: the `MainPage` class in the `MyMauiApp` namespace. This means that this XAML file defines a new class named `MainPage` in the `MyMauiApp` namespace that derives from `ContentPage` (the tag in which the `x:Class` attribute appears).
+At the end of the first tag, the `x` prefix is used for an attribute named `Class`. Because the use of this `x` prefix is virtually universal for the XAML namespace, XAML attributes such as `Class` are almost always referred to as `x:Class`. The `x:Class` attribute specifies a fully qualified .NET class name: the `MainPage` class in the `MyMauiApp` namespace. This means that this XAML file defines a new class named `MainPage` in the `MyMauiApp` namespace that derives from <xref:Microsoft.Maui.Controls.ContentPage> (the tag in which the `x:Class` attribute appears).
 
 The `x:Class` attribute can only appear in the root element of a XAML file to define a derived C# class. This is the only new class defined in the XAML file. Everything else that appears in a XAML file is instead simply instantiated from existing classes and initialized.
 
@@ -50,7 +50,7 @@ public partial class MainPage : ContentPage
 }
 ```
 
-The `MainPage` class derives from `ContentPage`, and is a partial class definition.
+The `MainPage` class derives from <xref:Microsoft.Maui.Controls.ContentPage>, and is a partial class definition.
 
 When Visual Studio builds the project, a source generator generates new C# source that contains the definition of the `InitializeComponent` method that's called from the `MainPage` constructor and adds it to the compilation object.
 
@@ -61,9 +61,9 @@ At runtime, code in the `MauiProgram` class bootstraps the app and executes the 
 
 ## Set page content
 
-A `ContentPage` should contain a single child, that can be a view or a layout with child views. The child of the `ContentPage` is automatically set as the value of the `ContentPage.Content` property.
+A <xref:Microsoft.Maui.Controls.ContentPage> should contain a single child, that can be a view or a layout with child views. The child of the <xref:Microsoft.Maui.Controls.ContentPage> is automatically set as the value of the `ContentPage.Content` property.
 
-The following example shows a `ContentPage` containing a `Label`:
+The following example shows a <xref:Microsoft.Maui.Controls.ContentPage> containing a `Label`:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -80,7 +80,7 @@ The following example shows a `ContentPage` containing a `Label`:
 </ContentPage>
 ```
 
-From the example above the relationship between classes, properties, and XML should be evident. A .NET MAUI class (such as `ContentPage` or `Label`) appears in the XAML file as an XML element. Properties of that class—including `Title` on `ContentPage` and seven properties of `Label` usually appear as XML attributes.
+From the example above the relationship between classes, properties, and XML should be evident. A .NET MAUI class (such as <xref:Microsoft.Maui.Controls.ContentPage> or `Label`) appears in the XAML file as an XML element. Properties of that class—including `Title` on <xref:Microsoft.Maui.Controls.ContentPage> and seven properties of `Label` usually appear as XML attributes.
 
 Many shortcuts exist to set the values of these properties. Some properties are basic data types. For example, the `Title` and `Text` properties are of type `string`, and `Rotation` is of type `double`. The `HorizontalTextAlignment` property is of type `TextAlignment`, which is an enumeration. For a property of any enumeration type, all you need to supply is a member name.
 
@@ -127,7 +127,7 @@ You can navigate back to `MainPage` using the navigation bar that appears on eac
 
 ## XAML and code interactions
 
-The child of most `ContentPage` derivatives is a layout, such as a `StackLayout` or a `Grid`, and the layout can contain multiple children. In XAML, these parent-child relationships are established with normal XML hierarchy:
+The child of most <xref:Microsoft.Maui.Controls.ContentPage> derivatives is a layout, such as a `StackLayout` or a `Grid`, and the layout can contain multiple children. In XAML, these parent-child relationships are established with normal XML hierarchy:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
