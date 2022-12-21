@@ -933,9 +933,9 @@ If the `Video.AreTransportControlsEnabled` property is set to `false`, the `Medi
 
 Any .NET MAUI cross-platform control, that derives from <xref:Microsoft.Maui.Controls.Element>, can be converted to its underlying platform control with the <xref:Microsoft.Maui.Platform.ElementExtensions.ToPlatform*> extension method:
 
-- On Android, <xref:Microsoft.Maui.Platform.ElementExtensions.ToPlatform*> converts the .NET MAUI control to an Android <xref:Android.Views.View> object.
-- On iOS and Mac Catalyst, <xref:Microsoft.Maui.Platform.ElementExtensions.ToPlatform*> converts the .NET MAUI control to a <xref:UIKit.UIView> object.
-- On Windows, <xref:Microsoft.Maui.Platform.ElementExtensions.ToPlatform*> converts the .NET MAUI control to a `FrameworkElement` object.
+- On Android, <xref:Microsoft.Maui.Platform.ElementExtensions.ToPlatform*> converts a .NET MAUI control to an Android <xref:Android.Views.View> object.
+- On iOS and Mac Catalyst, <xref:Microsoft.Maui.Platform.ElementExtensions.ToPlatform*> converts a .NET MAUI control to a <xref:UIKit.UIView> object.
+- On Windows, <xref:Microsoft.Maui.Platform.ElementExtensions.ToPlatform*> converts a .NET MAUI control to a `FrameworkElement` object.
 
 > [!NOTE]
 > The <xref:Microsoft.Maui.Platform.ElementExtensions.ToPlatform*> method is in the `Microsoft.Maui.Platform` namespace.
