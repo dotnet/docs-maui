@@ -1,16 +1,19 @@
 ---
 author: adegeo
 ms.author: adegeo
-ms.date: 12/15/2022
+ms.date: 12/21/2022
 ms.topic: include
 ---
 
-If you followed the [previous tutorial series](../../notes-app/index.yml) before December 14, 2022, you may need to upgrade your app to .NET 7. If your notes app is already .NET 7, move on to the next step.
+Skip this step if:
+
+- You downloaded the starter project in the previous step.
+- Completed the [previous tutorial series](../../notes-app/index.yml) after December 21, 2022.
 
 To upgrade your app to .NET 7:
 
 01. Open the _Notes.csproj_ file in Visual Studio, Visual Studio Code, or any other text editor.
-01. Find the `Project/PropertyGroup/TargetFrameworks` element and change it to the following:
+01. Find the `Project/PropertyGroup/TargetFrameworks` element. If it matches the snippet below, you can skip this tutorial step, otherwise, change it to the following:
 
     ```xml
     <TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
@@ -32,3 +35,5 @@ To upgrade your app to .NET 7:
 01. Save the project file.
 01. Close Visual Studio if you opened the project with Visual Studio.
 01. Delete the _./bin_ and _./obj_ folders in the same folder as the _Notes.csproj_ file.
+
+[![Explore the code.](~/media/code-sample.png) Explore the code for this step of the tutorial.](https://github.com/dotnet/maui-samples/tree/main/7.0/Tutorials/ConvertToMvvm/step1_upgrade)

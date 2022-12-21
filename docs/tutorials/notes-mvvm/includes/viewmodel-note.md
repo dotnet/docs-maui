@@ -1,7 +1,7 @@
 ---
 author: adegeo
 ms.author: adegeo
-ms.date: 12/12/2022
+ms.date: 12/21/2022
 ms.topic: include
 no-loc: ["communitytoolkit", "CommunityToolkit.Mvvm", "AllNotes", "Notes", "About"]
 ---
@@ -126,3 +126,5 @@ Now that the interaction with the view has changed from event handlers to comman
 01. Replace the code with the following snippet:
 
     :::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/Views/NotePage.xaml.cs":::
+
+[![Explore the code.](~/media/code-sample.png) Explore the code for this step of the tutorial.](https://github.com/dotnet/maui-samples/tree/main/7.0/Tutorials/ConvertToMvvm/step4_viewmodel_note)

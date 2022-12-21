@@ -1,7 +1,7 @@
 ---
 author: adegeo
 ms.author: adegeo
-ms.date: 12/12/2022
+ms.date: 12/21/2022
 ms.topic: include
 no-loc: ["communitytoolkit", "CommunityToolkit.Mvvm", "AllNotes", "Notes", "About"]
 ---
@@ -87,3 +87,5 @@ The `ShowMoreInfo` button isn't using the event handler, so the `LearnMore_Click
 01. Replace the code with the following snippet:
 
     :::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/Views/AboutPage.xaml.cs":::
+
+[![Explore the code.](~/media/code-sample.png) Explore the code for this step of the tutorial.](https://github.com/dotnet/maui-samples/tree/main/7.0/Tutorials/ConvertToMvvm/step3_viewmodel_about)

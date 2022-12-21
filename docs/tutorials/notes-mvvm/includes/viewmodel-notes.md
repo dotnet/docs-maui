@@ -1,7 +1,7 @@
 ---
 author: adegeo
 ms.author: adegeo
-ms.date: 12/12/2022
+ms.date: 12/21/2022
 ms.topic: include
 no-loc: ["communitytoolkit", "CommunityToolkit.Mvvm", "AllNotes", "Notes", "About"]
 ---
@@ -115,3 +115,5 @@ You can now run the app, and everything is working. However, there are two probl
 - Whenever a note is changed or added, the list of notes isn't reordered to show the latest notes at the top.
 
 These two problems are fixed in the next tutorial step.
+
+[![Explore the code.](~/media/code-sample.png) Explore the code for this step of the tutorial.](https://github.com/dotnet/maui-samples/tree/main/7.0/Tutorials/ConvertToMvvm/step5_viewmodel_notes)
