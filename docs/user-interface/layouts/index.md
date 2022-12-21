@@ -143,9 +143,9 @@ For more information, see [Grid](grid.md).
 
 ## FlexLayout
 
-A `FlexLayout` is similar to a `StackLayout` in that it displays child elements either horizontally or vertically in a stack. However, a `FlexLayout` can also wrap its children if there are too many to fit in a single row or column, and also enables more granular control of the size, orientation, and alignment of its child elements.
+A <xref:Microsoft.Maui.Controls.FlexLayout> is similar to a `StackLayout` in that it displays child elements either horizontally or vertically in a stack. However, a <xref:Microsoft.Maui.Controls.FlexLayout> can also wrap its children if there are too many to fit in a single row or column, and also enables more granular control of the size, orientation, and alignment of its child elements.
 
-The following XAML shows how to create a `FlexLayout` that displays its views in a single column:
+The following XAML shows how to create a <xref:Microsoft.Maui.Controls.FlexLayout> that displays its views in a single column:
 
 ```xaml
 <FlexLayout Direction="Column"
@@ -159,7 +159,7 @@ The following XAML shows how to create a `FlexLayout` that displays its views in
 
 In this example, layout works as follows:
 
-- The `Direction` property is set to `Column`, which causes the children of the `FlexLayout` to be arranged in a single column of items.
+- The `Direction` property is set to `Column`, which causes the children of the <xref:Microsoft.Maui.Controls.FlexLayout> to be arranged in a single column of items.
 - The `AlignItems` property is set to `Center`, which causes each item to be horizontally centered.
 - The `JustifyContent` property is set to `SpaceEvenly`, which allocates all leftover vertical space equally between all the items, and above the first item, and below the last item.
 

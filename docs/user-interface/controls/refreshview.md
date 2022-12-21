@@ -61,7 +61,7 @@ scrollView.Content = flexLayout;
 refreshView.Content = scrollView;
 ```
 
-In this example, the `RefreshView` provides pull to refresh functionality to a `ScrollView` whose child is a `FlexLayout`. The `FlexLayout` uses a bindable layout to generate its content by binding to a collection of items, and sets the appearance of each item with a `DataTemplate`. For more information about bindable layouts, see [Bindable layout](~/user-interface/layouts/bindablelayout.md).
+In this example, the `RefreshView` provides pull to refresh functionality to a `ScrollView` whose child is a <xref:Microsoft.Maui.Controls.FlexLayout>. The <xref:Microsoft.Maui.Controls.FlexLayout> uses a bindable layout to generate its content by binding to a collection of items, and sets the appearance of each item with a `DataTemplate`. For more information about bindable layouts, see [Bindable layout](~/user-interface/layouts/bindablelayout.md).
 
 The value of the `RefreshView.IsRefreshing` property indicates the current state of the `RefreshView`. When a refresh is triggered by the user, this property will automatically transition to `true`. Once the refresh completes, you should reset the property to `false`.
 
