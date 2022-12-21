@@ -22,8 +22,8 @@ The note page will display the note and allow you to either save or delete it. F
 Let's break down the key parts of the XAML controls placed on the page:
 
 - `<VerticalStackLayout>` arranges its children controls vertically, one below the other.
-- `<Editor>` is a multi-line text editor control, and is the first control inside of `VerticalStackLayout`.
-- `<Grid>` is a layout control, and is the second control inside of `VerticalStackLayout`.
+- `<Editor>` is a multi-line text editor control, and is the first control inside of <xref:Microsoft.Maui.Controls.VerticalStackLayout>.
+- `<Grid>` is a layout control, and is the second control inside of <xref:Microsoft.Maui.Controls.VerticalStackLayout>.
 
   This control defines columns and rows to create cells. Child controls are placed within those cells.
 

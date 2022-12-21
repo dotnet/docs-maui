@@ -80,9 +80,9 @@ For more information, see [HorizontalStackLayout](horizontalstacklayout.md).
 
 ## VerticalStackLayout
 
-A `VerticalStackLayout` organizes child views in a one-dimensional vertical stack, and is a more performant alternative to a <xref:Microsoft.Maui.Controls.StackLayout>. `VerticalStackLayout` is typically used to arrange a subsection of the UI on a page.
+A <xref:Microsoft.Maui.Controls.VerticalStackLayout> organizes child views in a one-dimensional vertical stack, and is a more performant alternative to a <xref:Microsoft.Maui.Controls.StackLayout>. <xref:Microsoft.Maui.Controls.VerticalStackLayout> is typically used to arrange a subsection of the UI on a page.
 
-The following XAML shows how to create a `VerticalStackLayout` containing three `Label` objects:
+The following XAML shows how to create a <xref:Microsoft.Maui.Controls.VerticalStackLayout> containing three `Label` objects:
 
 ```xaml
 <VerticalStackLayout Margin="20,35,20,25">
@@ -92,7 +92,7 @@ The following XAML shows how to create a `VerticalStackLayout` containing three 
 </VerticalStackLayout>
 ```
 
-In a `VerticalStackLayout`, if an element's size is not explicitly set, it expands to fill the available width.
+In a <xref:Microsoft.Maui.Controls.VerticalStackLayout>, if an element's size is not explicitly set, it expands to fill the available width.
 
 For more information, see [VerticalStackLayout](verticalstacklayout.md).
 
