@@ -48,4 +48,4 @@ Visual Studio then creates a new <xref:Microsoft.Maui.Controls.ContentPage>-deri
 The child of a <xref:Microsoft.Maui.Controls.ContentPage> is typically a layout, such as `Grid` or `StackLayout`, with the layout typically containing multiple views. However, the child of the <xref:Microsoft.Maui.Controls.ContentPage> can be a view that displays a collection, such as `CollectionView`.
 
 > [!NOTE]
-> The value of the `Title` property will be shown on the navigation bar, when the app performs navigation using a `NavigationPage`. For more information, see [NavigationPage](navigationpage.md).
+> The value of the `Title` property will be shown on the navigation bar, when the app performs navigation using a <xref:Microsoft.Maui.Controls.NavigationPage>. For more information, see [NavigationPage](navigationpage.md).

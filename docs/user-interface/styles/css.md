@@ -422,8 +422,8 @@ The following .NET MAUI specific CSS properties are also supported (in the **Val
 
 |Property|Applies to|Values|Example|
 |---|---|---|---|
-|`-maui-bar-background-color`|`NavigationPage`, `TabbedPage`|_color_ \| `initial` |`-maui-bar-background-color: teal;`|
-|`-maui-bar-text-color`|`NavigationPage`, `TabbedPage`|_color_ \| `initial` |`-maui-bar-text-color: gray`|
+|`-maui-bar-background-color`|<xref:Microsoft.Maui.Controls.NavigationPage>, `TabbedPage`|_color_ \| `initial` |`-maui-bar-background-color: teal;`|
+|`-maui-bar-text-color`|<xref:Microsoft.Maui.Controls.NavigationPage>, `TabbedPage`|_color_ \| `initial` |`-maui-bar-text-color: gray`|
 |`-maui-horizontal-scroll-bar-visibility`|`ScrollView`| `default` \| `always` \| `never` \| `initial` |`-maui-horizontal-scroll-bar-visibility: never;`|
 |`-maui-max-length`|`Entry`, `Editor`, `SearchBar`|_int_ \| `initial` |`-maui-max-length: 20;`|
 |`-maui-max-track-color`|`Slider`|_color_ \| `initial` |`-maui-max-track-color: red;`|

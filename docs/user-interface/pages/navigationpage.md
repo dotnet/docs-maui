@@ -8,16 +8,16 @@ ms.date: 03/14/2022
 
 :::image type="content" source="media/navigationpage/pages.png" alt-text=".NET MAUI NavigationPage." border="false":::
 
-The .NET Multi-platform App UI (.NET MAUI) `NavigationPage` provides a hierarchical navigation experience where you're able to navigate through pages, forwards and backwards, as desired. `NavigationPage` provides navigation as a last-in, first-out (LIFO) stack of `Page` objects.
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.NavigationPage> provides a hierarchical navigation experience where you're able to navigate through pages, forwards and backwards, as desired. <xref:Microsoft.Maui.Controls.NavigationPage> provides navigation as a last-in, first-out (LIFO) stack of `Page` objects.
 
-`NavigationPage` defines the following properties:
+<xref:Microsoft.Maui.Controls.NavigationPage> defines the following properties:
 
 - `BarBackground`, of type `Brush`, specifies the background of the navigation bar as a `Brush`.
 - `BarBackgroundColor`, of type `Color`, specifies the background color of the navigation bar.
 - `BackButtonTitle`, of type `string`, represents the text to use for the back button. This is an attached property.
 - `BarTextColor`, of type `Color`, specifies the color of the text on the navigation bar.
 - `CurrentPage`, of type `Page`, represents the page that's on top of the navigation stack. This is a read-only property.
-- `HasNavigationBar`, of type `bool`, represents whether a navigation bar is present on the `NavigationPage`. The default value of this property is `true`. This is an attached property.
+- `HasNavigationBar`, of type `bool`, represents whether a navigation bar is present on the <xref:Microsoft.Maui.Controls.NavigationPage>. The default value of this property is `true`. This is an attached property.
 - `HasBackButton`, of type `bool`, represents whether the navigation bar includes a back button. The default value of this property is `true`. This is an attached property.
 - `IconColor`, of type `Color`, defines the background color of the icon in the navigation bar. This is an attached property.
 - `RootPage`, of type `Page`, represents the root page of the navigation stack. This is a read-only property.
@@ -26,7 +26,7 @@ The .NET Multi-platform App UI (.NET MAUI) `NavigationPage` provides a hierarchi
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
-The `NavigationPage` class also defines three events:
+The <xref:Microsoft.Maui.Controls.NavigationPage> class also defines three events:
 
 - `Pushed` is raised when a page is pushed onto the navigation stack.
 - `Popped` is raised when when a page is popped from the navigation stack.
@@ -35,13 +35,13 @@ The `NavigationPage` class also defines three events:
 All three events receive `NavigationEventArgs` objects that define a read-only `Page` property, which retrieves the page that was popped from the navigation stack, or the newly visible page on the stack.
 
 > [!WARNING]
-> `NavigationPage` is incompatible with .NET MAUI Shell apps, and an exception will be thrown if you attempt to use `NavigationPage` in a Shell app. For more information about Shell apps, see [Shell](~/fundamentals/shell/index.md).
+> <xref:Microsoft.Maui.Controls.NavigationPage> is incompatible with .NET MAUI Shell apps, and an exception will be thrown if you attempt to use <xref:Microsoft.Maui.Controls.NavigationPage> in a Shell app. For more information about Shell apps, see [Shell](~/fundamentals/shell/index.md).
 
 ## Perform modeless navigation
 
 .NET MAUI supports modeless page navigation. A modeless page stays on screen and remains available until you navigate to another page.
 
-A `NavigationPage` is typically used to navigate through a stack of <xref:Microsoft.Maui.Controls.ContentPage> objects. When one page navigates to another, the new page is pushed on the stack and becomes the active page:
+A <xref:Microsoft.Maui.Controls.NavigationPage> is typically used to navigate through a stack of <xref:Microsoft.Maui.Controls.ContentPage> objects. When one page navigates to another, the new page is pushed on the stack and becomes the active page:
 
 :::image type="content" source="media/navigationpage/pushing.png" alt-text="Pushing a page to the navigation stack." border="false":::
 
@@ -49,7 +49,7 @@ When the second page returns back to the first page, a page is popped from the s
 
 :::image type="content" source="media/navigationpage/popping.png" alt-text="Popping a page from the navigation stack." border="false":::
 
-A `NavigationPage` consists of a navigation bar, with the active page being displayed below the navigation bar. The following diagram shows the main components of the navigation bar:
+A <xref:Microsoft.Maui.Controls.NavigationPage> consists of a navigation bar, with the active page being displayed below the navigation bar. The following diagram shows the main components of the navigation bar:
 
 :::image type="content" source="media/navigationpage/components.png" alt-text="NavigationPage components." border="false":::
 
@@ -58,11 +58,11 @@ An optional icon can be displayed between the back button and the title.
 Navigation methods are exposed by the `Navigation` property on any `Page` derived types. These methods provide the ability to push pages onto the navigation stack, to pop pages from the stack, and to manipulate the stack.
 
 > [!TIP]
-> It's recommended that a `NavigationPage` should only be populated with <xref:Microsoft.Maui.Controls.ContentPage> objects.
+> It's recommended that a <xref:Microsoft.Maui.Controls.NavigationPage> should only be populated with <xref:Microsoft.Maui.Controls.ContentPage> objects.
 
 ### Create the root page
 
-An app that is structured around multiple pages always has a *root* page, which is the first page added to the navigation stack. This is accomplished by creating a `NavigationPage` object whose constructor argument is the root page of the app, and setting the resulting object as the value of the `App.MainPage` property:
+An app that is structured around multiple pages always has a *root* page, which is the first page added to the navigation stack. This is accomplished by creating a <xref:Microsoft.Maui.Controls.NavigationPage> object whose constructor argument is the root page of the app, and setting the resulting object as the value of the `App.MainPage` property:
 
 ```csharp
 public partial class App : Application
@@ -76,7 +76,7 @@ public partial class App : Application
 ```
 
 > [!NOTE]
-> The `RootPage` property of a `NavigationPage` provides access to the first page in the navigation stack.
+> The `RootPage` property of a <xref:Microsoft.Maui.Controls.NavigationPage> provides access to the first page in the navigation stack.
 
 ### Push pages to the navigation stack
 
@@ -137,7 +137,7 @@ To return to the previous page the app should pop the current page from the moda
 Modal navigation methods are exposed by the `Navigation` property on any `Page` derived types. These methods provide the ability to push pages onto the modal stack, and pop pages from the modal stack. The `Navigation` property also exposes a `ModalStack` property from which pages in the modal stack can be obtained. However, there is no concept of performing modal stack manipulation, or popping to the root page in modal navigation. This is because these operations are not universally supported on the underlying platforms.
 
 > [!NOTE]
-> A `NavigationPage` object is not required for performing modal page navigation.
+> A <xref:Microsoft.Maui.Controls.NavigationPage> object is not required for performing modal page navigation.
 
 ### Push pages to the modal stack
 
@@ -230,7 +230,7 @@ For more information about data binding, see [Data binding](~/fundamentals/data-
 
 ## Display views in the navigation bar
 
-Any .NET MAUI `View` can be displayed in the navigation bar of a `NavigationPage`. This is accomplished by setting the `NavigationPage.TitleView` attached property to a `View`. This attached property can be set on any `Page`, and when the `Page` is pushed onto a `NavigationPage`, the `NavigationPage` will respect the value of the property.
+Any .NET MAUI `View` can be displayed in the navigation bar of a <xref:Microsoft.Maui.Controls.NavigationPage>. This is accomplished by setting the `NavigationPage.TitleView` attached property to a `View`. This attached property can be set on any `Page`, and when the `Page` is pushed onto a <xref:Microsoft.Maui.Controls.NavigationPage>, the <xref:Microsoft.Maui.Controls.NavigationPage> will respect the value of the property.
 
 The following example shows how to set the `NavigationPage.TitleView` attached property:
 
@@ -253,7 +253,7 @@ Slider titleView = new Slider { HeightRequest = 44, WidthRequest = 300 };
 NavigationPage.SetTitleView(this, titleView);
 ```
 
-In this example, a `Slider` is displayed in the navigation bar of the `NavigationPage`, to control zooming.
+In this example, a `Slider` is displayed in the navigation bar of the <xref:Microsoft.Maui.Controls.NavigationPage>, to control zooming.
 
 > [!IMPORTANT]
 > Many views won't appear in the navigation bar unless the size of the view is specified with the `WidthRequest` and `HeightRequest` properties.

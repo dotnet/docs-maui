@@ -33,7 +33,7 @@ Two approaches can be used to create a `TabbedPage`:
 - Assign a collection to the `ItemsSource` property and assign a `DataTemplate` to the `ItemTemplate` property to return pages for objects in the collection. For more information, see [Populate a TabbedPage with a DataTemplate](#populate-a-tabbedpage-with-a-datatemplate).
 
 > [!IMPORTANT]
-> A `TabbedPage` should only be populated with `NavigationPage` and <xref:Microsoft.Maui.Controls.ContentPage> objects.
+> A `TabbedPage` should only be populated with <xref:Microsoft.Maui.Controls.NavigationPage> and <xref:Microsoft.Maui.Controls.ContentPage> objects.
 
 Regardless of the approach taken, the location of the tab bar in a `TabbedPage` is platform-dependent:
 
@@ -110,7 +110,7 @@ In this example, each tab consists of a <xref:Microsoft.Maui.Controls.ContentPag
 
 ## Navigate within a tab
 
-Navigation can be performed within a tab, provided that the <xref:Microsoft.Maui.Controls.ContentPage> object is wrapped in a `NavigationPage` object:
+Navigation can be performed within a tab, provided that the <xref:Microsoft.Maui.Controls.ContentPage> object is wrapped in a <xref:Microsoft.Maui.Controls.NavigationPage> object:
 
 ```xaml
 <TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -127,15 +127,15 @@ Navigation can be performed within a tab, provided that the <xref:Microsoft.Maui
 </TabbedPage>
 ```
 
-In this example, the `TabbedPage` is populated with two `Page` objects. The first child is a <xref:Microsoft.Maui.Controls.ContentPage> object, and the second child is a `NavigationPage` object containing a <xref:Microsoft.Maui.Controls.ContentPage> object.
+In this example, the `TabbedPage` is populated with two `Page` objects. The first child is a <xref:Microsoft.Maui.Controls.ContentPage> object, and the second child is a <xref:Microsoft.Maui.Controls.NavigationPage> object containing a <xref:Microsoft.Maui.Controls.ContentPage> object.
 
-When a <xref:Microsoft.Maui.Controls.ContentPage> is wrapped in a `NavigationPage`, forwards page navigation can be performed by calling the `PushAsync` method on the `Navigation` property of the <xref:Microsoft.Maui.Controls.ContentPage> object:
+When a <xref:Microsoft.Maui.Controls.ContentPage> is wrapped in a <xref:Microsoft.Maui.Controls.NavigationPage>, forwards page navigation can be performed by calling the `PushAsync` method on the `Navigation` property of the <xref:Microsoft.Maui.Controls.ContentPage> object:
 
 ```csharp
 await Navigation.PushAsync(new UpcomingAppointmentsPage());
 ```
 
-For more information about performing navigation using the `NavigationPage` class, see [NavigationPage](navigationpage.md).
+For more information about performing navigation using the <xref:Microsoft.Maui.Controls.NavigationPage> class, see [NavigationPage](navigationpage.md).
 
 > [!WARNING]
-> While a `NavigationPage` can be placed in a  `TabbedPage`, it's not recommended to place a `TabbedPage` into a `NavigationPage`.
+> While a <xref:Microsoft.Maui.Controls.NavigationPage> can be placed in a  `TabbedPage`, it's not recommended to place a `TabbedPage` into a <xref:Microsoft.Maui.Controls.NavigationPage>.
