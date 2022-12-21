@@ -46,6 +46,6 @@ The `ScrollView.On<iOS>` method specifies that this platform-specific will only 
 scrollView.On<iOS>().SetShouldDelayContentTouches(!scrollView.On<iOS>().ShouldDelayContentTouches());
 ```
 
-The result is that a `ScrollView` can disable delaying receiving content touches, so that in this scenario the `Slider` receives the gesture rather than the `Detail` page of the `FlyoutPage`:
+The result is that a `ScrollView` can disable delaying receiving content touches, so that in this scenario the `Slider` receives the gesture rather than the `Detail` page of the <xref:Microsoft.Maui.Controls.FlyoutPage>:
 
 :::image type="content" source="media/scrollview-content-touches/scrollview-delay-content-touches.png" alt-text="ScrollView Delay Content Touches Platform-Specific.":::

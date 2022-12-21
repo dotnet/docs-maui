@@ -25,7 +25,7 @@ The following platform-specific functionality is provided for .NET MAUI views on
 
 The following platform-specific functionality is provided for .NET MAUI pages on iOS:
 
-- Controlling whether the detail page of a `FlyoutPage` has shadow applied to it, when revealing the flyout page. For more information, see [FlyoutPage shadow](flyoutpage-shadow.md).
+- Controlling whether the detail page of a <xref:Microsoft.Maui.Controls.FlyoutPage> has shadow applied to it, when revealing the flyout page. For more information, see [FlyoutPage shadow](flyoutpage-shadow.md).
 - Controlling whether the navigation bar is translucent. For more information, see [Navigation bar translucency on iOS](navigation-bar-translucent.md).
 - Controlling whether the page title is displayed as a large title in the page navigation bar. For more information, see [Large page titles on iOS](page-large-title.md).
 - Setting the presentation style of modal pages. For more information, see [Modal page presentation style](page-presentation-style.md).

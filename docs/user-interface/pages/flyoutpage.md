@@ -8,9 +8,9 @@ ms.date: 04/11/2022
 
 :::image type="content" source="media/flyoutpage/pages.png" alt-text=".NET MAUI FlyoutPage." border="false":::
 
-The .NET Multi-platform App UI (.NET MAUI) `FlyoutPage` is a page that manages two related pages of information – a flyout page that presents items, and a detail page that presents details about items on the flyout page. Selecting an item on the flyout page will navigate to the corresponding detail page.
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.FlyoutPage> is a page that manages two related pages of information – a flyout page that presents items, and a detail page that presents details about items on the flyout page. Selecting an item on the flyout page will navigate to the corresponding detail page.
 
-`FlyoutPage` defines the following properties:
+<xref:Microsoft.Maui.Controls.FlyoutPage> defines the following properties:
 
 - `Detail`, of type `Page`, defines the detail page displayed for the selected item in the flyout page.
 - `Flyout`, of type `Page`, defines the flyout page.
@@ -20,19 +20,19 @@ The .NET Multi-platform App UI (.NET MAUI) `FlyoutPage` is a page that manages t
 
 The `IsGestureEnabled`, `IsPresented`, and `FlyoutLayoutBehavior` properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
-`FlyoutPage` also defines an `IsPresentedChanged` event, that's raised when the `IsPresented` property changes value.
+<xref:Microsoft.Maui.Controls.FlyoutPage> also defines an `IsPresentedChanged` event, that's raised when the `IsPresented` property changes value.
 
 > [!WARNING]
-> `FlyoutPage` is incompatible with .NET MAUI Shell apps, and an exception will be thrown if you attempt to use `FlyoutPage` in a Shell app. For more information about Shell apps, see [Shell](~/fundamentals/shell/index.md).
+> <xref:Microsoft.Maui.Controls.FlyoutPage> is incompatible with .NET MAUI Shell apps, and an exception will be thrown if you attempt to use <xref:Microsoft.Maui.Controls.FlyoutPage> in a Shell app. For more information about Shell apps, see [Shell](~/fundamentals/shell/index.md).
 
 ## Create a FlyoutPage
 
-To create a flyout page, create a `FlyoutPage` object and set it's `Flyout` and `Detail` properties. The `Flyout` property should be set to <xref:Microsoft.Maui.Controls.ContentPage> object, and the `Detail` property should be set to a `TabbedPage`, `NavigationPage`, or <xref:Microsoft.Maui.Controls.ContentPage> object. This will help to ensure a consistent user experience across all platforms.
+To create a flyout page, create a <xref:Microsoft.Maui.Controls.FlyoutPage> object and set it's `Flyout` and `Detail` properties. The `Flyout` property should be set to <xref:Microsoft.Maui.Controls.ContentPage> object, and the `Detail` property should be set to a `TabbedPage`, `NavigationPage`, or <xref:Microsoft.Maui.Controls.ContentPage> object. This will help to ensure a consistent user experience across all platforms.
 
 > [!IMPORTANT]
-> A `FlyoutPage` is designed to be the root page of an app, and using it as a child page in other page types could result in unexpected and inconsistent behavior.
+> A <xref:Microsoft.Maui.Controls.FlyoutPage> is designed to be the root page of an app, and using it as a child page in other page types could result in unexpected and inconsistent behavior.
 
-The following example shows a `FlyoutPage` that sets the `Flyout` and `Detail` properties:
+The following example shows a <xref:Microsoft.Maui.Controls.FlyoutPage> that sets the `Flyout` and `Detail` properties:
 
 ```xaml
 <FlyoutPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -150,7 +150,7 @@ In this example, the `OnSelectionChanged` event handler retrieves the `CurrentSe
 
 ## Control detail page layout behavior
 
-How the `FlyoutPage` displays the flyout and detail pages depends on the form factor of the device the app is running on, the orientation of the device, and the value of the `FlyoutLayoutBehavior` property. This property should be set to a value of the `FlyoutLayoutBehavior` enumeration, which defines the following members:
+How the <xref:Microsoft.Maui.Controls.FlyoutPage> displays the flyout and detail pages depends on the form factor of the device the app is running on, the orientation of the device, and the value of the `FlyoutLayoutBehavior` property. This property should be set to a value of the `FlyoutLayoutBehavior` enumeration, which defines the following members:
 
 - `Default` – pages are displayed using the platform default.
 - `Popover` – the detail page covers, or partially covers the flyout page.
@@ -158,7 +158,7 @@ How the `FlyoutPage` displays the flyout and detail pages depends on the form fa
 - `SplitOnLandscape` – a split screen is used when the device is in landscape orientation.
 - `SplitOnPortrait` – a split screen is used when the device is in portrait orientation.
 
-The following example shows how to set the `FlyoutLayoutBehavior` property on a `FlyoutPage`:
+The following example shows how to set the `FlyoutLayoutBehavior` property on a <xref:Microsoft.Maui.Controls.FlyoutPage>:
 
 ```xaml
 <FlyoutPage ...
