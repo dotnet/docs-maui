@@ -10,7 +10,7 @@ ms.date: 02/22/2022
 
 .NET Multi-platform App UI (.NET MAUI) bindable layouts enable any layout class that derives from the `Layout` class to generate its content by binding to a collection of items, with the option to set the appearance of each item with a `DataTemplate`.
 
-Bindable layouts are provided by the `BindableLayout` class, which exposes the following attached properties:
+Bindable layouts are provided by the <xref:Microsoft.Maui.Controls.BindableLayout> class, which exposes the following attached properties:
 
 - `ItemsSource` – specifies the collection of `IEnumerable` items to be displayed by the layout.
 - `ItemTemplate` – specifies the `DataTemplate` to apply to each item in the collection of items displayed by the layout.
@@ -19,7 +19,7 @@ Bindable layouts are provided by the `BindableLayout` class, which exposes the f
 > [!NOTE]
 > The `ItemTemplate` property takes precedence when both the `ItemTemplate` and `ItemTemplateSelector` properties are set.
 
-In addition, the `BindableLayout` class exposes the following bindable properties:
+In addition, the <xref:Microsoft.Maui.Controls.BindableLayout> class exposes the following bindable properties:
 
 - `EmptyView` – specifies the `string` or view that will be displayed when the `ItemsSource` property is `null`, or when the collection specified by the `ItemsSource` property is `null` or empty. The default value is `null`.
 - `EmptyViewTemplate` – specifies the `DataTemplate` that will be displayed when the `ItemsSource` property is `null`, or when the collection specified by the `ItemsSource` property is `null` or empty. The default value is `null`.
@@ -52,7 +52,7 @@ Grid grid = new Grid();
 BindableLayout.SetItemsSource(grid, items);
 ```
 
-When the `BindableLayout.ItemsSource` attached property is set on a layout, but the `BindableLayout.ItemTemplate` attached property isn't set, every item in the `IEnumerable` collection will be displayed by a `Label` that's created by the `BindableLayout` class.
+When the `BindableLayout.ItemsSource` attached property is set on a layout, but the `BindableLayout.ItemTemplate` attached property isn't set, every item in the `IEnumerable` collection will be displayed by a `Label` that's created by the <xref:Microsoft.Maui.Controls.BindableLayout> class.
 
 ## Define item appearance
 
@@ -168,7 +168,7 @@ The result is that when the data bound collection is `null`, the `StackLayout` a
 
 :::image type="content" source="media/bindablelayout/emptyview-views.png" alt-text="Screenshot of a bindable layout empty view with multiple views.":::
 
-Similarly, the `EmptyViewTemplate` can be set to a `DataTemplate`, which will be displayed when the `ItemsSource` property is `null`, or when the collection specified by the `ItemsSource` property is `null` or empty. The `DataTemplate` can contain a single view, or a view that contains multiple child views. In addition, the `BindingContext` of the `EmptyViewTemplate` will be inherited from the `BindingContext` of the `BindableLayout`. The following XAML example shows the `EmptyViewTemplate` property set to a `DataTemplate` that contains a single view:
+Similarly, the `EmptyViewTemplate` can be set to a `DataTemplate`, which will be displayed when the `ItemsSource` property is `null`, or when the collection specified by the `ItemsSource` property is `null` or empty. The `DataTemplate` can contain a single view, or a view that contains multiple child views. In addition, the `BindingContext` of the `EmptyViewTemplate` will be inherited from the `BindingContext` of the <xref:Microsoft.Maui.Controls.BindableLayout>. The following XAML example shows the `EmptyViewTemplate` property set to a `DataTemplate` that contains a single view:
 
 ```xaml
 <StackLayout BindableLayout.ItemsSource="{Binding UserWithoutAchievements.Achievements}">
