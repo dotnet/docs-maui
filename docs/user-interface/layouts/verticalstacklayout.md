@@ -150,7 +150,7 @@ For more information about alignment, see [Layout Options in .NET MAUI](layout-o
 
 A `VerticalStackLayout` can be used as a parent layout that contains other nested child layouts.
 
-The following XAML shows an example of nesting `HorizontalStackLayout` objects in a `VerticalStackLayout`:
+The following XAML shows an example of nesting <xref:Microsoft.Maui.Controls.HorizontalStackLayout> objects in a `VerticalStackLayout`:
 
 ```xaml
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
@@ -193,7 +193,7 @@ The following XAML shows an example of nesting `HorizontalStackLayout` objects i
 </ContentPage>
 ```
 
-In this example, the parent `VerticalStackLayout` contains nested `HorizontalStackLayout` objects inside `Frame` objects:
+In this example, the parent `VerticalStackLayout` contains nested <xref:Microsoft.Maui.Controls.HorizontalStackLayout> objects inside `Frame` objects:
 
 :::image type="content" source="media/verticalstacklayout/nested.png" alt-text="VerticalStackLayout displaying nested HorizontalStackLayout objects screenshot.":::
 

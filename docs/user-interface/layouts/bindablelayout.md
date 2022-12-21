@@ -27,7 +27,7 @@ In addition, the <xref:Microsoft.Maui.Controls.BindableLayout> class exposes the
 > [!NOTE]
 > The `EmptyViewTemplate` property takes precedence when both the `EmptyView` and `EmptyViewTemplate` properties are set.
 
-All of these properties can be attached to the <xref:Microsoft.Maui.Controls.AbsoluteLayout>, <xref:Microsoft.Maui.Controls.FlexLayout>, <xref:Microsoft.Maui.Controls.Grid>, `HorizontalStackLayout`, `StackLayout`, and `VerticalStackLayout` classes, which all derive from the `Layout` class.
+All of these properties can be attached to the <xref:Microsoft.Maui.Controls.AbsoluteLayout>, <xref:Microsoft.Maui.Controls.FlexLayout>, <xref:Microsoft.Maui.Controls.Grid>, <xref:Microsoft.Maui.Controls.HorizontalStackLayout>, `StackLayout`, and `VerticalStackLayout` classes, which all derive from the `Layout` class.
 
 When the `BinableLayout.ItemsSource` property is set to a collection of items and attached to a `Layout`-derived class, each item in the collection is added to the `Layout`-derived class for display. The `Layout`-derived class will then update its child views when the underlying collection changes. <!-- For more information about the .NET MAUI layout cycle, see [Creating a Custom Layout](~/user-interface/layouts/custom.md).-->
 

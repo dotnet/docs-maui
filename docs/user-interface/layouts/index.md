@@ -60,9 +60,9 @@ For more information, see [StackLayout](stacklayout.md).
 
 ## HorizontalStackLayout
 
-A `HorizontalStackLayout` organizes child views in a one-dimensional horizontal stack, and is a more performant alternative to a `StackLayout`. `HorizontalStackLayout` is typically used to arrange a subsection of the UI on a page.
+A <xref:Microsoft.Maui.Controls.HorizontalStackLayout> organizes child views in a one-dimensional horizontal stack, and is a more performant alternative to a `StackLayout`. <xref:Microsoft.Maui.Controls.HorizontalStackLayout> is typically used to arrange a subsection of the UI on a page.
 
-The following XAML shows how to create a `HorizontalStackLayout` containing different child views:
+The following XAML shows how to create a <xref:Microsoft.Maui.Controls.HorizontalStackLayout> containing different child views:
 
 ```xaml
 <HorizontalStackLayout Margin="20">
@@ -74,7 +74,7 @@ The following XAML shows how to create a `HorizontalStackLayout` containing diff
 </HorizontalStackLayout>
 ```
 
-In a `HorizontalStackLayout`, if an element's size is not explicitly set, it expands to fill the available height.
+In a <xref:Microsoft.Maui.Controls.HorizontalStackLayout>, if an element's size is not explicitly set, it expands to fill the available height.
 
 For more information, see [HorizontalStackLayout](horizontalstacklayout.md).
 
