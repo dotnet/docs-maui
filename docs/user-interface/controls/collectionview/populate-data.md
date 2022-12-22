@@ -278,7 +278,7 @@ For more information about the `SwipeView` control, see [SwipeView](~/user-inter
 
 ## Pull to refresh
 
-<xref:Microsoft.Maui.Controls.CollectionView> supports pull to refresh functionality through the `RefreshView`, which enables the data being displayed to be refreshed by pulling down on the list of items. The `RefreshView` is a container control that provides pull to refresh functionality to its child, provided that the child supports scrollable content. Therefore, pull to refresh is implemented for a <xref:Microsoft.Maui.Controls.CollectionView> by setting it as the child of a `RefreshView`:
+<xref:Microsoft.Maui.Controls.CollectionView> supports pull to refresh functionality through the <xref:Microsoft.Maui.Controls.RefreshView>, which enables the data being displayed to be refreshed by pulling down on the list of items. The <xref:Microsoft.Maui.Controls.RefreshView> is a container control that provides pull to refresh functionality to its child, provided that the child supports scrollable content. Therefore, pull to refresh is implemented for a <xref:Microsoft.Maui.Controls.CollectionView> by setting it as the child of a <xref:Microsoft.Maui.Controls.RefreshView>:
 
 ```xaml
 <RefreshView IsRefreshing="{Binding IsRefreshing}"
@@ -311,9 +311,9 @@ When the user initiates a refresh, the `ICommand` defined by the `Command` prope
 
 :::image type="content" source="media/populate-data/pull-to-refresh.png" alt-text="Screenshot of CollectionView pull-to-refresh.":::
 
-The value of the `RefreshView.IsRefreshing` property indicates the current state of the `RefreshView`. When a refresh is triggered by the user, this property will automatically transition to `true`. Once the refresh completes, you should reset the property to `false`.
+The value of the `RefreshView.IsRefreshing` property indicates the current state of the <xref:Microsoft.Maui.Controls.RefreshView>. When a refresh is triggered by the user, this property will automatically transition to `true`. Once the refresh completes, you should reset the property to `false`.
 
-For more information about `RefreshView`, see [RefreshView](~/user-interface/controls/refreshview.md).
+For more information about <xref:Microsoft.Maui.Controls.RefreshView>, see [RefreshView](~/user-interface/controls/refreshview.md).
 
 ## Load data incrementally
 
