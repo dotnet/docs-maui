@@ -6,18 +6,18 @@ ms.date: 02/15/2022
 
 # SearchBar
 
-The .NET Multi-platform App UI (.NET MAUI) `SearchBar` is a user input control used to initiating a search. The `SearchBar` control supports placeholder text, query input, search execution, and cancellation. The following iOS screenshot shows a `SearchBar` query with results displayed in a <xref:Microsoft.Maui.Controls.ListView>:
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.SearchBar> is a user input control used to initiating a search. The <xref:Microsoft.Maui.Controls.SearchBar> control supports placeholder text, query input, search execution, and cancellation. The following iOS screenshot shows a <xref:Microsoft.Maui.Controls.SearchBar> query with results displayed in a <xref:Microsoft.Maui.Controls.ListView>:
 
 :::image type="content" source="media/searchbar/searchbar.png" alt-text="Screenshot of a SearchBar.":::
 
-`SearchBar` defines the following properties:
+<xref:Microsoft.Maui.Controls.SearchBar> defines the following properties:
 
 - `CancelButtonColor` is a `Color` that defines the color of the cancel button.
-- `CharacterSpacing`, is a `double` that's the spacing between characters of the `SearchBar` text.
+- `CharacterSpacing`, is a `double` that's the spacing between characters of the <xref:Microsoft.Maui.Controls.SearchBar> text.
 - `CursorPosition` is an `int` that determines the position at which the next character will be inserted into the string stored in the `Text` property.
-- `FontAttributes` is a `FontAttributes` enum value that determines whether the `SearchBar` font is bold, italic, or neither.
+- `FontAttributes` is a `FontAttributes` enum value that determines whether the <xref:Microsoft.Maui.Controls.SearchBar> font is bold, italic, or neither.
 - `FontAutoScalingEnabled` is a `bool` which defines whether an app's UI reflects text scaling preferences set in the operating system.
-- `FontFamily` is a `string` that determines the font family used by the `SearchBar`.
+- `FontFamily` is a `string` that determines the font family used by the <xref:Microsoft.Maui.Controls.SearchBar>.
 - `FontSize` is a `double` value that represents specific font sizes across platforms.
 - `HorizontalTextAlignment` is a `TextAlignment` enum value that defines the horizontal alignment of the query text.
 - `IsTextPredictionEnabled` is a `bool` that determines whether text prediction and automatic text correction is enabled.
@@ -25,23 +25,23 @@ The .NET Multi-platform App UI (.NET MAUI) `SearchBar` is a user input control u
 - `PlaceholderColor` is a `Color` that defines the color of the placeholder text.
 - `SearchCommand` is an `ICommand` that allows binding user actions, such as finger taps or clicks, to commands defined on a viewmodel.
 - `SearchCommandParameter` is an `object` that specifies the parameter that should be passed to the `SearchCommand`.
-- `SelectionLength` is an `int` that can be used to return or set the length of text selection within the `SearchBar`.
-- `Text` is a `string` containing the query text in the `SearchBar`.
+- `SelectionLength` is an `int` that can be used to return or set the length of text selection within the <xref:Microsoft.Maui.Controls.SearchBar>.
+- `Text` is a `string` containing the query text in the <xref:Microsoft.Maui.Controls.SearchBar>.
 - `TextColor` is a `Color` that defines the query text color.
 - `VerticalTextAlignment` is a `TextAlignment` enum value that defines the vertical alignment of the query text.
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
-In addition, `SearchBar` defines a `SearchButtonPressed` event, which is raised when the search button is clicked, or the enter key is pressed.
+In addition, <xref:Microsoft.Maui.Controls.SearchBar> defines a `SearchButtonPressed` event, which is raised when the search button is clicked, or the enter key is pressed.
 
 > [!NOTE]
->`SearchBar` derives from the `InputView` class, from which it inherits additional properties and events.
+><xref:Microsoft.Maui.Controls.SearchBar> derives from the `InputView` class, from which it inherits additional properties and events.
 
 ## Create a SearchBar
 
-To create a search bar, create a `SearchBar` object and set its `Placeholder` property to text that instructs the user to enter a search term.
+To create a search bar, create a <xref:Microsoft.Maui.Controls.SearchBar> object and set its `Placeholder` property to text that instructs the user to enter a search term.
 
-The following XAML example shows how to create a `SearchBar`:
+The following XAML example shows how to create a <xref:Microsoft.Maui.Controls.SearchBar>:
 
 ```xaml
 <SearchBar Placeholder="Search items..." />
@@ -55,7 +55,7 @@ SearchBar searchBar = new SearchBar { Placeholder = "Search items..." };
 
 ## Perform a search with event handlers
 
-A search can be executed using the `SearchBar` control by attaching an event handler to one of the following events:
+A search can be executed using the <xref:Microsoft.Maui.Controls.SearchBar> control by attaching an event handler to one of the following events:
 
 - `SearchButtonPressed`, which is called when the user either clicks the search button or presses the enter key.
 - `TextChanged`, which is called anytime the text in the query box is changed. This event is inherited from the `InputView` class.
@@ -77,7 +77,7 @@ void OnTextChanged(object sender, EventArgs e)
 }
 ```
 
-In this example, a `DataService` class with a `GetSearchResults` method is used to returnitems that match a query. The `SearchBar` control's `Text` property value is passed to the `GetSearchResults` method and the result is used to update the <xref:Microsoft.Maui.Controls.ListView> control's `ItemsSource` property. The overall effect is that search results are displayed in the <xref:Microsoft.Maui.Controls.ListView>.
+In this example, a `DataService` class with a `GetSearchResults` method is used to returnitems that match a query. The <xref:Microsoft.Maui.Controls.SearchBar> control's `Text` property value is passed to the `GetSearchResults` method and the result is used to update the <xref:Microsoft.Maui.Controls.ListView> control's `ItemsSource` property. The overall effect is that search results are displayed in the <xref:Microsoft.Maui.Controls.ListView>.
 
 ## Perform a search using a viewmodel
 

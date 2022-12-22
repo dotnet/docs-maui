@@ -17,7 +17,7 @@ The following platform-specific functionality is provided for .NET MAUI views on
 - Detecting reading order from text content in <xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Editor>, and `Label` instances. For more information, see [InputView Reading Order on Windows](inputview-reading-order.md).
 - Enabling tap gesture support in a <xref:Microsoft.Maui.Controls.ListView>. For more information, see [ListView SelectionMode on Windows](listview-selectionmode.md).
 - Enabling the pull direction of a <xref:Microsoft.Maui.Controls.RefreshView> to be changed. For more information, see [RefreshView Pull Direction on Windows](refreshview-pulldirection.md).
-- Enabling a `SearchBar` to interact with the spell check engine. For more information, see [SearchBar Spell Check on Windows](searchbar-spell-check.md).
+- Enabling a <xref:Microsoft.Maui.Controls.SearchBar> to interact with the spell check engine. For more information, see [SearchBar Spell Check on Windows](searchbar-spell-check.md).
 
 The following platform-specific functionality is provided for the .NET MAUI `Application` class on Windows:
 

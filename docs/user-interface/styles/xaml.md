@@ -303,13 +303,13 @@ The following example shows *dynamic* styles:
 </ContentPage>
 ```
 
-In this example, the `SearchBar` object use the `DynamicResource` markup extension to set a `Style` named `blueSearchBarStyle`. The `SearchBar` can then have its `Style` definition updated in code:
+In this example, the <xref:Microsoft.Maui.Controls.SearchBar> object use the `DynamicResource` markup extension to set a `Style` named `blueSearchBarStyle`. The <xref:Microsoft.Maui.Controls.SearchBar> can then have its `Style` definition updated in code:
 
 ```csharp
 Resources["blueSearchBarStyle"] = Resources["greenSearchBarStyle"];
 ```
 
-In this example, the `blueSearchBarStyle` definition is updated to use the values from the `greenSearchBarStyle` definition. When this code is executed, the `SearchBar` will be updated to use the `Setter` objects defined in `greenSearchBarStyle`.
+In this example, the `blueSearchBarStyle` definition is updated to use the values from the `greenSearchBarStyle` definition. When this code is executed, the <xref:Microsoft.Maui.Controls.SearchBar> will be updated to use the `Setter` objects defined in `greenSearchBarStyle`.
 
 ## Dynamic style inheritance
 
@@ -349,7 +349,7 @@ The following example shows *dynamic* style inheritance:
 </ContentPage>
 ```
 
-In this example, the `SearchBar` object uses the `StaticResource` markup extension to reference a `Style` named `tealSearchBarStyle`. This `Style` sets some additional properties and uses the `BaseResourceKey` property to reference `blueSearchBarStyle`. The `DynamicResource` markup extension is not required because `tealSearchBarStyle` will not change, except for the `Style` it derives from. Therefore, `tealSearchBarStyle` maintains a link to `blueSearchBarStyle` and is updated when the base style changes.
+In this example, the <xref:Microsoft.Maui.Controls.SearchBar> object uses the `StaticResource` markup extension to reference a `Style` named `tealSearchBarStyle`. This `Style` sets some additional properties and uses the `BaseResourceKey` property to reference `blueSearchBarStyle`. The `DynamicResource` markup extension is not required because `tealSearchBarStyle` will not change, except for the `Style` it derives from. Therefore, `tealSearchBarStyle` maintains a link to `blueSearchBarStyle` and is updated when the base style changes.
 
 The `blueSearchBarStyle` definition can be updated in code:
 
@@ -357,7 +357,7 @@ The `blueSearchBarStyle` definition can be updated in code:
 Resources["blueSearchBarStyle"] = Resources["greenSearchBarStyle"];
 ```
 
-In this example, the `blueSearchBarStyle` definition is updated to use the values from the `greenSearchBarStyle` definition. When this code is executed, the `SearchBar` will be updated to use the `Setter` objects defined in `greenSearchBarStyle`.
+In this example, the `blueSearchBarStyle` definition is updated to use the values from the `greenSearchBarStyle` definition. When this code is executed, the <xref:Microsoft.Maui.Controls.SearchBar> will be updated to use the `Setter` objects defined in `greenSearchBarStyle`.
 
 ## Style classes
 
