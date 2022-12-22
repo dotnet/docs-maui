@@ -111,19 +111,19 @@ The following example demonstrates using compiled bindings in a `DataTemplate`:
 </ContentPage>
 ```
 
-The `ListView.ItemsSource` property is set to the static `NamedColor.All` property. The `NamedColor` class uses .NET reflection to enumerate all the static public fields in the `Colors` class, and to store them with their names in a collection that is accessible from the static `All` property. Therefore, the `ListView` is filled with all of the `NamedColor` instances. For each item in the `ListView`, the binding context for the item is set to a `NamedColor` object. The <xref:Microsoft.Maui.Controls.BoxView> and `Label` elements in the `ViewCell` are bound to `NamedColor` properties.
+The `ListView.ItemsSource` property is set to the static `NamedColor.All` property. The `NamedColor` class uses .NET reflection to enumerate all the static public fields in the `Colors` class, and to store them with their names in a collection that is accessible from the static `All` property. Therefore, the <xref:Microsoft.Maui.Controls.ListView> is filled with all of the `NamedColor` instances. For each item in the <xref:Microsoft.Maui.Controls.ListView>, the binding context for the item is set to a `NamedColor` object. The <xref:Microsoft.Maui.Controls.BoxView> and `Label` elements in the `ViewCell` are bound to `NamedColor` properties.
 
 The `DataTemplate` defines the `x:DataType` attribute to be the `NamedColor` type, indicating that any binding expressions in the `DataTemplate` view hierarchy will be compiled. This can be verified by changing any of the binding expressions to bind to a non-existent `NamedColor` property, which will result in a build error.  While this example sets the `x:DataType` attribute to a string literal, it can also be set to a type with the `x:Type` markup extension. For more information about the `x:Type` markup extension, see [x:Type Markup Extension](~/xaml/markup-extensions/consume.md#xtype-markup-extension).
 
-When the example is first run, the `ListView` is populated with `NamedColor` instances. When an item in the `ListView` is selected, the `BoxView.Color` property is set to the color of the selected item in the `ListView`:
+When the example is first run, the <xref:Microsoft.Maui.Controls.ListView> is populated with `NamedColor` instances. When an item in the <xref:Microsoft.Maui.Controls.ListView> is selected, the `BoxView.Color` property is set to the color of the selected item in the <xref:Microsoft.Maui.Controls.ListView>:
 
 :::image type="content" source="media/compiled-bindings/compiledcolorlist.png" alt-text="Compiled color list.":::
 
-Selecting other items in the `ListView` updates the color of the <xref:Microsoft.Maui.Controls.BoxView>.
+Selecting other items in the <xref:Microsoft.Maui.Controls.ListView> updates the color of the <xref:Microsoft.Maui.Controls.BoxView>.
 
 ## Combine compiled bindings with classic bindings
 
-Binding expressions are only compiled for the view hierarchy that the `x:DataType` attribute is defined on. Conversely, any views in a hierarchy on which the `x:DataType` attribute is not defined will use classic bindings. It's therefore possible to combine compiled bindings and classic bindings on a page. For example, in the previous section the views within the `DataTemplate` use compiled bindings, while the <xref:Microsoft.Maui.Controls.BoxView> that's set to the color selected in the `ListView` does not.
+Binding expressions are only compiled for the view hierarchy that the `x:DataType` attribute is defined on. Conversely, any views in a hierarchy on which the `x:DataType` attribute is not defined will use classic bindings. It's therefore possible to combine compiled bindings and classic bindings on a page. For example, in the previous section the views within the `DataTemplate` use compiled bindings, while the <xref:Microsoft.Maui.Controls.BoxView> that's set to the color selected in the <xref:Microsoft.Maui.Controls.ListView> does not.
 
 Careful structuring of `x:DataType` attributes can therefore lead to a page using compiled and classic bindings. Alternatively, the `x:DataType` attribute can be re-defined at any point in a view hierarchy to `null` using the `x:Null` markup extension. Doing this indicates that any binding expressions within the view hierarchy will use classic bindings. The following example demonstrates this approach:
 

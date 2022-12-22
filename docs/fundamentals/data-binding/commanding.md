@@ -244,13 +244,13 @@ The following example shows the XAML that consumes the `PersonCollectionViewMode
 </ContentPage>
 ```
 
-In this example, the page's `BindingContext` property is set to the `PersonCollectionViewModel`. The <xref:Microsoft.Maui.Controls.Grid> contains a `Button` with the text **New** with its `Command` property bound to the `NewCommand` property in the viewmodel, an entry form with properties bound to the `IsEditing` property, as well as properties of `PersonViewModel`, and two more buttons bound to the `SubmitCommand` and `CancelCommand` properties of the viewmodel. The `ListView` displays the collection of persons already entered:
+In this example, the page's `BindingContext` property is set to the `PersonCollectionViewModel`. The <xref:Microsoft.Maui.Controls.Grid> contains a `Button` with the text **New** with its `Command` property bound to the `NewCommand` property in the viewmodel, an entry form with properties bound to the `IsEditing` property, as well as properties of `PersonViewModel`, and two more buttons bound to the `SubmitCommand` and `CancelCommand` properties of the viewmodel. The <xref:Microsoft.Maui.Controls.ListView> displays the collection of persons already entered:
 
 The following screenshot shows the **Submit** button enabled after an age has been set:
 
 :::image type="content" source="media/commanding/personentry.png" alt-text="Person Entry.":::
 
-When the user first presses the **New** button, this enables the entry form but disables the **New** button. The user then enters a name, age, and skills. At any time during the editing, the user can press the **Cancel** button to start over. Only when a name and a valid age have been entered is the **Submit** button enabled. Pressing this **Submit** button transfers the person to the collection displayed by the `ListView`. After either the **Cancel** or **Submit** button is pressed, the entry form is cleared and the **New** button is enabled again.
+When the user first presses the **New** button, this enables the entry form but disables the **New** button. The user then enters a name, age, and skills. At any time during the editing, the user can press the **Cancel** button to start over. Only when a name and a valid age have been entered is the **Submit** button enabled. Pressing this **Submit** button transfers the person to the collection displayed by the <xref:Microsoft.Maui.Controls.ListView>. After either the **Cancel** or **Submit** button is pressed, the entry form is cleared and the **New** button is enabled again.
 
 All the logic for the **New**, **Submit**, and **Cancel** buttons is handled in `PersonCollectionViewModel` through definitions of the `NewCommand`, `SubmitCommand`, and `CancelCommand` properties. The constructor of the `PersonCollectionViewModel` sets these three properties to objects of type `Command`.  
 

@@ -61,7 +61,7 @@ A common use of this binding mode is set an object's `BindingContext` to a prope
 </ContentPage>
 ```
 
-In this example, the `BindingContext` of the page is set to the `DefaultViewModel` property of itself. This property is defined in the code-behind file for the page, and provides a viewmodel instance. The `ListView` binds to the `Employees` property of the viewmodel.
+In this example, the `BindingContext` of the page is set to the `DefaultViewModel` property of itself. This property is defined in the code-behind file for the page, and provides a viewmodel instance. The <xref:Microsoft.Maui.Controls.ListView> binds to the `Employees` property of the viewmodel.
 
 ## Bind to an ancestor
 
@@ -101,7 +101,7 @@ The following XAML shows an example where the `Mode` property will be implicitly
 </ContentPage>
 ```
 
-In this example, the `BindingContext` of the page is set to the `DefaultViewModel` property of itself. This property is defined in the code-behind file for the page, and provides a viewmodel instance. The `ListView` binds to the `Employees` property of the viewmodel. The `DataTemplate`, which defines the appearance of each item in the `ListView`, contains a `Button`. The button's `Command` property is bound to the `DeleteEmployeeCommand` in its parent's viewmodel. Tapping a `Button` deletes an employee:
+In this example, the `BindingContext` of the page is set to the `DefaultViewModel` property of itself. This property is defined in the code-behind file for the page, and provides a viewmodel instance. The <xref:Microsoft.Maui.Controls.ListView> binds to the `Employees` property of the viewmodel. The `DataTemplate`, which defines the appearance of each item in the <xref:Microsoft.Maui.Controls.ListView>, contains a `Button`. The button's `Command` property is bound to the `DeleteEmployeeCommand` in its parent's viewmodel. Tapping a `Button` deletes an employee:
 
 :::image type="content" source="media/relative-bindings/findancestor-relative-binding.png" alt-text="Screenshot of a FindAncestor mode relative binding.":::
 

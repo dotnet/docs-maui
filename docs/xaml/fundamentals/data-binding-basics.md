@@ -161,11 +161,11 @@ However, the binding for the `Scale` property is `TwoWay`. This is because the `
 
 ## Bindings and collections
 
-`ListView` defines an `ItemsSource` property of type `IEnumerable`, and it displays the items in that collection. These items can be objects of any type. By default, `ListView` uses the `ToString` method of each item to display that item. Sometimes this is just what you want, but in many cases, `ToString` returns only the fully-qualified class name of the object.
+<xref:Microsoft.Maui.Controls.ListView> defines an `ItemsSource` property of type `IEnumerable`, and it displays the items in that collection. These items can be objects of any type. By default, <xref:Microsoft.Maui.Controls.ListView> uses the `ToString` method of each item to display that item. Sometimes this is just what you want, but in many cases, `ToString` returns only the fully-qualified class name of the object.
 
-However, the items in the `ListView` collection can be displayed any way you want through the use of a *template*, which involves a class that derives from `Cell`. The template is cloned for every item in the `ListView`, and data bindings that have been set on the template are transferred to the individual clones. Custom cells can be created for items using the `ViewCell` class.
+However, the items in the <xref:Microsoft.Maui.Controls.ListView> collection can be displayed any way you want through the use of a *template*, which involves a class that derives from `Cell`. The template is cloned for every item in the <xref:Microsoft.Maui.Controls.ListView>, and data bindings that have been set on the template are transferred to the individual clones. Custom cells can be created for items using the `ViewCell` class.
 
-`ListView` can display a list of every named color that's available in .NET MAUI, with the help of the `NamedColor` class:
+<xref:Microsoft.Maui.Controls.ListView> can display a list of every named color that's available in .NET MAUI, with the help of the `NamedColor` class:
 
 ```csharp
 using System.Reflection;
@@ -234,7 +234,7 @@ namespace XamlSamples
 
 Each `NamedColor` object has `Name` and `FriendlyName` properties of type `string`, a `Color` property of type `Color`, and `Red`, `Green`, and `Blue` properties. In addition, the `NamedColor` static constructor creates an `IEnumerable<NamedColor>` collection that contains `NamedColor` objects corresponding to the fields of type `Color` in the `Colors` class, and assigns it to its public static `All` property.
 
-Setting the static `NamedColor.All` property to the `ItemsSource` of a `ListView` can be achieved using the `x:Static` markup extension:
+Setting the static `NamedColor.All` property to the `ItemsSource` of a <xref:Microsoft.Maui.Controls.ListView> can be achieved using the `x:Static` markup extension:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -385,7 +385,7 @@ The item template dsplays the color, its friendly name, and its RGB values:
 
 :::image type="content" source="media/data-binding-basics/listview3.png" alt-text="Binding to a collection with a DataTemplate and a converter.":::
 
-The `ListView` can handle changes that dynamically occur in the underlying data, but only if you take certain steps. If the collection of items assigned to the `ItemsSource` property of the `ListView` changes during runtime, use an `ObservableCollection` class for these items. `ObservableCollection` implements the `INotifyCollectionChanged` interface, and `ListView` will install a handler for the `CollectionChanged` event.
+The <xref:Microsoft.Maui.Controls.ListView> can handle changes that dynamically occur in the underlying data, but only if you take certain steps. If the collection of items assigned to the `ItemsSource` property of the <xref:Microsoft.Maui.Controls.ListView> changes during runtime, use an `ObservableCollection` class for these items. `ObservableCollection` implements the `INotifyCollectionChanged` interface, and <xref:Microsoft.Maui.Controls.ListView> will install a handler for the `CollectionChanged` event.
 
 If properties of the items themselves change during runtime, then the items in the collection should implement the `INotifyPropertyChanged` interface and signal changes to property values using the `PropertyChanged` event.
 

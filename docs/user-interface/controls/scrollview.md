@@ -25,7 +25,7 @@ These properties are backed by `BindableProperty` objects, with the exception of
 The `Content` property is the `ContentProperty` of the `ScrollView` class, and therefore does not need to be explicitly set from XAML.
 
 > [!WARNING]
-> `ScrollView` objects should not be nested. In addition, `ScrollView` objects should not be nested with other controls that provide scrolling, such as <xref:Microsoft.Maui.Controls.CollectionView>, `ListView`, and `WebView`.
+> `ScrollView` objects should not be nested. In addition, `ScrollView` objects should not be nested with other controls that provide scrolling, such as <xref:Microsoft.Maui.Controls.CollectionView>, <xref:Microsoft.Maui.Controls.ListView>, and `WebView`.
 
 <!--
 > [!TIP]

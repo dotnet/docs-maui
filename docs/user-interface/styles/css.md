@@ -196,7 +196,7 @@ Individual elements in the visual tree can be selected with the case sensitive `
 }
 ```
 
-This selector identifies the element whose `StyleId` property is set to `listView`. However, if the `StyleId` property is not set, the selector will fall back to using the `x:Name` of the element. Therefore, in the following example, the `#listView` selector will identify the `ListView` whose `x:Name` attribute is set to `listView`, and will set it's background color to `lightgray`.
+This selector identifies the element whose `StyleId` property is set to `listView`. However, if the `StyleId` property is not set, the selector will fall back to using the `x:Name` of the element. Therefore, in the following example, the `#listView` selector will identify the <xref:Microsoft.Maui.Controls.ListView> whose `x:Name` attribute is set to `listView`, and will set it's background color to `lightgray`.
 
 ```xaml
 <ContentPage ...>
@@ -255,7 +255,7 @@ listview image {
 }
 ```
 
-This selector identifies any `Image` elements that are children of `ListView` elements, and sets their height and width to 60. Therefore, in the following XAML example, the `listview image` selector will identify the `Image` that's a child of the `ListView`, and sets its height and width to 60.
+This selector identifies any `Image` elements that are children of <xref:Microsoft.Maui.Controls.ListView> elements, and sets their height and width to 60. Therefore, in the following XAML example, the `listview image` selector will identify the `Image` that's a child of the <xref:Microsoft.Maui.Controls.ListView>, and sets its height and width to 60.
 
 ```xaml
 <ContentPage ...>

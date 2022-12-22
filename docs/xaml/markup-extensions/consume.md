@@ -226,7 +226,7 @@ The `x:Array` markup extension enables you to define an array in markup. It is s
 
 The `x:Array` markup extension itself never appears in curly braces. Instead, `x:Array` start and end tags delimit the list of items.
 
-The following XAML example shows how to use `x:Array` to add items to a `ListView` by setting the `ItemsSource` property to an array:
+The following XAML example shows how to use `x:Array` to add items to a <xref:Microsoft.Maui.Controls.ListView> by setting the `ItemsSource` property to an array:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"

@@ -8,7 +8,7 @@ ms.date: 01/18/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-collectionview)
 
-The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.CollectionView> is a view for presenting lists of data using different layout specifications. It aims to provide a more flexible, and performant alternative to `ListView`.
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.CollectionView> is a view for presenting lists of data using different layout specifications. It aims to provide a more flexible, and performant alternative to <xref:Microsoft.Maui.Controls.ListView>.
 
 The following screenshot shows a <xref:Microsoft.Maui.Controls.CollectionView> that uses a two-column vertical grid and allows multiple selections:
 
@@ -18,19 +18,19 @@ The following screenshot shows a <xref:Microsoft.Maui.Controls.CollectionView> t
 
 ## CollectionView and ListView differences
 
-While the <xref:Microsoft.Maui.Controls.CollectionView> and `ListView` APIs are similar, there are some notable differences:
+While the <xref:Microsoft.Maui.Controls.CollectionView> and <xref:Microsoft.Maui.Controls.ListView> APIs are similar, there are some notable differences:
 
 - <xref:Microsoft.Maui.Controls.CollectionView> has a flexible layout model, which allows data to be presented vertically or horizontally, in a list or a grid.
 - <xref:Microsoft.Maui.Controls.CollectionView> supports single and multiple selection.
 - <xref:Microsoft.Maui.Controls.CollectionView> has no concept of cells. Instead, a data template is used to define the appearance of each item of data in the list.
 - <xref:Microsoft.Maui.Controls.CollectionView> automatically utilizes the virtualization provided by the underlying native controls.
-- <xref:Microsoft.Maui.Controls.CollectionView> reduces the API surface of `ListView`. Many properties and events from `ListView` are not present in <xref:Microsoft.Maui.Controls.CollectionView>.
+- <xref:Microsoft.Maui.Controls.CollectionView> reduces the API surface of <xref:Microsoft.Maui.Controls.ListView>. Many properties and events from <xref:Microsoft.Maui.Controls.ListView> are not present in <xref:Microsoft.Maui.Controls.CollectionView>.
 - <xref:Microsoft.Maui.Controls.CollectionView> does not include built-in separators.
 - <xref:Microsoft.Maui.Controls.CollectionView> will throw an exception if its `ItemsSource` is updated off the UI thread.
 
 ## Move from ListView to CollectionView
 
-`ListView` implementations can be migrated to <xref:Microsoft.Maui.Controls.CollectionView> implementations with the help of the following table:
+<xref:Microsoft.Maui.Controls.ListView> implementations can be migrated to <xref:Microsoft.Maui.Controls.CollectionView> implementations with the help of the following table:
 
 | Concept | ListView API | CollectionView |
 |---|---|---|

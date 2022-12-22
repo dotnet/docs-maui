@@ -6,7 +6,7 @@ ms.date: 02/15/2022
 
 # SearchBar
 
-The .NET Multi-platform App UI (.NET MAUI) `SearchBar` is a user input control used to initiating a search. The `SearchBar` control supports placeholder text, query input, search execution, and cancellation. The following iOS screenshot shows a `SearchBar` query with results displayed in a `ListView`:
+The .NET Multi-platform App UI (.NET MAUI) `SearchBar` is a user input control used to initiating a search. The `SearchBar` control supports placeholder text, query input, search execution, and cancellation. The following iOS screenshot shows a `SearchBar` query with results displayed in a <xref:Microsoft.Maui.Controls.ListView>:
 
 :::image type="content" source="media/searchbar/searchbar.png" alt-text="Screenshot of a SearchBar.":::
 
@@ -60,7 +60,7 @@ A search can be executed using the `SearchBar` control by attaching an event han
 - `SearchButtonPressed`, which is called when the user either clicks the search button or presses the enter key.
 - `TextChanged`, which is called anytime the text in the query box is changed. This event is inherited from the `InputView` class.
 
-The following XAML example shows an event handler attached to the `TextChanged` event and uses a `ListView` to display search results:
+The following XAML example shows an event handler attached to the `TextChanged` event and uses a <xref:Microsoft.Maui.Controls.ListView> to display search results:
 
 ```xaml
 <SearchBar TextChanged="OnTextChanged" />
@@ -77,7 +77,7 @@ void OnTextChanged(object sender, EventArgs e)
 }
 ```
 
-In this example, a `DataService` class with a `GetSearchResults` method is used to returnitems that match a query. The `SearchBar` control's `Text` property value is passed to the `GetSearchResults` method and the result is used to update the `ListView` control's `ItemsSource` property. The overall effect is that search results are displayed in the `ListView`.
+In this example, a `DataService` class with a `GetSearchResults` method is used to returnitems that match a query. The `SearchBar` control's `Text` property value is passed to the `GetSearchResults` method and the result is used to update the <xref:Microsoft.Maui.Controls.ListView> control's `ItemsSource` property. The overall effect is that search results are displayed in the <xref:Microsoft.Maui.Controls.ListView>.
 
 ## Perform a search using a viewmodel
 

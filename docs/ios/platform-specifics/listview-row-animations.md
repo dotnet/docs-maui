@@ -6,7 +6,7 @@ ms.date: 04/05/2022
 
 # ListView row animations on iOS
 
-This .NET Multi-platform App UI (.NET MAUI) iOS platform-specific controls whether row animations are disabled when the `ListView` items collection is being updated. It's consumed in XAML by setting the `ListView.RowAnimationsEnabled` bindable property to `false`:
+This .NET Multi-platform App UI (.NET MAUI) iOS platform-specific controls whether row animations are disabled when the <xref:Microsoft.Maui.Controls.ListView> items collection is being updated. It's consumed in XAML by setting the `ListView.RowAnimationsEnabled` bindable property to `false`:
 
 ```xaml
 <ContentPage ...
@@ -29,7 +29,7 @@ using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 listView.On<iOS>().SetRowAnimationsEnabled(false);
 ```
 
-The `ListView.On<iOS>` method specifies that this platform-specific will only run on iOS. The `ListView.SetRowAnimationsEnabled` method, in the `Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific` namespace, is used to control whether row animations are disabled when the `ListView` items collection is being updated. In addition, the `ListView.GetRowAnimationsEnabled` method can be used to return whether row animations are disabled on the `ListView`.
+The `ListView.On<iOS>` method specifies that this platform-specific will only run on iOS. The `ListView.SetRowAnimationsEnabled` method, in the `Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific` namespace, is used to control whether row animations are disabled when the <xref:Microsoft.Maui.Controls.ListView> items collection is being updated. In addition, the `ListView.GetRowAnimationsEnabled` method can be used to return whether row animations are disabled on the <xref:Microsoft.Maui.Controls.ListView>.
 
 > [!NOTE]
-> `ListView` row animations are enabled by default. Therefore, an animation occurs when a new row is inserted into a `ListView`.
+> <xref:Microsoft.Maui.Controls.ListView> row animations are enabled by default. Therefore, an animation occurs when a new row is inserted into a <xref:Microsoft.Maui.Controls.ListView>.

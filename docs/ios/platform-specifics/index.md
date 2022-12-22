@@ -14,9 +14,9 @@ The following platform-specific functionality is provided for .NET MAUI views on
 - Controlling when item selection occurs in a <xref:Microsoft.Maui.Controls.DatePicker>. For more information, see [DatePicker item selection on iOS](datepicker-selection.md).
 - Ensuring that inputted text fits into an <xref:Microsoft.Maui.Controls.Entry> by adjusting the font size. For more information, see [Entry font size on iOS](entry-font-size.md).
 - Setting the cursor color in a <xref:Microsoft.Maui.Controls.Entry>. For more information, see [Entry cursor color on iOS](entry-cursor-color.md).
-- Controlling whether `ListView` header cells float during scrolling. For more information, see [ListView group header style on iOS](listview-group-header-style.md).
-- Controlling whether row animations are disabled when the `ListView` items collection is being updated. For more information, see [ListView row animations on iOS](listview-row-animations.md).
-- Setting the separator style on a `ListView`. For more information, see [ListView separator style on iOS](listview-separator-style.md).
+- Controlling whether <xref:Microsoft.Maui.Controls.ListView> header cells float during scrolling. For more information, see [ListView group header style on iOS](listview-group-header-style.md).
+- Controlling whether row animations are disabled when the <xref:Microsoft.Maui.Controls.ListView> items collection is being updated. For more information, see [ListView row animations on iOS](listview-row-animations.md).
+- Setting the separator style on a <xref:Microsoft.Maui.Controls.ListView>. For more information, see [ListView separator style on iOS](listview-separator-style.md).
 - Controlling when item selection occurs in a `Picker`. For more information, see [Picker item selection on iOS](picker-selection.md).
 - Controlling whether a `SearchBar` has a background. For more information, see [SearchBar style on iOS](searchbar-style.md).
 - Enabling the `Slider.Value` property to be set by tapping on a position on the `Slider` bar, rather than by having to drag the `Slider` thumb. For more information, see [Slider thumb tap on iOS](slider-thumb.md).

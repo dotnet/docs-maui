@@ -54,7 +54,7 @@ Most bindable properties have a default binding mode of `OneWay` but some proper
 
 - `Date` property of <xref:Microsoft.Maui.Controls.DatePicker>
 - `Text` property of <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, `SearchBar`, and `EntryCell`
-- `IsRefreshing` property of `ListView`
+- `IsRefreshing` property of <xref:Microsoft.Maui.Controls.ListView>
 - `SelectedItem` property of `MultiPage`
 - `SelectedIndex` and `SelectedItem` properties of `Picker`
 - `Value` property of `Slider` and `Stepper`
@@ -66,7 +66,7 @@ These properties are defined as `TwoWay` because when data bindings are used wit
 
 ## One-way-to-source bindings
 
-Read-only bindable properties have a default binding mode of `OneWayToSource`. For example, the `SelectedItem` property of `ListView` has a default binding mode of `OneWayToSource`. This is because a binding on the `SelectedItem` property should result in setting the binding source.
+Read-only bindable properties have a default binding mode of `OneWayToSource`. For example, the `SelectedItem` property of <xref:Microsoft.Maui.Controls.ListView> has a default binding mode of `OneWayToSource`. This is because a binding on the `SelectedItem` property should result in setting the binding source.
 
 ## One-time bindings
 
@@ -261,4 +261,4 @@ Now the `Slider` is initialized to 1 (the default value of `Scale`) but manipula
 > [!NOTE]
 > The `VisualElement` class also defines `ScaleX` and `ScaleY` properties, which can scale the `VisualElement` differently in the horizontal and vertical directions.
 
-A very useful application of overriding the default binding mode with a `TwoWay` binding mode involves the `SelectedItem` property of `ListView`. The default binding mode is `OneWayToSource`. When a data binding is set on the `SelectedItem` property to reference a source property in a viewmodel, then that source property is set from the `ListView` selection. However, in some circumstances, you might also want the `ListView` to be initialized from the viewmodel.
+A very useful application of overriding the default binding mode with a `TwoWay` binding mode involves the `SelectedItem` property of <xref:Microsoft.Maui.Controls.ListView>. The default binding mode is `OneWayToSource`. When a data binding is set on the `SelectedItem` property to reference a source property in a viewmodel, then that source property is set from the <xref:Microsoft.Maui.Controls.ListView> selection. However, in some circumstances, you might also want the <xref:Microsoft.Maui.Controls.ListView> to be initialized from the viewmodel.
