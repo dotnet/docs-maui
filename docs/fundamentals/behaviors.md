@@ -27,7 +27,7 @@ Attached behaviors are static classes with one or more attached properties. An a
 
 An attached property can define a `propertyChanged` delegate that will be executed when the value of the property changes, such as when the property is set on a control. When the `propertyChanged` delegate executes, it's passed a reference to the control on which it is being attached, and parameters that contain the old and new values for the property. This delegate can be used to add new functionality to the control that the property is attached to by manipulating the reference that is passed in, as follows:
 
-1. The `propertyChanged` delegate casts the control reference, which is received as a `BindableObject`, to the control type that the behavior is designed to enhance.
+1. The `propertyChanged` delegate casts the control reference, which is received as a <xref:Microsoft.Maui.Controls.BindableObject>, to the control type that the behavior is designed to enhance.
 1. The `propertyChanged` delegate modifies properties of the control, calls methods of the control, or registers event handlers for events exposed by the control, to implement the core behavior functionality.
 
 > [!WARNING]

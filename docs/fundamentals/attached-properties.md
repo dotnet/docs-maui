@@ -24,7 +24,7 @@ The process for creating an attached property is as follows:
 
 ### Create a property
 
-When creating an attached property for use on other types, the class where the property is created does not have to derive from `BindableObject`. However, the *target* property for accessors should be of, or derive from, `BindableObject`.
+When creating an attached property for use on other types, the class where the property is created does not have to derive from <xref:Microsoft.Maui.Controls.BindableObject>. However, the *target* property for accessors should be of, or derive from, <xref:Microsoft.Maui.Controls.BindableObject>.
 
 An attached property can be created by declaring a `public static readonly` property of type `BindableProperty`. The bindable property should be set to the returned value of one of the `BindableProperty.CreateAttached` method overloads. The declaration should be within the body of the owning class, but outside of any member definitions.
 
@@ -60,7 +60,7 @@ public static void SetPropertyName(BindableObject target, valueType value)
 
 The `Set`*PropertyName* accessor should set the value of the corresponding `BindableProperty` field for the attached property. This can be achieved by calling the `SetValue` method, passing in the bindable property identifier on which to set the value, and the value to set.
 
-For both accessors, the *target* object should be of, or derive from, `BindableObject`.
+For both accessors, the *target* object should be of, or derive from, <xref:Microsoft.Maui.Controls.BindableObject>.
 
 The following code example shows accessors for the `HasShadow` attached property:
 

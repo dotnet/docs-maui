@@ -29,9 +29,9 @@ All `BindableProperty` instances must be created on the UI thread. This means th
 
 ### Create a property
 
-To create a `BindableProperty` instance, the containing class must derive from the `BindableObject` class. However, the `BindableObject` class is high in the class hierarchy, so the majority of classes used for UI functionality support bindable properties.
+To create a `BindableProperty` instance, the containing class must derive from the <xref:Microsoft.Maui.Controls.BindableObject> class. However, the <xref:Microsoft.Maui.Controls.BindableObject> class is high in the class hierarchy, so the majority of classes used for UI functionality support bindable properties.
 
-A bindable property can be created by declaring a `public static readonly` property of type `BindableProperty`. The bindable property should be set to the returned value of one of the `BindableProperty.Create` method overloads. The declaration should be within the body of `BindableObject` derived class, but outside of any member definitions.
+A bindable property can be created by declaring a `public static readonly` property of type `BindableProperty`. The bindable property should be set to the returned value of one of the `BindableProperty.Create` method overloads. The declaration should be within the body of <xref:Microsoft.Maui.Controls.BindableObject> derived class, but outside of any member definitions.
 
 At a minimum, an identifier must be specified when creating a `BindableProperty`, along with the following parameters:
 
@@ -125,7 +125,7 @@ static void OnIsExpandedChanged (BindableObject bindable, object oldValue, objec
 }
 ```
 
-In the property-changed callback method, the `BindableObject` parameter is used to denote which instance of the owning class has reported a change, and the values of the two `object` parameters represent the old and new values of the bindable property.
+In the property-changed callback method, the <xref:Microsoft.Maui.Controls.BindableObject> parameter is used to denote which instance of the owning class has reported a change, and the values of the two `object` parameters represent the old and new values of the bindable property.
 
 ### Validation callbacks
 
@@ -153,7 +153,7 @@ Validation callbacks are provided with a value, and should return `true` if the 
 A `static` coerce value callback method can be registered with a bindable property by specifying the `coerceValue` parameter for the `BindableProperty.Create` method. The specified callback method will be invoked when the value of the bindable property changes.
 
 > [!IMPORTANT]
-> The `BindableObject` type has a `CoerceValue` method that can be called to force a reevaluation of the value of its `BindableProperty` argument, by invoking its coerce value callback.
+> The <xref:Microsoft.Maui.Controls.BindableObject> type has a `CoerceValue` method that can be called to force a reevaluation of the value of its `BindableProperty` argument, by invoking its coerce value callback.
 
 Coerce value callbacks are used to force a reevaluation of a bindable property when the value of the property changes. For example, a coerce value callback can be used to ensure that the value of one bindable property is not greater than the value of another bindable property.
 
