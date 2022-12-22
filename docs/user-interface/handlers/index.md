@@ -77,7 +77,7 @@ The following table lists the types that implement handler-based views in .NET M
 | <xref:Microsoft.Maui.Controls.ScrollView> | `IScrollView` | `ScrollViewHandler` | `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.SearchBar> | `ISearchBar` | `SearchBarHandler` | `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.Slider> | `ISlider` | `SliderHandler` | `Mapper` | `CommandMapper` |
-| `Stepper` | `IStepper` | `StepperHandler` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.Stepper> | `IStepper` | `StepperHandler` | `Mapper` | `CommandMapper` |
 | `SwipeView` | `ISwipeView` | `SwipeViewHandler` | `Mapper` | `CommandMapper` |
 | `Switch` | `ISwitch` | `SwitchHandler` | `Mapper` | `CommandMapper` |
 | `TimePicker` | `ITimePicker` | `TimePickerHandler` | `Mapper` | `CommandMapper` |

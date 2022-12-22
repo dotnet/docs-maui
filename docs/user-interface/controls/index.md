@@ -86,7 +86,7 @@ The main control groups used to create the user interface of a .NET MAUI app are
 | <xref:Microsoft.Maui.Controls.ScrollView> | <xref:Microsoft.Maui.Controls.ScrollView> provides scrolling of its content, which is typically a layout. For more information, see [ScrollView](~/user-interface/controls/scrollview.md). |
 | <xref:Microsoft.Maui.Controls.SearchBar> | <xref:Microsoft.Maui.Controls.SearchBar> is a user input control used to initiate a search. For more information, see [SearchBar](~/user-interface/controls/searchbar.md). |
 | <xref:Microsoft.Maui.Controls.Slider> | <xref:Microsoft.Maui.Controls.Slider> enables you to select a `double` value from a continuous range. For more information, see [Slider](~/user-interface/controls/slider.md). |
-| `Stepper` | `Stepper` enables you to select a `double` value from a range of incremental values. For more information, see [Stepper](~/user-interface/controls/stepper.md). |
+| <xref:Microsoft.Maui.Controls.Stepper> | <xref:Microsoft.Maui.Controls.Stepper> enables you to select a `double` value from a range of incremental values. For more information, see [Stepper](~/user-interface/controls/stepper.md). |
 | `SwipeView` | `SwipeView` is a container control that wraps around an item of content, and provides context menu items that are revealed by a swipe gesture. For more information, see [SwipeView](~/user-interface/controls/swipeview.md). |
 | `Switch` | `Switch` enables you to select a boolean value using a type of button that can either be on or off. For more information, see [Switch](~/user-interface/controls/switch.md). |
 | `TableView` | `TableView` displays a table of scrollable items that can be grouped into sections. For more information, see [TableView](~/user-interface/controls/tableview.md). |
