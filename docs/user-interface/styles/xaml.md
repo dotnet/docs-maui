@@ -149,7 +149,7 @@ In this example, the `ResourceDictionary` defines a single *implicit* style that
 
 The `Style.ApplyToDerivedTypes` property enables a style to be applied to controls that are derived from the base type referenced by the `TargetType` property. Therefore, setting this property to `true` enables a single style to target multiple types, provided that the types derive from the base type specified in the `TargetType` property.
 
-The following example shows an implicit style that sets the background color of `Button` instances to red:
+The following example shows an implicit style that sets the background color of <xref:Microsoft.Maui.Controls.Button> instances to red:
 
 ```xaml
 <Style TargetType="Button"
@@ -159,7 +159,7 @@ The following example shows an implicit style that sets the background color of 
 </Style>
 ```
 
-Placing this style in a page-level `ResourceDictionary` will result in it being applied to all `Button` objects on the page, and also to any controls that derive from `Button`. However, if the `ApplyToDerivedTypes` property remained unset, the style would only be applied to `Button` objects.
+Placing this style in a page-level `ResourceDictionary` will result in it being applied to all <xref:Microsoft.Maui.Controls.Button> objects on the page, and also to any controls that derive from <xref:Microsoft.Maui.Controls.Button>. However, if the `ApplyToDerivedTypes` property remained unset, the style would only be applied to <xref:Microsoft.Maui.Controls.Button> objects.
 
 ## Global styles
 
@@ -194,12 +194,12 @@ The following example shows a `Style` defined at the app-level:
 </Application>
 ```
 
-In this example, the `ResourceDictionary` defines a single *explicit* style, `buttonStyle`, which will be used to set the appearance of `Button` objects.
+In this example, the `ResourceDictionary` defines a single *explicit* style, `buttonStyle`, which will be used to set the appearance of <xref:Microsoft.Maui.Controls.Button> objects.
 
 > [!NOTE]
 > Global styles can be *explicit* or *implicit*.
 
-The following example shows a page consuming the `buttonStyle` on the page's `Button` objects:
+The following example shows a page consuming the `buttonStyle` on the page's <xref:Microsoft.Maui.Controls.Button> objects:
 
 ```xaml
 <ContentPage ...>
@@ -218,7 +218,7 @@ The following example shows a page consuming the `buttonStyle` on the page's `Bu
 
 Styles can inherit from other styles to reduce duplication and enable reuse. This is achieved by setting the `Style.BasedOn` property to an existing `Style`. In XAML, this can be achieved by setting the `BasedOn` property to a `StaticResource` markup extension that references a previously created `Style`.
 
-Styles that inherit from a base style can include `Setter` instances for new properties, or use them to override setters from the base style. In addition, styles that inherit from a base style must target the same type, or a type that derives from the type targeted by the base style. For example, if a base style targets <xref:Microsoft.Maui.Controls.View> objects, styles that are based on the base style can target <xref:Microsoft.Maui.Controls.View> objects or types that derive from the <xref:Microsoft.Maui.Controls.View> class, such as <xref:Microsoft.Maui.Controls.Label> and `Button` objects.
+Styles that inherit from a base style can include `Setter` instances for new properties, or use them to override setters from the base style. In addition, styles that inherit from a base style must target the same type, or a type that derives from the type targeted by the base style. For example, if a base style targets <xref:Microsoft.Maui.Controls.View> objects, styles that are based on the base style can target <xref:Microsoft.Maui.Controls.View> objects or types that derive from the <xref:Microsoft.Maui.Controls.View> class, such as <xref:Microsoft.Maui.Controls.Label> and <xref:Microsoft.Maui.Controls.Button> objects.
 
 A style can only inherit from styles at the same level, or above, in the view hierarchy. This means that:
 
@@ -264,7 +264,7 @@ The following example shows *explicit* style inheritance:
 </ContentPage>
 ```
 
-In this example, the `baseStyle` targets <xref:Microsoft.Maui.Controls.View> objects, and sets the `HorizontalOptions` and `VerticalOptions` properties. The `baseStyle` is not set directly on any controls. Instead, `labelStyle` and `buttonStyle` inherit from it, setting additional bindable property values. The `labelStyle` and `buttonStyle` objects are then set on a <xref:Microsoft.Maui.Controls.Label> and `Button`.
+In this example, the `baseStyle` targets <xref:Microsoft.Maui.Controls.View> objects, and sets the `HorizontalOptions` and `VerticalOptions` properties. The `baseStyle` is not set directly on any controls. Instead, `labelStyle` and `buttonStyle` inherit from it, setting additional bindable property values. The `labelStyle` and `buttonStyle` objects are then set on a <xref:Microsoft.Maui.Controls.Label> and <xref:Microsoft.Maui.Controls.Button>.
 
 > [!IMPORTANT]
 > An implicit style can be derived from an explicit style, but an explicit style can't be derived from an implicit style.

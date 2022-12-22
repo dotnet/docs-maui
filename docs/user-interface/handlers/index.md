@@ -6,11 +6,11 @@ ms.date: 08/15/2022
 
 # Handlers
 
-.NET Multi-platform App UI (.NET MAUI) provides a collection of cross-platform controls that can be used to display data, initiate actions, indicate activity, display collections, pick data, and more. Each control has an interface representation, that abstracts the control. Cross-platform controls that implement these interfaces are known as *virtual views*. *Handlers* map these virtual views to controls on each platform, which are known as *native views*. Handlers are also responsible for instantiating the underlying native view, and mapping the cross-platform control API to the native view API. For example, on iOS a handler maps a .NET MAUI `Button` to an iOS `UIButton`. On Android, the `Button` is mapped to an `AppCompatButton`:
+.NET Multi-platform App UI (.NET MAUI) provides a collection of cross-platform controls that can be used to display data, initiate actions, indicate activity, display collections, pick data, and more. Each control has an interface representation, that abstracts the control. Cross-platform controls that implement these interfaces are known as *virtual views*. *Handlers* map these virtual views to controls on each platform, which are known as *native views*. Handlers are also responsible for instantiating the underlying native view, and mapping the cross-platform control API to the native view API. For example, on iOS a handler maps a .NET MAUI <xref:Microsoft.Maui.Controls.Button> to an iOS `UIButton`. On Android, the <xref:Microsoft.Maui.Controls.Button> is mapped to an `AppCompatButton`:
 
 :::image type="content" source="media/overview/button-handler.png" alt-text="Button handler architecture." border="false":::
 
-.NET MAUI handlers are accessed through their control-specific interface, such as `IButton` for a `Button`. This avoids the cross-platform control having to reference its handler, and the handler having to reference the cross-platform control.
+.NET MAUI handlers are accessed through their control-specific interface, such as `IButton` for a <xref:Microsoft.Maui.Controls.Button>. This avoids the cross-platform control having to reference its handler, and the handler having to reference the cross-platform control.
 
 Each handler class exposes the native view for the cross-platform control via its `PlatformView` property. This property can be accessed to set native view properties, invoke native view methods, and subscribe to native view events. In addition, the cross-platform control implemented by the handler is exposed via its `VirtualView` property.
 
@@ -49,7 +49,7 @@ The following table lists the types that implement handler-based views in .NET M
 | <xref:Microsoft.Maui.Controls.ActivityIndicator> | `IActivityIndicator` | `ActivityIndicatorHandler` | `Mapper` | `CommandMapper` |
 | <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> | `IBlazorWebView` | `BlazorWebViewHandler` | `BlazorWebViewMapper` | |
 | <xref:Microsoft.Maui.Controls.Border> | `IBorderView` | `BorderHandler` | `Mapper` | `CommandMapper` |
-| `Button` | `IButton` | `ButtonHandler` | `ImageButtonMapper`. `TextButtonMapper`, `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.Button> | `IButton` | `ButtonHandler` | `ImageButtonMapper`. `TextButtonMapper`, `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.CarouselView> | | `CarouselViewHandler` | `Mapper` | |
 | <xref:Microsoft.Maui.Controls.CheckBox> | `ICheckBox` | `CheckBoxHandler` | `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.CollectionView> |  | `CollectionViewHandler` | `Mapper` | |

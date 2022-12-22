@@ -70,7 +70,7 @@ In addition, resources defined in a `ResourceDictionary` can be consumed with th
 </ContentPage>    
 ```
 
-In this example, the background color of the <xref:Microsoft.Maui.Controls.Grid> and the `Button` style changes based on whether the device is using its light theme or dark theme.
+In this example, the background color of the <xref:Microsoft.Maui.Controls.Grid> and the <xref:Microsoft.Maui.Controls.Button> style changes based on whether the device is using its light theme or dark theme.
 
 For more information about the `AppThemeBinding` markup extension, see [AppThemeBinding markup extension](~/xaml/markup-extensions/consume.md#appthemebinding-markup-extension).
 

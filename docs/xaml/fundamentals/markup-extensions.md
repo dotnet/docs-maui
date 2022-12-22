@@ -21,7 +21,7 @@ In many cases, XAML markup extensions are instantly recognizable in XAML files b
 
 ## Shared resources
 
-Some XAML pages contain several views with properties set to the same values. For example, many of the property settings for these `Button` objects are the same:
+Some XAML pages contain several views with properties set to the same values. For example, many of the property settings for these <xref:Microsoft.Maui.Controls.Button> objects are the same:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -80,7 +80,7 @@ In this example, the two resources are values of the structure type `LayoutOptio
 > [!NOTE]
 > Optional `ResourceDictionary` tags can be included as the child of the `Resources` tags.
 
-The resources can then be consumed by the `Button` objects, by using the `StaticResource` XAML markup extension to set their `HorizontalOptions` and `VerticalOptions` properties:
+The resources can then be consumed by the <xref:Microsoft.Maui.Controls.Button> objects, by using the `StaticResource` XAML markup extension to set their `HorizontalOptions` and `VerticalOptions` properties:
 
 ```xaml
 <Button Text="Do this!"
@@ -199,7 +199,7 @@ Although it's common to define the `Resources` collection at the top of the page
 One of the most common types of objects stored in resource dictionaries is the .NET MAUI `Style`, which defines a collection of property settings. For more information about styles, see [Style apps using XAML](~/user-interface/styles/xaml.md).
 
 > [!NOTE]
-> The purpose of a resource dictionary is to share objects. Therefore, it doesn't make sense to put controls such as a <xref:Microsoft.Maui.Controls.Label> or `Button` in a resource dictionary. Visual elements can't be shared because the same instance can't appear twice on a page.
+> The purpose of a resource dictionary is to share objects. Therefore, it doesn't make sense to put controls such as a <xref:Microsoft.Maui.Controls.Label> or <xref:Microsoft.Maui.Controls.Button> in a resource dictionary. Visual elements can't be shared because the same instance can't appear twice on a page.
 
 ## x:Static Markup Extension
 

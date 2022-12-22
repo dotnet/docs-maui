@@ -6,7 +6,7 @@ ms.date: 02/14/2022
 
 # ImageButton
 
-The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.ImageButton> view combines the `Button` view and `Image` view to create a button whose content is an image. When you press the <xref:Microsoft.Maui.Controls.ImageButton> with a finger or click it with a mouse, it directs the app to carry out a task. However, unlike the `Button` the <xref:Microsoft.Maui.Controls.ImageButton> view has no concept of text and text appearance.
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.ImageButton> view combines the <xref:Microsoft.Maui.Controls.Button> view and `Image` view to create a button whose content is an image. When you press the <xref:Microsoft.Maui.Controls.ImageButton> with a finger or click it with a mouse, it directs the app to carry out a task. However, unlike the <xref:Microsoft.Maui.Controls.Button> the <xref:Microsoft.Maui.Controls.ImageButton> view has no concept of text and text appearance.
 
 <xref:Microsoft.Maui.Controls.ImageButton> defines the following properties:
 

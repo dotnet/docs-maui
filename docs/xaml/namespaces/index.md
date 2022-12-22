@@ -12,7 +12,7 @@ XAML uses the `xmlns` XML attribute for namespace declarations. There are two XA
 xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 ```
 
-The default namespace specifies that elements defined within the XAML file with no prefix refer to .NET Multi-platform App UI (.NET MAUI) classes, such as <xref:Microsoft.Maui.Controls.ContentPage>, <xref:Microsoft.Maui.Controls.Label>, and `Button`.
+The default namespace specifies that elements defined within the XAML file with no prefix refer to .NET Multi-platform App UI (.NET MAUI) classes, such as <xref:Microsoft.Maui.Controls.ContentPage>, <xref:Microsoft.Maui.Controls.Label>, and <xref:Microsoft.Maui.Controls.Button>.
 
 The second namespace declaration uses the `x` prefix:
 

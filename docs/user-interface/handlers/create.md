@@ -2636,7 +2636,7 @@ Video files that are stored on the device can be retrieved and then played by th
 </ContentPage>
 ```
 
-When the `Button` is tapped its `Clicked` event handler is executed, which is shown in the following code example:
+When the <xref:Microsoft.Maui.Controls.Button> is tapped its `Clicked` event handler is executed, which is shown in the following code example:
 
 ```csharp
 async void OnShowVideoLibraryClicked(object sender, EventArgs e)
@@ -2759,7 +2759,7 @@ The following XAML example shows custom transport controls that play, pause, and
 </ContentPage>
 ```
 
-In this example, the `Video` control sets the `AreTransportControlsEnabled` property to `false` and defines a `Button` that plays and pauses the video, and a `Button` that stop video playback. Button appearance is defined using unicode characters and their text equivalents, to create buttons that consist of an icon and text:
+In this example, the `Video` control sets the `AreTransportControlsEnabled` property to `false` and defines a <xref:Microsoft.Maui.Controls.Button> that plays and pauses the video, and a <xref:Microsoft.Maui.Controls.Button> that stop video playback. Button appearance is defined using unicode characters and their text equivalents, to create buttons that consist of an icon and text:
 
 :::image type="content" source="media/create/play-stop.png" alt-text="Screenshot of play and pause buttons.":::
 

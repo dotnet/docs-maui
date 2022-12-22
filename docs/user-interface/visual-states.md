@@ -8,7 +8,7 @@ ms.date: 10/24/2022
 
 The .NET Multi-platform App UI (.NET MAUI) Visual State Manager provides a structured way to make visual changes to the user interface from code. In most cases, the user interface of an app is defined in XAML, and this XAML can include markup describing how the Visual State Manager affects the visuals of the user interface.
 
-The Visual State Manager introduces the concept of *visual states*. A .NET MAUI view such as a `Button` can have several different visual appearances depending on its underlying state — whether it's disabled, or pressed, or has input focus. These are the button's states. Visual states are collected in *visual state groups*. All the visual states within a visual state group are mutually exclusive. Both visual states and visual state groups are identified by simple text strings.
+The Visual State Manager introduces the concept of *visual states*. A .NET MAUI view such as a <xref:Microsoft.Maui.Controls.Button> can have several different visual appearances depending on its underlying state — whether it's disabled, or pressed, or has input focus. These are the button's states. Visual states are collected in *visual state groups*. All the visual states within a visual state group are mutually exclusive. Both visual states and visual state groups are identified by simple text strings.
 
 The .NET MAUI Visual State Manager defines a visual state group named `CommonStates` with the following visual states:
 
@@ -147,7 +147,7 @@ The following table lists the visual states that are defined in .NET MAUI:
 
 | Class | States | More Information |
 | ----- | ------ | ---------------- |
-| `Button` | `Pressed` | [Button visual states](~/user-interface/controls/button.md#button-visual-states) |
+| <xref:Microsoft.Maui.Controls.Button> | `Pressed` | [Button visual states](~/user-interface/controls/button.md#button-visual-states) |
 | <xref:Microsoft.Maui.Controls.CarouselView> | `DefaultItem`, `CurrentItem`, `PreviousItem`, `NextItem` | [CarouselView visual states](~/user-interface/controls/carouselview/interaction.md#define-visual-states) |
 | <xref:Microsoft.Maui.Controls.CheckBox> | `IsChecked` | [CheckBox visual states](~/user-interface/controls/checkbox.md#checkbox-visual-states) |
 | <xref:Microsoft.Maui.Controls.CollectionView> | `Selected` | [CollectionView visual states](~/user-interface/controls/collectionview/selection.md#change-selected-item-color) |
@@ -199,11 +199,11 @@ The following example shows how to set state on multiple objects, from a single 
 </StackLayout>
 ```
 
-In this example, the `Normal` state is active when the `Button` isn't pressed, and a response can be entered into the <xref:Microsoft.Maui.Controls.Entry>. The `Pressed` state becomes active when the `Button` is pressed, and specifies that its `Scale` property will be changed from the default value of 1 to 0.8. In addition, the <xref:Microsoft.Maui.Controls.Entry> named `entry` will have its `Text` property set to Paris. Therefore, the result is that when the `Button` is pressed it's rescaled to be slightly smaller, and the <xref:Microsoft.Maui.Controls.Entry> displays Paris:
+In this example, the `Normal` state is active when the <xref:Microsoft.Maui.Controls.Button> isn't pressed, and a response can be entered into the <xref:Microsoft.Maui.Controls.Entry>. The `Pressed` state becomes active when the <xref:Microsoft.Maui.Controls.Button> is pressed, and specifies that its `Scale` property will be changed from the default value of 1 to 0.8. In addition, the <xref:Microsoft.Maui.Controls.Entry> named `entry` will have its `Text` property set to Paris. Therefore, the result is that when the <xref:Microsoft.Maui.Controls.Button> is pressed it's rescaled to be slightly smaller, and the <xref:Microsoft.Maui.Controls.Entry> displays Paris:
 
 :::image type="content" source="media/visualstates/button-pressed.png" alt-text="Screenshot of the Pressed state for a Button.":::
 
-Then, when the `Button` is released it's rescaled to its default value of 1, and the <xref:Microsoft.Maui.Controls.Entry> displays any previously entered text.
+Then, when the <xref:Microsoft.Maui.Controls.Button> is released it's rescaled to its default value of 1, and the <xref:Microsoft.Maui.Controls.Entry> displays any previously entered text.
 
 > [!IMPORTANT]
 > Property paths are unsupported in `Setter` elements that specify the `TargetName` property.
@@ -264,7 +264,7 @@ The following example shows how to use the Visual State Manager for input valida
 </ContentPage>
 ```
 
-In this example, visual states are attached to the <xref:Microsoft.Maui.Controls.StackLayout>, and there are two mutually-exclusive states named `Valid` and `Invalid`. If the <xref:Microsoft.Maui.Controls.Entry> does not contain a valid phone number, then the current state is `Invalid`, and so the <xref:Microsoft.Maui.Controls.Entry> has a pink background, the second <xref:Microsoft.Maui.Controls.Label> is visible, and the `Button` is disabled. When a valid phone number is entered, then the current state becomes `Valid`. The <xref:Microsoft.Maui.Controls.Entry> gets a lime background, the second <xref:Microsoft.Maui.Controls.Label> disappears, and the `Button` is now enabled:
+In this example, visual states are attached to the <xref:Microsoft.Maui.Controls.StackLayout>, and there are two mutually-exclusive states named `Valid` and `Invalid`. If the <xref:Microsoft.Maui.Controls.Entry> does not contain a valid phone number, then the current state is `Invalid`, and so the <xref:Microsoft.Maui.Controls.Entry> has a pink background, the second <xref:Microsoft.Maui.Controls.Label> is visible, and the <xref:Microsoft.Maui.Controls.Button> is disabled. When a valid phone number is entered, then the current state becomes `Valid`. The <xref:Microsoft.Maui.Controls.Entry> gets a lime background, the second <xref:Microsoft.Maui.Controls.Label> disappears, and the <xref:Microsoft.Maui.Controls.Button> is now enabled:
 
 :::image type="content" source="media/visualstates/validation.png" alt-text="Screenshot of the visual state validation example.":::
 

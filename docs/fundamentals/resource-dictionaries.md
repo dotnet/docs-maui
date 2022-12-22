@@ -19,7 +19,7 @@ Every <xref:Microsoft.Maui.Controls.VisualElement> derived object has a `Resourc
 
 A .NET MAUI app can contain only a single class that derives from `Application`, but often makes use of many classes that derive from <xref:Microsoft.Maui.Controls.VisualElement>, including pages, layouts, and views. Any of these objects can have its `Resources` property set to a `ResourceDictionary` containing resources. Choosing where to put a particular `ResourceDictionary` impacts where the resources can be used:
 
-- Resources in a `ResourceDictionary` that is attached to a view, such as `Button` or <xref:Microsoft.Maui.Controls.Label>, can only be applied to that particular object.
+- Resources in a `ResourceDictionary` that is attached to a view, such as <xref:Microsoft.Maui.Controls.Button> or <xref:Microsoft.Maui.Controls.Label>, can only be applied to that particular object.
 - Resources in a `ResourceDictionary` attached to a layout, such as <xref:Microsoft.Maui.Controls.StackLayout> or <xref:Microsoft.Maui.Controls.Grid>, can be applied to the layout and all the children of that layout.
 - Resources in a `ResourceDictionary` defined at the page level can be applied to the page and to all its children.
 - Resources in a `ResourceDictionary` defined at the application level can be applied throughout the app.
@@ -97,7 +97,7 @@ The following XAML example shows how to consume resources, and also define an ad
 </ContentPage>
 ```
 
-In this example, the <xref:Microsoft.Maui.Controls.ContentPage> object consumes the implicit style defined in the application level resource dictionary. The <xref:Microsoft.Maui.Controls.StackLayout> object consumes the `PageMargin` resource defined in the application level resource dictionary, while the `Button` object consumes the implicit style defined in the <xref:Microsoft.Maui.Controls.StackLayout> resource dictionary. This results in the appearance shown in the following screenshot:
+In this example, the <xref:Microsoft.Maui.Controls.ContentPage> object consumes the implicit style defined in the application level resource dictionary. The <xref:Microsoft.Maui.Controls.StackLayout> object consumes the `PageMargin` resource defined in the application level resource dictionary, while the <xref:Microsoft.Maui.Controls.Button> object consumes the implicit style defined in the <xref:Microsoft.Maui.Controls.StackLayout> resource dictionary. This results in the appearance shown in the following screenshot:
 
 :::image type="content" source="media/resource-dictionaries/consuming.png" alt-text="Consuming resource dictionary resources.":::
 

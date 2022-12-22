@@ -161,7 +161,7 @@ The following XAML example has a <xref:Microsoft.Maui.Controls.ScrollView> as a 
 </ContentPage>
 ```
 
-In this example, the root layout is a <xref:Microsoft.Maui.Controls.Grid> that has a <xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.ScrollView>, and `Button` as its children. The <xref:Microsoft.Maui.Controls.ScrollView> has a <xref:Microsoft.Maui.Controls.StackLayout> as its content, with the <xref:Microsoft.Maui.Controls.StackLayout> containing multiple <xref:Microsoft.Maui.Controls.Label> objects. This arrangement ensures that the first <xref:Microsoft.Maui.Controls.Label> is always on-screen, while text displayed by the other <xref:Microsoft.Maui.Controls.Label> objects can be scrolled:
+In this example, the root layout is a <xref:Microsoft.Maui.Controls.Grid> that has a <xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.ScrollView>, and <xref:Microsoft.Maui.Controls.Button> as its children. The <xref:Microsoft.Maui.Controls.ScrollView> has a <xref:Microsoft.Maui.Controls.StackLayout> as its content, with the <xref:Microsoft.Maui.Controls.StackLayout> containing multiple <xref:Microsoft.Maui.Controls.Label> objects. This arrangement ensures that the first <xref:Microsoft.Maui.Controls.Label> is always on-screen, while text displayed by the other <xref:Microsoft.Maui.Controls.Label> objects can be scrolled:
 
 :::image type="content" source="media/scrollview/child-layout.png" alt-text="Screenshot of a child ScrollView layout.":::
 

@@ -93,7 +93,7 @@ For properties of more complex types, however, converters are used for parsing t
 
 When you run a .NET MAUI app, the `MainPage` is typically displayed. To see a different page you can either set that as the new startup page in the *AppShell.xaml* file, or navigate to the new page from `MainPage`.
 
-To implement navigation, in the *MainPage.xaml.cs* constructor, you can create a simple `Button` and use the event handler to navigate to `HelloXamlPage`:
+To implement navigation, in the *MainPage.xaml.cs* constructor, you can create a simple <xref:Microsoft.Maui.Controls.Button> and use the event handler to navigate to `HelloXamlPage`:
 
 ```csharp
 public MainPage()
@@ -151,9 +151,9 @@ This XAML file is syntactically complete, and produces the following UI:
 
 :::image type="content" source="media/get-started/xamlpluscode1.png" alt-text="Screenshot of multiple controls on a page.":::
 
-However, while you can interact with the <xref:Microsoft.Maui.Controls.Slider> and `Button`, the UI isn't updated. The <xref:Microsoft.Maui.Controls.Slider> should cause the <xref:Microsoft.Maui.Controls.Label> to display the current value, and the `Button` should do something.
+However, while you can interact with the <xref:Microsoft.Maui.Controls.Slider> and <xref:Microsoft.Maui.Controls.Button>, the UI isn't updated. The <xref:Microsoft.Maui.Controls.Slider> should cause the <xref:Microsoft.Maui.Controls.Label> to display the current value, and the <xref:Microsoft.Maui.Controls.Button> should do something.
 
-Displaying a <xref:Microsoft.Maui.Controls.Slider> value using a <xref:Microsoft.Maui.Controls.Label> can be achieved entirely in XAML with a *data binding*. However, it's useful to see the code solution first. Even so, handling the `Button` click definitely requires code. This means that the code-behind file for `XamlPlusCodePage` must contain handlers for the `ValueChanged` event of the <xref:Microsoft.Maui.Controls.Slider> and the `Clicked` event of the `Button`:
+Displaying a <xref:Microsoft.Maui.Controls.Slider> value using a <xref:Microsoft.Maui.Controls.Label> can be achieved entirely in XAML with a *data binding*. However, it's useful to see the code solution first. Even so, handling the <xref:Microsoft.Maui.Controls.Button> click definitely requires code. This means that the code-behind file for `XamlPlusCodePage` must contain handlers for the `ValueChanged` event of the <xref:Microsoft.Maui.Controls.Slider> and the `Clicked` event of the <xref:Microsoft.Maui.Controls.Button>:
 
 ```csharp
 namespace XamlSamples
@@ -179,7 +179,7 @@ namespace XamlSamples
 }
 ```
 
-Back in the XAML file, the <xref:Microsoft.Maui.Controls.Slider> and `Button` tags need to include attributes for the `ValueChanged` and `Clicked` events that reference these handlers:
+Back in the XAML file, the <xref:Microsoft.Maui.Controls.Slider> and <xref:Microsoft.Maui.Controls.Button> tags need to include attributes for the `ValueChanged` and `Clicked` events that reference these handlers:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -226,7 +226,7 @@ The result is that any manipulation of the <xref:Microsoft.Maui.Controls.Slider>
 
 :::image type="content" source="media/get-started/xamlpluscode2.png" alt-text="Screenshot of multiple controls on a page, with Slider value displayed.":::
 
-In the example above the `Button` simulates a response to a `Clicked` event by displaying an alert with the `Text` of the button. Therefore, the event handler can cast the `sender` argument to a `Button` and then access its properties:
+In the example above the <xref:Microsoft.Maui.Controls.Button> simulates a response to a `Clicked` event by displaying an alert with the `Text` of the button. Therefore, the event handler can cast the `sender` argument to a <xref:Microsoft.Maui.Controls.Button> and then access its properties:
 
 ```csharp
 async void OnButtonClicked(object sender, EventArgs args)
@@ -236,7 +236,7 @@ async void OnButtonClicked(object sender, EventArgs args)
 }
 ```
 
-The `OnButtonClicked` method is defined as `async` because the `DisplayAlert` method is asynchronous and should be prefaced with the `await` operator, which returns when the method completes. Because this method obtains the `Button` firing the event from the `sender` argument, the same handler could be used for multiple buttons.
+The `OnButtonClicked` method is defined as `async` because the `DisplayAlert` method is asynchronous and should be prefaced with the `await` operator, which returns when the method completes. Because this method obtains the <xref:Microsoft.Maui.Controls.Button> firing the event from the `sender` argument, the same handler could be used for multiple buttons.
 
 ## Next steps
 

@@ -65,7 +65,7 @@ Triggers can also be added to a `Style` declaration on a control, in a page, or 
 
 A `DataTrigger` represents a trigger that applies property values, or performs actions, when the bound data meets a specified condition. The `Binding` markup extension is used to monitor for the specified condition.
 
-The following example shows a `DataTrigger` that disables a `Button` when the <xref:Microsoft.Maui.Controls.Entry> is empty:
+The following example shows a `DataTrigger` that disables a <xref:Microsoft.Maui.Controls.Button> when the <xref:Microsoft.Maui.Controls.Entry> is empty:
 
 ```xaml
 <Entry x:Name="entry"

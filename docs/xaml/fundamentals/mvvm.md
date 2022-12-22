@@ -239,11 +239,11 @@ The binding on each <xref:Microsoft.Maui.Controls.Label> is the default `OneWay`
 
 ## Commanding
 
-Sometimes an app has needs that go beyond property bindings by requiring the user to initiate commands that affect something in the viewmodel. These commands are generally signaled by button clicks or finger taps, and traditionally they are processed in the code-behind file in a handler for the `Clicked` event of the `Button` or the `Tapped` event of a `TapGestureRecognizer`.
+Sometimes an app has needs that go beyond property bindings by requiring the user to initiate commands that affect something in the viewmodel. These commands are generally signaled by button clicks or finger taps, and traditionally they are processed in the code-behind file in a handler for the `Clicked` event of the <xref:Microsoft.Maui.Controls.Button> or the `Tapped` event of a `TapGestureRecognizer`.
 
-The commanding interface provides an alternative approach to implementing commands that is much better suited to the MVVM architecture. The viewmodel can contain commands, which are methods that are executed in reaction to a specific activity in the view such as a `Button` click. Data bindings are defined between these commands and the `Button`.
+The commanding interface provides an alternative approach to implementing commands that is much better suited to the MVVM architecture. The viewmodel can contain commands, which are methods that are executed in reaction to a specific activity in the view such as a <xref:Microsoft.Maui.Controls.Button> click. Data bindings are defined between these commands and the <xref:Microsoft.Maui.Controls.Button>.
 
-To allow a data binding between a `Button` and a viewmodel, the `Button` defines two properties:
+To allow a data binding between a <xref:Microsoft.Maui.Controls.Button> and a viewmodel, the <xref:Microsoft.Maui.Controls.Button> defines two properties:
 
 - `Command` of type [`System.Windows.Input.ICommand`](xref:System.Windows.Input.ICommand)
 - `CommandParameter` of type `Object`
@@ -257,9 +257,9 @@ The [`ICommand`](xref:System.Windows.Input.ICommand) interface is defined in the
 - `bool CanExecute(object arg)`
 - `event EventHandler CanExecuteChanged`
 
-The viewmodel can define properties of type `ICommand`. You can then bind these properties to the `Command` property of each `Button` or other element, or perhaps a custom view that implements this interface. You can optionally set the `CommandParameter` property to identify individual `Button` objects (or other elements) that are bound to this viewmodel property. Internally, the `Button` calls the `Execute` method whenever the user taps the `Button`, passing to the `Execute` method its `CommandParameter`.
+The viewmodel can define properties of type `ICommand`. You can then bind these properties to the `Command` property of each <xref:Microsoft.Maui.Controls.Button> or other element, or perhaps a custom view that implements this interface. You can optionally set the `CommandParameter` property to identify individual <xref:Microsoft.Maui.Controls.Button> objects (or other elements) that are bound to this viewmodel property. Internally, the <xref:Microsoft.Maui.Controls.Button> calls the `Execute` method whenever the user taps the <xref:Microsoft.Maui.Controls.Button>, passing to the `Execute` method its `CommandParameter`.
 
-The `CanExecute` method and `CanExecuteChanged` event are used for cases where a `Button` tap might be currently invalid, in which case the `Button` should disable itself. The `Button` calls `CanExecute` when the `Command` property is first set and whenever the `CanExecuteChanged` event is raised. If `CanExecute` returns `false`, the `Button` disables itself and doesn’t generate `Execute` calls.
+The `CanExecute` method and `CanExecuteChanged` event are used for cases where a <xref:Microsoft.Maui.Controls.Button> tap might be currently invalid, in which case the <xref:Microsoft.Maui.Controls.Button> should disable itself. The <xref:Microsoft.Maui.Controls.Button> calls `CanExecute` when the `Command` property is first set and whenever the `CanExecuteChanged` event is raised. If `CanExecute` returns `false`, the <xref:Microsoft.Maui.Controls.Button> disables itself and doesn’t generate `Execute` calls.
 
 You can use the `Command` or `Command<T>` class included in .NET MAUI to implement the `ICommand` interface. These two classes define several constructors plus a `ChangeCanExecute` method that the viewmodel can call to force the `Command` object to raise the `CanExecuteChanged` event.
 
@@ -410,6 +410,6 @@ The following example shows the XAML that consumes the `KeypadViewModel`:
 </ContentPage>
 ```
 
-In this example, the `Command` property of the first `Button` that is bound to the `DeleteCharCommand`. The other buttons are bound to the `AddCharCommand` with a `CommandParameter` that's the same as the character that appears on the `Button`:
+In this example, the `Command` property of the first <xref:Microsoft.Maui.Controls.Button> that is bound to the `DeleteCharCommand`. The other buttons are bound to the `AddCharCommand` with a `CommandParameter` that's the same as the character that appears on the <xref:Microsoft.Maui.Controls.Button>:
 
 :::image type="content" source="media/mvvm/keypad.png" alt-text="Screenshot of a calculator using MVVM and commands.":::

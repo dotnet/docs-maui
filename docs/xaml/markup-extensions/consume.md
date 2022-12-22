@@ -162,7 +162,7 @@ The `x:Type` markup extension is the XAML equivalent of the C# [`typeof`](/dotne
 
 The `x:Type` markup extension is commonly used with the `x:Array` markup extension. For more information, see [x:Array markup extension](#xarray-markup-extension).
 
-The following XAML example demonstrates using the `x:Type` markup extension to instantiate .NET MAUI objects and add them to a <xref:Microsoft.Maui.Controls.StackLayout>. The XAML consists of three `Button` elements with their `Command` properties set to a `Binding` and the `CommandParameter` properties set to types of three .NET MAUI views:
+The following XAML example demonstrates using the `x:Type` markup extension to instantiate .NET MAUI objects and add them to a <xref:Microsoft.Maui.Controls.StackLayout>. The XAML consists of three <xref:Microsoft.Maui.Controls.Button> elements with their `Command` properties set to a `Binding` and the `CommandParameter` properties set to types of three .NET MAUI views:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -213,7 +213,7 @@ public partial class TypeDemoPage : ContentPage
 }
 ```
 
-When a `Button` is pressed a new instance of the `CommandParameter` argument is created and added to the <xref:Microsoft.Maui.Controls.StackLayout>. The three `Button` objects then share the page with dynamically created views:
+When a <xref:Microsoft.Maui.Controls.Button> is pressed a new instance of the `CommandParameter` argument is created and added to the <xref:Microsoft.Maui.Controls.StackLayout>. The three <xref:Microsoft.Maui.Controls.Button> objects then share the page with dynamically created views:
 
 :::image type="content" source="media/consume/typedemo.png" alt-text="x:Type demo.":::
 
