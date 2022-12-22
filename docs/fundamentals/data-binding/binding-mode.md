@@ -53,7 +53,7 @@ If the default binding mode on the target property is not suitable for a particu
 Most bindable properties have a default binding mode of `OneWay` but some properties have a default binding mode of `TwoWay`, including the following:
 
 - `Date` property of <xref:Microsoft.Maui.Controls.DatePicker>
-- `Text` property of <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.SearchBar>, and `EntryCell`
+- `Text` property of <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.SearchBar>, and <xref:Microsoft.Maui.Controls.EntryCell>
 - `IsRefreshing` property of <xref:Microsoft.Maui.Controls.ListView>
 - `SelectedItem` property of `MultiPage`
 - `SelectedIndex` and `SelectedItem` properties of <xref:Microsoft.Maui.Controls.Picker>

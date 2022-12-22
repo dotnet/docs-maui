@@ -67,7 +67,7 @@ Each item in a <xref:Microsoft.Maui.Controls.TableView> is defined by a `Cell` o
 - <xref:Microsoft.Maui.Controls.TextCell>, which displays primary and secondary text on separate lines.
 - <xref:Microsoft.Maui.Controls.ImageCell>, which displays an image with primary and secondary text on separate lines.
 - <xref:Microsoft.Maui.Controls.SwitchCell>, which displays text and a switch that can be switched on or off.
-- `EntryCell`, which displays a label and text that's editable.
+- <xref:Microsoft.Maui.Controls.EntryCell>, which displays a label and text that's editable.
 - <xref:Microsoft.Maui.Controls.ViewCell>, which is a custom cell whose appearance is defined by a `View`. This cell type should be used when you want to fully define the appearance of each item in a <xref:Microsoft.Maui.Controls.TableView>.
 
 ### Text cell
@@ -172,7 +172,7 @@ The following screenshot shows the resulting cell appearance:
 
 ### Entry cell
 
-An `EntryCell` displays a label and text data that's editable. `EntryCell` defines the following properties:
+An <xref:Microsoft.Maui.Controls.EntryCell> displays a label and text data that's editable. <xref:Microsoft.Maui.Controls.EntryCell> defines the following properties:
 
 - `HorizontalTextAlignment`, of type `TextAlignment`, represents the horizontal alignment of the text.
 - `Keyboard`, of type `Keyboard`, determines the keyboard to display when entering text.
@@ -184,9 +184,9 @@ An `EntryCell` displays a label and text data that's editable. `EntryCell` defin
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
-`EntryCell` also defines a `Completed` event that's raised when the user hits the return key, to indicate that editing is complete.
+<xref:Microsoft.Maui.Controls.EntryCell> also defines a `Completed` event that's raised when the user hits the return key, to indicate that editing is complete.
 
-The following example shows using an `EntryCell` to define the appearance of items in a <xref:Microsoft.Maui.Controls.TableView>:
+The following example shows using an <xref:Microsoft.Maui.Controls.EntryCell> to define the appearance of items in a <xref:Microsoft.Maui.Controls.TableView>:
 
 ```xaml
 <TableView Intent="Settings">
