@@ -79,7 +79,7 @@ The following example demonstrates several uses of the `StringFormat` property:
 </ContentPage>
 ```
 
-In this example, the bindings on the <xref:Microsoft.Maui.Controls.Slider> and `TimePicker` show the use of format specifications particular to `double` and `TimeSpan` data types. The `StringFormat` that displays the text from the <xref:Microsoft.Maui.Controls.Entry> view demonstrates how to specify double quotation marks in the formatting string with the use of the `&quot;` HTML entity.
+In this example, the bindings on the <xref:Microsoft.Maui.Controls.Slider> and <xref:Microsoft.Maui.Controls.TimePicker> show the use of format specifications particular to `double` and `TimeSpan` data types. The `StringFormat` that displays the text from the <xref:Microsoft.Maui.Controls.Entry> view demonstrates how to specify double quotation marks in the formatting string with the use of the `&quot;` HTML entity.
 
 The next section in the XAML file is a <xref:Microsoft.Maui.Controls.StackLayout> with a `BindingContext` set to an `x:Static` markup extension that references the static `DateTime.Now` property. The first binding has no properties:
 

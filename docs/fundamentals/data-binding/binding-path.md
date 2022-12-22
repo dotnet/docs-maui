@@ -10,13 +10,13 @@ ms.date: 01/19/2022
 
 In .NET Multi-platform App UI (.NET MAUI), the `Path` property of the `Binding` class (or the `Path` property of the `Binding` markup extension) can be set to a single property, to a *sub-property* (a property of a property), or to a member of a collection.
 
-For example, suppose a page contains a `TimePicker`:
+For example, suppose a page contains a <xref:Microsoft.Maui.Controls.TimePicker>:
 
 ```xaml
 <TimePicker x:Name="timePicker">
 ```
 
-The `Time` property of `TimePicker` is of type `TimeSpan`, and it has a `TotalSeconds` property. A data binding can be created that references the `TotalSeconds` property of that `TimeSpan` value:
+The `Time` property of <xref:Microsoft.Maui.Controls.TimePicker> is of type `TimeSpan`, and it has a `TotalSeconds` property. A data binding can be created that references the `TotalSeconds` property of that `TimeSpan` value:
 
 ```xaml
 {Binding Source={x:Reference timePicker},
@@ -120,7 +120,7 @@ The last `Label` is similar to the second, except that it references one of the 
                       StringFormat='The first Label has {0} characters'}" />
 ```
 
-That child is a `Label`, which has a `Text` property of type `String`, which has a `Length` property. The first `Label` reports the `TimeSpan` set in the `TimePicker`, so when that text changes, the final `Label` changes as well:
+That child is a `Label`, which has a `Text` property of type `String`, which has a `Length` property. The first `Label` reports the `TimeSpan` set in the <xref:Microsoft.Maui.Controls.TimePicker>, so when that text changes, the final `Label` changes as well:
 
 :::image type="content" source="media/binding-path/pathvariations.png" alt-text="Path variations.":::
 
