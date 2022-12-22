@@ -142,7 +142,7 @@ For more information about data templates, see [Data templates](~/fundamentals/d
 The appearance of each item in a <xref:Microsoft.Maui.Controls.ListView> is defined by a `DataTemplate`, and the `DataTemplate` must reference a `Cell` class to display items. Each cell represents an item of data in the <xref:Microsoft.Maui.Controls.ListView>. .NET MAUI includes the following built-in cells:
 
 - <xref:Microsoft.Maui.Controls.TextCell>, which displays primary and secondary text on separate lines.
-- `ImageCell`, which displays an image with primary and secondary text on separate lines.
+- <xref:Microsoft.Maui.Controls.ImageCell>, which displays an image with primary and secondary text on separate lines.
 - <xref:Microsoft.Maui.Controls.SwitchCell>, which displays text and a switch that can be switched on or off.
 - `EntryCell`, which displays a label and text that's editable.
 - <xref:Microsoft.Maui.Controls.ViewCell>, which is a custom cell whose appearance is defined by a `View`. This cell type should be used when you want to fully define the appearance of each item in a <xref:Microsoft.Maui.Controls.ListView>.
@@ -181,9 +181,9 @@ The following screenshot shows the resulting cell appearance:
 
 #### Image cell
 
-An `ImageCell` displays an image with primary and secondary text on separate lines. `ImageCell` inherits the properties from <xref:Microsoft.Maui.Controls.TextCell>, and defines the `ImageSource` property, of type `ImageSource`, which specifies the image to be displayed in the cell. This property is backed by a `BindableProperty` object, which means it can be the target of data bindings, and be styled.
+An <xref:Microsoft.Maui.Controls.ImageCell> displays an image with primary and secondary text on separate lines. <xref:Microsoft.Maui.Controls.ImageCell> inherits the properties from <xref:Microsoft.Maui.Controls.TextCell>, and defines the `ImageSource` property, of type `ImageSource`, which specifies the image to be displayed in the cell. This property is backed by a `BindableProperty` object, which means it can be the target of data bindings, and be styled.
 
-The following example shows using an `ImageCell` to define the appearance of items in a <xref:Microsoft.Maui.Controls.ListView>:
+The following example shows using an <xref:Microsoft.Maui.Controls.ImageCell> to define the appearance of items in a <xref:Microsoft.Maui.Controls.ListView>:
 
 ```xaml
 <ListView ItemsSource="{Binding Food}">
