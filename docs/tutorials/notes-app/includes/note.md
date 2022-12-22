@@ -75,9 +75,9 @@ Now that you understand a little more about code-behind files, you're going to a
 
     :::code language="csharp" source="../snippets/note/csharp/Notes/NotePage.xaml.cs" id="buttons":::
 
-    The `SaveButton_Clicked` method writes the text in the `Editor` control, to the file represented by the `_fileName` variable.
+    The `SaveButton_Clicked` method writes the text in the <xref:Microsoft.Maui.Controls.Editor> control, to the file represented by the `_fileName` variable.
 
-    The `DeleteButton_Clicked` method first checks if the file represented by the `_fileName` variable, and if it exists, deletes it. Next, the `Editor` control's text is cleared.
+    The `DeleteButton_Clicked` method first checks if the file represented by the `_fileName` variable, and if it exists, deletes it. Next, the <xref:Microsoft.Maui.Controls.Editor> control's text is cleared.
 
 01. Save the file by pressing <kbd>CTRL + S</kbd> or by selecting the menu **File** > **Save NotePage.xaml.cs**.
 

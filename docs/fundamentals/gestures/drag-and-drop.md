@@ -67,7 +67,7 @@ In this example, a drag gesture can be initiated on the `Image`.
 
 .NET MAUI will automatically build a data package for you, when a drag is initiated, for the following controls:
 
-- Text controls. Text values can be dragged from `CheckBox`, <xref:Microsoft.Maui.Controls.DatePicker>, `Editor`, `Entry`, `Label`, `RadioButton`, `Switch`, and `TimePicker` objects.
+- Text controls. Text values can be dragged from `CheckBox`, <xref:Microsoft.Maui.Controls.DatePicker>, <xref:Microsoft.Maui.Controls.Editor>, `Entry`, `Label`, `RadioButton`, `Switch`, and `TimePicker` objects.
 - Image controls. Images can be dragged from `Button`, `Image`, and `ImageButton` controls.
 
 The following table shows the properties that are read, and any conversion that's attempted, when a drag is initiated on a text control:
@@ -76,7 +76,7 @@ The following table shows the properties that are read, and any conversion that'
 | --- | --- | --- |
 | `CheckBox` | `IsChecked` | `bool` converted to a `string`. |
 | <xref:Microsoft.Maui.Controls.DatePicker> | `Date` | `DateTime` converted to a `string`. |
-| `Editor` | `Text` ||
+| <xref:Microsoft.Maui.Controls.Editor> | `Text` ||
 | `Entry` | `Text` ||
 | `Label` | `Text` ||
 | `RadioButton` | `IsChecked` | `bool` converted to a `string`. |
@@ -234,7 +234,7 @@ In this example, the `AcceptedOperation` property of the `DragEventArgs` object 
 
 The `Drop` event is raised when a drag source is released over a drop target. .NET MAUI automatically attempts to retrieve data from the data package when a drag source is dropped onto the following controls:
 
-- Text controls. Text values can be dropped onto `CheckBox`, <xref:Microsoft.Maui.Controls.DatePicker>, `Editor`, `Entry`, `Label`, `RadioButton`, `Switch`, and `TimePicker` objects.
+- Text controls. Text values can be dropped onto `CheckBox`, <xref:Microsoft.Maui.Controls.DatePicker>, <xref:Microsoft.Maui.Controls.Editor>, `Entry`, `Label`, `RadioButton`, `Switch`, and `TimePicker` objects.
 - Image controls. Images can be dropped onto `Button`, `Image`, and `ImageButton` controls.
 
 The following table shows the properties that are set and any conversion that's attempted when a text-based drag source is dropped on a text control:
@@ -243,7 +243,7 @@ The following table shows the properties that are set and any conversion that's 
 | --- | --- | --- |
 | `CheckBox` | `IsChecked` | `string` is converted to a `bool`. |
 | <xref:Microsoft.Maui.Controls.DatePicker> | `Date` | `string` is converted to a `DateTime`. |
-| `Editor` | `Text` ||
+| <xref:Microsoft.Maui.Controls.Editor> | `Text` ||
 | `Entry` | `Text` ||
 | `Label` | `Text` ||
 | `RadioButton` | `IsChecked` | `string` is converted to a `bool`. |

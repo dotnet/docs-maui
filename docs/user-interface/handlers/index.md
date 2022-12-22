@@ -55,7 +55,7 @@ The following table lists the types that implement handler-based views in .NET M
 | <xref:Microsoft.Maui.Controls.CollectionView> |  | `CollectionViewHandler` | `Mapper` | |
 | <xref:Microsoft.Maui.Controls.ContentView> | `IContentView` | `ContentViewHandler` | `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.DatePicker> | `IDatePicker` | `DatePickerHandler` | `Mapper` | `CommandMapper` |
-| `Editor` | `IEditor` | `EditorHandler` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.Editor> | `IEditor` | `EditorHandler` | `Mapper` | `CommandMapper` |
 | `Ellipse` | | `ShapeViewHandler` | `Mapper` | `CommandMapper` |
 | `Entry` | `IEntry` | `EntryHandler` | `Mapper` | `CommandMapper` |
 | `GraphicsView` | `IGraphicsView` | `GraphicsViewHandler` | `Mapper` | `CommandMapper` |
