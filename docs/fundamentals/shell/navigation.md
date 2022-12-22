@@ -350,7 +350,7 @@ async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEvent
 }
 ```
 
-This example retrieves the currently selected elephant in the `CollectionView`, and navigates to the `elephantdetails` route, passing `elephantName` as a query parameter.
+This example retrieves the currently selected elephant in the <xref:Microsoft.Maui.Controls.CollectionView>, and navigates to the `elephantdetails` route, passing `elephantName` as a query parameter.
 
 Object-based navigation data can be passed with a `GoToAsync` overload that specifies an `IDictionary<string, object>` argument:
 
@@ -366,7 +366,7 @@ async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEvent
 }
 ```
 
-This example retrieves the currently selected bear in the `CollectionView`, as an `Animal`. The `Animal` object is added to a `Dictionary` with the key `Bear`. Then, navigation to the `beardetails` route is performed, with the `Dictionary` being passed as a navigation parameter.
+This example retrieves the currently selected bear in the <xref:Microsoft.Maui.Controls.CollectionView>, as an `Animal`. The `Animal` object is added to a `Dictionary` with the key `Bear`. Then, navigation to the `beardetails` route is performed, with the `Dictionary` being passed as a navigation parameter.
 
 There are two approaches to receiving navigation data:
 
@@ -443,7 +443,7 @@ async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEvent
 }
 ```
 
-This code example retrieves the currently selected elephant in the `CollectionView`, and navigates to the `elephantdetails` route, passing `elephantName` and `elephantLocation` as query parameters.
+This code example retrieves the currently selected elephant in the <xref:Microsoft.Maui.Controls.CollectionView>, and navigates to the `elephantdetails` route, passing `elephantName` and `elephantLocation` as query parameters.
 
 To receive multiple items of data, the class that represents the page being navigated to, or the class for the page's `BindingContext`, can be decorated with a `QueryPropertyAttribute` for each string-based query parameter:
 

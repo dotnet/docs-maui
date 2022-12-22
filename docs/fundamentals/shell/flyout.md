@@ -272,7 +272,7 @@ Flyout items, which represent the flyout content, can optionally be replaced wit
 </Shell>
 ```
 
-In this example, the flyout content is replaced with a `CollectionView` that displays the title of each item in the `FlyoutItems` collection.
+In this example, the flyout content is replaced with a <xref:Microsoft.Maui.Controls.CollectionView> that displays the title of each item in the `FlyoutItems` collection.
 
 > [!NOTE]
 > The `FlyoutItems` property, in the `Shell` class, is a read-only collection of flyout items.

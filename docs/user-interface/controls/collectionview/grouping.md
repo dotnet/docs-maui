@@ -10,7 +10,7 @@ ms.date: 01/18/2022
 
 Large data sets can often become unwieldy when presented in a continually scrolling list. In this scenario, organizing the data into groups can improve the user experience by making it easier to navigate the data.
 
-The .NET Multi-platform App UI (.NET MAUI) `CollectionView` supports displaying grouped data, and defines the following properties that control how it will be presented:
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.CollectionView> supports displaying grouped data, and defines the following properties that control how it will be presented:
 
 - `IsGrouped`, of type `bool`, indicates whether the underlying data should be displayed in groups. The default value of this property is `false`.
 - `GroupHeaderTemplate`, of type `DataTemplate`, the template to use for the header of each group.
@@ -18,7 +18,7 @@ The .NET Multi-platform App UI (.NET MAUI) `CollectionView` supports displaying 
 
 These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings.
 
-The following screenshot shows a `CollectionView` displaying grouped data:
+The following screenshot shows a <xref:Microsoft.Maui.Controls.CollectionView> displaying grouped data:
 
 :::image type="content" source="media/grouping/grouped-data.png" alt-text="Screenshot of grouped data in a CollectionView.":::
 
@@ -129,7 +129,7 @@ This code creates two groups in the `Animals` collection. The first `AnimalGroup
 
 ## Display grouped data
 
-`CollectionView` will display grouped data, provided that the data has been grouped correctly, by setting the `IsGrouped` property to `true`:
+<xref:Microsoft.Maui.Controls.CollectionView> will display grouped data, provided that the data has been grouped correctly, by setting the `IsGrouped` property to `true`:
 
 ```xaml
 <CollectionView ItemsSource="{Binding Animals}"
@@ -168,10 +168,10 @@ collectionView.SetBinding(ItemsView.ItemsSourceProperty, "Animals");
 // ...
 ```
 
-The appearance of each item in the `CollectionView` is defined by setting the `CollectionView.ItemTemplate` property to a `DataTemplate`. For more information, see [Define item appearance](~/user-interface/controls/collectionview/populate-data.md#define-item-appearance).
+The appearance of each item in the <xref:Microsoft.Maui.Controls.CollectionView> is defined by setting the `CollectionView.ItemTemplate` property to a `DataTemplate`. For more information, see [Define item appearance](~/user-interface/controls/collectionview/populate-data.md#define-item-appearance).
 
 > [!NOTE]
-> By default, `CollectionView` will display the group name in the group header and footer. This behavior can be changed by customizing the group header and group footer.
+> By default, <xref:Microsoft.Maui.Controls.CollectionView> will display the group name in the group header and footer. This behavior can be changed by customizing the group header and group footer.
 
 ## Customize the group header
 
@@ -219,16 +219,16 @@ In this example, each group footer is set to a `Label` that displays the number 
 
 ## Empty groups
 
-When a `CollectionView` displays grouped data, it will display any groups that are empty. Such groups will be displayed with a group header and footer, indicating that the group is empty. The following screenshot shows an empty group:
+When a <xref:Microsoft.Maui.Controls.CollectionView> displays grouped data, it will display any groups that are empty. Such groups will be displayed with a group header and footer, indicating that the group is empty. The following screenshot shows an empty group:
 
 :::image type="content" source="media/grouping/empty-group.png" alt-text="Screenshot of an empty group in a CollectionView.":::
 
 > [!NOTE]
-> On iOS 10, group headers and footers for empty groups may all be displayed at the top of the `CollectionView`.
+> On iOS 10, group headers and footers for empty groups may all be displayed at the top of the <xref:Microsoft.Maui.Controls.CollectionView>.
 
 ## Group without templates
 
-`CollectionView` can display correctly grouped data without setting the `CollectionView.ItemTemplate` property to a `DataTemplate`:
+<xref:Microsoft.Maui.Controls.CollectionView> can display correctly grouped data without setting the `CollectionView.ItemTemplate` property to a `DataTemplate`:
 
 ```xaml
 <CollectionView ItemsSource="{Binding Animals}"

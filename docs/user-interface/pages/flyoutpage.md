@@ -101,7 +101,7 @@ The following example shows the definition of the `FlyoutMenuPage` object, which
 </ContentPage>
 ```
 
-In this example, the flyout page consists of a `CollectionView` that's populated with data by setting its `ItemsSource` property to an array of `FlyoutPageItem` objects. The following example shows the definition of the `FlyoutPageItem` class:
+In this example, the flyout page consists of a <xref:Microsoft.Maui.Controls.CollectionView> that's populated with data by setting its `ItemsSource` property to an array of `FlyoutPageItem` objects. The following example shows the definition of the `FlyoutPageItem` class:
 
 ```csharp
 public class FlyoutPageItem
@@ -123,7 +123,7 @@ The following screenshot shows the resulting flyout:
 
 ### Create and display the detail page
 
-The `FlyoutMenuPage` object contains a `CollectionView` that's referenced from the `MainPage` class. This allows the `MainPage` class to register a handler for the `SelectionChanged` event. This enables the `MainPage` object to set the `Detail` property to the page that represents the selected `CollectionView` item. The following example shows the event handler:
+The `FlyoutMenuPage` object contains a <xref:Microsoft.Maui.Controls.CollectionView> that's referenced from the `MainPage` class. This allows the `MainPage` class to register a handler for the `SelectionChanged` event. This enables the `MainPage` object to set the `Detail` property to the page that represents the selected <xref:Microsoft.Maui.Controls.CollectionView> item. The following example shows the event handler:
 
 ```csharp
 public partial class MainPage : FlyoutPage
@@ -146,7 +146,7 @@ public partial class MainPage : FlyoutPage
 }
 ```
 
-In this example, the `OnSelectionChanged` event handler retrieves the `CurrentSelection` from the `CollectionView` object and sets the detail page to an instance of the page type stored in the `TargetType` property of the `FlyoutPageItem`. The detail page is displayed by setting the `FlyoutPage.IsPresented` property to `false`.
+In this example, the `OnSelectionChanged` event handler retrieves the `CurrentSelection` from the <xref:Microsoft.Maui.Controls.CollectionView> object and sets the detail page to an instance of the page type stored in the `TargetType` property of the `FlyoutPageItem`. The detail page is displayed by setting the `FlyoutPage.IsPresented` property to `false`.
 
 ## Control detail page layout behavior
 

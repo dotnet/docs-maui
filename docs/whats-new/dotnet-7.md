@@ -36,7 +36,7 @@ Performance is a key focus of .NET MAUI in .NET 7:
 - On Android, startup performance has improved.
 - On iOS, application size has been reduced.
 - The rendering path for views has been optimized.
-- Many issues have been addressed that impacted the smoothness of scrolling in a `CollectionView`.
+- Many issues have been addressed that impacted the smoothness of scrolling in a <xref:Microsoft.Maui.Controls.CollectionView>.
 
 For more information, see [.NET 7 Performance Improvements in .NET MAUI](https://devblogs.microsoft.com/dotnet/dotnet-7-performance-improvements-in-dotnet-maui/).
 

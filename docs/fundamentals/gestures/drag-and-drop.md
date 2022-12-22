@@ -22,7 +22,7 @@ The process for enabling drag and drop in an app is as follows:
 1. [optional] Process the data package to receive the dropped content. .NET MAUI will automatically retrieve image and text data from the data package, but for other content you'll need to process the data package. For more information, see [Process the data package](#process-the-data-package).
 
 <!-- > [!NOTE]
-> Dragging items to and from a `CollectionView` is currently unsupported. -->
+> Dragging items to and from a <xref:Microsoft.Maui.Controls.CollectionView> is currently unsupported. -->
 
 ## Enable drag
 

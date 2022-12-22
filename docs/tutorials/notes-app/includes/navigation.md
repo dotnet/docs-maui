@@ -266,11 +266,11 @@ The previous XAML introduces a few new concepts:
 
   The `ToolbarItem.IconImageSource` property sets the icon to display on the button. The icon can be any image resource defined by the project, however, in this example, a `FontImage` is used. A `FontImage` can use a single glyph from a font as an image.
 
-- The `CollectionView` control displays a collection of items, and in this case, is bound to the model's `Notes` property. The way each item is presented by the collection view is set through the  `CollectionView.ItemsLayout` and `CollectionView.ItemTemplate` properties.
+- The <xref:Microsoft.Maui.Controls.CollectionView> control displays a collection of items, and in this case, is bound to the model's `Notes` property. The way each item is presented by the collection view is set through the  `CollectionView.ItemsLayout` and `CollectionView.ItemTemplate` properties.
 
   For each item in the collection, the `CollectionView.ItemTemplate` generates the declared XAML. The `BindingContext` of that XAML becomes the collection item itself, in this case, each individual note. The template for the note uses two labels, which are bound to the note's `Text` and `Date` properties.
 
-- The `CollectionView` handles the `SelectionChanged` event, which is raised when an item in the collection view is selected.
+- The <xref:Microsoft.Maui.Controls.CollectionView> handles the `SelectionChanged` event, which is raised when an item in the collection view is selected.
 
 The code-behind for the view needs to be written to load the notes and handle the events.
 
@@ -281,7 +281,7 @@ The code-behind for the view needs to be written to load the notes and handle th
 
 This code uses the constructor to set the `BindingContext` of the page to the model.
 
-The `OnAppearing` method is overridden from the base class. This method is automatically called whenever the page is shown, such as when the page is navigated to. The code here tells the model to load the notes. Because the `CollectionView` in the **AllNotes view** is bound to the **AllNotes model's** `Notes` property, which is an `ObservableCollection`, whenever the notes are loaded, the `CollectionView` is automatically updated.
+The `OnAppearing` method is overridden from the base class. This method is automatically called whenever the page is shown, such as when the page is navigated to. The code here tells the model to load the notes. Because the <xref:Microsoft.Maui.Controls.CollectionView> in the **AllNotes view** is bound to the **AllNotes model's** `Notes` property, which is an `ObservableCollection`, whenever the notes are loaded, the <xref:Microsoft.Maui.Controls.CollectionView> is automatically updated.
 
 The `Add_Clicked` handler introduces another new concept, navigation. Because the app is using .NET MAUI Shell, you can navigate to pages by calling the `Shell.Current.GoToAsync` method. Notice that the handler is declared with the `async` keyword, which allows the use of the `await` keyword when navigating. This handler navigates to the `NotePage`.
 

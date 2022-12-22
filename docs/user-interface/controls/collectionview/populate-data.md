@@ -8,25 +8,25 @@ ms.date: 01/18/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-collectionview)
 
-The .NET Multi-platform App UI (.NET MAUI) `CollectionView` includes the following properties that define the data to be displayed, and its appearance:
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.CollectionView> includes the following properties that define the data to be displayed, and its appearance:
 
 - `ItemsSource`, of type `IEnumerable`, specifies the collection of items to be displayed, and has a default value of `null`.
 - `ItemTemplate`, of type `DataTemplate`, specifies the template to apply to each item in the collection of items to be displayed.
 
 These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings.
 
-`CollectionView` defines a `ItemsUpdatingScrollMode` property that represents the scrolling behavior of the `CollectionView` when new items are added to it. For more information about this property, see [Control scroll position when new items are added](scrolling.md#control-scroll-position-when-new-items-are-added).
+<xref:Microsoft.Maui.Controls.CollectionView> defines a `ItemsUpdatingScrollMode` property that represents the scrolling behavior of the <xref:Microsoft.Maui.Controls.CollectionView> when new items are added to it. For more information about this property, see [Control scroll position when new items are added](scrolling.md#control-scroll-position-when-new-items-are-added).
 
-`CollectionView` supports incremental data virtualization as the user scrolls. For more information, see [Load data incrementally](#load-data-incrementally).
+<xref:Microsoft.Maui.Controls.CollectionView> supports incremental data virtualization as the user scrolls. For more information, see [Load data incrementally](#load-data-incrementally).
 
 ## Populate a CollectionView with data
 
-A `CollectionView` is populated with data by setting its `ItemsSource` property to any collection that implements `IEnumerable`. By default, `CollectionView` displays items in a vertical list.
+A <xref:Microsoft.Maui.Controls.CollectionView> is populated with data by setting its `ItemsSource` property to any collection that implements `IEnumerable`. By default, <xref:Microsoft.Maui.Controls.CollectionView> displays items in a vertical list.
 
 > [!IMPORTANT]
-> If the `CollectionView` is required to refresh as items are added, removed, or changed in the underlying collection, the underlying collection should be an `IEnumerable` collection that sends property change notifications, such as `ObservableCollection`.
+> If the <xref:Microsoft.Maui.Controls.CollectionView> is required to refresh as items are added, removed, or changed in the underlying collection, the underlying collection should be an `IEnumerable` collection that sends property change notifications, such as `ObservableCollection`.
 
-`CollectionView` can be populated with data by using data binding to bind its `ItemsSource` property to an `IEnumerable` collection. In XAML, this is achieved with the `Binding` markup extension:
+<xref:Microsoft.Maui.Controls.CollectionView> can be populated with data by using data binding to bind its `ItemsSource` property to an `IEnumerable` collection. In XAML, this is achieved with the `Binding` markup extension:
 
 ```xaml
 <CollectionView ItemsSource="{Binding Monkeys}" />
@@ -44,14 +44,14 @@ In this example, the `ItemsSource` property data binds to the `Monkeys` property
 > [!NOTE]
 > Compiled bindings can be enabled to improve data binding performance in .NET MAUI applications. For more information, see [Compiled bindings](~/fundamentals/data-binding/compiled-bindings.md).
 
-For information on how to change the `CollectionView` layout, see [Specify CollectionView layout](layout.md). For information on how to define the appearance of each item in the `CollectionView`, see [Define item appearance](#define-item-appearance). For more information about data binding, see [Data binding](~/fundamentals/data-binding/index.md).
+For information on how to change the <xref:Microsoft.Maui.Controls.CollectionView> layout, see [Specify CollectionView layout](layout.md). For information on how to define the appearance of each item in the <xref:Microsoft.Maui.Controls.CollectionView>, see [Define item appearance](#define-item-appearance). For more information about data binding, see [Data binding](~/fundamentals/data-binding/index.md).
 
 > [!WARNING]
-> `CollectionView` will throw an exception if its `ItemsSource` is updated off the UI thread.
+> <xref:Microsoft.Maui.Controls.CollectionView> will throw an exception if its `ItemsSource` is updated off the UI thread.
 
 ## Define item appearance
 
-The appearance of each item in the `CollectionView` can be defined by setting the `CollectionView.ItemTemplate` property to a `DataTemplate`:
+The appearance of each item in the <xref:Microsoft.Maui.Controls.CollectionView> can be defined by setting the `CollectionView.ItemTemplate` property to a `DataTemplate`:
 
 ```xaml
 <CollectionView ItemsSource="{Binding Monkeys}">
@@ -139,7 +139,7 @@ For more information about data templates, see [Data templates](~/fundamentals/d
 
 ## Choose item appearance at runtime
 
-The appearance of each item in the `CollectionView` can be chosen at runtime, based on the item value, by setting the `CollectionView.ItemTemplate` property to a `DataTemplateSelector` object:
+The appearance of each item in the <xref:Microsoft.Maui.Controls.CollectionView> can be chosen at runtime, based on the item value, by setting the `CollectionView.ItemTemplate` property to a `DataTemplateSelector` object:
 
 ```xaml
 <ContentPage ...
@@ -195,11 +195,11 @@ The `MonkeyDataTemplateSelector` class defines `AmericanMonkey` and `OtherMonkey
 For more information about data template selectors, see [Create a DataTemplateSelector](~/fundamentals/datatemplate.md#create-a-datatemplateselector).
 
 > [!IMPORTANT]
-> When using `CollectionView`, never set the root element of your `DataTemplate` objects to a `ViewCell`. This will result in an exception being thrown because `CollectionView` has no concept of cells.
+> When using <xref:Microsoft.Maui.Controls.CollectionView>, never set the root element of your `DataTemplate` objects to a `ViewCell`. This will result in an exception being thrown because <xref:Microsoft.Maui.Controls.CollectionView> has no concept of cells.
 
 ## Context menus
 
-`CollectionView` supports context menus for items of data through the `SwipeView`, which reveals the context menu with a swipe gesture. The `SwipeView` is a container control that wraps around an item of content, and provides context menu items for that item of content. Therefore, context menus are implemented for a `CollectionView` by creating a `SwipeView` that defines the content that the `SwipeView` wraps around, and the context menu items that are revealed by the swipe gesture. This is achieved by setting the `SwipeView` as the root view in the `DataTemplate` that defines the appearance of each item of data in the `CollectionView`:
+<xref:Microsoft.Maui.Controls.CollectionView> supports context menus for items of data through the `SwipeView`, which reveals the context menu with a swipe gesture. The `SwipeView` is a container control that wraps around an item of content, and provides context menu items for that item of content. Therefore, context menus are implemented for a <xref:Microsoft.Maui.Controls.CollectionView> by creating a `SwipeView` that defines the content that the `SwipeView` wraps around, and the context menu items that are revealed by the swipe gesture. This is achieved by setting the `SwipeView` as the root view in the `DataTemplate` that defines the appearance of each item of data in the <xref:Microsoft.Maui.Controls.CollectionView>:
 
 ```xaml
 <CollectionView x:Name="collectionView"
@@ -268,7 +268,7 @@ collectionView.ItemTemplate = new DataTemplate(() =>
 });
 ```
 
-In this example, the `SwipeView` content is a <xref:Microsoft.Maui.Controls.Grid> that defines the appearance of each item in the `CollectionView`. The swipe items are used to perform actions on the `SwipeView` content, and are revealed when the control is swiped from the left side:
+In this example, the `SwipeView` content is a <xref:Microsoft.Maui.Controls.Grid> that defines the appearance of each item in the <xref:Microsoft.Maui.Controls.CollectionView>. The swipe items are used to perform actions on the `SwipeView` content, and are revealed when the control is swiped from the left side:
 
 :::image type="content" source="media/populate-data/swipeview.png" alt-text="Screenshot of CollectionView context menu items.":::
 
@@ -278,7 +278,7 @@ For more information about the `SwipeView` control, see [SwipeView](~/user-inter
 
 ## Pull to refresh
 
-`CollectionView` supports pull to refresh functionality through the `RefreshView`, which enables the data being displayed to be refreshed by pulling down on the list of items. The `RefreshView` is a container control that provides pull to refresh functionality to its child, provided that the child supports scrollable content. Therefore, pull to refresh is implemented for a `CollectionView` by setting it as the child of a `RefreshView`:
+<xref:Microsoft.Maui.Controls.CollectionView> supports pull to refresh functionality through the `RefreshView`, which enables the data being displayed to be refreshed by pulling down on the list of items. The `RefreshView` is a container control that provides pull to refresh functionality to its child, provided that the child supports scrollable content. Therefore, pull to refresh is implemented for a <xref:Microsoft.Maui.Controls.CollectionView> by setting it as the child of a `RefreshView`:
 
 ```xaml
 <RefreshView IsRefreshing="{Binding IsRefreshing}"
@@ -317,22 +317,22 @@ For more information about `RefreshView`, see [RefreshView](~/user-interface/con
 
 ## Load data incrementally
 
-`CollectionView` supports incremental data virtualization as the user scrolls. This enables scenarios such as asynchronously loading a page of data from a web service, as the user scrolls. In addition, the point at which more data is loaded is configurable so that users don't see blank space, or are stopped from scrolling.
+<xref:Microsoft.Maui.Controls.CollectionView> supports incremental data virtualization as the user scrolls. This enables scenarios such as asynchronously loading a page of data from a web service, as the user scrolls. In addition, the point at which more data is loaded is configurable so that users don't see blank space, or are stopped from scrolling.
 
-`CollectionView` defines the following properties to control incremental loading of data:
+<xref:Microsoft.Maui.Controls.CollectionView> defines the following properties to control incremental loading of data:
 
 - `RemainingItemsThreshold`, of type `int`, the threshold of items not yet visible in the list at which the `RemainingItemsThresholdReached` event will be fired.
 - `RemainingItemsThresholdReachedCommand`, of type `ICommand`, which is executed when the `RemainingItemsThreshold` is reached.
 - `RemainingItemsThresholdReachedCommandParameter`, of type `object`, which is the parameter that's passed to the `RemainingItemsThresholdReachedCommand`.
 
-`CollectionView` also defines a `RemainingItemsThresholdReached` event that is fired when the `CollectionView` is scrolled far enough that `RemainingItemsThreshold` items have not been displayed. This event can be handled to load more items. In addition, when the `RemainingItemsThresholdReached` event is fired, the `RemainingItemsThresholdReachedCommand` is executed, enabling incremental data loading to take place in a viewmodel.
+<xref:Microsoft.Maui.Controls.CollectionView> also defines a `RemainingItemsThresholdReached` event that is fired when the <xref:Microsoft.Maui.Controls.CollectionView> is scrolled far enough that `RemainingItemsThreshold` items have not been displayed. This event can be handled to load more items. In addition, when the `RemainingItemsThresholdReached` event is fired, the `RemainingItemsThresholdReachedCommand` is executed, enabling incremental data loading to take place in a viewmodel.
 
 The default value of the `RemainingItemsThreshold` property is -1, which indicates that the `RemainingItemsThresholdReached` event will never be fired. When the property value is 0, the `RemainingItemsThresholdReached` event will be fired when the final item in the `ItemsSource` is displayed. For values greater than 0, the `RemainingItemsThresholdReached` event will be fired when the `ItemsSource` contains that number of items not yet scrolled to.
 
 > [!NOTE]
-> `CollectionView` validates the `RemainingItemsThreshold` property so that its value is always greater than or equal to -1.
+> <xref:Microsoft.Maui.Controls.CollectionView> validates the `RemainingItemsThreshold` property so that its value is always greater than or equal to -1.
 
-The following XAML example shows a `CollectionView` that loads data incrementally:
+The following XAML example shows a <xref:Microsoft.Maui.Controls.CollectionView> that loads data incrementally:
 
 ```xaml
 <CollectionView ItemsSource="{Binding Animals}"

@@ -150,7 +150,7 @@ The following table lists the visual states that are defined in .NET MAUI:
 | `Button` | `Pressed` | [Button visual states](~/user-interface/controls/button.md#button-visual-states) |
 | <xref:Microsoft.Maui.Controls.CarouselView> | `DefaultItem`, `CurrentItem`, `PreviousItem`, `NextItem` | [CarouselView visual states](~/user-interface/controls/carouselview/interaction.md#define-visual-states) |
 | `CheckBox` | `IsChecked` | [CheckBox visual states](~/user-interface/controls/checkbox.md#checkbox-visual-states) |
-| `CollectionView` | `Selected` | [CollectionView visual states](~/user-interface/controls/collectionview/selection.md#change-selected-item-color) |
+| <xref:Microsoft.Maui.Controls.CollectionView> | `Selected` | [CollectionView visual states](~/user-interface/controls/collectionview/selection.md#change-selected-item-color) |
 | `ImageButton` | `Pressed` | [ImageButton visual states](~/user-interface/controls/imagebutton.md#imagebutton-visual-states) |
 | `RadioButton` | `Checked`, `Unchecked` | [RadioButton visual states](~/user-interface/controls/radiobutton.md#radiobutton-visual-states) |
 | `Switch` | `On`, `Off` | [Switch visual states](~/user-interface/controls/switch.md#switch-visual-states) |
