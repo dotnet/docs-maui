@@ -19,7 +19,7 @@ The `PanGestureRecognizer` class also defines a `PanUpdated` event that's raised
 
 ## Create a PanGestureRecognizer
 
-To make a <xref:Microsoft.Maui.Controls.View> recognize a pan gesture, create a `PanGestureRecognizer` object, handle the `PanUpdated` event, and add the new gesture recognizer to the `GestureRecognizers` collection on the view. The following code example shows a `PanGestureRecognizer` attached to an `Image`:
+To make a <xref:Microsoft.Maui.Controls.View> recognize a pan gesture, create a `PanGestureRecognizer` object, handle the `PanUpdated` event, and add the new gesture recognizer to the `GestureRecognizers` collection on the view. The following code example shows a `PanGestureRecognizer` attached to an <xref:Microsoft.Maui.Controls.Image>:
 
 ```xaml
 <Image Source="monkey.jpg">
@@ -89,7 +89,7 @@ public class PanContainer : ContentView
 
 In this example, the `OnPanUpdated` method updates the viewable content of the wrapped view, based on the user's pan gesture. This is achieved by using the values of the `TotalX` and `TotalY` properties of the `PanUpdatedEventArgs` instance to calculate the direction and distance of the pan. The `DeviceDisplay.MainDisplayInfo.Width` and `DeviceDisplay.MainDisplayInfo.Height` properties provide the screen width and screen height values of the device. The wrapped user element is then panned by setting its `TranslationX` and `TranslationY` properties to the calculated values. When panning content in an element that does not occupy the full screen, the height and width of the viewport can be obtained from the element's `Height` and `Width` properties.
 
-The `PanContainer` class can be wrapped around a <xref:Microsoft.Maui.Controls.View> so that a recognized pan gesture will pan the wrapped view. The following XAML example shows the `PanContainer` wrapping an `Image`:
+The `PanContainer` class can be wrapped around a <xref:Microsoft.Maui.Controls.View> so that a recognized pan gesture will pan the wrapped view. The following XAML example shows the `PanContainer` wrapping an <xref:Microsoft.Maui.Controls.Image>:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -104,4 +104,4 @@ The `PanContainer` class can be wrapped around a <xref:Microsoft.Maui.Controls.V
 </ContentPage>
 ```
 
-In this example, when the `Image` receives a pan gesture, the displayed image will be panned.
+In this example, when the <xref:Microsoft.Maui.Controls.Image> receives a pan gesture, the displayed image will be panned.

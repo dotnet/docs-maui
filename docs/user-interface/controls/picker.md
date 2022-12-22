@@ -194,7 +194,7 @@ Label detailsLabel = new Label();
 detailsLabel.SetBinding(Label.TextProperty, "SelectedMonkey.Details");
 ```
 
-The `SelectedItem` property data binds to the `SelectedMonkey` property of the binding context, which is of type `Monkey`. Therefore, when the user selects an item in the <xref:Microsoft.Maui.Controls.Picker>, the `SelectedMonkey` property will be set to the selected `Monkey` object. The `SelectedMonkey` object data is displayed in the user interface by <xref:Microsoft.Maui.Controls.Label> and `Image` views.
+The `SelectedItem` property data binds to the `SelectedMonkey` property of the binding context, which is of type `Monkey`. Therefore, when the user selects an item in the <xref:Microsoft.Maui.Controls.Picker>, the `SelectedMonkey` property will be set to the selected `Monkey` object. The `SelectedMonkey` object data is displayed in the user interface by <xref:Microsoft.Maui.Controls.Label> and <xref:Microsoft.Maui.Controls.Image> views.
 
 > [!NOTE]
 > The `SelectedItem` and `SelectedIndex` properties both support two-way bindings by default.

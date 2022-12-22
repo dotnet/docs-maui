@@ -415,7 +415,7 @@ The following XAML example shows how to use the `FontImage` markup extension:
        Source="{FontImage &#xf30c;, FontFamily=Ionicons, Size=44}" />
 ```
 
-In this example, the abbreviated version of the `FontImageExtension` class name is used to display an XBox icon, from the Ionicons font family, in an `Image`:
+In this example, the abbreviated version of the `FontImageExtension` class name is used to display an XBox icon, from the Ionicons font family, in an <xref:Microsoft.Maui.Controls.Image>:
 
 :::image type="content" source="media/consume/fontimagedemo.png" alt-text="Screenshot of the FontImage markup extension.":::
 

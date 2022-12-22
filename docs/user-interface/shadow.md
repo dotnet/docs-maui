@@ -26,7 +26,7 @@ These properties are backed by `BindableProperty` objects, which means that they
 
 To add a shadow to a control, set the control's `Shadow` property to a `Shadow` object whose properties define its appearance.
 
-The following XAML example shows how to add a shadow to an `Image`:
+The following XAML example shows how to add a shadow to an <xref:Microsoft.Maui.Controls.Image>:
 
 ```xaml
 <Image Source="dotnet_bot.png"

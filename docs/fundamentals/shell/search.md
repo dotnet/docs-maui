@@ -141,7 +141,7 @@ In addition to displaying `string` data in the search results, the appearance of
 </ContentPage>
 ```
 
-The elements specified in the `DataTemplate` define the appearance of each item in the suggestions area. In this example, layout within the `DataTemplate` is managed by a <xref:Microsoft.Maui.Controls.Grid>. The <xref:Microsoft.Maui.Controls.Grid> contains an `Image` object, and a <xref:Microsoft.Maui.Controls.Label> object, that both bind to properties of each `Monkey` object.
+The elements specified in the `DataTemplate` define the appearance of each item in the suggestions area. In this example, layout within the `DataTemplate` is managed by a <xref:Microsoft.Maui.Controls.Grid>. The <xref:Microsoft.Maui.Controls.Grid> contains an <xref:Microsoft.Maui.Controls.Image> object, and a <xref:Microsoft.Maui.Controls.Label> object, that both bind to properties of each `Monkey` object.
 
 The following screenshot shows the result of templating each item in the suggestions area:
 

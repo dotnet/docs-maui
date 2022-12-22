@@ -604,7 +604,7 @@ The position and dimensions of the rectangle are defined by a `Rect` structure. 
 
 The <xref:Microsoft.Maui.Controls.VisualElement> class has a `Clip` property, of type `Geometry`, that defines the outline of the contents of an element. When the `Clip` property is set to a `Geometry` object, only the area that is within the region of the `Geometry` will be visible.
 
-The following example shows how to use a `Geometry` object as the clip region for an `Image`:
+The following example shows how to use a `Geometry` object as the clip region for an <xref:Microsoft.Maui.Controls.Image>:
 
 ```xaml
 <Image Source="monkeyface.png">
@@ -616,7 +616,7 @@ The following example shows how to use a `Geometry` object as the clip region fo
 </Image>
 ```
 
-In this example, an `EllipseGeometry` with `RadiusX` and `RadiusY` values of 100, and a `Center` value of (180,180) is set to the `Clip` property of an `Image`. Only the part of the image that is within the area of the ellipse will be displayed:
+In this example, an `EllipseGeometry` with `RadiusX` and `RadiusY` values of 100, and a `Center` value of (180,180) is set to the `Clip` property of an <xref:Microsoft.Maui.Controls.Image>. Only the part of the image that is within the area of the ellipse will be displayed:
 
 :::image type="content" source="media/geometry/clip-ellipsegeometry.png" alt-text="Clip an Image with an EllipseGeometry.":::
 

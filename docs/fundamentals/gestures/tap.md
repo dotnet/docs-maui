@@ -40,7 +40,7 @@ The `TapGestureRecognizer` class also defines a `Tapped` event that's raised whe
 
 ## Create a TapGestureRecognizer
 
-To make a <xref:Microsoft.Maui.Controls.View> recognize a tap gesture, create a `TapGestureRecognizer` object, handle the `Tapped` event, and add the new gesture recognizer to the `GestureRecognizers` collection on the view. The following code example shows a `TapGestureRecognizer` attached to an `Image`:
+To make a <xref:Microsoft.Maui.Controls.View> recognize a tap gesture, create a `TapGestureRecognizer` object, handle the `Tapped` event, and add the new gesture recognizer to the `GestureRecognizers` collection on the view. The following code example shows a `TapGestureRecognizer` attached to an <xref:Microsoft.Maui.Controls.Image>:
 
 ```xaml
 <Image Source="dotnet_bot.png">
@@ -72,7 +72,7 @@ Image image = new Image();
 image.GestureRecognizers.Add(tapGestureRecognizer);
 ```
 
-By default the `Image` will respond to single taps. When the `NumberOfTapsRequired` property is set to greater than one, the event handler will only be executed if the taps occur within a set period of time. If the second (or subsequent) taps don't occur within that period, they're effectively ignored.
+By default the <xref:Microsoft.Maui.Controls.Image> will respond to single taps. When the `NumberOfTapsRequired` property is set to greater than one, the event handler will only be executed if the taps occur within a set period of time. If the second (or subsequent) taps don't occur within that period, they're effectively ignored.
 
 ::: moniker range=">=net-maui-7.0"
 

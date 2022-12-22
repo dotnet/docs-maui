@@ -212,7 +212,7 @@ This data is used to create a PNG, which can be displayed by any view that can d
 > [!IMPORTANT]
 > Font icons can only currently be specified by their unicode character representation.
 
-The following XAML example has a single font icon being displayed by an `Image` view:
+The following XAML example has a single font icon being displayed by an <xref:Microsoft.Maui.Controls.Image> view:
 
 ```xaml
 <Image BackgroundColor="#D1D1D1">
@@ -224,7 +224,7 @@ The following XAML example has a single font icon being displayed by an `Image` 
 </Image>
 ```
 
-This code displays an XBox icon, from the Ionicons font family, in an `Image` view. Note that while the unicode character for this icon is `\uf30c`, it has to be escaped in XAML and so becomes `&#xf30c;`. The equivalent C# code is:
+This code displays an XBox icon, from the Ionicons font family, in an <xref:Microsoft.Maui.Controls.Image> view. Note that while the unicode character for this icon is `\uf30c`, it has to be escaped in XAML and so becomes `&#xf30c;`. The equivalent C# code is:
 
 ```csharp
 Image image = new Image { BackgroundColor = Color.FromArgb("#D1D1D1") };

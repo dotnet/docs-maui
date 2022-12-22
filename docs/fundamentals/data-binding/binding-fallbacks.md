@@ -71,7 +71,7 @@ The following example demonstrates setting the `TargetNullValue` property:
 </ListView>
 ```
 
-The bindings on the `Image` and <xref:Microsoft.Maui.Controls.Label> both define `TargetNullValue` values (delimited by single-quote characters) that will be applied if the binding path returns `null`. Therefore, the values defined by the `TargetNullValue` properties will be displayed for any objects in the collection where the `ImageUrl` and `Location` properties are not defined.
+The bindings on the <xref:Microsoft.Maui.Controls.Image> and <xref:Microsoft.Maui.Controls.Label> both define `TargetNullValue` values (delimited by single-quote characters) that will be applied if the binding path returns `null`. Therefore, the values defined by the `TargetNullValue` properties will be displayed for any objects in the collection where the `ImageUrl` and `Location` properties are not defined.
 
 Rather than defining `TargetNullValue` property values inline, it's recommended to define them as resources in a `ResourceDictionary`. The advantage of this approach is that such values are defined once in a single location, and are more easily localizable. The resources can then be retrieved using the `StaticResource` markup extension:
 
@@ -89,7 +89,7 @@ When the `TargetNullValue` property isn't set in a binding expression, a source 
 
 :::image type="content" source="media/binding-fallbacks/bindingunavailable.png" alt-text="TargetNullValue Binding.":::
 
-Therefore, in this example the `Image` and <xref:Microsoft.Maui.Controls.Label> objects display their `TargetNullValue` when their source objects are `null`.
+Therefore, in this example the <xref:Microsoft.Maui.Controls.Image> and <xref:Microsoft.Maui.Controls.Label> objects display their `TargetNullValue` when their source objects are `null`.
 
 > [!IMPORTANT]
 > String formatting is not applied in a binding expression when the `TargetNullValue` property is set.

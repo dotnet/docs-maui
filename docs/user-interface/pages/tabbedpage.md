@@ -104,7 +104,7 @@ The following example shows generating <xref:Microsoft.Maui.Controls.TabbedPage>
 </TabbedPage>
 ```
 
-In this example, each tab consists of a <xref:Microsoft.Maui.Controls.ContentPage> object that uses `Image` and <xref:Microsoft.Maui.Controls.Label> objects to display data for the tab:
+In this example, each tab consists of a <xref:Microsoft.Maui.Controls.ContentPage> object that uses <xref:Microsoft.Maui.Controls.Image> and <xref:Microsoft.Maui.Controls.Label> objects to display data for the tab:
 
 :::image type="content" source="media/tabbedpage/tabbedpage.png" alt-text="Screenshot of a .NET MAUI TabbedPage.":::
 

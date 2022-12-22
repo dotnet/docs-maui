@@ -48,7 +48,7 @@ The `DragStartingEventArgs` object that accompanies the `DragStarting` event def
 The `DropCompletedEventArgs` object that accompanies the `DropCompleted` event has a read-only `DropResult` property, of type `DataPackageOperation`. For more information about the `DataPackageOperation` enumeration, see [Handle the DragOver event](#handle-the-dragover-event).
 -->
 
-The following XAML example shows a `DragGestureRecognizer` attached to an `Image`:
+The following XAML example shows a `DragGestureRecognizer` attached to an <xref:Microsoft.Maui.Controls.Image>:
 
 ```xaml
 <Image Source="monkeyface.png">
@@ -58,7 +58,7 @@ The following XAML example shows a `DragGestureRecognizer` attached to an `Image
 </Image>
 ```
 
-In this example, a drag gesture can be initiated on the `Image`.
+In this example, a drag gesture can be initiated on the <xref:Microsoft.Maui.Controls.Image>.
 
 > [!TIP]
 > A drag gesture is initiated with a long-press followed by a drag.
@@ -68,7 +68,7 @@ In this example, a drag gesture can be initiated on the `Image`.
 .NET MAUI will automatically build a data package for you, when a drag is initiated, for the following controls:
 
 - Text controls. Text values can be dragged from <xref:Microsoft.Maui.Controls.CheckBox>, <xref:Microsoft.Maui.Controls.DatePicker>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.RadioButton>, <xref:Microsoft.Maui.Controls.Switch>, and <xref:Microsoft.Maui.Controls.TimePicker> objects.
-- Image controls. Images can be dragged from <xref:Microsoft.Maui.Controls.Button>, `Image`, and <xref:Microsoft.Maui.Controls.ImageButton> controls.
+- Image controls. Images can be dragged from <xref:Microsoft.Maui.Controls.Button>, <xref:Microsoft.Maui.Controls.Image>, and <xref:Microsoft.Maui.Controls.ImageButton> controls.
 
 The following table shows the properties that are read, and any conversion that's attempted, when a drag is initiated on a text control:
 
@@ -88,7 +88,7 @@ For content other than text and images, you'll need to build a data package your
 Data packages are represented by the `DataPackage` class, which defines the following properties:
 
 - `Properties`, of type `DataPackagePropertySet`, which is a collection of properties that comprise the data contained in the `DataPackage`. This property is a read-only property.
-- `Image`, of type `ImageSource`, which is the image contained in the `DataPackage`.
+- <xref:Microsoft.Maui.Controls.Image>, of type `ImageSource`, which is the image contained in the `DataPackage`.
 - `Text`, of type `string`, which is the text contained in the `DataPackage`.
 - <xref:Microsoft.Maui.Controls.View>, of type `DataPackageView`, which is a read-only version of the `DataPackage`.
 
@@ -181,7 +181,7 @@ The `DropEventArgs` class that accompanies the `Drop` event defines the followin
 - `Data`, of type `DataPackageView`, which is a read-only version of the data package.
 - `Handled`, of type `bool`, indicates whether the event handler has handled the event or whether .NET MAUI should continue its own processing.
 
-The following XAML example shows a `DropGestureRecognizer` attached to an `Image`:
+The following XAML example shows a `DropGestureRecognizer` attached to an <xref:Microsoft.Maui.Controls.Image>:
 
 ```xaml
 <Image BackgroundColor="Silver"
@@ -193,7 +193,7 @@ The following XAML example shows a `DropGestureRecognizer` attached to an `Image
 </Image>
 ```
 
-In this example, when a drag source is dropped on the `Image` drop target, the drag source will be copied to the drop target if the drag source is an `ImageSource`. .NET MAUI automatically copies dragged images, and text, to compatible drop targets.
+In this example, when a drag source is dropped on the <xref:Microsoft.Maui.Controls.Image> drop target, the drag source will be copied to the drop target if the drag source is an `ImageSource`. .NET MAUI automatically copies dragged images, and text, to compatible drop targets.
 
 ## Handle the DragOver event
 
@@ -219,7 +219,7 @@ The following XAML example shows a `DropGestureRecognizer` that registers a hand
 </Image>
 ```
 
-In this example, the `DropGestureRecognizer` is attached to an `Image` object. The `DragOver` event is raised when a drag source is dragged over the drop target, but hasn't been dropped, which executes the `OnDragOver` event handler:
+In this example, the `DropGestureRecognizer` is attached to an <xref:Microsoft.Maui.Controls.Image> object. The `DragOver` event is raised when a drag source is dragged over the drop target, but hasn't been dropped, which executes the `OnDragOver` event handler:
 
 ```csharp
 void OnDragOver(object sender, DragEventArgs e)
@@ -235,7 +235,7 @@ In this example, the `AcceptedOperation` property of the `DragEventArgs` object 
 The `Drop` event is raised when a drag source is released over a drop target. .NET MAUI automatically attempts to retrieve data from the data package when a drag source is dropped onto the following controls:
 
 - Text controls. Text values can be dropped onto <xref:Microsoft.Maui.Controls.CheckBox>, <xref:Microsoft.Maui.Controls.DatePicker>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.RadioButton>, <xref:Microsoft.Maui.Controls.Switch>, and <xref:Microsoft.Maui.Controls.TimePicker> objects.
-- Image controls. Images can be dropped onto <xref:Microsoft.Maui.Controls.Button>, `Image`, and <xref:Microsoft.Maui.Controls.ImageButton> controls.
+- Image controls. Images can be dropped onto <xref:Microsoft.Maui.Controls.Button>, <xref:Microsoft.Maui.Controls.Image>, and <xref:Microsoft.Maui.Controls.ImageButton> controls.
 
 The following table shows the properties that are set and any conversion that's attempted when a text-based drag source is dropped on a text control:
 

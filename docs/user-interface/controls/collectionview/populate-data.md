@@ -119,7 +119,7 @@ collectionView.ItemTemplate = new DataTemplate(() =>
 });
 ```
 
-The elements specified in the `DataTemplate` define the appearance of each item in the list. In the example, layout within the `DataTemplate` is managed by a <xref:Microsoft.Maui.Controls.Grid>. The <xref:Microsoft.Maui.Controls.Grid> contains an `Image` object, and two <xref:Microsoft.Maui.Controls.Label> objects, that all bind to properties of the `Monkey` class:
+The elements specified in the `DataTemplate` define the appearance of each item in the list. In the example, layout within the `DataTemplate` is managed by a <xref:Microsoft.Maui.Controls.Grid>. The <xref:Microsoft.Maui.Controls.Grid> contains an <xref:Microsoft.Maui.Controls.Image> object, and two <xref:Microsoft.Maui.Controls.Label> objects, that all bind to properties of the `Monkey` class:
 
 ```csharp
 public class Monkey

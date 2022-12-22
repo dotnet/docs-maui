@@ -119,7 +119,7 @@ The appearance of each item in the <xref:Microsoft.Maui.Controls.ListView> can b
 </ListView>
 ```
 
-The elements specified in the `DataTemplate` define the appearance of each item in the list, and the child of the `DataTemplate` must be a <xref:Microsoft.Maui.Controls.Cell> object. In the example, layout within the `DataTemplate` is managed by a <xref:Microsoft.Maui.Controls.Grid>. The <xref:Microsoft.Maui.Controls.Grid> contains an `Image` object, and two <xref:Microsoft.Maui.Controls.Label> objects, that all bind to properties of the `Monkey` class:
+The elements specified in the `DataTemplate` define the appearance of each item in the list, and the child of the `DataTemplate` must be a <xref:Microsoft.Maui.Controls.Cell> object. In the example, layout within the `DataTemplate` is managed by a <xref:Microsoft.Maui.Controls.Grid>. The <xref:Microsoft.Maui.Controls.Grid> contains an <xref:Microsoft.Maui.Controls.Image> object, and two <xref:Microsoft.Maui.Controls.Label> objects, that all bind to properties of the `Monkey` class:
 
 ```csharp
 public class Monkey
@@ -244,7 +244,7 @@ The following example shows using a <xref:Microsoft.Maui.Controls.ViewCell> to d
 </ListView>
 ```
 
-Inside the <xref:Microsoft.Maui.Controls.ViewCell>, layout can be managed by any .NET MAUI layout. In this example, layout is managed by a <xref:Microsoft.Maui.Controls.Grid>. The <xref:Microsoft.Maui.Controls.Grid> contains an `Image` object, and two <xref:Microsoft.Maui.Controls.Label> objects, that all bind to properties of the `Monkey` class.
+Inside the <xref:Microsoft.Maui.Controls.ViewCell>, layout can be managed by any .NET MAUI layout. In this example, layout is managed by a <xref:Microsoft.Maui.Controls.Grid>. The <xref:Microsoft.Maui.Controls.Grid> contains an <xref:Microsoft.Maui.Controls.Image> object, and two <xref:Microsoft.Maui.Controls.Label> objects, that all bind to properties of the `Monkey` class.
 
 The following screenshot shows the result of templating each item in the list:
 
@@ -587,7 +587,7 @@ By default, all items in a <xref:Microsoft.Maui.Controls.ListView> have the same
 
 The `RowHeight` property can be set to an `int` that represents the height of each item in the <xref:Microsoft.Maui.Controls.ListView>, provided that `HasUnevenRows` is `false`. When `HasUnevenRows` is set to `true`, each item in the <xref:Microsoft.Maui.Controls.ListView> can have a different height. The height of each item will be derived from the contents of the item's `DataTemplate`, and so each item will be sized to its content.
 
-Individual <xref:Microsoft.Maui.Controls.ListView> items can be programmatically resized at runtime by changing layout related properties of elements within the `DataTemplate`, provided that the `HasUnevenRows` property is `true`. The following example changes the height of an `Image` object when it's tapped:
+Individual <xref:Microsoft.Maui.Controls.ListView> items can be programmatically resized at runtime by changing layout related properties of elements within the `DataTemplate`, provided that the `HasUnevenRows` property is `true`. The following example changes the height of an <xref:Microsoft.Maui.Controls.Image> object when it's tapped:
 
 ```csharp
 void OnImageTapped(object sender, EventArgs args)
@@ -603,7 +603,7 @@ void OnImageTapped(object sender, EventArgs args)
 }
 ```
 
-In this example, the `OnImageTapped` event handler is executed in response to an `Image` object being tapped. The event handler updates the height of the `Image` and the `Cell.ForceUpdateSize` method updates the cell's size, even when it isn't currently visible.
+In this example, the `OnImageTapped` event handler is executed in response to an <xref:Microsoft.Maui.Controls.Image> object being tapped. The event handler updates the height of the <xref:Microsoft.Maui.Controls.Image> and the `Cell.ForceUpdateSize` method updates the cell's size, even when it isn't currently visible.
 
 > [!WARNING]
 > Overuse of dynamic item sizing can cause <xref:Microsoft.Maui.Controls.ListView> performance to degrade.

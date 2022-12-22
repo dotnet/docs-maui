@@ -255,7 +255,7 @@ listview image {
 }
 ```
 
-This selector identifies any `Image` elements that are children of <xref:Microsoft.Maui.Controls.ListView> elements, and sets their height and width to 60. Therefore, in the following XAML example, the `listview image` selector will identify the `Image` that's a child of the <xref:Microsoft.Maui.Controls.ListView>, and sets its height and width to 60.
+This selector identifies any <xref:Microsoft.Maui.Controls.Image> elements that are children of <xref:Microsoft.Maui.Controls.ListView> elements, and sets their height and width to 60. Therefore, in the following XAML example, the `listview image` selector will identify the <xref:Microsoft.Maui.Controls.Image> that's a child of the <xref:Microsoft.Maui.Controls.ListView>, and sets its height and width to 60.
 
 ```xaml
 <ContentPage ...>
@@ -294,7 +294,7 @@ stacklayout>image {
 }
 ```
 
-This selector identifies any `Image` elements that are direct children of <xref:Microsoft.Maui.Controls.StackLayout> elements, and sets their height and width to 200. Therefore, in the following example, the `stacklayout>image` selector will identify the `Image` that's a direct child of the <xref:Microsoft.Maui.Controls.StackLayout>, and sets its height and width to 200.
+This selector identifies any <xref:Microsoft.Maui.Controls.Image> elements that are direct children of <xref:Microsoft.Maui.Controls.StackLayout> elements, and sets their height and width to 200. Therefore, in the following example, the `stacklayout>image` selector will identify the <xref:Microsoft.Maui.Controls.Image> that's a direct child of the <xref:Microsoft.Maui.Controls.StackLayout>, and sets its height and width to 200.
 
 ```xaml
 <ContentPage ...>

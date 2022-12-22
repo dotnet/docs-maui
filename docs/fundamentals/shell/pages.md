@@ -201,7 +201,7 @@ While this property can be set on a subclassed `Shell` object, it's typically se
 
 The `Shell.TitleView` attached property, of type <xref:Microsoft.Maui.Controls.View>, enables any <xref:Microsoft.Maui.Controls.View> to be displayed in the navigation bar.
 
-While this property can be set on a subclassed `Shell` object, it can also be set on any pages that want to display a view in the navigation bar. For example, the following XAML shows displaying an `Image` in the navigation bar of a <xref:Microsoft.Maui.Controls.ContentPage>:
+While this property can be set on a subclassed `Shell` object, it can also be set on any pages that want to display a view in the navigation bar. For example, the following XAML shows displaying an <xref:Microsoft.Maui.Controls.Image> in the navigation bar of a <xref:Microsoft.Maui.Controls.ContentPage>:
 
 ```xaml
 <ContentPage ...>

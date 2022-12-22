@@ -83,7 +83,7 @@ BindableLayout.SetItemsSource(stackLayout, viewModel.User.TopFollowers);
 BindableLayout.SetItemTemplate(stackLayout, imageTemplate);
 ```
 
-In this example, every item in the `TopFollowers` collection will be displayed by an `Image` view defined in the `DataTemplate`:
+In this example, every item in the `TopFollowers` collection will be displayed by an <xref:Microsoft.Maui.Controls.Image> view defined in the `DataTemplate`:
 
 :::image type="content" source="media/bindablelayout/top-followers.png" alt-text=".NET MAUI bindable layout with a DataTemplate.":::
 

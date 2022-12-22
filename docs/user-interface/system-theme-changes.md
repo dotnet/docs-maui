@@ -37,7 +37,7 @@ The `AppThemeBinding` markup extension enables you to consume a resource, such a
 </StackLayout>
 ```
 
-In this example, the text color of the first <xref:Microsoft.Maui.Controls.Label> is set to green when the device is using its light theme, and is set to red when the device is using its dark theme. Similarly, the `Image` displays a different image file based upon the current system theme.
+In this example, the text color of the first <xref:Microsoft.Maui.Controls.Label> is set to green when the device is using its light theme, and is set to red when the device is using its dark theme. Similarly, the <xref:Microsoft.Maui.Controls.Image> displays a different image file based upon the current system theme.
 
 In addition, resources defined in a `ResourceDictionary` can be consumed with the `StaticResource` markup extension:
 
@@ -94,7 +94,7 @@ Image image = new Image();
 image.SetAppTheme<FileImageSource>(Image.SourceProperty, "lightlogo.png", "darklogo.png");
 ```
 
-In this example, the `Image` displays `lightlogo.png` when the device is using its light theme, and `darklogo.png` when the device is using its dark theme.
+In this example, the <xref:Microsoft.Maui.Controls.Image> displays `lightlogo.png` when the device is using its light theme, and `darklogo.png` when the device is using its dark theme.
 
 ## Detect the current system theme
 

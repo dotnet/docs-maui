@@ -142,7 +142,7 @@ The following XAML shows setting the `Content` and `Value` properties on each <x
 </StackLayout>
 ```
 
-In this example, each <xref:Microsoft.Maui.Controls.RadioButton> has an `Image` as its content, while also defining a string-based value. This enables the value of the checked radio button to be easily identified.
+In this example, each <xref:Microsoft.Maui.Controls.RadioButton> has an <xref:Microsoft.Maui.Controls.Image> as its content, while also defining a string-based value. This enables the value of the checked radio button to be easily identified.
 
 ## Group RadioButtons
 
