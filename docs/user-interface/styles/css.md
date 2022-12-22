@@ -367,13 +367,13 @@ The following CSS properties are supported by .NET MAUI (in the **Values** colum
 |`flex-grow`|<xref:Microsoft.Maui.Controls.VisualElement>|_float_ \| `initial`|`flex-grow: 1.5;`|
 |`flex-shrink`|<xref:Microsoft.Maui.Controls.VisualElement>|_float_ \| `initial`|`flex-shrink: 1;`|
 |`flex-wrap`|<xref:Microsoft.Maui.Controls.VisualElement>| `nowrap` \| `wrap` \| `reverse` \| `wrap-reverse` \| `initial`|`flex-wrap: wrap-reverse;`|
-|`font-family`|<xref:Microsoft.Maui.Controls.Button>, <xref:Microsoft.Maui.Controls.DatePicker>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.Picker>, <xref:Microsoft.Maui.Controls.SearchBar>, <xref:Microsoft.Maui.Controls.TimePicker>, `Span`|_string_ \| `initial` |`font-family: Consolas;`|
-|`font-size`|<xref:Microsoft.Maui.Controls.Button>, <xref:Microsoft.Maui.Controls.DatePicker>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.Picker>, <xref:Microsoft.Maui.Controls.SearchBar>, <xref:Microsoft.Maui.Controls.TimePicker>, `Span`|_double_ \| `initial` |`font-size: 12;`|
-|`font-style`|<xref:Microsoft.Maui.Controls.Button>, <xref:Microsoft.Maui.Controls.DatePicker>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.Picker>, <xref:Microsoft.Maui.Controls.SearchBar>, <xref:Microsoft.Maui.Controls.TimePicker>, `Span`|`bold` \| `italic` \| `initial` |`font-style: bold;`|
+|`font-family`|<xref:Microsoft.Maui.Controls.Button>, <xref:Microsoft.Maui.Controls.DatePicker>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.Picker>, <xref:Microsoft.Maui.Controls.SearchBar>, <xref:Microsoft.Maui.Controls.TimePicker>, <xref:Microsoft.Maui.Controls.Span>|_string_ \| `initial` |`font-family: Consolas;`|
+|`font-size`|<xref:Microsoft.Maui.Controls.Button>, <xref:Microsoft.Maui.Controls.DatePicker>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.Picker>, <xref:Microsoft.Maui.Controls.SearchBar>, <xref:Microsoft.Maui.Controls.TimePicker>, <xref:Microsoft.Maui.Controls.Span>|_double_ \| `initial` |`font-size: 12;`|
+|`font-style`|<xref:Microsoft.Maui.Controls.Button>, <xref:Microsoft.Maui.Controls.DatePicker>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.Picker>, <xref:Microsoft.Maui.Controls.SearchBar>, <xref:Microsoft.Maui.Controls.TimePicker>, <xref:Microsoft.Maui.Controls.Span>|`bold` \| `italic` \| `initial` |`font-style: bold;`|
 |`height`|<xref:Microsoft.Maui.Controls.VisualElement>|_double_ \| `initial` |`height: 250;`|
 |`justify-content`|<xref:Microsoft.Maui.Controls.FlexLayout>| `start` \| `center` \| `end` \| `spacebetween` \| `spacearound` \| `spaceevenly` \| `flex-start` \| `flex-end` \| `space-between` \| `space-around` \| `initial`|`justify-content: flex-end;`|
-|`letter-spacing`|<xref:Microsoft.Maui.Controls.Button>, <xref:Microsoft.Maui.Controls.DatePicker>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.Picker>, <xref:Microsoft.Maui.Controls.SearchBar>, `SearchHandler`, `Span`, <xref:Microsoft.Maui.Controls.TimePicker>|_double_ \| `initial`|`letter-spacing: 2.5;`|
-|`line-height`|<xref:Microsoft.Maui.Controls.Label>, `Span`|_double_ \| `initial` |`line-height: 1.8;`|
+|`letter-spacing`|<xref:Microsoft.Maui.Controls.Button>, <xref:Microsoft.Maui.Controls.DatePicker>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.Picker>, <xref:Microsoft.Maui.Controls.SearchBar>, `SearchHandler`, <xref:Microsoft.Maui.Controls.Span>, <xref:Microsoft.Maui.Controls.TimePicker>|_double_ \| `initial`|`letter-spacing: 2.5;`|
+|`line-height`|<xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.Span>|_double_ \| `initial` |`line-height: 1.8;`|
 |`margin`|<xref:Microsoft.Maui.Controls.View>|_thickness_ \| `initial` |`margin: 6 12;`|
 |`margin-left`|<xref:Microsoft.Maui.Controls.View>|_thickness_ \| `initial` |`margin-left: 3;`|
 |`margin-top`|<xref:Microsoft.Maui.Controls.View>|_thickness_ \| `initial` |`margin-top: 2;`|
@@ -392,7 +392,7 @@ The following CSS properties are supported by .NET MAUI (in the **Values** colum
 |`position`|<xref:Microsoft.Maui.Controls.FlexLayout>| `relative` \| `absolute` \| `initial`|`position: absolute;`|
 |`row-gap`|<xref:Microsoft.Maui.Controls.Grid>| _double_ \| `initial`|`row-gap: 12;`|
 |`text-align`| <xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.EntryCell>, <xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.SearchBar>|`left` \| `top` \| `right` \| `bottom` \| `start` \| `center` \| `middle` \| `end` \| `initial`. `left` and `right` should be avoided in right-to-left environments.| `text-align: right;`|
-|`text-decoration`|<xref:Microsoft.Maui.Controls.Label>, `Span`|`none` \| `underline` \| `strikethrough` \| `line-through` \| `initial`|`text-decoration: underline, line-through;`|
+|`text-decoration`|<xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.Span>|`none` \| `underline` \| `strikethrough` \| `line-through` \| `initial`|`text-decoration: underline, line-through;`|
 |`text-transform`|<xref:Microsoft.Maui.Controls.Button>,<xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.SearchBar>, `SearchHandler`|`none` \| `default` \| `uppercase` \| `lowercase` \| `initial` |`text-transform: uppercase;`|
 |`transform`|<xref:Microsoft.Maui.Controls.VisualElement>| `none`, `rotate`, `rotateX`, `rotateY`, `scale`, `scaleX`, `scaleY`, `translate`, `translateX`, `translateY`, `initial` |`transform: rotate(180), scaleX(2.5);`|
 |`transform-origin`|<xref:Microsoft.Maui.Controls.VisualElement>| _double_, _double_ \| `initial` |`transform-origin: 7.5, 12.5;`|
@@ -414,7 +414,7 @@ The following properties are unsupported:
 In addition, there's no `inherit` value and so inheritance isn't supported. Therefore you can't, for example, set the `font-size` property on a layout and expect all the <xref:Microsoft.Maui.Controls.Label> instances in the layout to inherit the value. The one exception is the `direction` property, which has a default value of `inherit`.
 
 > [!IMPORTANT]
-> `Span` elements can't be targeted using CSS.
+> <xref:Microsoft.Maui.Controls.Span> elements can't be targeted using CSS.
 
 ### .NET MAUI specific properties
 

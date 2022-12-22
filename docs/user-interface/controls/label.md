@@ -220,7 +220,7 @@ The following screenshot shows the `TextDecorations` enumeration members applied
 :::image type="content" source="media/label/textdecorations.png" alt-text="Screenshot of Labels with text decorations.":::
 
 > [!NOTE]
-> Text decorations can also be applied to `Span` instances. For more information about the `Span` class, see [Use formatted text](#use-formatted-text).
+> Text decorations can also be applied to <xref:Microsoft.Maui.Controls.Span> instances. For more information about the <xref:Microsoft.Maui.Controls.Span> class, see [Use formatted text](#use-formatted-text).
 
 ## Transform text
 
@@ -240,12 +240,12 @@ The following example shows transforming text to uppercase:
 
 ## Use formatted text
 
-<xref:Microsoft.Maui.Controls.Label> exposes a `FormattedText` property that allows the presentation of text with multiple fonts and colors in the same view. The `FormattedText` property is of type `FormattedString`, which comprises one or more `Span` instances, set via the `Spans` property.
+<xref:Microsoft.Maui.Controls.Label> exposes a `FormattedText` property that allows the presentation of text with multiple fonts and colors in the same view. The `FormattedText` property is of type `FormattedString`, which comprises one or more <xref:Microsoft.Maui.Controls.Span> instances, set via the `Spans` property.
 
 > [!NOTE]
-> It's not possible to display HTML in a `Span`.
+> It's not possible to display HTML in a <xref:Microsoft.Maui.Controls.Span>.
 
-`Span` defines the following properties:
+<xref:Microsoft.Maui.Controls.Span> defines the following properties:
 
 - `BackgroundColor`, of type `Color`, which represents the color of the span background.
 - `CharacterSpacing`, of type `double`, sets the spacing between characters in the displayed text.
@@ -255,7 +255,7 @@ The following example shows transforming text to uppercase:
 - `FontSize`, of type `double`, defines the font size.
 - `LineHeight`, of type `double`, specifies the multiplier to apply to the default line height when displaying text.
 - `Style`, of type `Style`, which is the style to apply to the span.
-- `Text`, of type `string`, defines the text displayed as the content of the `Span`.
+- `Text`, of type `string`, defines the text displayed as the content of the <xref:Microsoft.Maui.Controls.Span>.
 - `TextColor`, of type `Color`, defines the color of the displayed text.
 - `TextDecorations`, of type `TextDecorations`, specifies the text decorations (underline and strikethrough) that can be applied.
 - `TextTransform`, of type `TextTransform`, specifies the casing of the displayed text.
@@ -265,9 +265,9 @@ These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> o
 > [!NOTE]
 > The `Span.LineHeight` property has no effect on Windows.
 
-In addition, the `GestureRecognizers` property can be used to define a collection of gesture recognizers that will respond to gestures on the `Span`.
+In addition, the `GestureRecognizers` property can be used to define a collection of gesture recognizers that will respond to gestures on the <xref:Microsoft.Maui.Controls.Span>.
 
-The following XAML example demonstrates a `FormattedText` property that consists of three `Span` instances:
+The following XAML example demonstrates a `FormattedText` property that consists of three <xref:Microsoft.Maui.Controls.Span> instances:
 
 ```xaml
 <Label LineBreakMode="WordWrap">
@@ -299,22 +299,22 @@ formattedString.Spans.Add (new Span { Text = "italic small.", FontAttributes = F
 Label label = new Label { FormattedText = formattedString };
 ```
 
-The following screenshot shows the resulting <xref:Microsoft.Maui.Controls.Label> that contains three `Span` objects:
+The following screenshot shows the resulting <xref:Microsoft.Maui.Controls.Label> that contains three <xref:Microsoft.Maui.Controls.Span> objects:
 
 :::image type="content" source="media/label/formattedtext.png" alt-text="Screenshot of Label consisting of three spans.":::
 
-A `Span` can also respond to any gestures that are added to the span's `GestureRecognizers` collection. For example, a `TapGestureRecognizer` has been added to the second `Span` in the above examples. Therefore, when this `Span` is tapped the `TapGestureRecognizer` will respond by executing the `ICommand` defined by the `Command` property. For more information about tap gesture recognition, see [Recognize a tap gesture](~/fundamentals/gestures/tap.md).
+A <xref:Microsoft.Maui.Controls.Span> can also respond to any gestures that are added to the span's `GestureRecognizers` collection. For example, a `TapGestureRecognizer` has been added to the second <xref:Microsoft.Maui.Controls.Span> in the above examples. Therefore, when this <xref:Microsoft.Maui.Controls.Span> is tapped the `TapGestureRecognizer` will respond by executing the `ICommand` defined by the `Command` property. For more information about tap gesture recognition, see [Recognize a tap gesture](~/fundamentals/gestures/tap.md).
 
 ## Create a hyperlink
 
-The text displayed by <xref:Microsoft.Maui.Controls.Label> and `Span` instances can be turned into hyperlinks with the following approach:
+The text displayed by <xref:Microsoft.Maui.Controls.Label> and <xref:Microsoft.Maui.Controls.Span> instances can be turned into hyperlinks with the following approach:
 
-1. Set the `TextColor` and `TextDecoration` properties of the <xref:Microsoft.Maui.Controls.Label> or `Span`.
-1. Add a `TapGestureRecognizer` to the `GestureRecognizers` collection of the <xref:Microsoft.Maui.Controls.Label> or `Span`, whose `Command` property binds to a `ICommand`, and whose `CommandParameter` property contains the URL to open.
+1. Set the `TextColor` and `TextDecoration` properties of the <xref:Microsoft.Maui.Controls.Label> or <xref:Microsoft.Maui.Controls.Span>.
+1. Add a `TapGestureRecognizer` to the `GestureRecognizers` collection of the <xref:Microsoft.Maui.Controls.Label> or <xref:Microsoft.Maui.Controls.Span>, whose `Command` property binds to a `ICommand`, and whose `CommandParameter` property contains the URL to open.
 1. Define the `ICommand` that will be executed by the `TapGestureRecognizer`.
 1. Write the code that will be executed by the `ICommand`.
 
-The following example, shows a <xref:Microsoft.Maui.Controls.Label> whose content is set from multiple `Span` objects:
+The following example, shows a <xref:Microsoft.Maui.Controls.Label> whose content is set from multiple <xref:Microsoft.Maui.Controls.Span> objects:
 
 ```xaml
 <Label>
@@ -335,7 +335,7 @@ The following example, shows a <xref:Microsoft.Maui.Controls.Label> whose conten
 </Label>
 ```
 
-In this example, the first and third `Span` instances contain text, while the second `Span` represents a tappable hyperlink. It has its text color set to blue, and has an underline text decoration. This creates the appearance of a hyperlink, as shown in the following screenshot:
+In this example, the first and third <xref:Microsoft.Maui.Controls.Span> instances contain text, while the second <xref:Microsoft.Maui.Controls.Span> represents a tappable hyperlink. It has its text color set to blue, and has an underline text decoration. This creates the appearance of a hyperlink, as shown in the following screenshot:
 
 :::image type="content" source="media/label/hyperlink.png" alt-text="Screenshot of a hyperlink.":::
 
@@ -363,7 +363,7 @@ The `TapCommand` executes the `Launcher.OpenAsync` method, passing the `TapGestu
 
 ### Create a reusable hyperlink class
 
-The previous approach to creating a hyperlink requires writing repetitive code every time you require a hyperlink in your app. However, both the <xref:Microsoft.Maui.Controls.Label> and `Span` classes can be subclassed to create `HyperlinkLabel` and `HyperlinkSpan` classes, with the gesture recognizer and text formatting code added there.
+The previous approach to creating a hyperlink requires writing repetitive code every time you require a hyperlink in your app. However, both the <xref:Microsoft.Maui.Controls.Label> and <xref:Microsoft.Maui.Controls.Span> classes can be subclassed to create `HyperlinkLabel` and `HyperlinkSpan` classes, with the gesture recognizer and text formatting code added there.
 
 The following example shows a `HyperlinkSpan` class:
 
