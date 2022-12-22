@@ -17,7 +17,7 @@ The following platform-specific functionality is provided for .NET MAUI views on
 - Controlling whether <xref:Microsoft.Maui.Controls.ListView> header cells float during scrolling. For more information, see [ListView group header style on iOS](listview-group-header-style.md).
 - Controlling whether row animations are disabled when the <xref:Microsoft.Maui.Controls.ListView> items collection is being updated. For more information, see [ListView row animations on iOS](listview-row-animations.md).
 - Setting the separator style on a <xref:Microsoft.Maui.Controls.ListView>. For more information, see [ListView separator style on iOS](listview-separator-style.md).
-- Controlling when item selection occurs in a `Picker`. For more information, see [Picker item selection on iOS](picker-selection.md).
+- Controlling when item selection occurs in a <xref:Microsoft.Maui.Controls.Picker>. For more information, see [Picker item selection on iOS](picker-selection.md).
 - Controlling whether a `SearchBar` has a background. For more information, see [SearchBar style on iOS](searchbar-style.md).
 - Enabling the `Slider.Value` property to be set by tapping on a position on the `Slider` bar, rather than by having to drag the `Slider` thumb. For more information, see [Slider thumb tap on iOS](slider-thumb.md).
 - Controlling the transition that's used when opening a `SwipeView`. For more information, see [SwipeView swipe transition mode](swipeview-swipetransitionmode.md).

@@ -56,7 +56,7 @@ Most bindable properties have a default binding mode of `OneWay` but some proper
 - `Text` property of <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, `SearchBar`, and `EntryCell`
 - `IsRefreshing` property of <xref:Microsoft.Maui.Controls.ListView>
 - `SelectedItem` property of `MultiPage`
-- `SelectedIndex` and `SelectedItem` properties of `Picker`
+- `SelectedIndex` and `SelectedItem` properties of <xref:Microsoft.Maui.Controls.Picker>
 - `Value` property of `Slider` and `Stepper`
 - `IsToggled` property of `Switch`
 - `On` property of `SwitchCell`

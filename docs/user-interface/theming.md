@@ -184,7 +184,7 @@ When a theme is selected at runtime, an app should:
 
 Any `VisualElement` objects that set properties with the `DynamicResource` markup extension will then apply the new theme values. This occurs because the `DynamicResource` markup extension maintains a link to dictionary keys. Therefore, when the values associated with keys are replaced, the changes are applied to the `VisualElement` objects.
 
-In the sample application, a theme is selected via a modal page that contains a `Picker`. The following code shows the `OnPickerSelectionChanged` method, which is executed when the selected theme changes:
+In the sample application, a theme is selected via a modal page that contains a <xref:Microsoft.Maui.Controls.Picker>. The following code shows the `OnPickerSelectionChanged` method, which is executed when the selected theme changes:
 
 The following example shows removing the current theme and loading a new theme:
 

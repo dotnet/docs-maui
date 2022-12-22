@@ -359,7 +359,7 @@ The following CSS properties are supported by .NET MAUI (in the **Values** colum
 |`border-color`|`Button`, <xref:Microsoft.Maui.Controls.Frame>, <xref:Microsoft.Maui.Controls.ImageButton>|_color_ \| `initial`|`border-color: #9acd32;`|
 |`border-radius`|<xref:Microsoft.Maui.Controls.BoxView>, `Button`, <xref:Microsoft.Maui.Controls.Frame>, <xref:Microsoft.Maui.Controls.ImageButton>|_double_ \| `initial` |`border-radius: 10;`|
 |`border-width`|`Button`, <xref:Microsoft.Maui.Controls.ImageButton>|_double_ \| `initial` |`border-width: .5;`|
-|`color`|<xref:Microsoft.Maui.Controls.ActivityIndicator>, <xref:Microsoft.Maui.Controls.BoxView>, `Button`, `CheckBox`, <xref:Microsoft.Maui.Controls.DatePicker>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, `Label`, `Picker`, `ProgressBar`, `SearchBar`, `Switch`, `TimePicker`|_color_ \| `initial` |`color: rgba(255, 0, 0, 0.3);`|
+|`color`|<xref:Microsoft.Maui.Controls.ActivityIndicator>, <xref:Microsoft.Maui.Controls.BoxView>, `Button`, `CheckBox`, <xref:Microsoft.Maui.Controls.DatePicker>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, `Label`, <xref:Microsoft.Maui.Controls.Picker>, `ProgressBar`, `SearchBar`, `Switch`, `TimePicker`|_color_ \| `initial` |`color: rgba(255, 0, 0, 0.3);`|
 |`column-gap`|<xref:Microsoft.Maui.Controls.Grid>|_double_ \| `initial`|`column-gap: 9;`|
 |`direction`|`VisualElement`|`ltr` \| `rtl` \| `inherit` \| `initial` |`direction: rtl;`|
 |`flex-direction`|<xref:Microsoft.Maui.Controls.FlexLayout>| `column` \| `columnreverse` \| `row` \| `rowreverse` \| `row-reverse` \| `column-reverse` \| `initial`|`flex-direction: column-reverse;`|
@@ -367,12 +367,12 @@ The following CSS properties are supported by .NET MAUI (in the **Values** colum
 |`flex-grow`|`VisualElement`|_float_ \| `initial`|`flex-grow: 1.5;`|
 |`flex-shrink`|`VisualElement`|_float_ \| `initial`|`flex-shrink: 1;`|
 |`flex-wrap`|`VisualElement`| `nowrap` \| `wrap` \| `reverse` \| `wrap-reverse` \| `initial`|`flex-wrap: wrap-reverse;`|
-|`font-family`|`Button`, <xref:Microsoft.Maui.Controls.DatePicker>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, `Label`, `Picker`, `SearchBar`, `TimePicker`, `Span`|_string_ \| `initial` |`font-family: Consolas;`|
-|`font-size`|`Button`, <xref:Microsoft.Maui.Controls.DatePicker>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, `Label`, `Picker`, `SearchBar`, `TimePicker`, `Span`|_double_ \| `initial` |`font-size: 12;`|
-|`font-style`|`Button`, <xref:Microsoft.Maui.Controls.DatePicker>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, `Label`, `Picker`, `SearchBar`, `TimePicker`, `Span`|`bold` \| `italic` \| `initial` |`font-style: bold;`|
+|`font-family`|`Button`, <xref:Microsoft.Maui.Controls.DatePicker>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, `Label`, <xref:Microsoft.Maui.Controls.Picker>, `SearchBar`, `TimePicker`, `Span`|_string_ \| `initial` |`font-family: Consolas;`|
+|`font-size`|`Button`, <xref:Microsoft.Maui.Controls.DatePicker>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, `Label`, <xref:Microsoft.Maui.Controls.Picker>, `SearchBar`, `TimePicker`, `Span`|_double_ \| `initial` |`font-size: 12;`|
+|`font-style`|`Button`, <xref:Microsoft.Maui.Controls.DatePicker>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, `Label`, <xref:Microsoft.Maui.Controls.Picker>, `SearchBar`, `TimePicker`, `Span`|`bold` \| `italic` \| `initial` |`font-style: bold;`|
 |`height`|`VisualElement`|_double_ \| `initial` |`height: 250;`|
 |`justify-content`|<xref:Microsoft.Maui.Controls.FlexLayout>| `start` \| `center` \| `end` \| `spacebetween` \| `spacearound` \| `spaceevenly` \| `flex-start` \| `flex-end` \| `space-between` \| `space-around` \| `initial`|`justify-content: flex-end;`|
-|`letter-spacing`|`Button`, <xref:Microsoft.Maui.Controls.DatePicker>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, `Label`, `Picker`, `SearchBar`, `SearchHandler`, `Span`, `TimePicker`|_double_ \| `initial`|`letter-spacing: 2.5;`|
+|`letter-spacing`|`Button`, <xref:Microsoft.Maui.Controls.DatePicker>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, `Label`, <xref:Microsoft.Maui.Controls.Picker>, `SearchBar`, `SearchHandler`, `Span`, `TimePicker`|_double_ \| `initial`|`letter-spacing: 2.5;`|
 |`line-height`|`Label`, `Span`|_double_ \| `initial` |`line-height: 1.8;`|
 |`margin`|`View`|_thickness_ \| `initial` |`margin: 6 12;`|
 |`margin-left`|`View`|_thickness_ \| `initial` |`margin-left: 3;`|
