@@ -102,7 +102,7 @@ Border border = new Border
 };
 ```
 
-In this example, a border with rounded top-left and bottom-right corners is drawn around a `Label`. The border shape is defined as a `RoundRectangle` object, whose `CornerRadius` property is set to a `Thickness` value that enables independent control of each corner of the rectangle:
+In this example, a border with rounded top-left and bottom-right corners is drawn around a `Label`. The border shape is defined as a <xref:Microsoft.Maui.Controls.Shapes.RoundRectangle> object, whose `CornerRadius` property is set to a `Thickness` value that enables independent control of each corner of the rectangle:
 
 :::image type="content" source="media/border/border.png" alt-text="Border around a Label screenshot.":::
 
@@ -179,7 +179,7 @@ In XAML, the value of the `StrokeShape` property can be defined using property-t
 - <xref:Microsoft.Maui.Controls.Shapes.Polygon>, followed by a collection of x- and y-coordinate pairs. For example, `Polygon 40 10, 70 80, 10 50`.
 - <xref:Microsoft.Maui.Controls.Shapes.Polyline>, followed by a collection x- and y-coordinate pairs. For example, `Polyline 0,0 10,30 15,0 18,60 23,30 35,30 40,0 43,60 48,30 100,30`.
 - <xref:Microsoft.Maui.Controls.Shapes.Rectangle>
-- `RoundRectangle`, optionally followed by a corner radius. For example, `RoundRectangle 40` or `RoundRectangle 40,0,0,40`.
+- <xref:Microsoft.Maui.Controls.Shapes.RoundRectangle>, optionally followed by a corner radius. For example, `RoundRectangle 40` or `RoundRectangle 40,0,0,40`.
 
 > [!IMPORTANT]
 > While <xref:Microsoft.Maui.Controls.Shapes.Line> is a valid `string` value for the `StrokeShape` property, its use is not supported.

@@ -73,7 +73,7 @@ The following table lists the types that implement handler-based views in .NET M
 | <xref:Microsoft.Maui.Controls.RadioButton> | `IRadioButton` | `RadioButtonHandler` | `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.Shapes.Rectangle> | | `RectangleHandler` | `Mapper` | |
 | <xref:Microsoft.Maui.Controls.RefreshView> | `IRefreshView` | `RefreshViewHandler` | `Mapper` | `CommandMapper` |
-| `RoundRectangle` | | `RoundRectangleHandler` | `Mapper` | |
+| <xref:Microsoft.Maui.Controls.Shapes.RoundRectangle> | | `RoundRectangleHandler` | `Mapper` | |
 | `ScrollView` | `IScrollView` | `ScrollViewHandler` | `Mapper` | `CommandMapper` |
 | `SearchBar` | `ISearchBar` | `SearchBarHandler` | `Mapper` | `CommandMapper` |
 | `Slider` | `ISlider` | `SliderHandler` | `Mapper` | `CommandMapper` |
