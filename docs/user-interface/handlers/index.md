@@ -60,7 +60,7 @@ The following table lists the types that implement handler-based views in .NET M
 | <xref:Microsoft.Maui.Controls.Entry> | `IEntry` | `EntryHandler` | `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.GraphicsView> | `IGraphicsView` | `GraphicsViewHandler` | `Mapper` | `CommandMapper` |
 | `Image` | `IImage` | `ImageHandler` | `Mapper` | `CommandMapper` |
-| `ImageButton` | `IImageButton` | `ImageButtonHandler` | `ImageMapper`, `Mapper` | |
+| <xref:Microsoft.Maui.Controls.ImageButton> | `IImageButton` | `ImageButtonHandler` | `ImageMapper`, `Mapper` | |
 | `IndicatorView` | `IIndicatorView` | `IndicatorViewHandler` | `Mapper` | `CommandMapper` |
 | `Label` | `ILabel` | `LabelHandler` | `Mapper` | `CommandMapper` |
 | `Line` | | `LineHandler` | `Mapper` | |

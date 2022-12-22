@@ -6,9 +6,9 @@ ms.date: 02/14/2022
 
 # ImageButton
 
-The .NET Multi-platform App UI (.NET MAUI) `ImageButton` view combines the `Button` view and `Image` view to create a button whose content is an image. When you press the `ImageButton` with a finger or click it with a mouse, it directs the app to carry out a task. However, unlike the `Button` the `ImageButton` view has no concept of text and text appearance.
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.ImageButton> view combines the `Button` view and `Image` view to create a button whose content is an image. When you press the <xref:Microsoft.Maui.Controls.ImageButton> with a finger or click it with a mouse, it directs the app to carry out a task. However, unlike the `Button` the <xref:Microsoft.Maui.Controls.ImageButton> view has no concept of text and text appearance.
 
-`ImageButton` defines the following properties:
+<xref:Microsoft.Maui.Controls.ImageButton> defines the following properties:
 
 - `Aspect`, of type `Aspect`, determines how the image will be scaled to fit the display area.
 - `BorderColor`, of type `Color`, describes the border color of the button.
@@ -26,21 +26,21 @@ These properties are backed by `BindableProperty` objects, which means that they
 
 The `Aspect` property can be set to one of the members of the `Aspect` enumeration:
 
-- `Fill` - stretches the image to completely and exactly fill the `ImageButton`. This may result in the image being distorted.
-- `AspectFill` - clips the image so that it fills the `ImageButton` while preserving the aspect ratio.
-- `AspectFit` - letterboxes the image (if necessary) so that the entire image fits into the `ImageButton`, with blank space added to the top/bottom or sides depending on whether the image is wide or tall. This is the default value of the `Aspect` enumeration.
-- `Center` - centers the image in the `ImageButton` while preserving the aspect ratio.
+- `Fill` - stretches the image to completely and exactly fill the <xref:Microsoft.Maui.Controls.ImageButton>. This may result in the image being distorted.
+- `AspectFill` - clips the image so that it fills the <xref:Microsoft.Maui.Controls.ImageButton> while preserving the aspect ratio.
+- `AspectFit` - letterboxes the image (if necessary) so that the entire image fits into the <xref:Microsoft.Maui.Controls.ImageButton>, with blank space added to the top/bottom or sides depending on whether the image is wide or tall. This is the default value of the `Aspect` enumeration.
+- `Center` - centers the image in the <xref:Microsoft.Maui.Controls.ImageButton> while preserving the aspect ratio.
 
-In addition, `ImageButton` defines `Clicked`, `Pressed`, and `Released` events. The `Clicked` event is raised when an `ImageButton` tap with a finger or mouse pointer is released from the button's surface. The `Pressed` event is raised when a finger presses on an `ImageButton`, or a mouse button is pressed with the pointer positioned over the `ImageButton`. The `Released` event is raised when the finger or mouse button is released. Generally, a `Clicked` event is also raised at the same time as the `Released` event, but if the finger or mouse pointer slides away from the surface of the `ImageButton` before being released, the `Clicked` event might not occur.
+In addition, <xref:Microsoft.Maui.Controls.ImageButton> defines `Clicked`, `Pressed`, and `Released` events. The `Clicked` event is raised when an <xref:Microsoft.Maui.Controls.ImageButton> tap with a finger or mouse pointer is released from the button's surface. The `Pressed` event is raised when a finger presses on an <xref:Microsoft.Maui.Controls.ImageButton>, or a mouse button is pressed with the pointer positioned over the <xref:Microsoft.Maui.Controls.ImageButton>. The `Released` event is raised when the finger or mouse button is released. Generally, a `Clicked` event is also raised at the same time as the `Released` event, but if the finger or mouse pointer slides away from the surface of the <xref:Microsoft.Maui.Controls.ImageButton> before being released, the `Clicked` event might not occur.
 
 > [!IMPORTANT]
-> An `ImageButton` must have its `IsEnabled` property set to `true` for it to respond to taps.
+> An <xref:Microsoft.Maui.Controls.ImageButton> must have its `IsEnabled` property set to `true` for it to respond to taps.
 
 ## Create an ImageButton
 
-To create an image button, create an `ImageButton` object, set its `Source` property and handle it's `Clicked` event.
+To create an image button, create an <xref:Microsoft.Maui.Controls.ImageButton> object, set its `Source` property and handle it's `Clicked` event.
 
-The following XAML example show how to create an `ImageButton`:
+The following XAML example show how to create an <xref:Microsoft.Maui.Controls.ImageButton>:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -56,7 +56,7 @@ The following XAML example show how to create an `ImageButton`:
 </ContentPage>
 ```
 
-The `Source` property specifies the image that appears in the `ImageButton`. The `Clicked` event is set to an event handler named `OnImageButtonClicked`. This handler is located in the code-behind file:
+The `Source` property specifies the image that appears in the <xref:Microsoft.Maui.Controls.ImageButton>. The `Clicked` event is set to an event handler named `OnImageButtonClicked`. This handler is located in the code-behind file:
 
 ```csharp
 public partial class ImageButtonDemoPage : ContentPage
@@ -76,11 +76,11 @@ public partial class ImageButtonDemoPage : ContentPage
 }
 ```
 
-In this example, when the `ImageButton` is tapped, the `OnImageButtonClicked` method executes. The `sender` argument is the `ImageButton` responsible for this event. You can use this to access the `ImageButton` object, or to distinguish between multiple `ImageButton` objects sharing the same `Clicked` event. The `Clicked` handler increments a counter and displays the counter value in a `Label`:
+In this example, when the <xref:Microsoft.Maui.Controls.ImageButton> is tapped, the `OnImageButtonClicked` method executes. The `sender` argument is the <xref:Microsoft.Maui.Controls.ImageButton> responsible for this event. You can use this to access the <xref:Microsoft.Maui.Controls.ImageButton> object, or to distinguish between multiple <xref:Microsoft.Maui.Controls.ImageButton> objects sharing the same `Clicked` event. The `Clicked` handler increments a counter and displays the counter value in a `Label`:
 
 :::image type="content" source="media/imagebutton/imagebutton.png" alt-text="Screenshot of an ImageButton.":::
 
-The equivalent C# code to create an `ImageButton` is:
+The equivalent C# code to create an <xref:Microsoft.Maui.Controls.ImageButton> is:
 
 ```csharp
 Label label;
@@ -101,11 +101,11 @@ imageButton.Clicked += (s, e) =>
 ```
 
 <!-- > [!NOTE]
-> While an `ImageButton` can load an animated GIF, it will only display the first frame of the GIF. -->
+> While an <xref:Microsoft.Maui.Controls.ImageButton> can load an animated GIF, it will only display the first frame of the GIF. -->
 
 ## Use the command interface
 
-An app can respond to `ImageButton` taps without handling the `Clicked` event. The `ImageButton` implements an alternative notification mechanism called the _command_ or _commanding_ interface. This consists of two properties:
+An app can respond to <xref:Microsoft.Maui.Controls.ImageButton> taps without handling the `Clicked` event. The <xref:Microsoft.Maui.Controls.ImageButton> implements an alternative notification mechanism called the _command_ or _commanding_ interface. This consists of two properties:
 
 - `Command` of type [`ICommand`](xref:System.Windows.Input.ICommand), an interface defined in the [`System.Windows.Input`](xref:System.Windows.Input) namespace.
 - `CommandParameter` property of type [`Object`](xref:System.Object).
@@ -114,13 +114,13 @@ This approach is suitable in connection with data-binding, and particularly when
 
 ## Press and release an ImageButton
 
-The `Pressed` event is raised when a finger presses on a `ImageButton`, or a mouse button is pressed with the pointer positioned over the `ImageButton`. The `Released` event is raised when the finger or mouse button is released. Generally, the `Clicked` event is also raised at the same time as the `Released` event, but if the finger or mouse pointer slides away from the surface of the `ImageButton` before being released, the `Clicked` event might not occur.
+The `Pressed` event is raised when a finger presses on a <xref:Microsoft.Maui.Controls.ImageButton>, or a mouse button is pressed with the pointer positioned over the <xref:Microsoft.Maui.Controls.ImageButton>. The `Released` event is raised when the finger or mouse button is released. Generally, the `Clicked` event is also raised at the same time as the `Released` event, but if the finger or mouse pointer slides away from the surface of the <xref:Microsoft.Maui.Controls.ImageButton> before being released, the `Clicked` event might not occur.
 
 For more information about these events, see [Press and release the button](button.md#press-and-release-the-button) in the [Button](button.md) article.
 
 ## ImageButton visual states
 
-`ImageButton` has a `Pressed` `VisualState` that can be used to initiate a visual change to the `ImageButton` when pressed, provided that it's enabled.
+<xref:Microsoft.Maui.Controls.ImageButton> has a `Pressed` `VisualState` that can be used to initiate a visual change to the <xref:Microsoft.Maui.Controls.ImageButton> when pressed, provided that it's enabled.
 
 The following XAML example shows how to define a visual state for the `Pressed` state:
 
@@ -146,10 +146,10 @@ The following XAML example shows how to define a visual state for the `Pressed` 
 </ImageButton>
 ```
 
-In this example, the `Pressed` `VisualState` specifies that when the `ImageButton` is pressed, its `Scale` property will be changed from its default value of 1 to 0.8. The `Normal` `VisualState` specifies that when the `ImageButton` is in a normal state, its `Scale` property will be set to 1. Therefore, the overall effect is that when the `ImageButton` is pressed, it's rescaled to be slightly smaller, and when the `ImageButton` is released, it's rescaled to its default size.
+In this example, the `Pressed` `VisualState` specifies that when the <xref:Microsoft.Maui.Controls.ImageButton> is pressed, its `Scale` property will be changed from its default value of 1 to 0.8. The `Normal` `VisualState` specifies that when the <xref:Microsoft.Maui.Controls.ImageButton> is in a normal state, its `Scale` property will be set to 1. Therefore, the overall effect is that when the <xref:Microsoft.Maui.Controls.ImageButton> is pressed, it's rescaled to be slightly smaller, and when the <xref:Microsoft.Maui.Controls.ImageButton> is released, it's rescaled to its default size.
 
 For more information about visual states, see [Visual states](~/user-interface/visual-states.md).
 
 ## Disable an ImageButton
 
-Sometimes an app enters a state where an `ImageButton` click is not a valid operation. In those cases, the `ImageButton` should be disabled by setting its `IsEnabled` property to `false`.
+Sometimes an app enters a state where an <xref:Microsoft.Maui.Controls.ImageButton> click is not a valid operation. In those cases, the <xref:Microsoft.Maui.Controls.ImageButton> should be disabled by setting its `IsEnabled` property to `false`.
