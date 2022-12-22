@@ -8,11 +8,11 @@ ms.date: 09/29/2022
 
 <!-- Sample link, if any, goes here -->
 
-The .NET Multi-platform App UI (.NET MAUI) `Border` is a container control that draws a border, background, or both, around another control. A `Border` can only contain one child object. If you want to put a border around multiple objects, wrap them in a container object such as a layout.  For more information about layouts, see [Layouts](~/user-interface/layouts/index.md).
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Border> is a container control that draws a border, background, or both, around another control. A <xref:Microsoft.Maui.Controls.Border> can only contain one child object. If you want to put a border around multiple objects, wrap them in a container object such as a layout.  For more information about layouts, see [Layouts](~/user-interface/layouts/index.md).
 
-`Border` defines the following properties:
+<xref:Microsoft.Maui.Controls.Border> defines the following properties:
 
-- `Content`, of type `IView`, represents the content to display in the border. This property is the `ContentProperty` of the `Border` class, and therefore does not need to be explicitly set from XAML.
+- `Content`, of type `IView`, represents the content to display in the border. This property is the `ContentProperty` of the <xref:Microsoft.Maui.Controls.Border> class, and therefore does not need to be explicitly set from XAML.
 - `Padding`, of type `Thickness`, represents the distance between the border and its child element.
 - `StrokeShape`, of type `IShape`, describes the shape of the border. This property has a type converter applied to it that can convert a string to its equivalent `IShape`.
 - `Stroke`, of type `Brush`, indicates the brush used to paint the border.
@@ -30,7 +30,7 @@ These properties are backed by `BindableProperty` objects, which means that they
 
 ::: moniker range=">=net-maui-7.0"
 
-The default value of the `StrokeShape` property is `Rectangle`. Therefore, a `Border` will be rectangular by default.
+The default value of the `StrokeShape` property is `Rectangle`. Therefore, a <xref:Microsoft.Maui.Controls.Border> will be rectangular by default.
 
 ::: moniker-end
 
@@ -38,7 +38,7 @@ For more information about the properties that control the shape and stroke of t
 
 ## Create a Border
 
-To draw a border, create a `Border` object and set its properties to define its appearance. Then, set its child to the control to which the border should be added.
+To draw a border, create a <xref:Microsoft.Maui.Controls.Border> object and set its properties to define its appearance. Then, set its child to the control to which the border should be added.
 
 The following XAML example shows how to draw a border around a `Label`:
 

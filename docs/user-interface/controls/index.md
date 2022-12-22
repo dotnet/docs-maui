@@ -54,7 +54,7 @@ The main control groups used to create the user interface of a .NET MAUI app are
 | --- | --- |
 | <xref:Microsoft.Maui.Controls.ActivityIndicator> | <xref:Microsoft.Maui.Controls.ActivityIndicator> uses an animation to show that the app is engaged in a lengthy activity, without giving any indication of progress. For more information, see [ActivityIndicator](~/user-interface/controls/activityindicator.md). |
 | <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> | <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> enables you to host a Blazor web app in your .NET MAUI app. For more information, see [BlazorWebView](~/user-interface/controls/blazorwebview.md). |
-| `Border` | `Border` is a container control that draws a border, background, or both, around another control. For more information, see [Border](~/user-interface/controls/border.md). |
+| <xref:Microsoft.Maui.Controls.Border> | <xref:Microsoft.Maui.Controls.Border> is a container control that draws a border, background, or both, around another control. For more information, see [Border](~/user-interface/controls/border.md). |
 | `BoxView` | `BoxView` draws a rectangle or square, of a specified width, height, and color. For more information, see [BoxView](~/user-interface/controls/boxview.md). |
 | `Button` | `Button` displays text and responds to a tap or click that directs an app to carry out a task. For more information, see [Button](~/user-interface/controls/button.md). |
 | `CarouselView` | `CarouselView` displays a scrollable list of data items, where users swipe to move through the collection. For more information, see [CarouselView](~/user-interface/controls/carouselview/index.md). |
