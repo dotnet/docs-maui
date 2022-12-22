@@ -24,7 +24,7 @@ A .NET Multi-platform App UI (.NET MAUI) `Shape` is a type of `View` that enable
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
-.NET MAUI defines a number of objects that derive from the `Shape` class. These are <xref:Microsoft.Maui.Controls.Shapes.Ellipse>, <xref:Microsoft.Maui.Controls.Shapes.Line>, `Path`, <xref:Microsoft.Maui.Controls.Shapes.Polygon>, <xref:Microsoft.Maui.Controls.Shapes.Polyline>, `Rectangle`, and `RoundRectangle`.
+.NET MAUI defines a number of objects that derive from the `Shape` class. These are <xref:Microsoft.Maui.Controls.Shapes.Ellipse>, <xref:Microsoft.Maui.Controls.Shapes.Line>, `Path`, <xref:Microsoft.Maui.Controls.Shapes.Polygon>, <xref:Microsoft.Maui.Controls.Shapes.Polyline>, <xref:Microsoft.Maui.Controls.Shapes.Rectangle>, and `RoundRectangle`.
 
 ## Paint shapes
 
@@ -117,7 +117,7 @@ A line has three parts: start cap, line body, and end cap. The start and end cap
 - `Round`, which represents a semicircle that has a diameter equal to the line thickness.
 
 > [!IMPORTANT]
-> The `StrokeLineCap` property has no effect if you set it on a shape that has no start or end points. For example, this property has no effect if you set it on an <xref:Microsoft.Maui.Controls.Shapes.Ellipse>, or `Rectangle`.
+> The `StrokeLineCap` property has no effect if you set it on a shape that has no start or end points. For example, this property has no effect if you set it on an <xref:Microsoft.Maui.Controls.Shapes.Ellipse>, or <xref:Microsoft.Maui.Controls.Shapes.Rectangle>.
 
 The following XAML shows how to set the `StrokeLineCap` property:
 

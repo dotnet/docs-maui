@@ -35,7 +35,7 @@ The following XAML shows how to create a <xref:Microsoft.Maui.Controls.Horizonta
 </ContentPage>
 ```
 
-This example creates a <xref:Microsoft.Maui.Controls.HorizontalStackLayout> containing a `Rectangle` and a `Label` object. By default, there is no space between the child views:
+This example creates a <xref:Microsoft.Maui.Controls.HorizontalStackLayout> containing a <xref:Microsoft.Maui.Controls.Shapes.Rectangle> and a `Label` object. By default, there is no space between the child views:
 
 :::image type="content" source="media/horizontalstacklayout/basic.png" alt-text="HorizontalStackLayout displaying two views screenshot.":::
 
@@ -61,7 +61,7 @@ The spacing between child views in a <xref:Microsoft.Maui.Controls.HorizontalSta
 </ContentPage>
 ```
 
-This example creates a <xref:Microsoft.Maui.Controls.HorizontalStackLayout> containing a `Rectangle` and a `Label` object, that have ten device-independent units of space between them:
+This example creates a <xref:Microsoft.Maui.Controls.HorizontalStackLayout> containing a <xref:Microsoft.Maui.Controls.Shapes.Rectangle> and a `Label` object, that have ten device-independent units of space between them:
 
 :::image type="content" source="media/horizontalstacklayout/spacing.png" alt-text="HorizontalStackLayout displaying two spaced views screenshot.":::
 

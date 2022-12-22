@@ -71,7 +71,7 @@ The following table lists the types that implement handler-based views in .NET M
 | <xref:Microsoft.Maui.Controls.Shapes.Polyline> | | `PolylineHandler` | `Mapper` | |
 | <xref:Microsoft.Maui.Controls.ProgressBar> | `IProgress` | `ProgressBarHandler` | `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.RadioButton> | `IRadioButton` | `RadioButtonHandler` | `Mapper` | `CommandMapper` |
-| `Rectangle` | | `RectangleHandler` | `Mapper` | |
+| <xref:Microsoft.Maui.Controls.Shapes.Rectangle> | | `RectangleHandler` | `Mapper` | |
 | `RefreshView` | `IRefreshView` | `RefreshViewHandler` | `Mapper` | `CommandMapper` |
 | `RoundRectangle` | | `RoundRectangleHandler` | `Mapper` | |
 | `ScrollView` | `IScrollView` | `ScrollViewHandler` | `Mapper` | `CommandMapper` |

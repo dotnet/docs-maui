@@ -26,11 +26,11 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Border>
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
 > [!IMPORTANT]
-> When creating a border using a shape, such as a `Rectangle` or <xref:Microsoft.Maui.Controls.Shapes.Polygon>, only closed shapes should be used. Therefore, open shapes such as <xref:Microsoft.Maui.Controls.Shapes.Line> are unsupported.
+> When creating a border using a shape, such as a <xref:Microsoft.Maui.Controls.Shapes.Rectangle> or <xref:Microsoft.Maui.Controls.Shapes.Polygon>, only closed shapes should be used. Therefore, open shapes such as <xref:Microsoft.Maui.Controls.Shapes.Line> are unsupported.
 
 ::: moniker range=">=net-maui-7.0"
 
-The default value of the `StrokeShape` property is `Rectangle`. Therefore, a <xref:Microsoft.Maui.Controls.Border> will be rectangular by default.
+The default value of the `StrokeShape` property is <xref:Microsoft.Maui.Controls.Shapes.Rectangle>. Therefore, a <xref:Microsoft.Maui.Controls.Border> will be rectangular by default.
 
 ::: moniker-end
 
@@ -178,7 +178,7 @@ In XAML, the value of the `StrokeShape` property can be defined using property-t
 - `Path`, followed by path markup syntax data. For example, `Path M 10,100 L 100,100 100,50Z` will draw a triangular border. For more information about path markup syntax, see [Path markup syntax](shapes/path-markup-syntax.md).
 - <xref:Microsoft.Maui.Controls.Shapes.Polygon>, followed by a collection of x- and y-coordinate pairs. For example, `Polygon 40 10, 70 80, 10 50`.
 - <xref:Microsoft.Maui.Controls.Shapes.Polyline>, followed by a collection x- and y-coordinate pairs. For example, `Polyline 0,0 10,30 15,0 18,60 23,30 35,30 40,0 43,60 48,30 100,30`.
-- `Rectangle`
+- <xref:Microsoft.Maui.Controls.Shapes.Rectangle>
 - `RoundRectangle`, optionally followed by a corner radius. For example, `RoundRectangle 40` or `RoundRectangle 40,0,0,40`.
 
 > [!IMPORTANT]

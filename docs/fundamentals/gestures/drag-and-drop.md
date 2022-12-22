@@ -141,7 +141,7 @@ The following XAML example shows a `DragGestureRecognizer` that registers a hand
 </Rectangle>
 ```
 
-In this example, the `DragGestureRecognizer` is attached to a `Rectangle` object. The `DragStarting` event is raised when a drag gesture is detected on the `Rectangle`, which executes the `OnDragStarting` event handler:
+In this example, the `DragGestureRecognizer` is attached to a <xref:Microsoft.Maui.Controls.Shapes.Rectangle> object. The `DragStarting` event is raised when a drag gesture is detected on the <xref:Microsoft.Maui.Controls.Shapes.Rectangle>, which executes the `OnDragStarting` event handler:
 
 ```csharp
 void OnDragStarting(object sender, DragStartingEventArgs e)
@@ -151,7 +151,7 @@ void OnDragStarting(object sender, DragStartingEventArgs e)
 }
 ```
 
-The `DragStartingEventArgs` object that accompanies the `DragStarting` event has a `Data` property, of type `DataPackage`. The `Properties` collection of the `DataPackage` object, which is a `Dictionary<string, object>` collection, can be modified to store any required data. In this example, the `Properties` dictionary is modified to store a `Square` object that represents the size of the `Rectangle` against a "Square" key.
+The `DragStartingEventArgs` object that accompanies the `DragStarting` event has a `Data` property, of type `DataPackage`. The `Properties` collection of the `DataPackage` object, which is a `Dictionary<string, object>` collection, can be modified to store any required data. In this example, the `Properties` dictionary is modified to store a `Square` object that represents the size of the <xref:Microsoft.Maui.Controls.Shapes.Rectangle> against a "Square" key.
 
 ## Enable drop
 
@@ -279,7 +279,7 @@ Any data can be retrieved from a data package in the handler for the `Drop` even
 
 The `DataPackageView` class defines a `Properties` property, of type `DataPackagePropertySetView`. The `DataPackagePropertySetView` class represents a read-only property bag stored as a `Dictionary<string, object>`.
 
-The following example shows a `Drop` event handler that retrieves data from the property bag of a data package for a `Rectangle`:
+The following example shows a `Drop` event handler that retrieves data from the property bag of a data package for a <xref:Microsoft.Maui.Controls.Shapes.Rectangle>:
 
 ```csharp
 void OnDrop(object sender, DropEventArgs e)

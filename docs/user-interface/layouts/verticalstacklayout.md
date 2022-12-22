@@ -50,7 +50,7 @@ The following XAML shows how to create a <xref:Microsoft.Maui.Controls.VerticalS
 </ContentPage>
 ```
 
-This example creates a <xref:Microsoft.Maui.Controls.VerticalStackLayout> containing `Label` and `Rectangle` objects. By default, there is no space between the child views:
+This example creates a <xref:Microsoft.Maui.Controls.VerticalStackLayout> containing `Label` and <xref:Microsoft.Maui.Controls.Shapes.Rectangle> objects. By default, there is no space between the child views:
 
 :::image type="content" source="media/verticalstacklayout/basic.png" alt-text="VerticalStackLayout displaying different child views screenshot.":::
 
@@ -91,7 +91,7 @@ The spacing between child views in a <xref:Microsoft.Maui.Controls.VerticalStack
 </ContentPage>
 ```
 
-This example creates a <xref:Microsoft.Maui.Controls.VerticalStackLayout> containing `Label` and `Rectangle` objects that have ten device-independent units of space between the child views:
+This example creates a <xref:Microsoft.Maui.Controls.VerticalStackLayout> containing `Label` and <xref:Microsoft.Maui.Controls.Shapes.Rectangle> objects that have ten device-independent units of space between the child views:
 
 :::image type="content" source="media/verticalstacklayout/spacing.png" alt-text="VerticalStackLayout displaying different child views with spacing screenshot.":::
 
