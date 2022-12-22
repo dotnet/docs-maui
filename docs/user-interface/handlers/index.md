@@ -47,7 +47,7 @@ The following table lists the types that implement handler-based views in .NET M
 | View | Interface | Handler | Property Mapper | Command Mapper |
 | -- | -- | -- | -- | -- |
 | <xref:Microsoft.Maui.Controls.ActivityIndicator> | `IActivityIndicator` | `ActivityIndicatorHandler` | `Mapper` | `CommandMapper` |
-| `BlazorWebView` | `IBlazorWebView` | `BlazorWebViewHandler` | `BlazorWebViewMapper` | |
+| <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> | `IBlazorWebView` | `BlazorWebViewHandler` | `BlazorWebViewMapper` | |
 | `Border` | `IBorderView` | `BorderHandler` | `Mapper` | `CommandMapper` |
 | `Button` | `IButton` | `ButtonHandler` | `ImageButtonMapper`. `TextButtonMapper`, `Mapper` | `CommandMapper` |
 | `CarouselView` | | `CarouselViewHandler` | `Mapper` | |
