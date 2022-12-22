@@ -163,7 +163,7 @@ However, the binding for the `Scale` property is `TwoWay`. This is because the `
 
 <xref:Microsoft.Maui.Controls.ListView> defines an `ItemsSource` property of type `IEnumerable`, and it displays the items in that collection. These items can be objects of any type. By default, <xref:Microsoft.Maui.Controls.ListView> uses the `ToString` method of each item to display that item. Sometimes this is just what you want, but in many cases, `ToString` returns only the fully-qualified class name of the object.
 
-However, the items in the <xref:Microsoft.Maui.Controls.ListView> collection can be displayed any way you want through the use of a *template*, which involves a class that derives from `Cell`. The template is cloned for every item in the <xref:Microsoft.Maui.Controls.ListView>, and data bindings that have been set on the template are transferred to the individual clones. Custom cells can be created for items using the <xref:Microsoft.Maui.Controls.ViewCell> class.
+However, the items in the <xref:Microsoft.Maui.Controls.ListView> collection can be displayed any way you want through the use of a *template*, which involves a class that derives from <xref:Microsoft.Maui.Controls.Cell>. The template is cloned for every item in the <xref:Microsoft.Maui.Controls.ListView>, and data bindings that have been set on the template are transferred to the individual clones. Custom cells can be created for items using the <xref:Microsoft.Maui.Controls.ViewCell> class.
 
 <xref:Microsoft.Maui.Controls.ListView> can display a list of every named color that's available in .NET MAUI, with the help of the `NamedColor` class:
 

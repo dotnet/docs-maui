@@ -10,7 +10,7 @@ ms.date: 04/05/2022
 
 The following platform-specific functionality is provided for .NET MAUI views on iOS:
 
-- Setting the `Cell` background color. For more information, see [Cell background color on iOS](cell-background-color.md).
+- Setting the <xref:Microsoft.Maui.Controls.Cell> background color. For more information, see [Cell background color on iOS](cell-background-color.md).
 - Controlling when item selection occurs in a <xref:Microsoft.Maui.Controls.DatePicker>. For more information, see [DatePicker item selection on iOS](datepicker-selection.md).
 - Ensuring that inputted text fits into an <xref:Microsoft.Maui.Controls.Entry> by adjusting the font size. For more information, see [Entry font size on iOS](entry-font-size.md).
 - Setting the cursor color in a <xref:Microsoft.Maui.Controls.Entry>. For more information, see [Entry cursor color on iOS](entry-cursor-color.md).

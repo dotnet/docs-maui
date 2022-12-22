@@ -10,7 +10,7 @@ ms.date: 03/11/2022
 
 The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.TableView> displays a table of scrollable items that can be grouped into sections. A <xref:Microsoft.Maui.Controls.TableView> is typically used for displaying items where each row has a different appearance, such as presenting a table of settings.
 
-While <xref:Microsoft.Maui.Controls.TableView> manages the appearance of the table, the appearance of each item in the table is defined by a `Cell`. .NET MAUI includes five cell types that are used to display different combinations of data, and you can also define custom cells that display any content you want.
+While <xref:Microsoft.Maui.Controls.TableView> manages the appearance of the table, the appearance of each item in the table is defined by a <xref:Microsoft.Maui.Controls.Cell>. .NET MAUI includes five cell types that are used to display different combinations of data, and you can also define custom cells that display any content you want.
 
 <xref:Microsoft.Maui.Controls.TableView> defines the following properties:
 
@@ -30,7 +30,7 @@ The value of the `Intent` property helps to define the <xref:Microsoft.Maui.Cont
 
 ## Create a TableView
 
-To create a table, create a <xref:Microsoft.Maui.Controls.TableView> object and set its `Intent` property to a `TableIntent` member. The child of a <xref:Microsoft.Maui.Controls.TableView> must be a `TableRoot` object, which is parent to one or more `TableSection` objects. Each `TableSection` consists of an optional title whose color can also be set, and one or more `Cell` objects.
+To create a table, create a <xref:Microsoft.Maui.Controls.TableView> object and set its `Intent` property to a `TableIntent` member. The child of a <xref:Microsoft.Maui.Controls.TableView> must be a `TableRoot` object, which is parent to one or more `TableSection` objects. Each `TableSection` consists of an optional title whose color can also be set, and one or more <xref:Microsoft.Maui.Controls.Cell> objects.
 
 The following example shows how to create a <xref:Microsoft.Maui.Controls.TableView>:
 
@@ -62,7 +62,7 @@ In this example, the <xref:Microsoft.Maui.Controls.TableView> defines a menu usi
 
 ## Define cell appearance
 
-Each item in a <xref:Microsoft.Maui.Controls.TableView> is defined by a `Cell` object, and the `Cell` type used defines the appearance of the cell's data. .NET MAUI includes the following built-in cells:
+Each item in a <xref:Microsoft.Maui.Controls.TableView> is defined by a <xref:Microsoft.Maui.Controls.Cell> object, and the <xref:Microsoft.Maui.Controls.Cell> type used defines the appearance of the cell's data. .NET MAUI includes the following built-in cells:
 
 - <xref:Microsoft.Maui.Controls.TextCell>, which displays primary and secondary text on separate lines.
 - <xref:Microsoft.Maui.Controls.ImageCell>, which displays an image with primary and secondary text on separate lines.

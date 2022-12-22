@@ -8,7 +8,7 @@ ms.date: 03/10/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-listview)
 
-The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.ListView> displays a scrollable vertical list of selectable data items. While <xref:Microsoft.Maui.Controls.ListView> manages the appearance of the list, the appearance of each item in the list is defined by a `DataTemplate` that uses a `Cell` to display items. .NET MAUI includes cell types to display combinations of text and images, and you can also define custom cells that display any content you want. <xref:Microsoft.Maui.Controls.ListView> also includes support for displaying headers and footers, grouped data, pull-to-refresh, and context menu items.
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.ListView> displays a scrollable vertical list of selectable data items. While <xref:Microsoft.Maui.Controls.ListView> manages the appearance of the list, the appearance of each item in the list is defined by a `DataTemplate` that uses a <xref:Microsoft.Maui.Controls.Cell> to display items. .NET MAUI includes cell types to display combinations of text and images, and you can also define custom cells that display any content you want. <xref:Microsoft.Maui.Controls.ListView> also includes support for displaying headers and footers, grouped data, pull-to-refresh, and context menu items.
 
 The <xref:Microsoft.Maui.Controls.ListView> class derives from the `ItemsView<Cell>` class, from which it inherits the following properties:
 
@@ -119,7 +119,7 @@ The appearance of each item in the <xref:Microsoft.Maui.Controls.ListView> can b
 </ListView>
 ```
 
-The elements specified in the `DataTemplate` define the appearance of each item in the list, and the child of the `DataTemplate` must be a `Cell` object. In the example, layout within the `DataTemplate` is managed by a <xref:Microsoft.Maui.Controls.Grid>. The <xref:Microsoft.Maui.Controls.Grid> contains an `Image` object, and two `Label` objects, that all bind to properties of the `Monkey` class:
+The elements specified in the `DataTemplate` define the appearance of each item in the list, and the child of the `DataTemplate` must be a <xref:Microsoft.Maui.Controls.Cell> object. In the example, layout within the `DataTemplate` is managed by a <xref:Microsoft.Maui.Controls.Grid>. The <xref:Microsoft.Maui.Controls.Grid> contains an `Image` object, and two `Label` objects, that all bind to properties of the `Monkey` class:
 
 ```csharp
 public class Monkey
@@ -139,7 +139,7 @@ For more information about data templates, see [Data templates](~/fundamentals/d
 
 ### Cells
 
-The appearance of each item in a <xref:Microsoft.Maui.Controls.ListView> is defined by a `DataTemplate`, and the `DataTemplate` must reference a `Cell` class to display items. Each cell represents an item of data in the <xref:Microsoft.Maui.Controls.ListView>. .NET MAUI includes the following built-in cells:
+The appearance of each item in a <xref:Microsoft.Maui.Controls.ListView> is defined by a `DataTemplate`, and the `DataTemplate` must reference a <xref:Microsoft.Maui.Controls.Cell> class to display items. Each cell represents an item of data in the <xref:Microsoft.Maui.Controls.ListView>. .NET MAUI includes the following built-in cells:
 
 - <xref:Microsoft.Maui.Controls.TextCell>, which displays primary and secondary text on separate lines.
 - <xref:Microsoft.Maui.Controls.ImageCell>, which displays an image with primary and secondary text on separate lines.
