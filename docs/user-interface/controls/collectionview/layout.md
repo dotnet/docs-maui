@@ -13,7 +13,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Collect
 - `ItemsLayout`, of type `IItemsLayout`, specifies the layout to be used.
 - `ItemSizingStrategy`, of type `ItemSizingStrategy`, specifies the item measure strategy to be used.
 
-These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings.
 
 By default, a <xref:Microsoft.Maui.Controls.CollectionView> will display its items in a vertical list. However, any of the following layouts can be used:
 
@@ -28,7 +28,7 @@ These layouts can be specified by setting the `ItemsLayout` property to class th
 - `SnapPointsAlignment`, of type `SnapPointsAlignment`, specifies how snap points are aligned with items.
 - `SnapPointsType`, of type `SnapPointsType`, specifies the behavior of snap points when scrolling.
 
-These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings. For more information about snap points, see [Snap points](scrolling.md#snap-points) in [Control scrolling in a CollectionView](scrolling.md).
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings. For more information about snap points, see [Snap points](scrolling.md#snap-points) in [Control scrolling in a CollectionView](scrolling.md).
 
 The `ItemsLayoutOrientation` enumeration defines the following members:
 
@@ -43,7 +43,7 @@ The `GridItemsLayout` class inherits from the `ItemsLayout` class, and defines t
 - `HorizontalItemSpacing`, of type `double`, that represents the horizontal empty space around each item. The default value of this property is 0, and its value must always be greater than or equal to 0.
 - `Span`, of type `int`, that represents the number of columns or rows to display in the grid. The default value of this property is 1, and its value must always be greater than or equal to 1.
 
-These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings.
 
 > [!NOTE]
 > <xref:Microsoft.Maui.Controls.CollectionView> uses the native layout engines to perform layout.
@@ -323,7 +323,7 @@ By default, a horizontal `GridItemsLayout` will display items in a single row. H
 - `Footer`, of type `object`, specifies the string, binding, or view that will be displayed at the end of the list.
 - `FooterTemplate`, of type `DataTemplate`, specifies the `DataTemplate` to use to format the `Footer`.
 
-These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings.
 
 When a header is added to a layout that grows horizontally, from left to right, the header is displayed to the left of the list. Similarly, when a footer is added to a layout that grows horizontally, from left to right, the footer is displayed to the right of the list.
 

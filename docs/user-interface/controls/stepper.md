@@ -15,7 +15,7 @@ The <xref:Microsoft.Maui.Controls.Stepper> defines four properties of type `doub
 - `Maximum` is the maximum of the range, with a default value of 100.
 - `Value` is the stepper's value, which can range between `Minimum` and `Maximum` and has a default value of 0.
 
-All of these properties are backed by `BindableProperty` objects. The `Value` property has a default binding mode of `BindingMode.TwoWay`, which means that it's suitable as a binding source in an application that uses the Model-View-ViewModel (MVVM) pattern.
+All of these properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects. The `Value` property has a default binding mode of `BindingMode.TwoWay`, which means that it's suitable as a binding source in an application that uses the Model-View-ViewModel (MVVM) pattern.
 
 The <xref:Microsoft.Maui.Controls.Stepper> coerces the `Value` property so that it is between `Minimum` and `Maximum`, inclusive. If the `Minimum` property is set to a value greater than the `Value` property, the <xref:Microsoft.Maui.Controls.Stepper> sets the `Value` property to `Minimum`. Similarly, if `Maximum` is set to a value less than `Value`, then <xref:Microsoft.Maui.Controls.Stepper> sets the `Value` property to `Maximum`. Internally, the <xref:Microsoft.Maui.Controls.Stepper> ensures that `Minimum` is less than `Maximum`. If `Minimum` or `Maximum` are ever set so that `Minimum` is not less than `Maximum`, an exception is raised. For more information on setting the `Minimum` and `Maximum` properties, see [Precautions](#precautions).
 

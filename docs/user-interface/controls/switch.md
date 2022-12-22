@@ -20,7 +20,7 @@ The <xref:Microsoft.Maui.Controls.Switch> control defines the following properti
 - `OnColor` is a `Color` that affects how the <xref:Microsoft.Maui.Controls.Switch> is rendered in the toggled, or on state.
 - `ThumbColor` is the `Color` of the switch thumb.
 
-These properties are backed by `BindableProperty` objects, which means they can be styled and be the target of data bindings.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means they can be styled and be the target of data bindings.
 
 The <xref:Microsoft.Maui.Controls.Switch> control defines a `Toggled` event that's raised when the `IsToggled` property changes, either through user manipulation or when an application sets the `IsToggled` property. The `ToggledEventArgs` object that accompanies the `Toggled` event has a single property named `Value`, of type `bool`. When the event is raised, the value of the `Value` property reflects the new value of the `IsToggled` property.
 

@@ -18,7 +18,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.FlyoutP
 - `IsGestureEnabled`, of type `bool`, determines whether a swipe gesture will switch between flyout and detail pages. The default value of this property is `true`.
 - `IsPresented`, of type `bool`, determines whether the flyout or detail page is displayed. The default value of this property is `false`, which displays the detail page. It should be set to `true` to display the flyout page.
 
-The `IsGestureEnabled`, `IsPresented`, and `FlyoutLayoutBehavior` properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+The `IsGestureEnabled`, `IsPresented`, and `FlyoutLayoutBehavior` properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 <xref:Microsoft.Maui.Controls.FlyoutPage> also defines an `IsPresentedChanged` event, that's raised when the `IsPresented` property changes value.
 

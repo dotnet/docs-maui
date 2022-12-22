@@ -18,7 +18,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.TimePic
 - `FontSize` of type `double`, which defaults to -1.0.
 - `CharacterSpacing`, of type `double`, is the spacing between characters of the <xref:Microsoft.Maui.Controls.TimePicker> text.
 
-All of these properties are backed by `BindableProperty` objects, which means that they can be styled, and the properties can be targets of data bindings. The `Time` property has a default binding mode of `BindingMode.TwoWay`, which means that it can be a target of a data binding in an application that uses the Model-View-ViewModel (MVVM) pattern.
+All of these properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be styled, and the properties can be targets of data bindings. The `Time` property has a default binding mode of `BindingMode.TwoWay`, which means that it can be a target of a data binding in an application that uses the Model-View-ViewModel (MVVM) pattern.
 
 > [!NOTE]
 > The <xref:Microsoft.Maui.Controls.TimePicker> doesn't include an event to indicate a new selected `Time` value. If you need to be notified of this, you can add an event handler for the `PropertyChanged` event.

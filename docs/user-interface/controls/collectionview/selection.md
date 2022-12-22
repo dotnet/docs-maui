@@ -16,7 +16,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Collect
 - `SelectionChangedCommand`, of type `ICommand`, which is executed when the selected item changes.
 - `SelectionChangedCommandParameter`, of type `object`, which is the parameter that's passed to the `SelectionChangedCommand`.
 
-All of these properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings.
+All of these properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings.
 
 By default, <xref:Microsoft.Maui.Controls.CollectionView> selection is disabled. However, this behavior can be changed by setting the `SelectionMode` property value to one of the `SelectionMode` enumeration members:
 

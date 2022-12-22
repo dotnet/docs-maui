@@ -20,7 +20,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.ScrollV
 - `ScrollY`, of type `double`, indicates the current Y scroll position. The default value of this read-only property is 0.
 - `VerticalScrollBarVisibility`,  of type `ScrollBarVisibility`, represents when the vertical scroll bar is visible.
 
-These properties are backed by `BindableProperty` objects, with the exception of the `Content` property, which means that they can be targets of data bindings and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, with the exception of the `Content` property, which means that they can be targets of data bindings and styled.
 
 The `Content` property is the `ContentProperty` of the <xref:Microsoft.Maui.Controls.ScrollView> class, and therefore does not need to be explicitly set from XAML.
 

@@ -17,7 +17,7 @@ The <xref:Microsoft.Maui.Controls.StackLayout> class defines the following prope
 - `Orientation`, of type `StackOrientation`, represents the direction in which child views are positioned. The default value of this property is `Vertical`.
 - `Spacing`, of type `double`, indicates the amount of space between each child view. The default value of this property is 0.
 
-These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings and styled.
 
 <!-- > [!TIP]
 > To obtain the best possible layout performance, follow the guidelines at [Optimize layout performance](~/xamarin-forms/deploy-test/performance.md#optimize-layout-performance). -->

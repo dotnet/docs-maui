@@ -65,7 +65,7 @@ public partial class BasicCodeBindingPage : ContentPage
 }
 ```
 
-The <xref:Microsoft.Maui.Controls.Label> object is the binding target so that's the object on which this property is set and on which the method is called. The `BindingContext` property indicates the binding source, which is the <xref:Microsoft.Maui.Controls.Slider>. The `SetBinding` method is called on the binding target but specifies both the target property and the source property. The target property is specified as a `BindableProperty` object: `Label.RotationProperty`. The source property is specified as a string and indicates the `Value` property of <xref:Microsoft.Maui.Controls.Slider>.
+The <xref:Microsoft.Maui.Controls.Label> object is the binding target so that's the object on which this property is set and on which the method is called. The `BindingContext` property indicates the binding source, which is the <xref:Microsoft.Maui.Controls.Slider>. The `SetBinding` method is called on the binding target but specifies both the target property and the source property. The target property is specified as a <xref:Microsoft.Maui.Controls.BindableProperty> object: `Label.RotationProperty`. The source property is specified as a string and indicates the `Value` property of <xref:Microsoft.Maui.Controls.Slider>.
 
 > [!IMPORTANT]
 > The target property must be backed by a bindable property. Therefore, the target object must be an instance of a class that derives from <xref:Microsoft.Maui.Controls.BindableObject>. For more information, see [Bindable properties](../bindable-properties.md).

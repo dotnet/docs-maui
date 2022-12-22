@@ -15,7 +15,7 @@ In .NET MAUI, drag gesture recognition is provided by the `SwipeGestureRecognize
 - `Direction`, of type `SwipeDirection`, which defines the direction
 - `Threshold`, of type `uint`, which represents the minimum swipe distance that must be achieved for a swipe to be recognized, in device-independent units. The default value of this property is 100, which means that any swipes that are less than 100 device-independent units will be ignored.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 The `SwipeGestureRecognizer` also defines a `Swiped` event that's raised when a swipe is recognized. The `SwipedEventArgs` object that accompanies the `Swiped` event defines the following properties:
 

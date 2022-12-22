@@ -16,7 +16,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Collect
 - `GroupHeaderTemplate`, of type `DataTemplate`, the template to use for the header of each group.
 - `GroupFooterTemplate`, of type `DataTemplate`, the template to use for the footer of each group.
 
-These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings.
 
 The following screenshot shows a <xref:Microsoft.Maui.Controls.CollectionView> displaying grouped data:
 

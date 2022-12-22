@@ -172,7 +172,7 @@ The `Shell` class defines the following attached properties that control the app
 - `TabBarTitleColor`, of type `Color`, that defines the title color for the tab bar. If the property is unset, the `TitleColor` property value will be used.
 - `TabBarUnselectedColor`, of type `Color`, that defines the unselected color for the tab bar. If the property is unset, the `UnselectedColor` property value is used.
 
-All of these properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings, and styled.
+All of these properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings, and styled.
 
 The following example shows a XAML style that sets different tab bar color properties:
 

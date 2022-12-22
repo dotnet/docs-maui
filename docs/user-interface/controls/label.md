@@ -30,7 +30,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Label> 
 - `TextType`, of type `TextType`, determines whether the <xref:Microsoft.Maui.Controls.Label> should display plain text or HTML text.
 - `VerticalTextAlignment`, of type `TextAlignment`, defines the vertical alignment of the displayed text.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 For information about specifying fonts on a <xref:Microsoft.Maui.Controls.Label>, see [Fonts](~/user-interface/fonts.md).
 
@@ -260,7 +260,7 @@ The following example shows transforming text to uppercase:
 - `TextDecorations`, of type `TextDecorations`, specifies the text decorations (underline and strikethrough) that can be applied.
 - `TextTransform`, of type `TextTransform`, specifies the casing of the displayed text.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 > [!NOTE]
 > The `Span.LineHeight` property has no effect on Windows.
@@ -392,7 +392,7 @@ public class HyperlinkSpan : Span
 }
 ```
 
-The `HyperlinkSpan` class defines a `Url` property, and associated `BindableProperty`, and the constructor sets the hyperlink appearance and the `TapGestureRecognizer` that will respond when the hyperlink is tapped. When a `HyperlinkSpan` is tapped, the `TapGestureRecognizer` will respond by executing the `Launcher.OpenAsync` method to open the URL, specified by the `Url` property, in a web browser.
+The `HyperlinkSpan` class defines a `Url` property, and associated <xref:Microsoft.Maui.Controls.BindableProperty>, and the constructor sets the hyperlink appearance and the `TapGestureRecognizer` that will respond when the hyperlink is tapped. When a `HyperlinkSpan` is tapped, the `TapGestureRecognizer` will respond by executing the `Launcher.OpenAsync` method to open the URL, specified by the `Url` property, in a web browser.
 
 The `HyperlinkSpan` class can be consumed by adding an instance of the class to the XAML:
 

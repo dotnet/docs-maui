@@ -18,7 +18,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.TabbedP
 - `SelectedTabColor`, of type `Color`, indicates the color of a tab when it's selected.
 - `UnselectedTabColor`, of type `Color`, represents the color of a tab when it's unselected.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 In a <xref:Microsoft.Maui.Controls.TabbedPage>, each <xref:Microsoft.Maui.Controls.Page> object is created when the <xref:Microsoft.Maui.Controls.TabbedPage> is constructed. This can lead to a poor user experience, particularly if the <xref:Microsoft.Maui.Controls.TabbedPage> is the root page of your app. However, .NET MAUI Shell enables pages accessed through a tab bar to be created on demand, in response to navigation. For more information about Shell apps, see [Shell](~/fundamentals/shell/index.md).
 

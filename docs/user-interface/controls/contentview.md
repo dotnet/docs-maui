@@ -10,7 +10,7 @@ ms.date: 01/13/2022
 
 The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.ContentView> is a control that enables the creation of custom, reusable controls.
 
-The <xref:Microsoft.Maui.Controls.ContentView> class defines a `Content` property, of type <xref:Microsoft.Maui.Controls.View>, which represents the content of the <xref:Microsoft.Maui.Controls.ContentView>. This property is backed by a `BindableProperty` object, which means that it can be the target of data bindings, and styled.
+The <xref:Microsoft.Maui.Controls.ContentView> class defines a `Content` property, of type <xref:Microsoft.Maui.Controls.View>, which represents the content of the <xref:Microsoft.Maui.Controls.ContentView>. This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means that it can be the target of data bindings, and styled.
 
 The <xref:Microsoft.Maui.Controls.ContentView> class derives from the `TemplatedView` class, which defines the `ControlTemplate` bindable property, of type `ControlTemplate`, which defines the appearance of the control. For more information about the `ControlTemplate` property, see [Customize appearance with a ControlTemplate](#customize-appearance-with-a-controltemplate).
 
@@ -44,7 +44,7 @@ The `CardView` custom control defines the following properties:
 - `BorderColor`, of type `Color`, which represents the color of the card border, image border, and divider line.
 - `CardColor`, of type `Color`, which represents the background color of the card.
 
-Each property is backed by a `BindableProperty` instance.
+Each property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> instance.
 
 The following example shows the `CardTitle` bindable property in the code-behind file for the `CardView` class:
 
@@ -67,7 +67,7 @@ public partial class CardView : ContentView
 }
 ```
 
-For more information about `BindableProperty` objects, see [Bindable properties](~/fundamentals/bindable-properties.md).
+For more information about <xref:Microsoft.Maui.Controls.BindableProperty> objects, see [Bindable properties](~/fundamentals/bindable-properties.md).
 
 ### Define the UI
 

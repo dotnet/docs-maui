@@ -17,7 +17,7 @@ The appearance of a <xref:Microsoft.Maui.Controls.ProgressBar> is platform-depen
 - `Progress` is a `double` value that represents the current progress as a value from 0 to 1. `Progress` values less than 0 will be clamped to 0, values greater than 1 will be clamped to 1. The default value of this property is 0.
 - `ProgressColor` is a `Color` values that defines the color of the <xref:Microsoft.Maui.Controls.ProgressBar>.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 <xref:Microsoft.Maui.Controls.ProgressBar> also defines a `ProgressTo` method that animates the bar from its current value to a specified value. For more information, see [Animate a ProgressBar](#animate-a-progressbar).
 

@@ -15,7 +15,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.CheckBo
 - `IsChecked`, of type `bool`, which indicates whether the <xref:Microsoft.Maui.Controls.CheckBox> is checked. This property has a default binding mode of `TwoWay`.
 - `Color`, of type `Color`, which indicates the color of the <xref:Microsoft.Maui.Controls.CheckBox>.
 
-These properties are backed by `BindableProperty` objects, which means that they can be styled, and be the target of data bindings.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be styled, and be the target of data bindings.
 
 <xref:Microsoft.Maui.Controls.CheckBox> defines a `CheckedChanged` event that's raised when the `IsChecked` property changes, either through user manipulation or when an application sets the `IsChecked` property. The `CheckedChangedEventArgs` object that accompanies the `CheckedChanged` event has a single property named `Value`, of type `bool`. When the event is raised, the value of the `Value` property is set to the new value of the `IsChecked` property.
 

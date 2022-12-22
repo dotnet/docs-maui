@@ -22,7 +22,7 @@ A .NET Multi-platform App UI (.NET MAUI) `Shape` is a type of <xref:Microsoft.Ma
 - `StrokeMiterLimit`, of type `double`, specifies the limit on the ratio of the miter length to half the `StrokeThickness` of a shape. The default value of this property is 10.0.
 - `StrokeThickness`, of type `double`, indicates the width of the shape outline. The default value of this property is 1.0.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 .NET MAUI defines a number of objects that derive from the `Shape` class. These are <xref:Microsoft.Maui.Controls.Shapes.Ellipse>, <xref:Microsoft.Maui.Controls.Shapes.Line>, <xref:Microsoft.Maui.Controls.Shapes.Path>, <xref:Microsoft.Maui.Controls.Shapes.Polygon>, <xref:Microsoft.Maui.Controls.Shapes.Polyline>, <xref:Microsoft.Maui.Controls.Shapes.Rectangle>, and <xref:Microsoft.Maui.Controls.Shapes.RoundRectangle>.
 

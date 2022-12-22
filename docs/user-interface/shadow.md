@@ -17,7 +17,7 @@ The `Shadow` class defines the following properties:
 - `Brush`, of type `Brush`, represents the brush used to colorize the shadow.
 - `OffSet`, of type `Point`, specifies the offset for the shadow, which represents the position of the light source that creates the shadow.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 > [!IMPORTANT]
 > The `Brush` property only currently supports a `SolidColorBrush`.

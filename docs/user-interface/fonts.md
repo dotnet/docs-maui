@@ -17,7 +17,7 @@ All controls that display text define properties that can be set to change font 
 - `FontSize`, of type `double`.
 - `FontAutoScalingEnabled`, of type `bool`, which defines whether an app's UI reflects text scaling preferences set in the operating system. The default value of this property is `true`.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 All controls that display text automatically use font scaling, which means that an app's UI reflects text scaling preferences set in the operating system.
 

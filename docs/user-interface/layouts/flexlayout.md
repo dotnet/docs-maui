@@ -26,7 +26,7 @@ The <xref:Microsoft.Maui.Controls.FlexLayout> class defines the following proper
 - `Order`, of type `int`, which is an attached property that determines whether the child should be laid out before or after other children in the container. The default value of this property is 0. For more information, see [Order](#order).
 - `Shrink`, of type `float`, which is an attached property that controls how a child should shrink so that all children can fit inside the container. The default value of this property is 1.0. A validation callback ensures that when the property is set, its value is greater than or equal to 0. For more information, see [Shrink](#shrink).
 
-These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings and styled.
 
 > [!IMPORTANT]
 > When items in a <xref:Microsoft.Maui.Controls.FlexLayout> are arranged in a column, the <xref:Microsoft.Maui.Controls.FlexLayout> has a vertical *main axis* and a horizontal *cross axis*. When items in a <xref:Microsoft.Maui.Controls.FlexLayout> are arranged in a row, the <xref:Microsoft.Maui.Controls.FlexLayout> has a horizontal *main axis* and a vertical *cross axis*.

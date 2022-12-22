@@ -25,7 +25,7 @@ The <xref:Microsoft.Maui.Controls.Grid> class defines the following properties:
 - `RowSpacing`, of type `double`, indicates the distance between grid rows. The default value of this property is 0.
 - `RowSpan`, of type `int`, which is an attached property that indicates the total number of rows that a view spans within a parent <xref:Microsoft.Maui.Controls.Grid>. The default value of this property is 1. A validation callback ensures that when the property is set, its value is greater than or equal to 1.
 
-These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings and styled.
 
 <!-- > [!TIP]
 > To obtain the best possible layout performance, follow the guidelines at [Optimize layout performance](~/xamarin-forms/deploy-test/performance.md#optimize-layout-performance). -->

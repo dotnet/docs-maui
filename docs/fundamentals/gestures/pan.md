@@ -8,7 +8,7 @@ ms.date: 02/22/2022
 
 A .NET Multi-platform App UI (.NET MAUI) pan gesture recognizer detects the movement of fingers around the screen and can be used to apply that movement to content. A typical scenario for the pan gesture is to horizontally and vertically pan an image, so that all of the image content can be viewed when it's being displayed in a viewport smaller than the image dimensions. This is accomplished by moving the image within the viewport.
 
-In .NET MAUI, pan gesture recognition is provided by the `PanGestureRecognizer` class. This class defines the `TouchPoints` property, of type `int`, which represents the number of touch points in the gesture. The default value of this property is 1. This property is backed by a `BindableProperty` object, which means that it can be the target of data bindings, and styled.
+In .NET MAUI, pan gesture recognition is provided by the `PanGestureRecognizer` class. This class defines the `TouchPoints` property, of type `int`, which represents the number of touch points in the gesture. The default value of this property is 1. This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means that it can be the target of data bindings, and styled.
 
 The `PanGestureRecognizer` class also defines a `PanUpdated` event that's raised when the detected pan gesture changes. The `PanUpdatedEventArgs` object that accompanies this event defines the following properties:
 

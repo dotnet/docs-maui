@@ -19,7 +19,7 @@ While <xref:Microsoft.Maui.Controls.TableView> manages the appearance of the tab
 - `Root`, of type `TableRoot`, defines the child of the <xref:Microsoft.Maui.Controls.TableView>.
 - `RowHeight`, of type `int`, determines the height of each row when `HasUnevenRows` is `false`.
 
-The `HasUnevenRows` and `RowHeight` properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+The `HasUnevenRows` and `RowHeight` properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 The value of the `Intent` property helps to define the <xref:Microsoft.Maui.Controls.TableView> appearance on iOS only. This property should be set to a value of the `TableIntent` enumeration, which defines the following members:
 
@@ -81,7 +81,7 @@ A <xref:Microsoft.Maui.Controls.TextCell> displays primary and secondary text on
 - `Command`, of type `ICommand`, defines the command that's executed when the cell is tapped.
 - `CommandParameter`, of type `object`, represents the parameter that's passed to the command.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 The following example shows using a <xref:Microsoft.Maui.Controls.TextCell> to define the appearance of items in a <xref:Microsoft.Maui.Controls.TableView>:
 
@@ -110,7 +110,7 @@ The following screenshot shows the resulting cell appearance:
 
 ### Image cell
 
-An <xref:Microsoft.Maui.Controls.ImageCell> displays an image with primary and secondary text on separate lines. <xref:Microsoft.Maui.Controls.ImageCell> inherits the properties from <xref:Microsoft.Maui.Controls.TextCell>, and defines the `ImageSource` property, of type `ImageSource`, which specifies the image to be displayed in the cell. This property is backed by a `BindableProperty` object, which means it can be the target of data bindings, and be styled.
+An <xref:Microsoft.Maui.Controls.ImageCell> displays an image with primary and secondary text on separate lines. <xref:Microsoft.Maui.Controls.ImageCell> inherits the properties from <xref:Microsoft.Maui.Controls.TextCell>, and defines the `ImageSource` property, of type `ImageSource`, which specifies the image to be displayed in the cell. This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means it can be the target of data bindings, and be styled.
 
 The following example shows using an <xref:Microsoft.Maui.Controls.ImageCell> to define the appearance of items in a <xref:Microsoft.Maui.Controls.TableView>:
 
@@ -147,7 +147,7 @@ A <xref:Microsoft.Maui.Controls.SwitchCell> displays text and a switch that can 
 - `On`, of type `bool`, represents whether the switch is on or off.
 - `OnColor`, of type `Color`, indicates the color of the switch when in it's on position.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 <xref:Microsoft.Maui.Controls.SwitchCell> also defines an `OnChanged` event that's raised when the switch changes state. The `ToggledEventArgs` object that accompanies this event defines a `Value` property, that indicates whether the switch is on or off.
 
@@ -182,7 +182,7 @@ An <xref:Microsoft.Maui.Controls.EntryCell> displays a label and text data that'
 - `Text`, of type `string`, defines the text that's editable.
 - `VerticalTextAlignment`, of type `TextAlignment`, represents the vertical alignment of the text.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 <xref:Microsoft.Maui.Controls.EntryCell> also defines a `Completed` event that's raised when the user hits the return key, to indicate that editing is complete.
 
@@ -207,7 +207,7 @@ The following screenshot shows the resulting cell appearance:
 
 ### View cell
 
-A <xref:Microsoft.Maui.Controls.ViewCell> is a custom cell whose appearance is defined by a <xref:Microsoft.Maui.Controls.View>. <xref:Microsoft.Maui.Controls.ViewCell> defines a <xref:Microsoft.Maui.Controls.View> property, of type <xref:Microsoft.Maui.Controls.View>, which defines the view that represents the content of the cell. This property is backed by a `BindableProperty` object, which means it can be the target of data bindings, and be styled.
+A <xref:Microsoft.Maui.Controls.ViewCell> is a custom cell whose appearance is defined by a <xref:Microsoft.Maui.Controls.View>. <xref:Microsoft.Maui.Controls.ViewCell> defines a <xref:Microsoft.Maui.Controls.View> property, of type <xref:Microsoft.Maui.Controls.View>, which defines the view that represents the content of the cell. This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means it can be the target of data bindings, and be styled.
 
 > [!NOTE]
 > The <xref:Microsoft.Maui.Controls.View> property is the content property of the <xref:Microsoft.Maui.Controls.ViewCell> class, and therefore does not need to be explicitly set from XAML.

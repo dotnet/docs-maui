@@ -13,7 +13,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Carouse
 - `ItemsSource`, of type `IEnumerable`, specifies the collection of items to be displayed, and has a default value of `null`.
 - `ItemTemplate`, of type `DataTemplate`, specifies the template to apply to each item in the collection of items to be displayed.
 
-These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings.
 
 <xref:Microsoft.Maui.Controls.CarouselView> defines a `ItemsUpdatingScrollMode` property that represents the scrolling behavior of the <xref:Microsoft.Maui.Controls.CarouselView> when new items are added to it. For more information about this property, see [Control scroll position when new items are added](scrolling.md#control-scroll-position-when-new-items-are-added).
 

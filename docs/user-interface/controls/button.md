@@ -28,7 +28,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Button>
 - `TextColor`, of type `Color`, describes the color of the button's text.
 - `TextTransform`, of type `TextTransform`, defines the casing of the button's text.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 > [!NOTE]
 > While <xref:Microsoft.Maui.Controls.Button> defines an `ImageSource` property, that allows you to display a image on the <xref:Microsoft.Maui.Controls.Button>, this property is intended to be used when displaying a small icon next to the <xref:Microsoft.Maui.Controls.Button> text.

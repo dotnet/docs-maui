@@ -20,7 +20,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Slider>
 - `DragStartedCommand`, of type `ICommand`, which is executed at the beginning of a drag action.
 - `DragCompletedCommand`, of type `ICommand`, which is executed at the end of a drag action.
 
-These properties are backed by `BindableProperty` objects. The `Value` property has a default binding mode of `BindingMode.TwoWay`, which means that it's suitable as a binding source in an application that uses the Model-View-ViewModel (MVVM) pattern.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects. The `Value` property has a default binding mode of `BindingMode.TwoWay`, which means that it's suitable as a binding source in an application that uses the Model-View-ViewModel (MVVM) pattern.
 
 > [!NOTE]
 > The `ThumbColor` and `ThumbImageSource` properties are mutually exclusive. If both properties are set, the `ThumbImageSource` property will take precedence.

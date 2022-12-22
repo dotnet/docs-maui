@@ -18,7 +18,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Refresh
 - `IsRefreshing`, of type `bool`, which indicates the current state of the <xref:Microsoft.Maui.Controls.RefreshView>.
 - `RefreshColor`, of type `Color`, the color of the progress circle that appears during the refresh.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 <!-- > [!NOTE]
 > On Windows, the pull direction of a <xref:Microsoft.Maui.Controls.RefreshView> can be set with a platform-specific. For more information, see [RefreshView Pull Direction](~/platform-integration/platform-specifics/windows/refreshview-pulldirection.md). -->

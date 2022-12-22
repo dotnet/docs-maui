@@ -202,7 +202,7 @@ When a user swipes to initiate a scroll, the end position of the scroll can be c
 - `SnapPointsType`, of type `SnapPointsType`, specifies the behavior of snap points when scrolling.
 - `SnapPointsAlignment`, of type `SnapPointsAlignment`, specifies how snap points are aligned with items.
 
-These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings.
 
 > [!NOTE]
 > When snapping occurs, it will occur in the direction that produces the least amount of motion.

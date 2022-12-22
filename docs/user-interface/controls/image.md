@@ -16,7 +16,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Image> 
 - `IsOpaque`, of type `bool`, indicates whether the rendering engine may treat the image as opaque while rendering it. The default value of this property is `false`.
 - `Source`, of type `ImageSource`, specifies the source of the image.
 
-These properties are backed by `BindableProperty` objects, which means that they can be styled, and be the target of data bindings.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be styled, and be the target of data bindings.
 
 > [!NOTE]
 > Font icons can be displayed by an <xref:Microsoft.Maui.Controls.Image> by specifying the font icon data as a `FontImageSource` object. For more information, see [Display font icons](~/user-interface/fonts.md#display-font-icons).
@@ -98,7 +98,7 @@ The `UriImageSource` class defines the following properties:
 - `CacheValidity`, of type `TimeSpan`, specifies how long the image will be stored locally for. The default value of this property is 1 day.
 - `CachingEnabled`, of type `bool`, defines whether image caching is enabled. The default value of this property is `true`.
 
-These properties are backed by `BindableProperty` objects, which means that they can be styled, and be the target of data bindings.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be styled, and be the target of data bindings.
 
 To set a specific cache period, set the `Source` property to an `UriImageSource` object that sets its `CacheValidity` property:
 

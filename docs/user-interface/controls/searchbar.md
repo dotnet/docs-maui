@@ -30,7 +30,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.SearchB
 - `TextColor` is a `Color` that defines the query text color.
 - `VerticalTextAlignment` is a `TextAlignment` enum value that defines the vertical alignment of the query text.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 In addition, <xref:Microsoft.Maui.Controls.SearchBar> defines a `SearchButtonPressed` event, which is raised when the search button is clicked, or the enter key is pressed.
 

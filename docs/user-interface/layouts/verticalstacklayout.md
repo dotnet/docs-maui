@@ -12,7 +12,7 @@ The <xref:Microsoft.Maui.Controls.VerticalStackLayout> defines the following pro
 
 - `Spacing`, of type `double`, indicates the amount of space between each child view. The default value of this property is 0.
 
-This property is backed by a `BindableProperty` object, which means that it can be the target of data bindings and styled.
+This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means that it can be the target of data bindings and styled.
 
 <!--
 > [!TIP]

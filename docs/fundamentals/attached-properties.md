@@ -19,14 +19,14 @@ For more information about bindable properties, see [Bindable properties](bindab
 
 The process for creating an attached property is as follows:
 
-1. Create a `BindableProperty` instance with one of the `CreateAttached` method overloads.
+1. Create a <xref:Microsoft.Maui.Controls.BindableProperty> instance with one of the `CreateAttached` method overloads.
 1. Provide `static` `Get`*PropertyName* and `Set`*PropertyName* methods as accessors for the attached property.
 
 ### Create a property
 
 When creating an attached property for use on other types, the class where the property is created does not have to derive from <xref:Microsoft.Maui.Controls.BindableObject>. However, the *target* property for accessors should be of, or derive from, <xref:Microsoft.Maui.Controls.BindableObject>.
 
-An attached property can be created by declaring a `public static readonly` property of type `BindableProperty`. The bindable property should be set to the returned value of one of the `BindableProperty.CreateAttached` method overloads. The declaration should be within the body of the owning class, but outside of any member definitions.
+An attached property can be created by declaring a `public static readonly` property of type <xref:Microsoft.Maui.Controls.BindableProperty>. The bindable property should be set to the returned value of one of the `BindableProperty.CreateAttached` method overloads. The declaration should be within the body of the owning class, but outside of any member definitions.
 
 > [!IMPORTANT]
 > The naming convention for attached properties is that the attached property identifier must match the property name specified in the `CreateAttached` method, with "Property" appended to it.
@@ -50,7 +50,7 @@ Static `Get`*PropertyName* and `Set`*PropertyName* methods are required as acces
 public static valueType GetPropertyName(BindableObject target)
 ```
 
-The `Get`*PropertyName* accessor should return the value that's contained in the corresponding `BindableProperty` field for the attached property. This can be achieved by calling the `GetValue` method, passing in the bindable property identifier on which to get the value, and then casting the resulting value to the required type.
+The `Get`*PropertyName* accessor should return the value that's contained in the corresponding <xref:Microsoft.Maui.Controls.BindableProperty> field for the attached property. This can be achieved by calling the `GetValue` method, passing in the bindable property identifier on which to get the value, and then casting the resulting value to the required type.
 
 The `Set`*PropertyName* accessor should conform to the following signature:
 
@@ -58,7 +58,7 @@ The `Set`*PropertyName* accessor should conform to the following signature:
 public static void SetPropertyName(BindableObject target, valueType value)
 ```
 
-The `Set`*PropertyName* accessor should set the value of the corresponding `BindableProperty` field for the attached property. This can be achieved by calling the `SetValue` method, passing in the bindable property identifier on which to set the value, and the value to set.
+The `Set`*PropertyName* accessor should set the value of the corresponding <xref:Microsoft.Maui.Controls.BindableProperty> field for the attached property. This can be achieved by calling the `SetValue` method, passing in the bindable property identifier on which to set the value, and the value to set.
 
 For both accessors, the *target* object should be of, or derive from, <xref:Microsoft.Maui.Controls.BindableObject>.
 

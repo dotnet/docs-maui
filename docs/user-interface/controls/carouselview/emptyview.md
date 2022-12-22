@@ -13,7 +13,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Carouse
 - `EmptyView`, of type `object`, the string, binding, or view that will be displayed when the `ItemsSource` property is `null`, or when the collection specified by the `ItemsSource` property is `null` or empty. The default value is `null`.
 - `EmptyViewTemplate`, of type `DataTemplate`, the template to use to format the specified `EmptyView`. The default value is `null`.
 
-These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings.
 
 The main usage scenarios for setting the `EmptyView` property are displaying user feedback when a filtering operation on a <xref:Microsoft.Maui.Controls.CarouselView> yields no data, and displaying user feedback while data is being retrieved from a web service.
 
@@ -145,7 +145,7 @@ CarouselView carouselView = new CarouselView
 };
 ```
 
-The `FilterData` type defines a `Filter` property, and a corresponding `BindableProperty`:
+The `FilterData` type defines a `Filter` property, and a corresponding <xref:Microsoft.Maui.Controls.BindableProperty>:
 
 ```csharp
 public class FilterData : BindableObject

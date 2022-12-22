@@ -164,7 +164,7 @@ The <xref:Microsoft.Maui.Controls.Maps.Map> class defines the following properti
 - `Pins`, of type `IList<Pin>`, represents the list of pins on the map.
 - `VisibleRegion`, of type `MapSpan`, returns the currently displayed region of the map.
 
-These properties, with the exception of the `MapElements`, `Pins`, and `VisibleRegion` properties, are backed by `BindableProperty` objects, which mean they can be targets of data bindings.
+These properties, with the exception of the `MapElements`, `Pins`, and `VisibleRegion` properties, are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which mean they can be targets of data bindings.
 
 The <xref:Microsoft.Maui.Controls.Maps.Map> class also defines a `MapClicked` event that's fired when the map is tapped. The `MapClickedEventArgs` object that accompanies the event has a single property named `Location`, of type `Location`. When the event is fired, the `Location` property is set to the map location that was tapped. For information about the `Location` class, see [Location and distance](#location-and-distance).
 
@@ -502,7 +502,7 @@ The `Pin` class has the following properties:
 - `Location`, of type `Location`, which represents the latitude and longitude of the pin.
 - `Type`, of type `PinType`, which represents the type of pin.
 
-These properties are backed by `BindableProperty` objects, which means a `Pin` can be the target of data bindings. For more information about data binding `Pin` objects, see [Display a pin collection](#display-a-pin-collection).
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means a `Pin` can be the target of data bindings. For more information about data binding `Pin` objects, see [Display a pin collection](#display-a-pin-collection).
 
 In addition, the `Pin` class defines `MarkerClicked` and `InfoWindowClicked` events. The `MarkerClicked` event is fired when a pin is tapped, and the `InfoWindowClicked` event is fired when the information window is tapped. The `PinClickedEventArgs` object that accompanies both events has a single `HideInfoWindow` property, of type `bool`.
 

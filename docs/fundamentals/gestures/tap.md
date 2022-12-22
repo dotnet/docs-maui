@@ -25,7 +25,7 @@ A .NET Multi-platform App UI (.NET MAUI) tap gesture recognizer is used for tap 
 
 ::: moniker-end
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 ::: moniker range="=net-maui-6.0"
 The `TapGestureRecognizer` class also defines a `Tapped` event that's raised when a tap is recognized. The `TappedEventArgs` object that accompanies the `Tapped` event defines a `Parameter` property of type `object` that indicates the value passed by the `CommandParameter` property, if defined.

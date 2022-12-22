@@ -14,7 +14,7 @@ The <xref:Microsoft.Maui.Controls.Frame> class defines the following properties:
 - `CornerRadius`, of type `float`, determines the rounded radius of the corner.
 - `HasShadow`, of type `bool`, determines whether the frame has a drop shadow.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 The <xref:Microsoft.Maui.Controls.Frame> class inherits from <xref:Microsoft.Maui.Controls.ContentView>, which provides a `Content` bindable property. The `Content` property is the `ContentProperty` of the <xref:Microsoft.Maui.Controls.Frame> class, and therefore does not need to be explicitly set from XAML.
 

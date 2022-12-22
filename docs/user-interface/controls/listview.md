@@ -36,9 +36,9 @@ The <xref:Microsoft.Maui.Controls.ListView> class derives from the `ItemsView<Ce
 - `SeparatorVisibility`, of type `SeparatorVisibility`, defines whether separators are visible between items.
 - `VerticalScrollBarVisibility`, of type `ScrollBarVisibility`, indicates when the vertical scroll bar will be visible.
 
-All of these properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+All of these properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
-In addition, <xref:Microsoft.Maui.Controls.ListView> defines the following properties that aren't backed by `BindableProperty` objects:
+In addition, <xref:Microsoft.Maui.Controls.ListView> defines the following properties that aren't backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects:
 
 - `GroupDisplayBinding`, of type `BindingBase`, the binding to use for displaying the group header.
 - `GroupShortNameBinding`, of type `BindingBase`, the binding for the name to display in grouped jump lists.
@@ -160,7 +160,7 @@ A <xref:Microsoft.Maui.Controls.TextCell> displays primary and secondary text on
 - `Command`, of type `ICommand`, defines the command that's executed when the cell is tapped.
 - `CommandParameter`, of type `object`, represents the parameter that's passed to the command.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 The following example shows using a <xref:Microsoft.Maui.Controls.TextCell> to define the appearance of items in a <xref:Microsoft.Maui.Controls.ListView>:
 
@@ -181,7 +181,7 @@ The following screenshot shows the resulting cell appearance:
 
 #### Image cell
 
-An <xref:Microsoft.Maui.Controls.ImageCell> displays an image with primary and secondary text on separate lines. <xref:Microsoft.Maui.Controls.ImageCell> inherits the properties from <xref:Microsoft.Maui.Controls.TextCell>, and defines the `ImageSource` property, of type `ImageSource`, which specifies the image to be displayed in the cell. This property is backed by a `BindableProperty` object, which means it can be the target of data bindings, and be styled.
+An <xref:Microsoft.Maui.Controls.ImageCell> displays an image with primary and secondary text on separate lines. <xref:Microsoft.Maui.Controls.ImageCell> inherits the properties from <xref:Microsoft.Maui.Controls.TextCell>, and defines the `ImageSource` property, of type `ImageSource`, which specifies the image to be displayed in the cell. This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means it can be the target of data bindings, and be styled.
 
 The following example shows using an <xref:Microsoft.Maui.Controls.ImageCell> to define the appearance of items in a <xref:Microsoft.Maui.Controls.ListView>:
 
@@ -203,7 +203,7 @@ The following screenshot shows the resulting cell appearance:
 
 #### View cell
 
-A <xref:Microsoft.Maui.Controls.ViewCell> is a custom cell whose appearance is defined by a <xref:Microsoft.Maui.Controls.View>. <xref:Microsoft.Maui.Controls.ViewCell> defines a <xref:Microsoft.Maui.Controls.View> property, of type <xref:Microsoft.Maui.Controls.View>, which defines the view that represents the content of the cell. This property is backed by a `BindableProperty` object, which means it can be the target of data bindings, and be styled.
+A <xref:Microsoft.Maui.Controls.ViewCell> is a custom cell whose appearance is defined by a <xref:Microsoft.Maui.Controls.View>. <xref:Microsoft.Maui.Controls.ViewCell> defines a <xref:Microsoft.Maui.Controls.View> property, of type <xref:Microsoft.Maui.Controls.View>, which defines the view that represents the content of the cell. This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means it can be the target of data bindings, and be styled.
 
 > [!NOTE]
 > The <xref:Microsoft.Maui.Controls.View> property is the content property of the <xref:Microsoft.Maui.Controls.ViewCell> class, and therefore does not need to be explicitly set from XAML.
@@ -485,7 +485,7 @@ Then the `ListViewCachingStrategy` enumeration value can be specified from XAML 
 - `Footer`, of type `object`, specifies the string, binding, or view that will be displayed at the end of the list.
 - `FooterTemplate`, of type `DataTemplate`, specifies the `DataTemplate` to use to format the `Footer`.
 
-These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings.
 
 ### Display strings in the header and footer
 

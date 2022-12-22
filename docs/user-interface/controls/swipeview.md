@@ -20,7 +20,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.SwipeVi
 - `BottomItems`, of type `SwipeItems`, which represents the swipe items that can be invoked when the control is swiped from the bottom up.
 - `Threshold`, of type `double`, which represents the number of device-independent units that trigger a swipe gesture to fully reveal swipe items.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 In addition, the <xref:Microsoft.Maui.Controls.SwipeView> inherits the `Content` property from the <xref:Microsoft.Maui.Controls.ContentView> class. The `Content` property is the content property of the <xref:Microsoft.Maui.Controls.SwipeView> class, and therefore does not need to be explicitly set.
 
@@ -131,7 +131,7 @@ The `LeftItems`, `RightItems`, `TopItems`, and `BottomItems` collections are all
 - `Mode`, of type `SwipeMode`, which indicates the effect of a swipe interaction. For more information about swipe mode, see [Swipe mode](#swipe-mode).
 - `SwipeBehaviorOnInvoked`, of type `SwipeBehaviorOnInvoked`, which indicates how a <xref:Microsoft.Maui.Controls.SwipeView> behaves after a swipe item is invoked. For more information about swipe behavior, see [Swipe behavior](#swipe-behavior).
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 Each swipe item is defined as a `SwipeItem` object that's placed into one of the four `SwipeItems` directional collections. The `SwipeItem` class derives from the `MenuItem` class, and adds the following members:
 
@@ -297,7 +297,7 @@ Custom swipe items can be defined with the `SwipeItemView` type. The `SwipeItemV
 - `Command`, of type `ICommand`, which is executed when a swipe item is tapped.
 - `CommandParameter`, of type `object`, which is the parameter that's passed to the `Command`.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 The `SwipeItemView` class also defines an `Invoked` event that's raised when the item is tapped, after the `Command` is executed.
 

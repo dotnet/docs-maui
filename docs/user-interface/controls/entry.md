@@ -31,7 +31,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Entry> 
 - `TextColor`, of type `Color`, defines the color of the entered text.
 - `VerticalTextAlignment`, of type `TextAlignment`, defines the vertical alignment of the text.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 In addition, <xref:Microsoft.Maui.Controls.Entry> defines a `Completed` event, which is raised when the user finalizes text in the <xref:Microsoft.Maui.Controls.Entry> with the return key.
 
@@ -42,7 +42,7 @@ In addition, <xref:Microsoft.Maui.Controls.Entry> defines a `Completed` event, w
 - `MaxLength`, of type `int`, defines the maximum input length.
 - `TextTransform`, of type `TextTransform`, specifies the casing of the entered text.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 In addition, `InputView` defines a `TextChanged` event, which is raised when the text in the <xref:Microsoft.Maui.Controls.Entry> changes. The `TextChangedEventArgs` object that accompanies the `TextChanged` event has `NewTextValue` and `OldTextValue` properties, which specify the new and old text, respectively.
 

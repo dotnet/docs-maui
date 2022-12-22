@@ -33,7 +33,7 @@ However, on some platforms a <xref:Microsoft.Maui.Controls.RadioButton> can disp
 - `TextColor`, of type `Color`, which defines the color of any displayed text.
 - `TextTransform`, of type `TextTransform`, which defines the casing of any displayed text.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 <xref:Microsoft.Maui.Controls.RadioButton> also defines a `CheckedChanged` event that's raised when the `IsChecked` property changes, either through user or programmatic manipulation. The `CheckedChangedEventArgs` object that accompanies the `CheckedChanged` event has a single property named `Value`, of type `bool`. When the event is raised, the value of the `CheckedChangedEventArgs.Value` property is set to the new value of the `IsChecked` property.
 

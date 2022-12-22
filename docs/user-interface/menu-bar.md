@@ -13,7 +13,7 @@ Each top-level menu in the menu bar, known as a menu bar item, is represented by
 - `Text`, of type `string`, defines the menu text.
 - `IsEnabled`, of type `boolean`, specifies whether the menu is enabled. The default value of this property is `true`.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 A `MenuBarItem` can consist of the following children:
 

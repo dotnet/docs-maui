@@ -15,7 +15,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Shapes.
 - `Data`, of type `Geometry`, which specifies the shape to be drawn.
 - `RenderTransform`, of type `Transform`, which represents the transform that is applied to the geometry of a path prior to it being drawn.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 For more information about transforms, see [Path Transforms](path-transforms.md).
 

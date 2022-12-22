@@ -36,7 +36,7 @@ The .NET Multi-platform App UI (.NET MAUI) `Window` class provides the ability t
 
 ::: moniker-end
 
-These properties, with the exception of the `Overlays` property, are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties, with the exception of the `Overlays` property, are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 <!-- Todo: Is/will Title be shown on desktop platforms? -->
 

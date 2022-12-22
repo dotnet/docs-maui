@@ -22,7 +22,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.ImageBu
 - `Padding`, of type `Thickness`, determines the button's padding.
 - `Source`, of type `ImageSource`, specifies an image to display as the content of the button.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 The `Aspect` property can be set to one of the members of the `Aspect` enumeration:
 

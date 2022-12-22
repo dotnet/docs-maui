@@ -24,7 +24,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Navigat
 - `TitleIconImageSource`, of type `ImageSource`, defines the icon that represents the title on the navigation bar. This is an attached property.
 - `TitleView`, of type <xref:Microsoft.Maui.Controls.View>, defines the view that can be displayed in the navigation bar. This is an attached property.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 The <xref:Microsoft.Maui.Controls.NavigationPage> class also defines three events:
 

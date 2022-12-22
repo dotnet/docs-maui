@@ -34,7 +34,7 @@ In .NET MAUI, drag gesture recognition is provided by the `DragGestureRecognizer
 - `DropCompletedCommand`, of type `ICommand`, which is executed when the drag source is dropped.
 - `DropCompletedCommandParameter`, of type `object`, which is the parameter that's passed to the `DropCompletedCommand`.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 The `DragGestureRecognizer` class also defines `DragStarting` and `DropCompleted` events that fire if the `CanDrag` property is `true`. When a `DragGestureRecognizer` object detects a drag gesture, it executes the `DragStartingCommand` and invokes the `DragStarting` event. Then, when the `DragGestureRecognizer` object detects the completion of a drop gesture, it executes the `DropCompletedCommand` and invokes the `DropCompleted` event.
 
@@ -165,7 +165,7 @@ In .NET MAUI, drop gesture recognition is provided by the `DropGestureRecognizer
 - `DropCommand`, of type `ICommand`, which is executed when the drag source is dropped over the drop target.
 - `DropCommandParameter`, of type `object`, which is the parameter that's passed to the `DropCommand`.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 The `DropGestureRecognizer` class also defines `DragOver`, `DragLeave`, and `Drop` events that fire if the `AllowDrop` property is `true`. When a `DropGestureRecognizer` recognizes a drag source over the drop target, it executes the `DragOverCommand` and invokes the `DragOver` event. Then, if the drag source is dragged off the drop target, the `DropGestureRecognizer` executes the `DragLeaveCommand` and invokes the `DragLeave` event. Finally, when the `DropGestureRecognizer` recognizes a drop gesture over the drop target, it executes the `DropCommand` and invokes the `Drop` event.
 

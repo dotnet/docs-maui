@@ -15,7 +15,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Shapes.
 - `RadiusX`, of type `double`, which is the x-axis radius that's used to round the corners of the rectangle. The default value of this property is 0.0.
 - `RadiusY`, of type `double`, which is the y-axis radius that's used to round the corners of the rectangle. The default value of this property is 0.0.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 The <xref:Microsoft.Maui.Controls.Shapes.Rectangle> class sets the `Aspect` property, inherited from the `Shape` class, to `Stretch.Fill`. For more information about the `Aspect` property, see [Stretch shapes](index.md#stretch-shapes).
 
@@ -26,7 +26,7 @@ To draw a rectangle, create a <xref:Microsoft.Maui.Controls.Shapes.Rectangle> ob
 To give the rectangle rounded corners, set its `RadiusX` and `RadiusY` properties. These properties set the x-axis and y-axis radii that's used to round the corners of the rectangle.
 
 > [!NOTE]
-> There's also a <xref:Microsoft.Maui.Controls.Shapes.RoundRectangle> class, that has a `CornerRadius` `BindableProperty`, which can be used to draw rectangles with rounded corners.
+> There's also a <xref:Microsoft.Maui.Controls.Shapes.RoundRectangle> class, that has a `CornerRadius` <xref:Microsoft.Maui.Controls.BindableProperty>, which can be used to draw rectangles with rounded corners.
 
 To draw a square, make the `WidthRequest` and `HeightRequest` properties of the <xref:Microsoft.Maui.Controls.Shapes.Rectangle> object equal.
 

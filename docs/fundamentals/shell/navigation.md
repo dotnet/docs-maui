@@ -18,7 +18,7 @@ The `Shell` class defines the following navigation-related properties:
 - `CurrentState`, of type `ShellNavigationState`, the current navigation state of the `Shell`.
 - `Current`, of type `Shell`, a type-casted alias for `Application.Current.MainPage`.
 
-The `BackButtonBehavior`, `CurrentItem`, and `CurrentState` properties are backed by `BindableProperty` objects, which means that these properties can be targets of data bindings.
+The `BackButtonBehavior`, `CurrentItem`, and `CurrentState` properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that these properties can be targets of data bindings.
 
 Navigation is performed by invoking the `GoToAsync` method, from the `Shell` class. When navigation is about to be performed, the `Navigating` event is fired, and the `Navigated` event is fired when navigation completes.
 
@@ -506,7 +506,7 @@ Back button appearance and behavior can be redefined by setting the `BackButtonB
 - `IsVisible`, of type `boolean`, indicates whether the back button is visible. The default value is `true`.
 - `TextOverride`, of type `string`, the text used for the back button.
 
-All of these properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings.
+All of these properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings.
 
 The following code shows an example of redefining back button appearance and behavior:
 

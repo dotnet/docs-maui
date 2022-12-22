@@ -23,7 +23,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Border>
 - `StrokeLineJoin`, of type `PenLineJoin`, specifies the type of join that is used at the vertices of the stroke shape. The default value of this property is `PenLineJoin.Miter`.
 - `StrokeMiterLimit`, of type `double`, specifies the limit on the ratio of the miter length to half the stroke thickness. The default value of this property is 10.0.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 > [!IMPORTANT]
 > When creating a border using a shape, such as a <xref:Microsoft.Maui.Controls.Shapes.Rectangle> or <xref:Microsoft.Maui.Controls.Shapes.Polygon>, only closed shapes should be used. Therefore, open shapes such as <xref:Microsoft.Maui.Controls.Shapes.Line> are unsupported.

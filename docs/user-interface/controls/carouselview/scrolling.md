@@ -16,7 +16,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Carouse
 - `ItemsUpdatingScrollMode`, of type `ItemsUpdatingScrollMode`, which represents the scrolling behavior of the <xref:Microsoft.Maui.Controls.CarouselView> when new items are added to it.
 - `VerticalScrollBarVisibility`, of type `ScrollBarVisibility`, which specifies when the vertical scroll bar is visible.
 
-All of these properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings.
+All of these properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings.
 
 <xref:Microsoft.Maui.Controls.CarouselView> also defines two `ScrollTo` methods, that scroll items into view. One of the overloads scrolls the item at the specified index into view, while the other scrolls the specified item into view. Both overloads have additional arguments that can be specified to indicate the exact position of the item after the scroll has completed, and whether to animate the scroll.
 
@@ -190,7 +190,7 @@ When a user swipes to initiate a scroll, the end position of the scroll can be c
 - `SnapPointsType`, of type `SnapPointsType`, specifies the behavior of snap points when scrolling.
 - `SnapPointsAlignment`, of type `SnapPointsAlignment`, specifies how snap points are aligned with items.
 
-These properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings.
 
 > [!NOTE]
 > When snapping occurs, it will occur in the direction that produces the least amount of motion.

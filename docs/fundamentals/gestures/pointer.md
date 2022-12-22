@@ -16,7 +16,7 @@ A .NET Multi-platform App UI (.NET MAUI) pointer gesture recognizer detects when
 - `PointerMovedCommand`, of type `ICommand`, which is the command to invoke when the pointer moves while remaining within the bounding area of the view.
 - `PointerMovedCommandParameter`, of type `object`, which is the parameter that's passed to `PointerMovedCommand`.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 The `PointerGestureRecognizer` class also defines the following events:
 

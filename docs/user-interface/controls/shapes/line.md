@@ -17,7 +17,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Shapes.
 - `X2`, of type double, indicates the x-coordinate of the end point of the line. The default value of this property is 0.0.
 - `Y2`, of type double, indicates the y-coordinate of the end point of the line. The default value of this property is 0.0.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 For information about controlling how line ends are drawn, see [Control line ends](index.md#control-line-ends).
 

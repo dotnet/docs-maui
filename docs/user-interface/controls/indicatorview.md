@@ -26,7 +26,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Indicat
 - `Position`, of type `int`, the currently selected indicator index. This property uses a `TwoWay` binding. This property will automatically be set when the `CarouselView.IndicatorView` property is set.
 - `SelectedIndicatorColor`, of type `Color`, the color of the indicator that represents the current item in the <xref:Microsoft.Maui.Controls.CarouselView>.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 ## Create an IndicatorView
 

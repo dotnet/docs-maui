@@ -44,7 +44,7 @@ The `EllipseGeometry` class defines the following properties:
 - `RadiusX`, of type `double`, which represents the x-radius value of the geometry. The default value of this property is 0.0.
 - `RadiusY`, of type `double`, which represents the y-radius value of the geometry. The default value of this property is 0.0.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 The following example shows how to create and render an `EllipseGeometry` in a <xref:Microsoft.Maui.Controls.Shapes.Path> object:
 
@@ -72,7 +72,7 @@ The `LineGeometry` class defines the following properties:
 - `StartPoint`, of type `Point`, which represents the start point of the line.
 - `EndPoint`, of type `Point`, which represents the end point of the line.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 The following example shows how to create and render a `LineGeometry` in a <xref:Microsoft.Maui.Controls.Shapes.Path> object:
 
@@ -96,7 +96,7 @@ In this example, a `LineGeometry` is drawn from (10,20) to (100,130):
 
 A rectangle geometry represents the geometry of a rectangle or square, and is defined with a `Rect` structure that specifies its relative position and its height and width.
 
-The `RectangleGeometry` class defines the `Rect` property, of type `Rect`, which represents the dimensions of the rectangle. This property is backed by a `BindableProperty` object, which means that it can be the target of data bindings, and styled.
+The `RectangleGeometry` class defines the `Rect` property, of type `Rect`, which represents the dimensions of the rectangle. This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means that it can be the target of data bindings, and styled.
 
 The following example shows how to create and render a `RectangleGeometry` in a <xref:Microsoft.Maui.Controls.Shapes.Path> object:
 
@@ -122,7 +122,7 @@ The `PathGeometry` class defines the following properties:
 - `Figures`, of type `PathFigureCollection`, which represents the collection of `PathFigure` objects that describe the path's contents.
 - `FillRule`, of type `FillRule`, which determines how the intersecting areas contained in the geometry are combined. The default value of this property is `FillRule.EvenOdd`.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 For more information about the `FillRule` enumeration, see [.NET MAUI Shapes: Fill rules](fillrules.md).
 
@@ -177,7 +177,7 @@ The `ArcSegment` class defines the following properties:
 - `SweepDirection`, of type `SweepDirection`, which specifies the direction in which the arc is drawn. The default value of this property is `SweepDirection.CounterClockwise`.
 - `IsLargeArc`, of type `bool`, which indicates whether the arc should be greater than 180 degrees. The default value of this property is `false`.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 > [!NOTE]
 > The `ArcSegment` class does not contain a property for the starting point of the arc. It only defines the end point of the arc it represents. The start point of the arc is the current point of the `PathFigure` to which the `ArcSegment` is added.
@@ -225,7 +225,7 @@ The `BezierSegment` class defines the following properties:
 - `Point2`, of type `Point`, which represents the second control point of the curve. The default value of this property is (0,0).
 - `Point3`, of type `Point`, which represents the end point of the curve. The default value of this property is (0,0).
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 > [!NOTE]
 > The `BezierSegment` class does not contain a property for the starting point of the curve. The start point of the curve is the current point of the `PathFigure` to which the `BezierSegment` is added.
@@ -264,7 +264,7 @@ In this example, a cubic Bezier curve is drawn from (10,10) to (300,10). The cur
 
 A `LineSegment` creates a line between two points.
 
-The `LineSegment` class defines the `Point` property, of type `Point`, which represents the end point of the line segment. The default value of this property is (0,0), and it's backed by a `BindableProperty` object, which means that it can be the target of data bindings, and styled.
+The `LineSegment` class defines the `Point` property, of type `Point`, which represents the end point of the line segment. The default value of this property is (0,0), and it's backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means that it can be the target of data bindings, and styled.
 
 > [!NOTE]
 > The `LineSegment` class does not contain a property for the starting point of the line. It only defines the end point. The start point of the line is the current point of the `PathFigure` to which the `LineSegment` is added.
@@ -303,7 +303,7 @@ In this example, a line segment is drawn from (10,100) to (100,100), and from (1
 
 A `PolyBezierSegment` creates one or more cubic Bezier curves.
 
-The `PolyBezierSegment` class defines the `Points` property, of type `PointCollection`, which represents the points that define the `PolyBezierSegment`. A `PointCollection` is an `ObservableCollection` of `Point` objects. This property is backed by a `BindableProperty` object, which means that it can be the target of data bindings, and styled.
+The `PolyBezierSegment` class defines the `Points` property, of type `PointCollection`, which represents the points that define the `PolyBezierSegment`. A `PointCollection` is an `ObservableCollection` of `Point` objects. This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means that it can be the target of data bindings, and styled.
 
 > [!NOTE]
 > The `PolyBezierSegment` class does not contain a property for the starting point of the curve. The start point of the curve is the current point of the `PathFigure` to which the `PolyBezierSegment` is added.
@@ -338,7 +338,7 @@ In this example, the `PolyBezierSegment` specifies two cubic Bezier curves. The 
 
 A `PolyLineSegment` creates one or more line segments.
 
-The `PolyLineSegment` class defines the `Points` property, of type `PointCollection`, which represents the points that define the `PolyLineSegment`. A `PointCollection` is an `ObservableCollection` of `Point` objects. This property is backed by a `BindableProperty` object, which means that it can be the target of data bindings, and styled.
+The `PolyLineSegment` class defines the `Points` property, of type `PointCollection`, which represents the points that define the `PolyLineSegment`. A `PointCollection` is an `ObservableCollection` of `Point` objects. This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means that it can be the target of data bindings, and styled.
 
 > [!NOTE]
 > The `PolyLineSegment` class does not contain a property for the starting point of the line. The start point of the line is the current point of the `PathFigure` to which the `PolyLineSegment` is added.
@@ -369,7 +369,7 @@ In this example, the `PolyLineSegment` specifies two lines. The first line is fr
 
 A `PolyQuadraticBezierSegment` creates one or more quadratic Bezier curves.
 
-The `PolyQuadraticBezierSegment` class defines the `Points` property, of type `PointCollection`, which represents the points that define the `PolyQuadraticBezierSegment`. A `PointCollection` is an `ObservableCollection` of `Point` objects. This property is backed by a `BindableProperty` object, which means that it can be the target of data bindings, and styled.
+The `PolyQuadraticBezierSegment` class defines the `Points` property, of type `PointCollection`, which represents the points that define the `PolyQuadraticBezierSegment`. A `PointCollection` is an `ObservableCollection` of `Point` objects. This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means that it can be the target of data bindings, and styled.
 
 > [!NOTE]
 > The `PolyQuadraticBezierSegment` class does not contain a property for the starting point of the curve. The start point of the curve is the current point of the `PathFigure` to which the `PolyQuadraticBezierSegment` is added.
@@ -409,7 +409,7 @@ The `QuadraticBezierSegment` class defines the following properties:
 - `Point1`, of type `Point`, which represents the control point of the curve. The default value of this property is (0,0).
 - `Point2`, of type `Point`, which represents the end point of the curve. The default value of this property is (0,0).
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 > [!NOTE]
 > The `QuadraticBezierSegment` class does not contain a property for the starting point of the curve. The start point of the curve is the current point of the `PathFigure` to which the `QuadraticBezierSegment` is added.
@@ -536,7 +536,7 @@ The `GeometryGroup` class defines the following properties:
 - `Children`, of type `GeometryCollection`, which specifies the objects that define the `GeomtryGroup`. A `GeometryCollection` is an `ObservableCollection` of `Geometry` objects.
 - `FillRule`, of type `FillRule`, which specifies how the intersecting areas in the `GeometryGroup` are combined. The default value of this property is `FillRule.EvenOdd`.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 > [!NOTE]
 > The `Children` property is the `ContentProperty` of the `GeometryGroup` class, and so does not need to be explicitly set from XAML.
@@ -581,7 +581,7 @@ The `RoundRectangleGeometry` class, which derives from the `GeometryGroup` class
 - `CornerRadius`, of type `CornerRadius`, which is the corner radius of the geometry.
 - `Rect`, of type `Rect`, which represents the dimensions of the rectangle.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 > [!NOTE]
 > The fill rule used by the `RoundRectangleGeometry` is `FillRule.Nonzero`. For more information about fill rules, see [Fill rules](fillrules.md).
