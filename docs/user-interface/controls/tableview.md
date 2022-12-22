@@ -68,7 +68,7 @@ Each item in a <xref:Microsoft.Maui.Controls.TableView> is defined by a <xref:Mi
 - <xref:Microsoft.Maui.Controls.ImageCell>, which displays an image with primary and secondary text on separate lines.
 - <xref:Microsoft.Maui.Controls.SwitchCell>, which displays text and a switch that can be switched on or off.
 - <xref:Microsoft.Maui.Controls.EntryCell>, which displays a label and text that's editable.
-- <xref:Microsoft.Maui.Controls.ViewCell>, which is a custom cell whose appearance is defined by a `View`. This cell type should be used when you want to fully define the appearance of each item in a <xref:Microsoft.Maui.Controls.TableView>.
+- <xref:Microsoft.Maui.Controls.ViewCell>, which is a custom cell whose appearance is defined by a <xref:Microsoft.Maui.Controls.View>. This cell type should be used when you want to fully define the appearance of each item in a <xref:Microsoft.Maui.Controls.TableView>.
 
 ### Text cell
 
@@ -207,10 +207,10 @@ The following screenshot shows the resulting cell appearance:
 
 ### View cell
 
-A <xref:Microsoft.Maui.Controls.ViewCell> is a custom cell whose appearance is defined by a `View`. <xref:Microsoft.Maui.Controls.ViewCell> defines a `View` property, of type `View`, which defines the view that represents the content of the cell. This property is backed by a `BindableProperty` object, which means it can be the target of data bindings, and be styled.
+A <xref:Microsoft.Maui.Controls.ViewCell> is a custom cell whose appearance is defined by a <xref:Microsoft.Maui.Controls.View>. <xref:Microsoft.Maui.Controls.ViewCell> defines a <xref:Microsoft.Maui.Controls.View> property, of type <xref:Microsoft.Maui.Controls.View>, which defines the view that represents the content of the cell. This property is backed by a `BindableProperty` object, which means it can be the target of data bindings, and be styled.
 
 > [!NOTE]
-> The `View` property is the content property of the <xref:Microsoft.Maui.Controls.ViewCell> class, and therefore does not need to be explicitly set from XAML.
+> The <xref:Microsoft.Maui.Controls.View> property is the content property of the <xref:Microsoft.Maui.Controls.ViewCell> class, and therefore does not need to be explicitly set from XAML.
 
 The following example shows using a <xref:Microsoft.Maui.Controls.ViewCell> to define the appearance of an item in a <xref:Microsoft.Maui.Controls.TableView>:
 

@@ -10,7 +10,7 @@ ms.date: 03/14/2022
 
 The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.ContentPage> displays a single view, which is often a layout such as as <xref:Microsoft.Maui.Controls.Grid> or <xref:Microsoft.Maui.Controls.StackLayout>, and is the most common page type.
 
-<xref:Microsoft.Maui.Controls.ContentPage> defines a `Content` property, of type `View`, which defines the view that represents the page's content. This property is backed by a `BindableProperty` object, which means that it can be the target of data bindings, and styled. In addition, <xref:Microsoft.Maui.Controls.ContentPage> inherits `Title`, `IconImageSource`, `BackgroundImageSource`, `IsBusy`, and `Padding` bindable properties from the <xref:Microsoft.Maui.Controls.Page> class.
+<xref:Microsoft.Maui.Controls.ContentPage> defines a `Content` property, of type <xref:Microsoft.Maui.Controls.View>, which defines the view that represents the page's content. This property is backed by a `BindableProperty` object, which means that it can be the target of data bindings, and styled. In addition, <xref:Microsoft.Maui.Controls.ContentPage> inherits `Title`, `IconImageSource`, `BackgroundImageSource`, `IsBusy`, and `Padding` bindable properties from the <xref:Microsoft.Maui.Controls.Page> class.
 
 > [!NOTE]
 > The `Content` property is the content property of the <xref:Microsoft.Maui.Controls.ContentPage> class, and therefore does not need to be explicitly set from XAML.

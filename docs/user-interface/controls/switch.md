@@ -40,7 +40,7 @@ Switch switchControl = new Switch { IsToggled = true };
 
 ## Switch appearance
 
-In addition to the properties that <xref:Microsoft.Maui.Controls.Switch> inherits from the `View` class, <xref:Microsoft.Maui.Controls.Switch> also defines `OnColor` and `ThumbColor` properties. The `OnColor` property can be set to define the <xref:Microsoft.Maui.Controls.Switch> color when it is toggled to its on state, and the `ThumbColor` property can be set to define the `Color` of the switch thumb. The following example shows how to instantiate a <xref:Microsoft.Maui.Controls.Switch> in XAML with these properties set:
+In addition to the properties that <xref:Microsoft.Maui.Controls.Switch> inherits from the <xref:Microsoft.Maui.Controls.View> class, <xref:Microsoft.Maui.Controls.Switch> also defines `OnColor` and `ThumbColor` properties. The `OnColor` property can be set to define the <xref:Microsoft.Maui.Controls.Switch> color when it is toggled to its on state, and the `ThumbColor` property can be set to define the `Color` of the switch thumb. The following example shows how to instantiate a <xref:Microsoft.Maui.Controls.Switch> in XAML with these properties set:
 
 ```xaml
 <Switch OnColor="Orange"

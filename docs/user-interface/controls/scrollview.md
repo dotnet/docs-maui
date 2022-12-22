@@ -12,7 +12,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.ScrollV
 
 <xref:Microsoft.Maui.Controls.ScrollView> defines the following properties:
 
-- `Content`, of type `View`, represents the content to display in the <xref:Microsoft.Maui.Controls.ScrollView>.
+- `Content`, of type <xref:Microsoft.Maui.Controls.View>, represents the content to display in the <xref:Microsoft.Maui.Controls.ScrollView>.
 - `ContentSize`, of type `Size`, represents the size of the content. This is a read-only property.
 - `HorizontalScrollBarVisibility`, of type `ScrollBarVisibility`, represents when the horizontal scroll bar is visible.
 - `Orientation`, of type `ScrollOrientation`, represents the scrolling direction of the <xref:Microsoft.Maui.Controls.ScrollView>. The default value of this property is `Vertical`.

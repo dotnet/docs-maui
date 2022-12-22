@@ -22,7 +22,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Navigat
 - `IconColor`, of type `Color`, defines the background color of the icon in the navigation bar. This is an attached property.
 - `RootPage`, of type <xref:Microsoft.Maui.Controls.Page>, represents the root page of the navigation stack. This is a read-only property.
 - `TitleIconImageSource`, of type `ImageSource`, defines the icon that represents the title on the navigation bar. This is an attached property.
-- `TitleView`, of type `View`, defines the view that can be displayed in the navigation bar. This is an attached property.
+- `TitleView`, of type <xref:Microsoft.Maui.Controls.View>, defines the view that can be displayed in the navigation bar. This is an attached property.
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
@@ -230,7 +230,7 @@ For more information about data binding, see [Data binding](~/fundamentals/data-
 
 ## Display views in the navigation bar
 
-Any .NET MAUI `View` can be displayed in the navigation bar of a <xref:Microsoft.Maui.Controls.NavigationPage>. This is accomplished by setting the `NavigationPage.TitleView` attached property to a `View`. This attached property can be set on any <xref:Microsoft.Maui.Controls.Page>, and when the <xref:Microsoft.Maui.Controls.Page> is pushed onto a <xref:Microsoft.Maui.Controls.NavigationPage>, the <xref:Microsoft.Maui.Controls.NavigationPage> will respect the value of the property.
+Any .NET MAUI <xref:Microsoft.Maui.Controls.View> can be displayed in the navigation bar of a <xref:Microsoft.Maui.Controls.NavigationPage>. This is accomplished by setting the `NavigationPage.TitleView` attached property to a <xref:Microsoft.Maui.Controls.View>. This attached property can be set on any <xref:Microsoft.Maui.Controls.Page>, and when the <xref:Microsoft.Maui.Controls.Page> is pushed onto a <xref:Microsoft.Maui.Controls.NavigationPage>, the <xref:Microsoft.Maui.Controls.NavigationPage> will respect the value of the property.
 
 The following example shows how to set the `NavigationPage.TitleView` attached property:
 
@@ -258,7 +258,7 @@ In this example, a <xref:Microsoft.Maui.Controls.Slider> is displayed in the nav
 > [!IMPORTANT]
 > Many views won't appear in the navigation bar unless the size of the view is specified with the `WidthRequest` and `HeightRequest` properties.
 
-Because the <xref:Microsoft.Maui.Controls.Layout> class derives from the `View` class, the `TitleView` attached property can be set to display a layout class that contains multiple views. However, this can result in clipping if the view displayed in the navigation bar is larger than the default size of the navigation bar. However, on Android, the height of the navigation bar can be changed by setting the `NavigationPage.BarHeight` bindable property to a `double` representing the new height. <!--For more information, see [Set the navigation bar height on a NavigationPage](~/platform-integration/android/navigationpage-bar-height.md).-->
+Because the <xref:Microsoft.Maui.Controls.Layout> class derives from the <xref:Microsoft.Maui.Controls.View> class, the `TitleView` attached property can be set to display a layout class that contains multiple views. However, this can result in clipping if the view displayed in the navigation bar is larger than the default size of the navigation bar. However, on Android, the height of the navigation bar can be changed by setting the `NavigationPage.BarHeight` bindable property to a `double` representing the new height. <!--For more information, see [Set the navigation bar height on a NavigationPage](~/platform-integration/android/navigationpage-bar-height.md).-->
 
 Alternatively, an extended navigation bar can be suggested by placing some of the content in the navigation bar, and some in a view at the top of the page content that you color match to the navigation bar. In addition, on iOS the separator line and shadow that's at the bottom of the navigation bar can be removed by setting the `NavigationPage.HideNavigationBarSeparator` bindable property to `true`. <!--For more information, see [Hiding the Navigation Bar Separator on a NavigationPage](~/platform-integration/ios/navigation-bar-separator.md).-->
 

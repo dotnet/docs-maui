@@ -24,7 +24,7 @@ The `SwipeGestureRecognizer` also defines a `Swiped` event that's raised when a 
 
 ## Create a SwipeGestureRecognizer
 
-To make a `View` recognize a swipe gesture, create a `SwipeGestureRecognizer` object, set the `Direction` property to a `SwipeDirection` enumeration value (`Left`, `Right`, `Up`, or `Down`), optionally set the `Threshold` property, handle the `Swiped` event, and add the new gesture recognizer to the `GestureRecognizers` collection on the view. The following example shows a `SwipeGestureRecognizer` attached to a <xref:Microsoft.Maui.Controls.BoxView>:
+To make a <xref:Microsoft.Maui.Controls.View> recognize a swipe gesture, create a `SwipeGestureRecognizer` object, set the `Direction` property to a `SwipeDirection` enumeration value (`Left`, `Right`, `Up`, or `Down`), optionally set the `Threshold` property, handle the `Swiped` event, and add the new gesture recognizer to the `GestureRecognizers` collection on the view. The following example shows a `SwipeGestureRecognizer` attached to a <xref:Microsoft.Maui.Controls.BoxView>:
 
 ```xaml
 <BoxView Color="Teal" ...>
@@ -119,7 +119,7 @@ The `SwipedEventArgs` can be examined to determine the direction of the swipe, w
 
 ## Create a swipe container
 
-The `SwipeContainer` class, which is shown in the following example, is a generalized swipe recognition class that be wrapped around a `View` to perform swipe gesture recognition:
+The `SwipeContainer` class, which is shown in the following example, is a generalized swipe recognition class that be wrapped around a <xref:Microsoft.Maui.Controls.View> to perform swipe gesture recognition:
 
 ```csharp
 public class SwipeContainer : ContentView

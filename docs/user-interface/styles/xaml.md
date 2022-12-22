@@ -218,7 +218,7 @@ The following example shows a page consuming the `buttonStyle` on the page's `Bu
 
 Styles can inherit from other styles to reduce duplication and enable reuse. This is achieved by setting the `Style.BasedOn` property to an existing `Style`. In XAML, this can be achieved by setting the `BasedOn` property to a `StaticResource` markup extension that references a previously created `Style`.
 
-Styles that inherit from a base style can include `Setter` instances for new properties, or use them to override setters from the base style. In addition, styles that inherit from a base style must target the same type, or a type that derives from the type targeted by the base style. For example, if a base style targets `View` objects, styles that are based on the base style can target `View` objects or types that derive from the `View` class, such as `Label` and `Button` objects.
+Styles that inherit from a base style can include `Setter` instances for new properties, or use them to override setters from the base style. In addition, styles that inherit from a base style must target the same type, or a type that derives from the type targeted by the base style. For example, if a base style targets <xref:Microsoft.Maui.Controls.View> objects, styles that are based on the base style can target <xref:Microsoft.Maui.Controls.View> objects or types that derive from the <xref:Microsoft.Maui.Controls.View> class, such as `Label` and `Button` objects.
 
 A style can only inherit from styles at the same level, or above, in the view hierarchy. This means that:
 
@@ -264,7 +264,7 @@ The following example shows *explicit* style inheritance:
 </ContentPage>
 ```
 
-In this example, the `baseStyle` targets `View` objects, and sets the `HorizontalOptions` and `VerticalOptions` properties. The `baseStyle` is not set directly on any controls. Instead, `labelStyle` and `buttonStyle` inherit from it, setting additional bindable property values. The `labelStyle` and `buttonStyle` objects are then set on a `Label` and `Button`.
+In this example, the `baseStyle` targets <xref:Microsoft.Maui.Controls.View> objects, and sets the `HorizontalOptions` and `VerticalOptions` properties. The `baseStyle` is not set directly on any controls. Instead, `labelStyle` and `buttonStyle` inherit from it, setting additional bindable property values. The `labelStyle` and `buttonStyle` objects are then set on a `Label` and `Button`.
 
 > [!IMPORTANT]
 > An implicit style can be derived from an explicit style, but an explicit style can't be derived from an implicit style.

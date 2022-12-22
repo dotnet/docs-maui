@@ -40,7 +40,7 @@ The `TapGestureRecognizer` class also defines a `Tapped` event that's raised whe
 
 ## Create a TapGestureRecognizer
 
-To make a `View` recognize a tap gesture, create a `TapGestureRecognizer` object, handle the `Tapped` event, and add the new gesture recognizer to the `GestureRecognizers` collection on the view. The following code example shows a `TapGestureRecognizer` attached to an `Image`:
+To make a <xref:Microsoft.Maui.Controls.View> recognize a tap gesture, create a `TapGestureRecognizer` object, handle the `Tapped` event, and add the new gesture recognizer to the `GestureRecognizers` collection on the view. The following code example shows a `TapGestureRecognizer` attached to an `Image`:
 
 ```xaml
 <Image Source="dotnet_bot.png">

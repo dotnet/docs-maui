@@ -90,7 +90,7 @@ Data packages are represented by the `DataPackage` class, which defines the foll
 - `Properties`, of type `DataPackagePropertySet`, which is a collection of properties that comprise the data contained in the `DataPackage`. This property is a read-only property.
 - `Image`, of type `ImageSource`, which is the image contained in the `DataPackage`.
 - `Text`, of type `string`, which is the text contained in the `DataPackage`.
-- `View`, of type `DataPackageView`, which is a read-only version of the `DataPackage`.
+- <xref:Microsoft.Maui.Controls.View>, of type `DataPackageView`, which is a read-only version of the `DataPackage`.
 
 The `DataPackagePropertySet` class represents a property bag stored as a `Dictionary<string,object>`. For information about the `DataPackageView` class, see [Process the data package](#process-the-data-package).
 

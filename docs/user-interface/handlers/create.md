@@ -46,7 +46,7 @@ Then, the cross-platform control can be consumed. For more information, see [Con
 
 ## Create the cross-platform control
 
-To create a cross-platform control, you should create a class that derives from `View`:
+To create a cross-platform control, you should create a class that derives from <xref:Microsoft.Maui.Controls.View>:
 
 ```csharp
 using System.ComponentModel;
@@ -96,7 +96,7 @@ namespace VideoDemos.Controls
 }
 ```
 
-The control should provide a public API that will be accessed by its handler, and control consumers. Cross-platform controls should derive from `View`, which represents a visual element that's used to place layouts and views on the screen.
+The control should provide a public API that will be accessed by its handler, and control consumers. Cross-platform controls should derive from <xref:Microsoft.Maui.Controls.View>, which represents a visual element that's used to place layouts and views on the screen.
 
 ## Create the handler
 
@@ -133,7 +133,7 @@ Each handler typically provides a *property mapper*, which defines what Actions 
 
 `PropertyMapper` is defined in .NET MAUI's generic `ViewHandler` class, and requires two generic arguments to be supplied:
 
-- The class for the cross-platform control, which derives from `View`.
+- The class for the cross-platform control, which derives from <xref:Microsoft.Maui.Controls.View>.
 - The class for the handler.
 
 The following code example shows the `VideoHandler` class extended with the `PropertyMapper` definition:
@@ -165,7 +165,7 @@ Each handler can also provide a *command mapper*, which defines what Actions to 
 
 `CommandMapper` is defined in .NET MAUI's generic `ViewHandler` class, and requires two generic arguments to be supplied:
 
-- The class for the cross-platform control, which derives from `View`.
+- The class for the cross-platform control, which derives from <xref:Microsoft.Maui.Controls.View>.
 - The class for the handler.
 
 The following code example shows the `VideoHandler` class extended with the `CommandMapper` definition:
@@ -261,7 +261,7 @@ For more information about configuring multi-targeting, see [Configure multi-tar
 
 Each platform handler class should be a partial class and derive from the generic `ViewHandler` class, which requires two type arguments:
 
-- The class for the cross-platform control, which derives from `View`.
+- The class for the cross-platform control, which derives from <xref:Microsoft.Maui.Controls.View>.
 - The type of the native view that implements the cross-platform control on the platform. This should be identical to the type of the `PlatformView` property in the handler.
 
 > [!IMPORTANT]
@@ -1888,7 +1888,7 @@ namespace VideoDemos.Controls
 }
 ```
 
-Usually, a read-only bindable property would have a private `set` accessor on the `Status` property to allow it to be set from within the class. However, for a `View` derivative supported by handlers, the property must be set from outside the class but only by the control's handler.
+Usually, a read-only bindable property would have a private `set` accessor on the `Status` property to allow it to be set from within the class. However, for a <xref:Microsoft.Maui.Controls.View> derivative supported by handlers, the property must be set from outside the class but only by the control's handler.
 
 For this reason, another property is defined with the name `IVideoController.Status`. This is an explicit interface implementation, and is made possible by the `IVideoController` interface that the `Video` class implements:
 
@@ -2148,7 +2148,7 @@ namespace VideoDemos.Controls
 }
 ```
 
-Usually, a read-only bindable property would have a private `set` accessor on the `Duration` property to allow it to be set from within the class. However, for a `View` derivative supported by handlers, the property must be set from outside the class but only by the control's handler.
+Usually, a read-only bindable property would have a private `set` accessor on the `Duration` property to allow it to be set from within the class. However, for a <xref:Microsoft.Maui.Controls.View> derivative supported by handlers, the property must be set from outside the class but only by the control's handler.
 
 > [!NOTE]
 > The property-changed event handler for the `Duration` bindable property calls a method named `SetTimeToEnd`, which is described in [Calculating time to end](#calculating-time-to-end).

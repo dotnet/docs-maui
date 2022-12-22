@@ -267,7 +267,7 @@ To define a template for the items, the `ItemTemplate` should be set to a `DataT
 > [!NOTE]
 > The binding source for cells, and children of cells, is the `ListView.ItemsSource` collection.
 
-In this example, the `Label` element is set to the `View` property of the <xref:Microsoft.Maui.Controls.ViewCell>. The `ViewCell.View` tags are not needed because the `View` property is the content property of <xref:Microsoft.Maui.Controls.ViewCell>. This XAML displays the `FriendlyName` property of each `NamedColor` object:
+In this example, the `Label` element is set to the <xref:Microsoft.Maui.Controls.View> property of the <xref:Microsoft.Maui.Controls.ViewCell>. The `ViewCell.View` tags are not needed because the <xref:Microsoft.Maui.Controls.View> property is the content property of <xref:Microsoft.Maui.Controls.ViewCell>. This XAML displays the `FriendlyName` property of each `NamedColor` object:
 
 :::image type="content" source="media/data-binding-basics/listview2.png" alt-text="Binding to a collection with a DataTemplate.":::
 

@@ -199,7 +199,7 @@ While this property can be set on a subclassed `Shell` object, it's typically se
 
 ## Display views in the navigation bar
 
-The `Shell.TitleView` attached property, of type `View`, enables any `View` to be displayed in the navigation bar.
+The `Shell.TitleView` attached property, of type <xref:Microsoft.Maui.Controls.View>, enables any <xref:Microsoft.Maui.Controls.View> to be displayed in the navigation bar.
 
 While this property can be set on a subclassed `Shell` object, it can also be set on any pages that want to display a view in the navigation bar. For example, the following XAML shows displaying an `Image` in the navigation bar of a <xref:Microsoft.Maui.Controls.ContentPage>:
 
@@ -219,7 +219,7 @@ While this property can be set on a subclassed `Shell` object, it can also be se
 
 Many views won't appear in the navigation bar unless the size of the view is specified with the `WidthRequest` and `HeightRequest` properties, or the location of the view is specified with the `HorizontalOptions` and `VerticalOptions` properties.
 
-The `TitleView` attached property can be set to display a layout class that contains multiple views. Similarly, because the <xref:Microsoft.Maui.Controls.ContentView> class ultimately derives from the `View` class, the `TitleView` attached property can be set to display a <xref:Microsoft.Maui.Controls.ContentView> that contains a single view.
+The `TitleView` attached property can be set to display a layout class that contains multiple views. Similarly, because the <xref:Microsoft.Maui.Controls.ContentView> class ultimately derives from the <xref:Microsoft.Maui.Controls.View> class, the `TitleView` attached property can be set to display a <xref:Microsoft.Maui.Controls.ContentView> that contains a single view.
 
 ## Page visibility
 

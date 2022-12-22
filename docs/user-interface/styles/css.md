@@ -374,11 +374,11 @@ The following CSS properties are supported by .NET MAUI (in the **Values** colum
 |`justify-content`|<xref:Microsoft.Maui.Controls.FlexLayout>| `start` \| `center` \| `end` \| `spacebetween` \| `spacearound` \| `spaceevenly` \| `flex-start` \| `flex-end` \| `space-between` \| `space-around` \| `initial`|`justify-content: flex-end;`|
 |`letter-spacing`|`Button`, <xref:Microsoft.Maui.Controls.DatePicker>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, `Label`, <xref:Microsoft.Maui.Controls.Picker>, <xref:Microsoft.Maui.Controls.SearchBar>, `SearchHandler`, `Span`, <xref:Microsoft.Maui.Controls.TimePicker>|_double_ \| `initial`|`letter-spacing: 2.5;`|
 |`line-height`|`Label`, `Span`|_double_ \| `initial` |`line-height: 1.8;`|
-|`margin`|`View`|_thickness_ \| `initial` |`margin: 6 12;`|
-|`margin-left`|`View`|_thickness_ \| `initial` |`margin-left: 3;`|
-|`margin-top`|`View`|_thickness_ \| `initial` |`margin-top: 2;`|
-|`margin-right`|`View`|_thickness_ \| `initial` |`margin-right: 1;`|
-|`margin-bottom`|`View`|_thickness_ \| `initial` |`margin-bottom: 6;`|
+|`margin`|<xref:Microsoft.Maui.Controls.View>|_thickness_ \| `initial` |`margin: 6 12;`|
+|`margin-left`|<xref:Microsoft.Maui.Controls.View>|_thickness_ \| `initial` |`margin-left: 3;`|
+|`margin-top`|<xref:Microsoft.Maui.Controls.View>|_thickness_ \| `initial` |`margin-top: 2;`|
+|`margin-right`|<xref:Microsoft.Maui.Controls.View>|_thickness_ \| `initial` |`margin-right: 1;`|
+|`margin-bottom`|<xref:Microsoft.Maui.Controls.View>|_thickness_ \| `initial` |`margin-bottom: 6;`|
 |`max-lines`|`Label`|_int_ \| `initial`|`max-lines: 2;`|
 |`min-height`|<xref:Microsoft.Maui.Controls.VisualElement>|_double_ \| `initial` |`min-height: 50;`|
 |`min-width`|<xref:Microsoft.Maui.Controls.VisualElement>|_double_ \| `initial` |`min-width: 112;`|

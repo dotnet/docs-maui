@@ -110,7 +110,7 @@ Sometimes an application enters a state where a `CheckBox` being checked is not 
 
 ## CheckBox appearance
 
-In addition to the properties that `CheckBox` inherits from the `View` class, `CheckBox` also defines a `Color` property that sets its color to a `Color`:
+In addition to the properties that `CheckBox` inherits from the <xref:Microsoft.Maui.Controls.View> class, `CheckBox` also defines a `Color` property that sets its color to a `Color`:
 
 ```xaml
 <CheckBox Color="Red" />

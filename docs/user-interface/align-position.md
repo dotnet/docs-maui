@@ -6,20 +6,20 @@ ms.date: 04/26/2022
 
 # Align and position .NET MAUI controls
 
-Every .NET Multi-platform App UI (.NET MAUI) control that derives from `View`, which includes views and layouts, has `HorizontalOptions` and `VerticalOptions` properties, of type `LayoutOptions`. The `LayoutOptions` structure encapsulates a view's preferred alignment, which determines its position and size within its parent layout when the parent layout contains unused space (that is, the parent layout is larger than the combined size of all its children).
+Every .NET Multi-platform App UI (.NET MAUI) control that derives from <xref:Microsoft.Maui.Controls.View>, which includes views and layouts, has `HorizontalOptions` and `VerticalOptions` properties, of type `LayoutOptions`. The `LayoutOptions` structure encapsulates a view's preferred alignment, which determines its position and size within its parent layout when the parent layout contains unused space (that is, the parent layout is larger than the combined size of all its children).
 
 In addition, the `Margin` and `Padding` properties position controls relative to adjacent, or child controls. For more information, see [Position controls](#position-controls).
 
 ## Align views in layouts
 
-The alignment of a `View`, relative to its parent, can be controlled by setting the `HorizontalOptions` or `VerticalOptions` property of the `View` to one of the public fields from the `LayoutOptions` structure. The public fields are as `Start`, `Center`, `End`, and `Fill`.
+The alignment of a <xref:Microsoft.Maui.Controls.View>, relative to its parent, can be controlled by setting the `HorizontalOptions` or `VerticalOptions` property of the <xref:Microsoft.Maui.Controls.View> to one of the public fields from the `LayoutOptions` structure. The public fields are as `Start`, `Center`, `End`, and `Fill`.
 
 The `Start`, `Center`, `End`, and `Fill` fields are used to define the view's alignment within the parent layout:
 
-- For horizontal alignment, `Start` positions the `View` on the left hand side of the parent layout, and for vertical alignment, it positions the `View` at the top of the parent layout.
-- For horizontal and vertical alignment, `Center` horizontally or vertically centers the `View`.
-- For horizontal alignment, `End` positions the `View` on the right hand side of the parent layout, and for vertical alignment, it positions the `View` at the bottom of the parent layout.
-- For horizontal alignment, `Fill` ensures that the `View` fills the width of the parent layout, and for vertical alignment, it ensures that the `View` fills the height of the parent layout.
+- For horizontal alignment, `Start` positions the <xref:Microsoft.Maui.Controls.View> on the left hand side of the parent layout, and for vertical alignment, it positions the <xref:Microsoft.Maui.Controls.View> at the top of the parent layout.
+- For horizontal and vertical alignment, `Center` horizontally or vertically centers the <xref:Microsoft.Maui.Controls.View>.
+- For horizontal alignment, `End` positions the <xref:Microsoft.Maui.Controls.View> on the right hand side of the parent layout, and for vertical alignment, it positions the <xref:Microsoft.Maui.Controls.View> at the bottom of the parent layout.
+- For horizontal alignment, `Fill` ensures that the <xref:Microsoft.Maui.Controls.View> fills the width of the parent layout, and for vertical alignment, it ensures that the <xref:Microsoft.Maui.Controls.View> fills the height of the parent layout.
 
 > [!NOTE]
 > The default value of a view's `HorizontalOptions` and `VerticalOptions` properties is `LayoutOptions.Fill`.

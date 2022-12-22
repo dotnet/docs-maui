@@ -12,13 +12,13 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.RadioBu
 
 :::image type="content" source="media/radiobutton/radiobuttons-default.png" alt-text="Screenshot of RadioButtons.":::
 
-However, on some platforms a <xref:Microsoft.Maui.Controls.RadioButton> can display a `View`, and on all platforms the appearance of each <xref:Microsoft.Maui.Controls.RadioButton> can be redefined with a `ControlTemplate`:
+However, on some platforms a <xref:Microsoft.Maui.Controls.RadioButton> can display a <xref:Microsoft.Maui.Controls.View>, and on all platforms the appearance of each <xref:Microsoft.Maui.Controls.RadioButton> can be redefined with a `ControlTemplate`:
 
 :::image type="content" source="media/radiobutton/radiobuttons-controltemplate.png" alt-text="Screenshot of re-defined RadioButtons.":::
 
 <xref:Microsoft.Maui.Controls.RadioButton> defines the following properties:
 
-- `Content`, of type `object`, which defines the `string` or `View` to be displayed by the <xref:Microsoft.Maui.Controls.RadioButton>.
+- `Content`, of type `object`, which defines the `string` or <xref:Microsoft.Maui.Controls.View> to be displayed by the <xref:Microsoft.Maui.Controls.RadioButton>.
 - `IsChecked`, of type `bool`, which defines whether the <xref:Microsoft.Maui.Controls.RadioButton> is checked. This property uses a `TwoWay` binding, and has a default value of `false`.
 - `GroupName`, of type `string`, which defines the name that specifies which <xref:Microsoft.Maui.Controls.RadioButton> controls are mutually exclusive. This property has a default value of `null`.
 - `Value`, of type `object`, which defines an optional unique value associated with the <xref:Microsoft.Maui.Controls.RadioButton>.
@@ -49,8 +49,8 @@ For more information about the `GroupName` attached property, see [Group RadioBu
 The appearance of a <xref:Microsoft.Maui.Controls.RadioButton> is defined by the type of data assigned to the `RadioButton.Content` property:
 
 - When the `RadioButton.Content` property is assigned a `string`, it will be displayed on each platform, horizontally aligned next to the radio button circle.
-- When the `RadioButton.Content` is assigned a `View`, it will be displayed on supported platforms (iOS, Windows), while unsupported platforms will fallback to a string representation of the `View` object (Android). In both cases, the content is displayed horizontally aligned next to the radio button circle.
-- When a `ControlTemplate` is applied to a <xref:Microsoft.Maui.Controls.RadioButton>, a `View` can be assigned to the `RadioButton.Content` property on all platforms. For more information, see [Redefine RadioButton appearance](#redefine-radiobutton-appearance).
+- When the `RadioButton.Content` is assigned a <xref:Microsoft.Maui.Controls.View>, it will be displayed on supported platforms (iOS, Windows), while unsupported platforms will fallback to a string representation of the <xref:Microsoft.Maui.Controls.View> object (Android). In both cases, the content is displayed horizontally aligned next to the radio button circle.
+- When a `ControlTemplate` is applied to a <xref:Microsoft.Maui.Controls.RadioButton>, a <xref:Microsoft.Maui.Controls.View> can be assigned to the `RadioButton.Content` property on all platforms. For more information, see [Redefine RadioButton appearance](#redefine-radiobutton-appearance).
 
 ### Display string-based content
 
@@ -73,7 +73,7 @@ In this example, <xref:Microsoft.Maui.Controls.RadioButton> objects are implicit
 
 ### Display arbitrary content
 
-On iOS and Windows, a <xref:Microsoft.Maui.Controls.RadioButton> can display arbitrary content when the `Content` property is assigned a `View`:
+On iOS and Windows, a <xref:Microsoft.Maui.Controls.RadioButton> can display arbitrary content when the `Content` property is assigned a <xref:Microsoft.Maui.Controls.View>:
 
 ```xaml
 <StackLayout>
@@ -105,14 +105,14 @@ In this example, <xref:Microsoft.Maui.Controls.RadioButton> objects are implicit
 
 :::image type="content" source="media/radiobutton/radiobuttons-view.png" alt-text="Screenshot of view-based RadioButtons.":::
 
-On Android, <xref:Microsoft.Maui.Controls.RadioButton> objects will display a string-based representation of the `View` object that's been set as content.
+On Android, <xref:Microsoft.Maui.Controls.RadioButton> objects will display a string-based representation of the <xref:Microsoft.Maui.Controls.View> object that's been set as content.
 
 > [!NOTE]
-> When a `ControlTemplate` is applied to a <xref:Microsoft.Maui.Controls.RadioButton>, a `View` can be assigned to the `RadioButton.Content` property on all platforms. For more information, see [Redefine RadioButton appearance](#redefine-radiobutton-appearance).
+> When a `ControlTemplate` is applied to a <xref:Microsoft.Maui.Controls.RadioButton>, a <xref:Microsoft.Maui.Controls.View> can be assigned to the `RadioButton.Content` property on all platforms. For more information, see [Redefine RadioButton appearance](#redefine-radiobutton-appearance).
 
 ## Associate values with RadioButtons
 
-Each <xref:Microsoft.Maui.Controls.RadioButton> object has a `Value` property, of type `object`, which defines an optional unique value to associate with the radio button. This enables the value of a <xref:Microsoft.Maui.Controls.RadioButton> to be different to its content, and is particularly useful when <xref:Microsoft.Maui.Controls.RadioButton> objects are displaying `View` objects.
+Each <xref:Microsoft.Maui.Controls.RadioButton> object has a `Value` property, of type `object`, which defines an optional unique value to associate with the radio button. This enables the value of a <xref:Microsoft.Maui.Controls.RadioButton> to be different to its content, and is particularly useful when <xref:Microsoft.Maui.Controls.RadioButton> objects are displaying <xref:Microsoft.Maui.Controls.View> objects.
 
 The following XAML shows setting the `Content` and `Value` properties on each <xref:Microsoft.Maui.Controls.RadioButton> object:
 
