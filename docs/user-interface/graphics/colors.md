@@ -109,7 +109,7 @@ Label indigo = new Label { Text = "Indigo", TextColor = Color.FromRgb (0, 72, 25
 Label violet = new Label { Text = "Violet", TextColor = Color.FromHsla(0.82, 1, 0.25, 1) };
 ```
 
-The following example uses the `OnPlatform` markup extension to selectively set the color of an `ActivityIndicator`:
+The following example uses the `OnPlatform` markup extension to selectively set the color of an <xref:Microsoft.Maui.Controls.ActivityIndicator>:
 
 ```xaml
 <ActivityIndicator Color="{OnPlatform AliceBlue, iOS=MidnightBlue}"
