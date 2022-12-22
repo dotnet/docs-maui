@@ -148,7 +148,7 @@ The following table lists the visual states that are defined in .NET MAUI:
 | Class | States | More Information |
 | ----- | ------ | ---------------- |
 | `Button` | `Pressed` | [Button visual states](~/user-interface/controls/button.md#button-visual-states) |
-| `CarouselView` | `DefaultItem`, `CurrentItem`, `PreviousItem`, `NextItem` | [CarouselView visual states](~/user-interface/controls/carouselview/interaction.md#define-visual-states) |
+| <xref:Microsoft.Maui.Controls.CarouselView> | `DefaultItem`, `CurrentItem`, `PreviousItem`, `NextItem` | [CarouselView visual states](~/user-interface/controls/carouselview/interaction.md#define-visual-states) |
 | `CheckBox` | `IsChecked` | [CheckBox visual states](~/user-interface/controls/checkbox.md#checkbox-visual-states) |
 | `CollectionView` | `Selected` | [CollectionView visual states](~/user-interface/controls/collectionview/selection.md#change-selected-item-color) |
 | `ImageButton` | `Pressed` | [ImageButton visual states](~/user-interface/controls/imagebutton.md#imagebutton-visual-states) |

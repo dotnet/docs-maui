@@ -50,7 +50,7 @@ The following table lists the types that implement handler-based views in .NET M
 | <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> | `IBlazorWebView` | `BlazorWebViewHandler` | `BlazorWebViewMapper` | |
 | <xref:Microsoft.Maui.Controls.Border> | `IBorderView` | `BorderHandler` | `Mapper` | `CommandMapper` |
 | `Button` | `IButton` | `ButtonHandler` | `ImageButtonMapper`. `TextButtonMapper`, `Mapper` | `CommandMapper` |
-| `CarouselView` | | `CarouselViewHandler` | `Mapper` | |
+| <xref:Microsoft.Maui.Controls.CarouselView> | | `CarouselViewHandler` | `Mapper` | |
 | `CheckBox` | `ICheckBox` | `CheckBoxHandler` | `Mapper` | `CommandMapper` |
 | `CollectionView` |  | `CollectionViewHandler` | `Mapper` | |
 | `ContentView` | `IContentView` | `ContentViewHandler` | `Mapper` | `CommandMapper` |

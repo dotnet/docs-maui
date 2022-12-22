@@ -70,7 +70,7 @@ The `Person.ToString` override could return a formatted string consisting of the
 
 ## Create a DataTemplate
 
-A `DataTemplate` is used to specify the appearance of data, and typically uses data binding to display data. A common usage scenario for data templates is when displaying data from a collection of objects in a control such as a `CollectionView` or `CarouselView`. For example, when a `CollectionView` is bound to a collection of `Person` objects, the `CollectionView.ItemTemplate` property can be set to a `DataTemplate` that defines the appearance of each `Person` object in the `CollectionView`. The `DataTemplate` will contain objects that bind to property values of each `Person` object. For more information about data binding, see [Data binding](~/fundamentals/data-binding/index.md).
+A `DataTemplate` is used to specify the appearance of data, and typically uses data binding to display data. A common usage scenario for data templates is when displaying data from a collection of objects in a control such as a `CollectionView` or <xref:Microsoft.Maui.Controls.CarouselView>. For example, when a `CollectionView` is bound to a collection of `Person` objects, the `CollectionView.ItemTemplate` property can be set to a `DataTemplate` that defines the appearance of each `Person` object in the `CollectionView`. The `DataTemplate` will contain objects that bind to property values of each `Person` object. For more information about data binding, see [Data binding](~/fundamentals/data-binding/index.md).
 
 A `DataTemplate` that's defined inline in a control is known as an *inline template*. Alternatively, data templates can be defined as a control-level, page-level, or app-level resource. Choosing where to define a `DataTemplate` impacts where it can be used:
 
@@ -202,7 +202,7 @@ In this example, the `DataTemplate` is assigned to the `CollectionView.ItemTempl
 
 ## Create a DataTemplateSelector
 
-A `DataTemplateSelector` can be used to choose a `DataTemplate` at runtime based on the value of a data-bound property. This enables multiple data templates to be applied to the same type of object, to choose their appearance at runtime. A data template selector enables scenarios such as a `CollectionView` or `CarouselView` binding to a collection of objects where the appearance of each object can be chosen at runtime by the data template selector returning a specific `DataTemplate`.
+A `DataTemplateSelector` can be used to choose a `DataTemplate` at runtime based on the value of a data-bound property. This enables multiple data templates to be applied to the same type of object, to choose their appearance at runtime. A data template selector enables scenarios such as a `CollectionView` or <xref:Microsoft.Maui.Controls.CarouselView> binding to a collection of objects where the appearance of each object can be chosen at runtime by the data template selector returning a specific `DataTemplate`.
 
 A data template selector is implemented by creating a class that inherits from `DataTemplateSelector`. The `OnSelectTemplate` method should then be overridden to return a specific `DataTemplate`:
 

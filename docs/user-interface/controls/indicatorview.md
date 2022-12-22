@@ -8,7 +8,7 @@ ms.date: 02/15/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-indicatorview)
 
-The .NET Multi-platform App UI (.NET MAUI) `IndicatorView` is a control that displays indicators that represent the number of items, and current position, in a `CarouselView`:
+The .NET Multi-platform App UI (.NET MAUI) `IndicatorView` is a control that displays indicators that represent the number of items, and current position, in a <xref:Microsoft.Maui.Controls.CarouselView>:
 
 :::image type="content" source="media/indicatorview/circles.png" alt-text="Screenshot of a CarouselView and IndicatorView.":::
 
@@ -24,7 +24,7 @@ The .NET Multi-platform App UI (.NET MAUI) `IndicatorView` is a control that dis
 - `ItemsSource`, of type `IEnumerable`, the collection that indicators will be displayed for. This property will automatically be set when the `CarouselView.IndicatorView` property is set.
 - `MaximumVisible`, of type `int`, the maximum number of visible indicators. The default value is `int.MaxValue`.
 - `Position`, of type `int`, the currently selected indicator index. This property uses a `TwoWay` binding. This property will automatically be set when the `CarouselView.IndicatorView` property is set.
-- `SelectedIndicatorColor`, of type `Color`, the color of the indicator that represents the current item in the `CarouselView`.
+- `SelectedIndicatorColor`, of type `Color`, the color of the indicator that represents the current item in the <xref:Microsoft.Maui.Controls.CarouselView>.
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
@@ -49,7 +49,7 @@ The following example shows how to create an `IndicatorView` in XAML:
 </StackLayout>
 ```
 
-In this example, the `IndicatorView` is rendered beneath the `CarouselView`, with an indicator for each item in the `CarouselView`. The `IndicatorView` is populated with data by setting the `CarouselView.IndicatorView` property to the `IndicatorView` object. Each indicator is a light gray circle, while the indicator that represents the current item in the `CarouselView` is dark gray.
+In this example, the `IndicatorView` is rendered beneath the <xref:Microsoft.Maui.Controls.CarouselView>, with an indicator for each item in the <xref:Microsoft.Maui.Controls.CarouselView>. The `IndicatorView` is populated with data by setting the `CarouselView.IndicatorView` property to the `IndicatorView` object. Each indicator is a light gray circle, while the indicator that represents the current item in the <xref:Microsoft.Maui.Controls.CarouselView> is dark gray.
 
 > [!IMPORTANT]
 > Setting the `CarouselView.IndicatorView` property results in the `IndicatorView.Position` property binding to the `CarouselView.Position` property, and the `IndicatorView.ItemsSource` property binding to the `CarouselView.ItemsSource` property.
