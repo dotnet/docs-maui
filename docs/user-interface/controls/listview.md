@@ -147,7 +147,7 @@ The appearance of each item in a <xref:Microsoft.Maui.Controls.ListView> is defi
 - `EntryCell`, which displays a label and text that's editable.
 - `ViewCell`, which is a custom cell whose appearance is defined by a `View`. This cell type should be used when you want to fully define the appearance of each item in a <xref:Microsoft.Maui.Controls.ListView>.
 
-Typically, `SwitchCell` and `EntryCell` will only be used in a `TableView` and won't be used in a <xref:Microsoft.Maui.Controls.ListView>. For more information about `SwitchCell` and `EntryCell`, see [TableView](tableview.md).
+Typically, `SwitchCell` and `EntryCell` will only be used in a <xref:Microsoft.Maui.Controls.TableView> and won't be used in a <xref:Microsoft.Maui.Controls.ListView>. For more information about `SwitchCell` and `EntryCell`, see [TableView](tableview.md).
 
 #### Text cell
 
