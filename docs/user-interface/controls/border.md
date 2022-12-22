@@ -173,15 +173,15 @@ In this example, a border that uses a linear gradient is drawn around a `Label`:
 
 In XAML, the value of the `StrokeShape` property can be defined using property-tag syntax, or as a `string`. Valid `string` values for the `StrokeShape` property are:
 
-- <xref:Microsoft.Maui.Controls.Shapes.Ellipse>
-- <xref:Microsoft.Maui.Controls.Shapes.Line>, followed by one or two x- and y-coordinate pairs. For example, `Line 10 20` draws a line from (10,20) to (0,0), and `Line 10 20, 100 120` draws a line from (10,20) to (100,120).
+- `Ellipse`
+- `Line`, followed by one or two x- and y-coordinate pairs. For example, `Line 10 20` draws a line from (10,20) to (0,0), and `Line 10 20, 100 120` draws a line from (10,20) to (100,120).
 - `Path`, followed by path markup syntax data. For example, `Path M 10,100 L 100,100 100,50Z` will draw a triangular border. For more information about path markup syntax, see [Path markup syntax](shapes/path-markup-syntax.md).
-- <xref:Microsoft.Maui.Controls.Shapes.Polygon>, followed by a collection of x- and y-coordinate pairs. For example, `Polygon 40 10, 70 80, 10 50`.
-- <xref:Microsoft.Maui.Controls.Shapes.Polyline>, followed by a collection x- and y-coordinate pairs. For example, `Polyline 0,0 10,30 15,0 18,60 23,30 35,30 40,0 43,60 48,30 100,30`.
-- <xref:Microsoft.Maui.Controls.Shapes.Rectangle>
-- <xref:Microsoft.Maui.Controls.Shapes.RoundRectangle>, optionally followed by a corner radius. For example, `RoundRectangle 40` or `RoundRectangle 40,0,0,40`.
+- `Polygon`, followed by a collection of x- and y-coordinate pairs. For example, `Polygon 40 10, 70 80, 10 50`.
+- `Polyline`, followed by a collection x- and y-coordinate pairs. For example, `Polyline 0,0 10,30 15,0 18,60 23,30 35,30 40,0 43,60 48,30 100,30`.
+- `Rectangle`
+- `RoundRectangle`, optionally followed by a corner radius. For example, `RoundRectangle 40` or `RoundRectangle 40,0,0,40`.
 
 > [!IMPORTANT]
-> While <xref:Microsoft.Maui.Controls.Shapes.Line> is a valid `string` value for the `StrokeShape` property, its use is not supported.
+> While `Line is a valid `string` value for the `StrokeShape` property, its use is not supported.
 
 `String`-based x- and y-coordinate pairs can be delimited by a single comma and/or one or more spaces. For example, "40,10 70,80" and "40 10, 70 80" are both valid. Coordinate pairs will be converted to `Point` objects that define `X` and `Y` properties, of type `double`.

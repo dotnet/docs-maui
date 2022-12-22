@@ -112,7 +112,7 @@ The following XAML example shows a `DragGestureRecognizer` that registers a hand
 </Path>
 ```
 
-In this example, the `DragGestureRecognizer` is attached to a `Path` object. The `DragStarting` event is raised when a drag gesture is detected on the `Path`, which executes the `OnDragStarting` event handler:
+In this example, the `DragGestureRecognizer` is attached to a <xref:Microsoft.Maui.Controls.Shapes.Path> object. The `DragStarting` event is raised when a drag gesture is detected on the <xref:Microsoft.Maui.Controls.Shapes.Path>, which executes the `OnDragStarting` event handler:
 
 ```csharp
 void OnDragStarting(object sender, DragStartingEventArgs e)
@@ -260,7 +260,7 @@ Image or text data can be retrieved from a data package in the handler for the `
 
 The `DataPackageView` class includes `GetImageAsync` and `GetTextAsync` methods. The `GetImageAsync` method retrieves an image from the data package that was stored in the `DataPackage.Image` property and returns `Task<ImageSource>`. Similarly, the `GetTextAsync` method retrieves text from the data package that was stored in the `DataPackage.Text` property and returns `Task<string>`.
 
-The following example shows a `Drop` event handler that retrieves text from the data package for a `Path`:
+The following example shows a `Drop` event handler that retrieves text from the data package for a <xref:Microsoft.Maui.Controls.Shapes.Path>:
 
 ```csharp
 async void OnDrop(object sender, DropEventArgs e)

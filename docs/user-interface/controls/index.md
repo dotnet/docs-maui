@@ -74,7 +74,7 @@ The main control groups used to create the user interface of a .NET MAUI app are
 | <xref:Microsoft.Maui.Controls.Shapes.Line> | <xref:Microsoft.Maui.Controls.Shapes.Line> displays a line from a start point to an end point. For more information, see [Line](~/user-interface/controls/shapes/line.md). |
 | <xref:Microsoft.Maui.Controls.ListView> | <xref:Microsoft.Maui.Controls.ListView> displays a scrollable list of selectable data items. For more information, see [ListView](~/user-interface/controls/listview.md). |
 | <xref:Microsoft.Maui.Controls.Maps.Map> | <xref:Microsoft.Maui.Controls.Maps.Map> displays a map, and requires the **Microsoft.Maui.Controls.Maps** NuGet package to be installed in your app. |
-| `Path` | `Path` display curves and complex shapes. For more information, see [Path](~/user-interface/controls/shapes/path.md). |
+| <xref:Microsoft.Maui.Controls.Shapes.Path> | <xref:Microsoft.Maui.Controls.Shapes.Path> display curves and complex shapes. For more information, see [Path](~/user-interface/controls/shapes/path.md). |
 | <xref:Microsoft.Maui.Controls.Picker> | <xref:Microsoft.Maui.Controls.Picker> displays a short list of items, from which an item can be selected. For more information, see [Picker](~/user-interface/controls/picker.md). |
 | <xref:Microsoft.Maui.Controls.Shapes.Polygon> | <xref:Microsoft.Maui.Controls.Shapes.Polygon> displays a polygon. For more information, see [Polygon](~/user-interface/controls/shapes/polygon.md). |
 | <xref:Microsoft.Maui.Controls.Shapes.Polyline> | <xref:Microsoft.Maui.Controls.Shapes.Polyline> displays a series of connected straight lines. For more information, see [Polyline](~/user-interface/controls/shapes/polyline.md). |

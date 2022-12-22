@@ -8,9 +8,9 @@ ms.date: 01/12/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-shapes)
 
-The .NET Multi-platform App UI (.NET MAUI) `Path` class derives from the `Shape` class, and can be used to draw curves and complex shapes. These curves and shapes are often described using `Geometry` objects. For information on the properties that the `Path` class inherits from the `Shape` class, see [Shapes](index.md).
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Shapes.Path> class derives from the `Shape` class, and can be used to draw curves and complex shapes. These curves and shapes are often described using `Geometry` objects. For information on the properties that the <xref:Microsoft.Maui.Controls.Shapes.Path> class inherits from the `Shape` class, see [Shapes](index.md).
 
-`Path` defines the following properties:
+<xref:Microsoft.Maui.Controls.Shapes.Path> defines the following properties:
 
 - `Data`, of type `Geometry`, which specifies the shape to be drawn.
 - `RenderTransform`, of type `Transform`, which represents the transform that is applied to the geometry of a path prior to it being drawn.
@@ -21,7 +21,7 @@ For more information about transforms, see [Path Transforms](path-transforms.md)
 
 ## Create a Path
 
-To draw a path, create a `Path` object and set its `Data` property. There are two techniques for setting the `Data` property:
+To draw a path, create a <xref:Microsoft.Maui.Controls.Shapes.Path> object and set its `Data` property. There are two techniques for setting the `Data` property:
 
 - You can set a string value for `Data` in XAML, using path markup syntax. With this approach, the `Path.Data` value is consuming a serialization format for graphics. Typically, you don't edit this string value by hand after it's created. Instead, you use design tools to manipulate the data, and export it as a string fragment that's consumable by the `Data` property.
 - You can set the `Data` property to a `Geometry` object. This can be a specific `Geometry` object, or a `GeometryGroup` which acts as a container that can combine multiple geometry objects into a single object.
@@ -45,7 +45,7 @@ For more information about path markup syntax, see [Path markup syntax](path-mar
 
 ### Create a Path with Geometry objects
 
-Curves and shapes can be described using `Geometry` objects, which are used to set the `Path` object's `Data` property. There are a variety of `Geometry` objects to choose from. The `EllipseGeometry`, `LineGeometry`, and `RectangleGeometry` classes describe relatively simple shapes. To create more complex shapes or create curves, use a `PathGeometry`.
+Curves and shapes can be described using `Geometry` objects, which are used to set the <xref:Microsoft.Maui.Controls.Shapes.Path> object's `Data` property. There are a variety of `Geometry` objects to choose from. The `EllipseGeometry`, `LineGeometry`, and `RectangleGeometry` classes describe relatively simple shapes. To create more complex shapes or create curves, use a `PathGeometry`.
 
 `PathGeometry` objects are comprised of one or more `PathFigure` objects. Each `PathFigure` object represents a different shape. Each `PathFigure` object is itself comprised of one or more `PathSegment` objects, each representing a connection portion of the shape. Segment types include the following the `LineSegment`, `BezierSegment`, and `ArcSegment` classes.
 

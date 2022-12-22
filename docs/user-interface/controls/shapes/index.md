@@ -24,7 +24,7 @@ A .NET Multi-platform App UI (.NET MAUI) `Shape` is a type of <xref:Microsoft.Ma
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
-.NET MAUI defines a number of objects that derive from the `Shape` class. These are <xref:Microsoft.Maui.Controls.Shapes.Ellipse>, <xref:Microsoft.Maui.Controls.Shapes.Line>, `Path`, <xref:Microsoft.Maui.Controls.Shapes.Polygon>, <xref:Microsoft.Maui.Controls.Shapes.Polyline>, <xref:Microsoft.Maui.Controls.Shapes.Rectangle>, and <xref:Microsoft.Maui.Controls.Shapes.RoundRectangle>.
+.NET MAUI defines a number of objects that derive from the `Shape` class. These are <xref:Microsoft.Maui.Controls.Shapes.Ellipse>, <xref:Microsoft.Maui.Controls.Shapes.Line>, <xref:Microsoft.Maui.Controls.Shapes.Path>, <xref:Microsoft.Maui.Controls.Shapes.Polygon>, <xref:Microsoft.Maui.Controls.Shapes.Polyline>, <xref:Microsoft.Maui.Controls.Shapes.Rectangle>, and <xref:Microsoft.Maui.Controls.Shapes.RoundRectangle>.
 
 ## Paint shapes
 
@@ -77,7 +77,7 @@ The following XAML shows how to set the `Aspect` property:
 </Path>      
 ```
 
-In this example, a `Path` object draws a heart. The `Path` object's `WidthRequest` and `HeightRequest` properties are set to 100 device-independent units, and its `Aspect` property is set to `Uniform`. As a result, the object's contents are resized to fit the destination dimensions, while preserving the aspect ratio:
+In this example, a <xref:Microsoft.Maui.Controls.Shapes.Path> object draws a heart. The <xref:Microsoft.Maui.Controls.Shapes.Path> object's `WidthRequest` and `HeightRequest` properties are set to 100 device-independent units, and its `Aspect` property is set to `Uniform`. As a result, the object's contents are resized to fit the destination dimensions, while preserving the aspect ratio:
 
 :::image type="content" source="media/aspect.png" alt-text="Stretch shapes.":::
 

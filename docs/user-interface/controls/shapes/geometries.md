@@ -25,7 +25,7 @@ The `Geometry` and `Shape` classes seem similar, in that they both describe 2D s
 
 The following classes have properties that can be set to `Geometry` objects:
 
-- The `Path` class uses a `Geometry` to describe its contents. You can render a `Geometry` by setting the `Path.Data` property to a `Geometry` object, and setting the `Path` object's `Fill` and `Stroke` properties.
+- The <xref:Microsoft.Maui.Controls.Shapes.Path> class uses a `Geometry` to describe its contents. You can render a `Geometry` by setting the `Path.Data` property to a `Geometry` object, and setting the <xref:Microsoft.Maui.Controls.Shapes.Path> object's `Fill` and `Stroke` properties.
 - The <xref:Microsoft.Maui.Controls.VisualElement> class has a `Clip` property, of type `Geometry`, that defines the outline of the contents of an element. When the `Clip` property is set to a `Geometry` object, only the area that is within the region of the `Geometry` will be visible. For more information, see [Clip with a Geometry](#clip-with-a-geometry).
 
 The classes that derive from the `Geometry` class can be grouped into three categories: simple geometries, path geometries, and composite geometries.
@@ -46,7 +46,7 @@ The `EllipseGeometry` class defines the following properties:
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
-The following example shows how to create and render an `EllipseGeometry` in a `Path` object:
+The following example shows how to create and render an `EllipseGeometry` in a <xref:Microsoft.Maui.Controls.Shapes.Path> object:
 
 ```xaml
 <Path Fill="Blue"
@@ -74,7 +74,7 @@ The `LineGeometry` class defines the following properties:
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
-The following example shows how to create and render a `LineGeometry` in a `Path` object:
+The following example shows how to create and render a `LineGeometry` in a <xref:Microsoft.Maui.Controls.Shapes.Path> object:
 
 ```xaml
 <Path Stroke="Black">
@@ -90,7 +90,7 @@ In this example, a `LineGeometry` is drawn from (10,20) to (100,130):
 :::image type="content" source="media/geometry/line.png" alt-text="LineGeometry.":::
 
 > [!NOTE]
-> Setting the `Fill` property of a `Path` that renders a `LineGeometry` will have no effect, because a line has no interior.
+> Setting the `Fill` property of a <xref:Microsoft.Maui.Controls.Shapes.Path> that renders a `LineGeometry` will have no effect, because a line has no interior.
 
 ### RectangleGeometry
 
@@ -98,7 +98,7 @@ A rectangle geometry represents the geometry of a rectangle or square, and is de
 
 The `RectangleGeometry` class defines the `Rect` property, of type `Rect`, which represents the dimensions of the rectangle. This property is backed by a `BindableProperty` object, which means that it can be the target of data bindings, and styled.
 
-The following example shows how to create and render a `RectangleGeometry` in a `Path` object:
+The following example shows how to create and render a `RectangleGeometry` in a <xref:Microsoft.Maui.Controls.Shapes.Path> object:
 
 ```xaml
 <Path Fill="Blue"
@@ -187,7 +187,7 @@ The `SweepDirection` enumeration defines the following members:
 - `CounterClockwise`, which specifies that arcs are drawn in a counter clockwise direction.
 - `Clockwise`, which specifies that arcs are drawn in a clockwise direction.
 
-The following example shows how to create and render an `ArcSegment` in a `Path` object:
+The following example shows how to create and render an `ArcSegment` in a <xref:Microsoft.Maui.Controls.Shapes.Path> object:
 
 ```xaml
 <Path Stroke="Black">
@@ -232,7 +232,7 @@ These properties are backed by `BindableProperty` objects, which means that they
 
 The two control points of a cubic Bezier curve behave like magnets, attracting portions of what would otherwise be a straight line toward themselves and producing a curve. The first control point affects the start portion of the curve. The second control point affects the end portion of the curve. The curve doesn't necessarily pass through either of the control points. Instead, each control point moves its portion of the line toward itself, but not through itself.
 
-The following example shows how to create and render a `BezierSegment` in a `Path` object:
+The following example shows how to create and render a `BezierSegment` in a <xref:Microsoft.Maui.Controls.Shapes.Path> object:
 
 ```xaml
 <Path Stroke="Black">
@@ -269,7 +269,7 @@ The `LineSegment` class defines the `Point` property, of type `Point`, which rep
 > [!NOTE]
 > The `LineSegment` class does not contain a property for the starting point of the line. It only defines the end point. The start point of the line is the current point of the `PathFigure` to which the `LineSegment` is added.
 
-The following example shows how to create and render `LineSegment` objects in a `Path` object:
+The following example shows how to create and render `LineSegment` objects in a <xref:Microsoft.Maui.Controls.Shapes.Path> object:
 
 ```xaml
 <Path Stroke="Black"      
@@ -308,7 +308,7 @@ The `PolyBezierSegment` class defines the `Points` property, of type `PointColle
 > [!NOTE]
 > The `PolyBezierSegment` class does not contain a property for the starting point of the curve. The start point of the curve is the current point of the `PathFigure` to which the `PolyBezierSegment` is added.
 
-The following example shows how to create and render a `PolyBezierSegment` in a `Path` object:
+The following example shows how to create and render a `PolyBezierSegment` in a <xref:Microsoft.Maui.Controls.Shapes.Path> object:
 
 ```xaml
 <Path Stroke="Black">
@@ -343,7 +343,7 @@ The `PolyLineSegment` class defines the `Points` property, of type `PointCollect
 > [!NOTE]
 > The `PolyLineSegment` class does not contain a property for the starting point of the line. The start point of the line is the current point of the `PathFigure` to which the `PolyLineSegment` is added.
 
-The following example shows how to create and render a `PolyLineSegment` in a `Path` object:
+The following example shows how to create and render a `PolyLineSegment` in a <xref:Microsoft.Maui.Controls.Shapes.Path> object:
 
 ```xaml
 <Path Stroke="Black">
@@ -374,7 +374,7 @@ The `PolyQuadraticBezierSegment` class defines the `Points` property, of type `P
 > [!NOTE]
 > The `PolyQuadraticBezierSegment` class does not contain a property for the starting point of the curve. The start point of the curve is the current point of the `PathFigure` to which the `PolyQuadraticBezierSegment` is added.
 
-The following example shows to create and render a `PolyQuadraticBezierSegment` in a `Path` object:
+The following example shows to create and render a `PolyQuadraticBezierSegment` in a <xref:Microsoft.Maui.Controls.Shapes.Path> object:
 
 ```xaml
 <Path Stroke="Black">
@@ -414,7 +414,7 @@ These properties are backed by `BindableProperty` objects, which means that they
 > [!NOTE]
 > The `QuadraticBezierSegment` class does not contain a property for the starting point of the curve. The start point of the curve is the current point of the `PathFigure` to which the `QuadraticBezierSegment` is added.
 
-The following example shows how to create and render a `QuadraticBezierSegment` in a `Path` object:
+The following example shows how to create and render a `QuadraticBezierSegment` in a <xref:Microsoft.Maui.Controls.Shapes.Path> object:
 
 ```xaml
 <Path Stroke="Black">
@@ -543,7 +543,7 @@ These properties are backed by `BindableProperty` objects, which means that they
 
 For more information about the `FillRule` enumeration, see [Fill rules](fillrules.md).
 
-To draw a composite geometry, set the required `Geometry` objects as the children of a `GeometryGroup`, and display them with a `Path` object. The following XAML shows an example of this:
+To draw a composite geometry, set the required `Geometry` objects as the children of a `GeometryGroup`, and display them with a <xref:Microsoft.Maui.Controls.Shapes.Path> object. The following XAML shows an example of this:
 
 ```xaml
 <Path Stroke="Green"
@@ -586,7 +586,7 @@ These properties are backed by `BindableProperty` objects, which means that they
 > [!NOTE]
 > The fill rule used by the `RoundRectangleGeometry` is `FillRule.Nonzero`. For more information about fill rules, see [Fill rules](fillrules.md).
 
-The following example shows how to create and render a `RoundRectangleGeometry` in a `Path` object:
+The following example shows how to create and render a `RoundRectangleGeometry` in a <xref:Microsoft.Maui.Controls.Shapes.Path> object:
 
 ```xaml
 <Path Fill="Blue"

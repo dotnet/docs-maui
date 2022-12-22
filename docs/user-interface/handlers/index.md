@@ -65,7 +65,7 @@ The following table lists the types that implement handler-based views in .NET M
 | `Label` | `ILabel` | `LabelHandler` | `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.Shapes.Line> | | `LineHandler` | `Mapper` | |
 | <xref:Microsoft.Maui.Controls.Maps.Map> | `IMap` | `MapHandler` | `Mapper` | `CommandMapper` |
-| `Path` | | `PathHandler` | `Mapper` | |
+| <xref:Microsoft.Maui.Controls.Shapes.Path> | | `PathHandler` | `Mapper` | |
 | <xref:Microsoft.Maui.Controls.Picker> | `IPicker` | `PickerHandler` | `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.Shapes.Polygon> | | `PolygonHandler` | `Mapper` | |
 | <xref:Microsoft.Maui.Controls.Shapes.Polyline> | | `PolylineHandler` | `Mapper` | |
