@@ -267,7 +267,7 @@ The following XAML example shows how to use `x:Array` to add items to a <xref:Mi
 </ContentPage>     
 ```
 
-In this example, the `ViewCell` creates a simple <xref:Microsoft.Maui.Controls.BoxView> for each color entry:
+In this example, the <xref:Microsoft.Maui.Controls.ViewCell> creates a simple <xref:Microsoft.Maui.Controls.BoxView> for each color entry:
 
 :::image type="content" source="media/consume/arraydemo.png" alt-text="x:Array demo.":::
 

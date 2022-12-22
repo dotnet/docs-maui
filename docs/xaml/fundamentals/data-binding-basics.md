@@ -163,7 +163,7 @@ However, the binding for the `Scale` property is `TwoWay`. This is because the `
 
 <xref:Microsoft.Maui.Controls.ListView> defines an `ItemsSource` property of type `IEnumerable`, and it displays the items in that collection. These items can be objects of any type. By default, <xref:Microsoft.Maui.Controls.ListView> uses the `ToString` method of each item to display that item. Sometimes this is just what you want, but in many cases, `ToString` returns only the fully-qualified class name of the object.
 
-However, the items in the <xref:Microsoft.Maui.Controls.ListView> collection can be displayed any way you want through the use of a *template*, which involves a class that derives from `Cell`. The template is cloned for every item in the <xref:Microsoft.Maui.Controls.ListView>, and data bindings that have been set on the template are transferred to the individual clones. Custom cells can be created for items using the `ViewCell` class.
+However, the items in the <xref:Microsoft.Maui.Controls.ListView> collection can be displayed any way you want through the use of a *template*, which involves a class that derives from `Cell`. The template is cloned for every item in the <xref:Microsoft.Maui.Controls.ListView>, and data bindings that have been set on the template are transferred to the individual clones. Custom cells can be created for items using the <xref:Microsoft.Maui.Controls.ViewCell> class.
 
 <xref:Microsoft.Maui.Controls.ListView> can display a list of every named color that's available in .NET MAUI, with the help of the `NamedColor` class:
 
@@ -250,7 +250,7 @@ The result establishes that the items are of type `XamlSamples.NamedColor`:
 
 :::image type="content" source="media/data-binding-basics/listview1.png" alt-text="Binding to a collection.":::
 
-To define a template for the items, the `ItemTemplate` should be set to a `DataTemplate` that references a `ViewCell`. The `ViewCell` should define a layout of one or more views to display each item:
+To define a template for the items, the `ItemTemplate` should be set to a `DataTemplate` that references a <xref:Microsoft.Maui.Controls.ViewCell>. The <xref:Microsoft.Maui.Controls.ViewCell> should define a layout of one or more views to display each item:
 
 ```xaml
 <ListView ItemsSource="{x:Static local:NamedColor.All}">
@@ -267,7 +267,7 @@ To define a template for the items, the `ItemTemplate` should be set to a `DataT
 > [!NOTE]
 > The binding source for cells, and children of cells, is the `ListView.ItemsSource` collection.
 
-In this example, the `Label` element is set to the `View` property of the `ViewCell`. The `ViewCell.View` tags are not needed because the `View` property is the content property of `ViewCell`. This XAML displays the `FriendlyName` property of each `NamedColor` object:
+In this example, the `Label` element is set to the `View` property of the <xref:Microsoft.Maui.Controls.ViewCell>. The `ViewCell.View` tags are not needed because the `View` property is the content property of <xref:Microsoft.Maui.Controls.ViewCell>. This XAML displays the `FriendlyName` property of each `NamedColor` object:
 
 :::image type="content" source="media/data-binding-basics/listview2.png" alt-text="Binding to a collection with a DataTemplate.":::
 

@@ -145,7 +145,7 @@ The appearance of each item in a <xref:Microsoft.Maui.Controls.ListView> is defi
 - `ImageCell`, which displays an image with primary and secondary text on separate lines.
 - `SwitchCell`, which displays text and a switch that can be switched on or off.
 - `EntryCell`, which displays a label and text that's editable.
-- `ViewCell`, which is a custom cell whose appearance is defined by a `View`. This cell type should be used when you want to fully define the appearance of each item in a <xref:Microsoft.Maui.Controls.ListView>.
+- <xref:Microsoft.Maui.Controls.ViewCell>, which is a custom cell whose appearance is defined by a `View`. This cell type should be used when you want to fully define the appearance of each item in a <xref:Microsoft.Maui.Controls.ListView>.
 
 Typically, `SwitchCell` and `EntryCell` will only be used in a <xref:Microsoft.Maui.Controls.TableView> and won't be used in a <xref:Microsoft.Maui.Controls.ListView>. For more information about `SwitchCell` and `EntryCell`, see [TableView](tableview.md).
 
@@ -203,12 +203,12 @@ The following screenshot shows the resulting cell appearance:
 
 #### View cell
 
-A `ViewCell` is a custom cell whose appearance is defined by a `View`. `ViewCell` defines a `View` property, of type `View`, which defines the view that represents the content of the cell. This property is backed by a `BindableProperty` object, which means it can be the target of data bindings, and be styled.
+A <xref:Microsoft.Maui.Controls.ViewCell> is a custom cell whose appearance is defined by a `View`. <xref:Microsoft.Maui.Controls.ViewCell> defines a `View` property, of type `View`, which defines the view that represents the content of the cell. This property is backed by a `BindableProperty` object, which means it can be the target of data bindings, and be styled.
 
 > [!NOTE]
-> The `View` property is the content property of the `ViewCell` class, and therefore does not need to be explicitly set from XAML.
+> The `View` property is the content property of the <xref:Microsoft.Maui.Controls.ViewCell> class, and therefore does not need to be explicitly set from XAML.
 
-The following example shows using a `ViewCell` to define the appearance of items in a <xref:Microsoft.Maui.Controls.ListView>:
+The following example shows using a <xref:Microsoft.Maui.Controls.ViewCell> to define the appearance of items in a <xref:Microsoft.Maui.Controls.ListView>:
 
 ```xaml
 <ListView ItemsSource="{Binding Monkeys}">
@@ -244,7 +244,7 @@ The following example shows using a `ViewCell` to define the appearance of items
 </ListView>
 ```
 
-Inside the `ViewCell`, layout can be managed by any .NET MAUI layout. In this example, layout is managed by a <xref:Microsoft.Maui.Controls.Grid>. The <xref:Microsoft.Maui.Controls.Grid> contains an `Image` object, and two `Label` objects, that all bind to properties of the `Monkey` class.
+Inside the <xref:Microsoft.Maui.Controls.ViewCell>, layout can be managed by any .NET MAUI layout. In this example, layout is managed by a <xref:Microsoft.Maui.Controls.Grid>. The <xref:Microsoft.Maui.Controls.Grid> contains an `Image` object, and two `Label` objects, that all bind to properties of the `Monkey` class.
 
 The following screenshot shows the result of templating each item in the list:
 
@@ -419,7 +419,7 @@ public class CustomCell : ViewCell
 When a <xref:Microsoft.Maui.Controls.ListView> uses a `DataTemplateSelector` to select a `DataTemplate`, the `RecycleElement` caching strategy does not cache `DataTemplate` objects. Instead, a `DataTemplate` is selected for each item of data in the list.
 
 > [!NOTE]
-> The `RecycleElement` caching strategy requires that when a `DataTemplateSelector` is asked to select a `DataTemplate` that each `DataTemplate` must return the same `ViewCell` type. For example, given a <xref:Microsoft.Maui.Controls.ListView> with a `DataTemplateSelector` that can return either `MyDataTemplateA` (where `MyDataTemplateA` returns a `ViewCell` of type `MyViewCellA`), or `MyDataTemplateB` (where `MyDataTemplateB` returns a `ViewCell` of type `MyViewCellB`), when `MyDataTemplateA` is returned it must return `MyViewCellA` or an exception will be thrown.
+> The `RecycleElement` caching strategy requires that when a `DataTemplateSelector` is asked to select a `DataTemplate` that each `DataTemplate` must return the same <xref:Microsoft.Maui.Controls.ViewCell> type. For example, given a <xref:Microsoft.Maui.Controls.ListView> with a `DataTemplateSelector` that can return either `MyDataTemplateA` (where `MyDataTemplateA` returns a <xref:Microsoft.Maui.Controls.ViewCell> of type `MyViewCellA`), or `MyDataTemplateB` (where `MyDataTemplateB` returns a <xref:Microsoft.Maui.Controls.ViewCell> of type `MyViewCellB`), when `MyDataTemplateA` is returned it must return `MyViewCellA` or an exception will be thrown.
 
 ### Recycle elements with DataTemplates
 

@@ -195,7 +195,7 @@ The `MonkeyDataTemplateSelector` class defines `AmericanMonkey` and `OtherMonkey
 For more information about data template selectors, see [Create a DataTemplateSelector](~/fundamentals/datatemplate.md#create-a-datatemplateselector).
 
 > [!IMPORTANT]
-> When using <xref:Microsoft.Maui.Controls.CollectionView>, never set the root element of your `DataTemplate` objects to a `ViewCell`. This will result in an exception being thrown because <xref:Microsoft.Maui.Controls.CollectionView> has no concept of cells.
+> When using <xref:Microsoft.Maui.Controls.CollectionView>, never set the root element of your `DataTemplate` objects to a <xref:Microsoft.Maui.Controls.ViewCell>. This will result in an exception being thrown because <xref:Microsoft.Maui.Controls.CollectionView> has no concept of cells.
 
 ## Context menus
 

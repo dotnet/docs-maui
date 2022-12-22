@@ -68,7 +68,7 @@ Each item in a <xref:Microsoft.Maui.Controls.TableView> is defined by a `Cell` o
 - `ImageCell`, which displays an image with primary and secondary text on separate lines.
 - `SwitchCell`, which displays text and a switch that can be switched on or off.
 - `EntryCell`, which displays a label and text that's editable.
-- `ViewCell`, which is a custom cell whose appearance is defined by a `View`. This cell type should be used when you want to fully define the appearance of each item in a <xref:Microsoft.Maui.Controls.TableView>.
+- <xref:Microsoft.Maui.Controls.ViewCell>, which is a custom cell whose appearance is defined by a `View`. This cell type should be used when you want to fully define the appearance of each item in a <xref:Microsoft.Maui.Controls.TableView>.
 
 ### Text cell
 
@@ -207,12 +207,12 @@ The following screenshot shows the resulting cell appearance:
 
 ### View cell
 
-A `ViewCell` is a custom cell whose appearance is defined by a `View`. `ViewCell` defines a `View` property, of type `View`, which defines the view that represents the content of the cell. This property is backed by a `BindableProperty` object, which means it can be the target of data bindings, and be styled.
+A <xref:Microsoft.Maui.Controls.ViewCell> is a custom cell whose appearance is defined by a `View`. <xref:Microsoft.Maui.Controls.ViewCell> defines a `View` property, of type `View`, which defines the view that represents the content of the cell. This property is backed by a `BindableProperty` object, which means it can be the target of data bindings, and be styled.
 
 > [!NOTE]
-> The `View` property is the content property of the `ViewCell` class, and therefore does not need to be explicitly set from XAML.
+> The `View` property is the content property of the <xref:Microsoft.Maui.Controls.ViewCell> class, and therefore does not need to be explicitly set from XAML.
 
-The following example shows using a `ViewCell` to define the appearance of an item in a <xref:Microsoft.Maui.Controls.TableView>:
+The following example shows using a <xref:Microsoft.Maui.Controls.ViewCell> to define the appearance of an item in a <xref:Microsoft.Maui.Controls.TableView>:
 
 ```xaml
 <TableView Intent="Settings">
@@ -238,7 +238,7 @@ The following example shows using a `ViewCell` to define the appearance of an it
 </TableView>
 ```
 
-Inside the `ViewCell`, layout can be managed by any .NET MAUI layout. The following screenshot shows the resulting cell appearance:
+Inside the <xref:Microsoft.Maui.Controls.ViewCell>, layout can be managed by any .NET MAUI layout. The following screenshot shows the resulting cell appearance:
 
 :::image type="content" source="media/tableview/viewcell.png" alt-text="Screenshot of TableView where the item is a ViewCell.":::
 
