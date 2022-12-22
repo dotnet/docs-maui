@@ -384,11 +384,11 @@ The following CSS properties are supported by .NET MAUI (in the **Values** colum
 |`min-width`|`VisualElement`|_double_ \| `initial` |`min-width: 112;`|
 |`opacity`|`VisualElement`|_double_ \| `initial` |`opacity: .3;`|
 |`order`|`VisualElement`|_int_ \| `initial`|`order: -1;`|
-|`padding`|`Button`, <xref:Microsoft.Maui.Controls.ImageButton>, `Layout`, `Page`|_thickness_ \| `initial` |`padding: 6 12 12;`|
-|`padding-left`|`Button`, <xref:Microsoft.Maui.Controls.ImageButton>, `Layout`, `Page`|_double_ \| `initial`|`padding-left: 3;`|
-|`padding-top`|`Button`, <xref:Microsoft.Maui.Controls.ImageButton>, `Layout`, `Page`| _double_ \| `initial` |`padding-top: 4;`|
-|`padding-right`|`Button`, <xref:Microsoft.Maui.Controls.ImageButton>, `Layout`, `Page`| _double_ \| `initial` |`padding-right: 2;`|
-|`padding-bottom`|`Button`, <xref:Microsoft.Maui.Controls.ImageButton>, `Layout`, `Page`| _double_ \| `initial` |`padding-bottom: 6;`|
+|`padding`|`Button`, <xref:Microsoft.Maui.Controls.ImageButton>, <xref:Microsoft.Maui.Controls.Layout>, `Page`|_thickness_ \| `initial` |`padding: 6 12 12;`|
+|`padding-left`|`Button`, <xref:Microsoft.Maui.Controls.ImageButton>, <xref:Microsoft.Maui.Controls.Layout>, `Page`|_double_ \| `initial`|`padding-left: 3;`|
+|`padding-top`|`Button`, <xref:Microsoft.Maui.Controls.ImageButton>, <xref:Microsoft.Maui.Controls.Layout>, `Page`| _double_ \| `initial` |`padding-top: 4;`|
+|`padding-right`|`Button`, <xref:Microsoft.Maui.Controls.ImageButton>, <xref:Microsoft.Maui.Controls.Layout>, `Page`| _double_ \| `initial` |`padding-right: 2;`|
+|`padding-bottom`|`Button`, <xref:Microsoft.Maui.Controls.ImageButton>, <xref:Microsoft.Maui.Controls.Layout>, `Page`| _double_ \| `initial` |`padding-bottom: 6;`|
 |`position`|<xref:Microsoft.Maui.Controls.FlexLayout>| `relative` \| `absolute` \| `initial`|`position: absolute;`|
 |`row-gap`|<xref:Microsoft.Maui.Controls.Grid>| _double_ \| `initial`|`row-gap: 12;`|
 |`text-align`| <xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.EntryCell>, `Label`, <xref:Microsoft.Maui.Controls.SearchBar>|`left` \| `top` \| `right` \| `bottom` \| `start` \| `center` \| `middle` \| `end` \| `initial`. `left` and `right` should be avoided in right-to-left environments.| `text-align: right;`|

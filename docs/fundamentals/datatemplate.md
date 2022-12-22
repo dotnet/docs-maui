@@ -112,7 +112,7 @@ An inline data template, which is one that's defined inline in a control, should
 </CollectionView>
 ```
 
-In a <xref:Microsoft.Maui.Controls.CollectionView>, the child of an inline `DataTemplate` must derive from `BindableObject`. In this example, a <xref:Microsoft.Maui.Controls.Grid>, which derives from `Layout` is used. The <xref:Microsoft.Maui.Controls.Grid> contains three `Label` objects that bind their `Text` properties to properties of each `Person` object in the collection. The following screenshot shows the resulting appearance:
+In a <xref:Microsoft.Maui.Controls.CollectionView>, the child of an inline `DataTemplate` must derive from `BindableObject`. In this example, a <xref:Microsoft.Maui.Controls.Grid>, which derives from <xref:Microsoft.Maui.Controls.Layout> is used. The <xref:Microsoft.Maui.Controls.Grid> contains three `Label` objects that bind their `Text` properties to properties of each `Person` object in the collection. The following screenshot shows the resulting appearance:
 
 :::image type="content" source="media/datatemplate/data-template-appearance.png" alt-text="Screenshot of a CollectionView with a data template.":::
 

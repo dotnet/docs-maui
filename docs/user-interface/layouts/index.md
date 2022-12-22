@@ -256,9 +256,9 @@ For more information, see [RelativeLayout](relativelayout.md). -->
 
 ## BindableLayout
 
-A <xref:Microsoft.Maui.Controls.BindableLayout> enables any layout class that derives from the `Layout` class to generate its content by binding to a collection of items, with the option to set the appearance of each item with a `DataTemplate`.
+A <xref:Microsoft.Maui.Controls.BindableLayout> enables any layout class that derives from the <xref:Microsoft.Maui.Controls.Layout> class to generate its content by binding to a collection of items, with the option to set the appearance of each item with a `DataTemplate`.
 
-A bindable layout is populated with data by setting its `ItemsSource` property to any collection that implements `IEnumerable`, and attaching it to a `Layout`-derived class. The appearance of each item in the bindable layout can be defined by setting the `BindableLayout.ItemTemplate` attached property to a `DataTemplate`.
+A bindable layout is populated with data by setting its `ItemsSource` property to any collection that implements `IEnumerable`, and attaching it to a <xref:Microsoft.Maui.Controls.Layout>-derived class. The appearance of each item in the bindable layout can be defined by setting the `BindableLayout.ItemTemplate` attached property to a `DataTemplate`.
 
 The following XAML shows how to bind a <xref:Microsoft.Maui.Controls.StackLayout> to a collection of items, and define their appearance with a `DataTemplate`:
 
@@ -284,7 +284,7 @@ For more information, see [BindableLayout](bindablelayout.md).
 
 Each visual element has an `InputTransparent` bindable property that's used to define whether the element can receive input. Its default value is `false`, ensuring that the element can receive input. When this property is `true` on an element, the element won't receive any input. Instead, input will be passed to any elements that are visually behind the element.
 
-The `Layout` class, from which all layouts derive, has a `CascadeInputTransparent` bindable property that controls whether child elements inherit the input transparency of the layout. Its default value is `true`, ensuring that setting the `InputTransparent` property to `true` on a layout class will result in all elements within the layout not receiving any input.
+The <xref:Microsoft.Maui.Controls.Layout> class, from which all layouts derive, has a `CascadeInputTransparent` bindable property that controls whether child elements inherit the input transparency of the layout. Its default value is `true`, ensuring that setting the `InputTransparent` property to `true` on a layout class will result in all elements within the layout not receiving any input.
 
 <!--
 ## Layout performance
