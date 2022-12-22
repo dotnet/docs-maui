@@ -203,7 +203,7 @@ For more information about data template selectors, see [Create a DataTemplateSe
 
 ## Display indicators
 
-Indicators, that represent the number of items and current position in a <xref:Microsoft.Maui.Controls.CarouselView>, can be displayed next to the <xref:Microsoft.Maui.Controls.CarouselView>. This can be accomplished with the `IndicatorView` control:
+Indicators, that represent the number of items and current position in a <xref:Microsoft.Maui.Controls.CarouselView>, can be displayed next to the <xref:Microsoft.Maui.Controls.CarouselView>. This can be accomplished with the <xref:Microsoft.Maui.Controls.IndicatorView> control:
 
 ```xaml
 <StackLayout>
@@ -220,7 +220,7 @@ Indicators, that represent the number of items and current position in a <xref:M
 </StackLayout>
 ```
 
-In this example, the `IndicatorView` is rendered beneath the <xref:Microsoft.Maui.Controls.CarouselView>, with an indicator for each item in the <xref:Microsoft.Maui.Controls.CarouselView>. The `IndicatorView` is populated with data by setting the `CarouselView.IndicatorView` property to the `IndicatorView` object. Each indicator is a light gray circle, while the indicator that represents the current item in the <xref:Microsoft.Maui.Controls.CarouselView> is dark gray:
+In this example, the <xref:Microsoft.Maui.Controls.IndicatorView> is rendered beneath the <xref:Microsoft.Maui.Controls.CarouselView>, with an indicator for each item in the <xref:Microsoft.Maui.Controls.CarouselView>. The <xref:Microsoft.Maui.Controls.IndicatorView> is populated with data by setting the `CarouselView.IndicatorView` property to the <xref:Microsoft.Maui.Controls.IndicatorView> object. Each indicator is a light gray circle, while the indicator that represents the current item in the <xref:Microsoft.Maui.Controls.CarouselView> is dark gray:
 
 :::image type="content" source="media/populate-data/indicators.png" alt-text="Screenshot of a CarouselView and IndicatorView.":::
 
