@@ -8,19 +8,19 @@ ms.date: 02/08/2022
 
 The .NET Multi-platform App UI (.NET MAUI) animation classes target different properties of visual elements, with a typical basic animation progressively changing a property from one value to another over a period of time.
 
-Basic animations can be created with extension methods provided by the `ViewExtensions` class, in the `Microsoft.Maui.Controls` namespace, which operate on `VisualElement` objects:
+Basic animations can be created with extension methods provided by the `ViewExtensions` class, in the `Microsoft.Maui.Controls` namespace, which operate on <xref:Microsoft.Maui.Controls.VisualElement> objects:
 
 - `CancelAnimations` cancels any animations.
-- `FadeTo` animates the `Opacity` property of a `VisualElement`.
-- `RelScaleTo` applies an animated incremental increase or decrease to the `Scale` property of a `VisualElement`.
-- `RotateTo` animates the `Rotation` property of a `VisualElement`.
-- `RelRotateTo` applies an animated incremental increase or decrease to the `Rotation` property of a `VisualElement`.
-- `RotateXTo` animates the `RotationX` property of a `VisualElement`.
-- `RotateYTo` animates the `RotationY` property of a `VisualElement`.
-- `ScaleTo` animates the `Scale` property of a `VisualElement`.
-- `ScaleXTo` animates the `ScaleX` property of a `VisualElement`.
-- `ScaleYTo` animates the `ScaleY` property of a `VisualElement`.
-- `TranslateTo` animates the `TranslationX` and `TranslationY` properties of a `VisualElement`.
+- `FadeTo` animates the `Opacity` property of a <xref:Microsoft.Maui.Controls.VisualElement>.
+- `RelScaleTo` applies an animated incremental increase or decrease to the `Scale` property of a <xref:Microsoft.Maui.Controls.VisualElement>.
+- `RotateTo` animates the `Rotation` property of a <xref:Microsoft.Maui.Controls.VisualElement>.
+- `RelRotateTo` applies an animated incremental increase or decrease to the `Rotation` property of a <xref:Microsoft.Maui.Controls.VisualElement>.
+- `RotateXTo` animates the `RotationX` property of a <xref:Microsoft.Maui.Controls.VisualElement>.
+- `RotateYTo` animates the `RotationY` property of a <xref:Microsoft.Maui.Controls.VisualElement>.
+- `ScaleTo` animates the `Scale` property of a <xref:Microsoft.Maui.Controls.VisualElement>.
+- `ScaleXTo` animates the `ScaleX` property of a <xref:Microsoft.Maui.Controls.VisualElement>.
+- `ScaleYTo` animates the `ScaleY` property of a <xref:Microsoft.Maui.Controls.VisualElement>.
+- `TranslateTo` animates the `TranslationX` and `TranslationY` properties of a <xref:Microsoft.Maui.Controls.VisualElement>.
 
 By default, each animation will take 250 milliseconds. However, a duration for each animation can be specified when creating the animation.
 

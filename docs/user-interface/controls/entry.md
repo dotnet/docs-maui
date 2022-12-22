@@ -96,7 +96,7 @@ void OnEntryCompleted(object sender, EventArgs e)
 After the `Completed` event fires, any `ICommand` specified by the `ReturnCommand` property is executed, with the `object` specified by the `ReturnCommandParameter` property being passed to the `ReturnCommand`.
 
 > [!NOTE]
-> The `VisualElement` class, which is in the <xref:Microsoft.Maui.Controls.Entry> inheritance hierarchy, also has `Focused` and `Unfocused` events.
+> The <xref:Microsoft.Maui.Controls.VisualElement> class, which is in the <xref:Microsoft.Maui.Controls.Entry> inheritance hierarchy, also has `Focused` and `Unfocused` events.
 
 ## Set character spacing
 

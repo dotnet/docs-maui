@@ -10,7 +10,7 @@ ms.date: 04/06/2022
 
 The following platform-specific functionality is provided for .NET MAUI views, pages, and layouts on Windows:
 
-- Setting an access key for a `VisualElement`. For more information, see [VisualElement Access Keys on Windows](visualelement-access-keys.md).
+- Setting an access key for a <xref:Microsoft.Maui.Controls.VisualElement>. For more information, see [VisualElement Access Keys on Windows](visualelement-access-keys.md).
 
 The following platform-specific functionality is provided for .NET MAUI views on Windows:
 

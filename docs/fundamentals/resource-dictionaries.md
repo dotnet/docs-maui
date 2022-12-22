@@ -15,9 +15,9 @@ XAML resources that are stored in a `ResourceDictionary` can be referenced and a
 
 ## Create resources
 
-Every `VisualElement` derived object has a `Resources` property, which is a `ResourceDictionary` that can contain resources. Similarly, an `Application` derived object has a `Resources` property, which is a `ResourceDictionary` that can contain resources.
+Every <xref:Microsoft.Maui.Controls.VisualElement> derived object has a `Resources` property, which is a `ResourceDictionary` that can contain resources. Similarly, an `Application` derived object has a `Resources` property, which is a `ResourceDictionary` that can contain resources.
 
-A .NET MAUI app can contain only a single class that derives from `Application`, but often makes use of many classes that derive from `VisualElement`, including pages, layouts, and views. Any of these objects can have its `Resources` property set to a `ResourceDictionary` containing resources. Choosing where to put a particular `ResourceDictionary` impacts where the resources can be used:
+A .NET MAUI app can contain only a single class that derives from `Application`, but often makes use of many classes that derive from <xref:Microsoft.Maui.Controls.VisualElement>, including pages, layouts, and views. Any of these objects can have its `Resources` property set to a `ResourceDictionary` containing resources. Choosing where to put a particular `ResourceDictionary` impacts where the resources can be used:
 
 - Resources in a `ResourceDictionary` that is attached to a view, such as `Button` or `Label`, can only be applied to that particular object.
 - Resources in a `ResourceDictionary` attached to a layout, such as <xref:Microsoft.Maui.Controls.StackLayout> or <xref:Microsoft.Maui.Controls.Grid>, can be applied to the layout and all the children of that layout.

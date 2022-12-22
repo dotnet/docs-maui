@@ -202,7 +202,7 @@ The `AutomationProperties` class defines the following attached properties:
 - `IsInAccessibleTree`, of type `bool?`, indicates whether the element is available in the accessibility tree. For more information, see [IsInAccessibleTree](#isinaccessibletree).
 - `Name`, of type `string`, represents a short description of the element that serves as a speakable identifier for that element. For more information, see [Name](#name).
 - `HelpText`, of type `string`, represents a longer description of the element, which can be thought of as tooltip text that's associated with the element. For more information, see [HelpText](#helptext).
-- `LabeledBy`, of type `VisualElement`, which enables another element to define accessibility information for the current element. For more information, see [LabeledBy](#labeledby).
+- `LabeledBy`, of type <xref:Microsoft.Maui.Controls.VisualElement>, which enables another element to define accessibility information for the current element. For more information, see [LabeledBy](#labeledby).
 
 These attached properties set platform accessibility values so that a screen reader can speak about the element. For more information about attached properties, see [Attached properties](~/fundamentals/attached-properties.md).
 

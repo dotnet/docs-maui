@@ -26,7 +26,7 @@ The `Geometry` and `Shape` classes seem similar, in that they both describe 2D s
 The following classes have properties that can be set to `Geometry` objects:
 
 - The `Path` class uses a `Geometry` to describe its contents. You can render a `Geometry` by setting the `Path.Data` property to a `Geometry` object, and setting the `Path` object's `Fill` and `Stroke` properties.
-- The `VisualElement` class has a `Clip` property, of type `Geometry`, that defines the outline of the contents of an element. When the `Clip` property is set to a `Geometry` object, only the area that is within the region of the `Geometry` will be visible. For more information, see [Clip with a Geometry](#clip-with-a-geometry).
+- The <xref:Microsoft.Maui.Controls.VisualElement> class has a `Clip` property, of type `Geometry`, that defines the outline of the contents of an element. When the `Clip` property is set to a `Geometry` object, only the area that is within the region of the `Geometry` will be visible. For more information, see [Clip with a Geometry](#clip-with-a-geometry).
 
 The classes that derive from the `Geometry` class can be grouped into three categories: simple geometries, path geometries, and composite geometries.
 
@@ -602,7 +602,7 @@ The position and dimensions of the rectangle are defined by a `Rect` structure. 
 
 ## Clip with a Geometry
 
-The `VisualElement` class has a `Clip` property, of type `Geometry`, that defines the outline of the contents of an element. When the `Clip` property is set to a `Geometry` object, only the area that is within the region of the `Geometry` will be visible.
+The <xref:Microsoft.Maui.Controls.VisualElement> class has a `Clip` property, of type `Geometry`, that defines the outline of the contents of an element. When the `Clip` property is set to a `Geometry` object, only the area that is within the region of the `Geometry` will be visible.
 
 The following example shows how to use a `Geometry` object as the clip region for an `Image`:
 
@@ -621,7 +621,7 @@ In this example, an `EllipseGeometry` with `RadiusX` and `RadiusY` values of 100
 :::image type="content" source="media/geometry/clip-ellipsegeometry.png" alt-text="Clip an Image with an EllipseGeometry.":::
 
 > [!NOTE]
-> Simple geometries, path geometries, and composite geometries can all be used to clip `VisualElement` objects.
+> Simple geometries, path geometries, and composite geometries can all be used to clip <xref:Microsoft.Maui.Controls.VisualElement> objects.
 
 ## Other features
 

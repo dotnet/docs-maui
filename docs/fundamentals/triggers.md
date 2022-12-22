@@ -111,7 +111,7 @@ In this example, there are no `Setter` elements. Instead, there's a `NumericalVa
 
 A trigger action implementation must:
 
-- Implement the generic `TriggerAction<T>` class, with the generic parameter corresponding with the type of control the trigger will be applied to. You can use classes such as `VisualElement` to write trigger actions that work with a variety of controls, or specify a control type like <xref:Microsoft.Maui.Controls.Entry>.
+- Implement the generic `TriggerAction<T>` class, with the generic parameter corresponding with the type of control the trigger will be applied to. You can use classes such as <xref:Microsoft.Maui.Controls.VisualElement> to write trigger actions that work with a variety of controls, or specify a control type like <xref:Microsoft.Maui.Controls.Entry>.
 - Override the `Invoke` method. This method is called whenever the trigger event occurs.
 - Optionally expose properties that can be set in XAML when the trigger is declared.
 
@@ -199,7 +199,7 @@ The following example shows a property trigger that specifies an `EnterAction` a
 
 A trigger action implementation must:
 
-- Implement the generic `TriggerAction<T>` class, with the generic parameter corresponding with the type of control the trigger will be applied to. You can use classes such as `VisualElement` to write trigger actions that work with a variety of controls, or specify a control type like <xref:Microsoft.Maui.Controls.Entry>.
+- Implement the generic `TriggerAction<T>` class, with the generic parameter corresponding with the type of control the trigger will be applied to. You can use classes such as <xref:Microsoft.Maui.Controls.VisualElement> to write trigger actions that work with a variety of controls, or specify a control type like <xref:Microsoft.Maui.Controls.Entry>.
 - Override the `Invoke` method. This method is called whenever the trigger event occurs.
 - Optionally expose properties that can be set in XAML when the trigger is declared.
 

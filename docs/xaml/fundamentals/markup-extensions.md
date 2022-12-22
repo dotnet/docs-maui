@@ -56,7 +56,7 @@ Some XAML pages contain several views with properties set to the same values. Fo
 
 If one of these properties needs to be changed, you might prefer to make the change just once rather than three times. If this were code, you’d likely be using constants and static read-only objects to help keep such values consistent and easy to modify.
 
-In XAML, one popular solution is to store such values or objects in a *resource dictionary*. The `VisualElement` class defines a property named `Resources` of type `ResourceDictionary`, which is a dictionary with keys of type `string` and values of type `object`. You can put objects into this dictionary and then reference them from markup, all in XAML.
+In XAML, one popular solution is to store such values or objects in a *resource dictionary*. The <xref:Microsoft.Maui.Controls.VisualElement> class defines a property named `Resources` of type `ResourceDictionary`, which is a dictionary with keys of type `string` and values of type `object`. You can put objects into this dictionary and then reference them from markup, all in XAML.
 
 To use a resource dictionary on a page, include a pair of `Resources` property-element tags at the top of the page, and add resources within these tags. Objects and values of various types can be added to the resource dictionary. These types must be instantiable. They can’t be abstract classes, for example. These types must also have a public parameterless constructor. Each item requires a dictionary key specified with the `x:Key` attribute:
 

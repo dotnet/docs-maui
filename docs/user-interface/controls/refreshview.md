@@ -74,7 +74,7 @@ When the user initiates a refresh, the `ICommand` defined by the `Command` prope
 
 ## RefreshView appearance
 
-In addition to the properties that <xref:Microsoft.Maui.Controls.RefreshView> inherits from the `VisualElement` class, <xref:Microsoft.Maui.Controls.RefreshView> also defines the `RefreshColor` property. This property can be set to define the color of the progress circle that appears during the refresh:
+In addition to the properties that <xref:Microsoft.Maui.Controls.RefreshView> inherits from the <xref:Microsoft.Maui.Controls.VisualElement> class, <xref:Microsoft.Maui.Controls.RefreshView> also defines the `RefreshColor` property. This property can be set to define the color of the progress circle that appears during the refresh:
 
 ```xaml
 <RefreshView RefreshColor="Teal"

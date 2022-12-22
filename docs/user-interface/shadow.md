@@ -8,7 +8,7 @@ ms.date: 12/13/2021
 
 <!-- Sample link, if any, goes here -->
 
-The .NET Multi-platform App UI (.NET MAUI) `Shadow` class paints a shadow around a layout or view. The `VisualElement` class has a `Shadow` bindable property, of type `Shadow`, that enables a shadow to be added to any layout or view.
+The .NET Multi-platform App UI (.NET MAUI) `Shadow` class paints a shadow around a layout or view. The <xref:Microsoft.Maui.Controls.VisualElement> class has a `Shadow` bindable property, of type `Shadow`, that enables a shadow to be added to any layout or view.
 
 The `Shadow` class defines the following properties:
 

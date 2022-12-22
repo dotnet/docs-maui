@@ -57,7 +57,7 @@ When creating a `Style`, the `TargetType` property is always required. The follo
 </Style>
 ```
 
-To apply a `Style`, the target object must be a `VisualElement` that matches the `TargetType` property value of the `Style`:
+To apply a `Style`, the target object must be a <xref:Microsoft.Maui.Controls.VisualElement> that matches the `TargetType` property value of the `Style`:
 
 ```xaml
 <Label Text="Demonstrating an explicit style" Style="{StaticResource labelStyle}" />
@@ -363,12 +363,12 @@ In this example, the `blueSearchBarStyle` definition is updated to use the value
 
 Style classes enable multiple styles to be applied to a control, without resorting to style inheritance.
 
-A style class can be created by setting the `Class` property on a `Style` to a `string` that represents the class name. The advantage this offers, over defining an explicit style using the `x:Key` attribute, is that multiple style classes can be applied to a `VisualElement`.
+A style class can be created by setting the `Class` property on a `Style` to a `string` that represents the class name. The advantage this offers, over defining an explicit style using the `x:Key` attribute, is that multiple style classes can be applied to a <xref:Microsoft.Maui.Controls.VisualElement>.
 
 > [!IMPORTANT]
 > Multiple styles can share the same class name, provided they target different types. This enables multiple style classes, that are identically named, to target different types.
 
-The following example shows three <xref:Microsoft.Maui.Controls.BoxView> style classes, and a `VisualElement` style class:
+The following example shows three <xref:Microsoft.Maui.Controls.BoxView> style classes, and a <xref:Microsoft.Maui.Controls.VisualElement> style class:
 
 ```xaml
 <ContentPage ...>
@@ -415,7 +415,7 @@ The following example shows three <xref:Microsoft.Maui.Controls.BoxView> style c
 </ContentPage>
 ```
 
-In this example, the `Separator`, `Rounded`, and `Circle` style classes each set <xref:Microsoft.Maui.Controls.BoxView> properties to specific values. The `Rotated` style class has a `TargetType` of `VisualElement`, which means it can only be applied to `VisualElement` instances. However, its `ApplyToDerivedTypes` property is set to `true`, which ensures that it can be applied to any controls that derive from `VisualElement`, such as <xref:Microsoft.Maui.Controls.BoxView>. For more information about applying a style to a derived type, see [Apply a style to derived types](#apply-a-style-to-derived-types).
+In this example, the `Separator`, `Rounded`, and `Circle` style classes each set <xref:Microsoft.Maui.Controls.BoxView> properties to specific values. The `Rotated` style class has a `TargetType` of <xref:Microsoft.Maui.Controls.VisualElement>, which means it can only be applied to <xref:Microsoft.Maui.Controls.VisualElement> instances. However, its `ApplyToDerivedTypes` property is set to `true`, which ensures that it can be applied to any controls that derive from <xref:Microsoft.Maui.Controls.VisualElement>, such as <xref:Microsoft.Maui.Controls.BoxView>. For more information about applying a style to a derived type, see [Apply a style to derived types](#apply-a-style-to-derived-types).
 
 Style classes can be consumed by setting the `StyleClass` property of the control, which is of type `IList<string>`, to a list of style class names. The style classes will be applied, provided that the type of the control matches the `TargetType` of the style classes.
 

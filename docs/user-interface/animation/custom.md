@@ -113,7 +113,7 @@ The resulting animation provides the appearance of advancing the page background
 
 ## Create a custom animation extension method
 
-The extension methods in the `ViewExtensions` class animate a property from its current value to a specified value. This makes it difficult to create, for example, a `ColorTo` animation method that can be used to animate a color from one value to another. This is because different controls have different properties of type `Color`. While the `VisualElement` class defines a `BackgroundColor` property, this isn't always the desired `Color` property to animate.
+The extension methods in the `ViewExtensions` class animate a property from its current value to a specified value. This makes it difficult to create, for example, a `ColorTo` animation method that can be used to animate a color from one value to another. This is because different controls have different properties of type `Color`. While the <xref:Microsoft.Maui.Controls.VisualElement> class defines a `BackgroundColor` property, this isn't always the desired `Color` property to animate.
 
 The solution to this problem is to not have the `ColorTo` method target a particular `Color` property. Instead, it can be written with a callback method that passes the interpolated `Color` value back to the caller. In addition, the method will take start and end `Color` arguments.
 

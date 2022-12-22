@@ -43,7 +43,7 @@ Consider the following XAML example, whose intent is to rotate a `Label` by mani
 
 Without data bindings, you would set the `ValueChanged` event of the <xref:Microsoft.Maui.Controls.Slider> to an event handler that accesses the `Value` property of the <xref:Microsoft.Maui.Controls.Slider> and sets that value to the `Rotation` property of the `Label`. The data binding automates this task, and so the event handler and the code within it are no longer necessary.
 
-You can set a binding on an instance of any class that derives from `BindableObject`, which includes <xref:Microsoft.Maui.Controls.Element>, `VisualElement`, `View`, and `View` derivatives. The binding is always set on the target object. The binding references the source object. To set the data binding, use the following two members of the target class:
+You can set a binding on an instance of any class that derives from `BindableObject`, which includes <xref:Microsoft.Maui.Controls.Element>, <xref:Microsoft.Maui.Controls.VisualElement>, `View`, and `View` derivatives. The binding is always set on the target object. The binding references the source object. To set the data binding, use the following two members of the target class:
 
 - The `BindingContext` property specifies the source object.
 - The `SetBinding` method specifies the target property and source property.
@@ -162,7 +162,7 @@ public partial class AlternativeCodeBindingPage : ContentPage
 The `Binding` constructor has 6 parameters, so the `source` parameter is specified with a named argument. The argument is the `slider` object.
 
 > [!NOTE]
-> The `VisualElement` class also defines `ScaleX` and `ScaleY` properties, which can scale the `VisualElement` differently in the horizontal and vertical directions.
+> The <xref:Microsoft.Maui.Controls.VisualElement> class also defines `ScaleX` and `ScaleY` properties, which can scale the <xref:Microsoft.Maui.Controls.VisualElement> differently in the horizontal and vertical directions.
 
 Alternatively, the data binding can be specified in XAML:
 

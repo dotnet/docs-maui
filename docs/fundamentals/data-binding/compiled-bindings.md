@@ -18,12 +18,12 @@ Compiled bindings improve data binding performance in .NET MAUI applications by 
 The process for using compiled bindings is to:
 
 1. Ensure that XAML compilation is enabled. For more information about XAML compilation, see [XAML Compilation](~/xaml/xamlc.md).
-1. Set an `x:DataType` attribute on a `VisualElement` to the type of the object that the `VisualElement` and its children will bind to.
+1. Set an `x:DataType` attribute on a <xref:Microsoft.Maui.Controls.VisualElement> to the type of the object that the <xref:Microsoft.Maui.Controls.VisualElement> and its children will bind to.
 
 > [!NOTE]
 > It's recommended to set the `x:DataType` attribute at the same level in the view hierarchy as the `BindingContext` is set. However, this attribute can be re-defined at any location in a view hierarchy.
 
-To use compiled bindings, the `x:DataType` attribute must be set to a string literal, or a type using the `x:Type` markup extension. At XAML compile time, any invalid binding expressions will be reported as build errors. However, the XAML compiler will only report a build error for the first invalid binding expression that it encounters. Any valid binding expressions that are defined on the `VisualElement` or its children will be compiled, regardless of whether the `BindingContext` is set in XAML or code. Compiling a binding expression generates compiled code that will get a value from a property on the *source*, and set it on the property on the *target* that's specified in the markup. In addition, depending on the binding expression, the generated code may observe changes in the value of the *source* property and refresh the *target* property, and may push changes from the *target* back to the *source*.
+To use compiled bindings, the `x:DataType` attribute must be set to a string literal, or a type using the `x:Type` markup extension. At XAML compile time, any invalid binding expressions will be reported as build errors. However, the XAML compiler will only report a build error for the first invalid binding expression that it encounters. Any valid binding expressions that are defined on the <xref:Microsoft.Maui.Controls.VisualElement> or its children will be compiled, regardless of whether the `BindingContext` is set in XAML or code. Compiling a binding expression generates compiled code that will get a value from a property on the *source*, and set it on the property on the *target* that's specified in the markup. In addition, depending on the binding expression, the generated code may observe changes in the value of the *source* property and refresh the *target* property, and may push changes from the *target* back to the *source*.
 
 > [!IMPORTANT]
 > Compiled bindings are disabled for any binding expressions that define the `Source` property. This is because the `Source` property is always set using the `x:Reference` markup extension, which can't be resolved at compile time.

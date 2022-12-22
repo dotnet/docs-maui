@@ -79,7 +79,7 @@ The `Window` class also defines the following modal navigation events:
 - `ModalPushing`, with `ModalPushingEventArgs`, which is raised when a view is modally pushed.
 - `PopCanceled`, which is raised when a modal pop is cancelled.
 
-The `VisualElement` class has a `Window` property that exposes the parent `Window` object. This property can be accessed from any page, layout, or view, to manipulate `Window` objects.
+The <xref:Microsoft.Maui.Controls.VisualElement> class has a `Window` property that exposes the parent `Window` object. This property can be accessed from any page, layout, or view, to manipulate `Window` objects.
 
 ## Create a Window
 
