@@ -458,11 +458,11 @@ The following example demonstrates a keyboard for entering decimal numbers:
 </ContentPage>
 ```
 
-In this example, the page's `BindingContext` is a `DecimalKeypadViewModel`. The `Entry` property of this viewmodel is bound to the `Text` property of a `Label`. All the `Button` objects are bound to commands in the viewmodel: `ClearCommand`, `BackspaceCommand`, and `DigitCommand`. The 11 buttons for the 10 digits and the decimal point share a binding to `DigitCommand`. The `CommandParameter` distinguishes between these buttons. The value set to `CommandParameter` is generally the same as the text displayed by the button except for the decimal point, which for purposes of clarity is displayed with a middle dot character:
+In this example, the page's `BindingContext` is a `DecimalKeypadViewModel`. The <xref:Microsoft.Maui.Controls.Entry> property of this viewmodel is bound to the `Text` property of a `Label`. All the `Button` objects are bound to commands in the viewmodel: `ClearCommand`, `BackspaceCommand`, and `DigitCommand`. The 11 buttons for the 10 digits and the decimal point share a binding to `DigitCommand`. The `CommandParameter` distinguishes between these buttons. The value set to `CommandParameter` is generally the same as the text displayed by the button except for the decimal point, which for purposes of clarity is displayed with a middle dot character:
 
 :::image type="content" source="media/commanding/decimalkeyboard.png" alt-text="Decimal keyboard.":::
 
-The `DecimalKeypadViewModel` defines an `Entry` property of type `string` and three properties of type `ICommand`:
+The `DecimalKeypadViewModel` defines an <xref:Microsoft.Maui.Controls.Entry> property of type `string` and three properties of type `ICommand`:
 
 ```csharp
 public class DecimalKeypadViewModel : INotifyPropertyChanged
@@ -522,7 +522,7 @@ public class DecimalKeypadViewModel : INotifyPropertyChanged
 
 Because the button is always enabled, it is not necessary to specify a `canExecute` argument in the `Command` constructor.
 
-The **Backspace** button is enabled only when the length of the entry is greater than 1, or if `Entry` is not equal to the string "0":
+The **Backspace** button is enabled only when the length of the entry is greater than 1, or if <xref:Microsoft.Maui.Controls.Entry> is not equal to the string "0":
 
 ```csharp
 public class DecimalKeypadViewModel : INotifyPropertyChanged
@@ -551,7 +551,7 @@ public class DecimalKeypadViewModel : INotifyPropertyChanged
 }
 ```
 
-The logic for the `execute` function for the **Backspace** button ensures that the `Entry` is at least a string of "0".
+The logic for the `execute` function for the **Backspace** button ensures that the <xref:Microsoft.Maui.Controls.Entry> is at least a string of "0".
 
 The `DigitCommand` property is bound to 11 buttons, each of which identifies itself with the `CommandParameter` property. The `DigitCommand` is set to an instance of the `Command<T>` class. When using the commanding interface with XAML, the `CommandParameter` properties are usually strings, which is type of the generic argument. The `execute` and `canExecute` functions then have arguments of type `string`:
 
@@ -581,4 +581,4 @@ public class DecimalKeypadViewModel : INotifyPropertyChanged
 }
 ```
 
-The `execute` method appends the string argument to the `Entry` property. However, if the result begins with a zero (but not a zero and a decimal point) then that initial zero must be removed using the `Substring` function. The `canExecute` method returns `false` only if the argument is the decimal point (indicating that the decimal point is being pressed) and `Entry` already contains a decimal point. All the `execute` methods call `RefreshCanExecutes`, which then calls `ChangeCanExecute` for both `DigitCommand` and `ClearCommand`. This ensures that the decimal point and backspace buttons are enabled or disabled based on the current sequence of entered digits.
+The `execute` method appends the string argument to the <xref:Microsoft.Maui.Controls.Entry> property. However, if the result begins with a zero (but not a zero and a decimal point) then that initial zero must be removed using the `Substring` function. The `canExecute` method returns `false` only if the argument is the decimal point (indicating that the decimal point is being pressed) and <xref:Microsoft.Maui.Controls.Entry> already contains a decimal point. All the `execute` methods call `RefreshCanExecutes`, which then calls `ChangeCanExecute` for both `DigitCommand` and `ClearCommand`. This ensures that the decimal point and backspace buttons are enabled or disabled based on the current sequence of entered digits.

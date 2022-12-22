@@ -12,8 +12,8 @@ The following platform-specific functionality is provided for .NET MAUI views on
 
 - Setting the `Cell` background color. For more information, see [Cell background color on iOS](cell-background-color.md).
 - Controlling when item selection occurs in a <xref:Microsoft.Maui.Controls.DatePicker>. For more information, see [DatePicker item selection on iOS](datepicker-selection.md).
-- Ensuring that inputted text fits into an `Entry` by adjusting the font size. For more information, see [Entry font size on iOS](entry-font-size.md).
-- Setting the cursor color in a `Entry`. For more information, see [Entry cursor color on iOS](entry-cursor-color.md).
+- Ensuring that inputted text fits into an <xref:Microsoft.Maui.Controls.Entry> by adjusting the font size. For more information, see [Entry font size on iOS](entry-font-size.md).
+- Setting the cursor color in a <xref:Microsoft.Maui.Controls.Entry>. For more information, see [Entry cursor color on iOS](entry-cursor-color.md).
 - Controlling whether `ListView` header cells float during scrolling. For more information, see [ListView group header style on iOS](listview-group-header-style.md).
 - Controlling whether row animations are disabled when the `ListView` items collection is being updated. For more information, see [ListView row animations on iOS](listview-row-animations.md).
 - Setting the separator style on a `ListView`. For more information, see [ListView separator style on iOS](listview-separator-style.md).

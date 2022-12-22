@@ -111,7 +111,7 @@ In addition, the optional `AncestorLevel` property can help disambiguate ancesto
 <Label Text="{Binding Source={RelativeSource AncestorType={x:Type Entry}, AncestorLevel=2}, Path=Text}" />
 ```
 
-In this example, the `Label.Text` property binds to the `Text` property of the second `Entry` that's encountered on the upward path, starting at the target element of the binding.
+In this example, the `Label.Text` property binds to the `Text` property of the second <xref:Microsoft.Maui.Controls.Entry> that's encountered on the upward path, starting at the target element of the binding.
 
 > [!NOTE]
 > The `AncestorLevel` property should be set to 1 to find the ancestor nearest to the binding target element.

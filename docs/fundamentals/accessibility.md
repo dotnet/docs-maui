@@ -65,7 +65,7 @@ image.SetValue(SemanticProperties.DescriptionProperty, "Cute dot net bot waving 
 > [!WARNING]
 > Avoid setting the `SemanticProperties.Description` attached property on a `Label`. This will stop the `Text` property being spoken by the screen reader. This is because the visual text should ideally match the text read aloud by the screen reader.
 
-The accessibility information for an element can also be defined on another element. For example, a `Label` next to an `Entry` can be used to describe what the `Entry` represents. This can be accomplished in XAML as follows:
+The accessibility information for an element can also be defined on another element. For example, a `Label` next to an <xref:Microsoft.Maui.Controls.Entry> can be used to describe what the <xref:Microsoft.Maui.Controls.Entry> represents. This can be accomplished in XAML as follows:
 
 ```xaml
 <Label x:Name="label"
@@ -290,14 +290,14 @@ AutomationProperties.SetIsInAccessibleTree(button, true);
 AutomationProperties.SetHelpText(button, "Tap to toggle the activity indicator");
 ```
 
-On some platforms, for edit controls such as an `Entry`, the `HelpText` property can sometimes be omitted and replaced with placeholder text. For example, "Enter your name here" is a good candidate for the `Entry.Placeholder` property that places the text in the control prior to the user's actual input.
+On some platforms, for edit controls such as an <xref:Microsoft.Maui.Controls.Entry>, the `HelpText` property can sometimes be omitted and replaced with placeholder text. For example, "Enter your name here" is a good candidate for the `Entry.Placeholder` property that places the text in the control prior to the user's actual input.
 
 ### LabeledBy
 
 > [!IMPORTANT]
 > The `AutomationProperties.LabeledBy` attached property has been superseded by bindings. For more information, see [SemanticProperties: Description](#description).
 
-The `AutomationProperties.LabeledBy` attached property allows another element to define accessibility information for the current element. For example, a `Label` next to an `Entry` can be used to describe what the `Entry` represents. This can be accomplished in XAML as follows:
+The `AutomationProperties.LabeledBy` attached property allows another element to define accessibility information for the current element. For example, a `Label` next to an <xref:Microsoft.Maui.Controls.Entry> can be used to describe what the <xref:Microsoft.Maui.Controls.Entry> represents. This can be accomplished in XAML as follows:
 
 ```xaml
 <Label x:Name="label" Text="Enter your name: " />

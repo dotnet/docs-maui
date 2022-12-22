@@ -16,7 +16,7 @@ You can assign a trigger directly to a control's `Triggers` collection, or add i
 
 A `Trigger` represents a trigger that applies property values, or performs actions, when the specified property meets a specified condition.
 
-The following example shows a `Trigger` that changes an `Entry` background color when it receives focus:
+The following example shows a `Trigger` that changes an <xref:Microsoft.Maui.Controls.Entry> background color when it receives focus:
 
 ```xaml
 <Entry Placeholder="Enter name">
@@ -43,7 +43,7 @@ In addition, optional `EnterActions` and `ExitActions` collections can be specif
 
 ### Apply a trigger using a style
 
-Triggers can also be added to a `Style` declaration on a control, in a page, or an application `ResourceDictionary`. The following example declares an *implicit* style for all `Entry` controls on the page:
+Triggers can also be added to a `Style` declaration on a control, in a page, or an application `ResourceDictionary`. The following example declares an *implicit* style for all <xref:Microsoft.Maui.Controls.Entry> controls on the page:
 
 ```xaml
 <ContentPage.Resources>
@@ -65,7 +65,7 @@ Triggers can also be added to a `Style` declaration on a control, in a page, or 
 
 A `DataTrigger` represents a trigger that applies property values, or performs actions, when the bound data meets a specified condition. The `Binding` markup extension is used to monitor for the specified condition.
 
-The following example shows a `DataTrigger` that disables a `Button` when the `Entry` is empty:
+The following example shows a `DataTrigger` that disables a `Button` when the <xref:Microsoft.Maui.Controls.Entry> is empty:
 
 ```xaml
 <Entry x:Name="entry"
@@ -85,7 +85,7 @@ The following example shows a `DataTrigger` that disables a `Button` when the `E
 </Button>
 ```
 
-In this example, when the length of the `Entry` is zero, the trigger is activated.
+In this example, when the length of the <xref:Microsoft.Maui.Controls.Entry> is zero, the trigger is activated.
 
 > [!TIP]
 > When evaluating `Path=Text.Length` always provide a default value for the target property (eg. `Text=""`) because otherwise it will be `null` and the trigger won't work like you expect.
@@ -111,7 +111,7 @@ In this example, there are no `Setter` elements. Instead, there's a `NumericalVa
 
 A trigger action implementation must:
 
-- Implement the generic `TriggerAction<T>` class, with the generic parameter corresponding with the type of control the trigger will be applied to. You can use classes such as `VisualElement` to write trigger actions that work with a variety of controls, or specify a control type like `Entry`.
+- Implement the generic `TriggerAction<T>` class, with the generic parameter corresponding with the type of control the trigger will be applied to. You can use classes such as `VisualElement` to write trigger actions that work with a variety of controls, or specify a control type like <xref:Microsoft.Maui.Controls.Entry>.
 - Override the `Invoke` method. This method is called whenever the trigger event occurs.
 - Optionally expose properties that can be set in XAML when the trigger is declared.
 
@@ -136,7 +136,7 @@ public class NumericValidationTriggerAction : TriggerAction<Entry>
 
 A `MultiTrigger` represents a trigger that applies property values, or performs actions, when a set of conditions are satisfied. All the conditions must be true before the `Setter` objects are applied.
 
-The following example shows a `MultiTrigger` that binds to two `Entry` objects:
+The following example shows a `MultiTrigger` that binds to two <xref:Microsoft.Maui.Controls.Entry> objects:
 
 ```xaml
 <Entry x:Name="email"
@@ -199,7 +199,7 @@ The following example shows a property trigger that specifies an `EnterAction` a
 
 A trigger action implementation must:
 
-- Implement the generic `TriggerAction<T>` class, with the generic parameter corresponding with the type of control the trigger will be applied to. You can use classes such as `VisualElement` to write trigger actions that work with a variety of controls, or specify a control type like `Entry`.
+- Implement the generic `TriggerAction<T>` class, with the generic parameter corresponding with the type of control the trigger will be applied to. You can use classes such as `VisualElement` to write trigger actions that work with a variety of controls, or specify a control type like <xref:Microsoft.Maui.Controls.Entry>.
 - Override the `Invoke` method. This method is called whenever the trigger event occurs.
 - Optionally expose properties that can be set in XAML when the trigger is declared.
 

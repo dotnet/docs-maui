@@ -118,7 +118,7 @@ In this example, the `ResourceDictionary` defines three styles that are explicit
 
 To create a `Style` at the page-level, a `ResourceDictionary` must be added to the page and then one or more `Style` declarations can be included in the `ResourceDictionary`. A `Style` is made *implicit* by not specifying an `x:Key` attribute. The style will then be applied to in scope visual elements that match the `TargetType` exactly, but not to elements that are derived from the `TargetType` value.
 
-The following code example shows an *implicit* style in a page's `ResourceDictionary`, and applied to the page's `Entry` objects:
+The following code example shows an *implicit* style in a page's `ResourceDictionary`, and applied to the page's <xref:Microsoft.Maui.Controls.Entry> objects:
 
 ```xaml
 <ContentPage ...>
@@ -143,7 +143,7 @@ The following code example shows an *implicit* style in a page's `ResourceDictio
 </ContentPage>
 ```
 
-In this example, the `ResourceDictionary` defines a single *implicit* style that are implicitly set on the page's `Entry` objects. The `Style` is used to display blue text on a yellow background, while also setting other appearance options. The `Style` is added to the page's `ResourceDictionary` without specifying an `x:Key` attribute. Therefore, the `Style` is applied to all the `Entry` objects implicitly as they match the `TargetType` property of the `Style` exactly. However, the `Style` is not applied to the `CustomEntry` object, which is a subclassed `Entry`. In addition, the fourth `Entry` overrides the `BackgroundColor` and `TextColor` properties of the style to different `Color` values.
+In this example, the `ResourceDictionary` defines a single *implicit* style that are implicitly set on the page's <xref:Microsoft.Maui.Controls.Entry> objects. The `Style` is used to display blue text on a yellow background, while also setting other appearance options. The `Style` is added to the page's `ResourceDictionary` without specifying an `x:Key` attribute. Therefore, the `Style` is applied to all the <xref:Microsoft.Maui.Controls.Entry> objects implicitly as they match the `TargetType` property of the `Style` exactly. However, the `Style` is not applied to the `CustomEntry` object, which is a subclassed <xref:Microsoft.Maui.Controls.Entry>. In addition, the fourth <xref:Microsoft.Maui.Controls.Entry> overrides the `BackgroundColor` and `TextColor` properties of the style to different `Color` values.
 
 ## Apply a style to derived types
 
