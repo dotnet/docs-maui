@@ -612,7 +612,7 @@ The following XAML shows an example of nesting <xref:Microsoft.Maui.Controls.Gri
 </ContentPage>
 ```
 
-In this example, the root <xref:Microsoft.Maui.Controls.Grid> contains a <xref:Microsoft.Maui.Controls.BoxView> in its first row, and a child <xref:Microsoft.Maui.Controls.Grid> in its second row. The child <xref:Microsoft.Maui.Controls.Grid> contains `Slider` objects that manipulate the color displayed by the <xref:Microsoft.Maui.Controls.BoxView>, and `Label` objects that display the value of each `Slider`:
+In this example, the root <xref:Microsoft.Maui.Controls.Grid> contains a <xref:Microsoft.Maui.Controls.BoxView> in its first row, and a child <xref:Microsoft.Maui.Controls.Grid> in its second row. The child <xref:Microsoft.Maui.Controls.Grid> contains <xref:Microsoft.Maui.Controls.Slider> objects that manipulate the color displayed by the <xref:Microsoft.Maui.Controls.BoxView>, and `Label` objects that display the value of each <xref:Microsoft.Maui.Controls.Slider>:
 
 :::image type="content" source="media/grid/nested.png" alt-text="Nested .NET MAUI Grid objects.":::
 

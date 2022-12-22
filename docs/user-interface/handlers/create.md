@@ -2305,7 +2305,7 @@ The `get` accessor returns the current position of the video as its playing. The
 
 On Android, iOS and Mac Catalyst, the property that obtains the current position only has a `get` accessor. Instead, a `Seek` method is available to set the position. This seems to be a more sensible approach than using a single `Position` property, which has an inherent problem. As a video plays, a `Position` property must be continually updated to reflect the new position. But you don't want most changes of the `Position` property to cause the video player to move to a new position in the video. If that happens, the video player would respond by seeking to the last value of the `Position` property, and the video wouldn't advance.
 
-Despite the difficulties of implementing a `Position` property with `get` and `set` accessors, this approach is used because it can utilize data binding. The `Position` property of the `Video` control can be bound to a `Slider` that's used both to display the position and to seek a new position. However, several precautions are necessary when implementing the `Position` property, to avoid feedback loops.
+Despite the difficulties of implementing a `Position` property with `get` and `set` accessors, this approach is used because it can utilize data binding. The `Position` property of the `Video` control can be bound to a <xref:Microsoft.Maui.Controls.Slider> that's used both to display the position and to seek a new position. However, several precautions are necessary when implementing the `Position` property, to avoid feedback loops.
 
 ##### Android
 
@@ -2484,7 +2484,7 @@ The `SetTimeToEnd` method is called from the property-changed event handlers of 
 
 #### Custom positioning bar
 
-A custom positioning bar can be implemented by creating a class that derives from `Slider`, which contains `Duration` and `Position` properties of type `TimeSpan`:
+A custom positioning bar can be implemented by creating a class that derives from <xref:Microsoft.Maui.Controls.Slider>, which contains `Duration` and `Position` properties of type `TimeSpan`:
 
 ```csharp
 namespace VideoDemos.Controls
@@ -2536,9 +2536,9 @@ namespace VideoDemos.Controls
 }
 ```
 
-The property-changed event handler for the `Duration` property sets the `Maximum` property of the `Slider` to the `TotalSeconds` property of the `TimeSpan` value. Similarly, the property-changed event handler for the `Position` property sets the `Value` property of the `Slider`. This is the mechanism by which the `Slider` tracks the position of `PositionSlider`.
+The property-changed event handler for the `Duration` property sets the `Maximum` property of the <xref:Microsoft.Maui.Controls.Slider> to the `TotalSeconds` property of the `TimeSpan` value. Similarly, the property-changed event handler for the `Position` property sets the `Value` property of the <xref:Microsoft.Maui.Controls.Slider>. This is the mechanism by which the <xref:Microsoft.Maui.Controls.Slider> tracks the position of `PositionSlider`.
 
-The `PositionSlider` is updated from the underlying `Slider` in only one scenario, which is when the user manipulates the `Slider` to indicate that the video should be advanced or reversed to a new position. This is detected in the `PropertyChanged` handler in the `PositionSlider` constructor. This event handler checks for a change in the `Value` property, and if it's different from the `Position` property, then the `Position` property is set from the `Value` property.
+The `PositionSlider` is updated from the underlying <xref:Microsoft.Maui.Controls.Slider> in only one scenario, which is when the user manipulates the <xref:Microsoft.Maui.Controls.Slider> to indicate that the video should be advanced or reversed to a new position. This is detected in the `PropertyChanged` handler in the `PositionSlider` constructor. This event handler checks for a change in the `Value` property, and if it's different from the `Position` property, then the `Position` property is set from the `Value` property.
 
 ## Register the handler
 

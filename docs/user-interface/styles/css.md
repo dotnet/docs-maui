@@ -426,13 +426,13 @@ The following .NET MAUI specific CSS properties are also supported (in the **Val
 |`-maui-bar-text-color`|<xref:Microsoft.Maui.Controls.NavigationPage>, <xref:Microsoft.Maui.Controls.TabbedPage>|_color_ \| `initial` |`-maui-bar-text-color: gray`|
 |`-maui-horizontal-scroll-bar-visibility`|<xref:Microsoft.Maui.Controls.ScrollView>| `default` \| `always` \| `never` \| `initial` |`-maui-horizontal-scroll-bar-visibility: never;`|
 |`-maui-max-length`|<xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.SearchBar>|_int_ \| `initial` |`-maui-max-length: 20;`|
-|`-maui-max-track-color`|`Slider`|_color_ \| `initial` |`-maui-max-track-color: red;`|
-|`-maui-min-track-color`|`Slider`|_color_ \| `initial` |`-maui-min-track-color: yellow;`|
+|`-maui-max-track-color`|<xref:Microsoft.Maui.Controls.Slider>|_color_ \| `initial` |`-maui-max-track-color: red;`|
+|`-maui-min-track-color`|<xref:Microsoft.Maui.Controls.Slider>|_color_ \| `initial` |`-maui-min-track-color: yellow;`|
 |`-maui-orientation`|<xref:Microsoft.Maui.Controls.ScrollView>, <xref:Microsoft.Maui.Controls.StackLayout>| `horizontal` \| `vertical` \| `both` \| `initial`. `both` is only supported on a <xref:Microsoft.Maui.Controls.ScrollView>. |`-maui-orientation: horizontal;`|
 |`-maui-placeholder`|<xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.SearchBar>|_quoted text_ \| `initial` |`-maui-placeholder: Enter name;`|
 |`-maui-placeholder-color`|<xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.SearchBar>|_color_ \| `initial` |`-maui-placeholder-color: green;`|
 |`-maui-spacing`|`StackLayout`|_double_ \| `initial` |`-maui-spacing: 8;`|
-|`-maui-thumb-color`|`Slider`, `Switch`|_color_ \| `initial` |`-maui-thumb-color: limegreen;`|
+|`-maui-thumb-color`|<xref:Microsoft.Maui.Controls.Slider>, `Switch`|_color_ \| `initial` |`-maui-thumb-color: limegreen;`|
 |`-maui-vertical-scroll-bar-visibility`|<xref:Microsoft.Maui.Controls.ScrollView>| `default` \| `always` \| `never` \| `initial` |`-maui-vertical-scroll-bar-visibility: always;`|
 |`-maui-vertical-text-alignment`|`Label`| `start` \| `center` \| `end` \| `initial`|`-maui-vertical-text-alignment: end;`|
 |`-maui-visual`|`VisualElement`|_string_ \| `initial` |`-maui-visual: material;`|

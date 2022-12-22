@@ -25,7 +25,7 @@ In XAML, you must also perform the same two steps that are required in code, exc
 
 You can define data bindings to link properties of two views on the same page. In this case, you set the `BindingContext` of the target object using the `x:Reference` markup extension.
 
-The following example contains a `Slider` and two `Label` views, one of which is rotated by the `Slider` value and another which displays the `Slider` value:
+The following example contains a <xref:Microsoft.Maui.Controls.Slider> and two `Label` views, one of which is rotated by the <xref:Microsoft.Maui.Controls.Slider> value and another which displays the <xref:Microsoft.Maui.Controls.Slider> value:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -53,7 +53,7 @@ The following example contains a `Slider` and two `Label` views, one of which is
 </ContentPage>
 ```
 
-The `Slider` contains an `x:Name` attribute that is referenced by the two `Label` views using the `x:Reference` markup extension. The `x:Reference` binding extension defines a property named `Name` to set to the name of the referenced element, in this case `slider`. However, the `ReferenceExtension` class that defines the `x:Reference` markup extension also defines a `ContentProperty` attribute for `Name`, which means that it isn’t explicitly required.
+The <xref:Microsoft.Maui.Controls.Slider> contains an `x:Name` attribute that is referenced by the two `Label` views using the `x:Reference` markup extension. The `x:Reference` binding extension defines a property named `Name` to set to the name of the referenced element, in this case `slider`. However, the `ReferenceExtension` class that defines the `x:Reference` markup extension also defines a `ContentProperty` attribute for `Name`, which means that it isn’t explicitly required.
 
 The `Binding` markup extension itself can have several properties, just like the `BindingBase` and `Binding` class. The `ContentProperty` for `Binding` is `Path`, but the “Path=” part of the markup extension can be omitted if the path is the first item in the `Binding` markup extension.
 
@@ -148,13 +148,13 @@ The following example demonstrates one common use of the `OneWayToSource` and `T
 </ContentPage>
 ```
 
-In this example, four `Slider` views are intended to control the `Scale`, `Rotate`, `RotateX`, and `RotateY` properties of a `Label`. At first, it seems as if these four properties of the `Label` should be data-binding targets because each is being set by a `Slider`. However, the `BindingContext` of `Label` can be only one object, and there are four different sliders. For that reason, the `BindingContext` of each of the four sliders is set to the `Label`, and the bindings are set on the `Value` properties of the sliders. By using the `OneWayToSource` and `TwoWay` modes, these `Value` properties can set the source properties, which are the `Scale`, `Rotate`, `RotateX`, and `RotateY` properties of the `Label`.
+In this example, four <xref:Microsoft.Maui.Controls.Slider> views are intended to control the `Scale`, `Rotate`, `RotateX`, and `RotateY` properties of a `Label`. At first, it seems as if these four properties of the `Label` should be data-binding targets because each is being set by a <xref:Microsoft.Maui.Controls.Slider>. However, the `BindingContext` of `Label` can be only one object, and there are four different sliders. For that reason, the `BindingContext` of each of the four sliders is set to the `Label`, and the bindings are set on the `Value` properties of the sliders. By using the `OneWayToSource` and `TwoWay` modes, these `Value` properties can set the source properties, which are the `Scale`, `Rotate`, `RotateX`, and `RotateY` properties of the `Label`.
 
-The bindings on three of the `Slider` views are `OneWayToSource`, meaning that the `Slider` value causes a change in the property of its `BindingContext`, which is the `Label` named `label`. These three `Slider` views cause changes to the `Rotate`, `RotateX`, and `RotateY` properties of the `Label`:
+The bindings on three of the <xref:Microsoft.Maui.Controls.Slider> views are `OneWayToSource`, meaning that the <xref:Microsoft.Maui.Controls.Slider> value causes a change in the property of its `BindingContext`, which is the `Label` named `label`. These three <xref:Microsoft.Maui.Controls.Slider> views cause changes to the `Rotate`, `RotateX`, and `RotateY` properties of the `Label`:
 
 :::image type="content" source="media/data-binding-basics/slidertransforms.png" alt-text="Reverse bindings.":::
 
-However, the binding for the `Scale` property is `TwoWay`. This is because the `Scale` property has a default value of 1, and using a `TwoWay` binding causes the `Slider` initial value to be set at 1 rather than 0. If that binding were `OneWayToSource`, the `Scale` property would initially be set to 0 from the `Slider` default value. The `Label` would not be visible
+However, the binding for the `Scale` property is `TwoWay`. This is because the `Scale` property has a default value of 1, and using a `TwoWay` binding causes the <xref:Microsoft.Maui.Controls.Slider> initial value to be set at 1 rather than 0. If that binding were `OneWayToSource`, the `Scale` property would initially be set to 0 from the <xref:Microsoft.Maui.Controls.Slider> default value. The `Label` would not be visible
 
 > [!NOTE]
 > The `VisualElement` class also has `ScaleX` and `ScaleY` properties, which scale the `VisualElement` on the x-axis and y-axis respectively.

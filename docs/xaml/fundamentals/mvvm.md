@@ -200,7 +200,7 @@ class HslViewModel: INotifyPropertyChanged
 
 In this example, changes to the `Hue`, `Saturation`, and `Luminosity` properties cause the `Color` property to change, and changes to the `Color` property causes the other three properties to change. This might seem like an infinite loop, except that the viewmodel doesn't invoke the `PropertyChanged` event unless the property has changed.
 
-The following XAML example contains a <xref:Microsoft.Maui.Controls.BoxView> whose `Color` property is bound to the `Color` property of the viewmodel, and three `Slider` and three `Label` views bound to the `Hue`, `Saturation`, and `Luminosity` properties:
+The following XAML example contains a <xref:Microsoft.Maui.Controls.BoxView> whose `Color` property is bound to the `Color` property of the viewmodel, and three <xref:Microsoft.Maui.Controls.Slider> and three `Label` views bound to the `Hue`, `Saturation`, and `Luminosity` properties:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -233,7 +233,7 @@ The following XAML example contains a <xref:Microsoft.Maui.Controls.BoxView> who
 </ContentPage>
 ```
 
-The binding on each `Label` is the default `OneWay`. It only needs to display the value. However, the default binding on each `Slider` is `TwoWay`. This allows the `Slider` to be initialized from the viewmodel. When the viewmodel is instantiated it's `Color` property is set to `Aqua`. A change in a `Slider` sets a new value for the property in the viewmodel, which then calculates a new color:
+The binding on each `Label` is the default `OneWay`. It only needs to display the value. However, the default binding on each <xref:Microsoft.Maui.Controls.Slider> is `TwoWay`. This allows the <xref:Microsoft.Maui.Controls.Slider> to be initialized from the viewmodel. When the viewmodel is instantiated it's `Color` property is set to `Aqua`. A change in a <xref:Microsoft.Maui.Controls.Slider> sets a new value for the property in the viewmodel, which then calculates a new color:
 
 :::image type="content" source="media/mvvm/hslcolorscroll.png" alt-text="MVVM using two-way data bindings.":::
 

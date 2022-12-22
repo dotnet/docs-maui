@@ -66,9 +66,9 @@ The <xref:Microsoft.Maui.Controls.ContentPage> instantiates the `HslColorViewMod
 > [!IMPORTANT]
 > The `x:DataType` attribute can be re-defined at any point in a view hierarchy.
 
-The <xref:Microsoft.Maui.Controls.BoxView>, `Label` elements, and `Slider` views inherit the binding context from the <xref:Microsoft.Maui.Controls.ContentPage>. These views are all binding targets that reference source properties in the viewmodel. For the `BoxView.Color` property, and the `Label.Text` property, the data bindings are `OneWay` – the properties in the view are set from the properties in the viewmodel. However, the `Slider.Value` property uses a `TwoWay` binding. This allows each `Slider` to be set from the viewmodel, and also for the viewmodel to be set from each `Slider`.
+The <xref:Microsoft.Maui.Controls.BoxView>, `Label` elements, and <xref:Microsoft.Maui.Controls.Slider> views inherit the binding context from the <xref:Microsoft.Maui.Controls.ContentPage>. These views are all binding targets that reference source properties in the viewmodel. For the `BoxView.Color` property, and the `Label.Text` property, the data bindings are `OneWay` – the properties in the view are set from the properties in the viewmodel. However, the `Slider.Value` property uses a `TwoWay` binding. This allows each <xref:Microsoft.Maui.Controls.Slider> to be set from the viewmodel, and also for the viewmodel to be set from each <xref:Microsoft.Maui.Controls.Slider>.
 
-When the example is first run, the <xref:Microsoft.Maui.Controls.BoxView>, `Label` elements, and `Slider` elements are all set from the viewmodel based on the initial `Color` property set when the viewmodel was instantiated. As the sliders are manipulated, the <xref:Microsoft.Maui.Controls.BoxView> and `Label` elements are updated accordingly:
+When the example is first run, the <xref:Microsoft.Maui.Controls.BoxView>, `Label` elements, and <xref:Microsoft.Maui.Controls.Slider> elements are all set from the viewmodel based on the initial `Color` property set when the viewmodel was instantiated. As the sliders are manipulated, the <xref:Microsoft.Maui.Controls.BoxView> and `Label` elements are updated accordingly:
 
 :::image type="content" source="media/compiled-bindings/compiledcolorselector.png" alt-text="Compiled color selector.":::
 

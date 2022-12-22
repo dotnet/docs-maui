@@ -253,7 +253,7 @@ Slider titleView = new Slider { HeightRequest = 44, WidthRequest = 300 };
 NavigationPage.SetTitleView(this, titleView);
 ```
 
-In this example, a `Slider` is displayed in the navigation bar of the <xref:Microsoft.Maui.Controls.NavigationPage>, to control zooming.
+In this example, a <xref:Microsoft.Maui.Controls.Slider> is displayed in the navigation bar of the <xref:Microsoft.Maui.Controls.NavigationPage>, to control zooming.
 
 > [!IMPORTANT]
 > Many views won't appear in the navigation bar unless the size of the view is specified with the `WidthRequest` and `HeightRequest` properties.
