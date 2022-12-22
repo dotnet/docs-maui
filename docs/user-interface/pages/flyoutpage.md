@@ -12,8 +12,8 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.FlyoutP
 
 <xref:Microsoft.Maui.Controls.FlyoutPage> defines the following properties:
 
-- `Detail`, of type `Page`, defines the detail page displayed for the selected item in the flyout page.
-- `Flyout`, of type `Page`, defines the flyout page.
+- `Detail`, of type <xref:Microsoft.Maui.Controls.Page>, defines the detail page displayed for the selected item in the flyout page.
+- `Flyout`, of type <xref:Microsoft.Maui.Controls.Page>, defines the flyout page.
 - `FlyoutLayoutBehavior`, of type `FlyoutLayoutBehavior`, indicates the layout behavior of flyout and detail pages.
 - `IsGestureEnabled`, of type `bool`, determines whether a swipe gesture will switch between flyout and detail pages. The default value of this property is `true`.
 - `IsPresented`, of type `bool`, determines whether the flyout or detail page is displayed. The default value of this property is `false`, which displays the detail page. It should be set to `true` to display the flyout page.

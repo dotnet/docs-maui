@@ -59,7 +59,7 @@ public class iOSLargeTitlePageCode : ContentPage
 }
 ```
 
-The `Page.On<iOS>` method specifies that this platform-specific will only run on iOS. The `Page.SetLargeTitleDisplay` method, in the `Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific` namespace, controls the large title behavior on the `Page`, with the `LargeTitleDisplayMode` enumeration providing three possible values:
+The `Page.On<iOS>` method specifies that this platform-specific will only run on iOS. The `Page.SetLargeTitleDisplay` method, in the `Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific` namespace, controls the large title behavior on the <xref:Microsoft.Maui.Controls.Page>, with the `LargeTitleDisplayMode` enumeration providing three possible values:
 
 - `Always` – force the navigation bar and font size to use the large format.
 - `Automatic` – use the same style (large or small) as the previous item in the navigation stack.
@@ -82,6 +82,6 @@ switch (On<iOS>().LargeTitleDisplay())
 }
 ```
 
-The result is that a specified `LargeTitleDisplayMode` is applied to the `Page`, which controls the large title behavior:
+The result is that a specified `LargeTitleDisplayMode` is applied to the <xref:Microsoft.Maui.Controls.Page>, which controls the large title behavior:
 
 :::image type="content" source="media/page-large-title/large-title.png" alt-text="Page title as a large title.":::

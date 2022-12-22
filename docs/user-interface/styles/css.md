@@ -355,7 +355,7 @@ The following CSS properties are supported by .NET MAUI (in the **Values** colum
 |`align-items`|<xref:Microsoft.Maui.Controls.FlexLayout>| `stretch` \| `center` \| `start` \| `end` \| `flex-start` \| `flex-end` \| `initial` |`align-items: flex-start;`|
 |`align-self`|`VisualElement`| `auto` \| `stretch` \| `center` \| `start` \| `end` \| `flex-start` \| `flex-end` \| `initial`|`align-self: flex-end;`|
 |`background-color`|`VisualElement`|_color_ \| `initial` |`background-color: springgreen;`|
-|`background-image`|`Page`|_string_ \| `initial` |`background-image: bg.png;`|
+|`background-image`|<xref:Microsoft.Maui.Controls.Page>|_string_ \| `initial` |`background-image: bg.png;`|
 |`border-color`|`Button`, <xref:Microsoft.Maui.Controls.Frame>, <xref:Microsoft.Maui.Controls.ImageButton>|_color_ \| `initial`|`border-color: #9acd32;`|
 |`border-radius`|<xref:Microsoft.Maui.Controls.BoxView>, `Button`, <xref:Microsoft.Maui.Controls.Frame>, <xref:Microsoft.Maui.Controls.ImageButton>|_double_ \| `initial` |`border-radius: 10;`|
 |`border-width`|`Button`, <xref:Microsoft.Maui.Controls.ImageButton>|_double_ \| `initial` |`border-width: .5;`|
@@ -384,11 +384,11 @@ The following CSS properties are supported by .NET MAUI (in the **Values** colum
 |`min-width`|`VisualElement`|_double_ \| `initial` |`min-width: 112;`|
 |`opacity`|`VisualElement`|_double_ \| `initial` |`opacity: .3;`|
 |`order`|`VisualElement`|_int_ \| `initial`|`order: -1;`|
-|`padding`|`Button`, <xref:Microsoft.Maui.Controls.ImageButton>, <xref:Microsoft.Maui.Controls.Layout>, `Page`|_thickness_ \| `initial` |`padding: 6 12 12;`|
-|`padding-left`|`Button`, <xref:Microsoft.Maui.Controls.ImageButton>, <xref:Microsoft.Maui.Controls.Layout>, `Page`|_double_ \| `initial`|`padding-left: 3;`|
-|`padding-top`|`Button`, <xref:Microsoft.Maui.Controls.ImageButton>, <xref:Microsoft.Maui.Controls.Layout>, `Page`| _double_ \| `initial` |`padding-top: 4;`|
-|`padding-right`|`Button`, <xref:Microsoft.Maui.Controls.ImageButton>, <xref:Microsoft.Maui.Controls.Layout>, `Page`| _double_ \| `initial` |`padding-right: 2;`|
-|`padding-bottom`|`Button`, <xref:Microsoft.Maui.Controls.ImageButton>, <xref:Microsoft.Maui.Controls.Layout>, `Page`| _double_ \| `initial` |`padding-bottom: 6;`|
+|`padding`|`Button`, <xref:Microsoft.Maui.Controls.ImageButton>, <xref:Microsoft.Maui.Controls.Layout>, <xref:Microsoft.Maui.Controls.Page>|_thickness_ \| `initial` |`padding: 6 12 12;`|
+|`padding-left`|`Button`, <xref:Microsoft.Maui.Controls.ImageButton>, <xref:Microsoft.Maui.Controls.Layout>, <xref:Microsoft.Maui.Controls.Page>|_double_ \| `initial`|`padding-left: 3;`|
+|`padding-top`|`Button`, <xref:Microsoft.Maui.Controls.ImageButton>, <xref:Microsoft.Maui.Controls.Layout>, <xref:Microsoft.Maui.Controls.Page>| _double_ \| `initial` |`padding-top: 4;`|
+|`padding-right`|`Button`, <xref:Microsoft.Maui.Controls.ImageButton>, <xref:Microsoft.Maui.Controls.Layout>, <xref:Microsoft.Maui.Controls.Page>| _double_ \| `initial` |`padding-right: 2;`|
+|`padding-bottom`|`Button`, <xref:Microsoft.Maui.Controls.ImageButton>, <xref:Microsoft.Maui.Controls.Layout>, <xref:Microsoft.Maui.Controls.Page>| _double_ \| `initial` |`padding-bottom: 6;`|
 |`position`|<xref:Microsoft.Maui.Controls.FlexLayout>| `relative` \| `absolute` \| `initial`|`position: absolute;`|
 |`row-gap`|<xref:Microsoft.Maui.Controls.Grid>| _double_ \| `initial`|`row-gap: 12;`|
 |`text-align`| <xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.EntryCell>, `Label`, <xref:Microsoft.Maui.Controls.SearchBar>|`left` \| `top` \| `right` \| `bottom` \| `start` \| `center` \| `middle` \| `end` \| `initial`. `left` and `right` should be avoided in right-to-left environments.| `text-align: right;`|

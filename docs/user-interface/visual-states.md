@@ -18,7 +18,7 @@ The .NET MAUI Visual State Manager defines a visual state group named `CommonSta
 - Selected
 - PointerOver
 
-The `Normal`, `Disabled`, `Focused`, and `PointerOver` visual states are supported on all classes that derive from `VisualElement`, which is the base class for `View` and `Page`. In addition, you can also define your own visual state groups and visual states.
+The `Normal`, `Disabled`, `Focused`, and `PointerOver` visual states are supported on all classes that derive from `VisualElement`, which is the base class for `View` and <xref:Microsoft.Maui.Controls.Page>. In addition, you can also define your own visual state groups and visual states.
 
 The advantage of using the Visual State Manager to define appearance, rather than accessing visual elements directly from code-behind, is that you can control how visual elements react to different state entirely in XAML, which keeps all of the UI design in one location.
 

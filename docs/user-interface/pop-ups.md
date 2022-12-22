@@ -6,11 +6,11 @@ ms.date: 02/24/2022
 
 # Display pop-ups
 
-Displaying an alert, asking a user to make a choice, or displaying a prompt is a common UI task. .NET Multi-platform App UI (.NET MAUI) has three methods on the `Page` class for interacting with the user via a pop-up: `DisplayAlert`, `DisplayActionSheet`, and `DisplayPromptAsync`. Pop-ups are rendered with native controls on each platform.
+Displaying an alert, asking a user to make a choice, or displaying a prompt is a common UI task. .NET Multi-platform App UI (.NET MAUI) has three methods on the <xref:Microsoft.Maui.Controls.Page> class for interacting with the user via a pop-up: `DisplayAlert`, `DisplayActionSheet`, and `DisplayPromptAsync`. Pop-ups are rendered with native controls on each platform.
 
 ## Display an alert
 
-All .NET MAUI-supported platforms have a modal pop-up to alert the user or ask simple questions of them. To display alerts, use the `DisplayAlert` method on any `Page`. The following example shows a simple message to the user:
+All .NET MAUI-supported platforms have a modal pop-up to alert the user or ask simple questions of them. To display alerts, use the `DisplayAlert` method on any <xref:Microsoft.Maui.Controls.Page>. The following example shows a simple message to the user:
 
 ```csharp
 await DisplayAlert("Alert", "You have been alerted", "OK");
@@ -38,7 +38,7 @@ The `DisplayAlert` method also has overloads that accept a `FlowDirection` argum
 
 ## Guide users through tasks
 
-An action sheet presents the user with a set of alternatives for how to proceed with a task. To display an action sheet, use the `DisplayActionSheet` method on any `Page`, passing the message and button labels as strings:
+An action sheet presents the user with a set of alternatives for how to proceed with a task. To display an action sheet, use the `DisplayActionSheet` method on any <xref:Microsoft.Maui.Controls.Page>, passing the message and button labels as strings:
 
 ```csharp
 string action = await DisplayActionSheet("ActionSheet: Send to?", "Cancel", null, "Email", "Twitter", "Facebook");
@@ -70,7 +70,7 @@ The `DisplayActionSheet` method also has an overload that accepts a `FlowDirecti
 
 ## Display a prompt
 
-To display a prompt, call the `DisplayPromptAsync` on any `Page`, passing a title and message as `string` arguments:
+To display a prompt, call the `DisplayPromptAsync` on any <xref:Microsoft.Maui.Controls.Page>, passing a title and message as `string` arguments:
 
 ```csharp
 string result = await DisplayPromptAsync("Question 1", "What's your name?");

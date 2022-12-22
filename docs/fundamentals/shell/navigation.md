@@ -14,7 +14,7 @@ The `Shell` class defines the following navigation-related properties:
 
 - `BackButtonBehavior`, of type `BackButtonBehavior`, an attached property that defines the behavior of the back button.
 - `CurrentItem`, of type `ShellItem`, the currently selected item.
-- `CurrentPage`, of type `Page`, the currently presented page.
+- `CurrentPage`, of type <xref:Microsoft.Maui.Controls.Page>, the currently presented page.
 - `CurrentState`, of type `ShellNavigationState`, the current navigation state of the `Shell`.
 - `Current`, of type `Shell`, a type-casted alias for `Application.Current.MainPage`.
 

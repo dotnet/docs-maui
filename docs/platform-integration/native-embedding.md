@@ -115,7 +115,7 @@ public class AppDelegate : UIApplicationDelegate
 
 ### Windows
 
-On Windows apps built using WinUI, .NET MAUI can typically be initialized in the native `App` class, `Window` class, or a `Page` class. The following code example shows .NET MAUI being initialized in a `Page` class:
+On Windows apps built using WinUI, .NET MAUI can typically be initialized in the native `App` class, `Window` class, or a <xref:Microsoft.Maui.Controls.Page> class. The following code example shows .NET MAUI being initialized in a <xref:Microsoft.Maui.Controls.Page> class:
 
 ```csharp
 using Microsoft.Maui;

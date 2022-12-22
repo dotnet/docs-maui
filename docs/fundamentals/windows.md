@@ -14,7 +14,7 @@ The .NET Multi-platform App UI (.NET MAUI) `Window` class provides the ability t
 
 - `FlowDirection`, of type `FlowDirection`, defines the direction in which the UI element of the window are laid out.
 - `Overlays`, of type `IReadOnlyCollection<IWindowOverlay>`, represents the collection of window overlays.
-- `Page`, of type `Page`, indicates the page being displayed by the window. This property is the content property of the `Window` class, and therefore does not need to be explicitly set.
+- <xref:Microsoft.Maui.Controls.Page>, of type <xref:Microsoft.Maui.Controls.Page>, indicates the page being displayed by the window. This property is the content property of the `Window` class, and therefore does not need to be explicitly set.
 - `Title`, of type `string`, represents the title of the window.
 
 ::: moniker-end
@@ -28,7 +28,7 @@ The .NET Multi-platform App UI (.NET MAUI) `Window` class provides the ability t
 - `MinimumHeight`, of type `double`, represents the minimum height of the window on desktop platforms. Valid values are between 0 and `double.PositiveInfinity`.
 - `MinimumWidth`, of type `double`, represents the minimum width of the window on desktop platforms. Valid values are between 0 and `double.PositiveInfinity`.
 - `Overlays`, of type `IReadOnlyCollection<IWindowOverlay>`, represents the collection of window overlays.
-- `Page`, of type `Page`, indicates the page being displayed by the window. This property is the content property of the `Window` class, and therefore does not need to be explicitly set.
+- <xref:Microsoft.Maui.Controls.Page>, of type <xref:Microsoft.Maui.Controls.Page>, indicates the page being displayed by the window. This property is the content property of the `Window` class, and therefore does not need to be explicitly set.
 - `Title`, of type `string`, represents the title of the window.
 - `Width`, of type `double`, specifies the width of the window on Windows.
 - `X`, of type `double`, specifies the X coordinate of the window on Windows.
@@ -83,7 +83,7 @@ The `VisualElement` class has a `Window` property that exposes the parent `Windo
 
 ## Create a Window
 
-By default, .NET MAUI creates a `Window` object when you set the `MainPage` property to a `Page` object in your `App` class. However, you can also override the `CreateWindow` method in your `App` class to create a `Window` object:
+By default, .NET MAUI creates a `Window` object when you set the `MainPage` property to a <xref:Microsoft.Maui.Controls.Page> object in your `App` class. However, you can also override the `CreateWindow` method in your `App` class to create a `Window` object:
 
 ```csharp
 namespace MyMauiApp
@@ -109,7 +109,7 @@ namespace MyMauiApp
 }
 ```
 
-While the `Window` class has a default constructor and a constructor that accepts a `Page` argument, which represents the root page of the app, you can also call the base `CreateWindow` method to return the .NET MAUI created `Window` object.
+While the `Window` class has a default constructor and a constructor that accepts a <xref:Microsoft.Maui.Controls.Page> argument, which represents the root page of the app, you can also call the base `CreateWindow` method to return the .NET MAUI created `Window` object.
 
 In addition, you can also create your own `Window`-derived object:
 
