@@ -199,7 +199,7 @@ For more information about data template selectors, see [Create a DataTemplateSe
 
 ## Context menus
 
-<xref:Microsoft.Maui.Controls.CollectionView> supports context menus for items of data through the `SwipeView`, which reveals the context menu with a swipe gesture. The `SwipeView` is a container control that wraps around an item of content, and provides context menu items for that item of content. Therefore, context menus are implemented for a <xref:Microsoft.Maui.Controls.CollectionView> by creating a `SwipeView` that defines the content that the `SwipeView` wraps around, and the context menu items that are revealed by the swipe gesture. This is achieved by setting the `SwipeView` as the root view in the `DataTemplate` that defines the appearance of each item of data in the <xref:Microsoft.Maui.Controls.CollectionView>:
+<xref:Microsoft.Maui.Controls.CollectionView> supports context menus for items of data through the <xref:Microsoft.Maui.Controls.SwipeView>, which reveals the context menu with a swipe gesture. The <xref:Microsoft.Maui.Controls.SwipeView> is a container control that wraps around an item of content, and provides context menu items for that item of content. Therefore, context menus are implemented for a <xref:Microsoft.Maui.Controls.CollectionView> by creating a <xref:Microsoft.Maui.Controls.SwipeView> that defines the content that the <xref:Microsoft.Maui.Controls.SwipeView> wraps around, and the context menu items that are revealed by the swipe gesture. This is achieved by setting the <xref:Microsoft.Maui.Controls.SwipeView> as the root view in the `DataTemplate` that defines the appearance of each item of data in the <xref:Microsoft.Maui.Controls.CollectionView>:
 
 ```xaml
 <CollectionView x:Name="collectionView"
@@ -268,13 +268,13 @@ collectionView.ItemTemplate = new DataTemplate(() =>
 });
 ```
 
-In this example, the `SwipeView` content is a <xref:Microsoft.Maui.Controls.Grid> that defines the appearance of each item in the <xref:Microsoft.Maui.Controls.CollectionView>. The swipe items are used to perform actions on the `SwipeView` content, and are revealed when the control is swiped from the left side:
+In this example, the <xref:Microsoft.Maui.Controls.SwipeView> content is a <xref:Microsoft.Maui.Controls.Grid> that defines the appearance of each item in the <xref:Microsoft.Maui.Controls.CollectionView>. The swipe items are used to perform actions on the <xref:Microsoft.Maui.Controls.SwipeView> content, and are revealed when the control is swiped from the left side:
 
 :::image type="content" source="media/populate-data/swipeview.png" alt-text="Screenshot of CollectionView context menu items.":::
 
-`SwipeView` supports four different swipe directions, with the swipe direction being defined by the directional `SwipeItems` collection the `SwipeItems` objects are added to. By default, a swipe item is executed when it's tapped by the user. In addition, once a swipe item has been executed the swipe items are hidden and the `SwipeView` content is re-displayed. However, these behaviors can be changed.
+<xref:Microsoft.Maui.Controls.SwipeView> supports four different swipe directions, with the swipe direction being defined by the directional `SwipeItems` collection the `SwipeItems` objects are added to. By default, a swipe item is executed when it's tapped by the user. In addition, once a swipe item has been executed the swipe items are hidden and the <xref:Microsoft.Maui.Controls.SwipeView> content is re-displayed. However, these behaviors can be changed.
 
-For more information about the `SwipeView` control, see [SwipeView](~/user-interface/controls/swipeview.md).
+For more information about the <xref:Microsoft.Maui.Controls.SwipeView> control, see [SwipeView](~/user-interface/controls/swipeview.md).
 
 ## Pull to refresh
 
