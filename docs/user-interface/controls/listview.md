@@ -143,11 +143,11 @@ The appearance of each item in a <xref:Microsoft.Maui.Controls.ListView> is defi
 
 - <xref:Microsoft.Maui.Controls.TextCell>, which displays primary and secondary text on separate lines.
 - `ImageCell`, which displays an image with primary and secondary text on separate lines.
-- `SwitchCell`, which displays text and a switch that can be switched on or off.
+- <xref:Microsoft.Maui.Controls.SwitchCell>, which displays text and a switch that can be switched on or off.
 - `EntryCell`, which displays a label and text that's editable.
 - <xref:Microsoft.Maui.Controls.ViewCell>, which is a custom cell whose appearance is defined by a `View`. This cell type should be used when you want to fully define the appearance of each item in a <xref:Microsoft.Maui.Controls.ListView>.
 
-Typically, `SwitchCell` and `EntryCell` will only be used in a <xref:Microsoft.Maui.Controls.TableView> and won't be used in a <xref:Microsoft.Maui.Controls.ListView>. For more information about `SwitchCell` and `EntryCell`, see [TableView](tableview.md).
+Typically, <xref:Microsoft.Maui.Controls.SwitchCell> and `EntryCell` will only be used in a <xref:Microsoft.Maui.Controls.TableView> and won't be used in a <xref:Microsoft.Maui.Controls.ListView>. For more information about <xref:Microsoft.Maui.Controls.SwitchCell> and `EntryCell`, see [TableView](tableview.md).
 
 #### Text cell
 

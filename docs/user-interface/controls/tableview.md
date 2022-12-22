@@ -66,7 +66,7 @@ Each item in a <xref:Microsoft.Maui.Controls.TableView> is defined by a `Cell` o
 
 - <xref:Microsoft.Maui.Controls.TextCell>, which displays primary and secondary text on separate lines.
 - `ImageCell`, which displays an image with primary and secondary text on separate lines.
-- `SwitchCell`, which displays text and a switch that can be switched on or off.
+- <xref:Microsoft.Maui.Controls.SwitchCell>, which displays text and a switch that can be switched on or off.
 - `EntryCell`, which displays a label and text that's editable.
 - <xref:Microsoft.Maui.Controls.ViewCell>, which is a custom cell whose appearance is defined by a `View`. This cell type should be used when you want to fully define the appearance of each item in a <xref:Microsoft.Maui.Controls.TableView>.
 
@@ -141,7 +141,7 @@ The following screenshot shows the resulting cell appearance:
 
 ### Switch cell
 
-A `SwitchCell` displays text and a switch that can be switched on or off. `SwitchCell` defines the following properties:
+A <xref:Microsoft.Maui.Controls.SwitchCell> displays text and a switch that can be switched on or off. <xref:Microsoft.Maui.Controls.SwitchCell> defines the following properties:
 
 - `Text`, of type `string`, defines the text to display next to the switch.
 - `On`, of type `bool`, represents whether the switch is on or off.
@@ -149,9 +149,9 @@ A `SwitchCell` displays text and a switch that can be switched on or off. `Switc
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
-`SwitchCell` also defines an `OnChanged` event that's raised when the switch changes state. The `ToggledEventArgs` object that accompanies this event defines a `Value` property, that indicates whether the switch is on or off.
+<xref:Microsoft.Maui.Controls.SwitchCell> also defines an `OnChanged` event that's raised when the switch changes state. The `ToggledEventArgs` object that accompanies this event defines a `Value` property, that indicates whether the switch is on or off.
 
-The following example shows using a `SwitchCell` to define the appearance of items in a <xref:Microsoft.Maui.Controls.TableView>:
+The following example shows using a <xref:Microsoft.Maui.Controls.SwitchCell> to define the appearance of items in a <xref:Microsoft.Maui.Controls.TableView>:
 
 ```xaml
 <TableView Intent="Settings">

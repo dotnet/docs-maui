@@ -59,7 +59,7 @@ Most bindable properties have a default binding mode of `OneWay` but some proper
 - `SelectedIndex` and `SelectedItem` properties of <xref:Microsoft.Maui.Controls.Picker>
 - `Value` property of <xref:Microsoft.Maui.Controls.Slider> and <xref:Microsoft.Maui.Controls.Stepper>
 - `IsToggled` property of <xref:Microsoft.Maui.Controls.Switch>
-- `On` property of `SwitchCell`
+- `On` property of <xref:Microsoft.Maui.Controls.SwitchCell>
 - `Time` property of <xref:Microsoft.Maui.Controls.TimePicker>
 
 These properties are defined as `TwoWay` because when data bindings are used with the Model-View-ViewModel (MVVM) pattern, the viewmodel class is the data-binding source, and the view, which consists of views such as <xref:Microsoft.Maui.Controls.Slider>, are data-binding targets. MVVM bindings resemble the example above, because it's likely that you want each view on the page to be initialized with the value of the corresponding property in the viewmodel, but changes in the view should also affect the viewmodel property.
