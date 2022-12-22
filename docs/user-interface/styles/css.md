@@ -356,8 +356,8 @@ The following CSS properties are supported by .NET MAUI (in the **Values** colum
 |`align-self`|`VisualElement`| `auto` \| `stretch` \| `center` \| `start` \| `end` \| `flex-start` \| `flex-end` \| `initial`|`align-self: flex-end;`|
 |`background-color`|`VisualElement`|_color_ \| `initial` |`background-color: springgreen;`|
 |`background-image`|`Page`|_string_ \| `initial` |`background-image: bg.png;`|
-|`border-color`|`Button`, `Frame`, `ImageButton`|_color_ \| `initial`|`border-color: #9acd32;`|
-|`border-radius`|<xref:Microsoft.Maui.Controls.BoxView>, `Button`, `Frame`, `ImageButton`|_double_ \| `initial` |`border-radius: 10;`|
+|`border-color`|`Button`, <xref:Microsoft.Maui.Controls.Frame>, `ImageButton`|_color_ \| `initial`|`border-color: #9acd32;`|
+|`border-radius`|<xref:Microsoft.Maui.Controls.BoxView>, `Button`, <xref:Microsoft.Maui.Controls.Frame>, `ImageButton`|_double_ \| `initial` |`border-radius: 10;`|
 |`border-width`|`Button`, `ImageButton`|_double_ \| `initial` |`border-width: .5;`|
 |`color`|<xref:Microsoft.Maui.Controls.ActivityIndicator>, <xref:Microsoft.Maui.Controls.BoxView>, `Button`, `CheckBox`, <xref:Microsoft.Maui.Controls.DatePicker>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, `Label`, `Picker`, `ProgressBar`, `SearchBar`, `Switch`, `TimePicker`|_color_ \| `initial` |`color: rgba(255, 0, 0, 0.3);`|
 |`column-gap`|<xref:Microsoft.Maui.Controls.Grid>|_double_ \| `initial`|`column-gap: 9;`|

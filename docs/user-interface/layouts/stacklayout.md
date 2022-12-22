@@ -327,7 +327,7 @@ The following XAML shows an example of nesting <xref:Microsoft.Maui.Controls.Sta
 </ContentPage>
 ```
 
-In this example, the parent <xref:Microsoft.Maui.Controls.StackLayout> contains nested <xref:Microsoft.Maui.Controls.StackLayout> objects inside `Frame` objects. The parent <xref:Microsoft.Maui.Controls.StackLayout> is oriented vertically, while the child <xref:Microsoft.Maui.Controls.StackLayout> objects are oriented horizontally:
+In this example, the parent <xref:Microsoft.Maui.Controls.StackLayout> contains nested <xref:Microsoft.Maui.Controls.StackLayout> objects inside <xref:Microsoft.Maui.Controls.Frame> objects. The parent <xref:Microsoft.Maui.Controls.StackLayout> is oriented vertically, while the child <xref:Microsoft.Maui.Controls.StackLayout> objects are oriented horizontally:
 
 :::image type="content" source="media/stacklayout/nested.png" alt-text="Nested .NET MAUI StackLayouts.":::
 

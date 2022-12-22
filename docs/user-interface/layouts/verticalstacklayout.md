@@ -193,7 +193,7 @@ The following XAML shows an example of nesting <xref:Microsoft.Maui.Controls.Hor
 </ContentPage>
 ```
 
-In this example, the parent <xref:Microsoft.Maui.Controls.VerticalStackLayout> contains nested <xref:Microsoft.Maui.Controls.HorizontalStackLayout> objects inside `Frame` objects:
+In this example, the parent <xref:Microsoft.Maui.Controls.VerticalStackLayout> contains nested <xref:Microsoft.Maui.Controls.HorizontalStackLayout> objects inside <xref:Microsoft.Maui.Controls.Frame> objects:
 
 :::image type="content" source="media/verticalstacklayout/nested.png" alt-text="VerticalStackLayout displaying nested HorizontalStackLayout objects screenshot.":::
 

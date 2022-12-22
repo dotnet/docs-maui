@@ -108,7 +108,7 @@ The following XAML example shows a `ControlTemplate` for `CardView` objects:
 </ContentPage>
 ```
 
-When a `ControlTemplate` is declared as a resource, it must have a key specified with the `x:Key` attribute so that it can be identified in the resource dictionary. In this example, the root element of the `CardViewControlTemplate` is a `Frame` object. The `Frame` object uses the `RelativeSource` markup extension to set its `BindingContext` to the runtime object instance to which the template will be applied, which is known as the *templated parent*. The `Frame` object uses a combination of <xref:Microsoft.Maui.Controls.Grid>, `Frame`, `Image`, `Label`, and <xref:Microsoft.Maui.Controls.BoxView> objects to define the visual structure of a `CardView` object. The binding expressions of these objects resolve against `CardView` properties, due to inheriting the `BindingContext` from the root `Frame` element. For more information about the `RelativeSource` markup extension, see [Relative bindings](~/fundamentals/data-binding/relative-bindings.md).
+When a `ControlTemplate` is declared as a resource, it must have a key specified with the `x:Key` attribute so that it can be identified in the resource dictionary. In this example, the root element of the `CardViewControlTemplate` is a <xref:Microsoft.Maui.Controls.Frame> object. The <xref:Microsoft.Maui.Controls.Frame> object uses the `RelativeSource` markup extension to set its `BindingContext` to the runtime object instance to which the template will be applied, which is known as the *templated parent*. The <xref:Microsoft.Maui.Controls.Frame> object uses a combination of <xref:Microsoft.Maui.Controls.Grid>, <xref:Microsoft.Maui.Controls.Frame>, `Image`, `Label`, and <xref:Microsoft.Maui.Controls.BoxView> objects to define the visual structure of a `CardView` object. The binding expressions of these objects resolve against `CardView` properties, due to inheriting the `BindingContext` from the root <xref:Microsoft.Maui.Controls.Frame> element. For more information about the `RelativeSource` markup extension, see [Relative bindings](~/fundamentals/data-binding/relative-bindings.md).
 
 ## Consume a ControlTemplate
 
@@ -138,7 +138,7 @@ The following example shows the `CardViewControlTemplate` being assigned to the 
 </ContentPage>
 ```
 
-In this example, the controls in the `CardViewControlTemplate` become part of the visual tree for each `CardView` object. Because the root `Frame` object for the control template sets its `BindingContext` to the templated parent, the `Frame` and its children resolve their binding expressions against the properties of each `CardView` object.
+In this example, the controls in the `CardViewControlTemplate` become part of the visual tree for each `CardView` object. Because the root <xref:Microsoft.Maui.Controls.Frame> object for the control template sets its `BindingContext` to the templated parent, the <xref:Microsoft.Maui.Controls.Frame> and its children resolve their binding expressions against the properties of each `CardView` object.
 
 The following screenshot shows the `CardViewControlTemplate` applied to the three `CardView` objects:
 
@@ -592,7 +592,7 @@ In this example, the `BindingContext` of the page is set to a `PeopleViewModel` 
 </ControlTemplate>
 ```
 
-In this example, the root element of the `ControlTemplate` is a `Frame` object. The `Frame` object uses the `RelativeSource` markup extension to set its `BindingContext` to the templated parent. The binding expressions of the `Frame` object and its children resolve against `CardView` properties, due to inheriting the `BindingContext` from the root `Frame` element. The following screenshot shows the page displaying the `People` collection:
+In this example, the root element of the `ControlTemplate` is a <xref:Microsoft.Maui.Controls.Frame> object. The <xref:Microsoft.Maui.Controls.Frame> object uses the `RelativeSource` markup extension to set its `BindingContext` to the templated parent. The binding expressions of the <xref:Microsoft.Maui.Controls.Frame> object and its children resolve against `CardView` properties, due to inheriting the `BindingContext` from the root <xref:Microsoft.Maui.Controls.Frame> element. The following screenshot shows the page displaying the `People` collection:
 
 :::image type="content" source="media/controltemplate/viewmodel-controltemplate.png" alt-text="Screenshot of three templated CardView objects that bind to a viewmodel.":::
 

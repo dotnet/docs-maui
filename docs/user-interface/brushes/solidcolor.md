@@ -31,7 +31,7 @@ There are three main techniques for creating a `SolidColorBrush`. You can create
        WidthRequest="120" />
 ```
 
-In this example, the background of the `Frame` is painted with a dark blue `SolidColorBrush`:
+In this example, the background of the <xref:Microsoft.Maui.Controls.Frame> is painted with a dark blue `SolidColorBrush`:
 
 :::image type="content" source="media/solidcolor/predefined-color.png" alt-text="Screenshot of a Frame painted with a predefined color.":::
 
@@ -49,7 +49,7 @@ Alternatively, the `Color` value can be specified using property tag syntax:
 </Frame>
 ```
 
-In this example, the background of the `Frame` is painted with a `SolidColorBrush` whose color is specified by setting the `SolidColorBrush.Color` property.
+In this example, the background of the <xref:Microsoft.Maui.Controls.Frame> is painted with a `SolidColorBrush` whose color is specified by setting the `SolidColorBrush.Color` property.
 
 ### Use a predefined Brush
 
@@ -75,7 +75,7 @@ Frame frame = new Frame
 };
 ```
 
-In this example, the background of the `Frame` is painted with an indigo `SolidColorBrush`:
+In this example, the background of the <xref:Microsoft.Maui.Controls.Frame> is painted with an indigo `SolidColorBrush`:
 
 :::image type="content" source="media/solidcolor/predefined-brush.png" alt-text="Screenshot of a Frame painted with a predefined SolidColorBrush.":::
 
@@ -102,7 +102,7 @@ The following example sets the color value of a `SolidColorBrush` using hexadeci
        WidthRequest="120" />
 ```
 
-In this example, the background of the `Frame` is painted with a salmon-colored `SolidColorBrush`:
+In this example, the background of the <xref:Microsoft.Maui.Controls.Frame> is painted with a salmon-colored `SolidColorBrush`:
 
 :::image type="content" source="media/solidcolor/hex.png" alt-text="Screenshot of a Frame painted with a SolidColorBrush created with hexadecimal notation.":::
 

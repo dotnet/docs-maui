@@ -375,7 +375,7 @@ The following XAML shows a `ControlTemplate` that can be used to redefine the vi
 </ContentPage>
 ```
 
-In this example, the root element of the `ControlTemplate` is a `Frame` object that defines `Checked` and `Unchecked` visual states. The `Frame` object uses a combination of <xref:Microsoft.Maui.Controls.Grid>, <xref:Microsoft.Maui.Controls.Shapes.Ellipse>, and `ContentPresenter` objects to define the visual structure of a `RadioButton`. The example also includes an *implicit* style that will assign the `RadioButtonTemplate` to the `ControlTemplate` property of any `RadioButton` objects on the page.
+In this example, the root element of the `ControlTemplate` is a <xref:Microsoft.Maui.Controls.Frame> object that defines `Checked` and `Unchecked` visual states. The <xref:Microsoft.Maui.Controls.Frame> object uses a combination of <xref:Microsoft.Maui.Controls.Grid>, <xref:Microsoft.Maui.Controls.Shapes.Ellipse>, and `ContentPresenter` objects to define the visual structure of a `RadioButton`. The example also includes an *implicit* style that will assign the `RadioButtonTemplate` to the `ControlTemplate` property of any `RadioButton` objects on the page.
 
 > [!NOTE]
 > The `ContentPresenter` object marks the location in the visual structure where `RadioButton` content will be displayed.

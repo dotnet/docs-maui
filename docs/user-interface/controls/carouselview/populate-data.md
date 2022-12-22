@@ -318,7 +318,7 @@ carouselView.ItemTemplate = new DataTemplate(() =>
 });
 ```
 
-In this example, the `SwipeView` content is a <xref:Microsoft.Maui.Controls.StackLayout> that defines the appearance of each item that's surrounded by a `Frame` in the <xref:Microsoft.Maui.Controls.CarouselView>. The swipe items are used to perform actions on the `SwipeView` content, and are revealed when the control is swiped from the bottom and from the top:
+In this example, the `SwipeView` content is a <xref:Microsoft.Maui.Controls.StackLayout> that defines the appearance of each item that's surrounded by a <xref:Microsoft.Maui.Controls.Frame> in the <xref:Microsoft.Maui.Controls.CarouselView>. The swipe items are used to perform actions on the `SwipeView` content, and are revealed when the control is swiped from the bottom and from the top:
 
 :::image type="content" source="media/populate-data/swipeview-bottom.png" alt-text="Screenshot of a CarouselView bottom context menu item.":::
 :::image type="content" source="media/populate-data/swipeview-top.png" alt-text="Screenshot of a CarouselView top context menu item.":::

@@ -216,7 +216,7 @@ This code results in a vertical layout that has a spacing of 20 between items.
 
 ## Dynamic resizing of items
 
-Items in a <xref:Microsoft.Maui.Controls.CarouselView> can be dynamically resized at runtime by changing layout related properties of elements within the `DataTemplate`. For example, the following code example changes the `HeightRequest` and `WidthRequest` properties of an `Image` object, and the `HeightRequest` property of its parent `Frame`:
+Items in a <xref:Microsoft.Maui.Controls.CarouselView> can be dynamically resized at runtime by changing layout related properties of elements within the `DataTemplate`. For example, the following code example changes the `HeightRequest` and `WidthRequest` properties of an `Image` object, and the `HeightRequest` property of its parent <xref:Microsoft.Maui.Controls.Frame>:
 
 ```csharp
 void OnImageTapped(object sender, EventArgs e)
@@ -228,7 +228,7 @@ void OnImageTapped(object sender, EventArgs e)
 }
 ```
 
-The `OnImageTapped` event handler is executed in response to an `Image` object being tapped, and changes the dimensions of the image (and its parent `Frame`, so that it's more easily viewed:
+The `OnImageTapped` event handler is executed in response to an `Image` object being tapped, and changes the dimensions of the image (and its parent <xref:Microsoft.Maui.Controls.Frame>, so that it's more easily viewed:
 
 :::image type="content" source="media/layout/runtime-resizing.png" alt-text="Screenshot of a CarouselView with dynamic item sizing.":::
 
