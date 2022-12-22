@@ -91,4 +91,4 @@ The main control groups used to create the user interface of a .NET MAUI app are
 | <xref:Microsoft.Maui.Controls.Switch> | <xref:Microsoft.Maui.Controls.Switch> enables you to select a boolean value using a type of button that can either be on or off. For more information, see [Switch](~/user-interface/controls/switch.md). |
 | <xref:Microsoft.Maui.Controls.TableView> | <xref:Microsoft.Maui.Controls.TableView> displays a table of scrollable items that can be grouped into sections. For more information, see [TableView](~/user-interface/controls/tableview.md). |
 | <xref:Microsoft.Maui.Controls.TimePicker> | <xref:Microsoft.Maui.Controls.TimePicker> enables you to select a time with the platform time picker. For more information, see [TimePicker](~/user-interface/controls/timepicker.md). |
-| `WebView` | `WebView` displays web pages or local HTML content. For more information, see [WebView](~/user-interface/controls/webview.md). |
+| <xref:Microsoft.Maui.Controls.WebView> | <xref:Microsoft.Maui.Controls.WebView> displays web pages or local HTML content. For more information, see [WebView](~/user-interface/controls/webview.md). |

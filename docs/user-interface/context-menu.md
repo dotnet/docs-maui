@@ -24,7 +24,7 @@ A context menu is defined with a `MenuFlyout`, which can consist of the followin
 
 A `MenuFlyout` object can be added to the `FlyoutBase.ContextFlyout` attached property of any control that derives from `Element`. When the user right-clicks on the control, the context menu will appear at the location where the pointer was clicked.
 
-The following example shows a `WebView` that defines a context menu:
+The following example shows a <xref:Microsoft.Maui.Controls.WebView> that defines a context menu:
 
 ```xaml
 <WebView x:Name="webView"
@@ -59,7 +59,7 @@ void OnWebViewGoToRepoClicked(object sender, EventArgs e)
 }
 ```
 
-The `OnWebViewGoToRepoClicked` event handler retrieves the `CommandParameter` property value for the `MenuFlyoutItem` object that was clicked, and uses its value to build the URL that the `WebView` navigates to.
+The `OnWebViewGoToRepoClicked` event handler retrieves the `CommandParameter` property value for the `MenuFlyoutItem` object that was clicked, and uses its value to build the URL that the <xref:Microsoft.Maui.Controls.WebView> navigates to.
 
 > [!WARNING]
 > It's not currently possible to add items to, or remove items from, the `MenuFlyout` at runtime.

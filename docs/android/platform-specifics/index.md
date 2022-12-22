@@ -13,8 +13,8 @@ The following platform-specific functionality is provided for .NET MAUI views on
 - Setting the input method editor options for the soft keyboard for an <xref:Microsoft.Maui.Controls.Entry>. For more information, see [Entry input method editor options on Android](entry-ime-options.md).
 - Enabling fast scrolling in a <xref:Microsoft.Maui.Controls.ListView>. For more information, see [ListView fast scrolling on Android](listview-fast-scrolling.md).
 - Controlling the transition that's used when opening a <xref:Microsoft.Maui.Controls.SwipeView>. For more information, see [SwipeView swipe transition Mode](swipeview-swipetransitionmode.md).
-- Controlling whether a `WebView` can display mixed content. For more information, see [WebView mixed content on Android](webview-mixed-content.md).
-- Enabling zoom on a `WebView`. For more information, see [WebView zoom on Android](webview-zoom-controls.md).
+- Controlling whether a <xref:Microsoft.Maui.Controls.WebView> can display mixed content. For more information, see [WebView mixed content on Android](webview-mixed-content.md).
+- Enabling zoom on a <xref:Microsoft.Maui.Controls.WebView>. For more information, see [WebView zoom on Android](webview-zoom-controls.md).
 
 The following platform-specific functionality is provided for .NET MAUI pages on Android:
 

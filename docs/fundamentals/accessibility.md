@@ -23,7 +23,7 @@ Most screen readers will automatically read any text associated with a control t
 .NET Multi-platform App UI (.NET MAUI) supports two approaches to providing access to the accessibility experience of the underlying platform. *Semantic properties* are the .NET MAUI approach to providing accessibility values in apps, and are the recommended approach. *Automation properties* are the Xamarin.Forms approach to providing accessibility values in apps, and have been superseded by semantic properties. In both cases, the default accessibility order of controls is the same order in which they're listed in XAML or added to the layout. However, different layouts might have additional factors that influence accessibility order. For example, the accessibility order of <xref:Microsoft.Maui.Controls.StackLayout> is also based on its orientation, and the accessibility order of <xref:Microsoft.Maui.Controls.Grid> is based on its row and column arrangement. For more information about content ordering, see [Meaningful Content Ordering](https://devblogs.microsoft.com/xamarin/the-journey-to-accessible-apps-meaningful-content-ordering/) on the Xamarin blog.
 
 > [!NOTE]
-> When a `WebView` displays a website that's accessible, it will also be accessible in a .NET MAUI app. Conversely, when a `WebView` displays a website that's not accessible, it won't be accessible in a .NET MAUI app.
+> When a <xref:Microsoft.Maui.Controls.WebView> displays a website that's accessible, it will also be accessible in a .NET MAUI app. Conversely, when a <xref:Microsoft.Maui.Controls.WebView> displays a website that's not accessible, it won't be accessible in a .NET MAUI app.
 
 ## Semantic properties
 

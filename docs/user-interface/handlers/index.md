@@ -81,7 +81,7 @@ The following table lists the types that implement handler-based views in .NET M
 | <xref:Microsoft.Maui.Controls.SwipeView> | `ISwipeView` | `SwipeViewHandler` | `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.Switch> | `ISwitch` | `SwitchHandler` | `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.TimePicker> | `ITimePicker` | `TimePickerHandler` | `Mapper` | `CommandMapper` |
-| `WebView` | `IWebView` | `WebViewHandler` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.WebView> | `IWebView` | `WebViewHandler` | `Mapper` | `CommandMapper` |
 
 All handlers are in the `Microsoft.Maui.Handlers` namespace, with the following exceptions:
 

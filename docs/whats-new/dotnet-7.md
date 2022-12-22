@@ -24,7 +24,7 @@ For information about what's new in .NET 7, see [What's new in .NET 7](/dotnet/c
 - Context menus can be added to any control that derives from `Element`, on Mac Catalyst and Windows. For more information, see [Display a context menu](~/user-interface/context-menu.md).
 - Menu bars can contain separators, which are horizontal lines that separate items in the menu. For more information, see [Display a menu bar](~/user-interface/menu-bar.md).
 - Additional .NET MAUI delegates are invoked in response to iOS lifecycle events being raised. For more information, see [App lifecycle](~/fundamentals/app-lifecycle.md#ios).
-- The underlying native control for the `WebView` on iOS and Mac Catalyst can be configured with a `WKWebViewConfiguration` object. For more information, see [Configure the native WebView on iOS and Mac Catalyst](~/user-interface/controls/webview.md#configure-the-native-webview-on-ios-and-mac-catalyst).
+- The underlying native control for the <xref:Microsoft.Maui.Controls.WebView> on iOS and Mac Catalyst can be configured with a `WKWebViewConfiguration` object. For more information, see [Configure the native WebView on iOS and Mac Catalyst](~/user-interface/controls/webview.md#configure-the-native-webview-on-ios-and-mac-catalyst).
 WebView config on iOS/Mac
 
 In addition, `MessagingCenter` has been deprecated and replaced with `WeakReferenceMessenger` in the [CommunityToolkit.Mvvm NuGet package](https://www.nuget.org/packages/CommunityToolkit.Mvvm).
