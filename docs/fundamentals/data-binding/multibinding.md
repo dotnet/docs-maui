@@ -143,7 +143,7 @@ A `IMultiValueConverter` is typically consumed by instantiating it in a resource
 
 In this example, the `MultiBinding` object uses the `AllTrueMultiConverter` instance to set the `CheckBox.IsChecked` property to `true`, provided that the three `Binding` objects evaluate to `true`. Otherwise, the `CheckBox.IsChecked` property is set to `false`.
 
-By default, the `CheckBox.IsChecked` property uses a `TwoWay` binding. Therefore, the `ConvertBack` method of the `AllTrueMultiConverter` instance is executed when the `CheckBox` is unchecked by the user, which sets the source binding values to the value of the `CheckBox.IsChecked` property.
+By default, the `CheckBox.IsChecked` property uses a `TwoWay` binding. Therefore, the `ConvertBack` method of the `AllTrueMultiConverter` instance is executed when the <xref:Microsoft.Maui.Controls.CheckBox> is unchecked by the user, which sets the source binding values to the value of the `CheckBox.IsChecked` property.
 
 The equivalent C# code is shown below:
 

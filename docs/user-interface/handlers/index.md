@@ -51,7 +51,7 @@ The following table lists the types that implement handler-based views in .NET M
 | <xref:Microsoft.Maui.Controls.Border> | `IBorderView` | `BorderHandler` | `Mapper` | `CommandMapper` |
 | `Button` | `IButton` | `ButtonHandler` | `ImageButtonMapper`. `TextButtonMapper`, `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.CarouselView> | | `CarouselViewHandler` | `Mapper` | |
-| `CheckBox` | `ICheckBox` | `CheckBoxHandler` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.CheckBox> | `ICheckBox` | `CheckBoxHandler` | `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.CollectionView> |  | `CollectionViewHandler` | `Mapper` | |
 | <xref:Microsoft.Maui.Controls.ContentView> | `IContentView` | `ContentViewHandler` | `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.DatePicker> | `IDatePicker` | `DatePickerHandler` | `Mapper` | `CommandMapper` |

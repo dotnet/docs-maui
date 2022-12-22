@@ -425,7 +425,7 @@ The following XAML example shows a `Style` that includes `CompareStateTrigger` o
 </Grid>
 ```
 
-In this example, the implicit `Style` targets <xref:Microsoft.Maui.Controls.Grid> objects. When the `IsChecked` property of the `CheckBox` is `false`, the background color of the <xref:Microsoft.Maui.Controls.Grid> is set to white. When the `CheckBox.IsChecked` property becomes `true`, a `VisualState` change is triggered, and the background color of the <xref:Microsoft.Maui.Controls.Grid> becomes black.
+In this example, the implicit `Style` targets <xref:Microsoft.Maui.Controls.Grid> objects. When the `IsChecked` property of the <xref:Microsoft.Maui.Controls.CheckBox> is `false`, the background color of the <xref:Microsoft.Maui.Controls.Grid> is set to white. When the `CheckBox.IsChecked` property becomes `true`, a `VisualState` change is triggered, and the background color of the <xref:Microsoft.Maui.Controls.Grid> becomes black.
 
 ### Device state trigger
 
