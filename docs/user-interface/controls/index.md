@@ -63,7 +63,7 @@ The main control groups used to create the user interface of a .NET MAUI app are
 | <xref:Microsoft.Maui.Controls.ContentView> | <xref:Microsoft.Maui.Controls.ContentView> is a control that enables the creation of custom, reusable controls. For more information, see [ContentView](~/user-interface/controls/contentview.md). |
 | <xref:Microsoft.Maui.Controls.DatePicker> | <xref:Microsoft.Maui.Controls.DatePicker> enables you to select a date with the platform date picker. For more information, see [DatePicker](~/user-interface/controls/datepicker.md). |
 | <xref:Microsoft.Maui.Controls.Editor> | <xref:Microsoft.Maui.Controls.Editor> enables you to enter and edit multiple lines of text. For more information, see [Editor](~/user-interface/controls/editor.md). |
-| `Ellipse` | `Ellipse` displays an ellipse or circle. For more information, see [Ellipse](~/user-interface/controls/shapes/ellipse.md). |
+| <xref:Microsoft.Maui.Controls.Shapes.Ellipse> | <xref:Microsoft.Maui.Controls.Shapes.Ellipse> displays an ellipse or circle. For more information, see [Ellipse](~/user-interface/controls/shapes/ellipse.md). |
 | `Entry` | `Entry` enables you to enter and edit a single line of text. For more information, see [Entry](~/user-interface/controls/entry.md). |
 | `Frame` | `Frame` is used to wrap a view or layout with a border that can be configured with color, shadow, and other options. For more information, see [Frame](~/user-interface/controls/frame.md). |
 | `GraphicsView` | `GraphicsView` is a graphics canvas on which 2D graphics can be drawn using types from the `Microsoft.Maui.Graphics` namespace. For more information, see [GraphicsView](~/user-interface/controls/graphicsview.md). |
