@@ -33,7 +33,7 @@ The following platform-specific functionality is provided for .NET MAUI pages on
 
 The following platform-specific functionality is provided for .NET MAUI layouts on iOS:
 
-- Controlling whether a `ScrollView` handles a touch gesture or passes it to its content. For more information, see [ScrollView content touches on iOS](scrollview-content-touches.md).
+- Controlling whether a <xref:Microsoft.Maui.Controls.ScrollView> handles a touch gesture or passes it to its content. For more information, see [ScrollView content touches on iOS](scrollview-content-touches.md).
 
 The following platform-specific functionality is provided for the .NET MAUI `Application` class on iOS:
 

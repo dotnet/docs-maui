@@ -83,7 +83,7 @@ The main control groups used to create the user interface of a .NET MAUI app are
 | <xref:Microsoft.Maui.Controls.Shapes.Rectangle> | <xref:Microsoft.Maui.Controls.Shapes.Rectangle> displays a rectangle or square. For more information, see [Rectangle](~/user-interface/controls/shapes/rectangle.md). |
 | <xref:Microsoft.Maui.Controls.RefreshView> | <xref:Microsoft.Maui.Controls.RefreshView> is a container control that provides pull-to-refresh functionality for scrollable content. For more information, see [RefreshView](~/user-interface/controls/refreshview.md). |
 | <xref:Microsoft.Maui.Controls.Shapes.RoundRectangle> | <xref:Microsoft.Maui.Controls.Shapes.RoundRectangle> displays a rectangle or square with rounded corners. For more information, see [Rectangle](~/user-interface/controls/shapes/rectangle.md). |
-| `ScrollView` | `ScrollView` provides scrolling of its content, which is typically a layout. For more information, see [ScrollView](~/user-interface/controls/scrollview.md). |
+| <xref:Microsoft.Maui.Controls.ScrollView> | <xref:Microsoft.Maui.Controls.ScrollView> provides scrolling of its content, which is typically a layout. For more information, see [ScrollView](~/user-interface/controls/scrollview.md). |
 | `SearchBar` | `SearchBar` is a user input control used to initiate a search. For more information, see [SearchBar](~/user-interface/controls/searchbar.md). |
 | `Slider` | `Slider` enables you to select a `double` value from a continuous range. For more information, see [Slider](~/user-interface/controls/slider.md). |
 | `Stepper` | `Stepper` enables you to select a `double` value from a range of incremental values. For more information, see [Stepper](~/user-interface/controls/stepper.md). |

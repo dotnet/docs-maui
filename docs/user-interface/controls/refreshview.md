@@ -9,7 +9,7 @@ no-loc: [RefreshView]
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-refreshview)
 
-The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.RefreshView> is a container control that provides pull to refresh functionality for scrollable content. Therefore, the child of a <xref:Microsoft.Maui.Controls.RefreshView> must be a scrollable control, such as `ScrollView`, <xref:Microsoft.Maui.Controls.CollectionView>, or <xref:Microsoft.Maui.Controls.ListView>.
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.RefreshView> is a container control that provides pull to refresh functionality for scrollable content. Therefore, the child of a <xref:Microsoft.Maui.Controls.RefreshView> must be a scrollable control, such as <xref:Microsoft.Maui.Controls.ScrollView>, <xref:Microsoft.Maui.Controls.CollectionView>, or <xref:Microsoft.Maui.Controls.ListView>.
 
 <xref:Microsoft.Maui.Controls.RefreshView> defines the following properties:
 
@@ -61,7 +61,7 @@ scrollView.Content = flexLayout;
 refreshView.Content = scrollView;
 ```
 
-In this example, the <xref:Microsoft.Maui.Controls.RefreshView> provides pull to refresh functionality to a `ScrollView` whose child is a <xref:Microsoft.Maui.Controls.FlexLayout>. The <xref:Microsoft.Maui.Controls.FlexLayout> uses a bindable layout to generate its content by binding to a collection of items, and sets the appearance of each item with a `DataTemplate`. For more information about bindable layouts, see [Bindable layout](~/user-interface/layouts/bindablelayout.md).
+In this example, the <xref:Microsoft.Maui.Controls.RefreshView> provides pull to refresh functionality to a <xref:Microsoft.Maui.Controls.ScrollView> whose child is a <xref:Microsoft.Maui.Controls.FlexLayout>. The <xref:Microsoft.Maui.Controls.FlexLayout> uses a bindable layout to generate its content by binding to a collection of items, and sets the appearance of each item with a `DataTemplate`. For more information about bindable layouts, see [Bindable layout](~/user-interface/layouts/bindablelayout.md).
 
 The value of the `RefreshView.IsRefreshing` property indicates the current state of the <xref:Microsoft.Maui.Controls.RefreshView>. When a refresh is triggered by the user, this property will automatically transition to `true`. Once the refresh completes, you should reset the property to `false`.
 

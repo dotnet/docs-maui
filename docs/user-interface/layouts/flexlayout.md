@@ -256,7 +256,7 @@ In this example, the `Direction` property of the <xref:Microsoft.Maui.Controls.F
 
 The code-behind file for this example retrieves a collection of photos and adds them to the <xref:Microsoft.Maui.Controls.FlexLayout>.
 
-In addition, the <xref:Microsoft.Maui.Controls.FlexLayout> is a child of a `ScrollView`. Therefore, if there are too many rows to fit on the page, then the `ScrollView` has a default `Orientation` property of `Vertical` and allows vertical scrolling.
+In addition, the <xref:Microsoft.Maui.Controls.FlexLayout> is a child of a <xref:Microsoft.Maui.Controls.ScrollView>. Therefore, if there are too many rows to fit on the page, then the <xref:Microsoft.Maui.Controls.ScrollView> has a default `Orientation` property of `Vertical` and allows vertical scrolling.
 
 ### Page layout
 

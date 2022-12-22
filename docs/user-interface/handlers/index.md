@@ -24,7 +24,7 @@ A key concept of .NET MAUI handlers is mappers. Each handler typically provides 
 
 A *property mapper* defines what Actions to take when a property change occurs in the cross-platform control. It's a `Dictionary` that maps the cross-platform control's properties to their associated Actions. Each platform handler then provides implementations of the Actions, which manipulate the native view API. This ensures that when a property is set on a cross-platform control, the underlying native view is updated as required.
 
-A *command mapper* defines what Actions to take when the cross-platform control sends commands to native views. They're similar to property mappers, but allow for additional data to be passed. Commands, in this context, doesn't mean `ICommand` implementations. Instead, a command is just an instruction, and optionally its data, that's sent to a native view. The command mapper is a `Dictionary` that maps the cross-platform control's command to their associated Actions. Each handler then provides implementations of the Actions, which manipulate the native view API. This ensures that when a cross-platform control sends a command to its native view, the native view is updated as required. For example, when a `ScrollView` is scrolled, the `ScrollViewHandler` uses a command mapper to invoke an Action that accepts a scroll position argument. The Action then instructs the underlying native view to scroll to that position.
+A *command mapper* defines what Actions to take when the cross-platform control sends commands to native views. They're similar to property mappers, but allow for additional data to be passed. Commands, in this context, doesn't mean `ICommand` implementations. Instead, a command is just an instruction, and optionally its data, that's sent to a native view. The command mapper is a `Dictionary` that maps the cross-platform control's command to their associated Actions. Each handler then provides implementations of the Actions, which manipulate the native view API. This ensures that when a cross-platform control sends a command to its native view, the native view is updated as required. For example, when a <xref:Microsoft.Maui.Controls.ScrollView> is scrolled, the `ScrollViewHandler` uses a command mapper to invoke an Action that accepts a scroll position argument. The Action then instructs the underlying native view to scroll to that position.
 
 The advantage of using *mappers* to update native views is that native views can be decoupled from cross-platform controls. This removes the need for native views to subscribe to and unsubscribe from cross-platform control events. It also allows for easy customization because mappers can be modified without subclassing.
 
@@ -74,7 +74,7 @@ The following table lists the types that implement handler-based views in .NET M
 | <xref:Microsoft.Maui.Controls.Shapes.Rectangle> | | `RectangleHandler` | `Mapper` | |
 | <xref:Microsoft.Maui.Controls.RefreshView> | `IRefreshView` | `RefreshViewHandler` | `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.Shapes.RoundRectangle> | | `RoundRectangleHandler` | `Mapper` | |
-| `ScrollView` | `IScrollView` | `ScrollViewHandler` | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.ScrollView> | `IScrollView` | `ScrollViewHandler` | `Mapper` | `CommandMapper` |
 | `SearchBar` | `ISearchBar` | `SearchBarHandler` | `Mapper` | `CommandMapper` |
 | `Slider` | `ISlider` | `SliderHandler` | `Mapper` | `CommandMapper` |
 | `Stepper` | `IStepper` | `StepperHandler` | `Mapper` | `CommandMapper` |
