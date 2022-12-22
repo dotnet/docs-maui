@@ -236,7 +236,7 @@ async void OnButtonClicked(object sender, EventArgs args)
 }
 ```
 
-The `OnButtonClicked` method is defined as `async` because the `DisplayAlert` method is asynchronous and should be prefaced with the `await` operator, which returns when the method completes. Because this method obtains the <xref:Microsoft.Maui.Controls.Button> firing the event from the `sender` argument, the same handler could be used for multiple buttons.
+The `OnButtonClicked` method is defined as `async` because the <xref:Microsoft.Maui.Controls.Page.DisplayAlert*> method is asynchronous and should be prefaced with the `await` operator, which returns when the method completes. Because this method obtains the <xref:Microsoft.Maui.Controls.Button> firing the event from the `sender` argument, the same handler could be used for multiple buttons.
 
 ## Next steps
 
