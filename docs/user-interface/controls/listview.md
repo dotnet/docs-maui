@@ -141,7 +141,7 @@ For more information about data templates, see [Data templates](~/fundamentals/d
 
 The appearance of each item in a <xref:Microsoft.Maui.Controls.ListView> is defined by a `DataTemplate`, and the `DataTemplate` must reference a `Cell` class to display items. Each cell represents an item of data in the <xref:Microsoft.Maui.Controls.ListView>. .NET MAUI includes the following built-in cells:
 
-- `TextCell`, which displays primary and secondary text on separate lines.
+- <xref:Microsoft.Maui.Controls.TextCell>, which displays primary and secondary text on separate lines.
 - `ImageCell`, which displays an image with primary and secondary text on separate lines.
 - `SwitchCell`, which displays text and a switch that can be switched on or off.
 - `EntryCell`, which displays a label and text that's editable.
@@ -151,7 +151,7 @@ Typically, `SwitchCell` and `EntryCell` will only be used in a <xref:Microsoft.M
 
 #### Text cell
 
-A `TextCell` displays primary and secondary text on separate lines. `TextCell` defines the following properties:
+A <xref:Microsoft.Maui.Controls.TextCell> displays primary and secondary text on separate lines. <xref:Microsoft.Maui.Controls.TextCell> defines the following properties:
 
 - `Text`, of type `string`, defines the primary text to be displayed.
 - `TextColor`, of type `Color`, represents the color of the primary text.
@@ -162,7 +162,7 @@ A `TextCell` displays primary and secondary text on separate lines. `TextCell` d
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
-The following example shows using a `TextCell` to define the appearance of items in a <xref:Microsoft.Maui.Controls.ListView>:
+The following example shows using a <xref:Microsoft.Maui.Controls.TextCell> to define the appearance of items in a <xref:Microsoft.Maui.Controls.ListView>:
 
 ```xaml
 <ListView ItemsSource="{Binding Food}">
@@ -181,7 +181,7 @@ The following screenshot shows the resulting cell appearance:
 
 #### Image cell
 
-An `ImageCell` displays an image with primary and secondary text on separate lines. `ImageCell` inherits the properties from `TextCell`, and defines the `ImageSource` property, of type `ImageSource`, which specifies the image to be displayed in the cell. This property is backed by a `BindableProperty` object, which means it can be the target of data bindings, and be styled.
+An `ImageCell` displays an image with primary and secondary text on separate lines. `ImageCell` inherits the properties from <xref:Microsoft.Maui.Controls.TextCell>, and defines the `ImageSource` property, of type `ImageSource`, which specifies the image to be displayed in the cell. This property is backed by a `BindableProperty` object, which means it can be the target of data bindings, and be styled.
 
 The following example shows using an `ImageCell` to define the appearance of items in a <xref:Microsoft.Maui.Controls.ListView>:
 
