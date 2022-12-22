@@ -71,7 +71,7 @@ The main control groups used to create the user interface of a .NET MAUI app are
 | <xref:Microsoft.Maui.Controls.ImageButton> | <xref:Microsoft.Maui.Controls.ImageButton> displays an image and responds to a tap or click that direct an app to carry out a task. For more information, see [ImageButton](~/user-interface/controls/imagebutton.md). |
 | <xref:Microsoft.Maui.Controls.IndicatorView> | <xref:Microsoft.Maui.Controls.IndicatorView> displays indicators that represent the number of items in a <xref:Microsoft.Maui.Controls.CarouselView>. For more information, see [IndicatorView](~/user-interface/controls/indicatorview.md). |
 | `Label` | `Label` displays single-line and multi-line text. For more information, see [Label](~/user-interface/controls/label.md).
-| `Line` | `Line` displays a line from a start point to an end point. For more information, see [Line](~/user-interface/controls/shapes/line.md). |
+| <xref:Microsoft.Maui.Controls.Shapes.Line> | <xref:Microsoft.Maui.Controls.Shapes.Line> displays a line from a start point to an end point. For more information, see [Line](~/user-interface/controls/shapes/line.md). |
 | `ListView` | `ListView` displays a scrollable list of selectable data items. For more information, see [ListView](~/user-interface/controls/listview.md). |
 | `Map` | `Map` displays a map, and requires the **Microsoft.Maui.Controls.Maps** NuGet package to be installed in your app. |
 | `Path` | `Path` display curves and complex shapes. For more information, see [Path](~/user-interface/controls/shapes/path.md). |

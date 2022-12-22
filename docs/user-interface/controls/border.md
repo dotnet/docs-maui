@@ -26,7 +26,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Border>
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
 > [!IMPORTANT]
-> When creating a border using a shape, such as a `Rectangle` or `Polygon`, only closed shapes should be used. Therefore, open shapes such as `Line` are unsupported.
+> When creating a border using a shape, such as a `Rectangle` or `Polygon`, only closed shapes should be used. Therefore, open shapes such as <xref:Microsoft.Maui.Controls.Shapes.Line> are unsupported.
 
 ::: moniker range=">=net-maui-7.0"
 
@@ -174,7 +174,7 @@ In this example, a border that uses a linear gradient is drawn around a `Label`:
 In XAML, the value of the `StrokeShape` property can be defined using property-tag syntax, or as a `string`. Valid `string` values for the `StrokeShape` property are:
 
 - <xref:Microsoft.Maui.Controls.Shapes.Ellipse>
-- `Line`, followed by one or two x- and y-coordinate pairs. For example, `Line 10 20` draws a line from (10,20) to (0,0), and `Line 10 20, 100 120` draws a line from (10,20) to (100,120).
+- <xref:Microsoft.Maui.Controls.Shapes.Line>, followed by one or two x- and y-coordinate pairs. For example, `Line 10 20` draws a line from (10,20) to (0,0), and `Line 10 20, 100 120` draws a line from (10,20) to (100,120).
 - `Path`, followed by path markup syntax data. For example, `Path M 10,100 L 100,100 100,50Z` will draw a triangular border. For more information about path markup syntax, see [Path markup syntax](shapes/path-markup-syntax.md).
 - `Polygon`, followed by a collection of x- and y-coordinate pairs. For example, `Polygon 40 10, 70 80, 10 50`.
 - `Polyline`, followed by a collection x- and y-coordinate pairs. For example, `Polyline 0,0 10,30 15,0 18,60 23,30 35,30 40,0 43,60 48,30 100,30`.
@@ -182,6 +182,6 @@ In XAML, the value of the `StrokeShape` property can be defined using property-t
 - `RoundRectangle`, optionally followed by a corner radius. For example, `RoundRectangle 40` or `RoundRectangle 40,0,0,40`.
 
 > [!IMPORTANT]
-> While `Line` is a valid `string` value for the `StrokeShape` property, its use is not supported.
+> While <xref:Microsoft.Maui.Controls.Shapes.Line> is a valid `string` value for the `StrokeShape` property, its use is not supported.
 
 `String`-based x- and y-coordinate pairs can be delimited by a single comma and/or one or more spaces. For example, "40,10 70,80" and "40 10, 70 80" are both valid. Coordinate pairs will be converted to `Point` objects that define `X` and `Y` properties, of type `double`.

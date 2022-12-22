@@ -24,7 +24,7 @@ A .NET Multi-platform App UI (.NET MAUI) `Shape` is a type of `View` that enable
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
-.NET MAUI defines a number of objects that derive from the `Shape` class. These are <xref:Microsoft.Maui.Controls.Shapes.Ellipse>, `Line`, `Path`, `Polygon`, `Polyline`, `Rectangle`, and `RoundRectangle`.
+.NET MAUI defines a number of objects that derive from the `Shape` class. These are <xref:Microsoft.Maui.Controls.Shapes.Ellipse>, <xref:Microsoft.Maui.Controls.Shapes.Line>, `Path`, `Polygon`, `Polyline`, `Rectangle`, and `RoundRectangle`.
 
 ## Paint shapes
 
