@@ -114,7 +114,7 @@ public class BoolToObjectConverter<T> : IValueConverter
 }
 ```
 
-The following example demonstrates how this converter can be used to display the value of a `Switch` view. Although it's common to instantiate value converters as resources in a resource dictionary, this example demonstrates an alternative. Here, each value converter is instantiated between `Binding.Converter` property-element tags. The `x:TypeArguments` indicates the generic argument, and `TrueObject` and `FalseObject` are both set to objects of that type:
+The following example demonstrates how this converter can be used to display the value of a <xref:Microsoft.Maui.Controls.Switch> view. Although it's common to instantiate value converters as resources in a resource dictionary, this example demonstrates an alternative. Here, each value converter is instantiated between `Binding.Converter` property-element tags. The `x:TypeArguments` indicates the generic argument, and `TrueObject` and `FalseObject` are both set to objects of that type:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -216,7 +216,7 @@ The following example demonstrates how this converter can be used to display the
 </ContentPage>
 ```
 
-In this example, in the last of the three `Switch` and `Label` pairs, the generic argument is set to a `Style`, and entire `Style` objects are provided for the values of `TrueObject` and `FalseObject`. These override the implicit style for `Label` set in the resource dictionary, so the properties in that style are explicitly assigned to the `Label`. Toggling the `Switch` causes the corresponding `Label` to reflect the change:
+In this example, in the last of the three <xref:Microsoft.Maui.Controls.Switch> and `Label` pairs, the generic argument is set to a `Style`, and entire `Style` objects are provided for the values of `TrueObject` and `FalseObject`. These override the implicit style for `Label` set in the resource dictionary, so the properties in that style are explicitly assigned to the `Label`. Toggling the <xref:Microsoft.Maui.Controls.Switch> causes the corresponding `Label` to reflect the change:
 
 :::image type="content" source="media/converters/switchindicators.png" alt-text="Switch indicators.":::
 

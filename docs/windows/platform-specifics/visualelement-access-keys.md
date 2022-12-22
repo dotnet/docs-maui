@@ -84,7 +84,7 @@ The result is that access key tips can be displayed next to any `VisualElement` 
 
 :::image type="content" source="media/visualelement-access-keys/visualelement-accesskeys.png " alt-text="VisualElement access keys platform-specific.":::
 
-When a user activates an access key, by pressing the Alt key followed by the access key, the default action for the `VisualElement` will be executed. For example, when a user activates the access key on a `Switch`, the `Switch` is toggled. When a user activates the access key on an <xref:Microsoft.Maui.Controls.Entry>, the <xref:Microsoft.Maui.Controls.Entry> gains focus. When a user activates the access key on a `Button`, the event handler for the `Clicked` event is executed.
+When a user activates an access key, by pressing the Alt key followed by the access key, the default action for the `VisualElement` will be executed. For example, when a user activates the access key on a <xref:Microsoft.Maui.Controls.Switch>, the <xref:Microsoft.Maui.Controls.Switch> is toggled. When a user activates the access key on an <xref:Microsoft.Maui.Controls.Entry>, the <xref:Microsoft.Maui.Controls.Entry> gains focus. When a user activates the access key on a `Button`, the event handler for the `Clicked` event is executed.
 
 <!-- > [!WARNING]
 > By default, when a modal dialog is displayed any access keys that are defined on the page behind the dialog can still be activated. However, custom logic can be written to disable access keys in this scenario. This can be achieved by handling the `Dispatcher.AcceleratorKeyActivated` event in the `MainPage` class of your UWP project, and in the event handler setting the `Handled` property of the event arguments to `true` when a modal dialog is displayed. -->

@@ -108,7 +108,7 @@ In addition, the `SetValue` method can also be used to set the `SemanticProperti
 image.SetValue(SemanticProperties.HintProperty, "Like this post.");
 ```
 
-On Android, this property behaves slightly differently depending on the control it's attached to. For example, for controls without text values, such as `Switch` and `CheckBox`, the controls will display the hint with the control. However, for controls with text values, the hint is not displayed and is read after the text value.
+On Android, this property behaves slightly differently depending on the control it's attached to. For example, for controls without text values, such as <xref:Microsoft.Maui.Controls.Switch> and `CheckBox`, the controls will display the hint with the control. However, for controls with text values, the hint is not displayed and is read after the text value.
 
 > [!WARNING]
 > The `SemanticProperties.Hint` property conflicts with the `Entry.Placeholder` property on Android, which both map to the same platform property. Therefore, setting a different `SemanticProperties.Hint` value to the `Entry.Placeholder` value isn't recommended.

@@ -226,7 +226,7 @@ Views that will be displayed as an `EmptyView` when data is unavailable, can be 
 </ContentPage>
 ```
 
-The XAML defines two <xref:Microsoft.Maui.Controls.ContentView> objects in the page-level `ResourceDictionary`, with the `Switch` object controlling which <xref:Microsoft.Maui.Controls.ContentView> object will be set as the `EmptyView` property value. When the `Switch` is toggled, the `OnEmptyViewSwitchToggled` event handler executes the `ToggleEmptyView` method:
+The XAML defines two <xref:Microsoft.Maui.Controls.ContentView> objects in the page-level `ResourceDictionary`, with the <xref:Microsoft.Maui.Controls.Switch> object controlling which <xref:Microsoft.Maui.Controls.ContentView> object will be set as the `EmptyView` property value. When the <xref:Microsoft.Maui.Controls.Switch> is toggled, the `OnEmptyViewSwitchToggled` event handler executes the `ToggleEmptyView` method:
 
 ```csharp
 void ToggleEmptyView(bool isToggled)
