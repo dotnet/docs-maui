@@ -60,7 +60,7 @@ The main control groups used to create the user interface of a .NET MAUI app are
 | <xref:Microsoft.Maui.Controls.CarouselView> | <xref:Microsoft.Maui.Controls.CarouselView> displays a scrollable list of data items, where users swipe to move through the collection. For more information, see [CarouselView](~/user-interface/controls/carouselview/index.md). |
 | `CheckBox` | `CheckBox` enables you to select a boolean value using a type of button that can either be checked or empty. For more information, see [CheckBox](~/user-interface/controls/checkbox.md). |
 | <xref:Microsoft.Maui.Controls.CollectionView> | <xref:Microsoft.Maui.Controls.CollectionView> displays a scrollable list of selectable data items, using different layout specifications. For more information, see [CollectionView](~/user-interface/controls/collectionview/index.md). |
-| `ContentView` | `ContentView` is a control that enables the creation of custom, reusable controls. For more information, see [ContentView](~/user-interface/controls/contentview.md). |
+| <xref:Microsoft.Maui.Controls.ContentView> | <xref:Microsoft.Maui.Controls.ContentView> is a control that enables the creation of custom, reusable controls. For more information, see [ContentView](~/user-interface/controls/contentview.md). |
 | `DatePicker` | `DatePicker` enables you to select a date with the platform date picker. For more information, see [DatePicker](~/user-interface/controls/datepicker.md). |
 | `Editor` | `Editor` enables you to enter and edit multiple lines of text. For more information, see [Editor](~/user-interface/controls/editor.md). |
 | `Ellipse` | `Ellipse` displays an ellipse or circle. For more information, see [Ellipse](~/user-interface/controls/shapes/ellipse.md). |

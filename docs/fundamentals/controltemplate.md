@@ -8,7 +8,7 @@ ms.date: 02/18/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-controltemplates)
 
-.NET Multi-platform App UI (.NET MAUI) control templates enable you to define the visual structure of `ContentView` derived custom controls, and <xref:Microsoft.Maui.Controls.ContentPage> derived pages. Control templates separate the user interface (UI) for a custom control, or page, from the logic that implements the control or page. Additional content can also be inserted into the templated custom control, or templated page, at a pre-defined location.
+.NET Multi-platform App UI (.NET MAUI) control templates enable you to define the visual structure of <xref:Microsoft.Maui.Controls.ContentView> derived custom controls, and <xref:Microsoft.Maui.Controls.ContentPage> derived pages. Control templates separate the user interface (UI) for a custom control, or page, from the logic that implements the control or page. Additional content can also be inserted into the templated custom control, or templated page, at a pre-defined location.
 
 For example, a control template can be created that redefines the UI provided by a custom control. The control template can then be consumed by the required custom control instance. Alternatively, a control template can be created that defines any common UI that will be used by multiple pages in an app. The control template can then be consumed by multiple pages, with each page still displaying its unique content.
 
@@ -37,7 +37,7 @@ public class CardView : ContentView
 }
 ```
 
-The `CardView` class, which derives from the `ContentView` class, represents a custom control that displays data in a card-like layout. The class contains properties, which are backed by bindable properties, for the data it displays. However, the `CardView` class does not define any UI. Instead, the UI will be defined with a control template. For more information about creating `ContentView` derived custom controls, see [ContentView](~/user-interface/controls/contentview.md).
+The `CardView` class, which derives from the <xref:Microsoft.Maui.Controls.ContentView> class, represents a custom control that displays data in a card-like layout. The class contains properties, which are backed by bindable properties, for the data it displays. However, the `CardView` class does not define any UI. Instead, the UI will be defined with a control template. For more information about creating <xref:Microsoft.Maui.Controls.ContentView> derived custom controls, see [ContentView](~/user-interface/controls/contentview.md).
 
 A control template is created with the `ControlTemplate` type. When you create a `ControlTemplate`, you combine `View` objects to build the UI for a custom control, or page. A `ControlTemplate` must have only one `View` as its root element. However, the root element usually contains other `View` objects. The combination of objects makes up the control's visual structure.
 
@@ -112,7 +112,7 @@ When a `ControlTemplate` is declared as a resource, it must have a key specified
 
 ## Consume a ControlTemplate
 
-A `ControlTemplate` can be applied to a `ContentView` derived custom control by setting its `ControlTemplate` property to the control template object. Similarly, a `ControlTemplate` can be applied to a <xref:Microsoft.Maui.Controls.ContentPage> derived page by setting its `ControlTemplate` property to the control template object. At runtime, when a `ControlTemplate` is applied, all of the controls that are defined in the `ControlTemplate` are added to the visual tree of the templated custom control, or templated page.
+A `ControlTemplate` can be applied to a <xref:Microsoft.Maui.Controls.ContentView> derived custom control by setting its `ControlTemplate` property to the control template object. Similarly, a `ControlTemplate` can be applied to a <xref:Microsoft.Maui.Controls.ContentPage> derived page by setting its `ControlTemplate` property to the control template object. At runtime, when a `ControlTemplate` is applied, all of the controls that are defined in the `ControlTemplate` are added to the visual tree of the templated custom control, or templated page.
 
 The following example shows the `CardViewControlTemplate` being assigned to the `ControlTemplate` property of each `CardView` object:
 
@@ -280,7 +280,7 @@ For more information about styles, see [Styles](~/user-interface/styles/xaml.md)
 
 ## Redefine a control’s UI
 
-When a `ControlTemplate` is instantiated and assigned to the `ControlTemplate` property of a `ContentView` derived custom control, or a <xref:Microsoft.Maui.Controls.ContentPage> derived page, the visual structure defined for the custom control or page is replaced with the visual structure defined in the `ControlTemplate`.
+When a `ControlTemplate` is instantiated and assigned to the `ControlTemplate` property of a <xref:Microsoft.Maui.Controls.ContentView> derived custom control, or a <xref:Microsoft.Maui.Controls.ContentPage> derived page, the visual structure defined for the custom control or page is replaced with the visual structure defined in the `ControlTemplate`.
 
 For example, the `CardViewUI` custom control defines its user interface using the following XAML:
 

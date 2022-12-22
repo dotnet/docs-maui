@@ -143,7 +143,7 @@ A `DataTemplate` can be created with a custom view type. The advantage of this a
 </ContentPage>
 ```
 
-In this example, the `CollectionView.ItemTemplate` property is set to a `DataTemplate` that's created from a custom type that defines the view appearance. The custom type must derive from `ContentView`:
+In this example, the `CollectionView.ItemTemplate` property is set to a `DataTemplate` that's created from a custom type that defines the view appearance. The custom type must derive from <xref:Microsoft.Maui.Controls.ContentView>:
 
 ```xaml
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -162,7 +162,7 @@ In this example, the `CollectionView.ItemTemplate` property is set to a `DataTem
 </ContentView>
 ```
 
-In this example, layout within the `ContentView` is managed by a <xref:Microsoft.Maui.Controls.Grid>. The <xref:Microsoft.Maui.Controls.Grid> contains three `Label` objects that bind their `Text` properties to properties of each `Person` object in the collection.
+In this example, layout within the <xref:Microsoft.Maui.Controls.ContentView> is managed by a <xref:Microsoft.Maui.Controls.Grid>. The <xref:Microsoft.Maui.Controls.Grid> contains three `Label` objects that bind their `Text` properties to properties of each `Person` object in the collection.
 
 For more information about creating custom views, see [ContentView](~/user-interface/controls/contentview.md).
 

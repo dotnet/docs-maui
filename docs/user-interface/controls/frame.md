@@ -16,7 +16,7 @@ The `Frame` class defines the following properties:
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
-The `Frame` class inherits from `ContentView`, which provides a `Content` bindable property. The `Content` property is the `ContentProperty` of the `Frame` class, and therefore does not need to be explicitly set from XAML.
+The `Frame` class inherits from <xref:Microsoft.Maui.Controls.ContentView>, which provides a `Content` bindable property. The `Content` property is the `ContentProperty` of the `Frame` class, and therefore does not need to be explicitly set from XAML.
 
 > [!NOTE]
 > The `Frame` class existed in Xamarin.Forms and is present in .NET MAUI for users who are migrating their apps from Xamarin.Forms to .NET MAUI. If you're building a new .NET MAUI app it's recommended to use <xref:Microsoft.Maui.Controls.Border> instead, and to set shadows using the `Shadow` bindable property on `VisualElement`. For more information, see [Border](border.md) and [Shadow](../shadow.md).

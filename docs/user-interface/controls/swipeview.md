@@ -22,7 +22,7 @@ The .NET Multi-platform App UI (.NET MAUI) `SwipeView` is a container control th
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
-In addition, the `SwipeView` inherits the `Content` property from the `ContentView` class. The `Content` property is the content property of the `SwipeView` class, and therefore does not need to be explicitly set.
+In addition, the `SwipeView` inherits the `Content` property from the <xref:Microsoft.Maui.Controls.ContentView> class. The `Content` property is the content property of the `SwipeView` class, and therefore does not need to be explicitly set.
 
 The `SwipeView` class also defines three events:
 
@@ -292,7 +292,7 @@ The following example shows a `SwipeView` configured to remain open after a swip
 
 ## Custom swipe items
 
-Custom swipe items can be defined with the `SwipeItemView` type. The `SwipeItemView` class derives from the `ContentView` class, and adds the following properties:
+Custom swipe items can be defined with the `SwipeItemView` type. The `SwipeItemView` class derives from the <xref:Microsoft.Maui.Controls.ContentView> class, and adds the following properties:
 
 - `Command`, of type `ICommand`, which is executed when a swipe item is tapped.
 - `CommandParameter`, of type `object`, which is the parameter that's passed to the `Command`.
