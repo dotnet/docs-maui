@@ -70,7 +70,7 @@ The following XAML shows an <xref:Microsoft.Maui.Controls.AbsoluteLayout> whose 
 
 ```
 
-In this example, the position of each `BoxView` object is defined using the first two absolute values that are specified in the `AbsoluteLayout.LayoutBounds` attached property. The size of each `BoxView` is defined using the third and forth values. The position of the `Label` object is defined using the two absolute values that are specified in the `AbsoluteLayout.LayoutBounds` attached property. Size values are not specified for the `Label`, and so it's unconstrained and sizes itself. In all cases, the absolute values represent device-independent units.
+In this example, the position of each <xref:Microsoft.Maui.Controls.BoxView> object is defined using the first two absolute values that are specified in the `AbsoluteLayout.LayoutBounds` attached property. The size of each <xref:Microsoft.Maui.Controls.BoxView> is defined using the third and forth values. The position of the `Label` object is defined using the two absolute values that are specified in the `AbsoluteLayout.LayoutBounds` attached property. Size values are not specified for the `Label`, and so it's unconstrained and sizes itself. In all cases, the absolute values represent device-independent units.
 
 The following screenshot shows the resulting layout:
 
@@ -117,7 +117,7 @@ public class StylishHeaderDemoPage : ContentPage
 }
 ```
 
-In this example, the position and size of each `BoxView` is defined using a `Rect` object. The position of the `Label` is defined using a `Point` object.
+In this example, the position and size of each <xref:Microsoft.Maui.Controls.BoxView> is defined using a `Rect` object. The position of the `Label` is defined using a `Point` object.
 
 In C#, it's also possible to set the position and size of a child of an <xref:Microsoft.Maui.Controls.AbsoluteLayout> after it has been added to the layout, using the `AbsoluteLayout.SetLayoutBounds` method. The first argument to this method is the child, and the second is a `Rect` object.
 

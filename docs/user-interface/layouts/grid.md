@@ -148,11 +148,11 @@ The following XAML shows the same <xref:Microsoft.Maui.Controls.Grid> definition
 > [!NOTE]
 > The `Grid.Row` and `Grid.Column` properties are both indexed from 0, and so `Grid.Row="2"` refers to the third row while `Grid.Column="1"` refers to the second column. In addition, both of these properties have a default value of 0, and so don't need to be set on child views that occupy the first row or first column of a <xref:Microsoft.Maui.Controls.Grid>.
 
-In this example, all three <xref:Microsoft.Maui.Controls.Grid> rows are occupied by `BoxView` and `Label` views. The third row is 100 device-independent units high, with the first two rows occupying the remaining space (the first row is twice as high as the second row). The two columns are equal in width and divide the <xref:Microsoft.Maui.Controls.Grid> in half. The `BoxView` in the third row spans both columns:
+In this example, all three <xref:Microsoft.Maui.Controls.Grid> rows are occupied by <xref:Microsoft.Maui.Controls.BoxView> and `Label` views. The third row is 100 device-independent units high, with the first two rows occupying the remaining space (the first row is twice as high as the second row). The two columns are equal in width and divide the <xref:Microsoft.Maui.Controls.Grid> in half. The <xref:Microsoft.Maui.Controls.BoxView> in the third row spans both columns:
 
 :::image type="content" source="media/grid/basic.png" alt-text="Basic .NET MAUI Grid layout.":::
 
-In addition, child views in a <xref:Microsoft.Maui.Controls.Grid> can share cells. The order that the children appear in the XAML is the order that the children are placed in the <xref:Microsoft.Maui.Controls.Grid>. In the previous example, the `Label` objects are only visible because they are rendered on top of the `BoxView` objects. The `Label` objects would not be visible if the `BoxView` objects were rendered on top of them.
+In addition, child views in a <xref:Microsoft.Maui.Controls.Grid> can share cells. The order that the children appear in the XAML is the order that the children are placed in the <xref:Microsoft.Maui.Controls.Grid>. In the previous example, the `Label` objects are only visible because they are rendered on top of the <xref:Microsoft.Maui.Controls.BoxView> objects. The `Label` objects would not be visible if the <xref:Microsoft.Maui.Controls.BoxView> objects were rendered on top of them.
 
 The equivalent C# code is:
 
@@ -612,7 +612,7 @@ The following XAML shows an example of nesting <xref:Microsoft.Maui.Controls.Gri
 </ContentPage>
 ```
 
-In this example, the root <xref:Microsoft.Maui.Controls.Grid> contains a `BoxView` in its first row, and a child <xref:Microsoft.Maui.Controls.Grid> in its second row. The child <xref:Microsoft.Maui.Controls.Grid> contains `Slider` objects that manipulate the color displayed by the `BoxView`, and `Label` objects that display the value of each `Slider`:
+In this example, the root <xref:Microsoft.Maui.Controls.Grid> contains a <xref:Microsoft.Maui.Controls.BoxView> in its first row, and a child <xref:Microsoft.Maui.Controls.Grid> in its second row. The child <xref:Microsoft.Maui.Controls.Grid> contains `Slider` objects that manipulate the color displayed by the <xref:Microsoft.Maui.Controls.BoxView>, and `Label` objects that display the value of each `Slider`:
 
 :::image type="content" source="media/grid/nested.png" alt-text="Nested .NET MAUI Grid objects.":::
 

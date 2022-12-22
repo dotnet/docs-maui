@@ -10,7 +10,7 @@ ms.date: 01/27/2022
 
 .NET Multi-platform App UI (.NET MAUI) XAML markup extensions help enhance the power and flexibility of XAML by allowing element attributes to be set from a variety of sources.
 
-For example, you typically set the `Color` property of `BoxView` like this:
+For example, you typically set the `Color` property of <xref:Microsoft.Maui.Controls.BoxView> like this:
 
 ```xaml
 <BoxView Color="Blue" />
@@ -267,7 +267,7 @@ The following XAML example shows how to use `x:Array` to add items to a `ListVie
 </ContentPage>     
 ```
 
-In this example, the `ViewCell` creates a simple `BoxView` for each color entry:
+In this example, the `ViewCell` creates a simple <xref:Microsoft.Maui.Controls.BoxView> for each color entry:
 
 :::image type="content" source="media/consume/arraydemo.png" alt-text="x:Array demo.":::
 
@@ -339,7 +339,7 @@ The **OnPlatform Demo** page shows how to use the `OnPlatform` markup extension:
          HorizontalOptions="Center" />
 ```
 
-In this example, all three `OnPlatform` expressions use the abbreviated version of the `OnPlatformExtension` class name. The three `OnPlatform` markup extensions set the `Color`, `WidthRequest`, and `HeightRequest` properties of the `BoxView` to different values on iOS and Android. The markup extensions also provide default values for these properties on the platforms that aren't specified, while eliminating the `Default=` part of the expression.
+In this example, all three `OnPlatform` expressions use the abbreviated version of the `OnPlatformExtension` class name. The three `OnPlatform` markup extensions set the `Color`, `WidthRequest`, and `HeightRequest` properties of the <xref:Microsoft.Maui.Controls.BoxView> to different values on iOS and Android. The markup extensions also provide default values for these properties on the platforms that aren't specified, while eliminating the `Default=` part of the expression.
 
 ## OnIdiom markup extension
 
@@ -371,7 +371,7 @@ The following XAML example shows how to use the `OnIdiom` markup extension:
          HorizontalOptions="Center" />
 ```
 
-In this example, all three `OnIdiom` expressions use the abbreviated version of the `OnIdiomExtension` class name. The three `OnIdiom` markup extensions set the `Color`, `WidthRequest`, and `HeightRequest` properties of the `BoxView` to different values on the phone, tablet, and desktop idioms. The markup extensions also provide default values for these properties on the idioms that aren't specified, while eliminating the `Default=` part of the expression.
+In this example, all three `OnIdiom` expressions use the abbreviated version of the `OnIdiomExtension` class name. The three `OnIdiom` markup extensions set the `Color`, `WidthRequest`, and `HeightRequest` properties of the <xref:Microsoft.Maui.Controls.BoxView> to different values on the phone, tablet, and desktop idioms. The markup extensions also provide default values for these properties on the idioms that aren't specified, while eliminating the `Default=` part of the expression.
 
 ## DataTemplate markup extension
 

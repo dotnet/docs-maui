@@ -368,7 +368,7 @@ A style class can be created by setting the `Class` property on a `Style` to a `
 > [!IMPORTANT]
 > Multiple styles can share the same class name, provided they target different types. This enables multiple style classes, that are identically named, to target different types.
 
-The following example shows three `BoxView` style classes, and a `VisualElement` style class:
+The following example shows three <xref:Microsoft.Maui.Controls.BoxView> style classes, and a `VisualElement` style class:
 
 ```xaml
 <ContentPage ...>
@@ -415,11 +415,11 @@ The following example shows three `BoxView` style classes, and a `VisualElement`
 </ContentPage>
 ```
 
-In this example, the `Separator`, `Rounded`, and `Circle` style classes each set `BoxView` properties to specific values. The `Rotated` style class has a `TargetType` of `VisualElement`, which means it can only be applied to `VisualElement` instances. However, its `ApplyToDerivedTypes` property is set to `true`, which ensures that it can be applied to any controls that derive from `VisualElement`, such as `BoxView`. For more information about applying a style to a derived type, see [Apply a style to derived types](#apply-a-style-to-derived-types).
+In this example, the `Separator`, `Rounded`, and `Circle` style classes each set <xref:Microsoft.Maui.Controls.BoxView> properties to specific values. The `Rotated` style class has a `TargetType` of `VisualElement`, which means it can only be applied to `VisualElement` instances. However, its `ApplyToDerivedTypes` property is set to `true`, which ensures that it can be applied to any controls that derive from `VisualElement`, such as <xref:Microsoft.Maui.Controls.BoxView>. For more information about applying a style to a derived type, see [Apply a style to derived types](#apply-a-style-to-derived-types).
 
 Style classes can be consumed by setting the `StyleClass` property of the control, which is of type `IList<string>`, to a list of style class names. The style classes will be applied, provided that the type of the control matches the `TargetType` of the style classes.
 
-The following example shows three `BoxView` instances, each set to different style classes:
+The following example shows three <xref:Microsoft.Maui.Controls.BoxView> instances, each set to different style classes:
 
 ```xaml
 <ContentPage ...>
@@ -438,7 +438,7 @@ The following example shows three `BoxView` instances, each set to different sty
 </ContentPage>    
 ```
 
-In this example, the first `BoxView` is styled to be a line separator, while the third `BoxView` is circular. The second `BoxView` has two style classes applied to it, which give it rounded corners and rotate it 45 degrees:
+In this example, the first <xref:Microsoft.Maui.Controls.BoxView> is styled to be a line separator, while the third <xref:Microsoft.Maui.Controls.BoxView> is circular. The second <xref:Microsoft.Maui.Controls.BoxView> has two style classes applied to it, which give it rounded corners and rotate it 45 degrees:
 
 :::image type="content" source="media/xaml/styleclasses.png" alt-text="Screenshot of BoxViews styled with style classes.":::
 

@@ -200,7 +200,7 @@ class HslViewModel: INotifyPropertyChanged
 
 In this example, changes to the `Hue`, `Saturation`, and `Luminosity` properties cause the `Color` property to change, and changes to the `Color` property causes the other three properties to change. This might seem like an infinite loop, except that the viewmodel doesn't invoke the `PropertyChanged` event unless the property has changed.
 
-The following XAML example contains a `BoxView` whose `Color` property is bound to the `Color` property of the viewmodel, and three `Slider` and three `Label` views bound to the `Hue`, `Saturation`, and `Luminosity` properties:
+The following XAML example contains a <xref:Microsoft.Maui.Controls.BoxView> whose `Color` property is bound to the `Color` property of the viewmodel, and three `Slider` and three `Label` views bound to the `Hue`, `Saturation`, and `Luminosity` properties:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"

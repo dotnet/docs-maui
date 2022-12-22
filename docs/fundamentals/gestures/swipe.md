@@ -24,7 +24,7 @@ The `SwipeGestureRecognizer` also defines a `Swiped` event that's raised when a 
 
 ## Create a SwipeGestureRecognizer
 
-To make a `View` recognize a swipe gesture, create a `SwipeGestureRecognizer` object, set the `Direction` property to a `SwipeDirection` enumeration value (`Left`, `Right`, `Up`, or `Down`), optionally set the `Threshold` property, handle the `Swiped` event, and add the new gesture recognizer to the `GestureRecognizers` collection on the view. The following example shows a `SwipeGestureRecognizer` attached to a `BoxView`:
+To make a `View` recognize a swipe gesture, create a `SwipeGestureRecognizer` object, set the `Direction` property to a `SwipeDirection` enumeration value (`Left`, `Right`, `Up`, or `Down`), optionally set the `Threshold` property, handle the `Swiped` event, and add the new gesture recognizer to the `GestureRecognizers` collection on the view. The following example shows a `SwipeGestureRecognizer` attached to a <xref:Microsoft.Maui.Controls.BoxView>:
 
 ```xaml
 <BoxView Color="Teal" ...>
@@ -145,7 +145,7 @@ public class SwipeContainer : ContentView
 
 The `SwipeContainer` class creates `SwipeGestureRecognizer` objects for all four swipe directions, and attaches `Swipe` event handlers. These event handlers invoke the `Swipe` event defined by the `SwipeContainer`.
 
-The following XAML code example shows the `SwipeContainer` class wrapping a `BoxView`:
+The following XAML code example shows the `SwipeContainer` class wrapping a <xref:Microsoft.Maui.Controls.BoxView>:
 
 ```xaml
 <StackLayout>
@@ -155,7 +155,7 @@ The following XAML code example shows the `SwipeContainer` class wrapping a `Box
 </StackLayout>
 ```
 
-In this example, when the `BoxView` receives a swipe gesture, the `Swiped` event in the `SwipeGestureRecognizer` is raised. This is handled by the `SwipeContainer` class, which raises its own `Swipe` event. This `Swipe` event is handled on the page. The `SwipedEventArgs` can then be examined to determine the direction of the swipe, with custom logic responding to the swipe as required.
+In this example, when the <xref:Microsoft.Maui.Controls.BoxView> receives a swipe gesture, the `Swiped` event in the `SwipeGestureRecognizer` is raised. This is handled by the `SwipeContainer` class, which raises its own `Swipe` event. This `Swipe` event is handled on the page. The `SwipedEventArgs` can then be examined to determine the direction of the swipe, with custom logic responding to the swipe as required.
 
 The equivalent C# code is:
 

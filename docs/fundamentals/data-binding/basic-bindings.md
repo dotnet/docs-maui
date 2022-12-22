@@ -271,6 +271,6 @@ The following XAML example demonstrates binding context inheritance:
 </ContentPage>
 ```
 
-In this example, the `BindingContext` property of the <xref:Microsoft.Maui.Controls.StackLayout> is set to the `slider` object. This binding context is inherited by both the `Label` and the `BoxView`, both of which have their `Rotation` properties set to the `Value` property of the `Slider`:
+In this example, the `BindingContext` property of the <xref:Microsoft.Maui.Controls.StackLayout> is set to the `slider` object. This binding context is inherited by both the `Label` and the <xref:Microsoft.Maui.Controls.BoxView>, both of which have their `Rotation` properties set to the `Value` property of the `Slider`:
 
 :::image type="content" source="media/basic-bindings/bindingcontextinheritance.png" alt-text="Binding context inheritance.":::

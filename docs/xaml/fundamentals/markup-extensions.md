@@ -272,7 +272,7 @@ The static fields can then be consumed after declaring the XML namespace:
 </ContentPage>
 ```
 
-In this example, the `BoxView` dimensions are set to `Math.PI` and `Math.E`, but scaled by a factor of 100:
+In this example, the <xref:Microsoft.Maui.Controls.BoxView> dimensions are set to `Math.PI` and `Math.E`, but scaled by a factor of 100:
 
 :::image type="content" source="media/markup-extensions/staticconstants.png" alt-text="Screenshot of controls using the x:Static markup extension.":::
 

@@ -196,9 +196,9 @@ The following XAML shows how to arrange elements in an <xref:Microsoft.Maui.Cont
 
 In this example, layout works as follows:
 
-- Each `BoxView` is given an explicit size of 100x100, and is displayed in the same position, horizontally centered.
-- The red `BoxView` is rotated 30 degrees, and the green `BoxView` is rotated 60 degrees.
-- On each `BoxView`, the `AbsoluteLayout.LayoutFlags` attached property is set to `PositionProportional`, indicating that the position is proportional to the remaining space after width and height are accounted for.
+- Each <xref:Microsoft.Maui.Controls.BoxView> is given an explicit size of 100x100, and is displayed in the same position, horizontally centered.
+- The red <xref:Microsoft.Maui.Controls.BoxView> is rotated 30 degrees, and the green <xref:Microsoft.Maui.Controls.BoxView> is rotated 60 degrees.
+- On each <xref:Microsoft.Maui.Controls.BoxView>, the `AbsoluteLayout.LayoutFlags` attached property is set to `PositionProportional`, indicating that the position is proportional to the remaining space after width and height are accounted for.
 
 > [!CAUTION]
 > Avoid using the `AbsoluteLayout.AutoSize` property whenever possible, as it will cause the layout engine to perform additional layout calculations.
@@ -244,10 +244,10 @@ The following XAML shows how to arrange elements in a `RelativeLayout`:
 
 In this example, layout works as follows:
 
-- The blue `BoxView` is given an explicit size of 50x50 device-independent units. It's placed in the upper left corner of the layout, which is the default position.
-- The red `BoxView` is given an explicit size of 50x50 device-independent units. It's placed in the upper right corner of the layout.
-- The gray `BoxView` is given an explicit width of 15 device-independent units, and it's height is set to be 75% of the height of its parent.
-- The green `BoxView` isn't given an explicit size. Its position is set relative to the `BoxView` named `pole`.
+- The blue <xref:Microsoft.Maui.Controls.BoxView> is given an explicit size of 50x50 device-independent units. It's placed in the upper left corner of the layout, which is the default position.
+- The red <xref:Microsoft.Maui.Controls.BoxView> is given an explicit size of 50x50 device-independent units. It's placed in the upper right corner of the layout.
+- The gray <xref:Microsoft.Maui.Controls.BoxView> is given an explicit width of 15 device-independent units, and it's height is set to be 75% of the height of its parent.
+- The green <xref:Microsoft.Maui.Controls.BoxView> isn't given an explicit size. Its position is set relative to the <xref:Microsoft.Maui.Controls.BoxView> named `pole`.
 
 > [!WARNING]
 > Avoid using a `RelativeLayout` whenever possible. It will result in the CPU having to perform significantly more work.

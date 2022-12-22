@@ -50,7 +50,7 @@ The following XAML shows how to create a vertically oriented <xref:Microsoft.Mau
 </ContentPage>
 ```
 
-This example creates a vertical <xref:Microsoft.Maui.Controls.StackLayout> containing `Label` and `BoxView` objects. By default, there's no space between the child views:
+This example creates a vertical <xref:Microsoft.Maui.Controls.StackLayout> containing `Label` and <xref:Microsoft.Maui.Controls.BoxView> objects. By default, there's no space between the child views:
 
 :::image type="content" source="media/stacklayout/vertical.png" alt-text="Vertically oriented .NET MAUI StackLayout.":::
 
@@ -110,7 +110,7 @@ The following XAML shows how to create a horizontally oriented <xref:Microsoft.M
 </ContentPage>
 ```
 
-This example creates a horizontal <xref:Microsoft.Maui.Controls.StackLayout> containing `BoxView` objects, with no space between the child views:
+This example creates a horizontal <xref:Microsoft.Maui.Controls.StackLayout> containing <xref:Microsoft.Maui.Controls.BoxView> objects, with no space between the child views:
 
 :::image type="content" source="media/stacklayout/horizontal.png" alt-text="Horizontally oriented .NET MAUI StackLayout.":::
 
@@ -171,7 +171,7 @@ The spacing between child views in a <xref:Microsoft.Maui.Controls.StackLayout> 
 </ContentPage>
 ```
 
-This example creates a vertical <xref:Microsoft.Maui.Controls.StackLayout> containing `Label` and `BoxView` objects that have six device-independent units of vertical space between them:
+This example creates a vertical <xref:Microsoft.Maui.Controls.StackLayout> containing `Label` and <xref:Microsoft.Maui.Controls.BoxView> objects that have six device-independent units of vertical space between them:
 
 :::image type="content" source="media/stacklayout/spacing.png" alt-text="Vertically oriented .NET MAUI StackLayout with spacing between child views.":::
 

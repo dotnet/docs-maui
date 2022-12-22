@@ -158,4 +158,4 @@ await this.ColorTo(Color.FromRgb(0, 0, 0), Color.FromRgb(255, 255, 255), c => Ba
 await boxView.ColorTo(Colors.Blue, Colors.Red, c => boxView.Color = c, 4000);
 ```
 
-In this code example, the `ColorTo` method animates the `TextColor` and `BackgroundColor` properties of a `Label`, the `BackgroundColor` property of a page, and the `Color` property of a `BoxView`.
+In this code example, the `ColorTo` method animates the `TextColor` and `BackgroundColor` properties of a `Label`, the `BackgroundColor` property of a page, and the `Color` property of a <xref:Microsoft.Maui.Controls.BoxView>.

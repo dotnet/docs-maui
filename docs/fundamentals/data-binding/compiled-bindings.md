@@ -66,9 +66,9 @@ The <xref:Microsoft.Maui.Controls.ContentPage> instantiates the `HslColorViewMod
 > [!IMPORTANT]
 > The `x:DataType` attribute can be re-defined at any point in a view hierarchy.
 
-The `BoxView`, `Label` elements, and `Slider` views inherit the binding context from the <xref:Microsoft.Maui.Controls.ContentPage>. These views are all binding targets that reference source properties in the viewmodel. For the `BoxView.Color` property, and the `Label.Text` property, the data bindings are `OneWay` – the properties in the view are set from the properties in the viewmodel. However, the `Slider.Value` property uses a `TwoWay` binding. This allows each `Slider` to be set from the viewmodel, and also for the viewmodel to be set from each `Slider`.
+The <xref:Microsoft.Maui.Controls.BoxView>, `Label` elements, and `Slider` views inherit the binding context from the <xref:Microsoft.Maui.Controls.ContentPage>. These views are all binding targets that reference source properties in the viewmodel. For the `BoxView.Color` property, and the `Label.Text` property, the data bindings are `OneWay` – the properties in the view are set from the properties in the viewmodel. However, the `Slider.Value` property uses a `TwoWay` binding. This allows each `Slider` to be set from the viewmodel, and also for the viewmodel to be set from each `Slider`.
 
-When the example is first run, the `BoxView`, `Label` elements, and `Slider` elements are all set from the viewmodel based on the initial `Color` property set when the viewmodel was instantiated. As the sliders are manipulated, the `BoxView` and `Label` elements are updated accordingly:
+When the example is first run, the <xref:Microsoft.Maui.Controls.BoxView>, `Label` elements, and `Slider` elements are all set from the viewmodel based on the initial `Color` property set when the viewmodel was instantiated. As the sliders are manipulated, the <xref:Microsoft.Maui.Controls.BoxView> and `Label` elements are updated accordingly:
 
 :::image type="content" source="media/compiled-bindings/compiledcolorselector.png" alt-text="Compiled color selector.":::
 
@@ -111,7 +111,7 @@ The following example demonstrates using compiled bindings in a `DataTemplate`:
 </ContentPage>
 ```
 
-The `ListView.ItemsSource` property is set to the static `NamedColor.All` property. The `NamedColor` class uses .NET reflection to enumerate all the static public fields in the `Colors` class, and to store them with their names in a collection that is accessible from the static `All` property. Therefore, the `ListView` is filled with all of the `NamedColor` instances. For each item in the `ListView`, the binding context for the item is set to a `NamedColor` object. The `BoxView` and `Label` elements in the `ViewCell` are bound to `NamedColor` properties.
+The `ListView.ItemsSource` property is set to the static `NamedColor.All` property. The `NamedColor` class uses .NET reflection to enumerate all the static public fields in the `Colors` class, and to store them with their names in a collection that is accessible from the static `All` property. Therefore, the `ListView` is filled with all of the `NamedColor` instances. For each item in the `ListView`, the binding context for the item is set to a `NamedColor` object. The <xref:Microsoft.Maui.Controls.BoxView> and `Label` elements in the `ViewCell` are bound to `NamedColor` properties.
 
 The `DataTemplate` defines the `x:DataType` attribute to be the `NamedColor` type, indicating that any binding expressions in the `DataTemplate` view hierarchy will be compiled. This can be verified by changing any of the binding expressions to bind to a non-existent `NamedColor` property, which will result in a build error.  While this example sets the `x:DataType` attribute to a string literal, it can also be set to a type with the `x:Type` markup extension. For more information about the `x:Type` markup extension, see [x:Type Markup Extension](~/xaml/markup-extensions/consume.md#xtype-markup-extension).
 
@@ -119,11 +119,11 @@ When the example is first run, the `ListView` is populated with `NamedColor` ins
 
 :::image type="content" source="media/compiled-bindings/compiledcolorlist.png" alt-text="Compiled color list.":::
 
-Selecting other items in the `ListView` updates the color of the `BoxView`.
+Selecting other items in the `ListView` updates the color of the <xref:Microsoft.Maui.Controls.BoxView>.
 
 ## Combine compiled bindings with classic bindings
 
-Binding expressions are only compiled for the view hierarchy that the `x:DataType` attribute is defined on. Conversely, any views in a hierarchy on which the `x:DataType` attribute is not defined will use classic bindings. It's therefore possible to combine compiled bindings and classic bindings on a page. For example, in the previous section the views within the `DataTemplate` use compiled bindings, while the `BoxView` that's set to the color selected in the `ListView` does not.
+Binding expressions are only compiled for the view hierarchy that the `x:DataType` attribute is defined on. Conversely, any views in a hierarchy on which the `x:DataType` attribute is not defined will use classic bindings. It's therefore possible to combine compiled bindings and classic bindings on a page. For example, in the previous section the views within the `DataTemplate` use compiled bindings, while the <xref:Microsoft.Maui.Controls.BoxView> that's set to the color selected in the `ListView` does not.
 
 Careful structuring of `x:DataType` attributes can therefore lead to a page using compiled and classic bindings. Alternatively, the `x:DataType` attribute can be re-defined at any point in a view hierarchy to `null` using the `x:Null` markup extension. Doing this indicates that any binding expressions within the view hierarchy will use classic bindings. The following example demonstrates this approach:
 
@@ -147,7 +147,7 @@ Careful structuring of `x:DataType` attributes can therefore lead to a page usin
 </StackLayout>   
 ```
 
-The root <xref:Microsoft.Maui.Controls.StackLayout> sets the `x:DataType` attribute to be the `HslColorViewModel` type, indicating that any binding expression in the root <xref:Microsoft.Maui.Controls.StackLayout> view hierarchy will be compiled. However, the inner <xref:Microsoft.Maui.Controls.StackLayout> redefines the `x:DataType` attribute to `null` with the `x:Null` markup expression. Therefore, the binding expressions within the inner <xref:Microsoft.Maui.Controls.StackLayout> use classic bindings. Only the `BoxView`, within the root <xref:Microsoft.Maui.Controls.StackLayout> view hierarchy, uses compiled bindings.
+The root <xref:Microsoft.Maui.Controls.StackLayout> sets the `x:DataType` attribute to be the `HslColorViewModel` type, indicating that any binding expression in the root <xref:Microsoft.Maui.Controls.StackLayout> view hierarchy will be compiled. However, the inner <xref:Microsoft.Maui.Controls.StackLayout> redefines the `x:DataType` attribute to `null` with the `x:Null` markup expression. Therefore, the binding expressions within the inner <xref:Microsoft.Maui.Controls.StackLayout> use classic bindings. Only the <xref:Microsoft.Maui.Controls.BoxView>, within the root <xref:Microsoft.Maui.Controls.StackLayout> view hierarchy, uses compiled bindings.
 
 For more information about the `x:Null` markup expression, see [x:Null Markup Extension](~/xaml/markup-extensions/consume.md#xnull-markup-extension).
 

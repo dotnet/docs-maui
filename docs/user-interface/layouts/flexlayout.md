@@ -309,11 +309,11 @@ The following example shows an implementation of this layout using a <xref:Micro
 </ContentPage>
 ```
 
-The navigation and aside areas are rendered with a `BoxView` on the left and right. The first <xref:Microsoft.Maui.Controls.FlexLayout> has a vertical main axis and contains three children arranged in a column. These are the header, the body of the page, and the footer. The nested <xref:Microsoft.Maui.Controls.FlexLayout> has a horizontal main axis with three children arranged in a row:
+The navigation and aside areas are rendered with a <xref:Microsoft.Maui.Controls.BoxView> on the left and right. The first <xref:Microsoft.Maui.Controls.FlexLayout> has a vertical main axis and contains three children arranged in a column. These are the header, the body of the page, and the footer. The nested <xref:Microsoft.Maui.Controls.FlexLayout> has a horizontal main axis with three children arranged in a row:
 
 :::image type="content" source="media/flexlayout/holy-grail.png" alt-text="Holy grail layout with the .NET MAUI FlexLayout.":::
 
-In this example, the `Order` property is set on the first `BoxView` to a value less than its siblings to cause it to appear as the first item in the row. The `Basis` property is set on both `BoxView` objects to give them a width of 50 device-independent units. The `Grow` property is set on the nested <xref:Microsoft.Maui.Controls.FlexLayout> to indicate that this <xref:Microsoft.Maui.Controls.FlexLayout> should occupy all of the unused vertical space within the outer <xref:Microsoft.Maui.Controls.FlexLayout>. In addition, the `Grow` property is set on the `Label` representing the content, to indicate that this content is to occupy all of the unused horizontal space within the nested <xref:Microsoft.Maui.Controls.FlexLayout>.
+In this example, the `Order` property is set on the first <xref:Microsoft.Maui.Controls.BoxView> to a value less than its siblings to cause it to appear as the first item in the row. The `Basis` property is set on both <xref:Microsoft.Maui.Controls.BoxView> objects to give them a width of 50 device-independent units. The `Grow` property is set on the nested <xref:Microsoft.Maui.Controls.FlexLayout> to indicate that this <xref:Microsoft.Maui.Controls.FlexLayout> should occupy all of the unused vertical space within the outer <xref:Microsoft.Maui.Controls.FlexLayout>. In addition, the `Grow` property is set on the `Label` representing the content, to indicate that this content is to occupy all of the unused horizontal space within the nested <xref:Microsoft.Maui.Controls.FlexLayout>.
 
 > [!NOTE]
 > There's also a `Shrink` property that you can use when the size of children exceeds the size of the <xref:Microsoft.Maui.Controls.FlexLayout> but wrapping is not desired.
