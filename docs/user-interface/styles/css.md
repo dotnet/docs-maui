@@ -444,16 +444,16 @@ The following .NET MAUI Shell specific CSS properties are also supported (in the
 |Property|Applies to|Values|Example|
 |---|---|---|---|
 |`-maui-flyout-background`|`Shell`|_color_ \| `initial` |`-maui-flyout-background: red;`|
-|`-maui-shell-background`|`Element`|_color_ \| `initial` |`-maui-shell-background: green;`|
-|`-maui-shell-disabled`|`Element`|_color_ \| `initial` |`-maui-shell-disabled: blue;`|
-|`-maui-shell-foreground`|`Element`|_color_ \| `initial` |`-maui-shell-foreground: yellow;`|
-|`-maui-shell-tabbar-background`|`Element`|_color_ \| `initial` |`-maui-shell-tabbar-background: white;`|
-|`-maui-shell-tabbar-disabled`|`Element`|_color_ \| `initial` |`-maui-shell-tabbar-disabled: black;`|
-|`-maui-shell-tabbar-foreground`|`Element`|_color_ \| `initial` |`-maui-shell-tabbar-foreground: gray;`|
-|`-maui-shell-tabbar-title`|`Element`|_color_ \| `initial` |`-maui-shell-tabbar-title: lightgray;`|
-|`-maui-shell-tabbar-unselected`|`Element`|_color_ \| `initial` |`-maui-shell-tabbar-unselected: cyan;`|
-|`-maui-shell-title`|`Element`|_color_ \| `initial` |`-maui-shell-title: teal;`|
-|`-maui-shell-unselected`|`Element`|_color_ \| `initial` |`-maui-shell-unselected: limegreen;`|
+|`-maui-shell-background`|<xref:Microsoft.Maui.Controls.Element>|_color_ \| `initial` |`-maui-shell-background: green;`|
+|`-maui-shell-disabled`|<xref:Microsoft.Maui.Controls.Element>|_color_ \| `initial` |`-maui-shell-disabled: blue;`|
+|`-maui-shell-foreground`|<xref:Microsoft.Maui.Controls.Element>|_color_ \| `initial` |`-maui-shell-foreground: yellow;`|
+|`-maui-shell-tabbar-background`|<xref:Microsoft.Maui.Controls.Element>|_color_ \| `initial` |`-maui-shell-tabbar-background: white;`|
+|`-maui-shell-tabbar-disabled`|<xref:Microsoft.Maui.Controls.Element>|_color_ \| `initial` |`-maui-shell-tabbar-disabled: black;`|
+|`-maui-shell-tabbar-foreground`|<xref:Microsoft.Maui.Controls.Element>|_color_ \| `initial` |`-maui-shell-tabbar-foreground: gray;`|
+|`-maui-shell-tabbar-title`|<xref:Microsoft.Maui.Controls.Element>|_color_ \| `initial` |`-maui-shell-tabbar-title: lightgray;`|
+|`-maui-shell-tabbar-unselected`|<xref:Microsoft.Maui.Controls.Element>|_color_ \| `initial` |`-maui-shell-tabbar-unselected: cyan;`|
+|`-maui-shell-title`|<xref:Microsoft.Maui.Controls.Element>|_color_ \| `initial` |`-maui-shell-title: teal;`|
+|`-maui-shell-unselected`|<xref:Microsoft.Maui.Controls.Element>|_color_ \| `initial` |`-maui-shell-unselected: limegreen;`|
 
 ### Color
 

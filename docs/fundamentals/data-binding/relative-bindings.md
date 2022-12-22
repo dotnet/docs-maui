@@ -65,12 +65,12 @@ In this example, the `BindingContext` of the page is set to the `DefaultViewMode
 
 ## Bind to an ancestor
 
-The `FindAncestor` and `FindAncestorBindingContext` relative binding modes are used to bind to parent elements, of a certain type, in the visual tree. The `FindAncestor` mode is used to bind to a parent element, which derives from the `Element` type. The `FindAncestorBindingContext` mode is used to bind to the `BindingContext` of a parent element.
+The `FindAncestor` and `FindAncestorBindingContext` relative binding modes are used to bind to parent elements, of a certain type, in the visual tree. The `FindAncestor` mode is used to bind to a parent element, which derives from the <xref:Microsoft.Maui.Controls.Element> type. The `FindAncestorBindingContext` mode is used to bind to the `BindingContext` of a parent element.
 
 > [!WARNING]
 > The `AncestorType` property must be set to a `Type` when using the `FindAncestor` and `FindAncestorBindingContext` relative binding modes, otherwise a `XamlParseException` is thrown.
 
-If the `Mode` property isn't explicitly set, setting the `AncestorType` property to a type that derives from `Element` will implicitly set the `Mode` property to `FindAncestor`. Similarly, setting the `AncestorType` property to a type that does not derive from `Element` will implicitly set the `Mode` property to `FindAncestorBindingContext`.
+If the `Mode` property isn't explicitly set, setting the `AncestorType` property to a type that derives from <xref:Microsoft.Maui.Controls.Element> will implicitly set the `Mode` property to `FindAncestor`. Similarly, setting the `AncestorType` property to a type that does not derive from <xref:Microsoft.Maui.Controls.Element> will implicitly set the `Mode` property to `FindAncestorBindingContext`.
 
 > [!NOTE]
 > Relative bindings that use the `FindAncestorBindingContext` mode will be reapplied when the `BindingContext` of any ancestors change.

@@ -273,7 +273,7 @@ The third argument to the `ScrollToAsync` is the `animated` argument, which dete
 
 ### Scroll an element into view
 
-An element within a <xref:Microsoft.Maui.Controls.ScrollView> can be scrolled into view with the `ScrollToAsync` method that accepts `Element` and `ScrollToPosition` arguments. Given a vertical <xref:Microsoft.Maui.Controls.ScrollView> named `scrollView`, and a `Label` named `label`, the following example shows how to scroll an element into view:
+An element within a <xref:Microsoft.Maui.Controls.ScrollView> can be scrolled into view with the `ScrollToAsync` method that accepts <xref:Microsoft.Maui.Controls.Element> and `ScrollToPosition` arguments. Given a vertical <xref:Microsoft.Maui.Controls.ScrollView> named `scrollView`, and a `Label` named `label`, the following example shows how to scroll an element into view:
 
 ```csharp
 await scrollView.ScrollToAsync(label, ScrollToPosition.End, true);

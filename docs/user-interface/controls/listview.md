@@ -52,7 +52,7 @@ In addition, <xref:Microsoft.Maui.Controls.ListView> defines the following prope
 - `ItemTapped`, which raised when an item in the <xref:Microsoft.Maui.Controls.ListView> is tapped. The `ItemTappedEventArgs` object that accompanies this event defines `Group`, `Item`, and `ItemIndex` properties.
 - `Refreshing`, which is raised when a pull to refresh operation is triggered on the <xref:Microsoft.Maui.Controls.ListView>.
 - `Scrolled`, . The `ScrolledEventArgs` object that accompanies this event defines `ScrollX` and `ScrollY` properties.
-- `ScrollToRequested` . The `ScrollToRequestedEventArgs` object that accompanies this event defines `Element`, `Mode`, `Position`, `ScrollX`, `ScrollY`, and `ShouldAnimate` properties.
+- `ScrollToRequested` . The `ScrollToRequestedEventArgs` object that accompanies this event defines <xref:Microsoft.Maui.Controls.Element>, `Mode`, `Position`, `ScrollX`, `ScrollY`, and `ShouldAnimate` properties.
 
 ## Populate a ListView with data
 
@@ -830,7 +830,7 @@ In this scenario, meaningful data can be displayed by overriding the `ToString` 
 
 <xref:Microsoft.Maui.Controls.ListView> defines two `ScrollTo` methods, that scroll items into view. One of the overloads scrolls the specified item into view, while the other scrolls the specified item in the specified group into view. Both overloads have additional arguments that allow the exact position of the item after the scroll has completed to be specified, and whether to animate the scroll.
 
-<xref:Microsoft.Maui.Controls.ListView> defines a `ScrollToRequested` event that is fired when one of the `ScrollTo` methods is invoked. The `ScrollToRequestedEventArgs` object that accompanies the `ScrollToRequested` event has many properties, including `ShouldAnimate`, `Element`, `Mode`, and `Position`. Some of these properties are set from the arguments specified in the `ScrollTo` method calls.
+<xref:Microsoft.Maui.Controls.ListView> defines a `ScrollToRequested` event that is fired when one of the `ScrollTo` methods is invoked. The `ScrollToRequestedEventArgs` object that accompanies the `ScrollToRequested` event has many properties, including `ShouldAnimate`, <xref:Microsoft.Maui.Controls.Element>, `Mode`, and `Position`. Some of these properties are set from the arguments specified in the `ScrollTo` method calls.
 
 In addition, <xref:Microsoft.Maui.Controls.ListView> defines a `Scrolled` event that is fired to indicate that scrolling occurred. The `ScrolledEventArgs` object that accompanies the `Scrolled` event has `ScrollX` and `ScrollY` properties.
 

@@ -7,7 +7,7 @@ ms.date: 10/06/2022
 
 # Display a context menu in a .NET MAUI desktop app
 
-A context menu, often known as a right-click menu, offers contextual commands that are specific to the control being clicked on. In .NET Multi-platform App UI (.NET MAUI), a context menu can be added to any control that derives from `Element`, on Mac Catalyst and Windows. This includes all pages, layouts, and views.
+A context menu, often known as a right-click menu, offers contextual commands that are specific to the control being clicked on. In .NET Multi-platform App UI (.NET MAUI), a context menu can be added to any control that derives from <xref:Microsoft.Maui.Controls.Element>, on Mac Catalyst and Windows. This includes all pages, layouts, and views.
 
 A context menu is defined with a `MenuFlyout`, which can consist of the following children:
 
@@ -22,7 +22,7 @@ A context menu is defined with a `MenuFlyout`, which can consist of the followin
 
 ## Create context menu items
 
-A `MenuFlyout` object can be added to the `FlyoutBase.ContextFlyout` attached property of any control that derives from `Element`. When the user right-clicks on the control, the context menu will appear at the location where the pointer was clicked.
+A `MenuFlyout` object can be added to the `FlyoutBase.ContextFlyout` attached property of any control that derives from <xref:Microsoft.Maui.Controls.Element>. When the user right-clicks on the control, the context menu will appear at the location where the pointer was clicked.
 
 The following example shows a <xref:Microsoft.Maui.Controls.WebView> that defines a context menu:
 
