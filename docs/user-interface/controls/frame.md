@@ -23,7 +23,7 @@ The <xref:Microsoft.Maui.Controls.Frame> class inherits from <xref:Microsoft.Mau
 
 ## Create a Frame
 
-A <xref:Microsoft.Maui.Controls.Frame> object typically wraps another control, such as a `Label`:
+A <xref:Microsoft.Maui.Controls.Frame> object typically wraps another control, such as a <xref:Microsoft.Maui.Controls.Label>:
 
 ```xaml
 <Frame>

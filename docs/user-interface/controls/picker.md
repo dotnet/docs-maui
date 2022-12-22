@@ -194,7 +194,7 @@ Label detailsLabel = new Label();
 detailsLabel.SetBinding(Label.TextProperty, "SelectedMonkey.Details");
 ```
 
-The `SelectedItem` property data binds to the `SelectedMonkey` property of the binding context, which is of type `Monkey`. Therefore, when the user selects an item in the <xref:Microsoft.Maui.Controls.Picker>, the `SelectedMonkey` property will be set to the selected `Monkey` object. The `SelectedMonkey` object data is displayed in the user interface by `Label` and `Image` views.
+The `SelectedItem` property data binds to the `SelectedMonkey` property of the binding context, which is of type `Monkey`. Therefore, when the user selects an item in the <xref:Microsoft.Maui.Controls.Picker>, the `SelectedMonkey` property will be set to the selected `Monkey` object. The `SelectedMonkey` object data is displayed in the user interface by <xref:Microsoft.Maui.Controls.Label> and `Image` views.
 
 > [!NOTE]
 > The `SelectedItem` and `SelectedIndex` properties both support two-way bindings by default.
@@ -256,7 +256,7 @@ void OnPickerSelectedIndexChanged(object sender, EventArgs e)
 }
 ```
 
-This method obtains the `SelectedIndex` property value, and uses the value to retrieve the selected item from the `Items` collection. Because each item in the `Items` collection is a `string`, they can be displayed by a `Label` without requiring a cast.
+This method obtains the `SelectedIndex` property value, and uses the value to retrieve the selected item from the `Items` collection. Because each item in the `Items` collection is a `string`, they can be displayed by a <xref:Microsoft.Maui.Controls.Label> without requiring a cast.
 
 > [!NOTE]
 > A <xref:Microsoft.Maui.Controls.Picker> can be initialized to display a specific item by setting the `SelectedIndex` property. However, the `SelectedIndex` property must be set after initializing the `Items` collection.

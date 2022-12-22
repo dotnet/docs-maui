@@ -103,7 +103,7 @@ Shadow.SetHasShadow (label, true);
 
 ### Consume an attached property with a style
 
-Attached properties can also be added to a control by a style. The following XAML code example shows an *explicit* style for `Label` controls that uses the `HasShadow` attached property:
+Attached properties can also be added to a control by a style. The following XAML code example shows an *explicit* style for <xref:Microsoft.Maui.Controls.Label> controls that uses the `HasShadow` attached property:
 
 ```xaml
 <Style x:Key="ShadowStyle" TargetType="Label">
@@ -113,7 +113,7 @@ Attached properties can also be added to a control by a style. The following XAM
 </Style>
 ```
 
-The `Style` can be applied to a `Label` by setting its `Style` property to the `Style` instance using the `StaticResource` markup extension, as demonstrated in the following code example:
+The `Style` can be applied to a <xref:Microsoft.Maui.Controls.Label> by setting its `Style` property to the `Style` instance using the `StaticResource` markup extension, as demonstrated in the following code example:
 
 ```xaml
 <Label Text="Label with shadow" Style="{StaticResource ShadowStyle}" />

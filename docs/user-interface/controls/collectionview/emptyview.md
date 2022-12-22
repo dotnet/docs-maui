@@ -169,7 +169,7 @@ public class FilterData : BindableObject
 }
 ```
 
-The `EmptyView` property is set to a `FilterData` object, and the `Filter` property data binds to the `SearchBar.Text` property. When the <xref:Microsoft.Maui.Controls.SearchBar> executes the `FilterCommand`, the collection displayed by the <xref:Microsoft.Maui.Controls.CollectionView> is filtered for the search term stored in the `Filter` property. If the filtering operation yields no data, the `Label` defined in the `DataTemplate`, that's set as the `EmptyViewTemplate` property value, is displayed:
+The `EmptyView` property is set to a `FilterData` object, and the `Filter` property data binds to the `SearchBar.Text` property. When the <xref:Microsoft.Maui.Controls.SearchBar> executes the `FilterCommand`, the collection displayed by the <xref:Microsoft.Maui.Controls.CollectionView> is filtered for the search term stored in the `Filter` property. If the filtering operation yields no data, the <xref:Microsoft.Maui.Controls.Label> defined in the `DataTemplate`, that's set as the `EmptyViewTemplate` property value, is displayed:
 
 :::image type="content" source="media/emptyview/emptyviewtemplate.png" alt-text="Screenshot of a CollectionView vertical list with an empty view template.":::
 

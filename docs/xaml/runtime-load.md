@@ -76,4 +76,4 @@ Label monkeyLabel = page.FindByName<Label>("monkeyName");
 monkeyLabel.Text = "Seated Monkey";
 ```
 
-In this example, the XAML for a <xref:Microsoft.Maui.Controls.ContentPage> is inflated. This XAML includes a `Label` named `monkeyName`, which is retrieved using the `FindByName` method, before its `Text` property is set.
+In this example, the XAML for a <xref:Microsoft.Maui.Controls.ContentPage> is inflated. This XAML includes a <xref:Microsoft.Maui.Controls.Label> named `monkeyName`, which is retrieved using the `FindByName` method, before its `Text` property is set.

@@ -458,7 +458,7 @@ The following example demonstrates a keyboard for entering decimal numbers:
 </ContentPage>
 ```
 
-In this example, the page's `BindingContext` is a `DecimalKeypadViewModel`. The <xref:Microsoft.Maui.Controls.Entry> property of this viewmodel is bound to the `Text` property of a `Label`. All the `Button` objects are bound to commands in the viewmodel: `ClearCommand`, `BackspaceCommand`, and `DigitCommand`. The 11 buttons for the 10 digits and the decimal point share a binding to `DigitCommand`. The `CommandParameter` distinguishes between these buttons. The value set to `CommandParameter` is generally the same as the text displayed by the button except for the decimal point, which for purposes of clarity is displayed with a middle dot character:
+In this example, the page's `BindingContext` is a `DecimalKeypadViewModel`. The <xref:Microsoft.Maui.Controls.Entry> property of this viewmodel is bound to the `Text` property of a <xref:Microsoft.Maui.Controls.Label>. All the `Button` objects are bound to commands in the viewmodel: `ClearCommand`, `BackspaceCommand`, and `DigitCommand`. The 11 buttons for the 10 digits and the decimal point share a binding to `DigitCommand`. The `CommandParameter` distinguishes between these buttons. The value set to `CommandParameter` is generally the same as the text displayed by the button except for the decimal point, which for purposes of clarity is displayed with a middle dot character:
 
 :::image type="content" source="media/commanding/decimalkeyboard.png" alt-text="Decimal keyboard.":::
 

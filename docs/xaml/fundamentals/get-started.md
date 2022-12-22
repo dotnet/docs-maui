@@ -63,7 +63,7 @@ At runtime, code in the `MauiProgram` class bootstraps the app and executes the 
 
 A <xref:Microsoft.Maui.Controls.ContentPage> should contain a single child, that can be a view or a layout with child views. The child of the <xref:Microsoft.Maui.Controls.ContentPage> is automatically set as the value of the `ContentPage.Content` property.
 
-The following example shows a <xref:Microsoft.Maui.Controls.ContentPage> containing a `Label`:
+The following example shows a <xref:Microsoft.Maui.Controls.ContentPage> containing a <xref:Microsoft.Maui.Controls.Label>:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -80,7 +80,7 @@ The following example shows a <xref:Microsoft.Maui.Controls.ContentPage> contain
 </ContentPage>
 ```
 
-From the example above the relationship between classes, properties, and XML should be evident. A .NET MAUI class (such as <xref:Microsoft.Maui.Controls.ContentPage> or `Label`) appears in the XAML file as an XML element. Properties of that class—including `Title` on <xref:Microsoft.Maui.Controls.ContentPage> and seven properties of `Label` usually appear as XML attributes.
+From the example above the relationship between classes, properties, and XML should be evident. A .NET MAUI class (such as <xref:Microsoft.Maui.Controls.ContentPage> or <xref:Microsoft.Maui.Controls.Label>) appears in the XAML file as an XML element. Properties of that class—including `Title` on <xref:Microsoft.Maui.Controls.ContentPage> and seven properties of <xref:Microsoft.Maui.Controls.Label> usually appear as XML attributes.
 
 Many shortcuts exist to set the values of these properties. Some properties are basic data types. For example, the `Title` and `Text` properties are of type `string`, and `Rotation` is of type `double`. The `HorizontalTextAlignment` property is of type `TextAlignment`, which is an enumeration. For a property of any enumeration type, all you need to supply is a member name.
 
@@ -151,9 +151,9 @@ This XAML file is syntactically complete, and produces the following UI:
 
 :::image type="content" source="media/get-started/xamlpluscode1.png" alt-text="Screenshot of multiple controls on a page.":::
 
-However, while you can interact with the <xref:Microsoft.Maui.Controls.Slider> and `Button`, the UI isn't updated. The <xref:Microsoft.Maui.Controls.Slider> should cause the `Label` to display the current value, and the `Button` should do something.
+However, while you can interact with the <xref:Microsoft.Maui.Controls.Slider> and `Button`, the UI isn't updated. The <xref:Microsoft.Maui.Controls.Slider> should cause the <xref:Microsoft.Maui.Controls.Label> to display the current value, and the `Button` should do something.
 
-Displaying a <xref:Microsoft.Maui.Controls.Slider> value using a `Label` can be achieved entirely in XAML with a *data binding*. However, it's useful to see the code solution first. Even so, handling the `Button` click definitely requires code. This means that the code-behind file for `XamlPlusCodePage` must contain handlers for the `ValueChanged` event of the <xref:Microsoft.Maui.Controls.Slider> and the `Clicked` event of the `Button`:
+Displaying a <xref:Microsoft.Maui.Controls.Slider> value using a <xref:Microsoft.Maui.Controls.Label> can be achieved entirely in XAML with a *data binding*. However, it's useful to see the code solution first. Even so, handling the `Button` click definitely requires code. This means that the code-behind file for `XamlPlusCodePage` must contain handlers for the `ValueChanged` event of the <xref:Microsoft.Maui.Controls.Slider> and the `Clicked` event of the `Button`:
 
 ```csharp
 namespace XamlSamples
@@ -202,9 +202,9 @@ Back in the XAML file, the <xref:Microsoft.Maui.Controls.Slider> and `Button` ta
 </ContentPage>
 ```
 
-Notice that assigning a handler to an event has the same syntax as assigning a value to a property. In addition, for the `ValueChanged` event handler of the <xref:Microsoft.Maui.Controls.Slider> to use the `Label` to display the current value, the handler needs to reference that object from code. Therefore, the `Label` needs a name, which is specified with the `x:Name` attribute. The `x` prefix of the `x:Name` attribute indicates that this attribute is intrinsic to XAML. The name you assign to the `x:Name` attribute has the same rules as C# variable names. For example, it must begin with a letter or underscore and contain no embedded spaces.
+Notice that assigning a handler to an event has the same syntax as assigning a value to a property. In addition, for the `ValueChanged` event handler of the <xref:Microsoft.Maui.Controls.Slider> to use the <xref:Microsoft.Maui.Controls.Label> to display the current value, the handler needs to reference that object from code. Therefore, the <xref:Microsoft.Maui.Controls.Label> needs a name, which is specified with the `x:Name` attribute. The `x` prefix of the `x:Name` attribute indicates that this attribute is intrinsic to XAML. The name you assign to the `x:Name` attribute has the same rules as C# variable names. For example, it must begin with a letter or underscore and contain no embedded spaces.
 
-The `ValueChanged` event handler can now set the `Label` to display the new <xref:Microsoft.Maui.Controls.Slider> value, which is available from the event arguments:
+The `ValueChanged` event handler can now set the <xref:Microsoft.Maui.Controls.Label> to display the new <xref:Microsoft.Maui.Controls.Slider> value, which is available from the event arguments:
 
 ```csharp
 void OnSliderValueChanged(object sender, ValueChangedEventArgs args)
@@ -222,7 +222,7 @@ void OnSliderValueChanged(object sender, ValueChangedEventArgs args)
 }
 ```
 
-The result is that any manipulation of the <xref:Microsoft.Maui.Controls.Slider> causes its value to be displayed in the `Label`:
+The result is that any manipulation of the <xref:Microsoft.Maui.Controls.Slider> causes its value to be displayed in the <xref:Microsoft.Maui.Controls.Label>:
 
 :::image type="content" source="media/get-started/xamlpluscode2.png" alt-text="Screenshot of multiple controls on a page, with Slider value displayed.":::
 

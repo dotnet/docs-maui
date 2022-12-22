@@ -8,9 +8,9 @@ ms.date: 03/02/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-hyperlinks)
 
-The .NET Multi-platform App UI (.NET MAUI) `Label` displays single-line and multi-line text. Text displayed by a `Label` can be colored, spaced, and can have text decorations.
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Label> displays single-line and multi-line text. Text displayed by a <xref:Microsoft.Maui.Controls.Label> can be colored, spaced, and can have text decorations.
 
-`Label` defines the following properties:
+<xref:Microsoft.Maui.Controls.Label> defines the following properties:
 
 - `CharacterSpacing`, of type `double`, sets the spacing between characters in the displayed text.
 - `FontAttributes`, of type `FontAttributes`, determines text style.
@@ -21,22 +21,22 @@ The .NET Multi-platform App UI (.NET MAUI) `Label` displays single-line and mult
 - `HorizontalTextAlignment`, of type `TextAlignment`, defines the horizontal alignment of the displayed text.
 - `LineBreakMode`, of type `LineBreakMode`, determines how text should be handled when it can't fit on one line.
 - `LineHeight`, of type `double`, specifies the multiplier to apply to the default line height when displaying text.
-- `MaxLines`, of type `int`, indicates the maximum number of lines allowed in the `Label`.
+- `MaxLines`, of type `int`, indicates the maximum number of lines allowed in the <xref:Microsoft.Maui.Controls.Label>.
 - `Padding`, of type `Thickness`, determines the label's padding.
 - `Text`, of type `string`, defines the text displayed as the content of the label.
 - `TextColor`, of type `Color`, defines the color of the displayed text.
 - `TextDecorations`, of type `TextDecorations`, specifies the text decorations (underline and strikethrough) that can be applied.
 - `TextTransform`, of type `TextTransform`, specifies the casing of the displayed text.
-- `TextType`, of type `TextType`, determines whether the `Label` should display plain text or HTML text.
+- `TextType`, of type `TextType`, determines whether the <xref:Microsoft.Maui.Controls.Label> should display plain text or HTML text.
 - `VerticalTextAlignment`, of type `TextAlignment`, defines the vertical alignment of the displayed text.
 
 These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
 
-For information about specifying fonts on a `Label`, see [Fonts](~/user-interface/fonts.md).
+For information about specifying fonts on a <xref:Microsoft.Maui.Controls.Label>, see [Fonts](~/user-interface/fonts.md).
 
 ## Create a Label
 
-The following example shows how to create a `Label`:
+The following example shows how to create a <xref:Microsoft.Maui.Controls.Label>:
 
 ```xaml
 <Label Text="Hello world" />
@@ -52,7 +52,7 @@ Label label = new Label { Text = "Hello world" };
 
 Labels can be set to use a specific text color via the `TextColor` property.
 
-The following example sets the text color of a `Label`:
+The following example sets the text color of a <xref:Microsoft.Maui.Controls.Label>:
 
 ```xaml
 <Label TextColor="#77d065"
@@ -63,18 +63,18 @@ For more information about colors, see [Colors](~/user-interface/graphics/colors
 
 ## Set character spacing
 
-Character spacing can be applied to `Label` objects by setting the `CharacterSpacing` property to a `double` value:
+Character spacing can be applied to <xref:Microsoft.Maui.Controls.Label> objects by setting the `CharacterSpacing` property to a `double` value:
 
 ```xaml
 <Label Text="Character spaced text"
        CharacterSpacing="10" />
 ```
 
-The result is that characters in the text displayed by the `Label` are spaced `CharacterSpacing` device-independent units apart.
+The result is that characters in the text displayed by the <xref:Microsoft.Maui.Controls.Label> are spaced `CharacterSpacing` device-independent units apart.
 
 ## Add new lines
 
-There are two main techniques for forcing text in a `Label` onto a new line, from XAML:
+There are two main techniques for forcing text in a <xref:Microsoft.Maui.Controls.Label> onto a new line, from XAML:
 
 1. Use the unicode line feed character, which is "&amp;#10;".
 1. Specify your text using *property element* syntax.
@@ -113,14 +113,14 @@ Text wrapping and truncation can be controlled by setting the `LineBreakMode` pr
 
 ## Display a specific number of lines
 
-The number of lines displayed by a `Label` can be specified by setting the `MaxLines` property to an `int` value:
+The number of lines displayed by a <xref:Microsoft.Maui.Controls.Label> can be specified by setting the `MaxLines` property to an `int` value:
 
-- When `MaxLines` is -1, which is its default value, the `Label` respects the value of the `LineBreakMode` property to either show just one line, possibly truncated, or all lines with all text.
-- When `MaxLines` is 0, the `Label` isn't displayed.
-- When `MaxLines` is 1, the result is identical to setting the `LineBreakMode` property to `NoWrap`, `HeadTruncation`, `MiddleTruncation`, or `TailTruncation`. However, the `Label` will respect the value of the `LineBreakMode` property with regard to placement of an ellipsis, if applicable.
-- When `MaxLines` is greater than 1, the `Label` will display up to the specified number of lines, while respecting the value of the `LineBreakMode` property with regard to placement of an ellipsis, if applicable. However, setting the `MaxLines` property to a value greater than 1 has no effect if the `LineBreakMode` property is set to `NoWrap`.
+- When `MaxLines` is -1, which is its default value, the <xref:Microsoft.Maui.Controls.Label> respects the value of the `LineBreakMode` property to either show just one line, possibly truncated, or all lines with all text.
+- When `MaxLines` is 0, the <xref:Microsoft.Maui.Controls.Label> isn't displayed.
+- When `MaxLines` is 1, the result is identical to setting the `LineBreakMode` property to `NoWrap`, `HeadTruncation`, `MiddleTruncation`, or `TailTruncation`. However, the <xref:Microsoft.Maui.Controls.Label> will respect the value of the `LineBreakMode` property with regard to placement of an ellipsis, if applicable.
+- When `MaxLines` is greater than 1, the <xref:Microsoft.Maui.Controls.Label> will display up to the specified number of lines, while respecting the value of the `LineBreakMode` property with regard to placement of an ellipsis, if applicable. However, setting the `MaxLines` property to a value greater than 1 has no effect if the `LineBreakMode` property is set to `NoWrap`.
 
-The following XAML example demonstrates setting the `MaxLines` property on a `Label`:
+The following XAML example demonstrates setting the `MaxLines` property on a <xref:Microsoft.Maui.Controls.Label>:
 
 ```xaml
 <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis nulla eu felis fringilla vulputate. Nullam porta eleifend lacinia. Donec at iaculis tellus."
@@ -130,7 +130,7 @@ The following XAML example demonstrates setting the `MaxLines` property on a `La
 
 ## Set line height
 
-The vertical height of a `Label` can be customized by setting the `Label.LineHeight` property to a `double` value.
+The vertical height of a <xref:Microsoft.Maui.Controls.Label> can be customized by setting the `Label.LineHeight` property to a `double` value.
 
 > [!NOTE]
 >
@@ -138,7 +138,7 @@ The vertical height of a `Label` can be customized by setting the `Label.LineHei
 > - On Android, the `Label.LineHeight` property only changes the line height of text that wraps onto multiple lines.
 > - On Windows, the `Label.LineHeight` property changes the line height of text that wraps onto multiple lines.
 
-The following example demonstrates setting the `LineHeight` property on a `Label`:
+The following example demonstrates setting the `LineHeight` property on a <xref:Microsoft.Maui.Controls.Label>:
 
 ```xaml
 <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis nulla eu felis fringilla vulputate. Nullam porta eleifend lacinia. Donec at iaculis tellus."
@@ -152,12 +152,12 @@ The following screenshot shows the result of setting the `Label.LineHeight` prop
 
 ## Display HTML
 
-The `Label` class has a `TextType` property, which determines whether the `Label` object should display plain text, or HTML text. This property should be set to one of the members of the `TextType` enumeration:
+The <xref:Microsoft.Maui.Controls.Label> class has a `TextType` property, which determines whether the <xref:Microsoft.Maui.Controls.Label> object should display plain text, or HTML text. This property should be set to one of the members of the `TextType` enumeration:
 
-- `Text` indicates that the `Label` will display plain text, and is the default value of the `TextType` property.
-- `Html` indicates that the `Label` will display HTML text.
+- `Text` indicates that the <xref:Microsoft.Maui.Controls.Label> will display plain text, and is the default value of the `TextType` property.
+- `Html` indicates that the <xref:Microsoft.Maui.Controls.Label> will display HTML text.
 
-Therefore, `Label` objects can display HTML by setting the `TextType` property to `Html`, and the `Text` property to a HTML string:
+Therefore, <xref:Microsoft.Maui.Controls.Label> objects can display HTML by setting the `TextType` property to `Html`, and the `Text` property to a HTML string:
 
 ```csharp
 Label label = new Label
@@ -186,14 +186,14 @@ Alternatively, for greater readability the HTML can be inlined in a `CDATA` sect
 </Label>
 ```
 
-In this example, the `Text` property is set to the HTML string that's inlined in the `CDATA` section. This works because the `Text` property is the `ContentProperty` for the `Label` class.
+In this example, the `Text` property is set to the HTML string that's inlined in the `CDATA` section. This works because the `Text` property is the `ContentProperty` for the <xref:Microsoft.Maui.Controls.Label> class.
 
 > [!IMPORTANT]
-> Displaying HTML in a `Label` is limited to the HTML tags that are supported by the underlying platform.
+> Displaying HTML in a <xref:Microsoft.Maui.Controls.Label> is limited to the HTML tags that are supported by the underlying platform.
 
 ## Decorate text
 
-Underline and strikethrough text decorations can be applied to `Label` objects by setting the `TextDecorations` property to one or more `TextDecorations` enumeration members:
+Underline and strikethrough text decorations can be applied to <xref:Microsoft.Maui.Controls.Label> objects by setting the `TextDecorations` property to one or more `TextDecorations` enumeration members:
 
 - `None`
 - `Underline`
@@ -215,7 +215,7 @@ Label strikethroughLabel = new Label { Text = "This is text with strikethrough."
 Label bothLabel = new Label { Text = "This is underlined text with strikethrough.", TextDecorations = TextDecorations.Underline | TextDecorations.Strikethrough };
 ```
 
-The following screenshot shows the `TextDecorations` enumeration members applied to `Label` instances:
+The following screenshot shows the `TextDecorations` enumeration members applied to <xref:Microsoft.Maui.Controls.Label> instances:
 
 :::image type="content" source="media/label/textdecorations.png" alt-text="Screenshot of Labels with text decorations.":::
 
@@ -224,7 +224,7 @@ The following screenshot shows the `TextDecorations` enumeration members applied
 
 ## Transform text
 
-A `Label` can transform the casing of its text, stored in the `Text` property, by setting the `TextTransform` property to a value of the `TextTransform` enumeration. This enumeration has four values:
+A <xref:Microsoft.Maui.Controls.Label> can transform the casing of its text, stored in the `Text` property, by setting the `TextTransform` property to a value of the `TextTransform` enumeration. This enumeration has four values:
 
 - `None` indicates that the text won't be transformed.
 - `Default` indicates that the default behavior for the platform will be used. This is the default value of the `TextTransform` property.
@@ -240,7 +240,7 @@ The following example shows transforming text to uppercase:
 
 ## Use formatted text
 
-`Label` exposes a `FormattedText` property that allows the presentation of text with multiple fonts and colors in the same view. The `FormattedText` property is of type `FormattedString`, which comprises one or more `Span` instances, set via the `Spans` property.
+<xref:Microsoft.Maui.Controls.Label> exposes a `FormattedText` property that allows the presentation of text with multiple fonts and colors in the same view. The `FormattedText` property is of type `FormattedString`, which comprises one or more `Span` instances, set via the `Spans` property.
 
 > [!NOTE]
 > It's not possible to display HTML in a `Span`.
@@ -299,7 +299,7 @@ formattedString.Spans.Add (new Span { Text = "italic small.", FontAttributes = F
 Label label = new Label { FormattedText = formattedString };
 ```
 
-The following screenshot shows the resulting `Label` that contains three `Span` objects:
+The following screenshot shows the resulting <xref:Microsoft.Maui.Controls.Label> that contains three `Span` objects:
 
 :::image type="content" source="media/label/formattedtext.png" alt-text="Screenshot of Label consisting of three spans.":::
 
@@ -307,14 +307,14 @@ A `Span` can also respond to any gestures that are added to the span's `GestureR
 
 ## Create a hyperlink
 
-The text displayed by `Label` and `Span` instances can be turned into hyperlinks with the following approach:
+The text displayed by <xref:Microsoft.Maui.Controls.Label> and `Span` instances can be turned into hyperlinks with the following approach:
 
-1. Set the `TextColor` and `TextDecoration` properties of the `Label` or `Span`.
-1. Add a `TapGestureRecognizer` to the `GestureRecognizers` collection of the `Label` or `Span`, whose `Command` property binds to a `ICommand`, and whose `CommandParameter` property contains the URL to open.
+1. Set the `TextColor` and `TextDecoration` properties of the <xref:Microsoft.Maui.Controls.Label> or `Span`.
+1. Add a `TapGestureRecognizer` to the `GestureRecognizers` collection of the <xref:Microsoft.Maui.Controls.Label> or `Span`, whose `Command` property binds to a `ICommand`, and whose `CommandParameter` property contains the URL to open.
 1. Define the `ICommand` that will be executed by the `TapGestureRecognizer`.
 1. Write the code that will be executed by the `ICommand`.
 
-The following example, shows a `Label` whose content is set from multiple `Span` objects:
+The following example, shows a <xref:Microsoft.Maui.Controls.Label> whose content is set from multiple `Span` objects:
 
 ```xaml
 <Label>
@@ -363,7 +363,7 @@ The `TapCommand` executes the `Launcher.OpenAsync` method, passing the `TapGestu
 
 ### Create a reusable hyperlink class
 
-The previous approach to creating a hyperlink requires writing repetitive code every time you require a hyperlink in your app. However, both the `Label` and `Span` classes can be subclassed to create `HyperlinkLabel` and `HyperlinkSpan` classes, with the gesture recognizer and text formatting code added there.
+The previous approach to creating a hyperlink requires writing repetitive code every time you require a hyperlink in your app. However, both the <xref:Microsoft.Maui.Controls.Label> and `Span` classes can be subclassed to create `HyperlinkLabel` and `HyperlinkSpan` classes, with the gesture recognizer and text formatting code added there.
 
 The following example shows a `HyperlinkSpan` class:
 

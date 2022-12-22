@@ -161,7 +161,7 @@ The following XAML example has a <xref:Microsoft.Maui.Controls.ScrollView> as a 
 </ContentPage>
 ```
 
-In this example, the root layout is a <xref:Microsoft.Maui.Controls.Grid> that has a `Label`, <xref:Microsoft.Maui.Controls.ScrollView>, and `Button` as its children. The <xref:Microsoft.Maui.Controls.ScrollView> has a <xref:Microsoft.Maui.Controls.StackLayout> as its content, with the <xref:Microsoft.Maui.Controls.StackLayout> containing multiple `Label` objects. This arrangement ensures that the first `Label` is always on-screen, while text displayed by the other `Label` objects can be scrolled:
+In this example, the root layout is a <xref:Microsoft.Maui.Controls.Grid> that has a <xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.ScrollView>, and `Button` as its children. The <xref:Microsoft.Maui.Controls.ScrollView> has a <xref:Microsoft.Maui.Controls.StackLayout> as its content, with the <xref:Microsoft.Maui.Controls.StackLayout> containing multiple <xref:Microsoft.Maui.Controls.Label> objects. This arrangement ensures that the first <xref:Microsoft.Maui.Controls.Label> is always on-screen, while text displayed by the other <xref:Microsoft.Maui.Controls.Label> objects can be scrolled:
 
 :::image type="content" source="media/scrollview/child-layout.png" alt-text="Screenshot of a child ScrollView layout.":::
 
@@ -273,7 +273,7 @@ The third argument to the `ScrollToAsync` is the `animated` argument, which dete
 
 ### Scroll an element into view
 
-An element within a <xref:Microsoft.Maui.Controls.ScrollView> can be scrolled into view with the `ScrollToAsync` method that accepts <xref:Microsoft.Maui.Controls.Element> and `ScrollToPosition` arguments. Given a vertical <xref:Microsoft.Maui.Controls.ScrollView> named `scrollView`, and a `Label` named `label`, the following example shows how to scroll an element into view:
+An element within a <xref:Microsoft.Maui.Controls.ScrollView> can be scrolled into view with the `ScrollToAsync` method that accepts <xref:Microsoft.Maui.Controls.Element> and `ScrollToPosition` arguments. Given a vertical <xref:Microsoft.Maui.Controls.ScrollView> named `scrollView`, and a <xref:Microsoft.Maui.Controls.Label> named `label`, the following example shows how to scroll an element into view:
 
 ```csharp
 await scrollView.ScrollToAsync(label, ScrollToPosition.End, true);

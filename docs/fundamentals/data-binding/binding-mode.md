@@ -31,7 +31,7 @@ The following example shows a data binding defined on a <xref:Microsoft.Maui.Con
 </ContentPage>
 ```
 
-In this example, the `Label` is the data-binding source, and the <xref:Microsoft.Maui.Controls.Slider> is the target. The binding references the `Opacity` property of the `Label`, which has a default value of 1. Therefore, the <xref:Microsoft.Maui.Controls.Slider> is initialized to the value 1 from the initial `Opacity` value of `Label`. This is shown in the following screenshot:
+In this example, the <xref:Microsoft.Maui.Controls.Label> is the data-binding source, and the <xref:Microsoft.Maui.Controls.Slider> is the target. The binding references the `Opacity` property of the <xref:Microsoft.Maui.Controls.Label>, which has a default value of 1. Therefore, the <xref:Microsoft.Maui.Controls.Slider> is initialized to the value 1 from the initial `Opacity` value of <xref:Microsoft.Maui.Controls.Label>. This is shown in the following screenshot:
 
 :::image type="content" source="media/binding-mode/reversebinding.png" alt-text="Reverse binding.":::
 
@@ -218,13 +218,13 @@ The following XAML consumes the `HslColorViewModel`:
 </ContentPage>
 ```
 
-In this example, the `HslColorViewModel` is instantiated, and `Color` property set, and set as the page's `BindingContext`. The <xref:Microsoft.Maui.Controls.BoxView>, `Label`, and three <xref:Microsoft.Maui.Controls.Slider> views inherit the binding context from the <xref:Microsoft.Maui.Controls.ContentPage>. These views are all binding targets that reference source properties in the viewmodel. For the `Color` property of the <xref:Microsoft.Maui.Controls.BoxView>, and the `Text` property of the `Label`, the data bindings are `OneWay` - the properties in the view are set from the properties in the viewmodel. The `Value` property of the <xref:Microsoft.Maui.Controls.Slider>, however, uses a `TwoWay` binding mode. This enables each <xref:Microsoft.Maui.Controls.Slider> to be set from the viewmodel, and also for the viewmodel to be set from each <xref:Microsoft.Maui.Controls.Slider>.
+In this example, the `HslColorViewModel` is instantiated, and `Color` property set, and set as the page's `BindingContext`. The <xref:Microsoft.Maui.Controls.BoxView>, <xref:Microsoft.Maui.Controls.Label>, and three <xref:Microsoft.Maui.Controls.Slider> views inherit the binding context from the <xref:Microsoft.Maui.Controls.ContentPage>. These views are all binding targets that reference source properties in the viewmodel. For the `Color` property of the <xref:Microsoft.Maui.Controls.BoxView>, and the `Text` property of the <xref:Microsoft.Maui.Controls.Label>, the data bindings are `OneWay` - the properties in the view are set from the properties in the viewmodel. The `Value` property of the <xref:Microsoft.Maui.Controls.Slider>, however, uses a `TwoWay` binding mode. This enables each <xref:Microsoft.Maui.Controls.Slider> to be set from the viewmodel, and also for the viewmodel to be set from each <xref:Microsoft.Maui.Controls.Slider>.
 
-When the example is first run, the <xref:Microsoft.Maui.Controls.BoxView>, `Label`, and three <xref:Microsoft.Maui.Controls.Slider> elements are all set from the viewmodel based on the initial `Color` property set when the viewmodel was instantiated:
+When the example is first run, the <xref:Microsoft.Maui.Controls.BoxView>, <xref:Microsoft.Maui.Controls.Label>, and three <xref:Microsoft.Maui.Controls.Slider> elements are all set from the viewmodel based on the initial `Color` property set when the viewmodel was instantiated:
 
 :::image type="content" source="media/binding-mode/simplecolorselector.png" alt-text="Simple color selector.":::
 
-As you manipulate the sliders, the <xref:Microsoft.Maui.Controls.BoxView> and `Label` are updated accordingly.
+As you manipulate the sliders, the <xref:Microsoft.Maui.Controls.BoxView> and <xref:Microsoft.Maui.Controls.Label> are updated accordingly.
 
 ## Overriding the binding mode
 

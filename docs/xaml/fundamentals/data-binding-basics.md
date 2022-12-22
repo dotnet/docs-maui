@@ -17,7 +17,7 @@ Data bindings connect properties of two objects, called the *source* and the *ta
 1. The `BindingContext` property of the target object must be set to the source object,
 1. The `SetBinding` method (often used in conjunction with the `Binding` class) must be called on the target object to bind a property of that object to a property of the source object.
 
-The target property must be a bindable property, which means that the target object must derive from `BindableObject`. A property of `Label`, such as `Text`, is associated with the bindable property `TextProperty`.
+The target property must be a bindable property, which means that the target object must derive from `BindableObject`. A property of <xref:Microsoft.Maui.Controls.Label>, such as `Text`, is associated with the bindable property `TextProperty`.
 
 In XAML, you must also perform the same two steps that are required in code, except that the `Binding` markup extension takes the place of the `SetBinding` call and the `Binding` class. However, when you define data bindings in XAML, there are multiple ways to set the `BindingContext` of the target object. Sometimes it’s set from the code-behind file, sometimes using a `StaticResource` or `x:Static` markup extension, and sometimes as the content of `BindingContext` property-element tags.
 
@@ -25,7 +25,7 @@ In XAML, you must also perform the same two steps that are required in code, exc
 
 You can define data bindings to link properties of two views on the same page. In this case, you set the `BindingContext` of the target object using the `x:Reference` markup extension.
 
-The following example contains a <xref:Microsoft.Maui.Controls.Slider> and two `Label` views, one of which is rotated by the <xref:Microsoft.Maui.Controls.Slider> value and another which displays the <xref:Microsoft.Maui.Controls.Slider> value:
+The following example contains a <xref:Microsoft.Maui.Controls.Slider> and two <xref:Microsoft.Maui.Controls.Label> views, one of which is rotated by the <xref:Microsoft.Maui.Controls.Slider> value and another which displays the <xref:Microsoft.Maui.Controls.Slider> value:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -53,7 +53,7 @@ The following example contains a <xref:Microsoft.Maui.Controls.Slider> and two `
 </ContentPage>
 ```
 
-The <xref:Microsoft.Maui.Controls.Slider> contains an `x:Name` attribute that is referenced by the two `Label` views using the `x:Reference` markup extension. The `x:Reference` binding extension defines a property named `Name` to set to the name of the referenced element, in this case `slider`. However, the `ReferenceExtension` class that defines the `x:Reference` markup extension also defines a `ContentProperty` attribute for `Name`, which means that it isn’t explicitly required.
+The <xref:Microsoft.Maui.Controls.Slider> contains an `x:Name` attribute that is referenced by the two <xref:Microsoft.Maui.Controls.Label> views using the `x:Reference` markup extension. The `x:Reference` binding extension defines a property named `Name` to set to the name of the referenced element, in this case `slider`. However, the `ReferenceExtension` class that defines the `x:Reference` markup extension also defines a `ContentProperty` attribute for `Name`, which means that it isn’t explicitly required.
 
 The `Binding` markup extension itself can have several properties, just like the `BindingBase` and `Binding` class. The `ContentProperty` for `Binding` is `Path`, but the “Path=” part of the markup extension can be omitted if the path is the first item in the `Binding` markup extension.
 
@@ -148,13 +148,13 @@ The following example demonstrates one common use of the `OneWayToSource` and `T
 </ContentPage>
 ```
 
-In this example, four <xref:Microsoft.Maui.Controls.Slider> views are intended to control the `Scale`, `Rotate`, `RotateX`, and `RotateY` properties of a `Label`. At first, it seems as if these four properties of the `Label` should be data-binding targets because each is being set by a <xref:Microsoft.Maui.Controls.Slider>. However, the `BindingContext` of `Label` can be only one object, and there are four different sliders. For that reason, the `BindingContext` of each of the four sliders is set to the `Label`, and the bindings are set on the `Value` properties of the sliders. By using the `OneWayToSource` and `TwoWay` modes, these `Value` properties can set the source properties, which are the `Scale`, `Rotate`, `RotateX`, and `RotateY` properties of the `Label`.
+In this example, four <xref:Microsoft.Maui.Controls.Slider> views are intended to control the `Scale`, `Rotate`, `RotateX`, and `RotateY` properties of a <xref:Microsoft.Maui.Controls.Label>. At first, it seems as if these four properties of the <xref:Microsoft.Maui.Controls.Label> should be data-binding targets because each is being set by a <xref:Microsoft.Maui.Controls.Slider>. However, the `BindingContext` of <xref:Microsoft.Maui.Controls.Label> can be only one object, and there are four different sliders. For that reason, the `BindingContext` of each of the four sliders is set to the <xref:Microsoft.Maui.Controls.Label>, and the bindings are set on the `Value` properties of the sliders. By using the `OneWayToSource` and `TwoWay` modes, these `Value` properties can set the source properties, which are the `Scale`, `Rotate`, `RotateX`, and `RotateY` properties of the <xref:Microsoft.Maui.Controls.Label>.
 
-The bindings on three of the <xref:Microsoft.Maui.Controls.Slider> views are `OneWayToSource`, meaning that the <xref:Microsoft.Maui.Controls.Slider> value causes a change in the property of its `BindingContext`, which is the `Label` named `label`. These three <xref:Microsoft.Maui.Controls.Slider> views cause changes to the `Rotate`, `RotateX`, and `RotateY` properties of the `Label`:
+The bindings on three of the <xref:Microsoft.Maui.Controls.Slider> views are `OneWayToSource`, meaning that the <xref:Microsoft.Maui.Controls.Slider> value causes a change in the property of its `BindingContext`, which is the <xref:Microsoft.Maui.Controls.Label> named `label`. These three <xref:Microsoft.Maui.Controls.Slider> views cause changes to the `Rotate`, `RotateX`, and `RotateY` properties of the <xref:Microsoft.Maui.Controls.Label>:
 
 :::image type="content" source="media/data-binding-basics/slidertransforms.png" alt-text="Reverse bindings.":::
 
-However, the binding for the `Scale` property is `TwoWay`. This is because the `Scale` property has a default value of 1, and using a `TwoWay` binding causes the <xref:Microsoft.Maui.Controls.Slider> initial value to be set at 1 rather than 0. If that binding were `OneWayToSource`, the `Scale` property would initially be set to 0 from the <xref:Microsoft.Maui.Controls.Slider> default value. The `Label` would not be visible
+However, the binding for the `Scale` property is `TwoWay`. This is because the `Scale` property has a default value of 1, and using a `TwoWay` binding causes the <xref:Microsoft.Maui.Controls.Slider> initial value to be set at 1 rather than 0. If that binding were `OneWayToSource`, the `Scale` property would initially be set to 0 from the <xref:Microsoft.Maui.Controls.Slider> default value. The <xref:Microsoft.Maui.Controls.Label> would not be visible
 
 > [!NOTE]
 > The <xref:Microsoft.Maui.Controls.VisualElement> class also has `ScaleX` and `ScaleY` properties, which scale the <xref:Microsoft.Maui.Controls.VisualElement> on the x-axis and y-axis respectively.
@@ -267,7 +267,7 @@ To define a template for the items, the `ItemTemplate` should be set to a `DataT
 > [!NOTE]
 > The binding source for cells, and children of cells, is the `ListView.ItemsSource` collection.
 
-In this example, the `Label` element is set to the <xref:Microsoft.Maui.Controls.View> property of the <xref:Microsoft.Maui.Controls.ViewCell>. The `ViewCell.View` tags are not needed because the <xref:Microsoft.Maui.Controls.View> property is the content property of <xref:Microsoft.Maui.Controls.ViewCell>. This XAML displays the `FriendlyName` property of each `NamedColor` object:
+In this example, the <xref:Microsoft.Maui.Controls.Label> element is set to the <xref:Microsoft.Maui.Controls.View> property of the <xref:Microsoft.Maui.Controls.ViewCell>. The `ViewCell.View` tags are not needed because the <xref:Microsoft.Maui.Controls.View> property is the content property of <xref:Microsoft.Maui.Controls.ViewCell>. This XAML displays the `FriendlyName` property of each `NamedColor` object:
 
 :::image type="content" source="media/data-binding-basics/listview2.png" alt-text="Binding to a collection with a DataTemplate.":::
 

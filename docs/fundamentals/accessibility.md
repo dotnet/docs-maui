@@ -18,7 +18,7 @@ Screen readers typically provide auditory descriptions of controls that are disp
 
 Operating systems have their own screen readers with their own unique behavior and configuration. For example, most screen readers read the text associated with a control when it receives focus, enabling users to orient themselves as they navigate through the app. However, some screen readers can also read the entire app user interface when a page appears, which enables the user to receive all of the page's available informational content before attempting to navigate it.
 
-Most screen readers will automatically read any text associated with a control that receives accessibility focus. This means that controls, such as `Label` or `Button`, that have a `Text` property set will be accessible for the user. However, `Image`, <xref:Microsoft.Maui.Controls.ImageButton>, <xref:Microsoft.Maui.Controls.ActivityIndicator>, and others might not be in the accessibility tree because no text is associated with them.
+Most screen readers will automatically read any text associated with a control that receives accessibility focus. This means that controls, such as <xref:Microsoft.Maui.Controls.Label> or `Button`, that have a `Text` property set will be accessible for the user. However, `Image`, <xref:Microsoft.Maui.Controls.ImageButton>, <xref:Microsoft.Maui.Controls.ActivityIndicator>, and others might not be in the accessibility tree because no text is associated with them.
 
 .NET Multi-platform App UI (.NET MAUI) supports two approaches to providing access to the accessibility experience of the underlying platform. *Semantic properties* are the .NET MAUI approach to providing accessibility values in apps, and are the recommended approach. *Automation properties* are the Xamarin.Forms approach to providing accessibility values in apps, and have been superseded by semantic properties. In both cases, the default accessibility order of controls is the same order in which they're listed in XAML or added to the layout. However, different layouts might have additional factors that influence accessibility order. For example, the accessibility order of <xref:Microsoft.Maui.Controls.StackLayout> is also based on its orientation, and the accessibility order of <xref:Microsoft.Maui.Controls.Grid> is based on its row and column arrangement. For more information about content ordering, see [Meaningful Content Ordering](https://devblogs.microsoft.com/xamarin/the-journey-to-accessible-apps-meaningful-content-ordering/) on the Xamarin blog.
 
@@ -63,9 +63,9 @@ image.SetValue(SemanticProperties.DescriptionProperty, "Cute dot net bot waving 
 ```
 
 > [!WARNING]
-> Avoid setting the `SemanticProperties.Description` attached property on a `Label`. This will stop the `Text` property being spoken by the screen reader. This is because the visual text should ideally match the text read aloud by the screen reader.
+> Avoid setting the `SemanticProperties.Description` attached property on a <xref:Microsoft.Maui.Controls.Label>. This will stop the `Text` property being spoken by the screen reader. This is because the visual text should ideally match the text read aloud by the screen reader.
 
-The accessibility information for an element can also be defined on another element. For example, a `Label` next to an <xref:Microsoft.Maui.Controls.Entry> can be used to describe what the <xref:Microsoft.Maui.Controls.Entry> represents. This can be accomplished in XAML as follows:
+The accessibility information for an element can also be defined on another element. For example, a <xref:Microsoft.Maui.Controls.Label> next to an <xref:Microsoft.Maui.Controls.Entry> can be used to describe what the <xref:Microsoft.Maui.Controls.Entry> represents. This can be accomplished in XAML as follows:
 
 ```xaml
 <Label x:Name="label"
@@ -166,7 +166,7 @@ label1.SetValue(SemanticProperties.HeadingLevelProperty, SemanticHeadingLevel.Le
 
 ## Semantic focus
 
-Controls have a `SetSemanticFocus` extension method, defined in the `Microsoft.Maui` namespace, which forces screen reader focus to a specified element. For example, given a `Label` named `label`, screen reader focus can be forced to the element with the following code:
+Controls have a `SetSemanticFocus` extension method, defined in the `Microsoft.Maui` namespace, which forces screen reader focus to a specified element. For example, given a <xref:Microsoft.Maui.Controls.Label> named `label`, screen reader focus can be forced to the element with the following code:
 
 ```csharp
 label.SetSemanticFocus();
@@ -297,7 +297,7 @@ On some platforms, for edit controls such as an <xref:Microsoft.Maui.Controls.En
 > [!IMPORTANT]
 > The `AutomationProperties.LabeledBy` attached property has been superseded by bindings. For more information, see [SemanticProperties: Description](#description).
 
-The `AutomationProperties.LabeledBy` attached property allows another element to define accessibility information for the current element. For example, a `Label` next to an <xref:Microsoft.Maui.Controls.Entry> can be used to describe what the <xref:Microsoft.Maui.Controls.Entry> represents. This can be accomplished in XAML as follows:
+The `AutomationProperties.LabeledBy` attached property allows another element to define accessibility information for the current element. For example, a <xref:Microsoft.Maui.Controls.Label> next to an <xref:Microsoft.Maui.Controls.Entry> can be used to describe what the <xref:Microsoft.Maui.Controls.Entry> represents. This can be accomplished in XAML as follows:
 
 ```xaml
 <Label x:Name="label" Text="Enter your name: " />

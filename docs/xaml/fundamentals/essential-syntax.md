@@ -37,7 +37,7 @@ However, there is an alternative way to set a property in XAML:
 
 These two examples that specify the `TextColor` property are functionally equivalent, and enable the introduction of some basic terminology:
 
-- `Label` is an  *object element*. It is a .NET MAUI object expressed as an XML element.
+- <xref:Microsoft.Maui.Controls.Label> is an  *object element*. It is a .NET MAUI object expressed as an XML element.
 - `Text`,  `VerticalOptions`, `FontAttributes` and  `FontSize` are  *property attributes*. They are .NET MAUI properties expressed as XML attributes.
 - In the second example, `TextColor` has become a  *property element*. It is a .NET MAUI property expressed as an XML element.
 
@@ -185,7 +185,7 @@ public class ContentPage : TemplatedPage
 
 Any property specified as the `ContentProperty` of a class means that the property-element tags for the property are not required. Therefore, the example above specifies that any XAML content that appears between the start and end <xref:Microsoft.Maui.Controls.ContentPage> tags is assigned to the `Content` property.
 
-Many classes also have `ContentProperty` attribute definitions. For example, the content property of `Label` is `Text`. <!--For more information, see the [API documentation]().-->
+Many classes also have `ContentProperty` attribute definitions. For example, the content property of <xref:Microsoft.Maui.Controls.Label> is `Text`. <!--For more information, see the [API documentation]().-->
 
 ## Platform differences
 

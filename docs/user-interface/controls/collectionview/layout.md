@@ -356,7 +356,7 @@ This code results in the following screenshots, with the header shown in the iOS
 
 ### Display views in the header and footer
 
-The `Header` and `Footer` properties can each be set to a view. This can be a single view, or a view that contains multiple child views. The following example shows the `Header` and `Footer` properties each set to a <xref:Microsoft.Maui.Controls.StackLayout> object that contains a `Label` object:
+The `Header` and `Footer` properties can each be set to a view. This can be a single view, or a view that contains multiple child views. The following example shows the `Header` and `Footer` properties each set to a <xref:Microsoft.Maui.Controls.StackLayout> object that contains a <xref:Microsoft.Maui.Controls.Label> object:
 
 ```xaml
 <CollectionView ItemsSource="{Binding Monkeys}">

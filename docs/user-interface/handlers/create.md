@@ -2844,7 +2844,7 @@ The following example shows a custom positioning bar, `PositionSlider`, being co
 </ContentPage>
 ```
 
-The `Position` property of the `Video` object is bound to the `Position` property of the `PositionSlider`, without performance issues, because the `Video.Position` property is changed by the `MauiVideoPlayer.UpdateStatus` method on each platform, which is only called 10 times a second. In addition, two `Label` objects display the `Position` and `TimeToEnd` properties values from the `Video` object.
+The `Position` property of the `Video` object is bound to the `Position` property of the `PositionSlider`, without performance issues, because the `Video.Position` property is changed by the `MauiVideoPlayer.UpdateStatus` method on each platform, which is only called 10 times a second. In addition, two <xref:Microsoft.Maui.Controls.Label> objects display the `Position` and `TimeToEnd` properties values from the `Video` object.
 
 ### Native view cleanup
 

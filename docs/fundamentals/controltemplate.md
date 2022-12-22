@@ -108,7 +108,7 @@ The following XAML example shows a `ControlTemplate` for `CardView` objects:
 </ContentPage>
 ```
 
-When a `ControlTemplate` is declared as a resource, it must have a key specified with the `x:Key` attribute so that it can be identified in the resource dictionary. In this example, the root element of the `CardViewControlTemplate` is a <xref:Microsoft.Maui.Controls.Frame> object. The <xref:Microsoft.Maui.Controls.Frame> object uses the `RelativeSource` markup extension to set its `BindingContext` to the runtime object instance to which the template will be applied, which is known as the *templated parent*. The <xref:Microsoft.Maui.Controls.Frame> object uses a combination of <xref:Microsoft.Maui.Controls.Grid>, <xref:Microsoft.Maui.Controls.Frame>, `Image`, `Label`, and <xref:Microsoft.Maui.Controls.BoxView> objects to define the visual structure of a `CardView` object. The binding expressions of these objects resolve against `CardView` properties, due to inheriting the `BindingContext` from the root <xref:Microsoft.Maui.Controls.Frame> element. For more information about the `RelativeSource` markup extension, see [Relative bindings](~/fundamentals/data-binding/relative-bindings.md).
+When a `ControlTemplate` is declared as a resource, it must have a key specified with the `x:Key` attribute so that it can be identified in the resource dictionary. In this example, the root element of the `CardViewControlTemplate` is a <xref:Microsoft.Maui.Controls.Frame> object. The <xref:Microsoft.Maui.Controls.Frame> object uses the `RelativeSource` markup extension to set its `BindingContext` to the runtime object instance to which the template will be applied, which is known as the *templated parent*. The <xref:Microsoft.Maui.Controls.Frame> object uses a combination of <xref:Microsoft.Maui.Controls.Grid>, <xref:Microsoft.Maui.Controls.Frame>, `Image`, <xref:Microsoft.Maui.Controls.Label>, and <xref:Microsoft.Maui.Controls.BoxView> objects to define the visual structure of a `CardView` object. The binding expressions of these objects resolve against `CardView` properties, due to inheriting the `BindingContext` from the root <xref:Microsoft.Maui.Controls.Frame> element. For more information about the `RelativeSource` markup extension, see [Relative bindings](~/fundamentals/data-binding/relative-bindings.md).
 
 ## Consume a ControlTemplate
 
@@ -495,7 +495,7 @@ The following XAML shows a control template named `TealTemplate` that can be app
 </ControlTemplate>
 ```
 
-In this example, the `Label` element is named, and can be retrieved in the code for the templated page. This is achieved by calling the `GetTemplateChild` method from the `OnApplyTemplate` override for the templated page:
+In this example, the <xref:Microsoft.Maui.Controls.Label> element is named, and can be retrieved in the code for the templated page. This is achieved by calling the `GetTemplateChild` method from the `OnApplyTemplate` override for the templated page:
 
 ```csharp
 public partial class AccessTemplateElementPage : HeaderFooterPage
@@ -516,7 +516,7 @@ public partial class AccessTemplateElementPage : HeaderFooterPage
 }
 ```
 
-In this example, the `Label` object named `changeThemeLabel` is retrieved once the `ControlTemplate` has been instantiated. `changeThemeLabel` can then be accessed and manipulated by the `AccessTemplateElementPage` class. The following screenshot shows that the text displayed by the `Label` has been changed:
+In this example, the <xref:Microsoft.Maui.Controls.Label> object named `changeThemeLabel` is retrieved once the `ControlTemplate` has been instantiated. `changeThemeLabel` can then be accessed and manipulated by the `AccessTemplateElementPage` class. The following screenshot shows that the text displayed by the <xref:Microsoft.Maui.Controls.Label> has been changed:
 
 :::image type="content" source="media/controltemplate/get-named-element.png" alt-text="Screenshot of templated page object that's changed.":::
 

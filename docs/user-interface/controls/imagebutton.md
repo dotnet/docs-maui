@@ -76,7 +76,7 @@ public partial class ImageButtonDemoPage : ContentPage
 }
 ```
 
-In this example, when the <xref:Microsoft.Maui.Controls.ImageButton> is tapped, the `OnImageButtonClicked` method executes. The `sender` argument is the <xref:Microsoft.Maui.Controls.ImageButton> responsible for this event. You can use this to access the <xref:Microsoft.Maui.Controls.ImageButton> object, or to distinguish between multiple <xref:Microsoft.Maui.Controls.ImageButton> objects sharing the same `Clicked` event. The `Clicked` handler increments a counter and displays the counter value in a `Label`:
+In this example, when the <xref:Microsoft.Maui.Controls.ImageButton> is tapped, the `OnImageButtonClicked` method executes. The `sender` argument is the <xref:Microsoft.Maui.Controls.ImageButton> responsible for this event. You can use this to access the <xref:Microsoft.Maui.Controls.ImageButton> object, or to distinguish between multiple <xref:Microsoft.Maui.Controls.ImageButton> objects sharing the same `Clicked` event. The `Clicked` handler increments a counter and displays the counter value in a <xref:Microsoft.Maui.Controls.Label>:
 
 :::image type="content" source="media/imagebutton/imagebutton.png" alt-text="Screenshot of an ImageButton.":::
 

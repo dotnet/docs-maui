@@ -50,7 +50,7 @@ The following XAML shows how to create a <xref:Microsoft.Maui.Controls.VerticalS
 </ContentPage>
 ```
 
-This example creates a <xref:Microsoft.Maui.Controls.VerticalStackLayout> containing `Label` and <xref:Microsoft.Maui.Controls.Shapes.Rectangle> objects. By default, there is no space between the child views:
+This example creates a <xref:Microsoft.Maui.Controls.VerticalStackLayout> containing <xref:Microsoft.Maui.Controls.Label> and <xref:Microsoft.Maui.Controls.Shapes.Rectangle> objects. By default, there is no space between the child views:
 
 :::image type="content" source="media/verticalstacklayout/basic.png" alt-text="VerticalStackLayout displaying different child views screenshot.":::
 
@@ -91,7 +91,7 @@ The spacing between child views in a <xref:Microsoft.Maui.Controls.VerticalStack
 </ContentPage>
 ```
 
-This example creates a <xref:Microsoft.Maui.Controls.VerticalStackLayout> containing `Label` and <xref:Microsoft.Maui.Controls.Shapes.Rectangle> objects that have ten device-independent units of space between the child views:
+This example creates a <xref:Microsoft.Maui.Controls.VerticalStackLayout> containing <xref:Microsoft.Maui.Controls.Label> and <xref:Microsoft.Maui.Controls.Shapes.Rectangle> objects that have ten device-independent units of space between the child views:
 
 :::image type="content" source="media/verticalstacklayout/spacing.png" alt-text="VerticalStackLayout displaying different child views with spacing screenshot.":::
 
@@ -131,16 +131,16 @@ The following XAML example sets alignment preferences on each child view in the 
 </ContentPage>
 ```
 
-In this example, alignment preferences are set on the `Label` objects to control their position within the <xref:Microsoft.Maui.Controls.VerticalStackLayout>. The `Start`, `Center`, `End`, and `Fill` fields are used to define the alignment of the `Label` objects within the parent <xref:Microsoft.Maui.Controls.VerticalStackLayout>:
+In this example, alignment preferences are set on the <xref:Microsoft.Maui.Controls.Label> objects to control their position within the <xref:Microsoft.Maui.Controls.VerticalStackLayout>. The `Start`, `Center`, `End`, and `Fill` fields are used to define the alignment of the <xref:Microsoft.Maui.Controls.Label> objects within the parent <xref:Microsoft.Maui.Controls.VerticalStackLayout>:
 
 :::image type="content" source="media/verticalstacklayout/alignment.png" alt-text="VerticalStackLayout displaying aligned child views screenshot.":::
 
-A <xref:Microsoft.Maui.Controls.VerticalStackLayout> only respects the alignment preferences on child views that are in the opposite direction to the orientation of the layout. Therefore, the `Label` child views within the <xref:Microsoft.Maui.Controls.VerticalStackLayout> set their `HorizontalOptions` properties to one of the alignment fields:
+A <xref:Microsoft.Maui.Controls.VerticalStackLayout> only respects the alignment preferences on child views that are in the opposite direction to the orientation of the layout. Therefore, the <xref:Microsoft.Maui.Controls.Label> child views within the <xref:Microsoft.Maui.Controls.VerticalStackLayout> set their `HorizontalOptions` properties to one of the alignment fields:
 
-- `Start`, which positions the `Label` on the left-hand side of the <xref:Microsoft.Maui.Controls.VerticalStackLayout>.
-- `Center`, which centers the `Label` in the <xref:Microsoft.Maui.Controls.VerticalStackLayout>.
-- `End`, which positions the `Label` on the right-hand side of the <xref:Microsoft.Maui.Controls.VerticalStackLayout>.
-- `Fill`, which ensures that the `Label` fills the width of the <xref:Microsoft.Maui.Controls.VerticalStackLayout>.
+- `Start`, which positions the <xref:Microsoft.Maui.Controls.Label> on the left-hand side of the <xref:Microsoft.Maui.Controls.VerticalStackLayout>.
+- `Center`, which centers the <xref:Microsoft.Maui.Controls.Label> in the <xref:Microsoft.Maui.Controls.VerticalStackLayout>.
+- `End`, which positions the <xref:Microsoft.Maui.Controls.Label> on the right-hand side of the <xref:Microsoft.Maui.Controls.VerticalStackLayout>.
+- `Fill`, which ensures that the <xref:Microsoft.Maui.Controls.Label> fills the width of the <xref:Microsoft.Maui.Controls.VerticalStackLayout>.
 
 <!--
 For more information about alignment, see [Layout Options in .NET MAUI](layout-options.md).

@@ -192,7 +192,7 @@ The appearance of each group header can be customized by setting the `Collection
 </CollectionView>
 ```
 
-In this example, each group header is set to a `Label` that displays the group name, and that has other appearance properties set. The following screenshot shows the customized group header:
+In this example, each group header is set to a <xref:Microsoft.Maui.Controls.Label> that displays the group name, and that has other appearance properties set. The following screenshot shows the customized group header:
 
 :::image type="content" source="media/grouping/customized-header.png" alt-text="Screenshot of a customized group header in a CollectionView.":::
 
@@ -213,7 +213,7 @@ The appearance of each group footer can be customized by setting the `Collection
 </CollectionView>
 ```
 
-In this example, each group footer is set to a `Label` that displays the number of items in the group. The following screenshot shows the customized group footer:
+In this example, each group footer is set to a <xref:Microsoft.Maui.Controls.Label> that displays the number of items in the group. The following screenshot shows the customized group footer:
 
 :::image type="content" source="media/grouping/customized-footer.png" alt-text="Screenshot of customized group footer in a CollectionView.":::
 

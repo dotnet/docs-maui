@@ -498,7 +498,7 @@ When a `Pin` object is added to the `Map.Pins` collection, the pin is rendered o
 The `Pin` class has the following properties:
 
 - `Address`, of type `string`, which typically represents the address for the pin location. However, it can be any `string` content, not just an address.
-- `Label`, of type `string`, which typically represents the pin title.
+- <xref:Microsoft.Maui.Controls.Label>, of type `string`, which typically represents the pin title.
 - `Location`, of type `Location`, which represents the latitude and longitude of the pin.
 - `Type`, of type `PinType`, which represents the type of pin.
 

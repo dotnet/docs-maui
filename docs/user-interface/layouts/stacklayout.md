@@ -50,7 +50,7 @@ The following XAML shows how to create a vertically oriented <xref:Microsoft.Mau
 </ContentPage>
 ```
 
-This example creates a vertical <xref:Microsoft.Maui.Controls.StackLayout> containing `Label` and <xref:Microsoft.Maui.Controls.BoxView> objects. By default, there's no space between the child views:
+This example creates a vertical <xref:Microsoft.Maui.Controls.StackLayout> containing <xref:Microsoft.Maui.Controls.Label> and <xref:Microsoft.Maui.Controls.BoxView> objects. By default, there's no space between the child views:
 
 :::image type="content" source="media/stacklayout/vertical.png" alt-text="Vertically oriented .NET MAUI StackLayout.":::
 
@@ -171,7 +171,7 @@ The spacing between child views in a <xref:Microsoft.Maui.Controls.StackLayout> 
 </ContentPage>
 ```
 
-This example creates a vertical <xref:Microsoft.Maui.Controls.StackLayout> containing `Label` and <xref:Microsoft.Maui.Controls.BoxView> objects that have six device-independent units of vertical space between them:
+This example creates a vertical <xref:Microsoft.Maui.Controls.StackLayout> containing <xref:Microsoft.Maui.Controls.Label> and <xref:Microsoft.Maui.Controls.BoxView> objects that have six device-independent units of vertical space between them:
 
 :::image type="content" source="media/stacklayout/spacing.png" alt-text="Vertically oriented .NET MAUI StackLayout with spacing between child views.":::
 
@@ -238,16 +238,16 @@ The following XAML example sets alignment preferences on each child view in the 
 </ContentPage>
 ```
 
-In this example, alignment preferences are set on the `Label` objects to control their position within the <xref:Microsoft.Maui.Controls.StackLayout>. The `Start`, `Center`, `End`, and `Fill` fields are used to define the alignment of the `Label` objects within the parent <xref:Microsoft.Maui.Controls.StackLayout>:
+In this example, alignment preferences are set on the <xref:Microsoft.Maui.Controls.Label> objects to control their position within the <xref:Microsoft.Maui.Controls.StackLayout>. The `Start`, `Center`, `End`, and `Fill` fields are used to define the alignment of the <xref:Microsoft.Maui.Controls.Label> objects within the parent <xref:Microsoft.Maui.Controls.StackLayout>:
 
 :::image type="content" source="media/stacklayout/alignment.png" alt-text=".NET MAUI StackLayout with alignment options specified.":::
 
-A <xref:Microsoft.Maui.Controls.StackLayout> only respects the alignment preferences on child views that are in the opposite direction to the <xref:Microsoft.Maui.Controls.StackLayout> orientation. Therefore, the `Label` child views within the vertically oriented <xref:Microsoft.Maui.Controls.StackLayout> set their `HorizontalOptions` properties to one of the alignment fields:
+A <xref:Microsoft.Maui.Controls.StackLayout> only respects the alignment preferences on child views that are in the opposite direction to the <xref:Microsoft.Maui.Controls.StackLayout> orientation. Therefore, the <xref:Microsoft.Maui.Controls.Label> child views within the vertically oriented <xref:Microsoft.Maui.Controls.StackLayout> set their `HorizontalOptions` properties to one of the alignment fields:
 
-- `Start`, which positions the `Label` on the left-hand side of the <xref:Microsoft.Maui.Controls.StackLayout>.
-- `Center`, which centers the `Label` in the <xref:Microsoft.Maui.Controls.StackLayout>.
-- `End`, which positions the `Label` on the right-hand side of the <xref:Microsoft.Maui.Controls.StackLayout>.
-- `Fill`, which ensures that the `Label` fills the width of the <xref:Microsoft.Maui.Controls.StackLayout>.
+- `Start`, which positions the <xref:Microsoft.Maui.Controls.Label> on the left-hand side of the <xref:Microsoft.Maui.Controls.StackLayout>.
+- `Center`, which centers the <xref:Microsoft.Maui.Controls.Label> in the <xref:Microsoft.Maui.Controls.StackLayout>.
+- `End`, which positions the <xref:Microsoft.Maui.Controls.Label> on the right-hand side of the <xref:Microsoft.Maui.Controls.StackLayout>.
+- `Fill`, which ensures that the <xref:Microsoft.Maui.Controls.Label> fills the width of the <xref:Microsoft.Maui.Controls.StackLayout>.
 
 The equivalent C# code is:
 

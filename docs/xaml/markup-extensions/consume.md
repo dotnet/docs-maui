@@ -106,7 +106,7 @@ The `StaticExtension` class has a `ContentProperty` attribute referencing the pr
 
 This is the most common form of the `x:Static` markup extension.
 
-The root tag of the XAML example also contains an XML namespace declaration for the .NET `System` namespace. This allows the `Label` font size to be set to the static field `Math.PI`. That results in rather small text, so the `Scale` property is set to `Math.E`:
+The root tag of the XAML example also contains an XML namespace declaration for the .NET `System` namespace. This allows the <xref:Microsoft.Maui.Controls.Label> font size to be set to the static field `Math.PI`. That results in rather small text, so the `Scale` property is set to `Math.E`:
 
 ```xaml
 <Label Text="&#x03C0; &#x00D7; E sized text"
@@ -303,7 +303,7 @@ The following XAML example shows how to use the `x:Null` markup extension:
 </ContentPage>      
 ```
 
-In this example, an implicit `Style` is defined for `Label` that includes a `Setter` that sets the `FontFamily` property to a specific font. However, the third `Label` avoids using the font defined in the implicit style by setting its `FontFamily` to `x:Null`:
+In this example, an implicit `Style` is defined for <xref:Microsoft.Maui.Controls.Label> that includes a `Setter` that sets the `FontFamily` property to a specific font. However, the third <xref:Microsoft.Maui.Controls.Label> avoids using the font defined in the implicit style by setting its `FontFamily` to `x:Null`:
 
 :::image type="content" source="media/consume/nulldemo.png" alt-text="x:Null demo.":::
 
@@ -466,6 +466,6 @@ The following XAML example shows how to use the `AppThemeBinding` markup extensi
 </ContentPage>
 ```
 
-In this example, the text color of the first `Label` is set to green when the device is using its light theme, and is set to red when the device is using its dark theme. The second `Label` has its `TextColor` property set through a `Style`. This `Style` sets the text color of the `Label` to black by default, to blue when the device is using its light theme, and to teal when the device is using its dark theme:
+In this example, the text color of the first <xref:Microsoft.Maui.Controls.Label> is set to green when the device is using its light theme, and is set to red when the device is using its dark theme. The second <xref:Microsoft.Maui.Controls.Label> has its `TextColor` property set through a `Style`. This `Style` sets the text color of the <xref:Microsoft.Maui.Controls.Label> to black by default, to blue when the device is using its light theme, and to teal when the device is using its dark theme:
 
 :::image type="content" source="media/consume/appthemebindingdemo.png" alt-text="AppThemeBinding demo.":::

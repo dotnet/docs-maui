@@ -168,7 +168,7 @@ The `Setter` type has a `TargetName` property, of type `string`, that represents
         Value="Red" />
 ```
 
-In this example, a `Label` named `label` will have its `TextColor` property set to `Red`. When setting the `TargetName` property you must specify the full path to the property in `Property`. Therefore, to set the `TextColor` property on a `Label`, `Property` is specified as `Label.TextColor`.
+In this example, a <xref:Microsoft.Maui.Controls.Label> named `label` will have its `TextColor` property set to `Red`. When setting the `TargetName` property you must specify the full path to the property in `Property`. Therefore, to set the `TextColor` property on a <xref:Microsoft.Maui.Controls.Label>, `Property` is specified as `Label.TextColor`.
 
 > [!NOTE]
 > Any property referenced by a `Setter` object must be backed by a bindable property.
@@ -264,7 +264,7 @@ The following example shows how to use the Visual State Manager for input valida
 </ContentPage>
 ```
 
-In this example, visual states are attached to the <xref:Microsoft.Maui.Controls.StackLayout>, and there are two mutually-exclusive states named `Valid` and `Invalid`. If the <xref:Microsoft.Maui.Controls.Entry> does not contain a valid phone number, then the current state is `Invalid`, and so the <xref:Microsoft.Maui.Controls.Entry> has a pink background, the second `Label` is visible, and the `Button` is disabled. When a valid phone number is entered, then the current state becomes `Valid`. The <xref:Microsoft.Maui.Controls.Entry> gets a lime background, the second `Label` disappears, and the `Button` is now enabled:
+In this example, visual states are attached to the <xref:Microsoft.Maui.Controls.StackLayout>, and there are two mutually-exclusive states named `Valid` and `Invalid`. If the <xref:Microsoft.Maui.Controls.Entry> does not contain a valid phone number, then the current state is `Invalid`, and so the <xref:Microsoft.Maui.Controls.Entry> has a pink background, the second <xref:Microsoft.Maui.Controls.Label> is visible, and the `Button` is disabled. When a valid phone number is entered, then the current state becomes `Valid`. The <xref:Microsoft.Maui.Controls.Entry> gets a lime background, the second <xref:Microsoft.Maui.Controls.Label> disappears, and the `Button` is now enabled:
 
 :::image type="content" source="media/visualstates/validation.png" alt-text="Screenshot of the visual state validation example.":::
 

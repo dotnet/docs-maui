@@ -6,7 +6,7 @@ ms.date: 03/01/2022
 
 # Style apps using XAML
 
-.NET Multi-platform App UI (.NET MAUI) apps often contain multiple controls that have an identical appearance. For example, an app may have multiple `Label` instances that have the same font options and layout options:
+.NET Multi-platform App UI (.NET MAUI) apps often contain multiple controls that have an identical appearance. For example, an app may have multiple <xref:Microsoft.Maui.Controls.Label> instances that have the same font options and layout options:
 
 ```xaml
 <Label Text="These labels"
@@ -23,7 +23,7 @@ ms.date: 03/01/2022
        FontSize="18" />
 ```
 
-In this example, each `Label` object has identical property values for controlling the appearance of the text displayed by the `Label`. However, setting the appearance of each individual control can be repetitive and error prone. Instead, a style can be created that defines the appearance, and then applied to the required controls.
+In this example, each <xref:Microsoft.Maui.Controls.Label> object has identical property values for controlling the appearance of the text displayed by the <xref:Microsoft.Maui.Controls.Label>. However, setting the appearance of each individual control can be repetitive and error prone. Instead, a style can be created that defines the appearance, and then applied to the required controls.
 
 ## Introduction to styles
 
@@ -71,7 +71,7 @@ Styles do not respond to property changes, and remain unchanged for the duration
 
 To create a `Style` at the page-level, a `ResourceDictionary` must be added to the page and then one or more `Style` declarations can be included in the `ResourceDictionary`. A `Style` is made *explicit* by giving its declaration an `x:Key` attribute, which gives it a descriptive key in the `ResourceDictionary`. *Explicit* styles must then be applied to specific visual elements by setting their `Style` properties.
 
-The following example shows *explicit* styles in a page's `ResourceDictionary`, and applied to the page's `Label` objects:
+The following example shows *explicit* styles in a page's `ResourceDictionary`, and applied to the page's <xref:Microsoft.Maui.Controls.Label> objects:
 
 ```xaml
 <ContentPage ...>
@@ -112,7 +112,7 @@ The following example shows *explicit* styles in a page's `ResourceDictionary`, 
 </ContentPage>
 ```
 
-In this example, the `ResourceDictionary` defines three styles that are explicitly set on the page's `Label` objects. Each `Style` is used to display text in a different color, while also setting the font size, and horizontal and vertical layout options. Each `Style` is applied to a different `Label` by setting its `Style` properties using the `StaticResource` markup extension. In addition, while the final `Label` has a `Style` set on it, it also overrides the `TextColor` property to a different `Color` value.
+In this example, the `ResourceDictionary` defines three styles that are explicitly set on the page's <xref:Microsoft.Maui.Controls.Label> objects. Each `Style` is used to display text in a different color, while also setting the font size, and horizontal and vertical layout options. Each `Style` is applied to a different <xref:Microsoft.Maui.Controls.Label> by setting its `Style` properties using the `StaticResource` markup extension. In addition, while the final <xref:Microsoft.Maui.Controls.Label> has a `Style` set on it, it also overrides the `TextColor` property to a different `Color` value.
 
 ## Implicit styles
 
@@ -218,7 +218,7 @@ The following example shows a page consuming the `buttonStyle` on the page's `Bu
 
 Styles can inherit from other styles to reduce duplication and enable reuse. This is achieved by setting the `Style.BasedOn` property to an existing `Style`. In XAML, this can be achieved by setting the `BasedOn` property to a `StaticResource` markup extension that references a previously created `Style`.
 
-Styles that inherit from a base style can include `Setter` instances for new properties, or use them to override setters from the base style. In addition, styles that inherit from a base style must target the same type, or a type that derives from the type targeted by the base style. For example, if a base style targets <xref:Microsoft.Maui.Controls.View> objects, styles that are based on the base style can target <xref:Microsoft.Maui.Controls.View> objects or types that derive from the <xref:Microsoft.Maui.Controls.View> class, such as `Label` and `Button` objects.
+Styles that inherit from a base style can include `Setter` instances for new properties, or use them to override setters from the base style. In addition, styles that inherit from a base style must target the same type, or a type that derives from the type targeted by the base style. For example, if a base style targets <xref:Microsoft.Maui.Controls.View> objects, styles that are based on the base style can target <xref:Microsoft.Maui.Controls.View> objects or types that derive from the <xref:Microsoft.Maui.Controls.View> class, such as <xref:Microsoft.Maui.Controls.Label> and `Button` objects.
 
 A style can only inherit from styles at the same level, or above, in the view hierarchy. This means that:
 
@@ -264,7 +264,7 @@ The following example shows *explicit* style inheritance:
 </ContentPage>
 ```
 
-In this example, the `baseStyle` targets <xref:Microsoft.Maui.Controls.View> objects, and sets the `HorizontalOptions` and `VerticalOptions` properties. The `baseStyle` is not set directly on any controls. Instead, `labelStyle` and `buttonStyle` inherit from it, setting additional bindable property values. The `labelStyle` and `buttonStyle` objects are then set on a `Label` and `Button`.
+In this example, the `baseStyle` targets <xref:Microsoft.Maui.Controls.View> objects, and sets the `HorizontalOptions` and `VerticalOptions` properties. The `baseStyle` is not set directly on any controls. Instead, `labelStyle` and `buttonStyle` inherit from it, setting additional bindable property values. The `labelStyle` and `buttonStyle` objects are then set on a <xref:Microsoft.Maui.Controls.Label> and `Button`.
 
 > [!IMPORTANT]
 > An implicit style can be derived from an explicit style, but an explicit style can't be derived from an implicit style.

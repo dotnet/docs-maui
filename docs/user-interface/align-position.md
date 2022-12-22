@@ -31,7 +31,7 @@ A <xref:Microsoft.Maui.Controls.StackLayout> does not respect the `Start`, `Cent
 > [!IMPORTANT]
 > `LayoutOptions.Fill` generally overrides size requests specified using the  `HeightRequest` and `WidthRequest` properties.
 
-The following XAML example demonstrates a vertically oriented <xref:Microsoft.Maui.Controls.StackLayout> where each child `Label` sets its `HorizontalOptions` property to one of the four alignment fields from the `LayoutOptions` structure:
+The following XAML example demonstrates a vertically oriented <xref:Microsoft.Maui.Controls.StackLayout> where each child <xref:Microsoft.Maui.Controls.Label> sets its `HorizontalOptions` property to one of the four alignment fields from the `LayoutOptions` structure:
 
 ```xaml
 <StackLayout>
@@ -43,7 +43,7 @@ The following XAML example demonstrates a vertically oriented <xref:Microsoft.Ma
 </StackLayout>
 ```
 
-The following screenshot shows the resulting alignment of each `Label`:
+The following screenshot shows the resulting alignment of each <xref:Microsoft.Maui.Controls.Label>:
 
 :::image type="content" source="media/align-position/alignment.png" alt-text="Screenshot of alignment layout options.":::
 

@@ -40,7 +40,7 @@ For more information about the properties that control the shape and stroke of t
 
 To draw a border, create a <xref:Microsoft.Maui.Controls.Border> object and set its properties to define its appearance. Then, set its child to the control to which the border should be added.
 
-The following XAML example shows how to draw a border around a `Label`:
+The following XAML example shows how to draw a border around a <xref:Microsoft.Maui.Controls.Label>:
 
 ```xaml
 <Border Stroke="#C49B33"
@@ -102,7 +102,7 @@ Border border = new Border
 };
 ```
 
-In this example, a border with rounded top-left and bottom-right corners is drawn around a `Label`. The border shape is defined as a <xref:Microsoft.Maui.Controls.Shapes.RoundRectangle> object, whose `CornerRadius` property is set to a `Thickness` value that enables independent control of each corner of the rectangle:
+In this example, a border with rounded top-left and bottom-right corners is drawn around a <xref:Microsoft.Maui.Controls.Label>. The border shape is defined as a <xref:Microsoft.Maui.Controls.Shapes.RoundRectangle> object, whose `CornerRadius` property is set to a `Thickness` value that enables independent control of each corner of the rectangle:
 
 :::image type="content" source="media/border/border.png" alt-text="Border around a Label screenshot.":::
 
@@ -165,7 +165,7 @@ Border gradientBorder = new Border
 };
 ```
 
-In this example, a border that uses a linear gradient is drawn around a `Label`:
+In this example, a border that uses a linear gradient is drawn around a <xref:Microsoft.Maui.Controls.Label>:
 
 :::image type="content" source="media/border/linear-gradient-border.png" alt-text="Linear gradient border around a Label screenshot.":::
 

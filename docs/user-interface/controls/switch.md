@@ -106,7 +106,7 @@ The `Toggled` event handler can be eliminated by using data binding and triggers
 </Label>
 ```
 
-In this example, the `Label` uses a binding expression in a `DataTrigger` to monitor the `IsToggled` property of the <xref:Microsoft.Maui.Controls.Switch> named `styleSwitch`. When this property becomes `true`, the `FontAttributes` and `FontSize` properties of the `Label` are changed. When the `IsToggled` property returns to `false`, the `FontAttributes` and `FontSize` properties of the `Label` are reset to their initial state.
+In this example, the <xref:Microsoft.Maui.Controls.Label> uses a binding expression in a `DataTrigger` to monitor the `IsToggled` property of the <xref:Microsoft.Maui.Controls.Switch> named `styleSwitch`. When this property becomes `true`, the `FontAttributes` and `FontSize` properties of the <xref:Microsoft.Maui.Controls.Label> are changed. When the `IsToggled` property returns to `false`, the `FontAttributes` and `FontSize` properties of the <xref:Microsoft.Maui.Controls.Label> are reset to their initial state.
 
 For information about triggers, see [Triggers](~/fundamentals/triggers.md).
 

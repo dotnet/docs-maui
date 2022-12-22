@@ -44,7 +44,7 @@ By default, a <xref:Microsoft.Maui.Controls.Grid> contains one row and one colum
 </ContentPage>
 ```
 
-In this example, the <xref:Microsoft.Maui.Controls.Grid> contains a single child `Label` that's automatically positioned in a single location:
+In this example, the <xref:Microsoft.Maui.Controls.Grid> contains a single child <xref:Microsoft.Maui.Controls.Label> that's automatically positioned in a single location:
 
 :::image type="content" source="media/grid/default.png" alt-text="Default .NET MAUI Grid layout.":::
 
@@ -148,11 +148,11 @@ The following XAML shows the same <xref:Microsoft.Maui.Controls.Grid> definition
 > [!NOTE]
 > The `Grid.Row` and `Grid.Column` properties are both indexed from 0, and so `Grid.Row="2"` refers to the third row while `Grid.Column="1"` refers to the second column. In addition, both of these properties have a default value of 0, and so don't need to be set on child views that occupy the first row or first column of a <xref:Microsoft.Maui.Controls.Grid>.
 
-In this example, all three <xref:Microsoft.Maui.Controls.Grid> rows are occupied by <xref:Microsoft.Maui.Controls.BoxView> and `Label` views. The third row is 100 device-independent units high, with the first two rows occupying the remaining space (the first row is twice as high as the second row). The two columns are equal in width and divide the <xref:Microsoft.Maui.Controls.Grid> in half. The <xref:Microsoft.Maui.Controls.BoxView> in the third row spans both columns:
+In this example, all three <xref:Microsoft.Maui.Controls.Grid> rows are occupied by <xref:Microsoft.Maui.Controls.BoxView> and <xref:Microsoft.Maui.Controls.Label> views. The third row is 100 device-independent units high, with the first two rows occupying the remaining space (the first row is twice as high as the second row). The two columns are equal in width and divide the <xref:Microsoft.Maui.Controls.Grid> in half. The <xref:Microsoft.Maui.Controls.BoxView> in the third row spans both columns:
 
 :::image type="content" source="media/grid/basic.png" alt-text="Basic .NET MAUI Grid layout.":::
 
-In addition, child views in a <xref:Microsoft.Maui.Controls.Grid> can share cells. The order that the children appear in the XAML is the order that the children are placed in the <xref:Microsoft.Maui.Controls.Grid>. In the previous example, the `Label` objects are only visible because they are rendered on top of the <xref:Microsoft.Maui.Controls.BoxView> objects. The `Label` objects would not be visible if the <xref:Microsoft.Maui.Controls.BoxView> objects were rendered on top of them.
+In addition, child views in a <xref:Microsoft.Maui.Controls.Grid> can share cells. The order that the children appear in the XAML is the order that the children are placed in the <xref:Microsoft.Maui.Controls.Grid>. In the previous example, the <xref:Microsoft.Maui.Controls.Label> objects are only visible because they are rendered on top of the <xref:Microsoft.Maui.Controls.BoxView> objects. The <xref:Microsoft.Maui.Controls.Label> objects would not be visible if the <xref:Microsoft.Maui.Controls.BoxView> objects were rendered on top of them.
 
 The equivalent C# code is:
 
@@ -323,7 +323,7 @@ Child views in a <xref:Microsoft.Maui.Controls.Grid> can be positioned within th
 - `End`
 - `Fill`
 
-The following XAML creates a <xref:Microsoft.Maui.Controls.Grid> with nine equal-size cells, and places a `Label` in each cell with a different alignment:
+The following XAML creates a <xref:Microsoft.Maui.Controls.Grid> with nine equal-size cells, and places a <xref:Microsoft.Maui.Controls.Label> in each cell with a different alignment:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -406,7 +406,7 @@ The following XAML creates a <xref:Microsoft.Maui.Controls.Grid> with nine equal
 </ContentPage>
 ```
 
-In this example, the `Label` objects in each row are all identically aligned vertically, but use different horizontal alignments. Alternatively, this can be thought of as the `Label` objects in each column being identically aligned horizontally, but using different vertical alignments:
+In this example, the <xref:Microsoft.Maui.Controls.Label> objects in each row are all identically aligned vertically, but use different horizontal alignments. Alternatively, this can be thought of as the <xref:Microsoft.Maui.Controls.Label> objects in each column being identically aligned horizontally, but using different vertical alignments:
 
 :::image type="content" source="media/grid/alignment.png" alt-text="Cell alignment in a .NET MAUI Grid.":::
 
@@ -612,7 +612,7 @@ The following XAML shows an example of nesting <xref:Microsoft.Maui.Controls.Gri
 </ContentPage>
 ```
 
-In this example, the root <xref:Microsoft.Maui.Controls.Grid> contains a <xref:Microsoft.Maui.Controls.BoxView> in its first row, and a child <xref:Microsoft.Maui.Controls.Grid> in its second row. The child <xref:Microsoft.Maui.Controls.Grid> contains <xref:Microsoft.Maui.Controls.Slider> objects that manipulate the color displayed by the <xref:Microsoft.Maui.Controls.BoxView>, and `Label` objects that display the value of each <xref:Microsoft.Maui.Controls.Slider>:
+In this example, the root <xref:Microsoft.Maui.Controls.Grid> contains a <xref:Microsoft.Maui.Controls.BoxView> in its first row, and a child <xref:Microsoft.Maui.Controls.Grid> in its second row. The child <xref:Microsoft.Maui.Controls.Grid> contains <xref:Microsoft.Maui.Controls.Slider> objects that manipulate the color displayed by the <xref:Microsoft.Maui.Controls.BoxView>, and <xref:Microsoft.Maui.Controls.Label> objects that display the value of each <xref:Microsoft.Maui.Controls.Slider>:
 
 :::image type="content" source="media/grid/nested.png" alt-text="Nested .NET MAUI Grid objects.":::
 

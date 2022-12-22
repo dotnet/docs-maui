@@ -96,9 +96,9 @@ The `CheckedChanged` event handler can be eliminated by using data binding and t
 </Label>
 ```
 
-In this example, the `Label` uses a binding expression in a data trigger to monitor the `IsChecked` property of the <xref:Microsoft.Maui.Controls.CheckBox>. When this property becomes `true`, the `FontAttributes` and `FontSize` properties of the `Label` change. When the `IsChecked` property returns to `false`, the `FontAttributes` and `FontSize` properties of the `Label` are reset to their initial state.
+In this example, the <xref:Microsoft.Maui.Controls.Label> uses a binding expression in a data trigger to monitor the `IsChecked` property of the <xref:Microsoft.Maui.Controls.CheckBox>. When this property becomes `true`, the `FontAttributes` and `FontSize` properties of the <xref:Microsoft.Maui.Controls.Label> change. When the `IsChecked` property returns to `false`, the `FontAttributes` and `FontSize` properties of the <xref:Microsoft.Maui.Controls.Label> are reset to their initial state.
 
-The following screenshot shows the `Label` formatting when the <xref:Microsoft.Maui.Controls.CheckBox> is checked:
+The following screenshot shows the <xref:Microsoft.Maui.Controls.Label> formatting when the <xref:Microsoft.Maui.Controls.CheckBox> is checked:
 
 :::image type="content" source="media/checkbox/checkbox-databinding.png" alt-text="Screenshot of a data bound CheckBox.":::
 

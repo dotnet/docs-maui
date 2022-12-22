@@ -8,7 +8,7 @@ ms.date: 01/19/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-databinding)
 
-In a .NET Multi-platform App UI (.NET MAUI) app, it's sometimes convenient to use data bindings to display the string representation of an object or value. For example, you might want to use a `Label` to display the current value of a <xref:Microsoft.Maui.Controls.Slider>. In this data binding, the <xref:Microsoft.Maui.Controls.Slider> is the source, and the target is the `Text` property of the `Label`.
+In a .NET Multi-platform App UI (.NET MAUI) app, it's sometimes convenient to use data bindings to display the string representation of an object or value. For example, you might want to use a <xref:Microsoft.Maui.Controls.Label> to display the current value of a <xref:Microsoft.Maui.Controls.Slider>. In this data binding, the <xref:Microsoft.Maui.Controls.Slider> is the source, and the target is the `Text` property of the <xref:Microsoft.Maui.Controls.Label>.
 
 String formatting in code is typically accomplished with the static [`String.Format`](xref:System.String.Format(System.String,System.Object)) method. The formatting string includes formatting codes specific to various types of objects, and you can include other text along with the values being formatted. For more information, see [Formatting Types in .NET](/dotnet/standard/base-types/formatting-types/) for more information on string formatting.
 
@@ -98,7 +98,7 @@ The last section sets the `BindingContext` to the value of `Math.PI` and display
 
 ## ViewModels and string formatting
 
-When you're using `Label` and `StringFormat` to display the value of a view that is also the target of a viewmodel, you can either define the binding from the view to the `Label` or from the viewmodel to the `Label`. In general, the second approach is best because it verifies that the bindings between the view and viewmodel are working.
+When you're using <xref:Microsoft.Maui.Controls.Label> and `StringFormat` to display the value of a view that is also the target of a viewmodel, you can either define the binding from the view to the <xref:Microsoft.Maui.Controls.Label> or from the viewmodel to the <xref:Microsoft.Maui.Controls.Label>. In general, the second approach is best because it verifies that the bindings between the view and viewmodel are working.
 
 This approach is shown in the following example:
 
@@ -142,6 +142,6 @@ This approach is shown in the following example:
 </ContentPage>    
 ```
 
-In this example, there are three pairs of <xref:Microsoft.Maui.Controls.Slider> and `Label` elements that are bound to the same source property in the `HslColorViewModel` object. Each `Label` that accompanies a <xref:Microsoft.Maui.Controls.Slider> has a `StringFormat` property to display each <xref:Microsoft.Maui.Controls.Slider> value:
+In this example, there are three pairs of <xref:Microsoft.Maui.Controls.Slider> and <xref:Microsoft.Maui.Controls.Label> elements that are bound to the same source property in the `HslColorViewModel` object. Each <xref:Microsoft.Maui.Controls.Label> that accompanies a <xref:Microsoft.Maui.Controls.Slider> has a `StringFormat` property to display each <xref:Microsoft.Maui.Controls.Slider> value:
 
 :::image type="content" source="media/string-formatting/bettercolorselector.png" alt-text="Better color selector.":::

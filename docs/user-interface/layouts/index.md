@@ -14,7 +14,7 @@ ms.date: 05/13/2022
 
 A <xref:Microsoft.Maui.Controls.StackLayout> organizes elements in a one-dimensional stack, either horizontally or vertically. The `Orientation` property specifies the direction of the elements, and the default orientation is `Vertical`. <xref:Microsoft.Maui.Controls.StackLayout> is typically used to arrange a subsection of the UI on a page.
 
-The following XAML shows how to create a vertical <xref:Microsoft.Maui.Controls.StackLayout> containing three `Label` objects:
+The following XAML shows how to create a vertical <xref:Microsoft.Maui.Controls.StackLayout> containing three <xref:Microsoft.Maui.Controls.Label> objects:
 
 ```xaml
 <StackLayout Margin="20,35,20,25">
@@ -82,7 +82,7 @@ For more information, see [HorizontalStackLayout](horizontalstacklayout.md).
 
 A <xref:Microsoft.Maui.Controls.VerticalStackLayout> organizes child views in a one-dimensional vertical stack, and is a more performant alternative to a <xref:Microsoft.Maui.Controls.StackLayout>. <xref:Microsoft.Maui.Controls.VerticalStackLayout> is typically used to arrange a subsection of the UI on a page.
 
-The following XAML shows how to create a <xref:Microsoft.Maui.Controls.VerticalStackLayout> containing three `Label` objects:
+The following XAML shows how to create a <xref:Microsoft.Maui.Controls.VerticalStackLayout> containing three <xref:Microsoft.Maui.Controls.Label> objects:
 
 ```xaml
 <VerticalStackLayout Margin="20,35,20,25">
@@ -132,7 +132,7 @@ The following XAML shows how to create a <xref:Microsoft.Maui.Controls.Grid> wit
 In this example, sizing works as follows:
 
 - Each row has an explicit height of 50 device-independent units.
-- The width of the first column is set to `Auto`, and is therefore as wide as required for its children. In this case, it's 200 device-independent units wide to accommodate the width of the first `Label`.
+- The width of the first column is set to `Auto`, and is therefore as wide as required for its children. In this case, it's 200 device-independent units wide to accommodate the width of the first <xref:Microsoft.Maui.Controls.Label>.
 
 Space can be distributed within a column or row by using auto sizing, which lets columns and rows size to fit their content. This is achieved by setting the height of a `RowDefinition`, or the width of a `ColumnDefinition`, to `Auto`. Proportional sizing can also be used to distribute available space among the rows and columns of the grid by weighted proportions. This is achieved by setting the height of a `RowDefinition`, or the width of a `ColumnDefinition`, to a value that uses the `*` operator.
 

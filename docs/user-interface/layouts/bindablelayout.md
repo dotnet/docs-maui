@@ -52,7 +52,7 @@ Grid grid = new Grid();
 BindableLayout.SetItemsSource(grid, items);
 ```
 
-When the `BindableLayout.ItemsSource` attached property is set on a layout, but the `BindableLayout.ItemTemplate` attached property isn't set, every item in the `IEnumerable` collection will be displayed by a `Label` that's created by the <xref:Microsoft.Maui.Controls.BindableLayout> class.
+When the `BindableLayout.ItemsSource` attached property is set on a layout, but the `BindableLayout.ItemTemplate` attached property isn't set, every item in the `IEnumerable` collection will be displayed by a <xref:Microsoft.Maui.Controls.Label> that's created by the <xref:Microsoft.Maui.Controls.BindableLayout> class.
 
 ## Define item appearance
 
@@ -123,7 +123,7 @@ public class TechItemTemplateSelector : DataTemplateSelector
 }
 ```
 
-The `TechItemTemplateSelector` class defines `DefaultTemplate` and `MAUITemplate` `DataTemplate` properties that are set to different data templates. The `OnSelectTemplate` method returns the `MAUITemplate`, which displays an item in dark red with a heart next to it, when the item is equal to ".NET MAUI". When the item isn't equal to ".NET MAUI", the `OnSelectTemplate` method returns the `DefaultTemplate`, which displays an item using the default color of a `Label`:
+The `TechItemTemplateSelector` class defines `DefaultTemplate` and `MAUITemplate` `DataTemplate` properties that are set to different data templates. The `OnSelectTemplate` method returns the `MAUITemplate`, which displays an item in dark red with a heart next to it, when the item is equal to ".NET MAUI". When the item isn't equal to ".NET MAUI", the `OnSelectTemplate` method returns the `DefaultTemplate`, which displays an item using the default color of a <xref:Microsoft.Maui.Controls.Label>:
 
 :::image type="content" source="media/bindablelayout/favorite-tech.png" alt-text=".NET MAUI bindable layout with a DataTemplateSelector.":::
 
@@ -131,7 +131,7 @@ For more information about data template selectors, see [Create a DataTemplateSe
 
 ## Display a string when data is unavailable
 
-The `EmptyView` property can be set to a string, which will be displayed by a `Label` when the `ItemsSource` property is `null`, or when the collection specified by the `ItemsSource` property is `null` or empty. The following XAML shows an example of this scenario:
+The `EmptyView` property can be set to a string, which will be displayed by a <xref:Microsoft.Maui.Controls.Label> when the `ItemsSource` property is `null`, or when the collection specified by the `ItemsSource` property is `null` or empty. The following XAML shows an example of this scenario:
 
 ```xaml
 <StackLayout BindableLayout.ItemsSource="{Binding UserWithoutAchievements.Achievements}"
@@ -181,7 +181,7 @@ Similarly, the `EmptyViewTemplate` can be set to a `DataTemplate`, which will be
 </StackLayout>
 ```
 
-The result is that when the data bound collection is `null`, the `Label` in the `DataTemplate` is displayed:
+The result is that when the data bound collection is `null`, the <xref:Microsoft.Maui.Controls.Label> in the `DataTemplate` is displayed:
 
 :::image type="content" source="media/bindablelayout/emptyviewtemplate.png" alt-text="Screenshot of a bindable layout empty view template.":::
 

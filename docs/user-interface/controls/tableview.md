@@ -176,7 +176,7 @@ An <xref:Microsoft.Maui.Controls.EntryCell> displays a label and text data that'
 
 - `HorizontalTextAlignment`, of type `TextAlignment`, represents the horizontal alignment of the text.
 - `Keyboard`, of type `Keyboard`, determines the keyboard to display when entering text.
-- `Label`, of type `string`,  represents the text to display to the left of the editable text.
+- <xref:Microsoft.Maui.Controls.Label>, of type `string`,  represents the text to display to the left of the editable text.
 - `LabelColor`, of type `Color`,  defines the color of the label text.
 - `Placeholder`, of type `string`, represents the text that's displayed when the `Text` property is empty.
 - `Text`, of type `string`, defines the text that's editable.
@@ -258,7 +258,7 @@ void OnViewCellTapped(object sender, EventArgs e)
 }
 ```
 
-In this example, the `OnViewCellTapped` event handler is executed in response to the cell being tapped. The event handler updates the visibility of the `Label` object and the `Cell.ForceUpdateSize` method updates the cell's size. If the `Label` has been made visible the cell's height will increase. If the `Label` has been made invisible the cell's height will decrease.
+In this example, the `OnViewCellTapped` event handler is executed in response to the cell being tapped. The event handler updates the visibility of the <xref:Microsoft.Maui.Controls.Label> object and the `Cell.ForceUpdateSize` method updates the cell's size. If the <xref:Microsoft.Maui.Controls.Label> has been made visible the cell's height will increase. If the <xref:Microsoft.Maui.Controls.Label> has been made invisible the cell's height will decrease.
 
 > [!WARNING]
 > Overuse of dynamic item sizing can cause <xref:Microsoft.Maui.Controls.TableView> performance to degrade.

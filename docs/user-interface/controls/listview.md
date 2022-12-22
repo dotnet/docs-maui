@@ -119,7 +119,7 @@ The appearance of each item in the <xref:Microsoft.Maui.Controls.ListView> can b
 </ListView>
 ```
 
-The elements specified in the `DataTemplate` define the appearance of each item in the list, and the child of the `DataTemplate` must be a <xref:Microsoft.Maui.Controls.Cell> object. In the example, layout within the `DataTemplate` is managed by a <xref:Microsoft.Maui.Controls.Grid>. The <xref:Microsoft.Maui.Controls.Grid> contains an `Image` object, and two `Label` objects, that all bind to properties of the `Monkey` class:
+The elements specified in the `DataTemplate` define the appearance of each item in the list, and the child of the `DataTemplate` must be a <xref:Microsoft.Maui.Controls.Cell> object. In the example, layout within the `DataTemplate` is managed by a <xref:Microsoft.Maui.Controls.Grid>. The <xref:Microsoft.Maui.Controls.Grid> contains an `Image` object, and two <xref:Microsoft.Maui.Controls.Label> objects, that all bind to properties of the `Monkey` class:
 
 ```csharp
 public class Monkey
@@ -244,7 +244,7 @@ The following example shows using a <xref:Microsoft.Maui.Controls.ViewCell> to d
 </ListView>
 ```
 
-Inside the <xref:Microsoft.Maui.Controls.ViewCell>, layout can be managed by any .NET MAUI layout. In this example, layout is managed by a <xref:Microsoft.Maui.Controls.Grid>. The <xref:Microsoft.Maui.Controls.Grid> contains an `Image` object, and two `Label` objects, that all bind to properties of the `Monkey` class.
+Inside the <xref:Microsoft.Maui.Controls.ViewCell>, layout can be managed by any .NET MAUI layout. In this example, layout is managed by a <xref:Microsoft.Maui.Controls.Grid>. The <xref:Microsoft.Maui.Controls.Grid> contains an `Image` object, and two <xref:Microsoft.Maui.Controls.Label> objects, that all bind to properties of the `Monkey` class.
 
 The following screenshot shows the result of templating each item in the list:
 
@@ -505,7 +505,7 @@ The following screenshot shows the resulting header:
 
 ### Display views in the header and footer
 
-The `Header` and `Footer` properties can each be set to a view. This can be a single view, or a view that contains multiple child views. The following example shows the `Header` and `Footer` properties each set to a <xref:Microsoft.Maui.Controls.StackLayout> object that contains a `Label` object:
+The `Header` and `Footer` properties can each be set to a view. This can be a single view, or a view that contains multiple child views. The following example shows the `Header` and `Footer` properties each set to a <xref:Microsoft.Maui.Controls.StackLayout> object that contains a <xref:Microsoft.Maui.Controls.Label> object:
 
 ```xaml
 <ListView ItemsSource="{Binding Monkeys}">
@@ -811,7 +811,7 @@ The appearance of each group header can be customized by setting the `ListView.G
 </ListView>
 ```
 
-In this example, each group header is set to a `Label` that displays the group name, and that has other appearance properties set. The following screenshot shows the customized group header:
+In this example, each group header is set to a <xref:Microsoft.Maui.Controls.Label> that displays the group name, and that has other appearance properties set. The following screenshot shows the customized group header:
 
 :::image type="content" source="media/listview/customized-header.png" alt-text="Screenshot of a customized group header in a ListView.":::
 

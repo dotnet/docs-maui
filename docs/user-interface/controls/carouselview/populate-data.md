@@ -122,7 +122,7 @@ carouselView.ItemTemplate = new DataTemplate(() =>
 });
 ```
 
-The elements specified in the `DataTemplate` define the appearance of each item in the <xref:Microsoft.Maui.Controls.CarouselView>. In the example, layout within the `DataTemplate` is managed by a <xref:Microsoft.Maui.Controls.StackLayout>, and the data is displayed with an `Image` object, and three `Label` objects, that all bind to properties of the `Monkey` class:
+The elements specified in the `DataTemplate` define the appearance of each item in the <xref:Microsoft.Maui.Controls.CarouselView>. In the example, layout within the `DataTemplate` is managed by a <xref:Microsoft.Maui.Controls.StackLayout>, and the data is displayed with an `Image` object, and three <xref:Microsoft.Maui.Controls.Label> objects, that all bind to properties of the `Monkey` class:
 
 ```csharp
 public class Monkey

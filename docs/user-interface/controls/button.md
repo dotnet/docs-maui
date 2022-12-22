@@ -80,7 +80,7 @@ public partial class BasicButtonClickPage : ContentPage
 }
 ```
 
-In this example, when the `Button` is tapped, the `OnButtonClicked` method executes. The `sender` argument is the `Button` object responsible for this event. You can use this to access the `Button` object, or to distinguish between multiple `Button` objects sharing the same `Clicked` event. The `Clicked` handler calls an animation function that rotates the `Label` 360 degrees in 1000 milliseconds:
+In this example, when the `Button` is tapped, the `OnButtonClicked` method executes. The `sender` argument is the `Button` object responsible for this event. You can use this to access the `Button` object, or to distinguish between multiple `Button` objects sharing the same `Clicked` event. The `Clicked` handler calls an animation function that rotates the <xref:Microsoft.Maui.Controls.Label> 360 degrees in 1000 milliseconds:
 
 :::image type="content" source="media/button/button-rotation.png" alt-text="Screenshot of a Button.":::
 
@@ -172,7 +172,7 @@ The following XAML example consumes the `CommandDemoViewModel` class:
 </ContentPage>
 ```
 
-In this example, the `Label` element and two `Button` objects contain bindings to the three properties in the `CommandDemoViewModel` class. As the two `Button` objects are tapped, the commands are executed, and the number changes value. The advantage of this approach over `Clicked` handlers is that all the logic involving the functionality of this page is located in the viewmodel rather than the code-behind file, achieving a better separation of the user interface from the business logic.
+In this example, the <xref:Microsoft.Maui.Controls.Label> element and two `Button` objects contain bindings to the three properties in the `CommandDemoViewModel` class. As the two `Button` objects are tapped, the commands are executed, and the number changes value. The advantage of this approach over `Clicked` handlers is that all the logic involving the functionality of this page is located in the viewmodel rather than the code-behind file, achieving a better separation of the user interface from the business logic.
 
 It's also possible for the `Command` objects to control the enabling and disabling of the `Button` objects. For example, suppose you want to limit the range of number values between 2<sup>10</sup> and 2<sup>&ndash;10</sup>. You can add another function to the constructor (called the `canExecute` argument) that returns `true` if the `Button` should be enabled:
 
@@ -212,7 +212,7 @@ It's also possible for two or more `Button` elements to be bound to the same `IC
 
 The `Pressed` event is raised when a finger presses on a `Button`, or a mouse button is pressed with the pointer positioned over the `Button`. The `Released` event is raised when the finger or mouse button is released. Generally, a `Clicked` event is also raised at the same time as the `Released` event, but if the finger or mouse pointer slides away from the surface of the `Button` before being released, the `Clicked` event might not occur.
 
-The following XAML example shows a `Label` and a `Button` with handlers attached for the `Pressed` and `Released` events:
+The following XAML example shows a <xref:Microsoft.Maui.Controls.Label> and a `Button` with handlers attached for the `Pressed` and `Released` events:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -234,7 +234,7 @@ The following XAML example shows a `Label` and a `Button` with handlers attached
 </ContentPage>
 ```
 
-The code-behind file animates the `Label` when a `Pressed` event occurs, but suspends the rotation when a `Released` event occurs:
+The code-behind file animates the <xref:Microsoft.Maui.Controls.Label> when a `Pressed` event occurs, but suspends the rotation when a `Released` event occurs:
 
 ```csharp
 public partial class PressAndReleaseButtonPage : ContentPage
@@ -268,7 +268,7 @@ public partial class PressAndReleaseButtonPage : ContentPage
 }
 ```
 
-The result is that the `Label` only rotates while a finger is in contact with the `Button`, and stops when the finger is released.
+The result is that the <xref:Microsoft.Maui.Controls.Label> only rotates while a finger is in contact with the `Button`, and stops when the finger is released.
 
 ## Button visual states
 

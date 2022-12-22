@@ -67,7 +67,7 @@ In this example, a drag gesture can be initiated on the `Image`.
 
 .NET MAUI will automatically build a data package for you, when a drag is initiated, for the following controls:
 
-- Text controls. Text values can be dragged from <xref:Microsoft.Maui.Controls.CheckBox>, <xref:Microsoft.Maui.Controls.DatePicker>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, `Label`, <xref:Microsoft.Maui.Controls.RadioButton>, <xref:Microsoft.Maui.Controls.Switch>, and <xref:Microsoft.Maui.Controls.TimePicker> objects.
+- Text controls. Text values can be dragged from <xref:Microsoft.Maui.Controls.CheckBox>, <xref:Microsoft.Maui.Controls.DatePicker>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.RadioButton>, <xref:Microsoft.Maui.Controls.Switch>, and <xref:Microsoft.Maui.Controls.TimePicker> objects.
 - Image controls. Images can be dragged from `Button`, `Image`, and <xref:Microsoft.Maui.Controls.ImageButton> controls.
 
 The following table shows the properties that are read, and any conversion that's attempted, when a drag is initiated on a text control:
@@ -78,7 +78,7 @@ The following table shows the properties that are read, and any conversion that'
 | <xref:Microsoft.Maui.Controls.DatePicker> | `Date` | `DateTime` converted to a `string`. |
 | <xref:Microsoft.Maui.Controls.Editor> | `Text` ||
 | <xref:Microsoft.Maui.Controls.Entry> | `Text` ||
-| `Label` | `Text` ||
+| <xref:Microsoft.Maui.Controls.Label> | `Text` ||
 | <xref:Microsoft.Maui.Controls.RadioButton> | `IsChecked` | `bool` converted to a `string`. |
 | <xref:Microsoft.Maui.Controls.Switch> | `IsToggled` | `bool` converted to a `string`. |
 | <xref:Microsoft.Maui.Controls.TimePicker> | `Time` | `TimeSpan` converted to a `string`. |
@@ -234,7 +234,7 @@ In this example, the `AcceptedOperation` property of the `DragEventArgs` object 
 
 The `Drop` event is raised when a drag source is released over a drop target. .NET MAUI automatically attempts to retrieve data from the data package when a drag source is dropped onto the following controls:
 
-- Text controls. Text values can be dropped onto <xref:Microsoft.Maui.Controls.CheckBox>, <xref:Microsoft.Maui.Controls.DatePicker>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, `Label`, <xref:Microsoft.Maui.Controls.RadioButton>, <xref:Microsoft.Maui.Controls.Switch>, and <xref:Microsoft.Maui.Controls.TimePicker> objects.
+- Text controls. Text values can be dropped onto <xref:Microsoft.Maui.Controls.CheckBox>, <xref:Microsoft.Maui.Controls.DatePicker>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.RadioButton>, <xref:Microsoft.Maui.Controls.Switch>, and <xref:Microsoft.Maui.Controls.TimePicker> objects.
 - Image controls. Images can be dropped onto `Button`, `Image`, and <xref:Microsoft.Maui.Controls.ImageButton> controls.
 
 The following table shows the properties that are set and any conversion that's attempted when a text-based drag source is dropped on a text control:
@@ -245,7 +245,7 @@ The following table shows the properties that are set and any conversion that's 
 | <xref:Microsoft.Maui.Controls.DatePicker> | `Date` | `string` is converted to a `DateTime`. |
 | <xref:Microsoft.Maui.Controls.Editor> | `Text` ||
 | <xref:Microsoft.Maui.Controls.Entry> | `Text` ||
-| `Label` | `Text` ||
+| <xref:Microsoft.Maui.Controls.Label> | `Text` ||
 | <xref:Microsoft.Maui.Controls.RadioButton> | `IsChecked` | `string` is converted to a `bool`. |
 | <xref:Microsoft.Maui.Controls.Switch> | `IsToggled` | `string` is converted to a `bool`. |
 | <xref:Microsoft.Maui.Controls.TimePicker> | `Time` | `string` is converted to a `TimeSpan`. |

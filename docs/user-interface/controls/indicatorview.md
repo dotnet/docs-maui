@@ -120,7 +120,7 @@ The appearance of each indicator can be defined by setting the `IndicatorView.In
 </StackLayout>
 ```
 
-The elements specified in the `DataTemplate` define the appearance of each indicator. In this example, each indicator is a `Label` that displays a font icon.
+The elements specified in the `DataTemplate` define the appearance of each indicator. In this example, each indicator is a <xref:Microsoft.Maui.Controls.Label> that displays a font icon.
 
 The following screenshot shows indicators rendered using a font icon:
 

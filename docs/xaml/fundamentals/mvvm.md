@@ -114,7 +114,7 @@ The following example shows XAML that consumes `ClockViewModel`:
 
 In this example, `ClockViewModel` is set to the `BindingContext` of the <xref:Microsoft.Maui.Controls.ContentPage> using property element tags. Alternatively, the code-behind file could instantiate the viewmodel.
 
-The `Binding` markup extension on the `Text` property of the `Label` formats the `DateTime` property. The following screenshot shows the result:
+The `Binding` markup extension on the `Text` property of the <xref:Microsoft.Maui.Controls.Label> formats the `DateTime` property. The following screenshot shows the result:
 
 :::image type="content" source="media/mvvm/clock.png" alt-text="Screenshot of a page displaying the date and time via a viewmodel.":::
 
@@ -200,7 +200,7 @@ class HslViewModel: INotifyPropertyChanged
 
 In this example, changes to the `Hue`, `Saturation`, and `Luminosity` properties cause the `Color` property to change, and changes to the `Color` property causes the other three properties to change. This might seem like an infinite loop, except that the viewmodel doesn't invoke the `PropertyChanged` event unless the property has changed.
 
-The following XAML example contains a <xref:Microsoft.Maui.Controls.BoxView> whose `Color` property is bound to the `Color` property of the viewmodel, and three <xref:Microsoft.Maui.Controls.Slider> and three `Label` views bound to the `Hue`, `Saturation`, and `Luminosity` properties:
+The following XAML example contains a <xref:Microsoft.Maui.Controls.BoxView> whose `Color` property is bound to the `Color` property of the viewmodel, and three <xref:Microsoft.Maui.Controls.Slider> and three <xref:Microsoft.Maui.Controls.Label> views bound to the `Hue`, `Saturation`, and `Luminosity` properties:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -233,7 +233,7 @@ The following XAML example contains a <xref:Microsoft.Maui.Controls.BoxView> who
 </ContentPage>
 ```
 
-The binding on each `Label` is the default `OneWay`. It only needs to display the value. However, the default binding on each <xref:Microsoft.Maui.Controls.Slider> is `TwoWay`. This allows the <xref:Microsoft.Maui.Controls.Slider> to be initialized from the viewmodel. When the viewmodel is instantiated it's `Color` property is set to `Aqua`. A change in a <xref:Microsoft.Maui.Controls.Slider> sets a new value for the property in the viewmodel, which then calculates a new color:
+The binding on each <xref:Microsoft.Maui.Controls.Label> is the default `OneWay`. It only needs to display the value. However, the default binding on each <xref:Microsoft.Maui.Controls.Slider> is `TwoWay`. This allows the <xref:Microsoft.Maui.Controls.Slider> to be initialized from the viewmodel. When the viewmodel is instantiated it's `Color` property is set to `Aqua`. A change in a <xref:Microsoft.Maui.Controls.Slider> sets a new value for the property in the viewmodel, which then calculates a new color:
 
 :::image type="content" source="media/mvvm/hslcolorscroll.png" alt-text="MVVM using two-way data bindings.":::
 

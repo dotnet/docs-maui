@@ -23,7 +23,7 @@ The <xref:Microsoft.Maui.Controls.Stepper> coerces the `Value` property so that 
 
 ## Create a Stepper
 
-The following example shows how to create a <xref:Microsoft.Maui.Controls.Stepper>, with two `Label` objects:
+The following example shows how to create a <xref:Microsoft.Maui.Controls.Stepper>, with two <xref:Microsoft.Maui.Controls.Label> objects:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -48,7 +48,7 @@ The following example shows how to create a <xref:Microsoft.Maui.Controls.Steppe
 </ContentPage>
 ```
 
-In this example, the <xref:Microsoft.Maui.Controls.Stepper> is initialized to have a `Maximum` property of 360, and an `Increment` property of 30. Manipulating the <xref:Microsoft.Maui.Controls.Stepper> changes the selected value incrementally between `Minimum` to `Maximum` based on the value of the `Increment` property. The second `Label` displays the text "(uninitialized)" until the <xref:Microsoft.Maui.Controls.Stepper> is manipulated, which causes the first `ValueChanged` event to be raised.
+In this example, the <xref:Microsoft.Maui.Controls.Stepper> is initialized to have a `Maximum` property of 360, and an `Increment` property of 30. Manipulating the <xref:Microsoft.Maui.Controls.Stepper> changes the selected value incrementally between `Minimum` to `Maximum` based on the value of the `Increment` property. The second <xref:Microsoft.Maui.Controls.Label> displays the text "(uninitialized)" until the <xref:Microsoft.Maui.Controls.Stepper> is manipulated, which causes the first `ValueChanged` event to be raised.
 
 The code-behind file contains the handler for the `ValueChanged` event:
 
@@ -69,7 +69,7 @@ public partial class BasicStepperXAMLPage : ContentPage
 }
 ```
 
-The `ValueChanged` handler of the <xref:Microsoft.Maui.Controls.Stepper> uses the `Value` property of the `stepper` object to set the `Rotation` property of the first `Label`  and uses the `string.Format` method with the `NewValue` property of the event arguments to set the `Text` property of the second `Label`:
+The `ValueChanged` handler of the <xref:Microsoft.Maui.Controls.Stepper> uses the `Value` property of the `stepper` object to set the `Rotation` property of the first <xref:Microsoft.Maui.Controls.Label>  and uses the `string.Format` method with the `NewValue` property of the event arguments to set the `Text` property of the second <xref:Microsoft.Maui.Controls.Label>:
 
 :::image type="content" source="media/stepper/stepper-basic.png" alt-text=".NET MAUI Stepper screenshot.":::
 
@@ -127,7 +127,7 @@ The `ValueChanged` event handler can be eliminated by using data binding to resp
 </ContentPage>
 ```
 
-In this example, the `Rotation` property of the first `Label` is bound to the `Value` property of the <xref:Microsoft.Maui.Controls.Stepper>, as is the `Text` property of the second `Label` with a `StringFormat` specification. When the page first appears, the second `Label` displays the text string with the value. To display text without data binding, you'd need to specifically initialize the `Text` property of the `Label` or simulate a firing of the `ValueChanged` event by calling the event handler from the class constructor.
+In this example, the `Rotation` property of the first <xref:Microsoft.Maui.Controls.Label> is bound to the `Value` property of the <xref:Microsoft.Maui.Controls.Stepper>, as is the `Text` property of the second <xref:Microsoft.Maui.Controls.Label> with a `StringFormat` specification. When the page first appears, the second <xref:Microsoft.Maui.Controls.Label> displays the text string with the value. To display text without data binding, you'd need to specifically initialize the `Text` property of the <xref:Microsoft.Maui.Controls.Label> or simulate a firing of the `ValueChanged` event by calling the event handler from the class constructor.
 
 ## Precautions
 

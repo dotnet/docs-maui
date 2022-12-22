@@ -109,7 +109,7 @@ SwipeView swipeView = new SwipeView
 };
 ```
 
-In this example, the <xref:Microsoft.Maui.Controls.SwipeView> content is a <xref:Microsoft.Maui.Controls.Grid> that contains a `Label`:
+In this example, the <xref:Microsoft.Maui.Controls.SwipeView> content is a <xref:Microsoft.Maui.Controls.Grid> that contains a <xref:Microsoft.Maui.Controls.Label>:
 
 :::image type="content" source="media/swipeview/swipeview-content.png" alt-text="Screenshot of SwipeView content.":::
 
@@ -325,7 +325,7 @@ The following example shows a `SwipeItemView` object in the `LeftItems` collecti
 </SwipeView>
 ```
 
-In this example, the `SwipeItemView` comprises a <xref:Microsoft.Maui.Controls.StackLayout> containing an <xref:Microsoft.Maui.Controls.Entry> and a `Label`. After the user enters input into the <xref:Microsoft.Maui.Controls.Entry>, the rest of the `SwipeViewItem` can be tapped which executes the `ICommand` defined by the `SwipeItemView.Command` property.
+In this example, the `SwipeItemView` comprises a <xref:Microsoft.Maui.Controls.StackLayout> containing an <xref:Microsoft.Maui.Controls.Entry> and a <xref:Microsoft.Maui.Controls.Label>. After the user enters input into the <xref:Microsoft.Maui.Controls.Entry>, the rest of the `SwipeViewItem` can be tapped which executes the `ICommand` defined by the `SwipeItemView.Command` property.
 
 ## Open and close a SwipeView programmatically
 

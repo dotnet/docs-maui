@@ -191,7 +191,7 @@ A `MultiBinding` can format any multi-binding result that's displayed as a strin
 > [!NOTE]
 > If the format string starts with the { character, the XAML parser will confuse it for a markup extension. To avoid this ambiguity, prefix the format string with an empty set of curly braces.
 
-In this example, the `StringFormat` property combines the three bound values into a single string that's displayed by the `Label`.
+In this example, the `StringFormat` property combines the three bound values into a single string that's displayed by the <xref:Microsoft.Maui.Controls.Label>.
 
 The equivalent C# code is shown below:
 
