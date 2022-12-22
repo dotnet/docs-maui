@@ -68,7 +68,7 @@ The following table lists the types that implement handler-based views in .NET M
 | `Path` | | `PathHandler` | `Mapper` | |
 | <xref:Microsoft.Maui.Controls.Picker> | `IPicker` | `PickerHandler` | `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.Shapes.Polygon> | | `PolygonHandler` | `Mapper` | |
-| `Polyline` | | `PolylineHandler` | `Mapper` | |
+| <xref:Microsoft.Maui.Controls.Shapes.Polyline> | | `PolylineHandler` | `Mapper` | |
 | `ProgressBar` | `IProgress` | `ProgressBarHandler` | `Mapper` | `CommandMapper` |
 | `RadioButton` | `IRadioButton` | `RadioButtonHandler` | `Mapper` | `CommandMapper` |
 | `Rectangle` | | `RectangleHandler` | `Mapper` | |

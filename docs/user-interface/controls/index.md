@@ -77,7 +77,7 @@ The main control groups used to create the user interface of a .NET MAUI app are
 | `Path` | `Path` display curves and complex shapes. For more information, see [Path](~/user-interface/controls/shapes/path.md). |
 | <xref:Microsoft.Maui.Controls.Picker> | <xref:Microsoft.Maui.Controls.Picker> displays a short list of items, from which an item can be selected. For more information, see [Picker](~/user-interface/controls/picker.md). |
 | <xref:Microsoft.Maui.Controls.Shapes.Polygon> | <xref:Microsoft.Maui.Controls.Shapes.Polygon> displays a polygon. For more information, see [Polygon](~/user-interface/controls/shapes/polygon.md). |
-| `Polyline` | `Polyline` displays a series of connected straight lines. For more information, see [Polyline](~/user-interface/controls/shapes/polyline.md). |
+| <xref:Microsoft.Maui.Controls.Shapes.Polyline> | <xref:Microsoft.Maui.Controls.Shapes.Polyline> displays a series of connected straight lines. For more information, see [Polyline](~/user-interface/controls/shapes/polyline.md). |
 | `ProgressBar` | `ProgressBar` uses an animation to show that the app is progressing through a lengthy activity. For more information, see [ProgressBar](~/user-interface/controls/progressbar.md). |
 | `RadioButton` | `RadioButton` is a type of button that allows the selection of one option from a set. For more information, see [RadioButton](~/user-interface/controls/radiobutton.md). |
 | `Rectangle` | `Rectangle` displays a rectangle or square. For more information, see [Rectangle](~/user-interface/controls/shapes/rectangle.md). |

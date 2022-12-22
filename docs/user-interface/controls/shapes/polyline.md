@@ -8,9 +8,9 @@ ms.date: 01/12/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-shapes)
 
-The .NET Multi-platform App UI (.NET MAUI) `Polyline` class derives from the `Shape` class, and can be used to draw a series of connected straight lines. A polyline is similar to a polygon, except the last point in a polyline is not connected to the first point. For information on the properties that the `Polyline` class inherits from the `Shape` class, see [Shapes](index.md).
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Shapes.Polyline> class derives from the `Shape` class, and can be used to draw a series of connected straight lines. A polyline is similar to a polygon, except the last point in a polyline is not connected to the first point. For information on the properties that the <xref:Microsoft.Maui.Controls.Shapes.Polyline> class inherits from the `Shape` class, see [Shapes](index.md).
 
-`Polyline` defines the following properties:
+<xref:Microsoft.Maui.Controls.Shapes.Polyline> defines the following properties:
 
 - `Points`, of type `PointCollection`, which is a collection of `Point` structures that describe the vertex points of the polyline.
 - `FillRule`, of type `FillRule`, which specifies how the intersecting areas in the polyline are combined. The default value of this property is `FillRule.EvenOdd`.
@@ -23,10 +23,10 @@ For more information about the `FillRule` enumeration, see [Fill rules](fillrule
 
 ## Create a Polyline
 
-To draw a polyline, create a `Polyline` object and set its `Points` property to the vertices of a shape. To give the polyline an outline, set its `Stroke` property to a `Brush`-derived object. The `StrokeThickness` property specifies the thickness of the polyline outline. For more information about `Brush` objects, see [Brushes](~/user-interface/brushes/index.md).
+To draw a polyline, create a <xref:Microsoft.Maui.Controls.Shapes.Polyline> object and set its `Points` property to the vertices of a shape. To give the polyline an outline, set its `Stroke` property to a `Brush`-derived object. The `StrokeThickness` property specifies the thickness of the polyline outline. For more information about `Brush` objects, see [Brushes](~/user-interface/brushes/index.md).
 
 > [!IMPORTANT]
-> If you set the `Fill` property of a `Polyline` to a `Brush`-derived object, the interior space of the polyline is painted, even if the start point and end point do not intersect.
+> If you set the `Fill` property of a <xref:Microsoft.Maui.Controls.Shapes.Polyline> to a `Brush`-derived object, the interior space of the polyline is painted, even if the start point and end point do not intersect.
 
 The following XAML example shows how to draw a polyline:
 
