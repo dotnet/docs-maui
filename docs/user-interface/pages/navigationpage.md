@@ -12,7 +12,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Navigat
 
 <xref:Microsoft.Maui.Controls.NavigationPage> defines the following properties:
 
-- `BarBackground`, of type `Brush`, specifies the background of the navigation bar as a `Brush`.
+- `BarBackground`, of type <xref:Microsoft.Maui.Controls.Brush>, specifies the background of the navigation bar as a <xref:Microsoft.Maui.Controls.Brush>.
 - `BarBackgroundColor`, of type `Color`, specifies the background color of the navigation bar.
 - `BackButtonTitle`, of type `string`, represents the text to use for the back button. This is an attached property.
 - `BarTextColor`, of type `Color`, specifies the color of the text on the navigation bar.

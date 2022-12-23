@@ -8,7 +8,7 @@ ms.date: 01/11/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-brushes)
 
-The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.SolidColorBrush> class derives from the `Brush` class, and is used to paint an area with a solid color. There are a variety of approaches to specifying the color of a <xref:Microsoft.Maui.Controls.SolidColorBrush>. For example, you can specify its color with a `Color` value or by using one of the predefined <xref:Microsoft.Maui.Controls.SolidColorBrush> objects provided by the `Brush` class.
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.SolidColorBrush> class derives from the <xref:Microsoft.Maui.Controls.Brush> class, and is used to paint an area with a solid color. There are a variety of approaches to specifying the color of a <xref:Microsoft.Maui.Controls.SolidColorBrush>. For example, you can specify its color with a `Color` value or by using one of the predefined <xref:Microsoft.Maui.Controls.SolidColorBrush> objects provided by the <xref:Microsoft.Maui.Controls.Brush> class.
 
 The <xref:Microsoft.Maui.Controls.SolidColorBrush> class defines the `Color` property, of type `Color`, which represents the color of the brush. This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means that it can be the target of data bindings, and styled.
 
@@ -53,7 +53,7 @@ In this example, the background of the <xref:Microsoft.Maui.Controls.Frame> is p
 
 ### Use a predefined Brush
 
-The `Brush` class defines a set of commonly used <xref:Microsoft.Maui.Controls.SolidColorBrush> objects. The following example uses one of these predefined <xref:Microsoft.Maui.Controls.SolidColorBrush> objects:
+The <xref:Microsoft.Maui.Controls.Brush> class defines a set of commonly used <xref:Microsoft.Maui.Controls.SolidColorBrush> objects. The following example uses one of these predefined <xref:Microsoft.Maui.Controls.SolidColorBrush> objects:
 
 ```xaml
 <Frame Background="{x:Static Brush.Indigo}"
@@ -79,7 +79,7 @@ In this example, the background of the <xref:Microsoft.Maui.Controls.Frame> is p
 
 :::image type="content" source="media/solidcolor/predefined-brush.png" alt-text="Screenshot of a Frame painted with a predefined SolidColorBrush.":::
 
-For a list of predefined <xref:Microsoft.Maui.Controls.SolidColorBrush> objects provided by the `Brush` class, see [Solid color brushes](#solid-color-brushes).
+For a list of predefined <xref:Microsoft.Maui.Controls.SolidColorBrush> objects provided by the <xref:Microsoft.Maui.Controls.Brush> class, see [Solid color brushes](#solid-color-brushes).
 
 ### Use hexadecimal notation
 
@@ -110,6 +110,6 @@ For other ways of describing color, see [Colors](~/user-interface/graphics/color
 
 ## Solid color brushes
 
-For convenience, the `Brush` class provides a set of commonly used <xref:Microsoft.Maui.Controls.SolidColorBrush> objects, such as `AliceBlue` and `YellowGreen`. The following image shows the color of each predefined brush, its name, and its hexadecimal value:
+For convenience, the <xref:Microsoft.Maui.Controls.Brush> class provides a set of commonly used <xref:Microsoft.Maui.Controls.SolidColorBrush> objects, such as `AliceBlue` and `YellowGreen`. The following image shows the color of each predefined brush, its name, and its hexadecimal value:
 
 :::image type="content" source="media/solidcolor/solidcolorbrushes.png" alt-text="Color table including a color swatch, color name, and hexadecimal value." lightbox="media/solidcolor/solidcolorbrushes-large.png" border="false":::

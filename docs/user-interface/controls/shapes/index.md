@@ -13,8 +13,8 @@ A .NET Multi-platform App UI (.NET MAUI) `Shape` is a type of <xref:Microsoft.Ma
 `Shape` defines the following properties:
 
 - `Aspect`, of type `Stretch`, describes how the shape fills its allocated space. The default value of this property is `Stretch.None`.
-- `Fill`, of type `Brush`, indicates the brush used to paint the shape's interior.
-- `Stroke`, of type `Brush`, indicates the brush used to paint the shape's outline.
+- `Fill`, of type <xref:Microsoft.Maui.Controls.Brush>, indicates the brush used to paint the shape's interior.
+- `Stroke`, of type <xref:Microsoft.Maui.Controls.Brush>, indicates the brush used to paint the shape's outline.
 - `StrokeDashArray`, of type `DoubleCollection`, which represents a collection of `double` values that indicate the pattern of dashes and gaps that are used to outline a shape.
 - `StrokeDashOffset`, of type `double`, specifies the distance within the dash pattern where a dash begins. The default value of this property is 0.0.
 - `StrokeLineCap`, of type `PenLineCap`, describes the shape at the start and end of a line or segment. The default value of this property is `PenLineCap.Flat`.
@@ -28,7 +28,7 @@ These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> o
 
 ## Paint shapes
 
-`Brush` objects are used to paint a shapes's `Stroke` and `Fill`:
+<xref:Microsoft.Maui.Controls.Brush> objects are used to paint a shapes's `Stroke` and `Fill`:
 
 ```xaml
 <Ellipse Fill="DarkBlue"
@@ -44,11 +44,11 @@ In this example, the stroke and fill of an <xref:Microsoft.Maui.Controls.Shapes.
 :::image type="content" source="media/ellipse.png" alt-text="Paint shapes.":::
 
 > [!IMPORTANT]
-> `Brush` objects use a type converter that enables `Color` values to specified for the `Stroke` property.
+> <xref:Microsoft.Maui.Controls.Brush> objects use a type converter that enables `Color` values to specified for the `Stroke` property.
 
-If you don't specify a `Brush` object for `Stroke`, or if you set `StrokeThickness` to 0, then the border around the shape is not drawn.
+If you don't specify a <xref:Microsoft.Maui.Controls.Brush> object for `Stroke`, or if you set `StrokeThickness` to 0, then the border around the shape is not drawn.
 
-For more information about `Brush` objects, see [Brushes](~/user-interface/brushes/index.md). For more information about valid `Color` values, see [Colors](~/user-interface/graphics/colors.md).
+For more information about <xref:Microsoft.Maui.Controls.Brush> objects, see [Brushes](~/user-interface/brushes/index.md). For more information about valid `Color` values, see [Colors](~/user-interface/graphics/colors.md).
 
 ## Stretch shapes
 
