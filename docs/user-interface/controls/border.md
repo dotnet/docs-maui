@@ -15,7 +15,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Border>
 - `Content`, of type `IView`, represents the content to display in the border. This property is the `ContentProperty` of the <xref:Microsoft.Maui.Controls.Border> class, and therefore does not need to be explicitly set from XAML.
 - `Padding`, of type `Thickness`, represents the distance between the border and its child element.
 - `StrokeShape`, of type `IShape`, describes the shape of the border. This property has a type converter applied to it that can convert a string to its equivalent `IShape`.
-- `Stroke`, of type `Brush`, indicates the brush used to paint the border.
+- `Stroke`, of type <xref:Microsoft.Maui.Controls.Brush>, indicates the brush used to paint the border.
 - `StrokeThickness`, of type `double`, indicates the width of the border. The default value of this property is 1.0.
 - `StrokeDashArray`, of type `DoubleCollection`, which represents a collection of `double` values that indicate the pattern of dashes and gaps that make up the border.
 - `StrokeDashOffset`, of type `double`, specifies the distance within the dash pattern where a dash begins. The default value of this property is 0.0.
@@ -106,7 +106,7 @@ In this example, a border with rounded top-left and bottom-right corners is draw
 
 :::image type="content" source="media/border/border.png" alt-text="Border around a Label screenshot.":::
 
-Because the `Stroke` property is of type `Brush`, borders can also be drawn using gradients:
+Because the `Stroke` property is of type <xref:Microsoft.Maui.Controls.Brush>, borders can also be drawn using gradients:
 
 ```xaml
 <Border StrokeThickness="4"

@@ -12,7 +12,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.TabbedP
 
 <xref:Microsoft.Maui.Controls.TabbedPage> defines the following properties:
 
-- `BarBackground`, of type `Brush`, defines the background of the tab bar.
+- `BarBackground`, of type <xref:Microsoft.Maui.Controls.Brush>, defines the background of the tab bar.
 - `BarBackgroundColor`, of type `Color`, defines the background color of the tab bar.
 - `BarTextColor`, of type `Color`, represents the color of the text on the tab bar.
 - `SelectedTabColor`, of type `Color`, indicates the color of a tab when it's selected.

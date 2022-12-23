@@ -23,10 +23,10 @@ For more information about the `FillRule` enumeration, see [Fill rules](fillrule
 
 ## Create a Polyline
 
-To draw a polyline, create a <xref:Microsoft.Maui.Controls.Shapes.Polyline> object and set its `Points` property to the vertices of a shape. To give the polyline an outline, set its `Stroke` property to a `Brush`-derived object. The `StrokeThickness` property specifies the thickness of the polyline outline. For more information about `Brush` objects, see [Brushes](~/user-interface/brushes/index.md).
+To draw a polyline, create a <xref:Microsoft.Maui.Controls.Shapes.Polyline> object and set its `Points` property to the vertices of a shape. To give the polyline an outline, set its `Stroke` property to a <xref:Microsoft.Maui.Controls.Brush>-derived object. The `StrokeThickness` property specifies the thickness of the polyline outline. For more information about <xref:Microsoft.Maui.Controls.Brush> objects, see [Brushes](~/user-interface/brushes/index.md).
 
 > [!IMPORTANT]
-> If you set the `Fill` property of a <xref:Microsoft.Maui.Controls.Shapes.Polyline> to a `Brush`-derived object, the interior space of the polyline is painted, even if the start point and end point do not intersect.
+> If you set the `Fill` property of a <xref:Microsoft.Maui.Controls.Shapes.Polyline> to a <xref:Microsoft.Maui.Controls.Brush>-derived object, the interior space of the polyline is painted, even if the start point and end point do not intersect.
 
 The following XAML example shows how to draw a polyline:
 
