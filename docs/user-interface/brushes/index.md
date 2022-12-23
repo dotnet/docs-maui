@@ -16,7 +16,7 @@ The <xref:Microsoft.Maui.Controls.Brush> class is an abstract class that paints 
 - <xref:Microsoft.Maui.Controls.LinearGradientBrush>, which paints an area with a linear gradient. For more information, see [Linear gradient brushes](lineargradient.md).
 - <xref:Microsoft.Maui.Controls.RadialGradientBrush>, which paints an area with a radial gradient. For more information, see [Radial gradient brushes](radialgradient.md).
 
-Instances of these brush types can be assigned to the `Stroke` and `Fill` properties of a `Shape`, the `Stoke` property of a <xref:Microsoft.Maui.Controls.Border>, the <xref:Microsoft.Maui.Controls.Brush> property of a `Shadow`, and the `Background` property of a <xref:Microsoft.Maui.Controls.VisualElement>.
+Instances of these brush types can be assigned to the `Stroke` and `Fill` properties of a `Shape`, the `Stoke` property of a <xref:Microsoft.Maui.Controls.Border>, the `Brush` property of a `Shadow`, and the `Background` property of a <xref:Microsoft.Maui.Controls.VisualElement>.
 
 > [!NOTE]
 > The `VisualElement.Background` property enables brushes to be used as the background in any control.
