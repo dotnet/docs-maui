@@ -12,7 +12,7 @@ Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for Aug
 
 ### New articles
 
-- [Deploy an iOS app using hot restart](../deployment/hot-restart.md)
+- [Deploy an iOS app using hot restart](../ios/hot-restart.md)
 - [Deployment](../deployment/index.md)
 - [Project configuration for .NET MAUI apps](../deployment/visual-studio-properties.md)
 
