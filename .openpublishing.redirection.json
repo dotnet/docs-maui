@@ -15,6 +15,10 @@
     {
       "source_path": "docs/user-interface/menubar.md",
       "redirect_url": "/dotnet/maui/user-interface/menu-bar"
+    },
+    {
+      "source_path": "docs/deployment/hot-restart.md",
+      "redirect_url": "/dotnet/maui/ios/hot-restart"
     }
   ]
 }
