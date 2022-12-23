@@ -21,7 +21,7 @@ The `FlexLayout` class defines the following properties:
 - `Position`, of type `FlexPosition`, which determines whether the position of children are relative to each other, or by using fixed values. The default value of this property is `Relative`.
 - `Wrap`, of type `FlexWrap`, which controls whether children are laid out in a single line or in multiple lines. The default value of this property is `NoWrap`. For more information, see [Wrap](#wrap).
 - `AlignSelf`, of type `FlexAlignSelf`, which is an attached property that indicates how the layout engine will distribute space between and around children for a specific child along the cross axis. The default value of this property is `Auto`. For more information, see [AlignSelf](#alignself).
-- `Basis`, of type `FlexBasis`, which is an attached property that defines the initial main axis dimension of the child. The default value of this property is `Auto`. For more information, see [Basis](#basis).
+- `Basis`, of type `FlexBasis`, which is an attached property that defines the initial main size of the child before free space is distributed according to other property values. The default value of this property is `Auto`. For more information, see [Basis](#basis).
 - `Grow`, of type `float`, which is an attached property that specifies the amount of available space the child should use on the main axis. The default value of this property is 0.0. A validation callback ensures that when the property is set, its value is greater than or equal to 0. For more information, see [Grow](#grow).
 - `Order`, of type `int`, which is an attached property that determines whether the child should be laid out before or after other children in the container. The default value of this property is 0. For more information, see [Order](#order).
 - `Shrink`, of type `float`, which is an attached property that controls how a child should shrink so that all children can fit inside the container. The default value of this property is 1.0. A validation callback ensures that when the property is set, its value is greater than or equal to 0. For more information, see [Shrink](#shrink).
@@ -150,7 +150,7 @@ Usually, children are arranged in the order in which they are added to the `Flex
 
 ### Basis
 
-The `Basis` property, of type `FlexBasis`, defines the amount of space that's allocated to a child on the main axis. The value specified by this property is the size along the main axis of the parent `FlexLayout`. Therefore, this property indicates the width of a child when children are arranged in rows, or the height of a child when children are arranged in columns. This property is called *basis* because it specifies a size that is the basis of all subsequent layout.
+The `Basis` property, of type `FlexBasis`, defines the initial size of the child on the main axis before free space is distributed according to other property values. The value specified by this property is the size along the main axis of the parent `FlexLayout`. Therefore, this property indicates the width of a child when children are arranged in rows, or the height of a child when children are arranged in columns. This property is called *basis* because it specifies a size that is the basis of all subsequent layout.
 
 The `FlexBasis` type is a structure that enables size to be specified in device-independent units, or as a percentage of the size of the `FlexLayout`. The default value of the `Basis` property is `Auto`, which means that the child's requested width or height is used.
 
