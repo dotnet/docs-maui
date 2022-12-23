@@ -1,7 +1,7 @@
 ---
 title: "Create custom controls with .NET MAUI handlers"
 description: "Learn how to create a .NET MAUI handler, to provide the platform implementations for a cross-platform video control."
-ms.date: 11/15/2022
+ms.date: 12/20/2022
 ---
 
 # Create a custom control using handlers
@@ -14,8 +14,12 @@ A standard requirement for apps is the ability to play videos. This article exam
 - A resource, which is a file embedded in the app.
 - A file, from the device's video library.
 
+::: moniker range="=net-maui-6.0"
+
 > [!IMPORTANT]
-> The Windows App SDK v1.2 includes a control to play video. However, .NET MAUI currently uses an earlier of the Windows App SDK. Therefore, the Windows App SDK v1.2 must be added to your .NET MAUI app project with the NuGet package manager, if you want to play video on Windows.
+> The Windows App SDK v1.2 includes a control to play video. However, .NET MAUI 6.0 uses an earlier of this SDK. Therefore, to play video on Windows from a .NET MAUI 6.0 app requires you to add the Windows App SDK v1.2 to your app project with the NuGet package manager. Alternatively, use .NET MAUI 7.0 which automatically uses the Windows App SDK v1.2.
+
+::: moniker-end
 
 Video controls require *transport controls*, which are buttons for playing and pausing the video, and a positioning bar that shows the progress through the video and allows the user to move quickly to a different location. The `Video` control can either use the transport controls and positioning bar provided by the platform, or you can supply custom transport controls and a positioning bar. The following screenshots show the control on iOS, with and without custom transport controls:
 
@@ -924,6 +928,75 @@ public class MauiVideoPlayer : Grid, IDisposable
 ```
 
 If the `Video.AreTransportControlsEnabled` property is set to `false`, the `MediaPlayerElement` doesn't show its playback controls. In this scenario, you can then control video playback programmatically or supply your own transport controls. For more information, see [Create custom transport controls](#create-custom-transport-controls).
+
+## Convert a cross-platform control into a platform control
+
+Any .NET MAUI cross-platform control, that derives from <xref:Microsoft.Maui.Controls.Element>, can be converted to its underlying platform control with the <xref:Microsoft.Maui.Platform.ElementExtensions.ToPlatform*> extension method:
+
+- On Android, <xref:Microsoft.Maui.Platform.ElementExtensions.ToPlatform*> converts a .NET MAUI control to an Android <xref:Android.Views.View> object.
+- On iOS and Mac Catalyst, <xref:Microsoft.Maui.Platform.ElementExtensions.ToPlatform*> converts a .NET MAUI control to a <xref:UIKit.UIView> object.
+- On Windows, <xref:Microsoft.Maui.Platform.ElementExtensions.ToPlatform*> converts a .NET MAUI control to a `FrameworkElement` object.
+
+> [!NOTE]
+> The <xref:Microsoft.Maui.Platform.ElementExtensions.ToPlatform*> method is in the `Microsoft.Maui.Platform` namespace.
+
+On all platforms, the <xref:Microsoft.Maui.Platform.ElementExtensions.ToPlatform*> method requires a <xref:Microsoft.Maui.MauiContext> argument.
+
+The <xref:Microsoft.Maui.Platform.ElementExtensions.ToPlatform*> method can convert a cross-platform control to its underlying platform control from platform code, such as in a partial handler class for a platform:
+
+```csharp
+using Microsoft.Maui.Handlers;
+using Microsoft.Maui.Platform;
+using VideoDemos.Controls;
+using VideoDemos.Platforms.Android;
+
+namespace VideoDemos.Handlers
+{
+    public partial class VideoHandler : ViewHandler<Video, MauiVideoPlayer>
+    {
+        ...
+        public static void MapSource(VideoHandler handler, Video video)
+        {
+            handler.PlatformView?.UpdateSource();
+
+            // Convert cross-platform control to its underlying platform control
+            MauiVideoPlayer mvp = (MauiVideoPlayer)video.ToPlatform(handler.MauiContext);
+            ...
+        }
+        ...
+    }
+}
+```
+
+In this example, in the `VideoHandler` partial class for Android, the `MapSource` method converts the `Video` instance to a `MauiVideoPlayer` object.
+
+The <xref:Microsoft.Maui.Platform.ElementExtensions.ToPlatform*> method can also convert a cross-platform control to its underlying platform control from cross-platform code:
+
+```csharp
+using Microsoft.Maui.Platform;
+
+namespace VideoDemos.Views;
+
+public partial class MyPage : ContentPage
+{
+    ...
+    protected override void OnHandlerChanged()
+    {
+        // Convert cross-platform control to its underlying platform control
+#if ANDROID
+        Android.Views.View nativeView = video.ToPlatform(video.Handler.MauiContext);
+#elif IOS || MACCATALYST
+        UIKit.UIView nativeView = video.ToPlatform(video.Handler.MauiContext);
+#elif WINDOWS
+        Microsoft.UI.Xaml.FrameworkElement nativeView = video.ToPlatform(video.Handler.MauiContext);
+#endif
+        ...
+    }
+    ...
+}
+```
+
+In this example, a cross-platform `Video` control named `video` is converted to its underlying native view on each platform in the <xref:Microsoft.Maui.Controls.Element.OnHandlerChanged> override. This override is called when the native view that implements the cross-platform control is available and initialized. The object returned by the <xref:Microsoft.Maui.Platform.ElementExtensions.ToPlatform*> method could be cast to its exact native type, which here is a `MauiVideoPlayer`.
 
 ## Play a video
 
