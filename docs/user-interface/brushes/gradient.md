@@ -12,7 +12,7 @@ The .NET Multi-platform App UI (.NET MAUI) `GradientBrush` class derives from th
 
 Classes that derive from `GradientBrush` describe different ways of interpreting gradient stops, and .NET MAUI provides the following gradient brushes:
 
-- `LinearGradientBrush`, which paints an area with a linear gradient. For more information, see [Linear gradient brushes](lineargradient.md).
+- <xref:Microsoft.Maui.Controls.LinearGradientBrush>, which paints an area with a linear gradient. For more information, see [Linear gradient brushes](lineargradient.md).
 - `RadialGradientBrush`, which paints an area with a radial gradient. For more information, see [Radial gradient brushes](radialgradient.md).
 
 The `GradientBrush` class defines the <xref:Microsoft.Maui.Controls.GradientBrush.GradientStops> property, of type <xref:Microsoft.Maui.Controls.GradientStopCollection, which represents the brush's gradient stops, each of which specifies a color and an offset along the brush's gradient axis. A <xref:Microsoft.Maui.Controls.GradientStopCollection is an `ObservableCollection` of <xref:Microsoft.Maui.Controls.GradientStop> objects. The <xref:Microsoft.Maui.Controls.GradientBrush.GradientStops> property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means that it can be the target of data bindings, and styled.
@@ -34,7 +34,7 @@ These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> o
 > [!IMPORTANT]
 > The coordinate system used by gradients is relative to a bounding box for the output area. 0 indicates 0 percent of the bounding box, and 1 indicates 100 percent of the bounding box. Therefore, (0.5,0.5) describes a point in the middle of the bounding box, and (1,1) describes a point at the bottom right of the bounding box.
 
-The following XAML example creates a diagonal `LinearGradientBrush` with four colors:
+The following XAML example creates a diagonal <xref:Microsoft.Maui.Controls.LinearGradientBrush> with four colors:
 
 ```xaml
 <LinearGradientBrush StartPoint="0,0"
