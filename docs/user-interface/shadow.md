@@ -20,7 +20,7 @@ The `Shadow` class defines the following properties:
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 > [!IMPORTANT]
-> The `Brush` property only currently supports a `SolidColorBrush`.
+> The `Brush` property only currently supports a <xref:Microsoft.Maui.Controls.SolidColorBrush>.
 
 ## Create a Shadow
 
