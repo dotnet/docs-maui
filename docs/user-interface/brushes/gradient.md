@@ -15,16 +15,16 @@ Classes that derive from `GradientBrush` describe different ways of interpreting
 - `LinearGradientBrush`, which paints an area with a linear gradient. For more information, see [Linear gradient brushes](lineargradient.md).
 - `RadialGradientBrush`, which paints an area with a radial gradient. For more information, see [Radial gradient brushes](radialgradient.md).
 
-The `GradientBrush` class defines the <xref:Microsoft.Maui.Controls.GradientBrush.GradientStops> property, of type <xref:Microsoft.Maui.Controls.GradientStopCollection, which represents the brush's gradient stops, each of which specifies a color and an offset along the brush's gradient axis. A <xref:Microsoft.Maui.Controls.GradientStopCollection is an `ObservableCollection` of `GradientStop` objects. The <xref:Microsoft.Maui.Controls.GradientBrush.GradientStops> property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means that it can be the target of data bindings, and styled.
+The `GradientBrush` class defines the <xref:Microsoft.Maui.Controls.GradientBrush.GradientStops> property, of type <xref:Microsoft.Maui.Controls.GradientStopCollection, which represents the brush's gradient stops, each of which specifies a color and an offset along the brush's gradient axis. A <xref:Microsoft.Maui.Controls.GradientStopCollection is an `ObservableCollection` of <xref:Microsoft.Maui.Controls.GradientStop> objects. The <xref:Microsoft.Maui.Controls.GradientBrush.GradientStops> property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means that it can be the target of data bindings, and styled.
 
 > [!NOTE]
 > The <xref:Microsoft.Maui.Controls.GradientBrush.GradientStops> property is the `ContentProperty` of the `GradientBrush` class, and so does not need to be explicitly set from XAML.
 
 ## Gradient stops
 
-Gradient stops are the building blocks of a gradient brush, and specify the colors in the gradient and their location along the gradient axis. Gradient stops are specified using `GradientStop` objects.
+Gradient stops are the building blocks of a gradient brush, and specify the colors in the gradient and their location along the gradient axis. Gradient stops are specified using <xref:Microsoft.Maui.Controls.GradientStop> objects.
 
-The `GradientStop` class defines the following properties:
+The <xref:Microsoft.Maui.Controls.GradientStop> class defines the following properties:
 
 - `Color`, of type `Color`, which represents the color of the gradient stop.
 - `Offset`, of type `float`, which represents the location of the gradient stop within the gradient vector. The default value of this property is 0, and valid values are in the range 0.0-1.0. The closer this value is to 0, the closer the color is to the start of the gradient. Similarly, the closer this value is to 1, the closer the color is to the end of the gradient.

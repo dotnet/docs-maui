@@ -8,7 +8,7 @@ ms.date: 01/11/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-brushes)
 
-The .NET Multi-platform App UI (.NET MAUI) `RadialGradientBrush` class derives from the `GradientBrush` class, and paints an area with a radial gradient, which blends two or more colors across a circle. `GradientStop` objects are used to specify the colors in the gradient and their positions. For more information about `GradientStop` objects, see [Gradients](gradient.md).
+The .NET Multi-platform App UI (.NET MAUI) `RadialGradientBrush` class derives from the `GradientBrush` class, and paints an area with a radial gradient, which blends two or more colors across a circle. <xref:Microsoft.Maui.Controls.GradientStop> objects are used to specify the colors in the gradient and their positions. For more information about <xref:Microsoft.Maui.Controls.GradientStop> objects, see [Gradients](gradient.md).
 
 The `RadialGradientBrush` class defines the following properties:
 
@@ -17,7 +17,7 @@ The `RadialGradientBrush` class defines the following properties:
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
-The `RadialGradientBrush` class also has an `IsEmpty` method that returns a `bool` that represents whether the brush has been assigned any `GradientStop` objects.
+The `RadialGradientBrush` class also has an `IsEmpty` method that returns a `bool` that represents whether the brush has been assigned any <xref:Microsoft.Maui.Controls.GradientStop> objects.
 
 > [!NOTE]
 > Radial gradients can also be created with the `radial-gradient()` CSS function.
@@ -26,7 +26,7 @@ The `RadialGradientBrush` class also has an `IsEmpty` method that returns a `boo
 
 A radial gradient brush's gradient stops are positioned along a gradient axis defined by a circle. The gradient axis radiates from the center of the circle to its circumference. The position and size of the circle can be changed using the brush's `Center` and `Radius` properties. The circle defines the end point of the gradient. Therefore, a gradient stop at 1.0 defines the color at the circle's circumference. A gradient stop at 0.0 defines the color at the center of the circle.
 
-To create a radial gradient, create a `RadialGradientBrush` object and set its `Center` and `Radius` properties. Then, add two or more `GradientStop` objects to the `RadialGradientBrush.GradientStops` collection, that specify the colors in the gradient and their positions.
+To create a radial gradient, create a `RadialGradientBrush` object and set its `Center` and `Radius` properties. Then, add two or more <xref:Microsoft.Maui.Controls.GradientStop> objects to the `RadialGradientBrush.GradientStops` collection, that specify the colors in the gradient and their positions.
 
 The following XAML example shows a `RadialGradientBrush` that's set as the `Background` of a <xref:Microsoft.Maui.Controls.Frame>:
 
