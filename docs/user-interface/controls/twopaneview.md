@@ -10,7 +10,7 @@ ms.date: 11/03/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-controls-twopaneview/)
 
-The `TwoPaneView` class represents a container with two views that size and position content in the available space, either side-by-side or top-to-bottom. `TwoPaneView` inherits from `Grid` so the easiest way to think about these properties is as if they are being applied to a grid.
+The `TwoPaneView` class represents a container with two views that size and position content in the available space, either side-by-side or top-to-bottom. `TwoPaneView` inherits from <xref:Microsoft.Maui.Controls.Grid> so the easiest way to think about these properties is as if they are being applied to a grid.
 
 :::image type="content" source="media/twopaneview/foldable-maui-app.png" alt-text="Surface Duo dual-screen emulator showing a basic TwoPaneView test app":::
 

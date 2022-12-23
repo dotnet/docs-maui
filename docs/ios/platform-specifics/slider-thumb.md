@@ -6,7 +6,7 @@ ms.date: 04/05/2022
 
 # Slider thumb tap on iOS
 
-This .NET Multi-platform App UI (.NET MAUI) iOS platform-specific enables the `Slider.Value` property to be set by tapping on a position on the `Slider` bar, rather than by having to drag the `Slider` thumb. It's consumed in XAML by setting the `Slider.UpdateOnTap` bindable property to `true`:
+This .NET Multi-platform App UI (.NET MAUI) iOS platform-specific enables the `Slider.Value` property to be set by tapping on a position on the <xref:Microsoft.Maui.Controls.Slider> bar, rather than by having to drag the <xref:Microsoft.Maui.Controls.Slider> thumb. It's consumed in XAML by setting the `Slider.UpdateOnTap` bindable property to `true`:
 
 ```xaml
 <ContentPage ...
@@ -29,8 +29,8 @@ var slider = new Microsoft.Maui.Controls.Slider();
 slider.On<iOS>().SetUpdateOnTap(true);
 ```
 
-The `Slider.On<iOS>` method specifies that this platform-specific will only run on iOS. The `Slider.SetUpdateOnTap` method, in the `Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific` namespace, is used to control whether a tap on the `Slider` bar will set the `Slider.Value` property. In addition, the `Slider.GetUpdateOnTap` method can be used to return whether a tap on the `Slider` bar will set the `Slider.Value` property.
+The `Slider.On<iOS>` method specifies that this platform-specific will only run on iOS. The `Slider.SetUpdateOnTap` method, in the `Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific` namespace, is used to control whether a tap on the <xref:Microsoft.Maui.Controls.Slider> bar will set the `Slider.Value` property. In addition, the `Slider.GetUpdateOnTap` method can be used to return whether a tap on the <xref:Microsoft.Maui.Controls.Slider> bar will set the `Slider.Value` property.
 
-The result is that a tap on the `Slider` bar can move the `Slider` thumb and set the `Slider.Value` property:
+The result is that a tap on the <xref:Microsoft.Maui.Controls.Slider> bar can move the <xref:Microsoft.Maui.Controls.Slider> thumb and set the `Slider.Value` property:
 
 :::image type="content" source="media/slider-thumb/slider-updateontap.png" alt-text="Slider Update on Tap enabled.":::

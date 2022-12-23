@@ -46,7 +46,7 @@ The `FlyoutItem.Title` property, of type `string`, defines the title of the flyo
 In this example, each `ShellContent` object can only be accessed through flyout items, and not through tabs. This is because by default, tabs will only be displayed if the flyout item contains more than one tab.
 
 > [!IMPORTANT]
-> In a Shell app, pages are created on demand in response to navigation. This is accomplished by using the `DataTemplate` markup extension to set the `ContentTemplate` property of each `ShellContent` object to a `ContentPage` object.
+> In a Shell app, pages are created on demand in response to navigation. This is accomplished by using the `DataTemplate` markup extension to set the `ContentTemplate` property of each `ShellContent` object to a <xref:Microsoft.Maui.Controls.ContentPage> object.
 
 Shell has implicit conversion operators that enable the Shell visual hierarchy to be simplified, without introducing additional views into the visual tree. This is possible because a subclassed `Shell` object can only ever contain `FlyoutItem` objects or a `TabBar` object, which can only ever contain `Tab` objects, which can only ever contain `ShellContent` objects. These implicit conversion operators can be used to remove the `FlyoutItem` and `Tab` objects from the previous example:
 
@@ -243,7 +243,7 @@ The default `DataTemplate` used for each `FlyoutItem` is shown below:
 
 This template can be used for as a basis for making alterations to the existing flyout layout, and also shows the visual states that are implemented for flyout items.
 
-In addition, the `Grid`, `Image`, and `Label` elements all have `x:Name` values and so can be targeted with the Visual State Manager. For more information, see [Set state on multiple elements](~/user-interface/visual-states.md#set-state-on-multiple-elements).
+In addition, the <xref:Microsoft.Maui.Controls.Grid>, <xref:Microsoft.Maui.Controls.Image>, and <xref:Microsoft.Maui.Controls.Label> elements all have `x:Name` values and so can be targeted with the Visual State Manager. For more information, see [Set state on multiple elements](~/user-interface/visual-states.md#set-state-on-multiple-elements).
 
 > [!NOTE]
 > The same template can also be used for `MenuItem` objects.
@@ -272,7 +272,7 @@ Flyout items, which represent the flyout content, can optionally be replaced wit
 </Shell>
 ```
 
-In this example, the flyout content is replaced with a `CollectionView` that displays the title of each item in the `FlyoutItems` collection.
+In this example, the flyout content is replaced with a <xref:Microsoft.Maui.Controls.CollectionView> that displays the title of each item in the `FlyoutItems` collection.
 
 > [!NOTE]
 > The `FlyoutItems` property, in the `Shell` class, is a read-only collection of flyout items.

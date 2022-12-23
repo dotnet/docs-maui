@@ -37,7 +37,7 @@ However, there is an alternative way to set a property in XAML:
 
 These two examples that specify the `TextColor` property are functionally equivalent, and enable the introduction of some basic terminology:
 
-- `Label` is an  *object element*. It is a .NET MAUI object expressed as an XML element.
+- <xref:Microsoft.Maui.Controls.Label> is an  *object element*. It is a .NET MAUI object expressed as an XML element.
 - `Text`,  `VerticalOptions`, `FontAttributes` and  `FontSize` are  *property attributes*. They are .NET MAUI properties expressed as XML attributes.
 - In the second example, `TextColor` has become a  *property element*. It is a .NET MAUI property expressed as an XML element.
 
@@ -61,7 +61,7 @@ Property-element syntax can also be used on more than one property of an object:
 </Label>
 ```
 
-While property-element syntax might seem unnecessary, it's essential when the value of a property is too complex to be expressed as a simple string. Within the property-element tags you can instantiate another object and set its properties. For example, the `Grid` layout has properties named `RowDefinitions` and `ColumnDefinitions`, which are of type `RowDefinitionCollection` and `ColumnDefinitionCollection` respectively. These types are collections of `RowDefinition` and `ColumnDefinition` objects, and you typically use property element syntax to set them:
+While property-element syntax might seem unnecessary, it's essential when the value of a property is too complex to be expressed as a simple string. Within the property-element tags you can instantiate another object and set its properties. For example, the <xref:Microsoft.Maui.Controls.Grid> layout has properties named `RowDefinitions` and `ColumnDefinitions`, which are of type `RowDefinitionCollection` and `ColumnDefinitionCollection` respectively. These types are collections of `RowDefinition` and `ColumnDefinition` objects, and you typically use property element syntax to set them:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -86,11 +86,11 @@ While property-element syntax might seem unnecessary, it's essential when the va
 
 ## Attached properties
 
-In the previous example you saw that the `Grid` requires property elements for the `RowDefinitions` and `ColumnDefinitions` collections to define the rows and columns. This suggests that there must be a technique for indicating the row and column where each child of the `Grid` resides.
+In the previous example you saw that the <xref:Microsoft.Maui.Controls.Grid> requires property elements for the `RowDefinitions` and `ColumnDefinitions` collections to define the rows and columns. This suggests that there must be a technique for indicating the row and column where each child of the <xref:Microsoft.Maui.Controls.Grid> resides.
 
-Within the tag for each child of the `Grid` you specify the row and column of that child using the `Grid.Row` and `Grid.Column` attributes, which have default values of 0. You can also indicate if a child spans more than one row or column with the `Grid.RowSpan` and `Grid.ColumnSpan` attributes, which have default values of 1.
+Within the tag for each child of the <xref:Microsoft.Maui.Controls.Grid> you specify the row and column of that child using the `Grid.Row` and `Grid.Column` attributes, which have default values of 0. You can also indicate if a child spans more than one row or column with the `Grid.RowSpan` and `Grid.ColumnSpan` attributes, which have default values of 1.
 
-The following example demonstrates placing children within a `Grid`:
+The following example demonstrates placing children within a <xref:Microsoft.Maui.Controls.Grid>:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -149,16 +149,16 @@ This XAML results in the following layout:
 
 :::image type="content" source="media/essential-syntax/grid.png" alt-text=".NET MAUI Grid layout.":::
 
-The `Grid.Row`, `Grid.Column`, `Grid.RowSpan`, and `Grid.ColumnSpan` attributes appear to be properties of the `Grid` class, but this class doesn't define anything named `Row`, `Column`, `RowSpan`, or `ColumnSpan`. Instead, the `Grid` class defines four bindable properties named `RowProperty`, `ColumnProperty`, `RowSpanProperty`, and `ColumnSpanProperty`, that are special types of bindable properties known as *attached properties*. They are defined by the `Grid` class but set on children of the `Grid`.
+The `Grid.Row`, `Grid.Column`, `Grid.RowSpan`, and `Grid.ColumnSpan` attributes appear to be properties of the <xref:Microsoft.Maui.Controls.Grid> class, but this class doesn't define anything named `Row`, `Column`, `RowSpan`, or `ColumnSpan`. Instead, the <xref:Microsoft.Maui.Controls.Grid> class defines four bindable properties named `RowProperty`, `ColumnProperty`, `RowSpanProperty`, and `ColumnSpanProperty`, that are special types of bindable properties known as *attached properties*. They are defined by the <xref:Microsoft.Maui.Controls.Grid> class but set on children of the <xref:Microsoft.Maui.Controls.Grid>.
 
 > [!NOTE]
-> When you wish to use these attached properties in code, the `Grid` class provides static methods named `GetRow`, `SetRow`, `GetColumn`, `SetColumn`, `GetRowSpan`, `SetRowSpan`, `GetColumnSpan`, and `SetColumnSpan`.
+> When you wish to use these attached properties in code, the <xref:Microsoft.Maui.Controls.Grid> class provides static methods named `GetRow`, `SetRow`, `GetColumn`, `SetColumn`, `GetRowSpan`, `SetRowSpan`, `GetColumnSpan`, and `SetColumnSpan`.
 
-Attached properties are recognizable in XAML as attributes containing both a class and a property name separated by a period. They are called *attached properties* because they are defined by one class (in this case, `Grid`) but attached to other objects (in this case, children of the `Grid`). During layout, the `Grid` can interrogate the values of these attached properties to know where to place each child.
+Attached properties are recognizable in XAML as attributes containing both a class and a property name separated by a period. They are called *attached properties* because they are defined by one class (in this case, <xref:Microsoft.Maui.Controls.Grid>) but attached to other objects (in this case, children of the <xref:Microsoft.Maui.Controls.Grid>). During layout, the <xref:Microsoft.Maui.Controls.Grid> can interrogate the values of these attached properties to know where to place each child.
 
 ## Content properties
 
-In the previous example, the `Grid` object was set to the `Content` property of the `ContentPage`. However, the `Content` property wasn't referenced in the XAML but can be:
+In the previous example, the <xref:Microsoft.Maui.Controls.Grid> object was set to the `Content` property of the <xref:Microsoft.Maui.Controls.ContentPage>. However, the `Content` property wasn't referenced in the XAML but can be:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -183,9 +183,9 @@ public class ContentPage : TemplatedPage
 }
 ```
 
-Any property specified as the `ContentProperty` of a class means that the property-element tags for the property are not required. Therefore, the example above specifies that any XAML content that appears between the start and end `ContentPage` tags is assigned to the `Content` property.
+Any property specified as the `ContentProperty` of a class means that the property-element tags for the property are not required. Therefore, the example above specifies that any XAML content that appears between the start and end <xref:Microsoft.Maui.Controls.ContentPage> tags is assigned to the `Content` property.
 
-Many classes also have `ContentProperty` attribute definitions. For example, the content property of `Label` is `Text`. <!--For more information, see the [API documentation]().-->
+Many classes also have `ContentProperty` attribute definitions. For example, the content property of <xref:Microsoft.Maui.Controls.Label> is `Text`. <!--For more information, see the [API documentation]().-->
 
 ## Platform differences
 

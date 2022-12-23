@@ -8,25 +8,25 @@ ms.date: 01/12/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-shapes)
 
-The .NET Multi-platform App UI (.NET MAUI) `Line` class derives from the `Shape` class, and can be used to draw lines. For information on the properties that the `Line` class inherits from the `Shape` class, see [Shapes](index.md).
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Shapes.Line> class derives from the `Shape` class, and can be used to draw lines. For information on the properties that the <xref:Microsoft.Maui.Controls.Shapes.Line> class inherits from the `Shape` class, see [Shapes](index.md).
 
-`Line` defines the following properties:
+<xref:Microsoft.Maui.Controls.Shapes.Line> defines the following properties:
 
 - `X1`, of type double, indicates the x-coordinate of the start point of the line. The default value of this property is 0.0.
 - `Y1`, of type double, indicates the y-coordinate of the start point of the line. The default value of this property is 0.0.
 - `X2`, of type double, indicates the x-coordinate of the end point of the line. The default value of this property is 0.0.
 - `Y2`, of type double, indicates the y-coordinate of the end point of the line. The default value of this property is 0.0.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 For information about controlling how line ends are drawn, see [Control line ends](index.md#control-line-ends).
 
 ## Create a Line
 
-To draw a line, create a `Line` object and set its `X1` and `Y1` properties to its start point, and its `X2` and `Y2` properties to its end point. In addition, set its `Stroke` property to a `Brush`-derived object because a line without a stroke is invisible. For more information about `Brush` objects, see [Brushes](~/user-interface/brushes/index.md).
+To draw a line, create a <xref:Microsoft.Maui.Controls.Shapes.Line> object and set its `X1` and `Y1` properties to its start point, and its `X2` and `Y2` properties to its end point. In addition, set its `Stroke` property to a `Brush`-derived object because a line without a stroke is invisible. For more information about `Brush` objects, see [Brushes](~/user-interface/brushes/index.md).
 
 > [!NOTE]
-> Setting the `Fill` property of a `Line` has no effect, because a line has no interior.
+> Setting the `Fill` property of a <xref:Microsoft.Maui.Controls.Shapes.Line> has no effect, because a line has no interior.
 
 The following XAML example shows how to draw a line:
 

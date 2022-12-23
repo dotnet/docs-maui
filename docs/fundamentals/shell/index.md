@@ -21,7 +21,7 @@ In a .NET MAUI Shell app, the visual hierarchy of the app is described in a clas
 
 1. `FlyoutItem` or `TabBar`. A `FlyoutItem` represents one or more items in the flyout, and should be used when the navigation pattern for the app requires a flyout. A `TabBar` represents the bottom tab bar, and should be used when the navigation pattern for the app begins with bottom tabs and doesn't require a flyout.
 1. `Tab`, which represents grouped content, navigable by bottom tabs.
-1. `ShellContent`, which represents the `ContentPage` objects for each tab.
+1. `ShellContent`, which represents the <xref:Microsoft.Maui.Controls.ContentPage> objects for each tab.
 
 These objects don't represent any user interface, but rather the organization of the app's visual hierarchy. Shell will take these objects and produce the navigation user interface for the content.
 
@@ -43,11 +43,11 @@ In this example, some flyout items are duplicated as tab bar items. However, the
 > [!NOTE]
 > When the flyout isn't open the bottom tab bar can be considered to be the top level of navigation in the app.
 
-Each tab on the tab bar displays a `ContentPage`. However, if a bottom tab contains more than one page, the pages are navigable by the top tab bar:
+Each tab on the tab bar displays a <xref:Microsoft.Maui.Controls.ContentPage>. However, if a bottom tab contains more than one page, the pages are navigable by the top tab bar:
 
 :::image type="content" source="media/dogs.png" alt-text="Screenshot of Shell top tabs.":::
 
-Within each tab, additional `ContentPage` objects that are known as detail pages, can be navigated to:
+Within each tab, additional <xref:Microsoft.Maui.Controls.ContentPage> objects that are known as detail pages, can be navigated to:
 
 :::image type="content" source="media/dogdetails.png" alt-text="Screenshot of Shell page navigation.":::
 

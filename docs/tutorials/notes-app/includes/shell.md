@@ -50,7 +50,7 @@ The first customization you'll do is adding another page to the project. This pa
 Let's break down the key parts of the XAML controls placed on the page:
 
 - `<ContentPage>` is the root object for the `AboutPage` class.
-- `<VerticalStackLayout>` is the only child object of the `ContentPage`. `ContentPage` can only have one child object. The `VerticalStackLayout` type can have multiple children. This layout control arranges its children vertically, one after the other.
+- `<VerticalStackLayout>` is the only child object of the <xref:Microsoft.Maui.Controls.ContentPage>. <xref:Microsoft.Maui.Controls.ContentPage> can only have one child object. The <xref:Microsoft.Maui.Controls.VerticalStackLayout> type can have multiple children. This layout control arranges its children vertically, one after the other.
 - `<HorizontalStackLayout>` operates the same as a `<VerticalStackLayout>`, except its children are arranged horizontally.
 - `<Image>` displays an image, in this case it's using the `dotnet_bot.png` image that comes with every .NET MAUI project.
 - `<Label>` controls display text.

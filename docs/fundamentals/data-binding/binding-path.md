@@ -10,13 +10,13 @@ ms.date: 01/19/2022
 
 In .NET Multi-platform App UI (.NET MAUI), the `Path` property of the `Binding` class (or the `Path` property of the `Binding` markup extension) can be set to a single property, to a *sub-property* (a property of a property), or to a member of a collection.
 
-For example, suppose a page contains a `TimePicker`:
+For example, suppose a page contains a <xref:Microsoft.Maui.Controls.TimePicker>:
 
 ```xaml
 <TimePicker x:Name="timePicker">
 ```
 
-The `Time` property of `TimePicker` is of type `TimeSpan`, and it has a `TotalSeconds` property. A data binding can be created that references the `TotalSeconds` property of that `TimeSpan` value:
+The `Time` property of <xref:Microsoft.Maui.Controls.TimePicker> is of type `TimeSpan`, and it has a `TotalSeconds` property. A data binding can be created that references the `TotalSeconds` property of that `TimeSpan` value:
 
 ```xaml
 {Binding Source={x:Reference timePicker},
@@ -77,11 +77,11 @@ The following XAML shows multiple examples of binding to sub-properties:
 </ContentPage>
 ```
 
-In the second `Label`, the binding source is the page itself. The `Content` property is of type `StackLayout`, which has a `Children` property of type `IList<View>`, which has a `Count` property indicating the number of children.
+In the second <xref:Microsoft.Maui.Controls.Label>, the binding source is the page itself. The `Content` property is of type <xref:Microsoft.Maui.Controls.StackLayout>, which has a `Children` property of type `IList<View>`, which has a `Count` property indicating the number of children.
 
 ## Paths with indexers
 
-In the example above, the binding in the third `Label` references the [`CultureInfo`](xref:System.Globalization.CultureInfo) class in the `System.Globalization` namespace:
+In the example above, the binding in the third <xref:Microsoft.Maui.Controls.Label> references the [`CultureInfo`](xref:System.Globalization.CultureInfo) class in the `System.Globalization` namespace:
 
 ```xaml
 <Label Text="{Binding Source={x:Static globe:CultureInfo.CurrentCulture},
@@ -91,7 +91,7 @@ In the example above, the binding in the third `Label` references the [`CultureI
 
 The source is set to the static `CultureInfo.CurrentCulture` property, which is an object of type `CultureInfo`. That class defines a property named `DateTimeFormat` of type [`DateTimeFormatInfo`](xref:System.Globalization.DateTimeFormatInfo) that contains a `DayNames` collection. The index selects the fourth item.
 
-The fourth `Label` does something similar but for the culture associated with France. The `Source` property of the binding is set to `CultureInfo` object with a constructor:
+The fourth <xref:Microsoft.Maui.Controls.Label> does something similar but for the culture associated with France. The `Source` property of the binding is set to `CultureInfo` object with a constructor:
 
 ```xaml
 <Label>
@@ -112,7 +112,7 @@ The fourth `Label` does something similar but for the culture associated with Fr
 
 For more information about specifying constructor arguments in XAML, see [Pass constructor arguments](~/xaml/pass-arguments.md#pass-constructor-arguments).
 
-The last `Label` is similar to the second, except that it references one of the children of the `StackLayout`:
+The last <xref:Microsoft.Maui.Controls.Label> is similar to the second, except that it references one of the children of the <xref:Microsoft.Maui.Controls.StackLayout>:
 
 ```xaml
 <Label Text="{Binding Source={x:Reference page},
@@ -120,7 +120,7 @@ The last `Label` is similar to the second, except that it references one of the 
                       StringFormat='The first Label has {0} characters'}" />
 ```
 
-That child is a `Label`, which has a `Text` property of type `String`, which has a `Length` property. The first `Label` reports the `TimeSpan` set in the `TimePicker`, so when that text changes, the final `Label` changes as well:
+That child is a <xref:Microsoft.Maui.Controls.Label>, which has a `Text` property of type `String`, which has a `Length` property. The first <xref:Microsoft.Maui.Controls.Label> reports the `TimeSpan` set in the <xref:Microsoft.Maui.Controls.TimePicker>, so when that text changes, the final <xref:Microsoft.Maui.Controls.Label> changes as well:
 
 :::image type="content" source="media/binding-path/pathvariations.png" alt-text="Path variations.":::
 
@@ -133,7 +133,7 @@ Complex path definitions can be difficult to construct. You need to know the typ
                       StringFormat='{0}'}" />
 ```
 
-That displays the type of the binding source, or `DataBindingDemos.PathVariationsPage`. You know `PathVariationsPage` derives from `ContentPage`, so it has a `Content` property:
+That displays the type of the binding source, or `DataBindingDemos.PathVariationsPage`. You know `PathVariationsPage` derives from <xref:Microsoft.Maui.Controls.ContentPage>, so it has a `Content` property:
 
 ```xaml
 <Label Text="{Binding Source={x:Reference page},
@@ -143,4 +143,4 @@ That displays the type of the binding source, or `DataBindingDemos.PathVariation
 
 The type of the `Content` property is now revealed to be `Microsoft.Maui.Controls.StackLayout`. Add the `Children` property to the `Path` and the type is also `Microsoft.Maui.Controls.StackLayout`. Add an index to that and the type is `Microsoft.Maui.Controls.Label`. Continue in this way.
 
-As .NET MAUI processes the binding path, it installs a `PropertyChanged` handler on any object in the path that implements the `INotifyPropertyChanged` interface. For example, the final binding reacts to a change in the first `Label` because the `Text` property changes. If a property in the binding path does not implement `INotifyPropertyChanged`, any changes to that property will be ignored. Some changes could entirely invalidate the binding path, so you should use this technique only when the string of properties and sub-properties never become invalid.
+As .NET MAUI processes the binding path, it installs a `PropertyChanged` handler on any object in the path that implements the `INotifyPropertyChanged` interface. For example, the final binding reacts to a change in the first <xref:Microsoft.Maui.Controls.Label> because the `Text` property changes. If a property in the binding path does not implement `INotifyPropertyChanged`, any changes to that property will be ignored. Some changes could entirely invalidate the binding path, so you should use this technique only when the string of properties and sub-properties never become invalid.

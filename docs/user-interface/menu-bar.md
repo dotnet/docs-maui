@@ -13,7 +13,7 @@ Each top-level menu in the menu bar, known as a menu bar item, is represented by
 - `Text`, of type `string`, defines the menu text.
 - `IsEnabled`, of type `boolean`, specifies whether the menu is enabled. The default value of this property is `true`.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 A `MenuBarItem` can consist of the following children:
 
@@ -36,9 +36,9 @@ A `MenuBarItem` can consist of the following children:
 
 ## Create menu bar items
 
-`MenuBarItem` objects can be added to the `MenuBarItems` collection, of type `IList<MenuBarItem>`, on a `ContentPage`. .NET MAUI desktop apps will display a menu bar, containing menu items, when they are added to any `ContentPage` that's hosted in a `NavigationPage` or a Shell app.
+`MenuBarItem` objects can be added to the `MenuBarItems` collection, of type `IList<MenuBarItem>`, on a <xref:Microsoft.Maui.Controls.ContentPage>. .NET MAUI desktop apps will display a menu bar, containing menu items, when they are added to any <xref:Microsoft.Maui.Controls.ContentPage> that's hosted in a <xref:Microsoft.Maui.Controls.NavigationPage> or a Shell app.
 
-The following example shows a `ContentPage` that defines menu bar items:
+The following example shows a <xref:Microsoft.Maui.Controls.ContentPage> that defines menu bar items:
 
 ::: moniker range="=net-maui-6.0"
 

@@ -8,7 +8,7 @@ ms.date: 12/13/2021
 
 <!-- Sample link, if any, goes here -->
 
-The .NET Multi-platform App UI (.NET MAUI) `Shadow` class paints a shadow around a layout or view. The `VisualElement` class has a `Shadow` bindable property, of type `Shadow`, that enables a shadow to be added to any layout or view.
+The .NET Multi-platform App UI (.NET MAUI) `Shadow` class paints a shadow around a layout or view. The <xref:Microsoft.Maui.Controls.VisualElement> class has a `Shadow` bindable property, of type `Shadow`, that enables a shadow to be added to any layout or view.
 
 The `Shadow` class defines the following properties:
 
@@ -17,7 +17,7 @@ The `Shadow` class defines the following properties:
 - `Brush`, of type `Brush`, represents the brush used to colorize the shadow.
 - `OffSet`, of type `Point`, specifies the offset for the shadow, which represents the position of the light source that creates the shadow.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 > [!IMPORTANT]
 > The `Brush` property only currently supports a `SolidColorBrush`.
@@ -26,7 +26,7 @@ These properties are backed by `BindableProperty` objects, which means that they
 
 To add a shadow to a control, set the control's `Shadow` property to a `Shadow` object whose properties define its appearance.
 
-The following XAML example shows how to add a shadow to an `Image`:
+The following XAML example shows how to add a shadow to an <xref:Microsoft.Maui.Controls.Image>:
 
 ```xaml
 <Image Source="dotnet_bot.png"

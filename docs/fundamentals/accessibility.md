@@ -18,12 +18,12 @@ Screen readers typically provide auditory descriptions of controls that are disp
 
 Operating systems have their own screen readers with their own unique behavior and configuration. For example, most screen readers read the text associated with a control when it receives focus, enabling users to orient themselves as they navigate through the app. However, some screen readers can also read the entire app user interface when a page appears, which enables the user to receive all of the page's available informational content before attempting to navigate it.
 
-Most screen readers will automatically read any text associated with a control that receives accessibility focus. This means that controls, such as `Label` or `Button`, that have a `Text` property set will be accessible for the user. However, `Image`, `ImageButton`, `ActivityIndicator`, and others might not be in the accessibility tree because no text is associated with them.
+Most screen readers will automatically read any text associated with a control that receives accessibility focus. This means that controls, such as <xref:Microsoft.Maui.Controls.Label> or <xref:Microsoft.Maui.Controls.Button>, that have a `Text` property set will be accessible for the user. However, <xref:Microsoft.Maui.Controls.Image>, <xref:Microsoft.Maui.Controls.ImageButton>, <xref:Microsoft.Maui.Controls.ActivityIndicator>, and others might not be in the accessibility tree because no text is associated with them.
 
-.NET Multi-platform App UI (.NET MAUI) supports two approaches to providing access to the accessibility experience of the underlying platform. *Semantic properties* are the .NET MAUI approach to providing accessibility values in apps, and are the recommended approach. *Automation properties* are the Xamarin.Forms approach to providing accessibility values in apps, and have been superseded by semantic properties. In both cases, the default accessibility order of controls is the same order in which they're listed in XAML or added to the layout. However, different layouts might have additional factors that influence accessibility order. For example, the accessibility order of `StackLayout` is also based on its orientation, and the accessibility order of `Grid` is based on its row and column arrangement. For more information about content ordering, see [Meaningful Content Ordering](https://devblogs.microsoft.com/xamarin/the-journey-to-accessible-apps-meaningful-content-ordering/) on the Xamarin blog.
+.NET Multi-platform App UI (.NET MAUI) supports two approaches to providing access to the accessibility experience of the underlying platform. *Semantic properties* are the .NET MAUI approach to providing accessibility values in apps, and are the recommended approach. *Automation properties* are the Xamarin.Forms approach to providing accessibility values in apps, and have been superseded by semantic properties. In both cases, the default accessibility order of controls is the same order in which they're listed in XAML or added to the layout. However, different layouts might have additional factors that influence accessibility order. For example, the accessibility order of <xref:Microsoft.Maui.Controls.StackLayout> is also based on its orientation, and the accessibility order of <xref:Microsoft.Maui.Controls.Grid> is based on its row and column arrangement. For more information about content ordering, see [Meaningful Content Ordering](https://devblogs.microsoft.com/xamarin/the-journey-to-accessible-apps-meaningful-content-ordering/) on the Xamarin blog.
 
 > [!NOTE]
-> When a `WebView` displays a website that's accessible, it will also be accessible in a .NET MAUI app. Conversely, when a `WebView` displays a website that's not accessible, it won't be accessible in a .NET MAUI app.
+> When a <xref:Microsoft.Maui.Controls.WebView> displays a website that's accessible, it will also be accessible in a .NET MAUI app. Conversely, when a <xref:Microsoft.Maui.Controls.WebView> displays a website that's not accessible, it won't be accessible in a .NET MAUI app.
 
 ## Semantic properties
 
@@ -63,9 +63,9 @@ image.SetValue(SemanticProperties.DescriptionProperty, "Cute dot net bot waving 
 ```
 
 > [!WARNING]
-> Avoid setting the `SemanticProperties.Description` attached property on a `Label`. This will stop the `Text` property being spoken by the screen reader. This is because the visual text should ideally match the text read aloud by the screen reader.
+> Avoid setting the `SemanticProperties.Description` attached property on a <xref:Microsoft.Maui.Controls.Label>. This will stop the `Text` property being spoken by the screen reader. This is because the visual text should ideally match the text read aloud by the screen reader.
 
-The accessibility information for an element can also be defined on another element. For example, a `Label` next to an `Entry` can be used to describe what the `Entry` represents. This can be accomplished in XAML as follows:
+The accessibility information for an element can also be defined on another element. For example, a <xref:Microsoft.Maui.Controls.Label> next to an <xref:Microsoft.Maui.Controls.Entry> can be used to describe what the <xref:Microsoft.Maui.Controls.Entry> represents. This can be accomplished in XAML as follows:
 
 ```xaml
 <Label x:Name="label"
@@ -108,7 +108,7 @@ In addition, the `SetValue` method can also be used to set the `SemanticProperti
 image.SetValue(SemanticProperties.HintProperty, "Like this post.");
 ```
 
-On Android, this property behaves slightly differently depending on the control it's attached to. For example, for controls without text values, such as `Switch` and `CheckBox`, the controls will display the hint with the control. However, for controls with text values, the hint is not displayed and is read after the text value.
+On Android, this property behaves slightly differently depending on the control it's attached to. For example, for controls without text values, such as <xref:Microsoft.Maui.Controls.Switch> and <xref:Microsoft.Maui.Controls.CheckBox>, the controls will display the hint with the control. However, for controls with text values, the hint is not displayed and is read after the text value.
 
 > [!WARNING]
 > The `SemanticProperties.Hint` property conflicts with the `Entry.Placeholder` property on Android, which both map to the same platform property. Therefore, setting a different `SemanticProperties.Hint` value to the `Entry.Placeholder` value isn't recommended.
@@ -166,7 +166,7 @@ label1.SetValue(SemanticProperties.HeadingLevelProperty, SemanticHeadingLevel.Le
 
 ## Semantic focus
 
-Controls have a `SetSemanticFocus` extension method, defined in the `Microsoft.Maui` namespace, which forces screen reader focus to a specified element. For example, given a `Label` named `label`, screen reader focus can be forced to the element with the following code:
+Controls have a `SetSemanticFocus` extension method, defined in the `Microsoft.Maui` namespace, which forces screen reader focus to a specified element. For example, given a <xref:Microsoft.Maui.Controls.Label> named `label`, screen reader focus can be forced to the element with the following code:
 
 ```csharp
 label.SetSemanticFocus();
@@ -202,7 +202,7 @@ The `AutomationProperties` class defines the following attached properties:
 - `IsInAccessibleTree`, of type `bool?`, indicates whether the element is available in the accessibility tree. For more information, see [IsInAccessibleTree](#isinaccessibletree).
 - `Name`, of type `string`, represents a short description of the element that serves as a speakable identifier for that element. For more information, see [Name](#name).
 - `HelpText`, of type `string`, represents a longer description of the element, which can be thought of as tooltip text that's associated with the element. For more information, see [HelpText](#helptext).
-- `LabeledBy`, of type `VisualElement`, which enables another element to define accessibility information for the current element. For more information, see [LabeledBy](#labeledby).
+- `LabeledBy`, of type <xref:Microsoft.Maui.Controls.VisualElement>, which enables another element to define accessibility information for the current element. For more information, see [LabeledBy](#labeledby).
 
 These attached properties set platform accessibility values so that a screen reader can speak about the element. For more information about attached properties, see [Attached properties](~/fundamentals/attached-properties.md).
 
@@ -213,7 +213,7 @@ Different screen readers read different accessibility values. Therefore, when us
 
 ### ExcludedWithChildren
 
-The `AutomationProperties.ExcludeWithChildren` attached property, of type `bool?`, determines if an element and its children should be excluded from the accessibility tree. This enables scenarios such as displaying an `AbsoluteLayout` over another layout such as a `StackLayout`, with the `StackLayout` being excluded from the accessibility tree when it's not visible. It can be used from XAML as follows:
+The `AutomationProperties.ExcludeWithChildren` attached property, of type `bool?`, determines if an element and its children should be excluded from the accessibility tree. This enables scenarios such as displaying an <xref:Microsoft.Maui.Controls.AbsoluteLayout> over another layout such as a <xref:Microsoft.Maui.Controls.StackLayout>, with the <xref:Microsoft.Maui.Controls.StackLayout> being excluded from the accessibility tree when it's not visible. It can be used from XAML as follows:
 
 ```xaml
 <StackLayout AutomationProperties.ExcludedWithChildren="true">
@@ -290,14 +290,14 @@ AutomationProperties.SetIsInAccessibleTree(button, true);
 AutomationProperties.SetHelpText(button, "Tap to toggle the activity indicator");
 ```
 
-On some platforms, for edit controls such as an `Entry`, the `HelpText` property can sometimes be omitted and replaced with placeholder text. For example, "Enter your name here" is a good candidate for the `Entry.Placeholder` property that places the text in the control prior to the user's actual input.
+On some platforms, for edit controls such as an <xref:Microsoft.Maui.Controls.Entry>, the `HelpText` property can sometimes be omitted and replaced with placeholder text. For example, "Enter your name here" is a good candidate for the `Entry.Placeholder` property that places the text in the control prior to the user's actual input.
 
 ### LabeledBy
 
 > [!IMPORTANT]
 > The `AutomationProperties.LabeledBy` attached property has been superseded by bindings. For more information, see [SemanticProperties: Description](#description).
 
-The `AutomationProperties.LabeledBy` attached property allows another element to define accessibility information for the current element. For example, a `Label` next to an `Entry` can be used to describe what the `Entry` represents. This can be accomplished in XAML as follows:
+The `AutomationProperties.LabeledBy` attached property allows another element to define accessibility information for the current element. For example, a <xref:Microsoft.Maui.Controls.Label> next to an <xref:Microsoft.Maui.Controls.Entry> can be used to describe what the <xref:Microsoft.Maui.Controls.Entry> represents. This can be accomplished in XAML as follows:
 
 ```xaml
 <Label x:Name="label" Text="Enter your name: " />

@@ -72,7 +72,7 @@ No setup is required.
 
 ## Use Flashlight
 
-The flashlight can be turned on and off through the `TurnOnAsync` and `TurnOffAsync` methods. The following code example ties the flashlight's on or off state to a `Switch` control:
+The flashlight can be turned on and off through the `TurnOnAsync` and `TurnOffAsync` methods. The following code example ties the flashlight's on or off state to a <xref:Microsoft.Maui.Controls.Switch> control:
 
 :::code language="csharp" source="../snippets/shared_1/DeviceDetailsPage.xaml.cs" id="flashlight":::
 

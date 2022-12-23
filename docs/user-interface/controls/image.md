@@ -6,9 +6,9 @@ ms.date: 03/04/2022
 
 # Image
 
-The .NET Multi-platform App UI (.NET MAUI) `Image` displays an image that can be loaded from a local file, a URI, an embedded resource, or a stream. The standard platform image formats are supported, including animated GIFs, and local Scalable Vector Graphics (SVG) files are also supported. For more information about adding images to a .NET MAUI app project, see [Add images to a .NET MAUI app project](../images/images.md).
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Image> displays an image that can be loaded from a local file, a URI, an embedded resource, or a stream. The standard platform image formats are supported, including animated GIFs, and local Scalable Vector Graphics (SVG) files are also supported. For more information about adding images to a .NET MAUI app project, see [Add images to a .NET MAUI app project](../images/images.md).
 
-`Image` defines the following properties:
+<xref:Microsoft.Maui.Controls.Image> defines the following properties:
 
 - `Aspect`, of type `Aspect`, defines the scaling mode of the image.
 - `IsAnimationPlaying`, of type `bool`, determines whether an animated GIF is playing or stopped. The default value of this property is `false`.
@@ -16,10 +16,10 @@ The .NET Multi-platform App UI (.NET MAUI) `Image` displays an image that can be
 - `IsOpaque`, of type `bool`, indicates whether the rendering engine may treat the image as opaque while rendering it. The default value of this property is `false`.
 - `Source`, of type `ImageSource`, specifies the source of the image.
 
-These properties are backed by `BindableProperty` objects, which means that they can be styled, and be the target of data bindings.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be styled, and be the target of data bindings.
 
 > [!NOTE]
-> Font icons can be displayed by an `Image` by specifying the font icon data as a `FontImageSource` object. For more information, see [Display font icons](~/user-interface/fonts.md#display-font-icons).
+> Font icons can be displayed by an <xref:Microsoft.Maui.Controls.Image> by specifying the font icon data as a `FontImageSource` object. For more information, see [Display font icons](~/user-interface/fonts.md#display-font-icons).
 
 The `ImageSource` class defines the following methods that can be used to load an image from different sources:
 
@@ -31,7 +31,7 @@ The `ImageSource` class defines the following methods that can be used to load a
 In XAML, images can be loaded from files and URIs by specifying the filename or URI as a string value for the `Source` property. Images can also be loaded from resources or streams in XAML through custom markup extensions.
 
 > [!IMPORTANT]
-> Images will be displayed at their full resolution unless the size of the `Image` is constrained by its layout, or the `HeightRequest` or `WidthRequest` property of the `Image` is specified.
+> Images will be displayed at their full resolution unless the size of the <xref:Microsoft.Maui.Controls.Image> is constrained by its layout, or the `HeightRequest` or `WidthRequest` property of the <xref:Microsoft.Maui.Controls.Image> is specified.
 
 For information about adding app icons and a splash screen to your app, see [App icons](~/user-interface/images/app-icons.md) and [Splash screen](~/user-interface/images/splashscreen.md).
 
@@ -98,7 +98,7 @@ The `UriImageSource` class defines the following properties:
 - `CacheValidity`, of type `TimeSpan`, specifies how long the image will be stored locally for. The default value of this property is 1 day.
 - `CachingEnabled`, of type `bool`, defines whether image caching is enabled. The default value of this property is `true`.
 
-These properties are backed by `BindableProperty` objects, which means that they can be styled, and be the target of data bindings.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be styled, and be the target of data bindings.
 
 To set a specific cache period, set the `Source` property to an `UriImageSource` object that sets its `CacheValidity` property:
 
