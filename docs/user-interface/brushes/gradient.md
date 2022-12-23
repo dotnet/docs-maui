@@ -15,10 +15,10 @@ Classes that derive from `GradientBrush` describe different ways of interpreting
 - `LinearGradientBrush`, which paints an area with a linear gradient. For more information, see [Linear gradient brushes](lineargradient.md).
 - `RadialGradientBrush`, which paints an area with a radial gradient. For more information, see [Radial gradient brushes](radialgradient.md).
 
-The `GradientBrush` class defines the `GradientStops` property, of type <xref:Microsoft.Maui.Controls.GradientStopCollection, which represents the brush's gradient stops, each of which specifies a color and an offset along the brush's gradient axis. A <xref:Microsoft.Maui.Controls.GradientStopCollection is an `ObservableCollection` of `GradientStop` objects. The `GradientStops` property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means that it can be the target of data bindings, and styled.
+The `GradientBrush` class defines the <xref:Microsoft.Maui.Controls.GradientBrush.GradientStops> property, of type <xref:Microsoft.Maui.Controls.GradientStopCollection, which represents the brush's gradient stops, each of which specifies a color and an offset along the brush's gradient axis. A <xref:Microsoft.Maui.Controls.GradientStopCollection is an `ObservableCollection` of `GradientStop` objects. The <xref:Microsoft.Maui.Controls.GradientBrush.GradientStops> property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means that it can be the target of data bindings, and styled.
 
 > [!NOTE]
-> The `GradientStops` property is the `ContentProperty` of the `GradientBrush` class, and so does not need to be explicitly set from XAML.
+> The <xref:Microsoft.Maui.Controls.GradientBrush.GradientStops> property is the `ContentProperty` of the `GradientBrush` class, and so does not need to be explicitly set from XAML.
 
 ## Gradient stops
 
