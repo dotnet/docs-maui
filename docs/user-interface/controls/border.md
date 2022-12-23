@@ -182,6 +182,6 @@ In XAML, the value of the `StrokeShape` property can be defined using property-t
 - `RoundRectangle`, optionally followed by a corner radius. For example, `RoundRectangle 40` or `RoundRectangle 40,0,0,40`.
 
 > [!IMPORTANT]
-> While `Line is a valid `string` value for the `StrokeShape` property, its use is not supported.
+> While `Line` is a valid `string` value for the `StrokeShape` property, its use is not supported.
 
 `String`-based x- and y-coordinate pairs can be delimited by a single comma and/or one or more spaces. For example, "40,10 70,80" and "40 10, 70 80" are both valid. Coordinate pairs will be converted to `Point` objects that define `X` and `Y` properties, of type `double`.
