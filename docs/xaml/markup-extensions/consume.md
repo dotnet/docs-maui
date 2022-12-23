@@ -10,7 +10,7 @@ ms.date: 01/27/2022
 
 .NET Multi-platform App UI (.NET MAUI) XAML markup extensions help enhance the power and flexibility of XAML by allowing element attributes to be set from a variety of sources.
 
-For example, you typically set the `Color` property of `BoxView` like this:
+For example, you typically set the `Color` property of <xref:Microsoft.Maui.Controls.BoxView> like this:
 
 ```xaml
 <BoxView Color="Blue" />
@@ -106,7 +106,7 @@ The `StaticExtension` class has a `ContentProperty` attribute referencing the pr
 
 This is the most common form of the `x:Static` markup extension.
 
-The root tag of the XAML example also contains an XML namespace declaration for the .NET `System` namespace. This allows the `Label` font size to be set to the static field `Math.PI`. That results in rather small text, so the `Scale` property is set to `Math.E`:
+The root tag of the XAML example also contains an XML namespace declaration for the .NET `System` namespace. This allows the <xref:Microsoft.Maui.Controls.Label> font size to be set to the static field `Math.PI`. That results in rather small text, so the `Scale` property is set to `Math.E`:
 
 ```xaml
 <Label Text="&#x03C0; &#x00D7; E sized text"
@@ -162,7 +162,7 @@ The `x:Type` markup extension is the XAML equivalent of the C# [`typeof`](/dotne
 
 The `x:Type` markup extension is commonly used with the `x:Array` markup extension. For more information, see [x:Array markup extension](#xarray-markup-extension).
 
-The following XAML example demonstrates using the `x:Type` markup extension to instantiate .NET MAUI objects and add them to a `StackLayout`. The XAML consists of three `Button` elements with their `Command` properties set to a `Binding` and the `CommandParameter` properties set to types of three .NET MAUI views:
+The following XAML example demonstrates using the `x:Type` markup extension to instantiate .NET MAUI objects and add them to a <xref:Microsoft.Maui.Controls.StackLayout>. The XAML consists of three <xref:Microsoft.Maui.Controls.Button> elements with their `Command` properties set to a `Binding` and the `CommandParameter` properties set to types of three .NET MAUI views:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -213,7 +213,7 @@ public partial class TypeDemoPage : ContentPage
 }
 ```
 
-When a `Button` is pressed a new instance of the `CommandParameter` argument is created and added to the `StackLayout`. The three `Button` objects then share the page with dynamically created views:
+When a <xref:Microsoft.Maui.Controls.Button> is pressed a new instance of the `CommandParameter` argument is created and added to the <xref:Microsoft.Maui.Controls.StackLayout>. The three <xref:Microsoft.Maui.Controls.Button> objects then share the page with dynamically created views:
 
 :::image type="content" source="media/consume/typedemo.png" alt-text="x:Type demo.":::
 
@@ -226,7 +226,7 @@ The `x:Array` markup extension enables you to define an array in markup. It is s
 
 The `x:Array` markup extension itself never appears in curly braces. Instead, `x:Array` start and end tags delimit the list of items.
 
-The following XAML example shows how to use `x:Array` to add items to a `ListView` by setting the `ItemsSource` property to an array:
+The following XAML example shows how to use `x:Array` to add items to a <xref:Microsoft.Maui.Controls.ListView> by setting the `ItemsSource` property to an array:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -267,7 +267,7 @@ The following XAML example shows how to use `x:Array` to add items to a `ListVie
 </ContentPage>     
 ```
 
-In this example, the `ViewCell` creates a simple `BoxView` for each color entry:
+In this example, the <xref:Microsoft.Maui.Controls.ViewCell> creates a simple <xref:Microsoft.Maui.Controls.BoxView> for each color entry:
 
 :::image type="content" source="media/consume/arraydemo.png" alt-text="x:Array demo.":::
 
@@ -303,7 +303,7 @@ The following XAML example shows how to use the `x:Null` markup extension:
 </ContentPage>      
 ```
 
-In this example, an implicit `Style` is defined for `Label` that includes a `Setter` that sets the `FontFamily` property to a specific font. However, the third `Label` avoids using the font defined in the implicit style by setting its `FontFamily` to `x:Null`:
+In this example, an implicit `Style` is defined for <xref:Microsoft.Maui.Controls.Label> that includes a `Setter` that sets the `FontFamily` property to a specific font. However, the third <xref:Microsoft.Maui.Controls.Label> avoids using the font defined in the implicit style by setting its `FontFamily` to `x:Null`:
 
 :::image type="content" source="media/consume/nulldemo.png" alt-text="x:Null demo.":::
 
@@ -325,7 +325,7 @@ The `OnPlatform` markup extension is supported by the `OnPlatformExtension` clas
 > [!NOTE]
 > The XAML parser allows the `OnPlatformExtension` class to be abbreviated as `OnPlatform`.
 
-The `Default` property is the content property of `OnPlatformExtension`. Therefore, for XAML markup expressions expressed with curly braces, you can eliminate the `Default=` part of the expression provided that it's the first argument. If the `Default` property isn't set, it will default to the `BindableProperty.DefaultValue` property value, provided that the markup extension is targeting a `BindableProperty`.
+The `Default` property is the content property of `OnPlatformExtension`. Therefore, for XAML markup expressions expressed with curly braces, you can eliminate the `Default=` part of the expression provided that it's the first argument. If the `Default` property isn't set, it will default to the `BindableProperty.DefaultValue` property value, provided that the markup extension is targeting a <xref:Microsoft.Maui.Controls.BindableProperty>.
 
 > [!IMPORTANT]
 > The XAML parser expects that values of the correct type will be provided to properties consuming the `OnPlatform` markup extension. If type conversion is necessary, the `OnPlatform` markup extension will attempt to perform it using the default converters provided by Xamarin.Forms. However, there are some type conversions that can't be performed by the default converters and in these cases the `Converter` property should be set to an `IValueConverter` implementation.
@@ -339,7 +339,7 @@ The **OnPlatform Demo** page shows how to use the `OnPlatform` markup extension:
          HorizontalOptions="Center" />
 ```
 
-In this example, all three `OnPlatform` expressions use the abbreviated version of the `OnPlatformExtension` class name. The three `OnPlatform` markup extensions set the `Color`, `WidthRequest`, and `HeightRequest` properties of the `BoxView` to different values on iOS and Android. The markup extensions also provide default values for these properties on the platforms that aren't specified, while eliminating the `Default=` part of the expression.
+In this example, all three `OnPlatform` expressions use the abbreviated version of the `OnPlatformExtension` class name. The three `OnPlatform` markup extensions set the `Color`, `WidthRequest`, and `HeightRequest` properties of the <xref:Microsoft.Maui.Controls.BoxView> to different values on iOS and Android. The markup extensions also provide default values for these properties on the platforms that aren't specified, while eliminating the `Default=` part of the expression.
 
 ## OnIdiom markup extension
 
@@ -371,7 +371,7 @@ The following XAML example shows how to use the `OnIdiom` markup extension:
          HorizontalOptions="Center" />
 ```
 
-In this example, all three `OnIdiom` expressions use the abbreviated version of the `OnIdiomExtension` class name. The three `OnIdiom` markup extensions set the `Color`, `WidthRequest`, and `HeightRequest` properties of the `BoxView` to different values on the phone, tablet, and desktop idioms. The markup extensions also provide default values for these properties on the idioms that aren't specified, while eliminating the `Default=` part of the expression.
+In this example, all three `OnIdiom` expressions use the abbreviated version of the `OnIdiomExtension` class name. The three `OnIdiom` markup extensions set the `Color`, `WidthRequest`, and `HeightRequest` properties of the <xref:Microsoft.Maui.Controls.BoxView> to different values on the phone, tablet, and desktop idioms. The markup extensions also provide default values for these properties on the idioms that aren't specified, while eliminating the `Default=` part of the expression.
 
 ## DataTemplate markup extension
 
@@ -388,7 +388,7 @@ A typical usage of this markup extension is in a Shell application, as shown in 
               ContentTemplate="{DataTemplate views:MonkeysPage}" />
 ```
 
-In this example, `MonkeysPage` is converted from a `ContentPage` to a `DataTemplate`, which is set as the value of the `ShellContent.ContentTemplate` property. This ensures that `MonkeysPage` is only created when navigation to the page occurs, rather than at application startup.
+In this example, `MonkeysPage` is converted from a <xref:Microsoft.Maui.Controls.ContentPage> to a `DataTemplate`, which is set as the value of the `ShellContent.ContentTemplate` property. This ensures that `MonkeysPage` is only created when navigation to the page occurs, rather than at application startup.
 
 For more information about Shell apps, see [Shell](~/fundamentals/shell/index.md).
 
@@ -415,7 +415,7 @@ The following XAML example shows how to use the `FontImage` markup extension:
        Source="{FontImage &#xf30c;, FontFamily=Ionicons, Size=44}" />
 ```
 
-In this example, the abbreviated version of the `FontImageExtension` class name is used to display an XBox icon, from the Ionicons font family, in an `Image`:
+In this example, the abbreviated version of the `FontImageExtension` class name is used to display an XBox icon, from the Ionicons font family, in an <xref:Microsoft.Maui.Controls.Image>:
 
 :::image type="content" source="media/consume/fontimagedemo.png" alt-text="Screenshot of the FontImage markup extension.":::
 
@@ -466,6 +466,6 @@ The following XAML example shows how to use the `AppThemeBinding` markup extensi
 </ContentPage>
 ```
 
-In this example, the text color of the first `Label` is set to green when the device is using its light theme, and is set to red when the device is using its dark theme. The second `Label` has its `TextColor` property set through a `Style`. This `Style` sets the text color of the `Label` to black by default, to blue when the device is using its light theme, and to teal when the device is using its dark theme:
+In this example, the text color of the first <xref:Microsoft.Maui.Controls.Label> is set to green when the device is using its light theme, and is set to red when the device is using its dark theme. The second <xref:Microsoft.Maui.Controls.Label> has its `TextColor` property set through a `Style`. This `Style` sets the text color of the <xref:Microsoft.Maui.Controls.Label> to black by default, to blue when the device is using its light theme, and to teal when the device is using its dark theme:
 
 :::image type="content" source="media/consume/appthemebindingdemo.png" alt-text="AppThemeBinding demo.":::

@@ -9,18 +9,18 @@ ms.date: 09/26/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-map)
 
-The .NET Multi-platform App UI (.NET MAUI) `Map` control is a cross-platform view for displaying and annotating maps. The `Map` control uses the native map control on each platform, and is provided by the [Microsoft.Maui.Controls.Maps NuGet package](https://www.nuget.org/packages/Microsoft.Maui.Controls.Maps/).
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Maps.Map> control is a cross-platform view for displaying and annotating maps. The <xref:Microsoft.Maui.Controls.Maps.Map> control uses the native map control on each platform, and is provided by the [Microsoft.Maui.Controls.Maps NuGet package](https://www.nuget.org/packages/Microsoft.Maui.Controls.Maps/).
 
 > [!IMPORTANT]
-> The `Map` control isn't supported on Windows due to lack of a map control in WinUI. However, you can still launch the native map app from your .NET MAUI app on WinUI, to display a map at a specific location or to perform navigation. For more information, see [Launch the native map app](#launch-the-native-map-app).
+> The <xref:Microsoft.Maui.Controls.Maps.Map> control isn't supported on Windows due to lack of a map control in WinUI. However, you can still launch the native map app from your .NET MAUI app on WinUI, to display a map at a specific location or to perform navigation. For more information, see [Launch the native map app](#launch-the-native-map-app).
 
 ## Setup
 
-The `Map` control uses the native map control on each platform. This provides a fast, familiar maps experience for users, but means that some configuration steps are needed to adhere to each platforms API requirements.
+The <xref:Microsoft.Maui.Controls.Maps.Map> control uses the native map control on each platform. This provides a fast, familiar maps experience for users, but means that some configuration steps are needed to adhere to each platforms API requirements.
 
 ### Map initialization
 
-The `Map` control is provided by the [Microsoft.Maui.Controls.Maps NuGet package](https://www.nuget.org/packages/Microsoft.Maui.Controls.Maps/), which should be added to your .NET MAUI app project.
+The <xref:Microsoft.Maui.Controls.Maps.Map> control is provided by the [Microsoft.Maui.Controls.Maps NuGet package](https://www.nuget.org/packages/Microsoft.Maui.Controls.Maps/), which should be added to your .NET MAUI app project.
 
 After installing the NuGet package, it must be initialized in your app by calling the `UseMauiMap` method on the `MauiAppBuilder` object in the `CreateMauiApp` method of your `MauiProgram` class:
 
@@ -44,7 +44,7 @@ public static class MauiProgram
 }
 ```
 
-Once the NuGet package has been added and initialized, `Map` APIs can be used in your project.
+Once the NuGet package has been added and initialized, <xref:Microsoft.Maui.Controls.Maps.Map> APIs can be used in your project.
 
 ### Platform configuration
 
@@ -83,7 +83,7 @@ The configuration process for displaying and interacting with a map on Android i
 
 ##### Get a Google Maps API key
 
-To use the `Map` control on Android you must generate an API key, which will be consumed by the [Google Maps SDK](https://developers.google.com/maps/documentation/android/) on which the `Map` control relies on Android. To do this, follow the instructions in [Set up in the Google Cloud Console](https://developers.google.com/maps/documentation/android-sdk/cloud-setup) and [Use API Keys](https://developers.google.com/maps/documentation/android-sdk/get-api-key) on developers.google.com.
+To use the <xref:Microsoft.Maui.Controls.Maps.Map> control on Android you must generate an API key, which will be consumed by the [Google Maps SDK](https://developers.google.com/maps/documentation/android/) on which the <xref:Microsoft.Maui.Controls.Maps.Map> control relies on Android. To do this, follow the instructions in [Set up in the Google Cloud Console](https://developers.google.com/maps/documentation/android-sdk/cloud-setup) and [Use API Keys](https://developers.google.com/maps/documentation/android-sdk/get-api-key) on developers.google.com.
 
 Once you've obtained an API key it must be added within the `<application>` element of your **Platforms/Android/AndroidManifest.xml** file, by specifying it as the value of the `com.google.android.geo.API_KEY` metadata:
 
@@ -93,7 +93,7 @@ Once you've obtained an API key it must be added within the `<application>` elem
 </application>
 ```
 
-This embeds the API key into the manifest. Without a valid API key the `Map` control will display a blank grid.
+This embeds the API key into the manifest. Without a valid API key the <xref:Microsoft.Maui.Controls.Maps.Map> control will display a blank grid.
 
 > [!NOTE]
 > `com.google.android.geo.API_KEY` is the recommended metadata name for the API key. A key with this name can be used to authenticate to multiple Google Maps-based APIs on Android. For backwards compatibility, the `com.google.android.maps.v2.API_KEY` metadata name can be used, but only allows authentication to the Android Maps API v2. An app can only specify one of the API key metadata names.
@@ -150,7 +150,7 @@ This is not required if your app targets API 23 or greater.
 
 ## Map control
 
-The `Map` class defines the following properties that control map appearance and behavior:
+The <xref:Microsoft.Maui.Controls.Maps.Map> class defines the following properties that control map appearance and behavior:
 
 - `IsShowingUser`, of type `bool`, indicates whether the map is showing the user's current location.
 - `ItemsSource`, of type `IEnumerable`, which specifies the collection of `IEnumerable` pin items to be displayed.
@@ -164,15 +164,15 @@ The `Map` class defines the following properties that control map appearance and
 - `Pins`, of type `IList<Pin>`, represents the list of pins on the map.
 - `VisibleRegion`, of type `MapSpan`, returns the currently displayed region of the map.
 
-These properties, with the exception of the `MapElements`, `Pins`, and `VisibleRegion` properties, are backed by `BindableProperty` objects, which mean they can be targets of data bindings.
+These properties, with the exception of the `MapElements`, `Pins`, and `VisibleRegion` properties, are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which mean they can be targets of data bindings.
 
-The `Map` class also defines a `MapClicked` event that's fired when the map is tapped. The `MapClickedEventArgs` object that accompanies the event has a single property named `Location`, of type `Location`. When the event is fired, the `Location` property is set to the map location that was tapped. For information about the `Location` class, see [Location and distance](#location-and-distance).
+The <xref:Microsoft.Maui.Controls.Maps.Map> class also defines a `MapClicked` event that's fired when the map is tapped. The `MapClickedEventArgs` object that accompanies the event has a single property named `Location`, of type `Location`. When the event is fired, the `Location` property is set to the map location that was tapped. For information about the `Location` class, see [Location and distance](#location-and-distance).
 
 For information about the `ItemsSource`, `ItemTemplate`, and `ItemTemplateSelector` properties, see [Display a pin collection](#display-a-pin-collection).
 
 ### Display a map
 
-A `Map` can be displayed by adding it to a layout or page:
+A <xref:Microsoft.Maui.Controls.Maps.Map> can be displayed by adding it to a layout or page:
 
 ```xaml
 <ContentPage ...
@@ -202,11 +202,11 @@ namespace WorkingWithMaps
 }
 ```
 
-This example calls the default `Map` constructor, which centers the map on Maui, Hawaii::
+This example calls the default <xref:Microsoft.Maui.Controls.Maps.Map> constructor, which centers the map on Maui, Hawaii::
 
 :::image type="content" source="media/map/map-default.png" alt-text="Screenshot of map control with default location.":::
 
-Alternatively, a `MapSpan` argument can be passed to a `Map` constructor to set the center point and zoom level of the map when it's loaded. For more information, see [Display a specific location on a map](#display-a-specific-location-on-a-map).
+Alternatively, a `MapSpan` argument can be passed to a <xref:Microsoft.Maui.Controls.Maps.Map> constructor to set the center point and zoom level of the map when it's loaded. For more information, see [Display a specific location on a map](#display-a-specific-location-on-a-map).
 
 ### Map types
 
@@ -216,7 +216,7 @@ The `Map.MapType` property can be set to a `MapType` enumeration member to defin
 - `Satellite` specifies that a map containing satellite imagery will be displayed.
 - `Hybrid` specifies that a map combining street and satellite data will be displayed.
 
-By default, a `Map` will display a street map if the `MapType` property is undefined. Alternatively, the `MapType` property can be set to one of the `MapType` enumeration members:
+By default, a <xref:Microsoft.Maui.Controls.Maps.Map> will display a street map if the `MapType` property is undefined. Alternatively, the `MapType` property can be set to one of the `MapType` enumeration members:
 
 ```xaml
 <maps:Map MapType="Satellite" />
@@ -233,7 +233,7 @@ Map map = new Map
 
 ### Display a specific location on a map
 
-The region of a map to display when a map is loaded can be set by passing a `MapSpan` argument to the `Map` constructor:
+The region of a map to display when a map is loaded can be set by passing a `MapSpan` argument to the <xref:Microsoft.Maui.Controls.Maps.Map> constructor:
 
 ```xaml
 <ContentPage ...
@@ -270,7 +270,7 @@ MapSpan mapSpan = new MapSpan(location, 0.01, 0.01);
 Map map = new Map(mapSpan);
 ```
 
-This example creates a `Map` object that shows the region that is specified by the `MapSpan` object. The `MapSpan` object is centered on the latitude and longitude represented by a `Location` object, and spans 0.01 latitude and 0.01 longitude degrees. For information about the `Location` class, see [Location and distance](#location-and-distance). For information about passing arguments in XAML, see [Pass arguments in XAML](~/xaml/pass-arguments.md).
+This example creates a <xref:Microsoft.Maui.Controls.Maps.Map> object that shows the region that is specified by the `MapSpan` object. The `MapSpan` object is centered on the latitude and longitude represented by a `Location` object, and spans 0.01 latitude and 0.01 longitude degrees. For information about the `Location` class, see [Location and distance](#location-and-distance). For information about passing arguments in XAML, see [Pass arguments in XAML](~/xaml/pass-arguments.md).
 
 The result is that when the map is displayed, it's centered on a specific location, and spans a specific number of latitude and longitude degrees:
 
@@ -312,7 +312,7 @@ map.MoveToRegion(mapSpan);
 
 ### Zoom the map
 
-The zoom level of a `Map` can be changed without altering its location. This can be accomplished using the map UI, or programatically by calling the `MoveToRegion` method with a `MapSpan` argument that uses the current location as the `Location` argument:
+The zoom level of a <xref:Microsoft.Maui.Controls.Maps.Map> can be changed without altering its location. This can be accomplished using the map UI, or programatically by calling the `MoveToRegion` method with a `MapSpan` argument that uses the current location as the `Location` argument:
 
 ```csharp
 double zoomLevel = 0.5;
@@ -330,14 +330,14 @@ In this example, the `MoveToRegion` method is called with a `MapSpan` argument t
 
 ### Customize map behavior
 
-The behavior of a `Map` can be customized by setting some of its properties, and by handling the `MapClicked` event.
+The behavior of a <xref:Microsoft.Maui.Controls.Maps.Map> can be customized by setting some of its properties, and by handling the `MapClicked` event.
 
 > [!NOTE]
 > Additional map behavior customization can be achieved by customizing its handler. For more information, see [Customize controls with handlers](~/user-interface/handlers/customize.md).
 
 #### Show traffic data
 
-The `Map` class defines a `IsTrafficEnabled` property of type `bool`. By default this property is `false`, which indicates that traffic data won't be overlaid on the map. When this property is set to `true`, traffic data is overlaid on the map:
+The <xref:Microsoft.Maui.Controls.Maps.Map> class defines a `IsTrafficEnabled` property of type `bool`. By default this property is `false`, which indicates that traffic data won't be overlaid on the map. When this property is set to `true`, traffic data is overlaid on the map:
 
 ```xaml
 <maps:Map IsTrafficEnabled="true" />
@@ -354,7 +354,7 @@ Map map = new Map
 
 #### Disable scroll
 
-The `Map` class defines a `IsScrollEnabled` property of type `bool`. By default this property is `true`, which indicates that the map is allowed to scroll. When this property is set to `false`, the map will not scroll:
+The <xref:Microsoft.Maui.Controls.Maps.Map> class defines a `IsScrollEnabled` property of type `bool`. By default this property is `true`, which indicates that the map is allowed to scroll. When this property is set to `false`, the map will not scroll:
 
 ```xaml
 <maps:Map HasScrollEnabled="false" />
@@ -371,7 +371,7 @@ Map map = new Map
 
 #### Disable zoom
 
-The `Map` class defines a `IsZoomEnabled` property of type `bool`. By default this property is `true`, which indicates that zoom can be performed on the map. When this property is set to `false`, the map can't be zoomed:
+The <xref:Microsoft.Maui.Controls.Maps.Map> class defines a `IsZoomEnabled` property of type `bool`. By default this property is `true`, which indicates that zoom can be performed on the map. When this property is set to `false`, the map can't be zoomed:
 
 ```xaml
 <maps:Map HasZoomEnabled="false" />
@@ -388,7 +388,7 @@ Map map = new Map
 
 #### Show the user's location
 
-The `Map` class defines a `IsShowingUser` property of type `bool`. By default this property is `false`, which indicates that the map is not showing the user's current location. When this property is set to `true`, the map shows the user's current location:
+The <xref:Microsoft.Maui.Controls.Maps.Map> class defines a `IsShowingUser` property of type `bool`. By default this property is `false`, which indicates that the map is not showing the user's current location. When this property is set to `true`, the map shows the user's current location:
 
 ```xaml
 <maps:Map IsShowingUser="true" />
@@ -408,7 +408,7 @@ Map map = new Map
 
 #### Map clicks
 
-The `Map` class defines a `MapClicked` event that's fired when the map is tapped. The `MapClickedEventArgs` object that accompanies the event has a single property named `Location`, of type `Location`. When the event is fired, the `Location` property is set to the map location that was tapped. For information about the `Location` class, see [Location and distance](#location-and-distance).
+The <xref:Microsoft.Maui.Controls.Maps.Map> class defines a `MapClicked` event that's fired when the map is tapped. The `MapClickedEventArgs` object that accompanies the event has a single property named `Location`, of type `Location`. When the event is fired, the `Location` property is set to the map location that was tapped. For information about the `Location` class, see [Location and distance](#location-and-distance).
 
 The following code example shows an event handler for the `MapClicked` event:
 
@@ -489,7 +489,7 @@ Distance distance4 = Distance.BetweenPositions(location1, location2);
 
 ## Pins
 
-The `Map` control allows locations to be marked with `Pin` objects. A `Pin` is a map marker that opens an information window when tapped:
+The <xref:Microsoft.Maui.Controls.Maps.Map> control allows locations to be marked with `Pin` objects. A `Pin` is a map marker that opens an information window when tapped:
 
 :::image type="content" source="media/map/pin-and-information-window.png" alt-text="Screenshot of a map pin and its information window.":::
 
@@ -498,17 +498,17 @@ When a `Pin` object is added to the `Map.Pins` collection, the pin is rendered o
 The `Pin` class has the following properties:
 
 - `Address`, of type `string`, which typically represents the address for the pin location. However, it can be any `string` content, not just an address.
-- `Label`, of type `string`, which typically represents the pin title.
+- <xref:Microsoft.Maui.Controls.Label>, of type `string`, which typically represents the pin title.
 - `Location`, of type `Location`, which represents the latitude and longitude of the pin.
 - `Type`, of type `PinType`, which represents the type of pin.
 
-These properties are backed by `BindableProperty` objects, which means a `Pin` can be the target of data bindings. For more information about data binding `Pin` objects, see [Display a pin collection](#display-a-pin-collection).
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means a `Pin` can be the target of data bindings. For more information about data binding `Pin` objects, see [Display a pin collection](#display-a-pin-collection).
 
 In addition, the `Pin` class defines `MarkerClicked` and `InfoWindowClicked` events. The `MarkerClicked` event is fired when a pin is tapped, and the `InfoWindowClicked` event is fired when the information window is tapped. The `PinClickedEventArgs` object that accompanies both events has a single `HideInfoWindow` property, of type `bool`.
 
 ### Display a pin
 
-A `Pin` can be added to a `Map` in XAML:
+A `Pin` can be added to a <xref:Microsoft.Maui.Controls.Maps.Map> in XAML:
 
 ```xaml
 <ContentPage ...
@@ -547,7 +547,7 @@ A `Pin` can be added to a `Map` in XAML:
 </ContentPage>
 ```
 
-This XAML creates a `Map` object that shows the region that is specified by the `MapSpan` object. The `MapSpan` object is centered on the latitude and longitude represented by a `Location` object, which extends 0.01 latitude and longitude degrees. A `Pin` object is added to the `Map.Pins` collection, and drawn on the `Map` at the location specified by its `Location` property. For information about the `Location` class, see [Location and distance](#location-and-distance). For information about passing arguments in XAML to objects that lack default constructors, see [Pass arguments in XAML](~/xaml/pass-arguments.md).
+This XAML creates a <xref:Microsoft.Maui.Controls.Maps.Map> object that shows the region that is specified by the `MapSpan` object. The `MapSpan` object is centered on the latitude and longitude represented by a `Location` object, which extends 0.01 latitude and longitude degrees. A `Pin` object is added to the `Map.Pins` collection, and drawn on the <xref:Microsoft.Maui.Controls.Maps.Map> at the location specified by its `Location` property. For information about the `Location` class, see [Location and distance](#location-and-distance). For information about passing arguments in XAML to objects that lack default constructors, see [Pass arguments in XAML](~/xaml/pass-arguments.md).
 
 The equivalent C# code is:
 
@@ -639,7 +639,7 @@ However, setting the `Pin.Type` property to any `PinType` member does not change
 
 ### Display a pin collection
 
-The `Map` class defines the following bindable properties:
+The <xref:Microsoft.Maui.Controls.Maps.Map> class defines the following bindable properties:
 
 - `ItemsSource`, of type `IEnumerable`, which specifies the collection of `IEnumerable` pin items to be displayed.
 - `ItemTemplate`, of type `DataTemplate`, which specifies the `DataTemplate` to apply to each item in the collection of displayed pins.
@@ -648,7 +648,7 @@ The `Map` class defines the following bindable properties:
 > [!IMPORTANT]
 > The `ItemTemplate` property takes precedence when both the `ItemTemplate` and `ItemTemplateSelector` properties are set.
 
-A `Map` can be populated with pins by using data binding to bind its `ItemsSource` property to an `IEnumerable` collection:
+A <xref:Microsoft.Maui.Controls.Maps.Map> can be populated with pins by using data binding to bind its `ItemsSource` property to an `IEnumerable` collection:
 
 ```xaml
 <ContentPage ...
@@ -674,7 +674,7 @@ The `ItemsSource` property data binds to the `Positions` property of the connect
 
 The appearance of each item in the `IEnumerable` collection is defined by setting the `ItemTemplate` property to a `DataTemplate` that contains a `Pin` object that data binds to appropriate properties.
 
-The following screenshot shows a `Map` displaying a `Pin` collection using data binding:
+The following screenshot shows a <xref:Microsoft.Maui.Controls.Maps.Map> displaying a `Pin` collection using data binding:
 
 :::image type="content" source="media/map/pins-itemssource.png" alt-text="Screenshot of map with data bound pins.":::
 
@@ -826,7 +826,7 @@ Polygon polygon = new Polygon
 map.MapElements.Add(polygon);
 ```
 
-The `StrokeColor` and `StrokeWidth` properties are specified to set the polygon's outline. In this example, the `FillColor` property value matches the `StrokeColor` property value but has an alpha value specified to make it transparent, allowing the underlying map to be visible through the shape. The `GeoPath` property contains a list of `Location` objects defining the geographic coordinates of the polygon points. A `Polygon` object is rendered on the map once it has been added to the `MapElements` collection of the `Map`.
+The `StrokeColor` and `StrokeWidth` properties are specified to set the polygon's outline. In this example, the `FillColor` property value matches the `StrokeColor` property value but has an alpha value specified to make it transparent, allowing the underlying map to be visible through the shape. The `GeoPath` property contains a list of `Location` objects defining the geographic coordinates of the polygon points. A `Polygon` object is rendered on the map once it has been added to the `MapElements` collection of the <xref:Microsoft.Maui.Controls.Maps.Map>.
 
 > [!NOTE]
 > A `Polygon` is a fully enclosed shape. The first and last points will automatically be connected if they do not match.
@@ -889,7 +889,7 @@ Polyline polyline = new Polyline
 map.MapElements.Add(polyline);
 ```
 
-The `StrokeColor` and `StrokeWidth` properties are specified to set the line appearance. The `GeoPath` property contains a list of `Location` objects defining the geographic coordinates of the polyline points. A `Polyline` object is rendered on the map once it has been added to the `MapElements` collection of the `Map`.
+The `StrokeColor` and `StrokeWidth` properties are specified to set the line appearance. The `GeoPath` property contains a list of `Location` objects defining the geographic coordinates of the polyline points. A `Polyline` object is rendered on the map once it has been added to the `MapElements` collection of the <xref:Microsoft.Maui.Controls.Maps.Map>.
 
 ### Create a circle
 
@@ -948,7 +948,7 @@ Circle circle = new Circle
 map.MapElements.Add(circle);
 ```
 
-The location of the `Circle` on the Map is determined by the value of the `Center` and `Radius` properties. The `Center` property defines the center of the circle, in latitude and longitude, while the `Radius` property defines the radius of the circle in meters. The `StrokeColor` and `StrokeWidth` properties are specified to set the circle's outline. The `FillColor` property value specifies the color within the circle perimeter. In this example, both of the color values specify an alpha channel, allowing the underlying map to be visible through the circle. The `Circle` object is rendered on the map once it has been added to the `MapElements` collection of the `Map`.
+The location of the `Circle` on the Map is determined by the value of the `Center` and `Radius` properties. The `Center` property defines the center of the circle, in latitude and longitude, while the `Radius` property defines the radius of the circle in meters. The `StrokeColor` and `StrokeWidth` properties are specified to set the circle's outline. The `FillColor` property value specifies the color within the circle perimeter. In this example, both of the color values specify an alpha channel, allowing the underlying map to be visible through the circle. The `Circle` object is rendered on the map once it has been added to the `MapElements` collection of the <xref:Microsoft.Maui.Controls.Maps.Map>.
 
 > [!NOTE]
 > The `GeographyUtils` class has a `ToCircumferencePositions` extension method that converts a `Circle` object (that defines `Center` and `Radius` property values) to a list of `Location` objects that make up the latitude and longitude coordinates of the circle perimeter.
@@ -964,7 +964,7 @@ The `Geolocation` class, in the `Microsoft.Maui.Devices.Sensors` namespace, can 
 The native map app on each platform can be launched from a .NET MAUI app by the `Launcher` class. This class enables an app to open another app through its custom URI scheme. The launcher functionality can be invoked with the `OpenAsync` method, passing in a `string` or `Uri` argument that represents the custom URL scheme to open. For more information about the `Launcher` class, see [Launcher](~/platform-integration/appmodel/launcher.md).
 
 > [!NOTE]
-> An alternative to using the `Launcher` class is to use `Map` class from the `Microsoft.Maui.ApplicationModel` namespace. For more information, see [Map](~/platform-integration/appmodel/maps.md).
+> An alternative to using the `Launcher` class is to use <xref:Microsoft.Maui.Controls.Maps.Map> class from the `Microsoft.Maui.ApplicationModel` namespace. For more information, see [Map](~/platform-integration/appmodel/maps.md).
 
 The maps app on each platform uses a unique custom URI scheme. For information about the maps URI scheme on iOS, see [Map Links](https://developer.apple.com/library/archive/featuredarticles/iPhoneURLScheme_Reference/MapLinks/MapLinks.html) on developer.apple.com. For information about the maps URI scheme on Android, see [Maps Developer Guide](https://developer.android.com/guide/components/intents-common.html#Maps) and [Google Maps Intents for Android](https://developers.google.com/maps/documentation/urls/android-intents) on developers.android.com. For information about the maps URI scheme on Windows, see [Launch the Windows Maps app](/windows/uwp/launch-resume/launch-maps-app).
 

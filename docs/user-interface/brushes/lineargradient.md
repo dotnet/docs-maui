@@ -15,7 +15,7 @@ The `LinearGradientBrush` class defines the following properties:
 - `StartPoint`, of type `Point`, which represents the starting two-dimensional coordinates of the linear gradient. The default value of this property is (0,0).
 - `EndPoint`, of type `Point`, which represents the ending two-dimensional coordinates of the linear gradient. The default value of this property is (1,1).
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 The `LinearGradientBrush` class also has an `IsEmpty` method that returns a `bool` that represents whether the brush has been assigned any `GradientStop` objects.
 
@@ -36,7 +36,7 @@ In this diagram, the dashed line shows the gradient axis, which highlights the i
 
 To create a horizontal linear gradient, create a `LinearGradientBrush` object and set its `StartPoint` to (0,0) and its `EndPoint` to (1,0). Then, add two or more `GradientStop` objects to the `LinearGradientBrush.GradientStops` collection, that specify the colors in the gradient and their positions.
 
-The following XAML example shows a horizontal `LinearGradientBrush` that's set as the `Background` of a `Frame`:
+The following XAML example shows a horizontal `LinearGradientBrush` that's set as the `Background` of a <xref:Microsoft.Maui.Controls.Frame>:
 
 ```xaml
 <Frame BorderColor="LightGray"
@@ -56,7 +56,7 @@ The following XAML example shows a horizontal `LinearGradientBrush` that's set a
 </Frame>  
 ```
 
-In this example, the background of the `Frame` is painted with a `LinearGradientBrush` that interpolates from yellow to green horizontally:
+In this example, the background of the <xref:Microsoft.Maui.Controls.Frame> is painted with a `LinearGradientBrush` that interpolates from yellow to green horizontally:
 
 :::image type="content" source="media/lineargradient/horizontal.png" alt-text="Screenshot of a Frame painted with a horizontal LinearGradientBrush.":::
 
@@ -64,7 +64,7 @@ In this example, the background of the `Frame` is painted with a `LinearGradient
 
 To create a vertical linear gradient, create a `LinearGradientBrush` object and set its `StartPoint` to (0,0) and its `EndPoint` to (0,1). Then, add two or more `GradientStop` objects to the `LinearGradientBrush.GradientStops` collection, that specify the colors in the gradient and their positions.
 
-The following XAML example shows a vertical `LinearGradientBrush` that's set as the `Background` of a `Frame`:
+The following XAML example shows a vertical `LinearGradientBrush` that's set as the `Background` of a <xref:Microsoft.Maui.Controls.Frame>:
 
 ```xaml
 <Frame BorderColor="LightGray"
@@ -84,7 +84,7 @@ The following XAML example shows a vertical `LinearGradientBrush` that's set as 
 </Frame>
 ```
 
-In this example, the background of the `Frame` is painted with a `LinearGradientBrush` that interpolates from yellow to green vertically:
+In this example, the background of the <xref:Microsoft.Maui.Controls.Frame> is painted with a `LinearGradientBrush` that interpolates from yellow to green vertically:
 
 :::image type="content" source="media/lineargradient/vertical.png" alt-text="Screenshot of a Frame painted with a vertical LinearGradientBrush.":::
 
@@ -92,7 +92,7 @@ In this example, the background of the `Frame` is painted with a `LinearGradient
 
 To create a diagonal linear gradient, create a `LinearGradientBrush` object and set its `StartPoint` to (0,0) and its `EndPoint` to (1,1). Then, add two or more `GradientStop` objects to the `LinearGradientBrush.GradientStops` collection, that specify the colors in the gradient and their positions.
 
-The following XAML example shows a diagonal `LinearGradientBrush` that's set as the `Background` of a `Frame`:
+The following XAML example shows a diagonal `LinearGradientBrush` that's set as the `Background` of a <xref:Microsoft.Maui.Controls.Frame>:
 
 ```xaml
 <Frame BorderColor="LightGray"
@@ -113,6 +113,6 @@ The following XAML example shows a diagonal `LinearGradientBrush` that's set as 
 </Frame>
 ```
 
-In this example, the background of the `Frame` is painted with a `LinearGradientBrush` that interpolates from yellow to green diagonally:
+In this example, the background of the <xref:Microsoft.Maui.Controls.Frame> is painted with a `LinearGradientBrush` that interpolates from yellow to green diagonally:
 
 :::image type="content" source="media/lineargradient/diagonal.png" alt-text="Screenshot of a Frame painted with a diagonal LinearGradientBrush.":::

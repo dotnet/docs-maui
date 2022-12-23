@@ -65,7 +65,7 @@ double CustomEase (double t)
 await image.TranslateTo(0, 200, 2000, (Easing)CustomEase);
 ```
 
-In this example, the `CustomEase` method truncates the incoming value to the values 0, 0.2, 0.4, 0.6, 0.8, and 1. Therefore, the `Image` instance is translated in discrete jumps, rather than smoothly.
+In this example, the `CustomEase` method truncates the incoming value to the values 0, 0.2, 0.4, 0.6, 0.8, and 1. Therefore, the <xref:Microsoft.Maui.Controls.Image> instance is translated in discrete jumps, rather than smoothly.
 
 ### Custom easing func
 
@@ -76,7 +76,7 @@ Func<double, double> CustomEaseFunc = t => 9 * t * t * t - 13.5 * t * t + 5.5 * 
 await image.TranslateTo(0, 200, 2000, CustomEaseFunc);
 ```
 
-In this example, the `CustomEaseFunc` represents an easing function that starts off fast, slows down and reverses course, and then reverses course again to accelerate quickly towards the end. Therefore, while the overall movement of the `Image` instance is downwards, it also temporarily reverses course halfway through the animation.
+In this example, the `CustomEaseFunc` represents an easing function that starts off fast, slows down and reverses course, and then reverses course again to accelerate quickly towards the end. Therefore, while the overall movement of the <xref:Microsoft.Maui.Controls.Image> instance is downwards, it also temporarily reverses course halfway through the animation.
 
 ### Custom easing constructor
 
@@ -86,4 +86,4 @@ A custom easing function can also be defined as the argument to the `Easing` con
 await image.TranslateTo(0, 200, 2000, new Easing (t => 1 - Math.Cos (10 * Math.PI * t) * Math.Exp (-5 * t)));
 ```
 
-In this example, the custom easing function is specified as a lambda function argument to the `Easing` constructor, and uses the `Math.Cos` method to create a slow drop effect that's dampened by the `Math.Exp` method. Therefore, the `Image` instance is translated so that it appears to drop to its final position.
+In this example, the custom easing function is specified as a lambda function argument to the `Easing` constructor, and uses the `Math.Cos` method to create a slow drop effect that's dampened by the `Math.Exp` method. Therefore, the <xref:Microsoft.Maui.Controls.Image> instance is translated so that it appears to drop to its final position.

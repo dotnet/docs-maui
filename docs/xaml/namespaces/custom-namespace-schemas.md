@@ -118,7 +118,7 @@ To consume the `CircleButton` control, a XAML namespace is declared, with the na
 </ContentPage>
 ```
 
-`CircleButton` instances can then be added to the `ContentPage` by declaring them with the `controls` namespace prefix.
+`CircleButton` instances can then be added to the <xref:Microsoft.Maui.Controls.ContentPage> by declaring them with the `controls` namespace prefix.
 
 To find the custom namespace schema types, .NET MAUI will search referenced assemblies for `XmlnsDefinitionAttribute` instances. If the `xmlns` attribute for an element in a XAML file matches the `XmlNamespace` property value in a `XmlnsDefinitionAttribute`, .NET MAUI will attempt to use the `XmlnsDefinitionAttribute.ClrNamespace` property value for resolution of the type. If type resolution fails, .NET MAUI will continue to attempt type resolution based on any additional matching `XmlnsDefinitionAttribute` instances.
 

@@ -17,7 +17,7 @@ All controls that display text define properties that can be set to change font 
 - `FontSize`, of type `double`.
 - `FontAutoScalingEnabled`, of type `bool`, which defines whether an app's UI reflects text scaling preferences set in the operating system. The default value of this property is `true`.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 All controls that display text automatically use font scaling, which means that an app's UI reflects text scaling preferences set in the operating system.
 
@@ -207,12 +207,12 @@ Font icons can be displayed by .NET MAUI apps by specifying the font icon data i
 - `FontFamily` – a `string` representing the font family to which the font icon belongs.
 - `Color` – an optional `Color` value to be used when displaying the font icon.
 
-This data is used to create a PNG, which can be displayed by any view that can display an `ImageSource`. This approach permits font icons, such as emojis, to be displayed by multiple views, as opposed to limiting font icon display to a single text presenting view, such as a `Label`.
+This data is used to create a PNG, which can be displayed by any view that can display an `ImageSource`. This approach permits font icons, such as emojis, to be displayed by multiple views, as opposed to limiting font icon display to a single text presenting view, such as a <xref:Microsoft.Maui.Controls.Label>.
 
 > [!IMPORTANT]
 > Font icons can only currently be specified by their unicode character representation.
 
-The following XAML example has a single font icon being displayed by an `Image` view:
+The following XAML example has a single font icon being displayed by an <xref:Microsoft.Maui.Controls.Image> view:
 
 ```xaml
 <Image BackgroundColor="#D1D1D1">
@@ -224,7 +224,7 @@ The following XAML example has a single font icon being displayed by an `Image` 
 </Image>
 ```
 
-This code displays an XBox icon, from the Ionicons font family, in an `Image` view. Note that while the unicode character for this icon is `\uf30c`, it has to be escaped in XAML and so becomes `&#xf30c;`. The equivalent C# code is:
+This code displays an XBox icon, from the Ionicons font family, in an <xref:Microsoft.Maui.Controls.Image> view. Note that while the unicode character for this icon is `\uf30c`, it has to be escaped in XAML and so becomes `&#xf30c;`. The equivalent C# code is:
 
 ```csharp
 Image image = new Image { BackgroundColor = Color.FromArgb("#D1D1D1") };

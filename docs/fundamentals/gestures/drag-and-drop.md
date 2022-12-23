@@ -22,7 +22,7 @@ The process for enabling drag and drop in an app is as follows:
 1. [optional] Process the data package to receive the dropped content. .NET MAUI will automatically retrieve image and text data from the data package, but for other content you'll need to process the data package. For more information, see [Process the data package](#process-the-data-package).
 
 <!-- > [!NOTE]
-> Dragging items to and from a `CollectionView` is currently unsupported. -->
+> Dragging items to and from a <xref:Microsoft.Maui.Controls.CollectionView> is currently unsupported. -->
 
 ## Enable drag
 
@@ -34,7 +34,7 @@ In .NET MAUI, drag gesture recognition is provided by the `DragGestureRecognizer
 - `DropCompletedCommand`, of type `ICommand`, which is executed when the drag source is dropped.
 - `DropCompletedCommandParameter`, of type `object`, which is the parameter that's passed to the `DropCompletedCommand`.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 The `DragGestureRecognizer` class also defines `DragStarting` and `DropCompleted` events that fire if the `CanDrag` property is `true`. When a `DragGestureRecognizer` object detects a drag gesture, it executes the `DragStartingCommand` and invokes the `DragStarting` event. Then, when the `DragGestureRecognizer` object detects the completion of a drop gesture, it executes the `DropCompletedCommand` and invokes the `DropCompleted` event.
 
@@ -48,7 +48,7 @@ The `DragStartingEventArgs` object that accompanies the `DragStarting` event def
 The `DropCompletedEventArgs` object that accompanies the `DropCompleted` event has a read-only `DropResult` property, of type `DataPackageOperation`. For more information about the `DataPackageOperation` enumeration, see [Handle the DragOver event](#handle-the-dragover-event).
 -->
 
-The following XAML example shows a `DragGestureRecognizer` attached to an `Image`:
+The following XAML example shows a `DragGestureRecognizer` attached to an <xref:Microsoft.Maui.Controls.Image>:
 
 ```xaml
 <Image Source="monkeyface.png">
@@ -58,7 +58,7 @@ The following XAML example shows a `DragGestureRecognizer` attached to an `Image
 </Image>
 ```
 
-In this example, a drag gesture can be initiated on the `Image`.
+In this example, a drag gesture can be initiated on the <xref:Microsoft.Maui.Controls.Image>.
 
 > [!TIP]
 > A drag gesture is initiated with a long-press followed by a drag.
@@ -67,30 +67,30 @@ In this example, a drag gesture can be initiated on the `Image`.
 
 .NET MAUI will automatically build a data package for you, when a drag is initiated, for the following controls:
 
-- Text controls. Text values can be dragged from `CheckBox`, `DatePicker`, `Editor`, `Entry`, `Label`, `RadioButton`, `Switch`, and `TimePicker` objects.
-- Image controls. Images can be dragged from `Button`, `Image`, and `ImageButton` controls.
+- Text controls. Text values can be dragged from <xref:Microsoft.Maui.Controls.CheckBox>, <xref:Microsoft.Maui.Controls.DatePicker>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.RadioButton>, <xref:Microsoft.Maui.Controls.Switch>, and <xref:Microsoft.Maui.Controls.TimePicker> objects.
+- Image controls. Images can be dragged from <xref:Microsoft.Maui.Controls.Button>, <xref:Microsoft.Maui.Controls.Image>, and <xref:Microsoft.Maui.Controls.ImageButton> controls.
 
 The following table shows the properties that are read, and any conversion that's attempted, when a drag is initiated on a text control:
 
 | Control | Property | Conversion |
 | --- | --- | --- |
-| `CheckBox` | `IsChecked` | `bool` converted to a `string`. |
-| `DatePicker` | `Date` | `DateTime` converted to a `string`. |
-| `Editor` | `Text` ||
-| `Entry` | `Text` ||
-| `Label` | `Text` ||
-| `RadioButton` | `IsChecked` | `bool` converted to a `string`. |
-| `Switch` | `IsToggled` | `bool` converted to a `string`. |
-| `TimePicker` | `Time` | `TimeSpan` converted to a `string`. |
+| <xref:Microsoft.Maui.Controls.CheckBox> | `IsChecked` | `bool` converted to a `string`. |
+| <xref:Microsoft.Maui.Controls.DatePicker> | `Date` | `DateTime` converted to a `string`. |
+| <xref:Microsoft.Maui.Controls.Editor> | `Text` ||
+| <xref:Microsoft.Maui.Controls.Entry> | `Text` ||
+| <xref:Microsoft.Maui.Controls.Label> | `Text` ||
+| <xref:Microsoft.Maui.Controls.RadioButton> | `IsChecked` | `bool` converted to a `string`. |
+| <xref:Microsoft.Maui.Controls.Switch> | `IsToggled` | `bool` converted to a `string`. |
+| <xref:Microsoft.Maui.Controls.TimePicker> | `Time` | `TimeSpan` converted to a `string`. |
 
 For content other than text and images, you'll need to build a data package yourself.
 
 Data packages are represented by the `DataPackage` class, which defines the following properties:
 
 - `Properties`, of type `DataPackagePropertySet`, which is a collection of properties that comprise the data contained in the `DataPackage`. This property is a read-only property.
-- `Image`, of type `ImageSource`, which is the image contained in the `DataPackage`.
+- <xref:Microsoft.Maui.Controls.Image>, of type `ImageSource`, which is the image contained in the `DataPackage`.
 - `Text`, of type `string`, which is the text contained in the `DataPackage`.
-- `View`, of type `DataPackageView`, which is a read-only version of the `DataPackage`.
+- <xref:Microsoft.Maui.Controls.View>, of type `DataPackageView`, which is a read-only version of the `DataPackage`.
 
 The `DataPackagePropertySet` class represents a property bag stored as a `Dictionary<string,object>`. For information about the `DataPackageView` class, see [Process the data package](#process-the-data-package).
 
@@ -112,7 +112,7 @@ The following XAML example shows a `DragGestureRecognizer` that registers a hand
 </Path>
 ```
 
-In this example, the `DragGestureRecognizer` is attached to a `Path` object. The `DragStarting` event is raised when a drag gesture is detected on the `Path`, which executes the `OnDragStarting` event handler:
+In this example, the `DragGestureRecognizer` is attached to a <xref:Microsoft.Maui.Controls.Shapes.Path> object. The `DragStarting` event is raised when a drag gesture is detected on the <xref:Microsoft.Maui.Controls.Shapes.Path>, which executes the `OnDragStarting` event handler:
 
 ```csharp
 void OnDragStarting(object sender, DragStartingEventArgs e)
@@ -141,7 +141,7 @@ The following XAML example shows a `DragGestureRecognizer` that registers a hand
 </Rectangle>
 ```
 
-In this example, the `DragGestureRecognizer` is attached to a `Rectangle` object. The `DragStarting` event is raised when a drag gesture is detected on the `Rectangle`, which executes the `OnDragStarting` event handler:
+In this example, the `DragGestureRecognizer` is attached to a <xref:Microsoft.Maui.Controls.Shapes.Rectangle> object. The `DragStarting` event is raised when a drag gesture is detected on the <xref:Microsoft.Maui.Controls.Shapes.Rectangle>, which executes the `OnDragStarting` event handler:
 
 ```csharp
 void OnDragStarting(object sender, DragStartingEventArgs e)
@@ -151,7 +151,7 @@ void OnDragStarting(object sender, DragStartingEventArgs e)
 }
 ```
 
-The `DragStartingEventArgs` object that accompanies the `DragStarting` event has a `Data` property, of type `DataPackage`. The `Properties` collection of the `DataPackage` object, which is a `Dictionary<string, object>` collection, can be modified to store any required data. In this example, the `Properties` dictionary is modified to store a `Square` object that represents the size of the `Rectangle` against a "Square" key.
+The `DragStartingEventArgs` object that accompanies the `DragStarting` event has a `Data` property, of type `DataPackage`. The `Properties` collection of the `DataPackage` object, which is a `Dictionary<string, object>` collection, can be modified to store any required data. In this example, the `Properties` dictionary is modified to store a `Square` object that represents the size of the <xref:Microsoft.Maui.Controls.Shapes.Rectangle> against a "Square" key.
 
 ## Enable drop
 
@@ -165,7 +165,7 @@ In .NET MAUI, drop gesture recognition is provided by the `DropGestureRecognizer
 - `DropCommand`, of type `ICommand`, which is executed when the drag source is dropped over the drop target.
 - `DropCommandParameter`, of type `object`, which is the parameter that's passed to the `DropCommand`.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 The `DropGestureRecognizer` class also defines `DragOver`, `DragLeave`, and `Drop` events that fire if the `AllowDrop` property is `true`. When a `DropGestureRecognizer` recognizes a drag source over the drop target, it executes the `DragOverCommand` and invokes the `DragOver` event. Then, if the drag source is dragged off the drop target, the `DropGestureRecognizer` executes the `DragLeaveCommand` and invokes the `DragLeave` event. Finally, when the `DropGestureRecognizer` recognizes a drop gesture over the drop target, it executes the `DropCommand` and invokes the `Drop` event.
 
@@ -181,7 +181,7 @@ The `DropEventArgs` class that accompanies the `Drop` event defines the followin
 - `Data`, of type `DataPackageView`, which is a read-only version of the data package.
 - `Handled`, of type `bool`, indicates whether the event handler has handled the event or whether .NET MAUI should continue its own processing.
 
-The following XAML example shows a `DropGestureRecognizer` attached to an `Image`:
+The following XAML example shows a `DropGestureRecognizer` attached to an <xref:Microsoft.Maui.Controls.Image>:
 
 ```xaml
 <Image BackgroundColor="Silver"
@@ -193,7 +193,7 @@ The following XAML example shows a `DropGestureRecognizer` attached to an `Image
 </Image>
 ```
 
-In this example, when a drag source is dropped on the `Image` drop target, the drag source will be copied to the drop target if the drag source is an `ImageSource`. .NET MAUI automatically copies dragged images, and text, to compatible drop targets.
+In this example, when a drag source is dropped on the <xref:Microsoft.Maui.Controls.Image> drop target, the drag source will be copied to the drop target if the drag source is an `ImageSource`. .NET MAUI automatically copies dragged images, and text, to compatible drop targets.
 
 ## Handle the DragOver event
 
@@ -219,7 +219,7 @@ The following XAML example shows a `DropGestureRecognizer` that registers a hand
 </Image>
 ```
 
-In this example, the `DropGestureRecognizer` is attached to an `Image` object. The `DragOver` event is raised when a drag source is dragged over the drop target, but hasn't been dropped, which executes the `OnDragOver` event handler:
+In this example, the `DropGestureRecognizer` is attached to an <xref:Microsoft.Maui.Controls.Image> object. The `DragOver` event is raised when a drag source is dragged over the drop target, but hasn't been dropped, which executes the `OnDragOver` event handler:
 
 ```csharp
 void OnDragOver(object sender, DragEventArgs e)
@@ -234,21 +234,21 @@ In this example, the `AcceptedOperation` property of the `DragEventArgs` object 
 
 The `Drop` event is raised when a drag source is released over a drop target. .NET MAUI automatically attempts to retrieve data from the data package when a drag source is dropped onto the following controls:
 
-- Text controls. Text values can be dropped onto `CheckBox`, `DatePicker`, `Editor`, `Entry`, `Label`, `RadioButton`, `Switch`, and `TimePicker` objects.
-- Image controls. Images can be dropped onto `Button`, `Image`, and `ImageButton` controls.
+- Text controls. Text values can be dropped onto <xref:Microsoft.Maui.Controls.CheckBox>, <xref:Microsoft.Maui.Controls.DatePicker>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.RadioButton>, <xref:Microsoft.Maui.Controls.Switch>, and <xref:Microsoft.Maui.Controls.TimePicker> objects.
+- Image controls. Images can be dropped onto <xref:Microsoft.Maui.Controls.Button>, <xref:Microsoft.Maui.Controls.Image>, and <xref:Microsoft.Maui.Controls.ImageButton> controls.
 
 The following table shows the properties that are set and any conversion that's attempted when a text-based drag source is dropped on a text control:
 
 | Control | Property | Conversion |
 | --- | --- | --- |
-| `CheckBox` | `IsChecked` | `string` is converted to a `bool`. |
-| `DatePicker` | `Date` | `string` is converted to a `DateTime`. |
-| `Editor` | `Text` ||
-| `Entry` | `Text` ||
-| `Label` | `Text` ||
-| `RadioButton` | `IsChecked` | `string` is converted to a `bool`. |
-| `Switch` | `IsToggled` | `string` is converted to a `bool`. |
-| `TimePicker` | `Time` | `string` is converted to a `TimeSpan`. |
+| <xref:Microsoft.Maui.Controls.CheckBox> | `IsChecked` | `string` is converted to a `bool`. |
+| <xref:Microsoft.Maui.Controls.DatePicker> | `Date` | `string` is converted to a `DateTime`. |
+| <xref:Microsoft.Maui.Controls.Editor> | `Text` ||
+| <xref:Microsoft.Maui.Controls.Entry> | `Text` ||
+| <xref:Microsoft.Maui.Controls.Label> | `Text` ||
+| <xref:Microsoft.Maui.Controls.RadioButton> | `IsChecked` | `string` is converted to a `bool`. |
+| <xref:Microsoft.Maui.Controls.Switch> | `IsToggled` | `string` is converted to a `bool`. |
+| <xref:Microsoft.Maui.Controls.TimePicker> | `Time` | `string` is converted to a `TimeSpan`. |
 
 For content other than text and images, you'll need to process the data package yourself.
 
@@ -260,7 +260,7 @@ Image or text data can be retrieved from a data package in the handler for the `
 
 The `DataPackageView` class includes `GetImageAsync` and `GetTextAsync` methods. The `GetImageAsync` method retrieves an image from the data package that was stored in the `DataPackage.Image` property and returns `Task<ImageSource>`. Similarly, the `GetTextAsync` method retrieves text from the data package that was stored in the `DataPackage.Text` property and returns `Task<string>`.
 
-The following example shows a `Drop` event handler that retrieves text from the data package for a `Path`:
+The following example shows a `Drop` event handler that retrieves text from the data package for a <xref:Microsoft.Maui.Controls.Shapes.Path>:
 
 ```csharp
 async void OnDrop(object sender, DropEventArgs e)
@@ -279,7 +279,7 @@ Any data can be retrieved from a data package in the handler for the `Drop` even
 
 The `DataPackageView` class defines a `Properties` property, of type `DataPackagePropertySetView`. The `DataPackagePropertySetView` class represents a read-only property bag stored as a `Dictionary<string, object>`.
 
-The following example shows a `Drop` event handler that retrieves data from the property bag of a data package for a `Rectangle`:
+The following example shows a `Drop` event handler that retrieves data from the property bag of a data package for a <xref:Microsoft.Maui.Controls.Shapes.Rectangle>:
 
 ```csharp
 void OnDrop(object sender, DropEventArgs e)

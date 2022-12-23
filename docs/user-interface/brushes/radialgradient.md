@@ -15,7 +15,7 @@ The `RadialGradientBrush` class defines the following properties:
 - `Center`, of type `Point`, which represents the center point of the circle for the radial gradient. The default value of this property is (0.5,0.5).
 - `Radius`, of type `double`, which represents the radius of the circle for the radial gradient. The default value of this property is 0.5.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 The `RadialGradientBrush` class also has an `IsEmpty` method that returns a `bool` that represents whether the brush has been assigned any `GradientStop` objects.
 
@@ -28,7 +28,7 @@ A radial gradient brush's gradient stops are positioned along a gradient axis de
 
 To create a radial gradient, create a `RadialGradientBrush` object and set its `Center` and `Radius` properties. Then, add two or more `GradientStop` objects to the `RadialGradientBrush.GradientStops` collection, that specify the colors in the gradient and their positions.
 
-The following XAML example shows a `RadialGradientBrush` that's set as the `Background` of a `Frame`:
+The following XAML example shows a `RadialGradientBrush` that's set as the `Background` of a <xref:Microsoft.Maui.Controls.Frame>:
 
 ```xaml
 <Frame BorderColor="LightGray"
@@ -49,11 +49,11 @@ The following XAML example shows a `RadialGradientBrush` that's set as the `Back
 </Frame>
 ```
 
-In this example, the background of the `Frame` is painted with a `RadialGradientBrush` that interpolates from red to dark blue. The center of the radial gradient is positioned in the center of the `Frame`:
+In this example, the background of the <xref:Microsoft.Maui.Controls.Frame> is painted with a `RadialGradientBrush` that interpolates from red to dark blue. The center of the radial gradient is positioned in the center of the <xref:Microsoft.Maui.Controls.Frame>:
 
 :::image type="content" source="media/radialgradient/center.png" alt-text="Screenshot of a Frame painted with a centered RadialGradientBrush.":::
 
-The following XAML example moves the center of the radial gradient to the top-left corner of the `Frame`:
+The following XAML example moves the center of the radial gradient to the top-left corner of the <xref:Microsoft.Maui.Controls.Frame>:
 
 ```xaml
 <!-- Radius defaults to (0.5) -->
@@ -65,11 +65,11 @@ The following XAML example moves the center of the radial gradient to the top-le
 </RadialGradientBrush>
 ```
 
-In this example, the background of the `Frame` is painted with a `RadialGradientBrush` that interpolates from red to dark blue. The center of the radial gradient is positioned in the top-left of the `Frame`:
+In this example, the background of the <xref:Microsoft.Maui.Controls.Frame> is painted with a `RadialGradientBrush` that interpolates from red to dark blue. The center of the radial gradient is positioned in the top-left of the <xref:Microsoft.Maui.Controls.Frame>:
 
 :::image type="content" source="media/radialgradient/top-left.png" alt-text="Screenshot of a Frame painted with a top-left RadialGradientBrush.":::
 
-The following XAML example moves the center of the radial gradient to the bottom-right corner of the `Frame`:
+The following XAML example moves the center of the radial gradient to the bottom-right corner of the <xref:Microsoft.Maui.Controls.Frame>:
 
 ```xaml
 <!-- Radius defaults to (0.5) -->
@@ -81,6 +81,6 @@ The following XAML example moves the center of the radial gradient to the bottom
 </RadialGradientBrush>            
 ```
 
-In this example, the background of the `Frame` is painted with a `RadialGradientBrush` that interpolates from red to dark blue. The center of the radial gradient is positioned in the bottom-right of the `Frame`:
+In this example, the background of the <xref:Microsoft.Maui.Controls.Frame> is painted with a `RadialGradientBrush` that interpolates from red to dark blue. The center of the radial gradient is positioned in the bottom-right of the <xref:Microsoft.Maui.Controls.Frame>:
 
 :::image type="content" source="media/radialgradient/bottom-right.png" alt-text="Screenshot of a Frame painted with a bottom-right RadialGradientBrush.":::

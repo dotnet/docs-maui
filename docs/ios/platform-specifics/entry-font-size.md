@@ -6,7 +6,7 @@ ms.date: 04/05/2022
 
 # Entry font size on iOS
 
-This .NET Multi-platform App UI (.NET MAUI) iOS platform-specific is used to scale the font size of an `Entry` to ensure that the inputted text fits in the control. It's consumed in XAML by setting the `Entry.AdjustsFontSizeToFitWidth` attached property to a `boolean` value:
+This .NET Multi-platform App UI (.NET MAUI) iOS platform-specific is used to scale the font size of an <xref:Microsoft.Maui.Controls.Entry> to ensure that the inputted text fits in the control. It's consumed in XAML by setting the `Entry.AdjustsFontSizeToFitWidth` attached property to a `boolean` value:
 
 ```xaml
 <ContentPage ...
@@ -31,12 +31,12 @@ using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 entry.On<iOS>().EnableAdjustsFontSizeToFitWidth();
 ```
 
-The `Entry.On<iOS>` method specifies that this platform-specific will only run on iOS. The `Entry.EnableAdjustsFontSizeToFitWidth` method, in the `Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific` namespace, is used to scale the font size of the inputted text to ensure that it fits in the `Entry`. In addition, the `Entry` class in the `Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific` namespace also has a `DisableAdjustsFontSizeToFitWidth` method that disables this platform-specific, and a `SetAdjustsFontSizeToFitWidth` method which can be used to toggle font size scaling by calling the `AdjustsFontSizeToFitWidth` method:
+The `Entry.On<iOS>` method specifies that this platform-specific will only run on iOS. The `Entry.EnableAdjustsFontSizeToFitWidth` method, in the `Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific` namespace, is used to scale the font size of the inputted text to ensure that it fits in the <xref:Microsoft.Maui.Controls.Entry>. In addition, the <xref:Microsoft.Maui.Controls.Entry> class in the `Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific` namespace also has a `DisableAdjustsFontSizeToFitWidth` method that disables this platform-specific, and a `SetAdjustsFontSizeToFitWidth` method which can be used to toggle font size scaling by calling the `AdjustsFontSizeToFitWidth` method:
 
 ```csharp
 entry.On<iOS>().SetAdjustsFontSizeToFitWidth(!entry.On<iOS>().AdjustsFontSizeToFitWidth());
 ```
 
-The result is that the font size of the `Entry` is scaled to ensure that the inputted text fits in the control:
+The result is that the font size of the <xref:Microsoft.Maui.Controls.Entry> is scaled to ensure that the inputted text fits in the control:
 
 :::image type="content" source="media/entry-font-size/entry-font-size.png" alt-text="Adjust Entry Font Size Platform-Specific.":::

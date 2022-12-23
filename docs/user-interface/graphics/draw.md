@@ -10,7 +10,7 @@ ms.date: 12/16/2021
 
 .NET Multi-platform App UI (.NET MAUI) graphics, in the `Microsoft.Maui.Graphics` namespace, enables you to draw graphical objects on a canvas that's defined as an `ICanvas` object.
 
-The .NET MAUI `GraphicsView` control provides access to an `ICanvas` object, on which properties can be set and methods invoked to draw graphical objects. For more information about the `GraphicsView`, see [GraphicsView](~/user-interface/controls/graphicsview.md).
+The .NET MAUI <xref:Microsoft.Maui.Controls.GraphicsView> control provides access to an `ICanvas` object, on which properties can be set and methods invoked to draw graphical objects. For more information about the <xref:Microsoft.Maui.Controls.GraphicsView>, see [GraphicsView](~/user-interface/controls/graphicsview.md).
 
 > [!IMPORTANT]
 > Graphical objects are drawn on an `ICanvas` in units of pixels.

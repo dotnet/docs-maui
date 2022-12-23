@@ -16,7 +16,7 @@ You can assign a trigger directly to a control's `Triggers` collection, or add i
 
 A `Trigger` represents a trigger that applies property values, or performs actions, when the specified property meets a specified condition.
 
-The following example shows a `Trigger` that changes an `Entry` background color when it receives focus:
+The following example shows a `Trigger` that changes an <xref:Microsoft.Maui.Controls.Entry> background color when it receives focus:
 
 ```xaml
 <Entry Placeholder="Enter name">
@@ -43,7 +43,7 @@ In addition, optional `EnterActions` and `ExitActions` collections can be specif
 
 ### Apply a trigger using a style
 
-Triggers can also be added to a `Style` declaration on a control, in a page, or an application `ResourceDictionary`. The following example declares an *implicit* style for all `Entry` controls on the page:
+Triggers can also be added to a `Style` declaration on a control, in a page, or an application `ResourceDictionary`. The following example declares an *implicit* style for all <xref:Microsoft.Maui.Controls.Entry> controls on the page:
 
 ```xaml
 <ContentPage.Resources>
@@ -65,7 +65,7 @@ Triggers can also be added to a `Style` declaration on a control, in a page, or 
 
 A `DataTrigger` represents a trigger that applies property values, or performs actions, when the bound data meets a specified condition. The `Binding` markup extension is used to monitor for the specified condition.
 
-The following example shows a `DataTrigger` that disables a `Button` when the `Entry` is empty:
+The following example shows a `DataTrigger` that disables a <xref:Microsoft.Maui.Controls.Button> when the <xref:Microsoft.Maui.Controls.Entry> is empty:
 
 ```xaml
 <Entry x:Name="entry"
@@ -85,7 +85,7 @@ The following example shows a `DataTrigger` that disables a `Button` when the `E
 </Button>
 ```
 
-In this example, when the length of the `Entry` is zero, the trigger is activated.
+In this example, when the length of the <xref:Microsoft.Maui.Controls.Entry> is zero, the trigger is activated.
 
 > [!TIP]
 > When evaluating `Path=Text.Length` always provide a default value for the target property (eg. `Text=""`) because otherwise it will be `null` and the trigger won't work like you expect.
@@ -111,7 +111,7 @@ In this example, there are no `Setter` elements. Instead, there's a `NumericalVa
 
 A trigger action implementation must:
 
-- Implement the generic `TriggerAction<T>` class, with the generic parameter corresponding with the type of control the trigger will be applied to. You can use classes such as `VisualElement` to write trigger actions that work with a variety of controls, or specify a control type like `Entry`.
+- Implement the generic `TriggerAction<T>` class, with the generic parameter corresponding with the type of control the trigger will be applied to. You can use classes such as <xref:Microsoft.Maui.Controls.VisualElement> to write trigger actions that work with a variety of controls, or specify a control type like <xref:Microsoft.Maui.Controls.Entry>.
 - Override the `Invoke` method. This method is called whenever the trigger event occurs.
 - Optionally expose properties that can be set in XAML when the trigger is declared.
 
@@ -136,7 +136,7 @@ public class NumericValidationTriggerAction : TriggerAction<Entry>
 
 A `MultiTrigger` represents a trigger that applies property values, or performs actions, when a set of conditions are satisfied. All the conditions must be true before the `Setter` objects are applied.
 
-The following example shows a `MultiTrigger` that binds to two `Entry` objects:
+The following example shows a `MultiTrigger` that binds to two <xref:Microsoft.Maui.Controls.Entry> objects:
 
 ```xaml
 <Entry x:Name="email"
@@ -199,7 +199,7 @@ The following example shows a property trigger that specifies an `EnterAction` a
 
 A trigger action implementation must:
 
-- Implement the generic `TriggerAction<T>` class, with the generic parameter corresponding with the type of control the trigger will be applied to. You can use classes such as `VisualElement` to write trigger actions that work with a variety of controls, or specify a control type like `Entry`.
+- Implement the generic `TriggerAction<T>` class, with the generic parameter corresponding with the type of control the trigger will be applied to. You can use classes such as <xref:Microsoft.Maui.Controls.VisualElement> to write trigger actions that work with a variety of controls, or specify a control type like <xref:Microsoft.Maui.Controls.Entry>.
 - Override the `Invoke` method. This method is called whenever the trigger event occurs.
 - Optionally expose properties that can be set in XAML when the trigger is declared.
 
@@ -287,7 +287,7 @@ The following XAML example shows a `Style` that includes `StateTrigger` objects:
 </Style>
 ```
 
-In this example, the implicit `Style` targets `Grid` objects. When the `IsToggled` property of the bound object is `true`, the background color of the `Grid` is set to black. When the `IsToggled` property of the bound object becomes `false`, a `VisualState` change is triggered, and the background color of the `Grid` becomes white.
+In this example, the implicit `Style` targets <xref:Microsoft.Maui.Controls.Grid> objects. When the `IsToggled` property of the bound object is `true`, the background color of the <xref:Microsoft.Maui.Controls.Grid> is set to black. When the `IsToggled` property of the bound object becomes `false`, a `VisualState` change is triggered, and the background color of the <xref:Microsoft.Maui.Controls.Grid> becomes white.
 
 In addition, every time a `VisualState` change occurs, the `IsActiveChanged` event for the `VisualState` is raised. Each `VisualState` registers an event handler for this event:
 
@@ -356,7 +356,7 @@ The following XAML example shows a `Style` that includes `AdaptiveTrigger` objec
 </Style>
 ```
 
-In this example, the implicit `Style` targets `StackLayout` objects. When the window width is between 0 and 800 device-independent units, `StackLayout` objects to which the `Style` is applied will have a vertical orientation. When the window width is >= 800 device-independent units, the `VisualState` change is triggered, and the `StackLayout` orientation changes to horizontal.
+In this example, the implicit `Style` targets <xref:Microsoft.Maui.Controls.StackLayout> objects. When the window width is between 0 and 800 device-independent units, <xref:Microsoft.Maui.Controls.StackLayout> objects to which the `Style` is applied will have a vertical orientation. When the window width is >= 800 device-independent units, the `VisualState` change is triggered, and the <xref:Microsoft.Maui.Controls.StackLayout> orientation changes to horizontal.
 
 The `MinWindowHeight` and `MinWindowWidth` properties can be used independently or in conjunction with each other. The following XAML shows an example of setting both properties:
 
@@ -425,7 +425,7 @@ The following XAML example shows a `Style` that includes `CompareStateTrigger` o
 </Grid>
 ```
 
-In this example, the implicit `Style` targets `Grid` objects. When the `IsChecked` property of the `CheckBox` is `false`, the background color of the `Grid` is set to white. When the `CheckBox.IsChecked` property becomes `true`, a `VisualState` change is triggered, and the background color of the `Grid` becomes black.
+In this example, the implicit `Style` targets <xref:Microsoft.Maui.Controls.Grid> objects. When the `IsChecked` property of the <xref:Microsoft.Maui.Controls.CheckBox> is `false`, the background color of the <xref:Microsoft.Maui.Controls.Grid> is set to white. When the `CheckBox.IsChecked` property becomes `true`, a `VisualState` change is triggered, and the background color of the <xref:Microsoft.Maui.Controls.Grid> becomes black.
 
 ### Device state trigger
 
@@ -468,7 +468,7 @@ The following XAML example shows a `Style` that includes `DeviceStateTrigger` ob
 </Style>
 ```
 
-In this example, the explicit `Style` targets `ContentPage` objects. `ContentPage` objects that consume the style set their background color to silver on iOS, and to pale blue on Android.
+In this example, the explicit `Style` targets <xref:Microsoft.Maui.Controls.ContentPage> objects. <xref:Microsoft.Maui.Controls.ContentPage> objects that consume the style set their background color to silver on iOS, and to pale blue on Android.
 
 ### Orientation state trigger
 
@@ -511,4 +511,4 @@ The following XAML example shows a `Style` that includes `OrientationStateTrigge
 </Style>
 ```
 
-In this example, the explicit `Style` targets `ContentPage` objects. `ContentPage` objects that consume the style set their background color to silver when the orientation is portrait, and set their background color to white when the orientation is landscape.
+In this example, the explicit `Style` targets <xref:Microsoft.Maui.Controls.ContentPage> objects. <xref:Microsoft.Maui.Controls.ContentPage> objects that consume the style set their background color to silver when the orientation is portrait, and set their background color to white when the orientation is landscape.

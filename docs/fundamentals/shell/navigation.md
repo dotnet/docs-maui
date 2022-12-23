@@ -14,11 +14,11 @@ The `Shell` class defines the following navigation-related properties:
 
 - `BackButtonBehavior`, of type `BackButtonBehavior`, an attached property that defines the behavior of the back button.
 - `CurrentItem`, of type `ShellItem`, the currently selected item.
-- `CurrentPage`, of type `Page`, the currently presented page.
+- `CurrentPage`, of type <xref:Microsoft.Maui.Controls.Page>, the currently presented page.
 - `CurrentState`, of type `ShellNavigationState`, the current navigation state of the `Shell`.
 - `Current`, of type `Shell`, a type-casted alias for `Application.Current.MainPage`.
 
-The `BackButtonBehavior`, `CurrentItem`, and `CurrentState` properties are backed by `BindableProperty` objects, which means that these properties can be targets of data bindings.
+The `BackButtonBehavior`, `CurrentItem`, and `CurrentState` properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that these properties can be targets of data bindings.
 
 Navigation is performed by invoking the `GoToAsync` method, from the `Shell` class. When navigation is about to be performed, the `Navigating` event is fired, and the `Navigated` event is fired when navigation completes.
 
@@ -350,7 +350,7 @@ async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEvent
 }
 ```
 
-This example retrieves the currently selected elephant in the `CollectionView`, and navigates to the `elephantdetails` route, passing `elephantName` as a query parameter.
+This example retrieves the currently selected elephant in the <xref:Microsoft.Maui.Controls.CollectionView>, and navigates to the `elephantdetails` route, passing `elephantName` as a query parameter.
 
 Object-based navigation data can be passed with a `GoToAsync` overload that specifies an `IDictionary<string, object>` argument:
 
@@ -366,7 +366,7 @@ async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEvent
 }
 ```
 
-This example retrieves the currently selected bear in the `CollectionView`, as an `Animal`. The `Animal` object is added to a `Dictionary` with the key `Bear`. Then, navigation to the `beardetails` route is performed, with the `Dictionary` being passed as a navigation parameter.
+This example retrieves the currently selected bear in the <xref:Microsoft.Maui.Controls.CollectionView>, as an `Animal`. The `Animal` object is added to a `Dictionary` with the key `Bear`. Then, navigation to the `beardetails` route is performed, with the `Dictionary` being passed as a navigation parameter.
 
 There are two approaches to receiving navigation data:
 
@@ -443,7 +443,7 @@ async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEvent
 }
 ```
 
-This code example retrieves the currently selected elephant in the `CollectionView`, and navigates to the `elephantdetails` route, passing `elephantName` and `elephantLocation` as query parameters.
+This code example retrieves the currently selected elephant in the <xref:Microsoft.Maui.Controls.CollectionView>, and navigates to the `elephantdetails` route, passing `elephantName` and `elephantLocation` as query parameters.
 
 To receive multiple items of data, the class that represents the page being navigated to, or the class for the page's `BindingContext`, can be decorated with a `QueryPropertyAttribute` for each string-based query parameter:
 
@@ -506,7 +506,7 @@ Back button appearance and behavior can be redefined by setting the `BackButtonB
 - `IsVisible`, of type `boolean`, indicates whether the back button is visible. The default value is `true`.
 - `TextOverride`, of type `string`, the text used for the back button.
 
-All of these properties are backed by `BindableProperty` objects, which means that the properties can be targets of data bindings.
+All of these properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings.
 
 The following code shows an example of redefining back button appearance and behavior:
 

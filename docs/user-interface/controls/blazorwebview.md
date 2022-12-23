@@ -6,9 +6,9 @@ ms.date: 05/16/2022
 
 # Host a Blazor web app in a .NET MAUI app using BlazorWebView
 
-The .NET Multi-platform App UI (.NET MAUI) `BlazorWebView` is a control that enables you to host a Blazor web app in your .NET MAUI app. These apps, known as Blazor Hybrid apps, enable a Blazor web app to be integrated with platform features and UI controls. The `BlazorWebView` control can be added to any page of a .NET MAUI app, and pointed to the root of the Blazor app. The [Razor components](/aspnet/core/blazor/components/) run natively in the .NET process and render web UI to an embedded web view control. In .NET MAUI, Blazor Hybrid apps can run on all the platforms supported by .NET MAUI.
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> is a control that enables you to host a Blazor web app in your .NET MAUI app. These apps, known as Blazor Hybrid apps, enable a Blazor web app to be integrated with platform features and UI controls. The <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> control can be added to any page of a .NET MAUI app, and pointed to the root of the Blazor app. The [Razor components](/aspnet/core/blazor/components/) run natively in the .NET process and render web UI to an embedded web view control. In .NET MAUI, Blazor Hybrid apps can run on all the platforms supported by .NET MAUI.
 
-`BlazorWebView` defines the following properties:
+<xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> defines the following properties:
 
 - `HostPage`, of type `string?`, which defines the root page of the Blazor web app.
 - `RootComponents`, of type `RootComponentsCollection`, which specifies the collection of root components that can be added to the control.
@@ -19,11 +19,11 @@ The `RootComponent` class defines the following properties:
 - `ComponentType`, of type `Type?`, which defines the type of the root component.
 - `Parameters`, of type `IDictionary<string, object?>?`, which represents an optional dictionary of parameters to pass to the root component.
 
-In addition, `BlazorWebView` defines the following events:
+In addition, <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> defines the following events:
 
-- `BlazorWebViewInitializing`, with an accompanying `BlazorWebViewInitializingEventArgs` object, which is raised before the `BlazorWebView` is initialized. This event enables customization of the `BlazorWebView` configuration.
-- `BlazorWebViewInitialized`, with an accompanying `BlazorWebViewInitializedEventArgs` object, which is raised after the `BlazorWebView` is initialized but before any component has been rendered. This event enables retrieval of the platform-specific web view instance.
-- `UrlLoading`, with an accompanying `UrlLoadingEventArgs` object, is raised when a hyperlink is clicked within a `BlazorWebView`. This event enables customization of whether a hyperlink is opened in the `BlazorWebView`, in an external app, or whether the URL loading attempt is cancelled.
+- `BlazorWebViewInitializing`, with an accompanying `BlazorWebViewInitializingEventArgs` object, which is raised before the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> is initialized. This event enables customization of the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> configuration.
+- `BlazorWebViewInitialized`, with an accompanying `BlazorWebViewInitializedEventArgs` object, which is raised after the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> is initialized but before any component has been rendered. This event enables retrieval of the platform-specific web view instance.
+- `UrlLoading`, with an accompanying `UrlLoadingEventArgs` object, is raised when a hyperlink is clicked within a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView>. This event enables customization of whether a hyperlink is opened in the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView>, in an external app, or whether the URL loading attempt is cancelled.
 
 Existing [Razor components](/aspnet/core/blazor/components/) can be used in a .NET MAUI Blazor app by moving the code into the app, or by referencing an existing class library or package that contains the component.
 
@@ -40,7 +40,7 @@ A .NET MAUI Blazor app can be created in Visual Studio by the **.NET MAUI Blazor
 
 This project template creates a multi-targeted .NET MAUI Blazor app that can be deployed to Android, iOS, macOS, and Windows. For step-by-step instructions on creating a .NET MAUI Blazor app, see [Build a .NET MAUI Blazor app](/aspnet/core/blazor/hybrid/tutorials/maui).
 
-The `BlazorWebView` created by the project template is defined in *MainPage.xaml*, and points to the root of the Blazor app:
+The <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> created by the project template is defined in *MainPage.xaml*, and points to the root of the Blazor app:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -62,7 +62,7 @@ The root [Razor component](/aspnet/core/blazor/components/) for the app is in *M
 
 ## Add a BlazorWebView to an existing app
 
-The process to add a `BlazorWebView` to an existing .NET MAUI app is as follows:
+The process to add a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> to an existing .NET MAUI app is as follows:
 
 1. Add the Razor SDK, `Microsoft.NET.Sdk.Razor` to your project by editing its first line of the CSPROJ project file:
 
@@ -76,7 +76,7 @@ The process to add a `BlazorWebView` to an existing .NET MAUI app is as follows:
 1. Add your [Razor components](/aspnet/core/blazor/components/) to project folders named *Pages* and *Shared*.
 1. Add your static web assets to a project folder named *wwwroot*.
 1. Add any optional *_Imports.razor* files to your project.
-1. Add a `BlazorWebView` to a page in your .NET MAUI app, and point it to the root of the Blazor app:
+1. Add a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> to a page in your .NET MAUI app, and point it to the root of the Blazor app:
 
     ```xaml
     <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -93,7 +93,7 @@ The process to add a `BlazorWebView` to an existing .NET MAUI app is as follows:
     </ContentPage>
     ```
 
-1. Modify the `CreateMauiApp` method of your `MauiProgram` class to register the `BlazorWebView` control for use in your app. To do this, on the `IServiceCollection` object, call the `AddMauiBlazorWebView` method to add component web view services to the services collection:
+1. Modify the `CreateMauiApp` method of your `MauiProgram` class to register the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> control for use in your app. To do this, on the `IServiceCollection` object, call the `AddMauiBlazorWebView` method to add component web view services to the services collection:
 
     ```csharp
     public static class MauiProgram
