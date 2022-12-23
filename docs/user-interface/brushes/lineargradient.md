@@ -8,7 +8,7 @@ ms.date: 01/11/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-brushes)
 
-The .NET Multi-platform App UI (.NET MAUI)  <xref:Microsoft.Maui.Controls.LinearGradientBrush> class derives from the `GradientBrush` class, and paints an area with a linear gradient, which blends two or more colors along a line known as the gradient axis. <xref:Microsoft.Maui.Controls.GradientStop> objects are used to specify the colors in the gradient and their positions. For more information about <xref:Microsoft.Maui.Controls.GradientStop> objects, see [Gradients](gradient.md).
+The .NET Multi-platform App UI (.NET MAUI)  <xref:Microsoft.Maui.Controls.LinearGradientBrush> class derives from the <xref:Microsoft.Maui.Controls.GradientBrush> class, and paints an area with a linear gradient, which blends two or more colors along a line known as the gradient axis. <xref:Microsoft.Maui.Controls.GradientStop> objects are used to specify the colors in the gradient and their positions. For more information about <xref:Microsoft.Maui.Controls.GradientStop> objects, see [Gradients](gradient.md).
 
 The <xref:Microsoft.Maui.Controls.LinearGradientBrush> class defines the following properties:
 
