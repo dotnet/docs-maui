@@ -13,7 +13,7 @@ The .NET Multi-platform App UI (.NET MAUI) `GradientBrush` class derives from th
 Classes that derive from `GradientBrush` describe different ways of interpreting gradient stops, and .NET MAUI provides the following gradient brushes:
 
 - <xref:Microsoft.Maui.Controls.LinearGradientBrush>, which paints an area with a linear gradient. For more information, see [Linear gradient brushes](lineargradient.md).
-- `RadialGradientBrush`, which paints an area with a radial gradient. For more information, see [Radial gradient brushes](radialgradient.md).
+- <xref:Microsoft.Maui.Controls.RadialGradientBrush>, which paints an area with a radial gradient. For more information, see [Radial gradient brushes](radialgradient.md).
 
 The `GradientBrush` class defines the <xref:Microsoft.Maui.Controls.GradientBrush.GradientStops> property, of type <xref:Microsoft.Maui.Controls.GradientStopCollection, which represents the brush's gradient stops, each of which specifies a color and an offset along the brush's gradient axis. A <xref:Microsoft.Maui.Controls.GradientStopCollection is an `ObservableCollection` of <xref:Microsoft.Maui.Controls.GradientStop> objects. The <xref:Microsoft.Maui.Controls.GradientBrush.GradientStops> property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means that it can be the target of data bindings, and styled.
 
