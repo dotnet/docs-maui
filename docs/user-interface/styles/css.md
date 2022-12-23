@@ -400,7 +400,7 @@ The following CSS properties are supported by .NET MAUI (in the **Values** colum
 |`visibility`|<xref:Microsoft.Maui.Controls.VisualElement>|`true` \| `visible` \| `false` \| `hidden` \| `collapse` \| `initial`|`visibility: hidden;`|
 |`width`|<xref:Microsoft.Maui.Controls.VisualElement>|_double_ \| `initial`|`width: 320;`|
 
-<!-- Todo: Can also set `background`, on a <xref:Microsoft.Maui.Controls.VisualElement>, to a `Brush` -->
+<!-- Todo: Can also set `background`, on a <xref:Microsoft.Maui.Controls.VisualElement>, to a <xref:Microsoft.Maui.Controls.Brush> -->
 
 > [!NOTE]
 > `initial` is a valid value for all properties. It clears the value (resets to default) that was set from another style.

@@ -14,13 +14,13 @@ The `Shadow` class defines the following properties:
 
 - `Radius`, of type `float`, defines the radius of the blur used to generate the shadow. The default value of this property is 10.
 - `Opacity`, of type `float`, indicates the opacity of the shadow. The default value of this property is 1.
-- `Brush`, of type `Brush`, represents the brush used to colorize the shadow.
+- `Brush`, of type <xref:Microsoft.Maui.Controls.Brush>, represents the brush used to colorize the shadow.
 - `OffSet`, of type `Point`, specifies the offset for the shadow, which represents the position of the light source that creates the shadow.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 > [!IMPORTANT]
-> The `Brush` property only currently supports a `SolidColorBrush`.
+> The `Brush` property only currently supports a <xref:Microsoft.Maui.Controls.SolidColorBrush>.
 
 ## Create a Shadow
 
@@ -76,7 +76,7 @@ For more information about clipping an element, see [Clip with a Geometry](~/use
 
 ## Create a Shadow gradient
 
-The color of a shadow is defined using a `Brush`. Therefore, gradient shadows can also be added to controls:
+The color of a shadow is defined using a <xref:Microsoft.Maui.Controls.Brush>. Therefore, gradient shadows can also be added to controls:
 
 ```xaml
 <RoundRectangle HeightRequest="200"

@@ -21,7 +21,7 @@ The <xref:Microsoft.Maui.Controls.Shapes.Rectangle> class sets the `Aspect` prop
 
 ## Create a Rectangle
 
-To draw a rectangle, create a <xref:Microsoft.Maui.Controls.Shapes.Rectangle> object and sets its `WidthRequest` and `HeightRequest` properties. To paint the inside of the rectangle, set its `Fill` property to a `Brush`-derived object. To give the rectangle an outline, set its `Stroke` property to a `Brush`-derived object. The `StrokeThickness` property specifies the thickness of the rectangle outline. For more information about `Brush` objects, see [Brushes](~/user-interface/brushes/index.md).
+To draw a rectangle, create a <xref:Microsoft.Maui.Controls.Shapes.Rectangle> object and sets its `WidthRequest` and `HeightRequest` properties. To paint the inside of the rectangle, set its `Fill` property to a <xref:Microsoft.Maui.Controls.Brush>-derived object. To give the rectangle an outline, set its `Stroke` property to a <xref:Microsoft.Maui.Controls.Brush>-derived object. The `StrokeThickness` property specifies the thickness of the rectangle outline. For more information about <xref:Microsoft.Maui.Controls.Brush> objects, see [Brushes](~/user-interface/brushes/index.md).
 
 To give the rectangle rounded corners, set its `RadiusX` and `RadiusY` properties. These properties set the x-axis and y-axis radii that's used to round the corners of the rectangle.
 

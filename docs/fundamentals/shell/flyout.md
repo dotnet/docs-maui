@@ -575,7 +575,7 @@ The background color of the flyout can be set with the `Shell.FlyoutBackgroundCo
 > [!NOTE]
 > The `Shell.FlyoutBackgroundColor` can also be set from a Cascading Style Sheet (CSS). For more information, see [.NET MAUI Shell specific properties](~/user-interface/styles/css.md#net-maui-shell-specific-properties).
 
-Alternatively, the background of the flyout can be specified by setting the `Shell.FlyoutBackground` bindable property to a `Brush`:
+Alternatively, the background of the flyout can be specified by setting the `Shell.FlyoutBackground` bindable property to a <xref:Microsoft.Maui.Controls.Brush>:
 
 ```xaml
 <Shell ...
@@ -584,9 +584,9 @@ Alternatively, the background of the flyout can be specified by setting the `She
 </Shell>
 ```
 
-In this example, the flyout background is painted with a light gray `SolidColorBrush`.
+In this example, the flyout background is painted with a light gray <xref:Microsoft.Maui.Controls.SolidColorBrush>.
 
-The following example shows setting the flyout background to a `LinearGradientBrush`:
+The following example shows setting the flyout background to a <xref:Microsoft.Maui.Controls.LinearGradientBrush>:
 
 ```xaml
 <Shell ...>
@@ -633,7 +633,7 @@ This results in a background image appearing in the flyout, below the flyout hea
 
 ## Flyout backdrop
 
-The backdrop of the flyout, which is the appearance of the flyout overlay, can be specified by setting the `Shell.FlyoutBackdrop` attached property to a `Brush`:
+The backdrop of the flyout, which is the appearance of the flyout overlay, can be specified by setting the `Shell.FlyoutBackdrop` attached property to a <xref:Microsoft.Maui.Controls.Brush>:
 
 ```xaml
 <Shell ...
@@ -642,12 +642,12 @@ The backdrop of the flyout, which is the appearance of the flyout overlay, can b
 </Shell>
 ```
 
-In this example, the flyout backdrop is painted with a silver `SolidColorBrush`.
+In this example, the flyout backdrop is painted with a silver <xref:Microsoft.Maui.Controls.SolidColorBrush>.
 
 > [!IMPORTANT]
 > The `FlyoutBackdrop` attached property can be set on any Shell element, but will only be applied when it's set on `Shell`, `FlyoutItem`, or `TabBar` objects.
 
-The following example shows setting the flyout backdrop to a `LinearGradientBrush`:
+The following example shows setting the flyout backdrop to a <xref:Microsoft.Maui.Controls.LinearGradientBrush>:
 
 ```xaml
 <Shell ...>
