@@ -87,10 +87,10 @@ After wirelessly pairing your device to Xcode, provisioned .NET MAUI iOS apps ca
 - Ensure that your iOS device is connected to the same network as your Mac.
 - Ensure that your device is provisioned. For more information about provisioning, see [Device provisioning for iOS](~/ios/device-provisioning/index.md).
 - Verify that Xcode can see the device:
-    - In Xcode, choose **Window > Devices and Simulators**, and in the window that appears click **Devices**. The device should appear under **Connected**.
+  - In Xcode, choose **Window > Devices and Simulators**, and in the window that appears click **Devices**. The device should appear under **Connected**.
 - Ping the device:
-    - Find the device's IP address. On the device open **Settings**, tap **Wi-Fi**, and then tap the information button next to the network that's active.
-    - On a Mac, open **Terminal** and type `ping` followed by the device's IP address. Provided that your Mac can see the device, you'll receive output similar to:
+  - Find the device's IP address. On the device open **Settings**, tap **Wi-Fi**, and then tap the information button next to the network that's active.
+  - On a Mac, open **Terminal** and type `ping` followed by the device's IP address. Provided that your Mac can see the device, you'll receive output similar to:
 
     ```zsh
     PING 192.168.1.107 (192.168.1.107): 56 data bytes
@@ -103,7 +103,7 @@ After wirelessly pairing your device to Xcode, provisioned .NET MAUI iOS apps ca
     If there's an error, the output will be `Request timeout for icmp_seq 0`. If you can't ping the device, then the Internet Control Message Protocol (ICMP) is blocked or there's another connectivity issue.
 - Ensure that port 62078 is open.
 - Connect the device to the network using an Ethernet cable:
-    - Use the Lightning to USB Camera Adapter and a USB to Ethernet adapter.
+  - Use the Lightning to USB Camera Adapter and a USB to Ethernet adapter.
 - Re-pair the iOS device:
-    - Unpair the device. For more information, see [Unpair an iOS device](#unpair-an-ios-device).
-    - Pair the iOS device with Xcode. For more information, see [Pair an iOS device](#pair-an-ios-device).
+  - Unpair the device. For more information, see [Unpair an iOS device](#unpair-an-ios-device).
+  - Pair the iOS device with Xcode. For more information, see [Pair an iOS device](#pair-an-ios-device).
