@@ -1,7 +1,7 @@
 ---
 title: "Device information"
 description: "Learn how to use the .NET MAUI IDeviceInfo interface in the Microsoft.Maui.Devices namespace, which provides information about the device the app is running on."
-ms.date: 09/02/2022
+ms.date: 12/20/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices"]
 ---
 
@@ -66,6 +66,8 @@ This section describes the platform-specific differences with the device informa
 No platform differences.
 
 # [iOS\macOS](#tab/ios)
+
+To access the user-assigned device name through the `DeviceInfo.Name` property in iOS 16 and later, rather than the generic device name, your app must meet certain criteria and be assigned the `com.apple.developer.device-information.user-assigned-device-name` entitlement. For more information, see [`com.apple.developer.device-information.user-assigned-device-name`](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_device-information_user-assigned-device-name?language=objc) on developer.apple.com.
 
 iOS doesn't expose an API for developers to get the model of the specific iOS device. Instead, a hardware identifier is returned, like _iPhone10,6_, which refers to the iPhone X. A mapping of these identifiers isn't provided by Apple, but can be found on the internet such as at [The iPhone Wiki](https://www.theiphonewiki.com/wiki/Models) and [Get iOS Model](https://github.com/dannycabrera/Get-iOS-Model) websites.
 
