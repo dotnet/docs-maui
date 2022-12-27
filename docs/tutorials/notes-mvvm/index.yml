@@ -51,6 +51,6 @@ items:
 
     The following links provide more information related to some of the concepts you learned in this tutorial:
 
-    - [Data binding and MVVM](../xaml/fundamentals/mvvm.md)
-    - [ApplyQueryAttributes - Process navigation data using a single method](../fundamentals/shell/navigation.md#process-navigation-data-using-a-single-method)
+    - [Data binding and MVVM](../../xaml/fundamentals/mvvm.md)
+    - [ApplyQueryAttributes - Process navigation data using a single method](../../fundamentals/shell/navigation.md#process-navigation-data-using-a-single-method)
     - [ObservableObject - How it works](/dotnet/communitytoolkit/mvvm/observableobject)
