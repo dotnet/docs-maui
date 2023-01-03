@@ -43,10 +43,6 @@
             "heading": "Fundamentals"
         },
         {
-            "names": [ "android", "ios", "macos", "windows" ],
-            "heading": "Platforms"
-        },
-        {
             "names": [ "platform-integration" ],
             "heading": "Platform integration"
         },
