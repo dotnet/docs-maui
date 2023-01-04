@@ -37,7 +37,7 @@ When a navigation URI includes all three components, the structure is: //route/p
 
 ### Register routes
 
-Routes can be defined on <xref:Microsoft.Maui.Controls.FlyoutItem>, <xref:Microsoft.Maui.Controls.TabBar>, <xref:Microsoft.Maui.Controls.Tab>, and `ShellContent` objects, through their `Route` properties:
+Routes can be defined on <xref:Microsoft.Maui.Controls.FlyoutItem>, <xref:Microsoft.Maui.Controls.TabBar>, <xref:Microsoft.Maui.Controls.Tab>, and <xref:Microsoft.Maui.Controls.ShellContent> objects, through their `Route` properties:
 
 ```xaml
 <Shell ...>
@@ -79,7 +79,7 @@ animals
 about
 ```
 
-To navigate to the `ShellContent` object for the `dogs` route, the absolute route URI is `//animals/domestic/dogs`. Similarly, to navigate to the `ShellContent` object for the `about` route, the absolute route URI is `//about`.
+To navigate to the <xref:Microsoft.Maui.Controls.ShellContent> object for the `dogs` route, the absolute route URI is `//animals/domestic/dogs`. Similarly, to navigate to the <xref:Microsoft.Maui.Controls.ShellContent> object for the `about` route, the absolute route URI is `//about`.
 
 > [!WARNING]
 > An `ArgumentException` will be thrown on app startup if a duplicate route is detected. This exception will also be thrown if two or more routes at the same level in the hierarchy share a route name.
@@ -133,11 +133,11 @@ Navigation can be performed by specifying a valid absolute URI as an argument to
 await Shell.Current.GoToAsync("//animals/monkeys");
 ```
 
-This example navigates to the page for the `monkeys` route, with the route being defined on a `ShellContent` object. The `ShellContent` object that represents the `monkeys` route is a child of a <xref:Microsoft.Maui.Controls.FlyoutItem> object, whose route is `animals`.
+This example navigates to the page for the `monkeys` route, with the route being defined on a <xref:Microsoft.Maui.Controls.ShellContent> object. The <xref:Microsoft.Maui.Controls.ShellContent> object that represents the `monkeys` route is a child of a <xref:Microsoft.Maui.Controls.FlyoutItem> object, whose route is `animals`.
 
 ### Relative routes
 
-Navigation can also be performed by specifying a valid relative URI as an argument to the `GoToAsync` method. The routing system will attempt to match the URI to a `ShellContent` object. Therefore, if all the routes in an app are unique, navigation can be performed by only specifying the unique route name as a relative URI.
+Navigation can also be performed by specifying a valid relative URI as an argument to the `GoToAsync` method. The routing system will attempt to match the URI to a <xref:Microsoft.Maui.Controls.ShellContent> object. Therefore, if all the routes in an app are unique, navigation can be performed by only specifying the unique route name as a relative URI.
 
 The following relative route formats are supported:
 

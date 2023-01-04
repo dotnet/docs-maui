@@ -43,12 +43,12 @@ The `FlyoutItem.Title` property, of type `string`, defines the title of the flyo
 
 :::image type="content" source="media/flyout/two-page-app-flyout.png" alt-text="Screenshot of a Shell two page app with flyout items.":::
 
-In this example, each `ShellContent` object can only be accessed through flyout items, and not through tabs. This is because by default, tabs will only be displayed if the flyout item contains more than one tab.
+In this example, each <xref:Microsoft.Maui.Controls.ShellContent> object can only be accessed through flyout items, and not through tabs. This is because by default, tabs will only be displayed if the flyout item contains more than one tab.
 
 > [!IMPORTANT]
-> In a Shell app, pages are created on demand in response to navigation. This is accomplished by using the `DataTemplate` markup extension to set the `ContentTemplate` property of each `ShellContent` object to a <xref:Microsoft.Maui.Controls.ContentPage> object.
+> In a Shell app, pages are created on demand in response to navigation. This is accomplished by using the `DataTemplate` markup extension to set the `ContentTemplate` property of each <xref:Microsoft.Maui.Controls.ShellContent> object to a <xref:Microsoft.Maui.Controls.ContentPage> object.
 
-Shell has implicit conversion operators that enable the Shell visual hierarchy to be simplified, without introducing additional views into the visual tree. This is possible because a subclassed <xref:Microsoft.Maui.Controls.Shell> object can only ever contain <xref:Microsoft.Maui.Controls.FlyoutItem> objects or a <xref:Microsoft.Maui.Controls.TabBar> object, which can only ever contain <xref:Microsoft.Maui.Controls.Tab> objects, which can only ever contain `ShellContent` objects. These implicit conversion operators can be used to remove the <xref:Microsoft.Maui.Controls.FlyoutItem> and <xref:Microsoft.Maui.Controls.Tab> objects from the previous example:
+Shell has implicit conversion operators that enable the Shell visual hierarchy to be simplified, without introducing additional views into the visual tree. This is possible because a subclassed <xref:Microsoft.Maui.Controls.Shell> object can only ever contain <xref:Microsoft.Maui.Controls.FlyoutItem> objects or a <xref:Microsoft.Maui.Controls.TabBar> object, which can only ever contain <xref:Microsoft.Maui.Controls.Tab> objects, which can only ever contain <xref:Microsoft.Maui.Controls.ShellContent> objects. These implicit conversion operators can be used to remove the <xref:Microsoft.Maui.Controls.FlyoutItem> and <xref:Microsoft.Maui.Controls.Tab> objects from the previous example:
 
 ```xaml
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -65,7 +65,7 @@ Shell has implicit conversion operators that enable the Shell visual hierarchy t
 </Shell>
 ```
 
-This implicit conversion automatically wraps each `ShellContent` object in <xref:Microsoft.Maui.Controls.Tab> objects, which are wrapped in <xref:Microsoft.Maui.Controls.FlyoutItem> objects.
+This implicit conversion automatically wraps each <xref:Microsoft.Maui.Controls.ShellContent> object in <xref:Microsoft.Maui.Controls.Tab> objects, which are wrapped in <xref:Microsoft.Maui.Controls.FlyoutItem> objects.
 
 > [!NOTE]
 > All <xref:Microsoft.Maui.Controls.FlyoutItem> objects in a subclassed <xref:Microsoft.Maui.Controls.Shell> object are automatically added to the `Shell.FlyoutItems` collection, which defines the list of items that will be shown in the flyout.
@@ -114,10 +114,10 @@ A flyout item for each <xref:Microsoft.Maui.Controls.Tab> object within a <xref:
 </Shell>
 ```
 
-In this example, flyout items are created for the <xref:Microsoft.Maui.Controls.Tab> object that's a child of the <xref:Microsoft.Maui.Controls.FlyoutItem> object, and the `ShellContent` objects that are children of the <xref:Microsoft.Maui.Controls.FlyoutItem> object. This occurs because each `ShellContent` object that's a child of the <xref:Microsoft.Maui.Controls.FlyoutItem> object is automatically wrapped in a <xref:Microsoft.Maui.Controls.Tab> object. In addition, a flyout item is created for the final `ShellContent` object, which is automatically wrapped in a <xref:Microsoft.Maui.Controls.Tab> object, and then in a <xref:Microsoft.Maui.Controls.FlyoutItem> object.
+In this example, flyout items are created for the <xref:Microsoft.Maui.Controls.Tab> object that's a child of the <xref:Microsoft.Maui.Controls.FlyoutItem> object, and the <xref:Microsoft.Maui.Controls.ShellContent> objects that are children of the <xref:Microsoft.Maui.Controls.FlyoutItem> object. This occurs because each <xref:Microsoft.Maui.Controls.ShellContent> object that's a child of the <xref:Microsoft.Maui.Controls.FlyoutItem> object is automatically wrapped in a <xref:Microsoft.Maui.Controls.Tab> object. In addition, a flyout item is created for the final <xref:Microsoft.Maui.Controls.ShellContent> object, which is automatically wrapped in a <xref:Microsoft.Maui.Controls.Tab> object, and then in a <xref:Microsoft.Maui.Controls.FlyoutItem> object.
 
 > [!NOTE]
-> Tabs are displayed when a <xref:Microsoft.Maui.Controls.FlyoutItem> contains more than one `ShellContent` object.
+> Tabs are displayed when a <xref:Microsoft.Maui.Controls.FlyoutItem> contains more than one <xref:Microsoft.Maui.Controls.ShellContent> object.
 
 This results in the following flyout items:
 
@@ -686,7 +686,7 @@ The following example shows how to disable the flyout:
 ```
 
 > [!NOTE]
-> The `FlyoutBehavior` attached property can be set on <xref:Microsoft.Maui.Controls.Shell>, <xref:Microsoft.Maui.Controls.FlyoutItem>, `ShellContent`, and page objects, to override the default flyout behavior.
+> The `FlyoutBehavior` attached property can be set on <xref:Microsoft.Maui.Controls.Shell>, <xref:Microsoft.Maui.Controls.FlyoutItem>, <xref:Microsoft.Maui.Controls.ShellContent>, and page objects, to override the default flyout behavior.
 
 ## Flyout vertical scroll
 
@@ -722,9 +722,9 @@ When a Shell app that uses a flyout is first run, the `Shell.CurrentItem` proper
 </Shell>
 ```
 
-This example sets the `CurrentItem` property to the `ShellContent` object named `aboutItem`, which results in it being selected and displayed. In this example, an implicit conversion is used to wrap the `ShellContent` object in a <xref:Microsoft.Maui.Controls.Tab> object, which is wrapped in a <xref:Microsoft.Maui.Controls.FlyoutItem> object.
+This example sets the `CurrentItem` property to the <xref:Microsoft.Maui.Controls.ShellContent> object named `aboutItem`, which results in it being selected and displayed. In this example, an implicit conversion is used to wrap the <xref:Microsoft.Maui.Controls.ShellContent> object in a <xref:Microsoft.Maui.Controls.Tab> object, which is wrapped in a <xref:Microsoft.Maui.Controls.FlyoutItem> object.
 
-The equivalent C# code, given a `ShellContent` object named `aboutItem`, is:
+The equivalent C# code, given a <xref:Microsoft.Maui.Controls.ShellContent> object named `aboutItem`, is:
 
 ```csharp
 CurrentItem = aboutItem;
@@ -758,7 +758,7 @@ The following example shows hiding an item in the flyout:
 ```
 
 > [!NOTE]
-> There's also a `Shell.FlyoutItemIsVisible` attached property, which can be set on <xref:Microsoft.Maui.Controls.FlyoutItem>, `MenuItem`, <xref:Microsoft.Maui.Controls.Tab>, and `ShellContent` objects.
+> There's also a `Shell.FlyoutItemIsVisible` attached property, which can be set on <xref:Microsoft.Maui.Controls.FlyoutItem>, `MenuItem`, <xref:Microsoft.Maui.Controls.Tab>, and <xref:Microsoft.Maui.Controls.ShellContent> objects.
 
 ## Open and close the flyout programmatically
 

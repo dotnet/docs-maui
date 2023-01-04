@@ -318,7 +318,7 @@ The **Note view** needs to support the query string parameter, `ItemId`. Create 
 
 ## Modify the app's visual tree
 
-The `AppShell` is still loading the single note page, instead, it needs to load the **AllPages view**. Open the _AppShell.xaml_ file and change the first `ShellContent` entry to point to the `AllNotesPage` instead of `NotePage`:
+The `AppShell` is still loading the single note page, instead, it needs to load the **AllPages view**. Open the _AppShell.xaml_ file and change the first <xref:Microsoft.Maui.Controls.ShellContent> entry to point to the `AllNotesPage` instead of `NotePage`:
 
 :::code language="xaml" source="../snippets/navigation/csharp/Notes/AppShell.xaml" highlight="12":::
 

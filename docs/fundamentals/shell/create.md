@@ -18,7 +18,7 @@ The visual hierarchy of a .NET MAUI Shell app is described in the subclassed <xr
 
 1. <xref:Microsoft.Maui.Controls.FlyoutItem> or <xref:Microsoft.Maui.Controls.TabBar>. A <xref:Microsoft.Maui.Controls.FlyoutItem> represents one or more items in the flyout, and should be used when the navigation pattern for the app requires a flyout. A <xref:Microsoft.Maui.Controls.TabBar> represents the bottom tab bar, and should be used when the navigation pattern for the app begins with bottom tabs and doesn't require a flyout. Every <xref:Microsoft.Maui.Controls.FlyoutItem> object or <xref:Microsoft.Maui.Controls.TabBar> object is a child of the <xref:Microsoft.Maui.Controls.Shell> object.
 1. <xref:Microsoft.Maui.Controls.Tab>, which represents grouped content, navigable by bottom tabs. Every <xref:Microsoft.Maui.Controls.Tab> object is a child of a <xref:Microsoft.Maui.Controls.FlyoutItem> object or <xref:Microsoft.Maui.Controls.TabBar> object.
-1. `ShellContent`, which represents the <xref:Microsoft.Maui.Controls.ContentPage> objects for each tab. Every `ShellContent` object is a child of a <xref:Microsoft.Maui.Controls.Tab> object. When more than one `ShellContent` object is present in a <xref:Microsoft.Maui.Controls.Tab>, the objects will be navigable by top tabs.
+1. <xref:Microsoft.Maui.Controls.ShellContent>, which represents the <xref:Microsoft.Maui.Controls.ContentPage> objects for each tab. Every <xref:Microsoft.Maui.Controls.ShellContent> object is a child of a <xref:Microsoft.Maui.Controls.Tab> object. When more than one <xref:Microsoft.Maui.Controls.ShellContent> object is present in a <xref:Microsoft.Maui.Controls.Tab>, the objects will be navigable by top tabs.
 
 These objects don't represent any user interface, but rather the organization of the app's visual hierarchy. Shell will take these objects and produce the navigation user interface for the content.
 
@@ -72,4 +72,4 @@ Pressing the hamburger icon, or swiping from the left, displays the flyout:
 Multiple items are displayed on the flyout because the `FlyoutDisplayOptions` property is set to `AsMultipleItems`. For more information, see [Flyout display options](flyout.md#flyout-display-options).
 
 > [!IMPORTANT]
-> In a Shell app, pages are created on demand in response to navigation. This is accomplished by using the `DataTemplate` markup extension to set the `ContentTemplate` property of each `ShellContent` object to a <xref:Microsoft.Maui.Controls.ContentPage> object.
+> In a Shell app, pages are created on demand in response to navigation. This is accomplished by using the `DataTemplate` markup extension to set the `ContentTemplate` property of each <xref:Microsoft.Maui.Controls.ShellContent> object to a <xref:Microsoft.Maui.Controls.ContentPage> object.

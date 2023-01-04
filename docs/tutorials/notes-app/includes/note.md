@@ -87,7 +87,7 @@ The final code for the code-behind file should look like the following:
 
 ## Test the note
 
-Now that **note page** is finished, you need a way to present it to the user. Open the _AppShell.xaml_ file, and change the first `ShellContent` entry to point to the `NotePage` instead of `MainPage`:
+Now that **note page** is finished, you need a way to present it to the user. Open the _AppShell.xaml_ file, and change the first <xref:Microsoft.Maui.Controls.ShellContent> entry to point to the `NotePage` instead of `MainPage`:
 
 :::code language="xaml" source="../snippets/note/csharp/Notes/AppShell.xaml" highlight="12":::
 
