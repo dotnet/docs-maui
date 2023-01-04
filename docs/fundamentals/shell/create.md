@@ -10,7 +10,7 @@ ms.date: 04/07/2022
 
 A .NET Multi-platform App UI (.NET MAUI) Shell app can be created with the **.NET MAUI App** project template, and then by describing the visual hierarchy of the app in the `AppShell` class.
 
-<!-- For a step-by-step walkthrough of how to create a Shell app, see [Create a .NET MAUI app quickstart](~/xamarin-forms/get-started/quickstarts/app.md). -->
+For a step-by-step walkthrough of how to create a Shell app, see [Create a .NET MAUI app](~/tutorials/notes-app/index.yml).
 
 ## Describe the visual hierarchy of the app
 

@@ -19,9 +19,9 @@ ms.date: 04/07/2022
 
 In a .NET MAUI Shell app, the visual hierarchy of the app is described in a class that subclasses the <xref:Microsoft.Maui.Controls.Shell> class. This class can consist of three main hierarchical objects:
 
-1. <xref:Microsoft.Maui.Controls.FlyoutItem> or <xref:Microsoft.Maui.Controls.TabBar>. A <xref:Microsoft.Maui.Controls.FlyoutItem> represents one or more items in the flyout, and should be used when the navigation pattern for the app requires a flyout. A <xref:Microsoft.Maui.Controls.TabBar> represents the bottom tab bar, and should be used when the navigation pattern for the app begins with bottom tabs and doesn't require a flyout.
-1. <xref:Microsoft.Maui.Controls.Tab>, which represents grouped content, navigable by bottom tabs.
-1. <xref:Microsoft.Maui.Controls.ShellContent>, which represents the <xref:Microsoft.Maui.Controls.ContentPage> objects for each tab.
+1. <xref:Microsoft.Maui.Controls.FlyoutItem> or <xref:Microsoft.Maui.Controls.TabBar>. A <xref:Microsoft.Maui.Controls.FlyoutItem> represents one or more items in the flyout, and should be used when the navigation pattern for the app requires a flyout. A <xref:Microsoft.Maui.Controls.TabBar> represents the bottom tab bar, and should be used when the navigation pattern for the app begins with bottom tabs and doesn't require a flyout. For more information about flyout items, see [.NET MAUI Shell flyout](flyout.md). For more information about tab bars, see [.NET MAUI Shell tabs](tabs.md).
+1. <xref:Microsoft.Maui.Controls.Tab>, which represents grouped content, navigable by bottom tabs. For more information, see [.NET MAUI Shell tabs](tabs.md).
+1. <xref:Microsoft.Maui.Controls.ShellContent>, which represents the <xref:Microsoft.Maui.Controls.ContentPage> objects for each tab. For more information, see [.NET MAUI Shell pages](pages.md).
 
 These objects don't represent any user interface, but rather the organization of the app's visual hierarchy. Shell will take these objects and produce the navigation user interface for the content.
 
