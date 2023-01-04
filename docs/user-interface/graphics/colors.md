@@ -10,7 +10,7 @@ ms.date: 12/16/2021
 
 The `Color` class, in the `Microsoft.Maui.Graphics` namespace, lets you specify colors as Red-Green-Blue (RGB) values, Hue-Saturation-Luminosity (HSL) values, Hue-Saturation-Value (HSV) values, or with a color name. An Alpha channel is also available to indicate transparency.
 
-`Color` objects can be created with `Color` constructors, which can be used to specify a gray shade, an RGB value, or an RGB value with transparency. In all cases, arguments are `float` values ranging from 0 to 1.
+`Color` objects can be created with `Color` constructors, which can be used to specify a gray shade, an RGB value, or an RGB value with transparency. Constructor overloads accept `float` values ranging from 0 to 1, `byte`, and `int` values.
 
 > [!NOTE]
 > The default `Color` constructor creates a black `Color` object.
@@ -20,9 +20,11 @@ You can also use the following static methods to create `Color` objects:
 - `Color.FromRgb` from `float` RGB values that range from 0 to 1.
 - `Color.FromRgb` from `double` RGB values that range from 0 to 1.
 - `Color.FromRgb` from `byte` RGB values that range from 0 to 255.
+- `Color.FromInt` from `int` RGB values that range from 0 to 255.
 - `Color.FromRgba` from `float` RGBA values that range from 0 to 1.
 - `Color.FromRgba` from `double` RGBA values that range from 0 to 1.
 - `Color.FromRgba` from `byte` RGBA values that range from 0 to 255.
+- `Color.FromRgba` from `int` RGBA values that range from 0 to 255.
 - `Color.FromRgba` from a `string`-based hexadecimal value in the form "#RRGGBBAA" or "#RRGGBB" or "#RGBA" or "#RGB", where each letter corresponds to a hexadecimal digit for the alpha, red, green, and blue channels.
 - `Color.FromHsla` from `float` HSLA values.
 - `Color.FromHsla` from `double` HSLA values.

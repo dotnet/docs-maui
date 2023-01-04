@@ -19,7 +19,7 @@ To access text-to-speech functionality, the following platform-specific setup is
 
 If your project's Target Android version is set to **Android 11 (R API 30)** or higher, you must update your _Android Manifest_ with an intent filter for the text-to-speech (TTS) engine. For more information about intents, see Android's documentation on [Intents and Intent Filters](https://developer.android.com/guide/components/intents-filters).
 
-In the _Platforms/Android/AndroidManifest.xml_ file, add the following `queries/intent` nodes the `manifest` node:
+In the _Platforms/Android/AndroidManifest.xml_ file, add the following `queries/intent` nodes to the `manifest` node:
 
 ```xml
 <queries>
