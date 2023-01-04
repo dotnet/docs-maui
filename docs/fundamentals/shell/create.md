@@ -69,7 +69,7 @@ Pressing the hamburger icon, or swiping from the left, displays the flyout:
 
 :::image type="content" source="media/create/flyout.png" alt-text="Screenshot of a Shell flyout.":::
 
-Multiple items are displayed on the flyout because the `FlyoutDisplayOptions` property is set to `AsMultipleItems`. For more information, see [Flyout display options](flyout.md#flyout-display-options).
+Multiple items are displayed on the flyout because the <xref:Microsoft.Maui.Controls.FlyoutDisplayOptions> property is set to `AsMultipleItems`. For more information, see [Flyout display options](flyout.md#flyout-display-options).
 
 > [!IMPORTANT]
 > In a Shell app, pages are created on demand in response to navigation. This is accomplished by using the `DataTemplate` markup extension to set the `ContentTemplate` property of each <xref:Microsoft.Maui.Controls.ShellContent> object to a <xref:Microsoft.Maui.Controls.ContentPage> object.

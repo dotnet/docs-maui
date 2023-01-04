@@ -72,9 +72,9 @@ This implicit conversion automatically wraps each <xref:Microsoft.Maui.Controls.
 
 ### Flyout display options
 
-The `FlyoutItem.FlyoutDisplayOptions` property configures how a flyout item and its children are displayed in the flyout. This property should be set to a `FlyoutDisplayOptions` enumeration member:
+The `FlyoutItem.FlyoutDisplayOptions` property configures how a flyout item and its children are displayed in the flyout. This property should be set to a <xref:Microsoft.Maui.Controls.FlyoutDisplayOptions> enumeration member:
 
-- `AsSingleItem`, indicates that the item will be visible as a single item. This is the default value of the `FlyoutDisplayOptions` property.
+- `AsSingleItem`, indicates that the item will be visible as a single item. This is the default value of the <xref:Microsoft.Maui.Controls.FlyoutDisplayOptions> property.
 - `AsMultipleItems`, indicates that the item and its direct children will be visible in the flyout as a group of items.
 
 A flyout item for each <xref:Microsoft.Maui.Controls.Tab> object within a <xref:Microsoft.Maui.Controls.FlyoutItem> can be displayed by setting the `FlyoutItem.FlyoutDisplayOptions` property to `AsMultipleItems`:
