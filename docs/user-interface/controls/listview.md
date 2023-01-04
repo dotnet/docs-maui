@@ -19,7 +19,7 @@ The <xref:Microsoft.Maui.Controls.ListView> class derives from the `ItemsView<Ce
 
 - `Footer`, of type `object`, specifies the string or view that will be displayed at the end of the list.
 - `FooterTemplate`, of type `DataTemplate`, specifies the `DataTemplate` to use to format the `Footer`.
-- `GroupHeaderTemplate`, of type `DataTemplate`, defines the `DataTemplate` used to define the appearance of the header of each group.
+- `GroupHeaderTemplate`, of type `DataTemplate`, defines the `DataTemplate` used to define the appearance of the header of each group. This property is mutually exclusive with the `GroupDisplayBinding` property. Therefore, setting this property will set `GroupDisplayBinding` to `null`.
 - `HasUnevenRows`, of type `bool`, indicates whether items in the list can have rows of different heights. The default value of this property is `false`.
 - `Header`, of type `object`, specifies the string or view that will be displayed at the start of the list.
 - `HeaderTemplate`, of type `DataTemplate`, specifies the `DataTemplate` to use to format the `Header`.
@@ -40,7 +40,7 @@ All of these properties are backed by <xref:Microsoft.Maui.Controls.BindableProp
 
 In addition, <xref:Microsoft.Maui.Controls.ListView> defines the following properties that aren't backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects:
 
-- `GroupDisplayBinding`, of type `BindingBase`, the binding to use for displaying the group header.
+- `GroupDisplayBinding`, of type `BindingBase`, the binding to use for displaying the group header. This property is mutually exclusive with the `GroupHeaderTemplate` property. Therefore, setting this property will set `GroupHeaderTemplate` to `null`.
 - `GroupShortNameBinding`, of type `BindingBase`, the binding for the name to display in grouped jump lists.
 - `CachingStrategy`, of type `ListViewCachingStrategy`, defines the cell reuse strategy of the <xref:Microsoft.Maui.Controls.ListView>. This is a read-only property.
 
@@ -814,6 +814,9 @@ The appearance of each group header can be customized by setting the `ListView.G
 In this example, each group header is set to a <xref:Microsoft.Maui.Controls.Label> that displays the group name, and that has other appearance properties set. The following screenshot shows the customized group header:
 
 :::image type="content" source="media/listview/customized-header.png" alt-text="Screenshot of a customized group header in a ListView.":::
+
+> [!IMPORTANT]
+> The `GroupHeaderTemplate` property is mutually exclusive with the `GroupDisplayBinding` property. Therefore, both properties should not be set.
 
 ### Group without templates
 
