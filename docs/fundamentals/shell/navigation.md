@@ -10,17 +10,17 @@ ms.date: 04/07/2022
 
 .NET Multi-platform App UI (.NET MAUI) Shell includes a URI-based navigation experience that uses routes to navigate to any page in the app, without having to follow a set navigation hierarchy. In addition, it also provides the ability to navigate backwards without having to visit all of the pages on the navigation stack.
 
-The `Shell` class defines the following navigation-related properties:
+The <xref:Microsoft.Maui.Controls.Shell> class defines the following navigation-related properties:
 
 - `BackButtonBehavior`, of type `BackButtonBehavior`, an attached property that defines the behavior of the back button.
 - `CurrentItem`, of type `ShellItem`, the currently selected item.
 - `CurrentPage`, of type <xref:Microsoft.Maui.Controls.Page>, the currently presented page.
-- `CurrentState`, of type `ShellNavigationState`, the current navigation state of the `Shell`.
-- `Current`, of type `Shell`, a type-casted alias for `Application.Current.MainPage`.
+- `CurrentState`, of type `ShellNavigationState`, the current navigation state of the <xref:Microsoft.Maui.Controls.Shell>.
+- `Current`, of type <xref:Microsoft.Maui.Controls.Shell>, a type-casted alias for `Application.Current.MainPage`.
 
 The `BackButtonBehavior`, `CurrentItem`, and `CurrentState` properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that these properties can be targets of data bindings.
 
-Navigation is performed by invoking the `GoToAsync` method, from the `Shell` class. When navigation is about to be performed, the `Navigating` event is fired, and the `Navigated` event is fired when navigation completes.
+Navigation is performed by invoking the `GoToAsync` method, from the <xref:Microsoft.Maui.Controls.Shell> class. When navigation is about to be performed, the `Navigating` event is fired, and the `Navigated` event is fired when navigation completes.
 
 > [!NOTE]
 > Navigation can still be performed between pages in a Shell app by using the `Navigation` property. For more information, see [Perform modeless navigation](~/user-interface/pages/navigationpage.md#perform-modal-navigation).
@@ -86,7 +86,7 @@ To navigate to the `ShellContent` object for the `dogs` route, the absolute rout
 
 ### Register detail page routes
 
-In the `Shell` subclass constructor, or any other location that runs before a route is invoked, additional routes can be explicitly registered for any detail pages that aren't represented in the Shell visual hierarchy. This is accomplished with the `Routing.RegisterRoute` method:
+In the <xref:Microsoft.Maui.Controls.Shell> subclass constructor, or any other location that runs before a route is invoked, additional routes can be explicitly registered for any detail pages that aren't represented in the Shell visual hierarchy. This is accomplished with the `Routing.RegisterRoute` method:
 
 ```csharp
 Routing.RegisterRoute("monkeydetails", typeof(MonkeyDetailPage));
@@ -96,7 +96,7 @@ Routing.RegisterRoute("dogdetails", typeof(DogDetailPage));
 Routing.RegisterRoute("elephantdetails", typeof(ElephantDetailPage));
 ```
 
-This example registers detail pages, that aren't defined in the `Shell` subclass, as routes. These detail pages can then be navigated to using URI-based navigation, from anywhere within the app. The routes for such pages are known as *global routes*.
+This example registers detail pages, that aren't defined in the <xref:Microsoft.Maui.Controls.Shell> subclass, as routes. These detail pages can then be navigated to using URI-based navigation, from anywhere within the app. The routes for such pages are known as *global routes*.
 
 > [!WARNING]
 > An `ArgumentException` will be thrown if the `Routing.RegisterRoute` method attempts to register the same route to two or more different types.
@@ -118,12 +118,12 @@ This example enables contextual page navigation, where navigating to the `detail
 
 ## Perform navigation
 
-To perform navigation, a reference to the `Shell` subclass must first be obtained. This reference can be obtained by casting the `App.Current.MainPage` property to a `Shell` object, or through the `Shell.Current` property. Navigation can then be performed by calling the `GoToAsync` method on the `Shell` object. This method navigates to a `ShellNavigationState` and returns a `Task` that will complete once the navigation animation has completed. The `ShellNavigationState` object is constructed by the `GoToAsync` method, from a `string`, or a `Uri`, and it has its `Location` property set to the `string` or `Uri` argument.
+To perform navigation, a reference to the <xref:Microsoft.Maui.Controls.Shell> subclass must first be obtained. This reference can be obtained by casting the `App.Current.MainPage` property to a <xref:Microsoft.Maui.Controls.Shell> object, or through the `Shell.Current` property. Navigation can then be performed by calling the `GoToAsync` method on the <xref:Microsoft.Maui.Controls.Shell> object. This method navigates to a `ShellNavigationState` and returns a `Task` that will complete once the navigation animation has completed. The `ShellNavigationState` object is constructed by the `GoToAsync` method, from a `string`, or a `Uri`, and it has its `Location` property set to the `string` or `Uri` argument.
 
 > [!IMPORTANT]
 > When a route from the Shell visual hierarchy is navigated to, a navigation stack isn't created. However, when a page that's not in the Shell visual hierarchy is navigated to, a navigation stack is created.
 
-The current navigation state of the `Shell` object can be retrieved through the `Shell.Current.CurrentState` property, which includes the URI of the displayed route in the `Location` property.
+The current navigation state of the <xref:Microsoft.Maui.Controls.Shell> object can be retrieved through the `Shell.Current.CurrentState` property, which includes the URI of the displayed route in the `Location` property.
 
 ### Absolute routes
 
@@ -259,7 +259,7 @@ In this example, `MyTab` objects should be consumed in your Shell visual hierarc
 
 ## Navigation events
 
-The `Shell` class defines the `Navigating` event, which is fired when navigation is about to be performed, either due to programmatic navigation or user interaction. The `ShellNavigatingEventArgs` object that accompanies the `Navigating` event provides the following properties:
+The <xref:Microsoft.Maui.Controls.Shell> class defines the `Navigating` event, which is fired when navigation is about to be performed, either due to programmatic navigation or user interaction. The `ShellNavigatingEventArgs` object that accompanies the `Navigating` event provides the following properties:
 
 | Property | Type | Description |
 |---|---|---|
@@ -271,7 +271,7 @@ The `Shell` class defines the `Navigating` event, which is fired when navigation
 
 In addition, the `ShellNavigatingEventArgs` class provides a `Cancel` method that can be used to cancel navigation, and a `GetDeferral` method that returns a `ShellNavigatingDeferral` token that can be used to complete navigation. For more information about navigation deferral, see [Navigation deferral](#navigation-deferral).
 
-The `Shell` class also defines the `Navigated` event, which is fired when navigation has completed. The `ShellNavigatedEventArgs` object that accompanies the `Navigated` event provides the following properties:
+The <xref:Microsoft.Maui.Controls.Shell> class also defines the `Navigated` event, which is fired when navigation has completed. The `ShellNavigatedEventArgs` object that accompanies the `Navigated` event provides the following properties:
 
 | Property | Type | Description |
 |---|---|---|
@@ -280,7 +280,7 @@ The `Shell` class also defines the `Navigated` event, which is fired when naviga
 | `Source` | `ShellNavigationSource` | The type of navigation that occurred. |
 
 > [!IMPORTANT]
-> The `OnNavigating` method is called when the `Navigating` event fires. Similarly, the `OnNavigated` method is called when the `Navigated` event fires. Both methods can be overridden in your `Shell` subclass to intercept navigation requests.
+> The `OnNavigating` method is called when the `Navigating` event fires. Similarly, the `OnNavigated` method is called when the `Navigated` event fires. Both methods can be overridden in your <xref:Microsoft.Maui.Controls.Shell> subclass to intercept navigation requests.
 
 The `ShellNavigatedEventArgs` and `ShellNavigatingEventArgs` classes both have `Source` properties, of type `ShellNavigationSource`. This enumeration provides the following values:
 
@@ -311,7 +311,7 @@ protected override void OnNavigating(ShellNavigatingEventArgs args)
 
 ## Navigation deferral
 
-Shell navigation can be intercepted and completed or canceled based on user choice. This can be achieved by overriding the `OnNavigating` method in your `Shell` subclass, and by calling the `GetDeferral` method on the `ShellNavigatingEventArgs` object. This method returns a `ShellNavigatingDeferral` token that has a `Complete` method, which can be used to complete the navigation request:
+Shell navigation can be intercepted and completed or canceled based on user choice. This can be achieved by overriding the `OnNavigating` method in your <xref:Microsoft.Maui.Controls.Shell> subclass, and by calling the `GetDeferral` method on the `ShellNavigatingEventArgs` object. This method returns a `ShellNavigatingDeferral` token that has a `Complete` method, which can be used to complete the navigation request:
 
 ```csharp
 public MyShell : Shell

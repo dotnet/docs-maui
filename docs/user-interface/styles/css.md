@@ -443,7 +443,7 @@ The following .NET MAUI Shell specific CSS properties are also supported (in the
 
 |Property|Applies to|Values|Example|
 |---|---|---|---|
-|`-maui-flyout-background`|`Shell`|_color_ \| `initial` |`-maui-flyout-background: red;`|
+|`-maui-flyout-background`|<xref:Microsoft.Maui.Controls.Shell>|_color_ \| `initial` |`-maui-flyout-background: red;`|
 |`-maui-shell-background`|<xref:Microsoft.Maui.Controls.Element>|_color_ \| `initial` |`-maui-shell-background: green;`|
 |`-maui-shell-disabled`|<xref:Microsoft.Maui.Controls.Element>|_color_ \| `initial` |`-maui-shell-disabled: blue;`|
 |`-maui-shell-foreground`|<xref:Microsoft.Maui.Controls.Element>|_color_ \| `initial` |`-maui-shell-foreground: yellow;`|

@@ -127,7 +127,7 @@ As noted at the start of this article, the `AppShell` class defines an app's vis
 Let's break down the key parts of the XAML:
 
 - `<Shell>` is the root object of the XAML markup.
-- `<TabBar>` is the content of the `Shell`.
+- `<TabBar>` is the content of the <xref:Microsoft.Maui.Controls.Shell>.
 - Two `<ShellContent>` objects inside of the `<TabBar>`. Before you replaced the template code, there was a single `<ShellContent>` object, pointing to the `MainPage` page.
 
 The `TabBar` and its children don't represent any user interface elements, but rather the organization of the app's visual hierarchy. Shell will take these objects and produce the user interface for the content.

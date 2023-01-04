@@ -8,7 +8,7 @@ ms.date: 04/07/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-shell)
 
-The navigation experience provided by .NET Multi-platform App UI (.NET MAUI) Shell is based on flyouts and tabs. The top level of navigation in a Shell app is either a flyout or a bottom tab bar, depending on the navigation requirements of the app. When the navigation experience for an app begins with bottom tabs, the child of the subclassed `Shell` object should be a `TabBar` object, which represents the bottom tab bar.
+The navigation experience provided by .NET Multi-platform App UI (.NET MAUI) Shell is based on flyouts and tabs. The top level of navigation in a Shell app is either a flyout or a bottom tab bar, depending on the navigation requirements of the app. When the navigation experience for an app begins with bottom tabs, the child of the subclassed <xref:Microsoft.Maui.Controls.Shell> object should be a `TabBar` object, which represents the bottom tab bar.
 
 A `TabBar` object can contain one or more `Tab` objects, with each `Tab` object representing a tab on the bottom tab bar. Each `Tab` object can contain one or more `ShellContent` objects, with each `ShellContent` object displaying a single <xref:Microsoft.Maui.Controls.ContentPage>. When more than one `ShellContent` object is present in a `Tab` object, the <xref:Microsoft.Maui.Controls.ContentPage> objects are navigable by top tabs. Within a tab, you can navigate to other <xref:Microsoft.Maui.Controls.ContentPage> objects that are known as detail pages.
 
@@ -36,7 +36,7 @@ This example results in the following single page app:
 
 :::image type="content" source="media/tabs/single-page-app.png" alt-text="Screenshot of a Shell single page app.":::
 
-Shell has implicit-conversion operators that enable the Shell visual hierarchy to be simplified, without introducing more views into the visual tree. This is possible because a subclassed `Shell` object can only ever contain `FlyoutItem` objects or a `TabBar` object, which can only ever contain `Tab` objects, which can only ever contain `ShellContent` objects. These implicit-conversion operators can be used to remove the `Tab` objects from the previous example:
+Shell has implicit-conversion operators that enable the Shell visual hierarchy to be simplified, without introducing more views into the visual tree. This is possible because a subclassed <xref:Microsoft.Maui.Controls.Shell> object can only ever contain `FlyoutItem` objects or a `TabBar` object, which can only ever contain `Tab` objects, which can only ever contain `ShellContent` objects. These implicit-conversion operators can be used to remove the `Tab` objects from the previous example:
 
 ```xaml
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -164,7 +164,7 @@ This implicit conversion automatically wraps the third `ShellContent` object in 
 
 ## Tab appearance
 
-The `Shell` class defines the following attached properties that control the appearance of tabs:
+The <xref:Microsoft.Maui.Controls.Shell> class defines the following attached properties that control the appearance of tabs:
 
 - `TabBarBackgroundColor`, of type `Color`, that defines the background color for the tab bar. If the property is unset, the `BackgroundColor` property value is used.
 - `TabBarDisabledColor`, of type `Color`, that defines the disabled color for the tab bar. If the property is unset, the `DisabledColor` property value is used.
@@ -191,7 +191,7 @@ In addition, tabs can also be styled using Cascading Style Sheets (CSS). For mor
 
 ## Tab selection
 
-When a Shell app that uses a tab bar is first run, the `Shell.CurrentItem` property will be set to the first `Tab` object in the subclassed `Shell` object. However, the property can be set to another `Tab`, as shown in the following example:
+When a Shell app that uses a tab bar is first run, the `Shell.CurrentItem` property will be set to the first `Tab` object in the subclassed <xref:Microsoft.Maui.Controls.Shell> object. However, the property can be set to another `Tab`, as shown in the following example:
 
 ```xaml
 <Shell ...
@@ -216,7 +216,7 @@ The equivalent C# code, given a `ShellContent` object named `dogsItem`, is:
 CurrentItem = dogsItem;
 ```
 
-In this example, the `CurrentItem` property is set in the subclassed `Shell` class. Alternatively, the `CurrentItem` property can be set in any class through the `Shell.Current` static property:
+In this example, the `CurrentItem` property is set in the subclassed <xref:Microsoft.Maui.Controls.Shell> class. Alternatively, the `CurrentItem` property can be set in any class through the `Shell.Current` static property:
 
 ```csharp
 Shell.Current.CurrentItem = dogsItem;
@@ -226,7 +226,7 @@ Shell.Current.CurrentItem = dogsItem;
 
 The tab bar and tabs are visible in Shell apps by default. However, the tab bar can be hidden by setting the `Shell.TabBarIsVisible` attached property to `false`.
 
-While this property can be set on a subclassed `Shell` object, it's typically set on any `ShellContent` or <xref:Microsoft.Maui.Controls.ContentPage> objects that want to make the tab bar invisible:
+While this property can be set on a subclassed <xref:Microsoft.Maui.Controls.Shell> object, it's typically set on any `ShellContent` or <xref:Microsoft.Maui.Controls.ContentPage> objects that want to make the tab bar invisible:
 
 ```xaml
 <TabBar>

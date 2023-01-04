@@ -17,7 +17,7 @@ ms.date: 04/07/2022
 
 ## App visual hierarchy
 
-In a .NET MAUI Shell app, the visual hierarchy of the app is described in a class that subclasses the `Shell` class. This class can consist of three main hierarchical objects:
+In a .NET MAUI Shell app, the visual hierarchy of the app is described in a class that subclasses the <xref:Microsoft.Maui.Controls.Shell> class. This class can consist of three main hierarchical objects:
 
 1. `FlyoutItem` or `TabBar`. A `FlyoutItem` represents one or more items in the flyout, and should be used when the navigation pattern for the app requires a flyout. A `TabBar` represents the bottom tab bar, and should be used when the navigation pattern for the app begins with bottom tabs and doesn't require a flyout.
 1. `Tab`, which represents grouped content, navigable by bottom tabs.

@@ -14,7 +14,7 @@ The navigation experience provided by .NET Multi-platform App UI (.NET MAUI) She
 
 ## Flyout items
 
-One or more flyout items can be added to the flyout, and each flyout item is represented by a `FlyoutItem` object. Each `FlyoutItem` object should be a child of the subclassed `Shell` object. Flyout items appear at the top of the flyout when a flyout header isn't present.
+One or more flyout items can be added to the flyout, and each flyout item is represented by a `FlyoutItem` object. Each `FlyoutItem` object should be a child of the subclassed <xref:Microsoft.Maui.Controls.Shell> object. Flyout items appear at the top of the flyout when a flyout header isn't present.
 
 The following example creates a flyout containing two flyout items:
 
@@ -48,7 +48,7 @@ In this example, each `ShellContent` object can only be accessed through flyout 
 > [!IMPORTANT]
 > In a Shell app, pages are created on demand in response to navigation. This is accomplished by using the `DataTemplate` markup extension to set the `ContentTemplate` property of each `ShellContent` object to a <xref:Microsoft.Maui.Controls.ContentPage> object.
 
-Shell has implicit conversion operators that enable the Shell visual hierarchy to be simplified, without introducing additional views into the visual tree. This is possible because a subclassed `Shell` object can only ever contain `FlyoutItem` objects or a `TabBar` object, which can only ever contain `Tab` objects, which can only ever contain `ShellContent` objects. These implicit conversion operators can be used to remove the `FlyoutItem` and `Tab` objects from the previous example:
+Shell has implicit conversion operators that enable the Shell visual hierarchy to be simplified, without introducing additional views into the visual tree. This is possible because a subclassed <xref:Microsoft.Maui.Controls.Shell> object can only ever contain `FlyoutItem` objects or a `TabBar` object, which can only ever contain `Tab` objects, which can only ever contain `ShellContent` objects. These implicit conversion operators can be used to remove the `FlyoutItem` and `Tab` objects from the previous example:
 
 ```xaml
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -68,7 +68,7 @@ Shell has implicit conversion operators that enable the Shell visual hierarchy t
 This implicit conversion automatically wraps each `ShellContent` object in `Tab` objects, which are wrapped in `FlyoutItem` objects.
 
 > [!NOTE]
-> All `FlyoutItem` objects in a subclassed `Shell` object are automatically added to the `Shell.FlyoutItems` collection, which defines the list of items that will be shown in the flyout.
+> All `FlyoutItem` objects in a subclassed <xref:Microsoft.Maui.Controls.Shell> object are automatically added to the `Shell.FlyoutItems` collection, which defines the list of items that will be shown in the flyout.
 
 ### Flyout display options
 
@@ -275,7 +275,7 @@ Flyout items, which represent the flyout content, can optionally be replaced wit
 In this example, the flyout content is replaced with a <xref:Microsoft.Maui.Controls.CollectionView> that displays the title of each item in the `FlyoutItems` collection.
 
 > [!NOTE]
-> The `FlyoutItems` property, in the `Shell` class, is a read-only collection of flyout items.
+> The `FlyoutItems` property, in the <xref:Microsoft.Maui.Controls.Shell> class, is a read-only collection of flyout items.
 
 Alternatively, flyout content can be defined by setting the `Shell.FlyoutContentTemplate` bindable property to a `DataTemplate`:
 
@@ -329,7 +329,7 @@ This example adds a `MenuItem` object to the flyout, beneath all the flyout item
 The `MenuItem` object executes an `ICommand` named `HelpCommand`, which opens the URL specified by the `CommandParameter` property in the system web browser.
 
 > [!NOTE]
-> The `BindingContext` of each `MenuItem` is inherited from the subclassed `Shell` object.
+> The `BindingContext` of each `MenuItem` is inherited from the subclassed <xref:Microsoft.Maui.Controls.Shell> object.
 
 ### Define MenuItem appearance
 
@@ -645,7 +645,7 @@ The backdrop of the flyout, which is the appearance of the flyout overlay, can b
 In this example, the flyout backdrop is painted with a silver <xref:Microsoft.Maui.Controls.SolidColorBrush>.
 
 > [!IMPORTANT]
-> The `FlyoutBackdrop` attached property can be set on any Shell element, but will only be applied when it's set on `Shell`, `FlyoutItem`, or `TabBar` objects.
+> The `FlyoutBackdrop` attached property can be set on any Shell element, but will only be applied when it's set on <xref:Microsoft.Maui.Controls.Shell>, `FlyoutItem`, or `TabBar` objects.
 
 The following example shows setting the flyout backdrop to a <xref:Microsoft.Maui.Controls.LinearGradientBrush>:
 
@@ -686,7 +686,7 @@ The following example shows how to disable the flyout:
 ```
 
 > [!NOTE]
-> The `FlyoutBehavior` attached property can be set on `Shell`, `FlyoutItem`, `ShellContent`, and page objects, to override the default flyout behavior.
+> The `FlyoutBehavior` attached property can be set on <xref:Microsoft.Maui.Controls.Shell>, `FlyoutItem`, `ShellContent`, and page objects, to override the default flyout behavior.
 
 ## Flyout vertical scroll
 
@@ -707,7 +707,7 @@ The following example shows how to disable vertical scrolling:
 
 ## FlyoutItem selection
 
-When a Shell app that uses a flyout is first run, the `Shell.CurrentItem` property will be set to the first `FlyoutItem` object in the subclassed `Shell` object. However, the property can be set to another `FlyoutItem`, as shown in the following example:
+When a Shell app that uses a flyout is first run, the `Shell.CurrentItem` property will be set to the first `FlyoutItem` object in the subclassed <xref:Microsoft.Maui.Controls.Shell> object. However, the property can be set to another `FlyoutItem`, as shown in the following example:
 
 ```xaml
 <Shell ...
@@ -730,7 +730,7 @@ The equivalent C# code, given a `ShellContent` object named `aboutItem`, is:
 CurrentItem = aboutItem;
 ```
 
-In this example, the `CurrentItem` property is set in the subclassed `Shell` class. Alternatively, the `CurrentItem` property can be set in any class through the `Shell.Current` static property:
+In this example, the `CurrentItem` property is set in the subclassed <xref:Microsoft.Maui.Controls.Shell> class. Alternatively, the `CurrentItem` property can be set in any class through the `Shell.Current` static property:
 
 ```csharp
 Shell.Current.CurrentItem = aboutItem;

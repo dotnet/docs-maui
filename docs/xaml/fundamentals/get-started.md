@@ -16,7 +16,7 @@ A new .NET MAUI app contains three XAML files, and their associated code-behind 
 
 :::image type="content" source="media/get-started/new-solution.png" alt-text="Screenshot of the structure of a new .NET MAUI app.":::
 
-The first file pairing is *App.xaml*, a XAML file, and *App.xaml.cs*, a C# *code-behind* file associated with the XAML file. Both *App.xaml* and *App.xaml.cs* contribute to a class named `App` that derives from `Application`. The second file pairing is *AppShell.xaml* and *AppShell.xaml.cs*, which contribute to a class named `AppShell` that derives from `Shell`. Most other classes with XAML files contribute to a class that derives from <xref:Microsoft.Maui.Controls.ContentPage>, and define the UI of a page. This is true of the *MainPage.xaml* and *MainPage.xaml.cs* files.
+The first file pairing is *App.xaml*, a XAML file, and *App.xaml.cs*, a C# *code-behind* file associated with the XAML file. Both *App.xaml* and *App.xaml.cs* contribute to a class named `App` that derives from `Application`. The second file pairing is *AppShell.xaml* and *AppShell.xaml.cs*, which contribute to a class named `AppShell` that derives from <xref:Microsoft.Maui.Controls.Shell>. Most other classes with XAML files contribute to a class that derives from <xref:Microsoft.Maui.Controls.ContentPage>, and define the UI of a page. This is true of the *MainPage.xaml* and *MainPage.xaml.cs* files.
 
 The *MainPage.xaml* file has the following structure:
 
