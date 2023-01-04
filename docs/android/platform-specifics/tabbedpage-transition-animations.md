@@ -25,6 +25,9 @@ using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
 On<Microsoft.Maui.Controls.PlatformConfiguration.Android>().SetIsSmoothScrollEnabled(false);
 ```
 
+> [!NOTE]
+> This platform-specific has no effect on tabs in Shell-based apps.
+
 The `TabbedPage.On<Microsoft.Maui.Controls.PlatformConfiguration.Android>` method specifies that this platform-specific will only run on Android. The `TabbedPage.SetIsSmoothScrollEnabled` method, in the `Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific` namespace, is used to control whether transition animations will be displayed when navigating between pages in a <xref:Microsoft.Maui.Controls.TabbedPage>. In addition, the <xref:Microsoft.Maui.Controls.TabbedPage> class in the `Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific` namespace also has the following methods:
 
 - `IsSmoothScrollEnabled`, which is used to retrieve whether transition animations will be displayed when navigating between pages in a <xref:Microsoft.Maui.Controls.TabbedPage>.
