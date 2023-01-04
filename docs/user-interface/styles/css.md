@@ -372,7 +372,7 @@ The following CSS properties are supported by .NET MAUI (in the **Values** colum
 |`font-style`|<xref:Microsoft.Maui.Controls.Button>, <xref:Microsoft.Maui.Controls.DatePicker>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.Picker>, <xref:Microsoft.Maui.Controls.SearchBar>, <xref:Microsoft.Maui.Controls.TimePicker>, <xref:Microsoft.Maui.Controls.Span>|`bold` \| `italic` \| `initial` |`font-style: bold;`|
 |`height`|<xref:Microsoft.Maui.Controls.VisualElement>|_double_ \| `initial` |`height: 250;`|
 |`justify-content`|<xref:Microsoft.Maui.Controls.FlexLayout>| `start` \| `center` \| `end` \| `spacebetween` \| `spacearound` \| `spaceevenly` \| `flex-start` \| `flex-end` \| `space-between` \| `space-around` \| `initial`|`justify-content: flex-end;`|
-|`letter-spacing`|<xref:Microsoft.Maui.Controls.Button>, <xref:Microsoft.Maui.Controls.DatePicker>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.Picker>, <xref:Microsoft.Maui.Controls.SearchBar>, `SearchHandler`, <xref:Microsoft.Maui.Controls.Span>, <xref:Microsoft.Maui.Controls.TimePicker>|_double_ \| `initial`|`letter-spacing: 2.5;`|
+|`letter-spacing`|<xref:Microsoft.Maui.Controls.Button>, <xref:Microsoft.Maui.Controls.DatePicker>, <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.Picker>, <xref:Microsoft.Maui.Controls.SearchBar>, <xref:Microsoft.Maui.Controls.SearchHandler>, <xref:Microsoft.Maui.Controls.Span>, <xref:Microsoft.Maui.Controls.TimePicker>|_double_ \| `initial`|`letter-spacing: 2.5;`|
 |`line-height`|<xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.Span>|_double_ \| `initial` |`line-height: 1.8;`|
 |`margin`|<xref:Microsoft.Maui.Controls.View>|_thickness_ \| `initial` |`margin: 6 12;`|
 |`margin-left`|<xref:Microsoft.Maui.Controls.View>|_thickness_ \| `initial` |`margin-left: 3;`|
@@ -393,7 +393,7 @@ The following CSS properties are supported by .NET MAUI (in the **Values** colum
 |`row-gap`|<xref:Microsoft.Maui.Controls.Grid>| _double_ \| `initial`|`row-gap: 12;`|
 |`text-align`| <xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.EntryCell>, <xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.SearchBar>|`left` \| `top` \| `right` \| `bottom` \| `start` \| `center` \| `middle` \| `end` \| `initial`. `left` and `right` should be avoided in right-to-left environments.| `text-align: right;`|
 |`text-decoration`|<xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.Span>|`none` \| `underline` \| `strikethrough` \| `line-through` \| `initial`|`text-decoration: underline, line-through;`|
-|`text-transform`|<xref:Microsoft.Maui.Controls.Button>,<xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.SearchBar>, `SearchHandler`|`none` \| `default` \| `uppercase` \| `lowercase` \| `initial` |`text-transform: uppercase;`|
+|`text-transform`|<xref:Microsoft.Maui.Controls.Button>,<xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, <xref:Microsoft.Maui.Controls.Label>, <xref:Microsoft.Maui.Controls.SearchBar>, <xref:Microsoft.Maui.Controls.SearchHandler>|`none` \| `default` \| `uppercase` \| `lowercase` \| `initial` |`text-transform: uppercase;`|
 |`transform`|<xref:Microsoft.Maui.Controls.VisualElement>| `none`, `rotate`, `rotateX`, `rotateY`, `scale`, `scaleX`, `scaleY`, `translate`, `translateX`, `translateY`, `initial` |`transform: rotate(180), scaleX(2.5);`|
 |`transform-origin`|<xref:Microsoft.Maui.Controls.VisualElement>| _double_, _double_ \| `initial` |`transform-origin: 7.5, 12.5;`|
 |`vertical-align`|<xref:Microsoft.Maui.Controls.Label>|`left` \| `top` \| `right` \| `bottom` \| `start` \| `center` \| `middle` \| `end` \| `initial`|`vertical-align: bottom;`|
@@ -443,7 +443,7 @@ The following .NET MAUI Shell specific CSS properties are also supported (in the
 
 |Property|Applies to|Values|Example|
 |---|---|---|---|
-|`-maui-flyout-background`|`Shell`|_color_ \| `initial` |`-maui-flyout-background: red;`|
+|`-maui-flyout-background`|<xref:Microsoft.Maui.Controls.Shell>|_color_ \| `initial` |`-maui-flyout-background: red;`|
 |`-maui-shell-background`|<xref:Microsoft.Maui.Controls.Element>|_color_ \| `initial` |`-maui-shell-background: green;`|
 |`-maui-shell-disabled`|<xref:Microsoft.Maui.Controls.Element>|_color_ \| `initial` |`-maui-shell-disabled: blue;`|
 |`-maui-shell-foreground`|<xref:Microsoft.Maui.Controls.Element>|_color_ \| `initial` |`-maui-shell-foreground: yellow;`|

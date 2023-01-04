@@ -235,4 +235,4 @@ public class App : Application
 }
 ```
 
-In the preceding example, the `MainPage` property is set to the `AppShell` object. `AppShell` is a subclassed `Shell` class that describes the visual hierarchy of the app. For more information, see [Create a .NET MAUI Shell app](shell/create.md).
+In the preceding example, the `MainPage` property is set to the `AppShell` object. `AppShell` is a subclassed <xref:Microsoft.Maui.Controls.Shell> class that describes the visual hierarchy of the app. For more information, see [Create a .NET MAUI Shell app](shell/create.md).

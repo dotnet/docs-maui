@@ -8,13 +8,13 @@ ms.date: 04/07/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-shell)
 
-A `ShellContent` object represents the <xref:Microsoft.Maui.Controls.ContentPage> object for each `FlyoutItem` or `Tab`. When more than one `ShellContent` object is present in a `Tab` object, the <xref:Microsoft.Maui.Controls.ContentPage> objects will be navigable by top tabs. Within a page, additional <xref:Microsoft.Maui.Controls.ContentPage> objects that are known as detail pages, can be navigated to.
+A <xref:Microsoft.Maui.Controls.ShellContent> object represents the <xref:Microsoft.Maui.Controls.ContentPage> object for each <xref:Microsoft.Maui.Controls.FlyoutItem> or <xref:Microsoft.Maui.Controls.Tab>. When more than one <xref:Microsoft.Maui.Controls.ShellContent> object is present in a <xref:Microsoft.Maui.Controls.Tab> object, the <xref:Microsoft.Maui.Controls.ContentPage> objects will be navigable by top tabs. Within a page, additional <xref:Microsoft.Maui.Controls.ContentPage> objects that are known as detail pages, can be navigated to.
 
-In addition, the `Shell` class defines attached properties that can be used to configure the appearance of pages in .NET Multi-platform App UI (.NET MAUI) Shell apps. This includes setting page colors, setting the page presentation mode, disabling the navigation bar, disabling the tab bar, and displaying views in the navigation bar.
+In addition, the <xref:Microsoft.Maui.Controls.Shell> class defines attached properties that can be used to configure the appearance of pages in .NET Multi-platform App UI (.NET MAUI) Shell apps. This includes setting page colors, setting the page presentation mode, disabling the navigation bar, disabling the tab bar, and displaying views in the navigation bar.
 
 ## Display pages
 
-In .NET MAUI Shell apps, pages are typically created on demand in response to navigation. This is accomplished by using the `DataTemplate` markup extension to set the `ContentTemplate` property of each `ShellContent` object to a <xref:Microsoft.Maui.Controls.ContentPage> object:
+In .NET MAUI Shell apps, pages are typically created on demand in response to navigation. This is accomplished by using the `DataTemplate` markup extension to set the `ContentTemplate` property of each <xref:Microsoft.Maui.Controls.ShellContent> object to a <xref:Microsoft.Maui.Controls.ContentPage> object:
 
 ```xaml
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -35,12 +35,12 @@ In .NET MAUI Shell apps, pages are typically created on demand in response to na
 </Shell>
 ```
 
-In this example, Shell's implicit conversion operators are used to remove the `Tab` objects from the visual hierarchy. However, each `ShellContent` object is rendered in a tab:
+In this example, Shell's implicit conversion operators are used to remove the <xref:Microsoft.Maui.Controls.Tab> objects from the visual hierarchy. However, each <xref:Microsoft.Maui.Controls.ShellContent> object is rendered in a tab:
 
 :::image type="content" source="media/pages/three-pages.png" alt-text="Screenshot of a Shell app with three pages.":::
 
 > [!NOTE]
-> The `BindingContext` of each `ShellContent` object is inherited from the parent `Tab` object.
+> The `BindingContext` of each <xref:Microsoft.Maui.Controls.ShellContent> object is inherited from the parent <xref:Microsoft.Maui.Controls.Tab> object.
 
 Within each <xref:Microsoft.Maui.Controls.ContentPage> object, additional <xref:Microsoft.Maui.Controls.ContentPage> objects can be navigated to. For more information about navigation, see [.NET MAUI Shell navigation](navigation.md).
 
@@ -78,11 +78,11 @@ In a Shell app, each <xref:Microsoft.Maui.Controls.ContentPage> object is typica
 In this example, `CatsPage`, `DogsPage`, and `MonkeysPage` are all created at app startup, rather than on demand in response to navigation.
 
 > [!NOTE]
-> The `Content` property is the content property of the `ShellContent` class, and therefore does not need to be explicitly set.
+> The `Content` property is the content property of the <xref:Microsoft.Maui.Controls.ShellContent> class, and therefore does not need to be explicitly set.
 
 ## Set page colors
 
-The `Shell` class defines the following attached properties that can be used to set page colors in a Shell app:
+The <xref:Microsoft.Maui.Controls.Shell> class defines the following attached properties that can be used to set page colors in a Shell app:
 
 - `BackgroundColor`, of type `Color`, that defines the background color in the Shell chrome. The color will not fill in behind the Shell content.
 - `DisabledColor`, of type `Color`, that defines the color to shade text and icons that are disabled.
@@ -95,7 +95,7 @@ All of these properties are backed by <xref:Microsoft.Maui.Controls.BindableProp
 > [!NOTE]
 > There are also properties that enable tab colors to be defined. For more information, see [Tab appearance](tabs.md#tab-appearance).
 
-The following XAML shows setting the color properties in a subclassed `Shell` class:
+The following XAML shows setting the color properties in a subclassed <xref:Microsoft.Maui.Controls.Shell> class:
 
 ```xaml
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -173,7 +173,7 @@ In this example, the <xref:Microsoft.Maui.Controls.ContentPage> is set to be dis
 
 The `Shell.NavBarHasShadow` attached property, of type `bool`, controls whether the navigation bar has a shadow. By default the value of the property is `true` on Android, and `false` on other platforms.
 
-While this property can be set on a subclassed `Shell` object, it can also be set on any pages that want to enable the navigation bar shadow. For example, the following XAML shows enabling the navigation bar shadow from a <xref:Microsoft.Maui.Controls.ContentPage>:
+While this property can be set on a subclassed <xref:Microsoft.Maui.Controls.Shell> object, it can also be set on any pages that want to enable the navigation bar shadow. For example, the following XAML shows enabling the navigation bar shadow from a <xref:Microsoft.Maui.Controls.ContentPage>:
 
 ```xaml
 <ContentPage ...
@@ -188,7 +188,7 @@ This results in the navigation bar shadow being enabled.
 
 The `Shell.NavBarIsVisible` attached property, of type `bool`, controls if the navigation bar is visible when a page is presented. By default the value of the property is `true`.
 
-While this property can be set on a subclassed `Shell` object, it's typically set on any pages that want to make the navigation bar invisible. For example, the following XAML shows disabling the navigation bar from a <xref:Microsoft.Maui.Controls.ContentPage>:
+While this property can be set on a subclassed <xref:Microsoft.Maui.Controls.Shell> object, it's typically set on any pages that want to make the navigation bar invisible. For example, the following XAML shows disabling the navigation bar from a <xref:Microsoft.Maui.Controls.ContentPage>:
 
 ```xaml
 <ContentPage ...
@@ -201,7 +201,7 @@ While this property can be set on a subclassed `Shell` object, it's typically se
 
 The `Shell.TitleView` attached property, of type <xref:Microsoft.Maui.Controls.View>, enables any <xref:Microsoft.Maui.Controls.View> to be displayed in the navigation bar.
 
-While this property can be set on a subclassed `Shell` object, it can also be set on any pages that want to display a view in the navigation bar. For example, the following XAML shows displaying an <xref:Microsoft.Maui.Controls.Image> in the navigation bar of a <xref:Microsoft.Maui.Controls.ContentPage>:
+While this property can be set on a subclassed <xref:Microsoft.Maui.Controls.Shell> object, it can also be set on any pages that want to display a view in the navigation bar. For example, the following XAML shows displaying an <xref:Microsoft.Maui.Controls.Image> in the navigation bar of a <xref:Microsoft.Maui.Controls.ContentPage>:
 
 ```xaml
 <ContentPage ...>

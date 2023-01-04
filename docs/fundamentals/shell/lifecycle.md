@@ -15,7 +15,7 @@ Shell apps respect the .NET Multi-platform App UI (.NET MAUI) lifecycle, and add
 
 ## Modeless navigation
 
-In a Shell app, pushing a page onto the navigation stack will result in the currently visible `ShellContent` object, and its page content, raising the `Disappearing` event. Similarly, popping the last page from the navigation stack will result in the newly visible `ShellContent` object, and its page content, raising the `Appearing` event.
+In a Shell app, pushing a page onto the navigation stack will result in the currently visible <xref:Microsoft.Maui.Controls.ShellContent> object, and its page content, raising the `Disappearing` event. Similarly, popping the last page from the navigation stack will result in the newly visible <xref:Microsoft.Maui.Controls.ShellContent> object, and its page content, raising the `Appearing` event.
 
 For more information about modeless navigation, see [Perform modeless navigation](~/user-interface/pages/navigationpage.md#perform-modeless-navigation).
 
