@@ -8,7 +8,7 @@ ms.date: 04/07/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-shell)
 
-A `ShellContent` object represents the <xref:Microsoft.Maui.Controls.ContentPage> object for each <xref:Microsoft.Maui.Controls.FlyoutItem> or `Tab`. When more than one `ShellContent` object is present in a `Tab` object, the <xref:Microsoft.Maui.Controls.ContentPage> objects will be navigable by top tabs. Within a page, additional <xref:Microsoft.Maui.Controls.ContentPage> objects that are known as detail pages, can be navigated to.
+A `ShellContent` object represents the <xref:Microsoft.Maui.Controls.ContentPage> object for each <xref:Microsoft.Maui.Controls.FlyoutItem> or <xref:Microsoft.Maui.Controls.Tab>. When more than one `ShellContent` object is present in a <xref:Microsoft.Maui.Controls.Tab> object, the <xref:Microsoft.Maui.Controls.ContentPage> objects will be navigable by top tabs. Within a page, additional <xref:Microsoft.Maui.Controls.ContentPage> objects that are known as detail pages, can be navigated to.
 
 In addition, the <xref:Microsoft.Maui.Controls.Shell> class defines attached properties that can be used to configure the appearance of pages in .NET Multi-platform App UI (.NET MAUI) Shell apps. This includes setting page colors, setting the page presentation mode, disabling the navigation bar, disabling the tab bar, and displaying views in the navigation bar.
 
@@ -35,12 +35,12 @@ In .NET MAUI Shell apps, pages are typically created on demand in response to na
 </Shell>
 ```
 
-In this example, Shell's implicit conversion operators are used to remove the `Tab` objects from the visual hierarchy. However, each `ShellContent` object is rendered in a tab:
+In this example, Shell's implicit conversion operators are used to remove the <xref:Microsoft.Maui.Controls.Tab> objects from the visual hierarchy. However, each `ShellContent` object is rendered in a tab:
 
 :::image type="content" source="media/pages/three-pages.png" alt-text="Screenshot of a Shell app with three pages.":::
 
 > [!NOTE]
-> The `BindingContext` of each `ShellContent` object is inherited from the parent `Tab` object.
+> The `BindingContext` of each `ShellContent` object is inherited from the parent <xref:Microsoft.Maui.Controls.Tab> object.
 
 Within each <xref:Microsoft.Maui.Controls.ContentPage> object, additional <xref:Microsoft.Maui.Controls.ContentPage> objects can be navigated to. For more information about navigation, see [.NET MAUI Shell navigation](navigation.md).
 

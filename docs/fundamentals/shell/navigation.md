@@ -37,7 +37,7 @@ When a navigation URI includes all three components, the structure is: //route/p
 
 ### Register routes
 
-Routes can be defined on <xref:Microsoft.Maui.Controls.FlyoutItem>, <xref:Microsoft.Maui.Controls.TabBar>, `Tab`, and `ShellContent` objects, through their `Route` properties:
+Routes can be defined on <xref:Microsoft.Maui.Controls.FlyoutItem>, <xref:Microsoft.Maui.Controls.TabBar>, <xref:Microsoft.Maui.Controls.Tab>, and `ShellContent` objects, through their `Route` properties:
 
 ```xaml
 <Shell ...>
@@ -232,7 +232,7 @@ In this example, the `CurrentItem` property, of type <xref:Microsoft.Maui.Contro
 
 ### Navigation stack
 
-The `Tab` class defines a `Stack` property, of type `IReadOnlyList<Page>`, which represents the current navigation stack within the `Tab`. The class also provides the following overridable navigation methods:
+The <xref:Microsoft.Maui.Controls.Tab> class defines a `Stack` property, of type `IReadOnlyList<Page>`, which represents the current navigation stack within the <xref:Microsoft.Maui.Controls.Tab>. The class also provides the following overridable navigation methods:
 
 - `GetNavigationStack`, returns `IReadOnlyList<Page>`, the current navigation stack.
 - `OnInsertPageBefore`, that's called when `INavigation.InsertPageBefore` is called.
@@ -255,7 +255,7 @@ public class MyTab : Tab
 }
 ```
 
-In this example, `MyTab` objects should be consumed in your Shell visual hierarchy instead of `Tab` objects.
+In this example, `MyTab` objects should be consumed in your Shell visual hierarchy instead of <xref:Microsoft.Maui.Controls.Tab> objects.
 
 ## Navigation events
 
