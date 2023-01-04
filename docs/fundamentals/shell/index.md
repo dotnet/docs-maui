@@ -55,7 +55,7 @@ Shell uses a URI-based navigation experience that uses routes to navigate to any
 
 ## Search
 
-.NET MAUI Shell includes integrated search functionality that's provided by the `SearchHandler` class. Search capability can be added to a page by adding a subclassed `SearchHandler` object to it. This results in a search box being added at the top of the page. When data is entered into the search box, the search suggestions area is populated with data:
+.NET MAUI Shell includes integrated search functionality that's provided by the <xref:Microsoft.Maui.Controls.SearchHandler> class. Search capability can be added to a page by adding a subclassed <xref:Microsoft.Maui.Controls.SearchHandler> object to it. This results in a search box being added at the top of the page. When data is entered into the search box, the search suggestions area is populated with data:
 
 :::image type="content" source="media/search.png" alt-text="Screenshot of Shell search.":::
 
