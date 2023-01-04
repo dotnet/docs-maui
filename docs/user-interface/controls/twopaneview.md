@@ -59,7 +59,7 @@ Visit the [dual-screen developer docs](/dual-screen/) for more information about
 
 ## Set up TwoPaneView
 
-To add the TwoPaneView layout to your page:
+To add the <xref:Microsoft.Maui.Controls.Foldable.TwoPaneView> layout to your page:
 
 1. Add a `foldable` namespace alias for the Foldable NuGet:
 
