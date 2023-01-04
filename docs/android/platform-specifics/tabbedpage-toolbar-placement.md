@@ -6,7 +6,7 @@ ms.date: 04/05/2022
 
 # TabbedPage toolbar placement on Android
 
-These .NET Multi-platform App UI (.NET MAUI) Android platform-specifics are used to set the placement of the toolbar on a <xref:Microsoft.Maui.Controls.TabbedPage>. They are consumed in XAML by setting the `TabbedPage.ToolbarPlacement` attached property to a value of the `ToolbarPlacement` enumeration:
+This .NET Multi-platform App UI (.NET MAUI) Android platform-specific is used to set the placement of the toolbar on a <xref:Microsoft.Maui.Controls.TabbedPage>. It's consumed in XAML by setting the `TabbedPage.ToolbarPlacement` attached property to a value of the `ToolbarPlacement` enumeration:
 
 ```xaml
 <TabbedPage ...
@@ -16,7 +16,7 @@ These .NET Multi-platform App UI (.NET MAUI) Android platform-specifics are used
 </TabbedPage>
 ```
 
-Alternatively, they can be consumed from C# using the fluent API:
+Alternatively, it can be consumed from C# using the fluent API:
 
 ```csharp
 using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
@@ -24,6 +24,9 @@ using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
 
 On<Microsoft.Maui.Controls.PlatformConfiguration.Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
 ```
+
+> [!NOTE]
+> This platform-specific has no effect on tabs in Shell-based apps.
 
 The `TabbedPage.On<Microsoft.Maui.Controls.PlatformConfiguration.Android>` method specifies that this platform-specific will only run on Android. The `TabbedPage.SetToolbarPlacement` method, in the `Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific` namespace, is used to set the toolbar placement on a <xref:Microsoft.Maui.Controls.TabbedPage>, with the `ToolbarPlacement` enumeration providing the following values:
 
