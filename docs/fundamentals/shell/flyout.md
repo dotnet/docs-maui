@@ -48,7 +48,7 @@ In this example, each `ShellContent` object can only be accessed through flyout 
 > [!IMPORTANT]
 > In a Shell app, pages are created on demand in response to navigation. This is accomplished by using the `DataTemplate` markup extension to set the `ContentTemplate` property of each `ShellContent` object to a <xref:Microsoft.Maui.Controls.ContentPage> object.
 
-Shell has implicit conversion operators that enable the Shell visual hierarchy to be simplified, without introducing additional views into the visual tree. This is possible because a subclassed <xref:Microsoft.Maui.Controls.Shell> object can only ever contain <xref:Microsoft.Maui.Controls.FlyoutItem> objects or a `TabBar` object, which can only ever contain `Tab` objects, which can only ever contain `ShellContent` objects. These implicit conversion operators can be used to remove the <xref:Microsoft.Maui.Controls.FlyoutItem> and `Tab` objects from the previous example:
+Shell has implicit conversion operators that enable the Shell visual hierarchy to be simplified, without introducing additional views into the visual tree. This is possible because a subclassed <xref:Microsoft.Maui.Controls.Shell> object can only ever contain <xref:Microsoft.Maui.Controls.FlyoutItem> objects or a <xref:Microsoft.Maui.Controls.TabBar> object, which can only ever contain `Tab` objects, which can only ever contain `ShellContent` objects. These implicit conversion operators can be used to remove the <xref:Microsoft.Maui.Controls.FlyoutItem> and `Tab` objects from the previous example:
 
 ```xaml
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -645,7 +645,7 @@ The backdrop of the flyout, which is the appearance of the flyout overlay, can b
 In this example, the flyout backdrop is painted with a silver <xref:Microsoft.Maui.Controls.SolidColorBrush>.
 
 > [!IMPORTANT]
-> The `FlyoutBackdrop` attached property can be set on any Shell element, but will only be applied when it's set on <xref:Microsoft.Maui.Controls.Shell>, <xref:Microsoft.Maui.Controls.FlyoutItem>, or `TabBar` objects.
+> The `FlyoutBackdrop` attached property can be set on any Shell element, but will only be applied when it's set on <xref:Microsoft.Maui.Controls.Shell>, <xref:Microsoft.Maui.Controls.FlyoutItem>, or <xref:Microsoft.Maui.Controls.TabBar> objects.
 
 The following example shows setting the flyout backdrop to a <xref:Microsoft.Maui.Controls.LinearGradientBrush>:
 

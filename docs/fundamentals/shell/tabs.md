@@ -8,16 +8,16 @@ ms.date: 04/07/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-shell)
 
-The navigation experience provided by .NET Multi-platform App UI (.NET MAUI) Shell is based on flyouts and tabs. The top level of navigation in a Shell app is either a flyout or a bottom tab bar, depending on the navigation requirements of the app. When the navigation experience for an app begins with bottom tabs, the child of the subclassed <xref:Microsoft.Maui.Controls.Shell> object should be a `TabBar` object, which represents the bottom tab bar.
+The navigation experience provided by .NET Multi-platform App UI (.NET MAUI) Shell is based on flyouts and tabs. The top level of navigation in a Shell app is either a flyout or a bottom tab bar, depending on the navigation requirements of the app. When the navigation experience for an app begins with bottom tabs, the child of the subclassed <xref:Microsoft.Maui.Controls.Shell> object should be a <xref:Microsoft.Maui.Controls.TabBar> object, which represents the bottom tab bar.
 
-A `TabBar` object can contain one or more `Tab` objects, with each `Tab` object representing a tab on the bottom tab bar. Each `Tab` object can contain one or more `ShellContent` objects, with each `ShellContent` object displaying a single <xref:Microsoft.Maui.Controls.ContentPage>. When more than one `ShellContent` object is present in a `Tab` object, the <xref:Microsoft.Maui.Controls.ContentPage> objects are navigable by top tabs. Within a tab, you can navigate to other <xref:Microsoft.Maui.Controls.ContentPage> objects that are known as detail pages.
+A <xref:Microsoft.Maui.Controls.TabBar> object can contain one or more `Tab` objects, with each `Tab` object representing a tab on the bottom tab bar. Each `Tab` object can contain one or more `ShellContent` objects, with each `ShellContent` object displaying a single <xref:Microsoft.Maui.Controls.ContentPage>. When more than one `ShellContent` object is present in a `Tab` object, the <xref:Microsoft.Maui.Controls.ContentPage> objects are navigable by top tabs. Within a tab, you can navigate to other <xref:Microsoft.Maui.Controls.ContentPage> objects that are known as detail pages.
 
 > [!IMPORTANT]
-> The `TabBar` type disables the flyout.
+> The <xref:Microsoft.Maui.Controls.TabBar> type disables the flyout.
 
 ## Single page
 
-A single page Shell app can be created by adding a `Tab` object to a `TabBar` object. Within the `Tab` object, a `ShellContent` object should be set to a <xref:Microsoft.Maui.Controls.ContentPage> object:
+A single page Shell app can be created by adding a `Tab` object to a <xref:Microsoft.Maui.Controls.TabBar> object. Within the `Tab` object, a `ShellContent` object should be set to a <xref:Microsoft.Maui.Controls.ContentPage> object:
 
 ```xaml
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -36,7 +36,7 @@ This example results in the following single page app:
 
 :::image type="content" source="media/tabs/single-page-app.png" alt-text="Screenshot of a Shell single page app.":::
 
-Shell has implicit-conversion operators that enable the Shell visual hierarchy to be simplified, without introducing more views into the visual tree. This is possible because a subclassed <xref:Microsoft.Maui.Controls.Shell> object can only ever contain <xref:Microsoft.Maui.Controls.FlyoutItem> objects or a `TabBar` object, which can only ever contain `Tab` objects, which can only ever contain `ShellContent` objects. These implicit-conversion operators can be used to remove the `Tab` objects from the previous example:
+Shell has implicit-conversion operators that enable the Shell visual hierarchy to be simplified, without introducing more views into the visual tree. This is possible because a subclassed <xref:Microsoft.Maui.Controls.Shell> object can only ever contain <xref:Microsoft.Maui.Controls.FlyoutItem> objects or a <xref:Microsoft.Maui.Controls.TabBar> object, which can only ever contain `Tab` objects, which can only ever contain `ShellContent` objects. These implicit-conversion operators can be used to remove the `Tab` objects from the previous example:
 
 ```xaml
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -49,14 +49,14 @@ Shell has implicit-conversion operators that enable the Shell visual hierarchy t
 </Shell>
 ```
 
-This implicit conversion automatically wraps the `ShellContent` object in a `Tab` object, which is wrapped in a `TabBar` object.
+This implicit conversion automatically wraps the `ShellContent` object in a `Tab` object, which is wrapped in a <xref:Microsoft.Maui.Controls.TabBar> object.
 
 > [!IMPORTANT]
 > In a Shell app, pages are created on demand in response to navigation. This is accomplished by using the `DataTemplate` markup extension to set the `ContentTemplate` property of each `ShellContent` object to a <xref:Microsoft.Maui.Controls.ContentPage> object.
 
 ## Bottom tabs
 
-If there are multiple `Tab` objects in a single `TabBar` object, `Tab` objects are rendered as bottom tabs:
+If there are multiple `Tab` objects in a single <xref:Microsoft.Maui.Controls.TabBar> object, `Tab` objects are rendered as bottom tabs:
 
 ```xaml
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -80,7 +80,7 @@ The `Title` property, of type `string`, defines the tab title. The `Icon` proper
 
 :::image type="content" source="media/tabs/two-page-app-bottom-tabs.png" alt-text="Screenshot of a Shell two page app with bottom tabs.":::
 
-When there are more than five tabs on a `TabBar`, a **More** tab will appear, which can be used to access the other tabs:
+When there are more than five tabs on a <xref:Microsoft.Maui.Controls.TabBar>, a **More** tab will appear, which can be used to access the other tabs:
 
 :::image type="content" source="media/tabs/more-tabs.png" alt-text="Screenshot of a Shell app with a More tab.":::
 

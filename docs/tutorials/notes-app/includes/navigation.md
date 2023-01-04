@@ -322,7 +322,7 @@ The `AppShell` is still loading the single note page, instead, it needs to load 
 
 :::code language="xaml" source="../snippets/navigation/csharp/Notes/AppShell.xaml" highlight="12":::
 
-If you run the app now, you'll notice it crashes if you press the **Add** button, complaining that it can't navigate to `NotesPage`. Every page that can be navigated to from another page, needs to be registered with the navigation system. The `AllNotesPage` and `AboutPage` pages are automatically registered with the navigation system by being declared in the `TabBar`.
+If you run the app now, you'll notice it crashes if you press the **Add** button, complaining that it can't navigate to `NotesPage`. Every page that can be navigated to from another page, needs to be registered with the navigation system. The `AllNotesPage` and `AboutPage` pages are automatically registered with the navigation system by being declared in the <xref:Microsoft.Maui.Controls.TabBar>.
 
 Register the `NotesPage` with the navigation system:
 

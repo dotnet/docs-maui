@@ -37,7 +37,7 @@ When a navigation URI includes all three components, the structure is: //route/p
 
 ### Register routes
 
-Routes can be defined on <xref:Microsoft.Maui.Controls.FlyoutItem>, `TabBar`, `Tab`, and `ShellContent` objects, through their `Route` properties:
+Routes can be defined on <xref:Microsoft.Maui.Controls.FlyoutItem>, <xref:Microsoft.Maui.Controls.TabBar>, `Tab`, and `ShellContent` objects, through their `Route` properties:
 
 ```xaml
 <Shell ...>

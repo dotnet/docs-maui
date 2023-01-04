@@ -116,7 +116,7 @@ After you've downloaded the images, you can move them with File Explorer to the 
 
 ## Modify the app Shell
 
-As noted at the start of this article, the `AppShell` class defines an app's visual hierarchy, the XAML markup used in creating the UI of the app. Update the XAML to add a `TabBar` control:
+As noted at the start of this article, the `AppShell` class defines an app's visual hierarchy, the XAML markup used in creating the UI of the app. Update the XAML to add a <xref:Microsoft.Maui.Controls.TabBar> control:
 
 01. Double-click the _AppShell.xaml_ file in the **Solution Explorer** pane to open the XAML editor. Replace the XAML markup with the following code:
 
@@ -130,7 +130,7 @@ Let's break down the key parts of the XAML:
 - `<TabBar>` is the content of the <xref:Microsoft.Maui.Controls.Shell>.
 - Two `<ShellContent>` objects inside of the `<TabBar>`. Before you replaced the template code, there was a single `<ShellContent>` object, pointing to the `MainPage` page.
 
-The `TabBar` and its children don't represent any user interface elements, but rather the organization of the app's visual hierarchy. Shell will take these objects and produce the user interface for the content.
+The <xref:Microsoft.Maui.Controls.TabBar> and its children don't represent any user interface elements, but rather the organization of the app's visual hierarchy. Shell will take these objects and produce the user interface for the content.
 
 Each `<ShellContent>` object is pointing to a page to display. This is set by the `ContentTemplate` property.
 
