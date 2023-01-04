@@ -37,7 +37,7 @@ When a navigation URI includes all three components, the structure is: //route/p
 
 ### Register routes
 
-Routes can be defined on `FlyoutItem`, `TabBar`, `Tab`, and `ShellContent` objects, through their `Route` properties:
+Routes can be defined on <xref:Microsoft.Maui.Controls.FlyoutItem>, `TabBar`, `Tab`, and `ShellContent` objects, through their `Route` properties:
 
 ```xaml
 <Shell ...>
@@ -133,7 +133,7 @@ Navigation can be performed by specifying a valid absolute URI as an argument to
 await Shell.Current.GoToAsync("//animals/monkeys");
 ```
 
-This example navigates to the page for the `monkeys` route, with the route being defined on a `ShellContent` object. The `ShellContent` object that represents the `monkeys` route is a child of a `FlyoutItem` object, whose route is `animals`.
+This example navigates to the page for the `monkeys` route, with the route being defined on a `ShellContent` object. The `ShellContent` object that represents the `monkeys` route is a child of a <xref:Microsoft.Maui.Controls.FlyoutItem> object, whose route is `animals`.
 
 ### Relative routes
 
@@ -228,7 +228,7 @@ Some of the Shell classes are decorated with the `DebuggerDisplayAttribute`, whi
 
 :::image type="content" source="media/navigation/debugger.png" alt-text="Screenshot of debugger.":::
 
-In this example, the `CurrentItem` property, of type `FlyoutItem`, displays the title and route of the `FlyoutItem` object. Similarly, the `CurrentState` property, of type `ShellNavigationState`, displays the URI of the displayed route within the Shell app.
+In this example, the `CurrentItem` property, of type <xref:Microsoft.Maui.Controls.FlyoutItem>, displays the title and route of the <xref:Microsoft.Maui.Controls.FlyoutItem> object. Similarly, the `CurrentState` property, of type `ShellNavigationState`, displays the URI of the displayed route within the Shell app.
 
 ### Navigation stack
 

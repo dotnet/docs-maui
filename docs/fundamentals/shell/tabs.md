@@ -36,7 +36,7 @@ This example results in the following single page app:
 
 :::image type="content" source="media/tabs/single-page-app.png" alt-text="Screenshot of a Shell single page app.":::
 
-Shell has implicit-conversion operators that enable the Shell visual hierarchy to be simplified, without introducing more views into the visual tree. This is possible because a subclassed <xref:Microsoft.Maui.Controls.Shell> object can only ever contain `FlyoutItem` objects or a `TabBar` object, which can only ever contain `Tab` objects, which can only ever contain `ShellContent` objects. These implicit-conversion operators can be used to remove the `Tab` objects from the previous example:
+Shell has implicit-conversion operators that enable the Shell visual hierarchy to be simplified, without introducing more views into the visual tree. This is possible because a subclassed <xref:Microsoft.Maui.Controls.Shell> object can only ever contain <xref:Microsoft.Maui.Controls.FlyoutItem> objects or a `TabBar` object, which can only ever contain `Tab` objects, which can only ever contain `ShellContent` objects. These implicit-conversion operators can be used to remove the `Tab` objects from the previous example:
 
 ```xaml
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
