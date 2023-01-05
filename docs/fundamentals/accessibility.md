@@ -253,7 +253,7 @@ AutomationProperties.SetIsInAccessibleTree(entry, true);
 ```
 
 > [!WARNING]
-> On iOS, if you set the `IsInAccessibleTree` property on any control that has children the screen reader will be unable to reach the children. This is because iOS doesn't provide accessibility features that allow the navigation from a parent element into a child element.
+> On iOS, if the `IsInAccessibleTree` property is `true` on any control that has children the screen reader will be unable to reach the children. This is because iOS doesn't provide accessibility features that allow the navigation from a parent element into a child element.
 
 ### Name
 
