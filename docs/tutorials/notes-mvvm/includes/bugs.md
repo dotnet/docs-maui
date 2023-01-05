@@ -7,11 +7,9 @@ ms.topic: include
 
 Now that the app code can compile and run, you'll likely have noticed that there are two flaws with how the app behaves. The app doesn't let you reselect a note that's already selected, and the list of notes isn't reordered after a note is created or changed.
 
-## Get notes to the top
+## Get notes to the top of the list
 
-First, fix the reordering problem with the notes list. In the _ViewModels\\NotesViewModel.cs_ file, the `AllNotes` collection contains all of the notes to be presented to the user. Unfortunately, the downside to using an `ObservableCollection` is that it can't be sorted. You must deal with items in the list one at a time.
-
-To get the new or updated items to the top of the list, perform the following steps:
+First, fix the reordering problem with the notes list. In the _ViewModels\\NotesViewModel.cs_ file, the `AllNotes` collection contains all of the notes to be presented to the user. Unfortunately, the downside to using an `ObservableCollection` is that it must be manually sorted. To get the new or updated items to the top of the list, perform the following steps:
 
 01. In the **Solution Explorer** pane of Visual Studio, double-click on **ViewModels\\NotesViewModel.cs**.
 01. In the `ApplyQueryAttributes` method, look at the logic for the **saved** query string key.
@@ -35,7 +33,7 @@ In the **AllNotes view**, the `CollectionView` lists all of the notes, but doesn
 
 The problem you have to solve now is related to navigation. No matter how the **Allnotes view** is navigated to, the `NavigatedTo` event is raised for the page. This event is a perfect place to forcibly unselect the selected item in the `CollectionView`.
 
-However, with the MVVM pattern being applied here, the viewmodel can't trigger something directly on the view, such as clearing the selected item after the note is saved. So how do you get that to happen? A good implementation of the MVVM pattern minimizes the code-behind in the view. There are a few different ways to solve this problem to support the MVVM separation pattern. However, it's also OK to put code in the code-behind of the view, especially when it's directly tied to the view, and when doing so saves you time coding. MVVM has many great designs and concepts that help you compartmentalize your app, improving maintainability and making it easier for you to add new features. However, in some cases, you may find that MVVM encourages overengineering.
+However, with the MVVM pattern being applied here, the viewmodel can't trigger something directly on the view, such as clearing the selected item after the note is saved. So how do you get that to happen? A good implementation of the MVVM pattern minimizes the code-behind in the view. There are a few different ways to solve this problem to support the MVVM separation pattern. However, it's also OK to put code in the code-behind of the view, especially when it's directly tied to the view. MVVM has many great designs and concepts that help you compartmentalize your app, improving maintainability and making it easier for you to add new features. However, in some cases, you may find that MVVM encourages overengineering.
 
 Don't overengineer a solution for this problem, and just use the `NavigatedTo` event to clear the selected item from the `CollectionView`.
 
