@@ -50,14 +50,14 @@ internal class NoteViewModel : ObservableObject, IQueryAttributable
     //</ctor>
 
     //<command_methods>
-    public async Task Save()
+    private async Task Save()
     {
         _note.Date = DateTime.Now;
         _note.Save();
         await Shell.Current.GoToAsync($"..?saved={_note.Filename}");
     }
 
-    public async Task Delete()
+    private async Task Delete()
     {
         _note.Delete();
         await Shell.Current.GoToAsync($"..?deleted={_note.Filename}");
@@ -65,7 +65,7 @@ internal class NoteViewModel : ObservableObject, IQueryAttributable
     //</command_methods>
 
     //<iquery>
-    public void ApplyQueryAttributes(IDictionary<string, object> query)
+    void IQueryAttributable.ApplyQueryAttributes(IDictionary<string, object> query)
     {
         if (query.ContainsKey("load"))
         {
@@ -82,7 +82,7 @@ internal class NoteViewModel : ObservableObject, IQueryAttributable
         RefreshProperties();
     }
 
-    public void RefreshProperties()
+    private void RefreshProperties()
     {
         OnPropertyChanged(nameof(Text));
         OnPropertyChanged(nameof(Date));

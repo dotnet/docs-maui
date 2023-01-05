@@ -24,12 +24,12 @@ internal class NotesViewModel: IQueryAttributable
     //</ctor>
 
     //<commands>
-    public async Task NewNoteAsync()
+    private async Task NewNoteAsync()
     {
         await Shell.Current.GoToAsync(nameof(Views.NotePage));
     }
 
-    public async Task SelectNoteAsync(ViewModels.NoteViewModel note)
+    private async Task SelectNoteAsync(ViewModels.NoteViewModel note)
     {
         if (note != null)
             await Shell.Current.GoToAsync($"{nameof(Views.NotePage)}?load={note.Identifier}");
@@ -37,7 +37,7 @@ internal class NotesViewModel: IQueryAttributable
     //</commands>
 
     //<query>
-    public void ApplyQueryAttributes(IDictionary<string, object> query)
+    void IQueryAttributable.ApplyQueryAttributes(IDictionary<string, object> query)
     {
         if (query.ContainsKey("deleted"))
         {

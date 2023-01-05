@@ -17,19 +17,19 @@ internal class NotesViewModel : IQueryAttributable
         SelectNoteCommand = new AsyncRelayCommand<NoteViewModel>(SelectNoteAsync);
     }
 
-    public async Task NewNoteAsync()
+    private async Task NewNoteAsync()
     {
         await Shell.Current.GoToAsync(nameof(Views.NotePage));
     }
 
-    public async Task SelectNoteAsync(NoteViewModel note)
+    private async Task SelectNoteAsync(NoteViewModel note)
     {
         if (note != null)
             await Shell.Current.GoToAsync($"{nameof(Views.NotePage)}?load={note.Identifier}");
     }
 
     //<query>
-    public void ApplyQueryAttributes(IDictionary<string, object> query)
+    void IQueryAttributable.ApplyQueryAttributes(IDictionary<string, object> query)
     {
         if (query.ContainsKey("deleted"))
         {
