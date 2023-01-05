@@ -19,6 +19,11 @@ items:
   content: |
     [!INCLUDE [](includes/upgrade.md)]
 
+- title: Brief overview of MVVM
+  durationInMinutes: 3
+  content: |
+    [!INCLUDE [](includes/mvvm.md)]
+
 - title: Update the model
   durationInMinutes: 7
   content: |

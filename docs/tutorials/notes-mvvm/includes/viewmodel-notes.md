@@ -1,7 +1,7 @@
 ---
 author: adegeo
 ms.author: adegeo
-ms.date: 12/21/2022
+ms.date: 01/05/2023
 ms.topic: include
 no-loc: ["communitytoolkit", "CommunityToolkit.Mvvm", "AllNotes", "Notes", "About"]
 ---
@@ -58,7 +58,7 @@ Create the **Notes viewmodel**:
 
     :::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/ViewModels/NotesViewModel.cs" id="query":::
 
-    The **Note viewmodel** created in the previous tutorial step, used navigation when the note was saved or deleted. The viewmodel navigated back to the **AllNotes view**, which this viewmodel is associated with. This code detects if the query string contained either the `deleted` or `saved` key. The value of the key is the unique identifier of the note that was handled.
+    The **Note viewmodel** created in the previous tutorial step, used navigation when the note was saved or deleted. The viewmodel navigated back to the **AllNotes view**, which this viewmodel is associated with. This code detects if the query string contains either the `deleted` or `saved` key. The value of the key is the unique identifier of the note.
 
     If the note was **deleted**, that note is matched in the `AllNotes` collection by the provided identifier, and removed.
 

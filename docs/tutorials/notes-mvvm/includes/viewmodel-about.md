@@ -1,7 +1,7 @@
 ---
 author: adegeo
 ms.author: adegeo
-ms.date: 12/21/2022
+ms.date: 01/05/2023
 ms.topic: include
 no-loc: ["communitytoolkit", "CommunityToolkit.Mvvm", "AllNotes", "Notes", "About"]
 ---
@@ -11,7 +11,7 @@ Before adding view models to the project, add reference to the MVVM Community To
 01. In the **Solution Explorer** pane of Visual Studio, right-click on the **Notes** project > **Manage NuGet Packages**.
 01. Select the **Browse** tab.
 01. Search for **communitytoolkit mvvm** and select the `CommunityToolkit.Mvvm` package, which should be the first result.
-01. Make sure that version **8.0.0** is selected.
+01. Make sure that at least version 8 is selected. This tutorial was written using version **8.0.0**.
 01. Next, select **Install** and accept any prompts that are displayed.
 
     :::image type="content" source="../media/viewmodel-about/nuget.png" alt-text="Searching for the CommunityToolkit.Mvvm package in NuGet.":::
@@ -71,7 +71,7 @@ Update the **About view**:
 
     The previous code snippet highlights the lines that have changed in this version of the view.
 
-Notice that the button is using the `Command` property. Many controls have a `Command` property that is invoked when the user interacts with the control. When used with a button, the command is invoked when a user presses the button, similar to how the `Clicked` event handler is invoked, except that you can bind `Command` to the viewmodel.
+Notice that the button is using the `Command` property. Many controls have a `Command` property that is invoked when the user interacts with the control. When used with a button, the command is invoked when a user presses the button, similar to how the `Clicked` event handler is invoked, except that you can bind `Command` to a property in the viewmodel.
 
 In this view, when the user presses the button, the `Command` is invoked. The `Command` is bound to the `ShowMoreInfoCommand` property in the viewmodel, and when invoked, runs the code in the `ShowMoreInfo` method, which opens the web browser to a specific page.
 

@@ -1,14 +1,14 @@
 ---
 author: adegeo
 ms.author: adegeo
-ms.date: 12/21/2022
+ms.date: 01/05/2023
 ms.topic: include
 ---
 
 Skip this step if:
 
 - You downloaded the starter project in the previous step.
-- Completed the [previous tutorial series](../../notes-app/index.yml) after December 21, 2022.
+- Completed the [previous tutorial series](../../notes-app/index.yml) before 2023.
 
 To upgrade your app to .NET 7:
 
