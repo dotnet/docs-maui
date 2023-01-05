@@ -84,6 +84,9 @@ Entry entry = new Entry();
 SemanticProperties.SetDescription(entry, label.Text);
 ```
 
+> [!WARNING]
+> On iOS, if you set the `SemanticDescription` property on any control that has children the screen reader will be unable to reach the children. This is because iOS doesn't provide accessibility features that allow the navigation from a parent element into a child element.
+
 ### Hint
 
 The `SemanticProperties.Hint` attached property represents a `string` that provides additional context to the `SemanticProperties.Description` attached property, such as the purpose of a control. Setting this property can be accomplished in XAML:
@@ -248,6 +251,9 @@ Alternatively, it can be set in C# as follows:
 Entry entry = new Entry();
 AutomationProperties.SetIsInAccessibleTree(entry, true);
 ```
+
+> [!WARNING]
+> On iOS, if you set the `IsInAccessibleTree` property on any control that has children the screen reader will be unable to reach the children. This is because iOS doesn't provide accessibility features that allow the navigation from a parent element into a child element.
 
 ### Name
 
