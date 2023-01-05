@@ -338,4 +338,4 @@ The `Routing.RegisterRoute` method takes two parameters:
 
 Now you can run your app. Try adding new notes, navigating back and forth between notes, and deleting notes.
 
-[![Explore the code.](~/media/code-sample.png) Explore the code for this step of the tutorial.](https://github.com/dotnet/maui-samples/tree/main/6.0/Tutorials/CreateNetMauiApp/step4)
+[![Explore the code.](~/media/code-sample.png) Explore the code for this step of the tutorial.](https://github.com/dotnet/maui-samples/tree/main/7.0/Tutorials/CreateNetMauiApp/step4)

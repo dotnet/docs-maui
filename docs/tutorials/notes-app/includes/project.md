@@ -29,4 +29,4 @@ Set the **Debug Target** in the Visual Studio toolbar to the device you want to 
 01. Select the **Android Emulators** item.
 01. Select the emulator device.
 
-[![Explore the code.](~/media/code-sample.png) Explore the code for this step of the tutorial.](https://github.com/dotnet/maui-samples/tree/main/6.0/Tutorials/CreateNetMauiApp/step1)
+[![Explore the code.](~/media/code-sample.png) Explore the code for this step of the tutorial.](https://github.com/dotnet/maui-samples/tree/main/7.0/Tutorials/CreateNetMauiApp/step1)
