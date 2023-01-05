@@ -13,7 +13,7 @@ The MVVM pattern helps cleanly separate an app's business and presentation logic
 
 There are three core components in the MVVM pattern: the model, the view, and the view model. Each serves a distinct purpose. The following diagram shows the relationships between the three components.
 
-![The MVVM pattern](../media/mvvm-pattern.png)
+![The MVVM pattern](../media/mvvm/mvvm-pattern.png)
 
 In addition to understanding the responsibilities of each component, it's also important to understand how they interact. At a high level, the view "knows about" the view model, and the view model "knows about" the model, but the model is unaware of the view model, and the view model is unaware of the view. Therefore, the view model isolates the view from the model, and allows the model to evolve independently of the view.
 
