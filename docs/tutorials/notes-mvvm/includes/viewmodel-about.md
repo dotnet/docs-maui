@@ -6,7 +6,7 @@ ms.topic: include
 no-loc: ["communitytoolkit", "CommunityToolkit.Mvvm", "AllNotes", "Notes", "About"]
 ---
 
-Before adding view models to the project, add reference to the MVVM Community Toolkit. This library is available on NuGet, and provides types and systems that help implement the MVVM pattern.
+Before adding view models to the project, add a reference to the MVVM Community Toolkit. This library is available on NuGet, and provides types and systems that help implement the MVVM pattern.
 
 01. In the **Solution Explorer** pane of Visual Studio, right-click on the **Notes** project > **Manage NuGet Packages**.
 01. Select the **Browse** tab.
@@ -20,7 +20,7 @@ Now you're ready to start updating the project by adding view models.
 
 ## Decouple with view models
 
-The view-to-viewmodel relationship relies heavily on the binding system provided by .NET MAUI. The app is already using binding in the views to display a list of notes and to present the text and date of a single note. The app logic is currently provided by the view's code-behind and is directly tied to the view. For example, when a user is editing a note and presses the **Save** button, the `Clicked` event for the button is raised. Then, the code-behind for the event handler saves the note text to a file and navigates to the previous screen.
+The view-to-viewmodel relationship relies heavily on the binding system provided by .NET Multi-platform App UI (.NET MAUI). The app is already using binding in the views to display a list of notes and to present the text and date of a single note. The app logic is currently provided by the view's code-behind and is directly tied to the view. For example, when a user is editing a note and presses the **Save** button, the `Clicked` event for the button is raised. Then, the code-behind for the event handler saves the note text to a file and navigates to the previous screen.
 
 Having app logic in the code-behind of a view can become an issue when the view changes. For example if the button is replaced with a different input control, or the name of a control is changed, event handlers may become invalid. Regardless of how the view is designed, the purpose of the view is to invoke some sort of app logic and to present information to the user. For this app, the `Save` button is saving the note and then navigating back to the previous screen.
 
@@ -41,7 +41,7 @@ Your project structure should look like the following image:
 
 ## About viewmodel and About view
 
-The **About view** displays some data on the screen and optionally navigates to a website with more information. Since this view doesn't have any data to change, like with an entry control or selecting items from a list, it's a good candidate to demonstrate adding a viewmodel. For the **About viewmodel**, there isn't a backing model.
+The **About view** displays some data on the screen and optionally navigates to a website with more information. Since this view doesn't have any data to change, like with a text entry control or selecting items from a list, it's a good candidate to demonstrate adding a viewmodel. For the **About viewmodel**, there isn't a backing model.
 
 Create the **About viewmodel**:
 
@@ -56,7 +56,7 @@ Commands are bindable actions that invoke code, and are a great place to put app
 
 ### About view
 
-The **About view** needs to be changed slightly to hook it up to the viewmodel that was created in the previous section. In the _Views\\AboutPage.xaml_ file,  file, apply the following changes:
+The **About view** needs to be changed slightly to hook it up to the viewmodel that was created in the previous section. In the _Views\\AboutPage.xaml_ file, apply the following changes:
 
 - Update the `xmlns:models` XML namespace to `xmlns:viewModels` and target the `Notes.ViewModels` .NET namespace.
 - Change the `ContentPage.BindingContext` property to a new instance of the `About` viewmodel.

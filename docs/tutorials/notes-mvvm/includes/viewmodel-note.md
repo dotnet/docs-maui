@@ -14,8 +14,8 @@ Based on what the **Note view** requires, the **Note viewmodel** needs to provid
 
 - The text of the note.
 - The date/time the note was created or last updated.
-- A command to that saves the note.
-- A command to that deletes the note.
+- A command that saves the note.
+- A command that deletes the note.
 
 Create the **Note viewmodel**:
 
@@ -51,7 +51,7 @@ Create the **Note viewmodel**:
 
     The `Text` property first checks if the value being set is a different value. If the value is different, that value is passed on to the model's property, and the `OnPropertyChanged` method is called.
 
-    The `OnPropertyChanged` method is provided by the `ObservableObject` base class. This method uses the name of the calling code, in this case, the property name of **Text**, and raises the `ObservableObject.PropertyChanged` event. This event supplies the name of the property to any event subscribers. The binding system provided by .NET MAUI recognizes this event, and updates any related bindings in the UI. For the **note viewmodel**, when the `Text` property changes, the event is raised, and any UI element that is bound to the `Text` property is notified that the property changed.
+    The `OnPropertyChanged` method is provided by the `ObservableObject` base class. This method uses the name of the calling code, in this case, the property name of **Text**, and raises the `ObservableObject.PropertyChanged` event. This event supplies the name of the property to any event subscribers. The binding system provided by .NET MAUI recognizes this event, and updates any related bindings in the UI. For the **Note viewmodel**, when the `Text` property changes, the event is raised, and any UI element that is bound to the `Text` property is notified that the property changed.
 
 01. Add the following command-properties to the class, which are the commands that the view can bind to:
 
@@ -69,7 +69,7 @@ Create the **Note viewmodel**:
 
     :::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/ViewModels/NoteViewModel.cs" id="command_methods":::
 
-    These methods are invoked by associated commands. They perform the related actions on the model and make the shell navigate to the previous page. A query string parameter is added to the `..` navigation path, indicating which action was taken and the note's unique identifier.
+    These methods are invoked by associated commands. They perform the related actions on the model and make the app navigate to the previous page. A query string parameter is added to the `..` navigation path, indicating which action was taken and the note's unique identifier.
 
 01. Next, add the `ApplyQueryAttributes` method to the class, which satisfies the requirements of the `IQueryAttributable` interface:
 

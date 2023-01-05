@@ -36,7 +36,7 @@ Create the **Notes viewmodel**:
 
     This code is the blank `NotesViewModel` where you'll add properties and commands to support the `AllNotes` view.
 
-01. In the `Notes` class code, add the following properties:
+01. In the `NotesViewModel` class code, add the following properties:
 
     :::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/ViewModels/NotesViewModel.cs" id="properties":::
 
@@ -46,7 +46,7 @@ Create the **Notes viewmodel**:
 
     :::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/ViewModels/NotesViewModel.cs" id="ctor":::
 
-    Notice that the `AllNotes` collection uses the `Models.Note.LoadAll` method fill the observable collection with notes. The `LoadAll` method returns the notes as the `Models.Note` type, but the observable collection is a collection of `ViewModel.Note` types. The code uses the `Select` Linq extension to create viewmodel instances from the note models returned from `LoadAll`.
+    Notice that the `AllNotes` collection uses the `Models.Note.LoadAll` method to fill the observable collection with notes. The `LoadAll` method returns the notes as the `Models.Note` type, but the observable collection is a collection of `ViewModels.NoteViewModel` types. The code uses the `Select` Linq extension to create viewmodel instances from the note models returned from `LoadAll`.
 
 01. Create the methods targeted by the commands:
 
