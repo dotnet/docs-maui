@@ -33,6 +33,9 @@ The process for publishing a .NET MAUI iOS app is as follows:
 1. Connect Visual Studio 2022 to a Mac build host.
 1. Publish your app using .NET CLI.
 
+> [!IMPORTANT]
+> Blazor Hybrid apps require a WebView on the host platform. For more information, see [Keep the Web View current in deployed Blazor Hybrid apps](/aspnet/core/blazor/hybrid/security/security-considerations#keep-the-web-view-current-in-deployed-apps).
+
 ## Create a certificate signing request
 
 To sign a .NET MAUI iOS app you must first create a certificate signing request (CSR) in Keychain Access on a Mac. For more information, see [Create a certificate signing request](provision.md#create-a-certificate-signing-request).

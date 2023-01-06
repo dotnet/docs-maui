@@ -15,6 +15,9 @@ ms.date: 04/25/2022
 
 When distributing your .NET Multi-platform App UI (.NET MAUI) app for macOS, you generate an *.app* or a *.pkg* file. An *.app* file is a self-contained app that can be run without installation, whereas a *.pkg* is an app packaged in an installer.
 
+> [!IMPORTANT]
+> Blazor Hybrid apps require a WebView on the host platform. For more information, see [Keep the Web View current in deployed Blazor Hybrid apps](/aspnet/core/blazor/hybrid/security/security-considerations#keep-the-web-view-current-in-deployed-apps).
+
 ## Publish an unsigned app
 
 At this time, publishing is only supported through the .NET command line interface.
