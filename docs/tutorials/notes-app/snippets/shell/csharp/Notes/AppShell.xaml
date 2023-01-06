@@ -10,12 +10,12 @@
         <ShellContent
             Title="Notes"
             ContentTemplate="{DataTemplate local:MainPage}"
-            Icon="icon_notes" />
+            Icon="icon_notes.png" />
 
         <ShellContent
             Title="About"
             ContentTemplate="{DataTemplate local:AboutPage}"
-            Icon="icon_about" />
+            Icon="icon_about.png" />
     </TabBar>
 
 </Shell>
