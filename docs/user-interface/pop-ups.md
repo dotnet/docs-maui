@@ -105,3 +105,7 @@ This code displays a predefined response of 10, limits the number of characters 
 
 <!-- > [!WARNING]
 > By default on UWP, when a prompt is displayed any access keys that are defined on the page behind the prompt can still be activated. For more information, see [VisualElement Access Keys on Windows](~/xamarin-forms/platform/windows/visualelement-access-keys.md). -->
+
+## Display a page as a pop-up
+
+.NET MAUI supports modal page navigation. A modal page encourages users to complete a self-contained task that cannot be navigated away from until the task is completed or cancelled. For example, to display a form as a pop-up that requires users to enter multiple pieces of data, create a <xref:Microsoft.Maui.Controls.ContentPage> that contains the UI for your form and then push it onto the navigation stack as a modal page. For more information, see [Perform modal navigation](~/user-interface/pages/navigationpage.md#perform-modal-navigation).
