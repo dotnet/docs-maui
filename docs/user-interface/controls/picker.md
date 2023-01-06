@@ -90,7 +90,7 @@ A <xref:Microsoft.Maui.Controls.Picker> supports selection of one item at a time
 
 <!--
 > [!NOTE]
-> Item selection behavior in a <xref:Microsoft.Maui.Controls.Picker> can be customized on iOS with a platform-specific. For more information, see [Controlling Picker item selection](~/platform-integration/ios/picker-selection.md).
+> Item selection behavior in a <xref:Microsoft.Maui.Controls.Picker> can be customized on iOS with a platform-specific. For more information, see [Picker item selection on iOS](../../ios/platform-specifics/picker-selection.md).
 -->
 
 The following XAML example shows how to retrieve the `SelectedItem` property value from the <xref:Microsoft.Maui.Controls.Picker>:
@@ -238,7 +238,7 @@ A <xref:Microsoft.Maui.Controls.Picker> supports selection of one item at a time
 
 <!--
 > [!NOTE]
-> Item selection behavior in a <xref:Microsoft.Maui.Controls.Picker> can be customized on iOS with a platform-specific. For more information, see [Controlling Picker Item Selection](~/xamarin-forms/platform/ios/picker-selection.md).
+> Item selection behavior in a <xref:Microsoft.Maui.Controls.Picker> can be customized on iOS with a platform-specific. For more information, see [Picker item selection on iOS](../../ios/platform-specifics/picker-selection.md).
 -->
 
 The following code example shows the `OnPickerSelectedIndexChanged` event handler method, which is executed when the `SelectedIndexChanged` event fires:
