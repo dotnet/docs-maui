@@ -21,7 +21,7 @@ The <xref:Microsoft.Maui.Controls.Grid> class defines the following properties:
 - `ColumnSpacing`, of type `double`, indicates the distance between grid columns. The default value of this property is 0.
 - `ColumnSpan`, of type `int`, which is an attached property that indicates the total number of columns that a view spans within a parent <xref:Microsoft.Maui.Controls.Grid>. The default value of this property is 1. A validation callback ensures that when the property is set, its value is greater than or equal to 1.
 - `Row`, of type `int`, which is an attached property that indicates the row alignment of a view within a parent <xref:Microsoft.Maui.Controls.Grid>. The default value of this property is 0. A validation callback ensures that when the property is set, its value is greater than or equal to 0.
-- `RowDefinitions`, of type `RowDefinitionCollection`, is a list of `RowDefintion` objects that define the height of the grid rows.
+- `RowDefinitions`, of type `RowDefinitionCollection`, is a list of `RowDefinition` objects that define the height of the grid rows.
 - `RowSpacing`, of type `double`, indicates the distance between grid rows. The default value of this property is 0.
 - `RowSpan`, of type `int`, which is an attached property that indicates the total number of rows that a view spans within a parent <xref:Microsoft.Maui.Controls.Grid>. The default value of this property is 1. A validation callback ensures that when the property is set, its value is greater than or equal to 1.
 
