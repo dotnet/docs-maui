@@ -43,6 +43,9 @@ The Amazon Mobile App Distribution Program enables mobile app developers to dist
 
 Google Play is arguably the most comprehensive and popular marketplace for Android applications. Google Play allows users to discover, download, rate, and pay for applications by clicking a single icon either on their device or on their computer. Google Play also provides tools to help in the analysis of sales and market trends and to control which devices and users may download an application.
 
+> [!IMPORTANT]
+> Blazor Hybrid apps require a WebView on the host platform. For more information, see [Keep the Web View current in deployed Blazor Hybrid apps](/aspnet/core/blazor/hybrid/security/security-considerations#keep-the-web-view-current-in-deployed-apps).
+
 ## See also
 
 This section links to articles that may help in publishing an app to an app store such as Google Play.
