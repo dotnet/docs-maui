@@ -17,6 +17,9 @@ When distributing your .NET Multi-platform App UI (.NET MAUI) app for Windows, y
 
 .NET MAUI currently only allows publishing an MSIX package. You can't yet publish a Windows executable file for distribution.
 
+> [!IMPORTANT]
+> Blazor Hybrid apps require a WebView on the host platform. For more information, see [Keep the Web View current in deployed Blazor Hybrid apps](/aspnet/core/blazor/hybrid/security/security-considerations#keep-the-web-view-current-in-deployed-apps).
+
 ## Configuration
 
 The MSIX package is configured by the _Platforms\\Windows\\Package.appxmanifest_ (the manifest) file in your project. The manifest is used by the MSIX installer, the Microsoft store, and by Windows, to configure and display your app. .NET MAUI does use some shared settings across platforms, such as the app name and icon, which is set in the manifest at build-time. Besides those few settings, you'll need to edit the manifest to configure the app package to create a nice installer experience. The Microsoft Store has its own requirements, set in the manifest, when submitting your app.
