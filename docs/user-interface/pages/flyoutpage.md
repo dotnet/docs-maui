@@ -1,14 +1,21 @@
 ---
 title: "FlyoutPage"
 description: "The .NET MAUI FlyoutPage is a page that manages two related pages of information – a flyout page that presents items, and a detail page that presents details about items on the flyout page."
-ms.date: 04/11/2022
+ms.date: 01/06/2023
 ---
 
 # FlyoutPage
 
 :::image type="content" source="media/flyoutpage/pages.png" alt-text=".NET MAUI FlyoutPage." border="false":::
 
-The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.FlyoutPage> is a page that manages two related pages of information – a flyout page that presents items, and a detail page that presents details about items on the flyout page. Selecting an item on the flyout page will navigate to the corresponding detail page.
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.FlyoutPage> is a page that manages two related pages of information – a flyout page that presents items, and a detail page that presents details about items on the flyout page.
+
+A <xref:Microsoft.Maui.Controls.FlyoutPage> has two layout behaviors:
+
+- In a popover layout, the detail page covers or partially covers the flyout page. Selecting an item on the flyout page will navigate to the corresponding detail page. Apps running on phones always use this layout behavior.
+- In a split layout, the flyout page is displayed on the left and the detail page is on the right. Apps running on tablets or the desktop can use this layout behavior, with Windows using it by default.
+
+For more information about layout behavior, see [Layout behavior](#layout-behavior).
 
 <xref:Microsoft.Maui.Controls.FlyoutPage> defines the following properties:
 
@@ -140,15 +147,16 @@ public partial class MainPage : FlyoutPage
         if (item != null)
         {            
             Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargetType));
-            IsPresented = false;
+            if (!((IFlyoutPageController)this).ShouldShowSplitMode)
+                IsPresented = false;
         }
     }
 }
 ```
 
-In this example, the `OnSelectionChanged` event handler retrieves the `CurrentSelection` from the <xref:Microsoft.Maui.Controls.CollectionView> object and sets the detail page to an instance of the page type stored in the `TargetType` property of the `FlyoutPageItem`. The detail page is displayed by setting the `FlyoutPage.IsPresented` property to `false`.
+In this example, the `OnSelectionChanged` event handler retrieves the `CurrentSelection` from the <xref:Microsoft.Maui.Controls.CollectionView> object and sets the detail page to an instance of the page type stored in the `TargetType` property of the `FlyoutPageItem`. The detail page is displayed by setting the `FlyoutPage.IsPresented` property to `false`, provided that the `FlyoutPage` isn't using a split layout. When the `FlyoutPage` is using a split layout, the flyout and detail pages are both displayed and so it's not necessary to set the `FlyoutPage.IsPresented` property.
 
-## Control detail page layout behavior
+## Layout behavior
 
 How the <xref:Microsoft.Maui.Controls.FlyoutPage> displays the flyout and detail pages depends on the form factor of the device the app is running on, the orientation of the device, and the value of the `FlyoutLayoutBehavior` property. This property should be set to a value of the `FlyoutLayoutBehavior` enumeration, which defines the following members:
 
