@@ -203,7 +203,7 @@ SERVICE_NAME: intelhaxm
     WAIT_HINT          : 0x0
 ```
 
-If `STATE` isn't set to `RUNNING`, see [How to Use the Intel Hardware Accelerated Execution Manager](https://software.intel.com/android/articles/how-to-use-the-intel-hardware-accelerated-execution-manager-intel-haxm-android-emulator) to resolve the problem.
+For information about troubleshooting HAXM, see [Troubleshooting](https://github.com/intel/haxm/wiki/Installation-Instructions-on-Windows#troubleshooting) in the HAXM wiki.
 
 #### HAXM virtualization conflicts
 
