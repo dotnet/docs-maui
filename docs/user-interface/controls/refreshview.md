@@ -21,7 +21,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Refresh
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 <!-- > [!NOTE]
-> On Windows, the pull direction of a <xref:Microsoft.Maui.Controls.RefreshView> can be set with a platform-specific. For more information, see [RefreshView Pull Direction](~/platform-integration/platform-specifics/windows/refreshview-pulldirection.md). -->
+> On Windows, the pull direction of a <xref:Microsoft.Maui.Controls.RefreshView> can be set with a platform-specific. For more information, see [RefreshView pull direction on Windows](~/windows/platform-specifics/refreshview-pulldirection.md). -->
 
 ## Create a RefreshView
 
