@@ -1,7 +1,7 @@
 ---
 title: "AbsoluteLayout"
 description: "The .NET MAUI AbsoluteLayout is used to position and size elements using explicit values, or values proportional to the size of the layout."
-ms.date: 01/14/2022
+ms.date: 01/09/2023
 ---
 
 # AbsoluteLayout
@@ -117,7 +117,40 @@ public class StylishHeaderDemoPage : ContentPage
 }
 ```
 
-In this example, the position and size of each <xref:Microsoft.Maui.Controls.BoxView> is defined using a `Rect` object. The position of the <xref:Microsoft.Maui.Controls.Label> is defined using a `Point` object.
+In this example, the position and size of each <xref:Microsoft.Maui.Controls.BoxView> is defined using a `Rect` object. The position of the <xref:Microsoft.Maui.Controls.Label> is defined using a `Point` object. The C# example uses the following `Add` extension methods to add children to the `AbsoluteLayout`:
+
+```csharp
+using Microsoft.Maui.Layouts;
+
+namespace Microsoft.Maui.Controls
+{
+    public static class AbsoluteLayoutExtensions
+    {
+        public static void Add(this AbsoluteLayout absoluteLayout, IView view, Rect bounds, AbsoluteLayoutFlags flags = AbsoluteLayoutFlags.None)
+        {
+            if (view == null)
+                throw new ArgumentNullException(nameof(view));
+            if (bounds.IsEmpty)
+                throw new ArgumentNullException(nameof(bounds));
+
+            absoluteLayout.Add(view);
+            absoluteLayout.SetLayoutBounds(view, bounds);
+            absoluteLayout.SetLayoutFlags(view, flags);
+        }
+
+        public static void Add(this AbsoluteLayout absoluteLayout, IView view, Point position)
+        {
+            if (view == null)
+                throw new ArgumentNullException(nameof(view));
+            if (position.IsEmpty)
+                throw new ArgumentNullException(nameof(position));
+
+            absoluteLayout.Add(view);
+            absoluteLayout.SetLayoutBounds(view, new Rect(position.X, position.Y, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+        }
+    }
+}
+```
 
 In C#, it's also possible to set the position and size of a child of an <xref:Microsoft.Maui.Controls.AbsoluteLayout> after it has been added to the layout, using the `AbsoluteLayout.SetLayoutBounds` method. The first argument to this method is the child, and the second is a `Rect` object.
 
