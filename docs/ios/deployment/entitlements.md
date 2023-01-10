@@ -40,7 +40,7 @@ When a .NET MAUI iOS app uses entitlements, the *Entitlements.plist* file must b
 
 | Entitlement | Description | Key | Type | Example |
 | ----------- | ----------- | --- | ---- | ------- |
-| Access WiFi information | This entitlement enables your app to obtain information about the currently connected WiFi network. | `com.apple.developer.networking.wifi-info` | Boolean | `<key>com.apple.developer.networking.wifi-info</key>\<true/>`  |
+| Access WiFi information | This entitlement enables your app to obtain information about the currently connected WiFi network. | `com.apple.developer.networking.wifi-info` | Boolean | `<key>com.apple.developer.networking.wifi-info</key>`\`<true/>`  |
 | App Attest | With App Attest, you can generate a special cryptographic key on your device and use it to validate the integrity of your app before your server provides access to sensitive data. |   |   |   |
 | App groups | App groups enables your app to access group containers shared among multiple related apps as well as perform inter-process communication between the apps. |   |   |   |
 | Apple Pay  | Apple Pay enables users to easily and securely pay for physical good and services such as groceries, clothing, tickets, and reservations using payment information stored on their device. |   |   |   |
