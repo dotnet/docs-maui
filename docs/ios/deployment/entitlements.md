@@ -534,9 +534,3 @@ The entitlement is defined using the `com.apple.external-accessory.wireless-conf
 ```
 
 For more information, see [Wireless Accessory Configuration Entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_external-accessory_wireless-configuration?language=objc) on developer.apple.com.
-
----
-
-https://learn.microsoft.com/en-gb/dotnet/maui/ios/deployment/entitlements?view=net-maui-7.0
-https://learn.microsoft.com/en-us/xamarin/ios/deploy-test/provisioning/entitlements?tabs=macos
-https://developer.apple.com/documentation/bundleresources/entitlements?language=objc
