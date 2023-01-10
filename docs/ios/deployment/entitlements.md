@@ -51,7 +51,7 @@ The entitlement is defined using the `com.apple.developer.networking.wifi-info` 
 <true/>
 ```
 
-For more information, see [Access WiFi Information Entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_networking_wifi-info?language=objc).
+For more information, see [Access WiFi Information Entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_networking_wifi-info?language=objc) on developer.apple.com.
 
 ### App Attest
 
@@ -90,7 +90,7 @@ The entitlement is defined using the `com.apple.developer.in-app-payments` key, 
 ```xml
 <key>com.apple.developer.in-app-payments</key>
 <array>
-  <string>merchant.myexample.com</string>
+  <string>merchant.your.merchantid</string>
 </array>
 ```
 
@@ -295,6 +295,8 @@ The entitlement is defined using the `com.apple.developer.icloud-container-devel
 <key>com.apple.developer.ubiquity-kvstore-identifier</key>
 <string>$(AppIdentifierPrefix)$(CFBundleIdentifier)</string>
 ```
+
+The `$(AppIdentifierPrefix)` and `$(CFBundleIdentifier)` placeholders will be substituted for the correct values at build time.
 
 For more information, see [iCloud Container Identifiers Entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_icloud-container-identifiers?language=objc) on developer.apple.com.
 
@@ -502,6 +504,8 @@ The entitlement is defined using the `com.apple.developer.pass-type-identifiers`
   <string>$(TeamIdentifierPrefix)*</string>
 </array>
 ```
+
+This example will enable your app to allow all pass types. To restrict your app and only allow a set of team pass types, set the string value to `$(TeamIdentifierPrefix)pass.$(CFBundleIdentifier)` where `pass.$(CFBundleIdentifier)` is the Pass ID.
 
 For more information, see [Pass Type IDs Entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_pass-type-identifiers?language=objc) on developer.apple.com.
 
