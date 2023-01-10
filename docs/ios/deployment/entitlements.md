@@ -60,7 +60,8 @@ With the App Attest entitlement, you can generate a special cryptographic key on
 The entitlement is defined using the `com.apple.developer.devicecheck.appattest-environment` key, of type `String`:
 
 ```xml
-
+<key>com.apple.developer.devicecheck.appattest-environment</key>
+<string>development</string>
 ```
 
 For more information, see [App Attest Environment](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_devicecheck_appattest-environment?language=objc) on developer.apple.com.
@@ -72,7 +73,10 @@ The app groups entitlement enables your app to access group containers shared am
 The entitlement is defined using the `com.apple.security.application-groups` key, of type `Array` of `String`:
 
 ```xml
-
+<key>com.apple.security.application-groups</key>
+<array>
+  <string>group.MyAppGroups</string>
+</array>
 ```
 
 For more information, see [App Groups Entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_application-groups?language=objc) on developer.apple.com.
@@ -81,11 +85,16 @@ For more information, see [App Groups Entitlement](https://developer.apple.com/d
 
 The Apple Pay entitlement enables users to easily and securely pay for physical good and services such as groceries, clothing, tickets, and reservations using payment information stored on their device.
 
-The entitlement is defined using the `` key, of type ``:
+The entitlement is defined using the `com.apple.developer.in-app-payments` key, of type `Array` of `String`:
 
 ```xml
-
+<key>com.apple.developer.in-app-payments</key>
+<array>
+  <string>merchant.myexample.com</string>
+</array>
 ```
+
+For more information, see [Merchant IDs Entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_in-app-payments?language=objc) on developer.apple.com.
 
 ### Associated domains
 
@@ -94,7 +103,10 @@ The associated domains entitlement enables your app to be associated with specif
 The entitlement is defined using the `com.apple.developer.associated-domains` key, of type `Array` of `String`:
 
 ```xml
-
+<key>com.apple.developer.associated-domains</key>
+<array>
+  <string>webcredentials:example.com</string>
+</array>
 ```
 
 For more information, see [Associated Domains Entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_associated-domains?language=objc) on developer.apple.com.
@@ -119,7 +131,8 @@ The ClassKit entitlement enables your app to privately and securely share studen
 The entitlement is defined using the `com.apple.developer.ClassKit-environment` key, of type `String`:
 
 ```xml
-
+<key>com.apple.developer.ClassKit-environment</key>
+<string>development</string>
 ```
 
 For more information, see [ClassKit Environment Entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_classkit-environment?language=objc) on developer.apple.com.
@@ -128,21 +141,26 @@ For more information, see [ClassKit Environment Entitlement](https://developer.a
 
 The communicates with drivers entitlement enables communication between an app and DriverKit drivers.
 
-The entitlement is defined using the `` key, of type ``:
+The entitlement is defined using the `com.apple.developer.driverkit.communicates-with-drivers` key, of type `Boolean`:
 
 ```xml
 
 ```
+
+For more information, see [Communicates with Drivers](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_driverkit_communicates-with-drivers?language=objc) on developer.apple.com.
 
 ### Communication notifications
 
 The communication notifications entitlement enables an app to send communication notifications from a person to a person or multiple people.
 
-The entitlement is defined using the `` key, of type ``:
+The entitlement is defined using the `com.apple.developer.usernotifications.communication` key, of type `Boolean`:
 
 ```xml
-
+<key>com.apple.developer.usernotifications.communication</key>
+<true/>
 ```
+
+For more information, see [Request Notification Service Entitlement](https://developer.apple.com/contact/request/notification-service) on developer.apple.com.
 
 ### Data protection
 
@@ -151,7 +169,8 @@ The data protection entitlement enables your app to use the built-in encryption 
 The entitlement is defined using the `com.apple.developer.default-data-protection` key, of type `String`:
 
 ```xml
-
+<key>com.apple.developer.default-data-protection</key>
+<string>NSFileProtectionComplete</string>
 ```
 
 For more information, see [Data Protection Entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_default-data-protection?language=objc) on developer.apple.com.
@@ -199,11 +218,16 @@ For more information, see [FileProvider Testing Mode Entitlement](https://develo
 
 The fonts entitlement enables your app, with user permission, to install and use custom fonts.
 
-The entitlement is defined using the `` key, of type ``:
+The entitlement is defined using the `com.apple.developer.user-fonts` key, of type `Array` of `String`:
 
 ```xml
-
+<key>com.apple.developer.user-fonts</key>
+<array>
+  <string>system-installation</string>
+</array>
 ```
+
+For more information, see [Configuring custom fonts](https://developer.apple.com/documentation/xcode/configuring-custom-fonts?changes=_7) on developer.apple.com.
 
 ### Group activities
 
@@ -226,7 +250,7 @@ The entitlement is defined using the `com.apple.developer.healthkit` key, of typ
 
 ```xml
 <key>com.apple.developer.healthkit</key>
-<array/>
+<true/>
 ```
 
 For more information, see [HealthKit Entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_healthkit?language=objc) on developer.apple.com.
@@ -261,21 +285,20 @@ For more information, see [Hotspot Configuration Entitlement](https://developer.
 
 The iCloud entitlement enables your app to store data in the cloud, making it possible for users to share their data across multiple devices.
 
-The entitlement is defined using the `` key, of type ``:
+The entitlement is defined using the `com.apple.developer.icloud-container-development-container-identifiers` key, of type `Array` of `String`, and then additional keys that represent the container identifier:
 
 ```xml
-
+<key>com.apple.developer.icloud-container-identifiers</key>
+<array>
+  <string>iCloud.com.companyname.test</string>
+</array>
+<key>com.apple.developer.ubiquity-kvstore-identifier</key>
+<string>$(AppIdentifierPrefix)$(CFBundleIdentifier)</string>
 ```
 
-### In-App purchases
+For more information, see [iCloud Container Identifiers Entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_icloud-container-identifiers?language=objc) on developer.apple.com.
 
-The In-App purchases entitlement enables you to sell items from within your app.
-
-The entitlement is defined using the `` key, of type ``:
-
-```xml
-
-```
+<!-- Note: In-App purchases only present in VSMac and not producing any XML -->
 
 ### Increased memory limit
 
@@ -306,14 +329,17 @@ For more information, see [Inter-App Audio Entitlement](https://developer.apple.
 > [!IMPORTANT]
 > This entitlement is deprecated in iOS 13 and is unavailable when running iPads apps in macOS.
 
-### Keychain sharing
+### Keychain
 
-The Keychain sharing entitlement enables multiple apps written by the same team to share passwords.
+The Keychain entitlement enables multiple apps written by the same team to share passwords.
 
 The entitlement is defined using the `keychain-access-groups` key, of type `Array` of `String`:
 
 ```xml
-
+<key>keychain-access-groups</key>
+<array>
+  <string>$(AppIdentifierPrefix)com.companyname.test</string>
+</array>
 ```
 
 For more information, see [Keychain Access Groups entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/keychain-access-groups?language=objc) on developer.apple.com.
@@ -322,10 +348,11 @@ For more information, see [Keychain Access Groups entitlement](https://developer
 
 The Mobile Development Management (MDM) managed associated domains entitlement enables MDM to supplement the Associated Domains that are included with your app with values such as server names that are unique for an environment.
 
-The entitlement is defined using the `` key, of type ``:
+The entitlement is defined using the `com.apple.developer.associated-domains.mdm-managed` key, of type `Boolean`:
 
 ```xml
-
+<key>com.apple.developer.associated-domains.mdm-managed</key>
+<true/>
 ```
 
 ### Multipath
@@ -348,7 +375,11 @@ The near field communication tag reader entitlement enables an app to read NFC D
 The entitlement is defined using the `com.apple.developer.nfc.readersession.formats` key, of type `Array` of `String`:
 
 ```xml
-
+<key>com.apple.developer.nfc.readersession.formats</key>
+<array>
+  <string>NDEF</string>
+  <string>TAG</string>
+</array>
 ```
 
 For more information, see [Near Field Communication Tag Reader Session Formats Entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_nfc_readersession_formats?language=objc) on developer.apple.com.
@@ -360,7 +391,10 @@ The network extensions entitlement enables you to create app extensions that ext
 The entitlement is defined using the `com.apple.developer.networking.networkextension` key, of type `Array` of `String`:
 
 ```xml
-
+<key>com.apple.developer.networking.networkextension</key>
+<array>
+  <string>content-filter-provider</string>
+</array>
 ```
 
 For more information, see [Network Extensions Entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_networking_networkextension?language=objc) on developer.apple.com.
@@ -372,7 +406,10 @@ The personal VPN entitlement enables your app to use custom VPN connections.
 The entitlement is defined using the `com.apple.developer.networking.vpn.api` key, of type `Array` of `String`:
 
 ```xml
-
+<key>com.apple.developer.networking.vpn.api</key>
+<array>
+  <string>allow-vpn</string>
+</array>
 ```
 
 For more information, see [Personal VPN Entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_networking_vpn_api?language=objc) on developer.apple.com.
@@ -381,11 +418,14 @@ For more information, see [Personal VPN Entitlement](https://developer.apple.com
 
 The push notifications entitlement enables your app to receive push notifications.
 
-The entitlement is defined using the `` key, of type ``:
+The entitlement is defined using the `aps-environment` key, of type `String`:
 
 ```xml
-
+<key>aps-environment</key>
+<string>development</string>
 ```
+
+For more information, see [APS Environment Entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/aps-environment?language=objc) on developer.apple.com.
 
 ### Push to talk
 
@@ -404,10 +444,11 @@ For more information, see [Push to Talk Entitlement](https://developer.apple.com
 
 The shared with you entitlement enables an app to claim links shared in Messages conversations and for them to be surfaced to it via the Shared with You framework.
 
-The entitlement is defined using the `` key, of type ``:
+The entitlement is defined using the `com.apple.developer.shared-with-you` key, of type `Boolean`:
 
 ```xml
-
+<key>com.apple.developer.shared-with-you</key>
+<true/>
 ```
 
 ### Sign in with Apple
@@ -417,7 +458,10 @@ The sign in with Apple entitlement enables users to authenticate with their Appl
 The entitlement is defined using the `com.apple.developer.applesignin` key, of type `Array` of `String`:
 
 ```xml
-
+<key>com.apple.developer.applesignin</key>
+<array>
+  <string>Default</string>
+</array>
 ```
 
 For more information, see [Sign in with Apple Entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_applesignin?language=objc) on developer.apple.com.
@@ -439,21 +483,27 @@ For more information, see [Siri Entitlement](https://developer.apple.com/documen
 
 The time sensitive notifications entitlement enables an app to handle time sensitive notifications. Time sensitive notifications deliver information that demands immediate attention and directly calls on the individual to take action the moment the notification is received. Time Sensitive alerts are always delivered immediately, are surfaced above other notifications, and are allowed to break through Focus and Do Not Disturb.
 
-The entitlement is defined using the `` key, of type ``:
+The entitlement is defined using the `com.apple.developer.usernotifications.time-sensitive` key, of type `Boolean`:
 
 ```xml
-
+<key>com.apple.developer.usernotifications.time-sensitive</key>
+<true/>
 ```
 
 ### Wallet
 
 The wallet entitlement enables your app to manage passes, tickets, gift cards, and loyalty cards. It supports a variety of bar code formats.
 
-The entitlement is defined using the `` key, of type ``:
+The entitlement is defined using the `com.apple.developer.pass-type-identifiers` key, of type `Array` of `String`:
 
 ```xml
-
+<key>com.apple.developer.pass-type-identifiers</key>
+<array>
+  <string>$(TeamIdentifierPrefix)*</string>
+</array>
 ```
+
+For more information, see [Pass Type IDs Entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_pass-type-identifiers?language=objc) on developer.apple.com.
 
 ### WeatherKit
 
