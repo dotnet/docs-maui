@@ -659,8 +659,10 @@
                   href: ios/deployment/overview.md
                 - name: Provision for app store distribution
                   href: ios/deployment/provision.md
-                - name: Entitlements and capabilities
+                - name: Entitlements
                   href: ios/deployment/entitlements.md
+                - name: Capabilities
+                  href: ios/deployment/capabilities.md
             - name: macOS
               href: macos/deployment/overview.md
             - name: Windows
