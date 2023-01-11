@@ -66,7 +66,7 @@ A .NET MAUI iOS app must be configured to consume the entitlements defined in th
 <!-- markdownlint-enable MD025 -->
 
 1. In **Solution Explorer**, double-click on your .NET MAUI app project to open its XML representation.
-1. Add XML to reference your *Entitlements.plist* file from the `<CodesignEntitlements>` node within a `<PropertyGroup>` that's a child of the `<Project>` node:
+1. Add XML to reference your *Entitlements.plist* file, for iOS builds, from the `<CodesignEntitlements>` node within a `<PropertyGroup>` that's a child of the `<Project>` node:
 
     ```xml
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
@@ -77,12 +77,9 @@ A .NET MAUI iOS app must be configured to consume the entitlements defined in th
     </PropertyGroup>
     ```
 
-This example `<PropertyGroup>` adds a condition check, preventing the settings from being processed unless the condition check passes. The condition check looks for the following items:
+    This `<PropertyGroup>` adds a condition check, preventing the settings from being processed unless the condition check passes. The condition check ensures that the build configuration is set to `Debug`, and that the target framework is set to `net7.0-ios`. If these conditions fail, the settings aren't processed.
 
-1. The build configuration is set to `Debug`.
-1. The target framework is set to `net7.0-ios`.
-
-If these conditions fail, the settings aren't processed.
+    If required, set the `<CodesignProvision>` value to your provisioning profile name and the `<CodesignKey>` value to the name of your distribution certificate.
 
 > [!IMPORTANT]
 > The `<CodesignEntitlements>` node must be set separately for each build configuration for your app.
