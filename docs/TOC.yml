@@ -639,6 +639,10 @@
           href: deployment/index.md
         - name: iOS
           items:
+            - name: Entitlements
+              href: ios/entitlements.md
+            - name: Capabilities
+              href: ios/capabilities.md
             - name: Hot restart
               href: ios/hot-restart.md
             - name: Wireless deployment
@@ -659,10 +663,6 @@
                   href: ios/deployment/overview.md
                 - name: Provision for app store distribution
                   href: ios/deployment/provision.md
-                - name: Entitlements
-                  href: ios/deployment/entitlements.md
-                - name: Capabilities
-                  href: ios/deployment/capabilities.md
             - name: macOS
               href: macos/deployment/overview.md
             - name: Windows
