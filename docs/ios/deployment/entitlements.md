@@ -37,10 +37,9 @@ Entitlements can be configured in Visual Studio by double-clicking the *Entitlem
 <!-- markdownlint-enable MD025 -->
 
 1. In **Solution Explorer**, double-click the **Entitlements.plist** file from the **Platforms > iOS** folder of your .NET MAUI app project to open it in the entitlements editor.
-
 1. In the entitlements editor, select and configure any entitlements required for your app:
 
-:::image type="content" source="media/entitlements/editor-vs.png" alt-text="Visual Studio iOS entitlements editor.":::
+  :::image type="content" source="media/entitlements/editor-vs.png" alt-text="Visual Studio iOS entitlements editor.":::
 
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio for Mac](#tab/vsmac)
@@ -48,11 +47,11 @@ Entitlements can be configured in Visual Studio by double-clicking the *Entitlem
 
 1. In the **Solution Window**, double-click the **Entitlements.plist** file from the **Platforms > iOS** folder of your .NET MAUI app project to open it in the entitlements editor. Then, change from the **Source** view to the **Entitlements** view:
 
-:::image type="content" source="media/entitlements/editor-source-vsmac.png" alt-text="Visual Studio for Mac iOS entitlements editor source view.":::
+  :::image type="content" source="media/entitlements/editor-source-vsmac.png" alt-text="Visual Studio for Mac iOS entitlements editor source view.":::
 
 1. In the entitlements editor, select and configure any entitlements required for your app:
 
-:::image type="content" source="media/entitlements/editor-entitlements-vsmac.png" alt-text="Visual Studio for Mac iOS entitlements editor entitlements view.":::
+  :::image type="content" source="media/entitlements/editor-entitlements-vsmac.png" alt-text="Visual Studio for Mac iOS entitlements editor entitlements view.":::
 
 1. Save the changes to your *Entitlements.plist* file.
 
@@ -69,14 +68,14 @@ A .NET MAUI iOS app must be configured to consume the entitlements defined in th
 1. In **Solution Explorer**, double-click on your .NET MAUI app project to open its XML representation.
 1. Add XML to reference your *Entitlements.plist* file from the `<CodesignEntitlements>` node within a `<PropertyGroup>` that's a child of the `<Project>` node:
 
-```xml
-<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
-  <CreatePackage>false</CreatePackage>
-  <CodesignProvision>Automatic</CodesignProvision>
-  <CodesignKey>iPhone Developer</CodesignKey>
-  <CodesignEntitlements>Platforms\iOS\Entitlements.plist</CodesignEntitlements>
-</PropertyGroup>
-```  
+  ```xml
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
+    <CreatePackage>false</CreatePackage>
+    <CodesignProvision>Automatic</CodesignProvision>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignEntitlements>Platforms\iOS\Entitlements.plist</CodesignEntitlements>
+  </PropertyGroup>
+  ```
 
 This example `<PropertyGroup>` adds a condition check, preventing the settings from being processed unless the condition check passes. The condition check looks for the following items:
 
@@ -95,12 +94,12 @@ If these conditions fail, the settings aren't processed.
 1. In the **Solution Window**, right-click on your .NET MAUI app project and select **Properties**.
 1. In the **Project Properties** window, select the **Build > iOS > Bundle Signing** tab and click the **...** button next to the **Custom Entitlements** field:
 
-:::image type="content" source="media/entitlements/set-custom-entitlements-vsmac.png" alt-text="Visual Studio for Mac bundle signing properties.":::
+  :::image type="content" source="media/entitlements/set-custom-entitlements-vsmac.png" alt-text="Visual Studio for Mac bundle signing properties.":::
 
 1. In the dialog, navigate to the folder containing your *Entitlements.plist* file, select the file, and click the **Open** button.
 1. In the **Project Properties** window, the **Custom Entitlements** field will be populated with your entitlements file:
 
-:::image type="content" source="media/entitlements/custom-entitlements-set-vsmac.png" alt-text="Visual Studio for Mac custom entitlements field set.":::
+  :::image type="content" source="media/entitlements/custom-entitlements-set-vsmac.png" alt-text="Visual Studio for Mac custom entitlements field set.":::
 
 1. In the **Project Properties** window, click the **OK** button to close the window.
 
