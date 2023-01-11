@@ -1,16 +1,16 @@
 ---
-title: "Entitlements and capabilities"
-description: "Learn how to use entitlements and capabilities in a .NET MAUI iOS app to request access to specific system resources or user data."
-ms.date: 05/09/2022
+title: "Entitlements"
+description: "Learn how to use entitlements in a .NET MAUI iOS app to request access to specific system resources or user data."
+ms.date: 01/10/2022
 ---
 
-# Entitlements and capabilities
+# Entitlements
 
-In iOS, apps run in a sandbox that provides a set of rules that limit access between the app and system resources or user data. *Entitlements* are used to request the expansion of the sandbox to give your app additional capabilities. Any entitlements used by your app must be specified in the app's entitlements file. For more information about entitlements, see [Entitlements](https://developer.apple.com/documentation/bundleresources/entitlements).
+In iOS, apps run in a sandbox that provides a set of rules that limit access between the app and system resources or user data. *Entitlements* are used to request the expansion of the sandbox to give your app additional capabilities, such as integration with Siri. Any entitlements used by your app must be specified in the app's entitlements file. For more information about entitlements, see [Entitlements](https://developer.apple.com/documentation/bundleresources/entitlements).
 
-Apple provides *capabilities*, also known as *app services*, as a means of extending functionality and widening the scope of what iOS apps can do. Capabilities allow you to add a deeper integration with platform features to your app, such as integration with Siri. For more information about capabilities, see [Capabilities](https://developer.apple.com/documentation/xcode/capabilities).
+To extend the capabilities of your app, an entitlement must be provided in your app's *Entitlements.plist* file. Entitlements are a key/value pair, and generally only one entitlement is required per capability.
 
-To extend the capabilities of your app, an entitlement must be provided in your app's *Entitlements.plist* file. Entitlements are a key/value pair, and generally only one entitlement is required per capability. In addition to specifying entitlements, the *Entitlements.plist* file is used to sign the app.
+In addition to specifying entitlements, the *Entitlements.plist* file is used to code sign the app. When code signing your app, the entitlements file is combined with information from your Apple developer account, and other project information to apply a final set of entitlements to your app.
 
 > [!IMPORTANT]
 > An *Entitlements.plist* file isn't linked to an Apple Developer Account. Therefore, any entitlements used by an app must also be specified when creating a provisioning profile for an app.
@@ -30,11 +30,84 @@ To add a new entitlements file to your .NET Multi-platform App UI (.NET MAUI) ap
 
 ## Set entitlements
 
-Entitlements can be configured in Visual Studio by double-clicking the *Entitlements.plist* file to open it in the iOS Entitlements editor:
+Entitlements can be configured in Visual Studio by double-clicking the *Entitlements.plist* file to open it in the iOS Entitlements editor.
 
-:::image type="content" source="media/entitlements/editor.png" alt-text="Visual Studio iOS entitlements editors.":::
+<!-- markdownlint-disable MD025 -->
+# [Visual Studio](#tab/vs)
+<!-- markdownlint-enable MD025 -->
 
-When a .NET MAUI iOS app uses entitlements, the *Entitlements.plist* file must be referenced from the `<CodesignEntitlements>` node within a `<PropertyGroup>`. For more information, see [Add code signing data to your app project](overview.md#add-code-signing-data-to-your-app-project).
+1. In **Solution Explorer**, double-click the **Entitlements.plist** file from the **Platforms > iOS** folder of your .NET MAUI app project to open it in the entitlements editor.
+
+1. In the entitlements editor, select and configure any entitlements required for your app:
+
+:::image type="content" source="media/entitlements/editor-vs.png" alt-text="Visual Studio iOS entitlements editor.":::
+
+<!-- markdownlint-disable MD025 -->
+# [Visual Studio for Mac](#tab/vsmac)
+<!-- markdownlint-enable MD025 -->
+
+1. In the **Solution Window**, double-click the **Entitlements.plist** file from the **Platforms > iOS** folder of your .NET MAUI app project to open it in the entitlements editor. Then, change from the **Source** view to the **Entitlements** view:
+
+:::image type="content" source="media/entitlements/editor-source-vsmac.png" alt-text="Visual Studio for Mac iOS entitlements editor source view.":::
+
+1. In the entitlements editor, select and configure any entitlements required for your app:
+
+:::image type="content" source="media/entitlements/editor-entitlements-vsmac.png" alt-text="Visual Studio for Mac iOS entitlements editor entitlements view.":::
+
+1. Save the changes to your *Entitlements.plist* file.
+
+---
+
+## Consume entitlements
+
+A .NET MAUI iOS app must be configured to consume the entitlements defined in the *Entitlements.plist* file.
+
+<!-- markdownlint-disable MD025 -->
+# [Visual Studio](#tab/vs)
+<!-- markdownlint-enable MD025 -->
+
+1. In **Solution Explorer**, double-click on your .NET MAUI app project to open its XML representation.
+1. Add XML to reference your *Entitlements.plist* file from the `<CodesignEntitlements>` node within a `<PropertyGroup>` that's a child of the `<Project>` node:
+
+```xml
+<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
+  <CreatePackage>false</CreatePackage>
+  <CodesignProvision>Automatic</CodesignProvision>
+  <CodesignKey>iPhone Developer</CodesignKey>
+  <CodesignEntitlements>Platforms\iOS\Entitlements.plist</CodesignEntitlements>
+</PropertyGroup>
+```  
+
+This example `<PropertyGroup>` adds a condition check, preventing the settings from being processed unless the condition check passes. The condition check looks for the following items:
+
+1. The build configuration is set to `Debug`.
+1. The target framework is set to `net7.0-ios`.
+
+If these conditions fail, the settings aren't processed.
+
+> [!IMPORTANT]
+> The `<CodesignEntitlements>` node must be set separately for each build configuration for your app.
+
+<!-- markdownlint-disable MD025 -->
+# [Visual Studio for Mac](#tab/vsmac)
+<!-- markdownlint-enable MD025 -->
+
+1. In the **Solution Window**, right-click on your .NET MAUI app project and select **Properties**.
+1. In the **Project Properties** window, select the **Build > iOS > Bundle Signing** tab and click the **...** button next to the **Custom Entitlements** field:
+
+:::image type="content" source="media/entitlements/set-custom-entitlements-vsmac.png" alt-text="Visual Studio for Mac bundle signing properties.":::
+
+1. In the dialog, navigate to the folder containing your *Entitlements.plist* file, select the file, and click the **Open** button.
+1. In the **Project Properties** window, the **Custom Entitlements** field will be populated with your entitlements file:
+
+:::image type="content" source="media/entitlements/custom-entitlements-set-vsmac.png" alt-text="Visual Studio for Mac custom entitlements field set.":::
+
+1. In the **Project Properties** window, click the **OK** button to close the window.
+
+> [!IMPORTANT]
+> The custom entitlements field must be set separately for each build configuration for your app.
+
+---
 
 ## Key reference
 
