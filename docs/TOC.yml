@@ -639,10 +639,12 @@
           href: deployment/index.md
         - name: iOS
           items:
-            - name: Entitlements
-              href: ios/entitlements.md
-            - name: Capabilities
-              href: ios/capabilities.md
+            - name: Code signing and provisioning
+              items:
+                - name: Entitlements
+                  href: ios/entitlements.md
+                - name: Capabilities
+                  href: ios/capabilities.md
             - name: Hot restart
               href: ios/hot-restart.md
             - name: Wireless deployment
