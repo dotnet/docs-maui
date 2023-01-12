@@ -65,24 +65,17 @@ A .NET MAUI iOS app must be configured to consume the entitlements defined in th
 # [Visual Studio](#tab/vs)
 <!-- markdownlint-enable MD025 -->
 
-1. In **Solution Explorer**, double-click on your .NET MAUI app project to open its XML representation.
-1. Add XML to reference your *Entitlements.plist* file, for iOS builds, from the `<CodesignEntitlements>` node within a `<PropertyGroup>` that's a child of the `<Project>` node:
+1. In **Solution Explorer**, right-click on your .NET MAUI app project and select **Properties**. Then, navigate to the **iOS > Bundle Signing** tab.
+1. In the **Bundle Signing** settings, click the **Browse...** button for the **Custom Entitlements** field.
+1. In the **Custom Entitlements** dialog, navigate to the folder containing your *Entitlements.plist* file, select the file, and click the **Open** button.
+1. In the **Project Properties** window, the **Custom Entitlements** field will be populated with your entitlements file:
 
-    ```xml
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
-      <CreatePackage>false</CreatePackage>
-      <CodesignProvision>Automatic</CodesignProvision>
-      <CodesignKey>iPhone Developer</CodesignKey>
-      <CodesignEntitlements>Platforms\iOS\Entitlements.plist</CodesignEntitlements>
-    </PropertyGroup>
-    ```
+    :::image type="content" source="media/entitlements/custom-entitlements-set-vs.png" alt-text="Visual Studio custom entitlements field set.":::
 
-    This `<PropertyGroup>` adds a condition check, preventing the settings from being processed unless the condition check passes. The condition check ensures that the build configuration is set to `Debug`, and that the target framework is set to `net7.0-ios`. If these conditions fail, the settings aren't processed.
+1. Close the **Project Properties** window.
 
-    If required, set the `<CodesignProvision>` value to your provisioning profile name and the `<CodesignKey>` value to the name of your distribution certificate.
-
-> [!IMPORTANT]
-> The `<CodesignEntitlements>` node must be set separately for each build configuration for your app.
+> [!NOTE]
+> Visual Studio will set the custom entitlements field for both debug and release builds.
 
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio for Mac](#tab/vsmac)

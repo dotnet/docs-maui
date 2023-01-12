@@ -641,10 +641,10 @@
           items:
             - name: Code signing and provisioning
               items:
+                - name: Capabilities
+                  href: ios/capabilities.md                
                 - name: Entitlements
                   href: ios/entitlements.md
-                - name: Capabilities
-                  href: ios/capabilities.md
             - name: Hot restart
               href: ios/hot-restart.md
             - name: Wireless deployment
