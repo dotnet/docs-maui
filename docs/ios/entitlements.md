@@ -70,7 +70,7 @@ A .NET MAUI iOS app must be configured to consume the entitlements defined in th
 1. In the **Custom Entitlements** dialog, navigate to the folder containing your *Entitlements.plist* file, select the file, and click the **Open** button.
 1. In the **Project Properties** window, the **Custom Entitlements** field will be populated with your entitlements file:
 
-    :::image type="content" source="media/entitlements/custom-entitlements-set-vs.png" alt-text="Visual Studio custom entitlements field set.":::
+    :::image type="content" source="media/entitlements/custom-entitlements-vs.png" alt-text="Visual Studio custom entitlements field set.":::
 
 1. Close the **Project Properties** window.
 
