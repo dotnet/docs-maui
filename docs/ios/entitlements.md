@@ -13,7 +13,7 @@ To extend the capabilities of your app, an entitlement must be provided in your 
 In addition to specifying entitlements, the *Entitlements.plist* file is used to code sign the app. When code signing your app, the entitlements file is combined with information from your Apple developer account, and other project information to apply a final set of entitlements to your app.
 
 > [!IMPORTANT]
-> An *Entitlements.plist* file isn't linked to an Apple Developer Account. Therefore, any entitlements used by an app must also be specified when creating a provisioning profile for an app.
+> An *Entitlements.plist* file isn't linked to an Apple Developer Account. Therefore, any entitlements used by an app must also be specified when creating a provisioning profile for an app. For more information, see [Capabilities](capabilities.md).
 
 ## Add an Entitlements.plist file
 
@@ -36,7 +36,7 @@ Entitlements can be configured in Visual Studio by double-clicking the *Entitlem
 # [Visual Studio](#tab/vs)
 <!-- markdownlint-enable MD025 -->
 
-1. In **Solution Explorer**, double-click the **Entitlements.plist** file from the **Platforms > iOS** folder of your .NET MAUI app project to open it in the entitlements editor.
+1. In **Solution Explorer**, double-click the *Entitlements.plist* file from the *Platforms > iOS* folder of your .NET MAUI app project to open it in the entitlements editor.
 1. In the entitlements editor, select and configure any entitlements required for your app:
 
     :::image type="content" source="media/entitlements/editor-vs.png" alt-text="Visual Studio iOS entitlements editor.":::
@@ -45,7 +45,7 @@ Entitlements can be configured in Visual Studio by double-clicking the *Entitlem
 # [Visual Studio for Mac](#tab/vsmac)
 <!-- markdownlint-enable MD025 -->
 
-1. In the **Solution Window**, double-click the **Entitlements.plist** file from the **Platforms > iOS** folder of your .NET MAUI app project to open it in the entitlements editor. Then, change from the **Source** view to the **Entitlements** view:
+1. In the **Solution Window**, double-click the *Entitlements.plist* file from the *Platforms > iOS* folder of your .NET MAUI app project to open it in the entitlements editor. Then, change from the **Source** view to the **Entitlements** view:
 
     :::image type="content" source="media/entitlements/editor-source-vsmac.png" alt-text="Visual Studio for Mac iOS entitlements editor source view.":::
 
