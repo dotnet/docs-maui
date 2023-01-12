@@ -68,11 +68,11 @@ A .NET MAUI iOS app must be configured to consume the entitlements defined in th
 1. In **Solution Explorer**, right-click on your .NET MAUI app project and select **Properties**. Then, navigate to the **iOS > Bundle Signing** tab.
 1. In the **Bundle Signing** settings, click the **Browse...** button for the **Custom Entitlements** field.
 1. In the **Custom Entitlements** dialog, navigate to the folder containing your *Entitlements.plist* file, select the file, and click the **Open** button.
-1. In the **Project Properties** window, the **Custom Entitlements** field will be populated with your entitlements file:
+1. In the project properties, the **Custom Entitlements** field will be populated with your entitlements file:
 
     :::image type="content" source="media/entitlements/custom-entitlements-vs.png" alt-text="Visual Studio custom entitlements field set.":::
 
-1. Close the **Project Properties** window.
+1. Close the project properties.
 
 > [!NOTE]
 > Visual Studio will set the custom entitlements field for both debug and release builds.
