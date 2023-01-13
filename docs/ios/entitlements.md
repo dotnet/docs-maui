@@ -1,23 +1,23 @@
 ---
 title: "Entitlements"
-description: "Learn how to use entitlements in a .NET MAUI iOS app to request access to specific system resources or user data."
-ms.date: 01/10/2022
+description: "Learn how to add entitlements to your .NET MAUI iOS app, to request access to specific system resources or user data."
+ms.date: 01/13/2022
 ---
 
 # Entitlements
 
-In iOS, apps run in a sandbox that provides a set of rules that limit access between the app and system resources or user data. *Entitlements* are used to request the expansion of the sandbox to give your app additional capabilities, such as integration with Siri. Any entitlements used by your app must be specified in the app's entitlements file. For more information about entitlements, see [Entitlements](https://developer.apple.com/documentation/bundleresources/entitlements) on developer.apple.com.
+On iOS, .NET Multi-platform App UI (.NET MAUI) apps run in a sandbox that provides a set of rules that limit access between the app and system resources or user data. *Entitlements* are used to request the expansion of the sandbox to give your app additional capabilities, such as integration with Siri. Any entitlements used by your app must be specified in the app's entitlements file. For more information about entitlements, see [Entitlements](https://developer.apple.com/documentation/bundleresources/entitlements) on developer.apple.com.
 
 To extend the capabilities of your app, an entitlement must be provided in your app's *Entitlements.plist* file. Entitlements are a key/value pair, and generally only one entitlement is required per capability.
 
 In addition to specifying entitlements, the *Entitlements.plist* file is used to code sign the app. When code signing your app, the entitlements file is combined with information from your Apple developer account, and other project information to apply a final set of entitlements to your app.
 
 > [!IMPORTANT]
-> An *Entitlements.plist* file isn't linked to an Apple Developer Account. Therefore, any entitlements used by an app must also be specified when creating a provisioning profile for an app. For more information, see [Capabilities](capabilities.md).
+> An *Entitlements.plist* file isn't linked to an Apple Developer Account. Therefore, any entitlements used by an app must also be specified as capabilities when creating a provisioning profile for your app. For more information, see [Capabilities](capabilities.md).
 
 ## Add an Entitlements.plist file
 
-To add a new entitlements file to your .NET Multi-platform App UI (.NET MAUI) app project, add a new XML file named *Entitlements.plist* to the *Platforms\\iOS\\* folder of your app project. Then add the following XML to the file:
+To add a new entitlements file to your .NET MAUI app project, add a new XML file named *Entitlements.plist* to the *Platforms\\iOS* folder of your app project. Then add the following XML to the file:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -30,16 +30,18 @@ To add a new entitlements file to your .NET Multi-platform App UI (.NET MAUI) ap
 
 ## Set entitlements
 
-Entitlements can be configured in Visual Studio by double-clicking the *Entitlements.plist* file to open it in the iOS Entitlements editor.
+Entitlements can be configured in Visual Studio by double-clicking the *Entitlements.plist* file to open it in the iOS entitlements editor.
 
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio](#tab/vs)
 <!-- markdownlint-enable MD025 -->
 
 1. In **Solution Explorer**, double-click the *Entitlements.plist* file from the *Platforms > iOS* folder of your .NET MAUI app project to open it in the entitlements editor.
-1. In the entitlements editor, select and configure any entitlements required for your app:
+1. In the entitlements editor, select and configure any entitlements required by your app:
 
     :::image type="content" source="media/entitlements/editor-vs.png" alt-text="Visual Studio iOS entitlements editor.":::
+
+1. Save the changes to your *Entitlements.plist* file to add the entitlement key/value pairs to the file.
 
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio for Mac](#tab/vsmac)
@@ -53,7 +55,7 @@ Entitlements can be configured in Visual Studio by double-clicking the *Entitlem
 
     :::image type="content" source="media/entitlements/editor-entitlements-vsmac.png" alt-text="Visual Studio for Mac iOS entitlements editor entitlements view.":::
 
-1. Save the changes to your *Entitlements.plist* file.
+1. Save the changes to your *Entitlements.plist* file to add the entitlement key/value pairs to the file.
 
 ---
 
@@ -98,9 +100,11 @@ A .NET MAUI iOS app must be configured to consume the entitlements defined in th
 
 ---
 
+When automatic provisioning is enabled, a subset of entitlements will also be added to the provisioning profile for your app. For more information, see [Add capabilities with Visual Studio](~/ios/capabilities.md#add-capabilities-with-visual-studio).
+
 ## Key reference
 
-Entitlement keys can be added via the Source panel of the Entitlements.plist editor. The required keys will normally be added when using the Entitlements.plist editor but are listed below for reference.
+The entitlement key/value pairs are listed below for reference. In Visual Studio they can be added by editing the *Entitlements.plist* file as an XML file. In Visual Studio for Mac they can be added via the **Source** view of the entitlements editor.
 
 ### Access WiFi information
 
@@ -117,7 +121,7 @@ For more information, see [Access WiFi Information Entitlement](https://develope
 
 ### App Attest
 
-With the App Attest entitlement, you can generate a special cryptographic key on your device and use it to validate the integrity of your app before your server provides access to sensitive data.
+With the App Attest entitlement, you can generate a special cryptographic key on your device and use it to validate the integrity of your app before a server provides access to sensitive data.
 
 The entitlement is defined using the `com.apple.developer.devicecheck.appattest-environment` key, of type `String`:
 
