@@ -35,7 +35,7 @@ Capabilities are added to the *Entitlements.plist* file. For more information ab
 
 1. In Visual Studio, ensure that the IDE is paired to a Mac Build host. For more information, see [Pair to Mac for iOS development](~/ios/pair-to-mac.md).
 1. In Visual Studio, enable automatic provisioning for your project. For more information, see [Enable automatic provisioning](~/ios/device-provisioning/automatic-provisioning.md#enable-automatic-provisioning).
-1. In Visual Studio, add an *Entitlements.plist* file to your project. For more information, see [Add an Entitlements.plist file](entitlements.md#add-an-entitlements-plist-file).
+1. In Visual Studio, add an *Entitlements.plist* file to your project. For more information, see [Add an Entitlements.plist file](entitlements.md#add-an-entitlementsplist-file).
 1. In **Solution Explorer**, double-click the *Entitlements.plist* file from the **Platforms > iOS** folder of your .NET MAUI app project to open it in the entitlements editor.
 1. In the entitlements editor, select and configure any entitlements required for your app:
 
@@ -130,7 +130,7 @@ A provisioning profile can be created with the following steps:
 
     :::image type="content" source="media/capabilities/provisioning-profile-name.png" alt-text="Screenshot of naming a provisioning profile.":::
 
-## Enable manual provisioning
+### Enable manual provisioning
 
 Once you've created a provisioning profile it must be downloaded into Visual Studio, and set as the provisioning profile for your project:
 
