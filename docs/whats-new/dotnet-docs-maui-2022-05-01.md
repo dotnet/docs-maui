@@ -31,7 +31,7 @@ Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for May
 ### New articles
 
 - [Build an iOS app with .NET CLI](../ios/cli.md)
-- [Entitlements and capabilities](../ios/deployment/entitlements.md)
+- [Entitlements](../ios/entitlements.md)
 - [Publish a .NET MAUI app for iOS](../ios/deployment/overview.md)
 - [Provision an iOS app for app store distribution](../ios/deployment/provision.md)
 - [Remote iOS Simulator for Windows](../ios/remote-simulator.md)

@@ -77,7 +77,7 @@ After creating the provisioning profile, it must be added to your Mac build host
 
 ## Add entitlements to your app
 
-In iOS, apps run in a sandbox that provides a set of rules that limit access between the app and system resources or user data. *Entitlements* are used to request the expansion of the sandbox to give your app additional capabilities. Any entitlements used by your app must be specified in an entitlements file. For more information about entitlements, see [Entitlements](entitlements.md).
+In iOS, apps run in a sandbox that provides a set of rules that limit access between the app and system resources or user data. *Entitlements* are used to request the expansion of the sandbox to give your app additional capabilities. Any entitlements used by your app must be specified in an entitlements file. For more information about entitlements, see [Entitlements](~/ios/entitlements.md).
 
 ## Add code signing data to your app project
 
