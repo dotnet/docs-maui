@@ -8,9 +8,9 @@ ms.date: 01/13/2022
 
 On iOS, .NET Multi-platform App UI (.NET MAUI) apps run in a sandbox that provides a set of rules that limit access between the app and system resources or user data. Apple provides *capabilities*, also known as *app services*, as a means of extending functionality and widening the scope of what iOS apps can do. Capabilities enable you to add a deeper integration with platform features to your app, such as integration with Siri. For more information about capabilities, see [Capabilities](https://developer.apple.com/documentation/xcode/capabilities) on developer.apple.com.
 
-Capabilities are added to your app's provisioning profile, and are used when code signing your app. The provisioning profile must contain an App ID, that matches your app's bundle identifier, with the required capabilities enabled. This provisioning profile can be created automatically in Visual Studio or Visual Studio for Mac, or manually in the Apple developer portal.
+Capabilities are added to your app's provisioning profile, and are used when code signing your app. The provisioning profile must contain an App ID, that matches your app's bundle identifier, with the required capabilities enabled. The provisioning profile can be created automatically in Visual Studio or Visual Studio for Mac, or manually in the Apple developer portal.
 
-Capabilities are closely related to the concept of entitlements. They both request the expansion of the sandbox your apps runs in, to give it additional capabilities. Entitlements are typically added when developing your app, while capabilities are typically added when code signing your app for distribution. However, when automatic provisioning is enabled, adding certain entitlements to your app will also update the capabilities for your app in its provisioning profile. For more information about entitlements, see [Entitlements](entitlements.md).
+Capabilities are closely related to the concept of entitlements. They both request the expansion of the sandbox your app runs in, to give it additional capabilities. Entitlements are typically added when developing your app, while capabilities are typically added when code signing your app for distribution. However, when automatic provisioning is enabled, adding certain entitlements to your app will also update the capabilities for your app in its provisioning profile. For more information about entitlements, see [Entitlements](entitlements.md).
 
 ## Add capabilities with Visual Studio
 
@@ -30,8 +30,6 @@ The following list shows the capabilities that can be automatically provisioned 
 - Wireless accessory configuration
 
 In Visual Studio, all capabilities are added to your app's *Entitlements.plist* file. The capabilities listed above are also added to your provisioning profile. For more information about entitlements, including how to add an entitlements file to your project, see [Entitlements](entitlements.md).
-
-It may also be necessary to set privacy keys in *Info.plist*, for certain capabilities.
 
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio](#tab/vs)
@@ -63,6 +61,8 @@ It may also be necessary to set privacy keys in *Info.plist*, for certain capabi
 1. Save the changes to your *Entitlements.plist* file to add the entitlement key/value pairs to the file, and add the app service to your App ID.
 
 ---
+
+It may also be necessary to set privacy keys in *Info.plist*, for certain capabilities.
 
 ## Add capabilities with the Apple developer portal
 
@@ -147,7 +147,7 @@ Once you've created a provisioning profile it must be downloaded by Visual Studi
 
 The following list details the common issues that can cause issues when developing a .NET MAUI iOS app that uses capabilities:
 
-- Ensure that the correct ID has been created and registered in the **Certificates, IDs & Profiles** section of Apple's developer portal.
+- Ensure that the correct App ID has been created and registered in the **Identifiers** section of Apple's developer portal.
 - Ensure that the capability has been added to the App ID and that the capability is configured using the correct values.
 - Ensure that the provisioning profile has been installed on your development machine and that the app's *Info.plist* file is using a bundle identifier that's identical to your App ID.
 - Ensure that the app's *Entitlements.plist* file has the correct entitlements enabled.
