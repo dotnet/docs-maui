@@ -6,9 +6,9 @@ ms.date: 01/12/2022
 
 # Capabilities
 
-In iOS, apps run in a sandbox that provides a set of rules that limit access between the app and system resources or user data. Apple provides *capabilities*, also known as *app services*, as a means of extending functionality and widening the scope of what iOS apps can do. Capabilities allow you to add a deeper integration with platform features to your app, such as integration with Siri. For more information about capabilities, see [Capabilities](https://developer.apple.com/documentation/xcode/capabilities).
+In iOS, apps run in a sandbox that provides a set of rules that limit access between the app and system resources or user data. Apple provides *capabilities*, also known as *app services*, as a means of extending functionality and widening the scope of what iOS apps can do. Capabilities allow you to add a deeper integration with platform features to your app, such as integration with Siri. For more information about capabilities, see [Capabilities](https://developer.apple.com/documentation/xcode/capabilities) on developer.apple.com.
 
-To use capabilities, the app must have a valid provisioning profile that contains an App ID with the required capability enabled. A valid provisioning profile, that enables one or more capabilities, can be created automatically in Visual Studio or Visual Studio for Mac, or manually in the Apple developer portal.
+Capabilities are added to your app's provisioning profile, which is used when code signing your app. The provisioning profile must contain an App ID, with the required capabilities enabled. This provisioning profile can be created automatically in Visual Studio or Visual Studio for Mac, or manually in the Apple developer portal.
 
 ## Add capabilities with Visual Studio
 
