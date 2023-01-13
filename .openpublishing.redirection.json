@@ -19,6 +19,10 @@
     {
       "source_path": "docs/deployment/hot-restart.md",
       "redirect_url": "/dotnet/maui/ios/hot-restart"
+    },
+    {
+      "source_path": "docs/ios/deployment/entitlements.md",
+      "redirect_url": "/dotnet/maui/ios/entitlements"
     }
   ]
 }
