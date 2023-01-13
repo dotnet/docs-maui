@@ -86,7 +86,7 @@ After adding a device to Apple's developer portal, you should create an *App ID*
 There are two types of App ID:
 
 - Wildcard. A wildcard App ID allows you to use a single App ID to match multiple apps, and typically takes the form `com.domainname.*`. A wildcard App ID can be used to install most apps to a device, and should be used for apps that do not enable app-specific capabilities.
-- Explicit. An explicit App ID is unique to a single app, and typically takes the form `com.domainname.myid`. An explicit App ID allows the installation of one app, with a matching bundle identifier, to a device. Explicit App IDs are typically used for apps that use enable app-specific capabilities such as Apple Pay, or Game Center.
+- Explicit. An explicit App ID is unique to a single app, and typically takes the form `com.domainname.myid`. An explicit App ID allows the installation of one app, with a matching bundle identifier, to a device. Explicit App IDs are typically used for apps that enable app-specific capabilities such as Apple Pay, or Game Center.
 
 The recommended approach is to create a *wildcard App ID*, unless your app uses app-specific capabilities. <!-- For information on creating Explicit App IDs, refer to the [Working with Capabilities](~/ios/deploy-test/provisioning/capabilities/index.md) guide.-->
 
@@ -204,4 +204,4 @@ After manually creating the development provisioning profile, and installing it 
 
 ## Provisioning for application services
 
-Apple provides a selection of application services, known as capabilities, that can be activated for a .NET MAUI iOS app. These capabilities must be configured in both your provisioning profile, when the **App ID** is created, and in the **Entitlements.plist** file that should be added to the .NET MAUI app project. For more information about capabilities, see [Entitlements and capabilities](~/ios/deployment/entitlements.md), and [Capabilites](https://developer.apple.com/documentation/xcode/capabilities) on developer.apple.com.
+Apple provides a selection of application services, known as capabilities, that can be activated for a .NET MAUI iOS app. These capabilities must be configured in both your provisioning profile, when the **App ID** is created, and in the **Entitlements.plist** file that should be added to the .NET MAUI app project. For more information about capabilities, see [Entitlements](~/ios/entitlements.md), and [Capabilites](https://developer.apple.com/documentation/xcode/capabilities) on developer.apple.com.

@@ -594,7 +594,7 @@ These settings are related to generating and signing the app bundle.
 
 - **Custom Entitlements**
 
-  The plist file to use for entitlements. For more information, see [Entitlements and capabilities](../ios/deployment/entitlements.md).
+  The plist file to use for entitlements. For more information, see [Entitlements](../ios/entitlements.md).
 
 - **Custom Resource Rules**
 
