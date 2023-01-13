@@ -6,11 +6,11 @@ ms.date: 01/13/2022
 
 # Entitlements
 
-On iOS, .NET Multi-platform App UI (.NET MAUI) apps run in a sandbox that provides a set of rules that limit access between the app and system resources or user data. *Entitlements* are used to request the expansion of the sandbox to give your app additional capabilities, such as integration with Siri. Any entitlements used by your app must be specified in the app's entitlements file. For more information about entitlements, see [Entitlements](https://developer.apple.com/documentation/bundleresources/entitlements) on developer.apple.com.
-
-To extend the capabilities of your app, an entitlement must be provided in your app's *Entitlements.plist* file. Entitlements are a key/value pair, and generally only one entitlement is required per capability.
+On iOS, .NET Multi-platform App UI (.NET MAUI) apps run in a sandbox that provides a set of rules that limit access between the app and system resources or user data. *Entitlements* are used to request the expansion of the sandbox to give your app additional capabilities, such as integration with Siri. Any entitlements used by your app must be specified in the app's *Entitlements.plist* file. For more information about entitlements, see [Entitlements](https://developer.apple.com/documentation/bundleresources/entitlements) on developer.apple.com.
 
 In addition to specifying entitlements, the *Entitlements.plist* file is used to code sign the app. When code signing your app, the entitlements file is combined with information from your Apple developer account, and other project information to apply a final set of entitlements to your app.
+
+Entitlements are closely related to the concept of capabilities. They both request the expansion of the sandbox your apps runs in, to give it additional capabilities. Entitlements are typically added when developing your app, while capabilities are typically added when code signing your app for distribution. However, when automatic provisioning is enabled, adding certain entitlements to your app will also update the capabilities for your app in its provisioning profile. For more information, see [Add capabilities with Visual Studio](~/ios/capabilities.md#add-capabilities-with-visual-studio).
 
 > [!IMPORTANT]
 > An *Entitlements.plist* file isn't linked to an Apple Developer Account. Therefore, any entitlements used by an app must also be specified as capabilities when creating a provisioning profile for your app. For more information, see [Capabilities](capabilities.md).
@@ -58,6 +58,8 @@ Entitlements can be configured in Visual Studio by double-clicking the *Entitlem
 1. Save the changes to your *Entitlements.plist* file to add the entitlement key/value pairs to the file.
 
 ---
+
+It may also be necessary to set privacy keys in *Info.plist*, for certain entitlements.
 
 ## Consume entitlements
 

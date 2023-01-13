@@ -10,6 +10,8 @@ On iOS, .NET Multi-platform App UI (.NET MAUI) apps run in a sandbox that provid
 
 Capabilities are added to your app's provisioning profile, and are used when code signing your app. The provisioning profile must contain an App ID, that matches your app's bundle identifier, with the required capabilities enabled. This provisioning profile can be created automatically in Visual Studio or Visual Studio for Mac, or manually in the Apple developer portal.
 
+Capabilities are closely related to the concept of entitlements. They both request the expansion of the sandbox your apps runs in, to give it additional capabilities. Entitlements are typically added when developing your app, while capabilities are typically added when code signing your app for distribution. However, when automatic provisioning is enabled, adding certain entitlements to your app will also update the capabilities for your app in its provisioning profile. For more information about entitlements, see [Entitlements](entitlements.md).
+
 ## Add capabilities with Visual Studio
 
 Capabilities can be added to a provisioning profile in Visual Studio or Visual Studio for Mac. This approach requires the use of automatic provisioning, and only works for a subset of capabilities. For more information about automatic provisioning, see [Automatic provisioning for iOS apps](~/ios/device-provisioning/automatic-provisioning.md).
@@ -27,7 +29,9 @@ The following list shows the capabilities that can be automatically provisioned 
 - Siri
 - Wireless accessory configuration
 
-Capabilities are added to your app's *Entitlements.plist* file. For more information about entitlements, including how to add an entitlements file to your project, see [Entitlements](entitlements.md).
+In Visual Studio, all capabilities are added to your app's *Entitlements.plist* file. The capabilities listed above are also added to your provisioning profile. For more information about entitlements, including how to add an entitlements file to your project, see [Entitlements](entitlements.md).
+
+It may also be necessary to set privacy keys in *Info.plist*, for certain capabilities.
 
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio](#tab/vs)
@@ -65,6 +69,8 @@ Capabilities are added to your app's *Entitlements.plist* file. For more informa
 All capabilities can be added to your app's provisioning profile in the Apple developer portal. This approach requires the use of manual provisioning, and works for all capabilities. For more information about manual provisioning, see [Manual provisioning for iOS apps](~/ios/device-provisioning/manual-provisioning.md).
 
 Adding a capability using Apple's developer portal is a multi-step process that requires creating an App ID, creating a provisioning profile, and enabling manual provisioning.
+
+When adding a new capability to your provisioning profile, you should also add the same capability to your app's *Entitlements.plist* file and ensure that the app consumes this file. For more information, see [Entitlements](entitlements.md). It may also be necessary to set privacy keys in *Info.plist*, for certain capabilities.
 
 ### Create an App ID with an app service
 
@@ -136,8 +142,6 @@ Once you've created a provisioning profile it must be downloaded by Visual Studi
 
 1. In Visual Studio, download the provisioning profile you've just created so that it's available for signing your app. For more information, see [Download provisioning profiles in Visual Studio](~/ios/device-provisioning/manual-provisioning.md#download-provisioning-profiles-in-visual-studio).
 1. In Visual Studio, enable manual provisioning for your project. For more information, see [Enable manual provisioning](~/ios/device-provisioning/manual-provisioning.md#enable-manual-provisioning).
-
-When a capability has been added to your provisioning profile, you should also add the same capabilities to your app's *Entitlements.plist* file, and ensure that the app consumes this file. For more information, see [Entitlements](entitlements.md). It may also be necessary to set privacy keys in *Info.plist*, for certain capabilities.
 
 ## Troubleshoot
 
