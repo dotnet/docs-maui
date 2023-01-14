@@ -71,12 +71,12 @@ The _AppShell.xaml_ defines two tabs, one for the `NotesPage` and another for `A
         <ShellContent
             Title="Notes"
             ContentTemplate="{DataTemplate local:NotePage}"
-            Icon="icon_notes" />
+            Icon="{OnPlatform 'icon_notes.png', iOS='icon_notes_ios.png', MacCatalyst='icon_notes_ios.png'}" />
 
         <ShellContent
             Title="About"
             ContentTemplate="{DataTemplate local:AboutPage}"
-            Icon="icon_about" />
+            Icon="{OnPlatform 'icon_about.png', iOS='icon_about_ios.png', MacCatalyst='icon_about_ios.png'}" />
     </TabBar>
 
 </Shell>
@@ -107,12 +107,12 @@ The `local` XML namespace was used by the `ShellContent.ContentTemplate` propert
         <ShellContent
             Title="Notes"
             ContentTemplate="{DataTemplate views:NotePage}"
-            Icon="icon_notes" />
+            Icon="{OnPlatform 'icon_notes.png', iOS='icon_notes_ios.png', MacCatalyst='icon_notes_ios.png'}" />
 
         <ShellContent
             Title="About"
             ContentTemplate="{DataTemplate views:AboutPage}"
-            Icon="icon_about" />
+            Icon="{OnPlatform 'icon_about.png', iOS='icon_about_ios.png', MacCatalyst='icon_about_ios.png'}" />
     </TabBar>
 
 </Shell>

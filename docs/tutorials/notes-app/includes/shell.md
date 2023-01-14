@@ -88,9 +88,9 @@ Now that the XAML and code-behind of the `AboutPage` is complete, you'll need to
 
 ## Add image resources
 
-Some controls can use images, which enhances how users interact with your app. In this section you'll download and add two images for to your app.
+Some controls can use images, which enhances how users interact with your app. In this section you'll download two images you'll use in your app, along with two alternative images for use with iOS.
 
-Download these two images:
+Download the following images:
 
 - [Icon: About](https://raw.githubusercontent.com/dotnet/docs-maui/main/docs/tutorials/notes-app/snippets/shell/csharp/Notes/Resources/Images/icon_about.png)\
   This image is used as an icon for the about page you created earlier.
@@ -98,7 +98,13 @@ Download these two images:
 - [Icon: Notes](https://raw.githubusercontent.com/dotnet/docs-maui/main/docs/tutorials/notes-app/snippets/shell/csharp/Notes/Resources/Images/icon_notes.png)\
   This image is used as an icon for the notes page you'll create in the next part of this tutorial.
 
+- [Icon: About (iOS)](https://raw.githubusercontent.com/dotnet/docs-maui/main/docs/tutorials/notes-app/snippets/shell/csharp/Notes/Resources/Images/icon_about_ios.png)
+- [Icon: Notes (iOS)](https://raw.githubusercontent.com/dotnet/docs-maui/main/docs/tutorials/notes-app/snippets/shell/csharp/Notes/Resources/Images/icon_notes_ios.png)
+
 After you've downloaded the images, you can move them with File Explorer to the _Resources\Images_ folder of the project. Any file in this folder is automatically included in the project as a **MauiImage** resource. You can also use Visual Studio to add the images to your project. If you move the images by hand, skip the following procedure.
+
+> [!IMPORTANT]
+> Don't skip downloading the iOS-specific images, they're required to complete this tutorial.
 
 ### Move the images with Visual Studio
 
@@ -110,9 +116,9 @@ After you've downloaded the images, you can move them with File Explorer to the 
 01. Right-click on **Images** and select **Add** > **Existing Item...**.
 01. Navigate to the folder that contains the downloaded images.
 01. Change the filter to file type filter to **Image Files**.
-01. Hold down <kbd>CTRL</kbd> and click on each of the three images you downloaded, then press **Add**
+01. Hold down <kbd>CTRL</kbd> and click on each of the images you downloaded, then press **Add**
 
-:::image type="content" source="../media/shell/vs-add-image.png" alt-text="Add three icon images to .NET MAUI project.":::
+:::image type="content" source="../media/shell/vs-add-image.png" alt-text="Add four icon images to .NET MAUI project.":::
 
 ## Modify the app Shell
 
@@ -130,7 +136,7 @@ Let's break down the key parts of the XAML:
 - `<TabBar>` is the content of the `Shell`.
 - Two `<ShellContent>` objects inside of the `<TabBar>`. Before you replaced the template code, there was a single `<ShellContent>` object, pointing to the `MainPage` page.
 
-The `TabBar` and its children don't represent any user interface elements, but rather the organization of the app's visual hierarchy. Shell will take these objects and produce the user interface for the content.
+The `TabBar` and its children don't represent any user interface elements, but rather the organization of the app's visual hierarchy. Shell takes these objects and produces the user interface for the content, with a bar at the top representing each page. The `ShellContent.Icon` property for each page uses special syntax: `{OnPlatform ...}`. This syntax is processed when the XAML pages are compiled for each platform, and with it you can specify a property value for each platform. In this case, every platform uses the `icon_about.png` icon by default, but iOS and MacCatalyst will use `icon_about_ios.png`.
 
 Each `<ShellContent>` object is pointing to a page to display. This is set by the `ContentTemplate` property.
 
