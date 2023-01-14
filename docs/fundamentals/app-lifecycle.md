@@ -109,7 +109,7 @@ namespace MyMauiApp
 The `Window`-derived class can then be consumed by overriding the `CreateWindow` method in your `App` class to return a `MyWindow` instance.
 
 > [!WARNING]
-> An `InvalidOperationException` will be thrown if the `App.MainPage` property is set and the `CreateWindow` method creates a `Window` object using the override that accepts a `Page` argument.
+> An `InvalidOperationException` will be thrown if the `App.MainPage` property is set and the `CreateWindow` method creates a `Window` object using the override that accepts a <xref:Microsoft.Maui.Controls.Page> argument.
 
 ## Platform lifecycle events
 

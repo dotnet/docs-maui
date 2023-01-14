@@ -22,14 +22,14 @@ The note page will display the note and allow you to either save or delete it. F
 Let's break down the key parts of the XAML controls placed on the page:
 
 - `<VerticalStackLayout>` arranges its children controls vertically, one below the other.
-- `<Editor>` is a multi-line text editor control, and is the first control inside of `VerticalStackLayout`.
-- `<Grid>` is a layout control, and is the second control inside of `VerticalStackLayout`.
+- `<Editor>` is a multi-line text editor control, and is the first control inside of <xref:Microsoft.Maui.Controls.VerticalStackLayout>.
+- `<Grid>` is a layout control, and is the second control inside of <xref:Microsoft.Maui.Controls.VerticalStackLayout>.
 
   This control defines columns and rows to create cells. Child controls are placed within those cells.
 
-  By default, the `Grid` control contains a single row and column, creating a single cell. Columns are defined with a width, and the `*` value for width tells the column to fill up as much space as possible. The previous snippet defined two columns, both using as much space as possible, which evenly distributes the columns in the allotted space: `ColumnDefinitions="*,*"`. The column sizes are separated by a `,` character.
+  By default, the <xref:Microsoft.Maui.Controls.Grid> control contains a single row and column, creating a single cell. Columns are defined with a width, and the `*` value for width tells the column to fill up as much space as possible. The previous snippet defined two columns, both using as much space as possible, which evenly distributes the columns in the allotted space: `ColumnDefinitions="*,*"`. The column sizes are separated by a `,` character.
 
-  Columns and rows defined by a `Grid` are indexed starting at 0. So the first column would be index 0, the second column is index 1, and so on.
+  Columns and rows defined by a <xref:Microsoft.Maui.Controls.Grid> are indexed starting at 0. So the first column would be index 0, the second column is index 1, and so on.
 
 - Two `<Button>` controls are inside the `<Grid>` and assigned a column. If a child control doesn't define a column assignment, it's automatically assigned to the first column. In this markup, the first button is the "Save" button and automatically assigned to the first column, column 0. The second button is the "Delete" button and assigned to the second column, column 1.
 
@@ -75,9 +75,9 @@ Now that you understand a little more about code-behind files, you're going to a
 
     :::code language="csharp" source="../snippets/note/csharp/Notes/NotePage.xaml.cs" id="buttons":::
 
-    The `SaveButton_Clicked` method writes the text in the `Editor` control, to the file represented by the `_fileName` variable.
+    The `SaveButton_Clicked` method writes the text in the <xref:Microsoft.Maui.Controls.Editor> control, to the file represented by the `_fileName` variable.
 
-    The `DeleteButton_Clicked` method first checks if the file represented by the `_fileName` variable, and if it exists, deletes it. Next, the `Editor` control's text is cleared.
+    The `DeleteButton_Clicked` method first checks if the file represented by the `_fileName` variable, and if it exists, deletes it. Next, the <xref:Microsoft.Maui.Controls.Editor> control's text is cleared.
 
 01. Save the file by pressing <kbd>CTRL + S</kbd> or by selecting the menu **File** > **Save NotePage.xaml.cs**.
 
@@ -87,7 +87,7 @@ The final code for the code-behind file should look like the following:
 
 ## Test the note
 
-Now that **note page** is finished, you need a way to present it to the user. Open the _AppShell.xaml_ file, and change the first `ShellContent` entry to point to the `NotePage` instead of `MainPage`:
+Now that **note page** is finished, you need a way to present it to the user. Open the _AppShell.xaml_ file, and change the first <xref:Microsoft.Maui.Controls.ShellContent> entry to point to the `NotePage` instead of `MainPage`:
 
 :::code language="xaml" source="../snippets/note/csharp/Notes/AppShell.xaml" highlight="12":::
 
@@ -95,4 +95,4 @@ Save the file and run the app. Try typing into the entry box and press the **Sav
 
 :::image type="content" source="../media/note/final.png" alt-text="Note entry page in .NET MAUI app.":::
 
-[![Explore the code.](~/media/code-sample.png) Explore the code for this step of the tutorial.](https://github.com/dotnet/maui-samples/tree/main/6.0/Tutorials/CreateNetMauiApp/step3)
+[![Explore the code.](~/media/code-sample.png) Explore the code for this step of the tutorial.](https://github.com/dotnet/maui-samples/tree/main/7.0/Tutorials/CreateNetMauiApp/step3)

@@ -8,13 +8,13 @@ ms.date: 01/12/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-shapes)
 
-A .NET Multi-platform App UI (.NET MAUI) `Shape` is a type of `View` that enables you to draw a shape to the screen. `Shape` objects can be used inside layout classes and most controls, because the `Shape` class derives from the `View` class. .NET MAUI Shapes is available in the `Microsoft.Maui.Controls.Shapes` namespace.
+A .NET Multi-platform App UI (.NET MAUI) `Shape` is a type of <xref:Microsoft.Maui.Controls.View> that enables you to draw a shape to the screen. `Shape` objects can be used inside layout classes and most controls, because the `Shape` class derives from the <xref:Microsoft.Maui.Controls.View> class. .NET MAUI Shapes is available in the `Microsoft.Maui.Controls.Shapes` namespace.
 
 `Shape` defines the following properties:
 
 - `Aspect`, of type `Stretch`, describes how the shape fills its allocated space. The default value of this property is `Stretch.None`.
-- `Fill`, of type `Brush`, indicates the brush used to paint the shape's interior.
-- `Stroke`, of type `Brush`, indicates the brush used to paint the shape's outline.
+- `Fill`, of type <xref:Microsoft.Maui.Controls.Brush>, indicates the brush used to paint the shape's interior.
+- `Stroke`, of type <xref:Microsoft.Maui.Controls.Brush>, indicates the brush used to paint the shape's outline.
 - `StrokeDashArray`, of type `DoubleCollection`, which represents a collection of `double` values that indicate the pattern of dashes and gaps that are used to outline a shape.
 - `StrokeDashOffset`, of type `double`, specifies the distance within the dash pattern where a dash begins. The default value of this property is 0.0.
 - `StrokeLineCap`, of type `PenLineCap`, describes the shape at the start and end of a line or segment. The default value of this property is `PenLineCap.Flat`.
@@ -22,13 +22,13 @@ A .NET Multi-platform App UI (.NET MAUI) `Shape` is a type of `View` that enable
 - `StrokeMiterLimit`, of type `double`, specifies the limit on the ratio of the miter length to half the `StrokeThickness` of a shape. The default value of this property is 10.0.
 - `StrokeThickness`, of type `double`, indicates the width of the shape outline. The default value of this property is 1.0.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
-.NET MAUI defines a number of objects that derive from the `Shape` class. These are `Ellipse`, `Line`, `Path`, `Polygon`, `Polyline`, `Rectangle`, and `RoundRectangle`.
+.NET MAUI defines a number of objects that derive from the `Shape` class. These are <xref:Microsoft.Maui.Controls.Shapes.Ellipse>, <xref:Microsoft.Maui.Controls.Shapes.Line>, <xref:Microsoft.Maui.Controls.Shapes.Path>, <xref:Microsoft.Maui.Controls.Shapes.Polygon>, <xref:Microsoft.Maui.Controls.Shapes.Polyline>, <xref:Microsoft.Maui.Controls.Shapes.Rectangle>, and <xref:Microsoft.Maui.Controls.Shapes.RoundRectangle>.
 
 ## Paint shapes
 
-`Brush` objects are used to paint a shapes's `Stroke` and `Fill`:
+<xref:Microsoft.Maui.Controls.Brush> objects are used to paint a shapes's `Stroke` and `Fill`:
 
 ```xaml
 <Ellipse Fill="DarkBlue"
@@ -39,16 +39,16 @@ These properties are backed by `BindableProperty` objects, which means that they
          HorizontalOptions="Start" />
 ```
 
-In this example, the stroke and fill of an `Ellipse` are specified:
+In this example, the stroke and fill of an <xref:Microsoft.Maui.Controls.Shapes.Ellipse> are specified:
 
 :::image type="content" source="media/ellipse.png" alt-text="Paint shapes.":::
 
 > [!IMPORTANT]
-> `Brush` objects use a type converter that enables `Color` values to specified for the `Stroke` property.
+> <xref:Microsoft.Maui.Controls.Brush> objects use a type converter that enables `Color` values to specified for the `Stroke` property.
 
-If you don't specify a `Brush` object for `Stroke`, or if you set `StrokeThickness` to 0, then the border around the shape is not drawn.
+If you don't specify a <xref:Microsoft.Maui.Controls.Brush> object for `Stroke`, or if you set `StrokeThickness` to 0, then the border around the shape is not drawn.
 
-For more information about `Brush` objects, see [Brushes](~/user-interface/brushes/index.md). For more information about valid `Color` values, see [Colors](~/user-interface/graphics/colors.md).
+For more information about <xref:Microsoft.Maui.Controls.Brush> objects, see [Brushes](~/user-interface/brushes/index.md). For more information about valid `Color` values, see [Colors](~/user-interface/graphics/colors.md).
 
 ## Stretch shapes
 
@@ -77,7 +77,7 @@ The following XAML shows how to set the `Aspect` property:
 </Path>      
 ```
 
-In this example, a `Path` object draws a heart. The `Path` object's `WidthRequest` and `HeightRequest` properties are set to 100 device-independent units, and its `Aspect` property is set to `Uniform`. As a result, the object's contents are resized to fit the destination dimensions, while preserving the aspect ratio:
+In this example, a <xref:Microsoft.Maui.Controls.Shapes.Path> object draws a heart. The <xref:Microsoft.Maui.Controls.Shapes.Path> object's `WidthRequest` and `HeightRequest` properties are set to 100 device-independent units, and its `Aspect` property is set to `Uniform`. As a result, the object's contents are resized to fit the destination dimensions, while preserving the aspect ratio:
 
 :::image type="content" source="media/aspect.png" alt-text="Stretch shapes.":::
 
@@ -117,7 +117,7 @@ A line has three parts: start cap, line body, and end cap. The start and end cap
 - `Round`, which represents a semicircle that has a diameter equal to the line thickness.
 
 > [!IMPORTANT]
-> The `StrokeLineCap` property has no effect if you set it on a shape that has no start or end points. For example, this property has no effect if you set it on an `Ellipse`, or `Rectangle`.
+> The `StrokeLineCap` property has no effect if you set it on a shape that has no start or end points. For example, this property has no effect if you set it on an <xref:Microsoft.Maui.Controls.Shapes.Ellipse>, or <xref:Microsoft.Maui.Controls.Shapes.Rectangle>.
 
 The following XAML shows how to set the `StrokeLineCap` property:
 

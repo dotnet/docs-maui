@@ -50,7 +50,7 @@ The first customization you'll do is adding another page to the project. This pa
 Let's break down the key parts of the XAML controls placed on the page:
 
 - `<ContentPage>` is the root object for the `AboutPage` class.
-- `<VerticalStackLayout>` is the only child object of the `ContentPage`. `ContentPage` can only have one child object. The `VerticalStackLayout` type can have multiple children. This layout control arranges its children vertically, one after the other.
+- `<VerticalStackLayout>` is the only child object of the <xref:Microsoft.Maui.Controls.ContentPage>. <xref:Microsoft.Maui.Controls.ContentPage> can only have one child object. The <xref:Microsoft.Maui.Controls.VerticalStackLayout> type can have multiple children. This layout control arranges its children vertically, one after the other.
 - `<HorizontalStackLayout>` operates the same as a `<VerticalStackLayout>`, except its children are arranged horizontally.
 - `<Image>` displays an image, in this case it's using the `dotnet_bot.png` image that comes with every .NET MAUI project.
 - `<Label>` controls display text.
@@ -122,7 +122,7 @@ After you've downloaded the images, you can move them with File Explorer to the 
 
 ## Modify the app Shell
 
-As noted at the start of this article, the `AppShell` class defines an app's visual hierarchy, the XAML markup used in creating the UI of the app. Update the XAML to add a `TabBar` control:
+As noted at the start of this article, the `AppShell` class defines an app's visual hierarchy, the XAML markup used in creating the UI of the app. Update the XAML to add a <xref:Microsoft.Maui.Controls.TabBar> control:
 
 01. Double-click the _AppShell.xaml_ file in the **Solution Explorer** pane to open the XAML editor. Replace the XAML markup with the following code:
 
@@ -133,7 +133,7 @@ As noted at the start of this article, the `AppShell` class defines an app's vis
 Let's break down the key parts of the XAML:
 
 - `<Shell>` is the root object of the XAML markup.
-- `<TabBar>` is the content of the `Shell`.
+- `<TabBar>` is the content of the <xref:Microsoft.Maui.Controls.Shell>.
 - Two `<ShellContent>` objects inside of the `<TabBar>`. Before you replaced the template code, there was a single `<ShellContent>` object, pointing to the `MainPage` page.
 
 The `TabBar` and its children don't represent any user interface elements, but rather the organization of the app's visual hierarchy. Shell takes these objects and produces the user interface for the content, with a bar at the top representing each page. The `ShellContent.Icon` property for each page uses special syntax: `{OnPlatform ...}`. This syntax is processed when the XAML pages are compiled for each platform, and with it you can specify a property value for each platform. In this case, every platform uses the `icon_about.png` icon by default, but iOS and MacCatalyst will use `icon_about_ios.png`.
@@ -154,4 +154,4 @@ Close the app and return to Visual Studio. If you're using the Android emulator,
 
 :::image type="content" source="../media/shell/vs-stop-button.png" alt-text="Visual Studio's stop debugging button.":::
 
-[![Explore the code.](~/media/code-sample.png) Explore the code for this step of the tutorial.](https://github.com/dotnet/maui-samples/tree/main/6.0/Tutorials/CreateNetMauiApp/step2)
+[![Explore the code.](~/media/code-sample.png) Explore the code for this step of the tutorial.](https://github.com/dotnet/maui-samples/tree/main/7.0/Tutorials/CreateNetMauiApp/step2)

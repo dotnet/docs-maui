@@ -16,7 +16,7 @@ A .NET Multi-platform App UI (.NET MAUI) pointer gesture recognizer detects when
 - `PointerMovedCommand`, of type `ICommand`, which is the command to invoke when the pointer moves while remaining within the bounding area of the view.
 - `PointerMovedCommandParameter`, of type `object`, which is the parameter that's passed to `PointerMovedCommand`.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 The `PointerGestureRecognizer` class also defines the following events:
 
@@ -33,10 +33,10 @@ A `PointerEventArgs` object accompanies all three events, and defines a `GetPosi
 
 ## Create a PointerGestureRecognizer
 
-To make a `View` recognize pointer gestures, create a `PointerGestureRecognizer` object, handle the required events, and add the gesture recognizer to the `GestureRecognizers` collection on the view.
+To make a <xref:Microsoft.Maui.Controls.View> recognize pointer gestures, create a `PointerGestureRecognizer` object, handle the required events, and add the gesture recognizer to the `GestureRecognizers` collection on the view.
 Alternatively, create a `PointerGestureRecognizer` object, and bind the required commands to `ICommand` implementations, and add the gesture recognizer to the `GestureRecognizers` collection on the view.
 
-The following code example shows a `PointerGestureRecognizer` attached to an `Image`. The `PointerGestureRecognizer` uses events to respond to the detection of pointer gestures:
+The following code example shows a `PointerGestureRecognizer` attached to an <xref:Microsoft.Maui.Controls.Image>. The `PointerGestureRecognizer` uses events to respond to the detection of pointer gestures:
 
 ```xaml
 <Image Source="dotnet_bot.png">

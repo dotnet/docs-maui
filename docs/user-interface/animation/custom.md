@@ -23,7 +23,7 @@ When creating an `Animation` object, typically, a minimum of three parameters ar
 var animation = new Animation(v => image.Scale = v, 1, 2);
 ```
 
-In this example, an animation of the `Scale` property of an `Image` instance is defined from a value of 1 to a value of 2. The animated value is passed to the callback specified as the first argument, where it's used to change the value of the `Scale` property.
+In this example, an animation of the `Scale` property of an <xref:Microsoft.Maui.Controls.Image> instance is defined from a value of 1 to a value of 2. The animated value is passed to the callback specified as the first argument, where it's used to change the value of the `Scale` property.
 
 The animation is started with a call to the `Commit` method:
 
@@ -44,7 +44,7 @@ The following arguments are specified in the `Commit` method:
 - The sixth argument (`finished`) is a callback that will be executed when the animation has completed. This callback takes two arguments, with the first argument indicating a final value, and the second argument being a `bool` that's set to `true` if the animation was canceled. Alternatively, the `finished` callback can be specified as an argument to the `Animation` constructor. However, with a single animation, if `finished` callbacks are specified in both the `Animation` constructor and the `Commit` method, only the callback specified in the `Commit` method will be executed.
 - The seventh argument (`repeat`) is a callback that allows the animation to be repeated. It's called at the end of the animation, and returning `true` indicates that the animation should be repeated.
 
-In the above example, the overall effect is to create an animation that increases the `Scale` property of an `Image` instance from 1 to 2, over 2 seconds (2000 milliseconds), using the `Linear` easing function. Each time the animation completes, its `Scale` property is reset to 1 and the animation repeats.
+In the above example, the overall effect is to create an animation that increases the `Scale` property of an <xref:Microsoft.Maui.Controls.Image> instance from 1 to 2, over 2 seconds (2000 milliseconds), using the `Linear` easing function. Each time the animation completes, its `Scale` property is reset to 1 and the animation repeats.
 
 > [!NOTE]
 > Concurrent animations, that run independently of each other can be constructed by creating an `Animation` object for each animation, and then calling the `Commit` method on each animation.
@@ -79,7 +79,7 @@ new Animation
 
 In both examples, a parent `Animation` object is created, to which additional `Animation` objects are then added. The first two arguments to the `Add` method specify when to begin and finish the child animation. The argument values must be between 0 and 1, and represent the relative period within the parent animation that the specified child animation will be active. Therefore, in this example the `scaleUpAnimation` will be active for the first half of the animation, the `scaleDownAnimation` will be active for the second half of the animation, and the `rotateAnimation` will be active for the entire duration.
 
-The overall effect of this example is that the animation occurs over 4 seconds (4000 milliseconds). The `scaleUpAnimation` animates the `Scale` property from 1 to 2, over 2 seconds. The `scaleDownAnimation` then animates the `Scale` property from 2 to 1, over 2 seconds. While both scale animations are occurring, the `rotateAnimation` animates the `Rotation` property from 0 to 360, over 4 seconds. Both scaling animations also use easing functions. The `SpringIn` easing function causes the `Image` instance to initially shrink before getting larger, and the `SpringOut` easing function causes the `Image` to become smaller than its actual size towards the end of the complete animation.
+The overall effect of this example is that the animation occurs over 4 seconds (4000 milliseconds). The `scaleUpAnimation` animates the `Scale` property from 1 to 2, over 2 seconds. The `scaleDownAnimation` then animates the `Scale` property from 2 to 1, over 2 seconds. While both scale animations are occurring, the `rotateAnimation` animates the `Rotation` property from 0 to 360, over 4 seconds. Both scaling animations also use easing functions. The `SpringIn` easing function causes the <xref:Microsoft.Maui.Controls.Image> instance to initially shrink before getting larger, and the `SpringOut` easing function causes the <xref:Microsoft.Maui.Controls.Image> to become smaller than its actual size towards the end of the complete animation.
 
 There are a number of differences between an `Animation` object that uses child animations, and one that doesn't:
 
@@ -113,7 +113,7 @@ The resulting animation provides the appearance of advancing the page background
 
 ## Create a custom animation extension method
 
-The extension methods in the `ViewExtensions` class animate a property from its current value to a specified value. This makes it difficult to create, for example, a `ColorTo` animation method that can be used to animate a color from one value to another. This is because different controls have different properties of type `Color`. While the `VisualElement` class defines a `BackgroundColor` property, this isn't always the desired `Color` property to animate.
+The extension methods in the `ViewExtensions` class animate a property from its current value to a specified value. This makes it difficult to create, for example, a `ColorTo` animation method that can be used to animate a color from one value to another. This is because different controls have different properties of type `Color`. While the <xref:Microsoft.Maui.Controls.VisualElement> class defines a `BackgroundColor` property, this isn't always the desired `Color` property to animate.
 
 The solution to this problem is to not have the `ColorTo` method target a particular `Color` property. Instead, it can be written with a callback method that passes the interpolated `Color` value back to the caller. In addition, the method will take start and end `Color` arguments.
 
@@ -158,4 +158,4 @@ await this.ColorTo(Color.FromRgb(0, 0, 0), Color.FromRgb(255, 255, 255), c => Ba
 await boxView.ColorTo(Colors.Blue, Colors.Red, c => boxView.Color = c, 4000);
 ```
 
-In this code example, the `ColorTo` method animates the `TextColor` and `BackgroundColor` properties of a `Label`, the `BackgroundColor` property of a page, and the `Color` property of a `BoxView`.
+In this code example, the `ColorTo` method animates the `TextColor` and `BackgroundColor` properties of a <xref:Microsoft.Maui.Controls.Label>, the `BackgroundColor` property of a page, and the `Color` property of a <xref:Microsoft.Maui.Controls.BoxView>.

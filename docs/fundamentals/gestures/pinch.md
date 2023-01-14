@@ -16,7 +16,7 @@ In .NET MAUI, pinch gesture recognition is provided by the `PinchGestureRecogniz
 
 ## Create a PinchGestureRecognizer
 
-To make a `View` recognize a pinch gesture, create a `PinchGestureRecognizer` object, handle the `PinchUpdated` event, and add the new gesture recognizer to the `GestureRecognizers` collection on the view. The following code example shows a `PinchGestureRecognizer` attached to an `Image`:
+To make a <xref:Microsoft.Maui.Controls.View> recognize a pinch gesture, create a `PinchGestureRecognizer` object, handle the `PinchUpdated` event, and add the new gesture recognizer to the `GestureRecognizers` collection on the view. The following code example shows a `PinchGestureRecognizer` attached to an <xref:Microsoft.Maui.Controls.Image>:
 
 ```xaml
 <Image Source="waterfront.jpg">
@@ -48,7 +48,7 @@ image.GestureRecognizers.Add(pinchGesture);
 
 ## Create a pinch container
 
-The `PinchToZoomContainer` class, which is shown in the following example, is a generalized helper class that can be used to interactively zoom a `View`:
+The `PinchToZoomContainer` class, which is shown in the following example, is a generalized helper class that can be used to interactively zoom a <xref:Microsoft.Maui.Controls.View>:
 
 ```csharp
 public class PinchToZoomContainer : ContentView
@@ -118,7 +118,7 @@ public class PinchToZoomContainer : ContentView
 
 In this example, the `OnPinchUpdated` method updates the zoom level of the wrapped view, based on the user's pinch gesture. This is achieved by using the values of the `Scale`, `ScaleOrigin` and `Status` properties of the `PinchGestureUpdatedEventArgs` object to calculate the scale factor to be applied at the origin of the pinch gesture. The wrapped view is then zoomed at the origin of the pinch gesture by setting its `TranslationX`, `TranslationY`, and `Scale` properties to the calculated values.
 
-The `PinchToZoomContainer` class can be wrapped around a `View` so that a recognized pinch gesture will zoom the wrapped view. The following XAML example shows the `PinchToZoomContainer` wrapping an `Image`:
+The `PinchToZoomContainer` class can be wrapped around a <xref:Microsoft.Maui.Controls.View> so that a recognized pinch gesture will zoom the wrapped view. The following XAML example shows the `PinchToZoomContainer` wrapping an <xref:Microsoft.Maui.Controls.Image>:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -133,4 +133,4 @@ The `PinchToZoomContainer` class can be wrapped around a `View` so that a recogn
 </ContentPage>
 ```
 
-In this example, when the `Image` receives a pinch gesture, the displayed image will be zoomed-in or out.
+In this example, when the <xref:Microsoft.Maui.Controls.Image> receives a pinch gesture, the displayed image will be zoomed-in or out.

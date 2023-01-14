@@ -29,8 +29,10 @@ There are a number of NuGet packages with similar names. The correct package has
 - **Owners:** praeclarum
 - **NuGet link:** [sqlite-net-pcl](https://www.nuget.org/packages/sqlite-net-pcl/)
 
-> [!NOTE]
-> Despite the package name, use the **sqlite-net-pcl** NuGet package even in .NET MAUI projects.
+Despite the package name, use the **sqlite-net-pcl** NuGet package in .NET MAUI projects.
+
+> [!IMPORTANT]
+> SQLite.NET is a third-party library that's supported from the [praeclarum/sqlite-net repo](https://github.com/praeclarum/sqlite-net).
 
 ### Install SQLitePCLRaw.bundle_green
 

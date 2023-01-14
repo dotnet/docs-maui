@@ -14,10 +14,10 @@ To handle this successfully, the app must be notified of changes in these views 
 
 Data binding automates this task, and renders the event handlers unnecessary. Data bindings can be implemented either in XAML or code, but they are much more common in XAML where they help to reduce the size of the code-behind file. By replacing procedural code in event handlers with declarative code or markup, the app is simplified and clarified.
 
-Data binding is therefore the technique of linking properties of two objects so that changes in one property are automatically reflected in the other property. One of the two objects involved in a data binding is almost always an element that derives from `View` and forms part of the visual interface of a page. The other object is either:
+Data binding is therefore the technique of linking properties of two objects so that changes in one property are automatically reflected in the other property. One of the two objects involved in a data binding is almost always an element that derives from <xref:Microsoft.Maui.Controls.View> and forms part of the visual interface of a page. The other object is either:
 
-- Another `View` derivative, usually on the same page.
+- Another <xref:Microsoft.Maui.Controls.View> derivative, usually on the same page.
 - An object in a code file.
 
 > [!NOTE]
-> Data bindings between two `View` derivatives are often shown for purposes of clarity and simplicity. However, the same principles can be applied to data bindings between a `View` and other objects. When an application is built using the Model-View-ViewModel (MVVM) architecture, the class with underlying data is often called a viewmodel.
+> Data bindings between two <xref:Microsoft.Maui.Controls.View> derivatives are often shown for purposes of clarity and simplicity. However, the same principles can be applied to data bindings between a <xref:Microsoft.Maui.Controls.View> and other objects. When an application is built using the Model-View-ViewModel (MVVM) architecture, the class with underlying data is often called a viewmodel.

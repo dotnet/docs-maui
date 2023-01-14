@@ -37,9 +37,9 @@ A consequence of doing this is that it will replace the native implicit namespac
 
 .NET MAUI must be initialized before a native app project can construct a .NET MAUI control. Choosing when to do this primarily depends on when it's most convenient in your app flow - it could be performed at startup, or just before a .NET MAUI control is constructed.
 
-Typically, the pattern for initializing .NET MAUI in a native app project is to create a <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object, invoke the <xref:Microsoft.Maui.Embedding.AppHostBuilderExtensions.UseMauiEmbedding*> method on it, and then create a <xref:Microsoft.Maui.Hosting.MauiApp> object by invoking the <xref:Microsoft.Maui.Hosting.MauiAppBuilder.Build> method on the <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object. In addition, a <xref:Microsoft.Maui.MauiContext> object should then be created from the <xref:Microsoft.Maui.Hosting.MauiApp> object. The <xref:Microsoft.Maui.MauiContext> object will be used when converting .NET MAUI controls to native types.
+Typically, the pattern for initializing .NET MAUI in a native app project is to create a <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object, invoke the <xref:Microsoft.Maui.Embedding.AppHostBuilderExtensions.UseMauiEmbedding%2A> method on it, and then create a <xref:Microsoft.Maui.Hosting.MauiApp> object by invoking the <xref:Microsoft.Maui.Hosting.MauiAppBuilder.Build> method on the <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object. In addition, a <xref:Microsoft.Maui.MauiContext> object should then be created from the <xref:Microsoft.Maui.Hosting.MauiApp> object. The <xref:Microsoft.Maui.MauiContext> object will be used when converting .NET MAUI controls to native types.
 
-The examples in the following sections show the <xref:Microsoft.Maui.Embedding.AppHostBuilderExtensions.UseMauiEmbedding*> method being invoked at app startup.
+The examples in the following sections show the <xref:Microsoft.Maui.Embedding.AppHostBuilderExtensions.UseMauiEmbedding%2A> method being invoked at app startup.
 
 ### Android
 
@@ -115,7 +115,7 @@ public class AppDelegate : UIApplicationDelegate
 
 ### Windows
 
-On Windows apps built using WinUI, .NET MAUI can typically be initialized in the native `App` class, `Window` class, or a `Page` class. The following code example shows .NET MAUI being initialized in a `Page` class:
+On Windows apps built using WinUI, .NET MAUI can typically be initialized in the native `App` class, `Window` class, or a <xref:Microsoft.Maui.Controls.Page> class. The following code example shows .NET MAUI being initialized in a <xref:Microsoft.Maui.Controls.Page> class:
 
 ```csharp
 using Microsoft.Maui;

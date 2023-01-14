@@ -37,7 +37,7 @@ By default, .NET MAUI uses the native graphics capabilities of each platform. --
 
 ## Drawing canvas
 
-In .NET MAUI, the `GraphicsView` enables consumption of the `Microsoft.Maui.Graphics` functionality, via a drawing canvas that's exposed as an `ICanvas` object. For more information about the `GraphicsView`, see [GraphicsView](~/user-interface/controls/graphicsview.md).
+In .NET MAUI, the <xref:Microsoft.Maui.Controls.GraphicsView> enables consumption of the `Microsoft.Maui.Graphics` functionality, via a drawing canvas that's exposed as an `ICanvas` object. For more information about the <xref:Microsoft.Maui.Controls.GraphicsView>, see [GraphicsView](~/user-interface/controls/graphicsview.md).
 
 `ICanvas` defines the following properties that affect the appearance of objects that are drawn on the canvas:
 

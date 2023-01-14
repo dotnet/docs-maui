@@ -1,7 +1,7 @@
 ---
 title: "Create custom controls with .NET MAUI handlers"
 description: "Learn how to create a .NET MAUI handler, to provide the platform implementations for a cross-platform video control."
-ms.date: 11/15/2022
+ms.date: 12/20/2022
 ---
 
 # Create a custom control using handlers
@@ -14,8 +14,12 @@ A standard requirement for apps is the ability to play videos. This article exam
 - A resource, which is a file embedded in the app.
 - A file, from the device's video library.
 
+::: moniker range="=net-maui-6.0"
+
 > [!IMPORTANT]
-> The Windows App SDK v1.2 includes a control to play video. However, .NET MAUI currently uses an earlier of the Windows App SDK. Therefore, the Windows App SDK v1.2 must be added to your .NET MAUI app project with the NuGet package manager, if you want to play video on Windows.
+> The Windows App SDK v1.2 includes a control to play video. However, .NET MAUI 6.0 uses an earlier of this SDK. Therefore, to play video on Windows from a .NET MAUI 6.0 app requires you to add the Windows App SDK v1.2 to your app project with the NuGet package manager. Alternatively, use .NET MAUI 7.0 which automatically uses the Windows App SDK v1.2.
+
+::: moniker-end
 
 Video controls require *transport controls*, which are buttons for playing and pausing the video, and a positioning bar that shows the progress through the video and allows the user to move quickly to a different location. The `Video` control can either use the transport controls and positioning bar provided by the platform, or you can supply custom transport controls and a positioning bar. The following screenshots show the control on iOS, with and without custom transport controls:
 
@@ -46,7 +50,7 @@ Then, the cross-platform control can be consumed. For more information, see [Con
 
 ## Create the cross-platform control
 
-To create a cross-platform control, you should create a class that derives from `View`:
+To create a cross-platform control, you should create a class that derives from <xref:Microsoft.Maui.Controls.View>:
 
 ```csharp
 using System.ComponentModel;
@@ -96,7 +100,7 @@ namespace VideoDemos.Controls
 }
 ```
 
-The control should provide a public API that will be accessed by its handler, and control consumers. Cross-platform controls should derive from `View`, which represents a visual element that's used to place layouts and views on the screen.
+The control should provide a public API that will be accessed by its handler, and control consumers. Cross-platform controls should derive from <xref:Microsoft.Maui.Controls.View>, which represents a visual element that's used to place layouts and views on the screen.
 
 ## Create the handler
 
@@ -133,7 +137,7 @@ Each handler typically provides a *property mapper*, which defines what Actions 
 
 `PropertyMapper` is defined in .NET MAUI's generic `ViewHandler` class, and requires two generic arguments to be supplied:
 
-- The class for the cross-platform control, which derives from `View`.
+- The class for the cross-platform control, which derives from <xref:Microsoft.Maui.Controls.View>.
 - The class for the handler.
 
 The following code example shows the `VideoHandler` class extended with the `PropertyMapper` definition:
@@ -165,7 +169,7 @@ Each handler can also provide a *command mapper*, which defines what Actions to 
 
 `CommandMapper` is defined in .NET MAUI's generic `ViewHandler` class, and requires two generic arguments to be supplied:
 
-- The class for the cross-platform control, which derives from `View`.
+- The class for the cross-platform control, which derives from <xref:Microsoft.Maui.Controls.View>.
 - The class for the handler.
 
 The following code example shows the `VideoHandler` class extended with the `CommandMapper` definition:
@@ -261,7 +265,7 @@ For more information about configuring multi-targeting, see [Configure multi-tar
 
 Each platform handler class should be a partial class and derive from the generic `ViewHandler` class, which requires two type arguments:
 
-- The class for the cross-platform control, which derives from `View`.
+- The class for the cross-platform control, which derives from <xref:Microsoft.Maui.Controls.View>.
 - The type of the native view that implements the cross-platform control on the platform. This should be identical to the type of the `PlatformView` property in the handler.
 
 > [!IMPORTANT]
@@ -874,7 +878,7 @@ namespace VideoDemos.Platforms.Windows
 }
 ```
 
-`MauiVideoPlayer` derives from `Grid`, and the `MediaPlayerElement` is added as a child of the `Grid`. This enables the `MediaPlayerElement` to automatically size to fill all available space.
+`MauiVideoPlayer` derives from <xref:Microsoft.Maui.Controls.Grid>, and the `MediaPlayerElement` is added as a child of the <xref:Microsoft.Maui.Controls.Grid>. This enables the `MediaPlayerElement` to automatically size to fill all available space.
 
 The `Dispose` method is responsible for performing native view cleanup:
 
@@ -924,6 +928,75 @@ public class MauiVideoPlayer : Grid, IDisposable
 ```
 
 If the `Video.AreTransportControlsEnabled` property is set to `false`, the `MediaPlayerElement` doesn't show its playback controls. In this scenario, you can then control video playback programmatically or supply your own transport controls. For more information, see [Create custom transport controls](#create-custom-transport-controls).
+
+## Convert a cross-platform control into a platform control
+
+Any .NET MAUI cross-platform control, that derives from <xref:Microsoft.Maui.Controls.Element>, can be converted to its underlying platform control with the <xref:Microsoft.Maui.Platform.ElementExtensions.ToPlatform%2A> extension method:
+
+- On Android, <xref:Microsoft.Maui.Platform.ElementExtensions.ToPlatform%2A> converts a .NET MAUI control to an Android <xref:Android.Views.View> object.
+- On iOS and Mac Catalyst, <xref:Microsoft.Maui.Platform.ElementExtensions.ToPlatform%2A> converts a .NET MAUI control to a <xref:UIKit.UIView> object.
+- On Windows, <xref:Microsoft.Maui.Platform.ElementExtensions.ToPlatform%2A> converts a .NET MAUI control to a `FrameworkElement` object.
+
+> [!NOTE]
+> The <xref:Microsoft.Maui.Platform.ElementExtensions.ToPlatform%2A> method is in the `Microsoft.Maui.Platform` namespace.
+
+On all platforms, the <xref:Microsoft.Maui.Platform.ElementExtensions.ToPlatform%2A> method requires a <xref:Microsoft.Maui.MauiContext> argument.
+
+The <xref:Microsoft.Maui.Platform.ElementExtensions.ToPlatform%2A> method can convert a cross-platform control to its underlying platform control from platform code, such as in a partial handler class for a platform:
+
+```csharp
+using Microsoft.Maui.Handlers;
+using Microsoft.Maui.Platform;
+using VideoDemos.Controls;
+using VideoDemos.Platforms.Android;
+
+namespace VideoDemos.Handlers
+{
+    public partial class VideoHandler : ViewHandler<Video, MauiVideoPlayer>
+    {
+        ...
+        public static void MapSource(VideoHandler handler, Video video)
+        {
+            handler.PlatformView?.UpdateSource();
+
+            // Convert cross-platform control to its underlying platform control
+            MauiVideoPlayer mvp = (MauiVideoPlayer)video.ToPlatform(handler.MauiContext);
+            ...
+        }
+        ...
+    }
+}
+```
+
+In this example, in the `VideoHandler` partial class for Android, the `MapSource` method converts the `Video` instance to a `MauiVideoPlayer` object.
+
+The <xref:Microsoft.Maui.Platform.ElementExtensions.ToPlatform%2A> method can also convert a cross-platform control to its underlying platform control from cross-platform code:
+
+```csharp
+using Microsoft.Maui.Platform;
+
+namespace VideoDemos.Views;
+
+public partial class MyPage : ContentPage
+{
+    ...
+    protected override void OnHandlerChanged()
+    {
+        // Convert cross-platform control to its underlying platform control
+#if ANDROID
+        Android.Views.View nativeView = video.ToPlatform(video.Handler.MauiContext);
+#elif IOS || MACCATALYST
+        UIKit.UIView nativeView = video.ToPlatform(video.Handler.MauiContext);
+#elif WINDOWS
+        Microsoft.UI.Xaml.FrameworkElement nativeView = video.ToPlatform(video.Handler.MauiContext);
+#endif
+        ...
+    }
+    ...
+}
+```
+
+In this example, a cross-platform `Video` control named `video` is converted to its underlying native view on each platform in the <xref:Microsoft.Maui.Controls.Element.OnHandlerChanged> override. This override is called when the native view that implements the cross-platform control is available and initialized. The object returned by the <xref:Microsoft.Maui.Platform.ElementExtensions.ToPlatform%2A> method could be cast to its exact native type, which here is a `MauiVideoPlayer`.
 
 ## Play a video
 
@@ -1888,7 +1961,7 @@ namespace VideoDemos.Controls
 }
 ```
 
-Usually, a read-only bindable property would have a private `set` accessor on the `Status` property to allow it to be set from within the class. However, for a `View` derivative supported by handlers, the property must be set from outside the class but only by the control's handler.
+Usually, a read-only bindable property would have a private `set` accessor on the `Status` property to allow it to be set from within the class. However, for a <xref:Microsoft.Maui.Controls.View> derivative supported by handlers, the property must be set from outside the class but only by the control's handler.
 
 For this reason, another property is defined with the name `IVideoController.Status`. This is an explicit interface implementation, and is made possible by the `IVideoController` interface that the `Video` class implements:
 
@@ -2148,7 +2221,7 @@ namespace VideoDemos.Controls
 }
 ```
 
-Usually, a read-only bindable property would have a private `set` accessor on the `Duration` property to allow it to be set from within the class. However, for a `View` derivative supported by handlers, the property must be set from outside the class but only by the control's handler.
+Usually, a read-only bindable property would have a private `set` accessor on the `Duration` property to allow it to be set from within the class. However, for a <xref:Microsoft.Maui.Controls.View> derivative supported by handlers, the property must be set from outside the class but only by the control's handler.
 
 > [!NOTE]
 > The property-changed event handler for the `Duration` bindable property calls a method named `SetTimeToEnd`, which is described in [Calculating time to end](#calculating-time-to-end).
@@ -2305,7 +2378,7 @@ The `get` accessor returns the current position of the video as its playing. The
 
 On Android, iOS and Mac Catalyst, the property that obtains the current position only has a `get` accessor. Instead, a `Seek` method is available to set the position. This seems to be a more sensible approach than using a single `Position` property, which has an inherent problem. As a video plays, a `Position` property must be continually updated to reflect the new position. But you don't want most changes of the `Position` property to cause the video player to move to a new position in the video. If that happens, the video player would respond by seeking to the last value of the `Position` property, and the video wouldn't advance.
 
-Despite the difficulties of implementing a `Position` property with `get` and `set` accessors, this approach is used because it can utilize data binding. The `Position` property of the `Video` control can be bound to a `Slider` that's used both to display the position and to seek a new position. However, several precautions are necessary when implementing the `Position` property, to avoid feedback loops.
+Despite the difficulties of implementing a `Position` property with `get` and `set` accessors, this approach is used because it can utilize data binding. The `Position` property of the `Video` control can be bound to a <xref:Microsoft.Maui.Controls.Slider> that's used both to display the position and to seek a new position. However, several precautions are necessary when implementing the `Position` property, to avoid feedback loops.
 
 ##### Android
 
@@ -2484,7 +2557,7 @@ The `SetTimeToEnd` method is called from the property-changed event handlers of 
 
 #### Custom positioning bar
 
-A custom positioning bar can be implemented by creating a class that derives from `Slider`, which contains `Duration` and `Position` properties of type `TimeSpan`:
+A custom positioning bar can be implemented by creating a class that derives from <xref:Microsoft.Maui.Controls.Slider>, which contains `Duration` and `Position` properties of type `TimeSpan`:
 
 ```csharp
 namespace VideoDemos.Controls
@@ -2536,9 +2609,9 @@ namespace VideoDemos.Controls
 }
 ```
 
-The property-changed event handler for the `Duration` property sets the `Maximum` property of the `Slider` to the `TotalSeconds` property of the `TimeSpan` value. Similarly, the property-changed event handler for the `Position` property sets the `Value` property of the `Slider`. This is the mechanism by which the `Slider` tracks the position of `PositionSlider`.
+The property-changed event handler for the `Duration` property sets the `Maximum` property of the <xref:Microsoft.Maui.Controls.Slider> to the `TotalSeconds` property of the `TimeSpan` value. Similarly, the property-changed event handler for the `Position` property sets the `Value` property of the <xref:Microsoft.Maui.Controls.Slider>. This is the mechanism by which the <xref:Microsoft.Maui.Controls.Slider> tracks the position of `PositionSlider`.
 
-The `PositionSlider` is updated from the underlying `Slider` in only one scenario, which is when the user manipulates the `Slider` to indicate that the video should be advanced or reversed to a new position. This is detected in the `PropertyChanged` handler in the `PositionSlider` constructor. This event handler checks for a change in the `Value` property, and if it's different from the `Position` property, then the `Position` property is set from the `Value` property.
+The `PositionSlider` is updated from the underlying <xref:Microsoft.Maui.Controls.Slider> in only one scenario, which is when the user manipulates the <xref:Microsoft.Maui.Controls.Slider> to indicate that the video should be advanced or reversed to a new position. This is detected in the `PropertyChanged` handler in the `PositionSlider` constructor. This event handler checks for a change in the `Value` property, and if it's different from the `Position` property, then the `Position` property is set from the `Value` property.
 
 ## Register the handler
 
@@ -2636,7 +2709,7 @@ Video files that are stored on the device can be retrieved and then played by th
 </ContentPage>
 ```
 
-When the `Button` is tapped its `Clicked` event handler is executed, which is shown in the following code example:
+When the <xref:Microsoft.Maui.Controls.Button> is tapped its `Clicked` event handler is executed, which is shown in the following code example:
 
 ```csharp
 async void OnShowVideoLibraryClicked(object sender, EventArgs e)
@@ -2759,7 +2832,7 @@ The following XAML example shows custom transport controls that play, pause, and
 </ContentPage>
 ```
 
-In this example, the `Video` control sets the `AreTransportControlsEnabled` property to `false` and defines a `Button` that plays and pauses the video, and a `Button` that stop video playback. Button appearance is defined using unicode characters and their text equivalents, to create buttons that consist of an icon and text:
+In this example, the `Video` control sets the `AreTransportControlsEnabled` property to `false` and defines a <xref:Microsoft.Maui.Controls.Button> that plays and pauses the video, and a <xref:Microsoft.Maui.Controls.Button> that stop video playback. Button appearance is defined using unicode characters and their text equivalents, to create buttons that consist of an icon and text:
 
 :::image type="content" source="media/create/play-stop.png" alt-text="Screenshot of play and pause buttons.":::
 
@@ -2767,7 +2840,7 @@ When the video is playing, the play button is updated to a pause button:
 
 :::image type="content" source="media/create/pause-stop.png" alt-text="Screenshot of pause and stop buttons.":::
 
-The UI also includes an `ActivityIndicator` that's displayed while the video is loading. Data triggers are used to enable and disable the `ActivityIndicator` and the buttons, and to switch the first button between play and pause. For more information about data triggers, see [Data triggers](~/fundamentals/triggers.md#data-triggers).
+The UI also includes an <xref:Microsoft.Maui.Controls.ActivityIndicator> that's displayed while the video is loading. Data triggers are used to enable and disable the <xref:Microsoft.Maui.Controls.ActivityIndicator> and the buttons, and to switch the first button between play and pause. For more information about data triggers, see [Data triggers](~/fundamentals/triggers.md#data-triggers).
 
 The code-behind file defines the event handlers for the button `Clicked` events:
 
@@ -2844,7 +2917,7 @@ The following example shows a custom positioning bar, `PositionSlider`, being co
 </ContentPage>
 ```
 
-The `Position` property of the `Video` object is bound to the `Position` property of the `PositionSlider`, without performance issues, because the `Video.Position` property is changed by the `MauiVideoPlayer.UpdateStatus` method on each platform, which is only called 10 times a second. In addition, two `Label` objects display the `Position` and `TimeToEnd` properties values from the `Video` object.
+The `Position` property of the `Video` object is bound to the `Position` property of the `PositionSlider`, without performance issues, because the `Video.Position` property is changed by the `MauiVideoPlayer.UpdateStatus` method on each platform, which is only called 10 times a second. In addition, two <xref:Microsoft.Maui.Controls.Label> objects display the `Position` and `TimeToEnd` properties values from the `Video` object.
 
 ### Native view cleanup
 

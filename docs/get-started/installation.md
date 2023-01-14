@@ -24,7 +24,7 @@ To build, sign, and deploy .NET MAUI apps for iOS, you'll also need:
 - The latest version of [Xcode](https://developer.apple.com/xcode).
 - An [Apple ID](https://appleid.apple.com/account) and paid [Apple Developer Program](https://developer.apple.com/programs) enrollment. An Apple ID is required to deploy apps to devices, and to submit apps to the Apple Store.
 
-Alternatively, to deploy debug builds of your app directly from Windows to your iOS device with [hot restart](~/deployment/hot-restart.md), you'll need:
+Alternatively, to deploy debug builds of your app directly from Windows to your iOS device with [hot restart](~/ios/hot-restart.md), you'll need:
 
 - An [Apple Developer account](https://appleid.apple.com/account) and paid [Apple Developer Program](https://developer.apple.com/programs) enrollment.
 

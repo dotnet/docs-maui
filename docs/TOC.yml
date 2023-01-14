@@ -35,10 +35,20 @@
                   href: android/device/setup.md
         - name: iOS
           items:
+            - name: Apple account management
+              href: ios/apple-account-management.md
             - name: Build an iOS app with .NET CLI
               href: ios/cli.md
             - name: Pair to Mac
               href: ios/pair-to-mac.md
+            - name: Set up device for development
+              items:
+              - name: Overview
+                href: ios/device-provisioning/index.md
+              - name: Automatic provisioning
+                href: ios/device-provisioning/automatic-provisioning.md
+              - name: Manual provisioning
+                href: ios/device-provisioning/manual-provisioning.md
             - name: Simulators
               items:
               - name: Remote iOS simulator for Windows
@@ -629,8 +639,18 @@
       items:
         - name: Overview
           href: deployment/index.md
-        - name: Hot restart
-          href: deployment/hot-restart.md
+        - name: iOS
+          items:
+            - name: Code signing and provisioning
+              items:
+                - name: Capabilities
+                  href: ios/capabilities.md                
+                - name: Entitlements
+                  href: ios/entitlements.md
+            - name: Hot restart
+              href: ios/hot-restart.md
+            - name: Wireless deployment
+              href: ios/wireless-deployment.md
         - name: Project configuration
           href: deployment/visual-studio-properties.md
         - name: Publish
@@ -647,8 +667,6 @@
                   href: ios/deployment/overview.md
                 - name: Provision for app store distribution
                   href: ios/deployment/provision.md
-                - name: Entitlements and capabilities
-                  href: ios/deployment/entitlements.md
             - name: macOS
               href: macos/deployment/overview.md
             - name: Windows

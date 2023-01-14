@@ -157,7 +157,7 @@ Let's look at the changed lines, which are highlighted in the previous snippet:
 
   This line maps the `Notes.Models` .NET namespace to the `models` XML namespace.
 
-- The `BindingContext` property of the `ContentPage` is set to an instance of the `Note.Models.About` class, using the XML namespace and object of `models:About`. This was set using **property element syntax** instead of an XML attribute.
+- The `BindingContext` property of the <xref:Microsoft.Maui.Controls.ContentPage> is set to an instance of the `Note.Models.About` class, using the XML namespace and object of `models:About`. This was set using **property element syntax** instead of an XML attribute.
 
   > [!IMPORTANT]
   > Until now, properties have been set using an XML attribute. This works great for simple values, such as a `Label.FontSize` property. But if the property value is more complex, you must use **property element syntax** to create the object. Consider the following example of a creating a label with its `FontSize` property set:
@@ -178,7 +178,7 @@ Let's look at the changed lines, which are highlighted in the previous snippet:
 
 - Three `<Label>` controls had their `Text` property value changed from a hardcoded string to binding syntax: `{Binding PATH}`.
 
-  `{Binding}` syntax is processed at run-time, allowing the value returned from the binding to be dynamic. The `PATH` portion of `{Binding PATH}` is the property path to bind to. The property comes from the current control's `BindingContext`. With the `<Label>` control, `BindingContext` is unset. Context is inherited from the parent when it's unset by the control, which in this case, the parent object setting context is the root object: `ContentPage`.
+  `{Binding}` syntax is processed at run-time, allowing the value returned from the binding to be dynamic. The `PATH` portion of `{Binding PATH}` is the property path to bind to. The property comes from the current control's `BindingContext`. With the `<Label>` control, `BindingContext` is unset. Context is inherited from the parent when it's unset by the control, which in this case, the parent object setting context is the root object: <xref:Microsoft.Maui.Controls.ContentPage>.
 
   The object in the `BindingContext` is an instance of the `About` model. The binding path of one of the labels binds the `Label.Text` property to the `About.Title` property.
 
@@ -242,7 +242,7 @@ Currently the **note** view displays a single note, and there isn't a view that 
 
 ### Code the AllNotes model
 
-The new model will represent the data required to display multiple notes. This data will be a property that represents a collection of notes. The collection will be an `ObservableCollection` which is a specialized collection. When a control lists multiple items, such as a `ListView`, is bound to an `ObservableCollection`, the two work together to automatically keep the list of items in sync with the collection. If the list adds an item, the collection is updated. If the collection adds an item, the control is automatically updated with a new item.
+The new model will represent the data required to display multiple notes. This data will be a property that represents a collection of notes. The collection will be an `ObservableCollection` which is a specialized collection. When a control lists multiple items, such as a <xref:Microsoft.Maui.Controls.ListView>, is bound to an `ObservableCollection`, the two work together to automatically keep the list of items in sync with the collection. If the list adds an item, the collection is updated. If the collection adds an item, the control is automatically updated with a new item.
 
 01. In the **Solution Explorer** pane, open the _Models\\AllNotes.cs_ file.
 01. Replace the code with the following snippet:
@@ -266,11 +266,11 @@ The previous XAML introduces a few new concepts:
 
   The `ToolbarItem.IconImageSource` property sets the icon to display on the button. The icon can be any image resource defined by the project, however, in this example, a `FontImage` is used. A `FontImage` can use a single glyph from a font as an image.
 
-- The `CollectionView` control displays a collection of items, and in this case, is bound to the model's `Notes` property. The way each item is presented by the collection view is set through the  `CollectionView.ItemsLayout` and `CollectionView.ItemTemplate` properties.
+- The <xref:Microsoft.Maui.Controls.CollectionView> control displays a collection of items, and in this case, is bound to the model's `Notes` property. The way each item is presented by the collection view is set through the  `CollectionView.ItemsLayout` and `CollectionView.ItemTemplate` properties.
 
   For each item in the collection, the `CollectionView.ItemTemplate` generates the declared XAML. The `BindingContext` of that XAML becomes the collection item itself, in this case, each individual note. The template for the note uses two labels, which are bound to the note's `Text` and `Date` properties.
 
-- The `CollectionView` handles the `SelectionChanged` event, which is raised when an item in the collection view is selected.
+- The <xref:Microsoft.Maui.Controls.CollectionView> handles the `SelectionChanged` event, which is raised when an item in the collection view is selected.
 
 The code-behind for the view needs to be written to load the notes and handle the events.
 
@@ -281,7 +281,7 @@ The code-behind for the view needs to be written to load the notes and handle th
 
 This code uses the constructor to set the `BindingContext` of the page to the model.
 
-The `OnAppearing` method is overridden from the base class. This method is automatically called whenever the page is shown, such as when the page is navigated to. The code here tells the model to load the notes. Because the `CollectionView` in the **AllNotes view** is bound to the **AllNotes model's** `Notes` property, which is an `ObservableCollection`, whenever the notes are loaded, the `CollectionView` is automatically updated.
+The `OnAppearing` method is overridden from the base class. This method is automatically called whenever the page is shown, such as when the page is navigated to. The code here tells the model to load the notes. Because the <xref:Microsoft.Maui.Controls.CollectionView> in the **AllNotes view** is bound to the **AllNotes model's** `Notes` property, which is an `ObservableCollection`, whenever the notes are loaded, the <xref:Microsoft.Maui.Controls.CollectionView> is automatically updated.
 
 The `Add_Clicked` handler introduces another new concept, navigation. Because the app is using .NET MAUI Shell, you can navigate to pages by calling the `Shell.Current.GoToAsync` method. Notice that the handler is declared with the `async` keyword, which allows the use of the `await` keyword when navigating. This handler navigates to the `NotePage`.
 
@@ -318,11 +318,11 @@ The **Note view** needs to support the query string parameter, `ItemId`. Create 
 
 ## Modify the app's visual tree
 
-The `AppShell` is still loading the single note page, instead, it needs to load the **AllPages view**. Open the _AppShell.xaml_ file and change the first `ShellContent` entry to point to the `AllNotesPage` instead of `NotePage`:
+The `AppShell` is still loading the single note page, instead, it needs to load the **AllPages view**. Open the _AppShell.xaml_ file and change the first <xref:Microsoft.Maui.Controls.ShellContent> entry to point to the `AllNotesPage` instead of `NotePage`:
 
 :::code language="xaml" source="../snippets/navigation/csharp/Notes/AppShell.xaml" highlight="12":::
 
-If you run the app now, you'll notice it crashes if you press the **Add** button, complaining that it can't navigate to `NotesPage`. Every page that can be navigated to from another page, needs to be registered with the navigation system. The `AllNotesPage` and `AboutPage` pages are automatically registered with the navigation system by being declared in the `TabBar`.
+If you run the app now, you'll notice it crashes if you press the **Add** button, complaining that it can't navigate to `NotesPage`. Every page that can be navigated to from another page, needs to be registered with the navigation system. The `AllNotesPage` and `AboutPage` pages are automatically registered with the navigation system by being declared in the <xref:Microsoft.Maui.Controls.TabBar>.
 
 Register the `NotesPage` with the navigation system:
 
@@ -338,4 +338,4 @@ The `Routing.RegisterRoute` method takes two parameters:
 
 Now you can run your app. Try adding new notes, navigating back and forth between notes, and deleting notes.
 
-[![Explore the code.](~/media/code-sample.png) Explore the code for this step of the tutorial.](https://github.com/dotnet/maui-samples/tree/main/6.0/Tutorials/CreateNetMauiApp/step4)
+[![Explore the code.](~/media/code-sample.png) Explore the code for this step of the tutorial.](https://github.com/dotnet/maui-samples/tree/main/7.0/Tutorials/CreateNetMauiApp/step4)

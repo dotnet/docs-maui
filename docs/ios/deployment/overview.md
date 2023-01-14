@@ -33,6 +33,9 @@ The process for publishing a .NET MAUI iOS app is as follows:
 1. Connect Visual Studio 2022 to a Mac build host.
 1. Publish your app using .NET CLI.
 
+> [!IMPORTANT]
+> Blazor Hybrid apps require a WebView on the host platform. For more information, see [Keep the Web View current in deployed Blazor Hybrid apps](/aspnet/core/blazor/hybrid/security/security-considerations#keep-the-web-view-current-in-deployed-apps).
+
 ## Create a certificate signing request
 
 To sign a .NET MAUI iOS app you must first create a certificate signing request (CSR) in Keychain Access on a Mac. For more information, see [Create a certificate signing request](provision.md#create-a-certificate-signing-request).
@@ -43,7 +46,7 @@ The CSR allows you to generate a distribution certificate, which will be used to
 
 ## Create a distribution profile
 
-To publish a .NET MAUI iOS app, you'll need to build a *Distribution Provisioning Profile* specific to it. This profile enables the app to be digitally signed for release so that it can be installed on an iOS device. A distribution provisioning profile contains an app ID and a distribution certificate. For more information, see [Create a distribution profile](provision.md#create-a-distribution-profile).
+To publish a .NET MAUI iOS app, you'll need to build a *Distribution Provisioning Profile* specific to it. This profile enables the app to be digitally signed for release so that it can be installed on an iOS device. A distribution provisioning profile contains an App ID and a distribution certificate. For more information, see [Create a distribution profile](provision.md#create-a-distribution-profile).
 
 ## Download the provisioning profile on your Mac build host
 
@@ -74,7 +77,7 @@ After creating the provisioning profile, it must be added to your Mac build host
 
 ## Add entitlements to your app
 
-In iOS, apps run in a sandbox that provides a set of rules that limit access between the app and system resources or user data. *Entitlements* are used to request the expansion of the sandbox to give your app additional capabilities. Any entitlements used by your app must be specified in an entitlements file. For more information about entitlements, see [Entitlements](entitlements.md).
+In iOS, apps run in a sandbox that provides a set of rules that limit access between the app and system resources or user data. *Entitlements* are used to request the expansion of the sandbox to give your app additional capabilities. Any entitlements used by your app must be specified in an entitlements file. For more information about entitlements, see [Entitlements](~/ios/entitlements.md).
 
 ## Add code signing data to your app project
 

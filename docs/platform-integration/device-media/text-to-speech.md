@@ -1,7 +1,7 @@
 ---
 title: "Text-to-Speech"
 description: "Learn how to use the .NET MAUI ITextToSpeech interface, which enables an application utilize the built-in text-to-speech engines to speak back text from the device."
-ms.date: 09/02/2022
+ms.date: 12/27/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Media", "TextToSpeech"]
 ---
 
@@ -10,6 +10,34 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Media", "TextToSpeech"]
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `ITextToSpeech` interface. This interface enables an application to utilize the built-in text-to-speech engines to speak back text from the device. You can also use it to query for available languages.
 
 The default implementation of the `ITextToSpeech` interface is available through the `TextToSpeech.Default` property. Both the `ITextToSpeech` interface and `TextToSpeech` class are contained in the `Microsoft.Maui.Media` namespace.
+
+## Get started
+
+To access text-to-speech functionality, the following platform-specific setup is required.
+
+# [Android](#tab/android)
+
+If your project's Target Android version is set to **Android 11 (R API 30)** or higher, you must update your _Android Manifest_ with an intent filter for the text-to-speech (TTS) engine. For more information about intents, see Android's documentation on [Intents and Intent Filters](https://developer.android.com/guide/components/intents-filters).
+
+In the _Platforms/Android/AndroidManifest.xml_ file, add the following `queries/intent` nodes to the `manifest` node:
+
+```xml
+<queries>
+  <intent>
+    <action android:name="android.intent.action.TTS_SERVICE" />
+  </intent>
+</queries>
+```
+
+# [iOS\macOS](#tab/ios)
+
+No setup is required.
+
+# [Windows](#tab/windows)
+
+No setup is required.
+
+-----
 
 ## Using Text-to-Speech
 

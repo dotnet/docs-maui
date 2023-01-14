@@ -17,11 +17,11 @@ ms.date: 04/07/2022
 
 ## App visual hierarchy
 
-In a .NET MAUI Shell app, the visual hierarchy of the app is described in a class that subclasses the `Shell` class. This class can consist of three main hierarchical objects:
+In a .NET MAUI Shell app, the visual hierarchy of the app is described in a class that subclasses the <xref:Microsoft.Maui.Controls.Shell> class. This class can consist of three main hierarchical objects:
 
-1. `FlyoutItem` or `TabBar`. A `FlyoutItem` represents one or more items in the flyout, and should be used when the navigation pattern for the app requires a flyout. A `TabBar` represents the bottom tab bar, and should be used when the navigation pattern for the app begins with bottom tabs and doesn't require a flyout.
-1. `Tab`, which represents grouped content, navigable by bottom tabs.
-1. `ShellContent`, which represents the `ContentPage` objects for each tab.
+1. <xref:Microsoft.Maui.Controls.FlyoutItem> or <xref:Microsoft.Maui.Controls.TabBar>. A <xref:Microsoft.Maui.Controls.FlyoutItem> represents one or more items in the flyout, and should be used when the navigation pattern for the app requires a flyout. A <xref:Microsoft.Maui.Controls.TabBar> represents the bottom tab bar, and should be used when the navigation pattern for the app begins with bottom tabs and doesn't require a flyout. For more information about flyout items, see [.NET MAUI Shell flyout](flyout.md). For more information about tab bars, see [.NET MAUI Shell tabs](tabs.md).
+1. <xref:Microsoft.Maui.Controls.Tab>, which represents grouped content, navigable by bottom tabs. For more information, see [.NET MAUI Shell tabs](tabs.md).
+1. <xref:Microsoft.Maui.Controls.ShellContent>, which represents the <xref:Microsoft.Maui.Controls.ContentPage> objects for each tab. For more information, see [.NET MAUI Shell pages](pages.md).
 
 These objects don't represent any user interface, but rather the organization of the app's visual hierarchy. Shell will take these objects and produce the navigation user interface for the content.
 
@@ -43,11 +43,11 @@ In this example, some flyout items are duplicated as tab bar items. However, the
 > [!NOTE]
 > When the flyout isn't open the bottom tab bar can be considered to be the top level of navigation in the app.
 
-Each tab on the tab bar displays a `ContentPage`. However, if a bottom tab contains more than one page, the pages are navigable by the top tab bar:
+Each tab on the tab bar displays a <xref:Microsoft.Maui.Controls.ContentPage>. However, if a bottom tab contains more than one page, the pages are navigable by the top tab bar:
 
 :::image type="content" source="media/dogs.png" alt-text="Screenshot of Shell top tabs.":::
 
-Within each tab, additional `ContentPage` objects that are known as detail pages, can be navigated to:
+Within each tab, additional <xref:Microsoft.Maui.Controls.ContentPage> objects that are known as detail pages, can be navigated to:
 
 :::image type="content" source="media/dogdetails.png" alt-text="Screenshot of Shell page navigation.":::
 
@@ -55,7 +55,7 @@ Shell uses a URI-based navigation experience that uses routes to navigate to any
 
 ## Search
 
-.NET MAUI Shell includes integrated search functionality that's provided by the `SearchHandler` class. Search capability can be added to a page by adding a subclassed `SearchHandler` object to it. This results in a search box being added at the top of the page. When data is entered into the search box, the search suggestions area is populated with data:
+.NET MAUI Shell includes integrated search functionality that's provided by the <xref:Microsoft.Maui.Controls.SearchHandler> class. Search capability can be added to a page by adding a subclassed <xref:Microsoft.Maui.Controls.SearchHandler> object to it. This results in a search box being added at the top of the page. When data is entered into the search box, the search suggestions area is populated with data:
 
 :::image type="content" source="media/search.png" alt-text="Screenshot of Shell search.":::
 
