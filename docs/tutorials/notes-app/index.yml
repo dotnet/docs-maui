@@ -35,6 +35,10 @@ items:
 
     ## Next steps
 
+    In the next part of the tutorial series you'll learn how to implement model-view-viewmodel (MVVM) patterns in your project.
+
+    - [Upgrade an app with MVVM principles](../notes-mvvm/index.yml)
+
     The following links provide more information related to some of the concepts you learned in this tutorial:
 
     - [.NET MAUI Shell overview](../../fundamentals/shell/index.md)
