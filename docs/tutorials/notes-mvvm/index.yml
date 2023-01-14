@@ -19,7 +19,7 @@ items:
   content: |
     [!INCLUDE [](includes/upgrade.md)]
 
-- title: Brief overview of MVVM
+- title: Understand MVVM
   durationInMinutes: 3
   content: |
     [!INCLUDE [](includes/mvvm.md)]

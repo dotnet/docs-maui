@@ -7,13 +7,13 @@ ms.topic: include
 
 The .NET MAUI developer experience typically involves creating a user interface in XAML, and then adding code-behind that operates on the user interface. Complex maintenance issues can arise as apps are modified and grow in size and scope. These issues include the tight coupling between the UI controls and the business logic, which increases the cost of making UI modifications, and the difficulty of unit testing such code.
 
-The MVVM pattern helps cleanly separate an app's business and presentation logic from its user interface (UI). Maintaining a clean separation between app logic and the UI helps address numerous development issues and makes an app easier to test, maintain, and evolve. It can also significantly improve code reuse opportunities and allows developers and UI designers to collaborate more easily when developing their respective parts of an app.
+The model-view-viewmodel (MVVM) pattern helps cleanly separate an app's business and presentation logic from its user interface (UI). Maintaining a clean separation between app logic and the UI helps address numerous development issues and makes an app easier to test, maintain, and evolve. It can also significantly improve code reuse opportunities and allows developers and UI designers to collaborate more easily when developing their respective parts of an app.
 
 ## The pattern
 
 There are three core components in the MVVM pattern: the model, the view, and the view model. Each serves a distinct purpose. The following diagram shows the relationships between the three components.
 
-![The MVVM pattern](../media/mvvm/mvvm-pattern.png)
+:::image type="content" source="../media/mvvm/mvvm-pattern.png" alt-text="A diagram demonstrating the parts of an MVVM-modeled application":::
 
 In addition to understanding the responsibilities of each component, it's also important to understand how they interact. At a high level, the view "knows about" the view model, and the view model "knows about" the model, but the model is unaware of the view model, and the view model is unaware of the view. Therefore, the view model isolates the view from the model, and allows the model to evolve independently of the view.
 
