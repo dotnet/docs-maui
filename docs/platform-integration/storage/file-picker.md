@@ -49,9 +49,7 @@ The `ReadExternalStorage` permission is required and must be configured in the A
 
 # [iOS\macOS](#tab/ios)
 
-Enable iCloud capabilities.
-
-<!-- To enable iCloud capabilities in the file picker, TODO: follow these [directions](../ios/platform/document-picker.md#enabling-icloud-in-maui). -->
+Enable iCloud capabilities. For more information, see [Capabilities](~/ios/capabilities.md).
 
 # [Windows](#tab/windows)
 
