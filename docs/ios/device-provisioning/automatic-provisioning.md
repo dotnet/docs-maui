@@ -63,7 +63,7 @@ When automatic provisioning is enabled, Visual Studio will re-run the automatic 
 
 - An iOS device is plugged into your Mac. This automatically checks to see if the device is registered on the Apple's developer portal. If it isn't, it will add it and generate a new provisioning profile that contains it.
 - The Bundle ID of your app is changed. This updates the App ID and so a new provisioning profile containing this App ID is created.
-- A supported capability is enabled in the **Entitlements.plist** file. This capability will be added to the App ID and a new provisioning profile with the updated App ID is generated. Not all capabilities are currently supported. For more information about capabilities, see [Capabilities](~/ios/capabilities.md).
+- A supported capability is enabled in the *Entitlements.plist* file. This capability will be added to the App ID and a new provisioning profile with the updated App ID is generated. Not all capabilities are currently supported. For more information about capabilities, see [Capabilities](~/ios/capabilities.md).
 
 ## Wildcard App IDs
 
