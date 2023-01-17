@@ -1,10 +1,10 @@
 ---
-title: "Publish a .NET MAUI app for iOS"
+title: "Create the .NET MAUI iOS app package"
 description: "Learn how to package and publish a iOS .NET MAUI app."
 ms.date: 06/13/2022
 ---
 
-# Publish a .NET MAUI app for iOS
+# Create the iOS app package
 
 > [!div class="op_single_selector"]
 >
