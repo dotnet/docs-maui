@@ -163,7 +163,7 @@ landingContent:
           - text: Publish Android apps
             url: android/deployment/overview.md
           - text: Publish iOS apps
-            url: ios/deployment/overview.md
+            url: ios/deployment/index.md
           - text: Publish macOS apps
             url: macos/deployment/overview.md
           - text: Publish Windows apps
