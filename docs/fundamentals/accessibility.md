@@ -177,7 +177,7 @@ label.SetSemanticFocus();
 
 ## Semantic screen reader
 
-.NET Maui provides the `ISemanticScreenReader` interface, with which you can instruct a screen reader to announce text to the user. The interface is exposed through the `SemanticScreenReader.Default` property, and is available in the `Microsoft.Maui.Accessability` namespace.
+.NET Maui provides the `ISemanticScreenReader` interface, with which you can instruct a screen reader to announce text to the user. The interface is exposed through the `SemanticScreenReader.Default` property, and is available in the `Microsoft.Maui.Accessibility` namespace.
 
 To instruct a screen reader to announce text, use the `Announce` method, passing a `string` argument that represents the text. The following example demonstrates using this method:
 
