@@ -664,11 +664,11 @@
             - name: iOS
               items:
                 - name: Overview
-                  href: ios/deployment/idnex.md
-                - name: Publish an iOS app
-                  href: ios/deployment/overview.md
+                  href: ios/deployment/index.md
                 - name: Provision for app store distribution
                   href: ios/deployment/app-store.md
+                - name: Publish an iOS app
+                  href: ios/deployment/publish.md                  
             - name: macOS
               href: macos/deployment/overview.md
             - name: Windows

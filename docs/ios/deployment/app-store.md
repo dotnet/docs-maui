@@ -176,3 +176,5 @@ The development provisioning profile will then be available for use.
 The development provisioning profile will then be available for use.
 
 ---
+
+<!-- TODO: Next button to the doc where they actually use the distribution provisioning profile to generate the app package. -->
