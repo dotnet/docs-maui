@@ -88,7 +88,7 @@ There are two types of App ID:
 - Wildcard. A wildcard App ID allows you to use a single App ID to match multiple apps, and typically takes the form `com.domainname.*`. A wildcard App ID can be used to install most apps to a device, and should be used for apps that do not enable app-specific capabilities.
 - Explicit. An explicit App ID is unique to a single app, and typically takes the form `com.domainname.myid`. An explicit App ID allows the installation of one app, with a matching bundle identifier, to a device. Explicit App IDs are typically used for apps that enable app-specific capabilities such as Apple Pay, or Game Center.
 
-The recommended approach is to create a *wildcard App ID*, unless your app uses app-specific capabilities. <!-- For information on creating Explicit App IDs, refer to the [Working with Capabilities](~/ios/deploy-test/provisioning/capabilities/index.md) guide.-->
+The recommended approach is to create a *wildcard App ID*, unless your app uses app-specific capabilities. For more information about capabilities, see [Capabilities](~/ios/capabilities.md).
 
 A wildcard App ID can be created with the following steps:
 

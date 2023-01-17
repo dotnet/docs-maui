@@ -644,7 +644,7 @@
             - name: Code signing and provisioning
               items:
                 - name: Capabilities
-                  href: ios/capabilities.md                
+                  href: ios/capabilities.md
                 - name: Entitlements
                   href: ios/entitlements.md
             - name: Hot restart
@@ -663,10 +663,12 @@
                 href: android/deployment/publish-cli.md
             - name: iOS
               items:
+                - name: Overview
+                  href: ios/deployment/idnex.md
                 - name: Publish an iOS app
                   href: ios/deployment/overview.md
                 - name: Provision for app store distribution
-                  href: ios/deployment/provision.md
+                  href: ios/deployment/app-store.md
             - name: macOS
               href: macos/deployment/overview.md
             - name: Windows
