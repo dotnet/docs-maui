@@ -119,3 +119,30 @@ The process to add a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWe
         }
     }
     ```
+
+## Inspect a Blazor Hybrid app on Mac Catalyst
+
+To use Safari developer tools to inspect a Blazor Hybrid app on Mac Catalyst requires you to add the `com.apple.security.get-task-allow` key, of type `Boolean`, to the entitlements file of your app for its debug build. For more information about entitlements, see [Entitlements](~/ios/entitlements.md).
+
+To add an entitlements file to your .NET MAUI app project, add a new XML file named *Entitlements.Debug.plist* to the *Platforms\\MacCatalyst* folder of your app project. Then add the following XML to the file:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>com.apple.security.get-task-allow</key>
+    <true/>
+</dict>
+</plist>
+```
+
+To configure your app to consume this entitlements file, add the following `<PropertyGroup>` node to your app's project file as a child of the `<Project>` node:
+
+```xml
+<PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst' and '$(Configuration)' == 'Debug'">
+    <CodeSignEntitlements>Platforms/MacCatalyst/Entitlements.Debug.plist</CodeSignEntitlements>
+</PropertyGroup>
+```
+
+This configuration ensures that the entitlements file is only processed for debug builds on Mac Catalyst.
