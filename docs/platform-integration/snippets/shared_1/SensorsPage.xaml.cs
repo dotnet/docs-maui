@@ -130,13 +130,13 @@ public partial class SensorsPage : ContentPage
         {
             if (!Gyroscope.Default.IsMonitoring)
             {
-                // Turn on compass
+                // Turn on gyroscope
                 Gyroscope.Default.ReadingChanged += Gyroscope_ReadingChanged;
                 Gyroscope.Default.Start(SensorSpeed.UI);
             }
             else
             {
-                // Turn off compass
+                // Turn off gyroscope
                 Gyroscope.Default.Stop();
                 Gyroscope.Default.ReadingChanged -= Gyroscope_ReadingChanged;
             }
