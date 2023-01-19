@@ -1,18 +1,20 @@
 ---
-title: "Provision a .NET MAUI iOS app for App Store distribution"
-description: "Learn how to provision a .NET MAUI iOS app for app store distribution."
+title: "Provision a .NET MAUI iOS app for ad-hoc distribution"
+description: "Learn how to provision a .NET MAUI iOS app for ad-hoc distribution."
 ms.date: 01/17/2023
 ---
 
-# Provision an iOS app for App Store distribution
+# Provision an iOS app for ad-hoc distribution
 
-The most common way of distributing iOS apps to users is through the App Store. Apps are submitted to the App Store through a portal called *iTunes Connect*. Only developers who belong to the Apple Developer Program have access to this portal. Members of the Apple Developer Enterprise Program do not have access. All apps submitted to the App Store require approval from Apple.
+Ad-hoc distribution is primarily used for testing apps within a wide group of people, and is available for the Apple Developer Program and the Apple Developer Enterprise Program. Another use case for ad-hoc distribution is distribution within a company when iTunes Connect isn't an option.
+
+Ad-hoc distribution has the advantage of not requiring App Store approval, with apps being installed over-the-air from a web server, or via iTunes. However, it's limited to 100 devices per membership year, for both development and distribution, and the devices must be added to Apple's developer portal. For more information on adding devices, see [Add a device](~/ios/device-provisioning/manual.md#add-a-device).
 
 Distributing an iOS app requires that the app is provisioned using a *provisioning profile*. Provisioning profiles are files that contain code signing information, as well as the identity of the app and its intended distribution mechanism.
 
-To distribute a .NET Multi-platform App UI (.NET MAUI) iOS app, you'll need to build a *Distribution Provisioning Profile* specific to it. This profile enables the app to be digitally signed for release so that it can be installed on an iOS device. A distribution provisioning profile contains an App ID and a distribution certificate. You can use the same App ID that you used when deploying your app to a device for testing. However, you will need to create a distribution certificate to identify yourself or your organization, if you don't already have one.
+To distribute a .NET Multi-platform App UI (.NET MAUI) iOS app, you'll need to build a *Distribution Provisioning Profile* specific to it. This profile enables the app to be digitally signed for release so that it can be installed on an iOS device. A ad-hoc distribution provisioning profile contains an App ID, a distribution certificate, and a list of the devices that can install the app. You can use the same App ID that you used when deploying your app to a device for testing. However, you will need to create a distribution certificate to identify yourself or your organization, if you don't already have one.
 
-The process for creating an App Store distribution provisioning profile is as follows:
+The process for creating an ad-hoc distribution provisioning profile is as follows:
 
 1. Create a certificate signing request. For more information, see [Create a certificate signing request](#create-a-certificate-signing-request).
 1. Create a distribution certificate. For more information, see [Create a distribution certificate](#create-a-distribution-certificate).

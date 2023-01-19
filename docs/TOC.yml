@@ -667,8 +667,9 @@
                   href: ios/deployment/index.md
                 - name: Provision for app store distribution
                   href: ios/deployment/app-store.md
+                - name: Provision for ad-hoc distribution
                 - name: Publish an iOS app
-                  href: ios/deployment/publish.md                  
+                  href: ios/deployment/publish.md
             - name: macOS
               href: macos/deployment/overview.md
             - name: Windows
