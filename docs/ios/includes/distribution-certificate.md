@@ -18,7 +18,7 @@ To create a distribution certificate:
 
 1. On the **Create a New Certificate** page, click **Choose File**:
 
-    :::image type="content" source="media/provisioning/choose-certificate.png" alt-text="Upload your certificate signing request.":::
+    :::image type="content" source="../deployment/media/provisioning/choose-certificate.png" alt-text="Upload your certificate signing request.":::
 
 1. In the **Choose Files to Upload** dialog, select the certificate request file (a file with a `.certSigningRequest` file extension) and then click **Upload**.
 1. On the **Create a New Certificate** page, click the **Continue** button:
@@ -27,7 +27,7 @@ To create a distribution certificate:
 
 1. On the **Download Your Certificate** page, click the **Download** button:
 
-    :::image type="content" source="media/provisioning/download-certificate.png" alt-text="Download your distribution certificate.":::
+    :::image type="content" source="../deployment/media/provisioning/download-certificate.png" alt-text="Download your distribution certificate.":::
 
     The certificate file (a file with a `.cer` extension) will be downloaded to your chosen location.
 

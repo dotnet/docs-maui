@@ -29,6 +29,8 @@ The process for creating an ad-hoc distribution provisioning profile is as follo
 
 A distribution provisioning profile enables your .NET MAUI iOS app to be digitally signed for release, so that it can be installed on an iOS device. A distribution provisioning profile contains an App ID and a distribution certificate.
 
+### Add devices
+
 ### Create an App ID
 
 An App ID is required to identify the app that you are distributing. An App ID is similar to a reverse-DNS string, that uniquely identifies an app, and should be identical to the bundle identifier for your app. You can use the same App ID that you used when deploying your app to a device for testing.
