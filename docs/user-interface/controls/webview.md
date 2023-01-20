@@ -47,6 +47,12 @@ URIs must be fully formed with the protocol specified.
 > [!NOTE]
 > Despite the `Source` property being of type `WebViewSource`, the property can be set to a string-based URI. This is because .NET MAUI includes a type converter, and an implicit conversion operator, that converts the string-based URI to a `UrlWebViewSource` object.
 
+:::zone pivot="devices-windows"
+
+<!-- blank pivot to skirt the dumb warning about using every pivot type -->
+
+:::zone-end
+
 :::zone pivot="devices-ios, devices-maccatalyst"
 
 ### Configure App Transport Security on iOS and Mac Catalyst
