@@ -1,7 +1,7 @@
 ---
 title: "Default Values Changed"
-description: ""
-ms.date: 10/01/2022
+description: "Changes to default values."
+ms.date: 1/20/2023
 ---
 
 # Overview
@@ -15,8 +15,6 @@ Xamarin.Forms included arbitrary default values for padding, margins, spacing, e
 
 | Property | Xamarin.Forms | .NET MAUI |
 | --- | --- | --- |
-| Button.Padding | | NaN |
-| IndicatorView.Spacing | [?](https://cs.github.com/xamarin/Xamarin.Forms/blob/022cf08cbbe24141d1db19c314854afc64f6c097/Xamarin.Forms.Core/IndicatorView.cs#L119) | 4 |
 | Grid.ColumnSpacing | 6 | 0 |
 | Grid.RowSpacing | 6 | 0 |
 | StackLayout.Spacing | 6 | 0 |

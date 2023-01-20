@@ -1,18 +1,18 @@
 ---
 title: "Xamarin.Android csproj conversion"
-description: ""
-ms.date: 10/01/2022
+description: "Changes to the csproj file comparing .NET Framework and .NET."
+ms.date: 1/20/2023
 ---
 
 # Xamarin.Android csproj conversion
 
-A .NET 6 project for a Xamarin.Android application looks something
+A .NET 7 project for a Xamarin.Android application looks something
 like:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net6.0-android</TargetFramework>
+    <TargetFramework>net7.0-android</TargetFramework>
     <OutputType>Exe</OutputType>
   </PropertyGroup>
 </Project>
@@ -21,37 +21,17 @@ like:
 For a "library" project, omit the `$(OutputType)` property
 completely or specify `Library`.
 
-## Bindings projects
-
-Changes for bindings projects are documented [here][binding].
-
-[binding]: OneDotNetBindingProjects.md
+Additional resources:
+* [Binding projects](https://github.com/xamarin/xamarin-android/blob/main/Documentation/guides/OneDotNetBindingProjects.md)
 
 ## .NET Configuration Files
 
-No support for [configuration files][config] such as `Foo.dll.config`
+No support for [configuration files](https://docs.microsoft.com/dotnet/framework/configure-apps/) such as `Foo.dll.config`
 or `Foo.exe.config` is available in Xamarin.Android projects targeting
-.NET 6. [`<dllmap>`][dllmap] configuration elements are not supported
+.NET 7. [`<dllmap>`](https://github.com/dotnet/runtime/blob/main/docs/design/features/dllmap.md) configuration elements are not supported
 in .NET Core at all, and other element types for compatibility
-packages like [System.Configuration.ConfigurationManager][nuget] have
+packages like [System.Configuration.ConfigurationManager](https://www.nuget.org/packages/System.Configuration.ConfigurationManager/) have
 never been supported in Xamarin.Android projects.
-
-[config]: https://docs.microsoft.com/dotnet/framework/configure-apps/
-[nuget]: https://www.nuget.org/packages/System.Configuration.ConfigurationManager/
-
-## Changes to MSBuild tasks
-
-In .NET 6 the behavior of the following MSBuild tasks will change, but
-"legacy" projects will stay the same:
-
-* `<ValidateJavaVersion/>` - used to require Java 1.6, 1.7, or 1.8
-  based on the version of the Android Build Tools or
-  `$(TargetFrameworkVersion)`. .NET 6 will require Java 1.8.
-
-* `<ResolveAndroidTooling/>` - used to support the
-  `$(AndroidUseLatestPlatformSdk)` setting or multiple
-  `$(TargetFrameworkVersion)`. .NET 6 will always target the latest
-  Android APIs for `Mono.Android.dll`.
 
 ## Changes to MSBuild properties
 
@@ -64,7 +44,7 @@ In .NET 6 the behavior of the following MSBuild tasks will change, but
 </PropertyGroup>
 ```
 
-Instead use .NET's concept of [runtime identifiers][rids]:
+Use .NET's concept of [runtime identifiers][3]:
 
 ```xml
 <PropertyGroup>
@@ -76,7 +56,7 @@ Instead use .NET's concept of [runtime identifiers][rids]:
 `$(AndroidUseIntermediateDesignerFile)` will be `True` by default.
 
 `$(AndroidBoundExceptionType)` will be `System` by default.  This will
-[alter the types of exceptions thrown from various methods][abet-sys] to
+[alter the types of exceptions thrown from various methods][4] to
 better align with existing .NET 6 semantics, at the cost of compatibility with
 previous Xamarin.Android releases.
 
@@ -113,30 +93,22 @@ not be supported:
 </ProjectReference>
 ```
 
-[rids]: https://docs.microsoft.com/dotnet/core/rid-catalog
-[abet-sys]: https://github.com/xamarin/xamarin-android/issues/4127
-
 ## Default file inclusion
 
-Default Android related file globbing behavior is defined in [`AutoImport.props`][autoimport].
+Default Android related file globbing behavior is defined in [`AutoImport.props`][5].
 This behavior can be disabled for Android items by setting `$(EnableDefaultAndroidItems)` to `false`, or
 all default item inclusion behavior can be disabled by setting `$(EnableDefaultItems)` to `false`.
-
-[autoimport]: https://github.com/dotnet/designs/blob/4703666296f5e59964961464c25807c727282cae/accepted/2020/workloads/workload-resolvers.md#workload-props-files
 
 ## Runtime behavior
 
 There is some behavioral changes to the `String.IndexOf()` method in
-.NET 5 and higher on different platforms, see details [here][indexof].
-
-[indexof]: https://docs.microsoft.com/dotnet/standard/globalization-localization/globalization-icu
+.NET 5 and higher on different platforms, see details [here](https://docs.microsoft.com/dotnet/standard/globalization-localization/globalization-icu).
 
 ## Linker (ILLink)
 
-.NET 5 and higher has new [settings for the linker][linker]:
+.NET 5 and higher has new [settings for the linker](https://docs.microsoft.com/dotnet/core/deploying/trimming-options):
 
 * `<PublishTrimmed>true</PublishTrimmed>`
-* `<TrimMode>copyused</TrimMode>` - Enable assembly-level trimming.
 * `<TrimMode>link</TrimMode>` - Enable member-level trimming.
 
 In Android application projects by default, `Debug` builds will not
@@ -155,25 +127,20 @@ With `AndroidLinkMode=SdkOnly` only BCL and SDK assemblies marked with
 `%(Trimmable)` will be linked at the member level.
 `AndroidLinkMode=Full` will set `%(TrimMode)=link` on all .NET
 assemblies similar to the example in the [trimming
-documentation][linker-full].
+documentation](https://docs.microsoft.com/dotnet/core/deploying/trimming-options#trimmed-assemblies).
 
 It is recommended to migrate to the new linker settings, as
 `AndroidLinkMode` will eventually be deprecated.
 
-[linker]: https://docs.microsoft.com/dotnet/core/deploying/trimming-options
-[linker-full]: https://docs.microsoft.com/dotnet/core/deploying/trimming-options#trimmed-assemblies
-
 ## AOT
 
 `$(RunAOTCompilation)` will be the new MSBuild property for enabling
-AOT. This is the same property used for [Blazor WASM][blazor].
+AOT. This is the same property used for [Blazor WASM](https://docs.microsoft.com/aspnet/core/blazor/host-and-deploy/webassembly/#ahead-of-time-aot-compilation).
 `$(AotAssemblies)` will also enable AOT, in order to help with
 migration from "legacy" Xamarin.Android to .NET 6.
 
 It is recommended to migrate to the new `$(RunAOTCompilation)`
 property, as `$(AotAssemblies)` is deprecated in .NET 7.
-
-[blazor]: https://docs.microsoft.com/aspnet/core/blazor/host-and-deploy/webassembly/#ahead-of-time-aot-compilation
 
 We want to choose the optimal settings for startup time and app size.
 By default `Release` builds will default to:
@@ -184,6 +151,7 @@ By default `Release` builds will default to:
   <AndroidEnableProfiledAot>true</AndroidEnableProfiledAot>
 </PropertyGroup>
 ```
+
 This is the behavior when `$(RunAOTCompilation)` and
 `$(AndroidEnableProfiledAot)` are blank.
 
@@ -259,7 +227,7 @@ This means Xamarin.Android would run:
 * Run `aapt` to generate `Resource.designer.cs` and potentially emit
   build errors for issues in `@(AndroidResource)` files.
 * Compile C# code
-* Run the new [ILLink][illink] MSBuild target for linking.
+* Run the new [ILLink](https://github.com/mono/linker/blob/master/src/linker/README.md) MSBuild target for linking.
 * Generate java stubs, `AndroidManifest.xml`, etc. This must happen
   after the linker.
 * Compile java code via `javac`
@@ -276,8 +244,6 @@ produce an `.apk` file if `$(BuildingInsideVisualStudio)` is `true`.
 IDEs will call the `Install` target for deployment, which will produce
 the `.apk` file. This behavior matches "legacy" Xamarin.Android._
 
-[illink]: https://github.com/mono/linker/blob/master/src/linker/README.md
-
 ### dotnet run
 
 `dotnet run` can be used to launch applications on a
@@ -289,62 +255,9 @@ Alternatively, you could use the `Run` MSBuild target such as:
 
     dotnet build HelloAndroid.csproj -t:Run
 
-### Preview testing
-
-For the latest instructions on preview testing and sample projects,
-see the [net6-samples][net6-samples] repo.
-
-[net6-samples]: https://github.com/xamarin/net6-samples
-
-## Package Versioning Scheme
-
-This is the package version scheme: `OS-Major.OS-Minor.InternalRelease[-prereleaseX]+sha.1b2c3d4`.
-
-* Major: The highest stable API level, such as 30. On Apple platforms, this is the major OS version.
-* Minor: Always 0 for Android. On Apple platforms, this is the minor OS version.
-* Patch: Our internal release version based on `100` as a starting point.
-    * Service releases will bump the last two digits of the patch version
-    * Feature releases will round the patch version up to the nearest 100
-      (this is the same as bumping the first digit of the patch version, and
-      resetting the last two digits to 0).
-    * This follows [how the dotnet SDK does it][1].
-* Pre-release: Optional (e.g.: Android previews, CI, etc.)
-    * For CI we use a `ci` prefix + the branch name (cleaned up to only be
-      alphanumeric) + the commit distance (number of commits since any of the
-      major.minor.patch versions changed).
-        * Example: `30.0.100-ci.master.1234`
-        * Alphanumeric means `a-zA-Z0-9-`: any character not in this range
-          will be replaced with a `-`.
-    * Pull requests have `pr` prefix, followed by `gh`+ PR number + commit
-      distance.
-        * Example: `30.0.200-ci.pr.gh3333.1234`
-    * If we have a particular feature we want people to subscribe to (such as
-      an Android preview release), we publish previews with a custom pre-release
-      identifier:
-        * Example: `30.0.100-android-r.beta.1`
-        * This way people can sign up for only official previews, by
-          referencing `*-android-r.beta.*`
-        * It's still possible to sign up for all `android-r` builds, by
-          referencing `*-ci.android-r.*`
-* Build metadata: Required Hash
-    * This is `sha.` + the short commit hash.
-        * Use the short hash because the long hash is quite long and
-          cumbersome. This leaves the complete version open for duplication,
-          but this is extremely unlikely.
-    * Example: `30.0.100+sha.1a2b3c`
-    * Example (CI build): `30.0.100-ci.master.1234+sha.1a2b3c`
-    * Since the build metadata is required for all builds, we're able to
-      recognize incomplete version numbers and determine if a particular
-      version string refers to a stable version or not.
-        * Example: `30.0.100`: incomplete version
-        * Example: `30.0.100+sha.1a2b3c`: stable
-        * Example: `30.0.100-ci.d17-0.1234+sha.1a2b3c`: CI build
-        * Example: `30.0.100-android-r.beta.1+sha.1a2b3c`: official
-          preview
-            * Technically it's possible to remove the prerelease part, but
-              we’d still be able to figure out it’s not a stable version by
-              using the commit hash.
-
-
 [0]: https://github.com/dotnet/installer#installers-and-binaries
 [1]: https://github.com/dotnet/designs/blob/master/accepted/2018/sdk-version-scheme.md
+[2]: android-binding-projects.md
+[3]: https://docs.microsoft.com/dotnet/core/rid-catalog
+[4]: https://github.com/xamarin/xamarin-android/issues/4127
+[5]: https://github.com/dotnet/designs/blob/4703666296f5e59964961464c25807c727282cae/accepted/2020/workloads/workload-resolvers.md#workload-props-files

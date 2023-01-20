@@ -1,7 +1,7 @@
 ---
 title: "Upgrading Xamarin.Forms Overview"
-description: ""
-ms.date: 10/01/2022
+description: "Overview for the steps taken to upgrade a project from Xamarin.Forms to .NET MAUI."
+ms.date: 1/20/2023
 ---
 
 # Upgrading Xamarin.Forms to .NET MAUI

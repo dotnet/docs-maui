@@ -1,8 +1,10 @@
 ---
 title: "Layout Changes from Xamarin.Forms"
-description: ""
-ms.date: 10/01/2022
+description: "Describing the layout changes between Xamarin.Forms and .NET MAUI."
+ms.date: 1/20/2023
 ---
+
+You may notice when running your upgraded application for the first time in .NET MAUI that layouts aren't exactly the same. Some of this is the result of changes to [default values][0]. This document describes additional changes and recommendations related to layouts.
 
 # Layout Changes
 
@@ -77,3 +79,9 @@ can be converted to
 ```
  
 Anything that was marked "AndExpand" should go in its own row or column with a size of "*".
+
+### See also:
+
+* [Default value and name changes][0]
+
+[0]: defaults.md

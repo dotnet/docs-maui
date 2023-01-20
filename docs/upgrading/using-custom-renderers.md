@@ -1,7 +1,7 @@
 ---
 title: "Using Custom Renderers in .NET MAUI"
-description: ""
-ms.date: 10/01/2022
+description: "Custom renderers can be adapted to .NET MAUI."
+ms.date: 1/20/2023
 ---
 
 # Using Custom Renderers in .NET MAUI
@@ -20,7 +20,7 @@ To use this in .NET MAUI you will:
 2. Modify the "usings" and files
 3. Configure the renderers in `MauiProgram.cs`
 
-[Sample on GitHub](https://github.com/davidortinau/CustomRendererSample)
+[Sample on GitHub][0]
 
 ## Add the Files
 
@@ -67,7 +67,7 @@ public static MauiApp CreateMauiApp()
 
 ## Conclusion
 
-That's it! You can now use your custom renderer in .NET MAUI just like any other custom control.
+You can now use your custom renderer in .NET MAUI just like any other custom control.
 
 ```xaml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -96,3 +96,8 @@ That's it! You can now use your custom renderer in .NET MAUI just like any other
 
 </ContentPage>
 ```
+
+### See also:
+* [Custom Renderer sample project][0]
+
+[0]: https://github.com/dotnet/maui-samples/Upgrading/CustomRenderer

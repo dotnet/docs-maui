@@ -1,12 +1,12 @@
 ---
 title: "Upgrading Xamarin.Forms - Configure .NET MAUI"
-description: ""
-ms.date: 11/04/2022
+description: "Updating your application files and creating MauiProgram."
+ms.date: 1/20/2023
 ---
 
 # Configure .NET MAUI
 
-When upgrading from Xamarin.Forms to .NET MAUI you will need to update each platform project's application file, and then configure the bootstrapping of the .NET MAUI applications.
+When manually upgrading from Xamarin.Forms to .NET MAUI you will update each platform project's application file, and then configure the bootstrapping of the .NET MAUI applications.
 
 ## Android project configuration
 
@@ -112,7 +112,7 @@ public static class MauiProgram
 
 Most properties set in an `AssemblyInfo.cs` file are now available in your SDK Style csproj. We recommend migrating those to your `csproj` in every project, and removing any `AssemblyInfo.cs`.
 
-Next: [Upgrade or replace incompatible dependencies with .NET 6 (or newer) versions](?)
+Next: [Upgrade or replace incompatible dependencies with .NET 6 (or newer) versions](upgrading-dependencies.md)
 
 ### See also
 

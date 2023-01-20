@@ -1,18 +1,18 @@
 ---
 title: "Upgrading Xamarin.Forms - Name Changes"
-description: ""
-ms.date: 11/04/2022
+description: "Search and replace namespaces and name changes."
+ms.date: 1/20/2023
 ---
 
 # Upgrading from Xamarin.Forms - Name Changes
 
-A few namespaces have been changed in .NET MAUI, and Xamarin.Essentials features are now part of .NET MAUI. To make namespace updates, do a find and replace (we recommend Visual Studio Code) for the following namespace changes:
+A few namespaces have been changed in .NET MAUI, and Xamarin.Essentials features are now part of .NET MAUI. To make namespace updates, do a find and replace for the following namespace changes:
 
-    | Old namespace | New namespace |
-    | --- | --- |
-    | `xmlns="http://xamarin.com/schemas/2014/forms"` | `xmlns="http://schemas.microsoft.com/dotnet/2021/maui"` |
-    | `using Xamarin.Forms` | `using Microsoft.Maui` **AND** `using Microsoft.Maui.Controls` |
-    | `using Xamarin.Forms.Xaml` | `using Microsoft.Maui.Controls.Xaml` |
+  | Old namespace | New namespace |
+  | --- | --- |
+  | `xmlns="http://xamarin.com/schemas/2014/forms"` | `xmlns="http://schemas.microsoft.com/dotnet/2021/maui"` |
+  | `using Xamarin.Forms` | `using Microsoft.Maui` **AND** `using Microsoft.Maui.Controls` |
+  | `using Xamarin.Forms.Xaml` | `using Microsoft.Maui.Controls.Xaml` |
 
 For `Xamarin.Essentials` remove the namespace and resolve each type individually. If your project makes extensive use of `Xamarin.Essentials` consider adding those namespaces as [global using](https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/using-directive) statements.
 
