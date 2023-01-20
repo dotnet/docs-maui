@@ -1,39 +1,37 @@
 ---
-ms.date: 01/19/2023
+ms.date: 01/20/2023
 ms.topic: include
 ---
 
 ## Create a distribution certificate
 
-The CSR allows you to generate a distribution certificate, which confirms your identity. You only need to create a distribution certificate if you don't already one. The distribution certificate must be created using the Apple ID for your Apple Developer Account.
+A distribution certificate is used to confirm your identity. Before creating a distribution certificate, you should ensure that you've added your Apple developer account to Visual Studio. For more information, see [Apple account management](~/ios/apple-account-management.md).
+
+You only need to create a distribution certificate if you don't already one. The distribution certificate must be created using the Apple ID for your Apple Developer Account.
 
 To create a distribution certificate:
 
-1. In a web browser, login to your [Apple Developer Account](https://developer.apple.com/account/).
-1. In your Apple Developer Account, select the **Certificates, IDs & Profiles** tab.
-1. On the **Certificates, Identifiers & Profiles** page, click the **+** button to create a new certificate.
-1. On the **Create a New Certificate** page, select the **iOS Distribution (App Store and Ad Hoc)** radio button before clicking the **Continue** button:
+<!-- markdownlint-disable MD025 -->
+# [Visual Studio](#tab/vs)
+<!-- markdownlint-enable MD025 -->
 
-    :::image type="content" source="../deployment/media/provisioning/ios-app-development.png" alt-text="Create a new certificate.":::
+1. In Visual Studio, go to **Tools > Options > Xamarin > Apple Accounts**.
+1. In the **Apple Developer Accounts** dialog, select a team and click the **View Details...** button.
+1. In the **Details** dialog, click **Create Certificate** and select **iOS Distribution**. A new signing identity will be created and will sync with Apple provided that you have the correct permissions.
 
-1. On the **Create a New Certificate** page, click **Choose File**:
+<!-- markdownlint-disable MD025 -->
+# [Visual Studio for Mac](#tab/vsmac)
+<!-- markdownlint-enable MD025 -->
 
-    :::image type="content" source="../deployment/media/provisioning/choose-certificate.png" alt-text="Upload your certificate signing request.":::
+1. In Visual Studio for Mac, go to **Visual Studio > Preferences > Publishing > Apple Developer Account**.
+1. In the **Apple Developer Accounts** window, select a team and click the **View Details...** button.
+1. In the **Details** window, click **Create Certificate** and select **Apple Distribution** or **iOS Distribution**. A new signing identity will be created and will sync with Apple provided that you have the correct permissions.
 
-1. In the **Choose Files to Upload** dialog, select the certificate request file (a file with a `.certSigningRequest` file extension) and then click **Upload**.
-1. On the **Create a New Certificate** page, click the **Continue** button:
+---
 
-    :::image type="content" source="../deployment/media/provisioning/chosen-certificate.png" alt-text="Continue to generate your distribution certificate.":::
+### Understanding certificate key pairs
 
-1. On the **Download Your Certificate** page, click the **Download** button:
+A distribution profile contains certificates, their associated keys, and any provisioning profiles associated with the Apple developer account. There are two versions of a distribution profile — one exists in Apple's developer portal, and the other lives on a local machine. The difference between the two is the type of keys they contain: the profile on Apple's developer portal contains all of the public keys associated with your certificates, while the copy on your local machine contains all of the private keys. For certificates to be valid, the key pairs must match.
 
-    :::image type="content" source="../deployment/media/provisioning/download-certificate.png" alt-text="Download your distribution certificate.":::
-
-    The certificate file (a file with a `.cer` extension) will be downloaded to your chosen location.
-
-1. On your Mac, double-click the downloaded certificate file to install the certificate to your keychain. The certificate appears in the **My Certificates** category in **Keychain Access**, and begins with **iPhone Distribution**:
-
-    :::image type="content" source="../deployment/media/provisioning/keychain-access.png" alt-text="Keychain Access showing distribution certificate.":::
-
-    > [!NOTE]
-    > Make a note of the full distribution certificate name in Keychain Access. It will be required when signing your app.
+> [!WARNING]
+> Losing the certificate and associated keys can be incredibly disruptive, as it will require revoking existing certificates and re-creating provisioning profiles.
