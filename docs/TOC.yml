@@ -513,7 +513,7 @@
             href: platform-integration/device/vibrate.md
         - name: Media
           items:
-          - name: Camera
+          - name: Photos and videos
             href: platform-integration/device-media/picker.md
           - name: Screenshot
             href: platform-integration/device-media/screenshot.md
