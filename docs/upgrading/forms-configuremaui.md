@@ -48,12 +48,12 @@ namespace ArtAuction.Droid
 {
     [Activity(Label = "ArtAuction", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
     public class MainActivity : MauiAppCompatActivity
-	{
-		protected override void OnCreate(Bundle savedInstanceState)
-		{
-			base.OnCreate(savedInstanceState);
-		}
-	}
+    {
+        protected override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+        }
+    }
 }
 ```
 
@@ -61,7 +61,7 @@ Update the `AndroidManifest` to `android:targetSdkVersion="31"` which is the min
 
 ## iOS project configuration
 
-In the .NET MAUI iOS project, update `AppDelegate.cs` to inherit from `MauiUIApplicationDelegate`. Refer to the code below. 
+In the .NET MAUI iOS project, update `AppDelegate.cs` to inherit from `MauiUIApplicationDelegate`. Refer to the code below.
 
 ```csharp
 using System;
@@ -95,14 +95,14 @@ namespace ArtAuction;
 
 public static class MauiProgram
 {
-	public static MauiApp CreateMauiApp()
-	{
-		var builder = MauiApp.CreateBuilder();
-		builder
-			.UseMauiApp<App>();
+    public static MauiApp CreateMauiApp()
+    {
+        var builder = MauiApp.CreateBuilder();
+        builder
+            .UseMauiApp<App>();
 
-		return builder.Build();
-	}
+        return builder.Build();
+    }
 }
 ```
 

@@ -25,10 +25,10 @@ Controls generally honors explicit size requests. If you ask for a control to be
 
 The biggest change in Grid behavior between Xamarin.Forms and MAUI.Controls is that Grids don't automagically add missing rows/columns for you anymore. For example, in Forms you could do this:
 
-```
+```xml
 <Grid>
-	<Label Text="Hello"/>
-	<Label Grid.Row="1" Text="World"/>
+    <Label Text="Hello"/>
+    <Label Grid.Row="1" Text="World"/>
 </Grid>
 ```
 
@@ -40,14 +40,14 @@ However, MAUI.Controls _does_ still assume the zeroth row/column for you. That i
 
 We advise using `Grid` instead of `RelativeLayout` whenever possible. To continue with `RelativeLayout`, you'll need to add the compatibility namespace and update your XAML tags if using XAML.
 
-```
+```xml
 xmlns:cmp="clr-namespace:Microsoft.Maui.Controls.Compatibility;assembly=Microsoft.Maui.Controls"
 
 <cmp:RelativeLayout></cmp:RelativeLayout>
 ```
 
 ## StackLayout
- 
+
 There are a few differences between the stack layouts in MAUI (StackLayout, VerticalStackLayout, and HorizontalStackLayout) and the StackLayout in Xamarin.Forms. The first is that the MAUI stack layouts are _very_ simple; they stack their child views in a single direction until all of them have been stacked. They will keep going until the last child has been stacked, even if that takes them beyond the available space in the stacking direction. MAUI stack layouts simply arrange controls in a particular direction; they do not subdivide a space.
 
 This is in contrast to the Xamarin.Forms StackLayout, which changes its behavior based on circumstances and the presence of any "AndExpand" layout options (e.g., `FillAndExpand` or `CenterAndExpand`). Sometimes the Forms StackLayout subdivides the space, expanding to (or stopping at) the edge of its container; in other cases, it expands beyond its container.
@@ -62,22 +62,22 @@ For simplicity of migration from Forms to MAUI, the MAUI.Controls StackLayout _d
 
 3. If you have any remaining "AndExpand" properties on a StackLayout, you should convert that StackLayout to a Grid; the Grid is designed to subdivide a space, and will provide the layout that "AndExpand" provided in Xamarin.Forms. For example,
 
-```
+```xml
 <StackLayout>
-	<Label Text="howdy"/>
-	<Image VerticalOptions="FillAndExpand" src="dotnetbot.png"/>
+    <Label Text="howdy"/>
+    <Image VerticalOptions="FillAndExpand" src="dotnetbot.png"/>
 </StackLayout>
 ```
 
 can be converted to
 
-```
+```xml
 <Grid RowDefinitions="Auto, *">
-	<Label Text="howdy"/>
-	<Image Grid.Row="1" src="dotnetbot.png"/>
+    <Label Text="howdy"/>
+    <Image Grid.Row="1" src="dotnetbot.png"/>
 </StackLayout>
 ```
- 
+
 Anything that was marked "AndExpand" should go in its own row or column with a size of "*".
 
 ### See also:

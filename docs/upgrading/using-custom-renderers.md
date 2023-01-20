@@ -47,13 +47,13 @@ Open `MauiProgram.cs` in your .NET MAUI project, add `UseMauiCompatibility()` wi
 ```csharp
 public static MauiApp CreateMauiApp()
 {
-	var builder = MauiApp.CreateBuilder();
-	builder
-		.UseMauiApp<App>()
-		.UseMauiCompatibility()
+    var builder = MauiApp.CreateBuilder();
+    builder
+        .UseMauiApp<App>()
+        .UseMauiCompatibility()
                 .ConfigureMauiHandlers((handlers) =>{
 #if ANDROID
-			handlers.AddCompatibilityRenderer(typeof(PressableView),typeof(XamarinCustomRenderer.Droid.Renderers.PressableViewRenderer));
+            handlers.AddCompatibilityRenderer(typeof(PressableView),typeof(XamarinCustomRenderer.Droid.Renderers.PressableViewRenderer));
 #endif
 
 #if IOS
@@ -61,7 +61,7 @@ public static MauiApp CreateMauiApp()
 #endif
         });
 
-	return builder.Build();
+    return builder.Build();
 }
 ```
 
