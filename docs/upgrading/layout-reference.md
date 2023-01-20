@@ -32,7 +32,7 @@ The biggest change in Grid behavior between Xamarin.Forms and MAUI.Controls is t
 </Grid>
 ```
 
-And even though you didn't declare that there were two rows in the Grid, Forms would guess that's what you wanted and add the second row for you. MAUI.Controls doesn't do that; you have to explicitly say you want `RowDefinitions="Auto,Auto"`. This was changed for performance reasons. 
+And even though you didn't declare that there were two rows in the Grid, Forms would guess that's what you wanted and add the second row for you. MAUI.Controls doesn't do that; you have to explicitly say you want `RowDefinitions="Auto,Auto"`. This was changed for performance reasons.
 
 However, MAUI.Controls _does_ still assume the zeroth row/column for you. That is, if you don't declare any `RowDefinitions` or `ColumnDefinitions`, then the default is `RowDefinitions="*"` and `ColumnDefinitions="*"`
 
@@ -48,17 +48,17 @@ xmlns:cmp="clr-namespace:Microsoft.Maui.Controls.Compatibility;assembly=Microsof
 
 ## StackLayout
  
-There are a few differences between the stack layouts in MAUI (StackLayout, VerticalStackLayout, and HorizontalStackLayout) and the StackLayout in Xamarin.Forms. The first is that the MAUI stack layouts are _very_ simple; they stack their child views in a single direction until all of them have been stacked. They will keep going until the last child has been stacked, even if that takes them beyond the available space in the stacking direction. MAUI stack layouts simply arrange controls in a particular direction; they do not subdivide a space. 
+There are a few differences between the stack layouts in MAUI (StackLayout, VerticalStackLayout, and HorizontalStackLayout) and the StackLayout in Xamarin.Forms. The first is that the MAUI stack layouts are _very_ simple; they stack their child views in a single direction until all of them have been stacked. They will keep going until the last child has been stacked, even if that takes them beyond the available space in the stacking direction. MAUI stack layouts simply arrange controls in a particular direction; they do not subdivide a space.
 
-This is in contrast to the Xamarin.Forms StackLayout, which changes its behavior based on circumstances and the presence of any "AndExpand" layout options (e.g., `FillAndExpand` or `CenterAndExpand`). Sometimes the Forms StackLayout subdivides the space, expanding to (or stopping at) the edge of its container; in other cases, it expands beyond its container. 
+This is in contrast to the Xamarin.Forms StackLayout, which changes its behavior based on circumstances and the presence of any "AndExpand" layout options (e.g., `FillAndExpand` or `CenterAndExpand`). Sometimes the Forms StackLayout subdivides the space, expanding to (or stopping at) the edge of its container; in other cases, it expands beyond its container.
 
-This brings us to the second main difference: the MAUI VerticalStackLayout and HorizontalStackLayout do not recognize the "AndExpand" layout options. If they see a child with layout options that include "AndExpand", they simply treat it as if the "AndExpand" weren't there - e.g., `FillAndExpand` becomes `Fill`. 
+This brings us to the second main difference: the MAUI VerticalStackLayout and HorizontalStackLayout do not recognize the "AndExpand" layout options. If they see a child with layout options that include "AndExpand", they simply treat it as if the "AndExpand" weren't there - e.g., `FillAndExpand` becomes `Fill`.
 
 For simplicity of migration from Forms to MAUI, the MAUI.Controls StackLayout _does_ honor "AndExpand", at least for the time being. All of the "AndExpand" options have been marked `Obsolete`. If you want to avoid the warning about the obsolete properties, you should convert your layouts which use "AndExpand" options to the appropriate layout type. The suggested process is as follows:
 
-1. If your layout is anything other than a StackLayout, remove all uses of "AndExpand". Just as in Xamarin.Forms, the "AndExpand" options have no effect on any layout other than StackLayout. If your layout wasn't a StackLayout, "AndExpand" was never doing anything. 
+1. If your layout is anything other than a StackLayout, remove all uses of "AndExpand". Just as in Xamarin.Forms, the "AndExpand" options have no effect on any layout other than StackLayout. If your layout wasn't a StackLayout, "AndExpand" was never doing anything.
 
-2. Remove any "AndExpand" properties which are orthogonal to the stacking direction. For example, if you have a StackLayout with an Orientation of `Vertical`, and it has a child with a `HorizontalAligment="CenterAndExpand"` - that "AndExpand" does nothing. You can just remove it. 
+2. Remove any "AndExpand" properties which are orthogonal to the stacking direction. For example, if you have a StackLayout with an Orientation of `Vertical`, and it has a child with a `HorizontalAligment="CenterAndExpand"` - that "AndExpand" does nothing. You can just remove it.
 
 3. If you have any remaining "AndExpand" properties on a StackLayout, you should convert that StackLayout to a Grid; the Grid is designed to subdivide a space, and will provide the layout that "AndExpand" provided in Xamarin.Forms. For example,
 
@@ -69,7 +69,7 @@ For simplicity of migration from Forms to MAUI, the MAUI.Controls StackLayout _d
 </StackLayout>
 ```
 
-can be converted to 
+can be converted to
 
 ```
 <Grid RowDefinitions="Auto, *">

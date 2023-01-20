@@ -216,7 +216,7 @@ to produce a self-contained "app" happens:
 * The linker via the `<IlLink/>` MSBuild task
 * .NET Core's version of AOT, named "ReadyToRun"
 
-https://docs.microsoft.com/en-us/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images
+[Documentation](https://docs.microsoft.com/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images)
 
 However, for Xamarin.Android, `dotnet build` should produce something
 that is runnable. This basically means we need to create an `.apk` or
@@ -260,9 +260,6 @@ Alternatively, you could use the `Run` MSBuild target such as:
 dotnet build HelloAndroid.csproj -t:Run
 ```
 
-[0]: https://github.com/dotnet/installer#installers-and-binaries
-[1]: https://github.com/dotnet/designs/blob/master/accepted/2018/sdk-version-scheme.md
-[2]: android-binding-projects.md
 [3]: https://docs.microsoft.com/dotnet/core/rid-catalog
 [4]: https://github.com/xamarin/xamarin-android/issues/4127
 [5]: https://github.com/dotnet/designs/blob/4703666296f5e59964961464c25807c727282cae/accepted/2020/workloads/workload-resolvers.md#workload-props-files

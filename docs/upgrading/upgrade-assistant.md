@@ -22,6 +22,7 @@ For best success we recommend your Xamarin.Forms projects are:
 * .NET Standarind 2.0 or greater
 
 ### Limitations
+
 -   .NET Upgrade Assistant is available for Windows only
 -	Must be on Xamarin.Forms 4.8 or higher
 -	Only works with Xamarin.Forms .slns (Xamarin.Android and Xamarin.iOS only solutions coming later)
@@ -30,7 +31,7 @@ For best success we recommend your Xamarin.Forms projects are:
 
 ### Installation
 
-Install the .NET Upgrade Assistant dotnet tool: 
+Install the .NET Upgrade Assistant dotnet tool:
 
 ```
 dotnet tool update --global upgrade-assistant
@@ -45,7 +46,6 @@ upgrade-assistant upgrade <path to sln or csproj> --non-interactive --entry-poin
 ```
 
 This command runs the tool in non-interactive mode. It will update all eligible projects in the solution and dependent projects.
-
 
 ### See also
 

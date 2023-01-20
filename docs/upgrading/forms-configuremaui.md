@@ -22,17 +22,15 @@ using ArtAuction;
 
 namespace YOUR_NAMESPACE_HERE.Droid
 {
+    [Application]
+    public class MainApplication : MauiApplication
+    {
+        public MainApplication(IntPtr handle, JniHandleOwnership ownership) : base(handle, ownership)
+        {
+        }
 
-	[Application]
-	public class MainApplication : MauiApplication
-	{
-		public MainApplication(IntPtr handle, JniHandleOwnership ownership)
-			: base(handle, ownership)
-		{
-		}
-
-		protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
-	}
+        protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
+    }
 }
 ```
 
@@ -65,7 +63,7 @@ Update the `AndroidManifest` to `android:targetSdkVersion="31"` which is the min
 
 In the .NET MAUI iOS project, update `AppDelegate.cs` to inherit from `MauiUIApplicationDelegate`. Refer to the code below. 
 
-```chsarp
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Linq;

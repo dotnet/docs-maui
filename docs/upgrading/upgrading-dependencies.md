@@ -25,5 +25,6 @@ If a package on [NuGet.org](https://nuget.org) indicates compatibility with any 
 Replace any incompatible packages with compatible alternatives.
 
 ### See also:
+
 * [Porting from .NET Framework to .NET](https://learn.microsoft.com/en-us/dotnet/core/porting/)
 * [.NET Upgrade Assistant](https://learn.microsoft.com/en-us/dotnet/core/porting/upgrade-assistant-overview)

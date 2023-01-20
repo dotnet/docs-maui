@@ -66,7 +66,7 @@ On the other hand, this library IS compatible with the .NET TFM we are using.
 
 ![compatible NuGet](images/compatile-nuget.png)
 
-Some NuGets may include both .NET TFMs and Mono* or Xamarin.* frameworks. That's okay. As long as the NuGet includes the .NET TFMs you are targeting, the package is compatible.
+Some NuGets may include both .NET TFMs and Mono\* or Xamarin.\* frameworks. That's okay. As long as the NuGet includes the .NET TFMs you are targeting, the package is compatible.
 
 Add compatible NuGets to your new project using the NuGet package manager in Visual Studio. What should you do about incompatible dependencies?
 

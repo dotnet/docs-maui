@@ -14,11 +14,11 @@ Xamarin projects can run on .NET 6 and newer after completing some upgrade steps
 
 ## [.NET Upgrade Assistant](upgrade-assistant.md)
 
-The .NET Upgrade Assistant will help you get started moving your projects from Xamarin to .NET. [Get started with .NET Upgrade Assistant](upgrade-assistant.md). 
+The .NET Upgrade Assistant will help you get started moving your projects from Xamarin to .NET. [Get started with .NET Upgrade Assistant](upgrade-assistant.md).
 
 ## Manual upgrade guides
 
-Alternatively you may opt to perform the upgrade steps yourself. These guides provide the most common changes you'll need to make. 
+Alternatively you may opt to perform the upgrade steps yourself. These guides provide the most common changes you'll need to make.
 
 ### [Xamarin.Android, Xamarin.iOS, Xamarin.Mac](xamarin-projects.md)
 

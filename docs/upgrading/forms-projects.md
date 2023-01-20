@@ -16,16 +16,15 @@ The upgrade of a Xamarin.Forms project follows the same steps as a Xamarin.Andro
 * Upgrade or replace incompatible dependencies with .NET 6 (or newer) versions
 * Compile and test your app
 
-To simplify the upgrade, we recommend creating a new .NET project of the same type and name as your Xamarin project, and then copying in your code. 
+To simplify the upgrade, we recommend creating a new .NET project of the same type and name as your Xamarin project, and then copying in your code.
 
 ## Update to SDK Style projects
 
 SDK Style projects are the same project format used by all other .NET workloads, and compared to Xamarin projects they are much less verbose. For details updating your application projects, refer to the [Xamarin Projects](xamarin-projects.md) guidance. This document will describe the changes specific to your Xamarin.Forms library projects.
 
-
 ### Create new project
 
-From Visual Studio 2022 create a new .NET MAUI class library project to host the code from your Xamarin.Forms library project. 
+From Visual Studio 2022 create a new .NET MAUI class library project to host the code from your Xamarin.Forms library project.
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">

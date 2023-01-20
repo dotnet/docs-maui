@@ -69,7 +69,7 @@ public static MauiApp CreateMauiApp()
 
 You can now use your custom renderer in .NET MAUI just like any other custom control.
 
-```xaml
+```xml
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -98,6 +98,7 @@ You can now use your custom renderer in .NET MAUI just like any other custom con
 ```
 
 ### See also:
+
 * [Custom Renderer sample project][0]
 
 [0]: https://github.com/dotnet/maui-samples/Upgrading/CustomRenderer

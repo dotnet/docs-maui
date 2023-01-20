@@ -8,11 +8,11 @@ ms.date: 1/20/2023
 
 A few namespaces have been changed in .NET MAUI, and Xamarin.Essentials features are now part of .NET MAUI. To make namespace updates, do a find and replace for the following namespace changes:
 
-  | Old namespace | New namespace |
-  | --- | --- |
-  | `xmlns="http://xamarin.com/schemas/2014/forms"` | `xmlns="http://schemas.microsoft.com/dotnet/2021/maui"` |
-  | `using Xamarin.Forms` | `using Microsoft.Maui` **AND** `using Microsoft.Maui.Controls` |
-  | `using Xamarin.Forms.Xaml` | `using Microsoft.Maui.Controls.Xaml` |
+| Old namespace | New namespace |
+| --- | --- |
+| `xmlns="http://xamarin.com/schemas/2014/forms"` | `xmlns="http://schemas.microsoft.com/dotnet/2021/maui"` |
+| `using Xamarin.Forms` | `using Microsoft.Maui` **AND** `using Microsoft.Maui.Controls` |
+| `using Xamarin.Forms.Xaml` | `using Microsoft.Maui.Controls.Xaml` |
 
 For `Xamarin.Essentials` remove the namespace and resolve each type individually. If your project makes extensive use of `Xamarin.Essentials` consider adding those namespaces as [global using](https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/using-directive) statements.
 
@@ -23,7 +23,7 @@ For `Xamarin.Essentials` remove the namespace and resolve each type individually
 * `Color` - the type used to express a color
 * `Colors` - holds static references to default colors by name, and extension methods to convert types
 * `Color.Default` DOES NOT EXIST - use `ClearValue` if you can instead (GitHub [Issue](https://github.com/dotnet/upgrade-assistant/issues/592))
-  * Refer to .NET MAUI default [styles](https://github.com/dotnet/maui/tree/main/src/Templates/src/templates/maui-mobile/Resources/Styles) 
+  * Refer to .NET MAUI default [styles](https://github.com/dotnet/maui/tree/main/src/Templates/src/templates/maui-mobile/Resources/Styles)
 
 ## Additional name changes
 
