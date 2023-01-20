@@ -25,7 +25,7 @@ For best success we recommend your Xamarin.Forms projects are:
 
 - .NET Upgrade Assistant is available for Windows only
 - Must be on Xamarin.Forms 4.8 or higher
-- Only works with Xamarin.Forms solutions 
+- Only works with Xamarin.Forms solutions
 - Does not work with binding or library projects
 - Gets you _most_ of the way there – you’ll still have to do some manual changes too
 
