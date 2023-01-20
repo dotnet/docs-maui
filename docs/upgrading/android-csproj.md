@@ -18,20 +18,15 @@ like:
 </Project>
 ```
 
-For a "library" project, omit the `$(OutputType)` property
-completely or specify `Library`.
+For a "library" project, omit the `$(OutputType)` property completely or specify `Library`.
 
 Additional resources:
+
 * [Binding projects](https://github.com/xamarin/xamarin-android/blob/main/Documentation/guides/OneDotNetBindingProjects.md)
 
 ## .NET Configuration Files
 
-No support for [configuration files](https://docs.microsoft.com/dotnet/framework/configure-apps/) such as `Foo.dll.config`
-or `Foo.exe.config` is available in Xamarin.Android projects targeting
-.NET 7. [`<dllmap>`](https://github.com/dotnet/runtime/blob/main/docs/design/features/dllmap.md) configuration elements are not supported
-in .NET Core at all, and other element types for compatibility
-packages like [System.Configuration.ConfigurationManager](https://www.nuget.org/packages/System.Configuration.ConfigurationManager/) have
-never been supported in Xamarin.Android projects.
+No support for [configuration files](https://docs.microsoft.com/dotnet/framework/configure-apps/) such as `Foo.dll.config` or `Foo.exe.config` is available in Xamarin.Android projects targeting .NET 7. [`<dllmap>`](https://github.com/dotnet/runtime/blob/main/docs/design/features/dllmap.md) configuration elements are not supported in .NET Core at all, and other element types for compatibility packages like [System.Configuration.ConfigurationManager](https://www.nuget.org/packages/System.Configuration.ConfigurationManager/) have never been supported in Xamarin.Android projects.
 
 ## Changes to MSBuild properties
 
@@ -170,10 +165,12 @@ turn these settings off:
 There are currently a few "verbs" we are aiming to get working in
 Xamarin.Android:
 
-    dotnet new
-    dotnet build
-    dotnet publish
-    dotnet run
+```
+dotnet new
+dotnet build
+dotnet publish
+dotnet run
+```
 
 ### dotnet new
 
@@ -181,31 +178,35 @@ To support `dotnet new`, we created a few basic project and item
 templates for Android that are named following the patterns and naming
 of existing .NET templates:
 
-    Templates                                     Short Name           Language    Tags
-    --------------------------------------------  -------------------  ----------  ----------------------
-    Android Activity template                     android-activity     [C#]        Android
-    Android Java Library Binding                  android-bindinglib   [C#]        Android
-    Android Layout template                       android-layout       [C#]        Android
-    Android Class library                         androidlib           [C#]        Android
-    Android Application                           android              [C#]        Android
-    Console Application                           console              [C#],F#,VB  Common/Console
-    Class library                                 classlib             [C#],F#,VB  Common/Library
-    WPF Application                               wpf                  [C#],VB     Common/WPF
-    WPF Class library                             wpflib               [C#],VB     Common/WPF
-    NUnit 3 Test Project                          nunit                [C#],F#,VB  Test/NUnit
-    NUnit 3 Test Item                             nunit-test           [C#],F#,VB  Test/NUnit
+Templates                                     Short Name           Language    Tags
+--------------------------------------------  -------------------  ----------  ----------------------
+Android Activity template                     android-activity     [C#]        Android
+Android Java Library Binding                  android-bindinglib   [C#]        Android
+Android Layout template                       android-layout       [C#]        Android
+Android Class library                         androidlib           [C#]        Android
+Android Application                           android              [C#]        Android
+Console Application                           console              [C#],F#,VB  Common/Console
+Class library                                 classlib             [C#],F#,VB  Common/Library
+WPF Application                               wpf                  [C#],VB     Common/WPF
+WPF Class library                             wpflib               [C#],VB     Common/WPF
+NUnit 3 Test Project                          nunit                [C#],F#,VB  Test/NUnit
+NUnit 3 Test Item                             nunit-test           [C#],F#,VB  Test/NUnit
 
 To create different types of Android projects:
 
-    dotnet new android            --output MyAndroidApp     --packageName com.mycompany.myandroidapp
-    dotnet new androidlib         --output MyAndroidLibrary
-    dotnet new android-bindinglib --output MyJavaBinding
+```console
+dotnet new android            --output MyAndroidApp     --packageName com.mycompany.myandroidapp
+dotnet new androidlib         --output MyAndroidLibrary
+dotnet new android-bindinglib --output MyJavaBinding
+```
 
 Once the projects are created, some basic item templates can also be
 used such as:
 
-    dotnet new android-activity --name LoginActivity --namespace MyAndroidApp
-    dotnet new android-layout   --name MyLayout      --output Resources/layout
+```console
+dotnet new android-activity --name LoginActivity --namespace MyAndroidApp
+dotnet new android-layout   --name MyLayout      --output Resources/layout
+```
 
 ### dotnet build & publish
 
@@ -249,11 +250,15 @@ the `.apk` file. This behavior matches "legacy" Xamarin.Android._
 `dotnet run` can be used to launch applications on a
 device or emulator via the `--project` switch:
 
-    dotnet run --project HelloAndroid.csproj
+```console
+dotnet run --project HelloAndroid.csproj
+```
 
 Alternatively, you could use the `Run` MSBuild target such as:
 
-    dotnet build HelloAndroid.csproj -t:Run
+```console
+dotnet build HelloAndroid.csproj -t:Run
+```
 
 [0]: https://github.com/dotnet/installer#installers-and-binaries
 [1]: https://github.com/dotnet/designs/blob/master/accepted/2018/sdk-version-scheme.md
