@@ -8,7 +8,7 @@ ms.date: 05/09/2022
 
 Distributing a .NET Multi-platform App UI (.NET MAUI) app on iOS requires that the app is provisioned using a *provisioning profile*. Provisioning profiles are files that contain code signing information, as well as the identity of the app and its intended distribution mechanism.
 
-To publish a .NET MAUI iOS app, you'll need to build a *Distribution Provisioning Profile* specific to it. This profile enables the app to be digitally signed for release so that it can be installed on an iOS device. A distribution provisioning profile contains an app ID and a distribution certificate.
+To publish a .NET MAUI iOS app, you'll need to build a *Distribution Provisioning Profile* specific to it. This profile enables the app to be digitally signed for release so that it can be installed on an iOS device. A distribution provisioning profile contains an App ID and a distribution certificate.
 
 The process for creating a distribution provisioning profile is as follows:
 
@@ -68,7 +68,7 @@ The CSR allows you to generate a distribution certificate, which confirms your i
 
 ## Create a distribution profile
 
-A distribution provisioning profile enables your .NET MAUI iOS app to be digitally signed for release, so that it can be installed on an iOS device. A distribution provisioning profile contains an app ID and a distribution certificate.
+A distribution provisioning profile enables your .NET MAUI iOS app to be digitally signed for release, so that it can be installed on an iOS device. A distribution provisioning profile contains an App ID and a distribution certificate.
 
 ### Create an App ID
 
@@ -92,7 +92,7 @@ An App ID is required to identify the app that you are distributing:
     > [!IMPORTANT]
     > The Bundle ID you enter must correspond to the Bundle ID defined in the **Info.plist** file in your app project.
 
-1. On the **Register an App ID** page, select any capabilities that the app uses. Any capabilities must be configured both on this page and in the **Entitlements.plist** file in your app project.
+1. On the **Register an App ID** page, select any capabilities that the app uses. Any capabilities must be configured both on this page and in the *Entitlements.plist* file in your app project.
 1. On the **Register an App ID** page, click the **Continue** button.
 1. On the **Confirm your App ID** page, click the **Register** button.
 
@@ -106,7 +106,7 @@ Once you've created a distribution certificate and an App ID you'll be able to c
 
     :::image type="content" source="media/provisioning/register-provisioning-profile.png" alt-text="Register a provisioning profile for app store distribution.":::
 
-1. In the **Generate a Provisioning Profile** page, in the **App ID** drop down, select the App ID that you previously created before clicking the **Continue** button:
+1. In the **Generate a Provisioning Profile** page, in the **App ID** drop-down, select the App ID that you previously created before clicking the **Continue** button:
 
     :::image type="content" source="media/provisioning/select-app-id.png" alt-text="Select your App ID.":::
 

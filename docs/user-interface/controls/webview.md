@@ -1,28 +1,28 @@
 ---
 title: "WebView"
 description: "This article explains how to use the .NET MAUI WebView to display remote web pages, local HTML files, and HTML strings."
-ms.date: 03/08/2022
+ms.date: 10/11/2022
 ---
 
 # WebView
 
-The .NET Multi-platform App UI (.NET MAUI) `WebView` displays remote web pages, local HTML files, and HTML strings, in an app. The content displayed a `WebView` includes support for Cascading Style Sheets (CSS), and JavaScript. By default, .NET MAUI projects include the platform permissions required for a `WebView` to display a remote web page.
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.WebView> displays remote web pages, local HTML files, and HTML strings, in an app. The content displayed a <xref:Microsoft.Maui.Controls.WebView> includes support for Cascading Style Sheets (CSS), and JavaScript. By default, .NET MAUI projects include the platform permissions required for a <xref:Microsoft.Maui.Controls.WebView> to display a remote web page.
 
-`WebView` defines the following properties:
+<xref:Microsoft.Maui.Controls.WebView> defines the following properties:
 
 - `Cookies`, of type `CookieContainer`, provides storage for a collection of cookies.
 - `CanGoBack`, of type `bool`, indicates whether the user can navigate to previous pages. This is a read-only property.
 - `CanGoForward`, of type `bool`, indicates whether the user can navigate forward. This is a read-only property.
-- `Source`, of type `WebViewSource`, represents the location that the `WebView` displays.
+- `Source`, of type `WebViewSource`, represents the location that the <xref:Microsoft.Maui.Controls.WebView> displays.
 
-These properties are backed by `BindableProperty` objects, which means that they can be targets of data bindings, and styled.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 The `Source` property can be set to an `UrlWebViewSource` object or a `HtmlWebViewSource` object, which both derive from `WebViewSource`. A `UrlWebViewSource` is used for loading a web page specified with a URL, while a `HtmlWebViewSource` object is used for loading a local HTML file, or local HTML.
 
-`WebView` defines a `Navigating` event that's raised when page navigation starts, and a `Navigated` event that's raised when page navigation completes. The `WebNavigatingEventArgs` object that accompanies the `Navigating` event defines a `Cancel` property, of type `bool`, that can be used to cancel navigation. The `WebNavigatedEventArgs` object that accompanies the `Navigated` event defines a `Result` property, of type `WebNavigationResult`, that indicates the navigation result.
+<xref:Microsoft.Maui.Controls.WebView> defines a `Navigating` event that's raised when page navigation starts, and a `Navigated` event that's raised when page navigation completes. The `WebNavigatingEventArgs` object that accompanies the `Navigating` event defines a `Cancel` property of type `bool` that can be used to cancel navigation. The `WebNavigatedEventArgs` object that accompanies the `Navigated` event defines a `Result` property of type `WebNavigationResult` that indicates the navigation result.
 
 > [!IMPORTANT]
-> A `WebView` must specify its `HeightRequest` and `WidthRequest` properties when contained in a `HorizontalStackLayout`, `StackLayout`, or `VerticalStackLayout`. If you fail to specify these properties, the `WebView` will not render.
+> A <xref:Microsoft.Maui.Controls.WebView> must specify its `HeightRequest` and `WidthRequest` properties when contained in a <xref:Microsoft.Maui.Controls.HorizontalStackLayout>, <xref:Microsoft.Maui.Controls.StackLayout>, or <xref:Microsoft.Maui.Controls.VerticalStackLayout>. If you fail to specify these properties, the <xref:Microsoft.Maui.Controls.WebView> will not render.
 
 ## Display a web page
 
@@ -162,7 +162,7 @@ To display a local HTML file, add the file to the *Resources\Raw* folder of your
 </WebView>
 ```
 
-The local HTML file can load Cascading Style Sheets (CSS), JavaScript, and images, provided that they've also been added to your app project with the **MauiAsset** build action.
+The local HTML file can load Cascading Style Sheets (CSS), JavaScript, and images, if they've also been added to your app project with the **MauiAsset** build action.
 
 For more information about raw assets, see [Raw assets](~/fundamentals/single-project.md#raw-assets).
 
@@ -170,7 +170,7 @@ For more information about raw assets, see [Raw assets](~/fundamentals/single-pr
 
 ## Reload content
 
-`WebView` has a `Reload` method that can be called to reload its source:
+<xref:Microsoft.Maui.Controls.WebView> has a `Reload` method that can be called to reload its source:
 
 ```csharp
 WebView webView = new WebView();
@@ -182,7 +182,7 @@ webView.Reload();
 
 ## Perform navigation
 
-`WebView` supports programmatic navigation with the `GoBack` and `GoForward` methods. These methods enable navigation through the `WebView` page stack, and should only be called after inspecting the values of the `CanGoBack` and `CanGoForward` properties:
+<xref:Microsoft.Maui.Controls.WebView> supports programmatic navigation with the `GoBack` and `GoForward` methods. These methods enable navigation through the <xref:Microsoft.Maui.Controls.WebView> page stack, and should only be called after inspecting the values of the `CanGoBack` and `CanGoForward` properties:
 
 ```csharp
 WebView webView = new WebView();
@@ -201,14 +201,14 @@ if (webView.CanGoForward)
 }
 ```
 
-When page navigation occurs in a `WebView`, either initiated programmatically or by the user, the following events occur:
+When page navigation occurs in a <xref:Microsoft.Maui.Controls.WebView>, either initiated programmatically or by the user, the following events occur:
 
-- `Navigating`, which is raised when page navigation starts. The `WebNavigatingEventArgs` object that accompanies the `Navigating` event defines a `Cancel` property, of type `bool`, that can be used to cancel navigation.
-- `Navigated`, which is raised when page navigation completes. The `WebNavigatedEventArgs` object that accompanies the `Navigated` event defines a `Result` property, of type `WebNavigationResult`, that indicates the navigation result.
+- `Navigating`, which is raised when page navigation starts. The `WebNavigatingEventArgs` object that accompanies the `Navigating` event defines a `Cancel` property of type `bool` that can be used to cancel navigation.
+- `Navigated`, which is raised when page navigation completes. The `WebNavigatedEventArgs` object that accompanies the `Navigated` event defines a `Result` property of type `WebNavigationResult` that indicates the navigation result.
 
 ## Set cookies
 
-Cookies can be set on a `WebView`, which are then sent with the web request to the specified URL. This is accomplished by adding `Cookie` objects to a `CookieContainer`, which is then set as the value of the `WebView.Cookies` bindable property. The following code shows an example of this:
+Cookies can be set on a <xref:Microsoft.Maui.Controls.WebView> so that they are sent with the web request to the specified URL. Set the cookies by adding `Cookie` objects to a `CookieContainer`, and then set the container as the value of the `WebView.Cookies` bindable property. The following code shows an example:
 
 ```csharp
 using System.Net;
@@ -229,11 +229,11 @@ webView.Cookies = cookieContainer;
 webView.Source = new UrlWebViewSource { Url = uri.ToString() };
 ```
 
-In this example, a single `Cookie` is added to the `CookieContainer` object, which is then set as the value of the `WebView.Cookies` property. When the  `WebView` sends a web request to the specified URL, the cookie is sent with the request.
+In this example, a single `Cookie` is added to the `CookieContainer` object, which is then set as the value of the `WebView.Cookies` property. When the  <xref:Microsoft.Maui.Controls.WebView> sends a web request to the specified URL, the cookie is sent with the request.
 
 ## Invoke JavaScript
 
-`WebView` includes the ability to invoke a JavaScript function from C#, and return any result to the calling C# code. This is accomplished with the `EvaluateJavaScriptAsync` method, which is shown in the following example:
+<xref:Microsoft.Maui.Controls.WebView> includes the ability to invoke a JavaScript function from C# and return any result to the calling C# code. This interop is accomplished with the `EvaluateJavaScriptAsync` method, which is shown in the following example:
 
 ```csharp
 Entry numberEntry = new Entry { Text = "5" };
@@ -246,7 +246,7 @@ string result = await webView.EvaluateJavaScriptAsync($"factorial({number})");
 resultLabel.Text = $"Factorial of {number} is {result}.";
 ```
 
-The `WebView.EvaluateJavaScriptAsync` method evaluates the JavaScript that's specified as the argument, and returns any result as a `string`. In this example, the `factorial` JavaScript function is invoked, which returns the factorial of `number` as a result. This JavaScript function is defined in the local HTML file that the `WebView` loads, and is shown in the following example:
+The `WebView.EvaluateJavaScriptAsync` method evaluates the JavaScript that's specified as the argument, and returns any result as a `string`. In this example, the `factorial` JavaScript function is invoked, which returns the factorial of `number` as a result. This JavaScript function is defined in the local HTML file that the <xref:Microsoft.Maui.Controls.WebView> loads, and is shown in the following example:
 
 ```html
 <html>
@@ -265,9 +265,66 @@ function factorial(num) {
 </html>
 ```
 
+::: moniker range=">=net-maui-7.0"
+
+## Configure the native WebView on iOS and Mac Catalyst
+
+The native <xref:Microsoft.Maui.Controls.WebView> control is a `MauiWKWebView` on iOS and Mac Catalyst, which derives from `WKWebView`. One of the `MauiWKWebView` constructor overloads enables a `WKWebViewConfiguration` object to be specified, which provides information about how to configure the `WKWebView` object. Typical configurations include setting the user agent, specifying cookies to make available to your web content, and injecting custom scripts into your web content.
+
+You can create a `WKWebViewConfiguration` object in your app, and then configure its properties as required. Alternatively, you can call the static `MauiWKWebView.CreateConfiguration` method to retrieve .NET MAUI's `WKWebViewConfiguration` object and then modify it. The `WKWebViewConfiguration` object can then be passed to the `MauiWKWebView` constructor overload by modifying the factory method that `WebViewHandler` uses to create its native control on each platform:
+
+```csharp
+#if IOS || MACCATALYST
+using WebKit;
+using CoreGraphics;
+using Microsoft.Maui.Platform;
+using Microsoft.Maui.Handlers;
+#endif
+...
+
+#if IOS || MACCATALYST
+    WKWebViewConfiguration config = MauiWKWebView.CreateConfiguration();
+    config.ApplicationNameForUserAgent = "MyProduct/1.0.0";
+    WebViewHandler.PlatformViewFactory =
+        handler => new MauiWKWebView(CGRect.Empty, (WebViewHandler)handler, config);
+#endif
+```
+
+> [!NOTE]
+> You should configure `MauiWKWebView` with a `WKWebViewConfiguration` object before a <xref:Microsoft.Maui.Controls.WebView> is displayed in your app. Suitable locations to do this are in your app's startup path, such as in *MauiProgram.cs* or *App.xaml.cs*. <!-- For more information about configuring a native .NET MAUI control, see [Customize controls](~/user-interface/handlers/customize.md). -->
+
+::: moniker-end
+
+## Inspect a WebView on Mac Catalyst
+
+To use Safari developer tools to inspect the contents of a `WebView` on Mac Catalyst requires you to add the `com.apple.security.get-task-allow` key, of type `Boolean`, to the entitlements file of your app for its debug build. For more information about entitlements, see [Entitlements](~/ios/entitlements.md).
+
+To add an entitlements file to your .NET MAUI app project, add a new XML file named *Entitlements.Debug.plist* to the *Platforms\\MacCatalyst* folder of your app project. Then add the following XML to the file:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>com.apple.security.get-task-allow</key>
+    <true/>
+</dict>
+</plist>
+```
+
+To configure your app to consume this entitlements file, add the following `<PropertyGroup>` node to your app's project file as a child of the `<Project>` node:
+
+```xml
+<PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst' and '$(Configuration)' == 'Debug'">
+    <CodeSignEntitlements>Platforms/MacCatalyst/Entitlements.Debug.plist</CodeSignEntitlements>
+</PropertyGroup>
+```
+
+This configuration ensures that the entitlements file is only processed for debug builds on Mac Catalyst.
+
 ## Launch the system browser
 
-It's possible to open a URI in the system web browser with the `Launcher` class, that's provided by `Microsoft.Maui.Essentials`. This is achieved by calling it's `OpenAsync` method, passing in a `string` or `Uri` argument that represents the URI to open:
+It's possible to open a URI in the system web browser with the `Launcher` class, which is provided by `Microsoft.Maui.Essentials`. Call the launcher's `OpenAsync` method and pass in a `string` or `Uri` argument that represents the URI to open:
 
 ```csharp
 await Launcher.OpenAsync("https://learn.microsoft.com/dotnet/maui");

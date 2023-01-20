@@ -8,7 +8,7 @@ ms.date: 02/25/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-theming)
 
-.NET Multi-platform App UI (.NET MAUI) apps can respond to style changes dynamically at runtime by using the `DynamicResource` markup extension. This markup extension is similar to the `StaticResource` markup extension, in that both use a dictionary key to fetch a value from a `ResourceDictionary`. However, while the `StaticResource` markup extension performs a single dictionary lookup, the `DynamicResource` markup extension maintains a link to the dictionary key. Therefore, if the value associated with the key is replaced, the change is applied to the `VisualElement`. This enables runtime theming to be implemented in .NET MAUI apps.
+.NET Multi-platform App UI (.NET MAUI) apps can respond to style changes dynamically at runtime by using the `DynamicResource` markup extension. This markup extension is similar to the `StaticResource` markup extension, in that both use a dictionary key to fetch a value from a `ResourceDictionary`. However, while the `StaticResource` markup extension performs a single dictionary lookup, the `DynamicResource` markup extension maintains a link to the dictionary key. Therefore, if the value associated with the key is replaced, the change is applied to the <xref:Microsoft.Maui.Controls.VisualElement>. This enables runtime theming to be implemented in .NET MAUI apps.
 
 The process for implementing runtime theming in a .NET MAUI app is as follows:
 
@@ -92,7 +92,7 @@ For more information about merging resource dictionaries, see [Merged resource d
 
 When an app wants to consume a resource that's stored in a `ResourceDictionary` that represents a theme, it should do so with the `DynamicResource` markup extension. This ensures that if a different theme is selected at runtime, the values from the new theme will be applied.
 
-The following example shows three styles from that can be applied to all `Label` objects in app:
+The following example shows three styles from that can be applied to all <xref:Microsoft.Maui.Controls.Label> objects in app:
 
 ```xaml
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -182,9 +182,9 @@ When a theme is selected at runtime, an app should:
 1. Remove the current theme from the app. This is achieved by clearing the `MergedDictionaries` property of the app-level `ResourceDictionary`.
 2. Load the selected theme. This is achieved by adding an instance of the selected theme to the `MergedDictionaries` property of the app-level `ResourceDictionary`.
 
-Any `VisualElement` objects that set properties with the `DynamicResource` markup extension will then apply the new theme values. This occurs because the `DynamicResource` markup extension maintains a link to dictionary keys. Therefore, when the values associated with keys are replaced, the changes are applied to the `VisualElement` objects.
+Any <xref:Microsoft.Maui.Controls.VisualElement> objects that set properties with the `DynamicResource` markup extension will then apply the new theme values. This occurs because the `DynamicResource` markup extension maintains a link to dictionary keys. Therefore, when the values associated with keys are replaced, the changes are applied to the <xref:Microsoft.Maui.Controls.VisualElement> objects.
 
-In the sample application, a theme is selected via a modal page that contains a `Picker`. The following code shows the `OnPickerSelectionChanged` method, which is executed when the selected theme changes:
+In the sample application, a theme is selected via a modal page that contains a <xref:Microsoft.Maui.Controls.Picker>. The following code shows the `OnPickerSelectionChanged` method, which is executed when the selected theme changes:
 
 The following example shows removing the current theme and loading a new theme:
 

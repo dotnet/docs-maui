@@ -1,7 +1,7 @@
 ---
 title: "Geolocation"
 description: "Learn how to use the .NET MAUI IGeolocation interface in the Microsoft.Maui.Devices.Sensors namespace. This interface provides API to retrieve the device's current geolocation coordinates."
-ms.date: 09/02/2022
+ms.date: 10/24/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices", "Microsoft.Maui.Devices.Sensors"]
 ---
 
@@ -18,7 +18,19 @@ To access the **Geolocation** functionality, the following platform-specific set
 <!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
 
-**Coarse and Fine Location** permissions are required and must be configured in the Android project. Additionally, if your app targets Android 5.0 (API level 21) or higher, you must declare that your app uses the hardware features in the manifest file. This can be added in the following ways:
+::: moniker range="=net-maui-6.0"
+
+Coarse *and* fine location permissions are required and should be configured in the Android project.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-7.0"
+
+Coarse *or* fine location permissions, or both, must be specified and should be configured in the Android project.
+
+::: moniker-end
+
+Additionally, if your app targets Android 5.0 (API level 21) or higher, you must declare that your app uses the hardware features in the manifest file. This can be added in the following ways:
 
 - Add the assembly-based permission:
 
@@ -102,11 +114,21 @@ An alternative to editing the _Platforms/iOS/Info.plist_ and _Platforms/MacCatal
 
 # [Windows](#tab/windows)
 
+::: moniker range="=net-maui-6.0"
+
 <!-- NOT SUPPORTED>
 In the `Package.appxmanifest` under **Capabilities** ensure that `Location` capability are checked.
 -->
 
 In the **Solution Explorer** pane, right-click on the _Platforms/Windows/Package.appxmanifest_ file, and select **View Code**. Under the `<Capabilities>` node, add the `<DeviceCapability Name="location"/>` element.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-7.0"
+
+No setup is required.
+
+::: moniker-end
 
 -----
 <!-- markdownlint-enable MD025 -->
@@ -136,6 +158,9 @@ The following code example demonstrates how to request the device's location, wh
 :::code language="csharp" source="../snippets/shared_1/SensorsPage.xaml.cs" id="geolocation_get":::
 
 Not all location values may be available, depending on the device. For example, the `Altitude` property might be `null`, have a value of 0, or have a positive value indicating the meters above sea level. Other values that may not be present include `Speed` and `Course`.
+
+> [!WARNING]
+> `GetLocationAsync` can return `null` in some scenarios. This indicates that the underlying platform is unable to obtain the current location.
 
 ## Accuracy
 

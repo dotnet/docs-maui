@@ -49,9 +49,7 @@ The `ReadExternalStorage` permission is required and must be configured in the A
 
 # [iOS\macOS](#tab/ios)
 
-Enable iCloud capabilities.
-
-<!-- To enable iCloud capabilities in the file picker, TODO: follow these [directions](../ios/platform/document-picker.md#enabling-icloud-in-maui). -->
+Enable iCloud capabilities. For more information, see [Capabilities](~/ios/capabilities.md).
 
 # [Windows](#tab/windows)
 
@@ -73,6 +71,8 @@ Default file types are provided with `FilePickerFileType.Images`, `FilePickerFil
 
 :::code language="csharp" source="../snippets/shared_1/Storage.cs" id="file_types":::
 
+Searching for files based on the file type may be different from one platform to the other. For more information, see [Platform differences](#platform-differences).
+
 ## Pick multiple files
 
 If you want the user to pick multiple files, call the `FilePicker.PickMultipleAsync` method. This method also takes a `PickOptions` parameter to specify additional information. The results are the same as `PickAsync`, but instead of the `FileResult` type returned, an `IEnumerable<FileResult>` type is returned with all of the selected files.
@@ -88,7 +88,11 @@ This section describes the platform-specific differences with the file picker.
 
 The `PickOptions.PickerTitle` is displayed on the initial prompt to the user, but not in the picker dialog itself.
 
+When filtering files by type, use the file's MIME type. For a list of MIME types, see [Mozilla - Common MIME types](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types).
+
 # [iOS\macOS](#tab/ios)
+
+When filtering by file type, use Uniform Type Identifiers (UTType) values, specifically the identifier value. For more information, see [System-Declared Uniform Type Identifiers (Apple developer archive)](https://developer.apple.com/library/archive/documentation/Miscellaneous/Reference/UTIRef/Articles/System-DeclaredUniformTypeIdentifiers.html) and [System-declared uniform type identifiers](https://developer.apple.com/documentation/uniformtypeidentifiers/system-declared_uniform_type_identifiers).
 
 - **iOS**
 
@@ -101,5 +105,7 @@ The `PickOptions.PickerTitle` is displayed on the initial prompt to the user, bu
 # [Windows](#tab/windows)
 
 The `PickOptions.PickerTitle` isn't displayed to the user.
+
+When filtering by file type, use the file extension, including the `.` character. For example, you can filter to GIF files with `.gif`.
 
 -----

@@ -37,7 +37,7 @@ The `AppThemeBinding` markup extension enables you to consume a resource, such a
 </StackLayout>
 ```
 
-In this example, the text color of the first `Label` is set to green when the device is using its light theme, and is set to red when the device is using its dark theme. Similarly, the `Image` displays a different image file based upon the current system theme.
+In this example, the text color of the first <xref:Microsoft.Maui.Controls.Label> is set to green when the device is using its light theme, and is set to red when the device is using its dark theme. Similarly, the <xref:Microsoft.Maui.Controls.Image> displays a different image file based upon the current system theme.
 
 In addition, resources defined in a `ResourceDictionary` can be consumed with the `StaticResource` markup extension:
 
@@ -70,13 +70,13 @@ In addition, resources defined in a `ResourceDictionary` can be consumed with th
 </ContentPage>    
 ```
 
-In this example, the background color of the `Grid` and the `Button` style changes based on whether the device is using its light theme or dark theme.
+In this example, the background color of the <xref:Microsoft.Maui.Controls.Grid> and the <xref:Microsoft.Maui.Controls.Button> style changes based on whether the device is using its light theme or dark theme.
 
 For more information about the `AppThemeBinding` markup extension, see [AppThemeBinding markup extension](~/xaml/markup-extensions/consume.md#appthemebinding-markup-extension).
 
 ### Extension methods
 
-.NET MAUI includes `SetAppThemeColor` and `SetAppTheme<T>` extension methods that enable `VisualElement` objects to respond to system theme changes.
+.NET MAUI includes `SetAppThemeColor` and `SetAppTheme<T>` extension methods that enable <xref:Microsoft.Maui.Controls.VisualElement> objects to respond to system theme changes.
 
 The `SetAppThemeColor` method enables `Color` objects to be specified that will be set on a target property based on the current system theme:
 
@@ -85,7 +85,7 @@ Label label = new Label();
 label.SetAppThemeColor(Label.TextColorProperty, Colors.Green, Colors.Red);
 ```
 
-In this example, the text color of the `Label` is set to green when the device is using its light theme, and is set to red when the device is using its dark theme.
+In this example, the text color of the <xref:Microsoft.Maui.Controls.Label> is set to green when the device is using its light theme, and is set to red when the device is using its dark theme.
 
 The `SetAppTheme<T>` method enables objects of type `T` to be specified that will be set on a target property based on the current system theme:
 
@@ -94,7 +94,7 @@ Image image = new Image();
 image.SetAppTheme<FileImageSource>(Image.SourceProperty, "lightlogo.png", "darklogo.png");
 ```
 
-In this example, the `Image` displays `lightlogo.png` when the device is using its light theme, and `darklogo.png` when the device is using its dark theme.
+In this example, the <xref:Microsoft.Maui.Controls.Image> displays `lightlogo.png` when the device is using its light theme, and `darklogo.png` when the device is using its dark theme.
 
 ## Detect the current system theme
 

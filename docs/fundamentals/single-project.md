@@ -17,7 +17,7 @@ ms.date: 05/17/2022
 - Access to platform-specific APIs and tools when required.
 - A single cross-platform app entry point.
 
-.NET MAUI single project is enabled using multi-targeting and the use of SDK-style projects in .NET 6.
+.NET MAUI single project is enabled using multi-targeting and the use of SDK-style projects.
 
 ## Resource files
 
@@ -235,4 +235,4 @@ public class App : Application
 }
 ```
 
-In the preceding example, the `MainPage` property is set to the `AppShell` object. `AppShell` is a subclassed `Shell` class that describes the visual hierarchy of the app. For more information, see [Create a .NET MAUI Shell app](shell/create.md).
+In the preceding example, the `MainPage` property is set to the `AppShell` object. `AppShell` is a subclassed <xref:Microsoft.Maui.Controls.Shell> class that describes the visual hierarchy of the app. For more information, see [Create a .NET MAUI Shell app](shell/create.md).

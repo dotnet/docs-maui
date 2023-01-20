@@ -6,7 +6,7 @@ ms.date: 04/05/2022
 
 # Entry Cursor Color on iOS
 
-This .NET Multi-platform App UI (.NET MAUI) iOS platform-specific sets the cursor color of an `Entry` to a specified color. It's consumed in XAML by setting the `Entry.CursorColor` bindable property to a `Color`:
+This .NET Multi-platform App UI (.NET MAUI) iOS platform-specific sets the cursor color of an <xref:Microsoft.Maui.Controls.Entry> to a specified color. It's consumed in XAML by setting the `Entry.CursorColor` bindable property to a `Color`:
 
 ```xaml
 <ContentPage ...
@@ -30,6 +30,6 @@ entry.On<iOS>().SetCursorColor(Colors.LimeGreen);
 
 The `Entry.On<iOS>` method specifies that this platform-specific will only run on iOS. The `Entry.SetCursorColor` method, in the `Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific` namespace, sets the cursor color to a specified `Color`. In addition, the `Entry.GetCursorColor` method can be used to retrieve the current cursor color.
 
-The result is that the cursor color in a `Entry` can be set to a specific `Color`:
+The result is that the cursor color in a <xref:Microsoft.Maui.Controls.Entry> can be set to a specific `Color`:
 
 :::image type="content" source="media/entry-cursor-color/entry-cursorcolor.png" alt-text="Entry cursor color.":::

@@ -18,7 +18,7 @@ To access the Vibration functionality, the following platform specific setup is 
 <!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
 
-The `VIBRATE` permission is required, and must be configured in the Android project. This can be added in the following ways:
+The `VIBRATE` permission is required, and must be configured in the Android project. This permission can be added in the following ways:
 
 - Add the assembly-based permission:
 
@@ -48,11 +48,11 @@ The `VIBRATE` permission is required, and must be configured in the Android proj
 
 # [iOS\macOS](#tab/ios)
 
-No additional setup required.
+No setup is required.
 
 # [Windows](#tab/windows)
 
-No additional setup required.
+No setup is required.
 
 -----
 

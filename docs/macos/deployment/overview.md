@@ -15,6 +15,9 @@ ms.date: 04/25/2022
 
 When distributing your .NET Multi-platform App UI (.NET MAUI) app for macOS, you generate an *.app* or a *.pkg* file. An *.app* file is a self-contained app that can be run without installation, whereas a *.pkg* is an app packaged in an installer.
 
+> [!IMPORTANT]
+> Blazor Hybrid apps require a WebView on the host platform. For more information, see [Keep the Web View current in deployed Blazor Hybrid apps](/aspnet/core/blazor/hybrid/security/security-considerations#keep-the-web-view-current-in-deployed-apps).
+
 ## Publish an unsigned app
 
 At this time, publishing is only supported through the .NET command line interface.
@@ -25,12 +28,14 @@ To publish your app, open a terminal and navigate to the folder for your .NET MA
 
 | Parameter                    | Value                                                                                           |
 |------------------------------|-------------------------------------------------------------------------------------------------|
-| `-f` or `--framework`        | The target framework, which is `net6.0-maccatalyst`.                                            |
+| `-f` or `--framework`        | The target framework, which is `net6.0-maccatalyst` or `net7.0-maccatalyst`.                    |
 | `-c` or `--configuration`    | The build configuration, which is `Release`.                                                    |
 | `/p:CreatePackage`           | An optional parameter that controls whether to create an .app or a .pkg. Use `true` for a .pkg. |
 
 > [!WARNING]
 > Attempting to publish a .NET MAUI solution will result in the `dotnet publish` command attempting to publish each project in the solution individually, which can cause issues when you've added other project types to your solution. Therefore, the `dotnet publish` command should be scoped to your .NET MAUI app project.
+
+::: moniker range="=net-maui-6.0"
 
 For example, use the following command to create an *.app*:
 
@@ -45,6 +50,26 @@ dotnet build -f:net6.0-maccatalyst -c:Release /p:CreatePackage=true
 ```
 
 Publishing builds the app, and then copies the *.app* or *.pkg* to the *bin/Release/net6.0-maccatalyst/maccatalyst-x64* folder.
+
+::: moniker-end
+
+::: moniker range="=net-maui-7.0"
+
+For example, use the following command to create an *.app*:
+
+```console
+dotnet build -f:net7.0-maccatalyst -c:Release
+```
+
+Use the following command to create a *.pkg*:
+
+```console
+dotnet build -f:net7.0-maccatalyst -c:Release /p:CreatePackage=true
+```
+
+Publishing builds the app, and then copies the *.app* or *.pkg* to the *bin/Release/net7.0-maccatalyst/maccatalyst-x64* folder.
+
+::: moniker-end
 
 For more information about the `dotnet publish` command, see [dotnet publish](/dotnet/core/tools/dotnet-publish).
 

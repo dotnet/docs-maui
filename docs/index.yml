@@ -36,6 +36,8 @@ landingContent:
             url: android/emulator/debug-on-emulator.md
           - text: Setup an Android device for debugging
             url: android/device/setup.md
+          - text: iOS device provisioning
+            url: ios/device-provisioning/index.md
           - text: Build an iOS app with .NET CLI
             url: ios/cli.md
           - text: Build a Mac Catalyst app with .NET CLI
@@ -142,6 +144,8 @@ landingContent:
     linkLists:
       - linkListType: concept
         links:
+          - text: Azure mobile apps
+            url: /azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui/
           - text: Consume a REST-based web service
             url: data-cloud/rest.md
           - text: Connect to local web services
@@ -153,7 +157,7 @@ landingContent:
       - linkListType: concept
         links:
           - text: Hot restart
-            url: deployment/hot-restart.md
+            url: ios/hot-restart.md
           - text: Project configuration
             url: deployment/visual-studio-properties.md
           - text: Publish Android apps

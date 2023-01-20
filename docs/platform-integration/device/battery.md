@@ -18,7 +18,7 @@ To access the **Battery** functionality the following platform-specific setup is
 <!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
 
-The `Battery` permission is required and must be configured in the Android project. This can be added in the following ways:
+The `Battery` permission is required and must be configured in the Android project. You can configure the permission in the following ways:
 
 - Add the assembly-based permission:
 
@@ -32,7 +32,7 @@ The `Battery` permission is required and must be configured in the Android proje
 
 - Update the Android Manifest:
 
-  In the **Solution Explorer**, open the _AndroidManifest.xml_ file. This is typically located in the **Your-project** > **Platforms** > **Android** folder. Add the following node as a child to the `<manifest>` node:
+  In **Solution Explorer**, open the _AndroidManifest.xml_ file. This file is typically located in the **Your-project** > **Platforms** > **Android** folder. Add the following node as a child to the `<manifest>` node:
 
   ```xml
   <uses-permission android:name="android.permission.BATTERY_STATS" />
@@ -61,7 +61,7 @@ No setup is required.
 
 The battery status can be checked by accessing the `Battery.Default` property, which is the default implementation of the `IBattery` interface. This interface defines various properties to provide information about the state of the battery. The `BatteryInfoChanged` event is also available, and is raised when the state of the battery changed.
 
-The following example demonstrates how to use the monitor the `BatteryInfoChanged` event and report the battery status two `Label` controls:
+The following example demonstrates how to use the monitor the `BatteryInfoChanged` event and report the battery status two <xref:Microsoft.Maui.Controls.Label> controls:
 
 :::code language="csharp" source="../snippets/shared_1/BatteryTestPage.xaml.cs" id="watch_battery":::
 
@@ -87,7 +87,7 @@ The following code example monitors the energy-saver status and sets a property 
 
 The `PowerSource` property returns a `BatteryPowerSource` enumeration that indicates how the device is being charged, if at all. If it's not being charged, the status will be `Battery`. The `AC`, `Usb`, and `Wireless` values indicate that the battery is being charged.
 
-The following code example sets the text of a `Label` control based on power source.
+The following code example sets the text of a <xref:Microsoft.Maui.Controls.Label> control based on power source.
 
 :::code language="csharp" source="../snippets/shared_1/BatteryTestPage.xaml.cs" id="charge_mode":::
 

@@ -30,13 +30,19 @@ Handlers can be customized per platform by using conditional compilation, to mul
 
 ## Customize a control
 
-The .NET MAUI `Entry` is a single-line text input control, that implements the `IEntry` interface. On iOS, the `EntryHandler` maps the `Entry` to an iOS `UITextField`. On Android, the `Entry` is mapped to an `AppCompatEditText`, and on Windows the `Entry` is mapped to a `TextBox`:
+The .NET MAUI <xref:Microsoft.Maui.Controls.Entry> view is a single-line text input control, that implements the `IEntry` interface. The `EntryHandler` maps the <xref:Microsoft.Maui.Controls.Entry> view to the following native views for each platform:
+
+- **iOS/Mac Catalyst**: `UITextField`
+- **Android**: `AppCompatEditText`
+- **Windows**: `TextBox`
+
+The following diagrams shows how the <xref:Microsoft.Maui.Controls.Entry> view is mapped to its native views via the `EntryHandler`:
 
 :::image type="content" source="media/customize/entry-handler.png" alt-text="Entry handler architecture." border="false":::
 
-The `Entry` property mapper, in the `EntryHandler` class, maps the cross-platform control properties to the native view API. This ensures that when a property is set on an `Entry`, the underlying native view is updated as required.
+The <xref:Microsoft.Maui.Controls.Entry> property mapper, in the `EntryHandler` class, maps the cross-platform control properties to the native view API. This ensures that when a property is set on an <xref:Microsoft.Maui.Controls.Entry>, the underlying native view is updated as required.
 
-The property mapper can be modified to customize `Entry` on each platform:
+The property mapper can be modified to customize <xref:Microsoft.Maui.Controls.Entry> on each platform:
 
 ```csharp
 namespace CustomizeHandlersDemo.Views;
@@ -71,13 +77,13 @@ public partial class CustomizeEntryPage : ContentPage
 }
 ```
 
-In this example, the `Entry` customization occurs in a page class. Therefore, all `Entry` controls on Android, iOS, and Windows will be customized once an instance of the `CustomizeEntryPage` is created. Customization is performed by accessing the handlers `PlatformView` property, which provides access to the native view that implements the cross-platform control on each platform. Native code then customizes the handler by selecting all of the text in the `Entry` when it gains focus.
+In this example, the <xref:Microsoft.Maui.Controls.Entry> customization occurs in a page class. Therefore, all <xref:Microsoft.Maui.Controls.Entry> controls on Android, iOS, and Windows will be customized once an instance of the `CustomizeEntryPage` is created. Customization is performed by accessing the handlers `PlatformView` property, which provides access to the native view that maps to the cross-platform control on each platform. Native code then customizes the handler by selecting all of the text in the <xref:Microsoft.Maui.Controls.Entry> when it gains focus.
 
 For more information about mappers, see [Mappers](index.md#mappers).
 
 ## Customize a specific control instance
 
-Handlers are global, and customizing a handler for a control will result in all controls of the same type being customized in your app. However, handlers for specific control instances can be customized by subclassing the control, and then by modifying the handler for the base control type only when the control is of the subclassed type. For example, to customize a specific `Entry` control on a page that contains multiple `Entry` controls, you should first subclass the `Entry` control:
+Handlers are global, and customizing a handler for a control will result in all controls of the same type being customized in your app. However, handlers for specific control instances can be customized by subclassing the control, and then by modifying the handler for the base control type only when the control is of the subclassed type. For example, to customize a specific <xref:Microsoft.Maui.Controls.Entry> control on a page that contains multiple <xref:Microsoft.Maui.Controls.Entry> controls, you should first subclass the <xref:Microsoft.Maui.Controls.Entry> control:
 
 ```csharp
 namespace CustomizeHandlersDemo.Controls
@@ -125,7 +131,7 @@ The handler lifecycle can be used to perform handler customization. For example,
        HandlerChanging="OnEntryHandlerChanging" />
 ```
 
-Handlers can be customized per platform by using conditional compilation, or by using partial classes to organize your code into platform-specific folders and files. Each approach will be discussed in turn, by customizing an `Entry` so that all of its text is selected when it gains focus.
+Handlers can be customized per platform by using conditional compilation, or by using partial classes to organize your code into platform-specific folders and files. Each approach will be discussed in turn, by customizing an <xref:Microsoft.Maui.Controls.Entry> so that all of its text is selected when it gains focus.
 
 ### Conditional compilation
 
@@ -190,9 +196,9 @@ public partial class CustomizeEntryHandlerLifecyclePage : ContentPage
 }
 ```
 
-The `HandlerChanged` event is raised after the native view that implements the cross-platform control has been created and initialized. Therefore, its event handler is where native event subscriptions should be performed. This requires casting the `PlatformView` property of the handler to the type, or base type, of the native view so that native events can be accessed. In this example, on iOS, Mac Catalyst, and Windows, the `OnHandlerChanged` event subscribes to native view events that are raised when the native views that implement the `Entry` gain focus.
+The `HandlerChanged` event is raised after the native view that implements the cross-platform control has been created and initialized. Therefore, its event handler is where native event subscriptions should be performed. This requires casting the `PlatformView` property of the handler to the type, or base type, of the native view so that native events can be accessed. In this example, on iOS, Mac Catalyst, and Windows, the `OnHandlerChanged` event subscribes to native view events that are raised when the native views that implement the <xref:Microsoft.Maui.Controls.Entry> gain focus.
 
-The `OnEditingDidBegin` and `OnGotFocus` event handlers access the native view for the `Entry` on their respective platforms, and select all text that's in the `Entry`.
+The `OnEditingDidBegin` and `OnGotFocus` event handlers access the native view for the <xref:Microsoft.Maui.Controls.Entry> on their respective platforms, and select all text that's in the <xref:Microsoft.Maui.Controls.Entry>.
 
 The `HandlerChanging` event is raised before the existing handler is removed from the cross-platform control, and before the new handler for the cross-platform control is created. Therefore, its event handler is where native event subscriptions should be removed, and other cleanup should be performed. The `HandlerChangingEventArgs` object that accompanies this event has `OldHandler` and `NewHandler` properties, which will be set to the old and new handlers respectively. In this example, the `OnHandlerChanging` event removes the subscription to the native view events on iOS, Mac Catalyst, and Windows.
 

@@ -1,11 +1,11 @@
 ---
-title: "Map"
+title: "Open the map app"
 description: "Learn how to use the .NET MAUI IMap interface in the Microsoft.Maui.ApplicationModel namespace. This interface enables an application to open the installed map application to a specific location or place mark."
 ms.date: 09/02/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel"]
 ---
 
-# Map
+# Open the map app
 
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IMap` interface. This interface enables an application to open the installed map application to a specific location or place mark.
 
@@ -18,7 +18,7 @@ To access the browser functionality, the following platform-specific setup is re
 <!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
 
-Android uses the `geo:` Uri scheme to launch the maps application on the device. This may prompt the user to select from an existing app that supports this Uri scheme. Google Maps supports this scheme.
+Android uses the `geo:` URI scheme to launch the maps application on the device. This may prompt the user to select from an existing app that supports this URI scheme. Google Maps supports this scheme.
 
 In the _Platforms/Android/AndroidManifest.xml_ file, add the following `queries/intent` nodes to the `manifest` node:
 

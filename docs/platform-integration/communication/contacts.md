@@ -1,7 +1,7 @@
 ---
 title: "Contacts"
 description: "Learn how to use the .NET MAUI Contacts interface in the Microsoft.Maui.ApplicationModel.Communication namespace, which lets a pick a contact and retrieve information about it."
-ms.date: 09/02/2022
+ms.date: 10/24/2022
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel.Communication"]
 ---
 
@@ -12,16 +12,18 @@ This article describes how you can use the .NET Multi-platform App UI (.NET MAUI
 The default implementation of the `IContacts` interface is available through the `Contacts.Default` property. Both the `IContacts` interface and `Contacts` class are contained in the `Microsoft.Maui.ApplicationModel.Communication` namespace.
 
 > [!IMPORTANT]
-> Because of a namespace conflict, the `Contacts` type must be fully qualified when targeting iOS or macOS: `Microsoft.Maui.ApplicationModel.Communication.Contacts`. New projects automatically target these platforms, along with Android and Windows.
->
-> To write code that will compile for iOS and macOS, fully qualify the `Contacts` type. Alternatively, provide a `using` directive to map the `Communication` namespace:
->
-> ```csharp
-> using Communication = Microsoft.Maui.ApplicationModel.Communication;
->
-> // Code that uses the namespace:
-> var contact = await Communication.Contacts.Default.PickContactAsync();
-> ```
+> Picking a contact is unsupported on Windows.
+
+Because of a namespace conflict, the `Contacts` type must be fully qualified when targeting iOS or macOS: `Microsoft.Maui.ApplicationModel.Communication.Contacts`. New projects automatically target these platforms, along with Android and Windows.
+
+To write code that will compile for iOS and macOS, fully qualify the `Contacts` type. Alternatively, provide a `using` directive to map the `Communication` namespace:
+
+```csharp
+using Communication = Microsoft.Maui.ApplicationModel.Communication;
+
+// Code that uses the namespace:
+var contact = await Communication.Contacts.Default.PickContactAsync();
+```
 
 ## Get started
 
@@ -73,7 +75,7 @@ The `<string>` element is the description specific to your app and is shown to t
 
 # [Windows](#tab/windows)
 
-In the **Solution Explorer** pane, right-click on the _Platforms/Windows/Package.appxmanifest_ file, and select **View Code**. Under the `<Capabilities>` node, add `<uap:Capability Name="contacts"/>`.
+Picking a contact is unsupported on Windows.
 
 -----
 <!-- markdownlint-enable MD025 -->
@@ -110,7 +112,7 @@ This section describes the platform-specific differences with the contacts API.
 
 # [Windows](#tab/windows)
 
-No platform differences.
+Picking a contact is unsupported on Windows.
 
 -----
 <!-- markdownlint-enable MD024 -->

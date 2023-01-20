@@ -61,6 +61,6 @@ No setup is required.
 
 ## Use haptic feedback
 
-The haptic feedback functionality is performed in two modes: a short `Click` or a `LongPress`. The following code example initiates a `Click` or `LongPress` haptic feedback response to the user based on which `Button` they click:
+The haptic feedback functionality is performed in two modes: a short `Click` or a `LongPress`. The following code example initiates a `Click` or `LongPress` haptic feedback response to the user based on which <xref:Microsoft.Maui.Controls.Button> they click:
 
 :::code language="csharp" source="../snippets/shared_1/DeviceDetailsPage.xaml.cs" id="hapticfeedback":::

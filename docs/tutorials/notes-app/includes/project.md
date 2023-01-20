@@ -25,6 +25,8 @@ Set the **Debug Target** in the Visual Studio toolbar to the device you want to 
 
 :::image type="content" source="../media/project/vs-debugtarget.png" alt-text="Selecting the Android debug target for a .NET MAUI app in Visual Studio.":::
 
-01. Select the **Debug Target** dropdown button.
+01. Select the **Debug Target** drop-down button.
 01. Select the **Android Emulators** item.
 01. Select the emulator device.
+
+[![Explore the code.](~/media/code-sample.png) Explore the code for this step of the tutorial.](https://github.com/dotnet/maui-samples/tree/main/7.0/Tutorials/CreateNetMauiApp/step1)

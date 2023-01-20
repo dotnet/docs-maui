@@ -12,7 +12,7 @@ ms.date: 02/18/2022
 
 Behaviors enable you to implement code that you would normally have to write as code-behind, because it directly interacts with the API of the control in such a way that it can be concisely attached to the control and packaged for reuse across more than one application. They can be used to provide a full range of functionality to controls, such as:
 
-- Adding an email validator to an `Entry`.
+- Adding an email validator to an <xref:Microsoft.Maui.Controls.Entry>.
 - Creating a rating control using a tap gesture recognizer.
 - Controlling an animation.
 
@@ -27,7 +27,7 @@ Attached behaviors are static classes with one or more attached properties. An a
 
 An attached property can define a `propertyChanged` delegate that will be executed when the value of the property changes, such as when the property is set on a control. When the `propertyChanged` delegate executes, it's passed a reference to the control on which it is being attached, and parameters that contain the old and new values for the property. This delegate can be used to add new functionality to the control that the property is attached to by manipulating the reference that is passed in, as follows:
 
-1. The `propertyChanged` delegate casts the control reference, which is received as a `BindableObject`, to the control type that the behavior is designed to enhance.
+1. The `propertyChanged` delegate casts the control reference, which is received as a <xref:Microsoft.Maui.Controls.BindableObject>, to the control type that the behavior is designed to enhance.
 1. The `propertyChanged` delegate modifies properties of the control, calls methods of the control, or registers event handlers for events exposed by the control, to implement the core behavior functionality.
 
 > [!WARNING]
@@ -37,7 +37,7 @@ An attached property can define a `propertyChanged` delegate that will be execut
 
 An attached behavior can be implemented by creating a static class that contains an attached property that specifies a `propertyChanged` delegate.
 
-The following example shows the `AttachedNumericValidationBehavior` class, which highlights the value entered by the user into an `Entry` control in red if it's not a `double`:
+The following example shows the `AttachedNumericValidationBehavior` class, which highlights the value entered by the user into an <xref:Microsoft.Maui.Controls.Entry> control in red if it's not a `double`:
 
 ```csharp
 public static class AttachedNumericValidationBehavior
@@ -83,13 +83,13 @@ public static class AttachedNumericValidationBehavior
 }
 ```
 
-In this example, the `AttachedNumericValidationBehavior` class contains an attached property named `AttachBehavior` with a `static` getter and setter, which controls the addition or removal of the behavior to the control to which it will be attached. This attached property registers the `OnAttachBehaviorChanged` method that will be executed when the value of the property changes. This method registers or de-registers an event handler for the `TextChanged` event, based on the value of the `AttachBehavior` attached property. The core functionality of the behavior is provided by the `OnEntryTextChanged` method, which parses the value entered in the `Entry` and sets the `TextColor` property to red if the value isn't a `double`.
+In this example, the `AttachedNumericValidationBehavior` class contains an attached property named `AttachBehavior` with a `static` getter and setter, which controls the addition or removal of the behavior to the control to which it will be attached. This attached property registers the `OnAttachBehaviorChanged` method that will be executed when the value of the property changes. This method registers or de-registers an event handler for the `TextChanged` event, based on the value of the `AttachBehavior` attached property. The core functionality of the behavior is provided by the `OnEntryTextChanged` method, which parses the value entered in the <xref:Microsoft.Maui.Controls.Entry> and sets the `TextColor` property to red if the value isn't a `double`.
 
 ### Consume an attached behavior
 
 An attached behavior can be consumed by setting its attached property on the target control.
 
-The following example shows consuming the `AttachedNumericValidationBehavior` class on an `Entry` by adding the `AttachBehavior` attached property to the `Entry`:
+The following example shows consuming the `AttachedNumericValidationBehavior` class on an <xref:Microsoft.Maui.Controls.Entry> by adding the `AttachBehavior` attached property to the <xref:Microsoft.Maui.Controls.Entry>:
 
 ```xaml
 
@@ -99,7 +99,7 @@ The following example shows consuming the `AttachedNumericValidationBehavior` cl
 </ContentPage>
 ```
 
-The equivalent `Entry` in C# is shown in the following code example:
+The equivalent <xref:Microsoft.Maui.Controls.Entry> in C# is shown in the following code example:
 
 ```csharp
 Entry entry = new Entry { Placeholder = "Enter a System.Double" };
@@ -165,7 +165,7 @@ The behavior can then be consumed by attaching it to the `Behaviors` collection 
 
 A .NET MAUI behavior can be implemented by creating a class that derives from the `Behavior` or `Behavior<T>` class, and overriding the `OnAttachedTo` and `OnDetachingFrom` methods.
 
-The following example shows the `NumericValidationBehavior` class, which highlights the value entered by the user into an `Entry` control in red if it's not a `double`:
+The following example shows the `NumericValidationBehavior` class, which highlights the value entered by the user into an <xref:Microsoft.Maui.Controls.Entry> control in red if it's not a `double`:
 
 ```csharp
 public class NumericValidationBehavior : Behavior<Entry>
@@ -191,7 +191,7 @@ public class NumericValidationBehavior : Behavior<Entry>
 }
 ```
 
-In this example, the `NumericValidationBehavior` class derives from the `Behavior<T>` class, where `T` is an `Entry`. The `OnAttachedTo` method registers an event handler for the `TextChanged` event, with the `OnDetachingFrom` method de-registering the `TextChanged` event to prevent memory leaks. The core functionality of the behavior is provided by the `OnEntryTextChanged` method, which parses the value entered in the `Entry` and sets the `TextColor` property to red if the value isn't a `double`.
+In this example, the `NumericValidationBehavior` class derives from the `Behavior<T>` class, where `T` is an <xref:Microsoft.Maui.Controls.Entry>. The `OnAttachedTo` method registers an event handler for the `TextChanged` event, with the `OnDetachingFrom` method de-registering the `TextChanged` event to prevent memory leaks. The core functionality of the behavior is provided by the `OnEntryTextChanged` method, which parses the value entered in the <xref:Microsoft.Maui.Controls.Entry> and sets the `TextColor` property to red if the value isn't a `double`.
 
 > [!IMPORTANT]
 > .NET MAUI does not set the `BindingContext` of a behavior, because behaviors can be shared and applied to multiple controls through styles.
@@ -208,7 +208,7 @@ Every .NET MAUI control has a `Behaviors` collection, to which one or more behav
 </Entry>
 ```
 
-The equivalent `Entry` in C# is shown in the following code example:
+The equivalent <xref:Microsoft.Maui.Controls.Entry> in C# is shown in the following code example:
 
 ```csharp
 Entry entry = new Entry { Placeholder = "Enter a System.Double" };
@@ -276,7 +276,7 @@ public class NumericValidationStyleBehavior : Behavior<Entry>
 
 In this example, the `NumericValidationStyleBehavior` class contains an attached property named `AttachBehavior` with a `static` getter and setter, which controls the addition or removal of the behavior to the control to which it will be attached. This attached property registers the `OnAttachBehaviorChanged` method that will be executed when the value of the property changes. This method adds or removes the behavior to the control, based on the value of the `AttachBehavior` attached property.
 
-The following code example shows an *explicit* style for the `NumericValidationStyleBehavior` that uses the `AttachBehavior` attached property, and which can be applied to `Entry` controls:
+The following code example shows an *explicit* style for the `NumericValidationStyleBehavior` that uses the `AttachBehavior` attached property, and which can be applied to <xref:Microsoft.Maui.Controls.Entry> controls:
 
 ```xaml
 <Style x:Key="NumericValidationStyle" TargetType="Entry">
@@ -286,7 +286,7 @@ The following code example shows an *explicit* style for the `NumericValidationS
 </Style>
 ```
 
-The `Style` can be applied to an `Entry` by setting its `Style` property to the style using the `StaticResource` markup extension:
+The `Style` can be applied to an <xref:Microsoft.Maui.Controls.Entry> by setting its `Style` property to the style using the `StaticResource` markup extension:
 
 ```xaml
 <Entry Placeholder="Enter a System.Double" Style="{StaticResource NumericValidationStyle}">

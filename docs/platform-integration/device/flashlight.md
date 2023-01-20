@@ -52,7 +52,7 @@ There are two permissions to configure in your project: `Flashlight` and `Camera
 
 -->
 
-By adding these permissions, [Google Play will automatically filter out devices](https://developer.android.com/guide/topics/manifest/uses-feature-element.html#permissions-features) without specific hardware. You can get around this by adding the following to your _AssemblyInfo.cs_ file in your Android project:
+If you set these permissions, [Google Play will automatically filter out devices](https://developer.android.com/guide/topics/manifest/uses-feature-element.html#permissions-features) without specific hardware. You can get around this filtering by adding the following to the _AssemblyInfo.cs_ file in your Android project:
 
 ```csharp
 [assembly: UsesFeature("android.hardware.camera", Required = false)]
@@ -72,7 +72,7 @@ No setup is required.
 
 ## Use Flashlight
 
-The flashlight can be turned on and off through the `TurnOnAsync` and `TurnOffAsync` methods. The following code example ties the flashlight's on or off state to a `Switch` control:
+The flashlight can be turned on and off through the `TurnOnAsync` and `TurnOffAsync` methods. The following code example ties the flashlight's on or off state to a <xref:Microsoft.Maui.Controls.Switch> control:
 
 :::code language="csharp" source="../snippets/shared_1/DeviceDetailsPage.xaml.cs" id="flashlight":::
 

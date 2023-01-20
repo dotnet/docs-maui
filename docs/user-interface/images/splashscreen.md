@@ -35,7 +35,7 @@ To comply with Android resource naming rules, splash screen files names must be 
 The base size of the splash screen can be specified by setting the `BaseSize` attribute to values that are divisible by 8:
 
 ```xml
-<MauiSplashScreen Include="Resources\Splash\splashscreen.jpg" BaseSize="128,128" />
+<MauiSplashScreen Include="Resources\Splash\splashscreen.svg" BaseSize="128,128" />
 ```
 
 The value of the `BaseSize` attribute represents the baseline density of the splash screen, and is effectively the 1.0 scale factor for the splash screen from which all other density sizes are derived. This value will be used to ensure that splash screens are correctly resized to different display densities. If you don't specify a `BaseSize` for a bitmap-based splash screen, the image isn't resized. If you don't specify a `BaseSize` value for a vector-based splash screen, the dimensions specified in the SVG are assumed to be the base size. To stop vector images being resized, set the `Resize` attribute to `false`:
@@ -65,7 +65,7 @@ At build time, the splash screen can be resized to the correct resolution for th
 
 # [Android](#tab/android)
 
-On Android, the splash screen is added to your app package as **Resourcs/values/maui_colors.xml** and **Resources/drawable/maui_splash_image.xml**. .NET MAUI apps use the `Maui.SplashTheme` by default, which ensures that a splash screen will be displayed if present. Therefore, you should not specify a different theme in your manifest file or in your `MainActivity` class:
+On Android, the splash screen is added to your app package as **Resources/values/maui_colors.xml** and **Resources/drawable/maui_splash_image.xml**. .NET MAUI apps use the `Maui.SplashTheme` by default, which ensures that a splash screen will be displayed if present. Therefore, you should not specify a different theme in your manifest file or in your `MainActivity` class:
 
 <!-- Todo: P11 templates have implicit usings, so no need to include a using directive for Microsoft.Maui -->
 ```csharp
