@@ -219,11 +219,11 @@ When page navigation occurs in a <xref:Microsoft.Maui.Controls.WebView>, either 
 
 ## Handle permissions on Android
 
-When a web page requests access to recording devices, such as the camera or microphone, the <xref:Microsoft.Maui.Controls.WebView> control ignores those requests. These permission requests are a secondary set of permissions, in addition to the ones required by the .NET MAUI app. For the `WebView` control to access device recording hardware, permission must be granted to the .NET MAUI app itself, and then the `WebView` control needs approve the web page's permission request. Because the `WebView` control ignores requests, you must customize the Android control's approval process.
+When browsing to a page that requests access to the device's recording hardware, such as the camera or microphone, permission must be granted by the <xref:Microsoft.Maui.Controls.WebView> control. The `WebView` control uses the <xref:Android.Webkit.WebChromeClient?displayProperty=fullName> type to handle requests. However, the default `WebChromeClient` provided by .NET MAUI ignores permission requests. You must create a new type that inherits from `WebChromeClient` and approves the permission requests.
 
-On Android, the `WebView` control uses the <xref:Android.Webkit.WebChromeClient?displayProperty=fullName> type to handle requests. The default `WebChromeClient` provided by .NET MAUI ignores permission requests. You must create a new type that inherits from this class, and then pass an instance of that object to the <xref:Android.Webkit.WebView.SetWebChromeClient%2A> method.
+The permission requests from a web page to the `WebView` control are different than permission requests from the .NET MAUI app to the user. .NET MAUI app permissions are requested and approved by the user, for the whole app. The `WebView` control is dependent on the apps ability to access the hardware. To illustrate this concept, consider a web page that requests access to the device's camera. Even if that request is approved by the `WebView` control, yet the .NET MAUI app didn't have approval by the user to access the camera, the web page wouldn't be able to access the camera.
 
-The following steps demonstrate how to allow the `WebView` control access to the camera. If you are trying to use the microphone, the steps would be similar except that you would use microphone-related permissions instead of camera-related permissions.
+The following steps demonstrate how to intercept permission requests from the `WebView` control to use the camera. If you are trying to use the microphone, the steps would be similar except that you would use microphone-related permissions instead of camera-related permissions.
 
 01. First, add the required app permissions to the Android manifest. Open the _Platforms/Android/AndroidManifest.xml_ file and add the following in the `manifest` node:
 
@@ -278,7 +278,9 @@ The following steps demonstrate how to allow the `WebView` control access to the
     }
     ```
 
-01. Set `MyWebChromeClient` as the chrome client of a `WebView` control, by calling the <xref:Android.Webkit.WebView.SetWebChromeClient%2A?displayProperty=nameWithType> method on the Android's `WebView` control. You can set the chrome client in the following ways:
+    In the previous snippet, the `MyWebChromeClient` class inherits from `WebChromeClient`, and overrides the `OnPermissionRequest` method to intercept web page permission requests. Each permission item is checked to see if it matches the `PermissionRequest.ResourceVideoCapture` string constant, which represents the camera. If a camera permission is matched, the code checks to see if the app has permission to use the camera. If it has permission, the web page's request is granted.
+
+01. Set `MyWebChromeClient` as the chrome client of a `WebView` control by calling the <xref:Android.Webkit.WebView.SetWebChromeClient%2A?displayProperty=nameWithType> method on the Android's `WebView` control. You can set the chrome client in the following ways:
 
     - If you assign a name to the .NET MAUI `WebView` control, you can set the chrome client directly on the platform view, which is the Android control:
 
@@ -286,7 +288,7 @@ The following steps demonstrate how to allow the `WebView` control access to the
       ((IWebViewHandler)theWebViewControl.Handler).PlatformView.SetWebChromeClient(new MyWebChromeClient());
       ```
 
-    - You can also use handler property mapping to force your chrome client type on all `WebView` controls. For more information, see [Handlers](../handlers/index.md).
+    - You can also use handler property mapping to force all `WebView` controls to use your chrome client. For more information, see [Handlers](../handlers/index.md).
 
       The following snippet's `CustomizeWebViewHandler` method should be called when the app starts, such as in the `MauiProgram.CreateMauiApp` method.
 
