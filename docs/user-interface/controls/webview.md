@@ -4,7 +4,6 @@ description: "This article explains how to use the .NET MAUI WebView to display 
 ms.date: 10/11/2022
 zone_pivot_groups: devices-deployment
 ---
-:::zone pivot="devices-android, devices-ios, devices-windows, devices-maccatalyst"
 
 # WebView
 
