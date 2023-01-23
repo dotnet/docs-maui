@@ -1,7 +1,7 @@
 ---
 title: "Provision a .NET MAUI iOS app for ad-hoc distribution"
 description: "Learn how to provision a .NET MAUI iOS app for ad-hoc distribution."
-ms.date: 01/17/2023
+ms.date: 01/20/2023
 ---
 
 # Provision an iOS app for ad-hoc distribution
@@ -41,7 +41,7 @@ To create a distribution provisioning profile:
 1. In the **Profiles** tab, click the **+** button to create a new profile.
 1. In the **Register a New Provisioning Profile** page, select the **App Store** radio button before clicking the **Continue** button:
 
-    :::image type="content" source="media/provisioning/adhoc-register-provisioning-profile.png" alt-text="Register a provisioning profile for app store distribution.":::
+    :::image type="content" source="media/provisioning/adhoc-register-provisioning-profile.png" alt-text="Register a provisioning profile for ad hoc distribution.":::
 
 1. In the **Generate a Provisioning Profile** page, in the **App ID** drop-down, select the App ID that you previously created before clicking the **Continue** button:
 
