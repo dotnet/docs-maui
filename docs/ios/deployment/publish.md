@@ -38,7 +38,7 @@ The process for publishing a .NET MAUI iOS app is as follows:
 
 ## Create a certificate signing request
 
-To sign a .NET MAUI iOS app you must first create a certificate signing request (CSR) in Keychain Access on a Mac. For more information, see [Create a certificate signing request](app-store.md#create-a-certificate-signing-request).
+<!-- To sign a .NET MAUI iOS app you must first create a certificate signing request (CSR) in Keychain Access on a Mac. For more information, see [Create a certificate signing request](app-store.md#create-a-certificate-signing-request). -->
 
 ## Create a distribution certificate
 
