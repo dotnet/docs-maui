@@ -668,6 +668,7 @@
                 - name: Provision for app store distribution
                   href: ios/deployment/app-store.md
                 - name: Provision for in-house distribution
+                  href: ios/deployment/in-house.md
                 - name: Provision for ad-hoc distribution
                   href: ios/deployment/ad-hoc.md
                 - name: Publish an iOS app
