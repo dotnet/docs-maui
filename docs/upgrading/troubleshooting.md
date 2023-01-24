@@ -8,6 +8,11 @@ ms.date: 1/20/2023
 
 When going through the upgrade to .NET 6, you may encounter compiler messages or runtime errors that need to be addressed. This page provides guidance for the most common scenarios.
 
+General tips:
+
+* Delete all bin and obj folders from all projects before opening and building projects in Visual Studio, especially when changing .NET versions.
+* Delete the 'ResourceDesigner' generated file from the Android project.
+
 | Issue    | Tip |
 |---------|-------------|
 | Layout is missing padding, margin, or spacing    | Add default values to your project based on the .NET MAUI style resource. [See this guide][0] |

@@ -110,8 +110,17 @@ public static class MauiProgram
 
 Most properties set in an `AssemblyInfo.cs` file are now available in your SDK Style csproj. We recommend migrating those to your `csproj` in every project, and removing any `AssemblyInfo.cs`.
 
+Optionally, you may keep the `AssemblyInfo.cs` file and disable `GenerateAssemblyInfo` in the csproj file.
+
+```xml
+<PropertyGroup>
+  <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+</PropertyGroup>
+```
+
 Next: [Upgrade or replace incompatible dependencies with .NET 6 (or newer) versions](upgrading-dependencies.md)
 
 ### See also
 
 * [MainProgram and app startup documentation](https://docs.microsoft.com/dotnet/maui/fundamentals/app-startup)
+* [MSBuild and project files - GenerateAssembly Info](https://learn.microsoft.com/dotnet/core/project-sdk/msbuild-props#generateassemblyinfo)
