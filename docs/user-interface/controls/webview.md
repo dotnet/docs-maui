@@ -280,7 +280,7 @@ The following steps demonstrate how to intercept permission requests from the `W
 
     In the previous snippet, the `MyWebChromeClient` class inherits from `WebChromeClient`, and overrides the `OnPermissionRequest` method to intercept web page permission requests. Each permission item is checked to see if it matches the `PermissionRequest.ResourceVideoCapture` string constant, which represents the camera. If a camera permission is matched, the code checks to see if the app has permission to use the camera. If it has permission, the web page's request is granted.
 
-01. Use the <xref:Android.Webkit.WebView.SetWebChromeClient%2Ae> method on the Android's `WebView` control to set the chrome client to `MyWebChromeClient`. The following two items demonstrate how you can set the chrome client:
+01. Use the <xref:Android.Webkit.WebView.SetWebChromeClient%2A> method on the Android's `WebView` control to set the chrome client to `MyWebChromeClient`. The following two items demonstrate how you can set the chrome client:
 
     - If you assign a name to the .NET MAUI `WebView` control, you can set the chrome client directly on the platform view, which is the Android control:
 
