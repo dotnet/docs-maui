@@ -27,6 +27,7 @@ General tips:
 | `Xamarin.Essentials` does not exist | Remove the namespace and resolve types individually |
 | `Xamarin.Forms` does not exist | Replace with `Microsoft.Maui` or `Microsoft.Maui.Controls` depending on the type used |
 | `Xamarin.Forms.Xaml` does not exist | Replace with `Microsoft.Maui.Controls.Xaml` |
+| `CollectionView` does not scroll | Check the container layout and the measured size of the `CollectionView`. By default the control will take up as much space as the container allows. A `Grid` will constrain children at its own size, however a `StackLayout` will allow children to take up space beyond its bounds. |
 
 ### See also:
 
