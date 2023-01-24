@@ -1,5 +1,5 @@
 ---
-title: "Upgrading dependencies"
+title: "Upgrading library dependencies"
 description: "Updating libraries to be compatible with .NET 6 and newer."
 ms.date: 1/20/2023
 ---
@@ -26,5 +26,5 @@ Replace any incompatible packages with compatible alternatives.
 
 ### See also:
 
-* [Porting from .NET Framework to .NET](https://learn.microsoft.com/en-us/dotnet/core/porting/)
-* [.NET Upgrade Assistant](https://learn.microsoft.com/en-us/dotnet/core/porting/upgrade-assistant-overview)
+* [Porting from .NET Framework to .NET](https://learn.microsoft.com/dotnet/core/porting/)
+* [.NET Upgrade Assistant](https://learn.microsoft.com/dotnet/core/porting/upgrade-assistant-overview)

@@ -1,14 +1,14 @@
 ---
-title: "Layout Changes from Xamarin.Forms"
+title: "Layout changes from Xamarin.Forms"
 description: "Describing the layout changes between Xamarin.Forms and .NET MAUI."
 ms.date: 1/20/2023
 ---
 
+# Layout changes from Xamarin.Forms
+
 You may notice when running your upgraded application for the first time in .NET MAUI that layouts aren't exactly the same. Some of this is the result of changes to [default values][0]. This document describes additional changes and recommendations related to layouts.
 
-# Layout Changes
-
-|   | Xamarin.Forms  | .NET MAUI  | Recommendation |
+| Layout  | Xamarin.Forms  | .NET MAUI  | Recommendation |
 |---|---|---|---|
 | All | In certain cases sizing requests would not be honored | Sizing requests are honored | |
 | Grid | Columns and Rows can be inferred from the markup | Columns and Rows must be explicitly declared | Add `ColumnDefinitions` and `RowDefinitions` |

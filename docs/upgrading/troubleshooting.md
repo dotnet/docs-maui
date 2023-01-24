@@ -1,10 +1,10 @@
 ---
-title: "Upgrade Troubleshooting"
+title: "Upgrade troubleshooting"
 description: "Upgrade tips for troubleshooting."
 ms.date: 1/20/2023
 ---
 
-# Overview
+# Upgrade troubleshooting
 
 When going through the upgrade to .NET 6, you may encounter compiler messages or runtime errors that need to be addressed. This page provides guidance for the most common scenarios.
 

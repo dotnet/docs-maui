@@ -6,7 +6,7 @@ ms.date: 11/09/2022
 
 # What's new in .NET MAUI for .NET 7
 
-.NET 7 is the successor to .NET 6 and focuses on being unified, modern, simple, and *fast*. Due to working with underlying external dependencies, such as Xcode or Android SDK Tools, the .NET Multi-platform App UI (.NET MAUI) support policy differs from the [.NET and .NET Core support policy](https://dotnet.microsoft.com/en-us/platform/support/policy/maui). For more information, see [.NET MAUI support policy](https://dotnet.microsoft.com/en-us/platform/support/policy/maui).
+.NET 7 is the successor to .NET 6 and focuses on being unified, modern, simple, and *fast*. Due to working with underlying external dependencies, such as Xcode or Android SDK Tools, the .NET Multi-platform App UI (.NET MAUI) support policy differs from the [.NET and .NET Core support policy](https://dotnet.microsoft.com/platform/support/policy/maui). For more information, see [.NET MAUI support policy](https://dotnet.microsoft.com/platform/support/policy/maui).
 
 This article lists the new features of .NET MAUI for .NET 7 and provides links to more detailed information on each.
 
