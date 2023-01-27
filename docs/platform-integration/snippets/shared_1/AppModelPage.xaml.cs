@@ -116,7 +116,7 @@ public partial class AppModelPage : ContentPage
         //<navigate_tryopen>
         var location = new Location(47.645160, -122.1306032);
         var options = new MapLaunchOptions { Name = "Microsoft Building 25" };
-        
+
         if (await Map.Default.TryOpenAsync(location, options) == false)
         {
             // Map failed to open
@@ -205,7 +205,7 @@ public partial class AppModelPage : ContentPage
         }
     }
     //</navigate_building_driving>
-    
+
     //<browser_open>
     private async void BrowserOpen_Clicked(object sender, EventArgs e)
     {
@@ -216,7 +216,7 @@ public partial class AppModelPage : ContentPage
         }
         catch (Exception ex)
         {
-            // An unexpected error occured. No browser may be installed on the device.
+            // An unexpected error occurred. No browser may be installed on the device.
         }
     }
     //</browser_open>
@@ -239,7 +239,7 @@ public partial class AppModelPage : ContentPage
         }
         catch (Exception ex)
         {
-            // An unexpected error occured. No browser may be installed on the device.
+            // An unexpected error occurred. No browser may be installed on the device.
         }
     }
     //</browser_open_custom>
