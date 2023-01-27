@@ -357,7 +357,7 @@ Map map = new Map
 The <xref:Microsoft.Maui.Controls.Maps.Map> class defines a `IsScrollEnabled` property of type `bool`. By default this property is `true`, which indicates that the map is allowed to scroll. When this property is set to `false`, the map will not scroll:
 
 ```xaml
-<maps:Map HasScrollEnabled="false" />
+    <maps:Map IsScrollEnabled="false" />
 ```
 
 The equivalent C# code is:
@@ -365,7 +365,7 @@ The equivalent C# code is:
 ```csharp
 Map map = new Map
 {
-    HasScrollEnabled = false
+    IsScrollEnabled = false
 };
 ```
 
@@ -374,7 +374,7 @@ Map map = new Map
 The <xref:Microsoft.Maui.Controls.Maps.Map> class defines a `IsZoomEnabled` property of type `bool`. By default this property is `true`, which indicates that zoom can be performed on the map. When this property is set to `false`, the map can't be zoomed:
 
 ```xaml
-<maps:Map HasZoomEnabled="false" />
+<maps:Map IsZoomEnabled="false" />
 ```
 
 The equivalent C# code is:
@@ -382,7 +382,7 @@ The equivalent C# code is:
 ```csharp
 Map map = new Map
 {
-    HasZoomEnabled = false
+    IsZoomEnabled = false
 };
 ```
 
