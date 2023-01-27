@@ -357,7 +357,7 @@ Map map = new Map
 The <xref:Microsoft.Maui.Controls.Maps.Map> class defines a `IsScrollEnabled` property of type `bool`. By default this property is `true`, which indicates that the map is allowed to scroll. When this property is set to `false`, the map will not scroll:
 
 ```xaml
-    <maps:Map IsScrollEnabled="false" />
+<maps:Map IsScrollEnabled="false" />
 ```
 
 The equivalent C# code is:
