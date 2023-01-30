@@ -644,7 +644,7 @@
             - name: Code signing and provisioning
               items:
                 - name: Capabilities
-                  href: ios/capabilities.md                
+                  href: ios/capabilities.md
                 - name: Entitlements
                   href: ios/entitlements.md
             - name: Hot restart
@@ -677,15 +677,15 @@
                   href: windows/deployment/publish-cli.md
                 - name: Publish with Visual Studio to a folder
                   href: windows/deployment/publish-visual-studio-folder.md
-    - name: Upgrading from Xamarin
+    - name: Migrating from Xamarin
       items:
         - name: Overview
-          href: upgrading/index.md
+          href: migration/index.md
         - name: .NET Upgrade Assistant
-          href: upgrading/upgrade-assistant.md
-        - name: Xamarin Projects
-          href: upgrading/xamarin-projects.md
-        - name: Xamarin.Forms Projects
-          href: upgrading/forms-projects.md
+          href: migration/upgrade-assistant.md
+        - name: Xamarin projects
+          href: migration/xamarin-projects.md
+        - name: Xamarin.Forms projects
+          href: migration/forms-projects.md
     - name: Troubleshooting
       href: troubleshooting.md
