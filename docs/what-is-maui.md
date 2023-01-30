@@ -32,7 +32,7 @@ While the BCL enables apps running on different platforms to share common busine
 
 .NET MAUI provides a single framework for building the UIs for mobile and desktop apps. The following diagram shows a high-level view of the architecture of a .NET MAUI app:
 
-:::image type="content" source="media/what-is-maui/architecture.png" alt-text=".NET MAUI architecture diagram." border="false":::
+:::image type="content" source="media/what-is-maui/architecture-diagram.png" alt-text=".NET MAUI architecture diagram." border="false":::
 
 In a .NET MAUI app, you write code that primarily interacts with the .NET MAUI API (1). .NET MAUI then directly consumes the native platform APIs (3). In addition, app code may directly exercise platform APIs (2), if required.
 
