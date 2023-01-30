@@ -20,7 +20,7 @@ To simplify the upgrade, we recommend creating a new .NET project of the same ty
 
 From Visual Studio 2022, create a new project. Select the platform project you are upgrading to. For example, to Upgrade from Xamarin.Android to .NET for Android select the "Android Application" project template.
 
-![New Project dialog](images/new-project-dialog.png)
+![New Project dialog](media/new-project-dialog.png)
 
 Give the project the same project name and package name as your existing project, placing it in a new folder. Open the _csproj_ file to confirm you have a .NET SDK Style project.
 
@@ -60,11 +60,11 @@ Xamarin NuGets are not directly compatible with .NET 6 unless they have been rec
 
 This library is NOT compatible since it doesn't have .NET TFMs for the platform we are using.
 
-![incompatible NuGet](images/incompatible-nuget.png)
+![incompatible NuGet](media/incompatible-nuget.png)
 
 On the other hand, this library IS compatible with the .NET TFM we are using.
 
-![compatible NuGet](images/compatile-nuget.png)
+![compatible NuGet](media/compatile-nuget.png)
 
 Some NuGets may include both .NET TFMs and Mono\* or Xamarin.\* frameworks. That's okay. As long as the NuGet includes the .NET TFMs you are targeting, the package is compatible.
 
