@@ -64,7 +64,7 @@ The following table shows how to convert the MtouchArch and XamMacArch propertie
 | -------- | ----------------- |
 | x86_64   | osx-x64           |
 
-For more information about the RuntimeIdentifier property, see [RuntimeIdentifier](/dotnet/core/project-sdk/msbuild-props#runtimeidentifier).
+For more information about the RuntimeIdentifier property, see [RuntimeIdentifier](/dotnet/core/project-sdk/msbuild-props#runtimeidentifier). For more information about runtime identifiers, see [.NET RID Catalog](/dotnet/core/rid-catalog).
 
 ## Convert to UseNativeHttpHandler
 
