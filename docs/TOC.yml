@@ -681,12 +681,16 @@
       items:
         - name: Overview
           href: migration/index.md
-        - name: .NET Upgrade Assistant
-          href: migration/upgrade-assistant.md
         - name: Xamarin projects
           href: migration/xamarin-projects.md
-        - name: Xamarin.Forms projects
-          href: migration/forms-projects.md
+        - name: Xamarin.Forms
+          items:
+            - name: .NET Upgrade Assistant
+              href: migration/upgrade-assistant.md
+            - name: Xamarin.Forms projects
+              href: migration/forms-projects.md
+            - name: Default values
+              href: migration/defaults.md
         - name: Troubleshooting
           href: migration/troubleshooting.md
     - name: Troubleshooting

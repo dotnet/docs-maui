@@ -1,10 +1,10 @@
 ---
-title: "Default values changes from Xamarin.Forms"
+title: "Default value changes from Xamarin.Forms"
 description: "Learn about the default values that have changed between Xamarin.Forms and .NET MAUI."
 ms.date: 1/31/2023
 ---
 
-# Default values changes from Xamarin.Forms
+# Default value changes from Xamarin.Forms
 
 Xamarin.Forms uses arbitrary default values for some property values, such as padding, margins, and spacing. .NET Multi-platform App UI (.NET MAUI) changes these arbitrary property values to zero.
 
