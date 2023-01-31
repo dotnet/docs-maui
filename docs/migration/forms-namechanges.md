@@ -35,8 +35,3 @@ For `Xamarin.Essentials` remove the namespace and resolve each type individually
 - `OSTheme` == `AppTheme`
 
 Next: [Configure .NET MAUI](forms-configuremaui.md)
-
-### See also
-
-* [Default value and name changes](defaults.md)
-* [Layouts reference](layouts.md)

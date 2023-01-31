@@ -1,7 +1,7 @@
 ---
 title: "Upgrading from Xamarin to .NET with .NET Upgrade Assistant"
 description: ".NET Upgrade Assistant handles repetitive tasks to help you upgrade to .NET from .NET Framework."
-ms.date: 1/20/2023
+ms.date: 1/31/2023
 ---
 
 # .NET Upgrade Assistant Steps
@@ -14,14 +14,14 @@ The .NET Upgrade Assistant will help you upgrade Xamarin.Forms projects to .NET 
 
 The assistant will make a backup of your solution, but we recommend using source control. When using source control you may add the `--skip-backup` parameter to bypass the backup and speed up the upgrade process.
 
-### Pre-requisites
+## Pre-requisites
 
 For best success we recommend your Xamarin.Forms projects are:
 
 * Xamarin.Forms 5.0
 * .NET Standard 2.0 or greater
 
-### Limitations
+## Limitations
 
 - .NET Upgrade Assistant is available for Windows only
 - Must be on Xamarin.Forms 4.8 or higher
@@ -29,7 +29,7 @@ For best success we recommend your Xamarin.Forms projects are:
 - Does not work with binding or library projects
 - Gets you _most_ of the way there – you’ll still have to do some manual changes too
 
-### Installation
+## Installation
 
 Install the .NET Upgrade Assistant dotnet tool:
 
@@ -37,7 +37,7 @@ Install the .NET Upgrade Assistant dotnet tool:
 dotnet tool update --global upgrade-assistant
 ```
 
-### Running the upgrade
+## Running the upgrade
 
 Start the automatic upgrade process for the entire solution:
 
@@ -47,9 +47,9 @@ upgrade-assistant upgrade <path to sln or csproj> --non-interactive --entry-poin
 
 This command runs the tool in non-interactive mode. It will update all eligible projects in the solution and dependent projects.
 
-### See also
+## See also
 
-* [Custom renderers in .NET MAUI](using-custom-renderers.md)
-* [Default value changes](defaults.md)
-* [Layout changes](layouts.md)
-* [Troubleshooting guide](troubleshooting.md)
+- [Custom renderers in .NET MAUI](using-custom-renderers.md)
+- [Default value changes](defaults.md)
+- [Layout changes](layouts.md)
+- [Troubleshooting guide](troubleshooting.md)

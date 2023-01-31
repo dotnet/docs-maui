@@ -77,8 +77,3 @@ Add compatible NuGets to your new project using the NuGet package manager in Vis
 ## Compile and troubleshoot
 
 Once your dependencies are resolved and your files are in place, you are ready to compile the project. At this point, errors are your guide and will tell you want work (if any) you need to do next.
-
-### See also
-
-* [Xamarin.Android csproj conversion](android-csproj.md)
-* [Xamarin.iOS csproj conversion](ios-csproj.md)

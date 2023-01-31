@@ -22,7 +22,7 @@ To simplify the upgrade, we recommend creating a new .NET project of the same ty
 
 SDK Style projects are the same project format used by all other .NET workloads, and compared to Xamarin projects they are much less verbose. For details updating your application projects, refer to the [Xamarin Projects](xamarin-projects.md) guidance. This document will describe the changes specific to your Xamarin.Forms library projects.
 
-### Create new project
+## Create new project
 
 From Visual Studio 2022 create a new .NET MAUI class library project to host the code from your Xamarin.Forms library project.
 
@@ -52,10 +52,3 @@ From Visual Studio 2022 create a new .NET MAUI class library project to host the
 In your application projects, add a reference to this library project. Copy your Xamarin.Forms library project files into this new .NET MAUI library project. Now you are ready to move on to updating your namespaces.
 
 Next: [Find and replace namespace changes](forms-namechanges.md)
-
-### See also
-
-* [Upgrading Xamarin.Android, Xamarin.iOS, and Xamarin.Mac](xamarin-projects.md)
-* [Default value and name changes](defaults.md)
-* [Layouts reference](layouts.md)
-* [Using custom renderers](using-custom-renderers.md)
