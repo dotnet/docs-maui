@@ -3,6 +3,7 @@ author: adegeo
 ms.author: adegeo
 ms.date: 07/29/2022
 ms.topic: include
+no-loc: ["NotePage.xaml", "NotePage.xaml.cs" "AppShell.xaml"]
 ---
 
 Now that the app contains the `MainPage` and `AboutPage`, you can start creating the rest of the app. First, you'll create a page that allows a user to create and display note, and then you'll write the code to load and save the note.

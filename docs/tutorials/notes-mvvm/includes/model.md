@@ -3,6 +3,7 @@ author: adegeo
 ms.author: adegeo
 ms.date: 01/05/2023
 ms.topic: include
+no-loc: ["About.cs", "Note.cs", "AllNotes.cs", "AllNotes", "Models\\AllNotes.cs", "Models\\About.cs", "Models\\Note.cs"]
 ---
 
 In this first part of the tutorial, you'll implement the model-view-viewmodel (MVVM) pattern. To start, open the _Notes.sln_ solution in Visual Studio.

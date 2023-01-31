@@ -1,8 +1,9 @@
 ---
 author: adegeo
 ms.author: adegeo
-ms.date: 08/05/2022
+ms.date: 01/31/2023
 ms.topic: include
+no-loc: ["MainPage.xaml", "MainPage.xaml.cs", "NotePage.xaml", "NotePage.xaml.cs", "AboutPage.xaml", "AboutPage.xaml.cs", "AppShell.xaml", "AppShell.xaml.cs", "Note.cs", "AllNotes"]
 ---
 
 This portion of the tutorial introduces the concepts of views, models, and in-app navigation.
@@ -20,20 +21,20 @@ Refactor the existing code to separate the model from the view. The next few ste
     > [!TIP]
     > Deleting the _MainPage.xaml_ item should also delete the _MainPage.xaml.cs_ item too. If _MainPage.xaml.cs_ wasn't deleted, right-click on it and select **Delete**.
 
-01. Right-click on the **Notes** project and select **Add** > **New Folder**. Name the folder **Models**.
-01. Right-click on the **Notes** project and select **Add** > **New Folder**. Name the folder **Views**.
-01. Find the **NotePage.xaml** item and drag it to the **Views** folder. The **NotePage.xaml.cs** should move with it.
+01. Right-click on the **:::no-loc text="Notes":::** project and select **Add** > **New Folder**. Name the folder **:::no-loc text="Models":::**.
+01. Right-click on the **:::no-loc text="Notes":::** project and select **Add** > **New Folder**. Name the folder **:::no-loc text="Views":::**.
+01. Find the **NotePage.xaml** item and drag it to the **:::no-loc text="Views":::** folder. The **NotePage.xaml.cs** should move with it.
 
     > [!IMPORTANT]
     > When you move a file, Visual Studio usually prompts you with a warning about how the move operation may take a long time. This shouldn't be a problem here, press **OK** if you see this warning.
     >
     > Visual Studio may also ask you if you want to adjust the namespace of the moved file. Select **No** as the next steps will change the namespace.
 
-01. Find the **AboutPage.xaml** item and drag it to the **Views** folder. The **AboutPage.xaml.cs** should move with it.
+01. Find the **AboutPage.xaml** item and drag it to the **:::no-loc text="Views":::** folder. The **AboutPage.xaml.cs** should move with it.
 
 ### Update the view namespace
 
-Now that the views have been moved to the **Views** folder, you'll need to alter the namespaces to match. The namespace for the XAML and code-behind files of the pages is set to `Notes`. This needs to be updated to `Notes.Views`.
+Now that the views have been moved to the **:::no-loc text="Views":::** folder, you'll need to alter the namespaces to match. The namespace for the XAML and code-behind files of the pages is set to `Notes`. This needs to be updated to `Notes.Views`.
 
 01. In the **Solution Explorer** pane, expand both **NotePage.xaml** and **AboutPage.xaml** to reveal the code-behind files:
 
@@ -124,7 +125,7 @@ You should now be able to run the app without any compiler errors, and everythin
 
 Currently the model is the data that is embedded in the note and about views. We'll create new classes to represent that data. First, the model to represent a note page's data:
 
-01. In the **Solution Explorer** pane, right-click on the **Models** folder and select **Add** > **Class...**.
+01. In the **Solution Explorer** pane, right-click on the **:::no-loc text="Models":::** folder and select **Add** > **Class...**.
 01. Name the class **Note.cs** and press **Add**.
 01. Open **Note.cs** and replace the code with the following snippet:
 
@@ -134,7 +135,7 @@ Currently the model is the data that is embedded in the note and about views. We
 
 Next, create the about page's model:
 
-01. In the **Solution Explorer** pane, right-click on the **Models** folder and select **Add** > **Class...**.
+01. In the **Solution Explorer** pane, right-click on the **:::no-loc text="Models":::** folder and select **Add** > **Class...**.
 01. Name the class **About.cs** and press **Add**.
 01. Open **About.cs** and replace the code with the following snippet:
 
@@ -195,7 +196,7 @@ Run the app and you should see that it runs exactly the same as before. Try chan
 
 ## Update Note page
 
-The previous section bound the **about** page view to the **about** model, and now you'll do the same, binding the **note** view to the **note** model. However, in this case, the model won't be created in XAML but will be provided in the code-behind in the next few steps.
+The previous section bound the **:::no-loc text="about":::** page view to the **:::no-loc text="about":::** model, and now you'll do the same, binding the **:::no-loc text="note":::** view to the **:::no-loc text="note":::** model. However, in this case, the model won't be created in XAML but will be provided in the code-behind in the next few steps.
 
 01. In the **Solution Explorer** pane, open the _Views\\NotePage.xaml_ file.
 01. Change the `<Editor>` control adding the `Text` property. Bind the property to the `Text` property: `<Editor ... Text="{Binding Text}"`:
@@ -235,9 +236,9 @@ Instead of loading the note in the constructor, create a new `LoadNote` method. 
 
 Currently the **note** view displays a single note, and there isn't a view that represents multiple notes. To display multiple notes, create a new view and model: **AllNotes**.
 
-01. In the **Solution Explorer** pane, right-click on the **Views** folder and select **Add** > **New Item...**
+01. In the **Solution Explorer** pane, right-click on the **:::no-loc text="Views":::** folder and select **Add** > **New Item...**
 01. In the **Add New Item** dialog, select **.NET MAUI** in the template list on the left-side of the window. Next, select the **.NET MAUI ContentPage (XAML)** template. Name the file _AllNotesPage.xaml_, and then select **Add**.
-01. In the **Solution Explorer** pane, right-click on the **Models** folder and select **Add** > **Class...**
+01. In the **Solution Explorer** pane, right-click on the **:::no-loc text="Models":::** folder and select **Add** > **Class...**
 01. Name the class _AllNotes.cs_ and press **Add**.
 
 ### Code the AllNotes model
@@ -285,7 +286,7 @@ The `OnAppearing` method is overridden from the base class. This method is autom
 
 The `Add_Clicked` handler introduces another new concept, navigation. Because the app is using .NET MAUI Shell, you can navigate to pages by calling the `Shell.Current.GoToAsync` method. Notice that the handler is declared with the `async` keyword, which allows the use of the `await` keyword when navigating. This handler navigates to the `NotePage`.
 
-The last piece of code in the previous snippet is the `notesCollection_SelectionChanged` handler. This method takes the currently selected item, a **Note** model, and uses its information to navigate to the `NotePage`. `GoToAsync` uses a URI string for navigation. In this case, a string is constructed that uses a query string parameter to set a property on the destination page. The interpolated string representing the URI ends up looking similar to the following string:
+The last piece of code in the previous snippet is the `notesCollection_SelectionChanged` handler. This method takes the currently selected item, a **:::no-loc text="Note":::** model, and uses its information to navigate to the `NotePage`. `GoToAsync` uses a URI string for navigation. In this case, a string is constructed that uses a query string parameter to set a property on the destination page. The interpolated string representing the URI ends up looking similar to the following string:
 
 ```text
 NotePage?ItemId=path\on\device\XYZ.notes.txt
@@ -293,11 +294,11 @@ NotePage?ItemId=path\on\device\XYZ.notes.txt
 
 The `ItemId=` parameter is set to the file name on the device where the note is stored.
 
-Visual Studio may be indicating that the `NotePage.ItemId` property doesn't exist, which it doesn't. The next step is modifying the **Note view** to load the model based on the `ItemId` parameter that you'll create.
+Visual Studio may be indicating that the `NotePage.ItemId` property doesn't exist, which it doesn't. The next step is modifying the **:::no-loc text="Note"::: view** to load the model based on the `ItemId` parameter that you'll create.
 
 ### Query string parameters
 
-The **Note view** needs to support the query string parameter, `ItemId`. Create it now:
+The **:::no-loc text="Note"::: view** needs to support the query string parameter, `ItemId`. Create it now:
 
 01. In the **Solution Explorer** pane, open the _Views/NotePage.xaml.cs_ file.
 01. Add the `QueryProperty` attribute to the `class` keyword, providing the name of the query string property, and the class property it maps to, `ItemId` and `ItemId` respectively:
