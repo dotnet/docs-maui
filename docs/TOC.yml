@@ -702,7 +702,7 @@
             - name: Name changes
               href: migration/forms-nameschanges.md
             - name: Layout changes
-              href: migration/layout-reference.md
+              href: migration/layouts.md
             - name: Upgrade dependencies
               href: migration/upgrading-dependencies.md
             - name: Custom renderers
