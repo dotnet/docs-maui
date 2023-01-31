@@ -1,10 +1,10 @@
 ---
-title: "Updating app library dependencies"
-description: "Learn how to update libraries to be compatible with .NET 6+."
+title: "Update app dependencies"
+description: "Learn how to update app dependencies to be compatible with .NET 6+."
 ms.date: 1/31/2023
 ---
 
-# Updating app library dependencies
+# Update app dependencies
 
 NuGet packages and other library dependencies that depend upon target frameworks prior to .NET 6 are generally not compatible with .NET 6+. When migrating your Xamarin projects, you should identify which packages have `net6-` or later compatibility.
 

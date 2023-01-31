@@ -695,19 +695,19 @@
               href: migration/upgrade-assistant.md
             - name: Xamarin.Forms projects
               href: migration/forms-projects.md
-            - name: Default values
-              href: migration/defaults.md
-            - name: Configure .NET MAUI
-              href: migration/forms-configuremaui.md
             - name: Name changes
               href: migration/forms-namechanges.md
+            - name: Configure .NET MAUI
+              href: migration/forms-configuremaui.md
+            - name: Update dependencies
+              href: migration/dependencies.md
+            - name: Default values
+              href: migration/defaults.md
             - name: Layout changes
               href: migration/layouts.md
-            - name: Upgrade dependencies
-              href: migration/dependencies.md
             - name: Custom renderers
               href: migration/using-custom-renderers.md
-        - name: Troubleshooting
-          href: migration/troubleshooting.md
+            - name: Troubleshooting
+              href: migration/troubleshooting.md
     - name: Troubleshooting
       href: troubleshooting.md
