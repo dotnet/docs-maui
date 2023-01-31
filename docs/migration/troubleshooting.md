@@ -1,38 +1,35 @@
 ---
-title: "Upgrade troubleshooting"
-description: "Upgrade tips for troubleshooting."
-ms.date: 1/20/2023
+title: "Troubleshooting Xamarin.Forms to .NET MAUI app migration"
+description: "Learn how to troubleshoot issues when migrating your apps from Xamarin.Forms to .NET MAUI."
+ms.date: 1/31/2023
 ---
 
-# Upgrade troubleshooting
+# Troubleshooting Xamarin.Forms to .NET MAUI app migration
 
-When going through the upgrade to .NET 6, you may encounter compiler messages or runtime errors that need to be addressed. This page provides guidance for the most common scenarios.
+When upgrading a Xamarin.Forms apps to .NET Multi-platform App UI (.NET MAUI), you may encounter build or runtime errors that need to be addressed.
 
-General tips:
+<!-- markdownlint-disable MD032 -->
+> [!TIP]
+> - Delete all *bin* and *obj* folders from all projects before opening and building projects in Visual Studio, particularly when changing .NET versions.
+> - Delete the 'ResourceDesigner' generated file from the Android project.
+<!-- markdownlint-enable MD032 -->
 
-* Delete all bin and obj folders from all projects before opening and building projects in Visual Studio, especially when changing .NET versions.
-* Delete the 'ResourceDesigner' generated file from the Android project.
+The following table provides guidance for overcoming common build or runtime errors:
 
-| Issue    | Tip |
-|---------|-------------|
-| Layout is missing padding, margin, or spacing    | Add default values to your project based on the .NET MAUI style resource. [See this guide][0] |
-| `Color.Red` and similar cannot be found | Named colors are now in `Microsoft.Maui.Graphics.Colors` |
-| Color cannot be found | Color and Colors are now in `Microsoft.Maui.Graphics` |
-| `Color.Default` does not exist | Use `ClearValue` instead. [Details](https://github.com/dotnet/upgrade-assistant/issues/592) |
-| `Frame.BorderColor=Accent` does not exist | User an explicit color |
-| `ToolbarItem.Icon` does not exist | Use `ToolbarItem.IconImageSource` |
-| `Button.Image` does not exist | Use `Button.ImageSource` |
-| `Span.ForegroundColor` does not exist | Use `Span.TextColor` |
-| `OSTheme` does not exist | Use `AppTheme` |
-| `Xamarin.Essentials` does not exist | Remove the namespace and resolve types individually |
-| `Xamarin.Forms` does not exist | Replace with `Microsoft.Maui` or `Microsoft.Maui.Controls` depending on the type used |
-| `Xamarin.Forms.Xaml` does not exist | Replace with `Microsoft.Maui.Controls.Xaml` |
-| `CollectionView` does not scroll | Check the container layout and the measured size of the `CollectionView`. By default the control will take up as much space as the container allows. A `Grid` will constrain children at its own size, however a `StackLayout` will allow children to take up space beyond its bounds. |
+| Issue | Tip |
+| ----- | --- |
+| Layout is missing padding, margin, or spacing. | Add default values to your project based on the .NET MAUI style resource. For more information, see [Default value changes from Xamarin.Forms](defaults.md). |
+| `Color.Red` and similar can't be found | Named colors are now in `Microsoft.Maui.Graphics.Colors`. |
+| `Color` and `Colors` can't be found | `Color` and `Colors` are now in the `Microsoft.Maui.Graphics` namespace. |
+| `Color.Default` doesn't exist. | Use `Colors.Black` instead. |
+| `Frame.BorderColor=Accent` doesn't exist | Use an explicit color. |
+| `ToolbarItem.Icon` doesn't exist. | Use `ToolbarItem.IconImageSource`. |
+| `Button.Image` doesn't exist. | Use `Button.ImageSource`. |
+| `Span.ForegroundColor` doesn't exist. | Use `Span.TextColor`. |
+| `OSTheme` doesn't exist. | Use `AppTheme`. |
+| `Xamarin.Essentials` namespace doesn't exist. | Remove the namespace and resolve types individually. |
+| `Xamarin.Forms` namespace doesn't exist. | Replace with the `Microsoft.Maui` or `Microsoft.Maui.Controls` namespace, depending on the type used. |
+| `Xamarin.Forms.Xaml` namespace doesn't. | Replace with the `Microsoft.Maui.Controls.Xaml` namespace. |
+| `CollectionView` doesn't scroll. | Check the container layout and the measured size of the `CollectionView`. By default the control will take up as much space as the container allows. A `Grid` will constrain children at its own size. However a `StackLayout` will enable children to take up space beyond its bounds. |
 
-### See also:
-
-* [Layout reference][0]
-* [Default values][1]
-
-[0]: layout-reference.md
-[1]: defaults.md
+For more information about color changes, see [Microsoft.Maui.Graphics.Color vs Xamarin.Forms.Color](https://gist.github.com/hartez/593fc3fb87035a3aedc91657e9c15ab3).
