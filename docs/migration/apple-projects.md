@@ -1,6 +1,6 @@
 ---
 title: "Xamarin.iOS project migration"
-description: "Learn how to map properties and items in legacy Xamarin projects to .NET projects."
+description: "Learn how to map properties and items in legacy Xamarin Apple projects to .NET projects."
 ms.date: 1/31/2023
 ---
 
