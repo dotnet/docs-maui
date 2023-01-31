@@ -3,7 +3,7 @@ author: adegeo
 ms.author: adegeo
 ms.date: 01/05/2023
 ms.topic: include
-no-loc: ["communitytoolkit", "CommunityToolkit.Mvvm", "AllNotes", "Notes", "About"]
+no-loc: ["Notes viewmodel", "AllNotes view", "ViewModels", "NotesViewModel.cs", "AllNotesPage.xaml", "AllNotesPage.xaml.cs"]
 ---
 
 The final viewmodel-view pair is the **Notes viewmodel** and **AllNotes view**. Currently though, the view is binding directly to the model, which was deleted at the start of this tutorial. The goal in updating the **AllNotes view** is to move as much functionality as possible out of the XAML code-behind and put it in the viewmodel. Again, the benefit being that the view can change its design with little effect to your code.
