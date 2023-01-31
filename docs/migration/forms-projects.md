@@ -4,7 +4,7 @@ description: "Overview for the steps taken to upgrade a project from Xamarin.For
 ms.date: 1/20/2023
 ---
 
-# Upgrading Xamarin.Forms to .NET MAUI
+# Upgrade a Xamarin.Forms app to .NET MAUI
 
 The upgrade of a Xamarin.Forms project follows the same steps as a Xamarin.Android and Xamarin.iOS projects, with a few additional steps to take advantage of changes in .NET MAUI.
 

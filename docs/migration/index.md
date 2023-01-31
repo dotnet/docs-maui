@@ -1,36 +1,30 @@
 ---
-title: "Upgrading from Xamarin to .NET"
-description: "All Xamarin applications can upgrade to .NET starting with .NET 6"
-ms.date: 1/20/2023
+title: "Upgrade from Xamarin to .NET"
+description: "Learn how to upgrade Xamarin apps to .NET starting with .NET 6"
+ms.date: 1/31/2023
 ---
 
-# Upgrade overview
+# Upgrade from Xamarin to .NET
 
-Xamarin projects can run on .NET 6 and newer after completing some upgrade steps. These guides describe the most common steps required to run your existing code on .NET.
+Xamarin projects can run on .NET, starting with .NET 6, after completing an upgrade process. This series of articles describe the process for migrating your Xamarin projects to .NET.
 
-* All projects DO need to become "SDK Style"
-* Projects do NOT need to be rewritten
-* Multi-project solutions do NOT need to become "single project"
+> [!IMPORTANT]
+> - All projects DO need to become "SDK style".
+> - Projects do NOT need to be rewritten.
+> - Multi-project solutions do NOT need to become "single project".
 
-## [.NET Upgrade Assistant](upgrade-assistant.md)
+The .NET Upgrade Assistant is a command-line tool that can be run to help you upgrade Xamarin.Forms projects to .NET Multi-platform App UI (.NET MAUI). After running the tool, in most cases the app will require additional effort to complete the migration. For more information, see [Upgrade a Xamarin.Forms project to .NET MAUI](upgrade-assistant.md).
 
-The .NET Upgrade Assistant will help you get started moving your projects from Xamarin to .NET. [Get started with .NET Upgrade Assistant](upgrade-assistant.md).
+Alternatively, you may choose to manually upgrade your apps. To upgrade your Xamarin.Android, Xamarin.iOS, and Xamarin.Mac apps to .NET, you'll have to update the projects to be SDK-style projects and then update your dependencies to .NET 6+. For more information, see [Upgrade Xamarin.Android, Xamarin.iOS, and Xamarin.Mac apps to .NET](xamarin-projects.md).
 
-## Manual upgrade guides
+You don't need to rewrite your Xamarin.Forms apps to move them to .NET MAUI. However, you will need to make a small amount of code changes to each app. Similarly, you can use single-project features without merging all of your Xamarin.Forms projects into one project.
 
-Alternatively you may opt to perform the upgrade steps yourself. These guides provide the most common changes you'll need to make.
+To migrate a Xamarin.Forms app to .NET MAUI, you'll need to do the following:
 
-### [Xamarin.Android, Xamarin.iOS, Xamarin.Mac](xamarin-projects.md)
+- Convert the projects from .NET Framework to .NET SDK style.
+- Update namespaces.
+- Update any incompatible NuGet packages.
+- Address any breaking API changes.
+- Run the converted app and verify that it functions correctly.
 
-These SDKs are all supported in .NET 6, and Xamarin projects have an upgrade path. Very little needs to change, making these projects among the easier to upgrade.
-
-### [Xamarin.Forms](forms-projects.md)
-
-Xamarin.Forms solutions include Xamarin.Android, Xamarin.iOS, and often UWP and Tizen projects. A few additional steps are required to upgrade to .NET as compared to Xamarin.Android and Xamarin.iOS alone.
-
-### See also
-
-* [Custom renderers in .NET MAUI](using-custom-renderers.md)
-* [Default value changes](defaults.md)
-* [Layout changes](layout-reference.md)
-* [Troubleshooting guide](troubleshooting.md)
+For more information, see [Upgrade a Xamarin.Forms app to .NET MAUI](forms-projects.md).

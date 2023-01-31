@@ -687,5 +687,7 @@
           href: migration/xamarin-projects.md
         - name: Xamarin.Forms projects
           href: migration/forms-projects.md
+        - name: Troubleshooting
+          href: migration/troubleshooting.md
     - name: Troubleshooting
       href: troubleshooting.md
