@@ -1,7 +1,7 @@
 ---
 title: "Upgrading Xamarin.Android, Xamarin.iOS, and Xamarin.Mac"
 description: "How to manually upgrade Xamarin csproj files from .NET Framework to .NET."
-ms.date: 1/20/2023
+ms.date: 1/31/2023
 ---
 
 # Upgrade Xamarin.Android, Xamarin.iOS, and Xamarin.Mac apps to .NET

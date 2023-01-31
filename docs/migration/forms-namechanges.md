@@ -1,7 +1,7 @@
 ---
 title: "Upgrading Xamarin.Forms - Name Changes"
 description: "Search and replace namespaces and name changes."
-ms.date: 1/20/2023
+ms.date: 1/31/2023
 ---
 
 # Upgrading from Xamarin.Forms - Name Changes

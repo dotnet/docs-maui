@@ -1,7 +1,7 @@
 ---
 title: "Xamarin.iOS csproj conversion"
 description: "Describing the changes to the csproj file between Xamarin.iOS and .NET for iOS."
-ms.date: 1/20/2023
+ms.date: 1/31/2023
 ---
 
 # Xamarin.iOS csproj conversion

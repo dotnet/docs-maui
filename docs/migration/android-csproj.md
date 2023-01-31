@@ -1,7 +1,7 @@
 ---
 title: "Xamarin.Android csproj conversion"
 description: "Changes to the csproj file comparing .NET Framework and .NET."
-ms.date: 1/20/2023
+ms.date: 1/31/2023
 ---
 
 # Xamarin.Android csproj conversion

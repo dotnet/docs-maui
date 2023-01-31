@@ -1,7 +1,7 @@
 ---
 title: "Upgrading Xamarin.Forms - Configure .NET MAUI"
 description: "Updating your application files and creating MauiProgram."
-ms.date: 1/20/2023
+ms.date: 1/31/2023
 ---
 
 # Configure .NET MAUI

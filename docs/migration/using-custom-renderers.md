@@ -1,104 +1,103 @@
 ---
-title: "Using Custom Renderers in .NET MAUI"
-description: "Custom renderers can be adapted to .NET MAUI."
-ms.date: 1/20/2023
+title: "Using custom renderers in .NET MAUI"
+description: "Learn how to adapt a Xamarin.Forms custom renderers to work in a .NET MAUI app."
+ms.date: 1/31/2023
 ---
 
-# Using Custom Renderers in .NET MAUI
+# Using custom renderers in .NET MAUI
 
-While there are many benefits to using the new handler-mapper pattern, it's still possible to use the [custom renderer](/xamarin/xamarin-forms/app-fundamentals/custom-renderer/) pattern familiar to Xamarin.Forms developers.
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/custom-renderers/)
 
-To demonstrate using custom renderers in .NET MAUI, let's consider this Xamarin.Forms control `PressableView`. The control simply exposes pressed and released events based on the platform-specific gestures. The custom renderer implementation is composed of 3 files:
+While there are many benefits to using .NET Multi-platform App UI (.NET MAUI) handlers to customize and create controls, it's still possible to use Xamarin.Forms custom renderers in .NET MAUI apps. For more information about custom renderers, see [Xamarin.Forms custom renderers](/xamarin/xamarin-forms/app-fundamentals/custom-renderer/).
 
-- `PressableView.cs` - the cross-platform class that extends `ContentView`
-- `PressableViewRenderer.cs` - the Android implementation
-- `PressableViewRenderer.cs` - the iOS implementation
+To demonstrate using custom renderers in .NET MAUI, consider a Xamarin.Forms control named `PressableView`. This control exposes `Pressed` and `Released` events based on platform-specific gestures. The custom renderer implementation is composed of 3 files:
 
-To use this in .NET MAUI you will:
+- `PressableView.cs` - the cross-platform class that extends `ContentView`.
+- `PressableViewRenderer.cs` - the Android implementation.
+- `PressableViewRenderer.cs` - the iOS implementation.
 
-1. Add the files into the appropriate location in your .NET MAUI project(s)
-2. Modify the "usings" and files
-3. Configure the renderers in `MauiProgram.cs`
+To use the `PressableView` in a .NET MAUI app, you will have to:
 
-[Sample on GitHub][0]
+1. Add the code into the appropriate location in your .NET MAUI project(s).
+1. Modify the `using` statements and other code.
+1. Configure the renderers in your `MauiProgram` class.
 
-## Add the Files
+## Add the code
 
-If you're using the .NET MAUI multi-targeted project, the cross-platform file can be moved to anywhere outside the Platforms folder, and the platform-specific implementation files should be moved to the corresponding Platform folder.
+If you're using a .NET MAUI multi-targeted project, the cross-platform file can be moved to anywhere outside the *Platforms* folder, and the platform-specific implementation files should be moved to the corresponding *Platform* folder:
 
-![MoveRendererFiles](https://user-images.githubusercontent.com/41873/166120451-2833eb95-2a71-4caa-bd29-3f7e8b53f470.png)
+:::image type="content" source="media/move-renderer-files.png" alt-text="Move your renderer files.":::
 
-On the other hand if you're solution has separate projects per-platform, then you would move the platform-specific implementation files into the corresponding projects.
+However, if you're solution has separate projects per-platform, then you should move the platform-specific implementation files into the corresponding projects.
 
-## Modify Usings and Files
+## Modify using statements and other code
 
-Any reference to the `Xamarin.Forms.*` namespaces need to be removed, and then you can resolve the related types to `Microsoft.Maui.*`. This needs to be done in all files you've added to the .NET MAUI project(s).
+Any reference to the `Xamarin.Forms.*` namespaces need to be removed, and then you can resolve the related types to `Microsoft.Maui.*`. This needs to occur in all files you've added to the .NET MAUI project(s).
 
-Remove any `ExportRenderer` directives as they won't be needed in .NET MAUI, such as:
+You should also remove any `ExportRenderer` attributes as they won't be needed in .NET MAUI. For example, the following should be removed:
 
 ```csharp
 [assembly: ExportRenderer(typeof(PressableView), typeof(PressableViewRenderer))]
 ```
 
-## Configure Renderers
+## Configure renderers
 
-Open `MauiProgram.cs` in your .NET MAUI project, add `UseMauiCompatibility()` with `using Microsoft.Maui.Controls.Compatibility.Hosting`, and then configure each renderer using conditional compilation for each platform.
+In your .NET MAUI app project, open *MauiProgram.cs* and add a `using` statement for the `Microsoft.Maui.Controls.Compatibility.Hosting` namespace. Then, call `UseMauiCompatibility` on the `MauiAppBuilder` object in the `CreateMauiApp` method, and configure each renderer using conditional compilation per platform:
 
 ```csharp
-public static MauiApp CreateMauiApp()
+using Microsoft.Maui.Controls.Compatibility.Hosting;
+...
+
+public static class MauiProgram
 {
-    var builder = MauiApp.CreateBuilder();
-    builder
-        .UseMauiApp<App>()
-        .UseMauiCompatibility()
-                .ConfigureMauiHandlers((handlers) =>{
+    public static MauiApp CreateMauiApp()
+    {
+        var builder = MauiApp.CreateBuilder();
+        builder
+            .UseMauiApp<App>()
+            .UseMauiCompatibility()
+            .ConfigureFonts(fonts =>
+            {
+                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+            })
+            .ConfigureMauiHandlers((handlers) => {
 #if ANDROID
-            handlers.AddCompatibilityRenderer(typeof(PressableView),typeof(XamarinCustomRenderer.Droid.Renderers.PressableViewRenderer));
+                handlers.AddHandler(typeof(PressableView), typeof(XamarinCustomRenderer.Droid.Renderers.PressableViewRenderer));
+#elif IOS
+                handlers.AddHandler(typeof(PressableView), typeof(XamarinCustomRenderer.iOS.Renderers.PressableViewRenderer));
 #endif
+            });
 
-#if IOS
-                        handlers.AddCompatibilityRenderer(typeof(PressableView), typeof(XamarinCustomRenderer.iOS.Renderers.PressableViewRenderer));
-#endif
-        });
-
-    return builder.Build();
+        return builder.Build();
+    }
 }
 ```
 
-## Conclusion
+## Consume the custom renderer
 
-You can now use your custom renderer in .NET MAUI just like any other custom control.
+The custom renderer can then be consumed in a .NET MAUI app as a custom control:
 
 ```xml
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:c="clr-namespace:XamarinCustomRenderer.Controls"
+             xmlns:controls="clr-namespace:XamarinCustomRenderer.Controls"
              x:Class="MauiCustomRenderer.MainPage">
-
     <Grid BackgroundColor="#f1f1f1">
-        <c:PressableView Pressed="Handle_Pressed"
-                         Released="Handle_Released"
-                         HorizontalOptions="Center"
-                         VerticalOptions="Center">
-            <Grid
-                BackgroundColor="#202020"
-                HorizontalOptions="Center"
-                VerticalOptions="Center">
+        <controls:PressableView Pressed="Handle_Pressed"
+                                Released="Handle_Released"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center">
+            <Grid BackgroundColor="#202020"
+                  HorizontalOptions="Center"
+                  VerticalOptions="Center">
                 <Label Text="Press Me"
-                        FontSize="16"
-                        TextColor="White"
-                        Margin="24,20"
-                        HorizontalTextAlignment="Center" />
+                       FontSize="16"
+                       TextColor="White"
+                       Margin="24,20"
+                       HorizontalTextAlignment="Center" />
             </Grid>
-        </c:PressableView>
+        </controls:PressableView>
     </Grid>
-
 </ContentPage>
 ```
-
-### See also:
-
-* [Custom Renderer sample project][0]
-
-[0]: https://github.com/dotnet/maui-samples/Upgrading/CustomRenderer
