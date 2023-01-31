@@ -684,11 +684,11 @@
         - name: Xamarin native projects
           items:
             - name: Xamarin projects
-              href: migration/xamarin-projects.md
+              href: migration/native-projects.md
             - name: Android projects
-              href: migration/android-csproj.md
+              href: migration/android-projects.md
             - name: iOS projects
-              href: migration/ios-csproj.md
+              href: migration/ios-projects.md
         - name: Xamarin.Forms projects
           items:
             - name: .NET Upgrade Assistant
@@ -706,7 +706,7 @@
             - name: Layout changes
               href: migration/layouts.md
             - name: Custom renderers
-              href: migration/using-custom-renderers.md
+              href: migration/custom-renderers.md
             - name: Troubleshooting
               href: migration/troubleshooting.md
     - name: Troubleshooting
