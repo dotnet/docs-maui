@@ -118,7 +118,8 @@ Optionally, you may keep the `AssemblyInfo.cs` file and disable `GenerateAssembl
 </PropertyGroup>
 ```
 
-Next: [Upgrade or replace incompatible dependencies with .NET 6 (or newer) versions](dependencies.md)
+> [!div class="nextstepaction"]
+> [Upgrade or replace incompatible dependencies with .NET 6+ versions](dependencies.md)
 
 ## See also
 

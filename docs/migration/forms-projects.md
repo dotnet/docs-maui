@@ -51,4 +51,5 @@ From Visual Studio 2022 create a new .NET MAUI class library project to host the
 
 In your application projects, add a reference to this library project. Copy your Xamarin.Forms library project files into this new .NET MAUI library project. Now you are ready to move on to updating your namespaces.
 
-Next: [Find and replace namespace changes](forms-namechanges.md)
+> [!div class="nextstepaction"]
+> [Find and replace namespace changes](forms-namechanges.md)

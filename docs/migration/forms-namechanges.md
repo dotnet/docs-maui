@@ -34,4 +34,5 @@ For `Xamarin.Essentials` remove the namespace and resolve each type individually
 - `Span` `ForegroundColor` DOES NOT EXIST
 - `OSTheme` == `AppTheme`
 
-Next: [Configure .NET MAUI](forms-configuremaui.md)
+> [!div class="nextstepaction"]
+> [Configure .NET MAUI](forms-configuremaui.md)
