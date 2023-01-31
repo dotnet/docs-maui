@@ -55,7 +55,7 @@ URIs must be fully formed with the protocol specified.
 
 :::zone pivot="devices-ios, devices-maccatalyst"
 
-### Configure App Transport Security on iOS and Mac Catalyst
+## Configure App Transport Security on iOS and Mac Catalyst
 
 Since version 9, iOS will only allow your app to communicate with secure servers. An app has to opt into enabling communication with insecure servers.
 
@@ -221,6 +221,9 @@ When page navigation occurs in a <xref:Microsoft.Maui.Controls.WebView>, either 
 
 When browsing to a page that requests access to the device's recording hardware, such as the camera or microphone, permission must be granted by the <xref:Microsoft.Maui.Controls.WebView> control. The `WebView` control uses the <xref:Android.Webkit.WebChromeClient?displayProperty=fullName> type to handle requests. However, the default `WebChromeClient` provided by .NET MAUI ignores permission requests. You must create a new type that inherits from `WebChromeClient` and approves the permission requests.
 
+> [!IMPORTANT]
+> Customizing the `WebView` requires Android API 26 or later.
+
 The permission requests from a web page to the `WebView` control are different than permission requests from the .NET MAUI app to the user. .NET MAUI app permissions are requested and approved by the user, for the whole app. The `WebView` control is dependent on the apps ability to access the hardware. To illustrate this concept, consider a web page that requests access to the device's camera. Even if that request is approved by the `WebView` control, yet the .NET MAUI app didn't have approval by the user to access the camera, the web page wouldn't be able to access the camera.
 
 The following steps demonstrate how to intercept permission requests from the `WebView` control to use the camera. If you are trying to use the microphone, the steps would be similar except that you would use microphone-related permissions instead of camera-related permissions.
@@ -234,7 +237,7 @@ The following steps demonstrate how to intercept permission requests from the `W
 01. At some point in your app, such as when the page containing a `WebView` control is loaded, request permission from the user to allow the app access to the camera.
 
     ```csharp
-    private async void RequestCameraPermission()
+    private async Task RequestCameraPermission()
     {
         PermissionStatus status = await Permissions.CheckStatusAsync<Permissions.Camera>();
     
@@ -243,15 +246,22 @@ The following steps demonstrate how to intercept permission requests from the `W
     }
     ```
 
-01. Add the following class to the _Platforms/Android_ folder:
+01. Add the following class to the _Platforms/Android_ folder, changing the root namespace to match your project's namespace:
 
     ```csharp
     using Android.Webkit;
-    
+    using Microsoft.Maui.Handlers;
+    using Microsoft.Maui.Platform;
+
     namespace MauiAppWebViewHandlers.Platforms.Android;
-    
-    internal class MyWebChromeClient: WebChromeClient
+
+    internal class MyWebChromeClient: MauiWebChromeClient
     {
+        public MyWebChromeClient(IWebViewHandler handler) : base(handler)
+        {
+
+        }
+
         public override void OnPermissionRequest(PermissionRequest request)
         {
             // Process each request
@@ -285,7 +295,7 @@ The following steps demonstrate how to intercept permission requests from the `W
     - If you assign a name to the .NET MAUI `WebView` control, you can set the chrome client directly on the platform view, which is the Android control:
 
       ```csharp
-      ((IWebViewHandler)theWebViewControl.Handler).PlatformView.SetWebChromeClient(new MyWebChromeClient());
+      ((IWebViewHandler)theWebViewControl.Handler).PlatformView.SetWebChromeClient(new MyWebChromeClient((IWebViewHandler)theWebViewControl.Handler));
       ```
 
     - You can also use handler property mapping to force all `WebView` controls to use your chrome client. For more information, see [Handlers](../handlers/index.md).
@@ -295,11 +305,10 @@ The following steps demonstrate how to intercept permission requests from the `W
       ```csharp
       private static void CustomizeWebViewHandler()
       {
-      #if ANDROID
-          Microsoft.Maui.Handlers.WebViewHandler.Mapper.AppendToMapping("WebChromeClient", (handler, view) =>
-          {
-              handler.PlatformView.SetWebChromeClient(new MyWebChromeClient());
-          });
+      #if ANDROID26_0_OR_GREATER
+          Microsoft.Maui.Handlers.WebViewHandler.Mapper.ModifyMapping(
+              nameof(Android.Webkit.WebView.WebChromeClient),
+              (handler, view, args) => handler.PlatformView.SetWebChromeClient(new MyWebChromeClient(handler)));
       #endif
       }
       ```
