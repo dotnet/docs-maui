@@ -27,5 +27,5 @@ You should replace any incompatible packages with compatible alternatives.
 
 ## See also
 
-- [Porting from .NET Framework to .NET](https://learn.microsoft.com/dotnet/core/porting/)
-- [.NET Upgrade Assistant](https://learn.microsoft.com/dotnet/core/porting/upgrade-assistant-overview)
+- [Porting from .NET Framework to .NET](/dotnet/core/porting/)
+- [.NET Upgrade Assistant](/dotnet/core/porting/upgrade-assistant-overview)

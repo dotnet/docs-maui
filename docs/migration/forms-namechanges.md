@@ -14,7 +14,7 @@ A few namespaces have been changed in .NET MAUI, and Xamarin.Essentials features
 | `using Xamarin.Forms` | `using Microsoft.Maui` **AND** `using Microsoft.Maui.Controls` |
 | `using Xamarin.Forms.Xaml` | `using Microsoft.Maui.Controls.Xaml` |
 
-For `Xamarin.Essentials` remove the namespace and resolve each type individually. If your project makes extensive use of `Xamarin.Essentials` consider adding those namespaces as [global using](https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/using-directive) statements.
+For `Xamarin.Essentials` remove the namespace and resolve each type individually. If your project makes extensive use of `Xamarin.Essentials` consider adding those namespaces as [global using](/dotnet/csharp/language-reference/keywords/using-directive) statements.
 
 ## Colors
 

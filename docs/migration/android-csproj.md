@@ -25,7 +25,7 @@ Additional resources:
 
 ## .NET Configuration Files
 
-No support for [configuration files](https://docs.microsoft.com/dotnet/framework/configure-apps/) such as `Foo.dll.config` or `Foo.exe.config` is available in Xamarin.Android projects targeting .NET 7. [`<dllmap>`](https://github.com/dotnet/runtime/blob/main/docs/design/features/dllmap.md) configuration elements are not supported in .NET Core at all, and other element types for compatibility packages like [System.Configuration.ConfigurationManager](https://www.nuget.org/packages/System.Configuration.ConfigurationManager/) have never been supported in Xamarin.Android projects.
+No support for [configuration files](/dotnet/framework/configure-apps/) such as `Foo.dll.config` or `Foo.exe.config` is available in Xamarin.Android projects targeting .NET 7. [`<dllmap>`](https://github.com/dotnet/runtime/blob/main/docs/design/features/dllmap.md) configuration elements are not supported in .NET Core at all, and other element types for compatibility packages like [System.Configuration.ConfigurationManager](https://www.nuget.org/packages/System.Configuration.ConfigurationManager/) have never been supported in Xamarin.Android projects.
 
 ## Changes to MSBuild properties
 
@@ -96,11 +96,11 @@ all default item inclusion behavior can be disabled by setting `$(EnableDefaultI
 ## Runtime behavior
 
 There is some behavioral changes to the `String.IndexOf()` method in
-.NET 5 and higher on different platforms, see details [here](https://docs.microsoft.com/dotnet/standard/globalization-localization/globalization-icu).
+.NET 5 and higher on different platforms, see details [here](/dotnet/standard/globalization-localization/globalization-icu).
 
 ## Linker (ILLink)
 
-.NET 5 and higher has new [settings for the linker](https://docs.microsoft.com/dotnet/core/deploying/trimming-options):
+.NET 5 and higher has new [settings for the linker](/dotnet/core/deploying/trimming-options):
 
 * `<PublishTrimmed>true</PublishTrimmed>`
 * `<TrimMode>link</TrimMode>` - Enable member-level trimming.
@@ -121,7 +121,7 @@ With `AndroidLinkMode=SdkOnly` only BCL and SDK assemblies marked with
 `%(Trimmable)` will be linked at the member level.
 `AndroidLinkMode=Full` will set `%(TrimMode)=link` on all .NET
 assemblies similar to the example in the [trimming
-documentation](https://docs.microsoft.com/dotnet/core/deploying/trimming-options#trimmed-assemblies).
+documentation](/dotnet/core/deploying/trimming-options#trimmed-assemblies).
 
 It is recommended to migrate to the new linker settings, as
 `AndroidLinkMode` will eventually be deprecated.
@@ -129,7 +129,7 @@ It is recommended to migrate to the new linker settings, as
 ## AOT
 
 `$(RunAOTCompilation)` will be the new MSBuild property for enabling
-AOT. This is the same property used for [Blazor WASM](https://docs.microsoft.com/aspnet/core/blazor/host-and-deploy/webassembly/#ahead-of-time-aot-compilation).
+AOT. This is the same property used for [Blazor WASM](/aspnet/core/blazor/host-and-deploy/webassembly/#ahead-of-time-aot-compilation).
 `$(AotAssemblies)` will also enable AOT, in order to help with
 migration from "legacy" Xamarin.Android to .NET 6.
 
@@ -215,7 +215,7 @@ to produce a self-contained "app" happens:
 * The linker via the `<IlLink/>` MSBuild task
 * .NET Core's version of AOT, named "ReadyToRun"
 
-[Documentation](https://docs.microsoft.com/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images)
+[Documentation](/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images)
 
 However, for Xamarin.Android, `dotnet build` should produce something
 that is runnable. This basically means we need to create an `.apk` or
@@ -259,6 +259,6 @@ Alternatively, you could use the `Run` MSBuild target such as:
 dotnet build HelloAndroid.csproj -t:Run
 ```
 
-[3]: https://docs.microsoft.com/dotnet/core/rid-catalog
+[3]: /dotnet/core/rid-catalog
 [4]: https://github.com/xamarin/xamarin-android/issues/4127
 [5]: https://github.com/dotnet/designs/blob/4703666296f5e59964961464c25807c727282cae/accepted/2020/workloads/workload-resolvers.md#workload-props-files

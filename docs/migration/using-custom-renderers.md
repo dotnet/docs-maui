@@ -6,7 +6,7 @@ ms.date: 1/20/2023
 
 # Using Custom Renderers in .NET MAUI
 
-While there are many benefits to using the new handler-mapper pattern, it's still possible to use the [custom renderer](https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/custom-renderer/) pattern familiar to Xamarin.Forms developers.
+While there are many benefits to using the new handler-mapper pattern, it's still possible to use the [custom renderer](/xamarin/xamarin-forms/app-fundamentals/custom-renderer/) pattern familiar to Xamarin.Forms developers.
 
 To demonstrate using custom renderers in .NET MAUI, let's consider this Xamarin.Forms control `PressableView`. The control simply exposes pressed and released events based on the platform-specific gestures. The custom renderer implementation is composed of 3 files:
 

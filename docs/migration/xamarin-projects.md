@@ -47,7 +47,7 @@ Before continuing on, confirm your environment can build and run the new project
 
 From File Explorer (Finder) copy your code and resource files into the same location within the new project folder. Overwrite any files of the same name.
 
-If you have other library projects, you will want to import them into the new project solution and [add project references](https://learn.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2022) to your new .NET project.
+If you have other library projects, you will want to import them into the new project solution and [add project references](/visualstudio/ide/managing-references-in-a-project) to your new .NET project.
 
 At some point in the process you'll want to copy over your project properties for settings like conditional compilation arguments and code signing. Opening the projects side-by-side in Visual Studio instances will allow you to compare the project properties dialogs. Alternatively, you can migrate the settings by editing the _csproj_ file directly.
 

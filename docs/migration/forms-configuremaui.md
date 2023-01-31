@@ -120,7 +120,7 @@ Optionally, you may keep the `AssemblyInfo.cs` file and disable `GenerateAssembl
 
 Next: [Upgrade or replace incompatible dependencies with .NET 6 (or newer) versions](dependencies.md)
 
-### See also
+## See also
 
-* [MainProgram and app startup documentation](https://docs.microsoft.com/dotnet/maui/fundamentals/app-startup)
-* [MSBuild and project files - GenerateAssembly Info](https://learn.microsoft.com/dotnet/core/project-sdk/msbuild-props#generateassemblyinfo)
+- [MainProgram and app startup documentation](/dotnet/maui/fundamentals/app-startup)
+- [MSBuild and project files - GenerateAssembly Info](/dotnet/core/project-sdk/msbuild-props#generateassemblyinfo)
