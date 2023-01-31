@@ -10,6 +10,7 @@ Xamarin projects can run on .NET, starting with .NET 6, after completing an upgr
 
 <!-- markdownlint-disable MD032 -->
 > [!IMPORTANT]
+> To migrate an app from Xamarin to .NET:
 > - All projects DO need to become "SDK style".
 > - Projects do NOT need to be rewritten.
 > - Multi-project solutions do NOT need to become "single project".
