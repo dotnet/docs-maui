@@ -3,7 +3,7 @@ author: adegeo
 ms.author: adegeo
 ms.date: 01/05/2023
 ms.topic: include
-no-loc: ["communitytoolkit", "CommunityToolkit.Mvvm", "AllNotes", "Notes", "About"]
+no-loc: ["Note viewmodel", "Note view", "ViewModels", "NoteViewModel.cs", "NotesViewModel.cs"]
 ---
 
 The goal of updating the **Note view** is to move as much functionality as possible out of the XAML code-behind and put it in the **Note viewmodel**.
