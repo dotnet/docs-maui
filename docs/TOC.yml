@@ -700,13 +700,13 @@
             - name: Configure .NET MAUI
               href: migration/forms-configuremaui.md
             - name: Name changes
-              href: migration/forms-nameschanges.md
+              href: migration/forms-namechanges.md
             - name: Layout changes
               href: migration/layouts.md
             - name: Upgrade dependencies
               href: migration/dependencies.md
             - name: Custom renderers
-              href: migration/using-custom-renderer.md
+              href: migration/using-custom-renderers.md
         - name: Troubleshooting
           href: migration/troubleshooting.md
     - name: Troubleshooting
