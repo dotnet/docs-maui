@@ -4,7 +4,7 @@ description: "Changes to the csproj file comparing .NET Framework and .NET."
 ms.date: 1/31/2023
 ---
 
-# Xamarin.Android csproj conversion
+# Xamarin.Android project migration
 
 A .NET 7 project for a Xamarin.Android application looks something like:
 

@@ -21,7 +21,7 @@ The following table provides guidance for overcoming common build or runtime err
 | Layout is missing padding, margin, or spacing. | Add default values to your project based on the .NET MAUI style resource. For more information, see [Default value changes from Xamarin.Forms](defaults.md). |
 | `Color.Red` and similar can't be found | Named colors are now in `Microsoft.Maui.Graphics.Colors`. |
 | `Color` and `Colors` can't be found | `Color` and `Colors` are now in the `Microsoft.Maui.Graphics` namespace. |
-| `Color.Default` doesn't exist. | Use `Colors.Black` instead. |
+| `Color.Default` doesn't exist. | `Color` defaults to `null`. |
 | `Frame.BorderColor=Accent` doesn't exist | Use an explicit color. |
 | `ToolbarItem.Icon` doesn't exist. | Use `ToolbarItem.IconImageSource`. |
 | `Button.Image` doesn't exist. | Use `Button.ImageSource`. |

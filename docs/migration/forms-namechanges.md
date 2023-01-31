@@ -22,7 +22,7 @@ For `Xamarin.Essentials` remove the namespace and resolve each type individually
 
 * `Color` - the type used to express a color
 * `Colors` - holds static references to default colors by name, and extension methods to convert types
-* `Color.Default` DOES NOT EXIST - use `ClearValue` if you can instead (GitHub [Issue](https://github.com/dotnet/upgrade-assistant/issues/592))
+* `Color.Default` DOES NOT EXIST. A `Color` defaults to `null`. if you can instead (GitHub [Issue](https://github.com/dotnet/upgrade-assistant/issues/592))
   * Refer to .NET MAUI default [styles](https://github.com/dotnet/maui/tree/main/src/Templates/src/templates/maui-mobile/Resources/Styles)
 
 ## Additional name changes

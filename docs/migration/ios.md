@@ -4,7 +4,7 @@ description: "Describing the changes to the csproj file between Xamarin.iOS and 
 ms.date: 1/31/2023
 ---
 
-# Xamarin.iOS csproj conversion
+# Xamarin.iOS project migration
 
 This document details how to map items and properties in legacy Xamarin project to .NET projects (if they map to anything at all).
 

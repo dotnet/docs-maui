@@ -8,6 +8,8 @@ ms.date: 1/31/2023
 
 The upgrade of a Xamarin.Forms project follows the same steps as a Xamarin.Android and Xamarin.iOS projects, with a few additional steps to take advantage of changes in .NET MAUI.
 
+To update your Xamarin.Forms app to .NET Multi-platform App UI (.NET MAUI), you must:
+
 > [!div class="checklist"]
 >
 > - Update to SDK Style projects
@@ -20,7 +22,7 @@ To simplify the upgrade, we recommend creating a new .NET project of the same ty
 
 ## Update to SDK Style projects
 
-SDK Style projects are the same project format used by all other .NET workloads, and compared to Xamarin projects they are much less verbose. For details updating your application projects, refer to the [Xamarin Projects](xamarin-projects.md) guidance. This document will describe the changes specific to your Xamarin.Forms library projects.
+SDK Style projects are the same project format used by all other .NET workloads, and compared to Xamarin projects they are much less verbose. For details updating your application projects, refer to the [Update Xamarin.Android and Xamarin.iOS apps to .NET](native-projects.md) guidance. This document will describe the changes specific to your Xamarin.Forms library projects.
 
 ## Create new project
 
