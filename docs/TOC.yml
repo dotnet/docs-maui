@@ -681,9 +681,15 @@
       items:
         - name: Overview
           href: migration/index.md
-        - name: Xamarin projects
-          href: migration/xamarin-projects.md
-        - name: Xamarin.Forms
+        - name: Xamarin native projects
+          items:
+            - name: Xamarin projects
+              href: migration/xamarin-projects.md
+            - name: Android projects
+              href: migration/android-csproj.md
+            - name: iOS projects
+              href: migration/ios-csproj.md
+        - name: Xamarin.Forms projects
           items:
             - name: .NET Upgrade Assistant
               href: migration/upgrade-assistant.md
@@ -691,6 +697,16 @@
               href: migration/forms-projects.md
             - name: Default values
               href: migration/defaults.md
+            - name: Configure .NET MAUI
+              href: migration/forms-configuremaui.md
+            - name: Name changes
+              href: migration/forms-nameschanges.md
+            - name: Layout changes
+              href: migration/layout-reference.md
+            - name: Upgrade dependencies
+              href: migration/upgrading-dependencies.md
+            - name: Custom renderers
+              href: migration/using-custom-renderer.md
         - name: Troubleshooting
           href: migration/troubleshooting.md
     - name: Troubleshooting
