@@ -57,5 +57,5 @@ Next: [Find and replace namespace changes](forms-namechanges.md)
 
 * [Upgrading Xamarin.Android, Xamarin.iOS, and Xamarin.Mac](xamarin-projects.md)
 * [Default value and name changes](defaults.md)
-* [Layouts reference](layout-reference.md)
+* [Layouts reference](layouts.md)
 * [Using custom renderers](using-custom-renderers.md)

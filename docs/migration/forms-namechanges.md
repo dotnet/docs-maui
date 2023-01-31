@@ -39,4 +39,4 @@ Next: [Configure .NET MAUI](forms-configuremaui.md)
 ### See also
 
 * [Default value and name changes](defaults.md)
-* [Layouts reference](layout-reference.md)
+* [Layouts reference](layouts.md)

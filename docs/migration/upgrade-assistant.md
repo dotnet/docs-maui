@@ -51,5 +51,5 @@ This command runs the tool in non-interactive mode. It will update all eligible 
 
 * [Custom renderers in .NET MAUI](using-custom-renderers.md)
 * [Default value changes](defaults.md)
-* [Layout changes](layout-reference.md)
+* [Layout changes](layouts.md)
 * [Troubleshooting guide](troubleshooting.md)
