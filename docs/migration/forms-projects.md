@@ -8,13 +8,13 @@ ms.date: 1/31/2023
 
 The upgrade of a Xamarin.Forms project follows the same steps as a Xamarin.Android and Xamarin.iOS projects, with a few additional steps to take advantage of changes in .NET MAUI.
 
-**Checklist:**
-
-* Update to SDK Style projects
-* [Find and replace namespace changes](forms-namechanges.md)
-* [Configure .NET MAUI](forms-configuremaui.md)
-* Upgrade or replace incompatible dependencies with .NET 6 (or newer) versions
-* Compile and test your app
+> [!div class="checklist"]
+>
+> - Update to SDK Style projects
+> - [Find and replace namespace changes](forms-namechanges.md)
+> - [Configure .NET MAUI](forms-configuremaui.md)
+> - Upgrade or replace incompatible dependencies with .NET 6 (or newer) versions
+> - Compile and test your app
 
 To simplify the upgrade, we recommend creating a new .NET project of the same type and name as your Xamarin project, and then copying in your code.
 
