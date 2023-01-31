@@ -687,8 +687,8 @@
               href: migration/native-projects.md
             - name: Android projects
               href: migration/android-projects.md
-            - name: iOS projects
-              href: migration/ios-projects.md
+            - name: Apple projects
+              href: migration/apple-projects.md
         - name: Xamarin.Forms projects
           items:
             - name: .NET Upgrade Assistant
