@@ -6,8 +6,7 @@ ms.date: 1/20/2023
 
 # Xamarin.Android csproj conversion
 
-A .NET 7 project for a Xamarin.Android application looks something
-like:
+A .NET 7 project for a Xamarin.Android application looks something like:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
