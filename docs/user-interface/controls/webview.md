@@ -222,7 +222,7 @@ When page navigation occurs in a <xref:Microsoft.Maui.Controls.WebView>, either 
 When browsing to a page that requests access to the device's recording hardware, such as the camera or microphone, permission must be granted by the <xref:Microsoft.Maui.Controls.WebView> control. The `WebView` control uses the <xref:Android.Webkit.WebChromeClient?displayProperty=fullName> type on Android to react to permission requests. However, the `WebChromeClient` implementation provided by .NET MAUI ignores permission requests. You must create a new type that inherits from `MauiWebChromeClient` and approves the permission requests.
 
 > [!IMPORTANT]
-> Customizing the `WebView` requires Android API 26 or later.
+> Customizing the `WebView` to approve permission requests, using this approach, requires Android API 26 or later.
 
 The permission requests from a web page to the `WebView` control are different than permission requests from the .NET MAUI app to the user. .NET MAUI app permissions are requested and approved by the user, for the whole app. The `WebView` control is dependent on the apps ability to access the hardware. To illustrate this concept, consider a web page that requests access to the device's camera. Even if that request is approved by the `WebView` control, yet the .NET MAUI app didn't have approval by the user to access the camera, the web page wouldn't be able to access the camera.
 
