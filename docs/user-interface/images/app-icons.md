@@ -208,6 +208,9 @@ The transformed name, the resource without the path or extension, is `healthapp`
 > [!TIP]
 > Instead of creating new image files for the icon, simply replace the two image files provided by the .NET MAUI template: _Resources\\AppIcon\\appicon.svg_ for the background and _Resources\\AppIcon\\appiconfg.svg_ for the foreground.
 
+> [!CAUTION]
+> If you don't define any `Color` value, the background is considered as tranparent. This will cause an error during App Store Connect verifications and you will not be able to upload your application.
+
 # [Windows](#tab/windows)
 
 There aren't any other settings to configure for Windows.
