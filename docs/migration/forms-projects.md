@@ -1,32 +1,30 @@
 ---
-title: "Upgrading Xamarin.Forms Overview"
-description: "Overview for the steps taken to upgrade a project from Xamarin.Forms to .NET MAUI."
+title: "Xamarin.Forms project migration"
+description: "Learn how to migrate a Xamarin.Forms project to .NET MAUI."
 ms.date: 1/31/2023
 ---
 
-# Upgrade a Xamarin.Forms app to .NET MAUI
+# Xamarin.Forms project migration
 
-The upgrade of a Xamarin.Forms project follows the same steps as a Xamarin.Android and Xamarin.iOS projects, with a few additional steps to take advantage of changes in .NET MAUI.
+Updating a Xamarin.Forms app to be a .NET Multi-platform App UI (.NET MAUI) app follows the same steps as a Xamarin.Android and Xamarin.iOS project, with additional steps to take advantage of changes in .NET MAUI.
 
-To update your Xamarin.Forms app to .NET Multi-platform App UI (.NET MAUI), you must:
+SDK-style projects are the same project format used by all other .NET workloads, and compared to many Xamarin projects are much less verbose. For information about updating your app projects, see [Update Xamarin.Android, Xamarin.iOS, and Xamarin.Mac apps to .NET](native-projects.md). This article describes how to manually migrate a Xamarin.Forms library project to .NET.
+
+To migrate a Xamarin.Forms library project to .NET, you must:
 
 > [!div class="checklist"]
 >
-> - Update to SDK Style projects
-> - [Find and replace namespace changes](forms-namechanges.md)
-> - [Configure .NET MAUI](forms-configuremaui.md)
-> - Upgrade or replace incompatible dependencies with .NET 6 (or newer) versions
-> - Compile and test your app
+> - Update to SDK-style projects.
+> - Find and replace namespace changes.
+> - Configure .NET MAUI.
+> - Upgrade or replace incompatible dependencies with .NET 6+ versions.
+> - Compile and test your app.
 
-To simplify the upgrade, we recommend creating a new .NET project of the same type and name as your Xamarin project, and then copying in your code.
+To simplify the upgrade, we recommend creating a new .NET project of the same type and name as your Xamarin.Forms project, and then copying in your code. This is the approach outlined below.
 
-## Update to SDK Style projects
+## Create a new project
 
-SDK Style projects are the same project format used by all other .NET workloads, and compared to Xamarin projects they are much less verbose. For details updating your application projects, refer to the [Update Xamarin.Android and Xamarin.iOS apps to .NET](native-projects.md) guidance. This document will describe the changes specific to your Xamarin.Forms library projects.
-
-## Create new project
-
-From Visual Studio 2022 create a new .NET MAUI class library project to host the code from your Xamarin.Forms library project.
+In Visual Studio, create a new .NET MAUI class library project of the same name as your Xamarin.Forms library project. This project will host the code from your Xamarin.Forms library project. Opening the project file will confirm that you have a .NET SDK-style project:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -40,8 +38,8 @@ From Visual Studio 2022 create a new .NET MAUI class library project to host the
         <SingleProject>true</SingleProject>
         <ImplicitUsings>enable</ImplicitUsings>
 
-        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
-        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
+        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
+        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
         <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
         <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
         <TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
@@ -51,7 +49,7 @@ From Visual Studio 2022 create a new .NET MAUI class library project to host the
 </Project>
 ```
 
-In your application projects, add a reference to this library project. Copy your Xamarin.Forms library project files into this new .NET MAUI library project. Now you are ready to move on to updating your namespaces.
+In your app projects, add a reference to this new library project. Then copy your Xamarin.Forms library project files into the .NET MAUI library project.
 
 ## Next step
 

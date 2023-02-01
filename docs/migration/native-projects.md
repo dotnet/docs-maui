@@ -24,7 +24,7 @@ In Visual Studio, create a new .NET project of the same type and name as your Xa
 
 :::image type="content" source="media/new-android-app.png" alt-text="Screenshot of selecting the Android app project template in Visual Studio.":::
 
-The new project should be given same project and package name as your existing project, and should be placed in a new folder. Opening the project file will confirm that you have a .NET SDK-style project:
+The new project should be given the same project and package name as your existing project, and should be placed in a new folder. Opening the project file will confirm that you have a .NET SDK-style project:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
