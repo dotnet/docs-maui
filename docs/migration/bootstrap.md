@@ -1,6 +1,6 @@
 ---
 title: "Bootstrap your migrated app"
-description: "Updating your application files and creating MauiProgram."
+description: "Learn how to modify your converted Xamarin.Forms projects to bootstrap the app on .NET MAUI."
 ms.date: 1/31/2023
 ---
 
