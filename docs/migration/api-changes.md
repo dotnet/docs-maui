@@ -28,7 +28,7 @@ Default colors on views are `null`.
 
 For more information about color changes, see [Microsoft.Maui.Graphics.Color vs Xamarin.Forms.Color](https://gist.github.com/hartez/593fc3fb87035a3aedc91657e9c15ab3).
 
-## Additional name changes
+## Other API changes
 
 - `Shape`, and it's derivatives, are in `Microsoft.Maui.Controls.Shapes` namespace.
 - `Frame.BorderColor=Accent` doesn't exist. Instead, use an explicit color.
@@ -40,4 +40,4 @@ For more information about color changes, see [Microsoft.Maui.Graphics.Color vs 
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Configure .NET MAUI](forms-configuremaui.md)
+> [Bootstrap your app](bootstrap.md)
