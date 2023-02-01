@@ -54,4 +54,4 @@ In your app projects, add a reference to this new library project. Then copy you
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Find and replace namespace changes](forms-namechanges.md)
+> [API changes](api-changes.md)

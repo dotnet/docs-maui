@@ -695,8 +695,8 @@
               href: migration/upgrade-assistant.md
             - name: Xamarin.Forms projects
               href: migration/forms-projects.md
-            - name: Name changes
-              href: migration/forms-namechanges.md
+            - name: APIchanges
+              href: migration/api-changes.md
             - name: Configure .NET MAUI
               href: migration/forms-configuremaui.md
             - name: Update dependencies
