@@ -101,7 +101,7 @@ If the background image used in composing the app icon uses transparency, it can
 Color values can be specified in hexadecimal, using the format: `#RRGGBB` or `#AARRGGBB`. The value of `RR` represents the red channel, `GG` the green channel, `BB` the blue channel, and `AA` the alpha channel. Instead of a hexadecimal value, you may use a named .NET MAUI color, such as `Red` or `PaleVioletRed`.
 
 > [!CAUTION]
-> If you don't define a background color for your app icon, the background is considered to be tranparent on iOS and Mac Catalyst. This will cause an error during App Store Connect verification and you won't be able to upload your app.
+> If you don't define a background color for your app icon the background is considered to be tranparent on iOS and Mac Catalyst. This will cause an error during App Store Connect verification and you won't be able to upload your app.
 
 ## Recolor the foreground
 
