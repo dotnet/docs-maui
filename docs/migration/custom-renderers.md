@@ -1,5 +1,5 @@
 ---
-title: "Using custom renderers in .NET MAUI"
+title: "Use custom renderers in .NET MAUI"
 description: "Learn how to adapt a Xamarin.Forms custom renderers to work in a .NET MAUI app."
 ms.date: 1/31/2023
 ---
@@ -61,7 +61,8 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             })
-            .ConfigureMauiHandlers((handlers) => {
+            .ConfigureMauiHandlers((handlers) =>
+            {
 #if ANDROID
                 handlers.AddHandler(typeof(PressableView), typeof(XamarinCustomRenderer.Droid.Renderers.PressableViewRenderer));
 #elif IOS

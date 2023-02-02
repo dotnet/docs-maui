@@ -6,11 +6,11 @@ ms.date: 1/31/2023
 
 # Layout changes from Xamarin.Forms
 
-You may notice when running your upgraded app in .NET Multi-platform App UI (.NET MAUI) that layout behavior is different. Some of this is the result of changes to layout spacing values. For more information, see [Default value changes from Xamarin.Forms](#default-layout-value-changes-from-xamarin-forms).
+You may notice when running your upgraded app in .NET Multi-platform App UI (.NET MAUI) that layout behavior is different. Some of this is the result of changes to layout spacing values. For more information, see [Default value changes from Xamarin.Forms](#default-layout-value-changes-from-xamarinforms).
 
 There are additional changes and recommendations for layouts in .NET MAUI:
 
-| Layout  | Xamarin.Forms  | .NET MAUI  | Recommendation |
+| Layout  | Xamarin.Forms | .NET MAUI  | Recommendation |
 |---|---|---|---|
 | All | In certain cases sizing requests would not be honored. | Sizing requests are honored. | |
 | `Grid` | Columns and rows can be inferred from XAML. | Columns and rows must be explicitly declared. | Add `ColumnDefinitions` and `RowDefinitions`. |
@@ -100,3 +100,12 @@ If you absolutely require `RelativeLayout`, it can be found in the `Microsoft.Ma
     </compat:RelativeLayout>
 </ContentPage>
 ```
+
+## ScrollView
+
+While `ScrollView` often isn't considered to be a layout, it can be thought of a layout as it's used to scroll its child content. In Xamarin.Forms, `ScrollView` doesn't behave consistently when stacking. It has some arbitrary limits on minimum size that depend partially on its content, and it will sometimes compress to enable other items to fit on the page inside a `StackLayout` in ways that are inconsistent and sometimes surprising.
+
+In .NET MAUI, the `ScrollView` expands to whatever size it wants to be unless otherwise constrained. This means that inside of a `VerticalStackLayout`, which can expand infinitely, a `ScrollView` will expand to its full content height and doesn't scroll. This behavior can be confusing if you're a Xamarin.Forms user.
+
+> [!IMPORTANT]
+> A `StackLayout` continues in its stacking direction until it runs out of content. It does not subdivide its container along that axis. If you want to limit your content to a constrained space in a direction, you should use another layout such as a `Grid`.
