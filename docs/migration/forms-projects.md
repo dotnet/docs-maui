@@ -1,10 +1,10 @@
 ---
-title: "Xamarin.Forms project migration"
-description: "Learn how to migrate a Xamarin.Forms project to .NET MAUI."
+title: "Manually upgrade a Xamarin.Forms app to .NET MAUI"
+description: "Learn how to manually upgrade a Xamarin.Forms project to .NET MAUI."
 ms.date: 1/31/2023
 ---
 
-# Xamarin.Forms project migration
+# Manually upgrade a Xamarin.Forms app to .NET MAUI
 
 Updating a Xamarin.Forms app to be a .NET Multi-platform App UI (.NET MAUI) app follows the same steps as a Xamarin.Android and Xamarin.iOS project, with additional steps to take advantage of changes in .NET MAUI.
 
@@ -15,7 +15,8 @@ To migrate a Xamarin.Forms library project to .NET, you must:
 > [!div class="checklist"]
 >
 > - Update to SDK-style projects.
-> - Find and replace namespace changes.
+> - Update namespaces.
+> - Address any API changes.
 > - Configure .NET MAUI.
 > - Upgrade or replace incompatible dependencies with .NET 6+ versions.
 > - Compile and test your app.
@@ -51,7 +52,7 @@ In Visual Studio, create a new .NET MAUI class library project of the same name 
 
 In your app projects, add a reference to this new library project. Then copy your Xamarin.Forms library project files into the .NET MAUI library project.
 
-## API changes from Xamarin.Forms
+## Namespace changes
 
 Namespaces have changed in the move from Xamarin.Forms to .NET Multi-platform App UI (.NET MAUI), and Xamarin.Essentials features are now part of .NET MAUI. To make namespace updates, do a find and replace for the following namespace changes:
 
@@ -62,6 +63,10 @@ Namespaces have changed in the move from Xamarin.Forms to .NET Multi-platform Ap
 | `using Xamarin.Forms.Xaml` | `using Microsoft.Maui.Controls.Xaml` |
 
 The .NET MAUI class library project makes use of implicit `global using` directives. This enables you to remove `using` directives for the `Xamarin.Essentials` namespace, without having to resolve the types from that namespace.
+
+## API changes
+
+TEXT GOES HERE
 
 ### Colors
 
@@ -239,7 +244,7 @@ The following table provides guidance for overcoming common build or runtime err
 
 | Issue | Tip |
 | ----- | --- |
-| Layout is missing padding, margin, or spacing. | Add default values to your project based on the .NET MAUI style resource. For more information, see [Default value changes from Xamarin.Forms](defaults.md). |
+| Layout is missing padding, margin, or spacing. | Add default values to your project based on the .NET MAUI style resource. For more information, see [Default value changes from Xamarin.Forms](layouts.md#default-layout-value-changes-from-xamarinforms). |
 | `Color.Red` and similar can't be found | Named colors are now in `Microsoft.Maui.Graphics.Colors`. |
 | `Color` and `Colors` can't be found | `Color` and `Colors` are now in the `Microsoft.Maui.Graphics` namespace. |
 | `Color.Default` doesn't exist. | `Color` defaults to `null`. |
