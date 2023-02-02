@@ -2,6 +2,7 @@
 title: "WebView"
 description: "This article explains how to use the .NET MAUI WebView to display remote web pages, local HTML files, and HTML strings."
 ms.date: 10/11/2022
+zone_pivot_groups: devices-deployment
 ---
 
 # WebView
@@ -46,30 +47,37 @@ URIs must be fully formed with the protocol specified.
 > [!NOTE]
 > Despite the `Source` property being of type `WebViewSource`, the property can be set to a string-based URI. This is because .NET MAUI includes a type converter, and an implicit conversion operator, that converts the string-based URI to a `UrlWebViewSource` object.
 
-### Configure App Transport Security on iOS
+:::zone pivot="devices-windows"
+
+<!-- blank pivot to skirt the dumb warning about using every pivot type -->
+
+:::zone-end
+
+:::zone pivot="devices-ios, devices-maccatalyst"
+
+## Configure App Transport Security on iOS and Mac Catalyst
 
 Since version 9, iOS will only allow your app to communicate with secure servers. An app has to opt into enabling communication with insecure servers.
 
 The following *Info.plist* configuration shows how to enable a specific domain to bypass Apple Transport Security (ATS) requirements:
 
+<!-- markdownlint-disable MD010 -->
 ```xml
-<key>NSAppTransportSecurity</key>
-    <dict>
-        <key>NSExceptionDomains</key>
-        <dict>
-            <key>mydomain.com</key>
-            <dict>
-                <key>NSIncludesSubdomains</key>
-                <true/>
-                <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
-                <true/>
-                <key>NSTemporaryExceptionMinimumTLSVersion</key>
-                <string>TLSv1.1</string>
-            </dict>
-        </dict>
-    </dict>
-    ...
-</key>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>mydomain.com</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSTemporaryExceptionMinimumTLSVersion</key>
+				<string>TLSv1.1</string>
+			</dict>
+		</dict>
+	</dict>
 ```
 
 It's best practice to only enable specific domains to bypass ATS, allowing you to use trusted sites while benefitting from additional security on untrusted domains.
@@ -77,19 +85,20 @@ It's best practice to only enable specific domains to bypass ATS, allowing you t
 The following *Info.plist* configuration shows how to disable ATS for an app:
 
 ```xml
-<key>NSAppTransportSecurity</key>
-    <dict>
-        <key>NSAllowsArbitraryLoads</key>
-        <true/>
-    </dict>
-    ...
-</key>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 ```
+<!-- markdownlint-enable MD010 -->
 
 > [!IMPORTANT]
 > If your app requires a connection to an insecure website, you should always enter the domain as an exception using the `NSExceptionDomains` key instead of turning ATS off completely using the  `NSAllowsArbitraryLoads` key.
 
 <!-- For more information, see [App Transport Security](~/ios/app-fundamentals/ats.md). -->
+
+:::zone-end
 
 ## Display local HTML
 
@@ -206,6 +215,106 @@ When page navigation occurs in a <xref:Microsoft.Maui.Controls.WebView>, either 
 - `Navigating`, which is raised when page navigation starts. The `WebNavigatingEventArgs` object that accompanies the `Navigating` event defines a `Cancel` property of type `bool` that can be used to cancel navigation.
 - `Navigated`, which is raised when page navigation completes. The `WebNavigatedEventArgs` object that accompanies the `Navigated` event defines a `Result` property of type `WebNavigationResult` that indicates the navigation result.
 
+:::zone pivot="devices-android"
+
+## Handle permissions on Android
+
+When browsing to a page that requests access to the device's recording hardware, such as the camera or microphone, permission must be granted by the <xref:Microsoft.Maui.Controls.WebView> control. The `WebView` control uses the <xref:Android.Webkit.WebChromeClient?displayProperty=fullName> type on Android to react to permission requests. However, the `WebChromeClient` implementation provided by .NET MAUI ignores permission requests. You must create a new type that inherits from `MauiWebChromeClient` and approves the permission requests.
+
+> [!IMPORTANT]
+> Customizing the `WebView` to approve permission requests, using this approach, requires Android API 26 or later.
+
+The permission requests from a web page to the `WebView` control are different than permission requests from the .NET MAUI app to the user. .NET MAUI app permissions are requested and approved by the user, for the whole app. The `WebView` control is dependent on the apps ability to access the hardware. To illustrate this concept, consider a web page that requests access to the device's camera. Even if that request is approved by the `WebView` control, yet the .NET MAUI app didn't have approval by the user to access the camera, the web page wouldn't be able to access the camera.
+
+The following steps demonstrate how to intercept permission requests from the `WebView` control to use the camera. If you are trying to use the microphone, the steps would be similar except that you would use microphone-related permissions instead of camera-related permissions.
+
+01. First, add the required app permissions to the Android manifest. Open the _Platforms/Android/AndroidManifest.xml_ file and add the following in the `manifest` node:
+
+    ```xml
+    <uses-permission android:name="android.permission.CAMERA" />
+    ```
+
+01. At some point in your app, such as when the page containing a `WebView` control is loaded, request permission from the user to allow the app access to the camera.
+
+    ```csharp
+    private async Task RequestCameraPermission()
+    {
+        PermissionStatus status = await Permissions.CheckStatusAsync<Permissions.Camera>();
+    
+        if (status != PermissionStatus.Granted)
+            await Permissions.RequestAsync<Permissions.Camera>();
+    }
+    ```
+
+01. Add the following class to the _Platforms/Android_ folder, changing the root namespace to match your project's namespace:
+
+    ```csharp
+    using Android.Webkit;
+    using Microsoft.Maui.Handlers;
+    using Microsoft.Maui.Platform;
+
+    namespace MauiAppWebViewHandlers.Platforms.Android;
+
+    internal class MyWebChromeClient: MauiWebChromeClient
+    {
+        public MyWebChromeClient(IWebViewHandler handler) : base(handler)
+        {
+
+        }
+
+        public override void OnPermissionRequest(PermissionRequest request)
+        {
+            // Process each request
+            foreach (var resource in request.GetResources())
+            {
+                // Check if the web page is requesting permission to the camera
+                if (resource.Equals(PermissionRequest.ResourceVideoCapture, StringComparison.OrdinalIgnoreCase))
+                {
+                    // Get the status of the .NET MAUI app's access to the camera
+                    PermissionStatus status = Permissions.CheckStatusAsync<Permissions.Camera>().Result;
+    
+                    // Deny the web page's request if the app's access to the camera is not "Granted"
+                    if (status != PermissionStatus.Granted)
+                        request.Deny();
+                    else
+                        request.Grant(request.GetResources());
+    
+                    return;
+                }
+            }
+    
+            base.OnPermissionRequest(request);
+        }
+    }
+    ```
+
+    In the previous snippet, the `MyWebChromeClient` class inherits from `MauiWebChromeClient`, and overrides the `OnPermissionRequest` method to intercept web page permission requests. Each permission item is checked to see if it matches the `PermissionRequest.ResourceVideoCapture` string constant, which represents the camera. If a camera permission is matched, the code checks to see if the app has permission to use the camera. If it has permission, the web page's request is granted.
+
+01. Use the <xref:Android.Webkit.WebView.SetWebChromeClient%2A> method on the Android's `WebView` control to set the chrome client to `MyWebChromeClient`. The following two items demonstrate how you can set the chrome client:
+
+    - Given a .NET MAUI `WebView` control named `theWebViewControl`, you can set the chrome client directly on the platform view, which is the Android control:
+
+      ```csharp
+      ((IWebViewHandler)theWebViewControl.Handler).PlatformView.SetWebChromeClient(new MyWebChromeClient((IWebViewHandler)theWebViewControl.Handler));
+      ```
+
+    - You can also use handler property mapping to force all `WebView` controls to use your chrome client. For more information, see [Handlers](../handlers/index.md).
+
+      The following snippet's `CustomizeWebViewHandler` method should be called when the app starts, such as in the `MauiProgram.CreateMauiApp` method.
+
+      ```csharp
+      private static void CustomizeWebViewHandler()
+      {
+      #if ANDROID26_0_OR_GREATER
+          Microsoft.Maui.Handlers.WebViewHandler.Mapper.ModifyMapping(
+              nameof(Android.Webkit.WebView.WebChromeClient),
+              (handler, view, args) => handler.PlatformView.SetWebChromeClient(new MyWebChromeClient(handler)));
+      #endif
+      }
+      ```
+
+:::zone-end
+
 ## Set cookies
 
 Cookies can be set on a <xref:Microsoft.Maui.Controls.WebView> so that they are sent with the web request to the specified URL. Set the cookies by adding `Cookie` objects to a `CookieContainer`, and then set the container as the value of the `WebView.Cookies` bindable property. The following code shows an example:
@@ -265,6 +374,8 @@ function factorial(num) {
 </html>
 ```
 
+:::zone pivot="devices-ios, devices-maccatalyst"
+
 ::: moniker range=">=net-maui-7.0"
 
 ## Configure the native WebView on iOS and Mac Catalyst
@@ -295,6 +406,10 @@ using Microsoft.Maui.Handlers;
 
 ::: moniker-end
 
+:::zone-end
+
+:::zone pivot="devices-maccatalyst"
+
 ## Inspect a WebView on Mac Catalyst
 
 To use Safari developer tools to inspect the contents of a `WebView` on Mac Catalyst requires you to add the `com.apple.security.get-task-allow` key, of type `Boolean`, to the entitlements file of your app for its debug build. For more information about entitlements, see [Entitlements](~/ios/entitlements.md).
@@ -321,6 +436,8 @@ To configure your app to consume this entitlements file, add the following `<Pro
 ```
 
 This configuration ensures that the entitlements file is only processed for debug builds on Mac Catalyst.
+
+:::zone-end
 
 ## Launch the system browser
 

@@ -10,7 +10,7 @@ ms.date: 05/13/2022
 
 Using .NET MAUI, you can develop apps that can run on Android, iOS, macOS, and Windows from a single shared code-base.
 
-:::image type="content" source="media/what-is-maui/maui.png" alt-text=".NET MAUI supported platforms." border="false":::
+:::image type="content" source="media/what-is-maui/maui-overview.png" alt-text=".NET MAUI supported platforms." border="false":::
 
 .NET MAUI is open-source and is the evolution of Xamarin.Forms, extended from mobile to desktop scenarios, with UI controls rebuilt from the ground up for performance and extensibility. If you've previously used Xamarin.Forms to build cross-platform user interfaces, you'll notice many similarities with .NET MAUI. However, there are also some differences. Using .NET MAUI, you can create multi-platform apps using a single project, but you can add platform-specific source code and resources if necessary. One of the key aims of .NET MAUI is to enable you to implement as much of your app logic and UI layout as possible in a single code-base.
 
@@ -32,7 +32,7 @@ While the BCL enables apps running on different platforms to share common busine
 
 .NET MAUI provides a single framework for building the UIs for mobile and desktop apps. The following diagram shows a high-level view of the architecture of a .NET MAUI app:
 
-:::image type="content" source="media/what-is-maui/architecture.png" alt-text=".NET MAUI architecture diagram." border="false":::
+:::image type="content" source="media/what-is-maui/architecture-diagram.png" alt-text=".NET MAUI architecture diagram." border="false":::
 
 In a .NET MAUI app, you write code that primarily interacts with the .NET MAUI API (1). .NET MAUI then directly consumes the native platform APIs (3). In addition, app code may directly exercise platform APIs (2), if required.
 
