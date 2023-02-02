@@ -4,7 +4,7 @@ description: "Learn how to adapt a Xamarin.Forms custom renderers to work in a .
 ms.date: 1/31/2023
 ---
 
-# Using custom renderers in .NET MAUI
+# Use custom renderers in .NET MAUI
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/custom-renderers/)
 

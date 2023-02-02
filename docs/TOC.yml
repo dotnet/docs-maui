@@ -61,6 +61,28 @@
           items:
             - name: How to set up Windows for debugging
               href: windows/setup.md
+    - name: Migrating from Xamarin
+      items:
+        - name: Overview
+          href: migration/index.md
+        - name: Xamarin native projects
+          items:
+            - name: Xamarin projects
+              href: migration/native-projects.md
+            - name: Android projects
+              href: migration/android-projects.md
+            - name: Apple projects
+              href: migration/apple-projects.md
+        - name: Xamarin.Forms projects
+          items:
+            - name: .NET Upgrade Assistant
+              href: migration/upgrade-assistant.md
+            - name: Xamarin.Forms projects
+              href: migration/forms-projects.md
+            - name: Layout changes
+              href: migration/layouts.md
+            - name: Custom renderers
+              href: migration/custom-renderers.md
     - name: Tutorials
       items:
         - name: Create a .NET MAUI app
@@ -677,37 +699,5 @@
                   href: windows/deployment/publish-cli.md
                 - name: Publish with Visual Studio to a folder
                   href: windows/deployment/publish-visual-studio-folder.md
-    - name: Migrating from Xamarin
-      items:
-        - name: Overview
-          href: migration/index.md
-        - name: Xamarin native projects
-          items:
-            - name: Xamarin projects
-              href: migration/native-projects.md
-            - name: Android projects
-              href: migration/android-projects.md
-            - name: Apple projects
-              href: migration/apple-projects.md
-        - name: Xamarin.Forms projects
-          items:
-            - name: .NET Upgrade Assistant
-              href: migration/upgrade-assistant.md
-            - name: Xamarin.Forms projects
-              href: migration/forms-projects.md
-            - name: API changes
-              href: migration/api-changes.md
-            - name: Bootstrap your app
-              href: migration/bootstrap.md
-            - name: Update dependencies
-              href: migration/dependencies.md
-            - name: Default values
-              href: migration/defaults.md
-            - name: Layout changes
-              href: migration/layouts.md
-            - name: Custom renderers
-              href: migration/custom-renderers.md
-            - name: Troubleshooting
-              href: migration/troubleshooting.md
     - name: Troubleshooting
       href: troubleshooting.md
