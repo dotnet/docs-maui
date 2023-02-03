@@ -102,13 +102,13 @@ The <xref:Microsoft.Maui.Media.IMediaPicker> interface has the following methods
 - <xref:Microsoft.Maui.Media.MediaPicker.PickPhotoAsync%2A>\
 Opens the media browser to select a photo.
 
-- <xref:Microsoft.Maui.Media.MediaPicker.%2A>\
+- <xref:Microsoft.Maui.Media.MediaPicker.CapturePhotoAsync%2A>\
 Opens the camera to take a photo.
 
-- <xref:Microsoft.Maui.Media.MediaPicker.%2A>\
+- <xref:Microsoft.Maui.Media.MediaPicker.PickVideoAsync%2A>\
 Opens the media browser to select a video.
 
-- <xref:Microsoft.Maui.Media.MediaPicker.%2A>\
+- <xref:Microsoft.Maui.Media.MediaPicker.CaptureVideoAsync%2A>\
 Opens the camera to take a video.
 
 Each method optionally takes in a <xref:Microsoft.Maui.Media.MediaPickerOptions> parameter type that allows the <xref:Microsoft.Maui.Media.MediaPickerOptions.Title> to be set on some operating systems, which is displayed to the user.
