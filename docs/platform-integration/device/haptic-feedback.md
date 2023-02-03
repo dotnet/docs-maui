@@ -1,15 +1,15 @@
 ---
 title: "Haptic Feedback"
 description: "Learn how to use the .NET MAUI IHapticFeedback class in the Microsoft.Maui.Devices namespace. This interface lets you control haptic feedback on a device."
-ms.date: 09/02/2022
+ms.date: 02/02/2023
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices"]
 ---
 
 # Haptic feedback
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IHapticFeedback` interface to control haptic feedback on a device. Haptic feedback is generally manifested by a gentle vibration sensation provided by the device to give a response to the user. Some examples of haptic feedback are when a user types on a virtual keyboard or when they play a game where the player's character has an encounter with an enemy character.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Devices.IHapticFeedback> interface to control haptic feedback on a device. Haptic feedback is generally manifested by a gentle vibration sensation provided by the device to give a response to the user. Some examples of haptic feedback are when a user types on a virtual keyboard or when they play a game where the player's character has an encounter with an enemy character.
 
-The default implementation of the `IHapticFeedback` interface is available through the `HapticFeedback.Default` property. Both the `IHapticFeedback` interface and `HapticFeedback` class are contained in the `Microsoft.Maui.Devices` namespace.
+The default implementation of the `IHapticFeedback` interface is available through the <xref:Microsoft.Maui.Devices.HapticFeedback.Default?displayProperty=nameWithType> property. Both the `IHapticFeedback` interface and `HapticFeedback` class are contained in the `Microsoft.Maui.Devices` namespace.
 
 ## Get started
 
@@ -61,6 +61,6 @@ No setup is required.
 
 ## Use haptic feedback
 
-The haptic feedback functionality is performed in two modes: a short `Click` or a `LongPress`. The following code example initiates a `Click` or `LongPress` haptic feedback response to the user based on which <xref:Microsoft.Maui.Controls.Button> they click:
+The haptic feedback functionality is performed in two modes: a short <xref:Microsoft.Maui.Devices.HapticFeedbackType.Click> or a <xref:Microsoft.Maui.Devices.HapticFeedbackType.LongPress>. The following code example initiates a `Click` or `LongPress` haptic feedback response to the user based on which <xref:Microsoft.Maui.Controls.Button> they click:
 
 :::code language="csharp" source="../snippets/shared_1/DeviceDetailsPage.xaml.cs" id="hapticfeedback":::

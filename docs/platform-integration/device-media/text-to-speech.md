@@ -1,15 +1,15 @@
 ---
 title: "Text-to-Speech"
 description: "Learn how to use the .NET MAUI ITextToSpeech interface, which enables an application utilize the built-in text-to-speech engines to speak back text from the device."
-ms.date: 12/27/2022
+ms.date: 02/02/2023
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Media", "TextToSpeech"]
 ---
 
 # Text-to-Speech
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `ITextToSpeech` interface. This interface enables an application to utilize the built-in text-to-speech engines to speak back text from the device. You can also use it to query for available languages.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Media.ITextToSpeech> interface. This interface enables an application to utilize the built-in text-to-speech engines to speak back text from the device. You can also use it to query for available languages.
 
-The default implementation of the `ITextToSpeech` interface is available through the `TextToSpeech.Default` property. Both the `ITextToSpeech` interface and `TextToSpeech` class are contained in the `Microsoft.Maui.Media` namespace.
+The default implementation of the `ITextToSpeech` interface is available through the <xref:Microsoft.Maui.Media.TextToSpeech.Default?displayProperty=nameWithType> property. Both the `ITextToSpeech` interface and `TextToSpeech` class are contained in the `Microsoft.Maui.Media` namespace.
 
 ## Get started
 
@@ -41,7 +41,7 @@ No setup is required.
 
 ## Using Text-to-Speech
 
-Text-to-speech works by calling the `SpeakAsync` method with the text to speak, as the following code example demonstrates:
+Text-to-speech works by calling the <xref:Microsoft.Maui.Media.ITextToSpeech.SpeakAsync%2A> method with the text to speak, as the following code example demonstrates:
 
 :::code language="csharp" source="../snippets/shared_1/MediaPage.cs" id="speak":::
 
@@ -55,7 +55,7 @@ Text-to-Speech will automatically queue speech requests from the same thread.
 
 ## Settings
 
-To control the volume, pitch, and locale of the voice, use the `SpeechOptions` class. Pass an instance of that class to the `SpeakAsync` method. the `GetLocalesAsync` method retrieves a collection of the locales provided by the operating system.
+To control the volume, pitch, and locale of the voice, use the <xref:Microsoft.Maui.Media.SpeechOptions> class. Pass an instance of that class to the <xref:Microsoft.Maui.Media.ITextToSpeech.SpeakAsync(System.String,Microsoft.Maui.Media.SpeechOptions,System.Threading.CancellationToken)> method. the <xref:Microsoft.Maui.Media.ITextToSpeech.GetLocalesAsync> method retrieves a collection of the locales provided by the operating system.
 
 :::code language="csharp" source="../snippets/shared_1/MediaPage.cs" id="speak_options":::
 

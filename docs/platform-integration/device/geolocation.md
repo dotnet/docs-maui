@@ -1,15 +1,15 @@
 ---
 title: "Geolocation"
 description: "Learn how to use the .NET MAUI IGeolocation interface in the Microsoft.Maui.Devices.Sensors namespace. This interface provides API to retrieve the device's current geolocation coordinates."
-ms.date: 10/24/2022
+ms.date: 02/02/2023
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices", "Microsoft.Maui.Devices.Sensors"]
 ---
 
 # Geolocation
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IGeolocation` interface. This interface provides APIs to retrieve the device's current geolocation coordinates.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Devices.Sensors.IGeolocation> interface. This interface provides APIs to retrieve the device's current geolocation coordinates.
 
-The default implementation of the `IGeolocation` interface is available through the `Geolocation.Default` property. Both the `IGeolocation` interface and `Geolocation` class are contained in the `Microsoft.Maui.Devices.Sensors` namespace.
+The default implementation of the `IGeolocation` interface is available through the <xref:Microsoft.Maui.Devices.Sensors.Geolocation.Default?displayProperty=nameWithType> property. Both the `IGeolocation` interface and `Geolocation` class are contained in the `Microsoft.Maui.Devices.Sensors` namespace.
 
 ## Get started
 
@@ -94,7 +94,7 @@ The `<string>` element is the reason the app is requesting access to location in
 
 ### Full accuracy location permission
 
-If you're going to request full accuracy with the `GeolocationRequest.RequestFullAccuracy` property, add the following dictionary to the _Platforms/iOS/Info.plist_ and _Platforms/MacCatalyst/Info.plist_ files:
+If you're going to request full accuracy with the <xref:Microsoft.Maui.Devices.Sensors.GeolocationRequest.RequestFullAccuracy?displayProperty=nameWithType> property, add the following dictionary to the _Platforms/iOS/Info.plist_ and _Platforms/MacCatalyst/Info.plist_ files:
 
 ```xml
 <key>NSLocationTemporaryUsageDescriptionDictionary</key>
@@ -135,7 +135,7 @@ No setup is required.
 
 ## Get the last known location
 
-The device may have cached the most recent location of the device. Use the `GetLastKnownLocationAsync` method to access the cached location, if available. This is often faster than doing a full location query, but can be less accurate. If no cached location exists, this method returns `null`.
+The device may have cached the most recent location of the device. Use the <xref:Microsoft.Maui.Devices.Sensors.IGeolocation.GetLastKnownLocationAsync> method to access the cached location, if available. This is often faster than doing a full location query, but can be less accurate. If no cached location exists, this method returns `null`.
 
 > [!NOTE]
 > When necessary, the Geolocation API prompts the user for permissions.
@@ -144,11 +144,11 @@ The following code example demonstrates checking for a cached location:
 
 :::code language="csharp" source="../snippets/shared_1/SensorsPage.xaml.cs" id="geolocation_cached":::
 
-Depending on the device, not all location values may be available. For example, the `Altitude` property might be `null`, have a value of 0, or have a positive value indicating the meters above sea level. Other values that may not be present include the `Speed` and `Course` properties.
+Depending on the device, not all location values may be available. For example, the <xref:Microsoft.Maui.Devices.Sensors.Location.Altitude> property might be `null`, have a value of 0, or have a positive value indicating the meters above sea level. Other values that may not be present include the <xref:Microsoft.Maui.Devices.Sensors.Location.Speed> and <xref:Microsoft.Maui.Devices.Sensors.Location.Course> properties.
 
 ## Get the current location
 
-While checking for the [last known location](#get-the-last-known-location) of the device may be quicker, it can be inaccurate. Use the `GetLocationAsync` method to query the device for the current location. You can configure the accuracy and timeout of the query. It's best to the method overload that uses the `GeolocationRequest` and `CancellationToken` parameters, since it may take some time to get the device's location.
+While checking for the [last known location](#get-the-last-known-location) of the device may be quicker, it can be inaccurate. Use the <xref:Microsoft.Maui.Devices.Sensors.IGeolocation.GetLocationAsync%2A> method to query the device for the current location. You can configure the accuracy and timeout of the query. It's best to the method overload that uses the <xref:Microsoft.Maui.Devices.Sensors.GeolocationRequest> and <xref:System.Threading.CancellationToken> parameters, since it may take some time to get the device's location.
 
 > [!NOTE]
 > When necessary, the Geolocation API prompt's the user for permissions.
@@ -157,10 +157,10 @@ The following code example demonstrates how to request the device's location, wh
 
 :::code language="csharp" source="../snippets/shared_1/SensorsPage.xaml.cs" id="geolocation_get":::
 
-Not all location values may be available, depending on the device. For example, the `Altitude` property might be `null`, have a value of 0, or have a positive value indicating the meters above sea level. Other values that may not be present include `Speed` and `Course`.
+Not all location values may be available, depending on the device. For example, the <xref:Microsoft.Maui.Devices.Sensors.Location.Altitude> property might be `null`, have a value of 0, or have a positive value indicating the meters above sea level. Other values that may not be present include <xref:Microsoft.Maui.Devices.Sensors.Location.Speed> and <xref:Microsoft.Maui.Devices.Sensors.Location.Course>.
 
 > [!WARNING]
-> `GetLocationAsync` can return `null` in some scenarios. This indicates that the underlying platform is unable to obtain the current location.
+> <xref:Microsoft.Maui.Devices.Sensors.IGeolocation.GetLocationAsync%2A> can return `null` in some scenarios. This indicates that the underlying platform is unable to obtain the current location.
 
 ## Accuracy
 
@@ -211,19 +211,19 @@ The following sections outline the location accuracy distance, per platform:
 
 ## Detecting mock locations
 
-Some devices may return a mock location from the provider or by an application that provides mock locations. You can detect this by using the `IsFromMockProvider` on any `Location`:
+Some devices may return a mock location from the provider or by an application that provides mock locations. You can detect this by using the <xref:Microsoft.Maui.Devices.Sensors.Location.IsFromMockProvider> on any <xref:Microsoft.Maui.Devices.Sensors.Location>:
 
 :::code language="csharp" source="../snippets/shared_1/SensorsPage.xaml.cs" id="geolocation_ismock":::
 
 ## Distance between two locations
 
-The `Location.CalculateDistance` method calculates the distance between two geographic locations. This calculated distance doesn't take roads or other pathways into account, and is merely the shortest distance between the two points along the surface of the Earth. This calculation is known as the _great-circle distance_ calculation.
+The <xref:Microsoft.Maui.Devices.Sensors.Location.CalculateDistance%2A> method calculates the distance between two geographic locations. This calculated distance doesn't take roads or other pathways into account, and is merely the shortest distance between the two points along the surface of the Earth. This calculation is known as the _great-circle distance_ calculation.
 
 The following code calculates the distance between the United States of America cities of Boston and San Francisco:
 
 :::code language="csharp" source="../snippets/shared_1/SensorsPage.xaml.cs" id="geolocation_distance":::
 
-The `Location` constructor accepts the latitude and longitude arguments, respectively. Positive latitude values are north of the equator, and positive longitude values are east of the Prime Meridian. Use the final argument to `CalculateDistance` to specify miles or kilometers. The `UnitConverters` class also defines `KilometersToMiles` and `MilesToKilometers` methods for converting between the two units.
+The <xref:Microsoft.Maui.Devices.Sensors.Location.%23ctor(System.Double,System.Double,System.Double)> constructor accepts the latitude and longitude arguments, respectively. Positive latitude values are north of the equator, and positive longitude values are east of the Prime Meridian. Use the final argument to `CalculateDistance` to specify miles or kilometers. The <xref:Microsoft.Maui.Media.UnitConverters> class also defines <xref:Microsoft.Maui.Media.UnitConverters.KilometersToMiles%2A> and <xref:Microsoft.Maui.Media.UnitConverters.MilesToKilometers%2A> methods for converting between the two units.
 
 ## Platform differences
 
@@ -237,13 +237,13 @@ Altitude is calculated differently on each platform.
 
 On Android, [altitude](https://developer.android.com/reference/android/location/Location#getAltitude()), if available, is returned in meters above the WGS 84 reference ellipsoid. If this location doesn't have an altitude, `0.0` is returned.
 
-The `Location.ReducedAccuracy` property is only used by iOS and returns `false` on all other platforms.
+The <xref:Microsoft.Maui.Devices.Sensors.Location.ReducedAccuracy?displayProperty=nameWithType> property is only used by iOS and returns `false` on all other platforms.
 
 # [iOS\macOS](#tab/ios)
 
 On iOS, [altitude](https://developer.apple.com/documentation/corelocation/cllocation/1423820-altitude) is measured in meters. Positive values indicate altitudes above sea level, while negative values indicate altitudes below sea level.
 
-Starting with iOS 14, the user may restrict your app from detecting a location with full accuracy. The `Location.ReducedAccuracy` property indicates whether or not the location is using reduced accuracy. To request full accuracy, set the `GeolocationRequest.RequestFullAccuracy` property to `true`:
+Starting with iOS 14, the user may restrict your app from detecting a location with full accuracy. The <xref:Microsoft.Maui.Devices.Sensors.Location.ReducedAccuracy?displayProperty=nameWithType> property indicates whether or not the location is using reduced accuracy. To request full accuracy, set the <xref:Microsoft.Maui.Devices.Sensors.GeolocationRequest.RequestFullAccuracy?displayProperty=nameWithType> property to `true`:
 
 :::code language="csharp" source="../snippets/shared_1/SensorsPage.xaml.cs" id="geolocation_request_full":::
 
@@ -251,7 +251,7 @@ Starting with iOS 14, the user may restrict your app from detecting a location w
 
 On Windows, altitude is returned in meters. <!-- For more information, see the [AltitudeReferenceSystem](/uwp/api/windows.devices.geolocation.geopoint.altitudereferencesystem#Windows_Devices_Geolocation_Geopoint_AltitudeReferenceSystem) reference documentation.-->
 
-The `Location.ReducedAccuracy` property is only used by iOS and returns `false` on all other platforms.
+The <xref:Microsoft.Maui.Devices.Sensors.Location.ReducedAccuracy?displayProperty=nameWithType> property is only used by iOS and returns `false` on all other platforms.
 
 -----
 <!-- markdownlint-enable MD024 -->
