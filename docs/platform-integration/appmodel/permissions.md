@@ -1,13 +1,13 @@
 ---
 title: "Permissions"
 description: "Learn how to use the .NET MAUI Permissions class, to check and request permissions. This class is in the Microsoft.Maui.ApplicationModel namespace."
-ms.date: 10/24/2022
+ms.date: 02/02/2023
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel"]
 ---
 
 # Permissions
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `Permissions` class. This class allows you to check and request permissions at run-time. The `Permissions` type is available in the `Microsoft.Maui.ApplicationModel` namespace.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.ApplicationModel.Permissions> class. This class allows you to check and request permissions at run-time. The `Permissions` type is available in the `Microsoft.Maui.ApplicationModel` namespace.
 
 ## Available permissions
 
@@ -17,102 +17,102 @@ The following table uses ✔️ to indicate that the permission is supported and
 
 ::: moniker range="=net-maui-6.0"
 
-| Permission        | Android | iOS | Windows | tvOS |
-|-------------------|:-------:|:---:|:-------:|:----:|
-| CalendarRead      | ✔️     | ✔️  | ❌      | ❌   |
-| CalendarWrite     | ✔️     | ✔️  | ❌      | ❌   |
-| Camera            | ✔️     | ✔️  | ❌      | ❌   |
-| ContactsRead      | ✔️     | ✔️  | ✔️      | ❌   |
-| ContactsWrite     | ✔️     | ✔️  | ✔️      | ❌   |
-| Flashlight        | ✔️     | ❌  | ❌      | ❌   |
-| LocationWhenInUse | ✔️     | ✔️  | ✔️      | ✔️   |
-| LocationAlways    | ✔️     | ✔️  | ✔️      | ❌   |
-| Media             | ❌     | ✔️  | ❌      | ❌   |
-| Microphone        | ✔️     | ✔️  | ✔️      | ❌   |
-| Phone             | ✔️     | ✔️  | ❌      | ❌   |
-| Photos            | ❌     | ✔️  | ❌      | ✔️   |
-| Reminders         | ❌     | ✔️  | ❌      | ❌   |
-| Sensors           | ✔️     | ✔️  | ✔️      | ❌   |
-| Sms               | ✔️     | ✔️  | ❌      | ❌   |
-| Speech            | ✔️     | ✔️  | ❌      | ❌   |
-| StorageRead       | ✔️     | ❌  | ❌      | ❌   |
-| StorageWrite      | ✔️     | ❌  | ❌      | ❌   |
+| Permission                                                                              | Android | iOS | Windows | tvOS |
+|------------------------------------------------------------------------------------------|:-------:|:---:|:-------:|:----:|
+| [CalendarRead](xref:Microsoft.Maui.ApplicationModel.Permissions.CalendarRead)           | ✔️     | ✔️  | ❌      | ❌    |
+| [CalendarWrite](xref:Microsoft.Maui.ApplicationModel.Permissions.CalendarWrite)         | ✔️     | ✔️  | ❌      | ❌    |
+| [Camera](xref:Microsoft.Maui.ApplicationModel.Permissions.Camera)                       | ✔️     | ✔️  | ❌      | ❌    |
+| [ContactsRead](xref:Microsoft.Maui.ApplicationModel.Permissions.ContactsRead)           | ✔️     | ✔️  | ✔️     | ❌    |
+| [ContactsWrite](xref:Microsoft.Maui.ApplicationModel.Permissions.ContactsWrite)         | ✔️     | ✔️  | ✔️     | ❌    |
+| [Flashlight](xref:Microsoft.Maui.ApplicationModel.Permissions.Flashlight)               | ✔️     | ❌   | ❌      | ❌    |
+| [LocationWhenInUse](xref:Microsoft.Maui.ApplicationModel.Permissions.LocationWhenInUse) | ✔️     | ✔️  | ✔️     | ✔️   |
+| [LocationAlways](xref:Microsoft.Maui.ApplicationModel.Permissions.LocationAlways)       | ✔️     | ✔️  | ✔️     | ❌    |
+| [Media](xref:Microsoft.Maui.ApplicationModel.Permissions.Media)                         | ❌      | ✔️  | ❌      | ❌    |
+| [Microphone](xref:Microsoft.Maui.ApplicationModel.Permissions.Microphone)               | ✔️     | ✔️  | ✔️     | ❌    |
+| [Phone](xref:Microsoft.Maui.ApplicationModel.Permissions.Phone)                         | ✔️     | ✔️  | ❌      | ❌    |
+| [Photos](xref:Microsoft.Maui.ApplicationModel.Permissions.Photos)                       | ❌      | ✔️  | ❌      | ✔️   |
+| [Reminders](xref:Microsoft.Maui.ApplicationModel.Permissions.Reminders)                 | ❌      | ✔️  | ❌      | ❌    |
+| [Sensors](xref:Microsoft.Maui.ApplicationModel.Permissions.Sensors)                     | ✔️     | ✔️  | ✔️     | ❌    |
+| [Sms](xref:Microsoft.Maui.ApplicationModel.Permissions.Sms)                             | ✔️     | ✔️  | ❌      | ❌    |
+| [Speech](xref:Microsoft.Maui.ApplicationModel.Permissions.Speech)                       | ✔️     | ✔️  | ❌      | ❌    |
+| [StorageRead](xref:Microsoft.Maui.ApplicationModel.Permissions.StorageRead)             | ✔️     | ❌   | ❌      | ❌    |
+| [StorageWrite](xref:Microsoft.Maui.ApplicationModel.Permissions.StorageWrite)           | ✔️     | ❌   | ❌      | ❌    |
 
 ::: moniker-end
 
 ::: moniker range=">=net-maui-7.0"
 
-| Permission        | Android | iOS | Windows | tvOS |
-|-------------------|:-------:|:---:|:-------:|:----:|
-| CalendarRead      | ✔️     | ✔️  | ❌      | ❌   |
-| CalendarWrite     | ✔️     | ✔️  | ❌      | ❌   |
-| Camera            | ✔️     | ✔️  | ❌      | ❌   |
-| ContactsRead      | ✔️     | ✔️  | ❌      | ❌   |
-| ContactsWrite     | ✔️     | ✔️  | ❌      | ❌   |
-| Flashlight        | ✔️     | ❌  | ❌      | ❌   |
-| LocationWhenInUse | ✔️     | ✔️  | ❌      | ✔️   |
-| LocationAlways    | ✔️     | ✔️  | ❌      | ❌   |
-| Media             | ❌     | ✔️  | ❌      | ❌   |
-| Microphone        | ✔️     | ✔️  | ❌      | ❌   |
-| Phone             | ✔️     | ✔️  | ❌      | ❌   |
-| Photos            | ❌     | ✔️  | ❌      | ✔️   |
-| Reminders         | ❌     | ✔️  | ❌      | ❌   |
-| Sensors           | ✔️     | ✔️  | ❌      | ❌   |
-| Sms               | ✔️     | ✔️  | ❌      | ❌   |
-| Speech            | ✔️     | ✔️  | ❌      | ❌   |
-| StorageRead       | ✔️     | ❌  | ❌      | ❌   |
-| StorageWrite      | ✔️     | ❌  | ❌      | ❌   |
+| Permission                                                                              | Android | iOS | Windows | tvOS |
+|------------------------------------------------------------------------------------------|:-------:|:---:|:-------:|:----:|
+| [CalendarRead](xref:Microsoft.Maui.ApplicationModel.Permissions.CalendarRead)           | ✔️     | ✔️  | ❌      | ❌    |
+| [CalendarWrite](xref:Microsoft.Maui.ApplicationModel.Permissions.CalendarWrite)         | ✔️     | ✔️  | ❌      | ❌    |
+| [Camera](xref:Microsoft.Maui.ApplicationModel.Permissions.Camera)                       | ✔️     | ✔️  | ❌      | ❌    |
+| [ContactsRead](xref:Microsoft.Maui.ApplicationModel.Permissions.ContactsRead)           | ✔️     | ✔️  | ❌      | ❌    |
+| [ContactsWrite](xref:Microsoft.Maui.ApplicationModel.Permissions.ContactsWrite)         | ✔️     | ✔️  | ❌      | ❌    |
+| [Flashlight](xref:Microsoft.Maui.ApplicationModel.Permissions.Flashlight)               | ✔️     | ❌   | ❌      | ❌    |
+| [LocationWhenInUse](xref:Microsoft.Maui.ApplicationModel.Permissions.LocationWhenInUse) | ✔️     | ✔️  | ❌      | ✔️   |
+| [LocationAlways](xref:Microsoft.Maui.ApplicationModel.Permissions.LocationAlways)       | ✔️     | ✔️  | ❌      | ❌    |
+| [Media](xref:Microsoft.Maui.ApplicationModel.Permissions.Media)                         | ❌      | ✔️  | ❌      | ❌    |
+| [Microphone](xref:Microsoft.Maui.ApplicationModel.Permissions.Microphone)               | ✔️     | ✔️  | ❌      | ❌    |
+| [Phone](xref:Microsoft.Maui.ApplicationModel.Permissions.Phone)                         | ✔️     | ✔️  | ❌      | ❌    |
+| [Photos](xref:Microsoft.Maui.ApplicationModel.Permissions.Photos)                       | ❌      | ✔️  | ❌      | ✔️   |
+| [Reminders](xref:Microsoft.Maui.ApplicationModel.Permissions.Reminders)                 | ❌      | ✔️  | ❌      | ❌    |
+| [Sensors](xref:Microsoft.Maui.ApplicationModel.Permissions.Sensors)                     | ✔️     | ✔️  | ❌      | ❌    |
+| [Sms](xref:Microsoft.Maui.ApplicationModel.Permissions.Sms)                             | ✔️     | ✔️  | ❌      | ❌    |
+| [Speech](xref:Microsoft.Maui.ApplicationModel.Permissions.Speech)                       | ✔️     | ✔️  | ❌      | ❌    |
+| [StorageRead](xref:Microsoft.Maui.ApplicationModel.Permissions.StorageRead)             | ✔️     | ❌   | ❌      | ❌    |
+| [StorageWrite](xref:Microsoft.Maui.ApplicationModel.Permissions.StorageWrite)           | ✔️     | ❌   | ❌      | ❌    |
 
 ::: moniker-end
 
-If a permission is marked as ❌, it will always return `Granted` when checked or requested.
+If a permission is marked as ❌, it will always return <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Granted> when checked or requested.
 
 ## Checking permissions
 
-To check the current status of a permission, use the `Permissions.CheckStatusAsync` method along with the specific permission to get the status for. The following example checks the status of the `LocationWhenInUse` permission:
+To check the current status of a permission, use the <xref:Microsoft.Maui.ApplicationModel.Permissions.CheckStatusAsync%2A?displayProperty=nameWithType> method along with the specific permission to get the status for. The following example checks the status of the [`LocationWhenInUse`](xref:Microsoft.Maui.ApplicationModel.Permissions.LocationWhenInUse) permission:
 
 :::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="permission_check":::
 
-A `PermissionException` is thrown if the required permission isn't declared.
+A <xref:Microsoft.Maui.ApplicationModel.PermissionException> is thrown if the required permission isn't declared.
 
-It's best to check the status of the permission before requesting it. Each operating system returns a different default state, if the user has never been prompted. iOS returns `Unknown`, while others return `Denied`. If the status is `Granted` then there's no need to make other calls. On iOS if the status is `Denied` you should prompt the user to change the permission in the settings. On Android, you can call `ShouldShowRationale` to detect if the user has already denied the permission in the past.
+It's best to check the status of the permission before requesting it. Each operating system returns a different default state, if the user has never been prompted. iOS returns <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Unknown>, while others return <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Denied>. If the status is <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Granted> then there's no need to make other calls. On iOS if the status is <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Denied> you should prompt the user to change the permission in the settings. On Android, you can call <xref:Microsoft.Maui.ApplicationModel.Permissions.ShouldShowRationale%2A> to detect if the user has already denied the permission in the past.
 
 ### Permission status
 
-When using `CheckStatusAsync` or `RequestAsync`, a `PermissionStatus` is returned that can be used to determine the next steps:
+When using <xref:Microsoft.Maui.ApplicationModel.Permissions.CheckStatusAsync%2A> or <xref:Microsoft.Maui.ApplicationModel.Permissions.RequestAsync%2A>, a <xref:Microsoft.Maui.ApplicationModel.PermissionStatus> is returned that can be used to determine the next steps:
 
-- `Unknown`\
+- <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Unknown>\
 The permission is in an unknown state, or on iOS, the user has never been prompted.
 
-- `Denied`\
+- <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Denied>\
 The user denied the permission request.
 
-- `Disabled`\
+- <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Disabled>\
 The feature is disabled on the device.
 
-- `Granted`\
+- <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Granted>\
 The user granted permission or is automatically granted.
 
-- `Restricted`\
+- <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Restricted>\
 In a restricted state. Only iOS returns this status.
 
-- `Limited`\
+- <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Limited>\
 In a limited state. Only iOS returns this status.
 
 ## Requesting permissions
 
-To request a permission from the users, use the `Permissions.RequestAsync` method along with the specific permission to request. If the user previously granted permission, and hasn't revoked it, then this method will return `Granted` without showing a dialog to the user. The following example requests the `LocationWhenInUse` permission:
+To request a permission from the users, use the <xref:Microsoft.Maui.ApplicationModel.Permissions.RequestAsync%2A> method along with the specific permission to request. If the user previously granted permission, and hasn't revoked it, then this method will return <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Granted> without showing a dialog to the user. The following example requests the [`LocationWhenInUse`](xref:Microsoft.Maui.ApplicationModel.Permissions.LocationWhenInUse) permission:
 
 :::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="permission_request":::
 
-A `PermissionException` is thrown if the required permission isn't declared.
+A <xref:Microsoft.Maui.ApplicationModel.PermissionException> is thrown if the required permission isn't declared.
 
 > [!IMPORTANT]
-> On some platforms, a permission request can only be activated a single time. Further prompts must be handled by the developer to check if a permission is in the `Denied` state, and then ask the user to manually turn it on.
+> On some platforms, a permission request can only be activated a single time. Further prompts must be handled by the developer to check if a permission is in the <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Denied> state, and then ask the user to manually turn it on.
 
 ## Explain why permission is needed
 
-It's best practice to explain to your user why your application needs a specific permission. On iOS, you must specify a string that is displayed to the user. Android doesn't have this ability, and also defaults permission status to `Disabled`. This limits the ability to know if the user denied the permission or if it's the first time the permission is being requested. The `ShouldShowRationale` method can be used to determine if an informative UI should be displayed. If the method returns `true`, this is because the user has denied or disabled the permission in the past. Other platforms always return `false` when calling this method.
+It's best practice to explain to your user why your application needs a specific permission. On iOS, you must specify a string that is displayed to the user. Android doesn't have this ability, and also defaults permission status to <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Disabled>. This limits the ability to know if the user denied the permission or if it's the first time the permission is being requested. The <xref:Microsoft.Maui.ApplicationModel.Permissions.ShouldShowRationale%2A> method can be used to determine if an informative UI should be displayed. If the method returns `true`, this is because the user has denied or disabled the permission in the past. Other platforms always return `false` when calling this method.
 
 ## Example
 
@@ -122,11 +122,11 @@ The following code presents the general usage pattern for determining whether a 
 
 ## Extending permissions
 
-The Permissions API was created to be flexible and extensible for applications that require more validation or permissions that aren't included in .NET MAUI. Create a class that inherits from `Permissions.BasePermission`, and implement the required abstract methods. The following example code demonstrates the basic abstract members, but without implementation:
+The Permissions API was created to be flexible and extensible for applications that require more validation or permissions that aren't included in .NET MAUI. Create a class that inherits from <xref:Microsoft.Maui.ApplicationModel.Permissions.BasePermission>, and implement the required abstract methods. The following example code demonstrates the basic abstract members, but without implementation:
 
 :::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="permission_class":::
 
-When implementing a permission in a specific platform, the `BasePlatformPermission` class can be inherited from. This class provides extra platform helper methods to automatically check the permission declarations. This helps when creating custom permissions that do groupings, for example requesting both **Read** and **Write** access to storage on Android. The following code example demonstrates requesting **Read** and **Write** storage access:
+When implementing a permission in a specific platform, the <xref:Microsoft.Maui.ApplicationModel.Permissions.BasePlatformPermission> class can be inherited from. This class provides extra platform helper methods to automatically check the permission declarations. This helps when creating custom permissions that do groupings, for example requesting both **Read** and **Write** access to storage on Android. The following code example demonstrates requesting **Read** and **Write** storage access:
 
 :::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="permission_readwrite":::
 
@@ -191,13 +191,13 @@ This section describes the platform-specific differences with the permissions AP
 <!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
 
-Permissions must have the matching attributes set in the Android Manifest file. Permission status defaults to `Denied`.
+Permissions must have the matching attributes set in the Android Manifest file. Permission status defaults to <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Denied>.
 
 <!-- TODO For more information, see [Permissions in .NET MAUI for Android](../../android/app-fundamentals/permissions.md). -->
 
 # [iOS\macOS](#tab/ios)
 
-Permissions must have a matching string in the _Info.plist_ file. Once a permission is requested and denied, a pop-up will no longer appear if you request the permission a second time. You must prompt your user to manually adjust the setting in the applications settings screen in iOS. Permission status defaults to `Unknown`.
+Permissions must have a matching string in the _Info.plist_ file. Once a permission is requested and denied, a pop-up will no longer appear if you request the permission a second time. You must prompt your user to manually adjust the setting in the applications settings screen in iOS. Permission status defaults to <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Unknown>.
 
 <!-- TODO For more information, see [iOS Security and Privacy Features](../ios/app-fundamentals/security-privacy.md). -->
 
@@ -205,7 +205,7 @@ Permissions must have a matching string in the _Info.plist_ file. Once a permiss
 
 ::: moniker range="=net-maui-6.0"
 
-Permissions must have matching capabilities declared in the package manifest. Permission status defaults to `Unknown` in most instances.
+Permissions must have matching capabilities declared in the package manifest. Permission status defaults to <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Unknown> in most instances.
 
 <!-- TODO For more information, see [App Capability Declaration](/windows/uwp/packaging/app-capability-declarations). -->
 

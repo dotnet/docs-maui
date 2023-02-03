@@ -1,9 +1,9 @@
 ---
 ms.topic: include
-ms.date: 05/23/2022
+ms.date: 02/02/2023
 ---
 
-When requesting a share or opening launcher on iPadOS, you can present it in a popover. This specifies where the popover will appear and point an arrow directly to. This location is often the control that launched the action. You can specify the location using the `PresentationSourceBounds` property:
+When requesting a share or opening launcher on iPadOS, you can present it in a popover. This specifies where the popover will appear and point an arrow directly to. This location is often the control that launched the action. You can specify the location using the <xref:Microsoft.Maui.ApplicationModel.OpenFileRequest.PresentationSourceBounds> property:
 
 ```csharp
 await Share.RequestAsync(new ShareFileRequest
@@ -28,7 +28,7 @@ await Launcher.OpenAsync(new OpenFileRequest
 
 <!-- TODO: Is this stuff Apple specific? It seems generic. I know the previous section is because it references iOS, but that's done in this code -->
 
-Everything described here works equally for `Share` and `Launcher`.
+Everything described here works equally for <xref:Microsoft.Maui.ApplicationModel.DataTransfer.Share> and <xref:Microsoft.Maui.ApplicationModel.Launcher>.
 
 Here are some extension methods that help calculate the bounds of a view:
 
@@ -59,7 +59,7 @@ public static class ViewHelpers
 }
 ```
 
-This can then be used when calling `RequestAsync`:
+This can then be used when calling <xref:Microsoft.Maui.ApplicationModel.DataTransfer.IShare.RequestAsync%2A>:
 
 ```csharp
 public Command<Microsoft.Maui.Controls.View> ShareCommand { get; } = new Command<Microsoft.Maui.Controls.View>(Share);
