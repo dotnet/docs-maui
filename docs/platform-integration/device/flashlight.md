@@ -1,17 +1,15 @@
 ---
 title: "Flashlight"
 description: "Learn how to use the .NET MAUI IFlashlight interface in the Microsoft.Maui.Devices namespace. This interface provides the ability to turn on or off the device's camera flash, to emulate a flashlight."
-ms.date: 09/02/2022
+ms.date: 02/02/2023
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices"]
 ---
 
 # Flashlight
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IFlashlight` interface. With this interface, you can toggle the device's camera flash on and off, to emulate a flashlight.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Devices.IFlashlight> interface. With this interface, you can toggle the device's camera flash on and off, to emulate a flashlight.
 
-The default implementation of the `IFlashlight` interface is available through the `Flashlight.Default` property. Both the `IFlashlight` interface and `Flashlight` class are contained in the `Microsoft.Maui.Devices` namespace.
-
-The `` class is available in the `Microsoft.Maui.Devices` namespace.
+The default implementation of the `IFlashlight` interface is available through the <xref:Microsoft.Maui.Devices.Flashlight.Default?displayProperty=nameWithType> property. Both the `IFlashlight` interface and `Flashlight` class are contained in the `Microsoft.Maui.Devices` namespace.
 
 ## Get started
 
@@ -72,7 +70,7 @@ No setup is required.
 
 ## Use Flashlight
 
-The flashlight can be turned on and off through the `TurnOnAsync` and `TurnOffAsync` methods. The following code example ties the flashlight's on or off state to a <xref:Microsoft.Maui.Controls.Switch> control:
+The flashlight can be turned on and off through the <xref:Microsoft.Maui.Devices.IFlashlight.TurnOnAsync> and <xref:Microsoft.Maui.Devices.IFlashlight.TurnOffAsync> methods. The following code example ties the flashlight's on or off state to a <xref:Microsoft.Maui.Controls.Switch> control:
 
 :::code language="csharp" source="../snippets/shared_1/DeviceDetailsPage.xaml.cs" id="flashlight":::
 

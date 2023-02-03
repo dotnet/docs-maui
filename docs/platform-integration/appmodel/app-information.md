@@ -1,24 +1,24 @@
 ---
 title: "App Information"
 description: "Describes the IAppInfo interface in the Microsoft.Maui.ApplicationModel namespace, which provides information about your application. For example, it exposes the app name and version."
-ms.date: 09/02/2022
+ms.date: 02/02/2023
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel"]
 ---
 
 # App information
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IAppInfo` interface, which provides information about your application.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.ApplicationModel.IAppInfo> interface, which provides information about your application.
 
-The default implementation of the `IAppInfo` interface is available through the `AppInfo.Current` property. Both the `IAppInfo` interface and `AppInfo` class are contained in the `Microsoft.Maui.ApplicationModel` namespace.
+The default implementation of the `IAppInfo` interface is available through the <xref:Microsoft.Maui.ApplicationModel.AppInfo.Current?displayProperty=nameWithType> property. Both the `IAppInfo` interface and `AppInfo` class are contained in the `Microsoft.Maui.ApplicationModel` namespace.
 
 ## Read the app information
 
 There are four properties exposed by the `IAppInfo` interface:
 
-- `IAppInfo.Name` &mdash; The application name
-- `IAppInfo.PackageName` &mdash; The package name or application identifier, such as `com.microsoft.myapp`.
-- `IAppInfo.VersionString` &mdash; The application version, such as `1.0.0`.
-- `IAppInfo.BuildString` &mdash; The build number of the version, such as `1000`.
+- <xref:Microsoft.Maui.ApplicationModel.IAppInfo.Name> &mdash; The application name
+- <xref:Microsoft.Maui.ApplicationModel.IAppInfo.PackageName> &mdash; The package name or application identifier, such as `com.microsoft.myapp`.
+- <xref:Microsoft.Maui.ApplicationModel.IAppInfo.VersionString> &mdash; The application version, such as `1.0.0`.
+- <xref:Microsoft.Maui.ApplicationModel.IAppInfo.BuildString> &mdash; The build number of the version, such as `1000`.
 
 The following code example demonstrates accessing these properties:
 
@@ -26,11 +26,11 @@ The following code example demonstrates accessing these properties:
 
 ## Read the current theme
 
-The `RequestedTheme` property provides the current requested theme by the system for your application. One of the following values is returned:
+The <xref:Microsoft.Maui.ApplicationModel.IAppInfo.RequestedTheme> property provides the current requested theme by the system for your application. One of the following values is returned:
 
-- `Unspecified`
-- `Light`
-- `Dark`
+- <xref:Microsoft.Maui.ApplicationModel.AppTheme.Unspecified>
+- <xref:Microsoft.Maui.ApplicationModel.AppTheme.Light>
+- <xref:Microsoft.Maui.ApplicationModel.AppTheme.Dark>
 
 `Unspecified` is returned when the operating system doesn't have a specific user interface style. An example of this is on devices running versions of iOS older than 13.0.
 
@@ -40,7 +40,7 @@ The following code example demonstrates reading the theme:
 
 ## Display app settings
 
-The `IAppInfo` class can also display a page of settings maintained by the operating system for the application:
+The <xref:Microsoft.Maui.ApplicationModel.IAppInfo> class can also display a page of settings maintained by the operating system for the application:
 
 :::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="show_settings":::
 
@@ -48,7 +48,7 @@ This settings page allows the user to change application permissions and perform
 
 ## Platform implementation specifics
 
-This section describes platform-specific implementation details related to the `IAppInfo` interface.
+This section describes platform-specific implementation details related to the <xref:Microsoft.Maui.ApplicationModel.IAppInfo> interface.
 
 <!-- markdownlint-disable MD025 -->
 
@@ -56,10 +56,10 @@ This section describes platform-specific implementation details related to the `
 
 App information is taken from the _AndroidManifest.xml_ for the following fields:
 
-- **Build** &mdash; `android:versionCode` in `manifest` node
-- **Name** &mdash; `android:label` in the `application` node
-- **PackageName** &mdash; `package` in the `manifest` node
-- **VersionString** &mdash; `android:versionName` in the `manifest` node
+- <xref:Microsoft.Maui.ApplicationModel.IAppInfo.BuildString> &mdash; `android:versionCode` in `manifest` node
+- <xref:Microsoft.Maui.ApplicationModel.IAppInfo.Name> &mdash; `android:label` in the `application` node
+- <xref:Microsoft.Maui.ApplicationModel.IAppInfo.PackageName> &mdash; `package` in the `manifest` node
+- <xref:Microsoft.Maui.ApplicationModel.IAppInfo.VersionString> &mdash; `android:versionName` in the `manifest` node
 
 ### Requested theme
 
@@ -71,10 +71,10 @@ You can read more on the official [Android documentation for Dark Theme](https:/
 
 App information is taken from the _Info.plist_ for the following fields:
 
-- **Build** &mdash; `CFBundleVersion`
-- **Name** &mdash; `CFBundleDisplayName` if set, else `CFBundleName`
-- **PackageName** &mdash; `CFBundleIdentifier`
-- **VersionString** &mdash; `CFBundleShortVersionString`
+- <xref:Microsoft.Maui.ApplicationModel.IAppInfo.BuildString> &mdash; `CFBundleVersion`
+- <xref:Microsoft.Maui.ApplicationModel.IAppInfo.Name> &mdash; `CFBundleDisplayName` if set, else `CFBundleName`
+- <xref:Microsoft.Maui.ApplicationModel.IAppInfo.PackageName> &mdash; `CFBundleIdentifier`
+- <xref:Microsoft.Maui.ApplicationModel.IAppInfo.VersionString> &mdash; `CFBundleShortVersionString`
 
 ### Requested theme
 
@@ -84,10 +84,10 @@ _Unspecified_ is always returned on versions of iOS older than 13.0
 
 App information is taken from the _Package.appxmanifest_ for the following fields:
 
-- **Build** &mdash; Uses the `Build` from the `Version` on the `Identity` node
-- **Name** &mdash; `DisplayName` on the `Properties` node
-- **PackageName** &mdash; `Name` on the `Identity` node
-- **VersionString** &mdash; `Version` on the `Identity` node
+- <xref:Microsoft.Maui.ApplicationModel.IAppInfo.BuildString> &mdash; Uses the `Build` from the `Version` on the `Identity` node
+- <xref:Microsoft.Maui.ApplicationModel.IAppInfo.Name> &mdash; `DisplayName` on the `Properties` node
+- <xref:Microsoft.Maui.ApplicationModel.IAppInfo.PackageName> &mdash; `Name` on the `Identity` node
+- <xref:Microsoft.Maui.ApplicationModel.IAppInfo.VersionString> &mdash; `Version` on the `Identity` node
 
 ### Requested theme
 

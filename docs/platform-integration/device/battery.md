@@ -1,15 +1,15 @@
 ---
 title: "Battery"
 description: "Learn how to use the .NET MAUI IBattery interface in the Microsoft.Maui.Devices namespace. You can check the device's battery information and monitor for changes."
-ms.date: 09/02/2022
+ms.date: 02/02/2023
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices"]
 ---
 
 # Battery
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IBattery` interface to check the device's battery information and monitor for changes. This interface also provides information about the device's energy-saver status, which indicates if the device is running in a low-power mode.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Devices.IBattery> interface to check the device's battery information and monitor for changes. This interface also provides information about the device's energy-saver status, which indicates if the device is running in a low-power mode.
 
-The default implementation of the `IBattery` interface is available through the `Battery.Default` property. Both the `IBattery` interface and `Battery` class are contained in the `Microsoft.Maui.Devices` namespace.
+The default implementation of the `IBattery` interface is available through the <xref:Microsoft.Maui.Devices.Battery.Default?displayProperty=nameWithType> property. Both the `IBattery` interface and `Battery` class are contained in the `Microsoft.Maui.Devices` namespace.
 
 ## Get started
 
@@ -18,7 +18,7 @@ To access the **Battery** functionality the following platform-specific setup is
 <!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
 
-The `Battery` permission is required and must be configured in the Android project. You can configure the permission in the following ways:
+The `BatteryStats` permission is required and must be configured in the Android project. You can configure the permission in the following ways:
 
 - Add the assembly-based permission:
 
@@ -59,13 +59,11 @@ No setup is required.
 
 ## Check the battery status
 
-The battery status can be checked by accessing the `Battery.Default` property, which is the default implementation of the `IBattery` interface. This interface defines various properties to provide information about the state of the battery. The `BatteryInfoChanged` event is also available, and is raised when the state of the battery changed.
+The battery status can be checked by accessing the `Battery.Default` property, which is the default implementation of the `IBattery` interface. This interface defines various properties to provide information about the state of the battery, such as <xref:Microsoft.Maui.Devices.IBattery.ChargeLevel> to read how much battery is left. The `ChargeLevel` property returns a value between **0.0** and **1.0**, indicating the battery's charge level from empty to full, respectively.
 
-The following example demonstrates how to use the monitor the `BatteryInfoChanged` event and report the battery status two <xref:Microsoft.Maui.Controls.Label> controls:
+The <xref:Microsoft.Maui.Devices.IBattery.BatteryInfoChanged> event is also available, and is raised when the state of the battery changed. The following example demonstrates how to use the monitor the `BatteryInfoChanged` event and report the battery status two <xref:Microsoft.Maui.Controls.Label> controls:
 
 :::code language="csharp" source="../snippets/shared_1/BatteryTestPage.xaml.cs" id="watch_battery":::
-
-The `ChargeLevel` property returns a value between **0.0** and **1.0**, indicating the battery's charge level from empty to full, respectively.
 
 ## Low-power energy-saver mode
 
@@ -74,9 +72,9 @@ Devices that run on batteries can be put into a low-power energy-saver mode. Som
 > [!IMPORTANT]
 > Applications should avoid background processing if the device's energy-saver status is on.
 
-The energy-saver status of the device can be read by accessing the `EnergySaverStatus` property, which is either `On`, `Off`, or `Unknown`. If the status is `On`, the application should avoid background processing or other activities that may consume a lot of power.
+The energy-saver status of the device can be read by accessing the <xref:Microsoft.Maui.Devices.IBattery.EnergySaverStatus> property, which is either <xref:Microsoft.Maui.Devices.EnergySaverStatus.On>, <xref:Microsoft.Maui.Devices.EnergySaverStatus.Off>, or <xref:Microsoft.Maui.Devices.EnergySaverStatus.Unknown>. If the status is `On`, the application should avoid background processing or other activities that may consume a lot of power.
 
-The battery will raise the `EnergySaverStatusChanged` event when the battery enters or leaves energy-saver mode.
+The battery will raise the <xref:Microsoft.Maui.Devices.IBattery.EnergySaverStatusChanged> event when the battery enters or leaves energy-saver mode.
 You can also obtain the current energy-saver status of the device using the `EnergySaverStatus` property:
 
 The following code example monitors the energy-saver status and sets a property accordingly.
@@ -85,7 +83,7 @@ The following code example monitors the energy-saver status and sets a property 
 
 ## Power source
 
-The `PowerSource` property returns a `BatteryPowerSource` enumeration that indicates how the device is being charged, if at all. If it's not being charged, the status will be `Battery`. The `AC`, `Usb`, and `Wireless` values indicate that the battery is being charged.
+The <xref:Microsoft.Maui.Devices.IBattery.PowerSource> property returns a <xref:Microsoft.Maui.Devices.BatteryPowerSource> enumeration that indicates how the device is being charged, if at all. If it's not being charged, the status will be <xref:Microsoft.Maui.Devices.BatteryPowerSource.Battery?displayProperty=nameWithType>. The <xref:Microsoft.Maui.Devices.BatteryPowerSource.AC?displayProperty=nameWithType>, <xref:Microsoft.Maui.Devices.BatteryPowerSource.Usb?displayProperty=nameWithType>, and<xref:Microsoft.Maui.Devices.BatteryPowerSource.Wireless?displayProperty=nameWithType> values indicate that the battery is being charged.
 
 The following code example sets the text of a <xref:Microsoft.Maui.Controls.Label> control based on power source.
 
@@ -105,11 +103,11 @@ No platform differences.
 # [iOS\macOS](#tab/ios)
 
 - APIs won't work in a simulator and you must use a real device.
-- Only returns `AC` or `Battery` for `PowerSource`.
+- Only returns <xref:Microsoft.Maui.Devices.BatteryPowerSource.AC?displayProperty=nameWithType> or <xref:Microsoft.Maui.Devices.BatteryPowerSource.Battery?displayProperty=nameWithType> for <xref:Microsoft.Maui.Devices.IBattery.PowerSource>.
 
 # [Windows](#tab/windows)
 
-- Only returns `AC` or `Battery` for `PowerSource`.
+- Only returns <xref:Microsoft.Maui.Devices.BatteryPowerSource.AC?displayProperty=nameWithType> or <xref:Microsoft.Maui.Devices.BatteryPowerSource.Battery?displayProperty=nameWithType> for <xref:Microsoft.Maui.Devices.IBattery.PowerSource>.
 
 -----
 
