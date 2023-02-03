@@ -71,7 +71,7 @@ Default .NET for Android related file globbing behavior is defined in `AutoImpor
 
 There are behavioral changes to the `String.IndexOf()` method in .NET 5+ on different platforms. For more information, see [.NET globalization and ICU](/dotnet/standard/globalization-localization/globalization-icu).
 
-## Linker (ILLink)
+## Linker
 
 .NET 5+ has new settings for the linker:
 

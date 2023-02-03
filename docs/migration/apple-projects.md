@@ -22,7 +22,7 @@ A .NET 7 project for a .NET for iOS app is similar to the following example:
 
 For a library project, omit the `$(OutputType)` property completely or specify `Library` as the property value.
 
-## Properties
+## Changes to MSBuild properties
 
 The following table shows how to map properties in Xamarin Apple projects to .NET projects:
 
@@ -45,15 +45,7 @@ The following table shows how to map properties in Xamarin Apple projects to .NE
 | `MtouchEnableSGenConc` | | | Rename to `EnableSGenConc`. |
 | `EnableSGenConc` | | | Copy |
 
-## Items
-
-The following table shows how to map items in Xamarin Apple projects to .NET projects:
-
-| Item | Description | .NET | Project conversion |
-| -----| ----------- | ---- | ------------------ |
-| `LinkDescription` | Additional XML files to the managed linker. | Identical | Copy |
-
-## Convert to RuntimeIdentifier
+### Convert to RuntimeIdentifier
 
 The following table shows how to convert the `MtouchArch` and `XamMacArch` properties to the `RuntimeIdentifier` property when migrating a Xamarin.iOS project to .NET for iOS:
 
@@ -84,7 +76,7 @@ The following table shows how to convert the `MtouchArch` and `XamMacArch` prope
 
 For more information about the `RuntimeIdentifier` property, see [RuntimeIdentifier](/dotnet/core/project-sdk/msbuild-props#runtimeidentifier). For more information about runtime identifiers, see [.NET RID Catalog](/dotnet/core/rid-catalog).
 
-## Convert to UseNativeHttpHandler
+### Convert to UseNativeHttpHandler
 
 The following table shows how to convert the `HttpClientHandler` and `MtouchHttpClientHandler` properties to the `UseNativeHttpHandler` property when migrating a Xamarin Apple project to .NET 6+:
 
@@ -94,11 +86,19 @@ The following table shows how to convert the `HttpClientHandler` and `MtouchHttp
 | NSUrlSessionHandler | *don't set* |
 | CFNetworkHandler | *don't set* |
 
-## Info.plist
+## Changes to other items
+
+The following table shows how to map other items in Xamarin Apple projects to .NET projects:
+
+| Item | Description | .NET | Project conversion |
+| -----| ----------- | ---- | ------------------ |
+| `LinkDescription` | Additional XML files to the managed linker. | Identical | Copy |
+
+## Changes to Info.plist
 
 Some values have moved from **Info.plist** to the project file.
 
-## MinimumOSVersion and LSMinimumSystemVersion
+### MinimumOSVersion and LSMinimumSystemVersion
 
 The `MinimumOSVersion` and `LSMinimumSystemVersion` properties should be converted to the `SupportedOSPlatformVersion` project in .NET 6+ projects. For more information, see [Ensure MinimumOSVersion is consistent with SupportedOSPlatformVersion](https://github.com/xamarin/xamarin-macios/issues/12336).
 
