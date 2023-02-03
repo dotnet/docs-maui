@@ -53,7 +53,7 @@ The share functionality works by calling the <xref:Microsoft.Maui.ApplicationMod
 
 You can also share files to other applications on the device. .NET MAUI automatically detects the file type (MIME) and requests a share. However, operating systems may restrict which types of files can be shared. To share a single file, use the <xref:Microsoft.Maui.ApplicationModel.DataTransfer.ShareFileRequest> type.
 
-The following code example writes a text file to the device, and then requests to share them:
+The following code example writes a text file to the device, and then requests to share it:
 
 :::code language="csharp" source="../snippets/shared_1/DataPage.xaml.cs" id="share_file":::
 

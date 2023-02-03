@@ -61,7 +61,7 @@ No setup is required.
 
 The battery status can be checked by accessing the `Battery.Default` property, which is the default implementation of the `IBattery` interface. This interface defines various properties to provide information about the state of the battery, such as <xref:Microsoft.Maui.Devices.IBattery.ChargeLevel> to read how much battery is left. The `ChargeLevel` property returns a value between **0.0** and **1.0**, indicating the battery's charge level from empty to full, respectively.
 
-The <xref:Microsoft.Maui.Devices.IBattery.BatteryInfoChanged> event is also available, and is raised when the state of the battery changed. The following example demonstrates how to use the monitor the `BatteryInfoChanged` event and report the battery status two <xref:Microsoft.Maui.Controls.Label> controls:
+The <xref:Microsoft.Maui.Devices.IBattery.BatteryInfoChanged> event is also available, and is raised when the state of the battery changes. The following example demonstrates how to use the monitor the `BatteryInfoChanged` event and report the battery status to <xref:Microsoft.Maui.Controls.Label> controls:
 
 :::code language="csharp" source="../snippets/shared_1/BatteryTestPage.xaml.cs" id="watch_battery":::
 
