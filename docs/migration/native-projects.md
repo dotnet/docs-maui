@@ -1,12 +1,12 @@
 ---
-title: "Update Xamarin.Android, Xamarin.iOS, and Xamarin.Mac apps to .NET"
-description: "Learn how to manually update Xamarin project files to .NET."
+title: "Update Xamarin.Android, Xamarin.iOS, and Xamarin.Mac projects to .NET"
+description: "Learn how to manually update Xamarin native project files to .NET."
 ms.date: 1/31/2023
 ---
 
-# Update Xamarin.Android, Xamarin.iOS, and Xamarin.Mac apps to .NET
+# Update Xamarin.Android, Xamarin.iOS, and Xamarin.Mac projects to .NET
 
-To update your Xamarin native app to .NET, you must:
+To update your Xamarin native projects to .NET, you must:
 
 > [!div class="checklist"]
 >
@@ -16,11 +16,11 @@ To update your Xamarin native app to .NET, you must:
 
 For most apps, you won't need to change namespaces or undertake other rewrites.
 
-To simplify the update process, we recommend creating a new .NET project of the same type and name as your Xamarin project, and then copying in your code. This is the approach outlined below.
+To simplify the update process, we recommend creating a new .NET project of the same type and name as your Xamarin native project, and then copying in your code. This is the approach outlined below.
 
 ## Create a new project
 
-In Visual Studio, create a new .NET project of the same type and name as your Xamarin project. For example, to update from Xamarin.Android to .NET for Android select the **Android Application** project template:
+In Visual Studio, create a new .NET project of the same type and name as your Xamarin native project. For example, to update from Xamarin.Android to .NET for Android select the **Android Application** project template:
 
 :::image type="content" source="media/new-android-app.png" alt-text="Screenshot of selecting the Android app project template in Visual Studio.":::
 
@@ -52,13 +52,13 @@ Copy your code and resource files from the folders of your Xamarin native app to
 
 If you have other library projects, you should add them to your new solution and [add project references](/visualstudio/ide/managing-references-in-a-project) to them from your new .NET project.
 
-Eventually, you'll need to copy the project properties from your Xamarin native project to your new .NET app, for settings like conditional compilation arguments and code signing. Opening the projects side-by-side in separate Visual Studio instances will enable you to compare the project properties. Alternatively, you can migrate the settings by editing the new project file directly. For more information, see [Xamarin.Android project migration](android-projects.md) and [Xamarin Apple project migration](apple-projects.md).
+You'll also need to copy some project properties from your Xamarin native project to your new .NET project, for settings like conditional compilation arguments and code signing. Opening the projects side-by-side in separate Visual Studio instances will enable you to compare the project properties. Alternatively, you can migrate the settings by editing the new project file directly. For more information, see [Xamarin.Android project migration](android-projects.md) and [Xamarin Apple project migration](apple-projects.md).
 
 ## Update dependencies
 
 Xamarin native NuGet packages are not compatible with .NET 6+ unless they have been recompiled using .NET TFMs. You can confirm a package is .NET 6 compatible by looking at the **Frameworks** tab on [NuGet](https://www.nuget.org) for the package you are using.
 
-Some NuGet packages may include both .NET TFMs and Mono\* or Xamarin.\* frameworks. This is acceptable, because provided that the NuGet package includes the .NET TFMs you are targeting the package is compatible.
+Some NuGet packages may include .NET TFMs and Mono\* or Xamarin.\* frameworks. This is acceptable, because provided that the NuGet package includes the .NET TFMs you are targeting the package is compatible.
 
 Compatible NuGet packages can be added to your .NET native project using the NuGet package manager in Visual Studio.
 
