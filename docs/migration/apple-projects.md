@@ -28,9 +28,9 @@ The following table shows how to map properties in Xamarin Apple projects to .NE
 
 | Property | Description | .NET | Project conversion |
 | -------- | ----------- | ---- | ------------------ |
-| `MtouchExtraArgs | Additional arguments to mtouch. | Some arguments are still applicable, some arguments are not. | Copy |
-| `MtouchArch | App architecture(s). | N/A | Convert to `RuntimeIdentifier`. For more information, see [Convert to RuntimeIdentifier](#convert-to-runtimeidentifier). |
-| `XamMacArch | App architecture(s). | N/A | Convert to `RuntimeIdentifier`. For more information, see [Convert to RuntimeIdentifier](#convert-to-runtimeidentifier). |
+| `MtouchExtraArgs` | Additional arguments to mtouch. | Some arguments are still applicable, some arguments are not. | Copy |
+| `MtouchArch` | App architecture(s). | N/A | Convert to `RuntimeIdentifier`. For more information, see [Convert to RuntimeIdentifier](#convert-to-runtimeidentifier). |
+| `XamMacArch` | App architecture(s). | N/A | Convert to `RuntimeIdentifier`. For more information, see [Convert to RuntimeIdentifier](#convert-to-runtimeidentifier). |
 | `HttpClientHandler` | The default `HttpClientHandler`. | `UseNativeHttpHandler` | Convert to `UseNativeHttpHandler`. For more information, see [Convert to UseNativeHttpHandler](#convert-to-usenativehttphandler). |
 | `MtouchHttpClientHandler` | The default `MtouchHttpClientHandler.` | `UseNativeHttpHandler` | Convert to `UseNativeHttpHandler`. For more information, see [Convert to UseNativeHttpHandler](#convert-to-usenativehttphandler). |
 | `EnableCodeSigning` | If code signing is enabled. | | Copy |
