@@ -10,7 +10,7 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices", "Microsoft.Maui.Devices.Sen
 
 # Accessing device sensors
 
-Devices have all sorts of sensors that are available to you. Some sensors can detect movement, others changes in the environment, such as light. Monitoring and reacting to these sensors makes your app dynamic in adapting to how the device is being used. You can also respond to changes in the sensors and alert the user. This article gives you a brief overview of the common sensors supported by .NET Multi-User Application (.NET MAUI).
+Devices have all sorts of sensors that are available to you. Some sensors can detect movement, others changes in the environment, such as light. Monitoring and reacting to these sensors makes your app dynamic in adapting to how the device is being used. You can also respond to changes in the sensors and alert the user. This article gives you a brief overview of the common sensors supported by .NET Multi-platform App UI (.NET MAUI).
 
 Device sensor-related types are available in the `Microsoft.Maui.Devices.Sensors` namespace.
 
@@ -59,7 +59,7 @@ Examples:
 
 - When the device lies flat on a table and is pushed on its left side toward the right, the **X** acceleration value is positive.
 
-- When the device lies flat on a table, the acceleration value is +1.00 G or $(+9.81 m/s^2)$, which correspond to the acceleration of the device $(0 m/s^2)$ minus the force of gravity $(-9.81 m/s^2)$ and normalized as in G.
+- When the device lies flat on a table, the acceleration value is +1.00 G or $(+9.81 m/s^2)$, which corresponds to the acceleration of the device $(0 m/s^2)$ minus the force of gravity $(-9.81 m/s^2)$ and normalized as in G.
 
 <!-- TODO: Why are A and G mentioned here as if they're XYZ properties from the data? -->
 - When the device lies flat on a table and is pushed toward the sky with an acceleration of **A** $m/s^2$, the acceleration value is equal to $A+9.81$ which corresponds to the acceleration of the device $(+A m/s^2)$ minus the force of gravity $(-9.81 m/s^2)$ and normalized in **G**.
