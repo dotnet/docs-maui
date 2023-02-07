@@ -238,7 +238,7 @@ The `Quaternion` describes the rotation of the device's coordinate system relati
 
 A `Quaternion` value is closely related to rotation around an axis. If an axis of rotation is the normalized vector ($a_x, a_y, a_z$), and the rotation angle is $\theta$, then the (X, Y, Z, W) components of the quaternion are:
 
-$(a_x \times \sin(\theta/2), a_y \times \sin(\theta/2), a_z \times \sin(\theta/2), \cos(\theta/2)$
+$(a_x \times \sin(\theta/2), a_y \times \sin(\theta/2), a_z \times \sin(\theta/2), \cos(\theta/2))$
 
 These are right-hand coordinate systems, so with the thumb of the right hand pointed in the positive direction of the rotation axis, the curve of the fingers indicate the direction of rotation for positive angles.
 
