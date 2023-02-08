@@ -22,7 +22,7 @@ The `BatteryStats` permission is required and must be configured in the Android 
 
 - Add the assembly-based permission:
 
-  Open the _AssemblyInfo.cs_ file under the **Properties** folder and add:
+  Open the _Platforms/Android/MainApplication.cs_ file and add the following assembly attribute after `using` directives:
 
   ```csharp
   [assembly: UsesPermission(Android.Manifest.Permission.BatteryStats)]
@@ -32,7 +32,7 @@ The `BatteryStats` permission is required and must be configured in the Android 
 
 - Update the Android Manifest:
 
-  In **Solution Explorer**, open the _AndroidManifest.xml_ file. This file is typically located in the **Your-project** > **Platforms** > **Android** folder. Add the following node as a child to the `<manifest>` node:
+    Open the _Platforms/Android/AndroidManifest.xml_ file and add the following in the `manifest` node:
 
   ```xml
   <uses-permission android:name="android.permission.BATTERY_STATS" />
