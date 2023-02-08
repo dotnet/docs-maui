@@ -22,7 +22,7 @@ The `Vibrate` permission is required and must be configured in the Android proje
 
 - Add the assembly-based permission:
 
-  Open the _AssemblyInfo.cs_ file under the **Properties** folder and add:
+    Open the _Platforms/Android/MainApplication.cs_ file and add the following assembly attributes after `using` directives:
 
   ```csharp
   [assembly: UsesPermission(Android.Manifest.Permission.Vibrate)]
@@ -32,8 +32,7 @@ The `Vibrate` permission is required and must be configured in the Android proje
 
 - Update the Android Manifest:
 
-  Open the _AndroidManifest.xml_ file under the **Properties** folder and add the following in the `manifest` node:
-
+  Open the _Platforms/Android/AndroidManifest.xml_ file and add the following in the `manifest` node:
   ```xml
   <uses-permission android:name="android.permission.VIBRATE" />
   ```
