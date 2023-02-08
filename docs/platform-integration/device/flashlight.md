@@ -50,7 +50,7 @@ There are two permissions to configure in your project: `Flashlight` and `Camera
 
 -->
 
-If you set these permissions, [Google Play will automatically filter out devices](https://developer.android.com/guide/topics/manifest/uses-feature-element.html#permissions-features) without specific hardware. You can get around this filtering by adding the following to the _Platforms/Android/MainApplication.cs_ file in your Android project:
+If you set these permissions, [Google Play will automatically filter out devices](https://developer.android.com/guide/topics/manifest/uses-feature-element.html#permissions-features) without specific hardware. You can get around this filtering by adding the following assembly attributes to the _Platforms/Android/MainApplication.cs_ file after `using` directives:
 
 ```csharp
 [assembly: UsesFeature("android.hardware.camera", Required = false)]
