@@ -36,7 +36,7 @@ The `ReadContacts` permission is required and must be configured in the Android 
 
 - Add the assembly-based permission:
 
-  Open the _Platforms/Android/MainApplication.cs_ file and add the following assembly attribute after `using` directives:
+  Open the _Platforms/Android/MainApplication.cs_ file and add the following assembly attribute after `using` directives: 
 
   ```csharp
   [assembly: UsesPermission(Android.Manifest.Permission.ReadContacts)]
