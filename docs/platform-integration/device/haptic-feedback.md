@@ -33,6 +33,7 @@ The `Vibrate` permission is required and must be configured in the Android proje
 - Update the Android Manifest:
 
   Open the _Platforms/Android/AndroidManifest.xml_ file and add the following in the `manifest` node:
+  
   ```xml
   <uses-permission android:name="android.permission.VIBRATE" />
   ```
