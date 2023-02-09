@@ -22,7 +22,7 @@ An optional `ImageFormat` argument can be specified when loading and saving imag
 
 ## Load an image
 
-Image loading functionality is provided by the `GraphicsService` class. Images can be loaded from a stream by the `LoadFromStream` method, or from a byte array using the `LoadImageFromBytes` method.
+Image loading functionality is provided by the `PlatformImage` class. Images can be loaded from a stream by the `FromStream` method, or from a byte array using the `PlatformImage` constructor.
 
 The following example shows how to load an image:
 
