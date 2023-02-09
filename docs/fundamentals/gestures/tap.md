@@ -12,7 +12,7 @@ A .NET Multi-platform App UI (.NET MAUI) tap gesture recognizer is used for tap 
 
 - `Command`, of type `ICommand`, which is executed when a tap is recognized.
 - `CommandParameter`, of type `object`, which is the parameter that's passed to the `Command`.
-- `NumberOfTapsRequired`, of type `int`, which represents the number of taps required to recognize a tap gesture. The default value of this property is 1.
+- <xref:Microsoft.Maui.Controls.TapGestureRecognizer.NumberOfTapsRequired>, of type `int`, which represents the number of taps required to recognize a tap gesture. The default value of this property is 1.
 
 ::: moniker-end
 
@@ -21,18 +21,18 @@ A .NET Multi-platform App UI (.NET MAUI) tap gesture recognizer is used for tap 
 - `Buttons`, of type `ButtonsMask`, which defines whether the primary or secondary mouse button, or both, triggers the gesture on Mac Catalyst and Windows. For more information, see [Define the button masks](#define-the-button-mask).
 - `Command`, of type `ICommand`, which is executed when a tap is recognized.
 - `CommandParameter`, of type `object`, which is the parameter that's passed to the `Command`.
-- `NumberOfTapsRequired`, of type `int`, which represents the number of taps required to recognize a tap gesture. The default value of this property is 1.
+- <xref:Microsoft.Maui.Controls.TapGestureRecognizer.NumberOfTapsRequired>, of type `int`, which represents the number of taps required to recognize a tap gesture. The default value of this property is 1.
 
 ::: moniker-end
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 ::: moniker range="=net-maui-6.0"
-The <xref:Microsoft.Maui.Controls.TapGestureRecognizer> class also defines a `Tapped` event that's raised when a tap is recognized. The <xref:Microsoft.Maui.Controls.TappedEventArgs> object that accompanies the `Tapped` event defines a `Parameter` property of type `object` that indicates the value passed by the `CommandParameter` property, if defined.
+The <xref:Microsoft.Maui.Controls.TapGestureRecognizer> class also defines a <xref:Microsoft.Maui.Controls.TapGestureRecognizer.Tapped> event that's raised when a tap is recognized. The <xref:Microsoft.Maui.Controls.TappedEventArgs> object that accompanies the <xref:Microsoft.Maui.Controls.TapGestureRecognizer.Tapped> event defines a `Parameter` property of type `object` that indicates the value passed by the `CommandParameter` property, if defined.
 ::: moniker-end
 
 ::: moniker range=">=net-maui-7.0"
-The <xref:Microsoft.Maui.Controls.TapGestureRecognizer> class also defines a `Tapped` event that's raised when a tap is recognized. The <xref:Microsoft.Maui.Controls.TappedEventArgs> object that accompanies the `Tapped` event defines a `Parameter` property of type `object` that indicates the value passed by the `CommandParameter` property, if defined. The <xref:Microsoft.Maui.Controls.TappedEventArgs> object also defines a `Buttons` property, and a `GetPosition` method. The `Buttons` property is of type `ButtonsMask`, and can be used to determine whether the primary or secondary mouse button triggered the gesture recognizer on Mac Catalyst and Windows. The `GetPosition` method returns a `Point?` object that represents the position at which the tap gesture was detected. For more information about button masks, see [Define the button mask](#define-the-button-mask). For more information about the `GetPosition` method, see [Get the gesture position](#get-the-gesture-position).
+The <xref:Microsoft.Maui.Controls.TapGestureRecognizer> class also defines a <xref:Microsoft.Maui.Controls.TapGestureRecognizer.Tapped> event that's raised when a tap is recognized. The <xref:Microsoft.Maui.Controls.TappedEventArgs> object that accompanies the <xref:Microsoft.Maui.Controls.TapGestureRecognizer.Tapped> event defines a `Parameter` property of type `object` that indicates the value passed by the `CommandParameter` property, if defined. The <xref:Microsoft.Maui.Controls.TappedEventArgs> object also defines a `Buttons` property, and a `GetPosition` method. The `Buttons` property is of type `ButtonsMask`, and can be used to determine whether the primary or secondary mouse button triggered the gesture recognizer on Mac Catalyst and Windows. The `GetPosition` method returns a `Point?` object that represents the position at which the tap gesture was detected. For more information about button masks, see [Define the button mask](#define-the-button-mask). For more information about the `GetPosition` method, see [Get the gesture position](#get-the-gesture-position).
 ::: moniker-end
 
 > [!WARNING]
@@ -40,7 +40,7 @@ The <xref:Microsoft.Maui.Controls.TapGestureRecognizer> class also defines a `Ta
 
 ## Create a TapGestureRecognizer
 
-To make a <xref:Microsoft.Maui.Controls.View> recognize a tap gesture, create a <xref:Microsoft.Maui.Controls.TapGestureRecognizer> object, handle the `Tapped` event, and add the new gesture recognizer to the `GestureRecognizers` collection on the view. The following code example shows a <xref:Microsoft.Maui.Controls.TapGestureRecognizer> attached to an <xref:Microsoft.Maui.Controls.Image>:
+To make a <xref:Microsoft.Maui.Controls.View> recognize a tap gesture, create a <xref:Microsoft.Maui.Controls.TapGestureRecognizer> object, handle the <xref:Microsoft.Maui.Controls.TapGestureRecognizer.Tapped> event, and add the new gesture recognizer to the `GestureRecognizers` collection on the view. The following code example shows a <xref:Microsoft.Maui.Controls.TapGestureRecognizer> attached to an <xref:Microsoft.Maui.Controls.Image>:
 
 ```xaml
 <Image Source="dotnet_bot.png">
@@ -72,7 +72,7 @@ Image image = new Image();
 image.GestureRecognizers.Add(tapGestureRecognizer);
 ```
 
-By default the <xref:Microsoft.Maui.Controls.Image> will respond to single taps. When the `NumberOfTapsRequired` property is set to greater than one, the event handler will only be executed if the taps occur within a set period of time. If the second (or subsequent) taps don't occur within that period, they're effectively ignored.
+By default the <xref:Microsoft.Maui.Controls.Image> will respond to single taps. When the <xref:Microsoft.Maui.Controls.TapGestureRecognizer.NumberOfTapsRequired> property is set to greater than one, the event handler will only be executed if the taps occur within a set period of time. If the second (or subsequent) taps don't occur within that period, they're effectively ignored.
 
 ::: moniker range=">=net-maui-7.0"
 
@@ -94,7 +94,7 @@ The following example shows a <xref:Microsoft.Maui.Controls.TapGestureRecognizer
 </Image>
 ```
 
-The event handler for the `Tapped` event can determine which button triggered the gesture:
+The event handler for the <xref:Microsoft.Maui.Controls.TapGestureRecognizer.Tapped> event can determine which button triggered the gesture:
 
 ```csharp
 void OnTapGestureRecognizerTapped(object sender, TappedEventArgs args)
@@ -127,7 +127,7 @@ image.GestureRecognizers.Add(tapGestureRecognizer);
 ```
 
 > [!WARNING]
-> On Windows, a <xref:Microsoft.Maui.Controls.TapGestureRecognizer> that sets the `Buttons` property to `Secondary` doesn't respect the `NumberOfTapsRequired` property when it's greater than one.
+> On Windows, a <xref:Microsoft.Maui.Controls.TapGestureRecognizer> that sets the `Buttons` property to `Secondary` doesn't respect the <xref:Microsoft.Maui.Controls.TapGestureRecognizer.NumberOfTapsRequired> property when it's greater than one.
 
 In addition, a <xref:Microsoft.Maui.Controls.TapGestureRecognizer> can be defined so that either the primary or secondary mouse button triggers the gesture:
 
