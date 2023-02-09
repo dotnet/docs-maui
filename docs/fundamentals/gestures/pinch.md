@@ -12,7 +12,7 @@ In .NET MAUI, pinch gesture recognition is provided by the <xref:Microsoft.Maui.
 
 - <xref:Microsoft.Maui.Controls.PinchGestureUpdatedEventArgs.Scale>, of type `double`, which indicates the relative size of the pinch gesture since the last update was received.
 - <xref:Microsoft.Maui.Controls.PinchGestureUpdatedEventArgs.ScaleOrigin>, of type `Point`, which indicates the updated origin of the pinch's gesture.
-- <xref:Microsoft.Maui.Controls.PinchGestureUpdatedEventArgs.Status>, of type <xref:Microsoft.Maui.Controls.PinchGestureRecognizer.GestureStatus>, which indicates if the event has been raised for a newly started gesture, a running gesture, a completed gesture, or a canceled gesture.
+- <xref:Microsoft.Maui.Controls.PinchGestureUpdatedEventArgs.Status>, of type <xref:Microsoft.Maui.GestureStatus>, which indicates if the event has been raised for a newly started gesture, a running gesture, a completed gesture, or a canceled gesture.
 
 ## Create a PinchGestureRecognizer
 
