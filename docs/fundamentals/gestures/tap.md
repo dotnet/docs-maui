@@ -28,11 +28,11 @@ A .NET Multi-platform App UI (.NET MAUI) tap gesture recognizer is used for tap 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 ::: moniker range="=net-maui-6.0"
-The <xref:Microsoft.Maui.Controls.TapGestureRecognizer> class also defines a `Tapped` event that's raised when a tap is recognized. The `TappedEventArgs` object that accompanies the `Tapped` event defines a `Parameter` property of type `object` that indicates the value passed by the `CommandParameter` property, if defined.
+The <xref:Microsoft.Maui.Controls.TapGestureRecognizer> class also defines a `Tapped` event that's raised when a tap is recognized. The <xref:Microsoft.Maui.Controls.TappedEventArgs> object that accompanies the `Tapped` event defines a `Parameter` property of type `object` that indicates the value passed by the `CommandParameter` property, if defined.
 ::: moniker-end
 
 ::: moniker range=">=net-maui-7.0"
-The <xref:Microsoft.Maui.Controls.TapGestureRecognizer> class also defines a `Tapped` event that's raised when a tap is recognized. The `TappedEventArgs` object that accompanies the `Tapped` event defines a `Parameter` property of type `object` that indicates the value passed by the `CommandParameter` property, if defined. The `TappedEventArgs` object also defines a `Buttons` property, and a `GetPosition` method. The `Buttons` property is of type `ButtonsMask`, and can be used to determine whether the primary or secondary mouse button triggered the gesture recognizer on Mac Catalyst and Windows. The `GetPosition` method returns a `Point?` object that represents the position at which the tap gesture was detected. For more information about button masks, see [Define the button mask](#define-the-button-mask). For more information about the `GetPosition` method, see [Get the gesture position](#get-the-gesture-position).
+The <xref:Microsoft.Maui.Controls.TapGestureRecognizer> class also defines a `Tapped` event that's raised when a tap is recognized. The <xref:Microsoft.Maui.Controls.TappedEventArgs> object that accompanies the `Tapped` event defines a `Parameter` property of type `object` that indicates the value passed by the `CommandParameter` property, if defined. The <xref:Microsoft.Maui.Controls.TappedEventArgs> object also defines a `Buttons` property, and a `GetPosition` method. The `Buttons` property is of type `ButtonsMask`, and can be used to determine whether the primary or secondary mouse button triggered the gesture recognizer on Mac Catalyst and Windows. The `GetPosition` method returns a `Point?` object that represents the position at which the tap gesture was detected. For more information about button masks, see [Define the button mask](#define-the-button-mask). For more information about the `GetPosition` method, see [Get the gesture position](#get-the-gesture-position).
 ::: moniker-end
 
 > [!WARNING]
@@ -147,7 +147,7 @@ TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer
 
 ## Get the gesture position
 
-The position at which a tap gesture occurred can be obtained by calling the `GetPosition` method on a `TappedEventArgs` object. The `GetPosition` method accepts an `Element?` argument, and returns a position as a `Point?` object:
+The position at which a tap gesture occurred can be obtained by calling the `GetPosition` method on a <xref:Microsoft.Maui.Controls.TappedEventArgs> object. The `GetPosition` method accepts an `Element?` argument, and returns a position as a `Point?` object:
 
 ```csharp
 void OnTapGestureRecognizerTapped(object sender, TappedEventArgs e)
