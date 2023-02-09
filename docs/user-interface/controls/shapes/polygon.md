@@ -23,7 +23,7 @@ For more information about the `FillRule` enumeration, see [Fill rules](fillrule
 
 ## Create a Polygon
 
-To draw a polygon, create a <xref:Microsoft.Maui.Controls.Shapes.Polygon> object and set its `Points` property to the vertices of a shape. A line is automatically drawn that connects the first and last points. To paint the inside of the polygon, set its `Fill` property to a <xref:Microsoft.Maui.Controls.Brush>-derived object. To give the polygon an outline, set its `Stroke` property to a <xref:Microsoft.Maui.Controls.Brush>-derived object. The `StrokeThickness` property specifies the thickness of the polygon outline. For more information about <xref:Microsoft.Maui.Controls.Brush> objects, see [Brushes](~/user-interface/brushes/index.md).
+To draw a polygon, create a <xref:Microsoft.Maui.Controls.Shapes.Polygon> object and set its `Points` property to the vertices of a shape. A line is automatically drawn that connects the first and last points. To paint the inside of the polygon, set its <xref:Microsoft.Maui.Controls.Shapes.Shape.Fill> property to a <xref:Microsoft.Maui.Controls.Brush>-derived object. To give the polygon an outline, set its <xref:Microsoft.Maui.Controls.Shapes.Shape.Stroke> property to a <xref:Microsoft.Maui.Controls.Brush>-derived object. The <xref:Microsoft.Maui.Controls.Shapes.Shape.StrokeThickness> property specifies the thickness of the polygon outline. For more information about <xref:Microsoft.Maui.Controls.Brush> objects, see [Brushes](~/user-interface/brushes/index.md).
 
 The following XAML example shows how to draw a filled polygon:
 

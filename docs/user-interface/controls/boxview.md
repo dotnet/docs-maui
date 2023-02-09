@@ -20,7 +20,7 @@ These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> o
 
 ## Create a BoxView
 
-To draw a rectangle or square, create a <xref:Microsoft.Maui.Controls.BoxView> object and set its `Color`, `WidthRequest`, and `HeightRequest` properties. Optionally, you can also set its `CornerRadius` property.
+To draw a rectangle or square, create a <xref:Microsoft.Maui.Controls.BoxView> object and set its `Color`, <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest>, and <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> properties. Optionally, you can also set its `CornerRadius` property.
 
 The following XAML example shows how to create a <xref:Microsoft.Maui.Controls.BoxView>:
 
@@ -42,7 +42,7 @@ In this example, a cornflower blue <xref:Microsoft.Maui.Controls.BoxView> is dis
 
 :::image type="content" source="media/boxview/boxview-basic.png" alt-text="Screenshot of a BoxView with rounded corners.":::
 
-The `WidthRequest` and `HeightRequest` properties are measured in device-independent units.
+The <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest> and <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> properties are measured in device-independent units.
 
 > [!NOTE]
 > A <xref:Microsoft.Maui.Controls.BoxView> can also be a child of an <xref:Microsoft.Maui.Controls.AbsoluteLayout>. In this case, both the location and size of the <xref:Microsoft.Maui.Controls.BoxView> are set using the `LayoutBounds` attached bindable property.

@@ -10,13 +10,13 @@ ms.date: 01/12/2022
 
 The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Shapes.Ellipse> class derives from the <xref:Microsoft.Maui.Controls.Shapes.Shape> class, and can be used to draw ellipses and circles. For information on the properties that the <xref:Microsoft.Maui.Controls.Shapes.Ellipse> class inherits from the <xref:Microsoft.Maui.Controls.Shapes.Shape> class, see [Shapes](index.md).
 
-The <xref:Microsoft.Maui.Controls.Shapes.Ellipse> class sets the `Aspect` property, inherited from the <xref:Microsoft.Maui.Controls.Shapes.Shape> class, to `Stretch.Fill`. For more information about the `Aspect` property, see [Stretch shapes](index.md#stretch-shapes).
+The <xref:Microsoft.Maui.Controls.Shapes.Ellipse> class sets the <xref:Microsoft.Maui.Controls.Shapes.Shape.Aspect> property, inherited from the <xref:Microsoft.Maui.Controls.Shapes.Shape> class, to `Stretch.Fill`. For more information about the <xref:Microsoft.Maui.Controls.Shapes.Shape.Aspect> property, see [Stretch shapes](index.md#stretch-shapes).
 
 ## Create an Ellipse
 
-To draw an ellipse, create an <xref:Microsoft.Maui.Controls.Shapes.Ellipse> object and set its `WidthRequest` and `HeightRequest` properties. To paint the inside of the ellipse, set its `Fill` property to a <xref:Microsoft.Maui.Controls.Brush>-derived object. To give the ellipse an outline, set its `Stroke` property to a <xref:Microsoft.Maui.Controls.Brush>-derived object. The `StrokeThickness` property specifies the thickness of the ellipse outline. For more information about <xref:Microsoft.Maui.Controls.Brush> objects, see [Brushes](~/user-interface/brushes/index.md).
+To draw an ellipse, create an <xref:Microsoft.Maui.Controls.Shapes.Ellipse> object and set its <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest> and <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> properties. To paint the inside of the ellipse, set its <xref:Microsoft.Maui.Controls.Shapes.Shape.Fill> property to a <xref:Microsoft.Maui.Controls.Brush>-derived object. To give the ellipse an outline, set its <xref:Microsoft.Maui.Controls.Shapes.Shape.Stroke> property to a <xref:Microsoft.Maui.Controls.Brush>-derived object. The <xref:Microsoft.Maui.Controls.Shapes.Shape.StrokeThickness> property specifies the thickness of the ellipse outline. For more information about <xref:Microsoft.Maui.Controls.Brush> objects, see [Brushes](~/user-interface/brushes/index.md).
 
-To draw a circle, make the `WidthRequest` and `HeightRequest` properties of the <xref:Microsoft.Maui.Controls.Shapes.Ellipse> object equal.
+To draw a circle, make the <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest> and <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> properties of the <xref:Microsoft.Maui.Controls.Shapes.Ellipse> object equal.
 
 The following XAML example shows how to draw a filled ellipse:
 

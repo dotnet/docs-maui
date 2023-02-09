@@ -25,7 +25,7 @@ The <xref:Microsoft.Maui.Controls.Shapes.Geometry> and <xref:Microsoft.Maui.Cont
 
 The following classes have properties that can be set to <xref:Microsoft.Maui.Controls.Shapes.Geometry> objects:
 
-- The <xref:Microsoft.Maui.Controls.Shapes.Path> class uses a <xref:Microsoft.Maui.Controls.Shapes.Geometry> to describe its contents. You can render a <xref:Microsoft.Maui.Controls.Shapes.Geometry> by setting the `Path.Data` property to a <xref:Microsoft.Maui.Controls.Shapes.Geometry> object, and setting the <xref:Microsoft.Maui.Controls.Shapes.Path> object's `Fill` and `Stroke` properties.
+- The <xref:Microsoft.Maui.Controls.Shapes.Path> class uses a <xref:Microsoft.Maui.Controls.Shapes.Geometry> to describe its contents. You can render a <xref:Microsoft.Maui.Controls.Shapes.Geometry> by setting the `Path.Data` property to a <xref:Microsoft.Maui.Controls.Shapes.Geometry> object, and setting the <xref:Microsoft.Maui.Controls.Shapes.Path> object's <xref:Microsoft.Maui.Controls.Shapes.Shape.Fill> and <xref:Microsoft.Maui.Controls.Shapes.Shape.Stroke> properties.
 - The <xref:Microsoft.Maui.Controls.VisualElement> class has a `Clip` property, of type <xref:Microsoft.Maui.Controls.Shapes.Geometry>, that defines the outline of the contents of an element. When the `Clip` property is set to a <xref:Microsoft.Maui.Controls.Shapes.Geometry> object, only the area that is within the region of the <xref:Microsoft.Maui.Controls.Shapes.Geometry> will be visible. For more information, see [Clip with a Geometry](#clip-with-a-geometry).
 
 The classes that derive from the <xref:Microsoft.Maui.Controls.Shapes.Geometry> class can be grouped into three categories: simple geometries, path geometries, and composite geometries.
@@ -90,7 +90,7 @@ In this example, a <xref:Microsoft.Maui.Controls.Shapes.LineGeometry> is drawn f
 :::image type="content" source="media/geometry/line.png" alt-text="LineGeometry.":::
 
 > [!NOTE]
-> Setting the `Fill` property of a <xref:Microsoft.Maui.Controls.Shapes.Path> that renders a <xref:Microsoft.Maui.Controls.Shapes.LineGeometry> will have no effect, because a line has no interior.
+> Setting the <xref:Microsoft.Maui.Controls.Shapes.Shape.Fill> property of a <xref:Microsoft.Maui.Controls.Shapes.Path> that renders a <xref:Microsoft.Maui.Controls.Shapes.LineGeometry> will have no effect, because a line has no interior.
 
 ### RectangleGeometry
 

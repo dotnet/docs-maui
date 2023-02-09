@@ -41,7 +41,7 @@ The `Self` relative binding mode is used bind a property of an element to anothe
          HorizontalOptions="Center" />
 ```
 
-In this example, the <xref:Microsoft.Maui.Controls.BoxView> sets its `WidthRequest` property to a fixed size, and the `HeightRequest` property binds to the `WidthRequest` property. Therefore, both properties are equal and so a square is drawn:
+In this example, the <xref:Microsoft.Maui.Controls.BoxView> sets its <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest> property to a fixed size, and the <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> property binds to the <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest> property. Therefore, both properties are equal and so a square is drawn:
 
 :::image type="content" source="media/relative-bindings/self-relative-binding.png" alt-text="Screenshot of a Self mode relative binding.":::
 

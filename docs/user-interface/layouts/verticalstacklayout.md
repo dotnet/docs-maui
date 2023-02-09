@@ -100,7 +100,7 @@ This example creates a <xref:Microsoft.Maui.Controls.VerticalStackLayout> contai
 
 ## Position and size child views
 
-The size and position of child views within a <xref:Microsoft.Maui.Controls.VerticalStackLayout> depends upon the values of the child views' `HeightRequest` and `WidthRequest` properties, and the values of their `HorizontalOptions` properties. In a <xref:Microsoft.Maui.Controls.VerticalStackLayout>, child views expand to fill the available width when their size isn't explicitly set.
+The size and position of child views within a <xref:Microsoft.Maui.Controls.VerticalStackLayout> depends upon the values of the child views' <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> and <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest> properties, and the values of their `HorizontalOptions` properties. In a <xref:Microsoft.Maui.Controls.VerticalStackLayout>, child views expand to fill the available width when their size isn't explicitly set.
 
 The `HorizontalOptions` properties of a <xref:Microsoft.Maui.Controls.VerticalStackLayout>, and its child views, can be set to fields from the `LayoutOptions` struct, which encapsulates an *alignment* layout preference. This layout preference determines the position and size of a child view within its parent layout.
 

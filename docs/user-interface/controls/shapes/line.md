@@ -23,10 +23,10 @@ For information about controlling how line ends are drawn, see [Control line end
 
 ## Create a Line
 
-To draw a line, create a <xref:Microsoft.Maui.Controls.Shapes.Line> object and set its `X1` and `Y1` properties to its start point, and its `X2` and `Y2` properties to its end point. In addition, set its `Stroke` property to a <xref:Microsoft.Maui.Controls.Brush>-derived object because a line without a stroke is invisible. For more information about <xref:Microsoft.Maui.Controls.Brush> objects, see [Brushes](~/user-interface/brushes/index.md).
+To draw a line, create a <xref:Microsoft.Maui.Controls.Shapes.Line> object and set its `X1` and `Y1` properties to its start point, and its `X2` and `Y2` properties to its end point. In addition, set its <xref:Microsoft.Maui.Controls.Shapes.Shape.Stroke> property to a <xref:Microsoft.Maui.Controls.Brush>-derived object because a line without a stroke is invisible. For more information about <xref:Microsoft.Maui.Controls.Brush> objects, see [Brushes](~/user-interface/brushes/index.md).
 
 > [!NOTE]
-> Setting the `Fill` property of a <xref:Microsoft.Maui.Controls.Shapes.Line> has no effect, because a line has no interior.
+> Setting the <xref:Microsoft.Maui.Controls.Shapes.Shape.Fill> property of a <xref:Microsoft.Maui.Controls.Shapes.Line> has no effect, because a line has no interior.
 
 The following XAML example shows how to draw a line:
 
