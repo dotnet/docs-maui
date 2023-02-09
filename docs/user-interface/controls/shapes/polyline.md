@@ -12,7 +12,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Shapes.
 
 <xref:Microsoft.Maui.Controls.Shapes.Polyline> defines the following properties:
 
-- `Points`, of type `PointCollection`, which is a collection of `Point` structures that describe the vertex points of the polyline.
+- `Points`, of type <xref:Microsoft.Maui.Controls.PointCollection>, which is a collection of `Point` structures that describe the vertex points of the polyline.
 - `FillRule`, of type `FillRule`, which specifies how the intersecting areas in the polyline are combined. The default value of this property is `FillRule.EvenOdd`.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
@@ -64,11 +64,11 @@ The following XAML example shows a polyline that uses the default fill rule:
           StrokeThickness="3" />
 ```
 
-In this example, the fill behavior of the polyline is determined using the `EvenOdd` fill rule.
+In this example, the fill behavior of the polyline is determined using the <xref:Microsoft.Maui.Controls.Shapes.FillRule.EvenOdd> fill rule.
 
 :::image type="content" source="media/polyline/evenodd.png" alt-text="EvenOdd polyline.":::
 
-The following XAML example shows a polyline that uses the `Nonzero` fill rule:
+The following XAML example shows a polyline that uses the <xref:Microsoft.Maui.Controls.Shapes.FillRule.Nonzero> fill rule:
 
 ```xaml
 <Polyline Points="0 48, 0 144, 96 150, 100 0, 192 0, 192 96, 50 96, 48 192, 150 200 144 48"
@@ -80,4 +80,4 @@ The following XAML example shows a polyline that uses the `Nonzero` fill rule:
 
 :::image type="content" source="media/polyline/nonzero.png" alt-text="Nonzero polyline.":::
 
-In this example, the fill behavior of the polyline is determined using the `Nonzero` fill rule.
+In this example, the fill behavior of the polyline is determined using the <xref:Microsoft.Maui.Controls.Shapes.FillRule.Nonzero> fill rule.

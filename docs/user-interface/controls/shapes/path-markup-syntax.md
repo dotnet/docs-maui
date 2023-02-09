@@ -21,7 +21,7 @@ Path markup syntax is composed of an optional `FillRule` value, and one or more 
 
 In this syntax:
 
-- *fillRule* is an optional `FillRule` that specifies whether the geometry should use the `EvenOdd` or `Nonzero` fill rule. `F0` is used to specify the `EvenOdd` fill rule, while `F1` is used to specify the `Nonzero` fill rule. For more information about fill rules, see [Fill rules](fillrules.md).
+- *fillRule* is an optional `FillRule` that specifies whether the geometry should use the <xref:Microsoft.Maui.Controls.Shapes.FillRule.EvenOdd> or <xref:Microsoft.Maui.Controls.Shapes.FillRule.Nonzero> fill rule. `F0` is used to specify the <xref:Microsoft.Maui.Controls.Shapes.FillRule.EvenOdd> fill rule, while `F1` is used to specify the <xref:Microsoft.Maui.Controls.Shapes.FillRule.Nonzero> fill rule. For more information about fill rules, see [Fill rules](fillrules.md).
 - *figureDescription* represents a figure composed of a move command, draw commands, and an optional close command. A move command specifies the start point of the figure. Draw commands describe the figure's contents, and the optional close command closes the figure.
 
 In the example above, the path markup syntax specifies a start point using the move command (`M`), a series of straight lines using the line command (`L`), and closes the path with the close command (`Z`).
