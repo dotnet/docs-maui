@@ -8,7 +8,7 @@ ms.date: 02/22/2022
 
 A .NET Multi-platform App UI (.NET MAUI) swipe gesture recognizer detects when a finger is moved across the screen in a horizontal or vertical direction, and is often used to initiate navigation through content.
 
-In .NET MAUI, drag gesture recognition is provided by the `SwipeGestureRecognizer` class. This class defines the following properties:
+In .NET MAUI, drag gesture recognition is provided by the <xref:Microsoft.Maui.Controls.SwipeGestureRecognizer> class. This class defines the following properties:
 
 - `Command`, of type `ICommand`, which is executed when a swipe gesture is recognized.
 - `CommandParameter`, of type `object`, which is the parameter that's passed to the `Command`.
@@ -17,14 +17,14 @@ In .NET MAUI, drag gesture recognition is provided by the `SwipeGestureRecognize
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
-The `SwipeGestureRecognizer` also defines a `Swiped` event that's raised when a swipe is recognized. The `SwipedEventArgs` object that accompanies the `Swiped` event defines the following properties:
+The <xref:Microsoft.Maui.Controls.SwipeGestureRecognizer> also defines a `Swiped` event that's raised when a swipe is recognized. The `SwipedEventArgs` object that accompanies the `Swiped` event defines the following properties:
 
 - `Direction`, of type `SwipeDirection`, indicates the direction of the swipe gesture.
 - `Parameter`, of type `object`, indicates the value passed by the `CommandParameter` property, if defined.
 
 ## Create a SwipeGestureRecognizer
 
-To make a <xref:Microsoft.Maui.Controls.View> recognize a swipe gesture, create a `SwipeGestureRecognizer` object, set the `Direction` property to a `SwipeDirection` enumeration value (`Left`, `Right`, `Up`, or `Down`), optionally set the `Threshold` property, handle the `Swiped` event, and add the new gesture recognizer to the `GestureRecognizers` collection on the view. The following example shows a `SwipeGestureRecognizer` attached to a <xref:Microsoft.Maui.Controls.BoxView>:
+To make a <xref:Microsoft.Maui.Controls.View> recognize a swipe gesture, create a <xref:Microsoft.Maui.Controls.SwipeGestureRecognizer> object, set the `Direction` property to a `SwipeDirection` enumeration value (`Left`, `Right`, `Up`, or `Down`), optionally set the `Threshold` property, handle the `Swiped` event, and add the new gesture recognizer to the `GestureRecognizers` collection on the view. The following example shows a <xref:Microsoft.Maui.Controls.SwipeGestureRecognizer> attached to a <xref:Microsoft.Maui.Controls.BoxView>:
 
 ```xaml
 <BoxView Color="Teal" ...>
@@ -46,7 +46,7 @@ boxView.GestureRecognizers.Add(leftSwipeGesture);
 
 ## Recognize the swipe direction
 
-The `SwipeGestureRecognizer.Direction` property can be set to a single value from the `SwipeDirection` enumeration, or multiple values. This enables the `Swiped` event to be raised in response to a swipe in more than one direction. However, the constraint is that a single `SwipeGestureRecognizer` can only recognize swipes that occur on the same axis. Therefore, swipes that occur on the horizontal axis can be recognized by setting the `Direction` property to `Left` and `Right`:
+The `SwipeGestureRecognizer.Direction` property can be set to a single value from the `SwipeDirection` enumeration, or multiple values. This enables the `Swiped` event to be raised in response to a swipe in more than one direction. However, the constraint is that a single <xref:Microsoft.Maui.Controls.SwipeGestureRecognizer> can only recognize swipes that occur on the same axis. Therefore, swipes that occur on the horizontal axis can be recognized by setting the `Direction` property to `Left` and `Right`:
 
 ```xaml
 <SwipeGestureRecognizer Direction="Left,Right" Swiped="OnSwiped"/>
@@ -58,7 +58,7 @@ Similarly, swipes that occur on the vertical axis can be recognized by setting t
 SwipeGestureRecognizer swipeGesture = new SwipeGestureRecognizer { Direction = SwipeDirection.Up | SwipeDirection.Down };
 ```
 
-Alternatively, a `SwipeGestureRecognizer` for each swipe direction can be created to recognize swipes in every direction:
+Alternatively, a <xref:Microsoft.Maui.Controls.SwipeGestureRecognizer> for each swipe direction can be created to recognize swipes in every direction:
 
 ```xaml
 <BoxView Color="Teal" ...>
@@ -143,7 +143,7 @@ public class SwipeContainer : ContentView
 }
 ```
 
-The `SwipeContainer` class creates `SwipeGestureRecognizer` objects for all four swipe directions, and attaches `Swipe` event handlers. These event handlers invoke the `Swipe` event defined by the `SwipeContainer`.
+The `SwipeContainer` class creates <xref:Microsoft.Maui.Controls.SwipeGestureRecognizer> objects for all four swipe directions, and attaches `Swipe` event handlers. These event handlers invoke the `Swipe` event defined by the `SwipeContainer`.
 
 The following XAML code example shows the `SwipeContainer` class wrapping a <xref:Microsoft.Maui.Controls.BoxView>:
 
@@ -155,7 +155,7 @@ The following XAML code example shows the `SwipeContainer` class wrapping a <xre
 </StackLayout>
 ```
 
-In this example, when the <xref:Microsoft.Maui.Controls.BoxView> receives a swipe gesture, the `Swiped` event in the `SwipeGestureRecognizer` is raised. This is handled by the `SwipeContainer` class, which raises its own `Swipe` event. This `Swipe` event is handled on the page. The `SwipedEventArgs` can then be examined to determine the direction of the swipe, with custom logic responding to the swipe as required.
+In this example, when the <xref:Microsoft.Maui.Controls.BoxView> receives a swipe gesture, the `Swiped` event in the <xref:Microsoft.Maui.Controls.SwipeGestureRecognizer> is raised. This is handled by the `SwipeContainer` class, which raises its own `Swipe` event. This `Swipe` event is handled on the page. The `SwipedEventArgs` can then be examined to determine the direction of the swipe, with custom logic responding to the swipe as required.
 
 The equivalent C# code is:
 
