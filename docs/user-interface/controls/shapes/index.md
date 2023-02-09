@@ -8,18 +8,18 @@ ms.date: 01/12/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-shapes)
 
-A .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Shapes.Shape> is a type of <xref:Microsoft.Maui.Controls.View> that enables you to draw a shape to the screen. <xref:Microsoft.Maui.Controls.Shapes.Shape> objects can be used inside layout classes and most controls, because the <xref:Microsoft.Maui.Controls.Shapes.Shape> class derives from the <xref:Microsoft.Maui.Controls.View> class. .NET MAUI Shapes is available in the `Microsoft.Maui.Controls.Shapes` namespace.
+A .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Shapes.Shape> is a type of <xref:Microsoft.Maui.Controls.View> that enables you to draw a shape to the screen. <xref:Microsoft.Maui.Controls.Shapes.Shape> objects can be used inside layout classes and most controls, because the <xref:Microsoft.Maui.Controls.Shapes.Shape> class derives from the <xref:Microsoft.Maui.Controls.View> class. .NET MAUI Shapes is available in the <xref:Microsoft.Maui.Controls.Shapes> namespace.
 
 <xref:Microsoft.Maui.Controls.Shapes.Shape> defines the following properties:
 
-- <xref:Microsoft.Maui.Controls.Shapes.Shape.Aspect>, of type `Stretch`, describes how the shape fills its allocated space. The default value of this property is `Stretch.None`.
+- <xref:Microsoft.Maui.Controls.Shapes.Shape.Aspect>, of type <xref:Microsoft.Maui.Controls.Stretch>, describes how the shape fills its allocated space. The default value of this property is `Stretch.None`.
 - <xref:Microsoft.Maui.Controls.Shapes.Shape.Fill>, of type <xref:Microsoft.Maui.Controls.Brush>, indicates the brush used to paint the shape's interior.
 - <xref:Microsoft.Maui.Controls.Shapes.Shape.Stroke>, of type <xref:Microsoft.Maui.Controls.Brush>, indicates the brush used to paint the shape's outline.
 - <xref:Microsoft.Maui.Controls.Shapes.Shape.StrokeDashArray>, of type `DoubleCollection`, which represents a collection of `double` values that indicate the pattern of dashes and gaps that are used to outline a shape.
 - <xref:Microsoft.Maui.Controls.Shapes.Shape.StrokeDashOffset>, of type `double`, specifies the distance within the dash pattern where a dash begins. The default value of this property is 0.0.
-- <xref:Microsoft.Maui.Controls.Shapes.Shape.StrokeDashPattern>, of type `float[]`, indicates the pattern of dashes and gaps that are used when drawing the stroke for a shape. 
-- <xref:Microsoft.Maui.Controls.Shapes.Shape.StrokeLineCap>, of type `PenLineCap`, describes the shape at the start and end of a line or segment. The default value of this property is `PenLineCap.Flat`.
-- <xref:Microsoft.Maui.Controls.Shapes.Shape.StrokeLineJoin>, of type `PenLineJoin`, specifies the type of join that is used at the vertices of a shape. The default value of this property is `PenLineJoin.Miter`.
+- <xref:Microsoft.Maui.Controls.Shapes.Shape.StrokeDashPattern>, of type `float[]`, indicates the pattern of dashes and gaps that are used when drawing the stroke for a shape.
+- <xref:Microsoft.Maui.Controls.Shapes.Shape.StrokeLineCap>, of type <xref:Microsoft.Maui.Controls.Shapes.PenLineCap>, describes the shape at the start and end of a line or segment. The default value of this property is `PenLineCap.Flat`.
+- <xref:Microsoft.Maui.Controls.Shapes.Shape.StrokeLineJoin>, of type <xref:Microsoft.Maui.Controls.Shapes.PenLineJoin>, specifies the type of join that is used at the vertices of a shape. The default value of this property is `PenLineJoin.Miter`.
 - <xref:Microsoft.Maui.Controls.Shapes.Shape.StrokeMiterLimit>, of type `double`, specifies the limit on the ratio of the miter length to half the <xref:Microsoft.Maui.Controls.Shapes.Shape.StrokeThickness> of a shape. The default value of this property is 10.0.
 - <xref:Microsoft.Maui.Controls.Shapes.Shape.StrokeThickness>, of type `double`, indicates the width of the shape outline. The default value of this property is 1.0.
 
@@ -53,9 +53,9 @@ For more information about <xref:Microsoft.Maui.Controls.Brush> objects, see [Br
 
 ## Stretch shapes
 
-<xref:Microsoft.Maui.Controls.Shapes.Shape> objects have an <xref:Microsoft.Maui.Controls.Shapes.Shape.Aspect> property, of type `Stretch`. This property determines how a <xref:Microsoft.Maui.Controls.Shapes.Shape> object's contents is stretched to fill the <xref:Microsoft.Maui.Controls.Shapes.Shape> object's layout space. A <xref:Microsoft.Maui.Controls.Shapes.Shape> object's layout space is the amount of space the <xref:Microsoft.Maui.Controls.Shapes.Shape> is allocated by the .NET MAUI layout system, because of either an explicit <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest> and <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> setting or because of its `HorizontalOptions` and `VerticalOptions` settings.
+<xref:Microsoft.Maui.Controls.Shapes.Shape> objects have an <xref:Microsoft.Maui.Controls.Shapes.Shape.Aspect> property, of type <xref:Microsoft.Maui.Controls.Stretch>. This property determines how a <xref:Microsoft.Maui.Controls.Shapes.Shape> object's contents is stretched to fill the <xref:Microsoft.Maui.Controls.Shapes.Shape> object's layout space. A <xref:Microsoft.Maui.Controls.Shapes.Shape> object's layout space is the amount of space the <xref:Microsoft.Maui.Controls.Shapes.Shape> is allocated by the .NET MAUI layout system, because of either an explicit <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest> and <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> setting or because of its `HorizontalOptions` and `VerticalOptions` settings.
 
-The `Stretch` enumeration defines the following members:
+The <xref:Microsoft.Maui.Controls.Stretch> enumeration defines the following members:
 
 - `None`, which indicates that the content preserves its original size. This is the default value of the `Shape.Aspect` property.
 - <xref:Microsoft.Maui.Controls.Shapes.Shape.Fill>, which indicates that the content is resized to fill the destination dimensions. The aspect ratio is not preserved.
@@ -111,7 +111,7 @@ In this example, a filled rectangle with a dashed stroke is drawn:
 
 A line has three parts: start cap, line body, and end cap. The start and end caps describe the shape at the start and end of a line, or segment.
 
-<xref:Microsoft.Maui.Controls.Shapes.Shape> objects have a <xref:Microsoft.Maui.Controls.Shapes.Shape.StrokeLineCap> property, of type `PenLineCap`, that describes the shape at the start and end of a line, or segment. The `PenLineCap` enumeration defines the following members:
+<xref:Microsoft.Maui.Controls.Shapes.Shape> objects have a <xref:Microsoft.Maui.Controls.Shapes.Shape.StrokeLineCap> property, of type <xref:Microsoft.Maui.Controls.Shapes.PenLineCap>, that describes the shape at the start and end of a line, or segment. The <xref:Microsoft.Maui.Controls.Shapes.PenLineCap> enumeration defines the following members:
 
 - `Flat`, which represents a cap that doesn't extend past the last point of the line. This is comparable to no line cap, and is the default value of the <xref:Microsoft.Maui.Controls.Shapes.Shape.StrokeLineCap> property.
 - `Square`, which represents a rectangle that has a height equal to the line thickness and a length equal to half the line thickness.
@@ -138,7 +138,7 @@ In this example, the red line is rounded at the start and end of the line:
 
 ## Control line joins
 
-<xref:Microsoft.Maui.Controls.Shapes.Shape> objects have a <xref:Microsoft.Maui.Controls.Shapes.Shape.StrokeLineJoin> property, of type `PenLineJoin`, that specifies the type of join that is used at the vertices of the shape. The `PenLineJoin` enumeration defines the following members:
+<xref:Microsoft.Maui.Controls.Shapes.Shape> objects have a <xref:Microsoft.Maui.Controls.Shapes.Shape.StrokeLineJoin> property, of type <xref:Microsoft.Maui.Controls.Shapes.PenLineJoin>, that specifies the type of join that is used at the vertices of the shape. The <xref:Microsoft.Maui.Controls.Shapes.PenLineJoin> enumeration defines the following members:
 
 - `Miter`, which represents regular angular vertices. This is the default value of the <xref:Microsoft.Maui.Controls.Shapes.Shape.StrokeLineJoin> property.
 - `Bevel`, which represents beveled vertices.

@@ -12,14 +12,14 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Shapes.
 
 <xref:Microsoft.Maui.Controls.Shapes.Polygon> defines the following properties:
 
-- `Points`, of type <xref:Microsoft.Maui.Controls.PointCollection>, which is a collection of `Point` structures that describe the vertex points of the polygon.
-- `FillRule`, of type `FillRule`, which specifies how the interior fill of the shape is determined. The default value of this property is `FillRule.EvenOdd`.
+- <xref:Microsoft.Maui.Controls.Shapes.Polygon.Points>, of type <xref:Microsoft.Maui.Controls.PointCollection>, which is a collection of `Point` structures that describe the vertex points of the polygon.
+- <xref:Microsoft.Maui.Controls.Shapes.Polygon.FillRule>, of type <xref:Microsoft.Maui.Controls.Shapes.FillRule>, which specifies how the interior fill of the shape is determined. The default value of this property is `FillRule.EvenOdd`.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 The `PointsCollection` type is an `ObservableCollection` of `Point` objects. The `Point` structure defines `X` and `Y` properties, of type `double`, that represent an x- and y-coordinate pair in 2D space. Therefore, the `Points` property should be set to a list of x-coordinate and y-coordinate pairs that describe the polygon vertex points, delimited by a single comma and/or one or more spaces. For example, "40,10 70,80" and "40 10, 70 80" are both valid.
 
-For more information about the `FillRule` enumeration, see [Fill rules](fillrules.md).
+For more information about the <xref:Microsoft.Maui.Controls.Shapes.FillRule> enumeration, see [Fill rules](fillrules.md).
 
 ## Create a Polygon
 

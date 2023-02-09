@@ -13,7 +13,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Shapes.
 <xref:Microsoft.Maui.Controls.Shapes.Path> defines the following properties:
 
 - `Data`, of type <xref:Microsoft.Maui.Controls.Shapes.Geometry>, which specifies the shape to be drawn.
-- `RenderTransform`, of type <xref:Microsoft.Maui.Controls.Shapes.Transform>, which represents the transform that is applied to the geometry of a path prior to it being drawn.
+- <xref:Microsoft.Maui.Controls.Shapes.Path.RenderTransform>, of type <xref:Microsoft.Maui.Controls.Shapes.Transform>, which represents the transform that is applied to the geometry of a path prior to it being drawn.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 

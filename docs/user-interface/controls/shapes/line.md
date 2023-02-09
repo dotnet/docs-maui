@@ -12,10 +12,10 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Shapes.
 
 <xref:Microsoft.Maui.Controls.Shapes.Line> defines the following properties:
 
-- `X1`, of type double, indicates the x-coordinate of the start point of the line. The default value of this property is 0.0.
-- `Y1`, of type double, indicates the y-coordinate of the start point of the line. The default value of this property is 0.0.
-- `X2`, of type double, indicates the x-coordinate of the end point of the line. The default value of this property is 0.0.
-- `Y2`, of type double, indicates the y-coordinate of the end point of the line. The default value of this property is 0.0.
+- <xref:Microsoft.Maui.Controls.Shapes.Line.X1>, of type double, indicates the x-coordinate of the start point of the line. The default value of this property is 0.0.
+- <xref:Microsoft.Maui.Controls.Shapes.Line.Y1>, of type double, indicates the y-coordinate of the start point of the line. The default value of this property is 0.0.
+- <xref:Microsoft.Maui.Controls.Shapes.Line.X2>, of type double, indicates the x-coordinate of the end point of the line. The default value of this property is 0.0.
+- <xref:Microsoft.Maui.Controls.Shapes.Line.Y2>, of type double, indicates the y-coordinate of the end point of the line. The default value of this property is 0.0.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
@@ -42,7 +42,7 @@ In this example, a red diagonal line is drawn from (40,0) to (0,120):
 
 :::image type="content" source="media/line/line.png" alt-text="Diagonal line.":::
 
-Because the `X1`, `Y1`, `X2`, and `Y2` properties have default values of 0, it's possible to draw some lines with minimal syntax:
+Because the <xref:Microsoft.Maui.Controls.Shapes.Line.X1>, <xref:Microsoft.Maui.Controls.Shapes.Line.Y1>, <xref:Microsoft.Maui.Controls.Shapes.Line.X2>, and <xref:Microsoft.Maui.Controls.Shapes.Line.Y2> properties have default values of 0, it's possible to draw some lines with minimal syntax:
 
 ```xaml
 <Line Stroke="Red"
