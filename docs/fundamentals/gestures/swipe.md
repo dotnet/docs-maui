@@ -10,8 +10,8 @@ A .NET Multi-platform App UI (.NET MAUI) swipe gesture recognizer detects when a
 
 In .NET MAUI, drag gesture recognition is provided by the <xref:Microsoft.Maui.Controls.SwipeGestureRecognizer> class. This class defines the following properties:
 
-- `Command`, of type `ICommand`, which is executed when a swipe gesture is recognized.
-- `CommandParameter`, of type `object`, which is the parameter that's passed to the `Command`.
+- <xref:Microsoft.Maui.Controls.SwipeGestureRecognizer.Command>, of type `ICommand`, which is executed when a swipe gesture is recognized.
+- <xref:Microsoft.Maui.Controls.SwipeGestureRecognizer.CommandParameter>, of type `object`, which is the parameter that's passed to the `Command`.
 - <xref:Microsoft.Maui.Controls.SwipeGestureRecognizer.Direction>, of type <xref:Microsoft.Maui.SwipeDirection>, which defines the direction
 - <xref:Microsoft.Maui.Controls.SwipeGestureRecognizer.Threshold>, of type `uint`, which represents the minimum swipe distance that must be achieved for a swipe to be recognized, in device-independent units. The default value of this property is 100, which means that any swipes that are less than 100 device-independent units will be ignored.
 
@@ -19,8 +19,8 @@ These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> o
 
 The <xref:Microsoft.Maui.Controls.SwipeGestureRecognizer> also defines a <xref:Microsoft.Maui.Controls.SwipeGestureRecognizer.Swiped> event that's raised when a swipe is recognized. The <xref:Microsoft.Maui.Controls.SwipedEventArgs> object that accompanies the <xref:Microsoft.Maui.Controls.SwipeGestureRecognizer.Swiped> event defines the following properties:
 
-- <xref:Microsoft.Maui.Controls.SwipeGestureRecognizer.Direction>, of type <xref:Microsoft.Maui.SwipeDirection>, indicates the direction of the swipe gesture.
-- `Parameter`, of type `object`, indicates the value passed by the `CommandParameter` property, if defined.
+- <xref:Microsoft.Maui.Controls.SwipedEventArgs.Direction>, of type <xref:Microsoft.Maui.SwipeDirection>, indicates the direction of the swipe gesture.
+- <xref:Microsoft.Maui.Controls.SwipedEventArgs.Parameter>, of type `object`, indicates the value passed by the `CommandParameter` property, if defined.
 
 ## Create a SwipeGestureRecognizer
 
@@ -115,7 +115,7 @@ void OnSwiped(object sender, SwipedEventArgs e)
 }
 ```
 
-The <xref:Microsoft.Maui.Controls.SwipedEventArgs> can be examined to determine the direction of the swipe, with custom logic responding to the swipe as required. The direction of the swipe can be obtained from the <xref:Microsoft.Maui.Controls.SwipeGestureRecognizer.Direction> property of the event arguments, which will be set to one of the values of the <xref:Microsoft.Maui.SwipeDirection> enumeration. In addition, the event arguments also have a `Parameter` property that will be set to the value of the `CommandParameter` property, if defined.
+The <xref:Microsoft.Maui.Controls.SwipedEventArgs> can be examined to determine the direction of the swipe, with custom logic responding to the swipe as required. The direction of the swipe can be obtained from the <xref:Microsoft.Maui.Controls.SwipedEventArgs.Direction> property of the event arguments, which will be set to one of the values of the <xref:Microsoft.Maui.SwipeDirection> enumeration. In addition, the event arguments also have a <xref:Microsoft.Maui.Controls.SwipedEventArgs.Parameter> property that will be set to the value of the `CommandParameter` property, if defined.
 
 ## Create a swipe container
 
