@@ -267,7 +267,7 @@ The <xref:Microsoft.Maui.Controls.Shapes.Matrix> struct defines the following pr
 - <xref:Microsoft.Maui.Controls.Shapes.Matrix.Determinant>, of type `double`, which gets the determinant of the matrix.
 - <xref:Microsoft.Maui.Controls.Shapes.Matrix.HasInverse>, of type `bool`, which indicates whether the matrix is invertible.
 - <xref:Microsoft.Maui.Controls.Shapes.Matrix.Identity>, of type <xref:Microsoft.Maui.Controls.Shapes.Matrix>, which gets an identity matrix.
-- <xref:Microsoft.Maui.Controls.Shapes.Matrix.HasIdentity>, of type `bool`, which indicates whether the matrix is an identity matrix.
+- <xref:Microsoft.Maui.Controls.Shapes.Matrix.IsIdentity>, of type `bool`, which indicates whether the matrix is an identity matrix.
 - <xref:Microsoft.Maui.Controls.Shapes.Matrix.M11>, of type `double`, which represents the value of the first row and first column of the matrix.
 - <xref:Microsoft.Maui.Controls.Shapes.Matrix.M12>, of type `double`, which represents the value of the first row and second column of the matrix.
 - <xref:Microsoft.Maui.Controls.Shapes.Matrix.M21>, of type `double`, which represents the value of the second row and first column of the matrix.
