@@ -31,7 +31,7 @@ The `ImageSource` class defines the following methods that can be used to load a
 In XAML, images can be loaded from files and URIs by specifying the filename or URI as a string value for the `Source` property. Images can also be loaded from resources or streams in XAML through custom markup extensions.
 
 > [!IMPORTANT]
-> Images will be displayed at their full resolution unless the size of the <xref:Microsoft.Maui.Controls.Image> is constrained by its layout, or the `HeightRequest` or `WidthRequest` property of the <xref:Microsoft.Maui.Controls.Image> is specified.
+> Images will be displayed at their full resolution unless the size of the <xref:Microsoft.Maui.Controls.Image> is constrained by its layout, or the <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> or <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest> property of the <xref:Microsoft.Maui.Controls.Image> is specified.
 
 For information about adding app icons and a splash screen to your app, see [App icons](~/user-interface/images/app-icons.md) and [Splash screen](~/user-interface/images/splashscreen.md).
 
