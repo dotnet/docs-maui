@@ -83,7 +83,7 @@ The following code example monitors the energy-saver status and sets a property 
 
 ## Power source
 
-The <xref:Microsoft.Maui.Devices.IBattery.PowerSource> property returns a <xref:Microsoft.Maui.Devices.BatteryPowerSource> enumeration that indicates how the device is being charged, if at all. If it's not being charged, the status will be <xref:Microsoft.Maui.Devices.BatteryPowerSource.Battery?displayProperty=nameWithType>. The <xref:Microsoft.Maui.Devices.BatteryPowerSource.AC?displayProperty=nameWithType>, <xref:Microsoft.Maui.Devices.BatteryPowerSource.Usb?displayProperty=nameWithType>, and<xref:Microsoft.Maui.Devices.BatteryPowerSource.Wireless?displayProperty=nameWithType> values indicate that the battery is being charged.
+The <xref:Microsoft.Maui.Devices.IBattery.PowerSource> property returns a <xref:Microsoft.Maui.Devices.BatteryPowerSource> enumeration that indicates how the device is being charged, if at all. If it's not being charged, the status will be <xref:Microsoft.Maui.Devices.BatteryPowerSource.Battery?displayProperty=nameWithType>. The <xref:Microsoft.Maui.Devices.BatteryPowerSource.AC?displayProperty=nameWithType>, <xref:Microsoft.Maui.Devices.BatteryPowerSource.Usb?displayProperty=nameWithType>, and <xref:Microsoft.Maui.Devices.BatteryPowerSource.Wireless?displayProperty=nameWithType> values indicate that the battery is being charged.
 
 The following code example sets the text of a <xref:Microsoft.Maui.Controls.Label> control based on power source.
 
