@@ -209,7 +209,7 @@ public class StackLayoutSpacingPage : ContentPage
 
 ## Position and size of child views
 
-The size and position of child views within a <xref:Microsoft.Maui.Controls.StackLayout> depends upon the values of the child views' `HeightRequest` and `WidthRequest` properties, and the values of their `HorizontalOptions` and `VerticalOptions` properties. In a vertical <xref:Microsoft.Maui.Controls.StackLayout>, child views expand to fill the available width when their size isn't explicitly set. Similarly, in a horizontal <xref:Microsoft.Maui.Controls.StackLayout>, child views expand to fill the available height when their size isn't explicitly set.
+The size and position of child views within a <xref:Microsoft.Maui.Controls.StackLayout> depends upon the values of the child views' <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> and <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest> properties, and the values of their `HorizontalOptions` and `VerticalOptions` properties. In a vertical <xref:Microsoft.Maui.Controls.StackLayout>, child views expand to fill the available width when their size isn't explicitly set. Similarly, in a horizontal <xref:Microsoft.Maui.Controls.StackLayout>, child views expand to fill the available height when their size isn't explicitly set.
 
 The `HorizontalOptions` and `VerticalOptions` properties of a <xref:Microsoft.Maui.Controls.StackLayout>, and its child views, can be set to fields from the `LayoutOptions` struct, which encapsulates an *alignment* layout preference. This layout preference determines the position and size of a child view within its parent layout.
 

@@ -557,7 +557,7 @@ CollectionView collectionView = new CollectionView
 
 ## Dynamic resizing of items
 
-Items in a <xref:Microsoft.Maui.Controls.CollectionView> can be dynamically resized at runtime by changing layout related properties of elements within the `DataTemplate`. For example, the following code example changes the `HeightRequest` and `WidthRequest` properties of an <xref:Microsoft.Maui.Controls.Image> object:
+Items in a <xref:Microsoft.Maui.Controls.CollectionView> can be dynamically resized at runtime by changing layout related properties of elements within the `DataTemplate`. For example, the following code example changes the <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> and <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest> properties of an <xref:Microsoft.Maui.Controls.Image> object:
 
 ```csharp
 void OnImageTapped(object sender, EventArgs e)

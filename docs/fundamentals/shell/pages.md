@@ -217,7 +217,7 @@ While this property can be set on a subclassed <xref:Microsoft.Maui.Controls.She
 > [!IMPORTANT]
 > If the navigation bar has been made invisible, with the `NavBarIsVisible` attached property, the title view will not be displayed.
 
-Many views won't appear in the navigation bar unless the size of the view is specified with the `WidthRequest` and `HeightRequest` properties, or the location of the view is specified with the `HorizontalOptions` and `VerticalOptions` properties.
+Many views won't appear in the navigation bar unless the size of the view is specified with the <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest> and <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> properties, or the location of the view is specified with the `HorizontalOptions` and `VerticalOptions` properties.
 
 The `TitleView` attached property can be set to display a layout class that contains multiple views. Similarly, because the <xref:Microsoft.Maui.Controls.ContentView> class ultimately derives from the <xref:Microsoft.Maui.Controls.View> class, the `TitleView` attached property can be set to display a <xref:Microsoft.Maui.Controls.ContentView> that contains a single view.
 
