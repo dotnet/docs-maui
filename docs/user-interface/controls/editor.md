@@ -131,7 +131,7 @@ This can be accomplished as follows:
 When auto-resizing is enabled, the height of the <xref:Microsoft.Maui.Controls.Editor> will increase when the user fills it with text, and the height will decrease as the user deletes text.
 
 > [!NOTE]
-> An <xref:Microsoft.Maui.Controls.Editor> will not auto-size if the `HeightRequest` property has been set.
+> An <xref:Microsoft.Maui.Controls.Editor> will not auto-size if the <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> property has been set.
 
 ## Transform text
 
