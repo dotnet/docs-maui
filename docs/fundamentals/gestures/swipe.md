@@ -17,7 +17,7 @@ In .NET MAUI, drag gesture recognition is provided by the <xref:Microsoft.Maui.C
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
-The <xref:Microsoft.Maui.Controls.SwipeGestureRecognizer> also defines a `Swiped` event that's raised when a swipe is recognized. The `SwipedEventArgs` object that accompanies the `Swiped` event defines the following properties:
+The <xref:Microsoft.Maui.Controls.SwipeGestureRecognizer> also defines a `Swiped` event that's raised when a swipe is recognized. The <xref:Microsoft.Maui.Controls.SwipedEventArgs> object that accompanies the `Swiped` event defines the following properties:
 
 - `Direction`, of type `SwipeDirection`, indicates the direction of the swipe gesture.
 - `Parameter`, of type `object`, indicates the value passed by the `CommandParameter` property, if defined.
@@ -115,7 +115,7 @@ void OnSwiped(object sender, SwipedEventArgs e)
 }
 ```
 
-The `SwipedEventArgs` can be examined to determine the direction of the swipe, with custom logic responding to the swipe as required. The direction of the swipe can be obtained from the `Direction` property of the event arguments, which will be set to one of the values of the `SwipeDirection` enumeration. In addition, the event arguments also have a `Parameter` property that will be set to the value of the `CommandParameter` property, if defined.
+The <xref:Microsoft.Maui.Controls.SwipedEventArgs> can be examined to determine the direction of the swipe, with custom logic responding to the swipe as required. The direction of the swipe can be obtained from the `Direction` property of the event arguments, which will be set to one of the values of the `SwipeDirection` enumeration. In addition, the event arguments also have a `Parameter` property that will be set to the value of the `CommandParameter` property, if defined.
 
 ## Create a swipe container
 
@@ -155,7 +155,7 @@ The following XAML code example shows the `SwipeContainer` class wrapping a <xre
 </StackLayout>
 ```
 
-In this example, when the <xref:Microsoft.Maui.Controls.BoxView> receives a swipe gesture, the `Swiped` event in the <xref:Microsoft.Maui.Controls.SwipeGestureRecognizer> is raised. This is handled by the `SwipeContainer` class, which raises its own `Swipe` event. This `Swipe` event is handled on the page. The `SwipedEventArgs` can then be examined to determine the direction of the swipe, with custom logic responding to the swipe as required.
+In this example, when the <xref:Microsoft.Maui.Controls.BoxView> receives a swipe gesture, the `Swiped` event in the <xref:Microsoft.Maui.Controls.SwipeGestureRecognizer> is raised. This is handled by the `SwipeContainer` class, which raises its own `Swipe` event. This `Swipe` event is handled on the page. The <xref:Microsoft.Maui.Controls.SwipedEventArgs> can then be examined to determine the direction of the swipe, with custom logic responding to the swipe as required.
 
 The equivalent C# code is:
 
