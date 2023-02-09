@@ -8,7 +8,7 @@ ms.date: 02/21/2022
 
 A .NET Multi-platform App UI (.NET MAUI) pinch gesture recognizer is used for performing interactive zoom. A common scenario for the pinch gesture is to perform interactive zoom of an image at the pinch location. This is accomplished by scaling the content of the viewport.
 
-In .NET MAUI, pinch gesture recognition is provided by the `PinchGestureRecognizer` class, which defines a `PinchUpdated` event that's raised when the detected pinch gesture changes. The `PinchGestureUpdatedEventArgs` object that accompanies the `PinchUpdated` event defines the following properties:
+In .NET MAUI, pinch gesture recognition is provided by the <xref:Microsoft.Maui.Controls.PinchGestureRecognizer> class, which defines a `PinchUpdated` event that's raised when the detected pinch gesture changes. The `PinchGestureUpdatedEventArgs` object that accompanies the `PinchUpdated` event defines the following properties:
 
 - `Scale`, of type `double`, which indicates the relative size of the pinch gesture since the last update was received.
 - `ScaleOrigin`, of type `Point`, which indicates the updated origin of the pinch's gesture.
@@ -16,7 +16,7 @@ In .NET MAUI, pinch gesture recognition is provided by the `PinchGestureRecogniz
 
 ## Create a PinchGestureRecognizer
 
-To make a <xref:Microsoft.Maui.Controls.View> recognize a pinch gesture, create a `PinchGestureRecognizer` object, handle the `PinchUpdated` event, and add the new gesture recognizer to the `GestureRecognizers` collection on the view. The following code example shows a `PinchGestureRecognizer` attached to an <xref:Microsoft.Maui.Controls.Image>:
+To make a <xref:Microsoft.Maui.Controls.View> recognize a pinch gesture, create a <xref:Microsoft.Maui.Controls.PinchGestureRecognizer> object, handle the `PinchUpdated` event, and add the new gesture recognizer to the `GestureRecognizers` collection on the view. The following code example shows a <xref:Microsoft.Maui.Controls.PinchGestureRecognizer> attached to an <xref:Microsoft.Maui.Controls.Image>:
 
 ```xaml
 <Image Source="waterfront.jpg">

@@ -37,4 +37,4 @@ The following platform-specific functionality is provided for .NET MAUI layouts 
 
 The following platform-specific functionality is provided for the .NET MAUI `Application` class on iOS:
 
-- Enabling a `PanGestureRecognizer` in a scrolling view to capture and share the pan gesture with the scrolling view. For more information, see [Simultaneous pan gesture recognition on iOS](application-pan-gesture.md).
+- Enabling a <xref:Microsoft.Maui.Controls.PanGestureRecognizer> in a scrolling view to capture and share the pan gesture with the scrolling view. For more information, see [Simultaneous pan gesture recognition on iOS](application-pan-gesture.md).

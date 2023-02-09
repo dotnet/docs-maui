@@ -8,9 +8,9 @@ ms.date: 02/22/2022
 
 A .NET Multi-platform App UI (.NET MAUI) pan gesture recognizer detects the movement of fingers around the screen and can be used to apply that movement to content. A typical scenario for the pan gesture is to horizontally and vertically pan an image, so that all of the image content can be viewed when it's being displayed in a viewport smaller than the image dimensions. This is accomplished by moving the image within the viewport.
 
-In .NET MAUI, pan gesture recognition is provided by the `PanGestureRecognizer` class. This class defines the `TouchPoints` property, of type `int`, which represents the number of touch points in the gesture. The default value of this property is 1. This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means that it can be the target of data bindings, and styled.
+In .NET MAUI, pan gesture recognition is provided by the <xref:Microsoft.Maui.Controls.PanGestureRecognizer> class. This class defines the `TouchPoints` property, of type `int`, which represents the number of touch points in the gesture. The default value of this property is 1. This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means that it can be the target of data bindings, and styled.
 
-The `PanGestureRecognizer` class also defines a `PanUpdated` event that's raised when the detected pan gesture changes. The `PanUpdatedEventArgs` object that accompanies this event defines the following properties:
+The <xref:Microsoft.Maui.Controls.PanGestureRecognizer> class also defines a `PanUpdated` event that's raised when the detected pan gesture changes. The `PanUpdatedEventArgs` object that accompanies this event defines the following properties:
 
 - `GestureId`, of type `int`, which represents the id of the gesture that raised the event.
 - `StatusType`, of type `GestureStatus`, which indicates if the event has been raised for a newly started gesture, a running gesture, a completed gesture, or a canceled gesture.
@@ -19,7 +19,7 @@ The `PanGestureRecognizer` class also defines a `PanUpdated` event that's raised
 
 ## Create a PanGestureRecognizer
 
-To make a <xref:Microsoft.Maui.Controls.View> recognize a pan gesture, create a `PanGestureRecognizer` object, handle the `PanUpdated` event, and add the new gesture recognizer to the `GestureRecognizers` collection on the view. The following code example shows a `PanGestureRecognizer` attached to an <xref:Microsoft.Maui.Controls.Image>:
+To make a <xref:Microsoft.Maui.Controls.View> recognize a pan gesture, create a <xref:Microsoft.Maui.Controls.PanGestureRecognizer> object, handle the `PanUpdated` event, and add the new gesture recognizer to the `GestureRecognizers` collection on the view. The following code example shows a <xref:Microsoft.Maui.Controls.PanGestureRecognizer> attached to an <xref:Microsoft.Maui.Controls.Image>:
 
 ```xaml
 <Image Source="monkey.jpg">
