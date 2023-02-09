@@ -59,11 +59,11 @@ ProgressBar progressBar = new ProgressBar
 
 ## Animate a ProgressBar
 
-The `ProgressTo` method animates the <xref:Microsoft.Maui.Controls.ProgressBar> from its current `Progress` value to a provided value over time. The method accepts a `double` progress value, a `uint` duration in milliseconds, an `Easing` enum value and returns a `Task<bool>`. The following example demonstrates how to animate a <xref:Microsoft.Maui.Controls.ProgressBar>:
+The `ProgressTo` method animates the <xref:Microsoft.Maui.Controls.ProgressBar> from its current `Progress` value to a provided value over time. The method accepts a `double` progress value, a `uint` duration in milliseconds, an <xref:Microsoft.Maui.Easing> enum value and returns a `Task<bool>`. The following example demonstrates how to animate a <xref:Microsoft.Maui.Controls.ProgressBar>:
 
 ```csharp
 // animate to 75% progress over 500 milliseconds with linear easing
 await progressBar.ProgressTo(0.75, 500, Easing.Linear);
 ```
 
-For more information about the `Easing` enumeration, see [Easing functions](~/user-interface/animation/easing.md).
+For more information about the <xref:Microsoft.Maui.Easing> enumeration, see [Easing functions](~/user-interface/animation/easing.md).
