@@ -28,21 +28,21 @@ The process for enabling drag and drop in an app is as follows:
 
 In .NET MAUI, drag gesture recognition is provided by the <xref:Microsoft.Maui.Controls.DragGestureRecognizer> class. This class defines the following properties:
 
-- `CanDrag`, of type `bool`, which indicates whether the element the gesture recognizer is attached to can be a drag source. The default value of this property is `true`.
-- `DragStartingCommand`, of type `ICommand`, which is executed when a drag gesture is first recognized.
-- `DragStartingCommandParameter`, of type `object`, which is the parameter that's passed to the `DragStartingCommand`.
-- `DropCompletedCommand`, of type `ICommand`, which is executed when the drag source is dropped.
-- `DropCompletedCommandParameter`, of type `object`, which is the parameter that's passed to the `DropCompletedCommand`.
+- <xref:Microsoft.Maui.Controls.DragGestureRecognizer.CanDrag>, of type `bool`, which indicates whether the element the gesture recognizer is attached to can be a drag source. The default value of this property is `true`.
+- <xref:Microsoft.Maui.Controls.DragGestureRecognizer.DragStartingCommand>, of type `ICommand`, which is executed when a drag gesture is first recognized.
+- <xref:Microsoft.Maui.Controls.DragGestureRecognizer.DragStartingCommandParameter>, of type `object`, which is the parameter that's passed to the  <xref:Microsoft.Maui.Controls.DragGestureRecognizer.DragStartingCommand>.
+- <xref:Microsoft.Maui.Controls.DragGestureRecognizer.DropCompletedCommand>, of type `ICommand`, which is executed when the drag source is dropped.
+- <xref:Microsoft.Maui.Controls.DragGestureRecognizer.DropCompletedCommandParameter>, of type `object`, which is the parameter that's passed to the <xref:Microsoft.Maui.Controls.DragGestureRecognizer.DropCompletedCommand>.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
-The <xref:Microsoft.Maui.Controls.DragGestureRecognizer> class also defines `DragStarting` and `DropCompleted` events that fire if the `CanDrag` property is `true`. When a <xref:Microsoft.Maui.Controls.DragGestureRecognizer> object detects a drag gesture, it executes the `DragStartingCommand` and invokes the `DragStarting` event. Then, when the <xref:Microsoft.Maui.Controls.DragGestureRecognizer> object detects the completion of a drop gesture, it executes the `DropCompletedCommand` and invokes the `DropCompleted` event.
+The <xref:Microsoft.Maui.Controls.DragGestureRecognizer> class also defines <xref:Microsoft.Maui.Controls.DragGestureRecognizer.DragStarting> and <xref:Microsoft.Maui.Controls.DragGestureRecognizer.DropCompleted> events that fire if the <xref:Microsoft.Maui.Controls.DragGestureRecognizer.CanDrag> property is `true`. When a <xref:Microsoft.Maui.Controls.DragGestureRecognizer> object detects a drag gesture, it executes the <xref:Microsoft.Maui.Controls.DragGestureRecognizer.DragStartingCommand> and invokes the <xref:Microsoft.Maui.Controls.DragGestureRecognizer.DragStarting> event. Then, when the <xref:Microsoft.Maui.Controls.DragGestureRecognizer> object detects the completion of a drop gesture, it executes the <xref:Microsoft.Maui.Controls.DragGestureRecognizer.DropCompletedCommand> and invokes the <xref:Microsoft.Maui.Controls.DragGestureRecognizer.DropCompleted> event.
 
-The `DragStartingEventArgs` object that accompanies the `DragStarting` event defines the following properties:
+The <xref:Microsoft.Maui.Controls.DragStartingEventArgs> object that accompanies the <xref:Microsoft.Maui.Controls.DragGestureRecognizer.DragStarting> event defines the following properties:
 
-- `Handled`, of type `bool`, indicates whether the event handler has handled the event or whether .NET MAUI should continue its own processing.
-- `Cancel`, of type `bool`, indicates whether the event should be canceled.
-- `Data`, of type `DataPackage`, indicates the data package that accompanies the drag source. This is a read-only property.
+- <xref:Microsoft.Maui.Controls.DragStartingEventArgs.Handled>, of type `bool`, indicates whether the event handler has handled the event or whether .NET MAUI should continue its own processing.
+- <xref:Microsoft.Maui.Controls.DragStartingEventArgs.Cancel>, of type `bool`, indicates whether the event should be canceled.
+- <xref:Microsoft.Maui.Controls.DragStartingEventArgs.Data>, of type <xref:Microsoft.Maui.Controls.DataPackage>, indicates the data package that accompanies the drag source. This is a read-only property.
 
 <!--
 The `DropCompletedEventArgs` object that accompanies the `DropCompleted` event has a read-only `DropResult` property, of type `DataPackageOperation`. For more information about the `DataPackageOperation` enumeration, see [Handle the DragOver event](#handle-the-dragover-event).
@@ -85,11 +85,11 @@ The following table shows the properties that are read, and any conversion that'
 
 For content other than text and images, you'll need to build a data package yourself.
 
-Data packages are represented by the `DataPackage` class, which defines the following properties:
+Data packages are represented by the <xref:Microsoft.Maui.Controls.DataPackage> class, which defines the following properties:
 
-- `Properties`, of type `DataPackagePropertySet`, which is a collection of properties that comprise the data contained in the `DataPackage`. This property is a read-only property.
+- <xref:Microsoft.Maui.Controls.DataPackage.Properties>, of type `DataPackagePropertySet`, which is a collection of properties that comprise the data contained in the `DataPackage`. This property is a read-only property.
 - <xref:Microsoft.Maui.Controls.Image>, of type `ImageSource`, which is the image contained in the `DataPackage`.
-- `Text`, of type `string`, which is the text contained in the `DataPackage`.
+- <xref:Microsoft.Maui.Controls.DataPackage.Text>, of type `string`, which is the text contained in the `DataPackage`.
 - <xref:Microsoft.Maui.Controls.View>, of type `DataPackageView`, which is a read-only version of the `DataPackage`.
 
 The `DataPackagePropertySet` class represents a property bag stored as a `Dictionary<string,object>`. For information about the `DataPackageView` class, see [Process the data package](#process-the-data-package).
@@ -157,29 +157,29 @@ The `DragStartingEventArgs` object that accompanies the `DragStarting` event has
 
 In .NET MAUI, drop gesture recognition is provided by the <xref:Microsoft.Maui.Controls.DropGestureRecognizer> class. This class defines the following properties:
 
-- `AllowDrop`, of type `bool`, which indicates whether the element the gesture recognizer is attached to can be a drop target. The default value of this property is `true`.
-- `DragOverCommand`, of type `ICommand`, which is executed when the drag source is dragged over the drop target.
-- `DragOverCommandParameter`, of type `object`, which is the parameter that's passed to the `DragOverCommand`.
-- `DragLeaveCommand`, of type `ICommand`, which is executed when the drag source is dragged off the drop target.
-- `DragLeaveCommandParameter`, of type `object`, which is the parameter that's passed to the `DragLeaveCommand`.
-- `DropCommand`, of type `ICommand`, which is executed when the drag source is dropped over the drop target.
-- `DropCommandParameter`, of type `object`, which is the parameter that's passed to the `DropCommand`.
+- <xref:Microsoft.Maui.Controls.DropGestureRecognizer.AllowDrop>, of type `bool`, which indicates whether the element the gesture recognizer is attached to can be a drop target. The default value of this property is `true`.
+- <xref:Microsoft.Maui.Controls.DropGestureRecognizer.DragOverCommand>, of type `ICommand`, which is executed when the drag source is dragged over the drop target.
+- <xref:Microsoft.Maui.Controls.DropGestureRecognizer.DragOverCommandParameter>, of type `object`, which is the parameter that's passed to the `DragOverCommand`.
+- <xref:Microsoft.Maui.Controls.DropGestureRecognizer.DragLeaveCommand>, of type `ICommand`, which is executed when the drag source is dragged off the drop target.
+- <xref:Microsoft.Maui.Controls.DropGestureRecognizer.DragLeaveCommandParameter>, of type `object`, which is the parameter that's passed to the `DragLeaveCommand`.
+- <xref:Microsoft.Maui.Controls.DropGestureRecognizer.DropCommand>, of type `ICommand`, which is executed when the drag source is dropped over the drop target.
+- <xref:Microsoft.Maui.Controls.DropGestureRecognizer.DropCommandParameter>, of type `object`, which is the parameter that's passed to the `DropCommand`.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
-The <xref:Microsoft.Maui.Controls.DropGestureRecognizer> class also defines `DragOver`, `DragLeave`, and `Drop` events that fire if the `AllowDrop` property is `true`. When a <xref:Microsoft.Maui.Controls.DropGestureRecognizer> recognizes a drag source over the drop target, it executes the `DragOverCommand` and invokes the `DragOver` event. Then, if the drag source is dragged off the drop target, the <xref:Microsoft.Maui.Controls.DropGestureRecognizer> executes the `DragLeaveCommand` and invokes the `DragLeave` event. Finally, when the <xref:Microsoft.Maui.Controls.DropGestureRecognizer> recognizes a drop gesture over the drop target, it executes the `DropCommand` and invokes the `Drop` event.
+The <xref:Microsoft.Maui.Controls.DropGestureRecognizer> class also defines <xref:Microsoft.Maui.Controls.DropGestureRecognizer.DragOver>, <xref:Microsoft.Maui.Controls.DropGestureRecognizer.DragLeave>, and <xref:Microsoft.Maui.Controls.DropGestureRecognizer.Drop> events that fire if the <xref:Microsoft.Maui.Controls.DropGestureRecognizer.AllowDrop> property is `true`. When a <xref:Microsoft.Maui.Controls.DropGestureRecognizer> recognizes a drag source over the drop target, it executes the <xref:Microsoft.Maui.Controls.DropGestureRecognizer.DragOverCommand> and invokes the <xref:Microsoft.Maui.Controls.DropGestureRecognizer.DragOver> event. Then, if the drag source is dragged off the drop target, the <xref:Microsoft.Maui.Controls.DropGestureRecognizer> executes the <xref:Microsoft.Maui.Controls.DropGestureRecognizer.DragLeaveCommand> and invokes the <xref:Microsoft.Maui.Controls.DropGestureRecognizer.DragLeave> event. Finally, when the <xref:Microsoft.Maui.Controls.DropGestureRecognizer> recognizes a drop gesture over the drop target, it executes the <xref:Microsoft.Maui.Controls.DropGestureRecognizer.DropCommand> and invokes the <xref:Microsoft.Maui.Controls.DropGestureRecognizer.Drop> event.
 
-The `DragEventArgs` class, which accompanies the `DragOver` and `DragLeave` events, defines the following properties:
+The <xref:Microsoft.Maui.Controls.DragEventArgs> class, which accompanies the <xref:Microsoft.Maui.Controls.DropGestureRecognizer.DragOver> and <xref:Microsoft.Maui.Controls.DropGestureRecognizer.DragLeave> events, defines the following properties:
 
-- `Data`, of type `DataPackage`, which contains the data associated with the drag source. This property is read-only.
-- `AcceptedOperation`, of type `DataPackageOperation`, which specifies which operations are allowed by the drop target.
+- <xref:Microsoft.Maui.Controls.DragEventArgs.Data>, of type `DataPackage`, which contains the data associated with the drag source. This property is read-only.
+- <xref:Microsoft.Maui.Controls.DragEventArgs.AcceptedOperation>, of type `DataPackageOperation`, which specifies which operations are allowed by the drop target.
 
 For information about the `DataPackageOperation` enumeration, see [Handle the DragOver event](#handle-the-dragover-event).
 
-The `DropEventArgs` class that accompanies the `Drop` event defines the following properties:
+The <xref:Microsoft.Maui.Controls.DropEventArgs> class that accompanies the `Drop` event defines the following properties:
 
-- `Data`, of type `DataPackageView`, which is a read-only version of the data package.
-- `Handled`, of type `bool`, indicates whether the event handler has handled the event or whether .NET MAUI should continue its own processing.
+- <xref:Microsoft.Maui.Controls.DropEventArgs.Data>, of type `DataPackageView`, which is a read-only version of the data package.
+- <xref:Microsoft.Maui.Controls.DropEventArgs.Handled>, of type `bool`, indicates whether the event handler has handled the event or whether .NET MAUI should continue its own processing.
 
 The following XAML example shows a <xref:Microsoft.Maui.Controls.DropGestureRecognizer> attached to an <xref:Microsoft.Maui.Controls.Image>:
 
