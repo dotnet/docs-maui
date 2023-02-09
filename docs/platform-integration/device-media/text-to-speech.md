@@ -55,7 +55,7 @@ Text-to-Speech will automatically queue speech requests from the same thread.
 
 ## Settings
 
-To control the volume, pitch, and locale of the voice, use the <xref:Microsoft.Maui.Media.SpeechOptions> class. Pass an instance of that class to the <xref:Microsoft.Maui.Media.ITextToSpeech.SpeakAsync(System.String,Microsoft.Maui.Media.SpeechOptions,System.Threading.CancellationToken)> method. the <xref:Microsoft.Maui.Media.ITextToSpeech.GetLocalesAsync> method retrieves a collection of the locales provided by the operating system.
+To control the volume, pitch, and locale of the voice, use the <xref:Microsoft.Maui.Media.SpeechOptions> class. Pass an instance of that class to the <xref:Microsoft.Maui.Media.ITextToSpeech.SpeakAsync(System.String,Microsoft.Maui.Media.SpeechOptions,System.Threading.CancellationToken)> method. The <xref:Microsoft.Maui.Media.ITextToSpeech.GetLocalesAsync> method retrieves a collection of the locales provided by the operating system.
 
 :::code language="csharp" source="../snippets/shared_1/MediaPage.cs" id="speak_options":::
 
