@@ -8,7 +8,7 @@ ms.date: 01/12/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-shapes)
 
-Several .NET Multi-platform App UI (.NET MAUI) Shapes classes have `FillRule` properties, of type `FillRule`. These include <xref:Microsoft.Maui.Controls.Shapes.Polygon>, <xref:Microsoft.Maui.Controls.Shapes.Polyline>, and `GeometryGroup`.
+Several .NET Multi-platform App UI (.NET MAUI) Shapes classes have `FillRule` properties, of type `FillRule`. These include <xref:Microsoft.Maui.Controls.Shapes.Polygon>, <xref:Microsoft.Maui.Controls.Shapes.Polyline>, and <xref:Microsoft.Maui.Controls.Shapes.GeometryGroup>.
 
 The `FillRule` enumeration defines `EvenOdd` and `Nonzero` members. Each member represents a different rule for determining whether a point is in the fill region of a shape.
 
@@ -96,7 +96,7 @@ In the composite shape, notice that all rings are filled. This is because all th
 
 In the image above the red arrows represent the direction the segments are drawn, and black arrow represents an arbitrary ray running from a point in the innermost ring. Starting with a value of zero, for each segment that the ray crosses, a value of one is added because the segment crosses the ray from left to right.
 
-A more complex shape with segments running in different directions is required to better demonstrate the behavior of the `Nonzero` fill rule. The following XAML example creates a similar shape to the previous example, except that it's created with a `PathGeometry` rather than an `EllipseGeometry`:
+A more complex shape with segments running in different directions is required to better demonstrate the behavior of the `Nonzero` fill rule. The following XAML example creates a similar shape to the previous example, except that it's created with a <xref:Microsoft.Maui.Controls.Shapes.PathGeometry> rather than an <xref:Microsoft.Maui.Controls.Shapes.EllipseGeometry>:
 
 ```xaml
 <Path Stroke="Black"

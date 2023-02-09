@@ -8,7 +8,7 @@ ms.date: 01/12/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-shapes)
 
-The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Shapes.Rectangle> class derives from the `Shape` class, and can be used to draw rectangles and squares. For information on the properties that the <xref:Microsoft.Maui.Controls.Shapes.Rectangle> class inherits from the `Shape` class, see [.NET MAUI Shapes](index.md).
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Shapes.Rectangle> class derives from the <xref:Microsoft.Maui.Controls.Shapes.Shape> class, and can be used to draw rectangles and squares. For information on the properties that the <xref:Microsoft.Maui.Controls.Shapes.Rectangle> class inherits from the <xref:Microsoft.Maui.Controls.Shapes.Shape> class, see [.NET MAUI Shapes](index.md).
 
 <xref:Microsoft.Maui.Controls.Shapes.Rectangle> defines the following properties:
 
@@ -17,7 +17,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Shapes.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
-The <xref:Microsoft.Maui.Controls.Shapes.Rectangle> class sets the `Aspect` property, inherited from the `Shape` class, to `Stretch.Fill`. For more information about the `Aspect` property, see [Stretch shapes](index.md#stretch-shapes).
+The <xref:Microsoft.Maui.Controls.Shapes.Rectangle> class sets the `Aspect` property, inherited from the <xref:Microsoft.Maui.Controls.Shapes.Shape> class, to `Stretch.Fill`. For more information about the `Aspect` property, see [Stretch shapes](index.md#stretch-shapes).
 
 ## Create a Rectangle
 

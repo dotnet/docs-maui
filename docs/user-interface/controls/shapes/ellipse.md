@@ -8,9 +8,9 @@ ms.date: 01/12/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-shapes)
 
-The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Shapes.Ellipse> class derives from the `Shape` class, and can be used to draw ellipses and circles. For information on the properties that the <xref:Microsoft.Maui.Controls.Shapes.Ellipse> class inherits from the `Shape` class, see [Shapes](index.md).
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Shapes.Ellipse> class derives from the <xref:Microsoft.Maui.Controls.Shapes.Shape> class, and can be used to draw ellipses and circles. For information on the properties that the <xref:Microsoft.Maui.Controls.Shapes.Ellipse> class inherits from the <xref:Microsoft.Maui.Controls.Shapes.Shape> class, see [Shapes](index.md).
 
-The <xref:Microsoft.Maui.Controls.Shapes.Ellipse> class sets the `Aspect` property, inherited from the `Shape` class, to `Stretch.Fill`. For more information about the `Aspect` property, see [Stretch shapes](index.md#stretch-shapes).
+The <xref:Microsoft.Maui.Controls.Shapes.Ellipse> class sets the `Aspect` property, inherited from the <xref:Microsoft.Maui.Controls.Shapes.Shape> class, to `Stretch.Fill`. For more information about the `Aspect` property, see [Stretch shapes](index.md#stretch-shapes).
 
 ## Create an Ellipse
 

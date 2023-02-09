@@ -8,9 +8,9 @@ ms.date: 01/12/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-shapes)
 
-A .NET Multi-platform App UI (.NET MAUI) `Shape` is a type of <xref:Microsoft.Maui.Controls.View> that enables you to draw a shape to the screen. `Shape` objects can be used inside layout classes and most controls, because the `Shape` class derives from the <xref:Microsoft.Maui.Controls.View> class. .NET MAUI Shapes is available in the `Microsoft.Maui.Controls.Shapes` namespace.
+A .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Shapes.Shape> is a type of <xref:Microsoft.Maui.Controls.View> that enables you to draw a shape to the screen. <xref:Microsoft.Maui.Controls.Shapes.Shape> objects can be used inside layout classes and most controls, because the <xref:Microsoft.Maui.Controls.Shapes.Shape> class derives from the <xref:Microsoft.Maui.Controls.View> class. .NET MAUI Shapes is available in the `Microsoft.Maui.Controls.Shapes` namespace.
 
-`Shape` defines the following properties:
+<xref:Microsoft.Maui.Controls.Shapes.Shape> defines the following properties:
 
 - `Aspect`, of type `Stretch`, describes how the shape fills its allocated space. The default value of this property is `Stretch.None`.
 - `Fill`, of type <xref:Microsoft.Maui.Controls.Brush>, indicates the brush used to paint the shape's interior.
@@ -24,7 +24,7 @@ A .NET Multi-platform App UI (.NET MAUI) `Shape` is a type of <xref:Microsoft.Ma
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
-.NET MAUI defines a number of objects that derive from the `Shape` class. These are <xref:Microsoft.Maui.Controls.Shapes.Ellipse>, <xref:Microsoft.Maui.Controls.Shapes.Line>, <xref:Microsoft.Maui.Controls.Shapes.Path>, <xref:Microsoft.Maui.Controls.Shapes.Polygon>, <xref:Microsoft.Maui.Controls.Shapes.Polyline>, <xref:Microsoft.Maui.Controls.Shapes.Rectangle>, and <xref:Microsoft.Maui.Controls.Shapes.RoundRectangle>.
+.NET MAUI defines a number of objects that derive from the <xref:Microsoft.Maui.Controls.Shapes.Shape> class. These are <xref:Microsoft.Maui.Controls.Shapes.Ellipse>, <xref:Microsoft.Maui.Controls.Shapes.Line>, <xref:Microsoft.Maui.Controls.Shapes.Path>, <xref:Microsoft.Maui.Controls.Shapes.Polygon>, <xref:Microsoft.Maui.Controls.Shapes.Polyline>, <xref:Microsoft.Maui.Controls.Shapes.Rectangle>, and <xref:Microsoft.Maui.Controls.Shapes.RoundRectangle>.
 
 ## Paint shapes
 
@@ -52,7 +52,7 @@ For more information about <xref:Microsoft.Maui.Controls.Brush> objects, see [Br
 
 ## Stretch shapes
 
-`Shape` objects have an `Aspect` property, of type `Stretch`. This property determines how a `Shape` object's contents is stretched to fill the `Shape` object's layout space. A `Shape` object's layout space is the amount of space the `Shape` is allocated by the .NET MAUI layout system, because of either an explicit `WidthRequest` and `HeightRequest` setting or because of its `HorizontalOptions` and `VerticalOptions` settings.
+<xref:Microsoft.Maui.Controls.Shapes.Shape> objects have an `Aspect` property, of type `Stretch`. This property determines how a <xref:Microsoft.Maui.Controls.Shapes.Shape> object's contents is stretched to fill the <xref:Microsoft.Maui.Controls.Shapes.Shape> object's layout space. A <xref:Microsoft.Maui.Controls.Shapes.Shape> object's layout space is the amount of space the <xref:Microsoft.Maui.Controls.Shapes.Shape> is allocated by the .NET MAUI layout system, because of either an explicit `WidthRequest` and `HeightRequest` setting or because of its `HorizontalOptions` and `VerticalOptions` settings.
 
 The `Stretch` enumeration defines the following members:
 
@@ -83,9 +83,9 @@ In this example, a <xref:Microsoft.Maui.Controls.Shapes.Path> object draws a hea
 
 ## Draw dashed shapes
 
-`Shape` objects have a `StrokeDashArray` property, of type `DoubleCollection`. This property represents a collection of `double` values that indicate the pattern of dashes and gaps that are used to outline a shape. A `DoubleCollection` is an `ObservableCollection` of `double` values. Each `double` in the collection specifies the length of a dash or gap. The first item in the collection, which is located at index 0, specifies the length of a dash. The second item in the collection, which is located at index 1, specifies the length of a gap. Therefore, objects with an even index value specify dashes, while objects with an odd index value specify gaps.
+<xref:Microsoft.Maui.Controls.Shapes.Shape> objects have a `StrokeDashArray` property, of type `DoubleCollection`. This property represents a collection of `double` values that indicate the pattern of dashes and gaps that are used to outline a shape. A `DoubleCollection` is an `ObservableCollection` of `double` values. Each `double` in the collection specifies the length of a dash or gap. The first item in the collection, which is located at index 0, specifies the length of a dash. The second item in the collection, which is located at index 1, specifies the length of a gap. Therefore, objects with an even index value specify dashes, while objects with an odd index value specify gaps.
 
-`Shape` objects also have a `StrokeDashOffset` property, of type `double`, which specifies the distance within the dash pattern where a dash begins. Failure to set this property will result in the `Shape` having a solid outline.
+<xref:Microsoft.Maui.Controls.Shapes.Shape> objects also have a `StrokeDashOffset` property, of type `double`, which specifies the distance within the dash pattern where a dash begins. Failure to set this property will result in the <xref:Microsoft.Maui.Controls.Shapes.Shape> having a solid outline.
 
 Dashed shapes can be drawn by setting both the `StrokeDashArray` and `StrokeDashOffset` properties. The `StrokeDashArray` property should be set to one or more `double` values, with each pair delimited by a single comma and/or one or more spaces. For example, "0.5 1.0" and "0.5,1.0" are both valid.
 
@@ -110,7 +110,7 @@ In this example, a filled rectangle with a dashed stroke is drawn:
 
 A line has three parts: start cap, line body, and end cap. The start and end caps describe the shape at the start and end of a line, or segment.
 
-`Shape` objects have a `StrokeLineCap` property, of type `PenLineCap`, that describes the shape at the start and end of a line, or segment. The `PenLineCap` enumeration defines the following members:
+<xref:Microsoft.Maui.Controls.Shapes.Shape> objects have a `StrokeLineCap` property, of type `PenLineCap`, that describes the shape at the start and end of a line, or segment. The `PenLineCap` enumeration defines the following members:
 
 - `Flat`, which represents a cap that doesn't extend past the last point of the line. This is comparable to no line cap, and is the default value of the `StrokeLineCap` property.
 - `Square`, which represents a rectangle that has a height equal to the line thickness and a length equal to half the line thickness.
@@ -137,7 +137,7 @@ In this example, the red line is rounded at the start and end of the line:
 
 ## Control line joins
 
-`Shape` objects have a `StrokeLineJoin` property, of type `PenLineJoin`, that specifies the type of join that is used at the vertices of the shape. The `PenLineJoin` enumeration defines the following members:
+<xref:Microsoft.Maui.Controls.Shapes.Shape> objects have a `StrokeLineJoin` property, of type `PenLineJoin`, that specifies the type of join that is used at the vertices of the shape. The `PenLineJoin` enumeration defines the following members:
 
 - `Miter`, which represents regular angular vertices. This is the default value of the `StrokeLineJoin` property.
 - `Bevel`, which represents beveled vertices.
