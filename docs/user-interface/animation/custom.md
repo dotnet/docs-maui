@@ -13,7 +13,7 @@ A number of parameters must be specified when creating an <xref:Microsoft.Maui.C
 Running an animation created with the <xref:Microsoft.Maui.Controls.Animation> class, which may or may not include child animations, is achieved by calling the <xref:Microsoft.Maui.Controls.Animation.Commit%2A> method. This method specifies the duration of the animation, and amongst other items, a callback that controls whether to repeat the animation.
 
 > [!NOTE]
-> The <xref:Microsoft.Maui.Controls.Animation> class has an `IsEnabled` property that can be examined to determine if animations have been disabled by the operating system, such as when power saving mode is activated.
+> The <xref:Microsoft.Maui.Controls.Animation> class has an <xref:Microsoft.Maui.Controls.Animation.IsEnabled> property that can be examined to determine if animations have been disabled by the operating system, such as when power saving mode is activated.
 
 ## Create an animation
 
