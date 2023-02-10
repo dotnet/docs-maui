@@ -13,7 +13,7 @@ While there are many benefits to using .NET Multi-platform App UI (.NET MAUI) ha
 The process for migrating a Xamarin.Forms custom renderer to .NET MAUI is to:
 
 1. Add the code into the appropriate location in your .NET MAUI project(s). For more information, see [Add the code](#add-the-code).
-1. Modify the `using` directives and remove any <xref:Xamarin.Forms.ExportRenderer> attributes. For more information, see [Modify using directives and other code](#modify-using-directives-and-other-code).
+1. Modify the `using` directives and remove `ExportRenderer` attributes. For more information, see [Modify using directives and other code](#modify-using-directives-and-other-code).
 1. Register the renderers. For more information, see [Register renderers](#register-renderers).
 1. Consume the renderers. For more information, see [Consume the custom renderers](#consume-the-custom-renderers).
 
@@ -35,7 +35,7 @@ However, if your solution has separate projects per-platform, then you should mo
 
 Any reference to the `Xamarin.Forms.*` namespaces need to be removed, and then you can resolve the related types to `Microsoft.Maui.*`. This needs to occur in all files you've added to the .NET MAUI project(s).
 
-You should also remove any <xref:Xamarin.Forms.ExportRenderer> attributes as they won't be needed in .NET MAUI. For example, the following should be removed:
+You should also remove any `ExportRenderer` attributes as they won't be needed in .NET MAUI. For example, the following should be removed:
 
 ```csharp
 [assembly: ExportRenderer(typeof(PressableView), typeof(PressableViewRenderer))]
@@ -43,7 +43,7 @@ You should also remove any <xref:Xamarin.Forms.ExportRenderer> attributes as the
 
 ## Register renderers
 
-In your .NET MAUI app project, open *MauiProgram.cs* and add a `using` statement for the `Microsoft.Maui.Controls.Compatibility.Hosting` namespace. Then, call <xref:Microsoft.Maui.Controls.Compatibility.Hosting.MauiAppBuilderExtensions.UseMauiCompatibility%2A> on the <xref:Microsoft.Maui.Controls.MauiAppBuilder> object in the `CreateMauiApp` method, and configure each renderer using conditional compilation per platform:
+In your .NET MAUI app project, open *MauiProgram.cs* and add a `using` statement for the `Microsoft.Maui.Controls.Compatibility.Hosting` namespace. Then, call <xref:Microsoft.Maui.Controls.Compatibility.Hosting.MauiAppBuilderExtensions.UseMauiCompatibility%2A> on the <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object in the `CreateMauiApp` method, and configure each renderer using conditional compilation per platform:
 
 ```csharp
 using Microsoft.Maui.Controls.Compatibility.Hosting;
