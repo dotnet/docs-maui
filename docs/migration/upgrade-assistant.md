@@ -9,17 +9,20 @@ no-loc: [ "Xamarin.Forms", "Xamarin.Essentials", "Xamarin.CommunityToolkit", ".N
 
 The .NET Upgrade Assistant is a command-line tool that will help you upgrade Xamarin.Forms projects to .NET Multi-platform App UI (.NET MAUI) by converting the solution's project file and by performing common code updates. Specifically, the tool will:
 
-- Converts the Xamarin.Forms class library project, Xamarin.iOS project, and Xamarin.Android project to SDK-style projects.
-- Updates the target framework in project files to net7.0-android and net7.0-ios, as required.
-- Sets `<UseMaui>true</UseMaui>` in project files.
-- Adds additional project properties, and removes project properties that aren't required.
-- Adds and removes various NuGet packages. This includes removing the Xamarin.Forms and Xamarin.Essentials NuGet packages, replacing the Xamarin.CommunityToolkit NuGet package with the .NET MAUI Community Toolkit, and ensuring that .NET MAUI compatible versions of the SkiaSharp NuGet packages are used where required.
+- Convert the Xamarin.Forms class library project, Xamarin.iOS project, and Xamarin.Android project to SDK-style projects.
+- Update the target framework in project files to net7.0-android and net7.0-ios, as required.
+- Set `<UseMaui>true</UseMaui>` in project files.
+- Add additional project properties, and removes project properties that aren't required.
+- Add and remove specific NuGet packages:
+  - Remove the Xamarin.Forms and Xamarin.Essentials NuGet packages.
+  - Replace the Xamarin.CommunityToolkit NuGet package with the .NET MAUI Community Toolkit NuGet package.
+  - Replace Xamarin.Forms compatible versions of the SkiaSharp NuGet packages with .NET MAUI compatible versions.
 - Remove the `Xamarin.Essentials` namespace, and replace the `Xamarin.Forms` namespace with the `Microsoft.Maui` and `Microsoft.Maui.Controls` namespaces.
 
 After running the tool, the app will require additional effort to complete the migration.
 
 > [!NOTE]
-> The .NET Upgrade Assistant doesn't support upgrading UWP projects, iOS extension projects, or binding projects.
+> The .NET Upgrade Assistant for .NET MAUI doesn't support upgrading UWP projects, iOS extension projects, or binding projects.
 
 For more information about .NET Upgrade Assistant, including the other app types it can convert, see [Overview of the .NET Upgrade Assistant](/dotnet/core/porting/upgrade-assistant-overview).
 
