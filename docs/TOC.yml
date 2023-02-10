@@ -83,6 +83,8 @@
               href: migration/layouts.md
             - name: Custom renderers
               href: migration/custom-renderers.md
+            - name: Effects
+              href: migration/effects.md
     - name: Tutorials
       items:
         - name: Create a .NET MAUI app
