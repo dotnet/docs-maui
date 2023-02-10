@@ -2,7 +2,7 @@
 title: "Upgrade a Xamarin.Forms app to .NET MAUI with the .NET Upgrade Assistant"
 description: "Learn how to use .NET Upgrade Assistant to migrate a Xamarin.Forms app to .NET MAUI."
 ms.date: 2/10/2023
-no-loc: [ "Xamarin.Forms", "Xamarin.Essentials", "Xamarin.CommunityToolkit", ".NET MAUI Community Toolkit", "SkiaSharp", "Xamarin.Forms.Maps", "Microsoft.Maui", "Microsoft.Maui.Controls" ]
+no-loc: [ "Xamarin.Forms", "Xamarin.Essentials", "Xamarin.CommunityToolkit", ".NET MAUI Community Toolkit", "SkiaSharp", "Xamarin.Forms.Maps", "Microsoft.Maui", "Microsoft.Maui.Controls", "net7.0-android", "net7.0-ios" ]
 ---
 
 # Upgrade a Xamarin.Forms app to .NET MAUI with the .NET Upgrade Assistant
@@ -12,7 +12,7 @@ The .NET Upgrade Assistant is a command-line tool that will help you upgrade Xam
 - Convert the Xamarin.Forms class library project, Xamarin.iOS project, and Xamarin.Android project to SDK-style projects.
 - Update the target framework in project files to net7.0-android and net7.0-ios, as required.
 - Set `<UseMaui>true</UseMaui>` in project files.
-- Add additional project properties, and removes project properties that aren't required.
+- Add additional project properties, and remove project properties that aren't required.
 - Add and remove specific NuGet packages:
   - Remove the Xamarin.Forms and Xamarin.Essentials NuGet packages.
   - Replace the Xamarin.CommunityToolkit NuGet package with the .NET MAUI Community Toolkit NuGet package.
