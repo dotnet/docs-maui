@@ -239,7 +239,7 @@ The binding on each <xref:Microsoft.Maui.Controls.Label> is the default `OneWay`
 
 ## Commanding
 
-Sometimes an app has needs that go beyond property bindings by requiring the user to initiate commands that affect something in the viewmodel. These commands are generally signaled by button clicks or finger taps, and traditionally they are processed in the code-behind file in a handler for the `Clicked` event of the <xref:Microsoft.Maui.Controls.Button> or the `Tapped` event of a `TapGestureRecognizer`.
+Sometimes an app has needs that go beyond property bindings by requiring the user to initiate commands that affect something in the viewmodel. These commands are generally signaled by button clicks or finger taps, and traditionally they are processed in the code-behind file in a handler for the `Clicked` event of the <xref:Microsoft.Maui.Controls.Button> or the `Tapped` event of a <xref:Microsoft.Maui.Controls.TapGestureRecognizer>.
 
 The commanding interface provides an alternative approach to implementing commands that is much better suited to the MVVM architecture. The viewmodel can contain commands, which are methods that are executed in reaction to a specific activity in the view such as a <xref:Microsoft.Maui.Controls.Button> click. Data bindings are defined between these commands and the <xref:Microsoft.Maui.Controls.Button>.
 

@@ -1,15 +1,15 @@
 ---
 title: "Contacts"
 description: "Learn how to use the .NET MAUI Contacts interface in the Microsoft.Maui.ApplicationModel.Communication namespace, which lets a pick a contact and retrieve information about it."
-ms.date: 10/24/2022
+ms.date: 02/02/2023
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel.Communication"]
 ---
 
 # Contacts
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IContacts` interface to select a contact and read information about it.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.ApplicationModel.Communication.IContacts> interface to select a contact and read information about it.
 
-The default implementation of the `IContacts` interface is available through the `Contacts.Default` property. Both the `IContacts` interface and `Contacts` class are contained in the `Microsoft.Maui.ApplicationModel.Communication` namespace.
+The default implementation of the `IContacts` interface is available through the <xref:Microsoft.Maui.ApplicationModel.Communication.Contacts.Default> property. Both the `IContacts` interface and `Contacts` class are contained in the `Microsoft.Maui.ApplicationModel.Communication` namespace.
 
 > [!IMPORTANT]
 > Picking a contact is unsupported on Windows.
@@ -36,7 +36,7 @@ The `ReadContacts` permission is required and must be configured in the Android 
 
 - Add the assembly-based permission:
 
-  Open the _AssemblyInfo.cs_ file under the **Properties** folder and add:
+  Open the _Platforms/Android/MainApplication.cs_ file and add the following assembly attribute after `using` directives:
 
   ```csharp
   [assembly: UsesPermission(Android.Manifest.Permission.ReadContacts)]
@@ -46,7 +46,7 @@ The `ReadContacts` permission is required and must be configured in the Android 
 
 - Update the Android Manifest:
 
-  Open the _AndroidManifest.xml_ file under the **Properties** folder and add the following in the `manifest` node:
+  Open the _Platforms/Android/AndroidManifest.xml_ file and add the following in the `manifest` node:
 
   ```xml
   <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -82,13 +82,13 @@ Picking a contact is unsupported on Windows.
 
 ## Pick a contact
 
-You can request the user to pick a contact by calling the `PickContactAsync` method. A contact dialog will appear on the device allowing the user to select a contact. If the user doesn't select a contact, `null` is returned.
+You can request the user to pick a contact by calling the <xref:Microsoft.Maui.ApplicationModel.Communication.IContacts.PickContactAsync> method. A contact dialog will appear on the device allowing the user to select a contact. If the user doesn't select a contact, `null` is returned.
 
 :::code language="csharp" source="../snippets/shared_1/CommsPage.xaml.cs" id="contact_select":::
 
 ## Get all contacts
 
-The `GetAllAsync` method returns a collection of contacts.
+The <xref:Microsoft.Maui.ApplicationModel.Communication.IContacts.GetAllAsync%2A> method returns a collection of contacts.
 
 :::code language="csharp" source="../snippets/shared_1/CommsPage.xaml.cs" id="contact_all":::
 
@@ -100,15 +100,15 @@ This section describes the platform-specific differences with the contacts API.
 <!-- markdownlint-disable MD024 -->
 # [Android](#tab/android)
 
-- The `cancellationToken` parameter in the `GetAllAsync` method isn't supported.
+- The `cancellationToken` parameter in the <xref:Microsoft.Maui.ApplicationModel.Communication.IContacts.GetAllAsync%2A> method isn't supported.
 
 # [iOS\macOS](#tab/ios)
 
 > [!IMPORTANT]
 > Because of a namespace conflict, the `Contacts` type must be fully qualified when targeting iOS or macOS: `Microsoft.Maui.ApplicationModel.Communication.Contacts`.
 
-- The `cancellationToken` parameter in the `GetAllAsync` method isn't supported.
-- The iOS platform doesn't support the `DisplayName` property natively, thus, the `DisplayName` value is constructed as "GivenName FamilyName".
+- The `cancellationToken` parameter in the <xref:Microsoft.Maui.ApplicationModel.Communication.IContacts.GetAllAsync%2A> method isn't supported.
+- The iOS platform doesn't support the <xref:Microsoft.Maui.ApplicationModel.Communication.Contact.DisplayName> property natively, thus, the `DisplayName` value is constructed as "<xref:Microsoft.Maui.ApplicationModel.Communication.Contact.GivenName> <xref:Microsoft.Maui.ApplicationModel.Communication.Contact.FamilyName>".
 
 # [Windows](#tab/windows)
 

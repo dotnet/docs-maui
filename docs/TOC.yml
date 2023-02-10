@@ -523,6 +523,7 @@
             href: platform-integration/device/information.md
           - name: Device sensors
             href: platform-integration/device/sensors.md
+            displayName: Sensors,IAccelerometer,Accelerometer,IBarometer,Barometer,ICompass,Compass,Shake,IGyroscope,Gyroscope,IMagnetometer,Magnetometer,IOrientationSensor,OrientationSensor
           - name: Flashlight
             href: platform-integration/device/flashlight.md
           - name: Geocoding

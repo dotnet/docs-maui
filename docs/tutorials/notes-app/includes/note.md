@@ -38,7 +38,7 @@ Let's break down the key parts of the XAML controls placed on the page:
 
 ## Load and save a note
 
-Open the _NotePage.xaml.cs_ code-behind file. You can open the code-behind for the __NotePage.xaml_ file in three ways:
+Open the _NotePage.xaml.cs_ code-behind file. You can open the code-behind for the _NotePage.xaml_ file in three ways:
 
 - If the _NotePage.xaml_ is open and is the active document being edited, press <kbd>F7</kbd>.
 - If the _NotePage.xaml_ is open and is the active document being edited, right-click in the text editor and select **View Code**.

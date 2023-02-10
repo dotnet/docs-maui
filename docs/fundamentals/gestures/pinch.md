@@ -8,15 +8,15 @@ ms.date: 02/21/2022
 
 A .NET Multi-platform App UI (.NET MAUI) pinch gesture recognizer is used for performing interactive zoom. A common scenario for the pinch gesture is to perform interactive zoom of an image at the pinch location. This is accomplished by scaling the content of the viewport.
 
-In .NET MAUI, pinch gesture recognition is provided by the `PinchGestureRecognizer` class, which defines a `PinchUpdated` event that's raised when the detected pinch gesture changes. The `PinchGestureUpdatedEventArgs` object that accompanies the `PinchUpdated` event defines the following properties:
+In .NET MAUI, pinch gesture recognition is provided by the <xref:Microsoft.Maui.Controls.PinchGestureRecognizer> class, which defines a <xref:Microsoft.Maui.Controls.PinchGestureRecognizer.PinchUpdated> event that's raised when the detected pinch gesture changes. The <xref:Microsoft.Maui.Controls.PinchGestureUpdatedEventArgs> object that accompanies the <xref:Microsoft.Maui.Controls.PinchGestureRecognizer.PinchUpdated> event defines the following properties:
 
-- `Scale`, of type `double`, which indicates the relative size of the pinch gesture since the last update was received.
-- `ScaleOrigin`, of type `Point`, which indicates the updated origin of the pinch's gesture.
-- `Status`, of type `GestureStatus`, which indicates if the event has been raised for a newly started gesture, a running gesture, a completed gesture, or a canceled gesture.
+- <xref:Microsoft.Maui.Controls.PinchGestureUpdatedEventArgs.Scale>, of type `double`, which indicates the relative size of the pinch gesture since the last update was received.
+- <xref:Microsoft.Maui.Controls.PinchGestureUpdatedEventArgs.ScaleOrigin>, of type `Point`, which indicates the updated origin of the pinch's gesture.
+- <xref:Microsoft.Maui.Controls.PinchGestureUpdatedEventArgs.Status>, of type <xref:Microsoft.Maui.GestureStatus>, which indicates if the event has been raised for a newly started gesture, a running gesture, a completed gesture, or a canceled gesture.
 
 ## Create a PinchGestureRecognizer
 
-To make a <xref:Microsoft.Maui.Controls.View> recognize a pinch gesture, create a `PinchGestureRecognizer` object, handle the `PinchUpdated` event, and add the new gesture recognizer to the `GestureRecognizers` collection on the view. The following code example shows a `PinchGestureRecognizer` attached to an <xref:Microsoft.Maui.Controls.Image>:
+To make a <xref:Microsoft.Maui.Controls.View> recognize a pinch gesture, create a <xref:Microsoft.Maui.Controls.PinchGestureRecognizer> object, handle the <xref:Microsoft.Maui.Controls.PinchGestureRecognizer.PinchUpdated> event, and add the new gesture recognizer to the `GestureRecognizers` collection on the view. The following code example shows a <xref:Microsoft.Maui.Controls.PinchGestureRecognizer> attached to an <xref:Microsoft.Maui.Controls.Image>:
 
 ```xaml
 <Image Source="waterfront.jpg">
@@ -116,7 +116,7 @@ public class PinchToZoomContainer : ContentView
 }
 ```
 
-In this example, the `OnPinchUpdated` method updates the zoom level of the wrapped view, based on the user's pinch gesture. This is achieved by using the values of the `Scale`, `ScaleOrigin` and `Status` properties of the `PinchGestureUpdatedEventArgs` object to calculate the scale factor to be applied at the origin of the pinch gesture. The wrapped view is then zoomed at the origin of the pinch gesture by setting its `TranslationX`, `TranslationY`, and `Scale` properties to the calculated values.
+In this example, the `OnPinchUpdated` method updates the zoom level of the wrapped view, based on the user's pinch gesture. This is achieved by using the values of the <xref:Microsoft.Maui.Controls.PinchGestureUpdatedEventArgs.Scale>, <xref:Microsoft.Maui.Controls.PinchGestureUpdatedEventArgs.ScaleOrigin> and <xref:Microsoft.Maui.Controls.PinchGestureUpdatedEventArgs.Status> properties of the <xref:Microsoft.Maui.Controls.PinchGestureUpdatedEventArgs> object to calculate the scale factor to be applied at the origin of the pinch gesture. The wrapped view is then zoomed at the origin of the pinch gesture by setting its `TranslationX`, `TranslationY`, and `Scale` properties to the calculated values.
 
 The `PinchToZoomContainer` class can be wrapped around a <xref:Microsoft.Maui.Controls.View> so that a recognized pinch gesture will zoom the wrapped view. The following XAML example shows the `PinchToZoomContainer` wrapping an <xref:Microsoft.Maui.Controls.Image>:
 

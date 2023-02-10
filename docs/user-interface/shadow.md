@@ -66,7 +66,7 @@ Shadows can also be added to clipped objects, as shown in the following example:
 </Image>
 ```
 
-In this example, a black shadow is painted around the outline of the `EllipseGeometry` that clips the image:
+In this example, a black shadow is painted around the outline of the <xref:Microsoft.Maui.Controls.Shapes.EllipseGeometry> that clips the image:
 
 :::image type="content" source="media/shadow/clipped-image.png" alt-text="Screenshot of a clipped image with a shadow applied.":::
 
