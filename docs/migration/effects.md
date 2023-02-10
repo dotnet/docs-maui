@@ -87,7 +87,7 @@ internal class FocusPlatformEffect : PlatformEffect
 
 ## Register the effect
 
-In your .NET MAUI app project, open *MauiProgram.cs* and call <xref:Microsoft.Maui.Controls.Hosting.AppHostBuilderExtensions.ConfiureEffects%2A> on the `MauiAppBuilder` object in the `CreateMauiApp` method:
+In your .NET MAUI app project, open *MauiProgram.cs* and call <xref:Microsoft.Maui.Controls.Hosting.AppHostBuilderExtensions.ConfigureEffects%2A> on the `MauiAppBuilder` object in the `CreateMauiApp` method:
 
 ```csharp
 public static MauiApp CreateMauiApp()
@@ -109,7 +109,7 @@ public static MauiApp CreateMauiApp()
 }
 ```
 
-The effect is registered with <xref:Microsoft.Maui.Controls.Hosting.AppHostBuilderExtensions.ConfiureEffects%2A>, whose `configureDelegate` registers the <xref:Microsoft.Maui.Controls.Platform.PlatformEffect> implementation against its <xref:Microsoft.Maui.Controls.RoutingEffect> implementation.
+The effect is registered with <xref:Microsoft.Maui.Controls.Hosting.AppHostBuilderExtensions.ConfigureEffects%2A>, whose `configureDelegate` registers the <xref:Microsoft.Maui.Controls.Platform.PlatformEffect> implementation against its <xref:Microsoft.Maui.Controls.RoutingEffect> implementation.
 
 ## Consume the effect
 
