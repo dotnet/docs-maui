@@ -74,7 +74,7 @@ The <xref:Microsoft.Maui.ApplicationModel.BrowserLaunchOptions.LaunchMode?displa
 
 - <xref:Microsoft.Maui.ApplicationModel.BrowserLaunchMode.SystemPreferred>
 
-  [Custom Tabs](https://developer.chrome.com/multidevice/android/customtabs) will try to be used to load the URI and keep navigation awareness.
+  [Custom Tabs](https://developer.chrome.com/multidevice/android/customtabs) are used to load the URI and keep navigation awareness.
 
 - <xref:Microsoft.Maui.ApplicationModel.BrowserLaunchMode.External>
 
@@ -94,7 +94,7 @@ The <xref:Microsoft.Maui.ApplicationModel.BrowserLaunchOptions.LaunchMode?displa
 
 # [Windows](#tab/windows)
 
-The user's default browser will always be launched regardless of the <xref:Microsoft.Maui.ApplicationModel.BrowserLaunchMode>.
+The user's default browser is always launched regardless of the <xref:Microsoft.Maui.ApplicationModel.BrowserLaunchMode>.
 
 -----
 <!-- markdownlint-enable MD024 -->
