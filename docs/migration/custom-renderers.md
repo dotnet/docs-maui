@@ -34,7 +34,7 @@ However, if your solution has separate projects per-platform, then you should mo
 
 Any reference to the `Xamarin.Forms.*` namespaces need to be removed, and then you can resolve the related types to `Microsoft.Maui.*`. This needs to occur in all files you've added to the .NET MAUI project(s).
 
-You should also remove any `ExportRenderer` attributes as they won't be needed in .NET MAUI. For example, the following should be removed:
+You should also remove any <xref:Xamarin.Forms.ExportRenderer> attributes as they won't be needed in .NET MAUI. For example, the following should be removed:
 
 ```csharp
 [assembly: ExportRenderer(typeof(PressableView), typeof(PressableViewRenderer))]
@@ -42,7 +42,7 @@ You should also remove any `ExportRenderer` attributes as they won't be needed i
 
 ## Register renderers
 
-In your .NET MAUI app project, open *MauiProgram.cs* and add a `using` statement for the `Microsoft.Maui.Controls.Compatibility.Hosting` namespace. Then, call `UseMauiCompatibility` on the `MauiAppBuilder` object in the `CreateMauiApp` method, and configure each renderer using conditional compilation per platform:
+In your .NET MAUI app project, open *MauiProgram.cs* and add a `using` statement for the `Microsoft.Maui.Controls.Compatibility.Hosting` namespace. Then, call `UseMauiCompatibility` on the <xref:Microsoft.Maui.Controls.MauiAppBuilder> object in the `CreateMauiApp` method, and configure each renderer using conditional compilation per platform:
 
 ```csharp
 using Microsoft.Maui.Controls.Compatibility.Hosting;

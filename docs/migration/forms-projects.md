@@ -256,7 +256,7 @@ The following table provides guidance for overcoming common build or runtime err
 | `Xamarin.Essentials` namespace doesn't exist. | Remove the namespace and resolve types individually. |
 | `Xamarin.Forms` namespace doesn't exist. | Replace with the `Microsoft.Maui` or `Microsoft.Maui.Controls` namespace, depending on the type used. |
 | `Xamarin.Forms.Xaml` namespace doesn't. | Replace with the `Microsoft.Maui.Controls.Xaml` namespace. |
-| `CollectionView` doesn't scroll. | Check the container layout and the measured size of the `CollectionView`. By default the control will take up as much space as the container allows. A `Grid` will constrain children at its own size. However a `StackLayout` will enable children to take up space beyond its bounds. |
+| `CollectionView` doesn't scroll. | Check the container layout and the measured size of the `CollectionView`. By default the control will take up as much space as the container allows. A <xref:Microsoft.Maui.Controls.Grid> will constrain children at its own size. However a <xref:Microsoft.Maui.Controls.StackLayout> will enable children to take up space beyond its bounds. |
 
 For more information about color changes, see [Microsoft.Maui.Graphics.Color vs Xamarin.Forms.Color](https://gist.github.com/hartez/593fc3fb87035a3aedc91657e9c15ab3).
 
