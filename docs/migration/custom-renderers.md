@@ -77,7 +77,7 @@ public static class MauiProgram
 
 ## Consume the custom renderer
 
-The custom renderer can then be consumed in a .NET MAUI app as a custom control:
+The custom renderer can be consumed in a .NET MAUI app as a custom control:
 
 ```xml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
