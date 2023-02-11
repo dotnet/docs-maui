@@ -78,7 +78,7 @@ The new stack layouts in .NET MAUI, <xref:Microsoft.Maui.Controls.HorizontalStac
     <Grid RowDefinitions="Auto, *">
         <Label Text="Hello world!"/>
         <Image Grid.Row="1" Source="dotnetbot.png"/>
-    </StackLayout>
+    </Grid>
     ```
 
     When performing this conversion, anything that was marked "AndExpand" in the <xref:Microsoft.Maui.Controls.StackLayout> should go in its own row or column with a size of `*` in the <xref:Microsoft.Maui.Controls.Grid>.
