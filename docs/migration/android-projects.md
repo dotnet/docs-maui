@@ -119,6 +119,12 @@ To disable AOT, you need to explicitly set the `$(RunAOTCompilation)` and `$(And
 </PropertyGroup>
 ```
 
+## Supported encodings
+
+If your Xamarin.Android app uses certain international codesets, they have to be specified explicitly in your project file using the `Mandroidl18n` MSBuild property, so that the linker can include supporting resources. For more information about this build property, see [MAndroidl18n](/xamarin/android/deploy-test/building-apps/build-properties#mandroidi18n).
+
+The `Mandroidl18n` MSBuild property isn't supported in .NET 6+. Instead, this support is provided by the [System.TextEncoding.CodePages](https://www.nuget.org/packages/System.Text.Encoding.CodePages/) NuGet package. For more information, see <xref:System.Text.CodePagesEncodingProvider>.
+
 ## .NET CLI
 
 .NET for Android supports using .NET command-line interface (.NET CLI) to create, build, publish, and run Android apps.
