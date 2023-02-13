@@ -65,7 +65,7 @@ Create the **Note viewmodel**:
 
     The constructors also setup the commands for the viewmodel. Next, add the code for these commands.
 
-01. Add the `Save` and `Load` methods:
+01. Add the `Save` and `Delete` methods:
 
     :::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/ViewModels/NoteViewModel.cs" id="command_methods":::
 
