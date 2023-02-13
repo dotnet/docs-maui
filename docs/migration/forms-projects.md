@@ -117,7 +117,7 @@ A <xref:Microsoft.Maui.Graphics.Color?displayProperty=fullName> doesn't have an 
 | <xref:Xamarin.Forms.Maps.Map.MoveToLastRegionOnLayoutChange%2A?displayProperty=fullName> |  | No .NET MAUI equivalent. |
 | <xref:Xamarin.Forms.Maps.Pin.Id?displayProperty=fullName> | | No .NET MAUI equivalent. |
 | <xref:Xamarin.Forms.Maps.Pin.Position?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.Maps.Pin.Location?displayProperty=fullName> |  |
-| <xref:Xamarin.Forms.Maps.MapClickedEventAgs.Position> | <xref:Microsoft.Maui.Controls.Maps.MapClickedEventAgs.Location> |  |
+| <xref:Xamarin.Forms.Maps.MapClickedEventArgs.Position> | <xref:Microsoft.Maui.Controls.Maps.MapClickedEventArgs.Location> |  |
 | <xref:Xamarin.Forms.Maps.Position?displayProperty=fullName> | <xref:Microsoft.Maui.Devices.Sensors.Location?displayProperty=fullName> | Any members of type <xref:Xamarin.Forms.Maps.Position?displayProperty=fullName> have changed to the <xref:Microsoft.Maui.Devices.Sensors.Location?displayProperty=fullName> type. |
 | <xref:Xamarin.Forms.Maps.Geocoder?displayProperty=fullName> | <xref:Microsoft.Maui.Devices.Sensors.Geocoding?displayProperty=fullName> | Any members of type <xref:Xamarin.Forms.Maps.Geocoder?displayProperty=fullName> have changed to the <xref:Microsoft.Maui.Devices.Sensors.Geocoding?displayProperty=fullName> type.  |
 
@@ -131,12 +131,11 @@ A <xref:Microsoft.Maui.Graphics.Color?displayProperty=fullName> doesn't have an 
 | <xref:Xamarin.Forms.Span.ForegroundColor?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.Span.TextColor?displayProperty=fullName> |  |
 | <xref:Xamarin.Forms.Button.Image?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.Button.ImageSource?displayProperty=fullName> |  |
 | <xref:Xamarin.Forms.Frame.OutlineColor?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.Frame.BorderColor?displayProperty=fullName> |  |
-| <xref:Xamarin.Forms.Grid.IGridList-1.Add*2A?displayProperty=fullName> |  | The `Add` overload that accepts 5 arguments isn't present in .NET MAUI. |
-| <xref:Xamarin.Forms.Grid.IGridList-1.AddHorizontal*2A?displayProperty=fullName> | <xref:Microsoft.Maui.> | No .NET MAUI equivalent. |
-| <xref:Xamarin.Forms.Grid.IGridList-1.AddVertical*2A?displayProperty=fullName> |  | No .NET MAUI equivalent. |
+| <xref:Xamarin.Forms.Grid.IGridList`1.Add*2A?displayProperty=fullName> |  | The `Add` overload that accepts 5 arguments isn't present in .NET MAUI. |
+| <xref:Xamarin.Forms.Grid.IGridList`1.AddHorizontal*2A?displayProperty=fullName> |  | No .NET MAUI equivalent. |
+| <xref:Xamarin.Forms.Grid.IGridList`1.AddVertical*2A?displayProperty=fullName> |  | No .NET MAUI equivalent. |
 | <xref:Xamarin.Forms.IQueryAttributable.ApplyQueryAttributes%2A?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.IQueryAttributable.ApplyQueryAttributes%2A?displayProperty=fullName> | In Xamarin.Forms, the `ApplyQueryAttributes` method accepts an `IDictionary<string, string>` argument. In .NET MAUI, the `ApplyQueryAttributes` method accepts an `IDictionary<string, object>` argument.  |
 | <xref:Xamarin.Forms.Application.Properties?displayProperty=fullName> | <xref:Microsoft.Maui.Storage.Preferences> |  |
-| <xref:Xamarin.Forms.Shapes.Matrix.HasIdentity> | <xref:Microsoft.Maui.Controls.Shapes.Matrix.IsIdentity> |
 
 ### Device
 
@@ -149,9 +148,7 @@ Xamarin.Forms has a <xref:Xamarin.Forms.Device?displayProperty=fullName> class t
 | <xref:Xamarin.Forms.Device.GTK?displayProperty=fullName>  |  | No .NET MAUI equivalent. |
 | <xref:Xamarin.Forms.Device.macOS?displayProperty=fullName>  | | No .NET MAUI equivalent. Instead, use <xref:Microsoft.Maui.Devices.DevicePlatform.MacCatalyst?displayProperty=fullName>. |
 | <xref:Xamarin.Forms.Device.Tizen?displayProperty=fullName>  | <xref:Microsoft.Maui.Devices.DevicePlatform.Tizen?displayProperty=fullName> | |
-| <xref:Xamarin.Forms.Device.tvOS?displayProperty=fullName>  | <xref:Microsoft.Maui.Devices.DevicePlatform.tvOS?displayProperty=fullName> | |
 | <xref:Xamarin.Forms.Device.UWP?displayProperty=fullName>  | <xref:Microsoft.Maui.Devices.DevicePlatform.WinUI?displayProperty=fullName> | |
-| <xref:Xamarin.Forms.Device.WinUI?displayProperty=fullName>  | <xref:Microsoft.Maui.Devices.DevicePlatform.WinUI?displayProperty=fullName> | |
 | <xref:Xamarin.Forms.Device.WPF?displayProperty=fullName>  |  |  No .NET MAUI equivalent. |
 | <xref:Xamarin.Forms.Device.Flags?displayProperty=fullName>  | | No .NET MAUI equivalent. |
 | <xref:Xamarin.Forms.Device.FlowDirection?displayProperty=fullName>  | <xref:Microsoft.Maui.ApplicationModel.AppInfo.RequestedLayoutDirection?displayProperty=fullName> | |
@@ -159,17 +156,17 @@ Xamarin.Forms has a <xref:Xamarin.Forms.Device?displayProperty=fullName> class t
 | <xref:Xamarin.Forms.Device.IsInvokeRequired?displayProperty=fullName>  | <xref:Microsoft.Maui.Controls.BindableObject.IsDispatchRequired.IsDispatchRequired?displayProperty=fullName> | |
 | <xref:Xamarin.Forms.Device.OS?displayProperty=fullName>  | <xref:Microsoft.Maui.Devices.DeviceInfo.Platform?displayProperty=fullName> | |
 | <xref:Xamarin.Forms.Device.RuntimePlatform?displayProperty=fullName>  | <xref:Microsoft.Maui.Devices.DeviceInfo.Platform?displayProperty=fullName> | |
-| <xref:Xamarin.Forms.Device.BeginInvokeOnMainThread%2A?displayProperty=fullName>  | <xref:Microsoft.Maui.Controls.BindableObject.Dispatcher.Dispatch%2A?displayProperty=fullName> | |
-| <xref:Xamarin.Forms.Device.GetMainThreadSynchronizationContextAsync%2A?displayProperty=fullName>  | <xref:Microsoft.Maui.Controls.BindableObject.Dispatcher.GetSynchronizationContextAsync%2A?displayProperty=fullName> | |
+| <xref:Xamarin.Forms.Device.BeginInvokeOnMainThread%2A?displayProperty=fullName>  | <xref:Microsoft.Maui.Dispatching.IDispatcher.Dispatch%2A?displayProperty=fullName> | |
+| <xref:Xamarin.Forms.Device.GetMainThreadSynchronizationContextAsync%2A?displayProperty=fullName>  | <xref:Microsoft.Maui.Dispatching.DispatcherExtension.GetSynchronizationContextAsync%2A?displayProperty=fullName> | |
 | <xref:Xamarin.Forms.Device.GetNamedColor%2A?displayProperty=fullName>  | | No .NET MAUI equivalent. |
 | <xref:Xamarin.Forms.Device.GetNamedSize%2A?displayProperty=fullName>  | | No .NET MAUI equivalent.|
 | <xref:Xamarin.Forms.Device.Invalidate%2A?displayProperty=fullName>  | <xref:Microsoft.Maui.Controls.VisualElement.InvalidateMeasure%2A?displayProperty=fullName> | |
-| <xref:Xamarin.Forms.Device.InvokeOnMainThreadAsync%2A?displayProperty=fullName>  | <xref:Microsoft.Maui.Controls.BindableObject.Dispatcher.DispatchAsync%2A?displayProperty=fullName> | |
+| <xref:Xamarin.Forms.Device.InvokeOnMainThreadAsync%2A?displayProperty=fullName>  | <xref:Microsoft.Maui.Dispatching.DispatcherExtensions.DispatchAsync%2A?displayProperty=fullName> | |
 | <xref:Xamarin.Forms.Device.OnPlatform%2A?displayProperty=fullName>  | <xref:Microsoft.Maui.Devices.DeviceInfo.Platform?displayProperty=fullName> | |
 | <xref:Xamarin.Forms.Device.OpenUri%2A?displayProperty=fullName>  | <xref:Microsoft.Maui.ApplicationModel.Launcher.OpenAsync%2A?displayProperty=fullName> | |
 | <xref:Xamarin.Forms.Device.SetFlags%2A?displayProperty=fullName>  | | No .NET MAUI equivalent. |
 | <xref:Xamarin.Forms.Device.SetFlowDirection%2A?displayProperty=fullName>  | <xref:Microsoft.Maui.Controls.Window.FlowDirection?displayProperty=fullName> | |
-| <xref:Xamarin.Forms.Device.StartTimer?displayProperty=fullName>  | <xref:Microsoft.Maui.Controls.BindableObject.Dispatcher.StartTimer%2A?displayProperty=fullName> or <xref:Microsoft.Maui.Controls.BindableObject.Dispatcher.DispatchDelayed%2A?displayProperty=fullName> | |
+| <xref:Xamarin.Forms.Device.StartTimer%2A?displayProperty=fullName>  | <xref:Microsoft.Maui.Dispatching.DispatcherExtensions.StartTimer%2A?displayProperty=fullName> or <xref:Microsoft.Maui.Dispatching.Dispatcher.DispatchDelayed%2A?displayProperty=fullName> | |
 
 ### Custom layouts
 
