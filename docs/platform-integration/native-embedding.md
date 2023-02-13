@@ -33,7 +33,7 @@ To consume .NET MAUI controls that derive from <xref:Microsoft.Maui.Controls.Ele
 
 A consequence of doing this is that it replaces the native implicit namespace support with .NET MAUI namespaces, so you'll have to explicitly add `using` statements to your code files for native types.
 
-On Windows, you'll also need to add `<EnableDefaultXamlItems>false</EnableDefaultXamlItems>` to the first `<PropertyGroup>` node in the project file:
+For WinUI apps, you'll also need to add `<EnableDefaultXamlItems>false</EnableDefaultXamlItems>` to the first `<PropertyGroup>` node in the project file:
 
 ```xml
 <PropertyGroup>
