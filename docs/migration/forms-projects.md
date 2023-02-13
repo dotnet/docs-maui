@@ -54,15 +54,28 @@ In your app projects, add a reference to this new library project. Then copy you
 
 ## Namespace changes
 
-Namespaces have changed in the move from Xamarin.Forms to .NET Multi-platform App UI (.NET MAUI), and Xamarin.Essentials features are now part of .NET MAUI. To make namespace updates, do a find and replace for the following namespace changes:
+Namespaces have changed in the move from Xamarin.Forms to .NET MAUI, and Xamarin.Essentials features are now part of .NET MAUI. To make namespace updates, perform a find and replace for the following namespaces:
 
 | Xamarin.Forms namespace | .NET MAUI namespace(s) |
 | --- | --- |
-| `xmlns="http://xamarin.com/schemas/2014/forms"` | `xmlns="http://schemas.microsoft.com/dotnet/2021/maui"` |
-| `using Xamarin.Forms` | `using Microsoft.Maui` and `using Microsoft.Maui.Controls` |
-| `using Xamarin.Forms.Xaml` | `using Microsoft.Maui.Controls.Xaml` |
+| <xref:Xamarin.Forms> | <xref:Microsoft.Maui> and <xref:Microsoft.Maui.Controls> |
+| <xref:Xamarin.Forms.DualScreen> | <xref:Microsoft.Maui.Controls.Foldable> |
+| <xref:Xamarin.Forms.Maps> | <xref:Microsoft.Maui.Controls.Maps> and <xref:Microsoft.Maui.Maps> |
+| <xref:Xamarin.Forms.PlatformConfiguration> | <xref:Microsoft.Maui.Controls.PlatformConfiguration> |
+| <xref:Xamarin.Forms.PlatformConfiguration.AndroidSpecific> | <xref:Microsoft.Maui.PlatformConfiguration.AndroidSpecific> |
+| <xref:Xamarin.Forms.PlatformConfiguration.AndroidSpecific.AppCompat> | <xref:Microsoft.Maui.PlatformConfiguration.AndroidSpecific.AppCompat> |
+| <xref:Xamarin.Forms.PlatformConfiguration.GTKSpecific> | <xref:Microsoft.Maui.PlatformConfiguration.GTKSpecific> |
+| <xref:Xamarin.Forms.PlatformConfiguration.TizenSpecific> | <xref:Microsoft.Maui.PlatformConfiguration.TizenSpecific> |
+| <xref:Xamarin.Forms.PlatformConfiguration.WindowsSpecific> | <xref:Microsoft.Maui.PlatformConfiguration.WindowsSpecific> |
+| <xref:Xamarin.Forms.PlatformConfiguration.iOSSpecific> | <xref:Microsoft.Maui.PlatformConfiguration.iOSSpecific> |
+| <xref:Xamarin.Forms.PlatformConfiguration.macOSSpecific> | <xref:Microsoft.Maui.PlatformConfiguration.macOSSpecific> |
+| <xref:Xamarin.Forms.Shapes> | <xref:Microsoft.Maui.Controls.Shapes> |
+| <xref:Xamarin.Forms.StyleSheets> | <xref:Microsoft.Maui.Controls.StyleSheets> |
+| <xref:Xamarin.Forms.Xaml> | <xref:Microsoft.Maui.Controls.Xaml> |
 
-The .NET MAUI class library project makes use of implicit `global using` directives. This enables you to remove `using` directives for the `Xamarin.Essentials` namespace, without having to resolve the types from that namespace.
+.NET MAUI projects make use of implicit `global using` directives. This enables you to remove `using` directives for the `Xamarin.Essentials` namespace, without having to replace them with the equivalent .NET MAUI namespaces.
+
+In addition, the default XAML namespace has changed from `http://xamarin.com/schemas/2014/forms` in Xamarin.Forms to `http://schemas.microsoft.com/dotnet/2021/maui` in .NET MAUI. Therefore, you should replace all occurrences of `xmlns="http://xamarin.com/schemas/2014/forms"` with `xmlns="http://schemas.microsoft.com/dotnet/2021/maui"`.
 
 ## API changes
 
