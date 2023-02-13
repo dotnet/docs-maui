@@ -167,7 +167,7 @@ Xamarin.Forms has a <xref:Xamarin.Forms.Device?displayProperty=fullName> class t
 | <xref:Xamarin.Forms.Grid.IGridList`1.AddVertical%2A?displayProperty=fullName> |  | No .NET MAUI equivalent. |
 | <xref:Xamarin.Forms.RelativeLayout?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.Compatibility.RelativeLayout?displayProperty=fullName> | In .NET MAUI, `RelativeLayout` only exists as a compatibility control for users migrating from Xamarin.Forms. |
 | <xref:Xamarin.Forms.IQueryAttributable.ApplyQueryAttributes%2A?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.IQueryAttributable.ApplyQueryAttributes%2A?displayProperty=fullName> | In Xamarin.Forms, the `ApplyQueryAttributes` method accepts an `IDictionary<string, string>` argument. In .NET MAUI, the `ApplyQueryAttributes` method accepts an `IDictionary<string, object>` argument.  |
-| <xref:Xamarin.Forms.Application.Properties?displayProperty=fullName> | <xref:Microsoft.Maui.Storage.Preferences> |  |
+| <xref:Xamarin.Forms.Application.Properties?displayProperty=fullName> | <xref:Microsoft.Maui.Storage.Preferences?displayProperty=fullName> |  |
 
 ### Custom layouts
 
