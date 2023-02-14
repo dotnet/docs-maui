@@ -77,7 +77,7 @@
           items:
             - name: .NET Upgrade Assistant
               href: migration/upgrade-assistant.md
-            - name: Xamarin.Forms projects
+            - name: Manually upgrade a Xamarin.Forms library project
               href: migration/forms-projects.md
             - name: Layout changes
               href: migration/layouts.md

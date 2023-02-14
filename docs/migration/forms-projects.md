@@ -7,22 +7,22 @@ no-loc: [ "Xamarin.Forms", "Xamarin.Essentials", "Xamarin.CommunityToolkit", ".N
 
 # Manually upgrade a Xamarin.Forms app to .NET MAUI
 
-Updating a Xamarin.Forms app to be a .NET Multi-platform App UI (.NET MAUI) app follows the same steps as a Xamarin.Android and Xamarin.iOS project, with additional steps to take advantage of changes in .NET MAUI.
+Updating a Xamarin.Forms app to a .NET Multi-platform App UI (.NET MAUI) app follows the same steps as a Xamarin.Android and Xamarin.iOS project, with additional steps to take advantage of changes in .NET MAUI.
 
-SDK-style projects are the same project format used by all other .NET workloads, and compared to many Xamarin projects are much less verbose. For information about updating your app projects, see [Update Xamarin.Android, Xamarin.iOS, and Xamarin.Mac apps to .NET](native-projects.md). This article describes how to manually migrate a Xamarin.Forms library project to .NET.
+This article describes how to manually migrate a Xamarin.Forms library project to a .NET MAUI library project. Before you do this, you must update your Xamarin.Forms head projects to be SDK-style projects. SDK-style projects are the same project format used by all .NET workloads, and compared to many Xamarin projects are much less verbose. For information about updating your app projects, see [Update Xamarin.Android, Xamarin.iOS, and Xamarin.Mac apps to .NET](native-projects.md), [Xamarin.Android project migration](android-projects.md) and [Xamarin Apple project migration](apple-projects.md).
 
-To migrate a Xamarin.Forms library project to .NET, you must:
+To migrate a Xamarin.Forms library project to a .NET MAUI library project, you must:
 
 > [!div class="checklist"]
 >
-> - Update to SDK-style projects.
+> - Update to an SDK-style project.
 > - Update namespaces.
 > - Address any API changes.
 > - Configure .NET MAUI.
 > - Upgrade or replace incompatible dependencies with .NET 6+ versions.
 > - Compile and test your app.
 
-To simplify the upgrade, we recommend creating a new .NET project of the same type and name as your Xamarin.Forms project, and then copying in your code. This is the approach outlined below.
+To simplify the upgrade process, we recommend creating a new .NET MAUI library project of the same name as your Xamarin.Forms library project, and then copying in your code. This is the approach outlined below.
 
 ## Create a new project
 
@@ -51,28 +51,27 @@ In Visual Studio, create a new .NET MAUI class library project of the same name 
 </Project>
 ```
 
-In your app projects, add a reference to this new library project. Then copy your Xamarin.Forms library project files into the .NET MAUI library project.
+In your head projects, add a reference to this new library project. Then copy your Xamarin.Forms library files into the .NET MAUI library project.
 
 ## Namespace changes
 
 Namespaces have changed in the move from Xamarin.Forms to .NET MAUI, and Xamarin.Essentials features are now part of .NET MAUI. To make namespace updates, perform a find and replace for the following namespaces:
 
-| Xamarin.Forms namespace | .NET MAUI namespace(s) |
-| --- | --- |
-| <xref:Xamarin.Forms> | <xref:Microsoft.Maui> and <xref:Microsoft.Maui.Controls> |
-| <xref:Xamarin.Forms.DualScreen> | <xref:Microsoft.Maui.Controls.Foldable> |
-| <xref:Xamarin.Forms.Maps> | <xref:Microsoft.Maui.Controls.Maps> and <xref:Microsoft.Maui.Maps> |
-| <xref:Xamarin.Forms.PlatformConfiguration> | <xref:Microsoft.Maui.Controls.PlatformConfiguration> |
-| <xref:Xamarin.Forms.PlatformConfiguration.AndroidSpecific> | <xref:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific> |
-| <xref:Xamarin.Forms.PlatformConfiguration.AndroidSpecific.AppCompat> | <xref:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific.AppCompat> |
-| <xref:Xamarin.Forms.PlatformConfiguration.GTKSpecific> | <xref:Microsoft.Maui.Controls.PlatformConfiguration.GTKSpecific> |
-| <xref:Xamarin.Forms.PlatformConfiguration.TizenSpecific> | <xref:Microsoft.Maui.Controls.PlatformConfiguration.TizenSpecific> |
-| <xref:Xamarin.Forms.PlatformConfiguration.WindowsSpecific> | <xref:Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific> |
-| <xref:Xamarin.Forms.PlatformConfiguration.iOSSpecific> | <xref:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific> |
-| <xref:Xamarin.Forms.PlatformConfiguration.macOSSpecific> | <xref:Microsoft.Maui.Controls.PlatformConfiguration.macOSSpecific> |
-| <xref:Xamarin.Forms.Shapes> | <xref:Microsoft.Maui.Controls.Shapes> |
-| <xref:Xamarin.Forms.StyleSheets> | <xref:Microsoft.Maui.Controls.StyleSheets> |
-| <xref:Xamarin.Forms.Xaml> | <xref:Microsoft.Maui.Controls.Xaml> |
+> [!div class="mx-tdBreakAll"]
+> | Xamarin.Forms namespace | .NET MAUI namespace(s) |
+> | --- | --- |
+> | <xref:Xamarin.Forms> | <xref:Microsoft.Maui> and <xref:Microsoft.Maui.Controls> |
+> | <xref:Xamarin.Forms.DualScreen> | <xref:Microsoft.Maui.Controls.Foldable> |
+> | <xref:Xamarin.Forms.Maps> | <xref:Microsoft.Maui.Controls.Maps> and <xref:Microsoft.Maui.Maps> |
+> | <xref:Xamarin.Forms.PlatformConfiguration> | <xref:Microsoft.Maui.Controls.PlatformConfiguration> |
+> | <xref:Xamarin.Forms.PlatformConfiguration.AndroidSpecific> | <xref:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific> |
+> | <xref:Xamarin.Forms.PlatformConfiguration.AndroidSpecific.AppCompat> | <xref:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific.AppCompat> |
+> | <xref:Xamarin.Forms.PlatformConfiguration.TizenSpecific> | <xref:Microsoft.Maui.Controls.PlatformConfiguration.TizenSpecific> |
+> | <xref:Xamarin.Forms.PlatformConfiguration.WindowsSpecific> | <xref:Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific> |
+> | <xref:Xamarin.Forms.PlatformConfiguration.iOSSpecific> | <xref:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific> |
+> | <xref:Xamarin.Forms.Shapes> | <xref:Microsoft.Maui.Controls.Shapes> |
+> | <xref:Xamarin.Forms.StyleSheets> | <xref:Microsoft.Maui.Controls.StyleSheets> |
+> | <xref:Xamarin.Forms.Xaml> | <xref:Microsoft.Maui.Controls.Xaml> |
 
 .NET MAUI projects make use of implicit `global using` directives. This enables you to remove `using` directives for the `Xamarin.Essentials` namespace, without having to replace them with the equivalent .NET MAUI namespaces.
 
