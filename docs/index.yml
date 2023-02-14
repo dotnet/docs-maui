@@ -68,9 +68,9 @@ landingContent:
             url: migration/forms-projects.md
           - text: Layout behavior changes
             url: migration/layouts.md
-          - text: Use custom renderers in .NET MAUI
+          - text: Use custom renderers
             url: migration/custom-renderers.md
-          - text: Use effects in .NET MAUI
+          - text: Use effects
             url: migration/effects.md
   - title: XAML
     linkLists:

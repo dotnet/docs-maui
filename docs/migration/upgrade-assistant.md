@@ -66,5 +66,7 @@ upgrade-assistant upgrade <sln or csproj> --non-interactive --entry-point *
 
 This command runs the tool in non-interactive mode. It will update all eligible projects in the solution and dependent projects.
 
+## Next steps
+
 > [!div class="nextstepaction"]
 > [Manual migration](forms-projects.md#namespace-changes)
