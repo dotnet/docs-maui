@@ -143,7 +143,11 @@ The following table shows the .NET MAUI replacements for the <xref:Xamarin.Forms
 
 ### Maps
 
-> [!div class="mx-tdBreakAll"]
+In Xamarin.Forms, the <xref:Xamarin.Forms.Maps.Map> control and associated types are in the <xref:Xamarin.Forms.Maps?displayProperty=fullName> namespace. In .NET MAUI, this functionality has moved to the <xref:Microsoft.Maui.Controls.Maps> and <xref:Microsoft.Maui.Maps> namespaces. Some properties have been renamed and some types have been replaced with their equivalents from Xamarin.Essentials.
+
+The following table shows the .NET MAUI replacements for the <xref:Xamarin.Forms.Maps> namespace:
+
+> [!div class="mx-tdCol3BreakAll"]
 > | Xamarin.Forms API | .NET MAUI API | Comment |
 > | ----------------- | ------------- | ------- |
 > | <xref:Xamarin.Forms.Maps.Map.HasScrollEnabled?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.Maps.Map.IsScrollEnabled?displayProperty=fullName> |  |
@@ -156,7 +160,9 @@ The following table shows the .NET MAUI replacements for the <xref:Xamarin.Forms
 > | <xref:Xamarin.Forms.Maps.Position?displayProperty=fullName> | <xref:Microsoft.Maui.Devices.Sensors.Location?displayProperty=fullName> | Any members of type <xref:Xamarin.Forms.Maps.Position?displayProperty=fullName> have changed to the <xref:Microsoft.Maui.Devices.Sensors.Location?displayProperty=fullName> type. |
 > | <xref:Xamarin.Forms.Maps.Geocoder?displayProperty=fullName> | <xref:Microsoft.Maui.Devices.Sensors.Geocoding?displayProperty=fullName> | Any members of type <xref:Xamarin.Forms.Maps.Geocoder?displayProperty=fullName> have changed to the <xref:Microsoft.Maui.Devices.Sensors.Geocoding?displayProperty=fullName> type. |
 
-### Others
+### Other changes
+
+A small number of other APIs have been consolidated in the move from Xamarin.Forms to .NET MAUI. The following table shows these changes:
 
 > [!div class="mx-tdBreakAll"]
 > | Xamarin.Forms API | .NET MAUI API | Comments |
