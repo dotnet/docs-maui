@@ -81,7 +81,7 @@ In addition, the default XAML namespace has changed from `http://xamarin.com/sch
 
 Some APIs have changed in the move from Xamarin.Forms to .NET MAUI. This is multiple reasons including removing duplicate functionality caused by Xamarin.Essentials becoming part of .NET MAUI, and ensuring that APIs follow .NET naming guidelines. The following sections discuss these changes.
 
-### Colors
+### Color changes
 
 In Xamarin.Forms, the <xref:Xamarin.Forms.Color?displayProperty=fullName> struct lets you construct `Color` objects using `double` values, and provides named colors, such as <xref:Xamarin.Forms.Color.AliceBlue?displayProperty=fullName>. In .NET MAUI, this functionality has been separated into the <xref:Microsoft.Maui.Graphics.Color?displayProperty=fullName> class, and the <xref:Microsoft.Maui.Graphics.Colors?displayProperty=fullName> class.
 
@@ -107,7 +107,7 @@ In addition, all of the numeric values in <xref:Microsoft.Maui.Graphics.Color?di
 > [!NOTE]
 > Unlike Xamarin.Forms, a <xref:Microsoft.Maui.Graphics.Color?displayProperty=fullName> doesn't have an implicit conversion to <xref:System.Drawing.Color?displayProperty=fullName>.
 
-### Device
+### Device changes
 
 Xamarin.Forms has a <xref:Xamarin.Forms.Device?displayProperty=fullName> class that helps you to interact with the device and platform the app is running on. The equivalent class in .NET MAUI, <xref:Microsoft.Maui.Controls.Device?displayProperty=fullName>, is deprecated and its functionality is replaced by multiple types.
 
@@ -141,13 +141,13 @@ The following table shows the .NET MAUI replacements for the <xref:Xamarin.Forms
 > | <xref:Xamarin.Forms.Device.SetFlowDirection%2A?displayProperty=fullName>  | <xref:Microsoft.Maui.Controls.Window.FlowDirection?displayProperty=fullName> | |
 > | <xref:Xamarin.Forms.Device.StartTimer%2A?displayProperty=fullName>  | <xref:Microsoft.Maui.Dispatching.DispatcherExtensions.StartTimer%2A?displayProperty=fullName> or <xref:Microsoft.Maui.Dispatching.Dispatcher.DispatchDelayed%2A?displayProperty=fullName> | |
 
-### Maps
+### Map changes
 
 In Xamarin.Forms, the <xref:Xamarin.Forms.Maps.Map> control and associated types are in the <xref:Xamarin.Forms.Maps?displayProperty=fullName> namespace. In .NET MAUI, this functionality has moved to the <xref:Microsoft.Maui.Controls.Maps> and <xref:Microsoft.Maui.Maps> namespaces. Some properties have been renamed and some types have been replaced with their equivalents from Xamarin.Essentials.
 
 The following table shows the .NET MAUI replacements for the <xref:Xamarin.Forms.Maps> namespace:
 
-> [!div class="mx-tdCol3BreakAll"]
+> [!div class="mx-tdBreakAll"]
 > | Xamarin.Forms API | .NET MAUI API | Comment |
 > | ----------------- | ------------- | ------- |
 > | <xref:Xamarin.Forms.Maps.Map.HasScrollEnabled?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.Maps.Map.IsScrollEnabled?displayProperty=fullName> |  |
@@ -167,21 +167,21 @@ A small number of other APIs have been consolidated in the move from Xamarin.For
 > [!div class="mx-tdBreakAll"]
 > | Xamarin.Forms API | .NET MAUI API | Comments |
 > | ----------------- | ------------- | -------- |
-> | <xref:Xamarin.Forms.OSAppTheme?displayProperty=fullName> | <xref:Microsoft.Maui.ApplicationModel.AppTheme?displayProperty=fullName> |  |
-> | <xref:Xamarin.Forms.ToolbarItem.Name?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.MenuItem.Text?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.MenuItem.Text?displayProperty=fullName> is the base class for <xref:Microsoft.Maui.Controls.ToolbarItem?displayProperty=fullName>, and so `ToolbarItem.Name` becomes `ToolbarItem.Text`. |
-> | <xref:Xamarin.Forms.MenuItem.Icon?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.MenuItem.IconImageSource?displayProperty=fullName> | <xref:Xamarin.Forms.MenuItem.Icon?displayProperty=fullName> is the base class for <xref:Xamarin.Forms.ToolbarItem?displayProperty=fullName>, and so `ToolbarItem.Icon` becomes `ToolbarItem.IconImageSource`. |
-> | <xref:Xamarin.Forms.Span.ForegroundColor?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.Span.TextColor?displayProperty=fullName> |  |
+> | <xref:Xamarin.Forms.AbsoluteLayout.IAbsoluteList`1.Add%2A?displayProperty=fullName> |  | The `Add` overload that accepts 3 arguments isn't present in .NET MAUI |
+> | <xref:Xamarin.Forms.Application.Properties?displayProperty=fullName> | <xref:Microsoft.Maui.Storage.Preferences?displayProperty=fullName> |  |
 > | <xref:Xamarin.Forms.Button.Image?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.Button.ImageSource?displayProperty=fullName> |  |
 > | <xref:Xamarin.Forms.Frame.OutlineColor?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.Frame.BorderColor?displayProperty=fullName> |  |
-> | <xref:Xamarin.Forms.AbsoluteLayout.IAbsoluteList`1.Add%2A?displayProperty=fullName> |  | The `Add` overload that accepts 3 arguments isn't present in .NET MAUI |
 > | <xref:Xamarin.Forms.Grid.IGridList`1.Add%2A?displayProperty=fullName> |  | The `Add` overload that accepts 5 arguments isn't present in .NET MAUI. |
 > | <xref:Xamarin.Forms.Grid.IGridList`1.AddHorizontal%2A?displayProperty=fullName> |  | No .NET MAUI equivalent. |
 > | <xref:Xamarin.Forms.Grid.IGridList`1.AddVertical%2A?displayProperty=fullName> |  | No .NET MAUI equivalent. |
-> | <xref:Xamarin.Forms.RelativeLayout?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.Compatibility.RelativeLayout?displayProperty=fullName> | In .NET MAUI, `RelativeLayout` only exists as a compatibility control for users migrating from Xamarin.Forms. |
 > | <xref:Xamarin.Forms.IQueryAttributable.ApplyQueryAttributes%2A?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.IQueryAttributable.ApplyQueryAttributes%2A?displayProperty=fullName> | In Xamarin.Forms, the `ApplyQueryAttributes` method accepts an `IDictionary<string, string>` argument. In .NET MAUI, the `ApplyQueryAttributes` method accepts an `IDictionary<string, object>` argument.  |
-> | <xref:Xamarin.Forms.Application.Properties?displayProperty=fullName> | <xref:Microsoft.Maui.Storage.Preferences?displayProperty=fullName> |  |
+> | <xref:Xamarin.Forms.MenuItem.Icon?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.MenuItem.IconImageSource?displayProperty=fullName> | <xref:Xamarin.Forms.MenuItem.Icon?displayProperty=fullName> is the base class for <xref:Xamarin.Forms.ToolbarItem?displayProperty=fullName>, and so `ToolbarItem.Icon` becomes `ToolbarItem.IconImageSource`. |
+> | <xref:Xamarin.Forms.OSAppTheme?displayProperty=fullName> | <xref:Microsoft.Maui.ApplicationModel.AppTheme?displayProperty=fullName> |  |
+> | <xref:Xamarin.Forms.RelativeLayout?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.Compatibility.RelativeLayout?displayProperty=fullName> | In .NET MAUI, `RelativeLayout` only exists as a compatibility control for users migrating from Xamarin.Forms. Use xref:Microsoft.Maui.Controls.Grid> instead, or add the `xmlns` for the compatibility namespace. |
+> | <xref:Xamarin.Forms.Span.ForegroundColor?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.Span.TextColor?displayProperty=fullName> |  |
+> | <xref:Xamarin.Forms.ToolbarItem.Name?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.MenuItem.Text?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.MenuItem.Text?displayProperty=fullName> is the base class for <xref:Microsoft.Maui.Controls.ToolbarItem?displayProperty=fullName>, and so `ToolbarItem.Name` becomes `ToolbarItem.Text`. |
 
-### Custom layouts
+### Custom layout changes
 
 The process for creating a custom layout in Xamarin.Forms involves creating a class that derives from `Layout<View>`, and overriding the <xref:Xamarin.Forms.VisualElement.OnMeasure%2A> and <xref:Xamarin.Forms.Layout.LayoutChildren%2A> methods. For more information, see [Create a custom layout in Xamarin.Forms](/xamarin/xamarin-forms/user-interface/layouts/custom).
 
@@ -194,7 +194,7 @@ For more information, see [Custom layout examples](https://github.com/hartez/Cus
 
 <!-- TODO: Replace the link above with one to a custom layout doc, once the content is written -->
 
-### Native forms
+### Native forms changes
 
 [Native forms](/xamarin/xamarin-forms/platform/native-forms) in Xamarin.Forms has become Native embedding in .NET MAUI, and uses a different initialization approach and different extension methods to convert cross-platform controls to their native types. For more information, see [Native embedding](~/platform-integration/native-embedding.md)]
 

@@ -15,7 +15,7 @@ There are additional changes and recommendations for layouts in .NET MAUI:
 | All | In certain cases sizing requests would not be honored. | Sizing requests are honored. | |
 | <xref:Microsoft.Maui.Controls.Grid> | Columns and rows can be inferred from XAML. | Columns and rows must be explicitly declared. | Add `ColumnDefinitions` and `RowDefinitions`. |
 | <xref:Microsoft.Maui.Controls.HorizontalStackLayout> |   | "*AndExpand" has no effect. | |
-| `RelativeLayout` | | Requires the compatibility namespace. | Use <xref:Microsoft.Maui.Controls.Grid> instead, or add the `xmlns` and update tags. |
+| <xref:Microsoft.Maui.Controls.Compatibility.RelativeLayout>  | | Requires the compatibility namespace. | Use <xref:Microsoft.Maui.Controls.Grid> instead, or add the `xmlns` and update tags. |
 | <xref:Microsoft.Maui.Controls.StackLayout> | Children can fill space in the stacking direction. | Children are stacked and will go beyond available space. | If you need child views to fill space, change to a <xref:Microsoft.Maui.Controls.Grid>. |
 | <xref:Microsoft.Maui.Controls.VerticalStackLayout> |  | "*AndExpand" has no effect. | |
 
