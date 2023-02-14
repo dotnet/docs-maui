@@ -1,7 +1,7 @@
 ---
 title: "Xamarin.Android project migration"
 description: "Learn how to migrate a Xamarin.Android project to a .NET for Android project."
-ms.date: 1/31/2023
+ms.date: 02/15/2023
 ---
 
 # Xamarin.Android project migration
@@ -45,7 +45,7 @@ Instead, the `$(AndroidSupportedAbis)` property should be replaced with .NET run
 
 For more information about runtime identifiers, see [.NET RID Catalog](/dotnet/core/rid-catalog).
 
-The following table shows the other MSBuild properties that have changed in .NET for Android:
+The following table shows other MSBuild properties that have changed in .NET for Android:
 
 | Property | Comments |
 | --- | --- |
@@ -54,7 +54,7 @@ The following table shows the other MSBuild properties that have changed in .NET
 | `$(AndroidClassParser)` | `class-parse` by default. `jar2xml` isn't supported. |
 | `$(AndroidDexTool)` | `d8` by default. `dx` isn't supported. |
 | `$(AndroidCodegenTarget)` | `XAJavaInterop1` by default. `XamarinAndroid` isn't supported. |
-| `$(AndroidManifest)` | Defaults to `AndroidManifest.xml` in the root of projects because `Properties\AssemblyInfo.cs` is no longer used in SDK-style projects. `Properties\AndroidManifest.xml` will also be detected and used if it exists to ease migration. |
+| `$(AndroidManifest)` | Defaults to `AndroidManifest.xml` in the root of projects because `Properties\AssemblyInfo.cs` is no longer used in SDK-style projects. `Properties\AndroidManifest.xml` will also be detected and used if it exists, to ease migration. |
 | `$(DebugType)` | `portable` by default. `full` and `pdbonly` aren't supported. |
 | `$(MonoSymbolArchive)` | `False`, since `mono-symbolicate` isn't supported. |
 
@@ -123,7 +123,7 @@ To disable AOT, you need to explicitly set the `$(RunAOTCompilation)` and `$(And
 
 If your Xamarin.Android app uses certain international codesets, they have to be specified explicitly in your project file using the `Mandroidl18n` MSBuild property, so that the linker can include supporting resources. For more information about this build property, see [MAndroidl18n](/xamarin/android/deploy-test/building-apps/build-properties#mandroidi18n).
 
-The `Mandroidl18n` MSBuild property isn't supported in .NET 6+. Instead, this support is provided by the [System.TextEncoding.CodePages](https://www.nuget.org/packages/System.Text.Encoding.CodePages/) NuGet package. For more information, see <xref:System.Text.CodePagesEncodingProvider>.
+However, the `Mandroidl18n` MSBuild property isn't supported in .NET for Android apps. Instead, support is provided by the [System.TextEncoding.CodePages](https://www.nuget.org/packages/System.Text.Encoding.CodePages/) NuGet package. For more information, see <xref:System.Text.CodePagesEncodingProvider>.
 
 ## .NET CLI
 

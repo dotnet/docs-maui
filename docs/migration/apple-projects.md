@@ -1,7 +1,7 @@
 ---
 title: "Xamarin.iOS project migration"
 description: "Learn how to migrate a Xamarin.iOS, Xamarin.Mac, or Xamarin.tvOS project to a .NET project."
-ms.date: 1/31/2023
+ms.date: 02/15/2023
 ---
 
 # Xamarin Apple project migration
@@ -61,18 +61,18 @@ The following table shows how to convert the `MtouchArch` and `XamMacArch` prope
 | i386               | iossimulator-x86   |                                   |
 | x86_64+i386        |                    | iossimulator-x86,iossimulator-x64 |
 
+The following table shows how to convert the `MtouchArch` and `XamMacArch` properties to the `RuntimeIdentifier` property when migrating a Xamarin.Mac project to .NET for macOS+:
+
+| Property | RuntimeIdentifier |
+| -------- | ----------------- |
+| x86_64   | osx-x64           |
+
 The following table shows how to convert the `MtouchArch` and `XamMacArch` properties to the `RuntimeIdentifier` property when migrating a Xamarin.tvOS project to .NET for tvOS:
 
 | Property | RuntimeIdentifier |
 | -------- | ----------------- |
 | ARM64    | tvos-arm64        |
 | x86_64   | tvossimulator-x64 |
-
-The following table shows how to convert the `MtouchArch` and `XamMacArch` properties to the `RuntimeIdentifier` property when migrating a Xamarin.Mac project to .NET for macOS+:
-
-| Property | RuntimeIdentifier |
-| -------- | ----------------- |
-| x86_64   | osx-x64           |
 
 For more information about the `RuntimeIdentifier` property, see [RuntimeIdentifier](/dotnet/core/project-sdk/msbuild-props#runtimeidentifier). For more information about runtime identifiers, see [.NET RID Catalog](/dotnet/core/rid-catalog).
 
@@ -96,7 +96,7 @@ The following table shows how to map other items in Xamarin Apple projects to .N
 
 ## Changes to Info.plist
 
-Some values have moved from **Info.plist** to the project file.
+Some values have moved from *Info.plist* to the project file.
 
 ### MinimumOSVersion and LSMinimumSystemVersion
 

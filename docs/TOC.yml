@@ -65,19 +65,19 @@
           href: migration/index.md
         - name: Xamarin native projects
           items:
-            - name: Update Xamarin native projects
+            - name: Upgrade Xamarin native projects
               href: migration/native-projects.md
-            - name: Android project specifics
+            - name: Android project migration
               href: migration/android-projects.md
-            - name: Apple project specifics
+            - name: Apple project migration
               href: migration/apple-projects.md
         - name: Xamarin.Forms projects
           items:
-            - name: .NET Upgrade Assistant
+            - name: Upgrade with the .NET Upgrade Assistant
               href: migration/upgrade-assistant.md
-            - name: Manual upgrade
+            - name: Upgrade manually
               href: migration/forms-projects.md
-            - name: Layout changes
+            - name: Layout behavior changes
               href: migration/layouts.md
             - name: Custom renderers
               href: migration/custom-renderers.md

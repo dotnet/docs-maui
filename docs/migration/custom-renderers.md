@@ -1,7 +1,7 @@
 ---
 title: "Use custom renderers in .NET MAUI"
 description: "Learn how to adapt Xamarin.Forms custom renderers to work in a .NET MAUI app."
-ms.date: 1/31/2023
+ms.date: 02/15/2023
 ---
 
 # Use custom renderers in .NET MAUI
@@ -12,7 +12,7 @@ While there are many benefits to using .NET Multi-platform App UI (.NET MAUI) ha
 
 The process for migrating a Xamarin.Forms custom renderer to .NET MAUI is to:
 
-1. Add the code into the appropriate location in your .NET MAUI project(s). For more information, see [Add the code](#add-the-code).
+1. Add the custom renderer code into the appropriate location in your .NET MAUI project(s). For more information, see [Add the code](#add-the-code).
 1. Modify the `using` directives and remove `ExportRenderer` attributes. For more information, see [Modify using directives and other code](#modify-using-directives-and-other-code).
 1. Register the renderers. For more information, see [Register renderers](#register-renderers).
 1. Consume the renderers. For more information, see [Consume the custom renderers](#consume-the-custom-renderers).
@@ -29,7 +29,7 @@ If you're using a .NET MAUI multi-targeted project, the cross-platform file can 
 
 :::image type="content" source="media/move-renderer-files.png" alt-text="Move your renderer files.":::
 
-However, if your solution has separate projects per-platform, then you should move the platform-specific implementation files into the corresponding projects.
+If your solution has separate projects per-platform, then you should move the platform-specific implementation files into the corresponding projects.
 
 ## Modify using directives and other code
 
@@ -47,7 +47,6 @@ In your .NET MAUI app project, open *MauiProgram.cs* and add a `using` statement
 
 ```csharp
 using Microsoft.Maui.Controls.Compatibility.Hosting;
-...
 
 public static class MauiProgram
 {

@@ -1,7 +1,7 @@
 ---
 title: "Use effects in .NET MAUI"
 description: "Learn how to adapt Xamarin.Forms effects to work in a .NET MAUI app."
-ms.date: 2/10/2023
+ms.date: 02/15/2023
 ---
 
 # Use effects in .NET MAUI

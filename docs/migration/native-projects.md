@@ -1,12 +1,12 @@
 ---
-title: "Update Xamarin.Android, Xamarin.iOS, and Xamarin.Mac projects to .NET"
-description: "Learn how to manually update Xamarin native project files to .NET."
-ms.date: 1/31/2023
+title: "Upgrade Xamarin.Android, Xamarin.iOS, and Xamarin.Mac projects to .NET"
+description: "Learn how to manually upgrade Xamarin native project files to .NET."
+ms.date: 02/15/2023
 ---
 
-# Update Xamarin.Android, Xamarin.iOS, and Xamarin.Mac projects to .NET
+# Upgrade Xamarin.Android, Xamarin.iOS, and Xamarin.Mac projects to .NET
 
-To update your Xamarin native projects to .NET, you must:
+To upgrade your Xamarin native projects to .NET, you must:
 
 > [!div class="checklist"]
 >
@@ -16,11 +16,11 @@ To update your Xamarin native projects to .NET, you must:
 
 For most apps, you won't need to change namespaces or undertake other rewrites.
 
-To simplify the update process, we recommend creating a new .NET project of the same type and name as your Xamarin native project, and then copying in your code. This is the approach outlined below.
+To simplify the upgrade process, we recommend creating a new .NET project of the same type and name as your Xamarin native project, and then copying in your code. This is the approach outlined below.
 
 ## Create a new project
 
-In Visual Studio, create a new .NET project of the same type and name as your Xamarin native project. For example, to update from Xamarin.Android to .NET for Android select the **Android Application** project template:
+In Visual Studio, create a new .NET project of the same type and name as your Xamarin native project. For example, to upgrade from Xamarin.Android to .NET for Android select the **Android Application** project template:
 
 :::image type="content" source="media/new-android-app.png" alt-text="Screenshot of selecting the Android app project template in Visual Studio.":::
 
@@ -42,7 +42,7 @@ The new project should be given the same project and package name as your existi
 ```
 
 > [!IMPORTANT]
-> The Target Framework Moniker (TFM) is what denotes the project as using .NET, in this case .NET 6. Valid TFMs are net6.0-android, net6.0-ios, net6.0-maccatalyst, net6.0-macos, net6.0-tizen, net6.0-windows, and their .NET 7 equivalents.
+> The target framework moniker (TFM) is what denotes the project as using .NET, in this case .NET 6. Valid TFMs for equivalent Xamarin native projects are net6.0-android, net6.0-ios, net6.0-macos, net6.0-tvos, and their .NET 7 equivalents.
 
 Launch the app to confirm that your development environment can build the app.
 
@@ -56,14 +56,13 @@ You'll also need to copy some project properties from your Xamarin native projec
 
 ## Update dependencies
 
-Xamarin native NuGet packages are not compatible with .NET 6+ unless they have been recompiled using .NET target framework monikers (TFMs). You can confirm a package is .NET 6+ compatible by looking at the **Frameworks** tab on [NuGet](https://nuget.org) for the package you're using, and checking that it lists one of the compatible frameworks shown in the following table:
+Xamarin native NuGet packages are not compatible with .NET 6+ unless they have been recompiled using .NET TFMs. You can confirm a package is .NET 6+ compatible by looking at the **Frameworks** tab on [NuGet](https://nuget.org) for the package you're using, and checking that it lists one of the compatible frameworks shown in the following table:
 
 | Compatible frameworks | Incompatible frameworks |
 | --- | --- |
 | net6.0-android, net7.0-android | monoandroid, monoandroid10.0 |
 | net6.0-ios, net7.0-ios | monotouch, xamarinios, xamarinios10 |
 | net6.0-macos, net6.0-macos | monomac, xamarinmac, xamarinmac20 |
-| net6.0-maccatalyst, net7.0-maccatalyst |  |
 | net6.0-tvos, net7.0-tvos | xamarintvos |
 | | xamarinwatchos |
 

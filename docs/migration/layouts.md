@@ -1,21 +1,21 @@
 ---
-title: "Layout changes from Xamarin.Forms"
-description: "Learn about the layout changes between Xamarin.Forms and .NET MAUI."
-ms.date: 1/31/2023
+title: "Layout behavior changes from Xamarin.Forms"
+description: "Learn about the layout behavior changes between Xamarin.Forms and .NET MAUI."
+ms.date: 02/15/2023
 ---
 
-# Layout changes from Xamarin.Forms
+# Layout behavior changes from Xamarin.Forms
 
-You may notice when running your upgraded app in .NET Multi-platform App UI (.NET MAUI) that layout behavior is different. Some of this is the result of changes to layout spacing values. For more information, see [Default value changes from Xamarin.Forms](#default-layout-value-changes-from-xamarinforms).
+You may notice when running your upgraded .NET Multi-platform App UI (.NET MAUI) app that layout behavior is different. Some of this is the result of changes to layout spacing values. For more information, see [Default value changes from Xamarin.Forms](#default-layout-value-changes-from-xamarinforms).
 
-There are additional changes and recommendations for layouts in .NET MAUI:
+The following table shows additional behavior changes between layouts in Xamarin.Forms and .NET MAUI:
 
 | Layout  | Xamarin.Forms | .NET MAUI  | Recommendation |
 |---|---|---|---|
-| All | In certain cases sizing requests are not honored. | Sizing requests are honored. | |
-| <xref:Microsoft.Maui.Controls.Grid> | Columns and rows can be inferred from XAML. | Columns and rows must be explicitly declared. | Add `ColumnDefinitions` and `RowDefinitions`. |
+| All | In certain cases sizing requests aren't honored. | Sizing requests are honored. | |
+| <xref:Microsoft.Maui.Controls.Grid> | Columns and rows can be inferred from XAML. | Columns and rows must be explicitly declared. | Add <xref:Microsoft.Maui.Controls.Grid.ColumnDefinitions> and <xref:Microsoft.Maui.Controls.Grid.RowDefinitions>. |
 | <xref:Microsoft.Maui.Controls.HorizontalStackLayout> |   | `*AndExpand` has no effect. | |
-| <xref:Microsoft.Maui.Controls.Compatibility.RelativeLayout>  | | Requires the compatibility namespace. | Use <xref:Microsoft.Maui.Controls.Grid> instead, or add the `xmlns` and update tags. |
+| <xref:Microsoft.Maui.Controls.Compatibility.RelativeLayout>  | | Requires the compatibility namespace. | Use <xref:Microsoft.Maui.Controls.Grid> instead, or add the `xmlns` for the compatibility namespace. |
 | <xref:Microsoft.Maui.Controls.StackLayout> | Children can fill space in the stacking direction. | Children are stacked and will go beyond available space. | If you need child views to fill space, change to a <xref:Microsoft.Maui.Controls.Grid>. |
 | <xref:Microsoft.Maui.Controls.VerticalStackLayout> |  | `*AndExpand` has no effect. | |
 
@@ -25,11 +25,12 @@ There are additional changes and recommendations for layouts in .NET MAUI:
 
 Xamarin.Forms uses arbitrary default values for some property values, such as padding, margins, and spacing. .NET MAUI changes these arbitrary property values to zero.
 
-The .NET MAUI project template includes resource dictionaries that provide default styles for most controls. It's recommended you take a similar approach in your apps, by modifying or inheriting from these [resource dictionaries](https://github.com/dotnet/maui/tree/main/src/Templates/src/templates/maui-mobile/Resources/Styles).
-
 To preserve the Xamarin.Forms default values in projects that don't set explicit values, add implicit styles to your project. For more information about implicit styles, see [Implicit styles](~/user-interface/styles/xaml.md#implicit-styles).
 
-The following table lists the layout property values that have changed betwen Xamarin.Forms and .NET MAUI:
+> [!NOTE]
+> The .NET MAUI project template includes resource dictionaries that provide default styles for most controls. It's recommended you take a similar approach in your apps, by modifying or inheriting from these [resource dictionaries](https://github.com/dotnet/maui/tree/main/src/Templates/src/templates/maui-mobile/Resources/Styles).
+
+The following table lists the layout property values that have changed between Xamarin.Forms and .NET MAUI:
 
 | Property | Xamarin.Forms value | .NET MAUI value |
 | --- | --- | --- |

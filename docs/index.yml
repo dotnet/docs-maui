@@ -58,9 +58,9 @@ landingContent:
         links:
           - text: Upgrade Xamarin native projects
             url: migration/native-projects.md
-          - text: Xamarin.Android project changes
+          - text: Xamarin.Android project migration
             url: migration/android-projects.md
-          - text: Xamarin Apple project changes
+          - text: Xamarin Apple project migration
             url: migration/apple-projects.md
           - text: Automatically upgrade Xamarin.Forms projects
             url: migration/upgrade-assistant.md
