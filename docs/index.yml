@@ -68,9 +68,9 @@ landingContent:
             url: migration/forms-projects.md
           - text: Layout behavior changes
             url: migration/layouts.md
-          - text: Use custom renderers
+          - text: Custom renderers
             url: migration/custom-renderers.md
-          - text: Use effects
+          - text: Effects
             url: migration/effects.md
   - title: XAML
     linkLists:
