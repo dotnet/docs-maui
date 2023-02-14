@@ -52,6 +52,26 @@ landingContent:
         links:
           - text: Learning resources
             url: get-started/resources.md
+  - title: Migrate from Xamarin
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Upgrade Xamarin native projects
+            url: migration/native-projects.md
+          - text: Xamarin.Android project changes
+            url: migration/android-projects.md
+          - text: Xamarin Apple project changes
+            url: migration/apple-projects.md
+          - text: Automatically upgrade Xamarin.Forms projects
+            url: migration/upgrade-assistant.md
+          - text: Manually upgrade Xamarin.Forms projects
+            url: migration/forms-projects.md
+          - text: Layout behavior changes
+            url: migration/layouts.md
+          - text: Use custom renderers in .NET MAUI
+            url: migration/custom-renderers.md
+          - text: Use effects in .NET MAUI
+            url: migration/effects.md
   - title: XAML
     linkLists:
       - linkListType: concept

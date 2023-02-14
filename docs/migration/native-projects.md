@@ -66,7 +66,6 @@ Xamarin native NuGet packages are not compatible with .NET 6+ unless they have b
 | net6.0-maccatalyst, net7.0-maccatalyst |  |
 | net6.0-tvos, net7.0-tvos | xamarintvos |
 | | xamarinwatchos |
-| net6.0-windows, net7.0-windows | uap10.0.16299 |
 
 > [!NOTE]
 > .NET Standard libraries that have no dependencies on the incompatible frameworks listed below are still compatible with .NET 6+.
@@ -86,5 +85,5 @@ Once your dependencies are resolved and your code and resource files are added t
 <!-- markdownlint-disable MD032 -->
 > [!TIP]
 > - Delete all *bin* and *obj* folders from all projects before opening and building projects in Visual Studio, particularly when changing .NET versions.
-> - Delete the 'ResourceDesigner' generated file from the Android project.
+> - Delete the *Resource.designer.cs* generated file from the Android project.
 <!-- markdownlint-enable MD032 -->
