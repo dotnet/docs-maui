@@ -9,7 +9,7 @@ no-loc: [ "Xamarin.Forms", "Xamarin.Essentials", "Xamarin.CommunityToolkit", ".N
 
 Updating a Xamarin.Forms app to a .NET Multi-platform App UI (.NET MAUI) app follows the same steps as a Xamarin.Android and Xamarin.iOS project, with additional steps to take advantage of changes in .NET MAUI.
 
-This article describes how to manually migrate a Xamarin.Forms library project to a .NET MAUI library project. Before you do this, you must update your Xamarin.Forms head projects to be SDK-style projects. SDK-style projects are the same project format used by all .NET workloads, and compared to many Xamarin projects are much less verbose. For information about updating your app projects, see [Update Xamarin.Android, Xamarin.iOS, and Xamarin.Mac apps to .NET](native-projects.md), [Xamarin.Android project migration](android-projects.md) and [Xamarin Apple project migration](apple-projects.md).
+This article describes how to manually migrate a Xamarin.Forms library project to a .NET MAUI library project. Before you do this, you must update your Xamarin.Forms platform projects to be SDK-style projects. SDK-style projects are the same project format used by all .NET workloads, and compared to many Xamarin projects are much less verbose. For information about updating your app projects, see [Update Xamarin.Android, Xamarin.iOS, and Xamarin.Mac apps to .NET](native-projects.md), [Xamarin.Android project migration](android-projects.md) and [Xamarin Apple project migration](apple-projects.md).
 
 To migrate a Xamarin.Forms library project to a .NET MAUI library project, you must:
 
@@ -51,7 +51,7 @@ In Visual Studio, create a new .NET MAUI class library project of the same name 
 </Project>
 ```
 
-In your head projects, add a reference to this new library project. Then copy your Xamarin.Forms library files into the .NET MAUI library project.
+In your platform projects, add a reference to this new library project. Then copy your Xamarin.Forms library files into the .NET MAUI library project.
 
 ## Namespace changes
 
@@ -111,7 +111,7 @@ In addition, all of the numeric values in <xref:Microsoft.Maui.Graphics.Color?di
 
 Xamarin.Forms has a <xref:Xamarin.Forms.Device?displayProperty=fullName> class that helps you to interact with the device and platform the app is running on. The equivalent class in .NET MAUI, <xref:Microsoft.Maui.Controls.Device?displayProperty=fullName>, is deprecated and its functionality is replaced by multiple types.
 
-The following table shows the .NET MAUI replacements for the <xref:Xamarin.Forms.Device?displayProperty=fullName> class:
+The following table shows the .NET MAUI replacements for the functionality in the <xref:Xamarin.Forms.Device?displayProperty=fullName> class:
 
 > [!div class="mx-tdBreakAll"]
 > | Xamarin.Forms API | .NET MAUI API | Comments |
@@ -145,7 +145,7 @@ The following table shows the .NET MAUI replacements for the <xref:Xamarin.Forms
 
 In Xamarin.Forms, the <xref:Xamarin.Forms.Maps.Map> control and associated types are in the <xref:Xamarin.Forms.Maps?displayProperty=fullName> namespace. In .NET MAUI, this functionality has moved to the <xref:Microsoft.Maui.Controls.Maps> and <xref:Microsoft.Maui.Maps> namespaces. Some properties have been renamed and some types have been replaced with their equivalents from Xamarin.Essentials.
 
-The following table shows the .NET MAUI replacements for the <xref:Xamarin.Forms.Maps> namespace:
+The following table shows the .NET MAUI replacements for the functionality in the <xref:Xamarin.Forms.Maps> namespace:
 
 > [!div class="mx-tdBreakAll"]
 > | Xamarin.Forms API | .NET MAUI API | Comment |
@@ -157,8 +157,8 @@ The following table shows the .NET MAUI replacements for the <xref:Xamarin.Forms
 > | <xref:Xamarin.Forms.Maps.Pin.Id?displayProperty=fullName> | | No .NET MAUI equivalent. |
 > | <xref:Xamarin.Forms.Maps.Pin.Position?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.Maps.Pin.Location?displayProperty=fullName> |  |
 > | <xref:Xamarin.Forms.Maps.MapClickedEventArgs.Position?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.Maps.MapClickedEventArgs.Location?displayProperty=fullName> |  |
-> | <xref:Xamarin.Forms.Maps.Position?displayProperty=fullName> | <xref:Microsoft.Maui.Devices.Sensors.Location?displayProperty=fullName> | Any members of type <xref:Xamarin.Forms.Maps.Position?displayProperty=fullName> have changed to the <xref:Microsoft.Maui.Devices.Sensors.Location?displayProperty=fullName> type. |
-> | <xref:Xamarin.Forms.Maps.Geocoder?displayProperty=fullName> | <xref:Microsoft.Maui.Devices.Sensors.Geocoding?displayProperty=fullName> | Any members of type <xref:Xamarin.Forms.Maps.Geocoder?displayProperty=fullName> have changed to the <xref:Microsoft.Maui.Devices.Sensors.Geocoding?displayProperty=fullName> type. |
+> | <xref:Xamarin.Forms.Maps.Position?displayProperty=fullName> | <xref:Microsoft.Maui.Devices.Sensors.Location?displayProperty=fullName> | Members of type <xref:Xamarin.Forms.Maps.Position?displayProperty=fullName> have changed to the <xref:Microsoft.Maui.Devices.Sensors.Location?displayProperty=fullName> type. |
+> | <xref:Xamarin.Forms.Maps.Geocoder?displayProperty=fullName> | <xref:Microsoft.Maui.Devices.Sensors.Geocoding?displayProperty=fullName> | Members of type <xref:Xamarin.Forms.Maps.Geocoder?displayProperty=fullName> have changed to the <xref:Microsoft.Maui.Devices.Sensors.Geocoding?displayProperty=fullName> type. |
 
 ### Other changes
 
@@ -177,7 +177,7 @@ A small number of other APIs have been consolidated in the move from Xamarin.For
 > | <xref:Xamarin.Forms.IQueryAttributable.ApplyQueryAttributes%2A?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.IQueryAttributable.ApplyQueryAttributes%2A?displayProperty=fullName> | In Xamarin.Forms, the `ApplyQueryAttributes` method accepts an `IDictionary<string, string>` argument. In .NET MAUI, the `ApplyQueryAttributes` method accepts an `IDictionary<string, object>` argument.  |
 > | <xref:Xamarin.Forms.MenuItem.Icon?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.MenuItem.IconImageSource?displayProperty=fullName> | <xref:Xamarin.Forms.MenuItem.Icon?displayProperty=fullName> is the base class for <xref:Xamarin.Forms.ToolbarItem?displayProperty=fullName>, and so `ToolbarItem.Icon` becomes `ToolbarItem.IconImageSource`. |
 > | <xref:Xamarin.Forms.OSAppTheme?displayProperty=fullName> | <xref:Microsoft.Maui.ApplicationModel.AppTheme?displayProperty=fullName> |  |
-> | <xref:Xamarin.Forms.RelativeLayout?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.Compatibility.RelativeLayout?displayProperty=fullName> | In .NET MAUI, `RelativeLayout` only exists as a compatibility control for users migrating from Xamarin.Forms. Use xref:Microsoft.Maui.Controls.Grid> instead, or add the `xmlns` for the compatibility namespace. |
+> | <xref:Xamarin.Forms.RelativeLayout?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.Compatibility.RelativeLayout?displayProperty=fullName> | In .NET MAUI, `RelativeLayout` only exists as a compatibility control for users migrating from Xamarin.Forms. Use <xref:Microsoft.Maui.Controls.Grid> instead, or add the `xmlns` for the compatibility namespace. |
 > | <xref:Xamarin.Forms.Span.ForegroundColor?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.Span.TextColor?displayProperty=fullName> |  |
 > | <xref:Xamarin.Forms.ToolbarItem.Name?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.MenuItem.Text?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.MenuItem.Text?displayProperty=fullName> is the base class for <xref:Microsoft.Maui.Controls.ToolbarItem?displayProperty=fullName>, and so `ToolbarItem.Name` becomes `ToolbarItem.Text`. |
 
@@ -196,7 +196,7 @@ For more information, see [Custom layout examples](https://github.com/hartez/Cus
 
 ### Native forms changes
 
-[Native forms](/xamarin/xamarin-forms/platform/native-forms) in Xamarin.Forms has become Native embedding in .NET MAUI, and uses a different initialization approach and different extension methods to convert cross-platform controls to their native types. For more information, see [Native embedding](~/platform-integration/native-embedding.md)]
+[Native forms](/xamarin/xamarin-forms/platform/native-forms) in Xamarin.Forms has become native embedding in .NET MAUI, and uses a different initialization approach and different extension methods to convert cross-platform controls to their native types. For more information, see [Native embedding](~/platform-integration/native-embedding.md)]
 
 ## Bootstrap your migrated app
 
@@ -251,10 +251,10 @@ namespace YOUR_NAMESPACE_HERE.Droid
 }
 ```
 
-Then, update your android manifest file to specify that the `minSdKVersion` is 32, which is the minimum Android SDK version required by .NET MAUI. This can be achieved by modifying `<uses-sdk />` node, which is a child of the `<manifest>` node:
+Then, update your manifest file to specify that the `minSdKVersion` is 21, which is the minimum Android SDK version required by .NET MAUI. This can be achieved by modifying the `<uses-sdk />` node, which is a child of the `<manifest>` node:
 
 ```xml
-<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="31" />
+<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="32" />
 ```
 
 ### iOS project configuration
@@ -280,11 +280,11 @@ namespace YOUR_NAMESPACE_HERE.iOS
 }
 ```
 
-Then, update **Info.plist** so that `MinimumOSVersion` is 11.0, which is the minimum version required by .NET MAUI.
+Then, update *Info.plist* so that `MinimumOSVersion` is 11.0, which is the minimum iOS version required by .NET MAUI.
 
-### MauiProgram configuration
+### App entry point
 
-.NET MAUI apps have a single cross-platform app entry point. Each platform entry point calls a `CreateMauiApp` method on the static `MauiProgram` class, and returns a `MauiApp`.
+.NET MAUI apps have a single cross-platform app entry point. Each platform entry point calls a `CreateMauiApp` method on the static `MauiProgram` class, and returns a <xref:Microsoft.Maui.Hosting.MauiApp>.
 
 Therefore, add a new class named `MauiProgram` that contains the following code:
 
@@ -306,9 +306,9 @@ public static class MauiProgram
 
 ### AssemblyInfo changes
 
-Properties that are typically set in an *AssemblyInfo.cs** file are now available in your SDK-style project. We recommend migrating them to your project file in every project, and removing the *AssemblyInfo.cs* file.
+Properties that are typically set in an *AssemblyInfo.cs** file are now available in your SDK-style project. We recommend migrating them from *AssemblyInfo.cs* to your project file in every project, and removing the *AssemblyInfo.cs* file.
 
-Optionally, you may keep the *AssemblyInfo.cs* file and set the `GenerateAssemblyInfo` property in your project file to `false`:
+Optionally, you can keep the *AssemblyInfo.cs* file and set the `GenerateAssemblyInfo` property in your project file to `false`:
 
 ```xml
 <PropertyGroup>
@@ -320,28 +320,29 @@ For more information about the `GenerateAssemblyInfo` property, see [GenerateAss
 
 ## Update app dependencies
 
-NuGet packages and other library dependencies that depend upon target frameworks prior to .NET 6 are generally not compatible with .NET 6+. When migrating your Xamarin projects, you should identify which packages have `net6-` or later compatibility.
+Xamarin.Forms NuGet packages are not compatible with .NET 6+ unless they have been recompiled using .NET target framework monikers (TFMs). You can confirm a package is .NET 6+ compatible by looking at the **Frameworks** tab on [NuGet](https://nuget.org) for the package you're using, and checking that it lists one of the compatible frameworks shown in the following table:
+
+| Compatible frameworks | Incompatible frameworks |
+| --- | --- |
+| net6.0-android, net7.0-android | monoandroid, monoandroid10.0 |
+| net6.0-ios, net7.0-ios | monotouch, xamarinios, xamarinios10 |
+| net6.0-maccatalyst, net7.0-maccatalyst |  |
+| net6.0-windows, net7.0-windows | uap10.0.16299 |
 
 > [!NOTE]
 > .NET Standard libraries that have no dependencies on the incompatible frameworks listed below are still compatible with .NET 6+.
 
-| Compatible frameworks | Incompatible frameworks |
-|:--|:--|
-| net6.0-android | monoandroid, monoandroid10.0 |
-| net6.0-ios | monotouch, xamarinios, xamarinios10 |
-| net6.0-macos | monomac, xamarinmac, xamarinmac20 |
-| net6.0-maccatalyst |  |
-| net6.0-tvos | xamarintvos |
-| | xamarinwatchos |
-| net6.0-windows | uap10.0.16299 |
+If a package on [NuGet](https://nuget.org) indicates compatibility with any of the `net6` or newer frameworks above, regardless of also including incompatible frameworks, then the package is compatible. Compatible NuGet packages can be added to your .NET MAUI library project using the NuGet package manager in Visual Studio.
 
-If a package on [NuGet](https://nuget.org) indicates compatibility with any of the net6 or newer frameworks above, regardless of also including incompatible frameworks, then the package is compatible.
+If you can't find a .NET 6+ compatible version of a NuGet package you should:
 
-You should replace any incompatible packages with compatible alternatives.
+- Recompile the package with .NET TFMs, if you own the code.
+- Look for a preview release of a .NET 6+ version of the package.
+- Replace the dependency with a .NET 6+ compatible alternative.
 
-When upgrading a Xamarin.Forms apps to .NET Multi-platform App UI (.NET MAUI), you may encounter build or runtime errors that need to be addressed.
+## Compile and troubleshoot
 
-## Troubleshooting
+Once your dependencies are resolved, you should build your project. Any errors will guide you towards next steps.
 
 <!-- markdownlint-disable MD032 -->
 > [!TIP]
@@ -353,20 +354,11 @@ The following table provides guidance for overcoming common build or runtime iss
 
 | Issue | Tip |
 | ----- | --- |
+| `Xamarin.*` namespace doesn't exist. | Update the namespace to its .NET MAUI equivalent. For more information, see [Namespace changes](#namespace-changes). |
+| API doesn't exist. | Update the API usage to its .NET MAUI equivalent. For more information, see [API changes](#api-changes).
+| <xref:Microsoft.Maui.Controls.CollectionView> doesn't scroll. | Check the container layout and the measured size of the <xref:Microsoft.Maui.Controls.CollectionView>. By default the control will take up as much space as the container allows. A <xref:Microsoft.Maui.Controls.Grid> will constrain children at its own size. However a <xref:Microsoft.Maui.Controls.StackLayout> will enable children to take up space beyond its bounds. |
+| <xref:Microsoft.Maui.Controls.BoxView> not appearing. | The default size of a <xref:Microsoft.Maui.Controls.BoxView> in Xamarin.Forms is 40x40. The default size of a <xref:Microsoft.Maui.Controls.BoxView> in .NET MAUI is 0x0. Set `WidthRequest` and `HeightRequest` to 40. |
 | Layout is missing padding, margin, or spacing. | Add default values to your project based on the .NET MAUI style resource. For more information, see [Default value changes from Xamarin.Forms](layouts.md#default-layout-value-changes-from-xamarinforms). |
-| `Color.Red` and similar can't be found | Named colors are now in `Microsoft.Maui.Graphics.Colors`. |
-| `Color` and `Colors` can't be found | `Color` and `Colors` are now in the `Microsoft.Maui.Graphics` namespace. |
-| `Color.Default` doesn't exist. | `Color` defaults to `null`. |
-| `Frame.BorderColor=Accent` doesn't exist | Use an explicit color. |
-| `ToolbarItem.Icon` doesn't exist. | Use `ToolbarItem.IconImageSource`. |
-| `Button.Image` doesn't exist. | Use `Button.ImageSource`. |
-| `Span.ForegroundColor` doesn't exist. | Use `Span.TextColor`. |
-| `OSTheme` doesn't exist. | Use `AppTheme`. |
-| `Xamarin.Essentials` namespace doesn't exist. | Remove the namespace and resolve types individually. |
-| `Xamarin.Forms` namespace doesn't exist. | Replace with the `Microsoft.Maui` or `Microsoft.Maui.Controls` namespace, depending on the type used. |
-| `Xamarin.Forms.Xaml` namespace doesn't. | Replace with the `Microsoft.Maui.Controls.Xaml` namespace. |
-| `CollectionView` doesn't scroll. | Check the container layout and the measured size of the `CollectionView`. By default the control will take up as much space as the container allows. A <xref:Microsoft.Maui.Controls.Grid> will constrain children at its own size. However a <xref:Microsoft.Maui.Controls.StackLayout> will enable children to take up space beyond its bounds. |
-| `BoxView` | The default size of a `BoxView` in Xamarin.Forms is 40x40. The default size of a `BoxView` in .NET MAUI is 0x0. |
 
 ## See also
 

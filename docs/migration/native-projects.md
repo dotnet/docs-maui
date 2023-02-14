@@ -56,11 +56,22 @@ You'll also need to copy some project properties from your Xamarin native projec
 
 ## Update dependencies
 
-Xamarin native NuGet packages are not compatible with .NET 6+ unless they have been recompiled using .NET TFMs. You can confirm a package is .NET 6 compatible by looking at the **Frameworks** tab on [NuGet](https://www.nuget.org) for the package you are using.
+Xamarin native NuGet packages are not compatible with .NET 6+ unless they have been recompiled using .NET target framework monikers (TFMs). You can confirm a package is .NET 6+ compatible by looking at the **Frameworks** tab on [NuGet](https://nuget.org) for the package you're using, and checking that it lists one of the compatible frameworks shown in the following table:
 
-Some NuGet packages may include .NET TFMs and Mono\* or Xamarin.\* frameworks. This is acceptable, because provided that the NuGet package includes the .NET TFMs you are targeting the package is compatible.
+| Compatible frameworks | Incompatible frameworks |
+| --- | --- |
+| net6.0-android, net7.0-android | monoandroid, monoandroid10.0 |
+| net6.0-ios, net7.0-ios | monotouch, xamarinios, xamarinios10 |
+| net6.0-macos, net6.0-macos | monomac, xamarinmac, xamarinmac20 |
+| net6.0-maccatalyst, net7.0-maccatalyst |  |
+| net6.0-tvos, net7.0-tvos | xamarintvos |
+| | xamarinwatchos |
+| net6.0-windows, net7.0-windows | uap10.0.16299 |
 
-Compatible NuGet packages can be added to your .NET native project using the NuGet package manager in Visual Studio.
+> [!NOTE]
+> .NET Standard libraries that have no dependencies on the incompatible frameworks listed below are still compatible with .NET 6+.
+
+If a package on [NuGet](https://nuget.org) indicates compatibility with any of the `net6` or newer frameworks above, regardless of also including incompatible frameworks, then the package is compatible. Compatible NuGet packages can be added to your .NET native project using the NuGet package manager in Visual Studio.
 
 If you can't find a .NET 6+ compatible version of a NuGet package you should:
 
@@ -71,3 +82,9 @@ If you can't find a .NET 6+ compatible version of a NuGet package you should:
 ## Compile and troubleshoot
 
 Once your dependencies are resolved and your code and resource files are added to your .NET native project, you should build your project. Any errors will guide you towards next steps.
+
+<!-- markdownlint-disable MD032 -->
+> [!TIP]
+> - Delete all *bin* and *obj* folders from all projects before opening and building projects in Visual Studio, particularly when changing .NET versions.
+> - Delete the 'ResourceDesigner' generated file from the Android project.
+<!-- markdownlint-enable MD032 -->
