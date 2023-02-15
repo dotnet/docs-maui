@@ -13,8 +13,6 @@
           href: get-started/first-app.md?pivots=devices-windows
         - name: Learning resources
           href: get-started/resources.md
-        - name: Migrate from Xamarin.Forms
-          href: get-started/migrate.md
         - name: Android
           items:
             - name: Emulator
@@ -61,6 +59,30 @@
           items:
             - name: How to set up Windows for debugging
               href: windows/setup.md
+    - name: Migrate from Xamarin
+      items:
+        - name: Overview
+          href: migration/index.md
+        - name: Xamarin native projects
+          items:
+            - name: Upgrade Xamarin native projects
+              href: migration/native-projects.md
+            - name: Android project migration
+              href: migration/android-projects.md
+            - name: Apple project migration
+              href: migration/apple-projects.md
+        - name: Xamarin.Forms projects
+          items:
+            - name: Upgrade with the .NET Upgrade Assistant
+              href: migration/upgrade-assistant.md
+            - name: Upgrade manually
+              href: migration/forms-projects.md
+            - name: Layout behavior changes
+              href: migration/layouts.md
+            - name: Custom renderers
+              href: migration/custom-renderers.md
+            - name: Effects
+              href: migration/effects.md
     - name: Tutorials
       items:
         - name: Create a .NET MAUI app
@@ -645,7 +667,7 @@
             - name: Code signing and provisioning
               items:
                 - name: Capabilities
-                  href: ios/capabilities.md                
+                  href: ios/capabilities.md
                 - name: Entitlements
                   href: ios/entitlements.md
             - name: Hot restart
@@ -672,11 +694,11 @@
               href: macos/deployment/overview.md
             - name: Windows
               items:
-              - name: Overview
-                href: windows/deployment/overview.md
-              - name: Publish with the .NET CLI
-                href: windows/deployment/publish-cli.md
-              - name: Publish with Visual Studio to a folder
-                href: windows/deployment/publish-visual-studio-folder.md
+                - name: Overview
+                  href: windows/deployment/overview.md
+                - name: Publish with the .NET CLI
+                  href: windows/deployment/publish-cli.md
+                - name: Publish with Visual Studio to a folder
+                  href: windows/deployment/publish-visual-studio-folder.md
     - name: Troubleshooting
       href: troubleshooting.md
