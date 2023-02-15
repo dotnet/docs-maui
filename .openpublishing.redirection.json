@@ -23,6 +23,10 @@
     {
       "source_path": "docs/ios/deployment/entitlements.md",
       "redirect_url": "/dotnet/maui/ios/entitlements"
+    },
+    {
+      "source_path": "docs/get-started/migrate.md",
+      "redirect_url": "/dotnet/maui/migration"
     }
   ]
 }
