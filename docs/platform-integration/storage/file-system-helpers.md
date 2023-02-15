@@ -55,6 +55,8 @@ Returns the [FilesDir](https://developer.android.com/reference/android/content/C
 - `FileSystem.OpenAppPackageFileAsync`\
 Files that were added to the project with the **Build Action** of **MauiAsset** can be opened with this method. .NET MAUI projects will process any file in the _Resources\Raw_ folder as a **MauiAsset**.
 
+  The `FileSystem.OpenPackageFileAsync` method can't get the length of the stream on Android by accessing the `Result.Length` property. Instead, you have to read the whole stream and count how many bytes there are to get the size of the asset.
+
 # [iOS\macOS](#tab/ios)
 
 - `FileSystem.CacheDirectory`\
