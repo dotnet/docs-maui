@@ -596,6 +596,8 @@
                   href: ios/platform-specifics/navigation-bar-translucent.md
                 - name: Picker item selection
                   href: ios/platform-specifics/picker-selection.md
+                - name: Safe area layout guide
+                  href: ios/platform-specifics/page-safe-area-layout.md
                 - name: ScrollView content touches
                   href: ios/platform-specifics/scrollview-content-touches.md
                 - name: SearchBar style
