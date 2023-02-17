@@ -1,7 +1,7 @@
 ---
 title: "Host a Blazor web app in a .NET MAUI app using BlazorWebView"
 description: "The .NET MAUI BlazorWebView control enables you to host a Blazor web app in your .NET MAUI app, and integrate the app with device features."
-ms.date: 05/16/2022
+ms.date: 01/18/2023
 ---
 
 # Host a Blazor web app in a .NET MAUI app using BlazorWebView
@@ -25,12 +25,14 @@ In addition, <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> d
 - `BlazorWebViewInitialized`, with an accompanying `BlazorWebViewInitializedEventArgs` object, which is raised after the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> is initialized but before any component has been rendered. This event enables retrieval of the platform-specific web view instance.
 - `UrlLoading`, with an accompanying `UrlLoadingEventArgs` object, is raised when a hyperlink is clicked within a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView>. This event enables customization of whether a hyperlink is opened in the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView>, in an external app, or whether the URL loading attempt is cancelled.
 
-Existing [Razor components](/aspnet/core/blazor/components/) can be used in a .NET MAUI Blazor app by moving the code into the app, or by referencing an existing class library or package that contains the component.
+Existing [Razor components](/aspnet/core/blazor/components/) can be used in a .NET MAUI Blazor app by moving the code into the app, or by referencing an existing class library or package that contains the component. For more information, see [Reuse Razor components in ASP.NET Core Blazor Hybrid](/aspnet/core/blazor/hybrid/reuse-razor-components).
 
-For more information about Blazor Hybrid apps, see [ASP.NET Core Blazor Hybrid](/aspnet/core/blazor/hybrid).
+Browser developer tools can be used to inspect .NET MAUI Blazor apps. For more information, see [Use browser developer tools with ASP.NET Core Blazor Hybrid](/aspnet/core/blazor/hybrid/developer-tools).
 
 > [!NOTE]
 > While Visual Studio installs all the required tooling to develop .NET MAUI Blazor apps, end users of .NET MAUI Blazor apps on Windows must install the [WebView2](https://developer.microsoft.com/microsoft-edge/webview2/) runtime.
+
+For more information about Blazor Hybrid apps, see [ASP.NET Core Blazor Hybrid](/aspnet/core/blazor/hybrid).
 
 ## Create a .NET MAUI Blazor app
 
@@ -86,7 +88,7 @@ The process to add a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWe
 
         <BlazorWebView HostPage="wwwroot/index.html">
             <BlazorWebView.RootComponents>
-                <RootComponent Selector="app" ComponentType="{x:Type local:Main}" />
+                <RootComponent Selector="#app" ComponentType="{x:Type local:Main}" />
             </BlazorWebView.RootComponents>
         </BlazorWebView>
 
@@ -119,30 +121,3 @@ The process to add a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWe
         }
     }
     ```
-
-## Inspect a Blazor Hybrid app on Mac Catalyst
-
-To use Safari developer tools to inspect a Blazor Hybrid app on Mac Catalyst requires you to add the `com.apple.security.get-task-allow` key, of type `Boolean`, to the entitlements file of your app for its debug build. For more information about entitlements, see [Entitlements](~/ios/entitlements.md).
-
-To add an entitlements file to your .NET MAUI app project, add a new XML file named *Entitlements.Debug.plist* to the *Platforms\\MacCatalyst* folder of your app project. Then add the following XML to the file:
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>com.apple.security.get-task-allow</key>
-    <true/>
-</dict>
-</plist>
-```
-
-To configure your app to consume this entitlements file, add the following `<PropertyGroup>` node to your app's project file as a child of the `<Project>` node:
-
-```xml
-<PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst' and '$(Configuration)' == 'Debug'">
-    <CodeSignEntitlements>Platforms/MacCatalyst/Entitlements.Debug.plist</CodeSignEntitlements>
-</PropertyGroup>
-```
-
-This configuration ensures that the entitlements file is only processed for debug builds on Mac Catalyst.

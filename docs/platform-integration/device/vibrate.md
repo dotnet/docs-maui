@@ -1,15 +1,15 @@
 ---
 title: "Vibration"
 description: "Learn how to use the .NET MAUI IVibration interface, which lets you start and stop the vibrate functionality for a desired amount of time."
-ms.date: 09/02/2022
+ms.date: 02/02/2023
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices"]
 ---
 
 # Vibration
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IVibration` interface. This interface lets you start and stop the vibrate functionality for a desired amount of time.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Devices.IVibration> interface. This interface lets you start and stop the vibrate functionality for a desired amount of time.
 
-The default implementation of the `IVibration` interface is available through the `Vibration.Default` property. Both the `IVibration` interface and `Vibration` class are contained in the `Microsoft.Maui.Devices` namespace.
+The default implementation of the `IVibration` interface is available through the <xref:Microsoft.Maui.Devices.Vibration.Default?displayProperty=nameWithType> property. Both the `IVibration` interface and `Vibration` class are contained in the `Microsoft.Maui.Devices` namespace.
 
 ## Get started
 
@@ -22,7 +22,7 @@ The `VIBRATE` permission is required, and must be configured in the Android proj
 
 - Add the assembly-based permission:
 
-  Open the _AssemblyInfo.cs_ file under the **Properties** folder and add:
+  Open the _Platforms/Android/MainApplication.cs_ file and add the following assembly attributes after `using` directives:
 
   ```csharp
   [assembly: UsesPermission(Android.Manifest.Permission.Vibrate)]
@@ -32,7 +32,7 @@ The `VIBRATE` permission is required, and must be configured in the Android proj
 
 - Update the Android Manifest:
 
-  Open the _AndroidManifest.xml_ file under the **Properties** folder and add the following in the `manifest` node:
+  Open the _Platforms/Android/AndroidManifest.xml_ file and add the following in the `manifest` node:
 
   ```xml
   <uses-permission android:name="android.permission.VIBRATE" />
@@ -58,7 +58,7 @@ No setup is required.
 
 ## Vibrate the device
 
-The vibration functionality can be requested for a set amount of time or the default of 500 milliseconds. The following code example randomly vibrates the device between one and seven seconds:
+The vibration functionality can be requested for a set amount of time or the default of 500 milliseconds. The following code example randomly vibrates the device between one and seven seconds using the <xref:Microsoft.Maui.Devices.IVibration.Vibrate(System.TimeSpan)>:
 
 :::code language="csharp" source="../snippets/shared_1/DeviceDetailsPage.xaml.cs" id="vibrate":::
 

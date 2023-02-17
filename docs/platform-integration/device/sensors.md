@@ -2,7 +2,7 @@
 title: Accessing device sensors overview
 description: "Learn how to use and monitor sensors provided by your device, with .NET MAUI. You can monitor the following sensors: accelerometer, barometer, compass, shake, gyroscope, magnetometer, orientation."
 ms.topic: overview
-ms.date: 09/02/2022
+ms.date: 02/02/2023
 ms.custom: template-overview
 show_latex: true
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices", "Microsoft.Maui.Devices.Sensors"]
@@ -10,24 +10,24 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices", "Microsoft.Maui.Devices.Sen
 
 # Accessing device sensors
 
-Devices have all sorts of sensors that are available to you. Some sensors can detect movement, others changes in the environment, such as light. Monitoring and reacting to these sensors makes your app dynamic in adapting to how the device is being used. You can also respond to changes in the sensors and alert the user. This article gives you a brief overview of the common sensors supported by .NET Multi-User Application (.NET MAUI).
+Devices have all sorts of sensors that are available to you. Some sensors can detect movement, others changes in the environment, such as light. Monitoring and reacting to these sensors makes your app dynamic in adapting to how the device is being used. You can also respond to changes in the sensors and alert the user. This article gives you a brief overview of the common sensors supported by .NET Multi-platform App UI (.NET MAUI).
 
 Device sensor-related types are available in the `Microsoft.Maui.Devices.Sensors` namespace.
 
 ## Sensor speed
 
-Sensor speed sets the speed in which a sensor will return data to your app. When you start a sensor, you provide the desired sensor speed with the `SensorSpeed` enumeration.
+Sensor speed sets the speed in which a sensor will return data to your app. When you start a sensor, you provide the desired sensor speed with the <xref:Microsoft.Maui.Devices.Sensors.SensorSpeed> enumeration.
 
-- `Fastest`\
+- <xref:Microsoft.Maui.Devices.Sensors.SensorSpeed.Fastest>\
 Get the sensor data as fast as possible (not guaranteed to return on UI thread).
 
-- `Game`\
+- <xref:Microsoft.Maui.Devices.Sensors.SensorSpeed.Game>\
 Rate suitable for games (not guaranteed to return on UI thread).
 
-- `Default`\
+- <xref:Microsoft.Maui.Devices.Sensors.SensorSpeed.Default>\
 Default rate suitable for screen orientation changes.
 
-- `UI`\
+- <xref:Microsoft.Maui.Devices.Sensors.SensorSpeed.UI>\
 Rate suitable for general user interface.
 
 > [!WARNING]
@@ -35,15 +35,15 @@ Rate suitable for general user interface.
 
 ### Sensor event handlers
 
-Event handlers added to sensors with either the `Game` or `Fastest` speeds **aren't** guaranteed to run on the UI thread. If the event handler needs to access user-interface elements, use the [`MainThread.BeginInvokeOnMainThread`](../appmodel/main-thread.md) method to run that code on the UI thread.
+Event handlers added to sensors with either the <xref:Microsoft.Maui.Devices.Sensors.SensorSpeed.Game> or <xref:Microsoft.Maui.Devices.Sensors.SensorSpeed.Fastest> speeds **aren't** guaranteed to run on the UI thread. If the event handler needs to access user-interface elements, use the [`MainThread.BeginInvokeOnMainThread`](../appmodel/main-thread.md) method to run that code on the UI thread.
 
 ## Accelerometer
 
 The accelerometer sensor measures the acceleration of the device along its three axes. The data reported by the sensor represents how the user is moving the device.
 
-The `IAccelerometer` interface provides access to the sensor, and is available through the `Accelerometer.Default` property. Both the `IAccelerometer` interface and `Accelerometer` class are contained in the `Microsoft.Maui.Devices.Sensors` namespace.
+The <xref:Microsoft.Maui.Devices.Sensors.IAccelerometer> interface provides access to the sensor, and is available through the <xref:Microsoft.Maui.Devices.Sensors.Accelerometer.Default?displayProperty=nameWithType> property. Both the `IAccelerometer` interface and `Accelerometer` class are contained in the `Microsoft.Maui.Devices.Sensors` namespace.
 
-To start monitoring the accelerometer sensor, call the `IAccelerometer.Start` method. .NET MAUI sends accelerometer data changes to your app by raising the `IAccelerometer.ReadingChanged` event. Use the `IAccelerometer.Stop` method to stop monitoring the sensor. You can detect the monitoring state of the accelerometer with the `IAccelerometer.IsMonitoring` property, which will be `true` if the accelerometer was started and is currently being monitored.
+To start monitoring the accelerometer sensor, call the <xref:Microsoft.Maui.Devices.Sensors.IAccelerometer.Start%2A?displayProperty=nameWithType> method. .NET MAUI sends accelerometer data changes to your app by raising the <xref:Microsoft.Maui.Devices.Sensors.IAccelerometer.ReadingChanged?displayProperty=nameWithType> event. Use the <xref:Microsoft.Maui.Devices.Sensors.IAccelerometer.Stop%2A?displayProperty=nameWithType> method to stop monitoring the sensor. You can detect the monitoring state of the accelerometer with the <xref:Microsoft.Maui.Devices.Sensors.IAccelerometer.IsMonitoring%2A?displayProperty=nameWithType> property, which will be `true` if the accelerometer was started and is currently being monitored.
 
 The following code example demonstrates monitoring the accelerometer for changes:
 
@@ -59,7 +59,7 @@ Examples:
 
 - When the device lies flat on a table and is pushed on its left side toward the right, the **X** acceleration value is positive.
 
-- When the device lies flat on a table, the acceleration value is +1.00 G or $(+9.81 m/s^2)$, which correspond to the acceleration of the device $(0 m/s^2)$ minus the force of gravity $(-9.81 m/s^2)$ and normalized as in G.
+- When the device lies flat on a table, the acceleration value is +1.00 G or $(+9.81 m/s^2)$, which corresponds to the acceleration of the device $(0 m/s^2)$ minus the force of gravity $(-9.81 m/s^2)$ and normalized as in G.
 
 <!-- TODO: Why are A and G mentioned here as if they're XYZ properties from the data? -->
 - When the device lies flat on a table and is pushed toward the sky with an acceleration of **A** $m/s^2$, the acceleration value is equal to $A+9.81$ which corresponds to the acceleration of the device $(+A m/s^2)$ minus the force of gravity $(-9.81 m/s^2)$ and normalized in **G**.
@@ -72,9 +72,9 @@ There is no platform-specific information related to the accelerometer sensor.
 
 The barometer sensor measures the ambient air pressure. The data reported by the sensor represents the current air pressure. This data is reported the first time you start monitoring the sensor and then each time the pressure changes.
 
-The `IBarometer` interface provides access to the sensor, and is available through the `Barometer.Default` property. Both the `IBarometer` interface and `Barometer` class are contained in the `Microsoft.Maui.Devices.Sensors` namespace.
+The <xref:Microsoft.Maui.Devices.Sensors.IBarometer> interface provides access to the sensor, and is available through the <xref:Microsoft.Maui.Devices.Sensors.Barometer.Default?displayProperty=nameWithType> property. Both the `IBarometer` interface and `Barometer` class are contained in the `Microsoft.Maui.Devices.Sensors` namespace.
 
-To start monitoring the barometer sensor, call the `IBarometer.Start` method. .NET MAUI sends air pressure readings to your app by raising the `IBarometer.ReadingChanged` event. Use the `IBarometer.Stop` method to stop monitoring the sensor. You can detect the monitoring state of the barometer with the `IBarometer.IsMonitoring` property, which will be `true` if the barometer is currently being monitored.
+To start monitoring the barometer sensor, call the <xref:Microsoft.Maui.Devices.Sensors.IBarometer.Start%2A?displayProperty=nameWithType> method. .NET MAUI sends air pressure readings to your app by raising the <xref:Microsoft.Maui.Devices.Sensors.IBarometer.ReadingChanged?displayProperty=nameWithType> event. Use the <xref:Microsoft.Maui.Devices.Sensors.IBarometer.Stop%2A?displayProperty=nameWithType> method to stop monitoring the sensor. You can detect the monitoring state of the barometer with the <xref:Microsoft.Maui.Devices.Sensors.IBarometer.IsMonitoring%2A?displayProperty=nameWithType> property, which will be `true` if the barometer is currently being monitored.
 
 The pressure reading is represented in hectopascals.
 
@@ -93,9 +93,9 @@ No platform-specific implementation details.
 
 # [iOS\macOS](#tab/ios)
 
-This API uses [CMAltimeter](https://developer.apple.com/documentation/coremotion/cmaltimeter#//apple_ref/occ/cl/CMAltimeter) to monitor pressure changes, which is a hardware feature that was added to iPhone 6 and newer devices. A `FeatureNotSupportedException` will be thrown on devices that don't support the altimeter, the sensor used to report air pressure.
+This API uses [CMAltimeter](https://developer.apple.com/documentation/coremotion/cmaltimeter#//apple_ref/occ/cl/CMAltimeter) to monitor pressure changes, which is a hardware feature that was added to iPhone 6 and newer devices. A <xref:Microsoft.Maui.ApplicationModel.FeatureNotSupportedException> will be thrown on devices that don't support the altimeter, the sensor used to report air pressure.
 
-`SensorSpeed` isn't used by this API, as it isn't supported on iOS.
+<xref:Microsoft.Maui.Devices.Sensors.SensorSpeed> isn't used by this API, as it isn't supported on iOS.
 
 # [Windows](#tab/windows)
 
@@ -108,9 +108,9 @@ No platform-specific implementation details.
 
 The compass sensor monitors the device's magnetic north heading.
 
-The `ICompass` interface provides access to the sensor, and is available through the `Compass.Default` property. Both the `ICompass` interface and `Compass` class are contained in the `Microsoft.Maui.Devices.Sensors` namespace.
+The <xref:Microsoft.Maui.Devices.Sensors.ICompass> interface provides access to the sensor, and is available through the <xref:Microsoft.Maui.Devices.Sensors.Compass.Default?displayProperty=nameWithType> property. Both the `ICompass` interface and `Compass` class are contained in the `Microsoft.Maui.Devices.Sensors` namespace.
 
-To start monitoring the compass sensor, call the `ICompass.Start` method. .NET MAUI raises the `ICompass.ReadingChanged` event when the compass heading changes. Use the `ICompass.Stop` method to stop monitoring the sensor. You can detect the monitoring state of the compass with the `ICompass.IsMonitoring` property, which will be `true` if the compass is currently being monitored.
+To start monitoring the compass sensor, call the <xref:Microsoft.Maui.Devices.Sensors.ICompass.Start%2A?displayProperty=nameWithType> method. .NET MAUI raises the <xref:Microsoft.Maui.Devices.Sensors.ICompass.ReadingChanged?displayProperty=nameWithType> event when the compass heading changes. Use the <xref:Microsoft.Maui.Devices.Sensors.ICompass.Stop%2A?displayProperty=nameWithType> method to stop monitoring the sensor. You can detect the monitoring state of the compass with the <xref:Microsoft.Maui.Devices.Sensors.ICompass.IsMonitoring%2A?displayProperty=nameWithType> property, which will be `true` if the compass is currently being monitored.
 
 The following code example demonstrates monitoring the compass for changes:
 
@@ -157,13 +157,13 @@ No platform-specific implementation details.
 
 Even though this article is listing **shake** as a sensor, it isn't. The [accelerometer](#accelerometer) is used to detect when the device is shaken.
 
-The `IAccelerometer` interface provides access to the sensor, and is available through the `Accelerometer.Default` property. Both the `IAccelerometer` interface and `Accelerometer` class are contained in the `Microsoft.Maui.Devices.Sensors` namespace.
+The <xref:Microsoft.Maui.Devices.Sensors.IAccelerometer> interface provides access to the sensor, and is available through the <xref:Microsoft.Maui.Devices.Sensors.Accelerometer.Default?displayProperty=nameWithType> property. Both the `IAccelerometer` interface and `Accelerometer` class are contained in the `Microsoft.Maui.Devices.Sensors` namespace.
 
 The detect shake API uses raw readings from the accelerometer to calculate acceleration. It uses a simple queue mechanism to detect if 3/4ths of the recent accelerometer events occurred in the last half second. Acceleration is calculated by adding the square of the X, Y, and Z ($x^2+y^2+z^2$) readings from the accelerometer and comparing it to a specific threshold.
 
-To start monitoring the accelerometer sensor, call the `IAccelerometer.Start` method. When a shake is detected, the `IAccelerometer.ShakeDetected` event is raised.  Use the `IAccelerometer.Stop` method to stop monitoring the sensor. You can detect the monitoring state of the accelerometer with the `IAccelerometer.IsMonitoring` property, which will be `true` if the accelerometer was started and is currently being monitored.
+To start monitoring the accelerometer sensor, call the <xref:Microsoft.Maui.Devices.Sensors.IAccelerometer.Start%2A?displayProperty=nameWithType> method. When a shake is detected, the <xref:Microsoft.Maui.Devices.Sensors.IAccelerometer.ShakeDetected?displayProperty=nameWithType> event is raised.  Use the <xref:Microsoft.Maui.Devices.Sensors.IAccelerometer.Stop%2A?displayProperty=nameWithType> method to stop monitoring the sensor. You can detect the monitoring state of the accelerometer with the `IAccelerometer.IsMonitoring` property, which will be `true` if the accelerometer was started and is currently being monitored.
 
-It's recommended to use `Game` or faster for the `SensorSpeed`.
+It's recommended to use <xref:Microsoft.Maui.Devices.Sensors.SensorSpeed.Game> or faster for the <xref:Microsoft.Maui.Devices.Sensors.SensorSpeed>.
 
 The following code example demonstrates monitoring the accelerometer for the `ShakeDetected` event:
 
@@ -177,9 +177,9 @@ There is no platform-specific information related to the accelerometer sensor.
 
 The gyroscope sensor measures the angular rotation speed around the device's three primary axes.
 
-The `IGyroscope` interface provides access to the sensor, and is available through the `Gyroscope.Default` property. Both the `IGyroscope` interface and `Gyroscope` class are contained in the `Microsoft.Maui.Devices.Sensors` namespace.
+The <xref:Microsoft.Maui.Devices.Sensors.IGyroscope> interface provides access to the sensor, and is available through the <xref:Microsoft.Maui.Devices.Sensors.Gyroscope.Default?displayProperty=nameWithType> property. Both the `IGyroscope` interface and `Gyroscope` class are contained in the `Microsoft.Maui.Devices.Sensors` namespace.
 
-To start monitoring the gyroscope sensor, call the `IGyroscope.Start` method. .NET MAUI sends gyroscope data changes to your app by raising the `IGyroscope.ReadingChanged` event. The data provided by this event is measured in rad/s (radian per second). Use the `IGyroscope.Stop` method to stop monitoring the sensor. You can detect the monitoring state of the gyroscope with the `IGyroscope.IsMonitoring` property, which will be `true` if the gyroscope was started and is currently being monitored.
+To start monitoring the gyroscope sensor, call the <xref:Microsoft.Maui.Devices.Sensors.IGyroscope.Start%2A?displayProperty=nameWithType> method. .NET MAUI sends gyroscope data changes to your app by raising the <xref:Microsoft.Maui.Devices.Sensors.IGyroscope.ReadingChanged?displayProperty=nameWithType> event. The data provided by this event is measured in rad/s (radian per second). Use the <xref:Microsoft.Maui.Devices.Sensors.IGyroscope.Stop%2A?displayProperty=nameWithType> method to stop monitoring the sensor. You can detect the monitoring state of the gyroscope with the <xref:Microsoft.Maui.Devices.Sensors.IGyroscope.IsMonitoring%2A?displayProperty=nameWithType> property, which will be `true` if the gyroscope was started and is currently being monitored.
 
 The following code example demonstrates monitoring the gyroscope:
 
@@ -193,9 +193,9 @@ There is no platform-specific information related to the gyroscope sensor.
 
 The magnetometer sensor indicates the device's orientation relative to Earth's magnetic field.
 
-The `IMagnetometer` interface provides access to the sensor, and is available through the `Magnetometer.Default` property. Both the `IMagnetometer` interface and `Magnetometer` class are contained in the `Microsoft.Maui.Devices.Sensors` namespace.
+The <xref:Microsoft.Maui.Devices.Sensors.IMagnetometer> interface provides access to the sensor, and is available through the <xref:Microsoft.Maui.Devices.Sensors.Magnetometer.Default?displayProperty=nameWithType> property. Both the `IMagnetometer` interface and `Magnetometer` class are contained in the `Microsoft.Maui.Devices.Sensors` namespace.
 
-To start monitoring the magnetometer sensor, call the `IMagnetometer.Start` method. .NET MAUI sends magnetometer data changes to your app by raising the `IMagnetometer.ReadingChanged` event. The data provided by this event is measured in $µT$ (microteslas). Use the `IMagnetometer.Stop` method to stop monitoring the sensor. You can detect the monitoring state of the magnetometer with the `IMagnetometer.IsMonitoring` property, which will be `true` if the magnetometer was started and is currently being monitored.
+To start monitoring the magnetometer sensor, call the <xref:Microsoft.Maui.Devices.Sensors.IMagnetometer.Start%2A?displayProperty=nameWithType> method. .NET MAUI sends magnetometer data changes to your app by raising the <xref:Microsoft.Maui.Devices.Sensors.IMagnetometer.ReadingChanged?displayProperty=nameWithType> event. The data provided by this event is measured in $µT$ (microteslas). Use the <xref:Microsoft.Maui.Devices.Sensors.IMagnetometer.Stop%2A?displayProperty=nameWithType> method to stop monitoring the sensor. You can detect the monitoring state of the magnetometer with the <xref:Microsoft.Maui.Devices.Sensors.IMagnetometer.IsMonitoring%2A?displayProperty=nameWithType> property, which will be `true` if the magnetometer was started and is currently being monitored.
 
 The following code example demonstrates monitoring the magnetometer:
 
@@ -210,17 +210,17 @@ There is no platform-specific information related to the magnetometer sensor.
 The orientation sensor monitors the orientation of a device in 3D space.
 
 > [!NOTE]
-> This sensor isn't used for determining if the device's video display is in portrait or landscape mode. Use the `Orientation` property of the `ScreenMetrics` object available from the [`DeviceDisplay`](../device/display.md) class.
+> This sensor isn't used for determining if the device's video display is in portrait or landscape mode. Use the `DeviceDisplay.Current.MainDisplayInfo.Orientation` property instead. For more information, see [Device display information](display.md).
 
-The `IOrientationSensor` interface provides access to the sensor, and is available through the `OrientationSensor.Default` property. Both the `IOrientationSensor` interface and `OrientationSensor` class are contained in the `Microsoft.Maui.Devices.Sensors` namespace.
+The <xref:Microsoft.Maui.Devices.Sensors.IOrientationSensor> interface provides access to the sensor, and is available through the <xref:Microsoft.Maui.Devices.Sensors.OrientationSensor.Default?displayProperty=nameWithType> property. Both the `IOrientationSensor` interface and `OrientationSensor` class are contained in the `Microsoft.Maui.Devices.Sensors` namespace.
 
-To start monitoring the orientation sensor, call the `IOrientationSensor.Start` method. .NET MAUI sends orientation data changes to your app by raising the `IOrientationSensor.ReadingChanged` event. Use the `IOrientationSensor.Stop` method to stop monitoring the sensor. You can detect the monitoring state of the orientation with the `IOrientationSensor.IsMonitoring` property, which will be `true` if the orientation was started and is currently being monitored.
+To start monitoring the orientation sensor, call the <xref:Microsoft.Maui.Devices.Sensors.IOrientationSensor.Start%2A?displayProperty=nameWithType> method. .NET MAUI sends orientation data changes to your app by raising the <xref:Microsoft.Maui.Devices.Sensors.IOrientationSensor.ReadingChanged?displayProperty=nameWithType> event. Use the <xref:Microsoft.Maui.Devices.Sensors.IOrientationSensor.Stop%2A?displayProperty=nameWithType> method to stop monitoring the sensor. You can detect the monitoring state of the orientation with the <xref:Microsoft.Maui.Devices.Sensors.IOrientationSensor.IsMonitoring%2A?displayProperty=nameWithType> property, which will be `true` if the orientation was started and is currently being monitored.
 
 The following code example demonstrates monitoring the orientation sensor:
 
 :::code language="csharp" source="../snippets/shared_1/SensorsPage.xaml.cs" id="toggle_orientation":::
 
-`IOrientationSensor` readings are reported back in the form of a [`Quaternion`](xref:System.Numerics.Quaternion) that describes the orientation of the device based on two 3D coordinate systems:
+`IOrientationSensor` readings are reported back in the form of a <xref:System.Numerics.Quaternion> that describes the orientation of the device based on two 3D coordinate systems:
 
 The device (generally a phone or tablet) has a 3D coordinate system with the following axes:
 
@@ -238,7 +238,7 @@ The `Quaternion` describes the rotation of the device's coordinate system relati
 
 A `Quaternion` value is closely related to rotation around an axis. If an axis of rotation is the normalized vector ($a_x, a_y, a_z$), and the rotation angle is $\theta$, then the (X, Y, Z, W) components of the quaternion are:
 
-$(a_x \times \sin(\theta/2), a_y \times \sin(\theta/2), a_z \times \sin(\theta/2), \cos(\theta/2)$
+$(a_x \times \sin(\theta/2), a_y \times \sin(\theta/2), a_z \times \sin(\theta/2), \cos(\theta/2))$
 
 These are right-hand coordinate systems, so with the thumb of the right hand pointed in the positive direction of the rotation axis, the curve of the fingers indicate the direction of rotation for positive angles.
 

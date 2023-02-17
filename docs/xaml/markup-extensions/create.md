@@ -61,7 +61,7 @@ Because `IMarkupExtension<T>` derives from `IMarkupExtension`, the class must co
 
 ## Consume a markup extension
 
-The following XAML demonstrates a variety of approaches that can be used to invoke the `HslColoeExtension` to specify the color for a <xref:Microsoft.Maui.Controls.BoxView>:
+The following XAML demonstrates a variety of approaches that can be used to invoke the `HslColorExtension` to specify the color for a <xref:Microsoft.Maui.Controls.BoxView>:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"

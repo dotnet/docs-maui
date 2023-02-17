@@ -1,7 +1,7 @@
 ---
 title: "Native embedding"
 description: "Learn how to consume .NET MAUI controls inside .NET for iOS, .NET for Android, and WinUI native apps."
-ms.date: 11/14/2022
+ms.date: 02/13/2022
 ---
 
 # Native embedding
@@ -20,7 +20,7 @@ The process for consuming a .NET MAUI control in a native app is as follows:
 
 ## Enable .NET MAUI support
 
-To consume .NET MAUI controls that derive from <xref:Microsoft.Maui.Controls.Element> in a .NET for Android, .NET for iOS, .NET for Mac Catalyst, or WinUI app, you must first enable .NET MAUI support in the native app's project file. This can be accomplished by adding `<UseMaui>true</UseMaui>` to the first `<PropertyGroup>` node in the *.csproj*:
+To consume .NET MAUI controls that derive from <xref:Microsoft.Maui.Controls.Element> in a .NET for Android, .NET for iOS, .NET for Mac Catalyst, or WinUI app, you must first enable .NET MAUI support in the native app's project file. Enable support by adding `<UseMaui>true</UseMaui>` to the first `<PropertyGroup>` node in the project file:
 
 ```xml
 <PropertyGroup>
@@ -31,11 +31,25 @@ To consume .NET MAUI controls that derive from <xref:Microsoft.Maui.Controls.Ele
 </PropertyGroup>
 ```
 
-A consequence of doing this is that it will replace the native implicit namespace support with .NET MAUI's, so you'll have to explicitly add `using` statements to your code files for native types.
+A consequence of doing this is that it replaces the native implicit namespace support with .NET MAUI namespaces, so you'll have to explicitly add `using` statements to your code files for native types.
+
+For WinUI apps, you'll also need to add `<EnableDefaultXamlItems>false</EnableDefaultXamlItems>` to the first `<PropertyGroup>` node in the project file:
+
+```xml
+<PropertyGroup>
+  ...
+  <Nullable>enable</Nullable>
+  <ImplicitUsings>true</ImplicitUsings>
+  <UseMaui>true</UseMaui>
+  <EnableDefaultXamlItems>false</EnableDefaultXamlItems>
+</PropertyGroup>
+```
+
+This will stop you receiving build errors about the `InitializeComponent` method already being defined.
 
 ## Initialize .NET MAUI
 
-.NET MAUI must be initialized before a native app project can construct a .NET MAUI control. Choosing when to do this primarily depends on when it's most convenient in your app flow - it could be performed at startup, or just before a .NET MAUI control is constructed.
+.NET MAUI must be initialized before a native app project can construct a .NET MAUI control. Choosing when to initialize it primarily depends on when it's most convenient in your app flow&mdash;it could be performed at startup or just before a .NET MAUI control is constructed.
 
 Typically, the pattern for initializing .NET MAUI in a native app project is to create a <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object, invoke the <xref:Microsoft.Maui.Embedding.AppHostBuilderExtensions.UseMauiEmbedding%2A> method on it, and then create a <xref:Microsoft.Maui.Hosting.MauiApp> object by invoking the <xref:Microsoft.Maui.Hosting.MauiAppBuilder.Build> method on the <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object. In addition, a <xref:Microsoft.Maui.MauiContext> object should then be created from the <xref:Microsoft.Maui.Hosting.MauiApp> object. The <xref:Microsoft.Maui.MauiContext> object will be used when converting .NET MAUI controls to native types.
 

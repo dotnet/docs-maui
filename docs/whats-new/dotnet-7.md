@@ -6,7 +6,7 @@ ms.date: 11/09/2022
 
 # What's new in .NET MAUI for .NET 7
 
-.NET 7 is the successor to .NET 6 and focuses on being unified, modern, simple, and *fast*. Due to working with underlying external dependencies, such as Xcode or Android SDK Tools, the .NET Multi-platform App UI (.NET MAUI) support policy differs from the [.NET and .NET Core support policy](https://dotnet.microsoft.com/en-us/platform/support/policy/maui). For more information, see [.NET MAUI support policy](https://dotnet.microsoft.com/en-us/platform/support/policy/maui).
+.NET 7 is the successor to .NET 6 and focuses on being unified, modern, simple, and *fast*. Due to working with underlying external dependencies, such as Xcode or Android SDK Tools, the .NET Multi-platform App UI (.NET MAUI) support policy differs from the [.NET and .NET Core support policy](https://dotnet.microsoft.com/platform/support/policy/maui). For more information, see [.NET MAUI support policy](https://dotnet.microsoft.com/platform/support/policy/maui).
 
 This article lists the new features of .NET MAUI for .NET 7 and provides links to more detailed information on each.
 
@@ -18,7 +18,7 @@ For information about what's new in .NET 7, see [What's new in .NET 7](/dotnet/c
 
 - The <xref:Microsoft.Maui.Controls.Maps.Map> control is a cross-platform view for displaying and annotating maps. The <xref:Microsoft.Maui.Controls.Maps.Map> control uses the native map control on each platform, and is provided by the [Microsoft.Maui.Controls.Maps NuGet package](https://www.nuget.org/packages/Microsoft.Maui.Controls.Maps/). For more information, see [Map](~/user-interface/controls/map.md).
 - The <xref:Microsoft.Maui.Controls.Foldable.TwoPaneView> control is a container control for foldable devices that provides two views that size and position content in the available space, either side-by-side or top-to-bottom. This control is provided by the [Microsoft.Maui.Controls.Foldable NuGet package](https://www.nuget.org/packages/Microsoft.Maui.Controls.Foldable/).
-- The `PointerGestureRecognizer` class performs pointer gesture recognition and detects when the mouse pointer enters, exits, and moves within a view. For more information, see [Recognize a pointer gesture](~/fundamentals/gestures/pointer.md). .NET MAUI also defines a `PointerOver` visual state that can change the visual appearance of a view when it has a mouse cursor hovering over it. For more information, see [Visual states](~/user-interface/visual-states.md).
+- The <xref:Microsoft.Maui.Controls.PointerGestureRecognizer> class performs pointer gesture recognition and detects when the mouse pointer enters, exits, and moves within a view. For more information, see [Recognize a pointer gesture](~/fundamentals/gestures/pointer.md). .NET MAUI also defines a `PointerOver` visual state that can change the visual appearance of a view when it has a mouse cursor hovering over it. For more information, see [Visual states](~/user-interface/visual-states.md).
 - The `Window` class defines additional properties and enables the window to be positioned and sized on desktop platforms. For more information, see [.NET MAUI Windows](~/fundamentals/windows.md).
 - Tooltips can be displayed for a view, when the user rests a pointer on the view. For more information, see [Display tooltips](~/user-interface/tooltips.md).
 - Context menus can be added to any control that derives from <xref:Microsoft.Maui.Controls.Element>, on Mac Catalyst and Windows. For more information, see [Display a context menu](~/user-interface/context-menu.md).

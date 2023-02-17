@@ -1,15 +1,15 @@
 ---
-title: "Media picker"
-description: "Learn how to use the IMediaPicker interface in the Microsoft.Maui.Media namespace, to prompt the user to select or take a photo or video."
-ms.date: 10/24/2022
+title: "Media picker for photos and videos"
+description: "Learn how to use the IMediaPicker interface in the Microsoft.Maui.Media namespace, to prompt the user to select or take a photo or video"
+ms.date: 02/02/2023
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Media", "MediaPicker"]
 ---
 
-# Media picker
+# Media picker for photos and videos
 
-This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IMediaPicker` interface. This interface lets a user pick or take a photo or video on the device.
+This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Media.IMediaPicker> interface. This interface lets a user pick or take a photo or video on the device.
 
-The default implementation of the `IMediaPicker` interface is available through the `MediaPicker.Default` property. Both the `IMediaPicker` interface and `MediaPicker` class are contained in the `Microsoft.Maui.Media` namespace.
+The default implementation of the `IMediaPicker` interface is available through the <xref:Microsoft.Maui.Media.MediaPicker.Default?displayProperty=nameWithType> property. Both the `IMediaPicker` interface and `MediaPicker` class are contained in the `Microsoft.Maui.Media` namespace.
 
 ## Get started
 
@@ -47,7 +47,7 @@ The `CAMERA`, `WRITE_EXTERNAL_STORAGE`, `READ_EXTERNAL_STORAGE` permissions are 
 
 If your project's Target Android version is set to **Android 11 (R API 30)** or higher, you must update your _Android Manifest_ with queries that use Android's [package visibility requirements](https://developer.android.com/preview/privacy/package-visibility).
 
-In the _Platforms/Android/AndroidManifest.xml_ file, add the following `queries/intent` nodes the `manifest` node:
+In the _Platforms/Android/AndroidManifest.xml_ file, add the following `queries/intent` nodes in the `manifest` node:
 
 ```xml
 <queries>
@@ -97,28 +97,28 @@ No setup is required.
 
 ## Using media picker
 
-The `IMediaPicker` interface has the following methods that all return a `FileResult`, which can be used to get the file's location or read it.
+The <xref:Microsoft.Maui.Media.IMediaPicker> interface has the following methods that all return a <xref:Microsoft.Maui.Storage.FileResult>, which can be used to get the file's location or read it.
 
-- `PickPhotoAsync`\
+- <xref:Microsoft.Maui.Media.MediaPicker.PickPhotoAsync%2A>\
 Opens the media browser to select a photo.
 
-- `CapturePhotoAsync`\
+- <xref:Microsoft.Maui.Media.MediaPicker.CapturePhotoAsync%2A>\
 Opens the camera to take a photo.
 
-- `PickVideoAsync`\
+- <xref:Microsoft.Maui.Media.MediaPicker.PickVideoAsync%2A>\
 Opens the media browser to select a video.
 
-- `CaptureVideoAsync`\
+- <xref:Microsoft.Maui.Media.MediaPicker.CaptureVideoAsync%2A>\
 Opens the camera to take a video.
 
-Each method optionally takes in a `MediaPickerOptions` parameter type that allows the `Title` to be set on some operating systems, which is displayed to the user.
+Each method optionally takes in a <xref:Microsoft.Maui.Media.MediaPickerOptions> parameter type that allows the <xref:Microsoft.Maui.Media.MediaPickerOptions.Title> to be set on some operating systems, which is displayed to the user.
 
 > [!IMPORTANT]
 > All methods must be called on the UI thread because permission checks and requests are automatically handled by .NET MAUI.
 
 ## Take a photo
 
-Call the `CapturePhotoAsync` method to open the camera and let the user take a photo. If the user takes a photo, the return value of the method will be a non-null value. The following code sample uses the media picker to take a photo and save it to the cache directory:
+Call the <xref:Microsoft.Maui.Media.IMediaPicker.CapturePhotoAsync%2A> method to open the camera and let the user take a photo. If the user takes a photo, the return value of the method will be a non-null value. The following code sample uses the media picker to take a photo and save it to the cache directory:
 
 :::code language="csharp" source="../snippets/shared_1/MediaPage.cs" id="photo_take_and_save":::
 

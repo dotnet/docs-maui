@@ -26,29 +26,29 @@ Once you've added your Apple developer account to Visual Studio, you need to gen
 <!-- markdownlint-enable MD025 -->
 
 1. In Visual Studio, go to **Tools > Options > Xamarin > Apple Accounts**.
-1. In the **Apple Developer Accounts** dialog, select a team and click the **View Details...** button.
-1. In the **Details** dialog, click **Create Certificate** and select **iOS Development**. A new signing identity will be created and will sync with Apple provided that you have the correct permissions.
+1. In the **Apple Developer Accounts** dialog, select a team and then select **View Details**.
+1. In the **Details** dialog, select **Create Certificate** > **iOS Development**. A new signing identity will be created and will sync with Apple if you have the correct permissions.
 
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio for Mac](#tab/vsmac)
 <!-- markdownlint-enable MD025 -->
 
 1. In Visual Studio for Mac, go to **Visual Studio > Preferences > Publishing > Apple Developer Account**.
-1. In the **Apple Developer Accounts** window, select a team and click the **View Details...** button.
-1. In the **Details** window, click **Create Certificate** and select **Apple Development** or **iOS Development**. A new signing identity will be created and will sync with Apple provided that you have the correct permissions.
+1. In the **Apple Developer Accounts** window, select a team and then select **View Details**.
+1. In the **Details** window, select **Create Certificate** and then select **Apple Development** or **iOS Development**. A new signing identity will be created and will sync with Apple if you have the correct permissions.
 
 ---
 
 ### Understanding certificate key pairs
 
-A developer profile contains certificates, their associated keys, and any provisioning profiles associated with the Apple developer account. There are two versions of a developer profile — one exists in Apple's developer portal, and the other lives on a local machine. The difference between the two is the type of keys they contain: the profile on Apple's developer portal contains all of the public keys associated with your certificates, while the copy on your local machine contains all of the private keys. For certificates to be valid, the key pairs must match.
+A developer profile contains certificates, their associated keys, and any provisioning profiles associated with the Apple developer account. There are two versions of a developer profile—one exists in Apple's developer portal, and the other lives on a local machine. The difference between the two is the type of keys they contain: the profile on Apple's developer portal contains all of the public keys associated with your certificates, while the copy on your local machine contains all of the private keys. For certificates to be valid, the key pairs must match.
 
 > [!WARNING]
 > Losing the certificate and associated keys can be incredibly disruptive, as it will require revoking existing certificates and re-provisioning any associated devices. After successfully setting up a development certificate, export a backup copy and store it in a safe place. For more information on how to do this, see [Export developer accounts](https://help.apple.com/xcode/mac/current/#/dev8a2822e0b) on help.apple.com.
 
 ## Provision an iOS device for development
 
-After creating a signing certificate you must set up a development provisioning profile so that it's possible to deploy your app to a device. The device must be running a version of iOS that's supported by Xcode.
+After creating a signing certificate, you must set up a development provisioning profile so that it's possible to deploy your app to a device. The device must be running a version of iOS that's supported by Xcode.
 
 [!INCLUDE [Add a device](../includes/add-a-device.md)]
 
@@ -186,4 +186,4 @@ After manually creating the development provisioning profile, and installing it 
 
 ## Provisioning for application services
 
-Apple provides a selection of application services, known as capabilities, that can be activated for a .NET MAUI iOS app. These capabilities must be configured in both your provisioning profile, when the **App ID** is created, and in the *Entitlements.plist* file that should be added to the .NET MAUI app project. For more information about capabilities, see [Entitlements](~/ios/entitlements.md) and [Capabilites](~/ios/capabilities.md).
+Apple provides a selection of application services, known as capabilities, that can be activated for a .NET MAUI iOS app. These capabilities must be configured in both your provisioning profile, when the **App ID** is created, and in the *Entitlements.plist* file that should be added to the .NET MAUI app project. For more information about capabilities, see [Entitlements](~/ios/entitlements.md) and [Capabilities](~/ios/capabilities.md).

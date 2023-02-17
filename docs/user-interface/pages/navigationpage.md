@@ -256,7 +256,7 @@ NavigationPage.SetTitleView(this, titleView);
 In this example, a <xref:Microsoft.Maui.Controls.Slider> is displayed in the navigation bar of the <xref:Microsoft.Maui.Controls.NavigationPage>, to control zooming.
 
 > [!IMPORTANT]
-> Many views won't appear in the navigation bar unless the size of the view is specified with the `WidthRequest` and `HeightRequest` properties.
+> Many views won't appear in the navigation bar unless the size of the view is specified with the <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest> and <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> properties.
 
 Because the <xref:Microsoft.Maui.Controls.Layout> class derives from the <xref:Microsoft.Maui.Controls.View> class, the `TitleView` attached property can be set to display a layout class that contains multiple views. However, this can result in clipping if the view displayed in the navigation bar is larger than the default size of the navigation bar. However, on Android, the height of the navigation bar can be changed by setting the `NavigationPage.BarHeight` bindable property to a `double` representing the new height. <!--For more information, see [Set the navigation bar height on a NavigationPage](~/platform-integration/android/navigationpage-bar-height.md).-->
 

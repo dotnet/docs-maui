@@ -3,7 +3,7 @@ author: adegeo
 ms.author: adegeo
 ms.date: 01/05/2023
 ms.topic: include
-no-loc: ["communitytoolkit", "CommunityToolkit.Mvvm", "AllNotes", "Notes", "About"]
+no-loc: ["communitytoolkit mvvm", "CommunityToolkit.Mvvm", "AllNotes", "Notes", "About", "ViewModels", "AboutViewModel.cs", "NoteViewModel.cs", "NotesViewModel.cs", "AboutPage.xaml", "AboutPage.xaml.cs"]
 ---
 
 Before adding view models to the project, add a reference to the MVVM Community Toolkit. This library is available on NuGet, and provides types and systems that help implement the MVVM pattern.

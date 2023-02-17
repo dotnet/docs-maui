@@ -60,13 +60,13 @@ public partial class SensorsPage : ContentPage
         {
             if (!Barometer.Default.IsMonitoring)
             {
-                // Turn on accelerometer
+                // Turn on barometer
                 Barometer.Default.ReadingChanged += Barometer_ReadingChanged;
                 Barometer.Default.Start(SensorSpeed.UI);
             }
             else
             {
-                // Turn off accelerometer
+                // Turn off barometer
                 Barometer.Default.Stop();
                 Barometer.Default.ReadingChanged -= Barometer_ReadingChanged;
             }
@@ -130,13 +130,13 @@ public partial class SensorsPage : ContentPage
         {
             if (!Gyroscope.Default.IsMonitoring)
             {
-                // Turn on compass
+                // Turn on gyroscope
                 Gyroscope.Default.ReadingChanged += Gyroscope_ReadingChanged;
                 Gyroscope.Default.Start(SensorSpeed.UI);
             }
             else
             {
-                // Turn off compass
+                // Turn off gyroscope
                 Gyroscope.Default.Stop();
                 Gyroscope.Default.ReadingChanged -= Gyroscope_ReadingChanged;
             }
@@ -165,13 +165,13 @@ public partial class SensorsPage : ContentPage
         {
             if (!Magnetometer.Default.IsMonitoring)
             {
-                // Turn on compass
+                // Turn on magnetometer
                 Magnetometer.Default.ReadingChanged += Magnetometer_ReadingChanged;
                 Magnetometer.Default.Start(SensorSpeed.UI);
             }
             else
             {
-                // Turn off compass
+                // Turn off magnetometer
                 Magnetometer.Default.Stop();
                 Magnetometer.Default.ReadingChanged -= Magnetometer_ReadingChanged;
             }
@@ -200,13 +200,13 @@ public partial class SensorsPage : ContentPage
         {
             if (!OrientationSensor.Default.IsMonitoring)
             {
-                // Turn on compass
+                // Turn on orientation
                 OrientationSensor.Default.ReadingChanged += Orientation_ReadingChanged;
                 OrientationSensor.Default.Start(SensorSpeed.UI);
             }
             else
             {
-                // Turn off compass
+                // Turn off orientation
                 OrientationSensor.Default.Stop();
                 OrientationSensor.Default.ReadingChanged -= Orientation_ReadingChanged;
             }
@@ -235,13 +235,13 @@ public partial class SensorsPage : ContentPage
         {
             if (!Accelerometer.Default.IsMonitoring)
             {
-                // Turn on compass
+                // Turn on accelerometer
                 Accelerometer.Default.ShakeDetected += Accelerometer_ShakeDetected;
                 Accelerometer.Default.Start(SensorSpeed.Game);
             }
             else
             {
-                // Turn off compass
+                // Turn off accelerometer
                 Accelerometer.Default.Stop();
                 Accelerometer.Default.ShakeDetected -= Accelerometer_ShakeDetected;
             }

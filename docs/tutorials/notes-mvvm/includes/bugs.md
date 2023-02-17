@@ -3,6 +3,7 @@ author: adegeo
 ms.author: adegeo
 ms.date: 01/05/2023
 ms.topic: include
+no-loc: ["Note.cs", "AllNotes", "NotesViewModel.cs", "AllNotesPage.xaml", "AllNotesPage.xaml.cs"]
 ---
 
 Now that the app code can compile and run, you'll likely have noticed that there are two flaws with how the app behaves. The app doesn't let you reselect a note that's already selected, and the list of notes isn't reordered after a note is created or changed.

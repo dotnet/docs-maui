@@ -3,6 +3,7 @@ author: adegeo
 ms.author: adegeo
 ms.date: 07/29/2022
 ms.topic: include
+no-loc: ["AboutPage.xaml", "AboutPage.xaml.cs", "AppShell.xaml", "AppShell.xaml.cs"]
 ---
 
 When Visual Studio creates a .NET MAUI project, four important code files are generated. These can be seen in the **Solution Explorer** pane of Visual Studio:

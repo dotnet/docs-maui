@@ -77,7 +77,6 @@ namespace MyCompany.Controls
 The `Init` method can then be called from the assembly that consumes types from the custom namespace schema:
 
 ```csharp
-using Xamarin.Forms;
 using MyCompany.Controls;
 
 namespace CustomNamespaceSchemaDemo

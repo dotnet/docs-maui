@@ -3,7 +3,7 @@ author: adegeo
 ms.author: adegeo
 ms.date: 01/05/2023
 ms.topic: include
-no-loc: ["communitytoolkit", "CommunityToolkit.Mvvm", "AllNotes", "Notes", "About"]
+no-loc: ["Note viewmodel", "Note view", "ViewModels", "NoteViewModel.cs", "NotesViewModel.cs"]
 ---
 
 The goal of updating the **Note view** is to move as much functionality as possible out of the XAML code-behind and put it in the **Note viewmodel**.
@@ -65,7 +65,7 @@ Create the **Note viewmodel**:
 
     The constructors also setup the commands for the viewmodel. Next, add the code for these commands.
 
-01. Add the `Save` and `Load` methods:
+01. Add the `Save` and `Delete` methods:
 
     :::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/ViewModels/NoteViewModel.cs" id="command_methods":::
 

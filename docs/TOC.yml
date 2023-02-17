@@ -13,8 +13,6 @@
           href: get-started/first-app.md?pivots=devices-windows
         - name: Learning resources
           href: get-started/resources.md
-        - name: Migrate from Xamarin.Forms
-          href: get-started/migrate.md
         - name: Android
           items:
             - name: Emulator
@@ -61,6 +59,30 @@
           items:
             - name: How to set up Windows for debugging
               href: windows/setup.md
+    - name: Migrate from Xamarin
+      items:
+        - name: Overview
+          href: migration/index.md
+        - name: Xamarin native projects
+          items:
+            - name: Upgrade Xamarin native projects
+              href: migration/native-projects.md
+            - name: Android project migration
+              href: migration/android-projects.md
+            - name: Apple project migration
+              href: migration/apple-projects.md
+        - name: Xamarin.Forms projects
+          items:
+            - name: Upgrade with the .NET Upgrade Assistant
+              href: migration/upgrade-assistant.md
+            - name: Upgrade manually
+              href: migration/forms-projects.md
+            - name: Layout behavior changes
+              href: migration/layouts.md
+            - name: Custom renderers
+              href: migration/custom-renderers.md
+            - name: Effects
+              href: migration/effects.md
     - name: Tutorials
       items:
         - name: Create a .NET MAUI app
@@ -501,6 +523,7 @@
             href: platform-integration/device/information.md
           - name: Device sensors
             href: platform-integration/device/sensors.md
+            displayName: Sensors,IAccelerometer,Accelerometer,IBarometer,Barometer,ICompass,Compass,Shake,IGyroscope,Gyroscope,IMagnetometer,Magnetometer,IOrientationSensor,OrientationSensor
           - name: Flashlight
             href: platform-integration/device/flashlight.md
           - name: Geocoding
@@ -513,7 +536,7 @@
             href: platform-integration/device/vibrate.md
         - name: Media
           items:
-          - name: Media picker
+          - name: Photos and videos
             href: platform-integration/device-media/picker.md
           - name: Screenshot
             href: platform-integration/device-media/screenshot.md
@@ -573,6 +596,8 @@
                   href: ios/platform-specifics/navigation-bar-translucent.md
                 - name: Picker item selection
                   href: ios/platform-specifics/picker-selection.md
+                - name: Safe area layout guide
+                  href: ios/platform-specifics/page-safe-area-layout.md
                 - name: ScrollView content touches
                   href: ios/platform-specifics/scrollview-content-touches.md
                 - name: SearchBar style
@@ -677,11 +702,11 @@
               href: macos/deployment/overview.md
             - name: Windows
               items:
-              - name: Overview
-                href: windows/deployment/overview.md
-              - name: Publish with the .NET CLI
-                href: windows/deployment/publish-cli.md
-              - name: Publish with Visual Studio to a folder
-                href: windows/deployment/publish-visual-studio-folder.md
+                - name: Overview
+                  href: windows/deployment/overview.md
+                - name: Publish with the .NET CLI
+                  href: windows/deployment/publish-cli.md
+                - name: Publish with Visual Studio to a folder
+                  href: windows/deployment/publish-visual-studio-folder.md
     - name: Troubleshooting
       href: troubleshooting.md
