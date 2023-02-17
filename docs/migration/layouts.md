@@ -104,7 +104,7 @@ If you absolutely require a <xref:Microsoft.Maui.Controls.Compatibility.Relative
 
 ## ScrollView
 
-While <xref:Microsoft.Maui.Controls.ScrollView> often isn't considered to be a layout, it can be thought of a layout as it's used to scroll its child content. In Xamarin.Forms, <xref:Xamarin.Forms.ScrollView> doesn't behave consistently when stacking. It has some arbitrary limits on minimum size that depend partially on its content, and it will sometimes compress to enable other items to fit on the page inside a <xref:Xamarin.Forms.StackLayout> in ways that are inconsistent and sometimes surprising.
+While <xref:Microsoft.Maui.Controls.ScrollView> often isn't considered to be a layout, it can be thought of as a layout as it's used to scroll its child content. In Xamarin.Forms, <xref:Xamarin.Forms.ScrollView> doesn't behave consistently when stacking. It has some arbitrary limits on minimum size that depend partially on its content, and it will sometimes compress to enable other items to fit on the page inside a <xref:Xamarin.Forms.StackLayout> in ways that are inconsistent and sometimes surprising.
 
 In .NET MAUI, the <xref:Microsoft.Maui.Controls.ScrollView> expands to whatever size it wants to be unless otherwise constrained. This means that inside of a <xref:Microsoft.Maui.Controls.VerticalStackLayout>, which can expand infinitely, a <xref:Microsoft.Maui.Controls.ScrollView> will expand to its full content height and doesn't scroll. This behavior can be confusing if you're a Xamarin.Forms user.
 
