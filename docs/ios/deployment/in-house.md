@@ -6,7 +6,7 @@ ms.date: 01/23/2023
 
 # Provision an iOS app for in-house distribution
 
-In-house distribution enables members of the Apple Developer Enterprise Program to distribute apps internally to other members of the same organization. This has the advantage of not requiring an App Store review, and having no limit on the number of devices on which an app can be installed. However, members of the Apple Developer Enterprise Program don't have access to iTunes Connect, and therefore the licensee is responsible for distributing the app.
+In-house distribution enables members of the Apple Developer Enterprise Program to distribute apps internally to other members of the same organization. This has the advantage of not requiring an App Store review, and having no limit on the number of devices on which an app can be installed. However, members of the Apple Developer Enterprise Program don't have access to App Store Connect, and therefore the licensee is responsible for distributing the app.
 
 Distributing an iOS app requires that the app is provisioned using a *provisioning profile*. Provisioning profiles are files that contain code signing information, as well as the identity of the app and its intended distribution mechanism.
 

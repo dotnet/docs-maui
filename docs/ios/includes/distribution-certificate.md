@@ -19,6 +19,9 @@ To create a distribution certificate:
 1. In the **Apple Developer Accounts** dialog, select a team and click the **View Details...** button.
 1. In the **Details** dialog, click **Create Certificate** and select **iOS Distribution**. A new signing identity will be created and will sync with Apple provided that you have the correct permissions.
 
+> [!IMPORTANT]
+> The private key and certificate that make up your signing identity will also be exported to **Keychain Access** on your Mac build host, provided that the IDE is paired to it. For more information, see [Pair to Mac for iOS development](~/ios/pair-to-mac.md).
+
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio for Mac](#tab/vsmac)
 <!-- markdownlint-enable MD025 -->

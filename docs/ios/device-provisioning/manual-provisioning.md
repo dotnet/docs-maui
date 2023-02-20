@@ -29,6 +29,9 @@ Once you've added your Apple developer account to Visual Studio, you need to gen
 1. In the **Apple Developer Accounts** dialog, select a team and then select **View Details**.
 1. In the **Details** dialog, select **Create Certificate** > **iOS Development**. A new signing identity will be created and will sync with Apple if you have the correct permissions.
 
+> [!IMPORTANT]
+> The private key and certificate that make up your signing identity will also be exported to **Keychain Access** on your Mac build host, provided that the IDE is paired to it. For more information, see [Pair to Mac for iOS development](~/ios/pair-to-mac.md).
+
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio for Mac](#tab/vsmac)
 <!-- markdownlint-enable MD025 -->
@@ -125,7 +128,7 @@ After creating a development provisioning profile in Apple's developer portal, V
 1. In the **Details** dialog, verify that the new profile appears in the **Provisioning Profiles** list. You may need to restart Visual Studio to refresh the list.
 1. In the **Details** dialog, click the **Download All Profiles** button.
 
-The development provisioning profile will then be available for use.
+The provisioning profiles will be downloaded on Windows, and exported to your Mac build host if the IDE is paired to it. For more information, see [Pair to Mac for iOS development](~/ios/pair-to-mac.md).
 
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio for Mac](#tab/vsmac)
