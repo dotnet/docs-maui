@@ -18,9 +18,11 @@ In addition, when uploading your app to the app store, you'll need to create an 
 
 [!INCLUDE [Publish](../includes/publish.md)]
 
-1. In the **Distribute - Select Channel** dialog, select the **App Store** button:
+<!-- markdownlint-disable MD029 -->
+7. In the **Distribute - Select Channel** dialog, select the **App Store** button:
 
     :::image type="content" source="media/publish/vs/distribution-select-channel.png" alt-text="Screenshot of selecting a distribution channel in the distribution dialog.":::
+    <!-- markdownlint-enable MD029 -->
 
 1. In the **Distribute - Signing Identity** dialog, select your signing identity and provisioning profile:
 
