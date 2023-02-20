@@ -7,7 +7,8 @@ ms.date: 02/20/2023
 # Publish an ad-hoc app
 
 When you try to publish the archive, you'll need to specify a certificate and provisioning profile again to resign the app before publishing it, and the type of those should match the selected distribution channel.
- markdownlint-disable MD025 -->
+
+<!-- markdownlint-disable MD025 -->
 # [Visual Studio](#tab/vs)
 <!-- markdownlint-enable MD025 -->
 
@@ -25,7 +26,7 @@ When you try to publish the archive, you'll need to specify a certificate and pr
 
 1. In the **Distribute - Signing Identity** dialog, select the **Save As** button. The **Save As** button will publish your app to an *.ipa* file on your file system.
 
-The app can then be distributed using TestFlight, over-the-air from a web server, or via iTunes.
+The app can then be distributed using [Apple Configurator](https://apps.apple.com/app/id1037126344). For more information, see [Apple Configurator user guide](https://support.apple.com/guide/apple-configurator-mac/welcome/mac) on support.apple.com
 
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio for Mac](#tab/vsmac)
@@ -34,7 +35,3 @@ The app can then be distributed using TestFlight, over-the-air from a web server
 TEXT GOES HERE.
 
 ---
-
-## Troubleshoot
-
-[Transporter](https://apps.apple.com/us/app/transporter/id1450874784?mt=12) can be used to help identify errors with app packages that stop successful submission to the App Store.

@@ -8,7 +8,7 @@ ms.date: 01/20/2023
 
 Ad-hoc distribution is primarily used for testing apps within a wide group of people, and is available for the Apple Developer Program and the Apple Developer Enterprise Program. Another use case for ad-hoc distribution is distribution within a company when App Store Connect isn't an option.
 
-Ad-hoc distribution has the advantage of not requiring App Store approval, with apps being installed over-the-air from a web server, or via iTunes. However, it's limited to 100 devices per membership year, for both development and distribution, and the devices must be added to Apple's developer portal.
+Ad-hoc distribution has the advantage of not requiring App Store approval, with apps being installed with [Apple Configurator](https://apps.apple.com/app/id1037126344). However, it's limited to 100 devices per membership year, for both development and distribution, and the devices must be added to Apple's developer portal.
 
 Distributing an iOS app requires that the app is provisioned using a *provisioning profile*. Provisioning profiles are files that contain code signing information, as well as the identity of the app and its intended distribution mechanism.
 
