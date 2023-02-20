@@ -23,9 +23,9 @@ ms.date: 02/20/2023
     :::image type="content" source="media/publish/vs/distribution-signing-identity-ad-hoc.png" alt-text="Screenshot of selecting a signing identity in the distribution dialog.":::
 
     > [!NOTE]
-    > Your signing identity and provisioning profile should match the selected distribution channel.
+    > Your signing identity and provisioning profile should match the app and the selected distribution channel.
 
-1. In the **Distribute - Signing Identity** dialog, select the **Save As** button. The **Save As** button will re-sign your app and publish it to an *.ipa* file on your file system.
+1. In the **Distribute - Signing Identity** dialog, select the **Save As** button and enter a filename. Your app will then be re-signed and published to an *.ipa* file on your file system.
 
 The app can then be distributed using [Apple Configurator](https://apps.apple.com/app/id1037126344). For more information, see [Apple Configurator user guide](https://support.apple.com/guide/apple-configurator-mac/welcome/mac) on support.apple.com
 
