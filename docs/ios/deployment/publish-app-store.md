@@ -22,7 +22,7 @@ In addition, when uploading your app to the app store, you'll need to create an 
 
     :::image type="content" source="media/publish/vs/select-remote-device.png" alt-text="Select your remote device in Visual Studio.":::
 
-    For more information about connecting to a device via WiFi, see [Wireless deployment for .NET MAUI iOS apps](../ios/wireless-deployment.md).
+    For more information about connecting to a device via WiFi, see [Wireless deployment for .NET MAUI iOS apps](~/ios/wireless-deployment.md).
 
 1. In the Visual Studio toolbar, use the **Solutions Configuration** drop-down to change from the debug configuration to the release configuration:
 
