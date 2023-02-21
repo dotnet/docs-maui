@@ -27,6 +27,6 @@ ms.topic: include
 
 1. In the **Archive** window, ensure your archive is selected and then select the **Sign and Distribute...** button to begin the process of packaging your app for distribution:
 
-    :::image type="content" source="../deployment/media/publish/vsmac/archive-window-distribute.png" alt-text="Screenshot of the archive window in Visual Studio once archiving is complete.":::
+    :::image type="content" source="../deployment/media/publish/vsmac/archive-window.png" alt-text="Screenshot of the archive window in Visual Studio once archiving is complete.":::
 
     The **Sign and Distribute** window will appear.
