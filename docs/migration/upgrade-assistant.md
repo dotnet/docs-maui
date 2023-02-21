@@ -40,7 +40,7 @@ For more information about .NET Upgrade Assistant, including the other app types
 Install the .NET Upgrade Assistant globally with the following command:
 
 ```dotnetcli
-dotnet tool update -g upgrade-assistant
+dotnet tool install -g upgrade-assistant
 ```
 
 Similarly, because the .NET Upgrade Assistant is installed as a .NET tool, it can be easily updated by running:
