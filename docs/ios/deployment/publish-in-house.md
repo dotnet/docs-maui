@@ -127,6 +127,8 @@ To create a distribution provisioning profile:
 # [Visual Studio for Mac](#tab/vsmac)
 <!-- markdownlint-enable MD025 -->
 
+[!INCLUDE [Publish](../includes/publish-vsmac.md)]
+
 <!-- markdownlint-disable MD029 -->
 5. In the **Archives** tab, ensure your archive is selected and then select the **Sign and Distribute...** button to begin the process of packaging your app for distribution:
 
