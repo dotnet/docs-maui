@@ -1,10 +1,10 @@
 ---
-title: "Provision a .NET MAUI iOS app for in-house distribution"
-description: "Learn how to provision a .NET MAUI iOS app for in-house distribution."
-ms.date: 01/23/2023
+title: "Publish a .NET MAUI iOS app for in-house distribution"
+description: "Learn how to provision and publish a .NET MAUI iOS app for in-house distribution."
+ms.date: 02/21/2023
 ---
 
-# Provision an iOS app for in-house distribution
+# Publish an iOS app for in-house distribution
 
 In-house distribution enables members of the Apple Developer Enterprise Program to distribute apps internally to other members of the same organization. This has the advantage of not requiring an App Store review, and having no limit on the number of devices on which an app can be installed. However, members of the Apple Developer Enterprise Program don't have access to App Store Connect, and therefore the licensee is responsible for distributing the app.
 
@@ -99,3 +99,36 @@ To create a distribution provisioning profile:
 [!INCLUDE [Download provisioning profiles in Visual Studio](../includes/download-profiles.md)]
 
 <!-- TODO: Next button to the doc where they actually use the distribution provisioning profile to generate the app package. -->
+
+## Publish the app
+
+<!-- markdownlint-disable MD025 -->
+# [Visual Studio](#tab/vs)
+<!-- markdownlint-enable MD025 -->
+
+[!INCLUDE [Publish](../includes/publish.md)]
+
+<!-- markdownlint-disable MD029 -->
+7. In the **Distribute - Select Channel** dialog, select the **Enterprise** button:
+
+    :::image type="content" source="media/publish/vs/distribution-select-channel-enterprise.png" alt-text="Screenshot of selecting a distribution channel in the distribution dialog.":::
+    <!-- markdownlint-enable MD029 -->
+
+1. In the **Distribute - Signing Identity** dialog, select your signing identity and provisioning profile:
+
+    :::image type="content" source="media/publish/vs/distribution-signing-identity-enterprise.png" alt-text="Screenshot of selecting a signing identity in the distribution dialog.":::
+
+    > [!NOTE]
+    > Your signing identity and provisioning profile should match the app and the selected distribution channel.
+
+1. In the **Distribute - Signing Identity** dialog, select the **Save As** button and enter a filename. Your app will then be re-signed and published to an *.ipa* file on your file system.
+
+In-house apps can be distributed via a secure website, or via Mobile Device Management (MDM). Both of these approaches require the app to be prepared for distribution, which includes the preparation of a manifest. For more information, see [Distribute proprietary in-house apps to Apple devices](https://support.apple.com/guide/deployment/depce7cefc4d/web) on support.apple.com.
+
+<!-- markdownlint-disable MD025 -->
+# [Visual Studio for Mac](#tab/vsmac)
+<!-- markdownlint-enable MD025 -->
+
+TEXT GOES HERE.
+
+---

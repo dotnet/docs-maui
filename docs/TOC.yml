@@ -690,11 +690,11 @@
               items:
                 - name: Overview
                   href: ios/deployment/index.md
-                - name: Provision for app store distribution
+                - name: Publish for app store distribution
                   href: ios/deployment/app-store.md
-                - name: Provision for in-house distribution
+                - name: Publish for in-house distribution
                   href: ios/deployment/in-house.md
-                - name: Provision for ad-hoc distribution
+                - name: Publish for ad-hoc distribution
                   href: ios/deployment/ad-hoc.md
                 - name: Publish an iOS app
                   href: ios/deployment/publish.md
