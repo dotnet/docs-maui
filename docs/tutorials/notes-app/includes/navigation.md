@@ -327,7 +327,7 @@ If you run the app now, you'll notice it crashes if you press the **Add** button
 
 Register the `NotesPage` with the navigation system:
 
-01. In the **Solution Explorer** pane, open the _Views/AppShell.xaml.cs_ file.
+01. In the **Solution Explorer** pane, open the _AppShell.xaml.cs_ file.
 01. Add a line to the constructor that registers the navigation route:
 
     :::code language="csharp" source="../snippets/navigation/csharp/Notes/AppShell.xaml.cs" highlight="9":::
