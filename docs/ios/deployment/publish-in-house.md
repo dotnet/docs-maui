@@ -135,7 +135,7 @@ To create a distribution provisioning profile:
     The **Sign and Distribute** window will appear.
     <!-- markdownlint-enable MD029 -->
 
-1 In the **Sign and Distribute** window, select the **Enterprise** distribution channel, and then select the **Next** button:
+1. In the **Sign and Distribute** window, select the **Enterprise** distribution channel, and then select the **Next** button:
 
     :::image type="content" source="media/publish/vsMAC/distribution-select-channel-enterprise.png" alt-text="Screenshot of selecting a distribution channel in the distribution dialog.":::
 
