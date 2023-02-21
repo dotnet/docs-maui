@@ -72,7 +72,7 @@ In addition, when uploading your app to the app store, you'll need to create an 
 # [Visual Studio](#tab/vs)
 <!-- markdownlint-enable MD025 -->
 
-[!INCLUDE [Publish](../includes/publish.md)]
+[!INCLUDE [Publish](../includes/publish-vs.md)]
 
 <!-- markdownlint-disable MD029 -->
 7. In the **Distribute - Select Channel** dialog, select the **App Store** button:

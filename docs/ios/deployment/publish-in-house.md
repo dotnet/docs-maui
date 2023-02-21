@@ -106,7 +106,7 @@ To create a distribution provisioning profile:
 # [Visual Studio](#tab/vs)
 <!-- markdownlint-enable MD025 -->
 
-[!INCLUDE [Publish](../includes/publish.md)]
+[!INCLUDE [Publish](../includes/publish-vs.md)]
 
 <!-- markdownlint-disable MD029 -->
 7. In the **Distribute - Select Channel** dialog, select the **Enterprise** button:

@@ -31,7 +31,7 @@ ms.topic: include
 
     The archiving process signs the app with the certificate and provisioning profiles that you specified in the **iOS Bundle Signing** tab, for the selected solution configuration.
 
-1. In the **Archive Manager**, once archiving has successfully completed, click the **Distribute ...** button to begin the process of packaging your app for distribution:
+1. In the **Archive Manager**, once archiving has successfully completed, select the **Distribute ...** button to begin the process of packaging your app for distribution:
 
     :::image type="content" source="../deployment/media/publish/vs/archive-manager-distribute.png" alt-text="Screenshot of the archive manager in Visual Studio once archiving is complete.":::
 
