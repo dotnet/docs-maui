@@ -99,7 +99,48 @@ In addition, when uploading your app to the app store, you'll need to create an 
 # [Visual Studio for Mac](#tab/vsmac)
 <!-- markdownlint-enable MD025 -->
 
-TEXT GOES HERE.
+[!INCLUDE [Publish](../includes/publish-vsmac.md)]
+
+<!-- markdownlint-disable MD029 -->
+5. In the **Archives** tab, ensure your archive is selected and then select the **Sign and Distribute...** button to begin the process of packaging your app for distribution:
+
+    :::image type="content" source="../deployment/media/publish/vsmac/archive-tab-individual.png" alt-text="Screenshot of the archive tab in Visual Studio for Mac once archiving is complete.":::
+
+    The **Sign and Distribute** window will appear.
+    <!-- markdownlint-enable MD029 -->
+
+1. In the **Sign and Distribute** window, select the **App Store** distribution channel, and then select the **Next** button:
+
+    :::image type="content" source="media/publish/vsmac/distribution-select-channel-app-store.png" alt-text="Screenshot of selecting a distribution channel in the distribution dialog.":::
+
+1. In the **Sign and Distribute** window, select either the **Upload** button or the **Export** button. The **Export** button will publish your app to an *.ipa* file on your file system for later upload to the App Store through an app such as [Transporter](https://apps.apple.com/us/app/transporter/id1450874784?mt=12). The **Upload** button will publish your app to an *.ipa* file, before uploading it to the App Store. Then select the **Next** button.
+
+    :::image type="content" source="media/publish/vsMAC/distribution-select-destination-app-store.png" alt-text="Screenshot of selecting a distribution destination in the distribution dialog.":::
+
+1. In the **Sign and Distribute** window, select the signing identity and provisioning profile for your app, and then select the **Next** button:
+
+    :::image type="content" source="media/publish/vsmac/distribution-signing-identity-app-store.png" alt-text="Screenshot of selecting a signing identity in the distribution dialog.":::
+
+    > [!NOTE]
+    > Your signing identity and provisioning profile should match the app and the selected distribution channel.
+
+1. In the **Sign and Distribute** window, if you chose to upload to the App Store, enter your Apple ID and app-specific password and select the **Next** button:
+
+    :::image type="content" source="media/publish/vsmac/upload-to-app-store.png" alt-text="Screenshot of selecting a signing identity in the distribution dialog.":::
+
+1. In the **Sign and Distribute** window, select the **Publish** button:
+
+    :::image type="content" source="media/publish/vsmac/distribution-publish-app-store.png" alt-text="Screenshot of publishing an iOS app using app store distribution.":::
+
+1. In the **Output IPA file** dialog, choose a location and filename for your IPA file, and select the **Save** button:
+
+    :::image type="content" source="media/publish/vsmac/distribution-save-ipa-ad-hoc.png" alt-text="Screenshot of saving an IPA file using ad hoc distribution.":::
+
+    Your app will then be published to an *.ipa* file on your file system. If you chose to upload to the App Store, Visual Studio for Mac will validate your app package and upload it to the App Store, provided you've created an application record in App Store Connect. Visual Studio for Mac will notify you once publishing is complete:
+
+    :::image type="content" source="media/publish/vsmac/distribution-publish-complete-app-store.png" alt-text="Screenshot of publishing being complete.":::
+
+1. In the **Sign and Distribute** window, select the **Close** button.
 
 ---
 

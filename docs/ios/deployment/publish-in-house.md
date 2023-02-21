@@ -132,7 +132,7 @@ To create a distribution provisioning profile:
 <!-- markdownlint-disable MD029 -->
 5. In the **Archives** tab, ensure your archive is selected and then select the **Sign and Distribute...** button to begin the process of packaging your app for distribution:
 
-    :::image type="content" source="../deployment/media/publish/vsmac/archive-tab-enterprise.png" alt-text="Screenshot of the archive window in Visual Studio once archiving is complete.":::
+    :::image type="content" source="../deployment/media/publish/vsmac/archive-tab-enterprise.png" alt-text="Screenshot of the archive tab in Visual Studio Mac once archiving is complete.":::
 
     The **Sign and Distribute** window will appear.
     <!-- markdownlint-enable MD029 -->
