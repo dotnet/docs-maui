@@ -92,8 +92,6 @@ To create a distribution provisioning profile:
 
 1. In the **Distribute - Signing Identity** dialog, select the **Save As** button and enter a filename. Your app will then be re-signed and published to an *.ipa* file on your file system.
 
-The app can then be distributed using [Apple Configurator](https://apps.apple.com/app/id1037126344). For more information, see [Apple Configurator user guide](https://support.apple.com/guide/apple-configurator-mac/welcome/mac) on support.apple.com
-
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio for Mac](#tab/vsmac)
 <!-- markdownlint-enable MD025 -->
@@ -101,10 +99,16 @@ The app can then be distributed using [Apple Configurator](https://apps.apple.co
 [!INCLUDE [Publish](../includes/publish-vsmac.md)]
 
 <!-- markdownlint-disable MD029 -->
-6. In the **Sign and Distribute** window, select the **Ad Hoc** distribution channel, and then select the **Next** button:
+5. In the **Archives** tab, ensure your archive is selected and then select the **Sign and Distribute...** button to begin the process of packaging your app for distribution:
+
+    :::image type="content" source="../deployment/media/publish/vsmac/archive-tab-individual.png" alt-text="Screenshot of the archive window in Visual Studio once archiving is complete.":::
+
+    The **Sign and Distribute** window will appear.
+    <!-- markdownlint-enable MD029 -->
+
+1. In the **Sign and Distribute** window, select the **Ad Hoc** distribution channel, and then select the **Next** button:
 
     :::image type="content" source="media/publish/vsMAC/distribution-select-channel-ad-hoc.png" alt-text="Screenshot of selecting a distribution channel in the distribution dialog.":::
-    <!-- markdownlint-enable MD029 -->
 
 1. In the **Sign and Distribute** window, ensure that the **Use Existing Identity and Provisioning Profile** radio button is selected and then select the **Next** button:
 
@@ -125,10 +129,10 @@ The app can then be distributed using [Apple Configurator](https://apps.apple.co
 
     Your app will then be published to an *.ipa* file on your file system:
 
-    :::image type="content" source="media/publish/vsmac/distribution-publish-complete-ad-hoc.png" alt-text="Screenshot of ad hoc publishing being complete.":::
+    :::image type="content" source="media/publish/vsmac/distribution-publish-complete.png" alt-text="Screenshot of publishing being complete.":::
 
 1. In the **Sign and Distribute** window, select the **Close** button.
 
-The app can then be distributed using [Apple Configurator](https://apps.apple.com/app/id1037126344). For more information, see [Apple Configurator user guide](https://support.apple.com/guide/apple-configurator-mac/welcome/mac) on support.apple.com
-
 ---
+
+The app can then be distributed using [Apple Configurator](https://apps.apple.com/app/id1037126344). For more information, see [Apple Configurator user guide](https://support.apple.com/guide/apple-configurator-mac/welcome/mac) on support.apple.com.

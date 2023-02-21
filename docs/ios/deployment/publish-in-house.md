@@ -123,12 +123,45 @@ To create a distribution provisioning profile:
 
 1. In the **Distribute - Signing Identity** dialog, select the **Save As** button and enter a filename. Your app will then be re-signed and published to an *.ipa* file on your file system.
 
-In-house apps can be distributed via a secure website, or via Mobile Device Management (MDM). Both of these approaches require the app to be prepared for distribution, which includes the preparation of a manifest. For more information, see [Distribute proprietary in-house apps to Apple devices](https://support.apple.com/guide/deployment/depce7cefc4d/web) on support.apple.com.
-
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio for Mac](#tab/vsmac)
 <!-- markdownlint-enable MD025 -->
 
-TEXT GOES HERE.
+<!-- markdownlint-disable MD029 -->
+5. In the **Archives** tab, ensure your archive is selected and then select the **Sign and Distribute...** button to begin the process of packaging your app for distribution:
+
+    :::image type="content" source="../deployment/media/publish/vsmac/archive-tab-enterprise.png" alt-text="Screenshot of the archive window in Visual Studio once archiving is complete.":::
+
+    The **Sign and Distribute** window will appear.
+    <!-- markdownlint-enable MD029 -->
+
+1 In the **Sign and Distribute** window, select the **Enterprise** distribution channel, and then select the **Next** button:
+
+    :::image type="content" source="media/publish/vsMAC/distribution-select-channel-enterprise.png" alt-text="Screenshot of selecting a distribution channel in the distribution dialog.":::
+
+1. In the **Sign and Distribute** window, ensure that the **Use Existing Identity and Provisioning Profile** radio button is selected and then select the **Next** button:
+
+    :::image type="content" source="media/publish/vsmac/distribution-signing-identity-enterprise.png" alt-text="Screenshot of selecting a signing identity in the distribution dialog.":::
+
+    > [!NOTE]
+    > Your signing identity and provisioning profile should match the app and the selected distribution channel.
+
+    Alternatively, select the **Re-sign With Another Identity and Provisioning Profile** radio button and choose your signing identity and provisioning profile.
+
+1. In the **Sign and Distribute** window, select the **Publish** button:
+
+    :::image type="content" source="media/publish/vsmac/distribution-publish-enterprise.png" alt-text="Screenshot of publishing an iOS app using ad hoc distribution.":::
+
+1. In the **Output IPA file** dialog, choose a location and filename for your IPA file, and select the **Save** button:
+
+    :::image type="content" source="media/publish/vsmac/distribution-save-ipa-ad-hoc.png" alt-text="Screenshot of saving an IPA file using enterprise distribution.":::
+
+    Your app will then be published to an *.ipa* file on your file system:
+
+    :::image type="content" source="media/publish/vsmac/distribution-publish-complete.png" alt-text="Screenshot of publishing being complete.":::
+
+1. In the **Sign and Distribute** window, select the **Close** button.
 
 ---
+
+In-house apps can be distributed via a secure website, or via Mobile Device Management (MDM). Both of these approaches require the app to be prepared for distribution, which includes the preparation of a manifest. For more information, see [Distribute proprietary in-house apps to Apple devices](https://support.apple.com/guide/deployment/depce7cefc4d/web) on support.apple.com.

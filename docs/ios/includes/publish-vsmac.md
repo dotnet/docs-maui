@@ -23,10 +23,4 @@ ms.topic: include
 
     :::image type="content" source="../deployment/media/publish/vsmac/archive-menu-item.png" alt-text="Select the archive menu item in Visual Studio for Mac.":::
 
-    Visual Studio for Mac will begin to archive your app bundle. The archiving process signs the app with the certificate and provisioning profiles that you specified in the **iOS Bundle Signing** tab, for the selected solution configuration. When the archiving process successfully completes, the **Archive** window will be opened.
-
-1. In the **Archive** window, ensure your archive is selected and then select the **Sign and Distribute...** button to begin the process of packaging your app for distribution:
-
-    :::image type="content" source="../deployment/media/publish/vsmac/archive-window.png" alt-text="Screenshot of the archive window in Visual Studio once archiving is complete.":::
-
-    The **Sign and Distribute** window will appear.
+    Visual Studio for Mac will begin to archive your app bundle, and progress can be monitored in the **Archive** window. The archiving process signs the app with the certificate and provisioning profiles that you specified in the **iOS Bundle Signing** tab, for the selected solution configuration. When the archiving process successfully completes, the **Archives** tab will be opened.
