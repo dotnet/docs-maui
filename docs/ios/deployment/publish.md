@@ -42,11 +42,11 @@ The process for publishing a .NET MAUI iOS app is as follows:
 
 ## Create a distribution certificate
 
-The CSR allows you to generate a distribution certificate, which will be used to confirm your identity. The distribution certificate must be created using the Apple ID for your Apple Developer Account. For more information, see [Create a distribution certificate](app-store.md#create-a-distribution-certificate).
+The CSR allows you to generate a distribution certificate, which will be used to confirm your identity. The distribution certificate must be created using the Apple ID for your Apple Developer Account. For more information, see [Create a distribution certificate](publish-app-store.md#create-a-distribution-certificate).
 
 ## Create a distribution profile
 
-To publish a .NET MAUI iOS app, you'll need to build a *Distribution Provisioning Profile* specific to it. This profile enables the app to be digitally signed for release so that it can be installed on an iOS device. A distribution provisioning profile contains an App ID and a distribution certificate. For more information, see [Create a distribution profile](app-store.md#create-a-distribution-profile).
+To publish a .NET MAUI iOS app, you'll need to build a *Distribution Provisioning Profile* specific to it. This profile enables the app to be digitally signed for release so that it can be installed on an iOS device. A distribution provisioning profile contains an App ID and a distribution certificate. For more information, see [Create a distribution profile](publish-app-store.md#create-a-distribution-profile).
 
 ## Download the provisioning profile on your Mac build host
 
