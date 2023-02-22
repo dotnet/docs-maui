@@ -1,7 +1,7 @@
 ---
 title: "Publish a .NET MAUI iOS app for App Store distribution"
 description: "Learn how to provision and publish a .NET MAUI iOS app for App Store distribution."
-ms.date: 02/21/2023
+ms.date: 02/24/2023
 ---
 
 # Publish an iOS app for App Store distribution

@@ -1,7 +1,7 @@
 ---
 title: "Publish a .NET MAUI app for iOS"
 description: "Learn about distribution approaches for .NET MAUI iOS apps."
-ms.date: 01/17/2023
+ms.date: 02/24/2023
 ---
 
 # Publish a .NET MAUI app for iOS

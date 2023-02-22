@@ -1,7 +1,7 @@
 ---
 title: "Publish a .NET MAUI iOS app using the command line"
 description: "Learn how to publish and sign a .NET MAUI iOS app using the command line."
-ms.date: 02/22/2023
+ms.date: 02/24/2023
 ---
 
 # Publish an iOS app using the command line
@@ -20,12 +20,12 @@ Additional build properties can be specified on the command line, if they aren't
 
 | Parameter                    | Value                                                                                           |
 |------------------------------|-------------------------------------------------------------------------------------------------|
-| `/p:ApplicationTitle` | The user-visible name for the bundle. |
-| `/p:ApplicationId` | The unique identifier for the bundle, such as `com.companyname.mymauiapp`. |
-| `/p:ApplicationVersion` | The version of the build that identifies an iteration of the bundle, such as 1.3.5. |
-| `/p:ApplicationDisplayVersion` | The version number of the bundle, such as 1.3.5. |
+| `/p:ApplicationTitle` | The user-visible name for the app. |
+| `/p:ApplicationId` | The unique identifier for the app, such as `com.companyname.mymauiapp`. |
+| `/p:ApplicationVersion` | The version of the build that identifies an iteration of the app. |
+| `/p:ApplicationDisplayVersion` | The version number of the app. |
 | `/p:RuntimeIdentifier` | The runtime identifier (RID) for the project. Use `ios-arm64`. |
-| `/p:ArchiveOnBuild` | A boolean value that indicates whether to produce the archive. Use `true` to produce the *.ipa*. |
+| `/p:ArchiveOnBuild` | A boolean value that indicates whether to produce the app archive. Use `true` to produce the *.ipa*. |
 | `/p:CodesignKey` | The name of the code signing key. |
 | `/p:CodesignProvision` | The provisioning profile to use when signing the app bundle. |
 | `/p:CodesignEntitlements` | The path to the entitlements file that specifies the entitlements the app requires. |
@@ -33,7 +33,7 @@ Additional build properties can be specified on the command line, if they aren't
 For a full list of build properties, see [Project file properties](https://github.com/xamarin/xamarin-macios/wiki/Project-file-properties).
 
 > [!IMPORTANT]
-> Values for these parameters don't have to be provided on the command line. They can also be provided in the project file. However, when a parameter is provided on the command line and in the project file, the command line parameter takes precedence. For more information about providing build properties in your project file, see [Define build properties in your project file](#define-build-properties-in-your-project-file).
+> Values for these parameters don't have to be provided on the command line. They can also be provided in the project file. When a parameter is provided on the command line and in the project file, the command line parameter takes precedence. For more information about providing build properties in your project file, see [Define build properties in your project file](#define-build-properties-in-your-project-file).
 
 For example, use the following command to build and sign an *.ipa* on a Mac:
 
@@ -41,7 +41,7 @@ For example, use the following command to build and sign an *.ipa* on a Mac:
 dotnet publish -f:net7.0-ios -c:Release /p:ArchiveOnBuild=true /p:RuntimeIdentifier=ios-arm64 /p:CodesignKey="Apple Distribution: John Smith (AY2GDE9QM7)" /p:CodesignProvision="MyMauiApp"
 ```
 
-Publishing builds and signs the app, and then copies the *.ipa* to the *bin/Release/net7.0-ios/ios-arm64/publish/* folder. The distribution channel for the app is specified in the distribution certificate contained within the provisioning profile specified by the `/p:CodesignProvision` parameter. For information about creating distribution provisioning profiles for the different distribution channels, see [Publish an iOS app for App Store distribution](publish-app-store.md), [Publish an iOS app for ad-hoc distribution](publish-ad-hoc.md), and [Publish an iOS app for in-house distribution](publish-in-house.md)
+Publishing builds and signs the app, and then copies the *.ipa* to the *bin/Release/net7.0-ios/ios-arm64/publish/* folder. The distribution channel for the app is specified in the distribution certificate contained within the provisioning profile. For information about creating provisioning profiles for the different distribution channels, see [Publish an iOS app for App Store distribution](publish-app-store.md), [Publish an iOS app for ad-hoc distribution](publish-ad-hoc.md), and [Publish an iOS app for in-house distribution](publish-in-house.md)
 
 For more information about the `dotnet publish` command, see [dotnet publish](/dotnet/core/tools/dotnet-publish).
 
@@ -83,20 +83,22 @@ dotnet publish -f:net7.0-ios -c Release ...
 
 An alternative to specifying build parameters on the command line is to specify them in your project file in a `<PropertyGroup>`. The following table lists some of the common build properties:
 
-- `<ApplicationTitle>` – the user-visible name for the bundle.
-- `<ApplicationId>` – The unique identifier for the bundle, such as `com.companyname.mymauiapp`.
-- `<ApplicationVersion>` – the version of the build that identifies an iteration of the bundle, such as 1.3.5.
-- `<ApplicationDisplayVersion>` – the version number of the bundle, such as 1.3.5.
-- `<RuntimeIdentifier>` – the runtime identifier (RID) for the project. Set to `ios-arm64`.
-- `<ArchiveOnBuild>` – a boolean value that indicates whether to produce the archive. Set to `true`.
-- `<CodesignKey>` – the name of the code signing key.
-- `<CodesignProvision>` – the provisioning profile to use when signing the app bundle.
-- `<CodesignEntitlements>` – the path to the entitlements file that specifies the entitlements the app requires.
+| Parameter                    | Value                                                                                           |
+|------------------------------|-------------------------------------------------------------------------------------------------|
+| `<ApplicationTitle>` | The user-visible name for the app. |
+| `<ApplicationId>` | The unique identifier for the app, such as `com.companyname.mymauiapp`. |
+| `<ApplicationVersion>` | The version of the build that identifies an iteration of the app. |
+| `<ApplicationDisplayVersion>` | The version number of the app. |
+| `<RuntimeIdentifier>` | The runtime identifier (RID) for the project. Set to `ios-arm64`. |
+| `<ArchiveOnBuild>` | A boolean value that indicates whether to produce the app archive. Use `true` to produce the *.ipa*. |
+| `<CodesignKey>` | The name of the code signing key. |
+| `<CodesignProvision>` | The provisioning profile to use when signing the app bundle. |
+| `<CodesignEntitlements>` | The path to the entitlements file that specifies the entitlements the app requires. |
 
 For a full list of build properties, see [Project file properties](https://github.com/xamarin/xamarin-macios/wiki/Project-file-properties).
 
 > [!IMPORTANT]
-> Values for these settings don't have to be provided in the project file. They can also be provided on the command line when you publish the app. This enables you to omit specific values from your project file.
+> Values for these build properties don't have to be provided in the project file. They can also be provided on the command line when you publish the app. This enables you to omit specific values from your project file.
 
 The following example shows a typical property group for building and signing your iOS app with its provisioning profile:
 
@@ -127,14 +129,14 @@ To publish your app from Windows, open a terminal and navigate to the folder for
 
 | Parameter                    | Value                                                                                           |
 |------------------------------|-------------------------------------------------------------------------------------------------|
-| `/p:ServerAddress` | The IP address of the Mac build host. |
-| `/p:ServerUser` | The username to use when logging into the Mac build host. Use your system username rather than your full name. |
-| `/p:ServerPassword` | The password for the username used to log into the Mac build host. |
-| `/p:TcpPort` | The TCP port to use to communicate with the Mac build host, which is 58181. |
-| `/p:_DotNetRootRemoteDirectory` | The folder on the Mac build host that contains the .NET SDK. Use `/Users/{macOS username}/Library/Caches/Xamarin/XMA/SDKs/dotnet/`. |
+| `/p:ServerAddress` | The IP address of your Mac build host. |
+| `/p:ServerUser` | The username to use when logging into your Mac build host. Use your system username rather than your full name. |
+| `/p:ServerPassword` | The password for the username used to log into your Mac build host. |
+| `/p:TcpPort` | The TCP port to use to communicate with your Mac build host, which is 58181. |
+| `/p:_DotNetRootRemoteDirectory` | The folder on your Mac build host that contains the .NET SDK. Use `/Users/{macOS username}/Library/Caches/Xamarin/XMA/SDKs/dotnet/`. |
 
 > [!IMPORTANT]
-> Values for these parameters can also be provided in the project file. However, values for `<ServerAddress>`, `<ServerUser>`, `<ServerPassword>`, and `<_DotNetRootRemoteDirectory>` will typically be provided on the command line for security reasons.
+> Values for these parameters can also be provided in the project file as build properties. However, values for `<ServerAddress>`, `<ServerUser>`, `<ServerPassword>`, and `<_DotNetRootRemoteDirectory>` will typically be provided on the command line for security reasons.
 
 For example, use the following command to build and sign an *.ipa* from Windows:
 
@@ -143,9 +145,9 @@ dotnet publish -f:net7.0-ios -c:Release /p:ArchiveOnBuild=true /p:RuntimeIdentif
 ```
 
 > [!NOTE]
-> If the `ServerPassword` parameter is omitted from a command line build invocation, Pair to Mac attempts to log in to the Mac build host using the saved SSH keys.
+> If the `ServerPassword` parameter is omitted from a command line build invocation, Pair to Mac attempts to log in to the Mac build host using its saved SSH keys.
 
-Publishing builds and signs the app, and then copies the *.ipa* to the *bin\\Release\\net7.0-ios\\ios-arm64\\publish* folder. The distribution channel for the app is specified in the distribution certificate contained within the provisioning profile specified by the `/p:CodesignProvision` parameter. For information about creating distribution provisioning profiles for the different distribution channels, see [Publish an iOS app for App Store distribution](publish-app-store.md), [Publish an iOS app for ad-hoc distribution](publish-ad-hoc.md), and [Publish an iOS app for in-house distribution](publish-in-house.md)
+Publishing builds and signs the app, and then copies the *.ipa* to the *bin\\Release\\net7.0-ios\\ios-arm64\\publish* folder on your Windows machine. The distribution channel for the app is specified in the distribution certificate contained within the provisioning profile. For information about creating distribution provisioning profiles for the different distribution channels, see [Publish an iOS app for App Store distribution](publish-app-store.md), [Publish an iOS app for ad-hoc distribution](publish-ad-hoc.md), and [Publish an iOS app for in-house distribution](publish-in-house.md)
 
 During the publishing process it maybe necessary to allow `codesign` to run on your paired Mac:
 
