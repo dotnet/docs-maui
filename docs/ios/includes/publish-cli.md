@@ -31,8 +31,10 @@ In addition, the following common parameters can be specified on the command lin
 | `/p:ServerPassword` | The password for the username used to log into the Mac build host. |
 | `/p:_DotNetRootRemoteDirectory` | The folder on the Mac build host that contains the .NET SDK. Use `/Users/{macOS username}/Library/Caches/Xamarin/XMA/SDKs/dotnet/`. |
 
+<!--
 > [!IMPORTANT]
 > Values for these parameters don't have to be provided on the command line. They can also be provided in the project file. For more information, see [Add code signing data to your app project](#add-code-signing-data-to-your-app-project).
+-->
 
 ::: moniker range="=net-maui-6.0"
 
