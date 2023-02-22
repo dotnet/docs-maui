@@ -68,6 +68,8 @@ You must have created a record for the app you want to upload to the App Store, 
 
 In addition, when uploading your app to the app store, you'll need to create an app-specific password. For information about generating an app-specific password, see [Sign in to apps with your Apple ID using app-specific passwords](https://support.apple.com/HT204397) on support.apple.com.
 
+For information about publishing an iOS app using the Command Line Interface (CLI), see [Publish an iOS app using the CLI](publish-cli.md).
+
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio](#tab/vs)
 <!-- markdownlint-enable MD025 -->
@@ -141,12 +143,6 @@ In addition, when uploading your app to the app store, you'll need to create an 
     :::image type="content" source="media/publish/vsmac/distribution-publish-complete-app-store.png" alt-text="Screenshot of publishing being complete.":::
 
 1. In the **Sign and Distribute** window, select the **Close** button.
-
-<!-- markdownlint-disable MD025 -->
-# [CLI](#tab/cli)
-<!-- markdownlint-enable MD025 -->
-
-[!INCLUDE [Publish](../includes/publish-cli.md)]
 
 ---
 

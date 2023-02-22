@@ -696,6 +696,8 @@
                   href: ios/deployment/publish-in-house.md
                 - name: Publish for ad-hoc distribution
                   href: ios/deployment/publish-ad-hoc.md
+                - name: Publish using the CLI
+                  href: ios/deployment/publish-cli.md
             - name: macOS
               href: macos/deployment/overview.md
             - name: Windows

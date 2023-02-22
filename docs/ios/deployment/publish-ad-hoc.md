@@ -71,6 +71,8 @@ To create a distribution provisioning profile:
 
 ## Publish the app
 
+For information about publishing an iOS app using the Command Line Interface (CLI), see [Publish an iOS app using the CLI](publish-cli.md).
+
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio](#tab/vs)
 <!-- markdownlint-enable MD025 -->
@@ -132,12 +134,6 @@ To create a distribution provisioning profile:
     :::image type="content" source="media/publish/vsmac/distribution-publish-complete.png" alt-text="Screenshot of publishing being complete.":::
 
 1. In the **Sign and Distribute** window, select the **Close** button.
-
-<!-- markdownlint-disable MD025 -->
-# [CLI](#tab/cli)
-<!-- markdownlint-enable MD025 -->
-
-[!INCLUDE [Publish](../includes/publish-cli.md)]
 
 ---
 
