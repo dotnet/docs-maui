@@ -142,6 +142,12 @@ In addition, when uploading your app to the app store, you'll need to create an 
 
 1. In the **Sign and Distribute** window, select the **Close** button.
 
+<!-- markdownlint-disable MD025 -->
+# [CLI](#tab/cli)
+<!-- markdownlint-enable MD025 -->
+
+[!INCLUDE [Publish](../includes/publish-cli.md)]
+
 ---
 
 ## Troubleshoot

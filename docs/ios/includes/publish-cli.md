@@ -1,83 +1,7 @@
 ---
-title: "Create the .NET MAUI iOS app package"
-description: "Learn how to package and publish a iOS .NET MAUI app."
-ms.date: 06/13/2022
+ms.date: 02/22/2023
+ms.topic: include
 ---
-
-# Create the iOS app package
-
-> [!div class="op_single_selector"]
->
-> - [Publish for Android](../../android/deployment/overview.md)
-> - [Publish for iOS](index.md)
-> - [Publish for macOS](../../macos/deployment/overview.md)
-> - [Publish for Windows](../../windows/deployment/overview.md)
-
-When distributing your .NET Multi-platform App UI (.NET MAUI) app for iOS, you generate an *.ipa* file. An *.ipa* file is an iOS app archive file that stores an iOS app. With just a few configuration changes to your project, your app can be packaged for distribution.
-
-Publishing a .NET MAUI app for iOS builds on top of Apple's provisioning process, which requires you to have:
-
-- Created an Apple ID. For more information, see [Create Your Apple ID](https://appleid.apple.com/account).
-- Enrolled your Apple ID in the Apple Developer Program, which you have to pay to join. Enrolling in the Apple Developer Program enables you to create a *provisioning profile*, which contains code signing information. For more information, see [Apple Developer Program](https://developer.apple.com/programs/).
-- A Mac on which you can build your app.
-
-The process for publishing a .NET MAUI iOS app is as follows:
-
-1. Create a certificate signing request on your Mac.
-1. Create a distribution certificate in your Apple Developer Account.
-1. Create a distribution profile in your Apple Developer Account.
-1. Download provisioning profiles on your Mac.
-1. Add any required entitlements to your app.
-1. Add the code signing data to your app project.
-1. Validate package settings.
-1. Connect Visual Studio 2022 to a Mac build host.
-1. Publish your app using .NET CLI.
-
-> [!IMPORTANT]
-> Blazor Hybrid apps require a WebView on the host platform. For more information, see [Keep the Web View current in deployed Blazor Hybrid apps](/aspnet/core/blazor/hybrid/security/security-considerations#keep-the-web-view-current-in-deployed-apps).
-
-## Create a certificate signing request
-
-<!-- To sign a .NET MAUI iOS app you must first create a certificate signing request (CSR) in Keychain Access on a Mac. For more information, see [Create a certificate signing request](app-store.md#create-a-certificate-signing-request). -->
-
-## Create a distribution certificate
-
-The CSR allows you to generate a distribution certificate, which will be used to confirm your identity. The distribution certificate must be created using the Apple ID for your Apple Developer Account. For more information, see [Create a distribution certificate](publish-app-store.md#create-a-distribution-certificate).
-
-## Create a distribution profile
-
-To publish a .NET MAUI iOS app, you'll need to build a *Distribution Provisioning Profile* specific to it. This profile enables the app to be digitally signed for release so that it can be installed on an iOS device. A distribution provisioning profile contains an App ID and a distribution certificate. For more information, see [Create a distribution profile](publish-app-store.md#create-a-distribution-profile).
-
-## Download the provisioning profile on your Mac build host
-
-After creating the provisioning profile, it must be added to your Mac build host. The profile can be downloaded to your Mac build host with the following steps:
-
-1. On your Mac, launch Xcode.
-1. In Xcode, select the **Xcode > Preferences...** menu item.
-1. In the **Preferences** dialog, select the **Accounts** tab.
-1. In the **Accounts** tab, click the **+** button to add your Apple Developer Account to Xcode:
-
-    :::image type="content" source="media/overview/accounts-dialog.png" alt-text="Xcode Accounts dialog in preferences.":::
-
-1. In the account type popup, select **Apple ID** and then click the **Continue** button:
-
-    :::image type="content" source="media/overview/account-type.png" alt-text="Xcode select the type of account you'd like to add popup.":::
-
-1. In the sign in popup, enter your Apple ID and click the **Next** button.
-1. In the sign in popup, enter your Apple ID password and click the **Next** button:
-
-    :::image type="content" source="media/overview/sign-in.png" alt-text="Xcode Apple account sign-in.":::
-
-1. In the **Accounts** tab, click the **Manage Certificates...** button to ensure that your distribution certificate has been downloaded.
-1. In the **Accounts** tab, click the **Download Manual Profiles** button to download your provisioning profiles:
-
-    :::image type="content" source="media/overview/account-details.png" alt-text="Xcode Apple Developer Program account details.":::
-
-1. Wait for the download to complete and then close Xcode.
-
-## Add entitlements to your app
-
-In iOS, apps run in a sandbox that provides a set of rules that limit access between the app and system resources or user data. *Entitlements* are used to request the expansion of the sandbox to give your app additional capabilities. Any entitlements used by your app must be specified in an entitlements file. For more information about entitlements, see [Entitlements](~/ios/entitlements.md).
 
 ## Add code signing data to your app project
 
@@ -221,7 +145,3 @@ During the publishing process it maybe necessary to allow `codesign` to run on y
 The *.ipa* file can then be uploaded to the App Store using App Store Connect. To learn how to use App Store Connect, see [App Store Connect workflow](https://help.apple.com/app-store-connect/#/dev300c2c5bf).
 
 For more information about the `dotnet publish` command, see [dotnet publish](/dotnet/core/tools/dotnet-publish).
-
-## See also
-
-- [GitHub discussion and feedback: .NET MAUI iOS target publishing/archiving](https://github.com/dotnet/maui/issues/4397)

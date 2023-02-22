@@ -164,6 +164,12 @@ To create a distribution provisioning profile:
 
 1. In the **Sign and Distribute** window, select the **Close** button.
 
+<!-- markdownlint-disable MD025 -->
+# [CLI](#tab/cli)
+<!-- markdownlint-enable MD025 -->
+
+[!INCLUDE [Publish](../includes/publish-cli.md)]
+
 ---
 
 In-house apps can be distributed via a secure website, or via Mobile Device Management (MDM). Both of these approaches require the app to be prepared for distribution, which includes the preparation of a manifest. For more information, see [Distribute proprietary in-house apps to Apple devices](https://support.apple.com/guide/deployment/depce7cefc4d/web) on support.apple.com.

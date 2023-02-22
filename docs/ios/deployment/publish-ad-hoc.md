@@ -133,6 +133,12 @@ To create a distribution provisioning profile:
 
 1. In the **Sign and Distribute** window, select the **Close** button.
 
+<!-- markdownlint-disable MD025 -->
+# [CLI](#tab/cli)
+<!-- markdownlint-enable MD025 -->
+
+[!INCLUDE [Publish](../includes/publish-cli.md)]
+
 ---
 
 The app can then be distributed using [Apple Configurator](https://apps.apple.com/app/id1037126344). For more information, see [Apple Configurator user guide](https://support.apple.com/guide/apple-configurator-mac/welcome/mac) on support.apple.com.

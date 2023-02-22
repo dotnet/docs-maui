@@ -13,16 +13,23 @@ ms.date: 01/17/2023
 > - [Publish for macOS](../../macos/deployment/overview.md)
 > - [Publish for Windows](../../windows/deployment/overview.md)
 
-Once a .NET Multi-platform App UI (.NET MAUI) iOS app has been developed and tested, it can be distributed to users. The following diagram shows the steps required to produce the app package for distribution:
+Once a .NET Multi-platform App UI (.NET MAUI) iOS app has been developed and tested, it can be packaged for distribution as an *.ipa* file. An *.ipa* file is an iOS app archive file that stores an iOS app. The following diagram shows the steps required to produce the app package for distribution:
 
 :::image type="content" source="media/ios-distribution.png" alt-text="Steps required to prepare an iOS app for distribution." border="false":::
 
-You must have an active subscription to Apple's Developer Program before attempting to package an app for distribution. Apple offers two program options:
+Publishing a .NET MAUI app for iOS builds on top of Apple's provisioning process, which requires you to have:
+
+- Created an Apple ID. For more information, see [Create Your Apple ID](https://appleid.apple.com/account).
+- Enrolled your Apple ID in the Apple Developer Program, which you have to pay to join. Enrolling in the Apple Developer Program enables you to create a *provisioning profile*, which contains code signing information. For more information, see [Apple Developer Program](https://developer.apple.com/programs/).
+- A Mac on which you can build your app.
+
+Apple offers two developer program options:
 
 - **Apple Developer Program**. Regardless of whether you are an individual or represent an organization, the [Apple Developer Program](https://developer.apple.com/programs/) enables you to develop, test, and distribute apps.
 - **Apple Developer Enterprise Program**, which is most suited to organizations that want to develop and distribute apps in-house only. Members of the [Apple Developer Enterprise Program](https://developer.apple.com/programs/enterprise/) do not have access to App Store Connect, and apps created cannot be published to the App Store.
 
-To register for either of these programs, you must first have an [Apple ID](https://appleid.apple.com/). Then you can visit the [Apple Developer Program](https://developer.apple.com/programs/enroll/) to register for a program.
+> [!NOTE]
+> To register for either of these programs, you must first have an [Apple ID](https://appleid.apple.com/). Then you can visit the [Apple Developer Program](https://developer.apple.com/programs/enroll/) to register for a program.
 
 Apple provides multiple approaches for distributing an iOS app:
 
@@ -32,3 +39,6 @@ Apple provides multiple approaches for distributing an iOS app:
 - Custom apps for business. Apple allows custom distribution of apps to businesses and education. For more information, see [Distributing Custom Apps](https://developer.apple.com/custom-apps/) on developer.apple.com and [Apple Business Manager User Guide](https://support.apple.com/guide/apple-business-manager/welcome/web) on support.apple.com.
 
 All approaches require that apps are provisioned using an appropriate *provisioning profile*. Provisioning profiles contain code signing and app identity information, as well as the intended distribution mechanism. For non-App Store distribution, they also contain information about the devices the app can be deployed to.
+
+> [!IMPORTANT]
+> When distributing a Blazor Hybrid app, the host platform must have a WebView. For more information, see [Keep the Web View current in deployed Blazor Hybrid apps](/aspnet/core/blazor/hybrid/security/security-considerations#keep-the-web-view-current-in-deployed-apps).
