@@ -102,7 +102,7 @@ To create a distribution provisioning profile:
 
 ## Publish the app
 
-For information about publishing an iOS app using the Command Line Interface (CLI), see [Publish an iOS app using the CLI](publish-cli.md).
+For information about publishing an iOS app using the Command Line Interface (CLI), see [Publish an iOS app using the command line](publish-cli.md).
 
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio](#tab/vs)

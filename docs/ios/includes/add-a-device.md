@@ -21,4 +21,4 @@ When creating a provisioning profile, the profile must include which devices can
 
 1. In the **Register a New Device** page, review the information and then click the **Register** button.
 
-Repeat the above steps for any iOS device that you'll use to test or debug a .NET MAUI iOS app.
+Repeat the above steps for any iOS device that you want to deploy a .NET MAUI iOS app onto.

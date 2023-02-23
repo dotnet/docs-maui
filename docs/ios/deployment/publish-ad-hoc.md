@@ -12,7 +12,7 @@ Ad-hoc distribution has the advantage of not requiring App Store approval, with 
 
 Distributing an iOS app requires that the app is provisioned using a *provisioning profile*. Provisioning profiles are files that contain code signing information, as well as the identity of the app and its intended distribution mechanism.
 
-To distribute a .NET Multi-platform App UI (.NET MAUI) iOS app, you'll need to build a *Distribution Provisioning Profile* specific to it. This profile enables the app to be digitally signed for release so that it can be installed on an iOS device. A ad-hoc distribution provisioning profile contains an App ID, a distribution certificate, and a list of the devices that can install the app. You can use the same App ID that you used when deploying your app to a device for testing. However, you will need to create a distribution certificate to identify yourself or your organization, if you don't already have one.
+To distribute a .NET Multi-platform App UI (.NET MAUI) iOS app, you'll need to build a *distribution provisioning profile* specific to it. This profile enables the app to be digitally signed for release so that it can be installed on an iOS device. An ad-hoc distribution provisioning profile contains an App ID, a distribution certificate, and a list of the devices that can install the app. You can use the same App ID that you used when deploying your app to a device for testing. However, you will need to create a distribution certificate to identify yourself or your organization, if you don't already have one.
 
 The process for creating an ad-hoc distribution provisioning profile is as follows:
 
@@ -35,17 +35,17 @@ An ad-hoc distribution provisioning profile enables your .NET MAUI iOS app to be
 
 Once the App ID has been created, you should create a distribution provisioning profile. This profile enables the app to be digitally signed for release so that it can be installed on an iOS device.
 
-To create a distribution provisioning profile:
+To create a provisioning profile for ad-hoc distribution:
 
 1. In your Apple Developer Account, select the **Profiles** tab.
 1. In the **Profiles** tab, click the **+** button to create a new profile.
-1. In the **Register a New Provisioning Profile** page, select the **App Store** radio button before clicking the **Continue** button:
+1. In the **Register a New Provisioning Profile** page, select the **Ad Hoc** radio button before clicking the **Continue** button:
 
     :::image type="content" source="media/provisioning/adhoc-register-provisioning-profile.png" alt-text="Register a provisioning profile for ad hoc distribution.":::
 
-1. In the **Generate a Provisioning Profile** page, in the **App ID** drop-down, select the App ID that you previously created before clicking the **Continue** button:
+1. In the **Generate a Provisioning Profile** page, in the **App ID** drop-down, select the App ID that you previously created, and choose whether to create an offline profile, before clicking the **Continue** button:
 
-    :::image type="content" source="media/provisioning/select-app-id.png" alt-text="Select your App ID.":::
+    :::image type="content" source="media/provisioning/select-app-id-ad-hoc.png" alt-text="Select your App ID.":::
 
 1. In the **Generate a Provisioning Profile** page, select the radio button that corresponds to your distribution certificate before clicking the **Continue** button:
 
@@ -71,7 +71,7 @@ To create a distribution provisioning profile:
 
 ## Publish the app
 
-For information about publishing an iOS app using the Command Line Interface (CLI), see [Publish an iOS app using the CLI](publish-cli.md).
+Visual Studio can publish a .NET MAUI iOS app for ad-hoc distribution. For information about publishing an iOS app using the Command Line Interface (CLI), see [Publish an iOS app using the command line](publish-cli.md).
 
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio](#tab/vs)

@@ -30,7 +30,7 @@ A distribution provisioning profile enables your .NET MAUI iOS app to be digital
 
 Once the App ID has been created, you should create a distribution provisioning profile. This profile enables the app to be digitally signed for release so that it can be installed on an iOS device.
 
-To create a distribution provisioning profile:
+To create a provisioning profile for App Store distribution:
 
 1. In the Certificates, Identifiers & Profiles page of your Apple Developer Account, select the **Profiles** tab.
 1. In the **Profiles** tab, click the **+** button to create a new profile.
@@ -67,7 +67,7 @@ Visual Studio can publish a .NET MAUI iOS app for App Store distribution and upl
 - Create a record for the app you want to upload to the App Store in App Store Connect. This record includes all the information about the app as it will appear in the App Store and all of the information needed to manage the app through the distribution process. For more information, see [Create an app record](https://developer.apple.com/help/app-store-connect/create-an-app-record/add-a-new-app) on developer.apple.com.
 - Create an app-specific password. For information about generating an app-specific password, see [Sign in to apps with your Apple ID using app-specific passwords](https://support.apple.com/HT204397) on support.apple.com.
 
-For information about publishing an iOS app using the Command Line Interface (CLI), see [Publish an iOS app using the CLI](publish-cli.md).
+For information about publishing an iOS app using the Command Line Interface (CLI), see [Publish an iOS app using the command line](publish-cli.md).
 
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio](#tab/vs)
