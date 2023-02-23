@@ -42,7 +42,7 @@ Resource files should typically be placed in the _Resources_ folder of your .NET
 > [!NOTE]
 > XAML files are also stored in your .NET MAUI app project, and are automatically assigned the **MauiXaml** build action when created by project and item templates. However, only XAML resource dictionaries will typically be placed in the _Resources_ folder of the app project.
 
-When a resource file is added to a .NET MAUI app project, a corresponding entry for the resource is created in the project (.csproj) file, with the exception of CSS files. The following screenshot shows a typical *Resources* folder containing child-folders for each resource type:
+When a resource file is added to a .NET MAUI app project, a corresponding entry for the resource is created in the project file, with the exception of CSS files. The following screenshot shows a typical *Resources* folder containing child-folders for each resource type:
 
 :::image type="content" source="media/single-project/resources.png" alt-text="Image and font resources screenshot.":::
 
@@ -160,7 +160,7 @@ For more information, see [Style apps with CSS](~/user-interface/styles/css.md).
 
 ## App manifest
 
-Each platform uses its own native app manifest file to specify information such as the app title, ID, version, and more. .NET MAUI single project enables you to specify this common app data in a single location in the project file (.csproj).
+Each platform uses its own native app manifest file to specify information such as the app title, ID, version, and more. .NET MAUI single project enables you to specify this common app data in a single location in the project file.
 
 To specify the shared app manifest data for a project, open the shortcut menu for the project in **Solution Explorer**, and then choose **Properties**. The app title, ID, and version can then be specified in **MAUI Shared > General**:
 

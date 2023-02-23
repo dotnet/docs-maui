@@ -61,7 +61,7 @@ After adding a device to Apple's developer portal, you should create an *App ID*
 
 <!-- markdownlint-disable MD032 -->
 > [!IMPORTANT]
-> The bundle identifier for a .NET MAUI app is stored in the .csproj file as the **Application ID** property:
+> The bundle identifier for a .NET MAUI app is stored in the project file as the **Application ID** property:
 > - In Visual Studio, in **Solution Explorer** right-click on your .NET MAUI app project and select **Properties**. Then, navigate to the **MAUI Shared > General** tab. The **Application ID** field lists the bundle identifier.
 > - In Visual Studio for Mac, in the **Solution Window**, right-click on your .NET MAUI app project and select **Properties**. Then, in the **Project Properties** window, select the **Build > App Info** tab. The **Application ID** field lists the bundle identifier.
 >
@@ -156,7 +156,7 @@ After manually creating the development provisioning profile, and installing it 
 
     :::image type="content" source="media/manual-provisioning/vs/bundle-signing.png" alt-text="Screenshot of bundle signing tab for iOS in Visual Studio.":::
 
-1. In the **Bundle Signing** properties, select your **Signing identity** and **Provisioning profile**, or set both to **Automatic**. When **Signing identity** and **Provisioning profile** are both set to **Automatic**, Visual Studio will select the signing identity and provisioning profile based on the **Bundle identifier** in **Info.plist** (which is identical to the value of the **Application ID** property in your .csproj file).
+1. In the **Bundle Signing** properties, select your **Signing identity** and **Provisioning profile**, or set both to **Automatic**. When **Signing identity** and **Provisioning profile** are both set to **Automatic**, Visual Studio will select the signing identity and provisioning profile based on the **Bundle identifier** in **Info.plist** (which is identical to the value of the **Application ID** property in your project file).
 
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio for Mac](#tab/vsmac)
@@ -178,7 +178,7 @@ After manually creating the development provisioning profile, and installing it 
 
     :::image type="content" source="media/manual-provisioning/vsmac/bundle-signing.png" alt-text="Screenshot of bundle signing options in Visual Studio for Mac.":::
 
-    When **Signing Identity** and **Provisioning profile** are both set to **Automatic**, Visual Studio for Mac will select the signing identity and provisioning profile based on the **Bundle identifier** in **Info.plist** (which is identical to the value of the **Application ID** property in your .csproj file).
+    When **Signing Identity** and **Provisioning profile** are both set to **Automatic**, Visual Studio for Mac will select the signing identity and provisioning profile based on the **Bundle identifier** in **Info.plist** (which is identical to the value of the **Application ID** property in your project file).
 
 1. In the **Project Properties** window, click the **OK** button.
 1. In Visual Studio for Mac, close the **Info.plist** file.

@@ -90,7 +90,7 @@ For information about publishing an iOS app using the Command Line Interface (CL
     :::image type="content" source="media/publish/vs/distribution-signing-identity-ad-hoc.png" alt-text="Screenshot of selecting a signing identity in the distribution dialog.":::
 
     > [!NOTE]
-    > Your signing identity and provisioning profile should match the app and the selected distribution channel.
+    > You should use the signing identity and provisioning profile that were created for your app and the selected distribution channel.
 
 1. In the **Distribute - Signing Identity** dialog, select the **Save As** button and enter a filename. Your app will then be re-signed and published to an *.ipa* file on your file system.
 
@@ -117,7 +117,7 @@ For information about publishing an iOS app using the Command Line Interface (CL
     :::image type="content" source="media/publish/vsmac/distribution-signing-identity-ad-hoc.png" alt-text="Screenshot of selecting a signing identity in the distribution dialog.":::
 
     > [!NOTE]
-    > Your signing identity and provisioning profile should match the app and the selected distribution channel.
+    > You should use the signing identity and provisioning profile that were created for your app and the selected distribution channel.
 
     Alternatively, select the **Re-sign With Another Identity and Provisioning Profile** radio button and choose your signing identity and provisioning profile.
 

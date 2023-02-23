@@ -10,9 +10,7 @@ An App ID is required to identify the app that you are distributing. An App ID i
 There are two types of App ID:
 
 - Wildcard. A wildcard App ID allows you to use a single App ID to match multiple apps, and typically takes the form `com.domainname.*`. A wildcard App ID can be used to distribute multiple apps, and should be used for apps that do not enable app-specific capabilities.
-- Explicit. An explicit App ID is unique to a single app, and typically takes the form `com.domainname.myid`. An explicit App ID allows the distribution of one app, with a matching bundle identifier.. Explicit App IDs are typically used for apps that enable app-specific capabilities such as Apple Pay, or Game Center.
-
-For more information about capabilities, see [Capabilities](~/ios/capabilities.md).
+- Explicit. An explicit App ID is unique to a single app, and typically takes the form `com.domainname.myid`. An explicit App ID allows the distribution of one app, with a matching bundle identifier.. Explicit App IDs are typically used for apps that enable app-specific capabilities such as Apple Pay, or Game Center. For more information about capabilities, see [Capabilities](~/ios/capabilities.md).
 
 To create a new App ID:
 
@@ -34,7 +32,7 @@ To create a new App ID:
     > [!IMPORTANT]
     > The Bundle ID you enter must correspond to the **Bundle identifier** in the *Info.plist* file in your app project.
     >
-    > The bundle identifier for a .NET MAUI app is stored in the .csproj file as the **Application ID** property:
+    > The bundle identifier for a .NET MAUI app is stored in the project file as the **Application ID** property:
     > - In Visual Studio, in **Solution Explorer** right-click on your .NET MAUI app project and select **Properties**. Then, navigate to the **MAUI Shared > General** tab. The **Application ID** field lists the bundle identifier.
     > - In Visual Studio for Mac, in the **Solution Window**, right-click on your .NET MAUI app project and select **Properties**. Then, in the **Project Properties** window, select the **Build > App Info** tab. The **Application ID** field lists the bundle identifier.
     >

@@ -53,7 +53,7 @@ To create a new App ID:
     > [!IMPORTANT]
     > The Bundle ID you enter must correspond to the **Bundle identifier** in the *Info.plist* file in your app project.
     >
-    > The bundle identifier for a .NET MAUI app is stored in the .csproj file as the **Application ID** property:
+    > The bundle identifier for a .NET MAUI app is stored in the project file as the **Application ID** property:
     > - In Visual Studio, in **Solution Explorer** right-click on your .NET MAUI app project and select **Properties**. Then, navigate to the **MAUI Shared > General** tab. The **Application ID** field lists the bundle identifier.
     > - In Visual Studio for Mac, in the **Solution Window**, right-click on your .NET MAUI app project and select **Properties**. Then, in the **Project Properties** window, select the **Build > App Info** tab. The **Application ID** field lists the bundle identifier.
     >
@@ -121,7 +121,7 @@ For information about publishing an iOS app using the Command Line Interface (CL
     :::image type="content" source="media/publish/vs/distribution-signing-identity-enterprise.png" alt-text="Screenshot of selecting a signing identity in the distribution dialog.":::
 
     > [!NOTE]
-    > Your signing identity and provisioning profile should match the app and the selected distribution channel.
+    > You should use the signing identity and provisioning profile that were created for your app and the selected distribution channel.
 
 1. In the **Distribute - Signing Identity** dialog, select the **Save As** button and enter a filename. Your app will then be re-signed and published to an *.ipa* file on your file system.
 
@@ -148,7 +148,7 @@ For information about publishing an iOS app using the Command Line Interface (CL
     :::image type="content" source="media/publish/vsmac/distribution-signing-identity-enterprise.png" alt-text="Screenshot of selecting a signing identity in the distribution dialog.":::
 
     > [!NOTE]
-    > Your signing identity and provisioning profile should match the app and the selected distribution channel.
+    > You should use the signing identity and provisioning profile that were created for your app and the selected distribution channel.
 
     Alternatively, select the **Re-sign With Another Identity and Provisioning Profile** radio button and choose your signing identity and provisioning profile.
 

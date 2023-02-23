@@ -6,11 +6,11 @@ ms.date: 02/24/2023
 
 # Publish an iOS app for App Store distribution
 
-The most common way of distributing iOS apps to users is through the App Store. Apps are submitted to the App Store through a portal called *App Store Connect*. Only developers who belong to the Apple Developer Program have access to this portal. Members of the Apple Developer Enterprise Program do not have access. All apps submitted to the App Store require approval from Apple.
+The most common approach to distributing iOS apps to users is through the App Store. Apps are submitted to the App Store through a portal called *App Store Connect*. Only developers who belong to the Apple Developer Program have access to this portal. Members of the Apple Developer Enterprise Program do not have access. All apps submitted to the App Store require approval from Apple.
 
 Distributing an iOS app requires that the app is provisioned using a *provisioning profile*. Provisioning profiles are files that contain code signing information, as well as the identity of the app and its intended distribution mechanism.
 
-To distribute a .NET Multi-platform App UI (.NET MAUI) iOS app, you'll need to build a *Distribution Provisioning Profile* specific to it. This profile enables the app to be digitally signed for release so that it can be installed on an iOS device. A distribution provisioning profile contains an App ID and a distribution certificate. You can use the same App ID that you used when deploying your app to a device for testing. However, you will need to create a distribution certificate to identify yourself or your organization, if you don't already have one.
+To distribute a .NET Multi-platform App UI (.NET MAUI) iOS app, you'll need to build a *distribution provisioning profile* specific to it. This profile enables the app to be digitally signed for release so that it can be installed on an iOS device. A distribution provisioning profile contains an App ID and a distribution certificate. You can use the same App ID that you used when deploying your app to a device for testing. However, you will need to create a distribution certificate to identify yourself or your organization, if you don't already have one.
 
 The process for creating an App Store distribution provisioning profile is as follows:
 
@@ -32,9 +32,9 @@ Once the App ID has been created, you should create a distribution provisioning 
 
 To create a distribution provisioning profile:
 
-1. In your Apple Developer Account, select the **Profiles** tab.
+1. In the Certificates, Identifiers & Profiles page of your Apple Developer Account, select the **Profiles** tab.
 1. In the **Profiles** tab, click the **+** button to create a new profile.
-1. In the **Register a New Provisioning Profile** page, select the **Ad Hoc** radio button before clicking the **Continue** button:
+1. In the **Register a New Provisioning Profile** page, select the **App Store** radio button before clicking the **Continue** button:
 
     :::image type="content" source="media/provisioning/appstore-register-provisioning-profile.png" alt-text="Register a provisioning profile for app store distribution.":::
 
@@ -60,13 +60,12 @@ To create a distribution provisioning profile:
 
 [!INCLUDE [Download provisioning profiles in Visual Studio](../includes/download-profiles.md)]
 
-<!-- TODO: Next button to the doc where they actually use the distribution provisioning profile to generate the app package. -->
-
 ## Publish the app
 
-You must have created a record for the app you want to upload to the App Store, in App Store Connect. This record includes all the information about the app as it will appear in the App Store and all of the information needed to manage the app through the distribution process. For more information, see [Create an app record](https://developer.apple.com/help/app-store-connect/create-an-app-record/add-a-new-app) on developer.apple.com.
+Visual Studio can publish a .NET MAUI iOS app for App Store distribution and upload it to the App Store. However, before you can upload an app to the App Store you must:
 
-In addition, when uploading your app to the app store, you'll need to create an app-specific password. For information about generating an app-specific password, see [Sign in to apps with your Apple ID using app-specific passwords](https://support.apple.com/HT204397) on support.apple.com.
+- Create a record for the app you want to upload to the App Store in App Store Connect. This record includes all the information about the app as it will appear in the App Store and all of the information needed to manage the app through the distribution process. For more information, see [Create an app record](https://developer.apple.com/help/app-store-connect/create-an-app-record/add-a-new-app) on developer.apple.com.
+- Create an app-specific password. For information about generating an app-specific password, see [Sign in to apps with your Apple ID using app-specific passwords](https://support.apple.com/HT204397) on support.apple.com.
 
 For information about publishing an iOS app using the Command Line Interface (CLI), see [Publish an iOS app using the CLI](publish-cli.md).
 
@@ -87,7 +86,7 @@ For information about publishing an iOS app using the Command Line Interface (CL
     :::image type="content" source="media/publish/vs/distribution-signing-identity-app-store.png" alt-text="Screenshot of selecting a signing identity in the distribution dialog.":::
 
     > [!NOTE]
-    > Your signing identity and provisioning profile should match the app and the selected distribution channel.
+    > You should use the signing identity and provisioning profile that were created for your app and the selected distribution channel.
 
 1. In the **Distribute - Signing Identity** dialog, select either the **Save As** button or the **Upload to Store** button. The **Save As** button will enable you to enter a filename, before re-signing your app and publishing it to an *.ipa* file on your file system for later upload to the App Store through an app such as [Transporter](https://apps.apple.com/us/app/transporter/id1450874784?mt=12). The **Upload to Store** button will re-sign your app and publish it to an *.ipa* file, before uploading it to the App Store.
 
@@ -115,7 +114,7 @@ For information about publishing an iOS app using the Command Line Interface (CL
 
     :::image type="content" source="media/publish/vsmac/distribution-select-channel-app-store.png" alt-text="Screenshot of selecting a distribution channel in the distribution dialog.":::
 
-1. In the **Sign and Distribute** window, select either the **Upload** button or the **Export** button. The **Export** button will publish your app to an *.ipa* file on your file system for later upload to the App Store through an app such as [Transporter](https://apps.apple.com/us/app/transporter/id1450874784?mt=12). The **Upload** button will publish your app to an *.ipa* file, before uploading it to the App Store. Then select the **Next** button.
+1. In the **Sign and Distribute** window, select either the **Upload** radio button or the **Export** radio button. The **Export** radio button will publish your app to an *.ipa* file on your file system for later upload to the App Store through an app such as [Transporter](https://apps.apple.com/us/app/transporter/id1450874784?mt=12). The **Upload** radio button will publish your app to an *.ipa* file, before uploading it to the App Store. Then select the **Next** button.
 
     :::image type="content" source="media/publish/vsMAC/distribution-select-destination-app-store.png" alt-text="Screenshot of selecting a distribution destination in the distribution dialog.":::
 
@@ -124,7 +123,7 @@ For information about publishing an iOS app using the Command Line Interface (CL
     :::image type="content" source="media/publish/vsmac/distribution-signing-identity-app-store.png" alt-text="Screenshot of selecting a signing identity in the distribution dialog.":::
 
     > [!NOTE]
-    > Your signing identity and provisioning profile should match the app and the selected distribution channel.
+    > You should use the signing identity and provisioning profile that were created for your app and the selected distribution channel.
 
 1. In the **Sign and Distribute** window, if you chose to upload to the App Store, enter your Apple ID and app-specific password and select the **Next** button:
 
