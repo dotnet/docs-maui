@@ -6,7 +6,7 @@ ms.date: 02/24/2023
 
 # Publish an iOS app using the command line
 
-To publish your app on a Mac, open a terminal and navigate to the folder for your .NET MAUI app project. Run the `dotnet publish` command, providing the following parameters:
+To publish your app from the command line on a Mac, open a terminal and navigate to the folder for your .NET MAUI app project. Run the `dotnet publish` command, providing the following parameters:
 
 | Parameter                    | Value                                                                                           |
 |------------------------------|-------------------------------------------------------------------------------------------------|
@@ -16,7 +16,7 @@ To publish your app on a Mac, open a terminal and navigate to the folder for you
 > [!WARNING]
 > Attempting to publish a .NET MAUI solution will result in the `dotnet publish` command attempting to publish each project in the solution individually, which can cause issues when you've added other project types to your solution. Therefore, the `dotnet publish` command should be scoped to your .NET MAUI app project.
 
-Additional build properties can be specified on the command line, if they aren't provided in a `<PropertyGroup>` in your project file. The following table lists some of the common parameters:
+Additional build parameters can be specified on the command line, if they aren't provided in a `<PropertyGroup>` in your project file. The following table lists some of the common parameters:
 
 | Parameter                    | Value                                                                                           |
 |------------------------------|-------------------------------------------------------------------------------------------------|
@@ -68,7 +68,7 @@ dotnet publish -f:net7.0-ios /p:IsPublishing=true ...
 An alternative solution to these issues is to add the following `<PropertyGroup>` to your project file:
 
 ```xml
-<PropertyGroup Condition="'$(Configuration)'  == 'Release' And '$(TargetFramework)' == 'net7.0-ios'">
+<PropertyGroup Condition="'$(Configuration)' == 'Release' And '$(TargetFramework)' == 'net7.0-ios'">
     <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
 </PropertyGroup>
 ```
@@ -105,7 +105,7 @@ The following example shows a typical property group for building and signing yo
 ```xml
 <PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">
   <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
-  <CodesignKey>iPhone Distribution: John Smith (AY2GDE9QM7)</CodesignKey>
+  <CodesignKey>Apple Distribution: John Smith (AY2GDE9QM7)</CodesignKey>
   <CodesignProvision>MyMauiApp</CodesignProvision>
   <ArchiveOnBuild>true</ArchiveOnBuild>
 </PropertyGroup>
@@ -125,7 +125,7 @@ Building native iOS apps using .NET MAUI requires access to Apple's build tools,
 > [!NOTE]
 > The first time Pair to Mac logs into a Mac build host from Visual Studio 2022, it sets up SSH keys. With these keys, future logins will not require a username or password.
 
-To publish your app from Windows, open a terminal and navigate to the folder for your .NET MAUI app project. Run the `dotnet publish` command, providing the same command line parameters, or build properties in your project file, that you'd provide when publishing from a Mac. In addition, you must provide the following command line parameters:
+To publish your app from the command line on Windows, open a terminal and navigate to the folder for your .NET MAUI app project. Run the `dotnet publish` command, providing the same command line parameters, or build properties in your project file, that you'd provide when publishing from a Mac. In addition, you must provide the following command line parameters:
 
 | Parameter                    | Value                                                                                           |
 |------------------------------|-------------------------------------------------------------------------------------------------|
@@ -159,4 +159,4 @@ The *.ipa* file can be distributed with one of the following approaches:
 
 - Ad-hoc apps can be distributed using [Apple Configurator](https://apps.apple.com/app/id1037126344). For more information, see [Apple Configurator user guide](https://support.apple.com/guide/apple-configurator-mac/welcome/mac) on support.apple.com. |
 - App Store apps can be uploaded to the App Store through an app such as [Transporter](https://apps.apple.com/us/app/transporter/id1450874784?mt=12). This will require you to have created a record for the app in App Store Connect, and to create an app-specific password. For more information, see [Create an app record](https://developer.apple.com/help/app-store-connect/create-an-app-record/add-a-new-app) on developer.apple.com, and [Sign in to apps with your Apple ID using app-specific passwords](https://support.apple.com/HT204397) on support.apple.com.
-- In-house apps can be distributed via a secure website, or via Mobile Device Management (MDM). Both of these approaches require the app to be prepared for distribution, which includes the preparation of a manifest. For more information, see [Distribute proprietary in-house apps to Apple devices](https://support.apple.com/guide/deployment/depce7cefc4d/web) on support.apple.com. |
+- In-house apps can be distributed via a secure website, or via Mobile Device Management (MDM). Both of these approaches require the app to be prepared for distribution, which includes the preparation of a manifest. For more information, see [Distribute proprietary in-house apps to Apple devices](https://support.apple.com/guide/deployment/depce7cefc4d/web) on support.apple.com.
