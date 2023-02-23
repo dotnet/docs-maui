@@ -37,7 +37,7 @@ Once the App ID has been created, you should create a distribution provisioning 
 
 To create a provisioning profile for ad-hoc distribution:
 
-1. In your Apple Developer Account, select the **Profiles** tab.
+1. In the Certificates, Identifiers & Profiles page of your Apple Developer Account, select the **Profiles** tab.
 1. In the **Profiles** tab, click the **+** button to create a new profile.
 1. In the **Register a New Provisioning Profile** page, select the **Ad Hoc** radio button before clicking the **Continue** button:
 

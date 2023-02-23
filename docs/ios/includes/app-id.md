@@ -14,7 +14,7 @@ There are two types of App ID:
 
 To create a new App ID:
 
-1. In your Apple Developer Account, select the **Certificates, IDs & Profiles** tab.
+1. In your Apple Developer Account, navigate to **Certificates, IDs & Profiles**.
 1. On the **Certificates, Identifiers & Profiles** page, select the **Identifiers** tab.
 1. On the **Identifiers** page, click the **+** button to create a new App ID.
 1. On the **Register a new identifier** page, select the **App IDs** radio button before clicking the **Continue** button:

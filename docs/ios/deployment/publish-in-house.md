@@ -10,7 +10,7 @@ In-house distribution enables members of the Apple Developer Enterprise Program 
 
 Distributing an iOS app requires that the app is provisioned using a *provisioning profile*. Provisioning profiles are files that contain code signing information, as well as the identity of the app and its intended distribution mechanism.
 
-To distribute a .NET Multi-platform App UI (.NET MAUI) iOS app, you'll need to build a *Distribution Provisioning Profile* specific to it. This profile enables the app to be digitally signed for release so that it can be installed on an iOS device. An in-house distribution provisioning profile contains an App ID and a distribution certificate. You can use the same App ID that you used when deploying your app to a device for testing. However, you will need to create a distribution certificate to identify your organization, if you don't already have one.
+To distribute a .NET Multi-platform App UI (.NET MAUI) iOS app, you'll need to build a *distribution provisioning profile* specific to it. This profile enables the app to be digitally signed for release so that it can be installed on an iOS device. An in-house distribution provisioning profile contains an App ID and a distribution certificate. You can use the same App ID that you used when deploying your app to a device for testing. However, you will need to create a distribution certificate to identify your organization, if you don't already have one.
 
 The process for creating an in-house distribution provisioning profile is as follows:
 
@@ -22,7 +22,7 @@ The process for creating an in-house distribution provisioning profile is as fol
 
 ## Create a distribution profile
 
-An in-hous distribution provisioning profile enables your .NET MAUI iOS app to be digitally signed for release. An in-house distribution provisioning profile contains an App ID and a distribution certificate.
+An in-house distribution provisioning profile enables your .NET MAUI iOS app to be digitally signed for release. An in-house distribution provisioning profile contains an App ID and a distribution certificate.
 
 <!-- Can't use the include file as the steps are slightly different -->
 
@@ -39,7 +39,7 @@ For more information about capabilities, see [Capabilities](~/ios/capabilities.m
 
 To create a new App ID:
 
-1. In your Apple Developer Account, select the **Certificates, IDs & Profiles** tab.
+1. In your Apple Developer Account, navigate to **Certificates, IDs & Profiles**.
 1. On the **Certificates, Identifiers & Profiles** page, select the **Identifiers** tab.
 1. On the **Identifiers** page, click the **+** button to create a new App ID.
 1. On the **Register a new identifier** page, select the **App IDs** radio button before clicking the **Continue** button:
@@ -70,7 +70,7 @@ Once the App ID has been created, you should create a distribution provisioning 
 
 To create a distribution provisioning profile:
 
-1. In your Apple Developer Account, select the **Profiles** tab.
+1. In the Certificates, Identifiers & Profiles page of your Apple Developer Account, select the **Profiles** tab.
 1. In the **Profiles** tab, click the **+** button to create a new profile.
 1. In the **Register a New Provisioning Profile** page, select the **In House** radio button before clicking the **Continue** button:
 
@@ -98,11 +98,9 @@ To create a distribution provisioning profile:
 
 [!INCLUDE [Download provisioning profiles in Visual Studio](../includes/download-profiles.md)]
 
-<!-- TODO: Next button to the doc where they actually use the distribution provisioning profile to generate the app package. -->
-
 ## Publish the app
 
-For information about publishing an iOS app using the Command Line Interface (CLI), see [Publish an iOS app using the command line](publish-cli.md).
+Visual Studio can publish a .NET MAUI iOS app for in-house distribution. For information about publishing an iOS app using the Command Line Interface (CLI), see [Publish an iOS app using the command line](publish-cli.md).
 
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio](#tab/vs)
