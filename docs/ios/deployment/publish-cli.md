@@ -151,7 +151,7 @@ Publishing builds and signs the app, and then copies the *.ipa* to the *bin\\Rel
 
 During the publishing process it maybe necessary to allow `codesign` to run on your paired Mac:
 
-:::image type="content" source="media/overview/codesign.png" alt-text="Allow codesign to sign your app on your paired Mac.":::
+:::image type="content" source="media/publish/codesign.png" alt-text="Allow codesign to sign your app on your paired Mac.":::
 
 ## Distribute the app
 

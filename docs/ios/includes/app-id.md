@@ -19,15 +19,15 @@ To create a new App ID:
 1. On the **Identifiers** page, click the **+** button to create a new App ID.
 1. On the **Register a new identifier** page, select the **App IDs** radio button before clicking the **Continue** button:
 
-    :::image type="content" source="../deployment/media/provisioning/create-app-id.png" alt-text="Create an App ID.":::
+    :::image type="content" source="../deployment/media/publish/create-app-id.png" alt-text="Create an App ID.":::
 
 1. On the **Register a new identifier** page, select **App** before clicking the **Continue** button:
 
-    :::image type="content" source="../deployment/media/provisioning/register-identifier.png" alt-text="Register an App ID.":::
+    :::image type="content" source="../deployment/media/publish/register-identifier.png" alt-text="Register an App ID.":::
 
 1. On the **Register an App ID** page, enter a description, and select either the **Explicit** or **Wildcard** Bundle ID radio button. Then, enter the Bundle ID for your app in reverse DS format:
 
-    :::image type="content" source="../deployment/media/provisioning/specify-bundle-id.png" alt-text="Specify the bundle identifier for the app.":::
+    :::image type="content" source="../deployment/media/publish/specify-bundle-id.png" alt-text="Specify the bundle identifier for the app.":::
 
     > [!IMPORTANT]
     > The Bundle ID you enter must correspond to the **Bundle identifier** in the *Info.plist* file in your app project.

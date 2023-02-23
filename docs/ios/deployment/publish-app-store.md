@@ -36,19 +36,19 @@ To create a provisioning profile for App Store distribution:
 1. In the **Profiles** tab, click the **+** button to create a new profile.
 1. In the **Register a New Provisioning Profile** page, select the **App Store** radio button before clicking the **Continue** button:
 
-    :::image type="content" source="media/provisioning/appstore-register-provisioning-profile.png" alt-text="Register a provisioning profile for app store distribution.":::
+    :::image type="content" source="media/publish/appstore-register-provisioning-profile.png" alt-text="Register a provisioning profile for app store distribution.":::
 
 1. In the **Generate a Provisioning Profile** page, in the **App ID** drop-down, select the App ID that you previously created before clicking the **Continue** button:
 
-    :::image type="content" source="media/provisioning/select-app-id.png" alt-text="Select your App ID.":::
+    :::image type="content" source="media/publish/select-app-id.png" alt-text="Select your App ID.":::
 
 1. In the **Generate a Provisioning Profile** page, select the radio button that corresponds to your distribution certificate before clicking the **Continue** button:
 
-    :::image type="content" source="media/provisioning/appstore-select-certificate.png" alt-text="Select your distribution certificate.":::
+    :::image type="content" source="media/publish/appstore-select-certificate.png" alt-text="Select your distribution certificate.":::
 
 1. In the **Generate a Provisioning Profile** page, enter a name for the provisioning profile before clicking the **Generate** button:
 
-    :::image type="content" source="media/provisioning/appstore-generate-profile.png" alt-text="Generate the provisioning profile.":::
+    :::image type="content" source="media/publish/appstore-generate-profile.png" alt-text="Generate the provisioning profile.":::
 
     > [!NOTE]
     > Make a note of the provisioning profile name, as it will be required when signing your app.
