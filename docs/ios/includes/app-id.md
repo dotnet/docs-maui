@@ -29,6 +29,7 @@ To create a new App ID:
 
     :::image type="content" source="../deployment/media/publish/specify-bundle-id.png" alt-text="Specify the bundle identifier for the app.":::
 
+    <!-- markdownlint-disable MD032 -->
     > [!IMPORTANT]
     > The Bundle ID you enter must correspond to the **Bundle identifier** in the *Info.plist* file in your app project.
     >
@@ -37,6 +38,7 @@ To create a new App ID:
     > - In Visual Studio for Mac, in the **Solution Window**, right-click on your .NET MAUI app project and select **Properties**. Then, in the **Project Properties** window, select the **Build > App Info** tab. The **Application ID** field lists the bundle identifier.
     >
     > When the value of the **Application ID** field is updated, the value of the **Bundle identifier** in the **Info.plist** will be automatically updated.
+    <!-- markdownlint-enable MD032 -->
 
 1. On the **Register an App ID** page, select any capabilities that the app uses. Any capabilities must be configured both on this page and in the *Entitlements.plist* file in your app project. For more information see [Capabilities](~/ios/capabilities.md) and [Entitlements](~/ios/entitlements.md).
 1. On the **Register an App ID** page, click the **Continue** button.
