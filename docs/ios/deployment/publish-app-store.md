@@ -92,7 +92,7 @@ For information about publishing an iOS app using the Command Line Interface (CL
 
     1. If you select the **Upload to Store** button, the **Upload to store credentials** dialog will appear after Visual Studio has created the *.ipa* file. In the **Upload to store credentials** dialog enter your Apple ID and app-specific password and select the **OK** button:
 
-        :::image type="content" source="media/publish/vs/upload-to-app-store.png" alt-text="Screenshot of selecting a signing identity in the distribution dialog.":::
+        :::image type="content" source="media/publish/vs/upload-to-app-store.png" alt-text="Screenshot of entering your app-specific password to upload the app to the App Store.":::
 
       Visual Studio will validate your app package and upload it to the App Store, provided you've created an application record in App Store Connect.
 
@@ -112,7 +112,7 @@ For information about publishing an iOS app using the Command Line Interface (CL
 
 1. In the **Sign and Distribute** window, select the **App Store** distribution channel, and then select the **Next** button:
 
-    :::image type="content" source="media/publish/vsmac/distribution-select-channel-app-store.png" alt-text="Screenshot of selecting a distribution channel in the distribution dialog.":::
+    :::image type="content" source="media/publish/vsmac/distribution-select-channel-app-store.png" alt-text="Screenshot of selecting a distribution channel in the VSMac distribution dialog.":::
 
 1. In the **Sign and Distribute** window, select either the **Upload** radio button or the **Export** radio button. The **Export** radio button will publish your app to an *.ipa* file on your file system for later upload to the App Store through an app such as [Transporter](https://apps.apple.com/us/app/transporter/id1450874784?mt=12). The **Upload** radio button will publish your app to an *.ipa* file, before uploading it to the App Store. Then select the **Next** button.
 
@@ -120,14 +120,14 @@ For information about publishing an iOS app using the Command Line Interface (CL
 
 1. In the **Sign and Distribute** window, select the signing identity and provisioning profile for your app, and then select the **Next** button:
 
-    :::image type="content" source="media/publish/vsmac/distribution-signing-identity-app-store.png" alt-text="Screenshot of selecting a signing identity in the distribution dialog.":::
+    :::image type="content" source="media/publish/vsmac/distribution-signing-identity-app-store.png" alt-text="Screenshot of selecting a signing identity in the VSMac distribution dialog.":::
 
     > [!NOTE]
     > You should use the signing identity and provisioning profile that were created for your app and the selected distribution channel.
 
 1. In the **Sign and Distribute** window, if you chose to upload to the App Store, enter your Apple ID and app-specific password and select the **Next** button:
 
-    :::image type="content" source="media/publish/vsmac/upload-to-app-store.png" alt-text="Screenshot of selecting a signing identity in the distribution dialog.":::
+    :::image type="content" source="media/publish/vsmac/upload-to-app-store.png" alt-text="Screenshot of entering your app-specific password to upload the app to the App Store from VSMac.":::
 
 1. In the **Sign and Distribute** window, select the **Publish** button:
 
