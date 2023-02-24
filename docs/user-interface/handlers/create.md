@@ -659,16 +659,20 @@ namespace VideoDemos.Platforms.MaciOS
             _playerViewController.Player = _player;
             _playerViewController.View.Frame = this.Bounds;
 
-#if IOS16_0_OR_GREATER
-            // On iOS 16 the AVPlayerViewController has to be added to the parent ViewController, otherwise the transport controls won't be displayed.
+#if IOS16_0_OR_GREATER || MACCATALYST16_1_OR_GREATER
+            // On iOS 16 and Mac Catalyst 16, for Shell-based apps, the AVPlayerViewController has to be added to the parent ViewController, otherwise the transport controls won't be displayed.
             var viewController = WindowStateManager.Default.GetCurrentUIViewController();
 
-            // Zero out the safe area insets of the AVPlayerViewController
-            UIEdgeInsets insets = viewController.View.SafeAreaInsets;
-            _playerViewController.AdditionalSafeAreaInsets = new UIEdgeInsets(insets.Top * -1, insets.Left, insets.Bottom * -1, insets.Right);
+            // If there's no view controller, assume it's not Shell and continue because the transport controls will still be displayed.
+            if (viewController?.View is not null)
+            {
+                // Zero out the safe area insets of the AVPlayerViewController
+                UIEdgeInsets insets = viewController.View.SafeAreaInsets;
+                _playerViewController.AdditionalSafeAreaInsets = new UIEdgeInsets(insets.Top * -1, insets.Left, insets.Bottom * -1, insets.Right);
 
-            // Add the View from the AVPlayerViewController to the parent ViewController
-            viewController.View.AddSubview(_playerViewController.View);
+                // Add the View from the AVPlayerViewController to the parent ViewController
+                viewController.View.AddSubview(_playerViewController.View);
+            }
 #endif
             // Use the View from the AVPlayerViewController as the native control
             AddSubview(_playerViewController.View);
@@ -678,7 +682,7 @@ namespace VideoDemos.Platforms.MaciOS
 }
 ```
 
-`MauiVideoPlayer` derives from `UIView`, which is the base class on iOS and Mac Catalyst for objects that display content and handle user interaction with that content. The constructor creates an `AVPlayer` object, which manages the playback and timing of a media file, and sets it as the `Player` property value of an `AVPlayerViewController`. The `AVPlayerViewController` displays content from the `AVPlayer` and presents transport controls and other features. The size and location of the control is then set, which ensures that the video is centered in the page and expands to fill the available space while maintaining its aspect ratio. On iOS 16, the `AVPlayerViewController` has to be added to the parent `ViewController`, otherwise the transport controls aren't displayed. The native view, which is the view from the `AVPlayerViewController`, is then added to the page.
+`MauiVideoPlayer` derives from `UIView`, which is the base class on iOS and Mac Catalyst for objects that display content and handle user interaction with that content. The constructor creates an `AVPlayer` object, which manages the playback and timing of a media file, and sets it as the `Player` property value of an `AVPlayerViewController`. The `AVPlayerViewController` displays content from the `AVPlayer` and presents transport controls and other features. The size and location of the control is then set, which ensures that the video is centered in the page and expands to fill the available space while maintaining its aspect ratio. On iOS 16 and Mac Catalyst 16, the `AVPlayerViewController` has to be added to the parent `ViewController` for Shell-based apps, otherwise the transport controls aren't displayed. The native view, which is the view from the `AVPlayerViewController`, is then added to the page.
 
 The `Dispose` method is responsible for performing native view cleanup:
 
