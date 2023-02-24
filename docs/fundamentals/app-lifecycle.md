@@ -173,7 +173,7 @@ namespace PlatformLifecycleDemo
                         .OnBackPressed((activity) => LogEvent(nameof(AndroidLifecycle.OnBackPressed)) && false)
                         .OnStop((activity) => LogEvent(nameof(AndroidLifecycle.OnStop))));
 #endif
-                    static bool LogEvent(string eventName, string type = null)
+                    static bool LogEvent(string eventName, string? type = null)
                     {
                         System.Diagnostics.Debug.WriteLine($"Lifecycle event: {eventName}{(type == null ? string.Empty : $" ({type})")}");
                         return true;
@@ -268,7 +268,7 @@ namespace PlatformLifecycleDemo
                         .DidEnterBackground((app) => LogEvent(nameof(iOSLifecycle.DidEnterBackground)))
                         .WillTerminate((app) => LogEvent(nameof(iOSLifecycle.WillTerminate))));
 #endif
-                    static bool LogEvent(string eventName, string type = null)
+                    static bool LogEvent(string eventName, string? type = null)
                     {
                         System.Diagnostics.Debug.WriteLine($"Lifecycle event: {eventName}{(type == null ? string.Empty : $" ({type})")}");
                         return true;
