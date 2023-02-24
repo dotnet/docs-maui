@@ -27,6 +27,14 @@
     {
       "source_path": "docs/get-started/migrate.md",
       "redirect_url": "/dotnet/maui/migration"
+    },
+    {
+      "source_path": "docs/ios/deployment/overview.md",
+      "redirect_url": "/dotnet/maui/ios/deployment"
+    },
+    {
+      "source_path": "docs/ios/deployment/provision.md",
+      "redirect_url": "/dotnet/maui/ios/deployment/publish-app-store"
     }
   ]
 }

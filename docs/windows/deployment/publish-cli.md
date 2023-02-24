@@ -9,7 +9,7 @@ ms.date: 10/12/2022
 > [!div class="op_single_selector"]
 >
 > - [Publish for Android](../../android/deployment/publish-cli.md)
-> - [Publish for iOS](../../ios/deployment/overview.md)
+> - [Publish for iOS](../../ios/deployment/index.md)
 > - [Publish for macOS](../../macos/deployment/overview.md)
 > - [Publish for Windows](publish-cli.md)
 

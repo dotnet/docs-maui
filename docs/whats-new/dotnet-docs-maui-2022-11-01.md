@@ -31,7 +31,7 @@ Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs from No
 ### Updated articles
 
 - [Build an iOS app with .NET CLI](../ios/cli.md)
-- [Publish a .NET MAUI app for iOS](../ios/deployment/overview.md)
+- [Publish a .NET MAUI app for iOS](../ios/deployment/index.md)
 
 ## MacOS
 
@@ -57,7 +57,7 @@ Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs from No
 ### Updated articles
 
 - [Build an iOS app with .NET CLI](../ios/cli.md)
-- [Publish a .NET MAUI app for iOS](../ios/deployment/overview.md)
+- [Publish a .NET MAUI app for iOS](../ios/deployment/index.md)
 - [Build a Mac Catalyst app with .NET CLI](../macos/cli.md)
 - [Publish a .NET MAUI app for macOS](../macos/deployment/overview.md)
 

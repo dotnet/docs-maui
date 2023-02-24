@@ -29,6 +29,9 @@ Once you've added your Apple developer account to Visual Studio, you need to gen
 1. In the **Apple Developer Accounts** dialog, select a team and then select **View Details**.
 1. In the **Details** dialog, select **Create Certificate** > **iOS Development**. A new signing identity will be created and will sync with Apple if you have the correct permissions.
 
+> [!IMPORTANT]
+> The private key and certificate that make up your signing identity will also be exported to **Keychain Access** on your Mac build host, provided that the IDE is paired to it. For more information, see [Pair to Mac for iOS development](~/ios/pair-to-mac.md).
+
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio for Mac](#tab/vsmac)
 <!-- markdownlint-enable MD025 -->
@@ -50,25 +53,7 @@ A developer profile contains certificates, their associated keys, and any provis
 
 After creating a signing certificate, you must set up a development provisioning profile so that it's possible to deploy your app to a device. The device must be running a version of iOS that's supported by Xcode.
 
-### Add a device
-
-When you create a provisioning profile for development, the profile must include which devices can run the app. Before selecting a device to be added to a provisioning profile, you must first add the device to Apple's developer portal. This can be achieved with the following steps:
-
-1. Connect the device to be provisioned to your local Mac with a USB cable.
-1. Open Xcode, and navigate to **Window > Devices and Simulators**.
-1. In Xcode, select the **Devices** tab, and select the device from the list of connected devices.
-1. In Xcode, copy the **Identifier** value to the clipboard:
-
-    :::image type="content" source="media/manual-provisioning/xcode-devices.png" alt-text="Xcode devices and simulator window with the iOS identifier string location highlighted.":::
-
-1. In a web browser, go to the [Devices](https://developer.apple.com/account/resources/devices/list) section of Apple's developer portal and select the **+** button.
-1. In the **Register a New Device** page, set the correct **Platform** and provide a name for the new device. Then paste the identifier from the clipboard into the **Device ID (UDID)** field, and click the **Continue** button:
-
-    :::image type="content" source="media/manual-provisioning/add-device.png" alt-text="Register a device by naming it and entering its unique device identifier.":::
-
-1. In the **Register a New Device** page, review the information and then select **Register**.
-
-Repeat the above steps for any iOS device that you'll use to test or debug a .NET MAUI iOS app.
+[!INCLUDE [Add a device](../includes/add-a-device.md)]
 
 ### Create an App ID
 
@@ -76,7 +61,7 @@ After adding a device to Apple's developer portal, you should create an *App ID*
 
 <!-- markdownlint-disable MD032 -->
 > [!IMPORTANT]
-> The bundle identifier for a .NET MAUI app is stored in the .csproj file as the **Application ID** property:
+> The bundle identifier for a .NET MAUI app is stored in the project file as the **Application ID** property:
 > - In Visual Studio, in **Solution Explorer** right-click on your .NET MAUI app project and select **Properties**. Then, navigate to the **MAUI Shared > General** tab. The **Application ID** field lists the bundle identifier.
 > - In Visual Studio for Mac, in the **Solution Window**, right-click on your .NET MAUI app project and select **Properties**. Then, in the **Project Properties** window, select the **Build > App Info** tab. The **Application ID** field lists the bundle identifier.
 >
@@ -88,7 +73,7 @@ There are two types of App ID:
 - Wildcard. A wildcard App ID allows you to use a single App ID to match multiple apps, and typically takes the form `com.domainname.*`. A wildcard App ID can be used to install most apps to a device, and should be used for apps that do not enable app-specific capabilities.
 - Explicit. An explicit App ID is unique to a single app, and typically takes the form `com.domainname.myid`. An explicit App ID allows the installation of one app, with a matching bundle identifier, to a device. Explicit App IDs are typically used for apps that enable app-specific capabilities such as Apple Pay, or Game Center.
 
-The recommended approach is to create a *wildcard App ID*, unless your app uses app-specific capabilities. <!-- For information on creating Explicit App IDs, refer to the [Working with Capabilities](~/ios/deploy-test/provisioning/capabilities/index.md) guide.-->
+The recommended approach is to create a *wildcard App ID*, unless your app uses app-specific capabilities. For more information about capabilities, see [Capabilities](~/ios/capabilities.md).
 
 A wildcard App ID can be created with the following steps:
 
@@ -143,7 +128,7 @@ After creating a development provisioning profile in Apple's developer portal, V
 1. In the **Details** dialog, verify that the new profile appears in the **Provisioning Profiles** list. You may need to restart Visual Studio to refresh the list.
 1. In the **Details** dialog, click the **Download All Profiles** button.
 
-The development provisioning profile will then be available for use.
+The provisioning profiles will be downloaded on Windows, and exported to your Mac build host if the IDE is paired to it. For more information, see [Pair to Mac for iOS development](~/ios/pair-to-mac.md).
 
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio for Mac](#tab/vsmac)
@@ -171,7 +156,7 @@ After manually creating the development provisioning profile, and installing it 
 
     :::image type="content" source="media/manual-provisioning/vs/bundle-signing.png" alt-text="Screenshot of bundle signing tab for iOS in Visual Studio.":::
 
-1. In the **Bundle Signing** properties, select your **Signing identity** and **Provisioning profile**, or set both to **Automatic**. When **Signing identity** and **Provisioning profile** are both set to **Automatic**, Visual Studio will select the signing identity and provisioning profile based on the **Bundle identifier** in **Info.plist** (which is identical to the value of the **Application ID** property in your .csproj file).
+1. In the **Bundle Signing** properties, select your **Signing identity** and **Provisioning profile**, or set both to **Automatic**. When **Signing identity** and **Provisioning profile** are both set to **Automatic**, Visual Studio will select the signing identity and provisioning profile based on the **Bundle identifier** in **Info.plist** (which is identical to the value of the **Application ID** property in your project file).
 
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio for Mac](#tab/vsmac)
@@ -193,7 +178,7 @@ After manually creating the development provisioning profile, and installing it 
 
     :::image type="content" source="media/manual-provisioning/vsmac/bundle-signing.png" alt-text="Screenshot of bundle signing options in Visual Studio for Mac.":::
 
-    When **Signing Identity** and **Provisioning profile** are both set to **Automatic**, Visual Studio for Mac will select the signing identity and provisioning profile based on the **Bundle identifier** in **Info.plist** (which is identical to the value of the **Application ID** property in your .csproj file).
+    When **Signing Identity** and **Provisioning profile** are both set to **Automatic**, Visual Studio for Mac will select the signing identity and provisioning profile based on the **Bundle identifier** in **Info.plist** (which is identical to the value of the **Application ID** property in your project file).
 
 1. In the **Project Properties** window, click the **OK** button.
 1. In Visual Studio for Mac, close the **Info.plist** file.
