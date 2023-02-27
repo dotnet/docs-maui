@@ -101,7 +101,9 @@ In a limited state. Only iOS returns this status.
 
 ## Requesting permissions
 
-To request a permission from the users, use the <xref:Microsoft.Maui.ApplicationModel.Permissions.RequestAsync%2A> method along with the specific permission to request. If the user previously granted permission, and hasn't revoked it, then this method will return <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Granted> without showing a dialog to the user. The following example requests the [`LocationWhenInUse`](xref:Microsoft.Maui.ApplicationModel.Permissions.LocationWhenInUse) permission:
+To request a permission from the users, use the <xref:Microsoft.Maui.ApplicationModel.Permissions.RequestAsync%2A> method along with the specific permission to request. If the user previously granted permission, and hasn't revoked it, then this method will return <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Granted> without showing a dialog to the user. Permissions shouldn't be requested from your `MauiProgram` or `App` class, and should only be requested once the first page of the app has appeared.
+
+The following example requests the [`LocationWhenInUse`](xref:Microsoft.Maui.ApplicationModel.Permissions.LocationWhenInUse) permission:
 
 :::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="permission_request":::
 
