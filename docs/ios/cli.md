@@ -4,8 +4,6 @@ description: "Learn how to create and run a .NET MAUI app on iOS using .NET CLI 
 ms.date: 03/01/2023
 ---
 
-https://github.com/xamarin/xamarin-macios/wiki/.NET-7-release-notes#cant-run-mobile-app-from-the-command-line-on-windows
-
 # Build an iOS app with .NET CLI
 
 In this tutorial, you'll learn how to create and run a .NET Multi-platform App UI (.NET MAUI) app on iOS using .NET Command Line Interface (CLI) on macOS:
