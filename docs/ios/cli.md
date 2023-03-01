@@ -109,7 +109,7 @@ A .NET MAUI iOS app can be launched on a device from a Mac by providing its uniq
 1. In Xcode, select the **Devices** tab, and select the device from the list of connected devices.
 1. In Xcode, copy the **Identifier** value to the clipboard:
 
-    :::image type="content" source="../device-provisioning/media/manual-provisioning/xcode-devices.png" alt-text="Xcode devices and simulator window with the iOS identifier string location highlighted.":::
+    :::image type="content" source="device-provisioning/media/manual-provisioning/xcode-devices.png" alt-text="Xcode devices and simulator window with the iOS identifier string location highlighted.":::
 
     Alternatively, right-click on your device and select **Copy Identifier** to copy the UDID to the clipboard.
 
