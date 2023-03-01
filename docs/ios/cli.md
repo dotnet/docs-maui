@@ -1,7 +1,7 @@
 ---
 title: "Build an iOS app on macOS with .NET CLI"
 description: "Learn how to create and run a .NET MAUI app on iOS using .NET CLI on macOS."
-ms.date: 04/29/2022
+ms.date: 03/01/2023
 ---
 
 # Build an iOS app with .NET CLI
@@ -45,7 +45,7 @@ In this tutorial, you'll learn how to create and run a .NET Multi-platform App U
 
 ## Launch the app on a specific simulator
 
-A .NET MAUI iOS app can be launched on a specific iOS simulator by providing its unique device id (UDID):
+A .NET MAUI iOS app can be launched on a specific iOS simulator from a Mac by providing its unique device id (UDID):
 
 1. On your Mac, open **Xcode**, select the **Windows > Devices and Simulators** menu item, and then the **Simulators** tab.
 
@@ -97,5 +97,41 @@ A .NET MAUI iOS app can be launched on a specific iOS simulator by providing its
 4. In your chosen simulator, press the **Click me** button several times and observe that the count of the number of button clicks is incremented.
 
     :::image type="content" source="media/cli/chosen-simulator.png" alt-text=".NET MAUI app running in iPhone 13 Pro simulator.":::
+
+<!-- markdownlint-enable MD029 -->
+
+## Launch the app on a device
+
+A device must be provisioned before you can deploy an iOS app to it. For more information, see [Device provisioning for iOS](~/ios/device-provisioning/index.md). Once a device has been provisioned, a .NET MAUI iOS app can be launched on the device from a Mac by providing its unique device id (UDID):
+
+1. Connect your device to your local Mac with a USB cable.
+1. Open **Xcode**, and navigate to **Window > Devices and Simulators**.
+1. In **Xcode**, select the **Devices** tab, and select the device from the list of connected devices.
+1. In **Xcode**, copy the **Identifier** value to the clipboard:
+
+    :::image type="content" source="device-provisioning/media/manual-provisioning/xcode-devices.png" alt-text="Xcode devices and simulator window with the iOS identifier string location highlighted.":::
+
+    Alternatively, right-click on your device and select **Copy Identifier** to copy the UDID to the clipboard.
+
+<!-- markdownlint-disable MD029 -->
+::: moniker range="=net-maui-6.0"
+
+5. In **Terminal**, build the app and run it on your chosen simulator by specifying the `_DeviceName` MSBuild property using the `-p` [MSBuild option](/dotnet/core/tools/dotnet-build#msbuild):
+
+    ```zsh
+    dotnet build -t:Run -f net6.0-ios -p:RuntimeIdentifier=ios-arm64 -p:_DeviceName=insert_UDID_here
+    ```
+
+::: moniker-end
+
+::: moniker range="=net-maui-7.0"
+
+5. In **Terminal**, build the app and run it on your chosen simulator by specifying the `_DeviceName` MSBuild property using the `-p` [MSBuild option](/dotnet/core/tools/dotnet-build#msbuild):
+
+    ```zsh
+    dotnet build -t:Run -f net7.0-ios -p:RuntimeIdentifier=ios-arm64 -p:_DeviceName=insert_UDID_here
+    ```
+
+::: moniker-end
 
 <!-- markdownlint-enable MD029 -->
