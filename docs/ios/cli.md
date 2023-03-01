@@ -45,9 +45,9 @@ In this tutorial, you'll learn how to create and run a .NET Multi-platform App U
 
 ## Launch the app on a specific simulator
 
-A .NET MAUI iOS app can be launched on a specific iOS simulator on a Mac by providing its unique device id (UDID):
+A .NET MAUI iOS app can be launched on a specific iOS simulator from a Mac by providing its unique device id (UDID):
 
-1. On your Mac, open Xcode, select the **Windows > Devices and Simulators** menu item, and then the **Simulators** tab.
+1. On your Mac, open **Xcode**, select the **Windows > Devices and Simulators** menu item, and then the **Simulators** tab.
 
     :::image type="content" source="media/cli/xcode-simulators.png" alt-text="Screenshot of Xcode simulators tab.":::
 
@@ -105,9 +105,9 @@ A .NET MAUI iOS app can be launched on a specific iOS simulator on a Mac by prov
 A .NET MAUI iOS app can be launched on a device from a Mac by providing its unique device id (UDID):
 
 1. Connect your device to your local Mac with a USB cable.
-1. Open Xcode, and navigate to **Window > Devices and Simulators**.
-1. In Xcode, select the **Devices** tab, and select the device from the list of connected devices.
-1. In Xcode, copy the **Identifier** value to the clipboard:
+1. Open **Xcode**, and navigate to **Window > Devices and Simulators**.
+1. In **Xcode**, select the **Devices** tab, and select the device from the list of connected devices.
+1. In **Xcode**, copy the **Identifier** value to the clipboard:
 
     :::image type="content" source="device-provisioning/media/manual-provisioning/xcode-devices.png" alt-text="Xcode devices and simulator window with the iOS identifier string location highlighted.":::
 
@@ -136,5 +136,5 @@ A .NET MAUI iOS app can be launched on a device from a Mac by providing its uniq
 
 <!-- markdownlint-enable MD029 -->
 
-> [!IMPORTANT]
-> A device must be provisioned before you can deploy an iOS app to it. For more information, see [Device provisioning for iOS](~/ios/device-provisioning/index.md).
+    > [!IMPORTANT]
+    > A device must be provisioned before you can deploy an iOS app to it. For more information, see [Device provisioning for iOS](~/ios/device-provisioning/index.md).
