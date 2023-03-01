@@ -43,6 +43,10 @@
             "heading": "Fundamentals"
         },
         {
+            "names": [ "migration" ],
+            "heading": "Migration from Xamarin.Forms"          
+        },
+        {
             "names": [ "platform-integration" ],
             "heading": "Platform integration"
         },
