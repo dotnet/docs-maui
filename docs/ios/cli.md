@@ -104,7 +104,7 @@ A .NET MAUI iOS app can be launched on a specific iOS simulator from a Mac by pr
 
 A device must be provisioned before you can deploy an iOS app to it. For more information, see [Device provisioning for iOS](~/ios/device-provisioning/index.md).
 
-Once a .NET MAUI iOS app has been provisioned, it can be launched on a device from a Mac by providing its unique device id (UDID):
+Once a device has been provisioned, a .NET MAUI iOS app can be launched on the device from a Mac by providing its unique device id (UDID):
 
 1. Connect your device to your local Mac with a USB cable.
 1. Open **Xcode**, and navigate to **Window > Devices and Simulators**.
