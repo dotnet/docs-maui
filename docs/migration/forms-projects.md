@@ -120,7 +120,7 @@ The following table lists the layout APIs that have been removed in the move fro
 > | <xref:Xamarin.Forms.Grid.IGridList`1.AddVertical%2A?displayProperty=fullName> |  | No .NET MAUI equivalent. |
 > | <xref:Xamarin.Forms.RelativeLayout?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.Compatibility.RelativeLayout?displayProperty=fullName> | In .NET MAUI, `RelativeLayout` only exists as a compatibility control for users migrating from Xamarin.Forms. Use <xref:Microsoft.Maui.Controls.Grid> instead, or add the `xmlns` for the compatibility namespace. |
 
-In addition, adding children to a layout in code in Xamarin.Forms was accomplished by adding the children to the layout's `Children` collection:
+In addition, adding children to a layout in code in Xamarin.Forms is accomplished by adding the children to the layout's `Children` collection:
 
 ```csharp
 Grid grid = new Grid();
