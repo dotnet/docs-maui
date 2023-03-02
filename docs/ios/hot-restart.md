@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI hot restart for iOS device deployment"
 description: "Hot restart enables you to quickly deploy a .NET MAUI iOS app to a local device, from Visual Studio 2022, without requiring a Mac build host."
-ms.date: 08/23/2022
+ms.date: 3/2/2023
 ---
 
 # Deploy an iOS app using hot restart
@@ -141,7 +141,7 @@ Hot restart is enabled by default in Visual Studio 2022. If it's been previously
 
 ## Troubleshoot
 
-.NET MAUI apps that use iOS asset catalogs are currently unsupported by hot restart.
+.NET MAUI apps that use iOS asset catalogs are currently unsupported by hot restart. When using Hot Restart, your app will show a .NET icon and launch screen.
 
 iOS uses a watchdog that monitors app launch times and responsiveness, and terminates unresponsive apps. For example, the watchdog terminates apps that block the main thread for a significant time. On old iOS devices, the watchdog may terminate an app that's been deployed using hot restart before the debugger has connected to it. The workaround is to reduce the amount of processing performed in the app's startup path, and to use a more recent iOS device.
 
