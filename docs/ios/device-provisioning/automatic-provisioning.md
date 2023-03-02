@@ -111,7 +111,7 @@ If the required certificate isn't installed on the machine, the **Details** wind
 > [!NOTE]
 > - To copy a certificate from a Mac to another Mac, export the certificate from Keychain Access on the Mac that created the certificate and then import it into Keychain Access on the other Mac.
 > - To copy a certificate from a Mac to a Windows machine, export the certificate from Keychain Access on the Mac and then on the Windows machine import it into Visual Studio with the **Import Certificate** button.
-> - To copy a certificate from a Windows machine to a Windows machine, copy the certificate from the *C:\Users\{User}\AppData\Local\Xamarin\iOS\Provisioning\Certificates* folder and then on the other Windows machine import it into Visual Studio with the **Import Certificate** button.
+> - It's not possible to copy a certificate that was created by Visual Studio on a Windows machine, to another machine, because it's password protected.
 <!-- markdownlint-enable MD032 -->
 
 After the certificate has been imported, Visual Studio will show its status as "Valid":
