@@ -1,7 +1,7 @@
 ---
 title: "Manually upgrade a Xamarin.Forms app to .NET MAUI"
 description: "Learn how to manually upgrade a Xamarin.Forms project to .NET MAUI."
-ms.date: 1/31/2023
+ms.date: 3/02/2023
 no-loc: [ "Xamarin.Forms", "Xamarin.Essentials", "Xamarin.CommunityToolkit", ".NET MAUI Community Toolkit", "SkiaSharp", "Xamarin.Forms.Maps", "Microsoft.Maui", "Microsoft.Maui.Controls", "net7.0-android", "net7.0-ios" ]
 ---
 
@@ -107,6 +107,49 @@ In addition, all of the numeric values in a <xref:Microsoft.Maui.Graphics.Color?
 > [!NOTE]
 > Unlike Xamarin.Forms, a <xref:Microsoft.Maui.Graphics.Color?displayProperty=fullName> doesn't have an implicit conversion to <xref:System.Drawing.Color?displayProperty=fullName>.
 
+### Layout changes
+
+The following table lists the layout APIs that have been removed in the move from Xamarin.Forms to .NET MAUI:
+
+> [!div class="mx-tdBreakAll"]
+> | Xamarin.Forms API | .NET MAUI API | Comments |
+> | ----------------- | ------------- | -------- |
+> | <xref:Xamarin.Forms.AbsoluteLayout.IAbsoluteList`1.Add%2A?displayProperty=fullName> |  | The `Add` overload that accepts 3 arguments isn't present in .NET MAUI. |
+> | <xref:Xamarin.Forms.Grid.IGridList`1.Add%2A?displayProperty=fullName> |  | The `Add` overload that accepts 5 arguments isn't present in .NET MAUI. |
+> | <xref:Xamarin.Forms.Grid.IGridList`1.AddHorizontal%2A?displayProperty=fullName> |  | No .NET MAUI equivalent. |
+> | <xref:Xamarin.Forms.Grid.IGridList`1.AddVertical%2A?displayProperty=fullName> |  | No .NET MAUI equivalent. |
+> | <xref:Xamarin.Forms.RelativeLayout?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.Compatibility.RelativeLayout?displayProperty=fullName> | In .NET MAUI, `RelativeLayout` only exists as a compatibility control for users migrating from Xamarin.Forms. Use <xref:Microsoft.Maui.Controls.Grid> instead, or add the `xmlns` for the compatibility namespace. |
+
+In addition, adding children to a layout in code in Xamarin.Forms is accomplished by adding the children to the layout's `Children` collection:
+
+```csharp
+Grid grid = new Grid();
+grid.Children.Add(new new Label { Text = "Hello world" });
+```
+
+In .NET MAUI, the <xref:Microsoft.Maui.Controls.Layout.Children> collection is for internal use by .NET MAUI and shouldn't be manipulated directly. Therefore, in code children should be added directly to the layout:
+
+```csharp
+Grid grid = new Grid();
+grid.Add(new new Label { Text = "Hello world" });
+```
+
+> [!IMPORTANT]
+> Any `Add` layout extension methods, such as <xref:Microsoft.Maui.Controls.GridExtensions.Add%2A?displayProperty=nameWithType>, are invoked on the layout rather than the layouts <xref:Microsoft.Maui.Controls.Layout.Children> collection.
+
+You may notice when running your upgraded .NET MAUI app that layout behavior is different. For more information, see [Layout behavior changes from Xamarin.Forms](layouts.md).
+
+### Custom layout changes
+
+The process for creating a custom layout in Xamarin.Forms involves creating a class that derives from `Layout<View>`, and overriding the <xref:Xamarin.Forms.VisualElement.OnMeasure%2A> and <xref:Xamarin.Forms.Layout.LayoutChildren%2A> methods. For more information, see [Create a custom layout in Xamarin.Forms](/xamarin/xamarin-forms/user-interface/layouts/custom).
+
+The process for creating a custom layout in .NET MAUI involves creating an <xref:Microsoft.Maui.Layouts.ILayoutManager> implementation, and overriding the <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> and <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> methods:
+
+- The <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> override should call <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> on each <xref:Microsoft.Maui.IView> in the layout, and should return the total size of the layout given the constraints.
+- The <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> override should determine where each <xref:Microsoft.Maui.IView> should be placed within the given bounds, and should call <xref:Microsoft.Maui.IView.Arrange%2A> on each <xref:Microsoft.Maui.IView> with its appropriate bounds. The return value should be the actual size of the layout.
+
+For more information, see [Custom layout examples](https://github.com/hartez/CustomLayoutExamples).
+
 ### Device changes
 
 Xamarin.Forms has a <xref:Xamarin.Forms.Device?displayProperty=fullName> class that helps you to interact with the device and platform the app is running on. The equivalent class in .NET MAUI, <xref:Microsoft.Maui.Controls.Device?displayProperty=fullName>, is deprecated and its functionality is replaced by multiple types.
@@ -167,30 +210,14 @@ A small number of other APIs have been consolidated in the move from Xamarin.For
 > [!div class="mx-tdBreakAll"]
 > | Xamarin.Forms API | .NET MAUI API | Comments |
 > | ----------------- | ------------- | -------- |
-> | <xref:Xamarin.Forms.AbsoluteLayout.IAbsoluteList`1.Add%2A?displayProperty=fullName> |  | The `Add` overload that accepts 3 arguments isn't present in .NET MAUI |
 > | <xref:Xamarin.Forms.Application.Properties?displayProperty=fullName> | <xref:Microsoft.Maui.Storage.Preferences?displayProperty=fullName> |  |
 > | <xref:Xamarin.Forms.Button.Image?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.Button.ImageSource?displayProperty=fullName> |  |
 > | <xref:Xamarin.Forms.Frame.OutlineColor?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.Frame.BorderColor?displayProperty=fullName> |  |
-> | <xref:Xamarin.Forms.Grid.IGridList`1.Add%2A?displayProperty=fullName> |  | The `Add` overload that accepts 5 arguments isn't present in .NET MAUI. |
-> | <xref:Xamarin.Forms.Grid.IGridList`1.AddHorizontal%2A?displayProperty=fullName> |  | No .NET MAUI equivalent. |
-> | <xref:Xamarin.Forms.Grid.IGridList`1.AddVertical%2A?displayProperty=fullName> |  | No .NET MAUI equivalent. |
 > | <xref:Xamarin.Forms.IQueryAttributable.ApplyQueryAttributes%2A?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.IQueryAttributable.ApplyQueryAttributes%2A?displayProperty=fullName> | In Xamarin.Forms, the `ApplyQueryAttributes` method accepts an `IDictionary<string, string>` argument. In .NET MAUI, the `ApplyQueryAttributes` method accepts an `IDictionary<string, object>` argument.  |
 > | <xref:Xamarin.Forms.MenuItem.Icon?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.MenuItem.IconImageSource?displayProperty=fullName> | <xref:Xamarin.Forms.MenuItem.Icon?displayProperty=fullName> is the base class for <xref:Xamarin.Forms.ToolbarItem?displayProperty=fullName>, and so `ToolbarItem.Icon` becomes `ToolbarItem.IconImageSource`. |
 > | <xref:Xamarin.Forms.OSAppTheme?displayProperty=fullName> | <xref:Microsoft.Maui.ApplicationModel.AppTheme?displayProperty=fullName> |  |
-> | <xref:Xamarin.Forms.RelativeLayout?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.Compatibility.RelativeLayout?displayProperty=fullName> | In .NET MAUI, `RelativeLayout` only exists as a compatibility control for users migrating from Xamarin.Forms. Use <xref:Microsoft.Maui.Controls.Grid> instead, or add the `xmlns` for the compatibility namespace. |
 > | <xref:Xamarin.Forms.Span.ForegroundColor?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.Span.TextColor?displayProperty=fullName> |  |
 > | <xref:Xamarin.Forms.ToolbarItem.Name?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.MenuItem.Text?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.MenuItem.Text?displayProperty=fullName> is the base class for <xref:Microsoft.Maui.Controls.ToolbarItem?displayProperty=fullName>, and so `ToolbarItem.Name` becomes `ToolbarItem.Text`. |
-
-### Custom layout changes
-
-The process for creating a custom layout in Xamarin.Forms involves creating a class that derives from `Layout<View>`, and overriding the <xref:Xamarin.Forms.VisualElement.OnMeasure%2A> and <xref:Xamarin.Forms.Layout.LayoutChildren%2A> methods. For more information, see [Create a custom layout in Xamarin.Forms](/xamarin/xamarin-forms/user-interface/layouts/custom).
-
-The process for creating a custom layout in .NET MAUI involves creating an <xref:Microsoft.Maui.Layouts.ILayoutManager> implementation, and overriding the <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> and <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> methods:
-
-- The <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> override should call <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> on each <xref:Microsoft.Maui.IView> in the layout, and should return the total size of the layout given the constraints.
-- The <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> override should determine where each <xref:Microsoft.Maui.IView> should be placed within the given bounds, and should call <xref:Microsoft.Maui.IView.Arrange%2A> on each <xref:Microsoft.Maui.IView> with its appropriate bounds. The return value should be the actual size of the layout.
-
-For more information, see [Custom layout examples](https://github.com/hartez/CustomLayoutExamples).
 
 <!-- TODO: Replace the link above with one to a custom layout doc, once the content is written -->
 ### Native forms changes
