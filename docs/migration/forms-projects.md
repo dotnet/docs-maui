@@ -135,7 +135,7 @@ grid.Add(new new Label { Text = "Hello world" });
 ```
 
 > [!IMPORTANT]
-> Any `Add` layout extension methods, such as <xref:Microsoft.Maui.Controls.GridExtensions.Add%2A?displayProperty=nameWithType> are invoked on the layout, rather than the layouts <xref:Microsoft.Maui.Controls.Layout.Children> collection.
+> Any `Add` layout extension methods, such as <xref:Microsoft.Maui.Controls.GridExtensions.Add%2A?displayProperty=nameWithType>, are invoked on the layout rather than the layouts <xref:Microsoft.Maui.Controls.Layout.Children> collection.
 
 You may notice when running your upgraded .NET MAUI app that layout behavior is different. For more information, see [Layout behavior changes from Xamarin.Forms](layouts.md).
 
