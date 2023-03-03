@@ -78,7 +78,7 @@ In this example, a red circle with dimensions 100x100 is drawn at (10,10):
 :::image type="content" source="media/draw/circle.png" alt-text="Screenshot of a red circle.":::
 
 > [!NOTE]
-> Circles can also be drawn with the `DrawCircle` method.
+> Circles can also be drawn with the <xref:Microsoft.Maui.Graphics.CanvasExtensions.DrawCircle%2A> method.
 
 For information about drawing a dashed ellipse, see [Draw dashed objects](#draw-dashed-objects).
 
@@ -98,7 +98,7 @@ The <xref:Microsoft.Maui.Graphics.ICanvas.FillColor> property of the <xref:Micro
 Filled circles can also be drawn with the <xref:Microsoft.Maui.Graphics.CanvasExtensions.FillCircle%2A> method.
 
 > [!NOTE]
-> There are <xref:Microsoft.Maui.Graphics.ICanvas.DrawEllipse%2A> and <xref:Microsoft.Maui.Graphics.ICanvas.FillEllipse%2A> overloads that take <xref:Microsoft.Maui.Graphics.Rect> and <xref:Microsoft.Maui.Graphics.RectF> arguments. In addition, there are also `DrawCircle` and <xref:Microsoft.Maui.Graphics.CanvasExtensions.FillCircle%2A> overloads.
+> There are <xref:Microsoft.Maui.Graphics.ICanvas.DrawEllipse%2A> and <xref:Microsoft.Maui.Graphics.ICanvas.FillEllipse%2A> overloads that take <xref:Microsoft.Maui.Graphics.Rect> and <xref:Microsoft.Maui.Graphics.RectF> arguments. In addition, there are also <xref:Microsoft.Maui.Graphics.CanvasExtensions.DrawCircle%2A> and <xref:Microsoft.Maui.Graphics.CanvasExtensions.FillCircle%2A> overloads.
 
 ## Draw a rectangle
 
