@@ -8,7 +8,7 @@ ms.date: 12/16/2021
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-graphicsview)
 
-.NET Multi-platform App UI (.NET MAUI) graphics enables different compositing operations for graphical objects to be specified by the `ICanvas.BlendMode` property. This property determines what happens when a graphical object (called the *source*), is rendered on top of an existing graphical object (called the *destination*).
+.NET Multi-platform App UI (.NET MAUI) graphics enables different compositing operations for graphical objects to be specified by the <xref:Microsoft.Maui.Graphics.ICanvas.BlendMode> property. This property determines what happens when a graphical object (called the *source*), is rendered on top of an existing graphical object (called the *destination*).
 
 By default, the last drawn object obscures the objects drawn underneath it:
 
@@ -16,7 +16,7 @@ By default, the last drawn object obscures the objects drawn underneath it:
 
 In this example, the cyan circle is drawn first, followed by the magenta circle, then the yellow circle. Each circle obscures the circle drawn underneath it. This occurs because the default blend mode is `Normal`, which means that the source is drawn over the destination. However, it's possible to specify a different blend mode for a different result. For example, if you specify `DestinationOver`, then in the area where the source and destination intersect, the destination is drawn over the source.
 
-The 28 members of the `BlendMode` enumeration can be divided into three categories:
+The 28 members of the <xref:Microsoft.Maui.Graphics.BlendMode> enumeration can be divided into three categories:
 
 | Separable    | Non-Separable | Porter-Duff       |
 |--------------|---------------|-------------------|
@@ -33,7 +33,7 @@ The 28 members of the `BlendMode` enumeration can be divided into three categori
 | `Difference` |               | `PlusDarker`      |
 | `Exclusion`  |               | `PlusLighter`     |
 
-The order that the members are listed in the table above is the same as in the `BlendMode` enumeration. The first column lists the 12 *separable* blend modes, while the second column lists the *non-separable* blend modes. Finally, the third column lists the *Porter-Duff* blend modes.
+The order that the members are listed in the table above is the same as in the <xref:Microsoft.Maui.Graphics.BlendMode> enumeration. The first column lists the 12 *separable* blend modes, while the second column lists the *non-separable* blend modes. Finally, the third column lists the *Porter-Duff* blend modes.
 
 ## Porter-Duff blend modes
 
