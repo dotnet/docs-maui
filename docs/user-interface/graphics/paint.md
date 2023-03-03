@@ -19,17 +19,17 @@ The <xref:Microsoft.Maui.Graphics.Paint> class is an abstract class that paints 
 
 Instances of these types can be painted on an <xref:Microsoft.Maui.Graphics.ICanvas>, typically by using the <xref:Microsoft.Maui.Graphics.ICanvas.SetFillPaint%2A> method to set the paint as the fill of a graphical object.
 
-The <xref:Microsoft.Maui.Graphics.Paint> class also defines <xref:Microsoft.Maui.Graphics.Paint.BackgroundColor>, and <xref:Microsoft.Maui.Graphics.Paint.ForegroundColor> properties, of type `Color`, that can be used to optionally define background and foreground colors for a <xref:Microsoft.Maui.Graphics.Paint> object.
+The <xref:Microsoft.Maui.Graphics.Paint> class also defines <xref:Microsoft.Maui.Graphics.Paint.BackgroundColor>, and <xref:Microsoft.Maui.Graphics.Paint.ForegroundColor> properties, of type <xref:Microsoft.Maui.Graphics.Color>, that can be used to optionally define background and foreground colors for a <xref:Microsoft.Maui.Graphics.Paint> object.
 
 ## Paint a solid color
 
 The <xref:Microsoft.Maui.Graphics.SolidPaint> class, that's derived from the <xref:Microsoft.Maui.Graphics.Paint> class, is used to paint a graphical object with a solid color.
 
-The <xref:Microsoft.Maui.Graphics.SolidPaint> class defines a <xref:Microsoft.Maui.Graphics.SolidPaint.Color> property, of type `Color`, which represents the color of the paint. The class also has an <xref:Microsoft.Maui.Graphics.SolidPaint.IsTransparent> property that returns a `bool` that represents whether the color has an alpha value of less than 1.
+The <xref:Microsoft.Maui.Graphics.SolidPaint> class defines a <xref:Microsoft.Maui.Graphics.SolidPaint.Color> property, of type <xref:Microsoft.Maui.Graphics.Color>, which represents the color of the paint. The class also has an <xref:Microsoft.Maui.Graphics.SolidPaint.IsTransparent> property that returns a `bool` that represents whether the color has an alpha value of less than 1.
 
 ### Create a SolidPaint object
 
-The color of a <xref:Microsoft.Maui.Graphics.SolidPaint> object is typically specified through its constructor, using a `Color` argument:
+The color of a <xref:Microsoft.Maui.Graphics.SolidPaint> object is typically specified through its constructor, using a <xref:Microsoft.Maui.Graphics.Color> argument:
 
 ```csharp
 SolidPaint solidPaint = new SolidPaint(Colors.Silver);
@@ -44,7 +44,7 @@ The <xref:Microsoft.Maui.Graphics.SolidPaint> object is specified as the first a
 
 :::image type="content" source="media/paint/solidpaint.png" alt-text="Screenshot of a rounded rectangle, filled with a silver SolidPaint object.":::
 
-Alternatively, the color can be specified with the `Color` property:
+Alternatively, the color can be specified with the <xref:Microsoft.Maui.Graphics.SolidPaint.Color> property:
 
 ```csharp
 SolidPaint solidPaint = new SolidPaint
@@ -172,7 +172,7 @@ Gradient stops are the building blocks of a gradient, and specify the colors in 
 
 The <xref:Microsoft.Maui.Graphics.PaintGradientStop> class defines the following properties:
 
-- <xref:Microsoft.Maui.Graphics.PaintGradientStop.Color>, of type `Color`, which represents the color of the gradient stop.
+- <xref:Microsoft.Maui.Graphics.PaintGradientStop.Color>, of type <xref:Microsoft.Maui.Graphics.Color>, which represents the color of the gradient stop.
 - <xref:Microsoft.Maui.Graphics.PaintGradientStop.Offset>, of type `float`, which represents the location of the gradient stop within the gradient vector. Valid values are in the range 0.0-1.0. The closer this value is to 0, the closer the color is to the start of the gradient. Similarly, the closer this value is to 1, the closer the color is to the end of the gradient.
 
 > [!IMPORTANT]

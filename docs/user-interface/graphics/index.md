@@ -47,12 +47,12 @@ In .NET MAUI, the <xref:Microsoft.Maui.Controls.GraphicsView> enables consumptio
 - <xref:Microsoft.Maui.Graphics.ICanvas.Antialias>, of type `bool`, specifies whether anti-aliasing is enabled.
 - <xref:Microsoft.Maui.Graphics.ICanvas.BlendMode>, of type <xref:Microsoft.Maui.Graphics.BlendMode>, defines the blend mode, which determines what happens when an object is rendered on top of an existing object.
 - <xref:Microsoft.Maui.Graphics.ICanvas.DisplayScale>, of type `float`, represents the scaling factor to scale the UI by on a canvas.
-- <xref:Microsoft.Maui.Graphics.ICanvas.FillColor>, of type `Color`, indicates the color used to paint an object's interior.
+- <xref:Microsoft.Maui.Graphics.ICanvas.FillColor>, of type <xref:Microsoft.Maui.Graphics.Color>, indicates the color used to paint an object's interior.
 - <xref:Microsoft.Maui.Graphics.ICanvas.Font>, of type <xref:Microsoft.Maui.Graphics.IFont>, defines the font when drawing text.
-- <xref:Microsoft.Maui.Graphics.ICanvas.FontColor>, of type `Color`, specifies the font color when drawing text.
+- <xref:Microsoft.Maui.Graphics.ICanvas.FontColor>, of type <xref:Microsoft.Maui.Graphics.Color>, specifies the font color when drawing text.
 - <xref:Microsoft.Maui.Graphics.ICanvas.FontSize>, of type `float`, defines the size of the font when drawing text.
 - <xref:Microsoft.Maui.Graphics.ICanvas.MiterLimit>, of type `float`, specifies the limit of the miter length of line joins in an object.
-- <xref:Microsoft.Maui.Graphics.ICanvas.StrokeColor>, of type `Color`, indicates the color used to paint an object's outline.
+- <xref:Microsoft.Maui.Graphics.ICanvas.StrokeColor>, of type <xref:Microsoft.Maui.Graphics.Color>, indicates the color used to paint an object's outline.
 - <xref:Microsoft.Maui.Graphics.ICanvas.StrokeDashOffset>, of type `float`, specifies the distance within the dash pattern where a dash begins.
 - <xref:Microsoft.Maui.Graphics.ICanvas.StrokeDashPattern>, of type `float[]`, specifies the pattern of dashes and gaps that are used to outline an object.
 - <xref:Microsoft.Maui.Graphics.ICanvas.StrokeLineCap>, of type <xref:Microsoft.Maui.Graphics.LineCap>, describes the shape at the start and end of a line.

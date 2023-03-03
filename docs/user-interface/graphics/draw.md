@@ -93,7 +93,7 @@ In this example, a red filled ellipse with dimensions 150x50 is drawn at (10,10)
 
 :::image type="content" source="media/draw/filled-ellipse.png" alt-text="Screenshot of a red filled ellipse.":::
 
-The <xref:Microsoft.Maui.Graphics.ICanvas.FillColor> property of the <xref:Microsoft.Maui.Graphics.ICanvas> object must be set to a `Color` before invoking the <xref:Microsoft.Maui.Graphics.ICanvas.FillEllipse%2A> method.
+The <xref:Microsoft.Maui.Graphics.ICanvas.FillColor> property of the <xref:Microsoft.Maui.Graphics.ICanvas> object must be set to a <xref:Microsoft.Maui.Graphics.Color> before invoking the <xref:Microsoft.Maui.Graphics.ICanvas.FillEllipse%2A> method.
 
 Filled circles can also be drawn with the <xref:Microsoft.Maui.Graphics.CanvasExtensions.FillCircle%2A> method.
 
@@ -141,7 +141,7 @@ In this example, a dark blue filled rectangle with dimensions 100x50 is drawn at
 
 :::image type="content" source="media/draw/filled-rectangle.png" alt-text="Screenshot of a dark blue filled rectangle.":::
 
-The <xref:Microsoft.Maui.Graphics.ICanvas.FillColor> property of the <xref:Microsoft.Maui.Graphics.ICanvas> object must be set to a `Color` before invoking the <xref:Microsoft.Maui.Graphics.ICanvas.FillRectangle%2A> method.
+The <xref:Microsoft.Maui.Graphics.ICanvas.FillColor> property of the <xref:Microsoft.Maui.Graphics.ICanvas> object must be set to a <xref:Microsoft.Maui.Graphics.Color> before invoking the <xref:Microsoft.Maui.Graphics.ICanvas.FillRectangle%2A> method.
 
 > [!NOTE]
 > There are <xref:Microsoft.Maui.Graphics.ICanvas.DrawRectangle%2A> and <xref:Microsoft.Maui.Graphics.ICanvas.FillRectangle%2A> overloads that take <xref:Microsoft.Maui.Graphics.Rect> and <xref:Microsoft.Maui.Graphics.RectF> arguments.
@@ -175,7 +175,7 @@ In this example, a green filled rectangle with rounded corners and dimensions 10
 
 :::image type="content" source="media/draw/filled-rounded-rectangle.png" alt-text="Screenshot of a green filled rounded rectangle.":::
 
-The <xref:Microsoft.Maui.Graphics.ICanvas.FillColor> property of the <xref:Microsoft.Maui.Graphics.ICanvas> object must be set to a `Color` before invoking the <xref:Microsoft.Maui.Graphics.ICanvas.FillRoundedRectangle%2A> method.
+The <xref:Microsoft.Maui.Graphics.ICanvas.FillColor> property of the <xref:Microsoft.Maui.Graphics.ICanvas> object must be set to a <xref:Microsoft.Maui.Graphics.Color> before invoking the <xref:Microsoft.Maui.Graphics.ICanvas.FillRoundedRectangle%2A> method.
 
 > [!NOTE]
 > There are <xref:Microsoft.Maui.Graphics.ICanvas.DrawRoundedRectangle%2A> and <xref:Microsoft.Maui.Graphics.ICanvas.FillRoundedRectangle%2A> overloads that take <xref:Microsoft.Maui.Graphics.Rect> and <xref:Microsoft.Maui.Graphics.RectF> arguments, and overloads that enable the radius of each corner to be separately specified.
@@ -209,7 +209,7 @@ In this example, a filled teal arc of dimensions 100x100 is drawn at (10,10). Th
 
 :::image type="content" source="media/draw/filled-arc.png" alt-text="Screenshot of a filled teal arc.":::
 
-The <xref:Microsoft.Maui.Graphics.ICanvas.FillColor> property of the <xref:Microsoft.Maui.Graphics.ICanvas> object must be set to a `Color` before invoking the <xref:Microsoft.Maui.Graphics.ICanvas.FillArc%2A> method.
+The <xref:Microsoft.Maui.Graphics.ICanvas.FillColor> property of the <xref:Microsoft.Maui.Graphics.ICanvas> object must be set to a <xref:Microsoft.Maui.Graphics.Color> before invoking the <xref:Microsoft.Maui.Graphics.ICanvas.FillArc%2A> method.
 
 > [!NOTE]
 > There are <xref:Microsoft.Maui.Graphics.ICanvas.DrawArc%2A> and <xref:Microsoft.Maui.Graphics.ICanvas.FillArc%2A> overloads that take <xref:Microsoft.Maui.Graphics.Rect> and <xref:Microsoft.Maui.Graphics.RectF> arguments.
@@ -270,7 +270,7 @@ In this example, a filled slate blue triangle is drawn:
 
 :::image type="content" source="media/draw/filled-path.png" alt-text="Screenshot of a filled slate blue triangle.":::
 
-The <xref:Microsoft.Maui.Graphics.ICanvas.FillColor> property of the <xref:Microsoft.Maui.Graphics.ICanvas> object must be set to a `Color` before invoking the <xref:Microsoft.Maui.Graphics.ICanvas.FillPath%2A> method.
+The <xref:Microsoft.Maui.Graphics.ICanvas.FillColor> property of the <xref:Microsoft.Maui.Graphics.ICanvas> object must be set to a <xref:Microsoft.Maui.Graphics.Color> before invoking the <xref:Microsoft.Maui.Graphics.ICanvas.FillPath%2A> method.
 
 > [!IMPORTANT]
 > The <xref:Microsoft.Maui.Graphics.ICanvas.FillPath%2A> method has an overload that enables a <xref:Microsoft.Maui.Graphics.WindingMode> to be specified, which sets the fill algorithm that's used. For more information, see [Winding modes](windingmodes.md).
@@ -403,7 +403,7 @@ Graphical objects drawn on an <xref:Microsoft.Maui.Graphics.ICanvas> can have a 
 
 - `offset`, of type <xref:Microsoft.Maui.Graphics.SizeF>, specifies an offset for the shadow, which represents the position of a light source that creates the shadow.
 - `blur`, of type `float`, represents the amount of blur to apply to the shadow.
-- `color`, of type `Color`, defines the color of the shadow.
+- `color`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the color of the shadow.
 
 The following examples show how to add shadows to filled objects:
 
