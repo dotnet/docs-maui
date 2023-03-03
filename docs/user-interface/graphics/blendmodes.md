@@ -8,7 +8,7 @@ ms.date: 12/16/2021
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-graphicsview)
 
-.NET Multi-platform App UI (.NET MAUI) graphics enables different compositing operations for graphical objects to be specified by the <xref:Microsoft.Maui.Graphics.ICanvas.BlendMode> property. This property determines what happens when a graphical object (called the *source*), is rendered on top of an existing graphical object (called the *destination*).
+.NET Multi-platform App UI (.NET MAUI) graphics enables different compositing operations for graphical objects to be specified by the <xref:Microsoft.Maui.Graphics.ICanvas.BlendMode?displayProperty=nameWithType> property. This property determines what happens when a graphical object (called the *source*), is rendered on top of an existing graphical object (called the *destination*).
 
 By default, the last drawn object obscures the objects drawn underneath it:
 
