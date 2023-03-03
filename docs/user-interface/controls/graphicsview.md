@@ -8,7 +8,7 @@ ms.date: 04/19/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-graphicsview)
 
-The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.GraphicsView> is a graphics canvas on which 2D graphics can be drawn using types from the `Microsoft.Maui.Graphics` namespace. For more information about `Microsoft.Maui.Graphics`, see [Graphics](~/user-interface/graphics/index.md).
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.GraphicsView> is a graphics canvas on which 2D graphics can be drawn using types from the <xref:Microsoft.Maui.Graphics> namespace. For more information about <xref:Microsoft.Maui.Graphics>, see [Graphics](~/user-interface/graphics/index.md).
 
 <xref:Microsoft.Maui.Controls.GraphicsView> defines the `Drawable` property, of type `IDrawable`, which specifies the content that will be drawn. This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty>, which means it can be the target of data binding, and styled.
 
@@ -93,7 +93,7 @@ graphicsView.Invalidate();
 <!--
 ## Convert the drawable to an image
 
-Graphical objects that are drawn on a <xref:Microsoft.Maui.Controls.GraphicsView> can be converted to an image by the `ToImage` method, which is available in the `Microsoft.Maui.Graphics` namespace. This method requires `width` and `height` arguments, of type `float`, that specify the dimensions of the image.
+Graphical objects that are drawn on a <xref:Microsoft.Maui.Controls.GraphicsView> can be converted to an image by the `ToImage` method, which is available in the <xref:Microsoft.Maui.Graphics> namespace. This method requires `width` and `height` arguments, of type `float`, that specify the dimensions of the image.
 
 The `ToImage` method operates on an `IDrawable` object, which is exposed by the `GraphicsView.Drawable` property. Therefore, to call the `ToImage` method on a <xref:Microsoft.Maui.Controls.GraphicsView>, the <xref:Microsoft.Maui.Controls.GraphicsView> must be named with the `x:Name` attribute:
 
@@ -110,4 +110,4 @@ In code, the `Drawable` property of the <xref:Microsoft.Maui.Controls.GraphicsVi
 IImage image = graphicsView.Drawable.ToImage(400, 500);
 ```
 
-For information about image handling in `Microsoft.Maui.Graphics`, see [Images](~/user-interface/graphics/images.md). -->
+For information about image handling in <xref:Microsoft.Maui.Graphics>, see [Images](~/user-interface/graphics/images.md). -->

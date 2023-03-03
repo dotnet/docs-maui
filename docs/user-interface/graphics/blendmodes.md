@@ -63,7 +63,7 @@ The colored destination and source rectangles effectively divide the display sur
 
 The upper-right and lower-left rectangles are always blank because both the destination and source are transparent in those areas. The destination color occupies the upper-left area, so that area can either be colored with the destination color or not at all. Similarly, the source color occupies the lower-right area, so that area can be colored with the source color or not at all.
 
-The following table lists the Porter-Duff blend modes provided by `Microsoft.Maui.Graphics`, and how they color each of the three non-blank areas in the diagram above:
+The following table lists the Porter-Duff blend modes provided by <xref:Microsoft.Maui.Graphics>, and how they color each of the three non-blank areas in the diagram above:
 
 | Blend mode        | Destination | Intersection | Source |
 |-------------------|-------------|--------------|--------|
