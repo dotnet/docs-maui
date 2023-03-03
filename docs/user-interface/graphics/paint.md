@@ -96,7 +96,7 @@ if (image != null)
 ```
 
 > [!WARNING]
-> The `PlatformImage` type isn't supported on Windows.
+> The <xref:Microsoft.Maui.Graphics.Platform.PlatformImage> type isn't supported on Windows.
 
 In this example, the image is retrieved from the assembly and loaded as a stream. The image is resized using the <xref:Microsoft.Maui.Graphics.IImage.Downsize%2a> method, with the argument specifying that its largest dimension should be set to 100 pixels. For more information about downsizing an image, see [Downsize an image](~/user-interface/graphics/images.md#downsize-an-image).
 

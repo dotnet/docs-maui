@@ -12,17 +12,17 @@ ms.date: 04/22/2022
 
 Images are represented by the <xref:Microsoft.Maui.Graphics.IImage> type, which defines the following properties:
 
-- `Width`, of type `float`, that defines the width of an image.
-- `Height`, of type `float`, that defines the height of an image.
+- <xref:Microsoft.Maui.Graphics.IImage.Width>, of type `float`, that defines the width of an image.
+- <xref:Microsoft.Maui.Graphics.IImage.Height>, of type `float`, that defines the height of an image.
 
-An optional `ImageFormat` argument can be specified when loading and saving images. The `ImageFormat` enumeration defines `Png`, `Jpeg`, `Gif`, `Tiff`, and `Bmp` members. However, this argument is only used when the image format is supported by the underlying platform.
+An optional <xref:Microsoft.Maui.Graphics.ImageFormat> argument can be specified when loading and saving images. The <xref:Microsoft.Maui.Graphics.ImageFormat> enumeration defines `Png`, `Jpeg`, `Gif`, `Tiff`, and `Bmp` members. However, this argument is only used when the image format is supported by the underlying platform.
 
 > [!NOTE]
 > .NET MAUI contains two different `IImage` interfaces. `Microsoft.Maui.Graphics.IImage` is used for image display, manipulation, and persistence in when displaying graphics in a <xref:Microsoft.Maui.Controls.GraphicsView>. `Microsoft.Maui.IImage` is the interface that abstracts the <xref:Microsoft.Maui.Controls.Image> control.
 
 ## Load an image
 
-Image loading functionality is provided by the `PlatformImage` class. Images can be loaded from a stream by the `FromStream` method, or from a byte array using the `PlatformImage` constructor.
+Image loading functionality is provided by the <xref:Microsoft.Maui.Graphics.Platform.PlatformImage> class. Images can be loaded from a stream by the <xref:Microsoft.Maui.Graphics.Platform.PlatformImage.FromStream%2A> method, or from a byte array using the <xref:Microsoft.Maui.Graphics.Platform.PlatformImage> constructor.
 
 The following example shows how to load an image:
 
@@ -44,7 +44,7 @@ if (image != null)
 ```
 
 > [!WARNING]
-> The `PlatformImage` type isn't supported on Windows.
+> The <xref:Microsoft.Maui.Graphics.Platform.PlatformImage> type isn't supported on Windows.
 
 In this example, the image is retrieved from the assembly, loaded as a stream, and displayed.
 
@@ -53,12 +53,12 @@ In this example, the image is retrieved from the assembly, loaded as a stream, a
 
 ## Resize an image
 
-Images can be resized using the `IImage.Resize` method, which requires `width` and `height` arguments, of type `float`, which represent the target dimensions of the image. The `Resize` method also accepts two optional arguments:
+Images can be resized using the <xref:Microsoft.Maui.Graphics.IImage.Resize%2A> method, which requires `width` and `height` arguments, of type `float`, which represent the target dimensions of the image. The <xref:Microsoft.Maui.Graphics.IImage.Resize%2A> method also accepts two optional arguments:
 
-- A `ResizeMode` argument, that controls how the image will be resized to fit its target dimensions.
+- A <xref:Microsoft.Maui.Graphics.ResizeMode> argument, that controls how the image will be resized to fit its target dimensions.
 - A `bool` argument that controls whether the source image will be disposed after performing the resize operation. This argument defaults to `false`, indicating that the source image won't be disposed.
 
-The `ResizeMode` enumeration defines the following members, which specify how to resize the image to the target size:
+The <xref:Microsoft.Maui.Graphics.ResizeMode> enumeration defines the following members, which specify how to resize the image to the target size:
 
 - `Fit`, which letterboxes the image so that it fits its target size.
 - `Bleed`, which clips the image so that it fits its target size, while preserving its aspect ratio.
@@ -85,15 +85,15 @@ if (image != null)
 ```
 
 > [!WARNING]
-> The `PlatformImage` type isn't supported on Windows.
+> The <xref:Microsoft.Maui.Graphics.Platform.PlatformImage> type isn't supported on Windows.
 
-In this example, the image is retrieved from the assembly and loaded as a stream. The image is resized using the `Resize` method, with its arguments specifying the new size, and that it should be stretched to fill the available space. In addition, the source image is disposed. The resized image is then drawn at actual size at (10,10).
+In this example, the image is retrieved from the assembly and loaded as a stream. The image is resized using the <xref:Microsoft.Maui.Graphics.IImage.Resize%2A> method, with its arguments specifying the new size, and that it should be stretched to fill the available space. In addition, the source image is disposed. The resized image is then drawn at actual size at (10,10).
 
 ## Downsize an image
 
-Images can be downsized by one of the `IImage.Downsize` overloads. The first overload requires a single `float` value that represents the maximum width or height of the image, and downsizes the image while maintaining its aspect ratio. The second overload requires two `float` arguments, that represent the maximum width and maximum height of the image.
+Images can be downsized by one of the <xref:Microsoft.Maui.Graphics.IImage.Downsize%2A> overloads. The first overload requires a single `float` value that represents the maximum width or height of the image, and downsizes the image while maintaining its aspect ratio. The second overload requires two `float` arguments, that represent the maximum width and maximum height of the image.
 
-The `Downsize` overloads also accept an optional `bool` argument that controls whether the source image should be disposed after performing the downsizing operation. This argument defaults to `false`, indicating that the source image won't be disposed.
+The <xref:Microsoft.Maui.Graphics.IImage.Downsize%2A> overloads also accept an optional `bool` argument that controls whether the source image should be disposed after performing the downsizing operation. This argument defaults to `false`, indicating that the source image won't be disposed.
 
 The following example shows how to downsize an image:
 
@@ -116,13 +116,13 @@ if (image != null)
 ```
 
 > [!WARNING]
-> The `PlatformImage` type isn't supported on Windows.
+> The <xref:Microsoft.Maui.Graphics.Platform.PlatformImage> type isn't supported on Windows.
 
-In this example, the image is retrieved from the assembly and loaded as a stream. The image is downsized using the `Downsize` method, with the argument specifying that its largest dimension should be set to 100 pixels. In addition, the source image is disposed. The downsized image is then drawn at actual size at (10,10).
+In this example, the image is retrieved from the assembly and loaded as a stream. The image is downsized using the <xref:Microsoft.Maui.Graphics.IImage.Downsize%2A> method, with the argument specifying that its largest dimension should be set to 100 pixels. In addition, the source image is disposed. The downsized image is then drawn at actual size at (10,10).
 
 ## Save an image
 
-Images can be saved by the `IImage.Save` and `IImage.SaveAsync` methods. Each method saves the `IImage` to a `Stream`, and enables optional `ImageFormat` and quality values to be specified.
+Images can be saved by the <xref:Microsoft.Maui.Graphics.IImage.Save%2A> and <xref:Microsoft.Maui.Graphics.IImage.SaveAsync%2A> methods. Each method saves the <xref:Microsoft.Maui.Graphics.IImage> to a <xref:System.IO.Stream>, and enables optional <xref:Microsoft.Maui.Graphics.ImageFormat> and quality values to be specified.
 
 The following example shows how to save an image:
 
@@ -149,6 +149,6 @@ if (image != null)
 ```
 
 > [!WARNING]
-> The `PlatformImage` type isn't supported on Windows.
+> The <xref:Microsoft.Maui.Graphics.Platform.PlatformImage> type isn't supported on Windows.
 
-In this example, the image is retrieved from the assembly and loaded as a stream. The image is downsized using the `Downsize` method, with the argument specifying that its largest dimension should be set to 150 pixels. In addition, the source image is disposed. The downsized image is then saved to a stream.
+In this example, the image is retrieved from the assembly and loaded as a stream. The image is downsized using the <xref:Microsoft.Maui.Graphics.IImage.Downsize%2A> method, with the argument specifying that its largest dimension should be set to 150 pixels. In addition, the source image is disposed. The downsized image is then saved to a stream.

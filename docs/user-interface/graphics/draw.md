@@ -299,7 +299,7 @@ if (image != null)
 ```
 
 > [!WARNING]
-> The `PlatformImage` type isn't supported on Windows.
+> The <xref:Microsoft.Maui.Graphics.Platform.PlatformImage> type isn't supported on Windows.
 
 In this example, an image is retrieved from the assembly and loaded as a stream. It's then drawn at actual size at (10,10):
 
@@ -538,7 +538,7 @@ if (image != null)
 ```
 
 > [!WARNING]
-> The `PlatformImage` type isn't supported on Windows.
+> The <xref:Microsoft.Maui.Graphics.Platform.PlatformImage> type isn't supported on Windows.
 
 In this example, the image is clipped using a <xref:Microsoft.Maui.Graphics.PathF> object that defines a circle that's centered at (100,90) with a radius of 80. The result is that only the part of the image within the circle is visible:
 
@@ -568,7 +568,7 @@ if (image != null)
 ```
 
 > [!WARNING]
-> The `PlatformImage` type isn't supported on Windows.
+> The <xref:Microsoft.Maui.Graphics.Platform.PlatformImage> type isn't supported on Windows.
 
 In this example, the area defined by the rectangle that's specified by the arguments supplied to the `SubtractFromClip` method is clipped from the image. The result is that only the parts of the image outside the rectangle are visible:
 
