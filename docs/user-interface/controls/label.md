@@ -254,7 +254,7 @@ The following example shows transforming text to uppercase:
 - `FontFamily`, of type `string`, defines the font family.
 - `FontSize`, of type `double`, defines the font size.
 - `LineHeight`, of type `double`, specifies the multiplier to apply to the default line height when displaying text.
-- `Style`, of type `Style`, which is the style to apply to the span.
+- `Style`, of type <xref:Microsoft.Maui.Controls.Style>, which is the style to apply to the span.
 - `Text`, of type `string`, defines the text displayed as the content of the <xref:Microsoft.Maui.Controls.Span>.
 - `TextColor`, of type `Color`, defines the color of the displayed text.
 - `TextDecorations`, of type `TextDecorations`, specifies the text decorations (underline and strikethrough) that can be applied.

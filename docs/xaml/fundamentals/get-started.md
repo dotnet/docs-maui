@@ -87,7 +87,7 @@ Many shortcuts exist to set the values of these properties. Some properties are 
 For properties of more complex types, however, converters are used for parsing the XAML. These are classes in .NET MAUI that derive from `TypeConverter`. For the example above, several .NET MAUI converters are automatically applied to convert string values to their correct type:
 
 - `LayoutOptionsConverter` for the `VerticalOptions` property. This converter converts the names of public static fields of the `LayoutOptions` structure to values of type `LayoutOptions`.
-- `ColorTypeConverter` for the `TextColor` property. This converter converts the names of public static fields of the `Colors` structure or hexadecimal RGB values, with or without an alpha channel.
+- `ColorTypeConverter` for the `TextColor` property. This converter converts the names of public static fields of the <xref:Microsoft.Maui.Graphics.Colors> class or hexadecimal RGB values, with or without an alpha channel.
 
 ## Page navigation
 

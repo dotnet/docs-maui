@@ -84,7 +84,7 @@ There are a number of approaches that can be used to load a style sheet.
 
 ### Load a style sheet in XAML
 
-A style sheet can be loaded and parsed with the `StyleSheet` class before being added to a `ResourceDictionary`:
+A style sheet can be loaded and parsed with the `StyleSheet` class before being added to a <xref:Microsoft.Maui.Controls.ResourceDictionary>:
 
 ```xaml
 <Application ...>
@@ -99,7 +99,7 @@ The `StyleSheet.Source` property specifies the style sheet as a URI relative to 
 > [!WARNING]
 > The CSS file will fail to load if its build action is not set to **MauiCss**.
 
-Alternatively, a style sheet can be loaded and parsed with the `StyleSheet` class, before being added to a `ResourceDictionary`, by inlining it in a `CDATA` section:
+Alternatively, a style sheet can be loaded and parsed with the `StyleSheet` class, before being added to a <xref:Microsoft.Maui.Controls.ResourceDictionary>, by inlining it in a `CDATA` section:
 
 ```xaml
 <ContentPage ...>
@@ -120,7 +120,7 @@ For more information about resource dictionaries, see [Resource dictionaries](~/
 
 ### Load a style sheet in C\#
 
-In C#, a style sheet can be loaded from a `StringReader` and added to a `ResourceDictionary`:
+In C#, a style sheet can be loaded from a `StringReader` and added to a <xref:Microsoft.Maui.Controls.ResourceDictionary>:
 
 ```csharp
 using Microsoft.Maui.Controls.StyleSheets;

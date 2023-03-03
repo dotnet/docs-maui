@@ -39,7 +39,7 @@ The `AppThemeBinding` markup extension enables you to consume a resource, such a
 
 In this example, the text color of the first <xref:Microsoft.Maui.Controls.Label> is set to green when the device is using its light theme, and is set to red when the device is using its dark theme. Similarly, the <xref:Microsoft.Maui.Controls.Image> displays a different image file based upon the current system theme.
 
-In addition, resources defined in a `ResourceDictionary` can be consumed with the `StaticResource` markup extension:
+In addition, resources defined in a <xref:Microsoft.Maui.Controls.ResourceDictionary> can be consumed with the `StaticResource` markup extension:
 
 ```xaml
 <ContentPage ...>

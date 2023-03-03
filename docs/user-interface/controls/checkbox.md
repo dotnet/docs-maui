@@ -122,7 +122,7 @@ The following screenshot shows a series of checked <xref:Microsoft.Maui.Controls
 
 ## CheckBox visual states
 
-<xref:Microsoft.Maui.Controls.CheckBox> has an `IsChecked` `VisualState` that can be used to initiate a visual change to the <xref:Microsoft.Maui.Controls.CheckBox> when it becomes checked.
+<xref:Microsoft.Maui.Controls.CheckBox> has an `IsChecked` <xref:Microsoft.Maui.Controls.VisualState> that can be used to initiate a visual change to the <xref:Microsoft.Maui.Controls.CheckBox> when it becomes checked.
 
 The following XAML example shows how to define a visual state for the `IsChecked` state:
 
@@ -148,6 +148,6 @@ The following XAML example shows how to define a visual state for the `IsChecked
 </CheckBox>
 ```
 
-In this example, the `IsChecked` `VisualState` specifies that when the <xref:Microsoft.Maui.Controls.CheckBox> is checked, its `Color` property will be set to green. The `Normal` `VisualState` specifies that when the <xref:Microsoft.Maui.Controls.CheckBox> is in a normal state, its `Color` property will be set to red. Therefore, the overall effect is that the <xref:Microsoft.Maui.Controls.CheckBox> is red when it's empty, and green when it's checked.
+In this example, the `IsChecked` <xref:Microsoft.Maui.Controls.VisualState> specifies that when the <xref:Microsoft.Maui.Controls.CheckBox> is checked, its `Color` property will be set to green. The `Normal` <xref:Microsoft.Maui.Controls.VisualState> specifies that when the <xref:Microsoft.Maui.Controls.CheckBox> is in a normal state, its `Color` property will be set to red. Therefore, the overall effect is that the <xref:Microsoft.Maui.Controls.CheckBox> is red when it's empty, and green when it's checked.
 
 For more information about visual states, see [Visual states](~/user-interface/visual-states.md).
