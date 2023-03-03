@@ -150,6 +150,8 @@ The process for creating a custom layout in .NET MAUI involves creating an <xref
 
 For more information, see [Custom layout examples](https://github.com/hartez/CustomLayoutExamples).
 
+<!-- TODO: Replace the link above with one to a custom layout doc, once the content is written -->
+
 ### Device changes
 
 Xamarin.Forms has a <xref:Xamarin.Forms.Device?displayProperty=fullName> class that helps you to interact with the device and platform the app is running on. The equivalent class in .NET MAUI, <xref:Microsoft.Maui.Controls.Device?displayProperty=fullName>, is deprecated and its functionality is replaced by multiple types.
@@ -215,11 +217,11 @@ A small number of other APIs have been consolidated in the move from Xamarin.For
 > | <xref:Xamarin.Forms.Frame.OutlineColor?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.Frame.BorderColor?displayProperty=fullName> |  |
 > | <xref:Xamarin.Forms.IQueryAttributable.ApplyQueryAttributes%2A?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.IQueryAttributable.ApplyQueryAttributes%2A?displayProperty=fullName> | In Xamarin.Forms, the `ApplyQueryAttributes` method accepts an `IDictionary<string, string>` argument. In .NET MAUI, the `ApplyQueryAttributes` method accepts an `IDictionary<string, object>` argument.  |
 > | <xref:Xamarin.Forms.MenuItem.Icon?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.MenuItem.IconImageSource?displayProperty=fullName> | <xref:Xamarin.Forms.MenuItem.Icon?displayProperty=fullName> is the base class for <xref:Xamarin.Forms.ToolbarItem?displayProperty=fullName>, and so `ToolbarItem.Icon` becomes `ToolbarItem.IconImageSource`. |
+> | <xref:Xamarin.Forms.OrientationStateTrigger.Orientation%?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.OrientationStateTrigger.Orientation?displayProperty=fullName> | In Xamarin.Forms, the `OrientationStateTrigger.Orientation` property is of type <xref:Xamarin.Forms.Internals.DeviceOrientation>. In .NET MAUI, the `OrientationStateTrigger.Orientation` property is of type <xref:Microsoft.Maui.Devices.DisplayOrientation>. |
 > | <xref:Xamarin.Forms.OSAppTheme?displayProperty=fullName> | <xref:Microsoft.Maui.ApplicationModel.AppTheme?displayProperty=fullName> |  |
 > | <xref:Xamarin.Forms.Span.ForegroundColor?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.Span.TextColor?displayProperty=fullName> |  |
 > | <xref:Xamarin.Forms.ToolbarItem.Name?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.MenuItem.Text?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.MenuItem.Text?displayProperty=fullName> is the base class for <xref:Microsoft.Maui.Controls.ToolbarItem?displayProperty=fullName>, and so `ToolbarItem.Name` becomes `ToolbarItem.Text`. |
 
-<!-- TODO: Replace the link above with one to a custom layout doc, once the content is written -->
 ### Native forms changes
 
 [Native forms](/xamarin/xamarin-forms/platform/native-forms) in Xamarin.Forms has become native embedding in .NET MAUI, and uses a different initialization approach and different extension methods to convert cross-platform controls to their native types. For more information, see [Native embedding](~/platform-integration/native-embedding.md).
