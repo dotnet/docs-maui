@@ -39,7 +39,7 @@ namespace MyMauiApp
 }
 ```
 
-The `Draw` method has `ICanvas` and `RectF` arguments. The `ICanvas` argument is the drawing canvas on which you draw graphical objects. The `RectF` argument is a `struct` that contains data about the size and location of the drawing canvas. For more information about drawing on an `ICanvas`, see [Draw graphical objects](~/user-interface/graphics/draw.md).
+The `Draw` method has <xref:Microsoft.Maui.Graphics.ICanvas> and `RectF` arguments. The <xref:Microsoft.Maui.Graphics.ICanvas> argument is the drawing canvas on which you draw graphical objects. The `RectF` argument is a `struct` that contains data about the size and location of the drawing canvas. For more information about drawing on an <xref:Microsoft.Maui.Graphics.ICanvas>, see [Draw graphical objects](~/user-interface/graphics/draw.md).
 
 In XAML, the `IDrawable` object should be declared as a resource, and then consumed by a <xref:Microsoft.Maui.Controls.GraphicsView> by specifying its key:
 
@@ -61,7 +61,7 @@ In XAML, the `IDrawable` object should be declared as a resource, and then consu
 
 ## Position and size graphical objects
 
-The location and size of the `ICanvas` on a page can be determined by examining properties of the `RectF` argument in the `Draw` method.
+The location and size of the <xref:Microsoft.Maui.Graphics.ICanvas> on a page can be determined by examining properties of the `RectF` argument in the `Draw` method.
 
 The `RectF` struct defines the following properties:
 
@@ -78,7 +78,7 @@ The `RectF` struct defines the following properties:
 - `X`, of type `float`, which defines the x-coordinate of the upper-left corner of the canvas.
 - `Y`, of type `float`, which defines the y-coordinate of the upper-left corner of the canvas.
 
-These properties can be used to position and size graphical objects on the `ICanvas`. For example, graphical objects can be placed at the center of the `Canvas` by using the `Center.X` and `Center.Y` values as arguments to a drawing method. For information about drawing on an `ICanvas`, see [Draw graphical objects](~/user-interface/graphics/draw.md).
+These properties can be used to position and size graphical objects on the <xref:Microsoft.Maui.Graphics.ICanvas>. For example, graphical objects can be placed at the center of the `Canvas` by using the `Center.X` and `Center.Y` values as arguments to a drawing method. For information about drawing on an <xref:Microsoft.Maui.Graphics.ICanvas>, see [Draw graphical objects](~/user-interface/graphics/draw.md).
 
 ## Invalidate the canvas
 

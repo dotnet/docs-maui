@@ -37,28 +37,29 @@ By default, .NET MAUI uses the native graphics capabilities of each platform. --
 
 ## Drawing canvas
 
-In .NET MAUI, the <xref:Microsoft.Maui.Controls.GraphicsView> enables consumption of the <xref:Microsoft.Maui.Graphics> functionality, via a drawing canvas that's exposed as an `ICanvas` object. For more information about the <xref:Microsoft.Maui.Controls.GraphicsView>, see [GraphicsView](~/user-interface/controls/graphicsview.md).
+In .NET MAUI, the <xref:Microsoft.Maui.Controls.GraphicsView> enables consumption of the <xref:Microsoft.Maui.Graphics> functionality, via a drawing canvas that's exposed as an <xref:Microsoft.Maui.Graphics.ICanvas> object. For more information about the <xref:Microsoft.Maui.Controls.GraphicsView>, see [GraphicsView](~/user-interface/controls/graphicsview.md).
 
-`ICanvas` defines the following properties that affect the appearance of objects that are drawn on the canvas:
+<xref:Microsoft.Maui.Graphics.ICanvas> defines the following properties that affect the appearance of objects that are drawn on the canvas:
 
 <!-- Todo: Font properties being renamed. Some property types may change -->
 
-- `Alpha`, of type `float`, indicates the opacity of an object.
-- `Antialias`, of type `bool`, specifies whether anti-aliasing is enabled.
-- `BlendMode`, of type `BlendMode`, defines the blend mode, which determines what happens when an object is rendered on top of an existing object.
-- `DisplayScale`, of type `float`, represents the scaling factor to scale the UI by on a canvas.
-- `FillColor`, of type `Color`, indicates the color used to paint an object's interior.
-- `Font`, of type `IFont`, defines the font when drawing text.
-- `FontColor`, of type `Color`, specifies the font color when drawing text.
-- `FontSize`, of type `float`, defines the size of the font when drawing text.
-- `MiterLimit`, of type `float`, specifies the limit of the miter length of line joins in an object.
-- `StrokeColor`, of type `Color`, indicates the color used to paint an object's outline.
-- `StrokeDashPattern`, of type `float[]`, specifies the pattern of dashes and gaps that are used to outline an object.
-- `StrokeLineCap`, of type `LineCap`, describes the shape at the start and end of a line.
-- `StrokeLineJoin`, of type `LineJoin`, specifies the type of join that is used at the vertices of a shape.
-- `StrokeSize`, of type `float`, indicates the width of an object's outline.
+- <xref:Microsoft.Maui.Graphics.ICanvas.Alpha>, of type `float`, indicates the opacity of an object.
+- <xref:Microsoft.Maui.Graphics.ICanvas.Antialias>, of type `bool`, specifies whether anti-aliasing is enabled.
+- <xref:Microsoft.Maui.Graphics.ICanvas.BlendMode>, of type `BlendMode`, defines the blend mode, which determines what happens when an object is rendered on top of an existing object.
+- <xref:Microsoft.Maui.Graphics.ICanvas.DisplayScale>, of type `float`, represents the scaling factor to scale the UI by on a canvas.
+- <xref:Microsoft.Maui.Graphics.ICanvas.FillColor>, of type `Color`, indicates the color used to paint an object's interior.
+- <xref:Microsoft.Maui.Graphics.ICanvas.Font>, of type `IFont`, defines the font when drawing text.
+- <xref:Microsoft.Maui.Graphics.ICanvas.FontColor>, of type `Color`, specifies the font color when drawing text.
+- <xref:Microsoft.Maui.Graphics.ICanvas.FontSize>, of type `float`, defines the size of the font when drawing text.
+- <xref:Microsoft.Maui.Graphics.ICanvas.MiterLimit>, of type `float`, specifies the limit of the miter length of line joins in an object.
+- <xref:Microsoft.Maui.Graphics.ICanvas.StrokeColor>, of type `Color`, indicates the color used to paint an object's outline.
+- <xref:Microsoft.Maui.Graphics.ICanvas.StrokeDashOffset>, of type `float`, specifies the distance within the dash pattern where a dash begins.
+- <xref:Microsoft.Maui.Graphics.ICanvas.StrokeDashPattern>, of type `float[]`, specifies the pattern of dashes and gaps that are used to outline an object.
+- <xref:Microsoft.Maui.Graphics.ICanvas.StrokeLineCap>, of type `LineCap`, describes the shape at the start and end of a line.
+- <xref:Microsoft.Maui.Graphics.ICanvas.StrokeLineJoin>, of type `LineJoin`, specifies the type of join that is used at the vertices of a shape.
+- <xref:Microsoft.Maui.Graphics.ICanvas.StrokeSize>, of type `float`, indicates the width of an object's outline.
 
-By default, an `ICanvas` sets `StrokeSize` to 1, `StrokeColor` to black, `StrokeLineJoin` to `LineJoin.Miter`, and `StrokeLineCap` to `LineJoin.Cap`.
+By default, an <xref:Microsoft.Maui.Graphics.ICanvas> sets <xref:Microsoft.Maui.Graphics.ICanvas.StrokeSize> to 1, <xref:Microsoft.Maui.Graphics.ICanvas.StrokeColor> to black, <xref:Microsoft.Maui.Graphics.ICanvas.StrokeLineJoin> to `LineJoin.Miter`, and <xref:Microsoft.Maui.Graphics.ICanvas.StrokeLineCap> to `LineJoin.Cap`.
 
 ### Drawing canvas state
 
@@ -66,11 +67,11 @@ The drawing canvas on each platform has the ability to maintain its state. This 
 
 However, not all elements of the canvas are elements of the graphics state. The graphics state does not include drawing objects, such as paths, and paint objects, such as gradients. Typical elements of the graphics state on each platform include stroke and fill data, and font data.
 
-The graphics state of each `ICanvas` can be manipulated with the following methods:
+The graphics state of each <xref:Microsoft.Maui.Graphics.ICanvas> can be manipulated with the following methods:
 
-- `SaveState`, which saves the current graphics state.
-- `RestoreState`, which sets the graphics state to the most recently saved state.
-- `ResetState`, which resets the graphics state to its default values.
+- <xref:Microsoft.Maui.Graphics.ICanvas.SaveState%2A>, which saves the current graphics state.
+- <xref:Microsoft.Maui.Graphics.ICanvas.RestoreState%2A>, which sets the graphics state to the most recently saved state.
+- <xref:Microsoft.Maui.Graphics.ICanvas.ResetState%2A>, which resets the graphics state to its default values.
 
 > [!NOTE]
 > The state that's persisted by these methods is platform dependent.

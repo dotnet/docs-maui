@@ -17,7 +17,7 @@ The `Paint` class is an abstract class that paints an object with its output. Cl
 - `PatternPaint`, which paints an object with a pattern. For more information, see [Paint a pattern](#paint-a-pattern).
 - `GradientPaint`, which paints an object with a gradient. For more information, see [Paint a gradient](#paint-a-gradient).
 
-Instances of these types can be painted on an `ICanvas`, typically by using the `SetFillPaint` method to set the paint as the fill of a graphical object.
+Instances of these types can be painted on an <xref:Microsoft.Maui.Graphics.ICanvas>, typically by using the `SetFillPaint` method to set the paint as the fill of a graphical object.
 
 The `Paint` class also defines `BackgroundColor`, and `ForegroundColor` properties, of type `Color`, that can be used to optionally define background and foreground colors for a `Paint` object.
 

@@ -8,16 +8,16 @@ ms.date: 12/16/2021
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-graphicsview)
 
-.NET Multi-platform App UI (.NET MAUI) graphics, in the <xref:Microsoft.Maui.Graphics> namespace, enables you to draw graphical objects on a canvas that's defined as an `ICanvas` object.
+.NET Multi-platform App UI (.NET MAUI) graphics, in the <xref:Microsoft.Maui.Graphics> namespace, enables you to draw graphical objects on a canvas that's defined as an <xref:Microsoft.Maui.Graphics.ICanvas> object.
 
-The .NET MAUI <xref:Microsoft.Maui.Controls.GraphicsView> control provides access to an `ICanvas` object, on which properties can be set and methods invoked to draw graphical objects. For more information about the <xref:Microsoft.Maui.Controls.GraphicsView>, see [GraphicsView](~/user-interface/controls/graphicsview.md).
+The .NET MAUI <xref:Microsoft.Maui.Controls.GraphicsView> control provides access to an <xref:Microsoft.Maui.Graphics.ICanvas> object, on which properties can be set and methods invoked to draw graphical objects. For more information about the <xref:Microsoft.Maui.Controls.GraphicsView>, see [GraphicsView](~/user-interface/controls/graphicsview.md).
 
 > [!IMPORTANT]
-> Graphical objects are drawn on an `ICanvas` in units of pixels.
+> Graphical objects are drawn on an <xref:Microsoft.Maui.Graphics.ICanvas> in units of pixels.
 
 ## Draw a line
 
-Lines can be drawn on an `ICanvas` using the `DrawLine` method, which requires four `float` arguments that represent the start and end points of the line.
+Lines can be drawn on an <xref:Microsoft.Maui.Graphics.ICanvas> using the `DrawLine` method, which requires four `float` arguments that represent the start and end points of the line.
 
 The following example shows how to draw a line:
 
@@ -51,7 +51,7 @@ For more information about dashed lines, see [Draw dashed objects](#draw-dashed-
 
 ## Draw an ellipse
 
-Ellipses and circles can be drawn on an `ICanvas` using the `DrawEllipse` method, which requires `x`, `y`, `width`, and `height` arguments, of type `float`.
+Ellipses and circles can be drawn on an <xref:Microsoft.Maui.Graphics.ICanvas> using the `DrawEllipse` method, which requires `x`, `y`, `width`, and `height` arguments, of type `float`.
 
 The following example shows how to draw an ellipse:
 
@@ -93,16 +93,16 @@ In this example, a red filled ellipse with dimensions 150x50 is drawn at (10,10)
 
 :::image type="content" source="media/draw/filled-ellipse.png" alt-text="Screenshot of a red filled ellipse.":::
 
-The `FillColor` property of the `ICanvas` object must be set to a `Color` before invoking the `FillEllipse` method.
+The `FillColor` property of the <xref:Microsoft.Maui.Graphics.ICanvas> object must be set to a `Color` before invoking the `FillEllipse` method.
 
-Filled circles can also be drawn with the `FillCircle` method.
+Filled circles can also be drawn with the <xref:Microsoft.Maui.Graphics.ICanvas.FillCircle%2A> method.
 
 > [!NOTE]
-> There are `DrawEllipse` and `FillEllipse` overloads that take `Rect` and `RectF` arguments. In addition, there are also `DrawCircle` and `FillCircle` overloads.
+> There are `DrawEllipse` and `FillEllipse` overloads that take `Rect` and `RectF` arguments. In addition, there are also `DrawCircle` and <xref:Microsoft.Maui.Graphics.ICanvas.FillCircle%2A> overloads.
 
 ## Draw a rectangle
 
-Rectangles and squares can be drawn on an `ICanvas` using the `DrawRectangle` method, which requires `x`, `y`, `width`, and `height` arguments, of type `float`.
+Rectangles and squares can be drawn on an <xref:Microsoft.Maui.Graphics.ICanvas> using the `DrawRectangle` method, which requires `x`, `y`, `width`, and `height` arguments, of type `float`.
 
 The following example shows how to draw a rectangle:
 
@@ -141,14 +141,14 @@ In this example, a dark blue filled rectangle with dimensions 100x50 is drawn at
 
 :::image type="content" source="media/draw/filled-rectangle.png" alt-text="Screenshot of a dark blue filled rectangle.":::
 
-The `FillColor` property of the `ICanvas` object must be set to a `Color` before invoking the `FillRectangle` method.
+The `FillColor` property of the <xref:Microsoft.Maui.Graphics.ICanvas> object must be set to a `Color` before invoking the `FillRectangle` method.
 
 > [!NOTE]
 > There are `DrawRectangle` and `FillRectangle` overloads that take `Rect` and `RectF` arguments.
 
 ## Draw a rounded rectangle
 
-Rounded rectangles and squares can be drawn on an `ICanvas` using the `DrawRoundedRectangle` method, which requires `x`, `y`, `width`, `height`, and `cornerRadius` arguments, of type `float`. The `cornerRadius` argument specifies the radius used to round the corners of the rectangle.
+Rounded rectangles and squares can be drawn on an <xref:Microsoft.Maui.Graphics.ICanvas> using the `DrawRoundedRectangle` method, which requires `x`, `y`, `width`, `height`, and `cornerRadius` arguments, of type `float`. The `cornerRadius` argument specifies the radius used to round the corners of the rectangle.
 
 The following example shows how to draw a rounded rectangle:
 
@@ -175,14 +175,14 @@ In this example, a green filled rectangle with rounded corners and dimensions 10
 
 :::image type="content" source="media/draw/filled-rounded-rectangle.png" alt-text="Screenshot of a green filled rounded rectangle.":::
 
-The `FillColor` property of the `ICanvas` object must be set to a `Color` before invoking the `FillRoundedRectangle` method.
+The `FillColor` property of the <xref:Microsoft.Maui.Graphics.ICanvas> object must be set to a `Color` before invoking the `FillRoundedRectangle` method.
 
 > [!NOTE]
 > There are `DrawRoundedRectangle` and `FillRoundedRectangle` overloads that take `Rect` and `RectF` arguments, and overloads that enable the radius of each corner to be separately specified.
 
 ## Draw an arc
 
-Arcs can be drawn on an `ICanvas` using the `DrawArc` method, which requires `x`, `y`, `width`, `height`, `startAngle`, and `endAngle` arguments of type `float`, and `clockwise` and `closed` arguments of type `bool`. The `startAngle` argument specifies the angle from the x-axis to the starting point of the arc. The `endAngle` argument specifies the angle from the x-axis to the end point of the arc. The `clockwise` argument specifies the direction in which the arc is drawn, and the `closed` argument specifies whether the end point of the arc will be connected to the start point.
+Arcs can be drawn on an <xref:Microsoft.Maui.Graphics.ICanvas> using the `DrawArc` method, which requires `x`, `y`, `width`, `height`, `startAngle`, and `endAngle` arguments of type `float`, and `clockwise` and `closed` arguments of type `bool`. The `startAngle` argument specifies the angle from the x-axis to the starting point of the arc. The `endAngle` argument specifies the angle from the x-axis to the end point of the arc. The `clockwise` argument specifies the direction in which the arc is drawn, and the `closed` argument specifies whether the end point of the arc will be connected to the start point.
 
 The following example shows how to draw an arc:
 
@@ -209,7 +209,7 @@ In this example, a filled teal arc of dimensions 100x100 is drawn at (10,10). Th
 
 :::image type="content" source="media/draw/filled-arc.png" alt-text="Screenshot of a filled teal arc.":::
 
-The `FillColor` property of the `ICanvas` object must be set to a `Color` before invoking the `FillArc` method.
+The `FillColor` property of the <xref:Microsoft.Maui.Graphics.ICanvas> object must be set to a `Color` before invoking the `FillArc` method.
 
 > [!NOTE]
 > There are `DrawArc` and `FillArc` overloads that take `Rect` and `RectF` arguments.
@@ -218,7 +218,7 @@ The `FillColor` property of the `ICanvas` object must be set to a `Color` before
 
 A path is a collection of one or more *contours*. Each contour is a collection of *connected* straight lines and curves. Contours are not connected to each other but they might visually overlap. Sometimes a single contour can overlap itself.
 
-Paths are used to draw curves and complex shapes and can be drawn on an `ICanvas` using the `DrawPath` method, which requires a `PathF` argument.
+Paths are used to draw curves and complex shapes and can be drawn on an <xref:Microsoft.Maui.Graphics.ICanvas> using the <xref:Microsoft.Maui.Graphics.ICanvas.DrawPath%2A> method, which requires a <xref:Microsoft.Maui.Graphics.PathF> argument.
 
 A contour generally begins with a call to the `PathF.MoveTo` method, which you can express either as a `PointF` value or as separate `x` and `y` coordinates. The `MoveTo` call establishes a point at the beginning of the contour and an initial current point. You can then call the following methods to continue the contour with a line or curve from the current point to a point specified in the method, which then becomes the new current point:
 
@@ -231,7 +231,7 @@ None of these methods contain all of the data necessary to describe the line or 
 
 A contour ends with another call to `MoveTo`, which begins a new contour, or a call to `Close`, which closes the contour. The `Close` method automatically appends a straight line from the current point to the first point of the contour, and marks the path as closed.
 
-The `PathF` class also defines other methods and properties. The following methods add entire contours to the path:
+The <xref:Microsoft.Maui.Graphics.PathF> class also defines other methods and properties. The following methods add entire contours to the path:
 
 - `AppendEllipse` appends a closed ellipse contour to the path.
 - `AppendCircle` appends a closed circle contour to the path.
@@ -255,7 +255,7 @@ In this example, a closed green triangle is drawn:
 
 :::image type="content" source="media/draw/path.png" alt-text="Screenshot of a closed green triangle.":::
 
-A filled path can be drawn with the `FillPath`, which also requires a `PathF` argument:
+A filled path can be drawn with the <xref:Microsoft.Maui.Graphics.ICanvas.FillPath%2A>, which also requires a <xref:Microsoft.Maui.Graphics.PathF> argument:
 
 ```csharp
 PathF path = new PathF();
@@ -270,14 +270,14 @@ In this example, a filled slate blue triangle is drawn:
 
 :::image type="content" source="media/draw/filled-path.png" alt-text="Screenshot of a filled slate blue triangle.":::
 
-The `FillColor` property of the `ICanvas` object must be set to a `Color` before invoking the `FillPath` method.
+The `FillColor` property of the <xref:Microsoft.Maui.Graphics.ICanvas> object must be set to a `Color` before invoking the <xref:Microsoft.Maui.Graphics.ICanvas.FillPath%2A> method.
 
 > [!IMPORTANT]
-> The `FillPath` method has an overload that enables a `WindingMode` to be specified, which sets the fill algorithm that's used. For more information, see [Winding modes](windingmodes.md).
+> The <xref:Microsoft.Maui.Graphics.ICanvas.FillPath%2A> method has an overload that enables a <xref:Microsoft.Maui.Graphics.WindingMode> to be specified, which sets the fill algorithm that's used. For more information, see [Winding modes](windingmodes.md).
 
 ## Draw an image
 
-Images can be drawn on an `ICanvas` using the `DrawImage` method, which requires an `IImage` argument, and `x`, `y`, `width`, and `height` arguments, of type `float`.
+Images can be drawn on an <xref:Microsoft.Maui.Graphics.ICanvas> using the `DrawImage` method, which requires an `IImage` argument, and `x`, `y`, `width`, and `height` arguments, of type `float`.
 
 The following example shows how to load an image and draw it to the canvas:
 
@@ -310,7 +310,7 @@ In this example, an image is retrieved from the assembly and loaded as a stream.
 
 ## Draw a string
 
-Strings can be drawn on an `ICanvas` using one of the `DrawString` overloads. The appearance of each string can be defined by setting the `Font`, `FontColor`, and `FontSize` properties. String alignment can be specified by horizontal and vertical alignment options that perform alignment within the string's bounding box.
+Strings can be drawn on an <xref:Microsoft.Maui.Graphics.ICanvas> using one of the `DrawString` overloads. The appearance of each string can be defined by setting the `Font`, `FontColor`, and `FontSize` properties. String alignment can be specified by horizontal and vertical alignment options that perform alignment within the string's bounding box.
 
 > [!NOTE]
 > The bounding box for a string is defined by its `x`, `y`, `width`, and `height` arguments.
@@ -346,7 +346,7 @@ For information about drawing shadows, see [Draw a shadow](#draw-a-shadow).
 
 ## Draw attributed text
 
-Attributed text can be drawn on an `ICanvas` using the `DrawText` method, which requires an `IAttributedText` argument, and `x`, `y`, `width`, and `height` arguments, of type `float`. Attributed text is a string with associated attributes for parts of its text, that typically represents styling data.
+Attributed text can be drawn on an <xref:Microsoft.Maui.Graphics.ICanvas> using the `DrawText` method, which requires an `IAttributedText` argument, and `x`, `y`, `width`, and `height` arguments, of type `float`. Attributed text is a string with associated attributes for parts of its text, that typically represents styling data.
 
 The following example shows how to draw attributed text:
 
@@ -390,7 +390,7 @@ canvas.FillPath(path);
 canvas.DrawPath(path);
 ```
 
-In this example, the stroke and fill colors for a `PathF` object are specified. The filled circle is drawn, then the outline stroke of the circle:
+In this example, the stroke and fill colors for a <xref:Microsoft.Maui.Graphics.PathF> object are specified. The filled circle is drawn, then the outline stroke of the circle:
 
 :::image type="content" source="media/draw/circle-outlined.png" alt-text="Screenshot of a circle drawn with fill and stroke.":::
 
@@ -399,7 +399,7 @@ In this example, the stroke and fill colors for a `PathF` object are specified. 
 
 ## Draw a shadow
 
-Graphical objects drawn on an `ICanvas` can have a shadow applied using the `SetShadow` method, which takes the following arguments:
+Graphical objects drawn on an <xref:Microsoft.Maui.Graphics.ICanvas> can have a shadow applied using the `SetShadow` method, which takes the following arguments:
 
 - `offset`, of type `SizeF`, specifies an offset for the shadow, which represents the position of a light source that creates the shadow.
 - `blur`, of type `float`, represents the amount of blur to apply to the shadow.
@@ -427,7 +427,7 @@ In these examples, shadows whose light sources are in different positions are ad
 
 ## Draw dashed objects
 
-`ICanvas` objects have a `StrokeDashPattern` property, of type `float[]`. This property is an array of `float` values that indicate the pattern of dashes and gaps that are to be used when drawing the stroke for an object. Each `float` in the array specifies the length of a dash or gap. The first item in the array specifies the length of a dash, while the second item in the array specifies the length of a gap. Therefore, `float` values with an even index value specify dashes, while `float` values with an odd index value specify gaps.
+<xref:Microsoft.Maui.Graphics.ICanvas> objects have a `StrokeDashPattern` property, of type `float[]`. This property is an array of `float` values that indicate the pattern of dashes and gaps that are to be used when drawing the stroke for an object. Each `float` in the array specifies the length of a dash or gap. The first item in the array specifies the length of a dash, while the second item in the array specifies the length of a gap. Therefore, `float` values with an even index value specify dashes, while `float` values with an odd index value specify gaps.
 
 The following example shows how to draw a dashed square, using a regular dash:
 
@@ -459,7 +459,7 @@ In this example, a square with an irregular dashed stroke is drawn:
 
 A line has three parts: start cap, line body, and end cap. The start and end caps describe the start and end of a line.
 
-`ICanvas` objects have a `StrokeLineCap` property, of type `LineCap`, that describes the start and end of a line. The `LineCap` enumeration defines the following members:
+<xref:Microsoft.Maui.Graphics.ICanvas> objects have a `StrokeLineCap` property, of type `LineCap`, that describes the start and end of a line. The `LineCap` enumeration defines the following members:
 
 - `Butt`, which represents a line with a square end, drawn to extend to the exact endpoint of the line. This is the default value of the `StrokeLineCap` property.
 - `Round`, which represents a line with a rounded end.
@@ -480,7 +480,7 @@ In this example, the red line is rounded at the start and end of the line:
 
 ## Control line joins
 
-`ICanvas` objects have a `StrokeLineJoin` property, of type `LineJoin`, that specifies the type of join that is used at the vertices of an object. The `LineJoin` enumeration defines the following members:
+<xref:Microsoft.Maui.Graphics.ICanvas> objects have a `StrokeLineJoin` property, of type `LineJoin`, that specifies the type of join that is used at the vertices of an object. The `LineJoin` enumeration defines the following members:
 
 - `Miter`, which represents angular vertices that produce a sharp or clipped corner. This is the default value of the `StrokeLineJoin` property.
 - `Round`, which represents rounded vertices that produce a circular arc at the corner.
@@ -503,15 +503,15 @@ canvas.StrokeLineJoin = LineJoin.Round;
 canvas.DrawPath(path);
 ```
 
-In this example, the blue `PathF` object has rounded joins at its vertices:
+In this example, the blue <xref:Microsoft.Maui.Graphics.PathF> object has rounded joins at its vertices:
 
 :::image type="content" source="media/draw/linejoin.png" alt-text="Screenshot of the effect of the three different LineJoin enumeration members." border="false":::
 
 ## Clip objects
 
-Graphical objects that are drawn to an `ICanvas` can be clipped prior to drawing, with the following methods:
+Graphical objects that are drawn to an <xref:Microsoft.Maui.Graphics.ICanvas> can be clipped prior to drawing, with the following methods:
 
-- `ClipPath` clips an object so that only the area that's within the region of a `PathF` object will be visible.
+- `ClipPath` clips an object so that only the area that's within the region of a <xref:Microsoft.Maui.Graphics.PathF> object will be visible.
 - `ClipRectangle` clips an object so that only the area that's within the region of a rectangle will be visible. The rectangle can be specified using `float` arguments, or by a `Rect` or `RectF` argument.
 - `SubtractFromClip` clips an object so that only the area that's outside the region of a rectangle will be visible. The rectangle can be specified using `float` arguments, or by a `Rect` or `RectF` argument.
 
@@ -540,12 +540,12 @@ if (image != null)
 > [!WARNING]
 > The `PlatformImage` type isn't supported on Windows.
 
-In this example, the image is clipped using a `PathF` object that defines a circle that's centered at (100,90) with a radius of 80. The result is that only the part of the image within the circle is visible:
+In this example, the image is clipped using a <xref:Microsoft.Maui.Graphics.PathF> object that defines a circle that's centered at (100,90) with a radius of 80. The result is that only the part of the image within the circle is visible:
 
 :::image type="content" source="media/draw/clippath.png" alt-text="Screenshot of an image that's been clipped with the ClipPath method.":::
 
 > [!IMPORTANT]
-> The `ClipPath` method has an overload that enables a `WindingMode` to be specified, which sets the fill algorithm that's used when clipping. For more information, see [Winding modes](windingmodes.md).
+> The `ClipPath` method has an overload that enables a <xref:Microsoft.Maui.Graphics.WindingMode> to be specified, which sets the fill algorithm that's used when clipping. For more information, see [Winding modes](windingmodes.md).
 
 The following example shows how to use the `SubtractFromClip` method to clip an image:
 
