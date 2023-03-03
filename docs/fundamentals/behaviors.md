@@ -286,7 +286,7 @@ The following code example shows an *explicit* style for the `NumericValidationS
 </Style>
 ```
 
-The <xref:Microsoft.Maui.Controls.Style> can be applied to an <xref:Microsoft.Maui.Controls.Entry> by setting its <xref:Microsoft.Maui.Controls.Style> property to the style using the `StaticResource` markup extension:
+The <xref:Microsoft.Maui.Controls.Style> can be applied to an <xref:Microsoft.Maui.Controls.Entry> by setting its <xref:Microsoft.Maui.Controls.NavigableElement.Style> property to the style using the `StaticResource` markup extension:
 
 ```xaml
 <Entry Placeholder="Enter a System.Double" Style="{StaticResource NumericValidationStyle}">

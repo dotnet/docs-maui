@@ -44,7 +44,7 @@ Each <xref:Microsoft.Maui.Controls.Style> object contains a collection of one or
 
 Each <xref:Microsoft.Maui.Controls.Style> object can be *explicit*, or *implicit*:
 
-- An *explicit* <xref:Microsoft.Maui.Controls.Style> object is defined by specifying a `TargetType` and an `x:Key` value, and by setting the target element's <xref:Microsoft.Maui.Controls.Style> property to the `x:Key` reference. For more information, see [Explicit styles](#explicit-styles).
+- An *explicit* <xref:Microsoft.Maui.Controls.Style> object is defined by specifying a `TargetType` and an `x:Key` value, and by setting the target element's <xref:Microsoft.Maui.Controls.NavigableElement.Style> property to the `x:Key` reference. For more information, see [Explicit styles](#explicit-styles).
 - An *implicit* <xref:Microsoft.Maui.Controls.Style> object is defined by specifying only a `TargetType`. The <xref:Microsoft.Maui.Controls.Style> object will then automatically be applied to all elements of that type. However, the subclasses of the `TargetType` do not automatically have the <xref:Microsoft.Maui.Controls.Style> applied. For more information, see [Implicit styles](#implicit-styles).
 
 When creating a <xref:Microsoft.Maui.Controls.Style>, the `TargetType` property is always required. The following example shows an *explicit* style:
@@ -69,7 +69,7 @@ Styles do not respond to property changes, and remain unchanged for the duration
 
 ## Explicit styles
 
-To create a <xref:Microsoft.Maui.Controls.Style> at the page-level, a <xref:Microsoft.Maui.Controls.ResourceDictionary> must be added to the page and then one or more <xref:Microsoft.Maui.Controls.Style> declarations can be included in the <xref:Microsoft.Maui.Controls.ResourceDictionary>. A <xref:Microsoft.Maui.Controls.Style> is made *explicit* by giving its declaration an `x:Key` attribute, which gives it a descriptive key in the <xref:Microsoft.Maui.Controls.ResourceDictionary>. *Explicit* styles must then be applied to specific visual elements by setting their <xref:Microsoft.Maui.Controls.Style> properties.
+To create a <xref:Microsoft.Maui.Controls.Style> at the page-level, a <xref:Microsoft.Maui.Controls.ResourceDictionary> must be added to the page and then one or more <xref:Microsoft.Maui.Controls.Style> declarations can be included in the <xref:Microsoft.Maui.Controls.ResourceDictionary>. A <xref:Microsoft.Maui.Controls.Style> is made *explicit* by giving its declaration an `x:Key` attribute, which gives it a descriptive key in the <xref:Microsoft.Maui.Controls.ResourceDictionary>. *Explicit* styles must then be applied to specific visual elements by setting their <xref:Microsoft.Maui.Controls.NavigableElement.Style> properties.
 
 The following example shows *explicit* styles in a page's <xref:Microsoft.Maui.Controls.ResourceDictionary>, and applied to the page's <xref:Microsoft.Maui.Controls.Label> objects:
 
@@ -112,7 +112,7 @@ The following example shows *explicit* styles in a page's <xref:Microsoft.Maui.C
 </ContentPage>
 ```
 
-In this example, the <xref:Microsoft.Maui.Controls.ResourceDictionary> defines three styles that are explicitly set on the page's <xref:Microsoft.Maui.Controls.Label> objects. Each <xref:Microsoft.Maui.Controls.Style> is used to display text in a different color, while also setting the font size, and horizontal and vertical layout options. Each <xref:Microsoft.Maui.Controls.Style> is applied to a different <xref:Microsoft.Maui.Controls.Label> by setting its <xref:Microsoft.Maui.Controls.Style> properties using the `StaticResource` markup extension. In addition, while the final <xref:Microsoft.Maui.Controls.Label> has a <xref:Microsoft.Maui.Controls.Style> set on it, it also overrides the `TextColor` property to a different `Color` value.
+In this example, the <xref:Microsoft.Maui.Controls.ResourceDictionary> defines three styles that are explicitly set on the page's <xref:Microsoft.Maui.Controls.Label> objects. Each <xref:Microsoft.Maui.Controls.Style> is used to display text in a different color, while also setting the font size, and horizontal and vertical layout options. Each <xref:Microsoft.Maui.Controls.Style> is applied to a different <xref:Microsoft.Maui.Controls.Label> by setting its <xref:Microsoft.Maui.Controls.NaviableElement.Style> properties using the `StaticResource` markup extension. In addition, while the final <xref:Microsoft.Maui.Controls.Label> has a <xref:Microsoft.Maui.Controls.Style> set on it, it also overrides the `TextColor` property to a different `Color` value.
 
 ## Implicit styles
 
