@@ -128,7 +128,7 @@ The following screenshot shows indicators rendered using a font icon:
 
 ## Set visual states
 
-<xref:Microsoft.Maui.Controls.IndicatorView> has a `Selected` visual state that can be used to initiate a visual change to the indicator for the current position in the <xref:Microsoft.Maui.Controls.IndicatorView>. A common use case for this `VisualState` is to change the color of the indicator that represents the current position:
+<xref:Microsoft.Maui.Controls.IndicatorView> has a `Selected` visual state that can be used to initiate a visual change to the indicator for the current position in the <xref:Microsoft.Maui.Controls.IndicatorView>. A common use case for this <xref:Microsoft.Maui.Controls.VisualState> is to change the color of the indicator that represents the current position:
 
 ```xaml
 <ContentPage ...>

@@ -254,7 +254,7 @@ The `SelectedItem` and `SelectedItems` properties can be cleared by setting them
 
 ## Change selected item color
 
-<xref:Microsoft.Maui.Controls.CollectionView> has a `Selected` `VisualState` that can be used to initiate a visual change to the selected item in the <xref:Microsoft.Maui.Controls.CollectionView>. A common use case for this `VisualState` is to change the background color of the selected item, which is shown in the following XAML example:
+<xref:Microsoft.Maui.Controls.CollectionView> has a `Selected` <xref:Microsoft.Maui.Controls.VisualState> that can be used to initiate a visual change to the selected item in the <xref:Microsoft.Maui.Controls.CollectionView>. A common use case for this <xref:Microsoft.Maui.Controls.VisualState> is to change the background color of the selected item, which is shown in the following XAML example:
 
 ```xaml
 <ContentPage ...>
@@ -291,9 +291,9 @@ The `SelectedItem` and `SelectedItems` properties can be cleared by setting them
 ```
 
 > [!IMPORTANT]
-> The `Style` that contains the `Selected` `VisualState` must have a `TargetType` property value that's the type of the root element of the `DataTemplate`, which is set as the `ItemTemplate` property value.
+> The <xref:Microsoft.Maui.Controls.Style> that contains the `Selected` <xref:Microsoft.Maui.Controls.VisualState> must have a `TargetType` property value that's the type of the root element of the `DataTemplate`, which is set as the `ItemTemplate` property value.
 
-In this example, the `Style.TargetType` property value is set to <xref:Microsoft.Maui.Controls.Grid> because the root element of the `ItemTemplate` is a <xref:Microsoft.Maui.Controls.Grid>. The `Selected` `VisualState` specifies that when an item in the <xref:Microsoft.Maui.Controls.CollectionView> is selected, the `BackgroundColor` of the item will be set to `LightSkyBlue`:
+In this example, the `Style.TargetType` property value is set to <xref:Microsoft.Maui.Controls.Grid> because the root element of the `ItemTemplate` is a <xref:Microsoft.Maui.Controls.Grid>. The `Selected` <xref:Microsoft.Maui.Controls.VisualState> specifies that when an item in the <xref:Microsoft.Maui.Controls.CollectionView> is selected, the `BackgroundColor` of the item will be set to `LightSkyBlue`:
 
 :::image type="content" source="media/selection/single-selection-color.png" alt-text="Screenshot of a CollectionView vertical list with a custom single selection color.":::
 

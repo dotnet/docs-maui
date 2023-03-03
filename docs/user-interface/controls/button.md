@@ -272,7 +272,7 @@ The result is that the <xref:Microsoft.Maui.Controls.Label> only rotates while a
 
 ## Button visual states
 
-<xref:Microsoft.Maui.Controls.Button> has a `Pressed` `VisualState` that can be used to initiate a visual change to the <xref:Microsoft.Maui.Controls.Button> when pressed, provided that it's enabled.
+<xref:Microsoft.Maui.Controls.Button> has a `Pressed` <xref:Microsoft.Maui.Controls.VisualState> that can be used to initiate a visual change to the <xref:Microsoft.Maui.Controls.Button> when pressed, provided that it's enabled.
 
 The following XAML example shows how to define a visual state for the `Pressed` state:
 
@@ -298,7 +298,7 @@ The following XAML example shows how to define a visual state for the `Pressed` 
 </Button>
 ```
 
-In this example, the `Pressed` `VisualState` specifies that when the <xref:Microsoft.Maui.Controls.Button> is pressed, its `Scale` property will be changed from its default value of 1 to 0.8. The `Normal` `VisualState` specifies that when the <xref:Microsoft.Maui.Controls.Button> is in a normal state, its `Scale` property will be set to 1. Therefore, the overall effect is that when the <xref:Microsoft.Maui.Controls.Button> is pressed, it's rescaled to be slightly smaller, and when the <xref:Microsoft.Maui.Controls.Button> is released, it's rescaled to its default size.
+In this example, the `Pressed` <xref:Microsoft.Maui.Controls.VisualState> specifies that when the <xref:Microsoft.Maui.Controls.Button> is pressed, its `Scale` property will be changed from its default value of 1 to 0.8. The `Normal` <xref:Microsoft.Maui.Controls.VisualState> specifies that when the <xref:Microsoft.Maui.Controls.Button> is in a normal state, its `Scale` property will be set to 1. Therefore, the overall effect is that when the <xref:Microsoft.Maui.Controls.Button> is pressed, it's rescaled to be slightly smaller, and when the <xref:Microsoft.Maui.Controls.Button> is released, it's rescaled to its default size.
 
 For more information about visual states, see [Visual states](~/user-interface/visual-states.md).
 

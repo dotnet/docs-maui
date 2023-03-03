@@ -292,7 +292,7 @@ The following XAML example shows how to define a visual state for the `Checked` 
 </ContentPage>
 ```
 
-In this example, the implicit `Style` targets <xref:Microsoft.Maui.Controls.RadioButton> objects. The `Checked` `VisualState` specifies that when a <xref:Microsoft.Maui.Controls.RadioButton> is checked, its `TextColor` property will be set to green with an `Opacity` value of 1. The `Unchecked` `VisualState` specifies that when a <xref:Microsoft.Maui.Controls.RadioButton> is in a unchecked state, its `TextColor` property will be set to red with an `Opacity` value of 0.5. Therefore, the overall effect is that when a <xref:Microsoft.Maui.Controls.RadioButton> is unchecked it's red and partially transparent, and is green without transparency when it's checked:
+In this example, the implicit <xref:Microsoft.Maui.Controls.Style> targets <xref:Microsoft.Maui.Controls.RadioButton> objects. The `Checked` <xref:Microsoft.Maui.Controls.VisualState> specifies that when a <xref:Microsoft.Maui.Controls.RadioButton> is checked, its `TextColor` property will be set to green with an `Opacity` value of 1. The `Unchecked` <xref:Microsoft.Maui.Controls.VisualState> specifies that when a <xref:Microsoft.Maui.Controls.RadioButton> is in a unchecked state, its `TextColor` property will be set to red with an `Opacity` value of 0.5. Therefore, the overall effect is that when a <xref:Microsoft.Maui.Controls.RadioButton> is unchecked it's red and partially transparent, and is green without transparency when it's checked:
 
 :::image type="content" source="media/radiobutton/radiobuttons-visualstates.png" alt-text="Screenshot of RadioButton visual states.":::
 
