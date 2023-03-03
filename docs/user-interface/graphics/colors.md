@@ -39,18 +39,18 @@ You can also use the following static methods to create <xref:Microsoft.Maui.Gra
 > [!NOTE]
 > In addition to the methods listed above, the <xref:Microsoft.Maui.Graphics.Color> class also has `Parse` and `TryParse` methods that create <xref:Microsoft.Maui.Graphics.Color> objects from `string` arguments.
 
-Once created, a <xref:Microsoft.Maui.Graphics.Color> object is immutable. The characteristics of the color can be obtained from the following `float` properties, that range from 0 to 1:
+Once created, a <xref:Microsoft.Maui.Graphics.Color> object is immutable. The characteristics of the color can be obtained from the following `float` fields, that range from 0 to 1:
 
-- `Red`, which represents the red channel of the color.
-- `Green`, which represents the green channel of the color.
-- `Blue`, which represents the blue channel of the color.
-- `Alpha`, which represents the alpha channel of the color.
+- <xref:Microsoft.Maui.Graphics.Color.Red>, which represents the red channel of the color.
+- <xref:Microsoft.Maui.Graphics.Color.Green>, which represents the green channel of the color.
+- <xref:Microsoft.Maui.Graphics.Color.Blue>, which represents the blue channel of the color.
+- <xref:Microsoft.Maui.Graphics.Color.Alpha>, which represents the alpha channel of the color.
 
 In addition, the characteristics of the color can be obtained from the following methods:
 
-- `GetHue`, which returns a `float` that represents the hue channel of the color.
-- `GetSaturation`, which returns a `float` that represents the saturation channel of the color.
-- `Luminosity`, which returns a `float` that represents the luminosity channel of the color.
+- <xref:Microsoft.Maui.Graphics.Color.GetHue%2A>, which returns a `float` that represents the hue channel of the color.
+- <xref:Microsoft.Maui.Graphics.Color.GetSaturation%2A>, which returns a `float` that represents the saturation channel of the color.
+- <xref:Microsoft.Maui.Graphics.Color.Luminosity%2A>, which returns a `float` that represents the luminosity channel of the color.
 
 ## Named colors
 
@@ -60,27 +60,27 @@ The <xref:Microsoft.Maui.Graphics.Colors> class defines 148 public static read-o
 
 The following instance methods modify an existing color to create a new color:
 
-- `AddLuminosity` returns a <xref:Microsoft.Maui.Graphics.Color> by adding the luminosity value to the supplied delta value.
-- `GetComplementary` returns the complementary <xref:Microsoft.Maui.Graphics.Color>.
-- `MultiplyAlpha` returns a <xref:Microsoft.Maui.Graphics.Color> by multiplying the alpha value by the supplied `float` value.
-- `WithAlpha` returns a <xref:Microsoft.Maui.Graphics.Color>, replacing the alpha value with the supplied `float` value.
-- `WithHue` returns a <xref:Microsoft.Maui.Graphics.Color>, replacing the hue value with the supplied `float` value.
-- `WithLuminosity` returns a <xref:Microsoft.Maui.Graphics.Color>, replacing the luminosity value with the supplied `float` value.
-- `WithSaturation` returns a <xref:Microsoft.Maui.Graphics.Color>, replacing the saturation value with the supplied `float` value.
+- <xref:Microsoft.Maui.Graphics.Color.AddLuminosity%2A> returns a <xref:Microsoft.Maui.Graphics.Color> by adding the luminosity value to the supplied delta value.
+- <xref:Microsoft.Maui.Graphics.Color.GetComplementary%2A> returns the complementary <xref:Microsoft.Maui.Graphics.Color>.
+- <xref:Microsoft.Maui.Graphics.Color.MultiplyAlpha%2A> returns a <xref:Microsoft.Maui.Graphics.Color> by multiplying the alpha value by the supplied `float` value.
+- <xref:Microsoft.Maui.Graphics.Color.WithAlpha%2A> returns a <xref:Microsoft.Maui.Graphics.Color>, replacing the alpha value with the supplied `float` value.
+- <xref:Microsoft.Maui.Graphics.Color.WithHue%2A> returns a <xref:Microsoft.Maui.Graphics.Color>, replacing the hue value with the supplied `float` value.
+- <xref:Microsoft.Maui.Graphics.Color.WithLuminosity%2A> returns a <xref:Microsoft.Maui.Graphics.Color>, replacing the luminosity value with the supplied `float` value.
+- <xref:Microsoft.Maui.Graphics.Color.WithSaturation%2A> returns a <xref:Microsoft.Maui.Graphics.Color>, replacing the saturation value with the supplied `float` value.
 
 ## Conversions
 
 The following instance methods convert a <xref:Microsoft.Maui.Graphics.Color> to an alternative representation:
 
-- `AsPaint` returns a <xref:Microsoft.Maui.Graphics.SolidPaint> object whose <xref:Microsoft.Maui.Graphics.Color> property is set to the color.
-- `ToHex` returns a hexadecimal `string` representation of a <xref:Microsoft.Maui.Graphics.Color>.
-- `ToArgbHex` returns an ARGB hexadecimal `string` representation of a <xref:Microsoft.Maui.Graphics.Color>.
-- `ToRgbaHex` returns an RGBA hexadecimal `string` representation of a <xref:Microsoft.Maui.Graphics.Color>.
-- `ToInt` returns an ARGB `int` representation of a <xref:Microsoft.Maui.Graphics.Color>.
-- `ToUint` returns an ARGB `uint` representation of a <xref:Microsoft.Maui.Graphics.Color>.
-- `ToRgb` converts a <xref:Microsoft.Maui.Graphics.Color> to RGB `byte` values that are returned as `out` arguments.
-- `ToRgba` converts a <xref:Microsoft.Maui.Graphics.Color> to RGBA `byte` values that are returned as `out` arguments.
-- `ToHsl` converts a <xref:Microsoft.Maui.Graphics.Color> to HSL `float` values that are passed as `out` arguments.
+- <xref:Microsoft.Maui.Graphics.Color.AsPaint%2A> returns a <xref:Microsoft.Maui.Graphics.SolidPaint> object whose <xref:Microsoft.Maui.Graphics.Color> property is set to the color.
+- <xref:Microsoft.Maui.Graphics.Color.ToHex%2A> returns a hexadecimal `string` representation of a <xref:Microsoft.Maui.Graphics.Color>.
+- <xref:Microsoft.Maui.Graphics.Color.ToArgbHex%2A> returns an ARGB hexadecimal `string` representation of a <xref:Microsoft.Maui.Graphics.Color>.
+- <xref:Microsoft.Maui.Graphics.Color.ToRgbaHex%2A> returns an RGBA hexadecimal `string` representation of a <xref:Microsoft.Maui.Graphics.Color>.
+- <xref:Microsoft.Maui.Graphics.Color.ToInt%2A> returns an ARGB `int` representation of a <xref:Microsoft.Maui.Graphics.Color>.
+- <xref:Microsoft.Maui.Graphics.Color.ToUint%2A> returns an ARGB `uint` representation of a <xref:Microsoft.Maui.Graphics.Color>.
+- <xref:Microsoft.Maui.Graphics.Color.ToRgb%2A> converts a <xref:Microsoft.Maui.Graphics.Color> to RGB `byte` values that are returned as `out` arguments.
+- <xref:Microsoft.Maui.Graphics.Color.ToRgba%2A> converts a <xref:Microsoft.Maui.Graphics.Color> to RGBA `byte` values that are returned as `out` arguments.
+- <xref:Microsoft.Maui.Graphics.Color.ToHsl%2A> converts a <xref:Microsoft.Maui.Graphics.Color> to HSL `float` values that are passed as `out` arguments.
 
 ## Examples
 
