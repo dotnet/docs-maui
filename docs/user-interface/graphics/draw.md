@@ -277,7 +277,7 @@ The `FillColor` property of the <xref:Microsoft.Maui.Graphics.ICanvas> object mu
 
 ## Draw an image
 
-Images can be drawn on an <xref:Microsoft.Maui.Graphics.ICanvas> using the `DrawImage` method, which requires an `IImage` argument, and `x`, `y`, `width`, and `height` arguments, of type `float`.
+Images can be drawn on an <xref:Microsoft.Maui.Graphics.ICanvas> using the `DrawImage` method, which requires an <xref:Microsoft.Maui.Graphics.IImage> argument, and `x`, `y`, `width`, and `height` arguments, of type `float`.
 
 The following example shows how to load an image and draw it to the canvas:
 
