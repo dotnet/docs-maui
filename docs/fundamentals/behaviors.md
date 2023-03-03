@@ -130,8 +130,8 @@ At runtime, the `OnAttachBehaviorChanged` method will be executed when the value
 The process for creating a .NET MAUI behavior is as follows:
 
 1. Create a class that inherits from the <xref:Microsoft.Maui.Controls.Behavior> or <xref:Microsoft.Maui.Controls.Behavior`1> class, where `T` is the type of the control to which the behavior should apply.
-1. Override the `OnAttachedTo` method to perform any required setup.
-1. Override the `OnDetachingFrom` method to perform any required cleanup.
+1. Override the <xref:Microsoft.Maui.Controls.Behavior`1.OnAttachedTo%2A> method to perform any required setup.
+1. Override the <xref:Microsoft.Maui.Controls.Behavior`1.OnDetachingFrom%2A> method to perform any required cleanup.
 1. Implement the core functionality of the behavior.
 
 This results in the structure shown in the following example:
