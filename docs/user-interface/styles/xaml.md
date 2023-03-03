@@ -112,7 +112,7 @@ The following example shows *explicit* styles in a page's <xref:Microsoft.Maui.C
 </ContentPage>
 ```
 
-In this example, the <xref:Microsoft.Maui.Controls.ResourceDictionary> defines three styles that are explicitly set on the page's <xref:Microsoft.Maui.Controls.Label> objects. Each <xref:Microsoft.Maui.Controls.Style> is used to display text in a different color, while also setting the font size, and horizontal and vertical layout options. Each <xref:Microsoft.Maui.Controls.Style> is applied to a different <xref:Microsoft.Maui.Controls.Label> by setting its <xref:Microsoft.Maui.Controls.NaviableElement.Style> properties using the `StaticResource` markup extension. In addition, while the final <xref:Microsoft.Maui.Controls.Label> has a <xref:Microsoft.Maui.Controls.Style> set on it, it also overrides the `TextColor` property to a different `Color` value.
+In this example, the <xref:Microsoft.Maui.Controls.ResourceDictionary> defines three styles that are explicitly set on the page's <xref:Microsoft.Maui.Controls.Label> objects. Each <xref:Microsoft.Maui.Controls.Style> is used to display text in a different color, while also setting the font size, and horizontal and vertical layout options. Each <xref:Microsoft.Maui.Controls.Style> is applied to a different <xref:Microsoft.Maui.Controls.Label> by setting its <xref:Microsoft.Maui.Controls.NavigableElement.Style> properties using the `StaticResource` markup extension. In addition, while the final <xref:Microsoft.Maui.Controls.Label> has a <xref:Microsoft.Maui.Controls.Style> set on it, it also overrides the `TextColor` property to a different `Color` value.
 
 ## Implicit styles
 
