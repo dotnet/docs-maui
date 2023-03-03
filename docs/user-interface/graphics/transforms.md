@@ -176,7 +176,7 @@ canvas.RestoreState();
 
 In this example, the <xref:Microsoft.Maui.Graphics.ICanvas.Translate%2A> and <xref:Microsoft.Maui.Graphics.ICanvas.Scale%2A> calls apply globally to the clock, and so are called before the <xref:Microsoft.Maui.Graphics.ICanvas.Rotate%2A> method.
 
-There are 60 marks of two different sizes that are drawn in a circle around the clock. The <xref:Microsoft.Maui.Graphics.ICanvas.FillCircle%2A> call draws that circle at (0,-90), which relative to the center of the clock corresponds to 12:00. The <xref:Microsoft.Maui.Graphics.ICanvas.Rotate%2A> call increments the rotation angle by 6 degrees after every tick mark. The `angle` variable is used solely to determine if a large circle or a small circle is drawn. Finally, the current time is obtained and rotation degrees are calculated for the hour, minute, and second hands. Each hand is drawn in the 12:00 position so that the rotation angle is relative to that position:
+There are 60 marks of two different sizes that are drawn in a circle around the clock. The <xref:Microsoft.Maui.Graphics.CanvasExtensions.FillCircle%2A> call draws that circle at (0,-90), which relative to the center of the clock corresponds to 12:00. The <xref:Microsoft.Maui.Graphics.ICanvas.Rotate%2A> call increments the rotation angle by 6 degrees after every tick mark. The `angle` variable is used solely to determine if a large circle or a small circle is drawn. Finally, the current time is obtained and rotation degrees are calculated for the hour, minute, and second hands. Each hand is drawn in the 12:00 position so that the rotation angle is relative to that position:
 
 :::image type="content" source="media/transforms/clock.png" alt-text="Screenshot of an analog clock.":::
 

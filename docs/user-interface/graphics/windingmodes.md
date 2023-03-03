@@ -13,7 +13,7 @@ ms.date: 12/16/2021
 The <xref:Microsoft.Maui.Graphics.WindingMode> enumeration defines `NonZero` and `EvenOdd` members. Each member represents a different algorithm for determining whether a point is in the fill region of an enclosed area.
 
 > [!NOTE]
-> The `ClipPath` method has an overload that enables a <xref:Microsoft.Maui.Graphics.WindingMode> argument to be specified. By default, this argument is set to `WindingMode.NonZero`.
+> The <xref:Microsoft.Maui.Graphics.ICanvas.ClipPath%2A> method has an overload that enables a <xref:Microsoft.Maui.Graphics.WindingMode> argument to be specified. By default, this argument is set to `WindingMode.NonZero`.
 
 ## NonZero
 

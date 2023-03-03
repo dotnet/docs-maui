@@ -55,8 +55,8 @@ In .NET MAUI, the <xref:Microsoft.Maui.Controls.GraphicsView> enables consumptio
 - <xref:Microsoft.Maui.Graphics.ICanvas.StrokeColor>, of type `Color`, indicates the color used to paint an object's outline.
 - <xref:Microsoft.Maui.Graphics.ICanvas.StrokeDashOffset>, of type `float`, specifies the distance within the dash pattern where a dash begins.
 - <xref:Microsoft.Maui.Graphics.ICanvas.StrokeDashPattern>, of type `float[]`, specifies the pattern of dashes and gaps that are used to outline an object.
-- <xref:Microsoft.Maui.Graphics.ICanvas.StrokeLineCap>, of type `LineCap`, describes the shape at the start and end of a line.
-- <xref:Microsoft.Maui.Graphics.ICanvas.StrokeLineJoin>, of type `LineJoin`, specifies the type of join that is used at the vertices of a shape.
+- <xref:Microsoft.Maui.Graphics.ICanvas.StrokeLineCap>, of type <xref:Microsoft.Maui.Graphics.LineCap>, describes the shape at the start and end of a line.
+- <xref:Microsoft.Maui.Graphics.ICanvas.StrokeLineJoin>, of type <xref:Microsoft.Maui.Graphics.LineJoin>, specifies the type of join that is used at the vertices of a shape.
 - <xref:Microsoft.Maui.Graphics.ICanvas.StrokeSize>, of type `float`, indicates the width of an object's outline.
 
 By default, an <xref:Microsoft.Maui.Graphics.ICanvas> sets <xref:Microsoft.Maui.Graphics.ICanvas.StrokeSize> to 1, <xref:Microsoft.Maui.Graphics.ICanvas.StrokeColor> to black, <xref:Microsoft.Maui.Graphics.ICanvas.StrokeLineJoin> to `LineJoin.Miter`, and <xref:Microsoft.Maui.Graphics.ICanvas.StrokeLineCap> to `LineJoin.Cap`.
