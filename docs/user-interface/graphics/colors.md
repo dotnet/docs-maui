@@ -50,7 +50,7 @@ In addition, the characteristics of the color can be obtained from the following
 
 - <xref:Microsoft.Maui.Graphics.Color.GetHue%2A>, which returns a `float` that represents the hue channel of the color.
 - <xref:Microsoft.Maui.Graphics.Color.GetSaturation%2A>, which returns a `float` that represents the saturation channel of the color.
-- <xref:Microsoft.Maui.Graphics.Color.Luminosity%2A>, which returns a `float` that represents the luminosity channel of the color.
+- <xref:Microsoft.Maui.Graphics.Color.GetLuminosity%2A>, which returns a `float` that represents the luminosity channel of the color.
 
 ## Named colors
 
