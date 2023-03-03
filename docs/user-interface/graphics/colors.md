@@ -37,7 +37,7 @@ You can also use the following static methods to create <xref:Microsoft.Maui.Gra
 - `Color.FromArgb` from a `string`-based hexadecimal value in the form "#AARRGGBB" or "#RRGGBB" or "#ARGB" or "RGB", where each letter corresponds to a hexadecimal digit for the alpha, red, green, and blue channels.
 
 > [!NOTE]
-> In addition to the methods listed above, the <xref:Microsoft.Maui.Graphics.Color> class also has `Parse` and `TryParse` methods that create <xref:Microsoft.Maui.Graphics.Color> objects from `string` arguments.
+> In addition to the methods listed above, the <xref:Microsoft.Maui.Graphics.Color> class also has <xref:Microsoft.Maui.Graphics.Color.Parse%2A> and <xref:Microsoft.Maui.Graphics.Color.TryParse%2A> methods that create <xref:Microsoft.Maui.Graphics.Color> objects from `string` arguments.
 
 Once created, a <xref:Microsoft.Maui.Graphics.Color> object is immutable. The characteristics of the color can be obtained from the following `float` fields, that range from 0 to 1:
 
