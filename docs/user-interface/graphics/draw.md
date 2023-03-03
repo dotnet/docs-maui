@@ -220,7 +220,7 @@ A path is a collection of one or more *contours*. Each contour is a collection o
 
 Paths are used to draw curves and complex shapes and can be drawn on an <xref:Microsoft.Maui.Graphics.ICanvas> using the <xref:Microsoft.Maui.Graphics.ICanvas.DrawPath%2A> method, which requires a <xref:Microsoft.Maui.Graphics.PathF> argument.
 
-A contour generally begins with a call to the <xref:Microsoft.Maui.Graphics.PathF.MoveTo%2A> method, which you can express either as a <xref:Microsoft.Maui.Graphics.PointF> value or as separate `x` and `y` coordinates. The <xref:Microsoft.Maui.Graphics.PathF.MoveTo%2A> call establishes a point at the beginning of the contour and an initial current point. You can then call the following methods to continue the contour with a line or curve from the current point to a point specified in the method, which then becomes the new current point:
+A contour generally begins with a call to the <xref:Microsoft.Maui.Graphics.PathF.MoveTo%2A?displayProperty=nameWithType> method, which you can express either as a <xref:Microsoft.Maui.Graphics.PointF> value or as separate `x` and `y` coordinates. The <xref:Microsoft.Maui.Graphics.PathF.MoveTo%2A> call establishes a point at the beginning of the contour and an initial current point. You can then call the following methods to continue the contour with a line or curve from the current point to a point specified in the method, which then becomes the new current point:
 
 - <xref:Microsoft.Maui.Graphics.PathF.LineTo%2A> to add a straight line to the path.
 - <xref:Microsoft.Maui.Graphics.PathF.AddArc%2A> to add an arc, which is a line on the circumference of a circle or ellipse.
