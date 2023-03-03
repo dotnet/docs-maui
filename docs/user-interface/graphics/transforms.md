@@ -260,7 +260,7 @@ For example, if you change the `M31` value to 100, you can use it to translate a
 
 You can define a new transform matrix with the [`Matrix3x2`](xref:System.Numerics.Matrix3x2) constructor. The advantage of specifying transforms with a transform matrix is that composite transforms can be applied as a single transform, which is referred to as *concatenation*. The [`Matrix3x2`](xref:System.Numerics.Matrix3x2) struct also defines methods that can be used to manipulate matrix values.
 
-The only <xref:Microsoft.Maui.Graphics.ICanvas> method that accepts a [`Matrix3x2`](xref:System.Numerics.Matrix3x2) argument is the <xref:Microsoft.Maui.Graphics.ConcatenateTransform%2A> method, which combines multiple transforms into a single transform. The following example shows how to use this method to transform a <xref:Microsoft.Maui.Graphics.PathF> object:
+The only <xref:Microsoft.Maui.Graphics.ICanvas> method that accepts a [`Matrix3x2`](xref:System.Numerics.Matrix3x2) argument is the <xref:Microsoft.Maui.Graphics.ICanvas.ConcatenateTransform%2A> method, which combines multiple transforms into a single transform. The following example shows how to use this method to transform a <xref:Microsoft.Maui.Graphics.PathF> object:
 
 ```csharp
 PathF path = new PathF();

@@ -346,7 +346,7 @@ For information about drawing shadows, see [Draw a shadow](#draw-a-shadow).
 
 ## Draw attributed text
 
-Attributed text can be drawn on an <xref:Microsoft.Maui.Graphics.ICanvas> using the <xref:Microsoft.Maui.Graphics.ICanvas.DrawText%2A> method, which requires an <xref:Microsoft.Maui.Graphics.IAttributedText> argument, and `x`, `y`, `width`, and `height` arguments, of type `float`. Attributed text is a string with associated attributes for parts of its text, that typically represents styling data.
+Attributed text can be drawn on an <xref:Microsoft.Maui.Graphics.ICanvas> using the <xref:Microsoft.Maui.Graphics.ICanvas.DrawText%2A> method, which requires an <xref:Microsoft.Maui.Graphics.Text.IAttributedText> argument, and `x`, `y`, `width`, and `height` arguments, of type `float`. Attributed text is a string with associated attributes for parts of its text, that typically represents styling data.
 
 The following example shows how to draw attributed text:
 

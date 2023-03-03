@@ -45,10 +45,10 @@ In .NET MAUI, the <xref:Microsoft.Maui.Controls.GraphicsView> enables consumptio
 
 - <xref:Microsoft.Maui.Graphics.ICanvas.Alpha>, of type `float`, indicates the opacity of an object.
 - <xref:Microsoft.Maui.Graphics.ICanvas.Antialias>, of type `bool`, specifies whether anti-aliasing is enabled.
-- <xref:Microsoft.Maui.Graphics.ICanvas.BlendMode>, of type `BlendMode`, defines the blend mode, which determines what happens when an object is rendered on top of an existing object.
+- <xref:Microsoft.Maui.Graphics.ICanvas.BlendMode>, of type <xref:Microsoft.Maui.Graphics.BlendMode>, defines the blend mode, which determines what happens when an object is rendered on top of an existing object.
 - <xref:Microsoft.Maui.Graphics.ICanvas.DisplayScale>, of type `float`, represents the scaling factor to scale the UI by on a canvas.
 - <xref:Microsoft.Maui.Graphics.ICanvas.FillColor>, of type `Color`, indicates the color used to paint an object's interior.
-- <xref:Microsoft.Maui.Graphics.ICanvas.Font>, of type `IFont`, defines the font when drawing text.
+- <xref:Microsoft.Maui.Graphics.ICanvas.Font>, of type <xref:Microsoft.Maui.Graphics.IFont>, defines the font when drawing text.
 - <xref:Microsoft.Maui.Graphics.ICanvas.FontColor>, of type `Color`, specifies the font color when drawing text.
 - <xref:Microsoft.Maui.Graphics.ICanvas.FontSize>, of type `float`, defines the size of the font when drawing text.
 - <xref:Microsoft.Maui.Graphics.ICanvas.MiterLimit>, of type `float`, specifies the limit of the miter length of line joins in an object.
