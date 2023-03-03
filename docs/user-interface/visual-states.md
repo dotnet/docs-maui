@@ -300,7 +300,7 @@ In this example, the `GoToState` method is called from the constructor to initia
 
 Visual states support state triggers, which are a specialized group of triggers that define the conditions under which a <xref:Microsoft.Maui.Controls.VisualState> should be applied.
 
-State triggers are added to the <xref:Microsoft.Maui.Controls.VisualElement.StateTriggers> collection of a <xref:Microsoft.Maui.Controls.VisualState>. This collection can contain a single state trigger, or multiple state triggers. A <xref:Microsoft.Maui.Controls.VisualState> will be applied when any state triggers in the collection are active.
+State triggers are added to the <xref:Microsoft.Maui.Controls.VisualState.StateTriggers> collection of a <xref:Microsoft.Maui.Controls.VisualState>. This collection can contain a single state trigger, or multiple state triggers. A <xref:Microsoft.Maui.Controls.VisualState> will be applied when any state triggers in the collection are active.
 
 When using state triggers to control visual states, .NET MAUI uses the following precedence rules to determine which trigger (and corresponding <xref:Microsoft.Maui.Controls.VisualState>) will be active:
 
