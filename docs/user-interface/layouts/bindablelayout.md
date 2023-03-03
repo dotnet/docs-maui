@@ -190,7 +190,7 @@ The result is that when the data bound collection is `null`, the <xref:Microsoft
 
 ## Choose an EmptyView at runtime
 
-Views that will be displayed as an `EmptyView` when data is unavailable, can be defined as <xref:Microsoft.Maui.Controls.ContentView> objects in a `ResourceDictionary`. The `EmptyView` property can then be set to a specific <xref:Microsoft.Maui.Controls.ContentView>, based on some business logic, at runtime. The following XAML shows an example of this scenario:
+Views that will be displayed as an `EmptyView` when data is unavailable, can be defined as <xref:Microsoft.Maui.Controls.ContentView> objects in a <xref:Microsoft.Maui.Controls.ResourceDictionary>. The `EmptyView` property can then be set to a specific <xref:Microsoft.Maui.Controls.ContentView>, based on some business logic, at runtime. The following XAML shows an example of this scenario:
 
 ```xaml
 <ContentPage ...>
@@ -226,7 +226,7 @@ Views that will be displayed as an `EmptyView` when data is unavailable, can be 
 </ContentPage>
 ```
 
-The XAML defines two <xref:Microsoft.Maui.Controls.ContentView> objects in the page-level `ResourceDictionary`, with the <xref:Microsoft.Maui.Controls.Switch> object controlling which <xref:Microsoft.Maui.Controls.ContentView> object will be set as the `EmptyView` property value. When the <xref:Microsoft.Maui.Controls.Switch> is toggled, the `OnEmptyViewSwitchToggled` event handler executes the `ToggleEmptyView` method:
+The XAML defines two <xref:Microsoft.Maui.Controls.ContentView> objects in the page-level <xref:Microsoft.Maui.Controls.ResourceDictionary>, with the <xref:Microsoft.Maui.Controls.Switch> object controlling which <xref:Microsoft.Maui.Controls.ContentView> object will be set as the `EmptyView` property value. When the <xref:Microsoft.Maui.Controls.Switch> is toggled, the `OnEmptyViewSwitchToggled` event handler executes the `ToggleEmptyView` method:
 
 ```csharp
 void ToggleEmptyView(bool isToggled)
@@ -236,4 +236,4 @@ void ToggleEmptyView(bool isToggled)
 }
 ```
 
-The `ToggleEmptyView` method sets the `EmptyView` property of the <xref:Microsoft.Maui.Controls.StackLayout> object to one of the two <xref:Microsoft.Maui.Controls.ContentView> objects stored in the `ResourceDictionary`, based on the value of the `Switch.IsToggled` property. Then, when the data bound collection is `null`, the <xref:Microsoft.Maui.Controls.ContentView> object set as the `EmptyView` property is displayed.
+The `ToggleEmptyView` method sets the `EmptyView` property of the <xref:Microsoft.Maui.Controls.StackLayout> object to one of the two <xref:Microsoft.Maui.Controls.ContentView> objects stored in the <xref:Microsoft.Maui.Controls.ResourceDictionary>, based on the value of the `Switch.IsToggled` property. Then, when the data bound collection is `null`, the <xref:Microsoft.Maui.Controls.ContentView> object set as the `EmptyView` property is displayed.

@@ -303,7 +303,7 @@ The following XAML example shows how to use the `x:Null` markup extension:
 </ContentPage>      
 ```
 
-In this example, an implicit `Style` is defined for <xref:Microsoft.Maui.Controls.Label> that includes a `Setter` that sets the `FontFamily` property to a specific font. However, the third <xref:Microsoft.Maui.Controls.Label> avoids using the font defined in the implicit style by setting its `FontFamily` to `x:Null`:
+In this example, an implicit <xref:Microsoft.Maui.Controls.Style> is defined for <xref:Microsoft.Maui.Controls.Label> that includes a <xref:Microsoft.Maui.Controls.Setter> that sets the `FontFamily` property to a specific font. However, the third <xref:Microsoft.Maui.Controls.Label> avoids using the font defined in the implicit style by setting its `FontFamily` to `x:Null`:
 
 :::image type="content" source="media/consume/nulldemo.png" alt-text="x:Null demo.":::
 
@@ -466,6 +466,6 @@ The following XAML example shows how to use the `AppThemeBinding` markup extensi
 </ContentPage>
 ```
 
-In this example, the text color of the first <xref:Microsoft.Maui.Controls.Label> is set to green when the device is using its light theme, and is set to red when the device is using its dark theme. The second <xref:Microsoft.Maui.Controls.Label> has its `TextColor` property set through a `Style`. This `Style` sets the text color of the <xref:Microsoft.Maui.Controls.Label> to black by default, to blue when the device is using its light theme, and to teal when the device is using its dark theme:
+In this example, the text color of the first <xref:Microsoft.Maui.Controls.Label> is set to green when the device is using its light theme, and is set to red when the device is using its dark theme. The second <xref:Microsoft.Maui.Controls.Label> has its `TextColor` property set through a <xref:Microsoft.Maui.Controls.Style>. This <xref:Microsoft.Maui.Controls.Style> sets the text color of the <xref:Microsoft.Maui.Controls.Label> to black by default, to blue when the device is using its light theme, and to teal when the device is using its dark theme:
 
 :::image type="content" source="media/consume/appthemebindingdemo.png" alt-text="AppThemeBinding demo.":::

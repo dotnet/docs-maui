@@ -328,7 +328,7 @@ The following XAML example shows how to define the `CurrentItem`, `PreviousItem`
 In this example, the `CurrentItem` visual state specifies that the current item displayed by the <xref:Microsoft.Maui.Controls.CarouselView> will have its `Scale` property changed from its default value of 1 to 1.1. The `PreviousItem` and `NextItem` visual states specify that the items surrounding the current item will be displayed with an `Opacity` value of 0.5. The `DefaultItem` visual state specifies that the remainder of the items displayed by the <xref:Microsoft.Maui.Controls.CarouselView> will be displayed with an `Opacity` value of 0.25.
 
 > [!NOTE]
-> Alternatively, the visual states can be defined in a `Style` that has a `TargetType` property value that's the type of the root element of the `DataTemplate`, which is set as the `ItemTemplate` property value.
+> Alternatively, the visual states can be defined in a <xref:Microsoft.Maui.Controls.Style> that has a `TargetType` property value that's the type of the root element of the `DataTemplate`, which is set as the `ItemTemplate` property value.
 
 The following screenshot shows the `CurrentItem`, `PreviousItem`, and `NextItem` visual states:
 

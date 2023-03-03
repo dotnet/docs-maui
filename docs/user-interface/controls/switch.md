@@ -106,7 +106,7 @@ The `Toggled` event handler can be eliminated by using data binding and triggers
 </Label>
 ```
 
-In this example, the <xref:Microsoft.Maui.Controls.Label> uses a binding expression in a `DataTrigger` to monitor the `IsToggled` property of the <xref:Microsoft.Maui.Controls.Switch> named `styleSwitch`. When this property becomes `true`, the `FontAttributes` and `FontSize` properties of the <xref:Microsoft.Maui.Controls.Label> are changed. When the `IsToggled` property returns to `false`, the `FontAttributes` and `FontSize` properties of the <xref:Microsoft.Maui.Controls.Label> are reset to their initial state.
+In this example, the <xref:Microsoft.Maui.Controls.Label> uses a binding expression in a <xref:Microsoft.Maui.Controls.DataTrigger> to monitor the `IsToggled` property of the <xref:Microsoft.Maui.Controls.Switch> named `styleSwitch`. When this property becomes `true`, the `FontAttributes` and `FontSize` properties of the <xref:Microsoft.Maui.Controls.Label> are changed. When the `IsToggled` property returns to `false`, the `FontAttributes` and `FontSize` properties of the <xref:Microsoft.Maui.Controls.Label> are reset to their initial state.
 
 For information about triggers, see [Triggers](~/fundamentals/triggers.md).
 
@@ -137,7 +137,7 @@ The following XAML example shows how to define visual states for the `On` and `O
 </Switch>
 ```
 
-In this example, the `On` `VisualState` specifies that when the `IsToggled` property is `true`, the `ThumbColor` property will be set to medium spring green. The `Off` `VisualState` specifies that when the `IsToggled` property is `false`, the `ThumbColor` property will be set to red. Therefore, the overall effect is that when the <xref:Microsoft.Maui.Controls.Switch> is in an off position its thumb is red, and its thumb is medium spring green when the <xref:Microsoft.Maui.Controls.Switch> is in an on position:
+In this example, the `On` <xref:Microsoft.Maui.Controls.VisualState> specifies that when the `IsToggled` property is `true`, the `ThumbColor` property will be set to medium spring green. The `Off` <xref:Microsoft.Maui.Controls.VisualState> specifies that when the `IsToggled` property is `false`, the `ThumbColor` property will be set to red. Therefore, the overall effect is that when the <xref:Microsoft.Maui.Controls.Switch> is in an off position its thumb is red, and its thumb is medium spring green when the <xref:Microsoft.Maui.Controls.Switch> is in an on position:
 
 :::image type="content" source="media/switch/on-visualstate.png" alt-text="Screenshot of Switch on VisualState.":::
 :::image type="content" source="media/switch/off-visualstate.png" alt-text="Screenshot of Switch off VisualState.":::

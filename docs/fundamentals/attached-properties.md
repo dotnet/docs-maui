@@ -113,7 +113,7 @@ Attached properties can also be added to a control by a style. The following XAM
 </Style>
 ```
 
-The `Style` can be applied to a <xref:Microsoft.Maui.Controls.Label> by setting its `Style` property to the `Style` instance using the `StaticResource` markup extension, as demonstrated in the following code example:
+The <xref:Microsoft.Maui.Controls.Style> can be applied to a <xref:Microsoft.Maui.Controls.Label> by setting its <xref:Microsoft.Maui.Controls.Style> property to the <xref:Microsoft.Maui.Controls.Style> instance using the `StaticResource` markup extension, as demonstrated in the following code example:
 
 ```xaml
 <Label Text="Label with shadow" Style="{StaticResource ShadowStyle}" />

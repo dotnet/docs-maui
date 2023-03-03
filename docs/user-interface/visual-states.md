@@ -42,12 +42,12 @@ You can attach the Visual State Manager markup to an individual view, or you can
 
 The `VisualStateManager` class defines a `VisualStateGroups` attached property, that's used to attach visual states to a view. The `VisualStateGroups` property is of type `VisualStateGroupList`, which is a collection of `VisualStateGroup` objects. Therefore, the child of the `VisualStateManager.VisualStateGroups` attached property is a `VisualStateGroup` object. This object defines an `x:Name` attribute that indicates the name of the group. Alternatively, the `VisualStateGroup` class defines a `Name` property that you can use instead. For more information about attached properties, see [Attached properties](~/fundamentals/attached-properties.md).
 
-The `VisualStateGroup` class defines a property named `States`, which is a collection of `VisualState` objects. `States` is the content property of the `VisualStateGroups` class so you can include the `VisualState` objects as children of the `VisualStateGroup`. Each `VisualState` object should be identified using `x:Name` or `Name`.
+The `VisualStateGroup` class defines a property named `States`, which is a collection of <xref:Microsoft.Maui.Controls.VisualState> objects. `States` is the content property of the `VisualStateGroups` class so you can include the <xref:Microsoft.Maui.Controls.VisualState> objects as children of the `VisualStateGroup`. Each <xref:Microsoft.Maui.Controls.VisualState> object should be identified using `x:Name` or `Name`.
 
-The `VisualState` class defines a property named `Setters`, which is a collection of `Setter` objects. These are the same `Setter` objects that you use in a `Style` object. `Setters` isn't the content property of `VisualState`, so it's necessary to include property element tags for the `Setters` property. `Setter` objects should be inserted as children of `Setters`. Each `Setter` object indicates the value of a property when that state is current. Any property referenced by a `Setter` object must be backed by a bindable property.
+The <xref:Microsoft.Maui.Controls.VisualState> class defines a property named `Setters`, which is a collection of <xref:Microsoft.Maui.Controls.Setter> objects. These are the same <xref:Microsoft.Maui.Controls.Setter> objects that you use in a <xref:Microsoft.Maui.Controls.Style> object. `Setters` isn't the content property of <xref:Microsoft.Maui.Controls.VisualState>, so it's necessary to include property element tags for the `Setters` property. <xref:Microsoft.Maui.Controls.Setter> objects should be inserted as children of `Setters`. Each <xref:Microsoft.Maui.Controls.Setter> object indicates the value of a property when that state is current. Any property referenced by a <xref:Microsoft.Maui.Controls.Setter> object must be backed by a bindable property.
 
 > [!IMPORTANT]
-> In order for visual state `Setter` objects to function correctly, a `VisualStateGroup` must contain a `VisualState` object for the `Normal` state. If this visual state does not have any `Setter` objects, it should be included as an empty visual state (`<VisualState x:Name="Normal" />`).
+> In order for visual state <xref:Microsoft.Maui.Controls.Setter> objects to function correctly, a `VisualStateGroup` must contain a <xref:Microsoft.Maui.Controls.VisualState> object for the `Normal` state. If this visual state does not have any <xref:Microsoft.Maui.Controls.Setter> objects, it should be included as an empty visual state (`<VisualState x:Name="Normal" />`).
 
 The following example shows visual states defined on an <xref:Microsoft.Maui.Controls.Entry>:
 
@@ -89,7 +89,7 @@ The following screenshot shows the <xref:Microsoft.Maui.Controls.Entry> in its f
 
 When the <xref:Microsoft.Maui.Controls.Entry> is in the `Normal` state, its background is lime. When the <xref:Microsoft.Maui.Controls.Entry> gains input focus its font size doubles. When the <xref:Microsoft.Maui.Controls.Entry> becomes disabled, its background becomes pink. The <xref:Microsoft.Maui.Controls.Entry> doesn't retain its lime background when it gains input focus. When the mouse pointer hovers over the <xref:Microsoft.Maui.Controls.Entry>, but isn't pressed, the <xref:Microsoft.Maui.Controls.Entry> background becomes light blue. As the Visual State Manager switches between the visual states, the properties set by the previous state are unset. Therefore, the visual states are mutually exclusive.
 
-If you want the <xref:Microsoft.Maui.Controls.Entry> to have a lime background in the `Focused` state, add another `Setter` to that visual state:
+If you want the <xref:Microsoft.Maui.Controls.Entry> to have a lime background in the `Focused` state, add another <xref:Microsoft.Maui.Controls.Setter> to that visual state:
 
 ```xaml
 <VisualState x:Name="Focused">
@@ -102,7 +102,7 @@ If you want the <xref:Microsoft.Maui.Controls.Entry> to have a lime background i
 
 ### Define visual states in a style
 
-It's often necessary to share the same visual states in two or more views. In this scenario, the visual states can be defined in a `Style`. This can be achieved by adding a `Setter` object for the `VisualStateManager.VisualStateGroups` property. The content property for the `Setter` object is its `Value` property, which can therefore be specified as the child of the `Setter` object. The `VisualStateGroups` property is of type `VisualStateGroupList`, and so the child of the `Setter` object is a `VisualStateGroupList` to which a `VisualStateGroup` can be added that contains `VisualState` objects.
+It's often necessary to share the same visual states in two or more views. In this scenario, the visual states can be defined in a <xref:Microsoft.Maui.Controls.Style>. This can be achieved by adding a <xref:Microsoft.Maui.Controls.Setter> object for the `VisualStateManager.VisualStateGroups` property. The content property for the <xref:Microsoft.Maui.Controls.Setter> object is its `Value` property, which can therefore be specified as the child of the <xref:Microsoft.Maui.Controls.Setter> object. The `VisualStateGroups` property is of type `VisualStateGroupList`, and so the child of the <xref:Microsoft.Maui.Controls.Setter> object is a `VisualStateGroupList` to which a `VisualStateGroup` can be added that contains <xref:Microsoft.Maui.Controls.VisualState> objects.
 
 The following example shows an implicit style for an <xref:Microsoft.Maui.Controls.Entry> that defines the common visual states:
 
@@ -139,7 +139,7 @@ The following example shows an implicit style for an <xref:Microsoft.Maui.Contro
 </Style>
 ```
 
-When this style is included in a page-level resource dictionary, the `Style` object will be applied to all <xref:Microsoft.Maui.Controls.Entry> objects on the page. Therefore, all <xref:Microsoft.Maui.Controls.Entry> objects on the page will respond in the same way to their visual states.
+When this style is included in a page-level resource dictionary, the <xref:Microsoft.Maui.Controls.Style> object will be applied to all <xref:Microsoft.Maui.Controls.Entry> objects on the page. Therefore, all <xref:Microsoft.Maui.Controls.Entry> objects on the page will respond in the same way to their visual states.
 
 ## Visual states in .NET MAUI
 
@@ -160,7 +160,7 @@ The following table lists the visual states that are defined in .NET MAUI:
 
 In the previous examples, visual states were attached to and operated on single elements. However, it's also possible to create visual states that are attached to a single element, but that set properties on other elements within the same scope. This avoids having to repeat visual states on each element the states operate on.
 
-The `Setter` type has a `TargetName` property, of type `string`, that represents the target object that the `Setter` for a visual state will manipulate. When the `TargetName` property is defined, the `Setter` sets the `Property` of the object defined in `TargetName` to `Value`:
+The <xref:Microsoft.Maui.Controls.Setter> type has a `TargetName` property, of type `string`, that represents the target object that the <xref:Microsoft.Maui.Controls.Setter> for a visual state will manipulate. When the `TargetName` property is defined, the <xref:Microsoft.Maui.Controls.Setter> sets the `Property` of the object defined in `TargetName` to `Value`:
 
 ```xaml
 <Setter TargetName="label"
@@ -171,7 +171,7 @@ The `Setter` type has a `TargetName` property, of type `string`, that represents
 In this example, a <xref:Microsoft.Maui.Controls.Label> named `label` will have its `TextColor` property set to `Red`. When setting the `TargetName` property you must specify the full path to the property in `Property`. Therefore, to set the `TextColor` property on a <xref:Microsoft.Maui.Controls.Label>, `Property` is specified as `Label.TextColor`.
 
 > [!NOTE]
-> Any property referenced by a `Setter` object must be backed by a bindable property.
+> Any property referenced by a <xref:Microsoft.Maui.Controls.Setter> object must be backed by a bindable property.
 
 The following example shows how to set state on multiple objects, from a single visual state group:
 
@@ -206,7 +206,7 @@ In this example, the `Normal` state is active when the <xref:Microsoft.Maui.Cont
 Then, when the <xref:Microsoft.Maui.Controls.Button> is released it's rescaled to its default value of 1, and the <xref:Microsoft.Maui.Controls.Entry> displays any previously entered text.
 
 > [!IMPORTANT]
-> Property paths are unsupported in `Setter` elements that specify the `TargetName` property.
+> Property paths are unsupported in <xref:Microsoft.Maui.Controls.Setter> elements that specify the `TargetName` property.
 
 ## Define custom visual states
 
@@ -298,15 +298,15 @@ In this example, the `GoToState` method is called from the constructor to initia
 
 ## Visual state triggers
 
-Visual states support state triggers, which are a specialized group of triggers that define the conditions under which a `VisualState` should be applied.
+Visual states support state triggers, which are a specialized group of triggers that define the conditions under which a <xref:Microsoft.Maui.Controls.VisualState> should be applied.
 
-State triggers are added to the `StateTriggers` collection of a `VisualState`. This collection can contain a single state trigger, or multiple state triggers. A `VisualState` will be applied when any state triggers in the collection are active.
+State triggers are added to the <xref:Microsoft.Maui.Controls.VisualElement.StateTriggers> collection of a <xref:Microsoft.Maui.Controls.VisualState>. This collection can contain a single state trigger, or multiple state triggers. A <xref:Microsoft.Maui.Controls.VisualState> will be applied when any state triggers in the collection are active.
 
-When using state triggers to control visual states, .NET MAUI uses the following precedence rules to determine which trigger (and corresponding `VisualState`) will be active:
+When using state triggers to control visual states, .NET MAUI uses the following precedence rules to determine which trigger (and corresponding <xref:Microsoft.Maui.Controls.VisualState>) will be active:
 
-1. Any trigger that derives from `StateTriggerBase`.
-1. An `AdaptiveTrigger` activated due to the `MinWindowWidth` condition being met.
-1. An `AdaptiveTrigger` activated due to the `MinWindowHeight` condition being met.
+1. Any trigger that derives from <xref:Microsoft.Maui.Controls.StateTriggerBase>.
+1. An <xref:Microsoft.Maui.Controls.AdaptiveTrigger> activated due to the <xref:Microsoft.Maui.Controls.AdaptiveTrigger.MinWindowWidth> condition being met.
+1. An <xref:Microsoft.Maui.Controls.AdaptiveTrigger> activated due to the <xref:Microsoft.Maui.Controls.AdaptiveTrigger.MinWindowHeight> condition being met.
 
 If multiple triggers are simultaneously active (for example, two custom triggers) then the first trigger declared in the markup takes precedence.
 

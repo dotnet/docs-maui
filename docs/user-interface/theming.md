@@ -8,11 +8,11 @@ ms.date: 02/25/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-theming)
 
-.NET Multi-platform App UI (.NET MAUI) apps can respond to style changes dynamically at runtime by using the `DynamicResource` markup extension. This markup extension is similar to the `StaticResource` markup extension, in that both use a dictionary key to fetch a value from a `ResourceDictionary`. However, while the `StaticResource` markup extension performs a single dictionary lookup, the `DynamicResource` markup extension maintains a link to the dictionary key. Therefore, if the value associated with the key is replaced, the change is applied to the <xref:Microsoft.Maui.Controls.VisualElement>. This enables runtime theming to be implemented in .NET MAUI apps.
+.NET Multi-platform App UI (.NET MAUI) apps can respond to style changes dynamically at runtime by using the `DynamicResource` markup extension. This markup extension is similar to the `StaticResource` markup extension, in that both use a dictionary key to fetch a value from a <xref:Microsoft.Maui.Controls.ResourceDictionary>. However, while the `StaticResource` markup extension performs a single dictionary lookup, the `DynamicResource` markup extension maintains a link to the dictionary key. Therefore, if the value associated with the key is replaced, the change is applied to the <xref:Microsoft.Maui.Controls.VisualElement>. This enables runtime theming to be implemented in .NET MAUI apps.
 
 The process for implementing runtime theming in a .NET MAUI app is as follows:
 
-1. Define the resources for each theme in a `ResourceDictionary`. For more information, see [Define themes](#define-themes).
+1. Define the resources for each theme in a <xref:Microsoft.Maui.Controls.ResourceDictionary>. For more information, see [Define themes](#define-themes).
 1. Set a default theme in the app's *App.xaml* file. For more information, see [Set a default theme](#set-a-default-theme).
 1. Consume theme resources in the app, using the `DynamicResource` markup extension. For more information, see [Consume theme resources](#consume-theme-resources).
 1. Add code to load a theme at runtime. For more information, see [Load a theme at runtime](#load-a-theme-at-runtime).
@@ -31,9 +31,9 @@ The following screenshot shows themed pages, with the iOS app using a light them
 
 ## Define themes
 
-A theme is defined as a collection of resource objects stored in a `ResourceDictionary`.
+A theme is defined as a collection of resource objects stored in a <xref:Microsoft.Maui.Controls.ResourceDictionary>.
 
-The following example shows a `ResourceDictionary` for a light theme named `LightTheme`:
+The following example shows a <xref:Microsoft.Maui.Controls.ResourceDictionary> for a light theme named `LightTheme`:
 
 ```xaml
 <ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -50,7 +50,7 @@ The following example shows a `ResourceDictionary` for a light theme named `Ligh
 </ResourceDictionary>
 ```
 
-The following example shows a `ResourceDictionary` for a dark theme named `DarkTheme`:
+The following example shows a <xref:Microsoft.Maui.Controls.ResourceDictionary> for a dark theme named `DarkTheme`:
 
 ```xaml
 <ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -67,14 +67,14 @@ The following example shows a `ResourceDictionary` for a dark theme named `DarkT
 </ResourceDictionary>
 ```
 
-Each `ResourceDictionary` contains `Color` resources that define their respective themes, with each `ResourceDictionary` using identical key values. For more information about resource dictionaries, see [Resource Dictionaries](~/fundamentals/resource-dictionaries.md).
+Each <xref:Microsoft.Maui.Controls.ResourceDictionary> contains `Color` resources that define their respective themes, with each <xref:Microsoft.Maui.Controls.ResourceDictionary> using identical key values. For more information about resource dictionaries, see [Resource Dictionaries](~/fundamentals/resource-dictionaries.md).
 
 > [!IMPORTANT]
-> A code behind file is required for each `ResourceDictionary`, which calls the `InitializeComponent` method. This is necessary so that a CLR object representing the chosen theme can be created at runtime.
+> A code behind file is required for each <xref:Microsoft.Maui.Controls.ResourceDictionary>, which calls the `InitializeComponent` method. This is necessary so that a CLR object representing the chosen theme can be created at runtime.
 
 ## Set a default theme
 
-An app requires a default theme, so that controls have values for the resources they consume. A default theme can be set by merging the theme's `ResourceDictionary` into the app-level `ResourceDictionary` that's defined in *App.xaml*:
+An app requires a default theme, so that controls have values for the resources they consume. A default theme can be set by merging the theme's <xref:Microsoft.Maui.Controls.ResourceDictionary> into the app-level <xref:Microsoft.Maui.Controls.ResourceDictionary> that's defined in *App.xaml*:
 
 ```xaml
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -90,7 +90,7 @@ For more information about merging resource dictionaries, see [Merged resource d
 
 ## Consume theme resources
 
-When an app wants to consume a resource that's stored in a `ResourceDictionary` that represents a theme, it should do so with the `DynamicResource` markup extension. This ensures that if a different theme is selected at runtime, the values from the new theme will be applied.
+When an app wants to consume a resource that's stored in a <xref:Microsoft.Maui.Controls.ResourceDictionary> that represents a theme, it should do so with the `DynamicResource` markup extension. This ensures that if a different theme is selected at runtime, the values from the new theme will be applied.
 
 The following example shows three styles from that can be applied to all <xref:Microsoft.Maui.Controls.Label> objects in app:
 
@@ -179,8 +179,8 @@ For more information about styling, see [Style apps using XAML](~/user-interface
 
 When a theme is selected at runtime, an app should:
 
-1. Remove the current theme from the app. This is achieved by clearing the `MergedDictionaries` property of the app-level `ResourceDictionary`.
-2. Load the selected theme. This is achieved by adding an instance of the selected theme to the `MergedDictionaries` property of the app-level `ResourceDictionary`.
+1. Remove the current theme from the app. This is achieved by clearing the `MergedDictionaries` property of the app-level <xref:Microsoft.Maui.Controls.ResourceDictionary>.
+2. Load the selected theme. This is achieved by adding an instance of the selected theme to the `MergedDictionaries` property of the app-level <xref:Microsoft.Maui.Controls.ResourceDictionary>.
 
 Any <xref:Microsoft.Maui.Controls.VisualElement> objects that set properties with the `DynamicResource` markup extension will then apply the new theme values. This occurs because the `DynamicResource` markup extension maintains a link to dictionary keys. Therefore, when the values associated with keys are replaced, the changes are applied to the <xref:Microsoft.Maui.Controls.VisualElement> objects.
 

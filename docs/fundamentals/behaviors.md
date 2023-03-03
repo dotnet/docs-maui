@@ -286,7 +286,7 @@ The following code example shows an *explicit* style for the `NumericValidationS
 </Style>
 ```
 
-The `Style` can be applied to an <xref:Microsoft.Maui.Controls.Entry> by setting its `Style` property to the style using the `StaticResource` markup extension:
+The <xref:Microsoft.Maui.Controls.Style> can be applied to an <xref:Microsoft.Maui.Controls.Entry> by setting its <xref:Microsoft.Maui.Controls.Style> property to the style using the `StaticResource` markup extension:
 
 ```xaml
 <Entry Placeholder="Enter a System.Double" Style="{StaticResource NumericValidationStyle}">
@@ -295,7 +295,7 @@ The `Style` can be applied to an <xref:Microsoft.Maui.Controls.Entry> by setting
 For more information about styles, see [Styles](~/user-interface/styles/xaml.md).
 
 > [!NOTE]
-> While you can add bindable properties to a behavior that is set or queried in XAML, if you do create behaviors that have state they should not be shared between controls in a `Style` in a `ResourceDictionary`.
+> While you can add bindable properties to a behavior that is set or queried in XAML, if you do create behaviors that have state they should not be shared between controls in a <xref:Microsoft.Maui.Controls.Style> in a <xref:Microsoft.Maui.Controls.ResourceDictionary>.
 
 ### Remove a .NET MAUI behavior
 

@@ -168,7 +168,7 @@ For more information about creating custom views, see [ContentView](~/user-inter
 
 ### Create a DataTemplate as a resource
 
-Data templates can be created as reusable objects in a `ResourceDictionary`. This is achieved by giving each `DataTemplate` a unique `x:Key` value, which provides it with a descriptive key in the `ResourceDictionary`. A control such as <xref:Microsoft.Maui.Controls.CollectionView> can then set its `ItemTemplate` property to the `DataTemplate`:
+Data templates can be created as reusable objects in a <xref:Microsoft.Maui.Controls.ResourceDictionary>. This is achieved by giving each `DataTemplate` a unique `x:Key` value, which provides it with a descriptive key in the <xref:Microsoft.Maui.Controls.ResourceDictionary>. A control such as <xref:Microsoft.Maui.Controls.CollectionView> can then set its `ItemTemplate` property to the `DataTemplate`:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -198,7 +198,7 @@ Data templates can be created as reusable objects in a `ResourceDictionary`. Thi
 </ContentPage>
 ```
 
-In this example, the `DataTemplate` is assigned to the `CollectionView.ItemTemplate` property by using the `StaticResource` markup extension. While the `DataTemplate` is defined in the page's `ResourceDictionary`, it could also be defined at the control-level or app-level.
+In this example, the `DataTemplate` is assigned to the `CollectionView.ItemTemplate` property by using the `StaticResource` markup extension. While the `DataTemplate` is defined in the page's <xref:Microsoft.Maui.Controls.ResourceDictionary>, it could also be defined at the control-level or app-level.
 
 ## Create a DataTemplateSelector
 
@@ -259,7 +259,7 @@ The following example shows declaring `PersonDataTemplateSelector` as a page-lev
 </ContentPage>
 ```
 
-In this example, the page-level `ResourceDictionary` defines two `DataTemplate` objects and a `PersonDataTemplateSelector` object. The `PersonDataTemplateSelector` object sets its `ValidTemplate` and `InvalidTemplate` properties to the `DataTemplate` objects using the `StaticResource` markup extension. While the resources are defined in the page's `ResourceDictionary`, they could also be defined at the control-level or app-level.
+In this example, the page-level <xref:Microsoft.Maui.Controls.ResourceDictionary> defines two `DataTemplate` objects and a `PersonDataTemplateSelector` object. The `PersonDataTemplateSelector` object sets its `ValidTemplate` and `InvalidTemplate` properties to the `DataTemplate` objects using the `StaticResource` markup extension. While the resources are defined in the page's <xref:Microsoft.Maui.Controls.ResourceDictionary>, they could also be defined at the control-level or app-level.
 
 The `PersonDataTemplateSelector` object can be consumed by assigning it to the `CollectionView.ItemTemplate` property:
 
