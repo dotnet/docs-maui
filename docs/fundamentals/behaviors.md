@@ -19,7 +19,7 @@ Behaviors enable you to implement code that you would normally have to write as 
 .NET MAUI supports two different types of behaviors:
 
 - Attached behaviors are `static` classes with one or more attached properties. For more information about attached behaviors, see [Attached behaviors](#attached-behaviors).
-- .NET MAUI behaviors are classes that derive from the `Behavior` or `Behavior<T>` class, where `T` is the type of the control to which the behavior should apply. For more information, see [.NET MAUI Behaviors](#net-maui-behaviors).
+- .NET MAUI behaviors are classes that derive from the <xref:Microsoft.Maui.Controls.Behavior> or <xref:Microsoft.Maui.Controls.Behavior`1> class, where `T` is the type of the control to which the behavior should apply. For more information, see [.NET MAUI Behaviors](#net-maui-behaviors).
 
 ## Attached behaviors
 
@@ -125,11 +125,11 @@ At runtime, the `OnAttachBehaviorChanged` method will be executed when the value
 
 ## .NET MAUI behaviors
 
-.NET MAUI behaviors are created by deriving from the `Behavior` or `Behavior<T>` class.
+.NET MAUI behaviors are created by deriving from the <xref:Microsoft.Maui.Controls.Behavior> or <xref:Microsoft.Maui.Controls.Behavior`1> class.
 
 The process for creating a .NET MAUI behavior is as follows:
 
-1. Create a class that inherits from the `Behavior` or `Behavior<T>` class, where `T` is the type of the control to which the behavior should apply.
+1. Create a class that inherits from the <xref:Microsoft.Maui.Controls.Behavior> or <xref:Microsoft.Maui.Controls.Behavior`1> class, where `T` is the type of the control to which the behavior should apply.
 1. Override the `OnAttachedTo` method to perform any required setup.
 1. Override the `OnDetachingFrom` method to perform any required cleanup.
 1. Implement the core functionality of the behavior.
@@ -163,7 +163,7 @@ The behavior can then be consumed by attaching it to the `Behaviors` collection 
 
 ### Create a .NET MAUI Behavior
 
-A .NET MAUI behavior can be implemented by creating a class that derives from the `Behavior` or `Behavior<T>` class, and overriding the `OnAttachedTo` and `OnDetachingFrom` methods.
+A .NET MAUI behavior can be implemented by creating a class that derives from the <xref:Microsoft.Maui.Controls.Behavior> or <xref:Microsoft.Maui.Controls.Behavior`1> class, and overriding the `OnAttachedTo` and `OnDetachingFrom` methods.
 
 The following example shows the `NumericValidationBehavior` class, which highlights the value entered by the user into an <xref:Microsoft.Maui.Controls.Entry> control in red if it's not a `double`:
 
@@ -191,7 +191,7 @@ public class NumericValidationBehavior : Behavior<Entry>
 }
 ```
 
-In this example, the `NumericValidationBehavior` class derives from the `Behavior<T>` class, where `T` is an <xref:Microsoft.Maui.Controls.Entry>. The `OnAttachedTo` method registers an event handler for the `TextChanged` event, with the `OnDetachingFrom` method de-registering the `TextChanged` event to prevent memory leaks. The core functionality of the behavior is provided by the `OnEntryTextChanged` method, which parses the value entered in the <xref:Microsoft.Maui.Controls.Entry> and sets the `TextColor` property to red if the value isn't a `double`.
+In this example, the `NumericValidationBehavior` class derives from the <xref:Microsoft.Maui.Controls.Behavior`1> class, where `T` is an <xref:Microsoft.Maui.Controls.Entry>. The `OnAttachedTo` method registers an event handler for the `TextChanged` event, with the `OnDetachingFrom` method de-registering the `TextChanged` event to prevent memory leaks. The core functionality of the behavior is provided by the `OnEntryTextChanged` method, which parses the value entered in the <xref:Microsoft.Maui.Controls.Entry> and sets the `TextColor` property to red if the value isn't a `double`.
 
 > [!IMPORTANT]
 > .NET MAUI does not set the `BindingContext` of a behavior, because behaviors can be shared and applied to multiple controls through styles.
