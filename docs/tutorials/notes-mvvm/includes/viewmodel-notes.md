@@ -26,9 +26,9 @@ Create the **Notes viewmodel**:
     using CommunityToolkit.Mvvm.Input;
     using System.Collections.ObjectModel;
     using System.Windows.Input;
-    
+
     namespace Notes.ViewModels;
-    
+
     internal class NotesViewModel: IQueryAttributable
     {
     }
@@ -75,6 +75,7 @@ Now that the viewmodel has been created, update the **AllNotes view** to point t
 - Add the `xmlns:viewModels` XML namespace that targets the `Notes.ViewModels` .NET namespace.
 - Add a `BindingContext` to the page.
 - Remove the toolbar button's `Clicked` event and use the `Command` property.
+- Change the `CollectionView` to bind its `ItemSource` to `AllNotes`.
 - Change the `CollectionView` to use commanding to react to when the selected item changes.
 
 Update the **AllNotes view**:
@@ -82,7 +83,7 @@ Update the **AllNotes view**:
 01. In the **Solution Explorer** pane of Visual Studio, double-click on **Views\\AllNotesPage.xaml**.
 01. Paste in the following code:
 
-    :::code language="xaml" source="../snippets/viewmodel-shared/csharp/Notes/Views/AllNotesPage.xaml" id="full" highlight="3,7,12,20-21":::
+    :::code language="xaml" source="../snippets/viewmodel-shared/csharp/Notes/Views/AllNotesPage.xaml" id="full" highlight="3,7,12,17,20-21":::
 
 The toolbar no longer uses the `Clicked` event and instead uses a command.
 
