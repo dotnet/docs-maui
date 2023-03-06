@@ -1,7 +1,7 @@
 ---
 title: "RadioButton"
 description: "The .NET MAUI RadioButton is a type of button that allows users to select one option from a set. Each option is represented by one radio button, and you can only select one radio button in a group."
-ms.date: 02/15/2022
+ms.date: 3/6/2023
 ---
 
 # RadioButton
@@ -308,20 +308,20 @@ The following XAML shows a `ControlTemplate` that can be used to redefine the vi
 <ContentPage ...>
     <ContentPage.Resources>
         <ControlTemplate x:Key="RadioButtonTemplate">
-            <Frame BorderColor="#F3F2F1"
-                   BackgroundColor="#F3F2F1"
-                   HasShadow="False"
-                   HeightRequest="100"
-                   WidthRequest="100"
-                   HorizontalOptions="Start"
-                   VerticalOptions="Start"
-                   Padding="0">
+            <Border Stroke="#F3F2F1"
+                    StrokeThickness="2"
+                    StrokeShape="RoundRectangle 10"
+                    BackgroundColor="#F3F2F1"
+                    HeightRequest="90"
+                    WidthRequest="90"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Start">
                 <VisualStateManager.VisualStateGroups>
                     <VisualStateGroupList>
                         <VisualStateGroup x:Name="CheckedStates">
                             <VisualState x:Name="Checked">
                                 <VisualState.Setters>
-                                    <Setter Property="BorderColor"
+                                    <Setter Property="Stroke"
                                             Value="#FF3300" />
                                     <Setter TargetName="check"
                                             Property="Opacity"
@@ -332,7 +332,7 @@ The following XAML shows a `ControlTemplate` that can be used to redefine the vi
                                 <VisualState.Setters>
                                     <Setter Property="BackgroundColor"
                                             Value="#F3F2F1" />
-                                    <Setter Property="BorderColor"
+                                    <Setter Property="Stroke"
                                             Value="#F3F2F1" />
                                     <Setter TargetName="check"
                                             Property="Opacity"
@@ -343,8 +343,9 @@ The following XAML shows a `ControlTemplate` that can be used to redefine the vi
                     </VisualStateGroupList>
                 </VisualStateManager.VisualStateGroups>
                 <Grid Margin="4"
-                      WidthRequest="100">
-                    <Grid WidthRequest="18"
+                      WidthRequest="90">
+                    <Grid Margin="0,0,4,0"
+                          WidthRequest="18"
                           HeightRequest="18"
                           HorizontalOptions="End"
                           VerticalOptions="Start">
@@ -363,7 +364,7 @@ The following XAML shows a `ControlTemplate` that can be used to redefine the vi
                     </Grid>
                     <ContentPresenter />
                 </Grid>
-            </Frame>
+            </Border>
         </ControlTemplate>
 
         <Style TargetType="RadioButton">
@@ -375,7 +376,7 @@ The following XAML shows a `ControlTemplate` that can be used to redefine the vi
 </ContentPage>
 ```
 
-In this example, the root element of the `ControlTemplate` is a <xref:Microsoft.Maui.Controls.Frame> object that defines `Checked` and `Unchecked` visual states. The <xref:Microsoft.Maui.Controls.Frame> object uses a combination of <xref:Microsoft.Maui.Controls.Grid>, <xref:Microsoft.Maui.Controls.Shapes.Ellipse>, and `ContentPresenter` objects to define the visual structure of a <xref:Microsoft.Maui.Controls.RadioButton>. The example also includes an *implicit* style that will assign the `RadioButtonTemplate` to the `ControlTemplate` property of any <xref:Microsoft.Maui.Controls.RadioButton> objects on the page.
+In this example, the root element of the `ControlTemplate` is a <xref:Microsoft.Maui.Controls.Border> object that defines `Checked` and `Unchecked` visual states. The <xref:Microsoft.Maui.Controls.Border> object uses a combination of <xref:Microsoft.Maui.Controls.Grid>, <xref:Microsoft.Maui.Controls.Shapes.Ellipse>, and `ContentPresenter` objects to define the visual structure of a <xref:Microsoft.Maui.Controls.RadioButton>. The example also includes an *implicit* style that will assign the `RadioButtonTemplate` to the `ControlTemplate` property of any <xref:Microsoft.Maui.Controls.RadioButton> objects on the page.
 
 > [!NOTE]
 > The `ContentPresenter` object marks the location in the visual structure where <xref:Microsoft.Maui.Controls.RadioButton> content will be displayed.
