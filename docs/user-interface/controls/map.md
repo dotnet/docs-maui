@@ -182,7 +182,7 @@ A <xref:Microsoft.Maui.Controls.Maps.Map> can be displayed by adding it to a lay
 ```
 
 > [!NOTE]
-> An additional `xmlns` namespace definition is required to reference the `Microsoft.Maui.Controls.Maps.Map` control. In the previous example the `Microsoft.Maui.Controls.Maps` namespace is referenced through the `maps` keyword.
+> In XAML, an `xmlns` namespace definition should be added for the <xref:Microsoft.Maui.Controls.Maps.Map> control. While this isn't required, it does prevent a collision between the `Polygon` and `Polyline` types, which exist in both the <xref:Microsoft.Maui.Controls.Maps> and <xref:Microsoft.Maui.Controls.Shapes> namespaces.
 
 The equivalent C# code is:
 
@@ -207,6 +207,9 @@ This example calls the default <xref:Microsoft.Maui.Controls.Maps.Map> construct
 :::image type="content" source="media/map/map-default.png" alt-text="Screenshot of map control with default location.":::
 
 Alternatively, a `MapSpan` argument can be passed to a <xref:Microsoft.Maui.Controls.Maps.Map> constructor to set the center point and zoom level of the map when it's loaded. For more information, see [Display a specific location on a map](#display-a-specific-location-on-a-map).
+
+> [!IMPORTANT]
+> .NET MAUI has two `Map` types - <xref:Microsoft.Maui.Controls.Maps.Map?displayProperty=fullName> and <xref:Microsoft.Maui.ApplicationModel.Map?displayProperty=fullName>. Because the <xref:Microsoft.Maui.ApplicationModel> namespace is one of .NET MAUI's `global using` directives, when using the <xref:Microsoft.Maui.Controls.Maps.Map?displayProperty=fullName> control from code you'll have to fully qualify your `Map` usage or use a [using alias](/dotnet/csharp/language-reference/keywords/using-directive#using-alias).
 
 ### Map types
 
