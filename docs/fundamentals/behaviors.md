@@ -19,7 +19,7 @@ Behaviors enable you to implement code that you would normally have to write as 
 .NET MAUI supports two different types of behaviors:
 
 - Attached behaviors are `static` classes with one or more attached properties. For more information about attached behaviors, see [Attached behaviors](#attached-behaviors).
-- .NET MAUI behaviors are classes that derive from the `Behavior` or `Behavior<T>` class, where `T` is the type of the control to which the behavior should apply. For more information, see [.NET MAUI Behaviors](#net-maui-behaviors).
+- .NET MAUI behaviors are classes that derive from the <xref:Microsoft.Maui.Controls.Behavior> or <xref:Microsoft.Maui.Controls.Behavior`1> class, where `T` is the type of the control to which the behavior should apply. For more information, see [.NET MAUI Behaviors](#net-maui-behaviors).
 
 ## Attached behaviors
 
@@ -125,13 +125,13 @@ At runtime, the `OnAttachBehaviorChanged` method will be executed when the value
 
 ## .NET MAUI behaviors
 
-.NET MAUI behaviors are created by deriving from the `Behavior` or `Behavior<T>` class.
+.NET MAUI behaviors are created by deriving from the <xref:Microsoft.Maui.Controls.Behavior> or <xref:Microsoft.Maui.Controls.Behavior`1> class.
 
 The process for creating a .NET MAUI behavior is as follows:
 
-1. Create a class that inherits from the `Behavior` or `Behavior<T>` class, where `T` is the type of the control to which the behavior should apply.
-1. Override the `OnAttachedTo` method to perform any required setup.
-1. Override the `OnDetachingFrom` method to perform any required cleanup.
+1. Create a class that inherits from the <xref:Microsoft.Maui.Controls.Behavior> or <xref:Microsoft.Maui.Controls.Behavior`1> class, where `T` is the type of the control to which the behavior should apply.
+1. Override the <xref:Microsoft.Maui.Controls.Behavior`1.OnAttachedTo%2A> method to perform any required setup.
+1. Override the <xref:Microsoft.Maui.Controls.Behavior`1.OnDetachingFrom%2A> method to perform any required cleanup.
 1. Implement the core functionality of the behavior.
 
 This results in the structure shown in the following example:
@@ -155,15 +155,15 @@ public class MyBehavior : Behavior<View>
 }
 ```
 
-The `OnAttachedTo` method is called immediately after the behavior is attached to a control. This method receives a reference to the control to which it is attached, and can be used to register event handlers or perform other setup that's required to support the behavior functionality. For example, you could subscribe to an event on a control. The behavior functionality would then be implemented in the event handler for the event.
+The <xref:Microsoft.Maui.Controls.Behavior`1.OnAttachedTo%2A> method is called immediately after the behavior is attached to a control. This method receives a reference to the control to which it is attached, and can be used to register event handlers or perform other setup that's required to support the behavior functionality. For example, you could subscribe to an event on a control. The behavior functionality would then be implemented in the event handler for the event.
 
-The `OnDetachingFrom` method is called when the behavior is removed from the control. This method receives a reference to the control to which it is attached, and is used to perform any required cleanup. For example, you could unsubscribe from an event on a control to prevent memory leaks.
+The <xref:Microsoft.Maui.Controls.Behavior`1.OnDetachingFrom%2A> method is called when the behavior is removed from the control. This method receives a reference to the control to which it is attached, and is used to perform any required cleanup. For example, you could unsubscribe from an event on a control to prevent memory leaks.
 
-The behavior can then be consumed by attaching it to the `Behaviors` collection of the control.
+The behavior can then be consumed by attaching it to the <xref:Microsoft.Maui.Controls.VisualElement.Behaviors> collection of the control.
 
 ### Create a .NET MAUI Behavior
 
-A .NET MAUI behavior can be implemented by creating a class that derives from the `Behavior` or `Behavior<T>` class, and overriding the `OnAttachedTo` and `OnDetachingFrom` methods.
+A .NET MAUI behavior can be implemented by creating a class that derives from the <xref:Microsoft.Maui.Controls.Behavior> or <xref:Microsoft.Maui.Controls.Behavior`1> class, and overriding the <xref:Microsoft.Maui.Controls.Behavior`1.OnAttachedTo%2A> and <xref:Microsoft.Maui.Controls.Behavior`1.OnDetachingFrom%2A> methods.
 
 The following example shows the `NumericValidationBehavior` class, which highlights the value entered by the user into an <xref:Microsoft.Maui.Controls.Entry> control in red if it's not a `double`:
 
@@ -191,14 +191,14 @@ public class NumericValidationBehavior : Behavior<Entry>
 }
 ```
 
-In this example, the `NumericValidationBehavior` class derives from the `Behavior<T>` class, where `T` is an <xref:Microsoft.Maui.Controls.Entry>. The `OnAttachedTo` method registers an event handler for the `TextChanged` event, with the `OnDetachingFrom` method de-registering the `TextChanged` event to prevent memory leaks. The core functionality of the behavior is provided by the `OnEntryTextChanged` method, which parses the value entered in the <xref:Microsoft.Maui.Controls.Entry> and sets the `TextColor` property to red if the value isn't a `double`.
+In this example, the `NumericValidationBehavior` class derives from the <xref:Microsoft.Maui.Controls.Behavior`1> class, where `T` is an <xref:Microsoft.Maui.Controls.Entry>. The <xref:Microsoft.Maui.Controls.Behavior`1.OnAttachedTo%2A> method registers an event handler for the `TextChanged` event, with the <xref:Microsoft.Maui.Controls.Behavior`1.OnDetachingFrom%2A> method de-registering the `TextChanged` event to prevent memory leaks. The core functionality of the behavior is provided by the `OnEntryTextChanged` method, which parses the value entered in the <xref:Microsoft.Maui.Controls.Entry> and sets the `TextColor` property to red if the value isn't a `double`.
 
 > [!IMPORTANT]
 > .NET MAUI does not set the `BindingContext` of a behavior, because behaviors can be shared and applied to multiple controls through styles.
 
 ### Consume a .NET MAUI behavior
 
-Every .NET MAUI control has a `Behaviors` collection, to which one or more behaviors can be added:
+Every .NET MAUI control has a <xref:Microsoft.Maui.Controls.VisualElement.Behaviors> collection, to which one or more behaviors can be added:
 
 ```xaml
 <Entry Placeholder="Enter a System.Double">
@@ -224,7 +224,7 @@ The following screenshot shows the .NET MAUI behavior responding to invalid inpu
 
 ### Consume a .NET MAUI behavior with a style
 
-.NET MAUI behaviors can be consumed by an explicit or implicit style. However, creating a style that sets the `Behaviors` property of a control is not possible because the property is read-only. The solution is to add an attached property to the behavior class that controls adding and removing the behavior. The process is as follows:
+.NET MAUI behaviors can be consumed by an explicit or implicit style. However, creating a style that sets the <xref:Microsoft.Maui.Controls.VisualElement.Behaviors> property of a control is not possible because the property is read-only. The solution is to add an attached property to the behavior class that controls adding and removing the behavior. The process is as follows:
 
 1. Add an attached property to the behavior class that will be used to control the addition or removal of the behavior to the control to which the behavior will be attached. Ensure that the attached property registers a `propertyChanged` delegate that will be executed when the value of the property changes.
 1. Create a `static` getter and setter for the attached property.
@@ -286,7 +286,7 @@ The following code example shows an *explicit* style for the `NumericValidationS
 </Style>
 ```
 
-The `Style` can be applied to an <xref:Microsoft.Maui.Controls.Entry> by setting its `Style` property to the style using the `StaticResource` markup extension:
+The <xref:Microsoft.Maui.Controls.Style> can be applied to an <xref:Microsoft.Maui.Controls.Entry> by setting its <xref:Microsoft.Maui.Controls.NavigableElement.Style> property to the style using the `StaticResource` markup extension:
 
 ```xaml
 <Entry Placeholder="Enter a System.Double" Style="{StaticResource NumericValidationStyle}">
@@ -295,11 +295,11 @@ The `Style` can be applied to an <xref:Microsoft.Maui.Controls.Entry> by setting
 For more information about styles, see [Styles](~/user-interface/styles/xaml.md).
 
 > [!NOTE]
-> While you can add bindable properties to a behavior that is set or queried in XAML, if you do create behaviors that have state they should not be shared between controls in a `Style` in a `ResourceDictionary`.
+> While you can add bindable properties to a behavior that is set or queried in XAML, if you do create behaviors that have state they should not be shared between controls in a <xref:Microsoft.Maui.Controls.Style> in a <xref:Microsoft.Maui.Controls.ResourceDictionary>.
 
 ### Remove a .NET MAUI behavior
 
-The `OnDetachingFrom` method is called when a behavior is removed from a control, and is used to perform any required cleanup such as unsubscribing from an event to prevent a memory leak. However, behaviors are not implicitly removed from controls unless the control's `Behaviors` collection is modified by the `Remove` or `Clear` method:
+The <xref:Microsoft.Maui.Controls.Behavior`1.OnDetachingFrom%2A> method is called when a behavior is removed from a control, and is used to perform any required cleanup such as unsubscribing from an event to prevent a memory leak. However, behaviors are not implicitly removed from controls unless the control's <xref:Microsoft.Maui.Controls.VisualElement.Behaviors> collection is modified by the `Remove` or `Clear` method:
 
 ```csharp
 Behavior toRemove = entry.Behaviors.FirstOrDefault(b => b is NumericValidationStyleBehavior);
@@ -309,7 +309,7 @@ if (toRemove != null)
 }
 ```
 
-Alternatively, the control's `Behaviors` collection can be cleared:
+Alternatively, the control's <xref:Microsoft.Maui.Controls.VisualElement.Behaviors> collection can be cleared:
 
 ```csharp
 entry.Behaviors.Clear();

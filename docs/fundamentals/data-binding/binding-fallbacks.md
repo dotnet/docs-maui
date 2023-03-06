@@ -26,7 +26,7 @@ The following example demonstrates setting the `FallbackValue` property:
 
 The binding on the <xref:Microsoft.Maui.Controls.Label> defines a `FallbackValue` value (delimited by single-quote characters) that will be set on the target if the binding source can't be resolved. Therefore, the value defined by the `FallbackValue` property will be displayed if the `Population` property doesn't exist on the bound object.
 
-Rather than defining `FallbackValue` property values inline, it's recommended to define them as resources in a `ResourceDictionary`. The advantage of this approach is that such values are defined once in a single location, and are more easily localizable. The resources can then be retrieved using the `StaticResource` markup extension:
+Rather than defining `FallbackValue` property values inline, it's recommended to define them as resources in a <xref:Microsoft.Maui.Controls.ResourceDictionary>. The advantage of this approach is that such values are defined once in a single location, and are more easily localizable. The resources can then be retrieved using the `StaticResource` markup extension:
 
 ```xaml
 <Label Text="{Binding Population, FallbackValue={StaticResource populationUnknown}}"
@@ -73,7 +73,7 @@ The following example demonstrates setting the `TargetNullValue` property:
 
 The bindings on the <xref:Microsoft.Maui.Controls.Image> and <xref:Microsoft.Maui.Controls.Label> both define `TargetNullValue` values (delimited by single-quote characters) that will be applied if the binding path returns `null`. Therefore, the values defined by the `TargetNullValue` properties will be displayed for any objects in the collection where the `ImageUrl` and `Location` properties are not defined.
 
-Rather than defining `TargetNullValue` property values inline, it's recommended to define them as resources in a `ResourceDictionary`. The advantage of this approach is that such values are defined once in a single location, and are more easily localizable. The resources can then be retrieved using the `StaticResource` markup extension:
+Rather than defining `TargetNullValue` property values inline, it's recommended to define them as resources in a <xref:Microsoft.Maui.Controls.ResourceDictionary>. The advantage of this approach is that such values are defined once in a single location, and are more easily localizable. The resources can then be retrieved using the `StaticResource` markup extension:
 
 ```xaml
 <Image Source="{Binding ImageUrl, TargetNullValue={StaticResource fallbackImageUrl}}"

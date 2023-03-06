@@ -1,7 +1,7 @@
 ---
 title: "Pair to Mac for iOS development"
 description: "Learn how to use Pair to Mac to connect Visual Studio 2022 to a Mac build host. This article discusses how to enable remote login on the Mac, connect to the Mac from Visual Studio 2022, and manually add a Mac build host to the Windows machine."
-ms.date: 04/12/2022
+ms.date: 3/2/2023
 ---
 
 # Pair to Mac for iOS development
@@ -118,6 +118,14 @@ If you don't see a specific Mac listed in the **Pair to Mac** dialog, add it man
    > When logging in, use your system username.
 
 1. Select **Login** to connect Visual Studio 2022 to the Mac over SSH and add it to the list of known machines.
+
+## Enable automatic connection to known Macs
+
+By default, a connection to previously paired Macs won't be established when Visual Studio starts. However, automatic connection to known Macs can be enabled in Visual Studio by navigating to **Tools > Options > Xamarin > iOS Settings** and ensuring that **Enable auto connection to known Macs** is checked:
+
+:::image type="content" source="media/pair-to-mac/enable-auto-connection.png" alt-text="Enable auto connection to known Macs in Visual Studio.":::
+
+After restarting Visual Studio, it will automatically connect to known Macs on each launch.
 
 ## Automatic Mac provisioning
 

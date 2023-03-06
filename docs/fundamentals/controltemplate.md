@@ -274,7 +274,7 @@ The following XAML example shows an *implicit* style that consumes the `CardView
 </ContentPage>
 ```
 
-In this example, the *implicit* `Style` is automatically applied to each `CardView` object, and sets the `ControlTemplate` property of each `CardView` to `CardViewControlTemplate`.
+In this example, the *implicit* <xref:Microsoft.Maui.Controls.Style> is automatically applied to each `CardView` object, and sets the `ControlTemplate` property of each `CardView` to `CardViewControlTemplate`.
 
 For more information about styles, see [Styles](~/user-interface/styles/xaml.md).
 

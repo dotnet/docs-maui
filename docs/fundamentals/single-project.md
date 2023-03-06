@@ -146,7 +146,7 @@ At build time, raw assets are copied to your app package.
 
 .NET MAUI apps can be partially styled with Cascading Style Sheet (CSS) files. CSS files can be added to your app project by dragging them into any folder of your project, and setting their build action to `MauiCss` in the **Properties** window.
 
-CSS files must be loaded by the `StyleSheet` class before being added to a `ResourceDictionary`:
+CSS files must be loaded by the `StyleSheet` class before being added to a <xref:Microsoft.Maui.Controls.ResourceDictionary>:
 
 ```xaml
 <Application ...>
