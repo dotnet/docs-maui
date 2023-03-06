@@ -207,7 +207,7 @@ The following table shows the .NET MAUI replacements for the functionality in th
 
 .NET MAUI has two `Map` types - <xref:Microsoft.Maui.Controls.Maps.Map?displayProperty=fullName> and <xref:Microsoft.Maui.ApplicationModel.Map?displayProperty=fullName>. Because the <xref:Microsoft.Maui.ApplicationModel> namespace is one of .NET MAUI's `global using` directives, when using the <xref:Microsoft.Maui.Controls.Maps.Map?displayProperty=fullName> control from code you'll have to fully qualify your `Map` usage or use a [using alias](/dotnet/csharp/language-reference/keywords/using-directive#using-alias).
 
-In XAML, an `xmlns` namespace definition should be added for the <xref:Microsoft.Maui.Controls.Maps.Map> control. While this isn't required, it does prevent a collision between the `Polygon` and `Polyline` types, which exist in both the <xref:Microsoft.Maui.Controls.Maps> and <xref:Microsoft.Maui.Controls.Shapes> namespaces. For more information, see [Display a map](~/user-interface/controls/map.md#display-a-map).
+In XAML, an `xmlns` namespace definition should be added for the <xref:Microsoft.Maui.Controls.Maps.Map> control. While this isn't required, it prevents a collision between the `Polygon` and `Polyline` types, which exist in both the <xref:Microsoft.Maui.Controls.Maps> and <xref:Microsoft.Maui.Controls.Shapes> namespaces. For more information, see [Display a map](~/user-interface/controls/map.md#display-a-map).
 
 ### Other changes
 
