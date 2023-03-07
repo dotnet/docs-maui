@@ -8,7 +8,7 @@ ms.date: 03/07/2023
 
 Every .NET Multi-platform App UI (.NET MAUI) app on Android has an *AndroidManifest.xml* file, located in the *Platforms\\Android* folder, that describes essential information about your app to build tools, the Android operating system, and Google Play.
 
-The manifest file for your .NET MAUI Android app is generated as part of the .NET MAUI build process on Android. This build process takes the XML in the *Platforms\\Android\\AndroidManifest.xml* file, and merges it with any XML that is generated from specific attributes that are added to your classes. The resulting manifest file can be found in the *obj* folder. For example, it can be found at *obj\\Debug\\net7.0-android\\AndroidManifest.xml* for debug builds on .NET 7.
+The manifest file for your .NET MAUI Android app is generated as part of the .NET MAUI build process on Android. This build process takes the XML in the *Platforms\\Android\\AndroidManifest.xml* file, and merges it with any XML that's generated from specific attributes on your classes. The resulting manifest file can be found in the *obj* folder. For example, it can be found at *obj\\Debug\\net7.0-android\\AndroidManifest.xml* for debug builds on .NET 7.
 
 <!-- TODO: Uncomment when VS 17.6 P2 is released
 > [!NOTE]
@@ -19,7 +19,7 @@ The manifest file for your .NET MAUI Android app is generated as part of the .NE
 
 All .NET MAUI app's have a `MainActivity` class that derives from <xref:Android.App.Activity>, via the `MauiAppCompatActivity` class, and that has the <xref:Android.App.ActivityAttribute> applied to it. Some apps may include additional classes that derive from <xref:Android.App.Activity> and that have the <xref:Android.App.ActivityAttribute> applied.
 
-At build time, assemblies are scanned for non-`abstract` classes that derive from <xref:Android.App.Activity> and have the <xref:Android.App.ActivityAttribute> declared on them. These classes and attributes are used to build the manifest. For example, consider the following example:
+At build time, assemblies are scanned for non-`abstract` classes that derive from <xref:Android.App.Activity> and that have the <xref:Android.App.ActivityAttribute> applied. These classes and attributes are used to generate the app's manifest. For example, consider the following code:
 
 ```csharp
 using Android.App;
@@ -31,7 +31,7 @@ public class MyActivity : Activity
 }
 ```
 
-This code results in nothing being generated in the Android manifest file. For an `<activity/>` element to be generated, you'd need to add the <xref:Android.App.ActivityAttribute>:
+This example results in nothing being generated in the manifest file. For an `<activity/>` element to be generated, you'd need to add the <xref:Android.App.ActivityAttribute>:
 
 ```csharp
 using Android.App;
@@ -44,7 +44,7 @@ public class MyActivity : Activity
 }
 ```
 
-This example causes the following XML fragment to be added to the Android manifest file:
+This example causes the following XML fragment to be added to the manifest file:
 
 ```xml
 <activity android:name="crc64bdb9c38958c20c7c.MainActivity" />
@@ -81,7 +81,7 @@ This example produces the following XML fragment:
 
 ## Activity title bar
 
-Android app's have a title bar that displays a label. The value used for this is [`android.label`](https://developer.android.com/guide/topics/manifest/application-element.html#label), and .NET MAUI specifies includes it in the generated manifest.
+Android app's have a title bar that displays a label. The value used for this is [`android.label`](https://developer.android.com/guide/topics/manifest/application-element.html#label), and .NET MAUI includes it in the generated manifest.
 
 To specify an activities label on the title bar, use the <xref:Android.App.ActivityAttribute.Label> property:
 
@@ -211,7 +211,7 @@ This declaration causes the following XML fragment to be generated in *obj\\Debu
 
 In this example, all activities in the app will default to the `Maui.SplashTheme` style. If you set an activity's theme to `Maui.MyTheme`, only that activity will use the `Maui.MyTheme` style while any other activities in your app will default to the `Maui.SplashTheme` style that's set in the `<application>` element.
 
-The <xref:Android.App.ApplicationAttribute> isn't the only way to configure `<application>` attributes. You can also insert properties directly into the `<application>` element of the Android manifest file. These properties are then merged into the generated Android manifest file. For more information, see the properties section of <xref:Android.App.ApplicationAttribute>.
+The <xref:Android.App.ApplicationAttribute> isn't the only way to configure `<application>` attributes. You can also insert properties directly into the `<application>` element of the manifest file. These properties are then merged into the generated manifest file. For more information, see the properties section of <xref:Android.App.ApplicationAttribute>.
 
 > [!IMPORTANT]
 > The content of *Platforms\\Android\\AndroidManifest.xml* always overrides data provided by attributes.
