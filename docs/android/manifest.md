@@ -6,12 +6,14 @@ ms.date: 03/07/2023
 
 # Android app manifest
 
-Every .NET Multi-platform App UI (.NET MAUI) app on Android has an *AndroidManifest.xml* file, located in the *Platforms\\Android\\* folder, that describes essential information about your app to build tools, the Android operating system, and Google Play.
+Every .NET Multi-platform App UI (.NET MAUI) app on Android has an *AndroidManifest.xml* file, located in the *Platforms\\Android* folder, that describes essential information about your app to build tools, the Android operating system, and Google Play.
 
-The Android manifest file for your .NET MAUI Android app is generated as part of the .NET MAUI build process on Android. This build process takes the XML in the *Platforms\\Android\\AndroidManifest.xml* file, and merges it with any XML that is generated from specific attributes that are added to your classes. The resulting manifest file can be find in the *obj* folder. For example, it can be found at *obj\\Debug\\net7.0-android\\AndroidManifest.xml* for Debug builds on .NET 7.
+The Android manifest file for your .NET MAUI Android app is generated as part of the .NET MAUI build process on Android. This build process takes the XML in the *Platforms\\Android\\AndroidManifest.xml* file, and merges it with any XML that is generated from specific attributes that are added to your classes. The resulting manifest file can be found in the *obj* folder. For example, it can be found at *obj\\Debug\\net7.0-android\\AndroidManifest.xml* for debug builds on .NET 7.
 
-> ![NOTE]
-> SOMETHING ABOUT THE NEW EDITOR HERE.
+<!-- TODO: Uncomment when VS 17.6 P2 is released
+> [!NOTE]
+> Visual Studio 17.6 Preview 2 and higher includes a new editor that simplifies the process of specifying app details, the target Android version, and required permissions in an Android manifest file.
+-->
 
 ## Generating the manifest
 
@@ -219,10 +221,10 @@ The following table shows the .NET for Android attributes that generate Android 
 
 | Attribute | Description |
 | --------- | ----------- |
-| <xref:Android.App.ActivityAttribute?displayProperty=fullName> | Generates a [activity](https://developer.android.com/guide/topics/manifest/activity-element.html) XML fragment. |
-| <xref:Android.App.ApplicationAttribute?displayProperty=fullName> | Generates a [application](https://developer.android.com/guide/topics/manifest/application-element.html) XML fragment. |
-| <xref:Android.App.InstrumentationAttribute?displayProperty=fullName> | Generates a [instrumentation](https://developer.android.com/guide/topics/manifest/instrumentation-element.html) XML fragment. |
-| <xref:Android.App.IntentFilterAttribute?displayProperty=fullName> | Generates a [intent-filter](https://developer.android.com/guide/topics/manifest/intent-filter-element.html) XML fragment. |
+| <xref:Android.App.ActivityAttribute?displayProperty=fullName> | Generates an [activity](https://developer.android.com/guide/topics/manifest/activity-element.html) XML fragment. |
+| <xref:Android.App.ApplicationAttribute?displayProperty=fullName> | Generates an [application](https://developer.android.com/guide/topics/manifest/application-element.html) XML fragment. |
+| <xref:Android.App.InstrumentationAttribute?displayProperty=fullName> | Generates an [instrumentation](https://developer.android.com/guide/topics/manifest/instrumentation-element.html) XML fragment. |
+| <xref:Android.App.IntentFilterAttribute?displayProperty=fullName> | Generates an [intent-filter](https://developer.android.com/guide/topics/manifest/intent-filter-element.html) XML fragment. |
 | <xref:Android.App.MetaDataAttribute?displayProperty=fullName> | Generates a [meta-data](https://developer.android.com/guide/topics/manifest/meta-data-element.html) XML fragment. |
 | <xref:Android.App.PermissionAttribute?displayProperty=fullName> | Generates a [permission](https://developer.android.com/guide/topics/manifest/permission-element.html) XML fragment. |
 | <xref:Android.App.PermissionGroupAttribute?displayProperty=fullName> | Generates a [permission-group](https://developer.android.com/guide/topics/manifest/permission-group-element.html) XML fragment. |
