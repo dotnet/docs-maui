@@ -17,7 +17,9 @@ The manifest file for your .NET MAUI Android app is generated as part of the .NE
 
 ## Generating the manifest
 
-At compile time, assemblies are scanned for non-`abstract` classes that derive from <xref:Android.App.Activity> and have the <xref:Android.App.ActivityAttribute> declared on them. These classes and attributes are used to build the manifest. For example, consider the following example:
+All .NET MAUI app's have a `MainActivity` class that derives from <xref:Android.App.Activity>, via the `MauiAppCompatActivity` class, and that has the <xref:Android.App.ActivityAttribute> applied to it. Some apps may include additional classes that derive from <xref:Android.App.Activity> and that have the <xref:Android.App.ActivityAttribute> applied.
+
+At build time, assemblies are scanned for non-`abstract` classes that derive from <xref:Android.App.Activity> and have the <xref:Android.App.ActivityAttribute> declared on them. These classes and attributes are used to build the manifest. For example, consider the following example:
 
 ```csharp
 using Android.App;
@@ -29,7 +31,7 @@ public class MyActivity : Activity
 }
 ```
 
-This code results in nothing being generated in the Android manifest file. If you want an `<activity/>` element to be generated, you need to add the <xref:Android.App.ActivityAttribute>:
+This code results in nothing being generated in the Android manifest file. For an `<activity/>` element to be generated, you'd need to add the <xref:Android.App.ActivityAttribute>:
 
 ```csharp
 using Android.App;
@@ -79,7 +81,9 @@ This example produces the following XML fragment:
 
 ## Activity title bar
 
-By default, Android app's have a title bar that displays a label. The value used for this is [`android:label`](https://developer.android.com/guide/topics/manifest/activity-element.html#label). In most cases, this value will differ from your class name. To specify your app's label on the title bar, use the <xref:Android.App.ActivityAttribute.Label> property:
+Android app's have a title bar that displays a label. The value used for this is [`android.label`](https://developer.android.com/guide/topics/manifest/application-element.html#label), and .NET MAUI specifies includes it in the generated manifest.
+
+To specify an activities label on the title bar, use the <xref:Android.App.ActivityAttribute.Label> property:
 
 ```csharp
 using Android.App;
@@ -101,7 +105,7 @@ This example produces the following XML fragment:
 
 ## Launch from the app chooser
 
-By default, your activity will not show up in Android's app launcher screen. This is because there will likely be many activities in your app, and you don't want an icon for every one. To specify which activity should be launchable from the app launcher, use the <xref:Android.App.ActivityAttribute.MainLauncher> property:
+If your .NET MAUI Android app contains multiple activities, and you need to specify which activity should be launchable from the app launcher, use the <xref:Android.App.ActivityAttribute.MainLauncher> property:
 
 ```csharp
 using Android.App;
