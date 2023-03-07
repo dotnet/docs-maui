@@ -15,8 +15,6 @@
           href: get-started/resources.md
         - name: Android
           items:
-            - name: App manifest
-              href: android/manifest.md
             - name: Emulator
               items:
                 - name: How to enable hardware acceleration
@@ -139,6 +137,10 @@
       items:
         - name: Accessibility
           href: fundamentals/accessibility.md
+        - name: Android
+          items:
+              - name: App manifest
+                href: android/manifest.md
         - name: App lifecycle
           href: fundamentals/app-lifecycle.md
         - name: Behaviors
