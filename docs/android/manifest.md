@@ -8,7 +8,7 @@ ms.date: 03/07/2023
 
 Every .NET Multi-platform App UI (.NET MAUI) app on Android has an *AndroidManifest.xml* file, located in the *Platforms\\Android* folder, that describes essential information about your app to build tools, the Android operating system, and Google Play.
 
-The Android manifest file for your .NET MAUI Android app is generated as part of the .NET MAUI build process on Android. This build process takes the XML in the *Platforms\\Android\\AndroidManifest.xml* file, and merges it with any XML that is generated from specific attributes that are added to your classes. The resulting manifest file can be found in the *obj* folder. For example, it can be found at *obj\\Debug\\net7.0-android\\AndroidManifest.xml* for debug builds on .NET 7.
+The manifest file for your .NET MAUI Android app is generated as part of the .NET MAUI build process on Android. This build process takes the XML in the *Platforms\\Android\\AndroidManifest.xml* file, and merges it with any XML that is generated from specific attributes that are added to your classes. The resulting manifest file can be found in the *obj* folder. For example, it can be found at *obj\\Debug\\net7.0-android\\AndroidManifest.xml* for debug builds on .NET 7.
 
 <!-- TODO: Uncomment when VS 17.6 P2 is released
 > [!NOTE]
@@ -17,7 +17,7 @@ The Android manifest file for your .NET MAUI Android app is generated as part of
 
 ## Generating the manifest
 
-At compile time, assemblies are scanned for non-`abstract` classes that derive from <xref:Android.App.Activity> and have the <xref:Android.App.ActivityAttribute> attribute declared on them. These classes and attributes are used to build the manifest. For example, consider the following code:
+At compile time, assemblies are scanned for non-`abstract` classes that derive from <xref:Android.App.Activity> and have the <xref:Android.App.ActivityAttribute> declared on them. These classes and attributes are used to build the manifest. For example, consider the following example:
 
 ```csharp
 using Android.App;
@@ -29,7 +29,7 @@ public class MyActivity : Activity
 }
 ```
 
-This code results in nothing being generated in the Android manifest file. If you want an `<activity/>` element to be generated, you need to use the (xref:Android.App.ActivityAttribute) attribute:
+This code results in nothing being generated in the Android manifest file. If you want an `<activity/>` element to be generated, you need to add the <xref:Android.App.ActivityAttribute>:
 
 ```csharp
 using Android.App;
@@ -48,11 +48,12 @@ This example causes the following XML fragment to be added to the Android manife
 <activity android:name="crc64bdb9c38958c20c7c.MainActivity" />
 ```
 
-The `[Activity]` attribute has no effect on `abstract` types; `abstract` types are ignored.
+> [!NOTE]
+> <xref:Android.App.ActivityAttribute> has no effect on `abstract` types.
 
 ## Activity name
 
-The type name of an activity is based on the CRC64 of the assembly-qualified name of the type being exported. This enables the same fully-qualified name to be provided from two different assemblies and not get a packaging error.
+The type name of an activity is based on the 64-bit cyclic redundancy check of the assembly-qualified name of the type being exported. This enables the same fully-qualified name to be provided from two different assemblies without receiving a packaging error.
 
 To override this default and explicitly specify the name of your activity, use the <xref:Android.App.ActivityAttribute.Name> property:
 
@@ -78,7 +79,7 @@ This example produces the following XML fragment:
 
 ## Activity title bar
 
-By default, Android app's have a title bar that displays a label. The value used for this is [`/manifest/application/activity/@android:label`](https://developer.android.com/guide/topics/manifest/activity-element.html#label). In most cases, this value will differ from your class name. To specify your app's label on the title bar, use the <xref:Android.App.ActivityAttribute.Label> property:
+By default, Android app's have a title bar that displays a label. The value used for this is [`android:label`](https://developer.android.com/guide/topics/manifest/activity-element.html#label). In most cases, this value will differ from your class name. To specify your app's label on the title bar, use the <xref:Android.App.ActivityAttribute.Label> property:
 
 ```csharp
 using Android.App;
@@ -133,14 +134,14 @@ When you add permissions to an Android app, they're recorded in the manifest fil
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 ```
 
-Debug builds automatically set the `INTERNET` permission. However, this permission is set in the generated *Platforms\\Android\\AndroidManifest.xml* file. If you examine the release build version of the manifest at *obj\\Release\\net7.0-android\\AndroidManifest.xml*, the `INTERNET` permission is not present.
+Debug builds automatically set the `INTERNET` permission. However, this permission is set in the generated *obj\\Debug\\net7.0-android\\AndroidManifest.xml* file. If you examine the release build version of the manifest at *obj\\Release\\net7.0-android\\AndroidManifest.xml*, the `INTERNET` permission is not present.
 
 > [!TIP]
 > If you find that switching to a release build causes your app to lose a permission that was available in the debug build, verify that you've explicitly set the required permission in your manifest file.
 
 ## Intent actions and features
 
-The Android manifest file provides a way for you to describe the capabilities of your app. This is achieved done via [Intents](https://developer.android.com/guide/topics/manifest/intent-filter-element.html) and the <xref:Android.App.IntentFilterAttribute> attribute. You can specify which actions are appropriate for your activity with the <xref:Android.App.IntentFilterAttribute> constructor, and which categories are appropriate with the <xref:Android.App.IntentFilterAttribute.Categories> property. At least one activity must be provided, which is why activities are provided in the constructor. An `[IntentFilter]` can be provided multiple times, and each use results in a separate `<intent-filter/>` element within the `<activity/>`:
+The Android manifest file provides a way for you to describe the capabilities of your app. This is achieved via [Intents](https://developer.android.com/guide/topics/manifest/intent-filter-element.html) and the <xref:Android.App.IntentFilterAttribute>. You can specify which actions are appropriate for your activity with the <xref:Android.App.IntentFilterAttribute> constructor, and which categories are appropriate with the <xref:Android.App.IntentFilterAttribute.Categories> property. At least one activity must be provided, which is why activities are provided in the constructor. An `[IntentFilter]` can be provided multiple times, and each use results in a separate `<intent-filter/>` element within the `<activity/>`:
 
 ```csharp
 using Android.App;
@@ -175,7 +176,7 @@ This example produces the following XML fragment:
 
 ### Application element
 
-The Android manifest file also provides a way for you to declare properties for your entire app. This is done via the `<application>` element and its counterpart, the <xref:Android.App.ApplicationAttribute> attribute. Typically, you declare `<application>` properties for your entire app and then override these properties as required on a per-Activity basis.
+The Android manifest file also provides a way for you to declare properties for your entire app. This is achieved via the `<application>` element and its counterpart, the <xref:Android.App.ApplicationAttribute>. Typically, you declare `<application>` properties for your entire app and then override these properties as required on an activity basis.
 
 For example, the following `Application` attribute could be added to *MainApplication.cs* to indicate that the app can be debugged, that its user-readable name is "My Maui App", and that it uses the `Maui.SplashTheme` style as the default theme for all activities:
 
@@ -198,7 +199,7 @@ public class MainApplication : MauiApplication
 
 ```
 
-This declaration causes the following XML fragment to be generated in **obj/Debug/android/AndroidManifest.xml**:
+This declaration causes the following XML fragment to be generated in *obj\\Debug\\net7.0-android\\AndroidManifest.xml*:
 
 ```xml
 <application android:label="MyMauiApp" android:debuggable="true" android:theme="@style/Maui.SplashTheme" ...>
@@ -206,10 +207,10 @@ This declaration causes the following XML fragment to be generated in **obj/Debu
 
 In this example, all activities in the app will default to the `Maui.SplashTheme` style. If you set an activity's theme to `Maui.MyTheme`, only that activity will use the `Maui.MyTheme` style while any other activities in your app will default to the `Maui.SplashTheme` style that's set in the `<application>` element.
 
-The <xref:Android.App.ApplicationAttribute> attribute is not the only way to configure `<application>` attributes. You can also insert properties directly into the `<application>` element of the Android manifest file. These properties are then merged into the generated Android manifest file. For more information, see the properties section of <xref:Android.App.ApplicationAttribute>.
+The <xref:Android.App.ApplicationAttribute> isn't the only way to configure `<application>` attributes. You can also insert properties directly into the `<application>` element of the Android manifest file. These properties are then merged into the generated Android manifest file. For more information, see the properties section of <xref:Android.App.ApplicationAttribute>.
 
 > [!IMPORTANT]
-> The contents of *Platforms\\Android\\AndroidManifest.xml* always override data provided by attributes.
+> The content of *Platforms\\Android\\AndroidManifest.xml* always overrides data provided by attributes.
 
 ## App icon
 
