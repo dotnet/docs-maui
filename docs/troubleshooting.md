@@ -187,7 +187,7 @@ After installing the Xcode command line tools, using `xcode-select --install`, V
 
 ## Couldn't find a valid Xcode app bundle
 
-If you receive the error "Could not find a valid Xcode app bundle at '/Library/Developer/CommandLineTools'", when attempting to build .NET MAUI apps that target iOS or Mac Catalyst, you should try the solution described in [Xcode is not currently installed or could not be found](#xcode-is-not-currently-installed-or-could-not-be-found). If you're still unable to access the **Xcode > Preferences > Locations > Command Line Tools** drop-down, run the following command:
+If you receive the error "Could not find a valid Xcode app bundle at '/Library/Developer/CommandLineTools'", when attempting to build .NET MAUI apps that target iOS or Mac Catalyst, you should try the solution described in [Xcode is not currently installed or could not be found](#xcode-isn't-currently-installed-or-couldn't-be-found). If you're still unable to access the **Xcode > Preferences > Locations > Command Line Tools** drop-down, run the following command:
 
 ```zsh
 sudo xcode-select --reset
