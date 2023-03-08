@@ -1,13 +1,76 @@
 ---
 title: "Troubleshoot known issues"
-description: "Describes the known issues and troubleshooting you can do to resolve these issues for a .NET Multi-platform App UI (.NET MAUI) app."
-ms.date: 11/18/2022
+description: "Describes the known issues and troubleshooting you can do to resolve these issues for a .NET MAUI app."
+ms.date: 03/08/2023
 ---
 
 # Troubleshooting known issues
 
-This article describes some of the known issues with .NET MAUI, and how you can solve or work around them. The [.NET MAUI code repository](https://github.com/dotnet/maui/wiki/Known-Issues) also details some known issues.
+This article describes some of the known issues with .NET Multi-platform App UI (.NET MAUI), and how you can solve or work around them. The [.NET MAUI code repository](https://github.com/dotnet/maui/wiki/Known-Issues) also details some known issues.
 
+## Uninstalling .NET MAUI
+
+There are two options for installing the .NET MAUI workloads:
+
+1. Visual Studio on Windows can install *.msi* files for each workload pack.
+1. `dotnet workload install` commands.
+
+On Windows, if you run a `dotnet workload install` after installing .NET MAUI through the Visual Studio installer, Visual Studio can enter a state where it can't locate the .NET MAUI workloads. You'll then receive build errors telling you to install the .NET MAUI workloads, and it's possible to enter a state where the workloads can't be repaired or re-installed. For more information about this issue, see [The CLI and VS do not play nicely](https://github.com/dotnet/sdk/issues/22388).
+
+### Windows
+
+The solution to this issue on Windows is to uninstall the .NET workloads, uninstall Visual Studio and its workloads, and uninstall the .NET SDK. This can be accomplished with the following process:
+
+1. Run `dotnet workload uninstall maui` if you ever used the `dotnet workload install` commands.
+1. Uninstall any standalone .NET SDK installers from Control Panel. These will have names similar to `Microsoft .NET SDK 6.0.300`.
+1. In every instance of Visual Studio, uninstall the following Visual Studio workloads: .NET Multi-platform App UI development, and .NET desktop development.
+
+Then, check if there are additional `.msi` files that need uninstalling by running the following command:
+
+```cmd
+reg query HKLM\SOFTWARE\Microsoft\Windows\currentversion\uninstall\ -s -f manifest
+```
+
+This `reg query` command will list .NET 6+ SDKS that are still installed on your machine, such as:
+
+```
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\currentversion\uninstall\{EEC1BB5F-3391-43C2-810E-42D78ADF3140}
+    InstallSource    REG_SZ    C:\ProgramData\Microsoft\VisualStudio\Packages\Microsoft.MacCatalyst.Manifest-6.0.300,version=125.179.40883,chip=x64,productarch=neutral\
+    DisplayName    REG_SZ    Microsoft.NET.Sdk.MacCatalyst.Manifest-6.0.300
+```
+
+If you receive similar output, you should copy the GUID for each entry and uninstall the package with the `msiexec` command:
+
+```cmd
+msiexec /x {EEC1BB5F-3391-43C2-810E-42D78ADF3140} /q IGNOREDEPENDENCIES=ALL
+```
+
+You should then keep executing the `reg query` command until it doesn't return any result. Once this happens, and all .NET 6+ SDKs are uninstalled, you should also consider deleting:
+
+- `C:\Program Files\dotnet\sdk-manifests`
+- `C:\Program Files\dotnet\metadata`
+- `C:\Program Files\dotnet\packs`
+- `C:\Program Files\dotnet\library-packs`
+- `C:\Program Files\dotnet\template-packs`
+- `C:\Program Files\dotnet\sdk\6.*` or `C:\Program Files\dotnet\sdk\7.*`
+- `C:\Program Files\dotnet\host\fxr\6.*` or `C:\Program Files\dotnet\host\fxr\7.*`
+
+After following this process, you should be able to re-install .NET MAUI either through Visual Studio, or by installing your chosen .NET SDK version and running the `dotnet workload install maui` command.
+
+### Mac
+
+Visual Studio for Mac's installer and updater uses `dotnet workload install` commands to install the .NET MAUI *.pkg* files.
+
+Since *.pkg* files can't be uninstalled, the simplest way to uninstall the workloads on a Mac is to run the following commands to delete specific folders:
+
+```zsh
+rm -r ~/.dotnet/
+sudo rm -r /usr/local/share/dotnet/
+```
+
+After executing these commands, you should be able to re-install .NET MAUI either through Visual Studio for Mac, or by installing your chosen .NET SDK version and running `dotnet workload install maui` command.
+
+<!-- Leaving here in case this situation occurs with .NET 8
 ## Templates are missing
 
 If you've installed Visual Studio 2022 and the **.NET Multi-platform App UI development** workload, but the .NET MAUI templates are missing, you most likely have a conflict with a .NET 7 preview version. To see if .NET 7 is being resolved as your current version of .NET, perform the following steps:
@@ -67,6 +130,7 @@ Use a `global.json` config file in the folder where you'll create the project. T
     ```
 
 01. Open the project in Visual Studio.
+-->
 
 ## ERROR Platform version is not present.
 
@@ -84,16 +148,9 @@ Visual Studio may not be resolving the required workloads if you try to compile 
 
 ::: moniker-end
 
-This problem is generally caused by one of the following scenarios:
+This problem typically results from having an x86 and x64 SDK installed, and the x86 version is being used. Visual Studio and .NET MAUI require the x64 .NET SDK. If your operating system has a system-wide `PATH` variable that is resolving the x86 SDK first, you'll need to fix that by either removing the x86 .NET SDK from the `PATH` variable, or promoting the x64 .NET SDK so that it resolves first. For more information on troubleshooting x86 vs x64 SDK resolution, see [Install .NET on Windows - Troubleshooting](/dotnet/core/install/windows#it-was-not-possible-to-find-any-installed-net-core-sdks).
 
-- You have a .NET 7 preview installed, which doesn't support .NET MAUI.
-
-  There are a few options to fix this issue, you can either upgrade to a .NET 7 release candidate or remove the .NET 7 preview. Review the steps in the [Templates are missing](#templates-are-missing) section.
-
-- You have both an x86 and x64 SDK installed, and the x86 version is being used.
-
-  Visual Studio and .NET MAUI require the x64 .NET SDK. If your operating system has a system-wide `PATH` variable that is resolving the x86 SDK first, you'll need to fix that by either removing the x86 .NET SDK from the `PATH` variable, or promoting the x64 .NET SDK so that it resolves first. For more information on troubleshooting x86 vs x64 SDK resolution, see [Install .NET on Windows - Troubleshooting](/dotnet/core/install/windows#it-was-not-possible-to-find-any-installed-net-core-sdks).
-
+<!--
 ## The WINDOWS `#if` directive is broken
 
 The `WINDOWS` definition doesn't resolve correctly in the latest release of .NET MAUI. To work around this issue, add the following entry to the `<PropertyGroup>` element of your project file.
@@ -103,6 +160,7 @@ The `WINDOWS` definition doesn't resolve correctly in the latest release of .NET
 ```
 
 The definitions that identify a specific version of Windows will still be missing.
+-->
 
 ## ERROR Type or namespace 'Default' does not exist
 
