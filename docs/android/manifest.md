@@ -47,7 +47,7 @@ public class MyActivity : Activity
 This example causes the following XML fragment to be added to the manifest file:
 
 ```xml
-<activity android:name="crc64bdb9c38958c20c7c.MainActivity" />
+<activity android:name="crc64bdb9c38958c20c7c.MyActivity" />
 ```
 
 > [!NOTE]
@@ -222,7 +222,7 @@ This example produces the following XML fragment:
 
 ```xml
 <activity android:label="My Maui App"
-          android:name="crc64bdb9c38958c20c7c.MainActivity" />
+          android:name="crc64bdb9c38958c20c7c.MyActivity" />
 ```
 
 ## App icon
