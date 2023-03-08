@@ -79,29 +79,7 @@ This example produces the following XML fragment:
 > [!NOTE]
 > You should only use the `Name` property for backward-compatibility reasons, as such renaming can slow down type lookup at runtime.
 
-## Activity title bar
-
-Android app's have a title bar that displays a label. The value used for this is [`android.label`](https://developer.android.com/guide/topics/manifest/application-element.html#label), and .NET MAUI includes it in the generated manifest.
-
-To specify an activities label on the title bar, use the <xref:Android.App.ActivityAttribute.Label> property:
-
-```csharp
-using Android.App;
-
-namespace MyMauiApp;
-
-[Activity (Label="My Maui App")]
-public class MyActivity : Activity
-{
-}
-```
-
-This example produces the following XML fragment:
-
-```xml
-<activity android:label="My Maui App"
-          android:name="crc64bdb9c38958c20c7c.MainActivity" />
-```
+A typical scenario for setting the <xref:Android.App.ActivityAttribute.Name> property is when you need to obtain a readable Java name for your activity. This can be useful if another Android app needs to be able to open your app, or if you have a script for launching your app and testing startup time.
 
 ## Launch from the app chooser
 
@@ -138,7 +116,7 @@ When you add permissions to an Android app, they're recorded in the manifest fil
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 ```
 
-Debug builds automatically set the `INTERNET` permission. However, this permission is set in the generated *obj\\Debug\\net7.0-android\\AndroidManifest.xml* file. If you examine the release build version of the manifest at *obj\\Release\\net7.0-android\\AndroidManifest.xml*, the `INTERNET` permission is not present.
+The .NET MAUI app project template sets the `INTERNET` and `ACCESS_NETWORK_STATE` permissions in *Platforms\\Android\\AndroidManifest.xml*, because most apps require internet access. If you remove the `INTERNET` permission from your manifest, debug builds will still include the permission in the generated manifest file.
 
 > [!TIP]
 > If you find that switching to a release build causes your app to lose a permission that was available in the debug build, verify that you've explicitly set the required permission in your manifest file.
@@ -182,7 +160,7 @@ This example produces the following XML fragment:
 
 The Android manifest file also provides a way for you to declare properties for your entire app. This is achieved via the `<application>` element and its counterpart, the <xref:Android.App.ApplicationAttribute>. Typically, you declare `<application>` properties for your entire app and then override these properties as required on an activity basis.
 
-For example, the following `Application` attribute could be added to *MainApplication.cs* to indicate that the app can be debugged, that its user-readable name is "My Maui App", and that it uses the `Maui.SplashTheme` style as the default theme for all activities:
+For example, the following `Application` attribute could be added to *MainApplication.cs* to indicate that the app's  user-readable name is "My Maui App", and that it uses the `Maui.SplashTheme` style as the default theme for all activities:
 
 ```csharp
 using Android.App;
@@ -190,7 +168,7 @@ using Android.Runtime;
 
 namespace MyMauiApp;
 
-[Application(Debuggable = true, Label = "My Maui App", Theme = "@style/Maui.SplashTheme")]
+[Application(Label = "My Maui App", Theme = "@style/Maui.SplashTheme")]
 public class MainApplication : MauiApplication
 {
       public MainApplication(IntPtr handle, JniHandleOwnership ownership)
@@ -206,8 +184,11 @@ public class MainApplication : MauiApplication
 This declaration causes the following XML fragment to be generated in *obj\\Debug\\net7.0-android\\AndroidManifest.xml*:
 
 ```xml
-<application android:label="MyMauiApp" android:debuggable="true" android:theme="@style/Maui.SplashTheme" ...>
+<application android:label="MyMauiApp" android:theme="@style/Maui.SplashTheme" android:debuggable="true" ...>
 ```
+
+> [!NOTE]
+> Debug builds automatically set `android:debuggable="true"` so that debuggers and other tooling can attach to your app. However, it isn't set for release builds.
 
 In this example, all activities in the app will default to the `Maui.SplashTheme` style. If you set an activity's theme to `Maui.MyTheme`, only that activity will use the `Maui.MyTheme` style while any other activities in your app will default to the `Maui.SplashTheme` style that's set in the `<application>` element.
 
@@ -215,6 +196,34 @@ The <xref:Android.App.ApplicationAttribute> isn't the only way to configure `<ap
 
 > [!IMPORTANT]
 > The content of *Platforms\\Android\\AndroidManifest.xml* always overrides data provided by attributes.
+
+## App title bar
+
+Android app's have a title bar that displays a label. The value of the `$(ApplicationTitle)` build property, in your .NET MAUI app project file, is displayed on the title bar. .NET MAUI includes it in the generated manifest as the value of [`android.label`](https://developer.android.com/guide/topics/manifest/application-element.html#label):
+
+```xml
+<application android:label="My Maui App" ... />
+```
+
+To specify an activities label on the title bar, use the <xref:Android.App.ActivityAttribute.Label> property:
+
+```csharp
+using Android.App;
+
+namespace MyMauiApp;
+
+[Activity (Label="My Maui App")]
+public class MyActivity : Activity
+{
+}
+```
+
+This example produces the following XML fragment:
+
+```xml
+<activity android:label="My Maui App"
+          android:name="crc64bdb9c38958c20c7c.MainActivity" />
+```
 
 ## App icon
 
