@@ -1,6 +1,6 @@
 ---
 title: "Troubleshoot known issues"
-description: "Describes the known issues and troubleshooting you can do to resolve these issues for a .NET MAUI app."
+description: "Learn about .NET MAUI known issues and troubleshooting you can do to resolve these issues."
 ms.date: 03/08/2023
 ---
 
