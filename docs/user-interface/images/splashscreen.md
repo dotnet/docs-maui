@@ -1,7 +1,7 @@
 ---
 title: "Add a splash screen to a .NET MAUI app project"
 description: "A .NET MAUI splash screen can be displayed on Android and iOS when an app is launched, while the app's initialization process completes."
-ms.date: 04/26/2022
+ms.date: 03/08/2023
 ---
 
 # Add a splash screen to a .NET MAUI app project
@@ -11,6 +11,9 @@ On Android and iOS, .NET Multi-platform App UI (.NET MAUI) apps can display a sp
 :::image type="content" source="media/splashscreen/splashscreens.png" alt-text=".NET MAUI splash screens screenshot." border="false":::
 
 Once the app is ready for interaction, its splash screen is dismissed.
+
+> [!IMPORTANT]
+> Starting in Android 12 (API 31), the splash screen shows an icon that's rendered in a circle that's centred on screen. For more information about splash screens on Android 12+, see [Splash screens](https://developer.android.com/develop/ui/views/launch/splash-screen) on developer.android.com.
 
 In a .NET MAUI app project, a splash screen can be specified in a single location in your app project, and at build time it can be automatically resized to the correct resolution for the target platform and device, and added to your app package. This avoids having to manually duplicate and name the splash screen on a per platform basis. By default, bitmap (non-vector) image formats are not automatically resized by .NET MAUI.
 
