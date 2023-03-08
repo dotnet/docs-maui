@@ -23,7 +23,7 @@ The `BackButtonBehavior`, `CurrentItem`, and `CurrentState` properties are backe
 Navigation is performed by invoking the `GoToAsync` method, from the <xref:Microsoft.Maui.Controls.Shell> class. When navigation is about to be performed, the `Navigating` event is fired, and the `Navigated` event is fired when navigation completes.
 
 > [!NOTE]
-> Navigation can still be performed between pages in a Shell app by using the `Navigation` property. For more information, see [Perform modeless navigation](~/user-interface/pages/navigationpage.md#perform-modal-navigation).
+> Navigation can still be performed between pages in a Shell app by using the `Navigation` property. For more information, see [Perform modeless navigation](~/user-interface/pages/navigationpage.md#perform-modeless-navigation).
 
 ## Routes
 
