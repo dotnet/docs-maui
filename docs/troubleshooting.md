@@ -19,11 +19,11 @@ On Windows, if you run a `dotnet workload install` after installing .NET MAUI th
 
 ### Windows
 
-The solution to this issue on Windows is to uninstall the .NET MAUI workloads through the CLI, uninstall Visual Studio and its .NET MAUI workloads, and uninstall the .NET SDK. This can be accomplished with the following process:
+The solution to this issue on Windows is to uninstall the .NET MAUI workloads through the CLI, uninstall any .NET SDKs in Control Panel, and uninstall the .NET MAUI workloads in Visual Studio. This can be accomplished with the following process:
 
 1. Run `dotnet workload uninstall maui` if you ever used the `dotnet workload install` commands.
 1. Uninstall any standalone .NET SDK installers from Control Panel. These will have names similar to `Microsoft .NET SDK 6.0.300`.
-1. In every instance of Visual Studio, uninstall the following Visual Studio workloads: .NET Multi-platform App UI development, and .NET desktop development.
+1. In every instance of Visual Studio, uninstall the .NET Multi-platform App UI development, and .NET desktop development Visual Studio workloads.
 
 Then, check if there are additional `.msi` files that need uninstalling by running the following command:
 
@@ -187,7 +187,7 @@ After installing the Xcode command line tools, using `xcode-select --install`, V
 
 ## Couldn't find a valid Xcode app bundle
 
-If you receive the error "Could not find a valid Xcode app bundle at '/Library/Developer/CommandLineTools'", when attempting to build .NET MAUI apps that target iOS or Mac Catalyst, you should try the solution described in [Xcode is not currently installed or could not be found](#xcode-isnt-currently-installed-or-couldnt-be-found). If you're still unable to access the **Xcode > Preferences > Locations > Command Line Tools** drop-down, run the following command:
+If you receive the error "Could not find a valid Xcode app bundle at '/Library/Developer/CommandLineTools'", when attempting to build .NET MAUI apps that target iOS or Mac Catalyst, you should try the solution described in [Xcode isn't currently installed or couldn't be found](#xcode-isnt-currently-installed-or-couldnt-be-found). If you're still unable to access the **Xcode > Preferences > Locations > Command Line Tools** drop-down, run the following command:
 
 ```zsh
 sudo xcode-select --reset
