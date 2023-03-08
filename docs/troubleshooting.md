@@ -45,7 +45,7 @@ If you receive similar output, you should copy the GUID for each package and uni
 msiexec /x {EEC1BB5F-3391-43C2-810E-42D78ADF3140} /q IGNOREDEPENDENCIES=ALL
 ```
 
-Then, you should keep executing the `reg query` command until it doesn't return any result. Once this happens, and all .NET 6+ SDKs are uninstalled, you should also consider deleting:
+Then, you should keep executing the `reg query` command until it doesn't return any results. Once this happens, and all .NET 6+ SDKs are uninstalled, you should also consider deleting the following folders:
 
 - `C:\Program Files\dotnet\sdk-manifests`
 - `C:\Program Files\dotnet\metadata`
