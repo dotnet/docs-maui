@@ -62,6 +62,8 @@ On iOS, add `<UseMauiEssentials>true</UseMauiEssentials>` to the first `<Propert
 </Project>
 ```
 
+---
+
 ## Initialize the platform
 
 <!-- markdownlint-disable MD025 -->
@@ -141,6 +143,8 @@ The `Platform.Init` method requires a `Func<UIKit.UIViewController` argument.
 
 > [!NOTE]
 > If required, you can retrieve the current `UIViewController` object by calling the `Platform.GetCurrentUIViewController` method.
+
+---
 
 ## Perform additional setup
 
@@ -235,6 +239,8 @@ public override void PerformActionForShortcutItem(UIApplication application, UIA
     Platform.PerformActionForShortcutItem(application, shortcutItem, completionHandler);
 }
 ```
+
+---
 
 ## Add using directives
 
