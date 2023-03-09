@@ -9,7 +9,7 @@ no-loc: [ "Xamarin.Essentials", ".NET MAUI" ]
 
 Xamarin.Essentials is a fundamental library for nearly every Xamarin app, and its functionality is now part of .NET Multi-platform App UI (.NET MAUI).
 
-To make use of .NET MAUIs APIs for native device functionality, that was formerly known as Xamarin.Essentials, use the following process:
+The process to use .NET MAUIs native device functionality, that was formerly known as Xamarin.Essentials, in a .NET for Android or .NET for iOS app, is:
 
 1. Remove the Xamarin.Essentials NuGet package from your .NET for Android or .NET for iOS app.
 1. Set the `$(UseMauiEssentials)` build property to `true` in your project file. For more information, see [Modify your project file](#modify-your-project-file).
@@ -19,25 +19,17 @@ To make use of .NET MAUIs APIs for native device functionality, that was formerl
 
 ## Modify your project file
 
-To use .NET MAUIs native device functionality in your .NET for iOS or .NET for Android app, modify your project file and set the `$(UseMauiEssentials)` build property to `true`.
+To use .NET MAUIs native device functionality in a .NET for Android or .NET for iOS app, modify your project file and set the `$(UseMauiEssentials)` build property to `true`.
 
 <!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
 <!-- markdownlint-enable MD025 -->
 
-Add `<UseMauiEssentials>true</UseMauiEssentials>` to the first `<PropertyGroup>` in your project file:
-
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net7.0-android</TargetFramework>
-    <SupportedOSPlatformVersion>21</SupportedOSPlatformVersion>
-    <OutputType>Exe</OutputType>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <ApplicationId>com.companyname.MyAndroidApp</ApplicationId>
-    <ApplicationVersion>1</ApplicationVersion>
-    <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+    ...
     <UseMauiEssentials>true</UseMauiEssentials>
   </PropertyGroup>
 </Project>
@@ -47,16 +39,11 @@ Add `<UseMauiEssentials>true</UseMauiEssentials>` to the first `<PropertyGroup>`
 # [iOS](#tab/ios)
 <!-- markdownlint-enable MD025 -->
 
-On iOS, add `<UseMauiEssentials>true</UseMauiEssentials>` to the first `<PropertyGroup>` in your project file:
-
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net7.0-ios</TargetFramework>
-    <OutputType>Exe</OutputType>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>true</ImplicitUsings>
-    <SupportedOSPlatformVersion>13.0</SupportedOSPlatformVersion>
+    ...
     <UseMauiEssentials>true</UseMauiEssentials>
   </PropertyGroup>
 </Project>
@@ -91,7 +78,7 @@ public class MainActivity : Activity
 }
 ```
 
-The `Platform.Init` method requires an <xref:Android.App.Application> argument, or a <xref:Android.App.Activity> argument and a <Android.OS.Bundle> argument.
+The `Platform.Init` method requires an <xref:Android.App.Application> argument, or a <xref:Android.App.Activity> argument and a <xref:Android.OS.Bundle> argument.
 
 <!-- markdownlint-disable MD025 -->
 # [iOS](#tab/ios)
@@ -148,7 +135,7 @@ The `Platform.Init` method requires a `Func<UIKit.UIViewController` argument.
 
 ## Perform additional setup
 
-The static `Platform` class contains additional members on each platform that may be required.
+The static `Platform` class contains platform-specific helpers.
 
 <!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
@@ -244,7 +231,7 @@ public override void PerformActionForShortcutItem(UIApplication application, UIA
 
 ## Add using directives
 
-.NET MAUI projects make use of implicit `global using` directives that enable you to remove `using` directives for the `Xamarin.Essentials` namespace, without having to replace them with the equivalent .NET MAUI namespaces. However, the implicit `global using` directives for .NET for iOS and .NET for Android don't include the namespaces for the Xamarin.Essentials functionality. Therefore, `using` directives for the `Xamarin.Essentials` namespace should be replaced with `using` directives for the namespace the functionality is now in:
+The implicit `global using` directives for .NET for iOS and .NET for Android don't include the namespaces for .NET MAUIs native device functionality. Therefore, `using` directives for the `Xamarin.Essentials` namespace should be replaced with `using` directives for the namespace that contains the required functionality:
 
 | Namespace | Purpose |
 | --------- | ------- |
