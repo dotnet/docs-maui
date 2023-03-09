@@ -57,7 +57,7 @@ To use .NET MAUIs native device functionality in a .NET for Android or .NET for 
 # [Android](#tab/android)
 <!-- markdownlint-enable MD025 -->
 
-In any <xref:Android.App.Activity> that's launched, you must call the `Platform.Init` method, which is in the <xref:Microsoft.Maui.ApplicationModel> namespace, from the `OnCreate` method:
+In any <xref:Android.App.Activity> that's launched you must call the `Platform.Init` method, which is in the <xref:Microsoft.Maui.ApplicationModel> namespace, from the `OnCreate` method:
 
 ```csharp
 using Android.Content.PM;
@@ -84,7 +84,7 @@ The `Platform.Init` method requires an <xref:Android.App.Application> argument, 
 # [iOS](#tab/ios)
 <!-- markdownlint-enable MD025 -->
 
-In your `AppDelegate` class, call the `Platform.Init` method from the `FinishedLaunching` method:
+In your `AppDelegate` class you must call the `Platform.Init` method, which is in the <xref:Microsoft.Maui.ApplicationModel> namespace, from the `FinishedLaunching` method:
 
 ```csharp
 using Microsoft.Maui.ApplicationModel;
