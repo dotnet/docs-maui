@@ -226,10 +226,10 @@ Activity states are:
 
 | Method | Purpose |
 | ------ | ------- |
-| `ContinueUserActivity` | Informs the app that there's data associated with continuing a task specified as a <xref:Foundation.NSUserActivity"> object, and then returns whether the app continued the activity. |
+| `ContinueUserActivity` | Informs the app that there's data associated with continuing a task specified as a <xref:Foundation.NSUserActivity> object, and then returns whether the app continued the activity. |
 | `GetCurrentUIViewController` | Gets the current view controller. This method will return `null` if unable to detect a <xref:UIKit.UIViewController>. |
 | `OpenUrl` | Opens the specified URI to start an authentication flow. |
-| `PerformActionForShortcutItem` | Invokes the action that corresponds to the chosen <xref:UIKit.AppAction> by the user. |
+| `PerformActionForShortcutItem` | Invokes the action that corresponds to the chosen `AppAction` by the user. |
 
 For example, to handle app actions, override the `PerformActionForShortcutItem` method in your `AppDelegate` class and call the `Platform.PerformActionForShortcutItem` method from it:
 

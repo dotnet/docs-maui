@@ -87,4 +87,4 @@ Once your dependencies are resolved and your code and resource files are added t
 > - Delete the *Resource.designer.cs* generated file from the Android project.
 <!-- markdownlint-enable MD032 -->
 
-For information about migrating Xamarin.Essentials code in a .NET for Android or .NET for iOS app, see [Migrate Xamarin.Essentials code in .NET for Android and .NET for iOS apps](native-essentials).
+For information about migrating Xamarin.Essentials code in a .NET for Android or .NET for iOS app, see [Migrate Xamarin.Essentials code in .NET for Android and .NET for iOS apps](native-essentials.md).
