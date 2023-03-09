@@ -107,13 +107,7 @@ public class AppDelegate : UIApplicationDelegate
 
         // create a UIViewController with a single UILabel
         var vc = new UIViewController();
-        vc.View!.AddSubview(new UILabel(Window!.Frame)
-        {
-            BackgroundColor = UIColor.SystemBackground,
-            TextAlignment = UITextAlignment.Center,
-            Text = "Hello, iOS!",
-            AutoresizingMask = UIViewAutoresizing.All,
-        });
+        // ...
         Window.RootViewController = vc;
 
         Platform.Init(() => vc);
@@ -129,7 +123,7 @@ public class AppDelegate : UIApplicationDelegate
 The `Platform.Init` method requires a `Func<UIKit.UIViewController` argument.
 
 > [!NOTE]
-> If required, you can retrieve the current `UIViewController` object by calling the `Platform.GetCurrentUIViewController` method.
+> If required, you can retrieve the current <xref:UIKit.UIViewController> object by calling the `Platform.GetCurrentUIViewController` method.
 
 ---
 
