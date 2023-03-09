@@ -2,24 +2,24 @@
 title: "Migrate Xamarin.Essentials code in .NET for Android and .NET for iOS apps"
 description: "Learn how to migrate your Xamarin.Essentials code in .NET for iOS and .NET for Android apps."
 ms.date: 03/09/2023
-no-loc: [ "Xamarin.Essentials" ]
+no-loc: [ "Xamarin.Essentials", ".NET MAUI" ]
 ---
 
 # Migrate Xamarin.Essentials code in .NET for Android and .NET for iOS apps
 
-Xamarin.Essentials is a fundamental library for nearly every Xamarin app, and it's features are now part of .NET Multi-platform App UI (.NET MAUI).
+Xamarin.Essentials is a fundamental library for nearly every Xamarin app, and its functionality is now part of .NET Multi-platform App UI (.NET MAUI).
 
-To make use of .NET MAUIs cross-platform APIs for native device features, that were formerly known as Xamarin.Essentials, use the following process:
+To make use of .NET MAUIs APIs for native device functionality, that was formerly known as Xamarin.Essentials, use the following process:
 
-1. Remove the Xamarin.Essentials NuGet package.
-1. Modify your project file to Add `<UseMauiEssentials>true</UseMauiEssentials>` to your .csproj.
-1. Call the `Init` method to initialize the functionality.
-1. Call additional methods as required.
-1. Adjust namespaces.
+1. Remove the Xamarin.Essentials NuGet package from your .NET for Android or .NET for iOS app.
+1. Set the `$(UseMauiEssentials)` build property to `true` in your project file. For more information, see [Modify your project file](#modify-your-project-file).
+1. Initialize the "essentials" functionality by calling the `Platform.Init` method. For more information, see [Initialize the platform](#initialize-the-platform).
+1. Perform additional setup, if required. For more information, see [Perform additional setup](#perform-additional-setup).
+1. Add using directives for the required functionality. For more information, see [Add using directives](#add-using-directives).
 
 ## Modify your project file
 
-To use .NET MAUIs "essentials" features in your .NET for iOS or .NET for Android app, modify your project file and set the `$(UseMauiEssentials)` build property to `true`.
+To use .NET MAUIs native device functionality in your .NET for iOS or .NET for Android app, modify your project file and set the `$(UseMauiEssentials)` build property to `true`.
 
 <!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
@@ -62,7 +62,7 @@ On iOS, add `<UseMauiEssentials>true</UseMauiEssentials>` to the first `<Propert
 </Project>
 ```
 
-## Initialize
+## Initialize the platform
 
 <!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
@@ -142,7 +142,7 @@ The `Platform.Init` method requires a `Func<UIKit.UIViewController` argument.
 > [!NOTE]
 > If required, you can retrieve the current `UIViewController` object by calling the `Platform.GetCurrentUIViewController` method.
 
-## Other methods
+## Perform additional setup
 
 The static `Platform` class contains additional members on each platform that may be required.
 
@@ -156,12 +156,27 @@ The static `Platform` class contains additional members on each platform that ma
 | `AppContext` | A property that gets the <xref:Android.Content.Context> object that represents the current app context. |
 | `CurrentActivity` | A property that gets the current <xref:Android.App.Activity> object that represents the current activity. |
 | `Intent` | A static class that contains the `ActionAppAction` string, which is the identifier for the <xref:Android.Content.Intent> used by app actions. |
-| `OnNewIntent` | A method to be called to pass an <xref:Android.Content.Intent> from an activity's overridden method, when invoking an app action. |
-| `OnResume` | A method to be called to pass an <xref:Android.App.Activity> from an activity's overridden method, when an <xref:Android.App.Activity> is resumed as part of invoking an app action. |
-| `OnRequestPermissionsResult` | A method to be called to pass permission request results from an activity's overridden method, for handling internal permission requests. |
-| `WaitForActivityAsync` | Wait for an Activity to be created or active.  |
+| `OnNewIntent` | Pass an <xref:Android.Content.Intent> from an activity's overridden method, when invoking an app action. |
+| `OnResume` | Pass an <xref:Android.App.Activity> from an activity's overridden method, when an <xref:Android.App.Activity> is resumed as part of invoking an app action. |
+| `OnRequestPermissionsResult` | Pass permission request results from an activity's overridden method, for handling internal permission requests. |
+| `WaitForActivityAsync` | Wait for an Activity to be created or become active. |
 
-For example, to handle runtime permission requests, override the `OnRequestPermissionsResult` method in every <xref:Android.App.Activity> and call the `Platform.OnRequestPermissionsResult` method from it:
+To access the current `Context` or `Activity` for the running app:
+
+```csharp
+var context = Platform.AppContext;
+
+// Current Activity or null if not initialized or not started.
+var activity = Platform.CurrentActivity;
+```
+
+If there's a situation where the <xref:Android.App.Activity> is needed, but the app hasn't fully started, call the `WaitForActivityAsync` method:
+
+```csharp
+var activity = await Platform.WaitForActivityAsync();
+```
+
+To handle runtime permission requests, override the `OnRequestPermissionsResult` method in every <xref:Android.App.Activity> and call the `Platform.OnRequestPermissionsResult` method from it:
 
 ```csharp
 public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
@@ -171,6 +186,36 @@ public override void OnRequestPermissionsResult(int requestCode, string[] permis
 }
 ```
 
+In addition to getting the current <xref:Android.App.Activity>, you can also register for lifecycle events:
+
+```csharp
+protected override void OnCreate(Bundle bundle)
+{
+    base.OnCreate(bundle);
+    Platform.Init(this, bundle);
+    Platform.ActivityStateChanged += Platform_ActivityStateChanged;
+}
+
+protected override void OnDestroy()
+{
+    base.OnDestroy();
+    Platform.ActivityStateChanged -= Platform_ActivityStateChanged;
+}
+
+void Platform_ActivityStateChanged(object sender, ActivityStateChangedEventArgs e) =>
+    Toast.MakeText(this, e.State.ToString(), ToastLength.Short).Show();
+```
+
+Activity states are:
+
+- Created
+- Resumed
+- Paused
+- Destroyed
+- SaveInstanceState
+- Started
+- Stopped
+
 <!-- markdownlint-disable MD025 -->
 # [iOS](#tab/ios)
 <!-- markdownlint-enable MD025 -->
@@ -178,7 +223,7 @@ public override void OnRequestPermissionsResult(int requestCode, string[] permis
 | Method | Purpose |
 | ------ | ------- |
 | `ContinueUserActivity` | Informs the app that there's data associated with continuing a task specified as a <xref:Foundation.NSUserActivity"> object, and then returns whether the app continued the activity. |
-| `GetCurrentUIViewController` | Gets the current view controller. |
+| `GetCurrentUIViewController` | Gets the current view controller. This method will return `null` if unable to detect a <xref:UIKit.UIViewController>. |
 | `OpenUrl` | Opens the specified URI to start an authentication flow. |
 | `PerformActionForShortcutItem` | Invokes the action that corresponds to the chosen <xref:UIKit.AppAction> by the user. |
 
