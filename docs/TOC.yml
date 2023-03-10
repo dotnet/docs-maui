@@ -71,6 +71,8 @@
               href: migration/android-projects.md
             - name: Apple project migration
               href: migration/apple-projects.md
+            - name: Xamarin.Essentials migration
+              href: migration/native-essentials.md
         - name: Xamarin.Forms projects
           items:
             - name: Upgrade with the .NET Upgrade Assistant
