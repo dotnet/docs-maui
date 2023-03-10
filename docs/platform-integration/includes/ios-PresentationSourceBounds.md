@@ -4,7 +4,7 @@ ms.date: 02/02/2023
 ---
 
 > [!IMPORTANT]
-> This section only applies to iOS.
+> This section only applies to iPadOS.
 
 When requesting a share or opening launcher on iPadOS, you can present it in a popover. This specifies where the popover will appear and point an arrow directly to. This location is often the control that launched the action. You can specify the location using the <xref:Microsoft.Maui.ApplicationModel.OpenFileRequest.PresentationSourceBounds> property:
 
