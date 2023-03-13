@@ -17,8 +17,8 @@ The process for creating an App Store distribution provisioning profile is as fo
 1. Create a certificate signing request. For more information, see [Create a certificate signing request](#create-a-certificate-signing-request).
 1. Create a distribution certificate. For more information, see [Create a distribution certificate](#create-a-distribution-certificate).
 1. Create an installer certificate. For more information, see [Create an installer certificate](#create-an-installer-certificate).
-1. Create an App ID. For more information, see [Create an App ID](#create-an-app-id).
-1. Create a provisioning profile. For more information, see [Create a provisioning profile](#create-a-provisioning-profile).
+<!-- 1. Create an App ID. For more information, see [Create an App ID](#create-an-app-id).
+1. Create a provisioning profile. For more information, see [Create a provisioning profile](#create-a-provisioning-profile). -->
 
 [!INCLUDE [Create a certificate signing request](../includes/certificate-signing-request.md)]
 

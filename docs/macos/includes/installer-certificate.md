@@ -11,7 +11,7 @@ The CSR allows you to generate an installer certificate, which is required to si
 1. On the **Certificates, Identifiers & Profiles** page, select the **+** button to create a new certificate.
 1. On the **Create a New Certificate** page, select the **Mac Installer Distribution**** radio button before selecting the **Continue** button:
 
-    :::image type="content" source="../deployment/media/installer-distribution-certificate.png" alt-text="Create a Mac Installer distribution certificate.":::
+    :::image type="content" source="../deployment/media/mac-installer-certificate.png" alt-text="Create a Mac Installer distribution certificate.":::
 
 1. On the **Create a New Certificate** page, select **Choose File**:
 
