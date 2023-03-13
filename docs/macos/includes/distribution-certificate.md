@@ -12,7 +12,7 @@ The CSR allows you to generate a distribution certificate, which confirms your i
 1. On the **Certificates, Identifiers & Profiles** page, select the **+** button to create a new certificate.
 1. On the **Create a New Certificate** page, select the **Apple Distribution** radio button before selecting the **Continue** button:
 
-    :::image type="content" source="../deployment/media/apple-distribution.png" alt-text="Create an Apple distribution certificate.":::
+    :::image type="content" source="../deployment/media/apple-distribution-certificate.png" alt-text="Create an Apple distribution certificate.":::
 
 1. On the **Create a New Certificate** page, select **Choose File**:
 
@@ -25,13 +25,13 @@ The CSR allows you to generate a distribution certificate, which confirms your i
 
 1. On the **Download Your Certificate** page, select the **Download** button:
 
-    :::image type="content" source="../deployment/media/download-certificate.png" alt-text="Download your distribution certificate.":::
+    :::image type="content" source="../deployment/media/download-distribution-certificate.png" alt-text="Download your distribution certificate.":::
 
     The certificate file (a file with a `.cer` extension) will be downloaded to your chosen location.
 
-1. On your Mac, double-click the downloaded certificate file to install the certificate to your keychain. The certificate appears in the **My Certificates** category in **Keychain Access**, and begins with **iPhone Distribution**:
+1. On your Mac, double-click the downloaded certificate file to install the certificate to your keychain. The certificate appears in the **My Certificates** category in **Keychain Access**, and begins with **Apple Distribution**:
 
-    :::image type="content" source="../deployment/media/keychain-access.png" alt-text="Keychain Access showing distribution certificate.":::
+    :::image type="content" source="../deployment/media/keychain-access-distribution-certificate.png" alt-text="Keychain Access showing distribution certificate.":::
 
     > [!NOTE]
     > Make a note of the full distribution certificate name in Keychain Access. It will be required when signing your app.
