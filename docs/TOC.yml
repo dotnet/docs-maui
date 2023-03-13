@@ -706,6 +706,8 @@
                   href: ios/deployment/publish-cli.md
             - name: macOS
               href: macos/deployment/overview.md
+            - name: Publish for app store distribution
+              href: macos/deployment/publish-app-store.md
             - name: Windows
               items:
                 - name: Overview
