@@ -12,9 +12,10 @@ Before you create a distribution certificate, you'll first need to create a cert
 1. In the **Certificate Assistant** dialog, enter an email address in the **User Email Address** field.
 1. In the **Certificate Assistant** dialog, enter a name for the key in the **Common Name** field.
 1. In the **Certificate Assistant** dialog, leave the **CA Email Address** field empty.
-1. In the **Certificate Assistant** dialog, choose the **Saved to disk** radio button and click **Continue**:
+1. In the **Certificate Assistant** dialog, choose the **Saved to disk** radio button and select **Continue**:
 
     :::image type="content" source="../deployment/media/certificate-assistant.png" alt-text="Certificate assistant dialog.":::
 
 1. Save the certificate signing request to a known location.
+1. In the **Certificate Assistant** dialog, select the **Done** button.
 1. Close Keychain Access.

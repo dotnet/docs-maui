@@ -9,21 +9,21 @@ The CSR allows you to generate a distribution certificate, which confirms your i
 
 1. In a web browser, login to your [Apple Developer Account](https://developer.apple.com/account/).
 1. In your Apple Developer Account, select the **Certificates, IDs & Profiles** tab.
-1. On the **Certificates, Identifiers & Profiles** page, click the **+** button to create a new certificate.
-1. On the **Create a New Certificate** page, select the **iOS Distribution (App Store and Ad Hoc)** radio button before clicking the **Continue** button:
+1. On the **Certificates, Identifiers & Profiles** page, select the **+** button to create a new certificate.
+1. On the **Create a New Certificate** page, select the **Apple Distribution** radio button before selecting the **Continue** button:
 
-    :::image type="content" source="../deployment/media/ios-app-development.png" alt-text="Create a new certificate.":::
+    :::image type="content" source="../deployment/media/apple-distribution.png" alt-text="Create an Apple distribution certificate.":::
 
-1. On the **Create a New Certificate** page, click **Choose File**:
+1. On the **Create a New Certificate** page, select **Choose File**:
 
     :::image type="content" source="../deployment/media/choose-certificate.png" alt-text="Upload your certificate signing request.":::
 
-1. In the **Choose Files to Upload** dialog, select the certificate request file (a file with a `.certSigningRequest` file extension) and then click **Upload**.
-1. On the **Create a New Certificate** page, click the **Continue** button:
+1. In the **Choose Files to Upload** dialog, select the certificate request file you previously created (a file with a `.certSigningRequest` file extension) and then select **Upload**.
+1. On the **Create a New Certificate** page, select the **Continue** button:
 
     :::image type="content" source="../deployment/media/chosen-certificate.png" alt-text="Continue to generate your distribution certificate.":::
 
-1. On the **Download Your Certificate** page, click the **Download** button:
+1. On the **Download Your Certificate** page, select the **Download** button:
 
     :::image type="content" source="../deployment/media/download-certificate.png" alt-text="Download your distribution certificate.":::
 
