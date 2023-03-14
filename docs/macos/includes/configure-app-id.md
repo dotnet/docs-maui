@@ -5,7 +5,9 @@ ms.date: 03/13/2023
 
 ### Configure the App ID
 
-The App ID you've just created must be configured so that it uses the same bundle ID as it's partner iOS app to support universal purchase, or use a unique bundle ID to be offered as a separate product:
+By default, a Mac Catalyst app uses the same bundle ID as an iOS app so you can offer the apps together as a universal purchase on the App Store. Alternatively, to offer the app as a separate product you'll need to use a unique bundle ID.
+
+To configure the App ID:
 
 1. On the **Identifiers** page, select the App ID you just created.
 1. On the **Edit your App ID Configuration** page, scroll to the bottom of the page and enable the **Mac Catalyst** capability check-box. Then select the **Configure** button:
