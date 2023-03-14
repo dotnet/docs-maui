@@ -229,7 +229,7 @@ dotnet publish -f:net7.0-maccatalyst -c:Release /p:MtouchLink=Full /p:CreatePack
 
 Publishing builds, signs, and packages the app, and then copies the *.pkg* to the *bin/Release/net7.0-maccatalyst/publish/* folder. If you publish the app using only a single architecture, it will be published to the *bin/Release/net7.0maccatalyst/{arechitecture}/publish/* folder.
 
-During the signing process it maybe necessary to enter your login password to allow `codesign` and `productbuild` to run:
+During the signing process it maybe necessary to enter your login password and allow `codesign` and `productbuild` to run:
 
 :::image type="content" source="media/codesign.png" alt-text="Allow codesign to sign your app on your Mac.":::
 :::image type="content" source="media/productbuild.png" alt-text="Allow productbuild to sign your app on your Mac.":::
@@ -285,6 +285,14 @@ This example `<PropertyGroup>` adds a condition check, preventing the settings f
 1. The platform is set to `AnyCPU`.
 
 If any of these conditions fail, the settings aren't processed. More importantly, the `<CodesignKey>`, `<CodesignProvision>`, and `<PackageSigningKey>` settings aren't set, preventing the app from being signed.
+
+After adding the above property group, the app can be published from the command line on a Mac by opening a terminal and navigating to the folder for your .NET MAUI app project. Then, run the following command:
+
+```dotnetcli
+dotnet build -f:net7.0-maccatalyst -c:Release
+```
+
+Publishing builds, signs, and packages the app, and then copies the *.pkg* to the *bin/Release/net7.0-maccatalyst/publish/* folder.
 
 ## Upload to the App Store
 
