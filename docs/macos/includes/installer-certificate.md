@@ -5,7 +5,7 @@ ms.topic: include
 
 ## Create an installer certificate
 
-The CSR allows you to generate an installer certificate, which is required to sign your app's Installer Package for submission to the Mac App Store. The installer certificate must be created using the Apple ID for your Apple Developer Account:
+The CSR allows you to generate an installer certificate, which is required to sign your app's installer package for submission to the Mac App Store. The installer certificate must be created using the Apple ID for your Apple Developer Account:
 
 1. In your Apple Developer Account, select the **Certificates, IDs & Profiles** tab.
 1. On the **Certificates, Identifiers & Profiles** page, select the **+** button to create a new certificate.
@@ -33,4 +33,4 @@ The CSR allows you to generate an installer certificate, which is required to si
     :::image type="content" source="../deployment/media/publish-app-store/keychain-access-installer-certificate.png" alt-text="Keychain Access showing installer certificate.":::
 
     > [!NOTE]
-    > Make a note of the full distribution certificate name in Keychain Access. It will be required when signing your app.
+    > Make a note of the full certificate name in Keychain Access. It will be required when signing your app.

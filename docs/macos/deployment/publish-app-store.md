@@ -54,7 +54,7 @@ The CSR allows you to generate a distribution certificate, which confirms your i
     :::image type="content" source="media/publish-app-store/keychain-access-distribution-certificate.png" alt-text="Keychain Access showing distribution certificate.":::
 
     > [!NOTE]
-    > Make a note of the full distribution certificate name in Keychain Access. It will be required when signing your app.
+    > Make a note of the full certificate name in Keychain Access. It will be required when signing your app.
 
 [!INCLUDE [Create an installer certificate](../includes/installer-certificate.md)]
 
