@@ -60,7 +60,7 @@ The CSR allows you to generate a distribution certificate, which confirms your i
 
 ## Create a distribution profile
 
-A distribution provisioning profile enables your .NET MAUI Mac Catalyst app to be digitally signed for release, so that it can be installed on another Mac A distribution provisioning profile contains an App ID and a distribution certificate.
+A distribution provisioning profile enables your .NET MAUI Mac Catalyst app to be digitally signed for release, so that it can be installed on another Mac. A distribution provisioning profile contains an App ID and a distribution certificate.
 
 [!INCLUDE [Create an App ID](../includes/create-app-id.md)]
 
