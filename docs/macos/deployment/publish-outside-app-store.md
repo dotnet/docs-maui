@@ -10,15 +10,50 @@ An alternative to distributing Mac Catalyst apps through the App Store is to dis
 
 Distributing a Mac Catalyst app requires that the app is provisioned using a *provisioning profile*. Provisioning profiles are files that contain code signing information, as well as the identity of the app and its intended distribution mechanism.
 
-To distribute a .NET Multi-platform App UI (.NET MAUI) Mac Catalyst app outside the App Store, you'll need to build a *distribution provisioning profile* specific to it. This profile enables the app to be digitally signed for release so that it can be installed on Macs. A distribution provisioning profile contains an App ID and a developer ID certificate. You'll need to create a developer ID certificate to identify yourself or your organization, if you don't already have one. In addition, you'll need to create developer ID installer certificate to sign your app's installer package.
+To distribute a .NET Multi-platform App UI (.NET MAUI) Mac Catalyst app outside the App Store, you'll need to build a *distribution provisioning profile* specific to it. This profile enables the app to be digitally signed for release so that it can be installed on Macs. A distribution provisioning profile contains an App ID and a developer ID application certificate. You'll need to create a developer ID application certificate to identify yourself or your organization, if you don't already have one. In addition, you'll need to create developer ID installer certificate to sign your app's installer package.
 
 The process for provisioning a Mac Catalyst app for distribution outside the App Store is as follows:
 
 1. Create a certificate signing request. For more information, see [Create a certificate signing request](#create-a-certificate-signing-request).
-1. Create a developer ID certificate. For more information, see [Create a developer ID certificate](#create-a-developer-id-certificate).
-1. Create a developer ID installer certificate. For more information, see [Create a developer ID installer certificate](#create-a-developer-id-installer-certificate).
+1. Create a developer ID application certificate. For more information, see [Create a developer ID application certificate](#create-a-developer-id-application-certificate).
+<!-- 1. Create a developer ID installer certificate. For more information, see [Create a developer ID installer certificate](#create-a-developer-id-installer-certificate).
 1. Create an App ID. For more information, see [Create an App ID](#create-an-app-id).
 1. Configure the App ID. For more information, see [Configure the App ID](#configure-the-app-id). IS THIS REALLY REQUIRED???
-1. Create a provisioning profile. For more information, see [Create a provisioning profile](#create-a-provisioning-profile).
+1. Create a provisioning profile. For more information, see [Create a provisioning profile](#create-a-provisioning-profile). -->
 
 [!INCLUDE [Create a certificate signing request](../includes/certificate-signing-request.md)]
+
+## Create a developer ID application certificate
+
+The CSR allows you to generate a developer ID certificate, which confirms your identity. The developer ID certificate must be created using the Apple ID for your Apple Developer Account:
+
+1. In a web browser, login to your [Apple Developer Account](https://developer.apple.com/account/).
+1. In your Apple Developer Account, select the **Certificates, IDs & Profiles** tab.
+1. On the **Certificates, Identifiers & Profiles** page, select the **+** button to create a new certificate.
+1. On the **Create a New Certificate** page, select the **Developer ID Application** radio button before selecting the **Continue** button:
+
+    :::image type="content" source="media/developer-id-application-certificate.png" alt-text="Create a Developer ID Application certificate.":::
+
+1. On the **Create a New Certificate** page, select **Choose File**:
+
+    :::image type="content" source="media/choose-certificate.png" alt-text="Upload your certificate signing request.":::
+
+1. In the **Choose Files to Upload** dialog, select the certificate request file you previously created (a file with a `.certSigningRequest` file extension) and then select **Upload**.
+1. On the **Create a New Certificate** page, select the **Continue** button:
+
+    :::image type="content" source="media/chosen-certificate.png" alt-text="Continue to generate your distribution certificate.":::
+
+1. On the **Download Your Certificate** page, select the **Download** button:
+
+    :::image type="content" source="media/download-developer-id-application-certificate.png" alt-text="Download your Developer ID Application certificate.":::
+
+    The certificate file (a file with a `.cer` extension) will be downloaded to your chosen location.
+
+1. On your Mac, double-click the downloaded certificate file to install the certificate to your keychain. The certificate appears in the **My Certificates** category in **Keychain Access**, and begins with **Developer ID Application**:
+
+    :::image type="content" source="media/keychain-access-developer-id-application-certificate.png" alt-text="Keychain Access showing Developer ID Application certificate.":::
+
+    > [!NOTE]
+    > Make a note of the full certificate name in Keychain Access. It will be required when signing your app.
+
+## Create a devloper ID installer certificate
