@@ -23,6 +23,8 @@ The process for provisioning a Mac Catalyst app for distribution outside the App
 
 After provisioning and publishing your app, it must be notarized SOMETHING ABOUT GATEKEEPER HERE. MORE WAFFLE HERE ABOUT WHAT YOU DO AFTER PROVISIONING AND PUBLISHING.
 
+MAYBE ADD A BOX THAT HIGHLIGHTS THE MAIN POINTS: Certs, hardened runtime, notarization, stapling.
+
 [!INCLUDE [Create a certificate signing request](../includes/certificate-signing-request.md)]
 
 ## Create a developer ID application certificate
@@ -239,7 +241,7 @@ To declare your app's use of encryption, add the `ITSAppUsesNonExemptEncryption`
 
 For more information, see [Complying with Encryption Export Regulations](https://developer.apple.com/documentation/security/complying_with_encryption_export_regulations) on developer.apple.com.
 
-<!-- Todo remove once this bug is fixed: -->
+<!-- Todo remove once this bug is fixed: https://github.com/xamarin/xamarin-macios/issues/17829-->
 ## Disable code signature verification
 
 Currently, when you attempt to publish a .NET MAUI Mac Catalyst app for distribution outside the App Store, provided you've met the provisioning requirements, you'll receive an error about `codesign` exiting with code 3:
@@ -248,13 +250,15 @@ Currently, when you attempt to publish a .NET MAUI Mac Catalyst app for distribu
 /usr/local/share/dotnet/packs/Microsoft.MacCatalyst.Sdk/16.2.1040/tools/msbuild/iOS/Xamarin.Shared.targets(1930,3): error MSB6006: "codesign" exited with code 3. [/Users/davidbritch/Projects/MyMauiApp/MyMauiApp/MyMauiApp.csproj::TargetFramework=net7.0-maccatalyst]
 ```
 
-While `codesign` succeeds in signing your app, it fails to verify the code signature which in turn stops the production of the *.pkg* file.
+While `codesign` succeeds in signing your app, the `_CodesignVerify` target fails to verify the code signature:
 
 ```
 test-requirement: code failed to satisfy specified code requirement(s)
 ```
 
-Therefore, it's currently necessary to add the following build target to your project file to disable verification of the code signature:
+Because of this failure, a *.pkg* file isn't produced.
+
+Therefore, it's currently necessary to add the following build target to the end of your project file to disable verification of the code signature:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
