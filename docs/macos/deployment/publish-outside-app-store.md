@@ -120,11 +120,11 @@ To create a provisioning profile for distribution outside the App Store:
 
 1. In the **Generate a Provisioning Profile** page, select the radio button that corresponds to your distribution certificate before clicking the **Continue** button:
 
-    :::image type="content" source="media/publish-outside-app-store/appstore-select-certificate.png" alt-text="Select your distribution certificate.":::
+    :::image type="content" source="media/publish-outside-app-store/select-certificate.png" alt-text="Select your distribution certificate.":::
 
 1. In the **Generate a Provisioning Profile** page, enter a name for the provisioning profile before clicking the **Generate** button:
 
-    :::image type="content" source="media/publish-outside-app-store/appstore-generate-profile.png" alt-text="Generate the provisioning profile.":::
+    :::image type="content" source="media/publish-outside-app-store/generate-profile.png" alt-text="Generate the provisioning profile.":::
 
     > [!NOTE]
     > Make a note of the provisioning profile name, as it will be required when signing your app.
