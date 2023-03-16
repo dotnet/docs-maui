@@ -32,26 +32,26 @@ The CSR allows you to generate a developer ID certificate, which confirms your i
 1. On the **Certificates, Identifiers & Profiles** page, select the **+** button to create a new certificate.
 1. On the **Create a New Certificate** page, select the **Developer ID Application** radio button before selecting the **Continue** button:
 
-    :::image type="content" source="media/developer-id-application-certificate.png" alt-text="Create a Developer ID Application certificate.":::
+    :::image type="content" source="media/publish-outside-app-store/developer-id-application-certificate.png" alt-text="Create a Developer ID Application certificate.":::
 
 1. On the **Create a New Certificate** page, select **Choose File**:
 
-    :::image type="content" source="media/choose-certificate.png" alt-text="Upload your certificate signing request.":::
+    :::image type="content" source="media/publish-outside-app-store/choose-certificate.png" alt-text="Upload your certificate signing request.":::
 
 1. In the **Choose Files to Upload** dialog, select the certificate request file you previously created (a file with a `.certSigningRequest` file extension) and then select **Upload**.
 1. On the **Create a New Certificate** page, select the **Continue** button:
 
-    :::image type="content" source="media/chosen-certificate.png" alt-text="Continue to generate your distribution certificate.":::
+    :::image type="content" source="media/publish-outside-app-store/chosen-certificate.png" alt-text="Continue to generate your distribution certificate.":::
 
 1. On the **Download Your Certificate** page, select the **Download** button:
 
-    :::image type="content" source="media/download-developer-id-application-certificate.png" alt-text="Download your Developer ID Application certificate.":::
+    :::image type="content" source="media/publish-outside-app-store/download-developer-id-application-certificate.png" alt-text="Download your Developer ID Application certificate.":::
 
     The certificate file (a file with a `.cer` extension) will be downloaded to your chosen location.
 
 1. On your Mac, double-click the downloaded certificate file to install the certificate to your keychain. The certificate appears in the **My Certificates** category in **Keychain Access**, and begins with **Developer ID Application**:
 
-    :::image type="content" source="media/keychain-access-developer-id-application-certificate.png" alt-text="Keychain Access showing Developer ID Application certificate.":::
+    :::image type="content" source="media/publish-outside-app-store/keychain-access-developer-id-application-certificate.png" alt-text="Keychain Access showing Developer ID Application certificate.":::
 
     > [!NOTE]
     > Make a note of the full certificate name in Keychain Access. It will be required when signing your app.
