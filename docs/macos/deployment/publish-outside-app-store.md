@@ -239,8 +239,8 @@ To declare your app's use of encryption, add the `ITSAppUsesNonExemptEncryption`
 
 For more information, see [Complying with Encryption Export Regulations](https://developer.apple.com/documentation/security/complying_with_encryption_export_regulations) on developer.apple.com.
 
-<!-- Todo once this bug is fixed:
-## Configure your project file
+<!-- Todo remove once this bug is fixed: -->
+## Disable code signature verification
 
 Currently, when you attempt to publish a .NET MAUI Mac Catalyst app for distribution outside the App Store, provided you've met the provisioning requirements, you'll receive an error about `codesign` exiting with code 3:
 
@@ -266,7 +266,6 @@ Therefore, it's currently necessary to add the following build target to your pr
 	</Target>
 </Project>
 ```
--->
 
 ## Publish using the command line
 
