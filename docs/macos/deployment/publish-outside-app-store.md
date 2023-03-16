@@ -169,3 +169,72 @@ If you use the App Sandbox and your app opens outgoing network connections, you'
 ```
 
 For information about the outgoing network connections entitlement, see [com.apple.security.network.client](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_network_client) on developer.apple.com.
+
+## Update Info.plist
+
+Before publishing your app, you should update its *Info.plist* file with additional information.
+
+### Specify the user interface idiom
+
+A Mac Catalyst app can run in the iPad or Mac user interface idiom:
+
+- The iPad user interface idiom tells macOS to scale the app's user interface to match the Mac display environment while preserving iPad-like appearance.
+- The Mac user interface idiom doesn't scale the app's user interface to match the Mac display environment. Some controls change their size and appearance, and interacting with them feels identical to interacting with `AppKit` controls.
+
+By default, .NET MAUI Mac Catalyst apps use the iPad user interface idiom. If this is your desired behavior, ensure that the app's *Info.plist* file only specifies 2 as the value of the `UIDeviceFamily` key:
+
+```xml
+<key>UIDeviceFamily</key>
+<array>
+  <integer>2</integer>
+</array>
+```
+
+To adopt the Mac user interface idiom, update the app's *Info.plist* file to specify 6 as the value of the `UIDeviceFamily` key:
+
+```xml
+<key>UIDeviceFamily</key>
+<array>
+  <integer>6</integer>
+</array>
+```
+
+For more information about Mac Catalyst user interface idioms, see [Choosing a user interface idiom for your Mac app](https://developer.apple.com/documentation/uikit/mac_catalyst/choosing_a_user_interface_idiom_for_your_mac_app?language=objc).
+
+### Set the default language and region for the app
+
+Set the `CFBundleDevelopmentRegion` key in your app's *Info.plist* to a `String` that represents the localization native development region:
+
+```xml
+<key>CFBundleDevelopmentRegion</key>
+<string>en</string>
+```
+
+The value of the key should be a language designator, with an optional region designator. For more information, see [CFBundleDevelopmentRegion](https://developer.apple.com/documentation/bundleresources/information_property_list/cfbundledevelopmentregion) on developer.apple.com.
+
+### Set the copyright key
+
+Set the `NSHumanReadableCopyright` key in your app's *Info.plist* to a `String` that represents the human-readable copyright notice for the app:
+
+```xml
+<key>NSHumanReadableCopyright</key>
+<string>My Maui App © 2023</string>
+```
+
+For more information, see [NSHumanReadableCopyright](https://developer.apple.com/documentation/bundleresources/information_property_list/nshumanreadablecopyright) on developer.apple.com.
+
+### Declare your app's use of encryption
+
+If your app uses encryption, and you plan to distribute it outside the United States or Canada, it's subject to US export compliance requirements.
+
+
+Every time you submit a version of your app to App Store Connect, it undergoes an encryption export regulations compliance review. To avoid App Store Connect asking you questions to guide you through the review, you can provide the required information in your app's *Info.plist* file.
+
+To declare your app's use of encryption, add the `ITSAppUsesNonExemptEncryption` key to your app's *Info.plist* with a `Boolean` value that indicates whether it uses encryption:
+
+```xml
+<key>ITSAppUsesNonExemptEncryption</key>
+<false/>
+```
+
+For more information, see [Complying with Encryption Export Regulations](https://developer.apple.com/documentation/security/complying_with_encryption_export_regulations) on developer.apple.com.
