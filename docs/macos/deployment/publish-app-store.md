@@ -10,7 +10,7 @@ The most common approach to distributing Mac Catalyst apps to users is through t
 
 Distributing a Mac Catalyst app requires that the app is provisioned using a *provisioning profile*. Provisioning profiles are files that contain code signing information, as well as the identity of the app and its intended distribution mechanism.
 
-To distribute a .NET Multi-platform App UI (.NET MAUI) Mac Catalyst app, you'll need to build a *distribution provisioning profile* specific to it. This profile enables the app to be digitally signed for release so that it can be installed on Macs. A distribution provisioning profile contains an App ID and a distribution certificate. You'll need to create a distribution certificate to identify yourself or your organization, if you don't already have one. In addition, you'll need to create a Mac installer certificate to sign your app's Installer Package for submission to the Mac App Store.
+To distribute a .NET Multi-platform App UI (.NET MAUI) Mac Catalyst app, you'll need to build a *distribution provisioning profile* specific to it. This profile enables the app to be digitally signed for release so that it can be installed on Macs. A distribution provisioning profile contains an App ID and a distribution certificate. You'll need to create a distribution certificate to identify yourself or your organization, if you don't already have one. In addition, you'll need to create a Mac installer certificate to sign your app's installer package for submission to the Mac App Store.
 
 The process for provisioning a Mac Catalyst app for App Store distribution is as follows:
 
@@ -23,7 +23,38 @@ The process for provisioning a Mac Catalyst app for App Store distribution is as
 
 [!INCLUDE [Create a certificate signing request](../includes/certificate-signing-request.md)]
 
-[!INCLUDE [Create a distribution certificate](../includes/distribution-certificate.md)]
+## Create a distribution certificate
+
+The CSR allows you to generate a distribution certificate, which confirms your identity. The distribution certificate must be created using the Apple ID for your Apple Developer Account:
+
+1. In a web browser, login to your [Apple Developer Account](https://developer.apple.com/account/).
+1. In your Apple Developer Account, select the **Certificates, IDs & Profiles** tab.
+1. On the **Certificates, Identifiers & Profiles** page, select the **+** button to create a new certificate.
+1. On the **Create a New Certificate** page, select the **Apple Distribution** radio button before selecting the **Continue** button:
+
+    :::image type="content" source="media/publish-app-store/apple-distribution-certificate.png" alt-text="Create an Apple distribution certificate.":::
+
+1. On the **Create a New Certificate** page, select **Choose File**:
+
+    :::image type="content" source="media/publish-app-store/choose-certificate.png" alt-text="Upload your certificate signing request.":::
+
+1. In the **Choose Files to Upload** dialog, select the certificate request file you previously created (a file with a `.certSigningRequest` file extension) and then select **Upload**.
+1. On the **Create a New Certificate** page, select the **Continue** button:
+
+    :::image type="content" source="media/publish-app-store/chosen-certificate.png" alt-text="Continue to generate your distribution certificate.":::
+
+1. On the **Download Your Certificate** page, select the **Download** button:
+
+    :::image type="content" source="media/publish-app-store/download-distribution-certificate.png" alt-text="Download your distribution certificate.":::
+
+    The certificate file (a file with a `.cer` extension) will be downloaded to your chosen location.
+
+1. On your Mac, double-click the downloaded certificate file to install the certificate to your keychain. The certificate appears in the **My Certificates** category in **Keychain Access**, and begins with **Apple Distribution**:
+
+    :::image type="content" source="media/publish-app-store/keychain-access-distribution-certificate.png" alt-text="Keychain Access showing distribution certificate.":::
+
+    > [!NOTE]
+    > Make a note of the full distribution certificate name in Keychain Access. It will be required when signing your app.
 
 [!INCLUDE [Create an installer certificate](../includes/installer-certificate.md)]
 
@@ -45,22 +76,22 @@ To create a provisioning profile for App Store distribution:
 1. In the **Profiles** tab, click the **+** button to create a new profile.
 1. In the **Register a New Provisioning Profile** page, select the **Mac App Store** radio button before clicking the **Continue** button:
 
-    :::image type="content" source="media/appstore-register-provisioning-profile.png" alt-text="Register a provisioning profile for app store distribution.":::
+    :::image type="content" source="media/publish-app-store/appstore-register-provisioning-profile.png" alt-text="Register a provisioning profile for app store distribution.":::
 
 1. In the **Generate a Provisioning Profile** page, select the **Mac Catalyst** radio button. Then, in the **App ID** drop-down, select the App ID that you previously created before clicking the **Continue** button:
 
-    :::image type="content" source="media/select-app-id.png" alt-text="Select your App ID.":::
+    :::image type="content" source="media/publish-app-store/select-app-id.png" alt-text="Select your App ID.":::
 
     > [!NOTE]
     > The App ID will be in the **Enabled App IDs with an associated application identifier** section.
 
 1. In the **Generate a Provisioning Profile** page, select the radio button that corresponds to your distribution certificate before clicking the **Continue** button:
 
-    :::image type="content" source="media/appstore-select-certificate.png" alt-text="Select your distribution certificate.":::
+    :::image type="content" source="media/publish-app-store/appstore-select-certificate.png" alt-text="Select your distribution certificate.":::
 
 1. In the **Generate a Provisioning Profile** page, enter a name for the provisioning profile before clicking the **Generate** button:
 
-    :::image type="content" source="media/appstore-generate-profile.png" alt-text="Generate the provisioning profile.":::
+    :::image type="content" source="media/publish-app-store/appstore-generate-profile.png" alt-text="Generate the provisioning profile.":::
 
     > [!NOTE]
     > Make a note of the provisioning profile name, as it will be required when signing your app.
