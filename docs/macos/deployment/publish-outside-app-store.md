@@ -34,7 +34,7 @@ The CSR allows you to generate a developer ID certificate, which confirms your i
 
     :::image type="content" source="media/publish-outside-app-store/developer-id-application-certificate.png" alt-text="Create a Developer ID Application certificate.":::
 
-1. On the **Create a New Certificate** page, select **Choose File**:
+1. On the **Create a New Certificate** page, select the **G2 Sub-CA** radio button, and then select **Choose File**:
 
     :::image type="content" source="media/publish-outside-app-store/choose-certificate.png" alt-text="Upload your certificate signing request.":::
 
