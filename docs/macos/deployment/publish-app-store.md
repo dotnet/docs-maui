@@ -252,10 +252,10 @@ For a full list of build properties, see [Project file properties](https://githu
 > [!IMPORTANT]
 > Values for all of these parameters don't have to be provided on the command line. They can also be provided in the project file. When a parameter is provided on the command line and in the project file, the command line parameter takes precedence. For more information about providing build properties in your project file, see [Define build properties in your project file](#define-build-properties-in-your-project-file).
 
-For example, use the following command to build and sign a *.pkg* on a Mac:
+For example, use the following command to build and sign a *.pkg* on a Mac, for distribution through the App Store:
 
 ```dotnetcli
-dotnet publish -f:net7.0-maccatalyst -c:Release /p:MtouchLink=Full /p:CreatePackage=true /p:EnableCodeSigning=true /p:EnablePackageSigning=true /p:CodesignKey="Apple Distribution: John Smith (AY2GDE9QM7)" /p:CodesignProvision="MyMauiApp" /p:CodesignEntitlements="Platforms\MacCatalyst\Entitlements.plist" /p:PackageSigningKey="3rd Party Mac Developer Installer: John Smith (AY2GDE9QM7)"
+dotnet publish -f:net7.0-maccatalyst -c:Release /p:MtouchLink=SdkOnly /p:CreatePackage=true /p:EnableCodeSigning=true /p:EnablePackageSigning=true /p:CodesignKey="Apple Distribution: John Smith (AY2GDE9QM7)" /p:CodesignProvision="MyMauiApp" /p:CodesignEntitlements="Platforms\MacCatalyst\Entitlements.plist" /p:PackageSigningKey="3rd Party Mac Developer Installer: John Smith (AY2GDE9QM7)"
 ```
 
 Publishing builds, signs, and packages the app, and then copies the *.pkg* to the *bin/Release/net7.0-maccatalyst/publish/* folder. If you publish the app using only a single architecture, it will be published to the *bin/Release/net7.0maccatalyst/{arechitecture}/publish/* folder.
@@ -286,8 +286,8 @@ An alternative to specifying build parameters on the command line is to specify 
 | `<EnableCodeSigning>`       | Set to `true` so that code signing is enabled.                                                  |
 | `<EnablePackageSigning>`    | Set to `true` so that the package that's created gets signed.                                   |
 | `<MtouchLink>`              | The link mode for the project, which can be `None`, `SdkOnly`, or `Full`.                       |
-| `<RuntimeIdentifier>` | The runtime identifier (RID) for the project. Release builds of .NET MAUI Mac Catalyst apps default to using `maccatalyst-x64` and `maccatalyst-arm64` as runtime identifiers, to support universal apps. To support only a single architecture, specify `maccatalyst-x64` or `maccatalyst-arm64`. |
 | `<PackageSigningKey>`       | The package signing key to use when signing the package. Set to the name of your installer certificate, as displayed in Keychain Access. |
+| `<RuntimeIdentifier>` | The runtime identifier (RID) for the project. Release builds of .NET MAUI Mac Catalyst apps default to using `maccatalyst-x64` and `maccatalyst-arm64` as runtime identifiers, to support universal apps. To support only a single architecture, specify `maccatalyst-x64` or `maccatalyst-arm64`. |
 
 For a full list of build properties, see [Project file properties](https://github.com/xamarin/xamarin-macios/wiki/Project-file-properties).
 
@@ -298,7 +298,7 @@ The following example shows a typical property group for building and signing yo
 
 ```xml
 <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-maccatalyst|AnyCPU'">
-  <MtouchLink>Full</MtouchLink>
+  <MtouchLink>SdkOnly</MtouchLink>
   <EnableCodeSigning>True</EnableCodeSigning>
   <EnablePackageSigning>true</EnablePackageSigning>
   <CreatePackage>true</CreatePackage>
