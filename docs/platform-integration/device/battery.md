@@ -18,33 +18,7 @@ To access the **Battery** functionality the following platform-specific setup is
 <!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
 
-The `BatteryStats` permission is required and must be configured in the Android project. You can configure the permission in the following ways:
-
-- Add the assembly-based permission:
-
-  Open the _Platforms/Android/MainApplication.cs_ file and add the following assembly attribute after `using` directives:
-
-  ```csharp
-  [assembly: UsesPermission(Android.Manifest.Permission.BatteryStats)]
-  ```
-
-  \- or -
-
-- Update the Android Manifest:
-
-    Open the _Platforms/Android/AndroidManifest.xml_ file and add the following in the `manifest` node:
-
-  ```xml
-  <uses-permission android:name="android.permission.BATTERY_STATS" />
-  ```
-
-<!-- TODO not yet supported>
-  \- or -
-
-- Use the Android project properties:
-
-  Right-click on the Android project and open the project's properties. Under _Android Manifest_ find the **Required permissions:** area and check the **Battery** permission. This will automatically update the _AndroidManifest.xml_ file.
--->
+No setup is required.
 
 # [iOS\macOS](#tab/ios)
 
