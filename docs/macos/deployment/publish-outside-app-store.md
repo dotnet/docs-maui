@@ -1,6 +1,6 @@
 ---
 title: "Publish a .NET MAUI Mac Catalyst app for distribution outside the Mac App Store"
-description: "Learn how to provision and publish a .NET MAUI Mac Catalyst app for distribution outside the Mac App Store."
+description: "Learn how to provision, publish, and notarize a .NET MAUI Mac Catalyst app for distribution outside the Mac App Store."
 ms.date: 03/16/2023
 ---
 
@@ -12,7 +12,7 @@ Distributing a Mac Catalyst app requires that the app is provisioned using a *pr
 
 To distribute a .NET Multi-platform App UI (.NET MAUI) Mac Catalyst app outside the Mac App Store, you'll need to build a *distribution provisioning profile* specific to it. This profile enables the app to be digitally signed for release so that it can be installed on Macs. A distribution provisioning profile contains an App ID and a developer ID application certificate. You'll need to create a developer ID application certificate to identify yourself or your organization, if you don't already have one. In addition, you'll need to create developer ID installer certificate to sign your app's installer package.
 
-The process of provisioning a Mac Catalyst app for distribution outside the Mac App Store is as follows:
+The process for provisioning a .NET MAUI Mac Catalyst app for distribution outside the Mac App Store is as follows:
 
 1. Create a certificate signing request. For more information, see [Create a certificate signing request](#create-a-certificate-signing-request).
 1. Create a developer ID application certificate. For more information, see [Create a developer ID application certificate](#create-a-developer-id-application-certificate).
@@ -20,6 +20,7 @@ The process of provisioning a Mac Catalyst app for distribution outside the Mac 
 1. Create an App ID. For more information, see [Create an App ID](#create-an-app-id).
 1. Configure the App ID. For more information, see [Configure the App ID](#configure-the-app-id). IS THIS REALLY REQUIRED???
 1. Create a provisioning profile. For more information, see [Create a provisioning profile](#create-a-provisioning-profile).
+1. Download your provisioning profile. For more information, see [Download your provisioning profile in Xcode](#download-your-provisioning-profile-in-xcode).
 
 Then, once provisioning is complete you should prepare your app for publishing, publish it, and notarize it with the following process:
 
@@ -388,7 +389,7 @@ Publishing builds, signs, and packages the app, and then copies the *.pkg* to th
 
 ## Notarize your app
 
-macOS includes a technology called *Gatekeeper*, which helps ensure that only trusted software runs on a user's Mac. When a user downloads and opens an installer package, or an app, Gatekeeper verifies that the software is from an identified developer, by checking for a Developer ID certificate, and is notarized by Apple to be free of known malicious content and hasn't been altered. Therefore, after provisioning and publishing your app, you should provide more confidence in your app to users by submitting it to Apple to be notarized. Apple's notarization service automatically scans your Developer ID-signed app and performs security checks. When your app is ready to export for distribution, your software is assigned a ticket to let Gatekeeper know it's been notarized.
+macOS includes a technology called *Gatekeeper*, which helps ensure that only trusted software runs on a Mac. When a user downloads and opens an installer package, or an app, Gatekeeper verifies that the software is from an identified developer, by checking for a Developer ID certificate, and is notarized by Apple to be free of known malicious content and hasn't been altered. Therefore, after provisioning and publishing your app you should submit it to Apple to be notarized. Apple's notarization service automatically scans your Developer ID-signed app and performs security checks. When your app is ready to export for distribution, your software is assigned a ticket to let Gatekeeper know it's been notarized.
 
 Apps can be submitted to Apple's notary service with the `notarytool` command line tool:
 
@@ -396,34 +397,34 @@ Apps can be submitted to Apple's notary service with the `notarytool` command li
 xcrun notarytool submit {my_package_filename} --wait --apple-id {my_apple_id} --password {my_app_specific_password} --team-id {my_team_id}
 ```
 
-An example of using the `notarytool` tool is:
+An example of using the `notarytool` tool to sign a .NET MAUI Mac Catalyst *.pkg* file is shown below:
 
 ```zsh
 xcrun notarytool submit MyMauiApp-1.0.pkg --wait --apple-id johm.smith@provider.com --password fqtk-cprr-gqdt-bvyo --team-id AY2GDE9QM7
 ```
 
-The `wait` flag tells `notarytool` to exit only after the notary service finishes processing the submission, therefore eliminating the need to poll the service for its status. The `apple-id`, `password`, and `team-id` arguments are used to supply your App Store Connect credentials. Because App Store Connect requires two-factor authentication, you must create an app-specific password for `notarytool`. For information about creating an app-specific password, see [Sign in to apps with your Apple ID using app-specific passwords](https://support.apple.com/en-us/HT204397) on developer.apple.com.
+The `wait` flag tells `notarytool` to exit only after the notary service finishes processing the submission, therefore removing the need to poll the service for its status. The `apple-id`, `password`, and `team-id` arguments are used to supply your App Store Connect credentials. Because App Store Connect requires two-factor authentication, you must create an app-specific password for `notarytool`. For information about creating an app-specific password, see [Sign in to apps with your Apple ID using app-specific passwords](https://support.apple.com/en-us/HT204397) on developer.apple.com.
 
-After you upload your app, the notarization process typically takes less than an hour.
+After you submit your app to Apple, the notarization process typically takes less than an hour.
 
 > [!NOTE]
-> Notarization completes for most apps within 5 minutes. For information about avoiding long response times from the notarization service, see [Avoid long notarization response times and size limits](https://developer.apple.com/documentation/security/notarizing_macos_software_before_distribution/customizing_the_notarization_workflow?) on developer.apple.com.
+> Notarization completes for most apps within 5 minutes. For information about avoiding long response times from the notary service, see [Avoid long notarization response times and size limits](https://developer.apple.com/documentation/security/notarizing_macos_software_before_distribution/customizing_the_notarization_workflow?) on developer.apple.com.
 
 Provided that notarization succeeds, the notary service generates a ticket for the signed installer package and the app bundle inside it.
 
 For more information about notarization, see [Notarizing macOS software before distribution](https://developer.apple.com/documentation/security/notarizing_macos_software_before_distribution). For other approaches to submitting your app to Apple's notary service, see [Upload your app to the notarization service](https://developer.apple.com/documentation/security/notarizing_macos_software_before_distribution/customizing_the_notarization_workflow) on developer.apple.com. For information about resolving common notarization issues, see [Resolving common notarization issues](https://developer.apple.com/documentation/security/notarizing_macos_software_before_distribution/resolving_common_notarization_issues).
 
-### Staple the ticket
+### Staple the ticket to your app
 
 Notarization produces a ticket for the signed installer package and the app bundle inside it, that tell Gatekeeper that your app is notarized. Once notarization completes, when users attempt to run your app on macOS 10.14 or later, Gatekeeper locates the ticket online.
 
-After notarization has succeeded, you should attach the ticket to your app using the `stapler` tool. This ensures that Gatekeeper can find the ticket even when a network connection isn't available. Run the following command to attach a ticket to your *.pkg*:
+After notarization has succeeded, you should attach the ticket to your app using the `stapler` tool. This ensures that Gatekeeper can find the ticket even when a network connection isn't available. Run the following command to attach the ticket to your *.pkg*:
 
 ```zsh
-xcrun stapler staple {filname}.pkg
+xcrun stapler staple {filename}.pkg
 ```
 
-The `stapler` tool retrieves a ticket and attaches it to the installer package. You'll receive a message telling you that the staple and validate action worked, provided that stapling succeeds.
+The `stapler` tool retrieves the ticket and attaches it to the installer package. You'll receive a message telling you that the staple and validate action worked, provided that stapling succeeds.
 
 ### Validate notarization
 
@@ -433,7 +434,7 @@ If you want to validate notarization, you can do so with the following command:
 xcrun stapler validate mypackage.pkg
 ```
 
-## Distribution
+## Distribut your app
 
 The signed and notarized *.pkg* can be safely distributed outside the Mac App Store at a location of your choosing, such as a web server.
 

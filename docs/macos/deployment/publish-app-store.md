@@ -12,7 +12,7 @@ Distributing a Mac Catalyst app requires that the app is provisioned using a *pr
 
 To distribute a .NET Multi-platform App UI (.NET MAUI) Mac Catalyst app, you'll need to build a *distribution provisioning profile* specific to it. This profile enables the app to be digitally signed for release so that it can be installed on Macs. A distribution provisioning profile contains an App ID and a distribution certificate. You'll need to create a distribution certificate to identify yourself or your organization, if you don't already have one. In addition, you'll need to create a Mac installer certificate to sign your app's installer package for submission to the Mac App Store.
 
-The process for publishing a Mac Catalyst app for Mac App Store distribution is as follows:
+The process for provisioning a .NET MAUI Mac Catalyst app for distribution through the Mac App Store is as follows:
 
 1. Create a certificate signing request. For more information, see [Create a certificate signing request](#create-a-certificate-signing-request).
 1. Create a distribution certificate. For more information, see [Create a distribution certificate](#create-a-distribution-certificate).
@@ -20,6 +20,7 @@ The process for publishing a Mac Catalyst app for Mac App Store distribution is 
 1. Create an App ID. For more information, see [Create an App ID](#create-an-app-id).
 1. Configure the App ID. For more information, see [Configure the App ID](#configure-the-app-id).
 1. Create a provisioning profile. For more information, see [Create a provisioning profile](#create-a-provisioning-profile).
+1. Download your provisioning profile. For more information, see [Download your provisioning profile in Xcode](#download-your-provisioning-profile-in-xcode).
 
 Then, once provisioning is complete you should prepare your app for publishing and then publish it with the following process:
 

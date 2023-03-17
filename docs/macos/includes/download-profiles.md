@@ -3,7 +3,7 @@ ms.date: 03/16/2023
 ms.topic: include
 ---
 
-## Download provisioning profiles in Xcode
+## Download your provisioning profile in Xcode
 
 After creating a distribution provisioning profile in Apple's developer portal, Xcode can download it so that it's available for signing your app:
 
