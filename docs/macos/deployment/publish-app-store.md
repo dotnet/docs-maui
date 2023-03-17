@@ -21,7 +21,7 @@ The process for publishing a Mac Catalyst app for App Store distribution is as f
 1. Configure the App ID. For more information, see [Configure the App ID](#configure-the-app-id).
 1. Create a provisioning profile. For more information, see [Create a provisioning profile](#create-a-provisioning-profile).
 1. Add required entitlements to your app. For more information, see [Add entitlements](#add-entitlements).
-1. Update the app's *Info.plist* file. For more information, see [Update Info.plist](#update-info-plist).
+1. Update the app's *Info.plist* file. For more information, see [Update Info.plist](#update-infoplist).
 1. Publish your app using the command line. For more information, see [Publish using the command line](#publish-using-the-command-line).
 
 [!INCLUDE [Create a certificate signing request](../includes/certificate-signing-request.md)]

@@ -21,8 +21,8 @@ The process for publishing a Mac Catalyst app for distribution outside the App S
 1. Configure the App ID. For more information, see [Configure the App ID](#configure-the-app-id). IS THIS REALLY REQUIRED???
 1. Create a provisioning profile. For more information, see [Create a provisioning profile](#create-a-provisioning-profile).
 1. Optionally add entitlements to your app. For more information, see [Add entitlements](#add-entitlements).
-1. Update the app's *Info.plist* file. For more information, see [Update Info.plist](#update-info-plist).
-1. Disable code signature verification for your app. For more information, see [Disable code signature verification](#disable-code-verification).
+1. Update the app's *Info.plist* file. For more information, see [Update Info.plist](#update-infoplist).
+1. Disable code signature verification for your app. For more information, see [Disable code signature verification](#disable-code-signature-verification).
 1. Publish your app using the command line. For more information, see [Publish using the command line](#publish-using-the-command-line).
 1. Notarize your app. For more information, see [Notarize your app](#notarize-your-app).
 
@@ -99,8 +99,8 @@ A distribution provisioning profile enables your .NET MAUI Mac Catalyst app to b
 
 [!INCLUDE [Create an App ID](../includes/create-app-id.md)]
 
-<!-- TODO: Does the App ID need configuring to use the Mac Catalyst entitlement?
-[!INCLUDE [Configure the App ID](../includes/configure-app-id.md)] -->
+<!-- TODO: Does the App ID need configuring to use the Mac Catalyst entitlement? -->
+[!INCLUDE [Configure the App ID](../includes/configure-app-id.md)]
 
 ### Create a provisioning profile
 
