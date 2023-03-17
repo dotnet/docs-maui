@@ -1,18 +1,18 @@
 ---
-title: "Publish a .NET MAUI Mac Catalyst app for App Store distribution"
-description: "Learn how to provision and publish a .NET MAUI Mac Catalyst app for App Store distribution."
+title: "Publish a .NET MAUI Mac Catalyst app for Mac App Store distribution"
+description: "Learn how to provision and publish a .NET MAUI Mac Catalyst app for Mac App Store distribution."
 ms.date: 03/13/2023
 ---
 
-# Publish a Mac Catalyst app for App Store distribution
+# Publish a Mac Catalyst app for Mac App Store distribution
 
-The most common approach to distributing Mac Catalyst apps to users is through the App Store. Apps are submitted to the App Store through a portal called *App Store Connect*. Only developers who belong to the Apple Developer Program have access to this portal. Members of the Apple Developer Enterprise Program do not have access. All apps submitted to the App Store require approval from Apple.
+The most common approach to distributing Mac Catalyst apps to users is through the Mac App Store. Apps are submitted to the Mac App Store through a portal called *App Store Connect*. Only developers who belong to the Apple Developer Program have access to this portal. Members of the Apple Developer Enterprise Program do not have access. All apps submitted to the Mac App Store require approval from Apple.
 
 Distributing a Mac Catalyst app requires that the app is provisioned using a *provisioning profile*. Provisioning profiles are files that contain code signing information, as well as the identity of the app and its intended distribution mechanism.
 
 To distribute a .NET Multi-platform App UI (.NET MAUI) Mac Catalyst app, you'll need to build a *distribution provisioning profile* specific to it. This profile enables the app to be digitally signed for release so that it can be installed on Macs. A distribution provisioning profile contains an App ID and a distribution certificate. You'll need to create a distribution certificate to identify yourself or your organization, if you don't already have one. In addition, you'll need to create a Mac installer certificate to sign your app's installer package for submission to the Mac App Store.
 
-The process for publishing a Mac Catalyst app for App Store distribution is as follows:
+The process for publishing a Mac Catalyst app for Mac App Store distribution is as follows:
 
 1. Create a certificate signing request. For more information, see [Create a certificate signing request](#create-a-certificate-signing-request).
 1. Create a distribution certificate. For more information, see [Create a distribution certificate](#create-a-distribution-certificate).
@@ -20,6 +20,9 @@ The process for publishing a Mac Catalyst app for App Store distribution is as f
 1. Create an App ID. For more information, see [Create an App ID](#create-an-app-id).
 1. Configure the App ID. For more information, see [Configure the App ID](#configure-the-app-id).
 1. Create a provisioning profile. For more information, see [Create a provisioning profile](#create-a-provisioning-profile).
+
+Then, once provisioning is complete you should prepare your app for publishing and then publish it with the following process:
+
 1. Add required entitlements to your app. For more information, see [Add entitlements](#add-entitlements).
 1. Update the app's *Info.plist* file. For more information, see [Update Info.plist](#update-infoplist).
 1. Publish your app using the command line. For more information, see [Publish using the command line](#publish-using-the-command-line).
@@ -73,7 +76,7 @@ A distribution provisioning profile enables your .NET MAUI Mac Catalyst app to b
 
 Once the App ID has been created and configured, you should create a distribution provisioning profile. This profile enables the app to be digitally signed for release so that it can be installed on Macs.
 
-To create a provisioning profile for App Store distribution:
+To create a provisioning profile for Mac App Store distribution:
 
 1. In the Certificates, Identifiers & Profiles page of your Apple Developer Account, select the **Profiles** tab.
 1. In the **Profiles** tab, click the **+** button to create a new profile.
@@ -108,7 +111,7 @@ To create a provisioning profile for App Store distribution:
 
 ## Add entitlements
 
-Apple's App Sandbox restricts access to system resources and user data in macOS apps, to contain damage if an app becomes compromised. It must be enabled for Mac Catalyst apps that are distributed through the App Store. This can be accomplished by adding an *Entitlements.plist* file to the *Platforms/MacCatalyst* folder of your .NET MAUI app project:
+Apple's App Sandbox restricts access to system resources and user data in macOS apps, to contain damage if an app becomes compromised. It must be enabled for Mac Catalyst apps that are distributed through the Mac App Store. This can be accomplished by adding an *Entitlements.plist* file to the *Platforms/MacCatalyst* folder of your .NET MAUI app project:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -142,7 +145,7 @@ For information about the outgoing network connections entitlement, see [com.app
 
 ## Update Info.plist
 
-Before publishing your app, you should update its *Info.plist* file with additional information to ensure that the app can be uploaded to the App Store, and to help ensure a smooth App Store review process.
+Before publishing your app, you should update its *Info.plist* file with additional information to ensure that the app can be uploaded to the Mac App Store, and to help ensure a smooth App Store review process.
 
 ### Specify the user interface idiom
 
@@ -184,7 +187,7 @@ The value of the key should be a language designator, with an optional region de
 
 ### Set the app category
 
-Categories help users discover your app on the App Store. You can set the app's primary category in your *Info.plist* file:
+Categories help users discover your app on the Mac App Store. You can set the app's primary category in your *Info.plist* file:
 
 ```xml
 <key>LSApplicationCategoryType</key>
@@ -255,7 +258,7 @@ For a full list of build properties, see [Project file properties](https://githu
 > [!IMPORTANT]
 > Values for all of these parameters don't have to be provided on the command line. They can also be provided in the project file. When a parameter is provided on the command line and in the project file, the command line parameter takes precedence. For more information about providing build properties in your project file, see [Define build properties in your project file](#define-build-properties-in-your-project-file).
 
-For example, use the following command to build and sign a *.pkg* on a Mac, for distribution through the App Store:
+For example, use the following command to build and sign a *.pkg* on a Mac, for distribution through the Mac App Store:
 
 ```dotnetcli
 dotnet publish -f:net7.0-maccatalyst -c:Release /p:MtouchLink=SdkOnly /p:CreatePackage=true /p:EnableCodeSigning=true /p:EnablePackageSigning=true /p:CodesignKey="Apple Distribution: John Smith (AY2GDE9QM7)" /p:CodesignProvision="MyMauiApp" /p:CodesignEntitlements="Platforms\MacCatalyst\Entitlements.plist" /p:PackageSigningKey="3rd Party Mac Developer Installer: John Smith (AY2GDE9QM7)"
@@ -297,7 +300,7 @@ For a full list of build properties, see [Project file properties](https://githu
 > [!IMPORTANT]
 > Values for these build properties don't have to be provided in the project file. They can also be provided on the command line when you publish the app. This enables you to omit specific values from your project file.
 
-The following example shows a typical property group for building and signing your Mac Catalyst app, for App Store distribution, with its provisioning profile:
+The following example shows a typical property group for building and signing your Mac Catalyst app, for Mac App Store distribution, with its provisioning profile:
 
 ```xml
 <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-maccatalyst|AnyCPU'">
@@ -330,9 +333,9 @@ Publishing builds, signs, and packages the app, and then copies the *.pkg* to th
 
 ## Upload to the App Store
 
-To distribute your app through the App Store, or TestFlight, you'll need to create an app record in App Store Connect. This record includes all the information about the app as it will appear in the App Store and all of the information needed to manage the app throughout the distribution process. For more information, see [Create an app record](https://developer.apple.com/help/app-store-connect/create-an-app-record/add-a-new-app) on developer.apple.com.
+To distribute your app through the Mac App Store, or TestFlight, you'll need to create an app record in App Store Connect. This record includes all the information about the app as it will appear in the App Store and all of the information needed to manage the app throughout the distribution process. For more information, see [Create an app record](https://developer.apple.com/help/app-store-connect/create-an-app-record/add-a-new-app) on developer.apple.com.
 
-[Transporter](https://apps.apple.com/us/app/transporter/id1450874784?mt=12) can be used to submit your app to the App Store. It will also help to identify errors with app packages that stop successful submission.
+[Transporter](https://apps.apple.com/us/app/transporter/id1450874784?mt=12) can be used to submit your app to the Mac App Store. It will also help to identify errors with app packages that stop successful submission.
 
 ## See also
 

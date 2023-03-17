@@ -1,18 +1,18 @@
 ---
-title: "Publish a .NET MAUI Mac Catalyst app for distribution outside the App Store"
-description: "Learn how to provision and publish a .NET MAUI Mac Catalyst app for distribution outside the App Store."
+title: "Publish a .NET MAUI Mac Catalyst app for distribution outside the Mac App Store"
+description: "Learn how to provision and publish a .NET MAUI Mac Catalyst app for distribution outside the Mac App Store."
 ms.date: 03/16/2023
 ---
 
-# Publish a Mac Catalyst app for distribution outside the App Store
+# Publish a Mac Catalyst app for distribution outside the Mac App Store
 
-An alternative to distributing Mac Catalyst apps through the App Store is to distribute them outside the App Store. With this approach, your Mac Catalyst app can be hosted on a server for download.
+An alternative to distributing Mac Catalyst apps through the Mac App Store is to distribute them outside the Mac App Store. With this approach, your Mac Catalyst app can be hosted at a location of your choosing for download.
 
 Distributing a Mac Catalyst app requires that the app is provisioned using a *provisioning profile*. Provisioning profiles are files that contain code signing information, as well as the identity of the app and its intended distribution mechanism.
 
-To distribute a .NET Multi-platform App UI (.NET MAUI) Mac Catalyst app outside the App Store, you'll need to build a *distribution provisioning profile* specific to it. This profile enables the app to be digitally signed for release so that it can be installed on Macs. A distribution provisioning profile contains an App ID and a developer ID application certificate. You'll need to create a developer ID application certificate to identify yourself or your organization, if you don't already have one. In addition, you'll need to create developer ID installer certificate to sign your app's installer package.
+To distribute a .NET Multi-platform App UI (.NET MAUI) Mac Catalyst app outside the Mac App Store, you'll need to build a *distribution provisioning profile* specific to it. This profile enables the app to be digitally signed for release so that it can be installed on Macs. A distribution provisioning profile contains an App ID and a developer ID application certificate. You'll need to create a developer ID application certificate to identify yourself or your organization, if you don't already have one. In addition, you'll need to create developer ID installer certificate to sign your app's installer package.
 
-The process for publishing a Mac Catalyst app for distribution outside the App Store is as follows:
+The process of provisioning a Mac Catalyst app for distribution outside the Mac App Store is as follows:
 
 1. Create a certificate signing request. For more information, see [Create a certificate signing request](#create-a-certificate-signing-request).
 1. Create a developer ID application certificate. For more information, see [Create a developer ID application certificate](#create-a-developer-id-application-certificate).
@@ -20,6 +20,9 @@ The process for publishing a Mac Catalyst app for distribution outside the App S
 1. Create an App ID. For more information, see [Create an App ID](#create-an-app-id).
 1. Configure the App ID. For more information, see [Configure the App ID](#configure-the-app-id). IS THIS REALLY REQUIRED???
 1. Create a provisioning profile. For more information, see [Create a provisioning profile](#create-a-provisioning-profile).
+
+Then, once provisioning is complete you should prepare your app for publishing, publish it, and notarize it with the following process:
+
 1. Optionally add entitlements to your app. For more information, see [Add entitlements](#add-entitlements).
 1. Update the app's *Info.plist* file. For more information, see [Update Info.plist](#update-infoplist).
 1. Disable code signature verification for your app. For more information, see [Disable code signature verification](#disable-code-signature-verification).
@@ -106,7 +109,7 @@ A distribution provisioning profile enables your .NET MAUI Mac Catalyst app to b
 
 Once the App ID has been created and configured, you should create a distribution provisioning profile. This profile enables the app to be digitally signed for release so that it can be installed on Macs.
 
-To create a provisioning profile for distribution outside the App Store:
+To create a provisioning profile for distribution outside the Mac App Store:
 
 1. In the Certificates, Identifiers & Profiles page of your Apple Developer Account, select the **Profiles** tab.
 1. In the **Profiles** tab, click the **+** button to create a new profile.
@@ -141,7 +144,7 @@ To create a provisioning profile for distribution outside the App Store:
 
 ## Add entitlements
 
-Apple's App Sandbox restricts access to system resources and user data in macOS apps, to contain damage if an app becomes compromised. It can optionally be enabled for Mac Catalyst apps that are distributed outsidethe App Store. This can be accomplished by adding an *Entitlements.plist* file to the *Platforms/MacCatalyst* folder of your .NET MAUI app project:
+Apple's App Sandbox restricts access to system resources and user data in macOS apps, to contain damage if an app becomes compromised. It can optionally be enabled for Mac Catalyst apps that are distributed outside the Mac App Store. This can be accomplished by adding an *Entitlements.plist* file to the *Platforms/MacCatalyst* folder of your .NET MAUI app project:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -245,7 +248,7 @@ For more information, see [Complying with Encryption Export Regulations](https:/
 <!-- Todo remove once this bug is fixed: https://github.com/xamarin/xamarin-macios/issues/17829-->
 ## Disable code signature verification
 
-Currently, when you attempt to publish a .NET MAUI Mac Catalyst app for distribution outside the App Store, provided you've met the provisioning requirements, you'll receive an error about `codesign` exiting with code 3:
+Currently, when you attempt to publish a .NET MAUI Mac Catalyst app for distribution outside the Mac App Store, provided you've met the provisioning requirements, you'll receive an error about `codesign` exiting with code 3:
 
 ```
 /usr/local/share/dotnet/packs/Microsoft.MacCatalyst.Sdk/16.2.1040/tools/msbuild/iOS/Xamarin.Shared.targets(1930,3): error MSB6006: "codesign" exited with code 3. [/Users/davidbritch/Projects/MyMauiApp/MyMauiApp/MyMauiApp.csproj::TargetFramework=net7.0-maccatalyst]
@@ -288,7 +291,7 @@ To publish your Mac Catalyst app from the command line on a Mac, open a terminal
 | `/p:CodesignProvision`       | The provisioning profile to use when signing the app bundle. |
 | `/p:CodesignEntitlements`    | The path to the entitlements file that specifies the entitlements the app requires. Set to `Platforms\MacCatalyst\Entitlements.plist`. |
 | `/p:PackageSigningKey`       | The package signing key to use when signing the package. Set to the name of your installer certificate, as displayed in Keychain Access. |
-| `/p:UseHardenedRuntime`      | Set to `true` to enable the hardened runtime, which is required for Mac Catalyst apps that are distributed outside of the App Store. |
+| `/p:UseHardenedRuntime`      | Set to `true` to enable the hardened runtime, which is required for Mac Catalyst apps that are distributed outside of the Mac App Store. |
 
 > [!WARNING]
 > Attempting to publish a .NET MAUI solution will result in the `dotnet publish` command attempting to publish each project in the solution individually, which can cause issues when you've added other project types to your solution. Therefore, the `dotnet publish` command should be scoped to your .NET MAUI app project.
@@ -308,7 +311,7 @@ For a full list of build properties, see [Project file properties](https://githu
 > [!IMPORTANT]
 > Values for all of these parameters don't have to be provided on the command line. They can also be provided in the project file. When a parameter is provided on the command line and in the project file, the command line parameter takes precedence. For more information about providing build properties in your project file, see [Define build properties in your project file](#define-build-properties-in-your-project-file).
 
-For example, use the following command to build and sign a *.pkg* on a Mac, for distribution outside the App Store:
+For example, use the following command to build and sign a *.pkg* on a Mac, for distribution outside the Mac App Store:
 
 ```dotnetcli
 dotnet publish -f:net7.0-maccatalyst -c:Release /p:MtouchLink=SdkOnly /p:CreatePackage=true /p:EnableCodeSigning=true /p:EnablePackageSigning=true /p:CodesignKey="Developer ID Application: John Smith (AY2GDE9QM7)" /p:CodesignProvision="MyMauiApp (Non-App Store)" /p:CodesignEntitlements="Platforms\MacCatalyst\Entitlements.plist" /p:PackageSigningKey="Developer ID Installer: John Smith (AY2GDE9QM7)" /p:UseHardenedRuntime=true
@@ -344,14 +347,14 @@ An alternative to specifying build parameters on the command line is to specify 
 | `<MtouchLink>`              | The link mode for the project, which can be `None`, `SdkOnly`, or `Full`.                       |
 | `<PackageSigningKey>`       | The package signing key to use when signing the package. Set to the name of your installer certificate, as displayed in Keychain Access. |
 | `<RuntimeIdentifier>` | The runtime identifier (RID) for the project. Release builds of .NET MAUI Mac Catalyst apps default to using `maccatalyst-x64` and `maccatalyst-arm64` as runtime identifiers, to support universal apps. To support only a single architecture, specify `maccatalyst-x64` or `maccatalyst-arm64`. |
-| `<UseHardenedRuntime>`      | Set to `true` to enable the hardened runtime, which is required for Mac Catalyst apps that are distributed outside of the App Store. |
+| `<UseHardenedRuntime>`      | Set to `true` to enable the hardened runtime, which is required for Mac Catalyst apps that are distributed outside of the Mac App Store. |
 
 For a full list of build properties, see [Project file properties](https://github.com/xamarin/xamarin-macios/wiki/Project-file-properties).
 
 > [!IMPORTANT]
 > Values for these build properties don't have to be provided in the project file. They can also be provided on the command line when you publish the app. This enables you to omit specific values from your project file.
 
-The following example shows a typical property group for building and signing your Mac Catalyst app, for distribution outside the App Store, with its provisioning profile:
+The following example shows a typical property group for building and signing your Mac Catalyst app, for distribution outside the Mac App Store, with its provisioning profile:
 
 ```xml
 <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-maccatalyst|AnyCPU'">
@@ -432,7 +435,7 @@ xcrun stapler validate mypackage.pkg
 
 ## Distribution
 
-The signed and notarized *.pkg* can be safely distributed outside the App Store using a mechanism of your choosing, such as a web server.
+The signed and notarized *.pkg* can be safely distributed outside the Mac App Store at a location of your choosing, such as a web server.
 
 For information about safely opening apps on a Mac, see [Safely open apps on your Mac](https://support.apple.com/HT202491) on support.apple.com.
 
