@@ -434,7 +434,7 @@ If you want to validate notarization, you can do so with the following command:
 xcrun stapler validate mypackage.pkg
 ```
 
-## Distribut your app
+## Distribute your app
 
 The signed and notarized *.pkg* can be safely distributed outside the Mac App Store at a location of your choosing, such as a web server.
 
