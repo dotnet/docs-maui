@@ -51,13 +51,13 @@ Publishing builds the app, and then copies the *.app* to the *bin/Release/net6.0
 For example, use the following command to create an *.app*:
 
 ```dotnetcli
-dotnet build -f:net7.0-maccatalyst -c:Release /p:CreatePackage=false
+dotnet publish -f:net7.0-maccatalyst -c:Release /p:CreatePackage=false
 ```
 
 Use the following command to create a *.pkg*:
 
 ```dotnetcli
-dotnet build -f:net7.0-maccatalyst -c:Release
+dotnet publish -f:net7.0-maccatalyst -c:Release
 ```
 
 Publishing builds the app, and then copies the *.app* to the *bin/Release/net7.0-maccatalyst/* folder or the *.pkg* to the *bin/Release/net7.0-maccatalyst/publish/* folder. If you publish the app using only a single architecture, the *.app* will be published to the *bin/Release/net7.0-maccatalyst/{architecture}/* folder while the *.pkg* will be published to the *bin/Release/net7.0-maccatalyst/{architecture}/publish/* folder.
