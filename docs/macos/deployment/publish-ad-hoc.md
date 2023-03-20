@@ -63,6 +63,31 @@ The CSR allows you to generate a developer certificate, which confirms your iden
     > [!NOTE]
     > Make a note of the full certificate name in Keychain Access. It will be required when signing your app.
 
+## Create a developer profile
+
+An ad-hoc developer provisioning profile enables your .NET MAUI Mac Catalyst app to be digitally signed, so that it can be installed on specific Macs. An ad-hoc developer provisioning profile contains an App ID, a developer certificate, and a list of the devices that can install the app.
+
+[!INCLUDE [Create an App ID](../includes/create-app-id.md)]
+
+<!-- TODO: Does the App ID need configuring to use the Mac Catalyst entitlement? -->
+[!INCLUDE [Configure the App ID](../includes/configure-app-id.md)]
+
+### Add a device
+
+When creating a provisioning profile, the profile must include which devices can run the app. Before selecting a device to be added to a provisioning profile you must first add the device to your Apple Developer Account. This can be achieved with the following steps:
+
+1. Select the **Apple > About this Mac** menu item.
+1. In the **Overview** tab, select the **System Report...** button.
+1. In the **System Report**, select the **Hardware** expander to see the hardware overview. The report displays the universally unique identifier (UUID) as **Hardware UUID** in macOS 10.15 and later, or **Provisioning UDID** in macOS 11.0 and later.
+1. Select the **Hardware UUID** or **Provisioning UDID** value and copy it to the clipboard.
+1. In a web browser, go to the [Devices](https://developer.apple.com/account/resources/devices/list) section of your Apple Developer Account and click the **+** button.
+1. In the **Register a New Device** page, set the **Platform** to **macOS** and provide a name for the new device. Then paste the identifier from the clipboard into the **Device ID (UUID)** field, and click the **Continue** button:
+
+    :::image type="content" source="media/publish-ad-hoc/add-device.png" alt-text="Register a device by naming it and entering its unique device identifier.":::
+
+1. In the **Register a New Device** page, review the information and then click the **Register** button.
+
+Repeat the above steps for any Macs that you want to deploy a .NET MAUI Mac Catalyst app to.
 
 ## See also
 
