@@ -712,6 +712,8 @@
                   href: macos/deployment/publish-app-store.md
                 - name: Publish outside the app store
                   href: macos/deployment/publish-outside-app-store.md
+                - name: Publish for ad-hoc distribution
+                  href: macos/deployment/publish-ad-hoc.md
             - name: Windows
               items:
                 - name: Overview
