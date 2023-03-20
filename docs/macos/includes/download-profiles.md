@@ -5,7 +5,7 @@ ms.topic: include
 
 ## Download your provisioning profile in Xcode
 
-After creating a distribution provisioning profile in Apple's developer portal, Xcode can download it so that it's available for signing your app:
+After creating a distribution provisioning profile in your Apple Developer Account, Xcode can download it so that it's available for signing your app:
 
 1. On your Mac, launch Xcode.
 1. In Xcode, select the **Xcode > Preferences...** menu item.

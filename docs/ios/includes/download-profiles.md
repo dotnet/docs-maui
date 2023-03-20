@@ -5,7 +5,7 @@ ms.topic: include
 
 ## Download provisioning profiles in Visual Studio
 
-After creating a distribution provisioning profile in Apple's developer portal, Visual Studio can download it so that it's available for signing your app.
+After creating a distribution provisioning profile in your Apple Developer Account, Visual Studio can download it so that it's available for signing your app.
 
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio](#tab/vs)

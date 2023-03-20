@@ -17,7 +17,7 @@ ms.topic: include
 
     :::image type="content" source="../deployment/media/publish/vs/bundle-signing.png" alt-text="Screenshot of bundle signing tab for iOS in Visual Studio.":::
 
-    These settings will ensure that Visual Studio will select the correct provisioning profile based on the bundle identifier in *Info.plist* (which is identical to the value of the **Application ID** property in your project file). Alternatively, set the **Signing identity** to the appropriate distribution certificate and **Provisioning profile** to the profile you created in the Apple developer portal.
+    These settings will ensure that Visual Studio will select the correct provisioning profile based on the bundle identifier in *Info.plist* (which is identical to the value of the **Application ID** property in your project file). Alternatively, set the **Signing identity** to the appropriate distribution certificate and **Provisioning profile** to the profile you created in your Apple Developer Account.
 
 1. In **Solution Explorer**, right-click on your .NET MAUI app project and select **Publish...**:
 

@@ -32,4 +32,4 @@ When deploying an app to a device, a provisioning profile is also installed on t
 There are two approaches to provisioning your iOS device:
 
 - **Automatically**. Signing identities, App IDs, and provisioning profiles will be automatically created and managed by Visual Studio. This is the recommended approach for provisioning an iOS device. For more information, see [Automatic provisioning](automatic-provisioning.md).
-- **Manually**. Signing identities, App IDs, and provisioning profiles will be created and managed in the [Apple Developer portal](https://developer.apple.com/account). For more information, see [Manual provisioning](manual-provisioning.md).
+- **Manually**. Signing identities, App IDs, and provisioning profiles will be created and managed in your [Apple Developer Account](https://developer.apple.com/account). For more information, see [Manual provisioning](manual-provisioning.md).
