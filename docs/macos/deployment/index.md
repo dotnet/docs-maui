@@ -1,85 +1,43 @@
 ---
-title: "Publish a .NET MAUI app for macOS"
-description: "Learn how to package and publish a macOS .NET MAUI app."
-ms.date: 04/25/2022
+title: "Publish a .NET MAUI Mac Catalyst app"
+description: "Learn about distribution approaches for .NET MAUI Mac Catalyst apps."
+ms.date: 03/20/2023
 ---
 
-# Publish a .NET MAUI app for macOS
+# Publish a .NET MAUI Mac Catalyst app
 
 > [!div class="op_single_selector"]
 >
 > - [Publish for Android](../../android/deployment/overview.md)
-> - [Publish for iOS](../../ios/deployment/index.md)
-> - [Publish for macOS](index.md)
+> - [Publish for iOS](index.md)
+> - [Publish for macOS](../../macos/deployment/index.md)
 > - [Publish for Windows](../../windows/deployment/overview.md)
 
-When distributing your .NET Multi-platform App UI (.NET MAUI) app for macOS, you generate an *.app* or a *.pkg* file. An *.app* file is a self-contained app that can be run without installation, whereas a *.pkg* is an app packaged in an installer.
+Once a .NET Multi-platform App UI (.NET MAUI) Mac Catalyst app has been developed and tested, it can be packaged for distribution as an *.app* or a *.pkg* file. An *.app* file is a self-contained app that can be run without installation, whereas a *.pkg* is an app packaged in an installer. The following diagram shows the steps required to produce the app package for distribution:
+
+:::image type="content" source="media/ios-distribution.png" alt-text="Steps required to prepare an iOS app for distribution." border="false":::
+
+Publishing a .NET MAUI Mac Catalyst app builds on top of Apple's provisioning process, which requires you to have:
+
+- Created an Apple ID. For more information, see [Create Your Apple ID](https://appleid.apple.com/account).
+- Enrolled your Apple ID in the Apple Developer Program, which you have to pay to join. Enrolling in the Apple Developer Program enables you to create a *provisioning profile*, which contains code signing information.
+- A Mac on which you can build your app.
+
+Apple offers two developer program options:
+
+- *Apple Developer Program*. Regardless of whether you are an individual or represent an organization, the [Apple Developer Program](https://developer.apple.com/programs/) enables you to develop, test, and distribute apps.
+- *Apple Developer Enterprise Program*, which is most suited to organizations that want to develop and distribute apps in-house only. Members of the [Apple Developer Enterprise Program](https://developer.apple.com/programs/enterprise/) do not have access to App Store Connect, and apps can't be published to the Mac App Store.
+
+> [!NOTE]
+> To register for either of these programs, you must first have an [Apple ID](https://appleid.apple.com/). Then you can visit the [Apple Developer Program](https://developer.apple.com/programs/enroll/) to register for a program.
+
+Apple provides multiple approaches for distributing a Mac Catalyst app:
+
+- *Mac App Store*. This is the main approach for distributing Mac Catalyst apps to users. Apps are submitted to the App Store through on online tool called *App Store Connect*. Only developers who belong to the Apple Developer Program have access to this tool. Members of the Apple Developer Enterprise Program do not have access. All apps submitted to the App Store require approval from Apple. For more information, see [Publish a Mac Catalyst app for Mac App Store distribution](publish-app-store.md).
+- *Outside the Mac App Store**. This distribution mechanism enables Mac Catalyst apps to be distributed outside the Mac App Store. It's available for the Apple Developer Program and the Apple Developer Enterprise Program, and enables your Mac Catalyst app to be downloaded from a location of your choosing. For more information, see [Publish a Mac Catalyst app for distribution outside the Mac App Store](publish-outside-app-store.md).
+- *Ad-hoc*. Mac Catalyst apps can be user-tested via ad-hoc distribution, which is available for the Apple Developer Program and the Apple Developer Enterprise Program. It allows an app to be deployed on up to 100 devices, for testing. For more information, see [Publish a Mac Catalyst app for ad-hoc distribution](publish-ad-hoc.md).
+
+All approaches require that apps are provisioned using an appropriate *provisioning profile*. Provisioning profiles contain code signing and app identity information, as well as the intended distribution mechanism. For ad-hoc distribution, they also contain information about the devices the app can be deployed to. In addition, Mac Catalyst apps that are distributed outside the Mac App Store must also be notarized by Apple.
 
 > [!IMPORTANT]
-> Blazor Hybrid apps require a WebView on the host platform. For more information, see [Keep the Web View current in deployed Blazor Hybrid apps](/aspnet/core/blazor/hybrid/security/security-considerations#keep-the-web-view-current-in-deployed-apps).
-
-## Publish an unsigned app
-
-At this time, publishing is only supported through the .NET command line interface.
-
-To publish your app, open a terminal and navigate to the folder for your .NET MAUI app project. Run the `dotnet build` command, providing the following parameters:
-
-<!-- dotnet publish doesn't work at the time of writing -->
-
-| Parameter                    | Value                                                                                           |
-|------------------------------|-------------------------------------------------------------------------------------------------|
-| `-f` or `--framework`        | The target framework, which is `net6.0-maccatalyst` or `net7.0-maccatalyst`.                    |
-| `-c` or `--configuration`    | The build configuration, which is `Release`.                                                    |
-| `/p:CreatePackage`           | An optional parameter that controls whether to create an .app or a .pkg. Use `true` for a .pkg. |
-
-> [!WARNING]
-> Attempting to publish a .NET MAUI solution will result in the `dotnet publish` command attempting to publish each project in the solution individually, which can cause issues when you've added other project types to your solution. Therefore, the `dotnet publish` command should be scoped to your .NET MAUI app project.
-
-::: moniker range="=net-maui-6.0"
-
-For example, use the following command to create an *.app*:
-
-```console
-dotnet build -f:net6.0-maccatalyst -c:Release
-```
-
-Use the following command to create a *.pkg*:
-
-```console
-dotnet build -f:net6.0-maccatalyst -c:Release /p:CreatePackage=true
-```
-
-Publishing builds the app, and then copies the *.app* or *.pkg* to the *bin/Release/net6.0-maccatalyst/maccatalyst-x64* folder.
-
-::: moniker-end
-
-::: moniker range="=net-maui-7.0"
-
-For example, use the following command to create an *.app*:
-
-```console
-dotnet build -f:net7.0-maccatalyst -c:Release
-```
-
-Use the following command to create a *.pkg*:
-
-```console
-dotnet build -f:net7.0-maccatalyst -c:Release /p:CreatePackage=true
-```
-
-Publishing builds the app, and then copies the *.app* or *.pkg* to the *bin/Release/net7.0-maccatalyst/maccatalyst-x64* folder.
-
-::: moniker-end
-
-For more information about the `dotnet publish` command, see [dotnet publish](/dotnet/core/tools/dotnet-publish).
-
-## Run the unsigned app
-
-By default, *.app* and *.pkg* files that are downloaded from the internet can't be run by double-clicking on them. For more information, see [Open a Mac app from an unidentified developer](https://support.apple.com/en-gb/guide/mac-help/mh40616/mac).
-
-To ensure that a *.pkg* installs the app to your *Applications* folder, copy the *.pkg* to outside of your build artifacts folder and delete the *bin* and *obj* folders before double-clicking on the *.pkg*.
-
-## See also
-
-- [GitHub discussion and feedback: .NET MAUI macOS target publishing/archiving](https://github.com/dotnet/maui/issues/5399)
-- [Open apps safely on your Mac](https://support.apple.com/en-gb/HT202491)
+> When distributing a Blazor Hybrid app, the host platform must have a WebView. For more information, see [Keep the Web View current in deployed Blazor Hybrid apps](/aspnet/core/blazor/hybrid/security/security-considerations#keep-the-web-view-current-in-deployed-apps).

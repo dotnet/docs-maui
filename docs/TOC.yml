@@ -706,8 +706,10 @@
                   href: ios/deployment/publish-cli.md
             - name: macOS
               items:
-                - name: Publish an unsigned app
+                - name: Overview
                   href: macos/deployment/index.md
+                - name: Publish an unsigned app
+                  href: macos/deployment/publish-unsigned.md
                 - name: Publish for app store distribution
                   href: macos/deployment/publish-app-store.md
                 - name: Publish outside the app store
