@@ -89,6 +89,47 @@ When creating a provisioning profile, the profile must include which devices can
 
 Repeat the above steps for any Macs that you want to deploy a .NET MAUI Mac Catalyst app to.
 
+### Create a provisioning profile
+
+Once the App ID has been created and configured, you should create a developer provisioning profile. This profile enables the app to be digitally signed so that it can be installed on specific Macs.
+
+To create a provisioning profile for ad-hoc distribution:
+
+1. In the Certificates, Identifiers & Profiles page of your Apple Developer Account, select the **Profiles** tab.
+1. In the **Profiles** tab, click the **+** button to create a new profile.
+1. In the **Register a New Provisioning Profile** page, select the **macOS App Development** radio button before clicking the **Continue** button:
+
+    :::image type="content" source="media/publish-ad-hoc/register-provisioning-profile.png" alt-text="Register a provisioning profile for ad-hoc distribution.":::
+
+1. In the **Generate a Provisioning Profile** page, select the **Mac Catalyst** radio button. Then, in the **App ID** drop-down, select the App ID that you previously created before clicking the **Continue** button:
+
+    :::image type="content" source="media/publish-ad-hoc/select-app-id.png" alt-text="Select your App ID.":::
+
+    > [!NOTE]
+    > The App ID will be in the **Enabled App IDs with an associated application identifier** section.
+
+1. In the **Generate a Provisioning Profile** page, select the check box that corresponds to your development certificate before clicking the **Continue** button:
+
+    :::image type="content" source="media/publish-ad-hoc/select-certificate.png" alt-text="Select your developer certificate.":::
+
+1. In the **Generate a Provisioning Profile** page, select the devices that the app will be installed on and then click the **Continue** button.
+
+    :::image type="content" source="media/publish-ad-hoc/provisioning-profile-devices.png" alt-text="Screenshot of adding a device to a provisioning profile.":::
+
+1. In the **Generate a Provisioning Profile** page, enter a name for the provisioning profile before clicking the **Generate** button:
+
+    :::image type="content" source="media/publish-ad-hoc/generate-profile.png" alt-text="Generate the provisioning profile.":::
+
+    > [!NOTE]
+    > Make a note of the provisioning profile name, as it will be required when signing your app.
+
+1. In the **Generate a Provisioning Profile** page, optionally click the **Download** button to download your provisioning profile.
+
+    > [!NOTE]
+    > It's not necessary to download your provisioning profile now. Instead, you will do this in Xcode.
+
+[!INCLUDE [Download certificates and provisioning profiles in Xcode](../includes/download-profiles.md)]
+
 ## See also
 
 - [Distributing your app to registered devices](https://developer.apple.com/documentation/xcode/distributing-your-app-to-registered-devices) on developer.apple.com
