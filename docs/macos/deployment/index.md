@@ -9,8 +9,8 @@ ms.date: 03/20/2023
 > [!div class="op_single_selector"]
 >
 > - [Publish for Android](../../android/deployment/overview.md)
-> - [Publish for iOS](index.md)
-> - [Publish for macOS](../../macos/deployment/index.md)
+> - [Publish for iOS](../../ios/deployment/index.md
+> - [Publish for macOS](index.md)
 > - [Publish for Windows](../../windows/deployment/overview.md)
 
 Once a .NET Multi-platform App UI (.NET MAUI) Mac Catalyst app has been developed and tested, it can be packaged for distribution as an *.app* or a *.pkg* file. An *.app* file is a self-contained app that can be run without installation, whereas a *.pkg* is an app packaged in an installer. The following diagram shows the steps required to produce the app package for distribution:

@@ -6,13 +6,6 @@ ms.date: 04/25/2022
 
 # Publish an unsigned .NET MAUI Mac Catalyst app
 
-> [!div class="op_single_selector"]
->
-> - [Publish for Android](../../android/deployment/overview.md)
-> - [Publish for iOS](../../ios/deployment/index.md)
-> - [Publish for macOS](index.md)
-> - [Publish for Windows](../../windows/deployment/overview.md)
-
 To publish an unsigned .NET Multi-platform App UI (.NET MAUI) Mac Catalyst app, open a terminal and navigate to the folder for your app project. Run the `dotnet publish` command, providing the following parameters:
 
 | Parameter                    | Value                                                                                               |
