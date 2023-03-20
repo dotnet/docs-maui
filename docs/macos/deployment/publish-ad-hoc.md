@@ -130,6 +130,222 @@ To create a provisioning profile for ad-hoc distribution:
 
 [!INCLUDE [Download certificates and provisioning profiles in Xcode](../includes/download-profiles.md)]
 
+## Add entitlements
+
+Apple's App Sandbox restricts access to system resources and user data in macOS apps, to contain damage if an app becomes compromised. It must be enabled for Mac Catalyst apps that are distributed through the Mac App Store, and can optionally be enabled for Mac Catalyst apps that are distributed outside the Mac App Store. This can be accomplished by adding an *Entitlements.plist* file to the *Platforms/MacCatalyst* folder of your .NET MAUI app project:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>com.apple.security.app-sandbox</key>
+		<true/>
+	</dict>
+</plist>
+```
+
+The App Sandbox entitlement is defined using the `com.apple.security.app-sandbox` key, of type `Boolean`. For information about App Sandbox, see [Protecting user data with App Sandbox](https://developer.apple.com/documentation/security/app_sandbox/protecting_user_data_with_app_sandbox) on developer.apple.com. For information about the App Sandbox entitlement, see [App Sandbox Entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_app-sandbox).
+
+If you use the App Sandbox and your app opens outgoing network connections, you'll also need to add the `com.apple.security.network.client` key, of type `Boolean`, to your *Entitlements.plist* file:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>com.apple.security.app-sandbox</key>
+		<true/>
+		<key>com.apple.security.network.client</key>
+		<true/>
+	</dict>
+</plist>
+```
+
+For information about the outgoing network connections entitlement, see [com.apple.security.network.client](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_network_client) on developer.apple.com.
+
+## Update Info.plist
+
+Before distributing your app, you should update its *Info.plist* file with additional information.
+
+> [!NOTE]
+> While it's not a requirement to update your app's *Info.plist* file when distributing it for testing, these updates will be required when distributing the final tested version of your app. Therefore, it's best practice to perform the updates.
+
+### Specify the user interface idiom
+
+A Mac Catalyst app can run in the iPad or Mac user interface idiom:
+
+- The iPad user interface idiom tells macOS to scale the app's user interface to match the Mac display environment while preserving iPad-like appearance.
+- The Mac user interface idiom doesn't scale the app's user interface to match the Mac display environment. Some controls change their size and appearance, and interacting with them feels identical to interacting with `AppKit` controls.
+
+By default, .NET MAUI Mac Catalyst apps use the iPad user interface idiom. If this is your desired behavior, ensure that the app's *Info.plist* file only specifies 2 as the value of the `UIDeviceFamily` key:
+
+```xml
+<key>UIDeviceFamily</key>
+<array>
+  <integer>2</integer>
+</array>
+```
+
+To adopt the Mac user interface idiom, update the app's *Info.plist* file to specify 6 as the value of the `UIDeviceFamily` key:
+
+```xml
+<key>UIDeviceFamily</key>
+<array>
+  <integer>6</integer>
+</array>
+```
+
+For more information about Mac Catalyst user interface idioms, see [Choosing a user interface idiom for your Mac app](https://developer.apple.com/documentation/uikit/mac_catalyst/choosing_a_user_interface_idiom_for_your_mac_app?language=objc).
+
+### Set the default language and region for the app
+
+Set the `CFBundleDevelopmentRegion` key in your app's *Info.plist* to a `String` that represents the localization native development region:
+
+```xml
+<key>CFBundleDevelopmentRegion</key>
+<string>en</string>
+```
+
+The value of the key should be a language designator, with an optional region designator. For more information, see [CFBundleDevelopmentRegion](https://developer.apple.com/documentation/bundleresources/information_property_list/cfbundledevelopmentregion) on developer.apple.com.
+
+### Set the copyright key
+
+Set the `NSHumanReadableCopyright` key in your app's *Info.plist* to a `String` that represents the human-readable copyright notice for the app:
+
+```xml
+<key>NSHumanReadableCopyright</key>
+<string>My Maui App © 2023</string>
+```
+
+For more information, see [NSHumanReadableCopyright](https://developer.apple.com/documentation/bundleresources/information_property_list/nshumanreadablecopyright) on developer.apple.com.
+
+### Declare your app's use of encryption
+
+If your app uses encryption, and you plan to distribute it outside the United States or Canada, it's subject to US export compliance requirements.
+
+
+Every time you submit a version of your app to App Store Connect, it undergoes an encryption export regulations compliance review. To avoid App Store Connect asking you questions to guide you through the review, you can provide the required information in your app's *Info.plist* file.
+
+To declare your app's use of encryption, add the `ITSAppUsesNonExemptEncryption` key to your app's *Info.plist* with a `Boolean` value that indicates whether it uses encryption:
+
+```xml
+<key>ITSAppUsesNonExemptEncryption</key>
+<false/>
+```
+
+For more information, see [Complying with Encryption Export Regulations](https://developer.apple.com/documentation/security/complying_with_encryption_export_regulations) on developer.apple.com.
+
+## Publish using the command line
+
+To publish your Mac Catalyst app from the command line on a Mac, open a terminal and navigate to the folder for your .NET MAUI app project. Run the `dotnet publish` command, providing the following parameters:
+
+| Parameter                    | Value                                                                                           |
+|------------------------------|-------------------------------------------------------------------------------------------------|
+| `-f` or `--framework`        | The target framework, which is `net6.0-maccatalyst` or `net7.0-maccatalyst`.                    |
+| `-c` or `--configuration`    | The build configuration, which is `Release`.                                                    |
+| `/p:MtouchLink`              | The link mode for the project, which can be `None`, `SdkOnly`, or `Full`.                       |
+| `/p:CreatePackage`           | Set to `true` so that a package (*.pkg*) is created for the app at the end of the build.        |
+| `/p:EnableCodeSigning`       | Set to `true` so that code signing is enabled.                                                  |
+| `/p:CodesignKey`             | The name of the code signing key. Set to the name of your distribution certificate, as displayed in Keychain Access. |
+| `/p:CodesignProvision`       | The provisioning profile to use when signing the app bundle. |
+| `/p:CodesignEntitlements`    | The path to the entitlements file that specifies the entitlements the app requires. Set to `Platforms\MacCatalyst\Entitlements.plist`. |
+| `/p:UseHardenedRuntime`      | Set to `true` to enable the hardened runtime, which is required for Mac Catalyst apps that are distributed outside of the Mac App Store. |
+
+> [!WARNING]
+> Attempting to publish a .NET MAUI solution will result in the `dotnet publish` command attempting to publish each project in the solution individually, which can cause issues when you've added other project types to your solution. Therefore, the `dotnet publish` command should be scoped to your .NET MAUI app project.
+
+Additional build parameters can be specified on the command line, if they aren't provided in a `<PropertyGroup>` in your project file. The following table lists some of the common parameters:
+
+| Parameter                    | Value                                                                                           |
+|------------------------------|-------------------------------------------------------------------------------------------------|
+| `/p:ApplicationTitle` | The user-visible name for the app. |
+| `/p:ApplicationId` | The unique identifier for the app, such as `com.companyname.mymauiapp`. |
+| `/p:ApplicationVersion` | The version of the build that identifies an iteration of the app. |
+| `/p:ApplicationDisplayVersion` | The version number of the app. |
+| `/p:RuntimeIdentifier` | The runtime identifier (RID) for the project. Release builds of .NET MAUI Mac Catalyst apps default to using `maccatalyst-x64` and `maccatalyst-arm64` as runtime identifiers, to support universal apps. To support only a single architecture, specify `maccatalyst-x64` or `maccatalyst-arm64`. |
+
+For a full list of build properties, see [Project file properties](https://github.com/xamarin/xamarin-macios/wiki/Project-file-properties).
+
+> [!IMPORTANT]
+> Values for all of these parameters don't have to be provided on the command line. They can also be provided in the project file. When a parameter is provided on the command line and in the project file, the command line parameter takes precedence. For more information about providing build properties in your project file, see [Define build properties in your project file](#define-build-properties-in-your-project-file).
+
+For example, use the following command to build and sign a *.pkg* on a Mac, for ad-hoc distribution to users on registered devices:
+
+```dotnetcli
+dotnet publish -f:net7.0-maccatalyst -c:Release /p:MtouchLink=SdkOnly /p:CreatePackage=true /p:EnableCodeSigning=true  /p:CodesignKey="Apple Development: John Smith (AY2GDE9QM7)" /p:CodesignProvision="MyMauiApp (Ad-hoc)" /p:CodesignEntitlements="Platforms\MacCatalyst\Entitlements.plist" /p:UseHardenedRuntime=true
+```
+
+Publishing builds, signs, and packages the app, and then copies the *.pkg* to the *bin/Release/net7.0-maccatalyst/publish/* folder. If you publish the app using only a single architecture, it will be published to the *bin/Release/net7.0maccatalyst/{arechitecture}/publish/* folder.
+
+During the signing process it maybe necessary to enter your login password and allow `codesign` to run:
+
+:::image type="content" source="media/codesign.png" alt-text="Allow codesign to sign your app on your Mac.":::
+
+For more information about the `dotnet publish` command, see [dotnet publish](/dotnet/core/tools/dotnet-publish).
+
+<!-- Todo: It's possible to re-sign an existing app bundle with a different certificate to change the distribution channel -->
+
+## Define build properties in your project file
+
+An alternative to specifying build parameters on the command line is to specify them in your project file in a `<PropertyGroup>`. The following table lists some of the common build properties:
+
+| Parameter                    | Value                                                                                           |
+|------------------------------|-------------------------------------------------------------------------------------------------|
+| `<ApplicationTitle>` | The user-visible name for the app. |
+| `<ApplicationId>` | The unique identifier for the app, such as `com.companyname.mymauiapp`. |
+| `<ApplicationVersion>` | The version of the build that identifies an iteration of the app. |
+| `<ApplicationDisplayVersion>` | The version number of the app. |
+| `<CodesignKey>`             | The name of the code signing key. Set to the name of your distribution certificate, as displayed in Keychain Access. |
+| `<CodesignEntitlements>`    | The path to the entitlements file that specifies the entitlements the app requires. Set to `Platforms\MacCatalyst\Entitlements.plist`. |
+| `<CodesignProvision>`       | The provisioning profile to use when signing the app bundle. |
+| `<CreatePackage>`           | Set to `true` so that a package (*.pkg*) is created for the app at the end of the build.        |
+| `<EnableCodeSigning>`       | Set to `true` so that code signing is enabled.                                                  |
+| `<MtouchLink>`              | The link mode for the project, which can be `None`, `SdkOnly`, or `Full`.                       |
+| `<RuntimeIdentifier>` | The runtime identifier (RID) for the project. Release builds of .NET MAUI Mac Catalyst apps default to using `maccatalyst-x64` and `maccatalyst-arm64` as runtime identifiers, to support universal apps. To support only a single architecture, specify `maccatalyst-x64` or `maccatalyst-arm64`. |
+| `<UseHardenedRuntime>`      | Set to `true` to enable the hardened runtime, which is required for Mac Catalyst apps that are distributed outside of the Mac App Store. |
+
+For a full list of build properties, see [Project file properties](https://github.com/xamarin/xamarin-macios/wiki/Project-file-properties).
+
+> [!IMPORTANT]
+> Values for these build properties don't have to be provided in the project file. They can also be provided on the command line when you publish the app. This enables you to omit specific values from your project file.
+
+The following example shows a typical property group for building and signing your Mac Catalyst app, for ad-hoc distribution to users on registered devices, with its provisioning profile:
+
+```xml
+<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-maccatalyst|AnyCPU'">
+  <MtouchLink>SdkOnly</MtouchLink>
+  <EnableCodeSigning>True</EnableCodeSigning>
+  <CreatePackage>true</CreatePackage>
+  <CodesignKey>Apple Development: John Smith (AY2GDE9QM7)</CodesignKey>
+  <CodesignProvision>MyMauiApp (Ad-hoc)</CodesignProvision>
+  <CodesignEntitlements>Platforms\MacCatalyst\Entitlements.plist</CodesignEntitlements>
+  <UseHardenedRuntime>true</UseHardenedRuntime>
+</PropertyGroup>
+```
+
+This example `<PropertyGroup>` adds a condition check, preventing the settings from being processed unless the condition check passes. The condition check looks for two items:
+
+1. The build configuration is set to `Release`.
+1. The target framework is set to something containing the text `net7.0-maccatalyst`.
+1. The platform is set to `AnyCPU`.
+
+If any of these conditions fail, the settings aren't processed. More importantly, the `<CodesignKey>` and `<CodesignProvision>` settings aren't set, preventing the app from being signed.
+
+After adding the above property group, the app can be published from the command line on a Mac by opening a terminal and navigating to the folder for your .NET MAUI app project. Then, run the following command:
+
+```dotnetcli
+dotnet build -f:net7.0-maccatalyst -c:Release
+```
+
+Publishing builds, signs, and packages the app, and then copies the *.pkg* to the *bin/Release/net7.0-maccatalyst/publish/* folder.
+
+## Distribute your app for testing
+
+The *.pkg* can be distributed to users on registered devices, where it can be run by double-clicking on the *.pkg* file to install the app.
+
 ## See also
 
 - [Distributing your app to registered devices](https://developer.apple.com/documentation/xcode/distributing-your-app-to-registered-devices) on developer.apple.com
+- [Preparing your app for distribution](https://developer.apple.com/documentation/xcode/preparing-your-app-for-distribution) on developer.apple.com
+- [Hardened Runtime](https://developer.apple.com/documentation/security/hardened_runtime) on developer.apple.com
