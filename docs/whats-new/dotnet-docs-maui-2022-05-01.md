@@ -37,7 +37,7 @@ Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for May
 - [Remote iOS Simulator for Windows](../ios/remote-simulator.md)
 - [Pair to Mac for iOS development](../ios/pair-to-mac.md)
 - [Build a Mac Catalyst app with .NET CLI](../macos/cli.md)
-- [Publish a .NET MAUI app for macOS](../macos/deployment/overview.md)
+- [Publish a .NET MAUI app for macOS](../macos/deployment/index.md)
 - [Entry input method editor options on Android](../android/platform-specifics/entry-ime-options.md)
 - [Android platform-specifics](../android/platform-specifics/index.md)
 - [ListView fast scrolling on Android](../android/platform-specifics/listview-fast-scrolling.md)
