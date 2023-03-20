@@ -318,7 +318,7 @@ For example, use the following command to build and sign a *.pkg* on a Mac, for 
 dotnet publish -f:net7.0-maccatalyst -c:Release /p:MtouchLink=SdkOnly /p:CreatePackage=true /p:EnableCodeSigning=true /p:EnablePackageSigning=true /p:CodesignKey="Developer ID Application: John Smith (AY2GDE9QM7)" /p:CodesignProvision="MyMauiApp (Non-App Store)" /p:CodesignEntitlements="Platforms\MacCatalyst\Entitlements.plist" /p:PackageSigningKey="Developer ID Installer: John Smith (AY2GDE9QM7)" /p:UseHardenedRuntime=true
 ```
 
-Publishing builds, signs, and packages the app, and then copies the *.pkg* to the *bin/Release/net7.0-maccatalyst/publish/* folder. If you publish the app using only a single architecture, it will be published to the *bin/Release/net7.0maccatalyst/{arechitecture}/publish/* folder.
+Publishing builds, signs, and packages the app, and then copies the *.pkg* to the *bin/Release/net7.0-maccatalyst/publish/* folder. If you publish the app using only a single architecture, it will be published to the *bin/Release/net7.0-maccatalyst/{architecture}/publish/* folder.
 
 During the signing process it maybe necessary to enter your login password and allow `codesign` and `productbuild` to run:
 

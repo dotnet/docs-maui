@@ -704,7 +704,7 @@
                   href: ios/deployment/publish-ad-hoc.md
                 - name: Publish using the command line
                   href: ios/deployment/publish-cli.md
-            - name: macOS
+            - name: Mac Catalyst
               items:
                 - name: Overview
                   href: macos/deployment/index.md
