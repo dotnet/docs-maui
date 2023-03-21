@@ -32,9 +32,9 @@ When distributing a .NET MAUI app for iOS, you generate an *.ipa* file. An *.ipa
 
 On iOS, .NET MAUI apps run in a sandbox that provides a set of rules that limit access between the app and system resources or user data. Apple provides *capabilities*, also known as *app services*, as a means of extending functionality and widening the scope of what iOS apps can do. Capabilities are added to your app's provisioning profile, and are used when code signing your app. For more information, see [Capabilities](~/ios/capabilities.md).
 
-## macOS
+## Mac Catalyst
 
-When distributing your .NET MAUI app for macOS, you generate an *.app* or a *.pkg* file. An *.app* file is a self-contained app that can be run without installation, whereas a *.pkg* is an app packaged in an installer. For more information, see [Publish a .NET MAUI app for macOS](~/mac-catatlyst/deployment/index.md).
+When distributing your .NET MAUI app for macOS, you generate an *.app* or a *.pkg* file. An *.app* file is a self-contained app that can be run without installation, whereas a *.pkg* is an app packaged in an installer. Distributing a .NET MAUI Mac Catalyst app requires that the app is provisioned using a provisioning profile. Provisioning profiles are files that contain code signing information, as well as the identity of the app and its intended distribution mechanism. For more information about publishing an .NET MAUI Mac Catalyst app, see [Publish a .NET MAUI Mac Catalyst app](~/mac-catalyst/deployment/index.md).
 
 ## Windows
 
