@@ -7,8 +7,8 @@ Publishing builds, signs, and packages the app, and then copies the *.pkg* to th
 
 During the signing process it maybe necessary to enter your login password and allow `codesign` and `productbuild` to run:
 
-:::image type="content" source="media/codesign.png" alt-text="Allow codesign to sign your app on your Mac.":::
-:::image type="content" source="media/productbuild.png" alt-text="Allow productbuild to sign your app on your Mac.":::
+:::image type="content" source="../deployment/media/codesign.png" alt-text="Allow codesign to sign your app on your Mac.":::
+:::image type="content" source="../deployment/media/productbuild.png" alt-text="Allow productbuild to sign your app on your Mac.":::
 
 For more information about the `dotnet publish` command, see [dotnet publish](/dotnet/core/tools/dotnet-publish).
 
