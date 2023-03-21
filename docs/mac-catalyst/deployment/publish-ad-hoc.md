@@ -16,7 +16,7 @@ The process for provisioning a .NET MAUI Mac Catalyst app for ad-hoc distributio
 
 1. Create a certificate signing request. For more information, see [Create a certificate signing request](#create-a-certificate-signing-request).
 1. Create a developer certificate. For more information, see [Create a developer certificate](#create-a-developer-certificate).
-<!-- 1. Create an App ID. For more information, see [Create an App ID](#create-an-app-id).
+1. Create an App ID. For more information, see [Create an App ID](#create-an-app-id).
 1. Configure the App ID. For more information, see [Configure the App ID](#configure-the-app-id). IS THIS REALLY REQUIRED???
 1. Add devices to your Apple Developer Account. For more information, see [Add a device](#add-a-device).
 1. Create a provisioning profile. For more information, see [Create a provisioning profile](#create-a-provisioning-profile).
@@ -26,7 +26,7 @@ Then, once provisioning is complete you should prepare your app for publishing, 
 
 1. Optionally add entitlements to your app. For more information, see [Add entitlements](#add-entitlements).
 1. Update the app's *Info.plist* file. For more information, see [Update Info.plist](#update-infoplist).
-1. Publish your app using the command line. For more information, see [Publish using the command line](#publish-using-the-command-line). -->
+1. Publish your app using the command line. For more information, see [Publish using the command line](#publish-using-the-command-line).
 
 [!INCLUDE [Create a certificate signing request](../includes/certificate-signing-request.md)]
 
@@ -132,37 +132,9 @@ To create a provisioning profile for ad-hoc distribution:
 
 ## Add entitlements
 
-Apple's App Sandbox restricts access to system resources and user data in macOS apps, to contain damage if an app becomes compromised. It must be enabled for Mac Catalyst apps that are distributed through the Mac App Store, and can optionally be enabled for Mac Catalyst apps that are distributed outside the Mac App Store. This can be accomplished by adding an *Entitlements.plist* file to the *Platforms/MacCatalyst* folder of your .NET MAUI app project:
+Apple's App Sandbox restricts access to system resources and user data in Mac apps, to contain damage if an app becomes compromised. It must be enabled for Mac Catalyst apps that are distributed through the Mac App Store, and can optionally be enabled for Mac Catalyst apps that are distributed outside the Mac App Store.
 
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-	<dict>
-		<key>com.apple.security.app-sandbox</key>
-		<true/>
-	</dict>
-</plist>
-```
-
-The App Sandbox entitlement is defined using the `com.apple.security.app-sandbox` key, of type `Boolean`. For information about App Sandbox, see [Protecting user data with App Sandbox](https://developer.apple.com/documentation/security/app_sandbox/protecting_user_data_with_app_sandbox) on developer.apple.com. For information about the App Sandbox entitlement, see [App Sandbox Entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_app-sandbox).
-
-If you use the App Sandbox and your app opens outgoing network connections, you'll also need to add the `com.apple.security.network.client` key, of type `Boolean`, to your *Entitlements.plist* file:
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-	<dict>
-		<key>com.apple.security.app-sandbox</key>
-		<true/>
-		<key>com.apple.security.network.client</key>
-		<true/>
-	</dict>
-</plist>
-```
-
-For information about the outgoing network connections entitlement, see [com.apple.security.network.client](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_network_client) on developer.apple.com.
+[!INCLUDE [Add entitlements](../includes/add-entitlements.md)]
 
 ## Update Info.plist
 
@@ -171,70 +143,13 @@ Before distributing your app, you should update its *Info.plist* file with addit
 > [!NOTE]
 > While it's not a requirement to update your app's *Info.plist* file when distributing it for testing, these updates will be required when distributing the final tested version of your app. Therefore, it's best practice to perform the updates.
 
-### Specify the user interface idiom
-
-A Mac Catalyst app can run in the iPad or Mac user interface idiom:
-
-- The iPad user interface idiom tells macOS to scale the app's user interface to match the Mac display environment while preserving iPad-like appearance.
-- The Mac user interface idiom doesn't scale the app's user interface to match the Mac display environment. Some controls change their size and appearance, and interacting with them feels identical to interacting with `AppKit` controls.
-
-By default, .NET MAUI Mac Catalyst apps use the iPad user interface idiom. If this is your desired behavior, ensure that the app's *Info.plist* file only specifies 2 as the value of the `UIDeviceFamily` key:
-
-```xml
-<key>UIDeviceFamily</key>
-<array>
-  <integer>2</integer>
-</array>
-```
-
-To adopt the Mac user interface idiom, update the app's *Info.plist* file to specify 6 as the value of the `UIDeviceFamily` key:
-
-```xml
-<key>UIDeviceFamily</key>
-<array>
-  <integer>6</integer>
-</array>
-```
-
-For more information about Mac Catalyst user interface idioms, see [Choosing a user interface idiom for your Mac app](https://developer.apple.com/documentation/uikit/mac_catalyst/choosing_a_user_interface_idiom_for_your_mac_app?language=objc).
-
-### Set the default language and region for the app
-
-Set the `CFBundleDevelopmentRegion` key in your app's *Info.plist* to a `String` that represents the localization native development region:
-
-```xml
-<key>CFBundleDevelopmentRegion</key>
-<string>en</string>
-```
-
-The value of the key should be a language designator, with an optional region designator. For more information, see [CFBundleDevelopmentRegion](https://developer.apple.com/documentation/bundleresources/information_property_list/cfbundledevelopmentregion) on developer.apple.com.
-
-### Set the copyright key
-
-Set the `NSHumanReadableCopyright` key in your app's *Info.plist* to a `String` that represents the human-readable copyright notice for the app:
-
-```xml
-<key>NSHumanReadableCopyright</key>
-<string>My Maui App © 2023</string>
-```
-
-For more information, see [NSHumanReadableCopyright](https://developer.apple.com/documentation/bundleresources/information_property_list/nshumanreadablecopyright) on developer.apple.com.
+[!INCLUDE [Update Info.plist](../includes/update-info-plist.md)]
 
 ### Declare your app's use of encryption
 
-If your app uses encryption, and you plan to distribute it outside the United States or Canada, it's subject to US export compliance requirements.
+If your app uses encryption, and you plan to distribute it outside the United States or Canada, it's subject to US export compliance requirements. You can provide information about you app's use of encryption in the app's *Info.plist* file.
 
-
-Every time you submit a version of your app to App Store Connect, it undergoes an encryption export regulations compliance review. To avoid App Store Connect asking you questions to guide you through the review, you can provide the required information in your app's *Info.plist* file.
-
-To declare your app's use of encryption, add the `ITSAppUsesNonExemptEncryption` key to your app's *Info.plist* with a `Boolean` value that indicates whether it uses encryption:
-
-```xml
-<key>ITSAppUsesNonExemptEncryption</key>
-<false/>
-```
-
-For more information, see [Complying with Encryption Export Regulations](https://developer.apple.com/documentation/security/complying_with_encryption_export_regulations) on developer.apple.com.
+[!INCLUDE [Declare your app's use of encryption](../includes/encryption.md)]
 
 ## Publish using the command line
 

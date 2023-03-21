@@ -112,79 +112,15 @@ To create a provisioning profile for Mac App Store distribution:
 
 ## Add entitlements
 
-Apple's App Sandbox restricts access to system resources and user data in macOS apps, to contain damage if an app becomes compromised. It must be enabled for Mac Catalyst apps that are distributed through the Mac App Store. This can be accomplished by adding an *Entitlements.plist* file to the *Platforms/MacCatalyst* folder of your .NET MAUI app project:
+Apple's App Sandbox restricts access to system resources and user data in Mac apps, to contain damage if an app becomes compromised. It must be enabled for Mac Catalyst apps that are distributed through the Mac App Store.
 
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-	<dict>
-		<key>com.apple.security.app-sandbox</key>
-		<true/>
-	</dict>
-</plist>
-```
-
-The App Sandbox entitlement is defined using the `com.apple.security.app-sandbox` key, of type `Boolean`. For information about App Sandbox, see [Protecting user data with App Sandbox](https://developer.apple.com/documentation/security/app_sandbox/protecting_user_data_with_app_sandbox) on developer.apple.com. For information about the App Sandbox entitlement, see [App Sandbox Entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_app-sandbox).
-
-If your app opens outgoing network connections, you'll also need to add the `com.apple.security.network.client` key, of type `Boolean`, to your *Entitlements.plist* file:
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-	<dict>
-		<key>com.apple.security.app-sandbox</key>
-		<true/>
-		<key>com.apple.security.network.client</key>
-		<true/>
-	</dict>
-</plist>
-```
-
-For information about the outgoing network connections entitlement, see [com.apple.security.network.client](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_network_client) on developer.apple.com.
+[!INCLUDE [Add entitlements](../includes/add-entitlements.md)]
 
 ## Update Info.plist
 
-Before publishing your app, you should update its *Info.plist* file with additional information to ensure that the app can be uploaded to the Mac App Store, and to help ensure a smooth App Store review process.
+Before publishing your app, you should update its *Info.plist* file with additional information to ensure that the app can be uploaded to the Mac App Store, and to help ensure a smooth Mac App Store review process.
 
-### Specify the user interface idiom
-
-A Mac Catalyst app can run in the iPad or Mac user interface idiom:
-
-- The iPad user interface idiom tells macOS to scale the app's user interface to match the Mac display environment while preserving iPad-like appearance.
-- The Mac user interface idiom doesn't scale the app's user interface to match the Mac display environment. Some controls change their size and appearance, and interacting with them feels identical to interacting with `AppKit` controls.
-
-By default, .NET MAUI Mac Catalyst apps use the iPad user interface idiom. If this is your desired behavior, ensure that the app's *Info.plist* file only specifies 2 as the value of the `UIDeviceFamily` key:
-
-```xml
-<key>UIDeviceFamily</key>
-<array>
-  <integer>2</integer>
-</array>
-```
-
-To adopt the Mac user interface idiom, update the app's *Info.plist* file to specify 6 as the value of the `UIDeviceFamily` key:
-
-```xml
-<key>UIDeviceFamily</key>
-<array>
-  <integer>6</integer>
-</array>
-```
-
-For more information about Mac Catalyst user interface idioms, see [Choosing a user interface idiom for your Mac app](https://developer.apple.com/documentation/uikit/mac_catalyst/choosing_a_user_interface_idiom_for_your_mac_app?language=objc).
-
-### Set the default language and region for the app
-
-Set the `CFBundleDevelopmentRegion` key in your app's *Info.plist* to a `String` that represents the localization native development region:
-
-```xml
-<key>CFBundleDevelopmentRegion</key>
-<string>en</string>
-```
-
-The value of the key should be a language designator, with an optional region designator. For more information, see [CFBundleDevelopmentRegion](https://developer.apple.com/documentation/bundleresources/information_property_list/cfbundledevelopmentregion) on developer.apple.com.
+[!INCLUDE [Update Info.plist](../includes/update-info-plist.md)]
 
 ### Set the app category
 
@@ -200,29 +136,11 @@ For more information, see [LSApplicationCategoryType](https://developer.apple.co
 > [!NOTE]
 > Your app's primary category must match the primary category you set in App Store Connect.
 
-### Set the copyright key
-
-Set the `NSHumanReadableCopyright` key in your app's *Info.plist* to a `String` that represents the human-readable copyright notice for the app:
-
-```xml
-<key>NSHumanReadableCopyright</key>
-<string>My Maui App © 2023</string>
-```
-
-For more information, see [NSHumanReadableCopyright](https://developer.apple.com/documentation/bundleresources/information_property_list/nshumanreadablecopyright) on developer.apple.com.
-
 ### Declare your app's use of encryption
 
-Every time you submit a version of your app to App Store Connect, it undergoes an encryption export regulations compliance review. To avoid App Store Connect asking you questions to guide you through the review, you can provide the required information in your app's *Info.plist* file.
+If your app uses encryption, and you plan to distribute it outside the United States or Canada, it's subject to US export compliance requirements. Every time you submit a version of your app to App Store Connect, it undergoes an encryption export regulations compliance review. To avoid App Store Connect asking you questions to guide you through the review, you can provide the required information in your app's *Info.plist* file.
 
-This can be accomplished by adding the `ITSAppUsesNonExemptEncryption` key to your app's *Info.plist* with a `Boolean` value that indicates whether your app uses encryption:
-
-```xml
-<key>ITSAppUsesNonExemptEncryption</key>
-<false/>
-```
-
-For more information, see [Complying with Encryption Export Regulations](https://developer.apple.com/documentation/security/complying_with_encryption_export_regulations) on developer.apple.com.
+[!INCLUDE [Declare your app's use of encryption](../includes/encryption.md)]
 
 ## Publish using the command line
 
@@ -241,23 +159,7 @@ To publish your Mac Catalyst app from the command line on a Mac, open a terminal
 | `/p:CodesignEntitlements`    | The path to the entitlements file that specifies the entitlements the app requires. Set to `Platforms\MacCatalyst\Entitlements.plist`. |
 | `/p:PackageSigningKey`       | The package signing key to use when signing the package. Set to the name of your installer certificate, as displayed in Keychain Access. |
 
-> [!WARNING]
-> Attempting to publish a .NET MAUI solution will result in the `dotnet publish` command attempting to publish each project in the solution individually, which can cause issues when you've added other project types to your solution. Therefore, the `dotnet publish` command should be scoped to your .NET MAUI app project.
-
-Additional build parameters can be specified on the command line, if they aren't provided in a `<PropertyGroup>` in your project file. The following table lists some of the common parameters:
-
-| Parameter                    | Value                                                                                           |
-|------------------------------|-------------------------------------------------------------------------------------------------|
-| `/p:ApplicationTitle` | The user-visible name for the app. |
-| `/p:ApplicationId` | The unique identifier for the app, such as `com.companyname.mymauiapp`. |
-| `/p:ApplicationVersion` | The version of the build that identifies an iteration of the app. |
-| `/p:ApplicationDisplayVersion` | The version number of the app. |
-| `/p:RuntimeIdentifier` | The runtime identifier (RID) for the project. Release builds of .NET MAUI Mac Catalyst apps default to using `maccatalyst-x64` and `maccatalyst-arm64` as runtime identifiers, to support universal apps. To support only a single architecture, specify `maccatalyst-x64` or `maccatalyst-arm64`. |
-
-For a full list of build properties, see [Project file properties](https://github.com/xamarin/xamarin-macios/wiki/Project-file-properties).
-
-> [!IMPORTANT]
-> Values for all of these parameters don't have to be provided on the command line. They can also be provided in the project file. When a parameter is provided on the command line and in the project file, the command line parameter takes precedence. For more information about providing build properties in your project file, see [Define build properties in your project file](#define-build-properties-in-your-project-file).
+[!INCLUDE [Additional build parameters](../includes/additional-build-parameters.md)]
 
 For example, use the following command to build and sign a *.pkg* on a Mac, for distribution through the Mac App Store:
 
@@ -265,16 +167,7 @@ For example, use the following command to build and sign a *.pkg* on a Mac, for 
 dotnet publish -f:net7.0-maccatalyst -c:Release /p:MtouchLink=SdkOnly /p:CreatePackage=true /p:EnableCodeSigning=true /p:EnablePackageSigning=true /p:CodesignKey="Apple Distribution: John Smith (AY2GDE9QM7)" /p:CodesignProvision="MyMauiApp" /p:CodesignEntitlements="Platforms\MacCatalyst\Entitlements.plist" /p:PackageSigningKey="3rd Party Mac Developer Installer: John Smith (AY2GDE9QM7)"
 ```
 
-Publishing builds, signs, and packages the app, and then copies the *.pkg* to the *bin/Release/net7.0-maccatalyst/publish/* folder. If you publish the app using only a single architecture, it will be published to the *bin/Release/net7.0-maccatalyst/{architecture}/publish/* folder.
-
-During the signing process it maybe necessary to enter your login password and allow `codesign` and `productbuild` to run:
-
-:::image type="content" source="media/codesign.png" alt-text="Allow codesign to sign your app on your Mac.":::
-:::image type="content" source="media/productbuild.png" alt-text="Allow productbuild to sign your app on your Mac.":::
-
-For more information about the `dotnet publish` command, see [dotnet publish](/dotnet/core/tools/dotnet-publish).
-
-<!-- Todo: It's possible to re-sign an existing app bundle with a different certificate to change the distribution channel -->
+[!INCLUDE [Publishing output](../includes/publishing-output.md)]
 
 ## Define build properties in your project file
 
@@ -316,23 +209,9 @@ The following example shows a typical property group for building and signing yo
 </PropertyGroup>
 ```
 
-This example `<PropertyGroup>` adds a condition check, preventing the settings from being processed unless the condition check passes. The condition check looks for two items:
+[!INCLUDE [Publishing based on a property group](../includes/publishing-property-group.md)]
 
-1. The build configuration is set to `Release`.
-1. The target framework is set to something containing the text `net7.0-maccatalyst`.
-1. The platform is set to `AnyCPU`.
-
-If any of these conditions fail, the settings aren't processed. More importantly, the `<CodesignKey>`, `<CodesignProvision>`, and `<PackageSigningKey>` settings aren't set, preventing the app from being signed.
-
-After adding the above property group, the app can be published from the command line on a Mac by opening a terminal and navigating to the folder for your .NET MAUI app project. Then, run the following command:
-
-```dotnetcli
-dotnet build -f:net7.0-maccatalyst -c:Release
-```
-
-Publishing builds, signs, and packages the app, and then copies the *.pkg* to the *bin/Release/net7.0-maccatalyst/publish/* folder.
-
-## Upload to the App Store
+## Upload to the Mac App Store
 
 To distribute your app through the Mac App Store, or TestFlight, you'll need to create an app record in App Store Connect. This record includes all the information about the app as it will appear in the App Store and all of the information needed to manage the app throughout the distribution process. For more information, see [Create an app record](https://developer.apple.com/help/app-store-connect/create-an-app-record/add-a-new-app) on developer.apple.com.
 
