@@ -10,7 +10,7 @@ ms.date: 03/17/2022
 >
 > - [Publish for Android](publish-cli.md)
 > - [Publish for iOS](../../ios/deployment/index.md)
-> - [Publish for macOS](../../macos/deployment/index.md)
+> - [Publish for macOS](../../mac-catalyst/deployment/index.md)
 > - [Publish for Windows](../../windows/deployment/publish-cli.md)
 
 When distributing your .NET Multi-platform App UI (.NET MAUI) app for Android, you generate an _apk_ (Android Package) or an _aab_ (Android App Bundle) file. The _apk_ is used for installing your app to an Android device, and the _aab_ is used to publish your app to an Android store.

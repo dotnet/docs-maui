@@ -34,7 +34,7 @@ On iOS, .NET MAUI apps run in a sandbox that provides a set of rules that limit 
 
 ## macOS
 
-When distributing your .NET MAUI app for macOS, you generate an *.app* or a *.pkg* file. An *.app* file is a self-contained app that can be run without installation, whereas a *.pkg* is an app packaged in an installer. For more information, see [Publish a .NET MAUI app for macOS](~/macos/deployment/index.md).
+When distributing your .NET MAUI app for macOS, you generate an *.app* or a *.pkg* file. An *.app* file is a self-contained app that can be run without installation, whereas a *.pkg* is an app packaged in an installer. For more information, see [Publish a .NET MAUI app for macOS](~/mac-catatlyst/deployment/index.md).
 
 ## Windows
 

@@ -10,7 +10,7 @@ ms.date: 10/12/2022
 >
 > - [Publish for Android](../../android/deployment/publish-cli.md)
 > - [Publish for iOS](../../ios/deployment/index.md)
-> - [Publish for macOS](../../macos/deployment/index.md)
+> - [Publish for macOS](../../mac-catalyst/deployment/index.md)
 > - [Publish for Windows](publish-cli.md)
 
 When distributing your .NET Multi-platform App UI (.NET MAUI) app for Windows, you can publish the app and its dependencies to a folder for deployment to another system. You can also package the app into an MSIX package, which has numerous benefits for the users installing your app. For more information about the benefits of MSIX, see [What is MSIX?](/windows/msix/overview)

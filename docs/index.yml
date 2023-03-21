@@ -41,7 +41,7 @@ landingContent:
           - text: Build an iOS app with .NET CLI
             url: ios/cli.md
           - text: Build a Mac Catalyst app with .NET CLI
-            url: macos/cli.md
+            url: mac-catalyst/cli.md
           - text: Pair to Mac for iOS development
             url: ios/pair-to-mac.md
           - text: Remote iOS Simulator for Windows
@@ -185,6 +185,6 @@ landingContent:
           - text: Publish iOS apps
             url: ios/deployment/index.md
           - text: Publish Mac Catalyst apps
-            url: macos/deployment/index.md
+            url: mac-catalyst/deployment/index.md
           - text: Publish Windows apps
             url: windows/deployment/overview.md
