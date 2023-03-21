@@ -1,7 +1,7 @@
 ---
 title: "Publish an unsigned .NET MAUI Mac Catalyst app"
 description: "Learn how to package and publish an unsigned .NET MAUI Mac Catalyst app."
-ms.date: 04/25/2022
+ms.date: 03/21/2023
 ---
 
 # Publish an unsigned .NET MAUI Mac Catalyst app
@@ -68,7 +68,7 @@ For more information about the `dotnet publish` command, see [dotnet publish](/d
 
 ## Run the unsigned app
 
-By default, *.app* and *.pkg* files that are downloaded from the internet can't be run by double-clicking on them. For more information, see [Open a Mac app from an unidentified developer](https://support.apple.com/en-gb/guide/mac-help/mh40616/mac).
+By default, *.app* and *.pkg* files that are downloaded from the internet can't be run by double-clicking on them. For more information, see [Open a Mac app from an unidentified developer](https://support.apple.com/en-gb/guide/mac-help/mh40616/mac) on support.apple.com.
 
 To ensure that a *.pkg* installs the app to your *Applications* folder, copy the *.pkg* to outside of your build artifacts folder and delete the *bin* and *obj* folders before double-clicking on the *.pkg*.
 

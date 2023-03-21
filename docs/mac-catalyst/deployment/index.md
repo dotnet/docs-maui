@@ -13,7 +13,7 @@ ms.date: 03/20/2023
 > - [Publish for macOS](index.md)
 > - [Publish for Windows](../../windows/deployment/overview.md)
 
-Once a .NET Multi-platform App UI (.NET MAUI) Mac Catalyst app has been developed and tested, it can be packaged for distribution as an *.app* or a *.pkg* file. An *.app* file is a self-contained app that can be run without installation, whereas a *.pkg* is an app packaged in an installer. The following diagram shows the steps required to produce the app package for distribution:
+Once a .NET Multi-platform App UI (.NET MAUI) Mac Catalyst app has been developed and tested, it can be packaged for distribution as an *.app* or a *.pkg* file. An *.app* file is a self-contained app that can be run without installation, whereas a *.pkg* is an app packaged in an installer. The following diagram shows the steps required to produce an app package for distribution:
 
 :::image type="content" source="media/maccat-distribution.png" alt-text="Steps required to prepare a .NET MAUI Mac Catalyst app for distribution." border="false":::
 
@@ -34,7 +34,7 @@ Apple offers two developer program options:
 Apple provides multiple approaches for distributing a Mac Catalyst app:
 
 - *Mac App Store*. This is the main approach for distributing Mac Catalyst apps to users. Apps are submitted to the App Store through on online tool called *App Store Connect*. Only developers who belong to the Apple Developer Program have access to this tool. Members of the Apple Developer Enterprise Program do not have access. All apps submitted to the App Store require approval from Apple. For more information, see [Publish a Mac Catalyst app for Mac App Store distribution](publish-app-store.md).
-- *Outside the Mac App Store**. This distribution mechanism enables Mac Catalyst apps to be distributed outside the Mac App Store. It's available for the Apple Developer Program and the Apple Developer Enterprise Program, and enables your Mac Catalyst app to be downloaded from a location of your choosing. For more information, see [Publish a Mac Catalyst app for distribution outside the Mac App Store](publish-outside-app-store.md).
+- *Outside the Mac App Store*. This distribution mechanism enables Mac Catalyst apps to be distributed outside the Mac App Store. It's available for the Apple Developer Program and the Apple Developer Enterprise Program, and enables your Mac Catalyst app to be downloaded from a location of your choosing. For more information, see [Publish a Mac Catalyst app for distribution outside the Mac App Store](publish-outside-app-store.md).
 - *Ad-hoc*. Mac Catalyst apps can be user-tested via ad-hoc distribution, which is available for the Apple Developer Program and the Apple Developer Enterprise Program. It allows an app to be deployed on up to 100 devices, for testing. For more information, see [Publish a Mac Catalyst app for ad-hoc distribution](publish-ad-hoc.md).
 
 All approaches require that apps are provisioned using an appropriate *provisioning profile*. Provisioning profiles contain code signing and app identity information, as well as the intended distribution mechanism. For ad-hoc distribution, they also contain information about the devices the app can be deployed to. In addition, Mac Catalyst apps that are distributed outside the Mac App Store must also be notarized by Apple.
