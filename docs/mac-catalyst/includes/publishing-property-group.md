@@ -1,6 +1,6 @@
 ---
 ms.topic: include
-ms.date: 03/21/2023
+ms.date: 03/23/2023
 ---
 
 This example `<PropertyGroup>` adds a condition check, preventing the settings from being processed unless the condition check passes. The condition check looks for two items:

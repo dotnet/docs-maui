@@ -21,6 +21,9 @@ The process for provisioning a .NET MAUI Mac Catalyst app for ad-hoc distributio
 1. Create a provisioning profile. For more information, see [Create a provisioning profile](#create-a-provisioning-profile).
 1. Download your provisioning profile. For more information, see [Download your provisioning profile in Xcode](#download-your-provisioning-profile-in-xcode).
 
+> [!IMPORTANT]
+> This article shows provisioning for ad-hoc distribution using an Apple Developer Account that's part of the Apple Developer Program. It can also be used for an Apple Developer Account that's part of the Apple Developer Enterprise Program, as the steps required are largely identical.
+
 Then, once provisioning is complete you should prepare your app for publishing, and then publish it with the following process:
 
 1. Optionally add entitlements to your app. For more information, see [Add entitlements](#add-entitlements).

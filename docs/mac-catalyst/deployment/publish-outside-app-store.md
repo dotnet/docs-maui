@@ -1,7 +1,7 @@
 ---
 title: "Publish a .NET MAUI Mac Catalyst app for distribution outside the Mac App Store"
 description: "Learn how to provision, publish, and notarize a .NET MAUI Mac Catalyst app for distribution outside the Mac App Store."
-ms.date: 03/16/2023
+ms.date: 03/23/2023
 ---
 
 # Publish a Mac Catalyst app for distribution outside the Mac App Store
@@ -20,6 +20,9 @@ The process for provisioning a .NET MAUI Mac Catalyst app for distribution outsi
 1. Create an App ID. For more information, see [Create an App ID](#create-an-app-id).
 1. Create a provisioning profile. For more information, see [Create a provisioning profile](#create-a-provisioning-profile).
 1. Download your provisioning profile. For more information, see [Download your provisioning profile in Xcode](#download-your-provisioning-profile-in-xcode).
+
+> [!IMPORTANT]
+> This article shows provisioning distribution outside the Mac App Store using an Apple Developer Account that's part of the Apple Developer Program. It can also be used for an Apple Developer Account that's part of the Apple Developer Enterprise Program, as the steps required are largely identical.
 
 Then, once provisioning is complete you should prepare your app for publishing, publish it, and notarize it with the following process:
 

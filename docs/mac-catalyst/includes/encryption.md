@@ -1,6 +1,6 @@
 ---
 ms.topic: include
-ms.date: 03/21/2023
+ms.date: 03/23/2023
 ---
 
 This is accomplished by adding the `ITSAppUsesNonExemptEncryption` key to your app's *Info.plist* with a `boolean` value that indicates whether your app uses encryption:

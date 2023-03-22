@@ -1,6 +1,6 @@
 ---
 ms.topic: include
-ms.date: 03/21/2023
+ms.date: 03/23/2023
 ---
 
 This can be accomplished by adding an *Entitlements.plist* file to the *Platforms/MacCatalyst* folder of your .NET MAUI app project:

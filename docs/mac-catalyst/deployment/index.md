@@ -1,7 +1,7 @@
 ---
 title: "Publish a .NET MAUI Mac Catalyst app"
 description: "Learn about distribution approaches for .NET MAUI Mac Catalyst apps."
-ms.date: 03/20/2023
+ms.date: 03/23/2023
 ---
 
 # Publish a .NET MAUI Mac Catalyst app
