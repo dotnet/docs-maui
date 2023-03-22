@@ -147,7 +147,7 @@ Before distributing your app, you should update its *Info.plist* file with addit
 
 ### Declare your app's use of encryption
 
-If your app uses encryption, and you plan to distribute it outside the United States or Canada, it's subject to US export compliance requirements. You can provide information about you app's use of encryption in the app's *Info.plist* file.
+If your app uses encryption, and you plan to distribute it outside the United States or Canada, it's subject to US export compliance requirements. You can provide information about you app's use of encryption in its *Info.plist* file.
 
 [!INCLUDE [Declare your app's use of encryption](../includes/encryption.md)]
 

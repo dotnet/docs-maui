@@ -31,7 +31,7 @@ Then, once provisioning is complete you should prepare your app for publishing, 
 
 [!INCLUDE [Create a certificate signing request](../includes/certificate-signing-request.md)]
 
-This certificate signing request will be used to create a developer ID application certificate. Repeat this process to create a second certificate signing request that will be used to create a developer ID installer certificate.
+Repeat this process to create a second certificate signing request. The first CSR will be used to create a developer ID application certificate. The second will be used to create a developer ID installer certificate.
 
 > [!IMPORTANT]
 > You can't use the same certificate signing request to create a developer ID application certificate and a developer ID installer certificate.
@@ -103,7 +103,7 @@ The CSR allows you to generate a developer ID installer certificate, which is re
 
 ## Create a distribution profile
 
-A distribution provisioning profile enables your .NET MAUI Mac Catalyst app to be digitally signed for release, so that it can be installed on another Mac. A distribution provisioning profile contains an App ID and a developer ID application certificate.
+A distribution provisioning profile enables your .NET MAUI Mac Catalyst app to be digitally signed for release, so that it can be installed on another Mac. A provisioning profile for distribution outside the Mac App Store contains an App ID and a developer ID application certificate.
 
 [!INCLUDE [Create an App ID](../includes/create-app-id.md)]
 
@@ -122,9 +122,6 @@ To create a provisioning profile for distribution outside the Mac App Store:
 1. In the **Generate a Provisioning Profile** page, select the **Mac Catalyst** radio button. Then, in the **App ID** drop-down, select the App ID that you previously created before clicking the **Continue** button:
 
     :::image type="content" source="media/publish-outside-app-store/select-app-id.png" alt-text="Select your App ID.":::
-
-    > [!NOTE]
-    > The App ID will be in the **Enabled App IDs with an associated application identifier** section.
 
 1. In the **Generate a Provisioning Profile** page, select the radio button that corresponds to your distribution certificate before clicking the **Continue** button:
 
@@ -158,11 +155,11 @@ Before publishing your app, you should update its *Info.plist* file with additio
 
 ### Declare your app's use of encryption
 
-If your app uses encryption, and you plan to distribute it outside the United States or Canada, it's subject to US export compliance requirements. You can provide information about you app's use of encryption in the app's *Info.plist* file.
+If your app uses encryption, and you plan to distribute it outside the United States or Canada, it's subject to US export compliance requirements. You can provide information about you app's use of encryption in its *Info.plist* file.
 
 [!INCLUDE [Declare your app's use of encryption](../includes/encryption.md)]
 
-<!-- Todo remove once this bug is fixed: https://github.com/xamarin/xamarin-macios/issues/17829-->
+<!-- Todo remove once this bug is fixed: https://github.com/xamarin/xamarin-macios/issues/17829 -->
 ## Disable code signature verification
 
 Currently, when you attempt to publish a .NET MAUI Mac Catalyst app for distribution outside the Mac App Store, provided you've met the provisioning requirements, you'll receive an error about `codesign` exiting with code 3:
@@ -262,7 +259,7 @@ For a full list of build properties, see [Project file properties](https://githu
 > [!IMPORTANT]
 > Values for these build properties don't have to be provided in the project file. They can also be provided on the command line when you publish the app. This enables you to omit specific values from your project file.
 
-The following example shows a typical property group for building and signing your Mac Catalyst app, for distribution outside the Mac App Store, with its provisioning profile:
+The following example shows a typical property group for building and signing your Mac Catalyst app for distribution outside the Mac App Store:
 
 ```xml
 <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-maccatalyst|AnyCPU'">
@@ -282,7 +279,7 @@ The following example shows a typical property group for building and signing yo
 
 ## Notarize your app
 
-macOS includes a technology called *Gatekeeper*, which helps ensure that only trusted software runs on a Mac. When a user downloads and opens an installer package, or an app, Gatekeeper verifies that the software is from an identified developer, by checking for a Developer ID certificate, and is notarized by Apple to be free of known malicious content and hasn't been altered. Therefore, after provisioning and publishing your app you should submit it to Apple to be notarized. Apple's notarization service automatically scans your Developer ID-signed app and performs security checks. When your app is ready to export for distribution, your software is assigned a ticket to let Gatekeeper know it's been notarized.
+macOS includes a technology called *Gatekeeper*, which helps to ensure that only trusted software runs on a Mac. When a user downloads and opens an installer package, or an app, Gatekeeper verifies that the software is from an identified developer. It does this by checking for a Developer ID certificate, and checking that the software is notarized by Apple to be free of known malicious content and hasn't been altered. Therefore, after provisioning and publishing your app you should submit it to Apple to be notarized. Apple's notary service automatically scans your developer ID-signed app and performs security checks. When notarization succeeds, your software is assigned a ticket to let Gatekeeper know that it's been notarized.
 
 Apps can be submitted to Apple's notary service with the `notarytool` command line tool:
 

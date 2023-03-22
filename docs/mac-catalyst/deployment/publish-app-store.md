@@ -67,7 +67,7 @@ The CSR allows you to generate a distribution certificate, which confirms your i
 
 ## Create a distribution profile
 
-A distribution provisioning profile enables your .NET MAUI Mac Catalyst app to be digitally signed for release, so that it can be installed on another Mac. A distribution provisioning profile contains an App ID and a distribution certificate.
+A distribution provisioning profile enables your .NET MAUI Mac Catalyst app to be digitally signed for release, so that it can be installed on another Mac. A provisioning profile for Mac App Store distribution contains an App ID and a distribution certificate.
 
 [!INCLUDE [Create an App ID](../includes/create-app-id.md)]
 
@@ -194,7 +194,7 @@ For a full list of build properties, see [Project file properties](https://githu
 > [!IMPORTANT]
 > Values for these build properties don't have to be provided in the project file. They can also be provided on the command line when you publish the app. This enables you to omit specific values from your project file.
 
-The following example shows a typical property group for building and signing your Mac Catalyst app, for Mac App Store distribution, with its provisioning profile:
+The following example shows a typical property group for building and signing your Mac Catalyst app for Mac App Store distribution:
 
 ```xml
 <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-maccatalyst|AnyCPU'">

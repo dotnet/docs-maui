@@ -16,9 +16,9 @@ This can be accomplished by adding an *Entitlements.plist* file to the *Platform
 </plist>
 ```
 
-The App Sandbox entitlement is defined using the `com.apple.security.app-sandbox` key, of type `Boolean`. For information about App Sandbox, see [Protecting user data with App Sandbox](https://developer.apple.com/documentation/security/app_sandbox/protecting_user_data_with_app_sandbox) on developer.apple.com. For information about the App Sandbox entitlement, see [App Sandbox Entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_app-sandbox).
+The App Sandbox entitlement is defined using the `com.apple.security.app-sandbox` key, of type `boolean`. For information about App Sandbox, see [Protecting user data with App Sandbox](https://developer.apple.com/documentation/security/app_sandbox/protecting_user_data_with_app_sandbox) on developer.apple.com. For information about the App Sandbox entitlement, see [App Sandbox Entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_app-sandbox).
 
-If your app opens outgoing network connections, you'll also need to add the `com.apple.security.network.client` key, of type `Boolean`, to your *Entitlements.plist* file:
+If your app opens outgoing network connections, you'll also need to add the `com.apple.security.network.client` key, of type `boolean`, to your *Entitlements.plist* file:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
