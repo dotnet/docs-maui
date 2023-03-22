@@ -109,7 +109,7 @@ A distribution provisioning profile enables your .NET MAUI Mac Catalyst app to b
 
 ### Create a provisioning profile
 
-Once the App ID has been created and configured, you should create a distribution provisioning profile. This profile enables the app to be digitally signed for release so that it can be installed on Macs.
+Once the App ID has been created, you should create a distribution provisioning profile. This profile enables the app to be digitally signed for release so that it can be installed on Macs.
 
 To create a provisioning profile for distribution outside the Mac App Store:
 
@@ -328,7 +328,7 @@ xcrun stapler validate mypackage.pkg
 
 The signed and notarized *.pkg* can be safely distributed outside the Mac App Store at a location of your choosing, such as a web server.
 
-For information about safely opening apps on a Mac, see [Safely open apps on your Mac](https://support.apple.com/HT202491) on support.apple.com.
+For information about safely opening apps on a Mac, see [Open apps safely on your Mac](https://support.apple.com/HT202491) on support.apple.com.
 
 ## See also
 

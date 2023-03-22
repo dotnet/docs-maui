@@ -15,9 +15,9 @@ To distribute a .NET Multi-platform App UI (.NET MAUI) Mac Catalyst app outside 
 The process for provisioning a .NET MAUI Mac Catalyst app for ad-hoc distribution is as follows:
 
 1. Create a certificate signing request. For more information, see [Create a certificate signing request](#create-a-certificate-signing-request).
-1. Create a developer certificate. For more information, see [Create a developer certificate](#create-a-developer-certificate).
+1. Create a development certificate. For more information, see [Create a development certificate](#create-a-development-certificate).
 1. Create an App ID. For more information, see [Create an App ID](#create-an-app-id).
-1. Add devices to your Apple Developer Account. For more information, see [Add a device](#add-a-device).
+1. Add devices to your Apple Developer Account. For more information, see [Add devices](#add-devices).
 1. Create a provisioning profile. For more information, see [Create a provisioning profile](#create-a-provisioning-profile).
 1. Download your provisioning profile. For more information, see [Download your provisioning profile in Xcode](#download-your-provisioning-profile-in-xcode).
 
@@ -29,16 +29,16 @@ Then, once provisioning is complete you should prepare your app for publishing, 
 
 [!INCLUDE [Create a certificate signing request](../includes/certificate-signing-request.md)]
 
-## Create a developer certificate
+## Create a development certificate
 
-The CSR allows you to generate a developer certificate, which confirms your identity. The developer certificate must be created using the Apple ID for your Apple Developer Account:
+The CSR allows you to generate a development certificate, which confirms your identity. The development certificate must be created using the Apple ID for your Apple Developer Account:
 
 1. In a web browser, login to your [Apple Developer Account](https://developer.apple.com/account/).
 1. In your Apple Developer Account, select the **Certificates, IDs & Profiles** tab.
 1. On the **Certificates, Identifiers & Profiles** page, select the **+** button to create a new certificate.
 1. On the **Create a New Certificate** page, select the **Apple Development** radio button before selecting the **Continue** button:
 
-    :::image type="content" source="media/publish-ad-hoc/apple-developer-certificate.png" alt-text="Create an Apple developer certificate.":::
+    :::image type="content" source="media/publish-ad-hoc/apple-developer-certificate.png" alt-text="Create an Apple development certificate.":::
 
 1. On the **Create a New Certificate** page, select **Choose File**:
 
@@ -55,22 +55,22 @@ The CSR allows you to generate a developer certificate, which confirms your iden
 
     The certificate file (a file with a `.cer` extension) will be downloaded to your chosen location.
 
-1. On your Mac, double-click the downloaded certificate file to install the certificate to your keychain. The certificate appears in the **My Certificates** category in **Keychain Access**, and begins with **Apple Developer**:
+1. On your Mac, double-click the downloaded certificate file to install the certificate to your keychain. The certificate appears in the **My Certificates** category in **Keychain Access**, and begins with **Apple Development**:
 
-    :::image type="content" source="media/publish-ad-hoc/keychain-access-developer-certificate.png" alt-text="Keychain Access showing developer certificate.":::
+    :::image type="content" source="media/publish-ad-hoc/keychain-access-developer-certificate.png" alt-text="Keychain Access showing development certificate.":::
 
     > [!NOTE]
     > Make a note of the full certificate name in Keychain Access. It will be required when signing your app.
 
-## Create a developer profile
+## Create a development profile
 
-An ad-hoc developer provisioning profile enables your .NET MAUI Mac Catalyst app to be digitally signed, so that it can be installed on specific Macs. An ad-hoc developer provisioning profile contains an App ID, a developer certificate, and a list of the devices that can install the app.
+An ad-hoc development provisioning profile enables your .NET MAUI Mac Catalyst app to be digitally signed, so that it can be installed on specific Macs. An ad-hoc development provisioning profile contains an App ID, a development certificate, and a list of the devices that can install the app.
 
 [!INCLUDE [Create an App ID](../includes/create-app-id.md)]
 
-### Add a device
+### Add devices
 
-When creating a provisioning profile, the profile must include which devices can run the app. Before selecting a device to be added to a provisioning profile you must first add the device to your Apple Developer Account. This can be achieved with the following steps:
+When creating a provisioning profile for ad-hoc distribution, the profile must include which devices can run the app. Before selecting the devices to be added to the provisioning profile you must first add devices to your Apple Developer Account. This can be achieved with the following steps:
 
 1. Select the **Apple > About this Mac** menu item.
 1. In the **Overview** tab, select the **System Report...** button.
@@ -83,11 +83,11 @@ When creating a provisioning profile, the profile must include which devices can
 
 1. In the **Register a New Device** page, review the information and then click the **Register** button.
 
-Repeat the above steps for any Macs that you want to deploy a .NET MAUI Mac Catalyst app to.
+Repeat the above steps for any Macs that you want to deploy your .NET MAUI Mac Catalyst app to using ad-hoc distribution.
 
 ### Create a provisioning profile
 
-Once the App ID has been created and configured, you should create a developer provisioning profile. This profile enables the app to be digitally signed so that it can be installed on specific Macs.
+Once the App ID has been created, you should create a development provisioning profile. This profile enables the app to be digitally signed so that it can be installed on specific Macs.
 
 To create a provisioning profile for ad-hoc distribution:
 
@@ -101,12 +101,9 @@ To create a provisioning profile for ad-hoc distribution:
 
     :::image type="content" source="media/publish-ad-hoc/select-app-id.png" alt-text="Select your App ID.":::
 
-    > [!NOTE]
-    > The App ID will be in the **Enabled App IDs with an associated application identifier** section.
-
 1. In the **Generate a Provisioning Profile** page, select the check box that corresponds to your development certificate before clicking the **Continue** button:
 
-    :::image type="content" source="media/publish-ad-hoc/select-certificate.png" alt-text="Select your developer certificate.":::
+    :::image type="content" source="media/publish-ad-hoc/select-certificate.png" alt-text="Select your development certificate.":::
 
 1. In the **Generate a Provisioning Profile** page, select the devices that the app will be installed on and then click the **Continue** button.
 
@@ -137,7 +134,7 @@ Apple's App Sandbox restricts access to system resources and user data in Mac ap
 Before distributing your app, you should update its *Info.plist* file with additional information.
 
 > [!NOTE]
-> While it's not a requirement to update your app's *Info.plist* file when distributing it for testing, these updates will be required when distributing the final tested version of your app. Therefore, it's best practice to perform the updates.
+> While it's not a requirement to update your app's *Info.plist* file when distributing it for testing, these updates will be required when distributing the final tested version of your app. Therefore, it's best practice to perform these updates.
 
 [!INCLUDE [Update Info.plist](../includes/update-info-plist.md)]
 
@@ -221,7 +218,7 @@ For a full list of build properties, see [Project file properties](https://githu
 > [!IMPORTANT]
 > Values for these build properties don't have to be provided in the project file. They can also be provided on the command line when you publish the app. This enables you to omit specific values from your project file.
 
-The following example shows a typical property group for building and signing your Mac Catalyst app, for ad-hoc distribution to users on registered devices, with its provisioning profile:
+The following example shows a typical property group for building and signing your Mac Catalyst app for ad-hoc distribution to users on registered devices:
 
 ```xml
 <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-maccatalyst|AnyCPU'">
@@ -254,6 +251,8 @@ Publishing builds, signs, and packages the app, and then copies the *.pkg* to th
 ## Distribute your app for testing
 
 The *.pkg* can be distributed to users on registered devices, where it can be run by double-clicking on the *.pkg* file to install the app.
+
+For information about safely opening apps on a Mac, see [Open apps safely on your Mac](https://support.apple.com/HT202491) on support.apple.com.
 
 ## See also
 
