@@ -18,7 +18,6 @@ The process for provisioning a .NET MAUI Mac Catalyst app for distribution outsi
 1. Create a developer ID application certificate. For more information, see [Create a developer ID application certificate](#create-a-developer-id-application-certificate).
 1. Create a developer ID installer certificate. For more information, see [Create a developer ID installer certificate](#create-a-developer-id-installer-certificate).
 1. Create an App ID. For more information, see [Create an App ID](#create-an-app-id).
-1. Configure the App ID. For more information, see [Configure the App ID](#configure-the-app-id). IS THIS REALLY REQUIRED???
 1. Create a provisioning profile. For more information, see [Create a provisioning profile](#create-a-provisioning-profile).
 1. Download your provisioning profile. For more information, see [Download your provisioning profile in Xcode](#download-your-provisioning-profile-in-xcode).
 
@@ -102,9 +101,6 @@ The CSR allows you to generate a developer ID installer certificate, which is re
 A distribution provisioning profile enables your .NET MAUI Mac Catalyst app to be digitally signed for release, so that it can be installed on another Mac. A distribution provisioning profile contains an App ID and a developer ID application certificate.
 
 [!INCLUDE [Create an App ID](../includes/create-app-id.md)]
-
-<!-- TODO: Does the App ID need configuring to use the Mac Catalyst entitlement? -->
-[!INCLUDE [Configure the App ID](../includes/configure-app-id.md)]
 
 ### Create a provisioning profile
 
