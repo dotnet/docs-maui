@@ -6,7 +6,7 @@ ms.date: 03/20/2023
 
 # Publish a Mac Catalyst app for ad-hoc distribution
 
-When distributing Mac Catalyst apps outside the Mac App Store, you can also choose to distribute your app to a limited number of users on registered devices. This is known as *ad-hoc* distribution, and is primarily used for testing apps within a group of people. However, it's limited to 100 devices per membership year, and the devices must be added to your Apple Developer Account. It's available for the Apple Developer Program and the Apple Developer Enterprise Program.
+When distributing Mac Catalyst apps outside the Mac App Store, you can also choose to distribute your app to a limited number of users on registered devices. This is known as *ad-hoc* distribution, and is primarily used for testing apps within a group of people. However, it's limited to 100 devices per membership year, and the devices must be added to your Apple Developer Account. Members of the Apple Developer Program and the Apple Developer Enterprise Program can use this distribution approach.
 
 Distributing a Mac Catalyst app requires that the app is provisioned using a *provisioning profile*. Provisioning profiles are files that contain code signing information, as well as the identity of the app and its intended distribution mechanism.
 

@@ -6,7 +6,7 @@ ms.date: 03/23/2023
 
 # Publish a Mac Catalyst app for distribution outside the Mac App Store
 
-An alternative to distributing Mac Catalyst apps through the Mac App Store is to distribute them outside the Mac App Store. With this approach, your Mac Catalyst app can be hosted at a location of your choosing for download.
+An alternative to distributing Mac Catalyst apps through the Mac App Store is to distribute them outside the Mac App Store. With this approach, your Mac Catalyst app can be hosted at a location of your choosing for download. Members of the Apple Developer Program and the Apple Developer Enterprise Program can use this distribution approach.
 
 Distributing a Mac Catalyst app requires that the app is provisioned using a *provisioning profile*. Provisioning profiles are files that contain code signing information, as well as the identity of the app and its intended distribution mechanism.
 
@@ -22,7 +22,7 @@ The process for provisioning a .NET MAUI Mac Catalyst app for distribution outsi
 1. Download your provisioning profile. For more information, see [Download your provisioning profile in Xcode](#download-your-provisioning-profile-in-xcode).
 
 > [!IMPORTANT]
-> This article shows provisioning distribution outside the Mac App Store using an Apple Developer Account that's part of the Apple Developer Program. It can also be used for an Apple Developer Account that's part of the Apple Developer Enterprise Program, as the steps required are largely identical.
+> This article shows provisioning for distribution outside the Mac App Store using an Apple Developer Account that's part of the Apple Developer Program. It can also be used for an Apple Developer Account that's part of the Apple Developer Enterprise Program, as the steps required are largely identical.
 
 Then, once provisioning is complete you should prepare your app for publishing, publish it, and notarize it with the following process:
 
