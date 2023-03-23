@@ -41,7 +41,7 @@ For example, use the following command to build and sign an *.ipa* on a Mac:
 dotnet publish -f:net7.0-ios -c:Release /p:ArchiveOnBuild=true /p:RuntimeIdentifier=ios-arm64 /p:CodesignKey="Apple Distribution: John Smith (AY2GDE9QM7)" /p:CodesignProvision="MyMauiApp"
 ```
 
-Publishing builds and signs the app, and then copies the *.ipa* to the *bin/Release/net7.0-ios/ios-arm64/publish/* folder. The distribution channel for the app is specified in the distribution certificate contained within the provisioning profile. For information about creating provisioning profiles for the different distribution channels, see [Publish an iOS app for App Store distribution](publish-app-store.md), [Publish an iOS app for ad-hoc distribution](publish-ad-hoc.md), and [Publish an iOS app for in-house distribution](publish-in-house.md)
+Publishing builds and signs the app, and then copies the *.ipa* to the *bin/Release/net7.0-ios/ios-arm64/publish/* folder. The distribution channel for the app is specified in the distribution certificate contained within the provisioning profile. For information about creating provisioning profiles for the different distribution channels, see [Publish an iOS app for App Store distribution](publish-app-store.md), [Publish an iOS app for ad-hoc distribution](publish-ad-hoc.md), and [Publish an iOS app for in-house distribution](publish-in-house.md).
 
 For more information about the `dotnet publish` command, see [dotnet publish](/dotnet/core/tools/dotnet-publish).
 

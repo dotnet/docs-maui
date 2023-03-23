@@ -10,7 +10,7 @@ ms.date: 02/24/2023
 >
 > - [Publish for Android](../../android/deployment/overview.md)
 > - [Publish for iOS](index.md)
-> - [Publish for macOS](../../macos/deployment/overview.md)
+> - [Publish for macOS](../../mac-catalyst/deployment/index.md)
 > - [Publish for Windows](../../windows/deployment/overview.md)
 
 Once a .NET Multi-platform App UI (.NET MAUI) iOS app has been developed and tested, it can be packaged for distribution as an *.ipa* file. An *.ipa* file is an iOS app archive file that stores an iOS app. The following diagram shows the steps required to produce the app package for distribution:
@@ -33,7 +33,7 @@ Apple offers two developer program options:
 
 Apple provides multiple approaches for distributing an iOS app:
 
-- *App Store*. This is the main approach for distributing iOS apps to users. Apps are submitted to the App Store through a portal called *App Store Connect*. Only developers who belong to the Apple Developer Program have access to this portal. Members of the Apple Developer Enterprise Program do not have access. All apps submitted to the App Store require approval from Apple. For more information, see [Publish an iOS app for App Store distribution](publish-app-store.md).
+- *App Store*. This is the main approach for distributing iOS apps to users. Apps are submitted to the App Store through on online tool called *App Store Connect*. Only developers who belong to the Apple Developer Program have access to this tool. Members of the Apple Developer Enterprise Program do not have access. All apps submitted to the App Store require approval from Apple. For more information, see [Publish an iOS app for App Store distribution](publish-app-store.md).
 - *In-house*. This distribution mechanism is also known as enterprise distribution. It enables members of the Apple Developer Enterprise Program to distribute apps internally to other members of the same organization. This has the advantage of not requiring an App Store review, and has no limit on the number of devices on which an app can be installed. However, members of the Apple Developer Enterprise Program don't have access to App Store Connect, and therefore the licensee is responsible for distributing the app. For more information, see [Publish an iOS app for in-house distribution](publish-in-house.md).
 - *Ad-hoc*. iOS apps can be user-tested via ad-hoc distribution, which is available for the Apple Developer Program and the Apple Developer Enterprise Program. It allows an app to be deployed on up to 100 devices, for testing. A use case for ad-hoc distribution is distribution within a company when App Store Connect is not an option. For more information, see [Publish an iOS app for ad-hoc distribution](publish-ad-hoc.md).
 - *Custom apps for business*. Apple allows custom distribution of apps to businesses and education. For more information, see [Distributing Custom Apps](https://developer.apple.com/custom-apps/) on developer.apple.com and [Apple Business Manager User Guide](https://support.apple.com/guide/apple-business-manager/welcome/web) on support.apple.com.

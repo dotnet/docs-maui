@@ -6,16 +6,16 @@ ms.date: 11/28/2022
 
 # Automatic provisioning for iOS apps
 
-Automatic provisioning is the recommended approach for deploying a .NET Multi-platform App UI (.NET MAUI) iOS app to a device. With this approach, Visual Studio automatically creates and manages signing identifies, App IDs, and provisioning profiles. Before starting the automatic provisioning process, you should ensure that you've added your Apple developer account to Visual Studio. For more information, see [Apple account management](~/ios/apple-account-management.md).
+Automatic provisioning is the recommended approach for deploying a .NET Multi-platform App UI (.NET MAUI) iOS app to a device. With this approach, Visual Studio automatically creates and manages signing identifies, App IDs, and provisioning profiles. Before starting the automatic provisioning process, you should ensure that you've added your Apple Developer Account to Visual Studio. For more information, see [Apple account management](~/ios/apple-account-management.md).
 
-Once you've added your Apple developer account to Visual Studio, you can use any associated team. Certificates, App IDs, and profiles can then be created against the team. The team ID is also used to create a prefix for the App ID that will be included in the provisioning profile, which enables Apple to verify that an app can be deployed to a device.
+Once you've added your Apple Developer Account to Visual Studio, you can use any associated team. Certificates, App IDs, and profiles can then be created against the team. The team ID is also used to create a prefix for the App ID that will be included in the provisioning profile, which enables Apple to verify that an app can be deployed to a device.
 
 > [!IMPORTANT]
-> Before you begin, ensure that you've accepted any user license agreements in the [Apple Developer portal](https://developer.apple.com/account/) and [App Store Connect](https://appstoreconnect.apple.com/).
+> Before you begin, ensure that you've accepted any user license agreements in your [Apple Developer Account](https://developer.apple.com/account/) and [App Store Connect](https://appstoreconnect.apple.com/).
 
 ## Enable automatic provisioning
 
-Once you've added your Apple developer account to Visual Studio, you need to enable automatic provisioning for the .NET MAUI app project.
+Once you've added your Apple Developer Account to Visual Studio, you need to enable automatic provisioning for the .NET MAUI app project.
 
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio](#tab/vs)
@@ -61,13 +61,13 @@ Once you've added your Apple developer account to Visual Studio, you need to ena
 
 When automatic provisioning is enabled, Visual Studio will re-run the automatic provisioning process if necessary when any of the following occur:
 
-- An iOS device is plugged into your Mac. This automatically checks to see if the device is registered on the Apple's developer portal. If it isn't, it will add it and generate a new provisioning profile that contains it.
+- An iOS device is plugged into your Mac. This automatically checks to see if the device is registered in your Apple Developer Account. If it isn't, it will add it and generate a new provisioning profile that contains it.
 - The Bundle ID of your app is changed. This updates the App ID and so a new provisioning profile containing this App ID is created.
 - A supported capability is enabled in the *Entitlements.plist* file. This capability will be added to the App ID and a new provisioning profile with the updated App ID is generated. Not all capabilities are currently supported. For more information about capabilities, see [Capabilities](~/ios/capabilities.md).
 
 ## Wildcard App IDs
 
-By default automatic provisioning will attempt to create and use a wildcard App ID and provisioning profile instead of an explicit App ID based on the app's bundle identifier. Wildcard App IDs reduce the number of profiles and IDs to maintain in the Apple developer portal. For more information about wildcard App IDs, see [Create a development provisioning profile](manual-provisioning.md#create-a-development-provisioning-profile).
+By default automatic provisioning will attempt to create and use a wildcard App ID and provisioning profile instead of an explicit App ID based on the app's bundle identifier. Wildcard App IDs reduce the number of profiles and IDs to maintain in your Apple Developer Account. For more information about wildcard App IDs, see [Create a development provisioning profile](manual-provisioning.md#create-a-development-provisioning-profile).
 
 In some cases, an app's entitlements require an explicit App ID. The following entitlements do not support wildcard App IDs:
 
@@ -89,7 +89,7 @@ If your app uses one of these entitlements, Visual Studio will attempt to create
 
 ## Troubleshoot
 
-It may take several hours for a new Apple developer account to be approved. You won't be able to enable automatic provisioning until the account has been approved.
+It may take several hours for a new Apple Developer Account to be approved. You won't be able to enable automatic provisioning until the account has been approved.
 
 If the automatic provisioning process fails with the error message `Authentication Service Is Unavailable`, sign in to either [App Store Connect](https://appstoreconnect.apple.com/) or your [Apple Developer account](https://appleid.apple.com/account) to check that you have accepted the latest service agreements.
 

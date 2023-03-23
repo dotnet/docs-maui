@@ -35,6 +35,14 @@
     {
       "source_path": "docs/ios/deployment/provision.md",
       "redirect_url": "/dotnet/maui/ios/deployment/publish-app-store"
+    },
+    {
+      "source_path": "docs/macos/cli.md",
+      "redirect_url": "/dotnet/maui/mac-catalyst/cli"
+    },
+    {
+      "source_path": "docs/macos/deployment/overview.md",
+      "redirect_url": "/dotnet/maui/mac-catalyst/deployment"
     }
   ]
 }

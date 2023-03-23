@@ -6,9 +6,9 @@ ms.date: 11/29/2022
 
 # Manual provisioning for iOS apps
 
-Manual provisioning is an approach for deploying a .NET Multi-platform App UI (.NET MAUI) iOS app to a device, where you have full control over the provisioning data that gets created. With this approach, you manually create and manage signing identities, App IDs, and provisioning profiles in the [Apple Developer portal](https://developer.apple.com/account), and then have to download this data into Visual Studio. Before starting the manual provisioning process, you should ensure that you've added your Apple developer account to Visual Studio. For more information, see [Apple account management](~/ios/apple-account-management.md).
+Manual provisioning is an approach for deploying a .NET Multi-platform App UI (.NET MAUI) iOS app to a device, where you have full control over the provisioning data that gets created. With this approach, you manually create and manage signing identities, App IDs, and provisioning profiles in your [Apple Developer Account](https://developer.apple.com/account), and then have to download this data into Visual Studio. Before starting the manual provisioning process, you should ensure that you've added your Apple Developer Account to Visual Studio. For more information, see [Apple account management](~/ios/apple-account-management.md).
 
-Development teams, certificates, and profiles can all be managed by accessing the [Certificates, Identifiers & Profiles](https://developer.apple.com/account/resources/certificates/list) section of Apple's developer portal.
+Development teams, certificates, and profiles can all be managed by accessing the [Certificates, Identifiers & Profiles](https://developer.apple.com/account/resources/certificates/list) section of your Apple Developer Account.
 
 ## Create a signing certificate
 
@@ -19,7 +19,7 @@ Development certificates and their associated keys establish your identity with 
 > [!IMPORTANT]
 > You can only have two iOS development certificates at any one time. If you need to create any more, you will need to revoke an existing one. Any machine using a revoked certificate will not be able to sign their app.
 
-Once you've added your Apple developer account to Visual Studio, you need to generate a signing certificate.
+Once you've added your Apple Developer Account to Visual Studio, you need to generate a signing certificate.
 
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio](#tab/vs)
@@ -44,7 +44,7 @@ Once you've added your Apple developer account to Visual Studio, you need to gen
 
 ### Understanding certificate key pairs
 
-A developer profile contains certificates, their associated keys, and any provisioning profiles associated with the Apple developer account. There are two versions of a developer profile—one exists in Apple's developer portal, and the other lives on a local machine. The difference between the two is the type of keys they contain: the profile on Apple's developer portal contains all of the public keys associated with your certificates, while the copy on your local machine contains all of the private keys. For certificates to be valid, the key pairs must match.
+A developer profile contains certificates, their associated keys, and any provisioning profiles associated with the Apple Developer Account. There are two versions of a developer profile—one exists in your Apple Developer Account, and the other lives on a local machine. The difference between the two is the type of keys they contain: the profile in your Apple Developer Account contains all of the public keys associated with your certificates, while the copy on your local machine contains all of the private keys. For certificates to be valid, the key pairs must match.
 
 > [!WARNING]
 > Losing the certificate and associated keys can be incredibly disruptive, as it will require revoking existing certificates and re-provisioning any associated devices. After successfully setting up a development certificate, export a backup copy and store it in a safe place. For more information on how to do this, see [Export developer accounts](https://help.apple.com/xcode/mac/current/#/dev8a2822e0b) on help.apple.com.
@@ -57,7 +57,7 @@ After creating a signing certificate, you must set up a development provisioning
 
 ### Create an App ID
 
-After adding a device to Apple's developer portal, you should create an *App ID*. An App ID is similar to a reverse-DNS string, that uniquely identifies an app, and should be identical to the bundle identifier for your app.
+After adding a device to your Apple Developer Account, you should create an *App ID*. An App ID is similar to a reverse-DNS string, that uniquely identifies an app, and should be identical to the bundle identifier for your app.
 
 <!-- markdownlint-disable MD032 -->
 > [!IMPORTANT]
@@ -77,7 +77,7 @@ The recommended approach is to create a *wildcard App ID*, unless your app uses 
 
 A wildcard App ID can be created with the following steps:
 
-1. In a web browser, go to the [Identifiers](https://developer.apple.com/account/resources/identifiers/list) section of Apple's developer portal and click the **+** button.
+1. In a web browser, go to the [Identifiers](https://developer.apple.com/account/resources/identifiers/list) section of your Apple Developer Account and click the **+** button.
 1. In the **Register a new identifier** page, select **App IDs** and click the **Continue** button.
 1. In the **Register a new identifier** page, select the **App** type and click the **Continue** button.
 1. In the **Register an App ID** page, provide a **Description** and set the **Bundle ID** to **Wildcard**. Then, enter an App ID in the format `com.domainname.*` and click the **Continue** button:
@@ -92,7 +92,7 @@ Once the App ID has been created, you should create a development provisioning p
 
 A development provisioning profile can be created with the following steps:
 
-1. In a web browser, go to the [Profiles](https://developer.apple.com/account/resources/profiles/list) section of Apple's developer portal and click the **+** button.
+1. In a web browser, go to the [Profiles](https://developer.apple.com/account/resources/profiles/list) section of your Apple Developer Account and click the **+** button.
 1. In the **Register a New Provisioning Profile** page, in the **Development** section, select **iOS App Development** and click the **Continue** button:
 
     :::image type="content" source="media/manual-provisioning/provisioning-profile-ios.png" alt-text="Screenshot of creating a provisioning profile for iOS app development.":::
@@ -117,7 +117,7 @@ A development provisioning profile can be created with the following steps:
 
 ## Download provisioning profiles in Visual Studio
 
-After creating a development provisioning profile in Apple's developer portal, Visual Studio can download it so that it's available for signing your app.
+After creating a development provisioning profile in your Apple Developer Account, Visual Studio can download it so that it's available for signing your app.
 
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio](#tab/vs)
