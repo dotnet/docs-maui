@@ -34,7 +34,7 @@ On iOS, .NET MAUI apps run in a sandbox that provides a set of rules that limit 
 
 ## Mac Catalyst
 
-When distributing your .NET MAUI app for macOS, you generate an *.app* or a *.pkg* file. An *.app* file is a self-contained app that can be run without installation, whereas a *.pkg* is an app packaged in an installer. Distributing a .NET MAUI Mac Catalyst app requires that the app is provisioned using a provisioning profile. Provisioning profiles are files that contain code signing information, as well as the identity of the app and its intended distribution mechanism. For more information about publishing an .NET MAUI Mac Catalyst app, see [Publish a .NET MAUI Mac Catalyst app](~/mac-catalyst/deployment/index.md).
+When distributing your .NET MAUI Mac Catalyst app, you generate an *.app* or a *.pkg* file. An *.app* file is a self-contained app that can be run without installation, whereas a *.pkg* is an app packaged in an installer. Distributing a .NET MAUI Mac Catalyst app requires that the app is provisioned using a provisioning profile. Provisioning profiles are files that contain code signing information, as well as the identity of the app and its intended distribution mechanism. For more information about publishing an .NET MAUI Mac Catalyst app, see [Publish a .NET MAUI Mac Catalyst app](~/mac-catalyst/deployment/index.md).
 
 ## Windows
 
