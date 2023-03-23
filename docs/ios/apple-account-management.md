@@ -10,9 +10,9 @@ When developing a .NET Multi-platform App UI (.NET MAUI) iOS app it's essential 
 
 The Apple account management interface in Visual Studio and Visual Studio for Mac enables you to add your Apple ID, and provides the ability to view information about development teams associated with the Apple ID, view signing certificates and provisioning profiles, create new signing certificates, and download existing provisioning profiles.
 
-## Add an Apple developer account
+## Add an Apple Developer Account
 
-Before you begin, ensure that you've accepted any user license agreements in the [Apple Developer portal](https://developer.apple.com/account/) and [App Store Connect](https://appstoreconnect.apple.com/).
+Before you begin, ensure that you've accepted any user license agreements in your [Apple Developer Account](https://developer.apple.com/account/) and [App Store Connect](https://appstoreconnect.apple.com/).
 
 If you have an individual Apple Developer account, as opposed to an enterprise account, you'll also need to create an App Store Connect API key. For information about creating an App Store Connect API key, see [Creating API Keys for App Store Connect API](https://developer.apple.com/documentation/appstoreconnectapi/creating_api_keys_for_app_store_connect_api) on developer.apple.com.
 
@@ -28,7 +28,7 @@ If you have an individual Apple Developer account, as opposed to an enterprise a
 
     :::image type="content" source="media/apple-account-management/vs/enterprise-account.png" alt-text="Add an Enterprise Apple Developer Account to Visual Studio.":::
 
-    Provided that your account details are valid, your Apple developer account will be added to Visual Studio.
+    Provided that your account details are valid, your Apple Developer Account will be added to Visual Studio.
 
 1. To add an individual account, in the **Individual Account...** dialog, enter your App Store Connect API key data and click the **Add** button:
 
@@ -38,7 +38,7 @@ If you have an individual Apple Developer account, as opposed to an enterprise a
 
     :::image type="content" source="media/apple-account-management/app-store-connect-details.png" lightbox="media/apple-account-management/app-store-connect-details-large.png" alt-text="Screenshot of Apple App Store Connect API details.":::
 
-    Provided that your account details are valid, your Apple developer account will be added to Visual Studio.
+    Provided that your account details are valid, your Apple Developer Account will be added to Visual Studio.
 
 1. Once your account has been added successfully, you'll see your Apple ID and any teams that your Apple ID is part of:
 
@@ -56,7 +56,7 @@ If you have an individual Apple Developer account, as opposed to an enterprise a
 
     :::image type="content" source="media/apple-account-management/vsmac/enterprise-account.png" alt-text="Add an Enterprise Apple Developer Account to Visual Studio for Mac.":::
 
-    Provided that your account details are valid, your Apple developer account will be added to Visual Studio.
+    Provided that your account details are valid, your Apple Developer Account will be added to Visual Studio.
 
 1. To add an individual account, in the **Add Individual Account** dialog, enter your App Store Connect API key data and click the **Add** button:
 
@@ -66,7 +66,7 @@ If you have an individual Apple Developer account, as opposed to an enterprise a
 
     :::image type="content" source="media/apple-account-management/app-store-connect-details.png" lightbox="media/apple-account-management/app-store-connect-details-large.png" alt-text="Screenshot of Apple App Store Connect API details.":::
 
-    Provided that your account details are valid, your Apple developer account will be added to Visual Studio.
+    Provided that your account details are valid, your Apple Developer Account will be added to Visual Studio.
 
 1. Once your account has been added successfully, you'll see your Apple ID and any teams that your Apple ID is part of:
 
@@ -79,7 +79,7 @@ If you have an individual Apple Developer account, as opposed to an enterprise a
 When you select an Apple Developer Account and a Team name, the **View Details...** button becomes enabled. Clicking it opens the team details dialog that displays a list of signing identifies and provisioning profiles that are installed on your machine. This dialog organizes the signing identities by type, with the **Status** column advising you if the certificate is:
 
 - **Valid**. The signing identity (both the certificate and the private key) is installed on your machine and has not expired.
-- **Not in Keychain**. Apple holds a valid signing identity. To install this on your machine, it must be exported from another machine. You cannot download the signing identity from the Apple Developer portal as it doesn't contain the private key.
+- **Not in Keychain**. Apple holds a valid signing identity. To install this on your machine, it must be exported from another machine. You cannot download the signing identity from your Apple Developer Account as it doesn't contain the private key.
 - **Private key is missing**. A certificate with no private key is installed in the keychain.
 - **Expired**. The certificate is expired. You should remove this from your keychain.
 
@@ -91,4 +91,4 @@ If an option in the drop-down is greyed out and unselected, it means that you do
 
 ## Download provisioning profiles
 
-The team details dialog also displays a list of all provisioning profiles associated with your Apple developer account. You can download all provisioning profiles to your local machine by clicking the **Download all Profiles** button.
+The team details dialog also displays a list of all provisioning profiles associated with your Apple Developer Account. You can download all provisioning profiles to your local machine by clicking the **Download all Profiles** button.

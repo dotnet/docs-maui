@@ -8,16 +8,16 @@ ms.date: 02/24/2023
 
 Ad-hoc distribution is primarily used for testing apps within a wide group of people, and is available for the Apple Developer Program and the Apple Developer Enterprise Program. Another use case for ad-hoc distribution is distribution within a company when App Store Connect isn't an option.
 
-Ad-hoc distribution has the advantage of not requiring App Store approval, with apps being installed with [Apple Configurator](https://apps.apple.com/app/id1037126344). However, it's limited to 100 devices per membership year, for both development and distribution, and the devices must be added to Apple's developer portal.
+Ad-hoc distribution has the advantage of not requiring App Store approval, with apps being installed with [Apple Configurator](https://apps.apple.com/app/id1037126344). However, it's limited to 100 devices per membership year, for both development and distribution, and the devices must be added to your Apple Developer Account.
 
 Distributing an iOS app requires that the app is provisioned using a *provisioning profile*. Provisioning profiles are files that contain code signing information, as well as the identity of the app and its intended distribution mechanism.
 
-To distribute a .NET Multi-platform App UI (.NET MAUI) iOS app, you'll need to build a *distribution provisioning profile* specific to it. This profile enables the app to be digitally signed for release so that it can be installed on an iOS device. An ad-hoc distribution provisioning profile contains an App ID, a distribution certificate, and a list of the devices that can install the app. You can use the same App ID that you used when deploying your app to a device for testing. However, you will need to create a distribution certificate to identify yourself or your organization, if you don't already have one.
+To distribute a .NET Multi-platform App UI (.NET MAUI) iOS app, you'll need to build a *distribution provisioning profile* specific to it. This profile enables the app to be digitally signed for release so that it can be installed on an iOS device. An ad-hoc distribution provisioning profile contains an App ID, a distribution certificate, and a list of the devices that can install the app. You can use the same App ID that you used when deploying your app to a device for testing. However, you'll need to create a distribution certificate to identify yourself or your organization, if you don't already have one.
 
 The process for creating an ad-hoc distribution provisioning profile is as follows:
 
 1. Create a distribution certificate. For more information, see [Create a distribution certificate](#create-a-distribution-certificate).
-1. Add devices to Apple's developer portal. For more information, see [Add a device](#add-a-device).
+1. Add devices to your Apple Developer Account. For more information, see [Add a device](#add-a-device).
 1. Create an App ID. For more information, see [Create an App ID](#create-an-app-id).
 1. Create a provisioning profile. For more information, see [Create a provisioning profile](#create-a-provisioning-profile).
 

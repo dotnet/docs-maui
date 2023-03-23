@@ -54,7 +54,7 @@
         - name: macOS
           items:
             - name: Build a Mac Catalyst app with .NET CLI
-              href: macos/cli.md
+              href: mac-catalyst/cli.md
         - name: Windows
           items:
             - name: How to set up Windows for debugging
@@ -704,8 +704,18 @@
                   href: ios/deployment/publish-ad-hoc.md
                 - name: Publish using the command line
                   href: ios/deployment/publish-cli.md
-            - name: macOS
-              href: macos/deployment/overview.md
+            - name: Mac Catalyst
+              items:
+                - name: Overview
+                  href: mac-catalyst/deployment/index.md
+                - name: Publish an unsigned app
+                  href: mac-catalyst/deployment/publish-unsigned.md
+                - name: Publish for app store distribution
+                  href: mac-catalyst/deployment/publish-app-store.md
+                - name: Publish outside the app store
+                  href: mac-catalyst/deployment/publish-outside-app-store.md
+                - name: Publish for ad-hoc distribution
+                  href: mac-catalyst/deployment/publish-ad-hoc.md
             - name: Windows
               items:
                 - name: Overview

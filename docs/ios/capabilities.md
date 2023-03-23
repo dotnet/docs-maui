@@ -8,7 +8,7 @@ ms.date: 01/13/2022
 
 On iOS, .NET Multi-platform App UI (.NET MAUI) apps run in a sandbox that provides a set of rules that limit access between the app and system resources or user data. Apple provides *capabilities*, also known as *app services*, as a means of extending functionality and widening the scope of what iOS apps can do. Capabilities enable you to add a deeper integration with platform features to your app, such as integration with Siri. For more information about capabilities, see [Capabilities](https://developer.apple.com/documentation/xcode/capabilities) on developer.apple.com.
 
-Capabilities are added to your app's provisioning profile, and are used when code signing your app. The provisioning profile must contain an App ID, that matches your app's bundle identifier, with the required capabilities enabled. The provisioning profile can be created automatically in Visual Studio or Visual Studio for Mac, or manually in the Apple developer portal.
+Capabilities are added to your app's provisioning profile, and are used when code signing your app. The provisioning profile must contain an App ID, that matches your app's bundle identifier, with the required capabilities enabled. The provisioning profile can be created automatically in Visual Studio or Visual Studio for Mac, or manually in your Apple Developer Account.
 
 Capabilities are closely related to the concept of entitlements. They both request the expansion of the sandbox your app runs in, to give it additional capabilities. Entitlements are typically added when developing your app, while capabilities are typically added when code signing your app for distribution. However, when automatic provisioning is enabled, adding certain entitlements to your app will also update the capabilities for your app in its provisioning profile. For more information about entitlements, see [Entitlements](entitlements.md).
 
@@ -64,11 +64,11 @@ In Visual Studio, all capabilities are added to your app's *Entitlements.plist* 
 
 It may also be necessary to set privacy keys in *Info.plist*, for certain capabilities.
 
-## Add capabilities with the Apple developer portal
+## Add capabilities in your Apple Developer Account
 
-All capabilities can be added to your app's provisioning profile in the Apple developer portal. This approach requires the use of manual provisioning, and works for all capabilities. For more information about manual provisioning, see [Manual provisioning for iOS apps](~/ios/device-provisioning/manual-provisioning.md).
+All capabilities can be added to your app's provisioning profile in your Apple Developer Account. This approach requires the use of manual provisioning, and works for all capabilities. For more information about manual provisioning, see [Manual provisioning for iOS apps](~/ios/device-provisioning/manual-provisioning.md).
 
-Adding a capability using Apple's developer portal is a multi-step process that requires creating an App ID, creating a provisioning profile, and enabling manual provisioning.
+Adding a capability in your Apple Developer Account is a multi-step process that requires creating an App ID, creating a provisioning profile, and enabling manual provisioning.
 
 When adding a new capability to your provisioning profile, you should also add the same capability to your app's *Entitlements.plist* file and ensure that the app consumes this file. For more information, see [Entitlements](entitlements.md). It may also be necessary to set privacy keys in *Info.plist*, for certain capabilities.
 
@@ -89,7 +89,7 @@ There are two types of App ID - explicit and wildcard. An explicit App ID is uni
 
 An explicit App ID can be created with the following steps:
 
-1. In a web browser, go to the [Identifiers](https://developer.apple.com/account/resources/identifiers/list) section of Apple's developer portal and click the **+** button.
+1. In a web browser, go to the [Identifiers](https://developer.apple.com/account/resources/identifiers/list) section of your Apple Developer Account and click the **+** button.
 1. In the **Register a new identifier** page, select **App IDs** and click the **Continue** button.
 1. In the **Register a new identifier** page, select the **App** type and click the **Continue** button.
 1. In the **Register an App ID** page, provide a **Description** and set the **Bundle ID** to **Explicit**. Then, enter an App ID in the format `com.domainname.myid`:
@@ -101,7 +101,7 @@ An explicit App ID can be created with the following steps:
     :::image type="content" source="media/capabilities/enable-capabilities.png" alt-text="Screenshot of enabled capabilities.":::
 
 1. In the **Register an App ID** page, click the **Continue** button.
-1. In the **Confirm your App ID** page, review the information and then click the **Register** button. Provided that your App ID successfully registers, you'll be returned to the Identifiers section of Apple's developer portal.
+1. In the **Confirm your App ID** page, review the information and then click the **Register** button. Provided that your App ID successfully registers, you'll be returned to the Identifiers section of your Apple Developer Account.
 1. In the **Identifiers** page, click on the App ID you just created.
 1. In the **Edit your App ID Configuration** page, any of your enabled capabilities that require additional setup will have a **Configure** button:
 
@@ -111,11 +111,11 @@ An explicit App ID can be created with the following steps:
 
 ### Create a provisioning profile
 
-Once you've created an App ID you must create a provisioning profile for the App ID. This requires you to have previously created a signing certificate and added a device to Apple's developer portal. For more information, see [Create a signing certificate](~/ios/device-provisioning/manual-provisioning.md#create-a-signing-certificate) and [Add a device](~/ios/device-provisioning/manual-provisioning.md#add-a-device).
+Once you've created an App ID you must create a provisioning profile for the App ID. This requires you to have previously created a signing certificate and added a device to your Apple Developer Account. For more information, see [Create a signing certificate](~/ios/device-provisioning/manual-provisioning.md#create-a-signing-certificate) and [Add a device](~/ios/device-provisioning/manual-provisioning.md#add-a-device).
 
 A provisioning profile can be created with the following steps:
 
-1. In a web browser, go to the [Profiles](https://developer.apple.com/account/resources/profiles/list) section of Apple's developer portal and click the **+** button.
+1. In a web browser, go to the [Profiles](https://developer.apple.com/account/resources/profiles/list) section of your Apple Developer Account and click the **+** button.
 1. In the **Register a New Provisioning Profile** page, in the **Development** section select **iOS App Development** (or a distribution profile type from the **Distribution** section), and click the **Continue** button:
 
     :::image type="content" source="media/capabilities/provisioning-profile-ios.png" alt-text="Screenshot of creating a provisioning profile for iOS app development.":::
@@ -147,7 +147,7 @@ Once you've created a provisioning profile it must be downloaded by Visual Studi
 
 The following list details the common issues that can cause issues when developing a .NET MAUI iOS app that uses capabilities:
 
-- Ensure that the correct App ID has been created and registered in the **Identifiers** section of Apple's developer portal.
+- Ensure that the correct App ID has been created and registered in the **Identifiers** section of your Apple Developer Account.
 - Ensure that the capability has been added to the App ID and that the capability is configured using the correct values.
 - Ensure that the provisioning profile has been installed on your development machine and that the app's *Info.plist* file is using a bundle identifier that's identical to your App ID.
 - Ensure that the app's *Entitlements.plist* file has the correct entitlements enabled.
