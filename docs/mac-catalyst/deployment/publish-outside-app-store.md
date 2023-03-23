@@ -184,11 +184,11 @@ Therefore, it's currently necessary to add the following build target to the end
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
   ...
-	<Target Name="_SkipCodesignVerify" BeforeTargets="_CodesignVerify" AfterTargets="_CodesignAppBundle">  
-		<PropertyGroup>    
-			<_RequireCodeSigning>false</_RequireCodeSigning>  
-		</PropertyGroup>
-	</Target>
+  <Target Name="_SkipCodesignVerify" BeforeTargets="_CodesignVerify" AfterTargets="_CodesignAppBundle">  
+    <PropertyGroup>    
+      <_RequireCodeSigning>false</_RequireCodeSigning>  
+    </PropertyGroup>
+  </Target>
 </Project>
 ```
 

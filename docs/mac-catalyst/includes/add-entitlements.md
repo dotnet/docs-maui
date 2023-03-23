@@ -9,10 +9,10 @@ This can be accomplished by adding an *Entitlements.plist* file to the *Platform
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-	<dict>
-		<key>com.apple.security.app-sandbox</key>
-		<true/>
-	</dict>
+  <dict>
+    <key>com.apple.security.app-sandbox</key>
+    <true/>
+  </dict>
 </plist>
 ```
 
@@ -24,12 +24,12 @@ If your app opens outgoing network connections, you'll also need to add the `com
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-	<dict>
-		<key>com.apple.security.app-sandbox</key>
-		<true/>
-		<key>com.apple.security.network.client</key>
-		<true/>
-	</dict>
+  <dict>
+    <key>com.apple.security.app-sandbox</key>
+    <true/>
+    <key>com.apple.security.network.client</key>
+    <true/>
+  </dict>
 </plist>
 ```
 
