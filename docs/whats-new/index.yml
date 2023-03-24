@@ -13,11 +13,11 @@ landingContent:
   - linkListType: whats-new
     links:
     - text: February 2023
-      url: dotnet-docs-maui-2023-02-01.md
+      url: dotnet-docs-maui-mod2.md
     - text: January 2023
-      url: dotnet-docs-maui-2023-01-01.md
+      url: dotnet-docs-maui-mod1.md
     - text: December 2022
-      url: dotnet-docs-maui-2022-12-01.md
+      url: dotnet-docs-maui-mod0.md
     - text: .NET 7
       url: dotnet-7.md
 - title: Get involved - contribute

@@ -12,8 +12,8 @@ items:
     expanded: true
     items:
     - name: February 2023
-      href: dotnet-docs-maui-2023-02-01.md
+      href: dotnet-docs-maui-mod2.md
     - name: January 2023
-      href: dotnet-docs-maui-2023-01-01.md
+      href: dotnet-docs-maui-mod1.md
     - name: December 2022
-      href: dotnet-docs-maui-2022-12-01.md
+      href: dotnet-docs-maui-mod0.md
