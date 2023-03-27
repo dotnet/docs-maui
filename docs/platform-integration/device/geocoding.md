@@ -20,7 +20,7 @@ To access the **Geocoding** functionality the following platform-specific setup 
 
 No setup is required.
 
-# [iOS\macOS](#tab/ios)
+# [iOS/Mac Catalyst](#tab/macios)
 
 No setup is required.
 

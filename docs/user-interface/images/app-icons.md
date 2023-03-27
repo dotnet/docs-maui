@@ -184,7 +184,7 @@ Adaptive launcher icons are composed icons, using a background layer and a foreg
 
 The `ForegroundScale` attribute can be optionally specified to change the scaling of the foreground layer being rendered over the background layer.
 
-# [iOS & macOS](#tab/ios)
+# [iOS/Mac Catalyst](#tab/macios)
 
 The app icon defined by your .NET MAUI app is used to generate an asset catalog icon set for both iOS and macOS platforms. The name of the icon set is defined in the _Info.plist_ file, which on iOS is located at _Platforms\\iOS\\Info.plist_. For macOS, the _Info.plist_ file is located at _Platforms\\MacCatalyst\\Info.plist_.
 

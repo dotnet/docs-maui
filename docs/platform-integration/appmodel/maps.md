@@ -31,7 +31,7 @@ In the _Platforms/Android/AndroidManifest.xml_ file, add the following `queries/
 </queries>
 ```
 
-# [iOS\macOS](#tab/ios)
+# [iOS/Mac Catalyst](#tab/macios)
 
 No setup is required.
 
@@ -87,7 +87,7 @@ This section describes the platform-specific differences with the maps API.
 
 `NavigationMode` supports Bicycling, Driving, and Walking.
 
-# [iOS\macOS](#tab/ios)
+# [iOS/Mac Catalyst](#tab/macios)
 
 `NavigationMode` supports Driving, Transit, and Walking.
 
