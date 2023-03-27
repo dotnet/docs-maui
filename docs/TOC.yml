@@ -482,7 +482,7 @@
         - name: iOS
           items:
             - name: Apple account management
-              href: ios/apple-account-management.md            
+              href: ios/apple-account-management.md
             - name: Code signing and provisioning
               items:
                 - name: Capabilities
@@ -670,6 +670,8 @@
                   href: platform-integration/storage/preferences.md
                 - name: Secure storage
                   href: platform-integration/storage/secure-storage.md
+            - name: Platform helpers
+              items: platform-integration/platform-helpers.md
         - name: Configure multi-targeting
           href: platform-integration/configure-multi-targeting.md
         - name: Invoke platform code
