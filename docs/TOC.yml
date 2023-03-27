@@ -185,6 +185,10 @@
                 href: fundamentals/gestures/swipe.md
               - name: Tap
                 href: fundamentals/gestures/tap.md
+        - name: Mac Catalyst
+          items:
+              - name: Choose the UI idiom for your app
+                href: mac-catalyst/user-interface-idiom.md
         - name: Properties
           items:
               - name: Bindable properties
