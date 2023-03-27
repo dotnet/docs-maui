@@ -39,7 +39,7 @@ If there's a situation where the <xref:Android.App.Activity> is needed, but the 
 var activity = await Platform.WaitForActivityAsync();
 ```
 
-# [iOS\macOS](#tab/ios)
+# [iOS/Mac Catalyst](#tab/macios)
 
 The `Platform` class contains the following helper methods on iOS and Mac Catalyst:
 

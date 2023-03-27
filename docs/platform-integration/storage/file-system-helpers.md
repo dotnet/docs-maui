@@ -57,7 +57,7 @@ Files that were added to the project with the **Build Action** of **MauiAsset** 
 
   The `FileSystem.OpenPackageFileAsync` method can't get the length of the stream on Android by accessing the `Result.Length` property. Instead, you have to read the whole stream and count how many bytes there are to get the size of the asset.
 
-# [iOS\macOS](#tab/ios)
+# [iOS/Mac Catalyst](#tab/macios)
 
 - `FileSystem.CacheDirectory`\
 Returns the [Library/Caches](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html) directory.

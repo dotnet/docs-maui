@@ -78,7 +78,7 @@ This section describes the platform-specific differences with the <xref:Microsof
 
 On Android, the `Format` property is respected and displayed by the control. However, when the picker control is shown by pressing on the control, only the hour, minute, and time of day can be changed.
 
-# [iOS\macOS](#tab/ios)
+# [iOS/Mac Catalyst](#tab/macios)
 
 On iOS, the `Format` property is respected and displayed by the control.
 

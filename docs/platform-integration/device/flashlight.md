@@ -57,7 +57,7 @@ If you set these permissions, [Google Play will automatically filter out devices
 [assembly: UsesFeature("android.hardware.camera.autofocus", Required = false)]
 ```
 
-# [iOS\macOS](#tab/ios)
+# [iOS/Mac Catalyst](#tab/macios)
 
 No setup is required.
 
@@ -92,7 +92,7 @@ On newer API levels, [Torch Mode](https://developer.android.com/reference/androi
 
 A camera surface texture is created to turn on or off the `FlashMode` of the camera unit.
 
-### [iOS\macOS](#tab/ios)
+### [iOS/Mac Catalyst](#tab/macios)
 
 The `AVCaptureDevice` API is used to turn on and off the Torch and Flash mode of the device.
 

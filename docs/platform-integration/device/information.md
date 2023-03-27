@@ -65,7 +65,7 @@ This section describes the platform-specific differences with the device informa
 
 No platform differences.
 
-# [iOS\macOS](#tab/ios)
+# [iOS/Mac Catalyst](#tab/macios)
 
 To access the user-assigned device name through the <xref:Microsoft.Maui.Devices.IDeviceInfo.Name?displayProperty=nameWithType> property in iOS 16 and later, rather than the generic device name, your app must meet certain criteria and be assigned the `com.apple.developer.device-information.user-assigned-device-name` entitlement. For more information, see [`com.apple.developer.device-information.user-assigned-device-name`](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_device-information_user-assigned-device-name?language=objc) on developer.apple.com.
 

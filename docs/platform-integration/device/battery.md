@@ -46,7 +46,7 @@ The `BatteryStats` permission is required and must be configured in the Android 
   Right-click on the Android project and open the project's properties. Under _Android Manifest_ find the **Required permissions:** area and check the **Battery** permission. This will automatically update the _AndroidManifest.xml_ file.
 -->
 
-# [iOS\macOS](#tab/ios)
+# [iOS/Mac Catalyst](#tab/macios)
 
 No setup is required.
 
@@ -100,7 +100,7 @@ This section describes the platform-specific differences with the battery.
 
 No platform differences.
 
-# [iOS\macOS](#tab/ios)
+# [iOS/Mac Catalyst](#tab/macios)
 
 - APIs won't work in a simulator and you must use a real device.
 - Only returns <xref:Microsoft.Maui.Devices.BatteryPowerSource.AC?displayProperty=nameWithType> or <xref:Microsoft.Maui.Devices.BatteryPowerSource.Battery?displayProperty=nameWithType> for <xref:Microsoft.Maui.Devices.IBattery.PowerSource>.

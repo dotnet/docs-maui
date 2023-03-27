@@ -81,7 +81,7 @@ Additionally, if your app targets Android 5.0 (API level 21) or higher, you must
 > [!TIP]
 > Be sure to read the [Android documentation on background location updates](https://developer.android.com/training/location/permissions), as there are many restrictions that need to be considered.
 
-# [iOS\macOS](#tab/ios)
+# [iOS/Mac Catalyst](#tab/macios)
 
 In the _Platforms/iOS/Info.plist_ and _Platforms/MacCatalyst/Info.plist_ files, add the following keys and values:
 
@@ -239,7 +239,7 @@ On Android, [altitude](https://developer.android.com/reference/android/location/
 
 The <xref:Microsoft.Maui.Devices.Sensors.Location.ReducedAccuracy?displayProperty=nameWithType> property is only used by iOS and returns `false` on all other platforms.
 
-# [iOS\macOS](#tab/ios)
+# [iOS/Mac Catalyst](#tab/macios)
 
 On iOS, [altitude](https://developer.apple.com/documentation/corelocation/cllocation/1423820-altitude) is measured in meters. Positive values indicate altitudes above sea level, while negative values indicate altitudes below sea level.
 

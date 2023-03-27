@@ -67,7 +67,7 @@ Android uses configuration modes to specify the type of theme to request from th
 
 You can read more on the official [Android documentation for Dark Theme](https://developer.android.com/guide/topics/ui/look-and-feel/darktheme).
 
-# [iOS\macOS](#tab/ios)
+# [iOS/Mac Catalyst](#tab/macios)
 
 App information is taken from the _Info.plist_ for the following fields:
 
