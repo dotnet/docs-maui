@@ -28,7 +28,7 @@ To adopt the Mac user interface idiom, update the app's *Info.plist* file to spe
 </array>
 ```
 
-For more information about Mac Catalyst user interface idioms, see [Choose the UI idiom for your Mac Catalyst app](../user-interface-idiom.md).
+For more information about Mac Catalyst user interface idioms, see [Specify the UI idiom for your Mac Catalyst app](../user-interface-idiom.md).
 
 ### Set the default language and region for the app
 
