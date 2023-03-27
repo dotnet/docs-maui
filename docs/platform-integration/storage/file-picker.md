@@ -47,7 +47,7 @@ The `ReadExternalStorage` permission is required and must be configured in the A
   Right-click on the Android project and open the project's properties. Under _Android Manifest_ find the **Required permissions:** area and check the **ReadExternalStorage** permission. This will automatically update the _AndroidManifest.xml_ file.
 -->
 
-# [iOS\macOS](#tab/ios)
+# [iOS/Mac Catalyst](#tab/macios)
 
 Enable iCloud capabilities. For more information, see [Capabilities](~/ios/capabilities.md).
 
@@ -90,7 +90,7 @@ The `PickOptions.PickerTitle` is displayed on the initial prompt to the user, bu
 
 When filtering files by type, use the file's MIME type. For a list of MIME types, see [Mozilla - Common MIME types](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types).
 
-# [iOS\macOS](#tab/ios)
+# [iOS/Mac Catalyst](#tab/macios)
 
 When filtering by file type, use Uniform Type Identifiers (UTType) values, specifically the identifier value. For more information, see [System-Declared Uniform Type Identifiers (Apple developer archive)](https://developer.apple.com/library/archive/documentation/Miscellaneous/Reference/UTIRef/Articles/System-DeclaredUniformTypeIdentifiers.html) and [System-declared uniform type identifiers](https://developer.apple.com/documentation/uniformtypeidentifiers/system-declared_uniform_type_identifiers).
 

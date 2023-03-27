@@ -23,7 +23,7 @@ In the _Platforms/Android/MainActivity.cs_ file, add the `OnResume` and `OnNewIn
 
 :::code language="csharp" source="../snippets/shared_2/Platforms/Android/MainActivity.cs" id="intent_filter_1":::
 
-# [iOS\macOS](#tab/ios)
+# [iOS/Mac Catalyst](#tab/macios)
 
 No setup is required.
 

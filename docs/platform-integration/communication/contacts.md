@@ -62,7 +62,7 @@ The `ReadContacts` permission is required and must be configured in the Android 
 
 -->
 
-# [iOS\macOS](#tab/ios)
+# [iOS/Mac Catalyst](#tab/macios)
 
 In the **Solution Explorer** pane, right-click on the _Platforms/iOS/Info.plist_ or _Platforms/MacCatalyst/Info.plist_ file. Select **Open With** and then select the **XML (Text) Editor** item. Press the **OK** button. In the file, add the following key and value:
 
@@ -102,7 +102,7 @@ This section describes the platform-specific differences with the contacts API.
 
 - The `cancellationToken` parameter in the <xref:Microsoft.Maui.ApplicationModel.Communication.IContacts.GetAllAsync%2A> method isn't supported.
 
-# [iOS\macOS](#tab/ios)
+# [iOS/Mac Catalyst](#tab/macios)
 
 > [!IMPORTANT]
 > Because of a namespace conflict, the `Contacts` type must be fully qualified when targeting iOS or macOS: `Microsoft.Maui.ApplicationModel.Communication.Contacts`.

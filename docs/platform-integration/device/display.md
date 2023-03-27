@@ -34,7 +34,7 @@ This section describes the platform-specific differences with the device display
 
 No platform differences.
 
-# [iOS\macOS](#tab/ios)
+# [iOS/Mac Catalyst](#tab/macios)
 
 - Accessing <xref:Microsoft.Maui.Devices.DeviceDisplay.Current?displayProperty=nameWithType> must be done on the UI thread or else an exception will be thrown. You can use the [`MainThread.BeginInvokeOnMainThread`](../appmodel/main-thread.md) method to run that code on the UI thread.
 

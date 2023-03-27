@@ -23,7 +23,7 @@ To access the launcher functionality, the following platform-specific setup is r
 
 No setup is required.
 
-# [iOS\macOS](#tab/ios)
+# [iOS/Mac Catalyst](#tab/macios)
 
 Apple requires that you define the schemes you want to use. Add the `LSApplicationQueriesSchemes` key and schemes to the _Platforms/iOS/Info.plist_ and _Platforms/MacCatalyst/Info.plist_ files:
 
@@ -76,7 +76,7 @@ This section describes the platform-specific differences with the launcher API.
 
 The <xref:System.Threading.Tasks.Task> returned from <xref:Microsoft.Maui.ApplicationModel.Launcher.CanOpenAsync%2A> completes immediately.
 
-# [iOS\macOS](#tab/ios)
+# [iOS/Mac Catalyst](#tab/macios)
 
 The <xref:System.Threading.Tasks.Task> returned from <xref:Microsoft.Maui.ApplicationModel.Launcher.CanOpenAsync%2A> completes immediately.
 

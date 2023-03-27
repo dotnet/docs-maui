@@ -31,7 +31,7 @@ In the _Platforms/Android/AndroidManifest.xml_ file, add the following `queries/
 </queries>
 ```
 
-# [iOS\macOS](#tab/ios)
+# [iOS/Mac Catalyst](#tab/macios)
 
 Apple requires that you define the schemes you want to use. Add the `LSApplicationQueriesSchemes` key and schemes to the _Platforms/iOS/Info.plist_ and _Platforms/MacCatalyst/Info.plist_ files:
 
@@ -73,7 +73,7 @@ The following example demonstrates adding an image file to the email attachments
 
 Not all email clients for Android support <xref:Microsoft.Maui.ApplicationModel.Communication.EmailBodyFormat.Html?displayProperty=nameWithType>, since there is no way to detect this, we recommend using <xref:Microsoft.Maui.ApplicationModel.Communication.EmailBodyFormat.PlainText?displayProperty=nameWithType> when sending emails.
 
-# [iOS\macOS](#tab/ios)
+# [iOS/Mac Catalyst](#tab/macios)
 
 Both <xref:Microsoft.Maui.ApplicationModel.Communication.EmailBodyFormat.Html?displayProperty=nameWithType> and <xref:Microsoft.Maui.ApplicationModel.Communication.EmailBodyFormat.PlainText?displayProperty=nameWithType> are supported.
 

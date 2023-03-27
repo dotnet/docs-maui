@@ -35,7 +35,7 @@ In the _Platforms/Android/AndroidManifest.xml_ file, add the following `queries/
 </queries>
 ```
 
-# [iOS\macOS](#tab/ios)
+# [iOS/Mac Catalyst](#tab/macios)
 
 No setup is required.
 
@@ -80,7 +80,7 @@ The <xref:Microsoft.Maui.ApplicationModel.BrowserLaunchOptions.LaunchMode?displa
 
   An `Intent` is used to request the URI be opened through the system's normal browser.
 
-# [iOS\macOS](#tab/ios)
+# [iOS/Mac Catalyst](#tab/macios)
 
 The <xref:Microsoft.Maui.ApplicationModel.BrowserLaunchOptions.LaunchMode?displayProperty=nameWithType> determines how the browser is launched:
 
