@@ -491,9 +491,17 @@
           items:
             - name: App manifest
               href: android/manifest.md
+        - name: iOS
+          items:
+            - name: Code signing and provisioning
+              items:
+                - name: Capabilities
+                  href: ios/capabilities.md
+                - name: Entitlements
+                  href: ios/entitlements.md
         - name: Mac Catalyst
           items:
-            - name: Choose the UI idiom for your app
+            - name: Specify the UI idiom
               href: mac-catalyst/user-interface-idiom.md
         - name: Platform integration
           items:
@@ -686,12 +694,6 @@
           href: deployment/index.md
         - name: iOS
           items:
-            - name: Code signing and provisioning
-              items:
-                - name: Capabilities
-                  href: ios/capabilities.md
-                - name: Entitlements
-                  href: ios/entitlements.md
             - name: Hot restart
               href: ios/hot-restart.md
             - name: Wireless deployment

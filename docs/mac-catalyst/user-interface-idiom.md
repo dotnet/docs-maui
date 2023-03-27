@@ -1,10 +1,10 @@
 ---
-title: "Choose the UI idiom for your Mac Catalyst app"
-description: "Learn how to choose the user interface idiom for your .NET MAUI Mac Catalyst app."
+title: "Specify the UI idiom for your Mac Catalyst app"
+description: "Learn how to specify the user interface idiom for your .NET MAUI Mac Catalyst app."
 ms.date: 03/27/2023
 ---
 
-# Choose the UI idiom for your Mac Catalyst app
+# Specify the UI idiom for your Mac Catalyst app
 
 A .NET Multi-platform App UI (.NET MAUI) Mac Catalyst app can run in the iPad or Mac user interface idiom:
 
