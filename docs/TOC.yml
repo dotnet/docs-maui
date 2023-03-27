@@ -671,7 +671,7 @@
                 - name: Secure storage
                   href: platform-integration/storage/secure-storage.md
             - name: Platform helpers
-              items: platform-integration/platform-helpers.md
+              href: platform-integration/platform-helpers.md
         - name: Configure multi-targeting
           href: platform-integration/configure-multi-targeting.md
         - name: Invoke platform code
