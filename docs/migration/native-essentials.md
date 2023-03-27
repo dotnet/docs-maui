@@ -144,7 +144,7 @@ The static `Platform` class contains platform-specific helpers.
 | `OnNewIntent` | Pass an <xref:Android.Content.Intent> from an activity's overridden method, when invoking an app action. |
 | `OnResume` | Pass an <xref:Android.App.Activity> from an activity's overridden method, when an <xref:Android.App.Activity> is resumed as part of invoking an app action. |
 | `OnRequestPermissionsResult` | Pass permission request results from an activity's overridden method, for handling internal permission requests. |
-| `WaitForActivityAsync` | Wait for an Activity to be created or become active. |
+| `WaitForActivityAsync` | Wait for an <xref:Android.App.Activity> to be created or become active. |
 
 To access the current `Context` or `Activity` for the running app:
 
