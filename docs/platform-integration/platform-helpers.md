@@ -2,14 +2,14 @@
 title: "Platform helpers"
 description: "The Platform class, in the Microsoft.Maui.ApplicationModel, contains helpers for each platform."
 ms.date: 03/27/2023
-zone_pivot_groups: devices-deployment
 ---
 
 # Platform helpers
 
 The static `Platform` class, in the <xref:Microsoft.Maui.ApplicationModel> namespace, contains helpers for each platform.
 
-:::zone pivot="devices-android"
+<!-- markdownlint-disable MD025 -->
+# [Android](#tab/android)
 
 The `Platform` class contains the following helpers on Android:
 
@@ -39,25 +39,24 @@ If there's a situation where the <xref:Android.App.Activity> is needed, but the 
 var activity = await Platform.WaitForActivityAsync();
 ```
 
-:::zone-end
+# [iOS\macOS](#tab/ios)
 
-:::zone pivot="devices-ios"
+The `Platform` class contains the following helper methods on iOS and Mac Catalyst:
 
-The `Platform` class contains the following helper methods on iOS:
+| Method | Purpose |
+| ------ | ------- |
+| `ContinueUserActivity` | Informs the app that there's data associated with continuing a task specified as a <xref:Foundation.NSUserActivity> object, and then returns whether the app continued the activity. |
+| `GetCurrentUIViewController` | Gets the current view controller. This method will return `null` if unable to detect a <xref:UIKit.UIViewController>. |
+| `OpenUrl` | Opens the specified URI to start an authentication flow. |
+| `PerformActionForShortcutItem` | Invokes the action that corresponds to the chosen `AppAction` by the user. |
 
-[!INCLUDE [iOS platform helper methods](includes/macios-platform-helpers.md)]
+The following example shows how to retrieve the currently visible <xref:UIKit.UIViewController>:
 
-:::zone-end
+```csharp
+var viewController = Platform.GetCurrentUIViewController();
+```
 
-:::zone pivot="devices-maccatalyst"
-
-The `Platform` class contains the following helper methods on Mac Catalyst:
-
-[!INCLUDE [Mac Catalyst platform helper methods](includes/macios-platform-helpers.md)]
-
-:::zone-end
-
-:::zone pivot="devices-windows"
+# [Windows](#tab/windows)
 
 The `Platform` class contains the following helpers on Windows:
 
@@ -67,4 +66,5 @@ The `Platform` class contains the following helpers on Windows:
 | `OnLaunched` | The lifecycle method that's called when the app is launched. |
 | `OnActivated` | Sets the app's new active window. |
 
-:::zone-end
+---
+<!-- markdownlint-enable MD025 -->
