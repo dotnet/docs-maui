@@ -314,11 +314,9 @@
                             - name: Path
                               href: user-interface/controls/shapes/path.md
                             - name: Path markup syntax
-                              href: >-
-                                user-interface/controls/shapes/path-markup-syntax.md
+                              href: user-interface/controls/shapes/path-markup-syntax.md
                             - name: Path transforms
-                              href: >-
-                                user-interface/controls/shapes/path-transforms.md
+                              href: user-interface/controls/shapes/path-transforms.md
                         - name: Polygon
                           href: user-interface/controls/shapes/polygon.md
                         - name: Polyline
@@ -374,8 +372,7 @@
                         - name: Overview
                           href: user-interface/controls/carouselview/index.md
                         - name: Data
-                          href: >-
-                            user-interface/controls/carouselview/populate-data.md
+                          href: user-interface/controls/carouselview/populate-data.md
                         - name: Layout
                           href: user-interface/controls/carouselview/layout.md
                         - name: Interaction
@@ -389,8 +386,7 @@
                         - name: Overview
                           href: user-interface/controls/collectionview/index.md
                         - name: Data
-                          href: >-
-                            user-interface/controls/collectionview/populate-data.md
+                          href: user-interface/controls/collectionview/populate-data.md
                         - name: Layout
                           href: user-interface/controls/collectionview/layout.md
                         - name: Selection
@@ -473,8 +469,6 @@
           href: user-interface/visual-states.md
     - name: Platforms
       items:
-        - name: Overview
-          href: platform-integration/index.md
         - name: Android
           items:
             - name: App manifest
@@ -503,6 +497,8 @@
               href: mac-catalyst/user-interface-idiom.md
         - name: Platform integration
           items:
+            - name: Overview
+              href: platform-integration/index.md
             - name: Application model
               items:
                 - name: App actions
@@ -545,8 +541,7 @@
                   href: platform-integration/device/information.md
                 - name: Device sensors
                   href: platform-integration/device/sensors.md
-                  displayName: >-
-                    Sensors,IAccelerometer,Accelerometer,IBarometer,Barometer,ICompass,Compass,Shake,IGyroscope,Gyroscope,IMagnetometer,Magnetometer,IOrientationSensor,OrientationSensor
+                  displayName: Sensors,IAccelerometer,Accelerometer,IBarometer,Barometer,ICompass,Compass,Shake,IGyroscope,Gyroscope,IMagnetometer,Magnetometer,IOrientationSensor,OrientationSensor
                 - name: Flashlight
                   href: platform-integration/device/flashlight.md
                 - name: Geocoding
@@ -580,16 +575,13 @@
                     - name: Soft keyboard input mode
                       href: android/platform-specifics/soft-keyboard-input-mode.md
                     - name: SwipeView swipe transition mode
-                      href: >-
-                        android/platform-specifics/swipeview-swipetransitionmode.md
+                      href: android/platform-specifics/swipeview-swipetransitionmode.md
                     - name: TabbedPage page swiping
                       href: android/platform-specifics/tabbedpage-page-swiping.md
                     - name: TabbedPage page transition animations
-                      href: >-
-                        android/platform-specifics/tabbedpage-transition-animations.md
+                      href: android/platform-specifics/tabbedpage-transition-animations.md
                     - name: TabbedPage toolbar placement
-                      href: >-
-                        android/platform-specifics/tabbedpage-toolbar-placement.md
+                      href: android/platform-specifics/tabbedpage-toolbar-placement.md
                     - name: WebView mixed content
                       href: android/platform-specifics/webview-mixed-content.md
                     - name: WebView zoom
