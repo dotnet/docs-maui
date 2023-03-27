@@ -44,7 +44,7 @@
         },
         {
             "names": [ "migration" ],
-            "heading": "Migration from Xamarin.Forms"          
+            "heading": "Migration from Xamarin.Forms"
         },
         {
             "names": [ "platform-integration" ],
@@ -59,8 +59,8 @@
             "heading": "iOS"
         },
         {
-            "names": [ "macos" ],
-            "heading": "MacOS"
+            "names": [ "mac-catalyst" ],
+            "heading": "Mac Catalyst"
         },
         {
             "names": [ "windows" ],
