@@ -493,6 +493,10 @@
                   href: ios/device-provisioning/manual-provisioning.md
         - name: Mac Catalyst
           items:
+            - name: Code signing and provisioning
+              items:
+                - name: Entitlements
+                  href: mac-catalyst/entitlements.md            
             - name: Specify the UI idiom
               href: mac-catalyst/user-interface-idiom.md
         - name: Platform integration
