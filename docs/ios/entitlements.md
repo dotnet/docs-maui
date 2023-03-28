@@ -1,7 +1,7 @@
 ---
 title: "Entitlements"
 description: "Learn how to add entitlements to your .NET MAUI iOS app, to request access to specific system resources or user data."
-ms.date: 01/13/2022
+ms.date: 01/13/2023
 ---
 
 # Entitlements
