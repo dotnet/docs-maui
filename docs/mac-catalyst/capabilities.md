@@ -46,7 +46,7 @@ Once you've created a provisioning profile it must be downloaded by Visual Studi
 The provisioning profile will then be available for use.
 
 > [!NOTE]
-> You can also download your provisioning profile in Xcode. For more information, see [Download your provisioning profile in Xcode](~/mac-catalyst/deployment/publish-app-store.md#Download-your-provisioning-profile-in-xcode).
+> You can also download your provisioning profile in Xcode. For more information, see [Download your provisioning profile in Xcode](~/mac-catalyst/deployment/publish-app-store.md#download-your-provisioning-profile-in-xcode).
 
 ## Define build properties in your project file
 
