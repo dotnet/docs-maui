@@ -18,7 +18,7 @@ Capabilities can be added to your app's provisioning profile in your Apple Devel
 
 When adding a new capability to your provisioning profile, you should also add the same capability to your app's *Entitlements.plist* file and ensure that the app consumes this file. For more information, see [Entitlements](entitlements.md). It may also be necessary to set privacy keys in *Info.plist*, for certain capabilities.
 
-[!INCLUDE [Create an App ID](../macios/includes/capabilites=create-app-id.md)]
+[!INCLUDE [Create an App ID](../macios/includes/capabilites-create-app-id.md)]
 
 ## Create a provisioning profile
 
