@@ -10,25 +10,27 @@ On Mac Catalyst .NET Multi-platform App UI (.NET MAUI) apps run in a sandbox tha
 
 Capabilities are added to your app's provisioning profile, and are used when code signing your app. The provisioning profile must contain an App ID, that matches your app's bundle identifier, with the required capabilities enabled. The provisioning profile should be created in your Apple Developer Account.
 
-Capabilities are closely related to the concept of entitlements. They both request the expansion of the sandbox your app runs in, to give it additional capabilities. Entitlements are typically added when developing your app, while capabilities are typically added when code signing your app for distribution. However, when automatic provisioning is enabled, adding certain entitlements to your app will also update the capabilities for your app in its provisioning profile. For more information about entitlements, see [Entitlements](entitlements.md).
+Capabilities are closely related to the concept of entitlements. They both request the expansion of the sandbox your app runs in, to give it additional capabilities. Entitlements are typically added when developing your app, while capabilities are typically added when code signing your app for distribution. For more information about entitlements, see [Entitlements](entitlements.md).
 
 ## Add capabilities in your Apple Developer Account
 
-Capabilities can be added to your app's provisioning profile in your Apple Developer Account. This is a multi-step process that requires creating an App ID, creating a provisioning profile, and enabling manual provisioning.
+Capabilities can be added to your app's provisioning profile in your Apple Developer Account. This is a multi-step process that requires creating a signing certificate, App ID, and provisioning profile.
 
 When adding a new capability to your provisioning profile, you should also add the same capability to your app's *Entitlements.plist* file and ensure that the app consumes this file. For more information, see [Entitlements](entitlements.md). It may also be necessary to set privacy keys in *Info.plist*, for certain capabilities.
 
-[!INCLUDE [Create an App ID](../macios/includes/capabilities-create-app-id.md)]
+## Create a signing certificate
 
-## Create a provisioning profile
-
-Once you've created an App ID you must create a provisioning profile for the App ID. Creating a provisioning profile requires you to have previously created a signing certificate. The type of signing certificate depends on the intended distribution channel for your app:
+Creating a provisioning profile requires you to have previously created a signing certificate. The type of signing certificate depends on the intended distribution channel for your app:
 
 - If you intend to distribute your app via the Mac App Store, see [Create a distribution certificate](~/mac-catalyst/deployment/publish-app-store.md#create-a-distribution-certificate) in [Publish a Mac Catalyst app for Mac App Store distribution](~/mac-catalyst/deployment/publish-app-store.md).
 - If you intend to distribute your app outside the Mac App Store, see [Create a developer ID application certificate](~/mac-catalyst/deployment/publish-outside-app-store.md#create-a-developer-id-application-certificate) in [Publish a Mac Catalyst app for distribution outside the Mac App Store](~/mac-catalyst/deployment/publish-outside-app-store.md).
 - If you intend to distribute your app to a limited number of users on registered devices, outside the Mac App Store, see [Create a development certificate](~/mac-catalyst/deployment/publish-ad-hoc.md#create-a-development-certificate) in [Publish a Mac Catalyst app for ad-hoc distribution](~/mac-catalyst/deployment/publish-ad-hoc.md).
 
-The provisioning profile you create will also depend on the intended distribution channel for your app:
+[!INCLUDE [Create an App ID](../macios/includes/capabilities-create-app-id.md)]
+
+## Create a provisioning profile
+
+Once you've created an App ID you must create a provisioning profile for the App ID. The provisioning profile you create will also depend on the intended distribution channel for your app:
 
 - If you intend to distribute your app via the Mac App Store, see [Create a provisioning profile](~/mac-catalyst/deployment/publish-app-store.md#create-a-provisioning-profile) in [Publish a Mac Catalyst app for Mac App Store distribution](~/mac-catalyst/deployment/publish-app-store.md).
 - If you intend to distribute your app outside the Mac App Store, see [Create a provisioning profile](~/mac-catalyst/deployment/publish-outside-app-store.md#create-a-provisioning-profile) in [Publish a Mac Catalyst app for distribution outside the Mac App Store](~/mac-catalyst/deployment/publish-outside-app-store.md).
