@@ -1,10 +1,10 @@
 ---
-title: "Capabilities"
+title: "iOS capabilities"
 description: "Learn how to add capabilities to your .NET MAUI iOS app's provisioning profile, to code sign your app."
 ms.date: 01/13/2023
 ---
 
-# Capabilities
+# iOS capabilities
 
 On iOS, .NET Multi-platform App UI (.NET MAUI) apps run in a sandbox that provides a set of rules that limit access between the app and system resources or user data. Apple provides *capabilities*, also known as *app services*, as a means of extending functionality and widening the scope of what iOS apps can do. Capabilities enable you to add a deeper integration with platform features to your app, such as integration with Siri. For more information about capabilities, see [Capabilities](https://developer.apple.com/documentation/xcode/capabilities) on developer.apple.com.
 
@@ -72,7 +72,7 @@ Adding a capability in your Apple Developer Account is a multi-step process that
 
 When adding a new capability to your provisioning profile, you should also add the same capability to your app's *Entitlements.plist* file and ensure that the app consumes this file. For more information, see [Entitlements](entitlements.md). It may also be necessary to set privacy keys in *Info.plist*, for certain capabilities.
 
-[!INCLUDE [Create an App ID](../macios/includes/create-app-id.md)]
+[!INCLUDE [Create an App ID](../macios/includes/capabilities=create-app-id.md)]
 
 ### Create a provisioning profile
 

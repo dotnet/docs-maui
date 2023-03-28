@@ -1,10 +1,10 @@
 ---
-title: "Capabilities"
+title: "Mac Catalyst capabilities"
 description: "Learn how to add capabilities to your .NET MAUI Mac Catalyst app's provisioning profile, to code sign your app."
 ms.date: 03/28/2023
 ---
 
-# Capabilities
+# Mac Catalyst capabilities
 
 On Mac Catalyst .NET Multi-platform App UI (.NET MAUI) apps run in a sandbox that provides a set of rules that limit access between the app and system resources or user data. Apple provides *capabilities*, also known as *app services*, as a means of extending functionality and widening the scope of what Mac Catalyst apps can do. For more information about capabilities, see [Capabilities](https://developer.apple.com/documentation/xcode/capabilities) on developer.apple.com.
 
@@ -18,7 +18,7 @@ Capabilities can be added to your app's provisioning profile in your Apple Devel
 
 When adding a new capability to your provisioning profile, you should also add the same capability to your app's *Entitlements.plist* file and ensure that the app consumes this file. For more information, see [Entitlements](entitlements.md). It may also be necessary to set privacy keys in *Info.plist*, for certain capabilities.
 
-[!INCLUDE [Create an App ID](../macios/includes/create-app-id.md)]
+[!INCLUDE [Create an App ID](../macios/includes/capabilites=create-app-id.md)]
 
 ## Create a provisioning profile
 

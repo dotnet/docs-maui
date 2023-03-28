@@ -1,10 +1,10 @@
 ---
-title: "Entitlements"
+title: "iOS entitlements"
 description: "Learn how to add entitlements to your .NET MAUI iOS app, to request access to specific system resources or user data."
 ms.date: 01/13/2023
 ---
 
-# Entitlements
+# iOS entitlements
 
 On iOS, .NET Multi-platform App UI (.NET MAUI) apps run in a sandbox that provides a set of rules that limit access between the app and system resources or user data. *Entitlements* are used to request the expansion of the sandbox to give your app additional capabilities, such as integration with Siri. Any entitlements used by your app must be specified in the app's *Entitlements.plist* file. For more information about entitlements, see [Entitlements](https://developer.apple.com/documentation/bundleresources/entitlements) on developer.apple.com.
 
