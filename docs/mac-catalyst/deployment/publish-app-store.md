@@ -236,7 +236,7 @@ The following example shows a typical property group for building and signing yo
 
 ## Upload to the Mac App Store
 
-Once an app was been code signed with an Apple Distribution certificate, it can't be run locally. It should be uploaded to App Store Connect, where it will be re-signed to enable local execution.
+Once an app was been code signed with an Apple Distribution certificate, it can't be run locally. Instead, it should be uploaded to App Store Connect where it will be re-signed to enable local execution.
 
 To distribute your app through the Mac App Store, or TestFlight, you'll need to create an app record in App Store Connect. This record includes all the information about the app as it will appear in the App Store and all of the information needed to manage the app throughout the distribution process. For more information, see [Create an app record](https://developer.apple.com/help/app-store-connect/create-an-app-record/add-a-new-app) on developer.apple.com.
 
