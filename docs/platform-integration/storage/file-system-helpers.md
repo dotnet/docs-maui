@@ -47,10 +47,10 @@ This section describes the platform-specific differences with the file system he
 # [Android](#tab/android)
 
 - `FileSystem.CacheDirectory`\
-Returns the [CacheDir](https://developer.android.com/reference/android/content/Context.html#getCacheDir) of the current context.
+Returns the [CacheDir](https://developer.android.com/reference/android/content/Context.html#getCacheDir()) of the current context.
 
 - `FileSystem.AppDataDirectory`\
-Returns the [FilesDir](https://developer.android.com/reference/android/content/Context.html#getFilesDir) of the current context, which are backed up using [Auto Backup](https://developer.android.com/guide/topics/data/autobackup.html) starting on API 23 and above.
+Returns the [FilesDir](https://developer.android.com/reference/android/content/Context.html#getFilesDir()) of the current context, which are backed up using [Auto Backup](https://developer.android.com/guide/topics/data/autobackup.html) starting on API 23 and above.
 
 - `FileSystem.OpenAppPackageFileAsync`\
 Files that were added to the project with the **Build Action** of **MauiAsset** can be opened with this method. .NET MAUI projects will process any file in the _Resources\Raw_ folder as a **MauiAsset**.
