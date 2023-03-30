@@ -66,7 +66,7 @@ Returns the [Library/Caches](https://developer.apple.com/library/content/documen
 Returns the [Library](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html) directory that is backed up by iTunes and iCloud.
 
   > [!IMPORTANT]
-  > The Application ID, which is part of the directory name, changes on every build so you have to retrieve the correct ID each time you build your app for a Simulator or device. Therefore, file access should use relative paths rather than absolute paths.
+  > The Application ID, which is part of the directory name, changes on every build so you have to retrieve the correct ID each time you build your app for a Simulator or device.
 
 - `FileSystem.OpenAppPackageFileAsync`\
 Files that were added to the project with the **Build Action** of **MauiAsset** can be opened with this method. .NET MAUI projects will process any file in the _Resources\Raw_ folder as a **MauiAsset**.
