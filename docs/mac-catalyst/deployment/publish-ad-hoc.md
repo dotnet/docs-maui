@@ -201,7 +201,7 @@ For more information about the `dotnet publish` command, see [dotnet publish](/d
 
 An alternative to specifying build parameters on the command line is to specify them in your project file in a `<PropertyGroup>`. The following table lists some of the common build properties:
 
-| Parameter                    | Value                                                                                           |
+| Property                     | Value                                                                                           |
 |------------------------------|-------------------------------------------------------------------------------------------------|
 | `<ApplicationTitle>` | The user-visible name for the app. |
 | `<ApplicationId>` | The unique identifier for the app, such as `com.companyname.mymauiapp`. |
