@@ -8,13 +8,13 @@ ms.date: 02/25/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-theming)
 
-.NET Multi-platform App UI (.NET MAUI) apps can respond to style changes dynamically at runtime by using the `DynamicResource` markup extension. This markup extension is similar to the [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) markup extension, in that both use a dictionary key to fetch a value from a <xref:Microsoft.Maui.Controls.ResourceDictionary>. However, while the [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) markup extension performs a single dictionary lookup, the `DynamicResource` markup extension maintains a link to the dictionary key. Therefore, if the value associated with the key is replaced, the change is applied to the <xref:Microsoft.Maui.Controls.VisualElement>. This enables runtime theming to be implemented in .NET MAUI apps.
+.NET Multi-platform App UI (.NET MAUI) apps can respond to style changes dynamically at runtime by using the [`DynamicResource`](xref:Microsoft.Maui.Control.Xaml.DynamicResourceExtension) markup extension. This markup extension is similar to the [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) markup extension, in that both use a dictionary key to fetch a value from a <xref:Microsoft.Maui.Controls.ResourceDictionary>. However, while the [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) markup extension performs a single dictionary lookup, the [`DynamicResource`](xref:Microsoft.Maui.Control.Xaml.DynamicResourceExtension) markup extension maintains a link to the dictionary key. Therefore, if the value associated with the key is replaced, the change is applied to the <xref:Microsoft.Maui.Controls.VisualElement>. This enables runtime theming to be implemented in .NET MAUI apps.
 
 The process for implementing runtime theming in a .NET MAUI app is as follows:
 
 1. Define the resources for each theme in a <xref:Microsoft.Maui.Controls.ResourceDictionary>. For more information, see [Define themes](#define-themes).
 1. Set a default theme in the app's *App.xaml* file. For more information, see [Set a default theme](#set-a-default-theme).
-1. Consume theme resources in the app, using the `DynamicResource` markup extension. For more information, see [Consume theme resources](#consume-theme-resources).
+1. Consume theme resources in the app, using the [`DynamicResource`](xref:Microsoft.Maui.Control.Xaml.DynamicResourceExtension) markup extension. For more information, see [Consume theme resources](#consume-theme-resources).
 1. Add code to load a theme at runtime. For more information, see [Load a theme at runtime](#load-a-theme-at-runtime).
 
 > [!IMPORTANT]
@@ -90,7 +90,7 @@ For more information about merging resource dictionaries, see [Merged resource d
 
 ## Consume theme resources
 
-When an app wants to consume a resource that's stored in a <xref:Microsoft.Maui.Controls.ResourceDictionary> that represents a theme, it should do so with the `DynamicResource` markup extension. This ensures that if a different theme is selected at runtime, the values from the new theme will be applied.
+When an app wants to consume a resource that's stored in a <xref:Microsoft.Maui.Controls.ResourceDictionary> that represents a theme, it should do so with the [`DynamicResource`](xref:Microsoft.Maui.Control.Xaml.DynamicResourceExtension) markup extension. This ensures that if a different theme is selected at runtime, the values from the new theme will be applied.
 
 The following example shows three styles from that can be applied to all <xref:Microsoft.Maui.Controls.Label> objects in app:
 
@@ -128,7 +128,7 @@ The following example shows three styles from that can be applied to all <xref:M
 </Application>
 ```
 
-These styles are defined in the app-level resource dictionary, so that they can be consumed by multiple pages. Each style consumes theme resources with the `DynamicResource` markup extension.
+These styles are defined in the app-level resource dictionary, so that they can be consumed by multiple pages. Each style consumes theme resources with the [`DynamicResource`](xref:Microsoft.Maui.Control.Xaml.DynamicResourceExtension) markup extension.
 
 These styles are then consumed by pages:
 
@@ -171,9 +171,9 @@ These styles are then consumed by pages:
 </ContentPage>
 ```
 
-When a theme resource is consumed directly, it should be consumed with the `DynamicResource` markup extension. However, when a style that uses the `DynamicResource` markup extension is consumed, it should be consumed with the [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) markup extension.
+When a theme resource is consumed directly, it should be consumed with the [`DynamicResource`](xref:Microsoft.Maui.Control.Xaml.DynamicResourceExtension) markup extension. However, when a style that uses the [`DynamicResource`](xref:Microsoft.Maui.Control.Xaml.DynamicResourceExtension) markup extension is consumed, it should be consumed with the [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) markup extension.
 
-For more information about styling, see [Style apps using XAML](~/user-interface/styles/xaml.md). For more information about the `DynamicResource` markup extension, see [Dynamic styles](~/user-interface/styles/xaml.md#dynamic-styles).
+For more information about styling, see [Style apps using XAML](~/user-interface/styles/xaml.md). For more information about the [`DynamicResource`](xref:Microsoft.Maui.Control.Xaml.DynamicResourceExtension) markup extension, see [Dynamic styles](~/user-interface/styles/xaml.md#dynamic-styles).
 
 ## Load a theme at runtime
 
@@ -182,7 +182,7 @@ When a theme is selected at runtime, an app should:
 1. Remove the current theme from the app. This is achieved by clearing the `MergedDictionaries` property of the app-level <xref:Microsoft.Maui.Controls.ResourceDictionary>.
 2. Load the selected theme. This is achieved by adding an instance of the selected theme to the `MergedDictionaries` property of the app-level <xref:Microsoft.Maui.Controls.ResourceDictionary>.
 
-Any <xref:Microsoft.Maui.Controls.VisualElement> objects that set properties with the `DynamicResource` markup extension will then apply the new theme values. This occurs because the `DynamicResource` markup extension maintains a link to dictionary keys. Therefore, when the values associated with keys are replaced, the changes are applied to the <xref:Microsoft.Maui.Controls.VisualElement> objects.
+Any <xref:Microsoft.Maui.Controls.VisualElement> objects that set properties with the [`DynamicResource`](xref:Microsoft.Maui.Control.Xaml.DynamicResourceExtension) markup extension will then apply the new theme values. This occurs because the [`DynamicResource`](xref:Microsoft.Maui.Control.Xaml.DynamicResourceExtension) markup extension maintains a link to dictionary keys. Therefore, when the values associated with keys are replaced, the changes are applied to the <xref:Microsoft.Maui.Controls.VisualElement> objects.
 
 In the sample application, a theme is selected via a modal page that contains a <xref:Microsoft.Maui.Controls.Picker>. The following code shows the `OnPickerSelectionChanged` method, which is executed when the selected theme changes:
 

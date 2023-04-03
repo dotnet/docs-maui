@@ -273,7 +273,7 @@ In this example, the `baseStyle` targets <xref:Microsoft.Maui.Controls.View> obj
 
 Styles do not respond to property changes, and remain unchanged for the duration of an app. For example, after assigning a <xref:Microsoft.Maui.Controls.Style> to a visual element, if one of the <xref:Microsoft.Maui.Controls.Setter> objects is modified, removed, or a new <xref:Microsoft.Maui.Controls.Setter> added, the changes won't be applied to the visual element. However, apps can respond to style changes dynamically at runtime by using dynamic resources.
 
-The `DynamicResource` markup extension is similar to the [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) markup extension in that both use a dictionary key to fetch a value from a <xref:Microsoft.Maui.Controls.ResourceDictionary>. However, while the [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) performs a single dictionary lookup, the `DynamicResource` maintains a link to the dictionary key. Therefore, if the dictionary entry associated with the key is replaced, the change is applied to the visual element. This enables runtime style changes to be made in an app.
+The [`DynamicResource`](xref:Microsoft.Maui.Control.Xaml.DynamicResourceExtension) markup extension is similar to the [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) markup extension in that both use a dictionary key to fetch a value from a <xref:Microsoft.Maui.Controls.ResourceDictionary>. However, while the [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) performs a single dictionary lookup, the [`DynamicResource`](xref:Microsoft.Maui.Control.Xaml.DynamicResourceExtension) maintains a link to the dictionary key. Therefore, if the dictionary entry associated with the key is replaced, the change is applied to the visual element. This enables runtime style changes to be made in an app.
 
 The following example shows *dynamic* styles:
 
@@ -303,7 +303,7 @@ The following example shows *dynamic* styles:
 </ContentPage>
 ```
 
-In this example, the <xref:Microsoft.Maui.Controls.SearchBar> object use the `DynamicResource` markup extension to set a <xref:Microsoft.Maui.Controls.Style> named `blueSearchBarStyle`. The <xref:Microsoft.Maui.Controls.SearchBar> can then have its <xref:Microsoft.Maui.Controls.Style> definition updated in code:
+In this example, the <xref:Microsoft.Maui.Controls.SearchBar> object use the [`DynamicResource`](xref:Microsoft.Maui.Control.Xaml.DynamicResourceExtension) markup extension to set a <xref:Microsoft.Maui.Controls.Style> named `blueSearchBarStyle`. The <xref:Microsoft.Maui.Controls.SearchBar> can then have its <xref:Microsoft.Maui.Controls.Style> definition updated in code:
 
 ```csharp
 Resources["blueSearchBarStyle"] = Resources["greenSearchBarStyle"];
@@ -349,7 +349,7 @@ The following example shows *dynamic* style inheritance:
 </ContentPage>
 ```
 
-In this example, the <xref:Microsoft.Maui.Controls.SearchBar> object uses the [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) markup extension to reference a <xref:Microsoft.Maui.Controls.Style> named `tealSearchBarStyle`. This <xref:Microsoft.Maui.Controls.Style> sets some additional properties and uses the `BaseResourceKey` property to reference `blueSearchBarStyle`. The `DynamicResource` markup extension is not required because `tealSearchBarStyle` will not change, except for the <xref:Microsoft.Maui.Controls.Style> it derives from. Therefore, `tealSearchBarStyle` maintains a link to `blueSearchBarStyle` and is updated when the base style changes.
+In this example, the <xref:Microsoft.Maui.Controls.SearchBar> object uses the [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) markup extension to reference a <xref:Microsoft.Maui.Controls.Style> named `tealSearchBarStyle`. This <xref:Microsoft.Maui.Controls.Style> sets some additional properties and uses the `BaseResourceKey` property to reference `blueSearchBarStyle`. The [`DynamicResource`](xref:Microsoft.Maui.Control.Xaml.DynamicResourceExtension) markup extension is not required because `tealSearchBarStyle` will not change, except for the <xref:Microsoft.Maui.Controls.Style> it derives from. Therefore, `tealSearchBarStyle` maintains a link to `blueSearchBarStyle` and is updated when the base style changes.
 
 The `blueSearchBarStyle` definition can be updated in code:
 

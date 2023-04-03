@@ -32,7 +32,7 @@ Any attribute value in curly braces is *always* a XAML markup extension. However
 In addition to the markup extensions discussed in this article, the following markup extensions are included in .NET MAUI and discussed in other articles:
 
 - [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) - reference objects from a resource dictionary. For more information, see [Resource dictionaries**](~/fundamentals/resource-dictionaries.md).
-- `DynamicResource` - respond to changes in objects in a resource dictionary. For more information, see [Dynamic styles**](~/user-interface/styles/xaml.md#dynamic-styles).
+- [`DynamicResource`](xref:Microsoft.Maui.Control.Xaml.DynamicResourceExtension) - respond to changes in objects in a resource dictionary. For more information, see [Dynamic styles**](~/user-interface/styles/xaml.md#dynamic-styles).
 - `Binding` - establish a link between properties of two objects. For more information, see [Data binding**](~/fundamentals/data-binding/index.md).
 - `TemplateBinding` - performs data binding from a control template. For more information, see [Control templates](~/fundamentals/controltemplate.md).
 - [`RelativeSource`](xref:Microsoft.Maui.Controls.Xaml.RelativeSourceExtension) - sets the binding source relative to the position of the binding target. For more information, see [Relative bindings](~/fundamentals/data-binding/relative-bindings.md).
