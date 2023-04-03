@@ -376,10 +376,10 @@ The following XAML shows a <xref:Microsoft.Maui.Controls.ControlTemplate> that c
 </ContentPage>
 ```
 
-In this example, the root element of the <xref:Microsoft.Maui.Controls.ControlTemplate> is a <xref:Microsoft.Maui.Controls.Border> object that defines `Checked` and `Unchecked` visual states. The <xref:Microsoft.Maui.Controls.Border> object uses a combination of <xref:Microsoft.Maui.Controls.Grid>, <xref:Microsoft.Maui.Controls.Shapes.Ellipse>, and `ContentPresenter` objects to define the visual structure of a <xref:Microsoft.Maui.Controls.RadioButton>. The example also includes an *implicit* style that will assign the `RadioButtonTemplate` to the <xref:Microsoft.Maui.Controls.ControlTemplate> property of any <xref:Microsoft.Maui.Controls.RadioButton> objects on the page.
+In this example, the root element of the <xref:Microsoft.Maui.Controls.ControlTemplate> is a <xref:Microsoft.Maui.Controls.Border> object that defines `Checked` and `Unchecked` visual states. The <xref:Microsoft.Maui.Controls.Border> object uses a combination of <xref:Microsoft.Maui.Controls.Grid>, <xref:Microsoft.Maui.Controls.Shapes.Ellipse>, and <xref:Microsoft.Maui.Controls.ContentPresenter> objects to define the visual structure of a <xref:Microsoft.Maui.Controls.RadioButton>. The example also includes an *implicit* style that will assign the `RadioButtonTemplate` to the <xref:Microsoft.Maui.Controls.ControlTemplate> property of any <xref:Microsoft.Maui.Controls.RadioButton> objects on the page.
 
 > [!NOTE]
-> The `ContentPresenter` object marks the location in the visual structure where <xref:Microsoft.Maui.Controls.RadioButton> content will be displayed.
+> The <xref:Microsoft.Maui.Controls.ContentPresenter> object marks the location in the visual structure where <xref:Microsoft.Maui.Controls.RadioButton> content will be displayed.
 
 The following XAML shows <xref:Microsoft.Maui.Controls.RadioButton> objects that consume the <xref:Microsoft.Maui.Controls.ControlTemplate> via the *implicit* style:
 
@@ -440,7 +440,7 @@ The following XAML shows <xref:Microsoft.Maui.Controls.RadioButton> objects that
 </StackLayout>
 ```
 
-In this example, the visual structure defined for each <xref:Microsoft.Maui.Controls.RadioButton> is replaced with the visual structure defined in the <xref:Microsoft.Maui.Controls.ControlTemplate>, and so at runtime the objects in the <xref:Microsoft.Maui.Controls.ControlTemplate> become part of the visual tree for each <xref:Microsoft.Maui.Controls.RadioButton>. In addition, the content for each <xref:Microsoft.Maui.Controls.RadioButton> is substituted into the `ContentPresenter` defined in the control template. This results in the following <xref:Microsoft.Maui.Controls.RadioButton> appearance:
+In this example, the visual structure defined for each <xref:Microsoft.Maui.Controls.RadioButton> is replaced with the visual structure defined in the <xref:Microsoft.Maui.Controls.ControlTemplate>, and so at runtime the objects in the <xref:Microsoft.Maui.Controls.ControlTemplate> become part of the visual tree for each <xref:Microsoft.Maui.Controls.RadioButton>. In addition, the content for each <xref:Microsoft.Maui.Controls.RadioButton> is substituted into the <xref:Microsoft.Maui.Controls.ContentPresenter> defined in the control template. This results in the following <xref:Microsoft.Maui.Controls.RadioButton> appearance:
 
 :::image type="content" source="media/radiobutton/radiobuttons-templated.png" alt-text="Screenshot of templated RadioButtons.":::
 

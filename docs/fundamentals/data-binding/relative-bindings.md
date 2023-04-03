@@ -8,16 +8,16 @@ ms.date: 01/19/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-databinding)
 
-.NET Multi-platform App UI (.NET MAUI) relative bindings provide the ability to set the binding source relative to the position of the binding target. They are created with the `RelativeSource` markup extension, and set as the `Source` property of a binding expression.
+.NET Multi-platform App UI (.NET MAUI) relative bindings provide the ability to set the binding source relative to the position of the binding target. They are created with the [`RelativeSource`](xref:Microsoft.Maui.Controls.Xaml.RelativeSourceExtension) markup extension, and set as the `Source` property of a binding expression.
 
-The `RelativeSource` markup extension is supported by the `RelativeSourceExtension` class, which defines the following properties:
+The [`RelativeSource`](xref:Microsoft.Maui.Controls.Xaml.RelativeSourceExtension) markup extension is supported by the `RelativeSourceExtension` class, which defines the following properties:
 
 - `Mode`, of type `RelativeBindingSourceMode`, describes the location of the binding source relative to the position of the binding target.
 - `AncestorLevel`, of type `int`, an optional ancestor level to look for, when the `Mode` property is `FindAncestor`. An `AncestorLevel` of `n` skips `n-1` instances of the `AncestorType`.
 - `AncestorType`, of type `Type`, the type of ancestor to look for, when the `Mode` property is `FindAncestor`.
 
 > [!NOTE]
-> The XAML parser allows the `RelativeSourceExtension` class to be abbreviated as `RelativeSource`.
+> The XAML parser allows the `RelativeSourceExtension` class to be abbreviated as [`RelativeSource`](xref:Microsoft.Maui.Controls.Xaml.RelativeSourceExtension).
 
 The `Mode` property should be set to one of the `RelativeBindingSourceMode` enumeration members:
 

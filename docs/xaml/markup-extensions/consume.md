@@ -35,7 +35,7 @@ In addition to the markup extensions discussed in this article, the following ma
 - `DynamicResource` - respond to changes in objects in a resource dictionary. For more information, see [Dynamic styles**](~/user-interface/styles/xaml.md#dynamic-styles).
 - `Binding` - establish a link between properties of two objects. For more information, see [Data binding**](~/fundamentals/data-binding/index.md).
 - `TemplateBinding` - performs data binding from a control template. For more information, see [Control templates](~/fundamentals/controltemplate.md).
-- `RelativeSource` - sets the binding source relative to the position of the binding target. For more information, see [Relative bindings](~/fundamentals/data-binding/relative-bindings.md).
+- [`RelativeSource`](xref:Microsoft.Maui.Controls.Xaml.RelativeSourceExtension) - sets the binding source relative to the position of the binding target. For more information, see [Relative bindings](~/fundamentals/data-binding/relative-bindings.md).
 <!-- - `ConstraintExpression` - relates the position and size of a child in a `RelativeLayout` to its parent, or a sibling. For more information, see [RelativeLayout](~/user-interface/layouts/relativelayout.md).-->
 
 ## x:Static markup extension
@@ -319,8 +319,8 @@ The `OnPlatform` markup extension is supported by the `OnPlatformExtension` clas
 - `MacCatalyst` of type `object`, that you set to a value to be applied on Mac Catalyst.
 - `Tizen` of type `object`, that you set to a value to be applied on the Tizen platform.
 - `WinUI` of type `object`, that you set to a value to be applied on WinUI.
-- `Converter` of type `IValueConverter`, that can be set to an `IValueConverter` implementation.
-- `ConverterParameter` of type `object`, that can be set to a value to pass to the `IValueConverter` implementation.
+- `Converter` of type <xref:Microsoft.Maui.Controls.IValueConverter>, that can be set to an <xref:Microsoft.Maui.Controls.IValueConverter> implementation.
+- `ConverterParameter` of type `object`, that can be set to a value to pass to the <xref:Microsoft.Maui.Controls.IValueConverter> implementation.
 
 > [!NOTE]
 > The XAML parser allows the `OnPlatformExtension` class to be abbreviated as `OnPlatform`.
@@ -328,7 +328,7 @@ The `OnPlatform` markup extension is supported by the `OnPlatformExtension` clas
 The `Default` property is the content property of `OnPlatformExtension`. Therefore, for XAML markup expressions expressed with curly braces, you can eliminate the `Default=` part of the expression provided that it's the first argument. If the `Default` property isn't set, it will default to the `BindableProperty.DefaultValue` property value, provided that the markup extension is targeting a <xref:Microsoft.Maui.Controls.BindableProperty>.
 
 > [!IMPORTANT]
-> The XAML parser expects that values of the correct type will be provided to properties consuming the `OnPlatform` markup extension. If type conversion is necessary, the `OnPlatform` markup extension will attempt to perform it using the default converters provided by .NET MAUI. However, there are some type conversions that can't be performed by the default converters and in these cases the `Converter` property should be set to an `IValueConverter` implementation.
+> The XAML parser expects that values of the correct type will be provided to properties consuming the `OnPlatform` markup extension. If type conversion is necessary, the `OnPlatform` markup extension will attempt to perform it using the default converters provided by .NET MAUI. However, there are some type conversions that can't be performed by the default converters and in these cases the `Converter` property should be set to an <xref:Microsoft.Maui.Controls.IValueConverter> implementation.
 
 The **OnPlatform Demo** page shows how to use the `OnPlatform` markup extension:
 
@@ -351,8 +351,8 @@ The `OnIdiom` markup extension enables you to customize UI appearance based on t
 - `Desktop` of type `object`, that you set to a value to be applied on desktop platforms.
 - `TV` of type `object`, that you set to a value to be applied on TV platforms.
 - `Watch` of type `object`, that you set to a value to be applied on Watch platforms.
-- `Converter` of type `IValueConverter`, that can be set to an `IValueConverter` implementation.
-- `ConverterParameter` of type `object`, that can be set to a value to pass to the `IValueConverter` implementation.
+- `Converter` of type <xref:Microsoft.Maui.Controls.IValueConverter>, that can be set to an <xref:Microsoft.Maui.Controls.IValueConverter> implementation.
+- `ConverterParameter` of type `object`, that can be set to a value to pass to the <xref:Microsoft.Maui.Controls.IValueConverter> implementation.
 
 > [!NOTE]
 > The XAML parser allows the `OnIdiomExtension` class to be abbreviated as `OnIdiom`.
@@ -360,7 +360,7 @@ The `OnIdiom` markup extension enables you to customize UI appearance based on t
 The `Default` property is the content property of `OnIdiomExtension`. Therefore, for XAML markup expressions expressed with curly braces, you can eliminate the `Default=` part of the expression provided that it's the first argument.
 
 > [!IMPORTANT]
-> The XAML parser expects that values of the correct type will be provided to properties consuming the `OnIdiom` markup extension. If type conversion is necessary, the `OnIdiom` markup extension will attempt to perform it using the default converters provided by .NET MAUI. However, there are some type conversions that can't be performed by the default converters and in these cases the `Converter` property should be set to an `IValueConverter` implementation.
+> The XAML parser expects that values of the correct type will be provided to properties consuming the `OnIdiom` markup extension. If type conversion is necessary, the `OnIdiom` markup extension will attempt to perform it using the default converters provided by .NET MAUI. However, there are some type conversions that can't be performed by the default converters and in these cases the `Converter` property should be set to an <xref:Microsoft.Maui.Controls.IValueConverter> implementation.
 
 The following XAML example shows how to use the `OnIdiom` markup extension:
 
