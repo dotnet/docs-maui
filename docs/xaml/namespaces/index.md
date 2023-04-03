@@ -31,7 +31,7 @@ The following table outlines the `x` constructs supported by .NET MAUI:
 |`x:DataType`|Specifies the type of the object that the XAML element, and it's children, will bind to.|
 |`x:FactoryMethod`|Specifies a factory method that can be used to initialize an object.|
 |`x:FieldModifier`|Specifies the access level for generated fields for named XAML elements.|
-|`x:Key`|Specifies a unique user-defined key for each resource in a <xref:Microsoft.Maui.Controls.ResourceDictionary>. The key's value is used to retrieve the XAML resource, and is typically used as the argument for the `StaticResource` markup extension.|
+|`x:Key`|Specifies a unique user-defined key for each resource in a <xref:Microsoft.Maui.Controls.ResourceDictionary>. The key's value is used to retrieve the XAML resource, and is typically used as the argument for the [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) markup extension.|
 |`x:Name`|Specifies a runtime object name for the XAML element. Setting `x:Name` is similar to declaring a variable in code.|
 |`x:TypeArguments`|Specifies the generic type arguments to the constructor of a generic type.|
 

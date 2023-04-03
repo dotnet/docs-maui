@@ -45,7 +45,7 @@ The `Person` class defines `Name`, `Age`, and `Location` properties, which can b
 </ContentPage>
 ```
 
-In this example, items are added to the <xref:Microsoft.Maui.Controls.CollectionView> by initializing its `ItemsSource` property from an array of `Person` objects. <xref:Microsoft.Maui.Controls.CollectionView> calls `ToString` when displaying the objects in the collection. However, because there is no `Person.ToString` override, `ToString` returns the type name of each object:
+In this example, items are added to the <xref:Microsoft.Maui.Controls.CollectionView> by initializing its <xref:Microsoft.Maui.Controls.ItemsView.ItemsSource> property from an array of `Person` objects. <xref:Microsoft.Maui.Controls.CollectionView> calls `ToString` when displaying the objects in the collection. However, because there is no `Person.ToString` override, `ToString` returns the type name of each object:
 
 :::image type="content" source="media/datatemplate/no-data-template.png" alt-text="Screenshot of a CollectionView without a data template.":::
 
@@ -70,7 +70,7 @@ The `Person.ToString` override could return a formatted string consisting of the
 
 ## Create a DataTemplate
 
-A <xref:Microsoft.Maui.Controls.DataTemplate> is used to specify the appearance of data, and typically uses data binding to display data. A common usage scenario for data templates is when displaying data from a collection of objects in a control such as a <xref:Microsoft.Maui.Controls.CollectionView> or <xref:Microsoft.Maui.Controls.CarouselView>. For example, when a <xref:Microsoft.Maui.Controls.CollectionView> is bound to a collection of `Person` objects, the `CollectionView.ItemTemplate` property can be set to a <xref:Microsoft.Maui.Controls.DataTemplate> that defines the appearance of each `Person` object in the <xref:Microsoft.Maui.Controls.CollectionView>. The <xref:Microsoft.Maui.Controls.DataTemplate> will contain objects that bind to property values of each `Person` object. For more information about data binding, see [Data binding](~/fundamentals/data-binding/index.md).
+A <xref:Microsoft.Maui.Controls.DataTemplate> is used to specify the appearance of data, and typically uses data binding to display data. A common usage scenario for data templates is when displaying data from a collection of objects in a control such as a <xref:Microsoft.Maui.Controls.CollectionView> or <xref:Microsoft.Maui.Controls.CarouselView>. For example, when a <xref:Microsoft.Maui.Controls.CollectionView> is bound to a collection of `Person` objects, the <xref:Microsoft.Maui.Controls.ItemsView.ItemTemplate> property can be set to a <xref:Microsoft.Maui.Controls.DataTemplate> that defines the appearance of each `Person` object in the <xref:Microsoft.Maui.Controls.CollectionView>. The <xref:Microsoft.Maui.Controls.DataTemplate> will contain objects that bind to property values of each `Person` object. For more information about data binding, see [Data binding](~/fundamentals/data-binding/index.md).
 
 A <xref:Microsoft.Maui.Controls.DataTemplate> that's defined inline in a control is known as an *inline template*. Alternatively, data templates can be defined as a control-level, page-level, or app-level resource. Choosing where to define a <xref:Microsoft.Maui.Controls.DataTemplate> impacts where it can be used:
 
@@ -85,7 +85,7 @@ A <xref:Microsoft.Maui.Controls.DataTemplate> can be created inline, with a type
 
 ### Create an inline DataTemplate
 
-An inline data template, which is one that's defined inline in a control, should be used if there's no need to reuse the data template elsewhere. The objects specified in the <xref:Microsoft.Maui.Controls.DataTemplate> define the appearance of each item of data. A control such as <xref:Microsoft.Maui.Controls.CollectionView> can then set its `ItemTemplate` property to the inline <xref:Microsoft.Maui.Controls.DataTemplate>:
+An inline data template, which is one that's defined inline in a control, should be used if there's no need to reuse the data template elsewhere. The objects specified in the <xref:Microsoft.Maui.Controls.DataTemplate> define the appearance of each item of data. A control such as <xref:Microsoft.Maui.Controls.CollectionView> can then set its <xref:Microsoft.Maui.Controls.ItemsView.ItemTemplate> property to the inline <xref:Microsoft.Maui.Controls.DataTemplate>:
 
 ```xaml
 <CollectionView>
@@ -118,7 +118,7 @@ In a <xref:Microsoft.Maui.Controls.CollectionView>, the child of an inline <xref
 
 ### Create a DataTemplate with a type
 
-A <xref:Microsoft.Maui.Controls.DataTemplate> can be created with a custom view type. The advantage of this approach is that the appearance defined by the view can be reused by multiple data templates throughout an app. A control such as <xref:Microsoft.Maui.Controls.CollectionView> can then set its `ItemTemplate` property to the <xref:Microsoft.Maui.Controls.DataTemplate>:
+A <xref:Microsoft.Maui.Controls.DataTemplate> can be created with a custom view type. The advantage of this approach is that the appearance defined by the view can be reused by multiple data templates throughout an app. A control such as <xref:Microsoft.Maui.Controls.CollectionView> can then set its <xref:Microsoft.Maui.Controls.ItemsView.ItemTemplate> property to the <xref:Microsoft.Maui.Controls.DataTemplate>:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -143,7 +143,7 @@ A <xref:Microsoft.Maui.Controls.DataTemplate> can be created with a custom view 
 </ContentPage>
 ```
 
-In this example, the `CollectionView.ItemTemplate` property is set to a <xref:Microsoft.Maui.Controls.DataTemplate> that's created from a custom type that defines the view appearance. The custom type must derive from <xref:Microsoft.Maui.Controls.ContentView>:
+In this example, the <xref:Microsoft.Maui.Controls.ItemsView.ItemTemplate> property is set to a <xref:Microsoft.Maui.Controls.DataTemplate> that's created from a custom type that defines the view appearance. The custom type must derive from <xref:Microsoft.Maui.Controls.ContentView>:
 
 ```xaml
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -168,7 +168,7 @@ For more information about creating custom views, see [ContentView](~/user-inter
 
 ### Create a DataTemplate as a resource
 
-Data templates can be created as reusable objects in a <xref:Microsoft.Maui.Controls.ResourceDictionary>. This is achieved by giving each <xref:Microsoft.Maui.Controls.DataTemplate> a unique `x:Key` value, which provides it with a descriptive key in the <xref:Microsoft.Maui.Controls.ResourceDictionary>. A control such as <xref:Microsoft.Maui.Controls.CollectionView> can then set its `ItemTemplate` property to the <xref:Microsoft.Maui.Controls.DataTemplate>:
+Data templates can be created as reusable objects in a <xref:Microsoft.Maui.Controls.ResourceDictionary>. This is achieved by giving each <xref:Microsoft.Maui.Controls.DataTemplate> a unique `x:Key` value, which provides it with a descriptive key in the <xref:Microsoft.Maui.Controls.ResourceDictionary>. A control such as <xref:Microsoft.Maui.Controls.CollectionView> can then set its <xref:Microsoft.Maui.Controls.ItemsView.ItemTemplate> property to the <xref:Microsoft.Maui.Controls.DataTemplate>:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -198,13 +198,13 @@ Data templates can be created as reusable objects in a <xref:Microsoft.Maui.Cont
 </ContentPage>
 ```
 
-In this example, the <xref:Microsoft.Maui.Controls.DataTemplate> is assigned to the `CollectionView.ItemTemplate` property by using the `StaticResource` markup extension. While the <xref:Microsoft.Maui.Controls.DataTemplate> is defined in the page's <xref:Microsoft.Maui.Controls.ResourceDictionary>, it could also be defined at the control-level or app-level.
+In this example, the <xref:Microsoft.Maui.Controls.DataTemplate> is assigned to the <xref:Microsoft.Maui.Controls.ItemsView.ItemTemplate> property by using the [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) markup extension. While the <xref:Microsoft.Maui.Controls.DataTemplate> is defined in the page's <xref:Microsoft.Maui.Controls.ResourceDictionary>, it could also be defined at the control-level or app-level.
 
 ## Create a DataTemplateSelector
 
 A <xref:Microsoft.Maui.Controls.DataTemplateSelector> can be used to choose a <xref:Microsoft.Maui.Controls.DataTemplate> at runtime based on the value of a data-bound property. This enables multiple data templates to be applied to the same type of object, to choose their appearance at runtime. A data template selector enables scenarios such as a <xref:Microsoft.Maui.Controls.CollectionView> or <xref:Microsoft.Maui.Controls.CarouselView> binding to a collection of objects where the appearance of each object can be chosen at runtime by the data template selector returning a specific <xref:Microsoft.Maui.Controls.DataTemplate>.
 
-A data template selector is implemented by creating a class that inherits from <xref:Microsoft.Maui.Controls.DataTemplateSelector>. The `OnSelectTemplate` method should then be overridden to return a specific <xref:Microsoft.Maui.Controls.DataTemplate>:
+A data template selector is implemented by creating a class that inherits from <xref:Microsoft.Maui.Controls.DataTemplateSelector>. The <xref:Microsoft.Maui.Controls.DataTemplateSelector.OnSelectTemplate%2A> method should then be overridden to return a specific <xref:Microsoft.Maui.Controls.DataTemplate>:
 
 ```csharp
 public class PersonDataTemplateSelector : DataTemplateSelector
@@ -219,7 +219,7 @@ public class PersonDataTemplateSelector : DataTemplateSelector
 }
 ```
 
-In this example, the `OnSelectTemplate` method returns a specific data template based on the value of the `DateOfBirth` property. The returned data template is defined by the `ValidTemplate` or `InvalidTemplate` property, which are set when consuming the data template selector.
+In this example, the <xref:Microsoft.Maui.Controls.DataTemplateSelector.OnSelectTemplate%2A> method returns a specific data template based on the value of the `DateOfBirth` property. The returned data template is defined by the `ValidTemplate` or `InvalidTemplate` property, which are set when consuming the data template selector.
 
 ### Limitations
 
@@ -231,7 +231,7 @@ In this example, the `OnSelectTemplate` method returns a specific data template 
 
 ### Consume a DataTemplateSelector
 
-A data template selector can be consumed by creating it as a resource and assigning its instance to .NET MAUI control properties of type <xref:Microsoft.Maui.Controls.DataTemplate>, such as `CollectionView.ItemTemplate`.
+A data template selector can be consumed by creating it as a resource and assigning its instance to .NET MAUI control properties of type <xref:Microsoft.Maui.Controls.DataTemplate>, such as <xref:Microsoft.Maui.Controls.ItemsView.ItemTemplate>.
 
 The following example shows declaring `PersonDataTemplateSelector` as a page-level resource:
 
@@ -259,9 +259,9 @@ The following example shows declaring `PersonDataTemplateSelector` as a page-lev
 </ContentPage>
 ```
 
-In this example, the page-level <xref:Microsoft.Maui.Controls.ResourceDictionary> defines two <xref:Microsoft.Maui.Controls.DataTemplate> objects and a `PersonDataTemplateSelector` object. The `PersonDataTemplateSelector` object sets its `ValidTemplate` and `InvalidTemplate` properties to the <xref:Microsoft.Maui.Controls.DataTemplate> objects using the `StaticResource` markup extension. While the resources are defined in the page's <xref:Microsoft.Maui.Controls.ResourceDictionary>, they could also be defined at the control-level or app-level.
+In this example, the page-level <xref:Microsoft.Maui.Controls.ResourceDictionary> defines two <xref:Microsoft.Maui.Controls.DataTemplate> objects and a `PersonDataTemplateSelector` object. The `PersonDataTemplateSelector` object sets its `ValidTemplate` and `InvalidTemplate` properties to the <xref:Microsoft.Maui.Controls.DataTemplate> objects using the [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) markup extension. While the resources are defined in the page's <xref:Microsoft.Maui.Controls.ResourceDictionary>, they could also be defined at the control-level or app-level.
 
-The `PersonDataTemplateSelector` object can be consumed by assigning it to the `CollectionView.ItemTemplate` property:
+The `PersonDataTemplateSelector` object can be consumed by assigning it to the <xref:Microsoft.Maui.Controls.ItemsView.ItemTemplate> property:
 
 ```xaml
 <CollectionView x:Name="collectionView"

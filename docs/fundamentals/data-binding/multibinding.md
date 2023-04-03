@@ -114,7 +114,7 @@ The `ConvertBack` method returns an array of values of type `object[]` that have
 
 ## Consume a IMultiValueConverter
 
-A `IMultiValueConverter` is typically consumed by instantiating it in a resource dictionary, and then referencing it using the `StaticResource` markup extension to set the `MultiBinding.Converter` property:
+A `IMultiValueConverter` is typically consumed by instantiating it in a resource dictionary, and then referencing it using the [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) markup extension to set the `MultiBinding.Converter` property:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"

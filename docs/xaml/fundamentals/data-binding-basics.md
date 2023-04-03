@@ -19,7 +19,7 @@ Data bindings connect properties of two objects, called the *source* and the *ta
 
 The target property must be a bindable property, which means that the target object must derive from <xref:Microsoft.Maui.Controls.BindableObject>. A property of <xref:Microsoft.Maui.Controls.Label>, such as `Text`, is associated with the bindable property `TextProperty`.
 
-In XAML, you must also perform the same two steps that are required in code, except that the `Binding` markup extension takes the place of the `SetBinding` call and the `Binding` class. However, when you define data bindings in XAML, there are multiple ways to set the `BindingContext` of the target object. Sometimes it’s set from the code-behind file, sometimes using a `StaticResource` or `x:Static` markup extension, and sometimes as the content of `BindingContext` property-element tags.
+In XAML, you must also perform the same two steps that are required in code, except that the `Binding` markup extension takes the place of the `SetBinding` call and the `Binding` class. However, when you define data bindings in XAML, there are multiple ways to set the `BindingContext` of the target object. Sometimes it’s set from the code-behind file, sometimes using a [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) or `x:Static` markup extension, and sometimes as the content of `BindingContext` property-element tags.
 
 ## View-to-view bindings
 

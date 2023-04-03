@@ -8,7 +8,7 @@ ms.date: 02/25/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-theming)
 
-.NET Multi-platform App UI (.NET MAUI) apps can respond to style changes dynamically at runtime by using the `DynamicResource` markup extension. This markup extension is similar to the `StaticResource` markup extension, in that both use a dictionary key to fetch a value from a <xref:Microsoft.Maui.Controls.ResourceDictionary>. However, while the `StaticResource` markup extension performs a single dictionary lookup, the `DynamicResource` markup extension maintains a link to the dictionary key. Therefore, if the value associated with the key is replaced, the change is applied to the <xref:Microsoft.Maui.Controls.VisualElement>. This enables runtime theming to be implemented in .NET MAUI apps.
+.NET Multi-platform App UI (.NET MAUI) apps can respond to style changes dynamically at runtime by using the `DynamicResource` markup extension. This markup extension is similar to the [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) markup extension, in that both use a dictionary key to fetch a value from a <xref:Microsoft.Maui.Controls.ResourceDictionary>. However, while the [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) markup extension performs a single dictionary lookup, the `DynamicResource` markup extension maintains a link to the dictionary key. Therefore, if the value associated with the key is replaced, the change is applied to the <xref:Microsoft.Maui.Controls.VisualElement>. This enables runtime theming to be implemented in .NET MAUI apps.
 
 The process for implementing runtime theming in a .NET MAUI app is as follows:
 
@@ -18,7 +18,7 @@ The process for implementing runtime theming in a .NET MAUI app is as follows:
 1. Add code to load a theme at runtime. For more information, see [Load a theme at runtime](#load-a-theme-at-runtime).
 
 > [!IMPORTANT]
-> Use the `StaticResource` markup extension if you don't need to change the app theme at runtime.
+> Use the [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) markup extension if you don't need to change the app theme at runtime.
 
 The following screenshot shows themed pages, with the iOS app using a light theme and the Android app using a dark theme:
 
@@ -171,7 +171,7 @@ These styles are then consumed by pages:
 </ContentPage>
 ```
 
-When a theme resource is consumed directly, it should be consumed with the `DynamicResource` markup extension. However, when a style that uses the `DynamicResource` markup extension is consumed, it should be consumed with the `StaticResource` markup extension.
+When a theme resource is consumed directly, it should be consumed with the `DynamicResource` markup extension. However, when a style that uses the `DynamicResource` markup extension is consumed, it should be consumed with the [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) markup extension.
 
 For more information about styling, see [Style apps using XAML](~/user-interface/styles/xaml.md). For more information about the `DynamicResource` markup extension, see [Dynamic styles](~/user-interface/styles/xaml.md#dynamic-styles).
 
