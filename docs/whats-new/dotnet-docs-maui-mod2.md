@@ -6,7 +6,7 @@ ms.date: 03/01/2023
 
 # .NET Multi-platform App UI (.NET MAUI) docs: What's new for February 2023
 
-Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs from February 2023. This article lists some of the major changes to docs during this period.
+Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for February 2023. This article lists some of the major changes to docs during this period.
 
 ## iOS
 
