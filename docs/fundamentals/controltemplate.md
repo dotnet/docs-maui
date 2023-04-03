@@ -39,11 +39,11 @@ public class CardView : ContentView
 
 The `CardView` class, which derives from the <xref:Microsoft.Maui.Controls.ContentView> class, represents a custom control that displays data in a card-like layout. The class contains properties, which are backed by bindable properties, for the data it displays. However, the `CardView` class does not define any UI. Instead, the UI will be defined with a control template. For more information about creating <xref:Microsoft.Maui.Controls.ContentView> derived custom controls, see [ContentView](~/user-interface/controls/contentview.md).
 
-A control template is created with the `ControlTemplate` type. When you create a `ControlTemplate`, you combine <xref:Microsoft.Maui.Controls.View> objects to build the UI for a custom control, or page. A `ControlTemplate` must have only one <xref:Microsoft.Maui.Controls.View> as its root element. However, the root element usually contains other <xref:Microsoft.Maui.Controls.View> objects. The combination of objects makes up the control's visual structure.
+A control template is created with the <xref:Microsoft.Maui.Controls.ControlTemplate> type. When you create a <xref:Microsoft.Maui.Controls.ControlTemplate>, you combine <xref:Microsoft.Maui.Controls.View> objects to build the UI for a custom control, or page. A <xref:Microsoft.Maui.Controls.ControlTemplate> must have only one <xref:Microsoft.Maui.Controls.View> as its root element. However, the root element usually contains other <xref:Microsoft.Maui.Controls.View> objects. The combination of objects makes up the control's visual structure.
 
-While a `ControlTemplate` can be defined inline, the typical approach to declaring a `ControlTemplate` is as a resource in a resource dictionary. Because control templates are resources, they obey the same scoping rules that apply to all resources. For example, if you declare a control template in your app-level resource dictionary, the template can be used anywhere in your app. If you define the template in a page, only that page can use the control template. For more information about resources, see [Resource dictionaries](~/fundamentals/resource-dictionaries.md).
+While a <xref:Microsoft.Maui.Controls.ControlTemplate> can be defined inline, the typical approach to declaring a <xref:Microsoft.Maui.Controls.ControlTemplate> is as a resource in a resource dictionary. Because control templates are resources, they obey the same scoping rules that apply to all resources. For example, if you declare a control template in your app-level resource dictionary, the template can be used anywhere in your app. If you define the template in a page, only that page can use the control template. For more information about resources, see [Resource dictionaries](~/fundamentals/resource-dictionaries.md).
 
-The following XAML example shows a `ControlTemplate` for `CardView` objects:
+The following XAML example shows a <xref:Microsoft.Maui.Controls.ControlTemplate> for `CardView` objects:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -108,13 +108,13 @@ The following XAML example shows a `ControlTemplate` for `CardView` objects:
 </ContentPage>
 ```
 
-When a `ControlTemplate` is declared as a resource, it must have a key specified with the `x:Key` attribute so that it can be identified in the resource dictionary. In this example, the root element of the `CardViewControlTemplate` is a <xref:Microsoft.Maui.Controls.Frame> object. The <xref:Microsoft.Maui.Controls.Frame> object uses the `RelativeSource` markup extension to set its `BindingContext` to the runtime object instance to which the template will be applied, which is known as the *templated parent*. The <xref:Microsoft.Maui.Controls.Frame> object uses a combination of <xref:Microsoft.Maui.Controls.Grid>, <xref:Microsoft.Maui.Controls.Frame>, <xref:Microsoft.Maui.Controls.Image>, <xref:Microsoft.Maui.Controls.Label>, and <xref:Microsoft.Maui.Controls.BoxView> objects to define the visual structure of a `CardView` object. The binding expressions of these objects resolve against `CardView` properties, due to inheriting the `BindingContext` from the root <xref:Microsoft.Maui.Controls.Frame> element. For more information about the `RelativeSource` markup extension, see [Relative bindings](~/fundamentals/data-binding/relative-bindings.md).
+When a <xref:Microsoft.Maui.Controls.ControlTemplate> is declared as a resource, it must have a key specified with the `x:Key` attribute so that it can be identified in the resource dictionary. In this example, the root element of the `CardViewControlTemplate` is a <xref:Microsoft.Maui.Controls.Frame> object. The <xref:Microsoft.Maui.Controls.Frame> object uses the `RelativeSource` markup extension to set its `BindingContext` to the runtime object instance to which the template will be applied, which is known as the *templated parent*. The <xref:Microsoft.Maui.Controls.Frame> object uses a combination of <xref:Microsoft.Maui.Controls.Grid>, <xref:Microsoft.Maui.Controls.Frame>, <xref:Microsoft.Maui.Controls.Image>, <xref:Microsoft.Maui.Controls.Label>, and <xref:Microsoft.Maui.Controls.BoxView> objects to define the visual structure of a `CardView` object. The binding expressions of these objects resolve against `CardView` properties, due to inheriting the `BindingContext` from the root <xref:Microsoft.Maui.Controls.Frame> element. For more information about the `RelativeSource` markup extension, see [Relative bindings](~/fundamentals/data-binding/relative-bindings.md).
 
 ## Consume a ControlTemplate
 
-A `ControlTemplate` can be applied to a <xref:Microsoft.Maui.Controls.ContentView> derived custom control by setting its `ControlTemplate` property to the control template object. Similarly, a `ControlTemplate` can be applied to a <xref:Microsoft.Maui.Controls.ContentPage> derived page by setting its `ControlTemplate` property to the control template object. At runtime, when a `ControlTemplate` is applied, all of the controls that are defined in the `ControlTemplate` are added to the visual tree of the templated custom control, or templated page.
+A <xref:Microsoft.Maui.Controls.ControlTemplate> can be applied to a <xref:Microsoft.Maui.Controls.ContentView> derived custom control by setting its <xref:Microsoft.Maui.Controls.ControlTemplate> property to the control template object. Similarly, a <xref:Microsoft.Maui.Controls.ControlTemplate> can be applied to a <xref:Microsoft.Maui.Controls.ContentPage> derived page by setting its <xref:Microsoft.Maui.Controls.ControlTemplate> property to the control template object. At runtime, when a <xref:Microsoft.Maui.Controls.ControlTemplate> is applied, all of the controls that are defined in the <xref:Microsoft.Maui.Controls.ControlTemplate> are added to the visual tree of the templated custom control, or templated page.
 
-The following example shows the `CardViewControlTemplate` being assigned to the `ControlTemplate` property of each `CardView` object:
+The following example shows the `CardViewControlTemplate` being assigned to the <xref:Microsoft.Maui.Controls.ControlTemplate> property of each `CardView` object:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -145,11 +145,11 @@ The following screenshot shows the `CardViewControlTemplate` applied to the thre
 :::image type="content" source="media/controltemplate/relativesource-controltemplate.png" alt-text="Screenshot of two templated CardView objects.":::
 
 > [!IMPORTANT]
-> The point in time that a `ControlTemplate` is applied to a control instance can be detected by overriding the `OnApplyTemplate` method in the templated custom control, or templated page. For more information, see [Get a named element from a template](#get-a-named-element-from-a-template).
+> The point in time that a <xref:Microsoft.Maui.Controls.ControlTemplate> is applied to a control instance can be detected by overriding the `OnApplyTemplate` method in the templated custom control, or templated page. For more information, see [Get a named element from a template](#get-a-named-element-from-a-template).
 
 ## Pass parameters with TemplateBinding
 
-The `TemplateBinding` markup extension binds a property of an element that is in a `ControlTemplate` to a public property that is defined by the templated custom control or templated page. When you use a `TemplateBinding`, you enable properties on the control to act as parameters to the template. Therefore, when a property on a templated custom control or templated page is set, that value is passed onto the element that has the `TemplateBinding` on it.
+The `TemplateBinding` markup extension binds a property of an element that is in a <xref:Microsoft.Maui.Controls.ControlTemplate> to a public property that is defined by the templated custom control or templated page. When you use a `TemplateBinding`, you enable properties on the control to act as parameters to the template. Therefore, when a property on a templated custom control or templated page is set, that value is passed onto the element that has the `TemplateBinding` on it.
 
 > [!IMPORTANT]
 > The `TemplateBinding` markup expression enables the `RelativeSource` binding from the previous control template to be removed, and replaces the `Binding` expressions.
@@ -165,9 +165,9 @@ The `TemplateBinding` markup extension defines the following properties:
 The `ContentProperty` for the `TemplateBinding` markup extension is `Path`. Therefore, the "Path=" part of the markup extension can be omitted if the path is the first item in the `TemplateBinding` expression. For more information about using these properties in a binding expression, see [Data binding](~/fundamentals/data-binding/index.md).
 
 > [!WARNING]
-> The `TemplateBinding` markup extension should only be used within a `ControlTemplate`. However, attempting to use a `TemplateBinding` expression outside of a `ControlTemplate` will not result in a build error or an exception being thrown.
+> The `TemplateBinding` markup extension should only be used within a <xref:Microsoft.Maui.Controls.ControlTemplate>. However, attempting to use a `TemplateBinding` expression outside of a <xref:Microsoft.Maui.Controls.ControlTemplate> will not result in a build error or an exception being thrown.
 
-The following XAML example shows a `ControlTemplate` for `CardView` objects, that uses the `TemplateBinding` markup extension:
+The following XAML example shows a <xref:Microsoft.Maui.Controls.ControlTemplate> for `CardView` objects, that uses the `TemplateBinding` markup extension:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -240,7 +240,7 @@ In this example, the `TemplateBinding` markup extension resolves binding express
 
 ## Apply a ControlTemplate with a style
 
-Control templates can also be applied with styles. This is achieved by creating an *implicit* or *explicit* style that consumes the `ControlTemplate`.
+Control templates can also be applied with styles. This is achieved by creating an *implicit* or *explicit* style that consumes the <xref:Microsoft.Maui.Controls.ControlTemplate>.
 
 The following XAML example shows an *implicit* style that consumes the `CardViewControlTemplate`:
 
@@ -274,13 +274,13 @@ The following XAML example shows an *implicit* style that consumes the `CardView
 </ContentPage>
 ```
 
-In this example, the *implicit* <xref:Microsoft.Maui.Controls.Style> is automatically applied to each `CardView` object, and sets the `ControlTemplate` property of each `CardView` to `CardViewControlTemplate`.
+In this example, the *implicit* <xref:Microsoft.Maui.Controls.Style> is automatically applied to each `CardView` object, and sets the <xref:Microsoft.Maui.Controls.ControlTemplate> property of each `CardView` to `CardViewControlTemplate`.
 
 For more information about styles, see [Styles](~/user-interface/styles/xaml.md).
 
 ## Redefine a control’s UI
 
-When a `ControlTemplate` is instantiated and assigned to the `ControlTemplate` property of a <xref:Microsoft.Maui.Controls.ContentView> derived custom control, or a <xref:Microsoft.Maui.Controls.ContentPage> derived page, the visual structure defined for the custom control or page is replaced with the visual structure defined in the `ControlTemplate`.
+When a <xref:Microsoft.Maui.Controls.ControlTemplate> is instantiated and assigned to the <xref:Microsoft.Maui.Controls.ControlTemplate> property of a <xref:Microsoft.Maui.Controls.ContentView> derived custom control, or a <xref:Microsoft.Maui.Controls.ContentPage> derived page, the visual structure defined for the custom control or page is replaced with the visual structure defined in the <xref:Microsoft.Maui.Controls.ControlTemplate>.
 
 For example, the `CardViewUI` custom control defines its user interface using the following XAML:
 
@@ -343,7 +343,7 @@ For example, the `CardViewUI` custom control defines its user interface using th
 </ContentView>
 ```
 
-However, the controls that comprise this UI can be replaced by defining a new visual structure in a `ControlTemplate`, and assigning it to the `ControlTemplate` property of a `CardViewUI` object:
+However, the controls that comprise this UI can be replaced by defining a new visual structure in a <xref:Microsoft.Maui.Controls.ControlTemplate>, and assigning it to the <xref:Microsoft.Maui.Controls.ControlTemplate> property of a `CardViewUI` object:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -391,13 +391,13 @@ However, the controls that comprise this UI can be replaced by defining a new vi
 </ContentPage>
 ```
 
-In this example, the visual structure of the `CardViewUI` object is redefined in a `ControlTemplate` that provides a more compact visual structure that's suitable for a condensed list:
+In this example, the visual structure of the `CardViewUI` object is redefined in a <xref:Microsoft.Maui.Controls.ControlTemplate> that provides a more compact visual structure that's suitable for a condensed list:
 
 :::image type="content" source="media/controltemplate/redefine-controltemplate.png" alt-text="Screenshot of templated CardViewUI objects.":::
 
 ## Substitute content into a ContentPresenter
 
-A `ContentPresenter` can be placed in a control template to mark where content to be displayed by the templated custom control or templated page will appear. The custom control or page that consumes the control template will then define content to be displayed by the `ContentPresenter`. The following diagram illustrates a `ControlTemplate` for a page that contains a number of controls, including a `ContentPresenter` marked by a blue rectangle:
+A `ContentPresenter` can be placed in a control template to mark where content to be displayed by the templated custom control or templated page will appear. The custom control or page that consumes the control template will then define content to be displayed by the `ContentPresenter`. The following diagram illustrates a <xref:Microsoft.Maui.Controls.ControlTemplate> for a page that contains a number of controls, including a `ContentPresenter` marked by a blue rectangle:
 
 :::image type="content" source="media/controltemplate/controltemplate.png" alt-text="Control template for a ContentPage." border="false":::
 
@@ -442,7 +442,7 @@ The following XAML shows a control template named `TealTemplate` that contains a
 </ControlTemplate>
 ```
 
-The following example shows `TealTemplate` assigned to the `ControlTemplate` property of a <xref:Microsoft.Maui.Controls.ContentPage> derived page:
+The following example shows `TealTemplate` assigned to the <xref:Microsoft.Maui.Controls.ControlTemplate> property of a <xref:Microsoft.Maui.Controls.ContentPage> derived page:
 
 ```xaml
 <controls:HeaderFooterPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -466,7 +466,7 @@ At runtime, when `TealTemplate` is applied to the page, the page content is subs
 
 ## Get a named element from a template
 
-Named elements within a control template can be retrieved from the templated custom control or templated page. This can be achieved with the `GetTemplateChild` method, which returns the named element in the instantiated `ControlTemplate` visual tree, if found. Otherwise, it returns `null`.
+Named elements within a control template can be retrieved from the templated custom control or templated page. This can be achieved with the `GetTemplateChild` method, which returns the named element in the instantiated <xref:Microsoft.Maui.Controls.ControlTemplate> visual tree, if found. Otherwise, it returns `null`.
 
 After a control template has been instantiated, the template's `OnApplyTemplate` method is called. The `GetTemplateChild` method should therefore be called from a `OnApplyTemplate` override in the templated control or templated page.
 
@@ -516,13 +516,13 @@ public partial class AccessTemplateElementPage : HeaderFooterPage
 }
 ```
 
-In this example, the <xref:Microsoft.Maui.Controls.Label> object named `changeThemeLabel` is retrieved once the `ControlTemplate` has been instantiated. `changeThemeLabel` can then be accessed and manipulated by the `AccessTemplateElementPage` class. The following screenshot shows that the text displayed by the <xref:Microsoft.Maui.Controls.Label> has been changed:
+In this example, the <xref:Microsoft.Maui.Controls.Label> object named `changeThemeLabel` is retrieved once the <xref:Microsoft.Maui.Controls.ControlTemplate> has been instantiated. `changeThemeLabel` can then be accessed and manipulated by the `AccessTemplateElementPage` class. The following screenshot shows that the text displayed by the <xref:Microsoft.Maui.Controls.Label> has been changed:
 
 :::image type="content" source="media/controltemplate/get-named-element.png" alt-text="Screenshot of templated page object that's changed.":::
 
 ## Bind to a viewmodel
 
-A `ControlTemplate` can data bind to a viewmodel, even when the `ControlTemplate` binds to the templated parent (the runtime object instance to which the template is applied).
+A <xref:Microsoft.Maui.Controls.ControlTemplate> can data bind to a viewmodel, even when the <xref:Microsoft.Maui.Controls.ControlTemplate> binds to the templated parent (the runtime object instance to which the template is applied).
 
 The following XAML example shows a page that consumes a viewmodel named `PeopleViewModel`:
 
@@ -551,7 +551,7 @@ The following XAML example shows a page that consumes a viewmodel named `PeopleV
 </ContentPage>
 ```
 
-In this example, the `BindingContext` of the page is set to a `PeopleViewModel` instance. This viewmodel exposes a `People` collection and an `ICommand` named `DeletePersonCommand`. The <xref:Microsoft.Maui.Controls.StackLayout> on the page uses a bindable layout to data bind to the `People` collection, and the `ItemTemplate` of the bindable layout is set to the `PersonTemplate` resource. This <xref:Microsoft.Maui.Controls.DataTemplate> specifies that each item in the `People` collection will be displayed using a `CardView` object. The visual structure of the `CardView` object is defined using a `ControlTemplate` named `CardViewControlTemplate`:
+In this example, the `BindingContext` of the page is set to a `PeopleViewModel` instance. This viewmodel exposes a `People` collection and an `ICommand` named `DeletePersonCommand`. The <xref:Microsoft.Maui.Controls.StackLayout> on the page uses a bindable layout to data bind to the `People` collection, and the `ItemTemplate` of the bindable layout is set to the `PersonTemplate` resource. This <xref:Microsoft.Maui.Controls.DataTemplate> specifies that each item in the `People` collection will be displayed using a `CardView` object. The visual structure of the `CardView` object is defined using a <xref:Microsoft.Maui.Controls.ControlTemplate> named `CardViewControlTemplate`:
 
 ```xaml
 <ControlTemplate x:Key="CardViewControlTemplate">
@@ -592,11 +592,11 @@ In this example, the `BindingContext` of the page is set to a `PeopleViewModel` 
 </ControlTemplate>
 ```
 
-In this example, the root element of the `ControlTemplate` is a <xref:Microsoft.Maui.Controls.Frame> object. The <xref:Microsoft.Maui.Controls.Frame> object uses the `RelativeSource` markup extension to set its `BindingContext` to the templated parent. The binding expressions of the <xref:Microsoft.Maui.Controls.Frame> object and its children resolve against `CardView` properties, due to inheriting the `BindingContext` from the root <xref:Microsoft.Maui.Controls.Frame> element. The following screenshot shows the page displaying the `People` collection:
+In this example, the root element of the <xref:Microsoft.Maui.Controls.ControlTemplate> is a <xref:Microsoft.Maui.Controls.Frame> object. The <xref:Microsoft.Maui.Controls.Frame> object uses the `RelativeSource` markup extension to set its `BindingContext` to the templated parent. The binding expressions of the <xref:Microsoft.Maui.Controls.Frame> object and its children resolve against `CardView` properties, due to inheriting the `BindingContext` from the root <xref:Microsoft.Maui.Controls.Frame> element. The following screenshot shows the page displaying the `People` collection:
 
 :::image type="content" source="media/controltemplate/viewmodel-controltemplate.png" alt-text="Screenshot of three templated CardView objects that bind to a viewmodel.":::
 
-While the objects in the `ControlTemplate` bind to properties on its templated parent, the <xref:Microsoft.Maui.Controls.Button> within the control template binds to both its templated parent, and to the `DeletePersonCommand` in the viewmodel. This is because the `Button.Command` property redefines its binding source to be the binding context of the ancestor whose binding context type is `PeopleViewModel`, which is the <xref:Microsoft.Maui.Controls.StackLayout>. The `Path` part of the binding expressions can then resolve the `DeletePersonCommand` property. However, the `Button.CommandParameter` property doesn't alter its binding source, instead inheriting it from its parent in the `ControlTemplate`. Therefore, the `CommandParameter` property binds to the `CardTitle` property of the `CardView`.
+While the objects in the <xref:Microsoft.Maui.Controls.ControlTemplate> bind to properties on its templated parent, the <xref:Microsoft.Maui.Controls.Button> within the control template binds to both its templated parent, and to the `DeletePersonCommand` in the viewmodel. This is because the `Button.Command` property redefines its binding source to be the binding context of the ancestor whose binding context type is `PeopleViewModel`, which is the <xref:Microsoft.Maui.Controls.StackLayout>. The `Path` part of the binding expressions can then resolve the `DeletePersonCommand` property. However, the `Button.CommandParameter` property doesn't alter its binding source, instead inheriting it from its parent in the <xref:Microsoft.Maui.Controls.ControlTemplate>. Therefore, the `CommandParameter` property binds to the `CardTitle` property of the `CardView`.
 
 The overall effect of the <xref:Microsoft.Maui.Controls.Button> bindings is that when the <xref:Microsoft.Maui.Controls.Button> is tapped, the `DeletePersonCommand` in the `PeopleViewModel` class is executed, with the value of the `CardName` property being passed to the `DeletePersonCommand`. This results in the specified `CardView` being removed from the bindable layout.
 

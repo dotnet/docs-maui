@@ -12,7 +12,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Content
 
 The <xref:Microsoft.Maui.Controls.ContentView> class defines a `Content` property, of type <xref:Microsoft.Maui.Controls.View>, which represents the content of the <xref:Microsoft.Maui.Controls.ContentView>. This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means that it can be the target of data bindings, and styled.
 
-The <xref:Microsoft.Maui.Controls.ContentView> class derives from the `TemplatedView` class, which defines the `ControlTemplate` bindable property, of type `ControlTemplate`, which defines the appearance of the control. For more information about the `ControlTemplate` property, see [Customize appearance with a ControlTemplate](#customize-appearance-with-a-controltemplate).
+The <xref:Microsoft.Maui.Controls.ContentView> class derives from the `TemplatedView` class, which defines the <xref:Microsoft.Maui.Controls.ControlTemplate> bindable property, of type <xref:Microsoft.Maui.Controls.ControlTemplate>, which defines the appearance of the control. For more information about the <xref:Microsoft.Maui.Controls.ControlTemplate> property, see [Customize appearance with a ControlTemplate](#customize-appearance-with-a-controltemplate).
 
 > [!NOTE]
 > A <xref:Microsoft.Maui.Controls.ContentView> can only contain a single child.
@@ -133,9 +133,9 @@ The following screenshot shows multiple `CardView` objects:
 
 ## Customize appearance with a ControlTemplate
 
-A custom control that derives from the <xref:Microsoft.Maui.Controls.ContentView> class can define its UI using XAML or code, or may not define its UI at all. A `ControlTemplate` can be used to override the control's appearance, regardless of how that appearance is defined.
+A custom control that derives from the <xref:Microsoft.Maui.Controls.ContentView> class can define its UI using XAML or code, or may not define its UI at all. A <xref:Microsoft.Maui.Controls.ControlTemplate> can be used to override the control's appearance, regardless of how that appearance is defined.
 
-For example, a `CardView` layout might occupy too much space for some use cases. A `ControlTemplate` can be used to override the `CardView` layout to provide a more compact view, suitable for a condensed list:
+For example, a `CardView` layout might occupy too much space for some use cases. A <xref:Microsoft.Maui.Controls.ControlTemplate> can be used to override the `CardView` layout to provide a more compact view, suitable for a condensed list:
 
 ```xaml
 <ContentPage.Resources>
@@ -167,7 +167,7 @@ For example, a `CardView` layout might occupy too much space for some use cases.
 </ContentPage.Resources>
 ```
 
-Data binding in a `ControlTemplate` uses the `TemplateBinding` markup extension to specify bindings. The `ControlTemplate` property can then be set to the defined `ControlTemplate` object, by using its `x:Key` value. The following example shows the `ControlTemplate` property set on a `CardView` instance:
+Data binding in a <xref:Microsoft.Maui.Controls.ControlTemplate> uses the `TemplateBinding` markup extension to specify bindings. The <xref:Microsoft.Maui.Controls.ControlTemplate> property can then be set to the defined <xref:Microsoft.Maui.Controls.ControlTemplate> object, by using its `x:Key` value. The following example shows the <xref:Microsoft.Maui.Controls.ControlTemplate> property set on a `CardView` instance:
 
 ```xaml
 <controls:CardView ControlTemplate="{StaticResource CardViewCompressed}" />

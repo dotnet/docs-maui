@@ -12,7 +12,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.RadioBu
 
 :::image type="content" source="media/radiobutton/radiobuttons-default.png" alt-text="Screenshot of RadioButtons.":::
 
-However, on some platforms a <xref:Microsoft.Maui.Controls.RadioButton> can display a <xref:Microsoft.Maui.Controls.View>, and on all platforms the appearance of each <xref:Microsoft.Maui.Controls.RadioButton> can be redefined with a `ControlTemplate`:
+However, on some platforms a <xref:Microsoft.Maui.Controls.RadioButton> can display a <xref:Microsoft.Maui.Controls.View>, and on all platforms the appearance of each <xref:Microsoft.Maui.Controls.RadioButton> can be redefined with a <xref:Microsoft.Maui.Controls.ControlTemplate>:
 
 :::image type="content" source="media/radiobutton/radiobuttons-controltemplate.png" alt-text="Screenshot of re-defined RadioButtons.":::
 
@@ -50,7 +50,7 @@ The appearance of a <xref:Microsoft.Maui.Controls.RadioButton> is defined by the
 
 - When the `RadioButton.Content` property is assigned a `string`, it will be displayed on each platform, horizontally aligned next to the radio button circle.
 - When the `RadioButton.Content` is assigned a <xref:Microsoft.Maui.Controls.View>, it will be displayed on supported platforms (iOS, Windows), while unsupported platforms will fallback to a string representation of the <xref:Microsoft.Maui.Controls.View> object (Android). In both cases, the content is displayed horizontally aligned next to the radio button circle.
-- When a `ControlTemplate` is applied to a <xref:Microsoft.Maui.Controls.RadioButton>, a <xref:Microsoft.Maui.Controls.View> can be assigned to the `RadioButton.Content` property on all platforms. For more information, see [Redefine RadioButton appearance](#redefine-radiobutton-appearance).
+- When a <xref:Microsoft.Maui.Controls.ControlTemplate> is applied to a <xref:Microsoft.Maui.Controls.RadioButton>, a <xref:Microsoft.Maui.Controls.View> can be assigned to the `RadioButton.Content` property on all platforms. For more information, see [Redefine RadioButton appearance](#redefine-radiobutton-appearance).
 
 ### Display string-based content
 
@@ -108,7 +108,7 @@ In this example, <xref:Microsoft.Maui.Controls.RadioButton> objects are implicit
 On Android, <xref:Microsoft.Maui.Controls.RadioButton> objects will display a string-based representation of the <xref:Microsoft.Maui.Controls.View> object that's been set as content.
 
 > [!NOTE]
-> When a `ControlTemplate` is applied to a <xref:Microsoft.Maui.Controls.RadioButton>, a <xref:Microsoft.Maui.Controls.View> can be assigned to the `RadioButton.Content` property on all platforms. For more information, see [Redefine RadioButton appearance](#redefine-radiobutton-appearance).
+> When a <xref:Microsoft.Maui.Controls.ControlTemplate> is applied to a <xref:Microsoft.Maui.Controls.RadioButton>, a <xref:Microsoft.Maui.Controls.View> can be assigned to the `RadioButton.Content` property on all platforms. For more information, see [Redefine RadioButton appearance](#redefine-radiobutton-appearance).
 
 ## Associate values with RadioButtons
 
@@ -300,9 +300,9 @@ For more information about visual states, see [Visual states](~/user-interface/v
 
 ## Redefine RadioButton appearance
 
-By default, <xref:Microsoft.Maui.Controls.RadioButton> objects use handlers to utilize native controls on supported platforms. However, <xref:Microsoft.Maui.Controls.RadioButton> visual structure can be redefined with a `ControlTemplate`, so that <xref:Microsoft.Maui.Controls.RadioButton> objects have an identical appearance on all platforms. This is possible because the <xref:Microsoft.Maui.Controls.RadioButton> class inherits from the `TemplatedView` class.
+By default, <xref:Microsoft.Maui.Controls.RadioButton> objects use handlers to utilize native controls on supported platforms. However, <xref:Microsoft.Maui.Controls.RadioButton> visual structure can be redefined with a <xref:Microsoft.Maui.Controls.ControlTemplate>, so that <xref:Microsoft.Maui.Controls.RadioButton> objects have an identical appearance on all platforms. This is possible because the <xref:Microsoft.Maui.Controls.RadioButton> class inherits from the `TemplatedView` class.
 
-The following XAML shows a `ControlTemplate` that can be used to redefine the visual structure of <xref:Microsoft.Maui.Controls.RadioButton> objects:
+The following XAML shows a <xref:Microsoft.Maui.Controls.ControlTemplate> that can be used to redefine the visual structure of <xref:Microsoft.Maui.Controls.RadioButton> objects:
 
 ```xaml
 <ContentPage ...>
@@ -376,12 +376,12 @@ The following XAML shows a `ControlTemplate` that can be used to redefine the vi
 </ContentPage>
 ```
 
-In this example, the root element of the `ControlTemplate` is a <xref:Microsoft.Maui.Controls.Border> object that defines `Checked` and `Unchecked` visual states. The <xref:Microsoft.Maui.Controls.Border> object uses a combination of <xref:Microsoft.Maui.Controls.Grid>, <xref:Microsoft.Maui.Controls.Shapes.Ellipse>, and `ContentPresenter` objects to define the visual structure of a <xref:Microsoft.Maui.Controls.RadioButton>. The example also includes an *implicit* style that will assign the `RadioButtonTemplate` to the `ControlTemplate` property of any <xref:Microsoft.Maui.Controls.RadioButton> objects on the page.
+In this example, the root element of the <xref:Microsoft.Maui.Controls.ControlTemplate> is a <xref:Microsoft.Maui.Controls.Border> object that defines `Checked` and `Unchecked` visual states. The <xref:Microsoft.Maui.Controls.Border> object uses a combination of <xref:Microsoft.Maui.Controls.Grid>, <xref:Microsoft.Maui.Controls.Shapes.Ellipse>, and `ContentPresenter` objects to define the visual structure of a <xref:Microsoft.Maui.Controls.RadioButton>. The example also includes an *implicit* style that will assign the `RadioButtonTemplate` to the <xref:Microsoft.Maui.Controls.ControlTemplate> property of any <xref:Microsoft.Maui.Controls.RadioButton> objects on the page.
 
 > [!NOTE]
 > The `ContentPresenter` object marks the location in the visual structure where <xref:Microsoft.Maui.Controls.RadioButton> content will be displayed.
 
-The following XAML shows <xref:Microsoft.Maui.Controls.RadioButton> objects that consume the `ControlTemplate` via the *implicit* style:
+The following XAML shows <xref:Microsoft.Maui.Controls.RadioButton> objects that consume the <xref:Microsoft.Maui.Controls.ControlTemplate> via the *implicit* style:
 
 ```xaml
 <StackLayout>
@@ -440,7 +440,7 @@ The following XAML shows <xref:Microsoft.Maui.Controls.RadioButton> objects that
 </StackLayout>
 ```
 
-In this example, the visual structure defined for each <xref:Microsoft.Maui.Controls.RadioButton> is replaced with the visual structure defined in the `ControlTemplate`, and so at runtime the objects in the `ControlTemplate` become part of the visual tree for each <xref:Microsoft.Maui.Controls.RadioButton>. In addition, the content for each <xref:Microsoft.Maui.Controls.RadioButton> is substituted into the `ContentPresenter` defined in the control template. This results in the following <xref:Microsoft.Maui.Controls.RadioButton> appearance:
+In this example, the visual structure defined for each <xref:Microsoft.Maui.Controls.RadioButton> is replaced with the visual structure defined in the <xref:Microsoft.Maui.Controls.ControlTemplate>, and so at runtime the objects in the <xref:Microsoft.Maui.Controls.ControlTemplate> become part of the visual tree for each <xref:Microsoft.Maui.Controls.RadioButton>. In addition, the content for each <xref:Microsoft.Maui.Controls.RadioButton> is substituted into the `ContentPresenter` defined in the control template. This results in the following <xref:Microsoft.Maui.Controls.RadioButton> appearance:
 
 :::image type="content" source="media/radiobutton/radiobuttons-templated.png" alt-text="Screenshot of templated RadioButtons.":::
 
