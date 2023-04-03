@@ -36,7 +36,7 @@ The <xref:Microsoft.Maui.Controls.SemanticProperties> class defines the followin
 
 - <xref:Microsoft.Maui.Controls.SemanticProperties.DescriptionProperty>, of type `string`, which represents a description that will be read aloud by the screen reader. For more information, see [Description](#description).
 - <xref:Microsoft.Maui.Controls.SemanticProperties.HintProperty>, of type `string`, which is similar to `Description`, but provides additional context such as the purpose of a control. For more information, see [Hint](#hint).
-- <xref:Microsoft.Maui.Controls.SemanticProperties.HeadingLevelProperty>, of type <xref:Microsoft.Maui.SemanticHeadlingLevel>, which enables an element to be marked as a heading to organize the UI and make it easier to navigate. For more information, see [Heading levels](#heading-levels).
+- <xref:Microsoft.Maui.Controls.SemanticProperties.HeadingLevelProperty>, of type <xref:Microsoft.Maui.SemanticHeadingLevel>, which enables an element to be marked as a heading to organize the UI and make it easier to navigate. For more information, see [Heading levels](#heading-levels).
 
 These attached properties set platform accessibility values so that a screen reader can speak about the element. For more information about attached properties, see [Attached properties](~/fundamentals/attached-properties.md).
 
