@@ -84,11 +84,11 @@ In this example, `CatsPage`, `DogsPage`, and `MonkeysPage` are all created at ap
 
 The <xref:Microsoft.Maui.Controls.Shell> class defines the following attached properties that can be used to set page colors in a Shell app:
 
-- `BackgroundColor`, of type `Color`, that defines the background color in the Shell chrome. The color will not fill in behind the Shell content.
-- `DisabledColor`, of type `Color`, that defines the color to shade text and icons that are disabled.
-- `ForegroundColor`, of type `Color`, that defines the color to shade text and icons.
-- `TitleColor`, of type `Color`, that defines the color used for the title of the current page.
-- `UnselectedColor`, of type `Color`, that defines the color used for unselected text and icons in the Shell chrome.
+- `BackgroundColor`, of type <xref:Microsoft.Maui.Graphics.Color>, that defines the background color in the Shell chrome. The color will not fill in behind the Shell content.
+- `DisabledColor`, of type <xref:Microsoft.Maui.Graphics.Color>, that defines the color to shade text and icons that are disabled.
+- `ForegroundColor`, of type <xref:Microsoft.Maui.Graphics.Color>, that defines the color to shade text and icons.
+- `TitleColor`, of type <xref:Microsoft.Maui.Graphics.Color>, that defines the color used for the title of the current page.
+- `UnselectedColor`, of type <xref:Microsoft.Maui.Graphics.Color>, that defines the color used for unselected text and icons in the Shell chrome.
 
 All of these properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which mean that the properties can be targets of data bindings, and styled using XAML styles. In addition, the properties can be set using Cascading Style Sheets (CSS). For more information, see [.NET MAUI Shell specific properties](~/user-interface/styles/css.md#net-maui-shell-specific-properties).
 

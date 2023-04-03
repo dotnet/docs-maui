@@ -25,7 +25,7 @@ In addition, the `MultiBinding` class inherits the following properties from the
 - `StringFormat`, of type `string`, which specifies how to format the multi-binding result if it's displayed as a string.
 - `TargetNullValue`, of type `object`, which represents the value that's used in the target when the value of the source is `null`.
 
-A `MultiBinding` must use a `IMultiValueConverter` to produce a value for the binding target, based on the value of the bindings in the `Bindings` collection. For example, a `Color` might be computed from red, blue, and green values, which can be values from the same or different binding source objects. When a value moves from the target to the sources, the target property value is translated to a set of values that are fed back into the bindings.
+A `MultiBinding` must use a `IMultiValueConverter` to produce a value for the binding target, based on the value of the bindings in the `Bindings` collection. For example, a <xref:Microsoft.Maui.Graphics.Color> might be computed from red, blue, and green values, which can be values from the same or different binding source objects. When a value moves from the target to the sources, the target property value is translated to a set of values that are fed back into the bindings.
 
 > [!IMPORTANT]
 > Individual bindings in the `Bindings` collection can have their own value converters.

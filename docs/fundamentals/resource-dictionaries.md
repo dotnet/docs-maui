@@ -60,7 +60,7 @@ The following XAML shows resources defined in an application level <xref:Microso
 </Application>
 ```
 
-In this example, the resource dictionary defines a `Thickness` resource, multiple `Color` resources, and two implicit <xref:Microsoft.Maui.Controls.Style> resources.<!-- For more information about the `App` class, see [.NET MAUI App Class](~/fundamentals/application-class.md).-->
+In this example, the resource dictionary defines a `Thickness` resource, multiple <xref:Microsoft.Maui.Graphics.Color> resources, and two implicit <xref:Microsoft.Maui.Controls.Style> resources.<!-- For more information about the `App` class, see [.NET MAUI App Class](~/fundamentals/application-class.md).-->
 
 > [!IMPORTANT]
 > Inserting resources directly between the `Resources` property-element tags automatically creates a <xref:Microsoft.Maui.Controls.ResourceDictionary> object. However, it's also valid to place all resources between optional <xref:Microsoft.Maui.Controls.ResourceDictionary> tags.

@@ -166,11 +166,11 @@ This implicit conversion automatically wraps the third <xref:Microsoft.Maui.Cont
 
 The <xref:Microsoft.Maui.Controls.Shell> class defines the following attached properties that control the appearance of tabs:
 
-- `TabBarBackgroundColor`, of type `Color`, that defines the background color for the tab bar. If the property is unset, the `BackgroundColor` property value is used.
-- `TabBarDisabledColor`, of type `Color`, that defines the disabled color for the tab bar. If the property is unset, the `DisabledColor` property value is used.
-- `TabBarForegroundColor`, of type `Color`, that defines the foreground color for the tab bar. If the property is unset, the `ForegroundColor` property value is used.
-- `TabBarTitleColor`, of type `Color`, that defines the title color for the tab bar. If the property is unset, the `TitleColor` property value will be used.
-- `TabBarUnselectedColor`, of type `Color`, that defines the unselected color for the tab bar. If the property is unset, the `UnselectedColor` property value is used.
+- `TabBarBackgroundColor`, of type <xref:Microsoft.Maui.Graphics.Color>, that defines the background color for the tab bar. If the property is unset, the `BackgroundColor` property value is used.
+- `TabBarDisabledColor`, of type <xref:Microsoft.Maui.Graphics.Color>, that defines the disabled color for the tab bar. If the property is unset, the `DisabledColor` property value is used.
+- `TabBarForegroundColor`, of type <xref:Microsoft.Maui.Graphics.Color>, that defines the foreground color for the tab bar. If the property is unset, the `ForegroundColor` property value is used.
+- `TabBarTitleColor`, of type <xref:Microsoft.Maui.Graphics.Color>, that defines the title color for the tab bar. If the property is unset, the `TitleColor` property value will be used.
+- `TabBarUnselectedColor`, of type <xref:Microsoft.Maui.Graphics.Color>, that defines the unselected color for the tab bar. If the property is unset, the `UnselectedColor` property value is used.
 
 All of these properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings, and styled.
 

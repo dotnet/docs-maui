@@ -227,7 +227,7 @@ In this example, in the last of the three <xref:Microsoft.Maui.Controls.Switch> 
 
 The `Binding` class defines a `ConverterParameter` property, and the `Binding` markup extension also defines a `ConverterParameter` property. If this property is set, then the value is passed to the `Convert` and `ConvertBack` methods as the `parameter` argument. Even if the instance of the value converter is shared among several data bindings, the `ConverterParameter` can be different to perform different conversions.
 
-The use of the `ConverterParameter` property can be demonstrated with a color-selection program. The following example shows the `RgbColorViewModel`, which has three properties of type `float` named `Red`, `Green`, and `Blue` that it uses to construct a `Color` value:
+The use of the `ConverterParameter` property can be demonstrated with a color-selection program. The following example shows the `RgbColorViewModel`, which has three properties of type `float` named `Red`, `Green`, and `Blue` that it uses to construct a <xref:Microsoft.Maui.Graphics.Color> value:
 
 ```csharp
 public class RgbColorViewModel : INotifyPropertyChanged
