@@ -70,7 +70,7 @@ The following XAML example has a <xref:Microsoft.Maui.Controls.ScrollView> as a 
 
 ```
 
-In this example, the <xref:Microsoft.Maui.Controls.ScrollView> has its content set to a <xref:Microsoft.Maui.Controls.StackLayout> that uses a bindable layout to display the `Color` fields defined by .NET MAUI. By default, a <xref:Microsoft.Maui.Controls.ScrollView> scrolls vertically, which reveals more content:
+In this example, the <xref:Microsoft.Maui.Controls.ScrollView> has its content set to a <xref:Microsoft.Maui.Controls.StackLayout> that uses a bindable layout to display the `Colors` fields defined by .NET MAUI. By default, a <xref:Microsoft.Maui.Controls.ScrollView> scrolls vertically, which reveals more content:
 
 :::image type="content" source="media/scrollview/root-layout.png" alt-text="Screenshot of a root ScrollView layout.":::
 

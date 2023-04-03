@@ -8,7 +8,7 @@ ms.date: 01/28/2022
 
 A .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.ResourceDictionary> is a repository for resources that are used by a .NET MAUI app. Typical resources that are stored in a <xref:Microsoft.Maui.Controls.ResourceDictionary> include styles, control templates, data templates, converters, and colors.
 
-XAML resources that are stored in a <xref:Microsoft.Maui.Controls.ResourceDictionary> can be referenced and applied to elements by using the `StaticResource` or `DynamicResource` markup extension. In C#, resources can also be defined in a <xref:Microsoft.Maui.Controls.ResourceDictionary> and then referenced and applied to elements by using a string-based indexer. However, there's little advantage to using a <xref:Microsoft.Maui.Controls.ResourceDictionary> in C#, as shared objects can be stored as fields or properties, and accessed directly without having to first retrieve them from a dictionary.
+XAML resources that are stored in a <xref:Microsoft.Maui.Controls.ResourceDictionary> can be referenced and applied to elements by using the [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) or [`DynamicResource`](xref:Microsoft.Maui.Controls.Xaml.DynamicResourceExtension) markup extension. In C#, resources can also be defined in a <xref:Microsoft.Maui.Controls.ResourceDictionary> and then referenced and applied to elements by using a string-based indexer. However, there's little advantage to using a <xref:Microsoft.Maui.Controls.ResourceDictionary> in C#, as shared objects can be stored as fields or properties, and accessed directly without having to first retrieve them from a dictionary.
 
 > [!TIP]
 > In Visual Studio, a XAML-based <xref:Microsoft.Maui.Controls.ResourceDictionary> file that's backed by a code-behind file can be added to your project by the **.NET MAUI ResourceDictionary (XAML)** item template.
@@ -60,16 +60,16 @@ The following XAML shows resources defined in an application level <xref:Microso
 </Application>
 ```
 
-In this example, the resource dictionary defines a `Thickness` resource, multiple `Color` resources, and two implicit <xref:Microsoft.Maui.Controls.Style> resources.<!-- For more information about the `App` class, see [.NET MAUI App Class](~/fundamentals/application-class.md).-->
+In this example, the resource dictionary defines a `Thickness` resource, multiple <xref:Microsoft.Maui.Graphics.Color> resources, and two implicit <xref:Microsoft.Maui.Controls.Style> resources.<!-- For more information about the `App` class, see [.NET MAUI App Class](~/fundamentals/application-class.md).-->
 
 > [!IMPORTANT]
 > Inserting resources directly between the `Resources` property-element tags automatically creates a <xref:Microsoft.Maui.Controls.ResourceDictionary> object. However, it's also valid to place all resources between optional <xref:Microsoft.Maui.Controls.ResourceDictionary> tags.
 
 ## Consume resources
 
-Each resource has a key that is specified using the `x:Key` attribute, which becomes its dictionary key in the <xref:Microsoft.Maui.Controls.ResourceDictionary>. The key is used to reference a resource from the <xref:Microsoft.Maui.Controls.ResourceDictionary> with the `StaticResource` or `DynamicResource` XAML markup extension.
+Each resource has a key that is specified using the `x:Key` attribute, which becomes its dictionary key in the <xref:Microsoft.Maui.Controls.ResourceDictionary>. The key is used to reference a resource from the <xref:Microsoft.Maui.Controls.ResourceDictionary> with the [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) or [`DynamicResource`](xref:Microsoft.Maui.Controls.Xaml.DynamicResourceExtension) XAML markup extension.
 
-The `StaticResource` markup extension is similar to the `DynamicResource` markup extension in that both use a dictionary key to reference a value from a resource dictionary. However, while the `StaticResource` markup extension performs a single dictionary lookup, the `DynamicResource` markup extension maintains a link to the dictionary key. Therefore, if the dictionary entry associated with the key is replaced, the change is applied to the visual element. This enables runtime resource changes to be made in an app. For more information about markup extensions, see [XAML markup extensions](~/xaml/markup-extensions/consume.md).
+The [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) markup extension is similar to the [`DynamicResource`](xref:Microsoft.Maui.Controls.Xaml.DynamicResourceExtension) markup extension in that both use a dictionary key to reference a value from a resource dictionary. However, while the [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) markup extension performs a single dictionary lookup, the [`DynamicResource`](xref:Microsoft.Maui.Controls.Xaml.DynamicResourceExtension) markup extension maintains a link to the dictionary key. Therefore, if the dictionary entry associated with the key is replaced, the change is applied to the visual element. This enables runtime resource changes to be made in an app. For more information about markup extensions, see [XAML markup extensions](~/xaml/markup-extensions/consume.md).
 
 The following XAML example shows how to consume resources, and also define an additional resource in a <xref:Microsoft.Maui.Controls.StackLayout>:
 
@@ -106,14 +106,14 @@ In this example, the <xref:Microsoft.Maui.Controls.ContentPage> object consumes 
 
 ## Resource lookup behavior
 
-The following lookup process occurs when a resource is referenced with the `StaticResource` or `DynamicResource` markup extension:
+The following lookup process occurs when a resource is referenced with the [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) or [`DynamicResource`](xref:Microsoft.Maui.Controls.Xaml.DynamicResourceExtension) markup extension:
 
 - The requested key is checked for in the resource dictionary, if it exists, for the element that sets the property. If the requested key is found, its value is returned and the lookup process terminates.
 - If a match isn't found, the lookup process searches the visual tree upwards, checking the resource dictionary of each parent element. If the requested key is found, its value is returned and the lookup process terminates. Otherwise the process continues upwards until the root element is reached.
 - If a match isn't found at the root element, the application level resource dictionary is examined.
 - If a match still isn't found, a `XamlParseException` is thrown.
 
-Therefore, when the XAML parser encounters a `StaticResource` or `DynamicResource` markup extension, it searches for a matching key by traveling up through the visual tree, using the first match it finds. If this search ends at the page and the key still hasn't been found, the XAML parser searches the <xref:Microsoft.Maui.Controls.ResourceDictionary> attached to the `App` object. If the key still isn't found, an exception is thrown.
+Therefore, when the XAML parser encounters a [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) or [`DynamicResource`](xref:Microsoft.Maui.Controls.Xaml.DynamicResourceExtension) markup extension, it searches for a matching key by traveling up through the visual tree, using the first match it finds. If this search ends at the page and the key still hasn't been found, the XAML parser searches the <xref:Microsoft.Maui.Controls.ResourceDictionary> attached to the `App` object. If the key still isn't found, an exception is thrown.
 
 ## Override resources
 
@@ -158,7 +158,7 @@ The following XAML example shows a stand-alone <xref:Microsoft.Maui.Controls.Res
 </ResourceDictionary>
 ```
 
-In this example, the <xref:Microsoft.Maui.Controls.ResourceDictionary> contains a single resource, which is an object of type `DataTemplate`. **MyResourceDictionary.xaml** can be consumed by merging it into another resource dictionary.
+In this example, the <xref:Microsoft.Maui.Controls.ResourceDictionary> contains a single resource, which is an object of type <xref:Microsoft.Maui.Controls.DataTemplate>. **MyResourceDictionary.xaml** can be consumed by merging it into another resource dictionary.
 
 <!--
 By default, the linker will remove stand-alone XAML files from release builds when the linker behavior is set to link all assemblies. To ensure that stand-alone XAML files remain in a release build:

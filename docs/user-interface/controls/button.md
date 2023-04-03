@@ -10,7 +10,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Button>
 
 <xref:Microsoft.Maui.Controls.Button> defines the following properties:
 
-- `BorderColor`, of type `Color`, describes the border color of the button.
+- `BorderColor`, of type <xref:Microsoft.Maui.Graphics.Color>, describes the border color of the button.
 - `BorderWidth`, of type `double`, defines the width of the button's border.
 - `CharacterSpacing`, of type `double`, defines the spacing between characters of the button's text.
 - `Command`, of type `ICommand`, defines the command that's executed when the button is tapped.
@@ -25,7 +25,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Button>
 - `LineBreakMode`, of type `LineBreakMode`, determines how text should be handled when it can't fit on one line.
 - `Padding`, of type `Thickness`, determines the button's padding.
 - `Text`, of type `string`, defines the text displayed as the content of the button.
-- `TextColor`, of type `Color`, describes the color of the button's text.
+- `TextColor`, of type <xref:Microsoft.Maui.Graphics.Color>, describes the color of the button's text.
 - `TextTransform`, of type `TextTransform`, defines the casing of the button's text.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.

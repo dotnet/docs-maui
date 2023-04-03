@@ -314,14 +314,14 @@ By default, a horizontal `GridItemsLayout` will display items in a single row. H
 
 ## Headers and footers
 
-<xref:Microsoft.Maui.Controls.CollectionView> can present a header and footer that scroll with the items in the list. The header and footer can be strings, views, or `DataTemplate` objects.
+<xref:Microsoft.Maui.Controls.CollectionView> can present a header and footer that scroll with the items in the list. The header and footer can be strings, views, or <xref:Microsoft.Maui.Controls.DataTemplate> objects.
 
 <xref:Microsoft.Maui.Controls.CollectionView> defines the following properties for specifying the header and footer:
 
 - `Header`, of type `object`, specifies the string, binding, or view that will be displayed at the start of the list.
-- `HeaderTemplate`, of type `DataTemplate`, specifies the `DataTemplate` to use to format the `Header`.
+- `HeaderTemplate`, of type <xref:Microsoft.Maui.Controls.DataTemplate>, specifies the <xref:Microsoft.Maui.Controls.DataTemplate> to use to format the `Header`.
 - `Footer`, of type `object`, specifies the string, binding, or view that will be displayed at the end of the list.
-- `FooterTemplate`, of type `DataTemplate`, specifies the `DataTemplate` to use to format the `Footer`.
+- `FooterTemplate`, of type <xref:Microsoft.Maui.Controls.DataTemplate>, specifies the <xref:Microsoft.Maui.Controls.DataTemplate> to use to format the `Footer`.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings.
 
@@ -402,7 +402,7 @@ This code results in the following screenshots, with the header shown in the iOS
 
 ### Display a templated header and footer
 
-The `HeaderTemplate` and `FooterTemplate` properties can be set to `DataTemplate` objects that are used to format the header and footer. In this scenario, the `Header` and `Footer` properties must bind to the current source for the templates to be applied, as shown in the following example:
+The `HeaderTemplate` and `FooterTemplate` properties can be set to <xref:Microsoft.Maui.Controls.DataTemplate> objects that are used to format the header and footer. In this scenario, the `Header` and `Footer` properties must bind to the current source for the templates to be applied, as shown in the following example:
 
 ```xaml
 <CollectionView ItemsSource="{Binding Monkeys}"
@@ -528,7 +528,7 @@ This code results in a vertical two-column grid that has a vertical spacing of 2
 
 ## Item sizing
 
-By default, each item in a <xref:Microsoft.Maui.Controls.CollectionView> is individually measured and sized, provided that the UI elements in the `DataTemplate` don't specify fixed sizes. This behavior, which can be changed, is specified by the `CollectionView.ItemSizingStrategy` property value. This property value can be set to one of the `ItemSizingStrategy` enumeration members:
+By default, each item in a <xref:Microsoft.Maui.Controls.CollectionView> is individually measured and sized, provided that the UI elements in the <xref:Microsoft.Maui.Controls.DataTemplate> don't specify fixed sizes. This behavior, which can be changed, is specified by the `CollectionView.ItemSizingStrategy` property value. This property value can be set to one of the `ItemSizingStrategy` enumeration members:
 
 - `MeasureAllItems` – each item is individually measured. This is the default value.
 - `MeasureFirstItem` – only the first item is measured, with all subsequent items being given the same size as the first item.
@@ -557,7 +557,7 @@ CollectionView collectionView = new CollectionView
 
 ## Dynamic resizing of items
 
-Items in a <xref:Microsoft.Maui.Controls.CollectionView> can be dynamically resized at runtime by changing layout related properties of elements within the `DataTemplate`. For example, the following code example changes the <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> and <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest> properties of an <xref:Microsoft.Maui.Controls.Image> object:
+Items in a <xref:Microsoft.Maui.Controls.CollectionView> can be dynamically resized at runtime by changing layout related properties of elements within the <xref:Microsoft.Maui.Controls.DataTemplate>. For example, the following code example changes the <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> and <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest> properties of an <xref:Microsoft.Maui.Controls.Image> object:
 
 ```csharp
 void OnImageTapped(object sender, EventArgs e)

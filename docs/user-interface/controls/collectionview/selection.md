@@ -291,7 +291,7 @@ The `SelectedItem` and `SelectedItems` properties can be cleared by setting them
 ```
 
 > [!IMPORTANT]
-> The <xref:Microsoft.Maui.Controls.Style> that contains the `Selected` <xref:Microsoft.Maui.Controls.VisualState> must have a `TargetType` property value that's the type of the root element of the `DataTemplate`, which is set as the `ItemTemplate` property value.
+> The <xref:Microsoft.Maui.Controls.Style> that contains the `Selected` <xref:Microsoft.Maui.Controls.VisualState> must have a `TargetType` property value that's the type of the root element of the <xref:Microsoft.Maui.Controls.DataTemplate>, which is set as the `ItemTemplate` property value.
 
 In this example, the `Style.TargetType` property value is set to <xref:Microsoft.Maui.Controls.Grid> because the root element of the `ItemTemplate` is a <xref:Microsoft.Maui.Controls.Grid>. The `Selected` <xref:Microsoft.Maui.Controls.VisualState> specifies that when an item in the <xref:Microsoft.Maui.Controls.CollectionView> is selected, the `BackgroundColor` of the item will be set to `LightSkyBlue`:
 

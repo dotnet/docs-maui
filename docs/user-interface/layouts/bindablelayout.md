@@ -8,13 +8,13 @@ ms.date: 02/22/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-bindablelayout)
 
-.NET Multi-platform App UI (.NET MAUI) bindable layouts enable any layout class that derives from the <xref:Microsoft.Maui.Controls.Layout> class to generate its content by binding to a collection of items, with the option to set the appearance of each item with a `DataTemplate`.
+.NET Multi-platform App UI (.NET MAUI) bindable layouts enable any layout class that derives from the <xref:Microsoft.Maui.Controls.Layout> class to generate its content by binding to a collection of items, with the option to set the appearance of each item with a <xref:Microsoft.Maui.Controls.DataTemplate>.
 
 Bindable layouts are provided by the <xref:Microsoft.Maui.Controls.BindableLayout> class, which exposes the following attached properties:
 
 - `ItemsSource` – specifies the collection of `IEnumerable` items to be displayed by the layout.
-- `ItemTemplate` – specifies the `DataTemplate` to apply to each item in the collection of items displayed by the layout.
-- `ItemTemplateSelector` – specifies the `DataTemplateSelector` that will be used to choose a `DataTemplate` for an item at runtime.
+- `ItemTemplate` – specifies the <xref:Microsoft.Maui.Controls.DataTemplate> to apply to each item in the collection of items displayed by the layout.
+- `ItemTemplateSelector` – specifies the <xref:Microsoft.Maui.Controls.DataTemplateSelector> that will be used to choose a <xref:Microsoft.Maui.Controls.DataTemplate> for an item at runtime.
 
 > [!NOTE]
 > The `ItemTemplate` property takes precedence when both the `ItemTemplate` and `ItemTemplateSelector` properties are set.
@@ -22,7 +22,7 @@ Bindable layouts are provided by the <xref:Microsoft.Maui.Controls.BindableLayou
 In addition, the <xref:Microsoft.Maui.Controls.BindableLayout> class exposes the following bindable properties:
 
 - `EmptyView` – specifies the `string` or view that will be displayed when the `ItemsSource` property is `null`, or when the collection specified by the `ItemsSource` property is `null` or empty. The default value is `null`.
-- `EmptyViewTemplate` – specifies the `DataTemplate` that will be displayed when the `ItemsSource` property is `null`, or when the collection specified by the `ItemsSource` property is `null` or empty. The default value is `null`.
+- `EmptyViewTemplate` – specifies the <xref:Microsoft.Maui.Controls.DataTemplate> that will be displayed when the `ItemsSource` property is `null`, or when the collection specified by the `ItemsSource` property is `null` or empty. The default value is `null`.
 
 > [!NOTE]
 > The `EmptyViewTemplate` property takes precedence when both the `EmptyView` and `EmptyViewTemplate` properties are set.
@@ -34,7 +34,7 @@ When the `BinableLayout.ItemsSource` property is set to a collection of items an
 Bindable layouts should only be used when the collection of items to be displayed is small, and scrolling and selection isn't required. While scrolling can be provided by wrapping a bindable layout in a <xref:Microsoft.Maui.Controls.ScrollView>, this is not recommended as bindable layouts lack UI virtualization. When scrolling is required, a scrollable view that includes UI virtualization, such as <xref:Microsoft.Maui.Controls.ListView> or <xref:Microsoft.Maui.Controls.CollectionView>, should be used. Failure to observe this recommendation can lead to performance issues.
 
 > [!IMPORTANT]
-> While it's technically possible to attach a bindable layout to any layout class that derives from the <xref:Microsoft.Maui.Controls.Layout> class, it's not always practical to do so, particularly for the <xref:Microsoft.Maui.Controls.AbsoluteLayout> and  <xref:Microsoft.Maui.Controls.Grid> classes. For example, consider the scenario of wanting to display a collection of data in a <xref:Microsoft.Maui.Controls.Grid> using a bindable layout, where each item in the collection is an object containing multiple properties. Each row in the <xref:Microsoft.Maui.Controls.Grid> should display an object from the collection, with each column in the <xref:Microsoft.Maui.Controls.Grid> displaying one of the object's properties. Because the `DataTemplate` for the bindable layout can only contain a single object, it's necessary for that object to be a layout class containing multiple views that each display one of the object's properties in a specific <xref:Microsoft.Maui.Controls.Grid> column. While this scenario can be realised with bindable layouts, it results in a parent <xref:Microsoft.Maui.Controls.Grid> containing a child <xref:Microsoft.Maui.Controls.Grid> for each item in the bound collection, which is a highly inefficient and problematic use of the <xref:Microsoft.Maui.Controls.Grid> layout.
+> While it's technically possible to attach a bindable layout to any layout class that derives from the <xref:Microsoft.Maui.Controls.Layout> class, it's not always practical to do so, particularly for the <xref:Microsoft.Maui.Controls.AbsoluteLayout> and  <xref:Microsoft.Maui.Controls.Grid> classes. For example, consider the scenario of wanting to display a collection of data in a <xref:Microsoft.Maui.Controls.Grid> using a bindable layout, where each item in the collection is an object containing multiple properties. Each row in the <xref:Microsoft.Maui.Controls.Grid> should display an object from the collection, with each column in the <xref:Microsoft.Maui.Controls.Grid> displaying one of the object's properties. Because the <xref:Microsoft.Maui.Controls.DataTemplate> for the bindable layout can only contain a single object, it's necessary for that object to be a layout class containing multiple views that each display one of the object's properties in a specific <xref:Microsoft.Maui.Controls.Grid> column. While this scenario can be realised with bindable layouts, it results in a parent <xref:Microsoft.Maui.Controls.Grid> containing a child <xref:Microsoft.Maui.Controls.Grid> for each item in the bound collection, which is a highly inefficient and problematic use of the <xref:Microsoft.Maui.Controls.Grid> layout.
 
 ## Populate a bindable layout with data
 
@@ -56,7 +56,7 @@ When the `BindableLayout.ItemsSource` attached property is set on a layout, but 
 
 ## Define item appearance
 
-The appearance of each item in the bindable layout can be defined by setting the `BindableLayout.ItemTemplate` attached property to a `DataTemplate`:
+The appearance of each item in the bindable layout can be defined by setting the `BindableLayout.ItemTemplate` attached property to a <xref:Microsoft.Maui.Controls.DataTemplate>:
 
 ```xaml
 <StackLayout BindableLayout.ItemsSource="{Binding User.TopFollowers}"
@@ -83,7 +83,7 @@ BindableLayout.SetItemsSource(stackLayout, viewModel.User.TopFollowers);
 BindableLayout.SetItemTemplate(stackLayout, imageTemplate);
 ```
 
-In this example, every item in the `TopFollowers` collection will be displayed by an <xref:Microsoft.Maui.Controls.Image> view defined in the `DataTemplate`:
+In this example, every item in the `TopFollowers` collection will be displayed by an <xref:Microsoft.Maui.Controls.Image> view defined in the <xref:Microsoft.Maui.Controls.DataTemplate>:
 
 :::image type="content" source="media/bindablelayout/top-followers.png" alt-text=".NET MAUI bindable layout with a DataTemplate.":::
 
@@ -91,7 +91,7 @@ For more information about data templates, see [Data templates](~/fundamentals/d
 
 ## Choose item appearance at runtime
 
-The appearance of each item in the bindable layout can be chosen at runtime, based on the item value, by setting the `BindableLayout.ItemTemplateSelector` attached property to a `DataTemplateSelector`:
+The appearance of each item in the bindable layout can be chosen at runtime, based on the item value, by setting the `BindableLayout.ItemTemplateSelector` attached property to a <xref:Microsoft.Maui.Controls.DataTemplateSelector>:
 
 ```xaml
 <FlexLayout BindableLayout.ItemsSource="{Binding User.FavoriteTech}"
@@ -123,7 +123,7 @@ public class TechItemTemplateSelector : DataTemplateSelector
 }
 ```
 
-The `TechItemTemplateSelector` class defines `DefaultTemplate` and `MAUITemplate` `DataTemplate` properties that are set to different data templates. The `OnSelectTemplate` method returns the `MAUITemplate`, which displays an item in dark red with a heart next to it, when the item is equal to ".NET MAUI". When the item isn't equal to ".NET MAUI", the `OnSelectTemplate` method returns the `DefaultTemplate`, which displays an item using the default color of a <xref:Microsoft.Maui.Controls.Label>:
+The `TechItemTemplateSelector` class defines `DefaultTemplate` and `MAUITemplate` <xref:Microsoft.Maui.Controls.DataTemplate> properties that are set to different data templates. The `OnSelectTemplate` method returns the `MAUITemplate`, which displays an item in dark red with a heart next to it, when the item is equal to ".NET MAUI". When the item isn't equal to ".NET MAUI", the `OnSelectTemplate` method returns the `DefaultTemplate`, which displays an item using the default color of a <xref:Microsoft.Maui.Controls.Label>:
 
 :::image type="content" source="media/bindablelayout/favorite-tech.png" alt-text=".NET MAUI bindable layout with a DataTemplateSelector.":::
 
@@ -168,7 +168,7 @@ The result is that when the data bound collection is `null`, the <xref:Microsoft
 
 :::image type="content" source="media/bindablelayout/emptyview-views.png" alt-text="Screenshot of a bindable layout empty view with multiple views.":::
 
-Similarly, the `EmptyViewTemplate` can be set to a `DataTemplate`, which will be displayed when the `ItemsSource` property is `null`, or when the collection specified by the `ItemsSource` property is `null` or empty. The `DataTemplate` can contain a single view, or a view that contains multiple child views. In addition, the `BindingContext` of the `EmptyViewTemplate` will be inherited from the `BindingContext` of the <xref:Microsoft.Maui.Controls.BindableLayout>. The following XAML example shows the `EmptyViewTemplate` property set to a `DataTemplate` that contains a single view:
+Similarly, the `EmptyViewTemplate` can be set to a <xref:Microsoft.Maui.Controls.DataTemplate>, which will be displayed when the `ItemsSource` property is `null`, or when the collection specified by the `ItemsSource` property is `null` or empty. The <xref:Microsoft.Maui.Controls.DataTemplate> can contain a single view, or a view that contains multiple child views. In addition, the `BindingContext` of the `EmptyViewTemplate` will be inherited from the `BindingContext` of the <xref:Microsoft.Maui.Controls.BindableLayout>. The following XAML example shows the `EmptyViewTemplate` property set to a <xref:Microsoft.Maui.Controls.DataTemplate> that contains a single view:
 
 ```xaml
 <StackLayout BindableLayout.ItemsSource="{Binding UserWithoutAchievements.Achievements}">
@@ -181,12 +181,12 @@ Similarly, the `EmptyViewTemplate` can be set to a `DataTemplate`, which will be
 </StackLayout>
 ```
 
-The result is that when the data bound collection is `null`, the <xref:Microsoft.Maui.Controls.Label> in the `DataTemplate` is displayed:
+The result is that when the data bound collection is `null`, the <xref:Microsoft.Maui.Controls.Label> in the <xref:Microsoft.Maui.Controls.DataTemplate> is displayed:
 
 :::image type="content" source="media/bindablelayout/emptyviewtemplate.png" alt-text="Screenshot of a bindable layout empty view template.":::
 
 > [!NOTE]
-> The `EmptyViewTemplate` property can't be set via a `DataTemplateSelector`.
+> The `EmptyViewTemplate` property can't be set via a <xref:Microsoft.Maui.Controls.DataTemplateSelector>.
 
 ## Choose an EmptyView at runtime
 

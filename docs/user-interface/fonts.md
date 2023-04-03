@@ -205,7 +205,7 @@ Font icons can be displayed by .NET MAUI apps by specifying the font icon data i
 - `Glyph` – the unicode character value of the font icon, specified as a `string`.
 - `Size` – a `double` value that indicates the size, in device-independent units, of the rendered font icon. The default value is 30. In addition, this property can be set to a named font size.
 - `FontFamily` – a `string` representing the font family to which the font icon belongs.
-- `Color` – an optional `Color` value to be used when displaying the font icon.
+- `Color` – an optional <xref:Microsoft.Maui.Graphics.Color> value to be used when displaying the font icon.
 
 This data is used to create a PNG, which can be displayed by any view that can display an `ImageSource`. This approach permits font icons, such as emojis, to be displayed by multiple views, as opposed to limiting font icon display to a single text presenting view, such as a <xref:Microsoft.Maui.Controls.Label>.
 

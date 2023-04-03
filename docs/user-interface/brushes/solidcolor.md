@@ -8,19 +8,19 @@ ms.date: 01/11/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-brushes)
 
-The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.SolidColorBrush> class derives from the <xref:Microsoft.Maui.Controls.Brush> class, and is used to paint an area with a solid color. There are a variety of approaches to specifying the color of a <xref:Microsoft.Maui.Controls.SolidColorBrush>. For example, you can specify its color with a `Color` value or by using one of the predefined <xref:Microsoft.Maui.Controls.SolidColorBrush> objects provided by the <xref:Microsoft.Maui.Controls.Brush> class.
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.SolidColorBrush> class derives from the <xref:Microsoft.Maui.Controls.Brush> class, and is used to paint an area with a solid color. There are a variety of approaches to specifying the color of a <xref:Microsoft.Maui.Controls.SolidColorBrush>. For example, you can specify its color with a <xref:Microsoft.Maui.Graphics.Color> value or by using one of the predefined <xref:Microsoft.Maui.Controls.SolidColorBrush> objects provided by the <xref:Microsoft.Maui.Controls.Brush> class.
 
-The <xref:Microsoft.Maui.Controls.SolidColorBrush> class defines the `Color` property, of type `Color`, which represents the color of the brush. This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means that it can be the target of data bindings, and styled.
+The <xref:Microsoft.Maui.Controls.SolidColorBrush> class defines the `Color` property, of type <xref:Microsoft.Maui.Graphics.Color>, which represents the color of the brush. This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means that it can be the target of data bindings, and styled.
 
 The <xref:Microsoft.Maui.Controls.SolidColorBrush> class also has an `IsEmpty` method that returns a `bool` that represents whether the brush has been assigned a color.
 
 ## Create a SolidColorBrush
 
-There are three main techniques for creating a <xref:Microsoft.Maui.Controls.SolidColorBrush>. You can create a <xref:Microsoft.Maui.Controls.SolidColorBrush> from a `Color`, use a predefined brush, or create a <xref:Microsoft.Maui.Controls.SolidColorBrush> using hexadecimal notation.
+There are three main techniques for creating a <xref:Microsoft.Maui.Controls.SolidColorBrush>. You can create a <xref:Microsoft.Maui.Controls.SolidColorBrush> from a <xref:Microsoft.Maui.Graphics.Color>, use a predefined brush, or create a <xref:Microsoft.Maui.Controls.SolidColorBrush> using hexadecimal notation.
 
 ### Use a predefined Color
 
-.NET MAUI includes a type converter that creates a <xref:Microsoft.Maui.Controls.SolidColorBrush> from a `Color` value. In XAML, this enables a <xref:Microsoft.Maui.Controls.SolidColorBrush> to be created from a predefined `Color` value:
+.NET MAUI includes a type converter that creates a <xref:Microsoft.Maui.Controls.SolidColorBrush> from a <xref:Microsoft.Maui.Graphics.Color> value. In XAML, this enables a <xref:Microsoft.Maui.Controls.SolidColorBrush> to be created from a predefined <xref:Microsoft.Maui.Graphics.Color> value:
 
 ```xaml
 <Frame Background="DarkBlue"
@@ -35,7 +35,7 @@ In this example, the background of the <xref:Microsoft.Maui.Controls.Frame> is p
 
 :::image type="content" source="media/solidcolor/predefined-color.png" alt-text="Screenshot of a Frame painted with a predefined color.":::
 
-Alternatively, the `Color` value can be specified using property tag syntax:
+Alternatively, the <xref:Microsoft.Maui.Graphics.Color> value can be specified using property tag syntax:
 
 ```xaml
 <Frame BorderColor="LightGray"

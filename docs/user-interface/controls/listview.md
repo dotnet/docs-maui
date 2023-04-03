@@ -8,31 +8,31 @@ ms.date: 03/10/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/userinterface-listview)
 
-The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.ListView> displays a scrollable vertical list of selectable data items. While <xref:Microsoft.Maui.Controls.ListView> manages the appearance of the list, the appearance of each item in the list is defined by a `DataTemplate` that uses a <xref:Microsoft.Maui.Controls.Cell> to display items. .NET MAUI includes cell types to display combinations of text and images, and you can also define custom cells that display any content you want. <xref:Microsoft.Maui.Controls.ListView> also includes support for displaying headers and footers, grouped data, pull-to-refresh, and context menu items.
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.ListView> displays a scrollable vertical list of selectable data items. While <xref:Microsoft.Maui.Controls.ListView> manages the appearance of the list, the appearance of each item in the list is defined by a <xref:Microsoft.Maui.Controls.DataTemplate> that uses a <xref:Microsoft.Maui.Controls.Cell> to display items. .NET MAUI includes cell types to display combinations of text and images, and you can also define custom cells that display any content you want. <xref:Microsoft.Maui.Controls.ListView> also includes support for displaying headers and footers, grouped data, pull-to-refresh, and context menu items.
 
 The <xref:Microsoft.Maui.Controls.ListView> class derives from the `ItemsView<Cell>` class, from which it inherits the following properties:
 
 - `ItemsSource`, of type `IEnumerable`, specifies the collection of items to be displayed, and has a default value of `null`.
-- `ItemTemplate`, of type `DataTemplate`, specifies the template to apply to each item in the collection of items to be displayed.
+- `ItemTemplate`, of type <xref:Microsoft.Maui.Controls.DataTemplate>, specifies the template to apply to each item in the collection of items to be displayed.
 
 <xref:Microsoft.Maui.Controls.ListView> defines the following properties:
 
 - `Footer`, of type `object`, specifies the string or view that will be displayed at the end of the list.
-- `FooterTemplate`, of type `DataTemplate`, specifies the `DataTemplate` to use to format the `Footer`.
-- `GroupHeaderTemplate`, of type `DataTemplate`, defines the `DataTemplate` used to define the appearance of the header of each group. This property is mutually exclusive with the `GroupDisplayBinding` property. Therefore, setting this property will set `GroupDisplayBinding` to `null`.
+- `FooterTemplate`, of type <xref:Microsoft.Maui.Controls.DataTemplate>, specifies the <xref:Microsoft.Maui.Controls.DataTemplate> to use to format the `Footer`.
+- `GroupHeaderTemplate`, of type <xref:Microsoft.Maui.Controls.DataTemplate>, defines the <xref:Microsoft.Maui.Controls.DataTemplate> used to define the appearance of the header of each group. This property is mutually exclusive with the `GroupDisplayBinding` property. Therefore, setting this property will set `GroupDisplayBinding` to `null`.
 - `HasUnevenRows`, of type `bool`, indicates whether items in the list can have rows of different heights. The default value of this property is `false`.
 - `Header`, of type `object`, specifies the string or view that will be displayed at the start of the list.
-- `HeaderTemplate`, of type `DataTemplate`, specifies the `DataTemplate` to use to format the `Header`.
+- `HeaderTemplate`, of type <xref:Microsoft.Maui.Controls.DataTemplate>, specifies the <xref:Microsoft.Maui.Controls.DataTemplate> to use to format the `Header`.
 - `HorizontalScrollBarVisibility`, of type `ScrollBarVisibility`, indicates when the horizontal scroll bar will be visible.
 - `IsGroupedEnabled`, of type `bool`, indicates whether the underlying data should be displayed in groups. The default value of this property is `false`.
 - `IsPullToRefreshEnabled`, of type `bool`, indicates whether the user can swipe down to cause the <xref:Microsoft.Maui.Controls.ListView> to refresh its data. The default value of this property is `false`.
 - `IsRefreshing`, of type `bool`, indicates whether the <xref:Microsoft.Maui.Controls.ListView> is currently refreshing. The default value of this property is `false`.
 - `RefreshCommand`, of type `ICommand`, represents the command that will be executed when a refresh is triggered.
-- `RefreshControlColor`, of type `Color`, determines the color of the refresh visualization that's shown while a refresh occurs.
+- `RefreshControlColor`, of type <xref:Microsoft.Maui.Graphics.Color>, determines the color of the refresh visualization that's shown while a refresh occurs.
 - `RowHeight`, of type `int`, determines the height of each row when `HasUnevenRows` is `false`.
 - `SelectedItem`, of type `object`, represents the currently selected item in the <xref:Microsoft.Maui.Controls.ListView>.
 - `SelectionMode`, of type `ListViewSelectionMode`, indicates whether items can be selected in the <xref:Microsoft.Maui.Controls.ListView> or not. The default value of this property is `Single`.
-- `SeparatorColor`, of type `Color`, defines the color of the bar that separates items in the list.
+- `SeparatorColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the color of the bar that separates items in the list.
 - `SeparatorVisibility`, of type `SeparatorVisibility`, defines whether separators are visible between items.
 - `VerticalScrollBarVisibility`, of type `ScrollBarVisibility`, indicates when the vertical scroll bar will be visible.
 
@@ -83,7 +83,7 @@ For more information about data binding, see [Data binding](~/fundamentals/data-
 
 ## Define item appearance
 
-The appearance of each item in the <xref:Microsoft.Maui.Controls.ListView> can be defined by setting the `ItemTemplate` property to a `DataTemplate`:
+The appearance of each item in the <xref:Microsoft.Maui.Controls.ListView> can be defined by setting the `ItemTemplate` property to a <xref:Microsoft.Maui.Controls.DataTemplate>:
 
 ```xaml
 <ListView ItemsSource="{Binding Monkeys}">
@@ -119,7 +119,7 @@ The appearance of each item in the <xref:Microsoft.Maui.Controls.ListView> can b
 </ListView>
 ```
 
-The elements specified in the `DataTemplate` define the appearance of each item in the list, and the child of the `DataTemplate` must be a <xref:Microsoft.Maui.Controls.Cell> object. In the example, layout within the `DataTemplate` is managed by a <xref:Microsoft.Maui.Controls.Grid>. The <xref:Microsoft.Maui.Controls.Grid> contains an <xref:Microsoft.Maui.Controls.Image> object, and two <xref:Microsoft.Maui.Controls.Label> objects, that all bind to properties of the `Monkey` class:
+The elements specified in the <xref:Microsoft.Maui.Controls.DataTemplate> define the appearance of each item in the list, and the child of the <xref:Microsoft.Maui.Controls.DataTemplate> must be a <xref:Microsoft.Maui.Controls.Cell> object. In the example, layout within the <xref:Microsoft.Maui.Controls.DataTemplate> is managed by a <xref:Microsoft.Maui.Controls.Grid>. The <xref:Microsoft.Maui.Controls.Grid> contains an <xref:Microsoft.Maui.Controls.Image> object, and two <xref:Microsoft.Maui.Controls.Label> objects, that all bind to properties of the `Monkey` class:
 
 ```csharp
 public class Monkey
@@ -139,7 +139,7 @@ For more information about data templates, see [Data templates](~/fundamentals/d
 
 ### Cells
 
-The appearance of each item in a <xref:Microsoft.Maui.Controls.ListView> is defined by a `DataTemplate`, and the `DataTemplate` must reference a <xref:Microsoft.Maui.Controls.Cell> class to display items. Each cell represents an item of data in the <xref:Microsoft.Maui.Controls.ListView>. .NET MAUI includes the following built-in cells:
+The appearance of each item in a <xref:Microsoft.Maui.Controls.ListView> is defined by a <xref:Microsoft.Maui.Controls.DataTemplate>, and the <xref:Microsoft.Maui.Controls.DataTemplate> must reference a <xref:Microsoft.Maui.Controls.Cell> class to display items. Each cell represents an item of data in the <xref:Microsoft.Maui.Controls.ListView>. .NET MAUI includes the following built-in cells:
 
 - <xref:Microsoft.Maui.Controls.TextCell>, which displays primary and secondary text on separate lines.
 - <xref:Microsoft.Maui.Controls.ImageCell>, which displays an image with primary and secondary text on separate lines.
@@ -154,9 +154,9 @@ Typically, <xref:Microsoft.Maui.Controls.SwitchCell> and <xref:Microsoft.Maui.Co
 A <xref:Microsoft.Maui.Controls.TextCell> displays primary and secondary text on separate lines. <xref:Microsoft.Maui.Controls.TextCell> defines the following properties:
 
 - `Text`, of type `string`, defines the primary text to be displayed.
-- `TextColor`, of type `Color`, represents the color of the primary text.
+- `TextColor`, of type <xref:Microsoft.Maui.Graphics.Color>, represents the color of the primary text.
 - `Detail`, of type `string`, defines the secondary text to be displayed.
-- `DetailColor`, of type `Color`, indicates the color of the secondary text.
+- `DetailColor`, of type <xref:Microsoft.Maui.Graphics.Color>, indicates the color of the secondary text.
 - `Command`, of type `ICommand`, defines the command that's executed when the cell is tapped.
 - `CommandParameter`, of type `object`, represents the parameter that's passed to the command.
 
@@ -252,7 +252,7 @@ The following screenshot shows the result of templating each item in the list:
 
 ## Choose item appearance at runtime
 
-The appearance of each item in the <xref:Microsoft.Maui.Controls.ListView> can be chosen at runtime, based on the item value, by setting the `ItemTemplate` property to a `DataTemplateSelector` object:
+The appearance of each item in the <xref:Microsoft.Maui.Controls.ListView> can be chosen at runtime, based on the item value, by setting the `ItemTemplate` property to a <xref:Microsoft.Maui.Controls.DataTemplateSelector> object:
 
 ```xaml
 <ContentPage ...
@@ -297,7 +297,7 @@ public class MonkeyDataTemplateSelector : DataTemplateSelector
 }
 ```
 
-The `MonkeyDataTemplateSelector` class defines `AmericanMonkey` and `OtherMonkey` `DataTemplate` properties that are set to different data templates. The `OnSelectTemplate` override returns the `AmericanMonkey` template, which displays the monkey name and location in teal, when the monkey name contains "America". When the monkey name doesn't contain "America", the `OnSelectTemplate` override returns the `OtherMonkey` template, which displays the monkey name and location in silver:
+The `MonkeyDataTemplateSelector` class defines `AmericanMonkey` and `OtherMonkey` <xref:Microsoft.Maui.Controls.DataTemplate> properties that are set to different data templates. The `OnSelectTemplate` override returns the `AmericanMonkey` template, which displays the monkey name and location in teal, when the monkey name contains "America". When the monkey name doesn't contain "America", the `OnSelectTemplate` override returns the `OtherMonkey` template, which displays the monkey name and location in silver:
 
 :::image type="content" source="media/listview/datatemplateselector.png" alt-text="Screenshot of ListView runtime item template selection.":::
 
@@ -363,7 +363,7 @@ To conserve memory, the native <xref:Microsoft.Maui.Controls.ListView> equivalen
 
 - `RetainElement`, specifies that the <xref:Microsoft.Maui.Controls.ListView> will generate a cell for each item in the list.
 - `RecycleElement`, specifies that the <xref:Microsoft.Maui.Controls.ListView> will attempt to minimize its memory footprint and execution speed by recycling list cells.
-- `RecycleElementAndDataTemplate`, as `RecycleElement` while also ensuring that when a <xref:Microsoft.Maui.Controls.ListView> uses a `DataTemplateSelector`, `DataTemplate` objects are cached by the type of item in the list.
+- `RecycleElementAndDataTemplate`, as `RecycleElement` while also ensuring that when a <xref:Microsoft.Maui.Controls.ListView> uses a <xref:Microsoft.Maui.Controls.DataTemplateSelector>, <xref:Microsoft.Maui.Controls.DataTemplate> objects are cached by the type of item in the list.
 
 <!-- > [!NOTE]
 > Windows ignores the `RetainElement` caching strategy, because it always uses caching to improve performance. Therefore, by default it behaves as if the `RecycleElement` caching strategy is applied. -->
@@ -416,17 +416,17 @@ public class CustomCell : ViewCell
 
 #### Recycle elements with a DataTemplateSelector
 
-When a <xref:Microsoft.Maui.Controls.ListView> uses a `DataTemplateSelector` to select a `DataTemplate`, the `RecycleElement` caching strategy does not cache `DataTemplate` objects. Instead, a `DataTemplate` is selected for each item of data in the list.
+When a <xref:Microsoft.Maui.Controls.ListView> uses a <xref:Microsoft.Maui.Controls.DataTemplateSelector> to select a <xref:Microsoft.Maui.Controls.DataTemplate>, the `RecycleElement` caching strategy does not cache <xref:Microsoft.Maui.Controls.DataTemplate> objects. Instead, a <xref:Microsoft.Maui.Controls.DataTemplate> is selected for each item of data in the list.
 
 > [!NOTE]
-> The `RecycleElement` caching strategy requires that when a `DataTemplateSelector` is asked to select a `DataTemplate` that each `DataTemplate` must return the same <xref:Microsoft.Maui.Controls.ViewCell> type. For example, given a <xref:Microsoft.Maui.Controls.ListView> with a `DataTemplateSelector` that can return either `MyDataTemplateA` (where `MyDataTemplateA` returns a <xref:Microsoft.Maui.Controls.ViewCell> of type `MyViewCellA`), or `MyDataTemplateB` (where `MyDataTemplateB` returns a <xref:Microsoft.Maui.Controls.ViewCell> of type `MyViewCellB`), when `MyDataTemplateA` is returned it must return `MyViewCellA` or an exception will be thrown.
+> The `RecycleElement` caching strategy requires that when a <xref:Microsoft.Maui.Controls.DataTemplateSelector> is asked to select a <xref:Microsoft.Maui.Controls.DataTemplate> that each <xref:Microsoft.Maui.Controls.DataTemplate> must return the same <xref:Microsoft.Maui.Controls.ViewCell> type. For example, given a <xref:Microsoft.Maui.Controls.ListView> with a <xref:Microsoft.Maui.Controls.DataTemplateSelector> that can return either `MyDataTemplateA` (where `MyDataTemplateA` returns a <xref:Microsoft.Maui.Controls.ViewCell> of type `MyViewCellA`), or `MyDataTemplateB` (where `MyDataTemplateB` returns a <xref:Microsoft.Maui.Controls.ViewCell> of type `MyViewCellB`), when `MyDataTemplateA` is returned it must return `MyViewCellA` or an exception will be thrown.
 
 ### Recycle elements with DataTemplates
 
-The `RecycleElementAndDataTemplate` caching strategy builds on the `RecycleElement` caching strategy by additionally ensuring that when a <xref:Microsoft.Maui.Controls.ListView> uses a `DataTemplateSelector` to select a `DataTemplate`, `DataTemplate` objects are cached by the type of item in the list. Therefore, `DataTemplate` objects are selected once per item type, instead of once per item instance.
+The `RecycleElementAndDataTemplate` caching strategy builds on the `RecycleElement` caching strategy by additionally ensuring that when a <xref:Microsoft.Maui.Controls.ListView> uses a <xref:Microsoft.Maui.Controls.DataTemplateSelector> to select a <xref:Microsoft.Maui.Controls.DataTemplate>, <xref:Microsoft.Maui.Controls.DataTemplate> objects are cached by the type of item in the list. Therefore, <xref:Microsoft.Maui.Controls.DataTemplate> objects are selected once per item type, instead of once per item instance.
 
 > [!NOTE]
-> The `RecycleElementAndDataTemplate` caching strategy requires that `DataTemplate` objects returned by the `DataTemplateSelector` must use the `DataTemplate` constructor that takes a `Type`.
+> The `RecycleElementAndDataTemplate` caching strategy requires that <xref:Microsoft.Maui.Controls.DataTemplate> objects returned by the <xref:Microsoft.Maui.Controls.DataTemplateSelector> must use the <xref:Microsoft.Maui.Controls.DataTemplate> constructor that takes a `Type`.
 
 ### Set the caching strategy
 
@@ -476,14 +476,14 @@ Then the `ListViewCachingStrategy` enumeration value can be specified from XAML 
 
 ## Headers and footers
 
-<xref:Microsoft.Maui.Controls.ListView> can present a header and footer that scroll with the items in the list. The header and footer can be strings, views, or `DataTemplate` objects.
+<xref:Microsoft.Maui.Controls.ListView> can present a header and footer that scroll with the items in the list. The header and footer can be strings, views, or <xref:Microsoft.Maui.Controls.DataTemplate> objects.
 
 <xref:Microsoft.Maui.Controls.ListView> defines the following properties for specifying the header and footer:
 
 - `Header`, of type `object`, specifies the string, binding, or view that will be displayed at the start of the list.
-- `HeaderTemplate`, of type `DataTemplate`, specifies the `DataTemplate` to use to format the `Header`.
+- `HeaderTemplate`, of type <xref:Microsoft.Maui.Controls.DataTemplate>, specifies the <xref:Microsoft.Maui.Controls.DataTemplate> to use to format the `Header`.
 - `Footer`, of type `object`, specifies the string, binding, or view that will be displayed at the end of the list.
-- `FooterTemplate`, of type `DataTemplate`, specifies the `DataTemplate` to use to format the `Footer`.
+- `FooterTemplate`, of type <xref:Microsoft.Maui.Controls.DataTemplate>, specifies the <xref:Microsoft.Maui.Controls.DataTemplate> to use to format the `Footer`.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings.
 
@@ -535,7 +535,7 @@ The following screenshot shows the resulting header:
 
 ### Display a templated header and footer
 
-The `HeaderTemplate` and `FooterTemplate` properties can be set to `DataTemplate` objects that are used to format the header and footer. In this scenario, the `Header` and `Footer` properties must bind to the current source for the templates to be applied, as shown in the following example:
+The `HeaderTemplate` and `FooterTemplate` properties can be set to <xref:Microsoft.Maui.Controls.DataTemplate> objects that are used to format the header and footer. In this scenario, the `Header` and `Footer` properties must bind to the current source for the templates to be applied, as shown in the following example:
 
 ```xaml
 <ListView ItemsSource="{Binding Monkeys}"
@@ -583,11 +583,11 @@ In addition, when the separator is enabled, it's color can be set with the `Sepa
 
 ## Size items
 
-By default, all items in a <xref:Microsoft.Maui.Controls.ListView> have the same height, which is derived from the contents of the `DataTemplate` that defines the appearance of each item. However, this behavior can be changed with the `HasUnevenRows` and `RowHeight` properties. By default, the `HasUnevenRows` property is `false`.
+By default, all items in a <xref:Microsoft.Maui.Controls.ListView> have the same height, which is derived from the contents of the <xref:Microsoft.Maui.Controls.DataTemplate> that defines the appearance of each item. However, this behavior can be changed with the `HasUnevenRows` and `RowHeight` properties. By default, the `HasUnevenRows` property is `false`.
 
-The `RowHeight` property can be set to an `int` that represents the height of each item in the <xref:Microsoft.Maui.Controls.ListView>, provided that `HasUnevenRows` is `false`. When `HasUnevenRows` is set to `true`, each item in the <xref:Microsoft.Maui.Controls.ListView> can have a different height. The height of each item will be derived from the contents of the item's `DataTemplate`, and so each item will be sized to its content.
+The `RowHeight` property can be set to an `int` that represents the height of each item in the <xref:Microsoft.Maui.Controls.ListView>, provided that `HasUnevenRows` is `false`. When `HasUnevenRows` is set to `true`, each item in the <xref:Microsoft.Maui.Controls.ListView> can have a different height. The height of each item will be derived from the contents of the item's <xref:Microsoft.Maui.Controls.DataTemplate>, and so each item will be sized to its content.
 
-Individual <xref:Microsoft.Maui.Controls.ListView> items can be programmatically resized at runtime by changing layout related properties of elements within the `DataTemplate`, provided that the `HasUnevenRows` property is `true`. The following example changes the height of an <xref:Microsoft.Maui.Controls.Image> object when it's tapped:
+Individual <xref:Microsoft.Maui.Controls.ListView> items can be programmatically resized at runtime by changing layout related properties of elements within the <xref:Microsoft.Maui.Controls.DataTemplate>, provided that the `HasUnevenRows` property is `true`. The following example changes the height of an <xref:Microsoft.Maui.Controls.Image> object when it's tapped:
 
 ```csharp
 void OnImageTapped(object sender, EventArgs args)
@@ -781,7 +781,7 @@ listView.SetBinding(ItemsView.ItemsSourceProperty, "Animals");
 // ...
 ```
 
-The appearance of each item in the <xref:Microsoft.Maui.Controls.ListView> is defined by setting its `ItemTemplate` property to a `DataTemplate`. For more information, see [Define item appearance](#define-item-appearance).
+The appearance of each item in the <xref:Microsoft.Maui.Controls.ListView> is defined by setting its `ItemTemplate` property to a <xref:Microsoft.Maui.Controls.DataTemplate>. For more information, see [Define item appearance](#define-item-appearance).
 
 The following screenshot shows the <xref:Microsoft.Maui.Controls.ListView> displaying grouped data:
 
@@ -792,7 +792,7 @@ The following screenshot shows the <xref:Microsoft.Maui.Controls.ListView> displ
 
 ### Customize the group header
 
-The appearance of each group header can be customized by setting the `ListView.GroupHeaderTemplate` property to a `DataTemplate`:
+The appearance of each group header can be customized by setting the `ListView.GroupHeaderTemplate` property to a <xref:Microsoft.Maui.Controls.DataTemplate>:
 
 ```xaml
 <ListView ItemsSource="{Binding Animals}"
@@ -820,7 +820,7 @@ In this example, each group header is set to a <xref:Microsoft.Maui.Controls.Lab
 
 ### Group without templates
 
-<xref:Microsoft.Maui.Controls.ListView> can display correctly grouped data without setting the `ItemTemplate` property to a `DataTemplate`:
+<xref:Microsoft.Maui.Controls.ListView> can display correctly grouped data without setting the `ItemTemplate` property to a <xref:Microsoft.Maui.Controls.DataTemplate>:
 
 ```xaml
 <ListView ItemsSource="{Binding Animals}"
@@ -947,7 +947,7 @@ listView.ScrollTo(monkey, position: ScrollToPosition.End, animate: true);
 
 ## Add context menus
 
-<xref:Microsoft.Maui.Controls.ListView> supports context menus items, which are defined as `MenuItem` objects that are added to the `ViewCell.ContextActions` collection in the `DataTemplate` for each item:
+<xref:Microsoft.Maui.Controls.ListView> supports context menus items, which are defined as `MenuItem` objects that are added to the `ViewCell.ContextActions` collection in the <xref:Microsoft.Maui.Controls.DataTemplate> for each item:
 
 ```xaml
 <ListView x:Name="listView"

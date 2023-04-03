@@ -12,7 +12,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.SearchB
 
 <xref:Microsoft.Maui.Controls.SearchBar> defines the following properties:
 
-- `CancelButtonColor` is a `Color` that defines the color of the cancel button.
+- `CancelButtonColor` is a <xref:Microsoft.Maui.Graphics.Color> that defines the color of the cancel button.
 - `CharacterSpacing`, is a `double` that's the spacing between characters of the <xref:Microsoft.Maui.Controls.SearchBar> text.
 - `CursorPosition` is an `int` that determines the position at which the next character will be inserted into the string stored in the `Text` property.
 - `FontAttributes` is a `FontAttributes` enum value that determines whether the <xref:Microsoft.Maui.Controls.SearchBar> font is bold, italic, or neither.
@@ -22,12 +22,12 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.SearchB
 - `HorizontalTextAlignment` is a `TextAlignment` enum value that defines the horizontal alignment of the query text.
 - `IsTextPredictionEnabled` is a `bool` that determines whether text prediction and automatic text correction is enabled.
 - `Placeholder` is a `string` that defines the placeholder text, such as "Search...".
-- `PlaceholderColor` is a `Color` that defines the color of the placeholder text.
+- `PlaceholderColor` is a <xref:Microsoft.Maui.Graphics.Color> that defines the color of the placeholder text.
 - `SearchCommand` is an `ICommand` that allows binding user actions, such as finger taps or clicks, to commands defined on a viewmodel.
 - `SearchCommandParameter` is an `object` that specifies the parameter that should be passed to the `SearchCommand`.
 - `SelectionLength` is an `int` that can be used to return or set the length of text selection within the <xref:Microsoft.Maui.Controls.SearchBar>.
 - `Text` is a `string` containing the query text in the <xref:Microsoft.Maui.Controls.SearchBar>.
-- `TextColor` is a `Color` that defines the query text color.
+- `TextColor` is a <xref:Microsoft.Maui.Graphics.Color> that defines the query text color.
 - `VerticalTextAlignment` is a `TextAlignment` enum value that defines the vertical alignment of the query text.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.

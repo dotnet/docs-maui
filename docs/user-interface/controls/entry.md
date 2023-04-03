@@ -22,13 +22,13 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Entry> 
 - `IsPassword`, of type `bool`, specifies whether the entry should visually obscure typed text.
 - `IsTextPredictionEnabled`, of type `bool`, controls whether text prediction and automatic text correction is enabled.
 - `Placeholder`, of type `string`, defines the text that's displayed when the control is empty.
-- `PlaceholderColor`, of type `Color`, defines the color of the placeholder text.
+- `PlaceholderColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the color of the placeholder text.
 - `ReturnCommand`, of type `ICommand`, defines the command to be executed when the return key is pressed.
 - `ReturnCommandParameter`, of type `object`, specifies the parameter for the `ReturnCommand`.
 - `ReturnType`, of type `ReturnType`, specifies the appearance of the return button.
 - `SelectionLength`, of type `int`, represents the length of selected text within the entry.
 - `Text`, of type `string`, defines the text entered into the entry.
-- `TextColor`, of type `Color`, defines the color of the entered text.
+- `TextColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the color of the entered text.
 - `VerticalTextAlignment`, of type `TextAlignment`, defines the vertical alignment of the text.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.

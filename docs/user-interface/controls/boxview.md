@@ -10,7 +10,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.BoxView
 
 <xref:Microsoft.Maui.Controls.BoxView> defines the following properties:
 
-- `Color`, of type `Color`, which defines the color of the <xref:Microsoft.Maui.Controls.BoxView>.
+- `Color`, of type <xref:Microsoft.Maui.Graphics.Color>, which defines the color of the <xref:Microsoft.Maui.Controls.BoxView>.
 - `CornerRadius`, of type `CornerRadius`, which defines the corner radius of the <xref:Microsoft.Maui.Controls.BoxView>. This property can be set to a single `double` uniform corner radius value, or a `CornerRadius` structure defined by four `double` values that are applied to the top left, top right, bottom left, and bottom right of the <xref:Microsoft.Maui.Controls.BoxView>.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.

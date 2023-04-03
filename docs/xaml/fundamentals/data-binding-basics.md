@@ -19,7 +19,7 @@ Data bindings connect properties of two objects, called the *source* and the *ta
 
 The target property must be a bindable property, which means that the target object must derive from <xref:Microsoft.Maui.Controls.BindableObject>. A property of <xref:Microsoft.Maui.Controls.Label>, such as `Text`, is associated with the bindable property `TextProperty`.
 
-In XAML, you must also perform the same two steps that are required in code, except that the `Binding` markup extension takes the place of the `SetBinding` call and the `Binding` class. However, when you define data bindings in XAML, there are multiple ways to set the `BindingContext` of the target object. Sometimes it’s set from the code-behind file, sometimes using a `StaticResource` or `x:Static` markup extension, and sometimes as the content of `BindingContext` property-element tags.
+In XAML, you must also perform the same two steps that are required in code, except that the `Binding` markup extension takes the place of the `SetBinding` call and the `Binding` class. However, when you define data bindings in XAML, there are multiple ways to set the `BindingContext` of the target object. Sometimes it’s set from the code-behind file, sometimes using a [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) or `x:Static` markup extension, and sometimes as the content of `BindingContext` property-element tags.
 
 ## View-to-view bindings
 
@@ -232,7 +232,7 @@ namespace XamlSamples
 }
 ```
 
-Each `NamedColor` object has `Name` and `FriendlyName` properties of type `string`, a `Color` property of type `Color`, and `Red`, `Green`, and `Blue` properties. In addition, the `NamedColor` static constructor creates an `IEnumerable<NamedColor>` collection that contains `NamedColor` objects corresponding to the fields of type `Color` in the <xref:Microsoft.Maui.Graphics.Colors> class, and assigns it to its public static `All` property.
+Each `NamedColor` object has `Name` and `FriendlyName` properties of type `string`, a `Color` property of type <xref:Microsoft.Maui.Graphics.Color>, and `Red`, `Green`, and `Blue` properties. In addition, the `NamedColor` static constructor creates an `IEnumerable<NamedColor>` collection that contains `NamedColor` objects corresponding to the fields of type <xref:Microsoft.Maui.Graphics.Color> in the <xref:Microsoft.Maui.Graphics.Colors> class, and assigns it to its public static `All` property.
 
 Setting the static `NamedColor.All` property to the `ItemsSource` of a <xref:Microsoft.Maui.Controls.ListView> can be achieved using the `x:Static` markup extension:
 
@@ -250,7 +250,7 @@ The result establishes that the items are of type `XamlSamples.NamedColor`:
 
 :::image type="content" source="media/data-binding-basics/listview1.png" alt-text="Binding to a collection.":::
 
-To define a template for the items, the `ItemTemplate` should be set to a `DataTemplate` that references a <xref:Microsoft.Maui.Controls.ViewCell>. The <xref:Microsoft.Maui.Controls.ViewCell> should define a layout of one or more views to display each item:
+To define a template for the items, the `ItemTemplate` should be set to a <xref:Microsoft.Maui.Controls.DataTemplate> that references a <xref:Microsoft.Maui.Controls.ViewCell>. The <xref:Microsoft.Maui.Controls.ViewCell> should define a layout of one or more views to display each item:
 
 ```xaml
 <ListView ItemsSource="{x:Static local:NamedColor.All}">
@@ -329,7 +329,7 @@ The item template can be expanded to display more information and the actual col
 
 The previous XAML example displays the individual `Red`, `Green`, and `Blue` properties of each `NamedColor`. These properties are of type `float` and range from 0 to 1. If you want to display the hexadecimal values, you can’t simply use `StringFormat` with an “X2” formatting specification. That only works for integers and besides, the `float` values need to be multiplied by 255.
 
-This issue can be solved with a *value converter*, also called a *binding converter*. This is a class that implements the `IValueConverter` interface, which means it has two methods named `Convert` and `ConvertBack`. The `Convert` method is called when a value is transferred from source to target. The `ConvertBack` method is called for transfers from target to source in `OneWayToSource` or `TwoWay` bindings:
+This issue can be solved with a *value converter*, also called a *binding converter*. This is a class that implements the <xref:Microsoft.Maui.Controls.IValueConverter> interface, which means it has two methods named `Convert` and `ConvertBack`. The `Convert` method is called when a value is transferred from source to target. The `ConvertBack` method is called for transfers from target to source in `OneWayToSource` or `TwoWay` bindings:
 
 ```csharp
 using System.Globalization;

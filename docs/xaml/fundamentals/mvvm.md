@@ -128,7 +128,7 @@ In addition, it’s possible to access individual properties of the `DateTime` p
 
 MVVM is often used with two-way data bindings for an interactive view based on an underlying data model.
 
-The following example shows the `HslViewModel` that converts a `Color` value into `Hue`, `Saturation`, and `Luminosity` values, and back again:
+The following example shows the `HslViewModel` that converts a <xref:Microsoft.Maui.Graphics.Color> value into `Hue`, `Saturation`, and `Luminosity` values, and back again:
 
 ```csharp
 using System.ComponentModel;

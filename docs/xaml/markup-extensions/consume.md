@@ -16,7 +16,7 @@ For example, you typically set the `Color` property of <xref:Microsoft.Maui.Cont
 <BoxView Color="Blue" />
 ```
 
-However, you might prefer instead to set the `Color` attribute from a value stored in a resource dictionary, or from the value of a static property of a class that you've created, or from a property of type `Color` of another element on the page, or constructed from separate hue, saturation, and luminosity values. All these options are possible using XAML markup extensions.
+However, you might prefer instead to set the `Color` attribute from a value stored in a resource dictionary, or from the value of a static property of a class that you've created, or from a property of type <xref:Microsoft.Maui.Graphics.Color> of another element on the page, or constructed from separate hue, saturation, and luminosity values. All these options are possible using XAML markup extensions.
 
 A markup extension is a different way to express an attribute of an element. .NET MAUI XAML markup extensions are usually identifiable by an attribute value that is enclosed in curly braces:
 
@@ -31,16 +31,16 @@ Any attribute value in curly braces is *always* a XAML markup extension. However
 
 In addition to the markup extensions discussed in this article, the following markup extensions are included in .NET MAUI and discussed in other articles:
 
-- `StaticResource` - reference objects from a resource dictionary. For more information, see [Resource dictionaries**](~/fundamentals/resource-dictionaries.md).
-- `DynamicResource` - respond to changes in objects in a resource dictionary. For more information, see [Dynamic styles**](~/user-interface/styles/xaml.md#dynamic-styles).
-- `Binding` - establish a link between properties of two objects. For more information, see [Data binding**](~/fundamentals/data-binding/index.md).
-- `TemplateBinding` - performs data binding from a control template. For more information, see [Control templates](~/fundamentals/controltemplate.md).
-- `RelativeSource` - sets the binding source relative to the position of the binding target. For more information, see [Relative bindings](~/fundamentals/data-binding/relative-bindings.md).
+- [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) - reference objects from a resource dictionary. For more information, see [Resource dictionaries](~/fundamentals/resource-dictionaries.md).
+- [`DynamicResource`](xref:Microsoft.Maui.Controls.Xaml.DynamicResourceExtension) - respond to changes in objects in a resource dictionary. For more information, see [Dynamic styles](~/user-interface/styles/xaml.md#dynamic-styles).
+- [`Binding`](xref:Microsoft.Maui.Controls.Xaml.BindingExtension) - establish a link between properties of two objects. For more information, see [Data binding](~/fundamentals/data-binding/index.md).
+- [`TemplateBinding`](xref:Microsoft.Maui.Controls.Xaml.TemplateBindingExtension) - performs data binding from a control template. For more information, see [Control templates](~/fundamentals/controltemplate.md).
+- [`RelativeSource`](xref:Microsoft.Maui.Controls.Xaml.RelativeSourceExtension) - sets the binding source relative to the position of the binding target. For more information, see [Relative bindings](~/fundamentals/data-binding/relative-bindings.md).
 <!-- - `ConstraintExpression` - relates the position and size of a child in a `RelativeLayout` to its parent, or a sibling. For more information, see [RelativeLayout](~/user-interface/layouts/relativelayout.md).-->
 
 ## x:Static markup extension
 
-The `x:Static` markup extension is supported by the `StaticExtension` class. The class has a single property named `Member` of type `string` that you set to the name of a public constant, static property, static field, or enumeration member.
+The `x:Static` markup extension is supported by the <xref:Microsoft.Maui.Controls.Xaml.StaticExtension> class. The class has a single property named `Member` of type `string` that you set to the name of a public constant, static property, static field, or enumeration member.
 
 One way to use `x:Static` is to first define a class with some constants or static variables, such as this `AppConstants` class:
 
@@ -51,7 +51,7 @@ static class AppConstants
 }
 ```
 
-The following XAML demonstrates the most verbose approach to instantiating the `StaticExtension` class between `Label.FontSize` property-element tags:
+The following XAML demonstrates the most verbose approach to instantiating the <xref:Microsoft.Maui.Controls.Xaml.StaticExtension> class between `Label.FontSize` property-element tags:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -71,7 +71,7 @@ The following XAML demonstrates the most verbose approach to instantiating the `
 </ContentPage>
 ```
 
-The XAML parser also allows the `StaticExtension` class to be abbreviated as `x:Static`:
+The XAML parser also allows the <xref:Microsoft.Maui.Controls.Xaml.StaticExtension> class to be abbreviated as `x:Static`:
 
 ```xaml
 <Label Text="Label No. 2">
@@ -81,14 +81,14 @@ The XAML parser also allows the `StaticExtension` class to be abbreviated as `x:
 </Label>
 ```
 
-This syntax can be simplified even further by putting the `StaticExtension` class and the member setting in curly braces. The resulting expression is set directly to the `FontSize` attribute:
+This syntax can be simplified even further by putting the <xref:Microsoft.Maui.Controls.Xaml.StaticExtension> class and the member setting in curly braces. The resulting expression is set directly to the `FontSize` attribute:
 
 ```xaml
 <Label Text="Label No. 3"
        FontSize="{x:StaticExtension Member=local:AppConstants.NormalFontSize}" />
 ```
 
-In this example, there are *no* quotation marks within the curly braces. The `Member` property of `StaticExtension` is no longer an XML attribute. It is instead part of the expression for the markup extension.
+In this example, there are *no* quotation marks within the curly braces. The `Member` property of <xref:Microsoft.Maui.Controls.Xaml.StaticExtension> is no longer an XML attribute. It is instead part of the expression for the markup extension.
 
 Just as you can abbreviate `x:StaticExtension` to `x:Static` when you use it as an object element, you can also abbreviate it in the expression within curly braces:
 
@@ -97,7 +97,7 @@ Just as you can abbreviate `x:StaticExtension` to `x:Static` when you use it as 
        FontSize="{x:Static Member=local:AppConstants.NormalFontSize}" />
 ```
 
-The `StaticExtension` class has a `ContentProperty` attribute referencing the property `Member`, which marks this property as the class's default content property. For XAML markup extensions expressed with curly braces, you can eliminate the `Member=` part of the expression:
+The <xref:Microsoft.Maui.Controls.Xaml.StaticExtension> class has a `ContentProperty` attribute referencing the property `Member`, which marks this property as the class's default content property. For XAML markup extensions expressed with curly braces, you can eliminate the `Member=` part of the expression:
 
 ```xaml
 <Label Text="Label No. 5"
@@ -121,7 +121,7 @@ The following screenshot shows the XAML output:
 
 ## x:Reference markup extension
 
-The `x:Reference` markup extension is supported by the `ReferenceExtension` class. The class has a single property named `Name` of type `string` that you set to the name of an element on the page that has been given a name with `x:Name`. This `Name` property is the content property of `ReferenceExtension`, so `Name=` is not required when `x:Reference` appears in curly braces. The `x:Reference` markup extension is used exclusively with data bindings. For more information about data bindings, see [Data binding](~/fundamentals/data-binding/index.md).
+The `x:Reference` markup extension is supported by the <xref:Microsoft.Maui.Controls.Xaml.ReferenceExtension> class. The class has a single property named `Name` of type `string` that you set to the name of an element on the page that has been given a name with `x:Name`. This `Name` property is the content property of <xref:Microsoft.Maui.Controls.Xaml.ReferenceExtension>, so `Name=` is not required when `x:Reference` appears in curly braces. The `x:Reference` markup extension is used exclusively with data bindings. For more information about data bindings, see [Data binding](~/fundamentals/data-binding/index.md).
 
 The following XAML example shows two uses of `x:Reference` with data bindings, the first where it's used to set the `Source` property of the `Binding` object, and the second where it's used to set the `BindingContext` property for two data bindings:
 
@@ -150,7 +150,7 @@ The following XAML example shows two uses of `x:Reference` with data bindings, t
 </ContentPage>
 ```
 
-In this example, both `x:Reference` expressions use the abbreviated version of the `ReferenceExtension` class name and eliminate the `Name=` part of the expression. In the first example, the `x:Reference` markup extension is embedded in the `Binding` markup extension and the `Source` and `StringFormat` properties are separated by commas.
+In this example, both `x:Reference` expressions use the abbreviated version of the <xref:Microsoft.Maui.Controls.Xaml.ReferenceExtension> class name and eliminate the `Name=` part of the expression. In the first example, the `x:Reference` markup extension is embedded in the `Binding` markup extension and the `Source` and `StringFormat` properties are separated by commas.
 
 The following screenshot shows the XAML output:
 
@@ -158,7 +158,7 @@ The following screenshot shows the XAML output:
 
 ## x:Type markup extension
 
-The `x:Type` markup extension is the XAML equivalent of the C# [`typeof`](/dotnet/csharp/language-reference/keywords/typeof/) keyword. It's supported by the `TypeExtension` class, which defines a property named `TypeName` of type `string` that should be set to a class or structure name. The `x:Type` markup extension returns the [`Type`](xref:System.Type) object of that class or structure. `TypeName` is the content property of `TypeExtension`, so `TypeName=` is not required when `x:Type` appears with curly braces.
+The `x:Type` markup extension is the XAML equivalent of the C# [`typeof`](/dotnet/csharp/language-reference/keywords/typeof/) keyword. It's supported by the <xref:Microsoft.Maui.Controls.Xaml.TypeExtension> class, which defines a property named `TypeName` of type `string` that should be set to a class or structure name. The `x:Type` markup extension returns the [`Type`](xref:System.Type) object of that class or structure. `TypeName` is the content property of <xref:Microsoft.Maui.Controls.Xaml.TypeExtension>, so `TypeName=` is not required when `x:Type` appears with curly braces.
 
 The `x:Type` markup extension is commonly used with the `x:Array` markup extension. For more information, see [x:Array markup extension](#xarray-markup-extension).
 
@@ -219,10 +219,10 @@ When a <xref:Microsoft.Maui.Controls.Button> is pressed a new instance of the `C
 
 ## x:Array markup extension
 
-The `x:Array` markup extension enables you to define an array in markup. It is supported by the `ArrayExtension` class, which defines two properties:
+The `x:Array` markup extension enables you to define an array in markup. It is supported by the <xref:Microsoft.Maui.Controls.Xaml.ArrayExtension> class, which defines two properties:
 
 - `Type` of type `Type`, which indicates the type of the elements in the array. This property should be set to an `x:Type` markup extension.
-- `Items` of type `IList`, which is a collection of the items themselves. This is the content property of `ArrayExtension`.
+- `Items` of type `IList`, which is a collection of the items themselves. This is the content property of <xref:Microsoft.Maui.Controls.Xaml.ArrayExtension>.
 
 The `x:Array` markup extension itself never appears in curly braces. Instead, `x:Array` start and end tags delimit the list of items.
 
@@ -276,7 +276,7 @@ In this example, the <xref:Microsoft.Maui.Controls.ViewCell> creates a simple <x
 
 ## x:Null markup extension
 
-The `x:Null` markup extension is supported by the `NullExtension` class. It has no properties and is simply the XAML equivalent of the C# [`null`](/dotnet/csharp/language-reference/keywords/null/) keyword.
+The `x:Null` markup extension is supported by the <xref:Microsoft.Maui.Controls.Xaml.NullExtension> class. It has no properties and is simply the XAML equivalent of the C# [`null`](/dotnet/csharp/language-reference/keywords/null/) keyword.
 
 The following XAML example shows how to use the `x:Null` markup extension:
 
@@ -311,7 +311,7 @@ In this example, an implicit <xref:Microsoft.Maui.Controls.Style> is defined for
 
 The `OnPlatform` markup extension enables you to customize UI appearance on a per-platform basis. It provides the same functionality as the `OnPlatform` and `On` classes, but with a more concise representation.
 
-The `OnPlatform` markup extension is supported by the `OnPlatformExtension` class, which defines the following properties:
+The `OnPlatform` markup extension is supported by the <xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension> class, which defines the following properties:
 
 - `Default` of type `object`, that you set to a default value to be applied to the properties that represent platforms.
 - `Android` of type `object`, that you set to a value to be applied on Android.
@@ -319,16 +319,16 @@ The `OnPlatform` markup extension is supported by the `OnPlatformExtension` clas
 - `MacCatalyst` of type `object`, that you set to a value to be applied on Mac Catalyst.
 - `Tizen` of type `object`, that you set to a value to be applied on the Tizen platform.
 - `WinUI` of type `object`, that you set to a value to be applied on WinUI.
-- `Converter` of type `IValueConverter`, that can be set to an `IValueConverter` implementation.
-- `ConverterParameter` of type `object`, that can be set to a value to pass to the `IValueConverter` implementation.
+- `Converter` of type <xref:Microsoft.Maui.Controls.IValueConverter>, that can be set to an <xref:Microsoft.Maui.Controls.IValueConverter> implementation.
+- `ConverterParameter` of type `object`, that can be set to a value to pass to the <xref:Microsoft.Maui.Controls.IValueConverter> implementation.
 
 > [!NOTE]
-> The XAML parser allows the `OnPlatformExtension` class to be abbreviated as `OnPlatform`.
+> The XAML parser allows the <xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension> class to be abbreviated as `OnPlatform`.
 
-The `Default` property is the content property of `OnPlatformExtension`. Therefore, for XAML markup expressions expressed with curly braces, you can eliminate the `Default=` part of the expression provided that it's the first argument. If the `Default` property isn't set, it will default to the `BindableProperty.DefaultValue` property value, provided that the markup extension is targeting a <xref:Microsoft.Maui.Controls.BindableProperty>.
+The `Default` property is the content property of <xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension>. Therefore, for XAML markup expressions expressed with curly braces, you can eliminate the `Default=` part of the expression provided that it's the first argument. If the `Default` property isn't set, it will default to the `BindableProperty.DefaultValue` property value, provided that the markup extension is targeting a <xref:Microsoft.Maui.Controls.BindableProperty>.
 
 > [!IMPORTANT]
-> The XAML parser expects that values of the correct type will be provided to properties consuming the `OnPlatform` markup extension. If type conversion is necessary, the `OnPlatform` markup extension will attempt to perform it using the default converters provided by .NET MAUI. However, there are some type conversions that can't be performed by the default converters and in these cases the `Converter` property should be set to an `IValueConverter` implementation.
+> The XAML parser expects that values of the correct type will be provided to properties consuming the `OnPlatform` markup extension. If type conversion is necessary, the `OnPlatform` markup extension will attempt to perform it using the default converters provided by .NET MAUI. However, there are some type conversions that can't be performed by the default converters and in these cases the `Converter` property should be set to an <xref:Microsoft.Maui.Controls.IValueConverter> implementation.
 
 The **OnPlatform Demo** page shows how to use the `OnPlatform` markup extension:
 
@@ -339,11 +339,11 @@ The **OnPlatform Demo** page shows how to use the `OnPlatform` markup extension:
          HorizontalOptions="Center" />
 ```
 
-In this example, all three `OnPlatform` expressions use the abbreviated version of the `OnPlatformExtension` class name. The three `OnPlatform` markup extensions set the `Color`, <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest>, and <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> properties of the <xref:Microsoft.Maui.Controls.BoxView> to different values on iOS and Android. The markup extensions also provide default values for these properties on the platforms that aren't specified, while eliminating the `Default=` part of the expression.
+In this example, all three `OnPlatform` expressions use the abbreviated version of the <xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension> class name. The three `OnPlatform` markup extensions set the `xref:Microsoft.Maui.Graphics.Color`, <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest>, and <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> properties of the <xref:Microsoft.Maui.Controls.BoxView> to different values on iOS and Android. The markup extensions also provide default values for these properties on the platforms that aren't specified, while eliminating the `Default=` part of the expression.
 
 ## OnIdiom markup extension
 
-The `OnIdiom` markup extension enables you to customize UI appearance based on the idiom of the device the application is running on. It's supported by the `OnIdiomExtension` class, which defines the following properties:
+The `OnIdiom` markup extension enables you to customize UI appearance based on the idiom of the device the application is running on. It's supported by the <xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension> class, which defines the following properties:
 
 - `Default` of type `object`, that you set to a default value to be applied to the properties that represent device idioms.
 - `Phone` of type `object`, that you set to a value to be applied on phones.
@@ -351,16 +351,16 @@ The `OnIdiom` markup extension enables you to customize UI appearance based on t
 - `Desktop` of type `object`, that you set to a value to be applied on desktop platforms.
 - `TV` of type `object`, that you set to a value to be applied on TV platforms.
 - `Watch` of type `object`, that you set to a value to be applied on Watch platforms.
-- `Converter` of type `IValueConverter`, that can be set to an `IValueConverter` implementation.
-- `ConverterParameter` of type `object`, that can be set to a value to pass to the `IValueConverter` implementation.
+- `Converter` of type <xref:Microsoft.Maui.Controls.IValueConverter>, that can be set to an <xref:Microsoft.Maui.Controls.IValueConverter> implementation.
+- `ConverterParameter` of type `object`, that can be set to a value to pass to the <xref:Microsoft.Maui.Controls.IValueConverter> implementation.
 
 > [!NOTE]
-> The XAML parser allows the `OnIdiomExtension` class to be abbreviated as `OnIdiom`.
+> The XAML parser allows the <xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension> class to be abbreviated as `OnIdiom`.
 
-The `Default` property is the content property of `OnIdiomExtension`. Therefore, for XAML markup expressions expressed with curly braces, you can eliminate the `Default=` part of the expression provided that it's the first argument.
+The `Default` property is the content property of <xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension>. Therefore, for XAML markup expressions expressed with curly braces, you can eliminate the `Default=` part of the expression provided that it's the first argument.
 
 > [!IMPORTANT]
-> The XAML parser expects that values of the correct type will be provided to properties consuming the `OnIdiom` markup extension. If type conversion is necessary, the `OnIdiom` markup extension will attempt to perform it using the default converters provided by .NET MAUI. However, there are some type conversions that can't be performed by the default converters and in these cases the `Converter` property should be set to an `IValueConverter` implementation.
+> The XAML parser expects that values of the correct type will be provided to properties consuming the `OnIdiom` markup extension. If type conversion is necessary, the `OnIdiom` markup extension will attempt to perform it using the default converters provided by .NET MAUI. However, there are some type conversions that can't be performed by the default converters and in these cases the `Converter` property should be set to an <xref:Microsoft.Maui.Controls.IValueConverter> implementation.
 
 The following XAML example shows how to use the `OnIdiom` markup extension:
 
@@ -371,14 +371,14 @@ The following XAML example shows how to use the `OnIdiom` markup extension:
          HorizontalOptions="Center" />
 ```
 
-In this example, all three `OnIdiom` expressions use the abbreviated version of the `OnIdiomExtension` class name. The three `OnIdiom` markup extensions set the `Color`, <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest>, and <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> properties of the <xref:Microsoft.Maui.Controls.BoxView> to different values on the phone, tablet, and desktop idioms. The markup extensions also provide default values for these properties on the idioms that aren't specified, while eliminating the `Default=` part of the expression.
+In this example, all three `OnIdiom` expressions use the abbreviated version of the <xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension> class name. The three `OnIdiom` markup extensions set the `Color`, <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest>, and <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> properties of the <xref:Microsoft.Maui.Controls.BoxView> to different values on the phone, tablet, and desktop idioms. The markup extensions also provide default values for these properties on the idioms that aren't specified, while eliminating the `Default=` part of the expression.
 
 ## DataTemplate markup extension
 
-The `DataTemplate` markup extension enables you to convert a type into a `DataTemplate`. It's supported by the `DataTemplateExtension` class, which defines a `TypeName` property, of type `string`, that is set to the name of the type to be converted into a `DataTemplate`. The `TypeName` property is the content property of `DataTemplateExtension`. Therefore, for XAML markup expressions expressed with curly braces, you can eliminate the `TypeName=` part of the expression.
+The <xref:Microsoft.Maui.Controls.DataTemplate> markup extension enables you to convert a type into a <xref:Microsoft.Maui.Controls.DataTemplate>. It's supported by the <xref:Microsoft.Maui.Controls.Xaml.DataTemplateExtension> class, which defines a `TypeName` property, of type `string`, that is set to the name of the type to be converted into a <xref:Microsoft.Maui.Controls.DataTemplate>. The `TypeName` property is the content property of <xref:Microsoft.Maui.Controls.Xaml.DataTemplateExtension>. Therefore, for XAML markup expressions expressed with curly braces, you can eliminate the `TypeName=` part of the expression.
 
 > [!NOTE]
-> The XAML parser allows the `DataTemplateExtension` class to be abbreviated as `DataTemplate`.
+> The XAML parser allows the <xref:Microsoft.Maui.Controls.Xaml.DataTemplateExtension> class to be abbreviated as <xref:Microsoft.Maui.Controls.DataTemplate>.
 
 A typical usage of this markup extension is in a Shell application, as shown in the following example:
 
@@ -388,7 +388,7 @@ A typical usage of this markup extension is in a Shell application, as shown in 
               ContentTemplate="{DataTemplate views:MonkeysPage}" />
 ```
 
-In this example, `MonkeysPage` is converted from a <xref:Microsoft.Maui.Controls.ContentPage> to a `DataTemplate`, which is set as the value of the `ShellContent.ContentTemplate` property. This ensures that `MonkeysPage` is only created when navigation to the page occurs, rather than at application startup.
+In this example, `MonkeysPage` is converted from a <xref:Microsoft.Maui.Controls.ContentPage> to a <xref:Microsoft.Maui.Controls.DataTemplate>, which is set as the value of the `ShellContent.ContentTemplate` property. This ensures that `MonkeysPage` is only created when navigation to the page occurs, rather than at application startup.
 
 For more information about Shell apps, see [Shell](~/fundamentals/shell/index.md).
 
@@ -396,17 +396,17 @@ For more information about Shell apps, see [Shell](~/fundamentals/shell/index.md
 
 The `FontImage` markup extension enables you to display a font icon in any view that can display an `ImageSource`. It provides the same functionality as the `FontImageSource` class, but with a more concise representation.
 
-The `FontImage` markup extension is supported by the `FontImageExtension` class, which defines the following properties:
+The `FontImage` markup extension is supported by the <xref:Microsoft.Maui.Controls.Xaml.FontImageExtension> class, which defines the following properties:
 
 - `FontFamily` of type `string`, the font family to which the font icon belongs.
 - `Glyph` of type `string`, the unicode character value of the font icon.
-- `Color` of type `Color`, the color to be used when displaying the font icon.
+- `Color` of type <xref:Microsoft.Maui.Graphics.Color>, the color to be used when displaying the font icon.
 - `Size` of type `double`, the size, in device-independent units, of the rendered font icon. The default value is 30. In addition, this property can be set to a named font size.
 
 > [!NOTE]
-> The XAML parser allows the `FontImageExtension` class to be abbreviated as `FontImage`.
+> The XAML parser allows the <xref:Microsoft.Maui.Controls.Xaml.FontImageExtension> class to be abbreviated as `FontImage`.
 
-The `Glyph` property is the content property of `FontImageExtension`. Therefore, for XAML markup expressions expressed with curly braces, you can eliminate the `Glyph=` part of the expression provided that it's the first argument.
+The `Glyph` property is the content property of <xref:Microsoft.Maui.Controls.Xaml.FontImageExtension>. Therefore, for XAML markup expressions expressed with curly braces, you can eliminate the `Glyph=` part of the expression provided that it's the first argument.
 
 The following XAML example shows how to use the `FontImage` markup extension:
 
@@ -415,7 +415,7 @@ The following XAML example shows how to use the `FontImage` markup extension:
        Source="{FontImage &#xf30c;, FontFamily=Ionicons, Size=44}" />
 ```
 
-In this example, the abbreviated version of the `FontImageExtension` class name is used to display an XBox icon, from the Ionicons font family, in an <xref:Microsoft.Maui.Controls.Image>:
+In this example, the abbreviated version of the <xref:Microsoft.Maui.Controls.Xaml.FontImageExtension> class name is used to display an XBox icon, from the Ionicons font family, in an <xref:Microsoft.Maui.Controls.Image>:
 
 :::image type="content" source="media/consume/fontimagedemo.png" alt-text="Screenshot of the FontImage markup extension.":::
 
@@ -430,7 +430,7 @@ The `AppThemeBinding` markup extension enables you to specify a resource to be c
 <!-- > [!IMPORTANT]
 > The `AppThemeBinding` markup extension has minimum operating system requirements. For more information, see [Respond to system theme changes in .NET MAUI applications](~/xamarin-forms/user-interface/theming/system-theme-changes.md). -->
 
-The `AppThemeBinding` markup extension is supported by the `AppThemeBindingExtension` class, which defines the following properties:
+The `AppThemeBinding` markup extension is supported by the <xref:Microsoft.Maui.Controls.Xaml.AppThemeBindingExtension> class, which defines the following properties:
 
 - `Default`, of type `object`, that you set to the resource to be used by default.
 - `Light`, of type `object`, that you set to the resource to be used when the device is using its light theme.
@@ -438,9 +438,9 @@ The `AppThemeBinding` markup extension is supported by the `AppThemeBindingExten
 - `Value`, of type `object`, that returns the resource that's currently being used by the markup extension.
 
 > [!NOTE]
-> The XAML parser allows the `AppThemeBindingExtension` class to be abbreviated as `AppBindingTheme`.
+> The XAML parser allows the <xref:Microsoft.Maui.Controls.Xaml.AppThemeBindingExtension> class to be abbreviated as `AppBindingTheme`.
 
-The `Default` property is the content property of `AppThemeBindingExtension`. Therefore, for XAML markup expressions expressed with curly braces, you can eliminate the `Default=` part of the expression provided that it's the first argument.
+The `Default` property is the content property of <xref:Microsoft.Maui.Controls.Xaml.AppThemeBindingExtension>. Therefore, for XAML markup expressions expressed with curly braces, you can eliminate the `Default=` part of the expression provided that it's the first argument.
 
 The following XAML example shows how to use the `AppThemeBinding` markup extension:
 

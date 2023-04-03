@@ -8,16 +8,16 @@ ms.date: 01/19/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-databinding)
 
-.NET Multi-platform App UI (.NET MAUI) relative bindings provide the ability to set the binding source relative to the position of the binding target. They are created with the `RelativeSource` markup extension, and set as the `Source` property of a binding expression.
+.NET Multi-platform App UI (.NET MAUI) relative bindings provide the ability to set the binding source relative to the position of the binding target. They are created with the [`RelativeSource`](xref:Microsoft.Maui.Controls.Xaml.RelativeSourceExtension) markup extension, and set as the `Source` property of a binding expression.
 
-The `RelativeSource` markup extension is supported by the `RelativeSourceExtension` class, which defines the following properties:
+The [`RelativeSource`](xref:Microsoft.Maui.Controls.Xaml.RelativeSourceExtension) markup extension is supported by the `RelativeSourceExtension` class, which defines the following properties:
 
 - `Mode`, of type `RelativeBindingSourceMode`, describes the location of the binding source relative to the position of the binding target.
 - `AncestorLevel`, of type `int`, an optional ancestor level to look for, when the `Mode` property is `FindAncestor`. An `AncestorLevel` of `n` skips `n-1` instances of the `AncestorType`.
 - `AncestorType`, of type `Type`, the type of ancestor to look for, when the `Mode` property is `FindAncestor`.
 
 > [!NOTE]
-> The XAML parser allows the `RelativeSourceExtension` class to be abbreviated as `RelativeSource`.
+> The XAML parser allows the `RelativeSourceExtension` class to be abbreviated as [`RelativeSource`](xref:Microsoft.Maui.Controls.Xaml.RelativeSourceExtension).
 
 The `Mode` property should be set to one of the `RelativeBindingSourceMode` enumeration members:
 
@@ -101,7 +101,7 @@ The following XAML shows an example where the `Mode` property will be implicitly
 </ContentPage>
 ```
 
-In this example, the `BindingContext` of the page is set to the `DefaultViewModel` property of itself. This property is defined in the code-behind file for the page, and provides a viewmodel instance. The <xref:Microsoft.Maui.Controls.ListView> binds to the `Employees` property of the viewmodel. The `DataTemplate`, which defines the appearance of each item in the <xref:Microsoft.Maui.Controls.ListView>, contains a <xref:Microsoft.Maui.Controls.Button>. The button's `Command` property is bound to the `DeleteEmployeeCommand` in its parent's viewmodel. Tapping a <xref:Microsoft.Maui.Controls.Button> deletes an employee:
+In this example, the `BindingContext` of the page is set to the `DefaultViewModel` property of itself. This property is defined in the code-behind file for the page, and provides a viewmodel instance. The <xref:Microsoft.Maui.Controls.ListView> binds to the `Employees` property of the viewmodel. The <xref:Microsoft.Maui.Controls.DataTemplate>, which defines the appearance of each item in the <xref:Microsoft.Maui.Controls.ListView>, contains a <xref:Microsoft.Maui.Controls.Button>. The button's `Command` property is bound to the `DeleteEmployeeCommand` in its parent's viewmodel. Tapping a <xref:Microsoft.Maui.Controls.Button> deletes an employee:
 
 :::image type="content" source="media/relative-bindings/findancestor-relative-binding.png" alt-text="Screenshot of a FindAncestor mode relative binding.":::
 
@@ -165,7 +165,7 @@ The following XAML shows an example of the `TemplatedParent` relative binding mo
 </ContentPage>
 ```
 
-In this example, the <xref:Microsoft.Maui.Controls.Frame>, which is the root element of the `ControlTemplate`, has its `BindingContext` set to the runtime object instance to which the template is applied. Therefore, the <xref:Microsoft.Maui.Controls.Frame> and its children resolve their binding expressions against the properties of each `CardView` object:
+In this example, the <xref:Microsoft.Maui.Controls.Frame>, which is the root element of the <xref:Microsoft.Maui.Controls.ControlTemplate>, has its `BindingContext` set to the runtime object instance to which the template is applied. Therefore, the <xref:Microsoft.Maui.Controls.Frame> and its children resolve their binding expressions against the properties of each `CardView` object:
 
 :::image type="content" source="media/relative-bindings/templatedparent-relative-binding.png" alt-text="Screenshot of a TemplatedParent mode relative binding.":::
 

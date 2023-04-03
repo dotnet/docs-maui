@@ -10,7 +10,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Frame> 
 
 The <xref:Microsoft.Maui.Controls.Frame> class defines the following properties:
 
-- `BorderColor`, of type `Color`, determines the color of the <xref:Microsoft.Maui.Controls.Frame> border.
+- `BorderColor`, of type <xref:Microsoft.Maui.Graphics.Color>, determines the color of the <xref:Microsoft.Maui.Controls.Frame> border.
 - `CornerRadius`, of type `float`, determines the rounded radius of the corner.
 - `HasShadow`, of type `bool`, determines whether the frame has a drop shadow.
 
