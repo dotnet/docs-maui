@@ -160,7 +160,7 @@ This section describes the platform-specific differences with the web authentica
 <!-- markdownlint-disable MD024 -->
 ### [Android](#tab/android)
 
-**Custom Tabs** are used whenever available, otherwise an **Intent** is started for the URL.
+**Custom Tabs** are used whenever available, otherwise the system browser is used as a fallback.
 
 # [iOS/Mac Catalyst](#tab/macios)
 
