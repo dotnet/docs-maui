@@ -142,7 +142,7 @@ For more information about data templates, see [Data templates](~/fundamentals/d
 
 ## Choose item appearance at runtime
 
-The appearance of each item in the <xref:Microsoft.Maui.Controls.CarouselView> can be chosen at runtime, based on the item value, by setting the `CarouselView.ItemTemplate` property to a `DataTemplateSelector` object:
+The appearance of each item in the <xref:Microsoft.Maui.Controls.CarouselView> can be chosen at runtime, based on the item value, by setting the `CarouselView.ItemTemplate` property to a <xref:Microsoft.Maui.Controls.DataTemplateSelector> object:
 
 ```xaml
 <ContentPage ...

@@ -202,9 +202,9 @@ In this example, the <xref:Microsoft.Maui.Controls.DataTemplate> is assigned to 
 
 ## Create a DataTemplateSelector
 
-A `DataTemplateSelector` can be used to choose a <xref:Microsoft.Maui.Controls.DataTemplate> at runtime based on the value of a data-bound property. This enables multiple data templates to be applied to the same type of object, to choose their appearance at runtime. A data template selector enables scenarios such as a <xref:Microsoft.Maui.Controls.CollectionView> or <xref:Microsoft.Maui.Controls.CarouselView> binding to a collection of objects where the appearance of each object can be chosen at runtime by the data template selector returning a specific <xref:Microsoft.Maui.Controls.DataTemplate>.
+A <xref:Microsoft.Maui.Controls.DataTemplateSelector> can be used to choose a <xref:Microsoft.Maui.Controls.DataTemplate> at runtime based on the value of a data-bound property. This enables multiple data templates to be applied to the same type of object, to choose their appearance at runtime. A data template selector enables scenarios such as a <xref:Microsoft.Maui.Controls.CollectionView> or <xref:Microsoft.Maui.Controls.CarouselView> binding to a collection of objects where the appearance of each object can be chosen at runtime by the data template selector returning a specific <xref:Microsoft.Maui.Controls.DataTemplate>.
 
-A data template selector is implemented by creating a class that inherits from `DataTemplateSelector`. The `OnSelectTemplate` method should then be overridden to return a specific <xref:Microsoft.Maui.Controls.DataTemplate>:
+A data template selector is implemented by creating a class that inherits from <xref:Microsoft.Maui.Controls.DataTemplateSelector>. The `OnSelectTemplate` method should then be overridden to return a specific <xref:Microsoft.Maui.Controls.DataTemplate>:
 
 ```csharp
 public class PersonDataTemplateSelector : DataTemplateSelector
@@ -223,11 +223,11 @@ In this example, the `OnSelectTemplate` method returns a specific data template 
 
 ### Limitations
 
-`DataTemplateSelector` objects have the following limitations:
+<xref:Microsoft.Maui.Controls.DataTemplateSelector> objects have the following limitations:
 
-- The `DataTemplateSelector` subclass must always return the same template for the same data if queried multiple times.
-- The `DataTemplateSelector` subclass must not return another `DataTemplateSelector` subclass.
-- The `DataTemplateSelector` subclass must not return new instances of a <xref:Microsoft.Maui.Controls.DataTemplate> on each call. Instead, the same instance must be returned. Failure to do so will create a memory leak and will disable control virtualization.
+- The <xref:Microsoft.Maui.Controls.DataTemplateSelector> subclass must always return the same template for the same data if queried multiple times.
+- The <xref:Microsoft.Maui.Controls.DataTemplateSelector> subclass must not return another <xref:Microsoft.Maui.Controls.DataTemplateSelector> subclass.
+- The <xref:Microsoft.Maui.Controls.DataTemplateSelector> subclass must not return new instances of a <xref:Microsoft.Maui.Controls.DataTemplate> on each call. Instead, the same instance must be returned. Failure to do so will create a memory leak and will disable control virtualization.
 
 ### Consume a DataTemplateSelector
 

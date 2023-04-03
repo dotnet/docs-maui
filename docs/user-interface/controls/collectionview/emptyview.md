@@ -251,7 +251,7 @@ For more information about resource dictionaries, see [Resource dictionaries](~/
 
 ## Choose an EmptyViewTemplate at runtime
 
-The appearance of the `EmptyView` can be chosen at runtime, based on its value, by setting the `CollectionView.EmptyViewTemplate` property to a `DataTemplateSelector` object:
+The appearance of the `EmptyView` can be chosen at runtime, based on its value, by setting the `CollectionView.EmptyViewTemplate` property to a <xref:Microsoft.Maui.Controls.DataTemplateSelector> object:
 
 ```xaml
 <ContentPage ...

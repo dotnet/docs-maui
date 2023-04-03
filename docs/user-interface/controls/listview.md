@@ -252,7 +252,7 @@ The following screenshot shows the result of templating each item in the list:
 
 ## Choose item appearance at runtime
 
-The appearance of each item in the <xref:Microsoft.Maui.Controls.ListView> can be chosen at runtime, based on the item value, by setting the `ItemTemplate` property to a `DataTemplateSelector` object:
+The appearance of each item in the <xref:Microsoft.Maui.Controls.ListView> can be chosen at runtime, based on the item value, by setting the `ItemTemplate` property to a <xref:Microsoft.Maui.Controls.DataTemplateSelector> object:
 
 ```xaml
 <ContentPage ...
@@ -363,7 +363,7 @@ To conserve memory, the native <xref:Microsoft.Maui.Controls.ListView> equivalen
 
 - `RetainElement`, specifies that the <xref:Microsoft.Maui.Controls.ListView> will generate a cell for each item in the list.
 - `RecycleElement`, specifies that the <xref:Microsoft.Maui.Controls.ListView> will attempt to minimize its memory footprint and execution speed by recycling list cells.
-- `RecycleElementAndDataTemplate`, as `RecycleElement` while also ensuring that when a <xref:Microsoft.Maui.Controls.ListView> uses a `DataTemplateSelector`, <xref:Microsoft.Maui.Controls.DataTemplate> objects are cached by the type of item in the list.
+- `RecycleElementAndDataTemplate`, as `RecycleElement` while also ensuring that when a <xref:Microsoft.Maui.Controls.ListView> uses a <xref:Microsoft.Maui.Controls.DataTemplateSelector>, <xref:Microsoft.Maui.Controls.DataTemplate> objects are cached by the type of item in the list.
 
 <!-- > [!NOTE]
 > Windows ignores the `RetainElement` caching strategy, because it always uses caching to improve performance. Therefore, by default it behaves as if the `RecycleElement` caching strategy is applied. -->
@@ -416,17 +416,17 @@ public class CustomCell : ViewCell
 
 #### Recycle elements with a DataTemplateSelector
 
-When a <xref:Microsoft.Maui.Controls.ListView> uses a `DataTemplateSelector` to select a <xref:Microsoft.Maui.Controls.DataTemplate>, the `RecycleElement` caching strategy does not cache <xref:Microsoft.Maui.Controls.DataTemplate> objects. Instead, a <xref:Microsoft.Maui.Controls.DataTemplate> is selected for each item of data in the list.
+When a <xref:Microsoft.Maui.Controls.ListView> uses a <xref:Microsoft.Maui.Controls.DataTemplateSelector> to select a <xref:Microsoft.Maui.Controls.DataTemplate>, the `RecycleElement` caching strategy does not cache <xref:Microsoft.Maui.Controls.DataTemplate> objects. Instead, a <xref:Microsoft.Maui.Controls.DataTemplate> is selected for each item of data in the list.
 
 > [!NOTE]
-> The `RecycleElement` caching strategy requires that when a `DataTemplateSelector` is asked to select a <xref:Microsoft.Maui.Controls.DataTemplate> that each <xref:Microsoft.Maui.Controls.DataTemplate> must return the same <xref:Microsoft.Maui.Controls.ViewCell> type. For example, given a <xref:Microsoft.Maui.Controls.ListView> with a `DataTemplateSelector` that can return either `MyDataTemplateA` (where `MyDataTemplateA` returns a <xref:Microsoft.Maui.Controls.ViewCell> of type `MyViewCellA`), or `MyDataTemplateB` (where `MyDataTemplateB` returns a <xref:Microsoft.Maui.Controls.ViewCell> of type `MyViewCellB`), when `MyDataTemplateA` is returned it must return `MyViewCellA` or an exception will be thrown.
+> The `RecycleElement` caching strategy requires that when a <xref:Microsoft.Maui.Controls.DataTemplateSelector> is asked to select a <xref:Microsoft.Maui.Controls.DataTemplate> that each <xref:Microsoft.Maui.Controls.DataTemplate> must return the same <xref:Microsoft.Maui.Controls.ViewCell> type. For example, given a <xref:Microsoft.Maui.Controls.ListView> with a <xref:Microsoft.Maui.Controls.DataTemplateSelector> that can return either `MyDataTemplateA` (where `MyDataTemplateA` returns a <xref:Microsoft.Maui.Controls.ViewCell> of type `MyViewCellA`), or `MyDataTemplateB` (where `MyDataTemplateB` returns a <xref:Microsoft.Maui.Controls.ViewCell> of type `MyViewCellB`), when `MyDataTemplateA` is returned it must return `MyViewCellA` or an exception will be thrown.
 
 ### Recycle elements with DataTemplates
 
-The `RecycleElementAndDataTemplate` caching strategy builds on the `RecycleElement` caching strategy by additionally ensuring that when a <xref:Microsoft.Maui.Controls.ListView> uses a `DataTemplateSelector` to select a <xref:Microsoft.Maui.Controls.DataTemplate>, <xref:Microsoft.Maui.Controls.DataTemplate> objects are cached by the type of item in the list. Therefore, <xref:Microsoft.Maui.Controls.DataTemplate> objects are selected once per item type, instead of once per item instance.
+The `RecycleElementAndDataTemplate` caching strategy builds on the `RecycleElement` caching strategy by additionally ensuring that when a <xref:Microsoft.Maui.Controls.ListView> uses a <xref:Microsoft.Maui.Controls.DataTemplateSelector> to select a <xref:Microsoft.Maui.Controls.DataTemplate>, <xref:Microsoft.Maui.Controls.DataTemplate> objects are cached by the type of item in the list. Therefore, <xref:Microsoft.Maui.Controls.DataTemplate> objects are selected once per item type, instead of once per item instance.
 
 > [!NOTE]
-> The `RecycleElementAndDataTemplate` caching strategy requires that <xref:Microsoft.Maui.Controls.DataTemplate> objects returned by the `DataTemplateSelector` must use the <xref:Microsoft.Maui.Controls.DataTemplate> constructor that takes a `Type`.
+> The `RecycleElementAndDataTemplate` caching strategy requires that <xref:Microsoft.Maui.Controls.DataTemplate> objects returned by the <xref:Microsoft.Maui.Controls.DataTemplateSelector> must use the <xref:Microsoft.Maui.Controls.DataTemplate> constructor that takes a `Type`.
 
 ### Set the caching strategy
 

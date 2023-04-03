@@ -155,7 +155,7 @@ The <xref:Microsoft.Maui.Controls.Maps.Map> class defines the following properti
 - `IsShowingUser`, of type `bool`, indicates whether the map is showing the user's current location.
 - `ItemsSource`, of type `IEnumerable`, which specifies the collection of `IEnumerable` pin items to be displayed.
 - `ItemTemplate`, of type <xref:Microsoft.Maui.Controls.DataTemplate>, which specifies the <xref:Microsoft.Maui.Controls.DataTemplate> to apply to each item in the collection of displayed pins.
-- `ItemTemplateSelector`, of type `DataTemplateSelector`, which specifies the `DataTemplateSelector` that will be used to choose a <xref:Microsoft.Maui.Controls.DataTemplate> for a pin at runtime.
+- `ItemTemplateSelector`, of type <xref:Microsoft.Maui.Controls.DataTemplateSelector>, which specifies the <xref:Microsoft.Maui.Controls.DataTemplateSelector> that will be used to choose a <xref:Microsoft.Maui.Controls.DataTemplate> for a pin at runtime.
 - `IsScrollEnabled`, of type `bool`, determines whether the map is allowed to scroll.
 - `IsTrafficEnabled`, of type `bool`, indicates whether traffic data is overlaid on the map.
 - `IsZoomEnabled`, of type `bool`, determines whether the map is allowed to zoom.
@@ -646,7 +646,7 @@ The <xref:Microsoft.Maui.Controls.Maps.Map> class defines the following bindable
 
 - `ItemsSource`, of type `IEnumerable`, which specifies the collection of `IEnumerable` pin items to be displayed.
 - `ItemTemplate`, of type <xref:Microsoft.Maui.Controls.DataTemplate>, which specifies the <xref:Microsoft.Maui.Controls.DataTemplate> to apply to each item in the collection of displayed pins.
-- `ItemTemplateSelector`, of type `DataTemplateSelector`, which specifies the `DataTemplateSelector` that will be used to choose a <xref:Microsoft.Maui.Controls.DataTemplate> for a pin at runtime.
+- `ItemTemplateSelector`, of type <xref:Microsoft.Maui.Controls.DataTemplateSelector>, which specifies the <xref:Microsoft.Maui.Controls.DataTemplateSelector> that will be used to choose a <xref:Microsoft.Maui.Controls.DataTemplate> for a pin at runtime.
 
 > [!IMPORTANT]
 > The `ItemTemplate` property takes precedence when both the `ItemTemplate` and `ItemTemplateSelector` properties are set.
@@ -683,7 +683,7 @@ The following screenshot shows a <xref:Microsoft.Maui.Controls.Maps.Map> display
 
 #### Choose item appearance at runtime
 
-The appearance of each item in the `IEnumerable` collection can be chosen at runtime, based on the item value, by setting the `ItemTemplateSelector` property to a `DataTemplateSelector`:
+The appearance of each item in the `IEnumerable` collection can be chosen at runtime, based on the item value, by setting the `ItemTemplateSelector` property to a <xref:Microsoft.Maui.Controls.DataTemplateSelector>:
 
 ```xaml
 <ContentPage ...

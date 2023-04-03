@@ -14,7 +14,7 @@ Bindable layouts are provided by the <xref:Microsoft.Maui.Controls.BindableLayou
 
 - `ItemsSource` – specifies the collection of `IEnumerable` items to be displayed by the layout.
 - `ItemTemplate` – specifies the <xref:Microsoft.Maui.Controls.DataTemplate> to apply to each item in the collection of items displayed by the layout.
-- `ItemTemplateSelector` – specifies the `DataTemplateSelector` that will be used to choose a <xref:Microsoft.Maui.Controls.DataTemplate> for an item at runtime.
+- `ItemTemplateSelector` – specifies the <xref:Microsoft.Maui.Controls.DataTemplateSelector> that will be used to choose a <xref:Microsoft.Maui.Controls.DataTemplate> for an item at runtime.
 
 > [!NOTE]
 > The `ItemTemplate` property takes precedence when both the `ItemTemplate` and `ItemTemplateSelector` properties are set.
@@ -91,7 +91,7 @@ For more information about data templates, see [Data templates](~/fundamentals/d
 
 ## Choose item appearance at runtime
 
-The appearance of each item in the bindable layout can be chosen at runtime, based on the item value, by setting the `BindableLayout.ItemTemplateSelector` attached property to a `DataTemplateSelector`:
+The appearance of each item in the bindable layout can be chosen at runtime, based on the item value, by setting the `BindableLayout.ItemTemplateSelector` attached property to a <xref:Microsoft.Maui.Controls.DataTemplateSelector>:
 
 ```xaml
 <FlexLayout BindableLayout.ItemsSource="{Binding User.FavoriteTech}"
@@ -186,7 +186,7 @@ The result is that when the data bound collection is `null`, the <xref:Microsoft
 :::image type="content" source="media/bindablelayout/emptyviewtemplate.png" alt-text="Screenshot of a bindable layout empty view template.":::
 
 > [!NOTE]
-> The `EmptyViewTemplate` property can't be set via a `DataTemplateSelector`.
+> The `EmptyViewTemplate` property can't be set via a <xref:Microsoft.Maui.Controls.DataTemplateSelector>.
 
 ## Choose an EmptyView at runtime
 
