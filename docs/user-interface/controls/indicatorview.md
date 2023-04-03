@@ -19,7 +19,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Indicat
 - `IndicatorColor`, of type `Color`, the color of the indicators.
 - `IndicatorSize`, of type `double`, the size of the indicators. The default value is 6.0.
 - `IndicatorLayout`, of type `Layout<View>`, defines the layout class used to render the <xref:Microsoft.Maui.Controls.IndicatorView>. This property is set by .NET MAUI, and does not typically need to be set by developers.
-- `IndicatorTemplate`, of type `DataTemplate`, the template that defines the appearance of each indicator.
+- `IndicatorTemplate`, of type <xref:Microsoft.Maui.Controls.DataTemplate>, the template that defines the appearance of each indicator.
 - `IndicatorsShape`, of type `IndicatorShape`, the shape of each indicator.
 - `ItemsSource`, of type `IEnumerable`, the collection that indicators will be displayed for. This property will automatically be set when the `CarouselView.IndicatorView` property is set.
 - `MaximumVisible`, of type `int`, the maximum number of visible indicators. The default value is `int.MaxValue`.
@@ -94,7 +94,7 @@ The following example shows an <xref:Microsoft.Maui.Controls.IndicatorView> conf
 
 ## Define indicator appearance
 
-The appearance of each indicator can be defined by setting the `IndicatorView.IndicatorTemplate` property to a `DataTemplate`:
+The appearance of each indicator can be defined by setting the `IndicatorView.IndicatorTemplate` property to a <xref:Microsoft.Maui.Controls.DataTemplate>:
 
 ```xaml
 <StackLayout>
@@ -120,7 +120,7 @@ The appearance of each indicator can be defined by setting the `IndicatorView.In
 </StackLayout>
 ```
 
-The elements specified in the `DataTemplate` define the appearance of each indicator. In this example, each indicator is a <xref:Microsoft.Maui.Controls.Label> that displays a font icon.
+The elements specified in the <xref:Microsoft.Maui.Controls.DataTemplate> define the appearance of each indicator. In this example, each indicator is a <xref:Microsoft.Maui.Controls.Label> that displays a font icon.
 
 The following screenshot shows indicators rendered using a font icon:
 

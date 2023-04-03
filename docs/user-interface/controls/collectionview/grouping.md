@@ -13,8 +13,8 @@ Large data sets can often become unwieldy when presented in a continually scroll
 The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.CollectionView> supports displaying grouped data, and defines the following properties that control how it will be presented:
 
 - `IsGrouped`, of type `bool`, indicates whether the underlying data should be displayed in groups. The default value of this property is `false`.
-- `GroupHeaderTemplate`, of type `DataTemplate`, the template to use for the header of each group.
-- `GroupFooterTemplate`, of type `DataTemplate`, the template to use for the footer of each group.
+- `GroupHeaderTemplate`, of type <xref:Microsoft.Maui.Controls.DataTemplate>, the template to use for the header of each group.
+- `GroupFooterTemplate`, of type <xref:Microsoft.Maui.Controls.DataTemplate>, the template to use for the footer of each group.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings.
 
@@ -168,14 +168,14 @@ collectionView.SetBinding(ItemsView.ItemsSourceProperty, "Animals");
 // ...
 ```
 
-The appearance of each item in the <xref:Microsoft.Maui.Controls.CollectionView> is defined by setting the `CollectionView.ItemTemplate` property to a `DataTemplate`. For more information, see [Define item appearance](~/user-interface/controls/collectionview/populate-data.md#define-item-appearance).
+The appearance of each item in the <xref:Microsoft.Maui.Controls.CollectionView> is defined by setting the `CollectionView.ItemTemplate` property to a <xref:Microsoft.Maui.Controls.DataTemplate>. For more information, see [Define item appearance](~/user-interface/controls/collectionview/populate-data.md#define-item-appearance).
 
 > [!NOTE]
 > By default, <xref:Microsoft.Maui.Controls.CollectionView> will display the group name in the group header and footer. This behavior can be changed by customizing the group header and group footer.
 
 ## Customize the group header
 
-The appearance of each group header can be customized by setting the `CollectionView.GroupHeaderTemplate` property to a `DataTemplate`:
+The appearance of each group header can be customized by setting the `CollectionView.GroupHeaderTemplate` property to a <xref:Microsoft.Maui.Controls.DataTemplate>:
 
 ```xaml
 <CollectionView ItemsSource="{Binding Animals}"
@@ -198,7 +198,7 @@ In this example, each group header is set to a <xref:Microsoft.Maui.Controls.Lab
 
 ## Customize the group footer
 
-The appearance of each group footer can be customized by setting the `CollectionView.GroupFooterTemplate` property to a `DataTemplate`:
+The appearance of each group footer can be customized by setting the `CollectionView.GroupFooterTemplate` property to a <xref:Microsoft.Maui.Controls.DataTemplate>:
 
 ```xaml
 <CollectionView ItemsSource="{Binding Animals}"
@@ -228,7 +228,7 @@ When a <xref:Microsoft.Maui.Controls.CollectionView> displays grouped data, it w
 
 ## Group without templates
 
-<xref:Microsoft.Maui.Controls.CollectionView> can display correctly grouped data without setting the `CollectionView.ItemTemplate` property to a `DataTemplate`:
+<xref:Microsoft.Maui.Controls.CollectionView> can display correctly grouped data without setting the `CollectionView.ItemTemplate` property to a <xref:Microsoft.Maui.Controls.DataTemplate>:
 
 ```xaml
 <CollectionView ItemsSource="{Binding Animals}"

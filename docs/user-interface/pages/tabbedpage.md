@@ -32,7 +32,7 @@ In a <xref:Microsoft.Maui.Controls.TabbedPage>, each <xref:Microsoft.Maui.Contro
 Two approaches can be used to create a <xref:Microsoft.Maui.Controls.TabbedPage>:
 
 - Populate the <xref:Microsoft.Maui.Controls.TabbedPage> with a collection of child <xref:Microsoft.Maui.Controls.Page> objects, such as a collection of <xref:Microsoft.Maui.Controls.ContentPage> objects. For more information, see [Populate a TabbedPage with a Page collection](#populate-a-tabbedpage-with-a-page-collection).
-- Assign a collection to the `ItemsSource` property and assign a `DataTemplate` to the `ItemTemplate` property to return pages for objects in the collection. For more information, see [Populate a TabbedPage with a DataTemplate](#populate-a-tabbedpage-with-a-datatemplate).
+- Assign a collection to the `ItemsSource` property and assign a <xref:Microsoft.Maui.Controls.DataTemplate> to the `ItemTemplate` property to return pages for objects in the collection. For more information, see [Populate a TabbedPage with a DataTemplate](#populate-a-tabbedpage-with-a-datatemplate).
 
 > [!IMPORTANT]
 > A <xref:Microsoft.Maui.Controls.TabbedPage> should only be populated with <xref:Microsoft.Maui.Controls.NavigationPage> and <xref:Microsoft.Maui.Controls.ContentPage> objects.
@@ -68,7 +68,7 @@ The page content for a tab appears when the tab is selected.
 
 ### Populate a TabbedPage with a DataTemplate
 
-<xref:Microsoft.Maui.Controls.TabbedPage> inherits `ItemsSource`, `ItemTemplate`, and `SelectedItem` bindable properties from the `MultiPage<T>` class. These properties enable you to generate <xref:Microsoft.Maui.Controls.TabbedPage> children dynamically, by setting the `ItemsSource` property to an `IEnumerable` collection of objects with public properties suitable for data bindings, and by setting the `ItemTemplate` property to a `DataTemplate` with a page type as the root element.
+<xref:Microsoft.Maui.Controls.TabbedPage> inherits `ItemsSource`, `ItemTemplate`, and `SelectedItem` bindable properties from the `MultiPage<T>` class. These properties enable you to generate <xref:Microsoft.Maui.Controls.TabbedPage> children dynamically, by setting the `ItemsSource` property to an `IEnumerable` collection of objects with public properties suitable for data bindings, and by setting the `ItemTemplate` property to a <xref:Microsoft.Maui.Controls.DataTemplate> with a page type as the root element.
 
 The following example shows generating <xref:Microsoft.Maui.Controls.TabbedPage> children dynamically:
 

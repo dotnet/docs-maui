@@ -551,7 +551,7 @@ The following XAML example shows a page that consumes a viewmodel named `PeopleV
 </ContentPage>
 ```
 
-In this example, the `BindingContext` of the page is set to a `PeopleViewModel` instance. This viewmodel exposes a `People` collection and an `ICommand` named `DeletePersonCommand`. The <xref:Microsoft.Maui.Controls.StackLayout> on the page uses a bindable layout to data bind to the `People` collection, and the `ItemTemplate` of the bindable layout is set to the `PersonTemplate` resource. This `DataTemplate` specifies that each item in the `People` collection will be displayed using a `CardView` object. The visual structure of the `CardView` object is defined using a `ControlTemplate` named `CardViewControlTemplate`:
+In this example, the `BindingContext` of the page is set to a `PeopleViewModel` instance. This viewmodel exposes a `People` collection and an `ICommand` named `DeletePersonCommand`. The <xref:Microsoft.Maui.Controls.StackLayout> on the page uses a bindable layout to data bind to the `People` collection, and the `ItemTemplate` of the bindable layout is set to the `PersonTemplate` resource. This <xref:Microsoft.Maui.Controls.DataTemplate> specifies that each item in the `People` collection will be displayed using a `CardView` object. The visual structure of the `CardView` object is defined using a `ControlTemplate` named `CardViewControlTemplate`:
 
 ```xaml
 <ControlTemplate x:Key="CardViewControlTemplate">

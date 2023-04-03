@@ -375,10 +375,10 @@ In this example, all three `OnIdiom` expressions use the abbreviated version of 
 
 ## DataTemplate markup extension
 
-The `DataTemplate` markup extension enables you to convert a type into a `DataTemplate`. It's supported by the `DataTemplateExtension` class, which defines a `TypeName` property, of type `string`, that is set to the name of the type to be converted into a `DataTemplate`. The `TypeName` property is the content property of `DataTemplateExtension`. Therefore, for XAML markup expressions expressed with curly braces, you can eliminate the `TypeName=` part of the expression.
+The <xref:Microsoft.Maui.Controls.DataTemplate> markup extension enables you to convert a type into a <xref:Microsoft.Maui.Controls.DataTemplate>. It's supported by the `DataTemplateExtension` class, which defines a `TypeName` property, of type `string`, that is set to the name of the type to be converted into a <xref:Microsoft.Maui.Controls.DataTemplate>. The `TypeName` property is the content property of `DataTemplateExtension`. Therefore, for XAML markup expressions expressed with curly braces, you can eliminate the `TypeName=` part of the expression.
 
 > [!NOTE]
-> The XAML parser allows the `DataTemplateExtension` class to be abbreviated as `DataTemplate`.
+> The XAML parser allows the `DataTemplateExtension` class to be abbreviated as <xref:Microsoft.Maui.Controls.DataTemplate>.
 
 A typical usage of this markup extension is in a Shell application, as shown in the following example:
 
@@ -388,7 +388,7 @@ A typical usage of this markup extension is in a Shell application, as shown in 
               ContentTemplate="{DataTemplate views:MonkeysPage}" />
 ```
 
-In this example, `MonkeysPage` is converted from a <xref:Microsoft.Maui.Controls.ContentPage> to a `DataTemplate`, which is set as the value of the `ShellContent.ContentTemplate` property. This ensures that `MonkeysPage` is only created when navigation to the page occurs, rather than at application startup.
+In this example, `MonkeysPage` is converted from a <xref:Microsoft.Maui.Controls.ContentPage> to a <xref:Microsoft.Maui.Controls.DataTemplate>, which is set as the value of the `ShellContent.ContentTemplate` property. This ensures that `MonkeysPage` is only created when navigation to the page occurs, rather than at application startup.
 
 For more information about Shell apps, see [Shell](~/fundamentals/shell/index.md).
 

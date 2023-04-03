@@ -158,7 +158,7 @@ The following XAML example shows a stand-alone <xref:Microsoft.Maui.Controls.Res
 </ResourceDictionary>
 ```
 
-In this example, the <xref:Microsoft.Maui.Controls.ResourceDictionary> contains a single resource, which is an object of type `DataTemplate`. **MyResourceDictionary.xaml** can be consumed by merging it into another resource dictionary.
+In this example, the <xref:Microsoft.Maui.Controls.ResourceDictionary> contains a single resource, which is an object of type <xref:Microsoft.Maui.Controls.DataTemplate>. **MyResourceDictionary.xaml** can be consumed by merging it into another resource dictionary.
 
 <!--
 By default, the linker will remove stand-alone XAML files from release builds when the linker behavior is set to link all assemblies. To ensure that stand-alone XAML files remain in a release build:

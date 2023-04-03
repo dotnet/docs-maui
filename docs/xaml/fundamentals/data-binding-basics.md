@@ -250,7 +250,7 @@ The result establishes that the items are of type `XamlSamples.NamedColor`:
 
 :::image type="content" source="media/data-binding-basics/listview1.png" alt-text="Binding to a collection.":::
 
-To define a template for the items, the `ItemTemplate` should be set to a `DataTemplate` that references a <xref:Microsoft.Maui.Controls.ViewCell>. The <xref:Microsoft.Maui.Controls.ViewCell> should define a layout of one or more views to display each item:
+To define a template for the items, the `ItemTemplate` should be set to a <xref:Microsoft.Maui.Controls.DataTemplate> that references a <xref:Microsoft.Maui.Controls.ViewCell>. The <xref:Microsoft.Maui.Controls.ViewCell> should define a layout of one or more views to display each item:
 
 ```xaml
 <ListView ItemsSource="{x:Static local:NamedColor.All}">

@@ -101,7 +101,7 @@ The following XAML shows an example where the `Mode` property will be implicitly
 </ContentPage>
 ```
 
-In this example, the `BindingContext` of the page is set to the `DefaultViewModel` property of itself. This property is defined in the code-behind file for the page, and provides a viewmodel instance. The <xref:Microsoft.Maui.Controls.ListView> binds to the `Employees` property of the viewmodel. The `DataTemplate`, which defines the appearance of each item in the <xref:Microsoft.Maui.Controls.ListView>, contains a <xref:Microsoft.Maui.Controls.Button>. The button's `Command` property is bound to the `DeleteEmployeeCommand` in its parent's viewmodel. Tapping a <xref:Microsoft.Maui.Controls.Button> deletes an employee:
+In this example, the `BindingContext` of the page is set to the `DefaultViewModel` property of itself. This property is defined in the code-behind file for the page, and provides a viewmodel instance. The <xref:Microsoft.Maui.Controls.ListView> binds to the `Employees` property of the viewmodel. The <xref:Microsoft.Maui.Controls.DataTemplate>, which defines the appearance of each item in the <xref:Microsoft.Maui.Controls.ListView>, contains a <xref:Microsoft.Maui.Controls.Button>. The button's `Command` property is bound to the `DeleteEmployeeCommand` in its parent's viewmodel. Tapping a <xref:Microsoft.Maui.Controls.Button> deletes an employee:
 
 :::image type="content" source="media/relative-bindings/findancestor-relative-binding.png" alt-text="Screenshot of a FindAncestor mode relative binding.":::
 

@@ -11,7 +11,7 @@ ms.date: 01/18/2022
 The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.CarouselView> defines the following properties that can be used to provide user feedback when there's no data to display:
 
 - `EmptyView`, of type `object`, the string, binding, or view that will be displayed when the `ItemsSource` property is `null`, or when the collection specified by the `ItemsSource` property is `null` or empty. The default value is `null`.
-- `EmptyViewTemplate`, of type `DataTemplate`, the template to use to format the specified `EmptyView`. The default value is `null`.
+- `EmptyViewTemplate`, of type <xref:Microsoft.Maui.Controls.DataTemplate>, the template to use to format the specified `EmptyView`. The default value is `null`.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings.
 
@@ -102,7 +102,7 @@ When the <xref:Microsoft.Maui.Controls.SearchBar> executes the `FilterCommand`, 
 
 ## Display a templated custom type when data is unavailable
 
-The `EmptyView` property can be set to a custom type, whose template is displayed when the `ItemsSource` property is `null`, or when the collection specified by the `ItemsSource` property is `null` or empty. The `EmptyViewTemplate` property can be set to a `DataTemplate` that defines the appearance of the `EmptyView`. The following XAML shows an example of this scenario:
+The `EmptyView` property can be set to a custom type, whose template is displayed when the `ItemsSource` property is `null`, or when the collection specified by the `ItemsSource` property is `null` or empty. The `EmptyViewTemplate` property can be set to a <xref:Microsoft.Maui.Controls.DataTemplate> that defines the appearance of the `EmptyView`. The following XAML shows an example of this scenario:
 
 ```xaml
 <StackLayout Margin="20">
@@ -160,7 +160,7 @@ public class FilterData : BindableObject
 }
 ```
 
-The `EmptyView` property is set to a `FilterData` object, and the `Filter` property data binds to the `SearchBar.Text` property. When the <xref:Microsoft.Maui.Controls.SearchBar> executes the `FilterCommand`, the collection displayed by the <xref:Microsoft.Maui.Controls.CarouselView> is filtered for the search term stored in the `Filter` property. If the filtering operation yields no data, the <xref:Microsoft.Maui.Controls.Label> defined in the `DataTemplate`, that's set as the `EmptyViewTemplate` property value, is displayed.
+The `EmptyView` property is set to a `FilterData` object, and the `Filter` property data binds to the `SearchBar.Text` property. When the <xref:Microsoft.Maui.Controls.SearchBar> executes the `FilterCommand`, the collection displayed by the <xref:Microsoft.Maui.Controls.CarouselView> is filtered for the search term stored in the `Filter` property. If the filtering operation yields no data, the <xref:Microsoft.Maui.Controls.Label> defined in the <xref:Microsoft.Maui.Controls.DataTemplate>, that's set as the `EmptyViewTemplate` property value, is displayed.
 
 > [!NOTE]
 > When displaying a templated custom type when data is unavailable, the `EmptyViewTemplate` property can be set to a view that contains multiple child views.
@@ -287,7 +287,7 @@ carouselView.SetBinding(ItemsView.ItemsSourceProperty, "Monkeys");
 
 The `EmptyView` property is set to the `SearchBar.Text` property, and the `EmptyViewTemplate` property is set to a `SearchTermDataTemplateSelector` object.
 
-When the <xref:Microsoft.Maui.Controls.SearchBar> executes the `FilterCommand`, the collection displayed by the <xref:Microsoft.Maui.Controls.CarouselView> is filtered for the search term stored in the `SearchBar.Text` property. If the filtering operation yields no data, the `DataTemplate` chosen by the `SearchTermDataTemplateSelector` object is set as the `EmptyViewTemplate` property and displayed.
+When the <xref:Microsoft.Maui.Controls.SearchBar> executes the `FilterCommand`, the collection displayed by the <xref:Microsoft.Maui.Controls.CarouselView> is filtered for the search term stored in the `SearchBar.Text` property. If the filtering operation yields no data, the <xref:Microsoft.Maui.Controls.DataTemplate> chosen by the `SearchTermDataTemplateSelector` object is set as the `EmptyViewTemplate` property and displayed.
 
 The following example shows the `SearchTermDataTemplateSelector` class:
 
@@ -305,6 +305,6 @@ public class SearchTermDataTemplateSelector : DataTemplateSelector
 }
 ```
 
-The `SearchTermTemplateSelector` class defines `DefaultTemplate` and `OtherTemplate` `DataTemplate` properties that are set to different data templates. The `OnSelectTemplate` override returns `DefaultTemplate`, which displays a message to the user, when the search query isn't equal to "xamarin". When the search query is equal to "xamarin", the `OnSelectTemplate` override returns `OtherTemplate`, which displays a basic message to the user.
+The `SearchTermTemplateSelector` class defines `DefaultTemplate` and `OtherTemplate` <xref:Microsoft.Maui.Controls.DataTemplate> properties that are set to different data templates. The `OnSelectTemplate` override returns `DefaultTemplate`, which displays a message to the user, when the search query isn't equal to "xamarin". When the search query is equal to "xamarin", the `OnSelectTemplate` override returns `OtherTemplate`, which displays a basic message to the user.
 
 For more information about data template selectors, see [Create a DataTemplateSelector](~/fundamentals/datatemplate.md#create-a-datatemplateselector).

@@ -52,7 +52,7 @@ Shell has implicit-conversion operators that enable the Shell visual hierarchy t
 This implicit conversion automatically wraps the <xref:Microsoft.Maui.Controls.ShellContent> object in a <xref:Microsoft.Maui.Controls.Tab> object, which is wrapped in a <xref:Microsoft.Maui.Controls.TabBar> object.
 
 > [!IMPORTANT]
-> In a Shell app, pages are created on demand in response to navigation. This is accomplished by using the `DataTemplate` markup extension to set the `ContentTemplate` property of each <xref:Microsoft.Maui.Controls.ShellContent> object to a <xref:Microsoft.Maui.Controls.ContentPage> object.
+> In a Shell app, pages are created on demand in response to navigation. This is accomplished by using the <xref:Microsoft.Maui.Controls.DataTemplate> markup extension to set the `ContentTemplate` property of each <xref:Microsoft.Maui.Controls.ShellContent> object to a <xref:Microsoft.Maui.Controls.ContentPage> object.
 
 ## Bottom tabs
 
@@ -105,7 +105,7 @@ In addition, Shell's implicit conversion operators can be used to remove the <xr
 This implicit conversion automatically wraps each <xref:Microsoft.Maui.Controls.ShellContent> object in a <xref:Microsoft.Maui.Controls.Tab> object.
 
 > [!IMPORTANT]
-> In a Shell app, pages are created on demand in response to navigation. This is accomplished by using the `DataTemplate` markup extension to set the `ContentTemplate` property of each <xref:Microsoft.Maui.Controls.ShellContent> object to a <xref:Microsoft.Maui.Controls.ContentPage> object.
+> In a Shell app, pages are created on demand in response to navigation. This is accomplished by using the <xref:Microsoft.Maui.Controls.DataTemplate> markup extension to set the `ContentTemplate` property of each <xref:Microsoft.Maui.Controls.ShellContent> object to a <xref:Microsoft.Maui.Controls.ContentPage> object.
 
 ## Bottom and top tabs
 
