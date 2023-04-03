@@ -85,7 +85,7 @@ SemanticProperties.SetDescription(entry, label.Text);
 ```
 
 > [!WARNING]
-> On iOS, if you set the `SemanticDescription` property on any control that has children the screen reader will be unable to reach the children. This is because iOS doesn't provide accessibility features that allow the navigation from a parent element into a child element.
+> On iOS, if you set the [`Description`](xref:Microsoft.Maui.Controls.SemanticProperties.DescriptionProperty) property on any control that has children the screen reader will be unable to reach the children. This is because iOS doesn't provide accessibility features that allow the navigation from a parent element into a child element.
 
 ### Hint
 
