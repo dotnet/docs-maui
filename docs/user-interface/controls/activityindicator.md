@@ -14,7 +14,7 @@ The appearance of an <xref:Microsoft.Maui.Controls.ActivityIndicator> is platfor
 
 <xref:Microsoft.Maui.Controls.ActivityIndicator> defines the following properties:
 
-- `Color` is a `Color` value that defines the color of the <xref:Microsoft.Maui.Controls.ActivityIndicator>.
+- `Color` is a <xref:Microsoft.Maui.Graphics.Color> value that defines the color of the <xref:Microsoft.Maui.Controls.ActivityIndicator>.
 - `IsRunning` is a `bool` value that indicates whether the <xref:Microsoft.Maui.Controls.ActivityIndicator> should be visible and animating, or hidden. The default value of this property is `false`, which indicates that the <xref:Microsoft.Maui.Controls.ActivityIndicator> isn't visible.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.

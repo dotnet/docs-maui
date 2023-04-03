@@ -16,7 +16,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Refresh
 - `Command`, of type `ICommand`, which is executed when a refresh is triggered.
 - `CommandParameter`, of type `object`, which is the parameter that's passed to the `Command`.
 - `IsRefreshing`, of type `bool`, which indicates the current state of the <xref:Microsoft.Maui.Controls.RefreshView>.
-- `RefreshColor`, of type `Color`, the color of the progress circle that appears during the refresh.
+- `RefreshColor`, of type <xref:Microsoft.Maui.Graphics.Color>, the color of the progress circle that appears during the refresh.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
@@ -61,7 +61,7 @@ scrollView.Content = flexLayout;
 refreshView.Content = scrollView;
 ```
 
-In this example, the <xref:Microsoft.Maui.Controls.RefreshView> provides pull to refresh functionality to a <xref:Microsoft.Maui.Controls.ScrollView> whose child is a <xref:Microsoft.Maui.Controls.FlexLayout>. The <xref:Microsoft.Maui.Controls.FlexLayout> uses a bindable layout to generate its content by binding to a collection of items, and sets the appearance of each item with a `DataTemplate`. For more information about bindable layouts, see [Bindable layout](~/user-interface/layouts/bindablelayout.md).
+In this example, the <xref:Microsoft.Maui.Controls.RefreshView> provides pull to refresh functionality to a <xref:Microsoft.Maui.Controls.ScrollView> whose child is a <xref:Microsoft.Maui.Controls.FlexLayout>. The <xref:Microsoft.Maui.Controls.FlexLayout> uses a bindable layout to generate its content by binding to a collection of items, and sets the appearance of each item with a <xref:Microsoft.Maui.Controls.DataTemplate>. For more information about bindable layouts, see [Bindable layout](~/user-interface/layouts/bindablelayout.md).
 
 The value of the `RefreshView.IsRefreshing` property indicates the current state of the <xref:Microsoft.Maui.Controls.RefreshView>. When a refresh is triggered by the user, this property will automatically transition to `true`. Once the refresh completes, you should reset the property to `false`.
 
@@ -85,7 +85,7 @@ The following Android screenshot shows a <xref:Microsoft.Maui.Controls.RefreshVi
 
 :::image type="content" source="media/refreshview/teal-progress-circle.png" alt-text="Screenshot of a RefreshView with a teal progress circle.":::
 
-In addition, the `BackgroundColor` property can be set to a `Color` that represents the background color of the progress circle.
+In addition, the `BackgroundColor` property can be set to a <xref:Microsoft.Maui.Graphics.Color> that represents the background color of the progress circle.
 
 > [!NOTE]
 > On iOS, the `BackgroundColor` property sets the background color of the `UIView` that contains the progress circle.

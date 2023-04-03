@@ -52,7 +52,7 @@ Shell has implicit-conversion operators that enable the Shell visual hierarchy t
 This implicit conversion automatically wraps the <xref:Microsoft.Maui.Controls.ShellContent> object in a <xref:Microsoft.Maui.Controls.Tab> object, which is wrapped in a <xref:Microsoft.Maui.Controls.TabBar> object.
 
 > [!IMPORTANT]
-> In a Shell app, pages are created on demand in response to navigation. This is accomplished by using the `DataTemplate` markup extension to set the `ContentTemplate` property of each <xref:Microsoft.Maui.Controls.ShellContent> object to a <xref:Microsoft.Maui.Controls.ContentPage> object.
+> In a Shell app, pages are created on demand in response to navigation. This is accomplished by using the <xref:Microsoft.Maui.Controls.DataTemplate> markup extension to set the `ContentTemplate` property of each <xref:Microsoft.Maui.Controls.ShellContent> object to a <xref:Microsoft.Maui.Controls.ContentPage> object.
 
 ## Bottom tabs
 
@@ -105,7 +105,7 @@ In addition, Shell's implicit conversion operators can be used to remove the <xr
 This implicit conversion automatically wraps each <xref:Microsoft.Maui.Controls.ShellContent> object in a <xref:Microsoft.Maui.Controls.Tab> object.
 
 > [!IMPORTANT]
-> In a Shell app, pages are created on demand in response to navigation. This is accomplished by using the `DataTemplate` markup extension to set the `ContentTemplate` property of each <xref:Microsoft.Maui.Controls.ShellContent> object to a <xref:Microsoft.Maui.Controls.ContentPage> object.
+> In a Shell app, pages are created on demand in response to navigation. This is accomplished by using the <xref:Microsoft.Maui.Controls.DataTemplate> markup extension to set the `ContentTemplate` property of each <xref:Microsoft.Maui.Controls.ShellContent> object to a <xref:Microsoft.Maui.Controls.ContentPage> object.
 
 ## Bottom and top tabs
 
@@ -166,11 +166,11 @@ This implicit conversion automatically wraps the third <xref:Microsoft.Maui.Cont
 
 The <xref:Microsoft.Maui.Controls.Shell> class defines the following attached properties that control the appearance of tabs:
 
-- `TabBarBackgroundColor`, of type `Color`, that defines the background color for the tab bar. If the property is unset, the `BackgroundColor` property value is used.
-- `TabBarDisabledColor`, of type `Color`, that defines the disabled color for the tab bar. If the property is unset, the `DisabledColor` property value is used.
-- `TabBarForegroundColor`, of type `Color`, that defines the foreground color for the tab bar. If the property is unset, the `ForegroundColor` property value is used.
-- `TabBarTitleColor`, of type `Color`, that defines the title color for the tab bar. If the property is unset, the `TitleColor` property value will be used.
-- `TabBarUnselectedColor`, of type `Color`, that defines the unselected color for the tab bar. If the property is unset, the `UnselectedColor` property value is used.
+- `TabBarBackgroundColor`, of type <xref:Microsoft.Maui.Graphics.Color>, that defines the background color for the tab bar. If the property is unset, the `BackgroundColor` property value is used.
+- `TabBarDisabledColor`, of type <xref:Microsoft.Maui.Graphics.Color>, that defines the disabled color for the tab bar. If the property is unset, the `DisabledColor` property value is used.
+- `TabBarForegroundColor`, of type <xref:Microsoft.Maui.Graphics.Color>, that defines the foreground color for the tab bar. If the property is unset, the `ForegroundColor` property value is used.
+- `TabBarTitleColor`, of type <xref:Microsoft.Maui.Graphics.Color>, that defines the title color for the tab bar. If the property is unset, the `TitleColor` property value will be used.
+- `TabBarUnselectedColor`, of type <xref:Microsoft.Maui.Graphics.Color>, that defines the unselected color for the tab bar. If the property is unset, the `UnselectedColor` property value is used.
 
 All of these properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings, and styled.
 

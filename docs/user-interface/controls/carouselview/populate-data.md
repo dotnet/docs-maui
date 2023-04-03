@@ -11,7 +11,7 @@ ms.date: 01/18/2022
 The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.CarouselView> includes the following properties that define the data to be displayed, and its appearance:
 
 - `ItemsSource`, of type `IEnumerable`, specifies the collection of items to be displayed, and has a default value of `null`.
-- `ItemTemplate`, of type `DataTemplate`, specifies the template to apply to each item in the collection of items to be displayed.
+- `ItemTemplate`, of type <xref:Microsoft.Maui.Controls.DataTemplate>, specifies the template to apply to each item in the collection of items to be displayed.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings.
 
@@ -48,7 +48,7 @@ For information on how to change the <xref:Microsoft.Maui.Controls.CarouselView>
 
 ## Define item appearance
 
-The appearance of each item in the <xref:Microsoft.Maui.Controls.CarouselView> can be defined by setting the `CarouselView.ItemTemplate` property to a `DataTemplate`:
+The appearance of each item in the <xref:Microsoft.Maui.Controls.CarouselView> can be defined by setting the `CarouselView.ItemTemplate` property to a <xref:Microsoft.Maui.Controls.DataTemplate>:
 
 ```xaml
 <CarouselView ItemsSource="{Binding Monkeys}">
@@ -122,7 +122,7 @@ carouselView.ItemTemplate = new DataTemplate(() =>
 });
 ```
 
-The elements specified in the `DataTemplate` define the appearance of each item in the <xref:Microsoft.Maui.Controls.CarouselView>. In the example, layout within the `DataTemplate` is managed by a <xref:Microsoft.Maui.Controls.StackLayout>, and the data is displayed with an <xref:Microsoft.Maui.Controls.Image> object, and three <xref:Microsoft.Maui.Controls.Label> objects, that all bind to properties of the `Monkey` class:
+The elements specified in the <xref:Microsoft.Maui.Controls.DataTemplate> define the appearance of each item in the <xref:Microsoft.Maui.Controls.CarouselView>. In the example, layout within the <xref:Microsoft.Maui.Controls.DataTemplate> is managed by a <xref:Microsoft.Maui.Controls.StackLayout>, and the data is displayed with an <xref:Microsoft.Maui.Controls.Image> object, and three <xref:Microsoft.Maui.Controls.Label> objects, that all bind to properties of the `Monkey` class:
 
 ```csharp
 public class Monkey
@@ -142,7 +142,7 @@ For more information about data templates, see [Data templates](~/fundamentals/d
 
 ## Choose item appearance at runtime
 
-The appearance of each item in the <xref:Microsoft.Maui.Controls.CarouselView> can be chosen at runtime, based on the item value, by setting the `CarouselView.ItemTemplate` property to a `DataTemplateSelector` object:
+The appearance of each item in the <xref:Microsoft.Maui.Controls.CarouselView> can be chosen at runtime, based on the item value, by setting the `CarouselView.ItemTemplate` property to a <xref:Microsoft.Maui.Controls.DataTemplateSelector> object:
 
 ```xaml
 <ContentPage ...
@@ -192,14 +192,14 @@ public class MonkeyDataTemplateSelector : DataTemplateSelector
 }
 ```
 
-The `MonkeyDataTemplateSelector` class defines `AmericanMonkey` and `OtherMonkey` `DataTemplate` properties that are set to different data templates. The `OnSelectTemplate` override returns the `AmericanMonkey` template when the monkey name contains "America". When the monkey name doesn't contain "America", the `OnSelectTemplate` override returns the `OtherMonkey` template, which displays its data grayed out:
+The `MonkeyDataTemplateSelector` class defines `AmericanMonkey` and `OtherMonkey` <xref:Microsoft.Maui.Controls.DataTemplate> properties that are set to different data templates. The `OnSelectTemplate` override returns the `AmericanMonkey` template when the monkey name contains "America". When the monkey name doesn't contain "America", the `OnSelectTemplate` override returns the `OtherMonkey` template, which displays its data grayed out:
 
 :::image type="content" source="media/populate-data/datatemplateselector.png" alt-text="Screenshot of a CarouselView runtime item template selection.":::
 
 For more information about data template selectors, see [Create a DataTemplateSelector](~/fundamentals/datatemplate.md#create-a-datatemplateselector).
 
 > [!IMPORTANT]
-> When using <xref:Microsoft.Maui.Controls.CarouselView>, never set the root element of your `DataTemplate` objects to a <xref:Microsoft.Maui.Controls.ViewCell>. This will result in an exception being thrown because <xref:Microsoft.Maui.Controls.CarouselView> has no concept of cells.
+> When using <xref:Microsoft.Maui.Controls.CarouselView>, never set the root element of your <xref:Microsoft.Maui.Controls.DataTemplate> objects to a <xref:Microsoft.Maui.Controls.ViewCell>. This will result in an exception being thrown because <xref:Microsoft.Maui.Controls.CarouselView> has no concept of cells.
 
 ## Display indicators
 
@@ -231,7 +231,7 @@ For more information about indicators, see [IndicatorView](~/user-interface/cont
 
 ## Context menus
 
-<xref:Microsoft.Maui.Controls.CarouselView> supports context menus for items of data through the <xref:Microsoft.Maui.Controls.SwipeView>, which reveals the context menu with a swipe gesture. The <xref:Microsoft.Maui.Controls.SwipeView> is a container control that wraps around an item of content, and provides context menu items for that item of content. Therefore, context menus are implemented for a <xref:Microsoft.Maui.Controls.CarouselView> by creating a <xref:Microsoft.Maui.Controls.SwipeView> that defines the content that the <xref:Microsoft.Maui.Controls.SwipeView> wraps around, and the context menu items that are revealed by the swipe gesture. This is achieved by adding a <xref:Microsoft.Maui.Controls.SwipeView> to the `DataTemplate` that defines the appearance of each item of data in the <xref:Microsoft.Maui.Controls.CarouselView>:
+<xref:Microsoft.Maui.Controls.CarouselView> supports context menus for items of data through the <xref:Microsoft.Maui.Controls.SwipeView>, which reveals the context menu with a swipe gesture. The <xref:Microsoft.Maui.Controls.SwipeView> is a container control that wraps around an item of content, and provides context menu items for that item of content. Therefore, context menus are implemented for a <xref:Microsoft.Maui.Controls.CarouselView> by creating a <xref:Microsoft.Maui.Controls.SwipeView> that defines the content that the <xref:Microsoft.Maui.Controls.SwipeView> wraps around, and the context menu items that are revealed by the swipe gesture. This is achieved by adding a <xref:Microsoft.Maui.Controls.SwipeView> to the <xref:Microsoft.Maui.Controls.DataTemplate> that defines the appearance of each item of data in the <xref:Microsoft.Maui.Controls.CarouselView>:
 
 ```xaml
 <CarouselView x:Name="carouselView"

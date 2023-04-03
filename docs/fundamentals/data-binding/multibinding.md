@@ -25,7 +25,7 @@ In addition, the `MultiBinding` class inherits the following properties from the
 - `StringFormat`, of type `string`, which specifies how to format the multi-binding result if it's displayed as a string.
 - `TargetNullValue`, of type `object`, which represents the value that's used in the target when the value of the source is `null`.
 
-A `MultiBinding` must use a `IMultiValueConverter` to produce a value for the binding target, based on the value of the bindings in the `Bindings` collection. For example, a `Color` might be computed from red, blue, and green values, which can be values from the same or different binding source objects. When a value moves from the target to the sources, the target property value is translated to a set of values that are fed back into the bindings.
+A `MultiBinding` must use a `IMultiValueConverter` to produce a value for the binding target, based on the value of the bindings in the `Bindings` collection. For example, a <xref:Microsoft.Maui.Graphics.Color> might be computed from red, blue, and green values, which can be values from the same or different binding source objects. When a value moves from the target to the sources, the target property value is translated to a set of values that are fed back into the bindings.
 
 > [!IMPORTANT]
 > Individual bindings in the `Bindings` collection can have their own value converters.
@@ -114,7 +114,7 @@ The `ConvertBack` method returns an array of values of type `object[]` that have
 
 ## Consume a IMultiValueConverter
 
-A `IMultiValueConverter` is typically consumed by instantiating it in a resource dictionary, and then referencing it using the `StaticResource` markup extension to set the `MultiBinding.Converter` property:
+A `IMultiValueConverter` is typically consumed by instantiating it in a resource dictionary, and then referencing it using the [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) markup extension to set the `MultiBinding.Converter` property:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -303,6 +303,6 @@ In this example, the `MultiBinding` object uses its `AnyTrueMultiConverter` inst
 </ContentPage>
 ```
 
-In this example, the `TemplatedParent` relative binding mode is used to bind from within a control template to the runtime object instance to which the template is applied. The `Expander`, which is the root element of the `ControlTemplate`, has its `BindingContext` set to the runtime object instance to which the template is applied. Therefore, the `Expander` and its children resolve their binding expressions, and `Binding` objects, against the properties of the `CardViewExpander` object. The `MultiBinding` uses the `AllTrueMultiConverter` instance to set the `Expander.IsVisible` property to `true` provided that the two `Binding` objects evaluate to `true`. Otherwise, the `Expander.IsVisible` property is set to `false`.
+In this example, the `TemplatedParent` relative binding mode is used to bind from within a control template to the runtime object instance to which the template is applied. The `Expander`, which is the root element of the <xref:Microsoft.Maui.Controls.ControlTemplate>, has its `BindingContext` set to the runtime object instance to which the template is applied. Therefore, the `Expander` and its children resolve their binding expressions, and `Binding` objects, against the properties of the `CardViewExpander` object. The `MultiBinding` uses the `AllTrueMultiConverter` instance to set the `Expander.IsVisible` property to `true` provided that the two `Binding` objects evaluate to `true`. Otherwise, the `Expander.IsVisible` property is set to `false`.
 
 For more information about relative bindings, see [Relative bindings](relative-bindings.md). For more information about control templates, see [Control templates](~/fundamentals/controltemplate.md).

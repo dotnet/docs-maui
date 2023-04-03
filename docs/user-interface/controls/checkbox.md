@@ -13,7 +13,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.CheckBo
 <xref:Microsoft.Maui.Controls.CheckBox> defines the following properties:
 
 - `IsChecked`, of type `bool`, which indicates whether the <xref:Microsoft.Maui.Controls.CheckBox> is checked. This property has a default binding mode of `TwoWay`.
-- `Color`, of type `Color`, which indicates the color of the <xref:Microsoft.Maui.Controls.CheckBox>.
+- `Color`, of type <xref:Microsoft.Maui.Graphics.Color>, which indicates the color of the <xref:Microsoft.Maui.Controls.CheckBox>.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be styled, and be the target of data bindings.
 
@@ -110,13 +110,13 @@ Sometimes an application enters a state where a <xref:Microsoft.Maui.Controls.Ch
 
 ## CheckBox appearance
 
-In addition to the properties that <xref:Microsoft.Maui.Controls.CheckBox> inherits from the <xref:Microsoft.Maui.Controls.View> class, <xref:Microsoft.Maui.Controls.CheckBox> also defines a `Color` property that sets its color to a `Color`:
+In addition to the properties that <xref:Microsoft.Maui.Controls.CheckBox> inherits from the <xref:Microsoft.Maui.Controls.View> class, <xref:Microsoft.Maui.Controls.CheckBox> also defines a `Color` property that sets its color to a <xref:Microsoft.Maui.Graphics.Color>:
 
 ```xaml
 <CheckBox Color="Red" />
 ```
 
-The following screenshot shows a series of checked <xref:Microsoft.Maui.Controls.CheckBox> objects, where each object has its `Color` property set to a different `Color`:
+The following screenshot shows a series of checked <xref:Microsoft.Maui.Controls.CheckBox> objects, where each object has its `Color` property set to a different <xref:Microsoft.Maui.Graphics.Color>:
 
 :::image type="content" source="media/checkbox/checkbox-colors.png" alt-text="Screenshot of colored CheckBoxes.":::
 

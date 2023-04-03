@@ -13,13 +13,13 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Navigat
 <xref:Microsoft.Maui.Controls.NavigationPage> defines the following properties:
 
 - `BarBackground`, of type <xref:Microsoft.Maui.Controls.Brush>, specifies the background of the navigation bar as a <xref:Microsoft.Maui.Controls.Brush>.
-- `BarBackgroundColor`, of type `Color`, specifies the background color of the navigation bar.
+- `BarBackgroundColor`, of type <xref:Microsoft.Maui.Graphics.Color>, specifies the background color of the navigation bar.
 - `BackButtonTitle`, of type `string`, represents the text to use for the back button. This is an attached property.
-- `BarTextColor`, of type `Color`, specifies the color of the text on the navigation bar.
+- `BarTextColor`, of type <xref:Microsoft.Maui.Graphics.Color>, specifies the color of the text on the navigation bar.
 - `CurrentPage`, of type <xref:Microsoft.Maui.Controls.Page>, represents the page that's on top of the navigation stack. This is a read-only property.
 - `HasNavigationBar`, of type `bool`, represents whether a navigation bar is present on the <xref:Microsoft.Maui.Controls.NavigationPage>. The default value of this property is `true`. This is an attached property.
 - `HasBackButton`, of type `bool`, represents whether the navigation bar includes a back button. The default value of this property is `true`. This is an attached property.
-- `IconColor`, of type `Color`, defines the background color of the icon in the navigation bar. This is an attached property.
+- `IconColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the background color of the icon in the navigation bar. This is an attached property.
 - `RootPage`, of type <xref:Microsoft.Maui.Controls.Page>, represents the root page of the navigation stack. This is a read-only property.
 - `TitleIconImageSource`, of type `ImageSource`, defines the icon that represents the title on the navigation bar. This is an attached property.
 - `TitleView`, of type <xref:Microsoft.Maui.Controls.View>, defines the view that can be displayed in the navigation bar. This is an attached property.

@@ -26,7 +26,7 @@ Gradient stops are the building blocks of a gradient brush, and specify the colo
 
 The <xref:Microsoft.Maui.Controls.GradientStop> class defines the following properties:
 
-- `Color`, of type `Color`, which represents the color of the gradient stop.
+- `Color`, of type <xref:Microsoft.Maui.Graphics.Color>, which represents the color of the gradient stop.
 - `Offset`, of type `float`, which represents the location of the gradient stop within the gradient vector. The default value of this property is 0, and valid values are in the range 0.0-1.0. The closer this value is to 0, the closer the color is to the start of the gradient. Similarly, the closer this value is to 1, the closer the color is to the end of the gradient.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.

@@ -154,8 +154,8 @@ The <xref:Microsoft.Maui.Controls.Maps.Map> class defines the following properti
 
 - `IsShowingUser`, of type `bool`, indicates whether the map is showing the user's current location.
 - `ItemsSource`, of type `IEnumerable`, which specifies the collection of `IEnumerable` pin items to be displayed.
-- `ItemTemplate`, of type `DataTemplate`, which specifies the `DataTemplate` to apply to each item in the collection of displayed pins.
-- `ItemTemplateSelector`, of type `DataTemplateSelector`, which specifies the `DataTemplateSelector` that will be used to choose a `DataTemplate` for a pin at runtime.
+- `ItemTemplate`, of type <xref:Microsoft.Maui.Controls.DataTemplate>, which specifies the <xref:Microsoft.Maui.Controls.DataTemplate> to apply to each item in the collection of displayed pins.
+- `ItemTemplateSelector`, of type <xref:Microsoft.Maui.Controls.DataTemplateSelector>, which specifies the <xref:Microsoft.Maui.Controls.DataTemplateSelector> that will be used to choose a <xref:Microsoft.Maui.Controls.DataTemplate> for a pin at runtime.
 - `IsScrollEnabled`, of type `bool`, determines whether the map is allowed to scroll.
 - `IsTrafficEnabled`, of type `bool`, indicates whether traffic data is overlaid on the map.
 - `IsZoomEnabled`, of type `bool`, determines whether the map is allowed to zoom.
@@ -645,8 +645,8 @@ However, setting the `Pin.Type` property to any `PinType` member does not change
 The <xref:Microsoft.Maui.Controls.Maps.Map> class defines the following bindable properties:
 
 - `ItemsSource`, of type `IEnumerable`, which specifies the collection of `IEnumerable` pin items to be displayed.
-- `ItemTemplate`, of type `DataTemplate`, which specifies the `DataTemplate` to apply to each item in the collection of displayed pins.
-- `ItemTemplateSelector`, of type `DataTemplateSelector`, which specifies the `DataTemplateSelector` that will be used to choose a `DataTemplate` for a pin at runtime.
+- `ItemTemplate`, of type <xref:Microsoft.Maui.Controls.DataTemplate>, which specifies the <xref:Microsoft.Maui.Controls.DataTemplate> to apply to each item in the collection of displayed pins.
+- `ItemTemplateSelector`, of type <xref:Microsoft.Maui.Controls.DataTemplateSelector>, which specifies the <xref:Microsoft.Maui.Controls.DataTemplateSelector> that will be used to choose a <xref:Microsoft.Maui.Controls.DataTemplate> for a pin at runtime.
 
 > [!IMPORTANT]
 > The `ItemTemplate` property takes precedence when both the `ItemTemplate` and `ItemTemplateSelector` properties are set.
@@ -675,7 +675,7 @@ A <xref:Microsoft.Maui.Controls.Maps.Map> can be populated with pins by using da
 
 The `ItemsSource` property data binds to the `Positions` property of the connected viewmodel, which returns an `ObservableCollection` of `Position` objects, which is a custom type. Each `Position` object defines `Address` and `Description` properties, of type `string`, and a `Location` property, of type `Location`.
 
-The appearance of each item in the `IEnumerable` collection is defined by setting the `ItemTemplate` property to a `DataTemplate` that contains a `Pin` object that data binds to appropriate properties.
+The appearance of each item in the `IEnumerable` collection is defined by setting the `ItemTemplate` property to a <xref:Microsoft.Maui.Controls.DataTemplate> that contains a `Pin` object that data binds to appropriate properties.
 
 The following screenshot shows a <xref:Microsoft.Maui.Controls.Maps.Map> displaying a `Pin` collection using data binding:
 
@@ -683,7 +683,7 @@ The following screenshot shows a <xref:Microsoft.Maui.Controls.Maps.Map> display
 
 #### Choose item appearance at runtime
 
-The appearance of each item in the `IEnumerable` collection can be chosen at runtime, based on the item value, by setting the `ItemTemplateSelector` property to a `DataTemplateSelector`:
+The appearance of each item in the `IEnumerable` collection can be chosen at runtime, based on the item value, by setting the `ItemTemplateSelector` property to a <xref:Microsoft.Maui.Controls.DataTemplateSelector>:
 
 ```xaml
 <ContentPage ...
@@ -737,7 +737,7 @@ public class MapItemTemplateSelector : DataTemplateSelector
 }
 ```
 
-The `MapItemTemplateSelector` class defines `DefaultTemplate` and `SanFranTemplate` `DataTemplate` properties that are set to different data templates. The `OnSelectTemplate` method returns the `SanFranTemplate`, which displays "Xamarin" as a label when a `Pin` is tapped, when the item has an address that contains "San Francisco". When the item doesn't have an address that contains "San Francisco", the `OnSelectTemplate` method returns the `DefaultTemplate`.
+The `MapItemTemplateSelector` class defines `DefaultTemplate` and `SanFranTemplate` <xref:Microsoft.Maui.Controls.DataTemplate> properties that are set to different data templates. The `OnSelectTemplate` method returns the `SanFranTemplate`, which displays "Xamarin" as a label when a `Pin` is tapped, when the item has an address that contains "San Francisco". When the item doesn't have an address that contains "San Francisco", the `OnSelectTemplate` method returns the `DefaultTemplate`.
 
 > [!NOTE]
 > A use case for this functionality is binding properties of sub-classed `Pin` objects to different properties, based on the `Pin` sub-type.
@@ -752,12 +752,12 @@ For more information about data template selectors, see [Create a DataTemplateSe
 
 The `Polygon`, `Polyline`, and `Circle` classes derive from the `MapElement` class, which exposes the following bindable properties:
 
-- `StrokeColor` is a `Color` object that determines the line color.
+- `StrokeColor` is a <xref:Microsoft.Maui.Graphics.Color> object that determines the line color.
 - `StrokeWidth` is a `float` object that determines the line width.
 
 The `Polygon` class defines an additional bindable property:
 
-- `FillColor` is a `Color` object that determines the polygon's background color.
+- `FillColor` is a <xref:Microsoft.Maui.Graphics.Color> object that determines the polygon's background color.
 
 In addition, the `Polygon` and `Polyline` classes both define a `GeoPath` property, which is a list of `Location` objects that specify the points of the shape.
 
@@ -765,7 +765,7 @@ The `Circle` class defines the following bindable properties:
 
 - `Center` is a `Location` object that defines the center of the circle, in latitude and longitude.
 - `Radius` is a `Distance` object that defines the radius of the circle in meters, kilometers, or miles.
-- `FillColor` is a `Color` property that determines the color within the circle perimeter.
+- `FillColor` is a <xref:Microsoft.Maui.Graphics.Color> property that determines the color within the circle perimeter.
 
 ### Create a polygon
 

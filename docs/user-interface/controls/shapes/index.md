@@ -45,11 +45,11 @@ In this example, the stroke and fill of an <xref:Microsoft.Maui.Controls.Shapes.
 :::image type="content" source="media/ellipse.png" alt-text="Paint shapes.":::
 
 > [!IMPORTANT]
-> <xref:Microsoft.Maui.Controls.Brush> objects use a type converter that enables `Color` values to specified for the <xref:Microsoft.Maui.Controls.Shapes.Shape.Stroke> property.
+> <xref:Microsoft.Maui.Controls.Brush> objects use a type converter that enables <xref:Microsoft.Maui.Graphics.Color> values to specified for the <xref:Microsoft.Maui.Controls.Shapes.Shape.Stroke> property.
 
 If you don't specify a <xref:Microsoft.Maui.Controls.Brush> object for <xref:Microsoft.Maui.Controls.Shapes.Shape.Stroke>, or if you set <xref:Microsoft.Maui.Controls.Shapes.Shape.StrokeThickness> to 0, then the border around the shape is not drawn.
 
-For more information about <xref:Microsoft.Maui.Controls.Brush> objects, see [Brushes](~/user-interface/brushes/index.md). For more information about valid `Color` values, see [Colors](~/user-interface/graphics/colors.md).
+For more information about <xref:Microsoft.Maui.Controls.Brush> objects, see [Brushes](~/user-interface/brushes/index.md). For more information about valid <xref:Microsoft.Maui.Graphics.Color> values, see [Colors](~/user-interface/graphics/colors.md).
 
 ## Stretch shapes
 

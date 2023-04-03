@@ -24,7 +24,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Label> 
 - `MaxLines`, of type `int`, indicates the maximum number of lines allowed in the <xref:Microsoft.Maui.Controls.Label>.
 - `Padding`, of type `Thickness`, determines the label's padding.
 - `Text`, of type `string`, defines the text displayed as the content of the label.
-- `TextColor`, of type `Color`, defines the color of the displayed text.
+- `TextColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the color of the displayed text.
 - `TextDecorations`, of type `TextDecorations`, specifies the text decorations (underline and strikethrough) that can be applied.
 - `TextTransform`, of type `TextTransform`, specifies the casing of the displayed text.
 - `TextType`, of type `TextType`, determines whether the <xref:Microsoft.Maui.Controls.Label> should display plain text or HTML text.
@@ -247,7 +247,7 @@ The following example shows transforming text to uppercase:
 
 <xref:Microsoft.Maui.Controls.Span> defines the following properties:
 
-- `BackgroundColor`, of type `Color`, which represents the color of the span background.
+- `BackgroundColor`, of type <xref:Microsoft.Maui.Graphics.Color>, which represents the color of the span background.
 - `CharacterSpacing`, of type `double`, sets the spacing between characters in the displayed text.
 - `FontAttributes`, of type `FontAttributes`, determines text style.
 - `FontAutoScalingEnabled`, of type `bool`, defines whether the text will reflect scaling preferences set in the operating system. The default value of this property is `true`.
@@ -256,7 +256,7 @@ The following example shows transforming text to uppercase:
 - `LineHeight`, of type `double`, specifies the multiplier to apply to the default line height when displaying text.
 - `Style`, of type <xref:Microsoft.Maui.Controls.Style>, which is the style to apply to the span.
 - `Text`, of type `string`, defines the text displayed as the content of the <xref:Microsoft.Maui.Controls.Span>.
-- `TextColor`, of type `Color`, defines the color of the displayed text.
+- `TextColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the color of the displayed text.
 - `TextDecorations`, of type `TextDecorations`, specifies the text decorations (underline and strikethrough) that can be applied.
 - `TextTransform`, of type `TextTransform`, specifies the casing of the displayed text.
 

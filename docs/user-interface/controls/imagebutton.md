@@ -11,7 +11,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.ImageBu
 <xref:Microsoft.Maui.Controls.ImageButton> defines the following properties:
 
 - `Aspect`, of type `Aspect`, determines how the image will be scaled to fit the display area.
-- `BorderColor`, of type `Color`, describes the border color of the button.
+- `BorderColor`, of type <xref:Microsoft.Maui.Graphics.Color>, describes the border color of the button.
 - `BorderWidth`, of type `double`, defines the width of the button's border.
 - `Command`, of type `ICommand`, defines the command that's executed when the button is tapped.
 - `CommandParameter`, of type `object`, is the parameter that's passed to `Command`.

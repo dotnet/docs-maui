@@ -80,7 +80,7 @@ In this example, the two resources are values of the structure type `LayoutOptio
 > [!NOTE]
 > Optional <xref:Microsoft.Maui.Controls.ResourceDictionary> tags can be included as the child of the `Resources` tags.
 
-The resources can then be consumed by the <xref:Microsoft.Maui.Controls.Button> objects, by using the `StaticResource` XAML markup extension to set their `HorizontalOptions` and `VerticalOptions` properties:
+The resources can then be consumed by the <xref:Microsoft.Maui.Controls.Button> objects, by using the [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) XAML markup extension to set their `HorizontalOptions` and `VerticalOptions` properties:
 
 ```xaml
 <Button Text="Do this!"
@@ -92,7 +92,7 @@ The resources can then be consumed by the <xref:Microsoft.Maui.Controls.Button> 
         FontSize="24" />
 ```
 
-The `StaticResource` markup extension is always delimited with curly braces, and includes the dictionary key. The name `StaticResource` distinguishes it from `DynamicResource`, which .NET MAUI also supports. `DynamicResource` is for dictionary keys associated with values that might change at runtime, while `StaticResource` accesses elements from the dictionary just once when the elements on the page are constructed. Whenever the XAML parser encounters a `StaticResource` markup extension, it searches up the visual tree and uses the first <xref:Microsoft.Maui.Controls.ResourceDictionary> it encounters containing that key.
+The [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) markup extension is always delimited with curly braces, and includes the dictionary key. The name [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) distinguishes it from [`DynamicResource`](xref:Microsoft.Maui.Controls.Xaml.DynamicResourceExtension), which .NET MAUI also supports. [`DynamicResource`](xref:Microsoft.Maui.Controls.Xaml.DynamicResourceExtension) is for dictionary keys associated with values that might change at runtime, while [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) accesses elements from the dictionary just once when the elements on the page are constructed. Whenever the XAML parser encounters a [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) markup extension, it searches up the visual tree and uses the first <xref:Microsoft.Maui.Controls.ResourceDictionary> it encounters containing that key.
 
 It’s necessary to store doubles in the dictionary for the `BorderWidth`, `Rotation`, and `FontSize` properties. XAML conveniently defines tags for common data types like `x:Double` and `x:Int32`:
 
@@ -120,7 +120,7 @@ These additional three resources can be referenced in the same way as the `Layou
         FontSize="{StaticResource fontSize}" />
 ```
 
-For resources of type `Color`, you can use the same string representations that you use when directly assigning attributes of these types. Type converters included in .NET MAUI are invoked when the resource is created. It's also possible to use the `OnPlatform` class within the resource dictionary to define different values for the platforms. The following example uses this class for setting different text colors:
+For resources of type <xref:Microsoft.Maui.Graphics.Color>, you can use the same string representations that you use when directly assigning attributes of these types. Type converters included in .NET MAUI are invoked when the resource is created. It's also possible to use the `OnPlatform` class within the resource dictionary to define different values for the platforms. The following example uses this class for setting different text colors:
 
 ```xaml
 <OnPlatform x:Key="textColor"
@@ -130,7 +130,7 @@ For resources of type `Color`, you can use the same string representations that 
 </OnPlatform>
 ```
 
-The `OnPlatform` resource gets an `x:Key` attribute because it’s an object in the dictionary, and an `x:TypeArguments` attribute because it’s a generic class. The `iOS`, and `Android` attributes are converted to `Color` values when the object is initialized.
+The `OnPlatform` resource gets an `x:Key` attribute because it’s an object in the dictionary, and an `x:TypeArguments` attribute because it’s a generic class. The `iOS`, and `Android` attributes are converted to <xref:Microsoft.Maui.Graphics.Color> values when the object is initialized.
 
 The following example shows the three buttons accessing six shared values:
 
@@ -203,10 +203,10 @@ One of the most common types of objects stored in resource dictionaries is the .
 
 ## x:Static Markup Extension
 
-In addition to the `StaticResource` markup extension, there's also an `x:Static` markup extension. However, while `StaticResource` returns an object from a resource dictionary,`x:Static` accesses a public static field, a public static property, a public constant field, or an enumeration member.
+In addition to the [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) markup extension, there's also an `x:Static` markup extension. However, while [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) returns an object from a resource dictionary,`x:Static` accesses a public static field, a public static property, a public constant field, or an enumeration member.
 
 > [!NOTE]
-> The `StaticResource` markup extension is supported by XAML implementations that define a resource dictionary, while `x:Static` is an intrinsic part of XAML, as the `x` prefix reveals.
+> The [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) markup extension is supported by XAML implementations that define a resource dictionary, while `x:Static` is an intrinsic part of XAML, as the `x` prefix reveals.
 
 The following example demonstrates how `x:Static` can explicitly reference static fields and enumeration members:
 
