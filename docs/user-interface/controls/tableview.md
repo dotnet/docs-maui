@@ -75,9 +75,9 @@ Each item in a <xref:Microsoft.Maui.Controls.TableView> is defined by a <xref:Mi
 A <xref:Microsoft.Maui.Controls.TextCell> displays primary and secondary text on separate lines. <xref:Microsoft.Maui.Controls.TextCell> defines the following properties:
 
 - `Text`, of type `string`, defines the primary text to be displayed.
-- `TextColor`, of type `Color`, represents the color of the primary text.
+- `TextColor`, of type <xref:Microsoft.Maui.Graphics.Color>, represents the color of the primary text.
 - `Detail`, of type `string`, defines the secondary text to be displayed.
-- `DetailColor`, of type `Color`, indicates the color of the secondary text.
+- `DetailColor`, of type <xref:Microsoft.Maui.Graphics.Color>, indicates the color of the secondary text.
 - `Command`, of type `ICommand`, defines the command that's executed when the cell is tapped.
 - `CommandParameter`, of type `object`, represents the parameter that's passed to the command.
 
@@ -145,7 +145,7 @@ A <xref:Microsoft.Maui.Controls.SwitchCell> displays text and a switch that can 
 
 - `Text`, of type `string`, defines the text to display next to the switch.
 - `On`, of type `bool`, represents whether the switch is on or off.
-- `OnColor`, of type `Color`, indicates the color of the switch when in it's on position.
+- `OnColor`, of type <xref:Microsoft.Maui.Graphics.Color>, indicates the color of the switch when in it's on position.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
@@ -177,7 +177,7 @@ An <xref:Microsoft.Maui.Controls.EntryCell> displays a label and text data that'
 - `HorizontalTextAlignment`, of type `TextAlignment`, represents the horizontal alignment of the text.
 - `Keyboard`, of type `Keyboard`, determines the keyboard to display when entering text.
 - <xref:Microsoft.Maui.Controls.Label>, of type `string`,  represents the text to display to the left of the editable text.
-- `LabelColor`, of type `Color`,  defines the color of the label text.
+- `LabelColor`, of type <xref:Microsoft.Maui.Graphics.Color>,  defines the color of the label text.
 - `Placeholder`, of type `string`, represents the text that's displayed when the `Text` property is empty.
 - `Text`, of type `string`, defines the text that's editable.
 - `VerticalTextAlignment`, of type `TextAlignment`, represents the vertical alignment of the text.

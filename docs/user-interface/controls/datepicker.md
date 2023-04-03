@@ -14,7 +14,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.DatePic
 - `MaximumDate` of type `DateTime`, which defaults to the last day of the year 2100.
 - `Date` of type `DateTime`, the selected date, which defaults to the value [`DateTime.Today`](xref:System.DateTime.Today).
 - `Format` of type `string`, a [standard](/dotnet/standard/base-types/standard-date-and-time-format-strings/) or [custom](/dotnet/standard/base-types/custom-date-and-time-format-strings/) .NET formatting string, which defaults to "D", the long date pattern.
-- `TextColor` of type `Color`, the color used to display the selected date.
+- `TextColor` of type <xref:Microsoft.Maui.Graphics.Color>, the color used to display the selected date.
 - `FontAttributes` of type `FontAttributes`, which defaults to `FontAtributes.None`.
 - `FontFamily` of type `string`, which defaults to `null`.
 - `FontSize` of type `double`, which defaults to -1.0.

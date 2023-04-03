@@ -17,8 +17,8 @@ The following screenshot shows a <xref:Microsoft.Maui.Controls.Switch> control i
 The <xref:Microsoft.Maui.Controls.Switch> control defines the following properties:
 
 - `IsToggled` is a `boolean` value that indicates whether the <xref:Microsoft.Maui.Controls.Switch> is on. The default value of this property is `false`.
-- `OnColor` is a `Color` that affects how the <xref:Microsoft.Maui.Controls.Switch> is rendered in the toggled, or on state.
-- `ThumbColor` is the `Color` of the switch thumb.
+- `OnColor` is a <xref:Microsoft.Maui.Graphics.Color> that affects how the <xref:Microsoft.Maui.Controls.Switch> is rendered in the toggled, or on state.
+- `ThumbColor` is the <xref:Microsoft.Maui.Graphics.Color> of the switch thumb.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means they can be styled and be the target of data bindings.
 
@@ -40,7 +40,7 @@ Switch switchControl = new Switch { IsToggled = true };
 
 ## Switch appearance
 
-In addition to the properties that <xref:Microsoft.Maui.Controls.Switch> inherits from the <xref:Microsoft.Maui.Controls.View> class, <xref:Microsoft.Maui.Controls.Switch> also defines `OnColor` and `ThumbColor` properties. The `OnColor` property can be set to define the <xref:Microsoft.Maui.Controls.Switch> color when it is toggled to its on state, and the `ThumbColor` property can be set to define the `Color` of the switch thumb. The following example shows how to instantiate a <xref:Microsoft.Maui.Controls.Switch> in XAML with these properties set:
+In addition to the properties that <xref:Microsoft.Maui.Controls.Switch> inherits from the <xref:Microsoft.Maui.Controls.View> class, <xref:Microsoft.Maui.Controls.Switch> also defines `OnColor` and `ThumbColor` properties. The `OnColor` property can be set to define the <xref:Microsoft.Maui.Controls.Switch> color when it is toggled to its on state, and the `ThumbColor` property can be set to define the <xref:Microsoft.Maui.Graphics.Color> of the switch thumb. The following example shows how to instantiate a <xref:Microsoft.Maui.Controls.Switch> in XAML with these properties set:
 
 ```xaml
 <Switch OnColor="Orange"

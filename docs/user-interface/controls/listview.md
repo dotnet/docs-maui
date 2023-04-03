@@ -28,11 +28,11 @@ The <xref:Microsoft.Maui.Controls.ListView> class derives from the `ItemsView<Ce
 - `IsPullToRefreshEnabled`, of type `bool`, indicates whether the user can swipe down to cause the <xref:Microsoft.Maui.Controls.ListView> to refresh its data. The default value of this property is `false`.
 - `IsRefreshing`, of type `bool`, indicates whether the <xref:Microsoft.Maui.Controls.ListView> is currently refreshing. The default value of this property is `false`.
 - `RefreshCommand`, of type `ICommand`, represents the command that will be executed when a refresh is triggered.
-- `RefreshControlColor`, of type `Color`, determines the color of the refresh visualization that's shown while a refresh occurs.
+- `RefreshControlColor`, of type <xref:Microsoft.Maui.Graphics.Color>, determines the color of the refresh visualization that's shown while a refresh occurs.
 - `RowHeight`, of type `int`, determines the height of each row when `HasUnevenRows` is `false`.
 - `SelectedItem`, of type `object`, represents the currently selected item in the <xref:Microsoft.Maui.Controls.ListView>.
 - `SelectionMode`, of type `ListViewSelectionMode`, indicates whether items can be selected in the <xref:Microsoft.Maui.Controls.ListView> or not. The default value of this property is `Single`.
-- `SeparatorColor`, of type `Color`, defines the color of the bar that separates items in the list.
+- `SeparatorColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the color of the bar that separates items in the list.
 - `SeparatorVisibility`, of type `SeparatorVisibility`, defines whether separators are visible between items.
 - `VerticalScrollBarVisibility`, of type `ScrollBarVisibility`, indicates when the vertical scroll bar will be visible.
 
@@ -154,9 +154,9 @@ Typically, <xref:Microsoft.Maui.Controls.SwitchCell> and <xref:Microsoft.Maui.Co
 A <xref:Microsoft.Maui.Controls.TextCell> displays primary and secondary text on separate lines. <xref:Microsoft.Maui.Controls.TextCell> defines the following properties:
 
 - `Text`, of type `string`, defines the primary text to be displayed.
-- `TextColor`, of type `Color`, represents the color of the primary text.
+- `TextColor`, of type <xref:Microsoft.Maui.Graphics.Color>, represents the color of the primary text.
 - `Detail`, of type `string`, defines the secondary text to be displayed.
-- `DetailColor`, of type `Color`, indicates the color of the secondary text.
+- `DetailColor`, of type <xref:Microsoft.Maui.Graphics.Color>, indicates the color of the secondary text.
 - `Command`, of type `ICommand`, defines the command that's executed when the cell is tapped.
 - `CommandParameter`, of type `object`, represents the parameter that's passed to the command.
 

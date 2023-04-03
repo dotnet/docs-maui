@@ -135,7 +135,7 @@ These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> o
 
 Each swipe item is defined as a `SwipeItem` object that's placed into one of the four `SwipeItems` directional collections. The `SwipeItem` class derives from the `MenuItem` class, and adds the following members:
 
-- A `BackgroundColor` property, of type `Color`, that defines the background color of the swipe item. This property is backed by a bindable property.
+- A `BackgroundColor` property, of type <xref:Microsoft.Maui.Graphics.Color>, that defines the background color of the swipe item. This property is backed by a bindable property.
 - An `Invoked` event, which is raised when the swipe item is executed.
 
 > [!IMPORTANT]

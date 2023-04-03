@@ -101,7 +101,7 @@ Because animations are uniquely identified by a combination of the animation own
 
 ## Create a custom animation
 
-The examples shown here so far have demonstrated animations that could equally be achieved with the methods in the <xref:Microsoft.Maui.Controls.ViewExtensions> class. However, the advantage of the <xref:Microsoft.Maui.Controls.Animation> class is that it has access to the callback method, which is executed when the animated value changes. This allows the callback to implement any desired animation. For example, the following code example animates the <xref:Microsoft.Maui.Controls.VisualElement.BackgroundColor> property of a page by setting it to `Color` values created by the `Color.FromHsla` method, with hue values ranging from 0 to 1:
+The examples shown here so far have demonstrated animations that could equally be achieved with the methods in the <xref:Microsoft.Maui.Controls.ViewExtensions> class. However, the advantage of the <xref:Microsoft.Maui.Controls.Animation> class is that it has access to the callback method, which is executed when the animated value changes. This allows the callback to implement any desired animation. For example, the following code example animates the <xref:Microsoft.Maui.Controls.VisualElement.BackgroundColor> property of a page by setting it to <xref:Microsoft.Maui.Graphics.Color> values created by the `Color.FromHsla` method, with hue values ranging from 0 to 1:
 
 ```csharp
 new Animation (callback: v => BackgroundColor = Color.FromHsla (v, 1, 0.5),
@@ -113,9 +113,9 @@ The resulting animation provides the appearance of advancing the page background
 
 ## Create a custom animation extension method
 
-The extension methods in the <xref:Microsoft.Maui.Controls.ViewExtensions> class animate a property from its current value to a specified value. This makes it difficult to create, for example, a `ColorTo` animation method that can be used to animate a color from one value to another. This is because different controls have different properties of type `Color`. While the <xref:Microsoft.Maui.Controls.VisualElement> class defines a <xref:Microsoft.Maui.Controls.VisualElement.BackgroundColor> property, this isn't always the desired `Color` property to animate.
+The extension methods in the <xref:Microsoft.Maui.Controls.ViewExtensions> class animate a property from its current value to a specified value. This makes it difficult to create, for example, a `ColorTo` animation method that can be used to animate a color from one value to another. This is because different controls have different properties of type <xref:Microsoft.Maui.Graphics.Color>. While the <xref:Microsoft.Maui.Controls.VisualElement> class defines a <xref:Microsoft.Maui.Controls.VisualElement.BackgroundColor> property, this isn't always the desired `Color` property to animate.
 
-The solution to this problem is to not have the `ColorTo` method target a particular `Color` property. Instead, it can be written with a callback method that passes the interpolated `Color` value back to the caller. In addition, the method will take start and end `Color` arguments.
+The solution to this problem is to not have the `ColorTo` method target a particular `Color` property. Instead, it can be written with a callback method that passes the interpolated <xref:Microsoft.Maui.Graphics.Color> value back to the caller. In addition, the method will take start and end <xref:Microsoft.Maui.Graphics.Color> arguments.
 
 The `ColorTo` method can be implemented as an extension method that uses the <xref:Microsoft.Maui.Controls.AnimationExtensions.Animate%2A> method in the <xref:Microsoft.Maui.Controls.AnimationExtensions> class to provide its functionality. This is because the <xref:Microsoft.Maui.Controls.AnimationExtensions.Animate%2A> method can be used to target properties that aren't of type `double`, as demonstrated in the following code example:
 
@@ -148,7 +148,7 @@ public static class ViewExtensions
 }
 ```
 
-The <xref:Microsoft.Maui.Controls.AnimationExtensions.Animate%2A> method requires a `transform` argument, which is a callback method. The input to this callback is always a `double` ranging from 0 to 1. Therefore, in this example the `ColorTo` method defines its own transform `Func` that accepts a `double` ranging from 0 to 1, and that returns a `Color` value corresponding to that value. The `Color` value is calculated by interpolating the `Red`, `Green`, `Blue`, and `Alpha` values of the two supplied `Color` arguments. The `Color` value is then passed to the callback method to be applied to a property. This approach allows the `ColorTo` method to animate any specified `Color` property:
+The <xref:Microsoft.Maui.Controls.AnimationExtensions.Animate%2A> method requires a `transform` argument, which is a callback method. The input to this callback is always a `double` ranging from 0 to 1. Therefore, in this example the `ColorTo` method defines its own transform `Func` that accepts a `double` ranging from 0 to 1, and that returns a <xref:Microsoft.Maui.Graphics.Color> value corresponding to that value. The <xref:Microsoft.Maui.Graphics.Color> value is calculated by interpolating the `Red`, `Green`, `Blue`, and `Alpha` values of the two supplied <xref:Microsoft.Maui.Graphics.Color> arguments. The <xref:Microsoft.Maui.Graphics.Color> value is then passed to the callback method to be applied to a property. This approach allows the `ColorTo` method to animate any specified <xref:Microsoft.Maui.Graphics.Color> property:
 
 ```csharp
 await Task.WhenAll(

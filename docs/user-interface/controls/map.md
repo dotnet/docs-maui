@@ -752,12 +752,12 @@ For more information about data template selectors, see [Create a DataTemplateSe
 
 The `Polygon`, `Polyline`, and `Circle` classes derive from the `MapElement` class, which exposes the following bindable properties:
 
-- `StrokeColor` is a `Color` object that determines the line color.
+- `StrokeColor` is a <xref:Microsoft.Maui.Graphics.Color> object that determines the line color.
 - `StrokeWidth` is a `float` object that determines the line width.
 
 The `Polygon` class defines an additional bindable property:
 
-- `FillColor` is a `Color` object that determines the polygon's background color.
+- `FillColor` is a <xref:Microsoft.Maui.Graphics.Color> object that determines the polygon's background color.
 
 In addition, the `Polygon` and `Polyline` classes both define a `GeoPath` property, which is a list of `Location` objects that specify the points of the shape.
 
@@ -765,7 +765,7 @@ The `Circle` class defines the following bindable properties:
 
 - `Center` is a `Location` object that defines the center of the circle, in latitude and longitude.
 - `Radius` is a `Distance` object that defines the radius of the circle in meters, kilometers, or miles.
-- `FillColor` is a `Color` property that determines the color within the circle perimeter.
+- `FillColor` is a <xref:Microsoft.Maui.Graphics.Color> property that determines the color within the circle perimeter.
 
 ### Create a polygon
 

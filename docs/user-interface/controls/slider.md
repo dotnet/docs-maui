@@ -13,9 +13,9 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Slider>
 - `Minimum`, of type `double`, is the minimum of the range, with a default value of 0.
 - `Maximum`, of type `double`, is the maximum of the range, with a default value of 1.
 - `Value`, of type `double`, is the slider's value, which can range between `Minimum` and `Maximum` and has a default value of 0.
-- `MinimumTrackColor`, of type `Color`, is the bar color on the left side of the thumb.
-- `MaximumTrackColor`, of type `Color`, is the bar color on the right side of the thumb.
-- `ThumbColor` of type `Color`, is the thumb color.
+- `MinimumTrackColor`, of type <xref:Microsoft.Maui.Graphics.Color>, is the bar color on the left side of the thumb.
+- `MaximumTrackColor`, of type <xref:Microsoft.Maui.Graphics.Color>, is the bar color on the right side of the thumb.
+- `ThumbColor` of type <xref:Microsoft.Maui.Graphics.Color>, is the thumb color.
 - `ThumbImageSource`, of type `ImageSource`, is the image to use for the thumb, of type `ImageSource`.
 - `DragStartedCommand`, of type `ICommand`, which is executed at the beginning of a drag action.
 - `DragCompletedCommand`, of type `ICommand`, which is executed at the end of a drag action.

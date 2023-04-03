@@ -67,7 +67,7 @@ The following example shows a <xref:Microsoft.Maui.Controls.ResourceDictionary> 
 </ResourceDictionary>
 ```
 
-Each <xref:Microsoft.Maui.Controls.ResourceDictionary> contains `Color` resources that define their respective themes, with each <xref:Microsoft.Maui.Controls.ResourceDictionary> using identical key values. For more information about resource dictionaries, see [Resource Dictionaries](~/fundamentals/resource-dictionaries.md).
+Each <xref:Microsoft.Maui.Controls.ResourceDictionary> contains <xref:Microsoft.Maui.Graphics.Color> resources that define their respective themes, with each <xref:Microsoft.Maui.Controls.ResourceDictionary> using identical key values. For more information about resource dictionaries, see [Resource Dictionaries](~/fundamentals/resource-dictionaries.md).
 
 > [!IMPORTANT]
 > A code behind file is required for each <xref:Microsoft.Maui.Controls.ResourceDictionary>, which calls the `InitializeComponent` method. This is necessary so that a CLR object representing the chosen theme can be created at runtime.

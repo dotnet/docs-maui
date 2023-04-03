@@ -19,10 +19,10 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Picker>
 - `ItemsSource` of type `IList`, the source list of items to display, which defaults to `null`.
 - `SelectedIndex` of type `int`, the index of the selected item, which defaults to -1.
 - `SelectedItem` of type `object`, the selected item, which defaults to `null`.
-- `TextColor` of type `Color`, the color used to display the text.
+- `TextColor` of type <xref:Microsoft.Maui.Graphics.Color>, the color used to display the text.
 - `TextTransform`, of type `TextTransform`, which defines whether to transform the casing of text.
 - `Title` of type `string`, which defaults to `null`.
-- `TitleColor` of type `Color`, the color used to display the `Title` text.
+- `TitleColor` of type <xref:Microsoft.Maui.Graphics.Color>, the color used to display the `Title` text.
 - `VerticalTextAlignment`, of type `TextAlignment`, is the vertical alignment of the text displayed by the <xref:Microsoft.Maui.Controls.Picker>.
 
 All of the properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be styled, and the properties can be targets of data bindings. The `SelectedIndex` and `SelectedItem` properties have a default binding mode of `BindingMode.TwoWay`, which means that they can be targets of data bindings in an application that uses the Model-View-ViewModel (MVVM) pattern. For information about setting font properties, see [Fonts](~/user-interface/fonts.md).

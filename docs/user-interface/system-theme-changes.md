@@ -78,7 +78,7 @@ For more information about the `AppThemeBinding` markup extension, see [AppTheme
 
 .NET MAUI includes `SetAppThemeColor` and `SetAppTheme<T>` extension methods that enable <xref:Microsoft.Maui.Controls.VisualElement> objects to respond to system theme changes.
 
-The `SetAppThemeColor` method enables `Color` objects to be specified that will be set on a target property based on the current system theme:
+The `SetAppThemeColor` method enables <xref:Microsoft.Maui.Graphics.Color> objects to be specified that will be set on a target property based on the current system theme:
 
 ```csharp
 Label label = new Label();

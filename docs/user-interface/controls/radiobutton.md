@@ -22,7 +22,7 @@ However, on some platforms a <xref:Microsoft.Maui.Controls.RadioButton> can disp
 - `IsChecked`, of type `bool`, which defines whether the <xref:Microsoft.Maui.Controls.RadioButton> is checked. This property uses a `TwoWay` binding, and has a default value of `false`.
 - `GroupName`, of type `string`, which defines the name that specifies which <xref:Microsoft.Maui.Controls.RadioButton> controls are mutually exclusive. This property has a default value of `null`.
 - `Value`, of type `object`, which defines an optional unique value associated with the <xref:Microsoft.Maui.Controls.RadioButton>.
-- `BorderColor`, of type `Color`, which defines the border stroke color.
+- `BorderColor`, of type <xref:Microsoft.Maui.Graphics.Color>, which defines the border stroke color.
 - `BorderWidth`, of type `double`, which defines the width of the <xref:Microsoft.Maui.Controls.RadioButton> border.
 - `CharacterSpacing`, of type `double`, which defines the spacing between characters of any displayed text.
 - `CornerRadius`, of type `int`, which defines the corner radius of the <xref:Microsoft.Maui.Controls.RadioButton>.
@@ -30,7 +30,7 @@ However, on some platforms a <xref:Microsoft.Maui.Controls.RadioButton> can disp
 - `FontAutoScalingEnabled`, of type `bool`, which defines whether an app's UI reflects text scaling preferences set in the operating system. The default value of this property is `true`.
 - `FontFamily`, of type `string`, which defines the font family.
 - `FontSize`, of type `double`, which defines the font size.
-- `TextColor`, of type `Color`, which defines the color of any displayed text.
+- `TextColor`, of type <xref:Microsoft.Maui.Graphics.Color>, which defines the color of any displayed text.
 - `TextTransform`, of type `TextTransform`, which defines the casing of any displayed text.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.

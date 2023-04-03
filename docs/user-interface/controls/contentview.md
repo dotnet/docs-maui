@@ -40,9 +40,9 @@ The `CardView` custom control defines the following properties:
 - `CardTitle`, of type `string`, which represents the title shown on the card.
 - `CardDescription`, of type `string`, which represents the description shown on the card.
 - `IconImageSource`, of type `ImageSource`, which represents the image shown on the card.
-- `IconBackgroundColor`, of type `Color`, which represents the background color for the image shown on the card.
-- `BorderColor`, of type `Color`, which represents the color of the card border, image border, and divider line.
-- `CardColor`, of type `Color`, which represents the background color of the card.
+- `IconBackgroundColor`, of type <xref:Microsoft.Maui.Graphics.Color>, which represents the background color for the image shown on the card.
+- `BorderColor`, of type <xref:Microsoft.Maui.Graphics.Color>, which represents the color of the card border, image border, and divider line.
+- `CardColor`, of type <xref:Microsoft.Maui.Graphics.Color>, which represents the background color of the card.
 
 Each property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> instance.
 

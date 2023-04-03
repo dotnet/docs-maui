@@ -13,10 +13,10 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.TabbedP
 <xref:Microsoft.Maui.Controls.TabbedPage> defines the following properties:
 
 - `BarBackground`, of type <xref:Microsoft.Maui.Controls.Brush>, defines the background of the tab bar.
-- `BarBackgroundColor`, of type `Color`, defines the background color of the tab bar.
-- `BarTextColor`, of type `Color`, represents the color of the text on the tab bar.
-- `SelectedTabColor`, of type `Color`, indicates the color of a tab when it's selected.
-- `UnselectedTabColor`, of type `Color`, represents the color of a tab when it's unselected.
+- `BarBackgroundColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the background color of the tab bar.
+- `BarTextColor`, of type <xref:Microsoft.Maui.Graphics.Color>, represents the color of the text on the tab bar.
+- `SelectedTabColor`, of type <xref:Microsoft.Maui.Graphics.Color>, indicates the color of a tab when it's selected.
+- `UnselectedTabColor`, of type <xref:Microsoft.Maui.Graphics.Color>, represents the color of a tab when it's unselected.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 

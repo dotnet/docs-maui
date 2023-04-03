@@ -20,10 +20,10 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Editor>
 - `HorizontalTextAlignment`, of type `TextAlignment`, defines the horizontal alignment of the text.
 - `IsTextPredictionEnabled`, of type `bool`, controls whether text prediction and automatic text correction is enabled.
 - `Placeholder`, of type `string`, defines the text that's displayed when the control is empty.
-- `PlaceholderColor`, of type `Color`, defines the color of the placeholder text.
+- `PlaceholderColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the color of the placeholder text.
 - `SelectionLength`, of type `int`, represents the length of selected text within the editor.
 - `Text`, of type `string`, defines the text entered into the editor.
-- `TextColor`, of type `Color`, defines the color of the entered text.
+- `TextColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the color of the entered text.
 - `VerticalTextAlignment`, of type `TextAlignment`, defines the vertical alignment of the text.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.

@@ -16,7 +16,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Indicat
 
 - `Count`, of type `int`, the number of indicators.
 - `HideSingle`, of type `bool`, indicates whether the indicator should be hidden when only one exists. The default value is `true`.
-- `IndicatorColor`, of type `Color`, the color of the indicators.
+- `IndicatorColor`, of type <xref:Microsoft.Maui.Graphics.Color>, the color of the indicators.
 - `IndicatorSize`, of type `double`, the size of the indicators. The default value is 6.0.
 - `IndicatorLayout`, of type `Layout<View>`, defines the layout class used to render the <xref:Microsoft.Maui.Controls.IndicatorView>. This property is set by .NET MAUI, and does not typically need to be set by developers.
 - `IndicatorTemplate`, of type <xref:Microsoft.Maui.Controls.DataTemplate>, the template that defines the appearance of each indicator.
@@ -24,7 +24,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Indicat
 - `ItemsSource`, of type `IEnumerable`, the collection that indicators will be displayed for. This property will automatically be set when the `CarouselView.IndicatorView` property is set.
 - `MaximumVisible`, of type `int`, the maximum number of visible indicators. The default value is `int.MaxValue`.
 - `Position`, of type `int`, the currently selected indicator index. This property uses a `TwoWay` binding. This property will automatically be set when the `CarouselView.IndicatorView` property is set.
-- `SelectedIndicatorColor`, of type `Color`, the color of the indicator that represents the current item in the <xref:Microsoft.Maui.Controls.CarouselView>.
+- `SelectedIndicatorColor`, of type <xref:Microsoft.Maui.Graphics.Color>, the color of the indicator that represents the current item in the <xref:Microsoft.Maui.Controls.CarouselView>.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
