@@ -120,7 +120,7 @@ These additional three resources can be referenced in the same way as the `Layou
         FontSize="{StaticResource fontSize}" />
 ```
 
-For resources of type `Color`, you can use the same string representations that you use when directly assigning attributes of these types. Type converters included in .NET MAUI are invoked when the resource is created. It's also possible to use the `OnPlatform` class within the resource dictionary to define different values for the platforms. The following example uses this class for setting different text colors:
+For resources of type <xref:Microsoft.Maui.Graphics.Color>, you can use the same string representations that you use when directly assigning attributes of these types. Type converters included in .NET MAUI are invoked when the resource is created. It's also possible to use the `OnPlatform` class within the resource dictionary to define different values for the platforms. The following example uses this class for setting different text colors:
 
 ```xaml
 <OnPlatform x:Key="textColor"
@@ -130,7 +130,7 @@ For resources of type `Color`, you can use the same string representations that 
 </OnPlatform>
 ```
 
-The `OnPlatform` resource gets an `x:Key` attribute because it’s an object in the dictionary, and an `x:TypeArguments` attribute because it’s a generic class. The `iOS`, and `Android` attributes are converted to `Color` values when the object is initialized.
+The `OnPlatform` resource gets an `x:Key` attribute because it’s an object in the dictionary, and an `x:TypeArguments` attribute because it’s a generic class. The `iOS`, and `Android` attributes are converted to <xref:Microsoft.Maui.Graphics.Color> values when the object is initialized.
 
 The following example shows the three buttons accessing six shared values:
 

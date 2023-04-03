@@ -16,7 +16,7 @@ For example, you typically set the `Color` property of <xref:Microsoft.Maui.Cont
 <BoxView Color="Blue" />
 ```
 
-However, you might prefer instead to set the `Color` attribute from a value stored in a resource dictionary, or from the value of a static property of a class that you've created, or from a property of type `Color` of another element on the page, or constructed from separate hue, saturation, and luminosity values. All these options are possible using XAML markup extensions.
+However, you might prefer instead to set the `Color` attribute from a value stored in a resource dictionary, or from the value of a static property of a class that you've created, or from a property of type <xref:Microsoft.Maui.Graphics.Color> of another element on the page, or constructed from separate hue, saturation, and luminosity values. All these options are possible using XAML markup extensions.
 
 A markup extension is a different way to express an attribute of an element. .NET MAUI XAML markup extensions are usually identifiable by an attribute value that is enclosed in curly braces:
 
@@ -339,7 +339,7 @@ The **OnPlatform Demo** page shows how to use the `OnPlatform` markup extension:
          HorizontalOptions="Center" />
 ```
 
-In this example, all three `OnPlatform` expressions use the abbreviated version of the `OnPlatformExtension` class name. The three `OnPlatform` markup extensions set the `Color`, <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest>, and <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> properties of the <xref:Microsoft.Maui.Controls.BoxView> to different values on iOS and Android. The markup extensions also provide default values for these properties on the platforms that aren't specified, while eliminating the `Default=` part of the expression.
+In this example, all three `OnPlatform` expressions use the abbreviated version of the `OnPlatformExtension` class name. The three `OnPlatform` markup extensions set the `xref:Microsoft.Maui.Graphics.Color`, <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest>, and <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> properties of the <xref:Microsoft.Maui.Controls.BoxView> to different values on iOS and Android. The markup extensions also provide default values for these properties on the platforms that aren't specified, while eliminating the `Default=` part of the expression.
 
 ## OnIdiom markup extension
 
@@ -400,7 +400,7 @@ The `FontImage` markup extension is supported by the `FontImageExtension` class,
 
 - `FontFamily` of type `string`, the font family to which the font icon belongs.
 - `Glyph` of type `string`, the unicode character value of the font icon.
-- `Color` of type `Color`, the color to be used when displaying the font icon.
+- `Color` of type <xref:Microsoft.Maui.Graphics.Color>, the color to be used when displaying the font icon.
 - `Size` of type `double`, the size, in device-independent units, of the rendered font icon. The default value is 30. In addition, this property can be set to a named font size.
 
 > [!NOTE]

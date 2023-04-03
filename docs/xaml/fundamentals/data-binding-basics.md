@@ -232,7 +232,7 @@ namespace XamlSamples
 }
 ```
 
-Each `NamedColor` object has `Name` and `FriendlyName` properties of type `string`, a `Color` property of type `Color`, and `Red`, `Green`, and `Blue` properties. In addition, the `NamedColor` static constructor creates an `IEnumerable<NamedColor>` collection that contains `NamedColor` objects corresponding to the fields of type `Color` in the <xref:Microsoft.Maui.Graphics.Colors> class, and assigns it to its public static `All` property.
+Each `NamedColor` object has `Name` and `FriendlyName` properties of type `string`, a `Color` property of type <xref:Microsoft.Maui.Graphics.Color>, and `Red`, `Green`, and `Blue` properties. In addition, the `NamedColor` static constructor creates an `IEnumerable<NamedColor>` collection that contains `NamedColor` objects corresponding to the fields of type <xref:Microsoft.Maui.Graphics.Color> in the <xref:Microsoft.Maui.Graphics.Colors> class, and assigns it to its public static `All` property.
 
 Setting the static `NamedColor.All` property to the `ItemsSource` of a <xref:Microsoft.Maui.Controls.ListView> can be achieved using the `x:Static` markup extension:
 
