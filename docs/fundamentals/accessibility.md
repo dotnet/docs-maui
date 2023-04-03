@@ -34,15 +34,15 @@ Semantic properties are used to define information about which controls should r
 
 The <xref:Microsoft.Maui.Controls.SemanticProperties> class defines the following attached properties:
 
-- <xref:Microsoft.Maui.Controls.SemanticProperties.DescriptionProperty>, of type `string`, which represents a description that will be read aloud by the screen reader. For more information, see [Description](#description).
-- <xref:Microsoft.Maui.Controls.SemanticProperties.HintProperty>, of type `string`, which is similar to `Description`, but provides additional context such as the purpose of a control. For more information, see [Hint](#hint).
-- <xref:Microsoft.Maui.Controls.SemanticProperties.HeadingLevelProperty>, of type <xref:Microsoft.Maui.SemanticHeadingLevel>, which enables an element to be marked as a heading to organize the UI and make it easier to navigate. For more information, see [Heading levels](#heading-levels).
+- [`Description`](xref:Microsoft.Maui.Controls.SemanticProperties.DescriptionProperty), of type `string`, which represents a description that will be read aloud by the screen reader. For more information, see [Description](#description).
+- [`Hint`](xref:Microsoft.Maui.Controls.SemanticProperties.HintProperty), of type `string`, which is similar to `Description`, but provides additional context such as the purpose of a control. For more information, see [Hint](#hint).
+- [`HeadingLevel`](xref:Microsoft.Maui.Controls.SemanticProperties.HeadingLevelProperty), of type <xref:Microsoft.Maui.SemanticHeadingLevel>, which enables an element to be marked as a heading to organize the UI and make it easier to navigate. For more information, see [Heading levels](#heading-levels).
 
 These attached properties set platform accessibility values so that a screen reader can speak about the element. For more information about attached properties, see [Attached properties](~/fundamentals/attached-properties.md).
 
 ### Description
 
-The <xref:Microsoft.Maui.Controls.SemanticProperties.DescriptionProperty> attached property represents a short, descriptive `string` that a screen reader uses to announce an element. This property should be set for elements that have a meaning that's important for understanding the content or interacting with the user interface. Setting this property can be accomplished in XAML:
+The [`Description`](xref:Microsoft.Maui.Controls.SemanticProperties.DescriptionProperty) attached property represents a short, descriptive `string` that a screen reader uses to announce an element. This property should be set for elements that have a meaning that's important for understanding the content or interacting with the user interface. Setting this property can be accomplished in XAML:
 
 ```xaml
 <Image Source="dotnet_bot.png"
@@ -56,14 +56,14 @@ Image image = new Image { Source = "dotnet_bot.png" };
 SemanticProperties.SetDescription(image, "Cute dot net bot waving hi to you!");
 ```
 
-In addition, the <xref:Microsoft.Maui.Controls.BindableObject.SetValue%2A> method can also be used to set the <xref:Microsoft.Maui.Controls.SemanticProperties.DescriptionProperty> attached property:
+In addition, the <xref:Microsoft.Maui.Controls.BindableObject.SetValue%2A> method can also be used to set the [`Description`](xref:Microsoft.Maui.Controls.SemanticProperties.DescriptionProperty) attached property:
 
 ```csharp
 image.SetValue(SemanticProperties.DescriptionProperty, "Cute dot net bot waving hi to you!");
 ```
 
 > [!WARNING]
-> Avoid setting the <xref:Microsoft.Maui.Controls.SemanticProperties.DescriptionProperty> attached property on a <xref:Microsoft.Maui.Controls.Label>. This will stop the `Text` property being spoken by the screen reader. This is because the visual text should ideally match the text read aloud by the screen reader.
+> Avoid setting the [`Description`](xref:Microsoft.Maui.Controls.SemanticProperties.DescriptionProperty) attached property on a <xref:Microsoft.Maui.Controls.Label>. This will stop the `Text` property being spoken by the screen reader. This is because the visual text should ideally match the text read aloud by the screen reader.
 
 The accessibility information for an element can also be defined on another element. For example, a <xref:Microsoft.Maui.Controls.Label> next to an <xref:Microsoft.Maui.Controls.Entry> can be used to describe what the <xref:Microsoft.Maui.Controls.Entry> represents. This can be accomplished in XAML as follows:
 
@@ -89,7 +89,7 @@ SemanticProperties.SetDescription(entry, label.Text);
 
 ### Hint
 
-The <xref:Microsoft.Maui.Controls.SemanticProperties.HintProperty> attached property represents a `string` that provides additional context to the <xref:Microsoft.Maui.Controls.SemanticProperties.DescriptionProperty> attached property, such as the purpose of a control. Setting this property can be accomplished in XAML:
+The [`Hint`](xref:Microsoft.Maui.Controls.SemanticProperties.HintProperty) attached property represents a `string` that provides additional context to the [`Description`](xref:Microsoft.Maui.Controls.SemanticProperties.DescriptionProperty) attached property, such as the purpose of a control. Setting this property can be accomplished in XAML:
 
 ```xaml
 <Image Source="like.png"
@@ -105,7 +105,7 @@ SemanticProperties.SetDescription(image, "Like");
 SemanticProperties.SetHint(image, "Like this post.");
 ```
 
-In addition, the <xref:Microsoft.Maui.Controls.BindableObject.SetValue%2A> method can also be used to set the <xref:Microsoft.Maui.Controls.SemanticProperties.HintProperty> attached property:
+In addition, the <xref:Microsoft.Maui.Controls.BindableObject.SetValue%2A> method can also be used to set the [`Hint`](xref:Microsoft.Maui.Controls.SemanticProperties.HintProperty) attached property:
 
 ```csharp
 image.SetValue(SemanticProperties.HintProperty, "Like this post.");
@@ -114,18 +114,18 @@ image.SetValue(SemanticProperties.HintProperty, "Like this post.");
 On Android, this property behaves slightly differently depending on the control it's attached to. For example, for controls without text values, such as <xref:Microsoft.Maui.Controls.Switch> and <xref:Microsoft.Maui.Controls.CheckBox>, the controls will display the hint with the control. However, for controls with text values, the hint is not displayed and is read after the text value.
 
 > [!WARNING]
-> The <xref:Microsoft.Maui.Controls.SemanticProperties.HintProperty> property conflicts with the `Entry.Placeholder` property on Android, which both map to the same platform property. Therefore, setting a different <xref:Microsoft.Maui.Controls.SemanticProperties.HintProperty> value to the `Entry.Placeholder` value isn't recommended.
+> The [`Hint`](xref:Microsoft.Maui.Controls.SemanticProperties.HintProperty) property conflicts with the `Entry.Placeholder` property on Android, which both map to the same platform property. Therefore, setting a different [`Hint`](xref:Microsoft.Maui.Controls.SemanticProperties.HintProperty) value to the `Entry.Placeholder` value isn't recommended.
 
 <!-- ^ and Editor? -->
 
 ### Heading levels
 
-The <xref:Microsoft.Maui.Controls.SemanticProperties.HeadingLevelProperty> attached property enables an element to be marked as a heading to organize the UI and make it easier to navigate. Some screen readers enable users to quickly jump between headings.
+The [`HeadingLevel`](xref:Microsoft.Maui.Controls.SemanticProperties.HeadingLevelProperty) attached property enables an element to be marked as a heading to organize the UI and make it easier to navigate. Some screen readers enable users to quickly jump between headings.
 
 Headings have a level from 1 to 9, and are represented by the <xref:Microsoft.Maui.SemanticHeadingLevel> enumeration, which defines `None`, and `Level1` through `Level9` members.
 
 > [!IMPORTANT]
-> While Windows offers 9 levels of headings, Android and iOS only offer a single heading. Therefore, when <xref:Microsoft.Maui.Controls.SemanticProperties.HeadingLevelProperty> is set on Windows it maps to the correct heading level. However, when set on Android and iOS it maps to a single heading level.
+> While Windows offers 9 levels of headings, Android and iOS only offer a single heading. Therefore, when [`HeadingLevel`](xref:Microsoft.Maui.Controls.SemanticProperties.HeadingLevelProperty) is set on Windows it maps to the correct heading level. However, when set on Android and iOS it maps to a single heading level.
 
 The following example demonstrates setting this attached property:
 
@@ -161,7 +161,7 @@ SemanticProperties.SetHeadingLevel(label5, SemanticHeadingLevel.Level1);
 SemanticProperties.SetHeadingLevel(label7, SemanticHeadingLevel.Level1);
 ```
 
-In addition, the <xref:Microsoft.Maui.Controls.BindableObject.SetValue%2A> method can also be used to set the <xref:Microsoft.Maui.Controls.SemanticProperties.HeadingLevelProperty> attached property:
+In addition, the <xref:Microsoft.Maui.Controls.BindableObject.SetValue%2A> method can also be used to set the [`HeadingLevel`](xref:Microsoft.Maui.Controls.SemanticProperties.HeadingLevelProperty) attached property:
 
 ```csharp
 label1.SetValue(SemanticProperties.HeadingLevelProperty, SemanticHeadingLevel.Level1);
@@ -201,11 +201,11 @@ Automation properties are attached properties that can be added to any element t
 
 The <xref:Microsoft.Maui.Controls.AutomationProperties> class defines the following attached properties:
 
-- <xref:Microsoft.Maui.Controls.AutomationProperties.ExcludedWithChildrenProperty>, of type `bool?`, determines if an element and its children should be excluded from the accessibility tree. For more information, see [ExcludedWithChildren](#excludedwithchildren).
-- <xref:Microsoft.Maui.Controls.AutomationProperties.IsInAccessibleTreeProperty>, of type `bool?`, indicates whether the element is available in the accessibility tree. For more information, see [IsInAccessibleTree](#isinaccessibletree).
-- <xref:Microsoft.Maui.Controls.AutomationProperties.NameProperty>, of type `string`, represents a short description of the element that serves as a speakable identifier for that element. For more information, see [Name](#name).
-- <xref:Microsoft.Maui.Controls.AutomationProperties.HelpTextProperty>, of type `string`, represents a longer description of the element, which can be thought of as tooltip text that's associated with the element. For more information, see [HelpText](#helptext).
-- <xref:Microsoft.Maui.Controls.AutomationProperties.LabeledByProperty>, of type <xref:Microsoft.Maui.Controls.VisualElement>, which enables another element to define accessibility information for the current element. For more information, see [LabeledBy](#labeledby).
+- [`ExcludedWithChildren`](xref:Microsoft.Maui.Controls.AutomationProperties.ExcludedWithChildrenProperty), of type `bool?`, determines if an element and its children should be excluded from the accessibility tree. For more information, see [ExcludedWithChildren](#excludedwithchildren).
+- [`IsInAccessibleTree`](xref:Microsoft.Maui.Controls.AutomationProperties.IsInAccessibleTreeProperty), of type `bool?`, indicates whether the element is available in the accessibility tree. For more information, see [IsInAccessibleTree](#isinaccessibletree).
+- [`Name`](xref:Microsoft.Maui.Controls.AutomationProperties.NameProperty), of type `string`, represents a short description of the element that serves as a speakable identifier for that element. For more information, see [Name](#name).
+- [`HelpText`](xref:Microsoft.Maui.Controls.AutomationProperties.HelpTextProperty), of type `string`, represents a longer description of the element, which can be thought of as tooltip text that's associated with the element. For more information, see [HelpText](#helptext).
+- [`LabeledBy`](xref:Microsoft.Maui.Controls.AutomationProperties.LabeledByProperty), of type <xref:Microsoft.Maui.Controls.VisualElement>, which enables another element to define accessibility information for the current element. For more information, see [LabeledBy](#labeledby).
 
 These attached properties set platform accessibility values so that a screen reader can speak about the element. For more information about attached properties, see [Attached properties](~/fundamentals/attached-properties.md).
 
@@ -216,7 +216,7 @@ Different screen readers read different accessibility values. Therefore, when us
 
 ### ExcludedWithChildren
 
-The <xref:Microsoft.Maui.Controls.AutomationProperties.ExcludedWithChildrenProperty> attached property, of type `bool?`, determines if an element and its children should be excluded from the accessibility tree. This enables scenarios such as displaying an <xref:Microsoft.Maui.Controls.AbsoluteLayout> over another layout such as a <xref:Microsoft.Maui.Controls.StackLayout>, with the <xref:Microsoft.Maui.Controls.StackLayout> being excluded from the accessibility tree when it's not visible. It can be used from XAML as follows:
+The [`ExcludedWithChildren`](xref:Microsoft.Maui.Controls.AutomationProperties.ExcludedWithChildrenProperty) attached property, of type `bool?`, determines if an element and its children should be excluded from the accessibility tree. This enables scenarios such as displaying an <xref:Microsoft.Maui.Controls.AbsoluteLayout> over another layout such as a <xref:Microsoft.Maui.Controls.StackLayout>, with the <xref:Microsoft.Maui.Controls.StackLayout> being excluded from the accessibility tree when it's not visible. It can be used from XAML as follows:
 
 ```xaml
 <StackLayout AutomationProperties.ExcludedWithChildren="true">
@@ -232,14 +232,14 @@ StackLayout stackLayout = new StackLayout();
 AutomationProperties.SetExcludedWithChildren(stackLayout, true);
 ```
 
-When this attached property is set, .NET MAUI sets the <xref:Microsoft.Maui.Controls.AutomationProperties.IsInAccessibleTreeProperty> attached property to `false` on the specified element and its children.
+When this attached property is set, .NET MAUI sets the [`IsInAccessibleTree`](xref:Microsoft.Maui.Controls.AutomationProperties.IsInAccessibleTreeProperty) attached property to `false` on the specified element and its children.
 
 ### IsInAccessibleTree
 
 > [!WARNING]
 > This attached property should typically remain unset. The majority of controls should be present in the accessibility tree, and the `AutomationProperties.ExcludedWithChildren` attached property can be set in scenarios where an element and its children need removing from the accessibility tree.
 
-The <xref:Microsoft.Maui.Controls.AutomationProperties.IsInAccessibleTreeProperty> attached property, of type `bool?`, determines if the element is visible to screen readers. It must be set to `true` to use the other automation properties. This can be accomplished in XAML as follows:
+The [`IsInAccessibleTree`](xref:Microsoft.Maui.Controls.AutomationProperties.IsInAccessibleTreeProperty) attached property, of type `bool?`, determines if the element is visible to screen readers. It must be set to `true` to use the other automation properties. This can be accomplished in XAML as follows:
 
 ```xaml
 <Entry AutomationProperties.IsInAccessibleTree="true" />
@@ -258,9 +258,9 @@ AutomationProperties.SetIsInAccessibleTree(entry, true);
 ### Name
 
 > [!IMPORTANT]
-> The <xref:Microsoft.Maui.Controls.AutomationProperties.NameProperty> attached property has been superseded by the <xref:Microsoft.Maui.Controls.SemanticProperties.DescriptionProperty> attached property.
+> The [`Name`](xref:Microsoft.Maui.Controls.AutomationProperties.NameProperty) attached property has been superseded by the [`Description`](xref:Microsoft.Maui.Controls.SemanticProperties.DescriptionProperty) attached property.
 
-The <xref:Microsoft.Maui.Controls.AutomationProperties.NameProperty> attached property value should be a short, descriptive text string that a screen reader uses to announce an element. This property should be set for elements that have a meaning that is important for understanding the content or interacting with the user interface. This can be accomplished in XAML as follows:
+The [`Name`](xref:Microsoft.Maui.Controls.AutomationProperties.NameProperty) attached property value should be a short, descriptive text string that a screen reader uses to announce an element. This property should be set for elements that have a meaning that is important for understanding the content or interacting with the user interface. This can be accomplished in XAML as follows:
 
 ```xaml
 <ActivityIndicator AutomationProperties.IsInAccessibleTree="true"
@@ -278,9 +278,9 @@ AutomationProperties.SetName(activityIndicator, "Progress indicator");
 ### HelpText
 
 > [!IMPORTANT]
-> The <xref:Microsoft.Maui.Controls.AutomationProperties.HelpTextProperty> attached property has been superseded by the <xref:Microsoft.Maui.Controls.SemanticProperties.HintProperty> attached property.
+> The [`HelpText`](xref:Microsoft.Maui.Controls.AutomationProperties.HelpTextProperty) attached property has been superseded by the [`Hint`](xref:Microsoft.Maui.Controls.SemanticProperties.HintProperty) attached property.
 
-The <xref:Microsoft.Maui.Controls.AutomationProperties.HelpTextProperty> attached property should be set to text that describes the user interface element, and can be thought of as tooltip text associated with the element. This can be accomplished in XAML as follows:
+The [`HelpText`](xref:Microsoft.Maui.Controls.AutomationProperties.HelpTextProperty) attached property should be set to text that describes the user interface element, and can be thought of as tooltip text associated with the element. This can be accomplished in XAML as follows:
 
 ```xaml
 <Button Text="Toggle ActivityIndicator"
@@ -301,9 +301,9 @@ On some platforms, for edit controls such as an <xref:Microsoft.Maui.Controls.En
 ### LabeledBy
 
 > [!IMPORTANT]
-> The <xref:Microsoft.Maui.Controls.AutomationProperties.LabeledByProperty> attached property has been superseded by bindings. For more information, see [SemanticProperties: Description](#description).
+> The [`LabeledBy`](xref:Microsoft.Maui.Controls.AutomationProperties.LabeledByProperty) attached property has been superseded by bindings. For more information, see [SemanticProperties: Description](#description).
 
-The <xref:Microsoft.Maui.Controls.AutomationProperties.LabeledByProperty> attached property allows another element to define accessibility information for the current element. For example, a <xref:Microsoft.Maui.Controls.Label> next to an <xref:Microsoft.Maui.Controls.Entry> can be used to describe what the <xref:Microsoft.Maui.Controls.Entry> represents. This can be accomplished in XAML as follows:
+The [`LabeledBy`](xref:Microsoft.Maui.Controls.AutomationProperties.LabeledByProperty) attached property allows another element to define accessibility information for the current element. For example, a <xref:Microsoft.Maui.Controls.Label> next to an <xref:Microsoft.Maui.Controls.Entry> can be used to describe what the <xref:Microsoft.Maui.Controls.Entry> represents. This can be accomplished in XAML as follows:
 
 ```xaml
 <Label x:Name="label" Text="Enter your name: " />
