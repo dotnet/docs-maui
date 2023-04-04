@@ -94,7 +94,7 @@ The feature is disabled on the device.
 The user granted permission or is automatically granted.
 
 - <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Restricted>\
-In a restricted state. Only iOS returns this status.
+In a restricted state.
 
 - <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Limited>\
 In a limited state. Only iOS returns this status.
