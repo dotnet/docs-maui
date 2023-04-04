@@ -104,7 +104,7 @@ In this example, the <xref:Microsoft.Maui.Controls.ContentPage> object consumes 
 > [!IMPORTANT]
 > Resources that are specific to a single page shouldn't be included in an application level resource dictionary, as such resources will then be parsed at app startup instead of when required by a page. <!-- For more information, see [Reduce the Application Resource Dictionary Size](~/xamarin-forms/deploy-test/performance.md).-->
 
-### Consume a XAML-based resource dictionary from C\# 
+### Consume a XAML-based resource dictionary from C%23
 
 Resource dictionaries that are defined in XAML can be added to a <xref:Microsoft.Maui.Controls.ResourceDictionary> in C#, provided that the XAML-based <xref:Microsoft.Maui.Controls.ResourceDictionary> is backed by a code-behind file. In Visual Studio, XAML-based <xref:Microsoft.Maui.Controls.ResourceDictionary> files that are backed by code-behind files can be added to your project by the **.NET MAUI ResourceDictionary (XAML)** item template:
 
