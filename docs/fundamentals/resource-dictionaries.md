@@ -238,7 +238,7 @@ When merged <xref:Microsoft.Maui.Controls.ResourceDictionary> resources share id
 > [!TIP]
 > Searching resource dictionaries can be a computationally intensive task if an app contains multiple, large resource dictionaries. Therefore, to avoid unnecessary searching, you should ensure that each page in an application only uses resource dictionaries that are appropriate to the page.
 
-## Consume a XAML-based resource dictionary from C\#
+### Consume a XAML-based resource dictionary from C\#
 
 Resource dictionaries that are defined in XAML can be consumed in C#, provided that the <xref:Microsoft.Maui.Controls.ResourceDictionary> is backed by a code-behind file. In Visual Studio, XAML-based <xref:Microsoft.Maui.Controls.ResourceDictionary> files that are backed by code-behind files can be added to your project by the **.NET MAUI ResourceDictionary (XAML)** item template:
 
