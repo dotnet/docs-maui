@@ -51,7 +51,7 @@ It's possible to debug an android device over WiFi, without keeping the device p
 
 ### Connecting over WiFi
 
-By default, the [Android Debug Bridge](https://developer.android.com/tools/help/adb.html) (adb) is configured to communicate with an Android device via USB. It's possible to reconfigure it to use TCP/IP instead of USB. To do this, both the device and the computer must be on the same WiFi network.
+By default, the Android Debug Bridge (adb) is configured to communicate with an Android device via USB. It's possible to reconfigure it to use TCP/IP instead of USB. To do this, both the device and the computer must be on the same WiFi network.
 
 First, enable Wireless debugging on your Android device:
 
