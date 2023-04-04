@@ -1,14 +1,14 @@
 ---
 title: "Resource dictionaries"
-description: ".NET MAUI XAML resources dictionaries enable resources to be shared and reused throughout an app."
-ms.date: 01/28/2022
+description: "Learn how .NET MAUI XAML resources dictionaries enable resources to be shared and reused throughout an app."
+ms.date: 04/04/2023
 ---
 
 # Resource dictionaries
 
 A .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.ResourceDictionary> is a repository for resources that are used by a .NET MAUI app. Typical resources that are stored in a <xref:Microsoft.Maui.Controls.ResourceDictionary> include styles, control templates, data templates, converters, and colors.
 
-XAML resources that are stored in a <xref:Microsoft.Maui.Controls.ResourceDictionary> can be referenced and applied to elements by using the [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) or [`DynamicResource`](xref:Microsoft.Maui.Controls.Xaml.DynamicResourceExtension) markup extension. In C#, resources can also be defined in a <xref:Microsoft.Maui.Controls.ResourceDictionary> and then referenced and applied to elements by using a string-based indexer. However, there's little advantage to using a <xref:Microsoft.Maui.Controls.ResourceDictionary> in C#, as shared objects can be stored as fields or properties, and accessed directly without having to first retrieve them from a dictionary.
+XAML resources that are stored in a <xref:Microsoft.Maui.Controls.ResourceDictionary> can be referenced and applied to elements by using the [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) or [`DynamicResource`](xref:Microsoft.Maui.Controls.Xaml.DynamicResourceExtension) markup extension. In C#, resources can also be defined in a <xref:Microsoft.Maui.Controls.ResourceDictionary> and then referenced and applied to elements by using a string-based indexer.
 
 > [!TIP]
 > In Visual Studio, a XAML-based <xref:Microsoft.Maui.Controls.ResourceDictionary> file that's backed by a code-behind file can be added to your project by the **.NET MAUI ResourceDictionary (XAML)** item template.
@@ -237,3 +237,16 @@ When merged <xref:Microsoft.Maui.Controls.ResourceDictionary> resources share id
 
 > [!TIP]
 > Searching resource dictionaries can be a computationally intensive task if an app contains multiple, large resource dictionaries. Therefore, to avoid unnecessary searching, you should ensure that each page in an application only uses resource dictionaries that are appropriate to the page.
+
+## Consume a XAML-based resource dictionary from C#
+
+XAML resources that are stored in a <xref:Microsoft.Maui.Controls.ResourceDictionary> can be consumed from C#, provided that the <xref:Microsoft.Maui.Controls.ResourceDictionary> is backed by a code-behind file. In Visual Studio, XAML-based <xref:Microsoft.Maui.Controls.ResourceDictionary> files that are backed by code-behind files can be added to your project by the **.NET MAUI ResourceDictionary (XAML)** item template:
+
+:::image type="content" source="media/resource-dictionaries/resource-dictionaries-code-behind.png" alt-text="Screenshot of resource dictionaries backed by code-behind.":::
+
+XAML-based resource dictionaries that are backed by code-behind files can then be consumed by adding them to the <xref:Microsoft.Maui.Controls.ResourceDictionary.MergedDictionaries> collection of your app's resource dictionary, which is defined by the <xref:Microsoft.Maui.Controls.Application.Resources> property in your `App` class:
+
+```csharp
+Resources.MergedDictionaries.Add(new MyMauiApp.Resources.Styles.MyColors());
+Resources.MergedDictionaries.Add(new MyMauiApp.Resources.Styles.MyStyles());
+```
