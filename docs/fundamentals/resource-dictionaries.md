@@ -240,11 +240,11 @@ When merged <xref:Microsoft.Maui.Controls.ResourceDictionary> resources share id
 
 ## Consume a XAML-based resource dictionary from C#
 
-XAML resources that are stored in a <xref:Microsoft.Maui.Controls.ResourceDictionary> can be consumed from C#, provided that the <xref:Microsoft.Maui.Controls.ResourceDictionary> is backed by a code-behind file. In Visual Studio, XAML-based <xref:Microsoft.Maui.Controls.ResourceDictionary> files that are backed by code-behind files can be added to your project by the **.NET MAUI ResourceDictionary (XAML)** item template:
+Resource dictionaries that are defined in XAML can be added to a <xref:Microsoft.Maui.Controls.ResourceDictionary> in C#, provided that the XAML-based <xref:Microsoft.Maui.Controls.ResourceDictionary> is backed by a code-behind file. In Visual Studio, XAML-based <xref:Microsoft.Maui.Controls.ResourceDictionary> files that are backed by code-behind files can be added to your project by the **.NET MAUI ResourceDictionary (XAML)** item template:
 
 :::image type="content" source="media/resource-dictionaries/resource-dictionaries-code-behind.png" alt-text="Screenshot of resource dictionaries backed by code-behind.":::
 
-XAML-based resource dictionaries that are backed by code-behind files can then be consumed by adding them to the <xref:Microsoft.Maui.Controls.ResourceDictionary.MergedDictionaries> collection of your app's resource dictionary, which is defined by the <xref:Microsoft.Maui.Controls.Application.Resources> property in your `App` class:
+XAML-based resource dictionaries that are backed by code-behind files can then be consumed by adding them to the <xref:Microsoft.Maui.Controls.ResourceDictionary.MergedDictionaries> collection of the resource dictionary:
 
 ```csharp
 Resources.MergedDictionaries.Add(new MyMauiApp.Resources.Styles.MyColors());
