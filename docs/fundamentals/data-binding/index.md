@@ -19,5 +19,7 @@ Data binding is therefore the technique of linking properties of two objects so 
 - Another <xref:Microsoft.Maui.Controls.View> derivative, usually on the same page.
 - An object in a code file.
 
-> [!NOTE]
-> Data bindings between two <xref:Microsoft.Maui.Controls.View> derivatives are often shown for purposes of clarity and simplicity. However, the same principles can be applied to data bindings between a <xref:Microsoft.Maui.Controls.View> and other objects. When an application is built using the Model-View-ViewModel (MVVM) architecture, the class with underlying data is often called a viewmodel.
+Data bindings between two <xref:Microsoft.Maui.Controls.View> derivatives are often shown in these articles, for purposes of clarity and simplicity. However, the same principles can be applied to data bindings between a <xref:Microsoft.Maui.Controls.View> and other objects. When an application is built using the Model-View-ViewModel (MVVM) architecture, the class with underlying data is often called a viewmodel.
+
+> [!IMPORTANT]
+> .NET MAUI marshals binding updates to the UI thread. When using MVVM this enables you to update data-bound viewmodel properties from any thread, with .NET MAUI's binding engine bringing the updates to the UI thread.
