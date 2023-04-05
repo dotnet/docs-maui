@@ -703,7 +703,7 @@
             - name: Android
               items:
                 - name: Overview
-                  href: android/deployment/overview.md
+                  href: android/deployment/index.md
                 - name: Publish with the .NET CLI
                   href: android/deployment/publish-cli.md
             - name: iOS
