@@ -15,7 +15,7 @@ ms.date: 04/05/2023
 
 The final step in the development of a .NET MAUI app is to publish it. Publishing is the process of creating a package that contains the app and is ready for users to install on their devices. Packaging and deployment involve two essential tasks:
 
-- **Preparing for publication**. A release version of the app is created that can be deployed to Android devices.
+- **Preparing for deployment**. A release version of the app is created that can be deployed to Android devices.
 - **Distribution**. The release version of an app is made available through one or more of the various distribution channels.
 
 The following diagram illustrates the steps involved with publishing a .NET MAUI Android app:
@@ -40,8 +40,6 @@ Google Play is the most comprehensive and popular marketplace for Android apps. 
 > When distributing a Blazor Hybrid app, the host platform must have a WebView. For more information, see [Keep the Web View current in deployed Blazor Hybrid apps](/aspnet/core/blazor/hybrid/security/security-considerations#keep-the-web-view-current-in-deployed-apps).
 
 ## See also
-
-This section links to articles that help in publishing an app to Google Play.
 
 <!--
 - [Build Process](~/android/deploy-test/building-apps/build-process.md)
