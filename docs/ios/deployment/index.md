@@ -8,7 +8,7 @@ ms.date: 02/24/2023
 
 > [!div class="op_single_selector"]
 >
-> - [Publish for Android](../../android/deployment/overview.md)
+> - [Publish for Android](../../android/deployment/index.md)
 > - [Publish for iOS](index.md)
 > - [Publish for macOS](../../mac-catalyst/deployment/index.md)
 > - [Publish for Windows](../../windows/deployment/overview.md)

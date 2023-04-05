@@ -14,7 +14,7 @@ You can debug and test your apps on the Android emulator, which can be run in a 
 
 While the Android emulator enables you to rapidly develop and test your apps, you'll also want to test your apps on a real Android device. To run on a device, you'll need to enable developer mode on the device and connect it to your development machine. For more information, see [Set up Android device for debugging](~/android/device/setup.md).
 
-When distributing a .NET MAUI app for Android, you generate an *apk* (Android Package) or an *aab* (Android App Bundle) file. The *apk* is used for installing your app to an Android device, and the *aab* is used to publish your app to an Android store. With just a few configuration changes to your project, your app can be packaged for distribution. For more information, see [Publish a .NET MAUI app for Android](~/android/deployment/overview.md).
+When distributing a .NET MAUI app for Android, you generate an *apk* (Android Package) or an *aab* (Android App Bundle) file. The *apk* is used for installing your app to an Android device, and the *aab* is used to publish your app to an Android store. With just a few configuration changes to your project, your app can be packaged for distribution. For more information, see [Publish a .NET MAUI app for Android](~/android/deployment/index.md).
 
 ## iOS
 
