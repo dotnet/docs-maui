@@ -181,7 +181,7 @@ landingContent:
           - text: Project configuration
             url: deployment/visual-studio-properties.md
           - text: Publish Android apps
-            url: android/deployment/overview.md
+            url: android/deployment/index.md
           - text: Publish iOS apps
             url: ios/deployment/index.md
           - text: Publish Mac Catalyst apps
