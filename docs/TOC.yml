@@ -71,6 +71,8 @@
               href: migration/layouts.md
             - name: Custom renderers
               href: migration/custom-renderers.md
+            - name: Migrate custom renderers
+              href: migration/renderer-to-handler.md
             - name: Effects
               href: migration/effects.md
     - name: Tutorials

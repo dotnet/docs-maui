@@ -23,6 +23,9 @@ To demonstrate using custom renderers in .NET MAUI, consider a Xamarin.Forms con
 - `PressableViewRenderer.cs` - the Android implementation.
 - `PressableViewRenderer.cs` - the iOS implementation.
 
+> [!NOTE]
+> An alternative to using a Xamarin.Forms custom renderer in .NET MAUI is to migrate the custom renderer to a .NET MAUI handler. For more information, see [Migrate a Xamarin.Forms custom renderer to a .NET MAUI handler](renderer-to-handler.md).
+
 ## Add the code
 
 If you're using a .NET MAUI multi-targeted project, the cross-platform file can be moved to anywhere outside the *Platforms* folder, and the platform-specific implementation files should be moved to the corresponding *Platform* folder:
