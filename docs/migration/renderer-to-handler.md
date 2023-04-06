@@ -1,12 +1,12 @@
 ---
 title: "Migrate a custom renderer to a .NET MAUI handler"
-description: "Learn how to migrate a custom renderer from a Xamarin.Forms apps to a handler in a .NET MAUI app."
+description: "Learn how to migrate a Xamarin.Forms custom renderer to a .NET MAUI handler."
 ms.date: 04/06/2023
 ---
 
 # Migrate a Xamarin.Forms custom renderer to a .NET MAUI handler
 
-In Xamarin.Forms, each renderer has a reference to the cross-platform element and often relies on `INotifyPropertyChanged` to properly work. Rather than using these renderers, .NET Multi-platform App UI (.NET MAUI) introduces a new concept that's called a *handler*.
+In Xamarin.Forms, each custom renderer has a reference to the cross-platform element and often relies on `INotifyPropertyChanged` to properly work. Rather than using these renderers, .NET Multi-platform App UI (.NET MAUI) introduces a new concept that's called a *handler*.
 
 Handlers offer many performance improvements over custom renderers. In Xamarin.Forms, the `ViewRenderer` class creates a parent element. For example, on Android, a `ViewGroup` is created which is used for auxiliary positioning tasks. In .NET MAUI, the `ViewHandler` class doesn't create a parent element, which helps to reduce the size of the visual hierarchy and improve your app's performance. Handlers also decouple platform controls from the framework. The platform control only needs to handle the needs of the framework. This is not only more efficient, but it's much easier to extend or override when required. Handlers are also suitable for reuse by other frameworks such as [Comet](https://github.com/dotnet/Comet) and [Fabulous](https://github.com/fabulous-dev/Fabulous). For more information about handlers, see [Handlers](~/user-interface/handlers/index.md).
 
@@ -18,7 +18,7 @@ The process for migrating a Xamarin.Forms custom renderer to a .NET MAUI handler
 1. Create a `partial` handler class. For more information, see [Create the handler](#create-the-handler).
 1. In the handler class, create a `PropertyMapper` dictionary, which defines the Actions to take when cross-platform property changes occur. For more information, see [Create the property mapper](#create-the-property-mapper).
 1. Create `partial` handler classes for each platform that create the native views that implement the cross-platform control. For more information, see [Create the platform controls](#create-the-platform-controls).
-1. Register the handler using the ConfigureMauiHandlers and AddHandler methods in your app's MauiProgram class. For more information, see [Register the handler](#register-the-handler).
+1. Register the handler using the `ConfigureMauiHandlers` and `AddHandler` methods in your app's `MauiProgram` class. For more information, see [Register the handler](#register-the-handler).
 
 Then, the cross-platform control can be consumed. For more information, see [Consume the cross-platform control](#consume-the-cross-platform-control).
 
