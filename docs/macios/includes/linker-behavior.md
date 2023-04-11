@@ -7,7 +7,7 @@ When building your app, .NET Multi-platform App UI (.NET MAUI) can use a linker 
 
 ## Linker behavior
 
-The linker supports three modes for .NET MAUI iOS apps:
+The linker supports three modes for .NET MAUI apps on iOS and Mac Catalyst:
 
 - *Don't link*. Disabling linking will ensure assemblies aren't modified.
 - *Link SDK assemblies only*. In this mode, the linker will leave your assemblies untouched, and will reduce the size of the SDK assemblies by removing types and members that your app doesn't use.
