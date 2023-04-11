@@ -175,7 +175,7 @@ The following table shows the .NET MAUI replacements for the functionality in th
 > | <xref:Xamarin.Forms.Device.OS?displayProperty=fullName>  | <xref:Microsoft.Maui.Devices.DeviceInfo.Platform?displayProperty=fullName> | |
 > | <xref:Xamarin.Forms.Device.RuntimePlatform?displayProperty=fullName>  | <xref:Microsoft.Maui.Devices.DeviceInfo.Platform?displayProperty=fullName> | |
 > | <xref:Xamarin.Forms.Device.BeginInvokeOnMainThread%2A?displayProperty=fullName>  | <xref:Microsoft.Maui.ApplicationModel.MainThread.BeginInvokeOnMainThread%2A?displayProperty=fullName> | |
-> | <xref:Xamarin.Forms.Device.GetMainThreadSynchronizationContextAsync%2A?displayProperty=fullName>  | <xref:Microsoft.Maui.ApplicationModel.MainThread.GetSynchronizationContextAsync%2A?displayProperty=fullName> | |
+> | <xref:Xamarin.Forms.Device.GetMainThreadSynchronizationContextAsync%2A?displayProperty=fullName>  | <xref:Microsoft.Maui.ApplicationModel.MainThread.GetMainThreadSynchronizationContextAsync%2A?displayProperty=fullName> | |
 > | <xref:Xamarin.Forms.Device.GetNamedColor%2A?displayProperty=fullName>  | | No .NET MAUI equivalent. |
 > | <xref:Xamarin.Forms.Device.GetNamedSize%2A?displayProperty=fullName>  | | No .NET MAUI equivalent.|
 > | <xref:Xamarin.Forms.Device.Invalidate%2A?displayProperty=fullName>  | <xref:Microsoft.Maui.Controls.VisualElement.InvalidateMeasure%2A?displayProperty=fullName> | |
@@ -199,7 +199,7 @@ The following table shows the .NET MAUI replacements for the functionality in th
 > | <xref:Xamarin.Forms.Maps.Map.HasZoomEnabled?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.Maps.Map.IsZoomEnabled?displayProperty=fullName> |  |
 > | <xref:Xamarin.Forms.Maps.Map.TrafficEnabled?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.Maps.Map.IsTrafficEnabled?displayProperty=fullName> |  |
 > | <xref:Xamarin.Forms.Maps.Map.MoveToLastRegionOnLayoutChange%2A?displayProperty=fullName> |  | No .NET MAUI equivalent. |
-> | <xref:Xamarin.Forms.Maps.Pin.Id?displayProperty=fullName> | | <xref:Microsoft.Maui.Controls.Maps.Pin.MarkedId?displayProperty=fullName> |
+> | <xref:Xamarin.Forms.Maps.Pin.Id?displayProperty=fullName> | | <xref:Microsoft.Maui.Controls.Maps.Pin.MarkerId?displayProperty=fullName> |
 > | <xref:Xamarin.Forms.Maps.Pin.Position?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.Maps.Pin.Location?displayProperty=fullName> |  |
 > | <xref:Xamarin.Forms.Maps.MapClickedEventArgs.Position?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.Maps.MapClickedEventArgs.Location?displayProperty=fullName> |  |
 > | <xref:Xamarin.Forms.Maps.Position?displayProperty=fullName> | <xref:Microsoft.Maui.Devices.Sensors.Location?displayProperty=fullName> | Members of type <xref:Xamarin.Forms.Maps.Position?displayProperty=fullName> have changed to the <xref:Microsoft.Maui.Devices.Sensors.Location?displayProperty=fullName> type. |
