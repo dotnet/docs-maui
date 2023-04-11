@@ -10,7 +10,7 @@ In Xamarin.Forms, custom renderers can be used to customize the appearance and b
 
 Handlers offer many performance improvements over custom renderers. In Xamarin.Forms, the `ViewRenderer` class creates a parent element. For example, on Android, a `ViewGroup` is created which is used for auxiliary positioning tasks. In .NET MAUI, the `ViewHandler` class doesn't create a parent element, which helps to reduce the size of the visual hierarchy and improve your app's performance. Handlers also decouple platform controls from the framework. The platform control only needs to handle the needs of the framework. This is not only more efficient, but it's much easier to extend or override when required. Handlers are also suitable for reuse by other frameworks such as [Comet](https://github.com/dotnet/Comet) and [Fabulous](https://github.com/fabulous-dev/Fabulous). For more information about handlers, see [Handlers](~/user-interface/handlers/index.md).
 
-In Xamarin.Forms, the `OnElementChanged` method in a custom renderer would create the platform control, initialize default values, subscribe to events, and handle the Xamarin.Forms element the renderer was attached to (`OldElement`) and the element that the renderer is attached to (`NewElement`). In addition, a single `OnElementPropertyChanged` method defines the operations to invoke when a property change occurs in the cross-platform control. .NET MAUI simplifies this approach, so that every property change is handled by a separate method, and so that code to create the platform control, perform control setup, and perform control cleanup, is separated into distinct methods.
+In Xamarin.Forms, the `OnElementChanged` method in a custom renderer creates the platform control, initialize default values, subscribe to events, and handles the Xamarin.Forms element the renderer was attached to (`OldElement`) and the element that the renderer is attached to (`NewElement`). In addition, a single `OnElementPropertyChanged` method defines the operations to invoke when a property change occurs in the cross-platform control. .NET MAUI simplifies this approach, so that every property change is handled by a separate method, and so that code to create the platform control, perform control setup, and perform control cleanup, is separated into distinct methods.
 
 The process for migrating a Xamarin.Forms custom control that's backed by custom renderers on each platform to a .NET MAUI custom control that's backed by a handler on each platform is as follows:
 
@@ -89,7 +89,7 @@ The conditional `using` statements define the `PlatformView` type on each platfo
 
 Each handler typically provides a *property mapper*, which defines what Actions to take when a property change occurs in the cross-platform control. The `PropertyMapper` type is a `Dictionary` that maps the cross-platform control's properties to their associated Actions.
 
-> [!IMPORTANT]
+> [!NOTE]
 > The property mapper is the replacement for the `OnElementPropertyChanged` method in a Xamarin.Forms custom renderer.
 
 `PropertyMapper` is defined in .NET MAUI's generic `ViewHandler` class, and requires two generic arguments to be supplied:
@@ -116,7 +116,7 @@ public partial class CustomEntryHandler
 
 The `PropertyMapper` is a `Dictionary` whose key is a `string` and whose value is a generic `Action`. The `string` represents the cross-platform control's property name, and the `Action` represents a `static` method that requires the handler and cross-platform control as arguments. For example, the signature of the `MapText` method is `public static void MapText(CustomEntryHandler handler, CustomEntry view)`.
 
-Each platform handler must provide implementations of the Actions, which manipulate the native view APIs. This ensures that when a property is set on a cross-platform control, the underlying native view will be updated as required. The advantage of this approach is that it allows for easy cross-platform control customization, because the property mapper can be modified by cross-platform control consumers without subclassing.
+Each platform handler must provide implementations of the Actions, which manipulate the native view APIs. This ensures that when a property is set on a cross-platform control, the underlying native view will be updated as required. The advantage of this approach is that it allows for easy cross-platform control customization, because the property mapper can be modified by cross-platform control consumers without subclassing. For more information, see [Customize controls with handlers](~/user-interface/handlers/customize.md).
 
 ## Create the platform controls
 
@@ -158,10 +158,10 @@ Each of the platform handler implementations should override the following metho
 
 - `CreatePlatformView`, which should create and return the native view that implements the cross-platform control.
 - `ConnectHandler`, which should perform any native view setup, such as initializing the native view and performing event subscriptions.
-- `DisconnectHandler`, which should perform any native view cleanup, such as unsubscribing from events and disposing objects.
+- `DisconnectHandler`, which should perform any native view cleanup, such as unsubscribing from events and disposing objects. This method is intentionally not invoked by .NET MAUI. Instead, you must invoke it yourself from a suitable location in your app's lifecycle. For more information, see [Native view cleanup](#native-view-cleanup).
 
-> [!IMPORTANT]
-> The `DisconnectHandler` method is intentionally not invoked by .NET MAUI. Instead, you must invoke it yourself from a suitable location in your app's lifecycle. For more information, see [Native view cleanup](#native-view-cleanup).
+> [!NOTE]
+> The `CreatePlatformView`, `ConnectHandler`, and `DisconnectHandler` overrides are the replacements for the `OnElementChanged` method in a Xamarin.Forms custom renderer.
 
 Each platform handler should also implement the Actions that are defined in the mapper dictionaries. In addition, each platform handler should also provide code, as required, to implement the functionality of the cross-platform control on the platform. Alternatively, for more complex controls this can be provided by an additional type.
 
@@ -214,8 +214,6 @@ The `CreatePlatformView` override creates and returns an `AppCompatEditText` obj
 
 The handler also implements the Actions defined in the property mapper dictionary. Each Action is executed in response to a property changing on the cross-platform control, and is a `static` method that requires handler and cross-platform control instances as arguments. In each case, the Action calls methods defined on the native control.
 
-The property mapper, in addition to simplifying how .NET MAUI handles `PropertyChanged` events, also provides more extensibility options. For more information, see [Customize controls with handlers](~/user-interface/handlers/customize.md).
-
 ## Register the handler
 
 A custom control and its handler must be registered with an app, before it can be consumed. This should occur in the `CreateMauiApp` method in the `MauiProgram` class in your app project, which is the cross-platform entry point for the app:
@@ -255,7 +253,7 @@ public static class MauiProgram
 
 The handler is registered with the `ConfigureMauiHandlers` and `AddHandler` method. The first argument to the `AddHandler` method is the cross-platform control type, with the second argument being its handler type.
 
-> [!IMPORTANT]
+> [!NOTE]
 > This registration approach avoids Xamarin.Forms' assembly scanning, which is slow and expensive.
 
 ## Consume the cross-platform control
