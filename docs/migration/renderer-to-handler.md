@@ -1,18 +1,18 @@
 ---
 title: "Migrate a custom renderer to a .NET MAUI handler"
 description: "Learn how to migrate a Xamarin.Forms custom renderer to a .NET MAUI handler."
-ms.date: 04/06/2023
+ms.date: 04/11/2023
 ---
 
 # Migrate a Xamarin.Forms custom renderer to a .NET MAUI handler
 
-In Xamarin.Forms, each custom renderer has a reference to the cross-platform element and often relies on `INotifyPropertyChanged` to properly work. Rather than using these renderers, .NET Multi-platform App UI (.NET MAUI) introduces a new concept that's called a *handler*.
+In Xamarin.Forms, custom renderers can be used to customize the appearance and behavior of a control, and create new cross-platform controls. Each custom renderer has a reference to the cross-platform control and often relies on `INotifyPropertyChanged` to send property change notifications. Rather than using custom renderers, .NET Multi-platform App UI (.NET MAUI) introduces a new concept called a *handler*.
 
 Handlers offer many performance improvements over custom renderers. In Xamarin.Forms, the `ViewRenderer` class creates a parent element. For example, on Android, a `ViewGroup` is created which is used for auxiliary positioning tasks. In .NET MAUI, the `ViewHandler` class doesn't create a parent element, which helps to reduce the size of the visual hierarchy and improve your app's performance. Handlers also decouple platform controls from the framework. The platform control only needs to handle the needs of the framework. This is not only more efficient, but it's much easier to extend or override when required. Handlers are also suitable for reuse by other frameworks such as [Comet](https://github.com/dotnet/Comet) and [Fabulous](https://github.com/fabulous-dev/Fabulous). For more information about handlers, see [Handlers](~/user-interface/handlers/index.md).
 
 In Xamarin.Forms, the `OnElementChanged` method in a custom renderer would create the platform control, initialize default values, subscribe to events, and handle the Xamarin.Forms element the renderer was attached to (`OldElement`) and the element that the renderer is attached to (`NewElement`). In addition, a single `OnElementPropertyChanged` method defines the operations to invoke when a property change occurs in the cross-platform control. .NET MAUI simplifies this approach, so that every property change is handled by a separate method, and so that code to create the platform control, perform control setup, and perform control cleanup, is separated into distinct methods.
 
-The process for migrating a Xamarin.Forms custom renderer to a .NET MAUI handler is as follows:
+The process for migrating a Xamarin.Forms custom control that's backed by custom renderers on each platform to a .NET MAUI custom control that's backed by a handler on each platform is as follows:
 
 1. Create a class for the cross-platform control, which provides the control's public API. For more information, see [Create the cross-platform control](#create-the-cross-platform-control).
 1. Create a `partial` handler class. For more information, see [Create the handler](#create-the-handler).
@@ -21,6 +21,8 @@ The process for migrating a Xamarin.Forms custom renderer to a .NET MAUI handler
 1. Register the handler using the `ConfigureMauiHandlers` and `AddHandler` methods in your app's `MauiProgram` class. For more information, see [Register the handler](#register-the-handler).
 
 Then, the cross-platform control can be consumed. For more information, see [Consume the cross-platform control](#consume-the-cross-platform-control).
+
+Alternatively, custom renderers that customize Xamarin.Forms controls can be converted so that they modify .NET MAUI handlers. For more information, see [Customize controls with handlers](~/user-interface/handlers/customize.md).
 
 ## Create the cross-platform control
 
@@ -161,9 +163,7 @@ Each of the platform handler implementations should override the following metho
 > [!IMPORTANT]
 > The `DisconnectHandler` method is intentionally not invoked by .NET MAUI. Instead, you must invoke it yourself from a suitable location in your app's lifecycle. For more information, see [Native view cleanup](#native-view-cleanup).
 
-Each platform handler should also implement the Actions that are defined in the mapper dictionaries.
-
-In addition, each platform handler should also provide code, as required, to implement the functionality of the cross-platform control on the platform. Alternatively, this can be provided by an additional type, which is the approach adopted here.
+Each platform handler should also implement the Actions that are defined in the mapper dictionaries. In addition, each platform handler should also provide code, as required, to implement the functionality of the cross-platform control on the platform. Alternatively, for more complex controls this can be provided by an additional type.
 
 The following example shows the `CustomEntryHandler` implementation on Android:
 
@@ -256,7 +256,7 @@ public static class MauiProgram
 The handler is registered with the `ConfigureMauiHandlers` and `AddHandler` method. The first argument to the `AddHandler` method is the cross-platform control type, with the second argument being its handler type.
 
 > [!IMPORTANT]
-> This registration approach avoids Xamarin.Forms' assembly scanning, which was slow and expensive.
+> This registration approach avoids Xamarin.Forms' assembly scanning, which is slow and expensive.
 
 ## Consume the cross-platform control
 
