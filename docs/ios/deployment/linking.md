@@ -13,8 +13,8 @@ When building your app in release configuration, .NET Multi-platform App UI (.NE
 
 The linker supports three modes for .NET MAUI iOS apps:
 
-- *Don't link*. Disabling linking will ensure assemblies aren't modified. This is the default behavior for apps built in debug configuration.
-- *Link SDK assemblies only*. In this mode, the linker will leave your assemblies untouched, and will reduce the size of the SDK assemblies by removing types and members that your app doesn't use. This is the default behavior for apps built in release configuration.
+- *Don't link*. Disabling linking will ensure assemblies aren't modified.
+- *Link SDK assemblies only*. In this mode, the linker will leave your assemblies untouched, and will reduce the size of the SDK assemblies by removing types and members that your app doesn't use.
 - *Link all assemblies*. When linking all assemblies, the linker will perform additional optimizations to make your app as small as possible. It will modify the intermediate code for your source code, which may break your app if you use features using an approach that the linker's static analysis can't detect. In these cases, adjustments to your source code may be required to make your app work correctly.
 
 Linker behavior can be configured for each build configuration of your app.
