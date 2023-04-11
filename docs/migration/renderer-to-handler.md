@@ -177,7 +177,7 @@ using MyMauiControl.Controls;
 namespace MyMauiControl.Handlers
 {
     public partial class CustomEntryHandler : ViewHandler<CustomEntry, AppCompatEditText>
-  	{
+    {
         protected override AppCompatEditText CreatePlatformView() => new AppCompatEditText(Context);
 
         protected override void ConnectHandler(AppCompatEditText platformView)
@@ -227,27 +227,27 @@ namespace MyMauiControl;
 
 public static class MauiProgram
 {
-	public static MauiApp CreateMauiApp()
-	{
-		var builder = MauiApp.CreateBuilder();
-		builder
-			.UseMauiApp<App>()
-			.ConfigureFonts(fonts =>
-			{
-				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-			})
-			.ConfigureMauiHandlers(handlers =>
-			{
-				handlers.AddHandler(typeof(CustomEntry), typeof(CustomEntryHandler));
-			});
+  public static MauiApp CreateMauiApp()
+  {
+    var builder = MauiApp.CreateBuilder();
+    builder
+      .UseMauiApp<App>()
+      .ConfigureFonts(fonts =>
+      {
+        fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+        fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+      })
+      .ConfigureMauiHandlers(handlers =>
+      {
+        handlers.AddHandler(typeof(CustomEntry), typeof(CustomEntryHandler));
+      });
 
 #if DEBUG
-		builder.Logging.AddDebug();
+    builder.Logging.AddDebug();
 #endif
 
-		return builder.Build();
-	}
+    return builder.Build();
+  }
 }
 ```
 
