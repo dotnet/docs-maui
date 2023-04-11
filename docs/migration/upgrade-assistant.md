@@ -61,7 +61,7 @@ dotnet tool update -g upgrade-assistant
 Open a terminal and navigate to the folder where the target project or solution is located. Run the `upgrade-assistant upgrade` command, passing in the name of the project or solution you're upgrading:
 
 ```dotnetcli
-upgrade-assistant upgrade <sln or csproj> --non-interactive --entry-point *
+upgrade-assistant upgrade <sln or csproj> --non-interactive
 ```
 
 This command runs the tool in non-interactive mode. It will update all eligible projects in the solution and dependent projects.
