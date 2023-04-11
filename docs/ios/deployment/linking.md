@@ -1,7 +1,7 @@
 ---
 title: "Linking a .NET MAUI iOS app"
 description: "Learn about the .NET iOS linker, which is used to eliminate unused code from a .NET MAUI iOS app in order to reduce its size."
-ms.date: 04/04/2023
+ms.date: 04/11/2023
 no-loc: [Objective-C]
 ---
 
@@ -110,14 +110,6 @@ If you want the linker to skip multiple assemblies, you include multiple `linksk
 ```
 
 There is no user interface to use this option but it can be provided in the Visual Studio for Mac Project Options dialog or the Visual Studio project Properties pane, within the **Additional mtouch arguments** text field. (E.g. *--linkskip=mscorlib* would not link mscorlib.dll but would link other assemblies in the solution).
-
-### Disabling "Link Away"
-
-The linker will remove code that is very unlikely to be used on devices, e.g. unsupported or disallowed. In rare occasion it is possible that an app or library depends on this (working or not) code. Since Xamarin.iOS 5.0.1 the linker can be instructed to skip this optimization.
-
-This correspond to the *-nolinkaway* option when using the command-line tool mtouch.
-
-There is no user interface to use this option but it can be provided in the Visual Studio for Mac Project Options dialog or the Visual Studio project Properties pane, within **Additional mtouch arguments** text field. (E.g. *--nolinkaway* would not remove the extra code (about 100kb)).
 
 ### Marking your assembly as linker-ready
 
