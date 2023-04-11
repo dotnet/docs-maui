@@ -22,7 +22,7 @@ no-loc: [ ILLink ]
 <!-- markdownlint-enable MD025 -->
 
 1. In the **Solution Window**, right-click on your .NET MAUI app project and select **Properties**.
-1. In the **Project Properties** window, select the **Build > iOS > Builg** tab.
+1. In the **Project Properties** window, select the **Build > iOS > Build** tab.
 1. In the **Project Properties** window, ensure the **Configuration** drop-down is set to **Release** and set the **Linker behavior** drop-down to your desired linker behavior:
 
     :::image type="content" source="media/linking/vsmac.png" alt-text="Screenshot of the linker behavior for iOS in Visual Studio for Mac.":::
