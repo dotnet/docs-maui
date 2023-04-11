@@ -61,11 +61,11 @@ The [`RequiresUnreferencedCode`](xref:System.Diagnostics.CodeAnalysis.RequiresUn
 
 ## DynamicallyAccessedMembers attribute
 
-The [`DynamicallyAccessedMembers`](xref:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembers) attribute is used to indicate that the annotated member is dynamically accessed at runtime, and therefore shouldn't be removed by the linker. The attribute is typically used in scenarios where code uses reflection or other dynamic runtime mechanisms to access members of a type.
+The [`DynamicallyAccessedMembers`](xref:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute) attribute is used to indicate that the annotated member is dynamically accessed at runtime, and therefore shouldn't be removed by the linker. The attribute is typically used in scenarios where code uses reflection or other dynamic runtime mechanisms to access members of a type.
 
-By adding the [`DynamicallyAccessedMembers`](xref:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembers) attribute, you're indicating that the member shouldn't be removed by the linker, even if it appears to be unreferenced.
+By adding the [`DynamicallyAccessedMembers`](xref:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute) attribute, you're indicating that the member shouldn't be removed by the linker, even if it appears to be unreferenced.
 
-The [`DynamicallyAccessedMembers`](xref:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembers) attribute can be applied to classes, fields, generic parameters, interfaces, methods, parameters, properties, return values, and structs. For more information, see [DynamicallyAccessedMembers](/dotnet/core/deploying/trimming/fixing-warnings#dynamicallyaccessedmembers).
+The [`DynamicallyAccessedMembers`](xref:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute) attribute can be applied to classes, fields, generic parameters, interfaces, methods, parameters, properties, return values, and structs. For more information, see [DynamicallyAccessedMembers](/dotnet/core/deploying/trimming/fixing-warnings#dynamicallyaccessedmembers).
 
 ## DynamicDependency attribute
 
