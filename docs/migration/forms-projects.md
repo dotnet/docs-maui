@@ -199,7 +199,7 @@ The following table shows the .NET MAUI replacements for the functionality in th
 > | <xref:Xamarin.Forms.Maps.Map.HasZoomEnabled?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.Maps.Map.IsZoomEnabled?displayProperty=fullName> |  |
 > | <xref:Xamarin.Forms.Maps.Map.TrafficEnabled?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.Maps.Map.IsTrafficEnabled?displayProperty=fullName> |  |
 > | <xref:Xamarin.Forms.Maps.Map.MoveToLastRegionOnLayoutChange%2A?displayProperty=fullName> |  | No .NET MAUI equivalent. |
-> | <xref:Xamarin.Forms.Maps.Pin.Id?displayProperty=fullName> | | <xref:Microsoft.Maui.Controls.Maps.Pin.MarkerId?displayProperty=fullName> |
+> | <xref:Xamarin.Forms.Maps.Pin.Id?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.Maps.Pin.MarkerId?displayProperty=fullName> |  |
 > | <xref:Xamarin.Forms.Maps.Pin.Position?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.Maps.Pin.Location?displayProperty=fullName> |  |
 > | <xref:Xamarin.Forms.Maps.MapClickedEventArgs.Position?displayProperty=fullName> | <xref:Microsoft.Maui.Controls.Maps.MapClickedEventArgs.Location?displayProperty=fullName> |  |
 > | <xref:Xamarin.Forms.Maps.Position?displayProperty=fullName> | <xref:Microsoft.Maui.Devices.Sensors.Location?displayProperty=fullName> | Members of type <xref:Xamarin.Forms.Maps.Position?displayProperty=fullName> have changed to the <xref:Microsoft.Maui.Devices.Sensors.Location?displayProperty=fullName> type. |
