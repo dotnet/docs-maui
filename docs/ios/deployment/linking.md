@@ -2,135 +2,173 @@
 title: "Linking a .NET MAUI iOS app"
 description: "Learn about the .NET iOS linker, which is used to eliminate unused code from a .NET MAUI iOS app in order to reduce its size."
 ms.date: 04/11/2023
-no-loc: [Objective-C]
+no-loc: [ Objective-C, ILLink ]
 ---
 
 # Linking a .NET MAUI iOS app
 
-When building your app, Visual Studio calls a tool called **mtouch** that includes a linker for managed code. It is used to remove from the class libraries the features that the app is not using. The goal is to reduce the size of the app, which will ship with only the necessary bits.
-
-The linker uses static analysis to determine the different code paths that your app is susceptible to follow. It's a bit heavy as it has to go through every detail of each assembly, to make sure that nothing discoverable is removed. It is not enabled by default on the simulator builds to speed up the build time while debugging. However since it produces smaller apps it can speed up AOT compilation and uploading to the device, all *devices (Release) builds* are using the
-linker by default.
-
-As the linker is a static tool, it can not mark for inclusion types and methods that are called through reflection, or dynamically instantiated. Several options exists to workaround this limitation.
+When building your app, .NET Multi-platform App UI (.NET MAUI) uses a linker called *ILLink* to reduce the overall size of the app. ILLink does this by analysing the intermediate code produced by the compiler, removing unused methods, properties, fields, events, structs, and classes to produce an app that contains only code and assembly dependencies that are necessary to run the app.
 
 ## Linker behavior
 
-# [Visual Studio](#tab/windows)
+The linker supports three options for .NET MAUI iOS apps:
 
-The linking process can be customized via the linker behavior dropdown in the **Project Properties** in Visual Studio.
+- *Don't link*. Disabling linking will ensure assemblies aren't modified. This is the default behavior for apps built in debug configuration.
+- *Link SDK assemblies only*. In this mode, the linker will leave your assemblies untouched, and will reduce the size of the SDK assemblies by removing types and members that your app doesn't use. This is the default behavior for apps built in release configuration.
+- *Link all assemblies*. When linking all assemblies, the linker will perform additional optimizations to make your app as small as possible. It will modify the intermediate code for your source code, which may break your app if you use features using an approach that the linker's static analysis can't detect. In these cases, adjustments to your source code may be required.
 
-Do the following:
+Linker behavior can be configured for each build configuration of your app.
 
-1. Right-click on the **Project Name** in the **Solution Explorer** and select **Properties**:
+> [!WARNING]
+> Enabling the linker for debug configuration may hinder your debugging experience, as it may remove property accessors that enable you to inspect the state of your objects.
 
-    ![Right-click on the Project Name in the Solution Explorer and select Properties](linker-images/linking01w.png)
-1. In the **Project Properties**, select **IOS Build**:
+<!-- markdownlint-disable MD025 -->
+# [Visual Studio](#tab/vs)
+<!-- markdownlint-enable MD025 -->
 
-    ![Select IOS Build](linker-images/linking02w.png)
-1. Follow the instructions below to change the linking options.
+1. In **Solution Explorer** right-click on your .NET MAUI app project and select **Properties**. Then, navigate to the **iOS > Build** tab and set the **Linker behavior** drop-down to your desired linker behavior:
 
-# [Visual Studio for Mac](#tab/macos)
+    :::image type="content" source="media/linking/vs.png" alt-text="Screenshot of the linker behavior for iOS in Visual Studio.":::
 
-The linking process can be customized via the linker behavior dropdown in **Project Options**. To access this double-click on the iOS project and browse to **iOS Build > Linker Options**, as illustrated below:
+<!-- markdownlint-disable MD025 -->
+# [Visual Studio for Mac](#tab/vsmac)
+<!-- markdownlint-enable MD025 -->
 
-[![Linker Options](linker-images/image1.png)](linker-images/image1.png#lightbox)
+1. In the **Solution Window**, right-click on your .NET MAUI app project and select **Properties**.
+1. In the **Project Properties** window, select the **Build > iOS > Builg** tab.
+1. In the **Project Properties** window, ensure the **Configuration** drop-down is set to **Release** and set the **Linker behavior** drop-down to your desired linker behavior:
+
+    :::image type="content" source="media/linking/vsmac.png" alt-text="Screenshot of the linker behavior for iOS in Visual Studio for Mac.":::
+
+1. In the **Project Properties** window, click the **OK** button.
 
 ----
 
-The three main options are offered are described below.
+## Preserve code
 
-### Don't link
+When you use the linker it will sometimes remove code that you might have called dynamically, even indirectly. To cover those cases the linker provides several features and options to allow you greater control over its behavior.
 
-Disabling linking will make sure that no assemblies are modified. For performance reasons this is the default setting when your IDE targets for the iOS simulator. For devices builds this should only be used as a workaround whenever the linker contains a bug that prevents your app to run. If your app only works with *-nolink*, please submit a [bug report](https://github.com/xamarin/xamarin-macios/issues/new).
+> [!IMPORTANT]
+> Every member that isn't statically linked by the app is subject to be removed.
 
-This corresponds to the *-nolink* option when using the command-line tool mtouch.
+## RequiresUnreferencedCode attribute
 
-### Link SDK assemblies only
+The [`RequiresUnreferencedCode`](xref:System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute) attribute indicates that the annotated member has dependencies that aren't statically discoverable, and so the linker may remove code that's needed. The attribute is typically used in scenarios where code uses reflection, dynamic code generation, or native interop, and therefore has dependencies that aren't visible to the compiler at build-time.
 
-In this mode, the linker will leave your assemblies untouched, and will reduce the size of the SDK assemblies (i.e. what's shipped with Xamarin.iOS) by removing everything that your app doesn't use. This is the default setting when your IDE targets iOS devices.
+By adding the [`RequiresUnreferencedCode`](xref:System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute) attribute, you're indicating that the member shouldn't be removed by the linker, even if it appears to be unreferenced.
 
-This is the most simple option, as it does not require any change in your code. The difference with linking everything is that the linker can not perform a few optimizations in this mode, so it's a trade-off between the work needed to link everything and the final app size.
+The [`RequiresUnreferencedCode`](xref:System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute) attribute can be applied to classes, constructors, and methods. For more information, see [RequiresUnreferencedCode](/dotnet/core/deploying/trimming/fixing-warnings#requiresunreferencedcode).
 
-This correspond to the *-linksdk* option when using the command-line tool mtouch.
+## DynamicallyAccessedMembers attribute
 
-### Link all assemblies
+The [`DynamicallyAccessedMembers`](xref:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembers) attribute is used to indicate that the annotated member is dynamically accessed at runtime, and therefore shouldn't be removed by the linker. The attribute is typically used in scenarios where code uses reflection or other dynamic runtime mechanisms to access members of a type.
 
-When linking everything, the linker can use the whole set of its optimizations to make the app as small as possible. It will modify user code, which may break whenever the code uses features in a way that the linker's static analysis cannot detect. In such cases, e.g. webservices, reflection, or serialization, some adjustements might be required in your app to link everything.
+By adding the [`DynamicallyAccessedMembers`](xref:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembers) attribute, you're indicating that the member shouldn't be removed by the linker, even if it appears to be unreferenced.
 
-This correspond to the *-linkall* option when using the command-line tool **mtouch**.
+The [`DynamicallyAccessedMembers`](xref:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembers) attribute can be applied to classes, fields, generic parameters, interfaces, methods, parameters, properties, return values, and structs. For more information, see [DynamicallyAccessedMembers](/dotnet/core/deploying/trimming/fixing-warnings#dynamicallyaccessedmembers).
 
-## Controlling the linker
+## DynamicDependency attribute
 
-When you use the linker it will sometimes will remove code that you might have called dynamically, even indirectly. To cover those cases the linker provides a few features and options to allow you greater control on its actions.
+You can instruct the linker to consider members to be preserved by annotating them with the [`DynamicDependency`](xref:System.Diagnostics.CodeAnalysis) attribute. This results in the referenced members being kept whenever the member with the attribute is kept.
 
-### Preserving code
+> [!WARNING]
+> Use the [`DynamicDependency`](xref:System.Diagnostics.CodeAnalysis) attribute only as a last resort when the other approaches aren't viable. It's preferable to express the reflection behavior of your code using the [`RequiresUnreferencedCode`](xref:System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute) attribute or the [`DynamicallyAccessedMembers`](xref:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute) attribute.
 
-When you use the linker it can sometimes remove code that you might have called dynamically either using System.Reflection.MemberInfo.Invoke, or by exporting your methods to Objective-C using the `[Export]` attribute and then invoking the selector manually.
-
-In those cases, you can instruct the linker to consider either entire classes to be used or individual members to be preserved by applying the `[Xamarin.iOS.Foundation.Preserve]` attribute either at the class-level or the member-level. Every member that is not statically linked by the app is subject to be removed. This attribute is hence used to mark members that are not statically referenced, but that are still needed by your app.
-
-For instance, if you instantiate types dynamically, you may want to preserve the default constructor of your types. If you use XML serialization, you may want to preserve the properties of your types.
-
-You can apply this attribute on every member of a type, or on the type itself. If you want to preserve the whole type, you can use the syntax `[Preserve (AllMembers = true)]` on the type.
-
-Sometimes you want to preserve certain members, but only if the containing type was preserved. In those cases, use `[Preserve (Conditional=true)]`.
-
-If you do not want to take a dependency on the Xamarin libraries -for example, say that you are building a cross platform portable class library (PCL) - you can still use this attribute.
-
-To do this, you should just declare a PreserveAttribute class, and use it in your code, like this:
+The attribute can be applied to constructors, fields, and methods:
 
 ```csharp
-public sealed class PreserveAttribute : System.Attribute {
-    public bool AllMembers;
-    public bool Conditional;
+[DynamicDependency("Helper", "MyType", "MyAssembly")]
+static void RunHelper()
+{
+    var helper = Assembly.Load("MyAssembly").GetType("MyType").GetMethod("Helper");
+    helper.Invoke(null, null);
 }
 ```
 
-It does not really matter in which namespace this is defined, the linker looks this attribute by type name.
+In this example, the [`DynamicDependency`](xref:System.Diagnostics.CodeAnalysis) ensures that the `Helper` method is kept. Without the attribute, linking would remove `Helper` from `MyAssembly` or remove `MyAssembly` completely if it's not referenced elsewhere.
 
- <a name="Skipping_Assemblies"></a>
+The attribute specifies the member to keep via a `string` or via `DynamicallyAccessedMemberTypes`. The type and assembly are either implicit in the attribute context, or explicitly specified in the attribute (by `Type`, or by `string`s for the type and assembly name).
 
-### Skipping assemblies
-
-It is possible to specify assemblies that should be excluded from the linker process, while allowing other assemblies to be linked normally. This is helpful if using `[Preserve]` on some assemblies is impossible (e.g. 3rd party code) or as a temporary workaround for a bug.
-
-This correspond to the `--linkskip` option when using the command-line tool mtouch.
-
-When using **Link All Assemblies** option, if you want to tell the linker to skip entire assemblies, put the following in the **Additional mtouch arguments** options of your top-level assembly:
+The type and member strings use a variation of the C# documentation comment ID string [format](/dotnet/csharp/language-reference/language-specification/documentation-comments#d42-id-string-format), without the member prefix. The member string shouldn't include the name of the declaring type, and may omit parameters to keep all members of the specified name. The following examples show valid uses:
 
 ```csharp
---linkskip=NameOfAssemblyToSkipWithoutFileExtension
+[DynamicDependency("Method()")]
+[DynamicDependency("Method(System,Boolean,System.String)")]
+[DynamicDependency("MethodOnDifferentType()", typeof(ContainingType))]
+[DynamicDependency("MemberName")]
+[DynamicDependency("MemberOnUnreferencedAssembly", "ContainingType", "UnreferencedAssembly")]
+[DynamicDependency("MemberName", "Namespace.ContainingType.NestedType", "Assembly")]
+// generics
+[DynamicDependency("GenericMethodName``1")]
+[DynamicDependency("GenericMethod``2(``0,``1)")]
+[DynamicDependency("MethodWithGenericParameterTypes(System.Collections.Generic.List{System.String})")]
+[DynamicDependency("MethodOnGenericType(`0)", "GenericType`1", "UnreferencedAssembly")]
+[DynamicDependency("MethodOnGenericType(`0)", typeof(GenericType<>))]
 ```
 
-If you want the linker to skip multiple assemblies, you include multiple `linkskip` arguments:
+### Skip assemblies
+
+It's possible to specify assemblies that should be excluded from the linking process, while allowing other assemblies to be linked.
+
+When linking all assemblies, the linker can skip an assembly by setting the `TrimmerRootAssembly` MSBuild property in an `<ItemGroup>` tag in the project file:
+
+```xml
+<ItemGroup>
+  <TrimmerRootAssembly Include="MyAssembly" />
+</ItemGroup>
+```
+
+> [!NOTE]
+> The `.dll` extension isn't required when setting the `TrimmerRootAssembly` MSBuild property.
+
+If the linker skips an assembly, it's considered "rooted" which means that it and all of its statically understood dependencies will be kept. Additional assemblies may be skipped by adding additional `TrimmerRootAssembly` MSBuild properties to the `<ItemGroup>`.
+
+### Skip members
+
+It's possible to specify individual methods that should be excluded from the linking process, while allowing the rest of the assembly to be linked.
+
+When linking all assemblies, to exclude a method from the linking process set the `TrimmerRootDescriptor` MSBuild property in an `<ItemGroup>` tag in the project file to the XML file that defines the members to exclude:
+
+```xml
+<ItemGroup>
+  <TrimmerRootDescriptor Include="MyRoots.xml" />
+</ItemGroup>
+```
+
+The XML file then uses the trimmer [descriptor format](https://github.com/dotnet/linker/blob/main/docs/data-formats.md#descriptor-format) to define which members to exclude from linking:
+
+```xml
+<linker>
+  <assembly fullname="MyAssembly">
+    <type fullname="MyAssembly.MyClass">
+      <method name="DynamicallyAccessedMethod" />
+    </type>
+  </assembly>
+</linker>
+```
+
+In this example, the XML file specifies a method that's dynamically accessed by the app, which is excluded from linking.
+
+## Mark an assembly as linker safe
+
+If you have a library in your project, or you are a developer of a re-usable library and you want the linker to treat your assembly as linkable, you can mark the assembly as linker safe with the [`AssemblyMetadata`](xref:System.Reflection.AssemblyMetadataAttribute) attribute:
 
 ```csharp
---linkskip=NameOfFirstAssembly --linkskip=NameOfSecondAssembly
+[assembly: AssemblyMetadata("IsTrimmable", "True")]
 ```
 
-There is no user interface to use this option but it can be provided in the Visual Studio for Mac Project Options dialog or the Visual Studio project Properties pane, within the **Additional mtouch arguments** text field. (E.g. *--linkskip=mscorlib* would not link mscorlib.dll but would link other assemblies in the solution).
+Alternatively, you can set `<IsTrimmable>true</IsTrimmable>` in a `<PropertyGroup>` tag in the project file for the assembly. This will mark your assembly as "trimmable" and enable trim warnings for that project. Being "trimmable" means your assembly is considered compatible with trimming and should have no trim warnings when building the assembly. When used in a trimmed app, the assembly will have its unused members removed in the final output.
 
-### Marking your assembly as linker-ready
+> [!NOTE]
+> If the `IsTrimmable` MSBuild property is set for an assembly, this overrides the `IsTrimmable` attribute. This enables you to opt an assembly into trimming even if it doesn't have the attribute, or to disable trimming of an assembly that has the attribute.
 
-Users can select to just link the SDK assemblies, and not do any linking to their code.  This also means that any third party libraries that are not part of Xamarin's core SDK will not be linked.
+## Disable linking
 
-This happens typically, because they do not want to manually add `[Preserve]` attributes to their code.  The side effect is that third party libraries will not be linked, and this in general is a good
-default, as it is not possible to know whether a third party library is linker friendly or not.
+To disable linking, set `<MtouchLink>None</MtouchLink>` in a `<PropertyGroup>` tag in the project file, or set the linker behavior to **Don't link** in Visual Studio.
 
-If you have a library in your project, or you are a developer of reusable libraries and you want the linker to treat your assembly as linkable, all you have to do is add the assembly-level attribute
-[`LinkerSafe`](xref:Foundation.LinkerSafeAttribute), like this:
-
-```csharp
-[assembly:LinkerSafe]
-```
-
-Your library does not actually need to reference the Xamarin libraries for this.  For example, if you are building a Portable Class Library that will run in other platforms you can still use a `LinkerSafe` attribute. The Xamarin linker looks up the `LinkerSafe` attribute by name, not by its actual type.  This means that you can write this code and it will also work:
-
-```csharp
-[assembly:LinkerSafe]
-// ... assembly attribute should be at top, before source
-class LinkerSafeAttribute : System.Attribute {}
-```
+> [!WARNING]
+> Setting `<PublishTrimmed>false</PublishTrimmed>` in a `<PropertyGroup>` tag in the project file for the assembly doesn't disable linking for .NET MAUI iOS apps.
 
 ## See also
+
+- [ILLink](https://github.com/dotnet/linker/tree/main/docs)

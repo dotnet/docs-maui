@@ -694,6 +694,8 @@
           items:
             - name: Hot restart
               href: ios/hot-restart.md
+            - name: Linking
+              href: ios/deployment/linking.md
             - name: Wireless deployment
               href: ios/wireless-deployment.md
         - name: Project configuration
