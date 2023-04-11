@@ -483,6 +483,8 @@
                   href: ios/capabilities.md
                 - name: Entitlements
                   href: ios/entitlements.md
+            - name: Linking
+              href: ios/linking.md
             - name: Set up device for development
               items:
                 - name: Overview
@@ -499,6 +501,8 @@
                   href: mac-catalyst/capabilities.md
                 - name: Entitlements
                   href: mac-catalyst/entitlements.md
+            - name: Linking
+              href: mac-catalyst/linking.md
             - name: Specify the UI idiom
               href: mac-catalyst/user-interface-idiom.md
         - name: Platform integration
@@ -694,8 +698,6 @@
           items:
             - name: Hot restart
               href: ios/hot-restart.md
-            - name: Linking
-              href: ios/deployment/linking.md
             - name: Wireless deployment
               href: ios/wireless-deployment.md
         - name: Project configuration
