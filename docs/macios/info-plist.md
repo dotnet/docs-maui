@@ -26,6 +26,9 @@ Visual Studio's *Info.plist* editor contains two views of the data:
 
     :::image type="content" source="media/info-plist/vs/application.png" alt-text="Screenshot of application tab in Visual Studio Info.plist editor.":::
 
+    > [!NOTE]
+    > Values for the **Application Name**, **Bundle Identifier**, **Version**, and **Build** fields are retrieved from your app's project file. For more information, see [App info](#app-info).
+
 - Advanced, which enables you to specify supported document types, UTIs, and URL types:
 
     :::image type="content" source="media/info-plist/vs/advanced.png" alt-text="Screenshot of advanced tab in Visual Studio Info.plist editor.":::
@@ -48,11 +51,14 @@ Visual Studio for Mac's *Info.plist* editor contains three views of the data:
 
     :::image type="content" source="media/info-plist/vsmac/application.png" alt-text="Screenshot of application view in Visual Studio for Mac Info.plist editor.":::
 
+    > [!NOTE]
+    > Values for the **Application Name**, **Bundle Identifier**, **Version**, and **Build** fields are retrieved from your app's project file. For more information, see [App info](#app-info).
+
 ---
 
 ## Edit the information property list source
 
-Alternatively, the file can be opened in an external editor to edit its XML source. The following categories can have keys and values provided to configure the app:
+The *Info.plist* file can also be opened in an external editor to edit its XML source. Keys and values to configure the app can be added for the following categories:
 
 - Bundle configuration, which configures the basic characteristics of a bundle such as its name, type, and version. For more information, see [Bundle configuration](https://developer.apple.com/documentation/bundleresources/information_property_list/bundle_configuration) on developer.apple.com.
 - User interface, which configures an app's scenes, icons, and fonts. For more information, see [User interface](https://developer.apple.com/documentation/bundleresources/information_property_list/user_interface) on developer.apple.com.
@@ -65,7 +71,7 @@ Alternatively, the file can be opened in an external editor to edit its XML sour
 
 ## App info
 
-The *Info.plist* editor retrieves some basic app data from the app's project file, rather than storing it directly in the *Info.plist* file. At build time, .NET MAUI copies this data into the *Info.plist* file that ships in your app bundle.
+The *Info.plist* editor retrieves basic app data from the app's project file, rather than storing it directly in the *Info.plist* file. At build time, .NET MAUI copies this data into the *Info.plist* file that ships in your app bundle.
 
 ### Application name
 
