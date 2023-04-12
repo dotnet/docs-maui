@@ -29,7 +29,7 @@ Visual Studio's *Info.plist* editor contains two views of the data:
     > [!NOTE]
     > Values for the **Application Name**, **Bundle Identifier**, **Version**, and **Build** fields are retrieved from your app's project file. For more information, see [Provide app info](#provide-app-info).
 
-- Advanced, which enables you to specify supported document types, UTIs, and URL types:
+- Advanced, which enables you to specify supported document types, universal type identifiers (UTIs), and URL types:
 
     :::image type="content" source="media/info-plist/vs/advanced.png" alt-text="Screenshot of advanced tab in Visual Studio Info.plist editor.":::
 
