@@ -1,10 +1,10 @@
 ---
-title: "Information property list files"
+title: "Information property list"
 description: Learn about the Apple information property list file, Info.plist, that contains configuration information for your .NET MAUI app on iOS and Mac Catalyst.
 ms.date: 04/12/2023
 ---
 
-# Information property list files
+# Information property list
 
 An information property list file is an XML file encoded using Unicode UTF-8 that contains configuration information for your app. The root node of the file is a dictionary, which contains a set of keys and values that define your app configuration. The name of the information property list file is *Info.plist*, and is case sensitive. All .NET MAUI iOS and Mac Catalyst apps must contain an *Info.plist* file that describes the app.
 
@@ -93,7 +93,7 @@ Visual Studio for Mac's *Info.plist* editor contains three views of the data:
 
 ## Edit the information property list source
 
-Alternatively, the file can be opened in an external editor to edit its XML source. The following categories can have keys and values provided to control app configuration:
+Alternatively, the file can be opened in an external editor to edit its XML source. The following categories can have keys and values provided to configure the app:
 
 - Bundle configuration, which configures the basic characteristics of a bundle such as its name, type, and version. For more information, see [Bundle configuration](https://developer.apple.com/documentation/bundleresources/information_property_list/bundle_configuration) on developer.apple.com.
 - User interface, which configures an app's scenes, icons, and fonts. For more information, see [User interface](https://developer.apple.com/documentation/bundleresources/information_property_list/user_interface) on developer.apple.com.
