@@ -60,13 +60,13 @@ Visual Studio for Mac's *Info.plist* editor contains three views of the data:
 
 The *Info.plist* file can also be opened in an external editor to edit its XML source. Keys and values to configure the app can be added for the following categories:
 
-- Bundle configuration, which configures the basic characteristics of a bundle such as its name, type, and version. For more information, see [Bundle configuration](https://developer.apple.com/documentation/bundleresources/information_property_list/bundle_configuration) on developer.apple.com.
-- User interface, which configures an app's scenes, icons, and fonts. For more information, see [User interface](https://developer.apple.com/documentation/bundleresources/information_property_list/user_interface) on developer.apple.com.
-- App execution, which configures app launch, execution, and termination. For more information, see [App execution](https://developer.apple.com/documentation/bundleresources/information_property_list/app_execution) on developer.apple.com.
-- Protected resources, which controls an app's access to protected services and user data. For more information, see [Protected resources](https://developer.apple.com/documentation/bundleresources/information_property_list/protected_resources) on developer.apple.com.
-- Data and storage, which configures your app's data management capabilities. For more information, see [Data and storage](https://developer.apple.com/documentation/bundleresources/information_property_list/data_and_storage) on developer.apple.com.
-- App services, which configures the services that your app provides. For more information, see [App services](https://developer.apple.com/documentation/bundleresources/information_property_list/app_services) on developer.apple.com.
-- Kernel and drivers, which configures device drivers provided by your app. For more information, see [Kernel and drivers](https://developer.apple.com/documentation/bundleresources/information_property_list/kernel_and_drivers) on developer.apple.com.
+- Bundle configuration, to configure the basic characteristics of a bundle such as its name, type, and version. For more information, see [Bundle configuration](https://developer.apple.com/documentation/bundleresources/information_property_list/bundle_configuration) on developer.apple.com.
+- User interface, to configure an app's scenes, icons, and fonts. For more information, see [User interface](https://developer.apple.com/documentation/bundleresources/information_property_list/user_interface) on developer.apple.com.
+- App execution, to configure app launch, execution, and termination. For more information, see [App execution](https://developer.apple.com/documentation/bundleresources/information_property_list/app_execution) on developer.apple.com.
+- Protected resources, to control an app's access to protected services and user data. For more information, see [Protected resources](https://developer.apple.com/documentation/bundleresources/information_property_list/protected_resources) on developer.apple.com.
+- Data and storage, to configure your app's data management capabilities. For more information, see [Data and storage](https://developer.apple.com/documentation/bundleresources/information_property_list/data_and_storage) on developer.apple.com.
+- App services, to configure the services that your app provides. For more information, see [App services](https://developer.apple.com/documentation/bundleresources/information_property_list/app_services) on developer.apple.com.
+- Kernel and drivers, to configure device drivers provided by your app. For more information, see [Kernel and drivers](https://developer.apple.com/documentation/bundleresources/information_property_list/kernel_and_drivers) on developer.apple.com.
 
 
 ## Provide app info
