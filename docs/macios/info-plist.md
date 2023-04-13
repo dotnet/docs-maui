@@ -68,7 +68,6 @@ The *Info.plist* file can also be opened in an external editor to edit its XML s
 - App services, to configure the services that your app provides. For more information, see [App services](https://developer.apple.com/documentation/bundleresources/information_property_list/app_services) on developer.apple.com.
 - Kernel and drivers, to configure device drivers provided by your app. For more information, see [Kernel and drivers](https://developer.apple.com/documentation/bundleresources/information_property_list/kernel_and_drivers) on developer.apple.com.
 
-
 ## Provide app info
 
 The *Info.plist* editor retrieves basic app data from the app's project file, rather than storing it directly in the *Info.plist* file. At build time, .NET MAUI copies this data into the *Info.plist* file that ships in your app bundle.
