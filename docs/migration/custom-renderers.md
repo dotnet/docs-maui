@@ -1,10 +1,10 @@
 ---
-title: "Use custom renderers in .NET MAUI"
+title: "Reuse custom renderers in .NET MAUI"
 description: "Learn how to adapt Xamarin.Forms custom renderers to work in a .NET MAUI app."
 ms.date: 04/13/2023
 ---
 
-# Use custom renderers in .NET MAUI
+# Reuse custom renderers in .NET MAUI
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/custom-renderers/)
 
@@ -26,6 +26,9 @@ To demonstrate using custom renderers in .NET MAUI, consider a Xamarin.Forms con
 - `PressableView.cs` - the cross-platform class that extends `ContentView`.
 - `PressableViewRenderer.cs` - the Android implementation, which derives from `VisualElementRenderer`.
 - `PressableViewRenderer.cs` - the iOS implementation, which derives from `VisualElementRenderer`.
+
+> [!NOTE]
+> An alternative to using a Xamarin.Forms custom renderer in .NET MAUI is to migrate the custom renderer to a .NET MAUI handler. For more information, see [Migrate a Xamarin.Forms custom renderer to a .NET MAUI handler](renderer-to-handler.md).
 
 ### Add the code
 
