@@ -10,7 +10,11 @@ ms.date: 02/15/2023
 
 While there are many benefits to using .NET Multi-platform App UI (.NET MAUI) handlers to customize and create controls, it's still possible to use Xamarin.Forms custom renderers in .NET MAUI apps. For more information about custom renderers, see [Xamarin.Forms custom renderers](/xamarin/xamarin-forms/app-fundamentals/custom-renderer/).
 
-The process for migrating a Xamarin.Forms custom renderer to .NET MAUI is to:
+## Shimmed renderers
+
+.NET MAUI provides shimmed renderers that enable easy re-use of Xamarin.Forms custom renderers, provided that the renderer derives from `FrameRenderer`, `ListViewRenderer`, `ShellRenderer` on iOS and Android, `TableViewRenderer`, and `VisualElementRenderer`.
+
+The process for migrating a Xamarin.Forms custom renderer that derives from a shimmed renderer to .NET MAUI is to:
 
 1. Add the custom renderer code into the appropriate location in your .NET MAUI project(s). For more information, see [Add the code](#add-the-code).
 1. Modify the `using` directives and remove `ExportRenderer` attributes. For more information, see [Modify using directives and other code](#modify-using-directives-and-other-code).
@@ -20,10 +24,10 @@ The process for migrating a Xamarin.Forms custom renderer to .NET MAUI is to:
 To demonstrate using custom renderers in .NET MAUI, consider a Xamarin.Forms control named `PressableView`. This control exposes `Pressed` and `Released` events based on platform-specific gestures. The custom renderer implementation is composed of 3 files:
 
 - `PressableView.cs` - the cross-platform class that extends `ContentView`.
-- `PressableViewRenderer.cs` - the Android implementation.
-- `PressableViewRenderer.cs` - the iOS implementation.
+- `PressableViewRenderer.cs` - the Android implementation, which derives from `VisualElementRenderer`.
+- `PressableViewRenderer.cs` - the iOS implementation, which derives from `VisualElementRenderer`.
 
-## Add the code
+### Add the code
 
 If you're using a .NET MAUI multi-targeted project, the cross-platform file can be moved to anywhere outside the *Platforms* folder, and the platform-specific implementation files should be moved to the corresponding *Platform* folder:
 
@@ -31,7 +35,7 @@ If you're using a .NET MAUI multi-targeted project, the cross-platform file can 
 
 If your solution has separate projects per-platform, then you should move the platform-specific implementation files into the corresponding projects.
 
-## Modify using directives and other code
+### Modify using directives and other code
 
 Any reference to the `Xamarin.Forms.*` namespaces need to be removed, and then you can resolve the related types to `Microsoft.Maui.*`. This needs to occur in all files you've added to the .NET MAUI project(s).
 
@@ -41,9 +45,9 @@ You should also remove any `ExportRenderer` attributes as they won't be needed i
 [assembly: ExportRenderer(typeof(PressableView), typeof(PressableViewRenderer))]
 ```
 
-## Register renderers
+### Register renderers
 
-In your .NET MAUI app project, open *MauiProgram.cs* and in the `CreateMauiApp` method configure each renderer using conditional compilation per platform:
+The cross-platform control and its renderers must be registered with an app before it can be consumed. This should occur in the `CreateMauiApp` method in the `MauiProgram` class in your app project, which is the cross-platform entry point for the app:
 
 ```csharp
 public static class MauiProgram
@@ -72,7 +76,12 @@ public static class MauiProgram
 }
 ```
 
-## Consume the custom renderers
+The renderers are registered with the `ConfigureMauiHandlers` and `AddHandler` method. This first argument to the `AddHandler` method is the cross-platform control type, with the second argument being its renderer type.
+
+> [!IMPORTANT]
+> Only renderers that derive from `FrameRenderer`, `ListViewRenderer`, `ShellRenderer` on iOS and Android, `TableViewRenderer`, and `VisualElementRenderer` can be registered with the `AddHandler` method.
+
+### Consume the custom renderers
 
 The custom renderer can be consumed in a .NET MAUI app as a custom control:
 
