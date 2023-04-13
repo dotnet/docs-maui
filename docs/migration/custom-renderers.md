@@ -14,7 +14,7 @@ While there are many benefits to using .NET Multi-platform App UI (.NET MAUI) ha
 
 .NET MAUI provides shimmed renderers that enable easy re-use of Xamarin.Forms custom renderers, provided that the renderer derives from `FrameRenderer`, `ListViewRenderer`, `ShellRenderer` on iOS and Android, `TableViewRenderer`, and `VisualElementRenderer`.
 
-The process for migrating a Xamarin.Forms custom renderer that derives from a shimmed renderer to .NET MAUI is to:
+The process for migrating a Xamarin.Forms custom renderer that derives from `FrameRenderer`, `ListViewRenderer`, `ShellRenderer`, `TableViewRenderer`, and `VisualElementRenderer` to a .NET MAUI shimmed renderer is to:
 
 1. Add the custom renderer code into the appropriate location in your .NET MAUI project(s). For more information, see [Add the code](#add-the-code).
 1. Modify the `using` directives and remove `ExportRenderer` attributes. For more information, see [Modify using directives and other code](#modify-using-directives-and-other-code).
