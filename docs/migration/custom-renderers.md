@@ -43,11 +43,9 @@ You should also remove any `ExportRenderer` attributes as they won't be needed i
 
 ## Register renderers
 
-In your .NET MAUI app project, open *MauiProgram.cs* and add a `using` statement for the `Microsoft.Maui.Controls.Compatibility.Hosting` namespace. Then, call <xref:Microsoft.Maui.Controls.Compatibility.Hosting.MauiAppBuilderExtensions.UseMauiCompatibility%2A> on the <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object in the `CreateMauiApp` method, and configure each renderer using conditional compilation per platform:
+In your .NET MAUI app project, open *MauiProgram.cs* and in the `CreateMauiApp` method configure each renderer using conditional compilation per platform:
 
 ```csharp
-using Microsoft.Maui.Controls.Compatibility.Hosting;
-
 public static class MauiProgram
 {
     public static MauiApp CreateMauiApp()
@@ -55,7 +53,6 @@ public static class MauiProgram
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()
-            .UseMauiCompatibility()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
