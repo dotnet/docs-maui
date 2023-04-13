@@ -1,10 +1,10 @@
 ---
-title: "Use custom renderers in .NET MAUI"
+title: "Reuse custom renderers in .NET MAUI"
 description: "Learn how to adapt Xamarin.Forms custom renderers to work in a .NET MAUI app."
 ms.date: 04/13/2023
 ---
 
-# Use custom renderers in .NET MAUI
+# Reuse custom renderers in .NET MAUI
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/custom-renderers/)
 

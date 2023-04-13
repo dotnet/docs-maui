@@ -69,7 +69,7 @@
               href: migration/forms-projects.md
             - name: Layout behavior changes
               href: migration/layouts.md
-            - name: Custom renderers
+            - name: Reuse custom renderers
               href: migration/custom-renderers.md
             - name: Migrate custom renderers
               href: migration/renderer-to-handler.md
