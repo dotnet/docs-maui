@@ -173,14 +173,14 @@ To publish your Mac Catalyst app from the command line on a Mac, open a terminal
 |------------------------------|-------------------------------------------------------------------------------------------------|
 | `-f` or `--framework`        | The target framework, which is `net6.0-maccatalyst` or `net7.0-maccatalyst`.                    |
 | `-c` or `--configuration`    | The build configuration, which is `Release`.                                                    |
-| `/p:MtouchLink`              | The link mode for the project, which can be `None`, `SdkOnly`, or `Full`.                       |
-| `/p:CreatePackage`           | Set to `true` so that a package (*.pkg*) is created for the app at the end of the build.        |
-| `/p:EnableCodeSigning`       | Set to `true` so that code signing is enabled.                                                  |
-| `/p:EnablePackageSigning`    | Set to `true` so that the package that's created gets signed.                                   |
-| `/p:CodesignKey`             | The name of the code signing key. Set to the name of your distribution certificate, as displayed in Keychain Access. |
-| `/p:CodesignProvision`       | The provisioning profile to use when signing the app bundle. |
-| `/p:CodesignEntitlements`    | The path to the entitlements file that specifies the entitlements the app requires. Set to `Platforms\MacCatalyst\Entitlements.plist`. |
-| `/p:PackageSigningKey`       | The package signing key to use when signing the package. Set to the name of your installer certificate, as displayed in Keychain Access. |
+| `-p:MtouchLink`              | The link mode for the project, which can be `None`, `SdkOnly`, or `Full`.                       |
+| `-p:CreatePackage`           | Set to `true` so that a package (*.pkg*) is created for the app at the end of the build.        |
+| `-p:EnableCodeSigning`       | Set to `true` so that code signing is enabled.                                                  |
+| `-p:EnablePackageSigning`    | Set to `true` so that the package that's created gets signed.                                   |
+| `-p:CodesignKey`             | The name of the code signing key. Set to the name of your distribution certificate, as displayed in Keychain Access. |
+| `-p:CodesignProvision`       | The provisioning profile to use when signing the app bundle. |
+| `-p:CodesignEntitlements`    | The path to the entitlements file that specifies the entitlements the app requires. Set to `Platforms\MacCatalyst\Entitlements.plist`. |
+| `-p:PackageSigningKey`       | The package signing key to use when signing the package. Set to the name of your installer certificate, as displayed in Keychain Access. |
 
 > [!WARNING]
 > Attempting to publish a .NET MAUI solution will result in the `dotnet publish` command attempting to publish each project in the solution individually, which can cause issues when you've added other project types to your solution. Therefore, the `dotnet publish` command should be scoped to your .NET MAUI app project.
@@ -189,10 +189,10 @@ Additional build parameters can be specified on the command line, if they aren't
 
 | Parameter                    | Value                                                                                           |
 |------------------------------|-------------------------------------------------------------------------------------------------|
-| `/p:ApplicationTitle` | The user-visible name for the app. |
-| `/p:ApplicationId` | The unique identifier for the app, such as `com.companyname.mymauiapp`. |
-| `/p:ApplicationVersion` | The version of the build that identifies an iteration of the app. |
-| `/p:ApplicationDisplayVersion` | The version number of the app. |
+| `-p:ApplicationTitle` | The user-visible name for the app. |
+| `-p:ApplicationId` | The unique identifier for the app, such as `com.companyname.mymauiapp`. |
+| `-p:ApplicationVersion` | The version of the build that identifies an iteration of the app. |
+| `-p:ApplicationDisplayVersion` | The version number of the app. |
 
 For a full list of build properties, see [Project file properties](https://github.com/xamarin/xamarin-macios/wiki/Project-file-properties).
 
@@ -202,7 +202,7 @@ For a full list of build properties, see [Project file properties](https://githu
 For example, use the following command to build and sign a *.pkg* on a Mac, for distribution through the Mac App Store:
 
 ```dotnetcli
-dotnet publish -f:net7.0-maccatalyst -c:Release /p:MtouchLink=SdkOnly /p:CreatePackage=true /p:EnableCodeSigning=true /p:EnablePackageSigning=true /p:CodesignKey="Apple Distribution: John Smith (AY2GDE9QM7)" /p:CodesignProvision="MyMauiApp" /p:CodesignEntitlements="Platforms\MacCatalyst\Entitlements.plist" /p:PackageSigningKey="3rd Party Mac Developer Installer: John Smith (AY2GDE9QM7)"
+dotnet publish -f net7.0-maccatalyst -c Release -p:MtouchLink=SdkOnly -p:CreatePackage=true -p:EnableCodeSigning=true -p:EnablePackageSigning=true -p:CodesignKey="Apple Distribution: John Smith (AY2GDE9QM7)" -p:CodesignProvision="MyMauiApp" -p:CodesignEntitlements="Platforms\MacCatalyst\Entitlements.plist" -p:PackageSigningKey="3rd Party Mac Developer Installer: John Smith (AY2GDE9QM7)"
 ```
 
 [!INCLUDE [Publishing output](../includes/publishing-output.md)]

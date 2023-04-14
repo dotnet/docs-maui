@@ -20,15 +20,15 @@ Additional build parameters can be specified on the command line, if they aren't
 
 | Parameter                    | Value                                                                                           |
 |------------------------------|-------------------------------------------------------------------------------------------------|
-| `/p:ApplicationTitle` | The user-visible name for the app. |
-| `/p:ApplicationId` | The unique identifier for the app, such as `com.companyname.mymauiapp`. |
-| `/p:ApplicationVersion` | The version of the build that identifies an iteration of the app. |
-| `/p:ApplicationDisplayVersion` | The version number of the app. |
-| `/p:RuntimeIdentifier` | The runtime identifier (RID) for the project. Use `ios-arm64`. |
-| `/p:ArchiveOnBuild` | A boolean value that indicates whether to produce the app archive. Use `true` to produce the *.ipa*. |
-| `/p:CodesignKey` | The name of the code signing key. |
-| `/p:CodesignProvision` | The provisioning profile to use when signing the app bundle. |
-| `/p:CodesignEntitlements` | The path to the entitlements file that specifies the entitlements the app requires. |
+| `-p:ApplicationTitle` | The user-visible name for the app. |
+| `-p:ApplicationId` | The unique identifier for the app, such as `com.companyname.mymauiapp`. |
+| `-p:ApplicationVersion` | The version of the build that identifies an iteration of the app. |
+| `-p:ApplicationDisplayVersion` | The version number of the app. |
+| `-p:RuntimeIdentifier` | The runtime identifier (RID) for the project. Use `ios-arm64`. |
+| `-p:ArchiveOnBuild` | A boolean value that indicates whether to produce the app archive. Use `true` to produce the *.ipa*. |
+| `-p:CodesignKey` | The name of the code signing key. |
+| `-p:CodesignProvision` | The provisioning profile to use when signing the app bundle. |
+| `-p:CodesignEntitlements` | The path to the entitlements file that specifies the entitlements the app requires. |
 
 For a full list of build properties, see [Project file properties](https://github.com/xamarin/xamarin-macios/wiki/Project-file-properties).
 
@@ -38,7 +38,7 @@ For a full list of build properties, see [Project file properties](https://githu
 For example, use the following command to build and sign an *.ipa* on a Mac:
 
 ```dotnetcli
-dotnet publish -f:net7.0-ios -c:Release /p:ArchiveOnBuild=true /p:RuntimeIdentifier=ios-arm64 /p:CodesignKey="Apple Distribution: John Smith (AY2GDE9QM7)" /p:CodesignProvision="MyMauiApp"
+dotnet publish -f net7.0-ios -c Release -p:ArchiveOnBuild=true -p:RuntimeIdentifier=ios-arm64 -p:CodesignKey="Apple Distribution: John Smith (AY2GDE9QM7)" -p:CodesignProvision="MyMauiApp"
 ```
 
 Publishing builds and signs the app, and then copies the *.ipa* to the *bin/Release/net7.0-ios/ios-arm64/publish/* folder. The distribution channel for the app is specified in the distribution certificate contained within the provisioning profile. For information about creating provisioning profiles for the different distribution channels, see [Publish an iOS app for App Store distribution](publish-app-store.md), [Publish an iOS app for ad-hoc distribution](publish-ad-hoc.md), and [Publish an iOS app for in-house distribution](publish-in-house.md).
@@ -62,7 +62,7 @@ One solution to these issues is to add the following `<PropertyGroup>` to your p
 Then, use the following command to publish your app:
 
 ```dotnetcli
-dotnet publish -f:net7.0-ios /p:IsPublishing=true ...
+dotnet publish -f net7.0-ios -p:IsPublishing=true ...
 ```
 
 An alternative solution to these issues is to add the following `<PropertyGroup>` to your project file:
@@ -76,7 +76,7 @@ An alternative solution to these issues is to add the following `<PropertyGroup>
 Then, use the following command to publish your app:
 
 ```dotnetcli
-dotnet publish -f:net7.0-ios -c Release ...
+dotnet publish -f net7.0-ios -c Release ...
 ```
 
 ## Define build properties in your project file
@@ -129,11 +129,11 @@ To publish your app from the command line on Windows, open a terminal and naviga
 
 | Parameter                    | Value                                                                                           |
 |------------------------------|-------------------------------------------------------------------------------------------------|
-| `/p:ServerAddress` | The IP address of your Mac build host. |
-| `/p:ServerUser` | The username to use when logging into your Mac build host. Use your system username rather than your full name. |
-| `/p:ServerPassword` | The password for the username used to log into your Mac build host. |
-| `/p:TcpPort` | The TCP port to use to communicate with your Mac build host, which is 58181. |
-| `/p:_DotNetRootRemoteDirectory` | The folder on your Mac build host that contains the .NET SDK. Use `/Users/{macOS username}/Library/Caches/Xamarin/XMA/SDKs/dotnet/`. |
+| `-p:ServerAddress` | The IP address of your Mac build host. |
+| `-p:ServerUser` | The username to use when logging into your Mac build host. Use your system username rather than your full name. |
+| `-p:ServerPassword` | The password for the username used to log into your Mac build host. |
+| `-p:TcpPort` | The TCP port to use to communicate with your Mac build host, which is 58181. |
+| `-p:_DotNetRootRemoteDirectory` | The folder on your Mac build host that contains the .NET SDK. Use `/Users/{macOS username}/Library/Caches/Xamarin/XMA/SDKs/dotnet/`. |
 
 > [!IMPORTANT]
 > Values for these parameters can also be provided in the project file as build properties. However, values for `<ServerAddress>`, `<ServerUser>`, `<ServerPassword>`, and `<_DotNetRootRemoteDirectory>` will typically be provided on the command line for security reasons.
@@ -141,7 +141,7 @@ To publish your app from the command line on Windows, open a terminal and naviga
 For example, use the following command to build and sign an *.ipa* from Windows:
 
 ```dotnetcli
-dotnet publish -f:net7.0-ios -c:Release /p:ArchiveOnBuild=true /p:RuntimeIdentifier=ios-arm64 /p:CodesignKey="Apple Distribution: John Smith (AY2GDE9QM7)" /p:CodesignProvision="MyMauiApp" /p:ServerAddress={macOS build host IP address} /p:ServerUser={macOS username} /p:ServerPassword={macOS password} /p:TcpPort=58181 /p:_DotNetRootRemoteDirectory=/Users/{macOS username}/Library/Caches/Xamarin/XMA/SDKs/dotnet/
+dotnet publish -f net7.0-ios -c Release -p:ArchiveOnBuild=true -p:RuntimeIdentifier=ios-arm64 -p:CodesignKey="Apple Distribution: John Smith (AY2GDE9QM7)" -p:CodesignProvision="MyMauiApp" -p:ServerAddress={macOS build host IP address} -p:ServerUser={macOS username} -p:ServerPassword={macOS password} -p:TcpPort=58181 -p:_DotNetRootRemoteDirectory=/Users/{macOS username}/Library/Caches/Xamarin/XMA/SDKs/dotnet/
 ```
 
 > [!NOTE]
