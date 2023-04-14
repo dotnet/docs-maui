@@ -5,12 +5,12 @@ ms.date: 04/11/2023
 
 ## Preserve code
 
-When you use the linker it will sometimes remove code that you might have called dynamically, even indirectly. You can instruct the linker to preserve members by annotating them with the [`DynamicDependency`](xref:System.Diagnostics.CodeAnalysis.DynamicDependency) attribute. This attribute can be used to express a dependency on either a type and subset of members, or at specific members.
+When you use the linker it will sometimes remove code that you might have called dynamically, even indirectly. You can instruct the linker to preserve members by annotating them with the [`DynamicDependency`](xref:System.Diagnostics.CodeAnalysis.DynamicDependencyAttribute) attribute. This attribute can be used to express a dependency on either a type and subset of members, or at specific members.
 
 > [!IMPORTANT]
 > Every member that isn't statically linked by the app is subject to be removed.
 
-The [`DynamicDependency`](xref:System.Diagnostics.CodeAnalysis.DynamicDependency) attribute can be applied to constructors, fields, and methods:
+The [`DynamicDependency`](xref:System.Diagnostics.CodeAnalysis.DynamicDependencyAttribute) attribute can be applied to constructors, fields, and methods:
 
 ```csharp
 [DynamicDependency("Helper", "MyType", "MyAssembly")]
