@@ -7,7 +7,7 @@ zone_pivot_groups: devices-deployment
 
 # Build your first app
 
-In this tutorial, you'll learn how to create and run your first .NET Multi-platform App UI (.NET MAUI) app in Visual Studio 2022 on Windows, or Visual Studio 2022 for Mac. This will help to ensure that your development environment is correctly setup.
+In this tutorial, you'll learn how to create and run your first .NET Multi-platform App UI (.NET MAUI) app in Visual Studio 2022 on Windows or Visual Studio 2022 for Mac. This will help to ensure that your development environment is correctly set up.
 
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio](#tab/vswin)
@@ -21,7 +21,7 @@ In this tutorial, you'll learn how to create and run your first .NET Multi-platf
 
 :::zone pivot="devices-android"
 
-In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022, and run it on an Android emulator:
+In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 and run it on an Android emulator:
 
 :::zone-end
 
@@ -29,19 +29,19 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022, 
 
 Developing .NET MAUI apps for iOS on Windows requires a Mac build host. If you don't specifically need to target iOS and don't have a Mac, consider getting started with Android or Windows instead.
 
-In this tutorial, you'll create your first .NET MAUI app in Visual Studio, and run it on an iOS simulator:
+In this tutorial, you'll create your first .NET MAUI app in Visual Studio and run it on an iOS simulator:
 
 :::zone-end
 
 :::zone pivot="devices-windows"
 
-In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022, and run it on Windows:
+In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 and run it on Windows:
 
 :::zone-end
 
 :::zone pivot="devices-android, devices-ios, devices-windows"
 
-01. Launch Visual Studio 2022, and in the start window click **Create a new project** to create a new project:
+01. Launch Visual Studio 2022. In the start window, click **Create a new project** to create a new project:
 
     :::image type="content" source="media/first-app/vs/new-solution.png" alt-text="New solution.":::
 
@@ -53,11 +53,11 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022, 
 
     :::image type="content" source="media/first-app/vs/configure-project.png" alt-text="Configure the project.":::
 
-01. In the **Additional information** window, choose the version of .NET that you'd like to target, and click the **Create** button:
+01. In the **Additional information** window, choose the version of .NET that you'd like to target and click the **Create** button:
 
     :::image type="content" source="media/first-app/vs/additional-information.png" alt-text="Additional information.":::
 
-01. Wait for the project to be created, and its dependencies to be restored:
+01. Wait for the project to be created and its dependencies to be restored:
 
     :::image type="content" source="media/first-app/vs/restored-dependencies.png" alt-text="Restored dependencies.":::
 
@@ -156,7 +156,7 @@ If your app fails to compile, review [Troubleshooting known issues](../troublesh
 
     :::image type="content" source="media/first-app/vs/windows-developer-mode-win11.png" alt-text="Developer Mode toggle on the Windows 11 settings app.":::
 
-    Close the Settings app, and then close the **Enable Developer Mode for Windows** dialog.
+    Close the Settings app and then close the **Enable Developer Mode for Windows** dialog.
 
 01. In the running app, press the **Click me** button several times and observe that the count of the number of button clicks is incremented:
 
@@ -213,9 +213,9 @@ If your app fails to compile, review [Troubleshooting known issues](../troublesh
 
 :::zone pivot="devices-android, devices-ios, devices-maccatalyst"
 
-In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 for Mac, and run it on your chosen platform:
+In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 for Mac and run it on your chosen platform:
 
-01. Launch Visual Studio 2022 for Mac, and in the start window click **New** to create a new project:
+01. Launch Visual Studio 2022 for Mac. In the start window, click **New** to create a new project:
 
     :::image type="content" source="media/first-app/vsmac/new-project.png" alt-text="Create a new project in Visual Studio for Mac.":::
 
@@ -223,7 +223,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 f
 
     :::image type="content" source="media/first-app/vsmac/choose-template.png" alt-text="Choose the .NET MAUI App project template.":::
 
-01. In the **Configure your new .NET MAUI App** window, choose the version of .NET that you'd like to target, and click the **Continue** button:
+01. In the **Configure your new .NET MAUI App** window, choose the version of .NET that you'd like to target and click the **Continue** button:
 
     :::image type="content" source="media/first-app/vsmac/select-target-framework.png" alt-text="Select the target framework for your .NET MAUI app.":::
 
@@ -231,7 +231,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 f
 
     :::image type="content" source="media/first-app/vsmac/name-project.png" alt-text="Name your .NET MAUI project and specify its location.":::
 
-01. Wait for the project to be created, and its dependencies to be restored:
+01. Wait for the project to be created and its dependencies to be restored:
 
     :::image type="content" source="media/first-app/vsmac/project-dependencies-restored.png" alt-text="Ensure the project dependencies have been restored.":::
 
@@ -246,7 +246,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 f
 
     <!-- markdownlint-enable MD029 -->
 
-01. In the **Android SDK** window, select the **Download and install Android dependencies automatically** checkbox, and click the **Download and Install** button:
+01. In the **Android SDK** window, select the **Download and install Android dependencies automatically** checkbox and click the **Download and Install** button:
 
     :::image type="content" source="media/first-app/vsmac/android-sdk-download.png" alt-text="Download and install the Android SDK.":::
 
@@ -348,6 +348,6 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 f
 
 ## Next steps
 
-In this tutorial, you've learnt how to create and run your first .NET Multi-platform App UI (.NET MAUI) app.
+In this tutorial, you've learned how to create and run your first .NET Multi-platform App UI (.NET MAUI) app.
 
 To learn the fundamentals of building an app with .NET MAUI, see [Create a .NET MAUI app](~/tutorials/notes-app/index.yml). Alternatively, for a full .NET MAUI training course, see [Build mobile and desktop apps with .NET MAUI](/training/paths/build-apps-with-dotnet-maui).

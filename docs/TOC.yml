@@ -69,9 +69,11 @@
               href: migration/forms-projects.md
             - name: Layout behavior changes
               href: migration/layouts.md
-            - name: Custom renderers
+            - name: Reuse custom renderers
               href: migration/custom-renderers.md
-            - name: Effects
+            - name: Migrate custom renderers
+              href: migration/renderer-to-handler.md
+            - name: Reuse effects
               href: migration/effects.md
     - name: Tutorials
       items:
@@ -483,6 +485,8 @@
                   href: ios/capabilities.md
                 - name: Entitlements
                   href: ios/entitlements.md
+            - name: Information property list
+              href: macios/info-plist.md
             - name: Linking
               href: ios/linking.md
             - name: Set up device for development
@@ -501,8 +505,10 @@
                   href: mac-catalyst/capabilities.md
                 - name: Entitlements
                   href: mac-catalyst/entitlements.md
+            - name: Information property list
+              href: macios/info-plist.md
             - name: Linking
-              href: mac-catalyst/linking.md
+              href: mac-catalyst/linking.md              
             - name: Specify the UI idiom
               href: mac-catalyst/user-interface-idiom.md
         - name: Platform integration

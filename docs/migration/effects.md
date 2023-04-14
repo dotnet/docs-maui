@@ -1,10 +1,10 @@
 ---
-title: "Use effects in .NET MAUI"
+title: "Reuse effects in .NET MAUI"
 description: "Learn how to adapt Xamarin.Forms effects to work in a .NET MAUI app."
 ms.date: 02/15/2023
 ---
 
-# Use effects in .NET MAUI
+# Reuse effects in .NET MAUI
 
 While there are many benefits to using .NET Multi-platform App UI (.NET MAUI) handlers to customize controls, it's still possible to use Xamarin.Forms effects in .NET MAUI apps. For more information about effects, see [Xamarin.Forms effects](/xamarin/xamarin-forms/app-fundamentals/effects/).
 
