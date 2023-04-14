@@ -91,7 +91,7 @@ When an assembly, type or member are listed in the XML, the default action is pr
 
 ## Mark an assembly as linker safe
 
-If you have a library in your project, or you are a developer of a re-usable library and you want the linker to treat your assembly as linkable, you can mark the assembly as linker safe with the [`AssemblyMetadata`](xref:System.Reflection.AssemblyMetadataAttribute) attribute:
+If you have a library in your project, or you are a developer of a reusable library and you want the linker to treat your assembly as linkable, you can mark the assembly as linker safe with the [`AssemblyMetadata`](xref:System.Reflection.AssemblyMetadataAttribute) attribute:
 
 ```csharp
 [assembly: AssemblyMetadata("IsTrimmable", "True")]
@@ -107,7 +107,7 @@ Alternatively, you can set `<IsTrimmable>true</IsTrimmable>` in a `<PropertyGrou
 To disable linking, set `<MtouchLink>None</MtouchLink>` in a `<PropertyGroup>` tag in the project file, or set the linker behavior to **Don't link** in Visual Studio.
 
 > [!WARNING]
-> Setting `<PublishTrimmed>false</PublishTrimmed>` in a `<PropertyGroup>` tag in the project file for the assembly doesn't disable linking for .NET MAUI iOS apps.
+> Setting `<PublishTrimmed>false</PublishTrimmed>` in a `<PropertyGroup>` tag in the project file for the assembly doesn't disable linking for .NET MAUI apps on iOS and Mac Catalyst.
 
 ## See also
 

@@ -16,4 +16,4 @@ The linker supports three modes for .NET MAUI apps on iOS and Mac Catalyst:
 Linker behavior can be configured for each build configuration of your app.
 
 > [!WARNING]
-> Enabling the linker for debug configuration may hinder your debugging experience, as it may remove property accessors that enable you to inspect the state of your objects.
+> Enabling the linker for your app's debug configuration may hinder your debugging experience, as it may remove property accessors that enable you to inspect the state of your objects.
