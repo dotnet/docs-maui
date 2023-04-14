@@ -134,6 +134,23 @@ For example:
 dotnet publish -f net6.0-android -c Release -p:AndroidSigningKeyPass=mypassword -p:AndroidSigningStorePass=mypassword
 ```
 
+Both the `AndroidSigningKeyPass` and `AndroidSigningStorePass` properties support `env:` and `file:` prefixes that can be used to specify an environment variable or file that contains the password. This provide a way to prevent the password from appearing in build logs.
+
+For example, to use an environment variable named `AndroidSigningPassword`:
+
+```console
+dotnet publish -f net6.0-android -c Release -p:AndroidSigningKeyPass=env:AndroidSigningPassword -p:AndroidSigningStorePass=env:AndroidSigningPassword
+```
+
+To use a file located at C:\Users\user1\AndroidSigningPassword.txt:
+
+```console
+dotnet publish -f net6.0-android -c Release -p:AndroidSigningKeyPass=file:C:\Users\user1\AndroidSigningPassword.txt -p:AndroidSigningStorePass=file:C:\Users\user1\AndroidSigningPassword.txt
+```
+
+> [!NOTE]
+> The env: prefix is not supported when $(AndroidPackageFormat) is set to aab.
+
 Publishing builds the app, and then copies the _aab_ and _apk_ files to the _bin\\Release\\net6.0-android\\publish_ folder. There are two _aab_ files, one unsigned and another signed. The signed variant has **-signed** in the file name.
 
 ::: moniker-end
