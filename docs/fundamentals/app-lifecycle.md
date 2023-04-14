@@ -42,7 +42,7 @@ These cross-platform events map to different platform events, and the following 
 | `Resumed` | `OnRestart` | `WillEnterForeground` | `Resumed` |
 | `Destroying` | `OnDestroy` | `WillTerminate` | `Closed` |
 
-In addition, the `Windows` class also defines a `Backgrounding` event that's raised on iOS and Mac Catalyst when the Window is closed or enters a background state. A `BackgroundingEventArgs` object accompanies this event, and any `string` state should be persisted to the `State` property of the `BackgroundingEventArgs` object, which the OS will preserve until it's time to resume the window. When the window is resumed the state is provided by the `IActivationState` argument to the `CreateWindow` override.
+In addition, the `Window` class also defines a `Backgrounding` event that's raised on iOS and Mac Catalyst when the Window is closed or enters a background state. A `BackgroundingEventArgs` object accompanies this event, and any `string` state should be persisted to the `State` property of the `BackgroundingEventArgs` object, which the OS will preserve until it's time to resume the window. When the window is resumed the state is provided by the `IActivationState` argument to the `CreateWindow` override.
 
 In addition to these events, the `Window` class also has the following overridable lifecycle methods:
 
