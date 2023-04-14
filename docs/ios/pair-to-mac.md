@@ -156,7 +156,7 @@ Pair to Mac supports building .NET MAUI apps from the command line. Navigate to 
 ::: moniker range="=net-maui-6.0"
 
 ```dotnet
-dotnet build -f:net6.0-ios /p:ServerAddress={macOS build host IP address} /p:ServerUser={macOS username} /p:ServerPassword={macOS password} /p:TcpPort=58181 /p:_DotNetRootRemoteDirectory=/Users/{macOS username}/Library/Caches/Xamarin/XMA/SDKs/dotnet/
+dotnet build -f net6.0-ios -p:ServerAddress={macOS build host IP address} -p:ServerUser={macOS username} -p:ServerPassword={macOS password} -p:TcpPort=58181 -p:_DotNetRootRemoteDirectory=/Users/{macOS username}/Library/Caches/Xamarin/XMA/SDKs/dotnet/
 ```
 
 ::: moniker-end
@@ -164,7 +164,7 @@ dotnet build -f:net6.0-ios /p:ServerAddress={macOS build host IP address} /p:Ser
 ::: moniker range="=net-maui-7.0"
 
 ```dotnet
-dotnet build -f:net7.0-ios /p:ServerAddress={macOS build host IP address} /p:ServerUser={macOS username} /p:ServerPassword={macOS password} /p:TcpPort=58181 /p:_DotNetRootRemoteDirectory=/Users/{macOS username}/Library/Caches/Xamarin/XMA/SDKs/dotnet/
+dotnet build -f net7.0-ios -p:ServerAddress={macOS build host IP address} -p:ServerUser={macOS username} -p:ServerPassword={macOS password} -p:TcpPort=58181 -p:_DotNetRootRemoteDirectory=/Users/{macOS username}/Library/Caches/Xamarin/XMA/SDKs/dotnet/
 ```
 
 ::: moniker-end
