@@ -44,7 +44,7 @@ The following table describes how each project setting maps to the manifest file
 | Project setting | Manifest setting |
 | --- | --- |
 | `ApplicationId` | The `package` attribute of the `<manifest>` node: `<manifest ... package="com.companyname.myproject>"`. |
-| `ApplicationVersion` | The `android:versionCode` attribute of the `<manifest>` node: `<manifest ... android:versionCode="1">`. Should be an integer value. |
+| `ApplicationVersion` | The `android:versionCode` attribute of the `<manifest>` node: `<manifest ... android:versionCode="1">`. This should be an integer value. |
 
 Here's an example of an automatically generated manifest file with the package and version information specified:
 
@@ -146,7 +146,7 @@ For example:
 dotnet publish -f net7.0-android -c Release -p:AndroidSigningKeyPass=mypassword -p:AndroidSigningStorePass=mypassword
 ```
 
-Both the `AndroidSigningKeyPass` and `AndroidSigningStorePass` properties support `env:` and `file:` prefixes that can be used to specify an environment variable or file that contains the password. These options provide a way to prevent the password from appearing in build logs.
+Both the `AndroidSigningKeyPass` and `AndroidSigningStorePass` properties support `env:` and `file:` prefixes that can be used to specify an environment variable or file that contains the password. This provide a way to prevent the password from appearing in build logs.
 
 For example, to use an environment variable named `AndroidSigningPassword`:
 
