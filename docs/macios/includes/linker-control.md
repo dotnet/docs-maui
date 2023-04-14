@@ -5,35 +5,12 @@ ms.date: 04/11/2023
 
 ## Preserve code
 
-When you use the linker it will sometimes remove code that you might have called dynamically, even indirectly. To cover these cases the linker provides several features and options to allow you greater control over its behavior.
+When you use the linker it will sometimes remove code that you might have called dynamically, even indirectly. You can instruct the linker to preserve members by annotating them with the [`DynamicDependency`](xref:System.Diagnostics.CodeAnalysis.DynamicDependency) attribute. This attribute can be used to express a dependency on either a type and subset of members, or at specific members.
 
 > [!IMPORTANT]
 > Every member that isn't statically linked by the app is subject to be removed.
 
-### RequiresUnreferencedCode attribute
-
-The [`RequiresUnreferencedCode`](xref:System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute) attribute indicates that the annotated member has dependencies that aren't statically discoverable, and therefore shouldn't be removed by the linker. The attribute is typically used in scenarios where code uses reflection, dynamic code generation, or native interop, and therefore has dependencies that aren't visible to the compiler at build-time.
-
-By adding the [`RequiresUnreferencedCode`](xref:System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute) attribute, you're indicating that the member shouldn't be removed by the linker, even if it appears to be unreferenced.
-
-The [`RequiresUnreferencedCode`](xref:System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute) attribute can be applied to classes, constructors, and methods. For more information, see [RequiresUnreferencedCode](/dotnet/core/deploying/trimming/fixing-warnings#requiresunreferencedcode).
-
-### DynamicallyAccessedMembers attribute
-
-The [`DynamicallyAccessedMembers`](xref:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute) attribute is used to indicate that the annotated member is dynamically accessed at runtime, and therefore shouldn't be removed by the linker. The attribute is typically used in scenarios where code uses reflection or other dynamic runtime mechanisms to access members of a type.
-
-By adding the [`DynamicallyAccessedMembers`](xref:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute) attribute, you're indicating that the member shouldn't be removed by the linker, even if it appears to be unreferenced.
-
-The [`DynamicallyAccessedMembers`](xref:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute) attribute can be applied to classes, fields, generic parameters, interfaces, methods, parameters, properties, return values, and structs. For more information, see [DynamicallyAccessedMembers](/dotnet/core/deploying/trimming/fixing-warnings#dynamicallyaccessedmembers).
-
-### DynamicDependency attribute
-
-You can instruct the linker to preserve members by annotating them with the [`DynamicDependency`](xref:System.Diagnostics.CodeAnalysis) attribute. This results in the referenced members being kept whenever the member with the attribute is kept.
-
-> [!WARNING]
-> Use the [`DynamicDependency`](xref:System.Diagnostics.CodeAnalysis) attribute only as a last resort when the other approaches aren't viable. It's preferable to express the reflection behavior of your code using the [`RequiresUnreferencedCode`](xref:System.Diagnostics.CodeAnalysis.RequiresUnreferencedCodeAttribute) attribute or the [`DynamicallyAccessedMembers`](xref:System.Diagnostics.CodeAnalysis.DynamicallyAccessedMembersAttribute) attribute.
-
-The attribute can be applied to constructors, fields, and methods:
+The [`DynamicDependency`](xref:System.Diagnostics.CodeAnalysis.DynamicDependency) attribute can be applied to constructors, fields, and methods:
 
 ```csharp
 [DynamicDependency("Helper", "MyType", "MyAssembly")]
@@ -65,7 +42,7 @@ The type and member strings use a variation of the C# documentation comment ID s
 [DynamicDependency("MethodOnGenericType(`0)", typeof(GenericType<>))]
 ```
 
-## Skip assemblies
+## Preserve assemblies
 
 It's possible to specify assemblies that should be excluded from the linking process, while allowing other assemblies to be linked.
 
@@ -82,9 +59,9 @@ When linking all assemblies, the linker can skip an assembly by setting the `Tri
 
 If the linker skips an assembly, it's considered "rooted" which means that it and all of its statically understood dependencies will be kept. Additional assemblies may be skipped by adding additional `TrimmerRootAssembly` MSBuild properties to the `<ItemGroup>`.
 
-## Skip members
+## Preserve assemblies, types, and members
 
-It's possible to specify individual methods that should be excluded from the linking process, while allowing the rest of the assembly to be linked.
+The linker can be passed an XML description file that specifies which assemblies, types, and members need to be retained.
 
 When linking all assemblies, to exclude a member from the linking process set the `TrimmerRootDescriptor` MSBuild property in an `<ItemGroup>` tag in the project file to the XML file that defines the members to exclude:
 
@@ -107,6 +84,10 @@ The XML file then uses the trimmer [descriptor format](https://github.com/dotnet
 ```
 
 In this example, the XML file specifies a method that's dynamically accessed by the app, which is excluded from linking.
+
+When an assembly, type or member are listed in the XML, the default action is preservation, which means that regardless of whether the linker thinks they are used or not, they will be preserved in the output.
+> [!NOTE]
+> The preservation tags are ambiguously inclusive. If you don’t provide the next level of detail, it will include all the children. If an assembly is listed without any types, then all the assembly’s types and members will be preserved.
 
 ## Mark an assembly as linker safe
 
