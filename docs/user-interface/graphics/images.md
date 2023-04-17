@@ -125,7 +125,7 @@ In this example, the image is retrieved from the assembly and loaded as a stream
 Images can be saved by the <xref:Microsoft.Maui.Graphics.IImage.Save%2A> and <xref:Microsoft.Maui.Graphics.IImage.SaveAsync%2A> methods. Each method saves the <xref:Microsoft.Maui.Graphics.IImage> to a <xref:System.IO.Stream>, and enables optional <xref:Microsoft.Maui.Graphics.ImageFormat> and quality values to be specified.
 
 > [!NOTE]
-> Android and iOS can only save images to JPEG and PNG format.
+> The <xref:Microsoft.Maui.Graphics.IImage.SaveAsync%2A> methods on Android and iOS can save images to JPEG and PNG format.
 
 The following example shows how to save an image:
 
