@@ -124,6 +124,9 @@ In this example, the image is retrieved from the assembly and loaded as a stream
 
 Images can be saved by the <xref:Microsoft.Maui.Graphics.IImage.Save%2A> and <xref:Microsoft.Maui.Graphics.IImage.SaveAsync%2A> methods. Each method saves the <xref:Microsoft.Maui.Graphics.IImage> to a <xref:System.IO.Stream>, and enables optional <xref:Microsoft.Maui.Graphics.ImageFormat> and quality values to be specified.
 
+> [!NOTE]
+> Android and iOS can only save images to JPEG and PNG format.
+
 The following example shows how to save an image:
 
 ```csharp
@@ -152,6 +155,3 @@ if (image != null)
 > The <xref:Microsoft.Maui.Graphics.Platform.PlatformImage> type isn't supported on Windows.
 
 In this example, the image is retrieved from the assembly and loaded as a stream. The image is downsized using the <xref:Microsoft.Maui.Graphics.IImage.Downsize%2A> method, with the argument specifying that its largest dimension should be set to 150 pixels. In addition, the source image is disposed. The downsized image is then saved to a stream.
-
-> [!NOTE]
-> Android and iOS can only save images to JPEG and PNG format.
