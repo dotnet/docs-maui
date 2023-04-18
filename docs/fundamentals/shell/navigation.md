@@ -501,7 +501,7 @@ Back button appearance and behavior can be redefined by setting the `BackButtonB
 
 - `Command`, of type `ICommand`, which is executed when the back button is pressed.
 - `CommandParameter`, of type `object`, which is the parameter that's passed to the `Command`.
-- `IconOverride`, of type `ImageSource`, the icon used for the back button.
+- `IconOverride`, of type <xref:Microsoft.Maui.Controls.ImageSource>, the icon used for the back button.
 - `IsEnabled`, of type `boolean`, indicates whether the back button is enabled. The default value is `true`.
 - `IsVisible`, of type `boolean`, indicates whether the back button is visible. The default value is `true`.
 - `TextOverride`, of type `string`, the text used for the back button.

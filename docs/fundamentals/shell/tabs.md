@@ -76,7 +76,7 @@ If there are multiple <xref:Microsoft.Maui.Controls.Tab> objects in a single <xr
 </Shell>
 ```
 
-The `Title` property, of type `string`, defines the tab title. The `Icon` property, of type `ImageSource`, defines the tab icon:
+The `Title` property, of type `string`, defines the tab title. The `Icon` property, of type <xref:Microsoft.Maui.Controls.ImageSource>, defines the tab icon:
 
 :::image type="content" source="media/tabs/two-page-app-bottom-tabs.png" alt-text="Screenshot of a Shell two page app with bottom tabs.":::
 

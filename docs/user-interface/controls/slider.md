@@ -16,7 +16,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Slider>
 - `MinimumTrackColor`, of type <xref:Microsoft.Maui.Graphics.Color>, is the bar color on the left side of the thumb.
 - `MaximumTrackColor`, of type <xref:Microsoft.Maui.Graphics.Color>, is the bar color on the right side of the thumb.
 - `ThumbColor` of type <xref:Microsoft.Maui.Graphics.Color>, is the thumb color.
-- `ThumbImageSource`, of type `ImageSource`, is the image to use for the thumb, of type `ImageSource`.
+- `ThumbImageSource`, of type <xref:Microsoft.Maui.Controls.ImageSource>, is the image to use for the thumb, of type <xref:Microsoft.Maui.Controls.ImageSource>.
 - `DragStartedCommand`, of type `ICommand`, which is executed at the beginning of a drag action.
 - `DragCompletedCommand`, of type `ICommand`, which is executed at the end of a drag action.
 

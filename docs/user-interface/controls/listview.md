@@ -181,7 +181,7 @@ The following screenshot shows the resulting cell appearance:
 
 #### Image cell
 
-An <xref:Microsoft.Maui.Controls.ImageCell> displays an image with primary and secondary text on separate lines. <xref:Microsoft.Maui.Controls.ImageCell> inherits the properties from <xref:Microsoft.Maui.Controls.TextCell>, and defines the `ImageSource` property, of type `ImageSource`, which specifies the image to be displayed in the cell. This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means it can be the target of data bindings, and be styled.
+An <xref:Microsoft.Maui.Controls.ImageCell> displays an image with primary and secondary text on separate lines. <xref:Microsoft.Maui.Controls.ImageCell> inherits the properties from <xref:Microsoft.Maui.Controls.TextCell>, and defines the <xref:Microsoft.Maui.Controls.ImageSource> property, of type <xref:Microsoft.Maui.Controls.ImageSource>, which specifies the image to be displayed in the cell. This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means it can be the target of data bindings, and be styled.
 
 The following example shows using an <xref:Microsoft.Maui.Controls.ImageCell> to define the appearance of items in a <xref:Microsoft.Maui.Controls.ListView>:
 
