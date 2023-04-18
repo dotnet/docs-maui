@@ -1,7 +1,7 @@
 ---
 title: "Media picker for photos and videos"
 description: "Learn how to use the IMediaPicker interface in the Microsoft.Maui.Media namespace, to prompt the user to select or take a photo or video"
-ms.date: 02/02/2023
+ms.date: 04/18/2023
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Media", "MediaPicker"]
 ---
 
@@ -18,9 +18,18 @@ To access the media picker functionality, the following platform-specific setup 
 <!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
 
-The `CAMERA`, `WRITE_EXTERNAL_STORAGE`, `READ_EXTERNAL_STORAGE` permissions are required, and must be configured in the Android project. These can be added in the following ways:
+The `CAMERA` permission is required and must be configured in the Android project. In addition:
 
-- Add the assembly-based permission:
+- If your app targets Android 12 or lower and needs access to media files that other apps have created, you must request the `READ_EXTERNAL_STORAGE` permission.
+- If your app targets Android 13 or higher and needs access to media files that other apps have created, you must request one or more of the following granular media permissions instead of the `READ_EXTERNAL_STORAGE` permission:
+
+  - `READ_MEDIA_IMAGES`
+  - `READ_MEDIA_VIDEO`
+  - `READ_MEDIA_AUDIO`
+
+These permissions can be added in the following ways:
+
+- Add the assembly-based permissions:
 
   Open the _Platforms/Android/MainApplication.cs_ file and add the following assembly attributes after `using` directives:
 
@@ -33,9 +42,14 @@ The `CAMERA`, `WRITE_EXTERNAL_STORAGE`, `READ_EXTERNAL_STORAGE` permissions are 
   Open the _Platforms/Android/AndroidManifest.xml_ file and add the following in the `manifest` node:
 
   ```xml
-  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.CAMERA" />
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
+  <!-- Required only if your app needs to access images or photos that other apps created -->
+	<uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+	<!-- Required only if your app needs to access videos that other apps created -->
+	<uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+	<!-- Required only if your app needs to access audio files that other apps created -->
+	<uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />    
   ```
 <!-- NOT SUPPORTED
   \- or -
