@@ -20,7 +20,7 @@ To access the media picker functionality, the following platform-specific setup 
 
 The `CAMERA` permission is required and must be configured in the Android project. In addition:
 
-- If your app targets Android 12 or lower and needs access to media files that other apps have created, you must request the `READ_EXTERNAL_STORAGE` permission.
+- If your app targets Android 12 or lower, you must request the `READ_EXTERNAL_STORAGE` and `WRITE_EXTERNAL_STORAGE` permissions.
 - If your app targets Android 13 or higher and needs access to media files that other apps have created, you must request one or more of the following granular media permissions instead of the `READ_EXTERNAL_STORAGE` permission:
 
   - `READ_MEDIA_IMAGES`
@@ -44,6 +44,7 @@ These permissions can be added in the following ways:
   ```xml
   <uses-permission android:name="android.permission.CAMERA" />
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="32" />    
   <!-- Required only if your app needs to access images or photos that other apps created -->
 	<uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
 	<!-- Required only if your app needs to access videos that other apps created -->
