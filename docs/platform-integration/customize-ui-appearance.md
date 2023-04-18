@@ -10,18 +10,18 @@ ms.date: 04/18/2023
 
 .NET Multi-platform App UI (.NET MAUI) apps can have their UI customized for specific platforms and devices. This enables you to:
 
-- Make the most effective use of space. If you design an app to look good on a mobile device, the app will still be usable on a desktop device but there will most likely be some wasted space. You can custmoize your app's to display more content when the screen is above a certain size. For example, a shopping app might display one item at a time on a mobile device, but might shot multiple items on a desktop device. In addition, by placing more content on screen you can reduce the amount of navigation that users need to perform.
-- Take advantage of device capabilities. Certain devices are more likely to have certain capabilities. For example, mobile devices are more likely to have a location sensor and a camera, while desktop devices might not have either. Your app can detect which capabilities are available and enable features that use them.
+- Make the most effective use of space. If you design an app to look good on a mobile device, the app will still be usable on a desktop device but there will most likely be some wasted space. You can custmoize your app to display more content when the screen is above a certain size. For example, a shopping app might display one item at a time on a mobile device, but might show multiple items on a desktop device. In addition, by placing more content on screen you can reduce the amount of navigation that users need to perform.
+- Take advantage of device capabilities. Certain devices are more likely to have certain capabilities. For example, mobile devices are more likely to have a location sensor and a camera, while desktop devices might not have either. Your app can detect which capabilities are available and enable controls that use them.
 - Optimize for input. You can re-arrange your UI elements to optimize for specific input types. For example, if you place navigation elements at the bottom of the app, they'll be easier for mobile users to access. But desktop users often expect to see navigation elements towards the top of the app.
 
-When you optimize your app's UI for specific platforms and devices you're creating a responsive UI. The primary mechanisms to do this is .NET MAUI are with the [`OnPlatform`](xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension) markup extension and the [`OnIdiom`](xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension) markup extension.
+When you optimize your app's UI for specific platforms and device idioms you're creating a responsive UI. The primary mechanisms to do this is .NET MAUI are the [`OnPlatform`](xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension) markup extension and the [`OnIdiom`](xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension) markup extension.
 
 > [!NOTE]
-> There are a special category of triggers, known as state triggers, that can be used to customize UI appearance in specific scenarios such as when the orientation of a device changes. For more information, see [State trigger](~/fundamentals/triggers.md#state-trigger).
+> There are a category of triggers, known as state triggers, that can be used to customize UI appearance in specific scenarios such as when the orientation of a device changes. For more information, see [State trigger](~/fundamentals/triggers.md#state-trigger).
 
 ## Customize UI appearance based on the platform
 
-The [`OnPlatform`](xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension) markup extension enables you to customize UI appearance on a per-platform basis. It provides the same functionality as the `OnPlatform` and `On` classes, but with a more concise representation.
+The [`OnPlatform`](xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension) markup extension enables you to customize UI appearance on a per-platform basis. It provides the same functionality as the <xref:Microsoft.Maui.Controls.OnPlatform`1> and <xref:Microsoft.Maui.Controls.On> classes, but with a more concise representation.
 
 The [`OnPlatform`](xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension) markup extension is supported by the <xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension> class, which defines the following properties:
 
