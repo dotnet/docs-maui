@@ -1,7 +1,7 @@
 ---
 title: "Consume XAML markup extensions"
 description: ".NET MAUI XAML markup extensions enhance the power and flexibility of XAML by allowing element attributes to be set from a variety of sources."
-ms.date: 01/27/2022
+ms.date: 04/18/2023
 ---
 
 # Consume XAML markup extensions
@@ -36,6 +36,8 @@ In addition to the markup extensions discussed in this article, the following ma
 - [`Binding`](xref:Microsoft.Maui.Controls.Xaml.BindingExtension) - establish a link between properties of two objects. For more information, see [Data binding](~/fundamentals/data-binding/index.md).
 - [`TemplateBinding`](xref:Microsoft.Maui.Controls.Xaml.TemplateBindingExtension) - performs data binding from a control template. For more information, see [Control templates](~/fundamentals/controltemplate.md).
 - [`RelativeSource`](xref:Microsoft.Maui.Controls.Xaml.RelativeSourceExtension) - sets the binding source relative to the position of the binding target. For more information, see [Relative bindings](~/fundamentals/data-binding/relative-bindings.md).
+- [`OnPlatform`](xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension) - customizes UI appearance on a per-platform basis.
+- [`OnIdiom`](xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension) - customizes UI appearance based on the idiom of the device the application is running on.
 <!-- - `ConstraintExpression` - relates the position and size of a child in a `RelativeLayout` to its parent, or a sibling. For more information, see [RelativeLayout](~/user-interface/layouts/relativelayout.md).-->
 
 ## x:Static markup extension
@@ -306,72 +308,6 @@ The following XAML example shows how to use the `x:Null` markup extension:
 In this example, an implicit <xref:Microsoft.Maui.Controls.Style> is defined for <xref:Microsoft.Maui.Controls.Label> that includes a <xref:Microsoft.Maui.Controls.Setter> that sets the `FontFamily` property to a specific font. However, the third <xref:Microsoft.Maui.Controls.Label> avoids using the font defined in the implicit style by setting its `FontFamily` to `x:Null`:
 
 :::image type="content" source="media/consume/nulldemo.png" alt-text="x:Null demo.":::
-
-## OnPlatform markup extension
-
-The `OnPlatform` markup extension enables you to customize UI appearance on a per-platform basis. It provides the same functionality as the `OnPlatform` and `On` classes, but with a more concise representation.
-
-The `OnPlatform` markup extension is supported by the <xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension> class, which defines the following properties:
-
-- `Default` of type `object`, that you set to a default value to be applied to the properties that represent platforms.
-- `Android` of type `object`, that you set to a value to be applied on Android.
-- `iOS` of type `object`, that you set to a value to be applied on iOS.
-- `MacCatalyst` of type `object`, that you set to a value to be applied on Mac Catalyst.
-- `Tizen` of type `object`, that you set to a value to be applied on the Tizen platform.
-- `WinUI` of type `object`, that you set to a value to be applied on WinUI.
-- `Converter` of type <xref:Microsoft.Maui.Controls.IValueConverter>, that can be set to an <xref:Microsoft.Maui.Controls.IValueConverter> implementation.
-- `ConverterParameter` of type `object`, that can be set to a value to pass to the <xref:Microsoft.Maui.Controls.IValueConverter> implementation.
-
-> [!NOTE]
-> The XAML parser allows the <xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension> class to be abbreviated as `OnPlatform`.
-
-The `Default` property is the content property of <xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension>. Therefore, for XAML markup expressions expressed with curly braces, you can eliminate the `Default=` part of the expression provided that it's the first argument. If the `Default` property isn't set, it will default to the `BindableProperty.DefaultValue` property value, provided that the markup extension is targeting a <xref:Microsoft.Maui.Controls.BindableProperty>.
-
-> [!IMPORTANT]
-> The XAML parser expects that values of the correct type will be provided to properties consuming the `OnPlatform` markup extension. If type conversion is necessary, the `OnPlatform` markup extension will attempt to perform it using the default converters provided by .NET MAUI. However, there are some type conversions that can't be performed by the default converters and in these cases the `Converter` property should be set to an <xref:Microsoft.Maui.Controls.IValueConverter> implementation.
-
-The **OnPlatform Demo** page shows how to use the `OnPlatform` markup extension:
-
-```xaml
-<BoxView Color="{OnPlatform Yellow, iOS=Red, Android=Green}"
-         WidthRequest="{OnPlatform 250, iOS=200, Android=300}"  
-         HeightRequest="{OnPlatform 250, iOS=200, Android=300}"
-         HorizontalOptions="Center" />
-```
-
-In this example, all three `OnPlatform` expressions use the abbreviated version of the <xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension> class name. The three `OnPlatform` markup extensions set the `xref:Microsoft.Maui.Graphics.Color`, <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest>, and <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> properties of the <xref:Microsoft.Maui.Controls.BoxView> to different values on iOS and Android. The markup extensions also provide default values for these properties on the platforms that aren't specified, while eliminating the `Default=` part of the expression.
-
-## OnIdiom markup extension
-
-The `OnIdiom` markup extension enables you to customize UI appearance based on the idiom of the device the application is running on. It's supported by the <xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension> class, which defines the following properties:
-
-- `Default` of type `object`, that you set to a default value to be applied to the properties that represent device idioms.
-- `Phone` of type `object`, that you set to a value to be applied on phones.
-- `Tablet` of type `object`, that you set to a value to be applied on tablets.
-- `Desktop` of type `object`, that you set to a value to be applied on desktop platforms.
-- `TV` of type `object`, that you set to a value to be applied on TV platforms.
-- `Watch` of type `object`, that you set to a value to be applied on Watch platforms.
-- `Converter` of type <xref:Microsoft.Maui.Controls.IValueConverter>, that can be set to an <xref:Microsoft.Maui.Controls.IValueConverter> implementation.
-- `ConverterParameter` of type `object`, that can be set to a value to pass to the <xref:Microsoft.Maui.Controls.IValueConverter> implementation.
-
-> [!NOTE]
-> The XAML parser allows the <xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension> class to be abbreviated as `OnIdiom`.
-
-The `Default` property is the content property of <xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension>. Therefore, for XAML markup expressions expressed with curly braces, you can eliminate the `Default=` part of the expression provided that it's the first argument.
-
-> [!IMPORTANT]
-> The XAML parser expects that values of the correct type will be provided to properties consuming the `OnIdiom` markup extension. If type conversion is necessary, the `OnIdiom` markup extension will attempt to perform it using the default converters provided by .NET MAUI. However, there are some type conversions that can't be performed by the default converters and in these cases the `Converter` property should be set to an <xref:Microsoft.Maui.Controls.IValueConverter> implementation.
-
-The following XAML example shows how to use the `OnIdiom` markup extension:
-
-```xaml
-<BoxView Color="{OnIdiom Yellow, Phone=Red, Tablet=Green, Desktop=Blue}"
-         WidthRequest="{OnIdiom 100, Phone=200, Tablet=300, Desktop=400}"
-         HeightRequest="{OnIdiom 100, Phone=200, Tablet=300, Desktop=400}"
-         HorizontalOptions="Center" />
-```
-
-In this example, all three `OnIdiom` expressions use the abbreviated version of the <xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension> class name. The three `OnIdiom` markup extensions set the `Color`, <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest>, and <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> properties of the <xref:Microsoft.Maui.Controls.BoxView> to different values on the phone, tablet, and desktop idioms. The markup extensions also provide default values for these properties on the idioms that aren't specified, while eliminating the `Default=` part of the expression.
 
 ## DataTemplate markup extension
 
