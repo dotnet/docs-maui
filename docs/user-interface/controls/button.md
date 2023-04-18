@@ -21,7 +21,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Button>
 - `FontAutoScalingEnabled`, of type `bool`, defines whether the button text will reflect scaling preferences set in the operating system. The default value of this property is `true`.
 - `FontFamily`, of type `string`, defines the font family.
 - `FontSize`, of type `double`, defines the font size.
-- `ImageSource`, of type `ImageSource`, specifies a bitmap image to display as the content of the button.
+- <xref:Microsoft.Maui.Controls.ImageSource>, of type <xref:Microsoft.Maui.Controls.ImageSource>, specifies a bitmap image to display as the content of the button.
 - `LineBreakMode`, of type `LineBreakMode`, determines how text should be handled when it can't fit on one line.
 - `Padding`, of type `Thickness`, determines the button's padding.
 - `Text`, of type `string`, defines the text displayed as the content of the button.
@@ -31,7 +31,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Button>
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 > [!NOTE]
-> While <xref:Microsoft.Maui.Controls.Button> defines an `ImageSource` property, that allows you to display a image on the <xref:Microsoft.Maui.Controls.Button>, this property is intended to be used when displaying a small icon next to the <xref:Microsoft.Maui.Controls.Button> text.
+> While <xref:Microsoft.Maui.Controls.Button> defines an <xref:Microsoft.Maui.Controls.ImageSource> property, that allows you to display a image on the <xref:Microsoft.Maui.Controls.Button>, this property is intended to be used when displaying a small icon next to the <xref:Microsoft.Maui.Controls.Button> text.
 
 In addition, <xref:Microsoft.Maui.Controls.Button> defines `Clicked`, `Pressed`, and `Released` events. The `Clicked` event is raised when a <xref:Microsoft.Maui.Controls.Button> tap with a finger or mouse pointer is released from the button's surface. The `Pressed` event is raised when a finger presses on a <xref:Microsoft.Maui.Controls.Button>, or a mouse button is pressed with the pointer positioned over the <xref:Microsoft.Maui.Controls.Button>. The `Released` event is raised when the finger or mouse button is released. Generally, a `Clicked` event is also raised at the same time as the `Released` event, but if the finger or mouse pointer slides away from the surface of the <xref:Microsoft.Maui.Controls.Button> before being released, the `Clicked` event might not occur.
 
@@ -304,12 +304,12 @@ For more information about visual states, see [Visual states](~/user-interface/v
 
 ## Use bitmaps with buttons
 
-The <xref:Microsoft.Maui.Controls.Button> class defines an `ImageSource` property that allows you to display a small bitmap image on the <xref:Microsoft.Maui.Controls.Button>, either alone or in combination with text. You can also specify how the text and image are arranged. The `ImageSource` property is of type `ImageSource`, which means that the bitmaps can be loaded from a file, embedded resource, URI, or stream.
+The <xref:Microsoft.Maui.Controls.Button> class defines an <xref:Microsoft.Maui.Controls.ImageSource> property that allows you to display a small bitmap image on the <xref:Microsoft.Maui.Controls.Button>, either alone or in combination with text. You can also specify how the text and image are arranged. The <xref:Microsoft.Maui.Controls.ImageSource> property is of type <xref:Microsoft.Maui.Controls.ImageSource>, which means that the bitmaps can be loaded from a file, embedded resource, URI, or stream.
 
 <!-- > [!NOTE]
 > While a <xref:Microsoft.Maui.Controls.Button> can load an animated GIF, it will only display the first frame of the GIF. -->
 
-You can specify how the `Text` and `ImageSource` properties are arranged on the <xref:Microsoft.Maui.Controls.Button> using the `ContentLayout` property of <xref:Microsoft.Maui.Controls.Button>. This property is of type `ButtonContentLayout`, and its constructor has two arguments:
+You can specify how the `Text` and <xref:Microsoft.Maui.Controls.ImageSource> properties are arranged on the <xref:Microsoft.Maui.Controls.Button> using the `ContentLayout` property of <xref:Microsoft.Maui.Controls.Button>. This property is of type `ButtonContentLayout`, and its constructor has two arguments:
 
 - A member of the `ImagePosition` enumeration: `Left`, `Top`, `Right`, or `Bottom` indicating how the bitmap appears relative to the text.
 - A `double` value for the spacing between the bitmap and the text.

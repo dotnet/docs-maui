@@ -20,7 +20,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.ImageBu
 - `IsOpaque`, of type `bool`, determines whether .NET MAUI should treat the image as opaque when rendering it. The default value of this property is `false`.
 - `IsPressed`, of type `bool`, represents whether the button is being pressed. The default value of this property is `false`.
 - `Padding`, of type `Thickness`, determines the button's padding.
-- `Source`, of type `ImageSource`, specifies an image to display as the content of the button.
+- `Source`, of type <xref:Microsoft.Maui.Controls.ImageSource>, specifies an image to display as the content of the button.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 

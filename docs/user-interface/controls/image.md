@@ -1,7 +1,7 @@
 ---
 title: "Image"
 description: "The .NET MAUI Image displays an image that can be loaded from a local file, a URI, an embedded resource, or a stream."
-ms.date: 03/04/2022
+ms.date: 04/18/2023
 ---
 
 # Image
@@ -14,14 +14,14 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Image> 
 - `IsAnimationPlaying`, of type `bool`, determines whether an animated GIF is playing or stopped. The default value of this property is `false`.
 - `IsLoading`, of type `bool`, indicates the loading status of the image. The default value of this property is `false`.
 - `IsOpaque`, of type `bool`, indicates whether the rendering engine may treat the image as opaque while rendering it. The default value of this property is `false`.
-- `Source`, of type `ImageSource`, specifies the source of the image.
+- `Source`, of type <xref:Microsoft.Maui.Controls.ImageSource>, specifies the source of the image.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be styled, and be the target of data bindings.
 
 > [!NOTE]
-> Font icons can be displayed by an <xref:Microsoft.Maui.Controls.Image> by specifying the font icon data as a `FontImageSource` object. For more information, see [Display font icons](~/user-interface/fonts.md#display-font-icons).
+> Font icons can be displayed by an <xref:Microsoft.Maui.Controls.Image> by specifying the font icon data as a <xref:Microsoft.Maui.Controls.FontImageSource> object. For more information, see [Display font icons](~/user-interface/fonts.md#display-font-icons).
 
-The `ImageSource` class defines the following methods that can be used to load an image from different sources:
+The <xref:Microsoft.Maui.Controls.ImageSource> class defines the following methods that can be used to load an image from different sources:
 
 - `FromFile` returns a `FileImageSource` that reads an image from a local file.
 - `FromUri` returns an `UriImageSource` that downloads and reads an image from a specified URI.
@@ -215,6 +215,37 @@ Image image = new Image
     Source = ImageSource.FromStream(() => stream)
 };
 ```
+
+## Load a font icon
+
+The [`FontImage`](xref:Microsoft.Maui.Controls.Xaml.FontImageExtension) markup extension enables you to display a font icon in any view that can display an <xref:Microsoft.Maui.Controls.ImageSource>. It provides the same functionality as the <xref:Microsoft.Maui.Controls.FontImageSource> class, but with a more concise representation.
+
+The [`FontImage`](xref:Microsoft.Maui.Controls.Xaml.FontImageExtension) markup extension is supported by the <xref:Microsoft.Maui.Controls.Xaml.FontImageExtension> class, which defines the following properties:
+
+- `FontFamily` of type `string`, the font family to which the font icon belongs.
+- `Glyph` of type `string`, the unicode character value of the font icon.
+- `Color` of type <xref:Microsoft.Maui.Graphics.Color>, the color to be used when displaying the font icon.
+- `Size` of type `double`, the size, in device-independent units, of the rendered font icon. The default value is 30. In addition, this property can be set to a named font size.
+
+> [!NOTE]
+> The XAML parser allows the <xref:Microsoft.Maui.Controls.Xaml.FontImageExtension> class to be abbreviated as `FontImage`.
+
+The `Glyph` property is the content property of <xref:Microsoft.Maui.Controls.Xaml.FontImageExtension>. Therefore, for XAML markup expressions expressed with curly braces, you can eliminate the `Glyph=` part of the expression provided that it's the first argument.
+
+The following XAML example shows how to use the [`FontImage`](xref:Microsoft.Maui.Controls.Xaml.FontImageExtension) markup extension:
+
+```xaml
+<Image BackgroundColor="#D1D1D1"
+       Source="{FontImage &#xf30c;, FontFamily=Ionicons, Size=44}" />
+```
+
+In this example, the abbreviated version of the <xref:Microsoft.Maui.Controls.Xaml.FontImageExtension> class name is used to display an XBox icon, from the Ionicons font family, in an <xref:Microsoft.Maui.Controls.Image>:
+
+:::image type="content" source="media/image/fontimagedemo.png" alt-text="Screenshot of the FontImage markup extension.":::
+
+While the unicode character for the icon is `\uf30c`, it has to be escaped in XAML and so becomes `&#xf30c;`.
+
+For information about displaying font icons by specifying the font icon data in a <xref:Microsoft.Maui.Controls.FontImageSource> object, see [Display font icons](~/user-interface/fonts.md#display-font-icons).
 
 ## Load animated GIFs
 

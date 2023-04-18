@@ -508,7 +508,7 @@
             - name: Information property list
               href: macios/info-plist.md
             - name: Linking
-              href: mac-catalyst/linking.md              
+              href: mac-catalyst/linking.md
             - name: Specify the UI idiom
               href: mac-catalyst/user-interface-idiom.md
         - name: Platform integration
@@ -682,6 +682,8 @@
               href: platform-integration/platform-helpers.md
         - name: Configure multi-targeting
           href: platform-integration/configure-multi-targeting.md
+        - name: Customize UI appearance
+          href: platform-integration/customize-ui-appearance.md
         - name: Invoke platform code
           href: platform-integration/invoke-platform-code.md
         - name: Native embedding
