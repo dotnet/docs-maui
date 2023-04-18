@@ -31,13 +31,14 @@ Any attribute value in curly braces is *always* a XAML markup extension. However
 
 In addition to the markup extensions discussed in this article, the following markup extensions are included in .NET MAUI and discussed in other articles:
 
-- [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) - reference objects from a resource dictionary. For more information, see [Resource dictionaries](~/fundamentals/resource-dictionaries.md).
-- [`DynamicResource`](xref:Microsoft.Maui.Controls.Xaml.DynamicResourceExtension) - respond to changes in objects in a resource dictionary. For more information, see [Dynamic styles](~/user-interface/styles/xaml.md#dynamic-styles).
+- [`AppThemeBinding`](xref:Microsoft.Maui.Controls.Xaml.AppThemeBindingExtension) - specifies a resource to be consumed based on the current system theme. For more information, see []().
 - [`Binding`](xref:Microsoft.Maui.Controls.Xaml.BindingExtension) - establish a link between properties of two objects. For more information, see [Data binding](~/fundamentals/data-binding/index.md).
-- [`TemplateBinding`](xref:Microsoft.Maui.Controls.Xaml.TemplateBindingExtension) - performs data binding from a control template. For more information, see [Control templates](~/fundamentals/controltemplate.md).
+- [`DynamicResource`](xref:Microsoft.Maui.Controls.Xaml.DynamicResourceExtension) - respond to changes in objects in a resource dictionary. For more information, see [Dynamic styles](~/user-interface/styles/xaml.md#dynamic-styles).
+- [`OnIdiom`](xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension) - customizes UI appearance based on the idiom of the device the application is running on. For more information, see [Customize UI appearance based on the device idiom](~/platform-integration/customize-ui-appearance.md#customize-ui-appearance-based-on-the-device-idiom).
+- [`OnPlatform`](xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension) - customizes UI appearance on a per-platform basis. For more information, see [Customize UI appearance based on the platform](~/platform-integration/customize-ui-appearance.md#customize-ui-appearance-based-on-the-platform).
 - [`RelativeSource`](xref:Microsoft.Maui.Controls.Xaml.RelativeSourceExtension) - sets the binding source relative to the position of the binding target. For more information, see [Relative bindings](~/fundamentals/data-binding/relative-bindings.md).
-- [`OnPlatform`](xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension) - customizes UI appearance on a per-platform basis.
-- [`OnIdiom`](xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension) - customizes UI appearance based on the idiom of the device the application is running on.
+- [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) - reference objects from a resource dictionary. For more information, see [Resource dictionaries](~/fundamentals/resource-dictionaries.md).
+- [`TemplateBinding`](xref:Microsoft.Maui.Controls.Xaml.TemplateBindingExtension) - performs data binding from a control template. For more information, see [Control templates](~/fundamentals/controltemplate.md).
 <!-- - `ConstraintExpression` - relates the position and size of a child in a `RelativeLayout` to its parent, or a sibling. For more information, see [RelativeLayout](~/user-interface/layouts/relativelayout.md).-->
 
 ## x:Static markup extension
@@ -358,50 +359,3 @@ In this example, the abbreviated version of the <xref:Microsoft.Maui.Controls.Xa
 While the unicode character for the icon is `\uf30c`, it has to be escaped in XAML and so becomes `&#xf30c;`.
 
 For information about displaying font icons by specifying the font icon data in a `FontImageSource` object, see [Display font icons](~/user-interface/fonts.md#display-font-icons).
-
-## AppThemeBinding markup extension
-
-The `AppThemeBinding` markup extension enables you to specify a resource to be consumed, such as an image or color, based on the current system theme.
-
-<!-- > [!IMPORTANT]
-> The `AppThemeBinding` markup extension has minimum operating system requirements. For more information, see [Respond to system theme changes in .NET MAUI applications](~/xamarin-forms/user-interface/theming/system-theme-changes.md). -->
-
-The `AppThemeBinding` markup extension is supported by the <xref:Microsoft.Maui.Controls.Xaml.AppThemeBindingExtension> class, which defines the following properties:
-
-- `Default`, of type `object`, that you set to the resource to be used by default.
-- `Light`, of type `object`, that you set to the resource to be used when the device is using its light theme.
-- `Dark`, of type `object`, that you set to the resource to be used when the device is using its dark theme.
-- `Value`, of type `object`, that returns the resource that's currently being used by the markup extension.
-
-> [!NOTE]
-> The XAML parser allows the <xref:Microsoft.Maui.Controls.Xaml.AppThemeBindingExtension> class to be abbreviated as `AppBindingTheme`.
-
-The `Default` property is the content property of <xref:Microsoft.Maui.Controls.Xaml.AppThemeBindingExtension>. Therefore, for XAML markup expressions expressed with curly braces, you can eliminate the `Default=` part of the expression provided that it's the first argument.
-
-The following XAML example shows how to use the `AppThemeBinding` markup extension:
-
-```xaml
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MarkupExtensions.AppThemeBindingDemoPage"
-             Title="AppThemeBinding Demo">
-    <ContentPage.Resources>
-        <Style x:Key="labelStyle"
-               TargetType="Label">
-            <Setter Property="TextColor"
-                    Value="{AppThemeBinding Black, Light=Blue, Dark=Teal}" />
-        </Style>
-    </ContentPage.Resources>
-
-    <StackLayout Margin="20">
-        <Label Text="This text is green in light mode, and red in dark mode."
-               TextColor="{AppThemeBinding Light=Green, Dark=Red}" />
-        <Label Text="This text is black by default, blue in light mode, and teal in dark mode."
-               Style="{StaticResource labelStyle}" />
-    </StackLayout>
-</ContentPage>
-```
-
-In this example, the text color of the first <xref:Microsoft.Maui.Controls.Label> is set to green when the device is using its light theme, and is set to red when the device is using its dark theme. The second <xref:Microsoft.Maui.Controls.Label> has its `TextColor` property set through a <xref:Microsoft.Maui.Controls.Style>. This <xref:Microsoft.Maui.Controls.Style> sets the text color of the <xref:Microsoft.Maui.Controls.Label> to black by default, to blue when the device is using its light theme, and to teal when the device is using its dark theme:
-
-:::image type="content" source="media/consume/appthemebindingdemo.png" alt-text="AppThemeBinding demo.":::
