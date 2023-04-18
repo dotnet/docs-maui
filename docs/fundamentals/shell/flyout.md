@@ -39,7 +39,7 @@ The following example creates a flyout containing two flyout items:
 </Shell>
 ```
 
-The `FlyoutItem.Title` property, of type `string`, defines the title of the flyout item. The `FlyoutItem.Icon` property, of type `ImageSource`, defines the icon of the flyout item:
+The `FlyoutItem.Title` property, of type `string`, defines the title of the flyout item. The `FlyoutItem.Icon` property, of type <xref:Microsoft.Maui.Controls.ImageSource>, defines the icon of the flyout item:
 
 :::image type="content" source="media/flyout/two-page-app-flyout.png" alt-text="Screenshot of a Shell two page app with flyout items.":::
 
@@ -552,7 +552,7 @@ This enables scenarios such as expanding the flyout across the entire screen, or
 
 ## Flyout icon
 
-By default, Shell apps have a hamburger icon which, when pressed, opens the flyout. This icon can be changed by setting the `Shell.FlyoutIcon` bindable property, of type `ImageSource`, to an appropriate icon:
+By default, Shell apps have a hamburger icon which, when pressed, opens the flyout. This icon can be changed by setting the `Shell.FlyoutIcon` bindable property, of type <xref:Microsoft.Maui.Controls.ImageSource>, to an appropriate icon:
 
 ```xaml
 <Shell ...
@@ -609,7 +609,7 @@ For more information about brushes, see [.NET MAUI Brushes](~/user-interface/bru
 
 ## Flyout background image
 
-The flyout can have an optional background image, which appears beneath the flyout header and behind any flyout items, menu items, and the flyout footer. The background image can be specified by setting the `FlyoutBackgroundImage` bindable property, of type `ImageSource`, to a file, embedded resource, URI, or stream.
+The flyout can have an optional background image, which appears beneath the flyout header and behind any flyout items, menu items, and the flyout footer. The background image can be specified by setting the `FlyoutBackgroundImage` bindable property, of type <xref:Microsoft.Maui.Controls.ImageSource>, to a file, embedded resource, URI, or stream.
 
 The aspect ratio of the background image can be configured by setting the `FlyoutBackgroundImageAspect` bindable property, of type `Aspect`, to one of the `Aspect` enumeration members:
 

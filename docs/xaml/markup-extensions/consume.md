@@ -31,13 +31,14 @@ Any attribute value in curly braces is *always* a XAML markup extension. However
 
 In addition to the markup extensions discussed in this article, the following markup extensions are included in .NET MAUI and discussed in other articles:
 
-- [`AppThemeBinding`](xref:Microsoft.Maui.Controls.Xaml.AppThemeBindingExtension) - specifies a resource to be consumed based on the current system theme. For more information, see []().
-- [`Binding`](xref:Microsoft.Maui.Controls.Xaml.BindingExtension) - establish a link between properties of two objects. For more information, see [Data binding](~/fundamentals/data-binding/index.md).
-- [`DynamicResource`](xref:Microsoft.Maui.Controls.Xaml.DynamicResourceExtension) - respond to changes in objects in a resource dictionary. For more information, see [Dynamic styles](~/user-interface/styles/xaml.md#dynamic-styles).
+- [`AppThemeBinding`](xref:Microsoft.Maui.Controls.Xaml.AppThemeBindingExtension) - specifies a resource to be consumed based on the current system theme. For more information, see [AppThemeBinding markup extension](~/user-interface/system-theme-changes.md#appthemebinding-markup-extension).
+- [`Binding`](xref:Microsoft.Maui.Controls.Xaml.BindingExtension) - establishes a link between properties of two objects. For more information, see [Data binding](~/fundamentals/data-binding/index.md).
+- [`DynamicResource`](xref:Microsoft.Maui.Controls.Xaml.DynamicResourceExtension) - responds to changes in objects in a resource dictionary. For more information, see [Dynamic styles](~/user-interface/styles/xaml.md#dynamic-styles).
+- [`FontImage`](xref:Microsoft.Maui.Controls.Xaml.FontImageExtension) - displays a font icon in any view that can display an <xref:Microsoft.Maui.Controls.ImageSource>. For more information, see [Load a font icon](~/user-interface/controls/image.md#load-a-font-icon).
 - [`OnIdiom`](xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension) - customizes UI appearance based on the idiom of the device the application is running on. For more information, see [Customize UI appearance based on the device idiom](~/platform-integration/customize-ui-appearance.md#customize-ui-appearance-based-on-the-device-idiom).
 - [`OnPlatform`](xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension) - customizes UI appearance on a per-platform basis. For more information, see [Customize UI appearance based on the platform](~/platform-integration/customize-ui-appearance.md#customize-ui-appearance-based-on-the-platform).
 - [`RelativeSource`](xref:Microsoft.Maui.Controls.Xaml.RelativeSourceExtension) - sets the binding source relative to the position of the binding target. For more information, see [Relative bindings](~/fundamentals/data-binding/relative-bindings.md).
-- [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) - reference objects from a resource dictionary. For more information, see [Resource dictionaries](~/fundamentals/resource-dictionaries.md).
+- [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) - references objects from a resource dictionary. For more information, see [Resource dictionaries](~/fundamentals/resource-dictionaries.md).
 - [`TemplateBinding`](xref:Microsoft.Maui.Controls.Xaml.TemplateBindingExtension) - performs data binding from a control template. For more information, see [Control templates](~/fundamentals/controltemplate.md).
 <!-- - `ConstraintExpression` - relates the position and size of a child in a `RelativeLayout` to its parent, or a sibling. For more information, see [RelativeLayout](~/user-interface/layouts/relativelayout.md).-->
 
@@ -328,34 +329,3 @@ A typical usage of this markup extension is in a Shell application, as shown in 
 In this example, `MonkeysPage` is converted from a <xref:Microsoft.Maui.Controls.ContentPage> to a <xref:Microsoft.Maui.Controls.DataTemplate>, which is set as the value of the `ShellContent.ContentTemplate` property. This ensures that `MonkeysPage` is only created when navigation to the page occurs, rather than at application startup.
 
 For more information about Shell apps, see [Shell](~/fundamentals/shell/index.md).
-
-## FontImage markup extension
-
-The `FontImage` markup extension enables you to display a font icon in any view that can display an `ImageSource`. It provides the same functionality as the `FontImageSource` class, but with a more concise representation.
-
-The `FontImage` markup extension is supported by the <xref:Microsoft.Maui.Controls.Xaml.FontImageExtension> class, which defines the following properties:
-
-- `FontFamily` of type `string`, the font family to which the font icon belongs.
-- `Glyph` of type `string`, the unicode character value of the font icon.
-- `Color` of type <xref:Microsoft.Maui.Graphics.Color>, the color to be used when displaying the font icon.
-- `Size` of type `double`, the size, in device-independent units, of the rendered font icon. The default value is 30. In addition, this property can be set to a named font size.
-
-> [!NOTE]
-> The XAML parser allows the <xref:Microsoft.Maui.Controls.Xaml.FontImageExtension> class to be abbreviated as `FontImage`.
-
-The `Glyph` property is the content property of <xref:Microsoft.Maui.Controls.Xaml.FontImageExtension>. Therefore, for XAML markup expressions expressed with curly braces, you can eliminate the `Glyph=` part of the expression provided that it's the first argument.
-
-The following XAML example shows how to use the `FontImage` markup extension:
-
-```xaml
-<Image BackgroundColor="#D1D1D1"
-       Source="{FontImage &#xf30c;, FontFamily=Ionicons, Size=44}" />
-```
-
-In this example, the abbreviated version of the <xref:Microsoft.Maui.Controls.Xaml.FontImageExtension> class name is used to display an XBox icon, from the Ionicons font family, in an <xref:Microsoft.Maui.Controls.Image>:
-
-:::image type="content" source="media/consume/fontimagedemo.png" alt-text="Screenshot of the FontImage markup extension.":::
-
-While the unicode character for the icon is `\uf30c`, it has to be escaped in XAML and so becomes `&#xf30c;`.
-
-For information about displaying font icons by specifying the font icon data in a `FontImageSource` object, see [Display font icons](~/user-interface/fonts.md#display-font-icons).

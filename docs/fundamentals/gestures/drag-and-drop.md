@@ -88,7 +88,7 @@ For content other than text and images, you'll need to build a data package your
 Data packages are represented by the <xref:Microsoft.Maui.Controls.DataPackage> class, which defines the following properties:
 
 - <xref:Microsoft.Maui.Controls.DataPackage.Properties>, of type `DataPackagePropertySet`, which is a collection of properties that comprise the data contained in the `DataPackage`. This property is a read-only property.
-- <xref:Microsoft.Maui.Controls.Image>, of type `ImageSource`, which is the image contained in the `DataPackage`.
+- <xref:Microsoft.Maui.Controls.Image>, of type <xref:Microsoft.Maui.Controls.ImageSource>, which is the image contained in the `DataPackage`.
 - <xref:Microsoft.Maui.Controls.DataPackage.Text>, of type `string`, which is the text contained in the `DataPackage`.
 - <xref:Microsoft.Maui.Controls.View>, of type `DataPackageView`, which is a read-only version of the `DataPackage`.
 
@@ -193,7 +193,7 @@ The following XAML example shows a <xref:Microsoft.Maui.Controls.DropGestureReco
 </Image>
 ```
 
-In this example, when a drag source is dropped on the <xref:Microsoft.Maui.Controls.Image> drop target, the drag source will be copied to the drop target if the drag source is an `ImageSource`. .NET MAUI automatically copies dragged images, and text, to compatible drop targets.
+In this example, when a drag source is dropped on the <xref:Microsoft.Maui.Controls.Image> drop target, the drag source will be copied to the drop target if the drag source is an <xref:Microsoft.Maui.Controls.ImageSource>. .NET MAUI automatically copies dragged images, and text, to compatible drop targets.
 
 ## Handle the DragOver event
 

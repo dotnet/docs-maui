@@ -200,14 +200,14 @@ For more information about providing platform-specific values, see [Device infor
 
 ## Display font icons
 
-Font icons can be displayed by .NET MAUI apps by specifying the font icon data in a `FontImageSource` object. This class, which derives from the `ImageSource` class, has the following properties:
+Font icons can be displayed by .NET MAUI apps by specifying the font icon data in a <xref:Microsoft.Maui.Controls.FontImageSource> object. This class, which derives from the <xref:Microsoft.Maui.Controls.ImageSource> class, has the following properties:
 
 - `Glyph` – the unicode character value of the font icon, specified as a `string`.
 - `Size` – a `double` value that indicates the size, in device-independent units, of the rendered font icon. The default value is 30. In addition, this property can be set to a named font size.
 - `FontFamily` – a `string` representing the font family to which the font icon belongs.
 - `Color` – an optional <xref:Microsoft.Maui.Graphics.Color> value to be used when displaying the font icon.
 
-This data is used to create a PNG, which can be displayed by any view that can display an `ImageSource`. This approach permits font icons, such as emojis, to be displayed by multiple views, as opposed to limiting font icon display to a single text presenting view, such as a <xref:Microsoft.Maui.Controls.Label>.
+This data is used to create a PNG, which can be displayed by any view that can display an <xref:Microsoft.Maui.Controls.ImageSource>. This approach permits font icons, such as emojis, to be displayed by multiple views, as opposed to limiting font icon display to a single text presenting view, such as a <xref:Microsoft.Maui.Controls.Label>.
 
 > [!IMPORTANT]
 > Font icons can only currently be specified by their unicode character representation.
@@ -239,3 +239,5 @@ image.Source = new FontImageSource
 The following screenshot shows several font icons being displayed:
 
 :::image type="content" source="media/fonts/font-image-source.png" alt-text="Screenshot of three font icons.":::
+
+Alternatively, you can display a font icon with the [`FontIcon`](xref:Microsoft.Maui.Controls.Xaml.FontIconExtension) markup extension. For more information, see [Load a font icon](~/user-interface/controls/image.md#load-a-font-icon).
