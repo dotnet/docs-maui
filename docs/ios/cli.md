@@ -2,6 +2,7 @@
 title: "Build an iOS app on macOS with .NET CLI"
 description: "Learn how to create and run a .NET MAUI app on iOS using .NET CLI on macOS."
 ms.date: 03/01/2023
+no-loc: [ "MY_SPECIFIC_UDID" ]
 ---
 
 # Build an iOS app with .NET CLI
@@ -67,7 +68,7 @@ A .NET MAUI iOS app can be launched on a specific iOS simulator from a Mac by pr
 3. In **Terminal**, build the app and run it on your chosen simulator by specifying the `_DeviceName` MSBuild property using the `-p` [MSBuild option](/dotnet/core/tools/dotnet-build#msbuild):
 
     ```zsh
-    dotnet build -t:Run -f net6.0-ios -p:_DeviceName=:v2:udid=insert_UDID_here
+    dotnet build -t:Run -f net6.0-ios -p:_DeviceName=:v2:udid=MY_SPECIFIC_UDID
     ```
 
     For example, use the following command to build the app and run it on the iPhone 13 Pro simulator:
@@ -83,7 +84,7 @@ A .NET MAUI iOS app can be launched on a specific iOS simulator from a Mac by pr
 3. In **Terminal**, build the app and run it on your chosen simulator by specifying the `_DeviceName` MSBuild property using the `-p` [MSBuild option](/dotnet/core/tools/dotnet-build#msbuild):
 
     ```zsh
-    dotnet build -t:Run -f net7.0-ios -p:_DeviceName=:v2:udid=insert_UDID_here
+    dotnet build -t:Run -f net7.0-ios -p:_DeviceName=:v2:udid=MY_SPECIFIC_UDID
     ```
 
     For example, use the following command to build the app and run it on the iPhone 13 Pro simulator:
@@ -116,11 +117,13 @@ A device must be provisioned before you can deploy an iOS app to it. For more in
 <!-- markdownlint-disable MD029 -->
 ::: moniker range="=net-maui-6.0"
 
-5. In **Terminal**, build the app and run it on your chosen simulator by specifying the `_DeviceName` MSBuild property using the `-p` [MSBuild option](/dotnet/core/tools/dotnet-build#msbuild):
+5. In **Terminal**, build the app and run it on your chosen device by specifying the `_DeviceName` MSBuild property using the `-p` [MSBuild option](/dotnet/core/tools/dotnet-build#msbuild):
 
     ```zsh
-    dotnet build -t:Run -f net6.0-ios -p:RuntimeIdentifier=ios-arm64 -p:_DeviceName=insert_UDID_here
+    dotnet build -t:Run -f net6.0-ios -p:RuntimeIdentifier=ios-arm64 -p:_DeviceName=MY_SPECIFIC_UDID
     ```
+
+    Replace "MY_SPECIFIC_UUID" with the device identifier you copied to the clipboard.
 
 ::: moniker-end
 
@@ -129,8 +132,10 @@ A device must be provisioned before you can deploy an iOS app to it. For more in
 5. In **Terminal**, build the app and run it on your chosen simulator by specifying the `_DeviceName` MSBuild property using the `-p` [MSBuild option](/dotnet/core/tools/dotnet-build#msbuild):
 
     ```zsh
-    dotnet build -t:Run -f net7.0-ios -p:RuntimeIdentifier=ios-arm64 -p:_DeviceName=insert_UDID_here
+    dotnet build -t:Run -f net7.0-ios -p:RuntimeIdentifier=ios-arm64 -p:_DeviceName=MY_SPECIFIC_UDID
     ```
+
+    Replace "MY_SPECIFIC_UDID" with the device identifier you copied to the clipboard.
 
 ::: moniker-end
 
