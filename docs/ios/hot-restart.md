@@ -11,7 +11,7 @@ Typically when building an app, your code is compiled and combined with other pr
 .NET Multi-platform App UI (.NET MAUI) hot restart enables you to quickly deploy a .NET MAUI app to a 64-bit local iOS device, from Visual Studio 2022, without requiring a Mac build host. It removes the need for a full app bundle rebuild by pushing changes to the existing app bundle that's already present on your locally connected iOS device. It supports changes to code files, resources, and project references, enabling you to quickly test changes to your app during its development.
 
 > [!IMPORTANT]
-> Hot restart isn't a replacement for the full build experience when using a Mac build host. For example, it can only deploy apps that use the debug build configuration, and it doesn't support static libraries and frameworks, XCFrameworks, or binding resource packages. For more information, see [Limitations](#limitations).
+> Hot restart isn't a replacement for the full build experience provided by a Mac build host. For example, it can only deploy apps that use the debug build configuration, and it doesn't support static libraries and frameworks, XCFrameworks, or binding resource packages. For more information, see [Limitations](#limitations).
 
 There are a number of requirements that must be met to use hot restart to deploy a .NET MAUI app to a locally connected iOS device:
 
