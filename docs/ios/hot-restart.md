@@ -139,6 +139,8 @@ Hot restart is enabled by default in Visual Studio 2022. If it's been previously
 
 ## Limitations
 
+There are limitations when using hot restart:
+
 - It can only be used to deploy apps that use the debug build configuration. You'll still need a Mac build host to build, sign, and deploy your app for production purposes.
 - Storyboard and XIB files aren't supported, and your app may crash if it attempts to load these at runtime.
 - Static iOS libraries and frameworks aren't supported and you may see runtime errors or crashes if your app attempts to load these.
