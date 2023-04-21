@@ -44,7 +44,7 @@ The following table describes how each project setting maps to the manifest file
 | Project setting | Manifest setting |
 | --- | --- |
 | `ApplicationId` | The `package` attribute of the `<manifest>` node: `<manifest ... package="com.companyname.myproject>"`. |
-| `ApplicationVersion` | The `android:versionCode` attribute of the `<manifest>` node: `<manifest ... android:versionCode="1">`. This should be an integer value. |
+| `ApplicationVersion` | The `android:versionCode` attribute of the `<manifest>` node: `<manifest ... android:versionCode="1">`. This value should be an integer. |
 
 Here's an example of an automatically generated manifest file with the package and version information specified:
 
@@ -103,7 +103,7 @@ For security reasons, you don't want to supply a value for `<AndroidSigningKeyPa
 </PropertyGroup>
 ```
 
-The example `<PropertyGroup>` above adds a condition check, preventing those settings from being processed unless the condition check passes. The condition check looks for two things:
+This example `<PropertyGroup>` adds a condition check, preventing those settings from being processed unless the condition check passes. The condition check looks for two things:
 
 01. The target framework is set to something containing the text `-android`.
 01. The build configuration is set to `Release`.
@@ -120,8 +120,8 @@ To publish your app, open a terminal and navigate to the folder for your .NET MA
 |------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
 | `-f` or `--framework`        | The target framework, which is `net6.0-android` or `net7.0-android`.                                                                      |
 | `-c` or `--configuration`    | The build configuration, which is `Release`.                                                                                              |
-| `-p:AndroidSigningKeyPass`   | This is the value used for the `<AndroidSigningKeyPass>` project setting, the password you provided when you created the keystore file.   |
-| `-p:AndroidSigningStorePass` | This is the value used for the `<AndroidSigningStorePass>` project setting, the password you provided when you created the keystore file. |
+| `-p:AndroidSigningKeyPass`   | This value is used for the `<AndroidSigningKeyPass>` project setting, the password you provided when you created the keystore file.   |
+| `-p:AndroidSigningStorePass` | This value is used for the `<AndroidSigningStorePass>` project setting, the password you provided when you created the keystore file. |
 
 > [!WARNING]
 > Attempting to publish a .NET MAUI solution will result in the `dotnet publish` command attempting to publish each project in the solution individually, which can cause issues when you've added other project types to your solution. Therefore, the `dotnet publish` command should be scoped to your .NET MAUI app project.
@@ -134,7 +134,7 @@ For example:
 dotnet publish -f net6.0-android -c Release -p:AndroidSigningKeyPass=mypassword -p:AndroidSigningStorePass=mypassword
 ```
 
-Both the `AndroidSigningKeyPass` and `AndroidSigningStorePass` properties support `env:` and `file:` prefixes that can be used to specify an environment variable or file that contains the password. This provide a way to prevent the password from appearing in build logs.
+Both the `AndroidSigningKeyPass` and `AndroidSigningStorePass` properties support `env:` and `file:` prefixes that can be used to specify an environment variable or file that contains the password. Specifying the password in this way prevents it from appearing in build logs.
 
 For example, to use an environment variable named `AndroidSigningPassword`:
 
@@ -163,7 +163,7 @@ For example:
 dotnet publish -f net7.0-android -c Release -p:AndroidSigningKeyPass=mypassword -p:AndroidSigningStorePass=mypassword
 ```
 
-Both the `AndroidSigningKeyPass` and `AndroidSigningStorePass` properties support `env:` and `file:` prefixes that can be used to specify an environment variable or file that contains the password. This provide a way to prevent the password from appearing in build logs.
+Both the `AndroidSigningKeyPass` and `AndroidSigningStorePass` properties support `env:` and `file:` prefixes that can be used to specify an environment variable or file that contains the password. Specifying the password in this way prevents it from appearing in build logs.
 
 For example, to use an environment variable named `AndroidSigningPassword`:
 

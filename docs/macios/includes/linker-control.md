@@ -5,7 +5,7 @@ ms.date: 04/11/2023
 
 ## Preserve code
 
-When you use the linker it will sometimes remove code that you might have called dynamically, even indirectly. You can instruct the linker to preserve members by annotating them with the [`DynamicDependency`](xref:System.Diagnostics.CodeAnalysis.DynamicDependencyAttribute) attribute. This attribute can be used to express a dependency on either a type and subset of members, or at specific members.
+When you use the linker, it sometimes remove code that you might have called dynamically, even indirectly. You can instruct the linker to preserve members by annotating them with the [`DynamicDependency`](xref:System.Diagnostics.CodeAnalysis.DynamicDependencyAttribute) attribute. This attribute can be used to express a dependency on either a type and subset of members, or at specific members.
 
 > [!IMPORTANT]
 > Every member that isn't statically linked by the app is subject to be removed.
@@ -46,7 +46,7 @@ The type and member strings use a variation of the C# documentation comment ID s
 
 It's possible to specify assemblies that should be excluded from the linking process, while allowing other assemblies to be linked.
 
-When linking all assemblies, the linker can skip an assembly by setting the `TrimmerRootAssembly` MSBuild property in an `<ItemGroup>` tag in the project file:
+When it links all assemblies, you can tell the linker to skip an assembly by setting the `TrimmerRootAssembly` MSBuild property in an `<ItemGroup>` tag in the project file:
 
 ```xml
 <ItemGroup>
@@ -57,13 +57,13 @@ When linking all assemblies, the linker can skip an assembly by setting the `Tri
 > [!NOTE]
 > The `.dll` extension isn't required when setting the `TrimmerRootAssembly` MSBuild property.
 
-If the linker skips an assembly, it's considered "rooted" which means that it and all of its statically understood dependencies will be kept. Additional assemblies may be skipped by adding additional `TrimmerRootAssembly` MSBuild properties to the `<ItemGroup>`.
+If the linker skips an assembly, it's considered *rooted*, which means that it and all of its statically understood dependencies will be kept. You can skip additional assemblies by adding more `TrimmerRootAssembly` MSBuild properties to the `<ItemGroup>`.
 
 ## Preserve assemblies, types, and members
 
-The linker can be passed an XML description file that specifies which assemblies, types, and members need to be retained.
+You can pass the linker an XML description file that specifies which assemblies, types, and members need to be retained.
 
-When linking all assemblies, to exclude a member from the linking process set the `TrimmerRootDescriptor` MSBuild property in an `<ItemGroup>` tag in the project file to the XML file that defines the members to exclude:
+To exclude a member from the linking process when linking all assemblies, set the `TrimmerRootDescriptor` MSBuild property in an `<ItemGroup>` tag in the project file to the XML file that defines the members to exclude:
 
 ```xml
 <ItemGroup>
@@ -85,19 +85,20 @@ The XML file then uses the trimmer [descriptor format](https://github.com/dotnet
 
 In this example, the XML file specifies a method that's dynamically accessed by the app, which is excluded from linking.
 
-When an assembly, type or member are listed in the XML, the default action is preservation, which means that regardless of whether the linker thinks they are used or not, they will be preserved in the output.
+When an assembly, type, or member is listed in the XML, the default action is preservation, which means that regardless of whether the linker thinks it's used or not, it's preserved in the output.
+
 > [!NOTE]
 > The preservation tags are ambiguously inclusive. If you don’t provide the next level of detail, it will include all the children. If an assembly is listed without any types, then all the assembly’s types and members will be preserved.
 
 ## Mark an assembly as linker safe
 
-If you have a library in your project, or you are a developer of a reusable library and you want the linker to treat your assembly as linkable, you can mark the assembly as linker safe with the [`AssemblyMetadata`](xref:System.Reflection.AssemblyMetadataAttribute) attribute:
+If you have a library in your project, or you're a developer of a reusable library and you want the linker to treat your assembly as linkable, you can mark the assembly as linker safe with the [`AssemblyMetadata`](xref:System.Reflection.AssemblyMetadataAttribute) attribute:
 
 ```csharp
 [assembly: AssemblyMetadata("IsTrimmable", "True")]
 ```
 
-Alternatively, you can set `<IsTrimmable>true</IsTrimmable>` in a `<PropertyGroup>` tag in the project file for the assembly. This will mark your assembly as "trimmable" and enable trim warnings for that project. Being "trimmable" means your assembly is considered compatible with trimming and should have no trim warnings when building the assembly. When used in a trimmed app, the assembly will have its unused members removed in the final output.
+Alternatively, you can set `<IsTrimmable>true</IsTrimmable>` in a `<PropertyGroup>` tag in the project file for the assembly. This marks your assembly as "trimmable" and enable trim warnings for that project. Being "trimmable" means your assembly is considered compatible with trimming and should have no trim warnings when the assembly is built. When used in a trimmed app, the assembly's unused members will be removed in the final output.
 
 > [!NOTE]
 > If the `IsTrimmable` MSBuild property is set for an assembly, this overrides the `IsTrimmable` attribute. This enables you to opt an assembly into trimming even if it doesn't have the attribute, or to disable trimming of an assembly that has the attribute.

@@ -15,23 +15,23 @@ There are two options for installing the .NET MAUI workloads:
 1. Visual Studio on Windows can install *.msi* files for each workload pack.
 1. `dotnet workload install` commands.
 
-On Windows, if you run a `dotnet workload install` after installing .NET MAUI through the Visual Studio installer, Visual Studio can enter a state where it can't locate the .NET MAUI workloads. You'll then receive build errors telling you to install the .NET MAUI workloads, and it's possible to enter a state where the workloads can't be repaired or re-installed. For more information about this issue, see [The CLI and VS do not play nicely](https://github.com/dotnet/sdk/issues/22388).
+On Windows, if you run a `dotnet workload install` after installing .NET MAUI through the Visual Studio installer, Visual Studio can enter a state where it can't locate the .NET MAUI workloads. You'll receive build errors telling you to install the .NET MAUI workloads, and it's possible to enter a state where the workloads can't be repaired or reinstalled. For more information, see the GitHub issue [dotnet/sdk#22388](https://github.com/dotnet/sdk/issues/22388).
 
 ### Windows
 
-The solution to this issue on Windows is to uninstall the .NET MAUI workloads through the CLI, uninstall any .NET SDKs in Control Panel, and uninstall the .NET MAUI workloads in Visual Studio. This can be accomplished with the following process:
+The solution to this issue on Windows is to uninstall the .NET MAUI workloads through the CLI, uninstall any .NET SDKs in Control Panel, and uninstall the .NET MAUI workloads in Visual Studio. These uninstalls can be accomplished with the following process:
 
 1. Run `dotnet workload uninstall maui` if you ever used the `dotnet workload install` commands.
-1. Uninstall any standalone .NET SDK installers from Control Panel. These will have names similar to `Microsoft .NET SDK 6.0.300`.
+1. Uninstall any standalone .NET SDK installers from Control Panel. These installers have names similar to `Microsoft .NET SDK 6.0.300`.
 1. In every instance of Visual Studio, uninstall the .NET Multi-platform App UI development, and .NET desktop development Visual Studio workloads.
 
-Then, check if there are additional `.msi` files that need uninstalling by running the following command:
+Then, check if there are additional `.msi` files that need to be uninstalled by running the following command:
 
 ```cmd
 reg query HKLM\SOFTWARE\Microsoft\Windows\currentversion\uninstall\ -s -f manifest
 ```
 
-This `reg query` command will list .NET 6+ SDKS that are still installed on your machine, such as:
+This `reg query` command lists .NET 6+ SDKs that are still installed on your machine, such as:
 
 ```
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\currentversion\uninstall\{EEC1BB5F-3391-43C2-810E-42D78ADF3140}
@@ -45,7 +45,7 @@ If you receive similar output, you should copy the GUID for each package and uni
 msiexec /x {EEC1BB5F-3391-43C2-810E-42D78ADF3140} /q IGNOREDEPENDENCIES=ALL
 ```
 
-Then, you should keep executing the `reg query` command until it doesn't return any results. Once this happens, and all .NET 6+ SDKs are uninstalled, you should also consider deleting the following folders:
+Then, you should keep executing the `reg query` command until it doesn't return any results. Once there are no more results and all .NET 6+ SDKs are uninstalled, you should also consider deleting the following folders:
 
 - `C:\Program Files\dotnet\sdk-manifests`
 - `C:\Program Files\dotnet\metadata`
@@ -55,7 +55,7 @@ Then, you should keep executing the `reg query` command until it doesn't return 
 - `C:\Program Files\dotnet\sdk\6.*` or `C:\Program Files\dotnet\sdk\7.*`
 - `C:\Program Files\dotnet\host\fxr\6.*` or `C:\Program Files\dotnet\host\fxr\7.*`
 
-After following this process, you should be able to re-install .NET MAUI either through Visual Studio, or by installing your chosen .NET SDK version and running the `dotnet workload install maui` command.
+After following this process, you should be able to reinstall .NET MAUI either through Visual Studio, or by installing your chosen .NET SDK version and running the `dotnet workload install maui` command.
 
 ### Mac
 
@@ -68,7 +68,7 @@ rm -r ~/.dotnet/
 sudo rm -r /usr/local/share/dotnet/
 ```
 
-After executing these commands, you should be able to re-install .NET MAUI either through Visual Studio for Mac, or by installing your chosen .NET SDK version and running `dotnet workload install maui` command.
+After executing these commands, you should be able to reinstall .NET MAUI either through Visual Studio for Mac, or by installing your chosen .NET SDK version and running `dotnet workload install maui` command.
 
 <!-- Leaving here in case this situation occurs with .NET 8
 ## Templates are missing
@@ -148,7 +148,7 @@ Visual Studio may not be resolving the required workloads if you try to compile 
 
 ::: moniker-end
 
-This problem typically results from having an x86 and x64 SDK installed, and the x86 version is being used. Visual Studio and .NET MAUI require the x64 .NET SDK. If your operating system has a system-wide `PATH` variable that is resolving the x86 SDK first, you'll need to fix that by either removing the x86 .NET SDK from the `PATH` variable, or promoting the x64 .NET SDK so that it resolves first. For more information on troubleshooting x86 vs x64 SDK resolution, see [Install .NET on Windows - Troubleshooting](/dotnet/core/install/windows#it-was-not-possible-to-find-any-installed-net-core-sdks).
+This problem typically results from having an x86 and x64 SDK installed, and the x86 version is being used. Visual Studio and .NET MAUI require the x64 .NET SDK. If your operating system has a system-wide `PATH` variable that is resolving the x86 SDK first, you need to fix that by either removing the x86 .NET SDK from the `PATH` variable, or promoting the x64 .NET SDK so that it resolves first. For more information on troubleshooting x86 vs x64 SDK resolution, see [Install .NET on Windows - Troubleshooting](/dotnet/core/install/windows#it-was-not-possible-to-find-any-installed-net-core-sdks).
 
 <!--
 ## The WINDOWS `#if` directive is broken
@@ -162,7 +162,7 @@ The `WINDOWS` definition doesn't resolve correctly in the latest release of .NET
 The definitions that identify a specific version of Windows will still be missing.
 -->
 
-## Type or namespace 'Default' does not exist
+## Type or namespace 'Default' doesn't exist
 
 When using the [`Contacts` API](platform-integration/communication/contacts.md), you may see the following error related to iOS and macOS:
 
@@ -183,11 +183,11 @@ var contact = await Communication.Contacts.Default.PickContactAsync();
 
 ## Xcode isn't currently installed or couldn't be found
 
-After installing the Xcode command line tools, using `xcode-select --install`, Visual Studio for Mac might show a "Xcode is not currently installed or could not be found" message when attempting to build .NET MAUI apps that target iOS or Mac Catalyst. In this scenario, check that you also have Xcode installed from the App Store. Then, launch Xcode and go to **Xcode > Preferences > Locations > Command Line Tools** and check if the drop-down is empty. If it is empty, select the drop-down and then select the location of the Xcode command line tools. Then close Xcode and restart Visual Studio for Mac.
+After you install the Xcode command line tools using `xcode-select --install`, Visual Studio for Mac might show a "Xcode is not currently installed or could not be found" message when you attempt to build .NET MAUI apps that target iOS or Mac Catalyst. In this scenario, check that you also have Xcode installed from the App Store. Then, launch Xcode and go to **Xcode > Preferences > Locations > Command Line Tools** and check if the drop-down is empty. If it's empty, select the drop-down, and then select the location of the Xcode command line tools. Then close Xcode and restart Visual Studio for Mac.
 
 ## Couldn't find a valid Xcode app bundle
 
-If you receive the error "Could not find a valid Xcode app bundle at '/Library/Developer/CommandLineTools'", when attempting to build .NET MAUI apps that target iOS or Mac Catalyst, you should try the solution described in [Xcode isn't currently installed or couldn't be found](#xcode-isnt-currently-installed-or-couldnt-be-found). If you're still unable to access the **Xcode > Preferences > Locations > Command Line Tools** drop-down, run the following command:
+If you receive the error "Could not find a valid Xcode app bundle at '/Library/Developer/CommandLineTools'" when you attempt to build .NET MAUI apps that target iOS or Mac Catalyst, try the solution described in [Xcode isn't currently installed or couldn't be found](#xcode-isnt-currently-installed-or-couldnt-be-found). If you're still unable to access the **Xcode > Preferences > Locations > Command Line Tools** drop-down, run the following command:
 
 ```zsh
 sudo xcode-select --reset

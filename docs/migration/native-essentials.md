@@ -9,12 +9,12 @@ no-loc: [ "Xamarin.Essentials", ".NET MAUI" ]
 
 Xamarin.Essentials is a fundamental library for nearly every Xamarin app, and its functionality is now part of .NET Multi-platform App UI (.NET MAUI).
 
-The process to use .NET MAUIs native device functionality, that was formerly known as Xamarin.Essentials, in a .NET for Android or .NET for iOS app, is:
+The following steps outline the process to use .NET MAUI's native device functionality, formerly known as Xamarin.Essentials, in a .NET for Android or .NET for iOS app:
 
 1. Remove the Xamarin.Essentials NuGet package from your .NET for Android or .NET for iOS app.
 1. Set the `$(UseMauiEssentials)` build property to `true` in your project file. For more information, see [Modify your project file](#modify-your-project-file).
 1. Initialize the "essentials" functionality by calling the `Platform.Init` method. For more information, see [Initialize the platform](#initialize-the-platform).
-1. Perform additional setup, if required. For more information, see [Perform additional setup](#perform-additional-setup).
+1. Perform additional setup, if necessary. For more information, see [Perform additional setup](#perform-additional-setup).
 1. Add using directives for the required functionality. For more information, see [Add using directives](#add-using-directives).
 
 ## Modify your project file
@@ -208,7 +208,7 @@ Activity states are:
 | Method | Purpose |
 | ------ | ------- |
 | `ContinueUserActivity` | Informs the app that there's data associated with continuing a task specified as a <xref:Foundation.NSUserActivity> object, and then returns whether the app continued the activity. |
-| `GetCurrentUIViewController` | Gets the current view controller. This method will return `null` if unable to detect a <xref:UIKit.UIViewController>. |
+| `GetCurrentUIViewController` | Gets the current view controller. This method returns `null` if unable to detect a <xref:UIKit.UIViewController>. |
 | `OpenUrl` | Opens the specified URI to start an authentication flow. |
 | `PerformActionForShortcutItem` | Invokes the action that corresponds to the chosen `AppAction` by the user. |
 
