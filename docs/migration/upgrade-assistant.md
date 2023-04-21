@@ -7,7 +7,7 @@ no-loc: [ "Xamarin.Forms", "Xamarin.Essentials", "Xamarin.CommunityToolkit", ".N
 
 # Upgrade a Xamarin.Forms app to .NET MAUI with the .NET Upgrade Assistant
 
-The .NET Upgrade Assistant is a command-line tool that will help you upgrade Xamarin.Forms projects to .NET Multi-platform App UI (.NET MAUI) by converting the solution's project file and by performing common code updates. Specifically, the tool will:
+The .NET Upgrade Assistant is a command-line tool that helps you upgrade Xamarin.Forms projects to .NET Multi-platform App UI (.NET MAUI) by converting the solution's project file and by performing common code updates. Specifically, the tool will:
 
 - Convert the Xamarin.Forms class library project, Xamarin.iOS project, and Xamarin.Android project to SDK-style projects.
 - Update the target framework in project files to net7.0-android and net7.0-ios, as required.
@@ -19,7 +19,7 @@ The .NET Upgrade Assistant is a command-line tool that will help you upgrade Xam
   - Replace Xamarin.Forms compatible versions of the SkiaSharp NuGet packages with .NET MAUI compatible versions, if used.
 - Remove references to the `Xamarin.Essentials` namespace, and replace the `Xamarin.Forms` namespace with the `Microsoft.Maui` and `Microsoft.Maui.Controls` namespaces.
 
-After running the tool, additional effort will be required to complete the migration.
+After you run the tool, additional effort will be required to complete the migration.
 
 > [!NOTE]
 > The .NET Upgrade Assistant for .NET MAUI doesn't support upgrading UWP projects, iOS extension projects, or binding projects.
@@ -33,7 +33,7 @@ For more information about .NET Upgrade Assistant, including the other app types
 > [!IMPORTANT]
 > The .NET Upgrade Assistant for .NET MAUI is still under development. Please [file feedback](https://github.com/maddymontaquila/maui-migration-samples/issues/new?assignees=&labels=&template=trial-migration-template.md&title=[MIGRATION]+Your+migration+name+here) so we can continue to improve this tool.
 
-.NET Upgrade Assistant will make a backup of your solution, but we recommend using source control. When using source control you may add the `--skip-backup` parameter to bypass the backup and speed up the upgrade process.
+.NET Upgrade Assistant backs up your solution, but we recommend using source control. If you're using source control, you can add the `--skip-backup` parameter to bypass the backup and speed up the upgrade process.
 
 ## Installation
 
@@ -64,7 +64,7 @@ Open a terminal and navigate to the folder where the target project or solution 
 upgrade-assistant upgrade <sln or csproj> --non-interactive
 ```
 
-This command runs the tool in non-interactive mode. It will update all eligible projects in the solution and dependent projects.
+This command runs the tool in non-interactive mode. It updates all eligible projects in the solution and dependent projects.
 
 ## Next steps
 

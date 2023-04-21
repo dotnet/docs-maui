@@ -32,7 +32,7 @@ The `BatteryStats` permission is required and must be configured in the Android 
 
 - Update the Android Manifest:
 
-    Open the _Platforms/Android/AndroidManifest.xml_ file and add the following in the `manifest` node:
+    Open the _Platforms/Android/AndroidManifest.xml_ file and add the following line in the `manifest` node:
 
   ```xml
   <uses-permission android:name="android.permission.BATTERY_STATS" />
@@ -74,7 +74,7 @@ Devices that run on batteries can be put into a low-power energy-saver mode. Som
 
 The energy-saver status of the device can be read by accessing the <xref:Microsoft.Maui.Devices.IBattery.EnergySaverStatus> property, which is either <xref:Microsoft.Maui.Devices.EnergySaverStatus.On>, <xref:Microsoft.Maui.Devices.EnergySaverStatus.Off>, or <xref:Microsoft.Maui.Devices.EnergySaverStatus.Unknown>. If the status is `On`, the application should avoid background processing or other activities that may consume a lot of power.
 
-The battery will raise the <xref:Microsoft.Maui.Devices.IBattery.EnergySaverStatusChanged> event when the battery enters or leaves energy-saver mode.
+The battery raises the <xref:Microsoft.Maui.Devices.IBattery.EnergySaverStatusChanged> event when the battery enters or leaves energy-saver mode.
 You can also obtain the current energy-saver status of the device using the `EnergySaverStatus` property:
 
 The following code example monitors the energy-saver status and sets a property accordingly.
@@ -83,7 +83,7 @@ The following code example monitors the energy-saver status and sets a property 
 
 ## Power source
 
-The <xref:Microsoft.Maui.Devices.IBattery.PowerSource> property returns a <xref:Microsoft.Maui.Devices.BatteryPowerSource> enumeration that indicates how the device is being charged, if at all. If it's not being charged, the status will be <xref:Microsoft.Maui.Devices.BatteryPowerSource.Battery?displayProperty=nameWithType>. The <xref:Microsoft.Maui.Devices.BatteryPowerSource.AC?displayProperty=nameWithType>, <xref:Microsoft.Maui.Devices.BatteryPowerSource.Usb?displayProperty=nameWithType>, and <xref:Microsoft.Maui.Devices.BatteryPowerSource.Wireless?displayProperty=nameWithType> values indicate that the battery is being charged.
+The <xref:Microsoft.Maui.Devices.IBattery.PowerSource> property returns a <xref:Microsoft.Maui.Devices.BatteryPowerSource> enumeration that indicates how the device is being charged, if at all. If it's not being charged, the status is <xref:Microsoft.Maui.Devices.BatteryPowerSource.Battery?displayProperty=nameWithType>. The <xref:Microsoft.Maui.Devices.BatteryPowerSource.AC?displayProperty=nameWithType>, <xref:Microsoft.Maui.Devices.BatteryPowerSource.Usb?displayProperty=nameWithType>, and <xref:Microsoft.Maui.Devices.BatteryPowerSource.Wireless?displayProperty=nameWithType> values indicate that the battery is being charged.
 
 The following code example sets the text of a <xref:Microsoft.Maui.Controls.Label> control based on power source.
 
@@ -102,7 +102,7 @@ No platform differences.
 
 # [iOS/Mac Catalyst](#tab/macios)
 
-- APIs won't work in a simulator and you must use a real device.
+- APIs don't work in a simulator and you must use a real device.
 - Only returns <xref:Microsoft.Maui.Devices.BatteryPowerSource.AC?displayProperty=nameWithType> or <xref:Microsoft.Maui.Devices.BatteryPowerSource.Battery?displayProperty=nameWithType> for <xref:Microsoft.Maui.Devices.IBattery.PowerSource>.
 
 # [Windows](#tab/windows)
