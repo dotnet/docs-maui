@@ -10,7 +10,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.ImageBu
 
 <xref:Microsoft.Maui.Controls.ImageButton> defines the following properties:
 
-- `Aspect`, of type `Aspect`, determines how the image will be scaled to fit the display area.
+- `Aspect`, of type `Aspect`, determines how the image is scaled to fit the display area.
 - `BorderColor`, of type <xref:Microsoft.Maui.Graphics.Color>, describes the border color of the button.
 - `BorderWidth`, of type `double`, defines the width of the button's border.
 - `Command`, of type `ICommand`, defines the command that's executed when the button is tapped.
@@ -38,9 +38,9 @@ In addition, <xref:Microsoft.Maui.Controls.ImageButton> defines `Clicked`, `Pres
 
 ## Create an ImageButton
 
-To create an image button, create an <xref:Microsoft.Maui.Controls.ImageButton> object, set its `Source` property and handle it's `Clicked` event.
+To create an image button, create an <xref:Microsoft.Maui.Controls.ImageButton> object, set its `Source` property and handle its `Clicked` event.
 
-The following XAML example show how to create an <xref:Microsoft.Maui.Controls.ImageButton>:
+The following XAML example shows how to create an <xref:Microsoft.Maui.Controls.ImageButton>:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -120,7 +120,7 @@ For more information about these events, see [Press and release the button](butt
 
 ## ImageButton visual states
 
-<xref:Microsoft.Maui.Controls.ImageButton> has a `Pressed` <xref:Microsoft.Maui.Controls.VisualState> that can be used to initiate a visual change to the <xref:Microsoft.Maui.Controls.ImageButton> when pressed, provided that it's enabled.
+<xref:Microsoft.Maui.Controls.ImageButton> has a `Pressed` <xref:Microsoft.Maui.Controls.VisualState> that can be used to initiate a visual change to the <xref:Microsoft.Maui.Controls.ImageButton> when pressed, if it's enabled.
 
 The following XAML example shows how to define a visual state for the `Pressed` state:
 

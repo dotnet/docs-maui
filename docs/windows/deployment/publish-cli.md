@@ -58,7 +58,7 @@ You must use a signing certificate for use in publishing your app. This certific
     07AD38F3B646F5AAC16F2F2570CAE40F4842BBE0 CN=Contoso                               My temp dev cert
     ```
 
-01. The **Thumbprint** of your certificate will be used later, copy it to your clipboard. It's the **Thumbprint** value whose entry matches the **Subject** and **FriendlyName** of your certificate.
+01. The **Thumbprint** of your certificate will be used later, so copy it to your clipboard. It's the **Thumbprint** value whose entry matches the **Subject** and **FriendlyName** of your certificate.
 
 For more information, see [Create a certificate for package signing](/windows/msix/package/create-certificate-package-signing).
 
@@ -85,7 +85,7 @@ You can use the thumbprint of the certificate to sign your package later, or you
 
 ## Configure the project build settings
 
-The project file is a good place to put Windows-specific build settings. You may not want to put some settings into the project file, such as passwords. The settings described in this section can be passed on the command line with the `-p:name=value` format. If the setting is already defined in the project file, a setting passed on the command line will override the project setting.
+The project file is a good place to put Windows-specific build settings. You may not want to put some settings into the project file, such as passwords. The settings described in this section can be passed on the command line with the `-p:name=value` format. If the setting is already defined in the project file, a setting passed on the command line overrides the project setting.
 
 Add the following `<PropertyGroup>` node to your project file. This property group is only processed when the target framework is Windows and the configuration is set to `Release`. This config section runs whenever a build or publish in `Release` mode.
 
@@ -111,7 +111,7 @@ To publish your app, open the **Developer Command Prompt for VS 2022** terminal 
 
 | Parameter                    | Value                                                                               |
 |------------------------------|-------------------------------------------------------------------------------------|
-| `-f` | The target framework, which is `net6.0-windows{version}` or `net7.0-windows{version}`. This is a Windows TFM, such as `net6.0-windows10.0.19041.0`. Ensure that this value is identical to the value in the `<TargetFrameworks>` node in your *.csproj* file.           |
+| `-f` | The target framework, which is `net6.0-windows{version}` or `net7.0-windows{version}`. This value is a Windows TFM, such as `net6.0-windows10.0.19041.0`. Ensure that this value is identical to the value in the `<TargetFrameworks>` node in your *.csproj* file.           |
 | `-c`                 | The build configuration, which is `Release`.                                   |
 | `-p:RuntimeIdentifierOverride=win10-x64`<br>- or -<br>`-p:RuntimeIdentifierOverride=win10-x86` | Avoids the bug detailed in [WindowsAppSDK Issue #2940](https://github.com/microsoft/WindowsAppSDK/issues/2940). Choose the `-x64` or `-x86` version of the parameter based on your target platform.
 

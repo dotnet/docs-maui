@@ -52,7 +52,7 @@ The browser is opened by calling the <xref:Microsoft.Maui.ApplicationModel.IBrow
 
 :::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="browser_open":::
 
-This method returns after the browser is launched, not after it was closed by the user. `Browser.OpenAsync` returns a `bool` value to indicate if the browser was successfully launched.
+This method returns after the browser is launched, not after it's closed by the user. `Browser.OpenAsync` returns a `bool` value to indicate if the browser was successfully launched.
 
 ## Customization
 
