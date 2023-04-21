@@ -62,6 +62,7 @@ You must use a signing certificate for use in publishing your app. This certific
 
 For more information, see [Create a certificate for package signing](/windows/msix/package/create-certificate-package-signing).
 
+<!-- markdownlint-disable MD044 -->
 <!-- The pfx command line options don't seem to work yet -->
 <!--
 ### Optionally export a PFX file
@@ -82,6 +83,7 @@ You can use the thumbprint of the certificate to sign your package later, or you
     Export-PfxCertificate -cert "Cert:\CurrentUser\My\07AD38F3B646F5AAC16F2F2570CAE40F4842BBE0" -FilePath .\app.pfx -Password $password
     ```
 -->
+<!-- markdownlint-enable MD044 -->
 
 ## Configure the project build settings
 
