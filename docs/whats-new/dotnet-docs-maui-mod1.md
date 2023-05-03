@@ -1,53 +1,62 @@
 ---
-title: ".NET Multi-platform App UI (.NET MAUI) docs: What's new for January 2023"
-description: "What's new in the .NET Multi-platform App UI (.NET MAUI) docs for January 2023."
-ms.date: 02/02/2023
+title: ".NET Multi-platform App UI (.NET MAUI) docs: What's new for April 2023"
+description: "What's new in the .NET Multi-platform App UI (.NET MAUI) docs for April 2023."
+ms.date: 05/03/2023
 ---
 
-# .NET Multi-platform App UI (.NET MAUI) docs: What's new for January 2023
+# .NET Multi-platform App UI (.NET MAUI) docs: What's new for April 2023
 
-Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for January 2023. This article lists some of the major changes to docs during this period.
+Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for April 2023. This article lists some of the major changes to docs during this period.
+
+## Android
+
+### Updated articles
+
+- [Publish a .NET MAUI app for Android with the CLI](../android/deployment/publish-cli.md)
 
 ## Fundamentals
 
 ### Updated articles
 
-- [.NET MAUI Shell flyout](../fundamentals/shell/flyout.md)
-- [.NET MAUI Shell tabs](../fundamentals/shell/tabs.md)
+- [Resource dictionaries](../fundamentals/resource-dictionaries.md)
 
 ## iOS
 
 ### New articles
 
-- [Capabilities](../ios/capabilities.md)
-- [Entitlements](../ios/entitlements.md)
+- [Linking a .NET MAUI iOS app](../ios/linking.md)
 
-## Platform integration
-
-### Updated articles
-
-- [Text-to-Speech](../platform-integration/device-media/text-to-speech.md)
-
-## Tutorials
+## Mac Catalyst
 
 ### New articles
 
-- [Tutorial: Use the MVVM toolkit to update the Notes app](../tutorials/notes-mvvm/index.yml)
+- [Linking a .NET MAUI Mac Catalyst app](../mac-catalyst/linking.md)
+
+## Migration from Xamarin.Forms
+
+### New articles
+
+- [Migrate a Xamarin.Forms custom renderer to a .NET MAUI handler](../migration/renderer-to-handler.md)
+
+## Platform integration
+
+### New articles
+
+- [Customize UI appearance based on the platform and device idiom](../platform-integration/customize-ui-appearance.md)
+
+### Updated articles
+
+- [Media picker for photos and videos](../platform-integration/device-media/picker.md)
 
 ## User interface
 
 ### Updated articles
 
-- [WebView](../user-interface/controls/webview.md)
-- [Host a Blazor web app in a .NET MAUI app using BlazorWebView](../user-interface/controls/blazorwebview.md)
-- [AbsoluteLayout](../user-interface/layouts/absolutelayout.md)
+- [Image](../user-interface/controls/image.md)
 
 ## Community contributors
 
 The following people contributed to the .NET Multi-platform App UI (.NET MAUI) docs during this period. Thank you! Learn how to contribute by following the links under "Get involved" in the [what's new landing page](index.yml).
 
-- [Archanial](https://github.com/Archanial) (1)
-- [mrlacey](https://github.com/mrlacey) - Matt Lacey (1)
-- [proudust](https://github.com/proudust) - Proudust (1)
-- [rafalfrukowski](https://github.com/rafalfrukowski) - Rafał Frukowski (1)
-- [stevemonaco](https://github.com/stevemonaco) - Stephen Monaco (1)
+- [PieEatingNinjas](https://github.com/PieEatingNinjas) - Pieter Nijs (1)
+- [TDurrr1](https://github.com/TDurrr1) (1)
