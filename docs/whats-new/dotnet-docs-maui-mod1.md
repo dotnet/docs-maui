@@ -1,7 +1,7 @@
 ---
 title: ".NET Multi-platform App UI (.NET MAUI) docs: What's new for April 2023"
 description: "What's new in the .NET Multi-platform App UI (.NET MAUI) docs for April 2023."
-ms.date: 05/03/2023
+ms.date: 05/04/2023
 ---
 
 # .NET Multi-platform App UI (.NET MAUI) docs: What's new for April 2023
@@ -25,6 +25,12 @@ Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for Apr
 ### New articles
 
 - [Linking a .NET MAUI iOS app](../ios/linking.md)
+
+## iOS and Mac Catalyst
+
+### New articles
+
+- [Information property list](../macios/info-plist.md)
 
 ## Mac Catalyst
 
