@@ -59,6 +59,10 @@
             "heading": "iOS"
         },
         {
+            "names": [ "macios" ],
+            "heading": "iOS and Mac Catalyst"
+        },        
+        {
             "names": [ "mac-catalyst" ],
             "heading": "Mac Catalyst"
         },
