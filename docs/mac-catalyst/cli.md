@@ -12,27 +12,6 @@ In this tutorial, you'll learn how to create and run a .NET Multi-platform App U
 
 <!-- markdownlint-disable MD029 -->
 
-::: moniker range="=net-maui-6.0"
-
-5. In **Terminal**, change directory to *MyMauiApp*, and build and run the app:
-
-    ```zsh
-    cd MyMauiApp
-    dotnet build -t:Run -f net6.0-maccatalyst
-    ```
-
-    The `dotnet build` command will restore the project dependencies, build the app, and launch it.
-
-    If you see a build error and a warning that the Xcode app bundle could not be found, you may need to run the following command:
-
-    ```zsh
-    xcode-select --reset
-    ```
-
-::: moniker-end
-
-::: moniker range="=net-maui-7.0"
-
 5. In **Terminal**, change directory to *MyMauiApp*, and build and run the app:
 
     ```zsh
@@ -47,8 +26,6 @@ In this tutorial, you'll learn how to create and run a .NET Multi-platform App U
     ```zsh
     xcode-select --reset
     ```
-
-::: moniker-end
 
 6. In the running app, press the **Click me** button several times and observe that the count of the number of button clicks is incremented.
 

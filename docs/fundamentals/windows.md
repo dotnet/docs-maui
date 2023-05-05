@@ -10,17 +10,6 @@ The .NET Multi-platform App UI (.NET MAUI) `Window` class provides the ability t
 
 `Window` defines the following properties:
 
-::: moniker range="=net-maui-6.0"
-
-- `FlowDirection`, of type `FlowDirection`, defines the direction in which the UI element of the window are laid out.
-- `Overlays`, of type `IReadOnlyCollection<IWindowOverlay>`, represents the collection of window overlays.
-- <xref:Microsoft.Maui.Controls.Page>, of type <xref:Microsoft.Maui.Controls.Page>, indicates the page being displayed by the window. This property is the content property of the `Window` class, and therefore does not need to be explicitly set.
-- `Title`, of type `string`, represents the title of the window.
-
-::: moniker-end
-
-::: moniker range=">=net-maui-7.0"
-
 - `FlowDirection`, of type `FlowDirection`, defines the direction in which the UI element of the window are laid out.
 - `Height`, of type `double`, specifies the height of the window on Windows.
 - `MaximumHeight`, of type `double`, represents the maximum height of the window on desktop platforms. Valid values are between 0 and `double.PositiveInfinity`.
@@ -34,28 +23,11 @@ The .NET Multi-platform App UI (.NET MAUI) `Window` class provides the ability t
 - `X`, of type `double`, specifies the X coordinate of the window on Windows.
 - `Y`, of type `double`, specifies the Y coordinate of the window on Windows.
 
-::: moniker-end
-
 These properties, with the exception of the `Overlays` property, are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 <!-- Todo: Is/will Title be shown on desktop platforms? -->
 
 The `Window` class defines the following events:
-
-::: moniker range="=net-maui-6.0"
-
-- `Created`, which is raised when the window is created.
-- `Resumed`, which is raised when the window is resumed from a sleeping state.
-- `Activated`, which is raised when the window is activated.
-- `Deactivated`, which is raised when the window is deactivated.
-- `Stopped`, which is raised when the window is stopped.
-- `Destroying`, which is raised when the window is destroyed.
-- `Backgrounding`, with an accompanying `BackgroundingEventArgs` object, which is raised on iOS and Mac Catalyst when the window is closed or enters a background state. This event can be used to persist any `string` state to the `State` property of the `BackgroundingEventArgs` object, which the OS will preserve until it's time to resume the window. When the window is resumed the state is provided via the `IActivationState` argument to the `CreateWindow` method.
-- `DisplayDensityChanged`, with an accompanying `DisplayDensityChangedEventArgs` object, which is raised on Android and Windows when the effective dots per inch (DPI) for the window has changed.
-
-::: moniker-end
-
-::: moniker range=">=net-maui-7.0"
 
 - `Created`, which is raised when the window is created.
 - `Resumed`, which is raised when the window is resumed from a sleeping state.
@@ -66,8 +38,6 @@ The `Window` class defines the following events:
 - `SizeChanged`, which is raised on desktop platforms when the window changes size.
 - `Backgrounding`, with an accompanying `BackgroundingEventArgs` object, which is raised on iOS and Mac Catalyst when the window is closed or enters a background state. This event can be used to persist any `string` state to the `State` property of the `BackgroundingEventArgs` object, which the OS will preserve until it's time to resume the window. When the window is resumed the state is provided via the `IActivationState` argument to the `CreateWindow` method.
 - `DisplayDensityChanged`, with an accompanying `DisplayDensityChangedEventArgs` object, which is raised on Android and Windows when the effective dots per inch (DPI) for the window has changed.
-
-::: moniker-end
 
 For more information about the lifecycle events, and their associated overrides, see [App lifecycle](app-lifecycle.md).
 
@@ -201,8 +171,6 @@ Then, in the XML editor, open the **Platforms > iOS > Info.plist** file and the 
 > [!IMPORTANT]
 > Multi-window support doesn't work on iOS for iPhone.
 
-::: moniker range=">=net-maui-7.0"
-
 ## Position and size a Window
 
 The position and size of a window can be programmatically defined for a .NET MAUI app on Windows by setting the `X`, `Y`, `Width`, and `Height` properties on a `Window` object.
@@ -263,5 +231,3 @@ Dispatcher.Dispatch(() =>
     Window.MaximumHeight = double.PositiveInfinity;
 });
 ```
-
-::: moniker-end

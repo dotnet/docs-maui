@@ -20,21 +20,9 @@ This article describes how to use Visual Studio to publish your .NET MAUI app fo
 
 ## Set the build target
 
-::: moniker range="=net-maui-6.0"
-
-In Visual Studio, you can only publish to one platform at a time. The target platform is selected with the **Debug Target** drop-down in the Visual Studio toolbar. Set the target to **Windows Machine** or to **Framework** > **net6.0-windows**, as illustrated in the following image:
-
-:::image type="content" source="media/publish-visual-studio/vs-debugtarget-net6.png" alt-text="Selecting the Windows debug target for a .NET MAUI app in Visual Studio using .NET 6.":::
-
-::: moniker-end
-
-::: moniker range="=net-maui-7.0"
-
 In Visual Studio, you can only publish to one platform at a time. The target platform is selected with the **Debug Target** drop-down in the Visual Studio toolbar. Set the target to **Windows Machine** or to **Framework** > **net7.0-windows**, as illustrated in the following image:
 
 :::image type="content" source="media/publish-visual-studio/vs-debugtarget-net7.png" alt-text="Selecting the Windows debug target for a .NET MAUI app in Visual Studio using .NET 7.":::
-
-::: moniker-end
 
 ## Publish the project
 

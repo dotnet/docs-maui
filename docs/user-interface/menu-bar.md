@@ -17,20 +17,9 @@ These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> o
 
 A `MenuBarItem` can consist of the following children:
 
-::: moniker range="=net-maui-6.0"
-
-- `MenuFlyoutItem`, which represents a menu item that can be clicked.
-- `MenuFlyoutSubItem`, which represents a sub-menu item that can be clicked.
-
-::: moniker-end
-
-::: moniker range=">=net-maui-7.0"
-
 - `MenuFlyoutItem`, which represents a menu item that can be clicked.
 - `MenuFlyoutSubItem`, which represents a sub-menu item that can be clicked.
 - `MenuFlyoutSeparator`, which is a horizontal line that separates items in the menu.
-
-::: moniker-end
 
 `MenuFlyoutSubItem` derives from `MenuFlyoutItem`, which in turn derives from `MenuItem`. `MenuItem` defines multiple properties that enable the appearance and behavior of a menu item to be specified. The appearance of a menu item, or sub-item, can be defined by setting the `Text`, and `IconImageSource` properties. The response to a menu item, or sub-item, click can be defined by setting the `Clicked`, `Command`, and `CommandParameter` properties. <!-- For more information about menu items, see [Menu items](). -->
 
@@ -39,48 +28,6 @@ A `MenuBarItem` can consist of the following children:
 `MenuBarItem` objects can be added to the `MenuBarItems` collection, of type `IList<MenuBarItem>`, on a <xref:Microsoft.Maui.Controls.ContentPage>. .NET MAUI desktop apps will display a menu bar, containing menu items, when they are added to any <xref:Microsoft.Maui.Controls.ContentPage> that's hosted in a <xref:Microsoft.Maui.Controls.NavigationPage> or a Shell app.
 
 The following example shows a <xref:Microsoft.Maui.Controls.ContentPage> that defines menu bar items:
-
-::: moniker range="=net-maui-6.0"
-
-```xaml
-<ContentPage ...>
-    <ContentPage.MenuBarItems>
-        <MenuBarItem Text="File">
-            <MenuFlyoutItem Text="Exit"
-                            Command="{Binding ExitCommand}" />
-        </MenuBarItem>
-        <MenuBarItem Text="Locations">
-            <MenuFlyoutSubItem Text="Change Location">
-                <MenuFlyoutItem Text="Redmond, USA"
-                                Command="{Binding ChangeLocationCommand}"
-                                CommandParameter="Redmond" />
-                <MenuFlyoutItem Text="London, UK"
-                                Command="{Binding ChangeLocationCommand}"
-                                CommandParameter="London" />
-                <MenuFlyoutItem Text="Berlin, DE"
-                                Command="{Binding ChangeLocationCommand}"
-                                CommandParameter="Berlin"/>
-            </MenuFlyoutSubItem>           
-            <MenuFlyoutItem Text="Add Location"
-                            Command="{Binding AddLocationCommand}" />                         
-        </MenuBarItem>
-        <MenuBarItem Text="View">
-            <MenuFlyoutItem Text="Refresh"
-                            Command="{Binding RefreshCommand}" />
-            <MenuFlyoutItem Text="Change Theme"
-                            Command="{Binding ChangeThemeCommand}" />
-        </MenuBarItem>
-    </ContentPage.MenuBarItems>
-</ContentPage>
-```
-
-This example defines three top-level menus. Each top-level menu has menu items, and the second top-level menu has a sub-menu:
-
-:::image type="content" source="media/menubar/menubar-net6.png" alt-text="Screenshot of menu bar in .NET 6.":::
-
-::: moniker-end
-
-::: moniker range=">=net-maui-7.0"
 
 ```xaml
 <ContentPage ...>
@@ -122,8 +69,6 @@ This example defines three top-level menus. Each top-level menu has menu items, 
 This example defines three top-level menus. Each top-level menu has menu items, and the second top-level menu has a sub-menu and a separator:
 
 :::image type="content" source="media/menubar/menubar-net7.png" alt-text="Screenshot of menu bar in .NET 7.":::
-
-::: moniker-end
 
 In this example, each `MenuFlyoutItem` defines a menu item that executes an `ICommand` when selected.
 

@@ -1,7 +1,6 @@
 ---
 title: "Display a context menu in a .NET MAUI desktop app"
 description: "Learn how to add a context menu to a .NET MAUI desktop app."
-monikerRange: ">=net-maui-7.0"
 ms.date: 10/06/2022
 ---
 

@@ -28,26 +28,6 @@ Additional build parameters can be specified on the command line. The following 
 | `-p:ApplicationDisplayVersion` | The version number of the app. |
 | `-p:RuntimeIdentifier` | The runtime identifier (RID) for the project. Release builds of .NET MAUI Mac Catalyst apps default to using `maccatalyst-x64` and `maccatalyst-arm64` as runtime identifiers, to support universal apps. To support only a single architecture, specify `maccatalyst-x64` or `maccatalyst-arm64`. |
 
-::: moniker range="=net-maui-6.0"
-
-For example, use the following command to create an *.app*:
-
-```dotnetcli
-dotnet publish -f net6.0-maccatalyst -c Release -p:CreatePackage=false
-```
-
-Use the following command to create a *.pkg*:
-
-```dotnetcli
-dotnet publish -f net6.0-maccatalyst -c Release
-```
-
-Publishing builds the app, and then copies the *.app* to the *bin/Release/net6.0-maccatalyst/* folder or the *.pkg* to the *bin/Release/net6.0-maccatalyst/publish/* folder. If you publish the app using only a single architecture, the *.app* will be published to the *bin/Release/net6.0-maccatalyst/{architecture}/* folder while the *.pkg* will be published to the *bin/Release/net6.0-maccatalyst/{architecture}/publish/* folder.
-
-::: moniker-end
-
-::: moniker range="=net-maui-7.0"
-
 For example, use the following command to create an *.app*:
 
 ```dotnetcli
@@ -61,8 +41,6 @@ dotnet publish -f net7.0-maccatalyst -c Release
 ```
 
 Publishing builds the app, and then copies the *.app* to the *bin/Release/net7.0-maccatalyst/* folder or the *.pkg* to the *bin/Release/net7.0-maccatalyst/publish/* folder. If you publish the app using only a single architecture, the *.app* will be published to the *bin/Release/net7.0-maccatalyst/{architecture}/* folder while the *.pkg* will be published to the *bin/Release/net7.0-maccatalyst/{architecture}/publish/* folder.
-
-::: moniker-end
 
 For more information about the `dotnet publish` command, see [dotnet publish](/dotnet/core/tools/dotnet-publish).
 
