@@ -33,5 +33,3 @@ The `Page.On<iOS>` method specifies that this platform-specific will only run on
 
 > [!NOTE]
 > The <xref:Microsoft.Maui.Controls.Layout> class defines a <xref:Microsoft.Maui.Controls.Layout.IgnoreSafeArea> property that ensures that content is positioned on an area of the screen that is safe for all iOS devices. This property can be set to `false` on any layout class, such as a <xref:Microsoft.Maui.Controls.Grid> or <Microsoft.Maui.Controls.StackLayout>, to perform the equivalent of this platform-specific.
-
-
