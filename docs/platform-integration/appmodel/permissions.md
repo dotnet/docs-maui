@@ -15,33 +15,6 @@ This article describes how you can use the .NET Multi-platform App UI (.NET MAUI
 
 The following table uses ✔️ to indicate that the permission is supported and ❌ to indicate the permission isn't supported or isn't required:
 
-::: moniker range="=net-maui-6.0"
-
-| Permission                                                                              | Android | iOS | Windows | tvOS |
-|------------------------------------------------------------------------------------------|:-------:|:---:|:-------:|:----:|
-| [CalendarRead](xref:Microsoft.Maui.ApplicationModel.Permissions.CalendarRead)           | ✔️     | ✔️  | ❌      | ❌    |
-| [CalendarWrite](xref:Microsoft.Maui.ApplicationModel.Permissions.CalendarWrite)         | ✔️     | ✔️  | ❌      | ❌    |
-| [Camera](xref:Microsoft.Maui.ApplicationModel.Permissions.Camera)                       | ✔️     | ✔️  | ❌      | ❌    |
-| [ContactsRead](xref:Microsoft.Maui.ApplicationModel.Permissions.ContactsRead)           | ✔️     | ✔️  | ✔️     | ❌    |
-| [ContactsWrite](xref:Microsoft.Maui.ApplicationModel.Permissions.ContactsWrite)         | ✔️     | ✔️  | ✔️     | ❌    |
-| [Flashlight](xref:Microsoft.Maui.ApplicationModel.Permissions.Flashlight)               | ✔️     | ❌   | ❌      | ❌    |
-| [LocationWhenInUse](xref:Microsoft.Maui.ApplicationModel.Permissions.LocationWhenInUse) | ✔️     | ✔️  | ✔️     | ✔️   |
-| [LocationAlways](xref:Microsoft.Maui.ApplicationModel.Permissions.LocationAlways)       | ✔️     | ✔️  | ✔️     | ❌    |
-| [Media](xref:Microsoft.Maui.ApplicationModel.Permissions.Media)                         | ❌      | ✔️  | ❌      | ❌    |
-| [Microphone](xref:Microsoft.Maui.ApplicationModel.Permissions.Microphone)               | ✔️     | ✔️  | ✔️     | ❌    |
-| [Phone](xref:Microsoft.Maui.ApplicationModel.Permissions.Phone)                         | ✔️     | ✔️  | ❌      | ❌    |
-| [Photos](xref:Microsoft.Maui.ApplicationModel.Permissions.Photos)                       | ❌      | ✔️  | ❌      | ✔️   |
-| [Reminders](xref:Microsoft.Maui.ApplicationModel.Permissions.Reminders)                 | ❌      | ✔️  | ❌      | ❌    |
-| [Sensors](xref:Microsoft.Maui.ApplicationModel.Permissions.Sensors)                     | ✔️     | ✔️  | ✔️     | ❌    |
-| [Sms](xref:Microsoft.Maui.ApplicationModel.Permissions.Sms)                             | ✔️     | ✔️  | ❌      | ❌    |
-| [Speech](xref:Microsoft.Maui.ApplicationModel.Permissions.Speech)                       | ✔️     | ✔️  | ❌      | ❌    |
-| [StorageRead](xref:Microsoft.Maui.ApplicationModel.Permissions.StorageRead)             | ✔️     | ❌   | ❌      | ❌    |
-| [StorageWrite](xref:Microsoft.Maui.ApplicationModel.Permissions.StorageWrite)           | ✔️     | ❌   | ❌      | ❌    |
-
-::: moniker-end
-
-::: moniker range=">=net-maui-7.0"
-
 | Permission                                                                              | Android | iOS | Windows | tvOS |
 |------------------------------------------------------------------------------------------|:-------:|:---:|:-------:|:----:|
 | [CalendarRead](xref:Microsoft.Maui.ApplicationModel.Permissions.CalendarRead)           | ✔️     | ✔️  | ❌      | ❌    |
@@ -62,8 +35,6 @@ The following table uses ✔️ to indicate that the permission is supported and
 | [Speech](xref:Microsoft.Maui.ApplicationModel.Permissions.Speech)                       | ✔️     | ✔️  | ❌      | ❌    |
 | [StorageRead](xref:Microsoft.Maui.ApplicationModel.Permissions.StorageRead)             | ✔️     | ❌   | ❌      | ❌    |
 | [StorageWrite](xref:Microsoft.Maui.ApplicationModel.Permissions.StorageWrite)           | ✔️     | ❌   | ❌      | ❌    |
-
-::: moniker-end
 
 If a permission is marked as ❌, it will always return <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Granted> when checked or requested.
 
@@ -205,19 +176,7 @@ Permissions must have a matching string in the _Info.plist_ file. Once a permiss
 
 # [Windows](#tab/windows)
 
-::: moniker range="=net-maui-6.0"
-
-Permissions must have matching capabilities declared in the package manifest. Permission status defaults to <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Unknown> in most instances.
-
-<!-- TODO For more information, see [App Capability Declaration](/windows/uwp/packaging/app-capability-declarations). -->
-
-::: moniker-end
-
-::: moniker range=">=net-maui-7.0"
-
 No platform differences.
-
-::: moniker-end
 
 -----
 <!-- markdownlint-enable MD025 -->

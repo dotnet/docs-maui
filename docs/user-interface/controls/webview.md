@@ -240,7 +240,7 @@ The following steps demonstrate how to intercept permission requests from the `W
     private async Task RequestCameraPermission()
     {
         PermissionStatus status = await Permissions.CheckStatusAsync<Permissions.Camera>();
-    
+
         if (status != PermissionStatus.Granted)
             await Permissions.RequestAsync<Permissions.Camera>();
     }
@@ -272,17 +272,17 @@ The following steps demonstrate how to intercept permission requests from the `W
                 {
                     // Get the status of the .NET MAUI app's access to the camera
                     PermissionStatus status = Permissions.CheckStatusAsync<Permissions.Camera>().Result;
-    
+
                     // Deny the web page's request if the app's access to the camera is not "Granted"
                     if (status != PermissionStatus.Granted)
                         request.Deny();
                     else
                         request.Grant(request.GetResources());
-    
+
                     return;
                 }
             }
-    
+
             base.OnPermissionRequest(request);
         }
     }
@@ -376,8 +376,6 @@ function factorial(num) {
 
 :::zone pivot="devices-ios, devices-maccatalyst"
 
-::: moniker range=">=net-maui-7.0"
-
 ## Configure the native WebView on iOS and Mac Catalyst
 
 The native <xref:Microsoft.Maui.Controls.WebView> control is a `MauiWKWebView` on iOS and Mac Catalyst, which derives from `WKWebView`. One of the `MauiWKWebView` constructor overloads enables a `WKWebViewConfiguration` object to be specified, which provides information about how to configure the `WKWebView` object. Typical configurations include setting the user agent, specifying cookies to make available to your web content, and injecting custom scripts into your web content.
@@ -403,8 +401,6 @@ using Microsoft.Maui.Handlers;
 
 > [!NOTE]
 > You should configure `MauiWKWebView` with a `WKWebViewConfiguration` object before a <xref:Microsoft.Maui.Controls.WebView> is displayed in your app. Suitable locations to do this are in your app's startup path, such as in *MauiProgram.cs* or *App.xaml.cs*. <!-- For more information about configuring a native .NET MAUI control, see [Customize controls](~/user-interface/handlers/customize.md). -->
-
-::: moniker-end
 
 :::zone-end
 
