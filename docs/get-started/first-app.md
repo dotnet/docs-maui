@@ -138,7 +138,7 @@ If your app fails to compile, review [Troubleshooting known issues](../troublesh
 :::zone pivot="devices-windows"
 
 <!-- markdownlint-disable MD029 -->
-06. In the Visual Studio toolbar, use the **Debug Target** drop-down to select **Framework** and then the **net6.0-windows** entry:
+06. In the Visual Studio toolbar, use the **Debug Target** drop-down to select **Framework** and then the **net7.0-windows** entry:
 
     :::image type="content" source="media/first-app/vs/windows-debug-target.png" alt-text="Select the Windows Machine debugging target for .NET MAUI.":::
 
