@@ -1,7 +1,6 @@
 ---
 title: "Display tooltips"
 description: "Learn how to display a tooltip, which displays information about the view's purpose, when the user rests the pointer on the view."
-monikerRange: ">=net-maui-7.0"
 ms.date: 10/03/2022
 ---
 

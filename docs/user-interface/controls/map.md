@@ -1,7 +1,6 @@
 ---
 title: "Map"
 description: "Learn how to use the Map control, which is a cross-platform view for displaying and annotating maps. The Map control is available in the Microsoft.Maui.Controls.Maps NuGet package."
-monikerRange: ">=net-maui-7.0"
 ms.date: 09/26/2022
 ---
 

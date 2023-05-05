@@ -134,21 +134,9 @@ In some cases, KeyChain data is synchronized with iCloud, and uninstalling the a
 
 `DataProtectionProvider` is used to encrypt values securely on Windows devices. <!-- (/uwp/api/windows.security.cryptography.dataprotection.dataprotectionprovider) -->
 
-::: moniker range="=net-maui-6.0"
-
-Encrypted values are stored in `ApplicationData.Current.LocalSettings`, inside a container with a name of _[YOUR-APP-ID].microsoft.maui.essentials.preferences_.
-
-`SecureStorage` uses the [Preferences](preferences.md) API and follows the same data persistence outlined in the [Preferences](preferences.md#persistence) documentation. It also uses `LocalSettings`, which has a restriction that a setting name length may be 255 characters at the most. Each setting can be up to 8K bytes in size, and each composite setting can be up to 64 K bytes in size.
-
-::: moniker-end
-
-::: moniker range=">=net-maui-7.0"
-
 In packaged apps, encrypted values are stored in `ApplicationData.Current.LocalSettings`, inside a container with a name of _[YOUR-APP-ID].microsoft.maui.essentials.preferences_. `SecureStorage` uses the [Preferences](preferences.md) API and follows the same data persistence outlined in the [Preferences](preferences.md#persistence) documentation. It also uses `LocalSettings`, which has a restriction that a setting name length may be 255 characters at the most. Each setting can be up to 8K bytes in size, and each composite setting can be up to 64 K bytes in size.
 
 In unpackaged apps, encrypted values are stored in JSON format in `securestorage.dat` inside the app's data folder.
-
-::: moniker-end
 
 -----
 <!-- markdownlint-enable MD024 -->

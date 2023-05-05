@@ -71,8 +71,7 @@
     "markdownEngineName": "markdig",
     "groups": {
       "net": {
-        "dest": "net-dest",
-        "moniker_range": ">=net-maui-6.0"
+        "dest": "net-dest"
       }
     }
   }
