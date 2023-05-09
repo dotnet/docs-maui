@@ -68,7 +68,7 @@ The next step is to add the code for the button's `Clicked` event.
 
     :::image type="content" source="../media/shell/vs-goto-definition.png" alt-text="Right-clicking on a button clicked handler, and selecting Go To Definition.":::
 
-01. The code editor opens to the code-behind file, _About.xaml.cs_, and generates an empty event handler for the `Clicked` event.
+01. The code editor opens to the code-behind file, _AboutPage.xaml.cs_, and generates an empty event handler for the `Clicked` event.
 
     ```csharp
     private void LearnMore_Clicked(object sender, EventArgs e)
