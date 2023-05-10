@@ -29,7 +29,7 @@ The new project should be given the same project and package name as your existi
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net6.0-android</TargetFramework>
+    <TargetFramework>net7.0-android</TargetFramework>
     <SupportedOSPlatformVersion>21</SupportedOSPlatformVersion>
     <OutputType>Exe</OutputType>
     <Nullable>enable</Nullable>
@@ -42,7 +42,7 @@ The new project should be given the same project and package name as your existi
 ```
 
 > [!IMPORTANT]
-> The target framework moniker (TFM) is what denotes the project as using .NET, in this case .NET 6. Valid TFMs for equivalent Xamarin native projects are net6.0-android, net6.0-ios, net6.0-macos, net6.0-tvos, and their .NET 7 equivalents.
+> The target framework moniker (TFM) is what denotes the project as using .NET, in this case .NET 6. Valid TFMs for equivalent Xamarin native projects are net7.0-android, net7.0-ios, net7.0-macos, net7.0-tvos.
 
 Launch the app to confirm that your development environment can build the app.
 
@@ -56,14 +56,14 @@ You'll also need to copy some project properties from your Xamarin native projec
 
 ## Update dependencies
 
-Xamarin native NuGet packages are not compatible with .NET 6+ unless they have been recompiled using .NET TFMs. You can confirm a package is .NET 6+ compatible by looking at the **Frameworks** tab on [NuGet](https://nuget.org) for the package you're using, and checking that it lists one of the compatible frameworks shown in the following table:
+Xamarin native NuGet packages are not compatible with .NET 6+ unless they have been recompiled using .NET TFMs. You can confirm a package is .NET 7+ compatible by looking at the **Frameworks** tab on [NuGet](https://nuget.org) for the package you're using, and checking that it lists one of the compatible frameworks shown in the following table:
 
 | Compatible frameworks | Incompatible frameworks |
 | --- | --- |
-| net6.0-android, net7.0-android | monoandroid, monoandroid10.0 |
-| net6.0-ios, net7.0-ios | monotouch, xamarinios, xamarinios10 |
-| net6.0-macos, net6.0-macos | monomac, xamarinmac, xamarinmac20 |
-| net6.0-tvos, net7.0-tvos | xamarintvos |
+| net7.0-android | monoandroid, monoandroid10.0 |
+| net7.0-ios | monotouch, xamarinios, xamarinios10 |
+| net7.0-macos | monomac, xamarinmac, xamarinmac20 |
+| net7.0-tvos | xamarintvos |
 | | xamarinwatchos |
 
 > [!NOTE]

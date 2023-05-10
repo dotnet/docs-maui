@@ -352,14 +352,14 @@ For more information about the `GenerateAssemblyInfo` property, see [GenerateAss
 
 ## Update app dependencies
 
-Xamarin.Forms NuGet packages are not compatible with .NET 6+ unless they have been recompiled using .NET target framework monikers (TFMs). You can confirm a package is .NET 6+ compatible by looking at the **Frameworks** tab on [NuGet](https://nuget.org) for the package you're using, and checking that it lists one of the compatible frameworks shown in the following table:
+Xamarin.Forms NuGet packages are not compatible with .NET 6+ unless they have been recompiled using .NET target framework monikers (TFMs). You can confirm a package is .NET 7+ compatible by looking at the **Frameworks** tab on [NuGet](https://nuget.org) for the package you're using, and checking that it lists one of the compatible frameworks shown in the following table:
 
 | Compatible frameworks | Incompatible frameworks |
 | --- | --- |
-| net6.0-android, net7.0-android | monoandroid, monoandroid10.0 |
-| net6.0-ios, net7.0-ios | monotouch, xamarinios, xamarinios10 |
-| net6.0-maccatalyst, net7.0-maccatalyst |  |
-| net6.0-windows, net7.0-windows | uap10.0.16299 |
+| net7.0-android | monoandroid, monoandroid10.0 |
+| net7.0-ios | monotouch, xamarinios, xamarinios10 |
+| net7.0-maccatalyst |  |
+| net7.0-windows | uap10.0.16299 |
 
 > [!NOTE]
 > .NET Standard libraries that have no dependencies on the incompatible frameworks listed below are still compatible with .NET 6+.
