@@ -1,3 +1,10 @@
+---
+title: "Publish a .NET MAUI Android app for ad-hoc distribution"
+description: "Learn how to publish a .NET MAUI Android app for ad-hoc distribution."
+ms.date: 05/10/2023
+---
+
+# Publish an Android app for ad-hoc distribution
 
 https://learn.microsoft.com/en-us/xamarin/android/deploy-test/signing/?tabs=windows
 
@@ -11,8 +18,8 @@ By default, the package format for .NET MAUI Android release builds is AAB. To p
 
 1. In **Solution Explorer** right-click on your .NET MAUI app project and select **Properties**. Then, navigate to the **Android > Options** tab and ensure that the value of the **Release** field is set to **apk**:
 
-    :::image type="content" source="media/publish/vs/ad-hoc-change-package-format.png" alt-text="Screenshot of changing the package format of a .NET MAUI Android app to APK."
-    
+    :::image type="content" source="media/publish/vs/ad-hoc-change-package-format.png" alt-text="Screenshot of changing the package format of a .NET MAUI Android app to APK.":::
+
 ## Publish
 
 [!INCLUDE [Publish](../includes/publish-vs.md)]
@@ -43,18 +50,18 @@ By default, the package format for .NET MAUI Android release builds is AAB. To p
 
 1. In the **Distribute - Signing Identity** dialog, select your newly created signing identity and select the **Save As** button:
 
-    :::image type="content" source="media/publish/vs/save-ad-hoc.png" alt-text="Screenshot of publishing your app for ad-hoc distribution."
+    :::image type="content" source="media/publish/vs/save-ad-hoc.png" alt-text="Screenshot of publishing your app for ad-hoc distribution.":::
 
     The *Archive Manager* displays the publishing process.
 
 1. In the **Save As** dialog, confirm the location and file name for your *.AAB* file is correct and select the **Save** button.
 1. In the **Signing Password** dialog, enter the signing identity password and select the **OK** button:
 
-    :::image type="content" source="media/publish/vs/keystore-password.png" alt-text="Screenshot of entering your signing identity password."
+    :::image type="content" source="media/publish/vs/keystore-password.png" alt-text="Screenshot of entering your signing identity password.":::
 
 1. In the *Archive Manager**, select the **Open Distribution** button once the publishing process completes:
 
-    :::image type="content" source="media/publish/vs/ad-hoc-open-distribution.png" alt-text="Screenshot of opening the folder containing your published Android app."
+    :::image type="content" source="media/publish/vs/ad-hoc-open-distribution.png" alt-text="Screenshot of opening the folder containing your published Android app.":::
 
     Visual Studio will open the folder containing the published *.AAB* file.
 

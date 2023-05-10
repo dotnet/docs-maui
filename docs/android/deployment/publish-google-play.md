@@ -1,3 +1,10 @@
+---
+title: "Publish a .NET MAUI Android app for Google Play distribution"
+description: "Learn how to publish a .NET MAUI Android app for Google Play distribution."
+ms.date: 05/10/2023
+---
+
+# Publish an Android app for Google Play distribution
 
 https://learn.microsoft.com/en-us/xamarin/android/deploy-test/publishing/publishing-to-google-play/?tabs=windows
 https://developer.android.com/studio/publish/app-signing
@@ -44,11 +51,11 @@ After you've created your Google Play Developer account, you'll need to create a
 1. Login to your [Google Play Developer account](https://play.google.com/apps/publish).
 1. In **Google Play Console**, on the **All apps** tab, select the **Create app** button:
 
-    :::image type="content" source="media/publish/vs/google-play-create-new-app.png" alt-text="Screenshot of the all apps page in Google Play."
+    :::image type="content" source="media/publish/vs/google-play-create-new-app.png" alt-text="Screenshot of the all apps page in Google Play.":::
 
 1. In the **Create app** page, enter your app details and select the **Create app** button:
 
-    :::image type="content" source="media/publish/vs/google-play-create-app.png" alt-text="Screenshot of creating a new app in Google Play."
+    :::image type="content" source="media/publish/vs/google-play-create-app.png" alt-text="Screenshot of creating a new app in Google Play.":::
 
     For more information about creating an app in Google Play Console, see [Create and set up your app](https://support.google.com/googleplay/android-developer/answer/9859152) on support.google.com.
 
@@ -82,7 +89,7 @@ Once you've uploaded your initial build you can sign and distribute your AAB dir
 1. Login to your [Google Play Developer account](https://play.google.com/apps/publish).
 1. In **Google Play Console**, expand the **Setup** item and select **API access**. Then in the **API access** page, select the **Choose a project to link** button:
 
-    :::image type="content" source="media/publish/vs/api-access-choose-project.png" alt-text="Screenshot of API access page in Google Play Console."
+    :::image type="content" source="media/publish/vs/api-access-choose-project.png" alt-text="Screenshot of API access page in Google Play Console.":::
 
   To use Google Play Developer APIs you'll need a Google Cloud project that must be linked to your Play Console developer account.
 
@@ -91,47 +98,47 @@ Once you've uploaded your initial build you can sign and distribute your AAB dir
 
 1. In the **API access** page, select the **Create a new Google Cloud project** radio button followed by the **Save** button:
 
-    :::image type="content" source="media/publish/vs/api-access-create-google-cloud-project.png" alt-text="Screenshot of selecting the create a new Google Cloud project radio button."
+    :::image type="content" source="media/publish/vs/api-access-create-google-cloud-project.png" alt-text="Screenshot of selecting the create a new Google Cloud project radio button.":::
 
   A new Google Cloud project will be created and linked to your Play Console developer account.
 
 1. In the **API access** page, in the **OAuth clients** section, select **Configure OAuth consent screen**:
 
-    :::image type="content" source="media/publish/vs/api-access-configure-oauth-consent.png" alt-text="Screenshot of API access page with linked Google Cloud project."
+    :::image type="content" source="media/publish/vs/api-access-configure-oauth-consent.png" alt-text="Screenshot of API access page with linked Google Cloud project.":::
 
 1. In the **OAuth consent screen** page, select your required user type radio button and then select the **CREATE** button:
 
-    :::image type="content" source="media/publish/vs/oauth-consent-user-type.png" alt-text="Screenshot of selecting the user type for the OAuth consent screen."
+    :::image type="content" source="media/publish/vs/oauth-consent-user-type.png" alt-text="Screenshot of selecting the user type for the OAuth consent screen.":::
 
     For more information about the user types, see [User type](https://support.google.com/cloud/answer/10311615#user-type) on support.google.com.
 
 1. In the **Edit app registration** page, complete the fields marked as required and then select the **SAVE AND CONTINUE** button:
 
-    :::image type="content" source="media/publish/vs/oauth-consent-edit-app-registration1.png" alt-text="Screenshot of editing the OAuth consent screen app registration data.".
-    :::image type="content" source="media/publish/vs/oauth-consent-edit-app-registration2.png" alt-text="Screenshot of editing the OAuth consent screen developer contact information.".
+    :::image type="content" source="media/publish/vs/oauth-consent-edit-app-registration1.png" alt-text="Screenshot of editing the OAuth consent screen app registration data.":::
+    :::image type="content" source="media/publish/vs/oauth-consent-edit-app-registration2.png" alt-text="Screenshot of editing the OAuth consent screen developer contact information.":::
 
 1. In the **Edit app registration** page, select the **ADD OR REMOVE SCOPES** button:
 
-  IMAGE GOES HERE
+    :::image type="content" source="media/publish/vs/oauth-consent-add-scopes.png" alt-text="Screenshot of adding scopes for the OAuth consent screen.":::
 
 1. In the **Update selected scopes** flyout, select the `./auth/androidpublisher` scope in the table and then select the **UPDATE** button:
 
-  IMAGE GOES HERE
+    :::image type="content" source="media/publish/vs/oauth-consent-scopes.png" alt-text="Screenshot of adding the android publisher scope for the OAuth consent screen.":::
 
   > [!NOTE]
   > The other scopes in the table can be optionally selected as they are standard scopes.
 
 1. In the **Edit app registration** page, select the **Credentials** tab:
 
-  IMAGE GOES HERE
+    :::image type="content" source="media/publish/vs/oauth-consent-credentials.png" alt-text="Screenshot of selecting the credentials tab.":::
 
 1. In the **Credentials** page, select the **+ CREATE CREDENTIALS** button and then the **OAuth client ID** item:
 
-  IMAGE GOES HERE
+    :::image type="content" source="media/publish/vs/credentials-create.png" alt-text="Screenshot of selecting the create credentials button.":::
 
 1. In the **Create OAuth client ID** page, choose **Desktop app** in the **Application type** drop down, enter **Visual Studio** in the **Name** field, and then select the **CREATE** button:
 
-  IMAGE GOES HERE
+    :::image type="content" source="media/publish/vs/credentials-create-oauth.png" alt-text="Screenshot of creating OAuth credentials.":::
 
 1. In the **OAuth client created** dialog, select the **DOWNLOAD JSON** data button to download your client ID and client secret. Then click the **OK** button to dismiss the dialog.
 
@@ -159,42 +166,42 @@ Once you've uploaded your initial build you can sign and distribute your AAB dir
 
 1. In the **Distribute - Select Channel** dialog, select the **Google Play** button:
 
-    :::image type="content" source="media/publish/vs/distribution-select-channel-app-store.png" alt-text="Screenshot of selecting a distribution channel in the distribution dialog.":::
+    :::image type="content" source="media/publish/vs/distribution-select-channel-google-play.png" alt-text="Screenshot of selecting a distribution channel in the distribution dialog.":::
 
-1. In the **Distribute - Signing Identity** dialog, select the **+** button and provide the following information for your signing identity:
+1. In the **Distribute - Signing Identity** dialog, select the **+** button to add your signing identity:
 
-    - Alias. Enter an identifying name for your key.
-    - Password. Create and confirm a secure password for your key.
-    - Validity. Set the length of time, in years, that your key will be valid.
-    - Full name, organization unit, organization, city or locality, state or province, and country code. This information is not displayed in your app, but is included in your certificate.
-
-    :::image type="content" source="media/publish/vs/distribution-signing-identity-app-store.png" alt-text="Screenshot of selecting a signing identity in the distribution dialog.":::
+    :::image type="content" source="media/publish/vs/distribution-add-signing-identity.png" alt-text="Screenshot of adding a signing identity in the distribution dialog.":::
 
     The **Create Android Keystore** dialog will appear.
 
     > [!NOTE]
     > An existing signing identity can be used by selecting the **Import** button.
 
-1. In the **Create Android Keystore** dialog, enter the required information to create a new signing identity and then select the **Create** button:
+1. In the **Create Android Keystore** dialog, provide the following information for your signing identity, known as a *keystore*, and then select the **Create** button:
 
-    IMAGE GOES HERE
+    - Alias. Enter an identifying name for your key.
+    - Password. Create and confirm a secure password for your key.
+    - Validity. Set the length of time, in years, that your key will be valid.
+    - Full name, organization unit, organization, city or locality, state or province, and country code. This information is not displayed in your app, but is included in your certificate.
 
-    The resulting keystore is created in the **C:\Users\{Username}\AppData\Local\Xamarin\Mono for Android\Keystore\{Alias}\{Alias}.keystore
+    :::image type="content" source="media/publish/vs/create-android-keystore.png" alt-text="Screenshot of creating an Android keystore.":::
+
+    A new keystore, which contains a new certificate, will be saved to **C:\Users\{Username}\AppData\Local\Xamarin\Mono for Android\Keystore\{Alias}\{Alias}.keystore**.
 
     > [!IMPORTANT]
-    > The keystore and password isn't included in your Visual Studio solution. Therefore, ensure you back up your keystore file and password. If you lose this data you'll be unable to sign your app with the same signing identity.
+    > The keystore and password isn't saved to your Visual Studio solution. Therefore, ensure you back up this data. If you lose it you'll be unable to sign your app with the same signing identity.  
 
 1. In the **Distribute - Signing Identity** dialog, select your signing identity and select the **Continue** button:
 
-      IMAGE GOES HERE
+    :::image type="content" source="media/publish/vs/signing-identity-continue.png" alt-text="Screenshot of selecting your newly created signing identity.":::
 
 1. In the **Distribute - Google Play Account** dialog, select the **+** button to add your Google Play Account details:
 
-      IMAGE GOES HERE
+    :::image type="content" source="media/publish/vs/distribution-add-google-play-account.png" alt-text="Screenshot of adding a Google Play account in the distribution dialog.":::
 
 1. In the **Register Google API Access** dialog, enter a description and your OAuth client ID and client secret, and then click the **Register** button:
 
-    IMAGE GOES HERE
+    :::image type="content" source="media/publish/vs/register-google-api-access.png" alt-text="Screenshot of registering your OAuth client ID and client secret in Visual Studio.":::
 
     > [!NOTE]
     > The account description makes it possible to register more than one Google Play account and upload apps to different Google Play accounts.
@@ -203,20 +210,20 @@ Once you've uploaded your initial build you can sign and distribute your AAB dir
 
 1. In the web browser, sign into your Google Play Developer account. After you sign in, a message may be displayed telling you that Google hasn't verified the app. Select the **Continue** button:
 
-  IMAGE GOES HERE
+    :::image type="content" source="media/publish/vs/google-sign-in-continue.png" alt-text="Screenshot of Google sign in saying the app hasn't been verified.":::
 
 1. In the web browser, select the **Continue** button to authorize the app:
 
-  IMAGE GOES HERE
+    :::image type="content" source="media/publish/vs/google-api-access-authorize.png" alt-text="Screenshot of authorizing Google API access.":::
 
-  The web browser receives a verification code.
+  The web browser will receive a verification code.
 
   > [!IMPORTANT]
   > Don't close the web browser.
 
 1. In Visual Studio, in the **Distribute - Google Play Account** dialog, select **Continue**:
 
-  IMAGE GOES HERE
+    :::image type="content" source="media/publish/vs/distribution-google-api-access-authorized.png" alt-text="Screenshot of authorized Google API access in Visual Studio.":::
 
 1. In the **Distribute - Google Play Track** dialog, select the track to upload your app to. Google Play offers five tracks for uploading your app:
 
@@ -231,13 +238,13 @@ Once you've uploaded your initial build you can sign and distribute your AAB dir
 
   Select the track to upload your app to and then select the **Upload** button:
 
-  IMAGE GOES HERE
+  :::image type="content" source="media/publish/vs/distribution-select-google-play-track.png" alt-text="Screenshot of selecting a Google Play Track prior to uploading your app.":::
 
   For more information about Google Play testing, see [Set up an open, closed, or internal test](https://support.google.com/googleplay/android-developer/answer/9845334?hl=en&visit_id=638192315525080840-296240211&rd=1) on support.google.com.
 
 1. Visual Studio will begin publishing your app to Google Play. In the **Signing Password** dialog, enter your password you created for the signing identity and select the **OK** button:
 
-  IMAGE GOES HERE
+    :::image type="content" source="media/publish/vs/enter-password.png" alt-text="Screenshot of entering your password for your signing identity in Visual Studio.":::
 
 Visual Studio will sign your app bundle and upload it to Google Play.
 
