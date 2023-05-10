@@ -10,7 +10,7 @@ To publish an unsigned .NET Multi-platform App UI (.NET MAUI) Mac Catalyst app, 
 
 | Parameter                    | Value                                                                                               |
 |------------------------------|-----------------------------------------------------------------------------------------------------|
-| `-f` or `--framework`        | The target framework, which is `net6.0-maccatalyst` or `net7.0-maccatalyst`.                        |
+| `-f` or `--framework`        | The target framework, which is `net7.0-maccatalyst`.                        |
 | `-c` or `--configuration`    | The build configuration, which is `Release`.                                                        |
 | `-p:MtouchLink`              | The link mode for the project, which can be `None`, `SdkOnly`, or `Full`.                           |
 | `-p:CreatePackage`           | An optional parameter that controls whether to create an .app or a .pkg. Use `false` for an *.app*. |

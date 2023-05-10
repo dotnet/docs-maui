@@ -10,7 +10,7 @@ To publish your app from the command line on a Mac, open a terminal and navigate
 
 | Parameter                    | Value                                                                                           |
 |------------------------------|-------------------------------------------------------------------------------------------------|
-| `-f` or `--framework`        | The target framework, which is `net6.0-ios` or `net7.0-ios`.                                    |
+| `-f` or `--framework`        | The target framework, which is `net7.0-ios`.                                    |
 | `-c` or `--configuration`    | The build configuration, which is `Release`.                                                    |
 
 > [!WARNING]
