@@ -6,10 +6,12 @@ ms.date: 05/10/2023
 
 # Publish an Android app for Google Play distribution
 
+<!--
 https://learn.microsoft.com/en-us/xamarin/android/deploy-test/publishing/publishing-to-google-play/?tabs=windows
 https://developer.android.com/studio/publish/app-signing
 https://developercommunity.visualstudio.com/t/cannot-publish-Maui-App-with-Visual-Stud/10118589?entry=problem
 https://goforgoldman.com/posts/maui-app-deploy/
+-->
 
 Google Play – Publishes a signed APK to Google Play. Continue to Publishing to Google Play to learn how to sign and publish an AAB in the Google Play store.
 
