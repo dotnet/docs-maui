@@ -11,6 +11,7 @@ https://learn.microsoft.com/en-us/xamarin/android/deploy-test/publishing/publish
 https://developer.android.com/studio/publish/app-signing
 https://developercommunity.visualstudio.com/t/cannot-publish-Maui-App-with-Visual-Stud/10118589?entry=problem
 https://goforgoldman.com/posts/maui-app-deploy/
+https://tukaianirban.medium.com/internal-testing-in-google-playstore-47de955062ad
 -->
 
 Google Play – Publishes a signed APK to Google Play. Continue to Publishing to Google Play to learn how to sign and publish an AAB in the Google Play store.
@@ -268,3 +269,18 @@ Steps:
 
 
 ## Upload to Google Play from Visual Studio
+
+## Troubleshooting
+
+An AAB must have already been submitted to Google Play before you can publish it from Visual Studio. If you attempt to publish an AAB from Visual Studio that hasn't first been uploaded from the Play Console, you'll receive the following error:
+
+> Google Play requires you to manually upload your first package (APK/AAB) for this app. You can use an ad-hoc package for this.
+
+When this error occurs, manually upload an AAB (via ad-hoc publishing) via the Google Play Console. Then subsequent releases of the app can be published through Visual Studio. However, you must change the version code of the app for each upload, otherwise the following error will occur:
+
+> An AAB with version code (1) has already been uploaded.
+
+To resolve this error, rebuild the app with a different version number and then resubmit it to Google Play via Visual Studio.
+
+> [!NOTE]
+> The app's version number can be updated by increasing the value of the `ApplicationVersion` integer property in the app's project file.
