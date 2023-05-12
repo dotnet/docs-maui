@@ -88,14 +88,14 @@ The published app can then be released to Google Play via the Google Play Consol
 
 A release is a combination of one or more app versions that you'll prepare to launch an app, or roll out an update. You can create a release on the following tracks:
 
-- Open testing. Open testing releases are available to testers on Google Play. Users can join tests from your Store listing.
-- Closed testing. Closed testing releases are available to a limited number of testers that you choose, who can test a pre-release version of your app and submit feedback.
 - Internal testing. Internal testing releases are available to up to 100 testers that you can choose.
+- Closed testing. Closed testing releases are available to a limited number of testers that you choose, who can test a pre-release version of your app and submit feedback.
+- Open testing. Open testing releases are available to testers on Google Play. Users can join tests from your Store listing.
 - Production. Production releases are available to all Google Play users in your chosen countries.
 
 For more information about creating a release, see [Prepare and roll out a release](https://support.google.com/googleplay/android-developer/answer/9859348) on support.google.com.
 
-> [!NOTE]
+> [!IMPORTANT]
 > App's submitted to Google Play typically undergo a review process. For more information, see [Prepare your app for review](https://support.google.com/googleplay/android-developer/answer/9859455) and [Publish your app](https://support.google.com/googleplay/android-developer/answer/9859751) on support.google.com.
 
 ## Publish subsequent versions of the app
@@ -122,7 +122,7 @@ Uploading your app from Visual Studio to Google Play first requires you to setup
 
     :::image type="content" source="media/publish/vs/api-access-choose-project.png" alt-text="Screenshot of API access page in Google Play Console.":::
 
-  To use Google Play Developer APIs you'll need a Google Cloud project that must be linked to your Play Console developer account.
+    To use Google Play Developer APIs you'll need a Google Cloud project that must be linked to your Play Console developer account.
 
   > [!NOTE]
   > A Google Cloud project can only be linked to one developer account.
@@ -131,7 +131,7 @@ Uploading your app from Visual Studio to Google Play first requires you to setup
 
     :::image type="content" source="media/publish/vs/api-access-create-google-cloud-project.png" alt-text="Screenshot of selecting the create a new Google Cloud project radio button.":::
 
-  A new Google Cloud project will be created and linked to your Play Console developer account.
+    A new Google Cloud project will be created and linked to your Play Console developer account.
 
 1. In the **API access** page, in the **OAuth clients** section, select **Configure OAuth consent screen**:
 

@@ -38,7 +38,7 @@ ms.topic: include
 
     :::image type="content" source="../deployment/media/publish/vs/keystore-password.png" alt-text="Screenshot of entering your signing identity password.":::
 
-1. In the *Archive Manager**, select the **Open Distribution** button once the publishing process completes:
+1. In the *Archive Manager*, select the **Open Distribution** button once the publishing process completes:
 
     :::image type="content" source="../deployment/media/publish/vs/ad-hoc-open-distribution.png" alt-text="Screenshot of opening the folder containing your published Android app.":::
 
