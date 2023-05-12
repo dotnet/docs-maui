@@ -68,11 +68,23 @@ After creating your app, you should set it up. Your app's dashboard will guide y
 
 To start setting up your app, select **Dashboard** at the left menu. Under your app's details at the top of the page you'll find different categories and tasks relating to app setup and release. You must complete the mandatory tasks before you can launch your app on Google Play. When you complete a task you'll see a green tick mark and strikethrough text. The progress bar at the top of the section will also be updated. For more information, see [Set up your app on the app dashboard](https://support.google.com/googleplay/android-developer/answer/9859454) on support.google.com.
 
-## Ad hoc publish
+## Ensure correct package format
 
-INCLUDE FILE
+To publish a .NET MAUI Android app for Google Play distribution requires that your app package format is AAB, which is the default package format for release builds. To verify that your app's package format is set correctly:
 
-## Prepare a release
+1. In **Solution Explorer** right-click on your .NET MAUI app project and select **Properties**. Then, navigate to the **Android > Options** tab and ensure that the value of the **Release** field is set to **bundle**:
+
+    :::image type="content" source="media/publish/vs/google-play-ensure-package-format.png" alt-text="Screenshot of ensuring the bundle package format is setchanging the package format of a .NET MAUI Android app to APK.":::Publish
+
+## Publish the app for the first time
+
+The first time an AAB is submitted to Google Play, it must be manually uploaded through the Google Play Console. This enables Google Play to match the signature of the key on all future bundles to the original key used for the first version of the app.
+
+[!INCLUDE [Publish](../includes/publish-vs.md)]
+
+[!INCLUDE [Publish ad-hoc](../includes/publish-ad-hoc.md)]
+
+The published app can then be released to Google Play via the Google Play Console.
 
 A release is a combination of one or more app versions that you'll prepare to launch an app, or roll out an update. You can create a release on the following tracks:
 
@@ -83,9 +95,25 @@ A release is a combination of one or more app versions that you'll prepare to la
 
 For more information about creating a release, see [Prepare and roll out a release](https://support.google.com/googleplay/android-developer/answer/9859348) on support.google.com.
 
-## Deploy from VS
+> [!NOTE]
+> App's submitted to Google Play typically undergo a review process. For more information, see [Prepare your app for review](https://support.google.com/googleplay/android-developer/answer/9859455) and [Publish your app](https://support.google.com/googleplay/android-developer/answer/9859751) on support.google.com.
 
-Once you've uploaded your initial build you can sign and distribute your AAB directly from Visual Studio. This requires you to setup API access in the Google Play Console.
+## Publish subsequent versions of the app
+
+An AAB must have already been submitted to Google Play, and have passed review, before you can publish it from Visual Studio. If you attempt to publish an AAB from Visual Studio that hasn't first been uploaded from the Play Console, you'll receive the following error:
+
+> Google Play requires you to manually upload your first package (APK/AAB) for this app. You can use an ad-hoc package for this.
+
+When this error occurs, manually upload an AAB (via ad-hoc publishing) via the Google Play Console. Then subsequent releases of the app can be published through Visual Studio. However, you must change the version code of the app for each upload, otherwise the following error will occur:
+
+> An AAB with version code (1) has already been uploaded.
+
+To resolve this error, rebuild the app with a different version number and then resubmit it to Google Play via Visual Studio.
+
+> [!NOTE]
+> The app's version number can be updated by increasing the value of the `ApplicationVersion` integer property in the app's project file.
+
+Uploading your app from Visual Studio to Google Play first requires you to setup API access in the Google Play Console.
 
 ### Google API access
 
@@ -145,39 +173,15 @@ Once you've uploaded your initial build you can sign and distribute your AAB dir
 
 1. In the **OAuth client created** dialog, select the **DOWNLOAD JSON** data button to download your client ID and client secret. Then click the **OK** button to dismiss the dialog.
 
-## Ensure correct package format
+### Upload to Google Play from Visual Studio
 
-To publish a .NET MAUI Android app for Google Play distribution requires that your app package format is AAB, which is the default package format for release builds. To verify that your package format is set correctly:
+[!INCLUDE [Publish](../includes/publish-vs.md)]
 
-1. In **Solution Explorer** right-click on your .NET MAUI app project and select **Properties**. Then, navigate to the **Android > Options** tab and ensure that the value of the **Release** field is set to **bundle**:
-
-    :::image type="content" source="media/publish/vs/google-play-ensure-package-format.png" alt-text="Screenshot of ensuring the bundle package format is setchanging the package format of a .NET MAUI Android app to APK.":::
-
-## Publish
-
-1. In the Visual Studio toolbar, use the **Solutions Configuration** drop-down to change from the debug configuration to the release configuration:
-
-    :::image type="content" source="../deployment/media/publish/vs/release-configuration.png" alt-text="Select the release configuration in Visual Studio.":::
-
-1. In **Solution Explorer**, right-click on your .NET MAUI app project and select **Publish...**:
-
-    :::image type="content" source="../deployment/media/publish/vs/publish-menu-item.png" alt-text="Select the publish menu item in Visual Studio.":::
-
-    The **Archive Manager** will open and Visual Studio will begin to archive your app bundle:
-
-    :::image type="content" source="../deployment/media/publish/vs/archive-manager.png" alt-text="Screenshot of the archive manager in Visual Studio.":::
-
-    The archiving process signs the app with the certificate and provisioning profiles that you specified in the **iOS Bundle Signing** tab, for the selected solution configuration.
-
-1. In the **Archive Manager**, once archiving has successfully completed, ensure your archive is selected and then select the **Distribute ...** button to begin the process of distributing your app:
-
-    :::image type="content" source="../deployment/media/publish/vs/archive-manager-distribute.png" alt-text="Screenshot of the archive manager in Visual Studio once archiving is complete.":::
-
-    The **Distribute - Select Channel** dialog will appear.
-
-1. In the **Distribute - Select Channel** dialog, select the **Google Play** button:
+<!-- markdownlint-disable MD029 -->
+4. In the **Distribute - Select Channel** dialog, select the **Google Play** button:
 
     :::image type="content" source="media/publish/vs/distribution-select-channel-google-play.png" alt-text="Screenshot of selecting a distribution channel in the distribution dialog.":::
+    <!-- markdownlint-enable MD029 -->
 
 1. In the **Distribute - Signing Identity** dialog, select the **+** button to add your signing identity:
 
@@ -258,29 +262,3 @@ To publish a .NET MAUI Android app for Google Play distribution requires that yo
     :::image type="content" source="media/publish/vs/enter-password.png" alt-text="Screenshot of entering your password for your signing identity in Visual Studio.":::
 
 Visual Studio will sign your app bundle and upload it to Google Play.
-
-## Manually upload to Google Play
-
-The first time an AAB is submitted to Google Play, it must be manually uploaded through the Google Play Console. This enables Google Play to match the signature of the key on all future bundles to the original key used for the first version of the app.
-
-Steps:
-
-1. Create an ad-hoc AAB. Although the app will be distributed via Google Play it must be manually uploaded the first time (otherwise error).
-
-
-## Upload to Google Play from Visual Studio
-
-## Troubleshooting
-
-An AAB must have already been submitted to Google Play before you can publish it from Visual Studio. If you attempt to publish an AAB from Visual Studio that hasn't first been uploaded from the Play Console, you'll receive the following error:
-
-> Google Play requires you to manually upload your first package (APK/AAB) for this app. You can use an ad-hoc package for this.
-
-When this error occurs, manually upload an AAB (via ad-hoc publishing) via the Google Play Console. Then subsequent releases of the app can be published through Visual Studio. However, you must change the version code of the app for each upload, otherwise the following error will occur:
-
-> An AAB with version code (1) has already been uploaded.
-
-To resolve this error, rebuild the app with a different version number and then resubmit it to Google Play via Visual Studio.
-
-> [!NOTE]
-> The app's version number can be updated by increasing the value of the `ApplicationVersion` integer property in the app's project file.

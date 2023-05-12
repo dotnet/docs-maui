@@ -14,7 +14,7 @@ Ad-Hoc – Saves a signed AAB to disk that can be sideloaded to Android devices.
 
 This section explains how to create an Android signing identity, create a new signing certificate for Android applications, and publish the archived app ad hoc to disk. The resulting AAB can be sideloaded into Android devices without going through an app store.
 
-## Change package format
+## Ensure correct package format
 
 By default, the package format for .NET MAUI Android release builds is AAB. To publish a .NET MAUI Android app for side loading requires that you first change the package format to APK:
 
