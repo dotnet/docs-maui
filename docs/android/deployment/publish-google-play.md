@@ -124,8 +124,8 @@ Uploading your app from Visual Studio to Google Play first requires you to setup
 
     To use Google Play Developer APIs you'll need a Google Cloud project that must be linked to your Play Console developer account.
 
-  > [!NOTE]
-  > A Google Cloud project can only be linked to one developer account.
+    > [!NOTE]
+    > A Google Cloud project can only be linked to one developer account.
 
 1. In the **API access** page, select the **Create a new Google Cloud project** radio button followed by the **Save** button:
 
@@ -156,8 +156,8 @@ Uploading your app from Visual Studio to Google Play first requires you to setup
 
     :::image type="content" source="media/publish/vs/oauth-consent-scopes.png" alt-text="Screenshot of adding the android publisher scope for the OAuth consent screen.":::
 
-  > [!NOTE]
-  > The other scopes in the table can be optionally selected as they are standard scopes.
+    > [!NOTE]
+    > The other scopes in the table can be optionally selected as they are standard scopes.
 
 1. In the **Edit app registration** page, select the **Credentials** tab:
 
