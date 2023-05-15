@@ -231,10 +231,10 @@ Uploading your app from Visual Studio to Google Play first requires you to setup
 
     :::image type="content" source="media/publish/vs/google-api-access-authorize.png" alt-text="Screenshot of authorizing Google API access.":::
 
-  The web browser will receive a verification code.
+    The web browser will receive a verification code.
 
-  > [!IMPORTANT]
-  > Don't close the web browser.
+    > [!IMPORTANT]
+    > Don't close the web browser.
 
 1. In Visual Studio, in the **Distribute - Google Play Account** dialog, select **Continue**:
 
@@ -248,14 +248,14 @@ Uploading your app from Visual Studio to Google Play first requires you to setup
   - Production should be used for full distribution to the Google Play store.
   - Custom should be used for testing pre-release versions of your app with specific users by creating a list of testers by email address.
 
-  > [!IMPORTANT]
-  > If you don't see the custom track, ensure you've created a release for that track in the Google Play Console. For more information, see [Prepare and roll out a release](https://support.google.com/googleplay/android-developer/answer/9859348?hl=en&visit_id=638192315525080840-296240211&rd=1) on support.google.com.
+    > [!IMPORTANT]
+    > If you don't see the custom track, ensure you've created a release for that track in the Google Play Console. For more information, see [Prepare and roll out a release](https://support.google.com/googleplay/android-developer/answer/9859348?hl=en&visit_id=638192315525080840-296240211&rd=1) on support.google.com.
 
-  Select the track to upload your app to and then select the **Upload** button:
+    Select the track to upload your app to and then select the **Upload** button:
 
-  :::image type="content" source="media/publish/vs/distribution-select-google-play-track.png" alt-text="Screenshot of selecting a Google Play Track prior to uploading your app.":::
+    :::image type="content" source="media/publish/vs/distribution-select-google-play-track.png" alt-text="Screenshot of selecting a Google Play Track prior to uploading your app.":::
 
-  For more information about Google Play testing, see [Set up an open, closed, or internal test](https://support.google.com/googleplay/android-developer/answer/9845334?hl=en&visit_id=638192315525080840-296240211&rd=1) on support.google.com.
+    For more information about Google Play testing, see [Set up an open, closed, or internal test](https://support.google.com/googleplay/android-developer/answer/9845334?hl=en&visit_id=638192315525080840-296240211&rd=1) on support.google.com.
 
 1. Visual Studio will begin publishing your app to Google Play. In the **Signing Password** dialog, enter your password you created for the signing identity and select the **OK** button:
 
