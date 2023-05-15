@@ -8,6 +8,7 @@ ms.date: 05/10/2023
 
 <!--
 https://learn.microsoft.com/en-us/xamarin/android/deploy-test/signing/?tabs=windows
+https://developer.android.com/studio/publish#publishing-website
 -->
 
 Ad-Hoc – Saves a signed AAB to disk that can be sideloaded to Android devices. Continue to Signing the App Package to learn how to create an Android signing identity, create a new signing certificate for Android applications, and publish an ad hoc version of the app to disk. This is a good way to create an APK for testing.

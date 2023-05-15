@@ -1,41 +1,45 @@
 ---
 title: "Publish a .NET MAUI Android app for Google Play distribution"
 description: "Learn how to publish a .NET MAUI Android app for Google Play distribution."
-ms.date: 05/10/2023
+ms.date: 05/15/2023
 ---
 
 # Publish an Android app for Google Play distribution
 
 <!--
+https://developer.android.com/studio/publish
+https://support.google.com/googleplay/android-developer/answer/9859152?hl=en-GB
 https://learn.microsoft.com/en-us/xamarin/android/deploy-test/publishing/publishing-to-google-play/?tabs=windows
-https://developer.android.com/studio/publish/app-signing
 https://developercommunity.visualstudio.com/t/cannot-publish-Maui-App-with-Visual-Stud/10118589?entry=problem
 https://goforgoldman.com/posts/maui-app-deploy/
 https://tukaianirban.medium.com/internal-testing-in-google-playstore-47de955062ad
 -->
 
-Google Play – Publishes a signed APK to Google Play. Continue to Publishing to Google Play to learn how to sign and publish an AAB in the Google Play store.
+The most common approach to distributing Android apps to users is through the Google Play. The first time an app is submitted to Google Play it must be submitted through the Google Play Console. Subsequent versions of the app can be submitted through Visual Studio. In both cases, a Google Play Developer account is required. Apps submitted to Google Play require approval from Google.
 
-Android requires that *.AAB* files are
+To distribute a .NET Multi-platform App UI (.NET MAUI) Android app, you'll need to sign it with a key from your keystore, prior to upload to Google Play. Keystores are binary files that serve as repositories of certificates and private keys.
 
-Process:
+Google Play requires that you submit your app as an *Android App Bundle* (AAB). Google Play uses your app bundle to generate and serve optimized Android Package Kits (APK) for each device configuration, so that only the code and resources that are needed for a specific device are downloaded to run your app. For more information about Android App Bundles, see [About Android App Bundles](https://developer.android.com/guide/app-bundle) on developer.android.com.
 
-- Create a Google Play Developer account
-- Sign your bundle
-- Deploy to Google Play
-- Deploy from Visual Studio
-- Release to production
+The process for distributing a .NET MAUI Android app through Google Play is as follows:
 
-## Keystores
+1. Create a Google Play Developer account. For more information, see [Create a Google Play Developer account](#create-a-google-play-developer-account).
+1. Create your app in Google Play Console. For more information, see [Create your app in Google Play Console](#create-your-app-in-google-play-console).
+1. Setup your app in Google Play Console. For more information, see [Setup your app in Google Play Console](#setup-your-app-in-google-play-console).
+1. Ensure your app uses the correct package format. For more information, see [Ensure correct package format](#ensure-correct-package-format).
+1. Upload to Google Play from Google Play Console. For more information, see [Upload to Google Play from Google Play Console](#upload-to-google-play-from-google-play-console).
 
-Keystores are binary files that serve as repositories of certificates and private keys.
+Then, subsequent versions of your app can be published through Visual Studio with the following process:
+
+1. Provide Google API access to your Google Play Developer account. For more information, see [Provide Google API access to your Google Play Developer account](#provide-google-api-access-to-your-google-play-developer-account).
+1. Upload to Google Play through Visual Studio. For more information, see [Upload to Google Play from Visual Studio](#upload-to-google-play-from-visual-studio).
 
 ## Create a Google Play Developer account
 
 To publish Android apps on Google Play, you'll need to create a Google Play Developer account:
 
 1. Using your Google Account, sign up for a [Google Play Developer account](https://play.google.com/apps/publish/signup).
-1. Enter information about your developer identity
+1. Enter information about your developer identity.
 1. During the sign-up process, you'll need to review and accept the [Google Play Developer Distribution Agreement](https://play.google.com/about/developer-distribution-agreement.html).
 1. Pay the one-time $25 registration fee.
 1. Verify your identity by following the instructions in your verification email.
@@ -43,13 +47,13 @@ To publish Android apps on Google Play, you'll need to create a Google Play Deve
 > [!IMPORTANT]
 > Identity verification must be complete before you can publish apps through Google Play.
 
-Once your Google Play Developer Account has been created you'll be able to publish apps to Google Play.
+Once your Google Play Developer account has been created you'll be able to begin the process to publish an app to Google Play.
 
 For more information, see [Register for a Google Play Developer account](https://support.google.com/googleplay/android-developer/answer/6112435?hl=en-GB#zippy=) on support.google.com.
 
 ## Create your app in Google Play Console
 
-After you've created your Google Play Developer account, you'll need to create an app and set it up using Google Play Console:
+After you've created your Google Play Developer account, you'll need to create an app in Google Play Console:
 
 1. Login to your [Google Play Developer account](https://play.google.com/apps/publish).
 1. In **Google Play Console**, on the **All apps** tab, select the **Create app** button:
@@ -60,7 +64,7 @@ After you've created your Google Play Developer account, you'll need to create a
 
     :::image type="content" source="media/publish/vs/google-play-create-app.png" alt-text="Screenshot of creating a new app in Google Play.":::
 
-    For more information about creating an app in Google Play Console, see [Create and set up your app](https://support.google.com/googleplay/android-developer/answer/9859152) on support.google.com.
+For more information about creating an app in Google Play Console, see [Create and set up your app](https://support.google.com/googleplay/android-developer/answer/9859152) on support.google.com.
 
 ## Setup your app in Google Play Console
 
@@ -76,7 +80,7 @@ To publish a .NET MAUI Android app for Google Play distribution requires that yo
 
     :::image type="content" source="media/publish/vs/google-play-ensure-package-format.png" alt-text="Screenshot of ensuring the bundle package format is setchanging the package format of a .NET MAUI Android app to APK.":::Publish
 
-## Publish the app for the first time
+## Upload to Google Play from Google Play Console
 
 The first time an AAB is submitted to Google Play, it must be manually uploaded through the Google Play Console. This enables Google Play to match the signature of the key on all future bundles to the original key used for the first version of the app.
 
@@ -115,7 +119,7 @@ To resolve this error, rebuild the app with a different version number and then 
 
 Uploading your app from Visual Studio to Google Play first requires you to setup API access in the Google Play Console.
 
-### Google API access
+## Provide Google API access to your Google Play Developer account
 
 1. Login to your [Google Play Developer account](https://play.google.com/apps/publish).
 1. In **Google Play Console**, expand the **Setup** item and select **API access**. Then in the **API access** page, select the **Choose a project to link** button:
@@ -173,7 +177,7 @@ Uploading your app from Visual Studio to Google Play first requires you to setup
 
 1. In the **OAuth client created** dialog, select the **DOWNLOAD JSON** data button to download your client ID and client secret. Then click the **OK** button to dismiss the dialog.
 
-### Upload to Google Play from Visual Studio
+## Upload to Google Play from Visual Studio
 
 [!INCLUDE [Publish](../includes/publish-vs.md)]
 
