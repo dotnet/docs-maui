@@ -4,7 +4,7 @@ ms.topic: include
 ---
 
 <!-- markdownlint-disable MD029 -->
-4. In the **Distribute - Select Channel** dialog, select the **Ad Hoc** button:
+5. In the **Distribute - Select Channel** dialog, select the **Ad Hoc** button:
 
     :::image type="content" source="../deployment/media/publish/vs/distribution-select-channel-ad-hoc.png" alt-text="Screenshot of selecting a distribution channel in the distribution dialog.":::
     <!-- markdownlint-enable MD029 -->
@@ -20,12 +20,17 @@ ms.topic: include
 
 1. In the **Create Android Keystore** dialog, enter the required information to create a new signing identity, known as a *keystore*, and then select the **Create** button:
 
+    - Alias. Enter an identifying name for your key.
+    - Password. Create and confirm a secure password for your key.
+    - Validity. Set the length of time, in years, that your key will be valid.
+    - Full name, organization unit, organization, city or locality, state or province, and country code. This information is not displayed in your app, but is included in your certificate.
+
     :::image type="content" source="../deployment/media/publish/vs/create-android-keystore.png" alt-text="Screenshot of creating an Android keystore.":::
 
     A new keystore, which contains a new certificate, will be saved to **C:\Users\{Username}\AppData\Local\Xamarin\Mono for Android\Keystore\{Alias}\{Alias}.keystore**.
 
     > [!IMPORTANT]
-    > The keystore and password isn't saved to your Visual Studio solution. Therefore, ensure you back up this data. If you lose it you'll be unable to sign your app with the same signing identity.
+    > The keystore and password isn't saved to your Visual Studio solution. Therefore, ensure you back up this data. If you lose it you'll be unable to sign your app with the same signing identity.  
 
 1. In the **Distribute - Signing Identity** dialog, select your newly created signing identity and select the **Save As** button:
 
