@@ -1,32 +1,32 @@
 ---
 title: "Publish a .NET MAUI Android app for ad-hoc distribution"
 description: "Learn how to publish a .NET MAUI Android app for ad-hoc distribution."
-ms.date: 05/10/2023
+ms.date: 05/15/2023
 ---
 
 # Publish an Android app for ad-hoc distribution
 
-<!--
-https://learn.microsoft.com/en-us/xamarin/android/deploy-test/signing/?tabs=windows
-https://developer.android.com/studio/publish#publishing-website
--->
+When distributing Android apps outside Google Play, and other marketplaces, *ad-hoc* distribution enables you to make the app available for download on your own website or server. Android requires that apps created for ad-hoc distribution use the Android Package (APK) format.
 
-Ad-Hoc – Saves a signed AAB to disk that can be sideloaded to Android devices. Continue to Signing the App Package to learn how to create an Android signing identity, create a new signing certificate for Android applications, and publish an ad hoc version of the app to disk. This is a good way to create an APK for testing.
+To distribute a .NET Multi-platform App UI (.NET MAUI) Android app, you'll need to sign it with a key from your keystore. Keystores are binary files that serve as repositories of certificates and private keys. or server
 
-This section explains how to create an Android signing identity, create a new signing certificate for Android applications, and publish the archived app ad hoc to disk. The resulting AAB can be sideloaded into Android devices without going through an app store.
+The process for publishing a .NET MAUI Android app for ad-hoc distribution is as follows:
+
+1. Ensure your app uses the correct package format. For more information, see [Ensure correct package format](#ensure-correct-package-format).
+1. Build and sign your app in Visual Studio. For more information, see [Distribute your app through Visual Studio](#distribute-your-app-through-visual-studio).
 
 ## Ensure correct package format
 
-By default, the package format for .NET MAUI Android release builds is AAB. To publish a .NET MAUI Android app for side loading requires that you first change the package format to APK:
+By default, the package format for .NET MAUI Android release builds is AAB. To publish a .NET MAUI Android app for ad-hoc distribution requires that you first change the package format to APK:
 
 1. In **Solution Explorer** right-click on your .NET MAUI app project and select **Properties**. Then, navigate to the **Android > Options** tab and ensure that the value of the **Release** field is set to **apk**:
 
     :::image type="content" source="media/publish/vs/ad-hoc-change-package-format.png" alt-text="Screenshot of changing the package format of a .NET MAUI Android app to APK.":::
 
-## Publish
+## Distribute your app through Visual Studio
 
 [!INCLUDE [Publish](../includes/publish-vs.md)]
 
 [!INCLUDE [Publish ad-hoc](../includes/publish-ad-hoc.md)]
 
-The app can then be distributed to Android devices through a website, or email. When users browse to a download link from their Android-powered device, the file is downloaded and Android automatically starts installing it on the device. For more information, see [Alternative distribution options](https://developer.android.com/distribute/marketing-tools/alternative-distribution) on developer.android.com.
+The app can then be distributed to Android devices through a website or server. When users browse to a download link from their Android device, the file is downloaded and Android automatically starts installing it on the device. For more information about opting into allowing apps from unknown sources, see [User opt-in for unknown apps and sources](https://developer.android.com/studio/publish#publishing-unknown) on developer.android.com..

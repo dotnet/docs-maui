@@ -6,20 +6,11 @@ ms.date: 05/15/2023
 
 # Publish an Android app for Google Play distribution
 
-<!--
-https://developer.android.com/studio/publish
-https://support.google.com/googleplay/android-developer/answer/9859152?hl=en-GB
-https://learn.microsoft.com/en-us/xamarin/android/deploy-test/publishing/publishing-to-google-play/?tabs=windows
-https://developercommunity.visualstudio.com/t/cannot-publish-Maui-App-with-Visual-Stud/10118589?entry=problem
-https://goforgoldman.com/posts/maui-app-deploy/
-https://tukaianirban.medium.com/internal-testing-in-google-playstore-47de955062ad
--->
-
 The most common approach to distributing Android apps to users is through the Google Play. The first time an app is submitted to Google Play it must be submitted through the Google Play Console. Subsequent versions of the app can be submitted through Visual Studio. In both cases, a Google Play Developer account is required. Apps submitted to Google Play require approval from Google.
 
 To distribute a .NET Multi-platform App UI (.NET MAUI) Android app, you'll need to sign it with a key from your keystore, prior to upload to Google Play. Keystores are binary files that serve as repositories of certificates and private keys.
 
-Google Play requires that you submit your app as an *Android App Bundle* (AAB). Google Play uses your app bundle to generate and serve optimized Android Package Kits (APK) for each device configuration, so that only the code and resources that are needed for a specific device are downloaded to run your app. For more information about Android App Bundles, see [About Android App Bundles](https://developer.android.com/guide/app-bundle) on developer.android.com.
+Google Play requires that you submit your app as an *Android App Bundle* (AAB). Google Play uses your app bundle to generate and serve optimized Android Packages (APK) for each device configuration, so that only the code and resources that are needed for a specific device are downloaded to run your app. For more information about Android App Bundles, see [About Android App Bundles](https://developer.android.com/guide/app-bundle) on developer.android.com.
 
 The process for distributing a .NET MAUI Android app through Google Play is as follows:
 
@@ -75,7 +66,7 @@ To publish a .NET MAUI Android app for Google Play distribution requires that yo
 
 1. In Visual Studio's **Solution Explorer** right-click on your .NET MAUI app project and select **Properties**. Then, navigate to the **Android > Options** tab and ensure that the value of the **Release** field is set to **bundle**:
 
-    :::image type="content" source="media/publish/vs/google-play-ensure-package-format.png" alt-text="Screenshot of ensuring the bundle package format is setchanging the package format of a .NET MAUI Android app to APK.":::Publish
+    :::image type="content" source="media/publish/vs/google-play-ensure-package-format.png" alt-text="Screenshot of changing the package format of a .NET MAUI Android app to APK.":::Publish
 
 ## Distribute your app through Google Play Console
 
@@ -178,7 +169,7 @@ To enable Google API access:
 
 For more information about enabling Google API access to your Google Play Developer account, see [Getting Started](https://developers.google.com/android-publisher/getting_started) on developers.google.com. For more information about setting up your OAuth consent screen, see [Setting up your OAuth consent screen](https://support.google.com/cloud/answer/10311615) on support.google.com.
 
-### Distribute your app through Visual Studio
+### Upload your app through Visual Studio
 
 [!INCLUDE [Publish](../includes/publish-vs.md)]
 
