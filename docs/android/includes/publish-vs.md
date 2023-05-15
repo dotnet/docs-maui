@@ -3,6 +3,12 @@ ms.date: 05/09/2023
 ms.topic: include
 ---
 
+To build and sign your app in Visual Studio:
+
+1. In the Visual Studio toolbar, use the **Debug Target** drop-down to select **Android Emulators** and then your chosen emulator:
+
+    :::image type="content" source="../deployment/media/publish/vs/select-android-deployment.png" alt-text="Select an Android deployment target in Visual Studio.":::
+
 1. In the Visual Studio toolbar, use the **Solutions Configuration** drop-down to change from the debug configuration to the release configuration:
 
     :::image type="content" source="../deployment/media/publish/vs/release-configuration.png" alt-text="Select the release configuration in Visual Studio.":::

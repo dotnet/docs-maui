@@ -76,7 +76,7 @@ To start setting up your app, select **Dashboard** at the left menu. Under your 
 
 To publish a .NET MAUI Android app for Google Play distribution requires that your app package format is AAB, which is the default package format for release builds. To verify that your app's package format is set correctly:
 
-1. In **Solution Explorer** right-click on your .NET MAUI app project and select **Properties**. Then, navigate to the **Android > Options** tab and ensure that the value of the **Release** field is set to **bundle**:
+1. In Visual Studio's **Solution Explorer** right-click on your .NET MAUI app project and select **Properties**. Then, navigate to the **Android > Options** tab and ensure that the value of the **Release** field is set to **bundle**:
 
     :::image type="content" source="media/publish/vs/google-play-ensure-package-format.png" alt-text="Screenshot of ensuring the bundle package format is setchanging the package format of a .NET MAUI Android app to APK.":::Publish
 
