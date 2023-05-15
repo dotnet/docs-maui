@@ -27,12 +27,12 @@ The process for distributing a .NET MAUI Android app through Google Play is as f
 1. Create your app in Google Play Console. For more information, see [Create your app in Google Play Console](#create-your-app-in-google-play-console).
 1. Setup your app in Google Play Console. For more information, see [Setup your app in Google Play Console](#setup-your-app-in-google-play-console).
 1. Ensure your app uses the correct package format. For more information, see [Ensure correct package format](#ensure-correct-package-format).
-1. Upload to Google Play from Google Play Console. For more information, see [Upload to Google Play from Google Play Console](#upload-to-google-play-from-google-play-console).
+1. Build and sign your app in Visual Studio, and then distribute it through Google Play Console. For more information, see [Distribute your app through Google Play Console](#distribute-your-app-through-google-play-console).
 
 Then, subsequent versions of your app can be published through Visual Studio with the following process:
 
 1. Provide Google API access to your Google Play Developer account. For more information, see [Provide Google API access to your Google Play Developer account](#provide-google-api-access-to-your-google-play-developer-account).
-1. Upload to Google Play through Visual Studio. For more information, see [Upload to Google Play from Visual Studio](#upload-to-google-play-from-visual-studio).
+1. Build and sign your app in Visual Studio, and then distribute it through Visual Studio. For more information, see [Distribute your app through Visual Studio](#distribute-your-app-through-visual-studio).
 
 ## Create a Google Play Developer account
 
@@ -80,31 +80,31 @@ To publish a .NET MAUI Android app for Google Play distribution requires that yo
 
     :::image type="content" source="media/publish/vs/google-play-ensure-package-format.png" alt-text="Screenshot of ensuring the bundle package format is setchanging the package format of a .NET MAUI Android app to APK.":::Publish
 
-## Upload to Google Play from Google Play Console
+## Distribute your app through Google Play Console
 
-The first time an AAB is submitted to Google Play, it must be manually uploaded through the Google Play Console. This enables Google Play to match the signature of the key on all future bundles to the original key used for the first version of the app.
+The first time an AAB is submitted to Google Play, it must be manually uploaded through the Google Play Console. This enables Google Play to match the signature of the key on all future bundles to the original key used for the first version of the app. In order to upload the app through the Google Play Console, it must first be built and signed in Visual Studio.
 
 [!INCLUDE [Publish](../includes/publish-vs.md)]
 
 [!INCLUDE [Publish ad-hoc](../includes/publish-ad-hoc.md)]
 
-The published app can then be released to Google Play via the Google Play Console.
+The published app can then be released to Google Play via the Google Play Console. To do this you must first create a release in Google Play Console.
 
-A release is a combination of one or more app versions that you'll prepare to launch an app, or roll out an update. You can create a release on the following tracks:
+A release is a combination of one or more app versions that you'll prepare in order to launch an app, or roll out an update. You can create a release on the following tracks:
 
 - Internal testing. Internal testing releases are available to up to 100 testers that you can choose.
 - Closed testing. Closed testing releases are available to a limited number of testers that you choose, who can test a pre-release version of your app and submit feedback.
 - Open testing. Open testing releases are available to testers on Google Play. Users can join tests from your Store listing.
 - Production. Production releases are available to all Google Play users in your chosen countries.
 
-For more information about creating a release, see [Prepare and roll out a release](https://support.google.com/googleplay/android-developer/answer/9859348) on support.google.com.
+For more information about creating a release in Google Play Console, see [Prepare and roll out a release](https://support.google.com/googleplay/android-developer/answer/9859348) on support.google.com.
 
 > [!IMPORTANT]
 > App's submitted to Google Play typically undergo a review process. For more information, see [Prepare your app for review](https://support.google.com/googleplay/android-developer/answer/9859455) and [Publish your app](https://support.google.com/googleplay/android-developer/answer/9859751) on support.google.com.
 
-## Publish subsequent versions of the app
+## Distribute subsequent versions of the app
 
-An AAB must have already been submitted to Google Play, and have passed review, before you can publish it from Visual Studio. If you attempt to publish an AAB from Visual Studio that hasn't first been uploaded from the Play Console, you'll receive the following error:
+An AAB must have already been submitted to Google Play, and have passed review, before you can distribute it from Visual Studio. If you attempt to distribute an AAB from Visual Studio that hasn't first been uploaded from the Play Console, you'll receive the following error:
 
 > Google Play requires you to manually upload your first package (APK/AAB) for this app. You can use an ad-hoc package for this.
 
@@ -177,7 +177,7 @@ Uploading your app from Visual Studio to Google Play first requires you to setup
 
 1. In the **OAuth client created** dialog, select the **DOWNLOAD JSON** data button to download your client ID and client secret. Then click the **OK** button to dismiss the dialog.
 
-## Upload to Google Play from Visual Studio
+## Distribute your app through Visual Studio
 
 [!INCLUDE [Publish](../includes/publish-vs.md)]
 
