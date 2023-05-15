@@ -6,7 +6,7 @@ ms.date: 05/15/2023
 
 # Publish an Android app for ad-hoc distribution
 
-When distributing Android apps outside Google Play, and other marketplaces, *ad-hoc* distribution enables you to make the app available for download on your own website or server. Android requires that apps created for ad-hoc distribution use the Android Package (APK) format.
+When distributing Android apps outside Google Play, and other marketplaces, *ad-hoc* distribution enables you to make the app available for download on a website or server. Android requires that apps created for ad-hoc distribution use the Android Package (APK) format.
 
 To distribute a .NET Multi-platform App UI (.NET MAUI) Android app, you'll need to sign it with a key from your keystore. Keystores are binary files that serve as repositories of certificates and private keys. or server
 
@@ -29,4 +29,4 @@ By default, the package format for .NET MAUI Android release builds is AAB. To p
 
 [!INCLUDE [Publish ad-hoc](../includes/publish-ad-hoc.md)]
 
-The app can then be distributed to Android devices through a website or server. When users browse to a download link from their Android device, the file is downloaded and Android automatically starts installing it on the device. For more information about opting into allowing apps from unknown sources, see [User opt-in for unknown apps and sources](https://developer.android.com/studio/publish#publishing-unknown) on developer.android.com..
+The app can then be distributed to Android devices through a website or server. When users browse to a download link from their Android device, the file is downloaded. Android will automatically start installing it on the device, provided that the user has configured their settings to allow the installation of apps from unknown sources. For more information about opting into allowing apps from unknown sources, see [User opt-in for unknown apps and sources](https://developer.android.com/studio/publish#publishing-unknown) on developer.android.com..

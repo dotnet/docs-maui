@@ -47,4 +47,4 @@ ms.topic: include
 
     :::image type="content" source="../deployment/media/publish/vs/ad-hoc-open-distribution.png" alt-text="Screenshot of opening the folder containing your published Android app.":::
 
-    Visual Studio will open the folder containing the published *.AAB* file.
+    Visual Studio will open the folder containing the published app.
