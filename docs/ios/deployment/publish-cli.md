@@ -6,7 +6,7 @@ ms.date: 02/24/2023
 
 # Publish an iOS app using the command line
 
-To publish your app from the command line on a Mac, open a terminal and navigate to the folder for your .NET MAUI app project. Run the `dotnet publish` command, providing the following parameters:
+To publish your app from the command line on a Mac, open a terminal and navigate to the folder for your .NET Multi-platform App UI (.NET MAUI) app project. Run the `dotnet publish` command, providing the following parameters:
 
 | Parameter                    | Value                                                                                           |
 |------------------------------|-------------------------------------------------------------------------------------------------|

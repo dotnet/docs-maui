@@ -13,7 +13,7 @@ ms.date: 04/05/2023
 > - [Publish for macOS](../../mac-catalyst/deployment/index.md)
 > - [Publish for Windows](../../windows/deployment/overview.md)
 
-The final step in the development of a .NET MAUI app is to publish it. Publishing is the process of creating a package that contains the app and is ready for users to install on their devices. Packaging and deployment involve two essential tasks:
+The final step in the development of a .NET Multi-platform App UI (.NET MAUI) app is to publish it. Publishing is the process of creating a package that contains the app and is ready for users to install on their devices. Publishing involve two essential tasks:
 
 - **Preparing for deployment**. A release version of the app is created that can be deployed to Android devices.
 - **Distribution**. The release version of an app is made available through one or more of the various distribution channels.
@@ -21,6 +21,9 @@ The final step in the development of a .NET MAUI app is to publish it. Publishin
 The following diagram illustrates the steps involved with publishing a .NET MAUI Android app:
 
 :::image type="content" source="media/build-and-deploy-steps.png" alt-text="Build and deploy flowchart for .NET MAUI Android apps.":::
+
+> [!IMPORTANT]
+> When publishing your .NET MAUI app for Android, you generate an Android Package (APK) or an Android App Bundle (AAB) file. The APK is used for installing your app to an Android device, and the AAB is used to publish your app to Google Play.
 
 As can be seen in the diagram above, preparing for deployment is identical regardless of the distribution method that's used. There are several ways that an Android app can be released to users:
 
