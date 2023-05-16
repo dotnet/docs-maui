@@ -16,12 +16,12 @@ The Java SDK includes the *keytool* tool, which should be in your system path, w
 
 Perform the following steps to create a keystore file:
 
-01. Open a terminal and navigate to the folder of your project.
+1. Open a terminal and navigate to the folder of your project.
 
     > [!TIP]
     > If Visual Studio is open, use the **View** > **Terminal** menu to open a terminal at the location of the solution or project. Navigate to the project folder.
 
-01. Run the *keytool* tool with the following parameters:
+1. Run the *keytool* tool with the following parameters:
 
     ```console
     keytool -genkeypair -v -keystore {filename}.keystore -alias {keyname} -keyalg RSA -keysize 2048 -validity 10000
