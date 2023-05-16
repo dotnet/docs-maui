@@ -15,7 +15,7 @@ During development, .NET for Android uses a debug keystore to sign the app, whic
 You use a keystore file to sign your app package. The Java/Android SDKs includes the tools you need to generate a keystore. After generating a keystore file, you'll supply its details from the command line when building the app, or configure your project file to reference it.
 
 > [!NOTE]
-> The Java SDK should be in your system path so that you can run the _keytool_ tool.
+> The Java SDK should be in your system path so that you can run the *keytool* tool.
 
 Perform the following steps to create a keystore file:
 
@@ -24,18 +24,18 @@ Perform the following steps to create a keystore file:
     > [!TIP]
     > If Visual Studio is open, use the **View** > **Terminal** menu to open a terminal at the location of the solution or project. Navigate to the project folder.
 
-01. Run the _keytool_ tool with the following parameters:
+01. Run the *keytool* tool with the following parameters:
 
     ```console
-    keytool -genkey -v -keystore {filename}.keystore -alias {keyname} -keyalg RSA -keysize 2048 -validity 10000
+    keytool -genkeypair -v -keystore {filename}.keystore -alias {keyname} -keyalg RSA -keysize 2048 -validity 10000
     ```
 
     You'll be prompted to provide and confirm a password, followed by other settings.
 
-    For example, to generate a _myapp.keystore_ file in the same folder as your project, with an alias of `myapp`, use the following command:
+    For example, to generate a *myapp.keystore* file in the same folder as your project, with an alias of `myapp`, use the following command:
 
     ```console
-    keytool -genkey -v -keystore myapp.keystore -alias myapp -keyalg RSA -keysize 2048 -validity 10000
+    keytool -genkeypair -v -keystore myapp.keystore -alias myapp -keyalg RSA -keysize 2048 -validity 10000
     ```    
 
     > [!IMPORTANT]
@@ -49,7 +49,7 @@ To list the keys that are stored in a keystore, use `keytool` with the `-list` o
 keytool -list -keystore {filename}.keystore
 ```
 
-For example, to list the keys in a keystore named _myapp.keystore_, use the following command:
+For example, to list the keys in a keystore named *myapp.keystore*, use the following command:
 
 ```console
 keytool -list -keystore myapp.keystore
@@ -93,6 +93,9 @@ Run the `dotnet publish` command with the following parameters to build and sign
 dotnet publish -f net7.0-android -c Release -p:AndroidSigningKeyStore={filename}.keystore -p:AndroidSigningKeyAlias={keyname} -p:AndroidSigningKeyPass={password} -p:AndroidSigningStorePass={password}
 ```
 
+> [!NOTE]
+> You should use the same password as the values of the `AndroidSigningKeyPass` and `AndroidSigningStorePass` parameters. This is because the default keystore type assumes that the keystore password and key password are identical.
+
 For example, use the following command to build and sign your app using the previously created keystore:
 
 ```console
@@ -114,7 +117,7 @@ To use a file located at *C:\Users\user1\AndroidSigningPassword.txt*:
 dotnet publish -f net7.0-android -c Release -p:AndroidSigningKeyStore=myapp.keystore -p:AndroidSigningKeyAlias=myapp -p:AndroidSigningKeyPass=file:C:\Users\user1\AndroidSigningPassword.txt -p:AndroidSigningStorePass=file:C:\Users\user1\AndroidSigningPassword.txt
 ```
 
-Publishing builds and signs the app, and then copies the AAB and APK files to the _bin\\Release\\net7.0-android\\publish_ folder. There are two AAB files - one unsigned and another signed. The signed variant has **-signed** in the file name.
+Publishing builds and signs the app, and then copies the AAB and APK files to the *bin\\Release\\net7.0-android\\publish* folder. There are two AAB files - one unsigned and another signed. The signed variant has **-signed** in the file name.
 
 For more information about the `dotnet publish` command, see [dotnet publish](/dotnet/core/tools/dotnet-publish).
 
@@ -180,6 +183,9 @@ Alternatively, to use a file located at *C:\Users\user1\AndroidSigningPassword.t
     <AndroidSigningStorePass>file:C:\Users\user1\AndroidSigningPassword.txt</AndroidSigningStorePass>
 </PropertyGroup>
 ```
+
+> [!NOTE]
+> You should use the same password as the values of the `AndroidSigningKeyPass` and `AndroidSigningStorePass` build properties. This is because the default keystore type assumes that the keystore password and key password are identical.
 
 ## Distribute the app
 
