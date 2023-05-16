@@ -1,21 +1,18 @@
 ---
-title: "Publish an Android using the command line"
+title: "Publish an Android app using the command line"
 description: "Learn how to publish and sign a .NET MAUI Android app using the command line."
 ms.date: 05/16/2023
 ---
 
-# Publish an Android using the command line
+# Publish an Android app using the command line
 
-To distribute a .NET Multi-platform App UI (.NET MAUI) Android app, you'll need to sign it with a key from your keystore. A *keystore* is a database of security certificates that's created by using `keytool` from the Java SDK. A keystore is essential when publishing a .NET MAUI Android app, as Android won't run apps that haven't been signed.
-
-During development, .NET for Android uses a debug keystore to sign the app, which allows it to be deployed directly to an emulator or to devices configured to run debuggable apps. However, this keystore isn't recognized as a valid keystore for the purposes of distributing apps. Therefore, a private keystore must be created and used for signing apps. This is a step that should only be performed once, as the same key will be used for publishing updates and can then be used to sign other apps.
+To distribute a .NET Multi-platform App UI (.NET MAUI) Android app, you'll need to sign it with a key from your keystore. A *keystore* is a database of security certificates that's created by using `keytool` from the Java SDK. A keystore is required when publishing a .NET MAUI Android app, as Android won't run apps that haven't been signed.
 
 ## Create a keystore file
 
-You use a keystore file to sign your app package. The Java/Android SDKs includes the tools you need to generate a keystore. After generating a keystore file, you'll supply its details from the command line when building the app, or configure your project file to reference it.
+During development, .NET for Android uses a debug keystore to sign the app, which allows it to be deployed directly to an emulator or to devices configured to run debuggable apps. However, this keystore isn't recognized as a valid keystore for the purposes of distributing apps. Therefore, a private keystore must be created and used for signing release builds. This is a step that should only be performed once, as the same key will be used for publishing updates and can be used to sign other apps.
 
-> [!NOTE]
-> The Java SDK should be in your system path so that you can run the *keytool* tool.
+The Java SDK includes the *keytool* tool, which should be in your system path, which generates a keystore. After generating a keystore file, you'll supply its details from the command line when building the app, or configure your project file to reference it.
 
 Perform the following steps to create a keystore file:
 
@@ -30,7 +27,7 @@ Perform the following steps to create a keystore file:
     keytool -genkeypair -v -keystore {filename}.keystore -alias {keyname} -keyalg RSA -keysize 2048 -validity 10000
     ```
 
-    You'll be prompted to provide and confirm a password, followed by other settings.
+    You'll be prompted to provide and confirm a password, followed by your full name, organization unit, organization, city or locality, state or province, and country code. This information is not displayed in your app, but is included in your certificate.
 
     For example, to generate a *myapp.keystore* file in the same folder as your project, with an alias of `myapp`, use the following command:
 
@@ -57,7 +54,7 @@ keytool -list -keystore myapp.keystore
 
 ## Build and sign your app
 
-To build and sign your app from the command line, open a terminal and navigate to the folder for your .NET MAUI app project. Run the `dotnet publish` command, providing the following parameters:
+To build your app from the command line, and sign it using your keystore, open a terminal and navigate to the folder for your .NET MAUI app project. Run the `dotnet publish` command, providing the following parameters:
 
 | Parameter                    | Value                                                                                           |
 |------------------------------|-------------------------------------------------------------------------------------------------|
@@ -76,11 +73,13 @@ Additional build parameters can be specified on the command line, if they aren't
 | `-p:ApplicationVersion` | The version of the build that identifies an iteration of the app. |
 | `-p:ApplicationDisplayVersion` | The version number of the app. |
 | `-p:AndroidKeyStore` | A boolean value that indicates whether the app should be signed. The default value is `false`. |
-| `-p:AndroidPackageFormats` | A semi-colon delimited property that indicates if you want to package the app as an APK file or AAB. Set to either `aab` or `apk` to generate only one format. Set to `aab;apk` to generate both package formats. |
+| `-p:AndroidPackageFormats` | A semi-colon delimited property that indicates if you want to package the app as an APK file or AAB. Set to either `aab` or `apk` to generate only one format. The default value for release builds is `aab;apk`. |
 | `-p:AndroidSigningKeyAlias` | The alias for the key in the keystore. This is the `keytool -alias` value used when creating the keystore. |
-| `-p:AndroidSigningKeyPass` | The password of the key within the keystore file. This is the value entered when `keytool` asks **Enter key password for `$(AndroidSigningKeyAlias)`**. This property also supports `env:` and `file:` prefixes that can be used to specify an environment variable or file that contains the password. These options provide a way to prevent the password from appearing in build logs. |
+| `-p:AndroidSigningKeyPass` | The password of the key within the keystore file. This is the value provided to `keytool` when creating the keystore file and asked to **Enter keystore password:**. This is because the default keystore type assumes that the key password and keystore password are identical. This property also supports `env:` and `file:` prefixes that can be used to specify an environment variable or file that contains the password. These options provide a way to prevent the password from appearing in build logs. |
 | `-p:AndroidSigningKeyStore` | The filename of the keystore file created by `keytool`. This is the `keytool -keystore` value used when creating the keystore. |
-| `-p:AndroidSigningStorePass` | The password to `AndroidSigningKeyStore`. This is the value provided to `keytool` when creating the keystore file and asked **Enter keystore password:**. This property also supports `env:` and `file:` prefixes that can be used to specify an environment variable or file that contains the password. These options provide a way to prevent the password from appearing in build logs. |
+| `-p:AndroidSigningStorePass` | The password to `AndroidSigningKeyStore`. This is the value provided to `keytool` when creating the keystore file and asked to **Enter keystore password:**. This is because the default keystore type assumes that the keystore password and key password are identical. This property also supports `env:` and `file:` prefixes that can be used to specify an environment variable or file that contains the password. These options provide a way to prevent the password from appearing in build logs. |
+
+You should use the same password as the values of the `AndroidSigningKeyPass` and `AndroidSigningStorePass` parameters.
 
 For a full list of build properties, see [Build properties](/xamarin/android/deploy-test/building-apps/build-properties).
 
@@ -92,9 +91,6 @@ Run the `dotnet publish` command with the following parameters to build and sign
 ```console
 dotnet publish -f net7.0-android -c Release -p:AndroidSigningKeyStore={filename}.keystore -p:AndroidSigningKeyAlias={keyname} -p:AndroidSigningKeyPass={password} -p:AndroidSigningStorePass={password}
 ```
-
-> [!NOTE]
-> You should use the same password as the values of the `AndroidSigningKeyPass` and `AndroidSigningStorePass` parameters. This is because the default keystore type assumes that the keystore password and key password are identical.
 
 For example, use the following command to build and sign your app using the previously created keystore:
 
@@ -125,18 +121,18 @@ For more information about the `dotnet publish` command, see [dotnet publish](/d
 
 An alternative to specifying build parameters on the command line is to specify them in your project file in a `<PropertyGroup>`. The following table lists some of the common build properties:
 
-| Parameter                    | Value                                                                                           |
+| Property                     | Value                                                                                           |
 |------------------------------|-------------------------------------------------------------------------------------------------|
 | `<ApplicationTitle>` | The user-visible name for the app. |
 | `<ApplicationId>` | The unique identifier for the app, such as `com.companyname.mymauiapp`. |
 | `<ApplicationVersion>` | The version of the build that identifies an iteration of the app. |
 | `<ApplicationDisplayVersion>` | The version number of the app. |
 | `<AndroidKeyStore>` | A boolean value that indicates whether the app should be signed. The default value is `false`. |
-| `<AndroidPackageFormats>` | A semi-colon delimited property that indicates if you want to package the app as an APK file or AAB. Set to either `aab` or `apk` to generate only one format. Set to `aab;apk` to generate both package formats. |
+| `<AndroidPackageFormats>` | A semi-colon delimited property that indicates if you want to package the app as an APK file or AAB. Set to either `aab` or `apk` to generate only one format. The default value for release builds is `aab;apk`.|
 | `<AndroidSigningKeyAlias>` | The alias for the key in the keystore. This is the `keytool -alias` value used when creating the keystore. |
-| `<AndroidSigningKeyPass>` | The password of the key within the keystore file. This is the value entered when `keytool` asks **Enter key password for `$(AndroidSigningKeyAlias)`**. This property also supports `env:` and `file:` prefixes that can be used to specify an environment variable or file that contains the password. These options provide a way to prevent the password from appearing in build logs. |
+| `<AndroidSigningKeyPass>` | The password of the key within the keystore file. This is the value provided to `keytool` when creating the keystore file and asked to **Enter keystore password:**. This is because the default keystore type assumes that the key password and keystore password are identical. This property also supports `env:` and `file:` prefixes that can be used to specify an environment variable or file that contains the password. These options provide a way to prevent the password from appearing in build logs. |
 | `<AndroidSigningKeyStore>` | The filename of the keystore file created by `keytool`. This is the `keytool -keystore` value used when creating the keystore. |
-| `<AndroidSigningStorePass>` | The password to `AndroidSigningKeyStore`. This is the value provided to `keytool` when creating the keystore file and asked **Enter keystore password:**. This property also supports `env:` and `file:` prefixes that can be used to specify an environment variable or file that contains the password. These options provide a way to prevent the password from appearing in build logs. |
+| `<AndroidSigningStorePass>` | The password to `AndroidSigningKeyStore`. This is the value provided to `keytool` when creating the keystore file and asked to **Enter keystore password:**. This is because the default keystore type assumes that the keystore password and key password are identical. This property also supports `env:` and `file:` prefixes that can be used to specify an environment variable or file that contains the password. These options provide a way to prevent the password from appearing in build logs. |
 
 For a full list of build properties, see [Build properties](/xamarin/android/deploy-test/building-apps/build-properties).
 
@@ -157,7 +153,7 @@ This example `<PropertyGroup>` adds a condition check, preventing those settings
 1. The target framework is set to something containing the text `-android`.
 1. The build configuration is set to `Release`.
 
-If either of those conditions fail, the settings aren't processed. More importantly, the `<AndroidKeyStore>` setting isn't set, preventing the app from being signed.
+If either of those conditions fail, the settings aren't processed. More importantly, the `<AndroidSigningKeyStore>` and `<AndroidSigningKeyAlias>` settings aren't set, preventing the app from being signed.
 
 For security reasons, you shouldn't supply a value for `<AndroidSigningKeyPass>` and `<AndroidSigningStorePass>` in the project file. You can provide these values on the command line when you publish the app, or use the `env:` or `file:` prefixes to prevent the password from appearing in build logs. For example, to use an environment variable named `AndroidSigningPassword`:
 
@@ -184,14 +180,11 @@ Alternatively, to use a file located at *C:\Users\user1\AndroidSigningPassword.t
 </PropertyGroup>
 ```
 
-> [!NOTE]
-> You should use the same password as the values of the `AndroidSigningKeyPass` and `AndroidSigningStorePass` build properties. This is because the default keystore type assumes that the keystore password and key password are identical.
-
 ## Distribute the app
 
 The signed APK or AAB file can be distributed with one of the following approaches:
 
-- The most common approach to distributing Android apps to users is through the Google Play. Google Play requires that you submit your app as an *Android App Bundle* (AAB). For more information, see [Upload your app to the Play Console](Upload your app to the Play Console) on developer.android.com
+- The most common approach to distributing Android apps to users is through Google Play. Google Play requires that you submit your app as an *Android App Bundle* (AAB). For more information, see [Upload your app to the Play Console](https://developer.android.com/studio/publish/upload-bundle) on developer.android.com
 - APK files can be distributed to Android devices through a website or server. When users browse to a download link from their Android device, the file is downloaded. Android will automatically start installing it on the device, provided that the user has configured their settings to allow the installation of apps from unknown sources. For more information about opting into allowing apps from unknown sources, see [User opt-in for unknown apps and sources](https://developer.android.com/studio/publish#publishing-unknown) on developer.android.com.
 
 ## See also
