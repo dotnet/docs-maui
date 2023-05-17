@@ -234,7 +234,7 @@ For more information about enabling Google API access to your Google Play Develo
 
     :::image type="content" source="media/publish/vs/enter-password.png" alt-text="Screenshot of entering your password for your signing identity in Visual Studio.":::
 
-Visual Studio will sign your app bundle and upload it to Google Play.
+    Visual Studio will sign your app bundle and upload it to Google Play.
 
-> [!IMPORTANT]
-> App's submitted to Google Play typically undergo a review process. For more information, see [Prepare your app for review](https://support.google.com/googleplay/android-developer/answer/9859455) and [Publish your app](https://support.google.com/googleplay/android-developer/answer/9859751) on support.google.com.
+    > [!IMPORTANT]
+    > App's submitted to Google Play typically undergo a review process. For more information, see [Prepare your app for review](https://support.google.com/googleplay/android-developer/answer/9859455) and [Publish your app](https://support.google.com/googleplay/android-developer/answer/9859751) on support.google.com.
