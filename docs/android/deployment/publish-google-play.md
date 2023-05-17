@@ -178,7 +178,7 @@ For more information about enabling Google API access to your Google Play Develo
 
     :::image type="content" source="media/publish/vs/distribution-select-channel-google-play.png" alt-text="Screenshot of selecting the Google Play distribution channel in the distribution dialog.":::
     <!-- markdownlint-enable MD029 -->
-    
+
 <!--
 1. In the **Distribute - Signing Identity** dialog, select the **+** button to add your signing identity:
 
