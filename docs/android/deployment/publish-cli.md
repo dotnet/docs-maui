@@ -31,7 +31,7 @@ Perform the following steps to create a keystore file:
 
     ```console
     keytool -genkeypair -v -keystore myapp.keystore -alias myapp -keyalg RSA -keysize 2048 -validity 10000
-    ```    
+    ```
 
     > [!IMPORTANT]
     > Ensure you backup your keystore and password. If you lose it you'll be unable to sign your app with the same signing identity.  
