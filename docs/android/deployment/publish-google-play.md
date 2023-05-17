@@ -176,9 +176,10 @@ For more information about enabling Google API access to your Google Play Develo
 <!-- markdownlint-disable MD029 -->
 5. In the **Distribute - Select Channel** dialog, select the **Google Play** button:
 
-    :::image type="content" source="media/publish/vs/distribution-select-channel-google-play.png" alt-text="Screenshot of selecting a distribution channel in the distribution dialog.":::
+    :::image type="content" source="media/publish/vs/distribution-select-channel-google-play.png" alt-text="Screenshot of selecting the Google Play distribution channel in the distribution dialog.":::
     <!-- markdownlint-enable MD029 -->
-
+    
+<!--
 1. In the **Distribute - Signing Identity** dialog, select the **+** button to add your signing identity:
 
     :::image type="content" source="media/publish/vs/distribution-add-signing-identity.png" alt-text="Screenshot of adding a signing identity in the distribution dialog.":::
@@ -200,7 +201,7 @@ For more information about enabling Google API access to your Google Play Develo
     A new keystore, which contains a new certificate, will be saved to **C:\Users\{Username}\AppData\Local\Xamarin\Mono for Android\Keystore\{Alias}\{Alias}.keystore**.
 
     > [!IMPORTANT]
-    > The keystore and password isn't saved to your Visual Studio solution. Therefore, ensure you back up this data. If you lose it you'll be unable to sign your app with the same signing identity.  
+    > The keystore and password isn't saved to your Visual Studio solution. Therefore, ensure you back up this data. If you lose it you'll be unable to sign your app with the same signing identity.   -->
 
 1. In the **Distribute - Signing Identity** dialog, select your signing identity and select the **Continue** button:
 
