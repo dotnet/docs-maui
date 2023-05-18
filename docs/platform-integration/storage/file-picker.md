@@ -51,11 +51,9 @@ The `ReadExternalStorage` permission is required and must be configured in the A
 
 Enable iCloud capabilities. For more information, see [Capabilities](~/ios/capabilities.md).
 
-Mac Catalyst apps that are released to the Mac App Store require Apple's App Sandbox to be enabled. The App Sandbox restricts access to system resources and user data in Mac apps, to contain damage if an app becomes compromised. For more information about enabling the App Sandbox, see [Add entitlements](~/mac-catalyst/deploymentpublish-app-store.md#add-entitlements).
+Mac Catalyst apps that are released to the Mac App Store require Apple's App Sandbox to be enabled. The App Sandbox restricts access to system resources and user data in Mac apps, to contain damage if an app becomes compromised. For more information about enabling the App Sandbox, see [Add entitlements](~/mac-catalyst/deployment/publish-app-store.md#add-entitlements).
 
-A consequence of enabling the App Sandbox for Mac Catalyst apps is that the file picker won't open. This is because the first time a user launches a sandboxed Mac Catalyst app, the system creates a container folder that the app has exclusive read-write access to. The system also restricts the app's file system access to its container. While the container includes symbolic links to common user folders, they're considered sensitive folders that require that your app includes specific entitlements before it grants access to these locations. For more information see [Enable managed file access](https://developer.apple.com/documentation/xcode/configuring-the-macos-app-sandbox/#Enable-managed-file-access) on developer.apple.com.
-
-Therefore, you must add the following entitlements to your app to use the file picker in Mac Catalyst apps that are published to the Mac App Store:
+A consequence of enabling the App Sandbox for Mac Catalyst apps is that the file picker won't open. This is because the first time a user launches a sandboxed Mac Catalyst app, the system creates a container folder that the app has exclusive read-write access to. The system also restricts the app's file system access to its container. While the container includes symbolic links to common user folders, they're considered sensitive folders that require that your app includes specific entitlements before it grants access to these locations. Therefore, you must add the following entitlements to your app to use the file picker in Mac Catalyst apps that are published to the Mac App Store:
 
 ```xml
 <key>com.apple.security.assets.movies.read-only</key>
@@ -72,7 +70,7 @@ Therefore, you must add the following entitlements to your app to use the file p
 <true/>
 ```
 
-For more information about adding entitlements to Mac Catalyst apps, see [Mac Catalyst entitlements](~/mac-catalyst/entitlements.md).
+For more information about adding entitlements to Mac Catalyst apps, see [Mac Catalyst entitlements](~/mac-catalyst/entitlements.md). For more information about managed file access, see [Enable managed file access](https://developer.apple.com/documentation/xcode/configuring-the-macos-app-sandbox/#Enable-managed-file-access) on developer.apple.com.
 
 # [Windows](#tab/windows)
 
