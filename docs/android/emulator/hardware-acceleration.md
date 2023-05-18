@@ -14,7 +14,7 @@ With Visual Studio, you can easily test and debug your .NET MAUI app for Android
 The following virtualization technologies are available for accelerating the Android emulator:
 
 - The Windows Hypervisor Platform (WHPX). [Hyper-V](/virtualization/hyper-v-on-windows/) is a virtualization feature of Windows that makes it possible to run virtualized computer systems on a physical host computer.
-- The Android Emulator hypervisor driver (AEHD)
+- The Android Emulator hypervisor driver (AEHD).
 
 > [!NOTE]
 > The Intel Hardware Accelerated Execution Manager (HAXM) is deprecated from emulator 33.x.x.x, and has been replaced by AEHD on Intel processors. For information about using HAXM on emulator 32.x.x.x and lower, see [Configure VM acceleration using Intel HAXM on Windows](https://developer.android.com/studio/run/emulator-acceleration#vm-windows-haxm-intel) on developer.android.com.
@@ -33,7 +33,7 @@ For information about launching and debugging with the Android emulator, see [De
 
 Before enabling Hyper-V, read the following section to verify that your computer supports Hyper-V.
 
-### Verifying support for Hyper-V
+### Verify support for Hyper-V
 
 Hyper-V runs on the Windows Hypervisor Platform. To use the Android emulator with Hyper-V, your computer must meet the following criteria to support the Windows Hypervisor Platform:
 
@@ -62,7 +62,7 @@ If all listed Hyper-V requirements have a value of **Yes**, then your computer c
 
 If the Hyper-V result indicates that a hypervisor is currently running, Hyper-V is already enabled.
 
-### Enabling Hyper-V acceleration in Windows
+### Enable Hyper-V acceleration in Windows
 
 If your computer meets the above criteria, use the following steps to accelerate the Android emulator with Hyper-V:
 
@@ -83,7 +83,7 @@ After Hyper-V is enabled, you'll be able to run your accelerated Android emulato
 
 If your computer doesn't support Hyper-V, you should use AEHD to accelerate the Android emulator. Before you can install and use AEHD, read the following section to verify that your computer supports AEHD.
 
-### Verifying support for AEHD
+### Verify support for AEHD
 
 Your computer must meet the following criteria to support AEHD:
 
@@ -95,7 +95,7 @@ Your computer must meet the following criteria to support AEHD:
 > [!NOTE]
 > Several features in Windows enable Hyper-V implicitly. For more information, see [Double-check when disabling Hyper-V](https://developer.android.com/studio/run/emulator-acceleration#disable-hyper-v) on developer.android.com.
 
-### Enabling AEHD acceleration in Windows
+### Enable AEHD acceleration in Windows
 
 If your computer meets the above criteria, use the following steps to accelerate the Android emulator with AEHD:
 
