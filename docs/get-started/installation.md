@@ -2,11 +2,12 @@
 title: "Install Visual Studio 2022 to develop cross-platform apps using .NET MAUI"
 description: "Learn how to install Visual Studio 2022 and Visual Studio 2022 for Mac, to develop native, cross-platform apps using .NET MAUI."
 ms.date: 11/01/2022
+ms.prod: 123
 ---
 
 # Installation
 
-Developing native, cross-platform .NET Multi-platform App UI (.NET MAUI) apps requires Visual Studio 2022 17.3 or greater, or Visual Studio 2022 for Mac 17.4 or greater.
+Developing native, cross-platform .NET Multi-platform App UI (.NET MAUI) apps requires Visual Studio 2022 17.3 or greater, or Visual Studio 2022 for Mac 17.4 or greater.123
 
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio](#tab/vswin)
@@ -94,3 +95,4 @@ To learn how to create and run your first .NET MAUI app in Visual Studio 2022 on
 
 > [!div class="nextstepaction"]
 > [Build your first app](first-app.md)
+
