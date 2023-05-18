@@ -20,9 +20,9 @@ To access the **FilePicker** functionality, the following platform specific setu
 
 If your app targets Android 12 or lower, you must request the `READ_EXTERNAL_STORAGE` permission. If your app targets Android 13 or higher and needs access to files that other apps have created, you must request one or more of the following granular permissions instead of the `READ_EXTERNAL_STORAGE` permission:
 
-  - `READ_MEDIA_IMAGES`
-  - `READ_MEDIA_VIDEO`
-  - `READ_MEDIA_AUDIO`
+- `READ_MEDIA_IMAGES`
+- `READ_MEDIA_VIDEO`
+- `READ_MEDIA_AUDIO`
 
 These permissions can be added in the following ways:
 
