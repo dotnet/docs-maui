@@ -48,7 +48,7 @@ Hyper-V runs on the Windows Hypervisor Platform. To use the Android emulator wit
   - Virtualization Technology (may have a different label depending on motherboard manufacturer).
   - Hardware Enforced Data Execution Prevention.
 
-- Your computer must be running Windows 11 or Windows 10 Version 1909 or later.
+- Your computer must be running the Enterprise, Pro, or Education versions of Windows 11 or Windows 10 Version 1909 or later.
 
 To verify that your computer hardware and software is compatible with Hyper-V, open a command prompt and type the following command:
 
