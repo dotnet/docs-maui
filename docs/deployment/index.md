@@ -1,7 +1,7 @@
 ---
 title: "Deployment"
 description: "Learn how to deploy and publish .NET MAUI apps to Android, iOS, macOS, and Windows."
-ms.date: 01/13/2022
+ms.date: 05/15/2023
 ---
 
 # Deployment
@@ -14,7 +14,7 @@ You can debug and test your apps on the Android emulator, which can be run in a 
 
 While the Android emulator enables you to rapidly develop and test your apps, you'll also want to test your apps on a real Android device. To run on a device, you'll need to enable developer mode on the device and connect it to your development machine. For more information, see [Set up Android device for debugging](~/android/device/setup.md).
 
-When distributing a .NET MAUI app for Android, you generate an *apk* (Android Package) or an *aab* (Android App Bundle) file. The *apk* is used for installing your app to an Android device, and the *aab* is used to publish your app to an Android store. With just a few configuration changes to your project, your app can be packaged for distribution. For more information, see [Publish a .NET MAUI app for Android](~/android/deployment/index.md).
+When distributing a .NET MAUI app for Android, you generate an Android Package (APK) or an Android App Bundle (AAB) file. The APK is used for installing your app to an Android device, and the AAB is used to publish your app to an Android store. With just a few configuration changes to your project, your app can be packaged for distribution. For more information, see [Publish a .NET MAUI app for Android](~/android/deployment/index.md).
 
 ## iOS
 
@@ -35,6 +35,8 @@ On iOS, .NET MAUI apps run in a sandbox that provides a set of rules that limit 
 ## Mac Catalyst
 
 When distributing your .NET MAUI Mac Catalyst app, you generate an *.app* or a *.pkg* file. An *.app* file is a self-contained app that can be run without installation, whereas a *.pkg* is an app packaged in an installer. Distributing a .NET MAUI Mac Catalyst app requires that the app is provisioned using a provisioning profile. Provisioning profiles are files that contain code signing information, as well as the identity of the app and its intended distribution mechanism. For more information about publishing an .NET MAUI Mac Catalyst app, see [Publish a .NET MAUI Mac Catalyst app](~/mac-catalyst/deployment/index.md).
+
+On Mac Catalyst, .NET MAUI apps run in a sandbox that provides a set of rules that limit access between the app and system resources or user data. Apple provides *capabilities*, also known as *app services*, as a means of extending functionality and widening the scope of what iOS apps can do. Capabilities are added to your app's provisioning profile, and are used when code signing your app. For more information, see [Capabilities](~/mac-catalyst/capabilities.md).
 
 ## Windows
 
