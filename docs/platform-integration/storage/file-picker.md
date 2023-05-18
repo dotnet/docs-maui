@@ -18,14 +18,23 @@ To access the **FilePicker** functionality, the following platform specific setu
 <!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
 
-The `ReadExternalStorage` permission is required and must be configured in the Android project. This can be added in the following ways:
+If your app targets Android 12 or lower, you must request the `READ_EXTERNAL_STORAGE` permission. If your app targets Android 13 or higher and needs access to files that other apps have created, you must request one or more of the following granular permissions instead of the `READ_EXTERNAL_STORAGE` permission:
+
+- `READ_MEDIA_IMAGES`
+- `READ_MEDIA_VIDEO`
+- `READ_MEDIA_AUDIO`
+
+These permissions can be added in the following ways:
 
 - Add the assembly-based permission:
 
   Open the _Platforms/Android/MainApplication.cs_ file and add the following assembly attributes after `using` directives:
 
   ```csharp
-  [assembly: UsesPermission(Android.Manifest.Permission.ReadExternalStorage)]
+  [assembly: UsesPermission(Android.Manifest.Permission.ReadExternalStorage, MaxSDKVersion = 32)]
+  [assembly: UsesPermission(Android.Manifest.Permission.ReadMediaAudio)]
+  [assembly: UsesPermission(Android.Manifest.Permission.ReadMediaImages)]
+  [assembly: UsesPermission(Android.Manifest.Permission.ReadMediaVideo)]
   ```
 
   \- or -
@@ -35,7 +44,13 @@ The `ReadExternalStorage` permission is required and must be configured in the A
   Open the _Platforms/Android/AndroidManifest.xml_ file and add the following in the `manifest` node:
 
   ```xml
-  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
+  <!-- Required only if your app needs to access images or photos that other apps created -->
+  <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+  <!-- Required only if your app needs to access videos that other apps created -->
+  <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+  <!-- Required only if your app needs to access audio files that other apps created -->
+  <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />    
   ```
 <!-- NOT SUPPORTED
   \- or -
