@@ -13,7 +13,7 @@ ms.date: 12/16/2021
 The .NET MAUI <xref:Microsoft.Maui.Controls.GraphicsView> control provides access to an <xref:Microsoft.Maui.Graphics.ICanvas> object, on which properties can be set and methods invoked to draw graphical objects. For more information about the <xref:Microsoft.Maui.Controls.GraphicsView>, see [GraphicsView](~/user-interface/controls/graphicsview.md).
 
 > [!IMPORTANT]
-> Graphical objects are drawn on an <xref:Microsoft.Maui.Graphics.ICanvas> in units of pixels.
+> Graphical objects are drawn on an <xref:Microsoft.Maui.Graphics.ICanvas> using a device-independent unit that's recognized by each platform.
 
 ## Draw a line
 
