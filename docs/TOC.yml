@@ -716,7 +716,11 @@
               items:
                 - name: Overview
                   href: android/deployment/index.md
-                - name: Publish with the .NET CLI
+                - name: Publish for Google Play distribution
+                  href: android/deployment/publish-google-play.md
+                - name: Publish for ad-hoc distribution
+                  href: android/deployment/publish-ad-hoc.md
+                - name: Publish using the command line
                   href: android/deployment/publish-cli.md
             - name: iOS
               items:
