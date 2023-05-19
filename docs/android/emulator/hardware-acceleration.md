@@ -87,10 +87,9 @@ If your computer doesn't support Hyper-V, you should use AEHD to accelerate the 
 
 Your computer must meet the following criteria to support AEHD:
 
-- An Intel or AMD processor with virtualization extension.
+- An Intel or AMD processor with virtualization extension, which must be enabled in your BIOS.
 - 64-bit Windows 11, Windows 10, Windows 8, or Windows 7.
 - Hyper-V must be turned off.
-- In your computer's BIOS, virtualization extension must be enabled.
 
 > [!NOTE]
 > Several features in Windows enable Hyper-V implicitly. For more information, see [Double-check when disabling Hyper-V](https://developer.android.com/studio/run/emulator-acceleration#disable-hyper-v) on developer.android.com.
