@@ -6,6 +6,8 @@ ms.date: 01/06/2023
 
 # FlyoutPage
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/navigation-flyoutpage)
+
 :::image type="content" source="media/flyoutpage/pages.png" alt-text=".NET MAUI FlyoutPage." border="false":::
 
 The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.FlyoutPage> is a page that manages two related pages of information – a flyout page that presents items, and a detail page that presents details about items on the flyout page.
