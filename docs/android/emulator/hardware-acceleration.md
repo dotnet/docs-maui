@@ -105,7 +105,10 @@ If your computer meets the above criteria, use the following steps to accelerate
 
     :::image type="content" source="media/hardware-acceleration/win/aehd.png" alt-text="Installing AEHD through the Android SDK manager in Visual Studio.":::
 
-Alternatively, AEHD can be downloaded and installed from [GitHub](https://github.com/google/android-emulator-hypervisor-driver/releases). After unpacking the driver package, run `silent_install.bat` at a command line with administrator privileges.
+    > [!NOTE]
+    > Alternatively, AEHD can be downloaded and installed from [GitHub](https://github.com/google/android-emulator-hypervisor-driver/releases). After unpacking the driver package, run `silent_install.bat` at a command line with administrator privileges.
+
+1. Make sure that the virtual device you [created in the Android Device Manager](device-manager.md) is an **x86-64** or **x86**-based system image. If you use an Arm-based system image, the virtual device won't be accelerated and will run slowly.
 
 After installation, confirm that the driver is operating correctly using the following command:
 
