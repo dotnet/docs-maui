@@ -162,7 +162,7 @@ Alternatively, you can add the [`AssemblyMetadata`](xref:System.Reflection.Assem
 
 ### Suppress analysis warnings
 
-When the linker is enabled, it will remove IL that's not statically reachable. Apps that uses reflection or other patterns that create dynamic dependencies may be broken as a result. To warn about such patterns, when marking an assembly as linker safe library authors should set the `SuppressTrimAnalysisWarnings) MSBuild property to `false`:
+When the linker is enabled, it will remove IL that's not statically reachable. Apps that uses reflection or other patterns that create dynamic dependencies may be broken as a result. To warn about such patterns, when marking an assembly as linker safe library authors should set the `SuppressTrimAnalysisWarnings` MSBuild property to `false`:
 
 ```xml
 <PropertyGroup>
