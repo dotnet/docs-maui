@@ -55,7 +55,7 @@ Linker behavior can be configured for each build configuration of your app. By d
 When you use the linker, it sometimes remove code that you might have called dynamically, even indirectly. You can instruct the linker to preserve members by annotating them with the [`DynamicDependency`](xref:System.Diagnostics.CodeAnalysis.DynamicDependencyAttribute) attribute. This attribute can be used to express a dependency on either a type and subset of members, or at specific members.
 
 > [!IMPORTANT]
-> Every member that isn't statically linked by the app is subject to be removed.
+> Every member in the BCL that cannot be statically determined to be used by the app is subject to be removed.
 
 The [`DynamicDependency`](xref:System.Diagnostics.CodeAnalysis.DynamicDependencyAttribute) attribute can be applied to constructors, fields, and methods:
 
