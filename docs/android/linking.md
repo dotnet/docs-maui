@@ -46,7 +46,7 @@ Linker behavior can be configured for each build configuration of your app. By d
 1. In the **Project Properties** window, click the **OK** button.
 
 > [!NOTE]
-> Visual Studio for Mac sets the `$(AndroidLinkMode)` MSBuild property in your app's project file. `<AndroidLinkMode>None</AndroidLinkMode>` maps to `<PublishTrimmed>false</PublishTrimmed>` and `<AndroidLinkMode>SdkOnly</AndroidLinkMode>` maps to `<PublishTrimmed>true</PublishTrimmed>`.
+> Visual Studio for Mac sets the `AndroidLinkMode` MSBuild property in your app's project file. `<AndroidLinkMode>None</AndroidLinkMode>` maps to `<PublishTrimmed>false</PublishTrimmed>` and `<AndroidLinkMode>SdkOnly</AndroidLinkMode>` maps to `<PublishTrimmed>true</PublishTrimmed>`.
 
 ----
 
@@ -55,7 +55,7 @@ Linker behavior can be configured for each build configuration of your app. By d
 When you use the linker, it sometimes remove code that you might have called dynamically, even indirectly. You can instruct the linker to preserve members by annotating them with the [`DynamicDependency`](xref:System.Diagnostics.CodeAnalysis.DynamicDependencyAttribute) attribute. This attribute can be used to express a dependency on either a type and subset of members, or at specific members.
 
 > [!IMPORTANT]
-> Every member in the BCL that cannot be statically determined to be used by the app is subject to be removed.
+> Every member in the BCL that can't be statically determined to be used by the app is subject to be removed.
 
 The [`DynamicDependency`](xref:System.Diagnostics.CodeAnalysis.DynamicDependencyAttribute) attribute can be applied to constructors, fields, and methods:
 
@@ -91,7 +91,7 @@ The type and member strings use a variation of the C# documentation comment ID s
 
 ## Preserve assemblies
 
-It's possible to specify assemblies that should be excluded from the linking process, while allowing other assemblies to be linked.
+It's possible to specify assemblies that should be excluded from the linking process, while allowing other assemblies to be linked. This approach can be useful when you can't easily use the [`DynamicDependency`](xref:System.Diagnostics.CodeAnalysis.DynamicDependencyAttribute) attribute, or don't control the code that's being linked away.
 
 When it links all assemblies, you can tell the linker to skip an assembly by setting the `TrimmerRootAssembly` MSBuild property in an `<ItemGroup>` tag in the project file:
 
@@ -139,16 +139,50 @@ When an assembly, type, or member is listed in the XML, the default action is pr
 
 ## Mark an assembly as linker safe
 
-If you have a library in your project, or you're a developer of a reusable library and you want the linker to treat your assembly as linkable, you can mark the assembly as linker safe with the [`AssemblyMetadata`](xref:System.Reflection.AssemblyMetadataAttribute) attribute:
+If you have a library in your project, or you're a developer of a reusable library and you want the linker to treat your assembly as linkable, you can mark the assembly as linker safe by adding the `IsTrimmable` MSBuild property to the project file for the assembly:
+
+```xml
+<PropertyGroup>
+    <IsTrimmable>true</IsTrimmable>
+</PropertyGroup>
+```
+
+This marks your assembly as "trimmable" and enables trim warnings for that project. Being "trimmable" means your assembly is considered compatible with trimming and should have no trim warnings when the assembly is built. When used in a trimmed app, the assembly's unused members will be removed in the final output.
+
+Setting the `IsTrimmable` MSBuild property to `true` in your project file inserts the [`AssemblyMetadata`](xref:System.Reflection.AssemblyMetadataAttribute) attribute into your assembly:
 
 ```csharp
 [assembly: AssemblyMetadata("IsTrimmable", "True")]
 ```
 
-Alternatively, you can set `<IsTrimmable>true</IsTrimmable>` in a `<PropertyGroup>` tag in the project file for the assembly. This marks your assembly as "trimmable" and enable trim warnings for that project. Being "trimmable" means your assembly is considered compatible with trimming and should have no trim warnings when the assembly is built. When used in a trimmed app, the assembly's unused members will be removed in the final output.
+Alternatively, you can add the [`AssemblyMetadata`](xref:System.Reflection.AssemblyMetadataAttribute) attribute into your assembly without having added the `IsTrimmable` MSBuild property to the project file for your assembly.
 
 > [!NOTE]
-> If the `IsTrimmable` MSBuild property is set for an assembly, this overrides the `IsTrimmable` attribute. This enables you to opt an assembly into trimming even if it doesn't have the attribute, or to disable trimming of an assembly that has the attribute.
+> If the `IsTrimmable` MSBuild property is set for an assembly, this overrides the `AssemblyMetadata("IsTrimmable", "True")` attribute. This enables you to opt an assembly into trimming even if it doesn't have the attribute, or to disable trimming of an assembly that has the attribute.
+
+### Suppress analysis warnings
+
+When the linker is enabled, it will remove IL that's not statically reachable. Apps that uses reflection or other patterns that create dynamic dependencies may be broken as a result. To warn about such patterns, when marking an assembly as linker safe library authors should set the `SuppressTrimAnalysisWarnings) MSBuild property to `false`:
+
+```xml
+<PropertyGroup>
+  <SuppressTrimAnalysisWarnings>false</SuppressTrimAnalysisWarnings>
+</PropertyGroup>
+```
+
+This will include warnings about the entire app, including your own code, library code, and SDK code.
+
+### Show detailed warnings
+
+Trim analysis produces at most one warning for each assembly that comes from a `PackageReference`, indicating that the assembly's internals aren't compatible with trimming. When marking an assembly as linker safe, library authors should enable individual warnings for all assemblies by setting the `TrimmerSingleWarn` MSBuild property to `false`:
+
+```xml
+<PropertyGroup>
+  <TrimmerSingleWarn>false</TrimmerSingleWarn>
+</PropertyGroup>
+```
+
+This will show all detailed warnings, instead of collapsing them to a single warning per assembly.
 
 ## See also
 
