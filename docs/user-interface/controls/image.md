@@ -1,12 +1,12 @@
 ---
 title: "Image"
-description: "The .NET MAUI Image displays an image that can be loaded from a local file, a URI, an embedded resource, or a stream."
+description: "The .NET MAUI Image displays an image that can be loaded from a local file, a URI, or a stream."
 ms.date: 04/18/2023
 ---
 
 # Image
 
-The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Image> displays an image that can be loaded from a local file, a URI, an embedded resource, or a stream. The standard platform image formats are supported, including animated GIFs, and local Scalable Vector Graphics (SVG) files are also supported. For more information about adding images to a .NET MAUI app project, see [Add images to a .NET MAUI app project](../images/images.md).
+The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Image> displays an image that can be loaded from a local file, a URI, or a stream. The standard platform image formats are supported, including animated GIFs, and local Scalable Vector Graphics (SVG) files are also supported. For more information about adding images to a .NET MAUI app project, see [Add images to a .NET MAUI app project](../images/images.md).
 
 <xref:Microsoft.Maui.Controls.Image> defines the following properties:
 
