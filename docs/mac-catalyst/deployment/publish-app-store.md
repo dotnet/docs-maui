@@ -108,7 +108,7 @@ To create a provisioning profile for Mac App Store distribution:
 
     :::image type="content" source="media/publish-app-store/appstore-register-provisioning-profile.png" alt-text="Register a provisioning profile for app store distribution.":::
 
-1. In the **Generate a Provisioning Profile** page, select the **Mac Catalyst** radio button. Then, in the **App ID** drop-down, select the App ID that you previously created before clicking the **Continue** button:
+1. In the **Generate a Provisioning Profile** page, select the **Mac** radio button. Then, in the **App ID** drop-down, select the App ID that you previously created before clicking the **Continue** button:
 
     :::image type="content" source="media/publish-app-store/select-app-id.png" alt-text="Select your App ID.":::
 
