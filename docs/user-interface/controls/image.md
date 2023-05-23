@@ -25,8 +25,8 @@ The <xref:Microsoft.Maui.Controls.ImageSource> class defines the following metho
 
 - `FromFile` returns a `FileImageSource` that reads an image from a local file.
 - `FromUri` returns an `UriImageSource` that downloads and reads an image from a specified URI.
-- `FromResource` returns a `StreamImageSource` that reads an image file embedded in an assembly.
 - `FromStream` returns a `StreamImageSource` that reads an image from a stream that supplies image data.
+<!-- - `FromResource` returns a `StreamImageSource` that reads an image file embedded in an assembly. -->
 
 In XAML, images can be loaded from files and URIs by specifying the filename or URI as a string value for the `Source` property. Images can also be loaded from resources or streams in XAML through custom markup extensions.
 
@@ -124,7 +124,7 @@ image.Source = new UriImageSource
 
 In this example, the caching period is set to 10 days.
 
-## Load an embedded image
+<!-- ## Load an embedded image
 
 Embedded images can be added to an assembly as a resource by dragging them into your project, and ensuring their build action is set to **Embedded resource** in the **Properties window**.
 
@@ -148,10 +148,8 @@ Image image = new Image
 };
 ```
 
-<!--
 > [!NOTE]
 > To support displaying embedded images in release mode on Windows, it's necessary to use the overload of `ImageSource.FromResource` that specifies the source assembly in which to search for the image.
--->
 
 ### Load an embedded image in XAML
 
@@ -203,7 +201,7 @@ The markup extension can be consumed in XAML to load an embedded image:
 </ContentPage>
 ```
 
-For more information about XAML markup extensions, see [Create XAML markup extensions](~/xaml/markup-extensions/create.md).
+For more information about XAML markup extensions, see [Create XAML markup extensions](~/xaml/markup-extensions/create.md). -->
 
 ## Load an image from a stream
 
