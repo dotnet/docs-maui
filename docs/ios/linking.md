@@ -31,4 +31,4 @@ no-loc: [ ILLink ]
 
 ----
 
-[!INCLUDE [Control the linker](../macios/includes/linker-control.md)]
+[!INCLUDE [Control the linker](../includes/linker-control.md)]

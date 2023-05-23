@@ -19,4 +19,4 @@ To configure linker behavior in Visual Studio for Mac:
 
 1. In the **Project Properties** window, click the **OK** button.
 
-[!INCLUDE [Control the linker](../macios/includes/linker-control.md)]
+[!INCLUDE [Control the linker](../includes/linker-control.md)]
