@@ -112,8 +112,9 @@ To create a provisioning profile for Mac App Store distribution:
 
     :::image type="content" source="media/publish-app-store/select-app-id.png" alt-text="Select your App ID.":::
 
+    <!-- Commented out because only valid when the Mac Catalyst radio button is selected.
     > [!NOTE]
-    > The App ID will be in the **Enabled App IDs with an associated application identifier** section.
+    > The App ID will be in the **Enabled App IDs with an associated application identifier** section. -->
 
 1. In the **Generate a Provisioning Profile** page, select the radio button that corresponds to your distribution certificate before clicking the **Continue** button:
 
