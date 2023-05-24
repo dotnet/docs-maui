@@ -475,6 +475,8 @@
           items:
             - name: App manifest
               href: android/manifest.md
+            - name: Linking
+              href: android/linking.md              
         - name: iOS
           items:
             - name: Apple account management
