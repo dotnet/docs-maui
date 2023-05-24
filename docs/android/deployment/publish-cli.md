@@ -76,6 +76,7 @@ Additional build parameters can be specified on the command line, if they aren't
 | `-p:AndroidSigningKeyPass` | The password of the key within the keystore file. This is the value provided to `keytool` when creating the keystore file and you're asked to enter the keystore password. This is because the default keystore type assumes that the key password and keystore password are identical. This property also supports `env:` and `file:` prefixes that can be used to specify an environment variable or file that contains the password. These options provide a way to prevent the password from appearing in build logs. |
 | `-p:AndroidSigningKeyStore` | The filename of the keystore file created by `keytool`. This is the `keytool -keystore` value used when creating the keystore. |
 | `-p:AndroidSigningStorePass` | The password for the keystore file. This is the value provided to `keytool` when creating the keystore file and you're asked to enter the keystore password. This is because the default keystore type assumes that the keystore password and key password are identical. This property also supports `env:` and `file:` prefixes that can be used to specify an environment variable or file that contains the password. These options provide a way to prevent the password from appearing in build logs. |
+| `-p:PublishTrimmed` | A boolean value that indicates whether the app should be trimmed. The default value is `true` for release builds. |
 
 You should use the same password as the values of the `AndroidSigningKeyPass` and `AndroidSigningStorePass` parameters.
 
@@ -131,6 +132,7 @@ An alternative to specifying build parameters on the command line is to specify 
 | `<AndroidSigningKeyPass>` | The password of the key within the keystore file. This is the value provided to `keytool` when creating the keystore file and you're asked to enter the keystore password. This is because the default keystore type assumes that the key password and keystore password are identical. This property also supports `env:` and `file:` prefixes that can be used to specify an environment variable or file that contains the password. These options provide a way to prevent the password from appearing in build logs. |
 | `<AndroidSigningKeyStore>` | The filename of the keystore file created by `keytool`. This is the `keytool -keystore` value used when creating the keystore. |
 | `<AndroidSigningStorePass>` | The password for the keystore file. This is the value provided to `keytool` when creating the keystore file and you're asked to enter the keystore password. This is because the default keystore type assumes that the keystore password and key password are identical. This property also supports `env:` and `file:` prefixes that can be used to specify an environment variable or file that contains the password. These options provide a way to prevent the password from appearing in build logs. |
+| `<PublishTrimmed>` | A boolean value that indicates whether the app should be trimmed. The default value is `true` for release builds. |
 
 For a full list of build properties, see [Build properties](/xamarin/android/deploy-test/building-apps/build-properties).
 
