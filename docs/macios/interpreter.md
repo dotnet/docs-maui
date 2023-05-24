@@ -1,6 +1,6 @@
 ---
 title: "Mono interpreter on iOS and Mac Catalyst"
-description: Learn how to enable the Mono interpreter, which enables you to use dynamic code generation in your .NET MAUI iOS and Mac Catalyst release builds.
+description: Learn how to enable the Mono interpreter, which lets you use dynamic code generation in your .NET MAUI iOS and ARM64-based Mac Catalyst release builds.
 ms.date: 05/24/2023
 ---
 
