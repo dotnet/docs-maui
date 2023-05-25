@@ -82,7 +82,7 @@ Alternatively, use the following example to AOT compile all assemblies, while st
 Another common scenario where the interpreter is sometimes required is a .NET MAUI Mac Catalyst app running on the ARM64 architecture, which can throw an exception on launch. This launch exception can often be fixed by enabling the interpreter:
 
 ```xml
-<PropertyGroup Condition="$(TargetFramework.Contains('-maccatalyst-arm64')) and '$(Configuration)' == 'Release'">
+<PropertyGroup Condition="'$(RuntimeIdentifier)' == 'maccatalyst-arm64' and '$(Configuration)' == 'Release'">
     <MtouchInterpreter>-all,MyAssembly.dll</MtouchInterpreter>
 </PropertyGroup>
 ```
