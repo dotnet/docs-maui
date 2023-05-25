@@ -8,7 +8,7 @@ ms.date: 02/08/2022
 
 The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.ActivityIndicator> displays an animation to show that the application is engaged in a lengthy activity. Unlike <xref:Microsoft.Maui.Controls.ProgressBar>, <xref:Microsoft.Maui.Controls.ActivityIndicator> gives no indication of progress.
 
-The appearance of an <xref:Microsoft.Maui.Controls.ActivityIndicator> is platform-dependent, and the following screenshot shows an <xref:Microsoft.Maui.Controls.ActivityIndicator>:
+The appearance of an <xref:Microsoft.Maui.Controls.ActivityIndicator> is platform-dependent, and the following screenshot shows an <xref:Microsoft.Maui.Controls.ActivityIndicator> on Android:
 
 :::image type="content" source="media/activityindicator/activityindicator-default.png" alt-text="Screenshot of ActivityIndicator on Android.":::
 
