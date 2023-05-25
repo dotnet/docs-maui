@@ -36,7 +36,7 @@ The Mono interpreter can be enabled in release builds by setting the `UseInterpr
 </PropertyGroup>
 ```
 
-The interpreter can be enabled for Mac Catalyst release builds on ARM64 by changing `-ios` in the above example to `-maccatalyst-arm64`.
+The interpreter can be enabled for Mac Catalyst release builds on ARM64 by changing `-ios` in the above example to `-maccatalyst`.
 
 > [!WARNING]
 > Don't enable the interpreter for release builds on Android because it disables JIT compilation.
