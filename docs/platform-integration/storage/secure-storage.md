@@ -49,7 +49,7 @@ Auto Backup can be configured to disable specific content from backing up. You c
     </application>
     ```
 
-01. Create a new XML file named _auto_backup_rules.xml_ in the _Resources/xml_ directory with the build action of **AndroidResource**. Set the following content that includes all shared preferences except for `SecureStorage`:
+01. Create a new XML file named _auto_backup_rules.xml_ in the _Platforms/Android/Resources/xml_ directory with the build action of **AndroidResource**. Set the following content that includes all shared preferences except for `SecureStorage`:
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
