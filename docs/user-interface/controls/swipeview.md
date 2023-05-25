@@ -32,8 +32,8 @@ The <xref:Microsoft.Maui.Controls.SwipeView> class also defines three events:
 
 In addition, <xref:Microsoft.Maui.Controls.SwipeView> includes `Open` and `Close` methods, which programmatically open and close the swipe items, respectively.
 
-<!-- > [!NOTE]
-> <xref:Microsoft.Maui.Controls.SwipeView> has a platform-specific on iOS and Android, that controls the transition that's used when opening a <xref:Microsoft.Maui.Controls.SwipeView>. For more information, see [SwipeView Swipe Transition Mode on iOS](~//platform-integration/platform-specifics/ios/swipeview-swipetransitionmode.md) and [SwipeView Swipe Transition Mode on Android](~/platform-integration/platform-specifics/android/swipeview-swipetransitionmode.md). -->
+> [!NOTE]
+> <xref:Microsoft.Maui.Controls.SwipeView> has a platform-specific on iOS and Android, that controls the transition that's used when opening a <xref:Microsoft.Maui.Controls.SwipeView>. For more information, see [SwipeView swipe transition Mode on iOS](~/ios/platform-specifics/swipeview-swipetransitionmode.md) and [SwipeView swipe transition mode on Android](~/android/platform-specifics/swipeview-swipetransitionmode.md).
 
 ## Create a SwipeView
 
