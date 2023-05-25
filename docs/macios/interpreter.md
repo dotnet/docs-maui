@@ -8,7 +8,7 @@ ms.date: 05/24/2023
 
 When you compile a .NET Multi-Platform App UI (.NET MAUI) app for iOS or Mac Catalyst, the compiler turns your app code into Microsoft Intermediate Language (MSIL). When you run the iOS app in the simulator, or the Mac Catalyst app, the .NET Common Language Runtime (CLR) compiles the MSIL using a Just in Time (JIT) compiler. At runtime the MSIL is compiled into native code, which can run on the correct architecture for your app.
 
-However, there is a security restriction on iOS, set by Apple, which disallows the execution of dynamically generated code on a device. Similarly, the execution of dynamically generated code is disallowed on Mac Catalyst apps running on the ARM64 architecture. To meet this restriction, iOS and Mac Catalyst apps use an Ahead of Time (AOT) compiler to compile the managed code. This produces a native iOS binary that can be deployed to Apple devices, or a native Mac Catalyst binary.
+However, there is a security restriction on iOS, set by Apple, which disallows the execution of dynamically generated code on a device. Similarly, the execution of dynamically generated code is disallowed in iOS apps running on the ARM64 architecture in the simulator, and on Mac Catalyst apps running on the ARM64 architecture. To meet this restriction, iOS and Mac Catalyst apps use an Ahead of Time (AOT) compiler to compile the managed code. This produces a native iOS binary that can be deployed to Apple devices, or a native Mac Catalyst binary.
 
 AOT provides benefits through a reduction in startup time, and various other performance optimizations. However, it also restricts certain features from being used in your app:
 
@@ -28,7 +28,7 @@ The interpreter is enabled by default for .NET MAUI debug builds, and can be ena
 
 ## Enable the interpreter
 
-The Mono interpreter can be enabled in release builds by setting the `UseInterpreter` MSBuild property to `true` in your .NET MAUI app's project file:
+The Mono interpreter can be enabled in iOS release builds by setting the `UseInterpreter` MSBuild property to `true` in your .NET MAUI app's project file:
 
 ```xml
 <PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">
@@ -36,7 +36,13 @@ The Mono interpreter can be enabled in release builds by setting the `UseInterpr
 </PropertyGroup>
 ```
 
-The interpreter can be enabled for Mac Catalyst release builds on ARM64 by changing `-ios` in the above example to `-maccatalyst`.
+The interpreter can also be enabled for Mac Catalyst release builds on ARM64:
+
+```xml
+<PropertyGroup Condition="'$(RuntimeIdentifier)' == 'maccatalyst-arm64' and '$(Configuration)' == 'Release'">
+    <UseInterpreter>true</UseInterpreter>
+</PropertyGroup>
+```
 
 > [!WARNING]
 > Don't enable the interpreter for release builds on Android because it disables JIT compilation.
