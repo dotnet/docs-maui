@@ -58,30 +58,19 @@ Let's break down the key parts of the XAML controls placed on the page:
 - `<Button>` controls can be pressed by the user, which raise the `Clicked` event. You can run code in response to the `Clicked` event.
 - `Clicked="LearnMore_Clicked"`
 
-  The `Clicked` event of the button is assigned to the `LearnMore_Clicked` event handler, defined in the code-behind file. You'll create this code in the next step.
+  The `Clicked` event of the button is assigned to the `LearnMore_Clicked` event handler, which will be defined in the code-behind file. You'll create this code in the next step.
 
 ## Handle the Clicked event
 
 The next step is to add the code for the button's `Clicked` event.
 
-01. With the XAML editor open, right-click in the middle of the `LearnMore_Clicked` text, and select **Go To Definition**.
+01. In the **Solution Explorer** pane of Visual Studio, expand the _AboutPage.xaml_ file to reveal it's code-behind file _AboutPage.xaml.cs_. Then, double-click on the _AboutPage.xaml.cs_ file to open it in the code editor.
 
-    :::image type="content" source="../media/shell/vs-goto-definition.png" alt-text="Right-clicking on a button clicked handler, and selecting Go To Definition.":::
-
-01. The code editor opens to the code-behind file, _AboutPage.xaml.cs_, and generates an empty event handler for the `Clicked` event.
-
-    ```csharp
-    private void LearnMore_Clicked(object sender, EventArgs e)
-    {
-    
-    }
-    ```
-
-01. Replace the event handler with the following code, which opens the system browser to a specific URL:
+01. Add the following `LearnMore_Clicked` event handler code, which opens the system browser to a specific URL:
 
     :::code language="csharp" source="../snippets/shell/csharp/Notes/AboutPage.xaml.cs" id="learn_more":::
 
-    Notice that the `async` keyword was added to the method declaration, which allows the use of the `await` keyword when opening the system browser.
+    Notice that the `async` keyword has been added to the method declaration, which allows the use of the `await` keyword when opening the system browser.
 
 01. Save the file by pressing <kbd>CTRL+S</kbd> or by selecting the menu **File** > **Save AboutPage.xaml.cs**.
 
