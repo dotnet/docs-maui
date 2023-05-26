@@ -6,7 +6,7 @@ ms.date: 05/16/2023
 
 # Publish an Android app using the command line
 
-To distribute a .NET Multi-platform App UI (.NET MAUI) Android app, you'll need to sign it with a key from your keystore. A *keystore* is a database of security certificates that's created by using `keytool` from the Java SDK. A keystore is required when publishing a .NET MAUI Android app, as Android won't run apps that haven't been signed.
+To distribute a .NET Multi-platform App UI (.NET MAUI) Android app, you'll need to sign it with a key from your keystore. A *keystore* is a database of security certificates that's created by using `keytool` from the Java Development Kit (JDK). A keystore is required when publishing a .NET MAUI Android app, as Android won't run apps that haven't been signed.
 
 ## Create a keystore file
 
@@ -25,6 +25,9 @@ Perform the following steps to create a keystore file:
     keytool -genkeypair -v -keystore {filename}.keystore -alias {keyname} -keyalg RSA -keysize 2048 -validity 10000
     ```
 
+    > [!IMPORTANT]
+    > If you have multiple versions of the JDK installed on your computer, ensure that you run `keytool` from the latest version of the JDK.
+
     You'll be prompted to provide and confirm a password, followed by your full name, organization unit, organization, city or locality, state or province, and country code. This information is not displayed in your app, but is included in your certificate.
 
     For example, to generate a *myapp.keystore* file in the same folder as your project, with an alias of `myapp`, use the following command:
@@ -33,8 +36,8 @@ Perform the following steps to create a keystore file:
     keytool -genkeypair -v -keystore myapp.keystore -alias myapp -keyalg RSA -keysize 2048 -validity 10000
     ```
 
-    > [!IMPORTANT]
-    > Ensure you backup your keystore and password. If you lose it you'll be unable to sign your app with the same signing identity.  
+    > [!TIP]
+    > Backup your keystore and password. If you lose it you'll be unable to sign your app with the same signing identity.  
 
 ## Find your keystore's signature
 
