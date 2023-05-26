@@ -36,7 +36,7 @@ Perform the following steps to create a keystore file:
     keytool -genkeypair -v -keystore myapp.keystore -alias myapp -keyalg RSA -keysize 2048 -validity 10000
     ```
 
-    > [!TIP!]
+    > [!TIP]
     > Backup your keystore and password. If you lose it you'll be unable to sign your app with the same signing identity.  
 
 ## Find your keystore's signature
