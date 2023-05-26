@@ -77,7 +77,7 @@ When creating a provisioning profile for ad-hoc distribution, the profile must i
 
 1. Select the **Apple > About this Mac** menu item.
 1. In the **Overview** tab, select the **System Report...** button.
-1. In the **System Report**, select the **Hardware** expander to see the hardware overview. The report displays the universally unique identifier (UUID) as **Hardware UUID** in macOS 10.15 and later, or **Provisioning UDID** in macOS 11.0 and later.
+1. In the **System Report**, select the **Hardware** expander to see the hardware overview. The report displays the universally unique identifier (UUID) as **Hardware UUID** in macOS 10.15 and earlier, or **Provisioning UDID** in macOS 11.0 and later.
 1. Select the **Hardware UUID** or **Provisioning UDID** value and copy it to the clipboard.
 1. In a web browser, go to the [Devices](https://developer.apple.com/account/resources/devices/list) section of your Apple Developer Account and click the **+** button.
 1. In the **Register a New Device** page, set the **Platform** to **macOS** and provide a name for the new device. Then paste the identifier from the clipboard into the **Device ID (UUID)** field, and click the **Continue** button:
