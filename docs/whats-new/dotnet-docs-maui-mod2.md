@@ -21,11 +21,23 @@ Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for May
 - [How to enable hardware acceleration with Android emulators (Hyper-V & AEHD)](../android/emulator/hardware-acceleration.md)
 - [Publish an Android app using the command line](../android/deployment/publish-cli.md)
 
+## iOS
+
+### Updated articles
+
+- [Linking a .NET MAUI iOS app](../ios/linking.md)
+
 ## iOS and Mac Catalyst
 
 ### New articles
 
 - [Mono interpreter on iOS and Mac Catalyst](../macios/interpreter.md)
+
+## Mac Catalyst
+
+### Updated articles
+
+- [Linking a .NET MAUI Mac Catalyst app](../mac-catalyst/linking.md)
 
 ## Platform integration
 
