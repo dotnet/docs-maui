@@ -240,4 +240,4 @@ The following screenshot shows several font icons being displayed:
 
 :::image type="content" source="media/fonts/font-image-source.png" alt-text="Screenshot of three font icons.":::
 
-Alternatively, you can display a font icon with the [`Fontmage`](xref:Microsoft.Maui.Controls.Xaml.FontImageExtension) markup extension. For more information, see [Load a font icon](~/user-interface/controls/image.md#load-a-font-icon).
+Alternatively, you can display a font icon with the [`FontImage`](xref:Microsoft.Maui.Controls.Xaml.FontImageExtension) markup extension. For more information, see [Load a font icon](~/user-interface/controls/image.md#load-a-font-icon).
