@@ -1,45 +1,52 @@
 ---
-title: ".NET Multi-platform App UI (.NET MAUI) docs: What's new for February 2023"
-description: "What's new in the .NET Multi-platform App UI (.NET MAUI) docs for February 2023."
-ms.date: 03/01/2023
+title: ".NET Multi-platform App UI (.NET MAUI) docs: What's new for May 2023"
+description: "What's new in the .NET Multi-platform App UI (.NET MAUI) docs for May 2023."
+ms.date: 06/05/2023
 ---
 
-# .NET Multi-platform App UI (.NET MAUI) docs: What's new for February 2023
+# .NET Multi-platform App UI (.NET MAUI) docs: What's new for May 2023
 
-Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for February 2023. This article lists some of the major changes to docs during this period.
+Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for May 2023. This article lists some of the major changes to docs during this period.
+
+## Android
+
+### New articles
+
+- [Linking a .NET MAUI Android app](../android/linking.md)
+- [Publish an Android app for ad-hoc distribution](../android/deployment/publish-ad-hoc.md)
+- [Publish an Android app for Google Play distribution](../android/deployment/publish-google-play.md)
+
+### Updated articles
+
+- [How to enable hardware acceleration with Android emulators (Hyper-V & AEHD)](../android/emulator/hardware-acceleration.md)
+- [Publish an Android app using the command line](../android/deployment/publish-cli.md)
 
 ## iOS
 
-### New articles
+### Updated articles
 
-- [Publish a .NET MAUI app for iOS](../ios/deployment/index.md)
-- [Publish an iOS app for ad-hoc distribution](../ios/deployment/publish-ad-hoc.md)
-- [Publish an iOS app for App Store distribution](../ios/deployment/publish-app-store.md)
-- [Publish an iOS app using the command line](../ios/deployment/publish-cli.md)
-- [Publish an iOS app for in-house distribution](../ios/deployment/publish-in-house.md)
-- [Disable the safe area layout guide on iOS](../ios/platform-specifics/page-safe-area-layout.md)
+- [Linking a .NET MAUI iOS app](../ios/linking.md)
 
-## Migration from Xamarin.Forms
+## iOS and Mac Catalyst
 
 ### New articles
 
-- [Xamarin.Android project migration](../migration/android-projects.md)
-- [Xamarin Apple project migration](../migration/apple-projects.md)
-- [Use custom renderers in .NET MAUI](../migration/custom-renderers.md)
-- [Use effects in .NET MAUI](../migration/effects.md)
-- [Manually upgrade a Xamarin.Forms app to .NET MAUI](../migration/forms-projects.md)
-- [Upgrade from Xamarin to .NET](../migration/index.md)
-- [Layout behavior changes from Xamarin.Forms](../migration/layouts.md)
-- [Upgrade Xamarin.Android, Xamarin.iOS, and Xamarin.Mac projects to .NET](../migration/native-projects.md)
-- [Upgrade a Xamarin.Forms app to .NET MAUI with the .NET Upgrade Assistant](../migration/upgrade-assistant.md)
+- [Mono interpreter on iOS and Mac Catalyst](../macios/interpreter.md)
+
+## Mac Catalyst
+
+### Updated articles
+
+- [Linking a .NET MAUI Mac Catalyst app](../mac-catalyst/linking.md)
+
+## Platform integration
+
+### Updated articles
+
+- [File picker](../platform-integration/storage/file-picker.md)
 
 ## Community contributors
 
 The following people contributed to the .NET Multi-platform App UI (.NET MAUI) docs during this period. Thank you! Learn how to contribute by following the links under "Get involved" in the [what's new landing page](index.yml).
 
-- [mahab339](https://github.com/mahab339) - Muhab Abdelreheem (6)
-- [AndreKraemer](https://github.com/AndreKraemer) - Andre Kraemer (1)
-- [da-br](https://github.com/da-br) - Daniel Brandenburg (1)
-- [gbarceloPIB](https://github.com/gbarceloPIB) (1)
-- [glihm](https://github.com/glihm) (1)
-- [sd0e](https://github.com/sd0e) - Seb Doe (1)
+- [haule-bti](https://github.com/haule-bti) - Le Cong Hau (1)
