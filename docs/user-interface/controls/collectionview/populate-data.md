@@ -135,7 +135,7 @@ The following screenshot shows the result of templating each item in the list:
 
 :::image type="content" source="media/populate-data/datatemplate.png" alt-text="Screenshot of CollectionView where each item is templated.":::
 
-[!INCLUDE [CollectionView scrolling tip](includes/collectionview-scrolling.md)]
+[!INCLUDE [CollectionView scrolling tip](includes/scrolling-tip.md)]
 
 For more information about data templates, see [Data templates](~/fundamentals/datatemplate.md).
 
