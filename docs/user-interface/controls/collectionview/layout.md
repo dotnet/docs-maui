@@ -118,6 +118,8 @@ This results in a single column list, which grows vertically as new items are ad
 
 :::image type="content" source="media/layout/vertical-list.png" alt-text="Screenshot of CollectionView vertical list layout.":::
 
+[!INCLUDE [CollectionView scrolling tip](includes/collectionview-scrolling.md)]
+
 ## Horizontal list
 
 In XAML, a <xref:Microsoft.Maui.Controls.CollectionView> can display its items in a horizontal list by setting its `ItemsLayout` property to `HorizontalList`:
