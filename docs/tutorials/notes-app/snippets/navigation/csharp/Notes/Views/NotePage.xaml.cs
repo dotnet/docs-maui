@@ -44,8 +44,9 @@ public partial class NotePage : ContentPage
     private async void SaveButton_Clicked(object sender, EventArgs e)
     {
         if (BindingContext is Models.Note note)
+        {
             File.WriteAllText(note.Filename, TextEditor.Text);
-
+        }
         await Shell.Current.GoToAsync("..");
     }
 
