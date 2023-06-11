@@ -26,7 +26,7 @@ An image can be added to your app project by dragging it into the *Resources\Ima
 > [!NOTE]
 > Images can also be added to other folders of your app project. However, in this scenario their build action must be manually set to **MauiImage** in the **Properties** window.
 
-To comply with Android resource naming rules, image filenames must be lowercase, start and end with a letter character, and contain only alphanumeric characters or underscores. For more information, see [App resources overview](https://developer.android.com/guide/topics/resources/providing-resources) on developer.android.com.
+To comply with Android resource naming rules, image filenames must be lowercase, start with a letter and end with an alphanumeric character, and contain only alphanumeric characters or underscores. For more information, see [App resources overview](https://developer.android.com/guide/topics/resources/providing-resources) on developer.android.com.
 
 The base size of the image can be specified by setting the `BaseSize` attribute to values that are divisible by 8:
 
