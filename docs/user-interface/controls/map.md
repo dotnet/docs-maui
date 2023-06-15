@@ -11,7 +11,7 @@ ms.date: 09/26/2022
 The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Maps.Map> control is a cross-platform view for displaying and annotating maps. The <xref:Microsoft.Maui.Controls.Maps.Map> control uses the native map control on each platform, and is provided by the [Microsoft.Maui.Controls.Maps NuGet package](https://www.nuget.org/packages/Microsoft.Maui.Controls.Maps/).
 
 > [!IMPORTANT]
-> The <xref:Microsoft.Maui.Controls.Maps.Map> control isn't supported on Windows due to lack of a map control in WinUI. However, you can still launch the native map app from your .NET MAUI app on WinUI, to display a map at a specific location or to perform navigation. For more information, see [Launch the native map app](#launch-the-native-map-app).
+> The <xref:Microsoft.Maui.Controls.Maps.Map> control isn't supported on Windows due to lack of a map control in WinUI. However, the [CommunityToolkit.Maui.Maps](https://www.nuget.org/packages/CommunityToolkit.Maui.Maps) NuGet package provides access to Bing Maps through a `WebView` on Windows. For more information, see [Get started](/dotnet/communitytoolkit/maui/get-started?tabs=CommunityToolkitMauiMaps).
 
 ## Setup
 
