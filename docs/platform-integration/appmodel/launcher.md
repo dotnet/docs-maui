@@ -21,7 +21,29 @@ To access the launcher functionality, the following platform-specific setup is r
 <!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
 
-No setup is required.
+Android requires that you define the intent in the `Android.Manifest` to use
+deeplinks for opening other android Applications. Add the following code to the _Platforms/Android/AndroidManifest.xml_ file:
+
+```xml
+<activity android:name="appName" android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+				<data android:scheme="lyft"/>
+				<data android:scheme="fb"/>
+			</intent-filter>
+		</activity>
+	</application>
+```
+
+The `<data>` elements are the URI schemes preregistered with your app. You can't use schemes outside of this list.
+
+If you wish to make your application browsable from other apps declare a `<data>` element with the `android:scheme` attribute:
+
+```xml
+<data android:scheme="appName"/>
+```
 
 # [iOS/Mac Catalyst](#tab/macios)
 
