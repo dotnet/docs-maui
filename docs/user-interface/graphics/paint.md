@@ -1,7 +1,7 @@
 ---
 title: "Paint graphical objects"
 description: ".NET MAUI graphics includes several paint classes, that enable graphical objects to be painted with solid colors, gradients, images, and patterns."
-ms.date: 12/16/2021
+ms.date: 06/19/2023
 ---
 
 # Paint graphical objects
@@ -74,14 +74,24 @@ To paint an object with an image, load the image and assign it to the <xref:Micr
 The following example shows how to load an image and fill a rectangle with it:
 
 ```csharp
+using System.Reflection;
+using IImage = Microsoft.Maui.Graphics.IImage;
+#if IOS || ANDROID || MACCATALYST
 using Microsoft.Maui.Graphics.Platform;
-...
+#elif WINDOWS
+using Microsoft.Maui.Graphics.Win2D;
+#endif
 
 IImage image;
-var assembly = GetType().GetTypeInfo().Assembly;
-using (var stream = assembly.GetManifestResourceStream("GraphicsViewDemos.Resources.Images.dotnet_bot.png"))
+Assembly assembly = GetType().GetTypeInfo().Assembly;
+using (Stream stream = assembly.GetManifestResourceStream("GraphicsViewDemos.Resources.Images.dotnet_bot.png"))
 {
+#if IOS || ANDROID || MACCATALYST
+    // PlatformImage isn't currently supported on Windows.
     image = PlatformImage.FromStream(stream);
+#elif WINDOWS
+    image = new W2DImageLoadingService().FromStream(stream);
+#endif
 }
 
 if (image != null)
@@ -94,9 +104,6 @@ if (image != null)
     canvas.FillRectangle(0, 0, 240, 300);
 }
 ```
-
-> [!WARNING]
-> The <xref:Microsoft.Maui.Graphics.Platform.PlatformImage> type isn't supported on Windows.
 
 In this example, the image is retrieved from the assembly and loaded as a stream. The image is resized using the <xref:Microsoft.Maui.Graphics.IImage.Downsize%2a> method, with the argument specifying that its largest dimension should be set to 100 pixels. For more information about downsizing an image, see [Downsize an image](~/user-interface/graphics/images.md#downsize-an-image).
 
