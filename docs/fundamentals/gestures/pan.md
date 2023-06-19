@@ -72,7 +72,7 @@ public class PanContainer : ContentView
         switch (e.StatusType)
         {
             case GestureStatus.Running:
-                // Translate and ensure we don't pan beyond the wrapped user interface element bounds.
+                // Translate and pan.
                 double boundsX = Content.Width;
                 double boundsY = Content.Height;
                 Content.TranslationX = Math.Clamp(panX + e.TotalX, -boundsX, boundsX);
