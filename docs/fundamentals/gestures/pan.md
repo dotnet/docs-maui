@@ -77,9 +77,6 @@ public class PanContainer : ContentView
                 double boundsY = Content.Height;
                 Content.TranslationX = Math.Clamp(panX + e.TotalX, -boundsX, boundsX);
                 Content.TranslationY = Math.Clamp(panY + e.TotalY, -boundsY, boundsY);
-
-                Content.TranslationX = Math.Max(Math.Min(0, x + e.TotalX), -Math.Abs(Content.Width - DeviceDisplay.MainDisplayInfo.Width));
-                Content.TranslationY = Math.Max(Math.Min(0, y + e.TotalY), -Math.Abs(Content.Height - DeviceDisplay.MainDisplayInfo.Height));
                 break;
 
             case GestureStatus.Completed:
