@@ -309,6 +309,8 @@ The <xref:Microsoft.Maui.Controls.Button> class defines an <xref:Microsoft.Maui.
 <!-- > [!NOTE]
 > While a <xref:Microsoft.Maui.Controls.Button> can load an animated GIF, it will only display the first frame of the GIF. -->
 
+Bitmaps aren't scaled to fit a <xref:Microsoft.Maui.Controls.Button>. The best size is usually between 32 and 64 device-independent units, depending on how large you want the bitmap to be.
+
 You can specify how the `Text` and <xref:Microsoft.Maui.Controls.ImageSource> properties are arranged on the <xref:Microsoft.Maui.Controls.Button> using the `ContentLayout` property of <xref:Microsoft.Maui.Controls.Button>. This property is of type `ButtonContentLayout`, and its constructor has two arguments:
 
 - A member of the `ImagePosition` enumeration: `Left`, `Top`, `Right`, or `Bottom` indicating how the bitmap appears relative to the text.
