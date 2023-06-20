@@ -33,7 +33,7 @@ To open a file that is bundled into the app package, use the `OpenAppPackageFile
 
 :::code language="csharp" source="../snippets/shared_1/Storage.cs" id="filesys_readtxtfile":::
 
-### Copying a bundled file to the app data folder
+### Copy a bundled file to the app data folder
 
 You can't modify an app's bundled file. But you can copy a bundled file to the [cache directory](#cache-directory) or [app data directory](#app-data-directory). The following example uses `OpenAppPackageFileAsync` to copy a bundled file to the app data folder:
 
