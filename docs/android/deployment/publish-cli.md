@@ -91,19 +91,19 @@ For a full list of build properties, see [Build properties](/xamarin/android/dep
 Run the `dotnet publish` command with the following parameters to build and sign your app:
 
 ```console
-dotnet publish -f net7.0-android -c Release -p:AndroidSigningKeyStore={filename}.keystore -p:AndroidSigningKeyAlias={keyname} -p:AndroidSigningKeyPass={password} -p:AndroidSigningStorePass={password}
+dotnet publish -f net7.0-android -c Release -p:AndroidKeyStore=true -p:AndroidSigningKeyStore={filename}.keystore -p:AndroidSigningKeyAlias={keyname} -p:AndroidSigningKeyPass={password} -p:AndroidSigningStorePass={password}
 ```
 
 For example, use the following command to build and sign your app using the previously created keystore:
 
 ```console
-dotnet publish -f net7.0-android -c Release -p:AndroidSigningKeyStore=myapp.keystore -p:AndroidSigningKeyAlias=myapp -p:AndroidSigningKeyPass=mypassword -p:AndroidSigningStorePass=mypassword
+dotnet publish -f net7.0-android -c Release -p:AndroidKeyStore=true -p:AndroidSigningKeyStore=myapp.keystore -p:AndroidSigningKeyAlias=myapp -p:AndroidSigningKeyPass=mypassword -p:AndroidSigningStorePass=mypassword
 ```
 
 Both the `AndroidSigningKeyPass` and `AndroidSigningStorePass` properties support `env:` and `file:` prefixes that can be used to specify an environment variable or file that contains the password. Specifying the password in this way prevents it from appearing in build logs. For example, to use an environment variable named `AndroidSigningPassword`:
 
 ```console
-dotnet publish -f net7.0-android -c Release -p:AndroidSigningKeyStore=myapp.keystore -p:AndroidSigningKeyAlias=myapp -p:AndroidSigningKeyPass=env:AndroidSigningPassword -p:AndroidSigningStorePass=env:AndroidSigningPassword
+dotnet publish -f net7.0-android -c Release -p:AndroidKeyStore=true -p:AndroidSigningKeyStore=myapp.keystore -p:AndroidSigningKeyAlias=myapp -p:AndroidSigningKeyPass=env:AndroidSigningPassword -p:AndroidSigningStorePass=env:AndroidSigningPassword
 ```
 
 > [!IMPORTANT]
@@ -112,7 +112,7 @@ dotnet publish -f net7.0-android -c Release -p:AndroidSigningKeyStore=myapp.keys
 To use a file located at *C:\Users\user1\AndroidSigningPassword.txt*:
 
 ```console
-dotnet publish -f net7.0-android -c Release -p:AndroidSigningKeyStore=myapp.keystore -p:AndroidSigningKeyAlias=myapp -p:AndroidSigningKeyPass=file:C:\Users\user1\AndroidSigningPassword.txt -p:AndroidSigningStorePass=file:C:\Users\user1\AndroidSigningPassword.txt
+dotnet publish -f net7.0-android -c Release -p:AndroidKeyStore=true -p:AndroidSigningKeyStore=myapp.keystore -p:AndroidSigningKeyAlias=myapp -p:AndroidSigningKeyPass=file:C:\Users\user1\AndroidSigningPassword.txt -p:AndroidSigningStorePass=file:C:\Users\user1\AndroidSigningPassword.txt
 ```
 
 Publishing builds and signs the app, and then copies the AAB and APK files to the *bin\\Release\\net7.0-android\\publish* folder. There are two AAB files - one unsigned and another signed. The signed variant has **-signed** in the file name.
