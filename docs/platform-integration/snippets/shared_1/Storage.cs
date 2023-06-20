@@ -156,7 +156,7 @@ public class StoragePage : ContentPage
         string targetFile = Path.Combine(FileSystem.Current.AppDataDirectory, filename);
 
         // Copy the file to the AppDataDirectory
-        using FileStream outputStream = System.IO.File.Create(targetFile);
+        using FileStream outputStream = File.Create(targetFile);
         await inputStream.CopyToAsync(outputStream);
     }
     //</filesys_copyfile>
