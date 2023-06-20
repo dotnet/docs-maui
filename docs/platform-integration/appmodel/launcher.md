@@ -26,15 +26,14 @@ deeplinks for opening other android Applications. Add the following code to the 
 
 ```xml
 <activity android:name="appName" android:exported="true">
-			<intent-filter>
-				<action android:name="android.intent.action.VIEW" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<category android:name="android.intent.category.BROWSABLE" />
-				<data android:scheme="lyft"/>
-				<data android:scheme="fb"/>
-			</intent-filter>
-		</activity>
-	</application>
+    <intent-filter>
+       <action android:name="android.intent.action.VIEW" />
+       <category android:name="android.intent.category.DEFAULT" />
+       <category android:name="android.intent.category.BROWSABLE" />
+       <data android:scheme="lyft"/>
+       <data android:scheme="fb"/>
+       </intent-filter>
+</activity>
 ```
 
 The `<data>` elements are the URI schemes preregistered with your app. You can't use schemes outside of this list.
