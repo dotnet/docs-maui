@@ -1,11 +1,11 @@
 ---
-title: "Java to managed code interoperability"
-description: "Learn about XXXXXX"
+title: "Java and managed code interoperability"
+description: "Learn how .NET for Android interoperates with the Java and Kotlin APIs that are provided by Android."
 ms.date: 06/21/2023
 no-loc: [ "Java", "Kotlin" ]
 ---
 
-# Java to managed code interoperability
+# Java and managed code interoperability
 
 .NET for Android interoperates with the Java and Kotlin APIs that are provided by Android. App developers expect to be able to call native Android APIs and receive calls, or react to events, from the Android APIs using code written in one of the .NET managed languages. This requires mechanisms to bridge the the Java VM (ART in Android OS), and the Managed VM (MonoVM). .NET for Android employs a number of mechanisms, both a build and at runtime, to do this.
 
@@ -182,7 +182,7 @@ For more information about Java type registration, see [Java Type Registration](
 
 The marshal methods registration mechanism takes advantage of the JNI's ability to look up implementations of `native` Java methods in native libraries. Such symbols must have names that follow a set of rules, so that the JNI is able to properly locate them.
 
-The goal of marshal methods is to completely bypass the dynamic registration sequence, replacing it with native code generated and compiled during app build. This reduces app startup time. To achieve this goal, the marshal methods mechanism uses a number of classes which [generate native](#llvm-ir-code-generation) code and [modify assemblies](#assembly-rewriting) that contain the registered methods.
+The goal of marshal methods is to completely bypass the dynamic registration sequence, replacing it with native code generated and compiled during app build. This reduces app startup time. To achieve this goal, the marshal methods mechanism uses a number of classes which [generate native](#llvm-intermediate-representation-code-generation) code and [modify assemblies](#assembly-rewriting) that contain the registered methods.
 
 The current implementation of the marshal methods classifier recognizes the standard method registration pattern, using the example of the `OnCreate` method shown in [Registration](#registration). This standard pattern consists of:
 
