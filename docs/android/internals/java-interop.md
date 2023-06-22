@@ -9,7 +9,7 @@ no-loc: [ "Java", "Kotlin" ]
 
 App developers expect to be able to call native Android APIs and receive calls, or react to events, from the Android APIs using code written in one of the .NET managed languages. .NET for Android employs a number of approaches, at build and at runtime, to bridge the Java VM (ART in Android OS) and the Managed VM (MonoVM).
 
-The Java VM and the Managed VM co-exist in the same process or app as separate entities. Despite sharing the same process resources, there's no direct way to call Java/Kotlin APIs from .NET, and there's no direct way for Java/Kotlin code to invoke managed code APIs. To enable such communication, .NET for Android uses the [Java Native Interface (JNI)](https://docs.oracle.com/javase/8/docs/technotes/guides/jni/spec/jniTOC.html). This is an approach that enables native code (.NET managed code being native in this context) to register implementations of Java methods, which are written outside the Java VM and in languages other than Java or Kotlin. These methods need to be declared in Java code, for example:
+The Java VM and the Managed VM co-exist in the same process or app as separate entities. Despite sharing the same process resources, there's no direct way to call Java/Kotlin APIs from .NET, and there's no direct way for Java/Kotlin code to invoke managed code APIs. To enable this communication, .NET for Android uses the [Java Native Interface (JNI)](https://docs.oracle.com/javase/8/docs/technotes/guides/jni/spec/jniTOC.html). This is an approach that enables native code (.NET managed code being native in this context) to register implementations of Java methods, which are written outside the Java VM and in languages other than Java or Kotlin. These methods need to be declared in Java code, for example:
 
 ```java
 class MainActivity extends androidx.appcompat.app.AppCompatActivity
@@ -25,11 +25,11 @@ class MainActivity extends androidx.appcompat.app.AppCompatActivity
 
 Each native method is declared using the `native` keyword, and whenever it is invoked from Java code, the Java VM will use the JNI to invoke the target method.
 
-Native methods can be registered dynamically, or statically by using a technique known as marshal methods to provide a native shared library which exports a symbol with an appropriate name that points to the native function implementing the Java method.
+Native methods can be registered dynamically or statically, by providing a native shared library which exports a symbol with an appropriate name that points to the native function implementing the Java method.
 
 ## Java callable wrappers
 
-.NET for Android wraps the Android API by generating C# code that mirrors the Java/Kotlin APIs. Each generated class that corresponds to a Java/Kotlin type is derived from the `Java.Lang.Object` class (implemented in the `Mono.Android` assembly), which marks it as a Java interoperable type. This means that it can implement or override virtual Java methods.  To make registration and invocation of such methods possible, it's necessary to generate a Java class that mirrors the managed class and provides an entry point to the Java to managed transition. Java classes are generated during app build, as well as during the .NET for Android build, and are known as *Java Callable Wrappers* (JCW). The following example shows a managed class that overrides two Java virtual methods:
+.NET for Android wraps Android APIs by generating C# code that mirrors the Java/Kotlin APIs. Each generated class that corresponds to a Java/Kotlin type is derived from the `Java.Lang.Object` class (implemented in the `Mono.Android` assembly), which marks it as a Java interoperable type. This means that it can implement or override virtual Java methods.  To make registration and invocation of these methods possible, it's necessary to generate a Java class that mirrors the managed class and that provides an entry point to the Java to managed transition. Java classes are generated during app build, as well as during the .NET for Android build, and are known as *Java Callable Wrappers* (JCW). The following example shows a managed class that overrides two Java virtual methods:
 
 ```csharp
 public class MainActivity : AppCompatActivity
@@ -128,7 +128,7 @@ The above code is generated in the `Android.App.Activity` class when .NET for An
 
 ## Dynamic registration
 
-This registration approach is used by .NET for Android when an app is built in the Debug configuration or when [marshal methods](#marshal-methods) is turned off.
+This registration approach is used by .NET for Android when an app is built in the Debug configuration, or when [marshal methods](#marshal-methods) is turned off.
 
 With dynamic registration, the following Java code is generated for the C# example shown in [Java callable wrappers](#java-callable-wrappers) (with some generated methods omitted for clarity):
 
@@ -165,7 +165,7 @@ The code that takes part in registration is the class's static constructor. For 
 
 ### Dynamic registration call sequence
 
-All the native methods declared in the generated Java type are registered when the type is constructed or accessed for the first time. This is when the Java VM invokes the types static constructor, initiating a sequence of calls that ends with all of the types methods being registered with the JNI:
+All the native methods declared in the generated Java type are registered when the type is constructed or accessed for the first time. This is when the Java VM invokes the type's static constructor, initiating a sequence of calls that ends with all of the type's methods being registered with the JNI:
 
 1. `mono.android.Runtime.register` is a native method, declared in the `Runtime` class of .NET for Android's Java runtime code, and implemented in the native .NET Android runtime. The purpose of this method is to prepare a call into .NET for Android's managed runtime code.
 1. `Android.Runtime.JNIEnv::RegisterJniNatives` is passed the name of the managed type for which to register Java methods, and uses .NET reflection to load that type followed by a call to cache the type. It ends with a call to the `Android.Runtime.AndroidTypeManager::RegisterNativeMembers` method.
@@ -180,16 +180,16 @@ For more information about Java type registration, see [Java Type Registration](
 
 The marshal methods registration approach takes advantage of the JNIs ability to look up implementations of `native` Java methods in native libraries. Such symbols must have names that follow a set of rules, so that the JNI is able to locate them.
 
-The goal of this approach is to completely bypass the dynamic registration approach, replacing it with native code generated and compiled during app build. This reduces app startup time. To achieve this goal, this approach uses classes which [generate native](#llvm-intermediate-representation-code-generation) code and [modify assemblies](#assembly-rewriting) that contain the registered methods.
+The goal of this approach is to bypass the dynamic registration approach, replacing it with native code generated and compiled during app build. This reduces app startup time. To achieve this goal, this approach uses classes that [generate native code](#llvm-intermediate-representation-code-generation) and [modify assemblies](#assembly-rewriting) which contain the registered methods.
 
-The current implementation of the marshal methods classifier recognizes the standard method registration pattern. This standard pattern consists of:
+The marshal methods classifier recognizes the standard method registration pattern, which consists of:
 
 - The connector method, which is `GetOnCreate_Landroid_os_Bundle_Handler` in the example in [Registration](#registration).
 - The delegate backing field, which is `cb_onCreate_Landroid_os_Bundle_` in the example in [Registration](#registration).
 - The native callback method, which is `n_OnCreate_Landroid_os_Bundle_` in the example in [Registration](#registration).
-- The virtual target method that dispatches the call to the actual object, `OnCreate` in the example in [Registration](#registration).
+- The virtual target method that dispatches the call to the actual object, which is `OnCreate` in the example in [Registration](#registration).
 
-Whenever the classifier's `ShouldBeDynamicallyRegistered` method is called, it's passed the methods declaring type and the `Register` attribute instance which it uses to check whether the method being registered conforms to the standard registration pattern. The connector, native callback methods, and backing field must be private and static for the registered method to be considered as a candidate for static registration.
+Whenever the classifier runs, it's passed the methods declaring type and the `Register` attribute instance which it uses to check whether the method being registered conforms to the registration pattern. The connector, native callback methods, and backing field must be private and static for the registered method to be considered as a candidate for static registration.
 
 > [!NOTE]
 > Registered methods that don't follow the standard pattern will be registered dynamically.
@@ -219,9 +219,7 @@ Compared to the code generated for dynamic registration, there is no static cons
 
 ### JNI requirements
 
-The JNI specifies a [series of rules](https://docs.oracle.com/javase/8/docs/technotes/guides/jni/spec/design.html#resolving_native_method_names) that govern how the native symbol name is constructed. This enables a mapping of object-oriented Java code (with its package names, class names and overloadable methods) into the lowest common denominator C code.
-
-A native method name is concatenated from the following components:
+The JNI specifies a [series of rules](https://docs.oracle.com/javase/8/docs/technotes/guides/jni/spec/design.html#resolving_native_method_names) that govern how the native symbol name is constructed. A native method name is concatenated from the following components:
 
 - Each symbol starts with the `Java_` prefix.
 - A mangled *fully qualified class name*.
@@ -245,7 +243,7 @@ JNI supports a short and long form of the native symbol name. The short form is 
 
 ### LLVM intermediate representation code generation
 
-One of the .NET for Android build tasks uses the LLVM intermediate representation (IR) generator infrastructure to output data and executable code for all the marshal methods wrappers. Consider the following C++ code, that serves as a guide to understanding how the marshal method runtime invocation works:
+One of the .NET for Android build tasks uses the LLVM intermediate representation (IR) generator infrastructure to output data and executable code for all the marshal methods wrappers. Consider the following C++ code, which serves as a guide to understanding how the marshal method runtime invocation works:
 
 ```C++
 using get_function_pointer_fn = void(*)(uint32_t mono_image_index, uint32_t class_index, uint32_t method_token, void*& target_ptr);
@@ -343,7 +341,7 @@ public class MainActivity : AppCompatActivity
 
 #### Wrappers for methods with non-blittable types
 
-The [`UnmanagedCallersOnly`](xref:System.Runtime.InteropServices.UnmanagedCallersOnlyAttribute) attribute requires that all the argument types, and the method return type, are [blittable](/dotnet/framework/interop/blittable-and-non-blittable-types). Among these types is the `bool` type that's commonly used by the managed classes implementing Java methods. This is currently the only non-blittable type encountered in bindings, and so is the only one supported by the assembly rewriter.
+The [`UnmanagedCallersOnly`](xref:System.Runtime.InteropServices.UnmanagedCallersOnlyAttribute) attribute requires that all the argument types, and the method return type, are [blittable](/dotnet/framework/interop/blittable-and-non-blittable-types). Among these types is the `bool` type that's commonly used by managed classes implementing Java methods. This is currently the only non-blittable type encountered in bindings, and therefore is the only one supported by the assembly rewriter.
 
 Whenever a method with a non-blittable type is encountered, a wrapper is generated for it so that it can be decorated with the [`UnmanagedCallersOnly`](xref:System.Runtime.InteropServices.UnmanagedCallersOnlyAttribute) attribute. This is less error prone than modifying the native callback method's IL stream to implement the necessary conversion. An example of such a method is `Android.Views.View.IOnTouchListener::OnTouch`:
 
