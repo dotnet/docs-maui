@@ -403,8 +403,8 @@ Each marshal methods native callback method is decorated with the [`UnmanagedCal
 
 ### Marshal methods registration call sequence
 
-The call sequence for dynamic registration isn't used for the marshal methods approach. However, what's common for dynamic and marshal methods registration is the resolution of the native function target performed by the Java VM runtime. In both cases, the method declared in a Java class as `native` is looked up by the Java VM when first JIT-ing the code. The difference is in the way this lookup is performed.
+What's common for dynamic and marshal methods registration is the resolution of the native function target performed by the Java VM runtime. In both cases, the method declared in a Java class as `native` is looked up by the Java VM when first JIT-ing the code. The difference is in the way this lookup is performed.
 
 Dynamic registration uses the [`RegisterNatives`](https://docs.oracle.com/javase/8/docs/technotes/guides/jni/spec/functions.html#RegisterNatives) JNI function at runtime, which stores a pointer to the registered method inside the structure that describes a Java class in the Java VM.
 
-Marshal methods, however, doesn't register anything with the JNI. Instead, they rely on the symbol lookup approach of the Java VM. Whenever a call to a `native` Java method is JIT'd and isn't registered previously using the `RegisterNatives` JNI function, the Java VM will proceed to look for symbols in the process runtime image and, having found a matching symbol, use a pointer to it as the target of the `native` Java method call.
+Marshal methods, however, don't register anything with the JNI. Instead, they rely on the symbol lookup approach of the Java VM. Whenever a call to a `native` Java method is JIT'd and isn't registered previously using the `RegisterNatives` JNI function, the Java VM will proceed to look for symbols in the process runtime image and, having found a matching symbol, use a pointer to it as the target of the `native` Java method call.
