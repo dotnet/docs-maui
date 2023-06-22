@@ -135,29 +135,29 @@ With dynamic registration, the following Java code is generated for the C# examp
 ```java
 public class MainActivity extends androidx.appcompat.app.AppCompatActivity
 {
-    public static final String __md_methods;
-    static
-    {
-      __md_methods =
-              "n_onCreateView:(Landroid/view/View;Ljava/lang/String;Landroid/content/Context;Landroid/util/AttributeSet;)Landroid/view/View;:GetOnCreateView_Landroid_view_View_Ljava_lang_String_Landroid_content_Context_Landroid_util_AttributeSet_Handler\n" +
-              "n_onCreate:(Landroid/os/Bundle;)V:GetOnCreate_Landroid_os_Bundle_Handler\n" +
-              "";
-      mono.android.Runtime.register ("HelloAndroid.MainActivity, HelloAndroid", MainActivity.class, __md_methods);
-    }
+  public static final String __md_methods;
+  static
+  {
+    __md_methods =
+            "n_onCreateView:(Landroid/view/View;Ljava/lang/String;Landroid/content/Context;Landroid/util/AttributeSet;)Landroid/view/View;:GetOnCreateView_Landroid_view_View_Ljava_lang_String_Landroid_content_Context_Landroid_util_AttributeSet_Handler\n" +
+            "n_onCreate:(Landroid/os/Bundle;)V:GetOnCreate_Landroid_os_Bundle_Handler\n" +
+            "";
+    mono.android.Runtime.register ("HelloAndroid.MainActivity, HelloAndroid", MainActivity.class, __md_methods);
+  }
 
-    public android.view.View onCreateView (android.view.View p0, java.lang.String p1, android.content.Context p2, android.util.AttributeSet p3)
-    {
-      return n_onCreateView (p0, p1, p2, p3);
-    }
+  public android.view.View onCreateView (android.view.View p0, java.lang.String p1, android.content.Context p2, android.util.AttributeSet p3)
+  {
+    return n_onCreateView (p0, p1, p2, p3);
+  }
 
-    private native android.view.View n_onCreateView (android.view.View p0, java.lang.String p1, android.content.Context p2, android.util.AttributeSet p3);
+  private native android.view.View n_onCreateView (android.view.View p0, java.lang.String p1, android.content.Context p2, android.util.AttributeSet p3);
 
-    public void onCreate (android.os.Bundle p0)
-    {
-      n_onCreate (p0);
-    }
+  public void onCreate (android.os.Bundle p0)
+  {
+    n_onCreate (p0);
+  }
 
-    private native void n_onCreate (android.os.Bundle p0);
+  private native void n_onCreate (android.os.Bundle p0);
 }
 ```
 
