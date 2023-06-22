@@ -12,8 +12,7 @@ App developers expect to be able to call native Android APIs and receive calls, 
 The Java VM and the Managed VM co-exist in the same process or app as separate entities. Despite sharing the same process resources, there's no direct way to call Java/Kotlin APIs from .NET, and there's no direct way for Java/Kotlin code to invoke managed code APIs. To enable such communication, .NET for Android uses the [Java Native Interface (JNI)](https://docs.oracle.com/javase/8/docs/technotes/guides/jni/spec/jniTOC.html). This is an approach that enables native code (.NET managed code being native in this context) to register implementations of Java methods, which are written outside the Java VM and in languages other than Java or Kotlin. These methods need to be declared in Java code, for example:
 
 ```java
-class MainActivity
-  extends androidx.appcompat.app.AppCompatActivity
+class MainActivity extends androidx.appcompat.app.AppCompatActivity
 {
   public void onCreate (android.os.Bundle p0)
   {
@@ -35,21 +34,21 @@ Native methods can be registered dynamically, or statically by using a technique
 ```csharp
 public class MainActivity : AppCompatActivity
 {
-  public override Android.Views.View? OnCreateView (Android.Views.View? parent, string name, Android.Content.Context context, Android.Util.IAttributeSet attrs)
-  {
-    return base.OnCreateView (parent, name, context, attrs);
-  }
+    public override Android.Views.View? OnCreateView(Android.Views.View? parent, string name, Android.Content.Context context, Android.Util.IAttributeSet attrs)
+    {
+        return base.OnCreateView(parent, name, context, attrs);
+    }
 
-  protected override void OnCreate (Bundle savedInstanceState)
-  {
-     base.OnCreate(savedInstanceState);
-     DoSomething (savedInstanceState);
-  }
+    protected override void OnCreate(Bundle savedInstanceState)
+    {
+        base.OnCreate(savedInstanceState);
+        DoSomething(savedInstanceState);
+    }
 
-  void DoSomething (Bundle bundle)
-  {
-     // do something with the bundle
-  }
+    void DoSomething(Bundle bundle)
+    {
+        // do something with the bundle
+    }
 }
 ```
 
@@ -58,8 +57,7 @@ In this example, the managed class overrides the `OnCreateView` and `OnCreate` J
 The following example shows the JCW generated for the above class (with some generated methods omitted for clarity):
 
 ```java
-public class MainActivity
-        extends androidx.appcompat.app.AppCompatActivity
+public class MainActivity extends androidx.appcompat.app.AppCompatActivity
 {
   public android.view.View onCreateView (android.view.View p0, java.lang.String p1, android.content.Context p2, android.util.AttributeSet p3)
   {
@@ -79,49 +77,50 @@ public class MainActivity
 
 Both method registration approaches rely on generation of JCWs, with dynamic registration requiring more code to be generated so that the registration can be performed at runtime.
 
-JCWs are generated only for types that derive from the `Java.Lang.Object` type. Finding such types is the task of Java.Interop's `JavaTypeScanner`, which uses `Mono.Cecil` to read all the assemblies referenced by the app and its libraries. The returned list of assemblies is then used by a variety of tasks, with JCW being one of them.
+JCWs are generated only for types that derive from the `Java.Lang.Object` type. Finding such types is the task of [Java.Interop](https://github.com/xamarin/java.interop), which reads all the assemblies referenced by the app and its libraries. The returned list of assemblies is then used by a variety of tasks, with JCW being one of them.
 
-After all types are found, `JavaCallableWrapperGenerator` is invoked to analyze each method in each type, looking for those that override a virtual Java method and therefore need to be included in the wrapper class code. The generator optionally passes each method to an implementation of `JavaCallableMethodClassifier` abstract class to check whether the given method can be registered statically.
+After all types are found, each method in each type is analyzed to look for those that override a virtual Java method and therefore need to be included in the wrapper class code. The generator also optionally checks whether the given method can be registered statically.
 
-The `JavaCallableWrapperGenerator` type looks for methods decorated with the `Register` attribute, which most frequently are created by invoking its constructor with the Java method name, the JNI method signature, and the connector method name.
-
-The connector is a static method that creates a delegate that subsequently allows invocation of the native callback method:
+The generator looks for methods decorated with the `Register` attribute, which most frequently are created by invoking its constructor with the Java method name, the JNI method signature, and the connector method name. The connector is a static method that creates a delegate that subsequently allows invocation of the native callback method:
 
 ```csharp
 public class MainActivity : AppCompatActivity
 {
-  // Connector backing field
-  static Delegate? cb_onCreate_Landroid_os_Bundle_;
+    // Connector backing field
+    static Delegate? cb_onCreate_Landroid_os_Bundle_;
 
-  // Connector method
-  static Delegate GetOnCreate_Landroid_os_Bundle_Handler ()
-  {
-    if (cb_onCreate_Landroid_os_Bundle_ == null)
-      cb_onCreate_Landroid_os_Bundle_ = JNINativeWrapper.CreateDelegate ((_JniMarshal_PPL_V) n_OnCreate_Landroid_os_Bundle_);
-    return cb_onCreate_Landroid_os_Bundle_;
-  }
-
-  // Native callback
-  static void n_OnCreate_Landroid_os_Bundle_ (IntPtr jnienv, IntPtr native__this, IntPtr native_savedInstanceState)
-  {
-    var __this = global::Java.Lang.Object.GetObject<Android.App.Activity> (jnienv, native__this, JniHandleOwnership.DoNotTransfer)!;
-    var savedInstanceState = global::Java.Lang.Object.GetObject<Android.OS.Bundle> (native_savedInstanceState, JniHandleOwnership.DoNotTransfer);
-    __this.OnCreate (savedInstanceState);
-  }
-
-  // Target method
-  [Register ("onCreate", "(Landroid/os/Bundle;)V", "GetOnCreate_Landroid_os_Bundle_Handler")]
-  protected virtual unsafe void OnCreate (Android.OS.Bundle? savedInstanceState)
-  {
-    const string __id = "onCreate.(Landroid/os/Bundle;)V";
-    try {
-      JniArgumentValue* __args = stackalloc JniArgumentValue [1];
-      __args [0] = new JniArgumentValue ((savedInstanceState == null) ? IntPtr.Zero : ((global::Java.Lang.Object) savedInstanceState).Handle);
-      _members.InstanceMethods.InvokeVirtualVoidMethod (__id, this, __args);
-    } finally {
-      global::System.GC.KeepAlive (savedInstanceState);
+    // Connector method
+    static Delegate GetOnCreate_Landroid_os_Bundle_Handler()
+    {
+        if (cb_onCreate_Landroid_os_Bundle_ == null)
+            cb_onCreate_Landroid_os_Bundle_ = JNINativeWrapper.CreateDelegate((_JniMarshal_PPL_V)n_OnCreate_Landroid_os_Bundle_);
+        return cb_onCreate_Landroid_os_Bundle_;
     }
-  }
+
+    // Native callback
+    static void n_OnCreate_Landroid_os_Bundle_(IntPtr jnienv, IntPtr native__this, IntPtr native_savedInstanceState)
+    {
+        var __this = global::Java.Lang.Object.GetObject<Android.App.Activity>(jnienv, native__this, JniHandleOwnership.DoNotTransfer)!;
+        var savedInstanceState = global::Java.Lang.Object.GetObject<Android.OS.Bundle>(native_savedInstanceState, JniHandleOwnership.DoNotTransfer);
+        __this.OnCreate(savedInstanceState);
+    }
+
+    // Target method
+    [Register("onCreate", "(Landroid/os/Bundle;)V", "GetOnCreate_Landroid_os_Bundle_Handler")]
+    protected virtual unsafe void OnCreate(Android.OS.Bundle? savedInstanceState)
+    {
+        const string __id = "onCreate.(Landroid/os/Bundle;)V";
+        try
+        {
+            JniArgumentValue* __args = stackalloc JniArgumentValue[1];
+            __args[0] = new JniArgumentValue((savedInstanceState == null) ? IntPtr.Zero : ((global::Java.Lang.Object)savedInstanceState).Handle);
+            _members.InstanceMethods.InvokeVirtualVoidMethod(__id, this, __args);
+        }
+        finally
+        {
+            global::System.GC.KeepAlive(savedInstanceState);
+        }
+    }
 }
 ```
 
@@ -134,31 +133,31 @@ This registration approach is used by .NET for Android when an app is built in t
 With dynamic registration, the following Java code is generated for the C# example shown in [Java callable wrappers](#java-callable-wrappers) (with some generated methods omitted for clarity):
 
 ```java
-public class MainActivity
-        extends androidx.appcompat.app.AppCompatActivity
+public class MainActivity extends androidx.appcompat.app.AppCompatActivity
 {
-        public static final String __md_methods;
-        static {
-                __md_methods =
-                        "n_onCreateView:(Landroid/view/View;Ljava/lang/String;Landroid/content/Context;Landroid/util/AttributeSet;)Landroid/view/View;:GetOnCreateView_Landroid_view_View_Ljava_lang_String_Landroid_content_Context_Landroid_util_AttributeSet_Handler\n" +
-                        "n_onCreate:(Landroid/os/Bundle;)V:GetOnCreate_Landroid_os_Bundle_Handler\n" +
-                        "";
-                mono.android.Runtime.register ("HelloAndroid.MainActivity, HelloAndroid", MainActivity.class, __md_methods);
-        }
+    public static final String __md_methods;
+    static
+    {
+      __md_methods =
+              "n_onCreateView:(Landroid/view/View;Ljava/lang/String;Landroid/content/Context;Landroid/util/AttributeSet;)Landroid/view/View;:GetOnCreateView_Landroid_view_View_Ljava_lang_String_Landroid_content_Context_Landroid_util_AttributeSet_Handler\n" +
+              "n_onCreate:(Landroid/os/Bundle;)V:GetOnCreate_Landroid_os_Bundle_Handler\n" +
+              "";
+      mono.android.Runtime.register ("HelloAndroid.MainActivity, HelloAndroid", MainActivity.class, __md_methods);
+    }
 
-        public android.view.View onCreateView (android.view.View p0, java.lang.String p1, android.content.Context p2, android.util.AttributeSet p3)
-        {
-                return n_onCreateView (p0, p1, p2, p3);
-        }
+    public android.view.View onCreateView (android.view.View p0, java.lang.String p1, android.content.Context p2, android.util.AttributeSet p3)
+    {
+      return n_onCreateView (p0, p1, p2, p3);
+    }
 
-        private native android.view.View n_onCreateView (android.view.View p0, java.lang.String p1, android.content.Context p2, android.util.AttributeSet p3);
+    private native android.view.View n_onCreateView (android.view.View p0, java.lang.String p1, android.content.Context p2, android.util.AttributeSet p3);
 
-        public void onCreate (android.os.Bundle p0)
-        {
-                n_onCreate (p0);
-        }
+    public void onCreate (android.os.Bundle p0)
+    {
+      n_onCreate (p0);
+    }
 
-        private native void n_onCreate (android.os.Bundle p0);
+    private native void n_onCreate (android.os.Bundle p0);
 }
 ```
 
@@ -171,6 +170,9 @@ All the native methods declared in the generated Java type are registered when t
 1. `mono.android.Runtime.register` is a native method, declared in the `Runtime` class of .NET for Android's Java runtime code, and implemented in the native .NET Android runtime. The purpose of this method is to prepare a call into .NET for Android's managed runtime code.
 1. `Android.Runtime.JNIEnv::RegisterJniNatives` is passed the name of the managed type for which to register Java methods, and uses .NET reflection to load that type followed by a call to cache the type. It ends with a call to the `Android.Runtime.AndroidTypeManager::RegisterNativeMembers` method.
 1. `Android.Runtime.AndroidTypeManager::RegisterNativeMembers` calls the `Java.Interop.JniEnvironment.Types::RegisterNatives` method which first generates a delegate to the native callback method, using `System.Reflection.Emit`, and invokes Java JNI's `RegisterNatives` function to register the native methods for a managed type.
+
+> [!NOTE]
+> The `System.Reflection.Emit` call is a costly operation, and is repeated for each registered method.
 
 For more information about Java type registration, see [Java Type Registration](https://github.com/xamarin/xamarin-android/wiki/Blueprint#java-type-registration).
 
@@ -195,8 +197,7 @@ Whenever the classifier's `ShouldBeDynamicallyRegistered` method is called, it's
 With marshal methods, the following Java code is generated for the C# example shown in [Java callable wrappers](#java-callable-wrappers) (with some generated methods omitted for clarity):
 
 ```java
-public class MainActivity
-        extends androidx.appcompat.app.AppCompatActivity
+public class MainActivity extends androidx.appcompat.app.AppCompatActivity
 {
   public android.view.View onCreateView (android.view.View p0, java.lang.String p1, android.content.Context p2, android.util.AttributeSet p3)
   {
@@ -299,38 +300,44 @@ After modifications, the assembly contains the equivalent of the following C# co
 ```csharp
 public class MainActivity : AppCompatActivity
 {
-  // Native callback
-  static void n_OnCreate_Landroid_os_Bundle_ (IntPtr jnienv, IntPtr native__this, IntPtr native_savedInstanceState)
-  {
-    var __this = global::Java.Lang.Object.GetObject<Android.App.Activity> (jnienv, native__this, JniHandleOwnership.DoNotTransfer)!;
-    var savedInstanceState = global::Java.Lang.Object.GetObject<Android.OS.Bundle> (native_savedInstanceState, JniHandleOwnership.DoNotTransfer);
-    __this.OnCreate (savedInstanceState);
-  }
-
-  // Native callback exception wrapper
-  [UnmanagedCallersOnly]
-  static void n_OnCreate_Landroid_os_Bundle__mm_wrapper (IntPtr jnienv, IntPtr native__this, IntPtr native_savedInstanceState)
-  {
-    try {
-      n_OnCreate_Landroid_os_Bundle_ (jnienv, native__this, native_savedInstanceState)
-    } catch (Exception ex) {
-      Android.Runtime.AndroidEnvironmentInternal.UnhandledException (ex);
+    // Native callback
+    static void n_OnCreate_Landroid_os_Bundle_(IntPtr jnienv, IntPtr native__this, IntPtr native_savedInstanceState)
+    {
+        var __this = global::Java.Lang.Object.GetObject<Android.App.Activity>(jnienv, native__this, JniHandleOwnership.DoNotTransfer)!;
+        var savedInstanceState = global::Java.Lang.Object.GetObject<Android.OS.Bundle>(native_savedInstanceState, JniHandleOwnership.DoNotTransfer);
+        __this.OnCreate(savedInstanceState);
     }
-  }
 
-  // Target method
-  [Register ("onCreate", "(Landroid/os/Bundle;)V", "GetOnCreate_Landroid_os_Bundle_Handler")]
-  protected virtual unsafe void OnCreate (Android.OS.Bundle? savedInstanceState)
-  {
-    const string __id = "onCreate.(Landroid/os/Bundle;)V";
-    try {
-      JniArgumentValue* __args = stackalloc JniArgumentValue [1];
-      __args [0] = new JniArgumentValue ((savedInstanceState == null) ? IntPtr.Zero : ((global::Java.Lang.Object) savedInstanceState).Handle);
-      _members.InstanceMethods.InvokeVirtualVoidMethod (__id, this, __args);
-    } finally {
-      global::System.GC.KeepAlive (savedInstanceState);
+    // Native callback exception wrapper
+    [UnmanagedCallersOnly]
+    static void n_OnCreate_Landroid_os_Bundle__mm_wrapper(IntPtr jnienv, IntPtr native__this, IntPtr native_savedInstanceState)
+    {
+        try
+        {
+            n_OnCreate_Landroid_os_Bundle_(jnienv, native__this, native_savedInstanceState)
+        }
+        catch (Exception ex)
+        {
+            Android.Runtime.AndroidEnvironmentInternal.UnhandledException(ex);
+        }
     }
-  }
+
+    // Target method
+    [Register("onCreate", "(Landroid/os/Bundle;)V", "GetOnCreate_Landroid_os_Bundle_Handler")]
+    protected virtual unsafe void OnCreate(Android.OS.Bundle? savedInstanceState)
+    {
+        const string __id = "onCreate.(Landroid/os/Bundle;)V";
+        try
+        {
+            JniArgumentValue* __args = stackalloc JniArgumentValue[1];
+            __args[0] = new JniArgumentValue((savedInstanceState == null) ? IntPtr.Zero : ((global::Java.Lang.Object)savedInstanceState).Handle);
+            _members.InstanceMethods.InvokeVirtualVoidMethod(__id, this, __args);
+        }
+        finally
+        {
+            global::System.GC.KeepAlive(savedInstanceState);
+        }
+    }
 }
 ```
 
@@ -341,13 +348,13 @@ The [`UnmanagedCallersOnly`](xref:System.Runtime.InteropServices.UnmanagedCaller
 Whenever a method with a non-blittable type is encountered, a wrapper is generated for it so that it can be decorated with the [`UnmanagedCallersOnly`](xref:System.Runtime.InteropServices.UnmanagedCallersOnlyAttribute) attribute. This is less error prone than modifying the native callback method's IL stream to implement the necessary conversion. An example of such a method is `Android.Views.View.IOnTouchListener::OnTouch`:
 
 ```csharp
-static bool n_OnTouch_Landroid_view_View_Landroid_view_MotionEvent_ (IntPtr jnienv, IntPtr native__this, IntPtr native_v, IntPtr native_e)
+static bool n_OnTouch_Landroid_view_View_Landroid_view_MotionEvent(IntPtr jnienv, IntPtr native__this, IntPtr native_v, IntPtr native_e)
 {
-  var __this = global::Java.Lang.Object.GetObject<Android.Views.View.IOnTouchListener> (jnienv, native__this, JniHandleOwnership.DoNotTransfer)!;
-  var v = global::Java.Lang.Object.GetObject<Android.Views.View> (native_v, JniHandleOwnership.DoNotTransfer);
-  var e = global::Java.Lang.Object.GetObject<Android.Views.MotionEvent> (native_e, JniHandleOwnership.DoNotTransfer);
-  bool __ret = __this.OnTouch (v, e);
-  return __ret;
+    var __this = global::Java.Lang.Object.GetObject<Android.Views.View.IOnTouchListener>(jnienv, native__this, JniHandleOwnership.DoNotTransfer)!;
+    var v = global::Java.Lang.Object.GetObject<Android.Views.View>(native_v, JniHandleOwnership.DoNotTransfer);
+    var e = global::Java.Lang.Object.GetObject<Android.Views.MotionEvent>(native_e, JniHandleOwnership.DoNotTransfer);
+    bool __ret = __this.OnTouch(v, e);
+    return __ret;
 }
 ```
 
@@ -355,14 +362,17 @@ This method returns a `bool` value, and so needs a wrapper to cast the return va
 
 ```csharp
 [UnmanagedCallersOnly]
-static byte n_OnTouch_Landroid_view_View_Landroid_view_MotionEvent__mm_wrapper (IntPtr jnienv, IntPtr native__this, IntPtr native_v, IntPtr native_e)
+static byte n_OnTouch_Landroid_view_View_Landroid_view_MotionEvent__mm_wrapper(IntPtr jnienv, IntPtr native__this, IntPtr native_v, IntPtr native_e)
 {
-  try {
-    return n_OnTouch_Landroid_view_View_Landroid_view_MotionEvent_(jnienv, native__this, native_v, native_e) ? 1 : 0;
-  } catch (Exception ex) {
-    Android.Runtime.AndroidEnvironmentInternal.UnhandledException (ex);
-    return default;
-  }
+    try
+    {
+        return n_OnTouch_Landroid_view_View_Landroid_view_MotionEvent_(jnienv, native__this, native_v, native_e) ? 1 : 0;
+    }
+    catch (Exception ex)
+    {
+        Android.Runtime.AndroidEnvironmentInternal.UnhandledException(ex);
+        return default;
+    }
 }
 ```
 
@@ -374,16 +384,16 @@ Whenever an argument value needs to be converted between `byte` and `bool`, code
 
 ```csharp
 [UnmanagedCallersOnly]
-static void n_OnFocusChange_Landroid_view_View_Z (IntPtr jnienv, IntPtr native__this, IntPtr native_v, byte hasFocus)
+static void n_OnFocusChange_Landroid_view_View_Z(IntPtr jnienv, IntPtr native__this, IntPtr native_v, byte hasFocus)
 {
-  n_OnFocusChange_Landroid_view_View_Z (jnienv, native__this, native_v, hasFocus != 0);
+    n_OnFocusChange_Landroid_view_View_Z(jnienv, native__this, native_v, hasFocus != 0);
 }
 
-static void n_OnFocusChange_Landroid_view_View_Z (IntPtr jnienv, IntPtr native__this, IntPtr native_v, bool hasFocus)
+static void n_OnFocusChange_Landroid_view_View_Z(IntPtr jnienv, IntPtr native__this, IntPtr native_v, bool hasFocus)
 {
-  var __this = global::Java.Lang.Object.GetObject<Android.Views.View.IOnFocusChangeListener> (jnienv, native__this, JniHandleOwnership.DoNotTransfer)!;
-  var v = global::Java.Lang.Object.GetObject<Android.Views.View> (native_v, JniHandleOwnership.DoNotTransfer);
-  __this.OnFocusChange (v, hasFocus);
+    var __this = global::Java.Lang.Object.GetObject<Android.Views.View.IOnFocusChangeListener>(jnienv, native__this, JniHandleOwnership.DoNotTransfer)!;
+    var v = global::Java.Lang.Object.GetObject<Android.Views.View>(native_v, JniHandleOwnership.DoNotTransfer);
+    __this.OnFocusChange(v, hasFocus);
 }
 ```
 
