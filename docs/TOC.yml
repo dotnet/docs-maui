@@ -475,6 +475,10 @@
           items:
             - name: App manifest
               href: android/manifest.md
+            - name: Internals
+              items:
+                - name: Java and managed code interoperability
+                  href: android/internals/java-interop.md
             - name: Linking
               href: android/linking.md
         - name: iOS
