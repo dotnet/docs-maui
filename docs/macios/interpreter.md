@@ -15,7 +15,9 @@ AOT provides benefits through a reduction in startup time, and various other per
 - There's limited generics support. Not every possible generic instantiation can be determined at compile time. Many of the iOS-specific issues encountered in .NET MAUI release builds are due to this limitation.
 - Dynamic code generation isn't allowed. This means that `System.Relection.Emit` is unavailable, there's no support for `System.Runtime.Remoting`, and some uses of the C# [dynamic](/dotnet/csharp/advanced-topics/interop/using-type-dynamic) type aren't permitted.
 
-The Mono interpreter overcomes these restrictions while abiding by platform restrictions. It enables you to interpret some parts of your app at runtime, while AOT compiling the rest. However, there are some drawbacks to using the interpreter in a production app:
+When an AOT restriction occurs, a `System.ExecutionEngineException` will be thrown with a message of "Attempting to JIT compile method while running in aot-only mode".
+
+The Mono interpreter overcomes these restrictions while abiding by platform restrictions. It enables you to interpret some parts of your app at runtime, while AOT compiling the rest. However, there are some potential drawbacks to using the interpreter in a production app:
 
 - While the app size usually shrinks significantly when the interpreter is enabled, in certain cases the app size can increase.
 - App execution speed will be slower because interpreted code runs more slowly than AOT compiled code. This execution speed reduction can range from unmeasurable to unacceptable, so performance testing should be performed.
@@ -70,6 +72,9 @@ The following example shows how to AOT compile all assemblies except **System.Nu
     <MtouchInterpreter>-all,System.Numerics.dll</MtouchInterpreter>
 </PropertyGroup>
 ```
+
+> [!IMPORTANT]
+> A stack frame executed by the interpreter won't provide useful information. However, because the interpreter can be disabled on a per-assembly basis, it's possible to have stack frames from some assemblies accurately depicted in crash reports.
 
 Alternatively, use the following example to AOT compile all assemblies, while still allowing the interpreter to perform dynamic code generation:
 
