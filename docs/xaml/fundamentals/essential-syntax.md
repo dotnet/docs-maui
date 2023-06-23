@@ -197,8 +197,8 @@ Many classes also have `ContentProperty` attribute definitions. For example, the
              x:Class="...">
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness">
-            <On Platform="iOS" Value="0, 20, 0, 0" />
-            <On Platform="Android" Value="10, 20, 20, 10" />
+            <On Platform="iOS" Value="0,20,0,0" />
+            <On Platform="Android" Value="10,20,20,10" />
         </OnPlatform>
     </ContentPage.Padding>
     ...
@@ -221,7 +221,7 @@ Many classes also have `ContentProperty` attribute definitions. For example, the
 </ContentPage>
 ```
 
-In this example, the `Padding` property is set to specific values on iOS and Android, with the remaining platforms being set to the default value.
+In this example, the `Padding` property is set to different values on iOS and Android, with the other platforms being set to the default value.
 
 The `OnPlatform` class also defines a `Platforms` property, which is an `IList` of `On` objects. Each `On` object can set the `Platform` and `Value` property to define the `Thickness` value for a specific platform. In addition, the `Platform` property of `On` is of type `IList<string>`, so you can include multiple platforms if the values are the same:
 
