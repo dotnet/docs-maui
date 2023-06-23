@@ -47,7 +47,7 @@ The following table shows how to map properties in Xamarin Apple projects to .NE
 
 ### Convert to RuntimeIdentifier
 
-The following table shows how to convert the `MtouchArch` and `XamMacArch` properties to the `RuntimeIdentifier` property when migrating a Xamarin.iOS project to .NET for iOS:
+The following table shows how to convert the `MtouchArch` and `XamMacArch` properties to the `RuntimeIdentifier` property, or the `RuntimeIdentifiers` property, when migrating a Xamarin.iOS project to .NET for iOS:
 
 | Value              | RuntimeIdentifier  | RuntimeIdentifiers                |
 | ------------------ | ------------------ | --------------------------------- |
