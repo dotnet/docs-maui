@@ -26,7 +26,7 @@ The Mono interpreter overcomes these restrictions while abiding by platform rest
 The interpreter is enabled by default for .NET MAUI debug builds, and can be enabled for release builds.
 
 > [!TIP]
-> If your .NET MAUI iOS app or ARM64-based Mac Catalyst app works correctly as a debug build but then crashes as a release build, try enabling the interpreter for your app's release build. It may be that your app, or one of its libraries, uses a feature that requires the interpreter. In particular,
+> If your .NET MAUI iOS app or ARM64-based Mac Catalyst app works correctly as a debug build but then crashes as a release build, try enabling the interpreter for your app's release build. It may be that your app, or one of its libraries, uses a feature that requires the interpreter.
 
 ## Enable the interpreter
 
