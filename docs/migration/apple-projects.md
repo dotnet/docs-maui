@@ -55,11 +55,14 @@ The following table shows how to convert the `MtouchArch` and `XamMacArch` prope
 | ARMv7s             | ios-arm            |                                   |
 | ARMv7+ARMv7s       | ios-arm            |                                   |
 | ARM64              | ios-arm64          |                                   |
-| ARMv7+ARM64        |                    | ios-arm,ios-arm64                 |
-| ARMv7+ARMv7s+ARM64 |                    | ios-arm,ios-arm64                 |
+| ARMv7+ARM64        |                    | ios-arm;ios-arm64                 |
+| ARMv7+ARMv7s+ARM64 |                    | ios-arm;ios-arm64                 |
 | x86_64             | iossimulator-x64   |                                   |
 | i386               | iossimulator-x86   |                                   |
-| x86_64+i386        |                    | iossimulator-x86,iossimulator-x64 |
+| x86_64+i386        |                    | iossimulator-x86;iossimulator-x64 |
+
+> [!IMPORTANT]
+> If you have multiple runtime identifiers, use the `RuntimeIdentifiers` property rather than the `RuntimeIdentifier` property.
 
 The following table shows how to convert the `MtouchArch` and `XamMacArch` properties to the `RuntimeIdentifier` property when migrating a Xamarin.Mac project to .NET for macOS+:
 
