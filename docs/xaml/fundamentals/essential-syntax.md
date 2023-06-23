@@ -205,17 +205,33 @@ Many classes also have `ContentProperty` attribute definitions. For example, the
 </ContentPage>
 ```
 
-`OnPlatform` is a generic class and so you need to specify the generic type argument, in this case, `Thickness`, which is the type of `Padding` property. This is achieved with the `x:TypeArguments` XAML attribute. The `OnPlatform` class has a property named `Platforms`, that is an `IList` of `On` objects. Each `On` object can set the `Platform` and `Value` property to define the `Thickness` value for a specific platform.
-
-In addition, the `Platform` property of `On` is of type `IList<string>`, so you can include multiple platforms if the values are the same:
+`OnPlatform` is a generic class and so you need to specify the generic type argument, in this case, `Thickness`, which is the type of `Padding` property. This is achieved with the `x:TypeArguments` XAML attribute. The `OnPlatform` class defines a `Default` property that can be set to a value that will be applied to all platforms:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="...">
     <ContentPage.Padding>
-        <OnPlatform x:TypeArguments="Thickness">
-            <On Platform="iOS, Android" Value="10, 20, 20, 10" />
+        <OnPlatform x:TypeArguments="Thickness" Default="20">
+            <On Platform="iOS" Value="0,20,0,0" />
+            <On Platform="Android" Value="10,20,20,10" />
+        </OnPlatform>
+    </ContentPage.Padding>
+    ...
+</ContentPage>
+```
+
+In this example, the `Padding` property is set to specific values on iOS and Android, with the remaining platforms being set to the default value.
+
+The `OnPlatform` class also defines a `Platforms` property, which is an `IList` of `On` objects. Each `On` object can set the `Platform` and `Value` property to define the `Thickness` value for a specific platform. In addition, the `Platform` property of `On` is of type `IList<string>`, so you can include multiple platforms if the values are the same:
+
+```xaml
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="...">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" Default="20">
+            <On Platform="iOS, Android" Value="10,20,20,10" />
         </OnPlatform>
     </ContentPage.Padding>
     ...
