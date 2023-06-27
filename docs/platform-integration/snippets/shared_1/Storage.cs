@@ -37,7 +37,7 @@ public class StoragePage : ContentPage
                             { DevicePlatform.Android, new[] { "application/comics" } }, // MIME type
                             { DevicePlatform.WinUI, new[] { ".cbr", ".cbz" } }, // file extension
                             { DevicePlatform.Tizen, new[] { "*/*" } },
-                            { DevicePlatform.macOS, new[] { "cbr", "cbz" } }, // UTType values
+                            { DevicePlatform.MacCatalyst, new[] { "cbr", "cbz" } }, // UTType values
                         });
 
         PickOptions options = new()
