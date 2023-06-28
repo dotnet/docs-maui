@@ -1,12 +1,12 @@
 ---
 title: "Native embedding"
-description: "Learn how to consume .NET MAUI controls inside .NET for iOS, .NET for Android, and WinUI native apps."
+description: "Learn how to consume .NET MAUI controls inside .NET for iOS, .NET Android, and WinUI native apps."
 ms.date: 02/13/2022
 ---
 
 # Native embedding
 
-Typically, a .NET Multi-platform App UI (.NET MAUI) app includes pages that contain layouts, such as <xref:Microsoft.Maui.Controls.Grid>, and layouts that contain views, such as <xref:Microsoft.Maui.Controls.Button>. Pages, layouts, and views all derive from <xref:Microsoft.Maui.Controls.Element>. Native embedding enables any .NET MAUI controls that derive from <xref:Microsoft.Maui.Controls.Element> to be consumed in .NET for Android, .NET for iOS, .NET for Mac Catalyst, and WinUI native apps.
+Typically, a .NET Multi-platform App UI (.NET MAUI) app includes pages that contain layouts, such as <xref:Microsoft.Maui.Controls.Grid>, and layouts that contain views, such as <xref:Microsoft.Maui.Controls.Button>. Pages, layouts, and views all derive from <xref:Microsoft.Maui.Controls.Element>. Native embedding enables any .NET MAUI controls that derive from <xref:Microsoft.Maui.Controls.Element> to be consumed in .NET Android, .NET for iOS, .NET for Mac Catalyst, and WinUI native apps.
 
 The process for consuming a .NET MAUI control in a native app is as follows:
 
@@ -20,7 +20,7 @@ The process for consuming a .NET MAUI control in a native app is as follows:
 
 ## Enable .NET MAUI support
 
-To consume .NET MAUI controls that derive from <xref:Microsoft.Maui.Controls.Element> in a .NET for Android, .NET for iOS, .NET for Mac Catalyst, or WinUI app, you must first enable .NET MAUI support in the native app's project file. Enable support by adding `<UseMaui>true</UseMaui>` to the first `<PropertyGroup>` node in the project file:
+To consume .NET MAUI controls that derive from <xref:Microsoft.Maui.Controls.Element> in a .NET Android, .NET for iOS, .NET for Mac Catalyst, or WinUI app, you must first enable .NET MAUI support in the native app's project file. Enable support by adding `<UseMaui>true</UseMaui>` to the first `<PropertyGroup>` node in the project file:
 
 ```xml
 <PropertyGroup>
