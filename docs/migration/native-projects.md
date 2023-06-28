@@ -77,7 +77,7 @@ If you can't find a .NET 6+ compatible version of a NuGet package you should:
 - Look for a preview release of a .NET 6+ version of the package.
 - Replace the dependency with a .NET 6+ compatible alternative.
 
-For information about migrating Xamarin.Essentials code in a .NET Android or .NET for iOS app, see [Migrate Xamarin.Essentials code in .NET Android and .NET for iOS apps](native-essentials.md).
+For information about migrating Xamarin.Essentials code in a .NET Android or .NET iOS app, see [Migrate Xamarin.Essentials code in .NET Android and .NET iOS apps](native-essentials.md).
 
 ## Compile and troubleshoot
 
