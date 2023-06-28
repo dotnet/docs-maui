@@ -43,7 +43,7 @@ Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for Mar
 
 ### New articles
 
-- [Migrate Xamarin.Essentials code in .NET Android and .NET for iOS apps](../migration/native-essentials.md)
+- [Migrate Xamarin.Essentials code in .NET Android and .NET iOS apps](../migration/native-essentials.md)
 
 ### Updated articles
 
