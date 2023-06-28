@@ -64,7 +64,7 @@ The following table shows how to convert the `MtouchArch` and `XamMacArch` prope
 > [!IMPORTANT]
 > If you have multiple runtime identifiers, use the `RuntimeIdentifiers` property rather than the `RuntimeIdentifier` property.
 
-The following table shows how to convert the `MtouchArch` and `XamMacArch` properties to the `RuntimeIdentifier` property when migrating a Xamarin.Mac project to .NET for macOS+:
+The following table shows how to convert the `MtouchArch` and `XamMacArch` properties to the `RuntimeIdentifier` property when migrating a Xamarin.Mac project to .NET macOS+:
 
 | Property | RuntimeIdentifier |
 | -------- | ----------------- |
