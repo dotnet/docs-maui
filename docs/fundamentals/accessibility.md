@@ -62,7 +62,7 @@ In addition, the <xref:Microsoft.Maui.Controls.BindableObject.SetValue%2A> metho
 image.SetValue(SemanticProperties.DescriptionProperty, "Cute dot net bot waving hi to you!");
 ```
 
-The accessibility information for an element can also be defined on another element. For example, a <xref:Microsoft.Maui.Controls.Label> next to an <xref:Microsoft.Maui.Controls.Entry> can be used to describe what the <xref:Microsoft.Maui.Controls.Entry> represents. This can be accomplished in XAML as follows:
+The accessibility information for an element can also be defined on another element. For example, a <xref:Microsoft.Maui.Controls.Label> next to an <xref:Microsoft.Maui.Controls.Switch> can be used to describe what the <xref:Microsoft.Maui.Controls.Switch> represents. This can be accomplished in XAML as follows:
 
 ```xaml
 <Label x:Name="label"
@@ -77,8 +77,8 @@ Label label = new Label
 {
     Text = "Enable dark mode: "
 };
-Switch switch = new Switch();
-SemanticProperties.SetDescription(switch, label.Text);
+Switch mySwitch = new Switch();
+SemanticProperties.SetDescription(mySwitch, label.Text);
 ```
 
 <!-- markdownlint-disable MD032 -->
