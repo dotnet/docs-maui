@@ -188,7 +188,16 @@ On WinUI 3, the `WebAuthenticationBroker` is used, if supported, otherwise the s
 
 ## Apple Sign In
 
-According to [Apple's review guidelines](https://developer.apple.com/app-store/review/guidelines/#sign-in-with-apple), if your app uses any social login service to authenticate, it must also offer Apple Sign In as an option. To add Apple Sign In to your apps, first you'll need to configure your app to use Apple Sign In. <!-- TODO link to [configure your app to use Apple Sign In](../ios/platform/ios13/sign-in.md). -->
+According to [Apple's review guidelines](https://developer.apple.com/app-store/review/guidelines/#sign-in-with-apple), if your Apple app uses any social login service to authenticate, it must also offer Apple Sign In as an option. To add Apple Sign In to your apps, you'll need to add the sign in with Apple entitlement to your app. This entitlement is defined using the `com.apple.developer.applesignin` key, of type `Array` of `String`:
+
+```xml
+<key>com.apple.developer.applesignin</key>
+<array>
+  <string>Default</string>
+</array>
+```
+
+For more information, see [Sign in with Apple Entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_applesignin) on developer.apple.com.
 
 For iOS 13 and higher, call the <xref:Microsoft.Maui.Authentication.AppleSignInAuthenticator.AuthenticateAsync%2A?displayProperty=nameWithType> method. This uses the native Apple Sign in APIs so your users get the best experience possible on these devices. For example, you can write your shared code to use the correct API at runtime:
 
