@@ -193,7 +193,7 @@ According to [Apple's review guidelines](https://developer.apple.com/app-store/r
 ```xml
 <key>com.apple.developer.applesignin</key>
 <array>
-	<string>Default</string>
+  <string>Default</string>
 </array>
 ```
 
