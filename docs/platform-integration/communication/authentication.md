@@ -188,7 +188,7 @@ On WinUI 3, the `WebAuthenticationBroker` is used, if supported, otherwise the s
 
 ## Apple Sign In
 
-According to [Apple's review guidelines](https://developer.apple.com/app-store/review/guidelines/#sign-in-with-apple), if your app uses any social login service to authenticate, it must also offer Apple Sign In as an option. To add Apple Sign In to your apps, you'll need to add the sign in with Apple entitlement to your app. This entitlement is defined using the `com.apple.developer.applesignin` key, of type `Array` of `String`:
+According to [Apple's review guidelines](https://developer.apple.com/app-store/review/guidelines/#sign-in-with-apple), if your Apple app uses any social login service to authenticate, it must also offer Apple Sign In as an option. To add Apple Sign In to your apps, you'll need to add the sign in with Apple entitlement to your app. This entitlement is defined using the `com.apple.developer.applesignin` key, of type `Array` of `String`:
 
 ```xml
 <key>com.apple.developer.applesignin</key>
