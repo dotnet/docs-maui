@@ -62,15 +62,12 @@ In addition, the <xref:Microsoft.Maui.Controls.BindableObject.SetValue%2A> metho
 image.SetValue(SemanticProperties.DescriptionProperty, "Cute dot net bot waving hi to you!");
 ```
 
-> [!WARNING]
-> Avoid setting the [`Description`](xref:Microsoft.Maui.Controls.SemanticProperties.DescriptionProperty) attached property on a <xref:Microsoft.Maui.Controls.Label>. This will stop the `Text` property being spoken by the screen reader. This is because the visual text should ideally match the text read aloud by the screen reader.
-
-The accessibility information for an element can also be defined on another element. For example, a <xref:Microsoft.Maui.Controls.Label> next to an <xref:Microsoft.Maui.Controls.Entry> can be used to describe what the <xref:Microsoft.Maui.Controls.Entry> represents. This can be accomplished in XAML as follows:
+The accessibility information for an element can also be defined on another element. For example, a <xref:Microsoft.Maui.Controls.Label> next to an <xref:Microsoft.Maui.Controls.Switch> can be used to describe what the <xref:Microsoft.Maui.Controls.Switch> represents. This can be accomplished in XAML as follows:
 
 ```xaml
 <Label x:Name="label"
-       Text="Enter your name: " />
-<Entry SemanticProperties.Description="{Binding Source={x:Reference label} Path=Text}" />
+       Text="Enable dark mode: " />
+<Switch SemanticProperties.Description="{Binding Source={x:Reference label} Path=Text}" />
 ```
 
 Alternatively, it can be set in C# as follows:
@@ -78,14 +75,20 @@ Alternatively, it can be set in C# as follows:
 ```csharp
 Label label = new Label
 {
-    Text = "Enter your name: "
+    Text = "Enable dark mode: "
 };
-Entry entry = new Entry();
-SemanticProperties.SetDescription(entry, label.Text);
+Switch mySwitch = new Switch();
+SemanticProperties.SetDescription(mySwitch, label.Text);
 ```
 
+<!-- markdownlint-disable MD032 -->
+
 > [!WARNING]
-> On iOS, if you set the [`Description`](xref:Microsoft.Maui.Controls.SemanticProperties.DescriptionProperty) property on any control that has children the screen reader will be unable to reach the children. This is because iOS doesn't provide accessibility features that allow the navigation from a parent element into a child element.
+> - Avoid setting the [`Description`](xref:Microsoft.Maui.Controls.SemanticProperties.DescriptionProperty) attached property on a <xref:Microsoft.Maui.Controls.Label>. This will stop the `Text` property being spoken by the screen reader. This is because the visual text should ideally match the text read aloud by the screen reader.
+> - Avoid setting the [`Description`](xref:Microsoft.Maui.Controls.SemanticProperties.DescriptionProperty) attached property on an <xref:Microsoft.Maui.Controls.Entry> or <xref:Microsoft.Maui.Controls.Editor> on Android. Doing so will stop Talkback actions functioning. Instead, use the <xref:Microsoft.Maui.Controls.InputView.Placeholder> property or the [`Hint`](xref:Microsoft.Maui.Controls.SemanticProperties.HintProperty) attached property.
+> - On iOS, if you set the [`Description`](xref:Microsoft.Maui.Controls.SemanticProperties.DescriptionProperty) property on any control that has children the screen reader will be unable to reach the children. This is because iOS doesn't provide accessibility features that allow the navigation from a parent element into a child element.
+
+<!-- markdownlint-enable MD032 -->
 
 ### Hint
 
