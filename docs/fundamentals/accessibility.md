@@ -81,10 +81,14 @@ Switch switch = new Switch();
 SemanticProperties.SetDescription(switch, label.Text);
 ```
 
+<!-- markdownlint-disable MD032 -->
+
 > [!WARNING]
 > - Avoid setting the [`Description`](xref:Microsoft.Maui.Controls.SemanticProperties.DescriptionProperty) attached property on a <xref:Microsoft.Maui.Controls.Label>. This will stop the `Text` property being spoken by the screen reader. This is because the visual text should ideally match the text read aloud by the screen reader.
-> - Avoid setting the [`Description`](xref:Microsoft.Maui.Controls.SemanticProperties.DescriptionProperty) attached property on an <xref:Microsoft.Maui.Controls.Entry> or <xref:Microsoft.Maui.Control.Editor> on Android. Doing so will stop Talkback actions functioning. Instead, use the <xref:Microsoft.Maui.Controls.InputView.Placeholder> property or the [`Hint`](xref:Microsoft.Maui.Controls.SemanticProperties.HintProperty) attached property.
+> - Avoid setting the [`Description`](xref:Microsoft.Maui.Controls.SemanticProperties.DescriptionProperty) attached property on an <xref:Microsoft.Maui.Controls.Entry> or <xref:Microsoft.Maui.Controls.Editor> on Android. Doing so will stop Talkback actions functioning. Instead, use the <xref:Microsoft.Maui.Controls.InputView.Placeholder> property or the [`Hint`](xref:Microsoft.Maui.Controls.SemanticProperties.HintProperty) attached property.
 > - On iOS, if you set the [`Description`](xref:Microsoft.Maui.Controls.SemanticProperties.DescriptionProperty) property on any control that has children the screen reader will be unable to reach the children. This is because iOS doesn't provide accessibility features that allow the navigation from a parent element into a child element.
+
+<!-- markdownlint-enable MD032 -->
 
 ### Hint
 
