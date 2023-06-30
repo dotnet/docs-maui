@@ -50,7 +50,7 @@ public partial class MainPage : ContentPage
 }
 ```
 
-The `MainPage` class derives from <xref:Microsoft.Maui.Controls.ContentPage>, and is a partial class definition.
+The `MainPage` class derives from <xref:Microsoft.Maui.Controls.ContentPage>, and is a [partial class](/dotnet/csharp/programming-guide/classes-and-structs/partial-classes-and-methods) definition.
 
 When Visual Studio builds the project, a source generator generates new C# source that contains the definition of the `InitializeComponent` method that's called from the `MainPage` constructor and adds it to the compilation object.
 
