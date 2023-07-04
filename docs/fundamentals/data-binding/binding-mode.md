@@ -265,4 +265,3 @@ A very useful application of overriding the default binding mode with a `TwoWay`
 
 > [!NOTE]
 > The default binding mode can vary from control to control in Xaml, like its `OneWayToSource` for <xref:Microsoft.Maui.Controls.ListView> but may be differ from other controls.
-
