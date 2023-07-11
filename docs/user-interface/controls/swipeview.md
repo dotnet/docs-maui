@@ -36,7 +36,7 @@ In addition, <xref:Microsoft.Maui.Controls.SwipeView> includes `Open` and `Close
 > <xref:Microsoft.Maui.Controls.SwipeView> has a platform-specific on iOS and Android, that controls the transition that's used when opening a <xref:Microsoft.Maui.Controls.SwipeView>. For more information, see [SwipeView swipe transition Mode on iOS](~/ios/platform-specifics/swipeview-swipetransitionmode.md) and [SwipeView swipe transition mode on Android](~/android/platform-specifics/swipeview-swipetransitionmode.md).
 
 > [!NOTE]
-> <xref:Microsoft.Maui.Controls.SwipeView> is designed for touch interfaces; on Windows it can only be swiped in a touch interface and will not function with a pointer device (such as a mouse). 
+> <xref:Microsoft.Maui.Controls.SwipeView> is designed for touch interfaces; on Windows it can only be swiped in a touch interface and will not function with a pointer device (such as a mouse).
 
 ## Create a SwipeView
 
