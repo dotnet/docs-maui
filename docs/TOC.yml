@@ -9,6 +9,9 @@
       items:
         - name: Installation
           href: get-started/installation.md
+        - name: test
+          href: ./get-started/test.md
+          displayName: test
         - name: Build your first app
           href: get-started/first-app.md?pivots=devices-windows
         - name: Learning resources
