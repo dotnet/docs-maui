@@ -344,6 +344,63 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 f
 
 :::zone-end
 
+<!-- markdownlint-disable MD025 -->
+# [Visual Studio Code (Preview)](#tab/visual-studio-code)
+<!-- markdownlint-enable MD025 -->
+
+> [!NOTE]
+> .NET MAUI support in Visual Studio Code is still in preview. Try it out and [share your feedback](https://github.com/microsoft/vscode-dotnettools/issues)!
+
+## Install the extension
+
+Follow the [instructions](installation.md#install-visual-studio-code-and-the-net-maui-extension) to set up the .NET MAUI extension for Visual Studio Code.
+
+## Create your app
+
+To create a new .NET MAUI app:
+
+1. Click **Create .NET Project** in the Explorer, OR `CTRL/CMD+SHIFT+P` > **.NET: New Project...**.
+1. Select **.NET MAUI App** or **.NET MAUI Blazor App**.
+1. Select an **empty** folder. If the file explorer pops open again, your folder is not empty.
+1. Name the project.
+1. Ensure the project loads successfully in the Solution Explorer, and then open a C# or XAML file.
+
+You can also open an existing .NET MAUI project in VS Code via **File > Open...**.
+
+You should now see your app in [C# Dev Kit's](/visualstudio/subscriptions/vs-c-sharp-dev-kit) Solution Explorer in Visual Studio Code. Since the .NET MAUI extension depends on C# Dev Kit, you can use [all of its features](https://code.visualstudio.com/docs/csharp/get-started) alongside the .NET MAUI extension.
+
+## Choose your target device
+
+Click on the curly brackets symbol `{ }` in the bottom right corner of Visual Studio Code. Here, you can change your Startup Project, change your Debug Target to anything valid on your development machine, and pin either setting to the Visual Studio Code status bar:
+
+:::image type="content" source="media/first-app/vscode/debug-target-picker.png" alt-text="A screenshot of the bottom right of VS Code, showing the debug target picker open":::
+
+You can also set the Startup Project and Debug Target in the command palette, using `CTRL/CMD+SHIFT+P` and searching for ".NET MAUI".
+
+By default, you can deploy to your local macOS or Windows development machine. On macOS, you can also deploy to iOS simulators.
+
+If you want to use Android emulators, follow these steps:
+
+1. Navigate in your terminal to `<YOUR_ANDROID_SDK_DIRECTORY>/cmdline-tools/latest/bin/`.
+1. Run `sdkmanager --install emulator` and `sdkmanager --install system-images;android-33;google_apis;x86_64`.
+1. Then, you can create a new emulator on the command line with Android's [avdmanager](https://developer.android.com/tools/avdmanager). For example, you can run `avdmanager create avd -n MyAndroidVirtualDevice-API33 -k "system-images;android-33;google_apis;x86_64"`.
+
+You can also debug on [physical Android devices](/dotnet/maui/android/device/setup).
+
+## Debug your app
+
+To debug your app, navigate to Visual Studio Code's **Run and Debug** menu and select the "Run and Debug" button. Alternatively, you can use `F5` to start a debug session. If Visual Studio Code prompts you to select a debugger, make sure you select ".NET MAUI".
+
+:::image type="content" source="media/first-app/vscode/debug-menu.png" alt-text="A screenshot of the run and debug menu in visual studio code":::
+
+The debugger will automatically choose the Debug Target and Startup Project you set in the curly brackets `{ }` menu. If you haven't selected anything, it will prompt you to choose a Debug Target.
+
+Once your app starts debugging, you can use the built-in Visual Studio Code debugging tools to set breakpoints, step throughout your code, and [more](https://code.visualstudio.com/Docs/editor/debugging).
+
+## Learn more
+
+If you face any issues with the extension, you can follow the [troubleshooting steps](./installation.md#troubleshooting), see our [known issues](./installation.md#known-limitations), or [provide feedback](./installation.md#provide-feedback).
+
 ---
 
 ## Next steps
