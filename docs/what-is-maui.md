@@ -36,7 +36,7 @@ While the BCL enables apps running on different platforms to share common busine
 
 In a .NET MAUI app, you write code that primarily interacts with the .NET MAUI API (1). .NET MAUI then directly consumes the native platform APIs (3). In addition, app code may directly exercise platform APIs (2), if required.
 
-.NET MAUI apps can be written on PC or Mac, and compiled into native app packages:
+.NET MAUI apps can be written on PC or Mac, and compile into native app packages:
 
 - Android apps built using .NET MAUI compile from C# into an intermediate language (IL) which is then just-in-time (JIT) compiled to a native assembly when the app launches.
 - iOS apps built using .NET MAUI are fully ahead-of-time (AOT) compiled from C# into native ARM assembly code.
