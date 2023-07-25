@@ -6,9 +6,9 @@ ms.date: 02/15/2023
 
 # Upgrade from Xamarin to .NET
 
-Xamarin projects can run on .NET, starting with .NET 6, after completing an upgrade process. This series of articles describe the process for upgrading your Xamarin projects to .NET.
+Xamarin projects can run on .NET, starting with .NET 6, after completing an upgrade process. The following table lists the Xamarin project types that can be upgraded to .NET:
 
-| Project Type            | Upgrade | Guide                                             |
+| Project type            | Upgrade | Guide                                             |
 |-------------------------|---------|---------------------------------------------------|
 | Xamarin.Android         | ✅       | [Upgrade Xamarin native projects](native-projects.md) |
 | Xamarin.iOS             | ✅       | [Upgrade Xamarin native projects](native-projects.md) |
