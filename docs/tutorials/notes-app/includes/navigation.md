@@ -188,7 +188,7 @@ The final change to the about page is updating the button click that opens a web
 01. In the **Solution Explorer** pane, open the _Views\\AboutPage.xaml.cs_ file.
 01. Replace the `LearnMore_Clicked` method with the following code:
 
-    :::code language="csharp" source="../snippets/navigation/csharp/Notes/Views/AboutPage.xaml.cs" id="learn_more" highlight="3":::
+    :::code language="csharp" source="../snippets/navigation/csharp/Notes/Views/AboutPage.xaml.cs" id="learn_more" highlight="3,6":::
 
 If you look at the highlighted line, the code checks if the `BindingContext` is a `Models.About` type, and if it is, assigns it's assigned to the `about` variable. The next line inside of the `if` statement opens the browser to the URL provided by the `about.MoreInfoUrl` property.
 
