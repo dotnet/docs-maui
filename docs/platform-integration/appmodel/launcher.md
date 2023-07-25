@@ -21,8 +21,7 @@ To access the launcher functionality, the following platform-specific setup is r
 <!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
 
-Android requires that you define the intent in the `Android.Manifest` to use
-deeplinks for opening other android Applications. Add the following code to the _Platforms/Android/AndroidManifest.xml_ file:
+If you want to use deep links to open other Android apps you must define an intent in the app manifest. Add the following code to the _Platforms/Android/AndroidManifest.xml_ file:
 
 ```xml
 <activity android:name="appName" android:exported="true">
@@ -36,9 +35,9 @@ deeplinks for opening other android Applications. Add the following code to the 
 </activity>
 ```
 
-The `<data>` elements are the URI schemes preregistered with your app. You can't use schemes outside of this list.
+The `<data>` elements are the URI schemes pre-registered with your app. You can't use schemes that aren't defined in the intent filter.
 
-If you wish to make your application browsable from other apps declare a `<data>` element with the `android:scheme` attribute:
+To make your app browsable from other apps declare a `<data>` element with the `android:scheme` attribute:
 
 ```xml
 <data android:scheme="appName"/>
