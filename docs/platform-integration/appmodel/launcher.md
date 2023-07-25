@@ -21,7 +21,7 @@ To access the launcher functionality, the following platform-specific setup is r
 <!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
 
-If you want to use deep links to open other Android apps you must define an intent in the app manifest. Add the following code to the _Platforms/Android/AndroidManifest.xml_ file:
+If you want to use deep links to open other Android apps you can define an intent in the app manifest. Add the following code to the _Platforms/Android/AndroidManifest.xml_ file:
 
 ```xml
 <activity android:name="appName" android:exported="true">
