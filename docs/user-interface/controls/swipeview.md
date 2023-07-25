@@ -12,7 +12,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.SwipeVi
 
 :::image type="content" source="media/swipeview/swipeview-collectionview.png" alt-text="Screenshot of SwipeView swipe items in a CollectionView.":::
 
-> [!NOTE]
+> [!IMPORTANT]
 > <xref:Microsoft.Maui.Controls.SwipeView> is designed for touch interfaces. On Windows it can only be swiped in a touch interface and will not function with a pointer device such as a mouse.
 
 <xref:Microsoft.Maui.Controls.SwipeView> defines the following properties:
