@@ -385,7 +385,7 @@ The item template dsplays the color, its friendly name, and its RGB values:
 
 :::image type="content" source="media/data-binding-basics/listview3.png" alt-text="Binding to a collection with a DataTemplate and a converter.":::
 
-The <xref:Microsoft.Maui.Controls.ListView> can handle changes that dynamically occur in the underlying data, but only if you take certain steps. If the collection of items assigned to the `ItemsSource` property of the <xref:Microsoft.Maui.Controls.ListView> changes during runtime, use an [ObservableCollection](https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1?view=net-7.0) class for these items. [ObservableCollection](https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1?view=net-7.0) implements the `INotifyCollectionChanged` interface, and <xref:Microsoft.Maui.Controls.ListView> will install a handler for the `CollectionChanged` event.
+The <xref:Microsoft.Maui.Controls.ListView> can handle changes that dynamically occur in the underlying data, but only if you take certain steps. If the collection of items assigned to the `ItemsSource` property of the <xref:Microsoft.Maui.Controls.ListView> changes during runtime, use an <xref:System.Collections.ObjectModel.ObservableCollection`1> class for these items. <xref:System.Collections.ObjectModel.ObservableCollection`1> implements the `INotifyCollectionChanged` interface, and <xref:Microsoft.Maui.Controls.ListView> will install a handler for the `CollectionChanged` event.
 
 If properties of the items themselves change during runtime, then the items in the collection should implement the `INotifyPropertyChanged` interface and signal changes to property values using the `PropertyChanged` event.
 
