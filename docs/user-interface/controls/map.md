@@ -941,7 +941,7 @@ Circle circle = new Circle
 {
     Center = new Location(37.79752, -122.40183),
     Radius = new Distance(250),
-    StrokeColor = Color.From FromArgb("#88FF0000"),
+    StrokeColor = Color.FromArgb("#88FF0000"),
     StrokeWidth = 8,
     FillColor = Color.FromArgb("#88FFC0CB")
 };
