@@ -2,9 +2,8 @@
 title: "Improve app performance"
 description: "Learn how to increase the performance of .NET MAUI apps by reducing the amount of work being performed by a CPU, and the amount of memory consumed by an app."
 ms.date: 08/01/2023
+no-loc: [ "Objective-C" ]
 ---
-
-<!-- TODO: Add https://learn.microsoft.com/en-us/xamarin/cross-platform/deploy-test/memory-perf-best-practices -->
 
 # Improve app performance
 
@@ -252,3 +251,415 @@ However, XAML that's specific to a page shouldn't be included in the app's resou
 ```
 
 For more information about app resources, see [Style apps using XAML](~/user-interface/styles/xaml.md).
+
+## Use a profiler
+
+When developing an app, it's important to only attempt to optimize code once it has been profiled. Profiling is a technique for determining where code optimizations will have the greatest effect in reducing performance problems. The profiler tracks the app's memory usage, and records the running time of methods in the app. This data helps to navigate through the execution paths of the app, and the execution cost of the code, so that the best opportunities for optimization can be discovered.
+
+.NET MAUI apps can be profiled using `dotnet-trace` on Android, iOS, and Mac, and Windows, and with PerfView on Windows. For more information, see [Profiling .NET MAUI apps](https://github.com/dotnet/maui/wiki/Profiling-.NET-MAUI-Apps).
+
+The following best practices are recommended when profiling an app:
+
+- Avoid profiling an app in a simulator, as the simulator may distort the app performance.
+- Ideally, profiling should be performed on a variety of devices, as taking performance measurements on one device won't always show the performance characteristics of other devices. However, at a minimum, profiling should be performed on a device that has the lowest anticipated specification.
+- Close all other apps to ensure that the full impact of the app being profiled is being measured, rather than the other apps.
+
+## Release IDisposable resources
+
+The `IDisposable` interface provides a mechanism for releasing resources. It provides a `Dispose` method that should be implemented to explicitly release resources. `IDisposable` is not a destructor, and should only be implemented in the following circumstances:
+
+- When the class owns unmanaged resources. Typical unmanaged resources that require releasing include files, streams, and network connections.
+- When the class owns managed `IDisposable` resources.
+
+Type consumers can then call the `IDisposable.Dispose` implementation to free resources when the instance is no longer required. There are two approaches for achieving this:
+
+- By wrapping the `IDisposable` object in a `using` statement.
+- By wrapping the call to `IDisposable.Dispose` in a `try`/`finally` block.
+
+### Wrap the IDisposable object in a using statement
+
+The following example shows how to wrap an `IDisposable` object in a `using` statement:
+
+```csharp
+public void ReadText(string filename)
+{
+    string text;
+    using (StreamReader reader = new StreamReader(filename))
+    {
+        text = reader.ReadToEnd();
+    }
+    ...
+}
+```
+
+The `StreamReader` class implements `IDisposable`, and the `using` statement provides a convenient syntax that calls the `StreamReader.Dispose` method on the `StreamReader` object prior to it going out of scope. Within the `using` block, the `StreamReader` object is read-only and cannot be reassigned. The `using` statement also ensures that the `Dispose` method is called even if an exception occurs, as the compiler implements the intermediate language (IL) for a `try`/`finally` block.
+
+### Wrap the call to IDisposable.Dispose in a try/finally block
+
+The following example shows how to wrap the call to `IDisposable.Dispose` in a `try`/`finally` block:
+
+```csharp
+public void ReadText(string filename)
+{
+    string text;
+    StreamReader reader = null;
+    try
+    {
+        reader = new StreamReader(filename);
+        text = reader.ReadToEnd();
+    }
+    finally
+    {
+        if (reader != null)
+            reader.Dispose();
+    }
+    ...
+}
+```
+
+The `StreamReader` class implements `IDisposable`, and the `finally` block calls the `StreamReader.Dispose` method to release the resource. For more information, see [IDisposable Interface](xref:System.IDisposable).
+
+## Unsubscribe from events
+
+To prevent memory leaks, events should be unsubscribed from before the subscriber object is disposed of. Until the event is unsubscribed from, the delegate for the event in the publishing object has a reference to the delegate that encapsulates the subscriber's event handler. As long as the publishing object holds this reference, garbage collection will not reclaim the subscriber object memory.
+
+The following example shows how to unsubscribe from an event:
+
+```csharp
+public class Publisher
+{
+    public event EventHandler MyEvent;
+
+    public void OnMyEventFires()
+    {
+        if (MyEvent != null)
+            MyEvent(this, EventArgs.Empty);
+    }
+}
+
+public class Subscriber : IDisposable
+{
+    readonly Publisher _publisher;
+
+    public Subscriber(Publisher publish)
+    {
+        _publisher = publish;
+        _publisher.MyEvent += OnMyEventFires;
+    }
+
+    void OnMyEventFires(object sender, EventArgs e)
+    {
+        Debug.WriteLine("The publisher notified the subscriber of an event");
+    }
+
+    public void Dispose()
+    {
+        _publisher.MyEvent -= OnMyEventFires;
+    }
+}
+```
+
+The `Subscriber` class unsubscribes from the event in its `Dispose` method.
+
+Reference cycles can also occur when using event handlers and lambda syntax, as lambda expressions can reference and keep objects alive. Therefore, a reference to the anonymous method can be stored in a field and used to unsubscribe from the event, as shown in the following example:
+
+```csharp
+public class Subscriber : IDisposable
+{
+    readonly Publisher _publisher;
+    EventHandler _handler;
+
+    public Subscriber(Publisher publish)
+    {
+        _publisher = publish;
+        _handler = (sender, e) =>
+        {
+            Debug.WriteLine("The publisher notified the subscriber of an event");
+        };
+        _publisher.MyEvent += _handler;
+    }
+
+    public void Dispose()
+    {
+        _publisher.MyEvent -= _handler;
+    }
+}
+
+```
+
+The `_handler` field maintains the reference to the anonymous method, and is used for event subscription and unsubscribe.
+
+## Avoid strong circular references on iOS and Mac Catalyst
+
+In some situations it's possible to create strong reference cycles that could prevent objects from having their memory reclaimed by the garbage collector. For example, consider the case where an [`NSObject`](xref:Foundation.NSObject)-derived subclass, such as a class that inherits from [`UIView`](xref:UIKit.UIView), is added to an `NSObject`-derived container and is strongly referenced from Objective-C, as shown in the following example:
+
+```csharp
+class Container : UIView
+{
+    public void Poke()
+    {
+        // Call this method to poke this object
+    }
+}
+
+class MyView : UIView
+{
+    Container _parent;
+
+    public MyView(Container parent)
+    {
+        _parent = parent;
+    }
+
+    void PokeParent()
+    {
+        _parent.Poke();
+    }
+}
+
+var container = new Container();
+container.AddSubview(new MyView(container));
+```
+
+When this code creates the `Container` instance, the C# object will have a strong reference to an Objective-C object. Similarly, the `MyView` instance will also have a strong reference to an Objective-C object.
+
+In addition, the call to `container.AddSubview` will increase the reference count on the unmanaged `MyView` instance. When this happens, the .NET iOS runtime creates a `GCHandle` instance to keep the `MyView` object in managed code alive, because there is no guarantee that any managed objects will keep a reference to it. From a managed code perspective, the `MyView` object would be reclaimed after the [`AddSubview`](xref:UIKit.UIView.AddSubview(UIKit.UIView)) call were it not for the `GCHandle`.
+
+The unmanaged `MyView` object will have a `GCHandle` pointing to the managed object, known as a *strong link*. The managed object will contain a reference to the `Container` instance. In turn the `Container` instance will have a managed reference to the `MyView` object.
+
+In circumstances where a contained object keeps a link to its container, there are several options available to deal with the circular reference:
+
+- Avoid the circular reference by keeping a weak reference to the container.
+- Call `Dispose` on the objects.
+- Manually break the cycle by setting the link to the container to `null`.
+- Manually remove the contained object from the container.
+
+### Use weak references
+
+One way to prevent a cycle is to use a weak reference from the child to the parent. For example, the above code could be as shown in the following example:
+
+```csharp
+class Container : UIView
+{
+    public void Poke()
+    {
+        // Call this method to poke this object
+    }
+}
+
+class MyView : UIView
+{
+    WeakReference<Container> _weakParent;
+
+    public MyView(Container parent)
+    {
+        _weakParent = new WeakReference<Container>(parent);
+    }
+
+    void PokeParent()
+    {
+        if (weakParent.TryGetTarget (out var parent))
+            parent.Poke();
+    }
+}
+
+var container = new Container();
+container.AddSubview(new MyView container));
+```
+
+Here, the contained object will not keep the parent alive. However, the parent keeps the child alive through the call to `container.AddSubView`.
+
+This also happens in iOS APIs that use the delegate or data source pattern, where a peer class contains the implementation. For example, when setting the [`Delegate`](xref:UIKit.UITableView.Delegate*) property or the [`DataSource`](xref:UIKit.UITableView.DataSource*) in the [`UITableView`](xref:UIKit.UITableView) class.
+
+In the case of classes that are created purely for the sake of implementing a protocol, for example the [`IUITableViewDataSource`](xref:UIKit.IUITableViewDataSource), what you can do is instead of creating a subclass, you can just implement the interface in the class and override the method, and assign the `DataSource` property to `this`.
+
+#### Weak attribute
+
+Like `WeakReference <T>`, `[Weak]` can be used to break strong circular references but with less code.
+
+Consider the following example, which uses `WeakReference <T>`:
+
+```csharp
+public class MyFooDelegate : FooDelegate
+{
+    WeakReference<MyViewController> _controller;
+    public MyFooDelegate(MyViewController ctrl) => _controller = new WeakReference<MyViewController>(ctrl);
+    public void CallDoSomething()
+    {
+        MyViewController ctrl;
+        if (_controller.TryGetTarget(out ctrl))
+        {
+            ctrl.DoSomething();
+        }
+    }
+}
+```
+
+The equivalent code using `[Weak]` is more concise:
+
+```csharp
+public class MyFooDelegate : FooDelegate
+{
+    [Weak] MyViewController _controller;
+    public MyFooDelegate(MyViewController ctrl) => _controller = ctrl;
+    public void CallDoSomething() => _controller.DoSomething();
+}
+```
+
+The following is another example of using `[Weak]` in context of the delegation pattern:
+
+```csharp
+public class MyViewController : UIViewController
+{
+    WKWebView _webView;
+
+    protected MyViewController(IntPtr handle) : base(handle) { }
+
+    public override void ViewDidLoad()
+    {
+        base.ViewDidLoad();
+        _webView = new WKWebView(View.Bounds, new WKWebViewConfiguration());
+        _webView.UIDelegate = new UIDelegate(this);
+        View.AddSubview(_webView);
+    }
+}
+
+public class UIDelegate : WKUIDelegate
+{
+    [Weak] MyViewController _controller;
+
+    public UIDelegate(MyViewController ctrl) => _controller = ctrl;
+
+    public override void RunJavaScriptAlertPanel(WKWebView webView, string message, WKFrameInfo frame, Action completionHandler)
+    {
+        var msg = $"Hello from: {_controller.Title}";
+        var alertController = UIAlertController.Create(null, msg, UIAlertControllerStyle.Alert);
+        alertController.AddAction(UIAlertAction.Create ("Ok", UIAlertActionStyle.Default, null));
+        _controller.PresentViewController (alertController, true, null);
+        completionHandler();
+    }
+}
+```
+
+### Dispose of objects with strong references
+
+If a strong reference exists and it's difficult to remove the dependency, make a `Dispose` method clear the parent pointer.
+
+For containers, override the `Dispose` method to remove the contained objects, as shown in the following example:
+
+```csharp
+class MyContainer : UIView
+{
+    public override void Dispose()
+    {
+        // Brute force, remove everything
+        foreach (var view in Subviews)
+        {
+              view.RemoveFromSuperview();
+        }
+        base.Dispose();
+    }
+}
+```
+
+For a child object that keeps strong reference to its parent, clear the reference to the parent in the `Dispose` implementation:
+
+```csharp
+class MyChild : UIView
+{
+    MyContainer _container;
+
+    public MyChild(MyContainer container)
+    {
+        _container = container;
+    }
+
+    public override void Dispose()
+    {
+        _container = null;
+    }
+}
+```
+
+## Delay the cost of creating objects
+
+Lazy initialization can be used to defer the creation of an object until it's first used. This technique is primarily used to improve performance, avoid computation, and reduce memory requirements.
+
+Consider using lazy initialization for objects that are expensive to create in the following scenarios:
+
+- The app might not use the object.
+- Other expensive operations must complete before the object is created.
+
+The `Lazy<T>` class is used to define a lazy-initialized type, as shown in the following example:
+
+```csharp
+void ProcessData(bool dataRequired = false)
+{
+    Lazy<double> data = new Lazy<double>(() =>
+    {
+        return ParallelEnumerable.Range(0, 1000)
+                     .Select(d => Compute(d))
+                     .Aggregate((x, y) => x + y);
+    });
+
+    if (dataRequired)
+    {
+        if (data.Value > 90)
+        {
+            ...
+        }
+    }
+}
+
+double Compute(double x)
+{
+    ...
+}
+```
+
+Lazy initialization occurs the first time the `Lazy<T>.Value` property is accessed. The wrapped type is created and returned on first access, and stored for any future access.
+
+For more information about lazy initialization, see [Lazy Initialization](/dotnet/framework/performance/lazy-initialization).
+
+## Reduce the size of the app
+
+When .NET MAUI builds your app, a linker called *ILLink* can be used to reduce the overall size of the app. ILLink reduces the size by analyzing the intermediate code produced by the compiler. It removes unused methods, properties, fields, events, structs, and classes to produce an app that contains only code and assembly dependencies that are necessary to run the app.
+
+For more information about configuring the linker behavior, see [Linking an Android app](~/android/linking.md), [Linking an iOS app](~/ios/linking.md), and [Linking a Mac Catalyst app](~/mac-catalyst/linking.md).
+
+### Additional size reduction techniques
+
+There are a wide variety of CPU architectures that power mobile devices. Therefore, Xamarin.iOS and Xamarin.Android produce *fat binaries* that contain a compiled version of the app for each CPU architecture. This ensures that a mobile app can run on a device regardless of the CPU architecture.
+
+The following steps can be used to further reduce the app executable size:
+
+- Ensure that a Release build is produced.
+- Reduce the number of architectures that the app is built for, to avoid a FAT binary being produced.
+- Ensure that the LLVM compiler is being used, to generate a more optimized executable.
+- Reduce the app's managed code size. This can be accomplished by enabling the linker on every assembly (*Link All* for iOS projects, and *Link all assemblies* for Android projects).
+
+## Optimize image resources
+
+Images are some of the most expensive resources that s use, and are often captured at high resolutions. While this creates vibrant images full of detail, appss that display such images typically require more CPU usage to decode the image and more memory to store the decoded image. It is wasteful to decode a high resolution image in memory when it will be scaled down to a smaller size for display. Instead, reduce the CPU usage and memory footprint by creating multiple resolution versions of stored images that are close to the predicted display sizes. For example, an image displayed in a list view should most likely be a lower resolution than an image displayed at full-screen. In addition, scaled down versions of high resolution images can be loaded to efficiently display them with minimal memory impact.
+
+Regardless of the image resolution, displaying image resources can greatly increase the app's memory footprint. Therefore, they should only be created when required and should be released as soon as the app no longer requires them.
+
+## Reduce the app activation period
+
+All apps have an *activation period*, which is the time between when the app is started and when the app is ready to use. This activation period provides users with their first impression of the app, and so it's important to reduce the activation period and the user's perception of it, in order for them to gain a favorable first impression of the app.
+
+Before an app displays its initial UI, it should provide a splash screen to indicate to the user that the app is starting. If the app can't quickly display its initial UI, the splash screen should be used to inform the user of progress through the activation period, to offer reassurance that the app hasn't hung. This reassurance could be a progress bar, or similar control.
+
+During the activation period, apps execute activation logic, which often includes the loading and processing of resources. The activation period can be reduced by ensuring that required resources are packaged within the app, instead of being retrieved remotely. For example, in some circumstances it may be appropriate during the activation period to load locally stored placeholder data. Then, once the initial UI is displayed, and the user is able to interact with the app, the placeholder data can be progressively replaced from a remote source. In addition, the app's activation logic should only perform work that's required to let the user start using the app. This can help if it delays loading additional assemblies, as assemblies are loaded the first time they are used.
+
+## Reduce web service communication
+
+Connecting to a web service from an app can have an impact on app performance. For example, an increased use of network bandwidth will result in an increased usage of the device's battery. In addition, users may be using the app in a bandwidth limited environment. Therefore, it's sensible to limit the bandwidth utilization between an app and a web service.
+
+One approach to reducing an app's bandwidth utilization is to compress data before transferring it over a network. However, the additional CPU usage from the compression process can also result in an increased battery usage. Therefore, this tradeoff should be carefully evaluated before deciding whether to move compressed data over a network.
+
+Another issue to consider is the format of the data that moves between an app and a web service. The two primary formats are Extensible Markup Language (XML) and JavaScript Object Notation (JSON). XML is a text-based data-interchange format that produces relatively large data payloads, because it contains a large number of formatting characters. JSON is a text-based data-interchange format that produces compact data payloads, which results in reduced bandwidth requirements when sending data and receiving data. Therefore, JSON is often the preferred format for mobile apps.
+
+It's recommended to use data transfer objects (DTOs) when transferring data between an app  and a web service. A DTO contains a set of data for transferring across the network. By utilizing DTOs, more data can be transmitted in a single remote call, which can help to reduce the number of remote calls made by the app. Generally, a remote call carrying a larger data payload takes a similar amount of time as a call that only carries a small data payload.
+
+Data retrieved from the web service should be cached locally, with the cached data being utilized rather than repeatedly retrieved from the web service. However, when adopting this approach a suitable caching strategy should also be implemented to update data in the local cache if it changes in the web service.
