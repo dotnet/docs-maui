@@ -42,7 +42,7 @@ The new project should be given the same project and package name as your existi
 ```
 
 > [!IMPORTANT]
-> The target framework moniker (TFM) is what denotes the project as using .NET, in this case .NET 6. Valid TFMs for equivalent Xamarin native projects are net7.0-android, net7.0-ios, net7.0-macos, net7.0-tvos.
+> The target framework moniker (TFM) is what denotes the project as using .NET, in this case .NET 7. Valid TFMs for equivalent Xamarin native projects are net7.0-android, net7.0-ios, net7.0-macos, net7.0-tvos.
 
 Launch the app to confirm that your development environment can build the app.
 
