@@ -109,13 +109,12 @@ This is wasteful because unnecessary layout calculations are performed. Instead,
 To obtain the best possible layout performance, follow these guidelines:
 
 - Reduce the depth of layout hierarchies by specifying [`Margin`](xref:Microsoft.Maui.Controls.View.Margin) property values, allowing the creation of layouts with fewer wrapping views. For more information, see [Align and position controls](~/user-interface/align-position.md).
-- When using a [`Grid`](xref:Microsoft.Maui.Controls.Grid), try to ensure that as few rows and columns as possible are set to [`Auto`](xref:Microsoft.Maui.Controls.GridLength.Auto) size. Each auto-sized row or column will cause the layout engine to perform additional layout calculations. Instead, use fixed size rows and columns if possible. Alternatively, set rows and columns to occupy a proportional amount of space with the [`GridUnitType.Star`](xref:Microsoft.Maui.Controls.GridUnitType.Star) enumeration value, provided that the parent tree follows these layout guidelines.
+- When using a [`Grid`](xref:Microsoft.Maui.Controls.Grid), try to ensure that as few rows and columns as possible are set to [`Auto`](xref:Microsoft.Maui.GridLength.Auto) size. Each auto-sized row or column will cause the layout engine to perform additional layout calculations. Instead, use fixed size rows and columns if possible. Alternatively, set rows and columns to occupy a proportional amount of space with the [`GridUnitType.Star`](xref:Microsoft.Maui.GridUnitType.Star) enumeration value, provided that the parent tree follows these layout guidelines.
 - Don't set the [`VerticalOptions`](xref:Microsoft.Maui.Controls.View.VerticalOptions) and [`HorizontalOptions`](xref:Microsoft.Maui.Controls.View.VerticalOptions) properties of a layout unless required. The default value of [`LayoutOptions.Fill`](xref:Microsoft.Maui.Controls.LayoutOptions.Fill) allows for the best layout optimization. Changing these properties has a cost and consumes memory, even when setting them to the default values.
 - When using an [`AbsoluteLayout`](xref:Microsoft.Maui.Controls.AbsoluteLayout), avoid using the [`AbsoluteLayout.AutoSize`](xref:Microsoft.Maui.Controls.AbsoluteLayout.AutoSize) property whenever possible.
-- Avoid calling any of the methods of the [`Layout`](xref:Microsoft.Maui.Layout) class, as they result in expensive layout calculations being performed. Instead, it's likely that the desired layout behavior can be obtained by setting the [`TranslationX`](xref:Microsoft.Maui.Controls.VisualElement.TranslationX) and [`TranslationY`](xref:Microsoft.Maui.Controls.VisualElement.TranslationY) properties. Alternatively, subclass the [`Layout<View>`](xref:Microsoft.Maui.Layout`1) class to achieve the desired layout behavior.
 - Don't update any [`Label`](xref:Microsoft.Maui.Controls.Label) objects more frequently than required, as the change of size of the label can result in the entire screen layout being re-calculated.
 - Don't set the [`Label.VerticalTextAlignment`](xref:Microsoft.Maui.Controls.Label.VerticalTextAlignment) property unless required.
-- Set the [`LineBreakMode`](xref:Microsoft.Maui.Controls.Label.LineBreakMode) of any [`Label`](xref:Microsoft.Maui.Controls.Label) objects to [`NoWrap`](xref:Microsoft.Maui.Controls.LineBreakMode.NoWrap) whenever possible.
+- Set the [`LineBreakMode`](xref:Microsoft.Maui.Controls.Label.LineBreakMode) of any [`Label`](xref:Microsoft.Maui.Controls.Label) objects to [`NoWrap`](xref:Microsoft.Maui.LineBreakMode.NoWrap) whenever possible.
 
 ## Use asynchronous programming
 
@@ -138,7 +137,7 @@ The overall responsiveness of your app can be enhanced, and performance bottlene
 ### UI
 
 - Call an asynchronous version of an API, if it's available. This will keep the UI thread unblocked, which will help to improve the user's experience with the app.
-- Update UI elements with data from asynchronous operations on the UI thread, to avoid exceptions being thrown. However, updates to the `ListView.ItemsSource` property will automatically be marshaled to the UI thread. For information about determining if code is running on the UI thread, see [Create a thread on the UI thread](~/platform-integration/appmodel/mainthread.md).
+- Update UI elements with data from asynchronous operations on the UI thread, to avoid exceptions being thrown. However, updates to the `ListView.ItemsSource` property will automatically be marshaled to the UI thread. For information about determining if code is running on the UI thread, see [Create a thread on the UI thread](~/platform-integration/appmodel/main-thread.md).
 
     > [!IMPORTANT]
     > Any control properties that are updated via data binding will be automatically marshaled to the UI thread.
