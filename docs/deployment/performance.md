@@ -118,7 +118,6 @@ This is wasteful because unnecessary layout calculations are performed. Instead,
 
 To obtain the best possible layout performance, follow these guidelines:
 
-- Reduce the depth of layout hierarchies by specifying [`Margin`](xref:Microsoft.Maui.Controls.View.Margin) property values, allowing the creation of layouts with fewer wrapping views. For more information, see [Align and position controls](~/user-interface/align-position.md).
 - When using a [`Grid`](xref:Microsoft.Maui.Controls.Grid), try to ensure that as few rows and columns as possible are set to [`Auto`](xref:Microsoft.Maui.GridLength.Auto) size. Each auto-sized row or column will cause the layout engine to perform additional layout calculations. Instead, use fixed size rows and columns if possible. Alternatively, set rows and columns to occupy a proportional amount of space with the [`GridUnitType.Star`](xref:Microsoft.Maui.GridUnitType.Star) enumeration value, provided that the parent tree follows these layout guidelines.
 - Don't set the [`VerticalOptions`](xref:Microsoft.Maui.Controls.View.VerticalOptions) and [`HorizontalOptions`](xref:Microsoft.Maui.Controls.View.VerticalOptions) properties of a layout unless required. The default value of [`LayoutOptions.Fill`](xref:Microsoft.Maui.Controls.LayoutOptions.Fill) allows for the best layout optimization. Changing these properties has a cost and consumes memory, even when setting them to the default values.
 - When using an [`AbsoluteLayout`](xref:Microsoft.Maui.Controls.AbsoluteLayout), avoid using the [`AbsoluteLayout.AutoSize`](xref:Microsoft.Maui.Controls.AbsoluteLayout.AutoSize) property whenever possible.
@@ -128,9 +127,11 @@ To obtain the best possible layout performance, follow these guidelines:
 
 ## Use asynchronous programming
 
-The overall responsiveness of your app can be enhanced, and performance bottlenecks often avoided, by using asynchronous programming. In .NET, the [Task-based Asynchronous Pattern (TAP)](/dotnet/standard/asynchronous-programming-patterns/task-based-asynchronous-pattern-tap) is the recommended design pattern for asynchronous operations. However, incorrect use of the TAP can result in unperformant apps. Therefore, the following guidelines should be followed when using the TAP.
+The overall responsiveness of your app can be enhanced, and performance bottlenecks often avoided, by using asynchronous programming. In .NET, the [Task-based Asynchronous Pattern (TAP)](/dotnet/standard/asynchronous-programming-patterns/task-based-asynchronous-pattern-tap) is the recommended design pattern for asynchronous operations. However, incorrect use of the TAP can result in unperformant apps.
 
 ### Fundamentals
+
+The following general guidelines should be followed when using the TAP:
 
 - Understand the task lifecycle, which is represented by the `TaskStatus` enumeration. For more information, see [The meaning of TaskStatus](https://devblogs.microsoft.com/pfxteam/the-meaning-of-taskstatus/) and [Task status](/dotnet/standard/asynchronous-programming-patterns/task-based-asynchronous-pattern-tap#task-status).
 - Use the `Task.WhenAll` method to asynchronously wait for multiple asynchronous operations to finish, rather than individually `await` a series of asynchronous operations. For more information, see [Task.WhenAll](/dotnet/standard/asynchronous-programming-patterns/consuming-the-task-based-asynchronous-pattern#taskwhenall).
@@ -140,11 +141,12 @@ The overall responsiveness of your app can be enhanced, and performance bottlene
 - Avoid trying to create asynchronous constructors. Instead, use lifecycle events or separate initialization logic to correctly `await` any initialization. For more information, see [Async Constructors](https://blog.stephencleary.com/2013/01/async-oop-2-constructors.html) on blog.stephencleary.com.
 - Use the lazy task pattern to avoid waiting for asynchronous operations to complete during app startup. For more information, see [AsyncLazy](https://devblogs.microsoft.com/pfxteam/asynclazyt/).
 - Create a task wrapper for existing asynchronous operations, that don't use the TAP, by creating `TaskCompletionSource<T>` objects. These objects gain the benefits of `Task` programmability, and enable you to control the lifetime and completion of the associated `Task`. For more information, see [The Nature of TaskCompletionSource](https://devblogs.microsoft.com/pfxteam/the-nature-of-taskcompletionsourcetresult/).
-
 - Return a `Task` object, instead of returning an awaited `Task` object, when there's no need to process the result of an asynchronous operation. This is more performant due to less context switching being performed.
 - Use the Task Parallel Library (TPL) Dataflow library in scenarios such as processing data as it becomes available, or when you have multiple operations that must communicate with each other asynchronously. For more information, see [Dataflow (Task Parallel Library)](/dotnet/standard/parallel-programming/dataflow-task-parallel-library).
 
 ### UI
+
+The following guidelines should be followed when using the TAP with UI controls:
 
 - Call an asynchronous version of an API, if it's available. This will keep the UI thread unblocked, which will help to improve the user's experience with the app.
 - Update UI elements with data from asynchronous operations on the UI thread, to avoid exceptions being thrown. However, updates to the `ListView.ItemsSource` property will automatically be marshaled to the UI thread. For information about determining if code is running on the UI thread, see [Create a thread on the UI thread](~/platform-integration/appmodel/main-thread.md).
@@ -153,6 +155,8 @@ The overall responsiveness of your app can be enhanced, and performance bottlene
     > Any control properties that are updated via data binding will be automatically marshaled to the UI thread.
 
 ### Error handling
+
+The following error handling guidelines should be followed when using the TAP:
 
 - Learn about asynchronous exception handling. Unhandled exceptions that are thrown by code that's running asynchronously are propagated back to the calling thread, except in certain scenarios. For more information, see [Exception handling (Task Parallel Library)](/dotnet/standard/parallel-programming/exception-handling-task-parallel-library).
 - Avoid creating `async void` methods, and instead create `async Task` methods. These enable easier error-handling, composability, and testability. The exception to this guideline is asynchronous event handlers, which must return `void`. For more information, see [Avoid Async Void](/archive/msdn-magazine/2013/march/async-await-best-practices-in-asynchronous-programming#avoid-async-void).
