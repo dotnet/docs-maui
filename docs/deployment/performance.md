@@ -204,17 +204,6 @@ When .NET MAUI builds your app, a linker called *ILLink* can be used to reduce t
 
 For more information about configuring the linker behavior, see [Linking an Android app](~/android/linking.md), [Linking an iOS app](~/ios/linking.md), and [Linking a Mac Catalyst app](~/mac-catalyst/linking.md).
 
-### Additional size reduction techniques
-
-There are a wide variety of CPU architectures that power mobile devices. Therefore, .NET Android and .NET iOS produce *fat binaries* that contain a compiled version of the app for each CPU architecture. This ensures that a mobile app can run on a device regardless of the CPU architecture.
-
-The following steps can be used to further reduce the app executable size:
-
-- Ensure that a Release build is produced.
-- Reduce the number of architectures that the app is built for, to avoid a FAT binary being produced.
-- Ensure that the LLVM compiler is being used, to generate a more optimized executable.
-- Reduce the app's managed code size. This can be accomplished by configuring the linker on every assembly.
-
 ## Reduce the app activation period
 
 All apps have an *activation period*, which is the time between when the app is started and when the app is ready to use. This activation period provides users with their first impression of the app, and so it's important to reduce the activation period and the user's perception of it, in order for them to gain a favorable first impression of the app.
