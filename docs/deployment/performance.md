@@ -114,17 +114,6 @@ This is wasteful because unnecessary layout calculations are performed. Instead,
 </ContentPage>
 ```
 
-## Optimize layout performance
-
-To obtain the best possible layout performance, follow these guidelines:
-
-- When using a [`Grid`](xref:Microsoft.Maui.Controls.Grid), try to ensure that as few rows and columns as possible are set to [`Auto`](xref:Microsoft.Maui.GridLength.Auto) size. Each auto-sized row or column will cause the layout engine to perform additional layout calculations. Instead, use fixed size rows and columns if possible. Alternatively, set rows and columns to occupy a proportional amount of space with the [`GridUnitType.Star`](xref:Microsoft.Maui.GridUnitType.Star) enumeration value, provided that the parent tree follows these layout guidelines.
-- Don't set the [`VerticalOptions`](xref:Microsoft.Maui.Controls.View.VerticalOptions) and [`HorizontalOptions`](xref:Microsoft.Maui.Controls.View.VerticalOptions) properties of a layout unless required. The default value of [`LayoutOptions.Fill`](xref:Microsoft.Maui.Controls.LayoutOptions.Fill) allows for the best layout optimization. Changing these properties has a cost and consumes memory, even when setting them to the default values.
-- When using an [`AbsoluteLayout`](xref:Microsoft.Maui.Controls.AbsoluteLayout), avoid using the [`AbsoluteLayout.AutoSize`](xref:Microsoft.Maui.Controls.AbsoluteLayout.AutoSize) property whenever possible.
-- Don't update any [`Label`](xref:Microsoft.Maui.Controls.Label) objects more frequently than required, as the change of size of the label can result in the entire screen layout being re-calculated.
-- Don't set the [`Label.VerticalTextAlignment`](xref:Microsoft.Maui.Controls.Label.VerticalTextAlignment) property unless required.
-- Set the [`LineBreakMode`](xref:Microsoft.Maui.Controls.Label.LineBreakMode) of any [`Label`](xref:Microsoft.Maui.Controls.Label) objects to [`NoWrap`](xref:Microsoft.Maui.LineBreakMode.NoWrap) whenever possible.
-
 ## Optimize image resources
 
 Images are some of the most expensive resources that apps use, and are often captured at high resolutions. While this creates vibrant images full of detail, apps that display such images typically require more CPU usage to decode the image and more memory to store the decoded image. It is wasteful to decode a high resolution image in memory when it will be scaled down to a smaller size for display. Instead, reduce the CPU usage and memory footprint by creating versions of stored images that are close to the predicted display sizes. For example, an image displayed in a list view should most likely be a lower resolution than an image displayed at full-screen.
