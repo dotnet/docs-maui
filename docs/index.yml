@@ -178,6 +178,8 @@ landingContent:
         links:
           - text: Hot restart
             url: ios/hot-restart.md
+          - text: Improve app performance
+            url: deployment/performance.md
           - text: Project configuration
             url: deployment/visual-studio-properties.md
           - text: Publish Android apps
