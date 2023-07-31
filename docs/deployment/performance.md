@@ -179,7 +179,7 @@ When downloading an image for display with the [`ImageSource.FromUri`](xref:Micr
 
 ## Reduce the visual tree size
 
-Reducing the number of elements on a page will make the page render faster. There are two main techniques for achieving this. The first is to hide elements that aren't visible. The [`IsVisible`](xref:Microsoft.Maui.Controls.IsVisible) property of each element determines whether the element should be part of the visual tree or not. Therefore, if an element isn't visible because it's hidden behind other elements, either remove the element or set its `IsVisible` property to `false`.
+Reducing the number of elements on a page will make the page render faster. There are two main techniques for achieving this. The first is to hide elements that aren't visible. The [`IsVisible`](xref:Microsoft.Maui.Controls.VisualElement.IsVisible) property of each element determines whether the element should be part of the visual tree or not. Therefore, if an element isn't visible because it's hidden behind other elements, either remove the element or set its `IsVisible` property to `false`.
 
 The second technique is to remove unnecessary elements. For example, the following shows a page layout containing multiple [`Label`](xref:Microsoft.Maui.Controls.Label) elements:
 
