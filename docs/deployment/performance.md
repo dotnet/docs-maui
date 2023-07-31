@@ -11,6 +11,18 @@ Poor app performance presents itself in many ways. It can make an app seem unres
 
 There are many techniques for increasing the performance, and perceived performance, of .NET Multi-platform App UI (.NET MAUI) apps. Collectively these techniques can greatly reduce the amount of work being performed by a CPU, and the amount of memory consumed by an app.
 
+## Use a profiler
+
+When developing an app, it's important to only attempt to optimize code once it has been profiled. Profiling is a technique for determining where code optimizations will have the greatest effect in reducing performance problems. The profiler tracks the app's memory usage, and records the running time of methods in the app. This data helps to navigate through the execution paths of the app, and the execution cost of the code, so that the best opportunities for optimization can be discovered.
+
+.NET MAUI apps can be profiled using `dotnet-trace` on Android, iOS, and Mac, and Windows, and with PerfView on Windows. For more information, see [Profiling .NET MAUI apps](https://github.com/dotnet/maui/wiki/Profiling-.NET-MAUI-Apps).
+
+The following best practices are recommended when profiling an app:
+
+- Avoid profiling an app in a simulator, as the simulator may distort the app performance.
+- Ideally, profiling should be performed on a variety of devices, as taking performance measurements on one device won't always show the performance characteristics of other devices. However, at a minimum, profiling should be performed on a device that has the lowest anticipated specification.
+- Close all other apps to ensure that the full impact of the app being profiled is being measured, rather than the other apps.
+
 ## Use compiled bindings
 
 Compiled bindings improve data binding performance in .NET MAUI apps by resolving binding expressions at compile time, rather than at runtime with reflection. Compiling a binding expression generates compiled code that typically resolves a binding 8-20 times quicker than using a classic binding. For more information, see [Compiled bindings](~/fundamentals/data-binding/compiled-bindings.md).
@@ -31,7 +43,6 @@ A layout that's capable of displaying multiple children, but that only has a sin
         <Image Source="waterfront.jpg" />
     </VerticalStackLayout>
 </ContentPage>
-
 ```
 
 This is wasteful and the [`VerticalStackLayout`](xref:Microsoft.Maui.Controls.VerticalStackLayout) element should be removed, as shown in the following example:
@@ -150,121 +161,6 @@ The overall responsiveness of your app can be enhanced, and performance bottlene
 - Use *continuation tasks* for functionality such as handling exceptions thrown by the previous asynchronous operation, and canceling a continuation either before it starts or while it is running. For more information, see [Chaining Tasks by Using Continuous Tasks](/dotnet/standard/parallel-programming/chaining-tasks-by-using-continuation-tasks).
 - Use an asynchronous `ICommand` implementation when asynchronous operations are invoked from the `ICommand`. This ensures that any exceptions in the asynchronous command logic can be handled. For more information, see [Async Programming: Patterns for Asynchronous MVVM Applications: Commands](/archive/msdn-magazine/2014/april/async-programming-patterns-for-asynchronous-mvvm-applications-commands).
 
-## Choose a dependency injection container carefully
-
-Dependency injection containers introduce additional performance constraints into mobile apps. Registering and resolving types with a container has a performance cost because of the container's use of reflection for creating each type, especially if dependencies are being reconstructed for each page navigation in the app. If there are many or deep dependencies, the cost of creation can increase significantly. In addition, type registration, which usually occurs during app startup, can have a noticeable impact on startup time, dependent upon the container being used.
-
-As an alternative, dependency injection can be made more performant by implementing it manually using factories.
-
-## Create Shell apps
-
-.NET MAUI Shell apps provide an opinionated navigation experience based on flyouts and tabs. If your app user experience can be implemented with Shell, it is beneficial to do so. Shell apps help to avoid a poor startup experience, because pages are created on demand in response to navigation rather than at app startup, which occurs with apps that use a [`TabbedPage'](xref:Microsoft.Maui.Controls.TabbedPage). For more information, see [Shell overview](~/fundamentals/shell/index.md).
-
-## Optimize ListView performance
-
-When using [`ListView`](xref:Microsoft.Maui.Controls.ListView), there are a number of user experiences that should be optimized:
-
-- *Initialization* – the time interval starting when the control is created, and ending when items are shown on screen.
-- *Scrolling* – the ability to scroll through the list and ensure that the UI doesn't lag behind touch gestures.
-- *Interaction* for adding, deleting, and selecting items.
-
-The [`ListView`](xref:Microsoft.Maui.Controls.ListView) control requires an app to supply data and cell templates. How this is achieved will have a large impact on the performance of the control. For more information, see [Cache data](~/user-interface/controls/listview.md#cache-data).
-
-## Optimize image resources
-
-Images are some of the most expensive resources that apps use, and are often captured at high resolutions. While this creates vibrant images full of detail, apps that display such images typically require more CPU usage to decode the image and more memory to store the decoded image. It is wasteful to decode a high resolution image in memory when it will be scaled down to a smaller size for display. Instead, reduce the CPU usage and memory footprint by creating versions of stored images that are close to the predicted display sizes. For example, an image displayed in a list view should most likely be a lower resolution than an image displayed at full-screen.
-
-In addition, images should only be created when required and should be released as soon as the app no longer requires them. For example, if an app is displaying an image by reading its data from a stream, ensure that stream is created only when it's required, and ensure that the stream is released when it's no longer required. This can be achieved by creating the stream when the page is created, or when the [`Page.Appearing`](xref:Microsoft.Maui.Controls.Page.Appearing) event fires, and then disposing of the stream when the [`Page.Disappearing`](xref:Microsoft.Maui.Controls.Page.Disappearing) event fires.
-
-When downloading an image for display with the [`ImageSource.FromUri`](xref:Microsoft.Maui.Controls.ImageSource.FromUri(System.Uri)) method, ensure the downloaded image is cached for a suitable amount of time. For more information, see [Image caching](~/user-interface/controls/image.md#image-caching).
-
-## Reduce the visual tree size
-
-Reducing the number of elements on a page will make the page render faster. There are two main techniques for achieving this. The first is to hide elements that aren't visible. The [`IsVisible`](xref:Microsoft.Maui.Controls.VisualElement.IsVisible) property of each element determines whether the element should be part of the visual tree or not. Therefore, if an element isn't visible because it's hidden behind other elements, either remove the element or set its `IsVisible` property to `false`.
-
-The second technique is to remove unnecessary elements. For example, the following shows a page layout containing multiple [`Label`](xref:Microsoft.Maui.Controls.Label) elements:
-
-```xaml
-<VerticalStackLayout>
-    <VerticalStackLayout Padding="20,20,0,0">
-        <Label Text="Hello" />
-    </VerticalStackLayout>
-    <VerticalStackLayout Padding="20,20,0,0">
-        <Label Text="Welcome to the App!" />
-    </VerticalStackLayout>
-    <VerticalStackLayout Padding="20,20,0,0">
-        <Label Text="Downloading Data..." />
-    </VerticalStackLayout>
-</VerticalStackLayout>
-```
-
-The same page layout can be maintained with a reduced element count, as shown in the following example:
-
-```xaml
-<VerticalStackLayout Padding="20,35,20,20"
-                     Spacing="25">
-    <Label Text="Hello" />
-    <Label Text="Welcome to the App!" />
-    <Label Text="Downloading Data..." />
-</VerticalStackLayout>
-```
-
-## Reduce the application resource dictionary size
-
-Any resources that are used throughout the app should be stored in the app's resource dictionary to avoid duplication. This will help to reduce the amount of XAML that has to be parsed throughout the app. The following example shows the `HeadingLabelStyle` resource, which is used app wide, and so is defined in the app's resource dictionary:
-
-```xaml
-<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MyMauiApp.App">
-     <Application.Resources>
-        <Style x:Key="HeadingLabelStyle"
-               TargetType="Label">
-            <Setter Property="HorizontalOptions"
-                    Value="Center" />
-            <Setter Property="FontSize"
-                    Value="Large" />
-            <Setter Property="TextColor"
-                    Value="Red" />
-        </Style>
-     </Application.Resources>
-</Application>
-```
-
-However, XAML that's specific to a page shouldn't be included in the app's resource dictionary, as the resources will then be parsed at app startup instead of when required by a page. If a resource is used by a page that's not the startup page, it should be placed in the resource dictionary for that page, therefore helping to reduce the XAML that's parsed when the app starts. The following example shows the `HeadingLabelStyle` resource, which is only on a single page, and so is defined in the page's resource dictionary:
-
-```xaml
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MyMauiApp.MainPage">
-    <ContentPage.Resources>
-        <Style x:Key="HeadingLabelStyle"
-                TargetType="Label">
-            <Setter Property="HorizontalOptions"
-                    Value="Center" />
-            <Setter Property="FontSize"
-                    Value="Large" />
-            <Setter Property="TextColor"
-                    Value="Red" />
-        </Style>
-    </ContentPage.Resources>
-    ...
-</ContentPage>
-```
-
-For more information about app resources, see [Style apps using XAML](~/user-interface/styles/xaml.md).
-
-## Use a profiler
-
-When developing an app, it's important to only attempt to optimize code once it has been profiled. Profiling is a technique for determining where code optimizations will have the greatest effect in reducing performance problems. The profiler tracks the app's memory usage, and records the running time of methods in the app. This data helps to navigate through the execution paths of the app, and the execution cost of the code, so that the best opportunities for optimization can be discovered.
-
-.NET MAUI apps can be profiled using `dotnet-trace` on Android, iOS, and Mac, and Windows, and with PerfView on Windows. For more information, see [Profiling .NET MAUI apps](https://github.com/dotnet/maui/wiki/Profiling-.NET-MAUI-Apps).
-
-The following best practices are recommended when profiling an app:
-
-- Avoid profiling an app in a simulator, as the simulator may distort the app performance.
-- Ideally, profiling should be performed on a variety of devices, as taking performance measurements on one device won't always show the performance characteristics of other devices. However, at a minimum, profiling should be performed on a device that has the lowest anticipated specification.
-- Close all other apps to ensure that the full impact of the app being profiled is being measured, rather than the other apps.
 
 ## Release IDisposable resources
 
@@ -623,6 +519,90 @@ Lazy initialization occurs the first time the `Lazy<T>.Value` property is access
 
 For more information about lazy initialization, see [Lazy Initialization](/dotnet/framework/performance/lazy-initialization).
 
+## Optimize image resources
+
+Images are some of the most expensive resources that apps use, and are often captured at high resolutions. While this creates vibrant images full of detail, apps that display such images typically require more CPU usage to decode the image and more memory to store the decoded image. It is wasteful to decode a high resolution image in memory when it will be scaled down to a smaller size for display. Instead, reduce the CPU usage and memory footprint by creating versions of stored images that are close to the predicted display sizes. For example, an image displayed in a list view should most likely be a lower resolution than an image displayed at full-screen.
+
+In addition, images should only be created when required and should be released as soon as the app no longer requires them. For example, if an app is displaying an image by reading its data from a stream, ensure that stream is created only when it's required, and ensure that the stream is released when it's no longer required. This can be achieved by creating the stream when the page is created, or when the [`Page.Appearing`](xref:Microsoft.Maui.Controls.Page.Appearing) event fires, and then disposing of the stream when the [`Page.Disappearing`](xref:Microsoft.Maui.Controls.Page.Disappearing) event fires.
+
+When downloading an image for display with the [`ImageSource.FromUri`](xref:Microsoft.Maui.Controls.ImageSource.FromUri(System.Uri)) method, ensure the downloaded image is cached for a suitable amount of time. For more information, see [Image caching](~/user-interface/controls/image.md#image-caching).
+
+## Reduce the visual tree size
+
+Reducing the number of elements on a page will make the page render faster. There are two main techniques for achieving this. The first is to hide elements that aren't visible. The [`IsVisible`](xref:Microsoft.Maui.Controls.VisualElement.IsVisible) property of each element determines whether the element should be part of the visual tree or not. Therefore, if an element isn't visible because it's hidden behind other elements, either remove the element or set its `IsVisible` property to `false`.
+
+The second technique is to remove unnecessary elements. For example, the following shows a page layout containing multiple [`Label`](xref:Microsoft.Maui.Controls.Label) elements:
+
+```xaml
+<VerticalStackLayout>
+    <VerticalStackLayout Padding="20,20,0,0">
+        <Label Text="Hello" />
+    </VerticalStackLayout>
+    <VerticalStackLayout Padding="20,20,0,0">
+        <Label Text="Welcome to the App!" />
+    </VerticalStackLayout>
+    <VerticalStackLayout Padding="20,20,0,0">
+        <Label Text="Downloading Data..." />
+    </VerticalStackLayout>
+</VerticalStackLayout>
+```
+
+The same page layout can be maintained with a reduced element count, as shown in the following example:
+
+```xaml
+<VerticalStackLayout Padding="20,35,20,20"
+                     Spacing="25">
+    <Label Text="Hello" />
+    <Label Text="Welcome to the App!" />
+    <Label Text="Downloading Data..." />
+</VerticalStackLayout>
+```
+
+## Reduce the application resource dictionary size
+
+Any resources that are used throughout the app should be stored in the app's resource dictionary to avoid duplication. This will help to reduce the amount of XAML that has to be parsed throughout the app. The following example shows the `HeadingLabelStyle` resource, which is used app wide, and so is defined in the app's resource dictionary:
+
+```xaml
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyMauiApp.App">
+     <Application.Resources>
+        <Style x:Key="HeadingLabelStyle"
+               TargetType="Label">
+            <Setter Property="HorizontalOptions"
+                    Value="Center" />
+            <Setter Property="FontSize"
+                    Value="Large" />
+            <Setter Property="TextColor"
+                    Value="Red" />
+        </Style>
+     </Application.Resources>
+</Application>
+```
+
+However, XAML that's specific to a page shouldn't be included in the app's resource dictionary, as the resources will then be parsed at app startup instead of when required by a page. If a resource is used by a page that's not the startup page, it should be placed in the resource dictionary for that page, therefore helping to reduce the XAML that's parsed when the app starts. The following example shows the `HeadingLabelStyle` resource, which is only on a single page, and so is defined in the page's resource dictionary:
+
+```xaml
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyMauiApp.MainPage">
+    <ContentPage.Resources>
+        <Style x:Key="HeadingLabelStyle"
+                TargetType="Label">
+            <Setter Property="HorizontalOptions"
+                    Value="Center" />
+            <Setter Property="FontSize"
+                    Value="Large" />
+            <Setter Property="TextColor"
+                    Value="Red" />
+        </Style>
+    </ContentPage.Resources>
+    ...
+</ContentPage>
+```
+
+For more information about app resources, see [Style apps using XAML](~/user-interface/styles/xaml.md).
+
 ## Reduce the size of the app
 
 When .NET MAUI builds your app, a linker called *ILLink* can be used to reduce the overall size of the app. ILLink reduces the size by analyzing the intermediate code produced by the compiler. It removes unused methods, properties, fields, events, structs, and classes to produce an app that contains only code and assembly dependencies that are necessary to run the app.
@@ -648,14 +628,22 @@ Before an app displays its initial UI, it should provide a splash screen to indi
 
 During the activation period, apps execute activation logic, which often includes the loading and processing of resources. The activation period can be reduced by ensuring that required resources are packaged within the app, instead of being retrieved remotely. For example, in some circumstances it may be appropriate during the activation period to load locally stored placeholder data. Then, once the initial UI is displayed, and the user is able to interact with the app, the placeholder data can be progressively replaced from a remote source. In addition, the app's activation logic should only perform work that's required to let the user start using the app. This can help if it delays loading additional assemblies, as assemblies are loaded the first time they are used.
 
-## Reduce web service communication
+## Choose a dependency injection container carefully
 
-Connecting to a web service from an app can have an impact on app performance. For example, an increased use of network bandwidth will result in an increased usage of the device's battery. In addition, users may be using the app in a bandwidth limited environment. Therefore, it's sensible to limit the bandwidth utilization between an app and a web service.
+Dependency injection containers introduce additional performance constraints into mobile apps. Registering and resolving types with a container has a performance cost because of the container's use of reflection for creating each type, especially if dependencies are being reconstructed for each page navigation in the app. If there are many or deep dependencies, the cost of creation can increase significantly. In addition, type registration, which usually occurs during app startup, can have a noticeable impact on startup time, dependent upon the container being used.
 
-One approach to reducing an app's bandwidth utilization is to compress data before transferring it over a network. However, the additional CPU usage from the compression process can also result in an increased battery usage. Therefore, this tradeoff should be carefully evaluated before deciding whether to move compressed data over a network.
+As an alternative, dependency injection can be made more performant by implementing it manually using factories.
 
-Another issue to consider is the format of the data that moves between an app and a web service. The two primary formats are Extensible Markup Language (XML) and JavaScript Object Notation (JSON). XML is a text-based data-interchange format that produces relatively large data payloads, because it contains a large number of formatting characters. JSON is a text-based data-interchange format that produces compact data payloads, which results in reduced bandwidth requirements when sending data and receiving data. Therefore, JSON is often the preferred format for mobile apps.
+## Create Shell apps
 
-It's recommended to use data transfer objects (DTOs) when transferring data between an app  and a web service. A DTO contains a set of data for transferring across the network. By utilizing DTOs, more data can be transmitted in a single remote call, which can help to reduce the number of remote calls made by the app. Generally, a remote call carrying a larger data payload takes a similar amount of time as a call that only carries a small data payload.
+.NET MAUI Shell apps provide an opinionated navigation experience based on flyouts and tabs. If your app user experience can be implemented with Shell, it is beneficial to do so. Shell apps help to avoid a poor startup experience, because pages are created on demand in response to navigation rather than at app startup, which occurs with apps that use a [`TabbedPage'](xref:Microsoft.Maui.Controls.TabbedPage). For more information, see [Shell overview](~/fundamentals/shell/index.md).
 
-Data retrieved from the web service should be cached locally, with the cached data being utilized rather than repeatedly retrieved from the web service. However, when adopting this approach a suitable caching strategy should also be implemented to update data in the local cache if it changes in the web service.
+## Optimize ListView performance
+
+When using [`ListView`](xref:Microsoft.Maui.Controls.ListView), there are a number of user experiences that should be optimized:
+
+- *Initialization* – the time interval starting when the control is created, and ending when items are shown on screen.
+- *Scrolling* – the ability to scroll through the list and ensure that the UI doesn't lag behind touch gestures.
+- *Interaction* for adding, deleting, and selecting items.
+
+The [`ListView`](xref:Microsoft.Maui.Controls.ListView) control requires an app to supply data and cell templates. How this is achieved will have a large impact on the performance of the control. For more information, see [Cache data](~/user-interface/controls/listview.md#cache-data).
