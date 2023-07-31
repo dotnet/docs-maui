@@ -172,7 +172,9 @@ The [`ListView`](xref:Microsoft.Maui.Controls.ListView) control requires an app 
 
 ## Optimize image resources
 
-Displaying image resources can greatly increase an app's memory footprint. Therefore, they should only be created when required and should be released as soon as the app no longer requires them. For example, if an app is displaying an image by reading its data from a stream, ensure that stream is created only when it's required, and ensure that the stream is released when it's no longer required. This can be achieved by creating the stream when the page is created, or when the [`Page.Appearing`](xref:Microsoft.Maui.Controls.Page.Appearing) event fires, and then disposing of the stream when the [`Page.Disappearing`](xref:Microsoft.Maui.Controls.Page.Disappearing) event fires.
+Images are some of the most expensive resources that apps use, and are often captured at high resolutions. While this creates vibrant images full of detail, apps that display such images typically require more CPU usage to decode the image and more memory to store the decoded image. It is wasteful to decode a high resolution image in memory when it will be scaled down to a smaller size for display. Instead, reduce the CPU usage and memory footprint by creating versions of stored images that are close to the predicted display sizes. For example, an image displayed in a list view should most likely be a lower resolution than an image displayed at full-screen.
+
+In addition, images should only be created when required and should be released as soon as the app no longer requires them. For example, if an app is displaying an image by reading its data from a stream, ensure that stream is created only when it's required, and ensure that the stream is released when it's no longer required. This can be achieved by creating the stream when the page is created, or when the [`Page.Appearing`](xref:Microsoft.Maui.Controls.Page.Appearing) event fires, and then disposing of the stream when the [`Page.Disappearing`](xref:Microsoft.Maui.Controls.Page.Disappearing) event fires.
 
 When downloading an image for display with the [`ImageSource.FromUri`](xref:Microsoft.Maui.Controls.ImageSource.FromUri(System.Uri)) method, ensure the downloaded image is cached for a suitable amount of time. For more information, see [Image caching](~/user-interface/controls/image.md#image-caching).
 
@@ -636,13 +638,7 @@ The following steps can be used to further reduce the app executable size:
 - Ensure that a Release build is produced.
 - Reduce the number of architectures that the app is built for, to avoid a FAT binary being produced.
 - Ensure that the LLVM compiler is being used, to generate a more optimized executable.
-- Reduce the app's managed code size. This can be accomplished by enabling the linker on every assembly (*Link All* for iOS projects, and *Link all assemblies* for Android projects).
-
-## Optimize image resources
-
-Images are some of the most expensive resources that s use, and are often captured at high resolutions. While this creates vibrant images full of detail, appss that display such images typically require more CPU usage to decode the image and more memory to store the decoded image. It is wasteful to decode a high resolution image in memory when it will be scaled down to a smaller size for display. Instead, reduce the CPU usage and memory footprint by creating multiple resolution versions of stored images that are close to the predicted display sizes. For example, an image displayed in a list view should most likely be a lower resolution than an image displayed at full-screen. In addition, scaled down versions of high resolution images can be loaded to efficiently display them with minimal memory impact.
-
-Regardless of the image resolution, displaying image resources can greatly increase the app's memory footprint. Therefore, they should only be created when required and should be released as soon as the app no longer requires them.
+- Reduce the app's managed code size. This can be accomplished by configuring the linker on every assembly.
 
 ## Reduce the app activation period
 
