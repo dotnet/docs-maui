@@ -365,7 +365,7 @@ To create a new .NET MAUI app:
 1. Name the project.
 1. Ensure the project loads successfully in the Solution Explorer, and then open a C# or XAML file.
 
-You can also open an existing .NET MAUI project in VS Code via **File > Open...**.
+You can also open an existing .NET MAUI project in Visual Studio Code via **File > Open...**.
 
 You should now see your app in [C# Dev Kit's](/visualstudio/subscriptions/vs-c-sharp-dev-kit) Solution Explorer in Visual Studio Code. Since the .NET MAUI extension depends on C# Dev Kit, you can use [all of its features](https://code.visualstudio.com/docs/csharp/get-started) alongside the .NET MAUI extension.
 
@@ -373,7 +373,7 @@ You should now see your app in [C# Dev Kit's](/visualstudio/subscriptions/vs-c-s
 
 Click on the curly brackets symbol `{ }` in the bottom right corner of Visual Studio Code. Here, you can change your Startup Project, change your Debug Target to anything valid on your development machine, and pin either setting to the Visual Studio Code status bar:
 
-:::image type="content" source="media/first-app/vscode/debug-target-picker.png" alt-text="A screenshot of the bottom right of VS Code, showing the debug target picker open":::
+:::image type="content" source="media/first-app/vscode/debug-target-picker.png" alt-text="A screenshot of the bottom right of Visual Studio Code, showing the debug target picker open":::
 
 You can also set the Startup Project and Debug Target in the command palette, using `CTRL/CMD+SHIFT+P` and searching for ".NET MAUI".
 
