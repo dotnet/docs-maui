@@ -161,6 +161,45 @@ The overall responsiveness of your app can be enhanced, and performance bottlene
 - Use *continuation tasks* for functionality such as handling exceptions thrown by the previous asynchronous operation, and canceling a continuation either before it starts or while it is running. For more information, see [Chaining Tasks by Using Continuous Tasks](/dotnet/standard/parallel-programming/chaining-tasks-by-using-continuation-tasks).
 - Use an asynchronous `ICommand` implementation when asynchronous operations are invoked from the `ICommand`. This ensures that any exceptions in the asynchronous command logic can be handled. For more information, see [Async Programming: Patterns for Asynchronous MVVM Applications: Commands](/archive/msdn-magazine/2014/april/async-programming-patterns-for-asynchronous-mvvm-applications-commands).
 
+## Delay the cost of creating objects
+
+Lazy initialization can be used to defer the creation of an object until it's first used. This technique is primarily used to improve performance, avoid computation, and reduce memory requirements.
+
+Consider using lazy initialization for objects that are expensive to create in the following scenarios:
+
+- The app might not use the object.
+- Other expensive operations must complete before the object is created.
+
+The `Lazy<T>` class is used to define a lazy-initialized type, as shown in the following example:
+
+```csharp
+void ProcessData(bool dataRequired = false)
+{
+    Lazy<double> data = new Lazy<double>(() =>
+    {
+        return ParallelEnumerable.Range(0, 1000)
+                     .Select(d => Compute(d))
+                     .Aggregate((x, y) => x + y);
+    });
+
+    if (dataRequired)
+    {
+        if (data.Value > 90)
+        {
+            ...
+        }
+    }
+}
+
+double Compute(double x)
+{
+    ...
+}
+```
+
+Lazy initialization occurs the first time the `Lazy<T>.Value` property is accessed. The wrapped type is created and returned on first access, and stored for any future access.
+
+For more information about lazy initialization, see [Lazy Initialization](/dotnet/framework/performance/lazy-initialization).
 
 ## Release IDisposable resources
 
@@ -371,74 +410,6 @@ This also happens in iOS APIs that use the delegate or data source pattern, wher
 
 In the case of classes that are created purely for the sake of implementing a protocol, for example the [`IUITableViewDataSource`](xref:UIKit.IUITableViewDataSource), what you can do is instead of creating a subclass, you can just implement the interface in the class and override the method, and assign the `DataSource` property to `this`.
 
-#### Weak attribute
-
-Like `WeakReference <T>`, `[Weak]` can be used to break strong circular references but with less code.
-
-Consider the following example, which uses `WeakReference <T>`:
-
-```csharp
-public class MyFooDelegate : FooDelegate
-{
-    WeakReference<MyViewController> _controller;
-    public MyFooDelegate(MyViewController ctrl) => _controller = new WeakReference<MyViewController>(ctrl);
-    public void CallDoSomething()
-    {
-        MyViewController ctrl;
-        if (_controller.TryGetTarget(out ctrl))
-        {
-            ctrl.DoSomething();
-        }
-    }
-}
-```
-
-The equivalent code using `[Weak]` is more concise:
-
-```csharp
-public class MyFooDelegate : FooDelegate
-{
-    [Weak] MyViewController _controller;
-    public MyFooDelegate(MyViewController ctrl) => _controller = ctrl;
-    public void CallDoSomething() => _controller.DoSomething();
-}
-```
-
-The following is another example of using `[Weak]` in context of the delegation pattern:
-
-```csharp
-public class MyViewController : UIViewController
-{
-    WKWebView _webView;
-
-    protected MyViewController(IntPtr handle) : base(handle) { }
-
-    public override void ViewDidLoad()
-    {
-        base.ViewDidLoad();
-        _webView = new WKWebView(View.Bounds, new WKWebViewConfiguration());
-        _webView.UIDelegate = new UIDelegate(this);
-        View.AddSubview(_webView);
-    }
-}
-
-public class UIDelegate : WKUIDelegate
-{
-    [Weak] MyViewController _controller;
-
-    public UIDelegate(MyViewController ctrl) => _controller = ctrl;
-
-    public override void RunJavaScriptAlertPanel(WKWebView webView, string message, WKFrameInfo frame, Action completionHandler)
-    {
-        var msg = $"Hello from: {_controller.Title}";
-        var alertController = UIAlertController.Create(null, msg, UIAlertControllerStyle.Alert);
-        alertController.AddAction(UIAlertAction.Create ("Ok", UIAlertActionStyle.Default, null));
-        _controller.PresentViewController (alertController, true, null);
-        completionHandler();
-    }
-}
-```
-
 ### Dispose of objects with strong references
 
 If a strong reference exists and it's difficult to remove the dependency, make a `Dispose` method clear the parent pointer.
@@ -478,46 +449,6 @@ class MyChild : UIView
     }
 }
 ```
-
-## Delay the cost of creating objects
-
-Lazy initialization can be used to defer the creation of an object until it's first used. This technique is primarily used to improve performance, avoid computation, and reduce memory requirements.
-
-Consider using lazy initialization for objects that are expensive to create in the following scenarios:
-
-- The app might not use the object.
-- Other expensive operations must complete before the object is created.
-
-The `Lazy<T>` class is used to define a lazy-initialized type, as shown in the following example:
-
-```csharp
-void ProcessData(bool dataRequired = false)
-{
-    Lazy<double> data = new Lazy<double>(() =>
-    {
-        return ParallelEnumerable.Range(0, 1000)
-                     .Select(d => Compute(d))
-                     .Aggregate((x, y) => x + y);
-    });
-
-    if (dataRequired)
-    {
-        if (data.Value > 90)
-        {
-            ...
-        }
-    }
-}
-
-double Compute(double x)
-{
-    ...
-}
-```
-
-Lazy initialization occurs the first time the `Lazy<T>.Value` property is accessed. The wrapped type is created and returned on first access, and stored for any future access.
-
-For more information about lazy initialization, see [Lazy Initialization](/dotnet/framework/performance/lazy-initialization).
 
 ## Optimize image resources
 
