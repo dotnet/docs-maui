@@ -15,7 +15,7 @@ The following screenshot shows a <xref:Microsoft.Maui.Controls.ToolbarItem> obje
 The <xref:Microsoft.Maui.Controls.ToolbarItem> class defines the following properties:
 
 - <xref:Microsoft.Maui.Controls.ToolbarItem.Order>, of type <xref:Microsoft.Maui.Controls.ToolbarItemOrder>, determines whether the <xref:Microsoft.Maui.Controls.ToolbarItem>  object displays in the primary or secondary menu.
-- <xref:Microsoft.Maui.Controls.ToolbarItem.Priority>, of type `int`, determines the display order of items in a <xref:Microsoft.Maui.Controls.Page> object's <xref:Microsoft.Maui.Controls.Page.ToolbarItems> collection.
+- <xref:Microsoft.Maui.Controls.ToolbarItem.Priority>, of type `int`, determines the display order of items in a <xref:Microsoft.Maui.Controls.Page.ToolbarItems> collection.
 
 The <xref:Microsoft.Maui.Controls.ToolbarItem> class inherits the following typically-used properties from the <xref:Microsoft.Maui.Controls.MenuItem> class:
 
@@ -89,7 +89,7 @@ void OnItemClicked(object sender, EventArgs e)
 
 ## Enable or disable a ToolbarItem at runtime
 
-To enable of disable a <xref:Microsoft.Maui.Controls.ToolbarItem> at runtime, bind its <xref:Microsoft.Maui.Controls.MenuItem.Command> property to an `ICommand` implementation, and ensure that its `canExecute` delegate enables and disables the `ICommand` as appropriate.
+To enable or disable a <xref:Microsoft.Maui.Controls.ToolbarItem> at runtime, bind its <xref:Microsoft.Maui.Controls.MenuItem.Command> property to an `ICommand` implementation, and ensure that its `canExecute` delegate enables and disables the `ICommand` as appropriate.
 
 <!-- For more information, see [Enable or disable a MenuItem at runtime](menuitem.md#enable-or-disable-a-menuitem-at-runtime). -->
 
