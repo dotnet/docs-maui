@@ -413,6 +413,8 @@
                   href: user-interface/controls/twopaneview.md
         - name: Display pop-ups
           href: user-interface/pop-ups.md
+        - name: Display toolbar items
+          href: user-interface/toolbaritem.md
         - name: Display tooltips
           href: user-interface/tooltips.md
         - name: Fonts
