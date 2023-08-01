@@ -27,7 +27,7 @@ The <xref:Microsoft.Maui.Controls.ToolbarItem> class inherits the following typi
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects so a <xref:Microsoft.Maui.Controls.ToolbarItem>  object can be the target of data bindings.
 
 > [!NOTE]
-> An alternative to creating a toolbar from <xref:Microsoft.Maui.Controls.ToolbarItem> objects is to set the <xref:Microsoft.Maui.Controls.NavigationPage.TitleView> attached property to a layout class that contains multiple views. For more information, see [Display views in the navigation bar](~/user-interface/pages/navigationpage.md#display-views-in-the-navigation-bar).
+> An alternative to creating a toolbar from <xref:Microsoft.Maui.Controls.ToolbarItem> objects is to set the <xref:Microsoft.Maui.Controls.NavigationPage.TitleViewProperty> attached property to a layout class that contains multiple views. For more information, see [Display views in the navigation bar](~/user-interface/pages/navigationpage.md#display-views-in-the-navigation-bar).
 
 ## Create a ToolbarItem
 
