@@ -29,11 +29,11 @@ Compiled bindings improve data binding performance in .NET MAUI apps by resolvin
 
 ## Reduce unnecessary bindings
 
-Don't use bindings for content that can easily be set statically. There is no advantage in binding data that doesn't need to be bound, because bindings aren't cost efficient. For example, setting `Button.Text = "Accept"` has less overhead than binding [`Button.Text`](xref:Microsoft.Maui.Controls.Button.Text) to a viewmodel `string` property with value "Accept".
+Don't use bindings for content that can easily be set statically. There is no advantage in binding data that doesn't need to be bound, because bindings aren't cost efficient. For example, setting `Button.Text = "Accept"` has less overhead than binding <xref:Microsoft.Maui.Controls.Button.Text?displayProperty=nameWithType> to a viewmodel `string` property with value "Accept".
 
 ## Choose the correct layout
 
-A layout that's capable of displaying multiple children, but that only has a single child, is wasteful. For example, the following example shows a [`VerticalStackLayout`](xref:Microsoft.Maui.Controls.VerticalStackLayout) with a single child:
+A layout that's capable of displaying multiple children, but that only has a single child, is wasteful. For example, the following example shows a <xref:Microsoft.Maui.Controls.VerticalStackLayout> with a single child:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -45,7 +45,7 @@ A layout that's capable of displaying multiple children, but that only has a sin
 </ContentPage>
 ```
 
-This is wasteful and the [`VerticalStackLayout`](xref:Microsoft.Maui.Controls.VerticalStackLayout) element should be removed, as shown in the following example:
+This is wasteful and the <xref:Microsoft.Maui.Controls.VerticalStackLayout> element should be removed, as shown in the following example:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -56,7 +56,7 @@ This is wasteful and the [`VerticalStackLayout`](xref:Microsoft.Maui.Controls.Ve
 
 ```
 
-In addition, don't attempt to reproduce the appearance of a specific layout by using combinations of other layouts, as this results in unnecessary layout calculations being performed. For example, don't attempt to reproduce a [`Grid`](xref:Microsoft.Maui.Controls.Grid) layout by using a combination of [`HorizontalStackLayout`](xref:Microsoft.Maui.Controls.HorizontalStackLayout) elements. The following example shows an example of this bad practice:
+In addition, don't attempt to reproduce the appearance of a specific layout by using combinations of other layouts, as this results in unnecessary layout calculations being performed. For example, don't attempt to reproduce a <xref:Microsoft.Maui.Controls.Grid> layout by using a combination of <xref:Microsoft.Maui.Controls.HorizontalStackLayout> elements. The following example shows an example of this bad practice:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -84,7 +84,7 @@ In addition, don't attempt to reproduce the appearance of a specific layout by u
 
 ```
 
-This is wasteful because unnecessary layout calculations are performed. Instead, the desired layout can be better achieved using a [`Grid`](xref:Microsoft.Maui.Controls.Grid), as shown in the following example:
+This is wasteful because unnecessary layout calculations are performed. Instead, the desired layout can be better achieved using a <xref:Microsoft.Maui.Controls.Grid>, as shown in the following example:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -118,15 +118,15 @@ This is wasteful because unnecessary layout calculations are performed. Instead,
 
 Images are some of the most expensive resources that apps use, and are often captured at high resolutions. While this creates vibrant images full of detail, apps that display such images typically require more CPU usage to decode the image and more memory to store the decoded image. It is wasteful to decode a high resolution image in memory when it will be scaled down to a smaller size for display. Instead, reduce the CPU usage and memory footprint by creating versions of stored images that are close to the predicted display sizes. For example, an image displayed in a list view should most likely be a lower resolution than an image displayed at full-screen.
 
-In addition, images should only be created when required and should be released as soon as the app no longer requires them. For example, if an app is displaying an image by reading its data from a stream, ensure that stream is created only when it's required, and ensure that the stream is released when it's no longer required. This can be achieved by creating the stream when the page is created, or when the [`Page.Appearing`](xref:Microsoft.Maui.Controls.Page.Appearing) event fires, and then disposing of the stream when the [`Page.Disappearing`](xref:Microsoft.Maui.Controls.Page.Disappearing) event fires.
+In addition, images should only be created when required and should be released as soon as the app no longer requires them. For example, if an app is displaying an image by reading its data from a stream, ensure that stream is created only when it's required, and ensure that the stream is released when it's no longer required. This can be achieved by creating the stream when the page is created, or when the <xref:Microsoft.Maui.Controls.Page.Appearing?displayProperty=nameWithType> event fires, and then disposing of the stream when the <xref:Microsoft.Maui.Controls.Page.Disappearing?displayProperty=nameWithType> event fires.
 
-When downloading an image for display with the [`ImageSource.FromUri`](xref:Microsoft.Maui.Controls.ImageSource.FromUri(System.Uri)) method, ensure the downloaded image is cached for a suitable amount of time. For more information, see [Image caching](~/user-interface/controls/image.md#image-caching).
+When downloading an image for display with the <xref:Microsoft.Maui.Controls.ImageSource.FromUri(System.Uri)?displayProperty=nameWithType> method, ensure the downloaded image is cached for a suitable amount of time. For more information, see [Image caching](~/user-interface/controls/image.md#image-caching).
 
 ## Reduce the visual tree size
 
-Reducing the number of elements on a page will make the page render faster. There are two main techniques for achieving this. The first is to hide elements that aren't visible. The [`IsVisible`](xref:Microsoft.Maui.Controls.VisualElement.IsVisible) property of each element determines whether the element should be part of the visual tree or not. Therefore, if an element isn't visible because it's hidden behind other elements, either remove the element or set its `IsVisible` property to `false`.
+Reducing the number of elements on a page will make the page render faster. There are two main techniques for achieving this. The first is to hide elements that aren't visible. The <xref:Microsoft.Maui.Controls.VisualElement.IsVisible> property of each element determines whether the element should be part of the visual tree or not. Therefore, if an element isn't visible because it's hidden behind other elements, either remove the element or set its `IsVisible` property to `false`.
 
-The second technique is to remove unnecessary elements. For example, the following shows a page layout containing multiple [`Label`](xref:Microsoft.Maui.Controls.Label) elements:
+The second technique is to remove unnecessary elements. For example, the following shows a page layout containing multiple <xref:Microsoft.Maui.Controls.Label> elements:
 
 ```xaml
 <VerticalStackLayout>
@@ -220,17 +220,17 @@ As an alternative, dependency injection can be made more performant by implement
 
 ## Create Shell apps
 
-.NET MAUI Shell apps provide an opinionated navigation experience based on flyouts and tabs. If your app user experience can be implemented with Shell, it is beneficial to do so. Shell apps help to avoid a poor startup experience, because pages are created on demand in response to navigation rather than at app startup, which occurs with apps that use a [`TabbedPage'](xref:Microsoft.Maui.Controls.TabbedPage). For more information, see [Shell overview](~/fundamentals/shell/index.md).
+.NET MAUI Shell apps provide an opinionated navigation experience based on flyouts and tabs. If your app user experience can be implemented with Shell, it is beneficial to do so. Shell apps help to avoid a poor startup experience, because pages are created on demand in response to navigation rather than at app startup, which occurs with apps that use a <xref:Microsoft.Maui.Controls.TabbedPage>. For more information, see [Shell overview](~/fundamentals/shell/index.md).
 
 ## Optimize ListView performance
 
-When using [`ListView`](xref:Microsoft.Maui.Controls.ListView), there are a number of user experiences that should be optimized:
+When using <xref:Microsoft.Maui.Controls.ListView>, there are a number of user experiences that should be optimized:
 
 - *Initialization* – the time interval starting when the control is created, and ending when items are shown on screen.
 - *Scrolling* – the ability to scroll through the list and ensure that the UI doesn't lag behind touch gestures.
 - *Interaction* for adding, deleting, and selecting items.
 
-The [`ListView`](xref:Microsoft.Maui.Controls.ListView) control requires an app to supply data and cell templates. How this is achieved will have a large impact on the performance of the control. For more information, see [Cache data](~/user-interface/controls/listview.md#cache-data).
+The <xref:Microsoft.Maui.Controls.ListView> control requires an app to supply data and cell templates. How this is achieved will have a large impact on the performance of the control. For more information, see [Cache data](~/user-interface/controls/listview.md#cache-data).
 
 ## Use asynchronous programming
 
@@ -439,7 +439,7 @@ The `_handler` field maintains the reference to the anonymous method, and is use
 
 ## Avoid strong circular references on iOS and Mac Catalyst
 
-In some situations it's possible to create strong reference cycles that could prevent objects from having their memory reclaimed by the garbage collector. For example, consider the case where an [`NSObject`](xref:Foundation.NSObject)-derived subclass, such as a class that inherits from [`UIView`](xref:UIKit.UIView), is added to an `NSObject`-derived container and is strongly referenced from Objective-C, as shown in the following example:
+In some situations it's possible to create strong reference cycles that could prevent objects from having their memory reclaimed by the garbage collector. For example, consider the case where an <xref:Foundation.NSObject>-derived subclass, such as a class that inherits from <xref:UIKit.UIView>, is added to an `NSObject`-derived container and is strongly referenced from Objective-C, as shown in the following example:
 
 ```csharp
 class Container : UIView
@@ -471,7 +471,7 @@ container.AddSubview(new MyView(container));
 
 When this code creates the `Container` instance, the C# object will have a strong reference to an Objective-C object. Similarly, the `MyView` instance will also have a strong reference to an Objective-C object.
 
-In addition, the call to `container.AddSubview` will increase the reference count on the unmanaged `MyView` instance. When this happens, the .NET iOS runtime creates a `GCHandle` instance to keep the `MyView` object in managed code alive, because there is no guarantee that any managed objects will keep a reference to it. From a managed code perspective, the `MyView` object would be reclaimed after the [`AddSubview`](xref:UIKit.UIView.AddSubview(UIKit.UIView)) call were it not for the `GCHandle`.
+In addition, the call to `container.AddSubview` will increase the reference count on the unmanaged `MyView` instance. When this happens, the .NET iOS runtime creates a `GCHandle` instance to keep the `MyView` object in managed code alive, because there is no guarantee that any managed objects will keep a reference to it. From a managed code perspective, the `MyView` object would be reclaimed after the <xref:UIKit.UIView.AddSubview(UIKit.UIView)> call were it not for the `GCHandle`.
 
 The unmanaged `MyView` object will have a `GCHandle` pointing to the managed object, known as a *strong link*. The managed object will contain a reference to the `Container` instance. In turn the `Container` instance will have a managed reference to the `MyView` object.
 
@@ -517,9 +517,9 @@ container.AddSubview(new MyView container));
 
 Here, the contained object will not keep the parent alive. However, the parent keeps the child alive through the call to `container.AddSubView`.
 
-This also happens in iOS APIs that use the delegate or data source pattern, where a peer class contains the implementation. For example, when setting the [`Delegate`](xref:UIKit.UITableView.Delegate*) property or the [`DataSource`](xref:UIKit.UITableView.DataSource*) in the [`UITableView`](xref:UIKit.UITableView) class.
+This also happens in iOS APIs that use the delegate or data source pattern, where a peer class contains the implementation. For example, when setting the <xref:UIKit.UITableView.Delegate%2A> property or the <xref:UIKit.UITableView.DataSource*> in the <xref:UIKit.UITableView> class.
 
-In the case of classes that are created purely for the sake of implementing a protocol, for example the [`IUITableViewDataSource`](xref:UIKit.IUITableViewDataSource), what you can do is instead of creating a subclass, you can just implement the interface in the class and override the method, and assign the `DataSource` property to `this`.
+In the case of classes that are created purely for the sake of implementing a protocol, for example the <xref:UIKit.IUITableViewDataSource>, what you can do is instead of creating a subclass, you can just implement the interface in the class and override the method, and assign the `DataSource` property to `this`.
 
 ### Dispose of objects with strong references
 
