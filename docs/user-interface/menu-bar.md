@@ -21,7 +21,7 @@ A `MenuBarItem` can consist of the following children:
 - `MenuFlyoutSubItem`, which represents a sub-menu item that can be clicked.
 - `MenuFlyoutSeparator`, which is a horizontal line that separates items in the menu.
 
-`MenuFlyoutSubItem` derives from `MenuFlyoutItem`, which in turn derives from `MenuItem`. `MenuItem` defines multiple properties that enable the appearance and behavior of a menu item to be specified. The appearance of a menu item, or sub-item, can be defined by setting the `Text`, and `IconImageSource` properties. The response to a menu item, or sub-item, click can be defined by setting the `Clicked`, `Command`, and `CommandParameter` properties. <!-- For more information about menu items, see [Menu items](). -->
+`MenuFlyoutSubItem` derives from `MenuFlyoutItem`, which in turn derives from  <xref:Microsoft.Maui.Controls.MenuItem>.  <xref:Microsoft.Maui.Controls.MenuItem> defines multiple properties that enable the appearance and behavior of a menu item to be specified. The appearance of a menu item, or sub-item, can be defined by setting the `Text`, and `IconImageSource` properties. The response to a menu item, or sub-item, click can be defined by setting the `Clicked`, `Command`, and `CommandParameter` properties. <!-- For more information about menu items, see [Menu items](). -->
 
 ## Create menu bar items
 
@@ -74,7 +74,7 @@ In this example, each `MenuFlyoutItem` defines a menu item that executes an `ICo
 
 ## Display icons on menu items
 
-`MenuFlyoutItem` and `MenuFlyoutSubItem` inherit the `IconImageSource` property from `MenuItem`, which enables a small icon to be displayed next to the text for a menu item. This icon can either be an image, or a font icon.
+`MenuFlyoutItem` and `MenuFlyoutSubItem` inherit the `IconImageSource` property from  <xref:Microsoft.Maui.Controls.MenuItem>, which enables a small icon to be displayed next to the text for a menu item. This icon can either be an image, or a font icon.
 
 > [!WARNING]
 > Mac Catalyst does not support displaying icons on menu items.
