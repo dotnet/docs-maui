@@ -6,7 +6,7 @@ ms.date: 08/01/2023
 
 # Display toolbar items
 
-The <xref:Microsoft.Maui.Controls.ToolbarItem> class is a special type of button that can be added to a <xref:Microsoft.Maui.Controls.Page> object's <xref:Microsoft.Maui.Controls.Page.ToolbarItems> collection. <xref:Microsoft.Maui.Controls.ToolbarItem> objects can also be added to the `ToolbarItems` collection of a <xref:Microsoft.Maui.Controls.Shell> object. Each <xref:Microsoft.Maui.Controls.ToolbarItem> object will appear as a button in the application's navigation bar. A <xref:Microsoft.Maui.Controls.ToolbarItem> object can have an icon and appear as a primary or secondary menu item. The <xref:Microsoft.Maui.Controls.ToolbarItem>  class inherits from <xref:Microsoft.Maui.Controls.MenuItem>.
+The <xref:Microsoft.Maui.Controls.ToolbarItem> class is a special type of button that can be added to a <xref:Microsoft.Maui.Controls.Page> object's <xref:Microsoft.Maui.Controls.Page.ToolbarItems> collection. Because the <xref:Microsoft.Maui.Controls.Shell> class derives from <xref:Microsoft.Maui.Controls.Page>, <xref:Microsoft.Maui.Controls.ToolbarItem> objects can also be added to the `ToolbarItems` collection of a <xref:Microsoft.Maui.Controls.Shell> object. Each <xref:Microsoft.Maui.Controls.ToolbarItem> object will appear as a button in the app's navigation bar. A <xref:Microsoft.Maui.Controls.ToolbarItem> object can have an icon and appear as a primary or secondary item. The <xref:Microsoft.Maui.Controls.ToolbarItem> class inherits from <xref:Microsoft.Maui.Controls.MenuItem>.
 
 The following screenshot shows a <xref:Microsoft.Maui.Controls.ToolbarItem> object in the navigation bar on iOS:
 
@@ -24,14 +24,14 @@ The <xref:Microsoft.Maui.Controls.ToolbarItem> class inherits the following typi
 - <xref:Microsoft.Maui.Controls.MenuItem.IconImageSource>, of type <xref:Microsoft.Maui.Controls.ImageSource>, that determines the display icon on a <xref:Microsoft.Maui.Controls.ToolbarItem>  object.
 - <xref:Microsoft.Maui.Controls.MenuItem.Text>, of type `string`, determines the display text on a <xref:Microsoft.Maui.Controls.ToolbarItem>  object.
 
-These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects so a <xref:Microsoft.Maui.Controls.ToolbarItem>  object can be the target of data bindings.
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, so a <xref:Microsoft.Maui.Controls.ToolbarItem> object can be the target of data bindings.
 
 > [!NOTE]
 > An alternative to creating a toolbar from <xref:Microsoft.Maui.Controls.ToolbarItem> objects is to set the <xref:Microsoft.Maui.Controls.NavigationPage.TitleViewProperty> attached property to a layout class that contains multiple views. For more information, see [Display views in the navigation bar](~/user-interface/pages/navigationpage.md#display-views-in-the-navigation-bar).
 
 ## Create a ToolbarItem
 
-A <xref:Microsoft.Maui.Controls.ToolbarItem> object can be instantiated in XAML. The <xref:Microsoft.Maui.Controls.MenuItem.Text> and <xref:Microsoft.Maui.Controls.MenuItem.IconImageSource> properties can be set to determine how the button is displayed in the navigation bar. The following example shows how to instantiate a <xref:Microsoft.Maui.Controls.ToolbarItem> with minimal properties set, and add it to a <xref:Microsoft.Maui.Controls.ContentPage>'s <xref:Microsoft.Maui.Controls.Page.ToolbarItems> collection:
+To create a toolbaritem, create a <xref:Microsoft.Maui.Controls.ToolbarItem> object and set its properties to define its appearance and behavior. The following example shows how to create a <xref:Microsoft.Maui.Controls.ToolbarItem> with minimal properties set, and add it to a <xref:Microsoft.Maui.Controls.ContentPage>'s <xref:Microsoft.Maui.Controls.Page.ToolbarItems> collection:
 
 ```xaml
 <ContentPage.ToolbarItems>
@@ -40,7 +40,9 @@ A <xref:Microsoft.Maui.Controls.ToolbarItem> object can be instantiated in XAML.
 </ContentPage.ToolbarItems>
 ```
 
-This example will result in a <xref:Microsoft.Maui.Controls.ToolbarItem> object that has text and an icon. A <xref:Microsoft.Maui.Controls.ToolbarItem> can also be created in code and added to the <xref:Microsoft.Maui.Controls.Page.ToolbarItems> collection:
+This example will result in a <xref:Microsoft.Maui.Controls.ToolbarItem> object that has text and an icon. However, the appearance of a <xref:Microsoft.Maui.Controls.ToolbarItem> varies across platforms.
+
+A <xref:Microsoft.Maui.Controls.ToolbarItem> can also be created in code and added to the <xref:Microsoft.Maui.Controls.Page.ToolbarItems> collection:
 
 ```csharp
 ToolbarItem item = new ToolbarItem
@@ -54,11 +56,11 @@ this.ToolbarItems.Add(item);
 ```
 
 > [!NOTE]
-> Images can be specified in a single location in your app project. For more information, see [Add images to a .NET MAUI project](~/user-interface/images/images.md).
+> Images can be stored in a single location in your app project. For more information, see [Add images to a .NET MAUI project](~/user-interface/images/images.md).
 
 ## Define button behavior
 
-The <xref:Microsoft.Maui.Controls.ToolbarItem> class inherits the <xref:Microsoft.Maui.Controls.MenuItem.Clicked> event from the <xref:Microsoft.Maui.Controls.MenuItem> class. An event handler can be attached to the <xref:Microsoft.Maui.Controls.MenuItem.Clicked> event to react to taps or clicks on <xref:Microsoft.Maui.Controls.ToolbarItem> objects in XAML:
+The <xref:Microsoft.Maui.Controls.ToolbarItem> class inherits the <xref:Microsoft.Maui.Controls.MenuItem.Clicked> event from the <xref:Microsoft.Maui.Controls.MenuItem> class. An event handler can be attached to the <xref:Microsoft.Maui.Controls.MenuItem.Clicked> event to react to taps or clicks on <xref:Microsoft.Maui.Controls.ToolbarItem> objects:
 
 ```xaml
 <ToolbarItem ...
@@ -95,7 +97,7 @@ To enable of disable a <xref:Microsoft.Maui.Controls.ToolbarItem> at runtime, bi
 
 The <xref:Microsoft.Maui.Controls.ToolbarItemOrder> enum has `Default`, `Primary`, and `Secondary` values.
 
-When the <xref:Microsoft.Maui.Controls.ToolbarItem.Order> property is set to `Primary`, the <xref:Microsoft.Maui.Controls.ToolbarItem> object will appear in the main navigation bar on all platforms. <xref:Microsoft.Maui.Controls.ToolbarItem> objects are prioritized over the page title, which will be truncated to make room for the items.
+When the <xref:Microsoft.Maui.Controls.ToolbarItem.Order> property is set to `Primary`, the <xref:Microsoft.Maui.Controls.ToolbarItem> object will appear in the navigation bar on all platforms. <xref:Microsoft.Maui.Controls.ToolbarItem> objects are prioritized over the page title, which will be truncated to make room for the items.
 
 When the <xref:Microsoft.Maui.Controls.ToolbarItem.Order> property is set to `Secondary`, behavior varies across platforms. On iOS and Mac Catalyst, `Secondary` toolbar items will appear as a horizontal list. On Android and Windows, the `Secondary` items menu appears as three dots that can be tapped:
 
