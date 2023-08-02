@@ -63,7 +63,7 @@ In addition, if Java binding is enabled with `@(InputJar)`, `@(EmbeddedJar)`, or
 > [!NOTE]
 > Referencing an Android Wear project from an Android app isn't supported.
 
-## Changes to `AndroidManifest.xml`
+## Changes to AndroidManifest.xml
 
 In Xamarin.Android, Java, and Kotlin Android projects, the `<uses-sdk/>` element denotes the minimum Android version your app supports, as well as the target Android version your app is compiled against:
 
