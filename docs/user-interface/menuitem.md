@@ -10,7 +10,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.MenuIte
 
 The following screenshots show <xref:Microsoft.Maui.Controls.MenuItem> objects in a <xref:Microsoft.Maui.Controls.ListView> context menu on Android:
 
-:::image type="content" source="media/toolbaritem/text-context-menu-android.png" alt-text="Screenshot of menu items in a ListView context menu on Android.":::
+:::image type="content" source="media/menuitem/text-context-menu-android.png" alt-text="Screenshot of menu items in a ListView context menu on Android.":::
 
 The <xref:Microsoft.Maui.Controls.MenuItem> class defines the following properties:
 
@@ -116,7 +116,7 @@ void OnItemClicked(object sender, EventArgs e)
 
 Icons are specified using the <xref:Microsoft.Maui.Controls.MenuItem.IconImageSource> property. If an icon is specified, the text specified by the <xref:Microsoft.Maui.Controls.MenuItem.Text> property will not be displayed. The following screenshot shows a <xref:Microsoft.Maui.Controls.MenuItem> with an icon on Android:
 
-:::image type="content" source="media/toolbaritem/icon-context-menu-android.png" alt-text="Screenshot of menu items, with an icon, in a ListView context menu on Android.":::
+:::image type="content" source="media/menuitem/icon-context-menu-android.png" alt-text="Screenshot of menu items, with an icon, in a ListView context menu on Android.":::
 
 <xref:Microsoft.Maui.Controls.MenuItem> objects only display icons on Android. On other platforms, only the text specified by the <xref:Microsoft.Maui.Controls.MenuItem.Text> property will be displayed.
 
