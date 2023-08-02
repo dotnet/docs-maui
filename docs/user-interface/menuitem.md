@@ -16,10 +16,10 @@ The <xref:Microsoft.Maui.Controls.MenuItem> class defines the following properti
 
 - <xref:Microsoft.Maui.Controls.MenuItem.Command>, of type `ICommand`, allows binding user actions, such as finger taps or clicks, to commands defined on a viewmodel.
 - <xref:Microsoft.Maui.Controls.MenuItem.CommandParameter>, of type `object`, specifies the parameter that should be passed to the `Command`.
-- <xref:Microsoft.Maui.Controls.MenuItem.IconImageSource>, of type <xref:Microsoft.Maui.Controls.ImageSource>, defines the display icon.
+- <xref:Microsoft.Maui.Controls.MenuItem.IconImageSource>, of type <xref:Microsoft.Maui.Controls.ImageSource>, defines the menu item icon.
 - <xref:Microsoft.Maui.Controls.MenuItem.IsDestructive>, of type `bool`, indicates whether the <xref:Microsoft.Maui.Controls.MenuItem> removes its associated UI element from the list.
-- <xref:Microsoft.Maui.Controls.MenuItem.IsEnabled>, of type `bool`, indicates whether this object responds to user input.
-- <xref:Microsoft.Maui.Controls.MenuItem.Text>, of type `string`, specifies the display text.
+- <xref:Microsoft.Maui.Controls.MenuItem.IsEnabled>, of type `bool`, indicates whether the menu item responds to user input.
+- <xref:Microsoft.Maui.Controls.MenuItem.Text>, of type `string`, specifies the menu item text.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings.
 
@@ -82,6 +82,8 @@ ListView listView = new ListView
 
 A context menu in a <xref:Microsoft.Maui.Controls.ListView> is activated and displayed differently on each platform. On Android, the context menu is activated by long-press on a list item. The context menu replaces the title and navigation bar area and <xref:Microsoft.Maui.Controls.MenuItem> options are displayed as horizontal buttons. On iOS, the context menu is activated by swiping on a list item. The context menu is displayed on the list item and `MenuItems` are displayed as horizontal buttons. On Windows, the context menu is activated by right-clicking on a list item. The context menu is displayed near the cursor as a vertical list.
 
+<!-- No MenuItems in this scenario on Mac Catalyst -->
+
 ## Define MenuItem behavior
 
 The <xref:Microsoft.Maui.Controls.MenuItem> class defines a <xref:Microsoft.Maui.Controls.MenuItem.Clicked> event. An event handler can be attached to this event to react to taps or clicks on <xref:Microsoft.Maui.Controls.MenuItem> objects:
@@ -114,7 +116,7 @@ void OnItemClicked(object sender, EventArgs e)
 
 ## Define MenuItem appearance
 
-Icons are specified using the <xref:Microsoft.Maui.Controls.MenuItem.IconImageSource> property. If an icon is specified, the text specified by the <xref:Microsoft.Maui.Controls.MenuItem.Text> property will not be displayed. The following screenshot shows a <xref:Microsoft.Maui.Controls.MenuItem> with an icon on Android:
+Icons are specified using the <xref:Microsoft.Maui.Controls.MenuItem.IconImageSource> property. If an icon is specified, the text specified by the <xref:Microsoft.Maui.Controls.MenuItem.Text> property won't be displayed. The following screenshot shows a <xref:Microsoft.Maui.Controls.MenuItem> with an icon on Android:
 
 :::image type="content" source="media/menuitem/icon-context-menu-android.png" alt-text="Screenshot of menu items, with an icon, in a ListView context menu on Android.":::
 
