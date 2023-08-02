@@ -31,7 +31,7 @@ These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> o
 
 ## Create a ToolbarItem
 
-To create a toolbaritem, create a <xref:Microsoft.Maui.Controls.ToolbarItem> object and set its properties to define its appearance and behavior. The following example shows how to create a <xref:Microsoft.Maui.Controls.ToolbarItem> with minimal properties set, and add it to a <xref:Microsoft.Maui.Controls.ContentPage>'s <xref:Microsoft.Maui.Controls.Page.ToolbarItems> collection:
+To create a toolbar item, create a <xref:Microsoft.Maui.Controls.ToolbarItem> object and set its properties to define its appearance and behavior. The following example shows how to create a <xref:Microsoft.Maui.Controls.ToolbarItem> with minimal properties set, and add it to a <xref:Microsoft.Maui.Controls.ContentPage>'s <xref:Microsoft.Maui.Controls.Page.ToolbarItems> collection:
 
 ```xaml
 <ContentPage.ToolbarItems>
@@ -91,7 +91,8 @@ void OnItemClicked(object sender, EventArgs e)
 
 To enable or disable a <xref:Microsoft.Maui.Controls.ToolbarItem> at runtime, bind its <xref:Microsoft.Maui.Controls.MenuItem.Command> property to an `ICommand` implementation, and ensure that its `canExecute` delegate enables and disables the `ICommand` as appropriate.
 
-<!-- For more information, see [Enable or disable a MenuItem at runtime](menuitem.md#enable-or-disable-a-menuitem-at-runtime). -->
+> [!IMPORTANT]
+> Don't bind the `IsEnabled` property to another property when using the `Command` property to enable or disable the <xref:Microsoft.Maui.Controls.ToolbarItem>.
 
 ## Primary and secondary toolbar items
 

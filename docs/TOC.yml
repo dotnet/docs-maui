@@ -451,6 +451,8 @@
               href: user-interface/context-menu.md
             - name: Display a menu bar
               href: user-interface/menu-bar.md
+            - name: Display menu items
+              href: user-interface/menuitem.md
         - name: Shadows
           href: user-interface/shadow.md
         - name: Styles

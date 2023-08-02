@@ -14,7 +14,7 @@ A context menu is defined with a `MenuFlyout`, which can consist of the followin
 - `MenuFlyoutSubItem`, which represents a sub-menu item that can be clicked.
 - `MenuFlyoutSeparator`, which is a horizontal line that separates items in the menu.
 
-`MenuFlyoutSubItem` derives from `MenuFlyoutItem`, which in turn derives from  <xref:Microsoft.Maui.Controls.MenuItem>.  <xref:Microsoft.Maui.Controls.MenuItem> defines multiple properties that enable the appearance and behavior of a menu item to be specified. The appearance of a menu item, or sub-item, can be defined by setting the `Text`, and `IconImageSource` properties. The response to a menu item, or sub-item, click can be defined by setting the `Clicked`, `Command`, and `CommandParameter` properties. <!-- For more information about menu items, see [Menu items](). -->
+`MenuFlyoutSubItem` derives from `MenuFlyoutItem`, which in turn derives from  <xref:Microsoft.Maui.Controls.MenuItem>.  <xref:Microsoft.Maui.Controls.MenuItem> defines multiple properties that enable the appearance and behavior of a menu item to be specified. The appearance of a menu item, or sub-item, can be defined by setting the `Text`, and `IconImageSource` properties. The response to a menu item, or sub-item, click can be defined by setting the `Clicked`, `Command`, and `CommandParameter` properties. For more information about menu items, see [Display menu items](menuitem.md).
 
 > [!WARNING]
 > A context menu on an <xref:Microsoft.Maui.Controls.Entry> is currently unsupported on Mac Catalyst.
