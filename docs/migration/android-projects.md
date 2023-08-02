@@ -110,10 +110,6 @@ if (OperatingSystem.IsAndroidVersionAtLeast(23))
 }
 ```
 
-[uses-sdk]: https://developer.android.com/guide/topics/manifest/uses-sdk-element
-[supportedattr]: https://learn.microsoft.com/dotnet/api/system.runtime.versioning.supportedosplatformattribute
-[operatingsystem]: https://learn.microsoft.com/dotnet/api/system.operatingsystem.isandroidversionatleast
-
 ## Default file inclusion
 
 Default .NET Android related file globbing behavior is defined in `AutoImport.props`. This behavior can be disabled for Android items by setting `$(EnableDefaultAndroidItems)` to `false`, or all default item inclusion behavior can be disabled by setting `$(EnableDefaultItems)` to `false`. For more information, see [Workload props files](https://github.com/dotnet/designs/blob/4703666296f5e59964961464c25807c727282cae/accepted/2020/workloads/workload-resolvers.md#workload-props-files).
