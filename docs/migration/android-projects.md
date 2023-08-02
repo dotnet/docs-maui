@@ -101,7 +101,7 @@ Similarly, `SupportedOSPlatformVersion` maps to `android:minSdkVersion`. At buil
 error CA1416: This call site is reachable on 'Android' 21.0 and later. `ConnectivityManager.ActiveNetwork` is only supported on: 'Android' 23.0 and later.
 ```
 
-To safely use this API, you can declare a higher `SupportedOSPlatformVersion` in your project or use the [`OperatingSystem`][operatingsystem] API at runtime:
+To safely use this API, you can declare a higher `SupportedOSPlatformVersion` in your project or use the <xref:System.OperatingSystem.IsAndroidVersionAtLeast%2A> API at runtime:
 
 ```csharp
 if (OperatingSystem.IsAndroidVersionAtLeast(23))
