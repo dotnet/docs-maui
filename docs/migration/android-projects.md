@@ -93,7 +93,7 @@ In .NET 6+ Android apps, there are MSBuild properties to set these values. Using
 
 In this example, `net6.0-android` is shorthand for `net6.0-android31.0`. While in .NET 7, `net7.0-android` is shorthand for `net7.0-android33.0`. Future versions of .NET will track the latest Android version available at the time of the .NET release.
 
-`TargetFramework` maps to `android:targetSdkVersion`, at build time this value will automatically be included in the `<uses-sdk/>` element for you. The benefit of using `TargetFramework` in this way, is we can give you the matching C# binding for Android API 31 for `net6.0-android31.0`. Android releases independently of the .NET release cycle, so we have the flexibility to opt into `net6.0-android32.0` when a binding is available sometime after .NET 6's release.
+`TargetFramework` maps to `android:targetSdkVersion`. At build time this value will automatically be included in the `<uses-sdk/>` element for you. The benefit of using `TargetFramework` in this way, is you are given the matching C# binding for Android API 31 for `net6.0-android31.0`. Android releases independently of the .NET release cycle, so we have the flexibility to opt into `net6.0-android32.0` when a binding is available sometime after .NET 6's release.
 
 Likewise `SupportedOSPlatformVersion` maps to `android:minSdkVersion`, at build time this value will automatically be included in the `<uses-sdk/>` element for you. Android APIs are decorated with the [`SupportedOSPlatformAttribute`][supportedattr] so that you will get build warnings for calling APIs that are only available for some of the Android versions your application can run on:
 
