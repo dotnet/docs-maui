@@ -80,7 +80,7 @@ In Xamarin.Android, Java, and Kotlin Android projects, the `<uses-sdk/>` element
 
 See the [Android documentation][uses-sdk] for more information about the `<uses-sdk/>` element.
 
-In .NET 6+ Android applications, there are MSBuild properties to set these values. Using the MSBuild properties has other benefits. In most cases the `<uses-sdk/>` element should be removed in favor of values in your project's `.csproj` file:
+In .NET 6+ Android apps, there are MSBuild properties to set these values. Using the MSBuild properties has other benefits. In most cases the `<uses-sdk/>` element should be removed in favor of values in your project's `.csproj` file:
 
 ```xml
 <Project>
