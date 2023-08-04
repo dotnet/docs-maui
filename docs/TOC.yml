@@ -712,6 +712,8 @@
       items:
         - name: Overview
           href: deployment/index.md
+        - name: Improve app performance
+          href: deployment/performance.md
         - name: iOS
           items:
             - name: Hot restart
