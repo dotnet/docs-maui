@@ -947,7 +947,7 @@ listView.ScrollTo(monkey, position: ScrollToPosition.End, animate: true);
 
 ## Add context menus
 
-<xref:Microsoft.Maui.Controls.ListView> supports context menus items, which are defined as `MenuItem` objects that are added to the `ViewCell.ContextActions` collection in the <xref:Microsoft.Maui.Controls.DataTemplate> for each item:
+<xref:Microsoft.Maui.Controls.ListView> supports context menus items, which are defined as  <xref:Microsoft.Maui.Controls.MenuItem> objects that are added to the `ViewCell.ContextActions` collection in the <xref:Microsoft.Maui.Controls.DataTemplate> for each item:
 
 ```xaml
 <ListView x:Name="listView"
@@ -971,7 +971,7 @@ listView.ScrollTo(monkey, position: ScrollToPosition.End, animate: true);
 </ListView>
 ```
 
-The `MenuItem` objects are revealed when an item in the <xref:Microsoft.Maui.Controls.ListView> is right-clicked:
+The  <xref:Microsoft.Maui.Controls.MenuItem> objects are revealed when an item in the <xref:Microsoft.Maui.Controls.ListView> is right-clicked:
 
 :::image type="content" source="media/listview/contextmenuitems.png" alt-text="Screenshot of CollectionView context menu items.":::
 

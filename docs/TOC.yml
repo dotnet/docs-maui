@@ -413,6 +413,8 @@
                   href: user-interface/controls/twopaneview.md
         - name: Display pop-ups
           href: user-interface/pop-ups.md
+        - name: Display toolbar items
+          href: user-interface/toolbaritem.md
         - name: Display tooltips
           href: user-interface/tooltips.md
         - name: Fonts
@@ -449,6 +451,8 @@
               href: user-interface/context-menu.md
             - name: Display a menu bar
               href: user-interface/menu-bar.md
+            - name: Display menu items
+              href: user-interface/menuitem.md
         - name: Shadows
           href: user-interface/shadow.md
         - name: Styles
