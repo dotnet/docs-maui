@@ -63,6 +63,53 @@ In addition, if Java binding is enabled with `@(InputJar)`, `@(EmbeddedJar)`, or
 > [!NOTE]
 > Referencing an Android Wear project from an Android app isn't supported.
 
+## Changes to AndroidManifest.xml
+
+In Xamarin.Android, Java, and Kotlin Android projects, the `<uses-sdk/>` element denotes the minimum Android version your app supports, as well as the target Android version your app is compiled against:
+
+```xml
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:versionCode="1" 
+    android:versionName="1.0" 
+    package="com.companyname.myapp">
+  <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="33" />
+  <application android:icon="@mipmap/ic_launcher" android:label="@string/app_name" android:theme="@style/AppTheme" />
+</manifest>
+```
+
+See the [Android documentation](https://developer.android.com/guide/topics/manifest/uses-sdk-element) for more information about the `<uses-sdk/>` element.
+
+In .NET 6+ Android apps, there are MSBuild properties to set these values. Using the MSBuild properties has other benefits. In most cases the `<uses-sdk/>` element should be removed in favor of values in your project's `.csproj` file:
+
+```xml
+<Project>
+  <PropertyGroup>
+    <TargetFramework>net6.0-android</TargetFramework>
+    <SupportedOSPlatformVersion>21</SupportedOSPlatformVersion>
+  </PropertyGroup>
+</Project>
+```
+
+In this example, `net6.0-android` is shorthand for `net6.0-android31.0`. While in .NET 7, `net7.0-android` is shorthand for `net7.0-android33.0`. Future versions of .NET will track the latest Android version available at the time of the .NET release.
+
+`TargetFramework` maps to `android:targetSdkVersion`. At build time this value will automatically be included in the `<uses-sdk/>` element for you. The benefit of using `TargetFramework` in this way, is you are given the matching C# binding for Android API 31 for `net6.0-android31.0`. Android releases independently of the .NET release cycle, so we have the flexibility to opt into `net6.0-android32.0` when a binding is available sometime after .NET 6's release.
+
+Similarly, `SupportedOSPlatformVersion` maps to `android:minSdkVersion`. At build time this value will automatically be included in the `<uses-sdk/>` element for you. Android APIs are decorated with the <xref:System.Runtime.Versioning.SupportedOSPlatformAttribute> so that you will get build warnings for calling APIs that are only available for some of the Android versions your app can run on:
+
+```
+error CA1416: This call site is reachable on 'Android' 21.0 and later. `ConnectivityManager.ActiveNetwork` is only supported on: 'Android' 23.0 and later.
+```
+
+To safely use this API, you can declare a higher `SupportedOSPlatformVersion` in your project or use the <xref:System.OperatingSystem.IsAndroidVersionAtLeast%2A> API at runtime:
+
+```csharp
+if (OperatingSystem.IsAndroidVersionAtLeast(23))
+{
+    // Use the API here
+}
+```
+
 ## Default file inclusion
 
 Default .NET Android related file globbing behavior is defined in `AutoImport.props`. This behavior can be disabled for Android items by setting `$(EnableDefaultAndroidItems)` to `false`, or all default item inclusion behavior can be disabled by setting `$(EnableDefaultItems)` to `false`. For more information, see [Workload props files](https://github.com/dotnet/designs/blob/4703666296f5e59964961464c25807c727282cae/accepted/2020/workloads/workload-resolvers.md#workload-props-files).

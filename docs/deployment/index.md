@@ -8,6 +8,8 @@ ms.date: 05/15/2023
 
 .NET Multi-platform App UI (.NET MAUI) uses a single-project system to manage the configuration of your cross-platform app. This configuration includes properties and settings that control building and packaging the app on each platform. For more information, see [Project configuration for .NET MAUI apps](visual-studio-properties.md).
 
+There are many techniques for increasing the performance, and perceived performance, of .NET MAUI apps. Collectively these techniques can greatly reduce the amount of work being performed by a CPU, and the amount of memory consumed by an app. For more information, see [Improve app perforamnce](performance.md).
+
 ## Android
 
 You can debug and test your apps on the Android emulator, which can be run in a variety of configurations to simulate different devices. Each configuration is called a *virtual device*. When you deploy and test your apps on the emulator, you select a pre-configured or custom virtual device that simulates a physical Android device such as a Pixel phone. For more information, see [Debug on the Android Emulator](~/android/emulator/debug-on-emulator.md).
