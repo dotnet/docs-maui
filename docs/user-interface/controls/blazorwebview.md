@@ -112,7 +112,7 @@ The process to add a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWe
 
             builder.Services.AddMauiBlazorWebView();
     #if DEBUG
-            builder.Services.AddMauiBlazorWebViewDeveloperTools();
+            builder.Services.AddBlazorWebViewDeveloperTools();
     #endif
             // Register any app services on the IServiceCollection object
             // e.g. builder.Services.AddSingleton<WeatherForecastService>();
