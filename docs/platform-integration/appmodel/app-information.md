@@ -15,14 +15,14 @@ The default implementation of the `IAppInfo` interface is available through the 
 
 The `IAppInfo` interface exposes the following properties:
 
-- <xref:Microsoft.Maui.ApplicationModel.IAppInfo.Name> &mdash; The application name
+- <xref:Microsoft.Maui.ApplicationModel.IAppInfo.Name> &mdash; The application name.
 - <xref:Microsoft.Maui.ApplicationModel.IAppInfo.PackageName> &mdash; The package name or application identifier, such as `com.microsoft.myapp`.
 - <xref:Microsoft.Maui.ApplicationModel.IAppInfo.VersionString> &mdash; The application version, such as `1.0.0`.
 - <xref:Microsoft.Maui.ApplicationModel.IAppInfo.Version> &mdash; The application version, as a <xref:System.Version> object.
 - <xref:Microsoft.Maui.ApplicationModel.IAppInfo.BuildString> &mdash; The build number of the version, such as `1000`.
-- <xref:Microsoft.Maui.ApplicationModel.IAppInfo.RequestedTheme> &mdash; The detected theme of the system or app.
-- <xref:Microsoft.Maui.ApplicationModel.IAppInfo.PackagingModel> &mdash; The packaging model of the app.
-- <xref:Microsoft.Maui.ApplicationModel.IAppInfo.RequestedLayoutDirection> &mdash; The requested layout direction of the system or app.
+- <xref:Microsoft.Maui.ApplicationModel.IAppInfo.RequestedTheme> &mdash; The detected theme of the system or application.
+- <xref:Microsoft.Maui.ApplicationModel.IAppInfo.PackagingModel> &mdash; The packaging model of the application.
+- <xref:Microsoft.Maui.ApplicationModel.IAppInfo.RequestedLayoutDirection> &mdash; The requested layout direction of the system or application.
 
 The following code example demonstrates accessing some of these properties:
 
