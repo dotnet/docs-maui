@@ -18,7 +18,7 @@ To override the flow direction of an app, set the <xref:Microsoft.Maui.Controls.
 - `RightToLeft`
 - `MatchParent`
 
-Setting the <xref:Microsoft.Maui.Controls.VisualElement.FlowDirection> property to `RightToLeft` on an element sets the alignment to the right, the reading order to right-to-left, and the layout of the control to flow from right-to-left.
+<!-- Setting the <xref:Microsoft.Maui.Controls.VisualElement.FlowDirection> property to `RightToLeft` on an element sets the alignment to the right, the reading order to right-to-left, and the layout of the control to flow from right-to-left. -->
 
 > [!WARNING]
 > Changing the <xref:Microsoft.Maui.Controls.VisualElement.FlowDirection> property at runtime causes an expensive layout process that will affect performance.
@@ -26,7 +26,7 @@ Setting the <xref:Microsoft.Maui.Controls.VisualElement.FlowDirection> property 
 The default <xref:Microsoft.Maui.Controls.VisualElement.FlowDirection> property value for an element is `MatchParent`. Therefore, an element inherits the `FlowDirection` property value from its parent in the visual tree, and any element can override the value it gets from its parent.
 
 > [!TIP]
-> If you do need to change the flow direction, set the <xref:Microsoft.Maui.Controls.VisualElement.FlowDirection> property on a page or root layout. This causes all of the elements contained within the page, or root layout, to respond appropriately to the flow direction.
+> If you do need to change the flow direction, set the <xref:Microsoft.Maui.Controls.VisualElement.FlowDirection> property on a window, page or root layout. This causes all of the elements contained within the page, or root layout, to respond appropriately to the flow direction.
 
 ### Platform setup
 
