@@ -106,9 +106,11 @@ Alternatively, in Solution Explorer in Visual Studio, open the *Info.plist* file
 
 :::image type="content" source="media/localization/info-plist.png" alt-text="Screenshot of the supported locales for the app in the generic Info.plist editor.":::
 
+For more information about *Info.plist*, see [Information property list](~/macios/info-plist.md).
+
 ### Windows
 
-To support multiple languages in a .NET MAUI app on Windows you must declare each supported language in the *Package.appxmanifest* file in the *Resources\Windows* folder of your .NET MAUI app project:
+To support multiple languages in a .NET MAUI app on Windows you must declare each supported language in the *Resources\Windows\Package.appxmanifest* file of your .NET MAUI app project:
 
 1. Open the *Package.appxmanifest* file in a text editor and locate the following section:
 
