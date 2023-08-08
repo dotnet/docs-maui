@@ -12,13 +12,15 @@ Localization is the process of adapting an app to meet the specific language or 
 
 To localize a .NET Multi-platform App UI (.NET MAUI) app using resource files you should:
 
-1. Create resource files. For more information, see []().
-1. Specify the app's default culture. For more information, see []().
-1. Perform platform setup. For more information, see []().
-1. Localize text. For more information, see []().
-1. Localize images. For more information, see []().
-1. Localize the app name. For more information, see []().
-1. Test localization. For more information, see []().
+1. Create resource files. For more information, see [Create resource files](#create-resource-files).
+1. Specify the app's default culture. For more information, see [Specify the app's default culture](#specify-the-apps-default-culture).
+1. Perform platform setup. For more information, see [Perform platform setup](#perform-platform-setup).
+1. Localize text. For more information, see [Localize text](#localize-text).
+1. Localize images. For more information, see [Localize images](#localize-images).
+1. Localize the app name. For more information, see [Localize the app name](#localize-the-app-name).
+1. Test localization. For more information, see [Test localization](#test-localization).
+
+In addition, the layout direction of an app can be overridden. For more information, see [Right to left localization](#right-to-left-localization).
 
 ## Create resource files
 
