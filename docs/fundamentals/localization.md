@@ -202,9 +202,6 @@ In addition, in your project file you must set the `IPhoneResourcePrefix` build 
 
 If an image is not present for a particular language, iOS will fall back to the default native language folder and load the image from there.
 
-> [!NOTE]
-> iOS supports creating a localized Asset Catalog instead of using the .lproj folder structure. However, these must be created and managed in Xcode.
-
 ### Mac Catalyst
 
 On Mac Catalyst, localized images are stored using a folder-based naming convention in the *Platforms\\MacCatalyst\\Resources** folder. Folders are named with the language, and optional culture, followed by *.lproj*. For example, the Spanish-language folder is named *es.lproj*. The build action of each image should be set to **BundleResource**.
@@ -254,7 +251,119 @@ Image image = new Image { Source = imageSource };
 
 ## Localize the app name
 
-<!-- The application name is specified per-platform and does not use Resx resource files. To localize the application name on Android, see [Localize app name on Android](~/android/app-fundamentals/localization.md#stringsxml-file-format). To localize the application name on iOS, see [Localize app name on iOS](~/ios/app-fundamentals/localization/index.md#app-name). To localize the application name on UWP, see [Localize strings in the UWP package manifest](/windows/uwp/app-resources/localize-strings-ui-manifest). -->
+A localized app name is specified per-platform, and doesn't use resource files.
+
+### Android
+
+On Android, the localized app name can be stored using a folder-based naming convention in the *Platforms\\Android\\Resources* folder. Folders are named *values* with a suffix for the language and culture. For example, the Spanish-language folder is named *values-es*. A *Strings.xml* file should be added to each folder, with a build action of **AndroidResource**, that sets a string to the localized app name.
+
+Only two characters are required when specifying a top-level language, such as *es*. However, when specifying a full locale, the folder name format requires a dash and lowercase *r* to separate the language from the culture. For example, the Mexico locale (es-MX) folder should be named *values-es-rMX*.
+
+Each translatable string is an XML element with the resource ID specified as the `name` attribute and the translated string as the value. You need to escape according to normal XML rules, and the `name` must be a valid Android resource ID (no spaces or dashes).
+
+Therefore, to localize the app name add `<string>` element as the child of a `<resources>` element, set it's `name` attribute to a suitable ID with the translated string as the value:
+
+```xml
+<resources>
+    <!-- French -->
+    <string name="app_name">Maison</string>    
+</resources>
+```
+
+Then, to use the localized app name in your app add the [`Label`](xref:Android.App.ActivityAttribute.Label) property to the [`Activity`](xref:Android.App.ActivityAttribute) in your app's `MainActivity` class, and set its value to `@string/id`:
+
+```csharp
+[Activity(Label = "@string/app_name", Theme = "@style/Maui.SplashTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize | ConfigChanges.Density)]
+public class MainActivity : MauiAppCompatActivity
+{
+    protected override void OnCreate(Bundle savedInstanceState)
+    {
+        base.OnCreate(savedInstanceState);
+    }
+}
+```
+
+### iOS and Mac Catalyst
+
+On iOS, the localized app name is stored using a folder-based naming convention in the *Platforms\\iOS\\Resources** folder. Folders are named with the language, and optional culture, followed by *.lproj*. For example, the Spanish-language folder is named *es.lproj*. A *InfoPlist.strings* file should be added to each folder, with a build action of **BundleResource**, that sets the `CFBundleDisplayName` key and value.
+
+The syntax for localized string values is:
+
+```text
+/* comment */
+"key"="localized-value";
+```
+
+You should escape the following characters in strings:
+
+- `\"` quote
+- `\\` backslash
+- `\n` newline
+
+Therefore, to localize the app name add a value for the `CFBundleDisplayName` key to the *InfoPlist.strings* file:
+
+```text
+/* French */
+CFBundleDisplayName="Maisons";
+```
+
+Other keys that you can use to localize app-specific strings are:
+
+- `CFBundleName` - specifics the short name of the app bundle, which may be displayed to users in situations such as the absence of a value for `CFBundleDisplayName`.
+- `CFBundleShortVersionString` - specifies the release version number of the app bundle.
+- `NSHumanReadableCopyright` - the copyright notice for the app bundle.
+
+<!-- This is required on .NET 7 due to a bug in .NET MAUI, which might be fixed in .NET 8. -->
+In addition, in your project file you must set the `IPhoneResourcePrefix` build property to the folder that contains the localized folders:
+
+```xml
+<PropertyGroup Condition="$(TargetFramework.Contains('-ios'))">
+  <IPhoneResourcePrefix>Platforms/iOS/Resources</IPhoneResourcePrefix>
+</PropertyGroup>
+```
+
+### Mac Catalyst
+
+On MacCatalyst, the localized app name is stored using a folder-based naming convention in the *Platforms\\MacCatalyst\\Resources** folder. Folders are named with the language, and optional culture, followed by *.lproj*. For example, the Spanish-language folder is named *es.lproj*. A *InfoPlist.strings* file should be added to each folder, with a build action of **BundleResource** that sets the `CFBundleDisplayName` key and value.
+
+The syntax for localized string values is:
+
+```text
+/* comment */
+"key"="localized-value";
+```
+
+You should escape the following characters in strings:
+
+- `\"` quote
+- `\\` backslash
+- `\n` newline
+
+Therefore, to localize the app name add a value for the `CFBundleDisplayName` key to the *InfoPlist.strings* file:
+
+```text
+/* French */
+CFBundleDisplayName="Maisons";
+```
+
+Other keys that you can use to localize app-specific strings are:
+
+- `CFBundleName` - specifics the short name of the app bundle, which may be displayed to users in situations such as the absence of a value for `CFBundleDisplayName`.
+- `CFBundleShortVersionString` - specifies the release version number of the app bundle.
+- `NSHumanReadableCopyright` - the copyright notice for the app bundle.
+
+<!-- This is required on .NET 7 due to a bug in .NET MAUI, which might be fixed in .NET 8. -->
+In addition, in your project file you must set the `IPhoneResourcePrefix` build property to the folder that contains the localized folders:
+
+```xml
+<PropertyGroup Condition="$(TargetFramework.Contains('-maccatalyst'))">
+  <IPhoneResourcePrefix>Platforms/MacCatalyst/Resources</IPhoneResourcePrefix>
+</PropertyGroup>
+```
+
+### Windows
+
+https://learn.microsoft.com/en-us/windows/uwp/app-resources/localize-strings-ui-manifest
 
 ## Test localization
 
