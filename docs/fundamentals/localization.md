@@ -173,71 +173,88 @@ The properties in the `AppResources` class use the <xref:System.Globalization.Cu
 
 ## Localize images
 
-In addition to storing text, Resx files are capable of storing more than just text, they can also store images and binary data. However, mobile devices have a range of screen sizes and densities and each mobile platform has functionality for displaying density-dependent images. Therefore, platform image localization functionality should be used instead of storing images in resource files.
+In addition to storing text, resource files can also store images and binary data. However, devices have a range of screen sizes and densities and each platform has functionality for displaying density-dependent images. Therefore, platform image localization functionality should be used instead of storing images in resource files.
 
 ### Android
 
-On Android, localized drawables (images) are stored using a naming convention for folders in the **Resources** directory. Folders are named **drawable** with a suffix for the target language. For example, the Spanish-language folder is named **drawable-es**.
+On Android, localized images, known as drawables, are stored using a folder-based naming convention in the *Platforms\\Android\\Resources* folder. Folders are named *drawable* with a suffix for the language and culture. For example, the Spanish-language folder is named *drawable-es*. The folder name *drawable* should contain the images for your default language and culture. The build action of each image should be set to **AndroidResource**.
 
-When a four-letter locale code is required, Android requires an additional **r** following the dash. For example, the Mexico locale (es-MX) folder should be named **drawable-es-rMX**. The image file names in each locale folder should be identical:
+Only two characters are required when specifying a top-level language, such as *es*. However, when specifying a full locale, the folder name format requires a dash and lowercase *r* to separate the language from the culture. For example, the Mexico locale (es-MX) folder should be named *drawable-es-rMX*. The image file names in each locale folder should be identical:
 
-![Localized images in the Android project](text-images/pc-android-images.png)
+:::image type="content" source="media/localization/images-folder-structure-android.png" alt-text="Screenshot of the localized folder structure in Visual Studio for images on Android.":::
 
-For more information, see [Android Localization](~/android/app-fundamentals/localization.md).
+### iOS
 
-### iOS and Mac Catalyst
+On iOS, localized images are stored using a folder-based naming convention in the *Platforms\\iOS\\Resources** folder. Folders are named with the language, and optional culture, followed by *.lproj*. For example, the Spanish-language folder is named *es.lproj*. The build action of each image should be set to **BundleResource**.
 
-On iOS, localized images are stored using a naming convention for folders in the **Resources** directory. The default folder is named **Base.lproj**. Language-specific folders are named with the language or locale name, followed by **.lproj**. For example, the Spanish-language folder is named **es.lproj**.
+Only two characters are required when specifying a top-level language, such as *es*. However, when specifying a full locale, the folder name format requires a dash to separate the language from the culture. For example, the Mexico locale (es-MX) folder should be named *es-MX.lproj*. The image file names in each locale folder should be identical:
 
-Four-letter local codes work just like two-letter language codes. For example, the Mexico locale (es-MX) folder should be named **es-MX.lproj**. The image file names in each locale folder should be identical:
+:::image type="content" source="media/localization/images-folder-structure-ios.png" alt-text="Screenshot of the localized folder structure in Visual Studio for images on iOS.":::
 
-![Localized images in the iOS project](text-images/pc-ios-images.png)
+<!-- This is required on .NET 7 due to a bug in .NET MAUI, which might be fixed in .NET 8. -->
+In addition, in your project file you must set the `IPhoneResourcePrefix` build property to the folder that contains the localized image folders:
+
+```xml
+<PropertyGroup Condition="$(TargetFramework.Contains('-ios'))">
+  <IPhoneResourcePrefix>Platforms/iOS/Resources</IPhoneResourcePrefix>
+</PropertyGroup>
+```
+
+If an image is not present for a particular language, iOS will fall back to the default native language folder and load the image from there.
 
 > [!NOTE]
 > iOS supports creating a localized Asset Catalog instead of using the .lproj folder structure. However, these must be created and managed in Xcode.
 
-For more information, see [iOS Localization](~/ios/app-fundamentals/localization/index.md).
+### Mac Catalyst
+
+On Mac Catalyst, localized images are stored using a folder-based naming convention in the *Platforms\\MacCatalyst\\Resources** folder. Folders are named with the language, and optional culture, followed by *.lproj*. For example, the Spanish-language folder is named *es.lproj*. The build action of each image should be set to **BundleResource**.
+
+Only two characters are required when specifying a top-level language, such as *es*. However, when specifying a full locale, the folder name format requires a dash to separate the language from the culture. For example, the Mexico locale (es-MX) folder should be named *es-MX.lproj*. The image file names in each locale folder should be identical:
+
+:::image type="content" source="media/localization/images-folder-structure-maccatalyst.png" alt-text="Screenshot of the localized folder structure in Visual Studio for images on MacCatalyst.":::
+
+<!-- This is required on .NET 7 due to a bug in .NET MAUI, which might be fixed in .NET 8. -->
+In addition, in your project file you must set the `IPhoneResourcePrefix` build property to the folder that contains the localized image folders:
+
+```xml
+<PropertyGroup Condition="$(TargetFramework.Contains('-maccatalyst'))">
+  <IPhoneResourcePrefix>Platforms/MacCatalyst/Resources</IPhoneResourcePrefix>
+</PropertyGroup>
+```
+
+If an image is not present for a particular language, MacCatalyst will fall back to the default native language folder and load the image from there.
 
 ### Windows
 
-On UWP, localized images are stored using a naming convention for folders in the **Assets/Images** directory. Folders are named with the language or locale. For example, the Spanish-language folder is named **es** and the Mexico locale folder should be named **es-MX**. The image file names in each locale folder should be identical:
+On Windows, localized images are stored using a folder-based naming convention in the *Platforms\\Windows\\Assets\\Images** folder. Folders are named with the language, and optional culture. For example, the Spanish-language folder is named *es* and the Mexico locale folder should be named *es-MX*. The image file names in each locale folder should be identical:
 
-![Localized images in the UWP project](text-images/pc-uwp-images.png)
-
-For more information, see [UWP Localization](/windows/uwp/design/globalizing/globalizing-portal/).
+:::image type="content" source="media/localization/images-folder-structure-windows.png" alt-text="Screenshot of the localized folder structure in Visual Studio for images on Windows.":::
 
 ### Consume localized images
 
-Since each platform stores images with a unique file structure, the XAML uses the `OnPlatform` class to set the `ImageSource` property based on the current platform:
+On Android, iOS, and MacCatalyst localized images can be consumed by setting the <xref:Microsoft.Maui.Controls.Image.Source> property of an <xref:Microsoft.Maui.Controls.Image> to the image filename. However, on Windows `Image.Source` must be set to the path and filename of the image. This can be accomplished in XAML by using the [`OnPlatform`](xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension) markup extension:
 
 ```xaml
-<Image>
-    <Image.Source>
-        <OnPlatform x:TypeArguments="ImageSource">
-            <On Platform="iOS, Android" Value="flag.png" />
-            <On Platform="UWP" Value="Assets/Images/flag.png" />
-        </OnPlatform>
-    </Image.Source>
-</Image>
+<Image Source="{OnPlatform flag.png, WinUI=Platforms/Windows/Assets/Images/flag.png}" />
 ```
 
-> [!NOTE]
-> The `OnPlatform` markup extension offers a more concise way of specifying platform-specific values. For more information, see [OnPlatform markup extension](~/xamarin-forms/xaml/markup-extensions/consuming.md#onplatform-markup-extension).
+For more information about the [`OnPlatform`](xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension) markup extension, see [Customize UI appearance based on the platform](~/platform-integration/customize-ui-appearance.md#customize-ui-appearance-based-on-the-platform).
 
-The image source can be set based on the `Device.RuntimePlatform` property in code:
+The equivalent C# code uses the <xref:Microsoft.Maui.Devices.DeviceInfo> API to obtain the current platform:
 
 ```csharp
-string imgSrc = Device.RuntimePlatform == Device.UWP ? "Assets/Images/flag.png" : "flag.png";
-Image flag = new Image
-{
-    Source = ImageSource.FromFile(imgSrc),
-    WidthRequest = 100
-};
+FileImageSource imageSource = new FileImageSource();
+if (DeviceInfo.Current.Platform == DevicePlatform.WinUI)
+      imageSource.File = "Platforms/Windows/Assets/Images/flag.png";
+else
+      imageSource.File = "flag.png";
+
+Image image = new Image { Source = imageSource };
 ```
 
 ## Localize the app name
 
-The application name is specified per-platform and does not use Resx resource files. To localize the application name on Android, see [Localize app name on Android](~/android/app-fundamentals/localization.md#stringsxml-file-format). To localize the application name on iOS, see [Localize app name on iOS](~/ios/app-fundamentals/localization/index.md#app-name). To localize the application name on UWP, see [Localize strings in the UWP package manifest](/windows/uwp/app-resources/localize-strings-ui-manifest).
+<!-- The application name is specified per-platform and does not use Resx resource files. To localize the application name on Android, see [Localize app name on Android](~/android/app-fundamentals/localization.md#stringsxml-file-format). To localize the application name on iOS, see [Localize app name on iOS](~/ios/app-fundamentals/localization/index.md#app-name). To localize the application name on UWP, see [Localize strings in the UWP package manifest](/windows/uwp/app-resources/localize-strings-ui-manifest). -->
 
 ## Test localization
 
