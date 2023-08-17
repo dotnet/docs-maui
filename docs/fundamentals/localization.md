@@ -1,7 +1,7 @@
 ---
 title: "Localization"
-description: "Learn how to localize .NET MAUI apps using .NET resource files."
-ms.date: 08/07/2023
+description: "Learn how to localize .NET MAUI app strings, images, and app names."
+ms.date: 08/18/2023
 ---
 
 # Localization
@@ -542,29 +542,24 @@ The string resource that represents the app name can be consumed by using the `m
 
 ## Test localization
 
-At runtime, an app loads the appropriate localized resources on a per-thread basis, based on the culture specified by the <xref:System.Globalization.CultureInfo.CurrentUICulture> property.
-
-Testing localization is best accomplished by changing your device language:
-
-- On Android, this can be accomplished in the Settings app. In the Settings app, you can also set the language for each app without changing your device language.
-- On iOS, this can be accomplished in the Settings app. In the Settings app, you can also set the language for each app without changing your device language.
-- On Mac, this can be accomplished in System Settings. In System Settings, you can also set the language for each app without changing your device language.
-- On Windows, this can be accomplished in Settings.
+At runtime, your app loads the appropriate localized resources on a per-thread basis, based on the culture specified by the <xref:System.Globalization.CultureInfo.CurrentUICulture> property.
 
 > [!WARNING]
 > While it's possible to set the value of <xref:System.Globalization.CultureInfo.CurrentUICulture> in code, the resulting behavior is inconsistent across platforms so this isn't recommended for testing.
+
+Testing localization is best accomplished by changing your device language in the Settings app on each device.
 
 ## Right-to-left localization
 
 Flow direction, or layout direction, is the direction in which the UI elements on the page are scanned by the eye. Some languages, such as Arabic and Hebrew, require that UI elements are laid out in a right-to-left flow direction. .NET MAUI apps automatically respect the device's flow direction based on the selected language and region. For information about how to retrieve the flow direction of the device, based on its locale, see [Get the layout direction](~/platform-integration/appmodel/app-information.md#get-the-layout-direction).
 
-To override the flow direction of an app, set the <xref:Microsoft.Maui.Controls.VisualElement.FlowDirection?displayProperty=nameWithType> property. This property gets or sets the direction in which UI elements flow within any parent element that controls their layout, and should be set to one of the <xref:Microsoft.Maui.FlowDirection> enumeration values:
+To override the flow direction of an app, set the <xref:Microsoft.Maui.Controls.Window.FlowDirection?displayProperty=nameWithType> property. Alternatively, set the <xref:Microsoft.Maui.Controls.VisualElement.FlowDirection?displayProperty=nameWithType> property on a per element basis. These properties get or set the direction in which UI elements flow within any parent element that controls their layout, and should be set to one of the <xref:Microsoft.Maui.FlowDirection> enumeration values:
 
 - `LeftToRight`
 - `RightToLeft`
 - `MatchParent`
 
-<!-- Setting the <xref:Microsoft.Maui.Controls.VisualElement.FlowDirection> property to `RightToLeft` on an element sets the alignment to the right, the reading order to right-to-left, and the layout of the control to flow from right-to-left. -->
+Setting the <xref:Microsoft.Maui.Controls.VisualElement.FlowDirection> property to `RightToLeft` on an element sets the alignment to the right, the reading order to right-to-left, and the layout of the control to flow from right-to-left.
 
 > [!WARNING]
 > Changing the <xref:Microsoft.Maui.Controls.VisualElement.FlowDirection> property at runtime causes an expensive layout process that will affect performance.
