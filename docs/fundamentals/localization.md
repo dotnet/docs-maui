@@ -527,7 +527,7 @@ There's currently no Visual Studio item template for creating a Windows resource
 
 An example of the folder and file structure is shown in the following screenshot:
 
-:::image type="content" source="media/localization/windows-strings-folder.png" alt-text="Screenshot of the localized folder structure in Visual Studio for strings on Windows.":::
+:::image type="content" source="media/localization/windows-strings-folders.png" alt-text="Screenshot of the localized folder structure in Visual Studio for strings on Windows.":::
 
 #### Consume the localized app name
 
