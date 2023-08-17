@@ -50,7 +50,7 @@ At runtime, your app attempts to resolve a resource request in order of specific
 1. AppResources.en.resx
 1. AppResources.resx (default)
 
-The following screenshot shows a Spanish translation file named **AppResources.es.resx**:
+The following screenshot shows a Spanish translation file named *AppResources.es.resx*:
 
 :::image type="content" source="media/localization/spanish-strings.png" alt-text="Screenshot of the Spanish strings for the app.":::
 
@@ -185,7 +185,7 @@ Only two characters are required when specifying a top-level language, such as *
 
 ### iOS
 
-On iOS, localized images are stored using a folder-based naming convention in the *Platforms\\iOS\\Resources** folder. Folders are named with the language, and optional culture, followed by *.lproj*. For example, the Spanish-language folder is named *es.lproj*. The build action of each image should be set to **BundleResource**.
+On iOS, localized images are stored using a folder-based naming convention in the *Platforms\\iOS\\Resources* folder. Folders are named with the language, and optional culture, followed by *.lproj*. For example, the Spanish-language folder is named *es.lproj*. The build action of each image should be set to **BundleResource**.
 
 Only two characters are required when specifying a top-level language, such as *es*. However, when specifying a full locale, the folder name format requires a dash to separate the language from the culture. For example, the Mexico locale (es-MX) folder should be named *es-MX.lproj*. The image file names in each locale folder should be identical:
 
@@ -204,7 +204,7 @@ If an image is not present for a particular language, iOS will fall back to the 
 
 ### Mac Catalyst
 
-On Mac Catalyst, localized images are stored using a folder-based naming convention in the *Platforms\\MacCatalyst\\Resources** folder. Folders are named with the language, and optional culture, followed by *.lproj*. For example, the Spanish-language folder is named *es.lproj*. The build action of each image should be set to **BundleResource**.
+On Mac Catalyst, localized images are stored using a folder-based naming convention in the *Platforms\\MacCatalyst\\Resources* folder. Folders are named with the language, and optional culture, followed by *.lproj*. For example, the Spanish-language folder is named *es.lproj*. The build action of each image should be set to **BundleResource**.
 
 Only two characters are required when specifying a top-level language, such as *es*. However, when specifying a full locale, the folder name format requires a dash to separate the language from the culture. For example, the Mexico locale (es-MX) folder should be named *es-MX.lproj*. The image file names in each locale folder should be identical:
 
@@ -223,7 +223,7 @@ If an image is not present for a particular language, MacCatalyst will fall back
 
 ### Windows
 
-On Windows, localized images are stored using a folder-based naming convention in the *Platforms\\Windows\\Assets\\Images** folder. Folders are named with the language, and optional culture. For example, the Spanish-language folder is named *es* and the Mexico locale folder should be named *es-MX*. The image file names in each locale folder should be identical:
+On Windows, localized images are stored using a folder-based naming convention in the *Platforms\\Windows\\Assets\\Images* folder. Folders are named with the language, and optional culture. For example, the Spanish-language folder is named *es* and the Mexico locale folder should be named *es-MX*. The image file names in each locale folder should be identical:
 
 :::image type="content" source="media/localization/images-folder-structure-windows.png" alt-text="Screenshot of the localized folder structure in Visual Studio for images on Windows.":::
 
@@ -285,7 +285,7 @@ public class MainActivity : MauiAppCompatActivity
 
 ### iOS and Mac Catalyst
 
-On iOS, the localized app name is stored using a folder-based naming convention in the *Platforms\\iOS\\Resources** folder. Folders are named with the language, and optional culture, followed by *.lproj*. For example, the Spanish-language folder is named *es.lproj*. A *InfoPlist.strings* file should be added to each folder, with a build action of **BundleResource**, that sets the `CFBundleDisplayName` key and value.
+On iOS, the localized app name is stored using a folder-based naming convention in the *Platforms\\iOS\\Resources* folder. Folders are named with the language, and optional culture, followed by *.lproj*. For example, the Spanish-language folder is named *es.lproj*. A *InfoPlist.strings* file should be added to each folder, with a build action of **BundleResource**, that sets the `CFBundleDisplayName` key and value.
 
 The syntax for localized string values is:
 
@@ -324,7 +324,7 @@ In addition, in your project file you must set the `IPhoneResourcePrefix` build 
 
 ### Mac Catalyst
 
-On MacCatalyst, the localized app name is stored using a folder-based naming convention in the *Platforms\\MacCatalyst\\Resources** folder. Folders are named with the language, and optional culture, followed by *.lproj*. For example, the Spanish-language folder is named *es.lproj*. A *InfoPlist.strings* file should be added to each folder, with a build action of **BundleResource** that sets the `CFBundleDisplayName` key and value.
+On MacCatalyst, the localized app name is stored using a folder-based naming convention in the *Platforms\\MacCatalyst\\Resources* folder. Folders are named with the language, and optional culture, followed by *.lproj*. For example, the Spanish-language folder is named *es.lproj*. A *InfoPlist.strings* file should be added to each folder, with a build action of **BundleResource** that sets the `CFBundleDisplayName` key and value.
 
 The syntax for localized string values is:
 
@@ -363,7 +363,182 @@ In addition, in your project file you must set the `IPhoneResourcePrefix` build 
 
 ### Windows
 
-https://learn.microsoft.com/en-us/windows/uwp/app-resources/localize-strings-ui-manifest
+On Windows, your app name is defined in your app package manifest. Localizing this app name requires you to first specify the default language for the app, and then create a string resource file for each locale you intend to support. The string resource that represents the localized app name can then be consumed in your app package manifest by using the `ms-resource` URI scheme.
+
+For more information about localizing strings in your app package manifest, see [Localize strings in your UI and app package manifest](/windows/uwp/app-resources/localize-strings-ui-manifest).
+
+#### Specify the default language
+
+For Windows resource files to work correctly, the Windows app must have a default language specified. This is the language whose resources are used if no localized resources for a particular language can be found. To specify the default culture:
+
+1. In Solution Explorer, open the *Packageappxmanifest* file in the package manifest editor.
+1. In the manifest editor, on the **Application** tab, set the **Default language** field to your chosen default language:
+
+    :::image type="content" source="media/localization/windows-default-language.png" alt-text="Screenshot of setting the default language of a Windows app in the package manifest.":::
+
+1. Save your changes.
+
+At a minimum, you'll need to provide a string resource for the app name for this default language. This is the resource that will be loaded if no better match can be found for the user's preferred language or display language settings.
+
+#### Create Windows resource files
+
+On Windows, the localized app name can be stored in a Windows resource file for each locale. A Windows resource file is an XML file with a *.resw* extension that's compiled into a binary format and stored in a *.pri* file. The *.resw* file for each locale should be named *Resources.resx* and stored using a folder-based naming convention in the *Platforms\\Windows\\Strings\\* folder. Folders are named with the language, and optional culture. For example, the Spanish-language folder is named *es* and the Mexico locale folder should be named *es-MX*.
+
+There's currently no Visual Studio item template for creating a Windows resource file in a .NET MAUI app. Therefore, to create a Windows resource file for each locale:
+
+1. In the *Platforms\\Windows\\* folder of your .NET MAUI app project, create a *Strings* folder.
+1. In the *Strings* folder, create a folder for each locale.
+1. In the folder for each locale, create a new file named *Resources.resw* that contains the following XML:
+
+  ```xml
+  <?xml version="1.0" encoding="utf-8"?>
+  <root>
+    <!--
+      Microsoft ResX Schema
+
+      Version 2.0
+
+      The primary goals of this format is to allow a simple XML format
+      that is mostly human readable. The generation and parsing of the
+      various data types are done through the TypeConverter classes
+      associated with the data types.
+
+      Example:
+
+      ... ado.net/XML headers & schema ...
+      <resheader name="resmimetype">text/microsoft-resx</resheader>
+      <resheader name="version">2.0</resheader>
+      <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+      <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+      <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+      <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+      <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+          <value>[base64 mime encoded serialized .NET Framework object]</value>
+      </data>
+      <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+          <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+          <comment>This is a comment</comment>
+      </data>
+
+      There are any number of "resheader" rows that contain simple
+      name/value pairs.
+
+      Each data row contains a name, and value. The row also contains a
+      type or mimetype. Type corresponds to a .NET class that support
+      text/value conversion through the TypeConverter architecture.
+      Classes that don't support this are serialized and stored with the
+      mimetype set.
+
+      The mimetype is used for serialized objects, and tells the
+      ResXResourceReader how to depersist the object. This is currently not
+      extensible. For a given mimetype the value must be set accordingly:
+
+      Note - application/x-microsoft.net.object.binary.base64 is the format
+      that the ResXResourceWriter will generate, however the reader can
+      read any of the formats listed below.
+
+      mimetype: application/x-microsoft.net.object.binary.base64
+      value   : The object must be serialized with
+              : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+              : and then encoded with base64 encoding.
+
+      mimetype: application/x-microsoft.net.object.soap.base64
+      value   : The object must be serialized with
+              : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+              : and then encoded with base64 encoding.
+
+      mimetype: application/x-microsoft.net.object.bytearray.base64
+      value   : The object must be serialized into a byte array
+              : using a System.ComponentModel.TypeConverter
+              : and then encoded with base64 encoding.
+      -->
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+      <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+      <xsd:element name="root" msdata:IsDataSet="true">
+        <xsd:complexType>
+          <xsd:choice maxOccurs="unbounded">
+            <xsd:element name="metadata">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                </xsd:sequence>
+                <xsd:attribute name="name" use="required" type="xsd:string" />
+                <xsd:attribute name="type" type="xsd:string" />
+                <xsd:attribute name="mimetype" type="xsd:string" />
+                <xsd:attribute ref="xml:space" />
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="assembly">
+              <xsd:complexType>
+                <xsd:attribute name="alias" type="xsd:string" />
+                <xsd:attribute name="name" type="xsd:string" />
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="data">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                  <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                </xsd:sequence>
+                <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+                <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+                <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+                <xsd:attribute ref="xml:space" />
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="resheader">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                </xsd:sequence>
+                <xsd:attribute name="name" type="xsd:string" use="required" />
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+      <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+      <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+      <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+      <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+  </root>
+  ```
+
+1. Open each *Resources.resw* file and add a string resource that represents the app's name:
+
+    :::image type="content" source="media/localization/resw-editor.png" alt-text="Screenshot of the resw file editor in Visual Studio on Windows.":::
+
+    > [!NOTE]
+    > Resource identifiers are case insensitive, and must be unique per resource file.
+
+1. Save the Windows resource files.
+
+> [!NOTE]
+> Windows resource files use a build action of `PRIResource`. This build action doesn't need setting on each *.resw* file in a .NET MAUI app, because it's implicitly applied.
+
+An example of the folder and file structure is shown in the following screenshot:
+
+:::image type="content" source="media/localization/windows-strings-folder.png" alt-text="Screenshot of the localized folder structure in Visual Studio for strings on Windows.":::
+
+#### Consume the localized app name
+
+The string resource that represents the app name can be consumed by using the `ms-resource` URI scheme:
+
+1. In Solution Explorer, open the *Packageappxmanifest* file in the package manifest editor.
+1. In the manifest editor, on the **Application** tab, set the **Display name** field to `ms-resource:` followed by the name of the string resource that identifies your app name:
+
+    :::image type="content" source="media/localization/windows-localize-app-name.png" alt-text="Screenshot of setting the localized app name in the package manifest on Windows.":::
+
+1. Save your changes.
 
 ## Test localization
 
