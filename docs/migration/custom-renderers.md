@@ -111,5 +111,5 @@ The custom renderer can be consumed in a .NET MAUI app as a custom control:
     </Grid>
 </ContentPage>
 ```
-### Output on iOS
+**Results on iOS**
 ![Simulator Screen Recording - iPhone 14 Plus - 2023-08-17 at 16 00 26](https://github.com/dotnet/docs-maui/assets/56357686/00391582-af9f-44a6-8c2c-735aff6ffd08)
