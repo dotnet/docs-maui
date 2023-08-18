@@ -385,11 +385,11 @@ At a minimum, you'll need to provide a string resource for the app name for the 
 
 #### Create Windows resource files
 
-On Windows, the localized app name should be stored in a Windows resource file for each locale. A Windows resource file is an XML file with a *.resw* extension that's compiled into a binary format and stored in a *.pri* file. The *.resw* file for each locale should be named *Resources.resw* and stored using a folder-based naming convention in the *Platforms\Windows\Strings\* folder. Folders should be named with the language, and optional culture. For example, the Spanish-language folder is named *es* and the Mexico locale folder should be named *es-MX*.
+On Windows, the localized app name should be stored in a Windows resource file for each locale. A Windows resource file is an XML file with a *.resw* extension that's compiled into a binary format and stored in a *.pri* file. The *.resw* file for each locale should be named *Resources.resw* and stored using a folder-based naming convention in the *Platforms\Windows\Strings* folder. Folders should be named with the language, and optional culture. For example, the Spanish-language folder is named *es* and the Mexico locale folder should be named *es-MX*.
 
 There's currently no Visual Studio item template for creating a Windows resource file in a .NET MAUI app. Therefore, to create a Windows resource file for each locale:
 
-1. In the *Platforms\Windows\* folder of your .NET MAUI app project, create a *Strings* folder.
+1. In the *Platforms\Windows* folder of your .NET MAUI app project, create a *Strings* folder.
 1. In the *Strings* folder, create a folder for each locale.
 1. In the folder for each locale, create a file named *Resources.resw* that contains the following XML:
 
