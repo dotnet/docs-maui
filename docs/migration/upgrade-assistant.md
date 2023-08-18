@@ -86,6 +86,7 @@ Right click on the project in the Solution Explorer and select **Upgrade**.
 ## Upgrade Interactions
 
 The upgrade assistant will prompt you with two styles of upgrades:
+
 * **In-place**: This option upgrades your project without making a copy.
 
 * **Side-by-side**: This option copies your project and upgrades the copy, leaving the original project alone.
