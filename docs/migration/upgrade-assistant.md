@@ -69,15 +69,22 @@ You can update the upgrade assistant by:
 2. If you see .NET Upgrade Assistant here, then click Update.
 
 
-## Run upgrade-assistant
+## Running the upgrade-assistant in the CLI
 
-Open a terminal and navigate to the folder where the target project or solution is located. Run the `upgrade-assistant upgrade` command, passing in the name of the project or solution you're upgrading:
+Open a terminal and navigate to the folder where the target project or solution is located. Run the `upgrade-assistant upgrade` command:
 
 ```dotnetcli
 upgrade-assistant upgrade
 ```
 
 This command runs the tool updates all eligible files within the chosen project and dependent projects.
+
+## Running the upgrade-assistant in VS:
+
+Right click on the project in the Solution Explorer and select <b>Upgrade</b>. 
+
+## Upgrade Interactions 
+
 The upgrade assistant will prompt you with two styles of upgrades:
 * <b>In-place</b> : This option upgrades your project without making a copy.
 
