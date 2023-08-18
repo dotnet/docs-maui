@@ -31,7 +31,7 @@ For more information about .NET Upgrade Assistant, including the other app types
 .NET Upgrade Assistant is available for Windows and Mac, and only works with Xamarin.Forms projects. To use it, your Xamarin.Forms project must use Xamarin.Forms 4.8 or higher. However, for best success we recommend that your Xamarin.Forms project uses Xamarin.Forms 5.0, and .NET Standard 2.0 or higher.
 
 > [!IMPORTANT]
-> The .NET Upgrade Assistant for .NET MAUI is still under development. Please [file feedback](https://github.com/dotnet/upgrade-assistant/issues/new?assignees=&labels=&projects=&template=20_bug_report.md) ** with an 'area:Maui' label ** so we can continue to improve this tool.
+> The .NET Upgrade Assistant for .NET MAUI is still under development. Please [file feedback](https://github.com/dotnet/upgrade-assistant/issues/new?assignees=&labels=&projects=&template=20_bug_report.md) with an **'area:Maui' label** so we can continue to improve this tool.
 
 .NET Upgrade Assistant backs up your solution, but we recommend using source control. If you're using source control, you can add the `--skip-backup` parameter to bypass the backup and speed up the upgrade process.
 
