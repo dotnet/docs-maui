@@ -171,6 +171,8 @@
               href: fundamentals/gestures/swipe.md
             - name: Tap
               href: fundamentals/gestures/tap.md
+        - name: Localization
+          href: fundamentals/localization.md
         - name: Properties
           items:
             - name: Bindable properties
