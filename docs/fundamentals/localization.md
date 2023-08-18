@@ -6,7 +6,10 @@ ms.date: 08/18/2023
 
 # Localization
 
-Localization is the process of adapting an app to meet the specific language or cultural requirements of a target market. To accomplish localization, the text and images in an app may need to be translated into multiple languages. A localized app automatically displays translated text based on the culture settings of the device.
+<!-- Todo: Uncomment once the sample has ingested into the samples browser
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-localization) -->
+
+Localization is the process of adapting an app to meet the specific language or cultural requirements of a target market. To localize an app, its text and images may need to be translated into multiple languages. A localized app automatically displays translated text based on the culture settings of the device.
 
 .NET includes a mechanism for localizing apps using [resource files](/dotnet/core/extensions/create-resource-files). A resource file stores text and other content as name/value pairs that allow the app to retrieve content for a provided key. Resource files allow localized content to be separated from app code. In addition to storing text, resource files can also store images and binary data. However, devices have a range of screen sizes and densities and each platform has functionality for displaying density-dependent images. Therefore, platform functionality should be used for localizing images instead of storing them in resource files.
 
@@ -42,7 +45,7 @@ Once the file is added, rows can be added for each text resource:
 
 The **Access Modifier** drop-down determines how Visual Studio generates the class used to access resources. Setting the Access Modifier to **Public** or **Internal** results in a generated class with the specified accessibility level. Setting the Access Modifier to **No code generation** doesn't generate a class file. The default resource file should be configured to generate a class file, which results in a file with the *.Designer.cs* extension being added to the project.
 
-Once the default resource file is created, additional files can be created for each locale the app supports. Each additional resource file should have the same root filename as the default resource file, but should also include the culture in the filename. For example, if you add a resource file named *AppResources.resx*, you might also create resource files named *AppResources.en-US.resx* and *AppResources.fr-FR.resx* to hold localized resources for the English (United States) and French (France) cultures, respectively. In addition, you should set the **Access Modifier** for each additional resource file to **No code generation**.
+Once the default resource file is created, additional files can be created for each locale the app supports. Each additional resource file should have the same root filename as the default resource file, but should also include the language and optional culture in the filename. For example, if you add a resource file named *AppResources.resx*, you might also create resource files named *AppResources.en-US.resx* and *AppResources.fr-FR.resx* to hold localized resources for the English (United States) and French (France) cultures, respectively. In addition, you should set the **Access Modifier** for each additional resource file to **No code generation**.
 
 At runtime, your app attempts to resolve a resource request in order of specificity. For example, if the device culture is **en-US** the application looks for resource files in this order:
 
@@ -61,7 +64,7 @@ The localized resource file uses the same **Name** values specified in the defau
 For .NET resource files to work correctly, the app must have a neutral language specified. This is the language whose resources are used if resources for a locale can't be found. To specify the neutral language:
 
 1. In Solution Explorer, right-click your .NET MAUI app project and select **Properties**.
-1. Select the **Package > General** property page and select the appropriate language/culture from the **Assembly neutral language** drop-down:
+1. Select the **Package > General** property page and select the appropriate language and culture from the **Assembly neutral language** drop-down:
 
     :::image type="content" source="media/localization/neutral-language.png" alt-text="Screenshot of setting the neutral language for the assembly.":::
 
@@ -105,7 +108,7 @@ Alternatively, in Solution Explorer in Visual Studio, open the *Info.plist* file
 
 :::image type="content" source="media/localization/info-plist.png" alt-text="Screenshot of the supported locales for the app in the generic Info.plist editor.":::
 
-For more information about *Info.plist*, see [Information property list](~/macios/info-plist.md).
+For more information about the *Info.plist* file, see [Information property list](~/macios/info-plist.md).
 
 ### Windows
 
