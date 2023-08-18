@@ -106,6 +106,8 @@ landingContent:
             url: fundamentals/behaviors.md
           - text: Data binding
             url: fundamentals/data-binding/index.md
+          - text: Localization
+            url: fundamentals/localization.md
           - text: Resource dictionaries
             url: fundamentals/resource-dictionaries.md
           - text: Shell

@@ -161,7 +161,7 @@ To enable Google API access:
 
     :::image type="content" source="media/publish/vs/credentials-create.png" alt-text="Screenshot of selecting the create credentials button.":::
 
-1. In the **Create OAuth client ID** page, choose **Desktop app** in the **Application type** drop down, enter **Visual Studio** in the **Name** field, and then select the **CREATE** button:
+1. In the **Create OAuth client ID** page, choose **Desktop app** in the **Application type** drop-down, enter **Visual Studio** in the **Name** field, and then select the **CREATE** button:
 
     :::image type="content" source="media/publish/vs/credentials-create-oauth.png" alt-text="Screenshot of creating OAuth credentials.":::
 
