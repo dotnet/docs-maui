@@ -58,7 +58,7 @@ A .NET Multi-platform App UI (.NET MAUI) app can consume a REST-based web servic
 The `HttpClient` object should be declared at the class-level so that it lives for as long as the app needs to make HTTP requests:
 
 ```csharp
-public class RestService : IRestService
+public class RestService
 {
     HttpClient _client;
     JsonSerializerOptions _serializerOptions;
@@ -205,3 +205,4 @@ The REST service sends an HTTP status code in its response, which can be obtaine
 ## Local development
 
 If you're developing a REST web service locally with a framework such as ASP.NET Core Web API, you can debug your web service and .NET MAUI app at the same time. In this scenario, to consume your web service over HTTP from Android emulators and iOS simulators, you must enable clear-text HTTP traffic in your .NET MAUI app. For more information, see [Connect to local web services from Android emulators and iOS simulators](local-web-services.md).
+
