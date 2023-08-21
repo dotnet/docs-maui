@@ -58,7 +58,7 @@ A .NET Multi-platform App UI (.NET MAUI) app can consume a REST-based web servic
 The `HttpClient` object should be declared at the class-level so that it lives for as long as the app needs to make HTTP requests:
 
 ```csharp
-public class RestService : IRestService
+public class RestService
 {
     HttpClient _client;
     JsonSerializerOptions _serializerOptions;
