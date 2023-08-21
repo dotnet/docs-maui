@@ -1,13 +1,13 @@
 ---
 title: "Upgrade a Xamarin.Forms app to .NET MAUI with the .NET Upgrade Assistant"
 description: "Learn how to use .NET Upgrade Assistant to migrate a Xamarin.Forms app to .NET MAUI."
-ms.date: 02/15/2023
+ms.date: 08/21/2023
 no-loc: [ "Xamarin.Forms", "Xamarin.Essentials", "Xamarin.CommunityToolkit", ".NET MAUI Community Toolkit", "SkiaSharp", "Xamarin.Forms.Maps", "Microsoft.Maui", "Microsoft.Maui.Controls", "net7.0-android", "net7.0-ios" ]
 ---
 
 # Upgrade a Xamarin.Forms app to .NET MAUI with the .NET Upgrade Assistant
 
-The .NET Upgrade Assistant is a command-line tool that helps you upgrade Xamarin.Forms projects to .NET Multi-platform App UI (.NET MAUI) by converting the solution's project file and by performing common code updates. Specifically, the tool will:
+The .NET Upgrade Assistant helps you upgrade Xamarin.Forms projects to .NET Multi-platform App UI (.NET MAUI) by converting the solution's project file and by performing common code updates. Specifically, the tool will:
 
 - Convert the Xamarin.Forms class library project, Xamarin.iOS project, and Xamarin.Android project to SDK-style projects.
 - Update the target framework in project files to net7.0-android and net7.0-ios, as required.
@@ -28,14 +28,33 @@ For more information about .NET Upgrade Assistant, including the other app types
 
 ## Get started
 
-.NET Upgrade Assistant is available for Windows and Mac, and only works with Xamarin.Forms projects. To use it, your Xamarin.Forms project must use Xamarin.Forms 4.8 or higher. However, for best success we recommend that your Xamarin.Forms project uses Xamarin.Forms 5.0, and .NET Standard 2.0 or higher.
+.NET Upgrade Assistant is available as a Visual Studio extension on Windows, and as a CLI tool for Windows and Mac. To use it, your Xamarin.Forms project must use Xamarin.Forms 4.8 or higher. However, for best success we recommend that your Xamarin.Forms project uses Xamarin.Forms 5.0, and .NET Standard 2.0 or higher.
 
 > [!IMPORTANT]
-> The .NET Upgrade Assistant for .NET MAUI is still under development. Please [file feedback](https://github.com/maddymontaquila/maui-migration-samples/issues/new?assignees=&labels=&template=trial-migration-template.md&title=[MIGRATION]+Your+migration+name+here) so we can continue to improve this tool.
+> The .NET Upgrade Assistant for .NET MAUI is still under development. Please [file feedback](https://github.com/dotnet/upgrade-assistant/issues/new?assignees=&labels=&projects=&template=20_bug_report.md) with an **'area:Maui' label** so we can continue to improve this tool.
 
-.NET Upgrade Assistant backs up your solution, but we recommend using source control. If you're using source control, you can add the `--skip-backup` parameter to bypass the backup and speed up the upgrade process.
+.NET Upgrade Assistant will prompt you for the type of upgrade to perform:
+
+- **In-place**: This option upgrades your project without making a copy.
+- **Side-by-side**: This option copies your project and upgrades the copy, leaving the original project alone.
 
 ## Installation
+
+<!-- markdownlint-disable MD025 -->
+# [Visual Studio](#tab/vswin)
+<!-- markdownlint-enable MD025 -->
+
+Visual Studio 2022 version 17.6.0 or later is highly recommended to run the upgrade assistant. To install the upgrade assistant extension:
+
+1. Open Visual Studio and select the **Extensions > Manage Extensions** menu item.
+1. In the **Manage Extensions** dialog, search for and download the .NET Upgrade Assistant.
+1. Once the extension has been downloaded, close Visual Studio. The extension will then be installed.
+
+Extensions are updated automatically when a new version is available on Visual Studio Marketplace. For more information, see [Automatic extension updates](/visualstudio/ide/finding-and-using-visual-studio-extensions#automatic-extension-updates).
+
+<!-- markdownlint-disable MD025 -->
+# [CLI](#tab/cli)
+<!-- markdownlint-enable MD025 -->
 
 Install the .NET Upgrade Assistant globally with the following command:
 
@@ -43,7 +62,7 @@ Install the .NET Upgrade Assistant globally with the following command:
 dotnet tool install -g upgrade-assistant
 ```
 
-Similarly, because the .NET Upgrade Assistant is installed as a .NET tool, it can be easily updated by running:
+You can update .NET Upgrade Assistant with the following command:
 
 ```dotnetcli
 dotnet tool update -g upgrade-assistant
@@ -56,15 +75,31 @@ dotnet tool update -g upgrade-assistant
 > dotnet tool install -g --ignore-failed-sources upgrade-assistant
 > ```
 
-## Run upgrade-assistant
+---
 
-Open a terminal and navigate to the folder where the target project or solution is located. Run the `upgrade-assistant upgrade` command, passing in the name of the project or solution you're upgrading:
+## Run the upgrade assistant
+
+<!-- markdownlint-disable MD025 -->
+# [Visual Studio](#tab/vswin)
+<!-- markdownlint-enable MD025 -->
+
+Right-click on the project in Solution Explorer and select **Upgrade**.
+
+<!-- markdownlint-disable MD025 -->
+# [CLI](#tab/cli)
+<!-- markdownlint-enable MD025 -->
+
+Open a terminal and navigate to the folder where the target project or solution is located. Run the `upgrade-assistant upgrade` command:
 
 ```dotnetcli
-upgrade-assistant upgrade <sln or csproj> --non-interactive
+upgrade-assistant upgrade
 ```
 
-This command runs the tool in non-interactive mode. It updates all eligible projects in the solution and dependent projects.
+This command runs the tool updates all eligible files within the chosen project and dependent projects.
+
+<!-- .NET Upgrade Assistant backs up your solution, but we recommend using source control. If you're using source control, you can add the `--skip-backup` parameter to bypass the backup and speed up the upgrade process. -->
+
+---
 
 ## Next steps
 
