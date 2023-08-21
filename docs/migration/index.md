@@ -17,7 +17,7 @@ Xamarin projects can run on .NET, starting with .NET 6, after completing an upgr
 | Xamarin.Forms           | ✅       | [Upgrade Xamarin.Forms projects](forms-projects.md) |
 | iOS App Extensions      | ✅       | [Upgrade Xamarin native projects](native-projects.md) |
 | Android Wear            | ✅       | [Upgrade Xamarin native projects](native-projects.md) |
-| Android Binding Library | ✅       | Upgrade to SDK Style projects                     |
+| Android Binding Library | ✅       | [Upgrade Xamarin.Android binding projects](android-binding-projects.md) |
 | iOS Binding Library     | ✅       | Upgrade to SDK Style projects                     |
 | SpriteKit               | ✅       | [Upgrade Xamarin native projects](native-projects.md) |
 | SceneKit                | ✅       | [Upgrade Xamarin native projects](native-projects.md) |
