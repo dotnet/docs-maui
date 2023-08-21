@@ -6,7 +6,7 @@ ms.date: 08/21/2023
 
 # Xamarin.Android binding project migration
 
-In .NET 6+, there is no longer a concept of an Android binding project as a separate project type. Any of the MSBuild item groups or build actions that work in Xamarin.Android binding projects are supported through a .NET 6+ Android app or library.
+In .NET 6+, there's no concept of an Android binding project as a separate project type. Any of the MSBuild item groups or build actions that work in Xamarin.Android binding projects are supported through a .NET 6+ Android app or library.
 
 To migrate a Xamarin.Android binding library to a .NET Android class library:
 
