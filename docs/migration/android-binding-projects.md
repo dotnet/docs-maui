@@ -1,12 +1,12 @@
 ---
-title: "Upgrade Xamarin.Android binding projects"
+title: "Xamarin.Android binding project migration"
 description: "Learn how to upgrade a Xamarin.Android binding project to a .NET Android project."
 ms.date: 08/21/2023
 ---
 
-# Upgrade Xamarin.Android binding projects
+# Xamarin.Android binding project migration
 
-In .NET 6+, there is no longer a concept of a binding project as a separate project type. Any of the MSBuild item groups or build actions that work in Xamarin.Android binding projects are supported through a .NET 6+ Android app or library.
+In .NET 6+, there is no longer a concept of an Android binding project as a separate project type. Any of the MSBuild item groups or build actions that work in Xamarin.Android binding projects are supported through a .NET 6+ Android app or library.
 
 To migrate a Xamarin.Android binding library to a .NET Android class library:
 
@@ -28,7 +28,7 @@ To migrate a Xamarin.Android binding library to a .NET Android class library:
     ```
 
     > [!NOTE]
-    > The project file for an Android binding library is now identical to the project file for an Android class library.
+    > The project file for an Android binding library is identical to the project file for an Android class library.
 
 1. Add your Java Archive (JAR) or Android Archive (AAR) to the project and ensure that its build action is set to **AndroidLibrary**.
 1. Copy any transforms or additions from your Xamarin.Android bindings library.
