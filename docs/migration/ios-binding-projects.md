@@ -35,7 +35,7 @@ To migrate a Xamarin.iOS binding library to a .NET iOS class library:
     > [!NOTE]
     > The project file for an iOS binding library is similar to the project file for an iOS class library.
 
-1. Add your native library, or native framework, to the project and update the binding project file with the `<NativeReference>` item from your Xamarin.iOS binding project:
+1. Add your native library, or native framework, to the project as a native reference. Then update the binding project file with the `<NativeReference>` item from your Xamarin.iOS binding project:
 
     ```xml
     <ItemGroup>
