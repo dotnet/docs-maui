@@ -62,10 +62,6 @@ The `System.nint` and `System.nuint` types were removed from .NET iOS and replac
 
 The `System.nfloat` type was removed from .NET iOS and replaced with the `System.Runtime.InteropServices.NFloat` type. Any code that refers to `System.nfloat` will have to be modified to use `nfloat`, or the the fully qualified typename. In addition, the `nfloat.CopyArray` methods don't exist in the `System.Runtime.InteropServices.NFloat` type. Such code should be rewritten to use `Buffer.CopyMemory` instead.
 
-### System.NMath
-
-The `System.NMath` type has moved from the `System` namespace to the `ObjCRuntime` namespace. Therefore, code that uses the `NMath` type won't compile unless the `ObjCRuntime` namespace is imported. Alternatively, you could use methods in the `System.Math` type instead, which have overloads that take `nint` and `nuint` values.
-
 ### NSObject.Handle type change
 
 The `NSObject.Handle` and `INativeObject.Handle` properties have changed type from `System.IntPtr` to a `ObjCRuntime.NativeHandle` struct. This means that many other parameters and return values should change type. For example:
