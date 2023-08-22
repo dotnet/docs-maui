@@ -73,7 +73,7 @@ public class MainActivity : Activity
     {
         base.OnCreate(savedInstanceState);
         Platform.Init(this, savedInstanceState);
-        // ...  
+        // ...
     }
 }
 ```
@@ -84,7 +84,7 @@ The `Platform.Init` method requires an <xref:Android.App.Application> argument, 
 # [iOS](#tab/ios)
 <!-- markdownlint-enable MD025 -->
 
-In your `AppDelegate` class you must call the `Platform.Init` method, which is in the <xref:Microsoft.Maui.ApplicationModel> namespace, from the `FinishedLaunching` method:
+In your `AppDelegate` class, you must call the `Platform.Init` method, which is in the <xref:Microsoft.Maui.ApplicationModel> namespace, from the `FinishedLaunching` method:
 
 ```csharp
 using Microsoft.Maui.ApplicationModel;

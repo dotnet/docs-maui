@@ -28,7 +28,7 @@ Perform the following steps to create a keystore file:
     > [!IMPORTANT]
     > If you have multiple versions of the JDK installed on your computer, ensure that you run `keytool` from the latest version of the JDK.
 
-    You'll be prompted to provide and confirm a password, followed by your full name, organization unit, organization, city or locality, state or province, and country code. This information is not displayed in your app, but is included in your certificate.
+    You'll be prompted to provide and confirm a password, followed by your full name, organization unit, organization, city or locality, state or province, and country code. This information isn't displayed in your app, but is included in your certificate.
 
     For example, to generate a *myapp.keystore* file in the same folder as your project, with an alias of `myapp`, use the following command:
 
@@ -37,7 +37,7 @@ Perform the following steps to create a keystore file:
     ```
 
     > [!TIP]
-    > Backup your keystore and password. If you lose it you'll be unable to sign your app with the same signing identity.  
+    > Backup your keystore and password. If you lose it you'll be unable to sign your app with the same signing identity.
 
 ## Find your keystore's signature
 
@@ -188,7 +188,7 @@ Alternatively, to use a file located at *C:\Users\user1\AndroidSigningPassword.t
 The signed APK or AAB file can be distributed with one of the following approaches:
 
 - The most common approach to distributing Android apps to users is through Google Play. Google Play requires that you submit your app as an *Android App Bundle* (AAB). For more information, see [Upload your app to the Play Console](https://developer.android.com/studio/publish/upload-bundle) on developer.android.com
-- APK files can be distributed to Android devices through a website or server. When users browse to a download link from their Android device, the file is downloaded. Android will automatically start installing it on the device, provided that the user has configured their settings to allow the installation of apps from unknown sources. For more information about opting into allowing apps from unknown sources, see [User opt-in for unknown apps and sources](https://developer.android.com/studio/publish#publishing-unknown) on developer.android.com.
+- APK files can be distributed to Android devices through a website or server. When users browse to a download link from their Android device, the file is downloaded. Android automatically starts installing it on the device, if the user has configured their settings to allow the installation of apps from unknown sources. For more information about opting into allowing apps from unknown sources, see [User opt-in for unknown apps and sources](https://developer.android.com/studio/publish#publishing-unknown) on developer.android.com.
 
 ## See also
 

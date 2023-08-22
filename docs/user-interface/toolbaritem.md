@@ -17,7 +17,7 @@ The <xref:Microsoft.Maui.Controls.ToolbarItem> class defines the following prope
 - <xref:Microsoft.Maui.Controls.ToolbarItem.Order>, of type <xref:Microsoft.Maui.Controls.ToolbarItemOrder>, determines whether the <xref:Microsoft.Maui.Controls.ToolbarItem>  object displays in the primary or secondary menu.
 - <xref:Microsoft.Maui.Controls.ToolbarItem.Priority>, of type `int`, determines the display order of items in a <xref:Microsoft.Maui.Controls.Page.ToolbarItems> collection.
 
-The <xref:Microsoft.Maui.Controls.ToolbarItem> class inherits the following typically-used properties from the <xref:Microsoft.Maui.Controls.MenuItem> class:
+The <xref:Microsoft.Maui.Controls.ToolbarItem> class inherits the following typically used properties from the <xref:Microsoft.Maui.Controls.MenuItem> class:
 
 - <xref:Microsoft.Maui.Controls.MenuItem.Command>, of type `ICommand`, allows binding user actions, such as finger taps or clicks, to commands defined on a viewmodel.
 - <xref:Microsoft.Maui.Controls.MenuItem.CommandParameter>, of type `object`, specifies the parameter that should be passed to the `Command`.
@@ -40,7 +40,7 @@ To create a toolbar item, create a <xref:Microsoft.Maui.Controls.ToolbarItem> ob
 </ContentPage.ToolbarItems>
 ```
 
-This example will result in a <xref:Microsoft.Maui.Controls.ToolbarItem> object that has text and an icon. However, the appearance of a <xref:Microsoft.Maui.Controls.ToolbarItem> varies across platforms.
+This example results in a <xref:Microsoft.Maui.Controls.ToolbarItem> object that has text and an icon. However, the appearance of a <xref:Microsoft.Maui.Controls.ToolbarItem> varies across platforms.
 
 A <xref:Microsoft.Maui.Controls.ToolbarItem> can also be created in code and added to the <xref:Microsoft.Maui.Controls.Page.ToolbarItems> collection:
 
@@ -98,9 +98,9 @@ To enable or disable a <xref:Microsoft.Maui.Controls.ToolbarItem> at runtime, bi
 
 The <xref:Microsoft.Maui.Controls.ToolbarItemOrder> enum has `Default`, `Primary`, and `Secondary` values.
 
-When the <xref:Microsoft.Maui.Controls.ToolbarItem.Order> property is set to `Primary`, the <xref:Microsoft.Maui.Controls.ToolbarItem> object will appear in the navigation bar on all platforms. <xref:Microsoft.Maui.Controls.ToolbarItem> objects are prioritized over the page title, which will be truncated to make room for the items.
+When the <xref:Microsoft.Maui.Controls.ToolbarItem.Order> property is set to `Primary`, the <xref:Microsoft.Maui.Controls.ToolbarItem> object appears in the navigation bar on all platforms. <xref:Microsoft.Maui.Controls.ToolbarItem> objects are prioritized over the page title, which will be truncated to make room for the items.
 
-When the <xref:Microsoft.Maui.Controls.ToolbarItem.Order> property is set to `Secondary`, behavior varies across platforms. On iOS and Mac Catalyst, `Secondary` toolbar items will appear as a horizontal list. On Android and Windows, the `Secondary` items menu appears as three dots that can be tapped:
+When the <xref:Microsoft.Maui.Controls.ToolbarItem.Order> property is set to `Secondary`, behavior varies across platforms. On iOS and Mac Catalyst, `Secondary` toolbar items appear as a horizontal list. On Android and Windows, the `Secondary` items menu appears as three dots that can be tapped:
 
 :::image type="content" source="media/toolbaritem/android-dots.png" alt-text="Screenshot of secondary toolbar ellipsis on Android.":::
 
