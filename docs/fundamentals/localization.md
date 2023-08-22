@@ -13,7 +13,7 @@ Localization is the process of adapting an app to meet the specific language or 
 
 .NET includes a mechanism for localizing apps using [resource files](/dotnet/core/extensions/create-resource-files). A resource file stores text and other content as name/value pairs that allow the app to retrieve content for a provided key. Resource files allow localized content to be separated from app code. In addition to storing text, resource files can also store images and binary data. However, devices have a range of screen sizes and densities and each platform has functionality for displaying density-dependent images. Therefore, platform functionality should be used for localizing images instead of storing them in resource files.
 
-To localize a .NET Multi-platform App UI (.NET MAUI) app you should:
+To localize a .NET Multi-platform App UI (.NET MAUI) app, you should:
 
 1. Create resource files to store strings. For more information, see [Create resource files to store strings](#create-resource-files-to-store-strings).
 1. Specify the app's neutral language. For more information, see [Specify the app's neutral language](#specify-the-apps-neutral-language).
@@ -27,7 +27,7 @@ In addition, the layout direction of an app can be specified. For more informati
 
 ## Create resource files to store strings
 
-.NET resource files are XML files with a *.resx* extension that are compiled into binary resource (*.resources*) files during the build process. A localized app typically contains a default resource file with all strings used in the app, as well as resource files for each supported language.
+.NET resource files are XML files with a *.resx* extension that are compiled into binary resource (*.resources*) files during the build process. A localized app typically contains a default resource file with all strings used in the app, and resource files for each supported language.
 
 Resource files contain the following information for each item:
 
@@ -112,7 +112,7 @@ For more information about the *Info.plist* file, see [Information property list
 
 ### Windows
 
-To support multiple languages in a .NET MAUI app on Windows you must declare each supported language in the *Platforms\Windows\Package.appxmanifest* file of your .NET MAUI app project:
+To support multiple languages in a .NET MAUI app on Windows, you must declare each supported language in the *Platforms\Windows\Package.appxmanifest* file of your .NET MAUI app project:
 
 1. Open the *Package.appxmanifest* file in a text editor and locate the following section:
 
@@ -126,7 +126,7 @@ To support multiple languages in a .NET MAUI app on Windows you must declare eac
 
     ```xml
     <Resources>
-        <Resource Language="en-US"/>      
+        <Resource Language="en-US"/>
         <Resource Language="de-DE"/>
         <Resource Language="es-ES"/>
         <Resource Language="fr-FR"/>
@@ -135,7 +135,7 @@ To support multiple languages in a .NET MAUI app on Windows you must declare eac
         <Resource Language="pt-PT"/>
         <Resource Language="ru-RU"/>
         <Resource Language="zh-CN"/>
-        <Resource Language="zh-TW"/>        
+        <Resource Language="zh-TW"/>
     </Resources>
     ```
 
@@ -204,7 +204,7 @@ In addition, in your project file you must set the `IPhoneResourcePrefix` build 
 </PropertyGroup>
 ```
 
-If an image is not present for a particular language, iOS will fall back to the default native language folder and load the image from there.
+If an image is not present for a particular language, iOS falls back to the default native language folder and loads the image from there.
 
 ### Mac Catalyst
 
@@ -223,7 +223,7 @@ In addition, in your project file you must set the `IPhoneResourcePrefix` build 
 </PropertyGroup>
 ```
 
-If an image is not present for a particular language, Mac Catalyst will fall back to the default native language folder and load the image from there.
+If an image is not present for a particular language, Mac Catalyst falls back to the default native language folder and loads the image from there.
 
 ### Windows
 
@@ -267,12 +267,12 @@ Only two characters are required in the folder name when specifying a top-level 
 
 Each translatable string is an XML element with the resource ID specified as the `name` attribute and the translated string as the value. You need to escape your string according to normal XML rules, and the `name` must be a valid Android resource ID (no spaces or dashes).
 
-Therefore, to localize the app name create a *Strings.xml* file and add a `<string>` element as the child of a `<resources>` element. Then, set it's `name` attribute to a suitable ID with the translated string as the value:
+Therefore, to localize the app name create a *Strings.xml* file and add a `<string>` element as the child of a `<resources>` element. Then, set its `name` attribute to a suitable ID with the translated string as the value:
 
 ```xml
 <resources>
     <!-- French -->
-    <string name="app_name">Maison</string>    
+    <string name="app_name">Maison</string>
 </resources>
 ```
 
@@ -384,7 +384,7 @@ To localize an app name, your Windows app must first have a default language spe
 
 1. Save your changes.
 
-At a minimum, you'll need to provide a string resource for the app name for the default language. This is the resource that will be loaded if no better match can be found for the user's preferred language or display language settings.
+At a minimum, you'll need to provide a string resource for the app name for the default language. This is the resource that is loaded if no better match can be found for the user's preferred language or display language settings.
 
 #### Create Windows resource files
 
@@ -529,7 +529,7 @@ There's currently no Visual Studio item template for creating a Windows resource
     > [!NOTE]
     > Resource identifiers are case insensitive, and must be unique per resource file.
 
-1. Save each Windows resource files.
+1. Save each Windows resource file.
 
 An example of the required folder and file structure is shown in the following screenshot:
 
@@ -575,7 +575,7 @@ Specific platform setup is required to enable right-to-left locales.
 
 #### Android
 
-App's created using the .NET MAUI app project template will automatically include support for right-to-left locales. This support is enabled by the `android:supportsRtl` attribute being set to `true` on the `<application>` node in the app's *AndroidManifest.xml* file:
+App's created using the .NET MAUI app project template automatically include support for right-to-left locales. This support is enabled by the `android:supportsRtl` attribute being set to `true` on the `<application>` node in the app's *AndroidManifest.xml* file:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -585,7 +585,7 @@ App's created using the .NET MAUI app project template will automatically includ
 </manifest>
 ```
 
-Right-to-left localization can then be tested by changing the device or emulator to use the right-to-left language. Alternatively, provided that you've activated developer options in the Settings app, you can enable **Force RTL layout direction** in **Settings > Developer Options**. For information on configuring developer options, see [Configure on-device developer options](https://developer.android.com/studio/debug/dev-options) on developer.android.com.
+Right-to-left localization can then be tested by changing the device or emulator to use the right-to-left language. Alternatively, if you've activated developer options in the Settings app, you can enable **Force RTL layout direction** in **Settings > Developer Options**. For information on configuring developer options, see [Configure on-device developer options](https://developer.android.com/studio/debug/dev-options) on developer.android.com.
 
 #### iOS and Mac Catalyst
 
@@ -603,7 +603,7 @@ Right-to-left localization can then be tested by changing the language and regio
 
 #### Windows
 
-The required language resources should be specified in the `<Resources>` node of the *Package.appxmanifest* file. Replace `<Resource Language="x-generate">` with `<Resource />` elemnts for each of your supported languages. For example, the following markup specifies that "en" and "ar" localized resources are available:
+The required language resources should be specified in the `<Resources>` node of the *Package.appxmanifest* file. Replace `<Resource Language="x-generate">` with `<Resource />` elements for each of your supported languages. For example, the following markup specifies that "en" and "ar" localized resources are available:
 
 ```xml
 <Resources>

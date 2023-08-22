@@ -5,7 +5,7 @@ ms.date: 05/23/2023
 
 ## Preserve code
 
-When you use the linker, it sometimes remove code that you might have called dynamically, even indirectly. You can instruct the linker to preserve members by annotating them with the [`DynamicDependency`](xref:System.Diagnostics.CodeAnalysis.DynamicDependencyAttribute) attribute. This attribute can be used to express a dependency on either a type and subset of members, or at specific members.
+When you use the linker, it sometimes removes code that you might have called dynamically, even indirectly. You can instruct the linker to preserve members by annotating them with the [`DynamicDependency`](xref:System.Diagnostics.CodeAnalysis.DynamicDependencyAttribute) attribute. This attribute can be used to express a dependency on either a type and subset of members, or at specific members.
 
 > [!IMPORTANT]
 > Every member in the BCL that can't be statically determined to be used by the app is subject to be removed.
@@ -57,7 +57,7 @@ When it links all assemblies, you can tell the linker to skip an assembly by set
 > [!NOTE]
 > The `.dll` extension isn't required when setting the `TrimmerRootAssembly` MSBuild property.
 
-If the linker skips an assembly, it's considered *rooted*, which means that it and all of its statically understood dependencies will be kept. You can skip additional assemblies by adding more `TrimmerRootAssembly` MSBuild properties to the `<ItemGroup>`.
+If the linker skips an assembly, it's considered *rooted*, which means that it and all of its statically understood dependencies are kept. You can skip additional assemblies by adding more `TrimmerRootAssembly` MSBuild properties to the `<ItemGroup>`.
 
 ## Preserve assemblies, types, and members
 
@@ -100,7 +100,7 @@ If you have a library in your project, or you're a developer of a reusable libra
 </PropertyGroup>
 ```
 
-This marks your assembly as "trimmable" and enables trim warnings for that project. Being "trimmable" means your assembly is considered compatible with trimming and should have no trim warnings when the assembly is built. When used in a trimmed app, the assembly's unused members will be removed in the final output.
+This marks your assembly as "trimmable" and enables trim warnings for that project. Being "trimmable" means your assembly is considered compatible with trimming and should have no trim warnings when the assembly is built. When used in a trimmed app, the assembly's unused members are removed in the final output.
 
 Setting the `IsTrimmable` MSBuild property to `true` in your project file inserts the [`AssemblyMetadata`](xref:System.Reflection.AssemblyMetadataAttribute) attribute into your assembly:
 
@@ -115,7 +115,7 @@ Alternatively, you can add the [`AssemblyMetadata`](xref:System.Reflection.Assem
 
 ### Suppress analysis warnings
 
-When the linker is enabled, it will remove IL that's not statically reachable. Apps that uses reflection or other patterns that create dynamic dependencies may be broken as a result. To warn about such patterns, when marking an assembly as linker safe library authors should set the `SuppressTrimAnalysisWarnings` MSBuild property to `false`:
+When the linker is enabled, it removes IL that's not statically reachable. Apps that use reflection or other patterns that create dynamic dependencies may be broken as a result. To warn about such patterns, when marking an assembly as linker safe, library authors should set the `SuppressTrimAnalysisWarnings` MSBuild property to `false`:
 
 ```xml
 <PropertyGroup>
@@ -123,11 +123,11 @@ When the linker is enabled, it will remove IL that's not statically reachable. A
 </PropertyGroup>
 ```
 
-This will include warnings about the entire app, including your own code, library code, and SDK code.
+Not suppressing trim analysis warnings will include warnings about the entire app, including your own code, library code, and SDK code.
 
 ### Show detailed warnings
 
-Trim analysis produces at most one warning for each assembly that comes from a `PackageReference`, indicating that the assembly's internals aren't compatible with trimming. When marking an assembly as linker safe, library authors should enable individual warnings for all assemblies by setting the `TrimmerSingleWarn` MSBuild property to `false`:
+Trim analysis produces at most one warning for each assembly that comes from a `PackageReference`, indicating that the assembly's internals aren't compatible with trimming. As a library author, when you mark an assembly as linker safe, you should enable individual warnings for all assemblies by setting the `TrimmerSingleWarn` MSBuild property to `false`:
 
 ```xml
 <PropertyGroup>
@@ -135,7 +135,7 @@ Trim analysis produces at most one warning for each assembly that comes from a `
 </PropertyGroup>
 ```
 
-This will show all detailed warnings, instead of collapsing them to a single warning per assembly.
+This setting shows all detailed warnings, instead of collapsing them to a single warning per assembly.
 
 ## See also
 
