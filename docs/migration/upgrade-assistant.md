@@ -36,7 +36,7 @@ For more information about .NET Upgrade Assistant, including the other app types
 .NET Upgrade Assistant will prompt you for the type of upgrade to perform:
 
 - **In-place**: This option upgrades your project without making a copy.
-- **Side-by-side**: This option copies your project and upgrades the copy, leaving the original project alone.
+- **Side-by-side**: This option copies your project and upgrades the copy, leaving the original project alone. Currently, .NET MAUI side-by-side upgrades requires the creation of new projects to upgrade each project head; attempting to upgrade a project head into an existing project will likely cause errors and is not a supported experience at this time.
 
 ## Installation
 
