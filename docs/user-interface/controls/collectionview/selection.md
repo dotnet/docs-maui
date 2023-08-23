@@ -318,7 +318,7 @@ CollectionView collectionView = new CollectionView
 };
 ```
 
-When the `SelectionMode` property is set to `None`, items in the <xref:Microsoft.Maui.Controls.CollectionView> cannot be selected, the `SelectedItem` property remains `null`, and the `SelectionChanged` event won't be fired.
+When the `SelectionMode` property is set to `None`, items in the <xref:Microsoft.Maui.Controls.CollectionView> can't be selected, the `SelectedItem` property remains `null`, and the `SelectionChanged` event won't be fired.
 
 > [!NOTE]
 > When an item has been selected and the `SelectionMode` property is changed from `Single` to `None`, the `SelectedItem` property will be set to `null` and the `SelectionChanged` event will be fired with an empty `CurrentSelection` property.

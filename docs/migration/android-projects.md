@@ -21,7 +21,7 @@ For a library project, omit the `$(OutputType)` property completely or specify `
 
 ## .NET configuration files
 
-There's no support for [configuration files](/dotnet/framework/configure-apps/) such as `Foo.dll.config` or `Foo.exe.config` in .NET Android projects. [`<dllmap>`](https://github.com/dotnet/runtime/blob/main/docs/design/features/dllmap.md) configuration elements are not supported in .NET Core at all, and other element types for compatibility packages like [System.Configuration.ConfigurationManager](https://www.nuget.org/packages/System.Configuration.ConfigurationManager/) have never been supported in Android projects.
+There's no support for [configuration files](/dotnet/framework/configure-apps/) such as `Foo.dll.config` or `Foo.exe.config` in .NET Android projects. [`<dllmap>`](https://github.com/dotnet/runtime/blob/main/docs/design/features/dllmap.md) configuration elements aren't supported in .NET Core at all, and other element types for compatibility packages like [System.Configuration.ConfigurationManager](https://www.nuget.org/packages/System.Configuration.ConfigurationManager/) have never been supported in Android projects.
 
 ## Changes to MSBuild properties
 
@@ -50,7 +50,7 @@ The following table shows other MSBuild properties that have changed in .NET And
 | Property | Comments |
 | --- | --- |
 | `$(AndroidUseIntermediateDesignerFile)` | `True` by default. |
-| `$(AndroidBoundExceptionType)` | `System` by default. This will alter the types of exceptions thrown from various methods to better align with existing .NET 6+ semantics, at the cost of compatibility with Xamarin.Android. For more information, see [Some of the new wrapped Java exceptions use BCL exceptions that differ from the related BCL types](https://github.com/xamarin/xamarin-android/issues/4127). |
+| `$(AndroidBoundExceptionType)` | `System` by default. This property alters the types of exceptions thrown from various methods to better align with existing .NET 6+ semantics, at the cost of compatibility with Xamarin.Android. For more information, see [Some of the new wrapped Java exceptions use BCL exceptions that differ from the related BCL types](https://github.com/xamarin/xamarin-android/issues/4127). |
 | `$(AndroidClassParser)` | `class-parse` by default. `jar2xml` isn't supported. |
 | `$(AndroidDexTool)` | `d8` by default. `dx` isn't supported. |
 | `$(AndroidCodegenTarget)` | `XAJavaInterop1` by default. `XamarinAndroid` isn't supported. |
@@ -58,7 +58,7 @@ The following table shows other MSBuild properties that have changed in .NET And
 | `$(DebugType)` | `portable` by default. `full` and `pdbonly` aren't supported. |
 | `$(MonoSymbolArchive)` | `False`, since `mono-symbolicate` isn't supported. |
 
-In addition, if Java binding is enabled with `@(InputJar)`, `@(EmbeddedJar)`, or `@(LibraryProjectZip)`, then the `$(AllowUnsafeBlocks)` property will default to `True`.
+In addition, if Java binding is enabled with `@(InputJar)`, `@(EmbeddedJar)`, or `@(LibraryProjectZip)`, then the `$(AllowUnsafeBlocks)` property defaults to `True`.
 
 > [!NOTE]
 > Referencing an Android Wear project from an Android app isn't supported.
@@ -69,16 +69,16 @@ In Xamarin.Android, Java, and Kotlin Android projects, the `<uses-sdk/>` element
 
 ```xml
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" 
-    android:versionCode="1" 
-    android:versionName="1.0" 
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    android:versionCode="1"
+    android:versionName="1.0"
     package="com.companyname.myapp">
   <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="33" />
   <application android:icon="@mipmap/ic_launcher" android:label="@string/app_name" android:theme="@style/AppTheme" />
 </manifest>
 ```
 
-See the [Android documentation](https://developer.android.com/guide/topics/manifest/uses-sdk-element) for more information about the `<uses-sdk/>` element.
+For more information about the `<uses-sdk/>` element, see the [Android documentation](https://developer.android.com/guide/topics/manifest/uses-sdk-element).
 
 In .NET 6+ Android apps, there are MSBuild properties to set these values. Using the MSBuild properties has other benefits. In most cases the `<uses-sdk/>` element should be removed in favor of values in your project's `.csproj` file:
 
@@ -93,9 +93,9 @@ In .NET 6+ Android apps, there are MSBuild properties to set these values. Using
 
 In this example, `net6.0-android` is shorthand for `net6.0-android31.0`. While in .NET 7, `net7.0-android` is shorthand for `net7.0-android33.0`. Future versions of .NET will track the latest Android version available at the time of the .NET release.
 
-`TargetFramework` maps to `android:targetSdkVersion`. At build time this value will automatically be included in the `<uses-sdk/>` element for you. The benefit of using `TargetFramework` in this way, is you are given the matching C# binding for Android API 31 for `net6.0-android31.0`. Android releases independently of the .NET release cycle, so we have the flexibility to opt into `net6.0-android32.0` when a binding is available sometime after .NET 6's release.
+`TargetFramework` maps to `android:targetSdkVersion`. At build time, this value will automatically be included in the `<uses-sdk/>` element for you. The benefit of using `TargetFramework` in this way is that you're given the matching C# binding for Android API 31 for `net6.0-android31.0`. Android releases independently of the .NET release cycle, so we have the flexibility to opt into `net6.0-android32.0` when a binding is available sometime after .NET 6's release.
 
-Similarly, `SupportedOSPlatformVersion` maps to `android:minSdkVersion`. At build time this value will automatically be included in the `<uses-sdk/>` element for you. Android APIs are decorated with the <xref:System.Runtime.Versioning.SupportedOSPlatformAttribute> so that you will get build warnings for calling APIs that are only available for some of the Android versions your app can run on:
+Similarly, `SupportedOSPlatformVersion` maps to `android:minSdkVersion`. At build time, this value will automatically be included in the `<uses-sdk/>` element for you. Android APIs are decorated with the <xref:System.Runtime.Versioning.SupportedOSPlatformAttribute> so that you get build warnings for calling APIs that are only available for some of the Android versions your app can run on:
 
 ```
 error CA1416: This call site is reachable on 'Android' 21.0 and later. `ConnectivityManager.ActiveNetwork` is only supported on: 'Android' 23.0 and later.
@@ -127,14 +127,14 @@ There are behavioral changes to the `String.IndexOf()` method in .NET 5+ on diff
 
 For more information, see [Trimming options](/dotnet/core/deploying/trimming-options).
 
-In .NET Android projects by default, `Debug` builds will not use the linker and `Release` builds will set `PublishTrimmed=true` and `TrimMode=link`. `TrimMode=copyused` is the default for the .NET SDK but isn't appropriate for mobile apps. However, you can still opt into `TrimMode=copyused` if required.
+In .NET Android projects by default, `Debug` builds don't use the linker, and `Release` builds set `PublishTrimmed=true` and `TrimMode=link`. `TrimMode=copyused` is the default for the .NET SDK but isn't appropriate for mobile apps. However, you can still opt into `TrimMode=copyused` if required.
 
-If the legacy `AndroidLinkMode` setting is used, both `SdkOnly` and `Full` will default to equivalent linker settings:
+If the legacy `AndroidLinkMode` setting is used, both `SdkOnly` and `Full` default to equivalent linker settings:
 
 - `<PublishTrimmed>true</PublishTrimmed>`
 - `<TrimMode>link</TrimMode>`
 
-With `AndroidLinkMode=SdkOnly` only BCL and SDK assemblies marked with `%(Trimmable)` will be linked at the member level. `AndroidLinkMode=Full` will set `%(TrimMode)=link` on all .NET assemblies.
+With `AndroidLinkMode=SdkOnly`, only BCL and SDK assemblies marked with `%(Trimmable)` are linked at the member level. `AndroidLinkMode=Full` sets `%(TrimMode)=link` on all .NET assemblies.
 
 > [!TIP]
 > You should migrate to the new linker settings, because the `AndroidLinkMode` setting will eventually be deprecated.
@@ -146,7 +146,7 @@ With `AndroidLinkMode=SdkOnly` only BCL and SDK assemblies marked with `%(Trimma
 > [!TIP]
 > You should migrate to the new `$(RunAOTCompilation)` property, because `$(AotAssemblies)` is deprecated in .NET 7.
 
-Release builds will default to the following AOT property values:
+Release builds default to the following AOT property values:
 
 ```xml
 <PropertyGroup Condition="'$(Configuration)' == 'Release'">

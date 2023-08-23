@@ -12,12 +12,12 @@ ms.date: 04/18/2023
 
 - Make the most effective use of space. If you design an app to look good on a mobile device, the app will still be usable on a desktop device but there will most likely be some wasted space. You can customize your app to display more content when the screen is above a certain size. For example, a shopping app might display one item at a time on a mobile device, but might show multiple items on a desktop device. In addition, by placing more content on screen you can reduce the amount of navigation that users need to perform.
 - Take advantage of device capabilities. Certain devices are more likely to have certain capabilities. For example, mobile devices are more likely to have a location sensor and a camera, while desktop devices might not have either. Your app can detect which capabilities are available and enable controls that use them.
-- Optimize for input. You can re-arrange your UI elements to optimize for specific input types. For example, if you place navigation elements at the bottom of the app, they'll be easier for mobile users to access. But desktop users often expect to see navigation elements towards the top of the app.
+- Optimize for input. You can rearrange your UI elements to optimize for specific input types. For example, if you place navigation elements at the bottom of the app, they'll be easier for mobile users to access. But desktop users often expect to see navigation elements towards the top of the app.
 
-When you optimize your app's UI for specific platforms and device idioms you're creating a responsive UI. The primary approaches to creating a responsive UI in .NET MAUI involve using the [`OnPlatform`](xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension) markup extension and the [`OnIdiom`](xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension) markup extension.
+When you optimize your app's UI for specific platforms and device idioms, you're creating a responsive UI. The primary approaches to creating a responsive UI in .NET MAUI involve using the [`OnPlatform`](xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension) markup extension and the [`OnIdiom`](xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension) markup extension.
 
 > [!NOTE]
-> There are a category of triggers, known as state triggers, that can be used to customize UI appearance in specific scenarios such as when the orientation of a device changes. For more information, see [State trigger](~/fundamentals/triggers.md#state-trigger).
+> There is a category of triggers, known as state triggers, that can be used to customize UI appearance in specific scenarios such as when the orientation of a device changes. For more information, see [State trigger](~/fundamentals/triggers.md#state-trigger).
 
 ## Customize UI appearance based on the platform
 
@@ -37,7 +37,7 @@ The [`OnPlatform`](xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension) markup
 > [!NOTE]
 > The XAML parser allows the <xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension> class to be abbreviated as `OnPlatform`.
 
-The `Default` property is the content property of <xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension>. Therefore, for XAML markup expressions expressed with curly braces, you can eliminate the `Default=` part of the expression provided that it's the first argument. If the `Default` property isn't set, it will default to the `BindableProperty.DefaultValue` property value, provided that the markup extension is targeting a <xref:Microsoft.Maui.Controls.BindableProperty>.
+The `Default` property is the content property of <xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension>. Therefore, for XAML markup expressions expressed with curly braces, you can eliminate the `Default=` part of the expression if it's the first argument. If the `Default` property isn't set, it defaults to the `BindableProperty.DefaultValue` property value, provided that the markup extension is targeting a <xref:Microsoft.Maui.Controls.BindableProperty>.
 
 > [!IMPORTANT]
 > The XAML parser expects that values of the correct type will be provided to properties consuming the [`OnPlatform`](xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension) markup extension. If type conversion is necessary, the [`OnPlatform`](xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension) markup extension will attempt to perform it using the default converters provided by .NET MAUI. However, there are some type conversions that can't be performed by the default converters and in these cases the `Converter` property should be set to an <xref:Microsoft.Maui.Controls.IValueConverter> implementation.
@@ -46,7 +46,7 @@ The **OnPlatform Demo** page shows how to use the [`OnPlatform`](xref:Microsoft.
 
 ```xaml
 <BoxView Color="{OnPlatform Yellow, iOS=Red, Android=Green}"
-         WidthRequest="{OnPlatform 250, iOS=200, Android=300}"  
+         WidthRequest="{OnPlatform 250, iOS=200, Android=300}"
          HeightRequest="{OnPlatform 250, iOS=200, Android=300}"
          HorizontalOptions="Center" />
 ```
@@ -69,7 +69,7 @@ The [`OnIdiom`](xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension) markup exten
 > [!NOTE]
 > The XAML parser allows the <xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension> class to be abbreviated as `OnIdiom`.
 
-The `Default` property is the content property of <xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension>. Therefore, for XAML markup expressions expressed with curly braces, you can eliminate the `Default=` part of the expression provided that it's the first argument.
+The `Default` property is the content property of <xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension>. Therefore, for XAML markup expressions expressed with curly braces, you can eliminate the `Default=` part of the expression if it's the first argument.
 
 > [!IMPORTANT]
 > The XAML parser expects that values of the correct type will be provided to properties consuming the [`OnIdiom`](xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension) markup extension. If type conversion is necessary, the [`OnIdiom`](xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension) markup extension will attempt to perform it using the default converters provided by .NET MAUI. However, there are some type conversions that can't be performed by the default converters and in these cases the `Converter` property should be set to an <xref:Microsoft.Maui.Controls.IValueConverter> implementation.
