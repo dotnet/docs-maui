@@ -55,10 +55,18 @@
           items:
             - name: Upgrade Xamarin native projects
               href: migration/native-projects.md
-            - name: Android project migration
-              href: migration/android-projects.md
-            - name: Apple project migration
-              href: migration/apple-projects.md
+            - name: Android projects
+              items:
+                - name: Android project migration
+                  href: migration/android-projects.md
+                - name: Android binding project migration
+                  href: migration/android-binding-projects.md
+            - name: Apple projects
+              items:
+                - name: Apple project migration
+                  href: migration/apple-projects.md
+                - name: iOS binding project migration
+                  href: migration/ios-binding-projects.md
             - name: Xamarin.Essentials migration
               href: migration/native-essentials.md
         - name: Xamarin.Forms projects
