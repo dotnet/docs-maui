@@ -6,9 +6,7 @@ ms.date: 08/21/2023
 
 # Xamarin.iOS binding project migration
 
-In .NET 6+, there's no concept of an iOS binding project as a separate project type. Any of the MSBuild item groups or build actions that work in Xamarin.iOS binding projects are supported through a .NET 6+ iOS class library.
-
-To migrate a Xamarin.iOS binding library to a .NET iOS class library:
+To migrate a Xamarin.iOS binding library to a .NET iOS binding library:
 
 1. In Visual Studio, create a new iOS Binding Library project with the same name as your Xamarin.iOS binding project:
 

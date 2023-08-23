@@ -39,7 +39,7 @@ The following legacy options are no longer supported. The supported alternatives
 
 ### AndroidClassParser
 
-`jar2xml` is no longer a valid option for the `$(AndroidClassParser)` property. Because `class-parse` is now the only valid option, this setting will no longer affect anything, and `class-parse` will always be used.
+`jar2xml` is no longer a valid option for the `$(AndroidClassParser)` property. `class-parse` is now the default and only supported option.
 
 `class-parse` takes advantage of many new modern features not available in `jar2xml`, such as:
 
@@ -64,9 +64,7 @@ Transforms/
 foo.jar
 ```
 
-`Transforms\*.xml` files are automatically included as a `@(TransformFile)` item, and `.jar`/`.aar` files are automatically included as a `@(AndroidLibrary)` item.
-
-This will bind C# types for the Java types found in `foo.jar` using the metadata fixups from `Transforms\Metadata.xml`.
+`Transforms\*.xml` files are automatically included as a `@(TransformFile)` item, and `.jar`/`.aar` files are automatically included as a `@(AndroidLibrary)` item. This will bind C# types for the Java types found in `foo.jar` using the metadata fixups from `Transforms\Metadata.xml`.
 
 Default Android related file globbing behavior is defined in [AutoImport.props](https://github.com/xamarin/xamarin-android/blob/main/src/Xamarin.Android.Build.Tasks/Microsoft.Android.Sdk/Sdk/AutoImport.props). This behavior can be disabled for Android items by setting the `$(EnableDefaultAndroidItems)` property to `false`, or all default item inclusion behavior can be disabled by setting the `$(EnableDefaultItems)` property to `false`.
 
@@ -85,7 +83,7 @@ To solve this issue, you can remove the specific file in your project file:
 </ItemGroup>
 ```
 
-Alternatively, you could exclude *all* files within a folder:
+Alternatively, you could exclude all files within a folder:
 
 ```xml
 <AndroidLibrary Remove="AndroidStudio\**\*" />
@@ -97,30 +95,30 @@ In Xamarin.Android, the Java `.jar` or `.aar` was often embedded into the bindin
 
 In .NET 6+, Java code is no longer embedded in the `.dll`. The app build process will automatically include any `.jar` or `.aar` files it finds in the same directory as a referenced `.dll`.
 
-If a project references a binding via `<PackageReference>` or `<ProjectReference>` then everything just works and no additional considerations are required. However if a project references a binding via `<Reference>`, the `.jar`/`.aar` must be located next to the `.dll`. That is, for a reference like this:
+If a project references a binding via `<PackageReference>` or `<ProjectReference>` then everything works and no additional considerations are required. However, if a project references a binding via `<Reference>`, the `.jar`/`.aar` must be located next to the `.dll`. That is, for the following reference:
 
 ```xml
 <Reference Include="MyBinding.dll" />
 ```
 
-A directory like the one shown in the following example won't work:
+A directory like the one in the following example won't work:
 
 ```
-\lib
-  - MyBinding.dll
+lib/
+    MyBinding.dll
 ```
 
 Instead, the directory must also contain the native code:
 
 ```
-\lib
-  - MyBinding.dll
-  - mybinding.jar
+lib/
+    MyBinding.dll
+    mybinding.jar
 ```
 
 ## Migration considerations
 
-There are several new features set by default to help produce bindings that better match their Java counterparts. However, if you are migrating an existing binding project, these features may create bindings that are not API compatible with your existing bindings. In order to maintain compatibility, you may wish to disable or modify these new features.
+There are several new features set by default to help produce bindings that better match their Java counterparts. However, if you are migrating an existing binding project, these features may create bindings that are not API compatible with your existing bindings. To maintain compatibility, you may wish to disable or modify these new features.
 
 ### Interface constants
 
@@ -183,7 +181,7 @@ public interface IFoo
 
 However, this means that the top-level class that existing code may depend on is no longer generated.
 
-Setting the `$(AndroidBoundInterfacesContainTypes)` property to `false` in your project file will globally revert to the legacy behavior.
+Setting the `$(AndroidBoundInterfacesContainTypes)` property to `false` in your project file will revert to the legacy behavior.
 
 If you wish to use a hybrid approach, for example, to keep existing nested types moved to a top-level type, but allow any future nested types to remain nested, you can specify this at the `interface` level using `metadata` to set the `unnest` attribute. Setting it to `true` will result in "un-nesting" any nested types (legacy behavior):
 
@@ -235,7 +233,7 @@ public interface IFoo
 
 However, this means the alternative sibling `class` containing `static` members will no longer be generated.
 
-Setting the `$AndroidBoundInterfacesContainStaticAndDefaultInterfaceMethods` property to `false` in your project file will globally revert to the legacy behavior.
+Setting the `$AndroidBoundInterfacesContainStaticAndDefaultInterfaceMethods` property to `false` in your project file will revert to the legacy behavior.
 
 ### Nullable reference types
 
@@ -247,7 +245,7 @@ Support for Nullable Reference Types (NRT) was added in Xamarin.Android 11.0. NR
 </PropertyGroup>
 ```
 
-As the default for .NET 6+ is `disable`, the same applies for Xamarin.Android projects.
+Because the default for .NET 6+ is `disable`, the same applies for Xamarin.Android projects.
 
 ### `Resource.designer.cs`
 
