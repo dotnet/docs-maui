@@ -323,15 +323,19 @@ entry.Behaviors.Clear();
 
 Platform behaviors are created by deriving from the <xref:Microsoft.Maui.Controls.PlatformBehavior`1> or <xref:Microsoft.Maui.Controls.PlatformBehavior`2> class. They respond to arbitrary conditions and events on a native control.
 
-A platform behavior can be implemented through conditional compilation, or partial classes. The approach adopted here is to use partial classes, where a platform behavior typically consists of a cross-platform partial class, that defines the behaviors API, and a native partial class that implements the behavior on each required platform. At build time, multi-targeting combines the partial classes to build the platform behavior for each platform.
+A platform behavior can be implemented through conditional compilation, or partial classes. The approach adopted here is to use partial classes, where a platform behavior typically consists of a cross-platform partial class that defines the behaviors API, and a native partial class that implements the behavior on each platform. At build time, multi-targeting combines the partial classes to build the platform behavior for each platform.
 
 The process for creating a platform behavior is as follows:
 
 1. Create a cross-platform partial class that defines the API for the platform behavior.
 1. Create a native partial class on each platform your app is built for, that inherits from the <xref:Microsoft.Maui.Controls.PlatformBehavior`1> or <xref:Microsoft.Maui.Controls.PlatformBehavior`2> class, where `TView` is the cross-platform control to which the behavior should apply, and `TPlatformView` is the native view that implements the cross-platform control on a particular platform.
-1. In each native partial class on each platform:
-    1. Override the <xref:Microsoft.Maui.Controls.PlatformBehavior`2.OnAttachedTo%2A> method. This method is called immediately after the platform behavior is attached to a cross-platform control. This method receives a reference to the cross-platform control to which it is attached, and a reference to the native control that implements the cross-platform control. This method can be used to register event handlers or perform other setup that's required to support the platform behavior functionality. For example, you could subscribe to an event on a control. The behavior functionality would then be implemented in the event handler for the event.
-    1. Override the <xref:Microsoft.Maui.Controls.PlatformBehavior`2.OnDetachingFrom%2A> method. This method is called when the behavior is removed from the cross-platform control. This method receives a reference to the control to which it is attached, and a reference to the native control that implements the cross-platform control. This method should be used to perform any required cleanup. For example, you could unsubscribe from an event on a control to prevent memory leaks.
+
+    > [!NOTE]
+    > While it's required to create a native partial class on each platform your app is built for, it's not required to implement the platform behavior functionality on every platform. For example, you might create a platform behavior that modifies the border thickness of a native control on some platforms. However, it might not be necessary to perform the modification on every platform because you're already happy with the default thickness.
+
+1. In each native partial class that you require to implement the platform behavior you should:
+    1. Override the <xref:Microsoft.Maui.Controls.PlatformBehavior`2.OnAttachedTo%2A> method. This method is called immediately after the platform behavior is attached to a cross-platform control. This method receives a reference to the cross-platform control to which it is attached, and optionally a reference to the native control that implements the cross-platform control. This method can be used to register event handlers or perform other setup that's required to support the platform behavior functionality. For example, you could subscribe to an event on a control. The behavior functionality would then be implemented in the event handler for the event.
+    1. Override the <xref:Microsoft.Maui.Controls.PlatformBehavior`2.OnDetachingFrom%2A> method. This method is called when the behavior is removed from the cross-platform control. This method receives a reference to the control to which it is attached, and optionally a reference to the native control that implements the cross-platform control. This method should be used to perform any required cleanup. For example, you could unsubscribe from an event on a control to prevent memory leaks.
     1. Implement the core functionality of the platform behavior.
 
 The behavior can then be consumed by attaching it to the <xref:Microsoft.Maui.Controls.VisualElement.Behaviors> collection of the control.
@@ -359,7 +363,7 @@ namespace BehaviorsDemos
 
 The platform behavior is a partial class whose implementation will be completed on each required platform with an additional partial class. In this example, the `TintColorBehavior` class defines a single bindable property, `TintColor`, that will be used to tint an image with the specified color.
 
-After creating the cross-platform partial class you should create a native partial class on platform you build the app for. This can be accomplished by adding partial class implementations to the required child folders of the *Platforms* folder:
+After creating the cross-platform partial class you should create a native partial class on each platform you build the app for. This can be accomplished by adding partial classes to the required child folders of the *Platforms* folder:
 
 :::image type="content" source="media/behaviors/platform-behavior-native-partial-classes.png" alt-text="Screenshot of the native partial classes for a platform behavior.":::
 
@@ -372,7 +376,7 @@ In each native partial class that you require to implement the platform behavior
 > [!IMPORTANT]
 > The partial classes must reside in the same namespace.
 
-The following example shows the `TintColorBehavior` partial class on Android, which tint an image with a specified color:
+The following example shows the `TintColorBehavior` partial class on Android, which tints an image with a specified color:
 
 ```csharp
 using Android.Graphics;
@@ -423,7 +427,7 @@ In this example, the `TintColorBehavior` class derives from the <xref:Microsoft.
 > [!IMPORTANT]
 > .NET MAUI doesn't set the `BindingContext` of a platform behavior.
 
-A native partial class must be added on each platform you build your app for. However, you can make the native partial class NO-OP, if the platform behavior isn't required on a specific platform. This can be achieved by not overriding the <xref:Microsoft.Maui.Controls.PlatformBehavior`2.OnAttachedTo%2A> and <xref:Microsoft.Maui.Controls.PlatformBehavior`2.OnDetachingFrom%2A> methods:
+A native partial class must be added on each platform you build your app for. However, you can make the native partial class NO-OP, if the platform behavior isn't required on a specific platform. This can be achieved by providing an empty class:
 
 ```csharp
 using Microsoft.UI.Xaml;
