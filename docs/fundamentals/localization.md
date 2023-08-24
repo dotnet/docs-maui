@@ -6,8 +6,7 @@ ms.date: 08/18/2023
 
 # Localization
 
-<!-- Todo: Uncomment once the sample has ingested into the samples browser
-[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-localization) -->
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-localization)
 
 Localization is the process of adapting an app to meet the specific language or cultural requirements of a target market. To localize an app, its text and images may need to be translated into multiple languages. A localized app automatically displays translated text based on the culture settings of the device.
 
