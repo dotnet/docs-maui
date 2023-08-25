@@ -124,14 +124,14 @@ In addition, adding children to a layout in code in Xamarin.Forms is accomplishe
 
 ```csharp
 Grid grid = new Grid();
-grid.Children.Add(new new Label { Text = "Hello world" });
+grid.Children.Add(new Label { Text = "Hello world" });
 ```
 
 In .NET MAUI, the <xref:Microsoft.Maui.Controls.Layout.Children> collection is for internal use by .NET MAUI and shouldn't be manipulated directly. Therefore, in code children should be added directly to the layout:
 
 ```csharp
 Grid grid = new Grid();
-grid.Add(new new Label { Text = "Hello world" });
+grid.Add(new Label { Text = "Hello world" });
 ```
 
 > [!IMPORTANT]
