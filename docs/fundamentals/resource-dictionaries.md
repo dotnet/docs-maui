@@ -65,6 +65,17 @@ In this example, the resource dictionary defines a `Thickness` resource, multipl
 > [!IMPORTANT]
 > Inserting resources directly between the `Resources` property-element tags automatically creates a <xref:Microsoft.Maui.Controls.ResourceDictionary> object. However, it's also valid to place all resources between optional <xref:Microsoft.Maui.Controls.ResourceDictionary> tags.
 
+> [!TIP]
+> Images can also be included in the resource dictionary either with or without their format type (.png etc)  and subsequently utilized within the application using corresponding keys:
+```xaml
+        <ResourceDictionary>
+            <!-- Images -->
+            <x:String x:Key="BackgroundImage">Background</x:String>
+            <x:String x:Key="MenuIcon">Menu.png</x:String>
+            <x:String x:Key="SearchIcon">Search.png</x:String>
+        </ResourceDictionary>
+```
+
 ## Consume resources
 
 Each resource has a key that is specified using the `x:Key` attribute, which becomes its dictionary key in the <xref:Microsoft.Maui.Controls.ResourceDictionary>. The key is used to reference a resource from the <xref:Microsoft.Maui.Controls.ResourceDictionary> with the [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) or [`DynamicResource`](xref:Microsoft.Maui.Controls.Xaml.DynamicResourceExtension) XAML markup extension.
