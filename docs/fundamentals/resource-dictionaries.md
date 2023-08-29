@@ -67,6 +67,7 @@ In this example, the resource dictionary defines a `Thickness` resource, multipl
 
 > [!TIP]
 > Images can also be included in the resource dictionary either with or without their format type (.png etc)  and subsequently utilized within the application using corresponding keys:
+
 ```xaml
         <ResourceDictionary>
             <!-- Images -->
