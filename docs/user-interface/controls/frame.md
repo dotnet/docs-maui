@@ -45,7 +45,7 @@ The equivalent C# code is:
 ```csharp
 Frame frame = new Frame
 {
-    BorderColor = Colors.Gray
+    BorderColor = Colors.Gray,
     CornerRadius = 10,
     Content = new Label { Text = "Frame wrapped around a Label" }
 };
