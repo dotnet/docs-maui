@@ -22,7 +22,7 @@ To migrate a Xamarin.Forms library project to a .NET MAUI library project, you m
 > - Upgrade or replace incompatible dependencies with .NET 6+ versions.
 > - Compile and test your app.
 
-To simplify the upgrade process, we recommend creating a new .NET MAUI library project of the same name as your Xamarin.Forms library project, and then copying in your code. This is the approach outlined below.
+To simplify the upgrade process, you should create a new .NET MAUI library project of the same name as your Xamarin.Forms library project, and then copy in your code. This is the approach outlined below.
 
 ## Create a new project
 

@@ -247,7 +247,7 @@ Support for Nullable Reference Types (NRT) was added in Xamarin.Android 11.0. NR
 
 Because the default for .NET 6+ is `disable`, the same applies for Xamarin.Android projects.
 
-### `Resource.designer.cs`
+### Resource.designer.cs
 
 In Xamarin.Android, Java binding projects didn't support generating a `Resource.designer.cs` file. Since binding projects are just class libraries in .NET 6+, this file will be generated. This could be a breaking change when migrating existing projects.
 
