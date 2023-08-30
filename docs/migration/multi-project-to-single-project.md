@@ -37,7 +37,7 @@ This will help to simplify the rest of the migration process, as it will minimiz
 
 In Visual Studio, create a new .NET MAUI app using the same name as your Xamarin.Forms app:
 
-:::image type="content" source="media/multi-project-to-single-project.png" alt-text="Screenshot of creating a .NET MAUI app in Visual Studio.":::
+:::image type="content" source="media/multi-project-to-single-project/create-maui-app.png" alt-text="Screenshot of creating a .NET MAUI app in Visual Studio.":::
 
 Opening the project file will confirm that you have a .NET SDK-style project.
 
