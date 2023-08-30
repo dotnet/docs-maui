@@ -87,6 +87,10 @@
     {
       "source_path": "docs/android/deployment/overview.md",
       "redirect_url": "/dotnet/maui/android/deployment"
+    },
+    {
+      "source_path": "docs/migration/forms-projects.md",
+      "redirect_url": "/dotnet/maui/migration/multi-project-to-multi-project"
     }
   ]
 }
