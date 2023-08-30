@@ -104,4 +104,4 @@ This command runs the tool updates all eligible files within the chosen project 
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Manual migration](forms-projects.md#namespace-changes)
+> [Manual migration](multi-project-to-multi-project.md#namespace-changes)
