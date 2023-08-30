@@ -74,7 +74,7 @@
             - name: Upgrade with the .NET Upgrade Assistant
               href: migration/upgrade-assistant.md
             - name: Upgrade manually
-              href: migration/multi-project-to-multi-project.md
+              href: migration/forms-projects.md
             - name: Layout behavior changes
               href: migration/layouts.md
             - name: Reuse custom renderers

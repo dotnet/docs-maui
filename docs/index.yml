@@ -65,7 +65,7 @@ landingContent:
           - text: Automatically upgrade Xamarin.Forms projects
             url: migration/upgrade-assistant.md
           - text: Manually upgrade Xamarin.Forms projects
-            url: migration/multi-project-to-multi-project.md
+            url: migration/forms-projects.md
           - text: Layout behavior changes
             url: migration/layouts.md
           - text: Custom renderers
