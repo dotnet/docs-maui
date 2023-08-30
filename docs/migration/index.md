@@ -14,7 +14,7 @@ Xamarin projects can run on .NET, starting with .NET 6, after completing an upgr
 | Xamarin.iOS             | ✅       | [Upgrade Xamarin native projects](native-projects.md) |
 | Xamarin.Mac             | ✅       | [Upgrade Xamarin native projects](native-projects.md) |
 | Xamarin.tvOS            | ✅       | [Upgrade Xamarin native projects](native-projects.md) |
-| Xamarin.Forms           | ✅       | [Upgrade Xamarin.Forms projects](forms-projects.md) |
+| Xamarin.Forms           | ✅       | [Upgrade Xamarin.Forms projects](multi-project-to-multi-project.md) |
 | iOS App Extensions      | ✅       | [Upgrade Xamarin native projects](native-projects.md) |
 | Android Wear            | ✅       | [Upgrade Xamarin native projects](native-projects.md) |
 | Android Binding Library | ✅       | [Xamarin.Android binding project migration](android-binding-projects.md) |
@@ -40,4 +40,4 @@ The .NET Upgrade Assistant is a command-line tool that can help you upgrade Xama
 Alternatively, you can manually upgrade a Xamarin.Forms project to .NET MAUI with a two-step process:
 
 1. Upgrade your Xamarin native projects, in your Xamarin.Forms solution, to .NET. For more information, see [Upgrade Xamarin.Android, Xamarin.iOS, and Xamarin.Mac apps to .NET](native-projects.md).
-1. Upgrade your Xamarin.Forms library project to .NET Multi-platform App UI (.NET MAUI). For more information, see [Manually upgrade a Xamarin.Forms app to .NET MAUI](forms-projects.md).
+1. Upgrade your Xamarin.Forms library project to .NET Multi-platform App UI (.NET MAUI). For more information, see [Manually upgrade a multi-project Xamarin.Forms app to a multi-project .NET MAUI app](multi-project-to-multi-project.md).
