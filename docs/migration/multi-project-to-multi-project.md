@@ -165,7 +165,7 @@ public static class MauiProgram
 
 [!INCLUDE [Update app dependencies](includes/update-app-dependencies.md)]
 
-[!INCLUDE [Compile and troubleshoot](includes/compile-troubletshoot.md)]
+[!INCLUDE [Compile and troubleshoot](includes/compile-troubleshoot.md)]
 
 ## See also
 
