@@ -288,7 +288,7 @@ public class MainActivity : MauiAppCompatActivity
 }
 ```
 
-### iOS and Mac Catalyst
+### iOS
 
 On iOS, the localized app name is stored using a folder-based naming convention in the *Platforms\iOS\Resources* folder. Folders should be named with the language, and optional culture, followed by *.lproj*. For example, the Spanish-language folder is named *es.lproj*. A *InfoPlist.strings* file should be added to each folder, with a build action of **BundleResource**, that sets the `CFBundleDisplayName` key and value.
 
