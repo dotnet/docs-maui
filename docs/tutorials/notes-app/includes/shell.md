@@ -54,6 +54,10 @@ Let's break down the key parts of the XAML controls placed on the page:
 - `<VerticalStackLayout>` is the only child object of the <xref:Microsoft.Maui.Controls.ContentPage>. <xref:Microsoft.Maui.Controls.ContentPage> can only have one child object. The <xref:Microsoft.Maui.Controls.VerticalStackLayout> type can have multiple children. This layout control arranges its children vertically, one after the other.
 - `<HorizontalStackLayout>` operates the same as a `<VerticalStackLayout>`, except its children are arranged horizontally.
 - `<Image>` displays an image, in this case it's using the `dotnet_bot.png` image that comes with every .NET MAUI project.
+
+  > [!IMPORTANT]
+  > The file added to the project is actually `dotnet_bot.svg`. .NET MAUI converts Scalable Vector Graphics (SVG) files to Portable Network Graphic (PNG) files. Therefore, when adding an SVG file to your .NET MAUI app project, it should be referenced from XAML or C# with a `.png` extension. The only reference to the SVG file should be in your project file.
+
 - `<Label>` controls display text.
 - `<Button>` controls can be pressed by the user, which raise the `Clicked` event. You can run code in response to the `Clicked` event.
 - `Clicked="LearnMore_Clicked"`
