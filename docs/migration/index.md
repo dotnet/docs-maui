@@ -14,7 +14,7 @@ Xamarin projects can run on .NET, starting with .NET 6, after completing an upgr
 | Xamarin.iOS             | ✅       | [Upgrade Xamarin native projects](native-projects.md) |
 | Xamarin.Mac             | ✅       | [Upgrade Xamarin native projects](native-projects.md) |
 | Xamarin.tvOS            | ✅       | [Upgrade Xamarin native projects](native-projects.md) |
-| Xamarin.Forms           | ✅       | [Upgrade a multi-project Xamarin.Forms app to a multi-project .NET MAUI app](multi-project-to-multi-project.md) <br> [Upgrade a multi-project Xamarin.Forms app to a single-project .NET MAUI app](multi-project-to-single-project.md) |
+| Xamarin.Forms           | ✅       | [Upgrade a Xamarin.Forms app to a multi-project .NET MAUI app](multi-project-to-multi-project.md) <br> [Upgrade a Xamarin.Forms app to a single project .NET MAUI app](multi-project-to-single-project.md) |
 | iOS App Extensions      | ✅       | [Upgrade Xamarin native projects](native-projects.md) |
 | Android Wear            | ✅       | [Upgrade Xamarin native projects](native-projects.md) |
 | Android Binding Library | ✅       | [Xamarin.Android binding project migration](android-binding-projects.md) |
