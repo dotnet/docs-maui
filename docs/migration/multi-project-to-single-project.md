@@ -14,7 +14,6 @@ To migrate a multi-project Xamarin.Forms app to a single-project .NET Multi-plat
 > - Update your Xamarin.Forms app to use Xamarin.Forms 5.
 > - Update the app's dependencies to the latest versions.
 > - Ensure the app still works.
-> - Review NuGet compatibility.
 > - Create a .NET MAUI app.
 > - Copy code and configuration from the Xamarin.Forms app to the .NET MAUI app.
 > - Update namespaces.
