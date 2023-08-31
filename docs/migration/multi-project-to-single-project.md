@@ -22,7 +22,7 @@ To migrate a Xamarin.Forms app to a single-project .NET Multi-platform App UI (.
 > - Copy resources from the Xamarin.Forms app to the .NET MAUI app.
 > - Compile and test your app.
 
-To simplify the upgrade process, you should create a new .NET MAUI app of the same name as your Xamarin.Forms app, and then copy in your code and configuration. This is the approach outlined below.
+To simplify the upgrade process, you should create a new .NET MAUI app of the same name as your Xamarin.Forms app, and then copy in your code, configuration, and resources. This is the approach outlined below.
 
 ## Update your Xamarin.Forms app
 
