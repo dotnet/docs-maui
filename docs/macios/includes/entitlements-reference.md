@@ -111,7 +111,8 @@ The communicates with drivers entitlement enables communication between an app a
 The entitlement is defined using the `com.apple.developer.driverkit.communicates-with-drivers` key, of type `Boolean`:
 
 ```xml
-
+<key>com.apple.developer.driverkit.communicates-with-drivers</key>
+<true/>
 ```
 
 For more information, see [Communicates with Drivers](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_driverkit_communicates-with-drivers?language=objc) on developer.apple.com.
