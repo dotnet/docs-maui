@@ -42,6 +42,11 @@ The following XAML shows resources defined in an application level <xref:Microso
         <Color x:Key="NavigationBarTextColor">White</Color>
         <Color x:Key="NormalTextColor">Black</Color>
 
+        <!-- Images -->
+        <x:String x:Key="BackgroundImage">background</x:String>
+        <x:String x:Key="MenuIcon">menu.png</x:String>
+        <x:String x:Key="SearchIcon">search.png</x:String>
+
         <!-- Implicit styles -->
         <Style TargetType="NavigationPage">
             <Setter Property="BarBackgroundColor"
@@ -64,18 +69,6 @@ In this example, the resource dictionary defines a `Thickness` resource, multipl
 
 > [!IMPORTANT]
 > Inserting resources directly between the `Resources` property-element tags automatically creates a <xref:Microsoft.Maui.Controls.ResourceDictionary> object. However, it's also valid to place all resources between optional <xref:Microsoft.Maui.Controls.ResourceDictionary> tags.
-
-> [!TIP]
-> Images can also be included in the resource dictionary either with or without their format type (.png etc)  and subsequently utilized within the application using corresponding keys:
-
-```xaml
-        <ResourceDictionary>
-            <!-- Images -->
-            <x:String x:Key="BackgroundImage">Background</x:String>
-            <x:String x:Key="MenuIcon">Menu.png</x:String>
-            <x:String x:Key="SearchIcon">Search.png</x:String>
-        </ResourceDictionary>
-```
 
 ## Consume resources
 
