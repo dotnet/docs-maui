@@ -42,6 +42,11 @@ The following XAML shows resources defined in an application level <xref:Microso
         <Color x:Key="NavigationBarTextColor">White</Color>
         <Color x:Key="NormalTextColor">Black</Color>
 
+        <!-- Images -->
+        <x:String x:Key="BackgroundImage">background</x:String>
+        <x:String x:Key="MenuIcon">menu.png</x:String>
+        <x:String x:Key="SearchIcon">search.png</x:String>
+
         <!-- Implicit styles -->
         <Style TargetType="NavigationPage">
             <Setter Property="BarBackgroundColor"
