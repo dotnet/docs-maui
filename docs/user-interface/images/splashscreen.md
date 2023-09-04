@@ -15,7 +15,7 @@ Once the app is ready for interaction, its splash screen is dismissed.
 > [!NOTE]
 > On Android 12+ (API 31+), the splash screen shows an icon that's centred on screen. For more information about splash screens on Android 12+, see [Splash screens](https://developer.android.com/develop/ui/views/launch/splash-screen) on developer.android.com.
 
-In a .NET MAUI app project, a splash screen can be specified in a single location in your app project, and at build time it can be automatically resized to the correct resolution for the target platform and device, and added to your app package. This avoids having to manually duplicate and name the splash screen on a per platform basis. By default, bitmap (non-vector) image formats are not automatically resized by .NET MAUI.
+In a .NET MAUI app project, a splash screen can be specified in a single location in your app project, and at build time it can be resized to the correct resolution for the target platform, and added to your app package. This avoids having to manually duplicate and name the splash screen on a per platform basis. By default, bitmap (non-vector) image formats are not automatically resized by .NET MAUI.
 
 A .NET MAUI splash screen can use any of the standard platform image formats, including Scalable Vector Graphics (SVG) files.
 
@@ -37,7 +37,7 @@ To comply with Android resource naming rules, splash screen files names must be 
 
 ## Set the base size
 
-.NET MAUI uses your splash screen across multiple platforms and devices, and attempts to resize for each platform and device.
+.NET MAUI uses your splash screen across multiple platforms and can resize it for each platform.
 
 The base size of a splash screen image represents the baseline density of the image, and is effectively the 1.0 scale factor for the image (the size you would typically use in your code to specify the splash screen size) from which all other sizes are derived. If you don't specify the base size for a bitmap image, the image isn't resized. If you don't specify a base size for a vector image, such as an SVG file, the dimensions specified in the image are used as the base size.
 
@@ -124,7 +124,7 @@ On iOS, the splash screen is added to the app package as a storyboard named `Mau
 </plist>
 ```
 
-Therefore, you shouldn't set the `UILaunchStoryboardName` key in your *Info.plist* file and you shouldn't add a `LaunchScreen.storyboard` to your app.
+Therefore, you shouldn't set the `UILaunchStoryboardName` key in your *Info.plist* file and you shouldn't add a *LaunchScreen.storyboard* to your app.
 
 ---
 
