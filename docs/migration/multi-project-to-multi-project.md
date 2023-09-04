@@ -14,6 +14,7 @@ This article describes how to manually migrate a Xamarin.Forms library project t
 To migrate a Xamarin.Forms library project to a .NET MAUI library project, you must:
 
 > [!div class="checklist"]
+>
 > - Update your Xamarin.Forms app to use Xamarin.Forms 5.
 > - Update the app's dependencies to the latest versions.
 > - Ensure the app still works.
