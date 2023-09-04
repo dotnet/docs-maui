@@ -7,7 +7,7 @@ no-loc: [ "Xamarin.Forms", "Xamarin.Essentials", "Xamarin.CommunityToolkit", ".N
 
 # Manually upgrade a Xamarin.Forms app to a single project .NET MAUI app
 
-To migrate a Xamarin.Forms app to a single-project .NET Multi-platform App UI (.NET MAUI) app, you must:
+To migrate a Xamarin.Forms app to a single project .NET Multi-platform App UI (.NET MAUI) app, you must:
 
 > [!div class="checklist"]
 >
@@ -16,10 +16,10 @@ To migrate a Xamarin.Forms app to a single-project .NET Multi-platform App UI (.
 > - Ensure the app still works.
 > - Create a .NET MAUI app.
 > - Copy code and configuration from the Xamarin.Forms app to the .NET MAUI app.
+> - Copy resources from your Xamarin.Forms app to the .NET MAUI app.
 > - Update namespaces.
 > - Address any API changes.
 > - Upgrade or replace incompatible dependencies with .NET 7+ versions.
-> - Copy resources from the Xamarin.Forms app to the .NET MAUI app.
 > - Compile and test your app.
 
 To simplify the upgrade process, you should create a new .NET MAUI app of the same name as your Xamarin.Forms app, and then copy in your code, configuration, and resources. This is the approach outlined below.
@@ -62,21 +62,11 @@ Code, and their containing folders, from your Xamarin.Forms head projects should
 - Code from your Xamarin.Forms iOS head project should be copied to the *Platforms\iOS* folder of your .NET MAUI app project. In addition, copy any custom code from your Xamarin.Forms `AppDelegate` class to the same class in your .NET MAUI app project.
 
     > [!NOTE]
-    > For a list of breaking changes for .NET iOS, see [Breaking changes in .NET iOS](https://github.com/xamarin/xamarin-macios/wiki/Breaking-changes-in-.NET).
+    > For a list of breaking changes in .NET iOS, see [Breaking changes in .NET iOS](https://github.com/xamarin/xamarin-macios/wiki/Breaking-changes-in-.NET).
 
 - Code from your Xamarin.Forms UWP head project should be copied to the *Platforms\Windows* folder of your .NET MAUI app project. In addition, copy any custom code from your Xamarin.Forms `App` class to the same class in your .NET MAUI app project.
 
 At build time, the build system only includes the code from each folder when building for that specific platform. For example, when you build for Android the files in the *Platforms\Android* folder will be built into the app package, but the files in the other *Platforms* folders won't be. This approach uses multi-targeting to target multiple platforms from a single project. .NET MAUI apps can also be multi-targeted based on your own filename and folder criteria. This enables you to structure your .NET MAUI app project so that you don't have to place your platform code into child-folders of the *Platforms* folder. For more information, see [Configure multi-targeting](~/platform-integration/configure-multi-targeting.md).
-
-In addition to this default multi-targeting approach,
-
-[!INCLUDE [Namespace changes](includes/namespace-changes.md)]
-
-[!INCLUDE [API changes](includes/api-changes.md)]
-
-[!INCLUDE [AssemblyInfo changes](includes/assemblyinfo-changes.md)]
-
-[!INCLUDE [Update app dependencies](includes/update-app-dependencies.md)]
 
 ## Copy configuration to the .NET MAUI app
 
@@ -135,17 +125,19 @@ For more information, see [Add a splash screen to a .NET MAUI app project](~/use
 
 ### Images
 
-Any cross-platform images from your Xamarin.Forms solution should be added to your .NET MAUI app project by dragging them into the *Resources\Images* folder of the project, where their build actions will automatically be set to **MauiImage**. For more information, see [Add images to a .NET MAUI app project](~/user-interface/images/images.md).
+Devices have a range of screen sizes and densities and each platform has functionality for displaying density-dependent images. In Xamarin.Forms, density-dependent images were typically placed in head projects and adopted a platform-specific naming convention. There are two approaches that can be taken to migrate these images to a .NET MAUI solution.
 
-Devices have a range of screen sizes and densities and each platform has functionality for displaying density-dependent images. Any platform-specific images, including density-dependent images, should be copied from your Xamarin.Forms solution to identically named folders in the *Platforms\{Platform}* folder of your .NET MAUI app project, and should have their build actions set to the build actions that are used in your Xamarin.Forms solution. The following table lists example image locations for a Xamarin.Forms solution, and their equivalent location in a .NET MAUI app project:
+The recommended approach is to copy the highest resolution version of each image from your Xamarin.Forms solution to your .NET MAUI app project by dragging it into the *Resources\Images* folder of the project, where its build action will automatically be set to **MauiImage**. It will also be necessary to set the `BaseSize` attribute of each image, to ensure that resizing occurs. This eliminates the need to have multiple versions of each image, on each platform. At build time, any images that have the **MauiImage** build action, and which specify a `BaseSize`, will be resized into multiple density-dependent images that meet the platform requirements. For more information, see [Add images to a .NET MAUI app project](~/user-interface/images/images.md).
+
+Alternatively, you could copy density-dependent images from your Xamarin.Forms solution to identically named folders in the *Platforms\{Platform}* folder of your .NET MAUI app project, and set their build actions to the build actions that are used in your Xamarin.Forms solution. The following table lists example image locations for a Xamarin.Forms solution, and their equivalent location in a .NET MAUI app project:
 
 | Xamarin.Forms image location | .NET MAUI image location | .NET MAUI platform image build action |
 | ---------------------------- | ------------------------ | ------------------------------------- |
 | *{MyApp.Android}\Resources\drawable-xhdpi\image.png* | *Platforms\Android\Resources\drawable-xhdpi\image.png* | **AndroidResource** |
-| *{MyApp.iOS\image.jpg}* | *Platforms\iOS\Resources\image.jpg | **BundleResource** |
-| *{MyApp.UWP\Assets\Images\image.gif}* | *Platforms\Windows\Assets\Images\image.gif | **Content** |
+| *{MyApp.iOS}\image.jpg* | *Platforms\iOS\Resources\image.jpg | **BundleResource** |
+| *{MyApp.UWP}\Assets\Images\image.gif* | *Platforms\Windows\Assets\Images\image.gif | **Content** |
 
-For density-dependent images, provided that you adopt the same image naming convention as used in your Xamarin.Forms solution, the appropriate image will be chosen at runtime based on the device's capabilities.
+Provided that you've adopted the same image naming convention as used in your Xamarin.Forms solution, the appropriate image will be chosen at runtime based on the device's capabilities. The disadvantage of this approach is that you still have multiple versions of each image on each platform.
 
 ### Fonts
 
@@ -168,7 +160,7 @@ Any raw asset files, such as HTML, JSON, and video, should be copied from your X
 In a .NET MAUI app, strings are localized using the same approach as in a Xamarin.Forms app. Therefore, your .NET resource files (*.resx*) should be copied from your Xamarin.Forms solution to an identically named folder in your .NET MAUI solution. Then, the neutral language of your .NET MAUI app must be specified. For more information, see [Specify the app's neutral language](~/fundamentals/localization.md#specify-the-apps-neutral-language).
 
 > [!NOTE]
-> .NET resource files don't have to be placed in the *Resources* folder of your .NET MAUI app project, although they can be if required.
+> .NET resource files don't have to be placed in the *Resources* folder of your .NET MAUI app project.
 
 In a .NET MAUI app, images are localized using the same approach as in a Xamarin.Forms app. Therefore, your localized images, and the folders in which they reside, should be copied from your Xamarin.Forms solution to your .NET MAUI app project:
 
@@ -185,5 +177,13 @@ In a .NET MAUI app, app names are localized using the same approach as in a Xama
 - On Windows, the localized app name is stored in the app package manifest.
 
 For more information, see [Localize the app name](~/fundamentals/localization.md#localize-the-app-name). For more information about .NET MAUI app localization, see [Localization](~/fundamentals/localization.md).
+
+[!INCLUDE [Namespace changes](includes/namespace-changes.md)]
+
+[!INCLUDE [API changes](includes/api-changes.md)]
+
+[!INCLUDE [AssemblyInfo changes](includes/assemblyinfo-changes.md)]
+
+[!INCLUDE [Update app dependencies](includes/update-app-dependencies.md)]
 
 [!INCLUDE [Compile and troubleshoot](includes/compile-troubleshoot.md)]
