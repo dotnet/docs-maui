@@ -81,7 +81,7 @@ For more information about the `RuntimeIdentifier` property, see [RuntimeIdentif
 
 ### Convert to UseNativeHttpHandler
 
-The following table shows how to convert the `HttpClientHandler` and `MtouchHttpClientHandler` properties to the `UseNativeHttpHandler` property when migrating a Xamarin Apple project to .NET 6+:
+The following table shows how to convert the `HttpClientHandler` and `MtouchHttpClientHandler` properties to the `UseNativeHttpHandler` property when migrating a Xamarin Apple project to .NET 7+:
 
 | Value              | UseNativeHttpHandler  |
 | ------------------ | ------------------ |
@@ -103,7 +103,7 @@ Some values have moved from *Info.plist* to the project file.
 
 ### MinimumOSVersion and LSMinimumSystemVersion
 
-The `MinimumOSVersion` and `LSMinimumSystemVersion` properties should be converted to the `SupportedOSPlatformVersion` project in .NET 6+ projects. For more information, see [Ensure MinimumOSVersion is consistent with SupportedOSPlatformVersion](https://github.com/xamarin/xamarin-macios/issues/12336).
+The `MinimumOSVersion` and `LSMinimumSystemVersion` properties should be converted to the `SupportedOSPlatformVersion` property in .NET 7+ projects. For more information, see [Ensure MinimumOSVersion is consistent with SupportedOSPlatformVersion](https://github.com/xamarin/xamarin-macios/issues/12336).
 
 ## See also
 
