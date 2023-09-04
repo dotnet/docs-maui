@@ -79,6 +79,10 @@ dotnet tool update -g upgrade-assistant
 
 ## Run the upgrade assistant
 
+Before upgrading your Xamarin.Forms app to .NET MAUI, you should first update your Xamarin.Forms app to use Xamarin.Forms 5 and ensure that it still runs correctly. In addition, you should update the dependencies that your app uses to the latest versions.
+
+This will help to simplify the rest of the migration process, as it will minimize the API differences between Xamarin.Forms and .NET MAUI, and will ensure that you are using .NET compatible versions of your dependencies if they exist.
+
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio](#tab/vswin)
 <!-- markdownlint-enable MD025 -->
