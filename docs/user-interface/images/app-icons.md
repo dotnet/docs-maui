@@ -57,11 +57,11 @@ Alternatively, the app icon can be composed of two images, one image representin
 
 .NET MAUI uses your icon across multiple platforms and devices, and attempts to resize the icon according for each platform and device. The app icon is also used for different purposes, such as a store entry for your app or the icon used to represent the app after it's installed on a device.
 
-The base size of your icon represents baseline density of the image, and is effectively the 1.0 scale factor that all other sizes are derived. If you don't specify the base size for a bitmap-based app icon, such as a PNG file, the image isn't resized. If you don't specify the base size for a vector-based app icon, such as an SVG file, the dimensions specified in the image are used as the base size. To stop a vector image from being resized, set the `Resize` attribute to `false`.
+The base size of your icon represents baseline density of the image, and is effectively the 1.0 scale factor that all other sizes are derived from. If you don't specify the base size for a bitmap-based app icon, such as a PNG file, the image isn't resized. If you don't specify the base size for a vector-based app icon, such as an SVG file, the dimensions specified in the image are used as the base size. To stop a vector image from being resized, set the `Resize` attribute to `false`.
 
 The following figure illustrates how base size affects an image:
 
-:::image type="content" source="media/app-icons/base-size.png" alt-text="How base size affects an app icon for .NET MAUI":::
+:::image type="content" source="media/app-icons/base-size.png" alt-text="How base size affects an app icon for .NET MAUI.":::
 
 The process shown in the previous figure follows these steps:
 
