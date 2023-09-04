@@ -125,11 +125,11 @@ For more information, see [Add a splash screen to a .NET MAUI app project](~/use
 
 ### Images
 
-Devices have a range of screen sizes and densities and each platform has functionality for displaying density-dependent images. In Xamarin.Forms, density-dependent images were typically placed in head projects and adopted a platform-specific naming convention. There are two approaches that can be taken to migrate these images to a .NET MAUI solution.
+Devices have a range of screen sizes and densities and each platform has functionality for displaying density-dependent images. In Xamarin.Forms, density-dependent images are typically placed in head projects and adopt a platform-specific naming convention. There are two approaches that can be taken to migrate these images to .NET MAUI.
 
 The recommended approach is to copy the highest resolution version of each image from your Xamarin.Forms solution to your .NET MAUI app project by dragging it into the *Resources\Images* folder of the project, where its build action will automatically be set to **MauiImage**. It will also be necessary to set the `BaseSize` attribute of each image, to ensure that resizing occurs. This eliminates the need to have multiple versions of each image, on each platform. At build time, any images that have the **MauiImage** build action, and which specify a `BaseSize`, will be resized into multiple density-dependent images that meet the platform requirements. For more information, see [Add images to a .NET MAUI app project](~/user-interface/images/images.md).
 
-Alternatively, you could copy density-dependent images from your Xamarin.Forms solution to identically named folders in the *Platforms\{Platform}* folder of your .NET MAUI app project, and set their build actions to the build actions that are used in your Xamarin.Forms solution. The following table lists example image locations for a Xamarin.Forms solution, and their equivalent location in a .NET MAUI app project:
+Alternatively, you could copy density-dependent images from your Xamarin.Forms solution to identically named folders in the *Platforms\\{Platform}* folder of your .NET MAUI app project, and set their build actions to the build actions that are used in your Xamarin.Forms solution. The following table lists example image locations for a Xamarin.Forms solution, and their equivalent location in a .NET MAUI app project:
 
 | Xamarin.Forms image location | .NET MAUI image location | .NET MAUI platform image build action |
 | ---------------------------- | ------------------------ | ------------------------------------- |
