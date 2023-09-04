@@ -6,7 +6,7 @@ ms.date: 08/21/2023
 
 # Xamarin.Android binding project migration
 
-In .NET 6+, there's no concept of an Android binding project as a separate project type. Any of the MSBuild item groups or build actions that work in Xamarin.Android binding projects are supported through a .NET 6+ Android app or library.
+In .NET, there's no concept of an Android binding project as a separate project type. Any of the MSBuild item groups or build actions that work in Xamarin.Android binding projects are supported through a .NET Android app or library.
 
 To migrate a Xamarin.Android binding library to a .NET Android class library:
 
@@ -35,7 +35,7 @@ To migrate a Xamarin.Android binding library to a .NET Android class library:
 
 ## Unsupported legacy options
 
-The following legacy options are no longer supported. The supported alternatives have been available for several years, and the smoothest migration option is to update and test your current projects with these options before migrating them to .NET 6+.
+The following legacy options are no longer supported. The supported alternatives have been available for several years, and the smoothest migration option is to update and test your current projects with these options before migrating them to .NET.
 
 ### AndroidClassParser
 
@@ -93,7 +93,7 @@ Alternatively, you could exclude all files within a folder:
 
 In Xamarin.Android, the Java `.jar` or `.aar` was often embedded into the binding `.dll` as an Embedded Resource. However, this led to slow builds, as each `.dll` must be opened and scanned for Java code. If found, it must be extracted to disk to be used.
 
-In .NET 6+, Java code is no longer embedded in the `.dll`. The app build process will automatically include any `.jar` or `.aar` files it finds in the same directory as a referenced `.dll`.
+In .NET, Java code is no longer embedded in the `.dll`. The app build process will automatically include any `.jar` or `.aar` files it finds in the same directory as a referenced `.dll`.
 
 If a project references a binding via `<PackageReference>` or `<ProjectReference>` then everything works and no additional considerations are required. However, if a project references a binding via `<Reference>`, the `.jar`/`.aar` must be located next to the `.dll`. That is, for the following reference:
 
@@ -189,7 +189,7 @@ If you wish to use a hybrid approach, for example, to keep existing nested types
 <attr path="/api/package[@name='my.package']/interface[@name='Foo']" name="unnest">true</attr>
 ```
 
-Setting it to `false` will result in nested types remaining nested in the `interface` (.NET 6+ behavior):
+Setting it to `false` will result in nested types remaining nested in the `interface` (.NET behavior):
 
 ```xml
 <attr path="/api/package[@name='my.package']/interface[@name='Foo']" name="unnest">false</attr>
@@ -245,11 +245,11 @@ Support for Nullable Reference Types (NRT) was added in Xamarin.Android 11.0. NR
 </PropertyGroup>
 ```
 
-Because the default for .NET 6+ is `disable`, the same applies for Xamarin.Android projects.
+Because the default for .NET is `disable`, the same applies for Xamarin.Android projects.
 
-### `Resource.designer.cs`
+### Resource.designer.cs
 
-In Xamarin.Android, Java binding projects didn't support generating a `Resource.designer.cs` file. Since binding projects are just class libraries in .NET 6+, this file will be generated. This could be a breaking change when migrating existing projects.
+In Xamarin.Android, Java binding projects didn't support generating a `Resource.designer.cs` file. Since binding projects are just class libraries in .NET, this file will be generated. This could be a breaking change when migrating existing projects.
 
 One example of a failure from this change, is if your binding generates a class named `Resource` in the root namespace:
 
