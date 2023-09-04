@@ -1,11 +1,11 @@
 ---
-title: "Upgrade a multi-project Xamarin.Forms app to a multi-project .NET MAUI with the .NET Upgrade Assistant"
-description: "Learn how to use .NET Upgrade Assistant to migrate a multi-project Xamarin.Forms app to a multi-project .NET MAUI app."
+title: "Upgrade a Xamarin.Forms app to a .NET MAUI app with the .NET Upgrade Assistant"
+description: "Learn how to use .NET Upgrade Assistant to migrate a Xamarin.Forms app to a multi-project .NET MAUI app."
 ms.date: 08/21/2023
 no-loc: [ "Xamarin.Forms", "Xamarin.Essentials", "Xamarin.CommunityToolkit", ".NET MAUI Community Toolkit", "SkiaSharp", "Xamarin.Forms.Maps", "Microsoft.Maui", "Microsoft.Maui.Controls", "net7.0-android", "net7.0-ios" ]
 ---
 
-# Upgrade a multi-project Xamarin.Forms app to a multi-project .NET MAUI with the .NET Upgrade Assistant
+# Upgrade a Xamarin.Forms app to a .NET MAUI app with the .NET Upgrade Assistant
 
 The .NET Upgrade Assistant helps you upgrade Xamarin.Forms projects to .NET Multi-platform App UI (.NET MAUI) by converting the solution's project file and by performing common code updates. Specifically, the tool will:
 

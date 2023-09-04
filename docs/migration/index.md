@@ -35,7 +35,7 @@ Xamarin projects can run on .NET after completing an upgrade process. The follow
 
 To upgrade your Xamarin native projects to .NET, you'll first have to update the projects to be SDK-style projects and then update your dependencies to .NET 7+. For more information, see [Upgrade Xamarin.Android, Xamarin.iOS, and Xamarin.Mac apps to .NET](native-projects.md).
 
-The .NET Upgrade Assistant is a command-line tool that can help you upgrade multi-project Xamarin.Forms apps to multi-project .NET Multi-platform App UI (.NET MAUI) apps. After running the tool, in most cases the app will require additional effort to complete the upgrade. For more information, see [Upgrade a multi-project Xamarin.Forms app to a multi-project .NET MAUI with the .NET Upgrade Assistant](upgrade-assistant.md).
+The .NET Upgrade Assistant is a command-line tool that can help you upgrade multi-project Xamarin.Forms apps to multi-project .NET Multi-platform App UI (.NET MAUI) apps. After running the tool, in most cases the app will require additional effort to complete the upgrade. For more information, see [Upgrade a Xamarin.Forms app to a .NET MAUI app with the .NET Upgrade Assistant](upgrade-assistant.md).
 
 You can also manually upgrade at Xamarin.Forms app to a multi-project .NET MAUI app with a two-step process:
 
