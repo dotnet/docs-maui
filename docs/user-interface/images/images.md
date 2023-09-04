@@ -51,7 +51,7 @@ The base size is specified with the `BaseSize="W,H"` attribute, where `W` is the
 <MauiImage Include="Resources\Images\logo.jpg" BaseSize="376,678" />
 ```
 
-At build time, the image will be resized to the correct densities for the target platform. The resulting images then added to your app package.
+At build time, the image will be resized to the correct densities for the target platform. The resulting images are then added to your app package.
 
 To stop vector images being resized, set the `Resize` attribute to `false`:
 
