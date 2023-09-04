@@ -61,7 +61,7 @@ The base size of your icon represents baseline density of the image, and is effe
 
 The following figure illustrates how base size affects an image:
 
-:::image type="content" source="media/app-icons/base-size.png" alt-text="How base size affects an app icon for .NET MAUI.":::
+:::image type="content" source="media/base-size.png" alt-text="How base size affects an app icon for .NET MAUI.":::
 
 The process shown in the previous figure follows these steps:
 

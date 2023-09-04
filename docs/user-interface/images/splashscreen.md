@@ -1,7 +1,7 @@
 ---
 title: "Add a splash screen to a .NET MAUI app project"
 description: "A .NET MAUI splash screen can be displayed on Android and iOS when an app is launched, while the app's initialization process completes."
-ms.date: 03/08/2023
+ms.date: 09/04/2023
 ---
 
 # Add a splash screen to a .NET MAUI app project
@@ -35,17 +35,40 @@ A splash screen can be added to your app project by dragging an image into the *
 
 To comply with Android resource naming rules, splash screen files names must be lowercase, start and end with a letter character, and contain only alphanumeric characters or underscores. For more information, see [App resources overview](https://developer.android.com/guide/topics/resources/providing-resources) on developer.android.com.
 
-The base size of the splash screen can be specified by setting the `BaseSize` attribute to values that are divisible by 8:
+## Set the base size
+
+.NET MAUI uses your splash screen across multiple platforms and devices, and attempts to resize for each platform and device.
+
+The base size of a splash screen image represents the baseline density of the image, and is effectively the 1.0 scale factor for the image (the size you would typically use in your code to specify the splash screen size) from which all other sizes are derived. If you don't specify the base size for a bitmap image, the image isn't resized. If you don't specify a base size for a vector image, such as an SVG file, the dimensions specified in the image are used as the base size.
+
+The following diagram illustrates how base size affects an image:
+
+:::image type="content" source="media/base-size.png" alt-text="How base size affects an app icon for .NET MAUI.":::
+
+The process shown in the diagram follows these steps:
+
+- **A**: The image has dimensions of 210x260, and the base size is set to 424x520.
+- **B**: .NET MAUI scales the image to match the base size of 424x520.
+- **C**: As different target platforms require different sizes of the image, .NET MAUI scales the image from the base size to different sizes.
+
+> [!TIP]
+> Use SVG images where possible. SVG images can upscale to larger sizes and still look crisp and clean. Bitmap-based images, such as a PNG or JPG image, look blurry when upscaled.
+
+The base size is specified with the `BaseSize="W,H"` attribute, where `W` is the width of the image and `H` is the height of the image. The value specified as the base size must be divisible by 8. The following example sets the base size:
 
 ```xml
 <MauiSplashScreen Include="Resources\Splash\splashscreen.svg" BaseSize="128,128" />
 ```
 
-The value of the `BaseSize` attribute represents the baseline density of the splash screen, and is effectively the 1.0 scale factor for the splash screen from which all other density sizes are derived. This value will be used to ensure that splash screens are correctly resized to different display densities. If you don't specify a `BaseSize` for a bitmap-based splash screen, the image isn't resized. If you don't specify a `BaseSize` value for a vector-based splash screen, the dimensions specified in the SVG are assumed to be the base size. To stop vector images being resized, set the `Resize` attribute to `false`:
+At build time, the splash screen will be resized to the correct resolution for the target platform. The resulting splash screen is then added to your app package.
+
+To stop vector images being resized, set the `Resize` attribute to `false`:
 
 ```xml
 <MauiSplashScreen Include="Resources\Splash\splashscreen.svg" Resize="false" />
 ```
+
+## Add tint and background color
 
 To add a tint to your splash screen, which is useful when you have a simple image you'd like to render in a different color to the source, set the `TintColor` attribute:
 
@@ -62,7 +85,7 @@ A background color for your splash screen can also be specified:
 <!-- Valid color values are actually derived from the SKColor struct, rather than Microsoft.Maui.Graphics.Colors. This may change. -->
 Color values can be specified in hexadecimal, or as a .NET MAUI color. For example, `Color="Red"` is valid.
 
-At build time, the splash screen can be resized to the correct resolution for the target platform and device. The resulting splash screen is then added to your app package.
+## Platform-specific configuration
 
 <!-- markdownlint-disable MD025 -->
 
