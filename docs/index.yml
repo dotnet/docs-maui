@@ -62,10 +62,12 @@ landingContent:
             url: migration/android-projects.md
           - text: Xamarin Apple project migration
             url: migration/apple-projects.md
-          - text: Automatically upgrade Xamarin.Forms projects
+          - text: Automatically upgrade Xamarin.Forms apps
             url: migration/upgrade-assistant.md
-          - text: Manually upgrade Xamarin.Forms projects
+          - text: Manually upgrade Xamarin.Forms apps to multi-project .NET MAUI apps
             url: migration/multi-project-to-multi-project.md
+          - text: Manually upgrade Xamarin.Forms apps to single project .NET MAUI apps
+            url: migration/multi-project-to-single-project.md
           - text: Layout behavior changes
             url: migration/layouts.md
           - text: Custom renderers

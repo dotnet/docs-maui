@@ -1,11 +1,11 @@
 ---
-title: "Upgrade a multi-project Xamarin.Forms app to a multi-project .NET MAUI with the .NET Upgrade Assistant"
-description: "Learn how to use .NET Upgrade Assistant to migrate a multi-project Xamarin.Forms app to a multi-project .NET MAUI app."
+title: "Upgrade a Xamarin.Forms app to a .NET MAUI app with the .NET Upgrade Assistant"
+description: "Learn how to use .NET Upgrade Assistant to migrate a Xamarin.Forms app to a multi-project .NET MAUI app."
 ms.date: 08/21/2023
 no-loc: [ "Xamarin.Forms", "Xamarin.Essentials", "Xamarin.CommunityToolkit", ".NET MAUI Community Toolkit", "SkiaSharp", "Xamarin.Forms.Maps", "Microsoft.Maui", "Microsoft.Maui.Controls", "net7.0-android", "net7.0-ios" ]
 ---
 
-# Upgrade a multi-project Xamarin.Forms app to a multi-project .NET MAUI with the .NET Upgrade Assistant
+# Upgrade a Xamarin.Forms app to a .NET MAUI app with the .NET Upgrade Assistant
 
 The .NET Upgrade Assistant helps you upgrade Xamarin.Forms projects to .NET Multi-platform App UI (.NET MAUI) by converting the solution's project file and by performing common code updates. Specifically, the tool will:
 
@@ -37,6 +37,10 @@ For more information about .NET Upgrade Assistant, including the other app types
 
 - **In-place**: This option upgrades your project without making a copy.
 - **Side-by-side**: This option copies your project and upgrades the copy, leaving the original project alone. Currently, a .NET MAUI side-by-side upgrade requires the creation of new projects to upgrade each project head. Attempting to upgrade a project head into an existing project will likely cause errors and is not a supported experience at this time.
+
+Before upgrading your Xamarin.Forms app to .NET MAUI, you should first update your Xamarin.Forms app to use Xamarin.Forms 5 and ensure that it still runs correctly. In addition, you should update the dependencies that your app uses to the latest versions.
+
+This will help to simplify the rest of the migration process, as it will minimize the API differences between Xamarin.Forms and .NET MAUI, and will ensure that you are using .NET compatible versions of your dependencies if they exist.
 
 ## Installation
 

@@ -50,7 +50,7 @@ The following table shows other MSBuild properties that have changed in .NET And
 | Property | Comments |
 | --- | --- |
 | `$(AndroidUseIntermediateDesignerFile)` | `True` by default. |
-| `$(AndroidBoundExceptionType)` | `System` by default. This property alters the types of exceptions thrown from various methods to better align with existing .NET 6+ semantics, at the cost of compatibility with Xamarin.Android. For more information, see [Some of the new wrapped Java exceptions use BCL exceptions that differ from the related BCL types](https://github.com/xamarin/xamarin-android/issues/4127). |
+| `$(AndroidBoundExceptionType)` | `System` by default. This property alters the types of exceptions thrown from various methods to better align with .NET semantics, at the cost of compatibility with Xamarin.Android. For more information, see [Some of the new wrapped Java exceptions use BCL exceptions that differ from the related BCL types](https://github.com/xamarin/xamarin-android/issues/4127). |
 | `$(AndroidClassParser)` | `class-parse` by default. `jar2xml` isn't supported. |
 | `$(AndroidDexTool)` | `d8` by default. `dx` isn't supported. |
 | `$(AndroidCodegenTarget)` | `XAJavaInterop1` by default. `XamarinAndroid` isn't supported. |
@@ -80,20 +80,20 @@ In Xamarin.Android, Java, and Kotlin Android projects, the `<uses-sdk/>` element
 
 For more information about the `<uses-sdk/>` element, see the [Android documentation](https://developer.android.com/guide/topics/manifest/uses-sdk-element).
 
-In .NET 6+ Android apps, there are MSBuild properties to set these values. Using the MSBuild properties has other benefits. In most cases the `<uses-sdk/>` element should be removed in favor of values in your project's `.csproj` file:
+In .NET 7+ Android apps, there are MSBuild properties to set these values. Using the MSBuild properties has other benefits. In most cases the `<uses-sdk/>` element should be removed in favor of values in your project's `.csproj` file:
 
 ```xml
 <Project>
   <PropertyGroup>
-    <TargetFramework>net6.0-android</TargetFramework>
+    <TargetFramework>net7.0-android</TargetFramework>
     <SupportedOSPlatformVersion>21</SupportedOSPlatformVersion>
   </PropertyGroup>
 </Project>
 ```
 
-In this example, `net6.0-android` is shorthand for `net6.0-android31.0`. While in .NET 7, `net7.0-android` is shorthand for `net7.0-android33.0`. Future versions of .NET will track the latest Android version available at the time of the .NET release.
+In this example, `net7.0-android` is shorthand for `net7.0-android33.0`. Future versions of .NET will track the latest Android version available at the time of the .NET release.
 
-`TargetFramework` maps to `android:targetSdkVersion`. At build time, this value will automatically be included in the `<uses-sdk/>` element for you. The benefit of using `TargetFramework` in this way is that you're given the matching C# binding for Android API 31 for `net6.0-android31.0`. Android releases independently of the .NET release cycle, so we have the flexibility to opt into `net6.0-android32.0` when a binding is available sometime after .NET 6's release.
+`TargetFramework` maps to `android:targetSdkVersion`. At build time, this value will automatically be included in the `<uses-sdk/>` element for you. The benefit of using `TargetFramework` in this way is that you're given the matching C# binding for Android API 33 for `net7.0-android33.0`. Android releases independently of the .NET release cycle, so we have the flexibility to opt into `net7.0-android34.0` when a binding is available sometime after .NET 7's release.
 
 Similarly, `SupportedOSPlatformVersion` maps to `android:minSdkVersion`. At build time, this value will automatically be included in the `<uses-sdk/>` element for you. Android APIs are decorated with the <xref:System.Runtime.Versioning.SupportedOSPlatformAttribute> so that you get build warnings for calling APIs that are only available for some of the Android versions your app can run on:
 

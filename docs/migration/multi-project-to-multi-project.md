@@ -1,11 +1,11 @@
 ---
-title: "Manually upgrade a multi-project Xamarin.Forms app to a multi-project .NET MAUI app"
-description: "Learn how to manually upgrade a multi-project Xamarin.Forms app to a multi-project .NET MAUI app."
+title: "Manually upgrade a Xamarin.Forms app to a multi-project .NET MAUI app"
+description: "Learn how to manually upgrade a Xamarin.Forms app to a multi-project .NET MAUI app."
 ms.date: 3/02/2023
 no-loc: [ "Xamarin.Forms", "Xamarin.Essentials", "Xamarin.CommunityToolkit", ".NET MAUI Community Toolkit", "SkiaSharp", "Xamarin.Forms.Maps", "Microsoft.Maui", "Microsoft.Maui.Controls", "net7.0-android", "net7.0-ios" ]
 ---
 
-# Manually upgrade a multi-project Xamarin.Forms app to a multi-project .NET MAUI app
+# Manually upgrade a Xamarin.Forms app to a multi-project .NET MAUI app
 
 Upgrading a multi-project Xamarin.Forms app to a multi-project .NET Multi-platform App UI (.NET MAUI) app follows the same steps as a Xamarin.Android and Xamarin.iOS project, with additional steps to take advantage of changes in .NET MAUI.
 
@@ -15,14 +15,23 @@ To migrate a Xamarin.Forms library project to a .NET MAUI library project, you m
 
 > [!div class="checklist"]
 >
+> - Update your Xamarin.Forms app to use Xamarin.Forms 5.
+> - Update the app's dependencies to the latest versions.
+> - Ensure the app still works.
 > - Update your project file to be SDK-style.
 > - Update namespaces.
 > - Address any API changes.
 > - Configure .NET MAUI.
-> - Upgrade or replace incompatible dependencies with .NET 6+ versions.
+> - Upgrade or replace incompatible dependencies with .NET 7+ versions.
 > - Compile and test your app.
 
-To simplify the upgrade process, we recommend creating a new .NET MAUI library project of the same name as your Xamarin.Forms library project, and then copying in your code. This is the approach outlined below.
+To simplify the upgrade process, you should create a new .NET MAUI library project of the same name as your Xamarin.Forms library project, and then copy in your code. This is the approach outlined below.
+
+## Update your Xamarin.Forms app
+
+Before upgrading your Xamarin.Forms app to .NET MAUI, you should first update your Xamarin.Forms app to use Xamarin.Forms 5 and ensure that it still runs correctly. In addition, you should update the dependencies that your app uses to the latest versions.
+
+This will help to simplify the rest of the migration process, as it will minimize the API differences between Xamarin.Forms and .NET MAUI, and will ensure that you are using .NET compatible versions of your dependencies if they exist.
 
 ## Create a new project
 
