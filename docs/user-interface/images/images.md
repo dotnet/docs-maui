@@ -8,7 +8,7 @@ ms.date: 09/04/2023
 
 Images are a crucial part of app navigation, usability, and branding. However, each platform has differing image requirements that typically involve creating multiple versions of each image at different resolutions. Therefore, a single image typically has to be duplicated multiple times per platform, at different resolutions, with the resulting images having to use different filename and folder conventions on each platform.
 
-In a .NET Multi-platform App UI (.NET MAUI) app project, images can be specified in a single location in your app project, and at build time they can be resized to the correct resolution for the target platform and device, and added to your app package. This avoids having to manually duplicate and name images on a per platform basis. By default, bitmap (non-vector) image formats, including animated GIFs, are not automatically resized by .NET MAUI.
+In a .NET Multi-platform App UI (.NET MAUI) app project, images can be specified in a single location in your app project, and at build time they can be resized to the correct resolution for the target platform, and added to your app package. This avoids having to manually duplicate and name images on a per platform basis. By default, bitmap (non-vector) image formats, including animated GIFs, are not automatically resized by .NET MAUI.
 
 .NET MAUI images can use any of the standard platform image formats, including Scalable Vector Graphics (SVG) files.
 
@@ -28,7 +28,7 @@ An image can be added to your app project by dragging it into the *Resources\Ima
 
 To comply with Android resource naming rules, image filenames must be lowercase, start and end with a letter character, and contain only alphanumeric characters or underscores. For more information, see [App resources overview](https://developer.android.com/guide/topics/resources/providing-resources) on developer.android.com.
 
-## Resize images
+## Resize an image
 
 Devices have a range of screen sizes and densities and each platform has functionality for displaying density-dependent images. The base size of your image represents the baseline density of the image, and is effectively the 1.0 scale factor for the image (the size you would typically use in your code to specify the image size) from which all other density sizes are derived. If you don't specify the base size for a bitmap image, the image isn't resized. If you don't specify a base size for a vector image, such as an SVG file, the dimensions specified in the image are used as the base size.
 
@@ -50,6 +50,8 @@ The base size is specified with the `BaseSize="W,H"` attribute, where `W` is the
 ```xml
 <MauiImage Include="Resources\Images\logo.jpg" BaseSize="376,678" />
 ```
+
+At build time, the image will be resized to the correct densities for the target platform. The resulting images then added to your app package.
 
 To stop vector images being resized, set the `Resize` attribute to `false`:
 
