@@ -1,11 +1,11 @@
 ---
-title: "Change the app icon"
-description: "Learn how to change the.NET MAUI app icon. The icon is the logo that represents your app in multiple places, such as the Store, launcher, or app shortcut."
+title: "Add an app icon to a .NET MAUI app project"
+description: "Learn how to add an app icon to a .NET MAUI app project. The icon is the logo that represents your app in multiple places, such as the Store, launcher, or app shortcut."
 ms.date: 06/28/2022
 no-loc: ["MauiIcon"]
 ---
 
-# Change a .NET MAUI app icon
+# Add an app icon to a .NET MAUI app project
 
 Every app has a logo icon that represents it, and that icon typically appears in multiple places. For example, on iOS the app icon appears on the Home screen and throughout the system, such as in Settings, notifications, and search results, and in the App Store. On Android, the app icon appears as a launcher icon and throughout the system, such as on the action bar, notifications, and in the Google Play Store. On Windows, the app icon appears in the app list in the start menu, the taskbar, the app's tile, and in the Microsoft Store.
 
