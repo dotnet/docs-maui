@@ -1,7 +1,7 @@
 ---
 title: "Localization"
 description: "Learn how to localize .NET MAUI app strings, images, and app names."
-ms.date: 08/18/2023
+ms.date: 09/05/2023
 ---
 
 # Localization
@@ -234,24 +234,18 @@ Only two characters are required in the folder name when specifying a top-level 
 
 ### Consume localized images
 
-On Android, iOS, and Mac Catalyst, localized images can be consumed by setting the <xref:Microsoft.Maui.Controls.Image.Source> property of an <xref:Microsoft.Maui.Controls.Image> to the image filename. However, on Windows, `Image.Source` must be set to the path and filename of the image. This can be accomplished in XAML by using the [`OnPlatform`](xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension) markup extension:
+On Android, iOS, Mac Catalyst, and Windows, localized images can be consumed by setting the <xref:Microsoft.Maui.Controls.Image.Source> property of an <xref:Microsoft.Maui.Controls.Image> to the image filename:
 
 ```xaml
-<Image Source="{OnPlatform flag.png, WinUI=Platforms/Windows/Assets/Images/flag.png}" />
+<Image Source="flag.png" />
 ```
 
-For more information about the [`OnPlatform`](xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension) markup extension, see [Customize UI appearance based on the platform](~/platform-integration/customize-ui-appearance.md#customize-ui-appearance-based-on-the-platform).
+However, for this to work on Windows it's necessary to modify your app's project file so that all images in the sub-folders of the *Platforms\Windows\Assets\Images* folder are copied to the root of your app package. This can be accomplished by modifying your .csproj file to remove the `<Content />` MSBuild items for each individual localized image on Windows. Then, add the following MSBuild item:
 
-The equivalent C# code uses the <xref:Microsoft.Maui.Devices.DeviceInfo> API to obtain the current platform:
-
-```csharp
-FileImageSource imageSource = new FileImageSource();
-if (DeviceInfo.Current.Platform == DevicePlatform.WinUI)
-      imageSource.File = "Platforms/Windows/Assets/Images/flag.png";
-else
-      imageSource.File = "flag.png";
-
-Image image = new Image { Source = imageSource };
+```xml
+<ItemGroup Condition="$(TargetFramework.Contains('-windows'))">
+  <Content Include="Platforms\Windows\Assets\Images\**" TargetPath="%(RecursiveDir)%(Filename)%(Extension)" />
+</ItemGroup>
 ```
 
 ## Localize the app name
