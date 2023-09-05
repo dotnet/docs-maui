@@ -8,7 +8,7 @@ ms.date: 09/05/2023
 
 Xamarin.Essentials and .NET Multi-platform App UI (.NET MAUI) both have a `SecureStorage` class that helps you securely store simple key/value pairs. However, there are implementation differences between the `SecureStorage` class in Xamarin.Essentials and .NET MAUI:
 
-|   | Xamarin.Essentials | .NET MAUI |
+| Platform  | Xamarin.Essentials | .NET MAUI |
 | - | ------------------ | --------- |
 | Android | The Android KeyStore is used to store the cipher key used to encrypt the value before it's saved into a shared preferences object with a filename of {your-app-package-id}.xamarinessentials. | Data is encrypted with the `EncryptedSharedPreferences` class, which wraps the `SharedPreferences` class, and automatically encrypts keys and values. The filename used is {your-app-package-id}.microsoft.maui.essentials.preferences. |
 | iOS | KeyChain is used to store values securely. The `SecRecord` used to store values has a `Service` value set to {your-app-package-id}.xamarinessentials. | KeyChain is used to store values securely. The `SecRecord` used to store values has a `Service` value set to {your-app-package-id}.microsoft.maui.essentials.preferences. |
