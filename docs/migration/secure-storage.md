@@ -18,7 +18,7 @@ For more information about the `SecureStorage` class in Xamarin.Essentials, see 
 
 When migrating a Xamarin.Forms app that uses the `SecureStorage` class to .NET MAUI, these implementation differences must be accounted for to provide users with a smooth upgrade experience. This can be accomplished with the `LegacySecureStorage` class, and helper classes, that's presented in this article. This class enables your .NET MAUI app on Android and iOS to read secure storage data that was created with a previous Xamarin.Forms version of your app.
 
-## Legacy secure storage
+## Access legacy secure storage data
 
 The `LegacySecureStorage` class encapsulates the secure storage implementation provided in Xamarin.Essentials. The following code shows the `LegacySecureStorage` class:
 
@@ -60,7 +60,6 @@ public class LegacySecureStorage
         KeyChain keyChain = new KeyChain();
         result = keyChain.ValueForKey(key, Alias);
 #endif
-
         return Task.FromResult(result);
     }
 
@@ -75,7 +74,6 @@ public class LegacySecureStorage
         KeyChain keyChain = new KeyChain();
         result = keyChain.Remove(key, Alias);
 #endif
-
         return result;
     }
 
@@ -92,7 +90,7 @@ public class LegacySecureStorage
 #endif
 ```
 
-## Android
+### Android
 
 On Android, the `LegacySecureStorage` class uses the `AndroidKeyStore` class to store the cipher key used to encrypt the value before it's saved into a shared preferences object with a filename of {your-app-package-id}.xamarinessentials. The following code shows the `AndroidKeyStore` class:
 
@@ -354,7 +352,7 @@ The [Android KeyStore](https://developer.android.com/training/articles/keystore.
 
 On API 23+, an **AES** key is obtained from the Android KeyStore and used with an **AES/GCM/NoPadding** cipher to encrypt the value before it is stored in the shared preferences file. On API 22 and lower, the Android KeyStore only supports storing **RSA** keys, which is used with an **RSA/ECB/PKCS1Padding** cipher to encrypt an **AES** key (randomly generated at runtime) and stored in the shared preferences file under the key _SecureStorageKey_, if one has not already been generated.
 
-## iOS
+### iOS
 
 On iOS, the `LegacySecureStorage` class uses the `KeyChain` class to store values securely. The `SecRecord` used to store values has a `Service` value set to {your-app-package-id}.xamarinessentials. The following code shows the `KeyChain` class:
 
@@ -434,9 +432,9 @@ To use this code, you must have an *Entitlements.plist* file for your iOS app wi
 
 You must also ensure that the *Entitlements.plist* file is set as the Custom Entitlements field in the Bundle Signing settings for your app. For more information, see [iOS Entitlements](~/ios/entitlements.md).
 
-## Consume
+## Consume legacy secure storage data
 
-The `LegacySecureStorage` class will read secure storage data, on Android and iOS, that was created with a previous Xamarin.Forms version of your app:
+The `LegacySecureStorage` class can be used to consume legacy secure storage data, on Android and iOS, that was created with a previous Xamarin.Forms version of your app:
 
 ```csharp
 #if ANDROID || IOS
