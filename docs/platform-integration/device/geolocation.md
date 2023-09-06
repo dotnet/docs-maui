@@ -88,12 +88,10 @@ If you're going to request full accuracy with the <xref:Microsoft.Maui.Devices.S
 
 ```xml
 <key>NSLocationTemporaryUsageDescriptionDictionary</key>
-<array>
-  <dict>
-    <key>TemporaryFullAccuracyUsageDescription</key>
-    <string>Fill in a reason why your app needs full accuracy</string>
-  </dict>
-</array>
+<dict>
+  <key>TemporaryFullAccuracyUsageDescription</key>
+  <string>Fill in a reason why your app needs full accuracy</string>
+</dict>
 ```
 
 The `<string>` element is the reason the app is requesting access to location information with full accuracy. This text is shown to the user.
