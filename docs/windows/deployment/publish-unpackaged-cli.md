@@ -13,8 +13,6 @@ ms.date: 10/12/2022
 
 When distributing your .NET Multi-platform App UI (.NET MAUI) app for Windows, you can publish the app and its dependencies to a folder for deployment to another system.
 
-<!-- markdownlint-enable MD044 -->
-
 ## Configure the project build settings
 
 The project file is a good place to put Windows-specific build settings. You may not want to put some settings into the project file, such as passwords. The settings described in this section can be passed on the command line with the `-p:name=value` format. If the setting is already defined in the project file, a setting passed on the command line overrides the project setting.
@@ -37,7 +35,8 @@ To publish your app, open the **Developer Command Prompt for VS 2022** terminal 
 |------------------------------|-------------------------------------------------------------------------------------|
 | `-f` | The target framework, which is `net7.0-windows{version}`. This value is a Windows TFM, such as `net7.0-windows10.0.19041.0`. Ensure that this value is identical to the value in the `<TargetFrameworks>` node in your *.csproj* file.           |
 | `-c`                 | The build configuration, which is `Release`.                                   |
-| `-p:RuntimeIdentifierOverride=win10-x64`<br>- or -<br>`-p:RuntimeIdentifierOverride=win10-x86` | Avoids the bug detailed in [WindowsAppSDK Issue #3337](https://github.com/microsoft/WindowsAppSDK/issues/3337). Choose the `-x64` or `-x86` version of the parameter based on your target platform.
+| `-p:WindowsPackageType=None` | Indicates to the publish command that there should be no package. |
+| `-p:RuntimeIdentifierOverride=win10-x64`<br>- or -<br>`-p:RuntimeIdentifierOverride=win10-x86` | Avoids the bug detailed in [WindowsAppSDK Issue #3337](https://github.com/microsoft/WindowsAppSDK/issues/3337). Choose the `-x64` or `-x86` version of the parameter based on your target platform. |
 
 > [!WARNING]
 > Attempting to publish a .NET MAUI solution will result in the `dotnet publish` command attempting to publish each project in the solution individually, which can cause issues when you've added other project types to your solution. Therefore, the `dotnet publish` command should be scoped to your .NET MAUI app project.
@@ -45,7 +44,7 @@ To publish your app, open the **Developer Command Prompt for VS 2022** terminal 
 For example:
 
 ```console
-dotnet publish -f net7.0-windows10.0.19041.0 -c Release -p:RuntimeIdentifierOverride=win10-x64
+dotnet publish -f net7.0-windows10.0.19041.0 -c Release -p:RuntimeIdentifierOverride=win10-x64 -p:WindowsPackageType=None
 ```
 
 Publishing builds and packages the app, copying the signed package to the _bin\\Release\\net7.0-windows10.0.19041.0\\win10-x64\\AppPackages\\\<appname>\\_ folder. \<appname> is a folder named after both your project and version. In this folder, there's an _msix_ file, and that's the app package.
