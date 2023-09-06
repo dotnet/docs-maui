@@ -15,8 +15,6 @@ ms.date: 10/12/2022
 
 When distributing your .NET Multi-platform App UI (.NET MAUI) app for Windows, you can publish the app and its dependencies to a folder for deployment to another system. You can also package the app into an MSIX package, which has numerous benefits for the users installing your app. For more information about the benefits of MSIX, see [What is MSIX?](/windows/msix/overview)
 
-.NET MAUI currently only allows publishing an MSIX package. You can't yet publish a Windows executable file for distribution.
-
 ## Create a signing certificate
 
 You must use a signing certificate for use in publishing your app. This certificate is used to sign the MSIX package. The following steps demonstrate how to create and install a self-signed certificate with PowerShell:
@@ -105,7 +103,7 @@ Add the following `<PropertyGroup>` node to your project file. This property gro
 
 Replace the `<PackageCertificateThumbprint>` property value with the certificate thumbprint you previously generated. Alternatively, you can remove this setting from the project file and provide it on the command line. For example: `-p:PackageCertificateThumbprint=A10612AF095FD8F8255F4C6691D88F79EF2B135E`.
 
-The second `<PropertyGroup>` in the example is required to work around a bug in the Windows SDK. For more information about the bug, see [WindowsAppSDK Issue #2940](https://github.com/microsoft/WindowsAppSDK/issues/2940).
+The second `<PropertyGroup>` in the example is required to work around a bug in the Windows SDK. For more information about the bug, see [WindowsAppSDK Issue #3337](https://github.com/microsoft/WindowsAppSDK/issues/3337).
 
 ## Publish
 
@@ -115,7 +113,7 @@ To publish your app, open the **Developer Command Prompt for VS 2022** terminal 
 |------------------------------|-------------------------------------------------------------------------------------|
 | `-f` | The target framework, which is `net7.0-windows{version}`. This value is a Windows TFM, such as `net7.0-windows10.0.19041.0`. Ensure that this value is identical to the value in the `<TargetFrameworks>` node in your *.csproj* file.           |
 | `-c`                 | The build configuration, which is `Release`.                                   |
-| `-p:RuntimeIdentifierOverride=win10-x64`<br>- or -<br>`-p:RuntimeIdentifierOverride=win10-x86` | Avoids the bug detailed in [WindowsAppSDK Issue #2940](https://github.com/microsoft/WindowsAppSDK/issues/2940). Choose the `-x64` or `-x86` version of the parameter based on your target platform.
+| `-p:RuntimeIdentifierOverride=win10-x64`<br>- or -<br>`-p:RuntimeIdentifierOverride=win10-x86` | Avoids the bug detailed in [WindowsAppSDK Issue #3337](https://github.com/microsoft/WindowsAppSDK/issues/3337). Choose the `-x64` or `-x86` version of the parameter based on your target platform.
 
 > [!WARNING]
 > Attempting to publish a .NET MAUI solution will result in the `dotnet publish` command attempting to publish each project in the solution individually, which can cause issues when you've added other project types to your solution. Therefore, the `dotnet publish` command should be scoped to your .NET MAUI app project.
@@ -173,5 +171,4 @@ Select the **Install** button if you would like to install the app.
 
 The following list describes the current limitations with publishing and packaging:
 
-- The published app doesn't work if you try to run it directly with the executable file out of the publish folder.
 - The way to run the app is to first install it through the packaged _MSIX_ file.
