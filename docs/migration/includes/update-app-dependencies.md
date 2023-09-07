@@ -9,7 +9,7 @@ Xamarin.Forms NuGet packages are not compatible with .NET 7+ unless they have be
 
 | Compatible frameworks | Incompatible frameworks |
 | --- | --- |
-| net7.0-android | monoandroid, monoandroid10.0 |
+| net7.0-android | |
 | net7.0-ios | monotouch, xamarinios, xamarinios10 |
 | net7.0-maccatalyst |  |
 | net7.0-windows | uap10.0.16299 |
