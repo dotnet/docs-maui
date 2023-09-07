@@ -28,9 +28,8 @@ The following code shows the `LegacySecureStorage` class, which provides the sec
 ```csharp
 #nullable enable
 #if ANDROID || IOS
-using LegacySecureStorage;
 
-namespace MyMauiApp; // Update the namespace to suit your app
+namespace MigrationHelpers;
 
 public class LegacySecureStorage
 {
@@ -108,7 +107,7 @@ using Javax.Crypto;
 using Javax.Crypto.Spec;
 using System.Text;
 
-namespace LegacySecureStorage;
+namespace MigrationHelpers;
 
 class AndroidKeyStore
 {
@@ -185,7 +184,7 @@ class AndroidKeyStore
             {
                 System.Diagnostics.Debug.WriteLine($"Unable to unwrap key: Bad Padding. This may be caused by system backup or upgrades. All secure storage items will now be removed. {paddingEx.Message}");
             }
-            MyMauiApp.LegacySecureStorage.RemoveAll(); // Replace MyMauiApp with the namespace the LegacySecureStorage class is in.
+            LegacySecureStorage.RemoveAll();
         }
 
         var keyGenerator = KeyGenerator.GetInstance(aesAlgorithm);
@@ -363,7 +362,7 @@ On iOS, the `LegacySecureStorage` class uses the `KeyChain` class to store value
 using Foundation;
 using Security;
 
-namespace LegacySecureStorage;
+namespace MigrationHelpers;
 
 class KeyChain
 {
@@ -438,9 +437,12 @@ The `LegacySecureStorage` class can be used to consume legacy secure storage dat
 
 ```csharp
 #if ANDROID || IOS
-    string username = await LegacySecureStorage.GetAsync("username");
-    bool result = LegacySecureStorage.Remove("username");
-    await SecureStorage.SetAsync("username", username);
+using MigrationHelpers;
+...
+
+string username = await LegacySecureStorage.GetAsync("username");
+bool result = LegacySecureStorage.Remove("username");
+await SecureStorage.SetAsync("username", username);
 #endif
 ```
 
