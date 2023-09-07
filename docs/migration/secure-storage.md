@@ -438,9 +438,9 @@ The `LegacySecureStorage` class can be used to consume legacy secure storage dat
 
 ```csharp
 #if ANDROID || IOS
-		string oauthToken = await LegacySecureStorage.GetAsync("oauth_token");
-		bool result = LegacySecureStorage.Remove("oauth_token");
-		await SecureStorage.SetAsync("oauth_token", oauthToken);
+    string oauthToken = await LegacySecureStorage.GetAsync("oauth_token");
+    bool result = LegacySecureStorage.Remove("oauth_token");
+    await SecureStorage.SetAsync("oauth_token", oauthToken);
 #endif
 ```
 
