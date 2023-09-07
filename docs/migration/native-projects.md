@@ -56,11 +56,13 @@ You'll also need to copy some project properties from your Xamarin native projec
 
 ## Update dependencies
 
-Xamarin native NuGet packages are not compatible with .NET 7+ unless they have been recompiled using .NET TFMs. You can confirm a package is .NET 7+ compatible by looking at the **Frameworks** tab on [NuGet](https://nuget.org) for the package you're using, and checking that it lists one of the compatible frameworks shown in the following table:
+Generally, Xamarin native NuGet packages are not compatible with .NET 7+ unless they have been recompiled using .NET TFMs. However, .NET Android apps can use NuGet packages targeting the `monoandroid` and `monoandroidXX.X` frameworks.
+
+You can confirm a package is .NET 7+ compatible by looking at the **Frameworks** tab on [NuGet](https://nuget.org) for the package you're using, and checking that it lists one of the compatible frameworks shown in the following table:
 
 | Compatible frameworks | Incompatible frameworks |
 | --- | --- |
-| net7.0-android | |
+| net7.0-android, monoandroid, monoandroidXX.X | |
 | net7.0-ios | monotouch, xamarinios, xamarinios10 |
 | net7.0-macos | monomac, xamarinmac, xamarinmac20 |
 | net7.0-tvos | xamarintvos |
