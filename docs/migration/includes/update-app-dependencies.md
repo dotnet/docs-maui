@@ -20,7 +20,7 @@ You can confirm a package is .NET 7+ compatible by looking at the **Frameworks**
 > [!NOTE]
 > .NET Standard libraries that have no dependencies on the incompatible frameworks listed above are still compatible with .NET 7+.
 
-If a package on [NuGet](https://nuget.org) indicates compatibility with any of the `net7` or newer frameworks above, regardless of also including incompatible frameworks, then the package is compatible. Compatible NuGet packages can be added to your .NET MAUI library project using the NuGet package manager in Visual Studio.
+If a package on [NuGet](https://nuget.org) indicates compatibility with any of the compatible frameworks above, regardless of also including incompatible frameworks, then the package is compatible. Compatible NuGet packages can be added to your .NET MAUI library project using the NuGet package manager in Visual Studio.
 
 If you can't find a .NET 7+ compatible version of a NuGet package you should:
 
