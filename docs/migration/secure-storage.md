@@ -10,17 +10,17 @@ Xamarin.Essentials and .NET Multi-platform App UI (.NET MAUI) both have a `Secur
 
 | Platform | Xamarin.Essentials | .NET MAUI |
 | - | ------------------ | --------- |
-| Android | The Android KeyStore is used to store the cipher key used to encrypt the value before it's saved into a shared preferences object with a filename of {your-app-package-id}.xamarinessentials. | Data is encrypted with the `EncryptedSharedPreferences` class, which wraps the `SharedPreferences` class, and automatically encrypts keys and values. The filename used is {your-app-package-id}.microsoft.maui.essentials.preferences. |
+| Android | The Android KeyStore is used to store the cipher key used to encrypt a value before it's saved into a shared preferences object with a filename of {your-app-package-id}.xamarinessentials. | Data is encrypted with the `EncryptedSharedPreferences` class, which wraps the `SharedPreferences` class, and automatically encrypts keys and values. The filename used is {your-app-package-id}.microsoft.maui.essentials.preferences. |
 | iOS | KeyChain is used to store values securely. The `SecRecord` used to store values has a `Service` value set to {your-app-package-id}.xamarinessentials. | KeyChain is used to store values securely. The `SecRecord` used to store values has a `Service` value set to {your-app-package-id}.microsoft.maui.essentials.preferences. |
 <!-- | Windows | The `DataProtectionProvider` class is used to encrypt values securely. Encrypted values are stored in `ApplicationData.Current.LocalSettings`, inside a container with a name of {your-app-package-id}.xamarinessentials. | The `DataProtectionProvider` class is used to encrypt values securely. Encrypted values are stored in `ApplicationData.Current.LocalSettings`, inside a container with a name of {your-app-package-id}.microsoft.maui.essentials.preferences. | -->
 
 For more information about the `SecureStorage` class in Xamarin.Essentials, see [Xamarin.Essentials: Secure storage](/xamarin/essentials/secure-storage). For more information about the `SecureStorage` class in .NET MAUI, see [Secure storage](~/platform-integration/storage/secure-storage.md).
 
-When migrating a Xamarin.Forms app that uses the `SecureStorage` class to .NET MAUI, these implementation differences must be accounted for to provide users with a smooth upgrade experience. This can be accomplished with the `LegacySecureStorage` class, and helper classes, that's presented in this article. This class enables your .NET MAUI app on Android and iOS to read secure storage data that was created with a previous Xamarin.Forms version of your app.
+When migrating a Xamarin.Forms app, that uses the `SecureStorage` class, to .NET MAUI these implementation differences must be dealt with to provide users with a smooth upgrade experience. This can be accomplished with the `LegacySecureStorage` class, and helper classes, which is presented in this article. This class enables your .NET MAUI app on Android and iOS to read secure storage data that was created with a previous Xamarin.Forms version of your app.
 
 ## Access legacy secure storage data
 
-The `LegacySecureStorage` class encapsulates the secure storage implementation provided in Xamarin.Essentials. The following code shows the `LegacySecureStorage` class:
+The following code shows the `LegacySecureStorage` class, which provides the secure storage implementation from Xamarin.Essentials:
 
 > [!NOTE]
 > To use this code, add it to a class named `LegacySecureStorage` in your .NET MAUI app project.
@@ -92,7 +92,7 @@ public class LegacySecureStorage
 
 ### Android
 
-On Android, the `LegacySecureStorage` class uses the `AndroidKeyStore` class to store the cipher key used to encrypt the value before it's saved into a shared preferences object with a filename of {your-app-package-id}.xamarinessentials. The following code shows the `AndroidKeyStore` class:
+On Android, the `LegacySecureStorage` class uses the `AndroidKeyStore` class to store the cipher key used to encrypt a value before it's saved into a shared preferences object with a filename of {your-app-package-id}.xamarinessentials. The following code shows the `AndroidKeyStore` class:
 
 > [!NOTE]
 > To use this code, add it to a class named `AndroidKeyStore` in the *Platforms\Android* folder of your .NET MAUI app project.
@@ -185,7 +185,7 @@ class AndroidKeyStore
             {
                 System.Diagnostics.Debug.WriteLine($"Unable to unwrap key: Bad Padding. This may be caused by system backup or upgrades. All secure storage items will now be removed. {paddingEx.Message}");
             }
-            MyMauiApp.LegacySecureStorage.RemoveAll(); // Replace MyMauiApp with the namespace you've placed the LegacySecureStorage class in
+            MyMauiApp.LegacySecureStorage.RemoveAll(); // Replace MyMauiApp with the namespace the LegacySecureStorage class is in.
         }
 
         var keyGenerator = KeyGenerator.GetInstance(aesAlgorithm);
@@ -438,9 +438,9 @@ The `LegacySecureStorage` class can be used to consume legacy secure storage dat
 
 ```csharp
 #if ANDROID || IOS
-    string oauthToken = await LegacySecureStorage.GetAsync("oauth_token");
-    bool result = LegacySecureStorage.Remove("oauth_token");
-    await SecureStorage.SetAsync("oauth_token", oauthToken);
+    string username = await LegacySecureStorage.GetAsync("username");
+    bool result = LegacySecureStorage.Remove("username");
+    await SecureStorage.SetAsync("username", username);
 #endif
 ```
 
