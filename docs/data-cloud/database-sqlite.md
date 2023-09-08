@@ -39,7 +39,7 @@ Despite the package name, use the **sqlite-net-pcl** NuGet package in .NET MAUI 
 In addition to **sqlite-net-pcl**, you _temporarily_ need to install the underlying dependency that exposes SQLite on each platform:
 
 - **ID:** SQLitePCLRaw.bundle_green
-- **Version:** 2.1.2
+- **Version:** >= 2.1.0
 - **Authors:** Eric Sink
 - **Owners:** Eric Sink
 - **NuGet link:** [SQLitePCLRaw.bundle_green](https://www.nuget.org/packages/SQLitePCLRaw.bundle_green/)
