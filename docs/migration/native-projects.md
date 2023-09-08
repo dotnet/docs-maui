@@ -56,11 +56,13 @@ You'll also need to copy some project properties from your Xamarin native projec
 
 ## Update dependencies
 
-Xamarin native NuGet packages are not compatible with .NET 7+ unless they have been recompiled using .NET TFMs. You can confirm a package is .NET 7+ compatible by looking at the **Frameworks** tab on [NuGet](https://nuget.org) for the package you're using, and checking that it lists one of the compatible frameworks shown in the following table:
+Generally, Xamarin native NuGet packages are not compatible with .NET 7+ unless they have been recompiled using .NET TFMs. However, .NET Android apps can use NuGet packages targeting the `monoandroid` and `monoandroidXX.X` frameworks.
+
+You can confirm a package is .NET 7+ compatible by looking at the **Frameworks** tab on [NuGet](https://nuget.org) for the package you're using, and checking that it lists one of the compatible frameworks shown in the following table:
 
 | Compatible frameworks | Incompatible frameworks |
 | --- | --- |
-| net7.0-android | monoandroid, monoandroid10.0 |
+| net7.0-android, monoandroid, monoandroidXX.X | |
 | net7.0-ios | monotouch, xamarinios, xamarinios10 |
 | net7.0-macos | monomac, xamarinmac, xamarinmac20 |
 | net7.0-tvos | xamarintvos |
@@ -69,7 +71,7 @@ Xamarin native NuGet packages are not compatible with .NET 7+ unless they have b
 > [!NOTE]
 > .NET Standard libraries that have no dependencies on the incompatible frameworks listed above are still compatible with .NET 7+.
 
-If a package on [NuGet](https://nuget.org) indicates compatibility with any of the `net7` or newer frameworks above, regardless of also including incompatible frameworks, then the package is compatible. Compatible NuGet packages can be added to your .NET native project using the NuGet package manager in Visual Studio.
+If a package on [NuGet](https://nuget.org) indicates compatibility with any of the compatible frameworks above, regardless of also including incompatible frameworks, then the package is compatible. Compatible NuGet packages can be added to your .NET native project using the NuGet package manager in Visual Studio.
 
 If you can't find a .NET 7+ compatible version of a NuGet package you should:
 
