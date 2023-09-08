@@ -41,7 +41,7 @@ namespace MyMauiApp
 
 The `Draw` method has <xref:Microsoft.Maui.Graphics.ICanvas> and `RectF` arguments. The <xref:Microsoft.Maui.Graphics.ICanvas> argument is the drawing canvas on which you draw graphical objects. The `RectF` argument is a `struct` that contains data about the size and location of the drawing canvas. For more information about drawing on an <xref:Microsoft.Maui.Graphics.ICanvas>, see [Draw graphical objects](~/user-interface/graphics/draw.md).
 
-In XAML, the `IDrawable` object should be declared as a resource, and then consumed by a <xref:Microsoft.Maui.Controls.GraphicsView> by specifying its key:
+In XAML, the `IDrawable` object can be declared as a resource and then consumed by a <xref:Microsoft.Maui.Controls.GraphicsView> by specifying its key as the value of the `Drawable` property:
 
 ```xaml
 <ContentPage xmlns=http://schemas.microsoft.com/dotnet/2021/maui
