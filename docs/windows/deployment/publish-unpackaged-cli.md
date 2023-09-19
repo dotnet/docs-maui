@@ -25,7 +25,7 @@ Add the following `<PropertyGroup>` node to your project file. This property gro
 </PropertyGroup>
 ```
 
-The `<PropertyGroup>` in the example is required to work around a bug in the Windows SDK. For more information about the bug, see [WindowsAppSDK Issue #3337](https://github.com/microsoft/WindowsAppSDK/issues/3337).
+The `<PropertyGroup>` in the example is required to work around a bug in the Windows App SDK. For more information about the bug, see [WindowsAppSDK Issue #3337](https://github.com/microsoft/WindowsAppSDK/issues/3337).
 
 ## Publish
 
