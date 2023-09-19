@@ -103,7 +103,7 @@ Add the following `<PropertyGroup>` node to your project file. This property gro
 
 Replace the `<PackageCertificateThumbprint>` property value with the certificate thumbprint you previously generated. Alternatively, you can remove this setting from the project file and provide it on the command line. For example: `-p:PackageCertificateThumbprint=A10612AF095FD8F8255F4C6691D88F79EF2B135E`.
 
-The second `<PropertyGroup>` in the example is required to work around a bug in the Windows SDK. For more information about the bug, see [WindowsAppSDK Issue #3337](https://github.com/microsoft/WindowsAppSDK/issues/3337).
+The second `<PropertyGroup>` in the example is required to work around a bug in the Windows App SDK. For more information about the bug, see [WindowsAppSDK Issue #3337](https://github.com/microsoft/WindowsAppSDK/issues/3337).
 
 ## Publish
 
