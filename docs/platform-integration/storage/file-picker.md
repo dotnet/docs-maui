@@ -31,7 +31,7 @@ These permissions can be added in the following ways:
   Open the _Platforms/Android/MainApplication.cs_ file and add the following assembly attributes after `using` directives:
 
   ```csharp
-  [assembly: UsesPermission(Android.Manifest.Permission.ReadExternalStorage, MaxSDKVersion = 32)]
+  [assembly: UsesPermission(Android.Manifest.Permission.ReadExternalStorage, MaxSdkVersion = 32)]
   [assembly: UsesPermission(Android.Manifest.Permission.ReadMediaAudio)]
   [assembly: UsesPermission(Android.Manifest.Permission.ReadMediaImages)]
   [assembly: UsesPermission(Android.Manifest.Permission.ReadMediaVideo)]
