@@ -202,7 +202,7 @@ public class Deserializer
                 catch (Exception e)
                 {
                     Debug.WriteLine("Could not deserialize properties: " + e.Message);
-                    Console.WriteLine($"Xamarin.Forms PropertyStore Exception while reading Application properties: {e}");
+                    Console.WriteLine($"PropertyStore Exception while reading Application properties: {e}");
                 }
                 return null;
             }
