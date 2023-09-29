@@ -1,24 +1,24 @@
 ---
-title: "Migrate from Xamarin.Forms app properties dictionary to .NET MAUI preferences"
+title: "Migrate data from the Xamarin.Forms app properties dictionary to .NET MAUI preferences"
 description: "Learn how to migrate your app data from the Xamarin.Forms app properties dictionary to .NET MAUI preferences."
-ms.date: 09/27/2023
+ms.date: 09/29/2023
 ---
 
-# Migrate from Xamarin.Forms app properties dictionary to .NET MAUI preferences
+# Migrate data from the Xamarin.Forms app properties dictionary to .NET MAUI preferences
 
-Xamarin.Forms has a <xref:Xamarin.Forms.Application.Properties> dictionary that can be used to store data, and which is accessed using the `Application.Current.Properties` property. This dictionary uses a `string` key and stores an `object` value. The values in the dictionary are saved to the device when an app is paused or shut down, and loaded when the app is restarted or returns from the background. For more information about the properties dictionary, see [Properties dictionary](/xamarin/xamarin-forms/app-fundamentals/application-class#properties-dictionary).
+Xamarin.Forms has a <xref:Xamarin.Forms.Application.Properties> dictionary that can be used to store data, and which is accessed using the `Application.Current.Properties` property. This dictionary uses a `string` key and stores an `object` value. The values in the dictionary are saved to the device when an app is paused or shut down, and loaded when an app is restarted or returns from the background. For more information about the properties dictionary, see [Properties dictionary](/xamarin/xamarin-forms/app-fundamentals/application-class#properties-dictionary).
 
-When migrating a Xamarin.Forms app, that stores data in the app properties dictionary, to .NET MAUI you should migrate this data to .NET MAUI preferences. This can be accomplished with the `LegacyApplication` class, and helper classes, which is presented in this article. This class enables your .NET MAUI app on Android, iOS, and Windows, to read data from the app properties dictionary that was created with a previous Xamarin.Forms version of your app. For more information about .NET MAUI preferences, see [Preferences](~/platform-integration/storage/preferences.md).
+When migrating a Xamarin.Forms app that stores data in the app properties dictionary to .NET MAUI, you should migrate this data to .NET MAUI preferences. This can be accomplished with the `LegacyApplication` class, and helper classes, which is presented in this article. This class enables your .NET MAUI app on Android, iOS, and Windows, to read data from the app properties dictionary that was created with a previous Xamarin.Forms version of your app. For more information about .NET MAUI preferences, see [Preferences](~/platform-integration/storage/preferences.md).
 
 > [!IMPORTANT]
 > There's no API to access the app properties dictionary in .NET MAUI.
 
 ## Access legacy app properties data
 
-The following code shows the `LegacyApplication` class, which provides access to the legacy app properties dictionary created by your Xamarin.Forms app:
+The following code shows the `LegacyApplication` class, which provides access to the app properties data created by your Xamarin.Forms app:
 
 > [!NOTE]
-> To use this code, add it to a class named `LegacyApplication in your .NET MAUI app project.
+> To use this code, add it to a class named `LegacyApplication` in your .NET MAUI app project.
 
 ```csharp
 namespace MigrationHelpers;
@@ -256,4 +256,4 @@ if (LegacyApplication.Current.Properties.ContainsKey("id"))
 This example shows using the `LegacyApplication` class to read a value from the app properties dictionary, and then write the value to .NET MAUI preferences.
 
 > [!IMPORTANT]
-> Always check for the presence of the key before accessing it, to prevent unexpected errors.
+> Always check for the presence of the key in the app properties dictionary before accessing it, to prevent unexpected errors.
