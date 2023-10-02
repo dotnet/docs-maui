@@ -138,7 +138,7 @@ The process to add a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWe
 
 ## Access scoped services from native UI
 
-<xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> has a `TryDispatchAsync` method that calls a specified `Action<ServiceProvider>` asynchronously and passes in the scoped services available in Razor components. This enables code from the native UI to access scoped services such as `NavigationManager`:
+<xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> has a `TryDispatchAsync` method that can call a specified `Action<ServiceProvider>` asynchronously and pass in the scoped services available in Razor components. This enables code from the native UI to access scoped services such as `NavigationManager`:
 
 ```csharp
 private async void MyMauiButtonHandler(object sender, EventArgs e)
@@ -155,5 +155,52 @@ private async void MyMauiButtonHandler(object sender, EventArgs e)
     }
 }
 ```
+
+## Diagnosing issues
+
+<xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> has built-in logging that can help you diagnose issues in your Blazor Hybrid app. There are two steps to enable this logging:
+
+1. Enable <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> and related components to log diagnostic information.
+1. Configure a logger to write the log output to where you can view it.
+
+For more information about logging, see [Logging in C# and .NET](/dotnet/core/extensions/logging).
+
+### Enable BlazorWebView logging
+
+All logging configuration can be performed as part of service registration in the dependency injection system. To enable maximum logging for <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> and related components under the `Microsoft.AspNetCore.Components.WebView` namespace, add the following code to where your app's services are registered:
+
+```csharp
+services.AddLogging(logging =>
+{
+	logging.AddFilter("Microsoft.AspNetCore.Components.WebView", LogLevel.Trace);
+});
+```
+
+Alternatively, to enable maximum logging for every component that uses `Microsoft.Extensions.Logging`, you could use the following code:
+
+```csharp
+services.AddLogging(logging =>
+{
+	logging.SetMinimumLevel(LogLevel.Trace);
+});
+```
+
+### Configure logging output and viewing the output
+
+After configuring components to write log information you need to configure where the loggers should write the logs to, and then view the log output.
+
+The **Debug** logging providers write the output using `Debug` statements, and the output can be viewed from Visual Studio.
+
+To configure the **Debug** logging provider, first add a reference in your project to the `Microsoft.Extensions.Logging.Debug` NuGet package. Then register the provider inside the call to `AddLogging` that you added in the previous step by calling the `AddDebug` extension method:
+
+```csharp
+services.AddLogging(logging =>
+{
+	logging.AddFilter("Microsoft.AspNetCore.Components.WebView", LogLevel.Trace);
+	logging.AddDebug();
+});
+```
+
+When you run the app from Visual Studio (with debugging enabled), you can view the debug output in Visual Studio's **Output** window.
 
 ::: moniker-end
