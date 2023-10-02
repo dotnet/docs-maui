@@ -172,7 +172,7 @@ All logging configuration can be performed as part of service registration in th
 ```csharp
 services.AddLogging(logging =>
 {
-	logging.AddFilter("Microsoft.AspNetCore.Components.WebView", LogLevel.Trace);
+    logging.AddFilter("Microsoft.AspNetCore.Components.WebView", LogLevel.Trace);
 });
 ```
 
@@ -181,7 +181,7 @@ Alternatively, to enable maximum logging for every component that uses `Microsof
 ```csharp
 services.AddLogging(logging =>
 {
-	logging.SetMinimumLevel(LogLevel.Trace);
+    logging.SetMinimumLevel(LogLevel.Trace);
 });
 ```
 
@@ -196,8 +196,8 @@ To configure the **Debug** logging provider, first add a reference in your proje
 ```csharp
 services.AddLogging(logging =>
 {
-	logging.AddFilter("Microsoft.AspNetCore.Components.WebView", LogLevel.Trace);
-	logging.AddDebug();
+    logging.AddFilter("Microsoft.AspNetCore.Components.WebView", LogLevel.Trace);
+    logging.AddDebug();
 });
 ```
 
