@@ -1,7 +1,7 @@
 ---
 title: "Host a Blazor web app in a .NET MAUI app using BlazorWebView"
 description: "The .NET MAUI BlazorWebView control enables you to host a Blazor web app in your .NET MAUI app, and integrate the app with device features."
-ms.date: 01/18/2023
+ms.date: 10/02/2023
 ---
 
 # Host a Blazor web app in a .NET MAUI app using BlazorWebView
@@ -10,8 +10,20 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.AspNetCore.Components
 
 <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> defines the following properties:
 
+::: moniker range="=net-maui-7.0"
+
 - `HostPage`, of type `string?`, which defines the root page of the Blazor web app.
 - `RootComponents`, of type `RootComponentsCollection`, which specifies the collection of root components that can be added to the control.
+
+::: moniker-end
+
+::: moniker range="=net-maui-8.0"
+
+- `HostPage`, of type `string?`, which defines the root page of the Blazor web app.
+- `RootComponents`, of type `RootComponentsCollection`, which specifies the collection of root components that can be added to the control.
+- `StartPath`, of type `string`, which defines the path for initial navigation within the Blazor navigation context when the Blazor component is finished loading.
+
+::: moniker-end
 
 The `RootComponent` class defines the following properties:
 
