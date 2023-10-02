@@ -17,7 +17,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.AspNetCore.Components
 
 ::: moniker-end
 
-::: moniker range="=net-maui-8.0"
+::: moniker range=">=net-maui-8.0"
 
 - `HostPage`, of type `string?`, which defines the root page of the Blazor web app.
 - `RootComponents`, of type `RootComponentsCollection`, which specifies the collection of root components that can be added to the control.
@@ -133,3 +133,27 @@ The process to add a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWe
         }
     }
     ```
+
+::: moniker range=">=net-maui-8.0"
+
+## Access scoped services from native UI
+
+<xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> has a `TryDispatchAsync` method that calls a specified `Action<ServiceProvider>` asynchronously and passes in the scoped services available in Razor components. This enables code from the native UI to access scoped services such as `NavigationManager`:
+
+```csharp
+private async void MyMauiButtonHandler(object sender, EventArgs e)
+{
+    var wasDispatchCalled = await _blazorWebView.TryDispatchAsync(sp =>
+    {
+        var navMan = sp.GetRequiredService<NavigationManager>();
+        navMan.CallSomeNavigationApi(...);
+    });
+
+    if (!wasDispatchCalled)
+    {
+        // Consider what to do if it wasn't called - that's up to your app to decide
+    }
+}
+```
+
+::: moniker-end
