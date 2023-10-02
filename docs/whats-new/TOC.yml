@@ -6,6 +6,8 @@ items:
   - name: Releases
     expanded: true
     items:
+    - name: .NET 8
+      href: dotnet-8.md
     - name: .NET 7
       href: dotnet-7.md
   - name: Month
