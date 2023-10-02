@@ -1,7 +1,7 @@
 ---
 title: "Troubleshoot known issues"
 description: "Learn about .NET MAUI known issues and troubleshooting you can do to resolve these issues."
-ms.date: 03/08/2023
+ms.date: 10/02/2023
 ---
 
 # Troubleshooting known issues
@@ -182,3 +182,12 @@ If you receive the error "Could not find a valid Xcode app bundle at '/Library/D
 ```zsh
 sudo xcode-select --reset
 ```
+
+## Diagnose issues in Blazor Hybrid apps
+
+<xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> has built-in logging that can help you diagnose problems in your Blazor Hybrid app. There are two steps to enable this logging:
+
+1. Enable <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> and related components to log diagnostic information.
+1. Configure a logger to write the log output to where you can view it.
+
+For more information, see [Diagnosing issues in Blazor Hybrid apps](~/user-interface/controls/blazorwebview.md#diagnosing-issues).
