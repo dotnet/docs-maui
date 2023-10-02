@@ -183,7 +183,7 @@ If you receive the error "Could not find a valid Xcode app bundle at '/Library/D
 sudo xcode-select --reset
 ```
 
-##
+## Diagnose issues in Blazor Hybrid apps
 
 <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> has built-in logging that can help you diagnose problems in your Blazor Hybrid app. There are two steps to enable this logging:
 
