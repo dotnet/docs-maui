@@ -1,6 +1,6 @@
 ---
 name: ".NET MAUI doc issue"
-about: Report a problem in the .NET MAUI documentation
+about: Report a problem in the .NET MAUI documentation.
 title: ''
 labels: ''
 assignees: ''
