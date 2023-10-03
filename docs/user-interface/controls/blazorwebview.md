@@ -138,12 +138,12 @@ The process to add a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWe
 
 ## Access scoped services from native UI
 
-<xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> has a `TryDispatchAsync` method that can call a specified `Action<ServiceProvider>` asynchronously and pass in the scoped services available in Razor components. This enables code from the native UI to access scoped services such as `NavigationManager`:
+<xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> has a `TryDispatchAsync` method that can call a specified `Action<ServiceProvider>` asynchronously and pass in the scoped services available in Razor components. This enables code from the native UI to access scoped services such as enables code from the native UI to access scoped services such as <xref:Microsoft.AspNetCore.Components.NavigationManager>:
 
 ```csharp
-private async void MyMauiButtonHandler(object sender, EventArgs e)
+private async void OnMyMauiButtonClicked(object sender, EventArgs e)
 {
-    var wasDispatchCalled = await _blazorWebView.TryDispatchAsync(sp =>
+    var wasDispatchCalled = await blazorWebView.TryDispatchAsync(sp =>
     {
         var navMan = sp.GetRequiredService<NavigationManager>();
         navMan.CallSomeNavigationApi(...);
@@ -151,7 +151,7 @@ private async void MyMauiButtonHandler(object sender, EventArgs e)
 
     if (!wasDispatchCalled)
     {
-        // Consider what to do if it wasn't called - that's up to your app to decide
+        // Consider what to do if it the dispatch fails - that's up to your app to decide.
     }
 }
 ```
@@ -167,7 +167,7 @@ For more information about logging, see [Logging in C# and .NET](/dotnet/core/ex
 
 ### Enable BlazorWebView logging
 
-All logging configuration can be performed as part of service registration in the dependency injection system. To enable maximum logging for <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> and related components under the `Microsoft.AspNetCore.Components.WebView` namespace, add the following code to where your app's services are registered:
+All logging configuration can be performed as part of service registration in the dependency injection system. To enable maximum logging for <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> and related components under the <xref:Microsoft.AspNetCore.Components.WebView?displayProperty=fullName> namespace, add the following code to where your app's services are registered:
 
 ```csharp
 services.AddLogging(logging =>
@@ -176,7 +176,7 @@ services.AddLogging(logging =>
 });
 ```
 
-Alternatively, to enable maximum logging for every component that uses `Microsoft.Extensions.Logging`, you could use the following code:
+Alternatively, to enable maximum logging for every component that uses <xref:Microsoft.Extensions.Logging?displayProperty=fullName>, you could use the following code:
 
 ```csharp
 services.AddLogging(logging =>
@@ -191,7 +191,7 @@ After configuring components to write log information you need to configure wher
 
 The **Debug** logging providers write the output using `Debug` statements, and the output can be viewed from Visual Studio.
 
-To configure the **Debug** logging provider, first add a reference in your project to the `Microsoft.Extensions.Logging.Debug` NuGet package. Then register the provider inside the call to `AddLogging` that you added in the previous step by calling the `AddDebug` extension method:
+To configure the **Debug** logging provider, first add a reference in your project to the [`Microsoft.Extensions.Logging.Debug`](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Debug) NuGet package. Then, register the provider inside the call to <xref:Microsoft.Extensions.DependencyInjection.LoggingServiceCollectionExtensions.AddLogging%2A> that you added in the previous step by calling the <xref:Microsoft.Extensions.Logging.DebugLoggerFactoryExtensions.AddDebug%2A> extension method:
 
 ```csharp
 services.AddLogging(logging =>
