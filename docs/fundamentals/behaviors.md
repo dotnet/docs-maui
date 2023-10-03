@@ -373,7 +373,7 @@ The native partial classes should inherit from the <xref:Microsoft.Maui.Controls
 
 The <xref:Microsoft.Maui.Controls.PlatformBehavior`2.OnAttachedTo%2A> method is called immediately after the platform behavior is attached to a cross-platform control. The method receives a reference to the cross-platform control to which it is attached, and optionally a reference to the native control that implements the cross-platform control. The method can be used to register event handlers or perform other setup that's required to support the platform behavior functionality. For example, you could subscribe to an event on a control. The behavior functionality would then be implemented in the event handler for the event.
 
-The <xref:Microsoft.Maui.Controls.PlatformBehavior`2.OnAttachedTo%2A> method is called when the behavior is removed from the cross-platform control. The method receives a reference to the control to which it is attached, and optionally a reference to the native control that implements the cross-platform control. The method should be used to perform any required cleanup. For example, you could unsubscribe from an event on a control to prevent memory leaks.
+The <xref:Microsoft.Maui.Controls.PlatformBehavior`2.OnDetachedFromTo%2A> method is called when the behavior is removed from the cross-platform control. The method receives a reference to the control to which it is attached, and optionally a reference to the native control that implements the cross-platform control. The method should be used to perform any required cleanup. For example, you could unsubscribe from an event on a control to prevent memory leaks.
 
 > [!IMPORTANT]
 > The partial classes must reside in the same namespace and use identical names.
