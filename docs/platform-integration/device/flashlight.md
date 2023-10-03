@@ -1,7 +1,7 @@
 ---
 title: "Flashlight"
 description: "Learn how to use the .NET MAUI IFlashlight interface in the Microsoft.Maui.Devices namespace. This interface provides the ability to turn on or off the device's camera flash, to emulate a flashlight."
-ms.date: 02/02/2023
+ms.date: 10/03/2023
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices"]
 ---
 
@@ -73,6 +73,12 @@ No setup is required.
 The flashlight can be turned on and off through the <xref:Microsoft.Maui.Devices.IFlashlight.TurnOnAsync> and <xref:Microsoft.Maui.Devices.IFlashlight.TurnOffAsync> methods. The following code example ties the flashlight's on or off state to a <xref:Microsoft.Maui.Controls.Switch> control:
 
 :::code language="csharp" source="../snippets/shared_1/DeviceDetailsPage.xaml.cs" id="flashlight":::
+
+::: moniker range=">=net-maui-8.0"
+
+In addition, the `IsSupportedAsync` method can be invoked to check if a flashlight is available on the device, prior to calling the <xref:Microsoft.Maui.Devices.IFlashlight.TurnOnAsync> method.
+
+::: moniker-end
 
 ## Platform differences
 
