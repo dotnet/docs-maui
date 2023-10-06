@@ -275,7 +275,7 @@ The `SelectedItem` and `SelectedItems` properties can be cleared by setting them
             </Setter>
         </Style>
     </ContentPage.Resources>
-    <StackLayout Margin="20">
+    <Grid Margin="20">
         <CollectionView ItemsSource="{Binding Monkeys}"
                         SelectionMode="Single">
             <CollectionView.ItemTemplate>
@@ -286,7 +286,7 @@ The `SelectedItem` and `SelectedItems` properties can be cleared by setting them
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-    </StackLayout>
+    </Grid>
 </ContentPage>
 ```
 

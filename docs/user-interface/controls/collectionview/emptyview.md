@@ -50,12 +50,13 @@ The result is that, because the data bound collection is `null`, the string set 
 The `EmptyView` property can be set to a view, which will be displayed when the `ItemsSource` property is `null`, or when the collection specified by the `ItemsSource` property is `null` or empty. This can be a single view, or a view that contains multiple child views. The following XAML example shows the `EmptyView` property set to a view that contains multiple child views:
 
 ```xaml
-<StackLayout Margin="20">
+<Grid Margin="20" RowDefinitions="Auto,*">
     <SearchBar x:Name="searchBar"
                SearchCommand="{Binding FilterCommand}"
                SearchCommandParameter="{Binding Source={x:Reference searchBar}, Path=Text}"
                Placeholder="Filter" />
-    <CollectionView ItemsSource="{Binding Monkeys}">
+    <CollectionView ItemsSource="{Binding Monkeys}"
+                    Grid.Row="1">
         <CollectionView.ItemTemplate>
             <DataTemplate>
                 ...
@@ -80,7 +81,7 @@ The `EmptyView` property can be set to a view, which will be displayed when the 
             </ContentView>
         </CollectionView.EmptyView>
     </CollectionView>
-</StackLayout>
+</Grid>
 ```
 
 In this example, what looks like a redundant has been added as the root element of the `EmptyView`. This is because internally, the `EmptyView` is added to a native container that doesn't provide any context for .NET MAUI layout. Therefore, to position the views that comprise your `EmptyView`, you must add a root layout, whose child is a layout that can position itself within the root layout.
@@ -112,12 +113,13 @@ When the <xref:Microsoft.Maui.Controls.SearchBar> executes the `FilterCommand`, 
 The `EmptyView` property can be set to a custom type, whose template is displayed when the `ItemsSource` property is `null`, or when the collection specified by the `ItemsSource` property is `null` or empty. The `EmptyViewTemplate` property can be set to a <xref:Microsoft.Maui.Controls.DataTemplate> that defines the appearance of the `EmptyView`. The following XAML shows an example of this scenario:
 
 ```xaml
-<StackLayout Margin="20">
+<Grid Margin="20" RowDefinitions="Auto,*">
     <SearchBar x:Name="searchBar"
                SearchCommand="{Binding FilterCommand}"
                SearchCommandParameter="{Binding Source={x:Reference searchBar}, Path=Text}"
                Placeholder="Filter" />
-    <CollectionView ItemsSource="{Binding Monkeys}">
+    <CollectionView ItemsSource="{Binding Monkeys}"
+                    Grid.Row="1">
         <CollectionView.ItemTemplate>
             <DataTemplate>
                 ...
@@ -137,7 +139,7 @@ The `EmptyView` property can be set to a custom type, whose template is displaye
             </DataTemplate>
         </CollectionView.EmptyViewTemplate>
     </CollectionView>
-</StackLayout>
+</Grid>
 ```
 
 The equivalent C# code is:
@@ -213,7 +215,7 @@ Views that will be displayed as an `EmptyView` when data is unavailable, can be 
         </ContentView>
     </ContentPage.Resources>
 
-    <StackLayout Margin="20">
+    <Grid Margin="20" RowDefinitions="Auto,*">
         <SearchBar x:Name="searchBar"
                    SearchCommand="{Binding FilterCommand}"
                    SearchCommandParameter="{Binding Source={x:Reference searchBar}, Path=Text}"
@@ -223,14 +225,15 @@ Views that will be displayed as an `EmptyView` when data is unavailable, can be 
             <Switch Toggled="OnEmptyViewSwitchToggled" />
         </StackLayout>
         <CollectionView x:Name="collectionView"
-                        ItemsSource="{Binding Monkeys}">
+                        ItemsSource="{Binding Monkeys}"
+                        Grid.Row="1">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     ...
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-    </StackLayout>
+    </Grid>
 </ContentPage>
 ```
 
@@ -270,15 +273,16 @@ The appearance of the `EmptyView` can be chosen at runtime, based on its value, 
                                                  OtherTemplate="{StaticResource BasicTemplate}" />
     </ContentPage.Resources>
 
-    <StackLayout Margin="20">
+    <Grid Margin="20" RowDefinitions="Auto,*">
         <SearchBar x:Name="searchBar"
                    SearchCommand="{Binding FilterCommand}"
                    SearchCommandParameter="{Binding Source={x:Reference searchBar}, Path=Text}"
                    Placeholder="Filter" />
         <CollectionView ItemsSource="{Binding Monkeys}"
                         EmptyView="{Binding Source={x:Reference searchBar}, Path=Text}"
-                        EmptyViewTemplate="{StaticResource SearchSelector}" />
-    </StackLayout>
+                        EmptyViewTemplate="{StaticResource SearchSelector}"
+                        Grid.Row="1" />
+    </Grid>
 </ContentPage>
 ```
 
