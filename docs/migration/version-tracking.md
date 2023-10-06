@@ -6,11 +6,14 @@ ms.date: 10/06/2023
 
 # Migrate version tracking data from a Xamarin.Forms app to a .NET MAUI app
 
-Xamarin.Essentials and .NET Multi-platform App UI (.NET MAUI) both have a `VersionTracking` class that lets you check the app's version and build numbers, along with additional information such as if it's the first time the app was launched. However, in Xamarin.Essentials the version tracking data is stored in a shared preferences object with a name of `{your-app-package-id}.xamarinessentials.versiontracking`, while in .NET MAUI the version tracking data is stored in a shared preferences object with a name of `{your-app-package-id}.microsoft.maui.essentials.versiontracking`.
+Xamarin.Essentials and .NET Multi-platform App UI (.NET MAUI) both have a `VersionTracking` class that lets you check the app's version and build numbers, along with additional information such as if it's the first time the app was launched. However, in Xamarin.Essentials the version tracking data is stored in a platform-specific preferences container with a name of `{your-app-package-id}.xamarinessentials.versiontracking`, while in .NET MAUI the version tracking data is stored in a platform-specific preferences container with a name of `{your-app-package-id}.microsoft.maui.essentials.versiontracking`.
 
-When migrating a Xamarin.Forms app, that uses the `VersionTracking` class, to .NET MAUI this shared preferences object naming difference must be dealt with to provide users with a smooth upgrade experience. This can be accomplished with the `LegacyVersionTracking` class, and helper classes, which is presented in this article. This class enables your .NET MAUI app on Android, iOS, and Windows, to read version tracking data that was created with a previous Xamarin.Forms version of your app.
+When migrating a Xamarin.Forms app, that uses the `VersionTracking` class, to .NET MAUI this preferences container naming difference must be dealt with to provide users with a smooth upgrade experience. This can be accomplished with the `LegacyVersionTracking` class, and helper classes, which is presented in this article. This class enables your .NET MAUI app on Android, iOS, and Windows, to read version tracking data that was created with a previous Xamarin.Forms version of your app.
 
-For more information about the `VersionTracking` class in Xamarin.Essentials, see [Xamarin.Essentials: Version tracking](/xamarin/essentials/version-tracking). For more information about the `VersionTracking` class in .NET MAUI, see [Version tracking](~/platform-integration/appmodel/version-tracking.md).
+> [!IMPORANT]
+> For the `LegacyVersionTracking` class to work correctly your .NET MAUI app must have a higher version number than the version number of your Xamarin.Forms app. The version number can be set in your .NET MAUI app's project file with the `$(ApplicationVersion)` and `$(ApplicationDisplayVersion)` build properties.
+
+For more information about the <xref:Xamarin.Essentials.VersionTracking> class in Xamarin.Essentials, see [Xamarin.Essentials: Version tracking](/xamarin/essentials/version-tracking). For more information about the <xref:Microsoft.Maui.AppModel.VersionTracking> class in .NET MAUI, see [Version tracking](~/platform-integration/appmodel/version-tracking.md).
 
 ## Access legacy version tracking data
 
@@ -30,10 +33,25 @@ public static class LegacyVersionTracking
     static readonly string sharedName = LegacyPreferences.GetPrivatePreferencesSharedName("versiontracking");
 
     static Dictionary<string, List<string>> versionTrail;
+    static string LastInstalledVersion => versionTrail[versionsKey].LastOrDefault();
+    static string LastInstalledBuild => versionTrail[buildsKey].LastOrDefault();
 
     public static string VersionsKey => versionsKey;
     public static string BuildsKey => buildsKey;
     public static string SharedName => sharedName;
+    public static bool IsFirstLaunchEver { get; private set; }
+    public static bool IsFirstLaunchForCurrentVersion { get; private set; }
+    public static bool IsFirstLaunchForCurrentBuild { get; private set; }
+    public static string CurrentVersion => AppInfo.VersionString;
+    public static string CurrentBuild => AppInfo.BuildString;
+    public static string PreviousVersion => GetPrevious(versionsKey);
+    public static string PreviousBuild => GetPrevious(buildsKey);
+    public static string FirstInstalledVersion => versionTrail[versionsKey].FirstOrDefault();
+    public static string FirstInstalledBuild => versionTrail[buildsKey].FirstOrDefault();
+    public static IEnumerable<string> VersionHistory => versionTrail[versionsKey].ToArray();
+    public static IEnumerable<string> BuildHistory => versionTrail[buildsKey].ToArray();
+    public static bool IsFirstLaunchForVersion(string version) => CurrentVersion == version && IsFirstLaunchForCurrentVersion;
+    public static bool IsFirstLaunchForBuild(string build) => CurrentBuild == build && IsFirstLaunchForCurrentBuild;
 
     static LegacyVersionTracking()
     {
@@ -77,34 +95,17 @@ public static class LegacyVersionTracking
         }
     }
 
-    public static bool IsFirstLaunchEver { get; private set; }
-    public static bool IsFirstLaunchForCurrentVersion { get; private set; }
-    public static bool IsFirstLaunchForCurrentBuild { get; private set; }
-    public static string CurrentVersion => AppInfo.VersionString;
-    public static string CurrentBuild => AppInfo.BuildString;
-    public static string PreviousVersion => GetPrevious(versionsKey);
-    public static string PreviousBuild => GetPrevious(buildsKey);
-    public static string FirstInstalledVersion => versionTrail[versionsKey].FirstOrDefault();
-    public static string FirstInstalledBuild => versionTrail[buildsKey].FirstOrDefault();
-    public static IEnumerable<string> VersionHistory => versionTrail[versionsKey].ToArray();
-    public static IEnumerable<string> BuildHistory => versionTrail[buildsKey].ToArray();
-    public static bool IsFirstLaunchForVersion(string version) => CurrentVersion == version && IsFirstLaunchForCurrentVersion;
-    public static bool IsFirstLaunchForBuild(string build) => CurrentBuild == build && IsFirstLaunchForCurrentBuild;
-
     static string GetPrevious(string key)
     {
         var trail = versionTrail[key];
         return (trail.Count >= 2) ? trail[trail.Count - 2] : null;
     }
 
-    static string LastInstalledVersion => versionTrail[versionsKey].LastOrDefault();
-    static string LastInstalledBuild => versionTrail[buildsKey].LastOrDefault();
-
     static string[] ReadHistory(string key) => LegacyPreferences.Get(key, null, sharedName)?.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries) ?? new string[0];
 }
 ```
 
-The `LegacyVersionTracking` class uses the `LegacyPreferences` class, which provides access to version tracking data in the preferences stored by your Xamarin.Forms app:
+The `LegacyVersionTracking` class uses the `LegacyPreferences` class, which provides access to version tracking data stored by the Xamarin.Essentials <xref:Xamarin.Essentials.Preferences> class from your Xamarin.Forms app:
 
 > [!NOTE]
 > To use this code, add it to a class named `LegacyPreferences` in your .NET MAUI app project.
@@ -124,11 +125,11 @@ public static partial class LegacyPreferences
 #endif
 ```
 
-The `LegacyPreferences` class is a `partial` class whose implementation will provided on a per-platform basis.
+The `LegacyPreferences` class is a `partial` class whose remaining implementation is platform-specific.
 
 ### Android
 
-On Android, the `LegacyPreferences` class implementation retrieves data from shared preferences. The following code shows the `LegacyPreferences` class:
+On Android, the `LegacyPreferences` class provides the preferences container implementation that retrieves data from shared preferences. The following code shows the `LegacyPreferences` class:
 
 > [!NOTE]
 > To use this code, add it to a class named `LegacyPreferences` in the *Platforms\Android* folder of your .NET MAUI app project.
@@ -239,7 +240,7 @@ public static partial class LegacyPreferences
 
 ### iOS
 
-On iOS, the `LegacyPreferences` class implementation retrieves data from `NSUserDefaults`. The following code shows the `LegacyPreferences` class:
+On iOS, the `LegacyPreferences` class provides the preferences container implementation that retrieves data from `NSUserDefaults`. The following code shows the `LegacyPreferences` class:
 
 > [!NOTE]
 > To use this code, add it to a class named `LegacyPreferences` in the *Platforms\iOS* folder of your .NET MAUI app project.
@@ -331,7 +332,7 @@ public static partial class LegacyPreferences
 
 ### Windows
 
-On Windows, the `LegacyVersionTracking` class implementation retrieves data from `ApplicationDataContainer`. The following code shows the `LegacyPreferences` class:
+On Windows, the `LegacyVersionTracking` class provides the preferences container implementation that retrieves data from <xref:Windows.Storage.ApplicationDataContainer>. The following code shows the `LegacyPreferences` class:
 
 > [!NOTE]
 > To use this code, add it to a class named `LegacyPreferences` in the *Platforms\Windows* folder of your .NET MAUI app project.
@@ -420,7 +421,7 @@ LegacyPreferences.Remove(LegacyVersionTracking.BuildsKey, LegacyVersionTracking.
 #endif
 ```
 
-This example shows using the `LegacyVersionTracking` class to read legacy version tracking data, and then remove the legacy version tracking data. The legacy version tracking data can't be assigned to .NET MAUI's <xref:Microsoft.Maui.ApplicationModel.VersionTracking> class, because its properties can't be set. However, the data can be written to .NET MAUI preferences using the `WriteHistory` method:
+This example shows using the `LegacyVersionTracking` class to read legacy version tracking data, and then remove the legacy version tracking data from your device. The legacy version tracking data can't be assigned to .NET MAUI's <xref:Microsoft.Maui.ApplicationModel.VersionTracking> class, because its properties can't be set. However, the data can be written to .NET MAUI preferences with the `WriteHistory` method:
 
 ```csharp
 void WriteHistory(string key, IEnumerable<string> history)
@@ -435,3 +436,5 @@ The `WriteHistory` method can then be called to write the legacy version trackin
 WriteHistory(LegacyVersionTracking.VersionsKey, LegacyVersionTracking.VersionHistory);
 WriteHistory(LegacyVersionTracking.BuildsKey, LegacyVersionTracking.BuildHistory);
 ```
+
+Once the legacy version tracking data has to been written to .NET MAUI preferences with this approach, it can then be consumed by .NET MAUI's <xref:Microsoft.Maui.ApplicationModel.VersionTracking> class.

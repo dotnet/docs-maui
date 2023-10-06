@@ -1,6 +1,6 @@
 ---
 ms.topic: include
-ms.date: 10/02/2023
+ms.date: 10/06/2023
 ---
 
 ## Compile and troubleshoot
@@ -30,4 +30,4 @@ The following table provides guidance for overcoming common build or runtime iss
 | Effect doesn't work. | Effect code needs updating to work in .NET MAUI. For more information, see [Use effects in .NET MAUI](../effects.md). |
 | Can't access previously created app properties data. | Migrate the app properties data to .NET MAUI preferences. For more information, see [Migrate data from the Xamarin.Forms app properties dictionary to .NET MAUI preferences](../app-properties.md). |
 | Can't access previously created secure storage data. | Migrate the secure storage data to .NET MAUI. For more information, see [Migrate from Xamarin.Essentials secure storage to .NET MAUI secure storage](../secure-storage.md). |
-| can't access previously created version tracking data. | Migrate the version tracking data to .NET MAUI. For more information, see [Migrate version tracking data from a Xamarin.Forms app to a .NET MAUI app](../version-tracking.md). |
+| Can't access previously created version tracking data. | Migrate the version tracking data to .NET MAUI. For more information, see [Migrate version tracking data from a Xamarin.Forms app to a .NET MAUI app](../version-tracking.md). |
