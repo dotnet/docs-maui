@@ -21,35 +21,31 @@ The following code shows the `LegacyApplication` class, which provides access to
 > To use this code, add it to a class named `LegacyApplication` in your .NET MAUI app project.
 
 ```csharp
-namespace MigrationHelpers;
-
 public class LegacyApplication
 {
-    Deserializer _deserializer;
-    Task<IDictionary<string, object>> _propertiesTask;
+    readonly PropertiesDeserializer _deserializer;
+    Task<IDictionary<string, object>>? _propertiesTask;
 
-    static LegacyApplication current;
-    public static LegacyApplication Current
+    static LegacyApplication? current;
+    public static LegacyApplication? Current
     {
         get
         {
-            if (current == null)
-                current = (LegacyApplication)Activator.CreateInstance(typeof(LegacyApplication));
+            current ??= (LegacyApplication)Activator.CreateInstance(typeof(LegacyApplication));
             return current;
         }
     }
 
     public LegacyApplication()
     {
-        _deserializer = new Deserializer();
+        _deserializer = new PropertiesDeserializer();
     }
 
     public IDictionary<string, object> Properties
     {
         get
         {
-            if (_propertiesTask == null)
-                _propertiesTask = GetPropertiesAsync();
+            _propertiesTask ??= GetPropertiesAsync();
             return _propertiesTask.Result;
         }
     }
@@ -57,9 +53,7 @@ public class LegacyApplication
     async Task<IDictionary<string, object>> GetPropertiesAsync()
     {
         IDictionary<string, object> properties = await _deserializer.DeserializePropertiesAsync().ConfigureAwait(false);
-        if (properties == null)
-            properties = new Dictionary<string, object>(4);
-
+        properties ??= new Dictionary<string, object>(4);
         return properties;
     }
 }
@@ -67,10 +61,10 @@ public class LegacyApplication
 
 ### Android
 
-On Android, the `LegacyApplication` class uses the `Deserializer` class to deserialize data from the app properties dictionary file. The following code shows the `Deserializer` class:
+On Android, the `LegacyApplication` class uses the `PropertiesDeserializer` class to deserialize data from the app properties dictionary file. The following code shows the `PropertiesDeserializer` class:
 
 > [!NOTE]
-> To use this code, add it to a class named `Deserializer` in the *Platforms\Android* folder of your .NET MAUI app project.
+> To use this code, add it to a class named `PropertiesDeserializer` in the *Platforms\Android* folder of your .NET MAUI app project.
 
 ```csharp
 using System.Diagnostics;
@@ -80,7 +74,7 @@ using System.Xml;
 
 namespace MigrationHelpers;
 
-public class Deserializer
+public class PropertiesDeserializer
 {
     const string PropertyStoreFile = "PropertyStore.forms";
 
@@ -120,10 +114,10 @@ public class Deserializer
 
 ### iOS
 
-On iOS, the `LegacyApplication` class uses the `Deserializer` class to deserialize data from the app properties dictionary file. The following code shows the `Deserializer` class:
+On iOS, the `LegacyApplication` class uses the `PropertiesDeserializer` class to deserialize data from the app properties dictionary file. The following code shows the `PropertiesDeserializer` class:
 
 > [!NOTE]
-> To use this code, add it to a class named `Deserializer` in the *Platforms\iOS* folder of your .NET MAUI app project.
+> To use this code, add it to a class named `PropertiesDeserializer` in the *Platforms\iOS* folder of your .NET MAUI app project.
 
 ```csharp
 using System.Diagnostics;
@@ -133,7 +127,7 @@ using System.Xml;
 
 namespace MigrationHelpers;
 
-public class Deserializer
+public class PropertiesDeserializer
 {
     const string PropertyStoreFile = "PropertyStore.forms";
 
@@ -168,10 +162,10 @@ public class Deserializer
 
 ### Windows
 
-On Windows, the `LegacyApplication` class uses the `Deserializer` class to deserialize data from the app properties dictionary file. The following code shows the `Deserializer` class:
+On Windows, the `LegacyApplication` class uses the `PropertiesDeserializer` class to deserialize data from the app properties dictionary file. The following code shows the `PropertiesDeserializer` class:
 
 > [!NOTE]
-> To use this code, add it to a class named `Deserializer` in the *Platforms\Windows* folder of your .NET MAUI app project.
+> To use this code, add it to a class named `PropertiesDeserializer` in the *Platforms\Windows* folder of your .NET MAUI app project.
 
 ```csharp
 using System.Diagnostics;
@@ -180,7 +174,7 @@ using Windows.Storage;
 
 namespace MigrationHelpers;
 
-public class Deserializer
+public class PropertiesDeserializer
 {
     const string PropertyStoreFile = "PropertyStore.forms";
 
@@ -215,7 +209,7 @@ public class Deserializer
 }
 ```
 
-This Windows version of the `Deserializer` class requires the `DontSync` extension method. The following code shows this extension method:
+This Windows version of the `PropertiesDeserializer` class requires the `DontSync` extension method. The following code shows this extension method:
 
 > [!NOTE]
 > To use this code, add it to a class named `Extensions` in the *Platforms\Windows* folder of your .NET MAUI app project.
