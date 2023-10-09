@@ -35,7 +35,7 @@ Default rate suitable for screen orientation changes.
 
 ::: moniker range=">=net-maui-8.0"
 
-In .NET 8, the <xref:Microsoft.Maui.Devices.Sensors.SensorSpeed> intervals have identical values across all platforms:
+In .NET 8, <xref:Microsoft.Maui.Devices.Sensors.SensorSpeed> intervals are identical across all platforms:
 
 - <xref:Microsoft.Maui.Devices.Sensors.SensorSpeed.Default> uses an interval of 200ms.
 - <xref:Microsoft.Maui.Devices.Sensors.SensorSpeed.UI> uses an interval of 60ms.
