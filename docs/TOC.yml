@@ -89,6 +89,8 @@
               href: migration/app-properties.md
             - name: Migrate secure storage data
               href: migration/secure-storage.md
+            - name: Migrate version tracking data
+              href: migration/version-tracking.md
     - name: Tutorials
       items:
         - name: Create a .NET MAUI app

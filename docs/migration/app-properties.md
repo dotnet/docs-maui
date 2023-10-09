@@ -21,10 +21,12 @@ The following code shows the `LegacyApplication` class, which provides access to
 > To use this code, add it to a class named `LegacyApplication` in your .NET MAUI app project.
 
 ```csharp
+namespace MigrationHelpers;
+
 public class LegacyApplication
 {
-    readonly PropertiesDeserializer _deserializer;
-    Task<IDictionary<string, object>>? _propertiesTask;
+    readonly PropertiesDeserializer deserializer;
+    Task<IDictionary<string, object>>? propertiesTask;
 
     static LegacyApplication? current;
     public static LegacyApplication? Current
@@ -38,21 +40,21 @@ public class LegacyApplication
 
     public LegacyApplication()
     {
-        _deserializer = new PropertiesDeserializer();
+        deserializer = new PropertiesDeserializer();
     }
 
     public IDictionary<string, object> Properties
     {
         get
         {
-            _propertiesTask ??= GetPropertiesAsync();
-            return _propertiesTask.Result;
+            propertiesTask ??= GetPropertiesAsync();
+            return propertiesTask.Result;
         }
     }
 
     async Task<IDictionary<string, object>> GetPropertiesAsync()
     {
-        IDictionary<string, object> properties = await _deserializer.DeserializePropertiesAsync().ConfigureAwait(false);
+        IDictionary<string, object> properties = await deserializer.DeserializePropertiesAsync().ConfigureAwait(false);
         properties ??= new Dictionary<string, object>(4);
         return properties;
     }
