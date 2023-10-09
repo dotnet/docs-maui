@@ -416,7 +416,11 @@ using Microsoft.Maui.Handlers;
 > [!NOTE]
 > You should configure `MauiWKWebView` with a `WKWebViewConfiguration` object before a <xref:Microsoft.Maui.Controls.WebView> is displayed in your app. Suitable locations to do this are in your app's startup path, such as in *MauiProgram.cs* or *App.xaml.cs*. <!-- For more information about configuring a native .NET MAUI control, see [Customize controls](~/user-interface/handlers/customize.md). -->
 
+:::zone-end
+
 ::: moniker range=">=net-maui-8.0"
+
+:::zone pivot="devices-ios, devices-maccatalyst"
 
 ## Set media playback preferences on iOS and Mac Catalyst
 
@@ -442,7 +446,7 @@ using Microsoft.Maui.Handlers;
         // True to play videos over AirPlay, otherwise false.
         config.AllowsAirPlayForMediaPlayback = false;
 
-        // True to let HTML5 videos play Picture in Picture
+        // True to let HTML5 videos play Picture in Picture.
         config.AllowsPictureInPictureMediaPlayback = false;
 
         // Media types that require a user gesture to begin playing.
@@ -455,9 +459,9 @@ using Microsoft.Maui.Handlers;
 
 For more information about configuring a <xref:Microsoft.Maui.Controls.WebView> on iOS, see [Configure the native WebView on iOS and Mac Catalyst](#configure-the-native-webview-on-ios-and-mac-catalyst).
 
-::: moniker-end
-
 :::zone-end
+
+::: moniker-end
 
 :::zone pivot="devices-maccatalyst"
 
