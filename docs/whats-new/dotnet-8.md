@@ -22,11 +22,12 @@ For information about what's new in .NET 8, see [What's new in .NET 8](/dotnet/c
 - <xref:Microsoft.Maui.Devices.Sensors.SensorSpeed> intervals have been unified across all platforms. For more information, see [Accessing device sensors](~/platform-integration/device/sensors.md).
 - <xref:Microsoft.Maui.Controls.SolidColorBrush.Color> is the [`ContentProperty`](xref:Microsoft.Maui.Controls.ContentPropertyAttribute) of the <xref:Microsoft.Maui.Controls.SolidColorBrush> class, and therefore does not need to be explicitly set from XAML.
 
-The following members have been deprecated:
+The following types or members have been deprecated:
 
+- <xref:Microsoft.Maui.Controls.ClickGestureRecognizer> has been deprecated.
 - The [`AutomationProperties.Name`](xref:Microsoft.Maui.Controls.AutomationProperties.NameProperty), [`AutomationProperties.HelpText`](xref:Microsoft.Maui.Controls.AutomationProperties.HelpTextProperty), and [`AutomationProperties.LabeledBy`](xref:Microsoft.Maui.Controls.AutomationProperties.LabeledByProperty) attached properties have been deprecated.
 
-The following members have been removed:
+The following types or members have been removed:
 
 - The `Application.Properties` property and `Application.SavePropertiesAsync` method have been removed. To migrate your app properties data to .NET MAUI, see [Migrate data from the Xamarin.Forms app properties dictionary to .NET MAUI preferences](~/migration/app-properties.md).
 - The `PhoneDialer.Current` property has been removed. Use `PhoneDialer.Default` instead.
