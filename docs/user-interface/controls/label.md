@@ -186,7 +186,7 @@ Alternatively, for greater readability the HTML can be inlined in a `CDATA` sect
 </Label>
 ```
 
-In this example, the `Text` property is set to the HTML string that's inlined in the `CDATA` section. This works because the `Text` property is the `ContentProperty` for the <xref:Microsoft.Maui.Controls.Label> class.
+In this example, the `Text` property is set to the HTML string that's inlined in the `CDATA` section. This works because the `Text` property is the [`ContentProperty`](xref:Microsoft.Maui.Controls.ContentPropertyAttribute) for the <xref:Microsoft.Maui.Controls.Label> class.
 
 > [!IMPORTANT]
 > Displaying HTML in a <xref:Microsoft.Maui.Controls.Label> is limited to the HTML tags that are supported by the underlying platform.
