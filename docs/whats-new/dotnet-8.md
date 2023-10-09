@@ -19,6 +19,7 @@ For information about what's new in .NET 8, see [What's new in .NET 8](/dotnet/c
 - <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> gains a `StartPath` property, a `TryDispatchAsync` method, and enhanced logging capabilities. For more information, see [Host a Blazor web app in a .NET MAUI app using BlazorWebView](~/user-interface/controls/blazorwebview.md).
 - <xref:Microsoft.Maui.Controls.PointerGestureRecognizer> gains `PointerPressedCommand`, `PointerPressedCommandParameter`, `PointerReleasedCommand`, `PointerReleasedCommandParameter` properties, and `PointerPressed` and `PointerReleased` events. For more information, see [Recognize a pointer gesture](~/fundamentals/gestures/pointer.md).
 - <xref:Microsoft.Maui.Devices.Flashlight> gains a `IsSupportedAsync` method that determines whether a flashlight is available on the device. For more information, see [Flashlight](~/platform-integration/device/flashlight.md).
+- <xref:Microsoft.Maui.Devices.Sensors.SensorSpeed> intervals have been unified across all platforms. For more information, see [Accessing device sensors](~/platform-integration/device/sensors.md).
 
 The following members have been deprecated:
 
