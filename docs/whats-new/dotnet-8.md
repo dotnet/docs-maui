@@ -29,6 +29,7 @@ The following members have been removed:
 
 - The `Application.Properties` property and `Application.SavePropertiesAsync` method have been removed. To migrate your app properties data to .NET MAUI, see [Migrate data from the Xamarin.Forms app properties dictionary to .NET MAUI preferences](~/migration/app-properties.md).
 - The `PhoneDialer.Current` property has been removed. Use `PhoneDialer.Default` instead.
+- `OpenGLView` has been removed.
 
 <!-- - The <xref:Microsoft.Maui.Controls.Maps.Map> control is a cross-platform view for displaying and annotating maps. The <xref:Microsoft.Maui.Controls.Maps.Map> control uses the native map control on each platform, and is provided by the [Microsoft.Maui.Controls.Maps NuGet package](https://www.nuget.org/packages/Microsoft.Maui.Controls.Maps/). For more information, see [Map](~/user-interface/controls/map.md).
 - The <xref:Microsoft.Maui.Controls.Foldable.TwoPaneView> control is a container control for foldable devices that provides two views that size and position content in the available space, either side-by-side or top-to-bottom. This control is provided by the [Microsoft.Maui.Controls.Foldable NuGet package](https://www.nuget.org/packages/Microsoft.Maui.Controls.Foldable/).
