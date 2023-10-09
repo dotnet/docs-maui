@@ -7,7 +7,7 @@ contact_links:
     url: https://developercommunity.visualstudio.com/
     about: Log product issues here.
   - name: .NET MAUI Q&A forums
-    url: https://learn.microsoft.com/en-us/answers/tags/247/dotnet-maui
+    url: https://learn.microsoft.com/answers/tags/247/dotnet-maui
     about: Find answers to your technical questions about .NET MAUI.
   - name: .NET tech community forums
     url: https://techcommunity.microsoft.com/t5/net/ct-p/dotnet
