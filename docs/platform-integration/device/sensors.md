@@ -1,5 +1,5 @@
 ---
-title: Accessing device sensors overview
+title: Accessing device sensors
 description: "Learn how to use and monitor sensors provided by your device, with .NET MAUI. You can monitor the following sensors: accelerometer, barometer, compass, shake, gyroscope, magnetometer, orientation."
 ms.topic: overview
 ms.date: 02/02/2023
@@ -16,7 +16,7 @@ Device sensor-related types are available in the `Microsoft.Maui.Devices.Sensors
 
 ## Sensor speed
 
-Sensor speed sets the speed in which a sensor will return data to your app. When you start a sensor, you provide the desired sensor speed with the <xref:Microsoft.Maui.Devices.Sensors.SensorSpeed> enumeration.
+Sensor speed sets the speed in which a sensor will return data to your app. When you start a sensor, you provide the desired sensor speed with the <xref:Microsoft.Maui.Devices.Sensors.SensorSpeed> enumeration:
 
 - <xref:Microsoft.Maui.Devices.Sensors.SensorSpeed.Fastest>\
 Get the sensor data as fast as possible (not guaranteed to return on UI thread).
@@ -24,14 +24,25 @@ Get the sensor data as fast as possible (not guaranteed to return on UI thread).
 - <xref:Microsoft.Maui.Devices.Sensors.SensorSpeed.Game>\
 Rate suitable for games (not guaranteed to return on UI thread).
 
-- <xref:Microsoft.Maui.Devices.Sensors.SensorSpeed.Default>\
-Default rate suitable for screen orientation changes.
-
 - <xref:Microsoft.Maui.Devices.Sensors.SensorSpeed.UI>\
 Rate suitable for general user interface.
 
+- <xref:Microsoft.Maui.Devices.Sensors.SensorSpeed.Default>\
+Default rate suitable for screen orientation changes.
+
 > [!WARNING]
 > Monitoring too many sensors at once may affect the rate sensor data is returned to your app.
+
+::: moniker range=">=net-maui-8.0"
+
+In .NET 8, <xref:Microsoft.Maui.Devices.Sensors.SensorSpeed> intervals are identical across all platforms:
+
+- <xref:Microsoft.Maui.Devices.Sensors.SensorSpeed.Default> uses an interval of 200ms.
+- <xref:Microsoft.Maui.Devices.Sensors.SensorSpeed.UI> uses an interval of 60ms.
+- <xref:Microsoft.Maui.Devices.Sensors.SensorSpeed.Game> uses an interval of 20ms.
+- <xref:Microsoft.Maui.Devices.Sensors.SensorSpeed.Fastest> uses an interval of 5ms.
+
+::: moniker-end
 
 ### Sensor event handlers
 
