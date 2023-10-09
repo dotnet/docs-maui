@@ -1,7 +1,7 @@
 ---
 title: "Recognize a drag and drop gesture"
 description: "This article explains how to recognize drag and drop gestures with .NET MAUI."
-ms.date: 02/22/2022
+ms.date: 10/09/2023
 ---
 
 # Recognize a drag and drop gesture
@@ -9,9 +9,6 @@ ms.date: 02/22/2022
 A .NET Multi-platform App UI (.NET MAUI) drag and drop gesture recognizer enables items, and their associated data packages, to be dragged from one onscreen location to another location using a continuous gesture. Drag and drop can take place in a single application, or it can start in one application and end in another.
 
 The *drag source*, which is the element on which the drag gesture is initiated, can provide data to be transferred by populating a data package object. When the drag source is released, drop occurs. The *drop target*, which is the element under the drag source, then processes the data package.
-
-> [!IMPORTANT]
-> On iOS a minimum platform of iOS 11 is required.
 
 The process for enabling drag and drop in an app is as follows:
 
@@ -291,3 +288,24 @@ void OnDrop(object sender, DropEventArgs e)
 ```
 
 In this example, the `Square` object is retrieved from the property bag of the data package, by specifying the "Square" dictionary key. An action based on the retrieved value can then be taken.
+
+::: moniker range=">=net-maui-8.0"
+
+## Get the gesture position
+
+The position at which a drag or drop gesture occurred can be obtained by calling the `GetPosition` method on a <xref:Microsoft.Maui.Controls.DragEventArgs>, <xref:Microsoft.Maui.Controls.DragStartingEventArgs>, or <xref:Microsoft.Maui.DropEventArgs> object. The `GetPosition` method accepts an `Element?` argument, and returns a position as a `Point?` object:
+
+```csharp
+void OnDragStarting(object sender, DragStartingEventArgs e)
+{
+    // Position relative to screen
+    Point? screenPosition = e.GetPosition(null);
+
+    // Position relative to specified element
+    Point? relativeToImagePosition = e.GetPosition(image);
+}
+```
+
+The `Element?` argument defines the element the position should be obtained relative to. Supplying a `null` value as this argument means that the `GetPosition` method returns a `Point?` object that defines the position of the drag or drop gesture relative to the screen.
+
+::: moniker-end
