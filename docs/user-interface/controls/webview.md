@@ -416,6 +416,47 @@ using Microsoft.Maui.Handlers;
 > [!NOTE]
 > You should configure `MauiWKWebView` with a `WKWebViewConfiguration` object before a <xref:Microsoft.Maui.Controls.WebView> is displayed in your app. Suitable locations to do this are in your app's startup path, such as in *MauiProgram.cs* or *App.xaml.cs*. <!-- For more information about configuring a native .NET MAUI control, see [Customize controls](~/user-interface/handlers/customize.md). -->
 
+::: moniker range=">=net-maui-8.0"
+
+## Set media playback preferences on iOS and Mac Catalyst
+
+Inline media playback of HTML5 video, including autoplay and picture in picture, is enabled by default for the <xref:Microsoft.Maui.Controls.WebView> on iOS. To change this default, or set other media playback preferences, you should create a custom handler factory delegate since media playback preferences can't be changed once the handler's platform view is created. The following code shows an example of doing this:
+
+```csharp
+#if IOS || MACCATALYST
+using WebKit;
+using CoreGraphics;
+using Microsoft.Maui.Platform;
+using Microsoft.Maui.Handlers;
+#endif
+...
+
+#if IOS || MACCATALYST
+		Microsoft.Maui.Handlers.WebViewHandler.PlatformViewFactory = (handler) =>
+		{
+        var config = MauiWKWebView.CreateConfiguration();
+
+        // True to play HTML5 videos inliine, false to use the native full-screen controller.
+        config.AllowsInlineMediaPlayback = false;
+
+        // True to play videos over AirPlay, otherwise false.
+        config.AllowsAirPlayForMediaPlayback = false;
+
+        // True to let HTML5 videos play Picture in Picture
+        config.AllowsPictureInPictureMediaPlayback = false;
+
+        // Media types that require a user gesture to begin playing.
+        config.MediaTypesRequiringUserActionForPlayback = WKAudiovisualMediaTypes.All;
+
+        return new MauiWKWebView(CGRect.Empty, (WebViewHandler)handler, config);
+		};
+#endif
+```
+
+For more information about configuring a <xref:Microsoft.Maui.Controls.WebView> on iOS, see [Configure the native WebView on iOS and Mac Catalyst](#configure-the-native-webview-on-ios-and-mac-catalyst).
+
+::: moniker-end
+
 :::zone-end
 
 :::zone pivot="devices-maccatalyst"
