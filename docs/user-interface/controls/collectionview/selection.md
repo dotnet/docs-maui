@@ -275,7 +275,7 @@ The `SelectedItem` and `SelectedItems` properties can be cleared by setting them
             </Setter>
         </Style>
     </ContentPage.Resources>
-    <StackLayout Margin="20">
+    <Grid Margin="20">
         <CollectionView ItemsSource="{Binding Monkeys}"
                         SelectionMode="Single">
             <CollectionView.ItemTemplate>
@@ -286,12 +286,30 @@ The `SelectedItem` and `SelectedItems` properties can be cleared by setting them
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-    </StackLayout>
+    </Grid>
 </ContentPage>
 ```
 
 > [!IMPORTANT]
 > The <xref:Microsoft.Maui.Controls.Style> that contains the `Selected` <xref:Microsoft.Maui.Controls.VisualState> must have a `TargetType` property value that's the type of the root element of the <xref:Microsoft.Maui.Controls.DataTemplate>, which is set as the `ItemTemplate` property value.
+
+The equivalent C# code for the style containing the visual state is:
+
+```csharp
+using static Microsoft.Maui.Controls.VisualStateManager;
+...
+
+Setter backgroundColorSetter = new() { Property = BackgroundColorProperty, Value = Colors.LightSkyBlue };
+VisualState stateSelected = new() { Name = CommonStates.Selected, Setters = { backgroundColorSetter } };
+VisualState stateNormal = new() { Name = CommonStates.Normal };
+VisualStateGroup visualStateGroup = new() { Name = nameof(CommonStates), States = { stateSelected, stateNormal } };
+VisualStateGroupList visualStateGroupList = new() { visualStateGroup };
+Setter vsgSetter = new() { Property = VisualStateGroupsProperty, Value = visualStateGroupList };
+Style style = new(typeof(Grid)) { Setters = { vsgSetter } };
+
+// Add the style to the resource dictionary
+Resources.Add(style);
+```
 
 In this example, the `Style.TargetType` property value is set to <xref:Microsoft.Maui.Controls.Grid> because the root element of the `ItemTemplate` is a <xref:Microsoft.Maui.Controls.Grid>. The `Selected` <xref:Microsoft.Maui.Controls.VisualState> specifies that when an item in the <xref:Microsoft.Maui.Controls.CollectionView> is selected, the `BackgroundColor` of the item is set to `LightSkyBlue`:
 
