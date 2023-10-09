@@ -293,7 +293,7 @@ In this example, the `Square` object is retrieved from the property bag of the d
 
 ## Get the gesture position
 
-The position at which a drag or drop gesture occurred can be obtained by calling the `GetPosition` method on a <xref:Microsoft.Maui.Controls.DragEventArgs>, <xref:Microsoft.Maui.Controls.DragStartingEventArgs>, or <xref:Microsoft.Maui.DropEventArgs> object. The `GetPosition` method accepts an `Element?` argument, and returns a position as a `Point?` object:
+The position at which a drag or drop gesture occurred can be obtained by calling the `GetPosition` method on a <xref:Microsoft.Maui.Controls.DragEventArgs>, <xref:Microsoft.Maui.Controls.DragStartingEventArgs>, or <xref:Microsoft.Maui.Controls.DropEventArgs> object. The `GetPosition` method accepts an `Element?` argument, and returns a position as a `Point?` object:
 
 ```csharp
 void OnDragStarting(object sender, DragStartingEventArgs e)

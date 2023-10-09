@@ -21,7 +21,7 @@ For information about what's new in .NET 8, see [What's new in .NET 8](/dotnet/c
 - <xref:Microsoft.Maui.Devices.Flashlight> gains a `IsSupportedAsync` method that determines whether a flashlight is available on the device. For more information, see [Flashlight](~/platform-integration/device/flashlight.md).
 - <xref:Microsoft.Maui.Devices.Sensors.SensorSpeed> intervals have been unified across all platforms. For more information, see [Accessing device sensors](~/platform-integration/device/sensors.md).
 - <xref:Microsoft.Maui.Controls.SolidColorBrush.Color> is the [`ContentProperty`](xref:Microsoft.Maui.Controls.ContentPropertyAttribute) of the <xref:Microsoft.Maui.Controls.SolidColorBrush> class, and therefore does not need to be explicitly set from XAML.
-- The position at which a drag or drop gesture occurred can be obtained by calling the `GetPosition` method on a <xref:Microsoft.Maui.Controls.DragEventArgs>, <xref:Microsoft.Maui.Controls.DragStartingEventArgs>, or <xref:Microsoft.Maui.DropEventArgs> object. For more information, see [Recognize a drag and drop gesture](~/fundamentals/gestures/drag-and-drop.md).
+- The position at which a drag or drop gesture occurred can be obtained by calling the `GetPosition` method on a <xref:Microsoft.Maui.Controls.DragEventArgs>, <xref:Microsoft.Maui.Controls.DragStartingEventArgs>, or <xref:Microsoft.Maui.Controls.DropEventArgs> object. For more information, see [Recognize a drag and drop gesture](~/fundamentals/gestures/drag-and-drop.md).
 
 The following types or members have been deprecated:
 
