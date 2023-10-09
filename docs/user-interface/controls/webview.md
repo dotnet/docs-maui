@@ -396,7 +396,7 @@ The native <xref:Microsoft.Maui.Controls.WebView> control is a `MauiWKWebView` o
 
 You can create a `WKWebViewConfiguration` object in your app, and then configure its properties as required. Alternatively, you can call the static `MauiWKWebView.CreateConfiguration` method to retrieve .NET MAUI's `WKWebViewConfiguration` object and then modify it. The `WKWebViewConfiguration` object can then be specified as an argument to the `MauiWKWebView` constructor overload.
 
-Since the behavior of a native <xref:Microsoft.Maui.Controls.WebView> often can't be changed on iOS and Mac Catalyst once the handler's platform view is created, you should create a custom handler factory delegate to modify its configuration with a `MauiWkWebView` object:
+Since the behavior of the native <xref:Microsoft.Maui.Controls.WebView> often can't be changed on iOS and Mac Catalyst once the handler's platform view is created, you should create a custom handler factory delegate to modify its configuration:
 
 ```csharp
 #if IOS || MACCATALYST
@@ -412,7 +412,6 @@ using Microsoft.Maui.Handlers;
     {
         WKWebViewConfiguration config = MauiWKWebView.CreateConfiguration();
         config.ApplicationNameForUserAgent = "MyProduct/1.0.0";
-
         return new MauiWKWebView(CGRect.Empty, (WebViewHandler)handler, config);
     };
 #endif
