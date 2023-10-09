@@ -432,8 +432,8 @@ using Microsoft.Maui.Handlers;
 ...
 
 #if IOS || MACCATALYST
-		Microsoft.Maui.Handlers.WebViewHandler.PlatformViewFactory = (handler) =>
-		{
+    Microsoft.Maui.Handlers.WebViewHandler.PlatformViewFactory = (handler) =>
+    {
         var config = MauiWKWebView.CreateConfiguration();
 
         // True to play HTML5 videos inliine, false to use the native full-screen controller.
@@ -449,7 +449,7 @@ using Microsoft.Maui.Handlers;
         config.MediaTypesRequiringUserActionForPlayback = WKAudiovisualMediaTypes.All;
 
         return new MauiWKWebView(CGRect.Empty, (WebViewHandler)handler, config);
-		};
+    };
 #endif
 ```
 
