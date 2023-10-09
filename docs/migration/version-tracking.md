@@ -415,26 +415,33 @@ string versionHistory = String.Join(',', LegacyVersionTracking.VersionHistory);
 string buildHistory = String.Join(',', LegacyVersionTracking.BuildHistory);
 string previousVersion = LegacyVersionTracking.PreviousVersion?.ToString() ?? "none";
 string previousBuild = LegacyVersionTracking.PreviousBuild?.ToString() ?? "none";
-
-LegacyPreferences.Remove(LegacyVersionTracking.VersionsKey, LegacyVersionTracking.SharedName);
-LegacyPreferences.Remove(LegacyVersionTracking.BuildsKey, LegacyVersionTracking.SharedName);
 #endif
 ```
 
-This example shows using the `LegacyVersionTracking` class to read legacy version tracking data, and then remove the legacy version tracking data from your device. The legacy version tracking data can't be assigned to .NET MAUI's <xref:Microsoft.Maui.ApplicationModel.VersionTracking> class, because its properties can't be set. However, the data can be written to .NET MAUI preferences with the `WriteHistory` method:
+This example shows using the `LegacyVersionTracking` class to read legacy version tracking data. However, this data can't be assigned to .NET MAUI's <xref:Microsoft.Maui.ApplicationModel.VersionTracking> class, because its properties can't be set. Instead, the data can be written to .NET MAUI preferences with the `WriteHistory` method:
 
 ```csharp
 void WriteHistory(string key, IEnumerable<string> history)
 {        
     Preferences.Default.Set(key, string.Join("|", history), $"{AppInfo.Current.PackageName}.microsoft.maui.essentials.versiontracking");
 }
-```
 
-The `WriteHistory` method can then be called to write the legacy version tracking data to .NET MAUI preferences:
-
-```csharp
 WriteHistory(LegacyVersionTracking.VersionsKey, LegacyVersionTracking.VersionHistory);
 WriteHistory(LegacyVersionTracking.BuildsKey, LegacyVersionTracking.BuildHistory);
 ```
 
-Once the legacy version tracking data has to been written to .NET MAUI preferences with this approach, it can then be consumed by .NET MAUI's <xref:Microsoft.Maui.ApplicationModel.VersionTracking> class.
+Once the legacy version tracking data has to been written to .NET MAUI preferences, it can be consumed by .NET MAUI's <xref:Microsoft.Maui.ApplicationModel.VersionTracking> class:
+
+```csharp
+var mauiVersionHistory = VersionTracking.Default.VersionHistory;
+var mauiBuildHistory = VersionTracking.Default.BuildHistory;
+```
+
+The legacy version tracking data can then be removed from the device:
+
+```csharp
+#if ANDROID || IOS || WINDOWS
+LegacyPreferences.Remove(LegacyVersionTracking.VersionsKey, LegacyVersionTracking.SharedName);
+LegacyPreferences.Remove(LegacyVersionTracking.BuildsKey, LegacyVersionTracking.SharedName);
+#endif
+```
