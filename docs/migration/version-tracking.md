@@ -426,11 +426,13 @@ void WriteHistory(string key, IEnumerable<string> history)
     Preferences.Default.Set(key, string.Join("|", history), $"{AppInfo.Current.PackageName}.microsoft.maui.essentials.versiontracking");
 }
 
+#if ANDROID || IOS || WINDOWS
 WriteHistory(LegacyVersionTracking.VersionsKey, LegacyVersionTracking.VersionHistory);
 WriteHistory(LegacyVersionTracking.BuildsKey, LegacyVersionTracking.BuildHistory);
+#endif
 ```
 
-Once the legacy version tracking data has to been written to .NET MAUI preferences, it can be consumed by .NET MAUI's <xref:Microsoft.Maui.ApplicationModel.VersionTracking> class:
+Once the legacy version tracking data has been written to .NET MAUI preferences, it can be consumed by .NET MAUI's <xref:Microsoft.Maui.ApplicationModel.VersionTracking> class:
 
 ```csharp
 var mauiVersionHistory = VersionTracking.Default.VersionHistory;
