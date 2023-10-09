@@ -394,7 +394,9 @@ function factorial(num) {
 
 The native <xref:Microsoft.Maui.Controls.WebView> control is a `MauiWKWebView` on iOS and Mac Catalyst, which derives from `WKWebView`. One of the `MauiWKWebView` constructor overloads enables a `WKWebViewConfiguration` object to be specified, which provides information about how to configure the `WKWebView` object. Typical configurations include setting the user agent, specifying cookies to make available to your web content, and injecting custom scripts into your web content.
 
-You can create a `WKWebViewConfiguration` object in your app, and then configure its properties as required. Alternatively, you can call the static `MauiWKWebView.CreateConfiguration` method to retrieve .NET MAUI's `WKWebViewConfiguration` object and then modify it. The `WKWebViewConfiguration` object can then be passed to the `MauiWKWebView` constructor overload by modifying the factory method that `WebViewHandler` uses to create its native control on each platform:
+You can create a `WKWebViewConfiguration` object in your app, and then configure its properties as required. Alternatively, you can call the static `MauiWKWebView.CreateConfiguration` method to retrieve .NET MAUI's `WKWebViewConfiguration` object and then modify it. The `WKWebViewConfiguration` object can then be specified as an argument to the `MauiWKWebView` constructor overload.
+
+Since many native <xref:Microsoft.Maui.Controls.WebView> preferences can't be changed once the handler's platform view is created, you should create a custom handler factory delegate to modify its configuration:
 
 ```csharp
 #if IOS || MACCATALYST
@@ -406,10 +408,13 @@ using Microsoft.Maui.Handlers;
 ...
 
 #if IOS || MACCATALYST
-    WKWebViewConfiguration config = MauiWKWebView.CreateConfiguration();
-    config.ApplicationNameForUserAgent = "MyProduct/1.0.0";
-    WebViewHandler.PlatformViewFactory =
-        handler => new MauiWKWebView(CGRect.Empty, (WebViewHandler)handler, config);
+    Microsoft.Maui.Handlers.WebViewHandler.PlatformViewFactory = (handler) =>
+    {
+        WKWebViewConfiguration config = MauiWKWebView.CreateConfiguration();
+        config.ApplicationNameForUserAgent = "MyProduct/1.0.0";
+
+        return new MauiWKWebView(CGRect.Empty, (WebViewHandler)handler, config);
+    };
 #endif
 ```
 
@@ -424,7 +429,7 @@ using Microsoft.Maui.Handlers;
 
 ## Set media playback preferences on iOS and Mac Catalyst
 
-Inline media playback of HTML5 video, including autoplay and picture in picture, is enabled by default for the <xref:Microsoft.Maui.Controls.WebView> on iOS. To change this default, or set other media playback preferences, you should create a custom handler factory delegate since media playback preferences can't be changed once the handler's platform view is created. The following code shows an example of doing this:
+Inline media playback of HTML5 video, including autoplay and picture in picture, is enabled by default for the <xref:Microsoft.Maui.Controls.WebView> on iOS and Mac Catalyst. To change this default, or set other media playback preferences, you should create a custom handler factory delegate since media playback preferences can't be changed once the handler's platform view is created. The following code shows an example of doing this:
 
 ```csharp
 #if IOS || MACCATALYST
@@ -438,7 +443,7 @@ using Microsoft.Maui.Handlers;
 #if IOS || MACCATALYST
     Microsoft.Maui.Handlers.WebViewHandler.PlatformViewFactory = (handler) =>
     {
-        var config = MauiWKWebView.CreateConfiguration();
+        WKWebViewConfiguration config = MauiWKWebView.CreateConfiguration();
 
         // True to play HTML5 videos inliine, false to use the native full-screen controller.
         config.AllowsInlineMediaPlayback = false;
