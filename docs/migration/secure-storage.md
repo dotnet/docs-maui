@@ -10,7 +10,7 @@ Xamarin.Essentials and .NET Multi-platform App UI (.NET MAUI) both have a `Secur
 
 | Platform | Xamarin.Essentials | .NET MAUI |
 | - | ------------------ | --------- |
-| Android | The Android KeyStore is used to store the cipher key used to encrypt a value before it's saved into a shared preferences object with a filename of {your-app-package-id}.xamarinessentials. | Data is encrypted with the `EncryptedSharedPreferences` class, which wraps the `SharedPreferences` class, and automatically encrypts keys and values. The filename used is {your-app-package-id}.microsoft.maui.essentials.preferences. |
+| Android | The Android KeyStore is used to store the cipher key used to encrypt a value before it's saved into a shared preferences object with a name of {your-app-package-id}.xamarinessentials. | Data is encrypted with the `EncryptedSharedPreferences` class, which wraps the `SharedPreferences` class, and automatically encrypts keys and values. The name used is {your-app-package-id}.microsoft.maui.essentials.preferences. |
 | iOS | KeyChain is used to store values securely. The `SecRecord` used to store values has a `Service` value set to {your-app-package-id}.xamarinessentials. | KeyChain is used to store values securely. The `SecRecord` used to store values has a `Service` value set to {your-app-package-id}.microsoft.maui.essentials.preferences. |
 <!-- | Windows | The `DataProtectionProvider` class is used to encrypt values securely. Encrypted values are stored in `ApplicationData.Current.LocalSettings`, inside a container with a name of {your-app-package-id}.xamarinessentials. | The `DataProtectionProvider` class is used to encrypt values securely. Encrypted values are stored in `ApplicationData.Current.LocalSettings`, inside a container with a name of {your-app-package-id}.microsoft.maui.essentials.preferences. | -->
 
@@ -91,7 +91,7 @@ public class LegacySecureStorage
 
 ### Android
 
-On Android, the `LegacySecureStorage` class uses the `AndroidKeyStore` class to store the cipher key used to encrypt a value before it's saved into a shared preferences object with a filename of {your-app-package-id}.xamarinessentials. The following code shows the `AndroidKeyStore` class:
+On Android, the `LegacySecureStorage` class uses the `AndroidKeyStore` class to store the cipher key used to encrypt a value before it's saved into a shared preferences object with a name of {your-app-package-id}.xamarinessentials. The following code shows the `AndroidKeyStore` class:
 
 > [!NOTE]
 > To use this code, add it to a class named `AndroidKeyStore` in the *Platforms\Android* folder of your .NET MAUI app project.
@@ -347,7 +347,7 @@ class AndroidKeyStore
 }
 ```
 
-The [Android KeyStore](https://developer.android.com/training/articles/keystore.html) is used to store the cipher key used to encrypt the value before it is saved into a [Shared Preferences](https://developer.android.com/training/data-storage/shared-preferences.html)file with a filename of *{your-app-package-id}.xamarinessentials*. The key (not a cryptographic key, the *key* to the *value*) used in the shared preferences file is a *MD5 Hash* of the key passed into the `SecureStorage` APIs.
+The [Android KeyStore](https://developer.android.com/training/articles/keystore.html) is used to store the cipher key used to encrypt the value before it is saved into a [Shared Preferences](https://developer.android.com/training/data-storage/shared-preferences.html)file with a name of *{your-app-package-id}.xamarinessentials*. The key (not a cryptographic key, the *key* to the *value*) used in the shared preferences file is a *MD5 Hash* of the key passed into the `SecureStorage` APIs.
 
 On API 23+, an **AES** key is obtained from the Android KeyStore and used with an **AES/GCM/NoPadding** cipher to encrypt the value before it is stored in the shared preferences file. On API 22 and lower, the Android KeyStore only supports storing **RSA** keys, which is used with an **RSA/ECB/PKCS1Padding** cipher to encrypt an **AES** key (randomly generated at runtime) and stored in the shared preferences file under the key _SecureStorageKey_, if one has not already been generated.
 
