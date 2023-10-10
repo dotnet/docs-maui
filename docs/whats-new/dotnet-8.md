@@ -1,7 +1,7 @@
 ---
 title: What's new in .NET MAUI for .NET 8
 description: Learn about the new features introduced in .NET MAUI for .NET 8.
-ms.date: 10/02/2023
+ms.date: 10/10/2023
 ---
 
 # What's new in .NET MAUI for .NET 8
@@ -27,6 +27,7 @@ For information about what's new in .NET 8, see [What's new in .NET 8](/dotnet/c
 - Resources defined in a <xref:Microsoft.Maui.Controls.ResourceDictionary> can also be consumed in an [`AppThemeBinding`](xref:Microsoft.Maui.Controls.Xaml.AppThemeBindingExtension) with the [`DynamicResource`](xref:Microsoft.Maui.Controls.Xaml.DynamicResourceExtension) markup extension. For more information, see [Define and consume theme resources](~/user-interface/system-theme-changes.md#define-and-consume-theme-resources).
 - The `Grid.Add` overload that accepts 5 arguments has been added back to .NET MAUI. However, this method is deprecated and is only present to aid migrations from Xamarin.Forms.
 - <xref:Microsoft.Maui.Controls.Grid> gains an `AddWithSpan` extension method that adds a view to the `Grid` at the specified row and column with the specified row and column spans.
+- On iOS, `MauiUIApplicationDelegate` gains a `PerformFetch` method that can be overridden or consumed via the `iOSLifecycle.PerformFetch` delegate. For more information, see [iOS platform lifecycle events](~/fundamentals/app-lifecycle.md#ios).
 
 The following types or members have been deprecated:
 
