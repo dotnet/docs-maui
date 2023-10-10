@@ -221,6 +221,9 @@ The following table lists the .NET MAUI delegates that are invoked in response t
 | `WillTerminate` | `UIKit.UIApplication` | Invoked if the app is being terminated due to memory constraints, or directly by the user. |
 | `WindowSceneDidUpdateCoordinateSpace` | `UIKit.UIWindowScene`, `UIKit.IUICoordinateSpace`, `UIKit.UIInterfaceOrientation`, `UIKit.UITraitCollection` | Invoked when the size, orientation, or traits of a scene change. |
 
+> [!IMPORTANT]
+> Each delegate has a corresponding identically named extension method that can be called to register a handler for the delegate.
+
 ::: moniker-end
 
 ::: moniker range=">=net-maui-8.0"
@@ -253,10 +256,10 @@ The following table lists the .NET MAUI delegates that are invoked in response t
 | `WillTerminate` | `UIKit.UIApplication` | Invoked if the app is being terminated due to memory constraints, or directly by the user. |
 | `WindowSceneDidUpdateCoordinateSpace` | `UIKit.UIWindowScene`, `UIKit.IUICoordinateSpace`, `UIKit.UIInterfaceOrientation`, `UIKit.UITraitCollection` | Invoked when the size, orientation, or traits of a scene change. |
 
-::: moniker-end
-
 > [!IMPORTANT]
 > Each delegate, with the exception of `PerformFetch`, has a corresponding identically named extension method that can be called to register a handler for the delegate.
+
+::: moniker-end
 
 To respond to an iOS lifecycle delegate being invoked, call the `ConfigureLifecycleEvents` method on the `MauiAppBuilder` object in the `CreateMauiapp` method of your `MauiProgram` class. Then, on the `ILifecycleBuilder` object, call the `AddiOS` method and specify the `Action` that registers handlers for the required delegates:
 
