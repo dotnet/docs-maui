@@ -29,6 +29,7 @@ The following types or members have been deprecated:
 
 - <xref:Microsoft.Maui.Controls.ClickGestureRecognizer> has been deprecated.
 - The [`AutomationProperties.Name`](xref:Microsoft.Maui.Controls.AutomationProperties.NameProperty), [`AutomationProperties.HelpText`](xref:Microsoft.Maui.Controls.AutomationProperties.HelpTextProperty), and [`AutomationProperties.LabeledBy`](xref:Microsoft.Maui.Controls.AutomationProperties.LabeledByProperty) attached properties have been deprecated.
+- The <xref:Microsoft.Maui.Controls.VisualElement.FocusChangeRequested> has been deprecated. Instead, use the <xref:Microsoft.Maui.IView.Focus> method to attempt to set focus on the view..
 
 The following types or members have been removed:
 
