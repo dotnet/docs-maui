@@ -24,6 +24,7 @@ For information about what's new in .NET 8, see [What's new in .NET 8](/dotnet/c
 - The position at which a drag or drop gesture occurred can be obtained by calling the `GetPosition` method on a <xref:Microsoft.Maui.Controls.DragEventArgs>, <xref:Microsoft.Maui.Controls.DragStartingEventArgs>, or <xref:Microsoft.Maui.Controls.DropEventArgs> object. For more information, see [Recognize a drag and drop gesture](~/fundamentals/gestures/drag-and-drop.md).
 - <xref:Microsoft.Maui.Controls.WebView> gains a `UserAgent` property. For more information, see [WebView](~/user-interface/controls/webview.md).
 - Inline media playback of HTML5 video, including autoplay and picture in picture, has been enabled by default for the <xref:Microsoft.Maui.Controls.WebView> on iOS. For more information, see [Set media playback preferences on iOS and Mac Catalyst](~/user-interface/controls/webview.md#set-media-playback-preferences-on-ios-and-mac-catalyst).
+- Reources defined in a <xref:Microsoft.Maui.Controls.ResourceDictionary> can also be consumed in an [`AppThemeBinding`](xref:Microsoft.Maui.Controls.Xaml.AppThemeBindingExtension) with the [`DynamicResource`](xref:Microsoft.Maui.Controls.Xaml.DynamicResourceExtension) markup extension.
 
 The following types or members have been deprecated:
 
