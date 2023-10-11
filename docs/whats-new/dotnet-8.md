@@ -28,6 +28,7 @@ For information about what's new in .NET 8, see [What's new in .NET 8](/dotnet/c
 - The `Grid.Add` overload that accepts 5 arguments has been added back to .NET MAUI. However, this method is deprecated and is only present to aid migrations from Xamarin.Forms.
 - <xref:Microsoft.Maui.Controls.Grid> gains an `AddWithSpan` extension method that adds a view to the `Grid` at the specified row and column with the specified row and column spans.
 - On iOS, `MauiUIApplicationDelegate` gains a `PerformFetch` method that can be overridden or consumed via the `iOSLifecycle.PerformFetch` delegate. For more information, see [iOS platform lifecycle events](~/fundamentals/app-lifecycle.md#ios).
+- The <xref:Microsoft.Maui.Controls.TapGestureRecognizer> class gains the ability to handle secondary taps on Android. For more information, see [Recognize a tap gesture](~/fundamentals/gestures/tap.md).
 
 The following types or members have been deprecated:
 
