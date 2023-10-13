@@ -29,6 +29,7 @@ For information about what's new in .NET 8, see [What's new in .NET 8](/dotnet/c
 - <xref:Microsoft.Maui.Controls.Grid> gains an `AddWithSpan` extension method that adds a view to the `Grid` at the specified row and column with the specified row and column spans.
 - On iOS, `MauiUIApplicationDelegate` gains a `PerformFetch` method that can be overridden or consumed via the `iOSLifecycle.PerformFetch` delegate. For more information, see [iOS platform lifecycle events](~/fundamentals/app-lifecycle.md#ios).
 - The <xref:Microsoft.Maui.Controls.TapGestureRecognizer> class gains the ability to handle secondary taps on Android. For more information, see [Recognize a tap gesture](~/fundamentals/gestures/tap.md).
+- Some of the common properties from the <xref:Microsoft.Maui.Controls.Editor>, <xref:Microsoft.Maui.Controls.Entry>, and <xref:Microsoft.Maui.Controls.SearchBar> controls have moved to the base <xref:Microsoft.Maui.Controls.InputView> class. For more information, see [Editor](~/user-interface/controls/editor.md), [Entry](~/user-interface/controls/entry.md), and [SearchBar](~/user-interface/controls/searchbar.md).
 
 The following types or members have been deprecated:
 
