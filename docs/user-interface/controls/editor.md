@@ -48,7 +48,7 @@ In addition, <xref:Microsoft.Maui.Controls.Editor> defines a `Completed` event, 
 - `MaxLength`, of type `int`, defines the maximum input length.
 - `Placeholder`, of type `string`, defines the text that's displayed when the control is empty.
 - `PlaceholderColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the color of the placeholder text.
-- `Text`, of type `string`, defines the text entered into the editor.
+- `Text`, of type `string`, defines the text entered into the control.
 - `TextColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the color of the entered text.
 - `TextTransform`, of type `TextTransform`, specifies the casing of the entered text.
 
@@ -69,8 +69,8 @@ In addition, <xref:Microsoft.Maui.Controls.Editor> defines a `Completed` event, 
 - `MaxLength`, of type `int`, defines the maximum input length.
 - `Placeholder`, of type `string`, defines the text that's displayed when the control is empty.
 - `PlaceholderColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the color of the placeholder text.
-- `SelectionLength`, of type `int`, represents the length of selected text within the editor.
-- `Text`, of type `string`, defines the text entered into the editor.
+- `SelectionLength`, of type `int`, represents the length of selected text within the control.
+- `Text`, of type `string`, defines the text entered into the control.
 - `TextColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the color of the entered text.
 - `TextTransform`, of type `TextTransform`, specifies the casing of the entered text.
 
