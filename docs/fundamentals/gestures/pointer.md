@@ -61,7 +61,7 @@ A <xref:Microsoft.Maui.Controls.PointerEventArgs> object accompanies the events,
 - Android:
   - `Sender`, of type <xref:Android.Views.View>, represents the native view attached to the event.
   - `MotionEvent`, of type <xref:Android.Views.MotionEvent>, indicates the native event or handler attached to the view.
-- iOS/Mac Catalyst:
+- iOS and Mac Catalyst:
   - `Sender`, of type <xref:UIKit.UIView>, represents the native view attached to the event.
   - `GestureRecognizer`, of type <xref:UIKit.UIGestureRecognizer>, indicates the native event or handler attached to the view.
 - Windows:
