@@ -58,13 +58,13 @@ A <xref:Microsoft.Maui.Controls.PointerEventArgs> object accompanies the events,
 
 A <xref:Microsoft.Maui.Controls.PointerEventArgs> object accompanies the events, and defines a `PlatformArgs` property of type `PlatformPointerEventArgs` that provides access to platform-specific arguments for the event. The `PlatformPointerEventArgs` class defines the following properties:
 
-- Android
+- Android:
   - `Sender`, of type <xref:Android.Views.View>, represents the native view attached to the event.
   - `MotionEvent`, of type <xref:Android.Views.MotionEvent>, indicates the native event or handler attached to the view.
-- iOS/Mac Catalyst
+- iOS/Mac Catalyst:
   - `Sender`, of type <xref:UIKit.UIView>, represents the native view attached to the event.
   - `GestureRecognizer`, of type <xref:UIKit.UIGestureRecognizer>, indicates the native event or handler attached to the view.
-- Windows
+- Windows:
   - `Sender`, of type <xref:Microsoft.UI.Xaml.FrameworkElement>, represents the native view attached to the event.
   - `PointerRoutedEventArgs`, of type <xref:Microsoft.UI.Xaml.Input.PointerRoutedEventArgs>, indicates the native event or handler attached to the view.
 
