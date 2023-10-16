@@ -47,6 +47,13 @@ For example:
 dotnet publish -f net7.0-windows10.0.19041.0 -c Release -p:RuntimeIdentifierOverride=win10-x64 -p:WindowsPackageType=None
 ```
 
-Publishing builds and packages the app, copying the signed package to the _bin\\Release\\net7.0-windows10.0.19041.0\\win10-x64\\AppPackages\\\<appname>\\_ folder. \<appname> is a folder named after both your project and version. In this folder, there's an _msix_ file, and that's the app package.
+Publishing builds the app, copying the executable to the _bin\\Release\\net7.0-windows10.0.19041.0\\win10-x64\\publish_ folder. In this folder, there's an _exe_ file, and that's the built app. This app can be launched or the entire folder can be copied to another machine and launched there.
+
+One important distinction from a packaged app is that this will _NOT_ include the .NET runtime in the folder. This means that the app will require the .NET runtime to first be installed on the machines that will eventially run the app. To ensure the app also contains _all_ the runtime components, the `--self-contained` argument can be provided when publishing.
+For example:
+
+```console
+dotnet publish -f net7.0-windows10.0.19041.0 -c Release --self-contained -p:RuntimeIdentifierOverride=win10-x64 -p:WindowsPackageType=None
+```
 
 For more information about the `dotnet publish` command, see [dotnet publish](/dotnet/core/tools/dotnet-publish).
