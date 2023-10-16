@@ -66,7 +66,7 @@ The `PlatformDragStartingEventArgs` class defines the following properties:
 
 In addition, on Android the `PlatformDragStartingEventArgs` class defines the following methods:
 
-- `SetDragShadowBuilder`, which sets the <xref:Android.Views.View.SetDragShadowBuilder> to use when dragging begins.
+- `SetDragShadowBuilder`, which sets the <xref:Android.Views.View.DragShadowBuilder> to use when dragging begins.
 - `SetClipData`, which sets the the <xref:Android.Content.ClipData> to use when dragging begins.
 - `SetLocalData`, which sets the local data <xref:Java.Lang.Object> to use when dragging begins.
 - `SetDragFlags`, which sets the <xref:Android.Views.DragFlags> to use when dragging begins.
@@ -76,9 +76,9 @@ In addition, on iOS and Mac Catalyst the `PlatformDragStartingEventArgs` class d
 - `SetItemProvider`, which sets the <xref:Foundation.NSItemProvider> to use when dragging begins.
 - `SetPreviewProvider`, which sets the <xref:UIKit.UIDragPreview> to use when dragging begins.
 - `SetDragItems`, which sets the array of <xref:UIKit.UIDragItem> to use when dragging begins.
-- `SetPrefersFullSizePreview`, which sets the func that requests to keep drag previews full-sized when dragging begins.
+- `SetPrefersFullSizePreview`, which sets the func that requests that drag previews are full-sized when dragging begins.
 
-The <xref:Microsoft.Maui.Controls.DropCompletedEventArgs> object that accompanies the <xref:Microsoft.Maui.Controls.DropCompleted> event defines a `PlatformArgs` property, of type `PlatformDropCompletedEventArgs?`, which represents the platform-specific arguments associated with the event. The `PlatformDropCompletedEventArgs` class defines the following properties:
+The <xref:Microsoft.Maui.Controls.DropCompletedEventArgs> object that accompanies the <xref:Microsoft.Maui.Controls.DragGestureRecognizer.DropCompleted> event defines a `PlatformArgs` property, of type `PlatformDropCompletedEventArgs?`, which represents the platform-specific arguments associated with the event. The `PlatformDropCompletedEventArgs` class defines the following properties:
 
 - Android:
   - `Sender`, of type <xref:Android.Views.View>, represents the native view attached to the event.
