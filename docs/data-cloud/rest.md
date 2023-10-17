@@ -203,7 +203,7 @@ The REST service sends an HTTP status code in its response, which can be obtaine
 - **404 (NOT FOUND)** – the requested resource does not exist on the server.
 
 > [!TIP]
-> When dealing with a REST Service, you may have observed the utilization of async and await. For more information about Asynchronous programming, see [ Asynchronous programming with async and await](dotnet/csharp/asynchronous-programming).
+> When dealing with a REST Service, you may have observed the utilization of async and await. For more information about Asynchronous programming, see [ Asynchronous programming with async and await](/dotnet/csharp/asynchronous-programming).
 
 ## Local development
 
