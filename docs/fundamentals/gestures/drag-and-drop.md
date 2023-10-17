@@ -67,6 +67,18 @@ In addition, on Android the `PlatformDragStartingEventArgs` class defines the fo
 - `SetLocalData`, which sets the local data <xref:Java.Lang.Object> to use when dragging begins.
 - `SetDragFlags`, which sets the <xref:Android.Views.DragFlags> to use when dragging begins.
 
+For example, use the `SetClipData` method to associate <xref:Android.Content.ClipData> with the dragged item:
+
+```csharp
+void OnDragStarting(object sender, DragStartingEventArgs e)
+{
+#if ANDROID
+    string content = "insert your content here";
+    e.PlatformArgs.SetClipData(Android.Content.ClipData.NewPlainText("Drag data", content));
+#endif
+}
+```
+
 # [iOS/Mac Catalyst](#tab/macios)
 
 On iOS and Mac Catalyst, the `PlatformDragStartingEventArgs` class defines the following properties:
@@ -79,7 +91,40 @@ In addition, on iOS and Mac Catalyst the `PlatformDragStartingEventArgs` class d
 - `SetItemProvider`, which sets the <xref:Foundation.NSItemProvider> to use when dragging begins.
 - `SetPreviewProvider`, which sets the <xref:UIKit.UIDragPreview> to use when dragging begins.
 - `SetDragItems`, which sets the array of <xref:UIKit.UIDragItem> to use when dragging begins.
-- `SetPrefersFullSizePreview`, which sets the func that requests that drag previews are full-sized when dragging begins
+- `SetPrefersFullSizePreview`, which sets the func that requests that drag previews are full-sized when dragging begins.
+
+For example, use the `SetPreviewProvider` method to set the object to use as a preview of the item being dragged:
+
+```csharp
+void OnDragStarting(object sender, DragStartingEventArgs e)
+{
+#if IOS || MACCATALYST
+    Func<UIKit.UIDragPreview> action = () =>
+    {
+        var image = UIKit.UIImage.FromFile("dotnet_bot.png");
+        UIKit.UIImageView imageView = new UIKit.UIImageView(image);
+        imageView.ContentMode = UIKit.UIViewContentMode.Center;
+        imageView.Frame = new CoreGraphics.CGRect(0, 0, 250, 250);
+        return new UIKit.UIDragPreview(imageView);
+    };
+
+    e.PlatformArgs.SetPreviewProvider(action);
+#endif
+}
+```
+
+In this example, the preview of the dragged item is replaced with an image.
+
+To set the drag preview to full size, use the `SetPrefersFullSizePreview` method:
+
+```csharp
+void OnDragStarting(object sender, DragStartingEventArgs e)
+{
+#if IOS || MACCATALYST
+    e.PlatformArgs.SetPrefersFullSizePreviews((interaction, session) => { return true; });
+#endif
+}
+```
 
 # [Windows](#tab/windows)
 
@@ -281,7 +326,18 @@ On iOS and Mac Catalyst, the `PlatformDragEventArgs` class defines the following
 - `DropInteraction`, of type <xref:UIKit.UIDropInteraction>, indicates the interaction used for dropping items.
 - `DropSession`, of type <xref:UIKit.IUIDropSession>, retrieves the associated information from the drop session.
 
-In addition, on iOS and Mac Catalyst the `PlatformDragEventArgs` class defines the `SetDropProposal` method. This method sets the <xref:UIKit.UIDropProposal> to use when dragging an item over a view.
+In addition, on iOS and Mac Catalyst the `PlatformDragEventArgs` class defines the `SetDropProposal` method. This method sets the <xref:UIKit.UIDropProposal> to use when dragging an item over a view:
+
+```csharp
+void OnDragOver(object sender, DragEventArgs e)
+{
+#if IOS || MACCATALYST
+    e.PlatformArgs.SetDropProposal(new UIKit.UIDropProposal(UIKit.UIDropOperation.Move));
+#endif
+}
+```
+
+In this example, the <xref:UIKit.UIDropOperation> specifies that the data represented by the drag item should be moved rather than copied.
 
 # [Windows](#tab/windows)
 
@@ -290,6 +346,22 @@ On Windows, the `PlatformDragEventArgs` class defines the following properties:
 - `Sender`, of type <xref:Microsoft.UI.Xaml.FrameworkElement>, represents the native view attached to the event.
 - `DragEventArgs`, of type <xref:Microsoft.UI.Xaml.DragEventArgs>, provides event data for the native event.
 - `Handled`, of type `bool`, determines if the event arguments have changed. This property should be set to `true` when changing the `DragEventArgs` so that the changes aren't overridden.
+
+For example, the `DragEventArgs` property can be used to access native properties:
+
+```csharp
+void OnDragOver(object sender, DragEventArgs e)
+{
+#if WINDOWS
+    var dragUI = e.PlatformArgs.DragEventArgs.DragUIOverride;
+
+    dragUI.IsCaptionVisible = false;
+    dragUI.IsGlyphVisible = false;
+#endif
+}
+```
+
+In this example, the drag glyph is disabled and caption text that overlays the drag visual is also disabled.
 
 ---
 
