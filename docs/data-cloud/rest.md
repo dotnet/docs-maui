@@ -24,6 +24,9 @@ Web service APIs that adhere to REST are defined using:
 
 REST-based web services typically use JSON messages to return data to the client. JSON is a text-based data-interchange format that produces compact payloads, which results in reduced bandwidth requirements when sending data. The simplicity of REST has helped make it the primary method for accessing web services in mobile apps.
 
+> [!NOTE]
+> Accessing a web service often requires asynchronous programming. For more information about asynchronous programming, see [Asynchronous programming with async and await](/dotnet/csharp/asynchronous-programming).
+
 ## Web service operations
 
 The example REST service is written using ASP.NET Core and provides the following operations:
