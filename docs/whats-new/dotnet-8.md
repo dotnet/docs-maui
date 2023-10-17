@@ -30,6 +30,7 @@ For information about what's new in .NET 8, see [What's new in .NET 8](/dotnet/c
 - On iOS, `MauiUIApplicationDelegate` gains a `PerformFetch` method that can be overridden or consumed via the `iOSLifecycle.PerformFetch` delegate. For more information, see [iOS platform lifecycle events](~/fundamentals/app-lifecycle.md#ios).
 - The <xref:Microsoft.Maui.Controls.TapGestureRecognizer> class gains the ability to handle secondary taps on Android. For more information, see [Recognize a tap gesture](~/fundamentals/gestures/tap.md).
 - The <xref:Microsoft.Maui.Controls.PointerEventArgs> object that accompanies the pointer events raised by the <xref:Microsoft.Maui.Controls.PointerGestureRecognizer> class gains a `PlatformArgs` property of type `PlatformPointerEventArgs`. This property provides access to the platform-specific arguments for a pointer gesture event. For more information, see [Recognize a pointer gesture](~/fundamentals/gestures/pointer.md).
+- The <xref:Microsoft.Maui.Controls.DragStartingEventArgs>, <xref:Microsoft.Maui.Controls.DragEventArgs>, <xref:Microsoft.Maui.Controls.DropEventArgs>, and <xref:Microsoft.Maui.Controls.DropCompletedEventArgs> objects that accompany drag and drop gesture events each gain a `PlatformArgs` property. This property provides access to the platform-specific arguments for a drag or drop event. For more information, see [Recognize a drag and drop gesture](~/fundamentals/gestures/drag-and-drop.md).
 
 The following types or members have been deprecated:
 

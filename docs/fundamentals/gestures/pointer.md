@@ -56,17 +56,34 @@ A <xref:Microsoft.Maui.Controls.PointerEventArgs> object accompanies the events,
 - `PointerPressed`, that's raised when the pointer initiates a press within the view.
 - `PointerReleased`, that's raised when the pointer that has previously initiated a press is released, while within the view.
 
-A <xref:Microsoft.Maui.Controls.PointerEventArgs> object accompanies the events, and defines a `PlatformArgs` property of type `PlatformPointerEventArgs` that provides access to platform-specific arguments for the event. The `PlatformPointerEventArgs` class defines the following properties:
+A <xref:Microsoft.Maui.Controls.PointerEventArgs> object accompanies the events, and defines a `PlatformArgs` property of type `PlatformPointerEventArgs` that provides access to platform-specific arguments for the event.
 
-- Android:
-  - `Sender`, of type <xref:Android.Views.View>, represents the native view attached to the event.
-  - `MotionEvent`, of type <xref:Android.Views.MotionEvent>, indicates the native event or handler attached to the view.
-- iOS/Mac Catalyst:
-  - `Sender`, of type <xref:UIKit.UIView>, represents the native view attached to the event.
-  - `GestureRecognizer`, of type <xref:UIKit.UIGestureRecognizer>, indicates the native event or handler attached to the view.
-- Windows:
-  - `Sender`, of type <xref:Microsoft.UI.Xaml.FrameworkElement>, represents the native view attached to the event.
-  - `PointerRoutedEventArgs`, of type <xref:Microsoft.UI.Xaml.Input.PointerRoutedEventArgs>, indicates the native event or handler attached to the view.
+<!-- markdownlint-disable MD025 -->
+
+# [Android](#tab/android)
+
+On Android, the `PlatformPointerEventArgs` class defines the following properties:
+
+- `Sender`, of type <xref:Android.Views.View>, represents the native view attached to the event.
+- `MotionEvent`, of type <xref:Android.Views.MotionEvent>, indicates the native event or handler attached to the view.
+
+# [iOS/Mac Catalyst](#tab/macios)
+
+On iOS and Mac Catalyst, the `PlatformPointerEventArgs` class defines the following properties:
+
+- `Sender`, of type <xref:UIKit.UIView>, represents the native view attached to the event.
+- `GestureRecognizer`, of type <xref:UIKit.UIGestureRecognizer>, indicates the native event or handler attached to the view.
+
+# [Windows](#tab/windows)
+
+On Windows, the `PlatformPointerEventArgs` class defines the following properties:
+
+- `Sender`, of type <xref:Microsoft.UI.Xaml.FrameworkElement>, represents the native view attached to the event.
+- `PointerRoutedEventArgs`, of type <xref:Microsoft.UI.Xaml.Input.PointerRoutedEventArgs>, indicates the native event or handler attached to the view.
+
+---
+
+<!-- markdownlint-enable MD025 -->
 
 In addition, the <xref:Microsoft.Maui.Controls.PointerEventArgs> object defines a `GetPosition` method that returns a `Point?` object that represents the position of the pointer when the gesture was detected. For more information about the `GetPosition` method, see [Get the gesture position](#get-the-gesture-position).
 
