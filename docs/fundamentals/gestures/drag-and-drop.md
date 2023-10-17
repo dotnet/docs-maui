@@ -64,7 +64,7 @@ In addition, on Android the `PlatformDragStartingEventArgs` class defines the fo
 
 - `SetDragShadowBuilder`, which sets the <xref:Android.Views.View.DragShadowBuilder> to use when dragging begins.
 - `SetClipData`, which sets the the <xref:Android.Content.ClipData> to use when dragging begins.
-- `SetLocalData`, which sets the local data <xref:Java.Lang.Object> to use when dragging begins.
+- `SetLocalData`, which sets the local data to use when dragging begins.
 - `SetDragFlags`, which sets the <xref:Android.Views.DragFlags> to use when dragging begins.
 
 For example, use the `SetClipData` method to associate <xref:Android.Content.ClipData> with the dragged item:
@@ -354,7 +354,6 @@ void OnDragOver(object sender, DragEventArgs e)
 {
 #if WINDOWS
     var dragUI = e.PlatformArgs.DragEventArgs.DragUIOverride;
-
     dragUI.IsCaptionVisible = false;
     dragUI.IsGlyphVisible = false;
 #endif
