@@ -238,7 +238,7 @@ Generating a blank splash screen will override any custom splash screen and will
 
 ## Duplicate image filename errors
 
-In .NET 8, you may encounter build errors about duplicate image filenames:
+You may encounter build errors about duplicate image filenames:
 
 > One or more duplicate file names were detected. All image output filenames must be unique.
 
