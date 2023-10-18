@@ -183,6 +183,8 @@ If you receive the error "Could not find a valid Xcode app bundle at '/Library/D
 sudo xcode-select --reset
 ```
 
+::: moniker range=">=net-maui-8.0"
+
 ## Diagnose issues in Blazor Hybrid apps
 
 <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> has built-in logging that can help you diagnose problems in your Blazor Hybrid app. There are two steps to enable this logging:
@@ -191,8 +193,6 @@ sudo xcode-select --reset
 1. Configure a logger to write the log output to where you can view it.
 
 For more information, see [Diagnosing issues in Blazor Hybrid apps](~/user-interface/controls/blazorwebview.md#diagnosing-issues).
-
-::: moniker range=">=net-maui-8.0"
 
 ## Disable image packaging
 
