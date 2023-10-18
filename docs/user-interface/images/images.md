@@ -1,4 +1,4 @@
----
+
 title: "Add images to a .NET MAUI app project"
 description: "Learn how to add images to your .NET MAUI app, and control their resizing."
 ms.date: 09/04/2023
@@ -75,3 +75,15 @@ A background color for an image can also be specified:
 
 <!-- Valid color values are actually derived from the SKColor struct, rather than Microsoft.Maui.Graphics.Colors. -->
 Color values can be specified in hexadecimal, or as a .NET MAUI color. For example, `Color="Red"` is valid.
+
+::: moniker range=">=net-maui-8.0"
+
+## Disable image packaging
+
+For troubleshooting purposes, image resource packaging can be disabled by setting the `$(EnableMauiImageProcessing)` build property to `false` in the first `<PropertyGroup>` node in your project file:
+
+```xml
+<EnableMauiImageProcessing>false</EnableMauiImageProcessing>
+```
+
+::: moniker-end

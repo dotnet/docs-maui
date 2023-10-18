@@ -142,6 +142,16 @@ Raw assets can then be consumed by controls, as required:
 
 At build time, raw assets are copied to your app package.
 
+::: moniker range=">=net-maui-8.0"
+
+For troubleshooting purposes, asset file resource packaging can be disabled by setting the `$(EnableMauiAssetProcessing)` build property to `false` in the first `<PropertyGroup>` node in your project file:
+
+```xml
+<EnableMauiAssetProcessing>false</EnableMauiAssetProcessing>
+```
+
+::: moniker-end
+
 ### CSS files
 
 .NET MAUI apps can be partially styled with Cascading Style Sheet (CSS) files. CSS files can be added to your app project by dragging them into any folder of your project, and setting their build action to `MauiCss` in the **Properties** window.

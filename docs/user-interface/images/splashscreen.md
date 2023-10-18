@@ -129,3 +129,25 @@ Therefore, you shouldn't set the `UILaunchStoryboardName` key in your *Info.plis
 ---
 
 For more advanced splash screen scenarios, per-platform approaches apply.
+
+::: moniker range=">=net-maui-8.0"
+
+## Generate a blank splash screen
+
+For troubleshooting purposes, a blank splash screen can be generated if you don't have a `<MauiSplashScreen>` item and you don't have a custom splash screen. This can be achieved by setting the `$(EnableBlankMauiSplashScreen)` build property to `true` in the first `<PropertyGroup>` node in your project file:
+
+```xml
+<EnableBlankMauiSplashScreen>true</EnableBlankMauiSplashScreen>
+```
+
+Generating a blank splash screen will override any custom splash screen and will cause an app store rejection. However, it can be a useful approach in testing to ensure that your app UI is correct.
+
+## Disable splash screen packaging
+
+For troubleshooting purposes, splash screen resource generation can be disabled by setting the `$(EnableSplashScreenProcessing)` build property to `false` in the first `<PropertyGroup>` node in your project file:
+
+```xml
+<EnableSplashScreenProcessing>false</EnableSplashScreenProcessing>
+```
+
+::: moniker-end
