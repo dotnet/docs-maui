@@ -35,6 +35,8 @@ A splash screen can be added to your app project by dragging an image into the *
 
 To comply with Android resource naming rules, splash screen files names must be lowercase, start and end with a letter character, and contain only alphanumeric characters or underscores. For more information, see [App resources overview](https://developer.android.com/guide/topics/resources/providing-resources) on developer.android.com.
 
+At build time, the splash screen image is resized to the correct size for the target platform and device. The resized splash screen is then added to your app package. For information about disabling splash screen packaging, see [Disable splash screen packaging](~/troubleshooting.md#disable-splash-screen-packaging). For information about generating a blank splash screen, see [Generate a blank splash screen](~/troubleshooting.md#generate-a-blank-splash-screen).
+
 ## Set the base size
 
 .NET MAUI uses your splash screen across multiple platforms and can resize it for each platform.
@@ -129,25 +131,3 @@ Therefore, you shouldn't set the `UILaunchStoryboardName` key in your *Info.plis
 ---
 
 For more advanced splash screen scenarios, per-platform approaches apply.
-
-::: moniker range=">=net-maui-8.0"
-
-## Generate a blank splash screen
-
-For troubleshooting purposes, a blank splash screen can be generated if you don't have a `<MauiSplashScreen>` item and you don't have a custom splash screen. This can be achieved by setting the `$(EnableBlankMauiSplashScreen)` build property to `true` in the first `<PropertyGroup>` node in your project file:
-
-```xml
-<EnableBlankMauiSplashScreen>true</EnableBlankMauiSplashScreen>
-```
-
-Generating a blank splash screen will override any custom splash screen and will cause an app store rejection. However, it can be a useful approach in testing to ensure that your app UI is correct.
-
-## Disable splash screen packaging
-
-For troubleshooting purposes, splash screen resource generation can be disabled by setting the `$(EnableSplashScreenProcessing)` build property to `false` in the first `<PropertyGroup>` node in your project file:
-
-```xml
-<EnableSplashScreenProcessing>false</EnableSplashScreenProcessing>
-```
-
-::: moniker-end

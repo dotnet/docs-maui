@@ -140,17 +140,7 @@ Raw assets can then be consumed by controls, as required:
 <WebView Source="index.html" />
 ```
 
-At build time, raw assets are copied to your app package.
-
-::: moniker range=">=net-maui-8.0"
-
-For troubleshooting purposes, asset file resource packaging can be disabled by setting the `$(EnableMauiAssetProcessing)` build property to `false` in the first `<PropertyGroup>` node in your project file:
-
-```xml
-<EnableMauiAssetProcessing>false</EnableMauiAssetProcessing>
-```
-
-::: moniker-end
+At build time, raw assets are copied to your app package. For information about disabling asset packaging, see [Disable asset file packaging](~/troubleshooting.md#disable-asset-file-packaging).
 
 ### CSS files
 
