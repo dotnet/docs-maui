@@ -1,7 +1,7 @@
 ---
 title: "Editor"
 description: "The .NET MAUI Editor allows you to enter and edit multiple lines of text."
-ms.date: 10/13/2023
+ms.date: 10/19/2023
 ---
 
 # Editor
@@ -44,7 +44,7 @@ In addition, <xref:Microsoft.Maui.Controls.Editor> defines a `Completed` event, 
 - `CharacterSpacing`, of type `double`, sets the spacing between characters in the entered text.
 - `IsReadOnly`, of type `bool`, defines whether the user should be prevented from modifying text. The default value of this property is `false`.
 - `IsSpellCheckEnabled`, of type `bool`, controls whether spell checking is enabled.
-- `Keyboard`, of type `Keyboard`, specifies the virtual keyboard that's displayed when entering text.
+- `Keyboard`, of type `Keyboard`, specifies the soft input keyboard that's displayed when entering text.
 - `MaxLength`, of type `int`, defines the maximum input length.
 - `Placeholder`, of type `string`, defines the text that's displayed when the control is empty.
 - `PlaceholderColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the color of the placeholder text.
@@ -65,7 +65,7 @@ In addition, <xref:Microsoft.Maui.Controls.Editor> defines a `Completed` event, 
 - `IsReadOnly`, of type `bool`, defines whether the user should be prevented from modifying text. The default value of this property is `false`.
 - `IsSpellCheckEnabled`, of type `bool`, controls whether spell checking is enabled.
 - `IsTextPredictionEnabled`, of type `bool`, controls whether text prediction and automatic text correction is enabled.
-- `Keyboard`, of type `Keyboard`, specifies the virtual keyboard that's displayed when entering text.
+- `Keyboard`, of type `Keyboard`, specifies the soft input keyboard that's displayed when entering text.
 - `MaxLength`, of type `int`, defines the maximum input length.
 - `Placeholder`, of type `string`, defines the text that's displayed when the control is empty.
 - `PlaceholderColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the color of the placeholder text.
@@ -237,6 +237,19 @@ The equivalent C# code is:
 Editor editor = new Editor();
 editor.Keyboard = Keyboard.Create(KeyboardFlags.Suggestions | KeyboardFlags.CapitalizeCharacter);
 ```
+
+::: moniker range=">=net-maui-8.0"
+
+[!INCLUDE [Hide and show the soft input keyboard](includes/soft-input-extensions.md)]
+
+The following example shows how to hide the soft input keyboard on an <xref:Microsoft.Maui.Controls.Editor> named `editor`, if it's currently showing:
+
+```csharp
+if (editor.IsSoftInputShowing())
+    await editor.HideSoftInputAsync(CancellationToken.None);
+```
+
+::: moniker-end
 
 ## Enable and disable spell checking
 
