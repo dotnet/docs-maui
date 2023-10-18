@@ -58,7 +58,7 @@ A font can be added to your app project by dragging it into the *Resources\Fonts
 
 Fonts can also be added to other folders of your app project. However, in this scenario their build action must be manually set to **MauiFont** in the **Properties** window.
 
-At build time, fonts are copied to your app package.
+At build time, fonts are copied to your app package. For information about disabling font packaging, see [Disable font packaging](~/troubleshooting.md#disable-font-packaging).
 
 > [!NOTE]
 > The `*` wildcard character indicates that all the files within the folder will be treated as being font files. In addition, if you want to include files from sub-folders too, then configure it using additional wildcard characters, for example, `Resources\Fonts\**\*`.

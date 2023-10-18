@@ -183,6 +183,8 @@ If you receive the error "Could not find a valid Xcode app bundle at '/Library/D
 sudo xcode-select --reset
 ```
 
+::: moniker range=">=net-maui-8.0"
+
 ## Diagnose issues in Blazor Hybrid apps
 
 <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> has built-in logging that can help you diagnose problems in your Blazor Hybrid app. There are two steps to enable this logging:
@@ -191,3 +193,47 @@ sudo xcode-select --reset
 1. Configure a logger to write the log output to where you can view it.
 
 For more information, see [Diagnosing issues in Blazor Hybrid apps](~/user-interface/controls/blazorwebview.md#diagnosing-issues).
+
+## Disable image packaging
+
+For troubleshooting purposes, image resource packaging can be disabled by setting the `$(EnableMauiImageProcessing)` build property to `false` in the first `<PropertyGroup>` node in your project file:
+
+```xml
+<EnableMauiImageProcessing>false</EnableMauiImageProcessing>
+```
+
+## Disable splash screen packaging
+
+For troubleshooting purposes, splash screen resource generation can be disabled by setting the `$(EnableSplashScreenProcessing)` build property to `false` in the first `<PropertyGroup>` node in your project file:
+
+```xml
+<EnableSplashScreenProcessing>false</EnableSplashScreenProcessing>
+```
+
+## Disable font packaging
+
+For troubleshooting purposes, font resource packaging can be disabled by setting the `$(EnableMauiFontProcessing)` build property to `false` in the first `<PropertyGroup>` node in your project file:
+
+```xml
+<EnableMauiFontProcessing>false</EnableMauiFontProcessing>
+```
+
+## Disable asset file packaging
+
+For troubleshooting purposes, asset file resource packaging can be disabled by setting the `$(EnableMauiAssetProcessing)` build property to `false` in the first `<PropertyGroup>` node in your project file:
+
+```xml
+<EnableMauiAssetProcessing>false</EnableMauiAssetProcessing>
+```
+
+## Generate a blank splash screen
+
+For troubleshooting purposes, a blank splash screen can be generated if you don't have a `<MauiSplashScreen>` item and you don't have a custom splash screen. This can be achieved by setting the `$(EnableBlankMauiSplashScreen)` build property to `true` in the first `<PropertyGroup>` node in your project file:
+
+```xml
+<EnableBlankMauiSplashScreen>true</EnableBlankMauiSplashScreen>
+```
+
+Generating a blank splash screen will override any custom splash screen and will cause app store rejection. However, it can be a useful approach in testing to ensure that your app UI is correct.
+
+::: moniker-end
