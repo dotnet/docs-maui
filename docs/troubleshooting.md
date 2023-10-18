@@ -234,6 +234,6 @@ For troubleshooting purposes, a blank splash screen can be generated if you don'
 <EnableBlankMauiSplashScreen>true</EnableBlankMauiSplashScreen>
 ```
 
-Generating a blank splash screen will override any custom splash screen and will cause an app store rejection. However, it can be a useful approach in testing to ensure that your app UI is correct.
+Generating a blank splash screen will override any custom splash screen and will cause app store rejection. However, it can be a useful approach in testing to ensure that your app UI is correct.
 
 ::: moniker-end
