@@ -236,4 +236,28 @@ For troubleshooting purposes, a blank splash screen can be generated if you don'
 
 Generating a blank splash screen will override any custom splash screen and will cause app store rejection. However, it can be a useful approach in testing to ensure that your app UI is correct.
 
+## Duplicate image filename errors
+
+You may encounter build errors about duplicate image filenames:
+
+> One or more duplicate file names were detected. All image output filenames must be unique.
+
+This can occur for `MauiIcon` and `MauiImage` items. For example, the following `MauiImage` items in an `<ItemGroup>` node in your project file will result in this error:
+
+```xml
+<MauiImage Include="Resources\Images\*" />
+<MauiImage Include="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
+```
+
+This occurs because from .NET 8, .NET MAUI checks to ensure that there are no duplicate image resource filenames.
+
+If you receive this build error it can be fixed by ensuring that your project file doesn't include duplicate images. To do this, change any `MauiIcon` or `MauiImage` that references a specific file to use the `Update` attribute instead of the `Include` attribute:
+
+```xml
+<MauiImage Include="Resources\Images\*" />
+<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
+```
+
+For information about MSBuild item element attributes, see [Item element (MSBuild): Attributes and elements](/visualstudio/msbuild/item-element-msbuild#attributes-and-elements).
+
 ::: moniker-end
