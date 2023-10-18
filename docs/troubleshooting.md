@@ -249,7 +249,7 @@ This can occur for `MauiIcon` and `MauiImage` items. For example, the following 
 <MauiImage Include="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
 ```
 
-This occurs because from .NET 8 .NET MAUI checks to ensure that there are no duplicate image resource filenames.
+This occurs because from .NET 8, .NET MAUI checks to ensure that there are no duplicate image resource filenames.
 
 If you receive this build error it can be fixed by ensuring that your project file doesn't include duplicate images. To do this, change any `MauiIcon` or `MauiImage` that references a specific file to use the `Update` attribute instead of the `Include` attribute:
 
