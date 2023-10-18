@@ -33,6 +33,7 @@ For information about what's new in .NET 8, see [What's new in .NET 8](/dotnet/c
 - The <xref:Microsoft.Maui.Controls.DragStartingEventArgs>, <xref:Microsoft.Maui.Controls.DragEventArgs>, <xref:Microsoft.Maui.Controls.DropEventArgs>, and <xref:Microsoft.Maui.Controls.DropCompletedEventArgs> objects that accompany drag and drop gesture events each gain a `PlatformArgs` property. This property provides access to the platform-specific arguments for a drag or drop event. For more information, see [Recognize a drag and drop gesture](~/fundamentals/gestures/drag-and-drop.md).
 - For troubleshooting purposes, resource generation can be disabled. For more information, see [Disable image packaging](~/troubleshooting.md#disable-image-packaging), [Disable splash screen packaging](~/troubleshooting.md#disable-splash-screen-packaging), [Disable font packaging](~/troubleshooting.md#disable-font-packaging), and [Disable asset file packaging](~/troubleshooting.md#disable-asset-file-packaging).
 - For troubleshooting purposes, a blank splash screen can be generated. For more information, see [Generate a blank splash screen](~/troubleshooting.md#generate-a-blank-splash-screen).
+- Resizeter checks for duplicate image filenames. For more information, see [Duplicate image filename errors](~/troubleshooting.md#duplicate-image-filename-errors).
 
 The following types or members have been deprecated:
 

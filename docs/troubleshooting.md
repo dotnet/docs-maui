@@ -238,22 +238,20 @@ Generating a blank splash screen will override any custom splash screen and will
 
 ## Duplicate image filename errors
 
-In .NET 8, you may encounter a build error about duplicate image filenames:
+In .NET 8, you may encounter build errors about duplicate image filenames:
 
-```text
-One or more duplicate file names were detected. All image output filenames must be unique.
-```
+> One or more duplicate file names were detected. All image output filenames must be unique.
 
-This can occur for `MauiIcon` and `MauiImage` items. For example, the following entries in an `<ItemGroup>` node in your project file will result in this error:
+This can occur for `MauiIcon` and `MauiImage` items. For example, the following `MauiImage` items in an `<ItemGroup>` node in your project file will result in this error:
 
 ```xml
 <MauiImage Include="Resources\Images\*" />
 <MauiImage Include="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
 ```
 
-This occurs because from .NET 8, .NET MAUI checks to ensure that there are no duplicate image resource filenames.
+This occurs because from .NET 8 .NET MAUI checks to ensure that there are no duplicate image resource filenames.
 
-If you receive this build error it can be fixed by ensuring that your project file doesn't include duplicate images, by changing a `MauiIcon` or `MauiImage` that references a specific image to use the `Update` attribute instead of the `Include` attribute:
+If you receive this build error it can be fixed by ensuring that your project file doesn't include duplicate images. To do this, change any `MauiIcon` or `MauiImage` that references a specific file to use the `Update` attribute instead of the `Include` attribute:
 
 ```xml
 <MauiImage Include="Resources\Images\*" />
