@@ -246,7 +246,7 @@ The following example shows how to hide the soft input keyboard on an <xref:Micr
 
 ```csharp
 if (editor.IsSoftInputShowing())
-    await editor.HideSoftInputAsync(CancellationToken.None);
+    await editor.HideSoftInputAsync(System.Threading.CancellationToken.None);
 ```
 
 ::: moniker-end

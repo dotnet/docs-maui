@@ -200,7 +200,7 @@ The following example shows how to hide the soft input keyboard on a <xref:Micro
 
 ```csharp
 if (searchBar.IsSoftInputShowing())
-   await searchBar.HideSoftInputAsync(CancellationToken.None);
+   await searchBar.HideSoftInputAsync(System.Threading.CancellationToken.None);
 ```
 
 ::: moniker-end
