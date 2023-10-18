@@ -1,7 +1,7 @@
 ---
 title: "Entry"
 description: "The .NET MAUI Entry allows you to enter and edit a single line of text."
-ms.date: 10/13/2023
+ms.date: 10/19/2023
 ---
 
 # Entry
@@ -53,7 +53,7 @@ In addition, <xref:Microsoft.Maui.Controls.Entry> defines a `Completed` event, w
 - `CharacterSpacing`, of type `double`, sets the spacing between characters in the entered text.
 - `IsReadOnly`, of type `bool`, defines whether the user should be prevented from modifying text. The default value of this property is `false`.
 - `IsSpellCheckEnabled`, of type `bool`, controls whether spell checking is enabled.
-- `Keyboard`, of type `Keyboard`, specifies the virtual keyboard that's displayed when entering text.
+- `Keyboard`, of type `Keyboard`, specifies the soft input keyboard that's displayed when entering text.
 - `MaxLength`, of type `int`, defines the maximum input length.
 - `Placeholder`, of type `string`, defines the text that's displayed when the control is empty.
 - `PlaceholderColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the color of the placeholder text.
@@ -74,7 +74,7 @@ In addition, <xref:Microsoft.Maui.Controls.Entry> defines a `Completed` event, w
 - `IsReadOnly`, of type `bool`, defines whether the user should be prevented from modifying text. The default value of this property is `false`.
 - `IsSpellCheckEnabled`, of type `bool`, controls whether spell checking is enabled.
 - `IsTextPredictionEnabled`, of type `bool`, controls whether text prediction and automatic text correction is enabled.
-- `Keyboard`, of type `Keyboard`, specifies the virtual keyboard that's displayed when entering text.
+- `Keyboard`, of type `Keyboard`, specifies the soft input keyboard that's displayed when entering text.
 - `MaxLength`, of type `int`, defines the maximum input length.
 - `Placeholder`, of type `string`, defines the text that's displayed when the control is empty.
 - `PlaceholderColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the color of the placeholder text.
@@ -235,7 +235,7 @@ The following screenshot shows an <xref:Microsoft.Maui.Controls.Entry> whose inp
 
 ## Customize the keyboard
 
-The virtual keyboard that's presented when users interact with an <xref:Microsoft.Maui.Controls.Entry> can be set programmatically via the `Keyboard` property, to one of the following properties from the `Keyboard` class:
+The soft input keyboard that's presented when users interact with an <xref:Microsoft.Maui.Controls.Entry> can be set programmatically via the `Keyboard` property, to one of the following properties from the `Keyboard` class:
 
 - `Chat` – used for texting and places where emoji are useful.
 - `Default` – the default keyboard.
@@ -286,7 +286,7 @@ entry.Keyboard = Keyboard.Create(KeyboardFlags.Suggestions | KeyboardFlags.Capit
 
 ### Customize the return key
 
-The appearance of the return key on the virtual keyboard, which is displayed when an <xref:Microsoft.Maui.Controls.Entry> has focus, can be customized by setting the `ReturnType` property to a value of the `ReturnType` enumeration:
+The appearance of the return key on the soft input keyboard, which is displayed when an <xref:Microsoft.Maui.Controls.Entry> has focus, can be customized by setting the `ReturnType` property to a value of the `ReturnType` enumeration:
 
 - `Default` – indicates that no specific return key is required and that the platform default will be used.
 - `Done` – indicates a "Done" return key.
@@ -305,6 +305,19 @@ The following XAML example shows how to set the return key:
 > The exact appearance of the return key is dependent upon the platform. On iOS, the return key is a text-based button. However, on Android and Windows, the return key is a icon-based button.
 
 When the return key is pressed, the `Completed` event fires and any `ICommand` specified by the `ReturnCommand` property is executed. In addition, any `object` specified by the `ReturnCommandParameter` property will be passed to the `ICommand` as a parameter. For more information about commands, see [Commanding](~/fundamentals/data-binding/commanding.md).
+
+::: moniker range=">=net-maui-8.0"
+
+[!INCLUDE [Hide and show the soft input keyboard](includes/soft-input-extensions.md)]
+
+The following example shows how to hide the soft input keyboard on an <xref:Microsoft.Maui.Controls.Entry> named `entry`, if it's currently showing:
+
+```csharp
+if (entry.IsSoftInputShowing())
+    await entry.HideSoftInputAsync(System.Threading.CancellationToken.None);
+```
+
+::: moniker-end
 
 ## Enable and disable spell checking
 
