@@ -53,6 +53,7 @@ The following types or members have been removed:
 
 The following behavior has changed from the previous release:
 
+- Use of the <xref:Microsoft.Maui.Controls.Maps.Map> control requires the following `xmlns` namespace declaration: `xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"`.
 - Image caching is disabled on Android when loading an image from a stream with <xref:Microsoft.Maui.Controls.ImageSource.FromStream%2A>. This is due to the lack of data from which to create a reasonable cache key.
 
 <!-- ## Performance
