@@ -36,6 +36,7 @@ For information about what's new in .NET 8, see [What's new in .NET 8](/dotnet/c
 - Resizeter checks for duplicate image filenames. For more information, see [Duplicate image filename errors](~/troubleshooting.md#duplicate-image-filename-errors).
 - Controls that support text input gain extension methods that support hiding and showing the soft input keyboard. For more information, see [Hide and show the soft input keyboard](~/user-interface/controls/entry.md#hide-and-show-the-soft-input-keyboard).
 - The `x:ClassModifier` attribute can be specified on XAML classes, to control the access level for a generated class in an assembly. For more information, see [Class modifiers](~/xaml/class-modifiers.md).
+- The <xref:Microsoft.Maui.ApplicationModel.Permissions> class gains the `NearbyWifiDevices` permission, which is an Android 13 permission for accessing nearby WiFi devices.
 
 The following types or members have been deprecated:
 
