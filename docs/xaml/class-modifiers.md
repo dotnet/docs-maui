@@ -15,6 +15,8 @@ Valid values of the `x:ClassModifier` attribute are:
 - `Internal` – specifies that the generated class is accessible only within types in the same assembly.
 - `NotPublic` – identical to `Internal`.
 
+The value of the `x:ClassModifier` attribute must align with the access level of the type in its code-behind file.
+
 By default, if the value of the attribute isn't set, the generated class will be `public`.
 
 > [!NOTE]

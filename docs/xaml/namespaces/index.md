@@ -47,7 +47,7 @@ For more information about the `x:DataType` attribute, see [Compiled bindings](~
 |--- |--- |
 |`x:Arguments`|Specifies constructor arguments for a non-default constructor, or for a factory method object declaration.|
 |`x:Class`|Specifies the namespace and class name for a class defined in XAML. The class name must match the class name of the code-behind file. Note that this construct can only appear in the root element of a XAML file.|
-|`x:ClassModifier`|Specifies the access level for the class in the assembly.|
+|`x:ClassModifier`|Specifies the access level for the generated class in the assembly.|
 |`x:DataType`|Specifies the type of the object that the XAML element, and it's children, will bind to.|
 |`x:FactoryMethod`|Specifies a factory method that can be used to initialize an object.|
 |`x:FieldModifier`|Specifies the access level for generated fields for named XAML elements.|
