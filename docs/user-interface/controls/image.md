@@ -217,7 +217,7 @@ Image image = new Image
 ::: moniker range=">=net-maui-8.0"
 
 > [!IMPORTANT]
-> Image caching is disabled on Android when loading an image from a stream with the <xref:Microsoft.Maui.Controls.ImageSource.FromStream%2A?displayProperty=fullName> method. This is due to the lack of data from which to create a reasonable cache key.
+> Image caching is disabled on Android when loading an image from a stream with the [`ImageSource.FromStream`](xref:Microsoft.Maui.Controls.ImageSource.FromStream%2A) method. This is due to the lack of data from which to create a reasonable cache key.
 
 ::: moniker-end
 
