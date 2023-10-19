@@ -81,3 +81,6 @@ However, this is not recommended. Depending on the setting of the `Format` prope
 <!--
 > [!TIP]
 > On Android, the <xref:Microsoft.Maui.Controls.DatePicker> dialog can be customized by overriding the `CreateDatePickerDialog` method in a custom renderer. This allows, for example, additional buttons to be added to the dialog. -->
+
+## Persian DatePicker
+For information about Persian date picker, see [PersianDatePicker](https://github.com/RezaShaban/PersianUIControlsMaui).
