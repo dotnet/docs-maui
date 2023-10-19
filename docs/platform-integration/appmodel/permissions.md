@@ -1,7 +1,7 @@
 ---
 title: "Permissions"
 description: "Learn how to use the .NET MAUI Permissions class, to check and request permissions. This class is in the Microsoft.Maui.ApplicationModel namespace."
-ms.date: 02/02/2023
+ms.date: 10/19/2023
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel"]
 ---
 
@@ -49,6 +49,7 @@ The following table uses ✔️ to indicate that the permission is supported and
 | Permission                                                                              | Android | iOS | Windows | tvOS |
 |------------------------------------------------------------------------------------------|:-------:|:---:|:-------:|:----:|
 | [Battery](xref:Microsoft.Maui.ApplicationModel.Permissions.Battery)                     | ✔️     | ❌  | ❌     | ❌    |
+| Bluetooth                                                                               | ✔️     | ❌  | ❌     | ❌    |
 | [CalendarRead](xref:Microsoft.Maui.ApplicationModel.Permissions.CalendarRead)           | ✔️     | ✔️  | ❌      | ❌    |
 | [CalendarWrite](xref:Microsoft.Maui.ApplicationModel.Permissions.CalendarWrite)         | ✔️     | ✔️  | ❌      | ❌    |
 | [Camera](xref:Microsoft.Maui.ApplicationModel.Permissions.Camera)                       | ✔️     | ✔️  | ❌      | ❌    |
