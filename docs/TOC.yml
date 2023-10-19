@@ -115,6 +115,8 @@
               href: xaml/fundamentals/mvvm.md
         - name: Compilation
           href: xaml/xamlc.md
+        - name: Class modifiers
+          href: xaml/class-modifiers.md
         - name: Field modifiers
           href: xaml/field-modifiers.md
         - name: Generics
