@@ -51,6 +51,10 @@ The following types or members have been removed:
 - The `PhoneDialer.Current` property has been removed. Use `PhoneDialer.Default` instead.
 - `OpenGLView` has been removed.
 
+The following behavior has changed from the previous release:
+
+- Image caching is disabled on Android when loading an image from a stream with <xref:Microsoft.Maui.Controls.ImageSource.FromStream%2A>. This is due to the lack of data from which to create a reasonable cache key.
+
 <!-- ## Performance
 
 Performance is a key focus of .NET MAUI in .NET 7:
