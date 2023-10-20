@@ -106,6 +106,8 @@ The following screenshot shows the resulting <xref:Microsoft.Maui.Controls.Edito
 
 :::image type="content" source="media/editor/editor.png" alt-text="Screenshot of a basic Editor on Android.":::
 
+[!INCLUDE [Keyboard autoscroll manager](includes/keyboardautomanagerscroll.md)]
+
 Entered text can be accessed by reading the `Text` property, and the `TextChanged` and `Completed` events signal that the text has changed or been completed.
 
 The `TextChanged` event is raised when the text in the <xref:Microsoft.Maui.Controls.Editor> changes, and the `TextChangedEventArgs` provide the text before and after the change via the `OldTextValue` and `NewTextValue` properties:
