@@ -102,6 +102,8 @@ The equivalent C# code is:
 SearchBar searchBar = new SearchBar { Placeholder = "Search items..." };
 ```
 
+[!INCLUDE [Keyboard autoscroll manager](includes/KeyboardAutoManagerScroll.md)]
+
 ## Perform a search with event handlers
 
 A search can be executed using the <xref:Microsoft.Maui.Controls.SearchBar> control by attaching an event handler to one of the following events:
