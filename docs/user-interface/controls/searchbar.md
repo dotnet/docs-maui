@@ -102,7 +102,7 @@ The equivalent C# code is:
 SearchBar searchBar = new SearchBar { Placeholder = "Search items..." };
 ```
 
-[!INCLUDE [Keyboard autoscroll manager](includes/KeyboardAutoManagerScroll.md)]
+[!INCLUDE [Keyboard autoscroll manager](includes/keyboardautomanagerscroll.md)]
 
 ## Perform a search with event handlers
 
