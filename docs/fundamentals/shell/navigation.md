@@ -352,7 +352,7 @@ async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEvent
 
 This example retrieves the currently selected elephant in the <xref:Microsoft.Maui.Controls.CollectionView>, and navigates to the `elephantdetails` route, passing `elephantName` as a query parameter.
 
-Object-based navigation data can be passed with a `GoToAsync` overload that specifies an `IDictionary<string, object>` argument:
+Multiple use object-based navigation data can be passed with a `GoToAsync` overload that specifies an `IDictionary<string, object>` argument:
 
 ```csharp
 async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -368,17 +368,17 @@ async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEvent
 
 This example retrieves the currently selected bear in the <xref:Microsoft.Maui.Controls.CollectionView>, as an `Animal`. The `Animal` object is added to a `Dictionary` with the key `Bear`. Then, navigation to the `beardetails` route is performed, with the `Dictionary` being passed as a navigation parameter.
 
-Any data that's passed as an `IDictionary<string, object>` argument is retained in memory for the life of the page, and isn't released until the page is removed from the navigation stack. This can be problematic, as shown in the following scenario:
+Any data that's passed as an `IDictionary<string, object>` argument is retained in memory for the lifetime of the page, and isn't released until the page is removed from the navigation stack. This can be problematic, as shown in the following scenario:
 
 1. `Page1` navigates to `Page2` using the `GoToAsync` method, passing in an object called `MyData`. `Page2` then receives `MyData` as a query parameter.
 1. `Page2` navigates to `Page3` using the `GoToAsync` method, without passing any data.
 1. `Page3` navigates backwards with the `GoToAsync` method. `Page2` then receives `MyData` again as a query parameter.
 
-If this scenario occurs and isn't desired, you should clear the `IDictionary<string, object>` argument with the `Clear` method after it's first been received by a page.
+While this is desirable in many scenarios, if it isn't desired you should clear the `IDictionary<string, object>` argument with the `Clear` method after it's first been received by a page.
 
 ::: moniker range=">=net-maui-8.0"
 
-Alternatively, you can use the `GoToAsync` overload that enables you to pass a query parameter as a `ShellNavigationQueryParameters` object. A `ShellNavigationQueryParameters` object is intended for single use query parameters that are cleared after navigation has occurred. The following example shows navigating while passing data as a `ShellNavigationQueryParameters` object:
+Alternatively, you can use the `GoToAsync` overload that enables you to pass single use navigation data as a `ShellNavigationQueryParameters` object. A `ShellNavigationQueryParameters` object is intended for navigation data that's cleared after navigation has occurred. The following example shows navigating while passing data as a `ShellNavigationQueryParameters` object:
 
 ```csharp
 async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
