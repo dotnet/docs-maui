@@ -1,7 +1,7 @@
 ---
 title: "WebView"
 description: "This article explains how to use the .NET MAUI WebView to display remote web pages, local HTML files, and HTML strings."
-ms.date: 10/11/2022
+ms.date: 10/23/2023
 zone_pivot_groups: devices-deployment
 ---
 
@@ -408,30 +408,26 @@ using Microsoft.Maui.Handlers;
 
 ## Inspect a WebView on Mac Catalyst
 
-To use Safari developer tools to inspect the contents of a `WebView` on Mac Catalyst requires you to add the `com.apple.security.get-task-allow` key, of type `Boolean`, to the entitlements file of your app for its debug build. For more information about entitlements, see [Entitlements](~/ios/entitlements.md).
+To use Safari developer tools to inspect the content of a <xref:Microsoft.Maui.Controls.WebView> on Mac Catalyst, add the following code to your app:
 
-To add an entitlements file to your .NET MAUI app project, add a new XML file named *Entitlements.Debug.plist* to the *Platforms\\MacCatalyst* folder of your app project. Then add the following XML to the file:
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>com.apple.security.get-task-allow</key>
-    <true/>
-</dict>
-</plist>
+```csharp
+#if MACCATALYST
+        Microsoft.Maui.Handlers.WebViewHandler.Mapper.AppendToMapping("Inspect", (handler, view) =>
+        {
+            if (OperatingSystem.IsMacCatalystVersionAtLeast(16, 4))
+                handler.PlatformView.Inspectable = true;
+        });
+#endif
 ```
 
-To configure your app to consume this entitlements file, add the following `<PropertyGroup>` node to your app's project file as a child of the `<Project>` node:
+This code customizes the property mapper for the `WebViewHandler` on Mac Catalyst, to make <xref:Microsoft.Maui.Controls.WebView> content inspectable by Safari developer tools. For more information about handlers, see [Handlers](~/user-interface/handlers/index.md).
 
-```xml
-<PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst' and '$(Configuration)' == 'Debug'">
-    <CodeSignEntitlements>Platforms/MacCatalyst/Entitlements.Debug.plist</CodeSignEntitlements>
-</PropertyGroup>
-```
+To use Safari developer tools with a Mac Catalyst app:
 
-This configuration ensures that the entitlements file is only processed for debug builds on Mac Catalyst.
+1. Open Safari on your Mac.
+1. In Safari, select the **Safari > Settings > Advanced > Show Develop menu in menu bar** checkbox.
+1. Run your .NET MAUI Mac Catalyst app.
+1. In Safari, select the **Develop > {Device name}** menu, where the `{Device name}` placeholder is your device name such as `Macbook Pro`. Then select the entry under your app name, which will also highlight your running app. This will cause the **Web inspector** window to appear.
 
 :::zone-end
 
