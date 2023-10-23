@@ -415,7 +415,7 @@ To use Safari developer tools to inspect the content of a <xref:Microsoft.Maui.C
         Microsoft.Maui.Handlers.WebViewHandler.Mapper.AppendToMapping("Inspect", (handler, view) =>
         {
             if (OperatingSystem.IsMacCatalystVersionAtLeast(16, 4))
-	             handler.PlatformView.Inspectable = true;
+                handler.PlatformView.Inspectable = true;
         });
 #endif
 ```
