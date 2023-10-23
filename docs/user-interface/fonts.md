@@ -99,6 +99,39 @@ Label label2 = new Label
 };
 ```
 
+::: moniker range=">=net-maui-8.0"
+
+On Android, the following system fonts can be consumed by setting them as the value of the `FontFamily` property:
+
+- monospace
+- serif
+- sans-serif (or sansserif)
+- sans-serif-black (or sansserif-black)
+- sans-serif-condensed (or sansserif-condensed)
+- sans-serif-condensed-light (or sansserif-condensed-light)
+- sans-serif-light (or sansserif-light)
+- sans-serif-medium (or sansserif-medium)
+
+For example, the monospace system font can be consumed with the following XAML:
+
+```xaml
+<Label Text="Hello .NET MAUI"
+       FontFamily="monospace" />
+```
+
+The equivalent C# code is:
+
+```csharp
+// Use font name
+Label label1 = new Label
+{
+    Text = "Hello .NET MAUI!",
+    FontFamily = "monospace"
+};
+```
+
+::: moniker-end
+
 ## Set font attributes
 
 Controls that display text can set the `FontAttributes` property to specify font attributes:
