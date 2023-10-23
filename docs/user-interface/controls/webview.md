@@ -478,7 +478,7 @@ To use Safari developer tools to inspect the content of a <xref:Microsoft.Maui.C
         Microsoft.Maui.Handlers.WebViewHandler.Mapper.AppendToMapping("Inspect", (handler, view) =>
         {
             if (OperatingSystem.IsMacCatalystVersionAtLeast(16, 4))
-	             handler.PlatformView.Inspectable = true;
+                handler.PlatformView.Inspectable = true;
         });
 #endif
 ```
@@ -491,8 +491,6 @@ To use Safari developer tools with a Mac Catalyst app:
 1. In Safari, select the **Safari > Settings > Advanced > Show Develop menu in menu bar** checkbox.
 1. Run your .NET MAUI Mac Catalyst app.
 1. In Safari, select the **Develop > {Device name}** menu, where the `{Device name}` placeholder is your device name such as `Macbook Pro`. Then select the entry under your app name, which will also highlight your running app. This will cause the **Web inspector** window to appear.
-
-Safari developer tools provide a variety of features for working with apps, including which assets the page requested, how long assets took to load, and the content of loaded assets.
 
 :::zone-end
 
