@@ -128,6 +128,7 @@ Label label1 = new Label
     Text = "Hello .NET MAUI!",
     FontFamily = "monospace"
 };
+```
 
 ::: moniker-end
 
