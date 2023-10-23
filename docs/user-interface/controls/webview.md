@@ -473,6 +473,9 @@ For more information about configuring a <xref:Microsoft.Maui.Controls.WebView> 
 
 To use Safari developer tools to inspect the contents of a `WebView` on Mac Catalyst requires you to add the `com.apple.security.get-task-allow` key, of type `Boolean`, to the entitlements file of your app for its debug build. For more information about entitlements, see [Entitlements](~/ios/entitlements.md).
 
+> [!NOTE]
+> A .NET MAUI app created using .NET 8 will automatically contain the `com.apple.security.get-task-allow` entitlement for its debug build on Mac Catalyst.
+
 To add an entitlements file to your .NET MAUI app project, add a new XML file named *Entitlements.Debug.plist* to the *Platforms\\MacCatalyst* folder of your app project. Then add the following XML to the file:
 
 ```xml
