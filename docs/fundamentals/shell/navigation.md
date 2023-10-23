@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI Shell navigation"
 description: "Learn how .NET MAUI Shell apps can utilize a URI-based navigation experience that permits navigation to any page in the app, without having to follow a set navigation hierarchy."
-ms.date: 04/07/2022
+ms.date: 10/23/2023
 ---
 
 # .NET MAUI Shell navigation
@@ -368,6 +368,34 @@ async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEvent
 
 This example retrieves the currently selected bear in the <xref:Microsoft.Maui.Controls.CollectionView>, as an `Animal`. The `Animal` object is added to a `Dictionary` with the key `Bear`. Then, navigation to the `beardetails` route is performed, with the `Dictionary` being passed as a navigation parameter.
 
+Any data that's passed as an `IDictionary<string, object>` argument is retained in memory for the life of the page, and isn't released until the page is removed from the navigation stack. This can be problematic, as shown in the following scenario:
+
+1. `Page1` navigates to `Page2` using the `GoToAsync` method, passing in an object called `MyData`. `Page2` then receives `MyData` as a query parameter.
+1. `Page2` navigates to `Page3` using the `GoToAsync` method, without passing any data.
+1. `Page3` navigates backwards with the `GoToAsync` method. `Page2` then receives `MyData` again as a query parameter.
+
+If this scenario occurs and isn't desired, you should clear the `IDictionary<string, object>` argument with the `Clear` method after it's first been received by a page.
+
+::: moniker range=">=net-maui-8.0"
+
+Alternatively, you can use the `GoToAsync` overload that enables you to pass a query parameter as a `ShellNavigationQueryParameters` object. A `ShellNavigationQueryParameters` object is intended for single use query parameters that are cleared after navigation has occurred. The following example shows navigating while passing data as a `ShellNavigationQueryParameters` object:
+
+```csharp
+async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
+{
+    Animal animal = e.CurrentSelection.FirstOrDefault() as Animal;
+    var navigationParameter = new ShellNavigationQueryParameters
+    {
+        { "Bear", animal }
+    };
+    await Shell.Current.GoToAsync($"beardetails", navigationParameter);
+}
+```
+
+This example retrieves the currently selected bear in the <xref:Microsoft.Maui.Controls.CollectionView>, as an `Animal` that's added to the `ShellNavigationQueryParameters` object. Then, navigation to the `beardetails` route is performed, with the `ShellNavigationQueryParameters` object being passed as a navigation parameter. After navigation has occurred the data in the `ShellNavigationQueryParameters` object is cleared.
+
+::: moniker-end
+
 There are two approaches to receiving navigation data:
 
 1. The class that represents the page being navigated to, or the class for the page's `BindingContext`, can be decorated with a `QueryPropertyAttribute` for each query parameter. For more information, see [Process navigation data using query property attributes](#process-navigation-data-using-query-property-attributes).
@@ -375,7 +403,17 @@ There are two approaches to receiving navigation data:
 
 ### Process navigation data using query property attributes
 
+::: moniker range="=net-maui-7.0"
+
 Navigation data can be received by decorating the receiving class with a `QueryPropertyAttribute` for each string-based query parameter and object-based navigation parameter:
+
+::: moniker-end
+
+::: moniker range=">=net-maui-8.0"
+
+Navigation data can be received by decorating the receiving class with a `QueryPropertyAttribute` for each string-based query parameter, object-based navigation parameter, or `ShellNavigationQueryParameters` object:
+
+::: moniker-end
 
 ```csharp
 [QueryProperty(nameof(Bear), "Bear")]
