@@ -58,7 +58,6 @@ The following behavior has changed from the previous release:
 - Use of the <xref:Microsoft.Maui.Controls.Maps.Map> control from XAML now requires the following `xmlns` namespace declaration: `xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"`.
 - Image caching is disabled on Android when loading an image from a stream with the [`ImageSource.FromStream`](xref:Microsoft.Maui.Controls.ImageSource.FromStream%2A) method. This is due to the lack of data from which to create a reasonable cache key.
 - On iOS, pages automatically scroll when the soft input keyboard would cover a text entry field, so that the field is above the soft input keyboard. The `KeyboardAutoManagerScroll.Disconnect` method, in the `Microsoft.Maui.Platform` namespace, can be called to disable this default behavior. The `KeyboardAutoManagerScroll.Connect` method can be called to re-enable the behavior after it's been disabled.
-- The project templates include the `com.apple.security.get-task-allow` entitlement for debug builds on Mac Catalyst, so that you can use Safari developer tools to inspect the contents of a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> and a <xref:Microsoft.Maui.Controls.WebView> on Mac Catalyst.
 
 <!-- ## Performance
 
