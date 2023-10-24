@@ -88,6 +88,9 @@ public class MainActivity : AppCompatActivity
 }
 ```
 
+> [!NOTE]
+> The call to the <xref:Microsoft.Maui.Embedding.AppHostBuilderExtensions.UseMauiEmbedding%2A> method can specify your own <xref:Microsoft.Maui.Controls.Application> derived class, such as `MyApp`. For example, `builder.UseMauiEmbedding<MyApp>();`.
+
 ### iOS and Mac Catalyst
 
 On iOS and Mac Catalyst, the `FinishedLaunching` override in the `AppDelegate` class is typically the place to perform app startup related tasks. It's called after the app has launched, and is usually overridden to configure the main window and view controller. The following code example shows .NET MAUI being initialized in the `AppDelegate` class:
@@ -127,6 +130,9 @@ public class AppDelegate : UIApplicationDelegate
 }
 ```
 
+> [!NOTE]
+> The call to the <xref:Microsoft.Maui.Embedding.AppHostBuilderExtensions.UseMauiEmbedding%2A> method can specify your own <xref:Microsoft.Maui.Controls.Application> derived class, such as `MyApp`. For example, `builder.UseMauiEmbedding<MyApp>();`.
+
 ### Windows
 
 On Windows apps built using WinUI, .NET MAUI can typically be initialized in the native `App` class, `Window` class, or a <xref:Microsoft.Maui.Controls.Page> class. The following code example shows .NET MAUI being initialized in a <xref:Microsoft.Maui.Controls.Page> class:
@@ -154,6 +160,9 @@ public sealed partial class MainPage : Page
     }
 }
 ```
+
+> [!NOTE]
+> The call to the <xref:Microsoft.Maui.Embedding.AppHostBuilderExtensions.UseMauiEmbedding%2A> method can specify your own <xref:Microsoft.Maui.Controls.Application> derived class, such as `MyApp`. For example, `builder.UseMauiEmbedding<MyApp>();`.
 
 ## Consume .NET MAUI controls
 
