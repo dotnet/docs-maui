@@ -1,7 +1,7 @@
 ---
 title: What's new in .NET MAUI for .NET 8
 description: Learn about the new features introduced in .NET MAUI for .NET 8.
-ms.date: 10/10/2023
+ms.date: 10/24/2023
 ---
 
 # What's new in .NET MAUI for .NET 8
@@ -40,6 +40,7 @@ For information about what's new in .NET 8, see [What's new in .NET 8](/dotnet/c
 - The <xref:Microsoft.Maui.ApplicationModel.Permissions> class gains the `NearbyWifiDevices` permission, which is an Android 13 permission for accessing nearby WiFi devices. For more information, see [Permissions](~/platform-integration/appmodel/permissions.md).
 - Several system fonts can be easily consumed in Android apps. For more information, see [Consume fonts](~/user-interface/fonts.md#consume-fonts).
 - Shell navigation gains a `GoToAsync` overload that enables you to pass single use navigation data, that's cleared after navigation has occurred, as a `ShellNavigationQueryParameters` object. For more information, see [Pass data](~/fundamentals/shell/navigation.md#pass-data).
+- Window management can be decoupled from the `App` class. For more information, see [Decouple window management from the App class](~/fundamentals/windows.md#decouple-window-management-from-the-app-class).
 
 The following types or members have been deprecated:
 
