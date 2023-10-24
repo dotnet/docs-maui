@@ -382,7 +382,7 @@ While this is desirable in many scenarios, if it isn't desired you should clear 
 
 ### Pass single use object-based navigation data
 
-Single use object-based navigation data can be passed with a `GoToAsync` overload that specifies a `ShellNavigationQueryParameters` argument. A `ShellNavigationQueryParameters` object is intended for single use navigation data that's cleared after navigation has occurred. The following example shows navigating while passing data as a `ShellNavigationQueryParameters` object:
+Single use object-based navigation data can be passed with a `GoToAsync` overload that specifies a `ShellNavigationQueryParameters` argument. A `ShellNavigationQueryParameters` object is intended for single use navigation data that's cleared after navigation has occurred. The following example shows navigating while passing single use data:
 
 ```csharp
 async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
