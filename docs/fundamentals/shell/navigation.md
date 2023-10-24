@@ -352,6 +352,8 @@ async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEvent
 
 This example retrieves the currently selected elephant in the <xref:Microsoft.Maui.Controls.CollectionView>, and navigates to the `elephantdetails` route, passing `elephantName` as a query parameter.
 
+### Pass multiple use object-based navigation data
+
 Multiple use object-based navigation data can be passed with a `GoToAsync` overload that specifies an `IDictionary<string, object>` argument:
 
 ```csharp
@@ -378,7 +380,9 @@ While this is desirable in many scenarios, if it isn't desired you should clear 
 
 ::: moniker range=">=net-maui-8.0"
 
-Alternatively, you can use the `GoToAsync` overload that enables you to pass single use navigation data as a `ShellNavigationQueryParameters` object. A `ShellNavigationQueryParameters` object is intended for navigation data that's cleared after navigation has occurred. The following example shows navigating while passing data as a `ShellNavigationQueryParameters` object:
+### Pass single use object-based navigation data
+
+Single use object-based navigation data can be passed with a `GoToAsync` overload that specifies a `ShellNavigationQueryParameters` argument. A `ShellNavigationQueryParameters` object is intended for single use navigation data that's cleared after navigation has occurred. The following example shows navigating while passing data as a `ShellNavigationQueryParameters` object:
 
 ```csharp
 async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -395,6 +399,8 @@ async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEvent
 This example retrieves the currently selected bear in the <xref:Microsoft.Maui.Controls.CollectionView>, as an `Animal` that's added to the `ShellNavigationQueryParameters` object. Then, navigation to the `beardetails` route is performed, with the `ShellNavigationQueryParameters` object being passed as a navigation parameter. After navigation has occurred the data in the `ShellNavigationQueryParameters` object is cleared.
 
 ::: moniker-end
+
+## Receive navigation data
 
 There are two approaches to receiving navigation data:
 
