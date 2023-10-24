@@ -282,6 +282,6 @@ public partial class App : Application
 }
 ```
 
-Provided that the `IWindowCreator` interface and its implementing type has been registered with the service container, and that the <xref:Microsoft.Maui.Controls.Application.MainPage> property of the <xref:Microsoft.Maui.Controls.Application> class isn't set, your registered type will be used to create the <xref:Microsoft.Maui.Controls.Window>.
+Provided that the `IWindowCreator` interface and its implementing type have been registered with the app's service container, and that the <xref:Microsoft.Maui.Controls.Application.MainPage> property of the <xref:Microsoft.Maui.Controls.Application> class isn't set, your registered type will be used to create the <xref:Microsoft.Maui.Controls.Window>.
 
 ::: moniker-end
