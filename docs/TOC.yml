@@ -474,7 +474,7 @@
             - name: Display menu items
               href: user-interface/menuitem.md
             - name: Keyboard accelerators
-              href: user-interface/keyboard-accelerators
+              href: user-interface/keyboard-accelerators.md
         - name: Shadows
           href: user-interface/shadow.md
         - name: Styles
