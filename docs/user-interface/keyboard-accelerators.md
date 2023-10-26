@@ -44,10 +44,10 @@ The `KeyboardAcceleratorModifiers` enumeration defines the following members tha
 
 The following table outlines the keyboard accelerator formats .NET MAUI supports:
 
-| Platform | Format |
-| -------- | ------ |
-| Mac Catalyst | - Keyboard accelerators without a modifier, with a single key. For example, using the F1 to invoke the action associated with a menu item. <br> - Keyboard accelerators with one or more modifiers, with a single key. For example, using CTRL+SHIFT+F or CTRL+F to invoke the action associated with a menu item. |
-| Windows | - Keyboard accelerators with and without a modifier, with a single key. For example, using the F1 to invoke the action associated with a menu item. <br> - Keyboard accelerators with one or more modifiers, with a single key. For example, using CTRL+SHIFT+F or CTRL+F to invoke the action associated with a menu item. |
+| Platform | Single key | Multi-key |
+| -------- | ---------- | --------- |
+| Mac Catalyst | Keyboard accelerators without a modifier, with a single key. For example, using the F1 to invoke the action associated with a menu item. | Keyboard accelerators with one or more modifiers, with a single key. For example, using CTRL+SHIFT+F or CTRL+F to invoke the action associated with a menu item. |
+| Windows | Keyboard accelerators with and without a modifier, with a single key. For example, using the F1 to invoke the action associated with a menu item. | Keyboard accelerators with one or more modifiers, with a single key. For example, using CTRL+SHIFT+F or CTRL+F to invoke the action associated with a menu item. |
 
 ## Create a keyboard accelerator
 
