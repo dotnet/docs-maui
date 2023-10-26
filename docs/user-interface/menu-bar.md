@@ -70,7 +70,16 @@ This example defines three top-level menus. Each top-level menu has menu items, 
 
 :::image type="content" source="media/menubar/menubar-net7.png" alt-text="Screenshot of menu bar in .NET 7.":::
 
+> [!NOTE]
+> On Mac Catalyst, menu items are added to the system menu bar.
+
 In this example, each `MenuFlyoutItem` defines a menu item that executes an `ICommand` when selected.
+
+::: moniker range=">=net-maui-8.0"
+
+Keyboard accelerators can be added to menu items in a menu bar, so that a menu item can be invoked through a keyboard shortcut. For more information, see [Keyboard accelerators](~/user-interface/keyboard-accelerators.md).
+
+::: moniker-end
 
 ## Display icons on menu items
 
