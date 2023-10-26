@@ -12,7 +12,7 @@ Keyboard accelerators are keyboard shortcuts that improve the usability and acce
 A keyboard accelerator is composed of two components:
 
 - Modifiers, which include Shift, Ctrl, and Alt.
-- Keys, which include all alphanumeric keys.
+- Keys, which include alphanumeric keys, and special keys.
 
 In .NET MAUI, keyboard accelerators are associated with commands exposed in menus, and should be specified with the menu item. Specifically, .NET MAUI keyboard accelerators can be attached to menu items in the menu bar on Mac Catalyst and Windows, and menu items in context menus on Windows. For more information about menu bars, see [Display a menu bar in a .NET MAUI desktop app](menu-bar.md). For more information about context menus, see [Display a context menu in a .NET MAUI desktop app](context-menu.md).
 
@@ -78,7 +78,7 @@ cutMenuFlyoutItem.KeyboardAccelerators.Add(new KeyboardAccelerator
 When a keyboard accelerator modifier and key is pressed, the action associated with the <xref:Microsoft.Maui.Controls.MenuFlyoutItem> is invoked.
 
 > [!IMPORTANT]
-> While multiple `KeyboardAccelerator` objects can be added to the `MenuFlyoutItem.KeyboardAccelerators` collection, only the first `KeyboardAccelerator` in the collection will have its shortcut displayed on the <xref:Microsoft.Maui.Controls.MenuFlyoutItem>. In addition, on Mac Catalyst, only the keyboard shortcut for the first `KeyboardAccelerator` in the collection will cause the action associated with the <xref:Microsoft.Maui.Controls.MenuFlyoutItem> to be invoked. However, on Windows, the keyboard shortcuts for all of the `KeyboardAccelerator` objects in the `MenuFlyoutItem.KeyboardAccelerators` collection will cause the <xref:Microsoft.Maui.Controls.MenuFlyoutItem> action to be invoked,
+> While multiple `KeyboardAccelerator` objects can be added to the `MenuFlyoutItem.KeyboardAccelerators` collection, only the first `KeyboardAccelerator` in the collection will have its shortcut displayed on the <xref:Microsoft.Maui.Controls.MenuFlyoutItem>. In addition, on Mac Catalyst, only the keyboard shortcut for the first `KeyboardAccelerator` in the collection will cause the action associated with the <xref:Microsoft.Maui.Controls.MenuFlyoutItem> to be invoked. However, on Windows, the keyboard shortcuts for all of the `KeyboardAccelerator` objects in the `MenuFlyoutItem.KeyboardAccelerators` collection will cause the <xref:Microsoft.Maui.Controls.MenuFlyoutItem> action to be invoked.
 
 ### Specify multiple modifiers
 
