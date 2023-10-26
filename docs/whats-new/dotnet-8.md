@@ -8,7 +8,7 @@ ms.date: 10/26/2023
 
 .NET 8 is the successor to .NET 7 and focuses on being unified, modern, simple, and *fast*. Due to working with underlying external dependencies, such as Xcode or Android SDK Tools, the .NET Multi-platform App UI (.NET MAUI) support policy differs from the [.NET and .NET Core support policy](https://dotnet.microsoft.com/platform/support/policy/maui). For more information, see [.NET MAUI support policy](https://dotnet.microsoft.com/platform/support/policy/maui).
 
-In .NET 8, .NET MAUI ships as a .NET workload and multiple NuGet packages. It can be installed via Visual Studio or the `dotnet` command line. The advantage of this approach is that it enables you to easily pin your projects to specific versions, while also enabling you to easily preview unreleased or experimental builds.
+In .NET 8, .NET MAUI ships as a .NET workload and multiple NuGet packages. The advantage of this approach is that it enables you to easily pin your projects to specific versions, while also enabling you to easily preview unreleased or experimental builds. When you create a new .NET MAUI project the required NuGet packages are automatically added to the project.
 
 This article lists the new features of .NET MAUI for .NET 8 and provides links to more detailed information on each.
 
@@ -63,6 +63,7 @@ The following behavior has changed from the previous release:
 - Image caching is disabled on Android when loading an image from a stream with the [`ImageSource.FromStream`](xref:Microsoft.Maui.Controls.ImageSource.FromStream%2A) method. This is due to the lack of data from which to create a reasonable cache key.
 - On iOS, pages automatically scroll when the soft input keyboard would cover a text entry field, so that the field is above the soft input keyboard. The `KeyboardAutoManagerScroll.Disconnect` method, in the `Microsoft.Maui.Platform` namespace, can be called to disable this default behavior. The `KeyboardAutoManagerScroll.Connect` method can be called to re-enable the behavior after it's been disabled.
 - How the color of a tab is set in a Shell app has changed on some platforms. For more information, see [Tab appearance](~/fundamentals/shell/tabs.md#tab-appearance).
+- It's not required to specify a value for the `$(ApplicationIdGuid)` build property in your app's project file. This is because .NET MAUI Windows apps no longer require a GUID as an app ID, and instead use the value of the `$(ApplicationId)` build property as the app ID. Therefore, the same reverse domain format app ID is now used across all platforms, such as com.mycompany.myapp.
 
 <!-- ## Performance
 
