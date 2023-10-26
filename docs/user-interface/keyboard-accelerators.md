@@ -38,7 +38,7 @@ The `KeyboardAcceleratorModifiers` enumeration defines the following members tha
 - `Windows`, which indicates the Windows modifier on Windows.
 
 > [!IMPORTANT]
-> Keyboard accelerators can be attached to <xref:Microsoft.Maui.Controls.MenuFlyoutItem> object in a <xref:Microsoft.Maui.Controls.MenuBarItem> on Mac Catalyst and Windows, and in a <xref:Microsoft.Maui.Controls.MenuFlyout> on Windows.
+> Keyboard accelerators can be attached to <xref:Microsoft.Maui.Controls.MenuFlyoutItem> objects in a <xref:Microsoft.Maui.Controls.MenuBarItem> on Mac Catalyst and Windows, and in a <xref:Microsoft.Maui.Controls.MenuFlyout> on Windows.
 
 <!-- Mac Catalyst support for keyboard accelerators in context menu items is pending. -->
 
@@ -46,8 +46,8 @@ The following table outlines the keyboard accelerator formats .NET MAUI supports
 
 | Platform | Single key | Multi-key |
 | -------- | ---------- | --------- |
-| Mac Catalyst | Keyboard accelerators without a modifier, with a single key. For example, using the F1 to invoke the action associated with a menu item. | Keyboard accelerators with one or more modifiers, with a single key. For example, using CTRL+SHIFT+F or CTRL+F to invoke the action associated with a menu item. |
-| Windows | Keyboard accelerators with and without a modifier, with a single key. For example, using the F1 to invoke the action associated with a menu item. | Keyboard accelerators with one or more modifiers, with a single key. For example, using CTRL+SHIFT+F or CTRL+F to invoke the action associated with a menu item. |
+| Mac Catalyst | Keyboard accelerators without a modifier, with a single key. For example, using the F1 key to invoke the action associated with a menu item. | Keyboard accelerators with one or more modifiers, with a single key. For example, using CMD+SHIFT+S or CMD+S to invoke the action associated with a menu item. |
+| Windows | Keyboard accelerators with and without a modifier, with a single key. For example, using the F1 key to invoke the action associated with a menu item. | Keyboard accelerators with one or more modifiers, with a single key. For example, using CTRL+SHIFT+F or CTRL+F to invoke the action associated with a menu item. |
 
 ## Create a keyboard accelerator
 
@@ -61,22 +61,6 @@ A `KeyboardAccelerator` can be attached to a <xref:Microsoft.Maui.Controls.MenuF
     <MenuFlyoutItem.KeyboardAccelerators>
         <KeyboardAccelerator Modifiers="Ctrl"
                              Key="X" />
-        <KeyboardAccelerator Modifiers="Alt, Ctrl"
-                             Key="X" />
-    </MenuFlyoutItem.KeyboardAccelerators>
-</MenuFlyoutItem>
-<MenuFlyoutItem Text="Copy"
-                Clicked="OnCopyMenuFlyoutItemClicked">
-    <MenuFlyoutItem.KeyboardAccelerators>
-        <KeyboardAccelerator Modifiers="Ctrl"
-                             Key="C" />
-    </MenuFlyoutItem.KeyboardAccelerators>
-</MenuFlyoutItem>
-<MenuFlyoutItem Text="Paste"
-                Clicked="OnPasteMenuFlyoutItemClicked">
-    <MenuFlyoutItem.KeyboardAccelerators>
-        <KeyboardAccelerator Modifiers="Ctrl"
-                             Key="V" />
     </MenuFlyoutItem.KeyboardAccelerators>
 </MenuFlyoutItem>
 ```
@@ -94,13 +78,11 @@ cutMenuFlyoutItem.KeyboardAccelerators.Add(new KeyboardAccelerator
 When a keyboard accelerator modifier and key is pressed, the action associated with the <xref:Microsoft.Maui.Controls.MenuFlyoutItem> is invoked.
 
 > [!IMPORTANT]
-> While multiple `KeyboardAccelerator` objects can be added to the `MenuFlyoutItem.KeyboardAccelerators` collection, only the first `KeyboardAccelerator` in the collection will have its shortcut displayed on the <xref:Microsoft.Maui.Controls.MenuFlyoutItem>. On Mac Catalyst, only the first `KeyboardAccelerator` in the collection will cause the action associated with the <xref:Microsoft.Maui.Controls.MenuFlyoutItem> to be invoked. However, on Windows, all of the `KeyboardAccelerator` objects in the `MenuFlyoutItem.KeyboardAccelerators` collection will cause the <xref:Microsoft.Maui.Controls.MenuFlyoutItem> action to be invoked,
+> While multiple `KeyboardAccelerator` objects can be added to the `MenuFlyoutItem.KeyboardAccelerators` collection, only the first `KeyboardAccelerator` in the collection will have its shortcut displayed on the <xref:Microsoft.Maui.Controls.MenuFlyoutItem>. In addition, on Mac Catalyst, only the keyboard shortcut for the first `KeyboardAccelerator` in the collection will cause the action associated with the <xref:Microsoft.Maui.Controls.MenuFlyoutItem> to be invoked. However, on Windows, the keyboard shortcuts for all of the `KeyboardAccelerator` objects in the `MenuFlyoutItem.KeyboardAccelerators` collection will cause the <xref:Microsoft.Maui.Controls.MenuFlyoutItem> action to be invoked,
 
-### Multiple modifiers
+### Specify multiple modifiers
 
-<!-- Todo: what about Mac Cat? -->
-
-Multiple modifiers can be specified on a `KeyboardAccelerator`:
+Multiple modifiers can be specified on a `KeyboardAccelerator` on both platforms:
 
 ```xaml
 <MenuFlyoutItem Text="Refresh"
@@ -115,7 +97,7 @@ Multiple modifiers can be specified on a `KeyboardAccelerator`:
 The equivalent C# code is:
 
 ```csharp
-myMenuFlyoutItem.KeyboardAccelerators.Add(new KeyboardAccelerator
+refreshMenuFlyoutItem.KeyboardAccelerators.Add(new KeyboardAccelerator
 {
     Modifiers = KeyboardAcceleratorModifiers.Shift | KeyboardAcceleratorModifiers.Ctrl,
     Key = "R"
@@ -124,14 +106,14 @@ myMenuFlyoutItem.KeyboardAccelerators.Add(new KeyboardAccelerator
 
 ## Specify keyboard accelerators per platform
 
-In addition, different keyboard accelerator modifiers and keys can be specified per platform with the [`OnPlatform`](xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension) markup extension:
+Different keyboard accelerator modifiers and keys can be specified per platform in XAML with the [`OnPlatform`](xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension) markup extension:
 
 ```xaml
 <MenuFlyoutItem Text="Change Theme"
                 Command="{Binding ChangeThemeCommand}">
     <MenuFlyoutItem.KeyboardAccelerators>
-        <KeyboardAccelerator Modifiers="{OnPlatform WinUI=Windows, MacCatalyst=Cmd}"
-                             Key="{OnPlatform WinUI=C, MacCatalyst=T}" />
+        <KeyboardAccelerator Modifiers="{OnPlatform MacCatalyst=Cmd, WinUI=Windows}"
+                             Key="{OnPlatform MacCatalyst=T, WinUI=C}" />
     </MenuFlyoutItem.KeyboardAccelerators>
 </MenuFlyoutItem>
 ```
@@ -142,16 +124,17 @@ The equivalent C# code is:
 KeyboardAcceleratorModifiers modifier = KeyboardAcceleratorModifiers.None;
 string key = string.Empty;
 
-if (DeviceInfo.Current.Platform == DevicePlatform.WinUI)
-{
-    modifier = KeyboardAcceleratorModifiers.Windows;
-    key = "C";
-}
-else if (DeviceInfo.Current.Platform == DevicePlatform.MacCatalyst)
+if (DeviceInfo.Current.Platform == DevicePlatform.MacCatalyst)
 {
     modifier = KeyboardAcceleratorModifiers.Cmd;
     key = "T";
 }
+else if (DeviceInfo.Current.Platform == DevicePlatform.WinUI)
+{
+    modifier = KeyboardAcceleratorModifiers.Windows;
+    key = "C";
+}
+
 myMenuFlyoutItem.KeyboardAccelerators.Add(new KeyboardAccelerator
 {
     Modifiers = modifier,
@@ -159,17 +142,16 @@ myMenuFlyoutItem.KeyboardAccelerators.Add(new KeyboardAccelerator
 });
 ```
 
+## Use special keys in a keyboard accelerator
+
+On Windows, special keys can be specified via a string constant or with an integer. For a list of constants and integers, see the table in <xref:Windows.System.VirtualKey>.
+
 > [!NOTE]
-> Keyboard accelerators aren't displayed for <xref:Microsoft.Maui.Controls.MenuFlyoutSubItem> objects, but do work on Windows.
-
-## Special keys
-
-On Windows, special keys can be specified via a constant name or with an integer. For a list of constants and integers, see the table in <xref:Windows.System.VirtualKey>.
-
-> [!IMPORTANT]
 > On Windows, single key accelerators (all alphanumeric and punctuation keys, Delete, F2, Spacebar, Esc, Multimedia Key) and multi-key accelerators (Ctrl+Shift+M) are supported. However, Gamepad virtual keys aren't supported.
 
-On Mac Catalyst, special keys can be specified via a constant. For a list of constants that represent the text input strings that correspond to special nonvisible keys, see [Input strings for special keys](https://developer.apple.com/documentation/uikit/uikeycommand/input_strings_for_special_keys?language=objc) on developer.apple.com.
+On Mac Catalyst, special keys can be specified via a string constant. For a list of constants that represent the text input strings that correspond to special keys, see [Input strings for special keys](https://developer.apple.com/documentation/uikit/uikeycommand/input_strings_for_special_keys?language=objc) on developer.apple.com.
+
+The following XAML shows an example of defining a keyboard accelerator that uses a special key:
 
 ```xaml
 <MenuFlyoutItem Text="Help"
@@ -177,7 +159,7 @@ On Mac Catalyst, special keys can be specified via a constant. For a list of con
     <MenuFlyoutItem.KeyboardAccelerators>
         <!-- Alternatively, 112 can be used to specify F1 on Windows -->
         <KeyboardAccelerator Modifiers="None"
-                             Key="{OnPlatform WinUI=F1, MacCatalyst=UIKeyInputF1}" />
+                             Key="{OnPlatform MacCatalyst=UIKeyInputF1, WinUI=F1}" />
     </MenuFlyoutItem.KeyboardAccelerators>
 </MenuFlyoutItem>
 ```
@@ -186,7 +168,7 @@ In this example the keyboard accelerator is the F1 key, which is specified via a
 
 ## Localize a keyboard acclerator
 
-Keyboard accelerator keys can be localized with a standard .NET resource file. The localized key can then be retrieved by using the `x:Static` markup extension to access the localized key value:
+Keyboard accelerator keys can be localized via a .NET resource file. The localized key can then be retrieved by using the `x:Static` markup extension:
 
 ```xaml
 <MenuFlyoutItem Text="Cut"
@@ -202,7 +184,7 @@ For more information, see [Localization](~/fundamentals/localization.md).
 
 ## Disable a keyboard accelerator
 
-When a <xref:Microsoft.Maui.Controls.MenuFlyoutItem> is disabled, the associated accelerator is also disabled:
+When a <xref:Microsoft.Maui.Controls.MenuFlyoutItem> is disabled, the associated keyboard accelerator is also disabled:
 
 ```xaml
 <MenuFlyoutItem Text="Cut"
@@ -216,7 +198,3 @@ When a <xref:Microsoft.Maui.Controls.MenuFlyoutItem> is disabled, the associated
 ```
 
 In this example, because the `IsEnabled` property of the <xref:Microsoft.Maui.Controls.MenuFlyoutItem> is set to `false`, the associated CTRL+X keyboard accelerator can't be invoked.
-
-----
-
-https://learn.microsoft.com/en-us/windows/apps/design/input/keyboard-accelerators
