@@ -1,12 +1,14 @@
 ---
 title: What's new in .NET MAUI for .NET 8
 description: Learn about the new features introduced in .NET MAUI for .NET 8.
-ms.date: 10/24/2023
+ms.date: 10/26/2023
 ---
 
 # What's new in .NET MAUI for .NET 8
 
 .NET 8 is the successor to .NET 7 and focuses on being unified, modern, simple, and *fast*. Due to working with underlying external dependencies, such as Xcode or Android SDK Tools, the .NET Multi-platform App UI (.NET MAUI) support policy differs from the [.NET and .NET Core support policy](https://dotnet.microsoft.com/platform/support/policy/maui). For more information, see [.NET MAUI support policy](https://dotnet.microsoft.com/platform/support/policy/maui).
+
+In .NET 8, .NET MAUI ships as a .NET workload and multiple NuGet packages. It can be installed via Visual Studio or the `dotnet` command line. The advantage of this approach is that it enables you to easily pin your projects to specific versions, while also enabling you to easily preview unreleased or experimental builds.
 
 This article lists the new features of .NET MAUI for .NET 8 and provides links to more detailed information on each.
 
