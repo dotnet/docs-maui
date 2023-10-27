@@ -264,7 +264,8 @@ public class WindowCreator : IWindowCreator
 Then, in the `MauiProgram` class you should register your window management type as a dependency in the app's service container:
 
 ```csharp
-builder.Services.AddSingleton<IWindowCreator, WindowCreator>();
+// Use a factory method to avoid reflection
+builder.Services.AddSingleton<IWindowCreator>(_ => new WindowCreator());
 ```
 
 > [!IMPORTANT]
