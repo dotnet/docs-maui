@@ -269,7 +269,7 @@ builder.Services.AddSingleton<IWindowCreator>(_ => new WindowCreator());
 ```
 
 > [!IMPORTANT]
-> Ensure that your registration code specifies the `IWindowCreator` interface as well as its implementing type.
+> Ensure that your registration code specifies the `IWindowCreator` interface as well as its concrete type.
 
 Then, ensure that your `App` class doesn't set the `MainPage` property:
 
@@ -283,6 +283,6 @@ public partial class App : Application
 }
 ```
 
-Provided that the `IWindowCreator` interface and its implementing type have been registered with the app's service container, and that the <xref:Microsoft.Maui.Controls.Application.MainPage> property of the <xref:Microsoft.Maui.Controls.Application> class isn't set, your registered type will be used to create the <xref:Microsoft.Maui.Controls.Window>.
+Provided that the `IWindowCreator` interface and its concrete type have been registered with the app's service container, and that the <xref:Microsoft.Maui.Controls.Application.MainPage> property of the <xref:Microsoft.Maui.Controls.Application> class isn't set, your registered type will be used to create the <xref:Microsoft.Maui.Controls.Window>.
 
 ::: moniker-end
