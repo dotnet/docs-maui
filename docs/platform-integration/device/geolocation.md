@@ -138,6 +138,69 @@ Not all location values may be available, depending on the device. For example, 
 > [!WARNING]
 > <xref:Microsoft.Maui.Devices.Sensors.IGeolocation.GetLocationAsync%2A> can return `null` in some scenarios. This indicates that the underlying platform is unable to obtain the current location.
 
+::: moniker range=">=net-maui-8.0"
+
+## Listen for location changes
+
+In addition to querying the device for the current location, you can listen for location changes while an app is in the foreground.
+
+To check to see if the app is currently listening, there's a `IsListeningForeground` property you can query. Once you're ready to start listening for location changes you should call the `StartListeningForegroundAsync` method, which starts listening for location updates and raises the `LocationChanged` event when the location changes. The `GeolocationLocationChangedEventArgs` object that accompanies this event has a `Location` property, of type <xref:Microsoft.Maui.Devices.Sensors.Location>, that represents the new location that's been detected.
+
+> [!NOTE]
+> The `LocationChanged` event will only be raised when the app is in the foreground.
+
+The following code example demonstrates how to listen for a location change, and how to process the changed location:
+
+```csharp
+async void OnStartListening()
+{
+    try
+    {
+        Geolocation.LocationChanged += Geolocation_LocationChanged;
+        var request = new GeolocationListeningRequest((GeolocationAccuracy)Accuracy);
+        var success = await Geolocation.StartListeningForegroundAsync(request);
+
+        string status = success
+            ? "Started listening for foreground location updates"
+            : "Couldn't start listening";
+    }
+    catch (Exception ex)
+    {
+        // Unable to start listening for location changes
+    }
+}
+
+void Geolocation_LocationChanged(object sender, GeolocationLocationChangedEventArgs e)
+{
+    // Process e.Location to get the new location
+}
+```
+
+Error handling can be implemented by registering an event handler for the `ListeningFailed` event. The `GeolocationListeningFailedEventArgs` object that accompanies this event has an `Error` property, of type `GeolocationError`, that indicates why listening failed. When the `ListeningFailed` event is raised, listening for further location changes stops and no further `LocationChanged` events are raised.
+
+To stop listening for location changes, call the `StopListeningForeground` method:
+
+```csharp
+void OnStopListening()
+{
+    try
+    {
+        Geolocation.LocationChanged -= Geolocation_LocationChanged;
+        Geolocation.StopListeningForeground();
+        string status = "Stopped listening for foreground location updates";
+    }
+    catch (Exception ex)
+    {
+        // Unable to stop listening for location changes
+    }
+}
+```
+
+> [!NOTE]
+> The `StopListeningForeground` method has no effect when the app isn't listening for location changes.
+
+::: moniker-end
+
 ## Accuracy
 
 The following sections outline the location accuracy distance, per platform:

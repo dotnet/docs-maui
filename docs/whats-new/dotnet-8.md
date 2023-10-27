@@ -44,6 +44,7 @@ For information about what's new in .NET 8, see [What's new in .NET 8](/dotnet/c
 - Shell navigation gains a `GoToAsync` overload that enables you to pass single use navigation data, that's cleared after navigation has occurred, as a `ShellNavigationQueryParameters` object. For more information, see [Pass single use object-based navigation data](~/fundamentals/shell/navigation.md#pass-single-use-object-based-navigation-data).
 - Window management can be decoupled from the `App` class. For more information, see [Decouple window management from the App class](~/fundamentals/windows.md#decouple-window-management-from-the-app-class).
 - Menu bar items and context menu items can be invoked through keyboard shortcuts known as keyboard accelerators. For more information, see [Keyboard accelerators](~/user-interface/keyboard-accelerators.md).
+- The <xref:Microsoft.Maui.Devices.Sensors.Geolocation> class can listen for location changes when app's are in the foreground. For more information, see [Listen for location changes](~/platform-integration/device/geolocation.md#listen-for-location-changes).
 
 The following types or members have been deprecated:
 
