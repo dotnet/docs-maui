@@ -144,10 +144,10 @@ Not all location values may be available, depending on the device. For example, 
 
 In addition to querying the device for the current location, you can listen for location changes while an app is in the foreground.
 
-To check to see if the app is currently listening, there's a `IsListeningForeground` property you can query. Once you're ready to start listening for location changes you should call the `StartListeningForegroundAsync` method, which starts listening for location updates and raises the `LocationChanged` event when the location changes. The `GeolocationLocationChangedEventArgs` object that accompanies this event has a `Location` property, of type <xref:Microsoft.Maui.Devices.Sensors.Location>, that represents the new location that's been detected.
+To check to see if the app is currently listening for location changes, there's a `IsListeningForeground` property you can query. Once you're ready to start listening for location changes you should call the `StartListeningForegroundAsync` method. This method starts listening for location updates and raises the `LocationChanged` event when the location changes, provided that the app is in the foreground. The `GeolocationLocationChangedEventArgs` object that accompanies this event has a `Location` property, of type <xref:Microsoft.Maui.Devices.Sensors.Location>, that represents the new location that's been detected.
 
 > [!NOTE]
-> The `LocationChanged` event will only be raised when the app is in the foreground.
+> When necessary, the Geolocation API prompts the user for permissions.
 
 The following code example demonstrates how to listen for a location change, and how to process the changed location:
 
