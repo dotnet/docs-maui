@@ -73,6 +73,8 @@ To paint an object with an image, load the image and assign it to the <xref:Micr
 
 The following example shows how to load an image and fill a rectangle with it:
 
+::: moniker range="=net-maui-7.0"
+
 ```csharp
 using System.Reflection;
 using IImage = Microsoft.Maui.Graphics.IImage;
@@ -104,6 +106,35 @@ if (image != null)
     canvas.FillRectangle(0, 0, 240, 300);
 }
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-8.0"
+
+```csharp
+using System.Reflection;
+using IImage = Microsoft.Maui.Graphics.IImage;
+using Microsoft.Maui.Graphics.Platform;
+
+IImage image;
+Assembly assembly = GetType().GetTypeInfo().Assembly;
+using (Stream stream = assembly.GetManifestResourceStream("GraphicsViewDemos.Resources.Images.dotnet_bot.png"))
+{
+    image = PlatformImage.FromStream(stream);
+}
+
+if (image != null)
+{
+    ImagePaint imagePaint = new ImagePaint
+    {
+        Image = image.Downsize(100)
+    };
+    canvas.SetFillPaint(imagePaint, RectF.Zero);
+    canvas.FillRectangle(0, 0, 240, 300);
+}
+```
+
+::: moniker-end
 
 In this example, the image is retrieved from the assembly and loaded as a stream. The image is resized using the <xref:Microsoft.Maui.Graphics.IImage.Downsize%2a> method, with the argument specifying that its largest dimension should be set to 100 pixels. For more information about downsizing an image, see [Downsize an image](~/user-interface/graphics/images.md#downsize-an-image).
 
