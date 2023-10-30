@@ -15,8 +15,6 @@ When distributing your .NET Multi-platform App UI (.NET MAUI) app for Windows, y
 
 ## Configure the project build settings
 
-The project file is a good place to put Windows-specific build settings. You may not want to put some settings into the project file, such as passwords. The settings described in this section can be passed on the command line with the `-p:name=value` format. If the setting is already defined in the project file, a setting passed on the command line overrides the project setting.
-
 Add the following `<PropertyGroup>` node to your project file. This property group is only processed when the target framework is Windows and the configuration is set to `Release`. This config section runs whenever a build or publish in `Release` mode.
 
 ```xml
