@@ -66,6 +66,7 @@ The following behavior has changed from the previous release:
 - On iOS, pages automatically scroll when the soft input keyboard would cover a text entry field, so that the field is above the soft input keyboard. The `KeyboardAutoManagerScroll.Disconnect` method, in the `Microsoft.Maui.Platform` namespace, can be called to disable this default behavior. The `KeyboardAutoManagerScroll.Connect` method can be called to re-enable the behavior after it's been disabled.
 - How the color of a tab is set in a Shell app has changed on some platforms. For more information, see [Tab appearance](~/fundamentals/shell/tabs.md#tab-appearance).
 - It's not required to specify a value for the `$(ApplicationIdGuid)` build property in your app's project file. This is because .NET MAUI Windows apps no longer require a GUID as an app ID, and instead use the value of the `$(ApplicationId)` build property as the app ID. Therefore, the same reverse domain format app ID is now used across all platforms, such as com.mycompany.myapp.
+- .NET MAUI Mac Catalyst apps are no longer limited to 50 menu items on the menu bar. 
 
 <!-- ## Performance
 

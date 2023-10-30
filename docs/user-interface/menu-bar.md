@@ -121,6 +121,8 @@ In this example, the menu bar item defines three menu items that display an icon
 
 For more information about displaying font icons, see [Display font icons](~/user-interface/fonts.md#display-font-icons). For information about adding images to .NET MAUI projects, see [Add images to a .NET MAUI app project](~/user-interface/images/images.md).
 
+::: moniker range="=net-maui-7.0"
+
 ## Mac Catalyst limitations
 
 .NET MAUI Mac Catalyst apps are limited to 50 menu items. Attempting to add more than 50 menu items to a Mac Catalyst app will result in an exception being thrown.
@@ -128,9 +130,11 @@ For more information about displaying font icons, see [Display font icons](~/use
 Additional menu items, beyond the 50 limit, can be added to a menu bar by adding the following code to your `AppDelegate` class:
 
 ```csharp
-[Export("MenuItem50: ")]
+[Export("MenuItem50:")]
 internal void MenuItem50(UICommand uICommand)
 {
     uICommand.SendClicked();
 }
 ```
+
+::: moniker-end
