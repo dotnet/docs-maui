@@ -13,8 +13,8 @@ items:
   - name: Month
     expanded: true
     items:
-    - name: September 2023
-      href: dotnet-docs-maui-mod0.md
+    - name: October 2023
+      href: dotnet-docs-maui-mod1.md
     - name: August 2023
       href: dotnet-docs-maui-mod2.md
     - name: July 2023
