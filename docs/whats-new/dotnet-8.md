@@ -1,12 +1,15 @@
 ---
 title: What's new in .NET MAUI for .NET 8
 description: Learn about the new features introduced in .NET MAUI for .NET 8.
-ms.date: 10/26/2023
+ms.date: 11/01/2023
 ---
 
 # What's new in .NET MAUI for .NET 8
 
-.NET 8 is the successor to .NET 7 and focuses on being unified, modern, simple, and *fast*. Due to working with underlying external dependencies, such as Xcode or Android SDK Tools, the .NET Multi-platform App UI (.NET MAUI) support policy differs from the [.NET and .NET Core support policy](https://dotnet.microsoft.com/platform/support/policy/maui). For more information, see [.NET MAUI support policy](https://dotnet.microsoft.com/platform/support/policy/maui).
+The focus of .NET MAUI in .NET 8 is quality. In .NET 8, 1559 pull requests were merged that closed 596 issues. These includes changes from the .NET MAUI team as well as the .NET MAUI community. These changes should result in a significant increase in quality in .NET 8.
+
+> [!IMPORTANT]
+> Due to working with underlying external dependencies, such as Xcode or Android SDK Tools, the .NET Multi-platform App UI (.NET MAUI) support policy differs from the [.NET and .NET Core support policy](https://dotnet.microsoft.com/platform/support/policy/maui). For more information, see [.NET MAUI support policy](https://dotnet.microsoft.com/platform/support/policy/maui).
 
 In .NET 8, .NET MAUI ships as a .NET workload and multiple NuGet packages. The advantage of this approach is that it enables you to easily pin your projects to specific versions, while also enabling you to easily preview unreleased or experimental builds. When you create a new .NET MAUI project the required NuGet packages are automatically added to the project.
 
@@ -69,16 +72,52 @@ The following behavior has changed from the previous release:
 - .NET MAUI Mac Catalyst apps are no longer limited to 50 menu items on the menu bar.
 - The `PlatformImage.FromStream` method, in the `Microsoft.Maui.Graphics` namespace, can now be used to load images on Windows instead of having to use the `W2DImageLoadingService` class.
 
-<!-- ## Performance
+## Performance
 
-Performance is a key focus of .NET MAUI in .NET 7:
+There are plenty of performance changes in .NET MAUI 8. These changes can be classified into five areas:
 
-- On Android, startup performance has improved.
-- On iOS, application size has been reduced.
-- The rendering path for views has been optimized.
-- Many issues have been addressed that impacted the smoothness of scrolling in a <xref:Microsoft.Maui.Controls.CollectionView>.
+- New features
+  - [`AndroidStripILAfterAOT`](https://devblogs.microsoft.com/dotnet/dotnet-8-performance-improvements-in-dotnet-maui/#androidstripilafteraot)
+  - [`AndroidEnableMarshalMethods`](https://devblogs.microsoft.com/dotnet/dotnet-8-performance-improvements-in-dotnet-maui/#androidenablemarshalmethods)
+  - [NativeAOT on iOS](https://devblogs.microsoft.com/dotnet/dotnet-8-performance-improvements-in-dotnet-maui/#nativeaot-on-ios)
+- Build and inner loop performance
+  - [Filter Android `ps -A` output with `grep`](https://devblogs.microsoft.com/dotnet/dotnet-8-performance-improvements-in-dotnet-maui/#filter-android-ps--a-output-with-grep)
+  - [Port WindowsAppSDK usage of `vcmeta.dll` to C#](https://devblogs.microsoft.com/dotnet/dotnet-8-performance-improvements-in-dotnet-maui/#port-windowsappsdk-usage-of-vcmetadll-to-c)
+  - [Improvements to remote iOS builds on Windows](https://devblogs.microsoft.com/dotnet/dotnet-8-performance-improvements-in-dotnet-maui/#improvements-to-remote-ios-builds-on-windows)
+  - [Improvements to Android inner-loop](https://devblogs.microsoft.com/dotnet/dotnet-8-performance-improvements-in-dotnet-maui/#improvements-to-android-inner-loop)
+  - [XAML Compilation no longer uses `LoadInSeparateAppDomain`](https://devblogs.microsoft.com/dotnet/dotnet-8-performance-improvements-in-dotnet-maui/#xaml-compilation-no-longer-uses-loadinseparateappdomain)
+- Performance or app size improvements
+  - [Structs and `IEquatable` in .NET MAUI](https://devblogs.microsoft.com/dotnet/dotnet-8-performance-improvements-in-dotnet-maui/#structs-and-iequatable-in-net-maui)
+  - [Fix performance issue in `{AppThemeBinding}`](https://devblogs.microsoft.com/dotnet/dotnet-8-performance-improvements-in-dotnet-maui/#fix-performance-issue-in-appthemebinding)
+  - [Address `CA1307` and `CA1309` for performance](https://devblogs.microsoft.com/dotnet/dotnet-8-performance-improvements-in-dotnet-maui/#address-ca1307-and-ca1309-for-performance)
+  - [Address `CA1311` for performance](https://devblogs.microsoft.com/dotnet/dotnet-8-performance-improvements-in-dotnet-maui/#address-ca1311-for-performance)
+  - [Remove unused `ViewAttachedToWindow` event on Android](https://devblogs.microsoft.com/dotnet/dotnet-8-performance-improvements-in-dotnet-maui/#remove-unused-viewattachedtowindow-event-on-android)
+  - [Remove unneeded `System.Reflection` for `{Binding}`](https://devblogs.microsoft.com/dotnet/dotnet-8-performance-improvements-in-dotnet-maui/#remove-unneeded-systemreflection-for-binding)
+  - [Use `StringComparer.Ordinal` for `Dictionary` and `HashSet`](https://devblogs.microsoft.com/dotnet/dotnet-8-performance-improvements-in-dotnet-maui/#use-stringcomparerordinal-for-dictionary-and-hashset)
+  - [Reduce Java interop in `MauiDrawable` on Android](https://devblogs.microsoft.com/dotnet/dotnet-8-performance-improvements-in-dotnet-maui/#reduce-java-interop-in-mauidrawable-on-android)
+  - [Improve layout performance of `Label` on Android](https://devblogs.microsoft.com/dotnet/dotnet-8-performance-improvements-in-dotnet-maui/#improve-layout-performance-of-label-on-android)
+  - [Reduce Java interop calls for controls in .NET MAUI](https://devblogs.microsoft.com/dotnet/dotnet-8-performance-improvements-in-dotnet-maui/#reduce-java-interop-calls-for-controls-in-net-maui)
+  - [Improve performance of `Entry.MaxLength` on Android](https://devblogs.microsoft.com/dotnet/dotnet-8-performance-improvements-in-dotnet-maui/#improve-performance-of-entrymaxlength-on-android)
+  - [Improve memory usage of `CollectionView` on Windows](https://devblogs.microsoft.com/dotnet/dotnet-8-performance-improvements-in-dotnet-maui/#improve-memory-usage-of-collectionview-on-windows)
+  - [Use `UnmanagedCallersOnlyAttribute` on Apple platforms](https://devblogs.microsoft.com/dotnet/dotnet-8-performance-improvements-in-dotnet-maui/#use-unmanagedcallersonlyattribute-on-apple-platforms)
+  - [Faster Java interop for strings on Android](https://devblogs.microsoft.com/dotnet/dotnet-8-performance-improvements-in-dotnet-maui/#faster-java-interop-for-strings-on-android)
+  - [Faster Java interop for C# events on Android](https://devblogs.microsoft.com/dotnet/dotnet-8-performance-improvements-in-dotnet-maui/#faster-java-interop-for-c-events-on-android)
+  - [Use Function Pointers for JNI](https://devblogs.microsoft.com/dotnet/dotnet-8-performance-improvements-in-dotnet-maui/#use-function-pointers-for-jni)
+  - [Removed `Xamarin.AndroidX.Legacy.Support.V4`](https://devblogs.microsoft.com/dotnet/dotnet-8-performance-improvements-in-dotnet-maui/#removed-xamarinandroidxlegacysupportv4)
+  - [Deduplication of generics on iOS and macOS](https://devblogs.microsoft.com/dotnet/dotnet-8-performance-improvements-in-dotnet-maui/#deduplication-of-generics-on-ios-and-macos)
+  - [Fix `System.Linq.Expressions` implementation on iOS-like platforms](https://devblogs.microsoft.com/dotnet/dotnet-8-performance-improvements-in-dotnet-maui/#fix-systemlinqexpressions-implementation-on-ios-like-platforms)
+  - [Set `DynamicCodeSupport=false` for iOS and Catalyst](https://devblogs.microsoft.com/dotnet/dotnet-8-performance-improvements-in-dotnet-maui/#set-dynamiccodesupportfalse-for-ios-and-catalyst)
+- Memory leaks
+  - [Memory Leaks and Quality](https://devblogs.microsoft.com/dotnet/dotnet-8-performance-improvements-in-dotnet-maui/#memory-leaks-and-quality)
+  - [Diagnosing leaks in .NET MAUI](https://devblogs.microsoft.com/dotnet/dotnet-8-performance-improvements-in-dotnet-maui/#diagnosing-leaks-in-net-maui)
+  - [Patterns that cause leaks: C# events](https://devblogs.microsoft.com/dotnet/dotnet-8-performance-improvements-in-dotnet-maui/#patterns-that-cause-leaks-c-events)
+  - [Circular references on Apple platforms](https://devblogs.microsoft.com/dotnet/dotnet-8-performance-improvements-in-dotnet-maui/#circular-references-on-apple-platforms)
+  - [Roslyn analyzer for Apple platforms](https://devblogs.microsoft.com/dotnet/dotnet-8-performance-improvements-in-dotnet-maui/#roslyn-analyzer-for-apple-platforms)
+- Tooling and documentation
+  - [Simplified `dotnet-trace` and `dotnet-dsrouter`](https://devblogs.microsoft.com/dotnet/dotnet-8-performance-improvements-in-dotnet-maui/#simplified-dotnet-trace-and-dotnet-dsrouter)
+  - [`dotnet-gcdump` Support for Mobile](https://devblogs.microsoft.com/dotnet/dotnet-8-performance-improvements-in-dotnet-maui/#dotnet-gcdump-support-for-mobile)
 
-For more information, see [.NET 7 Performance Improvements in .NET MAUI](https://devblogs.microsoft.com/dotnet/dotnet-7-performance-improvements-in-dotnet-maui/). -->
+For more information, see [.NET 8 Performance Improvements in .NET MAUI](https://devblogs.microsoft.com/dotnet/dotnet-8-performance-improvements-in-dotnet-maui/).
 
 <!-- ## Upgrading from .NET 7
 
