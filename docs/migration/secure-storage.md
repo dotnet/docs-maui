@@ -67,7 +67,7 @@ public class LegacySecureStorage
         bool result = false;
 
 #if ANDROID
-        Preferences.Clear(Alias);
+        Preferences.Remove(key, Alias);
         result = true;
 #elif IOS
         KeyChain keyChain = new KeyChain();
