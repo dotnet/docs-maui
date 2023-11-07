@@ -146,21 +146,51 @@ There are plenty of performance changes in .NET MAUI 8. These changes can be cla
 
 For more information, see [.NET 8 Performance Improvements in .NET MAUI](https://devblogs.microsoft.com/dotnet/dotnet-8-performance-improvements-in-dotnet-maui/).
 
-<!-- ## Upgrading from .NET 7
+## Upgrade from .NET 7
 
-To upgrade your projects from .NET 6 to .NET 7, open your *.csproj* file and change the Target Framework Monikers (TFMs) from 6 to 7. The following example shows the TFMs for a .NET 6 project:
+To upgrade your projects from .NET 7 to .NET 8, install .NET 8 and the .NET MAUI workload with [Visual Studio 17.8+](https://visualstudio.microsoft.com/vs/), or with the [standalone installer](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) and the `dotnet workload install maui` command.
+
+Then, open your *.csproj* file and change the Target Framework Monikers (TFMs) from 7 to 8. The following example shows the TFMs for a .NET 7 project:
 
 ```xml
-<TargetFrameworks>net6.0-ios;net6.0-android;net6.0-maccatalyst;net6.0-tizen</TargetFrameworks>
-<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) and '$(MSBuildRuntimeType)' == 'Full'">$(TargetFrameworks);net6.0-windows10.0.19041</TargetFrameworks>
+<TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst;net7.0-tizen</TargetFrameworks>
+<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
 ```
 
-The following example shows the TFMs for a .NET 7 project:
+The following example shows the TFMs for a .NET 8 project:
 
 ```xml
-<TargetFrameworks>net7.0-ios;net7.0-android;net7.0-maccatalyst;net7.0-tizen</TargetFrameworks>
-<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) and '$(MSBuildRuntimeType)' == 'Full'">$(TargetFrameworks);net7.0-windows10.0.19041</TargetFrameworks>
-``` -->
+<TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst;net8.0-tizen</TargetFrameworks>
+<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
+```
+
+Explicit package references should also be added to your *.csproj* file for the following .NET MAUI NuGet packages:
+
+```xml
+<ItemGroup>
+    <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+    <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+</ItemGroup>
+```
+
+The `$(MauiVersion)` variable is referenced from the version of .NET MAUI you've installed. You can override this by adding the `$(MauiVersion)` build property to your *.csproj* file:
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
+        <UseMaui>True</UseMaui>
+        <MauiVersion>8.0.0-rc.2.9511</MauiVersion>
+    </PropertyGroup>
+</Project>
+```
+
+This can be useful when using ad-hoc builds from the [nightly feed](https://github.com/dotnet/maui/wiki/Nightly-Builds) or builds downloaded from pull requests.
+
+In addition, the `$(ApplicationIdGuid)` build property can be removed from your *.csproj* file in .NET 8. For more information, see [Behavior changes](#behavior-changes).
+
+> [!NOTE]
+> The project template for a .NET MAUI app in .NET 8 enables the nullable context for the project with the `$(Nullable)` build property. For more information, see [Nullable](/dotnet/csharp/language-reference/compiler-options/language#nullable).
 
 <!-- ## See also
 
