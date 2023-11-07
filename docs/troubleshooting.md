@@ -140,18 +140,6 @@ Visual Studio may not be resolving the required workloads if you try to compile 
 
 This problem typically results from having an x86 and x64 SDK installed, and the x86 version is being used. Visual Studio and .NET MAUI require the x64 .NET SDK. If your operating system has a system-wide `PATH` variable that is resolving the x86 SDK first, you need to fix that by either removing the x86 .NET SDK from the `PATH` variable, or promoting the x64 .NET SDK so that it resolves first. For more information on troubleshooting x86 vs x64 SDK resolution, see [Install .NET on Windows - Troubleshooting](/dotnet/core/install/windows#it-was-not-possible-to-find-any-installed-net-core-sdks).
 
-<!--
-## The WINDOWS `#if` directive is broken
-
-The `WINDOWS` definition doesn't resolve correctly in the latest release of .NET MAUI. To work around this issue, add the following entry to the `<PropertyGroup>` element of your project file.
-
-```xml
-<DefineConstants Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">$(DefineConstants);WINDOWS</DefineConstants>
-```
-
-The definitions that identify a specific version of Windows will still be missing.
--->
-
 ## Type or namespace 'Default' doesn't exist
 
 When using the [`Contacts` API](platform-integration/communication/contacts.md), you may see the following error related to iOS and macOS:
