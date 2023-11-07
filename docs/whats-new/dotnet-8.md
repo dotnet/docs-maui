@@ -98,6 +98,7 @@ The following behavior has changed from the previous release:
 - It's not required to specify a value for the `$(ApplicationIdGuid)` build property in your app's project file. This is because .NET MAUI Windows apps no longer require a GUID as an app ID, and instead use the value of the `$(ApplicationId)` build property as the app ID. Therefore, the same reverse domain format app ID is now used across all platforms, such as com.mycompany.myapp.
 - .NET MAUI Mac Catalyst apps are no longer limited to 50 menu items on the menu bar.
 - The `PlatformImage.FromStream` method, in the `Microsoft.Maui.Graphics` namespace, can now be used to load images on Windows instead of having to use the `W2DImageLoadingService` class.
+- On Android, animations respect the system animation settings. For more information, see [Basic animation](~/user-interface/animation/basic.md).
 
 ## Performance
 
