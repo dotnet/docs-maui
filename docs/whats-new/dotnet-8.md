@@ -190,7 +190,7 @@ This can be useful when using ad-hoc builds from the [nightly feed](https://gith
 In addition, the `$(ApplicationIdGuid)` build property can be removed from your *.csproj* file in .NET 8. For more information, see [Behavior changes](#behavior-changes).
 
 > [!NOTE]
-> The project template for a .NET MAUI app in .NET 8 enables the nullable context for the project with the `$(Nullable)` build property. For more information, see [Nullable]()/dotnet/csharp/language-reference/compiler-options/language#nullable).
+> The project template for a .NET MAUI app in .NET 8 enables the nullable context for the project with the `$(Nullable)` build property. For more information, see [Nullable](/dotnet/csharp/language-reference/compiler-options/language#nullable).
 
 <!-- ## See also
 
