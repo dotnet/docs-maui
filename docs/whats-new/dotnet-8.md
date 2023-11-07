@@ -147,7 +147,7 @@ There are plenty of performance changes in .NET MAUI 8. These changes can be cla
 
 For more information, see [.NET 8 Performance Improvements in .NET MAUI](https://devblogs.microsoft.com/dotnet/dotnet-8-performance-improvements-in-dotnet-maui/).
 
-## Upgrade from .NET 7
+## Upgrade from .NET 7 to .NET 8
 
 To upgrade your projects from .NET 7 to .NET 8, install .NET 8 and the .NET MAUI workload with [Visual Studio 17.8+](https://visualstudio.microsoft.com/vs/), or with the [standalone installer](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) and the `dotnet workload install maui` command.
 
