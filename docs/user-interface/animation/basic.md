@@ -33,7 +33,7 @@ If there's a requirement to let an animation complete in the background, then th
 
 ::: moniker range=">=net-maui-8.0"
 
-[!INCLUDE [Android animation system settings](../includes/android-animation.md)]
+[!INCLUDE [Android animation system settings](../includes/animation-android.md)]
 
 ::: moniker-end
 
