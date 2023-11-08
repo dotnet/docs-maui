@@ -45,6 +45,8 @@ Once you've created a provisioning profile it must be downloaded by Visual Studi
 1. In the *Details* window, verify that the new profile appears in the *Provisioning Profiles* list. You may need to restart Visual Studio for Mac to refresh the list.
 1. In the *Details* dialog, click the *Download All Profiles* button.
 
+[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
+
 The provisioning profile will then be available for use.
 
 > [!NOTE]

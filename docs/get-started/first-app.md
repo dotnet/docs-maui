@@ -205,6 +205,8 @@ If your app fails to compile, review [Troubleshooting known issues](../troublesh
 # [Visual Studio for Mac](#tab/vsmac)
 <!-- markdownlint-enable MD025 -->
 
+[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
+
 ## Prerequisites
 
 - Visual Studio 2022 for Mac 17.4 or greater, with the .NET, .NET MAUI, Android, and iOS workloads installed. For more information, see [Installation](installation.md?tabs=vsmac).

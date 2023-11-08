@@ -19,4 +19,6 @@ To configure linker behavior in Visual Studio for Mac:
 
 1. In the **Project Properties** window, click the **OK** button.
 
+[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
+
 [!INCLUDE [Control the linker](../includes/linker-control.md)]

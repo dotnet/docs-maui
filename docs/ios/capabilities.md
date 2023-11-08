@@ -49,6 +49,8 @@ In Visual Studio, all capabilities are added to your app's *Entitlements.plist* 
 # [Visual Studio for Mac](#tab/vsmac)
 <!-- markdownlint-enable MD025 -->
 
+[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
+
 1. In Visual Studio for Mac, enable automatic provisioning for your project. For more information, see [Enable automatic provisioning](~/ios/device-provisioning/automatic-provisioning.md#enable-automatic-provisioning).
 1. In the **Solution Window**, double-click the *Entitlements.plist* file from the *Platforms > iOS* folder of your .NET MAUI app project to open it in the entitlements editor. Then, change from the **Source** view to the **Entitlements** view:
 

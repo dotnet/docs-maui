@@ -46,6 +46,8 @@ Alternatively, to deploy debug builds of your app directly from Windows to your 
 # [Visual Studio for Mac](#tab/vsmac)
 <!-- markdownlint-enable MD025 -->
 
+[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
+
 To start developing native, cross-platform .NET MAUI apps on macOS, install Visual Studio 2022 for Mac 17.4 or greater by following the [installation](#installation) steps.
 
 ## Prerequisites

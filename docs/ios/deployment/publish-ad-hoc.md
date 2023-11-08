@@ -104,6 +104,8 @@ Visual Studio can publish a .NET MAUI iOS app for ad-hoc distribution. For infor
 # [Visual Studio for Mac](#tab/vsmac)
 <!-- markdownlint-enable MD025 -->
 
+[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
+
 [!INCLUDE [Publish](../includes/publish-vsmac.md)]
 
 <!-- markdownlint-disable MD029 -->
