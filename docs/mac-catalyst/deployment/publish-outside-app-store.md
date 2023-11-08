@@ -6,6 +6,12 @@ ms.date: 03/23/2023
 
 # Publish a Mac Catalyst app for distribution outside the Mac App Store
 
+> [!div class="op_single_selector"]
+>
+> - [Publish an unsigned app](publish-unsigned.md)
+> - [Publish for app store distribution](publish-app-store.md)
+> - [Publish for ad-hoc distribution](publish-ad-hoc.md)
+
 An alternative to distributing Mac Catalyst apps through the Mac App Store is to distribute them outside the Mac App Store. With this approach, your Mac Catalyst app can be hosted at a location of your choosing for download. Members of the Apple Developer Program and the Apple Developer Enterprise Program can use this distribution approach.
 
 Distributing a Mac Catalyst app requires that the app is provisioned using a *provisioning profile*. Provisioning profiles are files that contain code signing information, as well as the identity of the app and its intended distribution mechanism.

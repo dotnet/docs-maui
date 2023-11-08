@@ -6,6 +6,12 @@ ms.date: 03/23/2023
 
 # Publish a Mac Catalyst app for Mac App Store distribution
 
+> [!div class="op_single_selector"]
+>
+> - [Publish an unsigned app](publish-unsigned.md)
+> - [Publish outside the app store](publish-outside-app-store.md)
+> - [Publish for ad-hoc distribution](publish-ad-hoc.md)
+
 The most common approach to distributing Mac Catalyst apps to users is through the Mac App Store. Apps are submitted to the Mac App Store through an online tool called *App Store Connect*. Only developers who belong to the Apple Developer Program have access to this tool. Members of the Apple Developer Enterprise Program do not have access. All apps submitted to the Mac App Store require approval from Apple.
 
 Distributing a Mac Catalyst app requires that the app is provisioned using a *provisioning profile*. Provisioning profiles are files that contain code signing information, as well as the identity of the app and its intended distribution mechanism.

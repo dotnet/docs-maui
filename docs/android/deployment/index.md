@@ -8,10 +8,9 @@ ms.date: 04/05/2023
 
 > [!div class="op_single_selector"]
 >
-> - [Publish for Android](index.md)
-> - [Publish for iOS](../../ios/deployment/index.md)
-> - [Publish for macOS](../../mac-catalyst/deployment/index.md)
-> - [Publish for Windows](../../windows/deployment/overview.md)
+> - [Publish for Google Play distribution](publish-google-play.md)
+> - [Publish for ad-hoc distribution](publish-ad-hoc.md)
+> - [Publish using the command line](publish-cli.md)
 
 The final step in the development of a .NET Multi-platform App UI (.NET MAUI) app is to publish it. Publishing is the process of creating a package that contains the app and is ready for users to install on their devices. Publishing involve two essential tasks:
 

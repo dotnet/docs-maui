@@ -6,6 +6,11 @@ ms.date: 05/16/2023
 
 # Publish an Android app using the command line
 
+> [!div class="op_single_selector"]
+>
+> - [Publish for Google Play distribution](publish-google-play.md)
+> - [Publish for ad-hoc distribution](publish-ad-hoc.md)
+
 To distribute a .NET Multi-platform App UI (.NET MAUI) Android app, you'll need to sign it with a key from your keystore. A *keystore* is a database of security certificates that's created by using `keytool` from the Java Development Kit (JDK). A keystore is required when publishing a .NET MAUI Android app, as Android won't run apps that haven't been signed.
 
 ## Create a keystore file
