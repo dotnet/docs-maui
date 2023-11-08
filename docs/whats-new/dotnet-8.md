@@ -34,6 +34,7 @@ While the focus of this release of .NET MAUI is quality, there's also some new f
 ### Desktop
 
 - Menu bar items and context menu items can be invoked through keyboard shortcuts known as keyboard accelerators. For more information, see [Keyboard accelerators](~/user-interface/keyboard-accelerators.md).
+- Windows apps can be published as unpackaged apps. For more information, see [Publish an unpackaged .NET MAUI app for Windows with the CLI](~/windows/deployment/publish-unpackaged-cli.md).
 
 ### Gesture recognizers
 
