@@ -788,8 +788,10 @@
               items:
                 - name: Overview
                   href: windows/deployment/overview.md
-                - name: Publish with the .NET CLI
+                - name: Publish a packaged app with the .NET CLI
                   href: windows/deployment/publish-cli.md
+                - name: Publish an unpackaged app with the .NET CLI
+                  href: windows/deployment/publish-unpackaged-cli.md
                 - name: Publish with Visual Studio to a folder
                   href: windows/deployment/publish-visual-studio-folder.md
     - name: Troubleshooting

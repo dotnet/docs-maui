@@ -1,21 +1,17 @@
 ---
-title: "Use the CLI to publish for Windows"
-description: "Learn how to package and publish a Windows .NET MAUI app with the dotnet publish command."
+title: "Use the CLI to publish packageds app for Windows"
+description: "Learn how to package and publish a packaged Windows .NET MAUI app with the dotnet publish command."
 ms.date: 10/12/2022
 ---
 
-# Publish a .NET MAUI app for Windows with the CLI
+# Publish a packaged .NET MAUI app for Windows with the CLI
 
 > [!div class="op_single_selector"]
 >
-> - [Publish for Android](../../android/deployment/publish-cli.md)
-> - [Publish for iOS](../../ios/deployment/index.md)
-> - [Publish for macOS](../../mac-catalyst/deployment/index.md)
-> - [Publish for Windows](publish-cli.md)
+> - [Publish Packaged / MSIX](publish-cli.md)
+> - [Publish Unpackaged / EXE](publish-unpackaged-cli.md)
 
 When distributing your .NET Multi-platform App UI (.NET MAUI) app for Windows, you can publish the app and its dependencies to a folder for deployment to another system. You can also package the app into an MSIX package, which has numerous benefits for the users installing your app. For more information about the benefits of MSIX, see [What is MSIX?](/windows/msix/overview)
-
-.NET MAUI currently only allows publishing an MSIX package. You can't yet publish a Windows executable file for distribution.
 
 ## Create a signing certificate
 
@@ -105,7 +101,7 @@ Add the following `<PropertyGroup>` node to your project file. This property gro
 
 Replace the `<PackageCertificateThumbprint>` property value with the certificate thumbprint you previously generated. Alternatively, you can remove this setting from the project file and provide it on the command line. For example: `-p:PackageCertificateThumbprint=A10612AF095FD8F8255F4C6691D88F79EF2B135E`.
 
-The second `<PropertyGroup>` in the example is required to work around a bug in the Windows SDK. For more information about the bug, see [WindowsAppSDK Issue #2940](https://github.com/microsoft/WindowsAppSDK/issues/2940).
+The second `<PropertyGroup>` in the example is required to work around a bug in the Windows SDK. For more information about the bug, see [WindowsAppSDK Issue #3337](https://github.com/microsoft/WindowsAppSDK/issues/3337).
 
 ## Publish
 
