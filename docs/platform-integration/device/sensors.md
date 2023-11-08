@@ -178,13 +178,8 @@ Even though this article is listing **shake** as a sensor, it isn't. The [accele
 
 The <xref:Microsoft.Maui.Devices.Sensors.IAccelerometer> interface provides access to the sensor, and is available through the <xref:Microsoft.Maui.Devices.Sensors.Accelerometer.Default?displayProperty=nameWithType> property. Both the `IAccelerometer` interface and `Accelerometer` class are contained in the `Microsoft.Maui.Devices.Sensors` namespace.
 
-### Get started
-
-To access the accelerometer functionality the following platform-specific setup maybe required:
-
-[!INCLUDE [Android sensor high sampling rate](../includes/android-sensors.md)]
-
-### Detect shake
+> [!NOTE]
+> If your app needs to gather accelerometer sensor data using the <xref:Microsoft.Maui.Devices.Sensors.SensorSpeed.Fastest> sensor speed, you must declare the `HIGH_SAMPLING_RATE_SENSORS` permission. For more information, see [Accelerometer](#accelerometer).
 
 The detect shake API uses raw readings from the accelerometer to calculate acceleration. It uses a simple queue mechanism to detect if 3/4ths of the recent accelerometer events occurred in the last half second. Acceleration is calculated by adding the square of the X, Y, and Z ($x^2+y^2+z^2$) readings from the accelerometer and comparing it to a specific threshold.
 
