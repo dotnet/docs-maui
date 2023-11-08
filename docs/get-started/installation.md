@@ -171,7 +171,7 @@ No matter which way you install Android, you can develop .NET MAUI apps in Visua
 
 #### Using "InstallAndroidDependencies"
 
-* .NET 7 and above has a build target that helps set up your Android environment for you. You can add or remove the following properties to `dotnet build -t:InstallAndroidDependencies` to configure your machine:
+* .NET 7 and above has a build target that helps set up your Android environment for you. You can add or remove the following properties to `dotnet build -t:InstallAndroidDependencies -f:net7.0-android` to configure your machine:
   * `-p:AndroidSdkDirectory "<PATH>"` installs or updates Android dependencies to the specified path (Note: You must use an absolute path without a tilde "~").
   * `-p:JavaSdkDirectory "<PATH>"` installs Java to the specified path (Note: You must use an absolute path without a tilde "~").
   * `-p:AcceptAndroidSDKLicenses=True` accepts the necessary Android licenses for development.
