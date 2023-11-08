@@ -26,6 +26,8 @@ To create a distribution certificate:
 # [Visual Studio for Mac](#tab/vsmac)
 <!-- markdownlint-enable MD025 -->
 
+[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
+
 1. In Visual Studio for Mac, go to **Visual Studio > Preferences > Publishing > Apple Developer Account**.
 1. In the **Apple Developer Accounts** window, select a team and click the **View Details...** button.
 1. In the **Details** window, click **Create Certificate** and select **Apple Distribution** or **iOS Distribution**. A new signing identity will be created and will sync with Apple provided that you have the correct permissions.

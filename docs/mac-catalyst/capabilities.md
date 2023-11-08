@@ -38,6 +38,8 @@ Once you've created an App ID you must create a provisioning profile for the App
 
 ## Download provisioning profiles
 
+[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
+
 Once you've created a provisioning profile it must be downloaded by Visual Studio for Mac:
 
 1. In Visual Studio for Mac, go to *Visual Studio > Preferences > Publishing > Apple Developer Account*.

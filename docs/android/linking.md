@@ -30,6 +30,8 @@ Linker behavior can be configured for each build configuration of your app. By d
 # [Visual Studio for Mac](#tab/vsmac)
 <!-- markdownlint-enable MD025 -->
 
+[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
+
 1. In the **Solution Window**, right-click on your .NET MAUI app project and select **Properties**.
 1. In the **Project Properties** window, select the **Build > Android > Linker** tab.
 1. In the **Project Properties** window, ensure the **Configuration** drop-down is set to **Release** and set the **Linker Behavior** drop-down to your desired linker behavior:
