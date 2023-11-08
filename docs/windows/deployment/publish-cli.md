@@ -8,8 +8,8 @@ ms.date: 10/12/2022
 
 > [!div class="op_single_selector"]
 >
-> - [Publish Packaged / MSIX](publish-cli.md)
-> - [Publish Unpackaged / EXE](publish-unpackaged-cli.md)
+> - [Publish an unpackaged app using the command line](publish-unpackaged-cli.md)
+> - [Publish a packaged app using Visual Studio](publish-visual-studio-folder.md)
 
 When distributing your .NET Multi-platform App UI (.NET MAUI) app for Windows, you can publish the app and its dependencies to a folder for deployment to another system. You can also package the app into an MSIX package, which has numerous benefits for the users installing your app. For more information about the benefits of MSIX, see [What is MSIX?](/windows/msix/overview)
 

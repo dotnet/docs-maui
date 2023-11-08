@@ -1,15 +1,16 @@
 ---
 title: "Use the CLI to publish unpackaged apps for Windows"
 description: "Learn how to package and publish an unpackaged Windows .NET MAUI app with the dotnet publish command."
-ms.date: 10/12/2022
+ms.date: 11/08/2023
+monikerRange: ">=net-maui-8.0"
 ---
 
 # Publish an unpackaged .NET MAUI app for Windows with the CLI
 
 > [!div class="op_single_selector"]
 >
-> - [Publish Packaged / MSIX](publish-cli.md)
-> - [Publish Unpackaged / EXE](publish-unpackaged-cli.md)
+> - [Publish a packaged app using the command line](publish-cli.md)
+> - [Publish a packaged app using Visual Studio](publish-visual-studio-folder.md)
 
 When distributing your .NET Multi-platform App UI (.NET MAUI) app for Windows, you can publish the app and its dependencies to a folder for deployment to another system.
 
