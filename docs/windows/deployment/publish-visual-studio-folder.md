@@ -11,7 +11,7 @@ ms.date: 10/06/2022
 > - [Publish a packaged app using the command line](publish-cli.md)
 > - [Publish an unpackaged app using the command line](publish-unpackaged-cli.md)
 
-This article describes how to use Visual Studio to publish your .NET MAUI app for Windows. .NET MAUI apps are packaged into an MSIX package, which is used for installing in Windows or for submission to the Microsoft Store. For more information about the benefits of MSIX, see [What is MSIX?](/windows/msix/overview).
+This article describes how to use Visual Studio to publish your .NET MAUI app for Windows. .NET MAUI apps can be packaged into an MSIX package, which is used for installing in Windows or for submission to the Microsoft Store. For more information about the benefits of MSIX, see [What is MSIX?](/windows/msix/overview).
 
 ## Set the build target
 
