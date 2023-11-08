@@ -6,7 +6,7 @@ ms.date: 11/08/2023
 <!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
 
-If your app targets Android 12+ (API 31+), the system places a 200 Hz limit on the refresh rate of data from this sensor. If your app needs to gather sensor data at a higher rate, you must declare the `HIGH_SAMPLING_RATE_SENSORS` permission. You can configure the permission in the following ways:
+If your app targets Android 12+ (API 31+), the system places a 200 Hz limit on the refresh rate of data from this sensor. If your app needs to gather sensor data using <xref:Microsoft.Maui.Devices.Sensors.SensorSpeed.Fastest>, you must declare the `HIGH_SAMPLING_RATE_SENSORS` permission. You can configure the permission in the following ways:
 
 - Add the assembly-based permission:
 
