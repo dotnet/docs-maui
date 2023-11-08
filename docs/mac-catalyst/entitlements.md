@@ -30,6 +30,8 @@ To add a new entitlements file to your .NET MAUI app project, add a new XML file
 
 ## Set entitlements
 
+[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
+
 Entitlements can be configured in Visual Studio for Mac by double-clicking the *Entitlements.plist* file to open it in the entitlements editor:
 
 1. In Visual Studio for Mac's **Solution Window**, double-click the *Entitlements.plist* file from the *Platforms > MacCatalyst* folder of your .NET MAUI app project to open it in the entitlements editor. Then, change from the **Source** view to the **Entitlements** view:
@@ -44,9 +46,9 @@ Entitlements can be configured in Visual Studio for Mac by double-clicking the *
 
 It may also be necessary to set privacy keys in *Info.plist*, for certain entitlements.
 
-[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
-
 ## Consume entitlements
+
+[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
 
 A .NET MAUI Mac Catalyst app must be configured to consume the entitlements defined in the *Entitlements.plist* file:
 
@@ -61,8 +63,6 @@ A .NET MAUI Mac Catalyst app must be configured to consume the entitlements defi
     :::image type="content" source="media/entitlements/custom-entitlements-set.png" alt-text="Visual Studio for Mac custom entitlements field set.":::
 
 1. In the **Project Properties** window, click the **OK** button to close the window.
-
-[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
 
 > [!IMPORTANT]
 > The custom entitlements field must be set separately for each build configuration for your app.

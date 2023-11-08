@@ -9,6 +9,8 @@ no-loc: [ ILLink ]
 
 [!INCLUDE [Linker introduction and behavior](../macios/includes/linker-behavior.md)]
 
+[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
+
 To configure linker behavior in Visual Studio for Mac:
 
 1. In the **Solution Window**, right-click on your .NET MAUI app project and select **Properties**.
@@ -18,7 +20,5 @@ To configure linker behavior in Visual Studio for Mac:
     :::image type="content" source="media/linking/vsmac.png" alt-text="Screenshot of the linker behavior for Mac Catalyst in Visual Studio for Mac.":::
 
 1. In the **Project Properties** window, click the **OK** button.
-
-[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
 
 [!INCLUDE [Control the linker](../includes/linker-control.md)]

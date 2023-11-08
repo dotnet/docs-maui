@@ -205,7 +205,7 @@ If your app fails to compile, review [Troubleshooting known issues](../troublesh
 # [Visual Studio for Mac](#tab/vsmac)
 <!-- markdownlint-enable MD025 -->
 
-[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
+[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol-net8.md)]
 
 ## Prerequisites
 
