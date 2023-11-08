@@ -54,6 +54,14 @@ The accelerometer sensor measures the acceleration of the device along its three
 
 The <xref:Microsoft.Maui.Devices.Sensors.IAccelerometer> interface provides access to the sensor, and is available through the <xref:Microsoft.Maui.Devices.Sensors.Accelerometer.Default?displayProperty=nameWithType> property. Both the `IAccelerometer` interface and `Accelerometer` class are contained in the `Microsoft.Maui.Devices.Sensors` namespace.
 
+### Get started
+
+To access the accelerometer functionality the following platform-specific setup maybe required:
+
+[!INCLUDE [Android sensor high sampling rate](../includes/android-sensors.md)]
+
+### Monitor the accelerometer sensor
+
 To start monitoring the accelerometer sensor, call the <xref:Microsoft.Maui.Devices.Sensors.IAccelerometer.Start%2A?displayProperty=nameWithType> method. .NET MAUI sends accelerometer data changes to your app by raising the <xref:Microsoft.Maui.Devices.Sensors.IAccelerometer.ReadingChanged?displayProperty=nameWithType> event. Use the <xref:Microsoft.Maui.Devices.Sensors.IAccelerometer.Stop%2A?displayProperty=nameWithType> method to stop monitoring the sensor. You can detect the monitoring state of the accelerometer with the <xref:Microsoft.Maui.Devices.Sensors.IAccelerometer.IsMonitoring%2A?displayProperty=nameWithType> property, which will be `true` if the accelerometer was started and is currently being monitored.
 
 The following code example demonstrates monitoring the accelerometer for changes:
@@ -170,6 +178,9 @@ Even though this article is listing **shake** as a sensor, it isn't. The [accele
 
 The <xref:Microsoft.Maui.Devices.Sensors.IAccelerometer> interface provides access to the sensor, and is available through the <xref:Microsoft.Maui.Devices.Sensors.Accelerometer.Default?displayProperty=nameWithType> property. Both the `IAccelerometer` interface and `Accelerometer` class are contained in the `Microsoft.Maui.Devices.Sensors` namespace.
 
+> [!NOTE]
+> If your app needs to gather accelerometer sensor data using the <xref:Microsoft.Maui.Devices.Sensors.SensorSpeed.Fastest> sensor speed, you must declare the `HIGH_SAMPLING_RATE_SENSORS` permission. For more information, see [Accelerometer](#accelerometer).
+
 The detect shake API uses raw readings from the accelerometer to calculate acceleration. It uses a simple queue mechanism to detect if 3/4ths of the recent accelerometer events occurred in the last half second. Acceleration is calculated by adding the square of the X, Y, and Z ($x^2+y^2+z^2$) readings from the accelerometer and comparing it to a specific threshold.
 
 To start monitoring the accelerometer sensor, call the <xref:Microsoft.Maui.Devices.Sensors.IAccelerometer.Start%2A?displayProperty=nameWithType> method. When a shake is detected, the <xref:Microsoft.Maui.Devices.Sensors.IAccelerometer.ShakeDetected?displayProperty=nameWithType> event is raised.  Use the <xref:Microsoft.Maui.Devices.Sensors.IAccelerometer.Stop%2A?displayProperty=nameWithType> method to stop monitoring the sensor. You can detect the monitoring state of the accelerometer with the `IAccelerometer.IsMonitoring` property, which will be `true` if the accelerometer was started and is currently being monitored.
@@ -190,6 +201,14 @@ The gyroscope sensor measures the angular rotation speed around the device's thr
 
 The <xref:Microsoft.Maui.Devices.Sensors.IGyroscope> interface provides access to the sensor, and is available through the <xref:Microsoft.Maui.Devices.Sensors.Gyroscope.Default?displayProperty=nameWithType> property. Both the `IGyroscope` interface and `Gyroscope` class are contained in the `Microsoft.Maui.Devices.Sensors` namespace.
 
+### Get started
+
+To access the gyroscope functionality the following platform-specific setup maybe required:
+
+[!INCLUDE [Android sensor high sampling rate](../includes/android-sensors.md)]
+
+### Monitor the gyroscope sensor
+
 To start monitoring the gyroscope sensor, call the <xref:Microsoft.Maui.Devices.Sensors.IGyroscope.Start%2A?displayProperty=nameWithType> method. .NET MAUI sends gyroscope data changes to your app by raising the <xref:Microsoft.Maui.Devices.Sensors.IGyroscope.ReadingChanged?displayProperty=nameWithType> event. The data provided by this event is measured in rad/s (radian per second). Use the <xref:Microsoft.Maui.Devices.Sensors.IGyroscope.Stop%2A?displayProperty=nameWithType> method to stop monitoring the sensor. You can detect the monitoring state of the gyroscope with the <xref:Microsoft.Maui.Devices.Sensors.IGyroscope.IsMonitoring%2A?displayProperty=nameWithType> property, which will be `true` if the gyroscope was started and is currently being monitored.
 
 The following code example demonstrates monitoring the gyroscope:
@@ -205,6 +224,14 @@ There is no platform-specific information related to the gyroscope sensor.
 The magnetometer sensor indicates the device's orientation relative to Earth's magnetic field.
 
 The <xref:Microsoft.Maui.Devices.Sensors.IMagnetometer> interface provides access to the sensor, and is available through the <xref:Microsoft.Maui.Devices.Sensors.Magnetometer.Default?displayProperty=nameWithType> property. Both the `IMagnetometer` interface and `Magnetometer` class are contained in the `Microsoft.Maui.Devices.Sensors` namespace.
+
+### Get started
+
+To access the magnetometer functionality the following platform-specific setup maybe required:
+
+[!INCLUDE [Android sensor high sampling rate](../includes/android-sensors.md)]
+
+### Monitor the magnetometer sensor
 
 To start monitoring the magnetometer sensor, call the <xref:Microsoft.Maui.Devices.Sensors.IMagnetometer.Start%2A?displayProperty=nameWithType> method. .NET MAUI sends magnetometer data changes to your app by raising the <xref:Microsoft.Maui.Devices.Sensors.IMagnetometer.ReadingChanged?displayProperty=nameWithType> event. The data provided by this event is measured in $µT$ (microteslas). Use the <xref:Microsoft.Maui.Devices.Sensors.IMagnetometer.Stop%2A?displayProperty=nameWithType> method to stop monitoring the sensor. You can detect the monitoring state of the magnetometer with the <xref:Microsoft.Maui.Devices.Sensors.IMagnetometer.IsMonitoring%2A?displayProperty=nameWithType> property, which will be `true` if the magnetometer was started and is currently being monitored.
 
