@@ -6,7 +6,7 @@ ms.date: 02/15/2023
 
 # Xamarin.Android project migration
 
-A .NET 7 project for a .NET Android app is similar to the following example:
+A .NET 8 project for a .NET Android app is similar to the following example:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -80,7 +80,7 @@ In Xamarin.Android, Java, and Kotlin Android projects, the `<uses-sdk/>` element
 
 For more information about the `<uses-sdk/>` element, see the [Android documentation](https://developer.android.com/guide/topics/manifest/uses-sdk-element).
 
-In .NET 7+ Android apps, there are MSBuild properties to set these values. Using the MSBuild properties has other benefits. In most cases the `<uses-sdk/>` element should be removed in favor of values in your project's `.csproj` file:
+In .NET 8 Android apps, there are MSBuild properties to set these values. Using the MSBuild properties has other benefits. In most cases the `<uses-sdk/>` element should be removed in favor of values in your project's `.csproj` file:
 
 ```xml
 <Project>
@@ -144,7 +144,7 @@ With `AndroidLinkMode=SdkOnly`, only BCL and SDK assemblies marked with `%(Trimm
 `$(RunAOTCompilation)` is the new MSBuild property for enabling Ahead-of-Time (AoT) compilation. This is the same property used for [Blazor WASM](/aspnet/core/blazor/host-and-deploy/webassembly/#ahead-of-time-aot-compilation). The `$(AotAssemblies)` property also enables AOT, in order to help with migration from Xamarin.Android projects to .NET Android projects.
 
 > [!TIP]
-> You should migrate to the new `$(RunAOTCompilation)` property, because `$(AotAssemblies)` is deprecated in .NET 7.
+> You should migrate to the new `$(RunAOTCompilation)` property, because `$(AotAssemblies)` is deprecated from .NET 7.
 
 Release builds default to the following AOT property values:
 
