@@ -38,7 +38,7 @@ Developer Mode is enabled in **Settings** app, under **Update & Security** > **F
 
 In Visual Studio, set the **Debug Target** to **Framework (...)** > **net7.0-windows**. There is a version number in the item entry, which may or may not match the following screenshot:
 
-:::image type="content" source="media/setup/vs-target-windows-net7.png" alt-text="Visual Studio debug target set to Windows for .NET MAUI app using .NET 7.":::
+:::image type="content" source="media/setup/vs-target-windows-net7.png" alt-text="Visual Studio debug target set to Windows for .NET MAUI app.":::
 
 <!--
 ## Start Menu entry
