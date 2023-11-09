@@ -181,7 +181,7 @@ public class MainApplication : MauiApplication
 
 ```
 
-This declaration causes the following XML fragment to be generated in *obj\\Debug\\net7.0-android\\AndroidManifest.xml*:
+This declaration causes the following XML fragment to be generated in *obj\\Debug\\net8.0-android\\AndroidManifest.xml*:
 
 ```xml
 <application android:label="MyMauiApp" android:theme="@style/Maui.SplashTheme" android:debuggable="true" ...>

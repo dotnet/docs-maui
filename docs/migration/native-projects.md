@@ -29,7 +29,7 @@ The new project should be given the same project and package name as your existi
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net7.0-android</TargetFramework>
+    <TargetFramework>net8.0-android</TargetFramework>
     <SupportedOSPlatformVersion>21</SupportedOSPlatformVersion>
     <OutputType>Exe</OutputType>
     <Nullable>enable</Nullable>
@@ -42,7 +42,7 @@ The new project should be given the same project and package name as your existi
 ```
 
 > [!IMPORTANT]
-> The target framework moniker (TFM) is what denotes the project as using .NET, in this case .NET 8. Valid TFMs for equivalent Xamarin native projects are net7.0-android, net7.0-ios, net7.0-macos, net7.0-tvos.
+> The target framework moniker (TFM) is what denotes the project as using .NET, in this case .NET 8. Valid TFMs for equivalent Xamarin native projects are net8.0-android, net8.0-ios, net8.0-macos, net8.0-tvos.
 
 Launch the app to confirm that your development environment can build the app.
 
@@ -62,10 +62,10 @@ You can confirm a package is .NET 8 compatible by looking at the **Frameworks** 
 
 | Compatible frameworks | Incompatible frameworks |
 | --- | --- |
-| net7.0-android, monoandroid, monoandroidXX.X | |
-| net7.0-ios | monotouch, xamarinios, xamarinios10 |
-| net7.0-macos | monomac, xamarinmac, xamarinmac20 |
-| net7.0-tvos | xamarintvos |
+| net8.0-android, monoandroid, monoandroidXX.X | |
+| net8.0-ios | monotouch, xamarinios, xamarinios10 |
+| net8.0-macos | monomac, xamarinmac, xamarinmac20 |
+| net8.0-tvos | xamarintvos |
 | | xamarinwatchos |
 
 > [!NOTE]

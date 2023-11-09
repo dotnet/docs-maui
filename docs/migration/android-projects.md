@@ -11,7 +11,7 @@ A .NET 8 project for a .NET Android app is similar to the following example:
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net7.0-android</TargetFramework>
+    <TargetFramework>net8.0-android</TargetFramework>
     <OutputType>Exe</OutputType>
   </PropertyGroup>
 </Project>
@@ -85,15 +85,15 @@ In .NET 8 Android apps, there are MSBuild properties to set these values. Using 
 ```xml
 <Project>
   <PropertyGroup>
-    <TargetFramework>net7.0-android</TargetFramework>
+    <TargetFramework>net8.0-android</TargetFramework>
     <SupportedOSPlatformVersion>21</SupportedOSPlatformVersion>
   </PropertyGroup>
 </Project>
 ```
 
-In this example, `net7.0-android` is shorthand for `net7.0-android33.0`. Future versions of .NET will track the latest Android version available at the time of the .NET release.
+In this example, `net8.0-android` is shorthand for `net8.0-android34.0`. Future versions of .NET will track the latest Android version available at the time of the .NET release.
 
-`TargetFramework` maps to `android:targetSdkVersion`. At build time, this value will automatically be included in the `<uses-sdk/>` element for you. The benefit of using `TargetFramework` in this way is that you're given the matching C# binding for Android API 33 for `net7.0-android33.0`. Android releases independently of the .NET release cycle, so we have the flexibility to opt into `net7.0-android34.0` when a binding is available sometime after .NET 7's release.
+`TargetFramework` maps to `android:targetSdkVersion`. At build time, this value will automatically be included in the `<uses-sdk/>` element for you. The benefit of using `TargetFramework` in this way is that you're given the matching C# binding for Android API 34 for `net8.0-android34.0`. Android releases independently of the .NET release cycle, so we have the flexibility to opt into `net8.0-android35.0` when a binding is available for the next Android release.
 
 Similarly, `SupportedOSPlatformVersion` maps to `android:minSdkVersion`. At build time, this value will automatically be included in the `<uses-sdk/>` element for you. Android APIs are decorated with the <xref:System.Runtime.Versioning.SupportedOSPlatformAttribute> so that you get build warnings for calling APIs that are only available for some of the Android versions your app can run on:
 

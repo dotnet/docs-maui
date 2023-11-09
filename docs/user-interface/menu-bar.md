@@ -68,7 +68,7 @@ The following example shows a <xref:Microsoft.Maui.Controls.ContentPage> that de
 
 This example defines three top-level menus. Each top-level menu has menu items, and the second top-level menu has a sub-menu and a separator:
 
-:::image type="content" source="media/menubar/menubar-net7.png" alt-text="Screenshot of menu bar.":::
+:::image type="content" source="media/menubar/menubar.png" alt-text="Screenshot of menu bar.":::
 
 > [!NOTE]
 > On Mac Catalyst, menu items are added to the system menu bar.

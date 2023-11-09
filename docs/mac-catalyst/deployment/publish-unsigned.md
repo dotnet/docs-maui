@@ -16,7 +16,7 @@ To publish an unsigned .NET Multi-platform App UI (.NET MAUI) Mac Catalyst app, 
 
 | Parameter                    | Value                                                                                               |
 |------------------------------|-----------------------------------------------------------------------------------------------------|
-| `-f` or `--framework`        | The target framework, which is `net7.0-maccatalyst`.                        |
+| `-f` or `--framework`        | The target framework, which is `net8.0-maccatalyst`.                        |
 | `-c` or `--configuration`    | The build configuration, which is `Release`.                                                        |
 | `-p:MtouchLink`              | The link mode for the project, which can be `None`, `SdkOnly`, or `Full`.                           |
 | `-p:CreatePackage`           | An optional parameter that controls whether to create an .app or a .pkg. Use `false` for an *.app*. |
@@ -37,16 +37,16 @@ Additional build parameters can be specified on the command line. The following 
 For example, use the following command to create an *.app*:
 
 ```dotnetcli
-dotnet publish -f net7.0-maccatalyst -c Release -p:CreatePackage=false
+dotnet publish -f net8.0-maccatalyst -c Release -p:CreatePackage=false
 ```
 
 Use the following command to create a *.pkg*:
 
 ```dotnetcli
-dotnet publish -f net7.0-maccatalyst -c Release
+dotnet publish -f net8.0-maccatalyst -c Release
 ```
 
-Publishing builds the app, and then copies the *.app* to the *bin/Release/net7.0-maccatalyst/* folder or the *.pkg* to the *bin/Release/net7.0-maccatalyst/publish/* folder. If you publish the app using only a single architecture, the *.app* will be published to the *bin/Release/net7.0-maccatalyst/{architecture}/* folder while the *.pkg* will be published to the *bin/Release/net7.0-maccatalyst/{architecture}/publish/* folder.
+Publishing builds the app, and then copies the *.app* to the *bin/Release/net8.0-maccatalyst/* folder or the *.pkg* to the *bin/Release/net8.0-maccatalyst/publish/* folder. If you publish the app using only a single architecture, the *.app* will be published to the *bin/Release/net8.0-maccatalyst/{architecture}/* folder while the *.pkg* will be published to the *bin/Release/net8.0-maccatalyst/{architecture}/publish/* folder.
 
 For more information about the `dotnet publish` command, see [dotnet publish](/dotnet/core/tools/dotnet-publish).
 

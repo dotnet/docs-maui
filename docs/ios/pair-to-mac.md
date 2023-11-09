@@ -154,7 +154,7 @@ If you encounter any trouble using automatic Mac provisioning, take a look at th
 Pair to Mac supports building .NET MAUI apps from the command line. Navigate to the folder that holds the source of your .NET MAUI iOS app and execute the following command:
 
 ```dotnet
-dotnet build -f net7.0-ios -p:ServerAddress={macOS build host IP address} -p:ServerUser={macOS username} -p:ServerPassword={macOS password} -p:TcpPort=58181 -p:_DotNetRootRemoteDirectory=/Users/{macOS username}/Library/Caches/Xamarin/XMA/SDKs/dotnet/
+dotnet build -f net8.0-ios -p:ServerAddress={macOS build host IP address} -p:ServerUser={macOS username} -p:ServerPassword={macOS password} -p:TcpPort=58181 -p:_DotNetRootRemoteDirectory=/Users/{macOS username}/Library/Caches/Xamarin/XMA/SDKs/dotnet/
 ```
 
 The parameters passed to `dotnet` in the above example are:

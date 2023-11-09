@@ -11,10 +11,10 @@ You can confirm a package is .NET 8 compatible by looking at the **Frameworks** 
 
 | Compatible frameworks | Incompatible frameworks |
 | --- | --- |
-| net7.0-android, monoandroid, monoandroidXX.X | |
-| net7.0-ios | monotouch, xamarinios, xamarinios10 |
-| net7.0-macos | monomac, xamarinmac, xamarinmac20 |
-| net7.0-tvos | xamarintvos |
+| net8.0-android, monoandroid, monoandroidXX.X | |
+| net8.0-ios | monotouch, xamarinios, xamarinios10 |
+| net8.0-macos | monomac, xamarinmac, xamarinmac20 |
+| net8.0-tvos | xamarintvos |
 | | xamarinwatchos |
 
 > [!NOTE]

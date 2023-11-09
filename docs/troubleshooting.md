@@ -136,7 +136,7 @@ Use a `global.json` config file in the folder where you'll create the project. T
 
 Visual Studio may not be resolving the required workloads if you try to compile a project and receive an error similar to the following text:
 
-> Platform version is not present for one or more target frameworks, even though they have specified a platform: net7.0-android, net7.0-ios, net7.0-maccatalyst
+> Platform version is not present for one or more target frameworks, even though they have specified a platform: net8.0-android, net8.0-ios, net8.0-maccatalyst
 
 This problem typically results from having an x86 and x64 SDK installed, and the x86 version is being used. Visual Studio and .NET MAUI require the x64 .NET SDK. If your operating system has a system-wide `PATH` variable that is resolving the x86 SDK first, you need to fix that by either removing the x86 .NET SDK from the `PATH` variable, or promoting the x64 .NET SDK so that it resolves first. For more information on troubleshooting x86 vs x64 SDK resolution, see [Install .NET on Windows - Troubleshooting](/dotnet/core/install/windows#it-was-not-possible-to-find-any-installed-net-core-sdks).
 
