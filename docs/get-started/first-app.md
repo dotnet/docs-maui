@@ -1,7 +1,7 @@
 ---
 title: "Build your first .NET MAUI app"
 description: "Learn how to create and run your first .NET MAUI app in Visual Studio 2022 on Windows, or Visual Studio 2022 for Mac."
-ms.date: 11/01/2022
+ms.date: 11/10/2023
 zone_pivot_groups: devices-deployment
 ---
 
@@ -15,7 +15,17 @@ In this tutorial, you'll learn how to create and run your first .NET Multi-platf
 
 ## Prerequisites
 
+::: moniker range="=net-maui-7.0"
+
 - Visual Studio 2022 17.3 or greater, with the .NET Multi-platform App UI workload installed. For more information, see [Installation](installation.md?tabs=vswin).
+
+::: moniker-end
+
+::: moniker range=">=net-maui-8.0"
+
+- Visual Studio 2022 17.8 or greater, with the .NET Multi-platform App UI workload installed. For more information, see [Installation](installation.md?tabs=vswin).
+
+::: moniker-end
 
 ## Create an app
 
@@ -55,7 +65,17 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 a
 
 01. In the **Additional information** window, choose the version of .NET that you'd like to target and click the **Create** button:
 
+::: moniker range="=net-maui-7.0"
+
     :::image type="content" source="media/first-app/vs/additional-information.png" alt-text="Additional information.":::
+
+::: moniker-end
+
+::: moniker range=">=net-maui-8.0"
+
+    :::image type="content" source="media/first-app/vs/additional-information-net8.png" alt-text="Additional information.":::
+
+::: moniker-end
 
 01. Wait for the project to be created and its dependencies to be restored:
 
