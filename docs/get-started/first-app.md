@@ -329,6 +329,14 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 f
 
     <!-- markdownlint-enable MD029 -->
 
+01. In Visual Studio 2022 for Mac, right-click on the **MyMauiApp** project and select **Edit Project File**. Then, in the project file editor insert the following XML before the first `<ItemGroup>`:
+
+    ```xml
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-maccatalyst|AnyCPU'">
+        <RuntimeIdentifiers>maccatalyst-x64;maccatalyst-arm64</RuntimeIdentifiers>
+    </PropertyGroup>
+    ```
+
 01. In the Visual Studio 2022 for Mac toolbar, press the **Play** button to launch the app on your Mac:
 
     :::image type="content" source="media/first-app/vsmac/mac-run.png" alt-text="Launch the app on your Mac.":::
