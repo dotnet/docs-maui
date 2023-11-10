@@ -66,7 +66,7 @@ The project file for your app should be updated to use the signing certificate, 
 The following example shows a typical property group for building and signing your Mac Catalyst app for Mac App Store distribution:
 
 ```xml
-<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-maccatalyst|AnyCPU'">
+<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-maccatalyst|AnyCPU'">
   <EnableCodeSigning>True</EnableCodeSigning>
   <CodesignKey>Apple Distribution: John Smith (AY2GDE9QM7)</CodesignKey>
   <CodesignProvision>MyMauiApp</CodesignProvision>

@@ -126,7 +126,7 @@ If you don't want to install Visual Studio, you can still get set up for .NET MA
 1. If you'd like to debug Android in Visual Studio Code, you also have to:
     1. Install [Microsoft OpenJDK 11](/java/openjdk/download#openjdk-11).
     1. Install the Android SDK. You can acquire the correct versions of the Android SDK and build tools by creating a new .NET MAUI project (`dotnet new maui`) and running the following command in your terminal:  
-    `dotnet build -t:InstallAndroidDependencies -f:net7.0-android -p:AndroidSdkDirectory="<ANDROID SDK DIRECTORY>" -p:AcceptAndroidSDKLicenses=True`  
+    `dotnet build -t:InstallAndroidDependencies -f:net8.0-android -p:AndroidSdkDirectory="<ANDROID SDK DIRECTORY>" -p:AcceptAndroidSDKLicenses=True`  
     On Windows, the suggested Android SDK directory value is `%LOCALAPPDATA%/Android/Sdk`.
 
 > [!NOTE]
@@ -141,7 +141,7 @@ If you don't want to install Visual Studio, you can still get set up for .NET MA
 1. If you'd like to debug to Android in Visual Studio Code, you also have to:
     1. Install [Microsoft OpenJDK 11](/java/openjdk/download#openjdk-11).
     1. Install the Android SDK. You can acquire the correct versions of the Android SDK and build tools by creating a new .NET MAUI project (`dotnet new maui`) and running the following command in your terminal:  
-    `dotnet build -t:InstallAndroidDependencies -f:net7.0-android -p:AndroidSdkDirectory="<ANDROID SDK DIRECTORY>" -p:AcceptAndroidSDKLicenses=True`  
+    `dotnet build -t:InstallAndroidDependencies -f:net8.0-android -p:AndroidSdkDirectory="<ANDROID SDK DIRECTORY>" -p:AcceptAndroidSDKLicenses=True`  
     On macOS, the suggested Android SDK directory value is `$HOME/Library/Android/sdk`.
 
 ### Linux
@@ -210,7 +210,7 @@ This is a known issue if you install to `%APPDATA%` on Windows and will be fixed
 ### Debugging issues
 
 * Debugging can fail to start for multiple reasons. If there isn't a clear error in the Output window, first double check that you are using the ".NET MAUI" run configuration in Visual Studio Code.
-* You can try a command line build from the terminal to see if the error is with your code or the .NET MAUI extension. For example, you could run `dotnet build -f:net7.0-android` to see if your Android build succeeds outside of Visual Studio Code. If this build succeeds, please [Report an Issue](https://github.com/microsoft/vscode-dotnettools/issues)
+* You can try a command line build from the terminal to see if the error is with your code or the .NET MAUI extension. For example, you could run `dotnet build -f:net8.0-android` to see if your Android build succeeds outside of Visual Studio Code. If this build succeeds, please [Report an Issue](https://github.com/microsoft/vscode-dotnettools/issues)
 
 ## Known Limitations
 

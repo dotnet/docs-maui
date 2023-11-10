@@ -159,7 +159,7 @@ To publish your Mac Catalyst app from the command line on a Mac, open a terminal
 
 | Parameter                    | Value                                                                                           |
 |------------------------------|-------------------------------------------------------------------------------------------------|
-| `-f` or `--framework`        | The target framework, which is `net7.0-maccatalyst`.                    |
+| `-f` or `--framework`        | The target framework, which is `net8.0-maccatalyst`.                    |
 | `-c` or `--configuration`    | The build configuration, which is `Release`.                                                    |
 | `-p:MtouchLink`              | The link mode for the project, which can be `None`, `SdkOnly`, or `Full`.                       |
 | `-p:CreatePackage`           | Set to `true` so that a package (*.pkg*) is created for the app at the end of the build.        |
@@ -174,10 +174,10 @@ To publish your Mac Catalyst app from the command line on a Mac, open a terminal
 For example, use the following command to build and sign a *.pkg* on a Mac, for ad-hoc distribution to users on registered devices:
 
 ```dotnetcli
-dotnet publish -f net7.0-maccatalyst -c Release -p:MtouchLink=SdkOnly -p:CreatePackage=true -p:EnableCodeSigning=true  -p:CodesignKey="Apple Development: John Smith (AY2GDE9QM7)" -p:CodesignProvision="MyMauiApp (Ad-hoc)" -p:CodesignEntitlements="Platforms\MacCatalyst\Entitlements.plist" -p:UseHardenedRuntime=true
+dotnet publish -f net8.0-maccatalyst -c Release -p:MtouchLink=SdkOnly -p:CreatePackage=true -p:EnableCodeSigning=true  -p:CodesignKey="Apple Development: John Smith (AY2GDE9QM7)" -p:CodesignProvision="MyMauiApp (Ad-hoc)" -p:CodesignEntitlements="Platforms\MacCatalyst\Entitlements.plist" -p:UseHardenedRuntime=true
 ```
 
-Publishing builds, signs, and packages the app, and then copies the *.pkg* to the *bin/Release/net7.0-maccatalyst/publish/* folder. If you publish the app using only a single architecture, it will be published to the *bin/Release/net7.0-maccatalyst/{architecture}/publish/* folder.
+Publishing builds, signs, and packages the app, and then copies the *.pkg* to the *bin/Release/net8.0-maccatalyst/publish/* folder. If you publish the app using only a single architecture, it will be published to the *bin/Release/net8.0-maccatalyst/{architecture}/publish/* folder.
 
 During the signing process it maybe necessary to enter your login password and allow `codesign` to run:
 
@@ -214,7 +214,7 @@ For a full list of build properties, see [Project file properties](https://githu
 The following example shows a typical property group for building and signing your Mac Catalyst app for ad-hoc distribution to users on registered devices:
 
 ```xml
-<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-maccatalyst|AnyCPU'">
+<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-maccatalyst|AnyCPU'">
   <MtouchLink>SdkOnly</MtouchLink>
   <EnableCodeSigning>True</EnableCodeSigning>
   <CreatePackage>true</CreatePackage>
@@ -228,7 +228,7 @@ The following example shows a typical property group for building and signing yo
 This example `<PropertyGroup>` adds a condition check, preventing the settings from being processed unless the condition check passes. The condition check looks for two items:
 
 1. The build configuration is set to `Release`.
-1. The target framework is set to something containing the text `net7.0-maccatalyst`.
+1. The target framework is set to something containing the text `net8.0-maccatalyst`.
 1. The platform is set to `AnyCPU`.
 
 If any of these conditions fail, the settings aren't processed. More importantly, the `<CodesignKey>` and `<CodesignProvision>` settings aren't set, preventing the app from being signed.
@@ -236,10 +236,10 @@ If any of these conditions fail, the settings aren't processed. More importantly
 After adding the above property group, the app can be published from the command line on a Mac by opening a terminal and navigating to the folder for your .NET MAUI app project. Then, run the following command:
 
 ```dotnetcli
-dotnet build -f net7.0-maccatalyst -c Release
+dotnet build -f net8.0-maccatalyst -c Release
 ```
 
-Publishing builds, signs, and packages the app, and then copies the *.pkg* to the *bin/Release/net7.0-maccatalyst/publish/* folder.
+Publishing builds, signs, and packages the app, and then copies the *.pkg* to the *bin/Release/net8.0-maccatalyst/publish/* folder.
 
 ## Distribute your app for testing
 

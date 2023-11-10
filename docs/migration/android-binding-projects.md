@@ -19,7 +19,7 @@ To migrate a Xamarin.Android binding library to a .NET Android class library:
     ```xml
     <Project Sdk="Microsoft.NET.Sdk">
       <PropertyGroup>
-        <TargetFramework>net7.0-android</TargetFramework>
+        <TargetFramework>net8.0-android</TargetFramework>
         <SupportedOSPlatformVersion>21</SupportedOSPlatformVersion>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>

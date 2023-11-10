@@ -174,7 +174,7 @@ If your app uses encryption, and you plan to distribute it outside the United St
 Currently, when you attempt to publish a .NET MAUI Mac Catalyst app for distribution outside the Mac App Store, provided you've met the provisioning requirements, you'll receive an error about `codesign` exiting with code 3:
 
 ```
-/usr/local/share/dotnet/packs/Microsoft.MacCatalyst.Sdk/16.2.1040/tools/msbuild/iOS/Xamarin.Shared.targets(1930,3): error MSB6006: "codesign" exited with code 3. [/Users/davidbritch/Projects/MyMauiApp/MyMauiApp/MyMauiApp.csproj::TargetFramework=net7.0-maccatalyst]
+/usr/local/share/dotnet/packs/Microsoft.MacCatalyst.Sdk/16.2.1040/tools/msbuild/iOS/Xamarin.Shared.targets(1930,3): error MSB6006: "codesign" exited with code 3. [/Users/davidbritch/Projects/MyMauiApp/MyMauiApp/MyMauiApp.csproj::TargetFramework=net8.0-maccatalyst]
 ```
 
 While `codesign` succeeds in signing your app, the `_CodesignVerify` target fails to verify the code signature:
@@ -204,7 +204,7 @@ To publish your Mac Catalyst app from the command line on a Mac, open a terminal
 
 | Parameter                    | Value                                                                                           |
 |------------------------------|-------------------------------------------------------------------------------------------------|
-| `-f` or `--framework`        | The target framework, which is `net7.0-maccatalyst`.                    |
+| `-f` or `--framework`        | The target framework, which is `net8.0-maccatalyst`.                    |
 | `-c` or `--configuration`    | The build configuration, which is `Release`.                                                    |
 | `-p:MtouchLink`              | The link mode for the project, which can be `None`, `SdkOnly`, or `Full`.                       |
 | `-p:CreatePackage`           | Set to `true` so that a package (*.pkg*) is created for the app at the end of the build.        |
@@ -221,7 +221,7 @@ To publish your Mac Catalyst app from the command line on a Mac, open a terminal
 For example, use the following command to build and sign a *.pkg* on a Mac, for distribution outside the Mac App Store:
 
 ```dotnetcli
-dotnet publish -f net7.0-maccatalyst -c Release -p:MtouchLink=SdkOnly -p:CreatePackage=true -p:EnableCodeSigning=true -p:EnablePackageSigning=true -p:CodesignKey="Developer ID Application: John Smith (AY2GDE9QM7)" -p:CodesignProvision="MyMauiApp (Non-App Store)" -p:CodesignEntitlements="Platforms\MacCatalyst\Entitlements.plist" -p:PackageSigningKey="Developer ID Installer: John Smith (AY2GDE9QM7)" -p:UseHardenedRuntime=true
+dotnet publish -f net8.0-maccatalyst -c Release -p:MtouchLink=SdkOnly -p:CreatePackage=true -p:EnableCodeSigning=true -p:EnablePackageSigning=true -p:CodesignKey="Developer ID Application: John Smith (AY2GDE9QM7)" -p:CodesignProvision="MyMauiApp (Non-App Store)" -p:CodesignEntitlements="Platforms\MacCatalyst\Entitlements.plist" -p:PackageSigningKey="Developer ID Installer: John Smith (AY2GDE9QM7)" -p:UseHardenedRuntime=true
 ```
 
 [!INCLUDE [Publishing output](../includes/publishing-output.md)]
@@ -255,7 +255,7 @@ For a full list of build properties, see [Project file properties](https://githu
 The following example shows a typical property group for building and signing your Mac Catalyst app for distribution outside the Mac App Store:
 
 ```xml
-<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-maccatalyst|AnyCPU'">
+<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-maccatalyst|AnyCPU'">
   <MtouchLink>SdkOnly</MtouchLink>
   <EnableCodeSigning>True</EnableCodeSigning>
   <EnablePackageSigning>true</EnablePackageSigning>
