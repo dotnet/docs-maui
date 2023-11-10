@@ -117,9 +117,9 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 a
 
     :::image type="content" source="media/first-app/vs/android-device-manager.png" alt-text="Android Device Manager window.":::
 
-01. In the Visual Studio toolbar, press the **Pixel 5 - API 30 (Android 11.0 - API 30)** button to build and run the app:
+01. In the Visual Studio toolbar, press the **Pixel 5 - API 34 (Android 14.0 - API 33)** button to build and run the app:
 
-    :::image type="content" source="media/first-app/vs/pixel5-api30.png" alt-text="Pixel 5 API 30 emulator button.":::
+    :::image type="content" source="media/first-app/vs/pixel5-api-34.png" alt-text="Pixel 5 API 34 emulator button.":::
 
     Visual Studio will start the Android emulator, build the app, and deploy the app to the emulator.
 
@@ -128,7 +128,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 a
 
 01. In the running app in the Android emulator, press the **Click me** button several times and observe that the count of the number of button clicks is incremented.
 
-    :::image type="content" source="media/first-app/vs/running-app.png" alt-text="App running in the Android emulator." lightbox="media/first-app/vs/running-app-large.png":::
+    :::image type="content" source="media/first-app/vs/android-running-app.png" alt-text="App running in the Android emulator.":::
 
 ## Troubleshooting
 
