@@ -206,11 +206,14 @@ If your app fails to compile, review [Troubleshooting known issues](../troublesh
 # [Visual Studio for Mac](#tab/vsmac)
 <!-- markdownlint-enable MD025 -->
 
-[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol-net8.md)]
+[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
 
 ## Prerequisites
 
-- Visual Studio 2022 for Mac 17.6 or greater, with the .NET, .NET MAUI, Android, and iOS workloads installed. For more information, see [Installation](installation.md?tabs=vsmac).
+- Visual Studio 2022 for Mac 17.6 with the .NET, .NET MAUI, Android, and iOS workloads installed. For more information, see [Installation](installation.md?tabs=vsmac).
+
+> [!IMPORTANT]
+> To use Visual Studio for Mac with .NET 8, enable the **Visual Studio > Preferences > Other > Preview Features > Use the .NET 8 SDK if installed (requires restart)** checkbox.
 
 ## Create an app
 
