@@ -326,7 +326,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 f
 :::zone pivot="devices-maccatalyst"
 
 <!-- markdownlint-disable MD029 -->
-06. In the Visual Studio 2022 for Mac toolbar, ensure that the debug target is set to **My Mac**:
+06. In the Visual Studio 2022 for Mac toolbar, ensure that the debug target is set to **My Mac (MacCatalyst)**:
 
     :::image type="content" source="media/first-app/vsmac/mac-debug-target.png" alt-text="Ensure the debug target is set to My Mac.":::
 
