@@ -56,7 +56,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 a
 
 01. In the **Additional information** window, choose the version of .NET that you'd like to target and click the **Create** button:
 
-    :::image type="content" source="media/first-app/vs/additional-information" alt-text="Additional information.":::
+    :::image type="content" source="media/first-app/vs/additional-information.png" alt-text="Additional information.":::
 
 01. Wait for the project to be created and its dependencies to be restored:
 
