@@ -25,14 +25,14 @@ The [`OnPlatform`](xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension) markup
 
 The [`OnPlatform`](xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension) markup extension is supported by the <xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension> class, which defines the following properties:
 
-- `Default` of type `object`, that you set to a default value to be applied to the properties that represent platforms.
-- `Android` of type `object`, that you set to a value to be applied on Android.
-- `iOS` of type `object`, that you set to a value to be applied on iOS.
-- `MacCatalyst` of type `object`, that you set to a value to be applied on Mac Catalyst.
-- `Tizen` of type `object`, that you set to a value to be applied on the Tizen platform.
-- `WinUI` of type `object`, that you set to a value to be applied on WinUI.
+- `Default` (of type `object`) that you set to a default value to be applied to the properties that represent platforms.
+- `Android` (of type `object`) that you set to a value to be applied on Android.
+- `iOS` (of type `object`) that you set to a value to be applied on iOS.
+- `MacCatalyst` (of type `object`) that you set to a value to be applied on Mac Catalyst.
+- `Tizen` (of type `object`) that you set to a value to be applied on the Tizen platform.
+- `WinUI` (of type `object`) that you set to a value to be applied on WinUI.
 - `Converter` of type <xref:Microsoft.Maui.Controls.IValueConverter>, that can be set to an <xref:Microsoft.Maui.Controls.IValueConverter> implementation.
-- `ConverterParameter` of type `object`, that can be set to a value to pass to the <xref:Microsoft.Maui.Controls.IValueConverter> implementation.
+- `ConverterParameter` (of type `object`) that can be set to a value to pass to the <xref:Microsoft.Maui.Controls.IValueConverter> implementation.
 
 > [!NOTE]
 > The XAML parser allows the <xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension> class to be abbreviated as `OnPlatform`.
@@ -57,14 +57,14 @@ In this example, all three [`OnPlatform`](xref:Microsoft.Maui.Controls.Xaml.OnPl
 
 The [`OnIdiom`](xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension) markup extension enables you to customize UI appearance based on the idiom of the device the app is running on. It's supported by the <xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension> class, which defines the following properties:
 
-- `Default` of type `object`, that you set to a default value to be applied to the properties that represent device idioms.
-- `Phone` of type `object`, that you set to a value to be applied on phones.
-- `Tablet` of type `object`, that you set to a value to be applied on tablets.
-- `Desktop` of type `object`, that you set to a value to be applied on desktop platforms.
-- `TV` of type `object`, that you set to a value to be applied on TV platforms.
-- `Watch` of type `object`, that you set to a value to be applied on Watch platforms.
-- `Converter` of type <xref:Microsoft.Maui.Controls.IValueConverter>, that can be set to an <xref:Microsoft.Maui.Controls.IValueConverter> implementation.
-- `ConverterParameter` of type `object`, that can be set to a value to pass to the <xref:Microsoft.Maui.Controls.IValueConverter> implementation.
+- `Default` (of type `object`) that you set to a default value to be applied to the properties that represent device idioms.
+- `Phone` (of type `object`) that you set to a value to be applied on phones.
+- `Tablet` (of type `object`) that you set to a value to be applied on tablets.
+- `Desktop` (of type `object`) that you set to a value to be applied on desktop platforms.
+- `TV` (of type `object`) that you set to a value to be applied on TV platforms.
+- `Watch` (of type `object`) that you set to a value to be applied on Watch platforms.
+- `Converter` (of type <xref:Microsoft.Maui.Controls.IValueConverter>) that can be set to an <xref:Microsoft.Maui.Controls.IValueConverter> implementation.
+- `ConverterParameter` (of type `object`) that can be set to a value to pass to the <xref:Microsoft.Maui.Controls.IValueConverter> implementation.
 
 > [!NOTE]
 > The XAML parser allows the <xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension> class to be abbreviated as `OnIdiom`.

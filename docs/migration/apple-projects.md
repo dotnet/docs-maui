@@ -17,7 +17,7 @@ A .NET 7 project for a .NET iOS app is similar to the following example:
     <ImplicitUsings>true</ImplicitUsings>
     <SupportedOSPlatformVersion>13.0</SupportedOSPlatformVersion>
   </PropertyGroup>
-</Project>  
+</Project>
 ```
 
 For a library project, omit the `$(OutputType)` property completely or specify `Library` as the property value.
@@ -33,7 +33,7 @@ The following table shows how to map properties in Xamarin Apple projects to .NE
 | `XamMacArch` | App architecture(s). | N/A | Convert to `RuntimeIdentifier`. For more information, see [Convert to RuntimeIdentifier](#convert-to-runtimeidentifier). |
 | `HttpClientHandler` | The default `HttpClientHandler`. | `UseNativeHttpHandler` | Convert to `UseNativeHttpHandler`. For more information, see [Convert to UseNativeHttpHandler](#convert-to-usenativehttphandler). |
 | `MtouchHttpClientHandler` | The default `MtouchHttpClientHandler.` | `UseNativeHttpHandler` | Convert to `UseNativeHttpHandler`. For more information, see [Convert to UseNativeHttpHandler](#convert-to-usenativehttphandler). |
-| `EnableCodeSigning` | If code signing is enabled. | | Copy |
+| `EnableCodeSigning` | Specifies if code signing is enabled. | | Copy |
 | `CodeSigningKey` | Specifies the code signing key. | | Rename to CodesignKey |
 | `CodesignKey` | Specifies the code signing key. | | Copy |
 | `CodesignProvision` | Specifies the provisioning profile. | | Copy |
