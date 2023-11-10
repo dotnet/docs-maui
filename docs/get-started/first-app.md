@@ -210,7 +210,7 @@ If your app fails to compile, review [Troubleshooting known issues](../troublesh
 
 ## Prerequisites
 
-- Visual Studio 2022 for Mac 17.4 or greater, with the .NET, .NET MAUI, Android, and iOS workloads installed. For more information, see [Installation](installation.md?tabs=vsmac).
+- Visual Studio 2022 for Mac 17.6 or greater, with the .NET, .NET MAUI, Android, and iOS workloads installed. For more information, see [Installation](installation.md?tabs=vsmac).
 
 ## Create an app
 
@@ -283,7 +283,7 @@ In this tutorial, you'll create your first .NET MAUI app in Visual Studio 2022 f
 
     :::image type="content" source="media/first-app/vsmac/android-device-manager.png" alt-text="Close the Android Device Manager window.":::
 
-01. In the Visual Studio 2022 for Mac toolbar, change the debug target to **Pixel 5 - API 31 (API 31)**:
+01. In the Visual Studio 2022 for Mac toolbar, change the debug target to **Pixel 5 - API 34 (API 34)**:
 
     :::image type="content" source="media/first-app/vsmac/android-pixel5-debug-target.png" alt-text="Set the created Android emulator as the debug target.":::
 
