@@ -194,8 +194,8 @@ In addition, the `$(ApplicationIdGuid)` build property can be removed from your 
 > [!NOTE]
 > The project template for a .NET MAUI app in .NET 8 enables the nullable context for the project with the `$(Nullable)` build property. For more information, see [Nullable](/dotnet/csharp/language-reference/compiler-options/language#nullable).
 
-<!-- ## See also
+## See also
 
-- [Release notes for .NET MAUI in .NET 7](https://github.com/dotnet/maui/releases/tag/7.0.49)
-- [Release notes for .NET iOS, tvOS, macOS, and Mac Catalyst](https://github.com/xamarin/xamarin-macios/wiki/.NET-7-release-notes)
-- [Release notes for .NET Android](https://github.com/xamarin/xamarin-android/releases/tag/33.0.4) -->
+<!-- - [Release notes for .NET MAUI in .NET 7](https://github.com/dotnet/maui/releases/tag/7.0.49) -->
+- [Release notes for .NET iOS, tvOS, macOS, and Mac Catalyst](https://github.com/xamarin/xamarin-macios/wiki/.NET-8-release-notes)
+<!-- - [Release notes for .NET Android](https://github.com/xamarin/xamarin-android/releases/tag/33.0.4) -->
