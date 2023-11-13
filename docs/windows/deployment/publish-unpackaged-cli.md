@@ -48,6 +48,8 @@ For example:
 dotnet publish -f net8.0-windows10.0.19041.0 -c Release -p:RuntimeIdentifierOverride=win10-x64 -p:WindowsPackageType=None
 ```
 
+[!INCLUDE [dotnet publish in .NET 8](~/includes/dotnet-publish-net8.md)]
+
 Publishing builds the app, copying the executable to the _bin\\Release\\net8.0-windows10.0.19041.0\\win10-x64\\publish_ folder. In this folder, there's an _exe_ file, and that's the built app. This app can be launched or the entire folder can be copied to another machine and launched there.
 
 An important distinction from a packaged app is that this won't include the .NET runtime in the folder. This means that the app will require the .NET runtime to first be installed on the machines that will eventually run the app. To ensure the app also contains all the runtime components, the `-p:WindowsAppSDKSelfContained` argument can be provided when publishing. For example:

@@ -17,4 +17,6 @@ After adding the above property group, the app can be published from the command
 dotnet build -f net8.0-maccatalyst -c Release
 ```
 
+[!INCLUDE [dotnet publish in .NET 8](~/includes/dotnet-publish-net8.md)]
+
 Publishing builds, signs, and packages the app, and then copies the *.pkg* to the *bin/Release/net8.0-maccatalyst/publish/* folder.
