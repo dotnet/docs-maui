@@ -168,4 +168,4 @@ The first time Pair to Mac logs in to a Mac build host from either Visual Studio
 
 If the `ServerPassword` parameter is omitted from a command-line build invocation, Pair to Mac attempts to log in to the Mac build host using the saved SSH keys.
 
-[!INCLUDE [Troubleshoot a remote build in .NET 8](~/includes/remote-ios-build-net8.md)]
+For more information about building iOS apps from the Windows command-line, see [Publish an iOS app using the command line](~/ios/deployment/publish-cli.md).
