@@ -84,7 +84,7 @@ To build, sign, and deploy .NET MAUI apps for iOS or macOS, you'll also need:
     <!-- At some point, the legacy workloads shouldn't be required. -->
 
 1. Install .NET 8 through the [standalone installer](https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
-1. After .NET has finished installing, run `dotnet workload install maui` in a terminal.
+1. After .NET 8 has finished installing, run `dotnet workload install maui` in a terminal.
 
 If you have network trouble while installing in a corporate environment, review the [installing behind a firewall or proxy](#installation-behind-a-firewall-or-proxy-server) instructions.
 
