@@ -167,3 +167,5 @@ The parameters passed to `dotnet` in the above example are:
 The first time Pair to Mac logs in to a Mac build host from either Visual Studio 2022 or the command-line, it sets up SSH keys. With these keys, future logins won't require a username or password. Newly created keys are stored in **%LOCALAPPDATA%\Xamarin\MonoTouch**.
 
 If the `ServerPassword` parameter is omitted from a command-line build invocation, Pair to Mac attempts to log in to the Mac build host using the saved SSH keys.
+
+For more information about building iOS apps from the Windows command-line, see [Publish an iOS app using the command line](~/ios/deployment/publish-cli.md).

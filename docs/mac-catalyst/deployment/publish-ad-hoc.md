@@ -167,6 +167,7 @@ To publish your Mac Catalyst app from the command line on a Mac, open a terminal
 | `-p:CodesignKey`             | The name of the code signing key. Set to the name of your distribution certificate, as displayed in Keychain Access. |
 | `-p:CodesignProvision`       | The provisioning profile to use when signing the app bundle. |
 | `-p:CodesignEntitlements`    | The path to the entitlements file that specifies the entitlements the app requires. Set to `Platforms\MacCatalyst\Entitlements.plist`. |
+| `-p:RuntimeIdentifier`       | The runtime identifier (RID) for the project. Release builds of .NET MAUI Mac Catalyst apps default to using `maccatalyst-x64` and `maccatalyst-arm64` as runtime identifiers, to support universal apps. To support only a single architecture, specify `maccatalyst-x64` or `maccatalyst-arm64`. |
 | `-p:UseHardenedRuntime`      | Set to `true` to enable the hardened runtime, which is required for Mac Catalyst apps that are distributed outside of the Mac App Store. |
 
 [!INCLUDE [Additional build parameters](../includes/additional-build-parameters.md)]
