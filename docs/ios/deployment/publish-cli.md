@@ -156,12 +156,12 @@ For example, use the following command to build and sign an *.ipa* from Windows:
 dotnet publish -f net8.0-ios -c Release -p:ArchiveOnBuild=true -p:RuntimeIdentifier=ios-arm64 -p:CodesignKey="Apple Distribution: John Smith (AY2GDE9QM7)" -p:CodesignProvision="MyMauiApp" -p:ServerAddress={macOS build host IP address} -p:ServerUser={macOS username} -p:ServerPassword={macOS password} -p:TcpPort=58181 -p:_DotNetRootRemoteDirectory=/Users/{macOS username}/Library/Caches/Xamarin/XMA/SDKs/dotnet/
 ```
 
+[!INCLUDE [dotnet publish in .NET 8 on iOS](~/includes/dotnet-publish-net8-ios.md)]
+
 > [!NOTE]
 > If the `ServerPassword` parameter is omitted from a command line build invocation, Pair to Mac attempts to log in to the Mac build host using its saved SSH keys.
 
 Publishing builds and signs the app, and then copies the *.ipa* to the *bin\\Release\\net8.0-ios\\ios-arm64\\publish* folder on your Windows machine. The distribution channel for the app is specified in the distribution certificate contained within the provisioning profile. For information about creating distribution provisioning profiles for the different distribution channels, see [Publish an iOS app for App Store distribution](publish-app-store.md), [Publish an iOS app for ad-hoc distribution](publish-ad-hoc.md), and [Publish an iOS app for in-house distribution](publish-in-house.md)
-
-[!INCLUDE [dotnet publish in .NET 8 on iOS](~/includes/dotnet-publish-net8-ios.md)]
 
 During the publishing process it maybe necessary to allow `codesign` to run on your paired Mac:
 
