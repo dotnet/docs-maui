@@ -47,13 +47,15 @@ For example, use the following command to build and sign an *.ipa* on a Mac:
 dotnet publish -f net8.0-ios -c Release -p:ArchiveOnBuild=true -p:RuntimeIdentifier=ios-arm64 -p:CodesignKey="Apple Distribution: John Smith (AY2GDE9QM7)" -p:CodesignProvision="MyMauiApp"
 ```
 
-[!INCLUDE [dotnet publish in .NET 8](~/includes/dotnet-publish-net8.md)]
+[!INCLUDE [dotnet publish in .NET 8 on iOS](~/includes/dotnet-publish-net8-ios.md)]
 
 Publishing builds and signs the app, and then copies the *.ipa* to the *bin/Release/net8.0-ios/ios-arm64/publish/* folder. The distribution channel for the app is specified in the distribution certificate contained within the provisioning profile. For information about creating provisioning profiles for the different distribution channels, see [Publish an iOS app for App Store distribution](publish-app-store.md), [Publish an iOS app for ad-hoc distribution](publish-ad-hoc.md), and [Publish an iOS app for in-house distribution](publish-in-house.md).
 
 For more information about the `dotnet publish` command, see [dotnet publish](/dotnet/core/tools/dotnet-publish).
 
 <!-- Todo: It's possible to re-sign an existing app bundle with a different certificate to change the distribution channel -->
+
+::: moniker range="=net-maui-7.0"
 
 ## Runtime identifiers
 
@@ -62,7 +64,7 @@ If the `RuntimeIdentifier` parameter isn't specified on the command line, or in 
 One solution to these issues is to add the following `<PropertyGroup>` to your project file:
 
 ```xml
-<PropertyGroup Condition="'$(IsPublishing)'  == 'true' And '$(TargetFramework)' == 'net8.0-ios'">
+<PropertyGroup Condition="'$(IsPublishing)'  == 'true' And '$(TargetFramework)' == 'net7.0-ios'">
     <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
 </PropertyGroup>
 ```
@@ -70,13 +72,13 @@ One solution to these issues is to add the following `<PropertyGroup>` to your p
 Then, use the following command to publish your app:
 
 ```dotnetcli
-dotnet publish -f net8.0-ios -p:IsPublishing=true ...
+dotnet publish -f net7.0-ios -p:IsPublishing=true ...
 ```
 
 An alternative solution to these issues is to add the following `<PropertyGroup>` to your project file:
 
 ```xml
-<PropertyGroup Condition="'$(Configuration)' == 'Release' And '$(TargetFramework)' == 'net8.0-ios'">
+<PropertyGroup Condition="'$(Configuration)' == 'Release' And '$(TargetFramework)' == 'net7.0-ios'">
     <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
 </PropertyGroup>
 ```
@@ -84,8 +86,10 @@ An alternative solution to these issues is to add the following `<PropertyGroup>
 Then, use the following command to publish your app:
 
 ```dotnetcli
-dotnet publish -f net8.0-ios -c Release ...
+dotnet publish -f net7.0-ios -c Release ...
 ```
+
+::: moniker-end
 
 ## Define build properties in your project file
 
@@ -97,7 +101,7 @@ An alternative to specifying build parameters on the command line is to specify 
 | `<ApplicationId>` | The unique identifier for the app, such as `com.companyname.mymauiapp`. |
 | `<ApplicationVersion>` | The version of the build that identifies an iteration of the app. |
 | `<ApplicationDisplayVersion>` | The version number of the app. |
-| `<RuntimeIdentifier>` | The runtime identifier (RID) for the project. Set to `ios-arm64`. |
+| `<RuntimeIdentifier>` | The runtime identifier (RID) for the project. Use `ios-arm64`. |
 | `<ArchiveOnBuild>` | A boolean value that indicates whether to produce the app archive. Use `true` to produce the *.ipa*. |
 | `<CodesignKey>` | The name of the code signing key. |
 | `<CodesignProvision>` | The provisioning profile to use when signing the app bundle. |
@@ -112,7 +116,7 @@ The following example shows a typical property group for building and signing yo
 
 ```xml
 <PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">
-  <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
+  <RuntimeIdentifier>ios-arm64</RuntimeIdentifier> <!-- Required in .NET 7 but not in .NET 8 -->
   <CodesignKey>Apple Distribution: John Smith (AY2GDE9QM7)</CodesignKey>
   <CodesignProvision>MyMauiApp</CodesignProvision>
   <ArchiveOnBuild>true</ArchiveOnBuild>
@@ -151,6 +155,8 @@ For example, use the following command to build and sign an *.ipa* from Windows:
 ```dotnetcli
 dotnet publish -f net8.0-ios -c Release -p:ArchiveOnBuild=true -p:RuntimeIdentifier=ios-arm64 -p:CodesignKey="Apple Distribution: John Smith (AY2GDE9QM7)" -p:CodesignProvision="MyMauiApp" -p:ServerAddress={macOS build host IP address} -p:ServerUser={macOS username} -p:ServerPassword={macOS password} -p:TcpPort=58181 -p:_DotNetRootRemoteDirectory=/Users/{macOS username}/Library/Caches/Xamarin/XMA/SDKs/dotnet/
 ```
+
+[!INCLUDE [dotnet publish in .NET 8 on iOS](~/includes/dotnet-publish-net8-ios.md)]
 
 > [!NOTE]
 > If the `ServerPassword` parameter is omitted from a command line build invocation, Pair to Mac attempts to log in to the Mac build host using its saved SSH keys.
