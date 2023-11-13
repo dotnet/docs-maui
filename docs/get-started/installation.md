@@ -1,22 +1,23 @@
 ---
 title: "Install Visual Studio 2022 to develop cross-platform apps using .NET MAUI"
 description: "Learn how to install Visual Studio 2022 and Visual Studio 2022 for Mac, to develop native, cross-platform apps using .NET MAUI."
-ms.date: 11/01/2022
+ms.date: 11/13/2023
+monikerRange: ">=net-maui-8.0"
 ---
 
 # Installation
 
-Developing native, cross-platform .NET Multi-platform App UI (.NET MAUI) apps requires Visual Studio 2022 17.3 or greater, or Visual Studio 2022 for Mac 17.4 or greater.
+Developing native, cross-platform .NET Multi-platform App UI (.NET MAUI) apps requires Visual Studio 2022 17.8 or greater, or Visual Studio 2022 for Mac 17.6.
 
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio](#tab/vswin)
 <!-- markdownlint-enable MD025 -->
 
-To start developing native, cross-platform .NET MAUI apps on Windows, install Visual Studio 2022 17.3 or greater by following the [installation](#installation) steps.
+To start developing native, cross-platform .NET MAUI apps on Windows, install Visual Studio 2022 17.8 or greater by following the [installation](#installation) steps.
 
 ## Prerequisites
 
-- Visual Studio 2022 17.3 or greater. For information about supported operating systems, hardware, supported languages, and additional requirements and guidance, see [Visual Studio 2022 System Requirements](/visualstudio/releases/2022/system-requirements).
+- Visual Studio 2022 17.8 or greater. For information about supported operating systems, hardware, supported languages, and additional requirements and guidance, see [Visual Studio 2022 System Requirements](/visualstudio/releases/2022/system-requirements).
 
 To build, sign, and deploy .NET MAUI apps for iOS, you'll also need:
 
@@ -82,6 +83,9 @@ To build, sign, and deploy .NET MAUI apps for iOS or macOS, you'll also need:
 
     <!-- At some point, the legacy workloads shouldn't be required. -->
 
+1. Install .NET 8 through the [standalone installer](https://dotnet.microsoft.com/en-us/download/dotnet/8.0).
+1. After .NET 8 has finished installing, run `dotnet workload install maui` in a terminal.
+
 If you have network trouble while installing in a corporate environment, review the [installing behind a firewall or proxy](#installation-behind-a-firewall-or-proxy-server) instructions.
 
 ## Installation behind a firewall or proxy server
@@ -121,7 +125,7 @@ The recommended approach to setup your Windows machine for .NET MAUI development
 
 If you don't want to install Visual Studio, you can still get set up for .NET MAUI development by following these steps:
 
-1. Install [.NET 7 or greater](/dotnet/core/install/windows?tabs=net70).
+1. Install [.NET 8](/dotnet/core/install/windows).
 1. After .NET has finished installing, run `dotnet workload install maui` in a terminal.
 1. If you'd like to debug Android in Visual Studio Code, you also have to:
     1. Install [Microsoft OpenJDK 11](/java/openjdk/download#openjdk-11).
@@ -134,7 +138,7 @@ If you don't want to install Visual Studio, you can still get set up for .NET MA
 
 ### macOS
 
-1. Install [.NET 7 or greater](/dotnet/core/install/macOS).
+1. Install [.NET 8](/dotnet/core/install/macOS).
 1. Install the [latest stable Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12).
 1. After Xcode has finished installing, run `xcode-select --install` in a terminal to acquire the Xcode command line tools.
 1. Run `dotnet workload install maui` in a terminal.
@@ -146,7 +150,7 @@ If you don't want to install Visual Studio, you can still get set up for .NET MA
 
 ### Linux
 
-1. Install [.NET 7 or greater](/dotnet/core/install/linux).
+1. Install [.NET 8](/dotnet/core/install/linux).
 1. After .NET has installed, run `dotnet workload install maui-android` in a terminal.
 1. If you'd like to debug to Android in Visual Studio Code, you also have to:
     1. Install [Microsoft OpenJDK 11](/java/openjdk/download#openjdk-11).
@@ -173,7 +177,7 @@ No matter which way you install Android, you can develop .NET MAUI apps in Visua
 
 #### Using "InstallAndroidDependencies"
 
-* .NET 7 and above has a build target that helps set up your Android environment for you. You can add or remove the following properties to `dotnet build -t:InstallAndroidDependencies` to configure your machine:
+* .NET 8 has a build target that helps set up your Android environment for you. You can add or remove the following properties to `dotnet build -t:InstallAndroidDependencies` to configure your machine:
   * `-p:AndroidSdkDirectory "<PATH>"` installs or updates Android dependencies to the specified path (Note: You must use an absolute path without a tilde "~").
   * `-p:JavaSdkDirectory "<PATH>"` installs Java to the specified path (Note: You must use an absolute path without a tilde "~").
   * `-p:AcceptAndroidSDKLicenses=True` accepts the necessary Android licenses for development.
