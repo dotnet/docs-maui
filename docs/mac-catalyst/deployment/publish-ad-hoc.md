@@ -177,6 +177,8 @@ For example, use the following command to build and sign a *.pkg* on a Mac, for 
 dotnet publish -f net8.0-maccatalyst -c Release -p:MtouchLink=SdkOnly -p:CreatePackage=true -p:EnableCodeSigning=true  -p:CodesignKey="Apple Development: John Smith (AY2GDE9QM7)" -p:CodesignProvision="MyMauiApp (Ad-hoc)" -p:CodesignEntitlements="Platforms\MacCatalyst\Entitlements.plist" -p:UseHardenedRuntime=true
 ```
 
+[!INCLUDE [dotnet publish in .NET 8](~/includes/dotnet-publish-net8.md)]
+
 Publishing builds, signs, and packages the app, and then copies the *.pkg* to the *bin/Release/net8.0-maccatalyst/publish/* folder. If you publish the app using only a single architecture, it will be published to the *bin/Release/net8.0-maccatalyst/{architecture}/publish/* folder.
 
 During the signing process it maybe necessary to enter your login password and allow `codesign` to run:

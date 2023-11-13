@@ -40,6 +40,8 @@ For example, use the following command to create an *.app*:
 dotnet publish -f net8.0-maccatalyst -c Release -p:CreatePackage=false
 ```
 
+[!INCLUDE [dotnet publish in .NET 8](~/includes/dotnet-publish-net8.md)]
+
 Use the following command to create a *.pkg*:
 
 ```dotnetcli

@@ -224,6 +224,8 @@ For example, use the following command to build and sign a *.pkg* on a Mac, for 
 dotnet publish -f net8.0-maccatalyst -c Release -p:MtouchLink=SdkOnly -p:CreatePackage=true -p:EnableCodeSigning=true -p:EnablePackageSigning=true -p:CodesignKey="Developer ID Application: John Smith (AY2GDE9QM7)" -p:CodesignProvision="MyMauiApp (Non-App Store)" -p:CodesignEntitlements="Platforms\MacCatalyst\Entitlements.plist" -p:PackageSigningKey="Developer ID Installer: John Smith (AY2GDE9QM7)" -p:UseHardenedRuntime=true
 ```
 
+[!INCLUDE [dotnet publish in .NET 8](~/includes/dotnet-publish-net8.md)]
+
 [!INCLUDE [Publishing output](../includes/publishing-output.md)]
 
 ## Define build properties in your project file

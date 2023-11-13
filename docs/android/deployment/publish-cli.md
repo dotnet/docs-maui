@@ -99,6 +99,8 @@ Run the `dotnet publish` command with the following parameters to build and sign
 dotnet publish -f net8.0-android -c Release -p:AndroidKeyStore=true -p:AndroidSigningKeyStore={filename}.keystore -p:AndroidSigningKeyAlias={keyname} -p:AndroidSigningKeyPass={password} -p:AndroidSigningStorePass={password}
 ```
 
+[!INCLUDE [dotnet publish in .NET 8](~/includes/dotnet-publish-net8.md)]
+
 For example, use the following command to build and sign your app using the previously created keystore:
 
 ```console
