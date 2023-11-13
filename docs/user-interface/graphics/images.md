@@ -88,8 +88,8 @@ In this example, the image is retrieved from the assembly, loaded as a stream, a
 
 Images can be resized using the <xref:Microsoft.Maui.Graphics.IImage.Resize%2A> method, which requires `width` and `height` arguments, of type `float`, which represent the target dimensions of the image. The <xref:Microsoft.Maui.Graphics.IImage.Resize%2A> method also accepts two optional arguments:
 
-- A <xref:Microsoft.Maui.Graphics.ResizeMode> argument, that controls how the image is resized to fit its target dimensions.
-- A `bool` argument that controls whether the source image will be disposed after performing the resize operation. This argument defaults to `false`, indicating that the source image won't be disposed.
+- A <xref:Microsoft.Maui.Graphics.ResizeMode> argument that controls how the image is resized to fit its target dimensions.
+- A `bool` argument that controls whether the source image will be disposed after performing the resize operation. This argument defaults to `false`, indicating that the source image isn't disposed.
 
 The <xref:Microsoft.Maui.Graphics.ResizeMode> enumeration defines the following members, which specify how to resize the image to the target size:
 
@@ -158,9 +158,9 @@ In this example, the image is retrieved from the assembly and loaded as a stream
 
 ## Downsize an image
 
-You can downsize images using one of the <xref:Microsoft.Maui.Graphics.IImage.Downsize%2A> overloads. The first overload requires a single `float` value that represents the maximum width or height of the image, and downsizes the image while maintaining its aspect ratio. The second overload requires two `float` arguments, that represent the maximum width and maximum height of the image.
+You can downsize images using one of the <xref:Microsoft.Maui.Graphics.IImage.Downsize%2A> overloads. The first overload requires a single `float` value that represents the maximum width or height of the image, and downsizes the image while maintaining its aspect ratio. The second overload requires two `float` arguments that represent the maximum width and maximum height of the image.
 
-The <xref:Microsoft.Maui.Graphics.IImage.Downsize%2A> overloads also accept an optional `bool` argument that controls whether the source image should be disposed after performing the downsizing operation. This argument defaults to `false`, indicating that the source image won't be disposed.
+The <xref:Microsoft.Maui.Graphics.IImage.Downsize%2A> overloads also accept an optional `bool` argument that controls whether the source image should be disposed after performing the downsizing operation. This argument defaults to `false`, indicating that the source image isn't be disposed.
 
 The following example shows how to downsize an image:
 

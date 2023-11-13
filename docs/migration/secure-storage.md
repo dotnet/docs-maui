@@ -16,7 +16,7 @@ Xamarin.Essentials and .NET Multi-platform App UI (.NET MAUI) both have a `Secur
 
 For more information about the `SecureStorage` class in Xamarin.Essentials, see [Xamarin.Essentials: Secure storage](/xamarin/essentials/secure-storage). For more information about the `SecureStorage` class in .NET MAUI, see [Secure storage](~/platform-integration/storage/secure-storage.md).
 
-When migrating a Xamarin.Forms app, that uses the `SecureStorage` class, to .NET MAUI these implementation differences must be dealt with to provide users with a smooth upgrade experience. This can be accomplished with the `LegacySecureStorage` class, and helper classes, which is presented in this article. This class enables your .NET MAUI app on Android and iOS to read secure storage data that was created with a previous Xamarin.Forms version of your app.
+When migrating a Xamarin.Forms app that uses the `SecureStorage` class to .NET MAUI, you must deal with these implementation differences to provide users with a smooth upgrade experience. This article describes how you can use the the `LegacySecureStorage` class and helper classes to deal with the implementation differences. The `LegacySecureStorage` class enables your .NET MAUI app on Android and iOS to read secure storage data that was created with a previous Xamarin.Forms version of your app.
 
 ## Access legacy secure storage data
 
@@ -67,7 +67,7 @@ public class LegacySecureStorage
         bool result = false;
 
 #if ANDROID
-        Preferences.Clear(Alias);
+        Preferences.Remove(key, Alias);
         result = true;
 #elif IOS
         KeyChain keyChain = new KeyChain();
@@ -347,9 +347,9 @@ class AndroidKeyStore
 }
 ```
 
-The [Android KeyStore](https://developer.android.com/training/articles/keystore.html) is used to store the cipher key used to encrypt the value before it is saved into a [Shared Preferences](https://developer.android.com/training/data-storage/shared-preferences.html)file with a name of *{your-app-package-id}.xamarinessentials*. The key (not a cryptographic key, the *key* to the *value*) used in the shared preferences file is a *MD5 Hash* of the key passed into the `SecureStorage` APIs.
+The [Android KeyStore](https://developer.android.com/training/articles/keystore.html) is used to store the cipher key used to encrypt the value before it's saved into a [Shared Preferences](https://developer.android.com/training/data-storage/shared-preferences.html)file with a name of *{your-app-package-id}.xamarinessentials*. The key (not a cryptographic key, the *key* to the *value*) used in the shared preferences file is an *MD5 Hash* of the key passed into the `SecureStorage` APIs.
 
-On API 23+, an **AES** key is obtained from the Android KeyStore and used with an **AES/GCM/NoPadding** cipher to encrypt the value before it is stored in the shared preferences file. On API 22 and lower, the Android KeyStore only supports storing **RSA** keys, which is used with an **RSA/ECB/PKCS1Padding** cipher to encrypt an **AES** key (randomly generated at runtime) and stored in the shared preferences file under the key _SecureStorageKey_, if one has not already been generated.
+On API 23+, an **AES** key is obtained from the Android KeyStore and used with an **AES/GCM/NoPadding** cipher to encrypt the value before it's stored in the shared preferences file. On API 22 and lower, the Android KeyStore only supports storing **RSA** keys, which is used with an **RSA/ECB/PKCS1Padding** cipher to encrypt an **AES** key (randomly generated at runtime) and stored in the shared preferences file under the key _SecureStorageKey_, if one hasn't already been generated.
 
 ### iOS
 

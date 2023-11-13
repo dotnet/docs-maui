@@ -20,7 +20,7 @@ All of these properties are backed by <xref:Microsoft.Maui.Controls.BindableProp
 
 By default, <xref:Microsoft.Maui.Controls.CollectionView> selection is disabled. However, this behavior can be changed by setting the `SelectionMode` property value to one of the `SelectionMode` enumeration members:
 
-- `None` – indicates that items cannot be selected. This is the default value.
+- `None` – indicates that items can't be selected. This is the default value.
 - `Single` – indicates that a single item can be selected, with the selected item being highlighted.
 - `Multiple` – indicates that multiple items can be selected, with the selected items being highlighted.
 
@@ -336,7 +336,7 @@ CollectionView collectionView = new CollectionView
 };
 ```
 
-When the `SelectionMode` property is set to `None`, items in the <xref:Microsoft.Maui.Controls.CollectionView> can't be selected, the `SelectedItem` property remains `null`, and the `SelectionChanged` event won't be fired.
+When the `SelectionMode` property is set to `None`, items in the <xref:Microsoft.Maui.Controls.CollectionView> can't be selected, the `SelectedItem` property remains `null`, and the `SelectionChanged` event isn't fired.
 
 > [!NOTE]
 > When an item has been selected and the `SelectionMode` property is changed from `Single` to `None`, the `SelectedItem` property will be set to `null` and the `SelectionChanged` event will be fired with an empty `CurrentSelection` property.
