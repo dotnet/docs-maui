@@ -167,6 +167,8 @@ During the publishing process it maybe necessary to allow `codesign` to run on y
 
 :::image type="content" source="media/publish/codesign.png" alt-text="Allow codesign to sign your app on your paired Mac.":::
 
+[!INCLUDE [Troubleshoot a remote build in .NET 8](~/includes/remote-ios-build-net8.md)]
+
 ## Distribute the app
 
 The *.ipa* file can be distributed with one of the following approaches:
