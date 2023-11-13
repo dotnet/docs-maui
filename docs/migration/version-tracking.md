@@ -8,10 +8,10 @@ ms.date: 10/06/2023
 
 Xamarin.Essentials and .NET Multi-platform App UI (.NET MAUI) both have a `VersionTracking` class that lets you check the app's version and build numbers, along with additional information such as if it's the first time the app was launched. However, in Xamarin.Essentials the version tracking data is stored in a platform-specific preferences container with a name of `{your-app-package-id}.xamarinessentials.versiontracking`, while in .NET MAUI the version tracking data is stored in a platform-specific preferences container with a name of `{your-app-package-id}.microsoft.maui.essentials.versiontracking`.
 
-When migrating a Xamarin.Forms app, that uses the `VersionTracking` class, to .NET MAUI this preferences container naming difference must be dealt with to provide users with a smooth upgrade experience. This can be accomplished with the `LegacyVersionTracking` class, and helper classes, which is presented in this article. This class enables your .NET MAUI app on Android, iOS, and Windows, to read version tracking data that was created with a previous Xamarin.Forms version of your app.
+When migrating a Xamarin.Forms app that uses the `VersionTracking` class to .NET MAUI, you must deal with this preferences container naming difference to provide users with a smooth upgrade experience. This article describes how you can use the `LegacyVersionTracking` class and helper classes to deal with the preferences container. The `LegacyVersionTracking` class enables your .NET MAUI app on Android, iOS, and Windows, to read version tracking data that was created with a previous Xamarin.Forms version of your app.
 
 > [!IMPORTANT]
-> For the `LegacyVersionTracking` class to work correctly your .NET MAUI app must have a higher version number than the version number of your Xamarin.Forms app. The version number can be set in your .NET MAUI app's project file with the `$(ApplicationVersion)` and `$(ApplicationDisplayVersion)` build properties.
+> For the `LegacyVersionTracking` class to work correctly, your .NET MAUI app must have a higher version number than the version number of your Xamarin.Forms app. The version number can be set in your .NET MAUI app's project file with the `$(ApplicationVersion)` and `$(ApplicationDisplayVersion)` build properties.
 
 For more information about the <xref:Xamarin.Essentials.VersionTracking> class in Xamarin.Essentials, see [Xamarin.Essentials: Version tracking](/xamarin/essentials/version-tracking). For more information about the <xref:Microsoft.Maui.ApplicationModel.VersionTracking> class in .NET MAUI, see [Version tracking](~/platform-integration/appmodel/version-tracking.md).
 
@@ -397,7 +397,7 @@ public static partial class LegacyPreferences
 
 ## Consume legacy version tracking data
 
-The `LegacyVersionTracking` class can be used to retrieve version tracking data, on Android, iOS, and Windows, that was created with a previous Xamarin.Forms version of your app:
+The `LegacyVersionTracking` class can be used to retrieve version tracking data on Android, iOS, and Windows that was created with a previous Xamarin.Forms version of your app:
 
 ```csharp
 #if ANDROID || IOS || WINDOWS
@@ -422,7 +422,7 @@ This example shows using the `LegacyVersionTracking` class to read legacy versio
 
 ```csharp
 void WriteHistory(string key, IEnumerable<string> history)
-{        
+{
     Preferences.Default.Set(key, string.Join("|", history), $"{AppInfo.Current.PackageName}.microsoft.maui.essentials.versiontracking");
 }
 
