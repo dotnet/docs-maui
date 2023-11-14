@@ -196,6 +196,6 @@ In addition, the `$(ApplicationIdGuid)` build property can be removed from your 
 
 ## See also
 
-<!-- - [Release notes for .NET MAUI in .NET 7](https://github.com/dotnet/maui/releases/tag/7.0.49) -->
+- [Release notes for .NET MAUI](https://github.com/dotnet/maui/releases/tag/8.0.3)
 - [Release notes for .NET iOS, tvOS, macOS, and Mac Catalyst](https://github.com/xamarin/xamarin-macios/wiki/.NET-8-release-notes)
-<!-- - [Release notes for .NET Android](https://github.com/xamarin/xamarin-android/releases/tag/33.0.4) -->
+- [Release notes for .NET Android](https://github.com/xamarin/xamarin-android/releases/tag/34.0.43)
