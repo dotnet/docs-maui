@@ -53,7 +53,7 @@ The following XAML example shows how to use the [`AppThemeBinding`](xref:Microso
 
 In this example, the text color of the first <xref:Microsoft.Maui.Controls.Label> is set to green when the device is using its light theme, and is set to red when the device is using its dark theme. Similarly, the <xref:Microsoft.Maui.Controls.Image> displays a different image file based upon the current system theme.
 
-In addition, resources defined in a <xref:Microsoft.Maui.Controls.ResourceDictionary> can be consumed with the [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) markup extension:
+Resources defined in a <xref:Microsoft.Maui.Controls.ResourceDictionary> can be consumed in an [`AppThemeBinding`](xref:Microsoft.Maui.Controls.Xaml.AppThemeBindingExtension) with the [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) markup extension:
 
 ```xaml
 <ContentPage ...>
@@ -85,6 +85,29 @@ In addition, resources defined in a <xref:Microsoft.Maui.Controls.ResourceDictio
 ```
 
 In this example, the background color of the <xref:Microsoft.Maui.Controls.Grid> and the <xref:Microsoft.Maui.Controls.Button> style changes based on whether the device is using its light theme or dark theme.
+
+::: moniker range=">=net-maui-8.0"
+
+In addition, resources defined in a <xref:Microsoft.Maui.Controls.ResourceDictionary> can also be consumed in an [`AppThemeBinding`](xref:Microsoft.Maui.Controls.Xaml.AppThemeBindingExtension) with the [`DynamicResource`](xref:Microsoft.Maui.Controls.Xaml.DynamicResourceExtension) markup extension:
+
+```xaml
+<ContentPage ...>
+    <ContentPage.Resources>
+        <Color x:Key="Primary">DarkGray</Color>
+        <Color x:Key="Secondary">HotPink</Color>
+        <Color x:Key="Tertiary">Yellow</Color>
+        <Style x:Key="labelStyle" TargetType="Label">
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Secondary}, Dark={StaticResource Primary}}" />
+            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource Primary}, Dark={DynamicResource Secondary}}" />
+        </Style>
+    </ContentPage.Resources>
+    <Label x:Name="myLabel"
+           Style="{StaticResource labelStyle}"/>
+</ContentPage>
+```
+
+::: moniker-end
 
 ### Extension methods
 

@@ -1,7 +1,7 @@
 ---
 title: "Recognize a drag and drop gesture"
 description: "This article explains how to recognize drag and drop gestures with .NET MAUI."
-ms.date: 02/22/2022
+ms.date: 10/09/2023
 ---
 
 # Recognize a drag and drop gesture
@@ -9,9 +9,6 @@ ms.date: 02/22/2022
 A .NET Multi-platform App UI (.NET MAUI) drag and drop gesture recognizer enables items, and their associated data packages, to be dragged from one onscreen location to another location using a continuous gesture. Drag and drop can take place in a single application, or it can start in one application and end in another.
 
 The *drag source*, which is the element on which the drag gesture is initiated, can provide data to be transferred by populating a data package object. When the drag source is released, drop occurs. The *drop target*, which is the element under the drag source, then processes the data package.
-
-> [!IMPORTANT]
-> On iOS a minimum platform of iOS 11 is required.
 
 The process for enabling drag and drop in an app is as follows:
 
@@ -40,13 +37,141 @@ The <xref:Microsoft.Maui.Controls.DragGestureRecognizer> class also defines <xre
 
 The <xref:Microsoft.Maui.Controls.DragStartingEventArgs> object that accompanies the <xref:Microsoft.Maui.Controls.DragGestureRecognizer.DragStarting> event defines the following properties:
 
+::: moniker range="=net-maui-7.0"
+
 - <xref:Microsoft.Maui.Controls.DragStartingEventArgs.Handled>, of type `bool`, indicates whether the event handler has handled the event or whether .NET MAUI should continue its own processing.
 - <xref:Microsoft.Maui.Controls.DragStartingEventArgs.Cancel>, of type `bool`, indicates whether the event should be canceled.
 - <xref:Microsoft.Maui.Controls.DragStartingEventArgs.Data>, of type <xref:Microsoft.Maui.Controls.DataPackage>, indicates the data package that accompanies the drag source. This is a read-only property.
 
-<!--
-The `DropCompletedEventArgs` object that accompanies the `DropCompleted` event has a read-only `DropResult` property, of type `DataPackageOperation`. For more information about the `DataPackageOperation` enumeration, see [Handle the DragOver event](#handle-the-dragover-event).
--->
+::: moniker-end
+
+::: moniker range=">=net-maui-8.0"
+
+- <xref:Microsoft.Maui.Controls.DragStartingEventArgs.Cancel>, of type `bool`, indicates whether the event should be canceled.
+- <xref:Microsoft.Maui.Controls.DragStartingEventArgs.Data>, of type <xref:Microsoft.Maui.Controls.DataPackage>, indicates the data package that accompanies the drag source. This is a read-only property.
+- `PlatformArgs`, of type `PlatformDragStartingEventArgs?`, represents the platform-specific arguments associated with the event.
+
+<!-- markdownlint-disable MD025 -->
+
+# [Android](#tab/android)
+
+On Android, the `PlatformDragStartingEventArgs` class defines the following properties:
+
+- `Sender`, of type <xref:Android.Views.View>, represents the native view attached to the event.
+- `MotionEvent`, of type <xref:Android.Views.MotionEvent>, represents the event containing information for drag and drop status.
+
+In addition, on Android the `PlatformDragStartingEventArgs` class defines the following methods:
+
+- `SetDragShadowBuilder`, which sets the <xref:Android.Views.View.DragShadowBuilder> to use when dragging begins.
+- `SetClipData`, which sets the the <xref:Android.Content.ClipData> to use when dragging begins.
+- `SetLocalData`, which sets the local data to use when dragging begins.
+- `SetDragFlags`, which sets the <xref:Android.Views.DragFlags> to use when dragging begins.
+
+For example, use the `SetClipData` method to associate <xref:Android.Content.ClipData> with the dragged item:
+
+```csharp
+void OnDragStarting(object sender, DragStartingEventArgs e)
+{
+#if ANDROID
+    string content = "insert your content here";
+    e.PlatformArgs.SetClipData(Android.Content.ClipData.NewPlainText("Drag data", content));
+#endif
+}
+```
+
+# [iOS/Mac Catalyst](#tab/macios)
+
+On iOS and Mac Catalyst, the `PlatformDragStartingEventArgs` class defines the following properties:
+
+- `Sender`, of type <xref:UIKit.UIView>, represents the native view attached to the event.
+- `GestureRecognizer`, of type <xref:UIKit.UIGestureRecognizer>, indicates the native event or handler attached to the view.
+
+In addition, on iOS and Mac Catalyst the `PlatformDragStartingEventArgs` class defines the following methods:
+
+- `SetItemProvider`, which sets the <xref:Foundation.NSItemProvider> to use when dragging begins.
+- `SetPreviewProvider`, which sets the <xref:UIKit.UIDragPreview> to use when dragging begins.
+- `SetDragItems`, which sets the array of <xref:UIKit.UIDragItem> to use when dragging begins.
+- `SetPrefersFullSizePreview`, which sets the func that requests that drag previews are full-sized when dragging begins.
+
+For example, use the `SetPreviewProvider` method to set the object to use as a preview of the item being dragged:
+
+```csharp
+void OnDragStarting(object sender, DragStartingEventArgs e)
+{
+#if IOS || MACCATALYST
+    Func<UIKit.UIDragPreview> action = () =>
+    {
+        var image = UIKit.UIImage.FromFile("dotnet_bot.png");
+        UIKit.UIImageView imageView = new UIKit.UIImageView(image);
+        imageView.ContentMode = UIKit.UIViewContentMode.Center;
+        imageView.Frame = new CoreGraphics.CGRect(0, 0, 250, 250);
+        return new UIKit.UIDragPreview(imageView);
+    };
+
+    e.PlatformArgs.SetPreviewProvider(action);
+#endif
+}
+```
+
+In this example, the preview of the dragged item is replaced with an image.
+
+To set the drag preview to full size, use the `SetPrefersFullSizePreview` method:
+
+```csharp
+void OnDragStarting(object sender, DragStartingEventArgs e)
+{
+#if IOS || MACCATALYST
+    e.PlatformArgs.SetPrefersFullSizePreviews((interaction, session) => { return true; });
+#endif
+}
+```
+
+# [Windows](#tab/windows)
+
+On Windows, the `PlatformDragStartingEventArgs` class defines the following properties:
+
+- `Sender`, of type <xref:Microsoft.UI.Xaml.FrameworkElement>, represents the native view attached to the event.
+- `DragStartingEventArgs`, of type <xref:Microsoft.UI.Xaml.DragStartingEventArgs>, provides event data for the native event.
+- `Handled`, of type `bool`, determines if the event arguments have changed. This property should be set to `true` when changing the `DragStartingEventArgs` so that the changes aren't overridden.
+
+---
+
+<!-- markdownlint-enable MD025 -->
+
+The <xref:Microsoft.Maui.Controls.DropCompletedEventArgs> object that accompanies the <xref:Microsoft.Maui.Controls.DragGestureRecognizer.DropCompleted> event defines a `PlatformArgs` property, of type `PlatformDropCompletedEventArgs?`, which represents the platform-specific arguments associated with the event.
+
+<!-- markdownlint-disable MD025 -->
+
+# [Android](#tab/android)
+
+On Android, the `PlatformDropCompletedEventArgs` class defines the following properties:
+
+- `Sender`, of type <xref:Android.Views.View>, represents the native view attached to the event.
+- `DragEvent`, of type <xref:Android.Views.DragEvent>, represents the event that's sent at various times during a drag and drop operation.
+
+# [iOS/Mac Catalyst](#tab/macios)
+
+On iOS and Mac Catalyst, the `PlatformDropCompletedEventArgs` class defines the following properties:
+
+- `Sender`, of type <xref:UIKit.UIView>, represents the native view attached to the event.
+- `DragInteraction`, of type <xref:UIKit.UIDragInteraction>, indicates the interaction used for dragging items. This property is used when `PlatformDropCompletedEventArgs` is called from `SessionWillEnd`.
+- `DragSession`, of type <xref:UIKit.IUIDragSession>, retrieves the associated information from the drag session. This property is used when `PlatformDropCompletedEventArgs` is called from `SessionWillEnd`.
+- `DropOperation`, of type <xref:UIKit.UIDropOperation>, represents the response to a drop. This property is used when `PlatformDropCompletedEventArgs` is called from `SessionWillEnd`.
+- `DropInteraction`, of type <xref:UIKit.UIDropInteraction>, indicates the interaction used for dropping items. This property is used when `PlatformDropCompletedEventArgs` is called from `PerformDrop`.
+- `DropSession`, of type <xref:UIKit.IUIDropSession>, retrieves the associated information from the drop session. This property is used when `PlatformDropCompletedEventArgs` is called from `PerformDrop`.
+
+# [Windows](#tab/windows)
+
+On Windows, the `PlatformDropCompletedEventArgs` class defines the following properties:
+
+- `Sender`, of type <xref:Microsoft.UI.Xaml.FrameworkElement>, represents the native view attached to the event.
+- `DropCompletedEventArgs`, of type <xref:Microsoft.UI.Xaml.DropCompletedEventArgs>, provides event data for the native event.
+
+---
+
+<!-- markdownlint-enable MD025 -->
+
+::: moniker-end
 
 The following XAML example shows a <xref:Microsoft.Maui.Controls.DragGestureRecognizer> attached to an <xref:Microsoft.Maui.Controls.Image>:
 
@@ -171,15 +296,122 @@ The <xref:Microsoft.Maui.Controls.DropGestureRecognizer> class also defines <xre
 
 The <xref:Microsoft.Maui.Controls.DragEventArgs> class, which accompanies the <xref:Microsoft.Maui.Controls.DropGestureRecognizer.DragOver> and <xref:Microsoft.Maui.Controls.DropGestureRecognizer.DragLeave> events, defines the following properties:
 
+::: moniker range="=net-maui-7.0"
+
 - <xref:Microsoft.Maui.Controls.DragEventArgs.Data>, of type `DataPackage`, which contains the data associated with the drag source. This property is read-only.
 - <xref:Microsoft.Maui.Controls.DragEventArgs.AcceptedOperation>, of type `DataPackageOperation`, which specifies which operations are allowed by the drop target.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-8.0"
+
+- <xref:Microsoft.Maui.Controls.DragEventArgs.Data>, of type `DataPackage`, which contains the data associated with the drag source. This property is read-only.
+- <xref:Microsoft.Maui.Controls.DragEventArgs.AcceptedOperation>, of type `DataPackageOperation`, which specifies which operations are allowed by the drop target.
+- `PlatformArgs`, of type `PlatformDragEventArgs?`, represents the platform-specific arguments associated with the event.
+
+<!-- markdownlint-disable MD025 -->
+
+# [Android](#tab/android)
+
+On Android, the `PlatformDragEventArgs` class defines the following properties:
+
+- `Sender`, of type <xref:Android.Views.View>, represents the native view attached to the event.
+- `DragEvent`, of type <xref:Android.Views.DragEvent>, represents the event that's sent at various times during a drag and drop operation.
+
+# [iOS/Mac Catalyst](#tab/macios)
+
+On iOS and Mac Catalyst, the `PlatformDragEventArgs` class defines the following properties:
+
+- `Sender`, of type <xref:UIKit.UIView>, represents the native view attached to the event.
+- `DropInteraction`, of type <xref:UIKit.UIDropInteraction>, indicates the interaction used for dropping items.
+- `DropSession`, of type <xref:UIKit.IUIDropSession>, retrieves the associated information from the drop session.
+
+In addition, on iOS and Mac Catalyst the `PlatformDragEventArgs` class defines the `SetDropProposal` method. This method sets the <xref:UIKit.UIDropProposal> to use when dragging an item over a view:
+
+```csharp
+void OnDragOver(object sender, DragEventArgs e)
+{
+#if IOS || MACCATALYST
+    e.PlatformArgs.SetDropProposal(new UIKit.UIDropProposal(UIKit.UIDropOperation.Move));
+#endif
+}
+```
+
+In this example, the <xref:UIKit.UIDropOperation> specifies that the data represented by the drag item should be moved rather than copied.
+
+# [Windows](#tab/windows)
+
+On Windows, the `PlatformDragEventArgs` class defines the following properties:
+
+- `Sender`, of type <xref:Microsoft.UI.Xaml.FrameworkElement>, represents the native view attached to the event.
+- `DragEventArgs`, of type <xref:Microsoft.UI.Xaml.DragEventArgs>, provides event data for the native event.
+- `Handled`, of type `bool`, determines if the event arguments have changed. This property should be set to `true` when changing the `DragEventArgs` so that the changes aren't overridden.
+
+For example, the `DragEventArgs` property can be used to access native properties:
+
+```csharp
+void OnDragOver(object sender, DragEventArgs e)
+{
+#if WINDOWS
+    var dragUI = e.PlatformArgs.DragEventArgs.DragUIOverride;
+    dragUI.IsCaptionVisible = false;
+    dragUI.IsGlyphVisible = false;
+#endif
+}
+```
+
+In this example, the drag glyph is disabled and caption text that overlays the drag visual is also disabled.
+
+---
+
+<!-- markdownlint-enable MD025 -->
+
+::: moniker-end
 
 For information about the `DataPackageOperation` enumeration, see [Handle the DragOver event](#handle-the-dragover-event).
 
 The <xref:Microsoft.Maui.Controls.DropEventArgs> class that accompanies the `Drop` event defines the following properties:
 
+::: moniker range="=net-maui-7.0"
+
 - <xref:Microsoft.Maui.Controls.DropEventArgs.Data>, of type `DataPackageView`, which is a read-only version of the data package.
 - <xref:Microsoft.Maui.Controls.DropEventArgs.Handled>, of type `bool`, indicates whether the event handler has handled the event or whether .NET MAUI should continue its own processing.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-8.0"
+
+- <xref:Microsoft.Maui.Controls.DropEventArgs.Data>, of type `DataPackageView`, which is a read-only version of the data package.
+- <xref:Microsoft.Maui.Controls.DropEventArgs.Handled>, of type `bool`, indicates whether the event handler has handled the event or whether .NET MAUI should continue its own processing.
+- `PlatformArgs`, of type `PlatformDropEventArgs?`, represents the platform-specific arguments associated with the event.
+
+<!-- markdownlint-disable MD025 -->
+
+# [Android](#tab/android)
+
+On Android, the `PlatformDropEventArgs` class defines the following properties:
+
+- `Sender`, of type <xref:Android.Views.View>, represents the native view attached to the event.
+- `DragEvent`, of type <xref:Android.Views.DragEvent>, represents the event that's sent at various times during a drag and drop operation.
+
+# [iOS/Mac Catalyst](#tab/macios)
+
+On iOS and Mac Catalyst, the `PlatformDropEventArgs` class defines the following properties:
+
+- `Sender`, of type <xref:UIKit.UIView>, represents the native view attached to the event.
+- `DropInteraction`, of type <xref:UIKit.UIDropInteraction>, indicates the interaction used for dropping items.
+- `DropSession`, of type <xref:UIKit.IUIDropSession>, retrieves the associated information from the drop session.
+
+# [Windows](#tab/windows)
+
+On Windows, the `PlatformDropEventArgs` class defines the following properties:
+
+- `Sender`, of type <xref:Microsoft.UI.Xaml.FrameworkElement>, represents the native view attached to the event.
+- `DragEventArgs`, of type <xref:Microsoft.UI.Xaml.DragEventArgs>, provides event data for the native event. -->
+
+---
+
+::: moniker-end
 
 The following XAML example shows a <xref:Microsoft.Maui.Controls.DropGestureRecognizer> attached to an <xref:Microsoft.Maui.Controls.Image>:
 
@@ -291,3 +523,24 @@ void OnDrop(object sender, DropEventArgs e)
 ```
 
 In this example, the `Square` object is retrieved from the property bag of the data package, by specifying the "Square" dictionary key. An action based on the retrieved value can then be taken.
+
+::: moniker range=">=net-maui-8.0"
+
+## Get the gesture position
+
+The position at which a drag or drop gesture occurred can be obtained by calling the `GetPosition` method on a <xref:Microsoft.Maui.Controls.DragEventArgs>, <xref:Microsoft.Maui.Controls.DragStartingEventArgs>, or <xref:Microsoft.Maui.Controls.DropEventArgs> object. The `GetPosition` method accepts an `Element?` argument, and returns a position as a `Point?` object:
+
+```csharp
+void OnDragStarting(object sender, DragStartingEventArgs e)
+{
+    // Position relative to screen
+    Point? screenPosition = e.GetPosition(null);
+
+    // Position relative to specified element
+    Point? relativeToImagePosition = e.GetPosition(image);
+}
+```
+
+The `Element?` argument defines the element the position should be obtained relative to. Supplying a `null` value as this argument means that the `GetPosition` method returns a `Point?` object that defines the position of the drag or drop gesture relative to the screen.
+
+::: moniker-end

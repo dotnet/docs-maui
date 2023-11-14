@@ -48,6 +48,8 @@ If you have an individual Apple Developer account, as opposed to an enterprise a
 # [Visual Studio for Mac](#tab/vsmac)
 <!-- markdownlint-enable MD025 -->
 
+[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
+
 1. In Visual Studio for Mac, go to **Visual Studio > Preferences > Publishing > Apple Developer Account**, click on the **Add** button and select **Individual Account...** or **Enterprise Account...**:
 
     :::image type="content" source="media/apple-account-management/vsmac/add-account.png" alt-text="Add an Apple Developer Account to Visual Studio for Mac.":::

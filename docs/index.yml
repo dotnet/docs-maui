@@ -84,6 +84,8 @@ landingContent:
             url: xaml/fundamentals/get-started.md
           - text: Compilation
             url: xaml/xamlc.md
+          - text: Class modifiers
+            url: xaml/class-modifiers.md
           - text: Field modifiers
             url: xaml/field-modifiers.md
           - text: Generics

@@ -6,11 +6,17 @@ ms.date: 02/24/2023
 
 # Publish an iOS app using the command line
 
+> [!div class="op_single_selector"]
+>
+> - [Publish for app store distribution](publish-app-store.md)
+> - [Publish for in-house distribution](publish-in-house.md)
+> - [Publish for ad-hoc distribution](publish-ad-hoc.md)
+
 To publish your app from the command line on a Mac, open a terminal and navigate to the folder for your .NET Multi-platform App UI (.NET MAUI) app project. Run the `dotnet publish` command, providing the following parameters:
 
 | Parameter                    | Value                                                                                           |
 |------------------------------|-------------------------------------------------------------------------------------------------|
-| `-f` or `--framework`        | The target framework, which is `net7.0-ios`.                                    |
+| `-f` or `--framework`        | The target framework, which is `net8.0-ios`.                                    |
 | `-c` or `--configuration`    | The build configuration, which is `Release`.                                                    |
 
 > [!WARNING]
@@ -38,14 +44,18 @@ For a full list of build properties, see [Project file properties](https://githu
 For example, use the following command to build and sign an *.ipa* on a Mac:
 
 ```dotnetcli
-dotnet publish -f net7.0-ios -c Release -p:ArchiveOnBuild=true -p:RuntimeIdentifier=ios-arm64 -p:CodesignKey="Apple Distribution: John Smith (AY2GDE9QM7)" -p:CodesignProvision="MyMauiApp"
+dotnet publish -f net8.0-ios -c Release -p:ArchiveOnBuild=true -p:RuntimeIdentifier=ios-arm64 -p:CodesignKey="Apple Distribution: John Smith (AY2GDE9QM7)" -p:CodesignProvision="MyMauiApp"
 ```
 
-Publishing builds and signs the app, and then copies the *.ipa* to the *bin/Release/net7.0-ios/ios-arm64/publish/* folder. The distribution channel for the app is specified in the distribution certificate contained within the provisioning profile. For information about creating provisioning profiles for the different distribution channels, see [Publish an iOS app for App Store distribution](publish-app-store.md), [Publish an iOS app for ad-hoc distribution](publish-ad-hoc.md), and [Publish an iOS app for in-house distribution](publish-in-house.md).
+[!INCLUDE [dotnet publish in .NET 8 on iOS](~/includes/dotnet-publish-net8-ios.md)]
+
+Publishing builds and signs the app, and then copies the *.ipa* to the *bin/Release/net8.0-ios/ios-arm64/publish/* folder. The distribution channel for the app is specified in the distribution certificate contained within the provisioning profile. For information about creating provisioning profiles for the different distribution channels, see [Publish an iOS app for App Store distribution](publish-app-store.md), [Publish an iOS app for ad-hoc distribution](publish-ad-hoc.md), and [Publish an iOS app for in-house distribution](publish-in-house.md).
 
 For more information about the `dotnet publish` command, see [dotnet publish](/dotnet/core/tools/dotnet-publish).
 
 <!-- Todo: It's possible to re-sign an existing app bundle with a different certificate to change the distribution channel -->
+
+::: moniker range="=net-maui-7.0"
 
 ## Runtime identifiers
 
@@ -79,6 +89,8 @@ Then, use the following command to publish your app:
 dotnet publish -f net7.0-ios -c Release ...
 ```
 
+::: moniker-end
+
 ## Define build properties in your project file
 
 An alternative to specifying build parameters on the command line is to specify them in your project file in a `<PropertyGroup>`. The following table lists some of the common build properties:
@@ -89,7 +101,7 @@ An alternative to specifying build parameters on the command line is to specify 
 | `<ApplicationId>` | The unique identifier for the app, such as `com.companyname.mymauiapp`. |
 | `<ApplicationVersion>` | The version of the build that identifies an iteration of the app. |
 | `<ApplicationDisplayVersion>` | The version number of the app. |
-| `<RuntimeIdentifier>` | The runtime identifier (RID) for the project. Set to `ios-arm64`. |
+| `<RuntimeIdentifier>` | The runtime identifier (RID) for the project. Use `ios-arm64`. |
 | `<ArchiveOnBuild>` | A boolean value that indicates whether to produce the app archive. Use `true` to produce the *.ipa*. |
 | `<CodesignKey>` | The name of the code signing key. |
 | `<CodesignProvision>` | The provisioning profile to use when signing the app bundle. |
@@ -104,7 +116,7 @@ The following example shows a typical property group for building and signing yo
 
 ```xml
 <PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">
-  <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
+  <RuntimeIdentifier>ios-arm64</RuntimeIdentifier> <!-- Required in .NET 7 but not in .NET 8 -->
   <CodesignKey>Apple Distribution: John Smith (AY2GDE9QM7)</CodesignKey>
   <CodesignProvision>MyMauiApp</CodesignProvision>
   <ArchiveOnBuild>true</ArchiveOnBuild>
@@ -141,17 +153,35 @@ To publish your app from the command line on Windows, open a terminal and naviga
 For example, use the following command to build and sign an *.ipa* from Windows:
 
 ```dotnetcli
-dotnet publish -f net7.0-ios -c Release -p:ArchiveOnBuild=true -p:RuntimeIdentifier=ios-arm64 -p:CodesignKey="Apple Distribution: John Smith (AY2GDE9QM7)" -p:CodesignProvision="MyMauiApp" -p:ServerAddress={macOS build host IP address} -p:ServerUser={macOS username} -p:ServerPassword={macOS password} -p:TcpPort=58181 -p:_DotNetRootRemoteDirectory=/Users/{macOS username}/Library/Caches/Xamarin/XMA/SDKs/dotnet/
+dotnet publish -f net8.0-ios -c Release -p:ArchiveOnBuild=true -p:RuntimeIdentifier=ios-arm64 -p:CodesignKey="Apple Distribution: John Smith (AY2GDE9QM7)" -p:CodesignProvision="MyMauiApp" -p:ServerAddress={macOS build host IP address} -p:ServerUser={macOS username} -p:ServerPassword={macOS password} -p:TcpPort=58181 -p:_DotNetRootRemoteDirectory=/Users/{macOS username}/Library/Caches/Xamarin/XMA/SDKs/dotnet/
 ```
+
+[!INCLUDE [dotnet publish in .NET 8 on iOS](~/includes/dotnet-publish-net8-ios.md)]
 
 > [!NOTE]
 > If the `ServerPassword` parameter is omitted from a command line build invocation, Pair to Mac attempts to log in to the Mac build host using its saved SSH keys.
 
-Publishing builds and signs the app, and then copies the *.ipa* to the *bin\\Release\\net7.0-ios\\ios-arm64\\publish* folder on your Windows machine. The distribution channel for the app is specified in the distribution certificate contained within the provisioning profile. For information about creating distribution provisioning profiles for the different distribution channels, see [Publish an iOS app for App Store distribution](publish-app-store.md), [Publish an iOS app for ad-hoc distribution](publish-ad-hoc.md), and [Publish an iOS app for in-house distribution](publish-in-house.md)
+Publishing builds and signs the app, and then copies the *.ipa* to the *bin\\Release\\net8.0-ios\\ios-arm64\\publish* folder on your Windows machine. The distribution channel for the app is specified in the distribution certificate contained within the provisioning profile. For information about creating distribution provisioning profiles for the different distribution channels, see [Publish an iOS app for App Store distribution](publish-app-store.md), [Publish an iOS app for ad-hoc distribution](publish-ad-hoc.md), and [Publish an iOS app for in-house distribution](publish-in-house.md)
 
 During the publishing process it maybe necessary to allow `codesign` to run on your paired Mac:
 
 :::image type="content" source="media/publish/codesign.png" alt-text="Allow codesign to sign your app on your paired Mac.":::
+
+::: moniker range=">=net-maui-8.0"
+
+### Troubleshoot a remote build
+
+If a `RuntimeIdentifier` isn't specified when building remotely from the command line on Windows, the architecture of the Windows machine will be used. This occurs because the `RuntimeIdentifier` has to be set early in the build process, before the build can connect to the Mac to derive its architecture.
+
+If a `RuntimeIdentifier` isn't specified when building remotely using Visual Studio on Windows, the IDE will detect the architecture of the remote Mac and set it accordingly. Overriding the default can be achieved by setting the `$(ForceSimulatorX64ArchitectureInIDE)` build property:
+
+```xml
+<PropertyGroup Condition="'$(Configuration)' == 'Release' And '$(TargetFramework)' == 'net8.0-ios'">
+    <ForceSimulatorX64ArchitectureInIDE>true</ForceSimulatorX64ArchitectureInIDE>
+</PropertyGroup>
+```
+
+::: moniker-end
 
 ## Distribute the app
 

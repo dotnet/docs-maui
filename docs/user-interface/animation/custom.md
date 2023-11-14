@@ -15,6 +15,8 @@ Running an animation created with the <xref:Microsoft.Maui.Controls.Animation> c
 > [!NOTE]
 > The <xref:Microsoft.Maui.Controls.Animation> class has an <xref:Microsoft.Maui.Controls.Animation.IsEnabled> property that can be examined to determine if animations have been disabled by the operating system, such as when power saving mode is activated.
 
+[!INCLUDE [Android animation system settings](../includes/animation-android.md)]
+
 ## Create an animation
 
 When creating an <xref:Microsoft.Maui.Controls.Animation> object, typically, a minimum of three parameters are required, as demonstrated in the following code example:

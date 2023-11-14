@@ -256,6 +256,13 @@ public class BasicGridPage : ContentPage
 
 In code, to specify the height of a `RowDefinition` object, and the width of a `ColumnDefinition` object, you use values of the `GridLength` structure, often in combination with the `GridUnitType` enumeration.
 
+::: moniker range=">=net-maui-8.0"
+
+> [!NOTE]
+> <xref:Microsoft.Maui.Controls.Grid> also defines an `AddWithSpan` extension method that adds a view to the `Grid` at the specified row and column with the specified row and column spans.
+
+::: moniker-end
+
 ### Simplify row and column definitions
 
 In XAML, the row and column characteristics of a <xref:Microsoft.Maui.Controls.Grid> can be specified using a simplified syntax that avoids having to define `RowDefinition` and `ColumnDefinition` objects for each row and column. Instead, the `RowDefinitions` and `ColumnDefinitions` properties can be set to strings containing comma-delimited `GridUnitType` values, from which type converters built into .NET MAUI create `RowDefinition` and `ColumnDefinition` objects:

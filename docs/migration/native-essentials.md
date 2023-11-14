@@ -28,7 +28,7 @@ To use .NET MAUIs native device functionality in a .NET Android or .NET iOS app,
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net7.0-android</TargetFramework>
+    <TargetFramework>net8.0-android</TargetFramework>
     ...
     <UseMauiEssentials>true</UseMauiEssentials>
   </PropertyGroup>
@@ -42,7 +42,7 @@ To use .NET MAUIs native device functionality in a .NET Android or .NET iOS app,
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net7.0-ios</TargetFramework>
+    <TargetFramework>net8.0-ios</TargetFramework>
     ...
     <UseMauiEssentials>true</UseMauiEssentials>
   </PropertyGroup>

@@ -6,6 +6,12 @@ ms.date: 03/23/2023
 
 # Publish a Mac Catalyst app for Mac App Store distribution
 
+> [!div class="op_single_selector"]
+>
+> - [Publish an unsigned app](publish-unsigned.md)
+> - [Publish outside the app store](publish-outside-app-store.md)
+> - [Publish for ad-hoc distribution](publish-ad-hoc.md)
+
 The most common approach to distributing Mac Catalyst apps to users is through the Mac App Store. Apps are submitted to the Mac App Store through an online tool called *App Store Connect*. Only developers who belong to the Apple Developer Program have access to this tool. Members of the Apple Developer Enterprise Program do not have access. All apps submitted to the Mac App Store require approval from Apple.
 
 Distributing a Mac Catalyst app requires that the app is provisioned using a *provisioning profile*. Provisioning profiles are files that contain code signing information, as well as the identity of the app and its intended distribution mechanism.
@@ -172,7 +178,7 @@ To publish your Mac Catalyst app from the command line on a Mac, open a terminal
 
 | Parameter                    | Value                                                                                           |
 |------------------------------|-------------------------------------------------------------------------------------------------|
-| `-f` or `--framework`        | The target framework, which is `net7.0-maccatalyst`.                    |
+| `-f` or `--framework`        | The target framework, which is `net8.0-maccatalyst`.                    |
 | `-c` or `--configuration`    | The build configuration, which is `Release`.                                                    |
 | `-p:MtouchLink`              | The link mode for the project, which can be `None`, `SdkOnly`, or `Full`.                       |
 | `-p:CreatePackage`           | Set to `true` so that a package (*.pkg*) is created for the app at the end of the build.        |
@@ -203,8 +209,10 @@ For a full list of build properties, see [Project file properties](https://githu
 For example, use the following command to build and sign a *.pkg* on a Mac, for distribution through the Mac App Store:
 
 ```dotnetcli
-dotnet publish -f net7.0-maccatalyst -c Release -p:MtouchLink=SdkOnly -p:CreatePackage=true -p:EnableCodeSigning=true -p:EnablePackageSigning=true -p:CodesignKey="Apple Distribution: John Smith (AY2GDE9QM7)" -p:CodesignProvision="MyMauiApp" -p:CodesignEntitlements="Platforms\MacCatalyst\Entitlements.plist" -p:PackageSigningKey="3rd Party Mac Developer Installer: John Smith (AY2GDE9QM7)"
+dotnet publish -f net8.0-maccatalyst -c Release -p:MtouchLink=SdkOnly -p:CreatePackage=true -p:EnableCodeSigning=true -p:EnablePackageSigning=true -p:CodesignKey="Apple Distribution: John Smith (AY2GDE9QM7)" -p:CodesignProvision="MyMauiApp" -p:CodesignEntitlements="Platforms\MacCatalyst\Entitlements.plist" -p:PackageSigningKey="3rd Party Mac Developer Installer: John Smith (AY2GDE9QM7)"
 ```
+
+[!INCLUDE [dotnet publish in .NET 8](~/includes/dotnet-publish-net8.md)]
 
 [!INCLUDE [Publishing output](../includes/publishing-output.md)]
 
@@ -235,7 +243,7 @@ For a full list of build properties, see [Project file properties](https://githu
 The following example shows a typical property group for building and signing your Mac Catalyst app for Mac App Store distribution:
 
 ```xml
-<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-maccatalyst|AnyCPU'">
+<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-maccatalyst|AnyCPU'">
   <MtouchLink>SdkOnly</MtouchLink>
   <EnableCodeSigning>True</EnableCodeSigning>
   <EnablePackageSigning>true</EnablePackageSigning>

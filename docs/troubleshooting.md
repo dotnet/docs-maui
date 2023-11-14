@@ -1,7 +1,7 @@
 ---
 title: "Troubleshoot known issues"
 description: "Learn about .NET MAUI known issues and troubleshooting you can do to resolve these issues."
-ms.date: 03/08/2023
+ms.date: 10/02/2023
 ---
 
 # Troubleshooting known issues
@@ -136,21 +136,9 @@ Use a `global.json` config file in the folder where you'll create the project. T
 
 Visual Studio may not be resolving the required workloads if you try to compile a project and receive an error similar to the following text:
 
-> Platform version is not present for one or more target frameworks, even though they have specified a platform: net7.0-android, net7.0-ios, net7.0-maccatalyst
+> Platform version is not present for one or more target frameworks, even though they have specified a platform: net8.0-android, net8.0-ios, net8.0-maccatalyst
 
 This problem typically results from having an x86 and x64 SDK installed, and the x86 version is being used. Visual Studio and .NET MAUI require the x64 .NET SDK. If your operating system has a system-wide `PATH` variable that is resolving the x86 SDK first, you need to fix that by either removing the x86 .NET SDK from the `PATH` variable, or promoting the x64 .NET SDK so that it resolves first. For more information on troubleshooting x86 vs x64 SDK resolution, see [Install .NET on Windows - Troubleshooting](/dotnet/core/install/windows#it-was-not-possible-to-find-any-installed-net-core-sdks).
-
-<!--
-## The WINDOWS `#if` directive is broken
-
-The `WINDOWS` definition doesn't resolve correctly in the latest release of .NET MAUI. To work around this issue, add the following entry to the `<PropertyGroup>` element of your project file.
-
-```xml
-<DefineConstants Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">$(DefineConstants);WINDOWS</DefineConstants>
-```
-
-The definitions that identify a specific version of Windows will still be missing.
--->
 
 ## Type or namespace 'Default' doesn't exist
 
@@ -182,3 +170,82 @@ If you receive the error "Could not find a valid Xcode app bundle at '/Library/D
 ```zsh
 sudo xcode-select --reset
 ```
+
+::: moniker range=">=net-maui-8.0"
+
+## Diagnose issues in Blazor Hybrid apps
+
+<xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> has built-in logging that can help you diagnose problems in your Blazor Hybrid app. There are two steps to enable this logging:
+
+1. Enable <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> and related components to log diagnostic information.
+1. Configure a logger to write the log output to where you can view it.
+
+For more information, see [Diagnosing issues in Blazor Hybrid apps](~/user-interface/controls/blazorwebview.md#diagnosing-issues).
+
+## Disable image packaging
+
+For troubleshooting purposes, image resource packaging can be disabled by setting the `$(EnableMauiImageProcessing)` build property to `false` in the first `<PropertyGroup>` node in your project file:
+
+```xml
+<EnableMauiImageProcessing>false</EnableMauiImageProcessing>
+```
+
+## Disable splash screen packaging
+
+For troubleshooting purposes, splash screen resource generation can be disabled by setting the `$(EnableSplashScreenProcessing)` build property to `false` in the first `<PropertyGroup>` node in your project file:
+
+```xml
+<EnableSplashScreenProcessing>false</EnableSplashScreenProcessing>
+```
+
+## Disable font packaging
+
+For troubleshooting purposes, font resource packaging can be disabled by setting the `$(EnableMauiFontProcessing)` build property to `false` in the first `<PropertyGroup>` node in your project file:
+
+```xml
+<EnableMauiFontProcessing>false</EnableMauiFontProcessing>
+```
+
+## Disable asset file packaging
+
+For troubleshooting purposes, asset file resource packaging can be disabled by setting the `$(EnableMauiAssetProcessing)` build property to `false` in the first `<PropertyGroup>` node in your project file:
+
+```xml
+<EnableMauiAssetProcessing>false</EnableMauiAssetProcessing>
+```
+
+## Generate a blank splash screen
+
+For troubleshooting purposes, a blank splash screen can be generated if you don't have a `<MauiSplashScreen>` item and you don't have a custom splash screen. This can be achieved by setting the `$(EnableBlankMauiSplashScreen)` build property to `true` in the first `<PropertyGroup>` node in your project file:
+
+```xml
+<EnableBlankMauiSplashScreen>true</EnableBlankMauiSplashScreen>
+```
+
+Generating a blank splash screen will override any custom splash screen and will cause app store rejection. However, it can be a useful approach in testing to ensure that your app UI is correct.
+
+## Duplicate image filename errors
+
+You may encounter build errors about duplicate image filenames:
+
+> One or more duplicate file names were detected. All image output filenames must be unique.
+
+This can occur for `MauiIcon` and `MauiImage` items. For example, the following `MauiImage` items in an `<ItemGroup>` node in your project file will result in this error:
+
+```xml
+<MauiImage Include="Resources\Images\*" />
+<MauiImage Include="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
+```
+
+This occurs because from .NET 8, .NET MAUI checks to ensure that there are no duplicate image resource filenames.
+
+If you receive this build error it can be fixed by ensuring that your project file doesn't include duplicate images. To do this, change any `MauiIcon` or `MauiImage` that references a specific file to use the `Update` attribute instead of the `Include` attribute:
+
+```xml
+<MauiImage Include="Resources\Images\*" />
+<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
+```
+
+For information about MSBuild item element attributes, see [Item element (MSBuild): Attributes and elements](/visualstudio/msbuild/item-element-msbuild#attributes-and-elements).
+
+::: moniker-end
