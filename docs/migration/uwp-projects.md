@@ -76,15 +76,15 @@ Migrate your business logic from the following files into other files and remove
 - Default.rd.xml
 These files are no longer needed for .NET MAUI WinUI application.
 
-#### Files to add 
+#### Files to add
 
-Use this [.NET MAUI Multi Head Application](https://github.com/mattleibow/MauiMultiHeadProject/tree/main/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI) project as a sample for the following files when adding them to your upgraded project: 
+Use this [.NET MAUI Multi Head Application](https://github.com/mattleibow/MauiMultiHeadProject/tree/main/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI) project as a sample for the following files when adding them to your upgraded project:
 
 - MauiProgram.cs
-- App.xaml/ App.xaml.cs 
-  - The old Xamarin.UWP project starts with an app.xaml/.cs file. Migrate your business logic over to the Maui version of the file. There exists more resources [here](https://github.com/dotnet/maui/wiki/Migrating-from-Xamarin.Forms-to-.NET-MAUI) for manually moving resources from Xamarin.Forms projects to NET MAUI projects. 
+- App.xaml/ App.xaml.cs
+  - The old Xamarin.UWP project starts with an app.xaml/.cs file. Migrate your business logic over to the Maui version of the file. There exists more resources [here](https://github.com/dotnet/maui/wiki/Migrating-from-Xamarin.Forms-to-.NET-MAUI) for manually moving resources from Xamarin.Forms projects to NET MAUI projects.
 - launchSettings.json
-These files are required to get your .NET MAUI WinUI application up and running. 
+These files are required to get your .NET MAUI WinUI application up and running.
 
 #### Package.appxmanifest changes
 
@@ -103,9 +103,9 @@ There are behavioral changes to the `String.IndexOf()` method in .NET 5+ on diff
 
 ## Next steps
 
-Build and test your application to identify any UI differences between Xamarin.Forms and .NET MAUI. 
+Build and test your application to identify any UI differences between Xamarin.Forms and .NET MAUI.
 
-You can now enjoy the benefits that .NET MAUI offers such as improved performance and modernized UI controls. 
+You can now enjoy the benefits that .NET MAUI offers such as improved performance and modernized UI controls.
 
 ## See also
 
