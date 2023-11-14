@@ -11,10 +11,24 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.WebView
 
 <xref:Microsoft.Maui.Controls.WebView> defines the following properties:
 
+::: moniker range="=net-maui-7.0"
+
 - `Cookies`, of type `CookieContainer`, provides storage for a collection of cookies.
 - `CanGoBack`, of type `bool`, indicates whether the user can navigate to previous pages. This is a read-only property.
 - `CanGoForward`, of type `bool`, indicates whether the user can navigate forward. This is a read-only property.
 - `Source`, of type `WebViewSource`, represents the location that the <xref:Microsoft.Maui.Controls.WebView> displays.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-8.0"
+
+- `Cookies`, of type `CookieContainer`, provides storage for a collection of cookies.
+- `CanGoBack`, of type `bool`, indicates whether the user can navigate to previous pages. This is a read-only property.
+- `CanGoForward`, of type `bool`, indicates whether the user can navigate forward. This is a read-only property.
+- `Source`, of type `WebViewSource`, represents the location that the <xref:Microsoft.Maui.Controls.WebView> displays.
+- `UserAgent`, of type `string`, represents the user agent. The default value is the user agent of the underlying platform browser, or `null` if it can't be determined.
+
+::: moniker-end
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
@@ -380,7 +394,9 @@ function factorial(num) {
 
 The native <xref:Microsoft.Maui.Controls.WebView> control is a `MauiWKWebView` on iOS and Mac Catalyst, which derives from `WKWebView`. One of the `MauiWKWebView` constructor overloads enables a `WKWebViewConfiguration` object to be specified, which provides information about how to configure the `WKWebView` object. Typical configurations include setting the user agent, specifying cookies to make available to your web content, and injecting custom scripts into your web content.
 
-You can create a `WKWebViewConfiguration` object in your app, and then configure its properties as required. Alternatively, you can call the static `MauiWKWebView.CreateConfiguration` method to retrieve .NET MAUI's `WKWebViewConfiguration` object and then modify it. The `WKWebViewConfiguration` object can then be passed to the `MauiWKWebView` constructor overload by modifying the factory method that `WebViewHandler` uses to create its native control on each platform:
+You can create a `WKWebViewConfiguration` object in your app, and then configure its properties as required. Alternatively, you can call the static `MauiWKWebView.CreateConfiguration` method to retrieve .NET MAUI's `WKWebViewConfiguration` object and then modify it. The `WKWebViewConfiguration` object can then be specified as an argument to the `MauiWKWebView` constructor overload.
+
+Since the configuration of the native <xref:Microsoft.Maui.Controls.WebView> can't be changed on iOS and Mac Catalyst once the handler's platform view is created, you should create a custom handler factory delegate to modify it:
 
 ```csharp
 #if IOS || MACCATALYST
@@ -392,10 +408,12 @@ using Microsoft.Maui.Handlers;
 ...
 
 #if IOS || MACCATALYST
-    WKWebViewConfiguration config = MauiWKWebView.CreateConfiguration();
-    config.ApplicationNameForUserAgent = "MyProduct/1.0.0";
-    WebViewHandler.PlatformViewFactory =
-        handler => new MauiWKWebView(CGRect.Empty, (WebViewHandler)handler, config);
+    Microsoft.Maui.Handlers.WebViewHandler.PlatformViewFactory = (handler) =>
+    {
+        WKWebViewConfiguration config = MauiWKWebView.CreateConfiguration();
+        config.ApplicationNameForUserAgent = "MyProduct/1.0.0";
+        return new MauiWKWebView(CGRect.Empty, (WebViewHandler)handler, config);
+    };
 #endif
 ```
 
@@ -403,6 +421,51 @@ using Microsoft.Maui.Handlers;
 > You should configure `MauiWKWebView` with a `WKWebViewConfiguration` object before a <xref:Microsoft.Maui.Controls.WebView> is displayed in your app. Suitable locations to do this are in your app's startup path, such as in *MauiProgram.cs* or *App.xaml.cs*. <!-- For more information about configuring a native .NET MAUI control, see [Customize controls](~/user-interface/handlers/customize.md). -->
 
 :::zone-end
+
+::: moniker range=">=net-maui-8.0"
+
+:::zone pivot="devices-ios, devices-maccatalyst"
+
+## Set media playback preferences on iOS and Mac Catalyst
+
+Inline media playback of HTML5 video, including autoplay and picture in picture, is enabled by default for the <xref:Microsoft.Maui.Controls.WebView> on iOS and Mac Catalyst. To change this default, or set other media playback preferences, you should create a custom handler factory delegate since media playback preferences can't be changed once the handler's platform view is created. The following code shows an example of doing this:
+
+```csharp
+#if IOS || MACCATALYST
+using WebKit;
+using CoreGraphics;
+using Microsoft.Maui.Platform;
+using Microsoft.Maui.Handlers;
+#endif
+...
+
+#if IOS || MACCATALYST
+    Microsoft.Maui.Handlers.WebViewHandler.PlatformViewFactory = (handler) =>
+    {
+        WKWebViewConfiguration config = MauiWKWebView.CreateConfiguration();
+
+        // True to play HTML5 videos inliine, false to use the native full-screen controller.
+        config.AllowsInlineMediaPlayback = false;
+
+        // True to play videos over AirPlay, otherwise false.
+        config.AllowsAirPlayForMediaPlayback = false;
+
+        // True to let HTML5 videos play Picture in Picture.
+        config.AllowsPictureInPictureMediaPlayback = false;
+
+        // Media types that require a user gesture to begin playing.
+        config.MediaTypesRequiringUserActionForPlayback = WKAudiovisualMediaTypes.All;
+
+        return new MauiWKWebView(CGRect.Empty, (WebViewHandler)handler, config);
+    };
+#endif
+```
+
+For more information about configuring a <xref:Microsoft.Maui.Controls.WebView> on iOS, see [Configure the native WebView on iOS and Mac Catalyst](#configure-the-native-webview-on-ios-and-mac-catalyst).
+
+:::zone-end
+
+::: moniker-end
 
 :::zone pivot="devices-maccatalyst"
 

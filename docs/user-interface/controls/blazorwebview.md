@@ -1,7 +1,7 @@
 ---
 title: "Host a Blazor web app in a .NET MAUI app using BlazorWebView"
 description: "The .NET MAUI BlazorWebView control enables you to host a Blazor web app in your .NET MAUI app, and integrate the app with device features."
-ms.date: 01/18/2023
+ms.date: 10/02/2023
 ---
 
 # Host a Blazor web app in a .NET MAUI app using BlazorWebView
@@ -10,8 +10,20 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.AspNetCore.Components
 
 <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> defines the following properties:
 
+::: moniker range="=net-maui-7.0"
+
 - `HostPage`, of type `string?`, which defines the root page of the Blazor web app.
 - `RootComponents`, of type `RootComponentsCollection`, which specifies the collection of root components that can be added to the control.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-8.0"
+
+- `HostPage`, of type `string?`, which defines the root page of the Blazor web app.
+- `RootComponents`, of type `RootComponentsCollection`, which specifies the collection of root components that can be added to the control.
+- `StartPath`, of type `string`, which defines the path for initial navigation within the Blazor navigation context when the Blazor component is finished loading.
+
+::: moniker-end
 
 The `RootComponent` class defines the following properties:
 
@@ -121,3 +133,74 @@ The process to add a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWe
         }
     }
     ```
+
+::: moniker range=">=net-maui-8.0"
+
+## Access scoped services from native UI
+
+<xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> has a `TryDispatchAsync` method that can call a specified `Action<ServiceProvider>` asynchronously and pass in the scoped services available in Razor components. This enables code from the native UI to access scoped services such as enables code from the native UI to access scoped services such as <xref:Microsoft.AspNetCore.Components.NavigationManager>:
+
+```csharp
+private async void OnMyMauiButtonClicked(object sender, EventArgs e)
+{
+    var wasDispatchCalled = await blazorWebView.TryDispatchAsync(sp =>
+    {
+        var navMan = sp.GetRequiredService<NavigationManager>();
+        navMan.CallSomeNavigationApi(...);
+    });
+
+    if (!wasDispatchCalled)
+    {
+        // Consider what to do if it the dispatch fails - that's up to your app to decide.
+    }
+}
+```
+
+## Diagnosing issues
+
+<xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> has built-in logging that can help you diagnose issues in your Blazor Hybrid app. There are two steps to enable this logging:
+
+1. Enable <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> and related components to log diagnostic information.
+1. Configure a logger to write the log output to where you can view it.
+
+For more information about logging, see [Logging in C# and .NET](/dotnet/core/extensions/logging).
+
+### Enable BlazorWebView logging
+
+All logging configuration can be performed as part of service registration in the dependency injection system. To enable maximum logging for <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> and related components under the <xref:Microsoft.AspNetCore.Components.WebView?displayProperty=fullName> namespace, add the following code to where your app's services are registered:
+
+```csharp
+services.AddLogging(logging =>
+{
+    logging.AddFilter("Microsoft.AspNetCore.Components.WebView", LogLevel.Trace);
+});
+```
+
+Alternatively, to enable maximum logging for every component that uses <xref:Microsoft.Extensions.Logging?displayProperty=fullName>, you could use the following code:
+
+```csharp
+services.AddLogging(logging =>
+{
+    logging.SetMinimumLevel(LogLevel.Trace);
+});
+```
+
+### Configure logging output and viewing the output
+
+After configuring components to write log information you need to configure where the loggers should write the logs to, and then view the log output.
+
+The **Debug** logging providers write the output using `Debug` statements, and the output can be viewed from Visual Studio.
+
+To configure the **Debug** logging provider, first add a reference in your project to the [`Microsoft.Extensions.Logging.Debug`](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Debug) NuGet package. Then, register the provider inside the call to <xref:Microsoft.Extensions.DependencyInjection.LoggingServiceCollectionExtensions.AddLogging%2A> that you added in the previous step by calling the <xref:Microsoft.Extensions.Logging.DebugLoggerFactoryExtensions.AddDebug%2A> extension method:
+
+```csharp
+services.AddLogging(logging =>
+{
+    logging.AddFilter("Microsoft.AspNetCore.Components.WebView", LogLevel.Trace);
+    logging.AddDebug();
+});
+```
+
+When you run the app from Visual Studio (with debugging enabled), you can view the debug output in Visual Studio's **Output** window.
+
+::: moniker-end

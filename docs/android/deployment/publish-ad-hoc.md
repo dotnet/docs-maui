@@ -6,6 +6,11 @@ ms.date: 05/15/2023
 
 # Publish an Android app for ad-hoc distribution
 
+> [!div class="op_single_selector"]
+>
+> - [Publish for Google Play distribution](publish-google-play.md)
+> - [Publish using the command line](publish-cli.md)
+
 When distributing Android apps outside Google Play, and other marketplaces, *ad-hoc* distribution enables you to make the app available for download on a website or server. Android requires that apps created for ad-hoc distribution use the Android Package (APK) format.
 
 To distribute a .NET Multi-platform App UI (.NET MAUI) Android app, you'll need to sign it with a key from your keystore. Keystores are binary files that serve as repositories of certificates and private keys.

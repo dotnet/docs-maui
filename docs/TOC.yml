@@ -115,6 +115,8 @@
               href: xaml/fundamentals/mvvm.md
         - name: Compilation
           href: xaml/xamlc.md
+        - name: Class modifiers
+          href: xaml/class-modifiers.md
         - name: Field modifiers
           href: xaml/field-modifiers.md
         - name: Generics
@@ -471,6 +473,8 @@
               href: user-interface/menu-bar.md
             - name: Display menu items
               href: user-interface/menuitem.md
+            - name: Keyboard accelerators
+              href: user-interface/keyboard-accelerators.md
         - name: Shadows
           href: user-interface/shadow.md
         - name: Styles
@@ -784,8 +788,10 @@
               items:
                 - name: Overview
                   href: windows/deployment/overview.md
-                - name: Publish with the .NET CLI
+                - name: Publish a packaged app with the .NET CLI
                   href: windows/deployment/publish-cli.md
+                - name: Publish an unpackaged app with the .NET CLI
+                  href: windows/deployment/publish-unpackaged-cli.md
                 - name: Publish with Visual Studio to a folder
                   href: windows/deployment/publish-visual-studio-folder.md
     - name: Troubleshooting

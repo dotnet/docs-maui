@@ -47,6 +47,8 @@ Entitlements can be configured in Visual Studio by double-clicking the *Entitlem
 # [Visual Studio for Mac](#tab/vsmac)
 <!-- markdownlint-enable MD025 -->
 
+[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
+
 1. In the **Solution Window**, double-click the *Entitlements.plist* file from the *Platforms > iOS* folder of your .NET MAUI app project to open it in the entitlements editor. Then, change from the **Source** view to the **Entitlements** view:
 
     :::image type="content" source="media/entitlements/editor-source-vsmac.png" alt-text="Visual Studio for Mac iOS entitlements editor source view.":::
@@ -84,6 +86,8 @@ A .NET MAUI iOS app must be configured to consume the entitlements defined in th
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio for Mac](#tab/vsmac)
 <!-- markdownlint-enable MD025 -->
+
+[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
 
 1. In the **Solution Window**, right-click on your .NET MAUI app project and select **Properties**.
 1. In the **Project Properties** window, select the **Build > iOS > Bundle Signing** tab and click the **...** button next to the **Custom Entitlements** field:

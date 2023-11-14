@@ -101,7 +101,7 @@ Just as you can abbreviate `x:StaticExtension` to `x:Static` when you use it as 
        FontSize="{x:Static Member=local:AppConstants.NormalFontSize}" />
 ```
 
-The <xref:Microsoft.Maui.Controls.Xaml.StaticExtension> class has a `ContentProperty` attribute referencing the property `Member`, which marks this property as the class's default content property. For XAML markup extensions expressed with curly braces, you can eliminate the `Member=` part of the expression:
+The <xref:Microsoft.Maui.Controls.Xaml.StaticExtension> class has a [`ContentProperty`](xref:Microsoft.Maui.Controls.ContentPropertyAttribute) attribute referencing the property `Member`, which marks this property as the class's default content property. For XAML markup extensions expressed with curly braces, you can eliminate the `Member=` part of the expression:
 
 ```xaml
 <Label Text="Label No. 5"

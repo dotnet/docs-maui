@@ -17,7 +17,7 @@ To migrate a Xamarin.iOS binding library to a .NET iOS binding library:
     ```xml
     <Project Sdk="Microsoft.NET.Sdk">
       <PropertyGroup>
-        <TargetFramework>net7.0-ios</TargetFramework>
+        <TargetFramework>net8.0-ios</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>true</ImplicitUsings>
         <IsBindingProject>true</IsBindingProject>

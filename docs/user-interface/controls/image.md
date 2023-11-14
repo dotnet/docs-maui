@@ -214,6 +214,13 @@ Image image = new Image
 };
 ```
 
+::: moniker range=">=net-maui-8.0"
+
+> [!IMPORTANT]
+> Image caching is disabled on Android when loading an image from a stream with the [`ImageSource.FromStream`](xref:Microsoft.Maui.Controls.ImageSource.FromStream%2A) method. This is due to the lack of data from which to create a reasonable cache key.
+
+::: moniker-end
+
 ## Load a font icon
 
 The [`FontImage`](xref:Microsoft.Maui.Controls.Xaml.FontImageExtension) markup extension enables you to display a font icon in any view that can display an <xref:Microsoft.Maui.Controls.ImageSource>. It provides the same functionality as the <xref:Microsoft.Maui.Controls.FontImageSource> class, but with a more concise representation.
