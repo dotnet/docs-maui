@@ -9,6 +9,7 @@ metadata:
   ms.topic: hub-page
   ms.date: 11/15/2023
 
+# itemType: architecture | concept | deploy | download | get-started | how-to-guide | training | overview | quickstart | reference | sample | tutorial | video | whats-new
 highlightedContent:
   items:
     - title: What is .NET MAUI?
@@ -16,6 +17,7 @@ highlightedContent:
       url: what-is-maui.md
     - title: Supported platforms
       itemType: overview
+      url: supported-platforms.md
     - title: Installation
       itemType: download
       url: get-started/installation.md
@@ -35,6 +37,7 @@ highlightedContent:
       itemType: whats-new
       url: whats-new/index.yml
 
+# itemType: architecture | concept | deploy | download | get-started | how-to-guide | training | overview | quickstart | reference | sample | tutorial | video | whats-new
 conceptualContent:
   sections:
     - title: .NET MAUI common tasks
@@ -61,7 +64,7 @@ conceptualContent:
         - title: Use XAML & data-binding
           summary: Use the MVVM pattern to show data in your UI.
           links:
-            - url: xaml/fundamentals/index.md
+            - url: xaml/fundamentals/get-started.md
               itemType: concept
               text: Get started with XAML
         - title: Access a REST web service
