@@ -55,18 +55,24 @@ conceptualContent:
             - url: fundamentals/app-lifecycle.md
               itemType: concept
               text: App lifecycle
-        - title: Show a list of data
-          summary: Use the CollectionView to scroll and select data.
+        - title: Customize UI appearance per platform
+          summary: Customize UIs for specific platforms and devices.
           links:
-            - url: user-interface/controls/collectionview/index.md
+            - url: platform-integration/customize-ui-appearance.md
               itemType: concept
-              text: Present lists of data
+              text: Customize UI appearance based on the platform.
         - title: Use XAML & data-binding
           summary: Use the MVVM pattern to show data in your UI.
           links:
             - url: xaml/fundamentals/get-started.md
               itemType: concept
               text: Get started with XAML
+        - title: Show a list of data
+          summary: Use the CollectionView to scroll and select data.
+          links:
+            - url: user-interface/controls/collectionview/index.md
+              itemType: concept
+              text: Present lists of data
         - title: Access a REST web service
           summary: Integrate and interact with web services using HTTP and JSON
           links:
@@ -85,14 +91,8 @@ conceptualContent:
             - url: deployment/index.md
               itemType: concept
               text: Deployment
-        - title: Customize UI appearance per platform
-          summary: Customize UIs for specific platforms and devices.
-          links:
-            - url: platform-integration/customize-ui-appearance.md
-              itemType: concept
-              text: Customize UI appearance based on the platform.
     - title: .NET MAUI guides
-      summary: You can create up to three conceptual sections. This component has one card style. Depending on the number of cards, it will display as 1-column, 2-column, 3-column or 4-column based on the section with the least number of cards.  # Optional, but good for SEO. Remove if not applicable.
+      summary: Learn how to build cross-platform apps using C# and .NET in Visual Studio on Windows and macOS.
       items:
         - title: Get started
           links:
@@ -297,7 +297,7 @@ conceptualContent:
               url: windows/deployment/overview.md
               itemType: concept
     - title: Platforms
-      summary: You can create up to three conceptual sections. Depending on the number of cards, it will display as 1-column, 2-column, 3-column or 4-column based on the section with the least number of cards.  # Optional, but good for SEO. Remove if not applicable.
+      summary: Each platform has its own configuration approach for apps.
       items:
         - title: Android
           links:
