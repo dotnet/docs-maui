@@ -46,7 +46,7 @@ While the focus of this release of .NET MAUI is quality, there's also some new f
 
 ### Navigation
 
-- Shell navigation gains a `GoToAsync` overload that enables you to pass single use navigation data, that's cleared after navigation has occurred, as a `ShellNavigationQueryParameters` object. For more information, see [Pass single use object-based navigation data](~/fundamentals/shell/navigation.md#pass-single-use-object-based-navigation-data).
+- Shell navigation gains a <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> overload that enables you to pass single use navigation data, that's cleared after navigation has occurred, as a <xref:Microsoft.Maui.Controls.ShellNavigationQueryParameters> object. For more information, see [Pass single use object-based navigation data](~/fundamentals/shell/navigation.md#pass-single-use-object-based-navigation-data).
 
 ### Platform integration
 
