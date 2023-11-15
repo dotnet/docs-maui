@@ -23,12 +23,12 @@ The following screenshots show menu bar items and context menu items that includ
 
 A keyboard accelerator is represented by the <xref:Microsoft.Maui.Controls.KeyboardAccelerator> class, which represents a shortcut key for a <xref:Microsoft.Maui.Controls.MenuFlyoutItem>. The <xref:Microsoft.Maui.Controls.KeyboardAccelerator> class defines the following properties:
 
-- <xref:Microsoft.Maui.Controls.KeyboardAccelerator.Modifiers>, of type <xref:Microsoft.Maui.Controls.KeyboardAcceleratorModifiers>, which represents the modifier value, such as Ctrl or Shift, for the keyboard shortcut.
+- <xref:Microsoft.Maui.Controls.KeyboardAccelerator.Modifiers>, of type <xref:Microsoft.Maui.KeyboardAcceleratorModifiers>, which represents the modifier value, such as Ctrl or Shift, for the keyboard shortcut.
 - <xref:Microsoft.Maui.Controls.KeyboardAccelerator.Key>, of type `string?`, which represents the key value for the keyboard shortcut.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings.
 
-The <xref:Microsoft.Maui.Controls.KeyboardAcceleratorModifiers> enumeration defines the following members that be used as values for the <xref:Microsoft.Maui.Controls.KeyboardAccelerator.Modifiers> property:
+The <xref:Microsoft.Maui.KeyboardAcceleratorModifiers> enumeration defines the following members that be used as values for the <xref:Microsoft.Maui.Controls.KeyboardAccelerator.Modifiers> property:
 
 - `None`, which indicates no modifier.
 - `Shift`, which indicates the Shift modifier on Mac Catalyst and Windows.
