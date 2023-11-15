@@ -36,319 +36,128 @@ highlightedContent:
       itemType: architecture
       url: /dotnet/architecture/maui/
 
+
 conceptualContent:
   sections:
     - title: .NET MAUI guides
-      summary: Summary goes here.
+      summary: You can create up to three conceptual sections. This component has one card style. Depending on the number of cards, it will display as 1-column, 2-column, 3-column or 4-column based on the section with the least number of cards.  # Optional, but good for SEO. Remove if not applicable.
       items:
-        - title: Get started
+        # Card multi-link
+        - title: cardtitle1
+          summary: Summary text is optional, but good for SEO. Remove if not applicable.
           links:
-            - text: What is .NET MAUI?
-              url: what-is-maui.md
-              itemType: overview
-            - text: Supported platforms
-              url: supported-platforms.md
-              itemType: overview
-            - text: Installation
-              url: get-started/installation.md
+            - url: /azure
+              itemType: architecture
+              text: Architecture icon
+            - url: /azure
+              itemType: concept
+              text: Concept icon
+            - url: /azure
+              itemType: deploy
+              text: Deploy icon
+        # Card multi-link
+        - title: cardtitle2
+          summary: Summary text is optional, but good for SEO. Remove if not applicable.
+          links:
+            - url: /azure
+              itemType: download
+              text: Download icon
+            - url: /azure
               itemType: get-started
-            - text: Build your first app
-              url: get-started/first-app.md
-              itemType: tutorial
-            - text: Create a .NET MAUI app
-              url: tutorials/notes-app/index.yml
-              itemType: tutorial
-            - text: Upgrade your app with MVVM
-              url: tutorials/notes-mvvm/index.yml
-              itemType: tutorial
-            - text: Learning resources
-              url: get-started/resources.md
+              text: Get started icon
+            - url: /azure
+              itemType: how-to-guide
+              text: How to icon
+        # Card multi-link
+        - title: cardtitle3
+          summary: Summary text is optional, but good for SEO. Remove if not applicable.
+          links:
+            - url: /azure
+              itemType: training
+              text: Training icon
+            - url: /azure
               itemType: overview
-            - text: Troubleshooting
-              url: troubleshooting.md
-              itemType: overview
-        - title: Migrate from Xamarin
+              text: Overview icon
+            - url: /azure
+              itemType: quickstart
+              text: Quickstart icon
+        # Card multi-link
+        - title: cardtitle4
+          summary: Summary text is optional, but good for SEO. Remove if not applicable.
           links:
-            - text: Upgrade from Xamarin to .NET
-              url: migration/index.md
-              itemType: concept
-            - text: Upgrade Xamarin native projects
-              url: migration/native-projects.md
-              itemType: concept
-            - text: Upgrade with the .NET Upgrade Assistant
-              url: migration/upgrade-assistant.md
-              itemType: concept
-            - text: Upgrade to a multi-project app
-              url: migration/multi-project-to-multi-project.md
-              itemType: concept
-            - text: Upgrade to a single project app.
-              url: migration/multi-project-to-single-project.md
-              itemType: concept
-            - text: Layout behavior changes
-              url: migration/layouts.md
-              itemType: concept
-            - text: Migrate app properties data
-              url: migration/app-properties.md
-              itemType: concept
-            - text: Migrate secure storage data
-              url: migration/secure-storage.md
-              itemType: concept
-        - title: XAML
-          links:
-            - text: Overview
-              url: xaml/index.md
-              itemType: concept
-            - text: Fundamentals
-              url: xaml/fundamentals/get-started.md
-              itemType: concept
-            - text: Compilation
-              url: xaml/xamlc.md
-              itemType: concept
-            - text: Generics
-              url: xaml/generics.md
-              itemType: concept
-            - text: Markup extensions
-              url: xaml/markup-extensions/consume.md
-              itemType: concept
-            - text: Namespaces
-              url: xaml/namespaces/index.md
-              itemType: concept
-            - text: Pass arguments
-              url: xaml/pass-arguments.md
-              itemType: concept
-            - text: XAML hot reload
-              url: xaml/hot-reload.md
-              itemType: concept
-        - title: Fundamentals
-          links:
-            - text: Accessibility
-              url: fundamentals/accessibility.md
-              itemType: concept
-            - text: App lifecycle
-              url: fundamentals/app-lifecycle.md
-              itemType: concept
-            - text: Data binding
-              url: fundamentals/data-binding/index.md
-              itemType: concept
-            - text: Data templates
-              url: fundamentals/datatemplate.md
-              itemType: concept
-            - text: Localization
-              url: fundamentals/localization.md
-              itemType: concept
-            - text: Resource dictionaries
-              url: fundamentals/resource-dictionaries.md
-              itemType: concept
-            - text: Shell
-              url: fundamentals/shell/index.md
-              itemType: concept
-            - text: Single project
-              url: fundamentals/single-project.md
-              itemType: concept
-        - title: User interface
-          links:
-            - text: Animation
-              url: user-interface/animation/basic.md
-              itemType: concept
-            - text: Brushes
-              url: user-interface/brushes/index.md
-              itemType: concept
-            - text: Controls
-              url: user-interface/controls/index.md
-              itemType: concept
-            - text: Graphics
-              url: user-interface/graphics/index.md
-              itemType: concept
-            - text: Handlers
-              url: user-interface/handlers/index.md
-              itemType: concept
-            - text: Layouts
-              url: user-interface/layouts/index.md
-              itemType: concept
-            - text: Pages
-              url: user-interface/pages/contentpage.md
-              itemType: concept
-            - text: Styles
-              url: user-interface/styles/xaml.md
-              itemType: concept
-        - title: Platform integration
-          links:
-            - text: Configure multi-targeting
-              url: platform-integration/configure-multi-targeting.md
-              itemType: concept
-            - text: Customize UI appearance
-              url: platform-integration/customize-ui-appearance.md
-              itemType: concept
-            - text: Device information
-              url: platform-integration/device/information.md
-              itemType: concept
-            - text: Device sensors
-              url: platform-integration/device/sensors.md
-              itemType: concept
-            - text: Invoke platform code
-              url: platform-integration/invoke-platform-code.md
-              itemType: concept
-            - text: Native embedding
-              url: platform-integration/native-embedding.md
-              itemType: concept
-            - text: Permissions
-              url: platform-integration/appmodel/permissions.md
-              itemType: concept
-            - text: Preferences
-              url: platform-integration/storage/preferences.md
-              itemType: concept
-        - title: Data & cloud services
-          links:
-            - text: Build a .NET MAUI app with Azure Mobile Apps
-              url: /azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui/
+            - url: /azure
+              itemType: reference
+              text: Reference icon
+            - url: /azure
+              itemType: sample
+              text: Sample icon
+            - url: /azure
               itemType: tutorial
-            - text: Add authentication with Azure Mobile Apps
-              url: >-
-                /azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui/authentication
-              itemType: tutorial
-            - text: Offline data sync with Azure Mobile Apps
-              url: >-
-                /azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui/offline
-              itemType: tutorial
-            - text: Consume a REST-based web service
-              url: data-cloud/rest.md
-              itemType: concept
-            - text: Connect to local web services
-              url: data-cloud/local-web-services.md
-              itemType: concept
-            - text: Local databases
-              url: data-cloud/database-sqlite.md
-              itemType: concept
-        - title: Deployment
-          links:
-            - text: Overview
-              url: deployment/index.md
-              itemType: concept
-            - text: Improve app performance
-              url: deployment/performance.md
-              itemType: concept
-            - text: Hot restart
-              url: ios/hot-restart.md
-              itemType: concept
-            - text: Wireless deployment
-              url: ios/wireless-deployment.md
-              itemType: concept
-            - text: Publish Android apps
-              url: android/deployment/index.md
-              itemType: concept
-            - text: Publish iOS apps
-              url: ios/deployment/index.md
-              itemType: concept
-            - text: Publish Mac Catalyst apps
-              url: mac-catalyst/deployment/index.md
-              itemType: concept
-            - text: Publish Windows apps
-              url: windows/deployment/overview.md
-              itemType: concept
-    - title: Platforms
-      items:
-        - title: Android
-          links:
-            - text: App manifest
-              url: android/manifest.md
-              itemType: concept
-            - text: Debug on an emulator
-              url: android/emulator/debug-on-emulator.md
-              itemType: concept
-            - text: Emulator troubleshooting
-              url: android/emulator/troubleshooting.md
-              itemType: concept
-            - text: Enable emulator hardware acceleration
-              url: android/emulator/hardware-acceleration.md
-              itemType: concept
-            - text: Linking
-              url: android/linking.md
-              itemType: concept
-            - text: Manage and create virtual devices
-              url: android/emulator/device-manager.md
-              itemType: concept
-            - text: Platform-specifics
-              url: android/platform-specifics/index.md
-              itemType: concept
-            - text: Setup a physical device
-              url: android/device/setup.md
-              itemType: concept
-        - title: iOS
-          links:
-            - text: Apple account management
-              url: ios/apple-account-management.md
-              itemType: concept
-            - text: Capabilities
-              url: ios/capabilities.md
-              itemType: concept
-            - text: Linking
-              url: ios/linking.md
-              itemType: concept
-            - text: Mono interpreter
-              url: macios/interpreter.md
-              itemType: concept
-            - text: Pair to Mac
-              url: ios/pair-to-mac.md
-              itemType: concept
-            - text: Platform-specifics
-              url: ios/platform-specifics/index.md
-              itemType: concept
-            - text: Remote iOS simulator for Windows
-              url: ios/remote-simulator.md
-              itemType: concept
-            - text: Set up device for development
-              url: ios/device-provisioning/index.md
-              itemType: concept
-        - title: Mac Catalyst
-          links:
-            - text: Build with the CLI
-              url: mac-catalyst/cli.md
-              itemType: concept
-            - text: Capabilities
-              url: mac-catalyst/capabilities.md
-              itemType: concept
-            - text: Entitlements
-              url: mac-catalyst/entitlements.md
-              itemType: concept
-            - text: Information property list
-              url: macios/info-plist.md
-              itemType: concept
-            - text: Linking
-              url: mac-catalyst/linking.md
-              itemType: concept
-            - text: Mono interpreter
-              url: macios/interpreter.md
-              itemType: concept
-            - text: Specify the UI idiom
-              url: mac-catalyst/user-interface-idiom.md
-              itemType: concept
-        - title: Windows
-          links:
-            - text: Setup Windows for debugging
-              url: windows/setup.md
-              itemType: concept
-            - text: Platform-specifics
-              url: windows/platform-specifics/index.md
-              itemType: concept
-            - text: null
-              url: null
-              itemType: concept
-            - text: null
-              url: null
-              itemType: concept
-            - text: null
-              url: null
-              itemType: concept
-            - text: null
-              url: null
-              itemType: concept
-            - text: null
-              url: null
-              itemType: concept
-            - text: null
-              url: null
-              itemType: concept
+              text: Tutorial icon
 
+    - title: Platforms
+      summary: You can create up to three conceptual sections. Depending on the number of cards, it will display as 1-column, 2-column, 3-column or 4-column based on the section with the least number of cards.  # Optional, but good for SEO. Remove if not applicable.
+      items:
+        # Card summary
+        - title: cardtitle1
+          summary: Summary text is optional, but good for SEO. Remove if not applicable.
+          links:
+            - url: /azure
+              itemType: training
+              text: Training icon
+        # Card summary
+        - title: cardtitle2
+          summary: Summary text is optional, but good for SEO. Remove if not applicable.
+          links:
+            - url: /azure
+              itemType: reference
+              text: Reference icon
+         # Card summary
+        - title: cardtitle3
+          summary: Summary text is optional, but good for SEO. Remove if not applicable.
+          links:
+            - url: /azure
+              itemType: tutorial
+              text: Tutorial icon
+         # Card summary
+        - title: cardtitle4
+          summary: Summary text is optional, but good for SEO. Remove if not applicable.
+          links:
+            - url: /azure
+              itemType: get-started
+              text: Get started icon
+
+    - title: Common tasks
+      summary: You can create up to three conceptual sections. Depending on the number of cards, it will display as 1-column, 2-column, 3-column or 4-column based on the section with the least number of cards.  # Optional, but good for SEO. Remove if not applicable.
+      items:
+        # Card summary
+        - title: cardtitle1
+          summary: Summary text is optional, but good for SEO. Remove if not applicable.
+          links:
+            - url: /azure
+              itemType: training
+              text: Training icon
+        # Card summary
+        - title: cardtitle2
+          summary: Summary text is optional, but good for SEO. Remove if not applicable.
+          links:
+            - url: /azure
+              itemType: reference
+              text: Reference icon
+         # Card summary
+        - title: cardtitle3
+          summary: Summary text is optional, but good for SEO. Remove if not applicable.
+          links:
+            - url: /azure
+              itemType: tutorial
+              text: Tutorial icon
+         # Card summary
+        - title: cardtitle4
+          summary: Summary text is optional, but good for SEO. Remove if not applicable.
+          links:
+            - url: /azure
+              itemType: get-started
+              text: Get started icon
 
 additionalContent:
   sections:
