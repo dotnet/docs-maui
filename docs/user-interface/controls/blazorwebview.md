@@ -12,30 +12,30 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.AspNetCore.Components
 
 ::: moniker range="=net-maui-7.0"
 
-- `HostPage`, of type `string?`, which defines the root page of the Blazor web app.
-- `RootComponents`, of type `RootComponentsCollection`, which specifies the collection of root components that can be added to the control.
+- <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.HostPage>, of type `string?`, which defines the root page of the Blazor web app.
+- <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.RootComponents>, of type `RootComponentsCollection`, which specifies the collection of root components that can be added to the control.
 
 ::: moniker-end
 
 ::: moniker range=">=net-maui-8.0"
 
-- `HostPage`, of type `string?`, which defines the root page of the Blazor web app.
-- `RootComponents`, of type `RootComponentsCollection`, which specifies the collection of root components that can be added to the control.
-- `StartPath`, of type `string`, which defines the path for initial navigation within the Blazor navigation context when the Blazor component is finished loading.
+- <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.HostPage>, of type `string?`, which defines the root page of the Blazor web app.
+- <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.RootComponents>, of type `RootComponentsCollection`, which specifies the collection of root components that can be added to the control.
+- <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.StartPath>, of type `string`, which defines the path for initial navigation within the Blazor navigation context when the Blazor component is finished loading.
 
 ::: moniker-end
 
-The `RootComponent` class defines the following properties:
+The <xref:Microsoft.AspNetCore.Components.WebView.Maui.RootComponent> class defines the following properties:
 
-- `Selector`, of type `string?`, which defines the CSS selector string that specifies where in the document the component should be placed.
-- `ComponentType`, of type `Type?`, which defines the type of the root component.
-- `Parameters`, of type `IDictionary<string, object?>?`, which represents an optional dictionary of parameters to pass to the root component.
+- <xref:Microsoft.AspNetCore.Components.WebView.Maui.RootComponent.Selector>, of type `string?`, which defines the CSS selector string that specifies where in the document the component should be placed.
+- <xref:Microsoft.AspNetCore.Components.WebView.Maui.RootComponent.ComponentType>, of type `Type?`, which defines the type of the root component.
+- <xref:Microsoft.AspNetCore.Components.WebView.Maui.RootComponent.Parameters>, of type `IDictionary<string, object?>?`, which represents an optional dictionary of parameters to pass to the root component.
 
 In addition, <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> defines the following events:
 
-- `BlazorWebViewInitializing`, with an accompanying `BlazorWebViewInitializingEventArgs` object, which is raised before the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> is initialized. This event enables customization of the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> configuration.
-- `BlazorWebViewInitialized`, with an accompanying `BlazorWebViewInitializedEventArgs` object, which is raised after the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> is initialized but before any component has been rendered. This event enables retrieval of the platform-specific web view instance.
-- `UrlLoading`, with an accompanying `UrlLoadingEventArgs` object, is raised when a hyperlink is clicked within a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView>. This event enables customization of whether a hyperlink is opened in the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView>, in an external app, or whether the URL loading attempt is cancelled.
+- <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.BlazorWebViewInitializing>, with an accompanying `BlazorWebViewInitializingEventArgs` object, which is raised before the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> is initialized. This event enables customization of the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> configuration.
+- <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.BlazorWebViewInitialized>, with an accompanying `BlazorWebViewInitializedEventArgs` object, which is raised after the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> is initialized but before any component has been rendered. This event enables retrieval of the platform-specific web view instance.
+- <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.UrlLoading>, with an accompanying `UrlLoadingEventArgs` object, is raised when a hyperlink is clicked within a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView>. This event enables customization of whether a hyperlink is opened in the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView>, in an external app, or whether the URL loading attempt is cancelled.
 
 Existing [Razor components](/aspnet/core/blazor/components/) can be used in a .NET MAUI Blazor app by moving the code into the app, or by referencing an existing class library or package that contains the component. For more information, see [Reuse Razor components in ASP.NET Core Blazor Hybrid](/aspnet/core/blazor/hybrid/reuse-razor-components).
 
@@ -138,7 +138,7 @@ The process to add a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWe
 
 ## Access scoped services from native UI
 
-<xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> has a `TryDispatchAsync` method that can call a specified `Action<ServiceProvider>` asynchronously and pass in the scoped services available in Razor components. This enables code from the native UI to access scoped services such as enables code from the native UI to access scoped services such as <xref:Microsoft.AspNetCore.Components.NavigationManager>:
+<xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> has a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.TryDispatchAsync%2A> method that can call a specified `Action<ServiceProvider>` asynchronously and pass in the scoped services available in Razor components. This enables code from the native UI to access scoped services such as enables code from the native UI to access scoped services such as <xref:Microsoft.AspNetCore.Components.NavigationManager>:
 
 ```csharp
 private async void OnMyMauiButtonClicked(object sender, EventArgs e)

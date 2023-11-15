@@ -142,7 +142,7 @@ Each swipe item is defined as a `SwipeItem` object that's placed into one of the
 - An `Invoked` event, which is raised when the swipe item is executed.
 
 > [!IMPORTANT]
-> The  <xref:Microsoft.Maui.Controls.MenuItem> class defines several properties, including `Command`, `CommandParameter`, `IconImageSource`, and `Text`. These properties can be set on a `SwipeItem` object to define its appearance, and to define an `ICommand` that executes when the swipe item is invoked. For more information, see [Display menu items](~/user-interface/menuitem.md).
+> The  <xref:Microsoft.Maui.Controls.MenuItem> class defines several properties, including `Command`, `CommandParameter`, `IconImageSource`, and `Text`. These properties can be set on a `SwipeItem` object to define its appearance, and to define an <xref:System.Windows.Input.ICommand> that executes when the swipe item is invoked. For more information, see [Display menu items](~/user-interface/menuitem.md).
 
 The following example shows two `SwipeItem` objects in the `LeftItems` collection of a <xref:Microsoft.Maui.Controls.SwipeView>:
 
@@ -168,7 +168,7 @@ The appearance of each `SwipeItem` is defined by a combination of the `Text`, `I
 
 :::image type="content" source="media/swipeview/swipeview-swipeitems.png" alt-text="Screenshot of SwipeView swipe items.":::
 
-When a `SwipeItem` is tapped, its `Invoked` event fires and is handled by its registered event handler. In addition, the `MenuItem.Clicked` event fires. Alternatively, the `Command` property can be set to an `ICommand` implementation that will be executed when the `SwipeItem` is invoked.
+When a `SwipeItem` is tapped, its `Invoked` event fires and is handled by its registered event handler. In addition, the `MenuItem.Clicked` event fires. Alternatively, the `Command` property can be set to an <xref:System.Windows.Input.ICommand> implementation that will be executed when the `SwipeItem` is invoked.
 
 > [!NOTE]
 > When the appearance of a `SwipeItem` is defined only using the `Text` or `IconImageSource` properties, the content is always centered.
@@ -297,7 +297,7 @@ The following example shows a <xref:Microsoft.Maui.Controls.SwipeView> configure
 
 Custom swipe items can be defined with the `SwipeItemView` type. The `SwipeItemView` class derives from the <xref:Microsoft.Maui.Controls.ContentView> class, and adds the following properties:
 
-- `Command`, of type `ICommand`, which is executed when a swipe item is tapped.
+- `Command`, of type <xref:System.Windows.Input.ICommand>, which is executed when a swipe item is tapped.
 - `CommandParameter`, of type `object`, which is the parameter that's passed to the `Command`.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
@@ -328,7 +328,7 @@ The following example shows a `SwipeItemView` object in the `LeftItems` collecti
 </SwipeView>
 ```
 
-In this example, the `SwipeItemView` comprises a <xref:Microsoft.Maui.Controls.StackLayout> containing an <xref:Microsoft.Maui.Controls.Entry> and a <xref:Microsoft.Maui.Controls.Label>. After the user enters input into the <xref:Microsoft.Maui.Controls.Entry>, the rest of the `SwipeViewItem` can be tapped which executes the `ICommand` defined by the `SwipeItemView.Command` property.
+In this example, the `SwipeItemView` comprises a <xref:Microsoft.Maui.Controls.StackLayout> containing an <xref:Microsoft.Maui.Controls.Entry> and a <xref:Microsoft.Maui.Controls.Label>. After the user enters input into the <xref:Microsoft.Maui.Controls.Entry>, the rest of the `SwipeViewItem` can be tapped which executes the <xref:System.Windows.Input.ICommand> defined by the `SwipeItemView.Command` property.
 
 ## Open and close a SwipeView programmatically
 
@@ -362,4 +362,4 @@ swipeView.Close();
 
 An app may enter a state where swiping an item of content is not a valid operation. In such cases, the <xref:Microsoft.Maui.Controls.SwipeView> can be disabled by setting its `IsEnabled` property to `false`. This will prevent users from being able to swipe content to reveal swipe items.
 
-In addition, when defining the `Command` property of a `SwipeItem` or `SwipeItemView`, the `CanExecute` delegate of the `ICommand` can be specified to enable or disable the swipe item.
+In addition, when defining the `Command` property of a `SwipeItem` or `SwipeItemView`, the `CanExecute` delegate of the <xref:System.Windows.Input.ICommand> can be specified to enable or disable the swipe item.

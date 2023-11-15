@@ -13,7 +13,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.ImageBu
 - `Aspect`, of type `Aspect`, determines how the image is scaled to fit the display area.
 - `BorderColor`, of type <xref:Microsoft.Maui.Graphics.Color>, describes the border color of the button.
 - `BorderWidth`, of type `double`, defines the width of the button's border.
-- `Command`, of type `ICommand`, defines the command that's executed when the button is tapped.
+- `Command`, of type <xref:System.Windows.Input.ICommand>, defines the command that's executed when the button is tapped.
 - `CommandParameter`, of type `object`, is the parameter that's passed to `Command`.
 - `CornerRadius`, of type `int`, describes the corner radius of the button's border.
 - `IsLoading`, of type `bool`, represents the loading status of the image. The default value of this property is `false`.
@@ -107,7 +107,7 @@ imageButton.Clicked += (s, e) =>
 
 An app can respond to <xref:Microsoft.Maui.Controls.ImageButton> taps without handling the `Clicked` event. The <xref:Microsoft.Maui.Controls.ImageButton> implements an alternative notification mechanism called the _command_ or _commanding_ interface. This consists of two properties:
 
-- `Command` of type [`ICommand`](xref:System.Windows.Input.ICommand), an interface defined in the [`System.Windows.Input`](xref:System.Windows.Input) namespace.
+- `Command` of type [<xref:System.Windows.Input.ICommand>](xref:System.Windows.Input.ICommand), an interface defined in the [`System.Windows.Input`](xref:System.Windows.Input) namespace.
 - `CommandParameter` property of type [`Object`](xref:System.Object).
 
 This approach is suitable in connection with data-binding, and particularly when implementing the Model-View-ViewModel (MVVM) pattern. For more information about commanding, see [Use the command interface](button.md#use-the-command-interface) in the [Button](button.md) article.

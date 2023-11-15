@@ -10,7 +10,7 @@ A .NET Multi-platform App UI (.NET MAUI) swipe gesture recognizer detects when a
 
 In .NET MAUI, drag gesture recognition is provided by the <xref:Microsoft.Maui.Controls.SwipeGestureRecognizer> class. This class defines the following properties:
 
-- <xref:Microsoft.Maui.Controls.SwipeGestureRecognizer.Command>, of type `ICommand`, which is executed when a swipe gesture is recognized.
+- <xref:Microsoft.Maui.Controls.SwipeGestureRecognizer.Command>, of type <xref:System.Windows.Input.ICommand>, which is executed when a swipe gesture is recognized.
 - <xref:Microsoft.Maui.Controls.SwipeGestureRecognizer.CommandParameter>, of type `object`, which is the parameter that's passed to the `Command`.
 - <xref:Microsoft.Maui.Controls.SwipeGestureRecognizer.Direction>, of type <xref:Microsoft.Maui.SwipeDirection>, which defines the direction
 - <xref:Microsoft.Maui.Controls.SwipeGestureRecognizer.Threshold>, of type `uint`, which represents the minimum swipe distance that must be achieved for a swipe to be recognized, in device-independent units. The default value of this property is 100, which means that any swipes that are less than 100 device-independent units will be ignored.

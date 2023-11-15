@@ -12,7 +12,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Content
 
 ::: moniker range="=net-maui-7.0"
 
-<xref:Microsoft.Maui.Controls.ContentPage> defines the `Content` property, of type <xref:Microsoft.Maui.Controls.View>, which defines the view that represents the page's content. This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means that it can be the target of data bindings, and styled.
+<xref:Microsoft.Maui.Controls.ContentPage> defines the <xref:Microsoft.Maui.Controls.ContentPage.Content> property, of type <xref:Microsoft.Maui.Controls.View>, which defines the view that represents the page's content. This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means that it can be the target of data bindings, and styled.
 
 ::: moniker-end
 
@@ -20,8 +20,8 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Content
 
 <xref:Microsoft.Maui.Controls.ContentPage> defines the following properties:
 
-- `Content` property, of type <xref:Microsoft.Maui.Controls.View>, which defines the view that represents the page's content.
-- `HideSoftInputOnTapped`, of type `bool`, which indicates whether tapping anywhere on the page will cause the soft input keyboard to hide if it's visible.
+- <xref:Microsoft.Maui.Controls.ContentPage.Content> property, of type <xref:Microsoft.Maui.Controls.View>, which defines the view that represents the page's content.
+- <xref:Microsoft.Maui.Controls.ContentPage.HideSoftInputOnTapped>, of type `bool`, which indicates whether tapping anywhere on the page will cause the soft input keyboard to hide if it's visible.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be the target of data bindings, and styled.
 

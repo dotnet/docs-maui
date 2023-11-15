@@ -147,7 +147,7 @@ For more information about XAML styles, see [Style apps using XAML](~/user-inter
 
 ## Set page presentation mode
 
-By default, a small navigation animation occurs when a page is navigated to with the `GoToAsync` method. However, this behavior can be changed by setting the `Shell.PresentationMode` attached property on a <xref:Microsoft.Maui.Controls.ContentPage> to one of the `PresentationMode` enumeration members:
+By default, a small navigation animation occurs when a page is navigated to with the <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> method. However, this behavior can be changed by setting the `Shell.PresentationMode` attached property on a <xref:Microsoft.Maui.Controls.ContentPage> to one of the `PresentationMode` enumeration members:
 
 - `NotAnimated` indicates that the page will be displayed without a navigation animation.
 - `Animated` indicates that the page will be displayed with a navigation animation. This is the default value of the `Shell.PresentationMode` attached property.
@@ -167,7 +167,7 @@ The following XAML example sets the `Shell.PresentationMode` attached property o
 </ContentPage>
 ```
 
-In this example, the <xref:Microsoft.Maui.Controls.ContentPage> is set to be displayed as a modal page, when the page is navigated to with the `GoToAsync` method.
+In this example, the <xref:Microsoft.Maui.Controls.ContentPage> is set to be displayed as a modal page, when the page is navigated to with the <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> method.
 
 ## Enable navigation bar shadow
 
