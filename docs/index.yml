@@ -300,7 +300,7 @@ additionalContent:
     - title: .NET MAUI Blazor Hybrid apps
       items:
         - title: Build a .NET MAUI Blazor Hybrid app
-          summary: Blend desktop and mobile native client frameworks with .NET and Blazor.
+          summary: Build and run your first .NET MAUI Blazor Hybrid app in Visual Studio.
           url: /aspnet/core/blazor/hybrid/tutorials/maui
         - title: Blazor Hybrid routing and navigation
           summary: Understand how to manage request routing and navigation in Blazor Hybrid apps.
