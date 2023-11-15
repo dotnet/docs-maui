@@ -259,7 +259,7 @@ In code, to specify the height of a `RowDefinition` object, and the width of a `
 ::: moniker range=">=net-maui-8.0"
 
 > [!NOTE]
-> <xref:Microsoft.Maui.Controls.Grid> also defines an `AddWithSpan` extension method that adds a view to the `Grid` at the specified row and column with the specified row and column spans.
+> <xref:Microsoft.Maui.Controls.Grid> also defines an <xref:Microsoft.Maui.Controls.GridExtensions.AddWithSpan%2A> extension method that adds a view to the `Grid` at the specified row and column with the specified row and column spans.
 
 ::: moniker-end
 

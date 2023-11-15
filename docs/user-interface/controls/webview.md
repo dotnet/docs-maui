@@ -26,7 +26,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.WebView
 - `CanGoBack`, of type `bool`, indicates whether the user can navigate to previous pages. This is a read-only property.
 - `CanGoForward`, of type `bool`, indicates whether the user can navigate forward. This is a read-only property.
 - `Source`, of type `WebViewSource`, represents the location that the <xref:Microsoft.Maui.Controls.WebView> displays.
-- `UserAgent`, of type `string`, represents the user agent. The default value is the user agent of the underlying platform browser, or `null` if it can't be determined.
+- <xref:Microsoft.Maui.Controls.WebView.UserAgent>, of type `string`, represents the user agent. The default value is the user agent of the underlying platform browser, or `null` if it can't be determined.
 
 ::: moniker-end
 
