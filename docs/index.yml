@@ -16,29 +16,78 @@ highlightedContent:
       url: what-is-maui.md
     - title: Supported platforms
       itemType: overview
-      url: supported-platforms.md
     - title: Installation
-      itemType: get-started
+      itemType: download
       url: get-started/installation.md
     - title: Build your first app
       itemType: tutorial
       url: get-started/first-app.md
-    - title: What's new?
-      itemType: whats-new
-      url: whats-new/index.yml
-    - title: Find a sample
-      itemType: sample
-      url: /samples/browse/?expanded=dotnet&products=dotnet-maui
     - title: Build mobile and desktop apps with .NET MAUI
       itemType: training
       url: /training/paths/build-apps-with-dotnet-maui
     - title: Enterprise application patterns using .NET MAUI
       itemType: architecture
       url: /dotnet/architecture/maui/
-
+    - title: Find a sample
+      itemType: sample
+      url: /samples/browse/?expanded=dotnet&products=dotnet-maui
+    - title: What's new?
+      itemType: whats-new
+      url: whats-new/index.yml
 
 conceptualContent:
   sections:
+    - title: .NET MAUI common tasks
+      summary: Important concepts for building cross-platform apps with .NET MAUI.
+      items:
+        - title: Upgrade from Xamarin
+          summary: Xamarin projects can run on .NET after completing an upgrade process.
+          links:
+            - url: migration/index.md
+              itemType: concept
+              text: Upgrade from Xamarin to .NET.
+        - title: Learn about the app lifecycle
+          summary: Understand how apps start and go to the background.
+          links:
+            - url: fundamentals/app-lifecycle.md
+              itemType: concept
+              text: App lifecycle
+        - title: Show a list of data
+          summary: Use the CollectionView to scroll and select data.
+          links:
+            - url: user-interface/controls/collectionview/index.md
+              itemType: concept
+              text: Present lists of data
+        - title: Use XAML & data-binding
+          summary: Use the MVVM pattern to show data in your UI.
+          links:
+            - url: xaml/fundamentals/index.md
+              itemType: concept
+              text: Get started with XAML
+        - title: Access a REST web service
+          summary: Integrate and interact with web services using HTTP and JSON
+          links:
+            - url: data-cloud/rest.md
+              itemType: concept
+              text: Consume a REST-based web service
+        - title: Access device features
+          summary: Cross-platform APIs for common device features.
+          links:
+            - url: platform-integration/index.md
+              itemType: concept
+              text: Access device features
+        - title: Deploy apps to devices
+          summary: Upload to test devices and app stores.
+          links:
+            - url: deployment/index.md
+              itemType: concept
+              text: Deployment
+        - title: Customize UI appearance per platform
+          summary: Customize UIs for specific platforms and devices.
+          links:
+            - url: platform-integration/customize-ui-appearance.md
+              itemType: concept
+              text: Customize UI appearance based on the platform.
     - title: .NET MAUI guides
       summary: You can create up to three conceptual sections. This component has one card style. Depending on the number of cards, it will display as 1-column, 2-column, 3-column or 4-column based on the section with the least number of cards.  # Optional, but good for SEO. Remove if not applicable.
       items:
@@ -244,7 +293,6 @@ conceptualContent:
             - text: Publish Windows apps
               url: windows/deployment/overview.md
               itemType: concept
-
     - title: Platforms
       summary: You can create up to three conceptual sections. Depending on the number of cards, it will display as 1-column, 2-column, 3-column or 4-column based on the section with the least number of cards.  # Optional, but good for SEO. Remove if not applicable.
       items:
@@ -331,38 +379,6 @@ conceptualContent:
             - text: Platform-specifics
               url: windows/platform-specifics/index.md
               itemType: concept
-
-    - title: .NET MAUI common tasks
-      summary: Important concepts for building cross-platform apps with .NET MAUI.
-      items:
-        # Card summary
-        - title: cardtitle1
-          summary: Summary text is optional, but good for SEO. Remove if not applicable.
-          links:
-            - url: /azure
-              itemType: training
-              text: Training icon
-        # Card summary
-        - title: cardtitle2
-          summary: Summary text is optional, but good for SEO. Remove if not applicable.
-          links:
-            - url: /azure
-              itemType: reference
-              text: Reference icon
-         # Card summary
-        - title: cardtitle3
-          summary: Summary text is optional, but good for SEO. Remove if not applicable.
-          links:
-            - url: /azure
-              itemType: tutorial
-              text: Tutorial icon
-         # Card summary
-        - title: cardtitle4
-          summary: Summary text is optional, but good for SEO. Remove if not applicable.
-          links:
-            - url: /azure
-              itemType: get-started
-              text: Get started icon
 
 additionalContent:
   sections:
