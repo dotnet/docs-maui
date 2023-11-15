@@ -22,7 +22,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Entry> 
 - `HorizontalTextAlignment`, of type `TextAlignment`, defines the horizontal alignment of the text.
 - `IsPassword`, of type `bool`, specifies whether the entry should visually obscure typed text.
 - `IsTextPredictionEnabled`, of type `bool`, controls whether text prediction and automatic text correction is enabled.
-- `ReturnCommand`, of type `ICommand`, defines the command to be executed when the return key is pressed.
+- `ReturnCommand`, of type <xref:System.Windows.Input.ICommand>, defines the command to be executed when the return key is pressed.
 - `ReturnCommandParameter`, of type `object`, specifies the parameter for the `ReturnCommand`.
 - `ReturnType`, of type `ReturnType`, specifies the appearance of the return button.
 - `SelectionLength`, of type `int`, represents the length of selected text within the entry.
@@ -35,7 +35,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Entry> 
 - `ClearButtonVisibility`, of type `ClearButtonVisibility`, controls whether a clear button is displayed, which enables the user to clear the text. The default value of this property ensures that a clear button isn't displayed.
 - `HorizontalTextAlignment`, of type `TextAlignment`, defines the horizontal alignment of the text.
 - `IsPassword`, of type `bool`, specifies whether the entry should visually obscure typed text.
-- `ReturnCommand`, of type `ICommand`, defines the command to be executed when the return key is pressed.
+- `ReturnCommand`, of type <xref:System.Windows.Input.ICommand>, defines the command to be executed when the return key is pressed.
 - `ReturnCommandParameter`, of type `object`, specifies the parameter for the `ReturnCommand`.
 - `ReturnType`, of type `ReturnType`, specifies the appearance of the return button.
 - `VerticalTextAlignment`, of type `TextAlignment`, defines the vertical alignment of the text.
@@ -138,7 +138,7 @@ void OnEntryCompleted(object sender, EventArgs e)
 }
 ```
 
-After the `Completed` event fires, any `ICommand` specified by the `ReturnCommand` property is executed, with the `object` specified by the `ReturnCommandParameter` property being passed to the `ReturnCommand`.
+After the `Completed` event fires, any <xref:System.Windows.Input.ICommand> specified by the `ReturnCommand` property is executed, with the `object` specified by the `ReturnCommandParameter` property being passed to the `ReturnCommand`.
 
 > [!NOTE]
 > The <xref:Microsoft.Maui.Controls.VisualElement> class, which is in the <xref:Microsoft.Maui.Controls.Entry> inheritance hierarchy, also has `Focused` and `Unfocused` events.
@@ -306,7 +306,7 @@ The following XAML example shows how to set the return key:
 > [!NOTE]
 > The exact appearance of the return key is dependent upon the platform. On iOS, the return key is a text-based button. However, on Android and Windows, the return key is a icon-based button.
 
-When the return key is pressed, the `Completed` event fires and any `ICommand` specified by the `ReturnCommand` property is executed. In addition, any `object` specified by the `ReturnCommandParameter` property will be passed to the `ICommand` as a parameter. For more information about commands, see [Commanding](~/fundamentals/data-binding/commanding.md).
+When the return key is pressed, the `Completed` event fires and any <xref:System.Windows.Input.ICommand> specified by the `ReturnCommand` property is executed. In addition, any `object` specified by the `ReturnCommandParameter` property will be passed to the <xref:System.Windows.Input.ICommand> as a parameter. For more information about commands, see [Commanding](~/fundamentals/data-binding/commanding.md).
 
 ::: moniker range=">=net-maui-8.0"
 

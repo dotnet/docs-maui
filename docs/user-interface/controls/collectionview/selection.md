@@ -13,7 +13,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Collect
 - `SelectionMode`, of type `SelectionMode`, the selection mode.
 - `SelectedItem`, of type `object`, the selected item in the list. This property has a default binding mode of `TwoWay`, and has a `null` value when no item is selected.
 - `SelectedItems`, of type `IList<object>`, the selected items in the list. This property has a default binding mode of `OneWay`, and has a `null` value when no items are selected.
-- `SelectionChangedCommand`, of type `ICommand`, which is executed when the selected item changes.
+- `SelectionChangedCommand`, of type <xref:System.Windows.Input.ICommand>, which is executed when the selected item changes.
 - `SelectionChangedCommandParameter`, of type `object`, which is the parameter that's passed to the `SelectionChangedCommand`.
 
 All of these properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings.
@@ -33,7 +33,7 @@ In addition, <xref:Microsoft.Maui.Controls.CollectionView> has a `UpdateSelected
 
 ## Single selection
 
-When the `SelectionMode` property is set to `Single`, a single item in the <xref:Microsoft.Maui.Controls.CollectionView> can be selected. When an item is selected, the `SelectedItem` property is set to the value of the selected item. When this property changes, the `SelectionChangedCommand` is executed (with the value of the `SelectionChangedCommandParameter` being passed to the `ICommand`), and the `SelectionChanged` event fires.
+When the `SelectionMode` property is set to `Single`, a single item in the <xref:Microsoft.Maui.Controls.CollectionView> can be selected. When an item is selected, the `SelectedItem` property is set to the value of the selected item. When this property changes, the `SelectionChangedCommand` is executed (with the value of the `SelectionChangedCommandParameter` being passed to the <xref:System.Windows.Input.ICommand>), and the `SelectionChanged` event fires.
 
 The following XAML example shows a <xref:Microsoft.Maui.Controls.CollectionView> that can respond to single item selection:
 
@@ -76,7 +76,7 @@ The following screenshot shows single item selection in a <xref:Microsoft.Maui.C
 
 ## Multiple selection
 
-When the `SelectionMode` property is set to `Multiple`, multiple items in the <xref:Microsoft.Maui.Controls.CollectionView> can be selected. When items are selected, the `SelectedItems` property is set to the selected items. When this property changes, the `SelectionChangedCommand` is executed (with the value of the `SelectionChangedCommandParameter` being passed to the `ICommand`, and the `SelectionChanged` event fires.
+When the `SelectionMode` property is set to `Multiple`, multiple items in the <xref:Microsoft.Maui.Controls.CollectionView> can be selected. When items are selected, the `SelectedItems` property is set to the selected items. When this property changes, the `SelectionChangedCommand` is executed (with the value of the `SelectionChangedCommandParameter` being passed to the <xref:System.Windows.Input.ICommand>, and the `SelectionChanged` event fires.
 
 The following XAML example shows a <xref:Microsoft.Maui.Controls.CollectionView> that can respond to multiple item selection:
 

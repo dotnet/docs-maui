@@ -144,7 +144,7 @@ Not all location values may be available, depending on the device. For example, 
 
 In addition to querying the device for the current location, you can listen for location changes while an app is in the foreground.
 
-To check to see if the app is currently listening for location changes, there's a `IsListeningForeground` property you can query. Once you're ready to start listening for location changes you should call the `StartListeningForegroundAsync` method. This method starts listening for location updates and raises the `LocationChanged` event when the location changes, provided that the app is in the foreground. The `GeolocationLocationChangedEventArgs` object that accompanies this event has a `Location` property, of type <xref:Microsoft.Maui.Devices.Sensors.Location>, that represents the new location that's been detected.
+To check to see if the app is currently listening for location changes, there's a <xref:Microsoft.Maui.Devices.Sensors.Geolocation.IsListeningForeground> property you can query. Once you're ready to start listening for location changes you should call the <xref:Microsoft.Maui.Devices.Sensors.Geolocation.StartListeningForegroundAsync%2A> method. This method starts listening for location updates and raises the <xref:Microsoft.Maui.Devices.Sensors.Geolocation.LocationChanged> event when the location changes, provided that the app is in the foreground. The <xref:Microsoft.Maui.Devices.Sensors.GeolocationLocationChangedEventArgs> object that accompanies this event has a <xref:Microsoft.Maui.Devices.Sensors.GeolocationLocationChangedEventArgs.Location> property, of type <xref:Microsoft.Maui.Devices.Sensors.Location>, that represents the new location that's been detected.
 
 > [!NOTE]
 > When necessary, the Geolocation API prompts the user for permissions.
@@ -176,9 +176,9 @@ void Geolocation_LocationChanged(object sender, GeolocationLocationChangedEventA
 }
 ```
 
-Error handling can be implemented by registering an event handler for the `ListeningFailed` event. The `GeolocationListeningFailedEventArgs` object that accompanies this event has an `Error` property, of type `GeolocationError`, that indicates why listening failed. When the `ListeningFailed` event is raised, listening for further location changes stops and no further `LocationChanged` events are raised.
+Error handling can be implemented by registering an event handler for the <xref:Microsoft.Maui.Devices.Sensors.Geolocation.ListeningFailed> event. The <xref:Microsoft.Maui.Devices.Sensors.GeolocationListeningFailedEventArgs> object that accompanies this event has an <xref:Microsoft.Maui.Devices.Sensors.GeolocationListeningFailedEventArgs.Error> property, of type <xref:Microsoft.Maui.Devices.Sensors.GeolocationError>, that indicates why listening failed. When the <xref:Microsoft.Maui.Devices.Sensors.Geolocation.ListeningFailed> event is raised, listening for further location changes stops and no further <xref:Microsoft.Maui.Devices.Sensors.Geolocation.LocationChanged> events are raised.
 
-To stop listening for location changes, call the `StopListeningForeground` method:
+To stop listening for location changes, call the <xref:Microsoft.Maui.Devices.Sensors.Geolocation.StopListeningForeground%2A> method:
 
 ```csharp
 void OnStopListening()
@@ -197,7 +197,7 @@ void OnStopListening()
 ```
 
 > [!NOTE]
-> The `StopListeningForeground` method has no effect when the app isn't listening for location changes.
+> The <xref:Microsoft.Maui.Devices.Sensors.Geolocation.StopListeningForeground%2A> method has no effect when the app isn't listening for location changes.
 
 ::: moniker-end
 
