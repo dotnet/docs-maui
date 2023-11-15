@@ -7,8 +7,6 @@ metadata:
   title: .NET Multi-platform App UI documentation
   description: .NET Multi-platform App UI (.NET MAUI) lets you build native apps using a .NET cross-platform UI toolkit that targets the mobile and desktop form factors on Android, iOS, macOS, Windows, and Tizen.
   ms.topic: hub-page
-  author: davidbritch
-  ms.author: dabritch
   ms.date: 11/15/2023
 
 # Maximum of 8 items
@@ -241,16 +239,27 @@ conceptualContent:
           itemType: concept
 additionalContent:
   sections:
-  - title: .NET MAUI community resources
-    items:
-      - title: .NET MAUI Community Toolkit
-        summary: The .NET MAUI Community Toolkit is a collection of reusable elements for .NET MAUI app development.
-        url: /dotnet/communitytoolkit/maui/
-      - title: .NET Community Toolkit
-        summary: The .NET Community Toolkit is a collection of helpers and APIs that are agnostic of any UI platform.
-        url: /dotnet/communitytoolkit/introduction
-      - title: Windows Community Toolkit
-        summary: The Windows Community Toolkit is a collection of controls that simplifies common developer tasks for Windows with .NET.
-        url: /dotnet/communitytoolkit/windows/
+    - title: .NET MAUI community resources
+      items:
+        - title: .NET MAUI Community Toolkit
+          summary: The .NET MAUI Community Toolkit is a collection of reusable elements for .NET MAUI app development.
+          url: /dotnet/communitytoolkit/maui/
+        - title: .NET Community Toolkit
+          summary: The .NET Community Toolkit is a collection of helpers and APIs that are agnostic of any UI platform.
+          url: /dotnet/communitytoolkit/introduction
+        - title: Windows Community Toolkit
+          summary: The Windows Community Toolkit is a collection of controls that simplifies common developer tasks for Windows with .NET.
+          url: /dotnet/communitytoolkit/windows/
+    - title: API reference
+      items:
+        - title: ".NET MAUI API reference"
+          summary: API reference documentation for .NET MAUI
+          url: /dotnet/api/?view=net-maui-8.0&preserve-view=true
+        - title: ".NET API reference"
+          summary: API reference documentation for .NET
+          url: /dotnet/api?view=net-8.0&preserve-view=true
+        - title: ".NET Platform Extensions API reference"
+          summary: API reference documentation for .NET Platform Extensions
+          url: /dotnet/api?view=dotnet-plat-ext-8.0&preserve-view=true
 
   footer: "[Blogs](https://devblogs.microsoft.com/dotnet/) - [Microsoft Q&A](/answers/tags/247) - [Developer Community](https://dotnet.microsoft.com/platform/community) - [Release notes](https://github.com/dotnet/maui/releases)"
