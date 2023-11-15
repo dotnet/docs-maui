@@ -66,7 +66,7 @@ conceptualContent:
             - url: user-interface/controls/collectionview/index.md
               itemType: concept
               text: Present lists of data
-        - title: Customize UIs for specific platforms and devices.
+        - title: Customize UIs for specific platforms and devices
           summary: Make the most effective use of space in your app UI.
           links:
             - url: platform-integration/customize-ui-appearance.md
@@ -331,4 +331,4 @@ additionalContent:
           summary: API reference documentation for .NET Platform Extensions.
           url: /dotnet/api?view=dotnet-plat-ext-8.0&preserve-view=true
 
-  footer: "[Blogs](https://devblogs.microsoft.com/dotnet/) - [Microsoft Q&A](/answers/tags/247) - [Developer Community](https://dotnet.microsoft.com/platform/community) - [Release notes](https://github.com/dotnet/maui/releases)"
+  footer: "[Blogs](https://devblogs.microsoft.com/dotnet/) - [Microsoft Q&A](/answers/tags/247/dotnet-maui) - [Developer Community](https://dotnet.microsoft.com/platform/community) - [Release notes](https://github.com/dotnet/maui/releases)"
