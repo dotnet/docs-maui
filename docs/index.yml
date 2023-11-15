@@ -66,12 +66,12 @@ conceptualContent:
             - url: user-interface/controls/collectionview/index.md
               itemType: concept
               text: Present lists of data
-        - title: Customize UI appearance per platform
-          summary: Customize UIs for specific platforms and devices.
+        - title: Customize UIs for specific platforms and devices.
+          summary: Make the most effective use of space in your app UI.
           links:
             - url: platform-integration/customize-ui-appearance.md
               itemType: concept
-              text: Customize UI appearance based on the platform.
+              text: Customize UI appearance based on the platform
         - title: Access a REST web service
           summary: Integrate and interact with web services using HTTP and JSON
           links:
@@ -79,7 +79,7 @@ conceptualContent:
               itemType: concept
               text: Consume a REST-based web service
         - title: Access device features
-          summary: Cross-platform APIs for common device features.
+          summary: Use cross-platform APIs for common device features.
           links:
             - url: platform-integration/index.md
               itemType: concept
@@ -382,7 +382,7 @@ conceptualContent:
 
 additionalContent:
   sections:
-    - title: Blazor Hybrid apps with .NET MAUI
+    - title: .NET MAUI Blazor Hybrid apps
       items:
         - title: Build a .NET MAUI Blazor Hybrid app
           summary: Blend desktop and mobile native client frameworks with .NET and Blazor.
