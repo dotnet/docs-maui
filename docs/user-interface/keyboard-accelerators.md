@@ -21,14 +21,14 @@ The following screenshots show menu bar items and context menu items that includ
 :::image type="content" source="media/keyboard-accelerators/menubar.png" alt-text="Screenshot of menu bar items that include keyboard accelerators.":::
 :::image type="content" source="media/keyboard-accelerators/context-menu.png" alt-text="Screenshot of context menu items that include keyboard accelerators.":::
 
-A keyboard accelerator is represented by the `KeyboardAccelerator` class, which represents a shortcut key for a <xref:Microsoft.Maui.Controls.MenuFlyoutItem>. The `KeyboardAccelerator` class defines the following properties:
+A keyboard accelerator is represented by the <xref:Microsoft.Maui.Controls.KeyboardAccelerator> class, which represents a shortcut key for a <xref:Microsoft.Maui.Controls.MenuFlyoutItem>. The <xref:Microsoft.Maui.Controls.KeyboardAccelerator> class defines the following properties:
 
-- `Modifiers`, of type `KeyboardAcceleratorModifiers`, which represents the modifier value, such as Ctrl or Shift, for the keyboard shortcut.
-- `Key`, of type `string?`, which represents the key value for the keyboard shortcut.
+- <xref:Microsoft.Maui.Controls.KeyboardAccelerator.Modifiers>, of type <xref:Microsoft.Maui.Controls.KeyboardAcceleratorModifiers>, which represents the modifier value, such as Ctrl or Shift, for the keyboard shortcut.
+- <xref:Microsoft.Maui.Controls.KeyboardAccelerator.Key>, of type `string?`, which represents the key value for the keyboard shortcut.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings.
 
-The `KeyboardAcceleratorModifiers` enumeration defines the following members that be used as values for the `Modifiers` property:
+The <xref:Microsoft.Maui.Controls.KeyboardAcceleratorModifiers> enumeration defines the following members that be used as values for the <xref:Microsoft.Maui.Controls.KeyboardAccelerator.Modifiers> property:
 
 - `None`, which indicates no modifier.
 - `Shift`, which indicates the Shift modifier on Mac Catalyst and Windows.
@@ -51,7 +51,7 @@ The following table outlines the keyboard accelerator formats .NET MAUI supports
 
 ## Create a keyboard accelerator
 
-A `KeyboardAccelerator` can be attached to a <xref:Microsoft.Maui.Controls.MenuFlyoutItem> by adding it to its `KeyboardAccelerators` collection:
+A <xref:Microsoft.Maui.Controls.KeyboardAccelerator> can be attached to a <xref:Microsoft.Maui.Controls.MenuFlyoutItem> by adding it to its <xref:Microsoft.Maui.Controls.MenuFlyoutItem.KeyboardAccelerators> collection:
 
 <!-- TODO: Why is KeyboardAccelerators a collection? Multiple allowed but only first executed on MacCat, but both executed on Win -->
 
@@ -78,11 +78,11 @@ cutMenuFlyoutItem.KeyboardAccelerators.Add(new KeyboardAccelerator
 When a keyboard accelerator modifier and key is pressed, the action associated with the <xref:Microsoft.Maui.Controls.MenuFlyoutItem> is invoked.
 
 > [!IMPORTANT]
-> While multiple `KeyboardAccelerator` objects can be added to the `MenuFlyoutItem.KeyboardAccelerators` collection, only the first `KeyboardAccelerator` in the collection will have its shortcut displayed on the <xref:Microsoft.Maui.Controls.MenuFlyoutItem>. In addition, on Mac Catalyst, only the keyboard shortcut for the first `KeyboardAccelerator` in the collection will cause the action associated with the <xref:Microsoft.Maui.Controls.MenuFlyoutItem> to be invoked. However, on Windows, the keyboard shortcuts for all of the `KeyboardAccelerator` objects in the `MenuFlyoutItem.KeyboardAccelerators` collection will cause the <xref:Microsoft.Maui.Controls.MenuFlyoutItem> action to be invoked.
+> While multiple <xref:Microsoft.Maui.Controls.KeyboardAccelerator> objects can be added to the `MenuFlyoutItem.KeyboardAccelerators` collection, only the first <xref:Microsoft.Maui.Controls.KeyboardAccelerator> in the collection will have its shortcut displayed on the <xref:Microsoft.Maui.Controls.MenuFlyoutItem>. In addition, on Mac Catalyst, only the keyboard shortcut for the first <xref:Microsoft.Maui.Controls.KeyboardAccelerator> in the collection will cause the action associated with the <xref:Microsoft.Maui.Controls.MenuFlyoutItem> to be invoked. However, on Windows, the keyboard shortcuts for all of the <xref:Microsoft.Maui.Controls.KeyboardAccelerator> objects in the `MenuFlyoutItem.KeyboardAccelerators` collection will cause the <xref:Microsoft.Maui.Controls.MenuFlyoutItem> action to be invoked.
 
 ### Specify multiple modifiers
 
-Multiple modifiers can be specified on a `KeyboardAccelerator` on both platforms:
+Multiple modifiers can be specified on a <xref:Microsoft.Maui.Controls.KeyboardAccelerator> on both platforms:
 
 ```xaml
 <MenuFlyoutItem Text="Refresh"
