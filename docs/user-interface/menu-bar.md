@@ -8,24 +8,24 @@ ms.date: 10/05/2022
 
 A .NET Multi-platform App UI (.NET MAUI) menu bar is a container that presents a set of menus in a horizontal row, at the top of an app on Mac Catalyst and Windows.
 
-Each top-level menu in the menu bar, known as a menu bar item, is represented by a `MenuBarItem` object. `MenuBarItem` defines the following properties:
+Each top-level menu in the menu bar, known as a menu bar item, is represented by a <xref:Microsoft.Maui.Controls.MenuBarItem> object. <xref:Microsoft.Maui.Controls.MenuBarItem> defines the following properties:
 
 - `Text`, of type `string`, defines the menu text.
 - `IsEnabled`, of type `boolean`, specifies whether the menu is enabled. The default value of this property is `true`.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
-A `MenuBarItem` can consist of the following children:
+A <xref:Microsoft.Maui.Controls.MenuBarItem> can consist of the following children:
 
-- `MenuFlyoutItem`, which represents a menu item that can be clicked.
-- `MenuFlyoutSubItem`, which represents a sub-menu item that can be clicked.
-- `MenuFlyoutSeparator`, which is a horizontal line that separates items in the menu.
+- <xref:Microsoft.Maui.Controls.MenuFlyoutItem>, which represents a menu item that can be clicked.
+- <xref:Microsoft.Maui.Controls.MenuFlyoutSubItem>, which represents a sub-menu item that can be clicked.
+- <xref:Microsoft.Maui.Controls.MenuFlyoutSeparator>, which is a horizontal line that separates items in the menu.
 
-`MenuFlyoutSubItem` derives from `MenuFlyoutItem`, which in turn derives from  <xref:Microsoft.Maui.Controls.MenuItem>.  <xref:Microsoft.Maui.Controls.MenuItem> defines multiple properties that enable the appearance and behavior of a menu item to be specified. The appearance of a menu item, or sub-item, can be defined by setting the `Text`, and `IconImageSource` properties. The response to a menu item, or sub-item, click can be defined by setting the `Clicked`, `Command`, and `CommandParameter` properties. For more information about menu items, see [Display menu items](menuitem.md).
+<xref:Microsoft.Maui.Controls.MenuFlyoutSubItem> derives from <xref:Microsoft.Maui.Controls.MenuFlyoutItem>, which in turn derives from  <xref:Microsoft.Maui.Controls.MenuItem>.  <xref:Microsoft.Maui.Controls.MenuItem> defines multiple properties that enable the appearance and behavior of a menu item to be specified. The appearance of a menu item, or sub-item, can be defined by setting the `Text`, and `IconImageSource` properties. The response to a menu item, or sub-item, click can be defined by setting the `Clicked`, `Command`, and `CommandParameter` properties. For more information about menu items, see [Display menu items](menuitem.md).
 
 ## Create menu bar items
 
-`MenuBarItem` objects can be added to the `MenuBarItems` collection, of type `IList<MenuBarItem>`, on a <xref:Microsoft.Maui.Controls.ContentPage>. .NET MAUI desktop apps will display a menu bar, containing menu items, when they are added to any <xref:Microsoft.Maui.Controls.ContentPage> that's hosted in a <xref:Microsoft.Maui.Controls.NavigationPage> or a Shell app.
+<xref:Microsoft.Maui.Controls.MenuBarItem> objects can be added to the <xref:Microsoft.Maui.Controls.Page.MenuBarItems> collection, of type `IList<MenuBarItem>`, on a <xref:Microsoft.Maui.Controls.ContentPage>. .NET MAUI desktop apps will display a menu bar, containing menu items, when they are added to any <xref:Microsoft.Maui.Controls.ContentPage> that's hosted in a <xref:Microsoft.Maui.Controls.NavigationPage> or a Shell app.
 
 The following example shows a <xref:Microsoft.Maui.Controls.ContentPage> that defines menu bar items:
 
@@ -73,7 +73,7 @@ This example defines three top-level menus. Each top-level menu has menu items, 
 > [!NOTE]
 > On Mac Catalyst, menu items are added to the system menu bar.
 
-In this example, each `MenuFlyoutItem` defines a menu item that executes an `ICommand` when selected.
+In this example, each <xref:Microsoft.Maui.Controls.MenuFlyoutItem> defines a menu item that executes an `ICommand` when selected.
 
 ::: moniker range=">=net-maui-8.0"
 
@@ -83,7 +83,7 @@ Keyboard accelerators can be added to menu items in a menu bar, so that a menu i
 
 ## Display icons on menu items
 
-`MenuFlyoutItem` and `MenuFlyoutSubItem` inherit the `IconImageSource` property from  <xref:Microsoft.Maui.Controls.MenuItem>, which enables a small icon to be displayed next to the text for a menu item. This icon can either be an image, or a font icon.
+<xref:Microsoft.Maui.Controls.MenuFlyoutItem> and <xref:Microsoft.Maui.Controls.MenuFlyoutSubItem> inherit the `IconImageSource` property from  <xref:Microsoft.Maui.Controls.MenuItem>, which enables a small icon to be displayed next to the text for a menu item. This icon can either be an image, or a font icon.
 
 > [!WARNING]
 > Mac Catalyst does not support displaying icons on menu items.
