@@ -43,7 +43,7 @@ conceptualContent:
     - title: .NET MAUI common tasks
       items:
         - title: Upgrade from Xamarin
-          summary: Run your Xamarin projects on .NET after completing an upgrade process.
+          summary: Run your Xamarin projects on .NET after an upgrade process.
           links:
             - url: migration/index.md
               itemType: concept
@@ -66,7 +66,7 @@ conceptualContent:
             - url: user-interface/controls/collectionview/index.md
               itemType: concept
               text: Present lists of data
-        - title: Customize UIs for specific platforms and devices
+        - title: Customize UIs for specific platforms
           summary: Make the most effective use of space in your app UI.
           links:
             - url: platform-integration/customize-ui-appearance.md
