@@ -6,7 +6,7 @@ ms.date: 11/01/2023
 
 # What's new in .NET MAUI for .NET 8
 
-The focus of .NET MAUI in .NET 8 is quality. In .NET 8, 1559 pull requests were merged that closed 596 issues. These includes changes from the .NET MAUI team as well as the .NET MAUI community. These changes should result in a significant increase in quality in .NET 8.
+The focus of .NET MAUI in .NET 8 is quality. In .NET 8, 1618 pull requests were merged that closed 689 issues. These includes changes from the .NET MAUI team as well as the .NET MAUI community. These changes should result in a significant increase in quality in .NET 8.
 
 > [!IMPORTANT]
 > Due to working with underlying external dependencies, such as Xcode or Android SDK Tools, the .NET Multi-platform App UI (.NET MAUI) support policy differs from the [.NET and .NET Core support policy](https://dotnet.microsoft.com/platform/support/policy/maui). For more information, see [.NET MAUI support policy](https://dotnet.microsoft.com/platform/support/policy/maui).
