@@ -132,7 +132,7 @@ conceptualContent:
             - text: Upgrade to a multi-project app
               url: migration/multi-project-to-multi-project.md
               itemType: concept
-            - text: Upgrade to a single project app.
+            - text: Upgrade to a single project app
               url: migration/multi-project-to-single-project.md
               itemType: concept
             - text: Layout behavior changes
