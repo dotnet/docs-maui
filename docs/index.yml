@@ -1,47 +1,43 @@
-### YamlMime:Hub
 title: .NET Multi-platform App UI documentation
 summary: .NET Multi-platform App UI (.NET MAUI) lets you build native apps using a .NET cross-platform UI toolkit that targets the mobile and desktop form factors on Android, iOS, macOS, Windows, and Tizen.
 brand: dotnet
-
 metadata:
   title: .NET Multi-platform App UI documentation
   description: .NET Multi-platform App UI (.NET MAUI) lets you build native apps using a .NET cross-platform UI toolkit that targets the mobile and desktop form factors on Android, iOS, macOS, Windows, and Tizen.
   ms.topic: hub-page
   ms.date: 11/15/2023
 
-# Maximum of 8 items
-# itemType: architecture | concept | deploy | download | get-started | how-to-guide | training | overview | quickstart | reference | sample | tutorial | video | whats-new
 highlightedContent:
   items:
-  - title: What is .NET MAUI?
-    itemType: overview
-    url: what-is-maui.md
-  - title: Supported platforms
-    itemType: overview
-    url: supported-platforms.md
-  - title: Installation
-    itemType: get-started
-    url: get-started/installation.md
-  - title: Build your first app
-    itemType: tutorial
-    url: get-started/first-app.md
-  - title: What's new?
-    itemType: whats-new
-    url: whats-new/index.yml
-  - title: Find a sample
-    itemType: sample
-    url: /samples/browse/?expanded=dotnet&products=dotnet-maui
-  - title: Build mobile and desktop apps with .NET MAUI
-    itemType: training
-    url: /training/paths/build-apps-with-dotnet-maui
-  - title: Enterprise application patterns using .NET MAUI
-    itemType: architecture
-    url: /dotnet/architecture/maui/
+    - title: What is .NET MAUI?
+      itemType: overview
+      url: what-is-maui.md
+    - title: Supported platforms
+      itemType: overview
+      url: supported-platforms.md
+    - title: Installation
+      itemType: get-started
+      url: get-started/installation.md
+    - title: Build your first app
+      itemType: tutorial
+      url: get-started/first-app.md
+    - title: What's new?
+      itemType: whats-new
+      url: whats-new/index.yml
+    - title: Find a sample
+      itemType: sample
+      url: /samples/browse/?expanded=dotnet&products=dotnet-maui
+    - title: Build mobile and desktop apps with .NET MAUI
+      itemType: training
+      url: /training/paths/build-apps-with-dotnet-maui
+    - title: Enterprise application patterns using .NET MAUI
+      itemType: architecture
+      url: /dotnet/architecture/maui/
 
-# itemType: architecture | concept | deploy | download | get-started | how-to-guide | training | overview | quickstart | reference | sample | tutorial | video | whats-new
 conceptualContent:
   sections:
     - title: .NET MAUI guides
+      summary: Summary goes here.
       items:
         - title: Get started
           links:
@@ -205,10 +201,12 @@ conceptualContent:
               url: /azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui/
               itemType: tutorial
             - text: Add authentication with Azure Mobile Apps
-              url: /azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui/authentication
+              url: >-
+                /azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui/authentication
               itemType: tutorial
             - text: Offline data sync with Azure Mobile Apps
-              url: /azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui/offline
+              url: >-
+                /azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui/offline
               itemType: tutorial
             - text: Consume a REST-based web service
               url: data-cloud/rest.md
@@ -330,48 +328,54 @@ conceptualContent:
             - text: Platform-specifics
               url: windows/platform-specifics/index.md
               itemType: concept
-            - text:
-              url:
+            - text: null
+              url: null
               itemType: concept
-            - text:
-              url:
+            - text: null
+              url: null
               itemType: concept
-            - text:
-              url:
+            - text: null
+              url: null
               itemType: concept
-            - text:
-              url:
+            - text: null
+              url: null
               itemType: concept
-            - text:
-              url:
+            - text: null
+              url: null
               itemType: concept
-            - text:
-              url:
+            - text: null
+              url: null
               itemType: concept
-              
+
 additionalContent:
   sections:
     - title: .NET MAUI community resources
       items:
         - title: .NET MAUI Community Toolkit
-          summary: The .NET MAUI Community Toolkit is a collection of reusable elements for .NET MAUI app development.
+          summary: >-
+            The .NET MAUI Community Toolkit is a collection of reusable elements
+            for .NET MAUI app development.
           url: /dotnet/communitytoolkit/maui/
         - title: .NET Community Toolkit
-          summary: The .NET Community Toolkit is a collection of helpers and APIs that are agnostic of any UI platform.
+          summary: >-
+            The .NET Community Toolkit is a collection of helpers and APIs that
+            are agnostic of any UI platform.
           url: /dotnet/communitytoolkit/introduction
         - title: Windows Community Toolkit
-          summary: The Windows Community Toolkit is a collection of controls that simplifies common developer tasks for Windows with .NET.
+          summary: >-
+            The Windows Community Toolkit is a collection of controls that
+            simplifies common developer tasks for Windows with .NET.
           url: /dotnet/communitytoolkit/windows/
     - title: API reference
       items:
-        - title: ".NET MAUI API reference"
+        - title: .NET MAUI API reference
           summary: API reference documentation for .NET MAUI.
           url: /dotnet/api/?view=net-maui-8.0&preserve-view=true
-        - title: ".NET API reference"
+        - title: .NET API reference
           summary: API reference documentation for .NET.
           url: /dotnet/api?view=net-8.0&preserve-view=true
-        - title: ".NET Platform Extensions API reference"
+        - title: .NET Platform Extensions API reference
           summary: API reference documentation for .NET Platform Extensions.
           url: /dotnet/api?view=dotnet-plat-ext-8.0&preserve-view=true
 
-  footer: "[Blogs](https://devblogs.microsoft.com/dotnet/) - [Microsoft Q&A](/answers/tags/247) - [Developer Community](https://dotnet.microsoft.com/platform/community) - [Release notes](https://github.com/dotnet/maui/releases)"
+  footer: [Blogs](https://devblogs.microsoft.com/dotnet/) - [Microsoft Q&A](/answers/tags/247) - [Developer Community](https://dotnet.microsoft.com/platform/community) - [Release notes](https://github.com/dotnet/maui/releases)
