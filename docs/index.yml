@@ -41,26 +41,19 @@ highlightedContent:
 conceptualContent:
   sections:
     - title: .NET MAUI common tasks
-      summary: Important concepts for building cross-platform apps with .NET MAUI.
       items:
         - title: Upgrade from Xamarin
-          summary: Xamarin projects can run on .NET after completing an upgrade process.
+          summary: Run your Xamarin projects on .NET after completing an upgrade process.
           links:
             - url: migration/index.md
               itemType: concept
-              text: Upgrade from Xamarin to .NET.
+              text: Upgrade from Xamarin to .NET
         - title: Learn about the app lifecycle
           summary: Understand how apps start and go to the background.
           links:
             - url: fundamentals/app-lifecycle.md
               itemType: concept
               text: App lifecycle
-        - title: Customize UI appearance per platform
-          summary: Customize UIs for specific platforms and devices.
-          links:
-            - url: platform-integration/customize-ui-appearance.md
-              itemType: concept
-              text: Customize UI appearance based on the platform.
         - title: Use XAML & data-binding
           summary: Use the MVVM pattern to show data in your UI.
           links:
@@ -73,6 +66,12 @@ conceptualContent:
             - url: user-interface/controls/collectionview/index.md
               itemType: concept
               text: Present lists of data
+        - title: Customize UI appearance per platform
+          summary: Customize UIs for specific platforms and devices.
+          links:
+            - url: platform-integration/customize-ui-appearance.md
+              itemType: concept
+              text: Customize UI appearance based on the platform.
         - title: Access a REST web service
           summary: Integrate and interact with web services using HTTP and JSON
           links:
@@ -84,7 +83,7 @@ conceptualContent:
           links:
             - url: platform-integration/index.md
               itemType: concept
-              text: Access device features
+              text: Platform integration
         - title: Deploy apps to devices
           summary: Upload to test devices and app stores.
           links:
@@ -92,7 +91,6 @@ conceptualContent:
               itemType: concept
               text: Deployment
     - title: .NET MAUI guides
-      summary: Learn how to build cross-platform apps using C# and .NET in Visual Studio on Windows and macOS.
       items:
         - title: Get started
           links:
@@ -297,7 +295,6 @@ conceptualContent:
               url: windows/deployment/overview.md
               itemType: concept
     - title: Platforms
-      summary: Each platform has its own configuration approach for apps.
       items:
         - title: Android
           links:
@@ -385,6 +382,17 @@ conceptualContent:
 
 additionalContent:
   sections:
+    - title: Blazor Hybrid apps with .NET MAUI
+      items:
+        - title: Build a .NET MAUI Blazor Hybrid app
+          summary: Blend desktop and mobile native client frameworks with .NET and Blazor.
+          url: /aspnet/core/blazor/hybrid/tutorials/maui
+        - title: Blazor Hybrid routing and navigation
+          summary: Understand how to manage request routing and navigation in Blazor Hybrid apps.
+          url: /aspnet/core/blazor/hybrid/routing?pivots=maui
+        - title: Build a mobile and desktop app with Blazor Hybrid and .NET MAUI
+          summary: Build a cross-platform hybrid app with Blazor, .NET MAUI, and C#.
+          url: /training/modules/build-blazor-hybrid
     - title: .NET MAUI community resources
       items:
         - title: .NET MAUI Community Toolkit
