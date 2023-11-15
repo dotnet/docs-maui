@@ -11,13 +11,13 @@ ms.date: 01/18/2022
 The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.CarouselView> defines the following properties that control user interaction:
 
 - `CurrentItem`, of type `object`, the current item being displayed. This property has a default binding mode of `TwoWay`, and has a `null` value when there isn't any data to display.
-- `CurrentItemChangedCommand`, of type `ICommand`, which is executed when the current item changes.
+- `CurrentItemChangedCommand`, of type <xref:System.Windows.Input.ICommand>, which is executed when the current item changes.
 - `CurrentItemChangedCommandParameter`, of type `object`, which is the parameter that's passed to the `CurrentItemChangedCommand`.
 - `IsBounceEnabled`, of type `bool`, which specifies whether the <xref:Microsoft.Maui.Controls.CarouselView> will bounce at a content boundary. The default value is `true`.
 - `IsSwipeEnabled`, of type `bool`, which determines whether a swipe gesture will change the displayed item. The default value is `true`.
 - `Loop`, of type `bool`, which determines whether the <xref:Microsoft.Maui.Controls.CarouselView> provides looped access to its collection of items. The default value is `true`.
 - `Position`, of type `int`, the index of the current item in the underlying collection. This property has a default binding mode of `TwoWay`, and has a 0 value when there isn't any data to display.
-- `PositionChangedCommand`, of type `ICommand`, which is executed when the position changes.
+- `PositionChangedCommand`, of type <xref:System.Windows.Input.ICommand>, which is executed when the position changes.
 - `PositionChangedCommandParameter`, of type `object`, which is the parameter that's passed to the `PositionChangedCommand`.
 - `VisibleViews`, of type `ObservableCollection<View>`, which is a read-only property that contains the objects for the items that are currently visible.
 
@@ -35,7 +35,7 @@ All of these properties are backed by <xref:Microsoft.Maui.Controls.BindableProp
 
 ## Respond to the current item changing
 
-When the currently displayed item changes, the `CurrentItem` property will be set to the value of the item. When this property changes, the `CurrentItemChangedCommand` is executed with the value of the `CurrentItemChangedCommandParameter` being passed to the `ICommand`. The `Position` property is then updated, and the `CurrentItemChanged` event fires.
+When the currently displayed item changes, the `CurrentItem` property will be set to the value of the item. When this property changes, the `CurrentItemChangedCommand` is executed with the value of the `CurrentItemChangedCommandParameter` being passed to the <xref:System.Windows.Input.ICommand>. The `Position` property is then updated, and the `CurrentItemChanged` event fires.
 
 > [!IMPORTANT]
 > The `Position` property changes when the `CurrentItem` property changes. This will result in the `PositionChangedCommand` being executed, and the `PositionChanged` event firing.
@@ -108,7 +108,7 @@ In this example, the `ItemChangedCommand` updates objects that store the previou
 
 ## Respond to the position changing
 
-When the currently displayed item changes, the `Position` property will be set to the index of the current item in the underlying collection. When this property changes, the `PositionChangedCommand` is executed with the value of the `PositionChangedCommandParameter` being passed to the `ICommand`. The `PositionChanged` event then fires. If the `Position` property has been programmatically changed, the <xref:Microsoft.Maui.Controls.CarouselView> will be scrolled to the item that corresponds to the `Position` value.
+When the currently displayed item changes, the `Position` property will be set to the index of the current item in the underlying collection. When this property changes, the `PositionChangedCommand` is executed with the value of the `PositionChangedCommandParameter` being passed to the <xref:System.Windows.Input.ICommand>. The `PositionChanged` event then fires. If the `Position` property has been programmatically changed, the <xref:Microsoft.Maui.Controls.CarouselView> will be scrolled to the item that corresponds to the `Position` value.
 
 > [!NOTE]
 > Setting the `Position` property to 0 will result in the first item in the underlying collection being displayed.

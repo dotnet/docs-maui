@@ -543,7 +543,7 @@ In this example, the `ApplyQueryAttributes` method retrieves the value of the `n
 
 Back button appearance and behavior can be redefined by setting the `BackButtonBehavior` attached property to a `BackButtonBehavior` object. The `BackButtonBehavior` class defines the following properties:
 
-- `Command`, of type `ICommand`, which is executed when the back button is pressed.
+- `Command`, of type <xref:System.Windows.Input.ICommand>, which is executed when the back button is pressed.
 - `CommandParameter`, of type `object`, which is the parameter that's passed to the `Command`.
 - `IconOverride`, of type <xref:Microsoft.Maui.Controls.ImageSource>, the icon used for the back button.
 - `IsEnabled`, of type `boolean`, indicates whether the back button is enabled. The default value is `true`.
@@ -564,6 +564,6 @@ The following code shows an example of redefining back button appearance and beh
 </ContentPage>
 ```
 
-The `Command` property is set to an `ICommand` to be executed when the back button is pressed, and the `IconOverride` property is set to the icon that's used for the back button:
+The `Command` property is set to an <xref:System.Windows.Input.ICommand> to be executed when the back button is pressed, and the `IconOverride` property is set to the icon that's used for the back button:
 
 :::image type="content" source="media/navigation/back-button.png" alt-text="Screenshot of a Shell back button icon override.":::

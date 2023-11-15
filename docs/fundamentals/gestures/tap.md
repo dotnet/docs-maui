@@ -9,7 +9,7 @@ ms.date: 10/03/2022
 A .NET Multi-platform App UI (.NET MAUI) tap gesture recognizer is used for tap detection and is implemented with the <xref:Microsoft.Maui.Controls.TapGestureRecognizer> class. This class defines the following properties:
 
 - <xref:Microsoft.Maui.Controls.TapGestureRecognizer.Buttons>, of type <xref:Microsoft.Maui.Controls.ButtonsMask>, which defines whether the primary or secondary mouse button, or both, triggers the gesture on Android, Mac Catalyst, and Windows. For more information, see [Define the button masks](#define-the-button-mask).
-- <xref:Microsoft.Maui.Controls.TapGestureRecognizer.Command>, of type `ICommand`, which is executed when a tap is recognized.
+- <xref:Microsoft.Maui.Controls.TapGestureRecognizer.Command>, of type <xref:System.Windows.Input.ICommand>, which is executed when a tap is recognized.
 - <xref:Microsoft.Maui.Controls.TapGestureRecognizer.CommandParameter>, of type `object`, which is the parameter that's passed to the `Command`.
 - <xref:Microsoft.Maui.Controls.TapGestureRecognizer.NumberOfTapsRequired>, of type `int`, which represents the number of taps required to recognize a tap gesture. The default value of this property is 1.
 

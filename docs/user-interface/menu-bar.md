@@ -73,7 +73,7 @@ This example defines three top-level menus. Each top-level menu has menu items, 
 > [!NOTE]
 > On Mac Catalyst, menu items are added to the system menu bar.
 
-In this example, each <xref:Microsoft.Maui.Controls.MenuFlyoutItem> defines a menu item that executes an `ICommand` when selected.
+In this example, each <xref:Microsoft.Maui.Controls.MenuFlyoutItem> defines a menu item that executes an <xref:System.Windows.Input.ICommand> when selected.
 
 ::: moniker range=">=net-maui-8.0"
 

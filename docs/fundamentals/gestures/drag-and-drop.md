@@ -26,9 +26,9 @@ The process for enabling drag and drop in an app is as follows:
 In .NET MAUI, drag gesture recognition is provided by the <xref:Microsoft.Maui.Controls.DragGestureRecognizer> class. This class defines the following properties:
 
 - <xref:Microsoft.Maui.Controls.DragGestureRecognizer.CanDrag>, of type `bool`, which indicates whether the element the gesture recognizer is attached to can be a drag source. The default value of this property is `true`.
-- <xref:Microsoft.Maui.Controls.DragGestureRecognizer.DragStartingCommand>, of type `ICommand`, which is executed when a drag gesture is first recognized.
+- <xref:Microsoft.Maui.Controls.DragGestureRecognizer.DragStartingCommand>, of type <xref:System.Windows.Input.ICommand>, which is executed when a drag gesture is first recognized.
 - <xref:Microsoft.Maui.Controls.DragGestureRecognizer.DragStartingCommandParameter>, of type `object`, which is the parameter that's passed to the  <xref:Microsoft.Maui.Controls.DragGestureRecognizer.DragStartingCommand>.
-- <xref:Microsoft.Maui.Controls.DragGestureRecognizer.DropCompletedCommand>, of type `ICommand`, which is executed when the drag source is dropped.
+- <xref:Microsoft.Maui.Controls.DragGestureRecognizer.DropCompletedCommand>, of type <xref:System.Windows.Input.ICommand>, which is executed when the drag source is dropped.
 - <xref:Microsoft.Maui.Controls.DragGestureRecognizer.DropCompletedCommandParameter>, of type `object`, which is the parameter that's passed to the <xref:Microsoft.Maui.Controls.DragGestureRecognizer.DropCompletedCommand>.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
@@ -283,11 +283,11 @@ The <xref:Microsoft.Maui.Controls.DragStartingEventArgs> object that accompanies
 In .NET MAUI, drop gesture recognition is provided by the <xref:Microsoft.Maui.Controls.DropGestureRecognizer> class. This class defines the following properties:
 
 - <xref:Microsoft.Maui.Controls.DropGestureRecognizer.AllowDrop>, of type `bool`, which indicates whether the element the gesture recognizer is attached to can be a drop target. The default value of this property is `true`.
-- <xref:Microsoft.Maui.Controls.DropGestureRecognizer.DragOverCommand>, of type `ICommand`, which is executed when the drag source is dragged over the drop target.
+- <xref:Microsoft.Maui.Controls.DropGestureRecognizer.DragOverCommand>, of type <xref:System.Windows.Input.ICommand>, which is executed when the drag source is dragged over the drop target.
 - <xref:Microsoft.Maui.Controls.DropGestureRecognizer.DragOverCommandParameter>, of type `object`, which is the parameter that's passed to the `DragOverCommand`.
-- <xref:Microsoft.Maui.Controls.DropGestureRecognizer.DragLeaveCommand>, of type `ICommand`, which is executed when the drag source is dragged off the drop target.
+- <xref:Microsoft.Maui.Controls.DropGestureRecognizer.DragLeaveCommand>, of type <xref:System.Windows.Input.ICommand>, which is executed when the drag source is dragged off the drop target.
 - <xref:Microsoft.Maui.Controls.DropGestureRecognizer.DragLeaveCommandParameter>, of type `object`, which is the parameter that's passed to the `DragLeaveCommand`.
-- <xref:Microsoft.Maui.Controls.DropGestureRecognizer.DropCommand>, of type `ICommand`, which is executed when the drag source is dropped over the drop target.
+- <xref:Microsoft.Maui.Controls.DropGestureRecognizer.DropCommand>, of type <xref:System.Windows.Input.ICommand>, which is executed when the drag source is dropped over the drop target.
 - <xref:Microsoft.Maui.Controls.DropGestureRecognizer.DropCommandParameter>, of type `object`, which is the parameter that's passed to the `DropCommand`.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.

@@ -58,7 +58,7 @@ In this example, the <xref:Microsoft.Maui.Controls.TableView> defines a menu usi
 :::image type="content" source="media/tableview/menu.png" alt-text="Screenshot of TableView displaying a menu.":::
 
 > [!NOTE]
-> Each <xref:Microsoft.Maui.Controls.TextCell> can execute a command when tapped, provided that the `Command` property is set to a valid `ICommand` implementation.
+> Each <xref:Microsoft.Maui.Controls.TextCell> can execute a command when tapped, provided that the `Command` property is set to a valid <xref:System.Windows.Input.ICommand> implementation.
 
 ## Define cell appearance
 
@@ -78,7 +78,7 @@ A <xref:Microsoft.Maui.Controls.TextCell> displays primary and secondary text on
 - `TextColor`, of type <xref:Microsoft.Maui.Graphics.Color>, represents the color of the primary text.
 - `Detail`, of type `string`, defines the secondary text to be displayed.
 - `DetailColor`, of type <xref:Microsoft.Maui.Graphics.Color>, indicates the color of the secondary text.
-- `Command`, of type `ICommand`, defines the command that's executed when the cell is tapped.
+- `Command`, of type <xref:System.Windows.Input.ICommand>, defines the command that's executed when the cell is tapped.
 - `CommandParameter`, of type `object`, represents the parameter that's passed to the command.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.

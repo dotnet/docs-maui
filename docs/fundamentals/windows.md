@@ -10,18 +10,18 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Window>
 
 <xref:Microsoft.Maui.Controls.Window> defines the following properties:
 
-- `FlowDirection`, of type `FlowDirection`, defines the direction in which the UI element of the window are laid out.
-- `Height`, of type `double`, specifies the height of the window on Windows.
-- `MaximumHeight`, of type `double`, represents the maximum height of the window on desktop platforms. Valid values are between 0 and `double.PositiveInfinity`.
-- `MaximumWidth`, of type `double`, represents the maximum width of the window on desktop platforms. Valid values are between 0 and `double.PositiveInfinity`.
-- `MinimumHeight`, of type `double`, represents the minimum height of the window on desktop platforms. Valid values are between 0 and `double.PositiveInfinity`.
-- `MinimumWidth`, of type `double`, represents the minimum width of the window on desktop platforms. Valid values are between 0 and `double.PositiveInfinity`.
-- `Overlays`, of type `IReadOnlyCollection<IWindowOverlay>`, represents the collection of window overlays.
+- <xref:Microsoft.Maui.Controls.Window.FlowDirection>, of type `FlowDirection`, defines the direction in which the UI element of the window are laid out.
+- <xref:Microsoft.Maui.Controls.Window.Height>, of type `double`, specifies the height of the window on Windows.
+- <xref:Microsoft.Maui.Controls.Window.MaximumHeight>, of type `double`, represents the maximum height of the window on desktop platforms. Valid values are between 0 and `double.PositiveInfinity`.
+- <xref:Microsoft.Maui.Controls.Window.MaximumWidth>, of type `double`, represents the maximum width of the window on desktop platforms. Valid values are between 0 and `double.PositiveInfinity`.
+- <xref:Microsoft.Maui.Controls.Window.MinimumHeight>, of type `double`, represents the minimum height of the window on desktop platforms. Valid values are between 0 and `double.PositiveInfinity`.
+- <xref:Microsoft.Maui.Controls.Window.MinimumWidth>, of type `double`, represents the minimum width of the window on desktop platforms. Valid values are between 0 and `double.PositiveInfinity`.
+- <xref:Microsoft.Maui.Controls.Window.Overlays>, of type `IReadOnlyCollection<IWindowOverlay>`, represents the collection of window overlays.
 - <xref:Microsoft.Maui.Controls.Page>, of type <xref:Microsoft.Maui.Controls.Page>, indicates the page being displayed by the window. This property is the content property of the <xref:Microsoft.Maui.Controls.Window> class, and therefore does not need to be explicitly set.
-- `Title`, of type `string`, represents the title of the window.
-- `Width`, of type `double`, specifies the width of the window on Windows.
-- `X`, of type `double`, specifies the X coordinate of the window on Windows.
-- `Y`, of type `double`, specifies the Y coordinate of the window on Windows.
+- <xref:Microsoft.Maui.Controls.Window.Title>, of type `string`, represents the title of the window.
+- <xref:Microsoft.Maui.Controls.Window.Width>, of type `double`, specifies the width of the window on Windows.
+- <xref:Microsoft.Maui.Controls.Window.X>, of type `double`, specifies the X coordinate of the window on Windows.
+- <xref:Microsoft.Maui.Controls.Window.Y>, of type `double`, specifies the Y coordinate of the window on Windows.
 
 These properties, with the exception of the `Overlays` property, are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
@@ -29,25 +29,25 @@ These properties, with the exception of the `Overlays` property, are backed by <
 
 The <xref:Microsoft.Maui.Controls.Window> class defines the following events:
 
-- `Created`, which is raised when the window is created.
-- `Resumed`, which is raised when the window is resumed from a sleeping state.
-- `Activated`, which is raised when the window is activated.
-- `Deactivated`, which is raised when the window is deactivated.
-- `Stopped`, which is raised when the window is stopped.
-- `Destroying`, which is raised when the window is destroyed.
-- `SizeChanged`, which is raised on desktop platforms when the window changes size.
-- `Backgrounding`, with an accompanying `BackgroundingEventArgs` object, which is raised on iOS and Mac Catalyst when the window is closed or enters a background state. This event can be used to persist any `string` state to the `State` property of the `BackgroundingEventArgs` object, which the OS will preserve until it's time to resume the window. When the window is resumed the state is provided via the `IActivationState` argument to the `CreateWindow` method.
-- `DisplayDensityChanged`, with an accompanying `DisplayDensityChangedEventArgs` object, which is raised on Android and Windows when the effective dots per inch (DPI) for the window has changed.
+- <xref:Microsoft.Maui.Controls.Window.Created>, which is raised when the window is created.
+- <xref:Microsoft.Maui.Controls.Window.Resumed>, which is raised when the window is resumed from a sleeping state.
+- <xref:Microsoft.Maui.Controls.Window.Activated>, which is raised when the window is activated.
+- <xref:Microsoft.Maui.Controls.Window.Deactivated>, which is raised when the window is deactivated.
+- <xref:Microsoft.Maui.Controls.Window.Stopped>, which is raised when the window is stopped.
+- <xref:Microsoft.Maui.Controls.Window.Destroying>, which is raised when the window is destroyed.
+- <xref:Microsoft.Maui.Controls.Window.SizeChanged>, which is raised on desktop platforms when the window changes size.
+- <xref:Microsoft.Maui.Controls.Window.Backgrounding>, with an accompanying `BackgroundingEventArgs` object, which is raised on iOS and Mac Catalyst when the window is closed or enters a background state. This event can be used to persist any `string` state to the `State` property of the `BackgroundingEventArgs` object, which the OS will preserve until it's time to resume the window. When the window is resumed the state is provided via the `IActivationState` argument to the `CreateWindow` method.
+- <xref:Microsoft.Maui.Controls.Window`DisplayDensityChanged`, with an accompanying `DisplayDensityChangedEventArgs` object, which is raised on Android and Windows when the effective dots per inch (DPI) for the window has changed.
 
 For more information about the lifecycle events, and their associated overrides, see [App lifecycle](app-lifecycle.md).
 
 The <xref:Microsoft.Maui.Controls.Window> class also defines the following modal navigation events:
 
-- `ModalPopped`, with `ModalPoppedEventArgs`, which is raised when a view has been popped modally.
-- `ModalPopping`, with `ModalPoppingEventArgs`, which is raised when a view is modally popped.
-- `ModalPushed`, with `ModalPushedEventArgs`, which is raised after a view has been pushed modally.
-- `ModalPushing`, with `ModalPushingEventArgs`, which is raised when a view is modally pushed.
-- `PopCanceled`, which is raised when a modal pop is cancelled.
+- <xref:Microsoft.Maui.Controls.Window.ModalPopped>, with `ModalPoppedEventArgs`, which is raised when a view has been popped modally.
+- <xref:Microsoft.Maui.Controls.Window.ModalPopping>, with `ModalPoppingEventArgs`, which is raised when a view is modally popped.
+- <xref:Microsoft.Maui.Controls.Window.ModalPushed>, with `ModalPushedEventArgs`, which is raised after a view has been pushed modally.
+- <xref:Microsoft.Maui.Controls.Window.ModalPushing>, with `ModalPushingEventArgs`, which is raised when a view is modally pushed.
+- <xref:Microsoft.Maui.Controls.Window.PopCanceled>, which is raised when a modal pop is cancelled.
 
 The <xref:Microsoft.Maui.Controls.VisualElement> class has a `Window` property that exposes the parent <xref:Microsoft.Maui.Controls.Window> object. This property can be accessed from any page, layout, or view, to manipulate <xref:Microsoft.Maui.Controls.Window> objects.
 

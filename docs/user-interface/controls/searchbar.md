@@ -22,7 +22,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.SearchB
 - `FontSize` is a `double` value that represents specific font sizes across platforms.
 - `HorizontalTextAlignment` is a `TextAlignment` enum value that defines the horizontal alignment of the query text.
 - `IsTextPredictionEnabled` is a `bool` that determines whether text prediction and automatic text correction is enabled.
-- `SearchCommand` is an `ICommand` that allows binding user actions, such as finger taps or clicks, to commands defined on a viewmodel.
+- `SearchCommand` is an <xref:System.Windows.Input.ICommand> that allows binding user actions, such as finger taps or clicks, to commands defined on a viewmodel.
 - `SearchCommandParameter` is an `object` that specifies the parameter that should be passed to the `SearchCommand`.
 - `SelectionLength` is an `int` that can be used to return or set the length of text selection within the <xref:Microsoft.Maui.Controls.SearchBar>.
 - `VerticalTextAlignment` is a `TextAlignment` enum value that defines the vertical alignment of the query text.
@@ -33,7 +33,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.SearchB
 
 - `CancelButtonColor` is a <xref:Microsoft.Maui.Graphics.Color> that defines the color of the cancel button.
 - `HorizontalTextAlignment` is a `TextAlignment` enum value that defines the horizontal alignment of the query text.
-- `SearchCommand` is an `ICommand` that allows binding user actions, such as finger taps or clicks, to commands defined on a viewmodel.
+- `SearchCommand` is an <xref:System.Windows.Input.ICommand> that allows binding user actions, such as finger taps or clicks, to commands defined on a viewmodel.
 - `SearchCommandParameter` is an `object` that specifies the parameter that should be passed to the `SearchCommand`.
 - `VerticalTextAlignment` is a `TextAlignment` enum value that defines the vertical alignment of the query text.
 
@@ -132,9 +132,9 @@ In this example, a `DataService` class with a `GetSearchResults` method is used 
 
 ## Perform a search using a viewmodel
 
-A search can be executed without event handlers by binding the `SearchCommand` property to an `ICommand` implementation. For more information about commanding, see [Commanding](~/fundamentals/data-binding/commanding.md).
+A search can be executed without event handlers by binding the `SearchCommand` property to an <xref:System.Windows.Input.ICommand> implementation. For more information about commanding, see [Commanding](~/fundamentals/data-binding/commanding.md).
 
-The following example shows a viewmodel class that contains an `ICommand` property named `PerformSearch`:
+The following example shows a viewmodel class that contains an <xref:System.Windows.Input.ICommand> property named `PerformSearch`:
 
 ```csharp
 public class SearchViewModel : INotifyPropertyChanged

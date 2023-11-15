@@ -326,7 +326,7 @@ This example adds a  <xref:Microsoft.Maui.Controls.MenuItem> object to the flyou
 
 :::image type="content" source="media/flyout/flyout.png" alt-text="Screenshot of flyout containing a MenuItem object.":::
 
-The  <xref:Microsoft.Maui.Controls.MenuItem> object executes an `ICommand` named `HelpCommand`, which opens the URL specified by the `CommandParameter` property in the system web browser.
+The  <xref:Microsoft.Maui.Controls.MenuItem> object executes an <xref:System.Windows.Input.ICommand> named `HelpCommand`, which opens the URL specified by the `CommandParameter` property in the system web browser.
 
 > [!NOTE]
 > The `BindingContext` of each  <xref:Microsoft.Maui.Controls.MenuItem> is inherited from the subclassed <xref:Microsoft.Maui.Controls.Shell> object.

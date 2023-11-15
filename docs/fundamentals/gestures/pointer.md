@@ -10,26 +10,26 @@ A .NET Multi-platform App UI (.NET MAUI) pointer gesture recognizer detects when
 
 ::: moniker range="=net-maui-7.0"
 
-- <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerEnteredCommand>, of type `ICommand`, which is the command to invoke when the pointer enters the bounding area of the view.
+- <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerEnteredCommand>, of type <xref:System.Windows.Input.ICommand>, which is the command to invoke when the pointer enters the bounding area of the view.
 - <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerEnteredCommandParameter>, of type `object`, which is the parameter that's passed to <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerEnteredCommand>.
-- <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerExitedCommand>, of type `ICommand`, which is the command to invoke when the pointer that's in the view's bounding area leaves that bounding area.
+- <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerExitedCommand>, of type <xref:System.Windows.Input.ICommand>, which is the command to invoke when the pointer that's in the view's bounding area leaves that bounding area.
 - <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerExitedCommandParameter>, of type `object`, which is the parameter that's passed to <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerExitedCommand>.
-- <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerMovedCommand>, of type `ICommand`, which is the command to invoke when the pointer moves while remaining within the bounding area of the view.
+- <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerMovedCommand>, of type <xref:System.Windows.Input.ICommand>, which is the command to invoke when the pointer moves while remaining within the bounding area of the view.
 - <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerMovedCommandParameter>, of type `object`, which is the parameter that's passed to <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerMovedCommand>.
 
 ::: moniker-end
 
 ::: moniker range=">=net-maui-8.0"
 
-- <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerEnteredCommand>, of type `ICommand`, which is the command to invoke when the pointer enters the bounding area of the view.
+- <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerEnteredCommand>, of type <xref:System.Windows.Input.ICommand>, which is the command to invoke when the pointer enters the bounding area of the view.
 - <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerEnteredCommandParameter>, of type `object`, which is the parameter that's passed to <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerEnteredCommand>.
-- <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerExitedCommand>, of type `ICommand`, which is the command to invoke when the pointer that's in the view's bounding area leaves that bounding area.
+- <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerExitedCommand>, of type <xref:System.Windows.Input.ICommand>, which is the command to invoke when the pointer that's in the view's bounding area leaves that bounding area.
 - <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerExitedCommandParameter>, of type `object`, which is the parameter that's passed to <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerExitedCommand>.
-- <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerMovedCommand>, of type `ICommand`, which is the command to invoke when the pointer moves while remaining within the bounding area of the view.
+- <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerMovedCommand>, of type <xref:System.Windows.Input.ICommand>, which is the command to invoke when the pointer moves while remaining within the bounding area of the view.
 - <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerMovedCommandParameter>, of type `object`, which is the parameter that's passed to <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerMovedCommand>.
-- <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerPressedCommand>, of type `ICommand`, which is the command to invoke when the pointer initiates a press within the view.
+- <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerPressedCommand>, of type <xref:System.Windows.Input.ICommand>, which is the command to invoke when the pointer initiates a press within the view.
 - <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerPressedCommandParameter>, of type `object`, which is the parameter that's passed to the <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerPressedCommand>.
-- <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerReleasedCommand>, of type `ICommand`, which is the command to invoke when the pointer that has previously initiated a press is released, while within the view.
+- <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerReleasedCommand>, of type <xref:System.Windows.Input.ICommand>, which is the command to invoke when the pointer that has previously initiated a press is released, while within the view.
 - <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerReleasedCommandParameter>, of type `object`, which is the parameter that's passed to the <xref:Microsoft.Maui.Controls.PointerGestureRecognizer.PointerReleasedCommand>.
 
 ::: moniker-end
@@ -97,7 +97,7 @@ In addition, the <xref:Microsoft.Maui.Controls.PointerEventArgs> object defines 
 ## Create a PointerGestureRecognizer
 
 To make a <xref:Microsoft.Maui.Controls.View> recognize pointer gestures, create a <xref:Microsoft.Maui.Controls.PointerGestureRecognizer> object, handle the required events, and add the gesture recognizer to the <xref:Microsoft.Maui.Controls.View.GestureRecognizers> collection on the view.
-Alternatively, create a <xref:Microsoft.Maui.Controls.PointerGestureRecognizer> object, and bind the required commands to `ICommand` implementations, and add the gesture recognizer to the <xref:Microsoft.Maui.Controls.View.GestureRecognizers> collection on the view.
+Alternatively, create a <xref:Microsoft.Maui.Controls.PointerGestureRecognizer> object, and bind the required commands to <xref:System.Windows.Input.ICommand> implementations, and add the gesture recognizer to the <xref:Microsoft.Maui.Controls.View.GestureRecognizers> collection on the view.
 
 The following code example shows a <xref:Microsoft.Maui.Controls.PointerGestureRecognizer> attached to an <xref:Microsoft.Maui.Controls.Image>. The <xref:Microsoft.Maui.Controls.PointerGestureRecognizer> uses events to respond to the detection of pointer gestures:
 
