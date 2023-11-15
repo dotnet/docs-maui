@@ -51,10 +51,10 @@ While the focus of this release of .NET MAUI is quality, there's also some new f
 ### Platform integration
 
 - The <xref:Microsoft.Maui.Devices.Sensors.Geolocation> class can listen for location changes when app's are in the foreground. For more information, see [Listen for location changes](~/platform-integration/device/geolocation.md#listen-for-location-changes).
-- <xref:Microsoft.Maui.Devices.Flashlight> gains a `IsSupportedAsync` method that determines whether a flashlight is available on the device. For more information, see [Flashlight](~/platform-integration/device/flashlight.md).
+- <xref:Microsoft.Maui.Devices.Flashlight> gains a <xref:Microsoft.Maui.Devices.Flashlight.IsSupportedAsync%2A> method that determines whether a flashlight is available on the device. For more information, see [Flashlight](~/platform-integration/device/flashlight.md).
 - <xref:Microsoft.Maui.Devices.Sensors.SensorSpeed> intervals have been unified across all platforms. For more information, see [Accessing device sensors](~/platform-integration/device/sensors.md).
-- The <xref:Microsoft.Maui.ApplicationModel.Permissions> class gains the `Bluetooth` permission, which is an Android 12 permission for looking for Bluetooth devices, making the current device discoverable to other Bluetooth devices, and communicating with already-paired Bluetooth devices. For more information, see [Permissions](~/platform-integration/appmodel/permissions.md).
-- The <xref:Microsoft.Maui.ApplicationModel.Permissions> class gains the `NearbyWifiDevices` permission, which is an Android 13 permission for accessing nearby WiFi devices. For more information, see [Permissions](~/platform-integration/appmodel/permissions.md).
+- The <xref:Microsoft.Maui.ApplicationModel.Permissions> class gains the <xref:Microsoft.Maui.ApplicationModel.Permissions.Bluetooth> permission, which is an Android 12 permission for looking for Bluetooth devices, making the current device discoverable to other Bluetooth devices, and communicating with already-paired Bluetooth devices. For more information, see [Permissions](~/platform-integration/appmodel/permissions.md).
+- The <xref:Microsoft.Maui.ApplicationModel.Permissions> class gains the <xref:Microsoft.Maui.ApplicationModel.Permissions.NearbyWifiDevices> permission, which is an Android 13 permission for accessing nearby WiFi devices. For more information, see [Permissions](~/platform-integration/appmodel/permissions.md).
 
 ### XAML
 
