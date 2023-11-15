@@ -1,6 +1,7 @@
 title: .NET Multi-platform App UI documentation
 summary: .NET Multi-platform App UI (.NET MAUI) lets you build native apps using a .NET cross-platform UI toolkit that targets the mobile and desktop form factors on Android, iOS, macOS, Windows, and Tizen.
 brand: dotnet
+
 metadata:
   title: .NET Multi-platform App UI documentation
   description: .NET Multi-platform App UI (.NET MAUI) lets you build native apps using a .NET cross-platform UI toolkit that targets the mobile and desktop form factors on Android, iOS, macOS, Windows, and Tizen.
@@ -352,19 +353,13 @@ additionalContent:
     - title: .NET MAUI community resources
       items:
         - title: .NET MAUI Community Toolkit
-          summary: >-
-            The .NET MAUI Community Toolkit is a collection of reusable elements
-            for .NET MAUI app development.
+          summary: The .NET MAUI Community Toolkit is a collection of reusable elements for .NET MAUI app development.
           url: /dotnet/communitytoolkit/maui/
         - title: .NET Community Toolkit
-          summary: >-
-            The .NET Community Toolkit is a collection of helpers and APIs that
-            are agnostic of any UI platform.
+          summary: The .NET Community Toolkit is a collection of helpers and APIs that are agnostic of any UI platform.
           url: /dotnet/communitytoolkit/introduction
         - title: Windows Community Toolkit
-          summary: >-
-            The Windows Community Toolkit is a collection of controls that
-            simplifies common developer tasks for Windows with .NET.
+          summary: The Windows Community Toolkit is a collection of controls that simplifies common developer tasks for Windows with .NET.
           url: /dotnet/communitytoolkit/windows/
     - title: API reference
       items:
