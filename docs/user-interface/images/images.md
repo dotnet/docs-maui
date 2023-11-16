@@ -1,7 +1,7 @@
 ---
 title: "Add images to a .NET MAUI app project"
 description: "Learn how to add images to your .NET MAUI app, and control their resizing."
-ms.date: 09/04/2023
+ms.date: 11/16/2023
 ---
 
 # Add images to a .NET MAUI app project
@@ -27,6 +27,16 @@ An image can be added to your app project by dragging it into the *Resources\Ima
 > Images can also be added to other folders of your app project. However, in this scenario their build action must be manually set to **MauiImage** in the **Properties** window.
 
 To comply with Android resource naming rules, image filenames must be lowercase, start and end with a letter character, and contain only alphanumeric characters or underscores. For more information, see [App resources overview](https://developer.android.com/guide/topics/resources/providing-resources) on developer.android.com.
+
+::: moniker range=">=net-maui-8.0"
+
+Image filenames must also be unique, otherwise a build error will occur:
+
+> One or more duplicate file names were detected. All image output filenames must be unique.
+
+For more information, see [Duplicate image filename errors](~/troubleshooting.md).
+
+::: moniker-end
 
 At build time, images can be resized to the correct resolutions for the target platform and device. The resulting images are then added to your app package. For information about disabling image packaging, see [Disable image packaging](~/troubleshooting.md#disable-image-packaging).
 
