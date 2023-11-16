@@ -38,11 +38,11 @@ The `AccessNetworkState` permission is required and must be configured in the An
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   ```
 
-<!-- NOT SUPPORTED
   \- or -
 
-- Right-click on the Android project and open the project's properties. Under _Android Manifest_ find the **Required permissions:** area and check the **Access Network State** permission. This will automatically update the _AndroidManifest.xml_ file.
--->
+- Update the Android Manifest in the manifest editor:
+
+  In Visual Studio double-click on the *Platforms/Android/AndroidManifest.xml* file to open the Android manifest editor. Then, under **Required permissions** check the **ACCESS_NETWORK_STATE** permission. This will automatically update the *AndroidManifest.xml* file.
 
 # [iOS/Mac Catalyst](#tab/macios)
 

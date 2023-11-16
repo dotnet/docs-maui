@@ -52,15 +52,11 @@ The `ReadContacts` permission is required and must be configured in the Android 
   <uses-permission android:name="android.permission.READ_CONTACTS" />
   ```
 
-<!-- TODO not yet supported>
-
   \- or -
 
-- Use the Android project properties:
+- Update the Android Manifest in the manifest editor:
 
-  Right-click on the Android project and open the project's properties. Under **Android Manifest** find the **Required permissions:** area and check the **Contacts** permission. This will automatically update the **AndroidManifest.xml** file.
-
--->
+  In Visual Studio double-click on the *Platforms/Android/AndroidManifest.xml* file to open the Android manifest editor. Then, under **Required permissions** check the **READ_CONTACTS** permission. This will automatically update the *AndroidManifest.xml* file.
 
 # [iOS/Mac Catalyst](#tab/macios)
 
