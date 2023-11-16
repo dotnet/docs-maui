@@ -60,13 +60,11 @@ Additionally, if your app targets Android 5.0 (API level 21) or higher, you must
   <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
   ```
 
-<!-- NOT SUPPORTED
   \- or -
 
-- Use the Android project properties:
+- Update the Android Manifest in the manifest editor:
 
-  Right-click on the Android project and open the project's properties. Under _Android Manifest_ find the **Required permissions:** area and check the **ACCESS_COARSE_LOCATION** and **ACCESS_FINE_LOCATION** permissions. This will automatically update the _AndroidManifest.xml_ file.
--->
+  In Visual Studio double-click on the **AndroidManifest.xml** file to open the Android manifest editor. Then, under **Required permissions** check the permissions listed above. This will automatically update the **AndroidManifest.xml** file.
 
 > [!TIP]
 > Be sure to read the [Android documentation on background location updates](https://developer.android.com/training/location/permissions), as there are many restrictions that need to be considered.
