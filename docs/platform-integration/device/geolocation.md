@@ -64,7 +64,7 @@ Additionally, if your app targets Android 5.0 (API level 21) or higher, you must
 
 - Update the Android Manifest in the manifest editor:
 
-  In Visual Studio double-click on the **AndroidManifest.xml** file to open the Android manifest editor. Then, under **Required permissions** check the permissions listed above. This will automatically update the **AndroidManifest.xml** file.
+  In Visual Studio double-click on the *Platforms/Android/AndroidManifest.xml* file to open the Android manifest editor. Then, under **Required permissions** check the permissions listed above. This will automatically update the *AndroidManifest.xml* file.
 
 > [!TIP]
 > Be sure to read the [Android documentation on background location updates](https://developer.android.com/training/location/permissions), as there are many restrictions that need to be considered.

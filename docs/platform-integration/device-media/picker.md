@@ -57,7 +57,7 @@ These permissions can be added in the following ways:
 
 - Update the Android Manifest in the manifest editor:
 
-  In Visual Studio double-click on the **AndroidManifest.xml** file to open the Android manifest editor. Then, under **Required permissions** check the permissions listed above. This will automatically update the **AndroidManifest.xml** file.
+  In Visual Studio double-click on the *Platforms/Android/AndroidManifest.xml* file to open the Android manifest editor. Then, under **Required permissions** check the permissions listed above. This will automatically update the *AndroidManifest.xml* file.
 
 If your project's Target Android version is set to **Android 11 (R API 30)** or higher, you must update your _Android Manifest_ with queries that use Android's [package visibility requirements](https://developer.android.com/preview/privacy/package-visibility).
 

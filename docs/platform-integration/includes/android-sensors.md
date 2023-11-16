@@ -30,7 +30,7 @@ If your app targets Android 12+ (API 31+), the system places a 200 Hz limit on t
 
 - Update the Android Manifest in the manifest editor:
 
-  In Visual Studio double-click on the **AndroidManifest.xml** file to open the Android manifest editor. Then, under **Required permissions** check the **HIGH_SAMPLING_RATE_SENSORS** permission. This will automatically update the **AndroidManifest.xml** file.
+  In Visual Studio double-click on the *Platforms/Android/AndroidManifest.xml* file to open the Android manifest editor. Then, under **Required permissions** check the **HIGH_SAMPLING_RATE_SENSORS** permission. This will automatically update the *AndroidManifest.xml* file.
 
 > [!NOTE]
 > If a user turns off microphone access using the [device toggles](https://developer.android.com/training/permissions/explaining-access#toggles), motion and position sensors are always rate-limited, regardless of whether you declare the `HIGH_SAMPLING_RATE_SENSORS` permission.

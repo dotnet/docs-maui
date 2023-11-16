@@ -44,7 +44,7 @@ There are two permissions to configure in your project: `Flashlight` and `Camera
 
 - Update the Android Manifest in the manifest editor:
 
-  In Visual Studio double-click on the **AndroidManifest.xml** file to open the Android manifest editor. Then, under **Required permissions** check the **FLASHLIGHT** and **CAMERA** permissions. This will automatically update the **AndroidManifest.xml** file.
+  In Visual Studio double-click on the *Platforms/Android/AndroidManifest.xml* file to open the Android manifest editor. Then, under **Required permissions** check the **FLASHLIGHT** and **CAMERA** permissions. This will automatically update the *AndroidManifest.xml* file.
 
 If you set these permissions, [Google Play will automatically filter out devices](https://developer.android.com/guide/topics/manifest/uses-feature-element.html#permissions-features) without specific hardware. You can get around this filtering by adding the following assembly attributes to the _Platforms/Android/MainApplication.cs_ file after `using` directives:
 
