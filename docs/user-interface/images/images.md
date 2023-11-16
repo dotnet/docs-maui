@@ -30,9 +30,7 @@ To comply with Android resource naming rules, image filenames must be lowercase,
 
 ::: moniker range=">=net-maui-8.0"
 
-Image filenames must also be unique, otherwise the following build error will occur: One or more duplicate file names were detected. All image output filenames must be unique.
-
-For more information, see [Duplicate image filename errors](~/troubleshooting.md).
+Image filenames must also be unique, otherwise a build error will occur. For more information, see [Duplicate image filename errors](~/troubleshooting.md).
 
 ::: moniker-end
 
