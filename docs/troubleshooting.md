@@ -232,7 +232,7 @@ You may encounter build errors about duplicate image filenames:
 
 This occurs for `MauiIcon` and `MauiImage` items because from .NET 8, .NET MAUI checks to ensure that there are no duplicate image resource filenames.
 
-The error can occur when you have identical filenames in multiple folders, or identical filenames with different extensions in multiple folders. For example, the build error will occur for a PNG file at *Resources/Images/PNG/dotnet_bot.png* and an SVG file at *Resources/Images/SVG/dotnet_bot.svg* because SVG files are converted to PNG files at build time.
+The error will occur when you have identical filenames in multiple folders, and in certain circumstances when you have identical filenames with different extensions in different folders. For example, the build error will occur for a PNG file at *Resources/Images/PNG/dotnet_bot.png* and an SVG file at *Resources/Images/SVG/dotnet_bot.svg* because SVG files are converted to PNG files at build time.
 
 The error will also occur if you use the `Include` attribute on a `MauiImage` item to include all images in a folder, and then also include a specific image file:
 
