@@ -156,7 +156,7 @@ Then, open your *.csproj* file and change the Target Framework Monikers (TFMs) f
 
 ```xml
 <TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst;net7.0-tizen</TargetFrameworks>
-<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
+<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
 ```
 
 The following example shows the TFMs for a .NET 8 project:
