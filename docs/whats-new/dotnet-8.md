@@ -152,7 +152,7 @@ For more information, see [.NET 8 Performance Improvements in .NET MAUI](https:/
 
 To upgrade your projects from .NET 7 to .NET 8, install .NET 8 and the .NET MAUI workload with [Visual Studio 17.8+](https://visualstudio.microsoft.com/vs/), or with the [standalone installer](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) and the `dotnet workload install maui` command.
 
-Then, open your *.csproj* file and change the Target Framework Monikers (TFMs) from 7 to 8. The following example shows the TFMs for a .NET 7 project:
+Then, open your *.csproj* file and change the Target Framework Monikers (TFMs) from 7 to 8. If you're using a TFM such as `net7.0-ios13.6` be sure to match the platform version or remove it entirely. The following example shows the TFMs for a .NET 7 project:
 
 ```xml
 <TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst;net7.0-tizen</TargetFrameworks>
@@ -190,6 +190,8 @@ The `$(MauiVersion)` variable is referenced from the version of .NET MAUI you've
 This can be useful when using ad-hoc builds from the [nightly feed](https://github.com/dotnet/maui/wiki/Nightly-Builds) or builds downloaded from pull requests.
 
 In addition, the `$(ApplicationIdGuid)` build property can be removed from your *.csproj* file in .NET 8. For more information, see [Behavior changes](#behavior-changes).
+
+Prior to building your upgraded app for the first time, delete the `bin` and `obj` folders.
 
 > [!NOTE]
 > The project template for a .NET MAUI app in .NET 8 enables the nullable context for the project with the `$(Nullable)` build property. For more information, see [Nullable](/dotnet/csharp/language-reference/compiler-options/language#nullable).
