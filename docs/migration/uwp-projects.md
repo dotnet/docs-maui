@@ -1,6 +1,6 @@
 ---
-title: "Xamarin.UWP project migration to .NET MAUI WinUI"
-description: "Learn how to migrate a Xamarin.UWP project to a .NET WinUI project."
+title: "Xamarin.Forms UWP project migration to .NET MAUI WinUI"
+description: "Learn how to migrate a Xamarin.Forms UWP project to a .NET WinUI project."
 ms.date: 11/13/2023
 content_well_notification:
   - AI-contribution
@@ -8,13 +8,11 @@ content_well_notification:
 
 # Xamarin.UWP project migration to .NET MAUI WinUI
 
-## Prerequisites
+<!-- ## Prerequisites
 
 - Visual Studio 2023 Preview or later with and ensure that .NET Multi-platform App UI development is selected.
 - The latest version of the Windows App SDK extension for Visual Studio.
-- A Xamarin.Forms UWP app that targets Windows 10 version 1809 or later.
-
-## Project Changes
+- A Xamarin.Forms UWP app that targets Windows 10 version 1809 or later. -->
 
 A .NET 8 project for a .NET MAUI WinUI app is similar to the following example:
 
@@ -30,7 +28,7 @@ A .NET 8 project for a .NET MAUI WinUI app is similar to the following example:
 </Project>
 ```
 
-The `<OutputType>` property was previously AppContainerExe in Xamarin.UWP propjects. For a library project, omit the `$(OutputType)` property completely or specify `Library` as the property value.
+For a library project, omit the `$(OutputType)` property completely or specify `Library` as the property value.
 
 ## Changes to MSBuild properties
 
@@ -38,14 +36,14 @@ Platform properties should be replaced in favor of the following .NET runtime id
 
 ```xml
 <PropertyGroup>
-  <!-- Used in .NET MAUI WinUI projects -->
+   <!-- Used in .NET MAUI WinUI projects -->
    <Platforms>x86;x64;ARM64</Platforms>
 </PropertyGroup>
 ```
 
 For more information about runtime identifiers, see [.NET RID Catalog](/dotnet/core/rid-catalog).
 
-## API Changes
+## API changes
 
 To safely use recent or older APIs, you can declare a `SupportedOSPlatformVersion` in your project or use the <xref:System.OperatingSystem.IsWindowsVersionAtLeast%2A> API at runtime:
 
@@ -56,15 +54,18 @@ if (OperatingSystem.IsWindowsVersionAtLeast(10))
 }
 ```
 
-Address any API changes that may affect your application.  For example, some methods and properties may have been renamed, deprecated or removed.
+Address any API changes that may affect your app. For example, some methods and properties may have been renamed, deprecated or removed.
 
-### Namespace Changes
+### Namespace changes
 
 Update the namespaces in your code files, following the changes between the following two pieces of documentation: [UWP Namespaces](/uwp/api/) and [WinUI Namespaces](/windows/winui/api/).
 
-For example, you will need to replace `Windows.UI.Xaml` with `Microsoft.UI.Xaml`, and `Windows.UI.Xaml.Controls` with `Microsoft.UI.Xaml.Controls`.
+For example, you'll need to replace the following namespace:
 
-### File Changes
+- `Windows.UI.Xaml` with `Microsoft.UI.Xaml`
+- `Windows.UI.Xaml.Controls` with `Microsoft.UI.Xaml.Controls`.
+
+### File changes
 
 #### Deprecated files
 
@@ -75,7 +76,7 @@ Migrate your business logic from the following files into other files and remove
 <!--  - See [AssemblyInfo changes](includes/assemblyinfo-changes.md) -->
 - Default.rd.xml
 
-These files are no longer needed for .NET MAUI WinUI application.
+These files are no longer needed for a .NET MAUI WinUI app.
 
 #### Files to add
 
@@ -85,7 +86,8 @@ Use this [.NET MAUI Multi Head Application](https://github.com/mattleibow/MauiMu
 - App.xaml/ App.xaml.cs
   - The old Xamarin.UWP project starts with an app.xaml/.cs file. Migrate your business logic over to the Maui version of the file. There exists more resources [here](https://github.com/dotnet/maui/wiki/Migrating-from-Xamarin.Forms-to-.NET-MAUI) for manually moving resources from Xamarin.Forms projects to NET MAUI projects.
 - launchSettings.json
-These files are required to get your .NET MAUI WinUI application up and running.
+
+These files are required to get your .NET MAUI WinUI app up and running.
 
 #### Package.appxmanifest changes
 
@@ -102,7 +104,7 @@ There are behavioral changes to the `String.IndexOf()` method in .NET 5+ on diff
 
 ## Next steps
 
-Build and test your application to identify any UI differences between Xamarin.Forms and .NET MAUI.
+Build and test your app to identify any UI differences between Xamarin.Forms and .NET MAUI.
 
 You can now enjoy the benefits that .NET MAUI offers such as improved performance and modernized UI controls.
 
