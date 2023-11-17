@@ -2,7 +2,7 @@
 title: "Xamarin.UWP project migration to .NET MAUI WinUI"
 description: "Learn how to migrate a Xamarin.UWP project to a .NET WinUI project."
 ms.date: 11/13/2023
-content_well_notification: 
+content_well_notification:
   - AI-contribution
 ---
 
@@ -72,8 +72,9 @@ Migrate your business logic from the following files into other files and remove
 
 - MainPage.xaml/MainPage.xaml.cs
 - AssemblyInfo.cs
-  - See [AssemblyInfo changes](includes/assemblyinfo-changes.md)
+<!--  - See [AssemblyInfo changes](includes/assemblyinfo-changes.md) -->
 - Default.rd.xml
+
 These files are no longer needed for .NET MAUI WinUI application.
 
 #### Files to add
@@ -92,10 +93,8 @@ These files are required to get your .NET MAUI WinUI application up and running.
 2. Add the `runFullTrust` capability
 3. Add the `Windows.Universal` and `Windows.Desktop` target device families
 
-```
 > [!NOTE]
-> This step is crucial if you are unable to deploy or seeing deploy errors (not build errors) or are unable to select the deploy checkbox in the Configuration manager. Adding the targetDevice and the other updated to Package.appxmanifest fixes the most common errors. 
-```
+> This step is crucial if you are unable to deploy or seeing deploy errors (not build errors) or are unable to select the deploy checkbox in the Configuration manager. Adding the targetDevice and the other updated to Package.appxmanifest fixes the most common errors.
 
 ## Runtime behavior
 
