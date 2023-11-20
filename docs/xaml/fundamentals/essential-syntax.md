@@ -185,7 +185,7 @@ public class ContentPage : TemplatedPage
 
 Any property specified as the [`ContentProperty`](xref:Microsoft.Maui.Controls.ContentPropertyAttribute) of a class means that the property-element tags for the property are not required. Therefore, the example above specifies that any XAML content that appears between the start and end <xref:Microsoft.Maui.Controls.ContentPage> tags is assigned to the `Content` property.
 
-Many classes also have [`ContentProperty`](xref:Microsoft.Maui.Controls.ContentPropertyAttribute) attribute definitions. For example, the content property of <xref:Microsoft.Maui.Controls.Label> is `Text`. <!--For more information, see the [API documentation]().-->
+Many classes also have [`ContentProperty`](xref:Microsoft.Maui.Controls.ContentPropertyAttribute) attribute definitions. For example, the content property of <xref:Microsoft.Maui.Controls.Label> is `Text`.
 
 ## Platform differences
 

@@ -27,9 +27,6 @@ The <xref:Microsoft.Maui.Controls.Grid> class defines the following properties:
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings and styled.
 
-<!-- > [!TIP]
-> To obtain the best possible layout performance, follow the guidelines at [Optimize layout performance](~/xamarin-forms/deploy-test/performance.md#optimize-layout-performance). -->
-
 ## Rows and columns
 
 By default, a <xref:Microsoft.Maui.Controls.Grid> contains one row and one column:
@@ -624,7 +621,7 @@ In this example, the root <xref:Microsoft.Maui.Controls.Grid> contains a <xref:M
 :::image type="content" source="media/grid/nested.png" alt-text="Nested .NET MAUI Grid objects.":::
 
 > [!IMPORTANT]
-> The deeper you nest <xref:Microsoft.Maui.Controls.Grid> objects and other layouts, the more the nested layouts will impact performance. <!--For more information, see [Choose the correct layout](~/xamarin-forms/deploy-test/performance.md#choose-the-correct-layout).-->
+> The deeper you nest <xref:Microsoft.Maui.Controls.Grid> objects and other layouts, the more layout calculations will be performed which may impact performance. For more information, see [Choose the correct layout](~/deployment/performance.md#choose-the-correct-layout).
 
 The equivalent C# code is:
 

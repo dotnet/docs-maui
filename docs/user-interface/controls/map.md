@@ -128,14 +128,7 @@ A prompt is then displayed when your app attempts to access the user's location,
 
 :::image type="content" source="media/map/permission-android.png" lightbox="media/map/permission-android-large.png" alt-text="Screenshot of location permission request on Android.":::
 
-<!-- Alternatively, these permissions can be enabled by using the manifest editor to add the following permissions:
-
-- `AccessCoarseLocation`
-- `AccessFineLocation`
-
-These are shown in the screenshot below:
-
-![Required permissions for Android.](setup-images/android-map-permissions.png "Required Permissions for Android") -->
+Alternatively, these permissions can be enabled in Visual Studio's Android manifest editor.
 
 #### Specify the WRITE_EXTERNAL_STORAGE permission
 
