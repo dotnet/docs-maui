@@ -36,4 +36,4 @@ To upgrade your app to .NET 7:
 01. Close Visual Studio if you opened the project with Visual Studio.
 01. Delete the _./bin_ and _./obj_ folders in the same folder as the _Notes.csproj_ file.
 
-[![Explore the code.](~/media/code-sample.png) Explore the code for this step of the tutorial.](https://github.com/dotnet/maui-samples/tree/main/7.0/Tutorials/ConvertToMvvm/step1_upgrade)
+[![Explore the code.](~/media/code-sample.png) Explore the code for this step of the tutorial.](https://github.com/dotnet/maui-samples/tree/main/8.0/Tutorials/ConvertToMvvm/step1_upgrade)
