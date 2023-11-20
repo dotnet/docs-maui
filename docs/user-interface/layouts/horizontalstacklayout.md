@@ -158,4 +158,4 @@ In this example, the parent <xref:Microsoft.Maui.Controls.HorizontalStackLayout>
 :::image type="content" source="media/horizontalstacklayout/nested.png" alt-text="HorizontalStackLayout displaying two nested HorizontalStackLayout objects screenshot.":::
 
 > [!IMPORTANT]
-> The deeper you nest layout objects, the more the nested layouts will impact performance. Since every layout is a class, nesting them creates class objects, leading to a proportional increase in memory usage. For more information, see [Choose the correct layout](~/deployment/performance.md#choose-the-correct-layout).
+> The deeper you nest layout objects the more layout calculations will be performed, which will impact performance. For more information, see [Choose the correct layout](~/deployment/performance.md#choose-the-correct-layout).
