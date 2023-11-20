@@ -975,7 +975,7 @@ The  <xref:Microsoft.Maui.Controls.MenuItem> objects are revealed when an item i
 
 :::image type="content" source="media/listview/contextmenuitems.png" alt-text="Screenshot of CollectionView context menu items.":::
 
-For more information about menu items, see [Display menu items](~/user-interface/controls/menuitem.md).
+For more information about menu items, see [Display menu items](~/user-interface/menuitem.md).
 
 ## Pull to refresh
 

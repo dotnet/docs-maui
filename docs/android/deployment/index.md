@@ -52,4 +52,4 @@ Google Play is the most comprehensive and popular marketplace for Android apps. 
 
 - [Publishing on Google Play](https://developer.android.com/distribute/googleplay/publish/index.html)
 - [Google Application Licensing](https://developer.android.com/guide/google/play/licensing/index.html)
-- [Linking](~/android/linker.md)
+- [Linking](~/android/linking.md)
