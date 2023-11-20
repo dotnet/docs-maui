@@ -95,7 +95,6 @@ Color values can be specified in hexadecimal, or as a .NET MAUI color. For examp
 
 On Android, the splash screen is added to your app package as **Resources/values/maui_colors.xml** and **Resources/drawable/maui_splash_image.xml**. .NET MAUI apps use the `Maui.SplashTheme` by default, which ensures that a splash screen will be displayed if present. Therefore, you should not specify a different theme in your manifest file or in your `MainActivity` class:
 
-<!-- Todo: P11 templates have implicit usings, so no need to include a using directive for Microsoft.Maui -->
 ```csharp
 using Android.App;
 using Android.Content.PM;

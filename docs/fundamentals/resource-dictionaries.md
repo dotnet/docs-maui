@@ -107,7 +107,7 @@ In this example, the <xref:Microsoft.Maui.Controls.ContentPage> object consumes 
 :::image type="content" source="media/resource-dictionaries/consuming.png" alt-text="Consuming resource dictionary resources.":::
 
 > [!IMPORTANT]
-> Resources that are specific to a single page shouldn't be included in an application level resource dictionary, as such resources will then be parsed at app startup instead of when required by a page. <!-- For more information, see [Reduce the Application Resource Dictionary Size](~/xamarin-forms/deploy-test/performance.md).-->
+> Resources that are specific to a single page shouldn't be included in an application level resource dictionary, as such resources will then be parsed at app startup instead of when required by a page. For more information, see [Reduce the application resource dictionary size](~/deployment/performance.md#reduce-the-application-resource-dictionary-size).
 
 ## Resource lookup behavior
 

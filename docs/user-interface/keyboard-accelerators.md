@@ -53,8 +53,6 @@ The following table outlines the keyboard accelerator formats .NET MAUI supports
 
 A <xref:Microsoft.Maui.Controls.KeyboardAccelerator> can be attached to a <xref:Microsoft.Maui.Controls.MenuFlyoutItem> by adding it to its <xref:Microsoft.Maui.Controls.MenuFlyoutItem.KeyboardAccelerators> collection:
 
-<!-- TODO: Why is KeyboardAccelerators a collection? Multiple allowed but only first executed on MacCat, but both executed on Win -->
-
 ```xaml
 <MenuFlyoutItem Text="Cut"
                 Clicked="OnCutMenuFlyoutItemClicked">

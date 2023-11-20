@@ -90,7 +90,8 @@ graphicsView.Invalidate();
 
 .NET MAUI automatically invalidates the <xref:Microsoft.Maui.Controls.GraphicsView> as needed by the UI. For example, when the element is first shown, comes into view, or is revealed by moving an element from on top of it, it's redrawn. The only time you need to call `Invalidate` is when you want to force the <xref:Microsoft.Maui.Controls.GraphicsView> to redraw itself, such as if you have changed its content while it's still visible.
 
-<!--
+<!-- TODO: Not currently supported
+
 ## Convert the drawable to an image
 
 Graphical objects that are drawn on a <xref:Microsoft.Maui.Controls.GraphicsView> can be converted to an image by the `ToImage` method, which is available in the <xref:Microsoft.Maui.Graphics> namespace. This method requires `width` and `height` arguments, of type `float`, that specify the dimensions of the image.

@@ -45,7 +45,6 @@ Google Play is the most comprehensive and popular marketplace for Android apps. 
 
 <!--
 - [Build Process](~/android/deploy-test/building-apps/build-process.md)
-- [Linking](~/android/deploy-test/linker.md)
 - [Obtaining A Google Maps API Key](~/android/platform/maps-and-location/maps/obtaining-a-google-maps-api-key.md)
 - [Deploy via Visual Studio App Center](/appcenter/distribution/stores/googleplay)
 - [Application Signing](https://source.android.com/security/apksigning/)
@@ -53,3 +52,4 @@ Google Play is the most comprehensive and popular marketplace for Android apps. 
 
 - [Publishing on Google Play](https://developer.android.com/distribute/googleplay/publish/index.html)
 - [Google Application Licensing](https://developer.android.com/guide/google/play/licensing/index.html)
+- [Linking](~/android/linker.md)

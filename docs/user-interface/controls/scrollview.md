@@ -27,11 +27,6 @@ The `Content` property is the [`ContentProperty`](xref:Microsoft.Maui.Controls.C
 > [!WARNING]
 > <xref:Microsoft.Maui.Controls.ScrollView> objects should not be nested. In addition, <xref:Microsoft.Maui.Controls.ScrollView> objects should not be nested with other controls that provide scrolling, such as <xref:Microsoft.Maui.Controls.CollectionView>, <xref:Microsoft.Maui.Controls.ListView>, and <xref:Microsoft.Maui.Controls.WebView>.
 
-<!--
-> [!TIP]
-> To obtain the best possible layout performance, follow the guidelines at [Optimize layout performance](~/xamarin-forms/deploy-test/performance.md#optimize-layout-performance).
--->
-
 ## ScrollView as a root layout
 
 A <xref:Microsoft.Maui.Controls.ScrollView> can only have a single child, which can be other layouts. It's therefore common for a <xref:Microsoft.Maui.Controls.ScrollView> to be the root layout on a page. To scroll its child content, <xref:Microsoft.Maui.Controls.ScrollView> computes the difference between the height of its content and its own height. That difference is the amount that the <xref:Microsoft.Maui.Controls.ScrollView> can scroll its content.

@@ -85,7 +85,7 @@ void OnItemClicked(object sender, EventArgs e)
 ```
 
 > [!NOTE]
-> <xref:Microsoft.Maui.Controls.ToolbarItem> objects can also use the <xref:Microsoft.Maui.Controls.MenuItem.Command> and <xref:Microsoft.Maui.Controls.MenuItem.CommandParameter> properties to react to user input without event handlers. <!--For more information about the <xref:System.Windows.Input.ICommand> interface and MVVM data-binding, see [Xamarin.Forms MenuItem MVVM Behavior](~/xamarin-forms/user-interface/menuitem.md#define-menuitem-behavior-with-mvvm).-->
+> <xref:Microsoft.Maui.Controls.ToolbarItem> objects can also use the <xref:Microsoft.Maui.Controls.MenuItem.Command> and <xref:Microsoft.Maui.Controls.MenuItem.CommandParameter> properties to react to user input without event handlers.
 
 ## Enable or disable a ToolbarItem at runtime
 

@@ -102,9 +102,7 @@ The <xref:System.Threading.Tasks.Task> returned from <xref:Microsoft.Maui.Applic
 
 If the target app on the device has never been opened by your application with <xref:Microsoft.Maui.ApplicationModel.Launcher.OpenAsync%2A>, iOS displays a popover to the user, requesting permission to allow this action.
 
-<!-- TODO: where does this go?
-For more information about the iOS implementation, see [TITLE](xref:UIKit.UIApplication.CanOpenUrl*)
--->
+For more information about the iOS implementation, see <xref:UIKit.UIApplication.CanOpenUrl%2A>.
 
 # [Windows](#tab/windows)
 
