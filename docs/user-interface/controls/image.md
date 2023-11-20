@@ -28,7 +28,7 @@ The <xref:Microsoft.Maui.Controls.ImageSource> class defines the following metho
 - `FromStream` returns a `StreamImageSource` that reads an image from a stream that supplies image data.
 <!-- - `FromResource` returns a `StreamImageSource` that reads an image file embedded in an assembly. -->
 
-In XAML, images can be loaded from files and URIs by specifying the filename or URI as a string value for the `Source` property. <!-- Images can also be loaded from resources or streams in XAML through custom markup extensions.-->
+In XAML, images can be loaded from files and URIs by specifying the filename or URI as a string value for the `Source` property. Images can also be loaded from streams in XAML through custom markup extensions.
 
 > [!IMPORTANT]
 > Images will be displayed at their full resolution unless the size of the <xref:Microsoft.Maui.Controls.Image> is constrained by its layout, or the <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> or <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest> property of the <xref:Microsoft.Maui.Controls.Image> is specified.
@@ -124,7 +124,9 @@ image.Source = new UriImageSource
 
 In this example, the caching period is set to 10 days.
 
-<!-- ## Load an embedded image
+<!-- Commented out because we don't want users to use MauiImage rather than this
+
+## Load an embedded image
 
 Embedded images can be added to an assembly as a resource by dragging them into your project, and ensuring their build action is set to **Embedded resource** in the **Properties window**.
 

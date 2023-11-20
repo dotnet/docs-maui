@@ -6,8 +6,6 @@ ms.date: 09/29/2022
 
 # Border
 
-<!-- Sample link, if any, goes here -->
-
 The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Border> is a container control that draws a border, background, or both, around another control. A <xref:Microsoft.Maui.Controls.Border> can only contain one child object. If you want to put a border around multiple objects, wrap them in a container object such as a layout.  For more information about layouts, see [Layouts](~/user-interface/layouts/index.md).
 
 <xref:Microsoft.Maui.Controls.Border> defines the following properties:

@@ -80,7 +80,6 @@ Examples:
 
 - When the device lies flat on a table, the acceleration value is +1.00 G or $(+9.81 m/s^2)$, which corresponds to the acceleration of the device $(0 m/s^2)$ minus the force of gravity $(-9.81 m/s^2)$ and normalized as in G.
 
-<!-- TODO: Why are A and G mentioned here as if they're XYZ properties from the data? -->
 - When the device lies flat on a table and is pushed toward the sky with an acceleration of **A** $m/s^2$, the acceleration value is equal to $A+9.81$ which corresponds to the acceleration of the device $(+A m/s^2)$ minus the force of gravity $(-9.81 m/s^2)$ and normalized in **G**.
 
 ### Platform-specific information (Accelerometer)

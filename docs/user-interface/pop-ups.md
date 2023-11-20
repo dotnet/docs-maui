@@ -31,10 +31,10 @@ Debug.WriteLine("Answer: " + answer);
 
 After the user selects one of the options the response will be returned as a `bool`.
 
-The <xref:Microsoft.Maui.Controls.Page.DisplayAlert%2A> method also has overloads that accept a `FlowDirection` argument that specifies the direction in which UI elements flow within the alert. <!--For more information about flow direction, see [Right-to-left localization](~/fundamentals/localization/right-to-left.md).-->
+The <xref:Microsoft.Maui.Controls.Page.DisplayAlert%2A> method also has overloads that accept a `FlowDirection` argument that specifies the direction in which UI elements flow within the alert. For more information about flow direction, see [Right to left localization](~/fundamentals/localization.md#right-to-left-localization).
 
-<!-- > [!WARNING]
-> By default on Windows, when an alert is displayed any access keys that are defined on the page behind the alert can still be activated. For more information, see [VisualElement Access Keys on Windows](~/xamarin-forms/platform/windows/visualelement-access-keys.md). -->
+> [!WARNING]
+> By default on Windows, when an alert is displayed any access keys that are defined on the page behind the alert can still be activated. For more information, see [VisualElement access keys on Windows](~/windows/platform-specifics/visualelement-access-keys.md).
 
 ## Guide users through tasks
 
@@ -66,7 +66,7 @@ async void OnActionSheetCancelDeleteClicked(object sender, EventArgs e)
 > [!NOTE]
 > On iOS, the destroy button is rendered differently to the other buttons in the action sheet.
 
-The <xref:Microsoft.Maui.Controls.Page.DisplayActionSheet%2A> method also has an overload that accepts a `FlowDirection` argument that specifies the direction in which UI elements flow within the action sheet. <!-- For more information about flow direction, see [Right-to-left localization](~/fundamentals/localization/right-to-left.md).-->
+The <xref:Microsoft.Maui.Controls.Page.DisplayActionSheet%2A> method also has an overload that accepts a `FlowDirection` argument that specifies the direction in which UI elements flow within the action sheet. For more information about flow direction, see [Right to left localization](~/fundamentals/localization.md#right-to-left-localization).
 
 ## Display a prompt
 
@@ -103,8 +103,8 @@ This code displays a predefined response of 10, limits the number of characters 
 
 :::image type="content" source="media/pop-ups/keyboard-prompt.png" alt-text="Screenshot of an optional modal prompt.":::
 
-<!-- > [!WARNING]
-> By default on UWP, when a prompt is displayed any access keys that are defined on the page behind the prompt can still be activated. For more information, see [VisualElement Access Keys on Windows](~/xamarin-forms/platform/windows/visualelement-access-keys.md). -->
+> [!WARNING]
+> By default on UWP, when a prompt is displayed any access keys that are defined on the page behind the prompt can still be activated. For more information, see [VisualElement access keys on Windows](~/windows/platform-specifics/visualelement-access-keys.md).
 
 ## Display a page as a pop-up
 

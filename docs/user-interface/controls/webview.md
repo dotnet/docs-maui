@@ -63,7 +63,7 @@ URIs must be fully formed with the protocol specified.
 
 :::zone pivot="devices-windows"
 
-<!-- blank pivot to skirt the dumb warning about using every pivot type -->
+<!-- blank pivot to skirt the warning about using every pivot type -->
 
 :::zone-end
 
@@ -201,7 +201,7 @@ WebView webView = new WebView();
 webView.Reload();
 ```
 
-<!-- When the `Reload` method is invoked the `ReloadRequested` event is fired, indicating that a request has been made to reload the current content. -->
+When the `Reload` method is invoked the `ReloadRequested` event is fired, indicating that a request has been made to reload the current content.
 
 ## Perform navigation
 

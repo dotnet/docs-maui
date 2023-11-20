@@ -6,8 +6,6 @@ ms.date: 10/03/2023
 
 # Build accessible apps with semantic properties
 
-<!-- Sample link goes here -->
-
 Semantics for accessibility is concerned with building experiences that make your apps inclusive for people who use technology in a wide range of environments and approach your UI with a range of needs and experiences. In many situations, legal requirements for accessibility may provide an impetus for developers to address accessibility issues. Regardless, it's advisable to build inclusive and accessible apps so that your apps reach the largest possible audience.
 
 The [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/standards-guidelines/wcag/) are the global accessibility standard and legal benchmark for web and mobile. These guidelines describe the various ways in which apps can be made more perceivable, operable, understandable, and robust, for all.
@@ -191,12 +189,6 @@ SemanticScreenReader.Default.Announce("This is the announcement text.");
 ### Limitations
 
 The default platform screen reader must be enabled for text to be read aloud.
-
-<!--
-### Semantic effects
-
-Link to semantic effects (.NET MAUI Community Toolkit) which combines `IsInAccessibleTree` and `ExcludedWithChildren` support, if docs are ever created, + SemanticOrderView.
--->
 
 ## Automation properties
 

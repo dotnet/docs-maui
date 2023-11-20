@@ -10,10 +10,8 @@ Every .NET Multi-platform App UI (.NET MAUI) app on Android has an *AndroidManif
 
 The manifest file for your .NET MAUI Android app is generated as part of the .NET MAUI build process on Android. This build process takes the XML in the *Platforms\\Android\\AndroidManifest.xml* file, and merges it with any XML that's generated from specific attributes on your classes. The resulting manifest file can be found in the *obj* folder. For example, it can be found at *obj\\Debug\\net8.0-android\\AndroidManifest.xml* for debug builds on .NET 8.
 
-<!-- TODO: Uncomment when VS 17.6 P2 is released
 > [!NOTE]
-> Visual Studio 17.6 Preview 2 and higher includes a new editor that simplifies the process of specifying app details, the target Android version, and required permissions in an Android manifest file.
--->
+> Visual Studio 17.6+ includes an editor that simplifies the process of specifying app details, the target Android version, and required permissions in an Android manifest file.
 
 ## Generating the manifest
 
