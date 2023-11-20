@@ -53,4 +53,4 @@ Don't overengineer a solution for this problem, and just use the `NavigatedTo` e
 
 Now, run your app. Try to navigate to a note, press the back button, and select the same note a second time. The app behavior is fixed!
 
-[![Explore the code.](~/media/code-sample.png) Explore the code for this step of the tutorial.](https://github.com/dotnet/maui-samples/tree/main/7.0/Tutorials/ConvertToMvvm/step6_bugs)
+[![Explore the code.](~/media/code-sample.png) Explore the code for this step of the tutorial.](https://github.com/dotnet/maui-samples/tree/main/8.0/Tutorials/ConvertToMvvm/step6_bugs)

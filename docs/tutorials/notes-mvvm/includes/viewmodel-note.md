@@ -127,4 +127,4 @@ Now that the interaction with the view has changed from event handlers to comman
 
     :::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/Views/NotePage.xaml.cs":::
 
-[![Explore the code.](~/media/code-sample.png) Explore the code for this step of the tutorial.](https://github.com/dotnet/maui-samples/tree/main/7.0/Tutorials/ConvertToMvvm/step4_viewmodel_note)
+[![Explore the code.](~/media/code-sample.png) Explore the code for this step of the tutorial.](https://github.com/dotnet/maui-samples/tree/main/8.0/Tutorials/ConvertToMvvm/step4_viewmodel_note)
