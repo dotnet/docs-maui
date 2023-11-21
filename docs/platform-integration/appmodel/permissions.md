@@ -146,16 +146,7 @@ You then check the permission in the same way as any other permission type provi
 
 :::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="permission_readwrite_request":::
 
-<!-- Cutting this
-     It should be updated to demonstrate creating a class in each of the platform project folders, or by simply using #if OS checks
-     However, at this time VS isn't giving me the correct APIs when I swap from Android to Windows, so I can't even try to write
-     any code outside of Android
-
-     Also, this talks about the "shared" project concept which isn't required in .NET MAUI. I would also assume that
-     using DependencyService.Register isn't required. So this code will have to be updated too.
->
-
-If you wanted to call this API from your shared code, you could create an interface and use a dependency service to register and get the implementation.
+If you wanted to call this API from your cross-platform code, you could create an interface and register the custom permission as a dependency in the app's service container. The following example shows the `IReadWritePermission` interface:
 
 ```csharp
 public interface IReadWritePermission
@@ -165,7 +156,7 @@ public interface IReadWritePermission
 }
 ```
 
-Then implement the interface in your platform project:
+Then implement the interface in your custom permission:
 
 ```csharp
 public class ReadWriteStoragePermission : Permissions.BasePlatformPermission, IReadWritePermission
@@ -178,23 +169,35 @@ public class ReadWriteStoragePermission : Permissions.BasePlatformPermission, IR
 }
 ```
 
-You can then register the specific implementation:
+In the `MauiProgram` class you should then register the interface and its concrete type, and the type that will consume the custom permission, in the app's service container:
 
 ```csharp
-DependencyService.Register<IReadWritePermission, ReadWriteStoragePermission>();
+builder.Services.AddTransient<MyViewModel>();
+builder.Services.AddSingleton<IReadWritePermission>(_ => new ReadWriteStoragePermission());
 ```
 
-Then from your shared project you can resolve and use it:
+The custom permission implementation can then be resolved and invoked from one of your types, such as a viewmodel:
 
 ```csharp
-var readWritePermission = DependencyService.Get<IReadWritePermission>();
-var status = await readWritePermission.CheckStatusAsync();
-if (status != PermissionStatus.Granted)
+public class MyViewModel
 {
-    status = await readWritePermission.RequestAsync();
+    IReadWritePermission _readWritePermission;
+
+    public MyViewModel(IReadWritePermission readWritePermission)
+    {
+        _readWritePermission = readWritePermission;
+    }
+
+    public async Task CheckPermissionAsync()
+    {
+        var status = await _readWritePermission.CheckStatusAsync();
+        if (status != PermissionStatus.Granted)
+        {
+            status = await _readWritePermission.RequestAsync();
+        }
+    }
 }
 ```
--->
 
 ## Platform differences
 
