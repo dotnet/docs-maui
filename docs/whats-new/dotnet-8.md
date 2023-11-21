@@ -182,7 +182,7 @@ The `$(MauiVersion)` variable is referenced from the version of .NET MAUI you've
     <PropertyGroup>
         <TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
         <UseMaui>True</UseMaui>
-        <MauiVersion>8.0.0-rc.2.9511</MauiVersion>
+        <MauiVersion>8.0.3</MauiVersion>
     </PropertyGroup>
 </Project>
 ```
