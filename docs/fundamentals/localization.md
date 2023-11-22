@@ -182,6 +182,17 @@ In addition to storing text, resource files can also store images and binary dat
 
 On Android, localized images, known as drawables, are stored using a folder-based naming convention in the *Platforms\Android\Resources* folder. Folders should be named *drawable* with a suffix for the language and culture. For example, the Spanish-language folder is named *drawable-es*. The folder name *drawable* should contain the images for your default language and culture. The build action of each image should be set to **AndroidResource**.
 
+> [!NOTE]
+> Rather than set individual files to the **AndroidResource** build action, the contents of a specific folder can be set to this build action by adding the following XML to your project (.csproj) file:
+>
+>```xml
+><ItemGroup Condition="$(TargetFramework.Contains('-android'))">
+>  <AndroidResource Include="Platforms\Android\Resources\**" TargetPath="%(RecursiveDir)%(Filename)%(Extension)" />
+></ItemGroup>
+>```
+>
+> This example sets any content in the *Platforms\Android\Resources* folder, including content in sub-folders, to the **AndroidResource** build action.
+
 Only two characters are required in the folder name when specifying a top-level language, such as *es*. However, when specifying a full locale, the folder name format requires a dash and lowercase *r* to separate the language from the culture. For example, the Mexico locale (es-MX) folder should be named *drawable-es-rMX*. The image file names in each locale folder should be identical:
 
 :::image type="content" source="media/localization/images-folder-structure-android.png" alt-text="Screenshot of the localized folder structure in Visual Studio for images on Android.":::
