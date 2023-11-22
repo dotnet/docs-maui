@@ -8,7 +8,7 @@ ms.date: 11/22/2023
 >
 >```xml
 ><ItemGroup Condition="$(TargetFramework.Contains('-android'))">
->  <AndroidResource Include="Platforms\Android\Resources\**" TargetPath="%(RecursiveDir)%(Filename)%(Extension)" />
+>   <AndroidResource Include="Platforms\Android\Resources\**" TargetPath="%(RecursiveDir)%(Filename)%(Extension)" />
 ></ItemGroup>
 >```
 >
