@@ -248,13 +248,15 @@ On Android, iOS, Mac Catalyst, and Windows, localized images can be consumed by 
 <Image Source="flag.png" />
 ```
 
-However, for this to work on Windows it's necessary to modify your app's project file so that all images in the subfolders of the *Platforms\Windows\Assets\Images* folder are copied to the root of your app package. This can be accomplished by modifying your .csproj file to remove the `<Content />` MSBuild items for each individual localized image on Windows. Then, add the following MSBuild item:
+However, for this to work on Windows it's necessary to modify your app's project file if you've added `<Content />` MSBuild items for each localized image. This can be accomplished by modifying your .csproj file to remove the `<Content />` MSBuild items for each localized image. Then, add the following MSBuild item:
 
 ```xml
 <ItemGroup Condition="$(TargetFramework.Contains('-windows'))">
   <Content Include="Platforms\Windows\Assets\Images\**" TargetPath="%(RecursiveDir)%(Filename)%(Extension)" />
 </ItemGroup>
 ```
+
+This ensures that all images in the subfolders of the *Platforms\Windows\Assets\Images* folder are copied to the root of your app package.
 
 ## Localize the app name
 
@@ -263,6 +265,8 @@ Platform functionality is required for localizing the app's name.
 ### Android
 
 On Android, the localized app name can be stored using a folder-based naming convention in the *Platforms\Android\Resources* folder. Folders should be named *values* with a suffix for the language and culture. For example, the Spanish-language folder is named *values-es*. Add a *Strings.xml* file with a build action of **AndroidResource** to each folder that sets a string to the localized app name.
+
+[!INCLUDE [AndroidResource build action XML](includes/android-resource-xml.md)]
 
 Only two characters are required in the folder name when specifying a top-level language, such as *es*. However, when specifying a full locale, the folder name format requires a dash and lowercase *r* to separate the language from the culture. For example, the Mexico locale (es-MX) folder should be named *values-es-rMX*.
 
@@ -293,6 +297,8 @@ public class MainActivity : MauiAppCompatActivity
 ### iOS
 
 On iOS, the localized app name is stored using a folder-based naming convention in the *Platforms\iOS\Resources* folder. Folders should be named with the language, and optional culture, followed by *.lproj*. For example, the Spanish-language folder is named *es.lproj*. Add a *InfoPlist.strings* file with a build action of **BundleResource** to each folder that sets the `CFBundleDisplayName` key and value.
+
+[!INCLUDE [iOS BundleResource build action XML](includes/bundle-resource-ios-xml.md)]
 
 The syntax for localized string values is:
 
@@ -332,6 +338,8 @@ In addition, in your project file you must set the `IPhoneResourcePrefix` build 
 ### Mac Catalyst
 
 On Mac Catalyst, the localized app name is stored using a folder-based naming convention in the *Platforms\MacCatalyst\Resources* folder. Folders should be named with the language, and optional culture, followed by *.lproj*. For example, the Spanish-language folder is named *es.lproj*. Add a *InfoPlist.strings* file with a build action of **BundleResource** to each folder that sets the `CFBundleDisplayName` key and value.
+
+[!INCLUDE [Mac Catalyst BundleResource build action XML](includes/bundle-resource-maccat-xml.md)]
 
 The syntax for localized string values is:
 
