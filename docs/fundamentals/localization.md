@@ -182,11 +182,11 @@ In addition to storing text, resource files can also store images and binary dat
 
 On Android, localized images, known as drawables, are stored using a folder-based naming convention in the *Platforms\Android\Resources* folder. Folders should be named *drawable* with a suffix for the language and culture. For example, the Spanish-language folder is named *drawable-es*. The folder name *drawable* should contain the images for your default language and culture. The build action of each image should be set to **AndroidResource**.
 
+[!INCLUDE [AndroidResource build action XML](includes/android-resource-xml.md)]
+
 Only two characters are required in the folder name when specifying a top-level language, such as *es*. However, when specifying a full locale, the folder name format requires a dash and lowercase *r* to separate the language from the culture. For example, the Mexico locale (es-MX) folder should be named *drawable-es-rMX*. The image file names in each locale folder should be identical:
 
 :::image type="content" source="media/localization/images-folder-structure-android.png" alt-text="Screenshot of the localized folder structure in Visual Studio for images on Android.":::
-
-[!INCLUDE [AndroidResource build action XML](includes/android-resource-xml.md)]
 
 ### iOS
 
@@ -207,6 +207,8 @@ In addition, in your project file you must set the `IPhoneResourcePrefix` build 
 
 If an image isn't present for a particular language, iOS falls back to the default native language folder and loads the image from there.
 
+[!INCLUDE [iOS BundleResource build action XML](includes/bundle-resource-ios-xml.md)]
+
 ### Mac Catalyst
 
 On Mac Catalyst, localized images are stored using a folder-based naming convention in the *Platforms\MacCatalyst\Resources* folder. Folders should be named with the language, and optional culture, followed by *.lproj*. For example, the Spanish-language folder is named *es.lproj*. The build action of each image should be set to **BundleResource**.
@@ -226,6 +228,8 @@ In addition, in your project file you must set the `IPhoneResourcePrefix` build 
 
 If an image isn't present for a particular language, Mac Catalyst falls back to the default native language folder and loads the image from there.
 
+[!INCLUDE [Mac Catalyst BundleResource build action XML](includes/bundle-resource-maccat-xml.md)]
+
 ### Windows
 
 On Windows, localized images are stored using a folder-based naming convention in the *Platforms\Windows\Assets\Images* folder. Folders should be named with the language, and optional culture. For example, the Spanish-language folder is named *es* and the Mexico locale folder should be named *es-MX*. The build action of each image should be set to **Content**.
@@ -233,6 +237,8 @@ On Windows, localized images are stored using a folder-based naming convention i
 Only two characters are required in the folder name when specifying a top-level language, such as *es*. However, when specifying a full locale, the folder name format requires a dash to separate the language from the culture. For example, the Mexico locale (es-MX) folder should be named *es-MX*. The image file names in each locale folder should be identical:
 
 :::image type="content" source="media/localization/images-folder-structure-windows.png" alt-text="Screenshot of the localized folder structure in Visual Studio for images on Windows.":::
+
+[!INCLUDE [Content build action XML](includes/content-xml.md)]
 
 ### Consume localized images
 
