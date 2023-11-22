@@ -248,7 +248,7 @@ On Android, iOS, Mac Catalyst, and Windows, localized images can be consumed by 
 <Image Source="flag.png" />
 ```
 
-However, for this to work on Windows it's necessary to modify your app's project file if you've added `<Content />` MSBuild items for each localized image. This can be accomplished by modifying your .csproj file to remove the `<Content />` MSBuild items for each localized image. Then, add the following MSBuild item:
+However, for this to work on Windows it's necessary to modify your app's project file if you've added a `<Content />` MSBuild item for each localized image. This can be accomplished by modifying your .csproj file to remove the `<Content />` MSBuild item for each image. Then, add the following MSBuild item:
 
 ```xml
 <ItemGroup Condition="$(TargetFramework.Contains('-windows'))">
