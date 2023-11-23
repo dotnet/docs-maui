@@ -7,6 +7,8 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices"]
 
 # Vibration
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-essentials)
+
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Devices.IVibration> interface. This interface lets you start and stop the vibrate functionality for a desired amount of time.
 
 The default implementation of the `IVibration` interface is available through the <xref:Microsoft.Maui.Devices.Vibration.Default?displayProperty=nameWithType> property. Both the `IVibration` interface and `Vibration` class are contained in the `Microsoft.Maui.Devices` namespace.

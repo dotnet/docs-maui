@@ -7,6 +7,8 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices"]
 
 # Device information
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-essentials)
+
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Devices.IDeviceInfo> interface to read information about the device the app is running on.
 
 The default implementation of the `IDeviceInfo` interface is available through the <xref:Microsoft.Maui.Devices.DeviceInfo.Current?displayProperty=nameWithType> property. Both the `IDeviceInfo` interface and `DeviceInfo` class are contained in the `Microsoft.Maui.Devices` namespace.
