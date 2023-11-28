@@ -273,6 +273,9 @@ public class AlignmentPage : ContentPage
 
 For more information about alignment, see [Align views in layouts](~/user-interface/align-position.md#align-views-in-layouts).
 
+> [!TIP]
+> During the migration process from Xamarin Forms to .NET MAUI, it's important to note that the previous value for `HorizontalOption` and `VerticalOptions`, namely `FillAndExpand`, has been deprecated in .NET MAUI.
+
 ## Nested StackLayout objects
 
 A <xref:Microsoft.Maui.Controls.StackLayout> can be used as a parent layout that contains nested child <xref:Microsoft.Maui.Controls.StackLayout> objects, or other child layouts.
