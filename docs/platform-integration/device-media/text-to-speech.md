@@ -7,6 +7,8 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Media", "TextToSpeech"]
 
 # Text-to-Speech
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-essentials)
+
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Media.ITextToSpeech> interface. This interface enables an application to utilize the built-in text-to-speech engines to speak back text from the device. You can also use it to query for available languages.
 
 The default implementation of the `ITextToSpeech` interface is available through the <xref:Microsoft.Maui.Media.TextToSpeech.Default?displayProperty=nameWithType> property. Both the `ITextToSpeech` interface and `TextToSpeech` class are contained in the `Microsoft.Maui.Media` namespace.

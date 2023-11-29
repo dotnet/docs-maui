@@ -7,6 +7,8 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel.Communication"]
 
 # Contacts
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-essentials)
+
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.ApplicationModel.Communication.IContacts> interface to select a contact and read information about it.
 
 The default implementation of the `IContacts` interface is available through the <xref:Microsoft.Maui.ApplicationModel.Communication.Contacts.Default> property. Both the `IContacts` interface and `Contacts` class are contained in the `Microsoft.Maui.ApplicationModel.Communication` namespace.

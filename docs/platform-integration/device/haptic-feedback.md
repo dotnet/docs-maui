@@ -7,6 +7,8 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices"]
 
 # Haptic feedback
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-essentials)
+
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Devices.IHapticFeedback> interface to control haptic feedback on a device. Haptic feedback is generally manifested by a gentle vibration sensation provided by the device to give a response to the user. Some examples of haptic feedback are when a user types on a virtual keyboard or when they play a game where the player's character has an encounter with an enemy character.
 
 The default implementation of the `IHapticFeedback` interface is available through the <xref:Microsoft.Maui.Devices.HapticFeedback.Default?displayProperty=nameWithType> property. Both the `IHapticFeedback` interface and `HapticFeedback` class are contained in the `Microsoft.Maui.Devices` namespace.
