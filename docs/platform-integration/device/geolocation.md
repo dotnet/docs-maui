@@ -7,6 +7,8 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices", "Microsoft.Maui.Devices.Sen
 
 # Geolocation
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-essentials)
+
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Devices.Sensors.IGeolocation> interface. This interface provides APIs to retrieve the device's current geolocation coordinates.
 
 The default implementation of the `IGeolocation` interface is available through the <xref:Microsoft.Maui.Devices.Sensors.Geolocation.Default?displayProperty=nameWithType> property. Both the `IGeolocation` interface and `Geolocation` class are contained in the `Microsoft.Maui.Devices.Sensors` namespace.

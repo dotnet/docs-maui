@@ -7,6 +7,8 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices"]
 
 # Flashlight
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-essentials)
+
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Devices.IFlashlight> interface. With this interface, you can toggle the device's camera flash on and off, to emulate a flashlight.
 
 The default implementation of the `IFlashlight` interface is available through the <xref:Microsoft.Maui.Devices.Flashlight.Default?displayProperty=nameWithType> property. Both the `IFlashlight` interface and `Flashlight` class are contained in the `Microsoft.Maui.Devices` namespace.

@@ -7,6 +7,8 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Media", "UnitConverters"]
 
 # Unit converters
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-essentials)
+
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Media.UnitConverters> class. This class provides several unit converters to help developers convert from one unit of measurement to another.
 
 ## Using unit converters

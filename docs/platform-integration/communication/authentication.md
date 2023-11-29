@@ -7,6 +7,8 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Authentication"]
 
 # Web authenticator
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-essentials)
+
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) the <xref:Microsoft.Maui.Authentication.IWebAuthenticator> interface. This interface lets you start browser-based authentication flows, which listen for a callback to a specific URL registered to the app.
 
 The default implementation of the `IWebAuthenticator` interface is available through the <xref:Microsoft.Maui.Authentication.WebAuthenticator.Default?displayProperty=nameWithType> property. Both the `IWebAuthenticator` interface and `WebAuthenticator` class are contained in the `Microsoft.Maui.Authentication` namespace.

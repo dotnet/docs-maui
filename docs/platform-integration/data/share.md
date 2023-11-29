@@ -7,6 +7,8 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel.DataTransfer"]
 
 # Share
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-essentials)
+
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.ApplicationModel.DataTransfer.IShare> interface. This interface provides an API to send data, such as text or web links, to the devices share function.
 
 The default implementation of the `IShare` interface is available through the <xref:Microsoft.Maui.ApplicationModel.DataTransfer.Share.Default?displayProperty=nameWithType> property. Both the `IShare` interface and `Share` class are contained in the `Microsoft.Maui.ApplicationModel.DataTransfer` namespace.

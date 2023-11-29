@@ -7,6 +7,8 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices"]
 
 # Battery
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-essentials)
+
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Devices.IBattery> interface to check the device's battery information and monitor for changes. This interface also provides information about the device's energy-saver status, which indicates if the device is running in a low-power mode.
 
 The default implementation of the `IBattery` interface is available through the <xref:Microsoft.Maui.Devices.Battery.Default?displayProperty=nameWithType> property. Both the `IBattery` interface and `Battery` class are contained in the `Microsoft.Maui.Devices` namespace.
