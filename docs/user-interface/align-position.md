@@ -71,9 +71,12 @@ The following XAML example shows all three possibilities:
 
 ```xaml
 <StackLayout Padding="0,20,0,0">
-  <Label Text=".NET MAUI" Margin="20" /> //defined by a single uniform value
-  <Label Text=".NET iOS" Margin="10,15" /> //defined by horizontal and vertical values
-  <Label Text=".NET Android" Margin="0,20,15,5" /> //defined by four distinct values that are applied to the left, top, right, and bottom
+  <!-- Margin defined by a single uniform value. -->
+  <Label Text=".NET MAUI" Margin="20" />
+  <!-- Margin defined by horizontal and vertical values. -->  
+  <Label Text=".NET iOS" Margin="10,15" />
+  <!-- Margin defined by four distinct values that are applied to the left, top, right, and bottom. -->  
+  <Label Text=".NET Android" Margin="0,20,15,5" />
 </StackLayout>
 ```
 
@@ -84,8 +87,11 @@ StackLayout stackLayout = new StackLayout
 {
   Padding = new Thickness(0,20,0,0)
 };
+// Margin defined by a single uniform value.
 stackLayout.Add(new Label { Text = ".NET MAUI", Margin = new Thickness(20) });
+// Margin defined by horizontal and vertical values.
 stackLayout.Add(new Label { Text = ".NET iOS", Margin = new Thickness(10,25) });
+// Margin defined by four distinct values that are applied to the left, top, right, and bottom.
 stackLayout.Add(new Label { Text = ".NET Android", Margin = new Thickness(0,20,15,5) });  
 ```
 
