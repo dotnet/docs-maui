@@ -123,6 +123,9 @@
           href: xaml/generics.md
         - name: Markup extensions
           items:
+            - name: Testing sibling
+              href: ./xaml/markup-extensions/test.md
+              displayName: test
             - name: Consume markup extensions
               href: xaml/markup-extensions/consume.md
             - name: Create markup extensions
