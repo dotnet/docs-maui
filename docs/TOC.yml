@@ -130,6 +130,9 @@
               href: xaml/markup-extensions/consume.md
             - name: Create markup extensions
               href: xaml/markup-extensions/create.md
+            - name: sibling article
+              href: ./xaml/markup-extensions/updatedotnet.md
+              displayName: hello
         - name: Namespaces
           items:
             - name: Overview
