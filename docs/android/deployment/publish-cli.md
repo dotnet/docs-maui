@@ -126,6 +126,9 @@ Publishing builds and signs the app, and then copies the AAB and APK files to th
 
 For more information about the `dotnet publish` command, see [dotnet publish](/dotnet/core/tools/dotnet-publish).
 
+> [!NOTE]
+> For Android apps, `dotnet build` can also be used to build and sign your app. However, AAB and APK files will be created in the *bin\\Release\\net8.0-android* folder rather than the *publish* subfolder. `dotnet build` also defaults to a `Debug` configuration, so the `-c` parameter is required to specify the `Release` configuration.
+
 ## Define build properties in your project file
 
 An alternative to specifying build parameters on the command line is to specify them in your project file in a `<PropertyGroup>`. The following table lists some of the common build properties:
