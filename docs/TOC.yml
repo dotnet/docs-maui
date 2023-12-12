@@ -794,5 +794,35 @@
                   href: windows/deployment/publish-unpackaged-cli.md
                 - name: Publish with Visual Studio to a folder
                   href: windows/deployment/publish-visual-studio-folder.md
+    - name: Enterprise application patterns
+      items:
+        - name: Overview
+          href: /dotnet/architecture/maui?context=/dotnet/maui/context/maui-context
+        - name: Preface
+          href: /dotnet/architecture/maui/preface?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Introduction
+          href: /dotnet/architecture/maui/introduction?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Model-View-ViewModel pattern
+          href: /dotnet/architecture/maui/mvvm?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Dependency injection
+          href: /dotnet/architecture/maui/dependency-injection?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Communicating between components
+          href: /dotnet/architecture/maui/communicating-between-components?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Navigation
+          href: /dotnet/architecture/maui/navigation?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Validation
+          href: /dotnet/architecture/maui/validation?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Configuration management
+          href: /dotnet/architecture/maui/configuration-management?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Containerized microservices
+          href: /dotnet/architecture/maui/micro-services?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Accessing remote data
+          href: /dotnet/architecture/maui/accessing-remote-data?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Authentication and authorization
+          href: /dotnet/architecture/maui/authentication-and-authorization?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: MVVM community toolkit features
+          href: /dotnet/architecture/maui/mvvm-community-toolkit-features?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Unit testing
+          href: /dotnet/architecture/maui/unit-testing?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
     - name: Troubleshooting
       href: troubleshooting.md
