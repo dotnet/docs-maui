@@ -42,7 +42,7 @@ The new project should be given the same project and package name as your existi
 ```
 
 > [!IMPORTANT]
-> The target framework moniker (TFM) is what denotes the project as using .NET, in this case .NET 8. Valid TFMs for equivalent Xamarin native projects are net8.0-android, net8.0-ios, net8.0-macos, net8.0-tvos. For information about Target Framework and TFM in .NET, see [Target Framework and TFM](/dotnet/standard/frameworks).
+> The target framework moniker (TFM) is what denotes the project as using .NET, in this case .NET 8. Valid TFMs for equivalent Xamarin native projects are net8.0-android, net8.0-ios, net8.0-macos, net8.0-tvos. For information about target frameworks in SDK-style projects, see [Target frameworks in SDK-style projects](/dotnet/standard/frameworks).
 
 Launch the app to confirm that your development environment can build the app.
 
