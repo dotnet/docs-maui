@@ -56,7 +56,7 @@ The process shown in the diagram follows these steps:
 > [!TIP]
 > Use SVG images where possible. SVG images can upscale to larger sizes and still look crisp and clean. Bitmap-based images, such as a PNG or JPG image, look blurry when upscaled.
 
-The base size is specified with the `BaseSize="W,H"` attribute, where `W` is the width of the image and `H` is the height of the image. The value specified as the base size must be divisible by 8. The following example sets the base size:
+The base size is specified with the `BaseSize="W,H"` attribute, where `W` is the width of the image and `H` is the height of the image. The following example sets the base size:
 
 ```xml
 <MauiSplashScreen Include="Resources\Splash\splashscreen.svg" BaseSize="128,128" />
