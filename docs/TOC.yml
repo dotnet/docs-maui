@@ -797,32 +797,32 @@
     - name: Architecture
       items:
         - name: Overview
-          href: /dotnet/architecture/maui?context=/dotnet/maui/context/maui-context
+          href: /dotnet/architecture/maui/?toc=/dotnet/maui/toc.json&bc-=/dotnet/maui/breadcrumb/toc.json
         - name: Preface
-          href: /dotnet/architecture/maui/preface?context=/dotnet/maui/context/maui-context
+          href: /dotnet/architecture/maui/preface?toc=/dotnet/maui/toc.json&bc-=/dotnet/maui/breadcrumb/toc.json
         - name: Introduction
-          href: /dotnet/architecture/maui/introduction?context=/dotnet/maui/context/maui-context
+          href: /dotnet/architecture/maui/introduction?toc=/dotnet/maui/toc.json&bc-=/dotnet/maui/breadcrumb/toc.json
         - name: Model-View-ViewModel pattern
-          href: /dotnet/architecture/maui/mvvm?context=/dotnet/maui/context/maui-context
+          href: /dotnet/architecture/maui/mvvm?toc=/dotnet/maui/toc.json&bc-=/dotnet/maui/breadcrumb/toc.json
         - name: Dependency injection
-          href: /dotnet/architecture/maui/dependency-injection?context=/dotnet/maui/context/maui-context
+          href: /dotnet/architecture/maui/dependency-injection?toc=/dotnet/maui/toc.json&bc-=/dotnet/maui/breadcrumb/toc.json
         - name: Communicating between components
-          href: /dotnet/architecture/maui/communicating-between-components?context=/dotnet/maui/context/maui-context
+          href: /dotnet/architecture/maui/communicating-between-components?toc=/dotnet/maui/toc.json&bc-=/dotnet/maui/breadcrumb/toc.json
         - name: Navigation
-          href: /dotnet/architecture/maui/navigation?context=/dotnet/maui/context/maui-context
+          href: /dotnet/architecture/maui/navigation?toc=/dotnet/maui/toc.json&bc-=/dotnet/maui/breadcrumb/toc.json
         - name: Validation
-          href: /dotnet/architecture/maui/validation?context=/dotnet/maui/context/maui-context
+          href: /dotnet/architecture/maui/validation?toc=/dotnet/maui/toc.json&bc-=/dotnet/maui/breadcrumb/toc.json
         - name: Configuration management
-          href: /dotnet/architecture/maui/configuration-management?context=/dotnet/maui/context/maui-context
+          href: /dotnet/architecture/maui/configuration-management?toc=/dotnet/maui/toc.json&bc-=/dotnet/maui/breadcrumb/toc.json
         - name: Containerized microservices
-          href: /dotnet/architecture/maui/micro-services?context=/dotnet/maui/context/maui-context
+          href: /dotnet/architecture/maui/micro-services?toc=/dotnet/maui/toc.json&bc-=/dotnet/maui/breadcrumb/toc.json
         - name: Accessing remote data
-          href: /dotnet/architecture/maui/accessing-remote-data?context=/dotnet/maui/context/maui-context
+          href: /dotnet/architecture/maui/accessing-remote-data?toc=/dotnet/maui/toc.json&bc-=/dotnet/maui/breadcrumb/toc.json
         - name: Authentication and authorization
-          href: /dotnet/architecture/maui/authentication-and-authorization?context=/dotnet/maui/context/maui-context
+          href: /dotnet/architecture/maui/authentication-and-authorization?toc=/dotnet/maui/toc.json&bc-=/dotnet/maui/breadcrumb/toc.json
         - name: MVVM community toolkit features
-          href: /dotnet/architecture/maui/mvvm-community-toolkit-features?context=/dotnet/maui/context/maui-context
+          href: /dotnet/architecture/maui/mvvm-community-toolkit-features?toc=/dotnet/maui/toc.json&bc-=/dotnet/maui/breadcrumb/toc.json
         - name: Unit testing
-          href: /dotnet/architecture/maui/unit-testing?context=/dotnet/maui/context/maui-context                  
+          href: /dotnet/architecture/maui/unit-testing?toc=/dotnet/maui/toc.json&bc-=/dotnet/maui/breadcrumb/toc.json
     - name: Troubleshooting
       href: troubleshooting.md
