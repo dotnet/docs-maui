@@ -794,5 +794,35 @@
                   href: windows/deployment/publish-unpackaged-cli.md
                 - name: Publish with Visual Studio to a folder
                   href: windows/deployment/publish-visual-studio-folder.md
+    - name: Architecture
+      items:
+        - name: Overview
+          href: /dotnet/architecture/maui?context=/dotnet/maui/context/maui-context
+        - name: Preface
+          href: /dotnet/architecture/maui/preface?context=/dotnet/maui/context/maui-context
+        - name: Introduction
+          href: /dotnet/architecture/maui/introduction?context=/dotnet/maui/context/maui-context
+        - name: Model-View-ViewModel pattern
+          href: /dotnet/architecture/maui/mvvm?context=/dotnet/maui/context/maui-context
+        - name: Dependency injection
+          href: /dotnet/architecture/maui/dependency-injection?context=/dotnet/maui/context/maui-context
+        - name: Communicating between components
+          href: /dotnet/architecture/maui/communicating-between-components?context=/dotnet/maui/context/maui-context
+        - name: Navigation
+          href: /dotnet/architecture/maui/navigation?context=/dotnet/maui/context/maui-context
+        - name: Validation
+          href: /dotnet/architecture/maui/validation?context=/dotnet/maui/context/maui-context
+        - name: Configuration management
+          href: /dotnet/architecture/maui/configuration-management?context=/dotnet/maui/context/maui-context
+        - name: Containerized microservices
+          href: /dotnet/architecture/maui/micro-services?context=/dotnet/maui/context/maui-context
+        - name: Accessing remote data
+          href: /dotnet/architecture/maui/accessing-remote-data?context=/dotnet/maui/context/maui-context
+        - name: Authentication and authorization
+          href: /dotnet/architecture/maui/authentication-and-authorization?context=/dotnet/maui/context/maui-context
+        - name: MVVM community toolkit features
+          href: /dotnet/architecture/maui/mvvm-community-toolkit-features?context=/dotnet/maui/context/maui-context
+        - name: Unit testing
+          href: /dotnet/architecture/maui/unit-testing?context=/dotnet/maui/context/maui-context                  
     - name: Troubleshooting
       href: troubleshooting.md
