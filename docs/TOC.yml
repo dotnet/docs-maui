@@ -797,7 +797,7 @@
     - name: Enterprise application patterns
       items:
         - name: Overview
-          href: /dotnet/architecture/maui?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+          href: /dotnet/architecture/maui?context=/dotnet/maui/context/context
         - name: Preface
           href: /dotnet/architecture/maui/preface?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
         - name: Introduction
@@ -823,6 +823,6 @@
         - name: MVVM community toolkit features
           href: /dotnet/architecture/maui/mvvm-community-toolkit-features?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
         - name: Unit testing
-          href: /dotnet/architecture/maui/unit-testing?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json                  
+          href: /dotnet/architecture/maui/unit-testing?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
     - name: Troubleshooting
       href: troubleshooting.md
