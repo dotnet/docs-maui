@@ -101,9 +101,6 @@ dotnet publish -f net8.0-android -c Release -p:AndroidKeyStore=true -p:AndroidSi
 
 [!INCLUDE [dotnet publish in .NET 8](~/includes/dotnet-publish-net8.md)]
 
-> [!NOTE]
-> For Android projects, `dotnet build` can be used synonymously with `dotnet publish` to build and sign your app. AAB and APK files will be created in the *bin\\Release\\net8.0-android* folder and not the *publish* subfolder when using `dotnet build`. `dotnet build` also defaults to a `Debug` configuration, so the `-c` parameter is required to specify the `Release` configuration.
-
 For example, use the following command to build and sign your app using the previously created keystore:
 
 ```console
@@ -128,6 +125,9 @@ dotnet publish -f net8.0-android -c Release -p:AndroidKeyStore=true -p:AndroidSi
 Publishing builds and signs the app, and then copies the AAB and APK files to the *bin\\Release\\net8.0-android\\publish* folder. There are two AAB files - one unsigned and another signed. The signed variant has **-signed** in the file name.
 
 For more information about the `dotnet publish` command, see [dotnet publish](/dotnet/core/tools/dotnet-publish).
+
+> [!NOTE]
+> For Android apps, `dotnet build` can also be used to build and sign your app. However, AAB and APK files will be created in the *bin\\Release\\net8.0-android* folder rather than the *publish* subfolder. `dotnet build` also defaults to a `Debug` configuration, so the `-c` parameter is required to specify the `Release` configuration.
 
 ## Define build properties in your project file
 
