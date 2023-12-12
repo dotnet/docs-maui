@@ -797,7 +797,7 @@
     - name: Enterprise application patterns
       items:
         - name: Overview
-          href: /dotnet/architecture/maui?context=/dotnet/maui/context/context
+          href: /dotnet/architecture/maui?context=/dotnet/maui/context/context.json
         - name: Preface
           href: /dotnet/architecture/maui/preface?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
         - name: Introduction
