@@ -32,7 +32,7 @@ For a library project, omit the `$(OutputType)` property completely or specify `
 
 ## Changes to MSBuild properties
 
-Platform properties should be replaced in favor of the following .NET runtime identifiers:
+While upgrading your application, it is recommended to remove these UWP properties: `WindowsXamlEnableOverview`, `AppxPackageSigningEnabled`, and `GenerateAssemblyInfo`. Specify the platform architectures in the target project with the following .NET runtime identifiers:
 
 ```xml
 <PropertyGroup>
@@ -45,7 +45,13 @@ For more information about runtime identifiers, see [.NET RID Catalog](/dotnet/c
 
 ## API changes
 
-To safely use recent or older APIs, you can declare a `SupportedOSPlatformVersion` in your project or use the <xref:System.OperatingSystem.IsWindowsVersionAtLeast%2A> API at runtime:
+To safely use recent or older APIs, you can declare a `SupportedOSPlatformVersion` in your project. Specify the `SupportedOSPlatformVersion` property in any `.csproj` file that targets windows among other targets as shown:
+
+```xml
+    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.19041.0</SupportedOSPlatformVersion>
+```
+
+If your project only targets windows, it is sufficient to omit the platform checking condition and have `<SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>`. [Support older OS versions](https://learn.microsoft.com/en-us/dotnet/standard/frameworks#support-older-os-versions) contains more information on using this property across your project files. To have platform version specific code, use the <xref:System.OperatingSystem.IsWindowsVersionAtLeast%2A> API at runtime:
 
 ```csharp
 if (OperatingSystem.IsWindowsVersionAtLeast(10))
@@ -54,11 +60,11 @@ if (OperatingSystem.IsWindowsVersionAtLeast(10))
 }
 ```
 
-Address any API changes that may affect your app. For example, some methods and properties may have been renamed, deprecated or removed.
+Address any API changes that may affect your app. For example, some methods and properties may have been renamed, deprecated or removed. Check [what is supported](/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/what-is-supported) when upgrading your UWP application to prepare adequately for a migration. Use these [feature mapping](/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/feature-mapping-table), [api mapping](/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/api-mapping-table) tables to identify and actionate across the changes from UWP to WinUI.
 
 ### Namespace changes
 
-Update the namespaces in your code files, following the changes between the following two pieces of documentation: [UWP Namespaces](/uwp/api/) and [WinUI Namespaces](/windows/winui/api/).
+Update the namespaces in your code files, following this [api mapping table](/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/api-mapping-table).
 
 For example, you'll need to replace the following namespace:
 
