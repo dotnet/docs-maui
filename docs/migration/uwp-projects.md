@@ -51,7 +51,7 @@ To safely use recent or older APIs, you can declare a `SupportedOSPlatformVersio
     <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.19041.0</SupportedOSPlatformVersion>
 ```
 
-If your project only targets windows, it is sufficient to omit the platform checking condition and have `<SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>`. [Support older OS versions](https://learn.microsoft.com/en-us/dotnet/standard/frameworks#support-older-os-versions) contains more information on using this property across your project files. To have platform version specific code, use the <xref:System.OperatingSystem.IsWindowsVersionAtLeast%2A> API at runtime:
+If your project only targets windows, it is sufficient to omit the platform checking condition and have `<SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>`. [Support older OS versions](/dotnet/standard/frameworks#support-older-os-versions) contains more information on using this property across your project files. To have platform version specific code, use the <xref:System.OperatingSystem.IsWindowsVersionAtLeast%2A> API at runtime:
 
 ```csharp
 if (OperatingSystem.IsWindowsVersionAtLeast(10))
