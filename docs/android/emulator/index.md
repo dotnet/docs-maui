@@ -48,7 +48,7 @@ The following gestures can be simulated in the emulator:
 | Double tap | Double-click and then release the primary mouse button. |
 | Drag | Press and hold the primary mouse button, move the item, and then release. |
 | Touch and hold | Press the primary mouse button, hold, and release. |
-| Pinch | Press the CTRL key on Windows, or the Command key on macOS, to display a pinch gesture multi-touch interface. The mouse acts as the first finger, which can be moved by dragging the cursor. The second finger is across the anchor point. Pressing the left mouse button simulates touching both points, and releasing simulates removing both points. |
+| Pinch | Press the CTRL key on Windows, or the Command key on macOS, to display a pinch gesture multi-touch interface. The mouse acts as the first finger, which can be moved by dragging the cursor. The second finger is across from the anchor point. Pressing the left mouse button simulates touching both points, and releasing simulates removing both points. |
 | Swipe | Press and hold the primary mouse button, swipe, and then release. |
 | Vertical swipe | Open a vertical menu on the screen and use the mouse scroll wheel to scroll through the menu items. |
 
