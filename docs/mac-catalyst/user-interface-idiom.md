@@ -37,11 +37,11 @@ Adopting the Mac user interface idiom may require you to make additional changes
 > [!WARNING]
 > <xref:UIKit.UIStepper>, <xref:UIKit.UIPickerView>, and <xref:UIKit.UIRefreshControl> aren't supported in the Mac user interface idiom by Apple. This means that the .NET MAUI controls that consume these native controls (<xref:Microsoft.Maui.Controls.Stepper>, <xref:Microsoft.Maui.Controls.Picker> and <xref:Microsoft.Maui.Controls.RefreshView>) can't be used in the Mac user interface idiom. Attempting to do so will throw a macOS exception.
 >
-> In addition, the following constraints apply:
+> In addition, the following constraints apply in the Mac user interface idiom:
 >
 > - <xref:UIKit.UISwitch> throws a macOS exception when it's title is set in a non-Mac idiom view.
-> - <xref:UIKit.UIButton> throws a macOS exception in the Mac user interface idiom when <UIKit.UIView.AddGestureRecognizer%2A> is called, or when <xref:UIKit.UIButton.SetTitle%2A> or <xref:UIKit.UIButton.SetImage%2A> are called for any state except `UIControlStateNormal.Normal`.
-> - <xref:UIKit.UISlider> throws a macOS exception in the Mac user interface idiom when the <xref:UIKit.UISlider.SetThumbImage%2A>, <xref:UIKit.UISlider.SetMinTrackImage%2A>, <xref:UIKit.UISlider.SetMaxTrackImage%2A> methods are called or the <xref:UIKit.UISlider.ThumbTintColor>, <xref:UIKit.UISlider.MinimumTrackTintColor>, <xref:UIKit.UISlider.MaximumTrackTintColor>, <xref:UIKit.UISlider.MinValueImage>, <xref:UIKit.UISlider.MaxValueImage> properties set.
+> - <xref:UIKit.UIButton> throws a macOS exception when <UIKit.UIView.AddGestureRecognizer%2A> is called, or when <xref:UIKit.UIButton.SetTitle%2A> or <xref:UIKit.UIButton.SetImage%2A> are called for any state except `UIControlStateNormal.Normal`.
+> - <xref:UIKit.UISlider> throws a macOS exception when the <xref:UIKit.UISlider.SetThumbImage%2A>, <xref:UIKit.UISlider.SetMinTrackImage%2A>, <xref:UIKit.UISlider.SetMaxTrackImage%2A> methods are called or the <xref:UIKit.UISlider.ThumbTintColor>, <xref:UIKit.UISlider.MinimumTrackTintColor>, <xref:UIKit.UISlider.MaximumTrackTintColor>, <xref:UIKit.UISlider.MinValueImage>, <xref:UIKit.UISlider.MaxValueImage> properties set.
 
 ## Determine the user interface idiom
 
