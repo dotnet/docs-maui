@@ -40,8 +40,8 @@ Adopting the Mac user interface idiom may require you to make additional changes
 > In addition, the following constraints apply in the Mac user interface idiom:
 >
 > - <xref:UIKit.UISwitch> throws a macOS exception when it's title is set in a non-Mac idiom view.
-> - <xref:UIKit.UIButton> throws a macOS exception when <UIKit.UIView.AddGestureRecognizer%2A> is called, or when <xref:UIKit.UIButton.SetTitle%2A> or <xref:UIKit.UIButton.SetImage%2A> are called for any state except `UIControlStateNormal.Normal`.
-> - <xref:UIKit.UISlider> throws a macOS exception when the <xref:UIKit.UISlider.SetThumbImage%2A>, <xref:UIKit.UISlider.SetMinTrackImage%2A>, <xref:UIKit.UISlider.SetMaxTrackImage%2A> methods are called or the <xref:UIKit.UISlider.ThumbTintColor>, <xref:UIKit.UISlider.MinimumTrackTintColor>, <xref:UIKit.UISlider.MaximumTrackTintColor>, <xref:UIKit.UISlider.MinValueImage>, <xref:UIKit.UISlider.MaxValueImage> properties set.
+> - <xref:UIKit.UIButton> throws a macOS exception when <xref:UIKit.UIView.AddGestureRecognizer%2A> is called, or when <xref:UIKit.UIButton.SetTitle%2A> or <xref:UIKit.UIButton.SetImage%2A> are called for any state except `UIControlStateNormal.Normal`.
+> - <xref:UIKit.UISlider> throws a macOS exception when the <xref:UIKit.UISlider.SetThumbImage%2A>, <xref:UIKit.UISlider.SetMinTrackImage%2A>, <xref:UIKit.UISlider.SetMaxTrackImage%2A> methods are called and when the <xref:UIKit.UISlider.ThumbTintColor>, <xref:UIKit.UISlider.MinimumTrackTintColor>, <xref:UIKit.UISlider.MaximumTrackTintColor>, <xref:UIKit.UISlider.MinValueImage>, <xref:UIKit.UISlider.MaxValueImage> properties are set.
 
 ## Determine the user interface idiom
 
