@@ -7,7 +7,7 @@ ms.topic: how-to
 
 # How to enable hardware acceleration with Android emulators (Hyper-V & AEHD)
 
-With Visual Studio, you can easily test and debug your .NET MAUI app for Android in emulators for situations where an Android device isn't available. However, if hardware acceleration isn't available or enabled, the emulator will run very slowly. You can significantly improve the performance of the emulator by enabling hardware acceleration and using *x86-64* or *x86* virtual device images.
+With Visual Studio, you can easily test and debug your .NET MAUI app for Android in emulators for situations where an Android device isn't available. However, if hardware acceleration isn't available or enabled, the emulator will run very slowly. You can significantly improve the performance of the emulator by enabling hardware acceleration and using virtual device images that are appropriate for your processor architecture. For more information, see [Configure hardware acceleration for the Android Emulator](https://developer.android.com/studio/run/emulator-acceleration) on developer.android.com
 
 ## Accelerate Android emulators on Windows
 
@@ -205,7 +205,3 @@ For help with troubleshooting hardware acceleration issues, see the Android emul
 
 ::: zone-end
 -->
-
-## See also
-
-- [Configure hardware acceleration for the Android Emulator](https://developer.android.com/studio/run/emulator-acceleration) on developer.android.com

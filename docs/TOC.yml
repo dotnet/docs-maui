@@ -17,6 +17,8 @@
           items:
             - name: Emulator
               items:
+                - name: Overview
+                  href: android/emulator/index.md
                 - name: How to enable hardware acceleration
                   href: android/emulator/hardware-acceleration.md
                 - name: Manage and create virtual devices
@@ -823,6 +825,6 @@
         - name: MVVM community toolkit features
           href: /dotnet/architecture/maui/mvvm-community-toolkit-features?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
         - name: Unit testing
-          href: /dotnet/architecture/maui/unit-testing?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json                  
+          href: /dotnet/architecture/maui/unit-testing?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
     - name: Troubleshooting
       href: troubleshooting.md
