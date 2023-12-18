@@ -6,25 +6,42 @@ ms.date: 12/18/2023
 
 # Android emulator
 
-The Android emulator, which is provided by Google, simulates Android devices on your computer so that you can test your apps on a variety of devices and Android API levels, without needing to have each physical device. Different devices are simulated via Android Virtual Devices (AVDs). When you deploy and test your app on the emulator, you select a pre-configured or custom virtual device that simulates a physical Android device such as a Pixel phone.
+The Android emulator, which is produced by Google, simulates Android devices on your computer so that you can test your apps on a variety of devices and Android API levels, without needing to have each physical device. Different devices are simulated via Android Virtual Devices (AVDs). When you deploy and test your app on the emulator, you select a pre-configured or custom virtual device that simulates a physical Android device such as a Pixel phone. Alternatively, you can deploy your app to a physical device. For more information, see [Set up Android device for debugging](~/android/device/setup.md).
 
-Alternatively, you can deploy your app to a physical device. For more information, see [Set up Android device for debugging](~/android/device/setup.md).
+The Android emulator is installed by Visual Studio, and an AVD created, when you build your first .NET Multi-platform App UI (.NET MAUI) app for Android. For more information, see [Build your first app](~/get-started/first-app.md?pivots=devices-android).
 
-## Get started
+If hardware acceleration isn't available or enabled, the emulator will run very slowly. You can significantly improve the performance of the emulator by enabling hardware acceleration and by using virtual device images that are appropriate for your processor architecture. For more information, see [How to enable hardware acceleration with Android emulators](hardware-acceleration.md).
 
-The Android emulator will be installed by Visual Studio, and an AVD created, when you build your first .NET Multi-platform App UI (.NET MAUI) app for Android. For more information, see [Build your first app](~/get-started/first-app.md?pivots=devices-android).
+Physical Android devices are emulated by AVDs, which specify the Android version and hardware characteristics of the simulated device. To test an app, create AVDs that model each device your app is designed to run on. Each AVD runs as an independent device with its own storage for user data, and SD card data. The emulator stores the user data, and SD card data in a folder specific to the AVD. When you launch the emulator, it loads the user data and SD card data from the AVD folder. For information about managing virtual devices, see [Managing virtual devices with the Android Device Manager](device-manager.md). For information about editing the configuration of a virtual device, see [Editing Android virtual device properties](device-properties.md).
 
-If hardware acceleration isn't available or enabled, the emulator will run very slowly. You can significantly improve the performance of the emulator by enabling hardware acceleration and virtual device images that are appropriate for your processor architecture. For more information, see [How to enable hardware acceleration with Android emulators](hardware-acceleration.md).
-
-Physical Android devices are emulated by AVDs, which specify the Android version and hardware characteristics of the simulated device. To test an app, create AVDs that model each device your app is designed to run on. Each AVD function runs as an independent device with its own storage for user data, and SD card data. The emulator stores the user data, SD card data, and cache in a folder specific to the AVD. When you launch the emulator, it loads the user data and SD card data from the AVD folder. For information about managing virtual devices, see [Managing virtual devices with the Android Device Manager](device-manager.md). For information about editing the configuration of a virtual device, see [Editing Android virtual device properties](device-properties.md).
-
-After you've created a AVD you can launch the emulator and debug an app in it. For more information, see [Debug on the Android emulator](debug-on-emulator.md). Once an app is installed on an AVD, you can run it from the device as you would run any app on a device.
+After you've created an AVD you can launch the emulator and debug an app in it. For more information, see [Debug on the Android emulator](debug-on-emulator.md). Once an app is installed on an AVD, you can run it from the device as you would run any app on a device.
 
 For information about diagnosing emulator issues, see [Android emulator troubleshooting](troubleshooting.md).
 
 ## Use the emulator
 
 When the Android emulator is running, you use your computer mouse pointer to mimic your finger on the touch screen, select menu items and input fields, and click buttons and controls. You can type in the emulator by using your computer keyboard or by using the onscreen keyboard that appears in the emulator.
+
+Common actions can be performed in the emulator via its panel on the right hand side. The following table lists common emulator actions:
+
+| Action | Icon | Description |
+| ------ | ---- | ----------- |
+| Close | :::image type="content" source="media/close.png" alt-text="Screenshot of the close button in the Android emulator window." border="false"::: | Close the emulator. |
+| Minimize | :::image type="content" source="media/minimize.png" alt-text="Screenshot of the minimize button in the Android emulator window." border="false"::: | Minimize the emulator window. |
+| Power | :::image type="content" source="media/power.png" alt-text="Screenshot of the power button in the Android emulator window." border="false"::: | Click to turn the screen on/off. Click and hold to turn the device on/off. |
+| Volume up | :::image type="content" source="media/volume-up.png" alt-text="Screenshot of the volume up button in the Android emulator window." border="false"::: | Increase the volume. |
+| Volume down | :::image type="content" source="media/volume-down.png" alt-text="Screenshot of the volume down button in the Android emulator window." border="false"::: | Decrease the volume. |
+| Rotate left | :::image type="content" source="media/rotate-left.png" alt-text="Screenshot of the rotate left button in the Android emulator window." border="false"::: | Rotate the screen 90 degrees left. |
+| Rotate right | :::image type="content" source="media/rotate-right.png" alt-text="Screenshot of the rotate right button in the Android emulator window." border="false"::: | Rotate the screen 90 degrees right. |
+| Take screenshot | :::image type="content" source="media/screenshot.png" alt-text="Screenshot of the screenshot button in the Android emulator window." border="false"::: | Click to take a screenshot of the device. |
+| Enter zoom mode | :::image type="content" source="media/zoom.png" alt-text="Screenshot of the zoom button in the Android emulator window." border="false"::: | Click to change the cursor to the zoom icon. Click again to exit zoom mode. |
+| Back | :::image type="content" source="media/back.png" alt-text="Screenshot of the back button in the Android emulator window." border="false"::: | Return to the previous screen, or close an options menu, dialog, onscreen keyboard, or Notifications panel. |
+| Home | :::image type="content" source="media/home.png" alt-text="Screenshot of the home button in the Android emulator window." border="false"::: | Return to the Home screen. |
+| Overview (recent apps) | :::image type="content" source="media/overview.png" alt-text="Screenshot of the overview button in the Android emulator window." border="false"::: | Click to open a list of apps you've worked with recently. To open an app, tap its thumbnail.  |
+| More | :::image type="content" source="media/more.png" alt-text="Screenshot of the more button in the Android emulator window." border="false"::: | Click for more features and settings. |
+
+:::image type="content" source="media/.png" alt-text=".":::
+
 
 The following table shows how to simulate gestures in the emulator:
 
@@ -37,26 +54,6 @@ The following table shows how to simulate gestures in the emulator:
 | Pinch | Press the CTRL key on Windows, or the Command key on macOS, to display a pinch gesture multi-touch interface. The mouse acts as the first finger, which can be moved by dragging the cursor. The second finger is across the anchor point. Pressing the left mouse button simulates touching both points, and releasing simulates removing both points. |
 | Swipe | Press and hold the primary mouse button, swipe, and then release. |
 | Vertical swipe | Open a vertical menu on the screen and use the mouse scroll wheel to scroll through the menu items. |
-
-Common actions can be performed in the emulator via its panel on the right hand side. The following table lists common emulator actions:
-
-| Action | Description |
-| ------ | ----------- |
-| Close | Close the emulator. |
-| Minimize | Minimize the emulator window. |
-| Resize | Resize the emulator. |
-| Power | Click to turn the screen on/off. Click and hold to turn the device on/off. |
-| Volume up | Increase the volume. |
-| Volume down | Decrease the volume. |
-| Rotate left | Rotate the screen 90 degrees left. |
-| Rotate right | Rotate the screen 90 degrees right. |
-| Take screenshot | Click to take a screenshot of the device. |
-| Enter zoom mode | Click to change the cursor to the zoom icon. Click again to exit zoom mode. |
-| Back | Return to the previous screen, or close an options menu, dialog, onscreen keyboard, or Notifications panel. |
-| Home | Return to the Home screen. |
-| Overview (recent apps) | Click to open a list of apps you've worked with recently. To open an app, tap its thumbnail.  |
-| Menu | Press CTRL+M on Windows, or COMMAND+M on macOS, to simulate the Menu button. |
-| More | Click for more features and settings. |
 
 ## Advanced emulator scenarios
 
