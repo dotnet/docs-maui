@@ -42,7 +42,6 @@ Common actions can be performed in the emulator via its panel on the right hand 
 
 :::image type="content" source="media/.png" alt-text=".":::
 
-
 The following table shows how to simulate gestures in the emulator:
 
 | Gesture | Description |
