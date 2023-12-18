@@ -22,7 +22,7 @@ For information about diagnosing emulator issues, see [Android emulator troubles
 
 When the Android emulator is running, you use your computer mouse pointer to mimic your finger on the touch screen, select menu items and input fields, and click buttons and controls. You can type in the emulator by using your computer keyboard or by using the onscreen keyboard that appears in the emulator.
 
-Common actions can be performed in the emulator via its panel on the right hand side. The following table lists common emulator actions:
+Common actions can be performed in the emulator via its panel on the right hand side:
 
 | Action | Icon | Description |
 | ------ | ---- | ----------- |
@@ -40,7 +40,7 @@ Common actions can be performed in the emulator via its panel on the right hand 
 | Overview (recent apps) | :::image type="content" source="media/overview.png" alt-text="Screenshot of the overview button in the Android emulator window." border="false"::: | Click to open a list of apps you've worked with recently. To open an app, tap its thumbnail.  |
 | More | :::image type="content" source="media/more.png" alt-text="Screenshot of the more button in the Android emulator window." border="false"::: | Click for more features and settings. |
 
-The following table shows how to simulate gestures in the emulator:
+The following gestures can be simulated in the emulator:
 
 | Gesture | Description |
 | ------- | ----------- |
@@ -54,7 +54,7 @@ The following table shows how to simulate gestures in the emulator:
 
 ## Advanced emulator scenarios
 
-The following table lists where to find more information about advanced Android emulator scenarios:
+You might want to test your app on a virtual device using more than just basic touch gestures. For example, you might want to simulate different network conditions. The following table lists where to find more information about advanced Android emulator scenarios:
 
 | Scenarios | More information |
 | ------- | ---------------- |
