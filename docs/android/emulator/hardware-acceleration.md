@@ -25,7 +25,7 @@ For the best experience on Windows, it's recommended you use WHPX to accelerate 
 - The emulator is running a system image created for an **x86-64** or **x86**-based virtual device.
 
 > [!IMPORTANT]
-> You can't run a VM-accelerated emulator inside another VM, such as a VM hosted by VirtualBox, VMware, or Docker (unless using WSL2). You must run the Android emulator [directly on your system hardware](https://developer.android.com/studio/run/emulator-acceleration.html#extensions).
+> A Virtual Machine (VM) accelerated emulator can run inside another VM, including Microsoft Dev Box, provided that nested virtualization is enabled in the VM.
 
 For information about launching and debugging with the Android emulator, see [Debugging on the Android Emulator](debug-on-emulator.md).
 
@@ -61,6 +61,9 @@ If all listed Hyper-V requirements have a value of **Yes**, then your computer c
 :::image type="content" source="media/hardware-acceleration/win/systeminfo-small.png" alt-text="Example of systeminfo output when checking Hyper-V support for .NET MAUI." lightbox="media/hardware-acceleration/win/systeminfo.png":::
 
 If the Hyper-V result indicates that a hypervisor is currently running, Hyper-V is already enabled.
+
+> [!IMPORTANT]
+> If Windows is running inside a virtual machine, nested virtualization must be enabled in the host hypervisor.
 
 ### Enable Hyper-V acceleration in Windows
 
