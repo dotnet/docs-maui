@@ -25,7 +25,7 @@ For the best experience on Windows, it's recommended you use WHPX to accelerate 
 - The emulator is running a system image created for an **x86-64** or **x86**-based virtual device.
 
 > [!IMPORTANT]
-> A Virtual Machine (VM) accelerated emulator can run inside another VM, including Microsoft DevBox, provided that nested virtualization is enabled in the VM.
+> A Virtual Machine (VM) accelerated emulator can run inside another VM, including Microsoft Dev Box, provided that nested virtualization is enabled in the VM.
 
 For information about launching and debugging with the Android emulator, see [Debugging on the Android Emulator](debug-on-emulator.md).
 
