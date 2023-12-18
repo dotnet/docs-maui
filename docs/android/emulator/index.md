@@ -6,7 +6,7 @@ ms.date: 12/18/2023
 
 # Android emulator
 
-The Android emulator, which is produced by Google, simulates Android devices on your computer so that you can test your apps on a variety of devices and Android API levels, without needing to have each physical device. Different devices are simulated via Android Virtual Devices (AVDs). When you deploy and test your app on the emulator, you select a pre-configured or custom virtual device that simulates a physical Android device such as a Pixel phone. Alternatively, you can deploy your app to a physical device. For more information, see [Set up Android device for debugging](~/android/device/setup.md).
+The Android emulator, which is produced by Google, simulates Android devices on your computer so that you can test your apps on a variety of devices and Android API levels, without needing to have each physical device. When you deploy and test your app on the emulator you select a pre-configured or custom virtual device, known as an Android Virtual Device (AVD) that simulates a physical Android device such as a Pixel phone. Alternatively, you can deploy your app to a physical device. For more information about deploying your app to physical device, see [Set up Android device for debugging](~/android/device/setup.md).
 
 The Android emulator is installed by Visual Studio, and an AVD created, when you build your first .NET Multi-platform App UI (.NET MAUI) app for Android. For more information, see [Build your first app](~/get-started/first-app.md?pivots=devices-android).
 
