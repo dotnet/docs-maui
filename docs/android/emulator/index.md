@@ -40,8 +40,6 @@ Common actions can be performed in the emulator via its panel on the right hand 
 | Overview (recent apps) | :::image type="content" source="media/overview.png" alt-text="Screenshot of the overview button in the Android emulator window." border="false"::: | Click to open a list of apps you've worked with recently. To open an app, tap its thumbnail.  |
 | More | :::image type="content" source="media/more.png" alt-text="Screenshot of the more button in the Android emulator window." border="false"::: | Click for more features and settings. |
 
-:::image type="content" source="media/.png" alt-text=".":::
-
 The following table shows how to simulate gestures in the emulator:
 
 | Gesture | Description |
