@@ -209,14 +209,14 @@ The `VideoHandler` class containing the mappers is named *VideoHandler.cs*. Its 
 ```xml
 <!-- Android -->
 <ItemGroup Condition="$(TargetFramework.StartsWith('net8.0-android')) != true">
-  <Compile Remove="**\**\*.Android.cs" />
-  <None Include="**\**\*.Android.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+  <Compile Remove="**\*.Android.cs" />
+  <None Include="**\*.Android.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 </ItemGroup>
 
 <!-- iOS and Mac Catalyst -->
 <ItemGroup Condition="$(TargetFramework.StartsWith('net8.0-ios')) != true AND $(TargetFramework.StartsWith('net8.0-maccatalyst')) != true">
-  <Compile Remove="**\**\*.MaciOS.cs" />
-  <None Include="**\**\*.MaciOS.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+  <Compile Remove="**\*.MaciOS.cs" />
+  <None Include="**\*.MaciOS.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 </ItemGroup>
 
 <!-- Windows -->
