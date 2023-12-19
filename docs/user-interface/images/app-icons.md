@@ -18,7 +18,7 @@ A .NET MAUI app icon can use any of the standard platform image formats, includi
 
 ## Change the icon
 
-In your .NET MAUI project, the image with the **MauiIcon** build action designates the icon to use for you app. This is represented in your project file as the `<MauiIcon>` item. You may only have one icon defined for your app. Any subsequent `<MauiIcon>` items are ignored.
+In your .NET MAUI project, the image with the **MauiIcon** build action designates the icon to use for your app. This is represented in your project file as the `<MauiIcon>` item. You may only have one icon defined for your app. Any subsequent `<MauiIcon>` items are ignored.
 
 The icon defined by your app can be composed of a single image, by specifying the file as the `Include` attribute:
 
