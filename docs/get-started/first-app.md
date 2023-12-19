@@ -212,8 +212,7 @@ If your app fails to compile, review [Troubleshooting known issues](../troublesh
 
 - Visual Studio 2022 for Mac 17.6 with the .NET, .NET MAUI, Android, and iOS workloads installed. For more information, see [Installation](installation.md?tabs=vsmac).
 
-> [!IMPORTANT]
-> To use Visual Studio for Mac with .NET 8, enable the **Visual Studio > Preferences > Other > Preview Features > Use the .NET 8 SDK if installed (requires restart)** checkbox.
+[!INCLUDE [Enable .NET 8 support in Visual Studio Mac](includes/vsmac-net8.md)]
 
 ## Create an app
 
