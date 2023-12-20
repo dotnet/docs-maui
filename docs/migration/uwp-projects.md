@@ -35,7 +35,7 @@ While upgrading your project, it's recommended to remove the following UWP MSBui
 
 - `WindowsXamlEnableOverview`
 - `AppxPackageSigningEnabled`
-- `GenerateAssemblyInfo`.
+- `GenerateAssemblyInfo`
 
 You'll also need to ensure that the platform architectures in the target project are specified with the following .NET runtime identifiers:
 
@@ -50,13 +50,13 @@ For more information about runtime identifiers, see [.NET RID Catalog](/dotnet/c
 
 ## Namespace changes
 
-There are differences in the names of namespaces and classes between UWP and WinUI 3. In many cases it's as easy as changing a namespace name and then your code will compile. For example, you'll need to replace the `Windows.UI.Xaml` namespace with the `Microsoft.UI.Xaml` namespace. Similarly, you'll need to replace the `Windows.UI.Xaml.Controls` namespace with the `Microsoft.UI.Xaml.Controls` namespace.
+There are differences in the names of namespaces between UWP and WinUI 3. In many cases it's as easy as changing a namespace name and then your code will compile. For example, you'll need to replace the `Windows.UI.Xaml` namespace with the `Microsoft.UI.Xaml` namespace. Similarly, you'll need to replace the `Windows.UI.Xaml.Controls` namespace with the `Microsoft.UI.Xaml.Controls` namespace.
 
 Other times, the mapping takes a bit more work, and in rare cases requires a change in approach. For more information, see [Mapping UWP APIs and libraries to the Windows App SDK](/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/api-mapping-table).
 
 ## API changes
 
-You'll need to address any API changes that may affect your app. For example, some types, methods, and properties may have been renamed, deprecated or removed. For information on what's supported when upgrading your UWP app to WinUI 3, see [What's supported when migrating from UWP to WinUI 3](/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/what-is-supported). For information about mapping UWP features and APIs to WinUI 3, see [Mapping UWP features to the Windows App SDK](/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/feature-mapping-table) and [Mapping UWP APIs and libraries to the Windows App SDK](/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/api-mapping-table).
+You'll need to address any API changes that may affect your app. For example, some types, methods, and properties may have been renamed, deprecated or removed. For information on what's supported when upgrading your UWP project to WinUI 3, see [What's supported when migrating from UWP to WinUI 3](/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/what-is-supported). For information about mapping UWP features and APIs to WinUI 3, see [Mapping UWP features to the Windows App SDK](/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/feature-mapping-table) and [Mapping UWP APIs and libraries to the Windows App SDK](/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/api-mapping-table).
 
 Your project can be made compatible with earlier OS versions by setting the `$(SupportedOSPlatformVersion)` property in your project file:
 
@@ -89,13 +89,13 @@ if (OperatingSystem.IsWindowsVersionAtLeast(10))
 
 ## Remove files
 
-The following files, that are present in Xamarin.Forms UWP projects, don't exist in WinUI 3 projects:
+The following files, which are present in Xamarin.Forms UWP projects, don't exist in WinUI 3 projects:
 
 - *MainPage.xaml* and *MainPage.xaml.cs*
 - *AssemblyInfo.cs*
 - *Default.rd.xml*
 
-Therefore, any required business logic contained in these files should be moved to other files.
+Therefore, you should remove these files if you've copied them from your UWP project to your WinUI 3 project. Any required business logic contained in these files should be moved elsewhere.
 
 [!INCLUDE [AssemblyInfo changes](includes/assemblyinfo-changes.md)]
 
@@ -105,14 +105,14 @@ You'll need to add the following files to your WinUI 3 project:
 
 - [*MauiProgram.cs*](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/main/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/MauiProgram.cs)
 - [*App.xaml*](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/main/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/App.xaml) and [*App.xaml.cs*](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/main/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/App.xaml.cs)
-  - Your Xamarin.UWP project includes *App.xaml* and *App.xaml.cs* files, to which you may have added additional business logic. Therefore, migrate any business logic over to the new versions of these files.
+  - Your Xamarin.Forms UWP project includes *App.xaml* and *App.xaml.cs* files, to which you may have added additional business logic. Therefore, migrate any business logic over to the new versions of these files.
 - [*launchSettings.json*](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/main/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/Properties/launchSettings.json)
 
 These files are required to bootstrap your .NET MAUI WinUI 3 project.
 
 ## Changes to Package.appxmanifest
 
-The following changes must be made to your project's *Package.appxmanifest* file:
+The following changes must be made to your migrated project's *Package.appxmanifest* file:
 
 1. Set the application entry point to `$targetentrypoint$`. For more information, see [Target entry point](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/6e7cb786ed18756749a617d303df46130eab45d9/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/Package.appxmanifest#L34).
 2. Add the `runFullTrust` capability. For more information, see [Run full trust capability](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/6e7cb786ed18756749a617d303df46130eab45d9/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/Package.appxmanifest#L48).
