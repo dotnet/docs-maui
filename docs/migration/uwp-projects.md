@@ -12,10 +12,18 @@ A .NET 8 project for a .NET MAUI WinUI app is similar to the following example:
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType> <!-- in Xamarin.Forms this was AppContainerExe -->
-    <UseWinUI>true</UseWinUI>
-    <UseMaui>true</UseMaui>
-    <EnableMsixTooling>true</EnableMsixTooling>
+    <TargetFramework>net7.0-windows10.0.19041.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <RootNamespace>MauiMultiHeadApp.WinUI</RootNamespace>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
     <Platforms>x86;x64;ARM64</Platforms>
+    <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
+    <PublishProfile>win10-$(Platform).pubxml</PublishProfile>
+    <UseWinUI>true</UseWinUI>
+    <EnableMsixTooling>true</EnableMsixTooling>
+    <UseMaui>true</UseMaui>
+    <!-- We do not want XAML files to be processed as .NET MAUI XAML -->
+    <EnableDefaultMauiItems>false</EnableDefaultMauiItems>
   </PropertyGroup>
 </Project>
 ```
