@@ -1,24 +1,23 @@
 ---
 title: "Xamarin.Forms UWP project migration"
-description: "Learn how to migrate a Xamarin.Forms UWP project to the Windows App SDK."
+description: "Learn how to migrate a Xamarin.Forms UWP project to a WinUI 3 project."
 ms.date: 11/13/2023
 ---
 
 # Xamarin.Forms UWP project migration
 
-A .NET 8 project for a .NET MAUI WinUI app is similar to the following example:
+A .NET 8 project for a .NET MAUI WinUI 3 app is similar to the following example:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType> <!-- in Xamarin.Forms this was AppContainerExe -->
-    <TargetFramework>net7.0-windows10.0.19041.0</TargetFramework>
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
-    <RootNamespace>MauiMultiHeadApp.WinUI</RootNamespace>
+    <RootNamespace>MyApp.WinUI</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Platforms>x86;x64;ARM64</Platforms>
     <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
-    <PublishProfile>win10-$(Platform).pubxml</PublishProfile>
     <UseWinUI>true</UseWinUI>
     <EnableMsixTooling>true</EnableMsixTooling>
     <UseMaui>true</UseMaui>
@@ -32,13 +31,13 @@ For a library project, omit the `$(OutputType)` property completely or specify `
 
 ## Changes to MSBuild properties
 
-While upgrading your app, it's recommended to remove the following UWP MSBuild properties from your project file:
+While upgrading your project, it's recommended to remove the following UWP MSBuild properties from your project file:
 
 - `WindowsXamlEnableOverview`
 - `AppxPackageSigningEnabled`
 - `GenerateAssemblyInfo`.
 
-You'll also need to specify the platform architectures in the target project with the following .NET runtime identifiers:
+You'll also need to ensure that the platform architectures in the target project are specified with the following .NET runtime identifiers:
 
 ```xml
 <PropertyGroup>
@@ -57,7 +56,7 @@ Other times, the mapping takes a bit more work, and in rare cases requires a cha
 
 ## API changes
 
-You'll also need to address any API changes that may affect your app. For example, some types, methods, and properties may have been renamed, deprecated or removed. For information on what's supported when upgrading your UWP app to the Windows App SDK, see [What's supported when migrating from UWP to WinUI 3](/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/what-is-supported). For information about mapping UWP features and APIs to WinUI 3, see [Mapping UWP features to the Windows App SDK](/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/feature-mapping-table) and [Mapping UWP APIs and libraries to the Windows App SDK](/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/api-mapping-table).
+You'll need to address any API changes that may affect your app. For example, some types, methods, and properties may have been renamed, deprecated or removed. For information on what's supported when upgrading your UWP app to WinUI 3, see [What's supported when migrating from UWP to WinUI 3](/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/what-is-supported). For information about mapping UWP features and APIs to WinUI 3, see [Mapping UWP features to the Windows App SDK](/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/feature-mapping-table) and [Mapping UWP APIs and libraries to the Windows App SDK](/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/api-mapping-table).
 
 Your project can be made compatible with earlier OS versions by setting the `$(SupportedOSPlatformVersion)` property in your project file:
 
@@ -90,7 +89,7 @@ if (OperatingSystem.IsWindowsVersionAtLeast(10))
 
 ## Remove files
 
-The following files, that are present in Xamarin.Forms UWP apps, don't exist in WinUI 3 projects:
+The following files, that are present in Xamarin.Forms UWP projects, don't exist in WinUI 3 projects:
 
 - *MainPage.xaml* and *MainPage.xaml.cs*
 - *AssemblyInfo.cs*
@@ -102,24 +101,24 @@ Therefore, any required business logic contained in these files should be moved 
 
 ## Add files
 
-You'll need to add the following files to your WinUI project:
+You'll need to add the following files to your WinUI 3 project:
 
 - [*MauiProgram.cs*](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/main/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/MauiProgram.cs)
 - [*App.xaml*](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/main/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/App.xaml) and [*App.xaml.cs*](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/main/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/App.xaml.cs)
   - Your Xamarin.UWP project includes *App.xaml* and *App.xaml.cs* files, to which you may have added additional business logic. Therefore, migrate any business logic over to the new versions of these files.
 - [*launchSettings.json*](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/main/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/Properties/launchSettings.json)
 
-These files are required to bootstrap your .NET MAUI WinUI project.
+These files are required to bootstrap your .NET MAUI WinUI 3 project.
 
 ## Changes to Package.appxmanifest
 
-The following changes must be made to your app's *Package.appxmanifest* file:
+The following changes must be made to your project's *Package.appxmanifest* file:
 
 1. Set the application entry point to `$targetentrypoint$`. For more information, see [Target entry point](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/6e7cb786ed18756749a617d303df46130eab45d9/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/Package.appxmanifest#L34).
 2. Add the `runFullTrust` capability. For more information, see [Run full trust capability](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/6e7cb786ed18756749a617d303df46130eab45d9/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/Package.appxmanifest#L48).
 3. Add the `Windows.Universal` and `Windows.Desktop` target device families. For more information, see [Universal target device family](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/6e7cb786ed18756749a617d303df46130eab45d9/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/Package.appxmanifest#L23) and [Desktop target device family](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/6e7cb786ed18756749a617d303df46130eab45d9/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/Package.appxmanifest#L24).
 
-Making these changes fixes common deployment errors for your app.
+Making these changes fixes common deployment errors for your app on Windows.
 
 For an example of a compliant *Package.appxmanifest* file, see [*Package.appxmanifest*](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/main/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/Package.appxmanifest).
 
@@ -129,7 +128,7 @@ There are behavioral changes to the `String.IndexOf()` method in .NET 5+ on diff
 
 ## Next steps
 
-Build and test your app to identify any UI differences between Xamarin.Forms and .NET MAUI.
+Build and test your app to identify any UI differences between Xamarin.Forms and .NET MAUI on Windows.
 
 You can now enjoy the benefits that .NET MAUI offers such as improved performance and modernized UI controls.
 
