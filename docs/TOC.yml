@@ -69,7 +69,7 @@
                   href: migration/apple-projects.md
                 - name: iOS binding project migration
                   href: migration/ios-binding-projects.md
-            - name: UWP projects
+            - name: UWP project migration
               href: migration/uwp-projects.md
             - name: Xamarin.Essentials migration
               href: migration/native-essentials.md

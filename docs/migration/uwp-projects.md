@@ -1,12 +1,12 @@
 ---
-title: "Xamarin.Forms UWP project migration to .NET MAUI WinUI"
-description: "Learn how to migrate a Xamarin.Forms UWP project to a .NET WinUI project."
+title: "Xamarin.Forms UWP project migration"
+description: "Learn how to migrate a Xamarin.Forms UWP project to the Windows App SDK."
 ms.date: 11/13/2023
 content_well_notification:
   - AI-contribution
 ---
 
-# Xamarin.Forms UWP project migration to .NET MAUI WinUI
+# Xamarin.Forms UWP project migration
 
 <!-- ## Prerequisites
 
@@ -32,7 +32,13 @@ For a library project, omit the `$(OutputType)` property completely or specify `
 
 ## Changes to MSBuild properties
 
-While upgrading your application, it is recommended to remove these UWP properties: `WindowsXamlEnableOverview`, `AppxPackageSigningEnabled`, and `GenerateAssemblyInfo`. Specify the platform architectures in the target project with the following .NET runtime identifiers:
+While upgrading your app, it's recommended to remove the following UWP MSBuild properties from your project file:
+
+- `WindowsXamlEnableOverview`
+- `AppxPackageSigningEnabled`
+- `GenerateAssemblyInfo`.
+
+You'll also need to specify the platform architectures in the target project with the following .NET runtime identifiers:
 
 ```xml
 <PropertyGroup>
@@ -43,15 +49,37 @@ While upgrading your application, it is recommended to remove these UWP properti
 
 For more information about runtime identifiers, see [.NET RID Catalog](/dotnet/core/rid-catalog).
 
+## Namespace changes
+
+There are differences in the names of namespaces and classes between UWP and WinUI 3. In many cases it's as easy as changing a namespace name and then your code will compile. For example, you'll need to replace the `Windows.UI.Xaml` namespace with the `Microsoft.UI.Xaml` namespace. Similarly, you'll need to replace the `Windows.UI.Xaml.Controls` namespace with the `Microsoft.UI.Xaml.Controls` namespace.
+
+Other times, the mapping takes a bit more work, and in rare cases requires a change in approach. For more information, see [Mapping UWP APIs and libraries to the Windows App SDK](/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/api-mapping-table).
+
 ## API changes
 
-To safely use recent or older APIs, you can declare a `SupportedOSPlatformVersion` in your project. Specify the `SupportedOSPlatformVersion` property in any `.csproj` file that targets Windows among other targets as shown:
+You'll also need to address any API changes that may affect your app. For example, some types, methods, and properties may have been renamed, deprecated or removed. For information on what's supported when upgrading your UWP app to the Windows App SDK, see [What's supported when migrating from UWP to WinUI 3](/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/what-is-supported). For information about mapping UWP features and APIs to WinUI 3, see [Mapping UWP features to the Windows App SDK](/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/feature-mapping-table) and [Mapping UWP APIs and libraries to the Windows App SDK](/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/api-mapping-table).
+
+Your project can be made compatible with earlier OS versions by setting the `$(SupportedOSPlatformVersion)` property in your project file:
 
 ```xml
-<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.19041.0</SupportedOSPlatformVersion>
+<PropertyGroup>
+   <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.19041.0</SupportedOSPlatformVersion>
+</PropertyGroup>
 ```
 
-If your project only targets Windows, it's sufficient to omit the platform checking condition and have `<SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>`. [Support older OS versions](/dotnet/standard/frameworks#support-older-os-versions) contains more information on using this property across your project files. To have platform version specific code, use the <xref:System.OperatingSystem.IsWindowsVersionAtLeast%2A> API at runtime:
+The `$(SupportedOSPlatformVersion)` property indicates the minimum OS version required to run your app or library. If you don't explicitly specify this minimum runtime OS version in your project, it defaults to the platform version from the Target Framework Moniker (TFM).
+
+If your project only targets Windows, it's sufficient to omit the platform checking condition and set the `$(SupportedOSPlatformVersion)` property directly:
+
+```xml
+<PropertyGroup>
+   <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
+</PropertyGroup>
+```
+
+For more information about the `$(SupportedOSPlatformVersion)` property, see [Support older OS versions](/dotnet/standard/frameworks#support-older-os-versions).
+
+For an app to run correctly on an older OS version, it can't call APIs that don't exist on that version of the OS. However, you can add guards around calls to newer APIs so they are only called when running on a version of the OS that supports them. This can be achieved with the <xref:System.OperatingSystem.IsWindowsVersionAtLeast%2A> method:
 
 ```csharp
 if (OperatingSystem.IsWindowsVersionAtLeast(10))
@@ -60,50 +88,40 @@ if (OperatingSystem.IsWindowsVersionAtLeast(10))
 }
 ```
 
-Address any API changes that may affect your app. For example, some methods and properties may have been renamed, deprecated or removed. Check [what is supported](/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/what-is-supported) when upgrading your UWP application to prepare adequately for a migration. Use these [feature mapping](/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/feature-mapping-table), [api mapping](/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/api-mapping-table) tables to identify and actionate across the changes from UWP to WinUI.
+## Remove files
 
-### Namespace changes
+The following files, that are present in Xamarin.Forms UWP apps, don't exist in WinUI 3 projects:
 
-Update the namespaces in your code files, following this [api mapping table](/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/api-mapping-table).
+- *MainPage.xaml* and *MainPage.xaml.cs*
+- *AssemblyInfo.cs*
+- *Default.rd.xml*
 
-For example, you'll need to replace the following namespaces:
+Therefore, any required business logic contained in these files should be moved to other files.
 
-- `Windows.UI.Xaml` with `Microsoft.UI.Xaml`
-- `Windows.UI.Xaml.Controls` with `Microsoft.UI.Xaml.Controls`.
+[!INCLUDE [AssemblyInfo changes](includes/assemblyinfo-changes.md)]
 
-### File changes
+## Add files
 
-#### Deprecated files
+You'll need to add the following files to your WinUI project:
 
-Migrate your business logic from the following files into other files and remove them:
+- [*MauiProgram.cs*](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/main/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/MauiProgram.cs)
+- [*App.xaml*](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/main/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/App.xaml) and [*App.xaml.cs*](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/main/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/App.xaml.cs)
+  - Your Xamarin.UWP project includes *App.xaml* and *App.xaml.cs* files, to which you may have added additional business logic. Therefore, migrate any business logic over to the new versions of these files.
+- [*launchSettings.json*](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/main/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/Properties/launchSettings.json)
 
-- MainPage.xaml/MainPage.xaml.cs
-- AssemblyInfo.cs
-- Default.rd.xml
+These files are required to bootstrap your .NET MAUI WinUI project.
 
-<!--  - See [AssemblyInfo changes](includes/assemblyinfo-changes.md) -->
+## Changes to Package.appxmanifest
 
-These files are no longer needed for a .NET MAUI WinUI app.
+The following changes must be made to your app's *Package.appxmanifest* file:
 
-#### Files to add
+1. Set the application entry point to `$targetentrypoint$`. For more information, see [Target entry point](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/6e7cb786ed18756749a617d303df46130eab45d9/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/Package.appxmanifest#L34).
+2. Add the `runFullTrust` capability. For more information, see [Run full trust capability](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/6e7cb786ed18756749a617d303df46130eab45d9/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/Package.appxmanifest#L48).
+3. Add the `Windows.Universal` and `Windows.Desktop` target device families. For more information, see [Universal target device family](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/6e7cb786ed18756749a617d303df46130eab45d9/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/Package.appxmanifest#L23) and [Desktop target device family](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/6e7cb786ed18756749a617d303df46130eab45d9/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/Package.appxmanifest#L24).
 
-Use this [.NET MAUI Multi Head Application](https://github.com/mattleibow/MauiMultiHeadProject/tree/main/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI) project as a sample for the following files when adding them to your upgraded project:
+Making these changes fixes common deployment errors for your app.
 
-- MauiProgram.cs
-- App.xaml/ App.xaml.cs
-  - The old Xamarin.UWP project starts with an app.xaml/.cs file. Migrate your business logic over to the Maui version of the file. There exists more resources [here](https://github.com/dotnet/maui/wiki/Migrating-from-Xamarin.Forms-to-.NET-MAUI) for manually moving resources from Xamarin.Forms projects to NET MAUI projects.
-- launchSettings.json
-
-These files are required to get your .NET MAUI WinUI app up and running.
-
-#### Package.appxmanifest changes
-
-1. Set the application entry point to `$targetentrypoint$`
-2. Add the `runFullTrust` capability
-3. Add the `Windows.Universal` and `Windows.Desktop` target device families
-
-> [!NOTE]
-> This step is crucial if you are unable to deploy or seeing deploy errors (not build errors) or are unable to select the deploy checkbox in the Configuration manager. Adding the targetDevice and the other updated to Package.appxmanifest fixes the most common errors.
+For an example of a compliant *Package.appxmanifest* file, see [](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/main/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/Package.appxmanifest).
 
 ## Runtime behavior
 
