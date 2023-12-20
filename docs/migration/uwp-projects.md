@@ -121,7 +121,7 @@ The following changes must be made to your app's *Package.appxmanifest* file:
 
 Making these changes fixes common deployment errors for your app.
 
-For an example of a compliant *Package.appxmanifest* file, see [](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/main/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/Package.appxmanifest).
+For an example of a compliant *Package.appxmanifest* file, see [*Package.appxmanifest*](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/main/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/Package.appxmanifest).
 
 ## Runtime behavior
 
