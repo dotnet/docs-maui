@@ -2,17 +2,9 @@
 title: "Xamarin.Forms UWP project migration"
 description: "Learn how to migrate a Xamarin.Forms UWP project to the Windows App SDK."
 ms.date: 11/13/2023
-content_well_notification:
-  - AI-contribution
 ---
 
 # Xamarin.Forms UWP project migration
-
-<!-- ## Prerequisites
-
-- Visual Studio 2023 Preview or later with and ensure that .NET Multi-platform App UI development is selected.
-- The latest version of the Windows App SDK extension for Visual Studio.
-- A Xamarin.Forms UWP app that targets Windows 10 version 1809 or later. -->
 
 A .NET 8 project for a .NET MAUI WinUI app is similar to the following example:
 
