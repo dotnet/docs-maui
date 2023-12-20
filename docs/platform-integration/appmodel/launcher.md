@@ -7,6 +7,8 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel"]
 
 # Launcher
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-essentials)
+
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.ApplicationModel.ILauncher> interface. This interface enables an application to open a URI by the system. This way of opening an application is often used when deep linking into another application's custom URI schemes.
 
 The default implementation of the `ILauncher` interface is available through the <xref:Microsoft.Maui.ApplicationModel.Launcher.Default?displayProperty=nameWithType> property. Both the `ILauncher` interface and `Launcher` class are contained in the `Microsoft.Maui.ApplicationModel` namespace.
@@ -102,9 +104,7 @@ The <xref:System.Threading.Tasks.Task> returned from <xref:Microsoft.Maui.Applic
 
 If the target app on the device has never been opened by your application with <xref:Microsoft.Maui.ApplicationModel.Launcher.OpenAsync%2A>, iOS displays a popover to the user, requesting permission to allow this action.
 
-<!-- TODO: where does this go?
-For more information about the iOS implementation, see [TITLE](xref:UIKit.UIApplication.CanOpenUrl*)
--->
+For more information about the iOS implementation, see <xref:UIKit.UIApplication.CanOpenUrl%2A>.
 
 # [Windows](#tab/windows)
 

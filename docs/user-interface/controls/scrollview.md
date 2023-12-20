@@ -22,15 +22,10 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.ScrollV
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, with the exception of the `Content` property, which means that they can be targets of data bindings and styled.
 
-The `Content` property is the `ContentProperty` of the <xref:Microsoft.Maui.Controls.ScrollView> class, and therefore does not need to be explicitly set from XAML.
+The `Content` property is the [`ContentProperty`](xref:Microsoft.Maui.Controls.ContentPropertyAttribute) of the <xref:Microsoft.Maui.Controls.ScrollView> class, and therefore does not need to be explicitly set from XAML.
 
 > [!WARNING]
 > <xref:Microsoft.Maui.Controls.ScrollView> objects should not be nested. In addition, <xref:Microsoft.Maui.Controls.ScrollView> objects should not be nested with other controls that provide scrolling, such as <xref:Microsoft.Maui.Controls.CollectionView>, <xref:Microsoft.Maui.Controls.ListView>, and <xref:Microsoft.Maui.Controls.WebView>.
-
-<!--
-> [!TIP]
-> To obtain the best possible layout performance, follow the guidelines at [Optimize layout performance](~/xamarin-forms/deploy-test/performance.md#optimize-layout-performance).
--->
 
 ## ScrollView as a root layout
 

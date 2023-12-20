@@ -173,7 +173,7 @@ In the previous example, the <xref:Microsoft.Maui.Controls.Grid> object was set 
 </ContentPage>
 ```
 
-The `Content` property isn't required in XAML because elements defined for use in .NET MAUI XAML are allowed to have one property specified as the `ContentProperty` attribute on the class:
+The `Content` property isn't required in XAML because elements defined for use in .NET MAUI XAML are allowed to have one property specified as the [`ContentProperty`](xref:Microsoft.Maui.Controls.ContentPropertyAttribute) attribute on the class:
 
 ```csharp
 [ContentProperty("Content")]
@@ -183,9 +183,9 @@ public class ContentPage : TemplatedPage
 }
 ```
 
-Any property specified as the `ContentProperty` of a class means that the property-element tags for the property are not required. Therefore, the example above specifies that any XAML content that appears between the start and end <xref:Microsoft.Maui.Controls.ContentPage> tags is assigned to the `Content` property.
+Any property specified as the [`ContentProperty`](xref:Microsoft.Maui.Controls.ContentPropertyAttribute) of a class means that the property-element tags for the property are not required. Therefore, the example above specifies that any XAML content that appears between the start and end <xref:Microsoft.Maui.Controls.ContentPage> tags is assigned to the `Content` property.
 
-Many classes also have `ContentProperty` attribute definitions. For example, the content property of <xref:Microsoft.Maui.Controls.Label> is `Text`. <!--For more information, see the [API documentation]().-->
+Many classes also have [`ContentProperty`](xref:Microsoft.Maui.Controls.ContentPropertyAttribute) attribute definitions. For example, the content property of <xref:Microsoft.Maui.Controls.Label> is `Text`.
 
 ## Platform differences
 

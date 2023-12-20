@@ -6,14 +6,16 @@ items:
   - name: Releases
     expanded: true
     items:
+    - name: .NET 8
+      href: dotnet-8.md
     - name: .NET 7
       href: dotnet-7.md
   - name: Month
     expanded: true
     items:
+    - name: November 2023
+      href: dotnet-docs-maui-mod2.md
     - name: October 2023
       href: dotnet-docs-maui-mod1.md
     - name: August 2023
       href: dotnet-docs-maui-mod2.md
-    - name: July 2023
-      href: dotnet-docs-maui-mod1.md

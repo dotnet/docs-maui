@@ -19,7 +19,7 @@ To migrate a Xamarin.Android binding library to a .NET Android class library:
     ```xml
     <Project Sdk="Microsoft.NET.Sdk">
       <PropertyGroup>
-        <TargetFramework>net7.0-android</TargetFramework>
+        <TargetFramework>net8.0-android</TargetFramework>
         <SupportedOSPlatformVersion>21</SupportedOSPlatformVersion>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
@@ -88,6 +88,29 @@ Alternatively, you could exclude all files within a folder:
 ```xml
 <AndroidLibrary Remove="AndroidStudio\**\*" />
 ```
+
+## New item group names
+
+`<AndroidLibrary>` is now the recommended item group to use for all `.jar` and `.aar` files. In Xamarin.Android, the following items groups were used, which can instead use item metadata to achieve the same result:
+
+| Legacy Item Group      | New Item Group   | Item Metadata  | Legacy Project Type          |
+|------------------------|------------------|----------------| ---------------------------- |
+| `AndroidAarLibrary`    | `AndroidLibrary` | `Bind="false"` | Application                  |
+| `AndroidJavaLibrary`   | `AndroidLibrary` | `Bind="false"` | Application or class library |
+| `EmbeddedJar`          | `AndroidLibrary` | n/a            | Binding project              |
+| `EmbeddedReferenceJar` | `AndroidLibrary` | `Bind="false"` | Binding project              |
+| `InputJar`             | `AndroidLibrary` | `Pack="false"` | Binding project              |
+| `LibraryProjectZip`    | `AndroidLibrary` | n/a            | Binding project              |
+
+Consider a `.aar` or `.jar` file, in which you aren't interested in including a C# binding. This is common for cases where you have Java or Kotlin dependencies that you don't need to call from C#. In this case, you can set the `Bind` metadata to `false`. By default, the file is picked up by the default wildcards. You can also use the `Update` attribute to set the `Bind` metadata:
+
+```xml
+<ItemGroup>
+  <AndroidLibrary Update="foo.jar" Bind="false">
+</ItemGroup>
+```
+
+In an Android class library project, this would redistribute the `.jar` file inside the resulting NuGet package as is. In an Android application project, this would include the `.jar` file in the resulting `.apk` or `.aab` file. Neither would include a C# binding for this Java library.
 
 ## Embedded JAR/AAR files
 

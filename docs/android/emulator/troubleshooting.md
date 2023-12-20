@@ -7,7 +7,7 @@ ms.date: 10/14/2022
 
 # Android emulator troubleshooting
 
-This article describes the most common warning messages and issues that occur while configuring and running the Android Emulator. Also, it describes solutions for resolving these errors and various troubleshooting tips to help you diagnose emulator problems.
+This article describes the most common warning messages and issues that occur while configuring and running the Android Emulator. Also, it describes solutions for resolving these errors and various troubleshooting tips to help you diagnose emulator problems. For more information, see [Troubleshoot known issues with Android Emulator](https://developer.android.com/studio/run/emulator-troubleshooting) on developer.android.com.
 
 ## Deployment issues on Windows
 

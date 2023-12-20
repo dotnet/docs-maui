@@ -256,17 +256,17 @@ To allow a data binding between a <xref:Microsoft.Maui.Controls.Button> and a vi
 > [!NOTE]
 > Many other controls also define `Command` and `CommandParameter` properties.
 
-The [`ICommand`](xref:System.Windows.Input.ICommand) interface is defined in the [System.Windows.Input](xref:System.Windows.Input) namespace, and consists of two methods and one event:
+The [<xref:System.Windows.Input.ICommand>](xref:System.Windows.Input.ICommand) interface is defined in the [System.Windows.Input](xref:System.Windows.Input) namespace, and consists of two methods and one event:
 
 - `void Execute(object arg)`
 - `bool CanExecute(object arg)`
 - `event EventHandler CanExecuteChanged`
 
-The viewmodel can define properties of type `ICommand`. You can then bind these properties to the `Command` property of each <xref:Microsoft.Maui.Controls.Button> or other element, or perhaps a custom view that implements this interface. You can optionally set the `CommandParameter` property to identify individual <xref:Microsoft.Maui.Controls.Button> objects (or other elements) that are bound to this viewmodel property. Internally, the <xref:Microsoft.Maui.Controls.Button> calls the `Execute` method whenever the user taps the <xref:Microsoft.Maui.Controls.Button>, passing to the `Execute` method its `CommandParameter`.
+The viewmodel can define properties of type <xref:System.Windows.Input.ICommand>. You can then bind these properties to the `Command` property of each <xref:Microsoft.Maui.Controls.Button> or other element, or perhaps a custom view that implements this interface. You can optionally set the `CommandParameter` property to identify individual <xref:Microsoft.Maui.Controls.Button> objects (or other elements) that are bound to this viewmodel property. Internally, the <xref:Microsoft.Maui.Controls.Button> calls the `Execute` method whenever the user taps the <xref:Microsoft.Maui.Controls.Button>, passing to the `Execute` method its `CommandParameter`.
 
 The `CanExecute` method and `CanExecuteChanged` event are used for cases where a <xref:Microsoft.Maui.Controls.Button> tap might be currently invalid, in which case the <xref:Microsoft.Maui.Controls.Button> should disable itself. The <xref:Microsoft.Maui.Controls.Button> calls `CanExecute` when the `Command` property is first set and whenever the `CanExecuteChanged` event is raised. If `CanExecute` returns `false`, the <xref:Microsoft.Maui.Controls.Button> disables itself and doesn’t generate `Execute` calls.
 
-You can use the `Command` or `Command<T>` class included in .NET MAUI to implement the `ICommand` interface. These two classes define several constructors plus a `ChangeCanExecute` method that the viewmodel can call to force the `Command` object to raise the `CanExecuteChanged` event.
+You can use the `Command` or `Command<T>` class included in .NET MAUI to implement the <xref:System.Windows.Input.ICommand> interface. These two classes define several constructors plus a `ChangeCanExecute` method that the viewmodel can call to force the `Command` object to raise the `CanExecuteChanged` event.
 
 The following example shows a viewmodel for a simple keypad that is intended for entering telephone numbers:
 
@@ -361,7 +361,7 @@ class KeypadViewModel: INotifyPropertyChanged
 }
 ```
 
-In this example, the `Execute` and `CanExecute` methods for the commands are defined as lambda functions in the constructor. The viewmodel assumes that the `AddCharCommand` property is bound to the `Command` property of several buttons (or anything other controls that have a command interface), each of which is identified by the `CommandParameter`. These buttons add characters to an `InputString` property, which is then formatted as a phone number for the `DisplayText` property. There's also a second property of type `ICommand` named `DeleteCharCommand`. This is bound to a back-spacing button, but the button should be disabled if there are no characters to delete.
+In this example, the `Execute` and `CanExecute` methods for the commands are defined as lambda functions in the constructor. The viewmodel assumes that the `AddCharCommand` property is bound to the `Command` property of several buttons (or anything other controls that have a command interface), each of which is identified by the `CommandParameter`. These buttons add characters to an `InputString` property, which is then formatted as a phone number for the `DisplayText` property. There's also a second property of type <xref:System.Windows.Input.ICommand> named `DeleteCharCommand`. This is bound to a back-spacing button, but the button should be disabled if there are no characters to delete.
 
 The following example shows the XAML that consumes the `KeypadViewModel`:
 

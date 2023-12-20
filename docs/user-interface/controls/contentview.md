@@ -6,8 +6,6 @@ ms.date: 01/13/2022
 
 # ContentView
 
-<!-- Sample links goes here -->
-
 The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.ContentView> is a control that enables the creation of custom, reusable controls.
 
 The <xref:Microsoft.Maui.Controls.ContentView> class defines a `Content` property, of type <xref:Microsoft.Maui.Controls.View>, which represents the content of the <xref:Microsoft.Maui.Controls.ContentView>. This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means that it can be the target of data bindings, and styled.

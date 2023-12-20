@@ -286,7 +286,7 @@ The `OnAppearing` method is overridden from the base class. This method is autom
 
 The `Add_Clicked` handler introduces another new concept, navigation. Because the app is using .NET MAUI Shell, you can navigate to pages by calling the `Shell.Current.GoToAsync` method. Notice that the handler is declared with the `async` keyword, which allows the use of the `await` keyword when navigating. This handler navigates to the `NotePage`.
 
-The last piece of code in the previous snippet is the `notesCollection_SelectionChanged` handler. This method takes the currently selected item, a **:::no-loc text="Note":::** model, and uses its information to navigate to the `NotePage`. `GoToAsync` uses a URI string for navigation. In this case, a string is constructed that uses a query string parameter to set a property on the destination page. The interpolated string representing the URI ends up looking similar to the following string:
+The last piece of code in the previous snippet is the `notesCollection_SelectionChanged` handler. This method takes the currently selected item, a **:::no-loc text="Note":::** model, and uses its information to navigate to the `NotePage`. <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> uses a URI string for navigation. In this case, a string is constructed that uses a query string parameter to set a property on the destination page. The interpolated string representing the URI ends up looking similar to the following string:
 
 ```text
 NotePage?ItemId=path\on\device\XYZ.notes.txt
@@ -339,4 +339,4 @@ The `Routing.RegisterRoute` method takes two parameters:
 
 Now you can run your app. Try adding new notes, navigating back and forth between notes, and deleting notes.
 
-[![Explore the code.](~/media/code-sample.png) Explore the code for this step of the tutorial.](https://github.com/dotnet/maui-samples/tree/main/7.0/Tutorials/CreateNetMauiApp/step4)
+[![Explore the code.](~/media/code-sample.png) Explore the code for this step of the tutorial.](https://github.com/dotnet/maui-samples/tree/main/8.0/Tutorials/CreateNetMauiApp/step4)

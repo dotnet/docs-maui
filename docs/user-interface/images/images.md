@@ -1,7 +1,7 @@
 ---
 title: "Add images to a .NET MAUI app project"
 description: "Learn how to add images to your .NET MAUI app, and control their resizing."
-ms.date: 09/04/2023
+ms.date: 11/16/2023
 ---
 
 # Add images to a .NET MAUI app project
@@ -28,6 +28,14 @@ An image can be added to your app project by dragging it into the *Resources\Ima
 
 To comply with Android resource naming rules, image filenames must be lowercase, start and end with a letter character, and contain only alphanumeric characters or underscores. For more information, see [App resources overview](https://developer.android.com/guide/topics/resources/providing-resources) on developer.android.com.
 
+::: moniker range=">=net-maui-8.0"
+
+Image filenames must also be unique, otherwise a build error will occur. For more information, see [Duplicate image filename errors](~/troubleshooting.md).
+
+::: moniker-end
+
+At build time, images can be resized to the correct resolutions for the target platform and device. The resulting images are then added to your app package. For information about disabling image packaging, see [Disable image packaging](~/troubleshooting.md#disable-image-packaging).
+
 ## Resize an image
 
 Devices have a range of screen sizes and densities and each platform has functionality for displaying density-dependent images. The base size of an image represents the baseline density of the image, and is effectively the 1.0 scale factor for the image (the size you would typically use in your code to specify the image size) from which all other density sizes are derived. If you don't specify the base size for a bitmap image, the image isn't resized. If you don't specify a base size for a vector image, such as an SVG file, the dimensions specified in the image are used as the base size.
@@ -45,7 +53,7 @@ The process shown in the diagram follows these steps:
 > [!TIP]
 > Use SVG images where possible. SVG images can upscale to larger sizes and still look crisp and clean. Bitmap-based images, such as a PNG or JPG image, look blurry when upscaled.
 
-The base size is specified with the `BaseSize="W,H"` attribute, where `W` is the width of the image and `H` is the height of the image. The value specified as the base size must be divisible by 8. The following example sets the base size:
+The base size is specified with the `BaseSize="W,H"` attribute, where `W` is the width of the image and `H` is the height of the image. The following example sets the base size:
 
 ```xml
 <MauiImage Include="Resources\Images\logo.jpg" BaseSize="376,678" />

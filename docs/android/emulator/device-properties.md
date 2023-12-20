@@ -6,7 +6,7 @@ ms.date: 02/23/2022
 
 # Editing Android virtual device properties
 
-This article explains how to use the Android Device Manager (AVD) to edit the profile properties of an Android virtual device.
+This article explains how to use the Android Device Manager (AVD) to edit the profile properties of an Android virtual device. For more information about Android virtual devices, see [Create and manage virtual devices](https://developer.android.com/studio/run/managing-avds) on developer.android.com.
 
 <!-- ::: zone pivot="windows" -->
 

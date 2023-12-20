@@ -88,10 +88,8 @@ picker.ItemsSource = monkeyList;
 
 A <xref:Microsoft.Maui.Controls.Picker> supports selection of one item at a time. When a user selects an item, the `SelectedIndexChanged` event fires, the `SelectedIndex` property is updated to an integer representing the index of the selected item in the list, and the `SelectedItem` property is updated to the `object` representing the selected item. The `SelectedIndex` property is a zero-based number indicating the item the user selected. If no item is selected, which is the case when the <xref:Microsoft.Maui.Controls.Picker> is first created and initialized, `SelectedIndex` will be -1.
 
-<!--
 > [!NOTE]
-> Item selection behavior in a <xref:Microsoft.Maui.Controls.Picker> can be customized on iOS with a platform-specific. For more information, see [Picker item selection on iOS](~/platform-integration/ios/picker-selection.md).
--->
+> Item selection behavior in a <xref:Microsoft.Maui.Controls.Picker> can be customized on iOS with a platform-specific. For more information, see [Picker item selection on iOS](~/ios/platform-specifics/picker-selection.md).
 
 The following XAML example shows how to retrieve the `SelectedItem` property value from the <xref:Microsoft.Maui.Controls.Picker>:
 
@@ -236,10 +234,8 @@ In addition to adding data using the `Items.Add` method, data can also be insert
 
 A <xref:Microsoft.Maui.Controls.Picker> supports selection of one item at a time. When a user selects an item, the `SelectedIndexChanged` event fires, and the `SelectedIndex` property is updated to an integer representing the index of the selected item in the list. The `SelectedIndex` property is a zero-based number indicating the item that the user selected. If no item is selected, which is the case when the <xref:Microsoft.Maui.Controls.Picker> is first created and initialized, `SelectedIndex` will be -1.
 
-<!--
 > [!NOTE]
-> Item selection behavior in a <xref:Microsoft.Maui.Controls.Picker> can be customized on iOS with a platform-specific. For more information, see [Picker item selection on iOS](~/platform-integration/ios/picker-selection.md).
--->
+> Item selection behavior in a <xref:Microsoft.Maui.Controls.Picker> can be customized on iOS with a platform-specific. For more information, see [Picker item selection on iOS](~/ios/platform-specifics/picker-selection.md).
 
 The following code example shows the `OnPickerSelectedIndexChanged` event handler method, which is executed when the `SelectedIndexChanged` event fires:
 

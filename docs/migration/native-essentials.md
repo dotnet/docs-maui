@@ -28,7 +28,7 @@ To use .NET MAUIs native device functionality in a .NET Android or .NET iOS app,
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net7.0-android</TargetFramework>
+    <TargetFramework>net8.0-android</TargetFramework>
     ...
     <UseMauiEssentials>true</UseMauiEssentials>
   </PropertyGroup>
@@ -42,7 +42,7 @@ To use .NET MAUIs native device functionality in a .NET Android or .NET iOS app,
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net7.0-ios</TargetFramework>
+    <TargetFramework>net8.0-ios</TargetFramework>
     ...
     <UseMauiEssentials>true</UseMauiEssentials>
   </PropertyGroup>
@@ -57,7 +57,7 @@ To use .NET MAUIs native device functionality in a .NET Android or .NET iOS app,
 # [Android](#tab/android)
 <!-- markdownlint-enable MD025 -->
 
-In any <xref:Android.App.Activity> that's launched you must call the `Platform.Init` method, which is in the <xref:Microsoft.Maui.ApplicationModel> namespace, from the `OnCreate` method:
+In any <xref:Android.App.Activity> that's launched, you must call the `Platform.Init` method, which is in the <xref:Microsoft.Maui.ApplicationModel> namespace, from the `OnCreate` method:
 
 ```csharp
 using Android.Content.PM;

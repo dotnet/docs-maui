@@ -1,7 +1,7 @@
 ---
 title: "SearchBar"
 description: "The .NET MAUI SearchBar is a user input control that is used for initiating a search. The SearchBar control supports placeholder text, query input, execution, and cancellation."
-ms.date: 02/15/2022
+ms.date: 10/19/2023
 ---
 
 # SearchBar
@@ -12,8 +12,9 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.SearchB
 
 <xref:Microsoft.Maui.Controls.SearchBar> defines the following properties:
 
+::: moniker range="=net-maui-7.0"
+
 - `CancelButtonColor` is a <xref:Microsoft.Maui.Graphics.Color> that defines the color of the cancel button.
-- `CharacterSpacing`, is a `double` that's the spacing between characters of the <xref:Microsoft.Maui.Controls.SearchBar> text.
 - `CursorPosition` is an `int` that determines the position at which the next character will be inserted into the string stored in the `Text` property.
 - `FontAttributes` is a `FontAttributes` enum value that determines whether the <xref:Microsoft.Maui.Controls.SearchBar> font is bold, italic, or neither.
 - `FontAutoScalingEnabled` is a `bool` which defines whether an app's UI reflects text scaling preferences set in the operating system.
@@ -21,21 +22,69 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.SearchB
 - `FontSize` is a `double` value that represents specific font sizes across platforms.
 - `HorizontalTextAlignment` is a `TextAlignment` enum value that defines the horizontal alignment of the query text.
 - `IsTextPredictionEnabled` is a `bool` that determines whether text prediction and automatic text correction is enabled.
-- `Placeholder` is a `string` that defines the placeholder text, such as "Search...".
-- `PlaceholderColor` is a <xref:Microsoft.Maui.Graphics.Color> that defines the color of the placeholder text.
-- `SearchCommand` is an `ICommand` that allows binding user actions, such as finger taps or clicks, to commands defined on a viewmodel.
+- `SearchCommand` is an <xref:System.Windows.Input.ICommand> that allows binding user actions, such as finger taps or clicks, to commands defined on a viewmodel.
 - `SearchCommandParameter` is an `object` that specifies the parameter that should be passed to the `SearchCommand`.
 - `SelectionLength` is an `int` that can be used to return or set the length of text selection within the <xref:Microsoft.Maui.Controls.SearchBar>.
-- `Text` is a `string` containing the query text in the <xref:Microsoft.Maui.Controls.SearchBar>.
-- `TextColor` is a <xref:Microsoft.Maui.Graphics.Color> that defines the query text color.
 - `VerticalTextAlignment` is a `TextAlignment` enum value that defines the vertical alignment of the query text.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-8.0"
+
+- `CancelButtonColor` is a <xref:Microsoft.Maui.Graphics.Color> that defines the color of the cancel button.
+- `HorizontalTextAlignment` is a `TextAlignment` enum value that defines the horizontal alignment of the query text.
+- `SearchCommand` is an <xref:System.Windows.Input.ICommand> that allows binding user actions, such as finger taps or clicks, to commands defined on a viewmodel.
+- `SearchCommandParameter` is an `object` that specifies the parameter that should be passed to the `SearchCommand`.
+- `VerticalTextAlignment` is a `TextAlignment` enum value that defines the vertical alignment of the query text.
+
+::: moniker-end
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 In addition, <xref:Microsoft.Maui.Controls.SearchBar> defines a `SearchButtonPressed` event, which is raised when the search button is clicked, or the enter key is pressed.
 
-> [!NOTE]
-><xref:Microsoft.Maui.Controls.SearchBar> derives from the `InputView` class, from which it inherits additional properties and events.
+<xref:Microsoft.Maui.Controls.SearchBar> derives from the `InputView` class, from which it inherits the following properties:
+
+::: moniker range="=net-maui-7.0"
+
+- `CharacterSpacing`, of type `double`, sets the spacing between characters in the entered text.
+- `IsReadOnly`, of type `bool`, defines whether the user should be prevented from modifying text. The default value of this property is `false`.
+- `IsSpellCheckEnabled`, of type `bool`, controls whether spell checking is enabled.
+- `Keyboard`, of type `Keyboard`, specifies the soft input keyboard that's displayed when entering text.
+- `MaxLength`, of type `int`, defines the maximum input length.
+- `Placeholder`, of type `string`, defines the text that's displayed when the control is empty.
+- `PlaceholderColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the color of the placeholder text.
+- `Text`, of type `string`, defines the text entered into the control.
+- `TextColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the color of the entered text.
+- `TextTransform`, of type `TextTransform`, specifies the casing of the entered text.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-8.0"
+
+- `CharacterSpacing`, of type `double`, sets the spacing between characters in the entered text.
+- `CursorPosition`, of type `int`, defines the position of the cursor within the editor.
+- `FontAttributes`, of type `FontAttributes`, determines text style.
+- `FontAutoScalingEnabled`, of type `bool`, defines whether the text will reflect scaling preferences set in the operating system. The default value of this property is `true`.
+- `FontFamily`, of type `string`, defines the font family.
+- `FontSize`, of type `double`, defines the font size.
+- `IsReadOnly`, of type `bool`, defines whether the user should be prevented from modifying text. The default value of this property is `false`.
+- `IsSpellCheckEnabled`, of type `bool`, controls whether spell checking is enabled.
+- `IsTextPredictionEnabled`, of type `bool`, controls whether text prediction and automatic text correction is enabled.
+- `Keyboard`, of type `Keyboard`, specifies the soft input keyboard that's displayed when entering text.
+- `MaxLength`, of type `int`, defines the maximum input length.
+- `Placeholder`, of type `string`, defines the text that's displayed when the control is empty.
+- `PlaceholderColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the color of the placeholder text.
+- `SelectionLength`, of type `int`, represents the length of selected text within the control.
+- `Text`, of type `string`, defines the text entered into the control.
+- `TextColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the color of the entered text.
+- `TextTransform`, of type `TextTransform`, specifies the casing of the entered text.
+
+::: moniker-end
+
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
+
+In addition, `InputView` defines a `TextChanged` event, which is raised when the text in the <xref:Microsoft.Maui.Controls.Entry> changes. The `TextChangedEventArgs` object that accompanies the `TextChanged` event has `NewTextValue` and `OldTextValue` properties, which specify the new and old text, respectively.
 
 ## Create a SearchBar
 
@@ -52,6 +101,8 @@ The equivalent C# code is:
 ```csharp
 SearchBar searchBar = new SearchBar { Placeholder = "Search items..." };
 ```
+
+[!INCLUDE [Keyboard autoscroll manager](includes/keyboardautomanagerscroll.md)]
 
 ## Perform a search with event handlers
 
@@ -81,9 +132,9 @@ In this example, a `DataService` class with a `GetSearchResults` method is used 
 
 ## Perform a search using a viewmodel
 
-A search can be executed without event handlers by binding the `SearchCommand` property to an `ICommand` implementation. For more information about commanding, see [Commanding](~/fundamentals/data-binding/commanding.md).
+A search can be executed without event handlers by binding the `SearchCommand` property to an <xref:System.Windows.Input.ICommand> implementation. For more information about commanding, see [Commanding](~/fundamentals/data-binding/commanding.md).
 
-The following example shows a viewmodel class that contains an `ICommand` property named `PerformSearch`:
+The following example shows a viewmodel class that contains an <xref:System.Windows.Input.ICommand> property named `PerformSearch`:
 
 ```csharp
 public class SearchViewModel : INotifyPropertyChanged
@@ -142,3 +193,16 @@ In this example, the `BindingContext` is set to an instance of the `SearchViewMo
 > [!NOTE]
 > On iOS, the `SearchBarRenderer` class contains an overridable `UpdateCancelButton` method. This method controls when the cancel button appears, and can be overridden in a custom renderer.
  -->
+
+::: moniker range=">=net-maui-8.0"
+
+[!INCLUDE [Hide and show the soft input keyboard](includes/soft-input-extensions.md)]
+
+The following example shows how to hide the soft input keyboard on a <xref:Microsoft.Maui.Controls.SearchBar> named `searchBar`, if it's currently showing:
+
+```csharp
+if (searchBar.IsSoftInputShowing())
+   await searchBar.HideSoftInputAsync(System.Threading.CancellationToken.None);
+```
+
+::: moniker-end

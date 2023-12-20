@@ -19,7 +19,7 @@ The <xref:Microsoft.Maui.Controls.ToolbarItem> class defines the following prope
 
 The <xref:Microsoft.Maui.Controls.ToolbarItem> class inherits the following typically used properties from the <xref:Microsoft.Maui.Controls.MenuItem> class:
 
-- <xref:Microsoft.Maui.Controls.MenuItem.Command>, of type `ICommand`, allows binding user actions, such as finger taps or clicks, to commands defined on a viewmodel.
+- <xref:Microsoft.Maui.Controls.MenuItem.Command>, of type <xref:System.Windows.Input.ICommand>, allows binding user actions, such as finger taps or clicks, to commands defined on a viewmodel.
 - <xref:Microsoft.Maui.Controls.MenuItem.CommandParameter>, of type `object`, specifies the parameter that should be passed to the `Command`.
 - <xref:Microsoft.Maui.Controls.MenuItem.IconImageSource>, of type <xref:Microsoft.Maui.Controls.ImageSource>, that determines the display icon on a <xref:Microsoft.Maui.Controls.ToolbarItem>  object.
 - <xref:Microsoft.Maui.Controls.MenuItem.Text>, of type `string`, determines the display text on a <xref:Microsoft.Maui.Controls.ToolbarItem>  object.
@@ -85,11 +85,11 @@ void OnItemClicked(object sender, EventArgs e)
 ```
 
 > [!NOTE]
-> <xref:Microsoft.Maui.Controls.ToolbarItem> objects can also use the <xref:Microsoft.Maui.Controls.MenuItem.Command> and <xref:Microsoft.Maui.Controls.MenuItem.CommandParameter> properties to react to user input without event handlers. <!--For more information about the `ICommand` interface and MVVM data-binding, see [Xamarin.Forms MenuItem MVVM Behavior](~/xamarin-forms/user-interface/menuitem.md#define-menuitem-behavior-with-mvvm).-->
+> <xref:Microsoft.Maui.Controls.ToolbarItem> objects can also use the <xref:Microsoft.Maui.Controls.MenuItem.Command> and <xref:Microsoft.Maui.Controls.MenuItem.CommandParameter> properties to react to user input without event handlers.
 
 ## Enable or disable a ToolbarItem at runtime
 
-To enable or disable a <xref:Microsoft.Maui.Controls.ToolbarItem> at runtime, bind its <xref:Microsoft.Maui.Controls.MenuItem.Command> property to an `ICommand` implementation, and ensure that its `canExecute` delegate enables and disables the `ICommand` as appropriate.
+To enable or disable a <xref:Microsoft.Maui.Controls.ToolbarItem> at runtime, bind its <xref:Microsoft.Maui.Controls.MenuItem.Command> property to an <xref:System.Windows.Input.ICommand> implementation, and ensure that its `canExecute` delegate enables and disables the <xref:System.Windows.Input.ICommand> as appropriate.
 
 > [!IMPORTANT]
 > Don't bind the `IsEnabled` property to another property when using the `Command` property to enable or disable the <xref:Microsoft.Maui.Controls.ToolbarItem>.

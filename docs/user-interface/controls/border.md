@@ -6,13 +6,11 @@ ms.date: 09/29/2022
 
 # Border
 
-<!-- Sample link, if any, goes here -->
-
 The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Border> is a container control that draws a border, background, or both, around another control. A <xref:Microsoft.Maui.Controls.Border> can only contain one child object. If you want to put a border around multiple objects, wrap them in a container object such as a layout.  For more information about layouts, see [Layouts](~/user-interface/layouts/index.md).
 
 <xref:Microsoft.Maui.Controls.Border> defines the following properties:
 
-- `Content`, of type `IView`, represents the content to display in the border. This property is the `ContentProperty` of the <xref:Microsoft.Maui.Controls.Border> class, and therefore does not need to be explicitly set from XAML.
+- `Content`, of type `IView`, represents the content to display in the border. This property is the [`ContentProperty`](xref:Microsoft.Maui.Controls.ContentPropertyAttribute) of the <xref:Microsoft.Maui.Controls.Border> class, and therefore does not need to be explicitly set from XAML.
 - `Padding`, of type `Thickness`, represents the distance between the border and its child element.
 - `StrokeShape`, of type `IShape`, describes the shape of the border. This property has a type converter applied to it that can convert a string to its equivalent `IShape`. It's default value is <xref:Microsoft.Maui.Controls.Shapes.Rectangle>. Therefore, a <xref:Microsoft.Maui.Controls.Border> will be rectangular by default.
 - `Stroke`, of type <xref:Microsoft.Maui.Controls.Brush>, indicates the brush used to paint the border.

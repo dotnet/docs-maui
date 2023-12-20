@@ -1,12 +1,10 @@
 ---
 title: "Build accessible apps with semantic properties"
 description: "Learn how to use the SemanticProperties class in a .NET MAUI app, so that a screen reader can speak about the user interface elements on a page."
-ms.date: 12/16/2021
+ms.date: 10/03/2023
 ---
 
 # Build accessible apps with semantic properties
-
-<!-- Sample link goes here -->
 
 Semantics for accessibility is concerned with building experiences that make your apps inclusive for people who use technology in a wide range of environments and approach your UI with a range of needs and experiences. In many situations, legal requirements for accessibility may provide an impetus for developers to address accessibility issues. Regardless, it's advisable to build inclusive and accessible apps so that your apps reach the largest possible audience.
 
@@ -192,12 +190,6 @@ SemanticScreenReader.Default.Announce("This is the announcement text.");
 
 The default platform screen reader must be enabled for text to be read aloud.
 
-<!--
-### Semantic effects
-
-Link to semantic effects (.NET MAUI Community Toolkit) which combines `IsInAccessibleTree` and `ExcludedWithChildren` support, if docs are ever created, + SemanticOrderView.
--->
-
 ## Automation properties
 
 Automation properties are attached properties that can be added to any element to indicate how the element is reported to the underlying platform's accessibility framework.
@@ -261,7 +253,7 @@ AutomationProperties.SetIsInAccessibleTree(entry, true);
 ### Name
 
 > [!IMPORTANT]
-> The [`Name`](xref:Microsoft.Maui.Controls.AutomationProperties.NameProperty) attached property has been superseded by the [`Description`](xref:Microsoft.Maui.Controls.SemanticProperties.DescriptionProperty) attached property.
+> The [`Name`](xref:Microsoft.Maui.Controls.AutomationProperties.NameProperty) attached property has been deprecated in .NET 8. Instead, use the [`Description`](xref:Microsoft.Maui.Controls.SemanticProperties.DescriptionProperty) attached property.
 
 The [`Name`](xref:Microsoft.Maui.Controls.AutomationProperties.NameProperty) attached property value should be a short, descriptive text string that a screen reader uses to announce an element. This property should be set for elements that have a meaning that is important for understanding the content or interacting with the user interface. This can be accomplished in XAML as follows:
 
@@ -281,7 +273,7 @@ AutomationProperties.SetName(activityIndicator, "Progress indicator");
 ### HelpText
 
 > [!IMPORTANT]
-> The [`HelpText`](xref:Microsoft.Maui.Controls.AutomationProperties.HelpTextProperty) attached property has been superseded by the [`Hint`](xref:Microsoft.Maui.Controls.SemanticProperties.HintProperty) attached property.
+> The [`HelpText`](xref:Microsoft.Maui.Controls.AutomationProperties.HelpTextProperty) attached property has been deprecated in .NET 8. Instead, use the [`Hint`](xref:Microsoft.Maui.Controls.SemanticProperties.HintProperty) attached property.
 
 The [`HelpText`](xref:Microsoft.Maui.Controls.AutomationProperties.HelpTextProperty) attached property should be set to text that describes the user interface element, and can be thought of as tooltip text associated with the element. This can be accomplished in XAML as follows:
 
@@ -304,7 +296,7 @@ On some platforms, for edit controls such as an <xref:Microsoft.Maui.Controls.En
 ### LabeledBy
 
 > [!IMPORTANT]
-> The [`LabeledBy`](xref:Microsoft.Maui.Controls.AutomationProperties.LabeledByProperty) attached property has been superseded by bindings. For more information, see [SemanticProperties: Description](#description).
+> The [`LabeledBy`](xref:Microsoft.Maui.Controls.AutomationProperties.LabeledByProperty) attached property has been deprecated in .NET 8. Instead, use a `SemanticProperties.Description` binding. For more information, see [SemanticProperties: Description](#description).
 
 The [`LabeledBy`](xref:Microsoft.Maui.Controls.AutomationProperties.LabeledByProperty) attached property allows another element to define accessibility information for the current element. For example, a <xref:Microsoft.Maui.Controls.Label> next to an <xref:Microsoft.Maui.Controls.Entry> can be used to describe what the <xref:Microsoft.Maui.Controls.Entry> represents. This can be accomplished in XAML as follows:
 

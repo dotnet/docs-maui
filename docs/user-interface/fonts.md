@@ -6,8 +6,6 @@ ms.date: 12/23/2021
 
 # Fonts in .NET MAUI
 
-<!-- Sample link (if any), goes here -->
-
 By default, .NET Multi-platform App UI (.NET MAUI) apps use the Open Sans font on each platform. However, this default can be changed, and additional fonts can be registered for use in an app.
 
 All controls that display text define properties that can be set to change font appearance:
@@ -58,7 +56,7 @@ A font can be added to your app project by dragging it into the *Resources\Fonts
 
 Fonts can also be added to other folders of your app project. However, in this scenario their build action must be manually set to **MauiFont** in the **Properties** window.
 
-At build time, fonts are copied to your app package.
+At build time, fonts are copied to your app package. For information about disabling font packaging, see [Disable font packaging](~/troubleshooting.md#disable-font-packaging).
 
 > [!NOTE]
 > The `*` wildcard character indicates that all the files within the folder will be treated as being font files. In addition, if you want to include files from sub-folders too, then configure it using additional wildcard characters, for example, `Resources\Fonts\**\*`.
@@ -98,6 +96,39 @@ Label label2 = new Label
     FontFamily = "Lobster"
 };
 ```
+
+::: moniker range=">=net-maui-8.0"
+
+On Android, the following system fonts can be consumed by setting them as the value of the `FontFamily` property:
+
+- monospace
+- serif
+- sans-serif (or sansserif)
+- sans-serif-black (or sansserif-black)
+- sans-serif-condensed (or sansserif-condensed)
+- sans-serif-condensed-light (or sansserif-condensed-light)
+- sans-serif-light (or sansserif-light)
+- sans-serif-medium (or sansserif-medium)
+
+For example, the monospace system font can be consumed with the following XAML:
+
+```xaml
+<Label Text="Hello .NET MAUI"
+       FontFamily="monospace" />
+```
+
+The equivalent C# code is:
+
+```csharp
+// Use font name
+Label label1 = new Label
+{
+    Text = "Hello .NET MAUI!",
+    FontFamily = "monospace"
+};
+```
+
+::: moniker-end
 
 ## Set font attributes
 

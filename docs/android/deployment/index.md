@@ -8,10 +8,9 @@ ms.date: 04/05/2023
 
 > [!div class="op_single_selector"]
 >
-> - [Publish for Android](index.md)
-> - [Publish for iOS](../../ios/deployment/index.md)
-> - [Publish for macOS](../../mac-catalyst/deployment/index.md)
-> - [Publish for Windows](../../windows/deployment/overview.md)
+> - [Publish for Google Play distribution](publish-google-play.md)
+> - [Publish for ad-hoc distribution](publish-ad-hoc.md)
+> - [Publish using the command line](publish-cli.md)
 
 The final step in the development of a .NET Multi-platform App UI (.NET MAUI) app is to publish it. Publishing is the process of creating a package that contains the app and is ready for users to install on their devices. Publishing involve two essential tasks:
 
@@ -46,7 +45,6 @@ Google Play is the most comprehensive and popular marketplace for Android apps. 
 
 <!--
 - [Build Process](~/android/deploy-test/building-apps/build-process.md)
-- [Linking](~/android/deploy-test/linker.md)
 - [Obtaining A Google Maps API Key](~/android/platform/maps-and-location/maps/obtaining-a-google-maps-api-key.md)
 - [Deploy via Visual Studio App Center](/appcenter/distribution/stores/googleplay)
 - [Application Signing](https://source.android.com/security/apksigning/)
@@ -54,3 +52,4 @@ Google Play is the most comprehensive and popular marketplace for Android apps. 
 
 - [Publishing on Google Play](https://developer.android.com/distribute/googleplay/publish/index.html)
 - [Google Application Licensing](https://developer.android.com/guide/google/play/licensing/index.html)
+- [Linking](~/android/linking.md)

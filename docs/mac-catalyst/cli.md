@@ -16,7 +16,7 @@ In this tutorial, you'll learn how to create and run a .NET Multi-platform App U
 
     ```zsh
     cd MyMauiApp
-    dotnet build -t:Run -f net7.0-maccatalyst
+    dotnet build -t:Run -f net8.0-maccatalyst
     ```
 
     The `dotnet build` command will restore the project dependencies, build the app, and launch it.

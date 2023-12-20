@@ -6,6 +6,11 @@ ms.date: 05/15/2023
 
 # Publish an Android app for Google Play distribution
 
+> [!div class="op_single_selector"]
+>
+> - [Publish for ad-hoc distribution](publish-ad-hoc.md)
+> - [Publish using the command line](publish-cli.md)
+
 The most common approach to distributing Android apps to users is through the Google Play. The first time an app is submitted to Google Play it must be submitted through the Google Play Console. Subsequent versions of the app can be submitted through Visual Studio. In both cases, a Google Play Developer account is required. Apps submitted to Google Play require approval from Google.
 
 To distribute a .NET Multi-platform App UI (.NET MAUI) Android app, you'll need to sign it with a key from your keystore, prior to upload to Google Play. Keystores are binary files that serve as repositories of certificates and private keys.

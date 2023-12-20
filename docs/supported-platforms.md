@@ -23,7 +23,7 @@ ms.date: 04/13/2022
 
 .NET MAUI apps for Android, iOS, and Windows can be built in Visual Studio. However, a networked Mac is required for iOS development.
 
-<!-- .NET MAUI apps for Android, iOS, and macOS can be built in Visual Studio for Mac.-->
+.NET MAUI apps for Android, iOS, and macOS can be built in Visual Studio for Mac, and in Visual Studio Code when using the .NET MAUI extension.
 
 ## Additional platform support
 

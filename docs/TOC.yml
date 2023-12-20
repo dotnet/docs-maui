@@ -17,6 +17,8 @@
           items:
             - name: Emulator
               items:
+                - name: Overview
+                  href: android/emulator/index.md
                 - name: How to enable hardware acceleration
                   href: android/emulator/hardware-acceleration.md
                 - name: Manage and create virtual devices
@@ -117,6 +119,8 @@
               href: xaml/fundamentals/mvvm.md
         - name: Compilation
           href: xaml/xamlc.md
+        - name: Class modifiers
+          href: xaml/class-modifiers.md
         - name: Field modifiers
           href: xaml/field-modifiers.md
         - name: Generics
@@ -473,6 +477,8 @@
               href: user-interface/menu-bar.md
             - name: Display menu items
               href: user-interface/menuitem.md
+            - name: Keyboard accelerators
+              href: user-interface/keyboard-accelerators.md
         - name: Shadows
           href: user-interface/shadow.md
         - name: Styles
@@ -786,9 +792,41 @@
               items:
                 - name: Overview
                   href: windows/deployment/overview.md
-                - name: Publish with the .NET CLI
+                - name: Publish a packaged app with the .NET CLI
                   href: windows/deployment/publish-cli.md
+                - name: Publish an unpackaged app with the .NET CLI
+                  href: windows/deployment/publish-unpackaged-cli.md
                 - name: Publish with Visual Studio to a folder
                   href: windows/deployment/publish-visual-studio-folder.md
+    - name: Enterprise application patterns
+      items:
+        - name: Overview
+          href: /dotnet/architecture/maui?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Preface
+          href: /dotnet/architecture/maui/preface?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Introduction
+          href: /dotnet/architecture/maui/introduction?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Model-View-ViewModel pattern
+          href: /dotnet/architecture/maui/mvvm?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Dependency injection
+          href: /dotnet/architecture/maui/dependency-injection?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Communicating between components
+          href: /dotnet/architecture/maui/communicating-between-components?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Navigation
+          href: /dotnet/architecture/maui/navigation?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Validation
+          href: /dotnet/architecture/maui/validation?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Configuration management
+          href: /dotnet/architecture/maui/configuration-management?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Containerized microservices
+          href: /dotnet/architecture/maui/micro-services?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Accessing remote data
+          href: /dotnet/architecture/maui/accessing-remote-data?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Authentication and authorization
+          href: /dotnet/architecture/maui/authentication-and-authorization?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: MVVM community toolkit features
+          href: /dotnet/architecture/maui/mvvm-community-toolkit-features?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Unit testing
+          href: /dotnet/architecture/maui/unit-testing?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
     - name: Troubleshooting
       href: troubleshooting.md

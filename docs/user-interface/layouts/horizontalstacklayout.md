@@ -14,11 +14,6 @@ The <xref:Microsoft.Maui.Controls.HorizontalStackLayout> defines the following p
 
 This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means that it can be the target of data bindings and styled.
 
-<!--
-> [!TIP]
-> To obtain the best possible layout performance, follow the guidelines at [Optimize layout performance](~/xamarin-forms/deploy-test/performance.md#optimize-layout-performance).
--->
-
 The following XAML shows how to create a <xref:Microsoft.Maui.Controls.HorizontalStackLayout> that contains different child views:
 
 ```xaml
@@ -109,9 +104,7 @@ A <xref:Microsoft.Maui.Controls.HorizontalStackLayout> only respects the alignme
 - `End`, which positions the <xref:Microsoft.Maui.Controls.Label> at the end of the <xref:Microsoft.Maui.Controls.HorizontalStackLayout>.
 - `Fill`, which ensures that the <xref:Microsoft.Maui.Controls.Label> fills the height of the <xref:Microsoft.Maui.Controls.HorizontalStackLayout>.
 
-<!--
-For more information about alignment, see [Layout Options in .NET MAUI](layout-options.md).
--->
+For more information about alignment, see [Align and position .NET MAUI controls](~/user-interface/align-position.md).
 
 ## Nest HorizontalStackLayout objects
 
@@ -158,4 +151,4 @@ In this example, the parent <xref:Microsoft.Maui.Controls.HorizontalStackLayout>
 :::image type="content" source="media/horizontalstacklayout/nested.png" alt-text="HorizontalStackLayout displaying two nested HorizontalStackLayout objects screenshot.":::
 
 > [!IMPORTANT]
-> The deeper you nest layout objects, the more the nested layouts will impact performance. <!--For more information, see [Choose the correct layout](~/xamarin-forms/deploy-test/performance.md#choose-the-correct-layout). -->
+> The deeper you nest layout objects the more layout calculations will be performed, which may impact performance. For more information, see [Choose the correct layout](~/deployment/performance.md#choose-the-correct-layout).

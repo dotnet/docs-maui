@@ -38,6 +38,8 @@ Once you've created an App ID you must create a provisioning profile for the App
 
 ## Download provisioning profiles
 
+[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
+
 Once you've created a provisioning profile it must be downloaded by Visual Studio for Mac:
 
 1. In Visual Studio for Mac, go to *Visual Studio > Preferences > Publishing > Apple Developer Account*.
@@ -64,7 +66,7 @@ The project file for your app should be updated to use the signing certificate, 
 The following example shows a typical property group for building and signing your Mac Catalyst app for Mac App Store distribution:
 
 ```xml
-<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-maccatalyst|AnyCPU'">
+<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-maccatalyst|AnyCPU'">
   <EnableCodeSigning>True</EnableCodeSigning>
   <CodesignKey>Apple Distribution: John Smith (AY2GDE9QM7)</CodesignKey>
   <CodesignProvision>MyMauiApp</CodesignProvision>

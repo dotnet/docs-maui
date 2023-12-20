@@ -88,4 +88,4 @@ The `ShowMoreInfo` button isn't using the event handler, so the `LearnMore_Click
 
     :::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/Views/AboutPage.xaml.cs":::
 
-[![Explore the code.](~/media/code-sample.png) Explore the code for this step of the tutorial.](https://github.com/dotnet/maui-samples/tree/main/7.0/Tutorials/ConvertToMvvm/step3_viewmodel_about)
+[![Explore the code.](~/media/code-sample.png) Explore the code for this step of the tutorial.](https://github.com/dotnet/maui-samples/tree/main/8.0/Tutorials/ConvertToMvvm/step3_viewmodel_about)

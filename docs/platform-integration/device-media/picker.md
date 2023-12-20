@@ -7,6 +7,8 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Media", "MediaPicker"]
 
 # Media picker for photos and videos
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-essentials)
+
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Media.IMediaPicker> interface. This interface lets a user pick or take a photo or video on the device.
 
 The default implementation of the `IMediaPicker` interface is available through the <xref:Microsoft.Maui.Media.MediaPicker.Default?displayProperty=nameWithType> property. Both the `IMediaPicker` interface and `MediaPicker` class are contained in the `Microsoft.Maui.Media` namespace.
@@ -52,13 +54,12 @@ These permissions can be added in the following ways:
   <!-- Required only if your app needs to access audio files that other apps created -->
   <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />    
   ```
-<!-- NOT SUPPORTED
+
   \- or -
 
-- Use the Android project properties:
+- Update the Android Manifest in the manifest editor:
 
-  Right-click on the Android project and open the project's properties. Under _Android Manifest_ find the **Required permissions:** area and check the appropriate permissions. This will automatically update the _AndroidManifest.xml_ file.
--->
+  In Visual Studio double-click on the *Platforms/Android/AndroidManifest.xml* file to open the Android manifest editor. Then, under **Required permissions** check the permissions listed above. This will automatically update the *AndroidManifest.xml* file.
 
 If your project's Target Android version is set to **Android 11 (R API 30)** or higher, you must update your _Android Manifest_ with queries that use Android's [package visibility requirements](https://developer.android.com/preview/privacy/package-visibility).
 

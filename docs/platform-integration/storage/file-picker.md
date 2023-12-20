@@ -7,6 +7,8 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Storage", "FilePicker"]
 
 # File picker
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-essentials)
+
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IFilePicker` interface. With the `IFilePicker` interface, you can prompt the user to pick one or more files from the device.
 
 The default implementation of the `IFilePicker` interface is available through the `FilePicker.Default` property. Both the `IFilePicker` interface and `FilePicker` class are contained in the `Microsoft.Maui.Storage` namespace.
@@ -52,15 +54,12 @@ These permissions can be added in the following ways:
   <!-- Required only if your app needs to access audio files that other apps created -->
   <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />    
   ```
-<!-- NOT SUPPORTED
+
   \- or -
 
-- Use the Android project properties:
+- Update the Android Manifest in the manifest editor:
 
-  TODO: Check on this value
-
-  Right-click on the Android project and open the project's properties. Under _Android Manifest_ find the **Required permissions:** area and check the **ReadExternalStorage** permission. This will automatically update the _AndroidManifest.xml_ file.
--->
+  In Visual Studio double-click on the *Platforms/Android/AndroidManifest.xml* file to open the Android manifest editor. Then, under **Required permissions** check the permissions listed above. This will automatically update the *AndroidManifest.xml* file.
 
 # [iOS/Mac Catalyst](#tab/macios)
 

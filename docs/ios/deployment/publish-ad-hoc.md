@@ -6,6 +6,12 @@ ms.date: 02/24/2023
 
 # Publish an iOS app for ad-hoc distribution
 
+> [!div class="op_single_selector"]
+>
+> - [Publish for app store distribution](publish-app-store.md)
+> - [Publish for in-house distribution](publish-in-house.md)
+> - [Publish using the command line](publish-cli.md)
+
 Ad-hoc distribution is primarily used for testing apps within a wide group of people, and is available for the Apple Developer Program and the Apple Developer Enterprise Program. Another use case for ad-hoc distribution is distribution within a company when App Store Connect isn't an option.
 
 Ad-hoc distribution has the advantage of not requiring App Store approval, with apps being installed with [Apple Configurator](https://apps.apple.com/app/id1037126344). However, it's limited to 100 devices per membership year, for both development and distribution, and the devices must be added to your Apple Developer Account.
@@ -97,6 +103,8 @@ Visual Studio can publish a .NET MAUI iOS app for ad-hoc distribution. For infor
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio for Mac](#tab/vsmac)
 <!-- markdownlint-enable MD025 -->
+
+[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
 
 [!INCLUDE [Publish](../includes/publish-vsmac.md)]
 

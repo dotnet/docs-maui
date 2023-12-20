@@ -1,7 +1,7 @@
 ---
 title: "ContentPage"
 description: "The .NET MAUI ContentPage displays a single view, which is often a layout, and is the most common page type."
-ms.date: 03/14/2022
+ms.date: 10/27/2023
 ---
 
 # ContentPage
@@ -10,7 +10,24 @@ ms.date: 03/14/2022
 
 The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.ContentPage> displays a single view, which is often a layout such as as <xref:Microsoft.Maui.Controls.Grid> or <xref:Microsoft.Maui.Controls.StackLayout>, and is the most common page type.
 
-<xref:Microsoft.Maui.Controls.ContentPage> defines a `Content` property, of type <xref:Microsoft.Maui.Controls.View>, which defines the view that represents the page's content. This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means that it can be the target of data bindings, and styled. In addition, <xref:Microsoft.Maui.Controls.ContentPage> inherits `Title`, `IconImageSource`, `BackgroundImageSource`, `IsBusy`, and `Padding` bindable properties from the <xref:Microsoft.Maui.Controls.Page> class.
+::: moniker range="=net-maui-7.0"
+
+<xref:Microsoft.Maui.Controls.ContentPage> defines the <xref:Microsoft.Maui.Controls.ContentPage.Content> property, of type <xref:Microsoft.Maui.Controls.View>, which defines the view that represents the page's content. This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means that it can be the target of data bindings, and styled.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-8.0"
+
+<xref:Microsoft.Maui.Controls.ContentPage> defines the following properties:
+
+- <xref:Microsoft.Maui.Controls.ContentPage.Content> property, of type <xref:Microsoft.Maui.Controls.View>, which defines the view that represents the page's content.
+- <xref:Microsoft.Maui.Controls.ContentPage.HideSoftInputOnTapped>, of type `bool`, which indicates whether tapping anywhere on the page will cause the soft input keyboard to hide if it's visible.
+
+These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be the target of data bindings, and styled.
+
+::: moniker-end
+
+In addition, <xref:Microsoft.Maui.Controls.ContentPage> inherits `Title`, `IconImageSource`, `BackgroundImageSource`, `IsBusy`, and `Padding` bindable properties from the <xref:Microsoft.Maui.Controls.Page> class.
 
 > [!NOTE]
 > The `Content` property is the content property of the <xref:Microsoft.Maui.Controls.ContentPage> class, and therefore does not need to be explicitly set from XAML.

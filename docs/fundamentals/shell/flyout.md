@@ -326,7 +326,7 @@ This example adds a  <xref:Microsoft.Maui.Controls.MenuItem> object to the flyou
 
 :::image type="content" source="media/flyout/flyout.png" alt-text="Screenshot of flyout containing a MenuItem object.":::
 
-The  <xref:Microsoft.Maui.Controls.MenuItem> object executes an `ICommand` named `HelpCommand`, which opens the URL specified by the `CommandParameter` property in the system web browser.
+The  <xref:Microsoft.Maui.Controls.MenuItem> object executes an <xref:System.Windows.Input.ICommand> named `HelpCommand`, which opens the URL specified by the `CommandParameter` property in the system web browser.
 
 > [!NOTE]
 > The `BindingContext` of each  <xref:Microsoft.Maui.Controls.MenuItem> is inherited from the subclassed <xref:Microsoft.Maui.Controls.Shell> object.
@@ -743,7 +743,7 @@ Shell.Current.CurrentItem = aboutItem;
 
 Flyout items are visible in the flyout by default. However, an item can be hidden in the flyout with the `FlyoutItemIsVisible` property, and removed from the flyout with the `IsVisible` property:
 
-- `FlyoutItemIsVisible`, of type `bool`, indicates if the item is hidden in the flyout, but is still reachable with the `GoToAsync` navigation method. The default value of this property is `true`.
+- `FlyoutItemIsVisible`, of type `bool`, indicates if the item is hidden in the flyout, but is still reachable with the <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> navigation method. The default value of this property is `true`.
 - `IsVisible`, of type `bool`, indicates if the item should be removed from the visual tree and therefore not appear in the flyout. Its default value is `true`.
 
 The following example shows hiding an item in the flyout:

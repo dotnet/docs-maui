@@ -14,7 +14,7 @@ The following screenshots show <xref:Microsoft.Maui.Controls.MenuItem> objects i
 
 The <xref:Microsoft.Maui.Controls.MenuItem> class defines the following properties:
 
-- <xref:Microsoft.Maui.Controls.MenuItem.Command>, of type `ICommand`, allows binding user actions, such as finger taps or clicks, to commands defined on a viewmodel.
+- <xref:Microsoft.Maui.Controls.MenuItem.Command>, of type <xref:System.Windows.Input.ICommand>, allows binding user actions, such as finger taps or clicks, to commands defined on a viewmodel.
 - <xref:Microsoft.Maui.Controls.MenuItem.CommandParameter>, of type `object`, specifies the parameter that should be passed to the `Command`.
 - <xref:Microsoft.Maui.Controls.MenuItem.IconImageSource>, of type <xref:Microsoft.Maui.Controls.ImageSource>, defines the menu item icon.
 - <xref:Microsoft.Maui.Controls.MenuItem.IsDestructive>, of type `bool`, indicates whether the <xref:Microsoft.Maui.Controls.MenuItem> removes its associated UI element from the list.
@@ -127,7 +127,7 @@ Icons are specified using the <xref:Microsoft.Maui.Controls.MenuItem.IconImageSo
 
 ## Enable or disable a MenuItem at runtime
 
-To enable or disable a <xref:Microsoft.Maui.Controls.MenuItem> at runtime, bind its `Command` property to an `ICommand` implementation, and ensure that a `canExecute` delegate enables and disables the `ICommand` as appropriate.
+To enable or disable a <xref:Microsoft.Maui.Controls.MenuItem> at runtime, bind its `Command` property to an <xref:System.Windows.Input.ICommand> implementation, and ensure that a `canExecute` delegate enables and disables the <xref:System.Windows.Input.ICommand> as appropriate.
 
 > [!IMPORTANT]
 > Don't bind the `IsEnabled` property to another property when using the `Command` property to enable or disable the <xref:Microsoft.Maui.Controls.MenuItem>.

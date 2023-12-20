@@ -16,7 +16,7 @@ In this tutorial, you'll learn how to create and run a .NET Multi-platform App U
 
     ```zsh
     cd MyMauiApp
-    dotnet build -t:Run -f net7.0-ios
+    dotnet build -t:Run -f net8.0-ios
     ```
 
     The `dotnet build` command will restore the project the dependencies, build the app, and launch it in the default simulator.
@@ -49,13 +49,13 @@ A .NET MAUI iOS app can be launched on a specific iOS simulator from a Mac by pr
 3. In **Terminal**, build the app and run it on your chosen simulator by specifying the `_DeviceName` MSBuild property using the `-p` [MSBuild option](/dotnet/core/tools/dotnet-build#msbuild):
 
     ```zsh
-    dotnet build -t:Run -f net7.0-ios -p:_DeviceName=:v2:udid=MY_SPECIFIC_UDID
+    dotnet build -t:Run -f net8.0-ios -p:_DeviceName=:v2:udid=MY_SPECIFIC_UDID
     ```
 
     For example, use the following command to build the app and run it on the iPhone 13 Pro simulator:
 
     ```zsh
-    dotnet build -t:Run -f net7.0-ios -p:_DeviceName=:v2:udid=E25BBE37-69BA-4720-B6FD-D54C97791E79
+    dotnet build -t:Run -f net8.0-ios -p:_DeviceName=:v2:udid=E25BBE37-69BA-4720-B6FD-D54C97791E79
     ```
 
 4. In your chosen simulator, press the **Click me** button several times and observe that the count of the number of button clicks is incremented.
@@ -81,7 +81,7 @@ A device must be provisioned before you can deploy an iOS app to it. For more in
 5. In **Terminal**, build the app and run it on your chosen simulator by specifying the `_DeviceName` MSBuild property using the `-p` [MSBuild option](/dotnet/core/tools/dotnet-build#msbuild):
 
     ```zsh
-    dotnet build -t:Run -f net7.0-ios -p:RuntimeIdentifier=ios-arm64 -p:_DeviceName=MY_SPECIFIC_UDID
+    dotnet build -t:Run -f net8.0-ios -p:RuntimeIdentifier=ios-arm64 -p:_DeviceName=MY_SPECIFIC_UDID
     ```
 
     Replace "MY_SPECIFIC_UDID" with the device identifier you copied to the clipboard.

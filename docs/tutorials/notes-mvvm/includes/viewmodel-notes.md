@@ -117,4 +117,4 @@ You can now run the app, and everything is working. However, there are two probl
 
 These two problems are fixed in the next tutorial step.
 
-[![Explore the code.](~/media/code-sample.png) Explore the code for this step of the tutorial.](https://github.com/dotnet/maui-samples/tree/main/7.0/Tutorials/ConvertToMvvm/step5_viewmodel_notes)
+[![Explore the code.](~/media/code-sample.png) Explore the code for this step of the tutorial.](https://github.com/dotnet/maui-samples/tree/main/8.0/Tutorials/ConvertToMvvm/step5_viewmodel_notes)

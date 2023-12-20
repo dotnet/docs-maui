@@ -96,4 +96,4 @@ Save the file and run the app. Try typing into the entry box and press the **Sav
 
 :::image type="content" source="../media/note/final.png" alt-text="Note entry page in .NET MAUI app.":::
 
-[![Explore the code.](~/media/code-sample.png) Explore the code for this step of the tutorial.](https://github.com/dotnet/maui-samples/tree/main/7.0/Tutorials/CreateNetMauiApp/step3)
+[![Explore the code.](~/media/code-sample.png) Explore the code for this step of the tutorial.](https://github.com/dotnet/maui-samples/tree/main/8.0/Tutorials/CreateNetMauiApp/step3)

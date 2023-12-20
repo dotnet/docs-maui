@@ -58,7 +58,7 @@ A <xref:Microsoft.Maui.Controls.TabbedPage> can be populated with a collection o
 </TabbedPage>
 ```
 
-<xref:Microsoft.Maui.Controls.Page> objects that are added as child elements of <xref:Microsoft.Maui.Controls.TabbedPage> are added to the `Children` collection. The `Children` property of the `MultiPage<T>` class, from which <xref:Microsoft.Maui.Controls.TabbedPage> derives, is the `ContentProperty` of `MultiPage<T>`. Therefore, in XAML it's not necessary to explicitly assign the <xref:Microsoft.Maui.Controls.Page> objects to the `Children` property.
+<xref:Microsoft.Maui.Controls.Page> objects that are added as child elements of <xref:Microsoft.Maui.Controls.TabbedPage> are added to the `Children` collection. The `Children` property of the `MultiPage<T>` class, from which <xref:Microsoft.Maui.Controls.TabbedPage> derives, is the [`ContentProperty`](xref:Microsoft.Maui.Controls.ContentPropertyAttribute) of `MultiPage<T>`. Therefore, in XAML it's not necessary to explicitly assign the <xref:Microsoft.Maui.Controls.Page> objects to the `Children` property.
 
 The following screenshot shows the appearance of the resulting tab bar on the <xref:Microsoft.Maui.Controls.TabbedPage>:
 

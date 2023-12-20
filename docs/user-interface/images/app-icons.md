@@ -18,9 +18,7 @@ A .NET MAUI app icon can use any of the standard platform image formats, includi
 
 ## Change the icon
 
-In your project file, the `<MauiIcon>` item designates the icon to use for your app. You may only have one icon defined for your app. Any subsequent `<MauiIcon>` items are ignored.
-
-To comply with Android resource naming rules, app icon filenames must be lowercase, start and end with a letter character, and contain only alphanumeric characters or underscores. For more information, see [App resources overview](https://developer.android.com/guide/topics/resources/providing-resources) on developer.android.com.
+In your .NET MAUI project, the image with the **MauiIcon** build action designates the icon to use for your app. This is represented in your project file as the `<MauiIcon>` item. You may only have one icon defined for your app. Any subsequent `<MauiIcon>` items are ignored.
 
 The icon defined by your app can be composed of a single image, by specifying the file as the `Include` attribute:
 
@@ -30,8 +28,12 @@ The icon defined by your app can be composed of a single image, by specifying th
 </ItemGroup>
 ```
 
-> [!IMPORTANT]
-> Only the first `<MauiIcon>` item defined in the project file is processed by .NET MAUI. If you want to use a different file as the icon, first delete the existing icon from your project, and then add the new icon. Next, in the **Solution Explorer** pane, select the file, and then in the **Properties** pane, set the **Build Action** to **MauiIcon**. Instead of adding a new icon file to the project, consider replacing the existing icon file instead.
+Only the first `<MauiIcon>` item defined in the project file is processed by .NET MAUI. If you want to use a different file as the icon, first delete the existing icon from your project, and then add the new icon by dragging it to the *Resources\AppIcon* folder of your project. Visual Studio will automatically set its build action to **MauiIcon** and will create a corresponding `<MauiIcon>` item in your project file.
+
+> [!NOTE]
+> An app icon can also be added to other folders of your app project. However, in this scenario its build action must be manually set to **MauiIcon** in the **Properties** window.
+
+To comply with Android resource naming rules, app icon filenames must be lowercase, start and end with a letter character, and contain only alphanumeric characters or underscores. For more information, see [App resources overview](https://developer.android.com/guide/topics/resources/providing-resources) on developer.android.com.
 
 After changing the icon file, you may need to clean the project in Visual Studio. To clean the project, right-click on the project file in the **Solution Explorer** pane, and select **Clean**. You also may need to uninstall the app from the target platform you're testing with.
 
@@ -72,7 +74,7 @@ The process shown in the previous figure follows these steps:
 > [!TIP]
 > Use an SVG image as your icon. SVG images can upscale to larger sizes and still look crisp and clean. Bitmap-based images, such a PNG or JPG image, look blurry when upscaled.
 
-The base size is specified with the `BaseSize="W,H"` attribute, where `W` is the width of the icon and `H` is the height of the icon. The value specified as the base size must be divisible by 8. The following example sets the base size:
+The base size is specified with the `BaseSize="W,H"` attribute, where `W` is the width of the icon and `H` is the height of the icon. The following example sets the base size:
 
 ```xml
 <ItemGroup>
