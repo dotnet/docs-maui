@@ -6,7 +6,7 @@ content_well_notification:
   - AI-contribution
 ---
 
-# Xamarin.UWP project migration to .NET MAUI WinUI
+# Xamarin.Forms UWP project migration to .NET MAUI WinUI
 
 <!-- ## Prerequisites
 
@@ -45,13 +45,13 @@ For more information about runtime identifiers, see [.NET RID Catalog](/dotnet/c
 
 ## API changes
 
-To safely use recent or older APIs, you can declare a `SupportedOSPlatformVersion` in your project. Specify the `SupportedOSPlatformVersion` property in any `.csproj` file that targets windows among other targets as shown:
+To safely use recent or older APIs, you can declare a `SupportedOSPlatformVersion` in your project. Specify the `SupportedOSPlatformVersion` property in any `.csproj` file that targets Windows among other targets as shown:
 
 ```xml
-    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.19041.0</SupportedOSPlatformVersion>
+<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.19041.0</SupportedOSPlatformVersion>
 ```
 
-If your project only targets windows, it is sufficient to omit the platform checking condition and have `<SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>`. [Support older OS versions](/dotnet/standard/frameworks#support-older-os-versions) contains more information on using this property across your project files. To have platform version specific code, use the <xref:System.OperatingSystem.IsWindowsVersionAtLeast%2A> API at runtime:
+If your project only targets Windows, it's sufficient to omit the platform checking condition and have `<SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>`. [Support older OS versions](/dotnet/standard/frameworks#support-older-os-versions) contains more information on using this property across your project files. To have platform version specific code, use the <xref:System.OperatingSystem.IsWindowsVersionAtLeast%2A> API at runtime:
 
 ```csharp
 if (OperatingSystem.IsWindowsVersionAtLeast(10))
@@ -66,7 +66,7 @@ Address any API changes that may affect your app. For example, some methods and 
 
 Update the namespaces in your code files, following this [api mapping table](/windows/apps/windows-app-sdk/migrate-to-windows-app-sdk/api-mapping-table).
 
-For example, you'll need to replace the following namespace:
+For example, you'll need to replace the following namespaces:
 
 - `Windows.UI.Xaml` with `Microsoft.UI.Xaml`
 - `Windows.UI.Xaml.Controls` with `Microsoft.UI.Xaml.Controls`.
@@ -79,8 +79,9 @@ Migrate your business logic from the following files into other files and remove
 
 - MainPage.xaml/MainPage.xaml.cs
 - AssemblyInfo.cs
-<!--  - See [AssemblyInfo changes](includes/assemblyinfo-changes.md) -->
 - Default.rd.xml
+
+<!--  - See [AssemblyInfo changes](includes/assemblyinfo-changes.md) -->
 
 These files are no longer needed for a .NET MAUI WinUI app.
 
@@ -116,5 +117,5 @@ You can now enjoy the benefits that .NET MAUI offers such as improved performanc
 
 ## See also
 
-- [Upgrade into a Multi Project Application](/dotnet/maui/migration/multi-project-to-multi-project)
-- [Upgrade into a Single Project](/dotnet/maui/migration/multi-project-to-multi-project)
+- [Manually upgrade a Xamarin.Forms app to a multi-project .NET MAUI app](multi-project-to-multi-project.md)
+- [Manually upgrade a Xamarin.Forms app to a single project .NET MAUI app](multi-project-to-single-project.md)
