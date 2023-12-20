@@ -126,12 +126,6 @@ For an example of a compliant *Package.appxmanifest* file, see [*Package.appxman
 
 There are behavioral changes to the `String.IndexOf()` method in .NET 5+ on different platforms. For more information, see [.NET globalization and ICU](/dotnet/standard/globalization-localization/globalization-icu).
 
-## Next steps
-
-Build and test your app to identify any UI differences between Xamarin.Forms and .NET MAUI on Windows.
-
-You can now enjoy the benefits that .NET MAUI offers such as improved performance and modernized UI controls.
-
 ## See also
 
 - [Manually upgrade a Xamarin.Forms app to a multi-project .NET MAUI app](multi-project-to-multi-project.md)
