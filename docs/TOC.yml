@@ -53,9 +53,9 @@
       items:
         - name: Overview
           href: migration/index.md
-        - name: Native projects
+        - name: Xamarin native projects
           items:
-            - name: Upgrade native projects
+            - name: Upgrade Xamarin native projects
               href: migration/native-projects.md
             - name: Android projects
               items:

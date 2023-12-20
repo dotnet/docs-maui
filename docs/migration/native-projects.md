@@ -1,12 +1,12 @@
 ---
-title: "Upgrade Xamarin.Android, Xamarin.iOS, Xamarin.Mac, and UWP projects"
-description: "Learn how to manually upgrade native projects."
+title: "Upgrade Xamarin.Android, Xamarin.iOS, Xamarin.Mac, and UWP projects to .NET"
+description: "Learn how to manually upgrade Xamarin native projects to .NET."
 ms.date: 02/15/2023
 ---
 
-# Upgrade Xamarin.Android, Xamarin.iOS, Xamarin.Mac, and UWP projects
+# Upgrade Xamarin.Android, Xamarin.iOS, Xamarin.Mac, and UWP projects to .NET
 
-To upgrade your native projects to .NET, you must:
+To upgrade your Xamarin native projects to .NET, you must:
 
 > [!div class="checklist"]
 >
@@ -16,11 +16,11 @@ To upgrade your native projects to .NET, you must:
 
 For most projects, with the exception of UWP projects, you won't need to change namespaces or undertake other rewrites.
 
-To simplify the upgrade process, we recommend creating a new .NET or Windows App SDK project of the same type and name as your Xamarin native project or UWP project, and then copying in your code. This is the approach outlined below.
+To simplify the upgrade process, we recommend creating a new .NET or Windows App SDK project of the same type and name as your Xamarin native project, and then copy in your code. This is the approach outlined below.
 
 ## Create a new project
 
-In Visual Studio, create a new .NET or Windows App SDK project of the same type and name as your Xamarin native project or UWP project. For example, to upgrade from Xamarin.Android to .NET Android select the **Android Application** project template:
+In Visual Studio, create a new .NET or Windows App SDK project of the same type and name as your Xamarin native project. For example, to upgrade from Xamarin.Android to .NET Android select the **Android Application** project template:
 
 :::image type="content" source="media/new-android-app.png" alt-text="Screenshot of selecting the Android app project template in Visual Studio.":::
 
@@ -48,11 +48,11 @@ Launch the app to confirm that your development environment can build the app.
 
 ## Merge files
 
-Copy your code and resource files from the folders of your Xamarin native project, or UWP project, to identical folders within your new app. You should overwrite any files of the same name.
+Copy your code and resource files from the folders of your Xamarin native project to identical folders within your new app. You should overwrite any files of the same name.
 
 If you have other library projects, you should add them to your new solution and [add project references](/visualstudio/ide/managing-references-in-a-project) to them from your new .NET project.
 
-You'll also need to copy some project properties from your Xamarin native project, or UWP project, to your new .NET project or Windows App SDK project, for settings like conditional compilation arguments and code signing. Opening the projects side-by-side in separate Visual Studio instances will enable you to compare the project properties. Alternatively, you can migrate the settings by editing the new project file directly. For more information, see [Xamarin.Android project migration](android-projects.md), [Xamarin Apple project migration](apple-projects.md), and [Xamarin.Forms UWP project migration](uwp-projects.md).
+You'll also need to copy some project properties from your Xamarin native project to your new .NET project or Windows App SDK project, for settings like conditional compilation arguments and code signing. Opening the projects side-by-side in separate Visual Studio instances will enable you to compare the project properties. Alternatively, you can migrate the settings by editing the new project file directly. For more information, see [Xamarin.Android project migration](android-projects.md), [Xamarin Apple project migration](apple-projects.md), and [Xamarin.Forms UWP project migration](uwp-projects.md).
 
 ## Update dependencies
 
@@ -83,7 +83,7 @@ For information about migrating Xamarin.Essentials code in a .NET Android or .NE
 
 ## Compile and troubleshoot
 
-Once your dependencies are resolved and your code and resource files are added to your .NET native or WinUI project, you should build your project. Any errors will guide you towards next steps.
+Once your dependencies are resolved and your code and resource files are added to your .NET native or Windows App SDK project, you should build your project. Any errors will guide you towards next steps.
 
 <!-- markdownlint-disable MD032 -->
 > [!TIP]
