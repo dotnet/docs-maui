@@ -69,8 +69,6 @@
                   href: migration/apple-projects.md
                 - name: iOS binding project migration
                   href: migration/ios-binding-projects.md
-            - name: UWP project migration
-              href: migration/uwp-projects.md
             - name: Xamarin.Essentials migration
               href: migration/native-essentials.md
         - name: Xamarin.Forms projects
@@ -81,6 +79,8 @@
               href: migration/multi-project-to-multi-project.md
             - name: Upgrade manually to a single project app
               href: migration/multi-project-to-single-project.md
+            - name: UWP project migration
+              href: migration/uwp-projects.md            
             - name: Layout behavior changes
               href: migration/layouts.md
             - name: Reuse custom renderers
