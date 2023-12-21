@@ -1,10 +1,10 @@
 ---
-title: "Upgrade Xamarin.Android, Xamarin.iOS, Xamarin.Mac, and UWP projects to .NET"
+title: "Upgrade Xamarin.Android, Xamarin.iOS, and Xamarin.Mac projects to .NET"
 description: "Learn how to manually upgrade Xamarin native projects to .NET."
 ms.date: 02/15/2023
 ---
 
-# Upgrade Xamarin.Android, Xamarin.iOS, Xamarin.Mac, and UWP projects to .NET
+# Upgrade Xamarin.Android, Xamarin.iOS, and Xamarin.Mac projects to .NET
 
 To upgrade your Xamarin native projects to .NET, you must:
 
@@ -14,9 +14,9 @@ To upgrade your Xamarin native projects to .NET, you must:
 > - Update or replace incompatible dependencies with .NET 8 versions.
 > - Compile and test your app.
 
-For most projects, with the exception of UWP projects, you won't need to change namespaces or undertake other rewrites.
+For most projects you won't need to change namespaces or undertake other rewrites.
 
-To simplify the upgrade process, we recommend creating a new .NET or WinUI 3 project of the same type and name as your Xamarin native project, and then copy in your code. This is the approach outlined below.
+To simplify the upgrade process, we recommend creating a new .NET project of the same type and name as your Xamarin native project, and then copy in your code. This is the approach outlined below.
 
 ## Create a new project
 
@@ -42,7 +42,7 @@ The new project should be given the same project and package name as your existi
 ```
 
 > [!IMPORTANT]
-> The target framework moniker (TFM) is what denotes the project as using .NET, in this case .NET 8. Valid TFMs for equivalent Xamarin native projects are net8.0-android, net8.0-ios, net8.0-macos, net8.0-tvos, and net8.0-windows*. For information about target frameworks in SDK-style projects, see [Target frameworks in SDK-style projects](/dotnet/standard/frameworks).
+> The target framework moniker (TFM) is what denotes the project as using .NET, in this case .NET 8. Valid TFMs for equivalent Xamarin native projects are net8.0-android, net8.0-ios, net8.0-macos, and net8.0-tvos. For information about target frameworks in SDK-style projects, see [Target frameworks in SDK-style projects](/dotnet/standard/frameworks).
 
 Launch the app to confirm that your development environment can build the app.
 

@@ -1,12 +1,24 @@
 ---
 title: "Xamarin.Forms UWP project migration"
-description: "Learn how to migrate a Xamarin.Forms UWP project to a WinUI 3 project."
-ms.date: 11/13/2023
+description: "Learn how to manually upgrade a Xamarin.Forms UWP project to a WinUI 3 project."
+ms.date: 12/20/2023
 ---
 
 # Xamarin.Forms UWP project migration
 
-A .NET 8 project for a .NET MAUI WinUI 3 app is similar to the following example:
+To update your Xamarin.Forms UWP project to a WinUI 3 project, you should:
+
+> [!div class="checklist"]
+>
+> - Update your project file to be SDK-style.
+> - Update namespaces
+> - Address any API changes
+> - Update or replace incompatible dependencies with .NET 8 versions.
+> - Compile and test your app.
+
+## Update to a SDK-style project file
+
+Your existing Xamarin.Forms UWP project can be updated to an SDK-style WinUI 3 project in place. An SDK-style project for a .NET MAUI WinUI 3 app is similar to the following example:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -14,7 +26,7 @@ A .NET 8 project for a .NET MAUI WinUI 3 app is similar to the following example
     <OutputType>WinExe</OutputType> <!-- in Xamarin.Forms this was AppContainerExe -->
     <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
-    <RootNamespace>MyApp.WinUI</RootNamespace>
+    <RootNamespace>YOUR_NAMESPACE_HERE.WinUI</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Platforms>x86;x64;ARM64</Platforms>
     <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
@@ -24,10 +36,14 @@ A .NET 8 project for a .NET MAUI WinUI 3 app is similar to the following example
     <!-- We do not want XAML files to be processed as .NET MAUI XAML -->
     <EnableDefaultMauiItems>false</EnableDefaultMauiItems>
   </PropertyGroup>
+  ...
 </Project>
 ```
 
-For a library project, omit the `$(OutputType)` property completely or specify `Library` as the property value.
+> [!IMPORTANT]
+> The target framework moniker (TFM) is what denotes the project as using .NET, in this case .NET 8. For information about target frameworks in SDK-style projects, see [Target frameworks in SDK-style projects](/dotnet/standard/frameworks).
+
+You must add `<UseMaui>true</UseMaui>` to your project file to enable .NET MAUI support. In addition, ensure you've added `<EnableDefaultMauiItems>false</EnableDefaultMauiItems>` to the project file. This will stop you receiving build errors about the `InitializeComponent` method already being defined.
 
 ## Changes to MSBuild properties
 
@@ -95,20 +111,7 @@ The following files, which are present in Xamarin.Forms UWP projects, don't exis
 - *AssemblyInfo.cs*
 - *Default.rd.xml*
 
-Therefore, you should remove these files if you've copied them from your UWP project to your WinUI 3 project. Any required business logic contained in these files should be moved elsewhere.
-
-[!INCLUDE [AssemblyInfo changes](includes/assemblyinfo-changes.md)]
-
-## Add files
-
-You'll need to add the following files to your WinUI 3 project:
-
-- [*MauiProgram.cs*](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/main/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/MauiProgram.cs)
-- [*App.xaml*](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/main/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/App.xaml) and [*App.xaml.cs*](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/main/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/App.xaml.cs)
-  - Your Xamarin.Forms UWP project includes *App.xaml* and *App.xaml.cs* files, to which you may have added additional business logic. Therefore, migrate any business logic over to the new versions of these files.
-- [*launchSettings.json*](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/main/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/Properties/launchSettings.json)
-
-These files are required to bootstrap your .NET MAUI WinUI 3 project.
+Therefore, you should remove these files if they're in your WinUI 3 project. Any required business logic contained in these files should be moved elsewhere.
 
 ## Changes to Package.appxmanifest
 
@@ -125,6 +128,11 @@ For an example of a compliant *Package.appxmanifest* file, see [*Package.appxman
 ## Runtime behavior
 
 There are behavioral changes to the `String.IndexOf()` method in .NET 5+ on different platforms. For more information, see [.NET globalization and ICU](/dotnet/standard/globalization-localization/globalization-icu).
+
+## Next steps
+
+> [!div class="nextstepaction"]
+> [Bootstrap your app](multi-project-to-multi-project.md#bootstrap-your-migrated-app)
 
 ## See also
 
