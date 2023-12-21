@@ -40,7 +40,7 @@ The .NET Upgrade Assistant is a command-line tool that can help you upgrade mult
 
 You can also manually upgrade at Xamarin.Forms app to a multi-project .NET MAUI app with a two-step process:
 
-1. Upgrade your Xamarin native projects, in your Xamarin.Forms solution, to .NET. For more information, see [Upgrade Xamarin.Android, Xamarin.iOS, and Xamarin.Mac apps to .NET](native-projects.md). In addition, you can upgrade your Xamarin.Forms UWP project to WinUI 3. For more information, see [Xamarin.Forms UWP project migration](uwp-projects.md).
+1. Upgrade your Xamarin native projects, in your Xamarin.Forms solution, to .NET. For more information, see [Upgrade Xamarin.Android, Xamarin.iOS, and Xamarin.Mac apps to .NET](native-projects.md). In addition, you can upgrade your Xamarin.Forms UWP project to a .NET MAUI WinUI 3 project. For more information, see [Xamarin.Forms UWP project migration](uwp-projects.md).
 1. Upgrade your Xamarin.Forms library project to .NET Multi-platform App UI (.NET MAUI). For more information, see [Manually upgrade a Xamarin.Forms app to a multi-project .NET MAUI app](multi-project-to-multi-project.md).
 
 Alternatively, you can manually upgrade a Xamarin.Forms app to a single-project .NET MAUI app. For more information, see [Manually upgrade a Xamarin.Forms app to a single project .NET MAUI app](multi-project-to-single-project.md).
