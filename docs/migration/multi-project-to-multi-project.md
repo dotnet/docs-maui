@@ -72,7 +72,7 @@ When manually updating a Xamarin.Forms to .NET MAUI you will need to enable .NET
 
 ### Enable .NET MAUI in platform projects
 
-Before you update each platform project's entry point class, you must first enable .NET MAUI support. This can be achieved by setting the `$(UseMaui)` build property to `true`, in a `<PropertyGroup>`, in each platform project:
+Before you update each platform project's entry point class, you must first enable .NET MAUI support. This can be achieved by setting the `$(UseMaui)` build property to `true` in each platform project:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
