@@ -48,6 +48,10 @@ You'll also need to ensure that the platform architectures in the target project
 
 For more information about runtime identifiers, see [.NET RID Catalog](/dotnet/core/rid-catalog).
 
+## Add package references
+
+[!INCLUDE [Add package references](includes/net8-maui-nugets.md)]
+
 ## Namespace changes
 
 There are differences in the names of namespaces between UWP and WinUI 3. In many cases it's as easy as changing a namespace name and then your code will compile. For example, you'll need to replace the `Windows.UI.Xaml` namespace with the `Microsoft.UI.Xaml` namespace. Similarly, you'll need to replace the `Windows.UI.Xaml.Controls` namespace with the `Microsoft.UI.Xaml.Controls` namespace.
