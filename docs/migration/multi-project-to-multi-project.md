@@ -9,7 +9,7 @@ no-loc: [ "Xamarin.Forms", "Xamarin.Essentials", "Xamarin.CommunityToolkit", ".N
 
 Upgrading a multi-project Xamarin.Forms app to a multi-project .NET Multi-platform App UI (.NET MAUI) app follows the same steps as a Xamarin.Android and Xamarin.iOS project, with additional steps to take advantage of changes in .NET MAUI.
 
-This article describes how to manually migrate a Xamarin.Forms library project to a .NET MAUI library project. Before you do this, you must update your Xamarin.Forms platform projects to be SDK-style projects. SDK-style projects are the same project format used by all .NET workloads, and compared to many Xamarin projects are much less verbose. For information about updating your app projects, see [Upgrade Xamarin.Android, Xamarin.iOS, and Xamarin.Mac apps to .NET](native-projects.md), [Xamarin.Android project migration](android-projects.md) and [Xamarin Apple project migration](apple-projects.md).
+This article describes how to manually migrate a Xamarin.Forms library project to a .NET MAUI library project. Before you do this, you must update your Xamarin.Forms platform projects to be SDK-style projects. SDK-style projects are the same project format used by all .NET workloads, and compared to many Xamarin projects are much less verbose. For information about updating your app projects, see [Upgrade Xamarin.Android, Xamarin.iOS, Xamarin.Mac, and UWP projects to .NET](native-projects.md), [Xamarin.Android project migration](android-projects.md)m [Xamarin Apple project migration](apple-projects.md) and [Xamarin.Forms UWP project migration](uwp-projects.md).
 
 To migrate a Xamarin.Forms library project to a .NET MAUI library project, you must:
 
@@ -80,6 +80,7 @@ using Android.App;
 using Android.Runtime;
 using Microsoft.Maui;
 using Microsoft.Maui.Hosting;
+using YOUR_MAUI_CLASS_LIB_HERE;
 
 namespace YOUR_NAMESPACE_HERE.Droid
 {
@@ -104,7 +105,6 @@ using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
-using YOUR_MAUI_CLASS_LIB_HERE;
 
 namespace YOUR_NAMESPACE_HERE.Droid
 {
