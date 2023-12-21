@@ -89,13 +89,7 @@ if (OperatingSystem.IsWindowsVersionAtLeast(10))
 
 ## Remove files
 
-The following files, which are present in Xamarin.Forms UWP projects, don't exist in WinUI 3 projects:
-
-- *MainPage.xaml* and *MainPage.xaml.cs*
-- *AssemblyInfo.cs*
-- *Default.rd.xml*
-
-Therefore, you should remove these files if you've copied them from your UWP project to your WinUI 3 project. Any required business logic contained in these files should be moved elsewhere.
+[!INCLUDE [Remove files](includes/uwp-remove-files.md)]
 
 [!INCLUDE [AssemblyInfo changes](includes/assemblyinfo-changes.md)]
 
@@ -103,7 +97,6 @@ Therefore, you should remove these files if you've copied them from your UWP pro
 
 You'll need to add the following files to your WinUI 3 project:
 
-- [*MauiProgram.cs*](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/main/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/MauiProgram.cs)
 - [*App.xaml*](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/main/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/App.xaml) and [*App.xaml.cs*](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/main/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/App.xaml.cs)
   - Your Xamarin.Forms UWP project includes *App.xaml* and *App.xaml.cs* files, to which you may have added additional business logic. Therefore, migrate any business logic over to the new versions of these files.
 - [*launchSettings.json*](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/main/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/Properties/launchSettings.json)
@@ -112,15 +105,7 @@ These files are required to bootstrap your .NET MAUI WinUI 3 project.
 
 ## Changes to Package.appxmanifest
 
-The following changes must be made to your migrated project's *Package.appxmanifest* file:
-
-1. Set the application entry point to `$targetentrypoint$`. For more information, see [Target entry point](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/6e7cb786ed18756749a617d303df46130eab45d9/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/Package.appxmanifest#L34).
-2. Add the `runFullTrust` capability. For more information, see [Run full trust capability](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/6e7cb786ed18756749a617d303df46130eab45d9/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/Package.appxmanifest#L48).
-3. Add the `Windows.Universal` and `Windows.Desktop` target device families. For more information, see [Universal target device family](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/6e7cb786ed18756749a617d303df46130eab45d9/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/Package.appxmanifest#L23) and [Desktop target device family](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/6e7cb786ed18756749a617d303df46130eab45d9/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/Package.appxmanifest#L24).
-
-Making these changes fixes common deployment errors for your app on Windows.
-
-For an example of a compliant *Package.appxmanifest* file, see [*Package.appxmanifest*](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/main/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/Package.appxmanifest).
+[!INCLUDE [Changes to Package.appxmanifest](includes/uwp-change-package-manifest.md)]
 
 ## Runtime behavior
 
