@@ -129,6 +129,11 @@ For an example of a compliant *Package.appxmanifest* file, see [*Package.appxman
 
 There are behavioral changes to the `String.IndexOf()` method in .NET 5+ on different platforms. For more information, see [.NET globalization and ICU](/dotnet/standard/globalization-localization/globalization-icu).
 
+## Next steps
+
+> [!div class="nextstepaction"]
+> [Bootstrap your app](multi-project-to-multi-project.md#bootstrap-your-migrated-app)
+
 ## See also
 
 - [Manually upgrade a Xamarin.Forms app to a multi-project .NET MAUI app](multi-project-to-multi-project.md)
