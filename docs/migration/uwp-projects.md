@@ -30,8 +30,6 @@ A .NET 8 project for a .NET MAUI WinUI 3 app is similar to the following example
 > [!IMPORTANT]
 > You must add `<UseMaui>true</UseMaui>` to the project file to enable .NET MAUI support. In addition, ensure you've added `<EnableDefaultMauiItems>false</EnableDefaultMauiItems>` to the project file. This will stop you receiving build errors about the `InitializeComponent` method already being defined.
 
-For a library project, omit the `$(OutputType)` property completely or specify `Library` as the property value.
-
 ## Changes to MSBuild properties
 
 While upgrading your project, it's recommended to remove the following UWP MSBuild properties from your project file:
