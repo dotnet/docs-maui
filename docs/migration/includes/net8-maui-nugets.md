@@ -10,7 +10,6 @@ You should add the following explicit package references to an `<ItemGroup>` in 
 ```xml
 <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
-<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 ```
 
 The `$(MauiVersion)` variable is referenced from the version of .NET MAUI you've installed. You can override this by adding the `$(MauiVersion)` build property to your project file:

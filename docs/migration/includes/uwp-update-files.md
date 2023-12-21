@@ -2,11 +2,6 @@
 ms.topic: include
 ms.date: 12/21/2023
 ---
-You'll need to add the following files to your WinUI 3 project:
-
-- [*App.xaml*](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/main/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/App.xaml) and [*App.xaml.cs*](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/main/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/App.xaml.cs)
-  - Your Xamarin.Forms UWP project includes *App.xaml* and *App.xaml.cs* files, to which you may have added additional business logic. Therefore, migrate any business logic over to the new versions of these files.
-- [*launchSettings.json*](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/main/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/Properties/launchSettings.json)
 
 In your .NET MAUI WinUI 3 project, update *App.xaml* to match the code below:
 
