@@ -52,7 +52,7 @@ Copy your code and resource files from the folders of your Xamarin native projec
 
 If you have other library projects, you should add them to your new solution and [add project references](/visualstudio/ide/managing-references-in-a-project) to them from your new .NET project.
 
-You'll also need to copy some project properties from your Xamarin native project to your new .NET project, for settings like conditional compilation arguments and code signing. Opening the projects side-by-side in separate Visual Studio instances will enable you to compare the project properties. Alternatively, you can migrate the settings by editing the new project file directly. For more information, see [Xamarin.Android project migration](android-projects.md), and [Xamarin Apple project migration](apple-projects.md).
+You'll also need to copy some project properties from your Xamarin native project to your new .NET project, for settings like conditional compilation arguments and code signing. Opening the projects side-by-side in separate Visual Studio instances will enable you to compare the project properties. Alternatively, you can migrate the settings by editing the new project file directly. For more information, see [Xamarin.Android project migration](android-projects.md) and [Xamarin Apple project migration](apple-projects.md).
 
 ## Update dependencies
 
