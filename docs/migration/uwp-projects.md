@@ -97,13 +97,9 @@ if (OperatingSystem.IsWindowsVersionAtLeast(10))
 
 [!INCLUDE [AssemblyInfo changes](includes/assemblyinfo-changes.md)]
 
-## Add files
+## Update files
 
-You'll need to add the following files to your WinUI 3 project:
-
-- [*App.xaml*](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/main/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/App.xaml) and [*App.xaml.cs*](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/main/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/App.xaml.cs)
-  - Your Xamarin.Forms UWP project includes *App.xaml* and *App.xaml.cs* files, to which you may have added additional business logic. Therefore, migrate any business logic over to the new versions of these files.
-- [*launchSettings.json*](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/main/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/Properties/launchSettings.json)
+[!INCLUDE [Update files](includes/uwp-update-files.md)]
 
 These files are required to bootstrap your .NET MAUI WinUI 3 project.
 
