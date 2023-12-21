@@ -9,7 +9,7 @@ no-loc: [ "Xamarin.Forms", "Xamarin.Essentials", "Xamarin.CommunityToolkit", ".N
 
 Upgrading a multi-project Xamarin.Forms app to a multi-project .NET Multi-platform App UI (.NET MAUI) app follows the same steps as a Xamarin.Android and Xamarin.iOS project, with additional steps to take advantage of changes in .NET MAUI.
 
-This article describes how to manually migrate a Xamarin.Forms library project to a .NET MAUI library project. Before you do this, you must update your Xamarin.Forms platform projects to be SDK-style projects. SDK-style projects are the same project format used by all .NET workloads, and compared to many Xamarin projects are much less verbose. For information about updating your app projects, see [Upgrade Xamarin.Android, Xamarin.iOS, Xamarin.Mac, and UWP projects to .NET](native-projects.md), [Xamarin.Android project migration](android-projects.md)m [Xamarin Apple project migration](apple-projects.md) and [Xamarin.Forms UWP project migration](uwp-projects.md).
+This article describes how to manually migrate a Xamarin.Forms library project to a .NET MAUI library project. Before you do this, you must update your Xamarin.Forms platform projects to be SDK-style projects. SDK-style projects are the same project format used by all .NET workloads, and compared to many Xamarin projects are much less verbose. For information about updating your app projects, see [Upgrade Xamarin.Android, Xamarin.iOS, and Xamarin.Mac projects to .NET](native-projects.md), [Xamarin.Android project migration](android-projects.md), [Xamarin Apple project migration](apple-projects.md), and [Xamarin.Forms UWP project migration](uwp-projects.md).
 
 To migrate a Xamarin.Forms library project to a .NET MAUI library project, you must:
 
@@ -84,11 +84,29 @@ Before you update each platform project's entry point class, you must first enab
 ```
 
 > [!IMPORTANT]
-> You must add `<UseMaui>true</UseMaui>` to your project file to enable .NET MAUI support. In addition, ensure you've added `<EnableDefaultMauiItems>false</EnableDefaultMauiItems>` to the WinUI project file. This will stop you receiving build errors about the `InitializeComponent` method already being defined.
+> You must add `<UseMaui>true</UseMaui>` to your project file to enable .NET MAUI support. In addition, ensure you've added `<EnableDefaultMauiItems>false</EnableDefaultMauiItems>` to your WinUI project file. This will stop you receiving build errors about the `InitializeComponent` method already being defined.
 
 #### Add package references
 
-[!INCLUDE [Add package references](includes/net8-maui-nugets.md)]
+In .NET 8, .NET MAUI ships as a .NET workload and multiple NuGet packages. The advantage of this approach is that it enables you to easily pin your projects to specific versions, while also enabling you to easily preview unreleased or experimental builds.
+
+You should add the following explicit package references to an `<ItemGroup>` in each project file:
+
+```xml
+<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+```
+
+The `$(MauiVersion)` variable is referenced from the version of .NET MAUI you've installed. You can override this by adding the `$(MauiVersion)` build property to each project file:
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <UseMaui>True</UseMaui>
+        <MauiVersion>8.0.3</MauiVersion>
+    </PropertyGroup>
+</Project>
+```
 
 ### Android project configuration
 
@@ -172,15 +190,66 @@ Then, update *Info.plist* so that `MinimumOSVersion` is 11.0, which is the minim
 
 ### UWP project configuration
 
-[!INCLUDE [Update files](includes/uwp-update-files.md)]
+In your .NET MAUI WinUI 3 project, update *App.xaml* to match the code below:
 
-#### Remove files
+```xaml
+<?xml version="1.0" encoding="utf-8"?>
+<maui:MauiWinUIApplication
+    x:Class="YOUR_NAMESPACE_HERE.WinUI.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:maui="using:Microsoft.Maui"
+    xmlns:local="using:YOUR_NAMESPACE_HERE.WinUI">
+    <maui:MauiWinUIApplication.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+                <!-- Other merged dictionaries here -->
+            </ResourceDictionary.MergedDictionaries>
+            <!-- Other app resources here -->
+        </ResourceDictionary>
+    </maui:MauiWinUIApplication.Resources>
+</maui:MauiWinUIApplication>
+```
 
-[!INCLUDE [Remove files](includes/uwp-remove-files.md)]
+> [!NOTE]
+> If your project included resources in your existing *App.xaml* you should migrate them to the new version of the file.
 
-#### Changes to Package.appxmanifest
+Also, update *App.xaml.cs* to match the code below:
 
-[!INCLUDE [Changes to Package.appxmanifest](includes/uwp-change-package-manifest.md)]
+```csharp
+using Microsoft.Maui;
+using Microsoft.Maui.Hosting;
+using YOUR_MAUI_CLASS_LIB_HERE;
+
+namespace YOUR_NAMESPACE_HERE.WinUI;
+
+public partial class App : MauiWinUIApplication
+{
+    public App()
+    {
+        InitializeComponent();
+    }
+
+    protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
+}
+```
+
+> [!NOTE]
+> If your project included business logic in *App.xaml.cs* you should migrate that logic to the new version of the file.
+
+Then add a *launchSettings.json* file to the *Properties* folder of the project, and add the following JSON to the file:
+
+```json
+{
+  "profiles": {
+    "Windows Machine": {
+      "commandName": "MsixPackage",
+      "nativeDebugging": true
+    }
+  }
+}
+```
 
 ### App entry point
 

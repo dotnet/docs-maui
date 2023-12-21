@@ -1,12 +1,24 @@
 ---
 title: "Xamarin.Forms UWP project migration"
-description: "Learn how to migrate a Xamarin.Forms UWP project to a WinUI 3 project."
+description: "Learn how to manually upgrade a Xamarin.Forms UWP project to a WinUI 3 project."
 ms.date: 12/20/2023
 ---
 
 # Xamarin.Forms UWP project migration
 
-A .NET 8 project for a .NET MAUI WinUI 3 app is similar to the following example:
+To update your Xamarin.Forms UWP project to a WinUI 3 project, you should:
+
+> [!div class="checklist"]
+>
+> - Update your project file to be SDK-style.
+> - Update namespaces
+> - Address any API changes
+> - Update or replace incompatible dependencies with .NET 8 versions.
+> - Compile and test your app.
+
+## Update to a SDK-style project file
+
+Your existing Xamarin.Forms UWP project can be updated to an SDK-style WinUI 3 project in place. A .NET 8 project for a .NET MAUI WinUI 3 app is similar to the following example:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -24,11 +36,14 @@ A .NET 8 project for a .NET MAUI WinUI 3 app is similar to the following example
     <!-- We do not want XAML files to be processed as .NET MAUI XAML -->
     <EnableDefaultMauiItems>false</EnableDefaultMauiItems>
   </PropertyGroup>
+  ...
 </Project>
 ```
 
 > [!IMPORTANT]
-> You must add `<UseMaui>true</UseMaui>` to your project file to enable .NET MAUI support. In addition, ensure you've added `<EnableDefaultMauiItems>false</EnableDefaultMauiItems>` to the project file. This will stop you receiving build errors about the `InitializeComponent` method already being defined.
+> The target framework moniker (TFM) is what denotes the project as using .NET, in this case .NET 8. For information about target frameworks in SDK-style projects, see [Target frameworks in SDK-style projects](/dotnet/standard/frameworks).
+
+You must add `<UseMaui>true</UseMaui>` to your project file to enable .NET MAUI support. In addition, ensure you've added `<EnableDefaultMauiItems>false</EnableDefaultMauiItems>` to the project file. This will stop you receiving build errors about the `InitializeComponent` method already being defined.
 
 ## Changes to MSBuild properties
 
@@ -48,10 +63,6 @@ You'll also need to ensure that the platform architectures in the target project
 ```
 
 For more information about runtime identifiers, see [.NET RID Catalog](/dotnet/core/rid-catalog).
-
-## Add package references
-
-[!INCLUDE [Add package references](includes/net8-maui-nugets.md)]
 
 ## Namespace changes
 
@@ -94,19 +105,25 @@ if (OperatingSystem.IsWindowsVersionAtLeast(10))
 
 ## Remove files
 
-[!INCLUDE [Remove files](includes/uwp-remove-files.md)]
+The following files, which are present in Xamarin.Forms UWP projects, don't exist in WinUI 3 projects:
 
-[!INCLUDE [AssemblyInfo changes](includes/assemblyinfo-changes.md)]
+- *MainPage.xaml* and *MainPage.xaml.cs*
+- *AssemblyInfo.cs*
+- *Default.rd.xml*
 
-## Update files
-
-[!INCLUDE [Update files](includes/uwp-update-files.md)]
-
-These files are required to bootstrap your .NET MAUI WinUI 3 project.
+Therefore, you should remove these files if they're in your WinUI 3 project. Any required business logic contained in these files should be moved elsewhere.
 
 ## Changes to Package.appxmanifest
 
-[!INCLUDE [Changes to Package.appxmanifest](includes/uwp-change-package-manifest.md)]
+The following changes must be made to your migrated project's *Package.appxmanifest* file:
+
+1. Set the application entry point to `$targetentrypoint$`. For more information, see [Target entry point](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/6e7cb786ed18756749a617d303df46130eab45d9/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/Package.appxmanifest#L34).
+2. Add the `runFullTrust` capability. For more information, see [Run full trust capability](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/6e7cb786ed18756749a617d303df46130eab45d9/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/Package.appxmanifest#L48).
+3. Add the `Windows.Universal` and `Windows.Desktop` target device families. For more information, see [Universal target device family](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/6e7cb786ed18756749a617d303df46130eab45d9/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/Package.appxmanifest#L23) and [Desktop target device family](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/6e7cb786ed18756749a617d303df46130eab45d9/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/Package.appxmanifest#L24).
+
+Making these changes fixes common deployment errors for your app on Windows.
+
+For an example of a compliant *Package.appxmanifest* file, see [*Package.appxmanifest*](https://github.com/mattleibow/MultiHeadMauiTemplates/blob/main/sample/MauiMultiHeadApp/MauiMultiHeadApp.WinUI/Package.appxmanifest).
 
 ## Runtime behavior
 
