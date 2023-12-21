@@ -1,7 +1,7 @@
 ---
 title: "Xamarin.Forms UWP project migration"
 description: "Learn how to migrate a Xamarin.Forms UWP project to a WinUI 3 project."
-ms.date: 11/13/2023
+ms.date: 12/20/2023
 ---
 
 # Xamarin.Forms UWP project migration
