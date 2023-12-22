@@ -16,7 +16,7 @@ To update your Xamarin.Forms UWP project to a WinUI 3 project, you should:
 > - Update or replace incompatible dependencies with .NET 8 versions.
 > - Compile and test your app.
 
-## Update to a SDK-style project file
+## Update to an SDK-style project file
 
 Your existing Xamarin.Forms UWP project can be updated to an SDK-style WinUI 3 project in place. An SDK-style project for a .NET MAUI WinUI 3 app is similar to the following example:
 
