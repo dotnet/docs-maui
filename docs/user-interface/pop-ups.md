@@ -16,9 +16,9 @@ All .NET MAUI-supported platforms have a pop-up to alert the user or ask simple 
 await DisplayAlert("Alert", "You have been alerted", "OK");
 ```
 
-This code displays the alert and once dismissed the user continues interacting with the app:
-
 :::image type="content" source="media/pop-ups/simple-alert.png" alt-text="Screenshot of an alert dialog with one button.":::
+
+Once the alert is dismissed the user continues interacting with the app.
 
 > [!NOTE]
 > On Android, alerts can be dismissed by tapping on the page outside the alert. On desktop platforms, alerts can be dismissed with the escape key.
@@ -48,9 +48,9 @@ string action = await DisplayActionSheet("ActionSheet: Send to?", "Cancel", null
 Debug.WriteLine("Action: " + action);
 ```
 
-This code displays the action sheet and after the user taps one of the buttons, the button label will be returned as a `string`.
-
 :::image type="content" source="media/pop-ups/simple-actionsheet.png" alt-text="Screenshot of an action sheet dialog.":::
+
+After the user taps one of the buttons, the button label will be returned as a `string`.
 
 > [!NOTE]
 > Action sheets can be dismissed on touch platforms, and Mac Catalyst, by tapping on the page outside the action sheet. On Windows, action sheets can be dismissed with the escape key and by clicking on the page outside the action sheet.
@@ -80,9 +80,9 @@ To display a prompt, call the <xref:Microsoft.Maui.Controls.Page.DisplayPromptAs
 string result = await DisplayPromptAsync("Question 1", "What's your name?");
 ```
 
-This code displays the prompt and if the OK button is tapped, the entered response is returned as a `string`. If the Cancel button is tapped, `null` is returned:
-
 :::image type="content" source="media/pop-ups/simple-prompt.png" alt-text="Screenshot of a prompt.":::
+
+If the OK button is tapped the entered response is returned as a `string`. If the Cancel button is tapped, `null` is returned.
 
 > [!NOTE]
 > On Android, prompts can be dismissed by tapping on the page outside the alert. On desktop platforms, prompts can be dismissed with the escape key.
