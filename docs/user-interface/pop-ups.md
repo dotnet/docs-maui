@@ -16,7 +16,7 @@ All .NET MAUI-supported platforms have a pop-up to alert the user or ask simple 
 await DisplayAlert("Alert", "You have been alerted", "OK");
 ```
 
-The alert is displayed and once dismissed the user continues interacting with the app:
+This code displays the alert and once dismissed the user continues interacting with the app:
 
 :::image type="content" source="media/pop-ups/simple-alert.png" alt-text="Screenshot of an alert dialog with one button.":::
 
@@ -48,9 +48,12 @@ string action = await DisplayActionSheet("ActionSheet: Send to?", "Cancel", null
 Debug.WriteLine("Action: " + action);
 ```
 
-The action sheet is displayed and after the user taps one of the buttons, the button label will be returned as a `string`.
+This code displays the action sheet and after the user taps one of the buttons, the button label will be returned as a `string`.
 
 :::image type="content" source="media/pop-ups/simple-actionsheet.png" alt-text="Screenshot of an action sheet dialog.":::
+
+> [!NOTE]
+> Action sheets can be dismissed on touch platforms, and Mac Catalyst, by tapping on the page outside the action sheet. On Windows, action sheets can be dismissed with the escape key and by clicking on the page outside the action sheet.
 
 Action sheets also support a destroy button, which is a button that represents destructive behavior. The destroy button can be specified as the third string argument to the <xref:Microsoft.Maui.Controls.Page.DisplayActionSheet%2A> method, or can be left `null`. The following example specifies a destroy button:
 
@@ -77,14 +80,12 @@ To display a prompt, call the <xref:Microsoft.Maui.Controls.Page.DisplayPromptAs
 string result = await DisplayPromptAsync("Question 1", "What's your name?");
 ```
 
-The prompt is displayed and if the OK button is tapped, the entered response is returned as a `string`. If the Cancel button is tapped, `null` is returned:
+This code displays the prompt and if the OK button is tapped, the entered response is returned as a `string`. If the Cancel button is tapped, `null` is returned:
 
 :::image type="content" source="media/pop-ups/simple-prompt.png" alt-text="Screenshot of a prompt.":::
 
 > [!NOTE]
 > On Android, prompts can be dismissed by tapping on the page outside the alert. On desktop platforms, prompts can be dismissed with the escape key.
-
-Action sheets can be dismissed on touch platforms, and Mac Catalyst, by tapping on the page outside the action sheet. On Windows, action sheets can be dismissed with the escape key and by clicking on the page outside the action sheet.
 
 The full argument list for the <xref:Microsoft.Maui.Controls.Page.DisplayPromptAsync%2A> method is:
 
