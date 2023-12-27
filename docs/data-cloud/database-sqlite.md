@@ -16,7 +16,7 @@ The SQLite database engine allows .NET Multi-platform App UI (.NET MAUI) apps to
 1. [Access data](#access-data).
 1. [Advanced configuration](#advanced-configuration).
 
-The sample app uses an SQLite database table to store todo items.
+This article uses the **sqlite-net-pcl** NuGet package to provide SQLite database access to a table to store todo items. An alternative is to use the [Microsoft.Data.Sqlite](/dotnet/standard/data/sqlite) NuGet package, which is a lightweight [ADO.NET](/dotnet/framework/data/adonet) provider for SQLite. Microsoft.Data.Sqlite implements the common ADO.NET abstractions for functionality such as connections, commands, and data readers.
 
 ## Install the SQLite NuGet package
 
