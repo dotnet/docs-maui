@@ -17,6 +17,9 @@ The following steps outline the process to use .NET MAUI's native device functio
 1. Perform additional setup, if necessary. For more information, see [Perform additional setup](#perform-additional-setup).
 1. Add using directives for the required functionality. For more information, see [Add using directives](#add-using-directives).
 
+> [!IMPORTANT]
+> No action is required to use Xamarin.Essentials in a .NET MAUI app, other than removing references to the `Xamarin.Essentials` namespace, because .NET MAUI already includes the functionality from Xamarin.Essentials.
+
 ## Modify your project file
 
 To use .NET MAUIs native device functionality in a .NET Android or .NET iOS app, modify your project file and set the `$(UseMauiEssentials)` build property to `true`.
