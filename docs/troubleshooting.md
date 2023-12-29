@@ -1,7 +1,7 @@
 ---
 title: "Troubleshoot known issues"
 description: "Learn about .NET MAUI known issues and troubleshooting you can do to resolve these issues."
-ms.date: 10/02/2023
+ms.date: 12/22/2023
 ---
 
 # Troubleshooting known issues
@@ -170,6 +170,18 @@ If you receive the error "Could not find a valid Xcode app bundle at '/Library/D
 ```zsh
 sudo xcode-select --reset
 ```
+
+## Xcode version can't be located
+
+In some scenarios, building a .NET MAUI app on iOS or Mac Catalyst may attempt to use an Xcode version that's no longer installed. When this occurs you'll receive an error message similar to:
+
+```
+xcodebuild: error: SDK "/Applications/Xcode_14.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk" cannot be located.
+xcrun: error: sh -c '/Applications/Xcode_14.1.app/Contents/Developer/usr/bin/xcodebuild -sdk /Applications/Xcode_14.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -find dsymutil 2> /dev/null' failed with exit code 16384: (null) (errno=Invalid argument)
+xcrun: error: unable to find utility "dsymutil", not a developer tool or in PATH
+```
+
+In this scenario, you should update the *~/Library/Preferences/Xamarin/Settings.plist* file to specify the version of Xcode that's installed on your machine.
 
 ::: moniker range=">=net-maui-8.0"
 
