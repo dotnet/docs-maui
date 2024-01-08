@@ -138,7 +138,7 @@ The process to add a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWe
 
 ## Access scoped services from native UI
 
-<xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> has a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.TryDispatchAsync%2A> method that can call a specified `Action<ServiceProvider>` asynchronously and pass in the scoped services available in Razor components. This enables code from the native UI to access scoped services such as enables code from the native UI to access scoped services such as <xref:Microsoft.AspNetCore.Components.NavigationManager>:
+<xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> has a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.TryDispatchAsync%2A> method that can call a specified `Action<ServiceProvider>` asynchronously and pass in the scoped services available in Razor components. This enables code from the native UI to access scoped services such as <xref:Microsoft.AspNetCore.Components.NavigationManager>:
 
 ```csharp
 private async void OnMyMauiButtonClicked(object sender, EventArgs e)
