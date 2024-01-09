@@ -18,7 +18,7 @@ To reuse your SkiaSharp code from a Xamarin.Forms app in a .NET MAUI app, you mu
 
 ## Add NuGets
 
-SkiaSharp for .NET MAUI is packaged as a series of NuGet packages. After you've migrated your Xamarin.Forms apps to a .NET MAUI app, you should remove all the existing SkiaSharp NuGet packages from your app. Then, use the NuGet package manager to search for the [SkiaSharp.Views.Maui.Controls](https://www.nuget.org/packages/SkiaSharp.Views.Maui.Controls/) NuGet package and add it to your solution. This will also install dependent SkiaSharp packages.
+SkiaSharp for .NET MAUI is packaged as a series of NuGet packages. After you've migrated your Xamarin.Forms app to a .NET MAUI app, you should remove all the existing SkiaSharp NuGet packages from your app. Then, use the NuGet package manager to search for the [SkiaSharp.Views.Maui.Controls](https://www.nuget.org/packages/SkiaSharp.Views.Maui.Controls/) NuGet package and add it to your project. This will also install dependent SkiaSharp packages.
 
 ## Update namespaces
 
