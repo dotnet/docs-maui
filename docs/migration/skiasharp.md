@@ -31,7 +31,7 @@ The following table shows the namespaces you'll need to use to build your SkiaSh
 | <xref:SkiaSharp> | Contains all the SkiaSharp classes, structures, and enumerations. |
 | <xref:SkiaSharp.Views.Maui> | Contains types to support touch interactions, and event arguments. |
 | <xref:SkiaSharp.Views.Maui.Controls> | Contains the <xref:SkiaSharp.Views.Maui.Controls.SKCanvasView> class, which derives from the .NET MAUI <xref:Microsoft.Maui.Controls.View> class and hosts your SkiaSharp graphics output. Also contains different `ImageSource` classes. |
-| <xref:SkiaSharp.Views.Maui.Controls.Hosting> | Contains the <xref:SkiaSharp.Views.Maui.Controls.Hosting.AppHostBuilderExtensions.UseSkiaSharp%2A> method, that's used to initialize SkiaSharp in your .NET MAUI app. For more information, see [Initialize SkiaSharp](#initialize-skiasharp). |
+| <xref:SkiaSharp.Views.Maui.Controls.Hosting> | Contains the <xref:SkiaSharp.Views.Maui.Controls.Hosting.AppHostBuilderExtensions.UseSkiaSharp%2A> method that's used to initialize SkiaSharp in your .NET MAUI app. For more information, see [Initialize SkiaSharp](#initialize-skiasharp). |
 
 ## Initialize SkiaSharp
 
@@ -69,7 +69,3 @@ public static class MauiProgram
 
 > [!NOTE]
 > Calling the <xref:SkiaSharp.Views.Maui.Controls.Hosting.AppHostBuilderExtensions.UseSkiaSharp%2A> method requires you to add a `using` directive for the `SkiaSharp.Views.Maui.Controls.Hosting` namespace.
-
-## Compile and troubleshoot
-
-Once you've initialized SkiaSharp you should build your project. Any errors will guide you towards next steps.
