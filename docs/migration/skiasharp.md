@@ -1,14 +1,14 @@
 ---
-title: "Migrate SkiaSharp code from Xamarin.Forms to .NET MAUI"
-description: "Learn how to migrate your SkiaSharp code from a Xamarin.Forms app to a .NET MAUI app."
+title: "Reuse SkiaSharp code in .NET MAUI"
+description: "Learn how to reuse your SkiaSharp code from a Xamarin.Forms app in a .NET MAUI app."
 ms.date: 01/09/2024
 ---
 
-# Migrate SkiaSharp code from Xamarin.Forms to .NET MAUI
+# Reuse SkiaSharp code in .NET MAUI
 
-SkiaSharp is a 2D graphics system for .NET and C# powered by the open-source Skia graphics engine that's used extensively in Google products. You can use SkiaSharp in your Xamarin.Forms apps and .NET Multi-platform App UI (.NET MAUI) apps to draw 2D vector graphics, bitmaps, and text. SkiaSharp code from a Xamarin.Forms appswill continue to work in a .NET MAUI app with some minor updates.
+SkiaSharp is a 2D graphics system for .NET and C# that draws 2D vector graphics, bitmaps, and text. It's powered by the open-source Skia graphics engine that's used extensively in Google products. You can reuse SkiaSharp code from your Xamarin.Forms apps in your .NET Multi-platform App UI (.NET MAUI) apps with some minor updates.
 
-To migrate your SkiaSharp code from a Xamarin.Forms app to a .NET MAUI app, you must:
+To reuse your SkiaSharp code from a Xamarin.Forms app in a .NET MAUI app, you must:
 
 > [!div class="checklist"]
 >
