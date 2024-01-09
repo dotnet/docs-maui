@@ -80,7 +80,7 @@
             - name: Upgrade manually to a single project app
               href: migration/multi-project-to-single-project.md
             - name: UWP project migration
-              href: migration/uwp-projects.md            
+              href: migration/uwp-projects.md
             - name: Layout behavior changes
               href: migration/layouts.md
             - name: Reuse custom renderers
@@ -95,6 +95,8 @@
               href: migration/secure-storage.md
             - name: Migrate version tracking data
               href: migration/version-tracking.md
+            - name: Migrate SkiaSharp code
+              href: migration/skiasharp.md
     - name: Tutorials
       items:
         - name: Create a .NET MAUI app
