@@ -89,6 +89,8 @@
               href: migration/renderer-to-handler.md
             - name: Reuse effects
               href: migration/effects.md
+            - name: Reuse SkiaSharp code
+              href: migration/skiasharp.md
             - name: Migrate app properties data
               href: migration/app-properties.md
             - name: Migrate secure storage data
