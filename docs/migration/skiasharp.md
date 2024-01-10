@@ -37,7 +37,6 @@ The following table shows the namespaces you'll need to use to build your SkiaSh
 
 Initialize SkiaSharp in your app by calling the <xref:SkiaSharp.Views.Maui.Controls.Hosting.AppHostBuilderExtensions.UseSkiaSharp%2A> method on the <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object in your `MauiProgram` class:
 
-
 ```csharp
 using Microsoft.Extensions.Logging;
 using SkiaSharp.Views.Maui.Controls.Hosting;
