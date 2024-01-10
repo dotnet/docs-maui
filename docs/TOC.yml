@@ -80,7 +80,7 @@
             - name: Upgrade manually to a single project app
               href: migration/multi-project-to-single-project.md
             - name: UWP project migration
-              href: migration/uwp-projects.md            
+              href: migration/uwp-projects.md
             - name: Layout behavior changes
               href: migration/layouts.md
             - name: Reuse custom renderers
@@ -89,6 +89,8 @@
               href: migration/renderer-to-handler.md
             - name: Reuse effects
               href: migration/effects.md
+            - name: Reuse SkiaSharp code
+              href: migration/skiasharp.md
             - name: Migrate app properties data
               href: migration/app-properties.md
             - name: Migrate secure storage data
