@@ -145,7 +145,7 @@ To debug to an Android target in Visual Studio Code, follow the steps below:
     * **(Recommended)** Create a new .NET MAUI project (`dotnet new maui`) and use the [InstallAndroidDependencies target](#using-installandroiddependencies).
     * Install via Visual Studio (Windows only).
     * Install via Android Studio.
-    * Install via package manager.
+    * Install via your preferred package manager (Linux).
     * Install via the [Android website](https://developer.android.com/about/versions/13/setup-sdk).
 
 ## Troubleshooting
