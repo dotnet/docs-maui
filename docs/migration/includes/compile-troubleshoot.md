@@ -28,6 +28,7 @@ The following table provides guidance for overcoming common build or runtime iss
 | Custom layout doesn't work. | Custom layout code needs updating to work in .NET MAUI. For more information, see [Custom layout changes](#custom-layout-changes). |
 | Custom renderer doesn't work. | Renderer code needs updating to work in .NET MAUI. For more information, see [Use custom renderers in .NET MAUI](../custom-renderers.md). |
 | Effect doesn't work. | Effect code needs updating to work in .NET MAUI. For more information, see [Use effects in .NET MAUI](../effects.md). |
+| SkiaSharp code doesn't work. | SkiaSharp code needs minor updates to work in .NET MAUI. For more information, see [Reuse SkiaSharp code in .NET MAUI](../skiasharp.md). |
 | Can't access previously created app properties data. | Migrate the app properties data to .NET MAUI preferences. For more information, see [Migrate data from the Xamarin.Forms app properties dictionary to .NET MAUI preferences](../app-properties.md). |
 | Can't access previously created secure storage data. | Migrate the secure storage data to .NET MAUI. For more information, see [Migrate from Xamarin.Essentials secure storage to .NET MAUI secure storage](../secure-storage.md). |
 | Can't access previously created version tracking data. | Migrate the version tracking data to .NET MAUI. For more information, see [Migrate version tracking data from a Xamarin.Forms app to a .NET MAUI app](../version-tracking.md). |
