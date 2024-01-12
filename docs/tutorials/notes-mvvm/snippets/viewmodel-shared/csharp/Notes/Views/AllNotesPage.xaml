@@ -11,7 +11,7 @@
     
     <!-- Add an item to the toolbar -->
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Command="{Binding NewCommand}" IconImageSource="{FontImage Glyph='&#x002B;', Color=White, Size=22}" />
+        <ToolbarItem Text="Add" Command="{Binding NewCommand}" IconImageSource="{FontImage Glyph='&#x002B;', Color={StaticResource Primary}, Size=22}" />
     </ContentPage.ToolbarItems>
 
     <!-- Display notes in a list -->
