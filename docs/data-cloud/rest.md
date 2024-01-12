@@ -33,10 +33,10 @@ The example REST service is written using ASP.NET Core and provides the followin
 
 |Operation|HTTP method|Relative URI|Parameters|
 |--- |--- |--- |--- |
-|Get a list of todo items|GET|/api/todoitems/|
+|Get a list of todo items|GET|/api/todoitems/| |
 |Create a new todo item|POST|/api/todoitems/|A JSON formatted TodoItem|
 |Update a todo item|PUT|/api/todoitems/|A JSON formatted TodoItem|
-|Delete a todo item|DELETE|/api/todoitems/{id}|
+|Delete a todo item|DELETE|/api/todoitems/{id}| |
 
 The .NET MAUI app and web service uses the `TodoItem` class to model the data that is displayed and sent to the web service for storage:
 
