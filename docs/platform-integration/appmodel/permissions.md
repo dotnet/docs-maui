@@ -175,7 +175,7 @@ In the `MauiProgram` class you should then register the interface and its concre
 
 ```csharp
 builder.Services.AddTransient<MyViewModel>();
-builder.Services.AddSingleton<IReadWritePermission>(_ => new ReadWriteStoragePermission());
+builder.Services.AddSingleton<IReadWritePermission, ReadWriteStoragePermission>();
 ```
 
 The custom permission implementation can then be resolved and invoked from one of your types, such as a viewmodel:
