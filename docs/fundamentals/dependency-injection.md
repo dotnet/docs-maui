@@ -330,9 +330,9 @@ In addition, an `IServiceProvider` instance can be accessed through the followin
 - iOS and Mac Catalyst - `MauiUIApplicationDelegate.Current.Services`
 - Windows - `MauiWinUIApplication.Current.Services`
 
-## Limitations of DI with application-level XAML resources
+## Limitations of DI with XAML resources
 
-A common scenario is to register a page with the dependency injection container, and use automatic dependency resolution to inject it into the `App` class constructor to set it as the value of the `MainPage` property:
+A common scenario is to register a page with the dependency injection container, and use automatic dependency resolution to inject it into the `App` class constructor and set it as the value of the `MainPage` property:
 
 ```csharp
 public App(MyFirstAppPage page)
@@ -342,14 +342,14 @@ public App(MyFirstAppPage page)
 }
 ```
 
-However, if `MyFirstAppPage` attempts to access a `StaticResource` that's been declared in XAML in the `App` resource dictionary, a `XamlParseException` will be thrown with a message similar to `Position {row}:{column}. StaticResource not found for key {key}`. This occurs because of differences in how XAML and `Microsoft.Extensions.DependencyInjection` create object trees:
+However, in this scenario, if `MyFirstAppPage` attempts to access a `StaticResource` that's been declared in XAML in the `App` resource dictionary, a `XamlParseException` will be thrown with a message similar to `Position {row}:{column}. StaticResource not found for key {key}`. This occurs because of differences in how XAML and the dependency injection container create object trees:
 
-- XAML creates object trees *outside-in*, meaning that the outer-most container is created first (such as the `Page` object), then the next deeper one (such as a layout object), then the inner-most content is created (such as a `Button`).
+- XAML creates object trees *outside-in*, meaning that the outer-most container is created first (such as the `Page` object), then the next deeper one (such as a layout object), then the inner-most content is created last (such as a `Button`).
 - `Microsoft.Extensions.DependencyInjection` creates object trees *inside-out*, meaning that the inner-most item is created first, followed by whatever contains it.
 
-This conflict of how object trees are constructed can prevent you from accessing application-level static resources declared in XAML, from a page type that's been resolved via constructor injection. This is because the page resolved through constructor injection has been initialized before the application-level XAML resources have been initialized.
+This conflict in how object trees are constructed can prevent you from accessing application-level static resources declared in XAML, from a page that's been resolved via constructor injection. This is because the page resolved through constructor injection has been created before the application-level XAML resources have been created.
 
-A workaround for this issue is to inject an `IServiceProvider` into your `App` class and then use it to resolve `MainPage` inside the `App` class:
+A workaround for this issue is to inject an `IServiceProvider` into your `App` class and then use it to resolve the page inside the `App` class:
 
 ```csharp
 public App(IServiceProvider serviceProvider)
@@ -359,4 +359,4 @@ public App(IServiceProvider serviceProvider)
 }
 ```
 
-This approach forces the resolution of the page to occur later than constructor injection resolves it.
+This approach forces the XAML object tree to be created before the page is resolved.
