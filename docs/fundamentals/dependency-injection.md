@@ -63,8 +63,6 @@ In the context of a .NET MAUI app that uses the Model-View-ViewModel (MVVM) patt
 
 There are many dependency injection containers available for .NET. .NET MAUI has in-built support for using <xref:Microsoft.Extensions.DependencyInjection> to manage the instantiation of views, view models, and service classes in an app. <xref:Microsoft.Extensions.DependencyInjection> facilitates building loosely coupled apps, and provides all of the features commonly found in dependency injection containers, including methods to register type mappings and object instances, resolve objects, manage object lifetimes, and inject dependent objects into constructors of objects that it resolves. For more information about <xref:Microsoft.Extensions.DependencyInjection>, see [Dependency injection in .NET](/dotnet/core/extensions/dependency-injection).
 
-In a .NET MAUI app, the `MauiProgram` class calls into the `CreateMauiApp` method to create a <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object. The <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object has a <xref:Microsoft.Maui.Hosting.MauiAppBuilder.Services> property of type <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>, which provides a place to register your types, such as views, view-models, and services for dependency injection. Any types registered with the <xref:Microsoft.Maui.Hosting.MauiAppBuilder.Services> property will be provided to the dependency injection container when <xref:Microsoft.Maui.Hosting.MauiAppBuilder.Build?displayProperty=nameWithType> is called.
-
 At runtime, the container must know which implementation of the services are being requested in order to instantiate them for the requested objects. In the example above, the `ILoggingService` and `ISettingsService` interfaces need to be resolved before the `MainPageViewModel` object can be instantiated. This involves the container performing the following actions:
 
 - Deciding how to instantiate an object that implements the interface. This is known as *registration*. For more information, see [Registration](#registration).
@@ -84,7 +82,7 @@ There are two ways of registering types and objects in the container through cod
 > [!CAUTION]
 > Dependency injection containers are not always suitable for a .NET MAUI app. Dependency injection introduces additional complexity and requirements that might not be appropriate or useful to smaller apps. If a class doesn't have any dependencies, or isn't a dependency for other types, it might not make sense to put it in the container. In addition, if a class has a single set of dependencies that are integral to the type and will never change, it might not make sense to put them in the container.
 
-The registration of types requiring dependency injection should be performed in a single method in your app. This method should be invoked early in the app's lifecycle to ensure it's aware of the dependencies between its classes. Apps should typically perform this in the `CreateMauiApp` method in the `MauiProgram` class:
+The registration of types requiring dependency injection should be performed in a single method in your app. This method should be invoked early in the app's lifecycle to ensure it's aware of the dependencies between its classes. Apps should typically perform this in the `CreateMauiApp` method in the `MauiProgram` class. The `MauiProgram` class calls into the `CreateMauiApp` method to create a <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object. The <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object has a <xref:Microsoft.Maui.Hosting.MauiAppBuilder.Services> property of type <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>, which provides a place to register your types, such as views, view-models, and services for dependency injection:
 
 ```csharp
 public static class MauiProgram
@@ -113,6 +111,8 @@ public static class MauiProgram
     }
 }
 ```
+
+Types that are registered with the <xref:Microsoft.Maui.Hosting.MauiAppBuilder.Services> property are provided to the dependency injection container when <xref:Microsoft.Maui.Hosting.MauiAppBuilder.Build?displayProperty=nameWithType> is called.
 
 When registering dependencies, you need to register all dependencies including including any types that require the dependencies. Therefore, if you have a view-model that takes a dependency as a constructor parameter, you need to register the view-model along with all of its dependencies. Similarly, if you have a view that takes a view-model dependency as a constructor parameter, you need to register the view, and the view-model along with all its dependencies.
 
