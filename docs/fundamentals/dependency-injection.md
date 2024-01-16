@@ -15,8 +15,6 @@ By specifying dependencies as interface types, dependency injection enables deco
 > [!NOTE]
 > There are also other types of dependency injection, such as *property setter injection* and *method call injection*, but they are less commonly used.
 
-There are many dependency injection containers available in .NET. .NET MAUI has in-built support for using <xref:Microsoft.Extensions.DependencyInjection> to manage the instantiation of views, view models, and service classes in an app. <xref:Microsoft.Extensions.DependencyInjection> facilitates building loosely coupled apps, and provides all of the features commonly found in dependency injection containers, including methods to register type mappings and object instances, resolve objects, manage object lifetimes, and inject dependent objects into constructors of objects that it resolves. For more information about <xref:Microsoft.Extensions.DependencyInjection>, see [Dependency injection in .NET](/dotnet/core/extensions/dependency-injection).
-
 ## Dependency injection containers
 
 If a class doesn't directly instantiate the objects it needs, another class must take on this responsibility. Consider the following example, which shows a view-model class that requires constructor arguments:
@@ -62,6 +60,8 @@ There are several advantages to using a dependency injection container:
 - A container increases maintainability by allowing new classes to be easily added to the app.
 
 In the context of a .NET MAUI app that uses the Model-View-ViewModel (MVVM) pattern, a dependency injection container will typically be used for registering and resolving views, registering and resolving view models, and for registering services and injecting them into view-models. For more information about the MVVM pattern, see [Model-View-ViewModel (MVVM)](/dotnet/architecture/maui/mvvm?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json).
+
+There are many dependency injection containers available for .NET. .NET MAUI has in-built support for using <xref:Microsoft.Extensions.DependencyInjection> to manage the instantiation of views, view models, and service classes in an app. <xref:Microsoft.Extensions.DependencyInjection> facilitates building loosely coupled apps, and provides all of the features commonly found in dependency injection containers, including methods to register type mappings and object instances, resolve objects, manage object lifetimes, and inject dependent objects into constructors of objects that it resolves. For more information about <xref:Microsoft.Extensions.DependencyInjection>, see [Dependency injection in .NET](/dotnet/core/extensions/dependency-injection).
 
 In a .NET MAUI app, the `MauiProgram` class calls into the `CreateMauiApp` method to create a <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object. The <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object has a <xref:Microsoft.Maui.Hosting.MauiAppBuilder.Services> property of type <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>, which provides a place to register your types, such as views, view-models, and services for dependency injection. Any types registered with the <xref:Microsoft.Maui.Hosting.MauiAppBuilder.Services> property will be provided to the dependency injection container when <xref:Microsoft.Maui.Hosting.MauiAppBuilder.Build?displayProperty=nameWithType> is called.
 
