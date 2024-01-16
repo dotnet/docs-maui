@@ -202,15 +202,7 @@ Generally, when a type is resolved, one of three things happens:
 
 ### Automatic dependency resolution
 
-Automatic dependency resolution occurs in apps that use [.NET MAUI Shell](shell/index.md), provided that you've registered the dependency's type as well as the type that uses the dependency.
-
-Shell-based apps will use the dependency injection container to create objects during navigation.
-
-Shell's <xref:Microsoft.Maui.Controls.Routing.RegisterRoute%2A?displayProperty=nameWithType> method associated a route path to a <xref:Microsoft.Maui.Controls.View>:
-
-```csharp
-Routing.RegisterRoute("Filter", typeof(MyItemPage));
-```
+Automatic dependency resolution occurs in apps that use [.NET MAUI Shell](shell/index.md), provided that you've registered the dependency's type and the type that uses the dependency with the dependency injection container.
 
 During Shell-based navigation, .NET MAUI will look for page registrations, and if any are found, it will create that page and inject any dependencies into its constructor:
 
