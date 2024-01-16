@@ -37,7 +37,7 @@ public class MainPageViewModel
 
 In this example, the `MainPageViewModel` constructor receives two interface object instances as arguments injected by another class. The only dependency in the `MainPageViewModel` class is on the interface types. Therefore, the `MainPageViewModel` class doesn't have any knowledge of the class that's responsible for instantiating the interface objects.
 
-Similarly, consider the following example that shows a page class that requires a constructor argument:n:
+Similarly, consider the following example that shows a page class that requires a constructor argument:
 
 ```csharp
 public MainPage(MainPageViewModel viewModel)
@@ -61,9 +61,9 @@ There are several advantages to using a dependency injection container:
 - A container facilitates testability by allowing dependencies to be mocked.
 - A container increases maintainability by allowing new classes to be easily added to the app.
 
-In the context of a .NET MAUI app that uses the Model-View-ViewModel (MVVM) pattern, a dependency injection container will typically be used for registering and resolving views, registering and resolving view models, and for registering services and injecting them into view models.
+In the context of a .NET MAUI app that uses the Model-View-ViewModel (MVVM) pattern, a dependency injection container will typically be used for registering and resolving views, registering and resolving view models, and for registering services and injecting them into view-models. For more information about the MVVM pattern, see [Model-View-ViewModel (MVVM)](/dotnet/architecture/maui/mvvm?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json).
 
-In .NET MAUI, the `MauiProgram` class will call into the `CreateMauiApp` method to create a <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object. The <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object has a <xref:Microsoft.Maui.Hosting.MauiAppBuilder.Services> property of type <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>, which provides a place to register our components, such as views, view models, and services for dependency injection. Any components registered with the <xref:Microsoft.Maui.Hosting.MauiAppBuilder.Services> property will be provided to the dependency injection container when the <xref:Microsoft.Maui.Hosting.MauiAppBuilder.Build?displayProperty=nameWithType> method is called.
+In a .NET MAUI app, the `MauiProgram` class calls into the `CreateMauiApp` method to create a <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object. The <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object has a <xref:Microsoft.Maui.Hosting.MauiAppBuilder.Services> property of type <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>, which provides a place to register your types, such as views, view-models, and services for dependency injection. Any types registered with the <xref:Microsoft.Maui.Hosting.MauiAppBuilder.Services> property will be provided to the dependency injection container when <xref:Microsoft.Maui.Hosting.MauiAppBuilder.Build?displayProperty=nameWithType> is called.
 
 At runtime, the container must know which implementation of the services are being requested in order to instantiate them for the requested objects. In the example above, the `ILoggingService` and `ISettingsService` interfaces need to be resolved before the `MainPageViewModel` object can be instantiated. This involves the container performing the following actions:
 
@@ -74,17 +74,17 @@ Eventually, an app will finish using the `MainPageViewModel` object, and it will
 
 ## Registration
 
-Before dependencies can be injected into an object, the types of the dependencies must first be registered with the container. Registering a type involves passing the container an interface and a concrete type that implements the interface.
+Before dependencies can be injected into an object, the types for the dependencies must first be registered with the container. Registering a type typically involves passing the container a concrete type, or an interface and a concrete type that implements the interface.
 
 There are two ways of registering types and objects in the container through code:
 
 - Register a type or mapping with the container. This is known as transient registration. When required, the container will build an instance of the specified type.
 - Register an existing object in the container as a singleton. When required, the container will return a reference to the existing object.
 
-> [!NOTE]
-> Dependency injection containers are not always suitable. Dependency injection introduces additional complexity and requirements that might not be appropriate or useful to smaller apps. If a class doesn't have any dependencies, or isn't a dependency for other types, it might not make sense to put it in the container. In addition, if a class has a single set of dependencies that are integral to the type and will never change, it might not make sense to put them in the container.
+> [!CAUTION]
+> Dependency injection containers are not always suitable for a .NET MAUI app. Dependency injection introduces additional complexity and requirements that might not be appropriate or useful to smaller apps. If a class doesn't have any dependencies, or isn't a dependency for other types, it might not make sense to put it in the container. In addition, if a class has a single set of dependencies that are integral to the type and will never change, it might not make sense to put them in the container.
 
-The registration of types requiring dependency injection should be performed in a single method in an app. This method should be invoked early in the app's lifecycle to ensure it is aware of the dependencies between its classes. Apps should typically perform this in the `CreateMauiApp` method in the `MauiProgram` class:
+The registration of types requiring dependency injection should be performed in a single method in your app. This method should be invoked early in the app's lifecycle to ensure it's aware of the dependencies between its classes. Apps should typically perform this in the `CreateMauiApp` method in the `MauiProgram` class:
 
 ```csharp
 public static class MauiProgram
@@ -114,10 +114,10 @@ public static class MauiProgram
 }
 ```
 
-When registering dependencies, you need to register all dependencies including including any types that require the dependencies. Therefore, if you have a view-model that takes a dependency as a constructor parameter, you need to register the view-model along with all its dependencies. Similarly, if you have a view that takes a view-model dependency as a constructor parameter, you need to register the view, and the view-model along with all its dependencies.
+When registering dependencies, you need to register all dependencies including including any types that require the dependencies. Therefore, if you have a view-model that takes a dependency as a constructor parameter, you need to register the view-model along with all of its dependencies. Similarly, if you have a view that takes a view-model dependency as a constructor parameter, you need to register the view, and the view-model along with all its dependencies.
 
 > [!TIP]
-> The dependency injection container is ideal for creating view-model instances. If a view-model has dependencies, it will manage the creation and injection of any required services. Just ensure that you register your view models and any dependencies that they may have with the `CreateMauiApp` method in the `MauiProgram` class.  
+> A dependency injection container is ideal for creating view-model instances. If a view-model has dependencies, it will manage the creation and injection of any required services. Just ensure that you register your view-models and any dependencies that they may have in the `CreateMauiApp` method in the `MauiProgram` class.  
 
 ### Dependency lifetime
 
