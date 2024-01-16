@@ -121,25 +121,25 @@ When registering dependencies, you need to register all dependencies including i
 
 ### Dependency lifetime
 
-Depending on the needs of your app, you may need to register dependencies with different lifetimes. The following table provides information on when you may want to choose these different registration lifetimes:
+Depending on the needs of your app, you may need to register dependencies with different lifetimes. The following table lists the main methods you can use to register dependencies, and their registration lifetimes:
 
 | Method | Description |
 |---------|---------|
-| `AddSingleton<T>` | Creates a single instance of the object which will be remain for the lifetime of the app. |
-| `AddTransient<T>` | Creates a new instance of the object when requested during resolution. Transient objects do not have a pre-defined lifetime, but will typically follow the lifetime of their host. |
-| `AddScoped<T>` | Creates an instance of the object that shares the lifetime of its host. When the host goes out of scope, so does its dependency. Therefore, resolving the same dependency multiple times within the same scope yields the same instance, while resolving the same dependency in different scopes will yield different instances. |
+| [`AddSingleton<T>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton%2A) | Creates a single instance of the object which will remain for the lifetime of the app. |
+| [`AddTransient<T>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddTransient%2A) | Creates a new instance of the object when requested during resolution. Transient objects do not have a pre-defined lifetime, but will typically follow the lifetime of their host. |
+| [`AddScoped<T>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddScoped%2A) | Creates an instance of the object that shares the lifetime of its host. When the host goes out of scope, so does its dependency. Therefore, resolving the same dependency multiple times within the same scope yields the same instance, while resolving the same dependency in different scopes will yield different instances. |
 
 > [!NOTE]
-> If an object doesn't inherit from an interface, such as a view-model, only it's concrete type needs to be provided to the `AddSingleton<T>` and `AddTransient<T>` methods.
+> If an object doesn't inherit from an interface, such as a view or view-model, only its concrete type needs to be provided to the [`AddSingleton<T>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton%2A), [`AddTransient<T>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddTransient%2A), or [`AddScoped<T>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddScoped%2A) method.
 
-The `MainPageViewModel` class is used near the app's root and should always be available, so registering it with [`AddSingleton<T>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton%2A) is beneficial. Other view-models maybe situationally navigated to or are used later in the app. Suppose you know that you have a type that might not always be used. In that case, if it's memory or computationally intensive or requires just-in-time data, it may be a better candidate for [`AddTransient<T>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddTransient%2A) registration.
+The `MainPageViewModel` class is used near the app's root and should always be available, so registering it with [`AddSingleton<T>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton%2A) is beneficial. Other view-models may be situationally navigated to or used later in an app. If you have a type that might not always be used, or if it's memory of computationally intensive or requires just-in-time data, it may be a better candidate for [`AddTransient<T>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddTransient%2A) registration.
 
-Another common way to add services is using the [`AddSingleton<TService, TImplementation>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton%2A), [`AddTransient<TService, TImplementation>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddTransient%2A), or [`AddScoped<TService, TImplementation>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddScoped%2A) methods. These methods take two input types: the interface definition and the concrete implementation. This type of registration is best for cases where you are implementing services based on interfaces.
+Another common way to register dependencies is using the [`AddSingleton<TService, TImplementation>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton%2A), [`AddTransient<TService, TImplementation>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddTransient%2A), or [`AddScoped<TService, TImplementation>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddScoped%2A) methods. These methods take two types - the interface definition and the concrete implementation. This type of registration is best for cases where you are implementing services based on interfaces.
 
-Once all services have been registered, the <xref:Microsoft.Maui.Hosting.MauiAppBuilder.Build?displayProperty=nameWithType> method should be called to create the <xref:Microsoft.Maui.Hosting.MauiApp> object and populate the dependency injection container with all the registered services.
+Once all types have been registered, <xref:Microsoft.Maui.Hosting.MauiAppBuilder.Build?displayProperty=nameWithType> should be called to create the <xref:Microsoft.Maui.Hosting.MauiApp> object and populate the dependency injection container with all the registered types.
 
 > [!IMPORTANT]
-> Once the `Build` method has been called, the services registered with the dependency injection container will be immutable and no longer can be updated or modified.
+> Once  <xref:Microsoft.Maui.Hosting.MauiAppBuilder.Build?displayProperty=nameWithType> has been called, the types registered with the dependency injection container will be immutable and no longer can be updated or modified.
 
 ### Register dependencies with an extension method
 
