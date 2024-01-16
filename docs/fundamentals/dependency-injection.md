@@ -235,7 +235,7 @@ In addition, in a Shell-based app, .NET MAUI will inject dependencies into detai
 
 ### Explicit dependency resolution
 
-If your type only exposes a parameterless constructor, then Shell-based apps can't inject dependencies for you. Alternatively, if you don't use Shell (for example, implementing navigation manually without using routes) then you'll need to use explicit dependency resolution.
+A Shell-based app can't use constructor injection when a type only exposes a parameterless constructor. Alternatively, if your app doesn't use Shell then you'll need to use explicit dependency resolution.
 
 The dependency injection container can be explicitly accessed from an <xref:Microsoft.Maui.Controls.Element> through its [`Handler.MauiContext.Service`](xref:Microsoft.Maui.IMauiContext.Services) property, which is of type <xref:System.IServiceProvider>:
 
@@ -256,11 +256,9 @@ public partial class MainPage : ContentPage
 }
 ```
 
-In this example, accessing the dependency injection container in the `HandlerChanged` event handler ensures that a handler has been set for the page, and therefore that the `Handler` property won't be `null`.
+This approach can be useful if you need to resolve a dependency from an <xref:Microsoft.Maui.Controls.Element>, or from outside the constructor of an <xref:Microsoft.Maui.Controls.Element>. In this example, accessing the dependency injection container in the `HandlerChanged` event handler ensures that a handler has been set for the page, and therefore that the `Handler` property won't be `null`.
 
-This approach can be useful if you need to resolve a dependency from an <xref:Microsoft.Maui.Controls.Element>, or from outside the constructor of an <xref:Microsoft.Maui.Controls.Element>.
-
-> [!CAUTION]
+> [!WARNING]
 > The `Handler` property of your `Element` could be `null`, so be aware that you may need to account for this situation. For more information, see [Handler lifecycle](~/user-interface/handlers/index.md#handler-lifecycle).
 
 In a view-model, the dependency injection container can be explicitly accessed through the [`Handler.MauiContext.Service`](xref:Microsoft.Maui.IMauiContext.Services) property of `Application.Current.MainPage`:
@@ -279,26 +277,7 @@ public class MainPageViewModel
 }
 ```
 
-A drawback of this approach is that the view-model now has a dependency on the <xref:Microsoft.Maui.Controls.Application> type. However, this drawback can be eliminated by passing an <xref:System.IServiceProvider> argument to the view-model constructor:
-
-```csharp
-public partial class MainPage : ContentPage
-{
-    public MainPage()
-    {
-        InitializeComponent();
-
-        HandlerChanged += OnHandlerChanged;
-    }
-
-    void OnHandlerChanged(object sender, EventArgs e)
-    {
-        BindingContext = new MainPageViewModel(Handler.MauiContext.Services);
-    }
-}
-```
-
-In the view-model, the <xref:System.IServiceProvider> instance can then be used for explicit dependency resolution:
+A drawback of this approach is that the view-model now has a dependency on the <xref:Microsoft.Maui.Controls.Application> type. However, this drawback can be eliminated by passing an <xref:System.IServiceProvider> argument to the view-model constructor. The <xref:System.IServiceProvider> is resolved through automatic dependency resolution without having to register it with the dependency injection container. With this approach a type and its <xref:System.IServiceProvider> dependency can be automatically resolved provided that the type is registered with the dependency injection container. The <xref:System.IServiceProvider> can then be used for explicit dependency resolution:
 
 ```csharp
 public class MainPageViewModel
@@ -314,8 +293,6 @@ public class MainPageViewModel
 }
 ```
 
-Alternatively, an <xref:System.IServiceProvider> can also be resolved through automatic dependency resolution without having to register it with the dependency injection container. With this approach a type and its <xref:System.IServiceProvider> dependency can be automatically resolved provided that the type is registered with the dependency injection container. The <xref:System.IServiceProvider> can then be used for explicit dependency resolution.
-
 In addition, an <xref:System.IServiceProvider> instance can be accessed through the following native properties:
 
 - Android - `MauiApplication.Current.Services`
@@ -324,7 +301,7 @@ In addition, an <xref:System.IServiceProvider> instance can be accessed through 
 
 ## Limitations with XAML resources
 
-A common scenario is to register a page with the dependency injection container, and use automatic dependency resolution to inject it into the `App` class constructor and set it as the value of the `MainPage` property:
+A common scenario is to register a page with the dependency injection container, and use automatic dependency resolution to inject it into the `App` constructor and set it as the value of the `MainPage` property:
 
 ```csharp
 public App(MyFirstAppPage page)
