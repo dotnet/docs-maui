@@ -1,6 +1,6 @@
 ---
 title: Dependency injection in .NET MAUI
-description: Learn how to perform dependency injection in a .NET MAUI app, to decouple concrete types from the code that depends on these types.
+description: Learn how to inject dependencies in a .NET MAUI app, to decouple concrete types from the code that depends on these types.
 ms.date: 01/15/2024
 ---
 
@@ -24,12 +24,12 @@ If a class doesn't directly instantiate the objects it needs, another class must
 ```csharp
 public class MainPageViewModel
 {
-    readonly INavigationService _navigationService;
+    readonly ILoggingService _loggingService;
     readonly ISettingsService _settingsService;
 
-    public MainPageViewModel(INavigationService navigationService, ISettingsService settingsService)
+    public MainPageViewModel(ILoggingService loggingService, ISettingsService settingsService)
     {
-        _navigationService = navigationService;
+        _loggingService = loggingService;
         _settingsService = settingsService;
     }
 }
@@ -63,9 +63,9 @@ There are several advantages to using a dependency injection container:
 
 In the context of a .NET MAUI app that uses the Model-View-ViewModel (MVVM) pattern, a dependency injection container will typically be used for registering and resolving views, registering and resolving view models, and for registering services and injecting them into view models.
 
-In .NET MAUI, the `MauiProgram` class will call into the `CreateMauiApp` method to create a `MauiAppBuilder` object. The `MauiAppBuilder` object has a `Services` property of type `IServiceCollection`, which provides a place to register our components, such as views, view models, and services for dependency injection. Any components registered with the `Services` property will be provided to the dependency injection container when the `MauiAppBuilder.Build` method is called.
+In .NET MAUI, the `MauiProgram` class will call into the `CreateMauiApp` method to create a <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object. The <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object has a <xref:Microsoft.Maui.Hosting.MauiAppBuilder.Services> property of type <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>, which provides a place to register our components, such as views, view models, and services for dependency injection. Any components registered with the <xref:Microsoft.Maui.Hosting.MauiAppBuilder.Services> property will be provided to the dependency injection container when the <xref:Microsoft.Maui.Hosting.MauiAppBuilder.Build?displayProperty=nameWithType> method is called.
 
-At runtime, the container must know which implementation of the services are being requested in order to instantiate them for the requested objects. In the example above, the `INavigationService` and `ISettingsService` interfaces need to be resolved before the `MainPageViewModel` object can be instantiated. This involves the container performing the following actions:
+At runtime, the container must know which implementation of the services are being requested in order to instantiate them for the requested objects. In the example above, the `ILoggingService` and `ISettingsService` interfaces need to be resolved before the `MainPageViewModel` object can be instantiated. This involves the container performing the following actions:
 
 - Deciding how to instantiate an object that implements the interface. This is known as *registration*. For more information, see [Registration](#registration).
 - Instantiating the object that implements the required interface and the `MainPageViewModel` object. This is known as *resolution*. For more information, see [Resolution](#resolution).
@@ -84,7 +84,7 @@ There are two ways of registering types and objects in the container through cod
 > [!NOTE]
 > Dependency injection containers are not always suitable. Dependency injection introduces additional complexity and requirements that might not be appropriate or useful to smaller apps. If a class doesn't have any dependencies, or isn't a dependency for other types, it might not make sense to put it in the container. In addition, if a class has a single set of dependencies that are integral to the type and will never change, it might not make sense to put them in the container.
 
-The registration of types requiring dependency injection should be performed in a single method in an app. This method should be invoked early in the app's lifecycle to ensure it is aware of the dependencies between its classes. Apps should typically perform this in the `MauiProgram.CreateMauiApp` method in the `MauiProgram` class:
+The registration of types requiring dependency injection should be performed in a single method in an app. This method should be invoked early in the app's lifecycle to ensure it is aware of the dependencies between its classes. Apps should typically perform this in the `CreateMauiApp` method in the `MauiProgram` class:
 
 ```csharp
 public static class MauiProgram
@@ -100,7 +100,7 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
 
-        builder.Services.AddTransient<INavigationService, NavigationService>();
+        builder.Services.AddTransient<ILoggingService, loggingService>();
         builder.Services.AddTransient<ISettingsService, SettingsService>();
         builder.Services.AddSingleton<MainPageViewModel>();
         builder.Services.AddSingleton<MainPage>();
@@ -132,18 +132,18 @@ Depending on the needs of your app, you may need to register dependencies with d
 > [!NOTE]
 > If an object doesn't inherit from an interface, such as a view-model, only it's concrete type needs to be provided to the `AddSingleton<T>` and `AddTransient<T>` methods.
 
-The `MainPageViewModel` class is used near the app's root and should always be available, so registering it with `AddSingleton<T>` is beneficial. Other view-models maybe situationally navigated to or are used later in the app. Suppose you know that you have a component that may not always be used. In that case, if it'd memory or computationally intensive or requires just-in-time data, it may be a better candidate for `AddTransient<T>` registration.
+The `MainPageViewModel` class is used near the app's root and should always be available, so registering it with `AddSingleton<T>` is beneficial. Other view-models maybe situationally navigated to or are used later in the app. Suppose you know that you have a type that might not always be used. In that case, if it's memory or computationally intensive or requires just-in-time data, it may be a better candidate for `AddTransient<T>` registration.
 
 Another common way to add services is using the `AddSingleton<TService, TImplementation>`, `AddTransient<TService, TImplementation>`, or `AddScoped<TService, TImplementation>` methods. These methods take two input types: the interface definition and the concrete implementation. This type of registration is best for cases where you are implementing services based on interfaces.
 
-Once all services have been registered, the `MauiAppBuilder.Build` method should be called to create the `MauiApp` object and populate the dependency injection container with all the registered services.
+Once all services have been registered, the <xref:Microsoft.Maui.Hosting.MauiAppBuilder.Build?displayProperty=nameWithType> method should be called to create the <xref:Microsoft.Maui.Hosting.MauiApp> object and populate the dependency injection container with all the registered services.
 
 > [!IMPORTANT]
 > Once the `Build` method has been called, the services registered with the dependency injection container will be immutable and no longer can be updated or modified.
 
 ### Register dependencies with an extension method
 
-The `MauiApp.CreateBuilder` method creates a `MauiAppBuilder` object that can be used to register dependencies. If your app needs to register many dependencies, you can create extension methods to help provide an organized and maintainable registration workflow:
+The `MauiApp.CreateBuilder` method creates a <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object that can be used to register dependencies. If your app needs to register many dependencies, you can create extension methods to help provide an organized and maintainable registration workflow:
 
 ```csharp
 public static class MauiProgram
@@ -158,7 +158,7 @@ public static class MauiProgram
 
     public static MauiAppBuilder RegisterServices(this MauiAppBuilder mauiAppBuilder)
     {
-        mauiAppBuilder.Services.AddTransient<INavigationService, NavigationService>();
+        mauiAppBuilder.Services.AddTransient<ILoggingService, loggingService>();
         mauiAppBuilder.Services.AddTransient<ISettingsService, SettingsService>();
 
         // More services registered here.
@@ -186,7 +186,7 @@ public static class MauiProgram
 }
 ```
 
-In this example, the three registration extension methods use the `MauiAppBuilder` instance to access the `Services` property to register dependencies.
+In this example, the three registration extension methods use the <xref:Microsoft.Maui.Hosting.MauiAppBuilder> instance to access the <xref:Microsoft.Maui.Hosting.MauiAppBuilder.Services> property to register dependencies.
 
 ## Resolution
 
@@ -206,7 +206,7 @@ Automatic dependency resolution occurs in apps that use [.NET MAUI Shell](shell/
 
 Shell-based apps will use the dependency injection container to create objects during navigation.
 
- Shell's `Routing.RegisterRoute` method associated a route path to a `View`:
+Shell's `Routing.RegisterRoute` method associated a route path to a <xref:Microsoft.Maui.Controls.View>:
 
 ```csharp
 Routing.RegisterRoute("Filter", typeof(MyItemPage));
@@ -223,17 +223,17 @@ public MainPage(MainPageViewModel viewModel)
 }
 ```
 
-In this example, the `MainPage` constructor receives a `MainPageViewModel` instance that's injected. In turn, the `MainPageViewModel` instance has `INavigationService` and `ISettingsService` instances injected:
+In this example, the `MainPage` constructor receives a `MainPageViewModel` instance that's injected. In turn, the `MainPageViewModel` instance has `ILoggingService` and `ISettingsService` instances injected:
 
 ```csharp
 public class MainPageViewModel
 {
-    readonly INavigationService _navigationService;
+    readonly ILoggingService _loggingService;
     readonly ISettingsService _settingsService;
 
-    public MainPageViewModel(INavigationService navigationService, ISettingsService settingsService)
+    public MainPageViewModel(ILoggingService loggingService, ISettingsService settingsService)
     {
-        _navigationService = navigationService;
+        _loggingService = loggingService;
         _settingsService = settingsService;
     }
 }
@@ -245,7 +245,7 @@ In addition, in a Shell-based app, .NET MAUI will inject dependencies into detai
 
 If your type only exposes a parameterless constructor, then Shell-based apps can't inject dependencies for you. Alternatively, if you don't use Shell (for example, implementing navigation manually without using routes) then you'll need to use explicit dependency resolution.
 
-The dependency injection container can be explicitly accessed from an `Element` through its `Handler.MauiContext.Service` property, which is of type `IServiceProvider`:
+The dependency injection container can be explicitly accessed from an `Element` through its `Handler.MauiContext.Service` property, which is of type <xref:System.IServiceProvider>:
 
 ```csharp
 public partial class MainPage : ContentPage
@@ -276,18 +276,18 @@ In a view-model, the dependency injection container can be explicitly accessed t
 ```csharp
 public class MainPageViewModel
 {
-    readonly INavigationService _navigationService;
+    readonly ILoggingService _loggingService;
     readonly ISettingsService _settingsService;
 
     public MainPageViewModel()
     {
-        _navigationService = Application.Current.MainPage.Handler.MauiContext.Services.GetService<INavigationService>();
+        _loggingService = Application.Current.MainPage.Handler.MauiContext.Services.GetService<ILoggingService>();
         _settingsService = Application.Current.MainPage.Handler.MauiContext.Services.GetService<ISettingsService>();
     }
 }
 ```
 
-A drawback of this approach is that the view-model now has a dependency on the `Application` and `MainPage` types. However, this drawback can be eliminated by passing an `IServiceProvider` argument to the view-model constructor:
+A drawback of this approach is that the view-model now has a dependency on the `Application` and `MainPage` types. However, this drawback can be eliminated by passing an <xref:System.IServiceProvider> argument to the view-model constructor:
 
 ```csharp
 public partial class MainPage : ContentPage
@@ -306,31 +306,31 @@ public partial class MainPage : ContentPage
 }
 ```
 
-In the view-model, the `IServiceProvider` instance can then be used for explicit dependency resolution:
+In the view-model, the <xref:System.IServiceProvider> instance can then be used for explicit dependency resolution:
 
 ```csharp
 public class MainPageViewModel
 {
-    readonly INavigationService _navigationService;
+    readonly ILoggingService _loggingService;
     readonly ISettingsService _settingsService;
 
     public MainPageViewModel(IServiceProvider serviceProvider)
     {
-        _navigationService = serviceProvider.GetService<INavigationService>();
+        _loggingService = serviceProvider.GetService<ILoggingService>();
         _settingsService = serviceProvider.GetService<ISettingsService>();
     }
 }
 ```
 
-Alternatively, an `IServiceProvider` can also be resolved through automatic dependency resolution without having to register it with the dependency injection container. With this approach a type and its `IServiceProvider` dependency can be automatically resolved provided that the type is registered with the dependency injection container. The `IServiceProvider` can then be used for explicit dependency resolution.
+Alternatively, an <xref:System.IServiceProvider> can also be resolved through automatic dependency resolution without having to register it with the dependency injection container. With this approach a type and its <xref:System.IServiceProvider> dependency can be automatically resolved provided that the type is registered with the dependency injection container. The <xref:System.IServiceProvider> can then be used for explicit dependency resolution.
 
-In addition, an `IServiceProvider` instance can be accessed through the following native properties:
+In addition, an <xref:System.IServiceProvider> instance can be accessed through the following native properties:
 
 - Android - `MauiApplication.Current.Services`
 - iOS and Mac Catalyst - `MauiUIApplicationDelegate.Current.Services`
 - Windows - `MauiWinUIApplication.Current.Services`
 
-## Limitations of DI with XAML resources
+## Limitations with XAML resources
 
 A common scenario is to register a page with the dependency injection container, and use automatic dependency resolution to inject it into the `App` class constructor and set it as the value of the `MainPage` property:
 
@@ -342,14 +342,9 @@ public App(MyFirstAppPage page)
 }
 ```
 
-However, in this scenario, if `MyFirstAppPage` attempts to access a `StaticResource` that's been declared in XAML in the `App` resource dictionary, a `XamlParseException` will be thrown with a message similar to `Position {row}:{column}. StaticResource not found for key {key}`. This occurs because of differences in how XAML and the dependency injection container create object trees:
+However, in this scenario if `MyFirstAppPage` attempts to access a `StaticResource` that's been declared in XAML in the `App` resource dictionary, a `XamlParseException` will be thrown with a message similar to `Position {row}:{column}. StaticResource not found for key {key}`. This occurs because the page resolved through constructor injection has been created before the application-level XAML resources have been initialized.
 
-- XAML creates object trees *outside-in*, meaning that the outer-most container is created first (such as the `Page` object), then the next deeper one (such as a layout object), then the inner-most content is created last (such as a `Button`).
-- `Microsoft.Extensions.DependencyInjection` creates object trees *inside-out*, meaning that the inner-most item is created first, followed by whatever contains it.
-
-This conflict in how object trees are constructed can prevent you from accessing application-level static resources declared in XAML, from a page that's been resolved via constructor injection. This is because the page resolved through constructor injection has been created before the application-level XAML resources have been created.
-
-A workaround for this issue is to inject an `IServiceProvider` into your `App` class and then use it to resolve the page inside the `App` class:
+A workaround for this issue is to inject an <xref:System.IServiceProvider> into your `App` class and then use it to resolve the page inside the `App` class:
 
 ```csharp
 public App(IServiceProvider serviceProvider)
@@ -359,4 +354,4 @@ public App(IServiceProvider serviceProvider)
 }
 ```
 
-This approach forces the XAML object tree to be created before the page is resolved.
+This approach forces the XAML object tree to be created and initialized before the page is resolved.
