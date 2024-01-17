@@ -7,7 +7,7 @@ ms.date: 08/30/2023
 # Upgrade from Xamarin to .NET
 
 <!-- markdownlint-disable MD032 -->
-> [!NOTE]
+> [!IMPORTANT]
 > Help us improve your upgrade experience from Xamarin to .NET MAUI by completing this [short survey](https://www.surveymonkey.com/r/VXH5TM7).
 <!-- markdownlint-enable MD025 -->
 
