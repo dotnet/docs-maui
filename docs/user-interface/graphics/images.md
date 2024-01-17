@@ -294,3 +294,6 @@ if (image != null)
 ::: moniker-end
 
 In this example, the image is retrieved from the assembly and loaded as a stream. The image is downsized using the <xref:Microsoft.Maui.Graphics.IImage.Downsize%2A> method, with the argument specifying that its largest dimension should be set to 150 pixels. In addition, the source image is disposed. The downsized image is then saved to a stream.
+
+> [!IMPORTANT]
+> The <xref:Microsoft.Maui.Graphics.IImage.Save%2A> method doesn't reset the stream position to 0. Therefore, if you want to save the stream to a file you should use the <xref:System.IO.Stream.Seek%2A> method to reset the destination stream position to 0 before copying it to a file.
