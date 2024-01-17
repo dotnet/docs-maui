@@ -6,7 +6,7 @@ ms.date: 01/11/2024
 
 # Connect to an Android emulator on a Mac from inside a Windows virtual machine
 
-The Android emulator provides versatile networking capabilities that can be used for different purposes, including connecting to an emulator running on a Mac from inside a Windows virtual machine (VM).
+The Android emulator provides versatile networking capabilities that can be used for different purposes, including connecting to an emulator running on a Mac from inside a Windows virtual machine (VM). This is particularly useful when running Windows in Parallels on a Mac. In this case it is necessary to use the emulators on the Mac since they cannot run in Parallels. 
 
 Each instance of the emulator runs behind a virtual router, or firewall service, that isolates it from your development machine network interfaces and settings and from the internet. Apps running on an emulator can connect to the network available on your development machine. However, apps connect through the emulator, which acts like a normal app on your development machine. This has a consequence that communication with the emulated device may be blocked by a firewall running on your development machine, or by a physical firewall where your machine is connected. The emulator can handle outbound TCP and UDP connections and messages on behalf of the emulated device, provided that your development machine network environment lets it. For more information about Android emulator networking, see [Set up Android Emulator networking](https://developer.android.com/studio/run/emulator-networking) on developer.android.com.
 
