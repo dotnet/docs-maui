@@ -287,7 +287,7 @@ if (image != null)
     using (MemoryStream memStream = new MemoryStream())
     {
         newImage.Save(memStream);
-        // Reset destination stream position if saving to a file
+        // Reset destination stream position to 0 if saving to a file
     }
 }
 ```
