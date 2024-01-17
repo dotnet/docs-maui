@@ -86,6 +86,8 @@ To connect to the Android Emulator running on a Mac from a Windows VM, by using 
     > [!NOTE]
     > Command line access to `adb` can be obtained in Visual Studio through the **Tools > Android > Android Adb Command Prompt...** menu item.  
 
+When the connection is completed Visual Studio will display the emulator as a debug target, which you can use to deploy your app to the emulator.
+
 ## Use ssh port forwarding
 
 Provided that **Remote Login** is enabled on your Mac, you can use `ssh` port forwarding to connect to the emulator.
