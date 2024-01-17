@@ -103,7 +103,7 @@ The following table lists the types that implement pages in .NET MAUI:
 | <xref:Microsoft.Maui.Controls.FlyoutPage> | <xref:Microsoft.Maui.Handlers.FlyoutViewHandler> | PhoneFlyoutPageRenderer | <xref:Microsoft.Maui.Handlers.FlyoutViewHandler> | `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.NavigationPage> | <xref:Microsoft.Maui.Handlers.NavigationViewHandler> | NavigationRenderer | <xref:Microsoft.Maui.Handlers.NavigationViewHandler> | `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.TabbedPage> | <xref:Microsoft.Maui.Handlers.TabbedViewHandler> | TabbedRenderer | <xref:Microsoft.Maui.Handlers.TabbedViewHandler> | `Mapper` | `CommandMapper` |
-| <xref:Microsoft.Maui.Controls.Shell> | <xref:Microsoft.Maui.Handlers.ShellHandler> | ShellRenderer | ShellRenderer | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.Shell> | <xref:Microsoft.Maui.Controls.Handlers.ShellHandler> | ShellRenderer | ShellRenderer | `Mapper` | `CommandMapper` |
 
 <!--
 xrefs not used on:
