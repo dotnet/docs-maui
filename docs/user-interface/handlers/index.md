@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI handlers"
 description: "Learn about .NET MAUI handlers, which map cross-platform controls to performant native controls on each platform."
-ms.date: 08/15/2022
+ms.date: 01/17/2024
 ---
 
 # Handlers
@@ -40,9 +40,9 @@ All handler-based .NET MAUI controls support two handler lifecycle events:
 
 In addition to these events, each cross-platform control also has an overridable `OnHandlerChanging` method that's invoked when the `HandlerChanging` event is raised, and a `OnHandlerChanged` method that's invoked when the `HandlerChanged` event is raised.
 
-## Handler-based views
+## View handlers
 
-The following table lists the types that implement handler-based views in .NET MAUI:
+The following table lists the types that implement views in .NET MAUI:
 
 | View | Interface | Handler | Property Mapper | Command Mapper |
 | -- | -- | -- | -- | -- |
@@ -92,3 +92,23 @@ The following table lists the types that implement handler-based views in .NET M
 | <xref:Microsoft.Maui.Controls.TimePicker> | <xref:Microsoft.Maui.ITimePicker> | <xref:Microsoft.Maui.Handlers.TimePickerHandler> | <xref:Microsoft.Maui.Handlers.TimePickerHandler.Mapper> | <xref:Microsoft.Maui.Handlers.TimePickerHandler.CommandMapper> |
 | <xref:Microsoft.Maui.Controls.ViewCell> | | `ViewCellRenderer` | `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.WebView> | <xref:Microsoft.Maui.IWebView> | <xref:Microsoft.Maui.Handlers.WebViewHandler> | <xref:Microsoft.Maui.Handlers.WebViewHandler.Mapper> | <xref:Microsoft.Maui.Handlers.WebViewHandler.CommandMapper> |
+
+## Page handlers
+
+The following table lists the types that implement pages in .NET MAUI:
+
+| Page | Android Handler | iOS/Mac Catalyst Handler | Windows Handler | Property Mapper | Command Mapper |
+| -- | -- | -- | -- | -- | -- |
+| <xref:Microsoft.Maui.Controls.ContentPage> | <xref:Microsoft.Maui.Handlers.PageHandler> | <xref:Microsoft.Maui.Handlers.PageHandler> | <xref:Microsoft.Maui.Handlers.PageHandler> | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.FlyoutPage> | <xref:Microsoft.Maui.Handlers.FlyoutViewHandler> | PhoneFlyoutPageRenderer | <xref:Microsoft.Maui.Handlers.FlyoutViewHandler> | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.NavigationPage> | <xref:Microsoft.Maui.Handlers.NavigationViewHandler> | NavigationRenderer | <xref:Microsoft.Maui.Handlers.NavigationViewHandler> | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.TabbedPage> | <xref:Microsoft.Maui.Handlers.TabbedViewHandler> | TabbedRenderer | <xref:Microsoft.Maui.Handlers.TabbedViewHandler> | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.Shell> | <xref:Microsoft.Maui.Handlers.ShellHandler> | ShellRenderer | ShellRenderer | `Mapper` | `CommandMapper` |
+
+<!--
+xrefs not used on:
+
+1. Mapper and CommandMapper because the properties are in different files (handlers vs compatibility renderers).
+1. Renderer classes because they are platform-specific, and the API docs only exist for the xplat layer.
+
+-->
