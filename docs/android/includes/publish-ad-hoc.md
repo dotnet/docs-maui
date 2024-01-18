@@ -38,7 +38,7 @@ ms.topic: include
 
     The *Archive Manager* displays the publishing process.
 
-1. In the **Save As** dialog, confirm the location and file name for your *.AAB* file is correct and select the **Save** button.
+1. In the **Save As** dialog, confirm the location and file name for your package is correct and select the **Save** button.
 1. In the **Signing Password** dialog, enter your signing identity password and select the **OK** button:
 
     :::image type="content" source="../deployment/media/publish/vs/keystore-password.png" alt-text="Screenshot of entering your signing identity password.":::
