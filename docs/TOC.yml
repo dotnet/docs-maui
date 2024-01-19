@@ -181,6 +181,8 @@
               href: fundamentals/data-binding/commanding.md
             - name: Compiled bindings
               href: fundamentals/data-binding/compiled-bindings.md
+        - name: Dependency injection
+          href: fundamentals/dependency-injection.md
         - name: Gestures
           items:
             - name: Drag and drop
