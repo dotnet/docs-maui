@@ -10,10 +10,10 @@ ms.date: 01/15/2024
 
 Typically, a class constructor is invoked when instantiating an object, and any values that the object needs are passed as arguments to the constructor. This is an example of dependency injection known as *constructor injection*. The dependencies the object needs are injected into the constructor.
 
-By specifying dependencies as interface types, dependency injection enables decoupling the concrete types from the code that depends on these types. It generally uses a container that holds a list of registrations and mappings between interfaces and abstract types, and the concrete types that implement or extend these types.
-
 > [!NOTE]
 > There are also other types of dependency injection, such as *property setter injection* and *method call injection*, but they are less commonly used.
+
+By specifying dependencies as interface types, dependency injection enables decoupling the concrete types from the code that depends on these types. It generally uses a container that holds a list of registrations and mappings between interfaces and abstract types, and the concrete types that implement or extend these types.
 
 ## Dependency injection containers
 
@@ -33,7 +33,7 @@ public class MainPageViewModel
 }
 ```
 
-In this example, the `MainPageViewModel` constructor receives two interface object instances as arguments injected by another class. The only dependency in the `MainPageViewModel` class is on the interface types. Therefore, the `MainPageViewModel` class doesn't have any knowledge of the class that's responsible for instantiating the interface objects.
+In this example, the `MainPageViewModel` constructor requires two interface object instances as arguments injected by another class. The only dependency in the `MainPageViewModel` class is on the interface types. Therefore, the `MainPageViewModel` class doesn't have any knowledge of the class that's responsible for instantiating the interface objects.
 
 Similarly, consider the following example that shows a page class that requires a constructor argument:
 
@@ -46,11 +46,11 @@ public MainPage(MainPageViewModel viewModel)
 }
 ```
 
-In this example, the `MainPage` constructor receives a concrete type as an argument that's injected. The only dependency in the `MainPage` class is on the `MainPageViewModel` type. Therefore, the `MainPage` class doesn't have any knowledge of the class that's responsible for instantiating the concrete type.
+In this example, the `MainPage` constructor requires a concrete type as an argument that's injected by another class. The only dependency in the `MainPage` class is on the `MainPageViewModel` type. Therefore, the `MainPage` class doesn't have any knowledge of the class that's responsible for instantiating the concrete type.
 
 In both cases, the class that's responsible for instantiating the dependencies, and inserting them into the dependent class, is known as the *dependency injection container*.
 
-Dependency injection containers reduce the coupling between objects by providing a facility to instantiate class instances and manage their lifetime based on the configuration of the container. During object creation, the container injects any dependencies that the object requires into it. If those dependencies have not yet been created, the container creates and resolves their dependencies first.
+Dependency injection containers reduce the coupling between objects by providing a facility to instantiate class instances and manage their lifetime based on the configuration of the container. During object creation, the container injects any dependencies that the object requires. If those dependencies haven't been created, the container creates and resolves their dependencies first.
 
 There are several advantages to using a dependency injection container:
 
@@ -63,18 +63,18 @@ In the context of a .NET MAUI app that uses the Model-View-ViewModel (MVVM) patt
 
 There are many dependency injection containers available for .NET. .NET MAUI has in-built support for using <xref:Microsoft.Extensions.DependencyInjection> to manage the instantiation of views, view models, and service classes in an app. <xref:Microsoft.Extensions.DependencyInjection> facilitates building loosely coupled apps, and provides all of the features commonly found in dependency injection containers, including methods to register type mappings and object instances, resolve objects, manage object lifetimes, and inject dependent objects into constructors of objects that it resolves. For more information about <xref:Microsoft.Extensions.DependencyInjection>, see [Dependency injection in .NET](/dotnet/core/extensions/dependency-injection).
 
-At runtime, the container must know which implementation of the services are being requested in order to instantiate them for the requested objects. In the example above, the `ILoggingService` and `ISettingsService` interfaces need to be resolved before the `MainPageViewModel` object can be instantiated. This involves the container performing the following actions:
+At runtime, the container must know which implementation of the dependencies are being requested in order to instantiate them for the requested objects. In the example above, the `ILoggingService` and `ISettingsService` interfaces need to be resolved before the `MainPageViewModel` object can be instantiated. This involves the container performing the following actions:
 
 - Deciding how to instantiate an object that implements the interface. This is known as *registration*. For more information, see [Registration](#registration).
 - Instantiating the object that implements the required interface and the `MainPageViewModel` object. This is known as *resolution*. For more information, see [Resolution](#resolution).
 
-Eventually, an app will finish using the `MainPageViewModel` object, and it will become available for garbage collection. At this point, the garbage collector should dispose of any short-lived interface implementations if other classes do not share the same instance.
+Eventually, an app will finish using the `MainPageViewModel` object, and it will become available for garbage collection. At this point, the garbage collector should dispose of any short-lived interface implementations if other classes do not share the same instances.
 
 ## Registration
 
 Before dependencies can be injected into an object, the types for the dependencies must first be registered with the container. Registering a type typically involves passing the container a concrete type, or an interface and a concrete type that implements the interface.
 
-There are two ways of registering types and objects in the container through code:
+There are two main approaches to registering types and objects with the container:
 
 - Register a type or mapping with the container. This is known as transient registration. When required, the container will build an instance of the specified type.
 - Register an existing object in the container as a singleton. When required, the container will return a reference to the existing object.
@@ -132,7 +132,7 @@ Depending on the needs of your app, you may need to register dependencies with d
 > [!NOTE]
 > If an object doesn't inherit from an interface, such as a view or view-model, only its concrete type needs to be provided to the [`AddSingleton<T>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton%2A), [`AddTransient<T>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddTransient%2A), or [`AddScoped<T>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddScoped%2A) method.
 
-The `MainPageViewModel` class is used near the app's root and should always be available, so registering it with [`AddSingleton<T>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton%2A) is beneficial. Other view-models may be situationally navigated to or used later in an app. If you have a type that might not always be used, or if it's memory of computationally intensive or requires just-in-time data, it may be a better candidate for [`AddTransient<T>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddTransient%2A) registration.
+The `MainPageViewModel` class is used near the app's root and should always be available, so registering it with [`AddSingleton<T>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton%2A) is beneficial. Other view-models may be situationally navigated to or used later in an app. If you have a type that might not always be used, or if it's memory or computationally intensive or requires just-in-time data, it may be a better candidate for [`AddTransient<T>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddTransient%2A) registration.
 
 Another common way to register dependencies is using the [`AddSingleton<TService, TImplementation>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton%2A), [`AddTransient<TService, TImplementation>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddTransient%2A), or [`AddScoped<TService, TImplementation>`](xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddScoped%2A) methods. These methods take two types - the interface definition and the concrete implementation. This type of registration is best for cases where you are implementing services based on interfaces.
 
@@ -192,7 +192,7 @@ In this example, the three registration extension methods use the <xref:Microsof
 
 After a type is registered, it can be resolved or injected as a dependency. When a type is being resolved, and the container needs to create a new instance, it injects any dependencies into the instance.
 
-Generally, when a type is resolved, one of three things happens:
+Generally, when a type is resolved, one of three scenarios happen:
 
 1. If the type hasn't been registered, the container throws an exception.
 2. If the type has been registered as a singleton, the container returns the singleton instance. If this is the first time the type is called for, the container creates it if required and maintains a reference to it.
