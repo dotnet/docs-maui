@@ -214,7 +214,7 @@ During the activation period, apps execute activation logic, which often include
 
 ## Choose a dependency injection container carefully
 
-Dependency injection containers introduce additional performance constraints into mobile apps. Registering and resolving types with a container has a performance cost because of the container's use of reflection for creating each type, especially if dependencies are being reconstructed for each page navigation in the app. If there are many or deep dependencies, the cost of creation can increase significantly. In addition, type registration, which usually occurs during app startup, can have a noticeable impact on startup time, dependent upon the container being used.
+Dependency injection containers introduce additional performance constraints into mobile apps. Registering and resolving types with a container has a performance cost because of the container's use of reflection for creating each type, especially if dependencies are being reconstructed for each page navigation in the app. If there are many or deep dependencies, the cost of creation can increase significantly. In addition, type registration, which usually occurs during app startup, can have a noticeable impact on startup time, dependent upon the container being used. For more information about dependency injection in .NET MAUI apps, see [Dependency injection](~/fundamentals/dependency-injection.md).
 
 As an alternative, dependency injection can be made more performant by implementing it manually using factories.
 
