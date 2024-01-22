@@ -43,18 +43,18 @@ The process for layout measurement is as described above, except that multiple c
 ```mermaid
 sequenceDiagram
     participant P as Platform
-    participant BV as Layout Backing View
-    participant XV as Cross-Platform Layout
-    participant C as Child View
+    participant BV as Layout backing view
+    participant XV as Cross-platform layout
+    participant C as Child view
     P->>BV: Measure
     BV->>XV: Cross-Platform Measure
-    loop Each Child
+    loop Each child
         XV->>C: Measure
         C->>XV: DesiredSize
     end
     Note over XV: Update DesiredSize
     XV->>BV: DesiredSize
-    Note over BV: Internal bookkeeping (e.g. SetMeasuredDimension())
+    Note over BV: Internal processing
     BV->>P: Size
 ```
 
@@ -66,13 +66,13 @@ In .NET MAUI, the process of iterating over the child views and measuring each o
 sequenceDiagram
 	participant V as View
 	participant H as Handler
-	participant NV as Native View
+	participant NV as Native view
 	Note over V: Adjust for margins
 	V->>H: GetDesiredSize
 	Note over H: Convert to native
 	H->>NV: Measure
 	NV->>H: Size
-	Note over H: Convert to x-plat
+	Note over H: Convert to cross-platform
 	H->>V: Size
 	Note over V: Adjust for margins, record DesiredSize
 ```
