@@ -40,7 +40,9 @@ In this example, assume that the cross-platform view being measured is a <xref:M
 
 The process for layout measurement is as described above, except that multiple child views need to be measured:
 
-```mermaid
+:::image type="content" source="media/custom-layout/measure-layout.png" alt-text="The process for layout measurement in .NET MAUI" border="false":::
+
+<!-- ```mermaid
 sequenceDiagram
     participant P as Platform
     participant BV as Layout backing view
@@ -56,13 +58,17 @@ sequenceDiagram
     XV->>BV: DesiredSize
     Note over BV: Internal processing
     BV->>P: Size
-```
+``` -->
 
 In .NET MAUI, the process of iterating over the child views and measuring each one is handled by the `LayoutManager` for each type of layout, inside of the layout manager's `Measure` method.
 
 ### View measurement
 
-```mermaid
+When a cross-platform view is measured, it hands off the measurement to its native view. This process is shown in the following diagram:
+
+:::image type="content" source="media/custom-layout/measure-layout.png" alt-text="The process for layout measurement in .NET MAUI" border="false":::
+
+<!-- ```mermaid
 sequenceDiagram
 	participant V as View
 	participant H as Handler
@@ -75,13 +81,14 @@ sequenceDiagram
 	Note over H: Convert to cross-platform
 	H->>V: Size
 	Note over V: Adjust for margins, record DesiredSize
-```
+``` -->
 
+In this example, which builds on the previous example, the `Measure` method for the <xref:Microsoft.Maui.Controls.Label> takes the constraints it's given by the `CrossPlatformMeasure` method and makes any appropriate adjustments, such as subtracting its margins. It then passes the updated constraints to `GetDesiredSize` method of its handler. The handler is aware of the native control (a `TextView` on Android), and converts the constraints to platform values and calls the native control's version of `Measure`. The handler then takes the return value from the native measurement and converts it back to cross-platform values, if required, and returns it to the <xref:Microsoft.Maui.Controls.Label>. The <xref:Microsoft.Maui.Controls.Label> adjust the result (for example, by adding back its margins), if required, and then sets the result in its `DesiredSize` property. It then returns the value as a result of the `Measure` method.
 
 ---
 
 https://github.com/dotnet/maui/blob/main/docs/design/layout.md
-https://learn.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/layouts/custom
+https://learn.microsoft.com/xamarin/xamarin-forms/user-interface/layouts/custom
 https://github.com/hartez/CustomLayoutExamples
 
 This sample demonstrates the following custom layouts:
