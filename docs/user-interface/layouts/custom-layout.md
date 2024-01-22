@@ -22,15 +22,19 @@ The following diagram shows the process when the native layout system wants to m
 ```mermaid
 sequenceDiagram
     participant P as Platform
-    participant BV as Backing View
-    participant XV as Cross-Platform View
+    participant BV as Backing view
+    participant XV as Cross-platform view
     P->>BV: Measure
-    BV->>XV: Cross-Platform Measure
+    BV->>XV: Cross-platform Measure
     Note over XV: Update DesiredSize
     XV->>BV: DesiredSize
-    Note over BV: Internal bookkeeping (e.g. SetMeasuredDimension())
+    Note over BV: Internal processing
     BV->>P: Size
 ```
+
+In this example, assume that the cross-platform view being measured is a <xref:Microsoft.Maui.Controls.ContentView> that contains a <xref:Microsoft.Maui.Controls.Label>. A native platform, such as Android, needs to know the size of the <xref:Microsoft.Maui.Controls.ContentView>, given constraints of a width of 100 and a height of 200. The platform calls the <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> method on the backing view for the <xref:Microsoft.Maui.Controls.ContentView> (which on Android is a `ContentViewGroup`) with the constraints. The backing view converts the constraints to cross-platform units, if required, and then calls its `CrossPlatformMeasure` method with those constraints to determine how large the <xref:Microsoft.Maui.Controls.Label> should be. The `CrossPlatformMeasure` method is responsible for calling the `Measure` method on the <xref:Microsoft.Maui.Controls.Label>. The <xref:Microsoft.Maui.Controls.Label> measures its native control, and updates its `DesiredSize` property based on that measurement. This value is return to the backing view as the results of the `CrossPlatformMeasure` method. The backing view then does whatever internal processing it needs to, and returns its measured size to the platform.
+
+
 
 
 ---

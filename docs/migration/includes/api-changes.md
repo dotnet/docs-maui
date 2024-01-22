@@ -90,7 +90,7 @@ The process for creating a custom layout in .NET MAUI involves creating an <xref
 - The <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> override should call <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> on each <xref:Microsoft.Maui.IView> in the layout, and should return the total size of the layout given the constraints.
 - The <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> override should determine where each <xref:Microsoft.Maui.IView> should be placed within the given bounds, and should call <xref:Microsoft.Maui.IView.Arrange%2A> on each <xref:Microsoft.Maui.IView> with its appropriate bounds. The return value should be the actual size of the layout.
 
-For more information, see [Custom layout examples](https://github.com/hartez/CustomLayoutExamples).
+For more information, see [Custom layout sample](/samples/dotnet/maui-samples/userinterface-customlayouts/).
 
 <!-- TODO: Replace the link above with one to a custom layout doc, once the content is written -->
 
