@@ -94,6 +94,12 @@ For more information, see [Custom layout sample](/samples/dotnet/maui-samples/us
 
 <!-- TODO: Replace the link above with one to a custom layout doc, once the content is written -->
 
+<!-- The `VisualElement.OnSizeAllocated` method can still be overridden to support controls being migrated from Xamarin.Forms to .NET MAUI. In Xamarin.Forms, this method was typically used to react to size changes. Occasionally it was an approach to ensure that a control was part of the control hierarchy and ready to show on screen.
+
+This method exists in Maui.Controls, for backwards compatibility.
+
+When creating a control for .NET MAUI, the suggested customization point is an override of the `ArrangeOverride` method, rather than `OnSizeAllocated`. This provides more flexibility. -->
+
 ### Device changes
 
 Xamarin.Forms has a <xref:Xamarin.Forms.Device?displayProperty=fullName> class that helps you to interact with the device and platform the app is running on. The equivalent class in .NET MAUI, <xref:Microsoft.Maui.Controls.Device?displayProperty=fullName>, is deprecated and its functionality is replaced by multiple types.

@@ -12,6 +12,7 @@ A .NET Multi-platform App UI (.NET MAUI) layout is a list of views with rules an
 
 The process for creating a custom layout in .NET MAUI involves providing an <xref:Microsoft.Maui.Layouts.ILayoutManager> implementation, and overriding the <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> and <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> methods. The <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> implementation should call measure on each <xref:Microsoft.Maui.IView> in the layout, and should return the total size of the layout given the constraints. The <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> implementation should determine where each <xref:Microsoft.Maui.IView> should be placed within the given bounds, and should call <xref:Microsoft.Maui.IView.Arrange%2A> on each <xref:Microsoft.Maui.IView> with its appropriate bounds. The return value should be the actual size of the layout.
 
+Each platform handles layout slightly differently. One of the goal of .NET MAUI's cross-platform layout engine is to be as platform-agnostic as possible.
 
 ## Layout process
 
@@ -84,6 +85,15 @@ sequenceDiagram
 ``` -->
 
 In this example, which builds on the previous example, the `Measure` method for the <xref:Microsoft.Maui.Controls.Label> takes the constraints it's given by the `CrossPlatformMeasure` method and makes any appropriate adjustments, such as subtracting its margins. It then passes the updated constraints to `GetDesiredSize` method of its handler. The handler is aware of the native control (a `TextView` on Android), and converts the constraints to platform values and calls the native control's version of `Measure`. The handler then takes the return value from the native measurement and converts it back to cross-platform values, if required, and returns it to the <xref:Microsoft.Maui.Controls.Label>. The <xref:Microsoft.Maui.Controls.Label> adjust the result (for example, by adding back its margins), if required, and then sets the result in its `DesiredSize` property. It then returns the value as a result of the `Measure` method.
+
+## Notes
+
+Any layout pass should typically call `Measure` before calling `Arrange`. `Measure` may be called multiple times before calling `Arrange`, because a platform may need to perform some speculative measurements before arranging views.
+
+`Arrange` can be called multiple times at different sizes or locations, provided that `Measure` has been called at least once. For example, a desktop app may determine that a window resizing operation requires arranging a view at a different location, but that the changes to the window size could not have affected the measurements of the view.
+
+Each platform generally handles its own optimization of measurement operations. For example, if the cross-platform layer calls `Measure` on an Android view twice in a row with the same `measureSpec` values, the native Android code will return the cached value unless it determines that there's a good reason for the native view to be remeasured.
+
 
 ---
 
