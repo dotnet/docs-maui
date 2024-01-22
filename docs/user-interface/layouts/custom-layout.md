@@ -96,7 +96,7 @@ In this example, which builds on the previous example, the `Measure` method for 
 .NET MAUI's layouts have pre-defined layout managers to handle their layout. There are two main approaches to defining your own custom layout logic:
 
 1. Create a custom layout type, which is usually a sub-class of an existing layout type or of <xref:Microsoft.Maui.Controls.Layout>, and override the  <xref:Microsoft.Maui.Controls.Layout.CreateLayoutManager> method in your custom layout type. Then, provide an <xref:Microsoft.Maui.Layouts.ILayoutManager> implementation that contains your custom layout logic. For more information, see [Create a custom layout type](#create-a-custom-layout-type).
-1. Implement <xref:Microsoft.Maui.Controls.ILayoutManagerFactory> and register the implementation with the app's service provider. Use this implementation to define which layout manger is to be used for each layout type. In this scenario it's possible to define a new layout manager for an existing layout type, such as providing a custom layout manager for <xref:Microsoft.Maui.Controls.Grid>, with different layout rules. This can be useful for situations where you want to add a new behavior to a layout but don't want to update the type of an existing widely-used layout in your app. For more information, see [Implement a layout manager factory](#implement-a-layout-manager-factory).
+1. Implement <xref:Microsoft.Maui.Controls.ILayoutManagerFactory> and register the implementation with the app's service provider. This will replace .NET MAUI's default layout manager with your own. For more information, see [Implement a layout manager factory](#implement-a-layout-manager-factory).
 
 ### Create a custom layout type
 
@@ -104,15 +104,121 @@ In this example, which builds on the previous example, the `Measure` method for 
 
 ### Implement a layout manager factory
 
-In some situations you may find that you want to change the behavior of an existing layout type without having to create a custom layout. For those scenarios you can create an `ILayoutManagerFactory` and use it to replace the default layout manager type with your own. The `CustomizedGridLayoutManager` type in the sample demonstrates doing this:
+In some scenarios you may find that you want to change the behavior of an existing layout type without having to create a custom layout type. For these scenarios you can create a type that implements <xref:Microsoft.Maui.Controls.ILayoutManagerFactory> and use it to replace .NET MAUI's default layout manager with your own. This enables you to define a new layout manager for an existing layout type, such as providing a custom layout manager for <xref:Microsoft.Maui.Controls.Grid> with different layouts. This can be useful for scenarios where you want to add a new behavior to a layout but don't want to update the type of an existing widely-used layout in your app.
 
-- Write your own LayoutManager (e.g. CustomGridLayoutManager)
-- Create an ILayoutManagerFactory (e.g. CustomLayoutManagerFactory)
-- Register your factory with the app (e.g. MauiProgram)
+The process for implementing a layout manager factory is:
 
-When the app renders a `Grid` it will use your custom manager. In this example, the custom manager ensures that the `RowDefinitions` for the `Grid` includes enough rows to account for each `Grid.Row` property set in a child view.
+1. Create a layout manager that derives from one of .NET MAUI's layout manager types. For more information, see [Create a custom layout manager](#create-a-custom-layout-manager).
+1. Create a type that implements <xref:Microsoft.Maui.Controls.ILayoutManagerFactory>. For more information, see [Create a layout manager factory](#create-a-layout-manager-factory).
+1. Register your layout manager factory with the app's service provider. For more information, see [Register the layout manager factory](#register-the-layout-manager-factory).
 
+#### Create a custom layout manager
 
+The first step in changing the behavior of an existing layout type is to create a custom layout manager that derives from the layout manager for the layout class:
+
+```csharp
+using Microsoft.Maui.Layouts;
+
+public class CustomGridLayoutManager : GridLayoutManager
+{
+    public CustomGridLayoutManager(IGridLayout layout) : base(layout)
+    {
+    }
+
+    public override Size Measure(double widthConstraint, double heightConstraint)
+    {
+        EnsureRows();
+        return base.Measure(widthConstraint, heightConstraint);
+    }
+
+    void EnsureRows()
+    {
+        if (Grid is not Grid grid)
+        {
+            return;
+        }
+
+        // Find the maximum row value from the child views
+        int maxRow = 0;
+        foreach (var child in grid)
+        {
+            maxRow = Math.Max(grid.GetRow(child), maxRow);
+        }
+
+        // Add more rows if we need them
+        for (int n = grid.RowDefinitions.Count; n <= maxRow; n++)
+        {
+            grid.RowDefinitions.Add(new RowDefinition(GridLength.Star));
+        }
+    }
+}
+```
+
+In this example, `CustomGridLayoutManager` derives from .NET MAUI's <xref:Microsoft.Maui.Layouts.GridLayoutManager> class, and overrides its <xref:Microsoft.Maui.Layouts.GridLayoutManager.Measure%2A> method. This custom layout manager ensures that the <xref:Microsoft.Maui.Controls.Grid.RowDefinitions> for the <xref:Microsoft.Maui.Controls.Grid> includes enough rows to account for each `Grid.Row` attached property set in a child view. Without this modification, the <xref:Microsoft.Maui.Controls.Grid.RowDefinitions> for the <xref:Microsoft.Maui.Controls.Grid> would have to be specified at design time.
+
+#### Create a layout manager factory
+
+The custom layout manager can then be created in a layout manager factory. This is achieved by creating a type that implements the <xref:Microsoft.Maui.Controls.ILayoutManagerFactory> interface:
+
+```csharp
+using Microsoft.Maui.Layouts;
+
+public class CustomLayoutManagerFactory : ILayoutManagerFactory
+{
+    public ILayoutManager CreateLayoutManager(Layout layout)
+    {
+        if (layout is Grid)
+        {
+            return new CustomGridLayoutManager(layout as IGridLayout);
+        }
+        return null;
+    }
+}
+```
+
+In this example, a `CustomGridLayoutManager` instance is returned if the layout is a <xref:Microsoft.Maui.Controls.Grid>.
+
+#### Register the layout manager factory
+
+The layout manager factory should then be registered with your app's service provider in your `MauiProgram` class:
+
+```csharp
+public static class MauiProgram
+{
+    public static MauiApp CreateMauiApp()
+    {
+        var builder = MauiApp.CreateBuilder();
+        builder
+            .UseMauiApp<App>()
+            .ConfigureFonts(fonts =>
+            {
+                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+            });
+
+        // Setup a custom layout manager so the default manager for the Grid can be replaced.
+        builder.Services.Add(new ServiceDescriptor(typeof(ILayoutManagerFactory), new CustomLayoutManagerFactory()));
+
+        return builder.Build();
+    }
+}
+```
+
+The overall effect is that when the app renders a <xref:Microsoft.Maui.Controls.Grid> it will use the custom layout manager to ensures that the <xref:Microsoft.Maui.Controls.Grid.RowDefinitions> for the <xref:Microsoft.Maui.Controls.Grid> includes enough rows to account for each `Grid.Row` attached property set in a child view. This ensures that the following <xref:Microsoft.Maui.Controls.Grid> displays correctly, without setting its <xref:Microsoft.Maui.Controls.Grid.RowDefinitions> property:
+
+```xaml
+<Grid>
+    <Label Text="This Grid demonstrates replacing the LayoutManager for an existing layout type." />
+    <Label Grid.Row="1"
+           Text="In this case, it's a LayoutManager for Grid which automatically adds enough rows to accommodate the rows specified in the child views' attached properties." />
+    <Label Grid.Row="2"
+           Text="Notice that the Grid doesn't explicitly specify a RowDefinitions collection." />
+    <Label Grid.Row="3"
+           Text="In MauiProgram.cs, an instance of an ILayoutManagerFactory has been added that replaces the default GridLayoutManager. The custom manager will automatically add the necessary RowDefinitions at runtime." />
+    <Label Grid.Row="5"
+           Text="We can even skip some rows, and it will add the intervening ones for us (notice the gap between the previous label and this one)." />
+</Grid>
+```
 
 ## Notes
 
