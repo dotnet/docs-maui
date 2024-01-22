@@ -296,7 +296,7 @@
                 - name: VerticalStackLayout
                   href: user-interface/layouts/verticalstacklayout.md
                 - name: Custom layouts
-                  href: user-interface/layouts/custom-layouts.md
+                  href: user-interface/layouts/custom-layout.md
             - name: Pages
               items:
                 - name: ContentPage
