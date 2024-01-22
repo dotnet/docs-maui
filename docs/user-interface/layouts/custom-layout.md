@@ -23,6 +23,9 @@ Sometimes it's necessary to organize page content using a layout that isn't prov
 
 .NET MAUI's cross-platform layout process builds on top of the native layout process on each platform. Generally, the layout process is initiated by the native layout system. The cross-platform process runs when a layout or content control initiates it as a result of being measured or arranged by the native layout system.
 
+> [!NOTE]
+> Each platform handles layout slightly differently. One of the goal of .NET MAUI's cross-platform layout process is to be as platform-agnostic as possible.
+
 The following diagram shows the process when the native layout system wants to measure a backing view:
 
 :::image type="content" source="media/custom-layout/layout-process.png" alt-text="The layout process in .NET MAUI" border="false":::
@@ -222,7 +225,6 @@ The overall effect is that when the app renders a <xref:Microsoft.Maui.Controls.
 
 ## Notes
 
-Each platform handles layout slightly differently. One of the goal of .NET MAUI's cross-platform layout engine is to be as platform-agnostic as possible.
 
 Any layout pass should typically call `Measure` before calling `Arrange`. `Measure` may be called multiple times before calling `Arrange`, because a platform may need to perform some speculative measurements before arranging views.
 
@@ -240,13 +242,6 @@ The `ILayout` interface is composed of a few other interfaces. It provides a `Cl
 While it's technically possible to implement a cross-platform layout directly in an implementation of `ILayout`, that work is instead delegated to an implementation of `ILayoutManager`.
 
 `ILayoutManager` defines `Measure` and `ArrangeChildren` methods. All of the logic to handle cross-platform layout is contained in the `ILayoutManager` implementation.
-
-The abstract type `Layout` handles delegating cross-platform measure and arrange calls to a layout manager. It also contains an overridable `CreateLayoutManager` method that derived layouts can use to specify the layout manager they want.
-
-.NET MAUI's layouts have pre-defined layout managers to handle their layout. However, if you want to define custom layout logic for layouts there are two possible approaches:
-
-- Create a custom layout type, which is usually a subclass of an existing layout type, or of `Layout`, and override `CreateLayoutManager`.
-- Implement `ILayoutManagerFactory` and register the implementation with the app's service provider, and use that to define which layout manger is to be used for each layout type. In this scenario it's possible to define a new layout manager for an existing layout type (e.g. provide a custom layout manager for Grid, with different layout rules). This is useful for situations where you want to add a new behavior to a layout but don't want to update the type of the existing widely-used layout.
 
 ---
 
