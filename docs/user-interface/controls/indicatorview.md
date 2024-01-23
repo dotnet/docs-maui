@@ -35,7 +35,7 @@ To add indicators to a page, create an <xref:Microsoft.Maui.Controls.IndicatorVi
 The following example shows how to create an <xref:Microsoft.Maui.Controls.IndicatorView> in XAML:
 
 ```xaml
-<StackLayout>
+<Grid RowDefinitions="*,Auto">
     <CarouselView ItemsSource="{Binding Monkeys}"
                   IndicatorView="indicatorView">
         <CarouselView.ItemTemplate>
@@ -43,10 +43,11 @@ The following example shows how to create an <xref:Microsoft.Maui.Controls.Indic
         </CarouselView.ItemTemplate>
     </CarouselView>
     <IndicatorView x:Name="indicatorView"
+                   Grid.Row="1"
                    IndicatorColor="LightGray"
                    SelectedIndicatorColor="DarkGray"
                    HorizontalOptions="Center" />
-</StackLayout>
+</Grid>
 ```
 
 In this example, the <xref:Microsoft.Maui.Controls.IndicatorView> is rendered beneath the <xref:Microsoft.Maui.Controls.CarouselView>, with an indicator for each item in the <xref:Microsoft.Maui.Controls.CarouselView>. The <xref:Microsoft.Maui.Controls.IndicatorView> is populated with data by setting the `CarouselView.IndicatorView` property to the <xref:Microsoft.Maui.Controls.IndicatorView> object. Each indicator is a light gray circle, while the indicator that represents the current item in the <xref:Microsoft.Maui.Controls.CarouselView> is dark gray.
@@ -97,7 +98,7 @@ The following example shows an <xref:Microsoft.Maui.Controls.IndicatorView> conf
 The appearance of each indicator can be defined by setting the `IndicatorView.IndicatorTemplate` property to a <xref:Microsoft.Maui.Controls.DataTemplate>:
 
 ```xaml
-<StackLayout>
+<Grid RowDefinitions="*,Auto">
     <CarouselView ItemsSource="{Binding Monkeys}"
                   IndicatorView="indicatorView">
         <CarouselView.ItemTemplate>
@@ -105,6 +106,7 @@ The appearance of each indicator can be defined by setting the `IndicatorView.In
         </CarouselView.ItemTemplate>
     </CarouselView>
     <IndicatorView x:Name="indicatorView"
+                   Grid.Row="1"
                    Margin="0,0,0,40"
                    IndicatorColor="Transparent"
                    SelectedIndicatorColor="Transparent"
@@ -117,7 +119,7 @@ The appearance of each indicator can be defined by setting the `IndicatorView.In
             </DataTemplate>
         </IndicatorView.IndicatorTemplate>
     </IndicatorView>
-</StackLayout>
+</Grid>
 ```
 
 The elements specified in the <xref:Microsoft.Maui.Controls.DataTemplate> define the appearance of each indicator. In this example, each indicator is a <xref:Microsoft.Maui.Controls.Label> that displays a font icon.
@@ -156,9 +158,10 @@ The following screenshot shows indicators rendered using a font icon:
         </Style>
     </ContentPage.Resources>
 
-    <StackLayout>
+    <Grid RowDefinitions="*,Auto">
         ...
         <IndicatorView x:Name="indicatorView"
+                       Grid.Row="1"
                        Margin="0,0,0,40"
                        IndicatorColor="Transparent"
                        SelectedIndicatorColor="Transparent"
@@ -172,7 +175,7 @@ The following screenshot shows indicators rendered using a font icon:
                 </DataTemplate>
             </IndicatorView.IndicatorTemplate>
         </IndicatorView>
-    </StackLayout>
+    </Grid>
 </ContentPage>
 ```
 
