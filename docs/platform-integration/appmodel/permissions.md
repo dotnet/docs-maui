@@ -51,7 +51,7 @@ The following table uses ✔️ to indicate that the permission is supported and
 | Permission                                                                              | Android | iOS | Windows | tvOS |
 |------------------------------------------------------------------------------------------|:-------:|:---:|:-------:|:----:|
 | [Battery](xref:Microsoft.Maui.ApplicationModel.Permissions.Battery)                     | ✔️     | ❌  | ❌     | ❌    |
-| Bluetooth                                                                               | ✔️     | ❌  | ❌     | ❌    |
+| [Bluetooth](xref:Microsoft.Maui.ApplicationModel.Permissions.Bluetooth)                 | ✔️     | ❌  | ❌     | ❌    |
 | [CalendarRead](xref:Microsoft.Maui.ApplicationModel.Permissions.CalendarRead)           | ✔️     | ✔️  | ❌      | ❌    |
 | [CalendarWrite](xref:Microsoft.Maui.ApplicationModel.Permissions.CalendarWrite)         | ✔️     | ✔️  | ❌      | ❌    |
 | [Camera](xref:Microsoft.Maui.ApplicationModel.Permissions.Camera)                       | ✔️     | ✔️  | ❌      | ❌    |
@@ -62,7 +62,7 @@ The following table uses ✔️ to indicate that the permission is supported and
 | [LocationAlways](xref:Microsoft.Maui.ApplicationModel.Permissions.LocationAlways)       | ✔️     | ✔️  | ❌      | ❌    |
 | [Media](xref:Microsoft.Maui.ApplicationModel.Permissions.Media)                         | ❌      | ✔️  | ❌      | ❌    |
 | [Microphone](xref:Microsoft.Maui.ApplicationModel.Permissions.Microphone)               | ✔️     | ✔️  | ❌      | ❌    |
-| NearbyWifiDevices                                                                       | ✔️     | ❌  | ❌     | ❌    |
+| [NearbyWifiDevices](xref:Microsoft.Maui.ApplicationModel.Permissions.NearbyWifiDevices) | ✔️     | ❌  | ❌     | ❌    |
 | [NetworkState](xref:Microsoft.Maui.ApplicationModel.Permissions.NetworkState)           | ✔️     | ❌  | ❌      | ❌   |
 | [Phone](xref:Microsoft.Maui.ApplicationModel.Permissions.Phone)                         | ✔️     | ✔️  | ❌      | ❌    |
 | [Photos](xref:Microsoft.Maui.ApplicationModel.Permissions.Photos)                       | ❌     | ✔️  | ❌      | ✔️   |
@@ -175,7 +175,7 @@ In the `MauiProgram` class you should then register the interface and its concre
 
 ```csharp
 builder.Services.AddTransient<MyViewModel>();
-builder.Services.AddSingleton<IReadWritePermission>(_ => new ReadWriteStoragePermission());
+builder.Services.AddSingleton<IReadWritePermission, ReadWriteStoragePermission>();
 ```
 
 The custom permission implementation can then be resolved and invoked from one of your types, such as a viewmodel:
