@@ -177,11 +177,11 @@ If you try to create a new project and the file explorer keeps popping up in an 
 * Set the `JAVA_HOME` environment variable to a valid Java OpenJDK path.
 * Set the `ANDROID_HOME` environment variable to your Android SDK path.
 * Check your minimum versions of installed Android dependencies:
-  * build-tools >= 32.0.0
-  * cmdline-tools == 7.0
-  * platforms;android-33*
+  * build-tools >= 34.0.0
+  * cmdline-tools == 11.0
+  * platforms;android-34*
   * .NET 7: platform-tools = 33.0.2
-  * .NET 8: platform-tools = 34.0.1
+  * .NET 8: platform-tools = 34.0.5
 
 #### There's an error that Android licenses aren't accepted
 
