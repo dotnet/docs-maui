@@ -18,16 +18,13 @@ Each layout manager class implements the <xref:Microsoft.Maui.Layouts.ILayoutMan
 - The <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> implementation determines where each <xref:Microsoft.Maui.IView> should be placed within the bounds of the layout, and calls <xref:Microsoft.Maui.IView.Arrange%2A> on each <xref:Microsoft.Maui.IView> with its appropriate bounds. The return value is the actual size of the layout.
 
 > [!NOTE]
-> <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> may be called multiple times before <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> is called, because a platform may need to perform some speculative measurements before arranging views. 
+> <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> may be called multiple times before <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> is called, because a platform may need to perform some speculative measurements before arranging views.
 
 Sometimes it's necessary to organize page content using a layout that isn't provided by .NET MAUI. This can be achieved by writing your own layout logic. However, an understanding of how .NET MAUI's cross-platform layout process works is first required.
 
 ## Layout process
 
 .NET MAUI's cross-platform layout process builds on top of the native layout process on each platform. Generally, the layout process is initiated by the native layout system. The cross-platform process runs when a layout or content control initiates it as a result of being measured or arranged by the native layout system.
-
-> [!NOTE]
-> Each platform handles layout slightly differently. One of the goal of .NET MAUI's cross-platform layout process is to be as platform-agnostic as possible.
 
 The following diagram shows the process when the native layout system wants to measure a backing view:
 
@@ -47,6 +44,9 @@ sequenceDiagram
 ``` -->
 
 In this example, assume that the cross-platform view being measured is a <xref:Microsoft.Maui.Controls.ContentView> that contains a <xref:Microsoft.Maui.Controls.Label>. A native platform, such as Android, needs to know the size of the <xref:Microsoft.Maui.Controls.ContentView>, given constraints of a width of 100 and a height of 200. The platform calls its `Measure` method on the backing view for the <xref:Microsoft.Maui.Controls.ContentView> (which on Android is a `ContentViewGroup`) with the constraints. The backing view converts the constraints to cross-platform units, if required, and then calls its `CrossPlatformMeasure` method with those constraints to determine how large the <xref:Microsoft.Maui.Controls.Label> should be. The `CrossPlatformMeasure` method is responsible for calling the <xref:Microsoft.Maui.IView.Measure%2A> method on the <xref:Microsoft.Maui.Controls.Label>. The <xref:Microsoft.Maui.Controls.Label> measures its native control, and updates its <xref:Microsoft.Maui.IView.DesiredSize> property based on that measurement. This value is returned to the backing view as the result of the `CrossPlatformMeasure` method. The backing view then does whatever internal processing it needs to do, and returns its measured size to the platform.
+
+> [!NOTE]
+> Each platform handles layout slightly differently. One of the goal of .NET MAUI's cross-platform layout process is to be as platform-agnostic as possible.
 
 ### Layout measurement
 
@@ -78,7 +78,7 @@ The process of iterating over the child views and measuring each one is handled 
 
 When a cross-platform view is measured, it passes the measurement to its native view. This process is shown in the following diagram:
 
-:::image type="content" source="media/custom-layout/measure-layout.png" alt-text="The process for layout measurement in .NET MAUI" border="false":::
+:::image type="content" source="media/custom-layout/measure-view.png" alt-text="The process for layout measurement in .NET MAUI" border="false":::
 
 <!-- ```mermaid
 sequenceDiagram
