@@ -14,13 +14,18 @@ In .NET MAUI, the layout classes derive from the abstract <xref:Microsoft.Maui.C
 
 Each layout manager class implements the <xref:Microsoft.Maui.Layouts.ILayoutManager> interface, which specifies that <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> and <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> implementations must be provided:
 
--  The <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> implementation calls <xref:Microsoft.Maui.IView.Measure%2A> on each <xref:Microsoft.Maui.IView> in the layout, and returns the total size of the layout given the constraints.
+-  The <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> implementation calls <xref:Microsoft.Maui.IView.Measure%2A?displayProperty=nameWithType> on each <xref:Microsoft.Maui.IView> in the layout, and returns the total size of the layout given the constraints.
 - The <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> implementation determines where each <xref:Microsoft.Maui.IView> should be placed within the bounds of the layout, and calls <xref:Microsoft.Maui.IView.Arrange%2A> on each <xref:Microsoft.Maui.IView> with its appropriate bounds. The return value is the actual size of the layout.
 
 > [!NOTE]
-> <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> may be called multiple times before <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> is called, because a platform may need to perform some speculative measurements before arranging views.
+> <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A?displayProperty=nameWithType> may be called multiple times before <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> is called, because a platform may need to perform some speculative measurements before arranging views.
 
-Sometimes it's necessary to organize page content using a layout that isn't provided by .NET MAUI. This can be achieved by writing your own layout logic. However, an understanding of how .NET MAUI's cross-platform layout process works is first required.
+.NET MAUI's layouts have pre-defined layout managers to handle their layout. However, sometimes it's necessary to organize page content using a layout that isn't provided by .NET MAUI. This can be achieved by writing your own custom layout. There are two main approaches to doing this:
+
+1. Create a custom layout type, which is usually a sub-class of an existing layout type or of <xref:Microsoft.Maui.Controls.Layout>, and override the  <xref:Microsoft.Maui.Controls.Layout.CreateLayoutManager> method in your custom layout type. Then, provide an <xref:Microsoft.Maui.Layouts.ILayoutManager> implementation that contains your custom layout logic. For more information, see [Create a custom layout type](#create-a-custom-layout-type).
+1. Implement <xref:Microsoft.Maui.Controls.ILayoutManagerFactory> and register the implementation with the app's service provider. This will replace .NET MAUI's default layout manager with your own. For more information, see [Implement a layout manager factory](#implement-a-layout-manager-factory).
+
+Before creating a custom layout it's first necessary to have an understanding of how .NET MAUI's cross-platform layout process works.
 
 ## Layout process
 
@@ -43,10 +48,10 @@ sequenceDiagram
     BV->>P: Size
 ``` -->
 
-In this example, assume that the cross-platform view being measured is a <xref:Microsoft.Maui.Controls.ContentView> that contains a <xref:Microsoft.Maui.Controls.Label>. A native platform, such as Android, needs to know the size of the <xref:Microsoft.Maui.Controls.ContentView>, given constraints of a width of 100 and a height of 200. The platform calls its `Measure` method on the backing view for the <xref:Microsoft.Maui.Controls.ContentView> (which on Android is a `ContentViewGroup`) with the constraints. The backing view converts the constraints to cross-platform units, if required, and then calls its `CrossPlatformMeasure` method with those constraints to determine how large the <xref:Microsoft.Maui.Controls.Label> should be. The `CrossPlatformMeasure` method is responsible for calling the <xref:Microsoft.Maui.IView.Measure%2A> method on the <xref:Microsoft.Maui.Controls.Label>. The <xref:Microsoft.Maui.Controls.Label> measures its native control, and updates its <xref:Microsoft.Maui.IView.DesiredSize> property based on that measurement. This value is returned to the backing view as the result of the `CrossPlatformMeasure` method. The backing view then does whatever internal processing it needs to do, and returns its measured size to the platform.
+In this example, assume that the cross-platform view being measured is a <xref:Microsoft.Maui.Controls.ContentView> that contains a <xref:Microsoft.Maui.Controls.Label>. A native platform, such as Android, needs to know the size of the <xref:Microsoft.Maui.Controls.ContentView>, given constraints of a width of 100 and a height of 200. The platform calls its `Measure` method on the backing view for the <xref:Microsoft.Maui.Controls.ContentView> (which on Android is a `ContentViewGroup`) with the constraints. The backing view converts the constraints to cross-platform units, if required, and then calls its `CrossPlatformMeasure` method with those constraints to determine how large the <xref:Microsoft.Maui.Controls.Label> should be. The `CrossPlatformMeasure` method is responsible for calling the <xref:Microsoft.Maui.IView.Measure%2A?displayProperty=nameWithType> method on the <xref:Microsoft.Maui.Controls.Label>. The <xref:Microsoft.Maui.Controls.Label> measures its native control, and updates its <xref:Microsoft.Maui.IView.DesiredSize> property based on that measurement. This value is returned to the backing view as the result of the `CrossPlatformMeasure` method. The backing view then does whatever internal processing it needs to do, and returns its measured size to the platform.
 
 > [!NOTE]
-> Each platform handles layout slightly differently. One of the goals of .NET MAUI's cross-platform layout process is to be as platform-agnostic as possible.
+> Each platform handles layout slightly differently. However, .NET MAUI's cross-platform layout process aims to be as platform-agnostic as possible.
 
 ### Layout measurement
 
@@ -97,14 +102,7 @@ sequenceDiagram
 
 In this example, which builds on the previous example, the <xref:Microsoft.Maui.IView.Measure%2A> method for the <xref:Microsoft.Maui.Controls.Label> takes the constraints it's given by the `CrossPlatformMeasure` method and makes any appropriate adjustments, such as subtracting its margins. It then passes the updated constraints to the <xref:Microsoft.Maui.IViewHandler.GetDesiredSize%2A> method of its handler. The handler is aware of the native control (a <xref:Android.Widget.TextView> on Android), and converts the constraints to native values and calls the native control's version of `Measure`. The handler then takes the return value from the native measurement and converts it back to cross-platform values, if required, and returns it to the <xref:Microsoft.Maui.Controls.Label>. The <xref:Microsoft.Maui.Controls.Label> adjusts the result (for example, by adding back its margins), if required, and then sets the result in its <xref:Microsoft.Maui.IView.DesiredSize> property. It then returns the value as a result of the `Measure` method.
 
-## Create a custom layout
-
-.NET MAUI's layouts have pre-defined layout managers to handle their layout. There are two main approaches to defining your own custom layout logic:
-
-1. Create a custom layout type, which is usually a sub-class of an existing layout type or of <xref:Microsoft.Maui.Controls.Layout>, and override the  <xref:Microsoft.Maui.Controls.Layout.CreateLayoutManager> method in your custom layout type. Then, provide an <xref:Microsoft.Maui.Layouts.ILayoutManager> implementation that contains your custom layout logic. For more information, see [Create a custom layout type](#create-a-custom-layout-type).
-1. Implement <xref:Microsoft.Maui.Controls.ILayoutManagerFactory> and register the implementation with the app's service provider. This will replace .NET MAUI's default layout manager with your own. For more information, see [Implement a layout manager factory](#implement-a-layout-manager-factory).
-
-### Create a custom layout type
+## Create a custom layout type
 
 The process for creating a custom layout type is as follows:
 
@@ -172,7 +170,7 @@ The `HorizontalWrapLayoutManager` constructor stores an instance of the `Horizon
 
 #### Measure the layout size
 
-The purpose of the <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> implementation is to calculate the total size of the layout given its constraints. It should does this by calling <xref:Microsoft.Maui.IView.Measure%2A> on each <xref:Microsoft.Maui.IView> in the layout. It can then use this data to calculate and return the total size of the layout given its constraints.
+The purpose of the <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A?displayProperty=nameWithType> implementation is to calculate the total size of the layout given its constraints. It should does this by calling <xref:Microsoft.Maui.IView.Measure%2A?displayProperty=nameWithType> on each <xref:Microsoft.Maui.IView> in the layout. It can then use this data to calculate and return the total size of the layout given its constraints.
 
 The following example shows the <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> implementation for the `HorizontalWrapLayoutManager` class:
 
@@ -237,10 +235,10 @@ public override Size Measure(double widthConstraint, double heightConstraint)
 }
 ```
 
-The `Measure` method enumerates through all of the visible children in the layout, invoking the <xref:Microsoft.Maui.IView.Measure%2A> on each child. It then returns the total size of the layout, taking into account the constraints and the values of the <xref:Microsoft.Maui.Controls.Layout.Padding> and <xref:Microsoft.Maui.Controls.StackBase.Spacing> properties. The <xref:Microsoft.Maui.Layouts.LayoutManager.ResolveConstraints%2A> method is called to ensure that the total size of the layout fits within its constraints.
+The `Measure` method enumerates through all of the visible children in the layout, invoking the <xref:Microsoft.Maui.IView.Measure%2A?displayProperty=nameWithType> on each child. It then returns the total size of the layout, taking into account the constraints and the values of the <xref:Microsoft.Maui.Controls.Layout.Padding> and <xref:Microsoft.Maui.Controls.StackBase.Spacing> properties. The <xref:Microsoft.Maui.Layouts.LayoutManager.ResolveConstraints%2A> method is called to ensure that the total size of the layout fits within its constraints.
 
 > [!IMPORTANT]
-> When enumerating children in the <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> implementation, skip any child whose <xref:Microsoft.Maui.IView.Visibility> property is set to `false`. This ensures that the custom layout won't leave space for invisible children.
+> When enumerating children in the <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A?displayProperty=nameWithType> implementation, skip any child whose <xref:Microsoft.Maui.IView.Visibility> property is set to `false`. This ensures that the custom layout won't leave space for invisible children.
 
 #### Arrange children in the layout
 
@@ -343,7 +341,7 @@ The number of columns in each row depends on the photo size, the width of the pa
 > [!NOTE]
 > Scrolling is supported by wrapping the `HorizontalWrapLayout` in a <xref:Microsoft.Maui.Controls.ScrollView>.
 
-### Implement a layout manager factory
+## Implement a layout manager factory
 
 In some scenarios you may find that you want to change the behavior of an existing layout type without having to create a custom layout type. For these scenarios you can create a type that implements <xref:Microsoft.Maui.Controls.ILayoutManagerFactory> and use it to replace .NET MAUI's default layout manager with your own. This enables you to define a new layout manager for an existing layout type, such as providing a custom layout manager for <xref:Microsoft.Maui.Controls.Grid> with different layouts. This can be useful for scenarios where you want to add a new behavior to a layout but don't want to update the type of an existing widely-used layout in your app.
 
@@ -353,7 +351,7 @@ The process for implementing a layout manager factory is:
 1. Create a type that implements <xref:Microsoft.Maui.Controls.ILayoutManagerFactory>. For more information, see [Create a layout manager factory](#create-a-layout-manager-factory).
 1. Register your layout manager factory with the app's service provider. For more information, see [Register the layout manager factory](#register-the-layout-manager-factory).
 
-#### Create a custom layout manager
+### Create a custom layout manager
 
 The first step in changing the behavior of an existing layout type is to create a custom layout manager that derives from the layout manager for the layout class:
 
@@ -397,7 +395,7 @@ public class CustomGridLayoutManager : GridLayoutManager
 
 In this example, `CustomGridLayoutManager` derives from .NET MAUI's <xref:Microsoft.Maui.Layouts.GridLayoutManager> class, and overrides its <xref:Microsoft.Maui.Layouts.GridLayoutManager.Measure%2A> method. This custom layout manager ensures that the <xref:Microsoft.Maui.Controls.Grid.RowDefinitions> for the <xref:Microsoft.Maui.Controls.Grid> includes enough rows to account for each `Grid.Row` attached property set in a child view. Without this modification, the <xref:Microsoft.Maui.Controls.Grid.RowDefinitions> for the <xref:Microsoft.Maui.Controls.Grid> would have to be specified at design time.
 
-#### Create a layout manager factory
+### Create a layout manager factory
 
 The custom layout manager can then be created in a layout manager factory. This is achieved by creating a type that implements the <xref:Microsoft.Maui.Controls.ILayoutManagerFactory> interface:
 
@@ -419,7 +417,7 @@ public class CustomLayoutManagerFactory : ILayoutManagerFactory
 
 In this example, a `CustomGridLayoutManager` instance is returned if the layout is a <xref:Microsoft.Maui.Controls.Grid>.
 
-#### Register the layout manager factory
+### Register the layout manager factory
 
 The layout manager factory should then be registered with your app's service provider in your `MauiProgram` class:
 
