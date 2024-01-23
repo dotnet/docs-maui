@@ -158,7 +158,7 @@ The following screenshot shows indicators rendered using a font icon:
         </Style>
     </ContentPage.Resources>
 
-    <Grid>
+    <Grid RowDefinitions="*,Auto">
         ...
         <IndicatorView x:Name="indicatorView"
                        Grid.Row="1"
