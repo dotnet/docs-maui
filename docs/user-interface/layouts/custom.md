@@ -77,7 +77,7 @@ sequenceDiagram
     BV->>P: Size
 ``` -->
 
-The process of measuring and arranging child views is handled by the <xref:Microsoft.Maui.Layouts.ILayoutManager> implementation for a layout type. The <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> implementation calls <xref:Microsoft.Maui.IView.Measure%2A?displayProperty=nameWithType> on each view in the layout. The <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> implementation determines where each view should be placed within the bounds of the layout, and calls <xref:Microsoft.Maui.IView.Arrange%2A> on each view.
+The process of measuring and arranging child views is handled by the <xref:Microsoft.Maui.Layouts.ILayoutManager> implementation for a layout type, with its <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> implementation calling <xref:Microsoft.Maui.IView.Measure%2A?displayProperty=nameWithType> on each view in the layout.
 
 ### View measurement
 
@@ -102,13 +102,28 @@ sequenceDiagram
 
 In this example, which builds on the previous example, the <xref:Microsoft.Maui.IView.Measure%2A> method for the <xref:Microsoft.Maui.Controls.Label> takes the constraints it's given by the `CrossPlatformMeasure` method and makes any appropriate adjustments, such as subtracting its margins. It then passes the updated constraints to the <xref:Microsoft.Maui.IViewHandler.GetDesiredSize%2A> method of its handler. The handler is aware of the native control (a <xref:Android.Widget.TextView> on Android), and converts the constraints to native values and calls the native control's version of `Measure`. The handler then takes the return value from the native measurement and converts it back to cross-platform values, if required, and returns it to the <xref:Microsoft.Maui.Controls.Label>. The <xref:Microsoft.Maui.Controls.Label> adjusts the result (for example, by adding back its margins), if required, and then sets the result in its <xref:Microsoft.Maui.IView.DesiredSize> property. It then returns the value as a result of the `Measure` method.
 
+### Measure and arrange
+
+All .NET MAUI layouts are backed by a single backing control on each platform:
+
+- On Android, this backing control is `LayoutViewGroup`.
+- On iOS and Mac Catalyst, this backing control is `LayoutView`.
+- On Windows, this backing control is `LayoutPanel`.
+
+When a platform requests the measurement of one of these backing controls, the backing control calls the <xref:Microsoft.Maui.Controls.Layout.CrossPlatformMeasure%2A> method. This is the point at which control is passed from the platform's layout system to .NET MAUI's layout system. In a layout, <xref:Microsoft.Maui.Controls.Layout.CrossPlatformMeasure%2A> calls the layout managers <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> method. This method is responsible for calling <xref:Microsoft.Maui.IView.Measure%2A?displayProperty=nameWithType> on each view in the layout.
+
+When a platform requests the arrangement of one of these backing controls, the backing control calls the <xref:Microsoft.Maui.Controls.Layout.CrossPlatformArrange%2A> method. This is the point at which control is passed from the platform's layout system to the .NET MAUI's layout system. In a layout, <xref:Microsoft.Maui.Controls.Layout.CrossPlatformArrange%2A> calls the layout managers <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> method. This method is responsible for determining where each view should be placed within the bounds of the layout, and calls <xref:Microsoft.Maui.IView.Arrange%2A> on each view.
+
+> [!NOTE]
+> The <xref:Microsoft.Maui.Controls.Layout> type handles delegating the cross-platform measure and arrange calls to a layout manager.
+
 ## Create a custom layout type
 
 The process for creating a custom layout type is as follows:
 
-1. Create a class that subclasses an existing layout type or the <xref:Microsoft.Maui.Controls.Layout> class, and override the  <xref:Microsoft.Maui.Controls.Layout.CreateLayoutManager> method in your custom layout type. For more information, see [Subclass a layout](#subclass-a-layout).
+1. Create a class that subclasses an existing layout type or the <xref:Microsoft.Maui.Controls.Layout> class, and override <xref:Microsoft.Maui.Controls.Layout.CreateLayoutManager> in your custom layout type. For more information, see [Subclass a layout](#subclass-a-layout).
 1. Create a layout manager class that derives from an existing layout manager, or that implements the <xref:Microsoft.Maui.Layouts.ILayoutManager> interface directly. In your layout manager class, you should:
-    1. Add a constructor that accepts and stores an instance of your custom layout type.
+
     1. Override, or implement, the <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> method to calculate the total size of the layout given its constraints.
     1. Override, or implement, the <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> method to size and position all the children within the layout.
 
@@ -123,7 +138,7 @@ An orientation-sensitive `HorizontalWrapLayout` is used to demonstrate this proc
 
 ### Subclass a layout
 
-The first step in creating a custom layout type is to subclass an existing layout type or the <xref:Microsoft.Maui.Controls.Layout> class. Then, override the <xref:Microsoft.Maui.Controls.Layout.CreateLayoutManager> method in your custom layout type, and return a new instance of the layout manager for the custom layout type:
+To create a custom layout type you must first subclass an existing layout type, or the <xref:Microsoft.Maui.Controls.Layout> class. Then, override <xref:Microsoft.Maui.Controls.Layout.CreateLayoutManager> in your layout type and return a new instance of the layout manager for your layout type:
 
 ```csharp
 using Microsoft.Maui.Layouts;
@@ -137,7 +152,7 @@ public class HorizontalWrapLayout : HorizontalStackLayout
 }
 ```
 
-`HorizontalWrapLayout` derives from <xref:Microsoft.Maui.Controls.HorizontalStackLayout> to use its base layout functionality. .NET MAUI layouts delegate cross-platform layout and measurement to a layout manager class. Therefore, the <xref:Microsoft.Maui.Controls.Layout.CreateLayoutManager> override returns a new instance of the `HorizontalWrapLayoutManager` class, which is the layout manager that's discussed in the next section.
+`HorizontalWrapLayout` derives from <xref:Microsoft.Maui.Controls.HorizontalStackLayout> to use its layout functionality. .NET MAUI layouts delegate cross-platform layout and measurement to a layout manager class. Therefore, the <xref:Microsoft.Maui.Controls.Layout.CreateLayoutManager> override returns a new instance of the `HorizontalWrapLayoutManager` class, which is the layout manager that's discussed in the next section.
 
 ### Create a layout manager
 
@@ -170,7 +185,7 @@ The `HorizontalWrapLayoutManager` constructor stores an instance of the `Horizon
 
 #### Measure the layout size
 
-The purpose of the <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A?displayProperty=nameWithType> implementation is to calculate the total size of the layout given its constraints. It should does this by calling <xref:Microsoft.Maui.IView.Measure%2A?displayProperty=nameWithType> on each <xref:Microsoft.Maui.IView> in the layout. It can then use this data to calculate and return the total size of the layout given its constraints.
+The purpose of the <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A?displayProperty=nameWithType> implementation is to calculate the total size of the layout. It should does this by calling <xref:Microsoft.Maui.IView.Measure%2A?displayProperty=nameWithType> on each child in the layout. It can then use this data to calculate and return the total size of the layout given its constraints.
 
 The following example shows the <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> implementation for the `HorizontalWrapLayoutManager` class:
 
@@ -235,14 +250,14 @@ public override Size Measure(double widthConstraint, double heightConstraint)
 }
 ```
 
-The `Measure` method enumerates through all of the visible children in the layout, invoking the <xref:Microsoft.Maui.IView.Measure%2A?displayProperty=nameWithType> on each child. It then returns the total size of the layout, taking into account the constraints and the values of the <xref:Microsoft.Maui.Controls.Layout.Padding> and <xref:Microsoft.Maui.Controls.StackBase.Spacing> properties. The <xref:Microsoft.Maui.Layouts.LayoutManager.ResolveConstraints%2A> method is called to ensure that the total size of the layout fits within its constraints.
+The `Measure` method enumerates through all of the visible children in the layout, invoking the <xref:Microsoft.Maui.IView.Measure%2A?displayProperty=nameWithType> method on each child. It then returns the total size of the layout, taking into account the constraints and the values of the <xref:Microsoft.Maui.Controls.Layout.Padding> and <xref:Microsoft.Maui.Controls.StackBase.Spacing> properties. The <xref:Microsoft.Maui.Layouts.LayoutManager.ResolveConstraints%2A> method is called to ensure that the total size of the layout fits within its constraints.
 
 > [!IMPORTANT]
 > When enumerating children in the <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A?displayProperty=nameWithType> implementation, skip any child whose <xref:Microsoft.Maui.IView.Visibility> property is set to `false`. This ensures that the custom layout won't leave space for invisible children.
 
 #### Arrange children in the layout
 
-The purpose of the <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> implementation is to size and position all of the children within the layout. To determine where each <xref:Microsoft.Maui.IView> should be placed within the bounds of the layout, it should call <xref:Microsoft.Maui.IView.Arrange%2A> on each <xref:Microsoft.Maui.IView> with its appropriate bounds. It should return a value that represents the actual size of the layout.
+The purpose of the <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> implementation is to size and position all of the children within the layout. To determine where each child should be placed within the bounds of the layout, it should call <xref:Microsoft.Maui.IView.Arrange%2A> on each child with its appropriate bounds. It should return a value that represents the actual size of the layout.
 
 > [!WARNING]
 > Failure to invoke the <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> method on each child in the layout will result in the child never receiving a correct size or position, and hence the child won't become visible on the page.
@@ -330,7 +345,7 @@ The `HorizontalWrapLayout` class can be consumed by placing it in a <xref:Micros
 </ContentPage>
 ```
 
-Controls can be added to the `HorizontalWrapLayout` as required. When the page containing the `HorizontalWrapLayout` appears, the <xref:Microsoft.Maui.Controls.Image> controls are displayed:
+Controls can be added to the `HorizontalWrapLayout` as required. In this example, when the page containing the `HorizontalWrapLayout` appears, the <xref:Microsoft.Maui.Controls.Image> controls are displayed:
 
 :::image type="content" source="media/custom-layout/horizontal-wrap-layout-2-column.png" alt-text="Screenshot of the horizontal wrap layout on a Mac with two columns.":::
 
