@@ -461,7 +461,9 @@ public static class MauiProgram
 }
 ```
 
-Then, when the app renders a <xref:Microsoft.Maui.Controls.Grid> it will use the custom layout manager to ensure that at runtime the <xref:Microsoft.Maui.Controls.Grid.RowDefinitions> for the <xref:Microsoft.Maui.Controls.Grid> includes enough rows to account for each `Grid.Row` attached property set in child views:
+Then, when the app renders a <xref:Microsoft.Maui.Controls.Grid> it will use the custom layout manager to ensure that at runtime the <xref:Microsoft.Maui.Controls.Grid.RowDefinitions> for the <xref:Microsoft.Maui.Controls.Grid> includes enough rows to account for each `Grid.Row` attached property set in child views.
+
+The following example shows a <xref:Microsoft.Maui.Controls.Grid> that sets the `Grid.Row` attached property in child views, but doesn't set the <xref:Microsoft.Maui.Controls.Grid.RowDefinitions> property:
 
 ```xaml
 <Grid>
@@ -477,6 +479,6 @@ Then, when the app renders a <xref:Microsoft.Maui.Controls.Grid> it will use the
 </Grid>
 ```
 
-Therefore, the layout manager factory uses the custom layout manager to ensure that the <xref:Microsoft.Maui.Controls.Grid> in this example displays correctly, without having to set its <xref:Microsoft.Maui.Controls.Grid.RowDefinitions> property:
+The layout manager factory uses the custom layout manager to ensure that the <xref:Microsoft.Maui.Controls.Grid> in this example displays correctly, despite the <xref:Microsoft.Maui.Controls.Grid.RowDefinitions> property not being set:
 
 :::image type="content" source="media/custom-layout/layout-manager-factory.png" alt-text="Screenshot of a Grid customized by using a layout manager factory.":::
