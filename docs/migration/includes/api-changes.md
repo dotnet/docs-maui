@@ -85,20 +85,14 @@ You may notice when running your upgraded .NET MAUI app that layout behavior is 
 
 The process for creating a custom layout in Xamarin.Forms involves creating a class that derives from `Layout<View>`, and overriding the <xref:Xamarin.Forms.VisualElement.OnMeasure%2A> and <xref:Xamarin.Forms.Layout.LayoutChildren%2A> methods. For more information, see [Create a custom layout in Xamarin.Forms](/xamarin/xamarin-forms/user-interface/layouts/custom).
 
+In .NET MAUI, the layout classes derive from the abstract <xref:Microsoft.Maui.Controls.Layout> class. This class delegates cross-platform layout and measurement to a layout manager class. The <xref:Microsoft.Maui.Controls.Layout> class also contains an overridable <xref:Microsoft.Maui.Controls.Layout.CreateLayoutManager> method that derived layouts can use to specify the layout manager.
+
 The process for creating a custom layout in .NET MAUI involves creating an <xref:Microsoft.Maui.Layouts.ILayoutManager> implementation, and overriding the <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> and <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> methods:
 
-- The <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> override should call <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> on each <xref:Microsoft.Maui.IView> in the layout, and should return the total size of the layout given the constraints.
-- The <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> override should determine where each <xref:Microsoft.Maui.IView> should be placed within the given bounds, and should call <xref:Microsoft.Maui.IView.Arrange%2A> on each <xref:Microsoft.Maui.IView> with its appropriate bounds. The return value should be the actual size of the layout.
+-  The <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> implementation calls <xref:Microsoft.Maui.IView.Measure%2A?displayProperty=nameWithType> on each view in the layout, and returns the total size of the layout given the constraints.
+- The <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> implementation determines where each view should be placed within the bounds of the layout, and calls <xref:Microsoft.Maui.IView.Arrange%2A> on each view with its appropriate bounds. The return value is the actual size of the layout.
 
-For more information, see [Custom layout sample](/samples/dotnet/maui-samples/userinterface-customlayouts/).
-
-<!-- TODO: Replace the link above with one to a custom layout doc, once the content is written -->
-
-<!-- The `VisualElement.OnSizeAllocated` method can still be overridden to support controls being migrated from Xamarin.Forms to .NET MAUI. In Xamarin.Forms, this method was typically used to react to size changes. Occasionally it was an approach to ensure that a control was part of the control hierarchy and ready to show on screen.
-
-This method exists in Maui.Controls, for backwards compatibility.
-
-When creating a control for .NET MAUI, the suggested customization point is an override of the `ArrangeOverride` method, rather than `OnSizeAllocated`. This provides more flexibility. -->
+For more information, see [Custom layouts](~/user-interface/layouts/custom.md).
 
 ### Device changes
 
