@@ -23,9 +23,9 @@ Each layout manager class implements the <xref:Microsoft.Maui.Layouts.ILayoutMan
 .NET MAUI's layouts have pre-defined layout managers to handle their layout. However, sometimes it's necessary to organize page content using a layout that isn't provided by .NET MAUI. This can be achieved by writing your own custom layout. There are two main approaches to doing this:
 
 1. Create a custom layout type, which is usually a subclass of an existing layout type or of <xref:Microsoft.Maui.Controls.Layout>, and override <xref:Microsoft.Maui.Controls.Layout.CreateLayoutManager> in your custom layout type. Then, provide an <xref:Microsoft.Maui.Layouts.ILayoutManager> implementation that contains your custom layout logic. For more information, see [Create a custom layout type](#create-a-custom-layout-type).
-1. Modify the behavior of an existing layout type by creating a type that implements <xref:Microsoft.Maui.Controls.ILayoutManagerFactory>. Then, use this layout manager factory to replace .NET MAUI's default layout manager for the existing layout with your own <xref:Microsoft.Maui.Layouts.ILayoutManager> implementation that contains your custom layout logic. For more information, see [Modify the behavior of an existing layout](#modify-the-behavior-of-an-existing-layoutger-factory).
+1. Modify the behavior of an existing layout type by creating a type that implements <xref:Microsoft.Maui.Controls.ILayoutManagerFactory>. Then, use this layout manager factory to replace .NET MAUI's default layout manager for the existing layout with your own <xref:Microsoft.Maui.Layouts.ILayoutManager> implementation that contains your custom layout logic. For more information, see [Modify the behavior of an existing layout](#modify-the-behavior-of-an-existing-layout).
 
-Regardless of the approach taken, it's required to have an understanding of how .NET MAUI's cross-platform layout process works.
+Regardless of the approach taken, it's necessary to have an understanding of how .NET MAUI's cross-platform layout process works.
 
 ## Layout process
 
@@ -77,7 +77,7 @@ sequenceDiagram
     BV->>P: Size
 ``` -->
 
-The process of iterating over the child views and measuring each one is handled by the <xref:Microsoft.Maui.Layouts.ILayoutManager> implementation for each type of layout, inside of the layout manager's <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> method.
+The process of measuring and arranging child views is handled by the <xref:Microsoft.Maui.Layouts.ILayoutManager> implementation for a layout type. The <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> implementation calls <xref:Microsoft.Maui.IView.Measure%2A?displayProperty=nameWithType> on each view in the layout. The <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> implementation determines where each view should be placed within the bounds of the layout, and calls <xref:Microsoft.Maui.IView.Arrange%2A> on each view.
 
 ### View measurement
 
