@@ -14,7 +14,7 @@ ms.date: 01/22/2024
 
 Each layout manager class implements the <xref:Microsoft.Maui.Layouts.ILayoutManager> interface, which specifies that <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> and <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> implementations must be provided:
 
--  The <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> implementation calls <xref:Microsoft.Maui.IView.Measure%2A?displayProperty=nameWithType> on each view in the layout, and returns the total size of the layout given the constraints.
+- The <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> implementation calls <xref:Microsoft.Maui.IView.Measure%2A?displayProperty=nameWithType> on each view in the layout, and returns the total size of the layout given the constraints.
 - The <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> implementation determines where each view should be placed within the bounds of the layout, and calls <xref:Microsoft.Maui.IView.Arrange%2A> on each view with its appropriate bounds. The return value is the actual size of the layout.
 
 > [!NOTE]
@@ -156,7 +156,7 @@ public class HorizontalWrapLayout : HorizontalStackLayout
 
 ### Create a layout manager
 
-A layout manager class is used to perform cross-platform layout and measurement for your custom layout type. It should derive from an existing layout manager, or it should directly implement the  <xref:Microsoft.Maui.Layouts.ILayoutManager> interface. `HorizontalWrapLayoutManager` derives from <xref:Microsoft.Maui.Layouts.HorizontalStackLayoutManager> so that it can use its underlying functionality and access members in its inheritance hierarchy:
+A layout manager class is used to perform cross-platform layout and measurement for your custom layout type. It should derive from an existing layout manager, or it should directly implement the <xref:Microsoft.Maui.Layouts.ILayoutManager> interface. `HorizontalWrapLayoutManager` derives from <xref:Microsoft.Maui.Layouts.HorizontalStackLayoutManager> so that it can use its underlying functionality and access members in its inheritance hierarchy:
 
 ```csharp
 using Microsoft.Maui.Layouts;
@@ -358,9 +358,9 @@ The number of columns in each row depends on the photo size, the width of the pa
 
 ## Modify the behavior of an existing layout
 
-In some scenarios you may find that you want to change the behavior of an existing layout type without having to create a custom layout type. For these scenarios you can create a type that implements <xref:Microsoft.Maui.Controls.ILayoutManagerFactory> and use it to replace .NET MAUI's default layout manager with your own. This enables you to define a new layout manager for an existing layout type, such as providing a custom layout manager for <xref:Microsoft.Maui.Controls.Grid> with different layouts. This can be useful for scenarios where you want to add a new behavior to a layout but don't want to update the type of an existing widely-used layout in your app.
+In some scenarios you may want to change the behavior of an existing layout type without having to create a custom layout type. For these scenarios you can create a type that implements <xref:Microsoft.Maui.Controls.ILayoutManagerFactory> and use it to replace .NET MAUI's default layout manager for the existing layout with your own <xref:Microsoft.Maui.Layouts.ILayoutManager> implementation. This enables you to define a new layout manager for an existing layout, such as providing a custom layout manager for <xref:Microsoft.Maui.Controls.Grid>. This can be useful for scenarios where you want to add a new behavior to a layout but don't want to update the type of an existing widely-used layout in your app.
 
-The process for implementing a layout manager factory is:
+The process for modifing the behavior of an existing layout, with a layout manager factory, is:
 
 1. Create a layout manager that derives from one of .NET MAUI's layout manager types. For more information, see [Create a custom layout manager](#create-a-custom-layout-manager).
 1. Create a type that implements <xref:Microsoft.Maui.Controls.ILayoutManagerFactory>. For more information, see [Create a layout manager factory](#create-a-layout-manager-factory).
@@ -368,7 +368,7 @@ The process for implementing a layout manager factory is:
 
 ### Create a custom layout manager
 
-The first step in changing the behavior of an existing layout type is to create a custom layout manager that derives from the layout manager for the layout class:
+A layout manager is used to perform cross-platform layout and measurement for a layout. To change the behavior of an existing layout you should create a custom layout manager that derives from the layout manager for the layout:
 
 ```csharp
 using Microsoft.Maui.Layouts;
@@ -408,11 +408,14 @@ public class CustomGridLayoutManager : GridLayoutManager
 }
 ```
 
-In this example, `CustomGridLayoutManager` derives from .NET MAUI's <xref:Microsoft.Maui.Layouts.GridLayoutManager> class, and overrides its <xref:Microsoft.Maui.Layouts.GridLayoutManager.Measure%2A> method. This custom layout manager ensures that the <xref:Microsoft.Maui.Controls.Grid.RowDefinitions> for the <xref:Microsoft.Maui.Controls.Grid> includes enough rows to account for each `Grid.Row` attached property set in a child view. Without this modification, the <xref:Microsoft.Maui.Controls.Grid.RowDefinitions> for the <xref:Microsoft.Maui.Controls.Grid> would have to be specified at design time.
+In this example, `CustomGridLayoutManager` derives from .NET MAUI's <xref:Microsoft.Maui.Layouts.GridLayoutManager> class, and overrides its <xref:Microsoft.Maui.Layouts.GridLayoutManager.Measure%2A> method. This custom layout manager ensures that at runtime the <xref:Microsoft.Maui.Controls.Grid.RowDefinitions> for the <xref:Microsoft.Maui.Controls.Grid> includes enough rows to account for each `Grid.Row` attached property set in a child view. Without this modification, the <xref:Microsoft.Maui.Controls.Grid.RowDefinitions> for the <xref:Microsoft.Maui.Controls.Grid> would need to be specified at design time.
+
+> [!IMPORTANT]
+> When modifying the behavior of an existing layout manager, don't forget to ensure that you call the `base.Measure` method from your <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> implementation.
 
 ### Create a layout manager factory
 
-The custom layout manager can then be created in a layout manager factory. This is achieved by creating a type that implements the <xref:Microsoft.Maui.Controls.ILayoutManagerFactory> interface:
+The custom layout manager should be created in a layout manager factory. This is achieved by creating a type that implements the <xref:Microsoft.Maui.Controls.ILayoutManagerFactory> interface:
 
 ```csharp
 using Microsoft.Maui.Layouts;
@@ -434,7 +437,7 @@ In this example, a `CustomGridLayoutManager` instance is returned if the layout 
 
 ### Register the layout manager factory
 
-The layout manager factory should then be registered with your app's service provider in your `MauiProgram` class:
+The layout manager factory should be registered with your app's service provider in your `MauiProgram` class:
 
 ```csharp
 public static class MauiProgram
@@ -458,7 +461,7 @@ public static class MauiProgram
 }
 ```
 
-Then, when the app renders a <xref:Microsoft.Maui.Controls.Grid> it will use the custom layout manager to ensure that the <xref:Microsoft.Maui.Controls.Grid.RowDefinitions> for the <xref:Microsoft.Maui.Controls.Grid> includes enough rows to account for each `Grid.Row` attached property set in child views:
+Then, when the app renders a <xref:Microsoft.Maui.Controls.Grid> it will use the custom layout manager to ensure that at runtime the <xref:Microsoft.Maui.Controls.Grid.RowDefinitions> for the <xref:Microsoft.Maui.Controls.Grid> includes enough rows to account for each `Grid.Row` attached property set in child views:
 
 ```xaml
 <Grid>
@@ -474,6 +477,6 @@ Then, when the app renders a <xref:Microsoft.Maui.Controls.Grid> it will use the
 </Grid>
 ```
 
-Therefore, the layout manager factory using the custom layout manager to ensure that the <xref:Microsoft.Maui.Controls.Grid> in this example displays correctly, without having to set its <xref:Microsoft.Maui.Controls.Grid.RowDefinitions> property:
+Therefore, the layout manager factory uses the custom layout manager to ensure that the <xref:Microsoft.Maui.Controls.Grid> in this example displays correctly, without having to set its <xref:Microsoft.Maui.Controls.Grid.RowDefinitions> property:
 
 :::image type="content" source="media/custom-layout/layout-manager-factory.png" alt-text="Screenshot of a Grid customized by using a layout manager factory.":::
