@@ -10,7 +10,7 @@ ms.date: 01/22/2024
 
 .NET Multi-platform App UI (.NET MAUI) defines multiple layouts classes that each arrange their children in a different way. A layout can be thought of as list of views with rules and properties that define how to arrange those views within the layout. Examples of layouts include <xref:Microsoft.Maui.Controls.Grid>, <xref:Microsoft.Maui.Controls.AbsoluteLayout>, and <xref:Microsoft.Maui.Controls.VerticalStackLayout>.
 
-In .NET MAUI, the layout classes derive from the abstract <xref:Microsoft.Maui.Controls.Layout> class. This class delegates cross-platform layout and measurement to a layout manager class. The <xref:Microsoft.Maui.Controls.Layout> class also contains an overridable <xref:Microsoft.Maui.Controls.Layout.CreateLayoutManager> method that derived layouts can use to specify the layout manager.
+.NET MAUI layout classes derive from the abstract <xref:Microsoft.Maui.Controls.Layout> class. This class delegates cross-platform layout and measurement to a layout manager class. The <xref:Microsoft.Maui.Controls.Layout> class also contains an overridable <xref:Microsoft.Maui.Controls.Layout.CreateLayoutManager> method that derived layouts can use to specify the layout manager.
 
 Each layout manager class implements the <xref:Microsoft.Maui.Layouts.ILayoutManager> interface, which specifies that <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> and <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> implementations must be provided:
 
@@ -22,10 +22,10 @@ Each layout manager class implements the <xref:Microsoft.Maui.Layouts.ILayoutMan
 
 .NET MAUI's layouts have pre-defined layout managers to handle their layout. However, sometimes it's necessary to organize page content using a layout that isn't provided by .NET MAUI. This can be achieved by writing your own custom layout. There are two main approaches to doing this:
 
-1. Create a custom layout type, which is usually a sub-class of an existing layout type or of <xref:Microsoft.Maui.Controls.Layout>, and override the  <xref:Microsoft.Maui.Controls.Layout.CreateLayoutManager> method in your custom layout type. Then, provide an <xref:Microsoft.Maui.Layouts.ILayoutManager> implementation that contains your custom layout logic. For more information, see [Create a custom layout type](#create-a-custom-layout-type).
-1. Implement <xref:Microsoft.Maui.Controls.ILayoutManagerFactory> and register the implementation with the app's service provider. This will replace .NET MAUI's default layout manager with your own. For more information, see [Implement a layout manager factory](#implement-a-layout-manager-factory).
+1. Create a custom layout type, which is usually a subclass of an existing layout type or of <xref:Microsoft.Maui.Controls.Layout>, and override <xref:Microsoft.Maui.Controls.Layout.CreateLayoutManager> in your custom layout type. Then, provide an <xref:Microsoft.Maui.Layouts.ILayoutManager> implementation that contains your custom layout logic. For more information, see [Create a custom layout type](#create-a-custom-layout-type).
+1. Modify the behavior of an existing layout type by creating a type that implements <xref:Microsoft.Maui.Controls.ILayoutManagerFactory>. Then, use this layout manager factory to replace .NET MAUI's default layout manager for the existing layout with your own <xref:Microsoft.Maui.Layouts.ILayoutManager> implementation that contains your custom layout logic. For more information, see [Modify the behavior of an existing layout](#modify-the-behavior-of-an-existing-layoutger-factory).
 
-Before creating a custom layout it's first necessary to have an understanding of how .NET MAUI's cross-platform layout process works.
+Regardless of the approach taken, it's required to have an understanding of how .NET MAUI's cross-platform layout process works.
 
 ## Layout process
 
@@ -106,7 +106,7 @@ In this example, which builds on the previous example, the <xref:Microsoft.Maui.
 
 The process for creating a custom layout type is as follows:
 
-1. Create a class that sub-classes an existing layout type or the <xref:Microsoft.Maui.Controls.Layout> class, and override the  <xref:Microsoft.Maui.Controls.Layout.CreateLayoutManager> method in your custom layout type. For more information, see [Sub-class a layout](#sub-class-a-layout).
+1. Create a class that subclasses an existing layout type or the <xref:Microsoft.Maui.Controls.Layout> class, and override the  <xref:Microsoft.Maui.Controls.Layout.CreateLayoutManager> method in your custom layout type. For more information, see [Subclass a layout](#subclass-a-layout).
 1. Create a layout manager class that derives from an existing layout manager, or that implements the <xref:Microsoft.Maui.Layouts.ILayoutManager> interface directly. In your layout manager class, you should:
     1. Add a constructor that accepts and stores an instance of your custom layout type.
     1. Override, or implement, the <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> method to calculate the total size of the layout given its constraints.
@@ -121,9 +121,9 @@ An orientation-sensitive `HorizontalWrapLayout` is used to demonstrate this proc
 > [!NOTE]
 > The [sample](/samples/dotnet/maui-samples/userinterface-customlayouts/) defines additional custom layouts that can be used to understand how to write your own custom layout.
 
-### Sub-class a layout
+### Subclass a layout
 
-The first step in creating a custom layout type is to sub-class an existing layout type or the <xref:Microsoft.Maui.Controls.Layout> class. Then, override the <xref:Microsoft.Maui.Controls.Layout.CreateLayoutManager> method in your custom layout type, and return a new instance of the layout manager for the custom layout type:
+The first step in creating a custom layout type is to subclass an existing layout type or the <xref:Microsoft.Maui.Controls.Layout> class. Then, override the <xref:Microsoft.Maui.Controls.Layout.CreateLayoutManager> method in your custom layout type, and return a new instance of the layout manager for the custom layout type:
 
 ```csharp
 using Microsoft.Maui.Layouts;
@@ -341,7 +341,7 @@ The number of columns in each row depends on the photo size, the width of the pa
 > [!NOTE]
 > Scrolling is supported by wrapping the `HorizontalWrapLayout` in a <xref:Microsoft.Maui.Controls.ScrollView>.
 
-## Implement a layout manager factory
+## Modify the behavior of an existing layout
 
 In some scenarios you may find that you want to change the behavior of an existing layout type without having to create a custom layout type. For these scenarios you can create a type that implements <xref:Microsoft.Maui.Controls.ILayoutManagerFactory> and use it to replace .NET MAUI's default layout manager with your own. This enables you to define a new layout manager for an existing layout type, such as providing a custom layout manager for <xref:Microsoft.Maui.Controls.Grid> with different layouts. This can be useful for scenarios where you want to add a new behavior to a layout but don't want to update the type of an existing widely-used layout in your app.
 
