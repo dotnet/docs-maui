@@ -6,7 +6,7 @@ ms.date: 01/11/2024
 
 # Connect to an Android emulator on a Mac from inside a Windows virtual machine
 
-The Android emulator provides versatile networking capabilities that can be used for different purposes, including connecting to an emulator running on a Mac from inside a Windows virtual machine (VM). This is useful when running Windows in Parallels on a Mac. In this scenario it's required to use the emulators on the Mac since they can't run in Parallels.
+The Android emulator provides versatile networking capabilities that can be used for different purposes, including connecting to an emulator running on a Mac from inside a Windows virtual machine (VM). This is useful when running Windows in Parallels on a Mac. In this scenario it's required to use the emulator on the Mac since it can't run in Parallels. For information about installing the Android emulator on a Mac, see [Installation](~/get-started/installation.md&tabs=visual-studio-code).
 
 > [!IMPORTANT]
 > The address 127.0.0.1 on your development machine corresponds to the emulator's loopback interface.
@@ -17,9 +17,6 @@ There are two main approaches for connecting to an Android emulator on a Mac fro
 1. Using `ssh` port forwarding. For more information, see [Use ssh port forwarding](#use-ssh-port-forwarding).
 
 In both cases, the Android Debug Bridge (ADB) is used to connect to the emulator. ADB is a command-line tool that's bundled with the Android SDK Platform Tools package, that lets you communicate with a device. The `adb` command facilitates a variety of device actions, including connecting to devices. For more information about `adb`, see [Android Debug Bridge (adb)](https://developer.android.com/tools/adb) on developer.android.com.
-
-> [!NOTE]
-> You must use an Android Emulator that doesn't include the Google Play Store.
 
 ## Use nc to perform packet forwarding
 
@@ -68,7 +65,7 @@ To connect to the Android Emulator running on a Mac from a Windows VM, by using 
     > [!NOTE]
     > Command line access to `adb` can be obtained in Visual Studio through the **Tools > Android > Android Adb Command Prompt...** menu item.  
 
-When the connection is completed Visual Studio will display the emulator as a debug target, which you can use to deploy your app to the emulator.
+When the connection is completed Visual Studio will display the emulator as a debug target under **Android Local Devices**, which you can use to deploy your app to the emulator.
 
 ## Use ssh port forwarding
 
@@ -122,3 +119,5 @@ To connect to the Android Emulator running on a Mac from a Windows virtual machi
 
     > [!CAUTION]
     > If you use port 5555 for the local port, `adb` will think that the emulator is running locally on Windows. This doesn't cause any issues in Visual Studio, but in Visual Studio for Mac it causes the app to exit immediately after launch.
+
+When the connection is completed Visual Studio will display the emulator as a debug target under **Android Local Devices**, which you can use to deploy your app to the emulator.
