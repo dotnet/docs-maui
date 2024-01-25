@@ -114,18 +114,20 @@ To install Visual Studio 2022 for Mac behind a firewall, certain endpoints must 
 ## Install .NET and .NET MAUI workloads
 
 1. Install [.NET 8](/dotnet/core/install/windows).
+
     On Windows, it's recommended to use the Visual Studio installer to manage .NET and the .NET MAUI workload installations. Instructions on using the Visual Studio installer can be found [here](./installation.md?tabs=vswin).
+
 1. Install the .NET MAUI workload:
 
     On Windows and macOS, run the following command in a terminal:
 
-    ```cmd
+    ```dotnetcli
     dotnet workload install maui
     ```
 
     On Linux, run the following command in a terminal:
 
-    ```cmd
+    ```dotnetcli
     dotnet workload install maui-android
     ```
 
@@ -165,11 +167,11 @@ You might face issues when setting up the .NET MAUI extension for Visual Studio 
 
 If you try to create a new project and the file explorer keeps popping up in an infinite loop, you may not be selecting an empty folder. Check that there are no hidden files or folders, create a new folder, or create your .NET MAUI app from the command line using `dotnet new maui`.
 
-#### Using the "InstallAndroidDependencies" target
+#### Using the InstallAndroidDependencies target
 
 .NET 8 has a build target that helps set up your Android environment for you. Run the following command in a terminal to configure your machine and set up your Android environment:
 
-```cmd
+```dotnetcli
 dotnet build -t:InstallAndroidDependencies -f:net8.0-android -p:AndroidSdkDirectory "<AndroidSdkPath>" -p:JavaSdkDirectory "<JavaSdkPath>" -p:AcceptAndroidSDKLicenses=True
 ```
 
