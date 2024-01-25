@@ -114,14 +114,24 @@ To install Visual Studio 2022 for Mac behind a firewall, certain endpoints must 
 ## Install .NET and .NET MAUI workloads
 
 1. Install [.NET 8](/dotnet/core/install/windows).
-    1. On Windows, it is recommended to use the Visual Studio installer to manage .NET and the .NET MAUI workload installations. Instructions on using the Visual Studio installer can be found [here](./installation.md?tabs=vswin).
-1. Install .NET MAUI workload
-    - Windows/MacOS: Run `dotnet workload install maui` in a terminal.
-    - Linux: Run `dotnet workload install maui-android` in a terminal.
+    On Windows, it's recommended to use the Visual Studio installer to manage .NET and the .NET MAUI workload installations. Instructions on using the Visual Studio installer can be found [here](./installation.md?tabs=vswin).
+1. Install the .NET MAUI workload:
 
-## Set up Target Platforms
+    On Windows and macOS, run the following command in a terminal:
 
-To debug a .NET MAUI app in Visual Studio code, you need to have a valid target platform based on your development machine's operating system:
+    ```cmd
+    dotnet workload install maui
+    ```
+
+    On Linux, run the following command in a terminal:
+
+    ```cmd
+    dotnet workload install maui-android
+    ```
+
+## Set up target platforms
+
+To debug a .NET MAUI app in Visual Studio Code, you need to have a valid target platform for your development machine's operating system:
 
 | Your Operating System | Supported Target Platforms |
 |---|---|
@@ -129,20 +139,20 @@ To debug a .NET MAUI app in Visual Studio code, you need to have a valid target 
 | macOS | Android, iOS, macOS |
 | Linux | Android |
 
-### iOS and MacOS
+### iOS and macOS
 
-To debug to an iOS or MacOS target in Visual Studio Code, follow the steps below:
+To debug to an iOS or macOS target in Visual Studio Code:
 
 1. Install the [latest stable Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12).
 1. Run `xcode-select --install` in a terminal to acquire the Xcode command line tools.
 
 ### Android
 
-To debug to an Android target in Visual Studio Code, follow the steps below:
+To debug to an Android target in Visual Studio Code:
 
 1. Install [Microsoft OpenJDK 11](/java/openjdk/download#openjdk-11).
-1. Install the Android SDK via one of the following options:
-    * **(Recommended)** Create a new .NET MAUI project (`dotnet new maui`) and use the [InstallAndroidDependencies target](#using-installandroiddependencies).
+1. Install the Android SDK via one of the following approaches:
+    * **(Recommended)** Create a new .NET MAUI project (`dotnet new maui`) and use the [InstallAndroidDependencies target](#using-the-installandroiddependencies-target).
     * Install via Visual Studio (Windows only).
     * Install via Android Studio.
     * Install via your preferred package manager on Linux.
@@ -155,17 +165,21 @@ You might face issues when setting up the .NET MAUI extension for Visual Studio 
 
 If you try to create a new project and the file explorer keeps popping up in an infinite loop, you may not be selecting an empty folder. Check that there are no hidden files or folders, create a new folder, or create your .NET MAUI app from the command line using `dotnet new maui`.
 
-#### Using "InstallAndroidDependencies"
+#### Using the "InstallAndroidDependencies" target
 
 .NET 8 has a build target that helps set up your Android environment for you. Run the following command in a terminal to configure your machine and set up your Android environment:
 
-> `dotnet build -t:InstallAndroidDependencies -f:net8.0-android -p:AndroidSdkDirectory "<AndroidSdkPath>" -p:JavaSdkDirectory "<JavaSdkPath>" -p:AcceptAndroidSDKLicenses=True`
+```cmd
+dotnet build -t:InstallAndroidDependencies -f:net8.0-android -p:AndroidSdkDirectory "<AndroidSdkPath>" -p:JavaSdkDirectory "<JavaSdkPath>" -p:AcceptAndroidSDKLicenses=True
+```
 
-* `AndroidSdkDirectory "<AndroidSdkPath>"` : installs or updates Android dependencies to the specified path (Note: Must use an absolute path).
+In the command above:
+
+* `AndroidSdkDirectory "<AndroidSdkPath>"`: installs or updates Android dependencies to the specified absolute path.
   * Windows: the suggested AndroidSdkPath is `%LOCALAPPDATA%/Android/Sdk`.
   * MacOS: the suggested AndroidSdkPath is `$HOME/Library/Android/sdk`.
-* `JavaSdkDirectory "<JavaSdkPath>"` : installs Java to the specified path (Note: Must be an absolute path).
-* `AcceptAndroidSDKLicenses=True` : accepts the necessary Android licenses for development.
+* `JavaSdkDirectory "<JavaSdkPath>"`: installs Java to the specified absolute path.
+* `AcceptAndroidSDKLicenses=True`: accepts the required Android licenses for development.
 
 #### There's an error that the Android SDK or Java SDK was not found
 
