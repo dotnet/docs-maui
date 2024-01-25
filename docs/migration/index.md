@@ -7,7 +7,7 @@ ms.date: 08/30/2023
 # Upgrade from Xamarin to .NET
 
 > [!IMPORTANT]
-> Help us improve your upgrade experience from Xamarin to .NET MAUI by completing this [short survey](https://www.surveymonkey.com/r/VXH5TM7).
+> [Microsoft support for Xamarin](https://dotnet.microsoft.com/platform/support/policy/xamarin) will end on May 1, 2024 for all Xamarin SDKs including Xamarin.Forms. Help us improve your upgrade experience from Xamarin to .NET MAUI by completing this [short survey](https://www.surveymonkey.com/r/VXH5TM7).
 
 Xamarin projects can run on .NET after completing an upgrade process. The following table lists the Xamarin project types that can be upgraded to .NET:
 
