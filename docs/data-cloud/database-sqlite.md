@@ -205,6 +205,8 @@ public TodoItemPage()
 }
 ```
 
+For more information about dependency injection in .NET MAUI apps, see [Dependency injection](~/fundamentals/dependency-injection.md).
+
 ## Advanced configuration
 
 SQLite provides a robust API with more features than are covered in this article and the sample app. The following sections cover features that are important for scalability.
