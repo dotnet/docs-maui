@@ -117,7 +117,7 @@ To install Visual Studio 2022 for Mac behind a firewall, certain endpoints must 
 
     On Windows, it's recommended to use the Visual Studio installer to manage .NET and the .NET MAUI workload installations. Instructions on using the Visual Studio installer can be found [here](./installation.md?tabs=vswin).
 
-1. Install the .NET MAUI workload:
+1. Install the .NET MAUI workload.
 
     On Windows and macOS, run the following command in a terminal:
 
