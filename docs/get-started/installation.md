@@ -111,9 +111,29 @@ To install Visual Studio 2022 for Mac behind a firewall, certain endpoints must 
 > [!NOTE]
 > The .NET MAUI extension requires the C# Dev Kit and prerelease C# extensions. You must sign into C# Dev Kit to use the .NET MAUI extension's functionality. See [this blog post](https://devblogs.microsoft.com/visualstudio/announcing-csharp-dev-kit-for-visual-studio-code/) for more information about C# Dev Kit and its family of extensions.
 
-## Set up .NET, .NET MAUI, and target platforms
+## Install .NET and .NET MAUI workloads
 
-To develop with .NET MAUI in Visual Studio code, you need to have .NET, the .NET MAUI workload, and a valid target platform based on your development machine's operating system:
+1. Install [.NET 8](/dotnet/core/install/windows).
+
+    On Windows, it's recommended to use the Visual Studio installer to manage .NET and the .NET MAUI workload installations. Instructions on using the Visual Studio installer can be found [here](./installation.md?tabs=vswin).
+
+1. Install the .NET MAUI workload.
+
+    On Windows and macOS, run the following command in a terminal:
+
+    ```dotnetcli
+    dotnet workload install maui
+    ```
+
+    On Linux, run the following command in a terminal:
+
+    ```dotnetcli
+    dotnet workload install maui-android
+    ```
+
+## Set up target platforms
+
+To debug a .NET MAUI app in Visual Studio Code, you need to have a valid target platform for your development machine's operating system:
 
 | Your Operating System | Supported Target Platforms |
 |---|---|
@@ -121,42 +141,23 @@ To develop with .NET MAUI in Visual Studio code, you need to have .NET, the .NET
 | macOS | Android, iOS, macOS |
 | Linux | Android |
 
-### Windows
+### iOS and macOS
 
-The recommended approach to setup your Windows machine for .NET MAUI development is through the Visual Studio installer. You can follow the instructions in the Visual Studio tab on this page to walk through installing the .NET MAUI workload. You can also use Visual Studio to manage different versions of Android, create emulators, update .NET and .NET MAUI, and more.
+To debug to an iOS or macOS target in Visual Studio Code:
 
-If you don't want to install Visual Studio, you can still get set up for .NET MAUI development by following these steps:
-
-1. Install [.NET 8](/dotnet/core/install/windows).
-1. After .NET has finished installing, run `dotnet workload install maui` in a terminal.
-1. If you'd like to debug Android in Visual Studio Code, you also have to:
-    1. Install [Microsoft OpenJDK 11](/java/openjdk/download#openjdk-11).
-    1. Install the Android SDK. You can acquire the correct versions of the Android SDK and build tools by creating a new .NET MAUI project (`dotnet new maui`) and running the following command in your terminal:  
-    `dotnet build -t:InstallAndroidDependencies -f:net8.0-android -p:AndroidSdkDirectory="<ANDROID SDK DIRECTORY>" -p:AcceptAndroidSDKLicenses=True`  
-    On Windows, the suggested Android SDK directory value is `%LOCALAPPDATA%/Android/Sdk`.
-
-> [!NOTE]
-> See the [Troubleshooting > Android Setup](#android-setup) section for more information on setting up the Android SDK.
-
-### macOS
-
-1. Install [.NET 8](/dotnet/core/install/macOS).
 1. Install the [latest stable Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12).
-1. After Xcode has finished installing, run `xcode-select --install` in a terminal to acquire the Xcode command line tools.
-1. Run `dotnet workload install maui` in a terminal.
-1. If you'd like to debug to Android in Visual Studio Code, you also have to:
-    1. Install [Microsoft OpenJDK 11](/java/openjdk/download#openjdk-11).
-    1. Install the Android SDK. You can acquire the correct versions of the Android SDK and build tools by creating a new .NET MAUI project (`dotnet new maui`) and running the following command in your terminal:  
-    `dotnet build -t:InstallAndroidDependencies -f:net8.0-android -p:AndroidSdkDirectory="<ANDROID SDK DIRECTORY>" -p:AcceptAndroidSDKLicenses=True`  
-    On macOS, the suggested Android SDK directory value is `$HOME/Library/Android/sdk`.
+1. Run `xcode-select --install` in a terminal to acquire the Xcode command line tools.
 
-### Linux
+### Android
 
-1. Install [.NET 8](/dotnet/core/install/linux).
-1. After .NET has installed, run `dotnet workload install maui-android` in a terminal.
-1. If you'd like to debug to Android in Visual Studio Code, you also have to:
-    1. Install [Microsoft OpenJDK 11](/java/openjdk/download#openjdk-11).
-    1. Install the Android SDK from your preferred package manager, or from the [Android website](https://developer.android.com/about/versions/13/setup-sdk).
+To debug to an Android target in Visual Studio Code:
+
+1. Install [Microsoft OpenJDK 11](/java/openjdk/download#openjdk-11).
+1. Install the Android SDK via one of the following approaches:
+    * **(Recommended)** Create a new .NET MAUI project (`dotnet new maui`) and use the [InstallAndroidDependencies target](#using-the-installandroiddependencies-target).
+    * Install via Visual Studio (Windows only).
+    * Install via Android Studio.
+    * Install via your preferred package manager on Linux.
 
 ## Troubleshooting
 
@@ -166,23 +167,21 @@ You might face issues when setting up the .NET MAUI extension for Visual Studio 
 
 If you try to create a new project and the file explorer keeps popping up in an infinite loop, you may not be selecting an empty folder. Check that there are no hidden files or folders, create a new folder, or create your .NET MAUI app from the command line using `dotnet new maui`.
 
-### Android setup
+#### Using the InstallAndroidDependencies target
 
-There are multiple ways you can set up and manage Android SDKs on your machine:
+.NET 8 has a build target that helps set up your Android environment for you. Run the following command in a terminal to configure your machine and set up your Android environment:
 
-* (Recommended) Use the [`dotnet build -t:InstallAndroidDependencies` target](#using-installandroiddependencies).
-* Install via Visual Studio (Windows only).
-* Install via Android Studio.
-* Use the [Android Command Line Tools](https://developer.android.com/studio#command-tools).
+```dotnetcli
+dotnet build -t:InstallAndroidDependencies -f:net8.0-android -p:AndroidSdkDirectory "<AndroidSdkPath>" -p:JavaSdkDirectory "<JavaSdkPath>" -p:AcceptAndroidSDKLicenses=True
+```
 
-No matter which way you install Android, you can develop .NET MAUI apps in Visual Studio Code. If the following troubleshooting steps don't solve your issue, please [Report a Problem](https://github.com/microsoft/vscode-dotnettools/issues).
+In the command above:
 
-#### Using "InstallAndroidDependencies"
-
-* .NET 8 has a build target that helps set up your Android environment for you. You can add or remove the following properties to `dotnet build -t:InstallAndroidDependencies -f:net8.0-android` to configure your machine:
-  * `-p:AndroidSdkDirectory "<PATH>"` installs or updates Android dependencies to the specified path (Note: You must use an absolute path without a tilde "~").
-  * `-p:JavaSdkDirectory "<PATH>"` installs Java to the specified path (Note: You must use an absolute path without a tilde "~").
-  * `-p:AcceptAndroidSDKLicenses=True` accepts the necessary Android licenses for development.
+* `AndroidSdkDirectory "<AndroidSdkPath>"`: installs or updates Android dependencies to the specified absolute path.
+  * Windows: the suggested AndroidSdkPath is `%LOCALAPPDATA%/Android/Sdk`.
+  * MacOS: the suggested AndroidSdkPath is `$HOME/Library/Android/sdk`.
+* `JavaSdkDirectory "<JavaSdkPath>"`: installs Java to the specified absolute path.
+* `AcceptAndroidSDKLicenses=True`: accepts the required Android licenses for development.
 
 #### There's an error that the Android SDK or Java SDK was not found
 
@@ -193,11 +192,11 @@ No matter which way you install Android, you can develop .NET MAUI apps in Visua
 * Set the `JAVA_HOME` environment variable to a valid Java OpenJDK path.
 * Set the `ANDROID_HOME` environment variable to your Android SDK path.
 * Check your minimum versions of installed Android dependencies:
-  * build-tools >= 32.0.0
-  * cmdline-tools == 7.0
-  * platforms;android-33*
+  * build-tools >= 34.0.0
+  * cmdline-tools == 11.0
+  * platforms;android-34*
   * .NET 7: platform-tools = 33.0.2
-  * .NET 8: platform-tools = 34.0.1
+  * .NET 8: platform-tools = 34.0.5
 
 #### There's an error that Android licenses aren't accepted
 
