@@ -78,7 +78,7 @@ sequenceDiagram
 
 When a cross-platform view is measured, it passes the measurement to its native view. This process is shown in the following diagram:
 
-:::image type="content" source="media/custom-layout/measure-view.png" alt-text="The process for layout measurement in .NET MAUI" border="false":::
+:::image type="content" source="media/custom-layout/measure-view.png" alt-text="The process for view measurement in .NET MAUI" border="false":::
 
 <!-- ```mermaid
 sequenceDiagram
