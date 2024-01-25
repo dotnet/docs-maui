@@ -46,7 +46,7 @@ In this example, a black shadow is painted around the outline of the image, with
 Shadows can also be added to clipped objects, as shown in the following example:
 
 ```xaml
-<Image Source=https://aka.ms/campus.jpg
+<Image Source="https://aka.ms/campus.jpg"
        Aspect="AspectFill"
        HeightRequest="220"
        WidthRequest="220"
