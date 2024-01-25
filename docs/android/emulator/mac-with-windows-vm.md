@@ -6,7 +6,7 @@ ms.date: 01/11/2024
 
 # Connect to an Android emulator on a Mac from inside a Windows virtual machine
 
-The Android emulator provides versatile networking capabilities that can be used for different purposes, including connecting to an emulator running on a Mac from inside a Windows virtual machine (VM). This is useful when running Windows in Parallels on a Mac. In this scenario it's required to use the emulator on the Mac since it can't run in Parallels. For information about installing the Android emulator on a Mac, see [Installation](~/get-started/installation.md&tabs=visual-studio-code).
+The Android emulator provides versatile networking capabilities that can be used for different purposes, including connecting to an emulator running on a Mac from inside a Windows virtual machine (VM). This is useful when running Windows in Parallels on a Mac. In this scenario it's required to use the emulator on the Mac since it can't run in Parallels. For information about installing the Android emulator on a Mac, see [Installation](~/get-started/installation.md?tabs=visual-studio-code).
 
 > [!IMPORTANT]
 > The address 127.0.0.1 on your development machine corresponds to the emulator's loopback interface.
