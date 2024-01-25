@@ -16,6 +16,8 @@ Physical Android devices are emulated by AVDs, which specify the Android version
 
 After you've created an AVD you can launch the emulator and debug an app in it. For more information, see [Debug on the Android emulator](debug-on-emulator.md). Once an app is installed on an AVD, you can run it from the device as you would run any app on a device.
 
+In addition, the emulator provides versatile networking capabilities that can be used for different purposes, including connecting to an emulator running on a Mac from inside a Windows virtual machine (VM). For more information, see [Connect to an Android emulator on a Mac from inside a Windows virtual machine](mac-with-windows-vm.md).
+
 For information about diagnosing emulator issues, see [Android emulator troubleshooting](troubleshooting.md).
 
 ## Use the emulator

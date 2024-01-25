@@ -27,6 +27,8 @@
                   href: android/emulator/device-properties.md
                 - name: Debug on a virtual device
                   href: android/emulator/debug-on-emulator.md
+                - name: Connect to an emulator from a Windows VM
+                  href: android/emulator/mac-with-windows-vm.md                  
                 - name: Troubleshoot common problems
                   href: android/emulator/troubleshooting.md
             - name: Devices
