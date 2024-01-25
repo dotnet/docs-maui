@@ -8,14 +8,12 @@ ms.date: 01/11/2024
 
 The Android emulator provides versatile networking capabilities that can be used for different purposes, including connecting to an emulator running on a Mac from inside a Windows virtual machine (VM). This is useful when running Windows in Parallels on a Mac. In this scenario it's required to use the emulators on the Mac since they can't run in Parallels.
 
-Each instance of the emulator runs behind a virtual router, or firewall service, that isolates it from your development machine network interfaces and settings and from the internet. Apps running on an emulator can connect to the network available on your development machine. However, apps connect through the emulator, which acts like a normal app on your development machine. This has a consequence that communication with the emulated device may be blocked by a firewall running on your development machine, or by a physical firewall where your machine is connected. The emulator can handle outbound TCP and UDP connections and messages on behalf of the emulated device, provided that your development machine network environment lets it. For more information about Android emulator networking, see [Set up Android Emulator networking](https://developer.android.com/studio/run/emulator-networking) on developer.android.com.
-
 > [!IMPORTANT]
 > The address 127.0.0.1 on your development machine corresponds to the emulator's loopback interface.
 
 There are two main approaches for connecting to an Android emulator on a Mac from inside a Windows VM:
 
-1. Using `nc` or `pfctl` to perform packet forwarding. For more information, see [Use nc or pfctl to perform packet forwarding](#use-nc-or-pfctl-to-perform-packet-forwarding).
+1. Using `nc` to perform packet forwarding. For more information, see [Use nc to perform packet forwarding](#use-nc-to-perform-packet-forwarding).
 1. Using `ssh` port forwarding. For more information, see [Use ssh port forwarding](#use-ssh-port-forwarding).
 
 In both cases, the Android Debug Bridge (ADB) is used to connect to the emulator. ADB is a command-line tool that's bundled with the Android SDK Platform Tools package, that lets you communicate with a device. The `adb` command facilitates a variety of device actions, including connecting to devices. For more information about `adb`, see [Android Debug Bridge (adb)](https://developer.android.com/tools/adb) on developer.android.com.
@@ -23,7 +21,7 @@ In both cases, the Android Debug Bridge (ADB) is used to connect to the emulator
 > [!NOTE]
 > You must use an Android Emulator that doesn't include the Google Play Store.
 
-## Use nc or pfctl to perform packet forwarding
+## Use nc to perform packet forwarding
 
 To connect to the Android Emulator running on a Mac from a Windows VM, by using packet forwarding, use the following steps:
 
@@ -46,33 +44,17 @@ To connect to the Android Emulator running on a Mac from a Windows VM, by using 
 
     The emulator uses a pair of sequential TCP ports - an even-numbered port for console connections, and an odd-numbered port for `adb` connections. In the output above the emulator listens for `adb` on port 5555 and listens for console connections on port 5554.
 
-1. In **Terminal**, use either `nc` or `pfctl` to perform packet forwarding:
+1. In **Terminal**, use `nc` to forward inbound TCP packets received externally on port 5555 (or any other port) to the odd-numbered port on the loopback interface, and to forward the outbound packets back the other way:
 
-    1. Use `nc` to forward inbound TCP packets received externally on port 5555 (or any other port) to the odd-numbered port on the loopback interface, and to forward the outbound packets back the other way:
+    ```zsh
+    cd /tmp
+    mkfifo backpipe
+    nc -kl 5555 0<backpipe | nc 127.0.0.1 5555 > backpipe
+    ```
 
-        ```zsh
-        cd /tmp
-        mkfifo backpipe
-        nc -kl 5555 0<backpipe | nc 127.0.0.1 5555 > backpipe
-        ```
+    In this example, `127.0.0.1 5555` denotes the odd-numbered port on the loopback interface.
 
-        In this example, `127.0.0.1 5555` denotes the odd-numbered port on the loopback interface.
-
-        Provided that the `nc` command keeps running in a Terminal window, packets will be forwarded as expected. Once you've finished using the emulator, you can stop `nc` performing packet forwarding by pressing <kbd>CTRL+C</kbd> in the Terminal window.
-
-        > [!NOTE]
-        > Using `nc` is often preferred to `pfctl`, particularly if the firewall is enabled on your Mac.
-
-    1. Use `pfctl` to redirect TCP packets from port 5555 (or any other port) on the [Shared Networking](https://kb.parallels.com/en/4948#section1) interface to
-    the odd-numbered port on the loopback interface:
-
-        ```zsh
-        sed '/rdr-anchor/a rdr pass on vmnet8 inet proto tcp from any to any port 5555 -> 127.0.0.1 port 5555' /etc/pf.conf | sudo pfctl -ef -
-        ```
-
-        In this example, `127.0.0.1 5555` denotes the odd-numbered port on the loopback interface.
-
-        This command sets up port forwarding using the `pf packet filter` system service. If you're using Parallels, you'll need to adjust the interface name from `vmnet8`, which is the name of the special NAT device for the Shared Networking mode in VMWare Fusion. The appropriate network interface in Parallels is most likely [vnic0](https://download.parallels.com/doc/psbm/en/Parallels_Server_Bare_Metal_Users_Guide/29258.htm).
+    Provided that the `nc` command keeps running in a Terminal window, packets will be forwarded as expected. Once you've finished using the emulator, you can stop `nc` performing packet forwarding by pressing <kbd>CTRL+C</kbd> in the Terminal window.
 
 1. In your Windows VM, open **Command Prompt**.
 1. In **Command Prompt**, connect to the emulator:
