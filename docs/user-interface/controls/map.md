@@ -892,7 +892,7 @@ public class MapItemTemplateSelector : DataTemplateSelector
 The `MapItemTemplateSelector` class defines `DefaultTemplate` and `SanFranTemplate` <xref:Microsoft.Maui.Controls.DataTemplate> properties that are set to different data templates. The `OnSelectTemplate` method returns the `SanFranTemplate`, which displays "Xamarin" as a label when a `Pin` is tapped, when the item has an address that contains "San Francisco". When the item doesn't have an address that contains "San Francisco", the `OnSelectTemplate` method returns the `DefaultTemplate`.
 
 > [!NOTE]
-> A use case for this functionality is binding properties of sub-classed `Pin` objects to different properties, based on the `Pin` sub-type.
+> A use case for this functionality is binding properties of subclassed `Pin` objects to different properties, based on the `Pin` sub-type.
 
 For more information about data template selectors, see [Create a DataTemplateSelector](~/fundamentals/datatemplate.md#create-a-datatemplateselector).
 
