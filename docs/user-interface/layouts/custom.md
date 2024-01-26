@@ -17,7 +17,7 @@ Each layout manager class implements the <xref:Microsoft.Maui.Layouts.ILayoutMan
 - The <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> implementation calls <xref:Microsoft.Maui.IView.Measure%2A?displayProperty=nameWithType> on each view in the layout, and returns the total size of the layout given the constraints.
 - The <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> implementation determines where each view should be placed within the bounds of the layout, and calls <xref:Microsoft.Maui.IView.Arrange%2A> on each view with its appropriate bounds. The return value is the actual size of the layout.
 
-.NET MAUI's layouts have pre-defined layout managers to handle their layout. However, sometimes it's necessary to organize page content using a layout that isn't provided by .NET MAUI. This can be achieved by writing your own custom layout. However, it's first necessary to have an understanding of how .NET MAUI's cross-platform layout process works.
+.NET MAUI's layouts have pre-defined layout managers to handle their layout. However, sometimes it's necessary to organize page content using a layout that isn't provided by .NET MAUI. This can be achieved by producing your own custom layout. However, it's first necessary to have an understanding of how .NET MAUI's cross-platform layout process works.
 
 ## Layout process
 
@@ -61,7 +61,7 @@ When a platform requests the arrangement, or layout, of one of these backing vie
 > [!NOTE]
 > <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A?displayProperty=nameWithType> may be called multiple times before <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> is called, because a platform may need to perform some speculative measurements before arranging views.
 
-## Create a custom layout
+## Custom layouts approaches
 
 There are two main approaches to creating a custom layout:
 
