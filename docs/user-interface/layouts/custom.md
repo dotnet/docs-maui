@@ -1,7 +1,7 @@
 ---
 title: "Custom layouts"
 description: "Learn how to create a custom layout to organize page content using a layout that isn't provided by .NET MAUI."
-ms.date: 01/22/2024
+ms.date: 01/26/2024
 ---
 
 # Custom layouts
@@ -136,7 +136,7 @@ The `HorizontalWrapLayoutManager` constructor stores an instance of the `Horizon
 
 #### Measure the layout size
 
-The purpose of the <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A?displayProperty=nameWithType> implementation is to calculate the total size of the layout. It does this by calling <xref:Microsoft.Maui.IView.Measure%2A?displayProperty=nameWithType> on each child in the layout. It then uses this data to calculate and return the total size of the layout given its constraints.
+The purpose of the <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A?displayProperty=nameWithType> implementation is to calculate the total size of the layout. It should do this by calling <xref:Microsoft.Maui.IView.Measure%2A?displayProperty=nameWithType> on each child in the layout. It should then use this data to calculate and return the total size of the layout given its constraints.
 
 The following example shows the <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> implementation for the `HorizontalWrapLayoutManager` class:
 
@@ -208,7 +208,7 @@ The `Measure` method enumerates through all of the visible children in the layou
 
 #### Arrange children in the layout
 
-The purpose of the <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> implementation is to size and position all of the children within the layout. To determine where each child should be placed within the bounds of the layout, it calls <xref:Microsoft.Maui.IView.Arrange%2A> on each child with its appropriate bounds. It then returns a value that represents the actual size of the layout.
+The purpose of the <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> implementation is to size and position all of the children within the layout. To determine where each child should be placed within the bounds of the layout, it should call <xref:Microsoft.Maui.IView.Arrange%2A> on each child with its appropriate bounds. It should then return a value that represents the actual size of the layout.
 
 > [!WARNING]
 > Failure to invoke the <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> method on each child in the layout will result in the child never receiving a correct size or position, and hence the child won't become visible on the page.
