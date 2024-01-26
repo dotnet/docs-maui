@@ -17,7 +17,7 @@ Each layout manager class implements the <xref:Microsoft.Maui.Layouts.ILayoutMan
 - The <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> implementation calls <xref:Microsoft.Maui.IView.Measure%2A?displayProperty=nameWithType> on each view in the layout, and returns the total size of the layout given the constraints.
 - The <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> implementation determines where each view should be placed within the bounds of the layout, and calls <xref:Microsoft.Maui.IView.Arrange%2A> on each view with its appropriate bounds. The return value is the actual size of the layout.
 
-.NET MAUI's layouts have pre-defined layout managers to handle their layout. However, sometimes it's necessary to organize page content using a layout that isn't provided by .NET MAUI. This can be achieved by producing your own custom layout. However, it's first necessary to have an understanding of how .NET MAUI's cross-platform layout process works.
+.NET MAUI's layouts have pre-defined layout managers to handle their layout. However, sometimes it's necessary to organize page content using a layout that isn't provided by .NET MAUI. This can be achieved by producing your own custom layout, which requires you to have an understanding of how .NET MAUI's cross-platform layout process works.
 
 ## Layout process
 
@@ -54,9 +54,9 @@ All .NET MAUI layouts have a single backing view on each platform:
 - On iOS and Mac Catalyst, this backing view is `LayoutView`.
 - On Windows, this backing view is `LayoutPanel`.
 
-When a platform requests the measurement of one of these backing views, the backing view calls the <xref:Microsoft.Maui.Controls.Layout.CrossPlatformMeasure%2A?displayProperty=nameWithType> method. This is the point at which control is passed from the native layout system to .NET MAUI's layout system. <xref:Microsoft.Maui.Controls.Layout.CrossPlatformMeasure%2A?displayProperty=nameWithType> calls the layout managers <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> method. This method is responsible for measuring child views by calling <xref:Microsoft.Maui.IView.Measure%2A?displayProperty=nameWithType> on each view in the layout. The view measures its native control, and updates its <xref:Microsoft.Maui.IView.DesiredSize> property based on that measurement. This value is returned to the backing view as the result of the `CrossPlatformMeasure` method. The backing view then does whatever internal processing it needs to do, and returns its measured size to the platform.
+When the native layout system for a platform requests the measurement of one of these backing views, the backing view calls the <xref:Microsoft.Maui.Controls.Layout.CrossPlatformMeasure%2A?displayProperty=nameWithType> method. This is the point at which control is passed from the native layout system to .NET MAUI's layout system. <xref:Microsoft.Maui.Controls.Layout.CrossPlatformMeasure%2A?displayProperty=nameWithType> calls the layout managers' <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> method. This method is responsible for measuring child views by calling <xref:Microsoft.Maui.IView.Measure%2A?displayProperty=nameWithType> on each view in the layout. The view measures its native control, and updates its <xref:Microsoft.Maui.IView.DesiredSize> property based on that measurement. This value is returned to the backing view as the result of the `CrossPlatformMeasure` method. The backing view performs whatever internal processing it needs to do, and returns its measured size to the platform.
 
-When a platform requests the arrangement, or layout, of one of these backing views, the backing view calls the <xref:Microsoft.Maui.Controls.Layout.CrossPlatformArrange%2A?displayProperty=nameWithType> method. This is the point at which control is passed from the native layout system to .NET MAUI's layout system. <xref:Microsoft.Maui.Controls.Layout.CrossPlatformArrange%2A?displayProperty=nameWithType> calls the layout managers <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> method. This method is responsible for determining where each view should be placed within the bounds of the layout, and calls <xref:Microsoft.Maui.IView.Arrange%2A> on each view to set its location.
+When a platform requests the arrangement, or layout, of one of these backing views, the backing view calls the <xref:Microsoft.Maui.Controls.Layout.CrossPlatformArrange%2A?displayProperty=nameWithType> method. This is the point at which control is passed from the native layout system to .NET MAUI's layout system. <xref:Microsoft.Maui.Controls.Layout.CrossPlatformArrange%2A?displayProperty=nameWithType> calls the layout managers' <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> method. This method is responsible for determining where each view should be placed within the bounds of the layout, and calls <xref:Microsoft.Maui.IView.Arrange%2A> on each view to set its location.
 
 > [!NOTE]
 > <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A?displayProperty=nameWithType> may be called multiple times before <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> is called, because a platform may need to perform some speculative measurements before arranging views.
@@ -136,7 +136,7 @@ The `HorizontalWrapLayoutManager` constructor stores an instance of the `Horizon
 
 #### Measure the layout size
 
-The purpose of the <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A?displayProperty=nameWithType> implementation is to calculate the total size of the layout. It does this by calling <xref:Microsoft.Maui.IView.Measure%2A?displayProperty=nameWithType> on each child in the layout. It can then use this data to calculate and return the total size of the layout given its constraints.
+The purpose of the <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A?displayProperty=nameWithType> implementation is to calculate the total size of the layout. It does this by calling <xref:Microsoft.Maui.IView.Measure%2A?displayProperty=nameWithType> on each child in the layout. It then uses this data to calculate and return the total size of the layout given its constraints.
 
 The following example shows the <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> implementation for the `HorizontalWrapLayoutManager` class:
 
@@ -208,7 +208,7 @@ The `Measure` method enumerates through all of the visible children in the layou
 
 #### Arrange children in the layout
 
-The purpose of the <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> implementation is to size and position all of the children within the layout. To determine where each child should be placed within the bounds of the layout, it calls <xref:Microsoft.Maui.IView.Arrange%2A> on each child with its appropriate bounds. It returns a value that represents the actual size of the layout.
+The purpose of the <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> implementation is to size and position all of the children within the layout. To determine where each child should be placed within the bounds of the layout, it calls <xref:Microsoft.Maui.IView.Arrange%2A> on each child with its appropriate bounds. It then returns a value that represents the actual size of the layout.
 
 > [!WARNING]
 > Failure to invoke the <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> method on each child in the layout will result in the child never receiving a correct size or position, and hence the child won't become visible on the page.
