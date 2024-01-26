@@ -31,7 +31,7 @@ Regardless of the approach taken, it's necessary to first have an understanding 
 > [!NOTE]
 > Each platform handles layout slightly differently. However, .NET MAUI's cross-platform layout process aims to be as platform-agnostic as possible.
 
-The following diagram shows the process when the native layout system wants to measure a layout backing view:
+The following diagram shows the process when the native layout system initiates layout measurement:
 
 :::image type="content" source="media/custom-layout/layout-process.png" alt-text="The process for layout measurement in .NET MAUI" border="false":::
 
@@ -55,9 +55,9 @@ sequenceDiagram
 
 All .NET MAUI layouts have a single backing view on each platform:
 
-- On Android, this backing control is `LayoutViewGroup`.
-- On iOS and Mac Catalyst, this backing control is `LayoutView`.
-- On Windows, this backing control is `LayoutPanel`.
+- On Android, this backing view is `LayoutViewGroup`.
+- On iOS and Mac Catalyst, this backing view is `LayoutView`.
+- On Windows, this backing view is `LayoutPanel`.
 
 When a platform requests the measurement of one of these backing views, the backing view calls the <xref:Microsoft.Maui.Controls.Layout.CrossPlatformMeasure%2A?displayProperty=nameWithType> method. This is the point at which control is passed from the native layout system to .NET MAUI's layout system. <xref:Microsoft.Maui.Controls.Layout.CrossPlatformMeasure%2A?displayProperty=nameWithType> calls the layout managers <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A> method. This method is responsible for measuring child views by calling <xref:Microsoft.Maui.IView.Measure%2A?displayProperty=nameWithType> on each view in the layout. The view measures its native control, and updates its <xref:Microsoft.Maui.IView.DesiredSize> property based on that measurement. This value is returned to the backing view as the result of the `CrossPlatformMeasure` method. The backing view then does whatever internal processing it needs to do, and returns its measured size to the platform.
 
