@@ -61,7 +61,7 @@ When a platform requests the arrangement, or layout, of one of these backing vie
 > [!NOTE]
 > <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A?displayProperty=nameWithType> may be called multiple times before <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> is called, because a platform may need to perform some speculative measurements before arranging views.
 
-## Custom layouts approaches
+## Custom layout approaches
 
 There are two main approaches to creating a custom layout:
 
