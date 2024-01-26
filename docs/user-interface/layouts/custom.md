@@ -28,33 +28,12 @@ Regardless of the approach taken, it's necessary to first have an understanding 
 
 .NET MAUI's cross-platform layout process builds on top of the native layout process on each platform. Generally, the layout process is initiated by the native layout system. The cross-platform process runs when a layout or content control initiates it as a result of being measured or arranged by the native layout system.
 
-The following diagram shows the process when the native layout system wants to measure a backing view:
-
-:::image type="content" source="media/custom-layout/layout-process.png" alt-text="The layout process in .NET MAUI" border="false":::
-
-<!-- ```mermaid
-sequenceDiagram
-    participant P as Platform
-    participant BV as Backing view
-    participant XV as Cross-platform view
-    P->>BV: Measure
-    BV->>XV: Cross-platform Measure
-    Note over XV: Update DesiredSize
-    XV->>BV: DesiredSize
-    Note over BV: Internal processing
-    BV->>P: Size
-``` -->
-
-In this example, assume that the cross-platform view being measured is a <xref:Microsoft.Maui.Controls.ContentView> that contains a <xref:Microsoft.Maui.Controls.Label>. A native platform, such as Android, needs to know the size of the <xref:Microsoft.Maui.Controls.ContentView>, given constraints of a width of 100 and a height of 200. The platform calls its `Measure` method on the backing view for the <xref:Microsoft.Maui.Controls.ContentView> (which on Android is a `ContentViewGroup`) with the constraints. The backing view converts the constraints to cross-platform units, if required, and then calls its `CrossPlatformMeasure` method with those constraints to determine how large the <xref:Microsoft.Maui.Controls.Label> should be. The `CrossPlatformMeasure` method is responsible for calling the <xref:Microsoft.Maui.IView.Measure%2A?displayProperty=nameWithType> method on the <xref:Microsoft.Maui.Controls.Label>. The <xref:Microsoft.Maui.Controls.Label> measures its native control, and updates its <xref:Microsoft.Maui.IView.DesiredSize> property based on that measurement. This value is returned to the backing view as the result of the `CrossPlatformMeasure` method. The backing view then does whatever internal processing it needs to do, and returns its measured size to the platform.
-
 > [!NOTE]
 > Each platform handles layout slightly differently. However, .NET MAUI's cross-platform layout process aims to be as platform-agnostic as possible.
 
-### Layout measurement
+The following diagram shows the process when the native layout system wants to measure a layout backing view:
 
-The process for layout measurement is as described above, except that multiple child views need to be measured:
-
-:::image type="content" source="media/custom-layout/measure-layout.png" alt-text="The process for layout measurement in .NET MAUI" border="false":::
+:::image type="content" source="media/custom-layout/layout-process.png" alt-text="The process for layout measurement in .NET MAUI" border="false":::
 
 <!-- ```mermaid
 sequenceDiagram
@@ -86,29 +65,6 @@ When a platform requests the arrangement, or layout, of one of these backing vie
 
 > [!NOTE]
 > <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A?displayProperty=nameWithType> may be called multiple times before <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> is called, because a platform may need to perform some speculative measurements before arranging views.
-
-<!-- ### View measurement
-
-When a cross-platform view is measured, it passes the measurement to its native view. This process is shown in the following diagram:
-
-:::image type="content" source="media/custom-layout/measure-view.png" alt-text="The process for view measurement in .NET MAUI" border="false":::
-
-```mermaid
-sequenceDiagram
-	participant V as View
-	participant H as Handler
-	participant NV as Native view
-	Note over V: Adjust for margins
-	V->>H: GetDesiredSize
-	Note over H: Convert to native
-	H->>NV: Measure
-	NV->>H: Size
-	Note over H: Convert to cross-platform
-	H->>V: Size
-	Note over V: Adjust for margins, record DesiredSize
-```
-
-In this example, which builds on the previous example, the <xref:Microsoft.Maui.IView.Measure%2A> method for the <xref:Microsoft.Maui.Controls.Label> takes the constraints it's given by the `CrossPlatformMeasure` method and makes any appropriate adjustments, such as subtracting its margins. It then passes the updated constraints to the <xref:Microsoft.Maui.IViewHandler.GetDesiredSize%2A> method of its handler. The handler is aware of the native control (a <xref:Android.Widget.TextView> on Android), and converts the constraints to native values and calls the native control's version of `Measure`. The handler then takes the return value from the native measurement and converts it back to cross-platform values, if required, and returns it to the <xref:Microsoft.Maui.Controls.Label>. The <xref:Microsoft.Maui.Controls.Label> adjusts the result (for example, by adding back its margins), if required, and then sets the result in its <xref:Microsoft.Maui.IView.DesiredSize> property. It then returns the value as a result of the `Measure` method. -->
 
 ## Create a custom layout type
 
