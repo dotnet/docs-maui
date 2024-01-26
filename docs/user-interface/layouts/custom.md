@@ -28,7 +28,7 @@ Each layout manager class implements the <xref:Microsoft.Maui.Layouts.ILayoutMan
 
 The following diagram shows the process when a native layout system initiates layout measurement:
 
-:::image type="content" source="media/custom-layout/layout-process.png" alt-text="The process for layout measurement in .NET MAUI" border="false":::
+:::image type="content" source="media/custom-layout/layout-measure-process.png" alt-text="The process for layout measurement in .NET MAUI" border="false":::
 
 <!-- ```mermaid
 sequenceDiagram
@@ -58,7 +58,9 @@ When the native layout system for a platform requests the measurement of one of 
 
 The following diagram shows the process when a native layout system initiates layout arrangement:
 
-```mermaid
+:::image type="content" source="media/custom-layout/layout-arrange-process.png" alt-text="The process for layout arrangement in .NET MAUI" border="false":::
+
+<!-- ```mermaid
 sequenceDiagram
     participant P as Platform
     participant BV as Layout backing view
@@ -72,9 +74,9 @@ sequenceDiagram
     XV->>BV: Size
     Note over BV: Internal processing
     BV->>P: Size
-```
+``` -->
 
-When the native layout system for a platform requests the arrangement, or layout, of one of these backing views, the backing view calls the <xref:Microsoft.Maui.Controls.Layout.CrossPlatformArrange%2A?displayProperty=nameWithType> method. This is the point at which control is passed from the native layout system to .NET MAUI's layout system. <xref:Microsoft.Maui.Controls.Layout.CrossPlatformArrange%2A?displayProperty=nameWithType> calls the layout managers' <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> method. This method is responsible for determining where each view should be placed within the bounds of the layout, and calls <xref:Microsoft.Maui.IView.Arrange%2A> on each view to set its location.
+When the native layout system for a platform requests the arrangement, or layout, of one of these backing views, the backing view calls the <xref:Microsoft.Maui.Controls.Layout.CrossPlatformArrange%2A?displayProperty=nameWithType> method. This is the point at which control is passed from the native layout system to .NET MAUI's layout system. <xref:Microsoft.Maui.Controls.Layout.CrossPlatformArrange%2A?displayProperty=nameWithType> calls the layout managers' <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> method. This method is responsible for determining where each view should be placed within the bounds of the layout, and calls <xref:Microsoft.Maui.IView.Arrange%2A> on each view to set its location. The size of the layout is returned to the backing view as the result of the `CrossPlatformArrange` method. The backing view performs whatever internal processing it needs to do, and returns the actual size to the platform.
 
 > [!NOTE]
 > <xref:Microsoft.Maui.Layouts.ILayoutManager.Measure%2A?displayProperty=nameWithType> may be called multiple times before <xref:Microsoft.Maui.Layouts.ILayoutManager.ArrangeChildren%2A> is called, because a platform may need to perform some speculative measurements before arranging views.
