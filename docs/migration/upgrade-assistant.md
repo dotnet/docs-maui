@@ -42,6 +42,15 @@ Before upgrading your Xamarin.Forms app to .NET MAUI, you should first update yo
 
 This will help to simplify the rest of the migration process, as it will minimize the API differences between Xamarin.Forms and .NET MAUI, and will ensure that you are using .NET compatible versions of your dependencies if they exist.
 
+## Light Bulbs in Visual Studio
+
+While the upgrade assistant should remove most Xamarin.Forms references and replace them with the Maui equivalent, the upgrade assistant comes installed with a light bulb for converting `Xamarin.Forms` namespaces to the appropriate `Microsoft.Maui` and `Microsoft.Maui.Controls` namespaces as shown in the following image. The light bulb will make the necessary code replacements across the file.
+
+> [!NOTE]
+> The light bulbs run as you migrate your files from your Xamarin.Forms project into a Maui project.
+
+:::image type="content" source="media/ua-light-bulb.png" alt-text="Screenshot of previewing the application of a light bulb suggestion.":::
+
 ## Installation
 
 <!-- markdownlint-disable MD025 -->
