@@ -44,7 +44,7 @@ This will help to simplify the rest of the migration process, as it will minimiz
 
 ## Light Bulbs in Visual Studio
 
-While the upgrade assistant should remove most Xamarin.Forms references and replace them with the Maui equivalent, the upgrade assistant comes installed with a light bulb for converting `Xamarin.Forms` namespaces to the appropriate `Microsoft.Maui` and `Microsoft.Maui.Controls` namespaces as shown in the following image. The light bulb will make the necessary code replacements across the file.
+The upgrade assistant comes installed with a light bulb for converting Xamarin.Forms namespaces to the appropriate .NET MAUI namespaces as shown in the following image. The light bulb will make the necessary code replacements across the file.
 
 > [!NOTE]
 > The light bulbs run as you migrate your files from your Xamarin.Forms project into a Maui project.
