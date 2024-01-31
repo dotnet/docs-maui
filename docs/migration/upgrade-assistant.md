@@ -48,7 +48,7 @@ This will help to simplify the rest of the migration process, as it will minimiz
 
 :::image type="content" source="media/ua-light-bulb.png" alt-text="Screenshot of previewing the application of a light bulb suggestion.":::
 
-The quick action will make the necessary code replacements across the file.
+The quick action will make the necessary replacements across the file.
 
 > [!NOTE]
 > Quick action light bulbs will appear as you migrate the files from your Xamarin.Forms project into a .NET MAUI project.
