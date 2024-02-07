@@ -8,9 +8,9 @@ ms.date: 02/14/2024
 
 The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 9 is product quality across layout, control features, and reliability of tooling experiences such as setup, build, deploy, hot reload, debug, and diagnostics. To learn more about the product quality improvements in .NET MAUI 9 Preview 1, see the following release notes:
 
-- [Release notes for .NET MAUI](https://github.com/dotnet/maui/releases/tag/untagged-e764fa1780e2dd618900)
+- [Release notes for .NET MAUI 9 Preview 1](https://github.com/dotnet/maui/releases/tag/untagged-e764fa1780e2dd618900)
 - [Release notes for .NET iOS, tvOS, macOS, and Mac Catalyst](https://github.com/xamarin/xamarin-macios/wiki/.NET-8-release-notes)
-- [Release notes for .NET Android](https://github.com/xamarin/xamarin-android/releases/tag/untagged-a2a308a67c16cf7fe691)
+- [Release notes for .NET Android 9 Preview 1](https://github.com/xamarin/xamarin-android/releases/tag/untagged-a2a308a67c16cf7fe691)
 
 > [!IMPORTANT]
 > Due to working with underlying external dependencies, such as Xcode or Android SDK Tools, the .NET MAUI support policy differs from the [.NET and .NET Core support policy](https://dotnet.microsoft.com/platform/support/policy/maui). For more information, see [.NET MAUI support policy](https://dotnet.microsoft.com/platform/support/policy/maui).
@@ -64,9 +64,9 @@ The `$(MauiVersion)` variable is referenced from the version of .NET MAUI you've
 
 This can be useful when using ad-hoc builds from the [nightly feed](https://github.com/dotnet/maui/wiki/Nightly-Builds) or builds downloaded from pull requests.
 
--->
-
 Prior to building your upgraded app for the first time, delete the `bin` and `obj` folders.
+
+-->
 
 ## See also
 
