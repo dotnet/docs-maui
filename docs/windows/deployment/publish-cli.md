@@ -1,5 +1,5 @@
 ---
-title: "Use the CLI to publish packageds app for Windows"
+title: "Use the CLI to publish packaged apps for Windows"
 description: "Learn how to package and publish a packaged Windows .NET MAUI app with the dotnet publish command."
 ms.date: 10/12/2022
 ---
