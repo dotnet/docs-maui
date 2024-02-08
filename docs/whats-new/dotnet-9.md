@@ -13,7 +13,7 @@ The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 9 is product quality
 - [Release notes for .NET Android 9 Preview 1](https://github.com/xamarin/xamarin-android/releases/tag/untagged-a2a308a67c16cf7fe691)
 
 > [!IMPORTANT]
-> Due to working with underlying external dependencies, such as Xcode or Android SDK Tools, the .NET MAUI support policy differs from the [.NET and .NET Core support policy](https://dotnet.microsoft.com/platform/support/policy/maui). For more information, see [.NET MAUI support policy](https://dotnet.microsoft.com/platform/support/policy/maui).
+> Due to working with external dependencies, such as Xcode or Android SDK Tools, the .NET MAUI support policy differs from the [.NET and .NET Core support policy](https://dotnet.microsoft.com/platform/support/policy/maui). For more information, see [.NET MAUI support policy](https://dotnet.microsoft.com/platform/support/policy/maui).
 
 In .NET 8 and .NET 9, .NET MAUI ships as a .NET workload and multiple NuGet packages. The advantage of this approach is that it enables you to easily pin your projects to specific versions, while also enabling you to easily preview unreleased or experimental builds. When you create a new .NET MAUI project the required NuGet packages are automatically added to the project.
 
