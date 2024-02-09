@@ -35,5 +35,5 @@ For more information about .NET 9 Preview 1 on iOS, tvOS, Mac Catalyst, and macO
 
 ## See also
 
-- [.NET MAUI updates in .NET 9 Preview 1](https://github.com/dotnet/release-notes-drafts/blob/main/9.0/preview1/dotnetmaui.md).
+- [.NET MAUI updates in .NET 9 Preview 1](https://github.com/dotnet/core/tree/main/release-notes/9.0/preview1/dotnetmaui.md).
 - [Announcing .NET 9 Preview 1](https://devblogs.microsoft.com/dotnet/announcing-dotnet-9-preview-1)
