@@ -6,14 +6,13 @@ ms.date: 02/14/2024
 
 # What's new in .NET MAUI for .NET 9
 
-The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 9 is to improve product quality. This includes expanding test coverage, end to end scenario testing, and bug fixing.
+The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 9 is to improve product quality. This includes expanding test coverage, end to end scenario testing, and bug fixing. For more information about the product quality improvements in .NET MAUI 9 Preview 1, see the [release notes](https://github.com/dotnet/maui/releases/tag/untagged-e764fa1780e2dd618900).
+
 
 > [!IMPORTANT]
 > Due to working with external dependencies, such as Xcode or Android SDK Tools, the .NET MAUI support policy differs from the [.NET and .NET Core support policy](https://dotnet.microsoft.com/platform/support/policy/maui). For more information, see [.NET MAUI support policy](https://dotnet.microsoft.com/platform/support/policy/maui).
 
 In .NET 8 and .NET 9, .NET MAUI ships as a .NET workload and multiple NuGet packages. The advantage of this approach is that it enables you to easily pin your projects to specific versions, while also enabling you to easily preview unreleased or experimental builds. When you create a new .NET MAUI project the required NuGet packages are automatically added to the project.
-
-For more information about the product quality improvements in .NET MAUI 9 Preview 1, see the [release notes](https://github.com/dotnet/maui/releases/tag/untagged-e764fa1780e2dd618900).
 
 > [!NOTE]
 > Building `net8.0-*` target frameworks from .NET 9 doesn't work in Preview 1.
