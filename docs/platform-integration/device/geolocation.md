@@ -123,7 +123,7 @@ Depending on the device, not all location values may be available. For example, 
 While checking for the [last known location](#get-the-last-known-location) of the device may be quicker, it can be inaccurate. Use the <xref:Microsoft.Maui.Devices.Sensors.IGeolocation.GetLocationAsync%2A> method to query the device for the current location. You can configure the accuracy and timeout of the query. It's best to the method overload that uses the <xref:Microsoft.Maui.Devices.Sensors.GeolocationRequest> and <xref:System.Threading.CancellationToken> parameters, since it may take some time to get the device's location.
 
 > [!NOTE]
-> When necessary, the Geolocation API prompt's the user for permissions.
+> When necessary, the Geolocation API prompts the user for permissions.
 
 The following code example demonstrates how to request the device's location, while supporting cancellation:
 
