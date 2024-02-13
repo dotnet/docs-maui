@@ -16,7 +16,7 @@ In .NET 9, .NET MAUI ships as a .NET workload and multiple NuGet packages. The a
 > [!NOTE]
 > Building `net8.0-*` target frameworks from .NET 9 doesn't work in Preview 1.
 
-For information about what's new in .NET 9, see [What's new in .NET 9](/dotnet/core/whats-new/dotnet-9).
+For information about what's new in .NET 9, see [What's new in .NET 9](/dotnet/core/whats-new/dotnet-9/overview).
 
 ## Android
 
