@@ -99,6 +99,7 @@ Follow these steps to configure your <xref:Microsoft.Maui.Controls.DatePicker> f
        <Resource Language="x-generate" />
    </Resources>
    ```
+
 2. Specify Supported Languages
 
    Replace the `<Resource Language="x-generate">` with `<Resource />` elements for each of your supported languages. The language code should be in the form of a BCP-47 language tag, such as `en-US` for English (United States), `es-ES` for Spanish (Spain), `fr-FR` for French (France) or `de-DE` for German (Germany).
