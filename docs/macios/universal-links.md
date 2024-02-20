@@ -125,14 +125,19 @@ public static class MauiProgram
 #if IOS || MACCATALYST
                 lifecycle.AddiOS(ios =>
                 {
+                    // Universal link delivered to FinishedLaunching after app launch.
                     ios.FinishedLaunching((app, data) => HandleAppLink(app.UserActivity));
+                    // Universal link delivered to ContinueUserActivity when the app is running or suspended.
                     ios.ContinueUserActivity((app, userActivity, handler) => HandleAppLink(userActivity));
 
+                    // Only required if using Scenes for multi-window support.
                     if (OperatingSystem.IsIOSVersionAtLeast(13) || OperatingSystem.IsMacCatalystVersionAtLeast(13))
                     {
+                        // Universal link delivered to SceneWillConnect after app launch
                         ios.SceneWillConnect((scene, sceneSession, sceneConnectionOptions)
                             => HandleAppLink(sceneConnectionOptions.UserActivities.ToArray()
                                 .FirstOrDefault(a => a.ActivityType == Foundation.NSUserActivityType.BrowsingWeb)));
+                        // Universal link delivered to SceneContinueUserActivity when the app is running or suspended
                         ios.SceneContinueUserActivity((scene, userActivity) => HandleAppLink(userActivity));
                     }
                 });
