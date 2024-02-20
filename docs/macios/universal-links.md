@@ -127,6 +127,7 @@ public static class MauiProgram
                 {
                     // Universal link delivered to FinishedLaunching after app launch.
                     ios.FinishedLaunching((app, data) => HandleAppLink(app.UserActivity));
+                    
                     // Universal link delivered to ContinueUserActivity when the app is running or suspended.
                     ios.ContinueUserActivity((app, userActivity, handler) => HandleAppLink(userActivity));
 
@@ -137,6 +138,7 @@ public static class MauiProgram
                         ios.SceneWillConnect((scene, sceneSession, sceneConnectionOptions)
                             => HandleAppLink(sceneConnectionOptions.UserActivities.ToArray()
                                 .FirstOrDefault(a => a.ActivityType == Foundation.NSUserActivityType.BrowsingWeb)));
+
                         // Universal link delivered to SceneContinueUserActivity when the app is running or suspended
                         ios.SceneContinueUserActivity((scene, userActivity) => HandleAppLink(userActivity));
                     }
