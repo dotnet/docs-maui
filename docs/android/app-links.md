@@ -18,7 +18,7 @@ Android classifies app links into three categories:
 - *Web links* are deep links that use the HTTP or HTTPS scheme. On Android 12 and higher, a web link always shows content in a web browser. On previous versions of Android, if an app can handle the web link then a disambiguation dialog will appear that asks the user to select an app to handle the web link.
 - *Android app links*, which are available on API 23+, are web links that use the HTTP or HTTPS scheme and contain the `autoVerify` attribute. This attribute enables your app to become the default handler for an app link. Therefore, when a user clicks on an app link your app opens without displaying a disambiguation dialog.
 
-.NET MAUI Android apps can support all three categories of app links. However, this article focuses on Android app links. This requires proving ownership of a domain as well as hosting a digital assets links file JSON file on the domain, which describes the relationship with your app. This enables Android to verify that the app trying to handle a URL has ownership of the URL's domain to prevent malicious apps from intercepting your app links.
+.NET MAUI Android apps can support all three categories of app links. However, this article focuses on Android app links. This requires proving ownership of a domain as well as hosting a digital assets links file JSON file on the domain, which describes the relationship with your app. This enables Android to verify that the app trying to handle a URI has ownership of the URIs domain to prevent malicious apps from intercepting your app links.
 
 The process for handling Android app links in a .NET MAUI Android app is as follows:
 
@@ -30,7 +30,7 @@ The process for handling Android app links in a .NET MAUI Android app is as foll
 > [!IMPORTANT]
 > To use Android app links:
 > - A version of your app must be live on Google Play.
-> - A companion website must be registered against the app in Google's Developer Console. Once the app is associated with a website, URLs can be indexed that work for both the website and the app, which can then be served in search results. For more information, see [App Indexing on Google Search](https://support.google.com/googleplay/android-developer/answer/6041489) on support.google.com.
+> - A companion website must be registered against the app in Google's Developer Console. Once the app is associated with a website, URIs can be indexed that work for both the website and the app, which can then be served in search results. For more information, see [App Indexing on Google Search](https://support.google.com/googleplay/android-developer/answer/6041489) on support.google.com.
 
 For more information about Android app links, see [Handling Android App Links](https://developer.android.com/training/app-links).
 
@@ -169,13 +169,13 @@ Android will verify every host that's identified in the intent filters against t
 
 It may also be necessary to mark your activity as exportable, so that your activity can be launched by other apps. This can be achieved by adding `Exported = true` to the existing `Activity` attribute. For more information, see [Activity element](https://developer.android.com/guide/topics/manifest/activity-element) on developer.android.com.
 
-Once you've added an intent filter with a URL for activity content, Android is able to route any intent that has matching URLs to your app at runtime.
+Once you've added an intent filter with a URI for activity content, Android is able to route any intent that has matching URIs to your app at runtime.
 
 When a web URI intent is invoked Android tries the following actions until the request succeeds:
 
-1. Opens the preferred app to handle the URL.
-1. Opens the only available app to handle the URL.
-1. Allows the user to select an app to handle the URL.
+1. Opens the preferred app to handle the URI.
+1. Opens the only available app to handle the URI.
+1. Allows the user to select an app to handle the URI.
 
 For more information about intents and intent filters, see [Intents and intent filters](https://developer.android.com/guide/components/intents-filters) on developer.android.com.
 
@@ -269,17 +269,17 @@ public partial class App : Application
 }
 ```
 
-In the example above the <xref:Microsoft.Maui.Controls.Application.OnAppLinkRequestReceived%2A> override displays the intent data. In practice, the app link should take users directly to the content represented by the URL, without any prompts, logins, or other interruptions. Therefore, the <xref:Microsoft.Maui.Controls.Application.OnAppLinkRequestReceived%2A> override is the location from which to perform navigation to the content represented by the URL.
+In the example above the <xref:Microsoft.Maui.Controls.Application.OnAppLinkRequestReceived%2A> override displays the intent data. In practice, the app link should take users directly to the content represented by the URI, without any prompts, logins, or other interruptions. Therefore, the <xref:Microsoft.Maui.Controls.Application.OnAppLinkRequestReceived%2A> override is the location from which to perform navigation to the content represented by the URI.
 
-## Test a URL
+## Test a URI
 
-Provided that the digital asset file is correctly hosted, you can use the Android Debug Bridge, `adb`, with the activity manager tool, `am`, to simulate opening a URL to ensure that your app links work correctly. For example, the following command tries to view a target app activity that's associated with a URL:
+Provided that the digital asset file is correctly hosted, you can use the Android Debug Bridge, `adb`, with the activity manager tool, `am`, to simulate opening a URI to ensure that your app links work correctly. For example, the following command tries to view a target app activity that's associated with a URI:
 
 ```shell
-adb shell am start -W -a android.intent.action.VIEW -c android.intent.category.BROWSABLE -d YOUR_URL_HERE
+adb shell am start -W -a android.intent.action.VIEW -c android.intent.category.BROWSABLE -d YOUR_URI_HERE
 ```
 
-This command will dispatch an intent that Android should direct to your mobile app, which should launch and display the activity registered for the URL.
+This command will dispatch an intent that Android should direct to your mobile app, which should launch and display the activity registered for the URI.
 
 > [!NOTE]
 > You can run `adb` against an emulator or a device.
