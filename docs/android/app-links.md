@@ -10,7 +10,7 @@ ms.date: 02/20/2024
 
 It's often desirable to connect a website and a mobile app so that links on a website launch the mobile app and display the relevant content in the mobile app. *App linking*, which is also known as *deep linking*, is a technique that enables a mobile device to respond to a URI and launch a mobile app that corresponds to the URI.
 
-Android handles app links through the intent system. When a user clicks on a link in a mobile browser, the browser will dispatch an intent that Android will delegate to a registered app. These links can be based on a custom scheme, such as `myappname://`, or can use the `http` or `https` scheme. For example, clicking on a link on a recipe website would open a mobile app that's associated with that website and display a specific recipe to the user. If there's more than one app registered to handle the intent, Android will display a disambiguation dialog that asks the user which app to select to handle the intent. Users who don't have your app installed are taken to content on your website.
+Android handles app links through the intent system. When a user taps on a link in a mobile browser, the browser will dispatch an intent that Android will delegate to a registered app. These links can be based on a custom scheme, such as `myappname://`, or can use the `http` or `https` scheme. For example, clicking on a link on a recipe website would open a mobile app that's associated with that website and display a specific recipe to the user. If there's more than one app registered to handle the intent, Android will display a disambiguation dialog that asks the user which app to select to handle the intent. Users who don't have your app installed are taken to content on your website.
 
 Android classifies app links into three categories:
 
@@ -49,7 +49,7 @@ The digital asset file contains the metadata necessary for Android to verify the
 
 - `namespace` - the namespace of the Android app.
 - `package_name` - the package name of the Android app.
-- `sha256_cert_fingerprints` - the SHA256 fingerprints of the signed app, obtained from your `.keystore` file. For information about finding your keystore's signature, see [Find your keystore's signature](~/android/deployment/publish-cli.mdfind-your-keystores-signature).
+- `sha256_cert_fingerprints` - the SHA256 fingerprints of the signed app, obtained from your `.keystore` file. For information about finding your keystore's signature, see [Find your keystore's signature](~/android/deployment/publish-cli.md#find-your-keystores-signature).
 
 The following example *assetlinks.json* file grants link-opening rights to a `com.companyname.myrecipeapp` Android app:
 
@@ -239,6 +239,9 @@ public static class MauiProgram
 ```
 
 The `Intent.Action` property retrieves the action associated with the incoming intent, and the `Intent.Data` property retrieves the data associated with the incoming intent. Provided that the intent action is set to `ActionView`, the intent data can be passed to your `App` class with the <xref:Microsoft.Maui.Controls.Application.SendOnAppLinkRequestReceived%2A> method.
+
+> [!WARNING]
+> App links offer a potential attack vector into your app, so ensure you validate all URL parameters and discard any malformed URLs.
 
 In your `App` class, override the <xref:Microsoft.Maui.Controls.Application.OnAppLinkRequestReceived%2A> method to process the intent data:
 

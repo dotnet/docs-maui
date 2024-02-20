@@ -1,35 +1,45 @@
 ---
-title: "Universal links"
-description: "Learn how to"
-ms.date: 02/19/2024
+title: "Apple universal links"
+description: "Learn how to use deep linking functionality in a .NET MAUI iOS app."
+ms.date: 02/20/2024
 ---
-
-Apple deep links are known as universal links. These links can be based on a custom scheme, such as `myappname://` or can use the `http` or `https` scheme. This sample shows how to support `http`/`https` URL's, which requires hosting a well-known association JSON file on the domain that describes the relationship with your app. This enables Apple to verify that the app trying to handle a URL has ownership of the URL's domain to prevent malicious apps from intercepting your universal links.
-
-iOS - [Supporting Universal Links in your app](https://developer.apple.com/documentation/xcode/supporting-universal-links-in-your-app)
-https://learn.microsoft.com/en-us/xamarin/xamarin-forms/app-fundamentals/deep-linking
-https://github.com/redth/maui.applinks.sample
 
 # Universal links
 
-Apple also supports registering your app to handle both custom URI schemes (eg: `myappname://`) and `http`/`https` schemes, however this sample focuses on `http`/`https` (custom schemes require additional setup in your `Info.plist` which is not covered here).
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platforms-deeplinking)
 
-Apple refers to handling `http`/`https` urls as [Supporting Universal Links in your app](https://developer.apple.com/documentation/xcode/supporting-universal-links-in-your-app).  Similar to Google, Apple requires that you host a well-known `apple-app-site-association` file at the domain you want to handle links for, containing JSON information describing the relationship to your app.  This is a way for Apple to verify ownership for handling urls so not just anyone can intercept your site's links in their own apps.
+It's often desirable to connect a website and a mobile app so that links on a website launch the mobile app and display the relevant content in the mobile app. *App linking*, which is also known as *deep linking*, is a technique that enables a mobile device to respond to a URI and launch a mobile app that corresponds to the URI.
 
-## Host a well-known association file
+On Apple platforms, deep links are known as *universal links*. When a user taps on a universal link, the system redirects the link directly to your app without routing Safari or your website. These links can be based on a custom scheme, such as `myappname://`, or can use the `http` or `https` scheme. For example, clicking on a link on a recipe website would open a mobile app that's associated with that website and display a specific recipe to the user. Users who don't have your app installed are taken to content on your website. This article focuses on universal links that use the HTTPS scheme.
 
-Create a `apple-app-site-association` json file hosted on your domain's server under the `/.well-known/` folder.  Your URL should look like `https://redth.dev/.well-known/apple-app-site-association`.  The file contents will need to include:
+.NET MAUI iOS apps support universal links. This requires hosting a digital assets links JSON file on the domain, which describes the relationship with your app. This enables Apple to verify that the app trying to handle a URI has ownership of the URIs domain to prevent malicious apps from intercepting your app links.
+
+The process for handling Apple universal links in a .NET MAUI iOS app is as follows:
+
+- Create and host an associated domains file. For more information, see [Create and host an associated domains file](#create-and-host-an-associated-domains-file).
+- Add the associated domains entitlement to your app. For more information, see [Add the associated domains entitlement to your app](#add-the-associated-domains-entitlement-to-your-app).
+- Update your app delegate to respond to the user activity object the system provides when a universal link routes to your app. For more information, see [Update your app delegate](#update-your-app-delegate).
+
+For more information, see [Allowing apps and websites to link to your content](https://developer.apple.com/documentation/xcode/allowing-apps-and-websites-to-link-to-your-content) on developer.apple.com. For information about defining a custom URL scheme for your app, see [Defining a custom URL scheme for your app](https://developer.apple.com/documentation/xcode/defining-a-custom-url-scheme-for-your-app) on developer.apple.com.
+
+## Create and host an associated domains file
+
+To associate a website with your app, you'll need to have an associated domain file on your website along with the appropriate entitlement in your app. When a user installs your app, iOS attempts to download the associated domain file and verify the domains in your entitlement.
+
+The associated domain file is a JON file that must be hosted by the relevant web domain at the following location: `https://domain.name/.well-known/apple-app-site-association`.
+
+The following JSON shows the contents of an associated domains file:
 
 ```json
 {
     "activitycontinuation": {
-        "apps": [ "85HMA3YHJX.dev.redth.applinkssample" ]
+        "apps": [ "85HMA3YHJX.com.companyname.myrecipeapp" ]
     },
     "applinks": {
         "apps": [],
         "details": [
             {
-                "appID": "85HMA3YHJX.dev.redth.applinkssample",
+                "appID": "85HMA3YHJX.com.companyname.myrecipeapp",
                 "paths": [ "*", "/*" ]
             }
         ]
@@ -37,11 +47,29 @@ Create a `apple-app-site-association` json file hosted on your domain's server u
 }
 ```
 
-Be sure to replace the app identifiers with the correct values for your own app.  This step required some trial and error to get working.  There are a number of posts online stating that the `activitycontinuation` was required to get things working.  I had a similar experience.
+The `apps` and `appID` keys specify the app identifiers for the apps that are available for use on the website. The values for these keys are based on the app identifier prefix and the bundle identifier.
 
-## Add domain association entitlements to your app
+> [!IMPORTANT]
+> The associated domain file must be hosted using `https` with a valid certificate and no redirects.
 
-You will need to add custom entitlements to your app to declare the associated domain(s).  You can do this either by adding an Entitlements.plist file to your app, or you can simply add the following to your .csproj file in your MAUI app:
+For more information, see [Supporting associated domains](https://developer.apple.com/documentation/xcode/supporting-associated-domains) on developer.apple.com.
+
+## Add the associated domains entitlement to your app
+
+You'll need to add the associated domains entitlement to your app, which specifies a list of domains that the app is associated with. This can be accomplished by adding an *Entitlements.plist* file to your app. For more information about adding an entitlement on iOS, see [Entitlements](~/ios/entitlements.md). For more information about adding an entitlement on Mac Catalyst, see [Entitlements](~/mac-catalyst/entitlements.md).
+
+The entitlement is defined using the `com.apple.developer.associated-domains` key, of type `Array` of `String`:
+
+```xml
+<key>com.apple.developer.associated-domains</key>
+<array>
+  <string>applinks:recipe-app.com</string>
+</array>
+```
+
+For more information about this entitlement, see [Associated domains entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_associated-domains) on developer.apple.com.
+
+Alternatively, you can modify your project file (*.csproj) to add the entitlement in an `<ItemGroup>` element:
 
 ```xml
 <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios' Or $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">
@@ -51,56 +79,150 @@ You will need to add custom entitlements to your app to declare the associated d
         Condition="$(Configuration) == 'Debug'"
         Include="com.apple.developer.associated-domains"
         Type="StringArray"
-        Value="applinks:redth.dev?mode=developer" />
+        Value="applinks:recipe-app.com?mode=developer" />
 
-    <!-- Non debugging, use normal applinks:url value -->
+    <!-- Non-debugging, use normal applinks:url value -->
     <CustomEntitlements
         Condition="$(Configuration) != 'Debug'"
         Include="com.apple.developer.associated-domains"
         Type="StringArray"
-        Value="applinks:redth.dev" />
+        Value="applinks:recipe-app.com" />
 
 </ItemGroup>
 ```
 
-Be sure to replace the `applinks:redth.dev` with the correct value for your own domain.  Also notice the `ItemGroup`'s `Condition` which only includes the entitlement when the app is built for iOS or MacCatalyst.
+Replace the `applinks:recipe-app.com` with the correct value for your own domain. Ensure you only include the desired subdomain and the top-level domain. Don't include path and query components or a trailing slash (`/`).
 
-## Add lifecycle handlers
+> [!NOTE]
+> In iOS 14+ and macOS 11+, apps no longer send requests for `apple-app-site-association` files directly to your web server. Instead, they send requests to an Apple-managed content delivery network (CDN) dedicated to associated domains.
 
-In your `MauiProgram.cs` file, setup your lifecycle events with the `builder` (if you're not using 'Scenes' for multi window support in your app, you can omit the lifecycle handlers for Scene methods):
+## Update your app delegate
+
+When a user activates a universal link, iOS launches your app and sends it an <xref:Foundation.NSUserActivity> object. This object can be queried to determine how your app launched, and to determine what action to take. This should be performed in an early lifecycle callback such as `fsdfsd`.
+
+To respond to an iOS lifecycle delegate being invoked, call the `ConfigureLifecycleEvents` method on the `MauiAppBuilder` object in the `CreateMauiapp` method of your `MauiProgram` class. Then, on the `ILifecycleBuilder` object, call the `AddiOS` method and specify the `Action` that registers a handler for the required callback:
 
 ```csharp
-builder.ConfigureLifecycleEvents(lifecycle =>
+using Microsoft.Maui.LifecycleEvents;
+using Microsoft.Extensions.Logging;
+
+namespace MyNamespace;
+
+public static class MauiProgram
 {
-    #if IOS || MACCATALYST
-    lifecycle.AddiOS(ios =>
+    public static MauiApp CreateMauiApp()
     {
-        ios.FinishedLaunching((app, data)
-            => HandleAppLink(app.UserActivity));
+        var builder = MauiApp.CreateBuilder();
+        builder
+            .UseMauiApp<App>()
+            .ConfigureFonts(fonts =>
+            {
+                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+            })
+            .ConfigureLifecycleEvents(lifecycle =>
+            {
+#if IOS || MACCATALYST
+                lifecycle.AddiOS(ios =>
+                {
+                    ios.FinishedLaunching((app, data) => HandleAppLink(app.UserActivity));
+                    ios.ContinueUserActivity((app, userActivity, handler) => HandleAppLink(userActivity));
 
-        ios.ContinueUserActivity((app, userActivity, handler)
-            => HandleAppLink(userActivity));
+                    if (OperatingSystem.IsIOSVersionAtLeast(13) || OperatingSystem.IsMacCatalystVersionAtLeast(13))
+                    {
+                        ios.SceneWillConnect((scene, sceneSession, sceneConnectionOptions)
+                            => HandleAppLink(sceneConnectionOptions.UserActivities.ToArray()
+                                .FirstOrDefault(a => a.ActivityType == Foundation.NSUserActivityType.BrowsingWeb)));
+                        ios.SceneContinueUserActivity((scene, userActivity) => HandleAppLink(userActivity));
+                    }
+                });
+#endif
+            });
 
-        if (OperatingSystem.IsIOSVersionAtLeast(13) || OperatingSystem.IsMacCatalystVersionAtLeast(13))
+#if DEBUG
+        builder.Logging.AddDebug();
+#endif
+
+        return builder.Build();
+    }
+
+#if IOS || MACCATALYST
+    static bool HandleAppLink(Foundation.NSUserActivity? userActivity)
+    {
+        if (userActivity is not null && userActivity.ActivityType == Foundation.NSUserActivityType.BrowsingWeb && userActivity.WebPageUrl is not null)
         {
-            ios.SceneWillConnect((scene, sceneSession, sceneConnectionOptions)
-                => HandleAppLink(sceneConnectionOptions.UserActivities.ToArray()
-                    .FirstOrDefault(a => a.ActivityType == NSUserActivityType.BrowsingWeb)));
-
-            ios.SceneContinueUserActivity((scene, userActivity)
-                => HandleAppLink(userActivity));
+            HandleAppLink(userActivity.WebPageUrl.ToString());
+            return true;
         }
-    });
-    #elif ANDROID
-        // ...
-    #endif
-});
+        return false;
+    }
+#endif
+
+    static void HandleAppLink(string url)
+    {
+        if (Uri.TryCreate(url, UriKind.RelativeOrAbsolute, out var uri))
+            App.Current?.SendOnAppLinkRequestReceived(uri);
+    }
+}
 ```
 
-## Test a URL
+When iOS opens your app as a result of a universal link, the <xref:Foundation.NSUserActivity> object will have an <xref:Foundation.NSUserActivity.ActivityType> property with a value of <xref:Foundation.NSUserActivityType.BrowsingWeb>. The activity object's <xref:Foundation.NSUserActivity.WebPageUrl> property will contain the URL that the user wants to access. The URL can be passed to your `App` class with the <xref:Microsoft.Maui.Controls.Application.SendOnAppLinkRequestReceived%2A> method.
 
-Testing on iOS can be a bit more tedious than Android.  It seems many have mixed results with iOS Simulators working (I was not able to get the Simulator working), so a device may be required, but is at least recommended.
+> [!NOTE]
+> If you aren't using Scenes in your app for multi-window support, you can omit the lifecycle handlers for the Scene methods.
 
-Once you've deployed your app to your device, you can test that everything is setup correctly by going to `Settings -> Developer` and under `Universal Links`, toggle on `Associated Domains Development` and then go into `Diagnostics`.  Here you can enter your URL (in this case `https://redth.dev`) and if everything is setup correctly you should see a green checkmark with `Opens Installed Application` and the App ID of your app.
+In your `App` class, override the <xref:Microsoft.Maui.Controls.Application.OnAppLinkRequestReceived%2A> method to process the intent data:
 
-It's also worth noting again that from step 2, if you add the applink entitlement with `?mode=developer` to your app, it will bypass Apple's CDN cache when testing/debugging, which is helpful for iterating on your `apple-app-site-association` json file.
+```csharp
+namespace MyNamespace;
+
+public partial class App : Application
+{
+    public App()
+    {
+        InitializeComponent();
+
+        MainPage = new AppShell();
+    }
+
+    protected override async void OnAppLinkRequestReceived(Uri uri)
+    {
+        base.OnAppLinkRequestReceived(uri);
+
+        // Show an alert to test that the app link was received.
+        await Dispatcher.DispatchAsync(async () =>
+        {
+            await Windows[0].Page!.DisplayAlert("App link received", uri.ToString(), "OK");
+        });
+
+        Console.WriteLine("App link: " + uri.ToString());
+    }
+}
+```
+
+In the example above the <xref:Microsoft.Maui.Controls.Application.OnAppLinkRequestReceived%2A> override displays the intent data. In practice, the app link should take users directly to the content represented by the URI, without any prompts, logins, or other interruptions. Therefore, the <xref:Microsoft.Maui.Controls.Application.OnAppLinkRequestReceived%2A> override is the location from which to perform navigation to the content represented by the URI.
+
+> [!WARNING]
+> Universal links offer a potential attack vector into your app, so ensure you validate all URL parameters and discard any malformed URLs.
+
+For more information, see [Supporting Universal Links in your app](https://developer.apple.com/documentation/xcode/supporting-universal-links-in-your-app) on developer.apple.com.
+
+## Test a universal link
+
+> [!IMPORTANT]
+> Universal links should be tested on a device, rather than on a Simulator.
+
+To test a universal link, paste a link into your Notes app and long-press it (on iOS) or control-click it (on macOS) to discover your choices for following the link. Provided that universal links have been correctly configured, the choice to open in app and in Safari will appear. Your choice will set the default behavior on your device when following universal links from this domain. To change this default choice, repeat the steps and make a different choice.
+
+> [!NOTE]
+> Entering the URL into Safari will never open the app. Instead, Safari will accept this action as direct navigation. Provided that a user is on your domain after navigating there directly, your site will show a banner to open your app.
+
+On iOS, you can test your universal links with the associated domains diagnostic tests in developer settings:
+
+1. Enable developer mode in Settings. For more information, see [Enabling Developer Mode on a device](https://developer.apple.com/documentation/xcode/enabling-developer-mode-on-a-device) on developer.apple.com.
+1. In **Settings > Developer**, scroll to the **Universal Links** and enable **Associated Domains Development**.
+1. Open **Diagnostics** and type in your URL. You'll then receive feedback on whether the link is valid for an installed app.
+
+Often, invalid universal links are a result of your `applinks` being incorrectly configured.
+
+For troubleshooting advice, see [Debugging universal links](https://developer.apple.com/documentation/technotes/tn3155-debugging-universal-links) on developer.apple.com.
