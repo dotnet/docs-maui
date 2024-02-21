@@ -6,8 +6,6 @@ ms.date: 02/20/2024
 
 # Universal links
 
-[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platforms-deeplinking)
-
 It's often desirable to connect a website and a mobile app so that links on a website launch the mobile app and display the relevant content in the mobile app. *App linking*, which is also known as *deep linking*, is a technique that enables a mobile device to respond to a URI and launch a mobile app that corresponds to the URI.
 
 On Apple platforms, deep links are known as *universal links*. When a user taps on a universal link, the system redirects the link directly to your app without routing Safari or your website. These links can be based on a custom scheme, such as `myappname://`, or can use the `http` or `https` scheme. For example, clicking on a link on a recipe website would open a mobile app that's associated with that website and display a specific recipe to the user. Users who don't have your app installed are taken to content on your website. This article focuses on universal links that use the HTTPS scheme.
@@ -127,7 +125,7 @@ public static class MauiProgram
                 {
                     // Universal link delivered to FinishedLaunching after app launch.
                     ios.FinishedLaunching((app, data) => HandleAppLink(app.UserActivity));
-                    
+
                     // Universal link delivered to ContinueUserActivity when the app is running or suspended.
                     ios.ContinueUserActivity((app, userActivity, handler) => HandleAppLink(userActivity));
 

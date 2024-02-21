@@ -6,8 +6,6 @@ ms.date: 02/20/2024
 
 # Android app links
 
-[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platforms-deeplinking)
-
 It's often desirable to connect a website and a mobile app so that links on a website launch the mobile app and display the relevant content in the mobile app. *App linking*, which is also known as *deep linking*, is a technique that enables a mobile device to respond to a URI and launch a mobile app that corresponds to the URI.
 
 Android handles app links through the intent system. When a user taps on a link in a mobile browser, the browser will dispatch an intent that Android will delegate to a registered app. These links can be based on a custom scheme, such as `myappname://`, or can use the `http` or `https` scheme. For example, clicking on a link on a recipe website would open a mobile app that's associated with that website and display a specific recipe to the user. If there's more than one app registered to handle the intent, Android will display a disambiguation dialog that asks the user which app to select to handle the intent. Users who don't have your app installed are taken to content on your website.
