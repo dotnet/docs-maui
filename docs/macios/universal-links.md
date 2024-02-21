@@ -176,7 +176,7 @@ When iOS opens your app as a result of a universal link, the <xref:Foundation.NS
 > [!NOTE]
 > If you aren't using Scenes in your app for multi-window support, you can omit the lifecycle handlers for the Scene methods.
 
-In your `App` class, override the <xref:Microsoft.Maui.Controls.Application.OnAppLinkRequestReceived%2A> method to process the intent data:
+In your `App` class, override the <xref:Microsoft.Maui.Controls.Application.OnAppLinkRequestReceived%2A> method to receive and process the intent data:
 
 ```csharp
 namespace MyNamespace;
@@ -205,7 +205,7 @@ public partial class App : Application
 }
 ```
 
-In the example above the <xref:Microsoft.Maui.Controls.Application.OnAppLinkRequestReceived%2A> override displays the intent data. In practice, the app link should take users directly to the content represented by the URI, without any prompts, logins, or other interruptions. Therefore, the <xref:Microsoft.Maui.Controls.Application.OnAppLinkRequestReceived%2A> override is the location from which to perform navigation to the content represented by the URI.
+In the example above, the <xref:Microsoft.Maui.Controls.Application.OnAppLinkRequestReceived%2A> override displays the intent data. In practice, the app link should take users directly to the content represented by the URI, without any prompts, logins, or other interruptions. Therefore, the <xref:Microsoft.Maui.Controls.Application.OnAppLinkRequestReceived%2A> override is the location from which to invoke navigation to the content represented by the URI.
 
 > [!WARNING]
 > Universal links offer a potential attack vector into your app, so ensure you validate all URL parameters and discard any malformed URLs.
