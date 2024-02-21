@@ -4,7 +4,7 @@ description: "Learn how to use deep linking functionality in a .NET MAUI iOS app
 ms.date: 02/20/2024
 ---
 
-# Universal links
+# Apple universal links
 
 It's often desirable to connect a website and a mobile app so that links on a website launch the mobile app and display the relevant content in the mobile app. *App linking*, which is also known as *deep linking*, is a technique that enables a mobile device to respond to a URI and launch a mobile app that corresponds to the URI.
 
