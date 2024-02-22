@@ -21,8 +21,8 @@ Android classifies app links into three categories:
 The process for handling Android app links in a .NET MAUI Android app is as follows:
 
 1. Verify domain ownership. For more information, see [Verify domain ownership](#verify-domain-ownership).
-1. Create and host a digital assets links file. For more information, see [Create and host a digital assets links file](#create-and-host-a-digital-assets-links-file).
-1. Configure the intent filter for your website URIs. For more information, see [Configure the intent filter](#configure-the-intent-filter).
+1. Create and host a digital assets links file on your website. For more information, see [Create and host a digital assets links file](#create-and-host-a-digital-assets-links-file).
+1. Configure an intent filter in your app for the website URIs. For more information, see [Configure the intent filter](#configure-the-intent-filter).
 1. Read the data from the incoming intent. For more information, see [Read the data from the incoming intent](#read-the-data-from-the-incoming-intent).
 
 > [!IMPORTANT]
@@ -174,9 +174,9 @@ For more information about intents and intent filters, see [Intents and intent f
 
 ## Read the data from the incoming intent
 
-When Android starts your activity through an intent filter, you can use the data provided by the intent to determine what to do. This should be performed in an early lifecycle callback, ideally `OnCreate`.
+When Android starts your activity through an intent filter, you can use the data provided by the intent to determine what to do. This should be performed in an early lifecycle delegate, ideally `OnCreate`. The `OnCreate` delegate is invoked when an activity is created. For more information about lifecycle delegates, see [Platform lifecycle events](~/fundamentals/app-lifecycle.md#platform-lifecycle-events).
 
-To respond to an Android lifecycle delegate being invoked, call the `ConfigureLifecycleEvents` method on the `MauiAppBuilder` object in the `CreateMauiapp` method of your `MauiProgram` class. Then, on the `ILifecycleBuilder` object, call the `AddAndroid` method and specify the `Action` that registers a handler for the required callback:
+To respond to an Android lifecycle delegate being invoked, call the `ConfigureLifecycleEvents` method on the `MauiAppBuilder` object in the `CreateMauiapp` method of your `MauiProgram` class. Then, on the `ILifecycleBuilder` object, call the `AddAndroid` method and specify the `Action` that registers a handler for the required delegate:
 
 ```csharp
 using Microsoft.Maui.LifecycleEvents;
@@ -234,7 +234,7 @@ public static class MauiProgram
 The `Intent.Action` property retrieves the action associated with the incoming intent, and the `Intent.Data` property retrieves the data associated with the incoming intent. Provided that the intent action is set to `ActionView`, the intent data can be passed to your `App` class with the <xref:Microsoft.Maui.Controls.Application.SendOnAppLinkRequestReceived%2A> method.
 
 > [!WARNING]
-> App links offer a potential attack vector into your app, so ensure you validate all URL parameters and discard any malformed URLs.
+> App links offer a potential attack vector into your app, so ensure you validate all URI parameters and discard any malformed URIs.
 
 In your `App` class, override the <xref:Microsoft.Maui.Controls.Application.OnAppLinkRequestReceived%2A> method to receive and process the intent data:
 
@@ -265,13 +265,13 @@ public partial class App : Application
 }
 ```
 
-In the example above, the <xref:Microsoft.Maui.Controls.Application.OnAppLinkRequestReceived%2A> override displays the intent data. In practice, the app link should take users directly to the content represented by the URI, without any prompts, logins, or other interruptions. Therefore, the <xref:Microsoft.Maui.Controls.Application.OnAppLinkRequestReceived%2A> override is the location from which to invoke navigation to the content represented by the URI.
+In the example above, the <xref:Microsoft.Maui.Controls.Application.OnAppLinkRequestReceived%2A> override displays the app link URI. In practice, the app link should take users directly to the content represented by the URI, without any prompts, logins, or other interruptions. Therefore, the <xref:Microsoft.Maui.Controls.Application.OnAppLinkRequestReceived%2A> override is the location from which to invoke navigation to the content represented by the URI.
 
 ## Test a URI
 
 Provided that the digital asset file is correctly hosted, you can use the Android Debug Bridge, `adb`, with the activity manager tool, `am`, to simulate opening a URI to ensure that your app links work correctly. For example, the following command tries to view a target app activity that's associated with a URI:
 
-```shell
+```console
 adb shell am start -W -a android.intent.action.VIEW -c android.intent.category.BROWSABLE -d YOUR_URI_HERE
 ```
 
@@ -282,7 +282,7 @@ This command will dispatch an intent that Android should direct to your mobile a
 
 In addition, you can display the existing link handling policies for the apps installed on a device:
 
-```shell
+```console
 adb shell dumpsys package domain-preferred-apps
 ```
 

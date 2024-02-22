@@ -6,27 +6,25 @@ ms.date: 02/20/2024
 
 # Apple universal links
 
-It's often desirable to connect a website and a mobile app so that links on a website launch the mobile app and display the relevant content in the mobile app. *App linking*, which is also known as *deep linking*, is a technique that enables a mobile device to respond to a URI and launch a mobile app that corresponds to the URI.
+It's often desirable to connect a website and a mobile app so that links on a website launch the mobile app and display content in the mobile app. *App linking*, which is also known as *deep linking*, is a technique that enables a mobile device to respond to a URL and launch content in a mobile app that's represented by the URL.
 
-On Apple platforms, deep links are known as *universal links*. When a user taps on a universal link, the system redirects the link directly to your app without routing Safari or your website. These links can be based on a custom scheme, such as `myappname://`, or can use the `http` or `https` scheme. For example, clicking on a link on a recipe website would open a mobile app that's associated with that website and display a specific recipe to the user. Users who don't have your app installed are taken to content on your website. This article focuses on universal links that use the HTTPS scheme.
+On Apple platforms, deep links are known as *universal links*. When a user taps on a universal link, the system redirects the link directly to your app without routing through Safari or your website. These links can be based on a custom scheme, such as `myappname://`, or can use the `http` or `https` scheme. For example, clicking on a link on a recipe website would open a mobile app that's associated with that website, and then display a specific recipe to the user. Users who don't have your app installed are taken to content on your website. This article focuses on universal links that use the HTTPS scheme.
 
-.NET MAUI iOS apps support universal links. This requires hosting a digital assets links JSON file on the domain, which describes the relationship with your app. This enables Apple to verify that the app trying to handle a URI has ownership of the URIs domain to prevent malicious apps from intercepting your app links.
+.NET MAUI iOS apps support universal links. This requires hosting a digital assets links JSON file on the domain, which describes the relationship with your app. This enables Apple to verify that the app trying to handle a URL has ownership of the URLs domain to prevent malicious apps from intercepting your app links.
 
-The process for handling Apple universal links in a .NET MAUI iOS app is as follows:
+The process for handling Apple universal links in a .NET MAUI iOS or Mac Catalyst app is as follows:
 
-- Create and host an associated domains file. For more information, see [Create and host an associated domains file](#create-and-host-an-associated-domains-file).
+- Create and host an associated domains file on your website. For more information, see [Create and host an associated domains file](#create-and-host-an-associated-domains-file).
 - Add the associated domains entitlement to your app. For more information, see [Add the associated domains entitlement to your app](#add-the-associated-domains-entitlement-to-your-app).
-- Update your app delegate to respond to the user activity object the system provides when a universal link routes to your app. For more information, see [Update your app delegate](#update-your-app-delegate).
+- Update your app to respond to the user activity object the system provides when a universal link routes to your app. For more information, see [Update your app](#update-your-app).
 
 For more information, see [Allowing apps and websites to link to your content](https://developer.apple.com/documentation/xcode/allowing-apps-and-websites-to-link-to-your-content) on developer.apple.com. For information about defining a custom URL scheme for your app, see [Defining a custom URL scheme for your app](https://developer.apple.com/documentation/xcode/defining-a-custom-url-scheme-for-your-app) on developer.apple.com.
 
 ## Create and host an associated domains file
 
-To associate a website with your app, you'll need to have an associated domain file on your website along with the appropriate entitlement in your app. When a user installs your app, iOS attempts to download the associated domain file and verify the domains in your entitlement.
+To associate a website with your app, you'll need to host an associated domain file on your website. The associated domain file is a JSON file that must be hosted on your domain at the following location: `https://domain.name/.well-known/apple-app-site-association`.
 
-The associated domain file is a JON file that must be hosted by the relevant web domain at the following location: `https://domain.name/.well-known/apple-app-site-association`.
-
-The following JSON shows the contents of an associated domains file:
+The following JSON shows the contents of a typical associated domains file:
 
 ```json
 {
@@ -45,7 +43,7 @@ The following JSON shows the contents of an associated domains file:
 }
 ```
 
-The `apps` and `appID` keys specify the app identifiers for the apps that are available for use on the website. The values for these keys are based on the app identifier prefix and the bundle identifier.
+The `apps` and `appID` keys should specify the app identifiers for the apps that are available for use on the website. The values for these keys are made up of the app identifier prefix and the bundle identifier.
 
 > [!IMPORTANT]
 > The associated domain file must be hosted using `https` with a valid certificate and no redirects.
@@ -54,7 +52,9 @@ For more information, see [Supporting associated domains](https://developer.appl
 
 ## Add the associated domains entitlement to your app
 
-You'll need to add the associated domains entitlement to your app, which specifies a list of domains that the app is associated with. This can be accomplished by adding an *Entitlements.plist* file to your app. For more information about adding an entitlement on iOS, see [Entitlements](~/ios/entitlements.md). For more information about adding an entitlement on Mac Catalyst, see [Entitlements](~/mac-catalyst/entitlements.md).
+After hosting an associated domain file on your domain you'll need to add the associated domains entitlement to your app. When a user installs your app, iOS attempts to download the associated domain file and verify the domains in your entitlement.
+
+The associated domains entitlement specifies a list of domains that the app is associated with. This entitlement should be added to the *Entitlements.plist* file in your app. For more information about adding an entitlement on iOS, see [Entitlements](~/ios/entitlements.md). For more information about adding an entitlement on Mac Catalyst, see [Entitlements](~/mac-catalyst/entitlements.md).
 
 The entitlement is defined using the `com.apple.developer.associated-domains` key, of type `Array` of `String`:
 
@@ -89,16 +89,16 @@ Alternatively, you can modify your project file (*.csproj) to add the entitlemen
 </ItemGroup>
 ```
 
-Replace the `applinks:recipe-app.com` with the correct value for your own domain. Ensure you only include the desired subdomain and the top-level domain. Don't include path and query components or a trailing slash (`/`).
+In this example, replace the `applinks:recipe-app.com` with the correct value for your domain. Ensure you only include the desired subdomain and the top-level domain. Don't include path and query components or a trailing slash (`/`).
 
 > [!NOTE]
 > In iOS 14+ and macOS 11+, apps no longer send requests for `apple-app-site-association` files directly to your web server. Instead, they send requests to an Apple-managed content delivery network (CDN) dedicated to associated domains.
 
-## Update your app delegate
+## Update your app
 
-When a user activates a universal link, iOS launches your app and sends it an <xref:Foundation.NSUserActivity> object. This object can be queried to determine how your app launched, and to determine what action to take. This should be performed in an early lifecycle callback such as `fsdfsd`.
+When a user activates a universal link, iOS and Mac Catalyst launch your app and send it an <xref:Foundation.NSUserActivity> object. This object can be queried to determine how your app launched, and to determine what action to take. This should be performed in the `FinishedLaunching` and `ContinueUserActivity` lifecycle delegates. The `FinishedLaunching` delegate is invoked when the app has launched, and the `ContinueUserActivity` delegate is invoked when the app is running or suspended. For more information about lifecycle delegates, see [Platform lifecycle events](~/fundamentals/app-lifecycle.md#platform-lifecycle-events).
 
-To respond to an iOS lifecycle delegate being invoked, call the `ConfigureLifecycleEvents` method on the `MauiAppBuilder` object in the `CreateMauiapp` method of your `MauiProgram` class. Then, on the `ILifecycleBuilder` object, call the `AddiOS` method and specify the `Action` that registers a handler for the required callback:
+To respond to an iOS lifecycle delegate being invoked, call the `ConfigureLifecycleEvents` method on the `MauiAppBuilder` object in the `CreateMauiapp` method of your `MauiProgram` class. Then, on the `ILifecycleBuilder` object, call the `AddiOS` method and specify the `Action` that registers a handler for the required delegate:
 
 ```csharp
 using Microsoft.Maui.LifecycleEvents;
@@ -176,7 +176,7 @@ When iOS opens your app as a result of a universal link, the <xref:Foundation.NS
 > [!NOTE]
 > If you aren't using Scenes in your app for multi-window support, you can omit the lifecycle handlers for the Scene methods.
 
-In your `App` class, override the <xref:Microsoft.Maui.Controls.Application.OnAppLinkRequestReceived%2A> method to receive and process the intent data:
+In your `App` class, override the <xref:Microsoft.Maui.Controls.Application.OnAppLinkRequestReceived%2A> method to receive and process the URL:
 
 ```csharp
 namespace MyNamespace;
@@ -205,7 +205,7 @@ public partial class App : Application
 }
 ```
 
-In the example above, the <xref:Microsoft.Maui.Controls.Application.OnAppLinkRequestReceived%2A> override displays the intent data. In practice, the app link should take users directly to the content represented by the URI, without any prompts, logins, or other interruptions. Therefore, the <xref:Microsoft.Maui.Controls.Application.OnAppLinkRequestReceived%2A> override is the location from which to invoke navigation to the content represented by the URI.
+In the example above, the <xref:Microsoft.Maui.Controls.Application.OnAppLinkRequestReceived%2A> override displays the app link URL. In practice, the app link should take users directly to the content represented by the URL, without any prompts, logins, or other interruptions. Therefore, the <xref:Microsoft.Maui.Controls.Application.OnAppLinkRequestReceived%2A> override is the location from which to invoke navigation to the content represented by the URL.
 
 > [!WARNING]
 > Universal links offer a potential attack vector into your app, so ensure you validate all URL parameters and discard any malformed URLs.
