@@ -25,10 +25,14 @@ The process for handling Android app links in a .NET MAUI Android app is as foll
 1. Configure an intent filter in your app for the website URIs. For more information, see [Configure the intent filter](#configure-the-intent-filter).
 1. Read the data from the incoming intent. For more information, see [Read the data from the incoming intent](#read-the-data-from-the-incoming-intent).
 
+<!-- markdownlint-disable MD032 -->
+
 > [!IMPORTANT]
 > To use Android app links:
 > - A version of your app must be live on Google Play.
 > - A companion website must be registered against the app in Google's Developer Console. Once the app is associated with a website, URIs can be indexed that work for both the website and the app, which can then be served in search results. For more information, see [App Indexing on Google Search](https://support.google.com/googleplay/android-developer/answer/6041489) on support.google.com.
+
+<!-- markdownlint-enable MD032 -->
 
 For more information about Android app links, see [Handling Android App Links](https://developer.android.com/training/app-links).
 
