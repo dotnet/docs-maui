@@ -104,7 +104,7 @@ When publishing your JSON verification file to `https://domain.name/.well-known/
 - The file is served with content-type `application/json`.
 - The file must be accessible over HTTPS, regardless of whether your app uses HTTPS as the scheme.
 - The file must be accessible without redirects.
-- If your app links support multiple domains, then you must publish the `assetlinks.json` file on each domain.
+- If your app links support multiple domains, then you must publish the *assetlinks.json* file on each domain.
 
 You can confirm that the digital assets file is properly formatted and hosted by using Google's digital asset links API:
 
@@ -119,12 +119,12 @@ For more information, see [Declare website associations](https://developer.andro
 
 An intent filter must be configured that maps a URI, or set of URIs, from a website to an activity in your Android app. In .NET MAUI, this can be achieved by adding the <xref:Android.App.IntentFilterAttribute> to your activity. The intent filter must declare the following information:
 
-- `Intent.ActionView` - this will register the intent filter to respond to requests to view information.
-- `Categories` - the intent filter should register both <xref:Android.Content.Intent.CategoryDefault> and <xref:Android.Content.Intent.CategoryBrowsable> to be able to correctly handle the web URI.
-- `DataScheme` - the intent filter must declare a custom scheme, and/or HTTPS and/or HTTPS.
-- `DataHost` - this is the domain from which URIs will originate.
-- `DataPathPrefix` - this is an optional path to resources on the website, which must begin with a `/`.
-- `AutoVerify` - this tells Android to verify the relationship between the app and the website. It must be set to `true` otherwise Android won't verify the association between the app and the website, and therefore won't set your app as the default handler for a URI.
+- <xref:Android.Content.Intent.ActionView> - this will register the intent filter to respond to requests to view information.
+- <<xref:Android.App.IntentFilter.Categories> - the intent filter should register both <xref:Android.Content.Intent.CategoryDefault> and <xref:Android.Content.Intent.CategoryBrowsable> to be able to correctly handle the web URI.
+- <xref:Android.App.IntentFilter.DataScheme> - the intent filter must declare a custom scheme, and/or HTTPS and/or HTTPS.
+- <xref:Android.App.IntentFilter.DataHost> - this is the domain from which URIs will originate.
+- <xref:Android.App.IntentFilter.DataPathPrefix> - this is an optional path to resources on the website, which must begin with a `/`.
+- <xref:Android.App.IntentFilterAttribute.AutoVerify> - this tells Android to verify the relationship between the app and the website. It must be set to `true` otherwise Android won't verify the association between the app and the website, and therefore won't set your app as the default handler for a URI.
 
 The following example shows how to use the <xref:Android.App.IntentFilterAttribute> to handle links from `https://www.recipe-app.com/recipes`:
 
@@ -162,7 +162,7 @@ public class MainActivity : MauiAppCompatActivity
 
 Android will verify every host that's identified in the intent filters against the digital assets file on the website, before registering the app as the default handler for a URI. All  the intent filters must pass verification before Android can establish the app as the default handler. Once you've added an intent filter with a URI for activity content, Android is able to route any intent that has matching URIs to your app at runtime.
 
-It may also be necessary to mark your activity as exportable, so that your activity can be launched by other apps. This can be achieved by adding `Exported = true` to the existing `Activity` attribute. For more information, see [Activity element](https://developer.android.com/guide/topics/manifest/activity-element) on developer.android.com.
+It may also be necessary to mark your activity as exportable, so that your activity can be launched by other apps. This can be achieved by adding `Exported = true` to the existing <xref:Android.App.ActivityAttribute>. For more information, see [Activity element](https://developer.android.com/guide/topics/manifest/activity-element) on developer.android.com.
 
 When a web URI intent is invoked Android tries the following actions until the request succeeds:
 
@@ -176,7 +176,7 @@ For more information about intents and intent filters, see [Intents and intent f
 
 When Android starts your activity through an intent filter, you can use the data provided by the intent to determine what to do. This should be performed in an early lifecycle delegate, ideally `OnCreate`. The `OnCreate` delegate is invoked when an activity is created. For more information about lifecycle delegates, see [Platform lifecycle events](~/fundamentals/app-lifecycle.md#platform-lifecycle-events).
 
-To respond to an Android lifecycle delegate being invoked, call the `ConfigureLifecycleEvents` method on the `MauiAppBuilder` object in the `CreateMauiapp` method of your `MauiProgram` class. Then, on the `ILifecycleBuilder` object, call the `AddAndroid` method and specify the `Action` that registers a handler for the required delegate:
+To respond to an Android lifecycle delegate being invoked, call the <xref:Microsoft.Maui.LifecycleEvents.MauiAppHostBuilderExtensions.ConfigureLifecycleEvents%2A> method on the <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object in the `CreateMauiapp` method of your `MauiProgram` class. Then, on the <xref:Microsoft.Maui.LifecycleEvents.ILifecycleBuilder> object, call the `AddAndroid` method and specify the <xref:System.Action> that registers a handler for the required delegate:
 
 ```csharp
 using Microsoft.Maui.LifecycleEvents;
@@ -231,7 +231,7 @@ public static class MauiProgram
 }
 ```
 
-The `Intent.Action` property retrieves the action associated with the incoming intent, and the `Intent.Data` property retrieves the data associated with the incoming intent. Provided that the intent action is set to `ActionView`, the intent data can be passed to your `App` class with the <xref:Microsoft.Maui.Controls.Application.SendOnAppLinkRequestReceived%2A> method.
+The <xref:Android.Content.Intent.Action?displayProperty=nameWithType> property retrieves the action associated with the incoming intent, and the <xref:Android.Content.Intent.Data?displayProperty=nameWithType> property retrieves the data associated with the incoming intent. Provided that the intent action is set to <xref:Android.Content.Intent.ActionView>, the intent data can be passed to your `App` class with the <xref:Microsoft.Maui.Controls.Application.SendOnAppLinkRequestReceived%2A> method.
 
 > [!WARNING]
 > App links offer a potential attack vector into your app, so ensure you validate all URI parameters and discard any malformed URIs.
