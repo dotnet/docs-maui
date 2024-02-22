@@ -90,7 +90,7 @@ Localizing the date formats and strings in the `<xref:Microsoft.Maui.Controls.Da
 
 Follow these steps to configure your <xref:Microsoft.Maui.Controls.DatePicker> for localization on Windows:
 
-1. Locate the Resources aection.
+1. Locate the Resources section.
 
    Navigate to the `Platforms\Windows` folder of your project and open the *Package.appxmanifest* file in a code editor or Visual Studio. If using Visual Studio, ensure you're viewing the file's raw XML. Look for the `<Resources>` section, which may initially include:
 
