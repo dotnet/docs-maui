@@ -82,17 +82,17 @@ However, this is not recommended. Depending on the setting of the `Format` prope
 > [!TIP]
 > On Android, the <xref:Microsoft.Maui.Controls.DatePicker> dialog can be customized by overriding the `CreateDatePickerDialog` method in a custom renderer. This allows, for example, additional buttons to be added to the dialog. -->
 
-## Localizing the DatePicker on Windows
+## Localize a DatePicker on Windows
 
-For applications targeting Windows, ensuring that the <xref:Microsoft.Maui.Controls.DatePicker> displays dates in a format that's localized to the user's settings, including the names of months and days in the picker's dialog, requires specific configuration in your project's `Package.appxmanifest`. Localizing these elements improves the user experience by adhering to the cultural norms of the user's locale.
+For apps targeting Windows, ensuring that the <xref:Microsoft.Maui.Controls.DatePicker> displays dates in a format that's localized to the user's settings, including the names of months and days in the picker's dialog, requires specific configuration in your project's *Package.appxmanifest* file. Localizing the elements in the package manifest improves the user experience by adhering to the cultural norms of the user's locale.
 
-Localizing the date formats and strings in the `<xref:Microsoft.Maui.Controls.DatePicker>` requires declaring the supported languages within your `Package.appxmanifest` file.
+Localizing the date formats and strings in the `<xref:Microsoft.Maui.Controls.DatePicker>` requires declaring the supported languages within your *Package.appxmanifest* file.
 
-Follow these steps to configure your <xref:Microsoft.Maui.Controls.DatePicker> for localization:
+Follow these steps to configure your <xref:Microsoft.Maui.Controls.DatePicker> for localization on Windows:
 
-1. Locate the Resources Section
+1. Locate the Resources aection.
 
-   Navigate to the `Platforms\Windows` folder of your project and open the `Package.appxmanifest` file in a code editor or Visual Studio. If using Visual Studio, ensure you're viewing the file's raw XML. Look for the `<Resources>` section, which may initially include:
+   Navigate to the `Platforms\Windows` folder of your project and open the *Package.appxmanifest* file in a code editor or Visual Studio. If using Visual Studio, ensure you're viewing the file's raw XML. Look for the `<Resources>` section, which may initially include:
 
    ```xml
    <Resources>
@@ -100,11 +100,9 @@ Follow these steps to configure your <xref:Microsoft.Maui.Controls.DatePicker> f
    </Resources>
    ```
 
-2. Specify Supported Languages
+1. Specify the supported languages.
 
-   Replace the `<Resource Language="x-generate">` with `<Resource />` elements for each of your supported languages. The language code should be in the form of a BCP-47 language tag, such as `en-US` for English (United States), `es-ES` for Spanish (Spain), `fr-FR` for French (France) or `de-DE` for German (Germany).
-
-  For example, to add support for both English (United States) and Spanish (Spain), your `<Resources>` section should be modified to look like this:
+   Replace the `<Resource Language="x-generate">` with `<Resource />` elements for each of your supported languages. The language code should be in the form of a BCP-47 language tag, such as `en-US` for English (United States), `es-ES` for Spanish (Spain), `fr-FR` for French (France) or `de-DE` for German (Germany).  For example, to add support for both English (United States) and Spanish (Spain), your `<Resources>` section should be modified to look like this:
 
    ```xml
    <Resources>
@@ -114,3 +112,5 @@ Follow these steps to configure your <xref:Microsoft.Maui.Controls.DatePicker> f
    ```
 
 This configuration ensures that the <xref:Microsoft.Maui.Controls.DatePicker> will display date formats, months, and days according to the user's locale, significantly enhancing the app's usability and accessibility across different regions.
+
+For more information about localization in .NET MAUI apps, see [Localization](~/fundamentals/localization.md).
