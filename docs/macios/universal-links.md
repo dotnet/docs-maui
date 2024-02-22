@@ -16,7 +16,7 @@ The process for handling Apple universal links in a .NET MAUI iOS or Mac Catalys
 
 - Create and host an associated domains file on your website. For more information, see [Create and host an associated domains file](#create-and-host-an-associated-domains-file).
 - Add the associated domains entitlement to your app. For more information, see [Add the associated domains entitlement to your app](#add-the-associated-domains-entitlement-to-your-app).
-- Update your app to respond to the user activity object the system provides when a universal link routes to your app. For more information, see [Update your app](#update-your-app).
+- Update your app to respond to the user activity object the system provides when a universal link routes to your app. For more information, see [Respond to the universal link](#respond-to-the-universal-link).
 
 For more information, see [Allowing apps and websites to link to your content](https://developer.apple.com/documentation/xcode/allowing-apps-and-websites-to-link-to-your-content) on developer.apple.com. For information about defining a custom URL scheme for your app, see [Defining a custom URL scheme for your app](https://developer.apple.com/documentation/xcode/defining-a-custom-url-scheme-for-your-app) on developer.apple.com.
 
@@ -94,7 +94,7 @@ In this example, replace the `applinks:recipe-app.com` with the correct value fo
 > [!NOTE]
 > In iOS 14+ and macOS 11+, apps no longer send requests for `apple-app-site-association` files directly to your web server. Instead, they send requests to an Apple-managed content delivery network (CDN) dedicated to associated domains.
 
-## Update your app
+## Respond to the universal link
 
 When a user activates a universal link, iOS and Mac Catalyst launch your app and send it an <xref:Foundation.NSUserActivity> object. This object can be queried to determine how your app launched, and to determine what action to take. This should be performed in the `FinishedLaunching` and `ContinueUserActivity` lifecycle delegates. The `FinishedLaunching` delegate is invoked when the app has launched, and the `ContinueUserActivity` delegate is invoked when the app is running or suspended. For more information about lifecycle delegates, see [Platform lifecycle events](~/fundamentals/app-lifecycle.md#platform-lifecycle-events).
 

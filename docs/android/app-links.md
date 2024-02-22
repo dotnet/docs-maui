@@ -124,7 +124,7 @@ For more information, see [Declare website associations](https://developer.andro
 An intent filter must be configured that maps a URI, or set of URIs, from a website to an activity in your Android app. In .NET MAUI, this can be achieved by adding the <xref:Android.App.IntentFilterAttribute> to your activity. The intent filter must declare the following information:
 
 - <xref:Android.Content.Intent.ActionView> - this will register the intent filter to respond to requests to view information.
-- <<xref:Android.App.IntentFilterAttribute.Categories> - the intent filter should register both <xref:Android.Content.Intent.CategoryDefault> and <xref:Android.Content.Intent.CategoryBrowsable> to be able to correctly handle the web URI.
+- <xref:Android.App.IntentFilterAttribute.Categories> - the intent filter should register both <xref:Android.Content.Intent.CategoryDefault> and <xref:Android.Content.Intent.CategoryBrowsable> to be able to correctly handle the web URI.
 - <xref:Android.App.IntentFilterAttribute.DataScheme> - the intent filter must declare a custom scheme, and/or HTTPS and/or HTTPS.
 - <xref:Android.App.IntentFilterAttribute.DataHost> - this is the domain from which URIs will originate.
 - <xref:Android.App.IntentFilterAttribute.DataPathPrefix> - this is an optional path to resources on the website, which must begin with a `/`.
