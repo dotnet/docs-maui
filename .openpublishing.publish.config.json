@@ -7,7 +7,7 @@
       "locale": "en-us",
       "monikers": [],
       "moniker_ranges": [
-        ">=net-maui-7.0"
+        ">=net-maui-7.0 <=net-maui-8.0"
       ],
       "open_to_public_contributors": true,
       "xref_query_tags": [
