@@ -8,7 +8,7 @@ ms.date: 02/20/2024
 
 It's often desirable to connect a website and a mobile app so that links on a website launch the mobile app and display content in the mobile app. *App linking*, which is also known as *deep linking*, is a technique that enables a mobile device to respond to a URL and launch content in a mobile app that's represented by the URL.
 
-On Apple platforms, deep links are known as *universal links*. When a user taps on a universal link, the system redirects the link directly to your app without routing through Safari or your website. These links can be based on a custom scheme, such as `myappname://`, or can use the `http` or `https` scheme. For example, clicking on a link on a recipe website would open a mobile app that's associated with that website, and then display a specific recipe to the user. Users who don't have your app installed are taken to content on your website. This article focuses on universal links that use the HTTPS scheme.
+On Apple platforms, deep links are known as *universal links*. When a user taps on a universal link, the system redirects the link directly to your app without routing through Safari or your website. These links can be based on a custom scheme, such as `myappname://`, or can use the HTTP or HTTPS scheme. For example, clicking on a link on a recipe website would open a mobile app that's associated with that website, and then display a specific recipe to the user. Users who don't have your app installed are taken to content on your website. This article focuses on universal links that use the HTTPS scheme.
 
 .NET MAUI iOS apps support universal links. This requires hosting a digital assets links JSON file on the domain, which describes the relationship with your app. This enables Apple to verify that the app trying to handle a URL has ownership of the URLs domain to prevent malicious apps from intercepting your app links.
 
@@ -67,7 +67,7 @@ The entitlement is defined using the `com.apple.developer.associated-domains` ke
 
 For more information about this entitlement, see [Associated domains entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_associated-domains) on developer.apple.com.
 
-Alternatively, you can modify your project file (*.csproj) to add the entitlement in an `<ItemGroup>` element:
+Alternatively, you can modify your project file (*.csproj*) to add the entitlement in an `<ItemGroup>` element:
 
 ```xml
 <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios' Or $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">
@@ -98,7 +98,7 @@ In this example, replace the `applinks:recipe-app.com` with the correct value fo
 
 When a user activates a universal link, iOS and Mac Catalyst launch your app and send it an <xref:Foundation.NSUserActivity> object. This object can be queried to determine how your app launched, and to determine what action to take. This should be performed in the `FinishedLaunching` and `ContinueUserActivity` lifecycle delegates. The `FinishedLaunching` delegate is invoked when the app has launched, and the `ContinueUserActivity` delegate is invoked when the app is running or suspended. For more information about lifecycle delegates, see [Platform lifecycle events](~/fundamentals/app-lifecycle.md#platform-lifecycle-events).
 
-To respond to an iOS lifecycle delegate being invoked, call the `ConfigureLifecycleEvents` method on the `MauiAppBuilder` object in the `CreateMauiapp` method of your `MauiProgram` class. Then, on the `ILifecycleBuilder` object, call the `AddiOS` method and specify the `Action` that registers a handler for the required delegate:
+To respond to an iOS lifecycle delegate being invoked, call the <xref:Microsoft.Maui.LifecycleEvents.MauiAppHostBuilderExtensions.ConfigureLifecycleEvents%2A> method on the <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object in the `CreateMauiapp` method of your `MauiProgram` class. Then, on the <xref:Microsoft.Maui.LifecycleEvents.ILifecycleBuilder> object, call the `AddiOS` method and specify the <xref:System.Action> that registers a handler for the required delegate:
 
 ```csharp
 using Microsoft.Maui.LifecycleEvents;
@@ -215,7 +215,7 @@ For more information, see [Supporting Universal Links in your app](https://devel
 ## Test a universal link
 
 > [!IMPORTANT]
-> Universal links should be tested on a device, rather than on a Simulator.
+> On iOS, universal links should be tested on a device rather than on a Simulator.
 
 To test a universal link, paste a link into your Notes app and long-press it (on iOS) or control-click it (on macOS) to discover your choices for following the link. Provided that universal links have been correctly configured, the choice to open in app and in Safari will appear. Your choice will set the default behavior on your device when following universal links from this domain. To change this default choice, repeat the steps and make a different choice.
 
