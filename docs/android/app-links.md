@@ -120,10 +120,10 @@ For more information, see [Declare website associations](https://developer.andro
 An intent filter must be configured that maps a URI, or set of URIs, from a website to an activity in your Android app. In .NET MAUI, this can be achieved by adding the <xref:Android.App.IntentFilterAttribute> to your activity. The intent filter must declare the following information:
 
 - <xref:Android.Content.Intent.ActionView> - this will register the intent filter to respond to requests to view information.
-- <<xref:Android.App.IntentFilter.Categories> - the intent filter should register both <xref:Android.Content.Intent.CategoryDefault> and <xref:Android.Content.Intent.CategoryBrowsable> to be able to correctly handle the web URI.
-- <xref:Android.App.IntentFilter.DataScheme> - the intent filter must declare a custom scheme, and/or HTTPS and/or HTTPS.
-- <xref:Android.App.IntentFilter.DataHost> - this is the domain from which URIs will originate.
-- <xref:Android.App.IntentFilter.DataPathPrefix> - this is an optional path to resources on the website, which must begin with a `/`.
+- <<xref:Android.App.IntentFilterAttribute.Categories> - the intent filter should register both <xref:Android.Content.Intent.CategoryDefault> and <xref:Android.Content.Intent.CategoryBrowsable> to be able to correctly handle the web URI.
+- <xref:Android.App.IntentFilterAttribute.DataScheme> - the intent filter must declare a custom scheme, and/or HTTPS and/or HTTPS.
+- <xref:Android.App.IntentFilterAttribute.DataHost> - this is the domain from which URIs will originate.
+- <xref:Android.App.IntentFilterAttribute.DataPathPrefix> - this is an optional path to resources on the website, which must begin with a `/`.
 - <xref:Android.App.IntentFilterAttribute.AutoVerify> - this tells Android to verify the relationship between the app and the website. It must be set to `true` otherwise Android won't verify the association between the app and the website, and therefore won't set your app as the default handler for a URI.
 
 The following example shows how to use the <xref:Android.App.IntentFilterAttribute> to handle links from `https://www.recipe-app.com/recipes`:
