@@ -271,7 +271,7 @@ public partial class App : Application
 
 In the example above, the <xref:Microsoft.Maui.Controls.Application.OnAppLinkRequestReceived%2A> override displays the app link URI. In practice, the app link should take users directly to the content represented by the URI, without any prompts, logins, or other interruptions. Therefore, the <xref:Microsoft.Maui.Controls.Application.OnAppLinkRequestReceived%2A> override is the location from which to invoke navigation to the content represented by the URI.
 
-## Test a URI
+## Test an app link
 
 Provided that the digital asset file is correctly hosted, you can use the Android Debug Bridge, `adb`, with the activity manager tool, `am`, to simulate opening a URI to ensure that your app links work correctly. For example, the following command tries to view a target app activity that's associated with a URI:
 
