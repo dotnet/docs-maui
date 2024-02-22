@@ -77,7 +77,7 @@
     "groups": {
       "net": {
         "dest": "net-dest",
-        "moniker_range": ">=net-maui-7.0 <=net-maui8.0"
+        "moniker_range": ">=net-maui-7.0 <=net-maui-8.0"
       }
     }
   }
