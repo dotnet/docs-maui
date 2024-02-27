@@ -10,37 +10,37 @@ ms.date: 08/15/2022
 
 Handlers can be customized to augment the appearance and behavior of a cross-platform control beyond the customization that's possible through the control's API. This customization, which modifies the native views for the cross-platform control, is achieved by modifying the mapper for a handler with one of the following methods:
 
-- `PrependToMapping`, which modifies the mapper for a handler before the .NET MAUI control mappings have been applied.
-- `ModifyMapping`, which modifies an existing mapping.
-- `AppendToMapping`, which modifies the mapper for a handler after the .NET MAUI control mappings have been applied.
+- <xref:Microsoft.Maui.PropertyMapperExtensions.PrependToMapping%2A>, which modifies the mapper for a handler before the .NET MAUI control mappings have been applied.
+- <xref:Microsoft.Maui.PropertyMapperExtensions.ModifyMapping%2A>, which modifies an existing mapping.
+- <xref:Microsoft.Maui.PropertyMapperExtensions.AppendToMapping%2A>, which modifies the mapper for a handler after the .NET MAUI control mappings have been applied.
 
 Each of these methods has an identical signature that requires two arguments:
 
-- A `string`-based key. When modifying one of the mappings provided by .NET MAUI, the key used by .NET MAUI must be specified. The key values used by .NET MAUI control mappings are based on interface and property names, for example `nameof(IEntry.IsPassword)`. The interfaces, and their properties, that abstract each cross-platform control can be found [here](https://github.com/dotnet/maui/tree/main/src/Core/src/Core). Otherwise, this key can be an arbitrary value that doesn't have to correspond to the name of a property exposed by a type. For example, `MyCustomization` can be specified as a key, with any native view modification being performed as the customization.
-- An `Action` that represents the method that performs the handler customization. The `Action` specifies two arguments:
+- A `string`-based key. When modifying one of the mappings provided by .NET MAUI, the key used by .NET MAUI must be specified. The key values used by .NET MAUI control mappings are based on interface and property names, for example `nameof(IEntry.IsPassword)`. The interfaces, and their properties, that abstract each cross-platform control can be found [here](https://github.com/dotnet/maui/tree/main/src/Core/src/Core). This is the key format that should be used if you want your handler customization to run every time a property changes. Otherwise, the key can be an arbitrary value that doesn't have to correspond to the name of a property exposed by a type. For example, `MyCustomization` can be specified as a key, with any native view modification being performed as the customization. However, a consequence of this key format is that your handler customization will only be run when the mapper for the handler is first modified.
+- An <xref:System.Action> that represents the method that performs the handler customization. The <xref:System.Action> specifies two arguments:
   - A `handler` argument that provides an instance of the handler being customized.
   - A `view` argument that provides an instance of the cross-platform control that the handler implements.
 
 > [!IMPORTANT]
 > Handler customizations are global and aren't scoped to a specific control instance. Handler customization is allowed to happen anywhere in your app. Once a handler is customized, it affects all controls of that type, everywhere in your app.
 
-Each handler class exposes the native view for the cross-platform control via its `PlatformView` property. This property can be accessed to set native view properties, invoke native view methods, and subscribe to native view events. In addition, the cross-platform control implemented by the handler is exposed via its `VirtualView` property.
+Each handler class exposes the native view for the cross-platform control via its <xref:Microsoft.Maui.IElementHandler.PlatformView> property. This property can be accessed to set native view properties, invoke native view methods, and subscribe to native view events. In addition, the cross-platform control implemented by the handler is exposed via its <xref:Microsoft.Maui.IElementHandler.VirtualView> property.
 
 Handlers can be customized per platform by using conditional compilation, to multi-target code based on the platform. Alternatively, you can use partial classes to organize your code into platform-specific folders and files. For more information about conditional compilation, see [Conditional compilation](/dotnet/csharp/language-reference/preprocessor-directives#conditional-compilation).
 
 ## Customize a control
 
-The .NET MAUI <xref:Microsoft.Maui.Controls.Entry> view is a single-line text input control, that implements the `IEntry` interface. The `EntryHandler` maps the <xref:Microsoft.Maui.Controls.Entry> view to the following native views for each platform:
+The .NET MAUI <xref:Microsoft.Maui.Controls.Entry> view is a single-line text input control, that implements the <xref:Microsoft.Maui.IEntry> interface. The <xref:Microsoft.Maui.Handlers.EntryHandler> maps the <xref:Microsoft.Maui.Controls.Entry> view to the following native views for each platform:
 
 - **iOS/Mac Catalyst**: `UITextField`
 - **Android**: `AppCompatEditText`
 - **Windows**: `TextBox`
 
-The following diagrams shows how the <xref:Microsoft.Maui.Controls.Entry> view is mapped to its native views via the `EntryHandler`:
+The following diagrams shows how the <xref:Microsoft.Maui.Controls.Entry> view is mapped to its native views via the <xref:Microsoft.Maui.Handlers.EntryHandler>:
 
 :::image type="content" source="media/customize/entry-handler.png" alt-text="Entry handler architecture." border="false":::
 
-The <xref:Microsoft.Maui.Controls.Entry> property mapper, in the `EntryHandler` class, maps the cross-platform control properties to the native view API. This ensures that when a property is set on an <xref:Microsoft.Maui.Controls.Entry>, the underlying native view is updated as required.
+The <xref:Microsoft.Maui.Controls.Entry> property mapper, in the <xref:Microsoft.Maui.Handlers.EntryHandler> class, maps the cross-platform control properties to the native view API. This ensures that when a property is set on an <xref:Microsoft.Maui.Controls.Entry>, the underlying native view is updated as required.
 
 The property mapper can be modified to customize <xref:Microsoft.Maui.Controls.Entry> on each platform:
 
@@ -77,7 +77,7 @@ public partial class CustomizeEntryPage : ContentPage
 }
 ```
 
-In this example, the <xref:Microsoft.Maui.Controls.Entry> customization occurs in a page class. Therefore, all <xref:Microsoft.Maui.Controls.Entry> controls on Android, iOS, and Windows will be customized once an instance of the `CustomizeEntryPage` is created. Customization is performed by accessing the handlers `PlatformView` property, which provides access to the native view that maps to the cross-platform control on each platform. Native code then customizes the handler by selecting all of the text in the <xref:Microsoft.Maui.Controls.Entry> when it gains focus.
+In this example, the <xref:Microsoft.Maui.Controls.Entry> customization occurs in a page class. Therefore, all <xref:Microsoft.Maui.Controls.Entry> controls on Android, iOS, and Windows will be customized once an instance of the `CustomizeEntryPage` is created. Customization is performed by accessing the handlers <xref:Microsoft.Maui.IElementHandler.PlatformView> property, which provides access to the native view that maps to the cross-platform control on each platform. Native code then customizes the handler by selecting all of the text in the <xref:Microsoft.Maui.Controls.Entry> when it gains focus.
 
 For more information about mappers, see [Mappers](index.md#mappers).
 
@@ -122,9 +122,9 @@ If the handler customization is performed in your `App` class, any `MyEntry` ins
 
 ## Customize a control using the handler lifecycle
 
-All handler-based .NET MAUI controls support `HandlerChanging` and `HandlerChanged` events. The `HandlerChanged` event is raised when the native view that implements the cross-platform control is available and initialized. The `HandlerChanging` event is raised when the control's handler is about to be removed from the cross-platform control. For more information about handler lifecycle events, see [Handler lifecycle](index.md#handler-lifecycle).
+All handler-based .NET MAUI controls support <xref:Microsoft.Maui.Controls.Element.HandlerChanging> and <xref:Microsoft.Maui.Controls.Element.HandlerChanged> events. The <xref:Microsoft.Maui.Controls.Element.HandlerChanged> event is raised when the native view that implements the cross-platform control is available and initialized. The <xref:Microsoft.Maui.Controls.Element.HandlerChanging> event is raised when the control's handler is about to be removed from the cross-platform control. For more information about handler lifecycle events, see [Handler lifecycle](index.md#handler-lifecycle).
 
-The handler lifecycle can be used to perform handler customization. For example, to subscribe to, and unsubscribe from, native view events you must register event handlers for the `HandlerChanged` and `HandlerChanging` events on the cross-platform control being customized:
+The handler lifecycle can be used to perform handler customization. For example, to subscribe to, and unsubscribe from, native view events you must register event handlers for the <xref:Microsoft.Maui.Controls.Element.HandlerChanged> and <xref:Microsoft.Maui.Controls.Element.HandlerChanging> events on the cross-platform control being customized:
 
 ```xaml
 <Entry HandlerChanged="OnEntryHandlerChanged"
@@ -135,7 +135,7 @@ Handlers can be customized per platform by using conditional compilation, or by 
 
 ### Conditional compilation
 
-The code-behind file containing the event handlers for the `HandlerChanged` and `HandlerChanging` events is shown in the following example, which uses conditional compilation:
+The code-behind file containing the event handlers for the <xref:Microsoft.Maui.Controls.Element.HandlerChanged> and <xref:Microsoft.Maui.Controls.Element.HandlerChanging> events is shown in the following example, which uses conditional compilation:
 
 ```csharp
 #if ANDROID
@@ -196,11 +196,11 @@ public partial class CustomizeEntryHandlerLifecyclePage : ContentPage
 }
 ```
 
-The `HandlerChanged` event is raised after the native view that implements the cross-platform control has been created and initialized. Therefore, its event handler is where native event subscriptions should be performed. This requires casting the `PlatformView` property of the handler to the type, or base type, of the native view so that native events can be accessed. In this example, on iOS, Mac Catalyst, and Windows, the `OnHandlerChanged` event subscribes to native view events that are raised when the native views that implement the <xref:Microsoft.Maui.Controls.Entry> gain focus.
+The <xref:Microsoft.Maui.Controls.Element.HandlerChanged> event is raised after the native view that implements the cross-platform control has been created and initialized. Therefore, its event handler is where native event subscriptions should be performed. This requires casting the <xref:Microsoft.Maui.IElementHandler.PlatformView> property of the handler to the type, or base type, of the native view so that native events can be accessed. In this example, on iOS, Mac Catalyst, and Windows, the `OnEntryHandlerChanged` event subscribes to native view events that are raised when the native views that implement the <xref:Microsoft.Maui.Controls.Entry> gain focus.
 
 The `OnEditingDidBegin` and `OnGotFocus` event handlers access the native view for the <xref:Microsoft.Maui.Controls.Entry> on their respective platforms, and select all text that's in the <xref:Microsoft.Maui.Controls.Entry>.
 
-The `HandlerChanging` event is raised before the existing handler is removed from the cross-platform control, and before the new handler for the cross-platform control is created. Therefore, its event handler is where native event subscriptions should be removed, and other cleanup should be performed. The `HandlerChangingEventArgs` object that accompanies this event has `OldHandler` and `NewHandler` properties, which will be set to the old and new handlers respectively. In this example, the `OnHandlerChanging` event removes the subscription to the native view events on iOS, Mac Catalyst, and Windows.
+The <xref:Microsoft.Maui.Controls.Element.HandlerChanging> event is raised before the existing handler is removed from the cross-platform control, and before the new handler for the cross-platform control is created. Therefore, its event handler is where native event subscriptions should be removed, and other cleanup should be performed. The <xref:Microsoft.Maui.Controls.HandlerChangingEventArgs> object that accompanies this event has <xref:Microsoft.Maui.Controls.HandlerChangingEventArgs.OldHandler> and <xref:Microsoft.Maui.Controls.HandlerChangingEventArgs.NewHandler> properties, which will be set to the old and new handlers respectively. In this example, the `OnEntryHandlerChanging` event removes the subscription to the native view events on iOS, Mac Catalyst, and Windows.
 
 ### Partial classes
 
