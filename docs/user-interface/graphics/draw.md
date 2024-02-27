@@ -12,8 +12,10 @@ ms.date: 06/19/2023
 
 The .NET MAUI <xref:Microsoft.Maui.Controls.GraphicsView> control provides access to an <xref:Microsoft.Maui.Graphics.ICanvas> object, on which properties can be set and methods invoked to draw graphical objects. For more information about the <xref:Microsoft.Maui.Controls.GraphicsView>, see [GraphicsView](~/user-interface/controls/graphicsview.md).
 
-> [!IMPORTANT]
-> Graphical objects are drawn on an <xref:Microsoft.Maui.Graphics.ICanvas> using a device-independent unit that's recognized by each platform. This ensures that graphical objects are scaled appropriately to the pixel density of the underlying platform.
+> [!NOTE]
+> Many of the graphical objects have `Draw` and `Fill` methods, for example <xref:Microsoft.Maui.Graphics.ICanvas.DrawRectangle%2A> and <xref:Microsoft.Maui.Graphics.ICanvas.FillRectangle%2A>. A `Draw` method draws the outline of the shape, which is unfilled. A `Fill` method draws the outline of the shape and also fills it.
+
+Graphical objects are drawn on an <xref:Microsoft.Maui.Graphics.ICanvas> using a device-independent unit that's recognized by each platform. This ensures that graphical objects are scaled appropriately to the pixel density of the underlying platform.
 
 ## Draw a line
 
