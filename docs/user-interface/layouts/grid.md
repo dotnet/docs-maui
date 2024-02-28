@@ -229,7 +229,7 @@ public class BasicGridPage : ContentPage
 
         // Row 2
         // Alternatively, the BoxView and Label can be positioned in cells with the Grid.SetRow
-        // and Grid.SetColumn methods.
+        // and Grid.SetColumn methods. Here, the Grid.SetColumnSpan method is used to span two columns.
         BoxView boxView = new BoxView { Color = Colors.Red };
         Grid.SetRow(boxView, 2);
         Grid.SetColumnSpan(boxView, 2);
