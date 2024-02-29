@@ -24,7 +24,7 @@ The process for creating an attached property is as follows:
 
 ### Create a property
 
-When creating an attached property for use on other types, the class where the property is created does not have to derive from <xref:Microsoft.Maui.Controls.BindableObject>. However, the *target* property for accessors should be of, or derive from, <xref:Microsoft.Maui.Controls.BindableObject>.
+When creating an attached property for use on other types, the class where the property is created does not have to derive from <xref:Microsoft.Maui.Controls.BindableObject>. However, the *target* property for accessors should be of, or derive from, <xref:Microsoft.Maui.Controls.BindableObject>. For more information about target properties, see [Basic bindings](~/fundamentals/data-binding/basic-bindings.md).
 
 An attached property can be created by declaring a `public static readonly` property of type <xref:Microsoft.Maui.Controls.BindableProperty>. The bindable property should be set to the returned value of one of the `BindableProperty.CreateAttached` method overloads. The declaration should be within the body of the owning class, but outside of any member definitions.
 
@@ -34,11 +34,14 @@ An attached property can be created by declaring a `public static readonly` prop
 The following code shows an example of an attached property:
 
 ```csharp
-public static readonly BindableProperty HasShadowProperty =
-    BindableProperty.CreateAttached ("HasShadow", typeof(bool), typeof(Shadow), false);
+public class MyControl
+{
+    public static readonly BindableProperty HasShadowProperty =
+        BindableProperty.CreateAttached("HasShadow", typeof(bool), typeof(Shadow), false);
+}
 ```
 
-This creates an attached property named `HasShadowProperty`, of type `bool`. The property is owned by the `Shadow` class, and has a default value of `false`.
+This creates an attached property named `HasShadowProperty`, of type `bool`. The property is owned by the `MyControl` class, and has a default value of `false`. Ownership, in this case, means that the property will be accessed in XAML using the format `Type.Property`, for example `MyControl.HasShadow`.
 
 For more information about creating bindable properties, including parameters that can be specified during creation, see [Create a bindable property](bindable-properties.md#consume-a-bindable-property).
 
@@ -60,19 +63,22 @@ public static void SetPropertyName(BindableObject target, valueType value)
 
 The `Set`*PropertyName* accessor should set the value of the corresponding <xref:Microsoft.Maui.Controls.BindableProperty> field for the attached property. This can be achieved by calling the `SetValue` method, passing in the bindable property identifier on which to set the value, and the value to set.
 
-For both accessors, the *target* object should be of, or derive from, <xref:Microsoft.Maui.Controls.BindableObject>.
+For both accessors, the *target* object should be of, or derive from, <xref:Microsoft.Maui.Controls.BindableObject>. For more information about target objects, see [Basic bindings](~/fundamentals/data-binding/basic-bindings.md).
 
 The following code example shows accessors for the `HasShadow` attached property:
 
 ```csharp
-public static bool GetHasShadow (BindableObject view)
+public class MyControl
 {
-  return (bool)view.GetValue (HasShadowProperty);
-}
+    public static bool GetHasShadow(BindableObject view)
+    {
+        return (bool)view.GetValue (HasShadowProperty);
+    }
 
-public static void SetHasShadow (BindableObject view, bool value)
-{
-  view.SetValue (HasShadowProperty, value);
+    public static void SetHasShadow(BindableObject view, bool value)
+    {
+        view.SetValue(HasShadowProperty, value);
+    }  
 }
 ```
 
@@ -91,14 +97,14 @@ The following example demonstrates a XAML namespace for a custom type that conta
 The namespace declaration is then used when setting the attached property on a specific control, as demonstrated in the following XAML:
 
 ```xaml
-<Label Text="Label with shadow" local:Shadow.HasShadow="true" />
+<Label Text="Label with shadow" local:MyControl.HasShadow="true" />
 ```
 
 The equivalent C# code is shown in the following code example:
 
 ```csharp
 Label label = new Label { Text = "Label with shadow" };
-Shadow.SetHasShadow (label, true);
+MyControl.SetHasShadow (label, true);
 ```
 
 ### Consume an attached property with a style
@@ -108,7 +114,7 @@ Attached properties can also be added to a control by a style. The following XAM
 ```xaml
 <Style x:Key="ShadowStyle" TargetType="Label">
   <Style.Setters>
-    <Setter Property="local:Shadow.HasShadow" Value="true" />
+    <Setter Property="local:MyControl.HasShadow" Value="true" />
   </Style.Setters>
 </Style>
 ```
