@@ -37,7 +37,7 @@ The following code shows an example of an attached property:
 public class MyControl
 {
     public static readonly BindableProperty HasShadowProperty =
-        BindableProperty.CreateAttached("HasShadow", typeof(bool), typeof(Shadow), false);
+        BindableProperty.CreateAttached("HasShadow", typeof(bool), typeof(MyControl), false);
 }
 ```
 
