@@ -10,7 +10,7 @@ ms.date: 10/05/2023
 
 In .NET MAUI apps, properties should be implemented as bindable properties to support one or more of the following features:
 
-- Acting as a valid *target* property for data binding.
+- Acting as a valid *target* property for data binding. For more information about target properties, see [Basic bindings](~/fundamentals/data-binding/basic-bindings.md).
 - Setting the property through a style.
 - Providing a default property value that's different from the default for the type of the property.
 - Validating the value of the property.
@@ -54,7 +54,7 @@ This creates a <xref:Microsoft.Maui.Controls.BindableProperty> instance named `I
 
 Optionally, when creating a <xref:Microsoft.Maui.Controls.BindableProperty> instance, the following parameters can be specified:
 
-- The binding mode. This is used to specify the direction in which property value changes will propagate. In the default binding mode, changes will propagate from the *source* to the *target*.
+- The binding mode. This is used to specify the direction in which property value changes will propagate. In the default binding mode, changes will propagate from the *source* to the *target*. For more information, see [Basic bindings](~/fundamentals/data-binding/basic-bindings.md).
 - A validation delegate that will be invoked when the property value is set. For more information, see [Validation callbacks](#validation-callbacks).
 - A property changed delegate that will be invoked when the property value has changed. For more information, see [Detect property changes](#detect-property-changes).
 - A property changing delegate that will be invoked when the property value will change. This delegate has the same signature as the property changed delegate.

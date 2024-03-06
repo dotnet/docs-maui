@@ -81,6 +81,9 @@ To enable clear-text local traffic on Android you must create a network security
 </network-security-config>
 ```
 
+> [!NOTE]
+> Ensure that the build action of the *network_security_config.xml* file is set to **AndroidResource**.
+
 Then, configure the **networkSecurityConfig** property on the **application** node in the *Platforms\Android\AndroidManifest.xml* file in your .NET MAUI app project:
 
 ```xml
