@@ -12,7 +12,7 @@
       items:
       - name: Architecture
         tocHref: /dotnet/architecture/maui
-        topicHref: /dotnet/maui/index
+        topicHref: /dotnet/architecture
       - name: AI
         tocHref: /windows/apps/windows-dotnet-maui
-        topicHref: /dotnet/maui/index
+        topicHref: /dotnet/azure/ai/azure-ai-for-dotnet-developers
