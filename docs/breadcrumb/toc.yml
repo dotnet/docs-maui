@@ -16,3 +16,6 @@
       - name: AI
         tocHref: /windows/apps/windows-dotnet-maui
         topicHref: /dotnet/azure/ai/azure-ai-for-dotnet-developers
+      - name: Azure Mobile Apps
+        tocHref: /azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui/
+        topicHref: /azure/developer/mobile-apps/azure-mobile-apps/overview
