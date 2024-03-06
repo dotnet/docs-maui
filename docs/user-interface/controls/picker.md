@@ -19,6 +19,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Picker>
 - `ItemsSource` of type `IList`, the source list of items to display, which defaults to `null`.
 - `SelectedIndex` of type `int`, the index of the selected item, which defaults to -1.
 - `SelectedItem` of type `object`, the selected item, which defaults to `null`.
+- `ItemDisplayBinding`, of type <xref:Microsoft.Maui.Controls.BindingBase>, selects the property that will be displayed for each object in the list of items, if the `ItemSource` is a complex object. See [Populate a Picker with data using data binding](#populate-a-picker-with-data-using-data-binding).
 - `TextColor` of type <xref:Microsoft.Maui.Graphics.Color>, the color used to display the text.
 - `TextTransform`, of type `TextTransform`, which defines whether to transform the casing of text.
 - `Title` of type `string`, which defaults to `null`.
