@@ -15,9 +15,9 @@ items:
   - name: Docs updates
     expanded: true
     items:
+    - name: February 2024
+      href: dotnet-docs-maui-mod2.md
     - name: January 2024
       href: dotnet-docs-maui-mod1.md
     - name: December 2023
       href: dotnet-docs-maui-mod0.md
-    - name: November 2023
-      href: dotnet-docs-maui-mod2.md

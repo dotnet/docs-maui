@@ -398,7 +398,7 @@ If you want to use Android emulators, follow these steps:
 1. Run `sdkmanager --install emulator` and `sdkmanager --install system-images;android-33;google_apis;x86_64` on Windows, or `./sdkmanager --install emulator` and `./sdkmanager --install system-images;android-33;google_apis;x86_64` on macOS.
 1. Then, you can create a new emulator on the command line with Android's [avdmanager](https://developer.android.com/tools/avdmanager). For example, you can run `avdmanager create avd -n MyAndroidVirtualDevice-API33 -k "system-images;android-33;google_apis;x86_64"` on Windows, or `./avdmanager create avd -n MyAndroidVirtualDevice-API33 -k "system-images;android-33;google_apis;x86_64"` on macOS.
 
-You can also debug on [physical Android devices](/dotnet/maui/android/device/setup).
+You can also debug on [physical Android devices](~/android/device/setup.md).
 
 ## Debug your app
 
