@@ -753,7 +753,7 @@
         - name: Azure Mobile Apps
           items:
             - name: Overview
-              href: /azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+              href: /azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui/?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
             - name: Authentication
               href: /azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui/authentication?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
             - name: Offline sync
@@ -829,7 +829,7 @@
     - name: Enterprise application patterns
       items:
         - name: Overview
-          href: /dotnet/architecture/maui?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+          href: /dotnet/architecture/maui/?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
         - name: Preface
           href: /dotnet/architecture/maui/preface?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
         - name: Introduction
