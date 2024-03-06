@@ -750,6 +750,14 @@
               href: /windows/apps/windows-dotnet-maui/tutorial-maui-ai?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
             - name: DALL-E
               href: /windows/apps/windows-dotnet-maui/dall-e-maui-windows?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Azure Mobile Apps
+          items:
+            - name: Overview
+              href: /azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+            - name: Authentication
+              href: /azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui/authentication?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+            - name: Offline sync
+              href: /azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui/offline?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
         - name: Local databases
           href: data-cloud/database-sqlite.md
         - name: Web services
