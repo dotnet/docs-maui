@@ -744,6 +744,12 @@
           href: platform-integration/native-embedding.md
     - name: Data & cloud services
       items:
+        - name: AI
+          items:
+            - name: ChatGPT
+              href: /windows/apps/windows-dotnet-maui/tutorial-maui-ai?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+            - name: DALL-E
+              href: /windows/apps/windows-dotnet-maui/dall-e-maui-windows?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
         - name: Local databases
           href: data-cloud/database-sqlite.md
         - name: Web services
