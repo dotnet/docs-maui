@@ -10,12 +10,12 @@
       tocHref: /dotnet/maui
       topicHref: /dotnet/maui/index
       items:
-      - name: Architecture
-        tocHref: /dotnet/architecture/maui
-        topicHref: /dotnet/architecture
-      - name: AI
-        tocHref: /windows/apps/windows-dotnet-maui
-        topicHref: /dotnet/azure/ai/azure-ai-for-dotnet-developers
-      - name: Azure Mobile Apps
-        tocHref: /azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui/
-        topicHref: /azure/developer/mobile-apps/azure-mobile-apps/overview
+    - name: .NET MAUI
+      tocHref: /dotnet/architecture/maui
+      topicHref: /dotnet/maui/index
+    - name: .NET MAUI
+      tocHref: /windows/apps/windows-dotnet-maui
+      topicHref: /dotnet/maui/index
+    - name: .NET MAUI
+      tocHref: /azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui
+      topicHref: /dotnet/maui/index
