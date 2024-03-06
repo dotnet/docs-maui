@@ -13,3 +13,6 @@
       - name: Architecture
         tocHref: /dotnet/architecture/maui
         topicHref: /dotnet/maui/index
+      - name: AI
+        tocHref: /windows/apps/windows-dotnet-maui
+        topicHref: /dotnet/maui/index
