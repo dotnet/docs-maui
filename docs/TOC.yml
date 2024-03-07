@@ -755,15 +755,15 @@
         - name: Authentication
           items:
             - name: Microsoft Authentication Library
-              href: /entra/msal/dotnet/
+              href: /entra/msal/dotnet?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
             - name: Prepare tenant
-              href: /entra/external-id/customers/tutorial-mobile-app-maui-sign-in-prepare-tenant
+              href: /entra/external-id/customers/tutorial-mobile-app-maui-sign-in-prepare-tenant?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
             - name: Create a Shell app
-              href: /entra/external-id/customers/tutorial-mobile-app-maui-sign-in-prepare-app
+              href: /entra/external-id/customers/tutorial-mobile-app-maui-sign-in-prepare-app?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
             - name: Sign in and sign out
-              href: /entra/external-id/customers/tutorial-mobile-app-maui-sign-in-sign-out
+              href: /entra/external-id/customers/tutorial-mobile-app-maui-sign-in-sign-out?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
             - name: Role-based access control
-              href: /entra/external-id/customers/tutorial-mobile-maui-role-based-access-control
+              href: /entra/external-id/customers/tutorial-mobile-maui-role-based-access-control?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
         - name: Azure Mobile Apps
           items:
             - name: Overview
