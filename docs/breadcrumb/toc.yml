@@ -17,5 +17,11 @@
       tocHref: /windows/apps/windows-dotnet-maui
       topicHref: /dotnet/maui/index
     - name: .NET MAUI
+      tocHref: /windows/apps/windows-dotnet-maui/tutorial-graph-api
+      topicHref: /dotnet/maui/index
+    - name: .NET MAUI
+      tocHref: /windows/apps/windows-dotnet-maui/tutorial-csharp-ui-maui-toolkit
+      topicHref: /dotnet/maui/index      
+    - name: .NET MAUI
       tocHref: /azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui
       topicHref: /dotnet/maui/index

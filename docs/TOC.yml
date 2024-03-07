@@ -443,6 +443,8 @@
                   href: user-interface/controls/contentview.md
                 - name: TwoPaneView
                   href: user-interface/controls/twopaneview.md
+        - name: C# markup
+          href: /windows/apps/windows-dotnet-maui/tutorial-csharp-ui-maui-toolkit?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
         - name: Display pop-ups
           href: user-interface/pop-ups.md
         - name: Display toolbar items
@@ -758,6 +760,8 @@
               href: /azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui/authentication?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
             - name: Offline sync
               href: /azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui/offline?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Graph SDK
+          href: /windows/apps/windows-dotnet-maui/tutorial-graph-api?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
         - name: Local databases
           href: data-cloud/database-sqlite.md
         - name: Web services
