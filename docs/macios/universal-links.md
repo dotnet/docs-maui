@@ -16,6 +16,7 @@ The process for handling Apple universal links in a .NET MAUI iOS or Mac Catalys
 
 - Create and host an associated domains file on your website. For more information, see [Create and host an associated domains file](#create-and-host-an-associated-domains-file).
 - Add the associated domains entitlement to your app. For more information, see [Add the associated domains entitlement to your app](#add-the-associated-domains-entitlement-to-your-app).
+- Add the associated domains capability to the App ID for your app, in your Apple Developer Account. For more information, see [Add the associated domains capability to your App ID](#add-the-associated-domains-capability-to-your-app-id).
 - Update your app to respond to the user activity object the system provides when a universal link routes to your app. For more information, see [Respond to the universal link](#respond-to-the-universal-link).
 
 For more information, see [Allowing apps and websites to link to your content](https://developer.apple.com/documentation/xcode/allowing-apps-and-websites-to-link-to-your-content) on developer.apple.com. For information about defining a custom URL scheme for your app, see [Defining a custom URL scheme for your app](https://developer.apple.com/documentation/xcode/defining-a-custom-url-scheme-for-your-app) on developer.apple.com.
@@ -93,6 +94,26 @@ In this example, replace the `applinks:recipe-app.com` with the correct value fo
 
 > [!NOTE]
 > In iOS 14+ and macOS 11+, apps no longer send requests for `apple-app-site-association` files directly to your web server. Instead, they send requests to an Apple-managed content delivery network (CDN) dedicated to associated domains.
+
+## Add the associated domains capability to your App ID
+
+After adding the associated domains entitlement to your app, you'll need to add the associated domains capability to the App ID for your app in your Apple Developer Account. This is required because any entitlements defined in your app also need to be added as capabilities to the App ID for your app in your Apple Developer Account.
+
+To add the associated domains capability to your App ID:
+
+1. In a web browser, login to your [Apple Developer Account](https://developer.apple.com/account/) and navigate to the **Certificates, IDs & Profiles** page.
+1. On the **Certificates, Identifiers & Profiles** page, select the **Identifiers** tab.
+1. On the **Identifiers** page, select the App ID that corresponds to your app.
+1. On the **Edit your App ID Configuration** page, enable the **Associated Domains** capability and then select the **Save** button:
+
+    :::image type="content" source="media/universal-links/associated-domains-capability.png" alt-text="Screenshot of enabling the associated domains capability in the Apple Developer Portal.":::
+
+1. On the **Modify App Capabilities** dialog, select the **Confirm** button.
+
+After updating your app's App ID you'll need to generate and download an updated provisioning profile.
+
+> [!NOTE]
+> If you later remove the associated domains entitlement from your app, you'll need to update your App ID's configuration in your Apple Developer Account.
 
 ## Respond to the universal link
 
