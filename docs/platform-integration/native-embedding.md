@@ -2,6 +2,7 @@
 title: "Native embedding"
 description: "Learn how to consume .NET MAUI controls inside .NET iOS, .NET Android, and WinUI native apps."
 ms.date: 03/11/2024
+zone_pivot_groups: devices-deployment
 ---
 
 # Native embedding
@@ -268,7 +269,7 @@ Typically, the pattern for initializing .NET MAUI in a native app project is to 
 
 The examples in the following sections show the <xref:Microsoft.Maui.Embedding.AppHostBuilderExtensions.UseMauiEmbedding%2A> method being invoked at app startup.
 
-### Android
+:::zone pivot="devices-android"
 
 On Android, the `OnCreate` override in the `MainActivity` class is typically the place to perform app startup related tasks. The following code example shows .NET MAUI being initialized in the `MainActivity` class:
 
@@ -304,7 +305,9 @@ public class MainActivity : AppCompatActivity
 > [!NOTE]
 > The call to the <xref:Microsoft.Maui.Embedding.AppHostBuilderExtensions.UseMauiEmbedding%2A> method can specify your own <xref:Microsoft.Maui.Controls.Application> derived class, such as `MyApp`. For example, `builder.UseMauiEmbedding<MyApp>();`.
 
-### iOS and Mac Catalyst
+:::zone-end
+
+:::zone pivot="devices-ios, devices-maccatalyst"
 
 On iOS and Mac Catalyst, the `FinishedLaunching` override in the `AppDelegate` class is typically the place to perform app startup related tasks. It's called after the app has launched, and is usually overridden to configure the main window and view controller. The following code example shows .NET MAUI being initialized in the `AppDelegate` class:
 
@@ -346,7 +349,9 @@ public class AppDelegate : UIApplicationDelegate
 > [!NOTE]
 > The call to the <xref:Microsoft.Maui.Embedding.AppHostBuilderExtensions.UseMauiEmbedding%2A> method can specify your own <xref:Microsoft.Maui.Controls.Application> derived class, such as `MyApp`. For example, `builder.UseMauiEmbedding<MyApp>();`.
 
-### Windows
+:::zone-end
+
+:::zone pivot="devices-windows"
 
 On Windows apps built using WinUI, .NET MAUI can typically be initialized in the native `App` class, `Window` class, or a <xref:Microsoft.Maui.Controls.Page> class. The following code example shows .NET MAUI being initialized in a <xref:Microsoft.Maui.Controls.Page> class:
 
@@ -377,13 +382,17 @@ public sealed partial class MainPage : Page
 > [!NOTE]
 > The call to the <xref:Microsoft.Maui.Embedding.AppHostBuilderExtensions.UseMauiEmbedding%2A> method can specify your own <xref:Microsoft.Maui.Controls.Application> derived class, such as `MyApp`. For example, `builder.UseMauiEmbedding<MyApp>();`.
 
+:::zone-end
+
 ## Add .NET MAUI views
+
+TEXT GOES HERE
 
 ## Consume .NET MAUI controls
 
 To consume .NET MAUI types that derive from <xref:Microsoft.Maui.Controls.Element> in native apps, create an instance of the control and convert it to the appropriate native type with the `ToPlatform` extension method.
 
-### Android
+:::zone pivot="devices-android"
 
 On Android, `ToPlatform` converts the .NET MAUI control to an Android <xref:Android.Views.View> object:
 
@@ -442,7 +451,9 @@ The resulting `Fragment` can then be managed by Android's `FragmentManager` clas
 
 For more information about Fragments, see [Fragments](https://developer.android.com/guide/fragments) on developer.android.com.
 
-### iOS and Mac Catalyst
+:::zone-end
+
+:::zone pivot="devices-ios, devices-maccatalyst"
 
 On iOS and Mac Catalyst, `ToPlatform` converts the .NET MAUI control to a <xref:UIKit.UIView> object:
 
@@ -462,7 +473,9 @@ UIViewController myPageController = myMauiPage.ToUIViewController(_mauiContext);
 
 In this example, a <xref:Microsoft.Maui.Controls.ContentPage>-derived object is converted to a <xref:UIKit.UIViewController>.
 
-### Windows
+:::zone-end
+
+:::zone pivot="devices-windows"
 
 On Windows, `ToPlatform` converts the .NET MAUI control to a `FrameworkElement` object:
 
@@ -472,3 +485,5 @@ FrameworkElement element = myMauiPage.ToPlatform(_mauiContext);
 ```
 
 In this example, a <xref:Microsoft.Maui.Controls.ContentPage>-derived object is converted to a `FrameworkElement` object. The `FrameworkElement` object can then be set as the content of a WinUI page.
+
+:::zone-end
