@@ -12,9 +12,9 @@ Typically, a .NET Multi-platform App UI (.NET MAUI) app includes pages that cont
 The process for consuming a .NET MAUI control in a native app is as follows:
 
 1. Create extension methods to bootstrap your native embedded app. For more information, see [Create extension methods](#create-extension-methods).
-1. Enable .NET MAUI support by adding `<UseMaui>true</UseMaui>` to the native app's project file. For more information, see [Enable .NET MAUI support](#enable-net-maui-support).
+1. Create a .NET MAUI single project that contains your .NET MAUI code and any dependencies. For more information, see [Create a .NET MAUI single project](#create-a-net-maui-single-project).
+1. Create a native app and enable .NET MAUI support in it. For more information, see [Enable .NET MAUI support](#enable-net-maui-support).
 1. Initialize .NET MAUI by calling the <xref:Microsoft.Maui.Embedding.AppHostBuilderExtensions.UseMauiEmbedding%2A> method. For more information, see [Initialize .NET MAUI](#initialize-net-maui).
-1. Add your .NET MAUI code, such as code for a page, and any dependencies to a .NET MAUI single project. For more information, see [Add .NET MAUI views](#add-net-maui-views).
 1. Create an instance of the .NET MAUI control and convert it to the appropriate native type with the `ToPlatform` extension method. For more information, see [Consume .NET MAUI controls](#consume-net-maui-controls).
 
 > [!NOTE]
@@ -232,34 +232,142 @@ public class EmbeddedWindowProvider
 }
 ```
 
+## Create a .NET MAUI single project
+
+Before creating a native app that consumes .NET MAUI controls, you should first create a .NET MAUI app to store the .NET MAUI UI you intend you re-use in your native embedded app. This can be accomplished with the following steps:
+
+01. Launch Visual Studio 2022. In the start window, click **Create a new project** to create a new project:
+01. In the **Create a new project** window, select **MAUI** in the **All project types** drop-down, select the **.NET MAUI App** template, and click the **Next** button.
+01. In the **Configure your new project** window, name your project, choose a suitable location for it, and click the **Next** button.
+01. In the **Additional information** window, choose the version of .NET that you'd like to target and click the **Create** button.
+
+    > [!NOTE]
+    > Wait for the project to be created and its dependencies to be restored.
+
+01. Delete the **Properties** folder from the project.
+01. Delete the **Platforms** folder from the project.
+01. Delete the **Resources/AppIcon** folder from the project.
+01. Delete the **Resources/raw** folder from the project.
+01. Delete the **Resources/Splash** folder from the project.
+01. Delete the `AppShell` class from the project.
+01. Modify the `App` class so that it doesn't set the `MainPage` property:
+
+    ```csharp
+    public partial class App : Application
+    {
+        public App()
+        {
+            InitializeComponent();
+        }
+    }
+    ```
+
+01. Delete the `MainPage` class from the project.
+01. Modify the project file so that the `$(TargetFrameworks)` build property is set to `net8.0`, and the `$(OutputType)` build property is removed:
+
+    ```xml
+    <PropertyGroup>
+      <TargetFrameworks>net8.0</TargetFrameworks>
+
+      <RootNamespace>MyMauiApp</RootNamespace>
+      <UseMaui>true</UseMaui>
+      <SingleProject>true</SingleProject>
+      <ImplicitUsings>enable</ImplicitUsings>
+      <Nullable>enable</Nullable>
+
+      ...
+    </PropertyGroup>
+    ```
+
+01. Modify the `CreateMauiApp` method in the `MauiProgram` class so that it accepts an optional `Action<MauiAppBuilder>` argument that's invoked before the method returns:
+
+    ```csharp
+    public static MauiApp CreateMauiApp(Action<MauiAppBuilder>? additional = null)
+    {
+        var builder = MauiApp.CreateBuilder();
+        builder
+            .UseMauiApp<App>()
+            .ConfigureFonts(fonts =>
+            {
+                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+            });
+
+    #if DEBUG
+    builder.Logging.AddDebug();
+    #endif
+
+        additional?.Invoke(builder);
+        return builder.Build();
+    }
+    ```
+
+At this point you should add your required .NET MAUI UI to the project, including any dependencies and resources, and ensure that the project builds correctly.
+
 ## Enable .NET MAUI support
 
-To consume .NET MAUI controls that derive from <xref:Microsoft.Maui.Controls.Element> in a .NET Android, .NET iOS, .NET Mac Catalyst, or WinUI app, you must first enable .NET MAUI support in the native app's project file. Enable support by adding `<UseMaui>true</UseMaui>` to the first `<PropertyGroup>` node in the project file:
+To consume .NET MAUI controls that derive from <xref:Microsoft.Maui.Controls.Element> in a .NET Android, .NET iOS, .NET Mac Catalyst, or WinUI app, you must enable .NET MAUI support in your native app's project file. This can be achieved by setting the `$(UseMaui)` and `$(MauiEnablePlatformUsings)` build properties to `true` in the first `<PropertyGroup>` node in the project file:
 
 ```xml
 <PropertyGroup>
-  ...
-  <Nullable>enable</Nullable>
-  <ImplicitUsings>true</ImplicitUsings>
-  <UseMaui>true</UseMaui>
+    ...
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>true</ImplicitUsings>
+
+    <UseMaui>true</UseMaui>
+    <MauiEnablePlatformUsings>true</MauiEnablePlatformUsings>  
 </PropertyGroup>
 ```
 
-A consequence of doing this is that it replaces the native implicit namespace support with .NET MAUI namespaces, so you'll have to explicitly add `using` statements to your code files for native types.
+> [!IMPORTANT]
+> A consequence of doing this is that it replaces the native implicit namespace support with .NET MAUI namespaces, so you'll have to explicitly add `using` statements to your code files for native types.
 
-For WinUI apps, you'll also need to add `<EnableDefaultXamlItems>false</EnableDefaultXamlItems>` to the first `<PropertyGroup>` node in the project file:
+:::zone pivot="devices-maccatalyst"
+
+For .NET Mac Catalyst apps, you'll also need to set the `$(SupportedOSPlatformVersion)` build property to a minimum of 14.0:
 
 ```xml
 <PropertyGroup>
-  ...
-  <Nullable>enable</Nullable>
-  <ImplicitUsings>true</ImplicitUsings>
-  <UseMaui>true</UseMaui>
-  <EnableDefaultXamlItems>false</EnableDefaultXamlItems>
+    ...
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>true</ImplicitUsings>
+
+    <SupportedOSPlatformVersion>14.2</SupportedOSPlatformVersion>
+    <UseMaui>true</UseMaui>
+    <MauiEnablePlatformUsings>true</MauiEnablePlatformUsings>  
+</PropertyGroup>
+```
+
+:::zone-end
+
+:::zone pivot="devices-windows"
+
+For WinUI apps, you'll also need to set the `$(EnableDefaultXamlItems)` build property to `false`:
+
+```xml
+<PropertyGroup>
+    ...
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>true</ImplicitUsings>
+
+    <UseMaui>true</UseMaui>
+    <MauiEnablePlatformUsings>true</MauiEnablePlatformUsings>    
+    <EnableDefaultXamlItems>false</EnableDefaultXamlItems>
 </PropertyGroup>
 ```
 
 This will stop you receiving build errors about the `InitializeComponent` method already being defined.
+
+:::zone-end
+
+Then, add `$(PackageReference)` build items to the project file for the `Microsoft.Maui.Controls` and `Microsoft.Maui.Controls.Compatiblity` NuGet packages:
+
+```xml
+<ItemGroup>
+    <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+    <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+</ItemGroup>
+```
 
 ## Initialize .NET MAUI
 
@@ -383,10 +491,6 @@ public sealed partial class MainPage : Page
 > The call to the <xref:Microsoft.Maui.Embedding.AppHostBuilderExtensions.UseMauiEmbedding%2A> method can specify your own <xref:Microsoft.Maui.Controls.Application> derived class, such as `MyApp`. For example, `builder.UseMauiEmbedding<MyApp>();`.
 
 :::zone-end
-
-## Add .NET MAUI views
-
-TEXT GOES HERE
 
 ## Consume .NET MAUI controls
 
