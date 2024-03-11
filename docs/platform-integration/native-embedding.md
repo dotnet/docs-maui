@@ -293,9 +293,9 @@ Before creating a native app that consumes .NET MAUI controls, you should first 
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
 
-    #if DEBUG
-    builder.Logging.AddDebug();
-    #endif
+        #if DEBUG
+            builder.Logging.AddDebug();
+        #endif
 
         additional?.Invoke(builder);
         return builder.Build();
@@ -371,7 +371,7 @@ Then, add `$(PackageReference)` build items to the project file for the `Microso
 
 ## Initialize .NET MAUI
 
-.NET MAUI must be initialized before a native app project can construct a .NET MAUI control. Choosing when to initialize it primarily depends on when it's most convenient in your app flow&mdash;it could be performed at startup or just before a .NET MAUI control is constructed.
+.NET MAUI must be initialized before a native app project can construct a .NET MAUI control. Choosing when to initialize it primarily depends on when it's most convenient in your app flow - it could be performed at startup or just before a .NET MAUI control is constructed.
 
 Typically, the pattern for initializing .NET MAUI in a native app project is to create a <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object, invoke the <xref:Microsoft.Maui.Embedding.AppHostBuilderExtensions.UseMauiEmbedding%2A> method on it, and then create a <xref:Microsoft.Maui.Hosting.MauiApp> object by invoking the <xref:Microsoft.Maui.Hosting.MauiAppBuilder.Build> method on the <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object. In addition, a <xref:Microsoft.Maui.MauiContext> object should then be created from the <xref:Microsoft.Maui.Hosting.MauiApp> object. The <xref:Microsoft.Maui.MauiContext> object will be used when converting .NET MAUI controls to native types.
 
