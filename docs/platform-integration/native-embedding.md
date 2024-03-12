@@ -371,126 +371,160 @@ Then, add `$(PackageReference)` build items to the project file for the `Microso
 
 ## Initialize .NET MAUI
 
-.NET MAUI must be initialized before a native app project can construct a .NET MAUI control. Choosing when to initialize it primarily depends on when it's most convenient in your app flow - it could be performed at startup or just before a .NET MAUI control is constructed.
+.NET MAUI must be initialized before a native app project can construct a .NET MAUI control. Choosing when to initialize it primarily depends on when it's most convenient in your app flow - it could be performed at startup or just before a .NET MAUI control is constructed. The approach outlined here is to initialize .NET MAUI at app startup.
 
-Typically, the pattern for initializing .NET MAUI in a native app project is to create a <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object, invoke the <xref:Microsoft.Maui.Embedding.AppHostBuilderExtensions.UseMauiEmbedding%2A> method on it, and then create a <xref:Microsoft.Maui.Hosting.MauiApp> object by invoking the <xref:Microsoft.Maui.Hosting.MauiAppBuilder.Build> method on the <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object. In addition, a <xref:Microsoft.Maui.MauiContext> object should then be created from the <xref:Microsoft.Maui.Hosting.MauiApp> object. The <xref:Microsoft.Maui.MauiContext> object will be used when converting .NET MAUI controls to native types.
+Typically, the pattern for initializing .NET MAUI in a native app project is as follows:
 
-The examples in the following sections show the <xref:Microsoft.Maui.Embedding.AppHostBuilderExtensions.UseMauiEmbedding%2A> method being invoked at app startup.
+- Create a <xref:Microsoft.Maui.Hosting.MauiApp> object.
+- Create a <xref:Microsoft.Maui.MauiContext> object from the <xref:Microsoft.Maui.Hosting.MauiApp> object.
 
 :::zone pivot="devices-android"
 
 On Android, the `OnCreate` override in the `MainActivity` class is typically the place to perform app startup related tasks. The following code example shows .NET MAUI being initialized in the `MainActivity` class:
 
 ```csharp
-using Android.App;
-using Android.OS;
-using Android.Views;
-using AndroidX.AppCompat.App;
-using Microsoft.Maui.Embedding;
-
-namespace Notes.Android;
-
-public class MainActivity : AppCompatActivity
+namespace MyNativeEmbeddedApp.Droid
 {
-    MauiContext _mauiContext;
-
-    protected override void OnCreate(Bundle? savedInstanceState)
+    [Activity(Label = "@string/app_name", MainLauncher = true, Theme = "@style/AppTheme")]
+    public class MainActivity : Activity
     {
-        base.OnCreate(savedInstanceState);
+        public static readonly Lazy<MauiApp> MauiApp = new(() =>
+        {
+            var mauiApp = MauiProgram.CreateMauiApp(builder =>
+            {
+                builder.UseMauiEmbedding();
+            });
+            return mauiApp;
+        });
 
-        // Perform your normal Android registration
+        public static bool UseWindowContext = true;
 
-        MauiAppBuilder builder = MauiApp.CreateBuilder();
-        builder.UseMauiEmbedding<Microsoft.Maui.Controls.Application>();
-        MauiApp mauiApp = builder.Build();
-        _mauiContext = new MauiContext(mauiApp.Services, this);
+        protected override void OnCreate(Bundle? savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
 
-        ...
+            // Ensure .NET MAUI app is built before creating .NET MAUI views
+            var mauiApp = MainActivity.MauiApp.Value;
+
+            // Create .NET MAUI context
+            var mauiContext = UseWindowContext
+                ? mauiApp.CreateEmbeddedWindowContext(this) // Create window context
+                : new MauiContext(mauiApp.Services, this);  // Create app context
+
+            ...              
+        }
     }
 }
 ```
-
-> [!NOTE]
-> The call to the <xref:Microsoft.Maui.Embedding.AppHostBuilderExtensions.UseMauiEmbedding%2A> method can specify your own <xref:Microsoft.Maui.Controls.Application> derived class, such as `MyApp`. For example, `builder.UseMauiEmbedding<MyApp>();`.
 
 :::zone-end
 
 :::zone pivot="devices-ios, devices-maccatalyst"
 
-On iOS and Mac Catalyst, the `FinishedLaunching` override in the `AppDelegate` class is typically the place to perform app startup related tasks. It's called after the app has launched, and is usually overridden to configure the main window and view controller. The following code example shows .NET MAUI being initialized in the `AppDelegate` class:
+On iOS and Mac Catalyst, the `FinishedLaunching` override in the `AppDelegate` class should be modified to return `true`:
 
 ```csharp
-using Foundation;
-using Microsoft.Maui.Embedding;
-using UIKit;
-
-namespace Notes.MaciOS;
-
-[Register("AppDelegate")]
-public class AppDelegate : UIApplicationDelegate
+namespace MyNativeEmbeddedApp.iOS
 {
-    MauiContext _mauiContext;
-
-    public override UIWindow? Window
+    [Register("AppDelegate")]
+    public class AppDelegate : UIApplicationDelegate
     {
-        get;
-        set;
-    }
+        public override UIWindow? Window { get; set; }
 
-    public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
-    {
-        // Perform your normal iOS registration
-
-        MauiAppBuilder builder = MauiApp.CreateBuilder();
-        builder.UseMauiEmbedding<Microsoft.Maui.Controls.Application>();
-        // Register the Window
-        builder.Services.Add(new Microsoft.Extensions.DependencyInjection.ServiceDescriptor(typeof(UIWindow), Window));
-        MauiApp mauiApp = builder.Build();
-        _mauiContext = new MauiContext(mauiApp.Services);
-
-        ...
-        return true;
+        public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions) => true;
     }
 }
 ```
 
-> [!NOTE]
-> The call to the <xref:Microsoft.Maui.Embedding.AppHostBuilderExtensions.UseMauiEmbedding%2A> method can specify your own <xref:Microsoft.Maui.Controls.Application> derived class, such as `MyApp`. For example, `builder.UseMauiEmbedding<MyApp>();`.
+.NET MAUI can then be initialized in the `ViewDidLoad` method in the app's main view controller:
+
+```csharp
+using Microsoft.Maui.Platform;
+
+namespace MyNativeEmbeddedApp.iOS
+{
+    public class MainViewController : UIViewController
+    {
+        UIWindow GetWindow() =>
+            View?.Window ??
+            ParentViewController?.View?.Window ??
+            MainViewController.MauiApp.Value.Services.GetRequiredService<IUIApplicationDelegate>().GetWindow() ??
+            UIApplication.SharedApplication.Delegate.GetWindow();
+
+        public static readonly Lazy<MauiApp> MauiApp = new(() =>
+        {
+            var mauiApp = MauiProgram.CreateMauiApp(builder =>
+            {
+                builder.UseMauiEmbedding();
+            });
+            return mauiApp;
+        });
+
+        public static bool UseWindowContext = true;
+
+        public override void ViewDidLoad()
+        {
+            base.ViewDidLoad();
+
+            // Ensure app is built before creating .NET MAUI views
+            var mauiApp = MainViewController.MauiApp.Value;
+
+            // Create .NET MAUI context
+            var mauiContext = UseWindowContext
+                ? mauiApp.CreateEmbeddedWindowContext(GetWindow()) // Create window context
+                : new MauiContext(mauiApp.Services);               // Create app context
+
+            ...
+        }
+    }
+}
+```
 
 :::zone-end
 
 :::zone pivot="devices-windows"
 
-On Windows apps built using WinUI, .NET MAUI can typically be initialized in the native `App` class, `Window` class, or a <xref:Microsoft.Maui.Controls.Page> class. The following code example shows .NET MAUI being initialized in a <xref:Microsoft.Maui.Controls.Page> class:
+On Windows, the `MainWindow` class is typically the place to perform UI related app startup tasks:
 
 ```csharp
-using Microsoft.Maui;
-using Microsoft.Maui.Embedding;
-using Microsoft.Maui.Hosting;
-using Microsoft.UI.Xaml.Controls;
-
-namespace Notes.Windows;
-
-public sealed partial class MainPage : Page
+namespace MyNativeEmbeddedApp.WinUI
 {
-    public MauiContext _mauiContext;
-
-    public MainPage()
+    public sealed partial class MainWindow : Microsoft.UI.Xaml.Window
     {
-        MauiAppBuilder builder = MauiApp.CreateBuilder();
-        builder.UseMauiEmbedding<Microsoft.Maui.Controls.Application>();
-        MauiApp mauiApp = builder.Build();
-        _mauiContext = new MauiContext(mauiApp.Services);
+        public static readonly Lazy<MauiApp> MauiApp = new(() =>
+        {
+            var mauiApp = MauiProgram.CreateMauiApp(builder =>
+            {
+                builder.UseMauiEmbedding();
+            });
+            return mauiApp;
+        });
 
-        ...
+        public static bool UseWindowContext = true;
+
+        public MainWindow()
+        {
+            this.InitializeComponent();
+
+            // Ensure .NET MAUI app is built before creating .NET MAUI views
+            var mauiApp = MainWindow.MauiApp.Value;
+
+            // Create .NET MAUI context
+            var mauiContext = UseWindowContext
+                ? mauiApp.CreateEmbeddedWindowContext(this) // Create window context
+                : new MauiContext(mauiApp.Services);        // Create app context
+
+            ...
+        }
     }
 }
 ```
 
-> [!NOTE]
-> The call to the <xref:Microsoft.Maui.Embedding.AppHostBuilderExtensions.UseMauiEmbedding%2A> method can specify your own <xref:Microsoft.Maui.Controls.Application> derived class, such as `MyApp`. For example, `builder.UseMauiEmbedding<MyApp>();`.
-
 :::zone-end
+
+In this example, the <xref:Microsoft.Maui.Hosting.MauiApp> object is created using lazy initialization. The `UseMauiEmbedding` extension method is invoked on the <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object. Therefore your native app project should include a reference to the .NET MAUI class library project you created that contains this extension method. A <xref:Microsoft.Maui.MauiContext> object is then created from the <xref:Microsoft.Maui.Hosting.MauiApp> object, with a `bool` determining where the context is scoped from. The <xref:Microsoft.Maui.MauiContext> object will be used when converting .NET MAUI controls to native types.
+
+Once .NET MAUI has been initialized in your native app, you can add your .NET MAUI UI to the native app's layout.
 
 ## Consume .NET MAUI controls
 
@@ -591,3 +625,6 @@ FrameworkElement element = myMauiPage.ToPlatform(_mauiContext);
 In this example, a <xref:Microsoft.Maui.Controls.ContentPage>-derived object is converted to a `FrameworkElement` object. The `FrameworkElement` object can then be set as the content of a WinUI page.
 
 :::zone-end
+
+> [!IMPORTANT]
+> Hot reload should be disabled before running a native embedded app in debug configuration.
