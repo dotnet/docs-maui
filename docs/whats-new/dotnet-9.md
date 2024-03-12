@@ -8,7 +8,7 @@ ms.date: 03/12/2024
 
 The focus of .NET Multi-platform App UI (.NET MAUI) in .NET 9 is to improve product quality. This includes expanding test coverage, end to end scenario testing, and bug fixing. For more information about the product quality improvements in .NET MAUI 9 Preview, see the following release notes:
 
-- [.NET MAUI 9 Preview 2](https://github.com/dotnet/maui/releases/tag/9.0.100-preview.2.10304)
+- [.NET MAUI 9 Preview 2](https://github.com/dotnet/maui/releases/tag/9.0.0-preview.2.10293)
 - [.NET MAUI 9 Preview 1](https://github.com/dotnet/maui/releases/tag/9.0.100-preview.1.9973)
 
 > [!IMPORTANT]
