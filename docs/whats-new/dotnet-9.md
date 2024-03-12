@@ -20,14 +20,14 @@ For information about what's new in .NET 9, see [What's new in .NET 9](/dotnet/c
 
 ## Android
 
-.NET Android 9 Preview, which uses API 34 and JDK 17, includes foundational work to reduce build times, and to improve the trimability of apps to reduce size and improve performance. For more information about .NET Android 9 Preview, see the following release notes:
+.NET Android 9 Preview, which uses API 34 and JDK 17, includes work to reduce build times, and to improve the trimability of apps to reduce size and improve performance. For more information about .NET Android 9 Preview, see the following release notes:
 
 - [.NET Android 9 Preview 2](https://github.com/xamarin/xamarin-android/releases/tag/34.99.0-preview.2.189)
 - [.NET Android 9 Preview 1](https://github.com/xamarin/xamarin-android/releases/tag/34.99.0-preview.1.151)
 
 ## iOS
 
-.NET 9 Preview 1 on iOS, tvOS, Mac Catalyst, and macOS uses Xcode 15.2 for the following platform versions:
+.NET 9 Preview on iOS, tvOS, Mac Catalyst, and macOS uses Xcode 15.2 for the following platform versions:
 
 - iOS: 17.2
 - tvOS: 17.2
