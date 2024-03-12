@@ -524,89 +524,57 @@ namespace MyNativeEmbeddedApp.WinUI
 
 In this example, the <xref:Microsoft.Maui.Hosting.MauiApp> object is created using lazy initialization. The `UseMauiEmbedding` extension method is invoked on the <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object. Therefore your native app project should include a reference to the .NET MAUI class library project you created that contains this extension method. A <xref:Microsoft.Maui.MauiContext> object is then created from the <xref:Microsoft.Maui.Hosting.MauiApp> object, with a `bool` determining where the context is scoped from. The <xref:Microsoft.Maui.MauiContext> object will be used when converting .NET MAUI controls to native types.
 
-Once .NET MAUI has been initialized in your native app, you can add your .NET MAUI UI to the native app's layout.
-
 ## Consume .NET MAUI controls
 
-To consume .NET MAUI types that derive from <xref:Microsoft.Maui.Controls.Element> in native apps, create an instance of the control and convert it to the appropriate native type with the `ToPlatform` extension method.
+After .NET MAUI has been initialized in your native app, you can add your .NET MAUI UI to your native app's layout. This can be achieved by creating an instance of the control and converting it to the appropriate native type with the `ToPlatform` extension method.
 
 :::zone pivot="devices-android"
 
-On Android, `ToPlatform` converts the .NET MAUI control to an Android <xref:Android.Views.View> object:
+On Android, the `ToPlatformEmbedded` extension method converts the .NET MAUI control to an Android <xref:Android.Views.View> object:
 
 ```csharp
-MyMauiPage myMauiPage = new MyMauiPage();
-Android.Views.View view = myMauiPage.ToPlatform(_mauiContext);
+var mauiView = new MyMauiContent();
+Android.Views.View nativeView = mauiView.ToPlatformEmbedded(mauiContext);
 ```
 
-In this example, a <xref:Microsoft.Maui.Controls.ContentPage>-derived object is converted to an Android <xref:Android.Views.View> object.
+In this example, a <xref:Microsoft.Maui.Controls.ContentView>-derived object is converted to an Android <xref:Android.Views.View> object.
 
-Alternatively, a <xref:Microsoft.Maui.Controls.ContentPage>-derived object can be converted to a `Fragment` with the following `CreateSupportFragment` extension method:
+> [!NOTE]
+> The `ToPlatformEmbedded` extension method is in the .NET MAUI class library you created earlier. Therefore your native app project should include a reference to that project.
+
+The <xref:Android.Views.View> object can then be added to a layout in your native app:
 
 ```csharp
-using Android.OS;
-using Android.Views;
-using Microsoft.Maui.Platform;
-using Fragment = AndroidX.Fragment.App.Fragment;
-
-namespace Notes.Android;
-
-public static class PageExtensions
-{
-    public static Fragment CreateSupportFragment(this ContentPage view, MauiContext context)
-    {
-        return new ScopedFragment(view, context);
-    }
-
-    internal class ScopedFragment : Fragment
-    {
-        readonly IMauiContext _mauiContext;
-
-        public IView DetailView { get; private set; }
-
-        public ScopedFragment(IView detailView, IMauiContext mauiContext)
-        {
-            DetailView = detailView;
-            _mauiContext = mauiContext;
-        }
-
-        public override global::Android.Views.View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-        {
-            return DetailView.ToPlatform(_mauiContext);
-        }
-    }
-}
+rootLayout.AddView(nativeView, new LinearLayout.LayoutParams(MatchParent, WrapContent));
 ```
-
-The `CreateSupportFragment` extension method can be consumed by invoking it on a <xref:Microsoft.Maui.Controls.ContentPage>-derived object:
-
-```csharp
-MyMauiPage myMauiPage = new MyMauiPage();
-AndroidX.Fragment.App.Fragment notesPageFragment = myMauiPage.CreateSupportFragment(_mauiContext);
-```
-
-The resulting `Fragment` can then be managed by Android's `FragmentManager` class.
-
-For more information about Fragments, see [Fragments](https://developer.android.com/guide/fragments) on developer.android.com.
 
 :::zone-end
 
 :::zone pivot="devices-ios, devices-maccatalyst"
 
-On iOS and Mac Catalyst, `ToPlatform` converts the .NET MAUI control to a <xref:UIKit.UIView> object:
+On iOS and Mac Catalyst, the `ToPlatformEmbedded` extension method converts the .NET MAUI control to a <xref:UIKit.UIView> object:
 
 ```csharp
-Button myButton = new Button { Text = ".NET MAUI" };
-UIView button = myButton.ToPlatform(_mauiContext);
+var mauiView = new MyMauiContent();
+UIView nativeView = mauiView.ToPlatformEmbedded(mauiContext);
 ```
 
-In this example, a <xref:Microsoft.Maui.Controls.Button> is converted to a <xref:UIKit.UIView> object.
+In this example, a <xref:Microsoft.Maui.Controls.ContentView>-derived object is converted to a <xref:UIKit.UIView> object.
 
-In addition, a `ToUIViewController` extension method can be used to attempt to convert a .NET MAUI control to a <xref:UIKit.UIViewController>:
+> [!NOTE]
+> The `ToPlatformEmbedded` extension method is in the .NET MAUI class library you created earlier. Therefore your native app project should include a reference to that project.
+
+The <xref:UIKit.UIView> object can then be added to a view in your view controller:
+
+```csharp
+stackView.AddArrangedSubView(nativeView);
+```
+
+In addition, a `ToUIViewController` extension method in .NET MAUI can be used to attempt to convert a .NET MAUI page to a <xref:UIKit.UIViewController>:
 
 ```csharp
 MyMauiPage myMauiPage = new MyMauiPage();
-UIViewController myPageController = myMauiPage.ToUIViewController(_mauiContext);
+UIViewController myPageController = myMauiPage.ToUIViewController(mauiContext);
 ```
 
 In this example, a <xref:Microsoft.Maui.Controls.ContentPage>-derived object is converted to a <xref:UIKit.UIViewController>.
@@ -615,16 +583,22 @@ In this example, a <xref:Microsoft.Maui.Controls.ContentPage>-derived object is 
 
 :::zone pivot="devices-windows"
 
-On Windows, `ToPlatform` converts the .NET MAUI control to a `FrameworkElement` object:
+On Windows, the `ToPlatformEmbedded` extension method converts the .NET MAUI control to a `FrameworkElement` object:
 
 ```csharp
-MyMauiPage myMauiPage = new MyMauiPage();
-FrameworkElement element = myMauiPage.ToPlatform(_mauiContext);
+var mauiView = new MyMauiContent();
+FrameworkElement nativeView = myMauiPage.ToPlatformEmbedded(mauiContext);
 ```
 
-In this example, a <xref:Microsoft.Maui.Controls.ContentPage>-derived object is converted to a `FrameworkElement` object. The `FrameworkElement` object can then be set as the content of a WinUI page.
+In this example, a <xref:Microsoft.Maui.Controls.ContentView>-derived object is converted to a `FrameworkElement` object. The `FrameworkElement` object can then be set as the content of a WinUI page.
+
+The `FrameworkElement` object can then be added to a layout in your native app:
+
+```csharp
+stackPanel.Children.Add(nativeView);
+```
 
 :::zone-end
 
 > [!IMPORTANT]
-> Hot reload should be disabled before running a native embedded app in debug configuration.
+> To avoid an error occurring, XAML hot reload should be disabled before running a native embedded app in debug configuration.
