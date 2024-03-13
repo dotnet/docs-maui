@@ -60,7 +60,7 @@ The following example shows how to interpret all assemblies except **System.Xml.
 ```xml
 <PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">
     <!-- Interpret everything, except System.Xml.dll -->
-    <MtouchInterpreter>all,-System.Xml.dll</MtouchInterpreter>
+    <MtouchInterpreter>all,-System.Xml</MtouchInterpreter>
 </PropertyGroup>
 ```
 
@@ -69,7 +69,7 @@ The following example shows how to AOT compile all assemblies except **System.Nu
 ```xml
 <PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">
     <!-- AOT everything, except System.Numerics.dll, which will be interpreted -->
-    <MtouchInterpreter>-all,System.Numerics.dll</MtouchInterpreter>
+    <MtouchInterpreter>-all,System.Numerics</MtouchInterpreter>
 </PropertyGroup>
 ```
 
@@ -88,6 +88,6 @@ Another common scenario where the interpreter is sometimes required is a .NET MA
 
 ```xml
 <PropertyGroup Condition="'$(RuntimeIdentifier)' == 'maccatalyst-arm64' and '$(Configuration)' == 'Release'">
-    <MtouchInterpreter>-all,MyAssembly.dll</MtouchInterpreter>
+    <MtouchInterpreter>-all,MyAssembly</MtouchInterpreter>
 </PropertyGroup>
 ```
