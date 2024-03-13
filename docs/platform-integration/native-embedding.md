@@ -421,7 +421,7 @@ namespace MyNativeEmbeddedApp.Droid
 
 :::zone pivot="devices-ios, devices-maccatalyst"
 
-On iOS and Mac Catalyst, the `FinishedLaunching` override in the `AppDelegate` class should be modified to return `true`:
+On iOS and Mac Catalyst, the `FinishedLaunching` override in the `AppDelegate` class should be modified to create your main view controller:
 
 ```csharp
 namespace MyNativeEmbeddedApp.iOS
@@ -431,12 +431,19 @@ namespace MyNativeEmbeddedApp.iOS
     {
         public override UIWindow? Window { get; set; }
 
-        public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions) => true;
+        public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
+        {
+            Window = new UIWindow(UIScreen.MainScreen.Bounds);
+            var vc = new MainViewController();
+            Window.RootViewController = vc;
+            Window.MakeKeyAndVisible();
+            return true;
+        }
     }
 }
 ```
 
-.NET MAUI can then be initialized in the `ViewDidLoad` method in the app's main view controller:
+.NET MAUI can then be initialized in the `ViewDidLoad` method in your main view controller:
 
 ```csharp
 using Microsoft.Maui.Platform;
