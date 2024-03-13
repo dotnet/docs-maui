@@ -15,7 +15,7 @@ The process for consuming a .NET MAUI control in a native app is as follows:
 1. Create a .NET MAUI single project that contains your .NET MAUI code and any dependencies. For more information, see [Create a .NET MAUI single project](#create-a-net-maui-single-project).
 1. Create a native app and enable .NET MAUI support in it. For more information, see [Enable .NET MAUI support](#enable-net-maui-support).
 1. Initialize .NET MAUI by calling the <xref:Microsoft.Maui.Embedding.AppHostBuilderExtensions.UseMauiEmbedding%2A> method. For more information, see [Initialize .NET MAUI](#initialize-net-maui).
-1. Create an instance of the .NET MAUI control and convert it to the appropriate native type with the `ToPlatform` extension method. For more information, see [Consume .NET MAUI controls](#consume-net-maui-controls).
+1. Create an instance of the .NET MAUI control and convert it to the appropriate native type with the `ToPlatformEmbedding` extension method. For more information, see [Consume .NET MAUI controls](#consume-net-maui-controls).
 
 > [!NOTE]
 > When using native embedding, .NET MAUI's data binding engine still works. However, page navigation must be performed using the native navigation API.
