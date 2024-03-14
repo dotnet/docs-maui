@@ -12,10 +12,10 @@ Typically, a .NET Multi-platform App UI (.NET MAUI) app includes pages that cont
 The process for consuming a .NET MAUI control in a native app is as follows:
 
 1. Create extension methods to bootstrap your native embedded app. For more information, see [Create extension methods](#create-extension-methods).
-1. Create a .NET MAUI single project that contains your .NET MAUI code and any dependencies. For more information, see [Create a .NET MAUI single project](#create-a-net-maui-single-project).
+1. Create a .NET MAUI single project that contains your .NET MAUI UI and any dependencies. For more information, see [Create a .NET MAUI single project](#create-a-net-maui-single-project).
 1. Create a native app and enable .NET MAUI support in it. For more information, see [Enable .NET MAUI support](#enable-net-maui-support).
-1. Initialize .NET MAUI by calling the <xref:Microsoft.Maui.Embedding.AppHostBuilderExtensions.UseMauiEmbedding%2A> method. For more information, see [Initialize .NET MAUI](#initialize-net-maui).
-1. Create an instance of the .NET MAUI control and convert it to the appropriate native type with the `ToPlatformEmbedding` extension method. For more information, see [Consume .NET MAUI controls](#consume-net-maui-controls).
+1. Initialize .NET MAUI by calling the `UseMauiEmbedding` extension method. For more information, see [Initialize .NET MAUI](#initialize-net-maui).
+1. Create the .NET MAUI UI and convert it to the appropriate native type with the `ToPlatformEmbedding` extension method. For more information, see [Consume .NET MAUI controls](#consume-net-maui-controls).
 
 > [!NOTE]
 > When using native embedding, .NET MAUI's data binding engine still works. However, page navigation must be performed using the native navigation API.
@@ -234,15 +234,7 @@ public class EmbeddedWindowProvider
 
 ## Create a .NET MAUI single project
 
-Before creating a native app that consumes .NET MAUI controls, you should first create a .NET MAUI app to store the .NET MAUI UI you intend you re-use in your native embedded app. This can be accomplished with the following steps:
-
-01. Launch Visual Studio 2022. In the start window, click **Create a new project** to create a new project:
-01. In the **Create a new project** window, select **MAUI** in the **All project types** drop-down, select the **.NET MAUI App** template, and click the **Next** button.
-01. In the **Configure your new project** window, name your project, choose a suitable location for it, and click the **Next** button.
-01. In the **Additional information** window, choose the version of .NET that you'd like to target and click the **Create** button.
-
-    > [!NOTE]
-    > Wait for the project to be created and its dependencies to be restored.
+Before creating a native app that consumes .NET MAUI controls, you should add a .NET MAUI app project to the same solution as the .NET MAUI class library project you created previously. The .NET MAUI app project will store the UI you intend you re-use in your native embedded app. After adding a new .NET MAUI app project to the solution, perform the following steps:
 
 01. Delete the **Properties** folder from the project.
 01. Delete the **Platforms** folder from the project.
@@ -306,7 +298,7 @@ At this point you should add your required .NET MAUI UI to the project, includin
 
 ## Enable .NET MAUI support
 
-To consume .NET MAUI controls that derive from <xref:Microsoft.Maui.Controls.Element> in a .NET Android, .NET iOS, .NET Mac Catalyst, or WinUI app, you must enable .NET MAUI support in your native app's project file. This can be achieved by setting the `$(UseMaui)` and `$(MauiEnablePlatformUsings)` build properties to `true` in the first `<PropertyGroup>` node in the project file:
+To consume .NET MAUI controls that derive from <xref:Microsoft.Maui.Controls.Element> in a .NET Android, .NET iOS, .NET Mac Catalyst, or WinUI app, you should add your native app project to the same solution as the .NET MAUI class library project you created previously. Then you should enable .NET MAUI support in your native app's project file by setting the `$(UseMaui)` and `$(MauiEnablePlatformUsings)` build properties to `true` in the first `<PropertyGroup>` node in the project file:
 
 ```xml
 <PropertyGroup>
@@ -318,9 +310,6 @@ To consume .NET MAUI controls that derive from <xref:Microsoft.Maui.Controls.Ele
     <MauiEnablePlatformUsings>true</MauiEnablePlatformUsings>  
 </PropertyGroup>
 ```
-
-> [!IMPORTANT]
-> A consequence of doing this is that it replaces the native implicit namespace support with .NET MAUI namespaces, so you'll have to explicitly add `using` statements to your code files for native types.
 
 :::zone pivot="devices-maccatalyst"
 
@@ -371,7 +360,7 @@ Then, add `$(PackageReference)` build items to the project file for the `Microso
 
 ## Initialize .NET MAUI
 
-.NET MAUI must be initialized before a native app project can construct a .NET MAUI control. Choosing when to initialize it primarily depends on when it's most convenient in your app flow - it could be performed at startup or just before a .NET MAUI control is constructed. The approach outlined here is to initialize .NET MAUI at app startup.
+.NET MAUI must be initialized before a native app project can construct a .NET MAUI control. Choosing when to initialize it primarily depends on when it's most convenient in your app flow - it could be performed at startup or just before a .NET MAUI control is constructed. The approach outlined here is to initialize .NET MAUI when the app's initial UI is created.
 
 Typically, the pattern for initializing .NET MAUI in a native app project is as follows:
 
@@ -529,11 +518,11 @@ namespace MyNativeEmbeddedApp.WinUI
 
 :::zone-end
 
-In this example, the <xref:Microsoft.Maui.Hosting.MauiApp> object is created using lazy initialization. The `UseMauiEmbedding` extension method is invoked on the <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object. Therefore your native app project should include a reference to the .NET MAUI class library project you created that contains this extension method. A <xref:Microsoft.Maui.MauiContext> object is then created from the <xref:Microsoft.Maui.Hosting.MauiApp> object, with a `bool` determining where the context is scoped from. The <xref:Microsoft.Maui.MauiContext> object will be used when converting .NET MAUI controls to native types.
+In this example, the <xref:Microsoft.Maui.Hosting.MauiApp> object is created using lazy initialization. The `UseMauiEmbedding` extension method is invoked on the <xref:Microsoft.Maui.Hosting.MauiAppBuilder> object. Therefore, your native app project should include a reference to the .NET MAUI class library project you created that contains this extension method. A <xref:Microsoft.Maui.MauiContext> object is then created from the <xref:Microsoft.Maui.Hosting.MauiApp> object, with a `bool` determining where the context is scoped from. The <xref:Microsoft.Maui.MauiContext> object will be used when converting .NET MAUI controls to native types.
 
 ## Consume .NET MAUI controls
 
-After .NET MAUI has been initialized in your native app, you can add your .NET MAUI UI to your native app's layout. This can be achieved by creating an instance of the control and converting it to the appropriate native type with the `ToPlatform` extension method.
+After .NET MAUI has been initialized in your native app, you can add your .NET MAUI UI to your native app's layout. This can be achieved by creating an instance of the UI and converting it to the appropriate native type with the `ToPlatformEmbedded` extension method.
 
 :::zone pivot="devices-android"
 
