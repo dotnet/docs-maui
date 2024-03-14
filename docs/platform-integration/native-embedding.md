@@ -566,6 +566,9 @@ The <xref:UIKit.UIView> object can then be added to a view in your view controll
 stackView.AddArrangedSubView(nativeView);
 ```
 
+> [!WARNING]
+> It's not currently possible to interact with the .NET MAUI UI on iOS and Mac Catalyst. For more information, see [GitHub issue #19340](https://github.com/dotnet/maui/issues/19340).
+
 In addition, a `ToUIViewController` extension method in .NET MAUI can be used to attempt to convert a .NET MAUI page to a <xref:UIKit.UIViewController>:
 
 ```csharp
