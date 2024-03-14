@@ -46,6 +46,9 @@ Custom renderers can either be reused in a .NET MAUI app, or migrated to a .NET 
 
 Effects can be reused in a .NET MAUI app. For more information, see [Reuse effects](effects.md).
 
+> [!NOTE]
+> You can quickly update your `Xamarin.Forms` namespaces to `Microsoft.Maui` by using [Quick actions in Visual Studio](upgrade-assistant.md#quick-actions-in-visual-studio) make sure you have the Upgrade Assistant installed to get started.
+
 ### Platform-specific code
 
 A .NET MAUI app project contains a *Platforms* folder, with each child folder representing a platform that .NET MAUI can target:
