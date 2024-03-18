@@ -560,21 +560,21 @@ The following APIs directly or indirectly access the available disk space and re
 
 | .NET API | Internal usage | CoreClr usage | Mono usage |
 | -------- | -------------- | ------------- | ---------- |
-| [System.IO.DriveInfo.AvailableFreeSpace](https://learn.microsoft.com/dotnet/api/System.IO.DriveInfo.AvailableFreeSpace) | [Interop.Sys.TryGetFileSystemType](https://source.dot.net/#System.Private.CoreLib/src/libraries/Common/src/Interop/Unix/System.Native/Interop.UnixFileSystemTypes.cs,155) | SystemNative_GetFileSystemType | |
-| [System.IO.DriveInfo.DriveFormat](https://learn.microsoft.com/dotnet/api/System.IO.DriveInfo.DriveFormat) | [Interop.Sys.GetSpaceInfoForMountPoint](https://source.dot.net/#System.IO.FileSystem.DriveInfo/src/libraries/Common/src/Interop/Unix/System.Native/Interop.MountPoints.FormatInfo.cs,34) | SystemNative_GetSpaceInfoForMountPoint | |
-| [System.IO.DriveInfo.DriveType](https://learn.microsoft.com/dotnet/api/System.IO.DriveInfo.DriveType) | [Interop.Sys.GetFormatInfoForMountPoint](https://source.dot.net/#System.IO.FileSystem.DriveInfo/src/libraries/Common/src/Interop/Unix/System.Native/Interop.MountPoints.FormatInfo.cs,37) | SystemNative_GetFormatInfoForMountPoint |
-| [System.IO.DriveInfo.TotalFreeSpace](https://learn.microsoft.com/dotnet/api/System.IO.DriveInfo.TotalFreeSpace)
-| [System.IO.DriveInfo.TotalSize](https://learn.microsoft.com/dotnet/api/System.IO.DriveInfo.TotalSize)
-| [System.IO.File.Copy(string, string)](https://learn.microsoft.com/dotnet/api/System.IO.File.Copy)
-| [System.IO.File.Copy(string, string, boolean)](https://learn.microsoft.com/dotnet/api/System.IO.File.Copy)
-| [System.IO.File.OpenHandle(string, FileMode, FileAccess, FileShare, FileOptions, long)](https://learn.microsoft.com/dotnet/api/System.IO.File.OpenHandle)
-| [System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(string)](https://learn.microsoft.com/dotnet/api/System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile)
-| [System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(string, FileMode)](https://learn.microsoft.com/dotnet/api/System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile)
-| [System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(string, FileMode, string?)](https://learn.microsoft.com/dotnet/api/System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile)
-| [System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(string, FileMode, string?, long)](https://learn.microsoft.com/dotnet/api/System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile)
-| [System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(string, FileMode, string?, long, MemoryMappedFileAccess)](https://learn.microsoft.com/dotnet/api/System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile)
-| [System.TimeZoneInfo.Local](https://learn.microsoft.com/dotnet/api/System.TimeZoneInfo.Local)
-| [System.Net.Sockets.Socket.SendPacketsAsync(SocketAsyncEventArgs)](https://learn.microsoft.com/dotnet/api/System.Net.Sockets.Socket.SendPacketsAsync)
+| <xref:System.IO.DriveInfo.AvailableFreeSpace?displayProperty=nameWithType> | [`Interop.Sys.TryGetFileSystemType`](https://source.dot.net/#System.Private.CoreLib/src/libraries/Common/src/Interop/Unix/System.Native/Interop.UnixFileSystemTypes.cs,155) | `SystemNative_GetFileSystemType` | |
+| <xref:System.IO.DriveInfo.DriveFormat?displayProperty=nameWithType> | [`Interop.Sys.GetSpaceInfoForMountPoint`](https://source.dot.net/#System.IO.FileSystem.DriveInfo/src/libraries/Common/src/Interop/Unix/System.Native/Interop.MountPoints.FormatInfo.cs,34) | `SystemNative_GetSpaceInfoForMountPoint` | |
+| <xref:System.IO.DriveInfo.DriveType?displayProperty=nameWithType> | [`Interop.Sys.GetFormatInfoForMountPoint`](https://source.dot.net/#System.IO.FileSystem.DriveInfo/src/libraries/Common/src/Interop/Unix/System.Native/Interop.MountPoints.FormatInfo.cs,37) | `SystemNative_GetFormatInfoForMountPoint` |
+| <xref:System.IO.DriveInfo.TotalFreeSpace?displayProperty=nameWithType> | | | |
+| <xref:System.IO.DriveInfo.TotalSize?displayProperty=nameWithType> | | | |
+| <xref:System.IO.File.Copy(string, string)?displayProperty=nameWithType>(https://learn.microsoft.com/dotnet/api/System.IO.File.Copy) | | | |
+| <xref:System.IO.File.Copy(string, string, boolean)?displayProperty=nameWithType>(https://learn.microsoft.com/dotnet/api/System.IO.File.Copy) | | | |
+| <xref:System.IO.File.OpenHandle(string, FileMode, FileAccess, FileShare, FileOptions, long)?displayProperty=nameWithType>(https://learn.microsoft.com/dotnet/api/System.IO.File.OpenHandle) | | | |
+| <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(string)?displayProperty=nameWithType>(https://learn.microsoft.com/dotnet/api/System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile) | | | |
+| <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(string, FileMode)?displayProperty=nameWithType>(https://learn.microsoft.com/dotnet/api/System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile) | | | |
+| <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(string, FileMode, string?)?displayProperty=nameWithType>(https://learn.microsoft.com/dotnet/api/System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile) | | | |
+| <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(string, FileMode, string?, long)?displayProperty=nameWithType>(https://learn.microsoft.com/dotnet/api/System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile) | | | |
+| <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(string, FileMode, string?, long, MemoryMappedFileAccess)?displayProperty=nameWithType>(https://learn.microsoft.com/dotnet/api/System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile) | | | |
+| <xref:System.TimeZoneInfo.Local?displayProperty=nameWithType>(https://learn.microsoft.com/dotnet/api/System.TimeZoneInfo.Local) | | | |
+| <xref:System.Net.Sockets.Socket.SendPacketsAsync(SocketAsyncEventArgs)?displayProperty=nameWithType>(https://learn.microsoft.com/dotnet/api/System.Net.Sockets.Socket.SendPacketsAsync) | | | |
 
 Use the string `NSPrivacyAccessedAPICategoryDiskSpace` as the value for the `NSPrivacyAccessedAPIType` key in your `NSPrivacyAccessedAPITypes` dictionary. For example, if you use any of the APIs listed above, your *PrivacyInfo.xcprivacy* file should contain the `dict` element in the `NSPrivacyAccessedAPITypes` key's array:
 
