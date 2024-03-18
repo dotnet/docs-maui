@@ -409,94 +409,94 @@ The APIs in this section list C# .NET APIs that call the [required reason APIs](
 
 The following APIs directly or indirectly access file timestamps and require reasons for use:
 
-- [System.Diagnostics.FileVersionInfo](https://learn.microsoft.com/dotnet/api/System.Diagnostics.FileVersionInfo)
-- [System.IO.Compression.ZipFile.CreateFromDirectory](https://learn.microsoft.com/dotnet/api/System.IO.Compression.ZipFile.CreateFromDirectory)
-- [System.IO.Directory.CreateDirectory(string)](https://learn.microsoft.com/dotnet/api/System.IO.Directory.CreateDirectory)
-- [System.IO.Directory.CreateDirectory(string, UnixFileMode)](https://learn.microsoft.com/dotnet/api/System.IO.Directory.CreateDirectory)
-- [System.Runtime.Loader.AssemblyLoadContext.ResolveSatelliteAssembly](https://source.dot.net/#System.Private.CoreLib/src/libraries/System.Private.CoreLib/src/System/Runtime/Loader/AssemblyLoadContext.cs,763)
-- [System.IO.Directory.Delete(string)](https://learn.microsoft.com/dotnet/api/System.IO.Directory.Delete)
-- [System.IO.Directory.Exists(string?)](https://learn.microsoft.com/dotnet/api/System.IO.Directory.Exists)
-- [System.IO.Directory.GetCreationTime(string)](https://learn.microsoft.com/dotnet/api/System.IO.Directory.GetCreationTime)
-- [System.IO.Directory.GetCreationTimeUtc(string)](https://learn.microsoft.com/dotnet/api/System.IO.Directory.GetCreationTimeUtc)
-- [System.IO.Directory.GetLastAccessTime(string)](https://learn.microsoft.com/dotnet/api/System.IO.Directory.GetLastAccessTime)
-- [System.IO.Directory.GetLastAccessTimeUtc(string)](https://learn.microsoft.com/dotnet/api/System.IO.Directory.GetLastAccessTimeUtc)
-- [System.IO.Directory.GetLastWriteTime(string)](https://learn.microsoft.com/dotnet/api/System.IO.Directory.GetLastWriteTime)
-- [System.IO.Directory.GetLastWriteTimeUtc(string)](https://learn.microsoft.com/dotnet/api/System.IO.Directory.GetLastWriteTimeUtc)
-- [System.IO.Directory.Move(string, string)](https://learn.microsoft.com/dotnet/api/System.IO.Directory.Move)
-- [System.IO.DirectoryInfo.Delete(string?)](https://learn.microsoft.com/dotnet/api/System.IO.DirectoryInfo.Delete)
-- [System.IO.DirectoryInfo.MoveTo(string)](https://learn.microsoft.com/dotnet/api/System.IO.DirectoryInfo.MoveTo)
-- [System.IO.Enumeration.FileSystemEntry.Attributes](https://learn.microsoft.com/dotnet/api/System.IO.Enumeration.FileSystemEntry.Attributes)
-- [System.IO.Enumeration.FileSystemEntry.CreationTime](https://learn.microsoft.com/dotnet/api/System.IO.Enumeration.FileSystemEntry.CreationTime)
-- [System.IO.Enumeration.FileSystemEntry.CreationTimeUtc](https://learn.microsoft.com/dotnet/api/System.IO.Enumeration.FileSystemEntry.CreationTimeUtc)
-- [System.IO.Enumeration.FileSystemEntry.IsHidden](https://learn.microsoft.com/dotnet/api/System.IO.Enumeration.FileSystemEntry.IsHidden)
-- [System.IO.Enumeration.FileSystemEntry.LastAccessTime](https://learn.microsoft.com/dotnet/api/System.IO.Enumeration.FileSystemEntry.Attributes)
-- [System.IO.Enumeration.FileSystemEntry.LastAccessTimeUtc](https://learn.microsoft.com/dotnet/api/System.IO.Enumeration.FileSystemEntry.LastAccessTimeUtc)
-- [System.IO.Enumeration.FileSystemEntry.LastWriteTime](https://learn.microsoft.com/dotnet/api/System.IO.Enumeration.FileSystemEntry.LastWriteTime)
-- [System.IO.Enumeration.FileSystemEntry.LastWriteTimeUtc](https://learn.microsoft.com/dotnet/api/System.IO.Enumeration.FileSystemEntry.LastWriteTimeUtc)
-- [System.IO.Enumeration.FileSystemEntry.Length](https://learn.microsoft.com/dotnet/api/System.IO.Enumeration.FileSystemEntry.Length)
-- [System.IO.Enumeration.FileSystemEntry.ToFileSystemInfo()](https://learn.microsoft.com/dotnet/api/System.IO.Enumeration.FileSystemEntry.ToFileSystemInfo)
-- [System.IO.File.Copy(string, string)](https://learn.microsoft.com/dotnet/api/System.IO.File.Copy)
-- [System.IO.File.Copy(string, string, boolean)](https://learn.microsoft.com/dotnet/api/System.IO.File.Copy)
-- [System.IO.File.Delete(string)](https://learn.microsoft.com/dotnet/api/System.IO.File.Delete)
-- [System.IO.File.Exists(string?)](https://learn.microsoft.com/dotnet/api/System.IO.File.Exists)
-- [System.IO.File.GetAttributes(SafeFileHandle)](https://learn.microsoft.com/dotnet/api/System.IO.File.GetAttributes)
-- [System.IO.File.GetAttributes(string)](https://learn.microsoft.com/dotnet/api/System.IO.File.GetAttributes)
-- [System.IO.File.GetCreationTime(SafeFileHandle)](https://learn.microsoft.com/dotnet/api/System.IO.File.GetCreationTime)
-- [System.IO.File.GetCreationTime(string)](https://learn.microsoft.com/dotnet/api/System.IO.File.GetCreationTime)
-- [System.IO.File.GetCreationTimeUtc(SafeFileHandle)](https://learn.microsoft.com/dotnet/api/System.IO.File.GetCreationTimeUtc)
-- [System.IO.File.GetCreationTimeUtc(string)](https://learn.microsoft.com/dotnet/api/System.IO.File.GetCreationTimeUtc)
-- [System.IO.File.GetLastAccessTime(SafeFileHandle)](https://learn.microsoft.com/dotnet/api/System.IO.File.GetLastAccessTime)
-- [System.IO.File.GetLastAccessTime(string)](https://learn.microsoft.com/dotnet/api/System.IO.File.GetLastAccessTime)
-- [System.IO.File.GetLastAccessTimeUtc(SafeFileHandle)](https://learn.microsoft.com/dotnet/api/System.IO.File.GetLastAccessTimeUtc)
-- [System.IO.File.GetLastAccessTimeUtc(string)](https://learn.microsoft.com/dotnet/api/System.IO.File.GetLastAccessTimeUtc)
-- [System.IO.File.GetLastWriteTime(SafeFileHandle)](https://learn.microsoft.com/dotnet/api/System.IO.File.GetLastWriteTime)
-- [System.IO.File.GetLastWriteTime(string)](https://learn.microsoft.com/dotnet/api/System.IO.File.GetLastWriteTime)
-- [System.IO.File.GetLastWriteTimeUtc(SafeFileHandle)](https://learn.microsoft.com/dotnet/api/System.IO.File.GetLastWriteTimeUtc)
-- [System.IO.File.GetLastWriteTimeUtc(string)](https://learn.microsoft.com/dotnet/api/System.IO.File.GetLastWriteTimeUtc)
-- [System.IO.File.GetUnixFileMode(SafeFileHandle)](https://learn.microsoft.com/dotnet/api/System.IO.File.GetUnixFileMode)
-- [System.IO.File.GetUnixFileMode(string)](https://learn.microsoft.com/dotnet/api/System.IO.File.GetUnixFileMode)
-- [System.IO.File.Move(string, string)](https://learn.microsoft.com/dotnet/api/System.IO.File.Move)
-- [System.IO.File.Move(string, string, boolean)](https://learn.microsoft.com/dotnet/api/System.IO.File.Move)
-- [System.IO.File.OpenHandle(string, FileMode, FileAccess, FileShare, FileOptions, long)](https://learn.microsoft.com/dotnet/api/System.IO.File.OpenHandle)
-- [System.IO.File.Replace(string, string, string)](https://learn.microsoft.com/dotnet/api/System.IO.File.Replace)
-- [System.IO.File.Replace(string, string, string, boolean)](https://learn.microsoft.com/dotnet/api/System.IO.File.Replace)
-- [System.IO.File.ReadAllBytes(string)](https://learn.microsoft.com/dotnet/api/System.IO.File.ReadAllBytes)
-- [System.IO.File.ReadAllBytesAsync(string, CancellationToken)](https://learn.microsoft.com/dotnet/api/System.IO.File.ReadAllBytesAsync)
-- [System.IO.FileInfo.Delete()](https://learn.microsoft.com/dotnet/api/System.IO.FileInfo.Delete)
-- [System.IO.FileInfo.MoveTo(string, string)](https://learn.microsoft.com/dotnet/api/System.IO.FileInfo.MoveTo)
-- [System.IO.FileInfo.MoveTo(string, string, boolean)](https://learn.microsoft.com/dotnet/api/System.IO.FileInfo.MoveTo)
-- [System.IO.FileInfo.Replace(string, string)](https://learn.microsoft.com/dotnet/api/System.IO.FileInfo.Replace)
-- [System.IO.FileInfo.Replace(string, string, boolean)](https://learn.microsoft.com/dotnet/api/System.IO.FileInfo.Replace)
-- [System.IO.FileSystemInfo.Attributes](https://learn.microsoft.com/dotnet/api/System.IO.FileSystemInfo.Attributes)
-- [System.IO.FileSystemInfo.CreationTime](https://learn.microsoft.com/dotnet/api/System.IO.FileSystemInfo.CreationTime)
-- [System.IO.FileSystemInfo.CreationTimeUtc](https://learn.microsoft.com/dotnet/api/System.IO.FileSystemInfo.CreationTimeUtc)
-- [System.IO.FileSystemInfo.LastAccessTime](https://learn.microsoft.com/dotnet/api/System.IO.FileSystemInfo.Attributes)
-- [System.IO.FileSystemInfo.LastAccessTimeUtc](https://learn.microsoft.com/dotnet/api/System.IO.FileSystemInfo.LastAccessTimeUtc)
-- [System.IO.FileSystemInfo.LastWriteTime](https://learn.microsoft.com/dotnet/api/System.IO.FileSystemInfo.LastWriteTime)
-- [System.IO.FileSystemInfo.LastWriteTimeUtc](https://learn.microsoft.com/dotnet/api/System.IO.FileSystemInfo.LastWriteTimeUtc)
-- [System.IO.FileSystemInfo.Length](https://learn.microsoft.com/dotnet/api/System.IO.FileSystemInfo.Length)
-- [System.IO.FileSystemInfo.Refresh()](https://learn.microsoft.com/dotnet/api/System.IO.FileSystemInfo.Refresh)
-- [System.IO.FileSystemInfo.UnixFileMode](https://learn.microsoft.com/dotnet/api/System.IO.FileSystemInfo.UnixFileMode)
-- [System.IO.FileSystemWatcher](https://learn.microsoft.com/dotnet/api/System.IO.FileSystemWatcher)
-- [System.IO.IsolatedStorage.IsolatedStorageFile.MoveDirectory(string, string)](https://learn.microsoft.com/dotnet/api/System.IO.IsolatedStorage.IsolatedStorageFile.MoveDirectory)
-- [System.IO.IsolatedStorage.IsolatedStorageFile.MoveFile(string, string)](https://learn.microsoft.com/dotnet/api/System.IO.IsolatedStorage.IsolatedStorageFile.MoveFile)
-- [System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(string)](https://learn.microsoft.com/dotnet/api/System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile)
-- [System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(string, FileMode)](https://learn.microsoft.com/dotnet/api/System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile)
-- [System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(string, FileMode, string?)](https://learn.microsoft.com/dotnet/api/System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile)
-- [System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(string, FileMode, string?, long)](https://learn.microsoft.com/dotnet/api/System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile)
-- [System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(string, FileMode, string?, long, MemoryMappedFileAccess)](https://learn.microsoft.com/dotnet/api/System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile)
-- [System.IO.Path.Exists(string?)](https://learn.microsoft.com/dotnet/api/System.IO.Path.Exists)
-- [System.IO.Pipes.AnonymousPipeClientStream](https://learn.microsoft.com/dotnet/api/System.IO.Pipes.AnonymousPipeClientStream)
-- [System.IO.Pipes.AnonymousPipeServerStream](https://learn.microsoft.com/dotnet/api/System.IO.Pipes.AnonymousPipeServerStream)
-- [System.IO.Pipes.NamedPipeClientStream](https://learn.microsoft.com/dotnet/api/System.IO.Pipes.NamedPipeClientStream)
-- [System.IO.Pipes.NamedPipeServerStream](https://learn.microsoft.com/dotnet/api/System.IO.Pipes.NamedPipeServerStream)
-- [System.IO.RandomAccess.GetLength(SafeFileHandle)](https://learn.microsoft.com/dotnet/api/System.IO.RandomAccess.GetLength)
-- [System.Formats.Tar.TarWriter.WriteEntry(TarEntry)](https://learn.microsoft.com/dotnet/api/System.Formats.Tar.TarWriter.WriteEntry)
-- [System.Formats.Tar.TarWriter.WriteEntry(string, string)](https://learn.microsoft.com/dotnet/api/System.Formats.Tar.TarWriter.WriteEntry)
-- [System.Formats.Tar.TarWriter.WriteEntryAsync(TarEntry, CancellationToken)](https://learn.microsoft.com/dotnet/api/System.Formats.Tar.TarWriter.WriteEntryAsync)
-- [System.Formats.Tar.TarWriter.WriteEntryAsync(string, string, CancellationToken)](https://learn.microsoft.com/dotnet/api/System.Formats.Tar.TarWriter.WriteEntryAsync)
-- [System.Net.Sockets.Socket.SendPacketsAsync(SocketAsyncEventArgs)](https://learn.microsoft.com/dotnet/api/System.Net.Sockets.Socket.SendPacketsAsync)
-- [System.TimeZoneInfo.Local](https://learn.microsoft.com/dotnet/api/System.TimeZoneInfo.Local)
+- <xref:System.Diagnostics.FileVersionInfo?displayProperty=nameWithType>
+- <xref:System.IO.Compression.ZipFile.CreateFromDirectory?displayProperty=nameWithType>
+- <xref:System.IO.Directory.CreateDirectory(string)?displayProperty=nameWithType>
+- <xref:System.IO.Directory.CreateDirectory(string, UnixFileMode)?displayProperty=nameWithType>
+- <xref:System.Runtime.Loader.AssemblyLoadContext.ResolveSatelliteAssembly?displayProperty=nameWithType>
+- <xref:System.IO.Directory.Delete(string)?displayProperty=nameWithType>
+- <xref:System.IO.Directory.Exists(string?)?displayProperty=nameWithType>
+- <xref:System.IO.Directory.GetCreationTime(string)?displayProperty=nameWithType>
+- <xref:System.IO.Directory.GetCreationTimeUtc(string)?displayProperty=nameWithType>
+- <xref:System.IO.Directory.GetLastAccessTime(string)?displayProperty=nameWithType>
+- <xref:System.IO.Directory.GetLastAccessTimeUtc(string)?displayProperty=nameWithType>
+- <xref:System.IO.Directory.GetLastWriteTime(string)?displayProperty=nameWithType>
+- <xref:System.IO.Directory.GetLastWriteTimeUtc(string)?displayProperty=nameWithType>
+- <xref:System.IO.Directory.Move(string, string)?displayProperty=nameWithType>
+- <xref:System.IO.DirectoryInfo.Delete(string?)?displayProperty=nameWithType>
+- <xref:System.IO.DirectoryInfo.MoveTo(string)?displayProperty=nameWithType>
+- <xref:System.IO.Enumeration.FileSystemEntry.Attributes?displayProperty=nameWithType>
+- <xref:System.IO.Enumeration.FileSystemEntry.CreationTime?displayProperty=nameWithType>
+- <xref:System.IO.Enumeration.FileSystemEntry.CreationTimeUtc?displayProperty=nameWithType>
+- <xref:System.IO.Enumeration.FileSystemEntry.IsHidden?displayProperty=nameWithType>
+- <xref:System.IO.Enumeration.FileSystemEntry.LastAccessTime?displayProperty=nameWithType>
+- <xref:System.IO.Enumeration.FileSystemEntry.LastAccessTimeUtc?displayProperty=nameWithType>
+- <xref:System.IO.Enumeration.FileSystemEntry.LastWriteTime?displayProperty=nameWithType>
+- <xref:System.IO.Enumeration.FileSystemEntry.LastWriteTimeUtc?displayProperty=nameWithType>
+- <xref:System.IO.Enumeration.FileSystemEntry.Length?displayProperty=nameWithType>
+- <xref:System.IO.Enumeration.FileSystemEntry.ToFileSystemInfo?displayProperty=nameWithType>
+- <xref:System.IO.File.Copy(string, string)?displayProperty=nameWithType>
+- <xref:System.IO.File.Copy(string, string, boolean)?displayProperty=nameWithType>
+- <xref:System.IO.File.Delete(string)?displayProperty=nameWithType>
+- <xref:System.IO.File.Exists(string?)?displayProperty=nameWithType>
+- <xref:System.IO.File.GetAttributes(SafeFileHandle)?displayProperty=nameWithType>
+- <xref:System.IO.File.GetAttributes(string)?displayProperty=nameWithType>
+- <xref:System.IO.File.GetCreationTime(SafeFileHandle)?displayProperty=nameWithType>
+- <xref:System.IO.File.GetCreationTime(string)?displayProperty=nameWithType>
+- <xref:System.IO.File.GetCreationTimeUtc(SafeFileHandle)?displayProperty=nameWithType>
+- <xref:System.IO.File.GetCreationTimeUtc(string)?displayProperty=nameWithType>
+- <xref:System.IO.File.GetLastAccessTime(SafeFileHandle)?displayProperty=nameWithType>
+- <xref:System.IO.File.GetLastAccessTime(string)?displayProperty=nameWithType>
+- <xref:System.IO.File.GetLastAccessTimeUtc(SafeFileHandle)?displayProperty=nameWithType>
+- <xref:System.IO.File.GetLastAccessTimeUtc(string)?displayProperty=nameWithType>
+- <xref:System.IO.File.GetLastWriteTime(SafeFileHandle)?displayProperty=nameWithType>
+- <xref:System.IO.File.GetLastWriteTime(string)?displayProperty=nameWithType>
+- <xref:System.IO.File.GetLastWriteTimeUtc(SafeFileHandle)?displayProperty=nameWithType>
+- <xref:System.IO.File.GetLastWriteTimeUtc(string)?displayProperty=nameWithType>
+- <xref:System.IO.File.GetUnixFileMode(SafeFileHandle)?displayProperty=nameWithType>
+- <xref:System.IO.File.GetUnixFileMode(string)?displayProperty=nameWithType>
+- <xref:System.IO.File.Move(string, string)?displayProperty=nameWithType>
+- <xref:System.IO.File.Move(string, string, boolean)?displayProperty=nameWithType>
+- <xref:System.IO.File.OpenHandle(string, FileMode, FileAccess, FileShare, FileOptions, long)?displayProperty=nameWithType>
+- <xref:System.IO.File.Replace(string, string, string)?displayProperty=nameWithType>
+- <xref:System.IO.File.Replace(string, string, string, boolean)?displayProperty=nameWithType>
+- <xref:System.IO.File.ReadAllBytes(string)?displayProperty=nameWithType>
+- <xref:System.IO.File.ReadAllBytesAsync(string, CancellationToken)?displayProperty=nameWithType>
+- <xref:System.IO.FileInfo.Delete()?displayProperty=nameWithType>
+- <xref:System.IO.FileInfo.MoveTo(string, string)?displayProperty=nameWithType>
+- <xref:System.IO.FileInfo.MoveTo(string, string, boolean)?displayProperty=nameWithType>
+- <xref:System.IO.FileInfo.Replace(string, string)?displayProperty=nameWithType>
+- <xref:System.IO.FileInfo.Replace(string, string, boolean)?displayProperty=nameWithType>
+- <xref:System.IO.FileSystemInfo.Attributes?displayProperty=nameWithType>
+- <xref:System.IO.FileSystemInfo.CreationTime?displayProperty=nameWithType>
+- <xref:System.IO.FileSystemInfo.CreationTimeUtc?displayProperty=nameWithType>
+- <xref:System.IO.FileSystemInfo.LastAccessTime?displayProperty=nameWithType>
+- <xref:System.IO.FileSystemInfo.LastAccessTimeUtc?displayProperty=nameWithType>
+- <xref:System.IO.FileSystemInfo.LastWriteTime?displayProperty=nameWithType>
+- <xref:System.IO.FileSystemInfo.LastWriteTimeUtc?displayProperty=nameWithType>
+- <xref:System.IO.FileSystemInfo.Length?displayProperty=nameWithType>
+- <xref:System.IO.FileSystemInfo.Refresh?displayProperty=nameWithType>
+- <xref:System.IO.FileSystemInfo.UnixFileMode?displayProperty=nameWithType>
+- <xref:System.IO.FileSystemWatcher?displayProperty=nameWithType>
+- <xref:System.IO.IsolatedStorage.IsolatedStorageFile.MoveDirectory(string, string)?displayProperty=nameWithType>
+- <xref:System.IO.IsolatedStorage.IsolatedStorageFile.MoveFile(string, string)?displayProperty=nameWithType>
+- <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(string)?displayProperty=nameWithType>
+- <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(string, FileMode)?displayProperty=nameWithType>
+- <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(string, FileMode, string?)?displayProperty=nameWithType>
+- <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(string, FileMode, string?, long)?displayProperty=nameWithType>
+- <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(string, FileMode, string?, long, MemoryMappedFileAccess)?displayProperty=nameWithType>
+- <xref:System.IO.Path.Exists(string?)?displayProperty=nameWithType>
+- <xref:System.IO.Pipes.AnonymousPipeClientStream?displayProperty=nameWithType>
+- <xref:System.IO.Pipes.AnonymousPipeServerStream?displayProperty=nameWithType>
+- <xref:System.IO.Pipes.NamedPipeClientStream?displayProperty=nameWithType>
+- <xref:System.IO.Pipes.NamedPipeServerStream?displayProperty=nameWithType>
+- <xref:System.IO.RandomAccess.GetLength(SafeFileHandle)?displayProperty=nameWithType>
+- <xref:System.Formats.Tar.TarWriter.WriteEntry(TarEntry)?displayProperty=nameWithType>
+- <xref:System.Formats.Tar.TarWriter.WriteEntry(string, string)?displayProperty=nameWithType>
+- <xref:System.Formats.Tar.TarWriter.WriteEntryAsync(TarEntry, CancellationToken)?displayProperty=nameWithType>
+- <xref:System.Formats.Tar.TarWriter.WriteEntryAsync(string, string, CancellationToken)?displayProperty=nameWithType>
+- <xref:System.Net.Sockets.Socket.SendPacketsAsync(SocketAsyncEventArgs)?displayProperty=nameWithType>
+- <xref:System.TimeZoneInfo.Local?displayProperty=nameWithType>
 
 Use the string `NSPrivacyAccessedAPICategoryFileTimestamp` as the value for the `NSPrivacyAccessedAPIType` key in your `NSPrivacyAccessedAPITypes` dictionary. For example, if you use any of the APIs listed above, your *PrivacyInfo.xcprivacy* file should contain the `dict` element in the `NSPrivacyAccessedAPITypes` key's array:
 
