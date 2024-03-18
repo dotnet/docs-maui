@@ -402,7 +402,7 @@ The APIs in this section list C# .NET APIs that call the [required reason APIs](
 
 The following APIs directly or indirectly access file timestamps and require reasons for use:
 
-| .NET API | Internal usage | CoreClr usage | Mono usage |
+| .NET API | Internal usage | CoreCLR usage | Mono usage |
 | -------- | -------------- | ------------- | ---------- |
 | [System.Diagnostics.FileVersionInfo](https://learn.microsoft.com/dotnet/api/System.Diagnostics.FileVersionInfo) | [Interop.Sys.LStat](https://source.dot.net/#System.Private.CoreLib/src/libraries/Common/src/Interop/Unix/System.Native/Interop.Stat.cs,65) | SystemNative_LStat | g_file_test
 | [System.IO.Compression.ZipFile.CreateFromDirectory](https://learn.microsoft.com/dotnet/api/System.IO.Compression.ZipFile.CreateFromDirectory) | [Interop.Sys.Stat](https://source.dot.net/#System.Private.CoreLib/src/libraries/Common/src/Interop/Unix/System.Native/Interop.Stat.cs,62) | SystemNative_Stat | mono_file_map_size
@@ -520,15 +520,15 @@ Reason codes from [File timestamp APIs](https://developer.apple.com/documentatio
 
 The following APIs directly or indirectly access the system boot time and require reasons for use:
 
-| .NET API | Internal usage | CoreClr usage | Mono usage |
+| .NET API | Internal usage | CoreCLR usage | Mono usage |
 | -------- | -------------- | ------------- | ---------- |
-| [System.Environment.TickCount](https://learn.microsoft.com/dotnet/api/System.Environment.TickCount) | | | mono_msec_boottime
-| [System.Environment.TickCount64](https://learn.microsoft.com/dotnet/api/System.Environment.TickCount64) | | | mono_domain_finalize
-| | | | mono_join_uninterrupted
-| | | | mono_msec_ticks
-| | | | mono_100ns_ticks
-| | | | threads_wait_pending_joinable_threads
-| | | | current_time
+| <xref:System.Environment.TickCount?displayProperty=nameWithType> | | | `mono_msec_boottime` |
+| <xref:System.Environment.TickCount64?displayProperty=nameWithType> | | | `mono_domain_finalize` |
+| | | | `mono_join_uninterrupted` |
+| | | | `mono_msec_ticks` |
+| | | | `mono_100ns_ticks` |
+| | | | `threads_wait_pending_joinable_threads` |
+| | | | `current_time` |
 
 Use the string `NSPrivacyAccessedAPICategorySystemBootTime` as the value for the `NSPrivacyAccessedAPIType` key in your `NSPrivacyAccessedAPITypes` dictionary. For example, if you use any of the APIs listed above, your *PrivacyInfo.xcprivacy* file should contain the `dict` element in the `NSPrivacyAccessedAPITypes` key's array:
 
@@ -558,7 +558,7 @@ Reason codes from [File timestamp APIs](https://developer.apple.com/documentatio
 
 The following APIs directly or indirectly access the available disk space and require reasons for use:
 
-| .NET API | Internal usage | CoreClr usage | Mono usage |
+| .NET API | Internal usage | CoreCLR usage | Mono usage |
 | -------- | -------------- | ------------- | ---------- |
 | <xref:System.IO.DriveInfo.AvailableFreeSpace?displayProperty=nameWithType> | [`Interop.Sys.TryGetFileSystemType`](https://source.dot.net/#System.Private.CoreLib/src/libraries/Common/src/Interop/Unix/System.Native/Interop.UnixFileSystemTypes.cs,155) | `SystemNative_GetFileSystemType` | |
 | <xref:System.IO.DriveInfo.DriveFormat?displayProperty=nameWithType> | [`Interop.Sys.GetSpaceInfoForMountPoint`](https://source.dot.net/#System.IO.FileSystem.DriveInfo/src/libraries/Common/src/Interop/Unix/System.Native/Interop.MountPoints.FormatInfo.cs,34) | `SystemNative_GetSpaceInfoForMountPoint` | |
