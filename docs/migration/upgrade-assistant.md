@@ -42,6 +42,17 @@ Before upgrading your Xamarin.Forms app to .NET MAUI, you should first update yo
 
 This will help to simplify the rest of the migration process, as it will minimize the API differences between Xamarin.Forms and .NET MAUI, and will ensure that you are using .NET compatible versions of your dependencies if they exist.
 
+## Quick actions in Visual Studio
+
+.NET Upgrade Assistant has a quick action for converting Xamarin.Forms namespaces to the appropriate .NET MAUI namespaces, that's displayed as a light bulb:
+
+:::image type="content" source="media/ua-light-bulb.png" alt-text="Screenshot of previewing the application of a light bulb suggestion.":::
+
+The quick action will make the necessary replacements across the file.
+
+> [!NOTE]
+> Quick action light bulbs will appear as you migrate the files from your Xamarin.Forms project into a .NET MAUI project.
+
 ## Installation
 
 <!-- markdownlint-disable MD025 -->

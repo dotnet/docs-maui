@@ -172,15 +172,15 @@ If you try to create a new project and the file explorer keeps popping up in an 
 .NET 8 has a build target that helps set up your Android environment for you. Run the following command in a terminal to configure your machine and set up your Android environment:
 
 ```dotnetcli
-dotnet build -t:InstallAndroidDependencies -f:net8.0-android -p:AndroidSdkDirectory "<AndroidSdkPath>" -p:JavaSdkDirectory "<JavaSdkPath>" -p:AcceptAndroidSDKLicenses=True
+dotnet build -t:InstallAndroidDependencies -f:net8.0-android -p:AndroidSdkDirectory="<AndroidSdkPath>" -p:JavaSdkDirectory="<JavaSdkPath>" -p:AcceptAndroidSDKLicenses=True
 ```
 
 In the command above:
 
-* `AndroidSdkDirectory "<AndroidSdkPath>"`: installs or updates Android dependencies to the specified absolute path.
+* `AndroidSdkDirectory="<AndroidSdkPath>"`: installs or updates Android dependencies to the specified absolute path.
   * Windows: the suggested AndroidSdkPath is `%LOCALAPPDATA%/Android/Sdk`.
   * MacOS: the suggested AndroidSdkPath is `$HOME/Library/Android/sdk`.
-* `JavaSdkDirectory "<JavaSdkPath>"`: installs Java to the specified absolute path.
+* `JavaSdkDirectory="<JavaSdkPath>"`: installs Java to the specified absolute path.
 * `AcceptAndroidSDKLicenses=True`: accepts the required Android licenses for development.
 
 #### There's an error that the Android SDK or Java SDK was not found

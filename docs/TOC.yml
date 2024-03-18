@@ -28,7 +28,7 @@
                 - name: Debug on a virtual device
                   href: android/emulator/debug-on-emulator.md
                 - name: Connect to an emulator from a Windows VM
-                  href: android/emulator/mac-with-windows-vm.md                  
+                  href: android/emulator/mac-with-windows-vm.md
                 - name: Troubleshoot common problems
                   href: android/emulator/troubleshooting.md
             - name: Devices
@@ -443,6 +443,8 @@
                   href: user-interface/controls/contentview.md
                 - name: TwoPaneView
                   href: user-interface/controls/twopaneview.md
+        - name: C# markup
+          href: /windows/apps/windows-dotnet-maui/tutorial-csharp-ui-maui-toolkit?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
         - name: Display pop-ups
           href: user-interface/pop-ups.md
         - name: Display toolbar items
@@ -511,6 +513,8 @@
       items:
         - name: Android
           items:
+            - name: App links
+              href: android/app-links.md
             - name: App manifest
               href: android/manifest.md
             - name: Internals
@@ -543,6 +547,8 @@
                   href: ios/device-provisioning/automatic-provisioning.md
                 - name: Manual provisioning
                   href: ios/device-provisioning/manual-provisioning.md
+            - name: Universal links
+              href: macios/universal-links.md
         - name: Mac Catalyst
           items:
             - name: Code signing and provisioning
@@ -559,6 +565,8 @@
               href: macios/interpreter.md
             - name: Specify the UI idiom
               href: mac-catalyst/user-interface-idiom.md
+            - name: Universal links
+              href: macios/universal-links.md
         - name: Platform integration
           items:
             - name: Overview
@@ -738,6 +746,34 @@
           href: platform-integration/native-embedding.md
     - name: Data & cloud services
       items:
+        - name: AI
+          items:
+            - name: ChatGPT
+              href: /windows/apps/windows-dotnet-maui/tutorial-maui-ai?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+            - name: DALL-E
+              href: /windows/apps/windows-dotnet-maui/dall-e-maui-windows?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Authentication
+          items:
+            - name: Microsoft Authentication Library
+              href: /entra/msal/dotnet?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+            - name: Prepare tenant
+              href: /entra/external-id/customers/tutorial-mobile-app-maui-sign-in-prepare-tenant?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+            - name: Create a Shell app
+              href: /entra/external-id/customers/tutorial-mobile-app-maui-sign-in-prepare-app?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+            - name: Sign in and sign out
+              href: /entra/external-id/customers/tutorial-mobile-app-maui-sign-in-sign-out?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+            - name: Role-based access control
+              href: /entra/external-id/customers/tutorial-mobile-maui-role-based-access-control?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Azure Mobile Apps
+          items:
+            - name: Overview
+              href: /azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+            - name: Authentication
+              href: /azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui/authentication?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+            - name: Offline sync
+              href: /azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui/offline?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Graph SDK
+          href: /windows/apps/windows-dotnet-maui/tutorial-graph-api?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
         - name: Local databases
           href: data-cloud/database-sqlite.md
         - name: Web services

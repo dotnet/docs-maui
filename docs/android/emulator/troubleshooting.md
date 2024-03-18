@@ -23,13 +23,13 @@ If you see an error about a failure to install the APK on the emulator or a fail
 
 01. Type the following command:
 
-    ```shell
+    ```console
     adb devices
     ```
 
 01. If the emulator is accessible from the Android SDK, the emulator should appear in the list of attached devices. For example:
 
-    ```shell
+    ```console
     List of devices attached
     emulator-5554   device
     ```
@@ -196,13 +196,13 @@ If you see an error about a failure to install the APK on the emulator or a fail
 
 01. Type the following command:
 
-   ```shell
+   ```console
    adb devices
    ```
 
 01. If the emulator is accessible from the Android SDK, the emulator should appear in the list of attached devices. For example:
 
-   ```shell
+   ```console
    List of devices attached
    emulator-5554   device
    ```

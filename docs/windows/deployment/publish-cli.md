@@ -1,5 +1,5 @@
 ---
-title: "Use the CLI to publish packageds app for Windows"
+title: "Use the CLI to publish packaged apps for Windows"
 description: "Learn how to package and publish a packaged Windows .NET MAUI app with the dotnet publish command."
 ms.date: 10/12/2022
 ---
@@ -37,7 +37,7 @@ You must use a signing certificate for use in publishing your app. This certific
 01. Use the following PowerShell command to query the certificate store for the certificate that was created:
 
     ```powershell
-    Get-ChildItem "Cert:\CurrentUser\My" | Format-Table Subject, FriendlyName, Thumbprint
+    Get-ChildItem "Cert:\CurrentUser\My" | Format-Table Thumbprint, Subject, FriendlyName
     ```
 
     You should see results similar to the following output:
