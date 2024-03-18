@@ -413,7 +413,7 @@ The following APIs directly or indirectly access file timestamps and require rea
 - <xref:System.IO.Compression.ZipFile.CreateFromDirectory%2A?displayProperty=nameWithType>
 - <xref:System.IO.Directory.CreateDirectory(System.String)?displayProperty=nameWithType>
 - <xref:System.IO.Directory.CreateDirectory(System.String,System.IO.UnixFileMode)?displayProperty=nameWithType>
-- <xref:System.Runtime.Loader.AssemblyLoadContext.ResolveSatelliteAssembly?displayProperty=nameWithType>
+- [`System.Runtime.Loader.AssemblyLoadContext.ResolveSatelliteAssembly`](https://source.dot.net/#System.Private.CoreLib/src/libraries/System.Private.CoreLib/src/System/Runtime/Loader/AssemblyLoadContext.cs,763)
 - <xref:System.IO.Directory.Delete(System.String)?displayProperty=nameWithType>
 - <xref:System.IO.Directory.Exists(System.String)?displayProperty=nameWithType>
 - <xref:System.IO.Directory.GetCreationTime(System.String)?displayProperty=nameWithType>
@@ -439,21 +439,21 @@ The following APIs directly or indirectly access file timestamps and require rea
 - <xref:System.IO.File.Copy(System.String,System.String,System.Boolean)?displayProperty=nameWithType>
 - <xref:System.IO.File.Delete(System.String)?displayProperty=nameWithType>
 - <xref:System.IO.File.Exists(System.String)?displayProperty=nameWithType>
-- <xref:System.IO.File.GetAttributes(Microsoft.Win32.SafeHandlers.SafeFileHandle)?displayProperty=nameWithType>
+- <xref:System.IO.File.GetAttributes(Microsoft.Win32.SafeHandles.SafeFileHandle)?displayProperty=nameWithType>
 - <xref:System.IO.File.GetAttributes(System.String)?displayProperty=nameWithType>
-- <xref:System.IO.File.GetCreationTime(Microsoft.Win32.SafeHandlers.SafeFileHandle)?displayProperty=nameWithType>
+- <xref:System.IO.File.GetCreationTime(Microsoft.Win32.SafeHandles.SafeFileHandle)?displayProperty=nameWithType>
 - <xref:System.IO.File.GetCreationTime(System.String)?displayProperty=nameWithType>
-- <xref:System.IO.File.GetCreationTimeUtc(Microsoft.Win32.SafeHandlers.SafeFileHandle)?displayProperty=nameWithType>
+- <xref:System.IO.File.GetCreationTimeUtc(Microsoft.Win32.SafeHandles.SafeFileHandle)?displayProperty=nameWithType>
 - <xref:System.IO.File.GetCreationTimeUtc(System.String)?displayProperty=nameWithType>
-- <xref:System.IO.File.GetLastAccessTime(Microsoft.Win32.SafeHandlers.SafeFileHandle)?displayProperty=nameWithType>
+- <xref:System.IO.File.GetLastAccessTime(Microsoft.Win32.SafeHandles.SafeFileHandle)?displayProperty=nameWithType>
 - <xref:System.IO.File.GetLastAccessTime(System.String)?displayProperty=nameWithType>
-- <xref:System.IO.File.GetLastAccessTimeUtc(Microsoft.Win32.SafeHandlers.SafeFileHandle)?displayProperty=nameWithType>
+- <xref:System.IO.File.GetLastAccessTimeUtc(Microsoft.Win32.SafeHandles.SafeFileHandle)?displayProperty=nameWithType>
 - <xref:System.IO.File.GetLastAccessTimeUtc(System.String)?displayProperty=nameWithType>
-- <xref:System.IO.File.GetLastWriteTime(Microsoft.Win32.SafeHandlers.SafeFileHandle)?displayProperty=nameWithType>
+- <xref:System.IO.File.GetLastWriteTime(Microsoft.Win32.SafeHandles.SafeFileHandle)?displayProperty=nameWithType>
 - <xref:System.IO.File.GetLastWriteTime(System.String)?displayProperty=nameWithType>
-- <xref:System.IO.File.GetLastWriteTimeUtc(Microsoft.Win32.SafeHandlers.SafeFileHandle)?displayProperty=nameWithType>
+- <xref:System.IO.File.GetLastWriteTimeUtc(Microsoft.Win32.SafeHandles.SafeFileHandle)?displayProperty=nameWithType>
 - <xref:System.IO.File.GetLastWriteTimeUtc(System.String)?displayProperty=nameWithType>
-- <xref:System.IO.File.GetUnixFileMode(Microsoft.Win32.SafeHandlers.SafeFileHandle)?displayProperty=nameWithType>
+- <xref:System.IO.File.GetUnixFileMode(Microsoft.Win32.SafeHandles.SafeFileHandle)?displayProperty=nameWithType>
 - <xref:System.IO.File.GetUnixFileMode(System.String)?displayProperty=nameWithType>
 - <xref:System.IO.File.Move(System.String,System.String)?displayProperty=nameWithType>
 - <xref:System.IO.File.Move(System.String,System.String,System.Boolean)?displayProperty=nameWithType>
@@ -463,8 +463,8 @@ The following APIs directly or indirectly access file timestamps and require rea
 - <xref:System.IO.File.ReadAllBytes(System.String)?displayProperty=nameWithType>
 - <xref:System.IO.File.ReadAllBytesAsync(System.String,System.Threading.CancellationToken)?displayProperty=nameWithType>
 - <xref:System.IO.FileInfo.Delete?displayProperty=nameWithType>
-- <xref:System.IO.FileInfo.MoveTo(System.String,System.String)?displayProperty=nameWithType>
-- <xref:System.IO.FileInfo.MoveTo(System.String,System.String,System.Boolean)?displayProperty=nameWithType>
+- <xref:System.IO.FileInfo.MoveTo(System.String)?displayProperty=nameWithType>
+- <xref:System.IO.FileInfo.MoveTo(System.String,System.Boolean)?displayProperty=nameWithType>
 - <xref:System.IO.FileInfo.Replace(System.String,System.String)?displayProperty=nameWithType>
 - <xref:System.IO.FileInfo.Replace(System.String,System.String,System.Boolean)?displayProperty=nameWithType>
 - <xref:System.IO.FileSystemInfo.Attributes?displayProperty=nameWithType>
@@ -474,7 +474,7 @@ The following APIs directly or indirectly access file timestamps and require rea
 - <xref:System.IO.FileSystemInfo.LastAccessTimeUtc?displayProperty=nameWithType>
 - <xref:System.IO.FileSystemInfo.LastWriteTime?displayProperty=nameWithType>
 - <xref:System.IO.FileSystemInfo.LastWriteTimeUtc?displayProperty=nameWithType>
-- <xref:System.IO.FileSystemInfo.Length?displayProperty=nameWithType>
+<!-- - <xref:System.IO.FileSystemInfo.Length?displayProperty=nameWithType> -->
 - <xref:System.IO.FileSystemInfo.Refresh?displayProperty=nameWithType>
 - <xref:System.IO.FileSystemInfo.UnixFileMode?displayProperty=nameWithType>
 - <xref:System.IO.FileSystemWatcher?displayProperty=nameWithType>
@@ -490,7 +490,7 @@ The following APIs directly or indirectly access file timestamps and require rea
 - <xref:System.IO.Pipes.AnonymousPipeServerStream?displayProperty=nameWithType>
 - <xref:System.IO.Pipes.NamedPipeClientStream?displayProperty=nameWithType>
 - <xref:System.IO.Pipes.NamedPipeServerStream?displayProperty=nameWithType>
-- <xref:System.IO.RandomAccess.GetLength(Microsoft.Win32.SafeHandlers.SafeFileHandle)?displayProperty=nameWithType>
+- <xref:System.IO.RandomAccess.GetLength(Microsoft.Win32.SafeHandles.SafeFileHandle)?displayProperty=nameWithType>
 - <xref:System.Formats.Tar.TarWriter.WriteEntry(System.Formats.Tar.TarEntry)?displayProperty=nameWithType>
 - <xref:System.Formats.Tar.TarWriter.WriteEntry(System.String,System.String)?displayProperty=nameWithType>
 - <xref:System.Formats.Tar.TarWriter.WriteEntryAsync(System.Formats.Tar.TarEntry,System.Threading.CancellationToken)?displayProperty=nameWithType>
