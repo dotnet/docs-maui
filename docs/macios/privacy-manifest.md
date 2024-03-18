@@ -555,8 +555,8 @@ The following APIs directly or indirectly access the available disk space and re
 - <xref:System.IO.DriveInfo.DriveType?displayProperty=nameWithType>
 - <xref:System.IO.DriveInfo.TotalFreeSpace?displayProperty=nameWithType>
 - <xref:System.IO.DriveInfo.TotalSize?displayProperty=nameWithType>
-- <xref:System.IO.File.Copy(String,String)>
-- <xref:System.IO.File.Copy(String,String,Boolean)>
+- <xref:System.IO.File.Copy(System.String,System.String)?displayProperty=nameWithType>
+- <xref:System.IO.File.Copy(System.String,System.String,System.Boolean)?displayProperty=nameWithType>
 - <xref:System.IO.File.OpenHandle(String, FileMode, FileAccess, FileShare, FileOptions, Int64)?displayProperty=nameWithType>
 - <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(String)?displayProperty=nameWithType>
 - <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(String, FileMode)?displayProperty=nameWithType>
