@@ -565,8 +565,8 @@ The following APIs directly or indirectly access the available disk space and re
 | <xref:System.IO.DriveInfo.DriveType?displayProperty=nameWithType> | [`Interop.Sys.GetFormatInfoForMountPoint`](https://source.dot.net/#System.IO.FileSystem.DriveInfo/src/libraries/Common/src/Interop/Unix/System.Native/Interop.MountPoints.FormatInfo.cs,37) | `SystemNative_GetFormatInfoForMountPoint` |
 | <xref:System.IO.DriveInfo.TotalFreeSpace?displayProperty=nameWithType> | | | |
 | <xref:System.IO.DriveInfo.TotalSize?displayProperty=nameWithType> | | | |
-| <xref:System.IO.File.Copy(string, string)?displayProperty=nameWithType>(https://learn.microsoft.com/dotnet/api/System.IO.File.Copy) | | | |
-| <xref:System.IO.File.Copy(string, string, boolean)?displayProperty=nameWithType>(https://learn.microsoft.com/dotnet/api/System.IO.File.Copy) | | | |
+| <xref:System.IO.File.Copy(System.String, System.String)?displayProperty=nameWithType>(https://learn.microsoft.com/dotnet/api/System.IO.File.Copy) | | | |
+| <xref:System.IO.File.Copy(System.String,System.String,System.Boolean)?displayProperty=nameWithType>(https://learn.microsoft.com/dotnet/api/System.IO.File.Copy) | | | |
 | <xref:System.IO.File.OpenHandle(string, FileMode, FileAccess, FileShare, FileOptions, long)?displayProperty=nameWithType>(https://learn.microsoft.com/dotnet/api/System.IO.File.OpenHandle) | | | |
 | <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(string)?displayProperty=nameWithType>(https://learn.microsoft.com/dotnet/api/System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile) | | | |
 | <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(string, FileMode)?displayProperty=nameWithType>(https://learn.microsoft.com/dotnet/api/System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile) | | | |
