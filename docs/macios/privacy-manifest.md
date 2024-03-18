@@ -6,7 +6,7 @@ ms.date: 03/18/2024
 
 # Apple privacy manifest
 
-Apple has introduced a privacy policy for including [privacy manifest files][https://developer.apple.com/documentation/bundleresources/privacy_manifest_files] in new and updated apps that target iOS, iPadOS, and tvOS on the App Store.
+Apple has introduced a privacy policy for including [privacy manifest files](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files) in new and updated apps that target iOS, iPadOS, and tvOS on the App Store.
 
 The privacy manifest file, *PrivacyInfo.xcprivacy*, should list the [types of data](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests) your .NET MAUI apps, or any third-party SDKs, and packages collect, and the reasons for using certain [required reason APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api) categories.
 
@@ -22,7 +22,7 @@ You must review your native code, C# code, and data collection and tracking prac
     > [!NOTE]
     > It’s your responsibility to ensure that the owners of these third-party components include privacy manifest files. Microsoft isn’t responsible for any third-party privacy manifest, and their data collection and tracking practices.
 
-- If your app includes the [C# .NET APIs][#c-net-apis-in-net-maui] that call certain APIs listed in the Apple’s [required reason APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api) categories, then you must assess your product for the API usage. For assessing what constitutes as part of data collection and tracking practices, refer to Apple’s documentation on [privacy manifest files][https://developer.apple.com/documentation/bundleresources/privacy_manifest_files].
+- If your app includes the [C# .NET APIs](#c-net-apis-in-net-maui) that call certain APIs listed in the Apple’s [required reason APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api) categories, then you must assess your product for the API usage. For assessing what constitutes as part of data collection and tracking practices, refer to Apple’s documentation on [privacy manifest files(https://developer.apple.com/documentation/bundleresources/privacy_manifest_files).
 
     > [!NOTE]
     > It’s your responsibility to assess your use of each of these APIs and declare the applicable reasons for using them.
@@ -30,16 +30,16 @@ You must review your native code, C# code, and data collection and tracking prac
 Depending on whether you’re using [.NET MAUI to develop an app](#privacy-manifest-for-net-maui-apps) or providing [ObjectiveC or Swift Binding packages](#privacy-manifest-for-binding-projects) to use with .NET MAUI apps, the requirement for providing a privacy manifest file might differ.
 
 > [!IMPORTANT]
-> The above guidelines are provided for your convenience. It’s important that you review Apple’s documentation on [privacy manifest files][PrivacyManifestFiles] before creating a privacy manifest for your project.
+> The above guidelines are provided for your convenience. It’s important that you review Apple’s documentation on [privacy manifest files](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files) before creating a privacy manifest for your project.
 
 ## Privacy manifest for .NET MAUI apps  
 
 To determine if you need to add a privacy manifest to your .NET MAUI app you must assess if your native app code uses any of the following APIs:
 
 - APIs listed under the [required reason APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api) category.
-- The [C# .NET APIs][#c-net-apis-in-net-maui] in .NET MAUI.
+- The [C# .NET APIs](#c-net-apis-in-net-maui) in .NET MAUI.
 
-If you use any of these APIs, or if you have disabled [linking](~/ios/linking.md), which will retain all of the [C# .NET APIs][#c-net-apis-in-net-maui], then [create a privacy manifest file](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files#4284009) and add it to your project. In the privacy manifest file, you must declare the approved reasons for using the [required reason APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api) or [C# .NET APIs][#c-net-apis-in-net-maui], as applicable. For more information, see [Create the privacy manifest file](#create-the-privacy-manifest-file).
+If you use any of these APIs, or if you have disabled [linking](~/ios/linking.md), which will retain all of the [C# .NET APIs](#c-net-apis-in-net-maui), then [create a privacy manifest file](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files#4284009) and add it to your project. In the privacy manifest file, you must declare the approved reasons for using the [required reason APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api) or [C# .NET APIs](#c-net-apis-in-net-maui), as applicable. For more information, see [Create the privacy manifest file](#create-the-privacy-manifest-file).
 
 > [!WARNING]
 > If you don’t declare the reasons for the use of APIs, your app might be rejected by the App Store.
@@ -131,7 +131,7 @@ Using a text editor, add the `NSPrivacyAccessAPITypes` key, where each category 
 </plist>
 ```
 
-The .NET runtime and BCL include API's from the [file timestamp][https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278393], [system boot time][https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278394], and [disk space][https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278397] API categories. Therefore, add the `NSPrivacyAccessedAPICategoryFileTimestamp` category with reason `C617.1`, `NSPrivacyAccessedAPICategorySystemBootTime` category with reason `35F9.1`, and `NSPrivacyAccessedAPICategoryDiskSpace` category with reason `E174.1` to the `NSPrivacyAccessedAPITypes` array in the privacy manifest:
+The .NET runtime and BCL include APIs from the [file timestamp](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278393), [system boot time](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278394), and [disk space](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278397) API categories. Therefore, add the `NSPrivacyAccessedAPICategoryFileTimestamp` category with reason `C617.1`, `NSPrivacyAccessedAPICategorySystemBootTime` category with reason `35F9.1`, and `NSPrivacyAccessedAPICategoryDiskSpace` category with reason `E174.1` to the `NSPrivacyAccessedAPITypes` array in the privacy manifest:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -187,11 +187,11 @@ For the <xref:Foundation.NSFileManager.ModificationDate?displayProperty=nameWith
 For the <xref:Foundation.NSUserDefaults> API, a reason code of `CA92.1` is required since the data accessed is only accessible to the app itself. Therefore, the `NSPrivacyAccessedAPICategoryUserDefaults` category with a reason of `CA92.1` was added at the end of the `NSPrivacyAccessedAPITypes` array.
 
 > [!IMPORTANT]
-> Once added to your project, the *PrivacyInfo.xcprivacy* file will need to be updated if there are any additional API usages from additional categories or additional reasons for usage. This will include adding a NuGet package or Binding project that calls into any of Apple’s [required reason APIs][https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api]
+> Once added to your project, the *PrivacyInfo.xcprivacy* file will need to be updated if there are any additional API usages from additional categories or additional reasons for usage. This will include adding a NuGet package or Binding project that calls into any of Apple’s [required reason APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api).
 
 ## Required reasons API usage in .NET MAUI
 
-The APIs in this section list C# .NET APIs that call the [required reason APIs][https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api], organized by category. If your app, SDK, or package code, calls any of the APIs from the lists, declare the reasons for their use in your privacy manifest file following the guidelines specified in Apple’s documentation on [Required Reasons APIs][RequiredReasonAPI].
+The APIs in this section list C# .NET APIs that call the [required reason APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api), organized by category. If your app, SDK, or package code, calls any of the APIs from the lists, declare the reasons for their use in your privacy manifest file following the guidelines specified in Apple’s documentation on [Required reasons APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api).
 
 > [!NOTE]
 > The following APIs are verified for .NET MAUI versions 8.0.0 and later.
@@ -217,7 +217,7 @@ Use the string `NSPrivacyAccessedAPICategoryUserDefaults` as the value for the `
                 <string>...</string>
             </array>
         </dict>
-	</array>
+    </array>
 </dict>
 </plist>
 ```
@@ -226,7 +226,7 @@ Reason codes from [User defaults APIs](https://developer.apple.com/documentation
 
 ## Required reasons API usage in .NET iOS
 
-The APIs in this section list C# .NET APIs that call the [required reason APIs][https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api], organized by category. If your app, SDK, or package code, calls any of the APIs from the lists, declare the reasons for their use in your privacy manifest file following the guidelines specified in Apple’s documentation on [Required Reasons APIs][RequiredReasonAPI].
+The APIs in this section list C# .NET APIs that call the [required reason APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api), organized by category. If your app, SDK, or package code, calls any of the APIs from the lists, declare the reasons for their use in your privacy manifest file following the guidelines specified in Apple’s documentation on [Required reasons APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api).
 
 > [!NOTE]
 > The following APIs are verified for .NET iOS version 8.0.4 and later.
@@ -247,7 +247,7 @@ The following APIs directly or indirectly access file timestamps and require rea
 | <xref:Foundation.NSUrl.ContentModificationDateKey?displayProperty=nameWithType> | | |
 | <xref:Foundation.NSUrl.CreationDateKey?displayProperty=nameWithType> | | |
 
-Use the string `NSPrivacyAccessedAPICategoryFileTimestamp` as the value for the `NSPrivacyAccessedAPIType` key in your `NSPrivacyAccessedAPITypes` dictionary. For example, if you use any of the API's listed above, your *PrivacyInfo.xcprivacy* file should contain the `dict` element in the `NSPrivacyAccessedAPITypes` key's array:
+Use the string `NSPrivacyAccessedAPICategoryFileTimestamp` as the value for the `NSPrivacyAccessedAPIType` key in your `NSPrivacyAccessedAPITypes` dictionary. For example, if you use any of the APIs listed above, your *PrivacyInfo.xcprivacy* file should contain the `dict` element in the `NSPrivacyAccessedAPITypes` key's array:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -264,12 +264,12 @@ Use the string `NSPrivacyAccessedAPICategoryFileTimestamp` as the value for the 
                 <string>...</string>
             </array>
         </dict>
-	</array>
+	  </array>
 </dict>
 </plist>
 ```
 
-Reason codes from [File timestamp APIs][https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278393] can be provided in the array for the `NSPrivacyAccessedAPITypeReasons` key.
+Reason codes from [File timestamp APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278393) can be provided in the array for the `NSPrivacyAccessedAPITypeReasons` key.
 
 ### System boot time APIs
 
@@ -292,7 +292,7 @@ Use the string `NSPrivacyAccessedAPICategorySystemBootTime` as the value for the
                 <string>35F9.1</string>
             </array>
         </dict>
-	</array>
+    </array>
 </dict>
 </plist>
 ```
@@ -313,7 +313,7 @@ The following APIs directly or indirectly access the available disk space and re
 | <xref:Foundation.NSFileManager.SystemSize?displayProperty=nameWithType> | | |
 | <xref:Foundation.NSFileManager.GetFileSystemAttributes%2A?displayProperty=nameWithType> | | |
 
-Use the string `NSPrivacyAccessedAPICategoryDiskSpace` as the value for the `NSPrivacyAccessedAPIType` key in your `NSPrivacyAccessedAPITypes` dictionary. For example, if you use any of the API's listed above, your *PrivacyInfo.xcprivacy* file should contain the `dict` element in the `NSPrivacyAccessedAPITypes` key's array:
+Use the string `NSPrivacyAccessedAPICategoryDiskSpace` as the value for the `NSPrivacyAccessedAPIType` key in your `NSPrivacyAccessedAPITypes` dictionary. For example, if you use any of the APIs listed above, your *PrivacyInfo.xcprivacy* file should contain the `dict` element in the `NSPrivacyAccessedAPITypes` key's array:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -330,18 +330,18 @@ Use the string `NSPrivacyAccessedAPICategoryDiskSpace` as the value for the `NSP
                 <string>...</string>
             </array>
         </dict>
-	</array>
+    </array>
 </dict>
 </plist>
 ```
 
-Reason codes from [Disk space APIs][https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278397] need to be provided in the array for the `NSPrivacyAccessedAPITypeReasons` key.
+Reason codes from [Disk space APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278397) need to be provided in the array for the `NSPrivacyAccessedAPITypeReasons` key.
 
 ### Active keyboard APIs
 
-The <xref:AppKit.UITextInputMode.ActiveInputModes?displayProperty=nameWithType> API directly or indirectly accesses the list of available keyboards and require reasons for use.
+The `AppKit.UITextInputMode.ActiveInputModes` API directly or indirectly accesses the list of available keyboards and require reasons for use.
 
-Use the string `NSPrivacyAccessedAPICategoryActiveKeyboards` as the value for the `NSPrivacyAccessedAPIType` key in your `NSPrivacyAccessedAPITypes` dictionary. For example, if you use the <xref:AppKit.UITextInputMode.ActiveInputModes?displayProperty=nameWithType> API, your *PrivacyInfo.xcprivacy* file should contain the `dict` element in the `NSPrivacyAccessedAPITypes` key's array:
+Use the string `NSPrivacyAccessedAPICategoryActiveKeyboards` as the value for the `NSPrivacyAccessedAPIType` key in your `NSPrivacyAccessedAPITypes` dictionary. For example, if you use the `AppKit.UITextInputMode.ActiveInputModes` API, your *PrivacyInfo.xcprivacy* file should contain the `dict` element in the `NSPrivacyAccessedAPITypes` key's array:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -358,12 +358,12 @@ Use the string `NSPrivacyAccessedAPICategoryActiveKeyboards` as the value for th
                 <string>...</string>
             </array>
         </dict>
-	</array>
+    </array>
 </dict>
 </plist>
 ```
 
-Reason codes from [Active keyboard APIs][ActiveKeyboardAPIs] need to be provided in the array for the `NSPrivacyAccessedAPITypeReasons` key.
+Reason codes from [Active keyboard APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278400) need to be provided in the array for the `NSPrivacyAccessedAPITypeReasons` key.
 
 ### User defaults APIs
 
@@ -373,9 +373,9 @@ The following APIs directly or indirectly access user defaults and require reaso
 | --------------- | ---------- | ----------- |
 | <xref:Foundation.NSUserDefaults> |  | <xref:AppKit.NSUserDefaultsController.NSUserDefaultsController%2A?displayProperty=nameWithType> |
 |  |  | <xref:AppKit.NSUserDefaultsController.Defaults> |
-|  |  | <xref:AppKit.NSUserDefaultsController.SharedUserDefaultsController> |
+|  |  | `AppKit.NSUserDefaultsController.SharedUserDefaultsController` |
 
-Use the string `NSPrivacyAccessedAPICategoryUserDefaults` as the value for the `NSPrivacyAccessedAPIType` key in your `NSPrivacyAccessedAPITypes` dictionary. For example, if you use any of the API's listed above, your *PrivacyInfo.xcprivacy* file should contain the `dict` element in the `NSPrivacyAccessedAPITypes` key's array:
+Use the string `NSPrivacyAccessedAPICategoryUserDefaults` as the value for the `NSPrivacyAccessedAPIType` key in your `NSPrivacyAccessedAPITypes` dictionary. For example, if you use any of the APIs listed above, your *PrivacyInfo.xcprivacy* file should contain the `dict` element in the `NSPrivacyAccessedAPITypes` key's array:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -392,24 +392,24 @@ Use the string `NSPrivacyAccessedAPICategoryUserDefaults` as the value for the `
                 <string>...</string>
             </array>
         </dict>
-	</array>
+    </array>
 </dict>
 </plist>
 ```
 
 Reason codes from [User defaults APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278401) need to be provided in the array for the `NSPrivacyAccessedAPITypeReasons` key.
 
-<!--
-
 ## Required reasons API usage in .NET, Mono, and the BCL
 
-The tables provide lists of C# .NET APIs that call the [Required Reasons APIs][RequiredReasonAPI] organized by category. These API usages are present in your app even if you do not explicitly call them. Therefore, you will be required to provide the API categories and reasons provided below inb your apps *PrivacyInfo.xcprivacy* file. You may have to provide additional reasaon codes if you use the API's directly, see [Required Reasons APIs][RequiredReasonAPI] for more information on the reson codes.
+The APIs in this section list C# .NET APIs that call the [required reason APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api), organized by category. These API usages are present in your app even if you do not explicitly call them. Therefore, you will be required to provide the API categories and reasons provided below in the *PrivacyInfo.xcprivacy* file for your app. You may have to provide additional reason codes if you use the APIs directly. For more information, see [Required reason APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api).
 
-**Note:** The following lists are verified only for .NET versions 8.0.0 and later.
+> [!NOTE]
+> The following APIs are verified for .NET versions 8.0.0 and later.
 
-### [File timestamp APIs][FileTimestampAPIs]
+### File timestamp APIs
 
-The following APIs either directly or indirectly access file timestamps and require reasons for use. Use the string `NSPrivacyAccessedAPICategoryFileTimestamp` as the value for the `NSPrivacyAccessedAPIType` key in your `NSPrivacyAccessedAPITypes` dictionary. Refer to [File timestamp APIs][FileTimestampAPIs] for any additional relevent values to add to the `NSPrivacyAccessedAPITypeReasons` array.
+The following APIs either directly or indirectly access file timestamps and require reasons for use:
+
 | .NET API | Internal Usages | CoreClr Usages | Mono Usages
 | - | - | - | - |
 | [System.Diagnostics.FileVersionInfo](https://learn.microsoft.com/dotnet/api/System.Diagnostics.FileVersionInfo) | [Interop.Sys.LStat](https://source.dot.net/#System.Private.CoreLib/src/libraries/Common/src/Interop/Unix/System.Native/Interop.Stat.cs,65) | SystemNative_LStat | g_file_test
@@ -500,9 +500,8 @@ The following APIs either directly or indirectly access file timestamps and requ
 | [System.Net.Sockets.Socket.SendPacketsAsync(SocketAsyncEventArgs)](https://learn.microsoft.com/dotnet/api/System.Net.Sockets.Socket.SendPacketsAsync)
 | [System.TimeZoneInfo.Local](https://learn.microsoft.com/dotnet/api/System.TimeZoneInfo.Local)
 
+Use the string `NSPrivacyAccessedAPICategoryFileTimestamp` as the value for the `NSPrivacyAccessedAPIType` key in your `NSPrivacyAccessedAPITypes` dictionary. For example, if you use any of the APIs listed above, your *PrivacyInfo.xcprivacy* file should contain the `dict` element in the `NSPrivacyAccessedAPITypes` key's array:
 
-
-For example, if you use any of the API's listed above, your *PrivacyInfo.xcprivacy* would contain the `dict` element in the `NSPrivacyAccessedAPITypes` key's array as shown below:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -518,16 +517,17 @@ For example, if you use any of the API's listed above, your *PrivacyInfo.xcpriva
                 <string>C617.1,...</string>
             </array>
         </dict>
-	</array>
+    </array>
 </dict>
 </plist>
 ```
 
-Additional reason codes from [File timestamp APIs][FileTimestampAPIs] can be provided in the array following the `NSPrivacyAccessedAPITypeReasons` key.
+Reason codes from [File timestamp APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278393) can be provided in the array for the `NSPrivacyAccessedAPITypeReasons` key.
 
-### [System boot time APIs][SystemBootTimeAPIs]
+### System boot time APIs
 
-The following APIs either directly or indirectly access the system boot time and require reasons for use. Use the string `NSPrivacyAccessedAPICategorySystemBootTime` as the value for the `NSPrivacyAccessedAPIType` key in your `NSPrivacyAccessedAPITypes` dictionary. If you only access the system boot time from the list of API's below, then use the `35F9.1` value in the `NSPrivacyAccessedAPITypeReasons` array.
+The following APIs either directly or indirectly access the system boot time and require reasons for use:
+
 | .NET API | Internal Usages | CoreClr Usages | Mono Usages
 | - | - | - | - |
 | [System.Environment.TickCount](https://learn.microsoft.com/dotnet/api/System.Environment.TickCount) | | | mono_msec_boottime
@@ -538,7 +538,7 @@ The following APIs either directly or indirectly access the system boot time and
 | | | | threads_wait_pending_joinable_threads
 | | | | current_time
 
-For example, if you use any of the API's listed above, your *PrivacyInfo.xcprivacy* would contain the `dict` element in the `NSPrivacyAccessedAPITypes` key's array as shown below:
+Use the string `NSPrivacyAccessedAPICategorySystemBootTime` as the value for the `NSPrivacyAccessedAPIType` key in your `NSPrivacyAccessedAPITypes` dictionary. For example, if you use any of the APIs listed above, your *PrivacyInfo.xcprivacy* file should contain the `dict` element in the `NSPrivacyAccessedAPITypes` key's array:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -555,14 +555,17 @@ For example, if you use any of the API's listed above, your *PrivacyInfo.xcpriva
                 <string>35F9.1</string>
             </array>
         </dict>
-	</array>
+    </array>
 </dict>
 </plist>
 ```
 
-### [Disk space APIs][DiskSpaceAPIs]
+Reason codes from [File timestamp APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278394) can be provided in the array for the `NSPrivacyAccessedAPITypeReasons` key. If you only access the system boot time from the list of APIs below, then use the `35F9.1` value in the `NSPrivacyAccessedAPITypeReasons` array.
 
-The following APIs either directly or indirectly access the available disk space and require reasons for use. Use the string `NSPrivacyAccessedAPICategoryDiskSpace` as the value for the `NSPrivacyAccessedAPIType` key in your `NSPrivacyAccessedAPITypes` dictionary. If you access the available disk space from the list of API's below, then use [Disk space APIs][DiskSpaceAPIs] to determine the correct values to place in the `NSPrivacyAccessedAPITypeReasons` array.
+### Disk space APIs
+
+The following APIs either directly or indirectly access the available disk space and require reasons for use:
+
 | .NET API | Internal Usages | CoreClr Usages | Mono Usages
 | - | - | - | - |
 | [System.IO.DriveInfo.AvailableFreeSpace](https://learn.microsoft.com/dotnet/api/System.IO.DriveInfo.AvailableFreeSpace) | [Interop.Sys.TryGetFileSystemType](https://source.dot.net/#System.Private.CoreLib/src/libraries/Common/src/Interop/Unix/System.Native/Interop.UnixFileSystemTypes.cs,155) | SystemNative_GetFileSystemType | |
@@ -581,7 +584,7 @@ The following APIs either directly or indirectly access the available disk space
 | [System.TimeZoneInfo.Local](https://learn.microsoft.com/dotnet/api/System.TimeZoneInfo.Local)
 | [System.Net.Sockets.Socket.SendPacketsAsync(SocketAsyncEventArgs)](https://learn.microsoft.com/dotnet/api/System.Net.Sockets.Socket.SendPacketsAsync)
 
-For example, if you use any of the API's listed above, your *PrivacyInfo.xcprivacy* would contain the `dict` element in the `NSPrivacyAccessedAPITypes` key's array as shown below:
+Use the string `NSPrivacyAccessedAPICategoryDiskSpace` as the value for the `NSPrivacyAccessedAPIType` key in your `NSPrivacyAccessedAPITypes` dictionary. For example, if you use any of the APIs listed above, your *PrivacyInfo.xcprivacy* file should contain the `dict` element in the `NSPrivacyAccessedAPITypes` key's array:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -598,21 +601,9 @@ For example, if you use any of the API's listed above, your *PrivacyInfo.xcpriva
                 <string>E174.1,...</string>
             </array>
         </dict>
-	</array>
+    </array>
 </dict>
 </plist>
 ```
 
-Reason codes from [Disk space APIs][DiskSpaceAPIs] can be provided in the array following the `NSPrivacyAccessedAPITypeReasons` key.
-
-
-[RequiredReasonAPI]: https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api
-[PrivacyManifestFiles]: https://developer.apple.com/documentation/bundleresources/privacy_manifest_files
-[C#NETAPIs]: #c-net-apis-in-net-maui
-[FileTimestampAPIs]: https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278393
-[SystemBootTimeAPIs]: https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278394
-[DiskSpaceAPIs]: https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278397
-[ActiveKeyboardAPIs]: https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278400
-[UserDefaultsAPIs]: https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278401
-
--->
+Reason codes from [Disk space APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278397) can be provided in the array for the `NSPrivacyAccessedAPITypeReasons` key.
