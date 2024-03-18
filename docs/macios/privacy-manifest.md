@@ -565,16 +565,16 @@ The following APIs directly or indirectly access the available disk space and re
 | <xref:System.IO.DriveInfo.DriveType?displayProperty=nameWithType> | [`Interop.Sys.GetFormatInfoForMountPoint`](https://source.dot.net/#System.IO.FileSystem.DriveInfo/src/libraries/Common/src/Interop/Unix/System.Native/Interop.MountPoints.FormatInfo.cs,37) | `SystemNative_GetFormatInfoForMountPoint` |
 | <xref:System.IO.DriveInfo.TotalFreeSpace?displayProperty=nameWithType> | | | |
 | <xref:System.IO.DriveInfo.TotalSize?displayProperty=nameWithType> | | | |
-| <xref:System.IO.File.Copy(System.String, System.String)?displayProperty=nameWithType>(https://learn.microsoft.com/dotnet/api/System.IO.File.Copy) | | | |
-| <xref:System.IO.File.Copy(System.String,System.String,System.Boolean)?displayProperty=nameWithType>(https://learn.microsoft.com/dotnet/api/System.IO.File.Copy) | | | |
-| <xref:System.IO.File.OpenHandle(string, FileMode, FileAccess, FileShare, FileOptions, long)?displayProperty=nameWithType>(https://learn.microsoft.com/dotnet/api/System.IO.File.OpenHandle) | | | |
-| <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(string)?displayProperty=nameWithType>(https://learn.microsoft.com/dotnet/api/System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile) | | | |
-| <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(string, FileMode)?displayProperty=nameWithType>(https://learn.microsoft.com/dotnet/api/System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile) | | | |
-| <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(string, FileMode, string?)?displayProperty=nameWithType>(https://learn.microsoft.com/dotnet/api/System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile) | | | |
-| <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(string, FileMode, string?, long)?displayProperty=nameWithType>(https://learn.microsoft.com/dotnet/api/System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile) | | | |
-| <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(string, FileMode, string?, long, MemoryMappedFileAccess)?displayProperty=nameWithType>(https://learn.microsoft.com/dotnet/api/System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile) | | | |
-| <xref:System.TimeZoneInfo.Local?displayProperty=nameWithType>(https://learn.microsoft.com/dotnet/api/System.TimeZoneInfo.Local) | | | |
-| <xref:System.Net.Sockets.Socket.SendPacketsAsync(SocketAsyncEventArgs)?displayProperty=nameWithType>(https://learn.microsoft.com/dotnet/api/System.Net.Sockets.Socket.SendPacketsAsync) | | | |
+| <xref:System.IO.File.Copy(String, String)?displayProperty=nameWithType> | | | |
+| <xref:System.IO.File.Copy(String, String, Boolean)?displayProperty=nameWithType> | | | |
+| <xref:System.IO.File.OpenHandle(String, FileMode, FileAccess, FileShare, FileOptions, Int64)?displayProperty=nameWithType> | | | |
+| <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(String)?displayProperty=nameWithType> | | | |
+| <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(String, FileMode)?displayProperty=nameWithType> | | | |
+| <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(String, FileMode, String)?displayProperty=nameWithType> | | | |
+| <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(String, FileMode, String, Int64)?displayProperty=nameWithType> | | | |
+| <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(String, FileMode, String, Int64, MemoryMappedFileAccess)?displayProperty=nameWithType> | | | |
+| <xref:System.TimeZoneInfo.Local?displayProperty=nameWithType> | | | |
+| <xref:System.Net.Sockets.Socket.SendPacketsAsync(SocketAsyncEventArgs)?displayProperty=nameWithType> | | | |
 
 Use the string `NSPrivacyAccessedAPICategoryDiskSpace` as the value for the `NSPrivacyAccessedAPIType` key in your `NSPrivacyAccessedAPITypes` dictionary. For example, if you use any of the APIs listed above, your *PrivacyInfo.xcprivacy* file should contain the `dict` element in the `NSPrivacyAccessedAPITypes` key's array:
 
