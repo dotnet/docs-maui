@@ -558,23 +558,21 @@ Reason codes from [File timestamp APIs](https://developer.apple.com/documentatio
 
 The following APIs directly or indirectly access the available disk space and require reasons for use:
 
-| .NET API | Internal usage | CoreCLR usage | Mono usage |
-| -------- | -------------- | ------------- | ---------- |
-| <xref:System.IO.DriveInfo.AvailableFreeSpace?displayProperty=nameWithType> | [`Interop.Sys.TryGetFileSystemType`](https://source.dot.net/#System.Private.CoreLib/src/libraries/Common/src/Interop/Unix/System.Native/Interop.UnixFileSystemTypes.cs,155) | `SystemNative_GetFileSystemType` | |
-| <xref:System.IO.DriveInfo.DriveFormat?displayProperty=nameWithType> | [`Interop.Sys.GetSpaceInfoForMountPoint`](https://source.dot.net/#System.IO.FileSystem.DriveInfo/src/libraries/Common/src/Interop/Unix/System.Native/Interop.MountPoints.FormatInfo.cs,34) | `SystemNative_GetSpaceInfoForMountPoint` | |
-| <xref:System.IO.DriveInfo.DriveType?displayProperty=nameWithType> | [`Interop.Sys.GetFormatInfoForMountPoint`](https://source.dot.net/#System.IO.FileSystem.DriveInfo/src/libraries/Common/src/Interop/Unix/System.Native/Interop.MountPoints.FormatInfo.cs,37) | `SystemNative_GetFormatInfoForMountPoint` |
-| <xref:System.IO.DriveInfo.TotalFreeSpace?displayProperty=nameWithType> | | | |
-| <xref:System.IO.DriveInfo.TotalSize?displayProperty=nameWithType> | | | |
-| <xref:System.IO.File.Copy(String, String)?displayProperty=nameWithType> | | | |
-| <xref:System.IO.File.Copy(String, String, Boolean)?displayProperty=nameWithType> | | | |
-| <xref:System.IO.File.OpenHandle(String, FileMode, FileAccess, FileShare, FileOptions, Int64)?displayProperty=nameWithType> | | | |
-| <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(String)?displayProperty=nameWithType> | | | |
-| <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(String, FileMode)?displayProperty=nameWithType> | | | |
-| <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(String, FileMode, String)?displayProperty=nameWithType> | | | |
-| <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(String, FileMode, String, Int64)?displayProperty=nameWithType> | | | |
-| <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(String, FileMode, String, Int64, MemoryMappedFileAccess)?displayProperty=nameWithType> | | | |
-| <xref:System.TimeZoneInfo.Local?displayProperty=nameWithType> | | | |
-| <xref:System.Net.Sockets.Socket.SendPacketsAsync(SocketAsyncEventArgs)?displayProperty=nameWithType> | | | |
+- <xref:System.IO.DriveInfo.AvailableFreeSpace?displayProperty=nameWithType>
+- <xref:System.IO.DriveInfo.DriveFormat?displayProperty=nameWithType>
+- <xref:System.IO.DriveInfo.DriveType?displayProperty=nameWithType>
+- <xref:System.IO.DriveInfo.TotalFreeSpace?displayProperty=nameWithType>
+- <xref:System.IO.DriveInfo.TotalSize?displayProperty=nameWithType>
+- <xref:System.IO.File.Copy(String,String)?displayProperty=nameWithType>
+- <xref:System.IO.File.Copy(String,String,Boolean)?displayProperty=nameWithType>
+- <xref:System.IO.File.OpenHandle(String, FileMode, FileAccess, FileShare, FileOptions, Int64)?displayProperty=nameWithType>
+- <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(String)?displayProperty=nameWithType>
+- <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(String, FileMode)?displayProperty=nameWithType>
+- <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(String, FileMode, String)?displayProperty=nameWithType>
+- <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(String, FileMode, String, Int64)?displayProperty=nameWithType>
+- <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(String, FileMode, String, Int64, MemoryMappedFileAccess)?displayProperty=nameWithType>
+- <xref:System.TimeZoneInfo.Local?displayProperty=nameWithType>
+- <xref:System.Net.Sockets.Socket.SendPacketsAsync(SocketAsyncEventArgs)?displayProperty=nameWithType>
 
 Use the string `NSPrivacyAccessedAPICategoryDiskSpace` as the value for the `NSPrivacyAccessedAPIType` key in your `NSPrivacyAccessedAPITypes` dictionary. For example, if you use any of the APIs listed above, your *PrivacyInfo.xcprivacy* file should contain the `dict` element in the `NSPrivacyAccessedAPITypes` key's array:
 
