@@ -233,11 +233,17 @@ The following APIs directly or indirectly access file timestamps and require rea
 | --------------- | ---------- | ----------- |
 | <xref:Foundation.NSFileManager.CreationDate?displayProperty=nameWithType> | <xref:UIKit.UIDocument.FileModificationDate?displayProperty=nameWithType> | <xref:AppKit.NSDocument.FileModificationDate?displayProperty=nameWithType> |
 | <xref:Foundation.NSFileManager.ModificationDate?displayProperty=nameWithType> | | |
-| <xref:Foundation.NSFileManager.SetAttributes%2A?displayProperty=nameWithType> | | |
-| <xref:Foundation.NSFileManager.CreateDirectory%2A?displayProperty=nameWithType> | | |
-| <xref:Foundation.NSFileManager.CreateFile%2A?displayProperty=nameWithType> | | |
-| <xref:Foundation.NSFileManager.GetAttributes%2A?displayProperty=nameWithType> | | |
-| <xref:Foundation.NSDictionary.ToFileAttributes%2A?displayProperty=nameWithType> | | |
+| <xref:Foundation.NSFileManager.SetAttributes(Foundation.NSDictionary,System.String,Foundation.NSError)?displayProperty=nameWithType> | | |
+| <xref:Foundation.NSFileManager.SetAttributes(Foundation.NSFileAttributes,System.String,Foundation.NSError)?displayProperty=nameWithType> | | |
+| <xref:Foundation.NSFileManager.SetAttributes(Foundation.NSFileAttributes,SYstem.String)?displayProperty=nameWithType> | | |
+| <xref:Foundation.NSFileManager.CreateDirectory(System.String,System.Boolean,Foundation.NSDictionary,Foundation.NSError)?displayProperty=nameWithType> | | |
+| <xref:Foundation.NSFileManager.CreateDirectory(System.String,System.Boolean,Foundation.NSFileAttributes,Foundation.NSError)?displayProperty=nameWithType> | | |
+| <xref:Foundation.NSFileManager.CreateDirectory(System.String,System.Boolean,Foundation.NSFileAttributes)?displayProperty=nameWithType> | | |
+| <xref:Foundation.NSFileManager.CreateFile(System.String,Foundation.NSData,Foundation.NSDictionary)?displayProperty=nameWithType> | | |
+| <xref:Foundation.NSFileManager.CreateFile(System.String,Foundation.NSData,FOundation.NSFileAttributes)?displayProperty=nameWithType> | | |
+| <xref:Foundation.NSFileManager.GetAttributes(System.String,Foundation.NSError)?displayProperty=nameWithType> | | |
+| <xref:Foundation.NSFileManager.GetAttributes(System.String)?displayProperty=nameWithType> | | |
+| <xref:Foundation.NSDictionary.ToFileAttributes?displayProperty=nameWithType> | | |
 | <xref:Foundation.NSUrl.ContentModificationDateKey?displayProperty=nameWithType> | | |
 | <xref:Foundation.NSUrl.CreationDateKey?displayProperty=nameWithType> | | |
 
@@ -303,7 +309,8 @@ The following <xref:Foundation> APIs directly or indirectly access the available
 - <xref:Foundation.NSUrl.VolumeTotalCapacityKey?displayProperty=nameWithType>
 - <xref:Foundation.NSFileManager.SystemFreeSize?displayProperty=nameWithType>
 - <xref:Foundation.NSFileManager.SystemSize?displayProperty=nameWithType>
-- <xref:Foundation.NSFileManager.GetFileSystemAttributes%2A?displayProperty=nameWithType>
+- <xref:Foundation.NSFileManager.GetFileSystemAttributes(System.String,Foundation.NSError)?displayProperty=nameWithType>
+- <xref:Foundation.NSFileManager.GetFileSystemAttributes(System.String)?displayProperty=nameWithType>
 
 Use the string `NSPrivacyAccessedAPICategoryDiskSpace` as the value for the `NSPrivacyAccessedAPIType` key in your `NSPrivacyAccessedAPITypes` dictionary. For example, if you use any of the APIs listed above, your *PrivacyInfo.xcprivacy* file should contain the `dict` element in the `NSPrivacyAccessedAPITypes` key's array:
 
