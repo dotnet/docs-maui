@@ -557,14 +557,14 @@ The following APIs directly or indirectly access the available disk space and re
 - <xref:System.IO.DriveInfo.TotalSize?displayProperty=nameWithType>
 - <xref:System.IO.File.Copy(System.String,System.String)?displayProperty=nameWithType>
 - <xref:System.IO.File.Copy(System.String,System.String,System.Boolean)?displayProperty=nameWithType>
-- <xref:System.IO.File.OpenHandle(String, FileMode, FileAccess, FileShare, FileOptions, Int64)?displayProperty=nameWithType>
-- <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(String)?displayProperty=nameWithType>
-- <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(String, FileMode)?displayProperty=nameWithType>
-- <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(String, FileMode, String)?displayProperty=nameWithType>
-- <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(String, FileMode, String, Int64)?displayProperty=nameWithType>
-- <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(String, FileMode, String, Int64, MemoryMappedFileAccess)?displayProperty=nameWithType>
+- <xref:System.IO.File.OpenHandle(System.String, FileMode, FileAccess, FileShare, FileOptions, Int64)?displayProperty=nameWithType>
+- <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(System.String)?displayProperty=nameWithType>
+- <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(System.String,System.IO.FileMode)?displayProperty=nameWithType>
+- <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(System.String,System.IO.FileMode,System.String)?displayProperty=nameWithType>
+- <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(System.String,System.IO.FileMode,System.String,System.Int64)?displayProperty=nameWithType>
+- <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(System.String,System.IO.FileMode,System.String,System.Int64,System.IO.MemoryMappedFiles.MemoryMappedFileAccess)?displayProperty=nameWithType>
 - <xref:System.TimeZoneInfo.Local?displayProperty=nameWithType>
-- <xref:System.Net.Sockets.Socket.SendPacketsAsync(SocketAsyncEventArgs)?displayProperty=nameWithType>
+- <xref:System.Net.Sockets.Socket.SendPacketsAsync(System.Net.Sockets.SocketAsyncEventArgs)?displayProperty=nameWithType>
 
 Use the string `NSPrivacyAccessedAPICategoryDiskSpace` as the value for the `NSPrivacyAccessedAPIType` key in your `NSPrivacyAccessedAPITypes` dictionary. For example, if you use any of the APIs listed above, your *PrivacyInfo.xcprivacy* file should contain the `dict` element in the `NSPrivacyAccessedAPITypes` key's array:
 
