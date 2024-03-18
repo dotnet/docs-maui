@@ -22,7 +22,7 @@ You must review your native code, C# code, and data collection and tracking prac
     > [!NOTE]
     > It’s your responsibility to ensure that the owners of these third-party components include privacy manifest files. Microsoft isn’t responsible for any third-party privacy manifest, and their data collection and tracking practices.
 
-- If your app includes the [C# .NET APIs](#c-net-apis-in-net-maui) that call certain APIs listed in the Apple’s [required reason APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api) categories, then you must assess your product for the API usage. For assessing what constitutes as part of data collection and tracking practices, refer to Apple’s documentation on [privacy manifest files(https://developer.apple.com/documentation/bundleresources/privacy_manifest_files).
+- If your app includes the [C# .NET APIs](#c-net-apis-in-net-maui) that call certain APIs listed in the Apple’s [required reason APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api) categories, then you must assess your product for the API usage. For assessing what constitutes as part of data collection and tracking practices, refer to Apple’s documentation on [privacy manifest files](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files).
 
     > [!NOTE]
     > It’s your responsibility to assess your use of each of these APIs and declare the applicable reasons for using them.
@@ -61,13 +61,7 @@ If you are Binding project owner, and you are binding a xcframework, then the xc
 
 ## C# .NET APIs in .NET MAUI
 
-.NET MAUI builds on top of the .NET runtime and BCL. Each SDK's API usages are detailed in the links below.
-
-- [.NET MAUI API usages](#LINK GOES HERE)
-- [.NET for iOS OS API usages](#LINK GOES HERE)
-- [.NET runtime and BCL API usages](#LINK GOES HERE)
-
-All .NET apps that target devices running iOS or iPadOS will require a *PrivacyInfo.xcprivacy* file in the app bundle. This is due to the .NET runtime and BCL using [required reason APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api) that are not removed regardless of the [linking](~/ios/linking.md) setting. The three API categories and their associated reasons must be in the *PrivacyInfo.xcprivacy* file:
+All .NET MAUI apps that target devices running iOS or iPadOS will require a *PrivacyInfo.xcprivacy* file in the app bundle. This is due to the .NET runtime and BCL using [required reason APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api) that are not removed regardless of the [linking](~/ios/linking.md) setting. The three API categories and their associated reasons that must be in the *PrivacyInfo.xcprivacy* file are shown in the following table:
 
 | API category | Reason |
 | ------------ | ------ |
@@ -75,7 +69,7 @@ All .NET apps that target devices running iOS or iPadOS will require a *PrivacyI
 | `NSPrivacyAccessedAPICategorySystemBootTime` | `35F9.1` |
 | `NSPrivacyAccessedAPICategoryDiskSpace` | `E174.1` |
 
-In addition, if you use the <xref:Foundation.NSUserDefaults> APIs in your app, you will need to add the `NSPrivacyAccessedAPICategoryUserDefaults` API category, with a reason code of `CAS92.1`.
+In addition, if you use the <xref:Foundation.NSUserDefaults> API in your app, you will need to add the `NSPrivacyAccessedAPICategoryUserDefaults` API category, with a reason code of `CAS92.1`.
 
 ## Create the privacy manifest file
 
@@ -301,17 +295,15 @@ Reason codes from [System boot time APIs](https://developer.apple.com/documentat
 
 ### Disk space APIs
 
-The following APIs directly or indirectly access the available disk space and require reasons for use:
+The following <xref:Foundation> APIs directly or indirectly access the available disk space and require reasons for use:
 
-| Foundation APIs | UIKit APIs | AppKit APIs |
-| --------------- | ---------- | ----------- |
-| <xref:Foundation.NSUrl.VolumeAvailableCapacityKey?displayProperty=nameWithType> | | |
-| <xref:Foundation.NSUrl.VolumeAvailableCapacityForImportantUsageKey?displayProperty=nameWithType> | | |
-| <xref:Foundation.NSUrl.VolumeAvailableCapacityForOpportunisticUsageKey?displayProperty=nameWithType> | | |
-| <xref:Foundation.NSUrl.VolumeTotalCapacityKey?displayProperty=nameWithType> | | |
-| <xref:Foundation.NSFileManager.SystemFreeSize?displayProperty=nameWithType> | | |
-| <xref:Foundation.NSFileManager.SystemSize?displayProperty=nameWithType> | | |
-| <xref:Foundation.NSFileManager.GetFileSystemAttributes%2A?displayProperty=nameWithType> | | |
+- <xref:Foundation.NSUrl.VolumeAvailableCapacityKey?displayProperty=nameWithType>
+- <xref:Foundation.NSUrl.VolumeAvailableCapacityForImportantUsageKey?displayProperty=nameWithType>
+- <xref:Foundation.NSUrl.VolumeAvailableCapacityForOpportunisticUsageKey?displayProperty=nameWithType>
+- <xref:Foundation.NSUrl.VolumeTotalCapacityKey?displayProperty=nameWithType>
+- <xref:Foundation.NSFileManager.SystemFreeSize?displayProperty=nameWithType>
+- <xref:Foundation.NSFileManager.SystemSize?displayProperty=nameWithType>
+- <xref:Foundation.NSFileManager.GetFileSystemAttributes%2A?displayProperty=nameWithType>
 
 Use the string `NSPrivacyAccessedAPICategoryDiskSpace` as the value for the `NSPrivacyAccessedAPIType` key in your `NSPrivacyAccessedAPITypes` dictionary. For example, if you use any of the APIs listed above, your *PrivacyInfo.xcprivacy* file should contain the `dict` element in the `NSPrivacyAccessedAPITypes` key's array:
 
@@ -371,8 +363,8 @@ The following APIs directly or indirectly access user defaults and require reaso
 
 | Foundation APIs | UIKit APIs | AppKit APIs |
 | --------------- | ---------- | ----------- |
-| <xref:Foundation.NSUserDefaults> |  | <xref:AppKit.NSUserDefaultsController.NSUserDefaultsController%2A?displayProperty=nameWithType> |
-|  |  | <xref:AppKit.NSUserDefaultsController.Defaults> |
+| <xref:Foundation.NSUserDefaults> |  | `AppKit.NSUserDefaultsController.NSUserDefaultsController` |
+|  |  | <xref:AppKit.NSUserDefaultsController.Defaults?displayProperty=nameWithType> |
 |  |  | `AppKit.NSUserDefaultsController.SharedUserDefaultsController` |
 
 Use the string `NSPrivacyAccessedAPICategoryUserDefaults` as the value for the `NSPrivacyAccessedAPIType` key in your `NSPrivacyAccessedAPITypes` dictionary. For example, if you use any of the APIs listed above, your *PrivacyInfo.xcprivacy* file should contain the `dict` element in the `NSPrivacyAccessedAPITypes` key's array:
@@ -408,10 +400,10 @@ The APIs in this section list C# .NET APIs that call the [required reason APIs](
 
 ### File timestamp APIs
 
-The following APIs either directly or indirectly access file timestamps and require reasons for use:
+The following APIs directly or indirectly access file timestamps and require reasons for use:
 
-| .NET API | Internal Usages | CoreClr Usages | Mono Usages
-| - | - | - | - |
+| .NET API | Internal usage | CoreClr usage | Mono usage |
+| -------- | -------------- | ------------- | ---------- |
 | [System.Diagnostics.FileVersionInfo](https://learn.microsoft.com/dotnet/api/System.Diagnostics.FileVersionInfo) | [Interop.Sys.LStat](https://source.dot.net/#System.Private.CoreLib/src/libraries/Common/src/Interop/Unix/System.Native/Interop.Stat.cs,65) | SystemNative_LStat | g_file_test
 | [System.IO.Compression.ZipFile.CreateFromDirectory](https://learn.microsoft.com/dotnet/api/System.IO.Compression.ZipFile.CreateFromDirectory) | [Interop.Sys.Stat](https://source.dot.net/#System.Private.CoreLib/src/libraries/Common/src/Interop/Unix/System.Native/Interop.Stat.cs,62) | SystemNative_Stat | mono_file_map_size
 | [System.IO.Directory.CreateDirectory(string)](https://learn.microsoft.com/dotnet/api/System.IO.Directory.CreateDirectory) | [Interop.Sys.FStat](https://source.dot.net/#System.Private.CoreLib/src/libraries/Common/src/Interop/Unix/System.Native/Interop.Stat.cs,59) | SystemNative_FStat |
@@ -526,10 +518,10 @@ Reason codes from [File timestamp APIs](https://developer.apple.com/documentatio
 
 ### System boot time APIs
 
-The following APIs either directly or indirectly access the system boot time and require reasons for use:
+The following APIs directly or indirectly access the system boot time and require reasons for use:
 
-| .NET API | Internal Usages | CoreClr Usages | Mono Usages
-| - | - | - | - |
+| .NET API | Internal usage | CoreClr usage | Mono usage |
+| -------- | -------------- | ------------- | ---------- |
 | [System.Environment.TickCount](https://learn.microsoft.com/dotnet/api/System.Environment.TickCount) | | | mono_msec_boottime
 | [System.Environment.TickCount64](https://learn.microsoft.com/dotnet/api/System.Environment.TickCount64) | | | mono_domain_finalize
 | | | | mono_join_uninterrupted
@@ -564,10 +556,10 @@ Reason codes from [File timestamp APIs](https://developer.apple.com/documentatio
 
 ### Disk space APIs
 
-The following APIs either directly or indirectly access the available disk space and require reasons for use:
+The following APIs directly or indirectly access the available disk space and require reasons for use:
 
-| .NET API | Internal Usages | CoreClr Usages | Mono Usages
-| - | - | - | - |
+| .NET API | Internal usage | CoreClr usage | Mono usage |
+| -------- | -------------- | ------------- | ---------- |
 | [System.IO.DriveInfo.AvailableFreeSpace](https://learn.microsoft.com/dotnet/api/System.IO.DriveInfo.AvailableFreeSpace) | [Interop.Sys.TryGetFileSystemType](https://source.dot.net/#System.Private.CoreLib/src/libraries/Common/src/Interop/Unix/System.Native/Interop.UnixFileSystemTypes.cs,155) | SystemNative_GetFileSystemType | |
 | [System.IO.DriveInfo.DriveFormat](https://learn.microsoft.com/dotnet/api/System.IO.DriveInfo.DriveFormat) | [Interop.Sys.GetSpaceInfoForMountPoint](https://source.dot.net/#System.IO.FileSystem.DriveInfo/src/libraries/Common/src/Interop/Unix/System.Native/Interop.MountPoints.FormatInfo.cs,34) | SystemNative_GetSpaceInfoForMountPoint | |
 | [System.IO.DriveInfo.DriveType](https://learn.microsoft.com/dotnet/api/System.IO.DriveInfo.DriveType) | [Interop.Sys.GetFormatInfoForMountPoint](https://source.dot.net/#System.IO.FileSystem.DriveInfo/src/libraries/Common/src/Interop/Unix/System.Native/Interop.MountPoints.FormatInfo.cs,37) | SystemNative_GetFormatInfoForMountPoint |
