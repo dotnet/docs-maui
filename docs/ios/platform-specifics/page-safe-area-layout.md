@@ -1,6 +1,6 @@
 ---
 title: "Disable the safe area layout guide on iOS"
-description: "This article explains how to consume the .NET MAUI iOS platform-specific that disables the safe area layout guide."
+description: "This article explains how to consume the .NET MAUI iOS platform-specific that enables the safe area layout guide."
 ms.date: 02/16/2023
 ---
 
@@ -8,12 +8,12 @@ ms.date: 02/16/2023
 
 By default, .NET Multi-platform App UI (.NET MAUI) apps automatically position page content on an area of the screen that is safe for all devices. This is known as the safe area layout guide, and ensures that content isn't clipped by rounded device corners, the home indicator, or the sensor housing on some iPhone models.
 
-This iOS platform-specific disables the safe area layout guide, and is consumed in XAML by setting the `Page.UseSafeArea` attached property to `false`:
+This iOS platform-specific enables the safe area layout guide, and is consumed in XAML by setting the `Page.UseSafeArea` attached property to `true`:
 
 ```xaml
 <ContentPage ...
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-             ios:Page.UseSafeArea="False">
+             ios:Page.UseSafeArea="True">
     <StackLayout>
         ...
     </StackLayout>
@@ -26,7 +26,7 @@ Alternatively, it can be consumed from C# using the fluent API:
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 
-On<iOS>().SetUseSafeArea(false);
+On<iOS>().SetUseSafeArea(true);
 ```
 
 The `Page.On<iOS>` method specifies that this platform-specific will only run on iOS. The `Page.SetUseSafeArea` method, in the `Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific` namespace, controls whether the safe area layout guide is disabled.
