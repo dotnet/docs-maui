@@ -24,6 +24,9 @@ The process for creating an App Store distribution provisioning profile is as fo
 1. Create an App ID. For more information, see [Create an App ID](#create-an-app-id).
 1. Create a provisioning profile. For more information, see [Create a provisioning profile](#create-a-provisioning-profile).
 
+> [!IMPORTANT]
+> Apple has a privacy policy for apps that target iOS on the App Store. It requires the app to include a privacy manifest file in the app bundle, that lists the types of data your .NET MAUI app, or any third-party SDKs and packages collect, and the reasons for using certain required reason APIs. If your use of the required reason APIs, or third-party SDKs, isn’t declared in the privacy manifest, your app might be rejected by the App Store. For more information, see [Apple privacy manifest](~/macios/privacy-manifest.md).
+
 [!INCLUDE [Create a distribution certificate](../includes/distribution-certificate.md)]
 
 ## Create a distribution profile
