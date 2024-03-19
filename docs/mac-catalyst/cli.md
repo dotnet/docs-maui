@@ -32,3 +32,5 @@ In this tutorial, you'll learn how to create and run a .NET Multi-platform App U
     :::image type="content" source="media/cli/maccatalyst-running-app.png" alt-text=".NET MAUI app running on Mac.":::
 
 <!-- markdownlint-enable MD029 -->
+
+[!INCLUDE [choose Xcode version](~/macios/includes/choose-xcode-version.md)]
