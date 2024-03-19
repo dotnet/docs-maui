@@ -133,6 +133,7 @@ Add the `NSPrivacyAccessedAPICategoryFileTimestamp` category with reason `C617.1
 </dict>
 </plist>
 ```
+
 For the <xref:Foundation.NSFileManager.ModificationDate?displayProperty=nameWithType> API, a reason code of `C617.1` is needed since modification dates are stored as a hash using <xref:Foundation.NSUserDefaults>, even though they aren't displayed to users.
 
 > [!IMPORTANT]
@@ -216,7 +217,7 @@ Use the string `NSPrivacyAccessedAPICategoryFileTimestamp` as the value for the 
                 <string>...</string>
             </array>
         </dict>
-	  </array>
+    </array>
 </dict>
 </plist>
 ```
