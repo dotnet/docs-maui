@@ -173,7 +173,7 @@ sudo xcode-select --reset
 
 ## Xcode version can't be located
 
-In some scenarios, building a .NET MAUI app on iOS or Mac Catalyst may attempt to use an Xcode version that's no longer installed. When this occurs you'll receive an error message similar to:
+In some scenarios, building a .NET MAUI app on iOS or Mac Catalyst may attempt to use a version of Xcode that's no longer installed on your machine. When this occurs you'll receive an error message similar to:
 
 ```
 xcodebuild: error: SDK "/Applications/Xcode_14.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk" cannot be located.
@@ -181,7 +181,19 @@ xcrun: error: sh -c '/Applications/Xcode_14.1.app/Contents/Developer/usr/bin/xco
 xcrun: error: unable to find utility "dsymutil", not a developer tool or in PATH
 ```
 
-In this scenario, you should update the *~/Library/Preferences/Xamarin/Settings.plist* file to specify the version of Xcode that's installed on your machine.
+When building an app, .NET iOS and .NET Mac Catalyst uses the following process to determine which version of Xcode to use:
+
+1. If the `MD_APPLE_SDK_ROOT` environment variable is set, use its value.
+1. If the *~/Library/Preferences/Xamarin/Settings.plist* file exists, use the value defined inside it.
+1. Use the value of `xcode-select -p`.
+1. Use `/Applications/Xcode.app`.
+
+Therefore, the recommended approach to specifying the location of Xcode on your machine is to set the `MD_APPLE_SDK_ROOT` environment variable to the path of the Xcode version. For more information, see [Build with a specific version of Xcode](~/ios/cli.md).
+
+> [!WARNING]
+> Using `xcode-select -s` to set the version of Xcode to use isn't recommended.
+
+You can then safely delete *~/Library/Preferences/Xamarin/Settings.plist* from your machine.
 
 ::: moniker range=">=net-maui-8.0"
 
