@@ -234,7 +234,7 @@ The following APIs directly or indirectly access file timestamps and require rea
 | <xref:Foundation.NSFileManager.CreationDate?displayProperty=nameWithType> | <xref:UIKit.UIDocument.FileModificationDate?displayProperty=nameWithType> | <xref:AppKit.NSDocument.FileModificationDate?displayProperty=nameWithType> |
 | <xref:Foundation.NSFileManager.ModificationDate?displayProperty=nameWithType> | | |
 | <xref:Foundation.NSFileManager.SetAttributes%2A?displayProperty=nameWithType> | | |
-| <xref:Foundation.NSFileManager.CreateDirectory%2A)?displayProperty=nameWithType> | | |
+| <xref:Foundation.NSFileManager.CreateDirectory%2A?displayProperty=nameWithType> | | |
 | <xref:Foundation.NSFileManager.CreateFile(System.String,Foundation.NSData,Foundation.NSDictionary)?displayProperty=nameWithType> | | |
 | <xref:Foundation.NSFileManager.CreateFile(System.String,Foundation.NSData,Foundation.NSFileAttributes)?displayProperty=nameWithType> | | |
 | <xref:Foundation.NSFileManager.GetAttributes%2A?displayProperty=nameWithType> | | |
