@@ -181,7 +181,7 @@ xcrun: error: sh -c '/Applications/Xcode_14.1.app/Contents/Developer/usr/bin/xco
 xcrun: error: unable to find utility "dsymutil", not a developer tool or in PATH
 ```
 
-When building an app, .NET iOS and .NET Mac Catalyst uses the following process to determine which version of Xcode to use:
+When building an app, .NET iOS and .NET Mac Catalyst use the following process to determine which version of Xcode to use:
 
 1. If the `MD_APPLE_SDK_ROOT` environment variable is set, use its value.
 1. If the *~/Library/Preferences/Xamarin/Settings.plist* file exists, use the value defined inside it.
@@ -189,9 +189,6 @@ When building an app, .NET iOS and .NET Mac Catalyst uses the following process 
 1. Use `/Applications/Xcode.app`.
 
 Therefore, the recommended approach to specifying the location of Xcode on your machine is to set the `MD_APPLE_SDK_ROOT` environment variable to the path of the Xcode version. For more information, see [Build with a specific version of Xcode](~/ios/cli.md).
-
-> [!WARNING]
-> Using `xcode-select -s` to set the version of Xcode to use isn't recommended.
 
 You can then safely delete *~/Library/Preferences/Xamarin/Settings.plist* from your machine.
 
