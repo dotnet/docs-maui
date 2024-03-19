@@ -1,10 +1,10 @@
 ---
-title: "Disable the safe area layout guide on iOS"
+title: "Enable the safe area layout guide on iOS"
 description: "This article explains how to consume the .NET MAUI iOS platform-specific that enables the safe area layout guide."
 ms.date: 02/16/2023
 ---
 
-# Disable the safe area layout guide on iOS
+# Enable the safe area layout guide on iOS
 
 By default, .NET Multi-platform App UI (.NET MAUI) apps automatically position page content on an area of the screen that is safe for all devices. This is known as the safe area layout guide, and ensures that content isn't clipped by rounded device corners, the home indicator, or the sensor housing on some iPhone models.
 
