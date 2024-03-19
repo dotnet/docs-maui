@@ -235,12 +235,12 @@ The following APIs directly or indirectly access file timestamps and require rea
 | <xref:Foundation.NSFileManager.ModificationDate?displayProperty=nameWithType> | | |
 | <xref:Foundation.NSFileManager.SetAttributes(Foundation.NSDictionary,System.String,Foundation.NSError)?displayProperty=nameWithType> | | |
 | <xref:Foundation.NSFileManager.SetAttributes(Foundation.NSFileAttributes,System.String,Foundation.NSError)?displayProperty=nameWithType> | | |
-| <xref:Foundation.NSFileManager.SetAttributes(Foundation.NSFileAttributes,SYstem.String)?displayProperty=nameWithType> | | |
+| <xref:Foundation.NSFileManager.SetAttributes(Foundation.NSFileAttributes,System.String)?displayProperty=nameWithType> | | |
 | <xref:Foundation.NSFileManager.CreateDirectory(System.String,System.Boolean,Foundation.NSDictionary,Foundation.NSError)?displayProperty=nameWithType> | | |
 | <xref:Foundation.NSFileManager.CreateDirectory(System.String,System.Boolean,Foundation.NSFileAttributes,Foundation.NSError)?displayProperty=nameWithType> | | |
 | <xref:Foundation.NSFileManager.CreateDirectory(System.String,System.Boolean,Foundation.NSFileAttributes)?displayProperty=nameWithType> | | |
 | <xref:Foundation.NSFileManager.CreateFile(System.String,Foundation.NSData,Foundation.NSDictionary)?displayProperty=nameWithType> | | |
-| <xref:Foundation.NSFileManager.CreateFile(System.String,Foundation.NSData,FOundation.NSFileAttributes)?displayProperty=nameWithType> | | |
+| <xref:Foundation.NSFileManager.CreateFile(System.String,Foundation.NSData,Foundation.NSFileAttributes)?displayProperty=nameWithType> | | |
 | <xref:Foundation.NSFileManager.GetAttributes(System.String,Foundation.NSError)?displayProperty=nameWithType> | | |
 | <xref:Foundation.NSFileManager.GetAttributes(System.String)?displayProperty=nameWithType> | | |
 | <xref:Foundation.NSDictionary.ToFileAttributes?displayProperty=nameWithType> | | |
