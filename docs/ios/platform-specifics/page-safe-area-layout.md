@@ -8,7 +8,7 @@ ms.date: 02/16/2023
 
 By default, .NET Multi-platform App UI (.NET MAUI) apps automatically position page content on an area of the screen that is safe for all devices. This is known as the safe area layout guide, and ensures that content isn't clipped by rounded device corners, the home indicator, or the sensor housing on some iPhone models.
 
-This iOS platform-specific enables the safe area layout guide, and is consumed in XAML by setting the `Page.UseSafeArea` attached property to `true`:
+This iOS platform-specific enables the safe area layout guide, if it's previously been disabled, and is consumed in XAML by setting the `Page.UseSafeArea` attached property to `true`:
 
 ```xaml
 <ContentPage ...
