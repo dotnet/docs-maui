@@ -6,28 +6,21 @@ ms.date: 03/18/2024
 
 # Apple privacy manifest
 
-Apple has introduced a privacy policy for including [privacy manifest files](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files) in new and updated apps that target iOS, iPadOS, and tvOS on the App Store.
-
-The privacy manifest file, *PrivacyInfo.xcprivacy*, should list the [types of data](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests) your .NET MAUI apps, or any third-party SDKs, and packages collect, and the reasons for using certain [required reason APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api) categories.
-
-> [!IMPORTANT]
-> If your use of the [required reason APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api), or third-party SDKs, isn’t declared in the privacy manifest, your app might be rejected by the App Store. For more information, see [required reason APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api) on developer.apple.com.
+Apple has a privacy policy for apps that target iOS and Mac Catalyst on the App Store. It requires the app to include a privacy manifest file in the app bundle, that lists the types of data your .NET MAUI app, or any third-party SDKs and packages collect, and the reasons for using certain required reason APIs. If your use of the required reason APIs, or third-party SDKs, isn’t declared in the privacy manifest, your app might be rejected by the App Store. For more information about privacy manifest files, see [Privacy manifest files](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files) on developer.apple.com.
 
 ## Prepare your app for Apple’s privacy manifest policy
 
-You must review your native code, C# code, and data collection and tracking practices to understand if Apple’s privacy manifest policy applies to your app. Use these guidelines to decide if you need to include a privacy manifest file in your product:
+To understand if Apple’s privacy manifest policy applies to your app, you must review your C# code, any native code, and data collection and tracking practices. Use the the following guidelines to decide if you need to include a privacy manifest file in your app:
 
-- If your app includes any third-party SDKs or packages, then these third-party components must provision their own privacy manifest files separately.
-
-    > [!NOTE]
-    > It’s your responsibility to ensure that the owners of these third-party components include privacy manifest files. Microsoft isn’t responsible for any third-party privacy manifest, and their data collection and tracking practices.
-
-- If your app includes the [C# .NET APIs](#c-net-apis-in-net-maui) that call certain APIs listed in the Apple’s [required reason APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api) categories, then you must assess your product for the API usage. For assessing what constitutes as part of data collection and tracking practices, refer to Apple’s documentation on [privacy manifest files](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files).
+- If your app collects data about the person using the app, you'll need to describe the data use in a privacy manifest. For information, see [Describing data use in privacy manifests](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_data_use_in_privacy_manifests) on developer.apple.com.
+- If your app includes .NET APIs that call Apple's required reason APIs, then you must assess your app for the API usage. For more information about the required reasons APIs, see [Describing use of required reason API](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api) on developer.apple.com.
 
     > [!NOTE]
-    > It’s your responsibility to assess your use of each of these APIs and declare the applicable reasons for using them.
+    > It’s your responsibility to assess your use of each of the required reason APIs and declare the applicable reasons for using them.
 
-Depending on whether you’re using [.NET MAUI to develop an app](#privacy-manifest-for-net-maui-apps) or providing [ObjectiveC or Swift Binding packages](#privacy-manifest-for-binding-projects) to use with .NET MAUI apps, the requirement for providing a privacy manifest file might differ.
+- If your app includes any third-party SDKs or packages, then these third-party components must include their own privacy manifest files separately.
+
+Depending on whether you’re using .NET MAUI to develop an app or providing ObjectiveC or Swift Binding packages to use with .NET MAUI apps, the requirement for providing a privacy manifest file might differ.
 
 > [!IMPORTANT]
 > The above guidelines are provided for your convenience. It’s important that you review Apple’s documentation on [privacy manifest files](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files) before creating a privacy manifest for your project.
