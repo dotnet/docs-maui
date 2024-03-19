@@ -28,6 +28,9 @@ The value of the `Intent` property helps to define the <xref:Microsoft.Maui.Cont
 - `Form`, for presenting a data input form.
 - `Data`, for presenting data.
 
+> [!NOTE]
+> <xref:Microsoft.Maui.Controls.TableView> isn't designed to support binding to a collection of items.
+
 ## Create a TableView
 
 To create a table, create a <xref:Microsoft.Maui.Controls.TableView> object and set its `Intent` property to a `TableIntent` member. The child of a <xref:Microsoft.Maui.Controls.TableView> must be a `TableRoot` object, which is parent to one or more `TableSection` objects. Each `TableSection` consists of an optional title whose color can also be set, and one or more <xref:Microsoft.Maui.Controls.Cell> objects.
