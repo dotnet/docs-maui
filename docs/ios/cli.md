@@ -27,6 +27,8 @@ In this tutorial, you'll learn how to create and run a .NET Multi-platform App U
 
 <!-- markdownlint-enable MD029 -->
 
+[!INCLUDE [choose Xcode version](~/macios/includes/choose-xcode-version.md)]
+
 ## Launch the app on a specific simulator
 
 A .NET MAUI iOS app can be launched on a specific iOS simulator from a Mac by providing its unique device id (UDID):
