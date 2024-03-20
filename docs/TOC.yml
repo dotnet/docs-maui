@@ -528,7 +528,7 @@
             - name: Apple account management
               href: ios/apple-account-management.md
             - name: Apple privacy manifest
-              href: macios/privacy-manifest.md
+              href: ios/privacy-manifest.md
             - name: Code signing and provisioning
               items:
                 - name: Capabilities
@@ -553,8 +553,6 @@
               href: macios/universal-links.md
         - name: Mac Catalyst
           items:
-            - name: Apple privacy manifest
-              href: macios/privacy-manifest.md            
             - name: Code signing and provisioning
               items:
                 - name: Capabilities

@@ -34,9 +34,6 @@ Then, once provisioning is complete you should prepare your app for publishing a
 1. Update the app's *Info.plist* file. For more information, see [Update Info.plist](#update-infoplist).
 1. Publish your app using the command line. For more information, see [Publish using the command line](#publish-using-the-command-line).
 
-> [!IMPORTANT]
-> Apple has a privacy policy for apps that target iOS on the App Store. It requires the app to include a privacy manifest file in the app bundle, that lists the types of data your .NET MAUI app, or any third-party SDKs and packages collect, and the reasons for using certain required reason APIs. If your use of the required reason APIs, or third-party SDKs, isn’t declared in the privacy manifest, your app might be rejected by the App Store. For more information, see [Apple privacy manifest](~/macios/privacy-manifest.md).
-
 [!INCLUDE [Create a certificate signing request](../includes/certificate-signing-request.md)]
 
 ## Create a distribution certificate

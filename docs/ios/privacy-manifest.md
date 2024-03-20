@@ -1,12 +1,12 @@
 ---
 title: "Apple privacy manifest"
-description: Learn how to include a privacy manifest in your .NET MAUI app on iOS or Mac Catalyst.
+description: Learn how to include a privacy manifest in your .NET MAUI app on iOS.
 ms.date: 03/19/2024
 ---
 
 # Apple privacy manifest
 
-Apple has a privacy policy for apps that target iOS and Mac Catalyst on the App Store. It requires the app to include a privacy manifest in the app bundle, that lists the types of data your .NET MAUI app, or any third-party SDKs and packages collect, and the reasons for using certain required reason APIs. If your use of the required reason APIs, or third-party SDKs, isn’t declared in the privacy manifest, your app might be rejected by the App Store. For more information about privacy manifests, see [Privacy manifest files](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files) on developer.apple.com.
+Apple has a privacy policy for apps that target iOS on the App Store. It requires the app to include a privacy manifest in the app bundle, that lists the types of data your .NET MAUI app, or any third-party SDKs and packages collect, and the reasons for using certain required reason APIs. If your use of the required reason APIs, or third-party SDKs, isn’t declared in the privacy manifest, your app might be rejected by the App Store. For more information about privacy manifests, see [Privacy manifest files](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files) on developer.apple.com.
 
 Depending on whether you’re using .NET MAUI to develop an app or providing Binding packages to use with .NET MAUI apps, the requirement for providing a privacy manifest might differ.
 
@@ -55,16 +55,6 @@ Then, if required edit the .NET MAUI app project file (*.csproj) and add the fol
 ```
 
 This will ensure that the privacy manifest is packaged into the iOS app at the root of the bundle.
-
-Then, if required edit the .NET MAUI app project file (*.csproj) and add the following build item for Mac Catalyst at the bottom of the root `<Project>` element:
-
-```xml
-<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">
-    <BundleResource Include="Platforms\MacCatalyst\PrivacyInfo.xcprivacy" LogicalName="Contents\Resources\PrivacyInfo.xcprivacy" />
-</ItemGroup>
-```
-
-This will ensure that the privacy manifest is packaged into Mac Catalyst app at *Contents\Resources* in the bundle.
 
 ## Add required .NET MAUI entries to the privacy manifest
 
