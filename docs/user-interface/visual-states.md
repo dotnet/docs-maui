@@ -47,33 +47,33 @@ The `VisualStateGroup` class defines a property named `States`, which is a colle
 The <xref:Microsoft.Maui.Controls.VisualState> class defines a property named `Setters`, which is a collection of <xref:Microsoft.Maui.Controls.Setter> objects. These are the same <xref:Microsoft.Maui.Controls.Setter> objects that you use in a <xref:Microsoft.Maui.Controls.Style> object. `Setters` isn't the content property of <xref:Microsoft.Maui.Controls.VisualState>, so it's necessary to include property element tags for the `Setters` property. <xref:Microsoft.Maui.Controls.Setter> objects should be inserted as children of `Setters`. Each <xref:Microsoft.Maui.Controls.Setter> object indicates the value of a property when that state is current. Any property referenced by a <xref:Microsoft.Maui.Controls.Setter> object must be backed by a bindable property.
 
 > [!IMPORTANT]
-> In order for visual state <xref:Microsoft.Maui.Controls.Setter> objects to function correctly, a `VisualStateGroup` must contain a <xref:Microsoft.Maui.Controls.VisualState> object for the `Normal` state. If this visual state does not have any <xref:Microsoft.Maui.Controls.Setter> objects, it should be included as an empty visual state (`<VisualState x:Name="Normal" />`).
+> In order for visual state <xref:Microsoft.Maui.Controls.Setter> objects to function correctly, a `VisualStateGroup` must contain a <xref:Microsoft.Maui.Controls.VisualState> object for the `Normal` state. If this visual state does not have any <xref:Microsoft.Maui.Controls.Setter> objects, it should be included as an empty visual state (`<VisualState Name="Normal" />`).
 
 The following example shows visual states defined on an <xref:Microsoft.Maui.Controls.Entry>:
 
 ```xaml
 <Entry FontSize="18">
     <VisualStateManager.VisualStateGroups>
-        <VisualStateGroup x:Name="CommonStates">
-            <VisualState x:Name="Normal">
+        <VisualStateGroup Name="CommonStates">
+            <VisualState Name="Normal">
                 <VisualState.Setters>
                     <Setter Property="BackgroundColor" Value="Lime" />
                 </VisualState.Setters>
             </VisualState>
 
-            <VisualState x:Name="Focused">
+            <VisualState Name="Focused">
                 <VisualState.Setters>
                     <Setter Property="FontSize" Value="36" />
                 </VisualState.Setters>
             </VisualState>
 
-            <VisualState x:Name="Disabled">
+            <VisualState Name="Disabled">
                 <VisualState.Setters>
                     <Setter Property="BackgroundColor" Value="Pink" />
                 </VisualState.Setters>
             </VisualState>
 
-            <VisualState x:Name="PointerOver">
+            <VisualState Name="PointerOver">
                 <VisualState.Setters>
                     <Setter Property="BackgroundColor" Value="LightBlue" />
                 </VisualState.Setters>
@@ -92,7 +92,7 @@ When the <xref:Microsoft.Maui.Controls.Entry> is in the `Normal` state, its back
 If you want the <xref:Microsoft.Maui.Controls.Entry> to have a lime background in the `Focused` state, add another <xref:Microsoft.Maui.Controls.Setter> to that visual state:
 
 ```xaml
-<VisualState x:Name="Focused">
+<VisualState Name="Focused">
     <VisualState.Setters>
         <Setter Property="FontSize" Value="36" />
         <Setter Property="BackgroundColor" Value="Lime" />
@@ -111,24 +111,24 @@ The following example shows an implicit style for an <xref:Microsoft.Maui.Contro
     <Setter Property="FontSize" Value="18" />
     <Setter Property="VisualStateManager.VisualStateGroups">
         <VisualStateGroupList>
-            <VisualStateGroup x:Name="CommonStates">
-                <VisualState x:Name="Normal">
+            <VisualStateGroup Name="CommonStates">
+                <VisualState Name="Normal">
                     <VisualState.Setters>
                         <Setter Property="BackgroundColor" Value="Lime" />
                     </VisualState.Setters>
                 </VisualState>
-                <VisualState x:Name="Focused">
+                <VisualState Name="Focused">
                     <VisualState.Setters>
                         <Setter Property="FontSize" Value="36" />
                         <Setter Property="BackgroundColor" Value="Lime" />
                     </VisualState.Setters>
                 </VisualState>
-                <VisualState x:Name="Disabled">
+                <VisualState Name="Disabled">
                     <VisualState.Setters>
                         <Setter Property="BackgroundColor" Value="Pink" />
                     </VisualState.Setters>
                 </VisualState>
-                <VisualState x:Name="PointerOver">
+                <VisualState Name="PointerOver">
                     <VisualState.Setters>
                         <Setter Property="BackgroundColor" Value="LightBlue" />
                     </VisualState.Setters>
@@ -182,9 +182,9 @@ The following example shows how to set state on multiple objects, from a single 
            Placeholder="Enter answer" />
     <Button Text="Reveal answer">
         <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup x:Name="CommonStates">
-                <VisualState x:Name="Normal" />
-                <VisualState x:Name="Pressed">
+            <VisualStateGroup Name="CommonStates">
+                <VisualState Name="Normal" />
+                <VisualState Name="Pressed">
                     <VisualState.Setters>
                         <Setter Property="Scale"
                                 Value="0.8" />
