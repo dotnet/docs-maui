@@ -527,6 +527,8 @@
           items:
             - name: Apple account management
               href: ios/apple-account-management.md
+            - name: Apple privacy manifest
+              href: ios/privacy-manifest.md
             - name: Code signing and provisioning
               items:
                 - name: Capabilities
