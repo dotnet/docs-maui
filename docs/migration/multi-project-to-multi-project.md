@@ -281,8 +281,6 @@ If there are platform specific services that need to be migrated over to .NET MA
 > [!NOTE]
 > You can quickly update your `Xamarin.Forms` namespaces to `Microsoft.Maui` by using [Quick actions in Visual Studio](upgrade-assistant.md#quick-actions-in-visual-studio) make sure you have the Upgrade Assistant installed to get started.
 
-[!INCLUDE [Namespace changes](includes/namespace-changes.md)]
-
 [!INCLUDE [AssemblyInfo changes](includes/assemblyinfo-changes.md)]
 
 [!INCLUDE [Update app dependencies](includes/update-app-dependencies.md)]
