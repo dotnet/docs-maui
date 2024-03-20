@@ -35,6 +35,56 @@ This will help to simplify the rest of the migration process, as it will minimiz
 
 ## Create a new project
 
+The upgrade process can be guided in two ways. Using a multi project template approach for your maui project can more easily provide one-to-one mappings as you move individual components of your project over incrementally. Another approach to follow is creating a .NET MAUI Class Library project which would host your library project code and the application heads would reference it.
+
+### Multi Project Template
+
+In Visual Studio, create a new .NET MAUI Multi-Project App of the same name as your Xamarin.Forms library project. The Multi-Project template provides a .NET MAUI application for iOS, Android, Mac Catalyst, and WinUI with multiple, separate app projects; you can omit the the platform types that are unused in your app scenario. Some of the project file bootstrapping should already be completed; you can continue this document from project configurations and onward as you pull files into the new multi-project template.
+
+Opening the shared project file will confirm that you have .NET SDK-style project with the following property groups:
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net8.0;net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFramework>
+        <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseMaui>true</UseMaui>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+</Project>
+```
+
+Opening a specific platform project head should also confirm that you have similar properties set including versioning with a reference to the shared project file:
+
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0-android</TargetFramework>
+		<SupportedOSPlatformVersion>21.0</SupportedOSPlatformVersion>
+		<OutputType>Exe</OutputType>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseMaui>true</UseMaui>
+	</PropertyGroup>
+
+	<!--
+        ...
+    -->
+
+	<ItemGroup>
+		<ProjectReference Include="..\MauiApp.1\MauiApp.1.csproj" />
+	</ItemGroup>
+
+</Project>
+```
+
+### Single Project Template
+
 In Visual Studio, create a new .NET MAUI class library project of the same name as your Xamarin.Forms library project. This project will host the code from your Xamarin.Forms library project. Opening the project file will confirm that you have a .NET SDK-style project:
 
 ```xml
@@ -272,6 +322,11 @@ public static class MauiProgram
     }
 }
 ```
+
+> [!Note]
+> For Xamarin.UWP projects, the `App` reference in `builder.UseMauiApp<App>()` is found in the MainPage.xaml.cs file.
+
+If there are platform specific services that need to be migrated over to .NET MAUI, utilize `builder.Services.AddTransient<IServiceCollection, Type>();` to add a transient service of the type specified in serviceType to the specified IServiceCollection. See, <xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddTransient> for more information on the ServiceCollectionServiceExtensions.AddTransient method.
 
 [!INCLUDE [AssemblyInfo changes](includes/assemblyinfo-changes.md)]
 
