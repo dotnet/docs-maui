@@ -180,15 +180,15 @@ The following APIs directly or indirectly access file timestamps:
 | Foundation APIs | UIKit APIs |
 | --------------- | ---------- |
 | <xref:Foundation.NSFileManager.CreationDate?displayProperty=nameWithType> | <xref:UIKit.UIDocument.FileModificationDate?displayProperty=nameWithType> |
-| <xref:Foundation.NSFileManager.ModificationDate?displayProperty=nameWithType> | | |
-| <xref:Foundation.NSFileManager.SetAttributes%2A?displayProperty=nameWithType> | | |
-| <xref:Foundation.NSFileManager.CreateDirectory%2A?displayProperty=nameWithType> | | |
-| <xref:Foundation.NSFileManager.CreateFile(System.String,Foundation.NSData,Foundation.NSDictionary)?displayProperty=nameWithType> | | |
-| <xref:Foundation.NSFileManager.CreateFile(System.String,Foundation.NSData,Foundation.NSFileAttributes)?displayProperty=nameWithType> | | |
-| <xref:Foundation.NSFileManager.GetAttributes%2A?displayProperty=nameWithType> | | |
-| <xref:Foundation.NSDictionary.ToFileAttributes?displayProperty=nameWithType> | | |
-| <xref:Foundation.NSUrl.ContentModificationDateKey?displayProperty=nameWithType> | | |
-| <xref:Foundation.NSUrl.CreationDateKey?displayProperty=nameWithType> | | |
+| <xref:Foundation.NSFileManager.ModificationDate?displayProperty=nameWithType> | |
+| <xref:Foundation.NSFileManager.SetAttributes%2A?displayProperty=nameWithType> | |
+| <xref:Foundation.NSFileManager.CreateDirectory%2A?displayProperty=nameWithType> | |
+| <xref:Foundation.NSFileManager.CreateFile(System.String,Foundation.NSData,Foundation.NSDictionary)?displayProperty=nameWithType> | |
+| <xref:Foundation.NSFileManager.CreateFile(System.String,Foundation.NSData,Foundation.NSFileAttributes)?displayProperty=nameWithType> | |
+| <xref:Foundation.NSFileManager.GetAttributes%2A?displayProperty=nameWithType> | |
+| <xref:Foundation.NSDictionary.ToFileAttributes?displayProperty=nameWithType> | |
+| <xref:Foundation.NSUrl.ContentModificationDateKey?displayProperty=nameWithType> | |
+| <xref:Foundation.NSUrl.CreationDateKey?displayProperty=nameWithType> | |
 
 If your .NET MAUI app or SDK uses any of these APIs, you must include reasons for use in your privacy manifest. Use the string `NSPrivacyAccessedAPICategoryFileTimestamp` as the value for the `NSPrivacyAccessedAPIType` key in your `NSPrivacyAccessedAPITypes` dictionary. For example, if your app or SDK uses any of the APIs listed above, your *PrivacyInfo.xcprivacy* file should contain the following `dict` element in the `NSPrivacyAccessedAPITypes` key's array:
 
