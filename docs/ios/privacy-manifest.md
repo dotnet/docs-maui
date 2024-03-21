@@ -2,6 +2,7 @@
 title: "Apple privacy manifest"
 description: Learn how to include a privacy manifest in your .NET MAUI app on iOS.
 ms.date: 03/19/2024
+no-loc: [ "xcframework" ]
 ---
 
 # Apple privacy manifest
@@ -27,20 +28,17 @@ For more information about creating a privacy manifest, see [Create a privacy ma
 > [!IMPORTANT]
 > The above guidelines are provided for your convenience. It’s important that you review Apple’s documentation on [privacy manifest files](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files) before creating a privacy manifest for your project.
 
-## Privacy manifest for Binding projects
+## Privacy manifest for binding projects
 
-If you are binding project owner, and you are binding a `xcframework`, then the `xcframework` provider will need to include the privacy manifest as part of the `xcframework`. Alternatively, you can provide documentation for package consumers to create the privacy manifest or change the bindings to bind an `xcframework` that has the privacy manifest included. It's not currently possible for binding project authors to include a privacy manifest outside an `xcframework` that will be recognized by Apple when submitting an app.
+If you are binding project owner, and you are binding a xcframework, then the xcframework provider will need to include the privacy manifest as part of the xcframework. Alternatively, you can provide documentation for package consumers to create the privacy manifest or change the bindings to bind an xcframework that has the privacy manifest included. It's not currently possible for binding project authors to include a privacy manifest outside an xcframework that will be recognized by Apple when submitting an app.
 
 ## Create a privacy manifest
 
-To add a privacy manifest to your .NET MAUI app project, add a new XML file named *PrivacyInfo.xcprivacy* to the *Platforms/iOS* or *Platforms/MacCatalyst* folder of your app project. Ensure that the *PrivacyInfo.xcprivacy* file doesn't have an *.xml* extension. Then, add the following XML to the file:
+To add a privacy manifest to your .NET MAUI app project, add a new XML file named *PrivacyInfo.xcprivacy* to the *Platforms/iOS* folder of your app project. Ensure that the *PrivacyInfo.xcprivacy* file doesn't have an *.xml* extension. Then, add the following XML to the file:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<!--
-... omitted for brevity
--->
 <plist version="1.0">
 <dict/>
 </plist>
@@ -71,9 +69,6 @@ To add these entries to your privacy manifest, open the *PrivacyInfo.xcprivacy* 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<!--
-... omitted for brevity
--->
 <plist version="1.0">
 <dict>
     <key>NSPrivacyAccessedAPITypes</key>
@@ -88,9 +83,6 @@ Then, add the `NSPrivacyAccessedAPICategoryFileTimestamp` category with reason `
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<!--
-... omitted for brevity
--->
 <plist version="1.0">
 <dict>
     <key>NSPrivacyAccessedAPITypes</key>
@@ -124,407 +116,68 @@ Then, add the `NSPrivacyAccessedAPICategoryFileTimestamp` category with reason `
 </plist>
 ```
 
-For the <xref:Foundation.NSFileManager.ModificationDate?displayProperty=nameWithType> API, a reason code of `C617.1` is needed since modification dates are stored as a hash using <xref:Foundation.NSUserDefaults>, even though they aren't displayed to users.
+These entries are the minimum you'll need for your app. If you use any of the required reasons APIs in a way that isn't covered by the reason codes provided, then you'll need to add additional reason codes to support your usage of the API. For more information about API use in the .NET runtime, .NET Base Class Library (BCL), .NET for iOS, and .NET MAUI that might cause you to need additional reason codes, see the links in the [See also](#see-also) section.
 
-After adding these entries to your privacy manifest you need to determine if your app uses any .NET APIs that call into the required reason APIs. For more information, see [Required reasons API use in .NET MAUI](#required-reasons-api-use-in-net-maui), [Required reasons API use in .NET iOS](#required-reasons-api-use-in-net-ios), and [Required reasons API use in .NET](#required-reasons-api-use-in-net).
+If your .NET MAUI app uses the [Preferences](~/platform-integration/storage/preferences.md) API or you use the <xref:Foundation.NSUserDefaults> API directly, you must include the reasons for use in your privacy manifest. Use the string `NSPrivacyAccessedAPICategoryUserDefaults` as the value for the `NSPrivacyAccessedAPIType` key in your `NSPrivacyAccessedAPITypes` dictionary. For example, if your app or SDK directly or indirectly uses the <xref:Foundation.NSUserDefaults> API, via .NET MAUI's [Preferences](~/platform-integration/storage/preferences.md) API, your *PrivacyInfo.xcprivacy* file should contain an additional `dict` element in the `NSPrivacyAccessedAPITypes` key's array:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>NSPrivacyAccessedAPITypes</key>
+    <array>
+        <dict>
+            <key>NSPrivacyAccessedAPIType</key>
+            <string>NSPrivacyAccessedAPICategoryFileTimestamp</string>
+            <key>NSPrivacyAccessedAPITypeReasons</key>
+            <array>
+                <string>C617.1</string>
+            </array>
+        </dict>
+        <dict>
+            <key>NSPrivacyAccessedAPIType</key>
+            <string>NSPrivacyAccessedAPICategorySystemBootTime</string>
+            <key>NSPrivacyAccessedAPITypeReasons</key>
+            <array>
+                <string>35F9.1</string>
+            </array>
+        </dict>
+        <dict>
+            <key>NSPrivacyAccessedAPIType</key>
+            <string>NSPrivacyAccessedAPICategoryDiskSpace</string>
+            <key>NSPrivacyAccessedAPITypeReasons</key>
+            <array>
+                <string>E174.1</string>
+            </array>
+        </dict>
+        <dict>
+            <key>NSPrivacyAccessedAPIType</key>
+            <string>NSPrivacyAccessedAPICategoryUserDefaults</string>
+            <key>NSPrivacyAccessedAPITypeReasons</key>
+            <array>
+                <string>CA92.1</string>
+            </array>
+        </dict>
+    </array>
+</dict>
+</plist>
+```
+
+You'll need to provide one or more reason codes from [User defaults APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278401) on developer.apple.com. Add one or more of the reason codes below to indicate the correct usage:
+
+- `CA92.1` - to access user defaults in just your app.
+- `1C8F.1` - to access user defaults from apps, app extensions, and App Clips that are members of the same App Group.
+- `C56D.1` - to access user defaults from an SDK.
+- `AC6B.1` - to access user defaults to read the com.apple.configuration.managed or com.apple.feedback.managed key.
 
 > [!IMPORTANT]
 > An app's *PrivacyInfo.xcprivacy* file may need to be updated if you modify the code in your app. This includes adding a NuGet package or binding project to your app that calls into any of Apple’s required reason APIs.
 
-## Required reasons API use in .NET MAUI
+## See also
 
-The APIs in this section list .NET MAUI APIs that call the required reason APIs. If your app or SDK calls any of the APIs in this section, you must declare the reasons for their use in your privacy manifest.
+Use the following links to learn more the required reasons API use in .NET MAUI, .NET iOS, and the .NET runtime and BCL:
 
-> [!NOTE]
-> The following APIs are verified for .NET MAUI versions 8.0.0 and later.
-
-### User defaults APIs
-
-.NET MAUI's preferences API uses the <xref:Foundation.NSUserDefaults> API to access user defaults. For more information about the preferences API, see [Preferences](~/platform-integration/storage/preferences.md).
-
-If your .NET MAUI app or SDK uses this API, you must include reasons for use in your privacy manifest. Use the string `NSPrivacyAccessedAPICategoryUserDefaults` as the value for the `NSPrivacyAccessedAPIType` key in your `NSPrivacyAccessedAPITypes` dictionary. For example, if your app or SDK directly or indirectly uses the <xref:Foundation.NSUserDefaults> API, your *PrivacyInfo.xcprivacy* file should contain the following `dict` element in the `NSPrivacyAccessedAPITypes` key's array:
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>NSPrivacyAccessedAPITypes</key>
-    <array>
-        <dict>
-            <key>NSPrivacyAccessedAPIType</key>
-            <string>NSPrivacyAccessedAPICategoryUserDefaults</string>
-            <key>NSPrivacyAccessedAPITypeReasons</key>
-            <array>
-                <string>...</string>
-            </array>
-        </dict>
-    </array>
-</dict>
-</plist>
-```
-
-Reason codes from [User defaults APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278401) need to be provided in the array for the `NSPrivacyAccessedAPITypeReasons` key.
-
-## Required reasons API use in .NET iOS
-
-The APIs in this section list .NET iOS APIs that call the required reason APIs. If your app or SDK calls any of the APIs in this section, you must declare the reasons for their use in your privacy manifest.
-
-> [!NOTE]
-> The following APIs are verified for .NET iOS version 8.0.4 and later.
-
-### File timestamp APIs
-
-The following APIs directly or indirectly access file timestamps:
-
-| Foundation APIs | UIKit APIs |
-| --------------- | ---------- |
-| <xref:Foundation.NSFileManager.CreationDate?displayProperty=nameWithType> | <xref:UIKit.UIDocument.FileModificationDate?displayProperty=nameWithType> |
-| <xref:Foundation.NSFileManager.ModificationDate?displayProperty=nameWithType> | |
-| <xref:Foundation.NSFileManager.SetAttributes%2A?displayProperty=nameWithType> | |
-| <xref:Foundation.NSFileManager.CreateDirectory%2A?displayProperty=nameWithType> | |
-| <xref:Foundation.NSFileManager.CreateFile(System.String,Foundation.NSData,Foundation.NSDictionary)?displayProperty=nameWithType> | |
-| <xref:Foundation.NSFileManager.CreateFile(System.String,Foundation.NSData,Foundation.NSFileAttributes)?displayProperty=nameWithType> | |
-| <xref:Foundation.NSFileManager.GetAttributes%2A?displayProperty=nameWithType> | |
-| <xref:Foundation.NSDictionary.ToFileAttributes?displayProperty=nameWithType> | |
-| <xref:Foundation.NSUrl.ContentModificationDateKey?displayProperty=nameWithType> | |
-| <xref:Foundation.NSUrl.CreationDateKey?displayProperty=nameWithType> | |
-
-If your .NET MAUI app or SDK uses any of these APIs, you must include reasons for use in your privacy manifest. Use the string `NSPrivacyAccessedAPICategoryFileTimestamp` as the value for the `NSPrivacyAccessedAPIType` key in your `NSPrivacyAccessedAPITypes` dictionary. For example, if your app or SDK uses any of the APIs listed above, your *PrivacyInfo.xcprivacy* file should contain the following `dict` element in the `NSPrivacyAccessedAPITypes` key's array:
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>NSPrivacyAccessedAPITypes</key>
-    <array>
-        <dict>
-            <key>NSPrivacyAccessedAPIType</key>
-            <string>NSPrivacyAccessedAPICategoryFileTimestamp</string>
-            <key>NSPrivacyAccessedAPITypeReasons</key>
-            <array>
-                <string>...</string>
-            </array>
-        </dict>
-    </array>
-</dict>
-</plist>
-```
-
-Reason codes from [File timestamp APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278393) can be provided in the array for the `NSPrivacyAccessedAPITypeReasons` key.
-
-### System boot time APIs
-
-The <xref:Foundation.NSProcessInfo.SystemUptime> API directly or indirectly accesses the system boot time.
-
-If your .NET MAUI app or SDK uses this API, you must include reasons for use in your privacy manifest. Use the string `NSPrivacyAccessedAPICategorySystemBootTime` as the value for the `NSPrivacyAccessedAPIType` key in your `NSPrivacyAccessedAPITypes` dictionary. For example, if your app or SDK uses the <xref:Foundation.NSProcessInfo.SystemUptime> API, your *PrivacyInfo.xcprivacy* file should contain the following `dict` element in the `NSPrivacyAccessedAPITypes` key's array:
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>NSPrivacyAccessedAPITypes</key>
-    <array>
-        <dict>
-            <key>NSPrivacyAccessedAPIType</key>
-            <string>NSPrivacyAccessedAPICategorySystemBootTime</string>
-            <key>NSPrivacyAccessedAPITypeReasons</key>
-            <array>
-                <string>35F9.1</string>
-            </array>
-        </dict>
-    </array>
-</dict>
-</plist>
-```
-
-Reason codes from [System boot time APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278394) can be provided in the array for the `NSPrivacyAccessedAPITypeReasons` key.
-
-### Disk space APIs
-
-The following <xref:Foundation> APIs directly or indirectly access the available disk space:
-
-- <xref:Foundation.NSUrl.VolumeAvailableCapacityKey?displayProperty=nameWithType>
-- <xref:Foundation.NSUrl.VolumeAvailableCapacityForImportantUsageKey?displayProperty=nameWithType>
-- <xref:Foundation.NSUrl.VolumeAvailableCapacityForOpportunisticUsageKey?displayProperty=nameWithType>
-- <xref:Foundation.NSUrl.VolumeTotalCapacityKey?displayProperty=nameWithType>
-- <xref:Foundation.NSFileManager.SystemFreeSize?displayProperty=nameWithType>
-- <xref:Foundation.NSFileManager.SystemSize?displayProperty=nameWithType>
-- <xref:Foundation.NSFileManager.GetFileSystemAttributes%2A?displayProperty=nameWithType>
-
-If your .NET MAUI app or SDK uses any of these APIs, you must include reasons for use in your privacy manifest. Use the string `NSPrivacyAccessedAPICategoryDiskSpace` as the value for the `NSPrivacyAccessedAPIType` key in your `NSPrivacyAccessedAPITypes` dictionary. For example, if your app or SDK uses any of the APIs listed above, your *PrivacyInfo.xcprivacy* file should contain the following `dict` element in the `NSPrivacyAccessedAPITypes` key's array:
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>NSPrivacyAccessedAPITypes</key>
-    <array>
-        <dict>
-            <key>NSPrivacyAccessedAPIType</key>
-            <string>NSPrivacyAccessedAPICategoryDiskSpace</string>
-            <key>NSPrivacyAccessedAPITypeReasons</key>
-            <array>
-                <string>...</string>
-            </array>
-        </dict>
-    </array>
-</dict>
-</plist>
-```
-
-Reason codes from [Disk space APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278397) need to be provided in the array for the `NSPrivacyAccessedAPITypeReasons` key.
-
-### Active keyboard APIs
-
-The `AppKit.UITextInputMode.ActiveInputModes` API directly or indirectly accesses the list of available keyboards.
-
-If your .NET MAUI app or SDK uses this API, you must include reasons for use in your privacy manifest. Use the string `NSPrivacyAccessedAPICategoryActiveKeyboards` as the value for the `NSPrivacyAccessedAPIType` key in your `NSPrivacyAccessedAPITypes` dictionary. For example, if your app or SDK uses the `AppKit.UITextInputMode.ActiveInputModes` API, your *PrivacyInfo.xcprivacy* file should contain the following `dict` element in the `NSPrivacyAccessedAPITypes` key's array:
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>NSPrivacyAccessedAPITypes</key>
-    <array>
-        <dict>
-            <key>NSPrivacyAccessedAPIType</key>
-            <string>NSPrivacyAccessedAPICategoryActiveKeyboards</string>
-            <key>NSPrivacyAccessedAPITypeReasons</key>
-            <array>
-                <string>...</string>
-            </array>
-        </dict>
-    </array>
-</dict>
-</plist>
-```
-
-Reason codes from [Active keyboard APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278400) need to be provided in the array for the `NSPrivacyAccessedAPITypeReasons` key.
-
-### User defaults APIs
-
-The <xref:Foundation.NSUserDefaults> API directly or indirectly accesses user defaults.
-
-If your .NET MAUI app or SDK uses this API, you must include reasons for use in your privacy manifest. Use the string `NSPrivacyAccessedAPICategoryUserDefaults` as the value for the `NSPrivacyAccessedAPIType` key in your `NSPrivacyAccessedAPITypes` dictionary. For example, if your app or SDK uses the <xref:Foundation.NSUserDefaults> API, your *PrivacyInfo.xcprivacy* file should contain the following `dict` element in the `NSPrivacyAccessedAPITypes` key's array:
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>NSPrivacyAccessedAPITypes</key>
-    <array>
-        <dict>
-            <key>NSPrivacyAccessedAPIType</key>
-            <string>NSPrivacyAccessedAPICategoryUserDefaults</string>
-            <key>NSPrivacyAccessedAPITypeReasons</key>
-            <array>
-                <string>...</string>
-            </array>
-        </dict>
-    </array>
-</dict>
-</plist>
-```
-
-Reason codes from [User defaults APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278401) need to be provided in the array for the `NSPrivacyAccessedAPITypeReasons` key.
-
-## Required reasons API use in .NET
-
-The APIs in this section list .NET APIs that call the required reason APIs. If your app or SDK calls any of the APIs in this section, you must declare the reasons for their use in your privacy manifest.
-
-> [!NOTE]
-> The following APIs are verified for .NET versions 8.0.0 and later.
-
-### File timestamp APIs
-
-The following APIs directly or indirectly access file timestamps:
-
-- <xref:System.Diagnostics.FileVersionInfo?displayProperty=nameWithType>
-- <xref:System.IO.Compression.ZipFile.CreateFromDirectory%2A?displayProperty=nameWithType>
-- <xref:System.IO.Directory.CreateDirectory(System.String)?displayProperty=nameWithType>
-- <xref:System.IO.Directory.CreateDirectory(System.String,System.IO.UnixFileMode)?displayProperty=nameWithType>
-- [`System.Runtime.Loader.AssemblyLoadContext.ResolveSatelliteAssembly`](https://source.dot.net/#System.Private.CoreLib/src/libraries/System.Private.CoreLib/src/System/Runtime/Loader/AssemblyLoadContext.cs,763)
-- <xref:System.IO.Directory.Delete(System.String)?displayProperty=nameWithType>
-- <xref:System.IO.Directory.Exists(System.String)?displayProperty=nameWithType>
-- <xref:System.IO.Directory.GetCreationTime(System.String)?displayProperty=nameWithType>
-- <xref:System.IO.Directory.GetCreationTimeUtc(System.String)?displayProperty=nameWithType>
-- <xref:System.IO.Directory.GetLastAccessTime(System.String)?displayProperty=nameWithType>
-- <xref:System.IO.Directory.GetLastAccessTimeUtc(System.String)?displayProperty=nameWithType>
-- <xref:System.IO.Directory.GetLastWriteTime(System.String)?displayProperty=nameWithType>
-- <xref:System.IO.Directory.GetLastWriteTimeUtc(System.String)?displayProperty=nameWithType>
-- <xref:System.IO.Directory.Move(System.String,System.String)?displayProperty=nameWithType>
-- <xref:System.IO.DirectoryInfo.Delete%2A?displayProperty=nameWithType>
-- <xref:System.IO.DirectoryInfo.MoveTo(System.String)?displayProperty=nameWithType>
-- <xref:System.IO.Enumeration.FileSystemEntry.Attributes?displayProperty=nameWithType>
-- <xref:System.IO.Enumeration.FileSystemEntry.CreationTimeUtc?displayProperty=nameWithType>
-- <xref:System.IO.Enumeration.FileSystemEntry.IsHidden?displayProperty=nameWithType>
-- <xref:System.IO.Enumeration.FileSystemEntry.LastAccessTimeUtc?displayProperty=nameWithType>
-- <xref:System.IO.Enumeration.FileSystemEntry.LastWriteTimeUtc?displayProperty=nameWithType>
-- <xref:System.IO.Enumeration.FileSystemEntry.Length?displayProperty=nameWithType>
-- <xref:System.IO.Enumeration.FileSystemEntry.ToFileSystemInfo?displayProperty=nameWithType>
-- <xref:System.IO.File.Copy(System.String,System.String)?displayProperty=nameWithType>
-- <xref:System.IO.File.Copy(System.String,System.String,System.Boolean)?displayProperty=nameWithType>
-- <xref:System.IO.File.Delete(System.String)?displayProperty=nameWithType>
-- <xref:System.IO.File.Exists(System.String)?displayProperty=nameWithType>
-- <xref:System.IO.File.GetAttributes(Microsoft.Win32.SafeHandles.SafeFileHandle)?displayProperty=nameWithType>
-- <xref:System.IO.File.GetAttributes(System.String)?displayProperty=nameWithType>
-- <xref:System.IO.File.GetCreationTime(Microsoft.Win32.SafeHandles.SafeFileHandle)?displayProperty=nameWithType>
-- <xref:System.IO.File.GetCreationTime(System.String)?displayProperty=nameWithType>
-- <xref:System.IO.File.GetCreationTimeUtc(Microsoft.Win32.SafeHandles.SafeFileHandle)?displayProperty=nameWithType>
-- <xref:System.IO.File.GetCreationTimeUtc(System.String)?displayProperty=nameWithType>
-- <xref:System.IO.File.GetLastAccessTime(Microsoft.Win32.SafeHandles.SafeFileHandle)?displayProperty=nameWithType>
-- <xref:System.IO.File.GetLastAccessTime(System.String)?displayProperty=nameWithType>
-- <xref:System.IO.File.GetLastAccessTimeUtc(Microsoft.Win32.SafeHandles.SafeFileHandle)?displayProperty=nameWithType>
-- <xref:System.IO.File.GetLastAccessTimeUtc(System.String)?displayProperty=nameWithType>
-- <xref:System.IO.File.GetLastWriteTime(Microsoft.Win32.SafeHandles.SafeFileHandle)?displayProperty=nameWithType>
-- <xref:System.IO.File.GetLastWriteTime(System.String)?displayProperty=nameWithType>
-- <xref:System.IO.File.GetLastWriteTimeUtc(Microsoft.Win32.SafeHandles.SafeFileHandle)?displayProperty=nameWithType>
-- <xref:System.IO.File.GetLastWriteTimeUtc(System.String)?displayProperty=nameWithType>
-- <xref:System.IO.File.GetUnixFileMode(Microsoft.Win32.SafeHandles.SafeFileHandle)?displayProperty=nameWithType>
-- <xref:System.IO.File.GetUnixFileMode(System.String)?displayProperty=nameWithType>
-- <xref:System.IO.File.Move(System.String,System.String)?displayProperty=nameWithType>
-- <xref:System.IO.File.Move(System.String,System.String,System.Boolean)?displayProperty=nameWithType>
-- <xref:System.IO.File.OpenHandle(System.String,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,System.IO.FileOptions,System.Int64)?displayProperty=nameWithType>
-- <xref:System.IO.File.Replace(System.String,System.String,System.String)?displayProperty=nameWithType>
-- <xref:System.IO.File.Replace(System.String,System.String,System.String,System.Boolean)?displayProperty=nameWithType>
-- <xref:System.IO.File.ReadAllBytes(System.String)?displayProperty=nameWithType>
-- <xref:System.IO.File.ReadAllBytesAsync(System.String,System.Threading.CancellationToken)?displayProperty=nameWithType>
-- <xref:System.IO.FileInfo.Delete?displayProperty=nameWithType>
-- <xref:System.IO.FileInfo.MoveTo(System.String)?displayProperty=nameWithType>
-- <xref:System.IO.FileInfo.MoveTo(System.String,System.Boolean)?displayProperty=nameWithType>
-- <xref:System.IO.FileInfo.Replace(System.String,System.String)?displayProperty=nameWithType>
-- <xref:System.IO.FileInfo.Replace(System.String,System.String,System.Boolean)?displayProperty=nameWithType>
-- <xref:System.IO.FileSystemInfo.Attributes?displayProperty=nameWithType>
-- <xref:System.IO.FileSystemInfo.CreationTime?displayProperty=nameWithType>
-- <xref:System.IO.FileSystemInfo.CreationTimeUtc?displayProperty=nameWithType>
-- <xref:System.IO.FileSystemInfo.LastAccessTime?displayProperty=nameWithType>
-- <xref:System.IO.FileSystemInfo.LastAccessTimeUtc?displayProperty=nameWithType>
-- <xref:System.IO.FileSystemInfo.LastWriteTime?displayProperty=nameWithType>
-- <xref:System.IO.FileSystemInfo.LastWriteTimeUtc?displayProperty=nameWithType>
-- <xref:System.IO.FileSystemInfo.Refresh?displayProperty=nameWithType>
-- <xref:System.IO.FileSystemInfo.UnixFileMode?displayProperty=nameWithType>
-- <xref:System.IO.FileSystemWatcher?displayProperty=nameWithType>
-- <xref:System.IO.IsolatedStorage.IsolatedStorageFile.MoveDirectory(System.String,System.String)?displayProperty=nameWithType>
-- <xref:System.IO.IsolatedStorage.IsolatedStorageFile.MoveFile(System.String,System.String)?displayProperty=nameWithType>
-- <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(System.String)?displayProperty=nameWithType>
-- <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(System.String,System.IO.FileMode)?displayProperty=nameWithType>
-- <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(System.String,System.IO.FileMode,System.String)?displayProperty=nameWithType>
-- <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(System.String,System.IO.FileMode,System.String,System.Int64)?displayProperty=nameWithType>
-- <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(System.String,System.IO.FileMode,System.String,System.Int64,System.IO.MemoryMappedFiles.MemoryMappedFileAccess)?displayProperty=nameWithType>
-- <xref:System.IO.Path.Exists(System.String)?displayProperty=nameWithType>
-- <xref:System.IO.Pipes.AnonymousPipeClientStream?displayProperty=nameWithType>
-- <xref:System.IO.Pipes.AnonymousPipeServerStream?displayProperty=nameWithType>
-- <xref:System.IO.Pipes.NamedPipeClientStream?displayProperty=nameWithType>
-- <xref:System.IO.Pipes.NamedPipeServerStream?displayProperty=nameWithType>
-- <xref:System.IO.RandomAccess.GetLength(Microsoft.Win32.SafeHandles.SafeFileHandle)?displayProperty=nameWithType>
-- <xref:System.Formats.Tar.TarWriter.WriteEntry(System.Formats.Tar.TarEntry)?displayProperty=nameWithType>
-- <xref:System.Formats.Tar.TarWriter.WriteEntry(System.String,System.String)?displayProperty=nameWithType>
-- <xref:System.Formats.Tar.TarWriter.WriteEntryAsync(System.Formats.Tar.TarEntry,System.Threading.CancellationToken)?displayProperty=nameWithType>
-- <xref:System.Formats.Tar.TarWriter.WriteEntryAsync(System.String,System.String,System.Threading.CancellationToken)?displayProperty=nameWithType>
-- <xref:System.Net.Sockets.Socket.SendPacketsAsync(System.Net.Sockets.SocketAsyncEventArgs)?displayProperty=nameWithType>
-- <xref:System.TimeZoneInfo.Local?displayProperty=nameWithType>
-
-If your .NET MAUI app or SDK uses any of these APIs, you must include reasons for use in your privacy manifest. Use the string `NSPrivacyAccessedAPICategoryFileTimestamp` as the value for the `NSPrivacyAccessedAPIType` key in your `NSPrivacyAccessedAPITypes` dictionary. For example, if your app or SDK uses any of the APIs listed above, your *PrivacyInfo.xcprivacy* file should contain the following `dict` element in the `NSPrivacyAccessedAPITypes` key's array:
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>NSPrivacyAccessedAPITypes</key>
-    <array>
-        <dict>
-            <key>NSPrivacyAccessedAPIType</key>
-            <string>NSPrivacyAccessedAPICategoryFileTimestamp</string>
-            <key>NSPrivacyAccessedAPITypeReasons</key>
-            <array>
-                <string>C617.1,...</string>
-            </array>
-        </dict>
-    </array>
-</dict>
-</plist>
-```
-
-Reason codes from [File timestamp APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278393) can be provided in the array for the `NSPrivacyAccessedAPITypeReasons` key.
-
-### System boot time APIs
-
-The following APIs directly or indirectly access the system boot time:
-
-- <xref:System.Environment.TickCount?displayProperty=nameWithType>
-- <xref:System.Environment.TickCount64?displayProperty=nameWithType>
-
-If your .NET MAUI app or SDK uses any of these APIs, you must include reasons for use in your privacy manifest. Use the string `NSPrivacyAccessedAPICategorySystemBootTime` as the value for the `NSPrivacyAccessedAPIType` key in your `NSPrivacyAccessedAPITypes` dictionary. For example, if your app or SDK uses any of the APIs listed above, your *PrivacyInfo.xcprivacy* file should contain the following `dict` element in the `NSPrivacyAccessedAPITypes` key's array:
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>NSPrivacyAccessedAPITypes</key>
-    <array>
-        <dict>
-            <key>NSPrivacyAccessedAPIType</key>
-            <string>NSPrivacyAccessedAPICategorySystemBootTime</string>
-            <key>NSPrivacyAccessedAPITypeReasons</key>
-            <array>
-                <string>35F9.1</string>
-            </array>
-        </dict>
-    </array>
-</dict>
-</plist>
-```
-
-Reason codes from [File timestamp APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278394) can be provided in the array for the `NSPrivacyAccessedAPITypeReasons` key. If you only access the system boot time from the list of APIs, then use the `35F9.1` value in the `NSPrivacyAccessedAPITypeReasons` array.
-
-### Disk space APIs
-
-The following APIs directly or indirectly access the available disk space:
-
-- <xref:System.IO.DriveInfo.AvailableFreeSpace?displayProperty=nameWithType>
-- <xref:System.IO.DriveInfo.DriveFormat?displayProperty=nameWithType>
-- <xref:System.IO.DriveInfo.DriveType?displayProperty=nameWithType>
-- <xref:System.IO.DriveInfo.TotalFreeSpace?displayProperty=nameWithType>
-- <xref:System.IO.DriveInfo.TotalSize?displayProperty=nameWithType>
-- <xref:System.IO.File.Copy(System.String,System.String)?displayProperty=nameWithType>
-- <xref:System.IO.File.Copy(System.String,System.String,System.Boolean)?displayProperty=nameWithType>
-- <xref:System.IO.File.OpenHandle(System.String,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,System.IO.FileOptions,System.Int64)?displayProperty=nameWithType>
-- <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(System.String)?displayProperty=nameWithType>
-- <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(System.String,System.IO.FileMode)?displayProperty=nameWithType>
-- <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(System.String,System.IO.FileMode,System.String)?displayProperty=nameWithType>
-- <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(System.String,System.IO.FileMode,System.String,System.Int64)?displayProperty=nameWithType>
-- <xref:System.IO.MemoryMappedFiles.MemoryMappedFile.CreateFromFile(System.String,System.IO.FileMode,System.String,System.Int64,System.IO.MemoryMappedFiles.MemoryMappedFileAccess)?displayProperty=nameWithType>
-- <xref:System.TimeZoneInfo.Local?displayProperty=nameWithType>
-- <xref:System.Net.Sockets.Socket.SendPacketsAsync(System.Net.Sockets.SocketAsyncEventArgs)?displayProperty=nameWithType>
-
-If your .NET MAUI app or SDK uses any of these APIs, you must include reasons for use in your privacy manifest. Use the string `NSPrivacyAccessedAPICategoryDiskSpace` as the value for the `NSPrivacyAccessedAPIType` key in your `NSPrivacyAccessedAPITypes` dictionary. For example, if your app or SDK uses any of the APIs listed above, your *PrivacyInfo.xcprivacy* file should contain the following `dict` element in the `NSPrivacyAccessedAPITypes` key's array:
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>NSPrivacyAccessedAPITypes</key>
-    <array>
-        <dict>
-            <key>NSPrivacyAccessedAPIType</key>
-            <string>NSPrivacyAccessedAPICategoryDiskSpace</string>
-            <key>NSPrivacyAccessedAPITypeReasons</key>
-            <array>
-                <string>E174.1,...</string>
-            </array>
-        </dict>
-    </array>
-</dict>
-</plist>
-```
-
-Reason codes from [Disk space APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278397) can be provided in the array for the `NSPrivacyAccessedAPITypeReasons` key.
+- [Required reasons API usage in .NET MAUI and Xamarin.Forms](https://github.com/xamarin/xamarin-macios/blob/main/docs/required-reasons-dotnet-maui.md)
+- [Required reasons API usage in .NET for iOS, tvOS, and Xamarin.iOS](https://github.com/xamarin/xamarin-macios/blob/main/docs/required-reasons-macios.md)
+- [Required reasons API usage in .NET, Mono and the BCL](https://github.com/xamarin/xamarin-macios/blob/main/docs/required-reasons-bcl.md)
