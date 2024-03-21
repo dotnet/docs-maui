@@ -27,7 +27,7 @@ For more information about creating a privacy manifest, see [Create a privacy ma
 > [!IMPORTANT]
 > The above guidelines are provided for your convenience. It’s important that you review Apple’s documentation on [privacy manifest files](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files) before creating a privacy manifest for your project.
 
-## Privacy manifest for Binding projects
+## Privacy manifest for binding projects
 
 If you are binding project owner, and you are binding a `xcframework`, then the `xcframework` provider will need to include the privacy manifest as part of the `xcframework`. Alternatively, you can provide documentation for package consumers to create the privacy manifest or change the bindings to bind an `xcframework` that has the privacy manifest included. It's not currently possible for binding project authors to include a privacy manifest outside an `xcframework` that will be recognized by Apple when submitting an app.
 
@@ -126,14 +126,14 @@ Then, add the `NSPrivacyAccessedAPICategoryFileTimestamp` category with reason `
 
 For the <xref:Foundation.NSFileManager.ModificationDate?displayProperty=nameWithType> API, a reason code of `C617.1` is needed since modification dates are stored as a hash using <xref:Foundation.NSUserDefaults>, even though they aren't displayed to users.
 
-After adding these entries to your privacy manifest you need to determine if your app uses any .NET APIs that call into the required reason APIs. For more information, see [Required reasons API use in .NET MAUI](#required-reasons-api-use-in-net-maui), [Required reasons API use in .NET iOS](#required-reasons-api-use-in-net-ios), and [Required reasons API use in .NET](#required-reasons-api-use-in-net).
-
 > [!IMPORTANT]
 > An app's *PrivacyInfo.xcprivacy* file may need to be updated if you modify the code in your app. This includes adding a NuGet package or binding project to your app that calls into any of Apple’s required reason APIs.
 
 ## Required reasons API use in .NET MAUI
 
 The APIs in this section list .NET MAUI APIs that call the required reason APIs. If your app or SDK calls any of the APIs in this section, you must declare the reasons for their use in your privacy manifest.
+
+For information about required reasons API use in .NET iOS, see [Required reasons API usage in .NET for iOS, tvOS, and Xamarin.iOS](https://github.com/xamarin/xamarin-macios/blob/main/docs/required-reasons-macios.md). For information about required reasons API use in .NET, see [Required reasons API usage in .NET, Mono and the BCL](https://github.com/xamarin/xamarin-macios/blob/main/docs/required-reasons-bcl.md).
 
 > [!NOTE]
 > The following APIs are verified for .NET MAUI versions 8.0.0 and later.
@@ -166,6 +166,7 @@ If your .NET MAUI app or SDK uses this API, you must include reasons for use in 
 
 Reason codes from [User defaults APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278401) need to be provided in the array for the `NSPrivacyAccessedAPITypeReasons` key.
 
+<!--
 ## Required reasons API use in .NET iOS
 
 The APIs in this section list .NET iOS APIs that call the required reason APIs. If your app or SDK calls any of the APIs in this section, you must declare the reasons for their use in your privacy manifest.
@@ -527,4 +528,4 @@ If your .NET MAUI app or SDK uses any of these APIs, you must include reasons fo
 </plist>
 ```
 
-Reason codes from [Disk space APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278397) can be provided in the array for the `NSPrivacyAccessedAPITypeReasons` key.
+Reason codes from [Disk space APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278397) can be provided in the array for the `NSPrivacyAccessedAPITypeReasons` key. -->
