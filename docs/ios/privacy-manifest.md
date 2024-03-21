@@ -2,6 +2,7 @@
 title: "Apple privacy manifest"
 description: Learn how to include a privacy manifest in your .NET MAUI app on iOS.
 ms.date: 03/19/2024
+no-loc: [ "xcframework" ]
 ---
 
 # Apple privacy manifest
