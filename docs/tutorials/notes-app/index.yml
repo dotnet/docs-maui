@@ -26,9 +26,14 @@ items:
   content: |
     [!INCLUDE [](includes/note.md)]
 - title: Bind data to the UI and navigate pages
-  durationInMinutes: 25
+  durationInMinutes: 15
   content: |
     [!INCLUDE [](includes/navigation.md)]
+- title: Add a view and model to list all notes
+  durationInMinutes: 7
+  content: |
+    [!INCLUDE [](includes/allnotes.md)]
+
 
 - content: |
     You've completed the Create a .NET MAUI app tutorial!

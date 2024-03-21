@@ -44,7 +44,7 @@ The first customization you'll do is adding another page to the project. This pa
 
 01. The _AboutPage.xaml_ file will open a new document tab, displaying all of the XAML markup that represents the UI of the page. Replace the XAML markup with the following markup:
 
-    :::code language="xaml" source="../snippets/shell/csharp/Notes/AboutPage.xaml":::
+    :::code language="xaml" source="../snippets/shell/AboutPage.xaml":::
 
 01. Save the file by pressing <kbd>CTRL+S</kbd> or by selecting the menu **File** > **Save AboutPage.xaml**.
 
@@ -56,7 +56,7 @@ Let's break down the key parts of the XAML controls placed on the page:
 - `<Image>` displays an image, in this case it's using the `dotnet_bot.png` image that comes with every .NET MAUI project.
 
   > [!IMPORTANT]
-  > The file added to the project is actually `dotnet_bot.svg`. .NET MAUI converts Scalable Vector Graphics (SVG) files to Portable Network Graphic (PNG) files. Therefore, when adding an SVG file to your .NET MAUI app project, it should be referenced from XAML or C# with a `.png` extension. The only reference to the SVG file should be in your project file.
+  > The file added to the project is actually `dotnet_bot.svg`. .NET MAUI converts Scalable Vector Graphics (SVG) files to Portable Network Graphic (PNG) files based on the target device. Therefore, when adding an SVG file to your .NET MAUI app project, it should be referenced from XAML or C# with a `.png` extension. The only reference to the SVG file should be in your project file.
 
 - `<Label>` controls display text.
 - `<Button>` controls can be pressed by the user, which raise the `Clicked` event. You can run code in response to the `Clicked` event.
@@ -70,9 +70,11 @@ The next step is to add the code for the button's `Clicked` event.
 
 01. In the **Solution Explorer** pane of Visual Studio, expand the _AboutPage.xaml_ file to reveal it's code-behind file _AboutPage.xaml.cs_. Then, double-click on the _AboutPage.xaml.cs_ file to open it in the code editor.
 
+    :::image type="content" source="../media/shell/vs-expand.png" alt-text="An image of the Solution Explorer window in Visual Studio, with a red box highlighting the expand icon.":::
+
 01. Add the following `LearnMore_Clicked` event handler code, which opens the system browser to a specific URL:
 
-    :::code language="csharp" source="../snippets/shell/csharp/Notes/AboutPage.xaml.cs" id="learn_more":::
+    :::code language="csharp" source="../snippets/shell/AboutPage.xaml.cs" id="learn_more":::
 
     Notice that the `async` keyword has been added to the method declaration, which allows the use of the `await` keyword when opening the system browser.
 
@@ -120,7 +122,7 @@ As noted at the start of this article, the `AppShell` class defines an app's vis
 
 01. Double-click the _AppShell.xaml_ file in the **Solution Explorer** pane to open the XAML editor. Replace the XAML markup with the following code:
 
-    :::code language="xaml" source="../snippets/shell/csharp/Notes/AppShell.xaml":::
+    :::code language="xaml" source="../snippets/shell/AppShell.xaml":::
 
 01. Save the file by pressing <kbd>CTRL+S</kbd> or by selecting the menu **File** > **Save AppShell.xaml**.
 
@@ -147,5 +149,3 @@ You'll see that there are two tabs: **Notes** and **About**. Press the **About**
 Close the app and return to Visual Studio. If you're using the Android emulator, terminate the app in the virtual device or press the stop button at the top of Visual Studio:
 
 :::image type="content" source="../media/shell/vs-stop-button.png" alt-text="Visual Studio's stop debugging button.":::
-
-[![Explore the code.](~/media/code-sample.png) Explore the code for this step of the tutorial.](https://github.com/dotnet/maui-samples/tree/main/8.0/Tutorials/CreateNetMauiApp/step2)
