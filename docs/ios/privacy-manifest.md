@@ -29,7 +29,7 @@ For more information about creating a privacy manifest, see [Create a privacy ma
 
 ## Privacy manifest for binding projects
 
-If you are binding project owner, and you are binding a `xcframework`, then the `xcframework` provider will need to include the privacy manifest as part of the `xcframework`. Alternatively, you can provide documentation for package consumers to create the privacy manifest or change the bindings to bind an `xcframework` that has the privacy manifest included. It's not currently possible for binding project authors to include a privacy manifest outside an `xcframework` that will be recognized by Apple when submitting an app.
+If you are binding project owner, and you are binding a xcframework, then the xcframework provider will need to include the privacy manifest as part of the xcframework. Alternatively, you can provide documentation for package consumers to create the privacy manifest or change the bindings to bind an xcframework that has the privacy manifest included. It's not currently possible for binding project authors to include a privacy manifest outside an xcframework that will be recognized by Apple when submitting an app.
 
 ## Create a privacy manifest
 
@@ -124,23 +124,9 @@ Then, add the `NSPrivacyAccessedAPICategoryFileTimestamp` category with reason `
 </plist>
 ```
 
-For the <xref:Foundation.NSFileManager.ModificationDate?displayProperty=nameWithType> API, a reason code of `C617.1` is needed since modification dates are stored as a hash using <xref:Foundation.NSUserDefaults>, even though they aren't displayed to users.
+These entries are the minimum you'll need for your app. If you use any of the required reasons APIs in a way that isn't covered by the reason codes provided, then you'll need to add additional reason codes to support your usage of the API. For more information about API use in the .NET runtime, .NET Base Class Library (BCL), .NET for iOS, and .NET MAUI that might cause you to need additional reason codes, see the links in the [See also](#see-also) section.
 
-> [!IMPORTANT]
-> An app's *PrivacyInfo.xcprivacy* file may need to be updated if you modify the code in your app. This includes adding a NuGet package or binding project to your app that calls into any of Apple’s required reason APIs.
-
-## Required reasons API use in .NET MAUI
-
-The APIs in this section list .NET MAUI APIs that call the required reason APIs. If your app or SDK calls any of the APIs in this section, you must declare the reasons for their use in your privacy manifest.
-
-> [!NOTE]
-> The following APIs are verified for .NET MAUI versions 8.0.0 and later.
-
-### User defaults APIs
-
-.NET MAUI's preferences API uses the <xref:Foundation.NSUserDefaults> API to access user defaults. For more information about the preferences API, see [Preferences](~/platform-integration/storage/preferences.md).
-
-If your .NET MAUI app or SDK uses this API, you must include reasons for use in your privacy manifest. Use the string `NSPrivacyAccessedAPICategoryUserDefaults` as the value for the `NSPrivacyAccessedAPIType` key in your `NSPrivacyAccessedAPITypes` dictionary. For example, if your app or SDK directly or indirectly uses the <xref:Foundation.NSUserDefaults> API, your *PrivacyInfo.xcprivacy* file should contain the following `dict` element in the `NSPrivacyAccessedAPITypes` key's array:
+If your .NET MAUI app uses the [Preferences](~/platform-integration/storage/preferences.md) API or you use the <xref:Foundation.NSUserDefaults> API directly, you must include the reasons for use in your privacy manifest. Use the string `NSPrivacyAccessedAPICategoryUserDefaults` as the value for the `NSPrivacyAccessedAPIType` key in your `NSPrivacyAccessedAPITypes` dictionary. For example, if your app or SDK directly or indirectly uses the <xref:Foundation.NSUserDefaults> API, via .NET MAUI's [Preferences](~/platform-integration/storage/preferences.md) API, your *PrivacyInfo.xcprivacy* file should contain an additional `dict` element in the `NSPrivacyAccessedAPITypes` key's array:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -162,9 +148,20 @@ If your .NET MAUI app or SDK uses this API, you must include reasons for use in 
 </plist>
 ```
 
-Reason codes from [User defaults APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278401) need to be provided in the array for the `NSPrivacyAccessedAPITypeReasons` key.
+You'll need to provide one or more reason codes from [User defaults APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278401). Add one or more of the reason codes below to indicate the correct usage:
+
+- CA92.1 - To access user defaults in just your app.
+- 1C8F.1 - To access user defaults from apps, app extensions, and App Clips that are members of the same App Group.
+- C56D.1 - To access user defaults from an SDK.
+- AC6B.1 - To access user defaults to read the com.apple.configuration.managed or com.apple.feedback.managed key.
+
+> [!IMPORTANT]
+> An app's *PrivacyInfo.xcprivacy* file may need to be updated if you modify the code in your app. This includes adding a NuGet package or binding project to your app that calls into any of Apple’s required reason APIs.
 
 ## See also
 
+Use the following links to learn more the required reasons API use in .NET MAUI, .NET iOS, and the .NET runtime and BCL:
+
+- [Required reasons API usage in .NET MAUI and Xamarin.Forms](https://github.com/xamarin/xamarin-macios/blob/main/docs/required-reasons-dotnet-maui.md)
 - [Required reasons API usage in .NET for iOS, tvOS, and Xamarin.iOS](https://github.com/xamarin/xamarin-macios/blob/main/docs/required-reasons-macios.md)
 - [Required reasons API usage in .NET, Mono and the BCL](https://github.com/xamarin/xamarin-macios/blob/main/docs/required-reasons-bcl.md)
