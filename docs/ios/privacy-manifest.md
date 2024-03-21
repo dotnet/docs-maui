@@ -38,9 +38,6 @@ To add a privacy manifest to your .NET MAUI app project, add a new XML file name
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<!--
-... omitted for brevity
--->
 <plist version="1.0">
 <dict/>
 </plist>
@@ -71,9 +68,6 @@ To add these entries to your privacy manifest, open the *PrivacyInfo.xcprivacy* 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<!--
-... omitted for brevity
--->
 <plist version="1.0">
 <dict>
     <key>NSPrivacyAccessedAPITypes</key>
@@ -88,9 +82,6 @@ Then, add the `NSPrivacyAccessedAPICategoryFileTimestamp` category with reason `
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<!--
-... omitted for brevity
--->
 <plist version="1.0">
 <dict>
     <key>NSPrivacyAccessedAPITypes</key>
