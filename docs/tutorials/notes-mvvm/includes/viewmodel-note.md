@@ -42,7 +42,7 @@ Create the **Note viewmodel**:
 
 01. Add the following properties to the class:
 
-    :::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/ViewModels/NoteViewModel.cs" id="properties":::
+    :::code language="csharp" source="../snippets/viewmodel-shared/ViewModels/NoteViewModel.cs" id="properties":::
 
     The `Date` and `Identifier` properties are simple properties that just retrieve the corresponding values from the model.
 
@@ -55,11 +55,11 @@ Create the **Note viewmodel**:
 
 01. Add the following command-properties to the class, which are the commands that the view can bind to:
 
-    :::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/ViewModels/NoteViewModel.cs" id="commands":::
+    :::code language="csharp" source="../snippets/viewmodel-shared/ViewModels/NoteViewModel.cs" id="commands":::
 
 01. Add the following constructors to the class:
 
-    :::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/ViewModels/NoteViewModel.cs" id="ctor":::
+    :::code language="csharp" source="../snippets/viewmodel-shared/ViewModels/NoteViewModel.cs" id="ctor":::
 
     These two constructors are used to either create the viewmodel with a new backing model, which is an empty note, or to create a viewmodel that uses the specified model instance.
 
@@ -67,13 +67,13 @@ Create the **Note viewmodel**:
 
 01. Add the `Save` and `Delete` methods:
 
-    :::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/ViewModels/NoteViewModel.cs" id="command_methods":::
+    :::code language="csharp" source="../snippets/viewmodel-shared/ViewModels/NoteViewModel.cs" id="command_methods":::
 
     These methods are invoked by associated commands. They perform the related actions on the model and make the app navigate to the previous page. A query string parameter is added to the `..` navigation path, indicating which action was taken and the note's unique identifier.
 
 01. Next, add the `ApplyQueryAttributes` method to the class, which satisfies the requirements of the `IQueryAttributable` interface:
 
-    :::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/ViewModels/NoteViewModel.cs" id="iquery":::
+    :::code language="csharp" source="../snippets/viewmodel-shared/ViewModels/NoteViewModel.cs" id="iquery":::
 
     When a page, or the binding context of a page, implements this interface, the query string parameters used in navigation are passed to the `ApplyQueryAttributes` method. This viewmodel is used as the binding context for the **Note view**. When the **Note view** is navigated to, the view's binding context (this viewmodel) is passed the query string parameters used during navigation.
 
@@ -81,7 +81,7 @@ Create the **Note viewmodel**:
 
 01. Finally, add these two helper methods to the class:
 
-    :::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/ViewModels/NoteViewModel.cs" id="helpers":::
+    :::code language="csharp" source="../snippets/viewmodel-shared/ViewModels/NoteViewModel.cs" id="helpers":::
 
     The `Reload` method is a helper method that refreshes the backing model object, reloading it from device storage
 
@@ -89,7 +89,7 @@ Create the **Note viewmodel**:
 
 The code for the class should look like the following snippet:
 
-:::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/ViewModels/NoteViewModel.cs" id="full":::
+:::code language="csharp" source="../snippets/viewmodel-shared/ViewModels/NoteViewModel.cs" id="full":::
 
 ## Note view
 
@@ -104,7 +104,7 @@ Update the **Note view**:
 01. In the **Solution Explorer** pane of Visual Studio, double-click on **Views\\NotePage.xaml** to open the XAML editor.
 01. Paste in the following code:
 
-:::code language="xaml" source="../snippets/viewmodel-shared/csharp/Notes/Views/NotePage.xaml" highlight="4,7-9,18,22":::
+:::code language="xaml" source="../snippets/viewmodel-shared/Views/NotePage.xaml" highlight="4,7-9,18,22":::
 
 Previously, this view didn't declare a binding context, as it was supplied by the code-behind of the page itself. Setting the binding context directly in the XAML provides two things:
 
@@ -125,4 +125,4 @@ Now that the interaction with the view has changed from event handlers to comman
 
 01. Replace the code with the following snippet:
 
-    :::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/Views/NotePage.xaml.cs":::
+    :::code language="csharp" source="../snippets/viewmodel-shared/Views/NotePage.xaml.cs":::
