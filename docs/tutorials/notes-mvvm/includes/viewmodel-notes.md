@@ -91,7 +91,7 @@ The `CollectionView` supports commanding with the `SelectionChangedCommand` and 
 
 Look at the binding used for the `CollectionView`:
 
-:::code language="xaml" source="../snippets/viewmodel-shared/Views/AllNotesPage.xaml" id="CollectionView" highlight="5-6":::
+:::code language="xaml" source="../snippets/viewmodel-shared/Views/AllNotesPage.xaml" id="collection_view" highlight="5-6":::
 
 The `SelectionChangedCommandParameter` property uses `Source={RelativeSource Self}` binding. The `Self` references the current object, which is the `CollectionView`. Notice that the binding path is the `SelectedItem` property. When the command is invoked by changing the selected item, the `SelectNoteCommand` command is invoked and the selected item is passed to the command as a parameter.
 

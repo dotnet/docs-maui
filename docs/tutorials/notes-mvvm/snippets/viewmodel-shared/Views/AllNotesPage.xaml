@@ -1,3 +1,4 @@
+<!--<full>-->
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:Notes.ViewModels"
@@ -13,12 +14,14 @@
     </ContentPage.ToolbarItems>
 
     <!-- Display notes in a list -->
+    <!--<collection_view>-->
     <CollectionView x:Name="notesCollection"
                     ItemsSource="{Binding AllNotes}"
                     Margin="20"
                     SelectionMode="Single"
                     SelectionChangedCommand="{Binding SelectNoteCommand}"
                     SelectionChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=SelectedItem}">
+    <!--</collection_view>-->
         <!-- Designate how the collection of items are laid out -->
         <CollectionView.ItemsLayout>
             <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
@@ -35,3 +38,4 @@
         </CollectionView.ItemTemplate>
     </CollectionView>
 </ContentPage>
+<!--</full>-->
