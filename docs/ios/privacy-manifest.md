@@ -166,10 +166,10 @@ If your .NET MAUI app uses the [Preferences](~/platform-integration/storage/pref
 
 You'll need to provide one or more reason codes from [User defaults APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278401). Add one or more of the reason codes below to indicate the correct usage:
 
-- CA92.1 - To access user defaults in just your app.
-- 1C8F.1 - To access user defaults from apps, app extensions, and App Clips that are members of the same App Group.
-- C56D.1 - To access user defaults from an SDK.
-- AC6B.1 - To access user defaults to read the com.apple.configuration.managed or com.apple.feedback.managed key.
+- `CA92.1` - to access user defaults in just your app.
+- `1C8F.1` - to access user defaults from apps, app extensions, and App Clips that are members of the same App Group.
+- `C56D.1` - to access user defaults from an SDK.
+- `AC6B.1` - to access user defaults to read the com.apple.configuration.managed or com.apple.feedback.managed key.
 
 > [!IMPORTANT]
 > An app's *PrivacyInfo.xcprivacy* file may need to be updated if you modify the code in your app. This includes adding a NuGet package or binding project to your app that calls into any of Apple’s required reason APIs.
