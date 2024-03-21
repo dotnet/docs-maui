@@ -133,8 +133,6 @@ For the <xref:Foundation.NSFileManager.ModificationDate?displayProperty=nameWith
 
 The APIs in this section list .NET MAUI APIs that call the required reason APIs. If your app or SDK calls any of the APIs in this section, you must declare the reasons for their use in your privacy manifest.
 
-For information about required reasons API use in .NET iOS, see [Required reasons API usage in .NET for iOS, tvOS, and Xamarin.iOS](https://github.com/xamarin/xamarin-macios/blob/main/docs/required-reasons-macios.md). For information about required reasons API use in .NET, see [Required reasons API usage in .NET, Mono and the BCL](https://github.com/xamarin/xamarin-macios/blob/main/docs/required-reasons-bcl.md).
-
 > [!NOTE]
 > The following APIs are verified for .NET MAUI versions 8.0.0 and later.
 
@@ -165,3 +163,8 @@ If your .NET MAUI app or SDK uses this API, you must include reasons for use in 
 ```
 
 Reason codes from [User defaults APIs](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api#4278401) need to be provided in the array for the `NSPrivacyAccessedAPITypeReasons` key.
+
+## See also
+
+- [Required reasons API usage in .NET for iOS, tvOS, and Xamarin.iOS](https://github.com/xamarin/xamarin-macios/blob/main/docs/required-reasons-macios.md)
+- [Required reasons API usage in .NET, Mono and the BCL](https://github.com/xamarin/xamarin-macios/blob/main/docs/required-reasons-bcl.md)
