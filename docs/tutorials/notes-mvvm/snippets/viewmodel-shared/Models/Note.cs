@@ -1,4 +1,5 @@
-﻿namespace Notes.Models;
+﻿//<full>
+namespace Notes.Models;
 
 internal class Note
 {
@@ -19,7 +20,7 @@ internal class Note
 
     //<save_delete>
     public void Save() =>
-        File.WriteAllText(System.IO.Path.Combine(FileSystem.AppDataDirectory, Filename), Text);
+    File.WriteAllText(System.IO.Path.Combine(FileSystem.AppDataDirectory, Filename), Text);
 
     public void Delete() =>
         File.Delete(System.IO.Path.Combine(FileSystem.AppDataDirectory, Filename));
@@ -59,7 +60,8 @@ internal class Note
                 .Select(filename => Note.Load(Path.GetFileName(filename)))
 
                 // With the final collection of notes, order them by date
-                .OrderBy(note => note.Date);
+                .OrderByDescending(note => note.Date);
     }
     //</load_all>
 }
+//</full>

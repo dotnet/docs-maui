@@ -1,18 +1,13 @@
 namespace Notes.Views;
 
-//<query_prop>
 [QueryProperty(nameof(ItemId), nameof(ItemId))]
 public partial class NotePage : ContentPage
-//</query_prop>
 {
-    //<itemid>
     public string ItemId
     {
         set { LoadNote(value); }
     }
-    //</itemid>
 
-    //<load_note_ctor>
     public NotePage()
     {
         InitializeComponent();
@@ -22,9 +17,7 @@ public partial class NotePage : ContentPage
 
         LoadNote(Path.Combine(appDataPath, randomFileName));
     }
-    //</load_note_ctor>
 
-    //<load_note_by_file>
     private void LoadNote(string fileName)
     {
         Models.Note noteModel = new Models.Note();
@@ -38,9 +31,7 @@ public partial class NotePage : ContentPage
 
         BindingContext = noteModel;
     }
-    //</load_note_by_file>
 
-    //<buttons>
     private async void SaveButton_Clicked(object sender, EventArgs e)
     {
         if (BindingContext is Models.Note note)
@@ -60,5 +51,4 @@ public partial class NotePage : ContentPage
 
         await Shell.Current.GoToAsync("..");
     }
-    //</buttons>
 }

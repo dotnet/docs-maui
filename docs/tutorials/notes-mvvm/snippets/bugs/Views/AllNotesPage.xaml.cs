@@ -1,4 +1,3 @@
-//<full>
 namespace Notes.Views;
 
 public partial class AllNotesPage : ContentPage
@@ -15,4 +14,3 @@ public partial class AllNotesPage : ContentPage
     }
     //</event>
 }
-//</full>

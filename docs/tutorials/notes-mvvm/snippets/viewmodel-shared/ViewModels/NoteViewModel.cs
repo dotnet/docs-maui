@@ -40,7 +40,7 @@ internal class NoteViewModel : ObservableObject, IQueryAttributable
         SaveCommand = new AsyncRelayCommand(Save);
         DeleteCommand = new AsyncRelayCommand(Delete);
     }
-    
+
     public NoteViewModel(Models.Note note)
     {
         _note = note;
