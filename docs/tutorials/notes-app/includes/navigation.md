@@ -1,7 +1,7 @@
 ---
 author: adegeo
 ms.author: adegeo
-ms.date: 01/31/2023
+ms.date: 03/21/2024
 ms.topic: include
 no-loc: ["MainPage.xaml", "MainPage.xaml.cs", "NotePage.xaml", "NotePage.xaml.cs", "AboutPage.xaml", "AboutPage.xaml.cs", "AppShell.xaml", "AppShell.xaml.cs", "Note.cs", "AllNotes"]
 ---
