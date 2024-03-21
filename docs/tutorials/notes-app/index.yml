@@ -29,7 +29,7 @@ items:
   durationInMinutes: 15
   content: |
     [!INCLUDE [](includes/navigation.md)]
-- title: Add a view and model to list all notes
+- title: Add a view and model that lists all notes
   durationInMinutes: 7
   content: |
     [!INCLUDE [](includes/allnotes.md)]

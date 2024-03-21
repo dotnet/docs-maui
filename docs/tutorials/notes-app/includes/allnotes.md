@@ -6,7 +6,7 @@ ms.topic: include
 no-loc: ["MainPage.xaml", "MainPage.xaml.cs", "NotePage.xaml", "NotePage.xaml.cs", "AboutPage.xaml", "AboutPage.xaml.cs", "AppShell.xaml", "AppShell.xaml.cs", "Note.cs", "AllNotes"]
 ---
 
-This portion of the tutorial adds the final piece of the app, a view to display all of the notes previously created.
+This portion of the tutorial adds the final piece of the app, a view that displays all of the notes previously created.
 
 ## Multiple notes and navigation
 
