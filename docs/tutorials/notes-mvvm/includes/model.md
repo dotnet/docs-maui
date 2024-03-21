@@ -1,7 +1,7 @@
 ---
 author: adegeo
 ms.author: adegeo
-ms.date: 01/05/2023
+ms.date: 03/21/2024
 ms.topic: include
 no-loc: ["About.cs", "Note.cs", "AllNotes.cs", "AllNotes", "Models\\AllNotes.cs", "Models\\About.cs", "Models\\Note.cs"]
 ---
@@ -79,5 +79,3 @@ The `Note` class code should look like the following:
 :::code language="csharp" source="../snippets/model/csharp/Notes/Models/Note.cs" id="full":::
 
 Now that the `Note` model is complete, the view models can be created.
-
-[![Explore the code.](~/media/code-sample.png) Explore the code for this step of the tutorial.](https://github.com/dotnet/maui-samples/tree/main/8.0/Tutorials/ConvertToMvvm/step2_model)

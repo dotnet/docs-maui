@@ -1,7 +1,7 @@
 ---
 author: adegeo
 ms.author: adegeo
-ms.date: 01/05/2023
+ms.date: 03/21/2024
 ms.topic: include
 no-loc: ["Notes viewmodel", "AllNotes view", "ViewModels", "NotesViewModel.cs", "AllNotesPage.xaml", "AllNotesPage.xaml.cs"]
 ---
@@ -116,5 +116,3 @@ You can now run the app, and everything is working. However, there are two probl
 - Whenever a note is changed or added, the list of notes isn't reordered to show the latest notes at the top.
 
 These two problems are fixed in the next tutorial step.
-
-[![Explore the code.](~/media/code-sample.png) Explore the code for this step of the tutorial.](https://github.com/dotnet/maui-samples/tree/main/8.0/Tutorials/ConvertToMvvm/step5_viewmodel_notes)
