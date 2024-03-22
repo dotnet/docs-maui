@@ -1,7 +1,7 @@
 ---
 author: adegeo
 ms.author: adegeo
-ms.date: 01/05/2023
+ms.date: 03/21/2024
 ms.topic: include
 no-loc: ["Notes viewmodel", "AllNotes view", "ViewModels", "NotesViewModel.cs", "AllNotesPage.xaml", "AllNotesPage.xaml.cs"]
 ---
@@ -38,25 +38,25 @@ Create the **Notes viewmodel**:
 
 01. In the `NotesViewModel` class code, add the following properties:
 
-    :::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/ViewModels/NotesViewModel.cs" id="properties":::
+    :::code language="csharp" source="../snippets/viewmodel-shared/ViewModels/NotesViewModel.cs" id="properties":::
 
     The `AllNotes` property is an `ObservableCollection` that stores all of the notes loaded from the device. The two commands will be used by the view to trigger the actions of creating a note or selecting an existing note.
 
 01. Add a parameterless constructor to the class, which initializes the commands and loads the notes from the model:
 
-    :::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/ViewModels/NotesViewModel.cs" id="ctor":::
+    :::code language="csharp" source="../snippets/viewmodel-shared/ViewModels/NotesViewModel.cs" id="ctor":::
 
     Notice that the `AllNotes` collection uses the `Models.Note.LoadAll` method to fill the observable collection with notes. The `LoadAll` method returns the notes as the `Models.Note` type, but the observable collection is a collection of `ViewModels.NoteViewModel` types. The code uses the `Select` Linq extension to create viewmodel instances from the note models returned from `LoadAll`.
 
 01. Create the methods targeted by the commands:
 
-    :::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/ViewModels/NotesViewModel.cs" id="commands":::
+    :::code language="csharp" source="../snippets/viewmodel-shared/ViewModels/NotesViewModel.cs" id="commands":::
 
     Notice that the `NewNoteAsync` method doesn't take a parameter while the `SelectNoteAsync` does. Commands can optionally have a single parameter that is provided when the command is invoked. For the `SelectNoteAsync` method, the parameter represents the note that's being selected.
 
 01. Finally, implement the `IQueryAttributable.ApplyQueryAttributes` method:
 
-    :::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/ViewModels/NotesViewModel.cs" id="query":::
+    :::code language="csharp" source="../snippets/viewmodel-shared/ViewModels/NotesViewModel.cs" id="query":::
 
     The **Note viewmodel** created in the previous tutorial step, used navigation when the note was saved or deleted. The viewmodel navigated back to the **AllNotes view**, which this viewmodel is associated with. This code detects if the query string contains either the `deleted` or `saved` key. The value of the key is the unique identifier of the note.
 
@@ -66,7 +66,7 @@ Create the **Notes viewmodel**:
 
 The code for the class should look like the following snippet:
 
-:::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/ViewModels/NotesViewModel.cs" id="full":::
+:::code language="csharp" source="../snippets/viewmodel-shared/ViewModels/NotesViewModel.cs" id="full":::
 
 ## AllNotes view
 
@@ -83,7 +83,7 @@ Update the **AllNotes view**:
 01. In the **Solution Explorer** pane of Visual Studio, double-click on **Views\\AllNotesPage.xaml**.
 01. Paste in the following code:
 
-    :::code language="xaml" source="../snippets/viewmodel-shared/csharp/Notes/Views/AllNotesPage.xaml" id="full" highlight="3,7,12,17,20-21":::
+    :::code language="xaml" source="../snippets/viewmodel-shared/Views/AllNotesPage.xaml" id="full" highlight="3,7,12,17,20-21":::
 
 The toolbar no longer uses the `Clicked` event and instead uses a command.
 
@@ -91,7 +91,7 @@ The `CollectionView` supports commanding with the `SelectionChangedCommand` and 
 
 Look at the binding used for the `CollectionView`:
 
-:::code language="xaml" source="../snippets/viewmodel-shared/csharp/Notes/Views/AllNotesPage.xaml" id="CollectionView" highlight="5-6":::
+:::code language="xaml" source="../snippets/viewmodel-shared/Views/AllNotesPage.xaml" id="collection_view" highlight="5-6":::
 
 The `SelectionChangedCommandParameter` property uses `Source={RelativeSource Self}` binding. The `Self` references the current object, which is the `CollectionView`. Notice that the binding path is the `SelectedItem` property. When the command is invoked by changing the selected item, the `SelectNoteCommand` command is invoked and the selected item is passed to the command as a parameter.
 
@@ -106,7 +106,7 @@ Now that the interaction with the view has changed from event handlers to comman
 
 01. Replace the code with the following snippet:
 
-    :::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/Views/AllNotesPage.xaml.cs":::
+    :::code language="csharp" source="../snippets/viewmodel-shared/Views/AllNotesPage.xaml.cs":::
 
 ## Run the app
 
@@ -116,5 +116,3 @@ You can now run the app, and everything is working. However, there are two probl
 - Whenever a note is changed or added, the list of notes isn't reordered to show the latest notes at the top.
 
 These two problems are fixed in the next tutorial step.
-
-[![Explore the code.](~/media/code-sample.png) Explore the code for this step of the tutorial.](https://github.com/dotnet/maui-samples/tree/main/8.0/Tutorials/ConvertToMvvm/step5_viewmodel_notes)
