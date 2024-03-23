@@ -152,7 +152,7 @@ To debug to an iOS or macOS target in Visual Studio Code:
 
 To debug to an Android target in Visual Studio Code:
 
-1. Install [Microsoft OpenJDK 11](/java/openjdk/download#openjdk-11).
+1. Install [Microsoft OpenJDK 17](/java/openjdk/download#openjdk-17).
 1. Install the Android SDK via one of the following approaches:
     * **(Recommended)** Create a new .NET MAUI project (`dotnet new maui`) and use the [InstallAndroidDependencies target](#using-the-installandroiddependencies-target).
     * Install via Visual Studio (Windows only).
