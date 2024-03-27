@@ -57,7 +57,7 @@ Auto Backup can be configured to disable specific content from backing up. You c
     <?xml version="1.0" encoding="utf-8"?>
     <full-backup-content>
         <include domain="sharedpref" path="."/>
-        <exclude domain="sharedpref" path="${applicationId}.mauiessentials.xml"/>
+        <exclude domain="sharedpref" path="${applicationId}.microsoft.maui.essentials.preferences.xml"/>
     </full-backup-content>
     ```
 
