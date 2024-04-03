@@ -30,7 +30,11 @@ For more information about creating a privacy manifest, see [Create a privacy ma
 
 ## Privacy manifest for binding projects
 
-If you are binding project owner, and you are binding a xcframework, then the xcframework provider will need to include the privacy manifest as part of the xcframework. Alternatively, you can provide documentation for package consumers to create the privacy manifest or change the bindings to bind an xcframework that has the privacy manifest included. It's not currently possible for binding project authors to include a privacy manifest outside an xcframework that will be recognized by Apple when submitting an app.
+Binding projects fall into two categories: static framework bindings and dynamic framework bindings. A privacy manifest should be included with the framework by placing it in the framework bundle. When placed correctly the binding project will automatically add it to the app bundle so that app developers don't need to provide reasons for the framework API use. For more information, see [Placing content in a bundle](https://developer.apple.com/documentation/bundleresources/placing_content_in_a_bundle#3875930).
+
+For a dynamic framework, the framework is added to the app bundle. The privacy policy manifest is added to the location where the App Store expects it to be, and there is nothing for the app developer to do.
+
+Currently, when binding a static framework, app developers will be required to manually merge the privacy manifest included with the static framework into the app privacy manifest. This is due to how static libraries are linked into the main app binary, removing the need for the framework.
 
 ## Create a privacy manifest
 
