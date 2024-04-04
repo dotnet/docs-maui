@@ -26,3 +26,6 @@ Namespaces have changed in the move from Xamarin.Forms to .NET MAUI, and Xamarin
 .NET MAUI projects make use of implicit `global using` directives. This feature enables you to remove `using` directives for the `Xamarin.Essentials` namespace, without having to replace them with the equivalent .NET MAUI namespaces.
 
 In addition, the default XAML namespace has changed from `http://xamarin.com/schemas/2014/forms` in Xamarin.Forms to `http://schemas.microsoft.com/dotnet/2021/maui` in .NET MAUI. Therefore, you should replace all occurrences of `xmlns="http://xamarin.com/schemas/2014/forms"` with `xmlns="http://schemas.microsoft.com/dotnet/2021/maui"`.
+
+> [!NOTE]
+> You can quickly update your `Xamarin.Forms` namespaces to `Microsoft.Maui` by using [Quick actions in Visual Studio](../upgrade-assistant.md#quick-actions-in-visual-studio), provided that you have [Upgrade Assistant](../upgrade-assistant.md) installed.
