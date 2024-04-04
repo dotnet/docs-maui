@@ -121,7 +121,7 @@ void OnEditorTextChanged(object sender, TextChangedEventArgs e)
 }
 ```
 
-The `Completed` event is raised when the user has ended input by pressing the return key on the keyboard, or by pressing the Tab key on Windows. The handler for the event is a generic event handler:
+The `Completed` event is only raised on Windows when the user has ended input by pressing the <kbd>Tab</kbd> key on the keyboard, or by focusing another control. The handler for the event is a generic event handler:
 
 ```csharp
 void OnEditorCompleted(object sender, EventArgs e)
