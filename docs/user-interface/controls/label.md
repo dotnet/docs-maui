@@ -162,7 +162,7 @@ Therefore, <xref:Microsoft.Maui.Controls.Label> objects can display HTML by sett
 ```csharp
 Label label = new Label
 {
-    Text = "This is <strong style=\"color:red\">HTML</strong> text.",
+    Text = "This is <span style=\"color:red;\"><strong>HTML</strong></span> text.",
     TextType = TextType.Html
 };
 ```
@@ -172,7 +172,7 @@ In the example above, the double quote characters in the HTML have to be escaped
 In XAML, HTML strings can become unreadable due to additionally escaping the `<` and `>` symbols:
 
 ```xaml
-<Label Text="This is &lt;strong style=&quot;color:red&quot;&gt;HTML&lt;/strong&gt; text."
+<Label Text="This is &lt;span style=&quot;color:red&quot;&gt;&lt;strong&gt;HTML&lt;/strong&gt;&lt;/span&gt; text."
        TextType="Html"  />
 ```
 
@@ -181,7 +181,7 @@ Alternatively, for greater readability the HTML can be inlined in a `CDATA` sect
 ```xaml
 <Label TextType="Html">
     <![CDATA[
-    This is <strong style="color:red">HTML</strong> text.
+    <Label Text="This is &lt;span style=&quot;color:red&quot;&gt;&lt;strong&gt;HTML&lt;/strong&gt;&lt;/span&gt; text."
     ]]>
 </Label>
 ```
