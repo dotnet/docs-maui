@@ -22,7 +22,7 @@ ms.date: 04/04/2024
 .NET MAUI Blazor apps also require an updated platform specific WebView control. For more information, see [Blazor supported platforms](/aspnet/core/blazor/supported-platforms).
 
 > [!IMPORTANT]
-> For information about which version of Xcode, the Android SDK and SDK, and the Windows App SDK, are required for a specific version of .NET MAUI, see [Release versions](https://github.com/dotnet/maui/wiki/Release-Versions).
+> For information about the version of Xcode, the Android SDK and JDK, and the Windows App SDK, that's required for a specific version of .NET MAUI, see [Release versions](https://github.com/dotnet/maui/wiki/Release-Versions).
 
 .NET MAUI apps for Android, iOS, and Windows can be built in Visual Studio. However, a networked Mac is required for iOS development.
 
