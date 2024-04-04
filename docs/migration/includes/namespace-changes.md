@@ -27,4 +27,5 @@ Namespaces have changed in the move from Xamarin.Forms to .NET MAUI, and Xamarin
 
 In addition, the default XAML namespace has changed from `http://xamarin.com/schemas/2014/forms` in Xamarin.Forms to `http://schemas.microsoft.com/dotnet/2021/maui` in .NET MAUI. Therefore, you should replace all occurrences of `xmlns="http://xamarin.com/schemas/2014/forms"` with `xmlns="http://schemas.microsoft.com/dotnet/2021/maui"`.
 
-If you have the [Upgrade Assistant](../upgrade-assistant.md) installed, another way you can quickly update your `Xamarin.Forms` namespaces to `Microsoft.Maui` is by using [Quick actions in Visual Studio](../upgrade-assistant.md#quick-actions-in-visual-studio).
+> [!NOTE]
+> You can quickly update your `Xamarin.Forms` namespaces to `Microsoft.Maui` by using [Quick actions in Visual Studio](upgrade-assistant.md#quick-actions-in-visual-studio), provided that you have [Upgrade Assistant](../upgrade-assistant.md) installed.

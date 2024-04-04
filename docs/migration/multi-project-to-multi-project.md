@@ -273,13 +273,13 @@ public static class MauiProgram
 }
 ```
 
-> [!Note]
-> For Xamarin.UWP projects, the `App` reference in `builder.UseMauiApp<App>()` is found in the MainPage.xaml.cs file.
+> [!NOTE]
+> For Xamarin.Forms UWP projects, the `App` reference in `builder.UseMauiApp<App>()` can be found in the *MainPage.xaml.cs* file.
 
-If there are platform specific services that need to be migrated over to .NET MAUI, utilize `builder.Services.AddTransient<IServiceCollection, Type>();` to add a transient service of the type specified in serviceType to the specified IServiceCollection. See, <xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddTransient*> for more information on the ServiceCollectionServiceExtensions.AddTransient method.
+If there are platform specific services that need to be migrated to .NET MAUI, use the <xref:Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddTransient(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Type)> method to add a transient service of the specified type to the specified <xref:Microsoft.Extensions.DependencyInjection.IServiceCollection>.
 
 > [!NOTE]
-> You can quickly update your `Xamarin.Forms` namespaces to `Microsoft.Maui` by using [Quick actions in Visual Studio](upgrade-assistant.md#quick-actions-in-visual-studio) make sure you have the Upgrade Assistant installed to get started.
+> You can quickly update your `Xamarin.Forms` namespaces to `Microsoft.Maui` by using [Quick actions in Visual Studio](upgrade-assistant.md#quick-actions-in-visual-studio), provided that you have [Upgrade Assistant](../upgrade-assistant.md) installed.
 
 [!INCLUDE [AssemblyInfo changes](includes/assemblyinfo-changes.md)]
 
