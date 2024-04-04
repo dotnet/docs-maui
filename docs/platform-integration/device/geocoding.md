@@ -7,6 +7,8 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices", "Microsoft.Maui.Devices.Sen
 
 # Geocoding
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-essentials)
+
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Devices.Sensors.IGeocoding> interface. This interfaces provides APIs to geocode a placemark to a positional coordinates and reverse geocode coordinates to a placemark.
 
 The default implementation of the `IGeocoding` interface is available through the <xref:Microsoft.Maui.Devices.Sensors.Geocoding.Default?displayProperty=nameWithType> property. Both the `IGeocoding` interface and `Geocoding` class are contained in the `Microsoft.Maui.Devices.Sensors` namespace.

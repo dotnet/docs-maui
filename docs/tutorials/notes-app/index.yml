@@ -6,7 +6,7 @@ metadata:
   audience: Developer
   level: Beginner
   ms.topic: interactive-tutorial
-  ms.date: 08/02/2022
+  ms.date: 03/14/2024
   author: adegeo
   ms.author: adegeo
 items:
@@ -26,9 +26,14 @@ items:
   content: |
     [!INCLUDE [](includes/note.md)]
 - title: Bind data to the UI and navigate pages
-  durationInMinutes: 25
+  durationInMinutes: 15
   content: |
     [!INCLUDE [](includes/navigation.md)]
+- title: Add a view and model that lists all notes
+  durationInMinutes: 7
+  content: |
+    [!INCLUDE [](includes/allnotes.md)]
+
 
 - content: |
     You've completed the Create a .NET MAUI app tutorial!

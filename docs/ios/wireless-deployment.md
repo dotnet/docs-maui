@@ -71,6 +71,8 @@ After wirelessly pairing your device to Xcode, provisioned .NET MAUI iOS apps ca
 # [Visual Studio for Mac](#tab/vsmac)
 <!-- markdownlint-enable MD025 -->
 
+[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
+
 1. Ensure that your iOS device is wirelessly paired to your Mac build host. For more information, see [Pair an iOS device](#pair-an-ios-device).
 1. In the Visual Studio for Mac toolbar, ensure that the debug target is set to your connected iOS device:
 

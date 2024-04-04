@@ -153,21 +153,9 @@ If you encounter any trouble using automatic Mac provisioning, take a look at th
 
 Pair to Mac supports building .NET MAUI apps from the command line. Navigate to the folder that holds the source of your .NET MAUI iOS app and execute the following command:
 
-::: moniker range="=net-maui-6.0"
-
 ```dotnet
-dotnet build -f:net6.0-ios /p:ServerAddress={macOS build host IP address} /p:ServerUser={macOS username} /p:ServerPassword={macOS password} /p:TcpPort=58181 /p:_DotNetRootRemoteDirectory=/Users/{macOS username}/Library/Caches/Xamarin/XMA/SDKs/dotnet/
+dotnet build -f net8.0-ios -p:ServerAddress={macOS build host IP address} -p:ServerUser={macOS username} -p:ServerPassword={macOS password} -p:TcpPort=58181 -p:_DotNetRootRemoteDirectory=/Users/{macOS username}/Library/Caches/Xamarin/XMA/SDKs/dotnet/
 ```
-
-::: moniker-end
-
-::: moniker range="=net-maui-7.0"
-
-```dotnet
-dotnet build -f:net7.0-ios /p:ServerAddress={macOS build host IP address} /p:ServerUser={macOS username} /p:ServerPassword={macOS password} /p:TcpPort=58181 /p:_DotNetRootRemoteDirectory=/Users/{macOS username}/Library/Caches/Xamarin/XMA/SDKs/dotnet/
-```
-
-::: moniker-end
 
 The parameters passed to `dotnet` in the above example are:
 
@@ -179,3 +167,5 @@ The parameters passed to `dotnet` in the above example are:
 The first time Pair to Mac logs in to a Mac build host from either Visual Studio 2022 or the command-line, it sets up SSH keys. With these keys, future logins won't require a username or password. Newly created keys are stored in **%LOCALAPPDATA%\Xamarin\MonoTouch**.
 
 If the `ServerPassword` parameter is omitted from a command-line build invocation, Pair to Mac attempts to log in to the Mac build host using the saved SSH keys.
+
+For more information about building iOS apps from the Windows command-line, see [Publish an iOS app using the command line](~/ios/deployment/publish-cli.md).

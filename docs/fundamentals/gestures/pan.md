@@ -1,7 +1,7 @@
 ---
 title: "Recognize a pan gesture"
 description: "This article explains how to use a .NET MAUI pan gesture to horizontally and vertically pan an image, so that all of the image content can be viewed when it's being displayed in a viewport smaller than the image dimensions."
-ms.date: 02/22/2022
+ms.date: 06/19/2023
 ---
 
 # Recognize a pan gesture
@@ -56,7 +56,7 @@ Freeform panning is typically suited to navigating within images and maps. The `
 ```csharp
 public class PanContainer : ContentView
 {
-    double x, y;
+    double panX, panY;
 
     public PanContainer()
     {
@@ -72,22 +72,24 @@ public class PanContainer : ContentView
         switch (e.StatusType)
         {
             case GestureStatus.Running:
-                // Translate and ensure we don't pan beyond the wrapped user interface element bounds.
-                Content.TranslationX = Math.Max(Math.Min(0, x + e.TotalX), -Math.Abs(Content.Width - DeviceDisplay.MainDisplayInfo.Width));
-                Content.TranslationY = Math.Max(Math.Min(0, y + e.TotalY), -Math.Abs(Content.Height - DeviceDisplay.MainDisplayInfo.Height));
+                // Translate and pan.
+                double boundsX = Content.Width;
+                double boundsY = Content.Height;
+                Content.TranslationX = Math.Clamp(panX + e.TotalX, -boundsX, boundsX);
+                Content.TranslationY = Math.Clamp(panY + e.TotalY, -boundsY, boundsY);
                 break;
 
             case GestureStatus.Completed:
                 // Store the translation applied during the pan
-                x = Content.TranslationX;
-                y = Content.TranslationY;
+                panX = Content.TranslationX;
+                panY = Content.TranslationY;
                 break;
         }
     }
 }
 ```
 
-In this example, the `OnPanUpdated` method updates the viewable content of the wrapped view, based on the user's pan gesture. This is achieved by using the values of the <xref:Microsoft.Maui.Controls.PanUpdatedEventArgs.TotalX> and <xref:Microsoft.Maui.Controls.PanUpdatedEventArgs.TotalY> properties of the <xref:Microsoft.Maui.Controls.PanUpdatedEventArgs> instance to calculate the direction and distance of the pan. The `DeviceDisplay.MainDisplayInfo.Width` and `DeviceDisplay.MainDisplayInfo.Height` properties provide the screen width and screen height values of the device. The wrapped user element is then panned by setting its `TranslationX` and `TranslationY` properties to the calculated values. When panning content in an element that does not occupy the full screen, the height and width of the viewport can be obtained from the element's `Height` and `Width` properties.
+In this example, the `OnPanUpdated` method updates the viewable content of the wrapped view, based on the user's pan gesture. This is achieved by using the values of the <xref:Microsoft.Maui.Controls.PanUpdatedEventArgs.TotalX> and <xref:Microsoft.Maui.Controls.PanUpdatedEventArgs.TotalY> properties of the <xref:Microsoft.Maui.Controls.PanUpdatedEventArgs> instance to calculate the direction and distance of the pan. The wrapped user element is then panned by setting its `TranslationX` and `TranslationY` properties to the calculated values. When panning content in an element that does not occupy the full screen, the height and width of the viewport can be obtained from the element's `Height` and `Width` properties.
 
 The `PanContainer` class can be wrapped around a <xref:Microsoft.Maui.Controls.View> so that a recognized pan gesture will pan the wrapped view. The following XAML example shows the `PanContainer` wrapping an <xref:Microsoft.Maui.Controls.Image>:
 

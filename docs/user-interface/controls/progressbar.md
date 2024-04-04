@@ -8,9 +8,9 @@ ms.date: 02/08/2022
 
 The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.ProgressBar> indicates to users that the app is progressing through a lengthy activity. The progress bar is a horizontal bar that is filled to a percentage represented by a `double` value.
 
-The appearance of a <xref:Microsoft.Maui.Controls.ProgressBar> is platform-dependent, and the following screenshot shows a <xref:Microsoft.Maui.Controls.ProgressBar> on iOS and Android:
+The appearance of a <xref:Microsoft.Maui.Controls.ProgressBar> is platform-dependent, and the following screenshot shows a <xref:Microsoft.Maui.Controls.ProgressBar> on Android:
 
-:::image type="content" source="media/progressbar/progressbars-default.png" alt-text="Screenshot of ProgressBar on iOS and Android.":::
+:::image type="content" source="media/progressbar/progressbar-default.png" alt-text="Screenshot of ProgressBar on Android.":::
 
 <xref:Microsoft.Maui.Controls.ProgressBar> defines two properties:
 

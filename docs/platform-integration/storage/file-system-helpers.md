@@ -1,11 +1,13 @@
 ---
 title: "File system helpers"
 description: "Learn how to use the .NET MAUI IFileSystem interface in the Microsoft.Maui.Storage namespace. This interface contains helper methods that access the application's cache and data directories, and helps open files in the app package."
-ms.date: 09/02/2022
+ms.date: 06/20/2023
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Storage", "FileSystem"]
 ---
 
 # File system helpers
+
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-essentials)
 
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IFileSystem` interface. This interface provides helper methods that access the app's cache and data directories, and helps access files in the app package.
 
@@ -33,11 +35,11 @@ To open a file that is bundled into the app package, use the `OpenAppPackageFile
 
 :::code language="csharp" source="../snippets/shared_1/Storage.cs" id="filesys_readtxtfile":::
 
-### Writing from a bundled file to the app data folder
+### Copy a bundled file to the app data folder
 
-You can't modify an app's bundled file. But you can read it first, then write it back to the [cache directory](#cache-directory) or [app data directory](#app-data-directory). The following example uses `OpenAppPackageFileAsync` to read a bundled file, alters it, and then writes it to the app data folder:
+You can't modify an app's bundled file. But you can copy a bundled file to the [cache directory](#cache-directory) or [app data directory](#app-data-directory). The following example uses `OpenAppPackageFileAsync` to copy a bundled file to the app data folder:
 
-:::code language="csharp" source="../snippets/shared_1/Storage.cs" id="filesys_toupper":::
+:::code language="csharp" source="../snippets/shared_1/Storage.cs" id="filesys_copyfile":::
 
 ## Platform differences
 

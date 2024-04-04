@@ -1,7 +1,7 @@
 ---
 author: adegeo
 ms.author: adegeo
-ms.date: 01/05/2023
+ms.date: 03/21/2024
 ms.topic: include
 no-loc: ["About.cs", "Note.cs", "AllNotes.cs", "AllNotes", "Models\\AllNotes.cs", "Models\\About.cs", "Models\\Note.cs"]
 ---
@@ -52,13 +52,13 @@ The `Note` model is going to be expanded to handle loading, saving, and deleting
 01. In the **Solution Explorer** pane of Visual Studio, double-click on **Models\\Note.cs**.
 01. In the code editor, add the following two methods to the `Note` class. These methods are instance-based and handle saving or deleting the current note to or from the device, respectively:
 
-    :::code language="csharp" source="../snippets/model/csharp/Notes/Models/Note.cs" id="save_delete":::
+    :::code language="csharp" source="../snippets/bugs/Models/Note.cs" id="save_delete":::
 
 01. The app needs to load notes in two ways, loading an individual note from a file and loading all notes on the device. The code to handle loading can be `static` members, not requiring a class instance to run.
 
     Add the following code to the class to load a note by file name:
 
-    :::code language="csharp" source="../snippets/model/csharp/Notes/Models/Note.cs" id="load_single":::
+    :::code language="csharp" source="../snippets/bugs/Models/Note.cs" id="load_single":::
 
     This code takes the file name as a parameter, builds the path to where the notes are stored on the device, and attempts to load the file if it exists.
 
@@ -66,18 +66,16 @@ The `Note` model is going to be expanded to handle loading, saving, and deleting
 
     Add the following code to the class:
 
-    :::code language="csharp" source="../snippets/model/csharp/Notes/Models/Note.cs" id="load_all":::
+    :::code language="csharp" source="../snippets/bugs/Models/Note.cs" id="load_all":::
 
     This code returns an enumerable collection of `Note` model types by retrieving the files on the device that match the notes file pattern: _*.notes.txt_. Each file name is passed to the `Load` method, loading an individual note. Finally, the collection of notes is ordered by the date of each note and returned to the caller.
 
 01. Lastly, add a constructor to the class which sets the default values for the properties, including a random file name:
 
-    :::code language="csharp" source="../snippets/model/csharp/Notes/Models/Note.cs" id="ctor":::
+    :::code language="csharp" source="../snippets/bugs/Models/Note.cs" id="ctor":::
 
 The `Note` class code should look like the following:
 
-:::code language="csharp" source="../snippets/model/csharp/Notes/Models/Note.cs" id="full":::
+:::code language="csharp" source="../snippets/bugs/Models/Note.cs" id="full":::
 
 Now that the `Note` model is complete, the view models can be created.
-
-[![Explore the code.](~/media/code-sample.png) Explore the code for this step of the tutorial.](https://github.com/dotnet/maui-samples/tree/main/7.0/Tutorials/ConvertToMvvm/step2_model)

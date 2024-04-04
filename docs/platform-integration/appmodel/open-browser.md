@@ -7,6 +7,8 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel"]
 
 # Browser
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-essentials)
+
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.ApplicationModel.IBrowser> interface. This interface enables an application to open a web link in the system-preferred browser or the external browser.
 
 The default implementation of the `IBrowser` interface is available through the <xref:Microsoft.Maui.ApplicationModel.Browser.Default?displayProperty=nameWithType> property. Both the `IBrowser` interface and `Browser` class are contained in the `Microsoft.Maui.ApplicationModel` namespace.
@@ -52,7 +54,7 @@ The browser is opened by calling the <xref:Microsoft.Maui.ApplicationModel.IBrow
 
 :::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="browser_open":::
 
-This method returns after the browser is launched, not after it was closed by the user. `Browser.OpenAsync` returns a `bool` value to indicate if the browser was successfully launched.
+This method returns after the browser is launched, not after it's closed by the user. `Browser.OpenAsync` returns a `bool` value to indicate if the browser was successfully launched.
 
 ## Customization
 

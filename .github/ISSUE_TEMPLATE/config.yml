@@ -1,0 +1,14 @@
+blank_issues_enabled: true
+contact_links:
+  - name: learn.microsoft.com site feedback
+    url: https://github.com/MicrosoftDocs/feedback/issues/new/choose
+    about: Log general learn.microsoft.com site issues here.
+  - name: .NET MAUI product feedback
+    url: https://developercommunity.visualstudio.com/
+    about: Log product issues here.
+  - name: .NET MAUI Q&A forums
+    url: https://learn.microsoft.com/answers/tags/247/dotnet-maui
+    about: Find answers to your technical questions about .NET MAUI.
+  - name: .NET tech community forums
+    url: https://techcommunity.microsoft.com/t5/net/ct-p/dotnet
+    about: Discuss .NET with community members.

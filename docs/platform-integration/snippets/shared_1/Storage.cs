@@ -37,7 +37,7 @@ public class StoragePage : ContentPage
                             { DevicePlatform.Android, new[] { "application/comics" } }, // MIME type
                             { DevicePlatform.WinUI, new[] { ".cbr", ".cbz" } }, // file extension
                             { DevicePlatform.Tizen, new[] { "*/*" } },
-                            { DevicePlatform.macOS, new[] { "cbr", "cbz" } }, // UTType values
+                            { DevicePlatform.MacCatalyst, new[] { "cbr", "cbz" } }, // UTType values
                         });
 
         PickOptions options = new()
@@ -126,7 +126,6 @@ public class StoragePage : ContentPage
     }
     //</filesys_readtxtfile>
 
-    //<filesys_toupper>
     public async Task ConvertFileToUpperCase(string sourceFile, string targetFileName)
     {
         // Read the source file
@@ -146,7 +145,21 @@ public class StoragePage : ContentPage
 
         await streamWriter.WriteAsync(content);
     }
-    //</filesys_toupper>
+
+    //<filesys_copyfile>
+    public async Task CopyFileToAppDataDirectory(string filename)
+    {
+        // Open the source file
+        using Stream inputStream = await FileSystem.Current.OpenAppPackageFileAsync(filename);
+
+        // Create an output filename
+        string targetFile = Path.Combine(FileSystem.Current.AppDataDirectory, filename);
+
+        // Copy the file to the AppDataDirectory
+        using FileStream outputStream = File.Create(targetFile);
+        await inputStream.CopyToAsync(outputStream);
+    }
+    //</filesys_copyfile>
 
     public void PreferencesSet()
     {

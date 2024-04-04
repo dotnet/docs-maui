@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI hot restart for iOS device deployment"
 description: "Hot restart enables you to quickly deploy a .NET MAUI iOS app to a local device, from Visual Studio 2022, without requiring a Mac build host."
-ms.date: 3/2/2023
+ms.date: 4/20/2023
 ---
 
 # Deploy an iOS app using hot restart
@@ -11,7 +11,7 @@ Typically when building an app, your code is compiled and combined with other pr
 .NET Multi-platform App UI (.NET MAUI) hot restart enables you to quickly deploy a .NET MAUI app to a 64-bit local iOS device, from Visual Studio 2022, without requiring a Mac build host. It removes the need for a full app bundle rebuild by pushing changes to the existing app bundle that's already present on your locally connected iOS device. It supports changes to code files, resources, and project references, enabling you to quickly test changes to your app during its development.
 
 > [!IMPORTANT]
-> Hot restart can only be used to deploy apps that use the debug build configuration. You'll still need a Mac build host to build, sign, and deploy your app for production purposes.
+> Hot restart isn't a replacement for the full build experience provided by a Mac build host. For example, it can only deploy apps that use the debug build configuration, and it doesn't support static libraries and frameworks, XCFrameworks, or binding resource packages. For more information, see [Limitations](#limitations).
 
 There are a number of requirements that must be met to use hot restart to deploy a .NET MAUI app to a locally connected iOS device:
 
@@ -123,9 +123,7 @@ While you're debugging your app, you can edit your C# code and press the restart
 
 ## Prevent code from executing
 
-Storyboard and XIB files aren't supported when using hot restart, and your app may crash if it attempts to load these at runtime. Similarly, static iOS libraries and frameworks aren't supported and you may see runtime errors or crashes if your app attempts to load these.
-
-In these scenarios, the `HOTRESTART` preprocessor symbol can be used to prevent code from executing when debugging with hot restart:
+The `HOTRESTART` preprocessor symbol can be used to prevent code from executing when debugging with hot restart:
 
 ```csharp
 #if !HOTRESTART
@@ -139,9 +137,17 @@ Hot restart is enabled by default in Visual Studio 2022. If it's been previously
 
 :::image type="content" source="media/hot-restart/enable-hot-restart.png" alt-text="Screenshot of how to enable hot restart within Visual Studio.":::
 
-## Troubleshoot
+## Limitations
 
-.NET MAUI apps that use iOS asset catalogs are currently unsupported by hot restart. When using Hot Restart, your app will show a .NET icon and launch screen.
+There are limitations when using hot restart:
+
+- It can only be used to deploy apps that use the debug build configuration. You'll still need a Mac build host to build, sign, and deploy your app for production purposes.
+- Storyboard and XIB files aren't supported, and your app may crash if it attempts to load these at runtime.
+- Static iOS libraries and frameworks aren't supported and you may see runtime errors or crashes if your app attempts to load these.
+- XCFrameworks and binding resource packages aren't supported.
+- Asset catalogs aren't supported. When using Hot Restart, your app will show a .NET icon and launch screen.
+
+## Troubleshoot
 
 iOS uses a watchdog that monitors app launch times and responsiveness, and terminates unresponsive apps. For example, the watchdog terminates apps that block the main thread for a significant time. On old iOS devices, the watchdog may terminate an app that's been deployed using hot restart before the debugger has connected to it. The workaround is to reduce the amount of processing performed in the app's startup path, and to use a more recent iOS device.
 

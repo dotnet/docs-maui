@@ -6,6 +6,12 @@ ms.date: 03/23/2023
 
 # Publish a Mac Catalyst app for distribution outside the Mac App Store
 
+> [!div class="op_single_selector"]
+>
+> - [Publish an unsigned app](publish-unsigned.md)
+> - [Publish for app store distribution](publish-app-store.md)
+> - [Publish for ad-hoc distribution](publish-ad-hoc.md)
+
 An alternative to distributing Mac Catalyst apps through the Mac App Store is to distribute them outside the Mac App Store. With this approach, your Mac Catalyst app can be hosted at a location of your choosing for download. Members of the Apple Developer Program and the Apple Developer Enterprise Program can use this distribution approach.
 
 Distributing a Mac Catalyst app requires that the app is provisioned using a *provisioning profile*. Provisioning profiles are files that contain code signing information, as well as the identity of the app and its intended distribution mechanism.
@@ -168,7 +174,7 @@ If your app uses encryption, and you plan to distribute it outside the United St
 Currently, when you attempt to publish a .NET MAUI Mac Catalyst app for distribution outside the Mac App Store, provided you've met the provisioning requirements, you'll receive an error about `codesign` exiting with code 3:
 
 ```
-/usr/local/share/dotnet/packs/Microsoft.MacCatalyst.Sdk/16.2.1040/tools/msbuild/iOS/Xamarin.Shared.targets(1930,3): error MSB6006: "codesign" exited with code 3. [/Users/davidbritch/Projects/MyMauiApp/MyMauiApp/MyMauiApp.csproj::TargetFramework=net7.0-maccatalyst]
+/usr/local/share/dotnet/packs/Microsoft.MacCatalyst.Sdk/16.2.1040/tools/msbuild/iOS/Xamarin.Shared.targets(1930,3): error MSB6006: "codesign" exited with code 3. [/Users/davidbritch/Projects/MyMauiApp/MyMauiApp/MyMauiApp.csproj::TargetFramework=net8.0-maccatalyst]
 ```
 
 While `codesign` succeeds in signing your app, the `_CodesignVerify` target fails to verify the code signature:
@@ -198,41 +204,28 @@ To publish your Mac Catalyst app from the command line on a Mac, open a terminal
 
 | Parameter                    | Value                                                                                           |
 |------------------------------|-------------------------------------------------------------------------------------------------|
-| `-f` or `--framework`        | The target framework, which is `net6.0-maccatalyst` or `net7.0-maccatalyst`.                    |
+| `-f` or `--framework`        | The target framework, which is `net8.0-maccatalyst`.                    |
 | `-c` or `--configuration`    | The build configuration, which is `Release`.                                                    |
-| `/p:MtouchLink`              | The link mode for the project, which can be `None`, `SdkOnly`, or `Full`.                       |
-| `/p:CreatePackage`           | Set to `true` so that a package (*.pkg*) is created for the app at the end of the build.        |
-| `/p:EnableCodeSigning`       | Set to `true` so that code signing is enabled.                                                  |
-| `/p:EnablePackageSigning`    | Set to `true` so that the package that's created gets signed.                                   |
-| `/p:CodesignKey`             | The name of the code signing key. Set to the name of your distribution certificate, as displayed in Keychain Access. |
-| `/p:CodesignProvision`       | The provisioning profile to use when signing the app bundle. |
-| `/p:CodesignEntitlements`    | The path to the entitlements file that specifies the entitlements the app requires. Set to `Platforms\MacCatalyst\Entitlements.plist`. |
-| `/p:PackageSigningKey`       | The package signing key to use when signing the package. Set to the name of your installer certificate, as displayed in Keychain Access. |
-| `/p:UseHardenedRuntime`      | Set to `true` to enable the hardened runtime, which is required for Mac Catalyst apps that are distributed outside of the Mac App Store. |
+| `-p:MtouchLink`              | The link mode for the project, which can be `None`, `SdkOnly`, or `Full`.                       |
+| `-p:CreatePackage`           | Set to `true` so that a package (*.pkg*) is created for the app at the end of the build.        |
+| `-p:EnableCodeSigning`       | Set to `true` so that code signing is enabled.                                                  |
+| `-p:EnablePackageSigning`    | Set to `true` so that the package that's created gets signed.                                   |
+| `-p:CodesignKey`             | The name of the code signing key. Set to the name of your distribution certificate, as displayed in Keychain Access. |
+| `-p:CodesignProvision`       | The provisioning profile to use when signing the app bundle. |
+| `-p:CodesignEntitlements`    | The path to the entitlements file that specifies the entitlements the app requires. Set to `Platforms\MacCatalyst\Entitlements.plist`. |
+| `-p:PackageSigningKey`       | The package signing key to use when signing the package. Set to the name of your installer certificate, as displayed in Keychain Access. |
+| `-p:RuntimeIdentifier`       | The runtime identifier (RID) for the project. Release builds of .NET MAUI Mac Catalyst apps default to using `maccatalyst-x64` and `maccatalyst-arm64` as runtime identifiers, to support universal apps. To support only a single architecture, specify `maccatalyst-x64` or `maccatalyst-arm64`. |
+| `-p:UseHardenedRuntime`      | Set to `true` to enable the hardened runtime, which is required for Mac Catalyst apps that are distributed outside of the Mac App Store. |
 
-> [!WARNING]
-> Attempting to publish a .NET MAUI solution will result in the `dotnet publish` command attempting to publish each project in the solution individually, which can cause issues when you've added other project types to your solution. Therefore, the `dotnet publish` command should be scoped to your .NET MAUI app project.
-
-Additional build parameters can be specified on the command line, if they aren't provided in a `<PropertyGroup>` in your project file. The following table lists some of the common parameters:
-
-| Parameter                    | Value                                                                                           |
-|------------------------------|-------------------------------------------------------------------------------------------------|
-| `/p:ApplicationTitle` | The user-visible name for the app. |
-| `/p:ApplicationId` | The unique identifier for the app, such as `com.companyname.mymauiapp`. |
-| `/p:ApplicationVersion` | The version of the build that identifies an iteration of the app. |
-| `/p:ApplicationDisplayVersion` | The version number of the app. |
-| `/p:RuntimeIdentifier` | The runtime identifier (RID) for the project. Release builds of .NET MAUI Mac Catalyst apps default to using `maccatalyst-x64` and `maccatalyst-arm64` as runtime identifiers, to support universal apps. To support only a single architecture, specify `maccatalyst-x64` or `maccatalyst-arm64`. |
-
-For a full list of build properties, see [Project file properties](https://github.com/xamarin/xamarin-macios/wiki/Project-file-properties).
-
-> [!IMPORTANT]
-> Values for all of these parameters don't have to be provided on the command line. They can also be provided in the project file. When a parameter is provided on the command line and in the project file, the command line parameter takes precedence. For more information about providing build properties in your project file, see [Define build properties in your project file](#define-build-properties-in-your-project-file).
+[!INCLUDE [Additional build parameters](../includes/additional-build-parameters.md)]
 
 For example, use the following command to build and sign a *.pkg* on a Mac, for distribution outside the Mac App Store:
 
 ```dotnetcli
-dotnet publish -f:net7.0-maccatalyst -c:Release /p:MtouchLink=SdkOnly /p:CreatePackage=true /p:EnableCodeSigning=true /p:EnablePackageSigning=true /p:CodesignKey="Developer ID Application: John Smith (AY2GDE9QM7)" /p:CodesignProvision="MyMauiApp (Non-App Store)" /p:CodesignEntitlements="Platforms\MacCatalyst\Entitlements.plist" /p:PackageSigningKey="Developer ID Installer: John Smith (AY2GDE9QM7)" /p:UseHardenedRuntime=true
+dotnet publish -f net8.0-maccatalyst -c Release -p:MtouchLink=SdkOnly -p:CreatePackage=true -p:EnableCodeSigning=true -p:EnablePackageSigning=true -p:CodesignKey="Developer ID Application: John Smith (AY2GDE9QM7)" -p:CodesignProvision="MyMauiApp (Non-App Store)" -p:CodesignEntitlements="Platforms\MacCatalyst\Entitlements.plist" -p:PackageSigningKey="Developer ID Installer: John Smith (AY2GDE9QM7)" -p:UseHardenedRuntime=true
 ```
+
+[!INCLUDE [dotnet publish in .NET 8](~/includes/dotnet-publish-net8.md)]
 
 [!INCLUDE [Publishing output](../includes/publishing-output.md)]
 
@@ -265,7 +258,7 @@ For a full list of build properties, see [Project file properties](https://githu
 The following example shows a typical property group for building and signing your Mac Catalyst app for distribution outside the Mac App Store:
 
 ```xml
-<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-maccatalyst|AnyCPU'">
+<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-maccatalyst|AnyCPU'">
   <MtouchLink>SdkOnly</MtouchLink>
   <EnableCodeSigning>True</EnableCodeSigning>
   <EnablePackageSigning>true</EnablePackageSigning>

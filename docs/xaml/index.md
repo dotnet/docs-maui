@@ -20,7 +20,7 @@ XAML has several advantages over equivalent code:
 There are also disadvantages, mostly related to limitations that are intrinsic to markup languages:
 
 - XAML cannot contain code. All event handlers must be defined in a code file.
-- XAML cannot contain loops for repetitive processing.
+- XAML cannot contain loops for repetitive processing. However there are controls that display collections of data, such as <xref:Microsoft.Maui.Controls.ListView> and <xref:Microsoft.Maui.Controls.CollectionView>.
 - XAML cannot contain conditional processing. However, a data-binding can reference a code-based binding converter that effectively allows some conditional processing.
 - XAML generally cannot instantiate classes that do not define a parameterless constructor, although this restriction can sometimes be overcome.
 - XAML generally cannot call methods, although this restriction can sometimes be overcome.

@@ -173,7 +173,7 @@ In the previous example, the <xref:Microsoft.Maui.Controls.Grid> object was set 
 </ContentPage>
 ```
 
-The `Content` property isn't required in XAML because elements defined for use in .NET MAUI XAML are allowed to have one property specified as the `ContentProperty` attribute on the class:
+The `Content` property isn't required in XAML because elements defined for use in .NET MAUI XAML are allowed to have one property specified as the [`ContentProperty`](xref:Microsoft.Maui.Controls.ContentPropertyAttribute) attribute on the class:
 
 ```csharp
 [ContentProperty("Content")]
@@ -183,9 +183,9 @@ public class ContentPage : TemplatedPage
 }
 ```
 
-Any property specified as the `ContentProperty` of a class means that the property-element tags for the property are not required. Therefore, the example above specifies that any XAML content that appears between the start and end <xref:Microsoft.Maui.Controls.ContentPage> tags is assigned to the `Content` property.
+Any property specified as the [`ContentProperty`](xref:Microsoft.Maui.Controls.ContentPropertyAttribute) of a class means that the property-element tags for the property are not required. Therefore, the example above specifies that any XAML content that appears between the start and end <xref:Microsoft.Maui.Controls.ContentPage> tags is assigned to the `Content` property.
 
-Many classes also have `ContentProperty` attribute definitions. For example, the content property of <xref:Microsoft.Maui.Controls.Label> is `Text`. <!--For more information, see the [API documentation]().-->
+Many classes also have [`ContentProperty`](xref:Microsoft.Maui.Controls.ContentPropertyAttribute) attribute definitions. For example, the content property of <xref:Microsoft.Maui.Controls.Label> is `Text`.
 
 ## Platform differences
 
@@ -197,25 +197,41 @@ Many classes also have `ContentProperty` attribute definitions. For example, the
              x:Class="...">
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness">
-            <On Platform="iOS" Value="0, 20, 0, 0" />
-            <On Platform="Android" Value="10, 20, 20, 10" />
+            <On Platform="iOS" Value="0,20,0,0" />
+            <On Platform="Android" Value="10,20,20,10" />
         </OnPlatform>
     </ContentPage.Padding>
     ...
 </ContentPage>
 ```
 
-`OnPlatform` is a generic class and so you need to specify the generic type argument, in this case, `Thickness`, which is the type of `Padding` property. This is achieved with the `x:TypeArguments` XAML attribute. The `OnPlatform` class has a property named `Platforms`, that is an `IList` of `On` objects. Each `On` object can set the `Platform` and `Value` property to define the `Thickness` value for a specific platform.
-
-In addition, the `Platform` property of `On` is of type `IList<string>`, so you can include multiple platforms if the values are the same:
+`OnPlatform` is a generic class and so you need to specify the generic type argument, in this case, `Thickness`, which is the type of `Padding` property. This is achieved with the `x:TypeArguments` XAML attribute. The `OnPlatform` class defines a `Default` property that can be set to a value that will be applied to all platforms:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="...">
     <ContentPage.Padding>
-        <OnPlatform x:TypeArguments="Thickness">
-            <On Platform="iOS, Android" Value="10, 20, 20, 10" />
+        <OnPlatform x:TypeArguments="Thickness" Default="20">
+            <On Platform="iOS" Value="0,20,0,0" />
+            <On Platform="Android" Value="10,20,20,10" />
+        </OnPlatform>
+    </ContentPage.Padding>
+    ...
+</ContentPage>
+```
+
+In this example, the `Padding` property is set to different values on iOS and Android, with the other platforms being set to the default value.
+
+The `OnPlatform` class also defines a `Platforms` property, which is an `IList` of `On` objects. Each `On` object can set the `Platform` and `Value` property to define the `Thickness` value for a specific platform. In addition, the `Platform` property of `On` is of type `IList<string>`, so you can include multiple platforms if the values are the same:
+
+```xaml
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="...">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" Default="20">
+            <On Platform="iOS, Android" Value="10,20,20,10" />
         </OnPlatform>
     </ContentPage.Padding>
     ...
@@ -227,7 +243,7 @@ This is the standard way to set a platform-dependent `Padding` property in XAML.
 > [!NOTE]
 > If the `Value` property of an `On` object can't be represented by a single string, you can define property elements for it.
 
-For more information, see [OnPlatform Markup Extension](~/xaml/markup-extensions/consume.md#onplatform-markup-extension).
+For more information, see [Customize UI appearance based on the platform](~/platform-integration/customize-ui-appearance.md#customize-ui-appearance-based-on-the-platform).
 
 ## Next steps
 

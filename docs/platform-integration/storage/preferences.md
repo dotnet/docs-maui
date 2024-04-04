@@ -7,6 +7,8 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Storage", "Preferences"]
 
 # Preferences
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-essentials)
+
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `IPreferences` interface. This interface helps store app preferences in a key/value store.
 
 The default implementation of the `IPreferences` interface is available through the `Preferences.Default` property. Both the `IPreferences` interface and `Preferences` class are contained in the `Microsoft.Maui.Storage` namespace.
@@ -60,7 +62,6 @@ To remove all keys, use the `Clear` method:
 
 ## Shared keys
 
-<!-- TODO: What is the difference between an extension and a different app? -->
 The preferences stored by your app are only visible to your app. However, you can also create a **shared** preference that can be used by other extensions or a watch app. When you set, remove, or retrieve a preference, an optional string parameter can be supplied to specify the name of the container the preference is stored in.
 
 The following methods take a string parameter named `sharedName`:
@@ -98,7 +99,6 @@ All data is stored into [Shared Preferences](https://developer.android.com/train
 
 `ApplicationDataContainer` is used to store the values on the device. If no `sharedName` is specified, the `LocalSettings` are used. Otherwise the name is used to create a new container inside of `LocalSettings`. <!-- (/uwp/api/windows.storage.applicationdatacontainer) -->
 
-<!-- TODO: This makes no sense to me. the way the word setting was used here didn't make sense. I edited this to try and make sense of it but I suspect I'm wrong! -->
 `LocalSettings` restricts the preference key names to 255 characters or less. Each preference value can be up to 8K bytes in size, and each composite setting can be up to 64 K bytes in size.
 
 -----

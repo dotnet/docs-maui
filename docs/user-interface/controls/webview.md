@@ -1,7 +1,7 @@
 ---
 title: "WebView"
 description: "This article explains how to use the .NET MAUI WebView to display remote web pages, local HTML files, and HTML strings."
-ms.date: 10/11/2022
+ms.date: 10/23/2023
 zone_pivot_groups: devices-deployment
 ---
 
@@ -11,10 +11,24 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.WebView
 
 <xref:Microsoft.Maui.Controls.WebView> defines the following properties:
 
-- `Cookies`, of type `CookieContainer`, provides storage for a collection of cookies.
-- `CanGoBack`, of type `bool`, indicates whether the user can navigate to previous pages. This is a read-only property.
-- `CanGoForward`, of type `bool`, indicates whether the user can navigate forward. This is a read-only property.
-- `Source`, of type `WebViewSource`, represents the location that the <xref:Microsoft.Maui.Controls.WebView> displays.
+::: moniker range="=net-maui-7.0"
+
+- <xref:Microsoft.Maui.Controls.WebView.Cookies>, of type `CookieContainer`, provides storage for a collection of cookies.
+- <xref:Microsoft.Maui.Controls.WebView.CanGoBack>, of type `bool`, indicates whether the user can navigate to previous pages. This is a read-only property.
+- <xref:Microsoft.Maui.Controls.WebView.CanGoForward>, of type `bool`, indicates whether the user can navigate forward. This is a read-only property.
+- <xref:Microsoft.Maui.Controls.WebView.Source>, of type `WebViewSource`, represents the location that the <xref:Microsoft.Maui.Controls.WebView> displays.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-8.0"
+
+- <xref:Microsoft.Maui.Controls.WebView.Cookies>, of type `CookieContainer`, provides storage for a collection of cookies.
+- <xref:Microsoft.Maui.Controls.WebView.CanGoBack>, of type `bool`, indicates whether the user can navigate to previous pages. This is a read-only property.
+- <xref:Microsoft.Maui.Controls.WebView.CanGoForward>, of type `bool`, indicates whether the user can navigate forward. This is a read-only property.
+- <xref:Microsoft.Maui.Controls.WebView.Source>, of type `WebViewSource`, represents the location that the <xref:Microsoft.Maui.Controls.WebView> displays.
+- <xref:Microsoft.Maui.Controls.WebView.UserAgent>, of type `string`, represents the user agent. The default value is the user agent of the underlying platform browser, or `null` if it can't be determined.
+
+::: moniker-end
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
@@ -49,7 +63,7 @@ URIs must be fully formed with the protocol specified.
 
 :::zone pivot="devices-windows"
 
-<!-- blank pivot to skirt the dumb warning about using every pivot type -->
+<!-- blank pivot to skirt the warning about using every pivot type -->
 
 :::zone-end
 
@@ -187,7 +201,7 @@ WebView webView = new WebView();
 webView.Reload();
 ```
 
-<!-- When the `Reload` method is invoked the `ReloadRequested` event is fired, indicating that a request has been made to reload the current content. -->
+When the `Reload` method is invoked the `ReloadRequested` event is fired, indicating that a request has been made to reload the current content.
 
 ## Perform navigation
 
@@ -240,7 +254,7 @@ The following steps demonstrate how to intercept permission requests from the `W
     private async Task RequestCameraPermission()
     {
         PermissionStatus status = await Permissions.CheckStatusAsync<Permissions.Camera>();
-    
+
         if (status != PermissionStatus.Granted)
             await Permissions.RequestAsync<Permissions.Camera>();
     }
@@ -272,17 +286,17 @@ The following steps demonstrate how to intercept permission requests from the `W
                 {
                     // Get the status of the .NET MAUI app's access to the camera
                     PermissionStatus status = Permissions.CheckStatusAsync<Permissions.Camera>().Result;
-    
+
                     // Deny the web page's request if the app's access to the camera is not "Granted"
                     if (status != PermissionStatus.Granted)
                         request.Deny();
                     else
                         request.Grant(request.GetResources());
-    
+
                     return;
                 }
             }
-    
+
             base.OnPermissionRequest(request);
         }
     }
@@ -376,13 +390,13 @@ function factorial(num) {
 
 :::zone pivot="devices-ios, devices-maccatalyst"
 
-::: moniker range=">=net-maui-7.0"
-
 ## Configure the native WebView on iOS and Mac Catalyst
 
 The native <xref:Microsoft.Maui.Controls.WebView> control is a `MauiWKWebView` on iOS and Mac Catalyst, which derives from `WKWebView`. One of the `MauiWKWebView` constructor overloads enables a `WKWebViewConfiguration` object to be specified, which provides information about how to configure the `WKWebView` object. Typical configurations include setting the user agent, specifying cookies to make available to your web content, and injecting custom scripts into your web content.
 
-You can create a `WKWebViewConfiguration` object in your app, and then configure its properties as required. Alternatively, you can call the static `MauiWKWebView.CreateConfiguration` method to retrieve .NET MAUI's `WKWebViewConfiguration` object and then modify it. The `WKWebViewConfiguration` object can then be passed to the `MauiWKWebView` constructor overload by modifying the factory method that `WebViewHandler` uses to create its native control on each platform:
+You can create a `WKWebViewConfiguration` object in your app, and then configure its properties as required. Alternatively, you can call the static `MauiWKWebView.CreateConfiguration` method to retrieve .NET MAUI's `WKWebViewConfiguration` object and then modify it. The `WKWebViewConfiguration` object can then be specified as an argument to the `MauiWKWebView` constructor overload.
+
+Since the configuration of the native <xref:Microsoft.Maui.Controls.WebView> can't be changed on iOS and Mac Catalyst once the handler's platform view is created, you should create a custom handler factory delegate to modify it:
 
 ```csharp
 #if IOS || MACCATALYST
@@ -394,48 +408,89 @@ using Microsoft.Maui.Handlers;
 ...
 
 #if IOS || MACCATALYST
-    WKWebViewConfiguration config = MauiWKWebView.CreateConfiguration();
-    config.ApplicationNameForUserAgent = "MyProduct/1.0.0";
-    WebViewHandler.PlatformViewFactory =
-        handler => new MauiWKWebView(CGRect.Empty, (WebViewHandler)handler, config);
+    Microsoft.Maui.Handlers.WebViewHandler.PlatformViewFactory = (handler) =>
+    {
+        WKWebViewConfiguration config = MauiWKWebView.CreateConfiguration();
+        config.ApplicationNameForUserAgent = "MyProduct/1.0.0";
+        return new MauiWKWebView(CGRect.Empty, (WebViewHandler)handler, config);
+    };
 #endif
 ```
 
 > [!NOTE]
 > You should configure `MauiWKWebView` with a `WKWebViewConfiguration` object before a <xref:Microsoft.Maui.Controls.WebView> is displayed in your app. Suitable locations to do this are in your app's startup path, such as in *MauiProgram.cs* or *App.xaml.cs*. <!-- For more information about configuring a native .NET MAUI control, see [Customize controls](~/user-interface/handlers/customize.md). -->
 
-::: moniker-end
+:::zone-end
+
+::: moniker range=">=net-maui-8.0"
+
+:::zone pivot="devices-ios, devices-maccatalyst"
+
+## Set media playback preferences on iOS and Mac Catalyst
+
+Inline media playback of HTML5 video, including autoplay and picture in picture, is enabled by default for the <xref:Microsoft.Maui.Controls.WebView> on iOS and Mac Catalyst. To change this default, or set other media playback preferences, you should create a custom handler factory delegate since media playback preferences can't be changed once the handler's platform view is created. The following code shows an example of doing this:
+
+```csharp
+#if IOS || MACCATALYST
+using WebKit;
+using CoreGraphics;
+using Microsoft.Maui.Platform;
+using Microsoft.Maui.Handlers;
+#endif
+...
+
+#if IOS || MACCATALYST
+    Microsoft.Maui.Handlers.WebViewHandler.PlatformViewFactory = (handler) =>
+    {
+        WKWebViewConfiguration config = MauiWKWebView.CreateConfiguration();
+
+        // True to play HTML5 videos inliine, false to use the native full-screen controller.
+        config.AllowsInlineMediaPlayback = false;
+
+        // True to play videos over AirPlay, otherwise false.
+        config.AllowsAirPlayForMediaPlayback = false;
+
+        // True to let HTML5 videos play Picture in Picture.
+        config.AllowsPictureInPictureMediaPlayback = false;
+
+        // Media types that require a user gesture to begin playing.
+        config.MediaTypesRequiringUserActionForPlayback = WKAudiovisualMediaTypes.All;
+
+        return new MauiWKWebView(CGRect.Empty, (WebViewHandler)handler, config);
+    };
+#endif
+```
+
+For more information about configuring a <xref:Microsoft.Maui.Controls.WebView> on iOS, see [Configure the native WebView on iOS and Mac Catalyst](#configure-the-native-webview-on-ios-and-mac-catalyst).
 
 :::zone-end
+
+::: moniker-end
 
 :::zone pivot="devices-maccatalyst"
 
 ## Inspect a WebView on Mac Catalyst
 
-To use Safari developer tools to inspect the contents of a `WebView` on Mac Catalyst requires you to add the `com.apple.security.get-task-allow` key, of type `Boolean`, to the entitlements file of your app for its debug build. For more information about entitlements, see [Entitlements](~/ios/entitlements.md).
+To use Safari developer tools to inspect the content of a <xref:Microsoft.Maui.Controls.WebView> on Mac Catalyst, add the following code to your app:
 
-To add an entitlements file to your .NET MAUI app project, add a new XML file named *Entitlements.Debug.plist* to the *Platforms\\MacCatalyst* folder of your app project. Then add the following XML to the file:
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>com.apple.security.get-task-allow</key>
-    <true/>
-</dict>
-</plist>
+```csharp
+#if MACCATALYST
+        Microsoft.Maui.Handlers.WebViewHandler.Mapper.AppendToMapping("Inspect", (handler, view) =>
+        {
+            if (OperatingSystem.IsMacCatalystVersionAtLeast(16, 6))
+                handler.PlatformView.Inspectable = true;
+        });
+#endif
 ```
 
-To configure your app to consume this entitlements file, add the following `<PropertyGroup>` node to your app's project file as a child of the `<Project>` node:
+This code customizes the property mapper for the `WebViewHandler` on Mac Catalyst, to make <xref:Microsoft.Maui.Controls.WebView> content inspectable by Safari developer tools. For more information about handlers, see [Handlers](~/user-interface/handlers/index.md).
 
-```xml
-<PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst' and '$(Configuration)' == 'Debug'">
-    <CodeSignEntitlements>Platforms/MacCatalyst/Entitlements.Debug.plist</CodeSignEntitlements>
-</PropertyGroup>
-```
+To use Safari developer tools with a Mac Catalyst app:
 
-This configuration ensures that the entitlements file is only processed for debug builds on Mac Catalyst.
+1. Open Safari on your Mac.
+1. In Safari, select the **Safari > Settings > Advanced > Show Develop menu in menu bar** checkbox.
+1. Run your .NET MAUI Mac Catalyst app.
+1. In Safari, select the **Develop > {Device name}** menu, where the `{Device name}` placeholder is your device name such as `Macbook Pro`. Then select the entry under your app name, which will also highlight your running app. This will cause the **Web inspector** window to appear.
 
 :::zone-end
 

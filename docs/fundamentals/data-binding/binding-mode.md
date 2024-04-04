@@ -262,3 +262,6 @@ Now the <xref:Microsoft.Maui.Controls.Slider> is initialized to 1 (the default v
 > The <xref:Microsoft.Maui.Controls.VisualElement> class also defines `ScaleX` and `ScaleY` properties, which can scale the <xref:Microsoft.Maui.Controls.VisualElement> differently in the horizontal and vertical directions.
 
 A very useful application of overriding the default binding mode with a `TwoWay` binding mode involves the `SelectedItem` property of <xref:Microsoft.Maui.Controls.ListView>. The default binding mode is `OneWayToSource`. When a data binding is set on the `SelectedItem` property to reference a source property in a viewmodel, then that source property is set from the <xref:Microsoft.Maui.Controls.ListView> selection. However, in some circumstances, you might also want the <xref:Microsoft.Maui.Controls.ListView> to be initialized from the viewmodel.
+
+> [!IMPORTANT]
+> The default binding mode can vary from control to control, and is set when the bindable property is created. It's available from the `DefaultBindingMode` property of the <xref:Microsoft.Maui.Controls.BindableProperty> object.

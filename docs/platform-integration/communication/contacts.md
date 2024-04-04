@@ -7,6 +7,8 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel.Communication"]
 
 # Contacts
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-essentials)
+
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.ApplicationModel.Communication.IContacts> interface to select a contact and read information about it.
 
 The default implementation of the `IContacts` interface is available through the <xref:Microsoft.Maui.ApplicationModel.Communication.Contacts.Default> property. Both the `IContacts` interface and `Contacts` class are contained in the `Microsoft.Maui.ApplicationModel.Communication` namespace.
@@ -52,15 +54,11 @@ The `ReadContacts` permission is required and must be configured in the Android 
   <uses-permission android:name="android.permission.READ_CONTACTS" />
   ```
 
-<!-- TODO not yet supported>
-
   \- or -
 
-- Use the Android project properties:
+- Update the Android Manifest in the manifest editor:
 
-  Right-click on the Android project and open the project's properties. Under **Android Manifest** find the **Required permissions:** area and check the **Contacts** permission. This will automatically update the **AndroidManifest.xml** file.
-
--->
+  In Visual Studio double-click on the *Platforms/Android/AndroidManifest.xml* file to open the Android manifest editor. Then, under **Required permissions** check the **READ_CONTACTS** permission. This will automatically update the *AndroidManifest.xml* file.
 
 # [iOS/Mac Catalyst](#tab/macios)
 

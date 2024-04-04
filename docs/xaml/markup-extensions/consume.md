@@ -1,7 +1,7 @@
 ---
 title: "Consume XAML markup extensions"
 description: ".NET MAUI XAML markup extensions enhance the power and flexibility of XAML by allowing element attributes to be set from a variety of sources."
-ms.date: 01/27/2022
+ms.date: 04/18/2023
 ---
 
 # Consume XAML markup extensions
@@ -31,11 +31,15 @@ Any attribute value in curly braces is *always* a XAML markup extension. However
 
 In addition to the markup extensions discussed in this article, the following markup extensions are included in .NET MAUI and discussed in other articles:
 
-- [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) - reference objects from a resource dictionary. For more information, see [Resource dictionaries](~/fundamentals/resource-dictionaries.md).
-- [`DynamicResource`](xref:Microsoft.Maui.Controls.Xaml.DynamicResourceExtension) - respond to changes in objects in a resource dictionary. For more information, see [Dynamic styles](~/user-interface/styles/xaml.md#dynamic-styles).
-- [`Binding`](xref:Microsoft.Maui.Controls.Xaml.BindingExtension) - establish a link between properties of two objects. For more information, see [Data binding](~/fundamentals/data-binding/index.md).
-- [`TemplateBinding`](xref:Microsoft.Maui.Controls.Xaml.TemplateBindingExtension) - performs data binding from a control template. For more information, see [Control templates](~/fundamentals/controltemplate.md).
+- [`AppThemeBinding`](xref:Microsoft.Maui.Controls.Xaml.AppThemeBindingExtension) - specifies a resource to be consumed based on the current system theme. For more information, see [AppThemeBinding markup extension](~/user-interface/system-theme-changes.md#appthemebinding-markup-extension).
+- [`Binding`](xref:Microsoft.Maui.Controls.Xaml.BindingExtension) - establishes a link between properties of two objects. For more information, see [Data binding](~/fundamentals/data-binding/index.md).
+- [`DynamicResource`](xref:Microsoft.Maui.Controls.Xaml.DynamicResourceExtension) - responds to changes in objects in a resource dictionary. For more information, see [Dynamic styles](~/user-interface/styles/xaml.md#dynamic-styles).
+- [`FontImage`](xref:Microsoft.Maui.Controls.Xaml.FontImageExtension) - displays a font icon in any view that can display an <xref:Microsoft.Maui.Controls.ImageSource>. For more information, see [Load a font icon](~/user-interface/controls/image.md#load-a-font-icon).
+- [`OnIdiom`](xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension) - customizes UI appearance based on the idiom of the device the application is running on. For more information, see [Customize UI appearance based on the device idiom](~/platform-integration/customize-ui-appearance.md#customize-ui-appearance-based-on-the-device-idiom).
+- [`OnPlatform`](xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension) - customizes UI appearance on a per-platform basis. For more information, see [Customize UI appearance based on the platform](~/platform-integration/customize-ui-appearance.md#customize-ui-appearance-based-on-the-platform).
 - [`RelativeSource`](xref:Microsoft.Maui.Controls.Xaml.RelativeSourceExtension) - sets the binding source relative to the position of the binding target. For more information, see [Relative bindings](~/fundamentals/data-binding/relative-bindings.md).
+- [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) - references objects from a resource dictionary. For more information, see [Resource dictionaries](~/fundamentals/resource-dictionaries.md).
+- [`TemplateBinding`](xref:Microsoft.Maui.Controls.Xaml.TemplateBindingExtension) - performs data binding from a control template. For more information, see [Control templates](~/fundamentals/controltemplate.md).
 <!-- - `ConstraintExpression` - relates the position and size of a child in a `RelativeLayout` to its parent, or a sibling. For more information, see [RelativeLayout](~/user-interface/layouts/relativelayout.md).-->
 
 ## x:Static markup extension
@@ -97,7 +101,7 @@ Just as you can abbreviate `x:StaticExtension` to `x:Static` when you use it as 
        FontSize="{x:Static Member=local:AppConstants.NormalFontSize}" />
 ```
 
-The <xref:Microsoft.Maui.Controls.Xaml.StaticExtension> class has a `ContentProperty` attribute referencing the property `Member`, which marks this property as the class's default content property. For XAML markup extensions expressed with curly braces, you can eliminate the `Member=` part of the expression:
+The <xref:Microsoft.Maui.Controls.Xaml.StaticExtension> class has a [`ContentProperty`](xref:Microsoft.Maui.Controls.ContentPropertyAttribute) attribute referencing the property `Member`, which marks this property as the class's default content property. For XAML markup extensions expressed with curly braces, you can eliminate the `Member=` part of the expression:
 
 ```xaml
 <Label Text="Label No. 5"
@@ -307,72 +311,6 @@ In this example, an implicit <xref:Microsoft.Maui.Controls.Style> is defined for
 
 :::image type="content" source="media/consume/nulldemo.png" alt-text="x:Null demo.":::
 
-## OnPlatform markup extension
-
-The `OnPlatform` markup extension enables you to customize UI appearance on a per-platform basis. It provides the same functionality as the `OnPlatform` and `On` classes, but with a more concise representation.
-
-The `OnPlatform` markup extension is supported by the <xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension> class, which defines the following properties:
-
-- `Default` of type `object`, that you set to a default value to be applied to the properties that represent platforms.
-- `Android` of type `object`, that you set to a value to be applied on Android.
-- `iOS` of type `object`, that you set to a value to be applied on iOS.
-- `MacCatalyst` of type `object`, that you set to a value to be applied on Mac Catalyst.
-- `Tizen` of type `object`, that you set to a value to be applied on the Tizen platform.
-- `WinUI` of type `object`, that you set to a value to be applied on WinUI.
-- `Converter` of type <xref:Microsoft.Maui.Controls.IValueConverter>, that can be set to an <xref:Microsoft.Maui.Controls.IValueConverter> implementation.
-- `ConverterParameter` of type `object`, that can be set to a value to pass to the <xref:Microsoft.Maui.Controls.IValueConverter> implementation.
-
-> [!NOTE]
-> The XAML parser allows the <xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension> class to be abbreviated as `OnPlatform`.
-
-The `Default` property is the content property of <xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension>. Therefore, for XAML markup expressions expressed with curly braces, you can eliminate the `Default=` part of the expression provided that it's the first argument. If the `Default` property isn't set, it will default to the `BindableProperty.DefaultValue` property value, provided that the markup extension is targeting a <xref:Microsoft.Maui.Controls.BindableProperty>.
-
-> [!IMPORTANT]
-> The XAML parser expects that values of the correct type will be provided to properties consuming the `OnPlatform` markup extension. If type conversion is necessary, the `OnPlatform` markup extension will attempt to perform it using the default converters provided by .NET MAUI. However, there are some type conversions that can't be performed by the default converters and in these cases the `Converter` property should be set to an <xref:Microsoft.Maui.Controls.IValueConverter> implementation.
-
-The **OnPlatform Demo** page shows how to use the `OnPlatform` markup extension:
-
-```xaml
-<BoxView Color="{OnPlatform Yellow, iOS=Red, Android=Green}"
-         WidthRequest="{OnPlatform 250, iOS=200, Android=300}"  
-         HeightRequest="{OnPlatform 250, iOS=200, Android=300}"
-         HorizontalOptions="Center" />
-```
-
-In this example, all three `OnPlatform` expressions use the abbreviated version of the <xref:Microsoft.Maui.Controls.Xaml.OnPlatformExtension> class name. The three `OnPlatform` markup extensions set the `xref:Microsoft.Maui.Graphics.Color`, <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest>, and <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> properties of the <xref:Microsoft.Maui.Controls.BoxView> to different values on iOS and Android. The markup extensions also provide default values for these properties on the platforms that aren't specified, while eliminating the `Default=` part of the expression.
-
-## OnIdiom markup extension
-
-The `OnIdiom` markup extension enables you to customize UI appearance based on the idiom of the device the application is running on. It's supported by the <xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension> class, which defines the following properties:
-
-- `Default` of type `object`, that you set to a default value to be applied to the properties that represent device idioms.
-- `Phone` of type `object`, that you set to a value to be applied on phones.
-- `Tablet` of type `object`, that you set to a value to be applied on tablets.
-- `Desktop` of type `object`, that you set to a value to be applied on desktop platforms.
-- `TV` of type `object`, that you set to a value to be applied on TV platforms.
-- `Watch` of type `object`, that you set to a value to be applied on Watch platforms.
-- `Converter` of type <xref:Microsoft.Maui.Controls.IValueConverter>, that can be set to an <xref:Microsoft.Maui.Controls.IValueConverter> implementation.
-- `ConverterParameter` of type `object`, that can be set to a value to pass to the <xref:Microsoft.Maui.Controls.IValueConverter> implementation.
-
-> [!NOTE]
-> The XAML parser allows the <xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension> class to be abbreviated as `OnIdiom`.
-
-The `Default` property is the content property of <xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension>. Therefore, for XAML markup expressions expressed with curly braces, you can eliminate the `Default=` part of the expression provided that it's the first argument.
-
-> [!IMPORTANT]
-> The XAML parser expects that values of the correct type will be provided to properties consuming the `OnIdiom` markup extension. If type conversion is necessary, the `OnIdiom` markup extension will attempt to perform it using the default converters provided by .NET MAUI. However, there are some type conversions that can't be performed by the default converters and in these cases the `Converter` property should be set to an <xref:Microsoft.Maui.Controls.IValueConverter> implementation.
-
-The following XAML example shows how to use the `OnIdiom` markup extension:
-
-```xaml
-<BoxView Color="{OnIdiom Yellow, Phone=Red, Tablet=Green, Desktop=Blue}"
-         WidthRequest="{OnIdiom 100, Phone=200, Tablet=300, Desktop=400}"
-         HeightRequest="{OnIdiom 100, Phone=200, Tablet=300, Desktop=400}"
-         HorizontalOptions="Center" />
-```
-
-In this example, all three `OnIdiom` expressions use the abbreviated version of the <xref:Microsoft.Maui.Controls.Xaml.OnIdiomExtension> class name. The three `OnIdiom` markup extensions set the `Color`, <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest>, and <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> properties of the <xref:Microsoft.Maui.Controls.BoxView> to different values on the phone, tablet, and desktop idioms. The markup extensions also provide default values for these properties on the idioms that aren't specified, while eliminating the `Default=` part of the expression.
-
 ## DataTemplate markup extension
 
 The <xref:Microsoft.Maui.Controls.DataTemplate> markup extension enables you to convert a type into a <xref:Microsoft.Maui.Controls.DataTemplate>. It's supported by the <xref:Microsoft.Maui.Controls.Xaml.DataTemplateExtension> class, which defines a `TypeName` property, of type `string`, that is set to the name of the type to be converted into a <xref:Microsoft.Maui.Controls.DataTemplate>. The `TypeName` property is the content property of <xref:Microsoft.Maui.Controls.Xaml.DataTemplateExtension>. Therefore, for XAML markup expressions expressed with curly braces, you can eliminate the `TypeName=` part of the expression.
@@ -391,81 +329,3 @@ A typical usage of this markup extension is in a Shell application, as shown in 
 In this example, `MonkeysPage` is converted from a <xref:Microsoft.Maui.Controls.ContentPage> to a <xref:Microsoft.Maui.Controls.DataTemplate>, which is set as the value of the `ShellContent.ContentTemplate` property. This ensures that `MonkeysPage` is only created when navigation to the page occurs, rather than at application startup.
 
 For more information about Shell apps, see [Shell](~/fundamentals/shell/index.md).
-
-## FontImage markup extension
-
-The `FontImage` markup extension enables you to display a font icon in any view that can display an `ImageSource`. It provides the same functionality as the `FontImageSource` class, but with a more concise representation.
-
-The `FontImage` markup extension is supported by the <xref:Microsoft.Maui.Controls.Xaml.FontImageExtension> class, which defines the following properties:
-
-- `FontFamily` of type `string`, the font family to which the font icon belongs.
-- `Glyph` of type `string`, the unicode character value of the font icon.
-- `Color` of type <xref:Microsoft.Maui.Graphics.Color>, the color to be used when displaying the font icon.
-- `Size` of type `double`, the size, in device-independent units, of the rendered font icon. The default value is 30. In addition, this property can be set to a named font size.
-
-> [!NOTE]
-> The XAML parser allows the <xref:Microsoft.Maui.Controls.Xaml.FontImageExtension> class to be abbreviated as `FontImage`.
-
-The `Glyph` property is the content property of <xref:Microsoft.Maui.Controls.Xaml.FontImageExtension>. Therefore, for XAML markup expressions expressed with curly braces, you can eliminate the `Glyph=` part of the expression provided that it's the first argument.
-
-The following XAML example shows how to use the `FontImage` markup extension:
-
-```xaml
-<Image BackgroundColor="#D1D1D1"
-       Source="{FontImage &#xf30c;, FontFamily=Ionicons, Size=44}" />
-```
-
-In this example, the abbreviated version of the <xref:Microsoft.Maui.Controls.Xaml.FontImageExtension> class name is used to display an XBox icon, from the Ionicons font family, in an <xref:Microsoft.Maui.Controls.Image>:
-
-:::image type="content" source="media/consume/fontimagedemo.png" alt-text="Screenshot of the FontImage markup extension.":::
-
-While the unicode character for the icon is `\uf30c`, it has to be escaped in XAML and so becomes `&#xf30c;`.
-
-For information about displaying font icons by specifying the font icon data in a `FontImageSource` object, see [Display font icons](~/user-interface/fonts.md#display-font-icons).
-
-## AppThemeBinding markup extension
-
-The `AppThemeBinding` markup extension enables you to specify a resource to be consumed, such as an image or color, based on the current system theme.
-
-<!-- > [!IMPORTANT]
-> The `AppThemeBinding` markup extension has minimum operating system requirements. For more information, see [Respond to system theme changes in .NET MAUI applications](~/xamarin-forms/user-interface/theming/system-theme-changes.md). -->
-
-The `AppThemeBinding` markup extension is supported by the <xref:Microsoft.Maui.Controls.Xaml.AppThemeBindingExtension> class, which defines the following properties:
-
-- `Default`, of type `object`, that you set to the resource to be used by default.
-- `Light`, of type `object`, that you set to the resource to be used when the device is using its light theme.
-- `Dark`, of type `object`, that you set to the resource to be used when the device is using its dark theme.
-- `Value`, of type `object`, that returns the resource that's currently being used by the markup extension.
-
-> [!NOTE]
-> The XAML parser allows the <xref:Microsoft.Maui.Controls.Xaml.AppThemeBindingExtension> class to be abbreviated as `AppBindingTheme`.
-
-The `Default` property is the content property of <xref:Microsoft.Maui.Controls.Xaml.AppThemeBindingExtension>. Therefore, for XAML markup expressions expressed with curly braces, you can eliminate the `Default=` part of the expression provided that it's the first argument.
-
-The following XAML example shows how to use the `AppThemeBinding` markup extension:
-
-```xaml
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MarkupExtensions.AppThemeBindingDemoPage"
-             Title="AppThemeBinding Demo">
-    <ContentPage.Resources>
-        <Style x:Key="labelStyle"
-               TargetType="Label">
-            <Setter Property="TextColor"
-                    Value="{AppThemeBinding Black, Light=Blue, Dark=Teal}" />
-        </Style>
-    </ContentPage.Resources>
-
-    <StackLayout Margin="20">
-        <Label Text="This text is green in light mode, and red in dark mode."
-               TextColor="{AppThemeBinding Light=Green, Dark=Red}" />
-        <Label Text="This text is black by default, blue in light mode, and teal in dark mode."
-               Style="{StaticResource labelStyle}" />
-    </StackLayout>
-</ContentPage>
-```
-
-In this example, the text color of the first <xref:Microsoft.Maui.Controls.Label> is set to green when the device is using its light theme, and is set to red when the device is using its dark theme. The second <xref:Microsoft.Maui.Controls.Label> has its `TextColor` property set through a <xref:Microsoft.Maui.Controls.Style>. This <xref:Microsoft.Maui.Controls.Style> sets the text color of the <xref:Microsoft.Maui.Controls.Label> to black by default, to blue when the device is using its light theme, and to teal when the device is using its dark theme:
-
-:::image type="content" source="media/consume/appthemebindingdemo.png" alt-text="AppThemeBinding demo.":::

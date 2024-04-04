@@ -27,7 +27,7 @@ The <xref:Microsoft.Maui.Controls.ListView> class derives from the `ItemsView<Ce
 - `IsGroupedEnabled`, of type `bool`, indicates whether the underlying data should be displayed in groups. The default value of this property is `false`.
 - `IsPullToRefreshEnabled`, of type `bool`, indicates whether the user can swipe down to cause the <xref:Microsoft.Maui.Controls.ListView> to refresh its data. The default value of this property is `false`.
 - `IsRefreshing`, of type `bool`, indicates whether the <xref:Microsoft.Maui.Controls.ListView> is currently refreshing. The default value of this property is `false`.
-- `RefreshCommand`, of type `ICommand`, represents the command that will be executed when a refresh is triggered.
+- `RefreshCommand`, of type <xref:System.Windows.Input.ICommand>, represents the command that will be executed when a refresh is triggered.
 - `RefreshControlColor`, of type <xref:Microsoft.Maui.Graphics.Color>, determines the color of the refresh visualization that's shown while a refresh occurs.
 - `RowHeight`, of type `int`, determines the height of each row when `HasUnevenRows` is `false`.
 - `SelectedItem`, of type `object`, represents the currently selected item in the <xref:Microsoft.Maui.Controls.ListView>.
@@ -157,7 +157,7 @@ A <xref:Microsoft.Maui.Controls.TextCell> displays primary and secondary text on
 - `TextColor`, of type <xref:Microsoft.Maui.Graphics.Color>, represents the color of the primary text.
 - `Detail`, of type `string`, defines the secondary text to be displayed.
 - `DetailColor`, of type <xref:Microsoft.Maui.Graphics.Color>, indicates the color of the secondary text.
-- `Command`, of type `ICommand`, defines the command that's executed when the cell is tapped.
+- `Command`, of type <xref:System.Windows.Input.ICommand>, defines the command that's executed when the cell is tapped.
 - `CommandParameter`, of type `object`, represents the parameter that's passed to the command.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
@@ -181,7 +181,7 @@ The following screenshot shows the resulting cell appearance:
 
 #### Image cell
 
-An <xref:Microsoft.Maui.Controls.ImageCell> displays an image with primary and secondary text on separate lines. <xref:Microsoft.Maui.Controls.ImageCell> inherits the properties from <xref:Microsoft.Maui.Controls.TextCell>, and defines the `ImageSource` property, of type `ImageSource`, which specifies the image to be displayed in the cell. This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means it can be the target of data bindings, and be styled.
+An <xref:Microsoft.Maui.Controls.ImageCell> displays an image with primary and secondary text on separate lines. <xref:Microsoft.Maui.Controls.ImageCell> inherits the properties from <xref:Microsoft.Maui.Controls.TextCell>, and defines the <xref:Microsoft.Maui.Controls.ImageSource> property, of type <xref:Microsoft.Maui.Controls.ImageSource>, which specifies the image to be displayed in the cell. This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means it can be the target of data bindings, and be styled.
 
 The following example shows using an <xref:Microsoft.Maui.Controls.ImageCell> to define the appearance of items in a <xref:Microsoft.Maui.Controls.ListView>:
 
@@ -947,7 +947,7 @@ listView.ScrollTo(monkey, position: ScrollToPosition.End, animate: true);
 
 ## Add context menus
 
-<xref:Microsoft.Maui.Controls.ListView> supports context menus items, which are defined as `MenuItem` objects that are added to the `ViewCell.ContextActions` collection in the <xref:Microsoft.Maui.Controls.DataTemplate> for each item:
+<xref:Microsoft.Maui.Controls.ListView> supports context menus items, which are defined as  <xref:Microsoft.Maui.Controls.MenuItem> objects that are added to the `ViewCell.ContextActions` collection in the <xref:Microsoft.Maui.Controls.DataTemplate> for each item:
 
 ```xaml
 <ListView x:Name="listView"
@@ -971,17 +971,17 @@ listView.ScrollTo(monkey, position: ScrollToPosition.End, animate: true);
 </ListView>
 ```
 
-The `MenuItem` objects are revealed when an item in the <xref:Microsoft.Maui.Controls.ListView> is right-clicked:
+The  <xref:Microsoft.Maui.Controls.MenuItem> objects are revealed when an item in the <xref:Microsoft.Maui.Controls.ListView> is right-clicked:
 
 :::image type="content" source="media/listview/contextmenuitems.png" alt-text="Screenshot of CollectionView context menu items.":::
 
-<!-- For more information about menu items, see [](). -->
+For more information about menu items, see [Display menu items](~/user-interface/menuitem.md).
 
 ## Pull to refresh
 
 <xref:Microsoft.Maui.Controls.ListView> supports pull to refresh functionality, which enables the data being displayed to be refreshed by pulling down on the list of items.
 
-To enable pull to refresh, set the `IsPullToRefreshEnabled` property to `true`. When a refresh is triggered, <xref:Microsoft.Maui.Controls.ListView> raises the `Refreshing` event, and the `IsRefreshing` property will be set to `true`. The code required to refresh the contents of the <xref:Microsoft.Maui.Controls.ListView> should then be executed by the handler for the `Refreshing` event, or by the `ICommand` implementation the `RefreshCommand` executes. Once the <xref:Microsoft.Maui.Controls.ListView> is refreshed, the `IsRefreshing` property should be set to `false`, or the `EndRefresh` method should be called on the <xref:Microsoft.Maui.Controls.ListView>, to indicate that the refresh is complete.
+To enable pull to refresh, set the `IsPullToRefreshEnabled` property to `true`. When a refresh is triggered, <xref:Microsoft.Maui.Controls.ListView> raises the `Refreshing` event, and the `IsRefreshing` property will be set to `true`. The code required to refresh the contents of the <xref:Microsoft.Maui.Controls.ListView> should then be executed by the handler for the `Refreshing` event, or by the <xref:System.Windows.Input.ICommand> implementation the `RefreshCommand` executes. Once the <xref:Microsoft.Maui.Controls.ListView> is refreshed, the `IsRefreshing` property should be set to `false`, or the `EndRefresh` method should be called on the <xref:Microsoft.Maui.Controls.ListView>, to indicate that the refresh is complete.
 
 The following example shows a <xref:Microsoft.Maui.Controls.ListView> that uses pull to refresh:
 
@@ -1000,4 +1000,4 @@ The following example shows a <xref:Microsoft.Maui.Controls.ListView> that uses 
 </ListView>
 ```
 
-In this example, when the user initiates a refresh, the `ICommand` defined by the `RefreshCommand` property is executed, which should refresh the items being displayed. A refresh visualization is shown while the refresh occurs, which consists of an animated progress circle. The value of the `IsRefreshing` property indicates the current state of the refresh operation. When a refresh is triggered, this property will automatically transition to `true`. Once the refresh completes, you should reset the property to `false`.
+In this example, when the user initiates a refresh, the <xref:System.Windows.Input.ICommand> defined by the `RefreshCommand` property is executed, which should refresh the items being displayed. A refresh visualization is shown while the refresh occurs, which consists of an animated progress circle. The value of the `IsRefreshing` property indicates the current state of the refresh operation. When a refresh is triggered, this property will automatically transition to `true`. Once the refresh completes, you should reset the property to `false`.

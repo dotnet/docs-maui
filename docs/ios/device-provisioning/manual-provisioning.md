@@ -36,6 +36,8 @@ Once you've added your Apple Developer Account to Visual Studio, you need to gen
 # [Visual Studio for Mac](#tab/vsmac)
 <!-- markdownlint-enable MD025 -->
 
+[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
+
 1. In Visual Studio for Mac, go to **Visual Studio > Preferences > Publishing > Apple Developer Account**.
 1. In the **Apple Developer Accounts** window, select a team and then select **View Details**.
 1. In the **Details** window, select **Create Certificate** and then select **Apple Development** or **iOS Development**. A new signing identity will be created and will sync with Apple if you have the correct permissions.
@@ -134,6 +136,8 @@ The provisioning profiles will be downloaded on Windows, and exported to your Ma
 # [Visual Studio for Mac](#tab/vsmac)
 <!-- markdownlint-enable MD025 -->
 
+[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
+
 1. In Visual Studio for Mac, go to **Visual Studio > Preferences > Publishing > Apple Developer Account**.
 1. In the **Apple Developer Accounts** window, select a team and click the **View Details...** button.
 1. In the **Details** window, verify that the new profile appears in the **Provisioning Profiles** list. You may need to restart Visual Studio for Mac to refresh the list.
@@ -161,6 +165,8 @@ After manually creating the development provisioning profile, and installing it 
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio for Mac](#tab/vsmac)
 <!-- markdownlint-enable MD025 -->
+
+[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
 
 1. In the **Solution Window**, right-click on your .NET MAUI app project and select **Properties**.
 1. In the **Project Properties** window, select the **Build > App Info** tab and ensure that the value of the **Application ID** field corresponds to the format of the App ID you created earlier.

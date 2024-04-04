@@ -20,6 +20,8 @@ When a user swipes to initiate a scroll, the end position of the scroll can be c
 
 <xref:Microsoft.Maui.Controls.CollectionView> can also load data incrementally as the user scrolls. For more information, see [Load data incrementally](populate-data.md#load-data-incrementally).
 
+[!INCLUDE [CollectionView scrolling tip](includes/scrolling-tip.md)]
+
 ## Detect scrolling
 
 <xref:Microsoft.Maui.Controls.CollectionView> defines a `Scrolled` event which is fired to indicate that scrolling occurred. The `ItemsViewScrolledEventArgs` class, which represents the object that accompanies the `Scrolled` event, defines the following properties:

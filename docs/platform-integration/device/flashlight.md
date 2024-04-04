@@ -1,11 +1,13 @@
 ---
 title: "Flashlight"
 description: "Learn how to use the .NET MAUI IFlashlight interface in the Microsoft.Maui.Devices namespace. This interface provides the ability to turn on or off the device's camera flash, to emulate a flashlight."
-ms.date: 02/02/2023
+ms.date: 10/03/2023
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices"]
 ---
 
 # Flashlight
+
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-essentials)
 
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Devices.IFlashlight> interface. With this interface, you can toggle the device's camera flash on and off, to emulate a flashlight.
 
@@ -40,15 +42,11 @@ There are two permissions to configure in your project: `Flashlight` and `Camera
   <uses-permission android:name="android.permission.CAMERA" />
   ```
 
-<!-- TODO unsupported right now
   \- or -
 
-- Use the Android project properties:
+- Update the Android Manifest in the manifest editor:
 
-  <!-- TODO: Check on this value
-  Right-click on the Android project and open the project's properties. Under _Android Manifest_ find the **Required permissions:** area and check the **FLASHLIGHT** and **CAMERA** permissions. This will automatically update the _AndroidManifest.xml_ file.
-
--->
+  In Visual Studio double-click on the *Platforms/Android/AndroidManifest.xml* file to open the Android manifest editor. Then, under **Required permissions** check the **FLASHLIGHT** and **CAMERA** permissions. This will automatically update the *AndroidManifest.xml* file.
 
 If you set these permissions, [Google Play will automatically filter out devices](https://developer.android.com/guide/topics/manifest/uses-feature-element.html#permissions-features) without specific hardware. You can get around this filtering by adding the following assembly attributes to the _Platforms/Android/MainApplication.cs_ file after `using` directives:
 
@@ -73,6 +71,12 @@ No setup is required.
 The flashlight can be turned on and off through the <xref:Microsoft.Maui.Devices.IFlashlight.TurnOnAsync> and <xref:Microsoft.Maui.Devices.IFlashlight.TurnOffAsync> methods. The following code example ties the flashlight's on or off state to a <xref:Microsoft.Maui.Controls.Switch> control:
 
 :::code language="csharp" source="../snippets/shared_1/DeviceDetailsPage.xaml.cs" id="flashlight":::
+
+::: moniker range=">=net-maui-8.0"
+
+In addition, the <xref:Microsoft.Maui.Devices.Flashlight.IsSupportedAsync%2A> method can be invoked to check if a flashlight is available on the device, prior to calling the <xref:Microsoft.Maui.Devices.IFlashlight.TurnOnAsync> method.
+
+::: moniker-end
 
 ## Platform differences
 

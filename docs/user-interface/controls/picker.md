@@ -19,13 +19,14 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Picker>
 - `ItemsSource` of type `IList`, the source list of items to display, which defaults to `null`.
 - `SelectedIndex` of type `int`, the index of the selected item, which defaults to -1.
 - `SelectedItem` of type `object`, the selected item, which defaults to `null`.
+- `ItemDisplayBinding`, of type <xref:Microsoft.Maui.Controls.BindingBase>, selects the property that will be displayed for each object in the list of items, if the `ItemSource` is a complex object. For more information, see [Populate a Picker with data using data binding](#populate-a-picker-with-data-using-data-binding).
 - `TextColor` of type <xref:Microsoft.Maui.Graphics.Color>, the color used to display the text.
 - `TextTransform`, of type `TextTransform`, which defines whether to transform the casing of text.
 - `Title` of type `string`, which defaults to `null`.
 - `TitleColor` of type <xref:Microsoft.Maui.Graphics.Color>, the color used to display the `Title` text.
 - `VerticalTextAlignment`, of type `TextAlignment`, is the vertical alignment of the text displayed by the <xref:Microsoft.Maui.Controls.Picker>.
 
-All of the properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be styled, and the properties can be targets of data bindings. The `SelectedIndex` and `SelectedItem` properties have a default binding mode of `BindingMode.TwoWay`, which means that they can be targets of data bindings in an application that uses the Model-View-ViewModel (MVVM) pattern. For information about setting font properties, see [Fonts](~/user-interface/fonts.md).
+All of the properties, with the exception of `ItemDisplayBinding`, are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be styled, and the properties can be targets of data bindings. The `SelectedIndex` and `SelectedItem` properties have a default binding mode of `BindingMode.TwoWay`, which means that they can be targets of data bindings in an application that uses the Model-View-ViewModel (MVVM) pattern. For information about setting font properties, see [Fonts](~/user-interface/fonts.md).
 
 A <xref:Microsoft.Maui.Controls.Picker> doesn't show any data when it's first displayed. Instead, the value of its `Title` property is shown as a placeholder, as shown in the following iOS screenshot:
 
@@ -88,10 +89,8 @@ picker.ItemsSource = monkeyList;
 
 A <xref:Microsoft.Maui.Controls.Picker> supports selection of one item at a time. When a user selects an item, the `SelectedIndexChanged` event fires, the `SelectedIndex` property is updated to an integer representing the index of the selected item in the list, and the `SelectedItem` property is updated to the `object` representing the selected item. The `SelectedIndex` property is a zero-based number indicating the item the user selected. If no item is selected, which is the case when the <xref:Microsoft.Maui.Controls.Picker> is first created and initialized, `SelectedIndex` will be -1.
 
-<!--
 > [!NOTE]
-> Item selection behavior in a <xref:Microsoft.Maui.Controls.Picker> can be customized on iOS with a platform-specific. For more information, see [Picker item selection on iOS](~/platform-integration/ios/picker-selection.md).
--->
+> Item selection behavior in a <xref:Microsoft.Maui.Controls.Picker> can be customized on iOS with a platform-specific. For more information, see [Picker item selection on iOS](~/ios/platform-specifics/picker-selection.md).
 
 The following XAML example shows how to retrieve the `SelectedItem` property value from the <xref:Microsoft.Maui.Controls.Picker>:
 
@@ -236,10 +235,8 @@ In addition to adding data using the `Items.Add` method, data can also be insert
 
 A <xref:Microsoft.Maui.Controls.Picker> supports selection of one item at a time. When a user selects an item, the `SelectedIndexChanged` event fires, and the `SelectedIndex` property is updated to an integer representing the index of the selected item in the list. The `SelectedIndex` property is a zero-based number indicating the item that the user selected. If no item is selected, which is the case when the <xref:Microsoft.Maui.Controls.Picker> is first created and initialized, `SelectedIndex` will be -1.
 
-<!--
 > [!NOTE]
-> Item selection behavior in a <xref:Microsoft.Maui.Controls.Picker> can be customized on iOS with a platform-specific. For more information, see [Picker item selection on iOS](~/platform-integration/ios/picker-selection.md).
--->
+> Item selection behavior in a <xref:Microsoft.Maui.Controls.Picker> can be customized on iOS with a platform-specific. For more information, see [Picker item selection on iOS](~/ios/platform-specifics/picker-selection.md).
 
 The following code example shows the `OnPickerSelectedIndexChanged` event handler method, which is executed when the `SelectedIndexChanged` event fires:
 

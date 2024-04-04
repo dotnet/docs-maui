@@ -1,11 +1,13 @@
 ---
 title: "App Information"
 description: "Describes the IAppInfo interface in the Microsoft.Maui.ApplicationModel namespace, which provides information about your application. For example, it exposes the app name and version."
-ms.date: 02/02/2023
+ms.date: 08/07/2023
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel"]
 ---
 
 # App information
+
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-essentials)
 
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.ApplicationModel.IAppInfo> interface, which provides information about your application.
 
@@ -13,18 +15,22 @@ The default implementation of the `IAppInfo` interface is available through the 
 
 ## Read the app information
 
-There are four properties exposed by the `IAppInfo` interface:
+The `IAppInfo` interface exposes the following properties:
 
-- <xref:Microsoft.Maui.ApplicationModel.IAppInfo.Name> &mdash; The application name
+- <xref:Microsoft.Maui.ApplicationModel.IAppInfo.Name> &mdash; The application name.
 - <xref:Microsoft.Maui.ApplicationModel.IAppInfo.PackageName> &mdash; The package name or application identifier, such as `com.microsoft.myapp`.
 - <xref:Microsoft.Maui.ApplicationModel.IAppInfo.VersionString> &mdash; The application version, such as `1.0.0`.
+- <xref:Microsoft.Maui.ApplicationModel.IAppInfo.Version> &mdash; The application version, as a <xref:System.Version> object.
 - <xref:Microsoft.Maui.ApplicationModel.IAppInfo.BuildString> &mdash; The build number of the version, such as `1000`.
+- <xref:Microsoft.Maui.ApplicationModel.IAppInfo.RequestedTheme> &mdash; The detected theme of the system or application.
+- <xref:Microsoft.Maui.ApplicationModel.IAppInfo.PackagingModel> &mdash; The packaging model of the application.
+- <xref:Microsoft.Maui.ApplicationModel.IAppInfo.RequestedLayoutDirection> &mdash; The requested layout direction of the system or application.
 
-The following code example demonstrates accessing these properties:
+The following code example demonstrates accessing some of these properties:
 
 :::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="read_info":::
 
-## Read the current theme
+## Get the current theme
 
 The <xref:Microsoft.Maui.ApplicationModel.IAppInfo.RequestedTheme> property provides the current requested theme by the system for your application. One of the following values is returned:
 
@@ -34,9 +40,25 @@ The <xref:Microsoft.Maui.ApplicationModel.IAppInfo.RequestedTheme> property prov
 
 `Unspecified` is returned when the operating system doesn't have a specific user interface style. An example of this is on devices running versions of iOS older than 13.0.
 
-The following code example demonstrates reading the theme:
+The following code example demonstrates getting the theme:
 
 :::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="read_theme":::
+
+## Get the layout direction
+
+The <xref:Microsoft.Maui.ApplicationModel.IAppInfo.RequestedLayoutDirection> property provides the current layout direction used by the system for your application. One of the following values is returned:
+
+- <xref:Microsoft.Maui.ApplicationModel.LayoutDirection.Unknown>
+- <xref:Microsoft.Maui.ApplicationModel.LayoutDirection.LeftToRight>
+- <xref:Microsoft.Maui.ApplicationModel.LayoutDirection.RightToLeft>
+
+`Unknown` is returned when the layout direction is unknown.
+
+The following code example demonstrates getting the layout direction:
+
+```csharp
+LayoutDirection layoutDirection = AppInfo.Current.RequestedLayoutDirection;
+```
 
 ## Display app settings
 

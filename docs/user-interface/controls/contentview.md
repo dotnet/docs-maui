@@ -6,8 +6,6 @@ ms.date: 01/13/2022
 
 # ContentView
 
-<!-- Sample links goes here -->
-
 The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.ContentView> is a control that enables the creation of custom, reusable controls.
 
 The <xref:Microsoft.Maui.Controls.ContentView> class defines a `Content` property, of type <xref:Microsoft.Maui.Controls.View>, which represents the content of the <xref:Microsoft.Maui.Controls.ContentView>. This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means that it can be the target of data bindings, and styled.
@@ -39,7 +37,7 @@ The `CardView` custom control defines the following properties:
 
 - `CardTitle`, of type `string`, which represents the title shown on the card.
 - `CardDescription`, of type `string`, which represents the description shown on the card.
-- `IconImageSource`, of type `ImageSource`, which represents the image shown on the card.
+- `IconImageSource`, of type <xref:Microsoft.Maui.Controls.ImageSource>, which represents the image shown on the card.
 - `IconBackgroundColor`, of type <xref:Microsoft.Maui.Graphics.Color>, which represents the background color for the image shown on the card.
 - `BorderColor`, of type <xref:Microsoft.Maui.Graphics.Color>, which represents the color of the card border, image border, and divider line.
 - `CardColor`, of type <xref:Microsoft.Maui.Graphics.Color>, which represents the background color of the card.

@@ -8,13 +8,13 @@ ms.date: 04/07/2022
 
 [![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/fundamentals-shell)
 
-A <xref:Microsoft.Maui.Controls.ShellContent> object represents the <xref:Microsoft.Maui.Controls.ContentPage> object for each <xref:Microsoft.Maui.Controls.FlyoutItem> or <xref:Microsoft.Maui.Controls.Tab>. When more than one <xref:Microsoft.Maui.Controls.ShellContent> object is present in a <xref:Microsoft.Maui.Controls.Tab> object, the <xref:Microsoft.Maui.Controls.ContentPage> objects will be navigable by top tabs. Within a page, additional <xref:Microsoft.Maui.Controls.ContentPage> objects that are known as detail pages, can be navigated to.
+A <xref:Microsoft.Maui.Controls.ShellContent> object represents the <xref:Microsoft.Maui.Controls.ContentPage> object for each <xref:Microsoft.Maui.Controls.FlyoutItem> or <xref:Microsoft.Maui.Controls.Tab>. When more than one <xref:Microsoft.Maui.Controls.ShellContent> object is present in a <xref:Microsoft.Maui.Controls.Tab> object, the <xref:Microsoft.Maui.Controls.ContentPage> objects are navigable by top tabs. Within a page, you can navigate to additional <xref:Microsoft.Maui.Controls.ContentPage> objects known as detail pages.
 
-In addition, the <xref:Microsoft.Maui.Controls.Shell> class defines attached properties that can be used to configure the appearance of pages in .NET Multi-platform App UI (.NET MAUI) Shell apps. This includes setting page colors, setting the page presentation mode, disabling the navigation bar, disabling the tab bar, and displaying views in the navigation bar.
+In addition, the <xref:Microsoft.Maui.Controls.Shell> class defines attached properties that can be used to configure the appearance of pages in .NET Multi-platform App UI (.NET MAUI) Shell apps. This configuration includes setting page colors, setting the page presentation mode, disabling the navigation bar, disabling the tab bar, and displaying views in the navigation bar.
 
 ## Display pages
 
-In .NET MAUI Shell apps, pages are typically created on demand in response to navigation. This is accomplished by using the <xref:Microsoft.Maui.Controls.DataTemplate> markup extension to set the `ContentTemplate` property of each <xref:Microsoft.Maui.Controls.ShellContent> object to a <xref:Microsoft.Maui.Controls.ContentPage> object:
+In .NET MAUI Shell apps, pages are typically created on demand in response to navigation. This creation is accomplished by using the <xref:Microsoft.Maui.Controls.DataTemplate> markup extension to set the `ContentTemplate` property of each <xref:Microsoft.Maui.Controls.ShellContent> object to a <xref:Microsoft.Maui.Controls.ContentPage> object:
 
 ```xaml
 <Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -84,7 +84,7 @@ In this example, `CatsPage`, `DogsPage`, and `MonkeysPage` are all created at ap
 
 The <xref:Microsoft.Maui.Controls.Shell> class defines the following attached properties that can be used to set page colors in a Shell app:
 
-- `BackgroundColor`, of type <xref:Microsoft.Maui.Graphics.Color>, that defines the background color in the Shell chrome. The color will not fill in behind the Shell content.
+- `BackgroundColor`, of type <xref:Microsoft.Maui.Graphics.Color>, that defines the background color in the Shell chrome. The color won't fill in behind the Shell content.
 - `DisabledColor`, of type <xref:Microsoft.Maui.Graphics.Color>, that defines the color to shade text and icons that are disabled.
 - `ForegroundColor`, of type <xref:Microsoft.Maui.Graphics.Color>, that defines the color to shade text and icons.
 - `TitleColor`, of type <xref:Microsoft.Maui.Graphics.Color>, that defines the color used for the title of the current page.
@@ -110,7 +110,7 @@ The following XAML shows setting the color properties in a subclassed <xref:Micr
 </Shell>
 ```
 
-In this example, the color values will be applied to all pages in the Shell app, unless overridden at the page level.
+In this example, the color values are applied to all pages in the Shell app, unless they're overridden at the page level.
 
 Because the color properties are attached properties, they can also be set on individual pages, to set the colors on that page:
 
@@ -147,7 +147,7 @@ For more information about XAML styles, see [Style apps using XAML](~/user-inter
 
 ## Set page presentation mode
 
-By default, a small navigation animation occurs when a page is navigated to with the `GoToAsync` method. However, this behavior can be changed by setting the `Shell.PresentationMode` attached property on a <xref:Microsoft.Maui.Controls.ContentPage> to one of the `PresentationMode` enumeration members:
+By default, a small navigation animation occurs when a page is navigated to with the <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> method. However, this behavior can be changed by setting the `Shell.PresentationMode` attached property on a <xref:Microsoft.Maui.Controls.ContentPage> to one of the `PresentationMode` enumeration members:
 
 - `NotAnimated` indicates that the page will be displayed without a navigation animation.
 - `Animated` indicates that the page will be displayed with a navigation animation. This is the default value of the `Shell.PresentationMode` attached property.
@@ -167,7 +167,7 @@ The following XAML example sets the `Shell.PresentationMode` attached property o
 </ContentPage>
 ```
 
-In this example, the <xref:Microsoft.Maui.Controls.ContentPage> is set to be displayed as a modal page, when the page is navigated to with the `GoToAsync` method.
+In this example, the <xref:Microsoft.Maui.Controls.ContentPage> is set to be displayed as a modal page, when the page is navigated to with the <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> method.
 
 ## Enable navigation bar shadow
 
@@ -217,10 +217,10 @@ While this property can be set on a subclassed <xref:Microsoft.Maui.Controls.She
 > [!IMPORTANT]
 > If the navigation bar has been made invisible, with the `NavBarIsVisible` attached property, the title view will not be displayed.
 
-Many views won't appear in the navigation bar unless the size of the view is specified with the <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest> and <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> properties, or the location of the view is specified with the `HorizontalOptions` and `VerticalOptions` properties.
+Many views won't appear in the navigation bar unless the size of the view is specified with the <xref:Microsoft.Maui.Controls.VisualElement.WidthRequest> and <xref:Microsoft.Maui.Controls.VisualElement.HeightRequest> properties or the location of the view is specified with the `HorizontalOptions` and `VerticalOptions` properties.
 
 The `TitleView` attached property can be set to display a layout class that contains multiple views. Similarly, because the <xref:Microsoft.Maui.Controls.ContentView> class ultimately derives from the <xref:Microsoft.Maui.Controls.View> class, the `TitleView` attached property can be set to display a <xref:Microsoft.Maui.Controls.ContentView> that contains a single view.
 
 ## Page visibility
 
-Shell respects page visibility, set with the `IsVisible` property. Therefore, when a page's `IsVisible` property is set to `false` it won't be visible in the Shell app and it won't be possible to navigate to it.
+Shell respects page visibility, which is set with the `IsVisible` property. When a page's `IsVisible` property is set to `false`, it's not visible in the Shell app and it's not possible to navigate to it.

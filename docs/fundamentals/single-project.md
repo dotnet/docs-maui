@@ -84,7 +84,7 @@ An app icon can be added to your app project by dragging an image into the _Reso
 <MauiIcon Include="Resources\AppIcon\appicon.svg" />
 ```
 
-At build time, the app icon can be resized to the correct sizes for the target platform and device. The resized app icons are then added to your app package. App icons are resized to multiple resolutions because they have multiple uses, including being used to represent the app on the device, and in the app store.
+At build time, the app icon will be resized to the correct sizes for the target platform and device. The resized app icons are then added to your app package. App icons are resized to multiple resolutions because they have multiple uses, including being used to represent the app on the device, and in the app store.
 
 For more information, see [Add an app icon to a .NET MAUI app project](~/user-interface/images/app-icons.md).
 
@@ -140,7 +140,7 @@ Raw assets can then be consumed by controls, as required:
 <WebView Source="index.html" />
 ```
 
-At build time, raw assets are copied to your app package.
+At build time, raw assets are copied to your app package. For information about disabling asset packaging, see [Disable asset file packaging](~/troubleshooting.md#disable-asset-file-packaging).
 
 ### CSS files
 

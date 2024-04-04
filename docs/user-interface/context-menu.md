@@ -1,7 +1,6 @@
 ---
 title: "Display a context menu in a .NET MAUI desktop app"
 description: "Learn how to add a context menu to a .NET MAUI desktop app."
-monikerRange: ">=net-maui-7.0"
 ms.date: 10/06/2022
 ---
 
@@ -15,7 +14,7 @@ A context menu is defined with a `MenuFlyout`, which can consist of the followin
 - `MenuFlyoutSubItem`, which represents a sub-menu item that can be clicked.
 - `MenuFlyoutSeparator`, which is a horizontal line that separates items in the menu.
 
-`MenuFlyoutSubItem` derives from `MenuFlyoutItem`, which in turn derives from `MenuItem`. `MenuItem` defines multiple properties that enable the appearance and behavior of a menu item to be specified. The appearance of a menu item, or sub-item, can be defined by setting the `Text`, and `IconImageSource` properties. The response to a menu item, or sub-item, click can be defined by setting the `Clicked`, `Command`, and `CommandParameter` properties. <!-- For more information about menu items, see [Menu items](). -->
+`MenuFlyoutSubItem` derives from `MenuFlyoutItem`, which in turn derives from  <xref:Microsoft.Maui.Controls.MenuItem>.  <xref:Microsoft.Maui.Controls.MenuItem> defines multiple properties that enable the appearance and behavior of a menu item to be specified. The appearance of a menu item, or sub-item, can be defined by setting the `Text`, and `IconImageSource` properties. The response to a menu item, or sub-item, click can be defined by setting the `Clicked`, `Command`, and `CommandParameter` properties. For more information about menu items, see [Display menu items](menuitem.md).
 
 > [!WARNING]
 > A context menu on an <xref:Microsoft.Maui.Controls.Entry> is currently unsupported on Mac Catalyst.
@@ -63,6 +62,12 @@ The `OnWebViewGoToRepoClicked` event handler retrieves the `CommandParameter` pr
 
 > [!WARNING]
 > It's not currently possible to add items to, or remove items from, the `MenuFlyout` at runtime.
+
+::: moniker range=">=net-maui-8.0"
+
+Keyboard accelerators can be added to context menu items, so that a context menu item can be invoked through a keyboard shortcut. For more information, see [Keyboard accelerators](~/user-interface/keyboard-accelerators.md).
+
+::: moniker-end
 
 ### Create sub-menu items
 
@@ -120,7 +125,7 @@ void OnLabelClicked(object sender, EventArgs e)
 
 ## Display icons on menu items
 
-`MenuFlyoutItem` and `MenuFlyoutSubItem` inherit the `IconImageSource` property from `MenuItem`, which enables a small icon to be displayed next to the text for a context menu item. This icon can either be an image, or a font icon.
+`MenuFlyoutItem` and `MenuFlyoutSubItem` inherit the `IconImageSource` property from  <xref:Microsoft.Maui.Controls.MenuItem>, which enables a small icon to be displayed next to the text for a context menu item. This icon can either be an image, or a font icon.
 
 > [!WARNING]
 > Mac Catalyst does not support displaying icons on context menu items.

@@ -1,21 +1,17 @@
 ---
-title: "Use the CLI to publish for Windows"
-description: "Learn how to package and publish a Windows .NET MAUI app with the dotnet publish command."
+title: "Use the CLI to publish packaged apps for Windows"
+description: "Learn how to package and publish a packaged Windows .NET MAUI app with the dotnet publish command."
 ms.date: 10/12/2022
 ---
 
-# Publish a .NET MAUI app for Windows with the CLI
+# Publish a packaged .NET MAUI app for Windows with the CLI
 
 > [!div class="op_single_selector"]
 >
-> - [Publish for Android](../../android/deployment/publish-cli.md)
-> - [Publish for iOS](../../ios/deployment/index.md)
-> - [Publish for macOS](../../mac-catalyst/deployment/index.md)
-> - [Publish for Windows](publish-cli.md)
+> - [Publish an unpackaged app using the command line](publish-unpackaged-cli.md)
+> - [Publish a packaged app using Visual Studio](publish-visual-studio-folder.md)
 
 When distributing your .NET Multi-platform App UI (.NET MAUI) app for Windows, you can publish the app and its dependencies to a folder for deployment to another system. You can also package the app into an MSIX package, which has numerous benefits for the users installing your app. For more information about the benefits of MSIX, see [What is MSIX?](/windows/msix/overview)
-
-.NET MAUI currently only allows publishing an MSIX package. You can't yet publish a Windows executable file for distribution.
 
 ## Create a signing certificate
 
@@ -41,7 +37,7 @@ You must use a signing certificate for use in publishing your app. This certific
 01. Use the following PowerShell command to query the certificate store for the certificate that was created:
 
     ```powershell
-    Get-ChildItem "Cert:\CurrentUser\My" | Format-Table Subject, FriendlyName, Thumbprint
+    Get-ChildItem "Cert:\CurrentUser\My" | Format-Table Thumbprint, Subject, FriendlyName
     ```
 
     You should see results similar to the following output:
@@ -58,10 +54,11 @@ You must use a signing certificate for use in publishing your app. This certific
     07AD38F3B646F5AAC16F2F2570CAE40F4842BBE0 CN=Contoso                               My temp dev cert
     ```
 
-01. The **Thumbprint** of your certificate will be used later, copy it to your clipboard. It's the **Thumbprint** value whose entry matches the **Subject** and **FriendlyName** of your certificate.
+01. The **Thumbprint** of your certificate will be used later, so copy it to your clipboard. It's the **Thumbprint** value whose entry matches the **Subject** and **FriendlyName** of your certificate.
 
 For more information, see [Create a certificate for package signing](/windows/msix/package/create-certificate-package-signing).
 
+<!-- markdownlint-disable MD044 -->
 <!-- The pfx command line options don't seem to work yet -->
 <!--
 ### Optionally export a PFX file
@@ -82,10 +79,11 @@ You can use the thumbprint of the certificate to sign your package later, or you
     Export-PfxCertificate -cert "Cert:\CurrentUser\My\07AD38F3B646F5AAC16F2F2570CAE40F4842BBE0" -FilePath .\app.pfx -Password $password
     ```
 -->
+<!-- markdownlint-enable MD044 -->
 
 ## Configure the project build settings
 
-The project file is a good place to put Windows-specific build settings. You may not want to put some settings into the project file, such as passwords. The settings described in this section can be passed on the command line with the `/p:name=value` format. If the setting is already defined in the project file, a setting passed on the command line will override the project setting.
+The project file is a good place to put Windows-specific build settings. You may not want to put some settings into the project file, such as passwords. The settings described in this section can be passed on the command line with the `-p:name=value` format. If the setting is already defined in the project file, a setting passed on the command line overrides the project setting.
 
 Add the following `<PropertyGroup>` node to your project file. This property group is only processed when the target framework is Windows and the configuration is set to `Release`. This config section runs whenever a build or publish in `Release` mode.
 
@@ -101,9 +99,9 @@ Add the following `<PropertyGroup>` node to your project file. This property gro
 
 <!-- Place in PropertyGroup above once pfx export works: <PackageCertificateKeyFile>myCert.pfx</PackageCertificateKeyFile> <!-- Optional if you want to use the exported PFX file -->
 
-Replace the `<PackageCertificateThumbprint>` property value with the certificate thumbprint you previously generated. Alternatively, you can remove this setting from the project file and provide it on the command line. For example: `/p:PackageCertificateThumbprint=A10612AF095FD8F8255F4C6691D88F79EF2B135E`.
+Replace the `<PackageCertificateThumbprint>` property value with the certificate thumbprint you previously generated. Alternatively, you can remove this setting from the project file and provide it on the command line. For example: `-p:PackageCertificateThumbprint=A10612AF095FD8F8255F4C6691D88F79EF2B135E`.
 
-The second `<PropertyGroup>` in the example is required to work around a bug in the Windows SDK. For more information about the bug, see [WindowsAppSDK Issue #2940](https://github.com/microsoft/WindowsAppSDK/issues/2940).
+The second `<PropertyGroup>` in the example is required to work around a bug in the Windows SDK. For more information about the bug, see [WindowsAppSDK Issue #3337](https://github.com/microsoft/WindowsAppSDK/issues/3337).
 
 ## Publish
 
@@ -111,34 +109,22 @@ To publish your app, open the **Developer Command Prompt for VS 2022** terminal 
 
 | Parameter                    | Value                                                                               |
 |------------------------------|-------------------------------------------------------------------------------------|
-| `-f` | The target framework, which is `net6.0-windows{version}` or `net7.0-windows{version}`. This is a Windows TFM, such as `net6.0-windows10.0.19041.0`. Ensure that this value is identical to the value in the `<TargetFrameworks>` node in your *.csproj* file.           |
+| `-f` | The target framework, which is `net8.0-windows{version}`. This value is a Windows TFM, such as `net8.0-windows10.0.19041.0`. Ensure that this value is identical to the value in the `<TargetFrameworks>` node in your *.csproj* file.           |
 | `-c`                 | The build configuration, which is `Release`.                                   |
-| `/p:RuntimeIdentifierOverride=win10-x64`<br>- or -<br>`/p:RuntimeIdentifierOverride=win10-x86` | Avoids the bug detailed in [WindowsAppSDK Issue #2940](https://github.com/microsoft/WindowsAppSDK/issues/2940). Choose the `-x64` or `-x86` version of the parameter based on your target platform.
+| `-p:RuntimeIdentifierOverride=win10-x64`<br>- or -<br>`-p:RuntimeIdentifierOverride=win10-x86` | Avoids the bug detailed in [WindowsAppSDK Issue #3337](https://github.com/microsoft/WindowsAppSDK/issues/3337). Choose the `-x64` or `-x86` version of the parameter based on your target platform. |
 
 > [!WARNING]
 > Attempting to publish a .NET MAUI solution will result in the `dotnet publish` command attempting to publish each project in the solution individually, which can cause issues when you've added other project types to your solution. Therefore, the `dotnet publish` command should be scoped to your .NET MAUI app project.
 
 For example:
 
-::: moniker range="=net-maui-6.0"
-
 ```console
-dotnet publish -f net6.0-windows10.0.19041.0 -c Release /p:RuntimeIdentifierOverride=win10-x64
+dotnet publish -f net8.0-windows10.0.19041.0 -c Release -p:RuntimeIdentifierOverride=win10-x64
 ```
 
-Publishing builds and packages the app, copying the signed package to the _bin\\Release\\net6.0-windows10.0.19041.0\\win10-x64\\AppPackages\\\<appname>\\_ folder. \<appname> is a folder named after both your project and version. In this folder, there's an _msix_ file, and that's the app package.
+[!INCLUDE [dotnet publish in .NET 8](~/includes/dotnet-publish-net8.md)]
 
-::: moniker-end
-
-::: moniker range="=net-maui-7.0"
-
-```console
-dotnet publish -f net7.0-windows10.0.19041.0 -c Release /p:RuntimeIdentifierOverride=win10-x64
-```
-
-Publishing builds and packages the app, copying the signed package to the _bin\\Release\\net7.0-windows10.0.19041.0\\win10-x64\\AppPackages\\\<appname>\\_ folder. \<appname> is a folder named after both your project and version. In this folder, there's an _msix_ file, and that's the app package.
-
-::: moniker-end
+Publishing builds and packages the app, copying the signed package to the _bin\\Release\\net8.0-windows10.0.19041.0\\win10-x64\\AppPackages\\\<appname>\\_ folder. \<appname> is a folder named after both your project and version. In this folder, there's an _msix_ file, and that's the app package.
 
 For more information about the `dotnet publish` command, see [dotnet publish](/dotnet/core/tools/dotnet-publish).
 

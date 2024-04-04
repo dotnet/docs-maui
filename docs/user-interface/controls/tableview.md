@@ -28,6 +28,9 @@ The value of the `Intent` property helps to define the <xref:Microsoft.Maui.Cont
 - `Form`, for presenting a data input form.
 - `Data`, for presenting data.
 
+> [!NOTE]
+> <xref:Microsoft.Maui.Controls.TableView> isn't designed to support binding to a collection of items.
+
 ## Create a TableView
 
 To create a table, create a <xref:Microsoft.Maui.Controls.TableView> object and set its `Intent` property to a `TableIntent` member. The child of a <xref:Microsoft.Maui.Controls.TableView> must be a `TableRoot` object, which is parent to one or more `TableSection` objects. Each `TableSection` consists of an optional title whose color can also be set, and one or more <xref:Microsoft.Maui.Controls.Cell> objects.
@@ -58,7 +61,7 @@ In this example, the <xref:Microsoft.Maui.Controls.TableView> defines a menu usi
 :::image type="content" source="media/tableview/menu.png" alt-text="Screenshot of TableView displaying a menu.":::
 
 > [!NOTE]
-> Each <xref:Microsoft.Maui.Controls.TextCell> can execute a command when tapped, provided that the `Command` property is set to a valid `ICommand` implementation.
+> Each <xref:Microsoft.Maui.Controls.TextCell> can execute a command when tapped, provided that the `Command` property is set to a valid <xref:System.Windows.Input.ICommand> implementation.
 
 ## Define cell appearance
 
@@ -78,7 +81,7 @@ A <xref:Microsoft.Maui.Controls.TextCell> displays primary and secondary text on
 - `TextColor`, of type <xref:Microsoft.Maui.Graphics.Color>, represents the color of the primary text.
 - `Detail`, of type `string`, defines the secondary text to be displayed.
 - `DetailColor`, of type <xref:Microsoft.Maui.Graphics.Color>, indicates the color of the secondary text.
-- `Command`, of type `ICommand`, defines the command that's executed when the cell is tapped.
+- `Command`, of type <xref:System.Windows.Input.ICommand>, defines the command that's executed when the cell is tapped.
 - `CommandParameter`, of type `object`, represents the parameter that's passed to the command.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
@@ -110,7 +113,7 @@ The following screenshot shows the resulting cell appearance:
 
 ### Image cell
 
-An <xref:Microsoft.Maui.Controls.ImageCell> displays an image with primary and secondary text on separate lines. <xref:Microsoft.Maui.Controls.ImageCell> inherits the properties from <xref:Microsoft.Maui.Controls.TextCell>, and defines the `ImageSource` property, of type `ImageSource`, which specifies the image to be displayed in the cell. This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means it can be the target of data bindings, and be styled.
+An <xref:Microsoft.Maui.Controls.ImageCell> displays an image with primary and secondary text on separate lines. <xref:Microsoft.Maui.Controls.ImageCell> inherits the properties from <xref:Microsoft.Maui.Controls.TextCell>, and defines the <xref:Microsoft.Maui.Controls.ImageSource> property, of type <xref:Microsoft.Maui.Controls.ImageSource>, which specifies the image to be displayed in the cell. This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means it can be the target of data bindings, and be styled.
 
 The following example shows using an <xref:Microsoft.Maui.Controls.ImageCell> to define the appearance of items in a <xref:Microsoft.Maui.Controls.TableView>:
 

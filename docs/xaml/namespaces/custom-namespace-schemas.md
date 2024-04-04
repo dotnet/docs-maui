@@ -23,7 +23,7 @@ For more information about XAML namespaces, see [XAML namespaces](index.md).
 
 ## Define a custom namespace schema
 
-The sample application contains a library that exposes some simple controls, such as `CircleButton`:
+Imagine a library that exposes some simple controls, such as `CircleButton`:
 
 ```csharp
 namespace MyCompany.Controls
@@ -42,19 +42,18 @@ A custom namespace schema is defined with the `XmlnsDefinitionAttribute` class, 
 > [!NOTE]
 > The `XmlnsDefinitionAttribute` class also has a property named `AssemblyName`, which can be optionally set to the name of the assembly. This is only required when a CLR namespace referenced from a `XmlnsDefinitionAttribute` is in a external assembly.
 
-The `XmlnsDefinitionAttribute` should be defined at the assembly level in the project that contains the CLR namespaces that will be mapped in the custom namespace schema. The following example shows the **AssemblyInfo.cs** file from a class library:
+The `XmlnsDefinitionAttribute` should be defined at the assembly level in the project that contains the CLR namespaces that will be mapped in the custom namespace schema:
 
 ```csharp
 using MyCompany.Controls;
 
-[assembly: Preserve]
 [assembly: XmlnsDefinition("http://mycompany.com/schemas/controls", "MyCompany.Controls")]
 ```
 
-This code creates a custom namespace schema that maps the `http://mycompany.com/schemas/controls` URL to the `MyCompany.Controls` CLR namespace. In addition, the `Preserve` attribute is specified on the assembly, to ensure that the linker preserves all the types in the assembly.
+This code creates a custom namespace schema that maps the `http://mycompany.com/schemas/controls` URL to the `MyCompany.Controls` CLR namespace.
 
 > [!IMPORTANT]
-> The `Preserve` attribute should be applied to classes in the assembly that are mapped through the custom namespace schema, or applied to the entire assembly.
+> You should instruct the linker to preserve types in the assembly that are mapped through the custom namespace schema, or preserve the entire assembly. For more information, see [Preserve code](~/android/linking.md#preserve-code).
 
 The custom namespace schema can then be used for type resolution in XAML files.
 

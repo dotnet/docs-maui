@@ -1,11 +1,13 @@
 ---
 title: "Permissions"
 description: "Learn how to use the .NET MAUI Permissions class, to check and request permissions. This class is in the Microsoft.Maui.ApplicationModel namespace."
-ms.date: 02/02/2023
+ms.date: 10/19/2023
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel"]
 ---
 
 # Permissions
+
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-essentials)
 
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.ApplicationModel.Permissions> class. This class allows you to check and request permissions at run-time. The `Permissions` type is available in the `Microsoft.Maui.ApplicationModel` namespace.
 
@@ -15,35 +17,11 @@ This article describes how you can use the .NET Multi-platform App UI (.NET MAUI
 
 The following table uses ✔️ to indicate that the permission is supported and ❌ to indicate the permission isn't supported or isn't required:
 
-::: moniker range="=net-maui-6.0"
+::: moniker range="=net-maui-7.0"
 
 | Permission                                                                              | Android | iOS | Windows | tvOS |
 |------------------------------------------------------------------------------------------|:-------:|:---:|:-------:|:----:|
-| [CalendarRead](xref:Microsoft.Maui.ApplicationModel.Permissions.CalendarRead)           | ✔️     | ✔️  | ❌      | ❌    |
-| [CalendarWrite](xref:Microsoft.Maui.ApplicationModel.Permissions.CalendarWrite)         | ✔️     | ✔️  | ❌      | ❌    |
-| [Camera](xref:Microsoft.Maui.ApplicationModel.Permissions.Camera)                       | ✔️     | ✔️  | ❌      | ❌    |
-| [ContactsRead](xref:Microsoft.Maui.ApplicationModel.Permissions.ContactsRead)           | ✔️     | ✔️  | ✔️     | ❌    |
-| [ContactsWrite](xref:Microsoft.Maui.ApplicationModel.Permissions.ContactsWrite)         | ✔️     | ✔️  | ✔️     | ❌    |
-| [Flashlight](xref:Microsoft.Maui.ApplicationModel.Permissions.Flashlight)               | ✔️     | ❌   | ❌      | ❌    |
-| [LocationWhenInUse](xref:Microsoft.Maui.ApplicationModel.Permissions.LocationWhenInUse) | ✔️     | ✔️  | ✔️     | ✔️   |
-| [LocationAlways](xref:Microsoft.Maui.ApplicationModel.Permissions.LocationAlways)       | ✔️     | ✔️  | ✔️     | ❌    |
-| [Media](xref:Microsoft.Maui.ApplicationModel.Permissions.Media)                         | ❌      | ✔️  | ❌      | ❌    |
-| [Microphone](xref:Microsoft.Maui.ApplicationModel.Permissions.Microphone)               | ✔️     | ✔️  | ✔️     | ❌    |
-| [Phone](xref:Microsoft.Maui.ApplicationModel.Permissions.Phone)                         | ✔️     | ✔️  | ❌      | ❌    |
-| [Photos](xref:Microsoft.Maui.ApplicationModel.Permissions.Photos)                       | ❌      | ✔️  | ❌      | ✔️   |
-| [Reminders](xref:Microsoft.Maui.ApplicationModel.Permissions.Reminders)                 | ❌      | ✔️  | ❌      | ❌    |
-| [Sensors](xref:Microsoft.Maui.ApplicationModel.Permissions.Sensors)                     | ✔️     | ✔️  | ✔️     | ❌    |
-| [Sms](xref:Microsoft.Maui.ApplicationModel.Permissions.Sms)                             | ✔️     | ✔️  | ❌      | ❌    |
-| [Speech](xref:Microsoft.Maui.ApplicationModel.Permissions.Speech)                       | ✔️     | ✔️  | ❌      | ❌    |
-| [StorageRead](xref:Microsoft.Maui.ApplicationModel.Permissions.StorageRead)             | ✔️     | ❌   | ❌      | ❌    |
-| [StorageWrite](xref:Microsoft.Maui.ApplicationModel.Permissions.StorageWrite)           | ✔️     | ❌   | ❌      | ❌    |
-
-::: moniker-end
-
-::: moniker range=">=net-maui-7.0"
-
-| Permission                                                                              | Android | iOS | Windows | tvOS |
-|------------------------------------------------------------------------------------------|:-------:|:---:|:-------:|:----:|
+| [Battery](xref:Microsoft.Maui.ApplicationModel.Permissions.Battery)                     | ✔️     | ❌  | ❌     | ❌    |
 | [CalendarRead](xref:Microsoft.Maui.ApplicationModel.Permissions.CalendarRead)           | ✔️     | ✔️  | ❌      | ❌    |
 | [CalendarWrite](xref:Microsoft.Maui.ApplicationModel.Permissions.CalendarWrite)         | ✔️     | ✔️  | ❌      | ❌    |
 | [Camera](xref:Microsoft.Maui.ApplicationModel.Permissions.Camera)                       | ✔️     | ✔️  | ❌      | ❌    |
@@ -54,14 +32,48 @@ The following table uses ✔️ to indicate that the permission is supported and
 | [LocationAlways](xref:Microsoft.Maui.ApplicationModel.Permissions.LocationAlways)       | ✔️     | ✔️  | ❌      | ❌    |
 | [Media](xref:Microsoft.Maui.ApplicationModel.Permissions.Media)                         | ❌      | ✔️  | ❌      | ❌    |
 | [Microphone](xref:Microsoft.Maui.ApplicationModel.Permissions.Microphone)               | ✔️     | ✔️  | ❌      | ❌    |
+| [NetworkState](xref:Microsoft.Maui.ApplicationModel.Permissions.NetworkState)           | ✔️     | ❌  | ❌      | ❌   |
 | [Phone](xref:Microsoft.Maui.ApplicationModel.Permissions.Phone)                         | ✔️     | ✔️  | ❌      | ❌    |
-| [Photos](xref:Microsoft.Maui.ApplicationModel.Permissions.Photos)                       | ❌      | ✔️  | ❌      | ✔️   |
+| [Photos](xref:Microsoft.Maui.ApplicationModel.Permissions.Photos)                       | ❌     | ✔️  | ❌      | ✔️   |
+| [PhotosAddOnly](xref:Microsoft.Maui.ApplicationModel.Permissions.PhotosAddOnly)         | ❌     | ✔️  | ❌       | ✔️   |
 | [Reminders](xref:Microsoft.Maui.ApplicationModel.Permissions.Reminders)                 | ❌      | ✔️  | ❌      | ❌    |
 | [Sensors](xref:Microsoft.Maui.ApplicationModel.Permissions.Sensors)                     | ✔️     | ✔️  | ❌      | ❌    |
 | [Sms](xref:Microsoft.Maui.ApplicationModel.Permissions.Sms)                             | ✔️     | ✔️  | ❌      | ❌    |
 | [Speech](xref:Microsoft.Maui.ApplicationModel.Permissions.Speech)                       | ✔️     | ✔️  | ❌      | ❌    |
 | [StorageRead](xref:Microsoft.Maui.ApplicationModel.Permissions.StorageRead)             | ✔️     | ❌   | ❌      | ❌    |
 | [StorageWrite](xref:Microsoft.Maui.ApplicationModel.Permissions.StorageWrite)           | ✔️     | ❌   | ❌      | ❌    |
+| [Vibrate](xref:Microsoft.Maui.ApplicationModel.Permissions.Vibrate)                     | ✔️     | ❌   | ❌      | ❌    |
+
+::: moniker-end
+
+::: moniker range=">=net-maui-8.0"
+
+| Permission                                                                              | Android | iOS | Windows | tvOS |
+|------------------------------------------------------------------------------------------|:-------:|:---:|:-------:|:----:|
+| [Battery](xref:Microsoft.Maui.ApplicationModel.Permissions.Battery)                     | ✔️     | ❌  | ❌     | ❌    |
+| [Bluetooth](xref:Microsoft.Maui.ApplicationModel.Permissions.Bluetooth)                 | ✔️     | ❌  | ❌     | ❌    |
+| [CalendarRead](xref:Microsoft.Maui.ApplicationModel.Permissions.CalendarRead)           | ✔️     | ✔️  | ❌      | ❌    |
+| [CalendarWrite](xref:Microsoft.Maui.ApplicationModel.Permissions.CalendarWrite)         | ✔️     | ✔️  | ❌      | ❌    |
+| [Camera](xref:Microsoft.Maui.ApplicationModel.Permissions.Camera)                       | ✔️     | ✔️  | ❌      | ❌    |
+| [ContactsRead](xref:Microsoft.Maui.ApplicationModel.Permissions.ContactsRead)           | ✔️     | ✔️  | ❌      | ❌    |
+| [ContactsWrite](xref:Microsoft.Maui.ApplicationModel.Permissions.ContactsWrite)         | ✔️     | ✔️  | ❌      | ❌    |
+| [Flashlight](xref:Microsoft.Maui.ApplicationModel.Permissions.Flashlight)               | ✔️     | ❌   | ❌      | ❌    |
+| [LocationWhenInUse](xref:Microsoft.Maui.ApplicationModel.Permissions.LocationWhenInUse) | ✔️     | ✔️  | ❌      | ✔️   |
+| [LocationAlways](xref:Microsoft.Maui.ApplicationModel.Permissions.LocationAlways)       | ✔️     | ✔️  | ❌      | ❌    |
+| [Media](xref:Microsoft.Maui.ApplicationModel.Permissions.Media)                         | ❌      | ✔️  | ❌      | ❌    |
+| [Microphone](xref:Microsoft.Maui.ApplicationModel.Permissions.Microphone)               | ✔️     | ✔️  | ❌      | ❌    |
+| [NearbyWifiDevices](xref:Microsoft.Maui.ApplicationModel.Permissions.NearbyWifiDevices) | ✔️     | ❌  | ❌     | ❌    |
+| [NetworkState](xref:Microsoft.Maui.ApplicationModel.Permissions.NetworkState)           | ✔️     | ❌  | ❌      | ❌   |
+| [Phone](xref:Microsoft.Maui.ApplicationModel.Permissions.Phone)                         | ✔️     | ✔️  | ❌      | ❌    |
+| [Photos](xref:Microsoft.Maui.ApplicationModel.Permissions.Photos)                       | ❌     | ✔️  | ❌      | ✔️   |
+| [PhotosAddOnly](xref:Microsoft.Maui.ApplicationModel.Permissions.PhotosAddOnly)         | ❌     | ✔️  | ❌       | ✔️   |
+| [Reminders](xref:Microsoft.Maui.ApplicationModel.Permissions.Reminders)                 | ❌      | ✔️  | ❌      | ❌    |
+| [Sensors](xref:Microsoft.Maui.ApplicationModel.Permissions.Sensors)                     | ✔️     | ✔️  | ❌      | ❌    |
+| [Sms](xref:Microsoft.Maui.ApplicationModel.Permissions.Sms)                             | ✔️     | ✔️  | ❌      | ❌    |
+| [Speech](xref:Microsoft.Maui.ApplicationModel.Permissions.Speech)                       | ✔️     | ✔️  | ❌      | ❌    |
+| [StorageRead](xref:Microsoft.Maui.ApplicationModel.Permissions.StorageRead)             | ✔️     | ❌   | ❌      | ❌    |
+| [StorageWrite](xref:Microsoft.Maui.ApplicationModel.Permissions.StorageWrite)           | ✔️     | ❌   | ❌      | ❌    |
+| [Vibrate](xref:Microsoft.Maui.ApplicationModel.Permissions.Vibrate)                     | ✔️     | ❌   | ❌      | ❌    |
 
 ::: moniker-end
 
@@ -136,16 +148,7 @@ You then check the permission in the same way as any other permission type provi
 
 :::code language="csharp" source="../snippets/shared_1/AppModelPage.xaml.cs" id="permission_readwrite_request":::
 
-<!-- Cutting this
-     It should be updated to demonstrate creating a class in each of the platform project folders, or by simply using #if OS checks
-     However, at this time VS isn't giving me the correct APIs when I swap from Android to Windows, so I can't even try to write
-     any code outside of Android
-
-     Also, this talks about the "shared" project concept which isn't required in .NET MAUI. I would also assume that
-     using DependencyService.Register isn't required. So this code will have to be updated too.
->
-
-If you wanted to call this API from your shared code, you could create an interface and use a dependency service to register and get the implementation.
+If you wanted to call this API from your cross-platform code, you could create an interface and register the custom permission as a dependency in the app's service container. The following example shows the `IReadWritePermission` interface:
 
 ```csharp
 public interface IReadWritePermission
@@ -155,7 +158,7 @@ public interface IReadWritePermission
 }
 ```
 
-Then implement the interface in your platform project:
+Then implement the interface in your custom permission:
 
 ```csharp
 public class ReadWriteStoragePermission : Permissions.BasePlatformPermission, IReadWritePermission
@@ -168,23 +171,35 @@ public class ReadWriteStoragePermission : Permissions.BasePlatformPermission, IR
 }
 ```
 
-You can then register the specific implementation:
+In the `MauiProgram` class you should then register the interface and its concrete type, and the type that will consume the custom permission, in the app's service container:
 
 ```csharp
-DependencyService.Register<IReadWritePermission, ReadWriteStoragePermission>();
+builder.Services.AddTransient<MyViewModel>();
+builder.Services.AddSingleton<IReadWritePermission, ReadWriteStoragePermission>();
 ```
 
-Then from your shared project you can resolve and use it:
+The custom permission implementation can then be resolved and invoked from one of your types, such as a viewmodel:
 
 ```csharp
-var readWritePermission = DependencyService.Get<IReadWritePermission>();
-var status = await readWritePermission.CheckStatusAsync();
-if (status != PermissionStatus.Granted)
+public class MyViewModel
 {
-    status = await readWritePermission.RequestAsync();
+    IReadWritePermission _readWritePermission;
+
+    public MyViewModel(IReadWritePermission readWritePermission)
+    {
+        _readWritePermission = readWritePermission;
+    }
+
+    public async Task CheckPermissionAsync()
+    {
+        var status = await _readWritePermission.CheckStatusAsync();
+        if (status != PermissionStatus.Granted)
+        {
+            status = await _readWritePermission.RequestAsync();
+        }
+    }
 }
 ```
--->
 
 ## Platform differences
 
@@ -205,19 +220,7 @@ Permissions must have a matching string in the _Info.plist_ file. Once a permiss
 
 # [Windows](#tab/windows)
 
-::: moniker range="=net-maui-6.0"
-
-Permissions must have matching capabilities declared in the package manifest. Permission status defaults to <xref:Microsoft.Maui.ApplicationModel.PermissionStatus.Unknown> in most instances.
-
-<!-- TODO For more information, see [App Capability Declaration](/windows/uwp/packaging/app-capability-declarations). -->
-
-::: moniker-end
-
-::: moniker range=">=net-maui-7.0"
-
 No platform differences.
-
-::: moniker-end
 
 -----
 <!-- markdownlint-enable MD025 -->

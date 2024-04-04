@@ -358,7 +358,7 @@ refreshView.Content = carouselView;
 // ...
 ```
 
-When the user initiates a refresh, the `ICommand` defined by the `Command` property is executed, which should refresh the items being displayed. A refresh visualization is shown while the refresh occurs, which consists of an animated progress circle:
+When the user initiates a refresh, the <xref:System.Windows.Input.ICommand> defined by the `Command` property is executed, which should refresh the items being displayed. A refresh visualization is shown while the refresh occurs, which consists of an animated progress circle:
 
 :::image type="content" source="media/populate-data/pull-to-refresh.png" alt-text="Screenshot of CarouselView pull-to-refresh.":::
 
@@ -373,7 +373,7 @@ For more information about <xref:Microsoft.Maui.Controls.RefreshView>, see [Refr
 <xref:Microsoft.Maui.Controls.CarouselView> defines the following properties to control incremental loading of data:
 
 - `RemainingItemsThreshold`, of type `int`, the threshold of items not yet visible in the list at which the `RemainingItemsThresholdReached` event will be fired.
-- `RemainingItemsThresholdReachedCommand`, of type `ICommand`, which is executed when the `RemainingItemsThreshold` is reached.
+- `RemainingItemsThresholdReachedCommand`, of type <xref:System.Windows.Input.ICommand>, which is executed when the `RemainingItemsThreshold` is reached.
 - `RemainingItemsThresholdReachedCommandParameter`, of type `object`, which is the parameter that's passed to the `RemainingItemsThresholdReachedCommand`.
 
 <xref:Microsoft.Maui.Controls.CarouselView> also defines a `RemainingItemsThresholdReached` event that is fired when the <xref:Microsoft.Maui.Controls.CarouselView> is scrolled far enough that `RemainingItemsThreshold` items have not been displayed. This event can be handled to load more items. In addition, when the `RemainingItemsThresholdReached` event is fired, the `RemainingItemsThresholdReachedCommand` is executed, enabling incremental data loading to take place in a viewmodel.
@@ -415,4 +415,4 @@ void OnCollectionViewRemainingItemsThresholdReached(object sender, EventArgs e)
 ```
 
 > [!NOTE]
-> Data can also be loaded incrementally by binding the `RemainingItemsThresholdReachedCommand` to an `ICommand` implementation in the viewmodel.
+> Data can also be loaded incrementally by binding the `RemainingItemsThresholdReachedCommand` to an <xref:System.Windows.Input.ICommand> implementation in the viewmodel.

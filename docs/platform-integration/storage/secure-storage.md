@@ -8,6 +8,8 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Storage", "SecureStorage"]
 
 # Secure storage
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-essentials)
+
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) `ISecureStorage` interface. This interface helps securely store simple key/value pairs.
 
 The default implementation of the `ISecureStorage` interface is available through the `SecureStorage.Default` property. Both the `ISecureStorage` interface and `SecureStorage` class are contained in the `Microsoft.Maui.Storage` namespace.
@@ -49,13 +51,13 @@ Auto Backup can be configured to disable specific content from backing up. You c
     </application>
     ```
 
-01. Create a new XML file named _auto_backup_rules.xml_ in the _Resources/xml_ directory with the build action of **AndroidResource**. Set the following content that includes all shared preferences except for `SecureStorage`:
+01. Create a new XML file named _auto_backup_rules.xml_ in the _Platforms/Android/Resources/xml_ directory with the build action of **AndroidResource**. Set the following content that includes all shared preferences except for `SecureStorage`:
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
     <full-backup-content>
         <include domain="sharedpref" path="."/>
-        <exclude domain="sharedpref" path="${applicationId}.mauiessentials.xml"/>
+        <exclude domain="sharedpref" path="${applicationId}.microsoft.maui.essentials.preferences.xml"/>
     </full-backup-content>
     ```
 
@@ -134,21 +136,9 @@ In some cases, KeyChain data is synchronized with iCloud, and uninstalling the a
 
 `DataProtectionProvider` is used to encrypt values securely on Windows devices. <!-- (/uwp/api/windows.security.cryptography.dataprotection.dataprotectionprovider) -->
 
-::: moniker range="=net-maui-6.0"
-
-Encrypted values are stored in `ApplicationData.Current.LocalSettings`, inside a container with a name of _[YOUR-APP-ID].microsoft.maui.essentials.preferences_.
-
-`SecureStorage` uses the [Preferences](preferences.md) API and follows the same data persistence outlined in the [Preferences](preferences.md#persistence) documentation. It also uses `LocalSettings`, which has a restriction that a setting name length may be 255 characters at the most. Each setting can be up to 8K bytes in size, and each composite setting can be up to 64 K bytes in size.
-
-::: moniker-end
-
-::: moniker range=">=net-maui-7.0"
-
 In packaged apps, encrypted values are stored in `ApplicationData.Current.LocalSettings`, inside a container with a name of _[YOUR-APP-ID].microsoft.maui.essentials.preferences_. `SecureStorage` uses the [Preferences](preferences.md) API and follows the same data persistence outlined in the [Preferences](preferences.md#persistence) documentation. It also uses `LocalSettings`, which has a restriction that a setting name length may be 255 characters at the most. Each setting can be up to 8K bytes in size, and each composite setting can be up to 64 K bytes in size.
 
 In unpackaged apps, encrypted values are stored in JSON format in `securestorage.dat` inside the app's data folder.
-
-::: moniker-end
 
 -----
 <!-- markdownlint-enable MD024 -->

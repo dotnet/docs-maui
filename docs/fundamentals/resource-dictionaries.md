@@ -1,7 +1,7 @@
 ---
 title: "Resource dictionaries"
 description: "Learn how .NET MAUI XAML resources dictionaries enable resources to be shared and reused throughout an app."
-ms.date: 04/04/2023
+ms.date: 04/21/2023
 ---
 
 # Resource dictionaries
@@ -41,6 +41,11 @@ The following XAML shows resources defined in an application level <xref:Microso
         <Color x:Key="NavigationBarColor">#1976D2</Color>
         <Color x:Key="NavigationBarTextColor">White</Color>
         <Color x:Key="NormalTextColor">Black</Color>
+
+        <!-- Images -->
+        <x:String x:Key="BackgroundImage">background</x:String>
+        <x:String x:Key="MenuIcon">menu.png</x:String>
+        <x:String x:Key="SearchIcon">search.png</x:String>
 
         <!-- Implicit styles -->
         <Style TargetType="NavigationPage">
@@ -102,7 +107,7 @@ In this example, the <xref:Microsoft.Maui.Controls.ContentPage> object consumes 
 :::image type="content" source="media/resource-dictionaries/consuming.png" alt-text="Consuming resource dictionary resources.":::
 
 > [!IMPORTANT]
-> Resources that are specific to a single page shouldn't be included in an application level resource dictionary, as such resources will then be parsed at app startup instead of when required by a page. <!-- For more information, see [Reduce the Application Resource Dictionary Size](~/xamarin-forms/deploy-test/performance.md).-->
+> Resources that are specific to a single page shouldn't be included in an application level resource dictionary, as such resources will then be parsed at app startup instead of when required by a page. For more information, see [Reduce the application resource dictionary size](~/deployment/performance.md#reduce-the-application-resource-dictionary-size).
 
 ## Resource lookup behavior
 
@@ -238,9 +243,9 @@ When merged <xref:Microsoft.Maui.Controls.ResourceDictionary> resources share id
 > [!TIP]
 > Searching resource dictionaries can be a computationally intensive task if an app contains multiple, large resource dictionaries. Therefore, to avoid unnecessary searching, you should ensure that each page in an application only uses resource dictionaries that are appropriate to the page.
 
-### Consume a XAML-based resource dictionary from C\#
+### Consume a XAML-based resource dictionary from code
 
-Resource dictionaries that are defined in XAML can be consumed in C#, provided that the <xref:Microsoft.Maui.Controls.ResourceDictionary> is backed by a code-behind file. In Visual Studio, XAML-based <xref:Microsoft.Maui.Controls.ResourceDictionary> files that are backed by code-behind files can be added to your project by the **.NET MAUI ResourceDictionary (XAML)** item template:
+Resource dictionaries that are defined in XAML can be consumed in code, provided that the <xref:Microsoft.Maui.Controls.ResourceDictionary> is backed by a code-behind file. In Visual Studio, XAML-based <xref:Microsoft.Maui.Controls.ResourceDictionary> files that are backed by code-behind files can be added to your project by the **.NET MAUI ResourceDictionary (XAML)** item template:
 
 :::image type="content" source="media/resource-dictionaries/resource-dictionaries-code-behind.png" alt-text="Screenshot of resource dictionaries backed by code-behind.":::
 
@@ -250,3 +255,24 @@ XAML-based resource dictionaries that are backed by code-behind files can then b
 Resources.MergedDictionaries.Add(new MyMauiApp.Resources.Styles.MyColors());
 Resources.MergedDictionaries.Add(new MyMauiApp.Resources.Styles.MyStyles());
 ```
+
+## Access resources by key from code
+
+You can access resources in a resource dictionary from code like any other dictionary.
+
+The following example shows how to retrieve and apply a resource from a page's resource dictionary:
+
+```csharp
+// Retrieve the Primary color value which is in the page's resource dictionary
+var hasValue = Resources.TryGetValue("Primary", out object primaryColor);
+
+if (hasValue)
+{
+    myLabel.TextColor = (Color)primaryColor;
+}
+```
+
+This is the recommended approach that ensures that .NET MAUI won't throw a `KeyNotFoundException` if it's unable to retrieve a resource from code. This can occur when a merged resource dictionary is made up of resources defined in a XAML file, and inline resources. For more information, see [GitHub issue #11214](https://github.com/dotnet/maui/pull/11214).
+
+> [!NOTE]
+> To retrieve app-wide resources from code, access the `App.Current.Resources` resource dictionary.

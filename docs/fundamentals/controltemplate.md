@@ -19,8 +19,10 @@ The following example shows the code for a `CardView` custom control:
 ```csharp
 public class CardView : ContentView
 {
-    public static readonly BindableProperty CardTitleProperty = BindableProperty.Create(nameof(CardTitle), typeof(string), typeof(CardView), string.Empty);
-    public static readonly BindableProperty CardDescriptionProperty = BindableProperty.Create(nameof(CardDescription), typeof(string), typeof(CardView), string.Empty);
+    public static readonly BindableProperty CardTitleProperty =
+        BindableProperty.Create(nameof(CardTitle), typeof(string), typeof(CardView), string.Empty);
+    public static readonly BindableProperty CardDescriptionProperty =
+        BindableProperty.Create(nameof(CardDescription), typeof(string), typeof(CardView), string.Empty);
 
     public string CardTitle
     {
@@ -54,53 +56,8 @@ The following XAML example shows a <xref:Microsoft.Maui.Controls.ControlTemplate
           <Frame BindingContext="{Binding Source={RelativeSource TemplatedParent}}"
                  BackgroundColor="{Binding CardColor}"
                  BorderColor="{Binding BorderColor}"
-                 CornerRadius="5"
-                 HasShadow="True"
-                 Padding="8"
-                 HorizontalOptions="Center"
-                 VerticalOptions="Center">
-              <Grid>
-                  <Grid.RowDefinitions>
-                      <RowDefinition Height="75" />
-                      <RowDefinition Height="4" />
-                      <RowDefinition Height="Auto" />
-                  </Grid.RowDefinitions>
-                  <Grid.ColumnDefinitions>
-                      <ColumnDefinition Width="75" />
-                      <ColumnDefinition Width="200" />
-                  </Grid.ColumnDefinitions>
-                  <Frame IsClippedToBounds="True"
-                         BorderColor="{Binding BorderColor}"
-                         BackgroundColor="{Binding IconBackgroundColor}"
-                         CornerRadius="38"
-                         HeightRequest="60"
-                         WidthRequest="60"
-                         HorizontalOptions="Center"
-                         VerticalOptions="Center">
-                      <Image Source="{Binding IconImageSource}"
-                             Margin="-20"
-                             WidthRequest="100"
-                             HeightRequest="100"
-                             Aspect="AspectFill" />
-                  </Frame>
-                  <Label Grid.Column="1"
-                         Text="{Binding CardTitle}"
-                         FontAttributes="Bold"
-                         FontSize="18"
-                         VerticalTextAlignment="Center"
-                         HorizontalTextAlignment="Start" />
-                  <BoxView Grid.Row="1"
-                           Grid.ColumnSpan="2"
-                           BackgroundColor="{Binding BorderColor}"
-                           HeightRequest="2"
-                           HorizontalOptions="Fill" />
-                  <Label Grid.Row="2"
-                         Grid.ColumnSpan="2"
-                         Text="{Binding CardDescription}"
-                         VerticalTextAlignment="Start"
-                         VerticalOptions="Fill"
-                         HorizontalOptions="Fill" />
-              </Grid>
+                 ...>
+              <!-- UI objects that define the CardView visual structure -->
           </Frame>
       </ControlTemplate>
     </ContentPage.Resources>
@@ -108,13 +65,13 @@ The following XAML example shows a <xref:Microsoft.Maui.Controls.ControlTemplate
 </ContentPage>
 ```
 
-When a <xref:Microsoft.Maui.Controls.ControlTemplate> is declared as a resource, it must have a key specified with the `x:Key` attribute so that it can be identified in the resource dictionary. In this example, the root element of the `CardViewControlTemplate` is a <xref:Microsoft.Maui.Controls.Frame> object. The <xref:Microsoft.Maui.Controls.Frame> object uses the [`RelativeSource`](xref:Microsoft.Maui.Controls.Xaml.RelativeSourceExtension) markup extension to set its <xref:Microsoft.Maui.Controls.BindableObject.BindingContext> to the runtime object instance to which the template will be applied, which is known as the *templated parent*. The <xref:Microsoft.Maui.Controls.Frame> object uses a combination of <xref:Microsoft.Maui.Controls.Grid>, <xref:Microsoft.Maui.Controls.Frame>, <xref:Microsoft.Maui.Controls.Image>, <xref:Microsoft.Maui.Controls.Label>, and <xref:Microsoft.Maui.Controls.BoxView> objects to define the visual structure of a `CardView` object. The binding expressions of these objects resolve against `CardView` properties, due to inheriting the <xref:Microsoft.Maui.Controls.BindableObject.BindingContext> from the root <xref:Microsoft.Maui.Controls.Frame> element. For more information about the [`RelativeSource`](xref:Microsoft.Maui.Controls.Xaml.RelativeSourceExtension) markup extension, see [Relative bindings](~/fundamentals/data-binding/relative-bindings.md).
+When a <xref:Microsoft.Maui.Controls.ControlTemplate> is declared as a resource, it must have a key specified with the `x:Key` attribute so that it can be identified in the resource dictionary. In this example, the root element of the `CardViewControlTemplate` is a <xref:Microsoft.Maui.Controls.Frame> object. The <xref:Microsoft.Maui.Controls.Frame> object uses the [`RelativeSource`](xref:Microsoft.Maui.Controls.Xaml.RelativeSourceExtension) markup extension to set its <xref:Microsoft.Maui.Controls.BindableObject.BindingContext> to the runtime object instance to which the template will be applied, which is known as the *templated parent*. The <xref:Microsoft.Maui.Controls.Frame> object uses a combination of controls to define the visual structure of a `CardView` object. The binding expressions of these objects resolve against `CardView` properties, due to inheriting the <xref:Microsoft.Maui.Controls.BindableObject.BindingContext> from the root <xref:Microsoft.Maui.Controls.Frame> element. For more information about the [`RelativeSource`](xref:Microsoft.Maui.Controls.Xaml.RelativeSourceExtension) markup extension, see [Relative bindings](~/fundamentals/data-binding/relative-bindings.md).
 
 ## Consume a ControlTemplate
 
 A <xref:Microsoft.Maui.Controls.ControlTemplate> can be applied to a <xref:Microsoft.Maui.Controls.ContentView> derived custom control by setting its <xref:Microsoft.Maui.Controls.ControlTemplate> property to the control template object. Similarly, a <xref:Microsoft.Maui.Controls.ControlTemplate> can be applied to a <xref:Microsoft.Maui.Controls.ContentPage> derived page by setting its <xref:Microsoft.Maui.Controls.ControlTemplate> property to the control template object. At runtime, when a <xref:Microsoft.Maui.Controls.ControlTemplate> is applied, all of the controls that are defined in the <xref:Microsoft.Maui.Controls.ControlTemplate> are added to the visual tree of the templated custom control, or templated page.
 
-The following example shows the `CardViewControlTemplate` being assigned to the <xref:Microsoft.Maui.Controls.ControlTemplate> property of each `CardView` object:
+The following example shows the `CardViewControlTemplate` being assigned to the <xref:Microsoft.Maui.Controls.ControlTemplate> property of two `CardView` objects:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -140,7 +97,7 @@ The following example shows the `CardViewControlTemplate` being assigned to the 
 
 In this example, the controls in the `CardViewControlTemplate` become part of the visual tree for each `CardView` object. Because the root <xref:Microsoft.Maui.Controls.Frame> object for the control template sets its <xref:Microsoft.Maui.Controls.BindableObject.BindingContext> to the templated parent, the <xref:Microsoft.Maui.Controls.Frame> and its children resolve their binding expressions against the properties of each `CardView` object.
 
-The following screenshot shows the `CardViewControlTemplate` applied to the three `CardView` objects:
+The following screenshot shows the `CardViewControlTemplate` applied to the the `CardView` objects:
 
 :::image type="content" source="media/controltemplate/relativesource-controltemplate.png" alt-text="Screenshot of two templated CardView objects.":::
 
@@ -162,7 +119,7 @@ The [`TemplateBinding`](xref:Microsoft.Maui.Controls.Xaml.TemplateBindingExtensi
 - <xref:Microsoft.Maui.Controls.Xaml.TemplateBindingExtension.ConverterParameter>, of type `object`, the parameter to the binding value converter.
 - <xref:Microsoft.Maui.Controls.Xaml.TemplateBindingExtension.StringFormat>, of type `string`, the string format for the binding.
 
-The `ContentProperty` for the [`TemplateBinding`](xref:Microsoft.Maui.Controls.Xaml.TemplateBindingExtension) markup extension is <xref:Microsoft.Maui.Controls.Xaml.TemplateBindingExtension.Path>. Therefore, the "Path=" part of the markup extension can be omitted if the path is the first item in the [`TemplateBinding`](xref:Microsoft.Maui.Controls.Xaml.TemplateBindingExtension) expression. For more information about using these properties in a binding expression, see [Data binding](~/fundamentals/data-binding/index.md).
+The [`ContentProperty`](xref:Microsoft.Maui.Controls.ContentPropertyAttribute) for the [`TemplateBinding`](xref:Microsoft.Maui.Controls.Xaml.TemplateBindingExtension) markup extension is <xref:Microsoft.Maui.Controls.Xaml.TemplateBindingExtension.Path>. Therefore, the "Path=" part of the markup extension can be omitted if the path is the first item in the [`TemplateBinding`](xref:Microsoft.Maui.Controls.Xaml.TemplateBindingExtension) expression. For more information about using these properties in a binding expression, see [Data binding](~/fundamentals/data-binding/index.md).
 
 > [!WARNING]
 > The [`TemplateBinding`](xref:Microsoft.Maui.Controls.Xaml.TemplateBindingExtension) markup extension should only be used within a <xref:Microsoft.Maui.Controls.ControlTemplate>. However, attempting to use a [`TemplateBinding`](xref:Microsoft.Maui.Controls.Xaml.TemplateBindingExtension) expression outside of a <xref:Microsoft.Maui.Controls.ControlTemplate> will not result in a build error or an exception being thrown.
@@ -177,53 +134,8 @@ The following XAML example shows a <xref:Microsoft.Maui.Controls.ControlTemplate
         <ControlTemplate x:Key="CardViewControlTemplate">
             <Frame BackgroundColor="{TemplateBinding CardColor}"
                    BorderColor="{TemplateBinding BorderColor}"
-                   CornerRadius="5"
-                   HasShadow="True"
-                   Padding="8"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="75" />
-                        <RowDefinition Height="4" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="75" />
-                        <ColumnDefinition Width="200" />
-                    </Grid.ColumnDefinitions>
-                    <Frame IsClippedToBounds="True"
-                           BorderColor="{TemplateBinding BorderColor}"
-                           BackgroundColor="{TemplateBinding IconBackgroundColor}"
-                           CornerRadius="38"
-                           HeightRequest="60"
-                           WidthRequest="60"
-                           HorizontalOptions="Center"
-                           VerticalOptions="Center">
-                        <Image Source="{TemplateBinding IconImageSource}"
-                               Margin="-20"
-                               WidthRequest="100"
-                               HeightRequest="100"
-                               Aspect="AspectFill" />
-                    </Frame>
-                    <Label Grid.Column="1"
-                           Text="{TemplateBinding CardTitle}"
-                           FontAttributes="Bold"
-                           FontSize="18"
-                           VerticalTextAlignment="Center"
-                           HorizontalTextAlignment="Start" />
-                    <BoxView Grid.Row="1"
-                             Grid.ColumnSpan="2"
-                             BackgroundColor="{TemplateBinding BorderColor}"
-                             HeightRequest="2"
-                             HorizontalOptions="Fill" />
-                    <Label Grid.Row="2"
-                           Grid.ColumnSpan="2"
-                           Text="{TemplateBinding CardDescription}"
-                           VerticalTextAlignment="Start"
-                           VerticalOptions="Fill"
-                           HorizontalOptions="Fill" />
-                </Grid>
+                   ...>
+                <!-- UI objects that define the CardView visual structure -->                   
             </Frame>
         </ControlTemplate>
     </ContentPage.Resources>
@@ -265,11 +177,7 @@ The following XAML example shows an *implicit* style that consumes the `CardView
                            CardDescription="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla elit dolor, convallis non interdum."
                            IconBackgroundColor="SlateGray"
                            IconImageSource="user.png" />
-        <controls:CardView BorderColor="DarkGray"
-                           CardTitle="Jane Doe"
-                           CardDescription="Phasellus eu convallis mi. In tempus augue eu dignissim fermentum. Morbi ut lacus vitae eros lacinia."
-                           IconBackgroundColor="SlateGray"
-                           IconImageSource="user.png"/>
+        ...
     </StackLayout>
 </ContentPage>
 ```
@@ -292,53 +200,8 @@ For example, the `CardViewUI` custom control defines its user interface using th
     <Frame BindingContext="{x:Reference this}"
            BackgroundColor="{Binding CardColor}"
            BorderColor="{Binding BorderColor}"
-           CornerRadius="5"
-           HasShadow="True"
-           Padding="8"
-           HorizontalOptions="Center"
-           VerticalOptions="Center">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="75" />
-                <RowDefinition Height="4" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="75" />
-                <ColumnDefinition Width="200" />
-            </Grid.ColumnDefinitions>
-            <Frame IsClippedToBounds="True"
-                   BorderColor="{Binding BorderColor, FallbackValue='Black'}"
-                   BackgroundColor="{Binding IconBackgroundColor, FallbackValue='Gray'}"
-                   CornerRadius="38"
-                   HeightRequest="60"
-                   WidthRequest="60"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center">
-                <Image Source="{Binding IconImageSource}"
-                       Margin="-20"
-                       WidthRequest="100"
-                       HeightRequest="100"
-                       Aspect="AspectFill" />
-            </Frame>
-            <Label Grid.Column="1"
-                   Text="{Binding CardTitle, FallbackValue='Card title'}"
-                   FontAttributes="Bold"
-                   FontSize="18"
-                   VerticalTextAlignment="Center"
-                   HorizontalTextAlignment="Start" />
-            <BoxView Grid.Row="1"
-                     Grid.ColumnSpan="2"
-                     BackgroundColor="{Binding BorderColor, FallbackValue='Black'}"
-                     HeightRequest="2"
-                     HorizontalOptions="Fill" />
-            <Label Grid.Row="2"
-                   Grid.ColumnSpan="2"
-                   Text="{Binding CardDescription, FallbackValue='Card description'}"
-                   VerticalTextAlignment="Start"
-                   VerticalOptions="Fill"
-                   HorizontalOptions="Fill" />
-        </Grid>
+           ...>
+        <!-- UI objects that define the CardView visual structure -->           
     </Frame>
 </ContentView>
 ```
@@ -351,26 +214,12 @@ However, the controls that comprise this UI can be replaced by defining a new vi
              ...>
     <ContentPage.Resources>
         <ControlTemplate x:Key="CardViewCompressed">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="100" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+            <Grid RowDefinitions="100"
+                  ColumnDefinitions="100, *">
                 <Image Source="{TemplateBinding IconImageSource}"
                        BackgroundColor="{TemplateBinding IconBackgroundColor}"
-                       WidthRequest="100"
-                       HeightRequest="100"
-                       Aspect="AspectFill"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center" />
-                <StackLayout Grid.Column="1">
-                    <Label Text="{TemplateBinding CardTitle}"
-                           FontAttributes="Bold" />
-                    <Label Text="{TemplateBinding CardDescription}" />
-                </StackLayout>
+                       ...>
+                <!-- Other UI objects that define the CardView visual structure -->
             </Grid>
         </ControlTemplate>
     </ContentPage.Resources>
@@ -381,12 +230,7 @@ However, the controls that comprise this UI can be replaced by defining a new vi
                              IconBackgroundColor="SlateGray"
                              IconImageSource="user.png"
                              ControlTemplate="{StaticResource CardViewCompressed}" />
-        <controls:CardViewUI BorderColor="DarkGray"
-                             CardTitle="Jane Doe"
-                             CardDescription="Phasellus eu convallis mi. In tempus augue eu dignissim fermentum. Morbi ut lacus vitae eros lacinia."
-                             IconBackgroundColor="SlateGray"
-                             IconImageSource="user.png"
-                             ControlTemplate="{StaticResource CardViewCompressed}" />
+        ...
     </StackLayout>
 </ContentPage>
 ```
@@ -405,18 +249,11 @@ The following XAML shows a control template named `TealTemplate` that contains a
 
 ```xaml
 <ControlTemplate x:Key="TealTemplate">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="0.1*" />
-            <RowDefinition Height="0.8*" />
-            <RowDefinition Height="0.1*" />
-        </Grid.RowDefinitions>
+    <Grid RowDefinitions="0.1*, 0.8*, 0.1*">
         <BoxView Color="Teal" />
         <Label Margin="20,0,0,0"
                Text="{TemplateBinding HeaderText}"
-               TextColor="White"
-               FontSize="24"
-               VerticalOptions="Center" />
+               ... />
         <ContentPresenter Grid.Row="1" />
         <BoxView Grid.Row="2"
                  Color="Teal" />
@@ -424,9 +261,7 @@ The following XAML shows a control template named `TealTemplate` that contains a
                Grid.Row="2"
                Margin="20,0,0,0"
                Text="Change Theme"
-               TextColor="White"
-               HorizontalOptions="Start"
-               VerticalOptions="Center">
+               ...>
             <Label.GestureRecognizers>
                 <TapGestureRecognizer Tapped="OnChangeThemeLabelTapped" />
             </Label.GestureRecognizers>
@@ -434,10 +269,8 @@ The following XAML shows a control template named `TealTemplate` that contains a
         <controls:HyperlinkLabel Grid.Row="2"
                                  Margin="0,0,20,0"
                                  Text="Help"
-                                 TextColor="White"
                                  Url="https://learn.microsoft.com/dotnet/maui/"
-                                 HorizontalOptions="End"
-                                 VerticalOptions="Center" />
+                                 ... />
     </Grid>
 </ControlTemplate>
 ```
@@ -480,12 +313,8 @@ The following XAML shows a control template named `TealTemplate` that can be app
     <Grid>
         ...
         <Label x:Name="changeThemeLabel"
-               Grid.Row="2"
-               Margin="20,0,0,0"
                Text="Change Theme"
-               TextColor="White"
-               HorizontalOptions="Start"
-               VerticalOptions="Center">
+               ...>
             <Label.GestureRecognizers>
                 <TapGestureRecognizer Tapped="OnChangeThemeLabelTapped" />
             </Label.GestureRecognizers>
@@ -551,43 +380,15 @@ The following XAML example shows a page that consumes a viewmodel named `PeopleV
 </ContentPage>
 ```
 
-In this example, the <xref:Microsoft.Maui.Controls.BindableObject.BindingContext> of the page is set to a `PeopleViewModel` instance. This viewmodel exposes a `People` collection and an `ICommand` named `DeletePersonCommand`. The <xref:Microsoft.Maui.Controls.StackLayout> on the page uses a bindable layout to data bind to the `People` collection, and the [`ItemTemplate`](xref:Microsoft.Maui.Controls.BindableLayout.ItemTemplateProperty) of the bindable layout is set to the `PersonTemplate` resource. This <xref:Microsoft.Maui.Controls.DataTemplate> specifies that each item in the `People` collection will be displayed using a `CardView` object. The visual structure of the `CardView` object is defined using a <xref:Microsoft.Maui.Controls.ControlTemplate> named `CardViewControlTemplate`:
+In this example, the <xref:Microsoft.Maui.Controls.BindableObject.BindingContext> of the page is set to a `PeopleViewModel` instance. This viewmodel exposes a `People` collection and an <xref:System.Windows.Input.ICommand> named `DeletePersonCommand`. The <xref:Microsoft.Maui.Controls.StackLayout> on the page uses a bindable layout to data bind to the `People` collection, and the [`ItemTemplate`](xref:Microsoft.Maui.Controls.BindableLayout.ItemTemplateProperty) of the bindable layout is set to the `PersonTemplate` resource. This <xref:Microsoft.Maui.Controls.DataTemplate> specifies that each item in the `People` collection will be displayed using a `CardView` object. The visual structure of the `CardView` object is defined using a <xref:Microsoft.Maui.Controls.ControlTemplate> named `CardViewControlTemplate`:
 
 ```xaml
 <ControlTemplate x:Key="CardViewControlTemplate">
     <Frame BindingContext="{Binding Source={RelativeSource TemplatedParent}}"
            BackgroundColor="{Binding CardColor}"
            BorderColor="{Binding BorderColor}"
-           CornerRadius="5"
-           HasShadow="True"
-           Padding="8"
-           HorizontalOptions="Center"
-           VerticalOptions="Center">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="75" />
-                <RowDefinition Height="4" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Label Text="{Binding CardTitle}"
-                   FontAttributes="Bold"
-                   FontSize="18"
-                   VerticalTextAlignment="Center"
-                   HorizontalTextAlignment="Start" />
-            <BoxView Grid.Row="1"
-                     BackgroundColor="{Binding BorderColor}"
-                     HeightRequest="2"
-                     HorizontalOptions="Fill" />
-            <Label Grid.Row="2"
-                   Text="{Binding CardDescription}"
-                   VerticalTextAlignment="Start"
-                   VerticalOptions="Fill"
-                   HorizontalOptions="Fill" />
-            <Button Text="Delete"
-                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:PeopleViewModel}}, Path=DeletePersonCommand}"
-                    CommandParameter="{Binding CardTitle}"
-                    HorizontalOptions="End" />
-        </Grid>
+           ...>
+        <!-- UI objects that define the CardView visual structure -->           
     </Frame>
 </ControlTemplate>
 ```

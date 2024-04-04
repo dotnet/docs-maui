@@ -127,7 +127,7 @@ These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> o
 For more information about the <xref:Microsoft.Maui.Controls.Shapes.FillRule> enumeration, see [.NET MAUI Shapes: Fill rules](fillrules.md).
 
 > [!NOTE]
-> The <xref:Microsoft.Maui.Controls.Shapes.PathGeometry.Figures> property is the `ContentProperty` of the <xref:Microsoft.Maui.Controls.Shapes.PathGeometry> class, and so does not need to be explicitly set from XAML.
+> The <xref:Microsoft.Maui.Controls.Shapes.PathGeometry.Figures> property is the [`ContentProperty`](xref:Microsoft.Maui.Controls.ContentPropertyAttribute) of the <xref:Microsoft.Maui.Controls.Shapes.PathGeometry> class, and so does not need to be explicitly set from XAML.
 
 A <xref:Microsoft.Maui.Controls.Shapes.PathGeometry> is made up of a collection of <xref:Microsoft.Maui.Controls.Shapes.PathFigure> objects, with each <xref:Microsoft.Maui.Controls.Shapes.PathFigure> describing a shape in the geometry. Each <xref:Microsoft.Maui.Controls.Shapes.PathFigure> is itself comprised of one or more <xref:Microsoft.Maui.Controls.Shapes.PathSegment> objects, each of which describes a segment of the shape. There are many types of segments:
 
@@ -539,7 +539,7 @@ The <xref:Microsoft.Maui.Controls.Shapes.GeometryGroup> class defines the follow
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 > [!NOTE]
-> The `Children` property is the `ContentProperty` of the <xref:Microsoft.Maui.Controls.Shapes.GeometryGroup> class, and so does not need to be explicitly set from XAML.
+> The `Children` property is the [`ContentProperty`](xref:Microsoft.Maui.Controls.ContentPropertyAttribute) of the <xref:Microsoft.Maui.Controls.Shapes.GeometryGroup> class, and so does not need to be explicitly set from XAML.
 
 For more information about the <xref:Microsoft.Maui.Controls.Shapes.FillRule> enumeration, see [Fill rules](fillrules.md).
 

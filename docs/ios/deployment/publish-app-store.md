@@ -6,6 +6,12 @@ ms.date: 02/24/2023
 
 # Publish an iOS app for App Store distribution
 
+> [!div class="op_single_selector"]
+>
+> - [Publish for in-house distribution](publish-in-house.md)
+> - [Publish for ad-hoc distribution](publish-ad-hoc.md)
+> - [Publish using the command line](publish-cli.md)
+
 The most common approach to distributing iOS apps to users is through the App Store. Apps are submitted to the App Store through an online tool called *App Store Connect*. Only developers who belong to the Apple Developer Program have access to this tool. Members of the Apple Developer Enterprise Program do not have access. All apps submitted to the App Store require approval from Apple.
 
 Distributing an iOS app requires that the app is provisioned using a *provisioning profile*. Provisioning profiles are files that contain code signing information, as well as the identity of the app and its intended distribution mechanism.
@@ -17,6 +23,9 @@ The process for creating an App Store distribution provisioning profile is as fo
 1. Create a distribution certificate. For more information, see [Create a distribution certificate](#create-a-distribution-certificate).
 1. Create an App ID. For more information, see [Create an App ID](#create-an-app-id).
 1. Create a provisioning profile. For more information, see [Create a provisioning profile](#create-a-provisioning-profile).
+
+> [!IMPORTANT]
+> Apple has a privacy policy for apps that target iOS on the App Store. It requires the app to include a privacy manifest file in the app bundle, that lists the types of data your .NET MAUI app or any third-party SDKs and packages collect, and the reasons for using any required reason APIs. If your use of the required reason APIs, or third-party SDKs, isn’t declared in the privacy manifest, your app might be rejected by the App Store. For more information, see [Apple privacy manifest](~/ios/privacy-manifest.md).
 
 [!INCLUDE [Create a distribution certificate](../includes/distribution-certificate.md)]
 
@@ -99,6 +108,8 @@ For information about publishing an iOS app using the Command Line Interface (CL
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio for Mac](#tab/vsmac)
 <!-- markdownlint-enable MD025 -->
+
+[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
 
 [!INCLUDE [Publish](../includes/publish-vsmac.md)]
 

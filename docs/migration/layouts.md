@@ -84,6 +84,9 @@ The new stack layouts in .NET MAUI, <xref:Microsoft.Maui.Controls.HorizontalStac
 
     When performing this conversion, anything that was marked `AndExpand` in the <xref:Xamarin.Forms.StackLayout> should go in its own row or column with a size of `*` in the <xref:Microsoft.Maui.Controls.Grid>.
 
+> [!IMPORTANT]
+> A <xref:Microsoft.Maui.Controls.StackLayout> continues in its stacking direction until it runs out of content. It does not subdivide its container along that axis. If you want to limit your content to a constrained space in a direction, you should use another layout such as a <xref:Microsoft.Maui.Controls.Grid>.
+
 ## RelativeLayout
 
 Use of <xref:Microsoft.Maui.Controls.Compatibility.RelativeLayout> is not recommended in .NET MAUI. Instead, use a <xref:Microsoft.Maui.Controls.Grid> wherever possible.
@@ -107,6 +110,3 @@ If you absolutely require a <xref:Microsoft.Maui.Controls.Compatibility.Relative
 While <xref:Microsoft.Maui.Controls.ScrollView> often isn't considered to be a layout, it can be thought of as a layout as it's used to scroll its child content. In Xamarin.Forms, <xref:Xamarin.Forms.ScrollView> doesn't behave consistently when stacking. It has some arbitrary limits on minimum size that depend partially on its content, and it will sometimes compress to enable other items to fit on the page inside a <xref:Xamarin.Forms.StackLayout> in ways that are inconsistent and sometimes surprising.
 
 In .NET MAUI, the <xref:Microsoft.Maui.Controls.ScrollView> expands to whatever size it wants to be unless otherwise constrained. This means that inside of a <xref:Microsoft.Maui.Controls.VerticalStackLayout>, which can expand infinitely, a <xref:Microsoft.Maui.Controls.ScrollView> will expand to its full content height and doesn't scroll. This behavior can be confusing if you're a Xamarin.Forms user.
-
-> [!IMPORTANT]
-> A <xref:Microsoft.Maui.Controls.StackLayout> continues in its stacking direction until it runs out of content. It does not subdivide its container along that axis. If you want to limit your content to a constrained space in a direction, you should use another layout such as a <xref:Microsoft.Maui.Controls.Grid>.

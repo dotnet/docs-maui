@@ -15,6 +15,8 @@ Running an animation created with the <xref:Microsoft.Maui.Controls.Animation> c
 > [!NOTE]
 > The <xref:Microsoft.Maui.Controls.Animation> class has an <xref:Microsoft.Maui.Controls.Animation.IsEnabled> property that can be examined to determine if animations have been disabled by the operating system, such as when power saving mode is activated.
 
+[!INCLUDE [Android animation system settings](../includes/animation-android.md)]
+
 ## Create an animation
 
 When creating an <xref:Microsoft.Maui.Controls.Animation> object, typically, a minimum of three parameters are required, as demonstrated in the following code example:
@@ -85,7 +87,7 @@ There are a number of differences between an <xref:Microsoft.Maui.Controls.Anima
 
 - When using child animations, the `finished` callback on a child animation indicates when the child has completed, and the `finished` callback passed to the <xref:Microsoft.Maui.Controls.Animation.Commit%2A> method indicates when the entire animation has completed.
 - When using child animations, returning `true` from the `repeat` callback on the <xref:Microsoft.Maui.Controls.Animation.Commit%2A> method will not cause the animation to repeat, but the animation will continue to run without new values.
-- When including an easing function in the <xref:Microsoft.Maui.Controls.Animation.Commit%2A> method, and the easing function returns a value greater than 1, the animation will be terminated. If the easing function returns a value less than 0, the value is clamped to 0. To use an easing function that returns a value less than 0 or greater than 1, it must specified in one of the child animations, rather than in the <xref:Microsoft.Maui.Controls.Animation.Commit%2A> method.
+- When including an easing function in the <xref:Microsoft.Maui.Controls.Animation.Commit%2A> method, and the easing function returns a value greater than 1, the animation will be terminated. If the easing function returns a value less than 0, the value is clamped to 0. To use an easing function that returns a value less than 0 or greater than 1, it must be specified in one of the child animations, rather than in the <xref:Microsoft.Maui.Controls.Animation.Commit%2A> method.
 
 The <xref:Microsoft.Maui.Controls.Animation> class also includes <xref:Microsoft.Maui.Controls.Animation.WithConcurrent%2A> methods that can be used to add child animations to a parent <xref:Microsoft.Maui.Controls.Animation> object. However, their `begin` and `finish` argument values aren't restricted to 0 to 1, but only that part of the child animation that corresponds to a range of 0 to 1 will be active. For example, if a <xref:Microsoft.Maui.Controls.Animation.WithConcurrent%2A> method call defines a child animation that targets a <xref:Microsoft.Maui.Controls.VisualElement.Scale> property from 1 to 6, but with `begin` and `finish` values of -2 and 3, the `begin` value of -2 corresponds to a <xref:Microsoft.Maui.Controls.VisualElement.Scale> value of 1, and the `finish` value of 3 corresponds to a <xref:Microsoft.Maui.Controls.VisualElement.Scale> value of 6. Because values outside the range of 0 and 1 play no part in an animation, the <xref:Microsoft.Maui.Controls.VisualElement.Scale> property will only be animated from 3 to 6.
 

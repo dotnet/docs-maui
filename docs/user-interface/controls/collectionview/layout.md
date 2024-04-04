@@ -118,6 +118,8 @@ This results in a single column list, which grows vertically as new items are ad
 
 :::image type="content" source="media/layout/vertical-list.png" alt-text="Screenshot of CollectionView vertical list layout.":::
 
+[!INCLUDE [CollectionView scrolling tip](includes/scrolling-tip.md)]
+
 ## Horizontal list
 
 In XAML, a <xref:Microsoft.Maui.Controls.CollectionView> can display its items in a horizontal list by setting its `ItemsLayout` property to `HorizontalList`:
@@ -581,11 +583,11 @@ The `OnImageTapped` event handler is executed in response to an <xref:Microsoft.
              x:Class="CollectionViewDemos.Views.VerticalListFlowDirectionPage"
              Title="Vertical list (RTL FlowDirection)"
              FlowDirection="RightToLeft">
-    <StackLayout Margin="20">
+    <Grid Margin="20">
         <CollectionView ItemsSource="{Binding Monkeys}">
             ...
         </CollectionView>
-    </StackLayout>
+    </Grid>
 </ContentPage>
 ```
 
@@ -593,4 +595,4 @@ The default `FlowDirection` for an element with a parent is `MatchParent`. There
 
 :::image type="content" source="media/layout/vertical-list-rtl.png" alt-text="Screenshot of a CollectionView right-to-left vertical list layout.":::
 
-<!-- For more information about flow direction, see [Right-to-left localization](~/xamarin-forms/app-fundamentals/localization/right-to-left.md). -->
+For more information about flow direction, see [Right to left localization](~/fundamentals/localization.md#right-to-left-localization).

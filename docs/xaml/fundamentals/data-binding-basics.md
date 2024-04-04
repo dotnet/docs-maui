@@ -53,9 +53,9 @@ The following example contains a <xref:Microsoft.Maui.Controls.Slider> and two <
 </ContentPage>
 ```
 
-The <xref:Microsoft.Maui.Controls.Slider> contains an `x:Name` attribute that is referenced by the two <xref:Microsoft.Maui.Controls.Label> views using the `x:Reference` markup extension. The `x:Reference` binding extension defines a property named `Name` to set to the name of the referenced element, in this case `slider`. However, the `ReferenceExtension` class that defines the `x:Reference` markup extension also defines a `ContentProperty` attribute for `Name`, which means that it isn’t explicitly required.
+The <xref:Microsoft.Maui.Controls.Slider> contains an `x:Name` attribute that is referenced by the two <xref:Microsoft.Maui.Controls.Label> views using the `x:Reference` markup extension. The `x:Reference` binding extension defines a property named `Name` to set to the name of the referenced element, in this case `slider`. However, the `ReferenceExtension` class that defines the `x:Reference` markup extension also defines a [`ContentProperty`](xref:Microsoft.Maui.Controls.ContentPropertyAttribute) attribute for `Name`, which means that it isn’t explicitly required.
 
-The `Binding` markup extension itself can have several properties, just like the `BindingBase` and `Binding` class. The `ContentProperty` for `Binding` is `Path`, but the “Path=” part of the markup extension can be omitted if the path is the first item in the `Binding` markup extension.
+The `Binding` markup extension itself can have several properties, just like the `BindingBase` and `Binding` class. The [`ContentProperty`](xref:Microsoft.Maui.Controls.ContentPropertyAttribute) for `Binding` is `Path`, but the “Path=” part of the markup extension can be omitted if the path is the first item in the `Binding` markup extension.
 
 The second `Binding` markup extension sets the `StringFormat` property. In .NET MAUI, bindings do not perform any implicit type conversions, and if you need to display a non-string object as a string you must provide a type converter or use `StringFormat`.
 
@@ -385,7 +385,7 @@ The item template dsplays the color, its friendly name, and its RGB values:
 
 :::image type="content" source="media/data-binding-basics/listview3.png" alt-text="Binding to a collection with a DataTemplate and a converter.":::
 
-The <xref:Microsoft.Maui.Controls.ListView> can handle changes that dynamically occur in the underlying data, but only if you take certain steps. If the collection of items assigned to the `ItemsSource` property of the <xref:Microsoft.Maui.Controls.ListView> changes during runtime, use an `ObservableCollection` class for these items. `ObservableCollection` implements the `INotifyCollectionChanged` interface, and <xref:Microsoft.Maui.Controls.ListView> will install a handler for the `CollectionChanged` event.
+The <xref:Microsoft.Maui.Controls.ListView> can handle changes that dynamically occur in the underlying data, but only if you take certain steps. If the collection of items assigned to the `ItemsSource` property of the <xref:Microsoft.Maui.Controls.ListView> changes during runtime, use an <xref:System.Collections.ObjectModel.ObservableCollection`1> class for these items. <xref:System.Collections.ObjectModel.ObservableCollection`1> implements the `INotifyCollectionChanged` interface, and <xref:Microsoft.Maui.Controls.ListView> will install a handler for the `CollectionChanged` event.
 
 If properties of the items themselves change during runtime, then the items in the collection should implement the `INotifyPropertyChanged` interface and signal changes to property values using the `PropertyChanged` event.
 

@@ -41,7 +41,7 @@ namespace MyMauiApp
 
 The `Draw` method has <xref:Microsoft.Maui.Graphics.ICanvas> and `RectF` arguments. The <xref:Microsoft.Maui.Graphics.ICanvas> argument is the drawing canvas on which you draw graphical objects. The `RectF` argument is a `struct` that contains data about the size and location of the drawing canvas. For more information about drawing on an <xref:Microsoft.Maui.Graphics.ICanvas>, see [Draw graphical objects](~/user-interface/graphics/draw.md).
 
-In XAML, the `IDrawable` object should be declared as a resource, and then consumed by a <xref:Microsoft.Maui.Controls.GraphicsView> by specifying its key:
+In XAML, the `IDrawable` object can be declared as a resource and then consumed by a <xref:Microsoft.Maui.Controls.GraphicsView> by specifying its key as the value of the `Drawable` property:
 
 ```xaml
 <ContentPage xmlns=http://schemas.microsoft.com/dotnet/2021/maui
@@ -90,7 +90,8 @@ graphicsView.Invalidate();
 
 .NET MAUI automatically invalidates the <xref:Microsoft.Maui.Controls.GraphicsView> as needed by the UI. For example, when the element is first shown, comes into view, or is revealed by moving an element from on top of it, it's redrawn. The only time you need to call `Invalidate` is when you want to force the <xref:Microsoft.Maui.Controls.GraphicsView> to redraw itself, such as if you have changed its content while it's still visible.
 
-<!--
+<!-- TODO: Not currently supported
+
 ## Convert the drawable to an image
 
 Graphical objects that are drawn on a <xref:Microsoft.Maui.Controls.GraphicsView> can be converted to an image by the `ToImage` method, which is available in the <xref:Microsoft.Maui.Graphics> namespace. This method requires `width` and `height` arguments, of type `float`, that specify the dimensions of the image.

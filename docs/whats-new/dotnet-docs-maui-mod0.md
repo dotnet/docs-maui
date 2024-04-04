@@ -1,18 +1,13 @@
 ---
-title: ".NET Multi-platform App UI (.NET MAUI) docs: What's new for March 2023"
-description: "What's new in the .NET Multi-platform App UI (.NET MAUI) docs for March 2023."
-ms.date: 04/03/2023
+title: ".NET Multi-platform App UI (.NET MAUI) docs: What's new for March 2024"
+description: "What's new in the .NET Multi-platform App UI (.NET MAUI) docs for March 2024."
+ms.custom: March-2024
+ms.date: 04/02/2024
 ---
 
-# .NET Multi-platform App UI (.NET MAUI) docs: What's new for March 2023
+# .NET Multi-platform App UI (.NET MAUI) docs: What's new for March 2024
 
-Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for March 2023. This article lists some of the major changes to docs during this period.
-
-## Android
-
-### New articles
-
-- [Android app manifest](../android/manifest.md)
+Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for March 2024. This article lists some of the major changes to docs during this period.
 
 ## Home
 
@@ -20,45 +15,63 @@ Welcome to what's new in the .NET Multi-platform App UI (.NET MAUI) docs for Mar
 
 - [Troubleshooting known issues](../troubleshooting.md)
 
-## iOS
+## Tutorials
 
 ### Updated articles
 
-- [Build an iOS app with .NET CLI](../ios/cli.md)
+- [Create a .NET MAUI app](../tutorials/notes-app/index.yml)
+- [Upgrade an app with MVVM principles](../tutorials/notes-mvvm/index.yml)
 
-## Mac Catalyst
-
-### New articles
-
-- [Mac Catalyst capabilities](../mac-catalyst/capabilities.md)
-- [Mac Catalyst entitlements](../mac-catalyst/entitlements.md)
-- [Specify the UI idiom for your Mac Catalyst app](../mac-catalyst/user-interface-idiom.md)
-- [Publish a .NET MAUI Mac Catalyst app](../mac-catalyst/deployment/index.md)
-- [Publish a Mac Catalyst app for ad-hoc distribution](../mac-catalyst/deployment/publish-ad-hoc.md)
-- [Publish a Mac Catalyst app for Mac App Store distribution](../mac-catalyst/deployment/publish-app-store.md)
-- [Publish a Mac Catalyst app for distribution outside the Mac App Store](../mac-catalyst/deployment/publish-outside-app-store.md)
-- [Publish an unsigned .NET MAUI Mac Catalyst app](../mac-catalyst/deployment/publish-unsigned.md)
-
-## Migration from Xamarin.Forms
+## Data & cloud services
 
 ### New articles
 
-- [Migrate Xamarin.Essentials code in .NET for Android and .NET for iOS apps](../migration/native-essentials.md)
-
-### Updated articles
-
-- [Manually upgrade a Xamarin.Forms app to .NET MAUI](../migration/forms-projects.md)
+- AI
+  - [ChatGPT](/windows/apps/windows-dotnet-maui/tutorial-maui-ai?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - [DALL-E](/windows/apps/windows-dotnet-maui/dall-e-maui-windows?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+- Authentication
+  - [Microsoft Authentication Library](/entra/msal/dotnet?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - [Prepare tenant](/entra/external-id/customers/tutorial-mobile-app-maui-sign-in-prepare-tenant?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - [Create a Shell app](/entra/external-id/customers/tutorial-mobile-app-maui-sign-in-prepare-app?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - [Sign in and sign out](/entra/external-id/customers/tutorial-mobile-app-maui-sign-in-sign-out?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - [Role-based access control](/entra/external-id/customers/tutorial-mobile-maui-role-based-access-control?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+- Azure Mobile Apps
+  - [Overview](/azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - [Authentication](/azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui/authentication?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+  - [Offline sync](/azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui/offline?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+- [Graph SDK](/windows/apps/windows-dotnet-maui/tutorial-graph-api?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
 
 ## Platform integration
 
+### Updated articles
+
+- [Native embedding](../platform-integration/native-embedding.md)
+
+## iOS
+
 ### New articles
 
-- [Platform helpers](../platform-integration/platform-helpers.md)
+- [Apple privacy manifest](../ios/privacy-manifest.md)
+
+## iOS and Mac Catalyst
+
+### Updated articles
+
+- [Apple universal links](../macios/universal-links.md)
+
+## User interface
+
+### New articles
+
+- [C# markup](/windows/apps/windows-dotnet-maui/tutorial-csharp-ui-maui-toolkit?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json)
+
+### Updated articles
+
+- [Visual states](../user-interface/visual-states.md)
 
 ## Community contributors
 
 The following people contributed to the .NET Multi-platform App UI (.NET MAUI) docs during this period. Thank you! Learn how to contribute by following the links under "Get involved" in the [what's new landing page](index.yml).
 
-- [mdelez](https://github.com/mdelez) - Mike Delez (1)
-- [moosahassanx](https://github.com/moosahassanx) - Moosa Hassan (1)
-- [omkelderman](https://github.com/omkelderman) - Olle Kelderman (1)
+- [pictos](https://github.com/pictos) - Pedro Jesus ![1 pull requests.](https://img.shields.io/badge/Merged%20Pull%20Requests-1-green)
+- [TrueMoniker](https://github.com/TrueMoniker) -  ![1 pull requests.](https://img.shields.io/badge/Merged%20Pull%20Requests-1-green)

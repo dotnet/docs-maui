@@ -24,9 +24,9 @@ The following table lists the graphics abstractions that are supported on each p
 | Platform | Graphics abstractions |
 | -- | -- |
 | .NET MAUI | Platform support as shown per platform below. |
-| .NET for iOS | CoreGraphics, SkiaSharp |
-| .NET for Android | Android.Graphics, SkiaSharp |
-| .NET for macOS | CoreGraphics, SkiaSharp |
+| .NET iOS | CoreGraphics, SkiaSharp |
+| .NET Android | Android.Graphics, SkiaSharp |
+| .NET macOS | CoreGraphics, SkiaSharp |
 | Windows Presentation Foundation | SharpDX, XAML, GDI, SkiaSharp |
 | Universal Windows Platform | SharpDX, Win2D, XAML, SkiaSharp |
 | Windows Forms | SharpDX, GDI, SkiaSharp |
@@ -35,9 +35,48 @@ The following table lists the graphics abstractions that are supported on each p
 
 By default, .NET MAUI uses the native graphics capabilities of each platform. -->
 
+## Draw graphics
+
+In .NET MAUI, the <xref:Microsoft.Maui.Controls.GraphicsView> enables consumption of <xref:Microsoft.Maui.Graphics> functionality. <xref:Microsoft.Maui.Controls.GraphicsView> defines the `Drawable` property, of type `IDrawable`, which specifies the content that will be drawn by the control. To specify the content that will be drawn you must create an object that derives from `IDrawable`, and implement its `Draw` method:
+
+```csharp
+namespace MyMauiApp
+{
+    public class GraphicsDrawable : IDrawable
+    {
+        public void Draw(ICanvas canvas, RectF dirtyRect)
+        {
+            // Drawing code goes here
+        }      
+    }
+}
+```
+
+The `Draw` method has <xref:Microsoft.Maui.Graphics.ICanvas> and `RectF` arguments. The <xref:Microsoft.Maui.Graphics.ICanvas> argument is the drawing canvas on which you draw graphical objects. The `RectF` argument is a `struct` that contains data about the size and location of the drawing canvas.
+
+In XAML, the `IDrawable` object can be declared as a resource and then consumed by a <xref:Microsoft.Maui.Controls.GraphicsView> by specifying its key as the value of the `Drawable` property:
+
+```xaml
+<ContentPage xmlns=http://schemas.microsoft.com/dotnet/2021/maui
+             xmlns:x=http://schemas.microsoft.com/winfx/2009/xaml
+             xmlns:drawable="clr-namespace:MyMauiApp"
+             x:Class="MyMauiApp.MainPage">
+    <ContentPage.Resources>
+        <drawable:GraphicsDrawable x:Key="drawable" />
+    </ContentPage.Resources>
+    <VerticalStackLayout>
+        <GraphicsView Drawable="{StaticResource drawable}"
+                      HeightRequest="300"
+                      WidthRequest="400" />
+    </VerticalStackLayout>
+</ContentPage>
+```
+
+For more information about the <xref:Microsoft.Maui.Controls.GraphicsView>, see [GraphicsView](~/user-interface/controls/graphicsview.md).
+
 ## Drawing canvas
 
-In .NET MAUI, the <xref:Microsoft.Maui.Controls.GraphicsView> enables consumption of the <xref:Microsoft.Maui.Graphics> functionality, via a drawing canvas that's exposed as an <xref:Microsoft.Maui.Graphics.ICanvas> object. For more information about the <xref:Microsoft.Maui.Controls.GraphicsView>, see [GraphicsView](~/user-interface/controls/graphicsview.md).
+The <xref:Microsoft.Maui.Controls.GraphicsView> control provides access to an <xref:Microsoft.Maui.Graphics.ICanvas> object, via its `IDrawable` object, on which properties can be set and methods invoked to draw graphical objects. For information about drawing on an <xref:Microsoft.Maui.Graphics.ICanvas>, see [Draw graphical objects](draw.md).
 
 <xref:Microsoft.Maui.Graphics.ICanvas> defines the following properties that affect the appearance of objects that are drawn on the canvas:
 

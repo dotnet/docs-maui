@@ -18,7 +18,7 @@ Classes that derive from <xref:Microsoft.Maui.Controls.GradientBrush> describe d
 The <xref:Microsoft.Maui.Controls.GradientBrush> class defines the <xref:Microsoft.Maui.Controls.GradientBrush.GradientStops> property, of type <xref:Microsoft.Maui.Controls.GradientStopCollection>, which represents the brush's gradient stops, each of which specifies a color and an offset along the brush's gradient axis. A <xref:Microsoft.Maui.Controls.GradientStopCollection> is an `ObservableCollection` of <xref:Microsoft.Maui.Controls.GradientStop> objects. The <xref:Microsoft.Maui.Controls.GradientBrush.GradientStops> property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means that it can be the target of data bindings, and styled.
 
 > [!NOTE]
-> The <xref:Microsoft.Maui.Controls.GradientBrush.GradientStops> property is the `ContentProperty` of the <xref:Microsoft.Maui.Controls.GradientBrush> class, and so does not need to be explicitly set from XAML.
+> The <xref:Microsoft.Maui.Controls.GradientBrush.GradientStops> property is the [`ContentProperty`](xref:Microsoft.Maui.Controls.ContentPropertyAttribute) of the <xref:Microsoft.Maui.Controls.GradientBrush> class, and so does not need to be explicitly set from XAML.
 
 ## Gradient stops
 

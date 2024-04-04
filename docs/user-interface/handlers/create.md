@@ -14,13 +14,6 @@ A standard requirement for apps is the ability to play videos. This article exam
 - A resource, which is a file embedded in the app.
 - A file, from the device's video library.
 
-::: moniker range="=net-maui-6.0"
-
-> [!IMPORTANT]
-> The Windows App SDK v1.2 includes a control to play video. However, .NET MAUI 6.0 uses an earlier of this SDK. Therefore, to play video on Windows from a .NET MAUI 6.0 app requires you to add the Windows App SDK v1.2 to your app project with the NuGet package manager. Alternatively, use .NET MAUI 7.0 which automatically uses the Windows App SDK v1.2.
-
-::: moniker-end
-
 Video controls require *transport controls*, which are buttons for playing and pausing the video, and a positioning bar that shows the progress through the video and allows the user to move quickly to a different location. The `Video` control can either use the transport controls and positioning bar provided by the platform, or you can supply custom transport controls and a positioning bar. The following screenshots show the control on iOS, with and without custom transport controls:
 
 :::image type="content" source="media/create/play-video.png" alt-text="Screenshot of video playback on iOS."::: :::image type="content" source="media/create/custom-transport-controls.png" alt-text="Screenshot of video playback using custom transport controls on iOS.":::
@@ -213,19 +206,17 @@ The sample app is configured to support filename-based multi-targeting, so that 
 
 The `VideoHandler` class containing the mappers is named *VideoHandler.cs*. Its platform implementations are in the *VideoHandler.Android.cs*, *VideoHandler.MaciOS.cs*, and *VideoHandler.Windows.cs* files. This filename-based multi-targeting is configured by adding the following XML to the project file, as children of the `<Project>` node:
 
-::: moniker range="=net-maui-6.0"
-
 ```xml
 <!-- Android -->
-<ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-android')) != true">
-  <Compile Remove="**\**\*.Android.cs" />
-  <None Include="**\**\*.Android.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+<ItemGroup Condition="$(TargetFramework.StartsWith('net8.0-android')) != true">
+  <Compile Remove="**\*.Android.cs" />
+  <None Include="**\*.Android.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 </ItemGroup>
 
 <!-- iOS and Mac Catalyst -->
-<ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-ios')) != true AND $(TargetFramework.StartsWith('net6.0-maccatalyst')) != true">
-  <Compile Remove="**\**\*.MaciOS.cs" />
-  <None Include="**\**\*.MaciOS.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+<ItemGroup Condition="$(TargetFramework.StartsWith('net8.0-ios')) != true AND $(TargetFramework.StartsWith('net8.0-maccatalyst')) != true">
+  <Compile Remove="**\*.MaciOS.cs" />
+  <None Include="**\*.MaciOS.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 </ItemGroup>
 
 <!-- Windows -->
@@ -234,32 +225,6 @@ The `VideoHandler` class containing the mappers is named *VideoHandler.cs*. Its 
   <None Include="**\*.Windows.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 </ItemGroup>
 ```
-
-::: moniker-end
-
-::: moniker range="=net-maui-7.0"
-
-```xml
-<!-- Android -->
-<ItemGroup Condition="$(TargetFramework.StartsWith('net7.0-android')) != true">
-  <Compile Remove="**\**\*.Android.cs" />
-  <None Include="**\**\*.Android.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
-</ItemGroup>
-
-<!-- iOS and Mac Catalyst -->
-<ItemGroup Condition="$(TargetFramework.StartsWith('net7.0-ios')) != true AND $(TargetFramework.StartsWith('net7.0-maccatalyst')) != true">
-  <Compile Remove="**\**\*.MaciOS.cs" />
-  <None Include="**\**\*.MaciOS.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
-</ItemGroup>
-
-<!-- Windows -->
-<ItemGroup Condition="$(TargetFramework.Contains('-windows')) != true ">
-  <Compile Remove="**\*.Windows.cs" />
-  <None Include="**\*.Windows.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
-</ItemGroup>
-```
-
-::: moniker-end
 
 For more information about configuring multi-targeting, see [Configure multi-targeting](~/platform-integration/configure-multi-targeting.md).
 

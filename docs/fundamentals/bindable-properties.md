@@ -1,7 +1,7 @@
 ---
-title: "Bindable Properties"
+title: "Bindable properties"
 description: ".NET MAUI bindable properties provide a property system that supports data binding, styles, tempaltes, and values set through parent-child relationships."
-ms.date: 01/24/2022
+ms.date: 10/05/2023
 ---
 
 # Bindable properties
@@ -10,7 +10,7 @@ ms.date: 01/24/2022
 
 In .NET MAUI apps, properties should be implemented as bindable properties to support one or more of the following features:
 
-- Acting as a valid *target* property for data binding.
+- Acting as a valid *target* property for data binding. For more information about target properties, see [Basic bindings](~/fundamentals/data-binding/basic-bindings.md).
 - Setting the property through a style.
 - Providing a default property value that's different from the default for the type of the property.
 - Validating the value of the property.
@@ -25,7 +25,7 @@ The process for creating a bindable property is as follows:
 1. Create a <xref:Microsoft.Maui.Controls.BindableProperty> instance with one of the `BindableProperty.Create` method overloads.
 1. Define property accessors for the <xref:Microsoft.Maui.Controls.BindableProperty> instance.
 
-All <xref:Microsoft.Maui.Controls.BindableProperty> instances must be created on the UI thread. This means that only code that runs on the UI thread can get or set the value of a bindable property. However, <xref:Microsoft.Maui.Controls.BindableProperty> instances can be accessed from other threads by marshaling to the UI thread. <!-- with the `Device.BeginInvokeOnMainThread` method.-->
+All <xref:Microsoft.Maui.Controls.BindableProperty> instances must be created on the UI thread. This means that only code that runs on the UI thread can get or set the value of a bindable property. However, <xref:Microsoft.Maui.Controls.BindableProperty> instances can be accessed from other threads by marshaling to the UI thread. For more information, see [Run code on the UI thread](~/platform-integration/appmodel/main-thread.md#run-code-on-the-ui-thread).
 
 ### Create a property
 
@@ -54,7 +54,7 @@ This creates a <xref:Microsoft.Maui.Controls.BindableProperty> instance named `I
 
 Optionally, when creating a <xref:Microsoft.Maui.Controls.BindableProperty> instance, the following parameters can be specified:
 
-- The binding mode. This is used to specify the direction in which property value changes will propagate. In the default binding mode, changes will propagate from the *source* to the *target*.
+- The binding mode. This is used to specify the direction in which property value changes will propagate. In the default binding mode, changes will propagate from the *source* to the *target*. For more information, see [Basic bindings](~/fundamentals/data-binding/basic-bindings.md).
 - A validation delegate that will be invoked when the property value is set. For more information, see [Validation callbacks](#validation-callbacks).
 - A property changed delegate that will be invoked when the property value has changed. For more information, see [Detect property changes](#detect-property-changes).
 - A property changing delegate that will be invoked when the property value will change. This delegate has the same signature as the property changed delegate.
@@ -110,7 +110,7 @@ When creating a <xref:Microsoft.Maui.Controls.BindableProperty> instance, there 
 
 ### Detect property changes
 
-A `static` property-changed callback method can be registered with a bindable property by specifying the `propertyChanged` parameter for the `BindableProperty.Create` method. The specified callback method will be invoked when the value of the bindable property changes.
+A `static` property-changed callback method can be registered with a bindable property by specifying the `propertyChanged` parameter for the `BindableProperty.Create` method. The specified callback method will be invoked when the value of the bindable property has changed.
 
 The following code example shows how the `IsExpanded` bindable property registers the `OnIsExpandedChanged` method as a property-changed callback method:
 
@@ -150,12 +150,12 @@ Validation callbacks are provided with a value, and should return `true` if the 
 
 ### Coerce value callbacks
 
-A `static` coerce value callback method can be registered with a bindable property by specifying the `coerceValue` parameter for the `BindableProperty.Create` method. The specified callback method will be invoked when the value of the bindable property changes.
+A `static` coerce value callback method can be registered with a bindable property by specifying the `coerceValue` parameter for the `BindableProperty.Create` method. The specified callback method will be invoked when the value of the bindable property is about to change, so that you can adjust the new value before it's applied.
 
 > [!IMPORTANT]
-> The <xref:Microsoft.Maui.Controls.BindableObject> type has a `CoerceValue` method that can be called to force a reevaluation of the value of its <xref:Microsoft.Maui.Controls.BindableProperty> argument, by invoking its coerce value callback.
+> In addition to being triggered by the bindable property engine, you can invoke coerce-value callbacks from code. The <xref:Microsoft.Maui.Controls.BindableObject> type has a `CoerceValue` method that can be called to force a reevaluation of the value of its <xref:Microsoft.Maui.Controls.BindableProperty> argument, by invoking its coerce value callback.
 
-Coerce value callbacks are used to force a reevaluation of a bindable property when the value of the property changes. For example, a coerce value callback can be used to ensure that the value of one bindable property is not greater than the value of another bindable property.
+Coerce value callbacks are used to force a reevaluation of a bindable property when the value of the property is about to change. For example, a coerce value callback can be used to ensure that the value of one bindable property is not greater than the value of another bindable property.
 
 The following code example shows how the `Angle` bindable property registers the `CoerceAngle` method as a coerce value callback method:
 

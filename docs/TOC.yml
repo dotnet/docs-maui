@@ -17,6 +17,8 @@
           items:
             - name: Emulator
               items:
+                - name: Overview
+                  href: android/emulator/index.md
                 - name: How to enable hardware acceleration
                   href: android/emulator/hardware-acceleration.md
                 - name: Manage and create virtual devices
@@ -25,6 +27,8 @@
                   href: android/emulator/device-properties.md
                 - name: Debug on a virtual device
                   href: android/emulator/debug-on-emulator.md
+                - name: Connect to an emulator from a Windows VM
+                  href: android/emulator/mac-with-windows-vm.md
                 - name: Troubleshoot common problems
                   href: android/emulator/troubleshooting.md
             - name: Devices
@@ -55,24 +59,46 @@
           items:
             - name: Upgrade Xamarin native projects
               href: migration/native-projects.md
-            - name: Android project migration
-              href: migration/android-projects.md
-            - name: Apple project migration
-              href: migration/apple-projects.md
+            - name: Android projects
+              items:
+                - name: Android project migration
+                  href: migration/android-projects.md
+                - name: Android binding project migration
+                  href: migration/android-binding-projects.md
+            - name: Apple projects
+              items:
+                - name: Apple project migration
+                  href: migration/apple-projects.md
+                - name: iOS binding project migration
+                  href: migration/ios-binding-projects.md
             - name: Xamarin.Essentials migration
               href: migration/native-essentials.md
         - name: Xamarin.Forms projects
           items:
             - name: Upgrade with the .NET Upgrade Assistant
               href: migration/upgrade-assistant.md
-            - name: Upgrade manually
-              href: migration/forms-projects.md
+            - name: Upgrade manually to a multi-project app
+              href: migration/multi-project-to-multi-project.md
+            - name: Upgrade manually to a single project app
+              href: migration/multi-project-to-single-project.md
+            - name: UWP project migration
+              href: migration/uwp-projects.md
             - name: Layout behavior changes
               href: migration/layouts.md
-            - name: Custom renderers
+            - name: Reuse custom renderers
               href: migration/custom-renderers.md
-            - name: Effects
+            - name: Migrate custom renderers
+              href: migration/renderer-to-handler.md
+            - name: Reuse effects
               href: migration/effects.md
+            - name: Reuse SkiaSharp code
+              href: migration/skiasharp.md
+            - name: Migrate app properties data
+              href: migration/app-properties.md
+            - name: Migrate secure storage data
+              href: migration/secure-storage.md
+            - name: Migrate version tracking data
+              href: migration/version-tracking.md
     - name: Tutorials
       items:
         - name: Create a .NET MAUI app
@@ -97,6 +123,8 @@
               href: xaml/fundamentals/mvvm.md
         - name: Compilation
           href: xaml/xamlc.md
+        - name: Class modifiers
+          href: xaml/class-modifiers.md
         - name: Field modifiers
           href: xaml/field-modifiers.md
         - name: Generics
@@ -155,6 +183,8 @@
               href: fundamentals/data-binding/commanding.md
             - name: Compiled bindings
               href: fundamentals/data-binding/compiled-bindings.md
+        - name: Dependency injection
+          href: fundamentals/dependency-injection.md
         - name: Gestures
           items:
             - name: Drag and drop
@@ -169,6 +199,8 @@
               href: fundamentals/gestures/swipe.md
             - name: Tap
               href: fundamentals/gestures/tap.md
+        - name: Localization
+          href: fundamentals/localization.md
         - name: Properties
           items:
             - name: Bindable properties
@@ -265,6 +297,8 @@
                   href: user-interface/layouts/stacklayout.md
                 - name: VerticalStackLayout
                   href: user-interface/layouts/verticalstacklayout.md
+                - name: Custom layouts
+                  href: user-interface/layouts/custom.md
             - name: Pages
               items:
                 - name: ContentPage
@@ -409,8 +443,12 @@
                   href: user-interface/controls/contentview.md
                 - name: TwoPaneView
                   href: user-interface/controls/twopaneview.md
+        - name: C# markup
+          href: /windows/apps/windows-dotnet-maui/tutorial-csharp-ui-maui-toolkit?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
         - name: Display pop-ups
           href: user-interface/pop-ups.md
+        - name: Display toolbar items
+          href: user-interface/toolbaritem.md
         - name: Display tooltips
           href: user-interface/tooltips.md
         - name: Fonts
@@ -447,6 +485,10 @@
               href: user-interface/context-menu.md
             - name: Display a menu bar
               href: user-interface/menu-bar.md
+            - name: Display menu items
+              href: user-interface/menuitem.md
+            - name: Keyboard accelerators
+              href: user-interface/keyboard-accelerators.md
         - name: Shadows
           href: user-interface/shadow.md
         - name: Styles
@@ -471,18 +513,34 @@
       items:
         - name: Android
           items:
+            - name: App links
+              href: android/app-links.md
             - name: App manifest
               href: android/manifest.md
+            - name: Internals
+              items:
+                - name: Java and managed code interoperability
+                  href: android/internals/java-interop.md
+            - name: Linking
+              href: android/linking.md
         - name: iOS
           items:
             - name: Apple account management
               href: ios/apple-account-management.md
+            - name: Apple privacy manifest
+              href: ios/privacy-manifest.md
             - name: Code signing and provisioning
               items:
                 - name: Capabilities
                   href: ios/capabilities.md
                 - name: Entitlements
                   href: ios/entitlements.md
+            - name: Information property list
+              href: macios/info-plist.md
+            - name: Linking
+              href: ios/linking.md
+            - name: Mono interpreter
+              href: macios/interpreter.md
             - name: Set up device for development
               items:
                 - name: Overview
@@ -491,6 +549,8 @@
                   href: ios/device-provisioning/automatic-provisioning.md
                 - name: Manual provisioning
                   href: ios/device-provisioning/manual-provisioning.md
+            - name: Universal links
+              href: macios/universal-links.md
         - name: Mac Catalyst
           items:
             - name: Code signing and provisioning
@@ -499,8 +559,16 @@
                   href: mac-catalyst/capabilities.md
                 - name: Entitlements
                   href: mac-catalyst/entitlements.md
+            - name: Information property list
+              href: macios/info-plist.md
+            - name: Linking
+              href: mac-catalyst/linking.md
+            - name: Mono interpreter
+              href: macios/interpreter.md
             - name: Specify the UI idiom
               href: mac-catalyst/user-interface-idiom.md
+            - name: Universal links
+              href: macios/universal-links.md
         - name: Platform integration
           items:
             - name: Overview
@@ -672,12 +740,42 @@
               href: platform-integration/platform-helpers.md
         - name: Configure multi-targeting
           href: platform-integration/configure-multi-targeting.md
+        - name: Customize UI appearance
+          href: platform-integration/customize-ui-appearance.md
         - name: Invoke platform code
           href: platform-integration/invoke-platform-code.md
         - name: Native embedding
           href: platform-integration/native-embedding.md
     - name: Data & cloud services
       items:
+        - name: AI
+          items:
+            - name: ChatGPT
+              href: /windows/apps/windows-dotnet-maui/tutorial-maui-ai?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+            - name: DALL-E
+              href: /windows/apps/windows-dotnet-maui/dall-e-maui-windows?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Authentication
+          items:
+            - name: Microsoft Authentication Library
+              href: /entra/msal/dotnet?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+            - name: Prepare tenant
+              href: /entra/external-id/customers/tutorial-mobile-app-maui-sign-in-prepare-tenant?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+            - name: Create a Shell app
+              href: /entra/external-id/customers/tutorial-mobile-app-maui-sign-in-prepare-app?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+            - name: Sign in and sign out
+              href: /entra/external-id/customers/tutorial-mobile-app-maui-sign-in-sign-out?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+            - name: Role-based access control
+              href: /entra/external-id/customers/tutorial-mobile-maui-role-based-access-control?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Azure Mobile Apps
+          items:
+            - name: Overview
+              href: /azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+            - name: Authentication
+              href: /azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui/authentication?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+            - name: Offline sync
+              href: /azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui/offline?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Graph SDK
+          href: /windows/apps/windows-dotnet-maui/tutorial-graph-api?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
         - name: Local databases
           href: data-cloud/database-sqlite.md
         - name: Web services
@@ -690,6 +788,8 @@
       items:
         - name: Overview
           href: deployment/index.md
+        - name: Improve app performance
+          href: deployment/performance.md
         - name: iOS
           items:
             - name: Hot restart
@@ -703,8 +803,12 @@
             - name: Android
               items:
                 - name: Overview
-                  href: android/deployment/overview.md
-                - name: Publish with the .NET CLI
+                  href: android/deployment/index.md
+                - name: Publish for Google Play distribution
+                  href: android/deployment/publish-google-play.md
+                - name: Publish for ad-hoc distribution
+                  href: android/deployment/publish-ad-hoc.md
+                - name: Publish using the command line
                   href: android/deployment/publish-cli.md
             - name: iOS
               items:
@@ -734,9 +838,41 @@
               items:
                 - name: Overview
                   href: windows/deployment/overview.md
-                - name: Publish with the .NET CLI
+                - name: Publish a packaged app with the .NET CLI
                   href: windows/deployment/publish-cli.md
+                - name: Publish an unpackaged app with the .NET CLI
+                  href: windows/deployment/publish-unpackaged-cli.md
                 - name: Publish with Visual Studio to a folder
                   href: windows/deployment/publish-visual-studio-folder.md
+    - name: Enterprise application patterns
+      items:
+        - name: Overview
+          href: /dotnet/architecture/maui?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Preface
+          href: /dotnet/architecture/maui/preface?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Introduction
+          href: /dotnet/architecture/maui/introduction?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Model-View-ViewModel pattern
+          href: /dotnet/architecture/maui/mvvm?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Dependency injection
+          href: /dotnet/architecture/maui/dependency-injection?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Communicating between components
+          href: /dotnet/architecture/maui/communicating-between-components?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Navigation
+          href: /dotnet/architecture/maui/navigation?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Validation
+          href: /dotnet/architecture/maui/validation?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Configuration management
+          href: /dotnet/architecture/maui/configuration-management?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Containerized microservices
+          href: /dotnet/architecture/maui/micro-services?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Accessing remote data
+          href: /dotnet/architecture/maui/accessing-remote-data?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Authentication and authorization
+          href: /dotnet/architecture/maui/authentication-and-authorization?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: MVVM community toolkit features
+          href: /dotnet/architecture/maui/mvvm-community-toolkit-features?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
+        - name: Unit testing
+          href: /dotnet/architecture/maui/unit-testing?toc=/dotnet/maui/toc.json&bc=/dotnet/maui/breadcrumb/toc.json
     - name: Troubleshooting
       href: troubleshooting.md

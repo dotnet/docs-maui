@@ -31,6 +31,8 @@ The animation extension methods in the <xref:Microsoft.Maui.Controls.ViewExtensi
 
 If there's a requirement to let an animation complete in the background, then the `await` operator can be omitted. In this scenario, the animation extension methods will quickly return after initiating the animation, with the animation occurring in the background. This operation can be taken advantage of when creating composite animations. For more information, see [Composite animations](#composite-animations).
 
+[!INCLUDE [Android animation system settings](../includes/animation-android.md)]
+
 ## Single animations
 
 Each extension method in the <xref:Microsoft.Maui.Controls.ViewExtensions> class implements a single animation operation that progressively changes a property from one value to another value over a period of time.

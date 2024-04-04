@@ -1,7 +1,6 @@
 ---
 title: "Map"
 description: "Learn how to use the Map control, which is a cross-platform view for displaying and annotating maps. The Map control is available in the Microsoft.Maui.Controls.Maps NuGet package."
-monikerRange: ">=net-maui-7.0"
 ms.date: 09/26/2022
 ---
 
@@ -12,7 +11,7 @@ ms.date: 09/26/2022
 The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Maps.Map> control is a cross-platform view for displaying and annotating maps. The <xref:Microsoft.Maui.Controls.Maps.Map> control uses the native map control on each platform, and is provided by the [Microsoft.Maui.Controls.Maps NuGet package](https://www.nuget.org/packages/Microsoft.Maui.Controls.Maps/).
 
 > [!IMPORTANT]
-> The <xref:Microsoft.Maui.Controls.Maps.Map> control isn't supported on Windows due to lack of a map control in WinUI. However, you can still launch the native map app from your .NET MAUI app on WinUI, to display a map at a specific location or to perform navigation. For more information, see [Launch the native map app](#launch-the-native-map-app).
+> The <xref:Microsoft.Maui.Controls.Maps.Map> control isn't supported on Windows due to lack of a map control in WinUI. However, the [CommunityToolkit.Maui.Maps](https://www.nuget.org/packages/CommunityToolkit.Maui.Maps) NuGet package provides access to Bing Maps through a `WebView` on Windows. For more information, see [Get started](/dotnet/communitytoolkit/maui/get-started?tabs=CommunityToolkitMauiMaps).
 
 ## Setup
 
@@ -129,14 +128,7 @@ A prompt is then displayed when your app attempts to access the user's location,
 
 :::image type="content" source="media/map/permission-android.png" lightbox="media/map/permission-android-large.png" alt-text="Screenshot of location permission request on Android.":::
 
-<!-- Alternatively, these permissions can be enabled by using the manifest editor to add the following permissions:
-
-- `AccessCoarseLocation`
-- `AccessFineLocation`
-
-These are shown in the screenshot below:
-
-![Required permissions for Android.](setup-images/android-map-permissions.png "Required Permissions for Android") -->
+Alternatively, these permissions can be enabled in Visual Studio's Android manifest editor.
 
 #### Specify the WRITE_EXTERNAL_STORAGE permission
 
@@ -174,6 +166,8 @@ For information about the `ItemsSource`, `ItemTemplate`, and `ItemTemplateSelect
 
 A <xref:Microsoft.Maui.Controls.Maps.Map> can be displayed by adding it to a layout or page:
 
+::: moniker range="=net-maui-7.0"
+
 ```xaml
 <ContentPage ...
              xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps">
@@ -183,6 +177,19 @@ A <xref:Microsoft.Maui.Controls.Maps.Map> can be displayed by adding it to a lay
 
 > [!NOTE]
 > In XAML, an `xmlns` namespace definition should be added for the <xref:Microsoft.Maui.Controls.Maps.Map> control. While this isn't required, it prevents a collision between the `Polygon` and `Polyline` types, which exist in both the <xref:Microsoft.Maui.Controls.Maps> and <xref:Microsoft.Maui.Controls.Shapes> namespaces.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-8.0"
+
+```xaml
+<ContentPage ...
+             xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps">
+    <maps:Map x:Name="map" />
+</ContentPage>
+```
+
+::: moniker-end
 
 The equivalent C# code is:
 
@@ -238,6 +245,8 @@ Map map = new Map
 
 The region of a map to display when a map is loaded can be set by passing a `MapSpan` argument to the <xref:Microsoft.Maui.Controls.Maps.Map> constructor:
 
+::: moniker range="=net-maui-7.0"
+
 ```xaml
 <ContentPage ...
              xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
@@ -260,6 +269,35 @@ The region of a map to display when a map is loaded can be set by passing a `Map
     </maps:Map>
 </ContentPage>
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-8.0"
+
+```xaml
+<ContentPage ...
+             xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
+             xmlns:sensors="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials">
+    <maps:Map>
+        <x:Arguments>
+            <maps:MapSpan>
+                <x:Arguments>
+                    <sensors:Location>
+                        <x:Arguments>
+                            <x:Double>36.9628066</x:Double>
+                            <x:Double>-122.0194722</x:Double>
+                        </x:Arguments>
+                    </sensors:Location>
+                    <x:Double>0.01</x:Double>
+                    <x:Double>0.01</x:Double>
+                </x:Arguments>
+            </maps:MapSpan>
+        </x:Arguments>
+    </maps:Map>
+</ContentPage>
+```
+
+::: moniker-end
 
 The equivalent C# code is:
 
@@ -513,6 +551,8 @@ In addition, the `Pin` class defines `MarkerClicked` and `InfoWindowClicked` eve
 
 A `Pin` can be added to a <xref:Microsoft.Maui.Controls.Maps.Map> in XAML:
 
+::: moniker range="=net-maui-7.0"
+
 ```xaml
 <ContentPage ...
              xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
@@ -549,6 +589,49 @@ A `Pin` can be added to a <xref:Microsoft.Maui.Controls.Maps.Map> in XAML:
     </maps:Map>
 </ContentPage>
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-8.0"
+
+```xaml
+<ContentPage ...
+             xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
+             xmlns:sensors="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials">
+    <maps:Map x:Name="map">
+        <x:Arguments>
+            <maps:MapSpan>
+                <x:Arguments>
+                    <sensors:Location>
+                        <x:Arguments>
+                            <x:Double>36.9628066</x:Double>
+                            <x:Double>-122.0194722</x:Double>
+                        </x:Arguments>
+                    </sensors:Location>
+                    <x:Double>0.01</x:Double>
+                    <x:Double>0.01</x:Double>
+                </x:Arguments>
+            </maps:MapSpan>
+        </x:Arguments>
+        <maps:Map.Pins>
+            <maps:Pin Label="Santa Cruz"
+                      Address="The city with a boardwalk"
+                      Type="Place">
+                <maps:Pin.Location>
+                    <sensors:Location>
+                        <x:Arguments>
+                            <x:Double>36.9628066</x:Double>
+                            <x:Double>-122.0194722</x:Double>
+                        </x:Arguments>
+                    </sensors:Location>
+                </maps:Pin.Location>
+            </maps:Pin>
+        </maps:Map.Pins>
+    </maps:Map>
+</ContentPage>
+```
+
+::: moniker-end
 
 This XAML creates a <xref:Microsoft.Maui.Controls.Maps.Map> object that shows the region that is specified by the `MapSpan` object. The `MapSpan` object is centered on the latitude and longitude represented by a `Location` object, which extends 0.01 latitude and longitude degrees. A `Pin` object is added to the `Map.Pins` collection, and drawn on the <xref:Microsoft.Maui.Controls.Maps.Map> at the location specified by its `Location` property. For information about the `Location` class, see [Location and distance](#location-and-distance). For information about passing arguments in XAML to objects that lack default constructors, see [Pass arguments in XAML](~/xaml/pass-arguments.md).
 
@@ -653,6 +736,8 @@ The <xref:Microsoft.Maui.Controls.Maps.Map> class defines the following bindable
 
 A <xref:Microsoft.Maui.Controls.Maps.Map> can be populated with pins by using data binding to bind its `ItemsSource` property to an `IEnumerable` collection:
 
+::: moniker range="=net-maui-7.0"
+
 ```xaml
 <ContentPage ...
              xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps">    
@@ -673,6 +758,32 @@ A <xref:Microsoft.Maui.Controls.Maps.Map> can be populated with pins by using da
 </ContentPage>
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-8.0"
+
+```xaml
+<ContentPage ...
+             xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps">    
+    <Grid>
+        ...
+        <maps:Map x:Name="map"
+                  ItemsSource="{Binding Positions}">
+            <maps:Map.ItemTemplate>
+                <DataTemplate>
+                    <maps:Pin Location="{Binding Location}"
+                              Address="{Binding Address}"
+                              Label="{Binding Description}" />
+                </DataTemplate>    
+            </maps:Map.ItemTemplate>
+        </maps:Map>
+        ...
+    </Grid>
+</ContentPage>
+```
+
+::: moniker-end
+
 The `ItemsSource` property data binds to the `Positions` property of the connected viewmodel, which returns an `ObservableCollection` of `Position` objects, which is a custom type. Each `Position` object defines `Address` and `Description` properties, of type `string`, and a `Location` property, of type `Location`.
 
 The appearance of each item in the `IEnumerable` collection is defined by setting the `ItemTemplate` property to a <xref:Microsoft.Maui.Controls.DataTemplate> that contains a `Pin` object that data binds to appropriate properties.
@@ -684,6 +795,8 @@ The following screenshot shows a <xref:Microsoft.Maui.Controls.Maps.Map> display
 #### Choose item appearance at runtime
 
 The appearance of each item in the `IEnumerable` collection can be chosen at runtime, based on the item value, by setting the `ItemTemplateSelector` property to a <xref:Microsoft.Maui.Controls.DataTemplateSelector>:
+
+::: moniker range="=net-maui-7.0"
 
 ```xaml
 <ContentPage ...
@@ -718,6 +831,45 @@ The appearance of each item in the `IEnumerable` collection can be chosen at run
 </ContentPage>
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-8.0"
+
+```xaml
+<ContentPage ...
+             xmlns:templates="clr-namespace:WorkingWithMaps.Templates"
+             xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps">
+    <ContentPage.Resources>
+       <templates:MapItemTemplateSelector x:Key="MapItemTemplateSelector">
+           <templates:MapItemTemplateSelector.DefaultTemplate>
+               <DataTemplate>
+                   <maps:Pin Location="{Binding Location}"
+                             Address="{Binding Address}"
+                             Label="{Binding Description}" />
+               </DataTemplate>
+           </templates:MapItemTemplateSelector.DefaultTemplate>
+           <templates:MapItemTemplateSelector.SanFranTemplate>
+               <DataTemplate>
+                   <maps:Pin Location="{Binding Location}"
+                             Address="{Binding Address}"
+                             Label="Xamarin!" />
+               </DataTemplate>
+           </templates:MapItemTemplateSelector.SanFranTemplate>    
+       </templates:MapItemTemplateSelector>
+    </ContentPage.Resources>
+
+    <Grid>
+        ...
+        <maps:Map x:Name="map"
+                  ItemsSource="{Binding Positions}"
+                  ItemTemplateSelector="{StaticResource MapItemTemplateSelector}">
+        ...
+    </Grid>
+</ContentPage>
+```
+
+::: moniker-end
+
 The following example shows the `MapItemTemplateSelector` class:
 
 ```csharp
@@ -740,7 +892,7 @@ public class MapItemTemplateSelector : DataTemplateSelector
 The `MapItemTemplateSelector` class defines `DefaultTemplate` and `SanFranTemplate` <xref:Microsoft.Maui.Controls.DataTemplate> properties that are set to different data templates. The `OnSelectTemplate` method returns the `SanFranTemplate`, which displays "Xamarin" as a label when a `Pin` is tapped, when the item has an address that contains "San Francisco". When the item doesn't have an address that contains "San Francisco", the `OnSelectTemplate` method returns the `DefaultTemplate`.
 
 > [!NOTE]
-> A use case for this functionality is binding properties of sub-classed `Pin` objects to different properties, based on the `Pin` sub-type.
+> A use case for this functionality is binding properties of subclassed `Pin` objects to different properties, based on the `Pin` sub-type.
 
 For more information about data template selectors, see [Create a DataTemplateSelector](~/fundamentals/datatemplate.md#create-a-datatemplateselector).
 
@@ -771,6 +923,8 @@ The `Circle` class defines the following bindable properties:
 
 A `Polygon` object can be added to a map by instantiating it and adding it to the map's `MapElements` collection:
 
+::: moniker range="=net-maui-7.0"
+
 ```xaml
 <ContentPage ...
              xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
@@ -800,6 +954,42 @@ A `Polygon` object can be added to a map by instantiating it and adding it to th
     </maps:Map>
 </ContentPage>
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-8.0"
+
+```xaml
+<ContentPage ...
+             xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
+             xmlns:sensors="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials">
+    <maps:Map>
+        <maps:Map.MapElements>
+            <maps:Polygon StrokeColor="#FF9900"
+                          StrokeWidth="8"
+                          FillColor="#88FF9900">
+                <maps:Polygon.Geopath>
+                    <sensors:Location>
+                        <x:Arguments>
+                            <x:Double>47.6458676</x:Double>
+                            <x:Double>-122.1356007</x:Double>
+                        </x:Arguments>
+                    </sensors:Location>
+                    <sensors:Location>
+                        <x:Arguments>
+                            <x:Double>47.6458097</x:Double>
+                            <x:Double>-122.142789</x:Double>
+                        </x:Arguments>
+                    </sensors:Location>
+                    ...
+                </maps:Polygon.Geopath>
+            </maps:Polygon>
+        </maps:Map.MapElements>
+    </maps:Map>
+</ContentPage>
+```
+
+::: moniker-end
 
 The equivalent C# code is:
 
@@ -838,6 +1028,8 @@ The `StrokeColor` and `StrokeWidth` properties are specified to set the polygon'
 
 A `Polyline` object can be added to a map by instantiating it and adding it to the map's `MapElements` collection:
 
+::: moniker range="=net-maui-7.0"
+
 ```xaml
 <ContentPage ...
              xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
@@ -866,6 +1058,43 @@ A `Polyline` object can be added to a map by instantiating it and adding it to t
     </maps:Map>
 </ContentPage>
 ```
+
+::: moniker-end
+
+::: moniker range=">=net-maui-8.0"
+
+```xaml
+<ContentPage ...
+             xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
+             xmlns:sensors="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials">
+    <maps:Map>
+        <maps:Map.MapElements>
+            <maps:Polyline StrokeColor="Black"
+                           StrokeWidth="12">
+                <maps:Polyline.Geopath>
+                    <sensors:Location>
+                        <x:Arguments>
+                            <x:Double>47.6381401</x:Double>
+                            <x:Double>-122.1317367</x:Double>
+                        </x:Arguments>
+                    </sensors:Location>
+                    <sensors:Location>
+                        <x:Arguments>
+                            <x:Double>47.6381473</x:Double>
+                            <x:Double>-122.1350841</x:Double>
+                        </x:Arguments>
+                    </sensors:Location>
+                    ...
+                </maps:Polyline.Geopath>
+            </maps:Polyline>
+        </maps:Map.MapElements>
+    </maps:Map>
+</ContentPage>
+```
+
+::: moniker-end
+
+The equivalent C# code is:
 
 ```csharp
 using Microsoft.Maui.Controls.Maps;
@@ -898,6 +1127,8 @@ The `StrokeColor` and `StrokeWidth` properties are specified to set the line app
 
 A `Circle` object can be added to a map by instantiating it and adding it to the map's `MapElements` collection:
 
+::: moniker range="=net-maui-7.0"
+
 ```xaml
 <ContentPage ...
              xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
@@ -928,6 +1159,42 @@ A `Circle` object can be added to a map by instantiating it and adding it to the
 </ContentPage>
 ```
 
+::: moniker-end
+
+::: moniker range=">=net-maui-8.0"
+
+```xaml
+<ContentPage ...
+             xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
+             xmlns:sensors="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials">
+    <maps:Map>
+        <maps:Map.MapElements>
+            <maps:Circle StrokeColor="#88FF0000"
+                         StrokeWidth="8"
+                         FillColor="#88FFC0CB">
+                <maps:Circle.Center>
+                    <sensors:Location>
+                        <x:Arguments>
+                            <x:Double>37.79752</x:Double>
+                            <x:Double>-122.40183</x:Double>
+                        </x:Arguments>
+                    </sensors:Location>
+                </maps:Circle.Center>
+                <maps:Circle.Radius>
+                    <maps:Distance>
+                        <x:Arguments>
+                            <x:Double>250</x:Double>
+                        </x:Arguments>
+                    </maps:Distance>
+                </maps:Circle.Radius>
+            </maps:Circle>             
+        </maps:Map.MapElements>
+    </maps:Map>
+</ContentPage>
+```
+
+::: moniker-end
+
 The equivalent C# code is:
 
 ```csharp
@@ -942,7 +1209,7 @@ Circle circle = new Circle
 {
     Center = new Location(37.79752, -122.40183),
     Radius = new Distance(250),
-    StrokeColor = Color.From FromArgb("#88FF0000"),
+    StrokeColor = Color.FromArgb("#88FF0000"),
     StrokeWidth = 8,
     FillColor = Color.FromArgb("#88FFC0CB")
 };

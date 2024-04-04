@@ -20,6 +20,8 @@ When your .NET MAUI app is running in debug configuration, with the debugger att
 # [Visual Studio for Mac](#tab/vsmac)
 <!-- markdownlint-enable MD025 -->
 
+[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
+
 When your .NET MAUI app is running in debug configuration, with the debugger attached, the Live Visual Tree window can be opened by selecting **View > Debug Windows > Live Visual Tree** from the Visual Studio for Mac menu bar:
 
 :::image type="content" source="media/live-visual-tree/live-visual-tree-vsmac.png" alt-text="Screenshot of the Live Visual Tree window in Visual Studio for Mac.":::
@@ -45,6 +47,8 @@ Just My XAML can be permanently disabled by selecting **Debug > Options > XAML H
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio for Mac](#tab/vsmac)
 <!-- markdownlint-enable MD025 -->
+
+[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
 
 The view of the UI elements can be simplified using a feature called Just My XAML. Clicking the **Show Just My XAML** button enables the feature and shows just the UI elements from your XAML in the visual tree:
 

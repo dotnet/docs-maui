@@ -83,6 +83,14 @@
     {
       "source_path": "docs/whats-new/dotnet-docs-maui-2023-02-01.md",
       "redirect_url": "/dotnet/maui/whats-new"
+    },
+    {
+      "source_path": "docs/android/deployment/overview.md",
+      "redirect_url": "/dotnet/maui/android/deployment"
+    },
+    {
+      "source_path": "docs/migration/forms-projects.md",
+      "redirect_url": "/dotnet/maui/migration/multi-project-to-multi-project"
     }
   ]
 }

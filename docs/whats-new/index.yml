@@ -5,21 +5,19 @@ summary: Welcome to what's new in .NET MAUI docs. Use this page to quickly find 
 metadata:
   title: .NET MAUI documentation what's new?
   description: Learn about new and updated content in .NET MAUI docs.
-  ms.date: 04/03/2023
+  ms.date: 04/02/2024
   ms.topic: landing-page
 landingContent:
 - title: Find .NET MAUI doc updates
   linkLists:
   - linkListType: whats-new
     links:
-    - text: March 2023
+    - text: March 2024
       url: dotnet-docs-maui-mod0.md
-    - text: February 2023
+    - text: February 2024
       url: dotnet-docs-maui-mod2.md
-    - text: January 2023
+    - text: January 2024
       url: dotnet-docs-maui-mod1.md
-    - text: .NET 7
-      url: dotnet-7.md
 - title: Get involved - contribute
   linkLists:
   - linkListType: overview

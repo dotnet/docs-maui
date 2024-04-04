@@ -27,9 +27,6 @@ The <xref:Microsoft.Maui.Controls.Grid> class defines the following properties:
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings and styled.
 
-<!-- > [!TIP]
-> To obtain the best possible layout performance, follow the guidelines at [Optimize layout performance](~/xamarin-forms/deploy-test/performance.md#optimize-layout-performance). -->
-
 ## Rows and columns
 
 By default, a <xref:Microsoft.Maui.Controls.Grid> contains one row and one column:
@@ -232,7 +229,7 @@ public class BasicGridPage : ContentPage
 
         // Row 2
         // Alternatively, the BoxView and Label can be positioned in cells with the Grid.SetRow
-        // and Grid.SetColumn methods.
+        // and Grid.SetColumn methods. Here, the Grid.SetColumnSpan method is used to span two columns.
         BoxView boxView = new BoxView { Color = Colors.Red };
         Grid.SetRow(boxView, 2);
         Grid.SetColumnSpan(boxView, 2);
@@ -255,6 +252,13 @@ public class BasicGridPage : ContentPage
 ```
 
 In code, to specify the height of a `RowDefinition` object, and the width of a `ColumnDefinition` object, you use values of the `GridLength` structure, often in combination with the `GridUnitType` enumeration.
+
+::: moniker range=">=net-maui-8.0"
+
+> [!NOTE]
+> <xref:Microsoft.Maui.Controls.Grid> also defines an <xref:Microsoft.Maui.Controls.GridExtensions.AddWithSpan%2A> extension method that adds a view to the `Grid` at the specified row and column with the specified row and column spans.
+
+::: moniker-end
 
 ### Simplify row and column definitions
 
@@ -617,7 +621,7 @@ In this example, the root <xref:Microsoft.Maui.Controls.Grid> contains a <xref:M
 :::image type="content" source="media/grid/nested.png" alt-text="Nested .NET MAUI Grid objects.":::
 
 > [!IMPORTANT]
-> The deeper you nest <xref:Microsoft.Maui.Controls.Grid> objects and other layouts, the more the nested layouts will impact performance. <!--For more information, see [Choose the correct layout](~/xamarin-forms/deploy-test/performance.md#choose-the-correct-layout).-->
+> The deeper you nest <xref:Microsoft.Maui.Controls.Grid> objects and other layouts, the more layout calculations will be performed which may impact performance. For more information, see [Choose the correct layout](~/deployment/performance.md#choose-the-correct-layout).
 
 The equivalent C# code is:
 

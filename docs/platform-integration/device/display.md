@@ -7,6 +7,8 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices"]
 
 # Device display information
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-essentials)
+
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Devices.IDeviceDisplay> interface to read information about the device's screen metrics. This interface can be used to request the screen stays awake while the app is running.
 
 The default implementation of the `IDeviceDisplay` interface is available through the <xref:Microsoft.Maui.Devices.DeviceDisplay.Current?displayProperty=nameWithType> property. Both the `IDeviceDisplay` interface and `DeviceDisplay` class are contained in the `Microsoft.Maui.Devices` namespace.

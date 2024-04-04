@@ -7,6 +7,8 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel.Communication"]
 
 # Phone dialer
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-essentials)
+
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.ApplicationModel.Communication.IPhoneDialer> interface. This interface enables an application to open a phone number in the dialer.
 
 The default implementation of the `IPhoneDialer` interface is available through the <xref:Microsoft.Maui.ApplicationModel.Communication.PhoneDialer.Default?displayProperty=nameWithType> property. Both the `IPhoneDialer` interface and `PhoneDialer` class are contained in the `Microsoft.Maui.ApplicationModel.Communication` namespace.

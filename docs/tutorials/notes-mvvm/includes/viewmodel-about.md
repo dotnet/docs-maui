@@ -1,7 +1,7 @@
 ---
 author: adegeo
 ms.author: adegeo
-ms.date: 01/05/2023
+ms.date: 03/21/2024
 ms.topic: include
 no-loc: ["communitytoolkit mvvm", "CommunityToolkit.Mvvm", "AllNotes", "Notes", "About", "ViewModels", "AboutViewModel.cs", "NoteViewModel.cs", "NotesViewModel.cs", "AboutPage.xaml", "AboutPage.xaml.cs"]
 ---
@@ -48,7 +48,7 @@ Create the **About viewmodel**:
 01. In the **Solution Explorer** pane of Visual Studio, double-click on **ViewModels\\AboutViewModel.cs**.
 01. Paste in the following code:
 
-    :::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/ViewModels/AboutViewModel.cs":::
+    :::code language="csharp" source="../snippets/viewmodel-shared/ViewModels/AboutViewModel.cs":::
 
 The previous code snippet contains some properties that represent information about the app, such as the name and version. This snippet is exactly the same as the **About model** you deleted earlier. However, this viewmodel contains a new concept, the `ShowMoreInfoCommand` command property.
 
@@ -67,7 +67,7 @@ Update the **About view**:
 01. In the **Solution Explorer** pane of Visual Studio, double-click on **Views\\AboutPage.xaml**.
 01. Paste in the following code:
 
-    :::code language="xaml" source="../snippets/viewmodel-shared/csharp/Notes/Views/AboutPage.xaml" highlight="4,7,19":::
+    :::code language="xaml" source="../snippets/viewmodel-shared/Views/AboutPage.xaml" highlight="4,7,19":::
 
     The previous code snippet highlights the lines that have changed in this version of the view.
 
@@ -86,6 +86,4 @@ The `ShowMoreInfo` button isn't using the event handler, so the `LearnMore_Click
 
 01. Replace the code with the following snippet:
 
-    :::code language="csharp" source="../snippets/viewmodel-shared/csharp/Notes/Views/AboutPage.xaml.cs":::
-
-[![Explore the code.](~/media/code-sample.png) Explore the code for this step of the tutorial.](https://github.com/dotnet/maui-samples/tree/main/7.0/Tutorials/ConvertToMvvm/step3_viewmodel_about)
+    :::code language="csharp" source="../snippets/viewmodel-shared/Views/AboutPage.xaml.cs":::

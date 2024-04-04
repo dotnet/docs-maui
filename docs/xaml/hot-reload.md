@@ -38,6 +38,8 @@ Then, on iOS in your build settings, check that the Linker is set to "Don't Link
 # [Visual Studio for Mac](#tab/vsmac)
 <!-- markdownlint-enable MD025 -->
 
+[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
+
 XAML Hot Reload is enabled by default in Visual Studio 2022 for Mac. If it's been previously disabled, it can be enabled by selecting **Visual Studio > Preferences > Other > XAML Hot Reload** from the Visual Studio menu bar. Next, in the **Preferences** dialog box, ensure that the **Enable XAML Hot Reload**, and **.NET MAUI** options are checked:
 
 :::image type="content" source="media/hot-reload/vsmac-preferences.png" alt-text="XAML Hot Reload options for .NET MAUI in Visual Studio for Mac":::

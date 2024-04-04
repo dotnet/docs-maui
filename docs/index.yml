@@ -1,190 +1,334 @@
-### YamlMime:Landing
-
+### YamlMime:Hub
 title: .NET Multi-platform App UI documentation
 summary: .NET Multi-platform App UI (.NET MAUI) lets you build native apps using a .NET cross-platform UI toolkit that targets the mobile and desktop form factors on Android, iOS, macOS, Windows, and Tizen.
+brand: dotnet
 
 metadata:
   title: .NET Multi-platform App UI documentation
   description: .NET Multi-platform App UI (.NET MAUI) lets you build native apps using a .NET cross-platform UI toolkit that targets the mobile and desktop form factors on Android, iOS, macOS, Windows, and Tizen.
-  ms.topic: landing-page
-  ms.date: 06/21/2022
+  ms.topic: hub-page
+  ms.date: 11/15/2023
 
-landingContent:
-  - title: Overview
-    linkLists:
-      - linkListType: overview
-        links:
-          - text: What is .NET Multi-platform App UI?
-            url: what-is-maui.md
-          - text: Supported platforms
-            url: supported-platforms.md
-          - text: Troubleshooting
-            url: troubleshooting.md
-      - linkListType: whats-new
-        links:
-          - text: What's new in .NET MAUI docs?
-            url: whats-new/index.yml
-  - title: Get started
-    linkLists:
-      - linkListType: how-to-guide
-        links:
-          - text: Installation
-            url: get-started/installation.md
-          - text: Build your first app
-            url: get-started/first-app.md?pivots=devices-windows
-          - text: Debug on an Android emulator
-            url: android/emulator/debug-on-emulator.md
-          - text: Setup an Android device for debugging
-            url: android/device/setup.md
-          - text: iOS device provisioning
-            url: ios/device-provisioning/index.md
-          - text: Build an iOS app with .NET CLI
-            url: ios/cli.md
-          - text: Build a Mac Catalyst app with .NET CLI
-            url: mac-catalyst/cli.md
-          - text: Pair to Mac for iOS development
-            url: ios/pair-to-mac.md
-          - text: Remote iOS Simulator for Windows
-            url: ios/remote-simulator.md
-          - text: Setup Windows for debugging
-            url: windows/setup.md
-      - linkListType: get-started
-        links:
-          - text: Learning resources
-            url: get-started/resources.md
-  - title: Migrate from Xamarin
-    linkLists:
-      - linkListType: concept
-        links:
-          - text: Upgrade Xamarin native projects
-            url: migration/native-projects.md
-          - text: Xamarin.Android project migration
-            url: migration/android-projects.md
-          - text: Xamarin Apple project migration
-            url: migration/apple-projects.md
-          - text: Automatically upgrade Xamarin.Forms projects
-            url: migration/upgrade-assistant.md
-          - text: Manually upgrade Xamarin.Forms projects
-            url: migration/forms-projects.md
-          - text: Layout behavior changes
-            url: migration/layouts.md
-          - text: Custom renderers
-            url: migration/custom-renderers.md
-          - text: Effects
-            url: migration/effects.md
-  - title: XAML
-    linkLists:
-      - linkListType: concept
-        links:
-          - text: Overview
-            url: xaml/index.md
-          - text: Fundamentals
-            url: xaml/fundamentals/get-started.md
-          - text: Compilation
-            url: xaml/xamlc.md
-          - text: Field modifiers
-            url: xaml/field-modifiers.md
-          - text: Generics
-            url: xaml/generics.md
-          - text: Markup extensions
-            url: xaml/markup-extensions/consume.md
-          - text: Namespaces
-            url: xaml/namespaces/index.md
-          - text: Pass arguments
-            url: xaml/pass-arguments.md
-          - text: XAML Hot Reload
-            url: xaml/hot-reload.md
-  - title: Fundamentals
-    linkLists:
-      - linkListType: concept
-        links:
-          - text: Accessibility
-            url: fundamentals/accessibility.md
-          - text: App lifecycle
-            url: fundamentals/app-lifecycle.md
-          - text: Behaviors
-            url: fundamentals/behaviors.md
-          - text: Data binding
-            url: fundamentals/data-binding/index.md
-          - text: Resource dictionaries
-            url: fundamentals/resource-dictionaries.md
-          - text: Shell
-            url: fundamentals/shell/index.md
-          - text: Single project
-            url: fundamentals/single-project.md
-          - text: Triggers
-            url: fundamentals/triggers.md
-  - title: User interface
-    linkLists:
-      - linkListType: concept
-        links:
-          - text: Animation
-            url: user-interface/animation/basic.md
-          - text: Brushes
-            url: user-interface/brushes/index.md
-          - text: Controls
-            url: user-interface/controls/index.md
-          - text: Graphics
-            url: user-interface/graphics/index.md
-          - text: Handlers
-            url: user-interface/handlers/index.md
-          - text: Layouts
-            url: user-interface/layouts/index.md
-          - text: Pages
-            url: user-interface/pages/contentpage.md
-          - text: Styles
-            url: user-interface/styles/xaml.md
-          - text: Theming
-            url: user-interface/theming.md
-  - title: Platform integration
-    linkLists:
-      - linkListType: concept
-        links:
-          - text: App information
-            url: platform-integration/appmodel/app-information.md
-          - text: Clipboard
-            url: platform-integration/data/clipboard.md
-          - text: Device information
-            url: platform-integration/device/information.md
-          - text: Device sensors
-            url: platform-integration/device/sensors.md
-          - text: File picker
-            url: platform-integration/storage/file-picker.md
-          - text: Network connectivity
-            url: platform-integration/communication/networking.md
-          - text: Permissions
-            url: platform-integration/appmodel/permissions.md
-          - text: Photo picker
-            url: platform-integration/device-media/picker.md
-          - text: Preferences
-            url: platform-integration/storage/preferences.md
-          - text: Web authenticator
-            url: platform-integration/communication/authentication.md
-  - title: Data & cloud services
-    linkLists:
-      - linkListType: concept
-        links:
-          - text: Azure mobile apps
-            url: /azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui/
-          - text: Consume a REST-based web service
-            url: data-cloud/rest.md
-          - text: Connect to local web services
-            url: data-cloud/local-web-services.md
-          - text: Local databases
-            url: data-cloud/database-sqlite.md
-  - title: Deployment
-    linkLists:
-      - linkListType: concept
-        links:
-          - text: Hot restart
-            url: ios/hot-restart.md
-          - text: Project configuration
-            url: deployment/visual-studio-properties.md
-          - text: Publish Android apps
-            url: android/deployment/overview.md
-          - text: Publish iOS apps
-            url: ios/deployment/index.md
-          - text: Publish Mac Catalyst apps
-            url: mac-catalyst/deployment/index.md
-          - text: Publish Windows apps
-            url: windows/deployment/overview.md
+# itemType: architecture | concept | deploy | download | get-started | how-to-guide | training | overview | quickstart | reference | sample | tutorial | video | whats-new
+highlightedContent:
+  items:
+    - title: What is .NET MAUI?
+      itemType: overview
+      url: what-is-maui.md
+    - title: Supported platforms
+      itemType: overview
+      url: supported-platforms.md
+    - title: Installation
+      itemType: download
+      url: get-started/installation.md
+    - title: Build your first app
+      itemType: tutorial
+      url: get-started/first-app.md
+    - title: Build mobile and desktop apps with .NET MAUI
+      itemType: training
+      url: /training/paths/build-apps-with-dotnet-maui
+    - title: Enterprise application patterns using .NET MAUI
+      itemType: architecture
+      url: /dotnet/architecture/maui/
+    - title: Find a sample
+      itemType: sample
+      url: /samples/browse/?expanded=dotnet&products=dotnet-maui
+    - title: What's new?
+      itemType: whats-new
+      url: whats-new/index.yml
+
+# itemType: architecture | concept | deploy | download | get-started | how-to-guide | training | overview | quickstart | reference | sample | tutorial | video | whats-new
+conceptualContent:
+  sections:
+    - title: .NET MAUI common tasks
+      items:
+        - title: Upgrade from Xamarin
+          summary: Run your Xamarin projects on .NET after an upgrade process.
+          links:
+            - url: migration/index.md
+              itemType: concept
+              text: Upgrade from Xamarin to .NET
+        - title: Learn about the app lifecycle
+          summary: Understand how apps start and go to the background.
+          links:
+            - url: fundamentals/app-lifecycle.md
+              itemType: concept
+              text: App lifecycle
+        - title: Use XAML & data-binding
+          summary: Use the MVVM pattern to show data in your UI.
+          links:
+            - url: xaml/fundamentals/get-started.md
+              itemType: concept
+              text: Get started with XAML
+        - title: Show a list of data
+          summary: Use the CollectionView to scroll and select data.
+          links:
+            - url: user-interface/controls/collectionview/index.md
+              itemType: concept
+              text: Present lists of data
+        - title: Customize UIs for specific platforms
+          summary: Make the most effective use of space in your app UI.
+          links:
+            - url: platform-integration/customize-ui-appearance.md
+              itemType: concept
+              text: Customize UI appearance based on the platform
+        - title: Access a REST web service
+          summary: Integrate and interact with web services using HTTP and JSON
+          links:
+            - url: data-cloud/rest.md
+              itemType: concept
+              text: Consume a REST-based web service
+        - title: Access device features
+          summary: Use cross-platform APIs for common device features.
+          links:
+            - url: platform-integration/index.md
+              itemType: concept
+              text: Platform integration
+        - title: Deploy apps to devices
+          summary: Upload to test devices and app stores.
+          links:
+            - url: deployment/index.md
+              itemType: concept
+              text: Deployment
+    - title: .NET MAUI guides
+      items:
+        - title: Get started
+          links:
+            - text: What is .NET MAUI?
+              url: what-is-maui.md
+              itemType: overview
+            - text: Supported platforms
+              url: supported-platforms.md
+              itemType: overview
+            - text: Installation
+              url: get-started/installation.md
+              itemType: get-started
+            - text: Build your first app
+              url: get-started/first-app.md
+              itemType: tutorial
+            - text: Create a .NET MAUI app
+              url: tutorials/notes-app/index.yml
+              itemType: tutorial
+            - text: Upgrade your app with MVVM
+              url: tutorials/notes-mvvm/index.yml
+              itemType: tutorial
+            - text: Learning resources
+              url: get-started/resources.md
+              itemType: overview
+            - text: Troubleshooting
+              url: troubleshooting.md
+              itemType: overview
+        - title: Migrate from Xamarin
+          links:
+            - text: Upgrade from Xamarin to .NET
+              url: migration/index.md
+              itemType: concept
+            - text: Upgrade Xamarin native projects
+              url: migration/native-projects.md
+              itemType: concept
+            - text: Upgrade with the .NET Upgrade Assistant
+              url: migration/upgrade-assistant.md
+              itemType: concept
+            - text: Upgrade to a multi-project app
+              url: migration/multi-project-to-multi-project.md
+              itemType: concept
+            - text: Upgrade to a single project app
+              url: migration/multi-project-to-single-project.md
+              itemType: concept
+            - text: Layout behavior changes
+              url: migration/layouts.md
+              itemType: concept
+            - text: Migrate app properties data
+              url: migration/app-properties.md
+              itemType: concept
+            - text: Migrate secure storage data
+              url: migration/secure-storage.md
+              itemType: concept
+        - title: Fundamentals
+          links:
+            - text: Accessibility
+              url: fundamentals/accessibility.md
+              itemType: concept
+            - text: App lifecycle
+              url: fundamentals/app-lifecycle.md
+              itemType: concept
+            - text: Data binding
+              url: fundamentals/data-binding/index.md
+              itemType: concept
+            - text: Data templates
+              url: fundamentals/datatemplate.md
+              itemType: concept
+            - text: Localization
+              url: fundamentals/localization.md
+              itemType: concept
+            - text: Resource dictionaries
+              url: fundamentals/resource-dictionaries.md
+              itemType: concept
+            - text: Shell
+              url: fundamentals/shell/index.md
+              itemType: concept
+            - text: Single project
+              url: fundamentals/single-project.md
+              itemType: concept
+        - title: User interface
+          links:
+            - text: Animation
+              url: user-interface/animation/basic.md
+              itemType: concept
+            - text: Brushes
+              url: user-interface/brushes/index.md
+              itemType: concept
+            - text: Controls
+              url: user-interface/controls/index.md
+              itemType: concept
+            - text: Graphics
+              url: user-interface/graphics/index.md
+              itemType: concept
+            - text: Handlers
+              url: user-interface/handlers/index.md
+              itemType: concept
+            - text: Layouts
+              url: user-interface/layouts/index.md
+              itemType: concept
+            - text: Pages
+              url: user-interface/pages/contentpage.md
+              itemType: concept
+            - text: Styles
+              url: user-interface/styles/xaml.md
+              itemType: concept
+        - title: XAML
+          links:
+            - text: Overview
+              url: xaml/index.md
+              itemType: concept
+            - text: Fundamentals
+              url: xaml/fundamentals/get-started.md
+              itemType: concept
+            - text: Compilation
+              url: xaml/xamlc.md
+              itemType: concept
+            - text: Generics
+              url: xaml/generics.md
+              itemType: concept
+            - text: Markup extensions
+              url: xaml/markup-extensions/consume.md
+              itemType: concept
+            - text: Namespaces
+              url: xaml/namespaces/index.md
+              itemType: concept
+            - text: Pass arguments
+              url: xaml/pass-arguments.md
+              itemType: concept
+            - text: XAML hot reload
+              url: xaml/hot-reload.md
+              itemType: concept
+        - title: Platform integration
+          links:
+            - text: Configure multi-targeting
+              url: platform-integration/configure-multi-targeting.md
+              itemType: concept
+            - text: Customize UI appearance
+              url: platform-integration/customize-ui-appearance.md
+              itemType: concept
+            - text: Device information
+              url: platform-integration/device/information.md
+              itemType: concept
+            - text: Device sensors
+              url: platform-integration/device/sensors.md
+              itemType: concept
+            - text: Invoke platform code
+              url: platform-integration/invoke-platform-code.md
+              itemType: concept
+            - text: Native embedding
+              url: platform-integration/native-embedding.md
+              itemType: concept
+            - text: Permissions
+              url: platform-integration/appmodel/permissions.md
+              itemType: concept
+            - text: Preferences
+              url: platform-integration/storage/preferences.md
+              itemType: concept
+        - title: Data & cloud services
+          links:
+            - text: Build a .NET MAUI app with Azure Mobile Apps
+              url: /azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui/
+              itemType: tutorial
+            - text: Add authentication with Azure Mobile Apps
+              url: /azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui/authentication
+              itemType: tutorial
+            - text: Offline data sync with Azure Mobile Apps
+              url: /azure/developer/mobile-apps/azure-mobile-apps/quickstarts/maui/offline
+              itemType: tutorial
+            - text: Consume a REST-based web service
+              url: data-cloud/rest.md
+              itemType: concept
+            - text: Connect to local web services
+              url: data-cloud/local-web-services.md
+              itemType: concept
+            - text: Local databases
+              url: data-cloud/database-sqlite.md
+              itemType: concept
+        - title: Deployment
+          links:
+            - text: Overview
+              url: deployment/index.md
+              itemType: concept
+            - text: Improve app performance
+              url: deployment/performance.md
+              itemType: concept
+            - text: Hot restart
+              url: ios/hot-restart.md
+              itemType: concept
+            - text: Wireless deployment
+              url: ios/wireless-deployment.md
+              itemType: concept
+            - text: Publish Android apps
+              url: android/deployment/index.md
+              itemType: concept
+            - text: Publish iOS apps
+              url: ios/deployment/index.md
+              itemType: concept
+            - text: Publish Mac Catalyst apps
+              url: mac-catalyst/deployment/index.md
+              itemType: concept
+            - text: Publish Windows apps
+              url: windows/deployment/overview.md
+              itemType: concept
+
+additionalContent:
+  sections:
+    - title: .NET MAUI Blazor Hybrid apps
+      items:
+        - title: Build a .NET MAUI Blazor Hybrid app
+          summary: Build and run your first .NET MAUI Blazor Hybrid app in Visual Studio.
+          url: /aspnet/core/blazor/hybrid/tutorials/maui
+        - title: Blazor Hybrid routing and navigation
+          summary: Understand how to manage request routing and navigation in Blazor Hybrid apps.
+          url: /aspnet/core/blazor/hybrid/routing?pivots=maui
+        - title: Build a mobile and desktop app with Blazor Hybrid and .NET MAUI
+          summary: Build a cross-platform hybrid app with Blazor, .NET MAUI, and C#.
+          url: /training/modules/build-blazor-hybrid
+    - title: .NET MAUI community resources
+      items:
+        - title: .NET MAUI Community Toolkit
+          summary: The .NET MAUI Community Toolkit is a collection of reusable elements for .NET MAUI app development.
+          url: /dotnet/communitytoolkit/maui/
+        - title: .NET Community Toolkit
+          summary: The .NET Community Toolkit is a collection of helpers and APIs that are agnostic of any UI platform.
+          url: /dotnet/communitytoolkit/introduction
+        - title: Windows Community Toolkit
+          summary: The Windows Community Toolkit is a collection of controls that simplifies common developer tasks for Windows with .NET.
+          url: /dotnet/communitytoolkit/windows/
+    - title: API reference
+      items:
+        - title: .NET MAUI API reference
+          summary: API reference documentation for .NET MAUI.
+          url: /dotnet/api/?view=net-maui-8.0&preserve-view=true
+        - title: .NET API reference
+          summary: API reference documentation for .NET.
+          url: /dotnet/api?view=net-8.0&preserve-view=true
+        - title: .NET Platform Extensions API reference
+          summary: API reference documentation for .NET Platform Extensions.
+          url: /dotnet/api?view=dotnet-plat-ext-8.0&preserve-view=true
+
+  footer: "[Blogs](https://devblogs.microsoft.com/dotnet/) - [Microsoft Q&A](/answers/tags/247/dotnet-maui) - [Developer Community](https://dotnet.microsoft.com/platform/community) - [Release notes](https://github.com/dotnet/maui/releases)"

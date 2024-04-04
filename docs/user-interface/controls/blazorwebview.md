@@ -1,7 +1,7 @@
 ---
 title: "Host a Blazor web app in a .NET MAUI app using BlazorWebView"
 description: "The .NET MAUI BlazorWebView control enables you to host a Blazor web app in your .NET MAUI app, and integrate the app with device features."
-ms.date: 01/18/2023
+ms.date: 10/02/2023
 ---
 
 # Host a Blazor web app in a .NET MAUI app using BlazorWebView
@@ -10,20 +10,32 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.AspNetCore.Components
 
 <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> defines the following properties:
 
-- `HostPage`, of type `string?`, which defines the root page of the Blazor web app.
-- `RootComponents`, of type `RootComponentsCollection`, which specifies the collection of root components that can be added to the control.
+::: moniker range="=net-maui-7.0"
 
-The `RootComponent` class defines the following properties:
+- <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.HostPage>, of type `string?`, which defines the root page of the Blazor web app.
+- <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.RootComponents>, of type `RootComponentsCollection`, which specifies the collection of root components that can be added to the control.
 
-- `Selector`, of type `string?`, which defines the CSS selector string that specifies where in the document the component should be placed.
-- `ComponentType`, of type `Type?`, which defines the type of the root component.
-- `Parameters`, of type `IDictionary<string, object?>?`, which represents an optional dictionary of parameters to pass to the root component.
+::: moniker-end
+
+::: moniker range=">=net-maui-8.0"
+
+- <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.HostPage>, of type `string?`, which defines the root page of the Blazor web app.
+- <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.RootComponents>, of type `RootComponentsCollection`, which specifies the collection of root components that can be added to the control.
+- <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.StartPath>, of type `string`, which defines the path for initial navigation within the Blazor navigation context when the Blazor component is finished loading.
+
+::: moniker-end
+
+The <xref:Microsoft.AspNetCore.Components.WebView.Maui.RootComponent> class defines the following properties:
+
+- <xref:Microsoft.AspNetCore.Components.WebView.Maui.RootComponent.Selector>, of type `string?`, which defines the CSS selector string that specifies where in the document the component should be placed.
+- <xref:Microsoft.AspNetCore.Components.WebView.Maui.RootComponent.ComponentType>, of type `Type?`, which defines the type of the root component.
+- <xref:Microsoft.AspNetCore.Components.WebView.Maui.RootComponent.Parameters>, of type `IDictionary<string, object?>?`, which represents an optional dictionary of parameters to pass to the root component.
 
 In addition, <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> defines the following events:
 
-- `BlazorWebViewInitializing`, with an accompanying `BlazorWebViewInitializingEventArgs` object, which is raised before the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> is initialized. This event enables customization of the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> configuration.
-- `BlazorWebViewInitialized`, with an accompanying `BlazorWebViewInitializedEventArgs` object, which is raised after the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> is initialized but before any component has been rendered. This event enables retrieval of the platform-specific web view instance.
-- `UrlLoading`, with an accompanying `UrlLoadingEventArgs` object, is raised when a hyperlink is clicked within a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView>. This event enables customization of whether a hyperlink is opened in the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView>, in an external app, or whether the URL loading attempt is cancelled.
+- <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.BlazorWebViewInitializing>, with an accompanying `BlazorWebViewInitializingEventArgs` object, which is raised before the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> is initialized. This event enables customization of the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> configuration.
+- <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.BlazorWebViewInitialized>, with an accompanying `BlazorWebViewInitializedEventArgs` object, which is raised after the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> is initialized but before any component has been rendered. This event enables retrieval of the platform-specific web view instance.
+- <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.UrlLoading>, with an accompanying `UrlLoadingEventArgs` object, is raised when a hyperlink is clicked within a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView>. This event enables customization of whether a hyperlink is opened in the <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView>, in an external app, or whether the URL loading attempt is cancelled.
 
 Existing [Razor components](/aspnet/core/blazor/components/) can be used in a .NET MAUI Blazor app by moving the code into the app, or by referencing an existing class library or package that contains the component. For more information, see [Reuse Razor components in ASP.NET Core Blazor Hybrid](/aspnet/core/blazor/hybrid/reuse-razor-components).
 
@@ -112,7 +124,7 @@ The process to add a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWe
 
             builder.Services.AddMauiBlazorWebView();
     #if DEBUG
-            builder.Services.AddMauiBlazorWebViewDeveloperTools();
+            builder.Services.AddBlazorWebViewDeveloperTools();
     #endif
             // Register any app services on the IServiceCollection object
             // e.g. builder.Services.AddSingleton<WeatherForecastService>();
@@ -121,3 +133,74 @@ The process to add a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWe
         }
     }
     ```
+
+::: moniker range=">=net-maui-8.0"
+
+## Access scoped services from native UI
+
+<xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> has a <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView.TryDispatchAsync%2A> method that can call a specified `Action<ServiceProvider>` asynchronously and pass in the scoped services available in Razor components. This enables code from the native UI to access scoped services such as <xref:Microsoft.AspNetCore.Components.NavigationManager>:
+
+```csharp
+private async void OnMyMauiButtonClicked(object sender, EventArgs e)
+{
+    var wasDispatchCalled = await blazorWebView.TryDispatchAsync(sp =>
+    {
+        var navMan = sp.GetRequiredService<NavigationManager>();
+        navMan.CallSomeNavigationApi(...);
+    });
+
+    if (!wasDispatchCalled)
+    {
+        // Consider what to do if it the dispatch fails - that's up to your app to decide.
+    }
+}
+```
+
+## Diagnosing issues
+
+<xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> has built-in logging that can help you diagnose issues in your Blazor Hybrid app. There are two steps to enable this logging:
+
+1. Enable <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> and related components to log diagnostic information.
+1. Configure a logger to write the log output to where you can view it.
+
+For more information about logging, see [Logging in C# and .NET](/dotnet/core/extensions/logging).
+
+### Enable BlazorWebView logging
+
+All logging configuration can be performed as part of service registration in the dependency injection system. To enable maximum logging for <xref:Microsoft.AspNetCore.Components.WebView.Maui.BlazorWebView> and related components under the <xref:Microsoft.AspNetCore.Components.WebView?displayProperty=fullName> namespace, add the following code to where your app's services are registered:
+
+```csharp
+services.AddLogging(logging =>
+{
+    logging.AddFilter("Microsoft.AspNetCore.Components.WebView", LogLevel.Trace);
+});
+```
+
+Alternatively, to enable maximum logging for every component that uses <xref:Microsoft.Extensions.Logging?displayProperty=fullName>, you could use the following code:
+
+```csharp
+services.AddLogging(logging =>
+{
+    logging.SetMinimumLevel(LogLevel.Trace);
+});
+```
+
+### Configure logging output and viewing the output
+
+After configuring components to write log information you need to configure where the loggers should write the logs to, and then view the log output.
+
+The **Debug** logging providers write the output using `Debug` statements, and the output can be viewed from Visual Studio.
+
+To configure the **Debug** logging provider, first add a reference in your project to the [`Microsoft.Extensions.Logging.Debug`](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Debug) NuGet package. Then, register the provider inside the call to <xref:Microsoft.Extensions.DependencyInjection.LoggingServiceCollectionExtensions.AddLogging%2A> that you added in the previous step by calling the <xref:Microsoft.Extensions.Logging.DebugLoggerFactoryExtensions.AddDebug%2A> extension method:
+
+```csharp
+services.AddLogging(logging =>
+{
+    logging.AddFilter("Microsoft.AspNetCore.Components.WebView", LogLevel.Trace);
+    logging.AddDebug();
+});
+```
+
+When you run the app from Visual Studio (with debugging enabled), you can view the debug output in Visual Studio's **Output** window.
+
+::: moniker-end

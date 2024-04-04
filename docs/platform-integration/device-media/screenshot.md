@@ -7,6 +7,8 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Media", "ScreenShot"]
 
 # Screenshot
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-essentials)
+
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Media.IScreenshot> interface. This interface lets you take a capture of the current displayed screen of the app.
 
 The default implementation of the `IScreenshot` interface is available through the <xref:Microsoft.Maui.Media.Screenshot.Default?displayProperty=nameWithType> property. Both the `IScreenshot` interface and `Screenshot` class are contained in the `Microsoft.Maui.Media` namespace.

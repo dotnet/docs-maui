@@ -14,11 +14,6 @@ The <xref:Microsoft.Maui.Controls.VerticalStackLayout> defines the following pro
 
 This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means that it can be the target of data bindings and styled.
 
-<!--
-> [!TIP]
-> To obtain the best possible layout performance, follow the guidelines at [Optimize layout performance](~/xamarin-forms/deploy-test/performance.md#optimize-layout-performance).
--->
-
 The following XAML shows how to create a <xref:Microsoft.Maui.Controls.VerticalStackLayout> that contains different child views:
 
 ```xaml
@@ -198,4 +193,4 @@ In this example, the parent <xref:Microsoft.Maui.Controls.VerticalStackLayout> c
 :::image type="content" source="media/verticalstacklayout/nested.png" alt-text="VerticalStackLayout displaying nested HorizontalStackLayout objects screenshot.":::
 
 > [!IMPORTANT]
-> The deeper you nest layout objects, the more the nested layouts will impact performance. <!--For more information, see [Choose the correct layout](~/xamarin-forms/deploy-test/performance.md#choose-the-correct-layout). -->
+> The deeper you nest layout objects the more layout calculations will be performed, which may impact performance. For more information, see [Choose the correct layout](~/deployment/performance.md#choose-the-correct-layout).

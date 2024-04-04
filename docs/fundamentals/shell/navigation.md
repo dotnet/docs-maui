@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI Shell navigation"
 description: "Learn how .NET MAUI Shell apps can utilize a URI-based navigation experience that permits navigation to any page in the app, without having to follow a set navigation hierarchy."
-ms.date: 04/07/2022
+ms.date: 10/23/2023
 ---
 
 # .NET MAUI Shell navigation
@@ -20,7 +20,7 @@ The <xref:Microsoft.Maui.Controls.Shell> class defines the following navigation-
 
 The `BackButtonBehavior`, `CurrentItem`, and `CurrentState` properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that these properties can be targets of data bindings.
 
-Navigation is performed by invoking the `GoToAsync` method, from the <xref:Microsoft.Maui.Controls.Shell> class. When navigation is about to be performed, the `Navigating` event is fired, and the `Navigated` event is fired when navigation completes.
+Navigation is performed by invoking the <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> method, from the <xref:Microsoft.Maui.Controls.Shell> class. When navigation is about to be performed, the `Navigating` event is fired, and the `Navigated` event is fired when navigation completes.
 
 > [!NOTE]
 > Navigation can still be performed between pages in a Shell app by using the `Navigation` property. For more information, see [Perform modeless navigation](~/user-interface/pages/navigationpage.md#perform-modeless-navigation).
@@ -118,7 +118,7 @@ This example enables contextual page navigation, where navigating to the `detail
 
 ## Perform navigation
 
-To perform navigation, a reference to the <xref:Microsoft.Maui.Controls.Shell> subclass must first be obtained. This reference can be obtained by casting the `App.Current.MainPage` property to a <xref:Microsoft.Maui.Controls.Shell> object, or through the `Shell.Current` property. Navigation can then be performed by calling the `GoToAsync` method on the <xref:Microsoft.Maui.Controls.Shell> object. This method navigates to a `ShellNavigationState` and returns a `Task` that will complete once the navigation animation has completed. The `ShellNavigationState` object is constructed by the `GoToAsync` method, from a `string`, or a `Uri`, and it has its `Location` property set to the `string` or `Uri` argument.
+To perform navigation, a reference to the <xref:Microsoft.Maui.Controls.Shell> subclass must first be obtained. This reference can be obtained by casting the `App.Current.MainPage` property to a <xref:Microsoft.Maui.Controls.Shell> object, or through the `Shell.Current` property. Navigation can then be performed by calling the <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> method on the <xref:Microsoft.Maui.Controls.Shell> object. This method navigates to a `ShellNavigationState` and returns a `Task` that will complete once the navigation animation has completed. The `ShellNavigationState` object is constructed by the <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> method, from a `string`, or a `Uri`, and it has its `Location` property set to the `string` or `Uri` argument.
 
 > [!IMPORTANT]
 > When a route from the Shell visual hierarchy is navigated to, a navigation stack isn't created. However, when a page that's not in the Shell visual hierarchy is navigated to, a navigation stack is created.
@@ -127,7 +127,7 @@ The current navigation state of the <xref:Microsoft.Maui.Controls.Shell> object 
 
 ### Absolute routes
 
-Navigation can be performed by specifying a valid absolute URI as an argument to the `GoToAsync` method:
+Navigation can be performed by specifying a valid absolute URI as an argument to the <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> method:
 
 ```csharp
 await Shell.Current.GoToAsync("//animals/monkeys");
@@ -137,7 +137,7 @@ This example navigates to the page for the `monkeys` route, with the route being
 
 ### Relative routes
 
-Navigation can also be performed by specifying a valid relative URI as an argument to the `GoToAsync` method. The routing system will attempt to match the URI to a <xref:Microsoft.Maui.Controls.ShellContent> object. Therefore, if all the routes in an app are unique, navigation can be performed by only specifying the unique route name as a relative URI.
+Navigation can also be performed by specifying a valid relative URI as an argument to the <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> method. The routing system will attempt to match the URI to a <xref:Microsoft.Maui.Controls.ShellContent> object. Therefore, if all the routes in an app are unique, navigation can be performed by only specifying the unique route name as a relative URI.
 
 The following relative route formats are supported:
 
@@ -171,7 +171,7 @@ When the registered page for the `monkeys` route is displayed, navigating to the
 
 ### Backwards navigation
 
-Backwards navigation can be performed by specifying ".." as the argument to the `GoToAsync` method:
+Backwards navigation can be performed by specifying ".." as the argument to the <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> method:
 
 ```csharp
 await Shell.Current.GoToAsync("..");
@@ -336,7 +336,7 @@ public MyShell : Shell
 In this example, an action sheet is displayed that invites the user to complete the navigation request, or cancel it. Navigation is canceled by invoking the `Cancel` method on the `ShellNavigatingEventArgs` object. Navigation is completed by invoking the `Complete` method on the `ShellNavigatingDeferral` token that was retrieved by the `GetDeferral` method on the `ShellNavigatingEventArgs` object.
 
 > [!WARNING]
-> The `GoToAsync` method will throw a `InvalidOperationException` if a user tries to navigate while there is a pending navigation deferral.
+> The <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> method will throw a `InvalidOperationException` if a user tries to navigate while there is a pending navigation deferral.
 
 ## Pass data
 
@@ -352,7 +352,9 @@ async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEvent
 
 This example retrieves the currently selected elephant in the <xref:Microsoft.Maui.Controls.CollectionView>, and navigates to the `elephantdetails` route, passing `elephantName` as a query parameter.
 
-Object-based navigation data can be passed with a `GoToAsync` overload that specifies an `IDictionary<string, object>` argument:
+### Pass multiple use object-based navigation data
+
+Multiple use object-based navigation data can be passed with a <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> overload that specifies an `IDictionary<string, object>` argument:
 
 ```csharp
 async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -368,14 +370,56 @@ async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEvent
 
 This example retrieves the currently selected bear in the <xref:Microsoft.Maui.Controls.CollectionView>, as an `Animal`. The `Animal` object is added to a `Dictionary` with the key `Bear`. Then, navigation to the `beardetails` route is performed, with the `Dictionary` being passed as a navigation parameter.
 
+Any data that's passed as an `IDictionary<string, object>` argument is retained in memory for the lifetime of the page, and isn't released until the page is removed from the navigation stack. This can be problematic, as shown in the following scenario:
+
+1. `Page1` navigates to `Page2` using the <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> method, passing in an object called `MyData`. `Page2` then receives `MyData` as a query parameter.
+1. `Page2` navigates to `Page3` using the <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> method, without passing any data.
+1. `Page3` navigates backwards with the <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> method. `Page2` then receives `MyData` again as a query parameter.
+
+While this is desirable in many scenarios, if it isn't desired you should clear the `IDictionary<string, object>` argument with the `Clear` method after it's first been received by a page.
+
+::: moniker range=">=net-maui-8.0"
+
+### Pass single use object-based navigation data
+
+Single use object-based navigation data can be passed with a <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> overload that specifies a <xref:Microsoft.Maui.Controls.ShellNavigationQueryParameters> argument. A <xref:Microsoft.Maui.Controls.ShellNavigationQueryParameters> object is intended for single use navigation data that's cleared after navigation has occurred. The following example shows navigating while passing single use data:
+
+```csharp
+async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
+{
+    Animal animal = e.CurrentSelection.FirstOrDefault() as Animal;
+    var navigationParameter = new ShellNavigationQueryParameters
+    {
+        { "Bear", animal }
+    };
+    await Shell.Current.GoToAsync($"beardetails", navigationParameter);
+}
+```
+
+This example retrieves the currently selected bear in the <xref:Microsoft.Maui.Controls.CollectionView>, as an `Animal` that's added to the <xref:Microsoft.Maui.Controls.ShellNavigationQueryParameters> object. Then, navigation to the `beardetails` route is performed, with the <xref:Microsoft.Maui.Controls.ShellNavigationQueryParameters> object being passed as a navigation parameter. After navigation has occurred the data in the <xref:Microsoft.Maui.Controls.ShellNavigationQueryParameters> object is cleared.
+
+::: moniker-end
+
+## Receive navigation data
+
 There are two approaches to receiving navigation data:
 
-1. The class that represents the page being navigated to, or the class for the page's `BindingContext`, can be decorated with a `QueryPropertyAttribute` for each query parameter. For more information, see [Process navigation data using query property attributes](#process-navigation-data-using-query-property-attributes).
+1. The class that represents the page being navigated to, or the class for the page's `BindingContext`, can be decorated with a <xref:Microsoft.Maui.Controls.QueryPropertyAttribute> for each query parameter. For more information, see [Process navigation data using query property attributes](#process-navigation-data-using-query-property-attributes).
 1. The class that represents the page being navigated to, or the class for the page's `BindingContext`, can implement the `IQueryAttributable` interface. For more information, see [Process navigation data using a single method](#process-navigation-data-using-a-single-method).
 
 ### Process navigation data using query property attributes
 
-Navigation data can be received by decorating the receiving class with a `QueryPropertyAttribute` for each string-based query parameter and object-based navigation parameter:
+::: moniker range="=net-maui-7.0"
+
+Navigation data can be received by decorating the receiving class with a <xref:Microsoft.Maui.Controls.QueryPropertyAttribute> for each string-based query parameter and object-based navigation parameter:
+
+::: moniker-end
+
+::: moniker range=">=net-maui-8.0"
+
+Navigation data can be received by decorating the receiving class with a <xref:Microsoft.Maui.Controls.QueryPropertyAttribute> for each string-based query parameter, object-based navigation parameter, or <xref:Microsoft.Maui.Controls.ShellNavigationQueryParameters> object:
+
+::: moniker-end
 
 ```csharp
 [QueryProperty(nameof(Bear), "Bear")]
@@ -400,10 +444,10 @@ public partial class BearDetailPage : ContentPage
 }
 ```
 
-In this example the first argument for the `QueryPropertyAttribute` specifies the name of the property that will receive the data, with the second argument specifying the parameter id. Therefore, the `QueryPropertyAttribute` in the above example specifies that the `Bear` property will receive the data passed in the `Bear` navigation parameter in the `GoToAsync` method call.
+In this example the first argument for the <xref:Microsoft.Maui.Controls.QueryPropertyAttribute> specifies the name of the property that will receive the data, with the second argument specifying the parameter id. Therefore, the <xref:Microsoft.Maui.Controls.QueryPropertyAttribute> in the above example specifies that the `Bear` property will receive the data passed in the `Bear` navigation parameter in the <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> method call.
 
 > [!NOTE]
-> String-based query parameter values that are received via the `QueryPropertyAttribute` are automatically URL decoded.
+> String-based query parameter values that are received via the <xref:Microsoft.Maui.Controls.QueryPropertyAttribute> are automatically URL decoded.
 
 ### Process navigation data using a single method
 
@@ -425,7 +469,7 @@ public class MonkeyDetailViewModel : IQueryAttributable, INotifyPropertyChanged
 }
 ```
 
-In this example, the `ApplyQueryAttributes` method retrieves the object that corresponds to the `Monkey` key in the `query` dictionary, which was passed as an argument to the `GoToAsync` method call.
+In this example, the `ApplyQueryAttributes` method retrieves the object that corresponds to the `Monkey` key in the `query` dictionary, which was passed as an argument to the <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> method call.
 
 > [!IMPORTANT]
 > String-based query parameter values that are received via the `IQueryAttributable` interface aren't automatically URL decoded.
@@ -445,7 +489,7 @@ async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEvent
 
 This code example retrieves the currently selected elephant in the <xref:Microsoft.Maui.Controls.CollectionView>, and navigates to the `elephantdetails` route, passing `elephantName` and `elephantLocation` as query parameters.
 
-To receive multiple items of data, the class that represents the page being navigated to, or the class for the page's `BindingContext`, can be decorated with a `QueryPropertyAttribute` for each string-based query parameter:
+To receive multiple items of data, the class that represents the page being navigated to, or the class for the page's `BindingContext`, can be decorated with a <xref:Microsoft.Maui.Controls.QueryPropertyAttribute> for each string-based query parameter:
 
 ```csharp
 [QueryProperty(nameof(Name), "name")]
@@ -471,7 +515,7 @@ public partial class ElephantDetailPage : ContentPage
 }
 ```
 
-In this example, the class is decorated with a `QueryPropertyAttribute` for each query parameter. The first `QueryPropertyAttribute` specifies that the `Name` property will receive the data passed in the `name` query parameter, while the second `QueryPropertyAttribute` specifies that the `Location` property will receive the data passed in the `location` query parameter. In both cases, the query parameter values are specified in the URI in the `GoToAsync` method call.
+In this example, the class is decorated with a <xref:Microsoft.Maui.Controls.QueryPropertyAttribute> for each query parameter. The first <xref:Microsoft.Maui.Controls.QueryPropertyAttribute> specifies that the `Name` property will receive the data passed in the `name` query parameter, while the second <xref:Microsoft.Maui.Controls.QueryPropertyAttribute> specifies that the `Location` property will receive the data passed in the `location` query parameter. In both cases, the query parameter values are specified in the URI in the <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> method call.
 
 Alternatively, navigation data can be processed by a single method by implementing the `IQueryAttributable` interface on the class that represents the page being navigated to, or the class for the page's `BindingContext`:
 
@@ -490,7 +534,7 @@ public class ElephantDetailViewModel : IQueryAttributable, INotifyPropertyChange
 }
 ```
 
-In this example, the `ApplyQueryAttributes` method retrieves the value of the `name` and `location` query parameters from the URI in the `GoToAsync` method call.
+In this example, the `ApplyQueryAttributes` method retrieves the value of the `name` and `location` query parameters from the URI in the <xref:Microsoft.Maui.Controls.Shell.GoToAsync%2A> method call.
 
 > [!NOTE]
 > String-based query parameters and object-based navigation parameters can be simultaneously passed when performing route-based navigation.
@@ -499,9 +543,9 @@ In this example, the `ApplyQueryAttributes` method retrieves the value of the `n
 
 Back button appearance and behavior can be redefined by setting the `BackButtonBehavior` attached property to a `BackButtonBehavior` object. The `BackButtonBehavior` class defines the following properties:
 
-- `Command`, of type `ICommand`, which is executed when the back button is pressed.
+- `Command`, of type <xref:System.Windows.Input.ICommand>, which is executed when the back button is pressed.
 - `CommandParameter`, of type `object`, which is the parameter that's passed to the `Command`.
-- `IconOverride`, of type `ImageSource`, the icon used for the back button.
+- `IconOverride`, of type <xref:Microsoft.Maui.Controls.ImageSource>, the icon used for the back button.
 - `IsEnabled`, of type `boolean`, indicates whether the back button is enabled. The default value is `true`.
 - `IsVisible`, of type `boolean`, indicates whether the back button is visible. The default value is `true`.
 - `TextOverride`, of type `string`, the text used for the back button.
@@ -520,6 +564,6 @@ The following code shows an example of redefining back button appearance and beh
 </ContentPage>
 ```
 
-The `Command` property is set to an `ICommand` to be executed when the back button is pressed, and the `IconOverride` property is set to the icon that's used for the back button:
+The `Command` property is set to an <xref:System.Windows.Input.ICommand> to be executed when the back button is pressed, and the `IconOverride` property is set to the icon that's used for the back button:
 
 :::image type="content" source="media/navigation/back-button.png" alt-text="Screenshot of a Shell back button icon override.":::

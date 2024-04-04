@@ -6,8 +6,6 @@ ms.date: 12/13/2021
 
 # Shadow
 
-<!-- Sample link, if any, goes here -->
-
 The .NET Multi-platform App UI (.NET MAUI) `Shadow` class paints a shadow around a layout or view. The <xref:Microsoft.Maui.Controls.VisualElement> class has a `Shadow` bindable property, of type `Shadow`, that enables a shadow to be added to any layout or view.
 
 The `Shadow` class defines the following properties:
@@ -48,7 +46,7 @@ In this example, a black shadow is painted around the outline of the image, with
 Shadows can also be added to clipped objects, as shown in the following example:
 
 ```xaml
-<Image Source=https://aka.ms/campus.jpg
+<Image Source="https://aka.ms/campus.jpg"
        Aspect="AspectFill"
        HeightRequest="220"
        WidthRequest="220"

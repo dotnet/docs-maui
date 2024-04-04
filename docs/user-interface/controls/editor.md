@@ -1,7 +1,7 @@
 ---
 title: "Editor"
 description: "The .NET MAUI Editor allows you to enter and edit multiple lines of text."
-ms.date: 03/03/2022
+ms.date: 10/19/2023
 ---
 
 # Editor
@@ -10,8 +10,9 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Editor>
 
 <xref:Microsoft.Maui.Controls.Editor> defines the following properties:
 
+::: moniker range="=net-maui-7.0"
+
 - `AutoSize`, of type `EditorAutoSizeOption`, defines whether the editor will change size to accommodate user input. By default, the editor doesn't auto size.
-- `CharacterSpacing`, of type `double`, sets the spacing between characters in the entered text.
 - `CursorPosition`, of type `int`, defines the position of the cursor within the editor.
 - `FontAttributes`, of type `FontAttributes`, determines text style.
 - `FontAutoScalingEnabled`, of type `bool`, defines whether the text will reflect scaling preferences set in the operating system. The default value of this property is `true`.
@@ -19,12 +20,18 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Editor>
 - `FontSize`, of type `double`, defines the font size.
 - `HorizontalTextAlignment`, of type `TextAlignment`, defines the horizontal alignment of the text.
 - `IsTextPredictionEnabled`, of type `bool`, controls whether text prediction and automatic text correction is enabled.
-- `Placeholder`, of type `string`, defines the text that's displayed when the control is empty.
-- `PlaceholderColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the color of the placeholder text.
 - `SelectionLength`, of type `int`, represents the length of selected text within the editor.
-- `Text`, of type `string`, defines the text entered into the editor.
-- `TextColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the color of the entered text.
 - `VerticalTextAlignment`, of type `TextAlignment`, defines the vertical alignment of the text.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-8.0"
+
+- `AutoSize`, of type `EditorAutoSizeOption`, defines whether the editor will change size to accommodate user input. By default, the editor doesn't auto size.
+- `HorizontalTextAlignment`, of type `TextAlignment`, defines the horizontal alignment of the text.
+- `VerticalTextAlignment`, of type `TextAlignment`, defines the vertical alignment of the text.
+
+::: moniker-end
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
@@ -32,11 +39,42 @@ In addition, <xref:Microsoft.Maui.Controls.Editor> defines a `Completed` event, 
 
 <xref:Microsoft.Maui.Controls.Editor> derives from the `InputView` class, from which it inherits the following properties:
 
+::: moniker range="=net-maui-7.0"
+
+- `CharacterSpacing`, of type `double`, sets the spacing between characters in the entered text.
 - `IsReadOnly`, of type `bool`, defines whether the user should be prevented from modifying text. The default value of this property is `false`.
 - `IsSpellCheckEnabled`, of type `bool`, controls whether spell checking is enabled.
-- `Keyboard`, of type `Keyboard`, specifies the virtual keyboard that's displayed when entering text.
+- `Keyboard`, of type `Keyboard`, specifies the soft input keyboard that's displayed when entering text.
 - `MaxLength`, of type `int`, defines the maximum input length.
+- `Placeholder`, of type `string`, defines the text that's displayed when the control is empty.
+- `PlaceholderColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the color of the placeholder text.
+- `Text`, of type `string`, defines the text entered into the control.
+- `TextColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the color of the entered text.
 - `TextTransform`, of type `TextTransform`, specifies the casing of the entered text.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-8.0"
+
+- `CharacterSpacing`, of type `double`, sets the spacing between characters in the entered text.
+- `CursorPosition`, of type `int`, defines the position of the cursor within the editor.
+- `FontAttributes`, of type `FontAttributes`, determines text style.
+- `FontAutoScalingEnabled`, of type `bool`, defines whether the text will reflect scaling preferences set in the operating system. The default value of this property is `true`.
+- `FontFamily`, of type `string`, defines the font family.
+- `FontSize`, of type `double`, defines the font size.
+- `IsReadOnly`, of type `bool`, defines whether the user should be prevented from modifying text. The default value of this property is `false`.
+- `IsSpellCheckEnabled`, of type `bool`, controls whether spell checking is enabled.
+- `IsTextPredictionEnabled`, of type `bool`, controls whether text prediction and automatic text correction is enabled.
+- `Keyboard`, of type `Keyboard`, specifies the soft input keyboard that's displayed when entering text.
+- `MaxLength`, of type `int`, defines the maximum input length.
+- `Placeholder`, of type `string`, defines the text that's displayed when the control is empty.
+- `PlaceholderColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the color of the placeholder text.
+- `SelectionLength`, of type `int`, represents the length of selected text within the control.
+- `Text`, of type `string`, defines the text entered into the control.
+- `TextColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the color of the entered text.
+- `TextTransform`, of type `TextTransform`, specifies the casing of the entered text.
+
+::: moniker-end
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
@@ -68,6 +106,8 @@ The following screenshot shows the resulting <xref:Microsoft.Maui.Controls.Edito
 
 :::image type="content" source="media/editor/editor.png" alt-text="Screenshot of a basic Editor on Android.":::
 
+[!INCLUDE [Keyboard autoscroll manager](includes/keyboardautomanagerscroll.md)]
+
 Entered text can be accessed by reading the `Text` property, and the `TextChanged` and `Completed` events signal that the text has changed or been completed.
 
 The `TextChanged` event is raised when the text in the <xref:Microsoft.Maui.Controls.Editor> changes, and the `TextChangedEventArgs` provide the text before and after the change via the `OldTextValue` and `NewTextValue` properties:
@@ -81,7 +121,7 @@ void OnEditorTextChanged(object sender, TextChangedEventArgs e)
 }
 ```
 
-The `Completed` event is raised when the user has ended input by pressing the return key on the keyboard, or by pressing the Tab key on Windows. The handler for the event is a generic event handler:
+The `Completed` event is only raised on Windows when the user has ended input by pressing the <kbd>Tab</kbd> key on the keyboard, or by focusing another control. The handler for the event is a generic event handler:
 
 ```csharp
 void OnEditorCompleted(object sender, EventArgs e)
@@ -199,6 +239,19 @@ The equivalent C# code is:
 Editor editor = new Editor();
 editor.Keyboard = Keyboard.Create(KeyboardFlags.Suggestions | KeyboardFlags.CapitalizeCharacter);
 ```
+
+::: moniker range=">=net-maui-8.0"
+
+[!INCLUDE [Hide and show the soft input keyboard](includes/soft-input-extensions.md)]
+
+The following example shows how to hide the soft input keyboard on an <xref:Microsoft.Maui.Controls.Editor> named `editor`, if it's currently showing:
+
+```csharp
+if (editor.IsSoftInputShowing())
+    await editor.HideSoftInputAsync(System.Threading.CancellationToken.None);
+```
+
+::: moniker-end
 
 ## Enable and disable spell checking
 

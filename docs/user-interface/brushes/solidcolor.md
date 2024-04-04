@@ -10,7 +10,17 @@ ms.date: 01/11/2022
 
 The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.SolidColorBrush> class derives from the <xref:Microsoft.Maui.Controls.Brush> class, and is used to paint an area with a solid color. There are a variety of approaches to specifying the color of a <xref:Microsoft.Maui.Controls.SolidColorBrush>. For example, you can specify its color with a <xref:Microsoft.Maui.Graphics.Color> value or by using one of the predefined <xref:Microsoft.Maui.Controls.SolidColorBrush> objects provided by the <xref:Microsoft.Maui.Controls.Brush> class.
 
+::: moniker range="=net-maui-7.0"
+
 The <xref:Microsoft.Maui.Controls.SolidColorBrush> class defines the `Color` property, of type <xref:Microsoft.Maui.Graphics.Color>, which represents the color of the brush. This property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means that it can be the target of data bindings, and styled.
+
+::: moniker-end
+
+::: moniker range=">=net-maui-8.0"
+
+The <xref:Microsoft.Maui.Controls.SolidColorBrush> class defines the `Color` property, of type <xref:Microsoft.Maui.Graphics.Color>, which represents the color of the brush. This property is the [`ContentProperty`](xref:Microsoft.Maui.Controls.ContentPropertyAttribute) of the <xref:Microsoft.Maui.Controls.SolidColorBrush> class, and therefore does not need to be explicitly set from XAML. In addition, this property is backed by a <xref:Microsoft.Maui.Controls.BindableProperty> object, which means that it can be the target of data bindings, and styled.
+
+::: moniker-end
 
 The <xref:Microsoft.Maui.Controls.SolidColorBrush> class also has an `IsEmpty` method that returns a `bool` that represents whether the brush has been assigned a color.
 

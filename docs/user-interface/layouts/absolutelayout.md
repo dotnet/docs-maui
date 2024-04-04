@@ -21,10 +21,6 @@ The <xref:Microsoft.Maui.Controls.AbsoluteLayout> class defines the following pr
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings and styled. For more information about attached properties, see [.NET MAUI Attached Properties](~/fundamentals/attached-properties.md).
 
-<!--
-> [!TIP]
-> To obtain the best possible layout performance, follow the guidelines at [Optimize layout performance](~/xamarin-forms/deploy-test/performance.md#optimize-layout-performance). -->
-
 ## Position and size children
 
 The position and size of children in an <xref:Microsoft.Maui.Controls.AbsoluteLayout> is defined by setting the `AbsoluteLayout.LayoutBounds` attached property of each child, using absolute values or proportional values. Absolute and proportional values can be mixed for children when the position should scale, but the size should stay fixed, or vice versa. For information about absolute values, see [Absolute positioning and sizing](#absolute-positioning-and-sizing). For information about proportional values, see [Proportional positioning and sizing](#proportional-positioning-and-sizing).

@@ -19,9 +19,6 @@ The <xref:Microsoft.Maui.Controls.StackLayout> class defines the following prope
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that the properties can be targets of data bindings and styled.
 
-<!-- > [!TIP]
-> To obtain the best possible layout performance, follow the guidelines at [Optimize layout performance](~/xamarin-forms/deploy-test/performance.md#optimize-layout-performance). -->
-
 ## Vertical orientation
 
 The following XAML shows how to create a vertically oriented <xref:Microsoft.Maui.Controls.StackLayout> that contains different child views:
@@ -332,7 +329,7 @@ In this example, the parent <xref:Microsoft.Maui.Controls.StackLayout> contains 
 :::image type="content" source="media/stacklayout/nested.png" alt-text="Nested .NET MAUI StackLayouts.":::
 
 > [!IMPORTANT]
-> The deeper you nest <xref:Microsoft.Maui.Controls.StackLayout> objects and other layouts, the more the nested layouts will impact performance. <!--For more information, see [Choose the correct layout](~/xamarin-forms/deploy-test/performance.md#choose-the-correct-layout).-->
+> The deeper you nest <xref:Microsoft.Maui.Controls.StackLayout> objects and other layouts, the more layout calculations will be performed which may impact performance. For more information, see [Choose the correct layout](~/deployment/performance.md#choose-the-correct-layout).
 
 The equivalent C# code is:
 

@@ -16,9 +16,9 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Slider>
 - `MinimumTrackColor`, of type <xref:Microsoft.Maui.Graphics.Color>, is the bar color on the left side of the thumb.
 - `MaximumTrackColor`, of type <xref:Microsoft.Maui.Graphics.Color>, is the bar color on the right side of the thumb.
 - `ThumbColor` of type <xref:Microsoft.Maui.Graphics.Color>, is the thumb color.
-- `ThumbImageSource`, of type `ImageSource`, is the image to use for the thumb, of type `ImageSource`.
-- `DragStartedCommand`, of type `ICommand`, which is executed at the beginning of a drag action.
-- `DragCompletedCommand`, of type `ICommand`, which is executed at the end of a drag action.
+- `ThumbImageSource`, of type <xref:Microsoft.Maui.Controls.ImageSource>, is the image to use for the thumb, of type <xref:Microsoft.Maui.Controls.ImageSource>.
+- `DragStartedCommand`, of type <xref:System.Windows.Input.ICommand>, which is executed at the beginning of a drag action.
+- `DragCompletedCommand`, of type <xref:System.Windows.Input.ICommand>, which is executed at the end of a drag action.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects. The `Value` property has a default binding mode of `BindingMode.TwoWay`, which means that it's suitable as a binding source in an application that uses the Model-View-ViewModel (MVVM) pattern.
 
@@ -29,7 +29,7 @@ The <xref:Microsoft.Maui.Controls.Slider> coerces the `Value` property so that i
 
 <xref:Microsoft.Maui.Controls.Slider> defines a `ValueChanged` event that's raised when the `Value` changes, either through user manipulation of the <xref:Microsoft.Maui.Controls.Slider> or when the program sets the `Value` property directly. A `ValueChanged` event is also raised when the `Value` property is coerced as described in the previous paragraph. The `ValueChangedEventArgs` object that accompanies the `ValueChanged` event has `OldValue` and `NewValue` properties, of type `double`. At the time the event is raised, the value of `NewValue` is the same as the `Value` property of the <xref:Microsoft.Maui.Controls.Slider> object.
 
-<xref:Microsoft.Maui.Controls.Slider> also defines `DragStarted` and `DragCompleted` events, that are raised at the beginning and end of the drag action. Unlike the `ValueChanged` event, the `DragStarted` and `DragCompleted` events are only raised through user manipulation of the <xref:Microsoft.Maui.Controls.Slider>. When the `DragStarted` event fires, the `DragStartedCommand`, of type `ICommand`, is executed. Similarly, when the `DragCompleted` event fires, the `DragCompletedCommand`, of type `ICommand`, is executed.
+<xref:Microsoft.Maui.Controls.Slider> also defines `DragStarted` and `DragCompleted` events, that are raised at the beginning and end of the drag action. Unlike the `ValueChanged` event, the `DragStarted` and `DragCompleted` events are only raised through user manipulation of the <xref:Microsoft.Maui.Controls.Slider>. When the `DragStarted` event fires, the `DragStartedCommand`, of type <xref:System.Windows.Input.ICommand>, is executed. Similarly, when the `DragCompleted` event fires, the `DragCompletedCommand`, of type <xref:System.Windows.Input.ICommand>, is executed.
 
 > [!WARNING]
 > Do not use unconstrained horizontal layout options of `Center`, `Start`, or `End` with <xref:Microsoft.Maui.Controls.Slider>. Keep the default `HorizontalOptions` setting of `Fill`, and don't use a width of `Auto` when putting <xref:Microsoft.Maui.Controls.Slider> in a <xref:Microsoft.Maui.Controls.Grid> layout.

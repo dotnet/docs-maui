@@ -7,6 +7,8 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices"]
 
 # Vibration
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-essentials)
+
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Devices.IVibration> interface. This interface lets you start and stop the vibrate functionality for a desired amount of time.
 
 The default implementation of the `IVibration` interface is available through the <xref:Microsoft.Maui.Devices.Vibration.Default?displayProperty=nameWithType> property. Both the `IVibration` interface and `Vibration` class are contained in the `Microsoft.Maui.Devices` namespace.
@@ -38,13 +40,11 @@ The `VIBRATE` permission is required, and must be configured in the Android proj
   <uses-permission android:name="android.permission.VIBRATE" />
   ```
 
-<!-- TODO not yet supported
   \- or -
 
-- Use the Android project properties:
+- Update the Android Manifest in the manifest editor:
 
-  Right-click on the Android project and open the project's properties. Under _Android Manifest_ find the **Required permissions:** area and check the appropriate permissions. This will automatically update the _AndroidManifest.xml_ file.
--->
+  In Visual Studio double-click on the *Platforms/Android/AndroidManifest.xml* file to open the Android manifest editor. Then, under **Required permissions** check the **VIBRATE** permission. This will automatically update the *AndroidManifest.xml* file.
 
 # [iOS/Mac Catalyst](#tab/macios)
 

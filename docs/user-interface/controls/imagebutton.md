@@ -10,17 +10,17 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.ImageBu
 
 <xref:Microsoft.Maui.Controls.ImageButton> defines the following properties:
 
-- `Aspect`, of type `Aspect`, determines how the image will be scaled to fit the display area.
+- `Aspect`, of type `Aspect`, determines how the image is scaled to fit the display area.
 - `BorderColor`, of type <xref:Microsoft.Maui.Graphics.Color>, describes the border color of the button.
 - `BorderWidth`, of type `double`, defines the width of the button's border.
-- `Command`, of type `ICommand`, defines the command that's executed when the button is tapped.
+- `Command`, of type <xref:System.Windows.Input.ICommand>, defines the command that's executed when the button is tapped.
 - `CommandParameter`, of type `object`, is the parameter that's passed to `Command`.
 - `CornerRadius`, of type `int`, describes the corner radius of the button's border.
 - `IsLoading`, of type `bool`, represents the loading status of the image. The default value of this property is `false`.
 - `IsOpaque`, of type `bool`, determines whether .NET MAUI should treat the image as opaque when rendering it. The default value of this property is `false`.
 - `IsPressed`, of type `bool`, represents whether the button is being pressed. The default value of this property is `false`.
 - `Padding`, of type `Thickness`, determines the button's padding.
-- `Source`, of type `ImageSource`, specifies an image to display as the content of the button.
+- `Source`, of type <xref:Microsoft.Maui.Controls.ImageSource>, specifies an image to display as the content of the button.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
@@ -38,9 +38,9 @@ In addition, <xref:Microsoft.Maui.Controls.ImageButton> defines `Clicked`, `Pres
 
 ## Create an ImageButton
 
-To create an image button, create an <xref:Microsoft.Maui.Controls.ImageButton> object, set its `Source` property and handle it's `Clicked` event.
+To create an image button, create an <xref:Microsoft.Maui.Controls.ImageButton> object, set its `Source` property and handle its `Clicked` event.
 
-The following XAML example show how to create an <xref:Microsoft.Maui.Controls.ImageButton>:
+The following XAML example shows how to create an <xref:Microsoft.Maui.Controls.ImageButton>:
 
 ```xaml
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -107,7 +107,7 @@ imageButton.Clicked += (s, e) =>
 
 An app can respond to <xref:Microsoft.Maui.Controls.ImageButton> taps without handling the `Clicked` event. The <xref:Microsoft.Maui.Controls.ImageButton> implements an alternative notification mechanism called the _command_ or _commanding_ interface. This consists of two properties:
 
-- `Command` of type [`ICommand`](xref:System.Windows.Input.ICommand), an interface defined in the [`System.Windows.Input`](xref:System.Windows.Input) namespace.
+- `Command` of type [<xref:System.Windows.Input.ICommand>](xref:System.Windows.Input.ICommand), an interface defined in the [`System.Windows.Input`](xref:System.Windows.Input) namespace.
 - `CommandParameter` property of type [`Object`](xref:System.Object).
 
 This approach is suitable in connection with data-binding, and particularly when implementing the Model-View-ViewModel (MVVM) pattern. For more information about commanding, see [Use the command interface](button.md#use-the-command-interface) in the [Button](button.md) article.
@@ -120,7 +120,7 @@ For more information about these events, see [Press and release the button](butt
 
 ## ImageButton visual states
 
-<xref:Microsoft.Maui.Controls.ImageButton> has a `Pressed` <xref:Microsoft.Maui.Controls.VisualState> that can be used to initiate a visual change to the <xref:Microsoft.Maui.Controls.ImageButton> when pressed, provided that it's enabled.
+<xref:Microsoft.Maui.Controls.ImageButton> has a `Pressed` <xref:Microsoft.Maui.Controls.VisualState> that can be used to initiate a visual change to the <xref:Microsoft.Maui.Controls.ImageButton> when pressed, if it's enabled.
 
 The following XAML example shows how to define a visual state for the `Pressed` state:
 

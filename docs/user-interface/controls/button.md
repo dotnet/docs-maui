@@ -13,7 +13,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Button>
 - `BorderColor`, of type <xref:Microsoft.Maui.Graphics.Color>, describes the border color of the button.
 - `BorderWidth`, of type `double`, defines the width of the button's border.
 - `CharacterSpacing`, of type `double`, defines the spacing between characters of the button's text.
-- `Command`, of type `ICommand`, defines the command that's executed when the button is tapped.
+- `Command`, of type <xref:System.Windows.Input.ICommand>, defines the command that's executed when the button is tapped.
 - `CommandParameter`, of type `object`, is the parameter that's passed to `Command`.
 - `ContentLayout`, of type `ButtonContentLayout`, defines the object that controls the position of the button image and the spacing between the button's image and text.
 - `CornerRadius`, of type `int`, describes the corner radius of the button's border.
@@ -21,7 +21,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Button>
 - `FontAutoScalingEnabled`, of type `bool`, defines whether the button text will reflect scaling preferences set in the operating system. The default value of this property is `true`.
 - `FontFamily`, of type `string`, defines the font family.
 - `FontSize`, of type `double`, defines the font size.
-- `ImageSource`, of type `ImageSource`, specifies a bitmap image to display as the content of the button.
+- <xref:Microsoft.Maui.Controls.ImageSource>, of type <xref:Microsoft.Maui.Controls.ImageSource>, specifies a bitmap image to display as the content of the button.
 - `LineBreakMode`, of type `LineBreakMode`, determines how text should be handled when it can't fit on one line.
 - `Padding`, of type `Thickness`, determines the button's padding.
 - `Text`, of type `string`, defines the text displayed as the content of the button.
@@ -31,7 +31,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Button>
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
 > [!NOTE]
-> While <xref:Microsoft.Maui.Controls.Button> defines an `ImageSource` property, that allows you to display a image on the <xref:Microsoft.Maui.Controls.Button>, this property is intended to be used when displaying a small icon next to the <xref:Microsoft.Maui.Controls.Button> text.
+> While <xref:Microsoft.Maui.Controls.Button> defines an <xref:Microsoft.Maui.Controls.ImageSource> property, that allows you to display a image on the <xref:Microsoft.Maui.Controls.Button>, this property is intended to be used when displaying a small icon next to the <xref:Microsoft.Maui.Controls.Button> text.
 
 In addition, <xref:Microsoft.Maui.Controls.Button> defines `Clicked`, `Pressed`, and `Released` events. The `Clicked` event is raised when a <xref:Microsoft.Maui.Controls.Button> tap with a finger or mouse pointer is released from the button's surface. The `Pressed` event is raised when a finger presses on a <xref:Microsoft.Maui.Controls.Button>, or a mouse button is pressed with the pointer positioned over the <xref:Microsoft.Maui.Controls.Button>. The `Released` event is raised when the finger or mouse button is released. Generally, a `Clicked` event is also raised at the same time as the `Released` event, but if the finger or mouse pointer slides away from the surface of the <xref:Microsoft.Maui.Controls.Button> before being released, the `Clicked` event might not occur.
 
@@ -100,12 +100,12 @@ button.Clicked += async (sender, args) => await label.RelRotateTo(360, 1000);
 
 An app can respond to <xref:Microsoft.Maui.Controls.Button> taps without handling the `Clicked` event. The <xref:Microsoft.Maui.Controls.Button> implements an alternative notification mechanism called the _command_ or _commanding_ interface. This consists of two properties:
 
-- `Command` of type [`ICommand`](xref:System.Windows.Input.ICommand), an interface defined in the [`System.Windows.Input`](xref:System.Windows.Input) namespace.
+- `Command` of type [<xref:System.Windows.Input.ICommand>](xref:System.Windows.Input.ICommand), an interface defined in the [`System.Windows.Input`](xref:System.Windows.Input) namespace.
 - `CommandParameter` property of type [`Object`](xref:System.Object).
 
-This approach is particularly suitable in connection with data-binding, and particularly when implementing the Model-View-ViewModel (MVVM) pattern. In an MVVM application, the viewmodel defines properties of type `ICommand` that are then connected to <xref:Microsoft.Maui.Controls.Button> objects with data bindings. .NET MAUI also defines `Command` and `Command<T>` classes that implement the `ICommand` interface and assist the viewmodel in defining properties of type `ICommand`. For more information about commanding, see [Commanding](~/fundamentals/data-binding/commanding.md).
+This approach is particularly suitable in connection with data-binding, and particularly when implementing the Model-View-ViewModel (MVVM) pattern. In an MVVM application, the viewmodel defines properties of type <xref:System.Windows.Input.ICommand> that are then connected to <xref:Microsoft.Maui.Controls.Button> objects with data bindings. .NET MAUI also defines `Command` and `Command<T>` classes that implement the <xref:System.Windows.Input.ICommand> interface and assist the viewmodel in defining properties of type <xref:System.Windows.Input.ICommand>. For more information about commanding, see [Commanding](~/fundamentals/data-binding/commanding.md).
 
-The following example shows a very simple viewmodel class that defines a property of type `double` named `Number`, and two properties of type `ICommand` named `MultiplyBy2Command` and `DivideBy2Command`:
+The following example shows a very simple viewmodel class that defines a property of type `double` named `Number`, and two properties of type <xref:System.Windows.Input.ICommand> named `MultiplyBy2Command` and `DivideBy2Command`:
 
 ```csharp
 public class CommandDemoViewModel : INotifyPropertyChanged
@@ -141,7 +141,7 @@ public class CommandDemoViewModel : INotifyPropertyChanged
 }
 ```
 
-In this example, the two `ICommand` properties are initialized in the class's constructor with two objects of type `Command`. The `Command` constructors include a little function (called the `execute` constructor argument) that either doubles or halves the value of the `Number` property.
+In this example, the two <xref:System.Windows.Input.ICommand> properties are initialized in the class's constructor with two objects of type `Command`. The `Command` constructors include a little function (called the `execute` constructor argument) that either doubles or halves the value of the `Number` property.
 
 The following XAML example consumes the `CommandDemoViewModel` class:
 
@@ -206,7 +206,7 @@ public class CommandDemoViewModel : INotifyPropertyChanged
 
 In this example, the calls to the `ChangeCanExecute` method of `Command` are required so that the `Command` method can call the `canExecute` method and determine whether the <xref:Microsoft.Maui.Controls.Button> should be disabled or not. With this code change, as the number reaches the limit, the <xref:Microsoft.Maui.Controls.Button> is disabled.
 
-It's also possible for two or more <xref:Microsoft.Maui.Controls.Button> elements to be bound to the same `ICommand` property. The <xref:Microsoft.Maui.Controls.Button> elements can be distinguished using the `CommandParameter` property of <xref:Microsoft.Maui.Controls.Button>. In this case, you'll want to use the generic `Command<T>` class. The `CommandParameter` object is then passed as an argument to the `execute` and `canExecute` methods. For more information, see [Commanding](~/fundamentals/data-binding/commanding.md).
+It's also possible for two or more <xref:Microsoft.Maui.Controls.Button> elements to be bound to the same <xref:System.Windows.Input.ICommand> property. The <xref:Microsoft.Maui.Controls.Button> elements can be distinguished using the `CommandParameter` property of <xref:Microsoft.Maui.Controls.Button>. In this case, you'll want to use the generic `Command<T>` class. The `CommandParameter` object is then passed as an argument to the `execute` and `canExecute` methods. For more information, see [Commanding](~/fundamentals/data-binding/commanding.md).
 
 ## Press and release the button
 
@@ -304,12 +304,14 @@ For more information about visual states, see [Visual states](~/user-interface/v
 
 ## Use bitmaps with buttons
 
-The <xref:Microsoft.Maui.Controls.Button> class defines an `ImageSource` property that allows you to display a small bitmap image on the <xref:Microsoft.Maui.Controls.Button>, either alone or in combination with text. You can also specify how the text and image are arranged. The `ImageSource` property is of type `ImageSource`, which means that the bitmaps can be loaded from a file, embedded resource, URI, or stream.
+The <xref:Microsoft.Maui.Controls.Button> class defines an <xref:Microsoft.Maui.Controls.ImageSource> property that allows you to display a small bitmap image on the <xref:Microsoft.Maui.Controls.Button>, either alone or in combination with text. You can also specify how the text and image are arranged. The <xref:Microsoft.Maui.Controls.ImageSource> property is of type <xref:Microsoft.Maui.Controls.ImageSource>, which means that the bitmaps can be loaded from a file, embedded resource, URI, or stream.
 
 <!-- > [!NOTE]
 > While a <xref:Microsoft.Maui.Controls.Button> can load an animated GIF, it will only display the first frame of the GIF. -->
 
-You can specify how the `Text` and `ImageSource` properties are arranged on the <xref:Microsoft.Maui.Controls.Button> using the `ContentLayout` property of <xref:Microsoft.Maui.Controls.Button>. This property is of type `ButtonContentLayout`, and its constructor has two arguments:
+Bitmaps aren't scaled to fit a <xref:Microsoft.Maui.Controls.Button>. The best size is usually between 32 and 64 device-independent units, depending on how large you want the bitmap to be.
+
+You can specify how the `Text` and <xref:Microsoft.Maui.Controls.ImageSource> properties are arranged on the <xref:Microsoft.Maui.Controls.Button> using the `ContentLayout` property of <xref:Microsoft.Maui.Controls.Button>. This property is of type `ButtonContentLayout`, and its constructor has two arguments:
 
 - A member of the `ImagePosition` enumeration: `Left`, `Top`, `Right`, or `Bottom` indicating how the bitmap appears relative to the text.
 - A `double` value for the spacing between the bitmap and the text.

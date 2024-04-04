@@ -7,6 +7,8 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel.DataTransfer"]
 
 # Clipboard
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-essentials)
+
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.ApplicationModel.DataTransfer.IClipboard> interface. With this interface, you can copy and paste text to and from the system clipboard.
 
 The default implementation of the `IClipboard` interface is available through the <xref:Microsoft.Maui.ApplicationModel.DataTransfer.Clipboard.Default?displayProperty=nameWithType> property. Both the `IClipboard` interface and `Clipboard` class are contained in the `Microsoft.Maui.ApplicationModel.DataTransfer` namespace.

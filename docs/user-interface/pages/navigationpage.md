@@ -21,7 +21,7 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.Navigat
 - `HasBackButton`, of type `bool`, represents whether the navigation bar includes a back button. The default value of this property is `true`. This is an attached property.
 - `IconColor`, of type <xref:Microsoft.Maui.Graphics.Color>, defines the background color of the icon in the navigation bar. This is an attached property.
 - `RootPage`, of type <xref:Microsoft.Maui.Controls.Page>, represents the root page of the navigation stack. This is a read-only property.
-- `TitleIconImageSource`, of type `ImageSource`, defines the icon that represents the title on the navigation bar. This is an attached property.
+- `TitleIconImageSource`, of type <xref:Microsoft.Maui.Controls.ImageSource>, defines the icon that represents the title on the navigation bar. This is an attached property.
 - `TitleView`, of type <xref:Microsoft.Maui.Controls.View>, defines the view that can be displayed in the navigation bar. This is an attached property.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.

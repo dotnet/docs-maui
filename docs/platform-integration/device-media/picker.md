@@ -1,11 +1,13 @@
 ---
 title: "Media picker for photos and videos"
 description: "Learn how to use the IMediaPicker interface in the Microsoft.Maui.Media namespace, to prompt the user to select or take a photo or video"
-ms.date: 02/02/2023
+ms.date: 04/18/2023
 no-loc: ["Microsoft.Maui", "Microsoft.Maui.Media", "MediaPicker"]
 ---
 
 # Media picker for photos and videos
+
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-essentials)
 
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Media.IMediaPicker> interface. This interface lets a user pick or take a photo or video on the device.
 
@@ -18,9 +20,18 @@ To access the media picker functionality, the following platform-specific setup 
 <!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
 
-The `CAMERA`, `WRITE_EXTERNAL_STORAGE`, `READ_EXTERNAL_STORAGE` permissions are required, and must be configured in the Android project. These can be added in the following ways:
+The `CAMERA` permission is required and must be configured in the Android project. In addition:
 
-- Add the assembly-based permission:
+- If your app targets Android 12 or lower, you must request the `READ_EXTERNAL_STORAGE` and `WRITE_EXTERNAL_STORAGE` permissions.
+- If your app targets Android 13 or higher and needs access to media files that other apps have created, you must request one or more of the following granular media permissions instead of the `READ_EXTERNAL_STORAGE` permission:
+
+  - `READ_MEDIA_IMAGES`
+  - `READ_MEDIA_VIDEO`
+  - `READ_MEDIA_AUDIO`
+
+These permissions can be added in the following ways:
+
+- Add the assembly-based permissions:
 
   Open the _Platforms/Android/MainApplication.cs_ file and add the following assembly attributes after `using` directives:
 
@@ -33,17 +44,22 @@ The `CAMERA`, `WRITE_EXTERNAL_STORAGE`, `READ_EXTERNAL_STORAGE` permissions are 
   Open the _Platforms/Android/AndroidManifest.xml_ file and add the following in the `manifest` node:
 
   ```xml
-  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.CAMERA" />
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="32" />    
+  <!-- Required only if your app needs to access images or photos that other apps created -->
+  <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+  <!-- Required only if your app needs to access videos that other apps created -->
+  <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+  <!-- Required only if your app needs to access audio files that other apps created -->
+  <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />    
   ```
-<!-- NOT SUPPORTED
+
   \- or -
 
-- Use the Android project properties:
+- Update the Android Manifest in the manifest editor:
 
-  Right-click on the Android project and open the project's properties. Under _Android Manifest_ find the **Required permissions:** area and check the appropriate permissions. This will automatically update the _AndroidManifest.xml_ file.
--->
+  In Visual Studio double-click on the *Platforms/Android/AndroidManifest.xml* file to open the Android manifest editor. Then, under **Required permissions** check the permissions listed above. This will automatically update the *AndroidManifest.xml* file.
 
 If your project's Target Android version is set to **Android 11 (R API 30)** or higher, you must update your _Android Manifest_ with queries that use Android's [package visibility requirements](https://developer.android.com/preview/privacy/package-visibility).
 
@@ -76,21 +92,7 @@ Each `<string>` element represents the reason the app is requesting access to th
 
 # [Windows](#tab/windows)
 
-::: moniker range="=net-maui-6.0"
-
-<!-- NOT SUPPORTED>
-In the `Package.appxmanifest` under **Capabilities** ensure that `Microphone` and `Webcam` capabilities are checked.
--->
-
-In the **Solution Explorer** pane, right-click on the _Platforms/Windows/Package.appxmanifest_ file, and select **View Code**. Under the `<Capabilities>` node, add `<DeviceCapability Name="microphone"/>` and `<DeviceCapability Name="webcam"/>` elements.
-
-::: moniker-end
-
-::: moniker range=">=net-maui-7.0"
-
 No setup is required.
-
-::: moniker-end
 
 -----
 <!-- markdownlint-enable MD025 -->

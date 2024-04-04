@@ -6,8 +6,6 @@ ms.date: 01/26/2022
 
 # Load XAML at runtime
 
-<!-- Sample link goes here -->
-
 When a .NET Multi-platform App UI (.NET MAUI) XAML class is constructed, a `LoadFromXaml` method is indirectly called. This occurs because the code-behind file for a XAML class calls the `InitializeComponent` method from its constructor:
 
 ```csharp

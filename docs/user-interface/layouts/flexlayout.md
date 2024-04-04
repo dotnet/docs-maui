@@ -31,7 +31,7 @@ These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> o
 > [!IMPORTANT]
 > When items in a <xref:Microsoft.Maui.Controls.FlexLayout> are arranged in a column, the <xref:Microsoft.Maui.Controls.FlexLayout> has a vertical *main axis* and a horizontal *cross axis*. When items in a <xref:Microsoft.Maui.Controls.FlexLayout> are arranged in a row, the <xref:Microsoft.Maui.Controls.FlexLayout> has a horizontal *main axis* and a vertical *cross axis*.
 
-<!-- <xref:Microsoft.Maui.Controls.FlexLayout> and its children can be partially styled using Cascading Style Sheets (CSS). For more information, see [Styling apps using Cascading Style Sheets (CSS)](). -->
+<xref:Microsoft.Maui.Controls.FlexLayout> and its children can be partially styled using Cascading Style Sheets (CSS). For more information, see [Styling apps using Cascading Style Sheets (CSS)](~/user-interface/styles/css.md).
 
 ## Orientation and alignment
 

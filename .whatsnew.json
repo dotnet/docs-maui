@@ -8,10 +8,10 @@
     },
     "inclusionCriteria": {
         "maxFilesChanged": 400,
-        "minAdditionsToFile": 20
+        "minAdditionsToFile": 10
     },
     "navigationOptions": {
-        "maximumNumberOfArticles": 6,
+        "maximumNumberOfArticles": 3,
         "tocParentNode": "What's new",
         "repoTocFolder": "docs/whats-new",
         "indexParentNode": "Find .NET MAUI doc updates",
@@ -57,6 +57,10 @@
         {
             "names": [ "ios" ],
             "heading": "iOS"
+        },
+        {
+            "names": [ "macios" ],
+            "heading": "iOS and Mac Catalyst"
         },
         {
             "names": [ "mac-catalyst" ],

@@ -7,7 +7,7 @@ no-loc: ["user.config"]
 
 # Managing virtual devices with the Android Device Manager
 
-This article explains how to use the Android Device Manager to create and configure Android Virtual Devices (AVDs) that emulate physical Android devices. You can use these virtual devices to run and test your app without having to rely on a physical device.
+This article explains how to use the Android Device Manager to create and configure Android Virtual Devices (AVDs) that emulate physical Android devices. You can use these virtual devices to run and test your app without having to rely on a physical device. For more information about Android virtual devices, see [Create and manage virtual devices](https://developer.android.com/studio/run/managing-avds) on developer.android.com.
 
 > [!IMPORTANT]
 > Enable hardware acceleration for the Android devices. For more information, see [Hardware Acceleration for Emulator Performance](hardware-acceleration.md).

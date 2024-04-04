@@ -12,6 +12,9 @@ The .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Controls.SwipeVi
 
 :::image type="content" source="media/swipeview/swipeview-collectionview.png" alt-text="Screenshot of SwipeView swipe items in a CollectionView.":::
 
+> [!IMPORTANT]
+> <xref:Microsoft.Maui.Controls.SwipeView> is designed for touch interfaces. On Windows it can only be swiped in a touch interface and will not function with a pointer device such as a mouse.
+
 <xref:Microsoft.Maui.Controls.SwipeView> defines the following properties:
 
 - `LeftItems`, of type `SwipeItems`, which represents the swipe items that can be invoked when the control is swiped from the left side.
@@ -32,8 +35,8 @@ The <xref:Microsoft.Maui.Controls.SwipeView> class also defines three events:
 
 In addition, <xref:Microsoft.Maui.Controls.SwipeView> includes `Open` and `Close` methods, which programmatically open and close the swipe items, respectively.
 
-<!-- > [!NOTE]
-> <xref:Microsoft.Maui.Controls.SwipeView> has a platform-specific on iOS and Android, that controls the transition that's used when opening a <xref:Microsoft.Maui.Controls.SwipeView>. For more information, see [SwipeView Swipe Transition Mode on iOS](~//platform-integration/platform-specifics/ios/swipeview-swipetransitionmode.md) and [SwipeView Swipe Transition Mode on Android](~/platform-integration/platform-specifics/android/swipeview-swipetransitionmode.md). -->
+> [!NOTE]
+> <xref:Microsoft.Maui.Controls.SwipeView> has a platform-specific on iOS and Android, that controls the transition that's used when opening a <xref:Microsoft.Maui.Controls.SwipeView>. For more information, see [SwipeView swipe transition Mode on iOS](~/ios/platform-specifics/swipeview-swipetransitionmode.md) and [SwipeView swipe transition mode on Android](~/android/platform-specifics/swipeview-swipetransitionmode.md).
 
 ## Create a SwipeView
 
@@ -133,13 +136,13 @@ The `LeftItems`, `RightItems`, `TopItems`, and `BottomItems` collections are all
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
 
-Each swipe item is defined as a `SwipeItem` object that's placed into one of the four `SwipeItems` directional collections. The `SwipeItem` class derives from the `MenuItem` class, and adds the following members:
+Each swipe item is defined as a `SwipeItem` object that's placed into one of the four `SwipeItems` directional collections. The `SwipeItem` class derives from the  <xref:Microsoft.Maui.Controls.MenuItem> class, and adds the following members:
 
 - A `BackgroundColor` property, of type <xref:Microsoft.Maui.Graphics.Color>, that defines the background color of the swipe item. This property is backed by a bindable property.
 - An `Invoked` event, which is raised when the swipe item is executed.
 
 > [!IMPORTANT]
-> The `MenuItem` class defines several properties, including `Command`, `CommandParameter`, `IconImageSource`, and `Text`. These properties can be set on a `SwipeItem` object to define its appearance, and to define an `ICommand` that executes when the swipe item is invoked. <!--For more information, see [MenuItem](~/user-interface/menuitem.md).-->
+> The  <xref:Microsoft.Maui.Controls.MenuItem> class defines several properties, including `Command`, `CommandParameter`, `IconImageSource`, and `Text`. These properties can be set on a `SwipeItem` object to define its appearance, and to define an <xref:System.Windows.Input.ICommand> that executes when the swipe item is invoked. For more information, see [Display menu items](~/user-interface/menuitem.md).
 
 The following example shows two `SwipeItem` objects in the `LeftItems` collection of a <xref:Microsoft.Maui.Controls.SwipeView>:
 
@@ -165,7 +168,7 @@ The appearance of each `SwipeItem` is defined by a combination of the `Text`, `I
 
 :::image type="content" source="media/swipeview/swipeview-swipeitems.png" alt-text="Screenshot of SwipeView swipe items.":::
 
-When a `SwipeItem` is tapped, its `Invoked` event fires and is handled by its registered event handler. In addition, the `MenuItem.Clicked` event fires. Alternatively, the `Command` property can be set to an `ICommand` implementation that will be executed when the `SwipeItem` is invoked.
+When a `SwipeItem` is tapped, its `Invoked` event fires and is handled by its registered event handler. In addition, the `MenuItem.Clicked` event fires. Alternatively, the `Command` property can be set to an <xref:System.Windows.Input.ICommand> implementation that will be executed when the `SwipeItem` is invoked.
 
 > [!NOTE]
 > When the appearance of a `SwipeItem` is defined only using the `Text` or `IconImageSource` properties, the content is always centered.
@@ -294,7 +297,7 @@ The following example shows a <xref:Microsoft.Maui.Controls.SwipeView> configure
 
 Custom swipe items can be defined with the `SwipeItemView` type. The `SwipeItemView` class derives from the <xref:Microsoft.Maui.Controls.ContentView> class, and adds the following properties:
 
-- `Command`, of type `ICommand`, which is executed when a swipe item is tapped.
+- `Command`, of type <xref:System.Windows.Input.ICommand>, which is executed when a swipe item is tapped.
 - `CommandParameter`, of type `object`, which is the parameter that's passed to the `Command`.
 
 These properties are backed by <xref:Microsoft.Maui.Controls.BindableProperty> objects, which means that they can be targets of data bindings, and styled.
@@ -325,7 +328,7 @@ The following example shows a `SwipeItemView` object in the `LeftItems` collecti
 </SwipeView>
 ```
 
-In this example, the `SwipeItemView` comprises a <xref:Microsoft.Maui.Controls.StackLayout> containing an <xref:Microsoft.Maui.Controls.Entry> and a <xref:Microsoft.Maui.Controls.Label>. After the user enters input into the <xref:Microsoft.Maui.Controls.Entry>, the rest of the `SwipeViewItem` can be tapped which executes the `ICommand` defined by the `SwipeItemView.Command` property.
+In this example, the `SwipeItemView` comprises a <xref:Microsoft.Maui.Controls.StackLayout> containing an <xref:Microsoft.Maui.Controls.Entry> and a <xref:Microsoft.Maui.Controls.Label>. After the user enters input into the <xref:Microsoft.Maui.Controls.Entry>, the rest of the `SwipeViewItem` can be tapped which executes the <xref:System.Windows.Input.ICommand> defined by the `SwipeItemView.Command` property.
 
 ## Open and close a SwipeView programmatically
 
@@ -359,4 +362,4 @@ swipeView.Close();
 
 An app may enter a state where swiping an item of content is not a valid operation. In such cases, the <xref:Microsoft.Maui.Controls.SwipeView> can be disabled by setting its `IsEnabled` property to `false`. This will prevent users from being able to swipe content to reveal swipe items.
 
-In addition, when defining the `Command` property of a `SwipeItem` or `SwipeItemView`, the `CanExecute` delegate of the `ICommand` can be specified to enable or disable the swipe item.
+In addition, when defining the `Command` property of a `SwipeItem` or `SwipeItemView`, the `CanExecute` delegate of the <xref:System.Windows.Input.ICommand> can be specified to enable or disable the swipe item.

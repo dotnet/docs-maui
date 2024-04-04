@@ -189,7 +189,7 @@ Alternatively, for greater readability the HTML can be inlined in a `CDATA` sect
 </Label>
 ```
 
-In this example, the `Text` property is set to the HTML string that's inlined in the `CDATA` section. This works because the `Text` property is the `ContentProperty` for the <xref:Microsoft.Maui.Controls.Label> class.
+In this example, the `Text` property is set to the HTML string that's inlined in the `CDATA` section. This works because the `Text` property is the [`ContentProperty`](xref:Microsoft.Maui.Controls.ContentPropertyAttribute) for the <xref:Microsoft.Maui.Controls.Label> class.
 
 ## Decorate text
 
@@ -303,16 +303,16 @@ The following screenshot shows the resulting <xref:Microsoft.Maui.Controls.Label
 
 :::image type="content" source="media/label/formattedtext.png" alt-text="Screenshot of Label consisting of three spans.":::
 
-A <xref:Microsoft.Maui.Controls.Span> can also respond to any gestures that are added to the span's `GestureRecognizers` collection. For example, a <xref:Microsoft.Maui.Controls.TapGestureRecognizer> has been added to the second <xref:Microsoft.Maui.Controls.Span> in the above examples. Therefore, when this <xref:Microsoft.Maui.Controls.Span> is tapped the <xref:Microsoft.Maui.Controls.TapGestureRecognizer> will respond by executing the `ICommand` defined by the `Command` property. For more information about tap gesture recognition, see [Recognize a tap gesture](~/fundamentals/gestures/tap.md).
+A <xref:Microsoft.Maui.Controls.Span> can also respond to any gestures that are added to the span's `GestureRecognizers` collection. For example, a <xref:Microsoft.Maui.Controls.TapGestureRecognizer> has been added to the second <xref:Microsoft.Maui.Controls.Span> in the above examples. Therefore, when this <xref:Microsoft.Maui.Controls.Span> is tapped the <xref:Microsoft.Maui.Controls.TapGestureRecognizer> will respond by executing the <xref:System.Windows.Input.ICommand> defined by the `Command` property. For more information about tap gesture recognition, see [Recognize a tap gesture](~/fundamentals/gestures/tap.md).
 
 ## Create a hyperlink
 
 The text displayed by <xref:Microsoft.Maui.Controls.Label> and <xref:Microsoft.Maui.Controls.Span> instances can be turned into hyperlinks with the following approach:
 
 1. Set the `TextColor` and `TextDecoration` properties of the <xref:Microsoft.Maui.Controls.Label> or <xref:Microsoft.Maui.Controls.Span>.
-1. Add a <xref:Microsoft.Maui.Controls.TapGestureRecognizer> to the `GestureRecognizers` collection of the <xref:Microsoft.Maui.Controls.Label> or <xref:Microsoft.Maui.Controls.Span>, whose `Command` property binds to a `ICommand`, and whose `CommandParameter` property contains the URL to open.
-1. Define the `ICommand` that will be executed by the <xref:Microsoft.Maui.Controls.TapGestureRecognizer>.
-1. Write the code that will be executed by the `ICommand`.
+1. Add a <xref:Microsoft.Maui.Controls.TapGestureRecognizer> to the `GestureRecognizers` collection of the <xref:Microsoft.Maui.Controls.Label> or <xref:Microsoft.Maui.Controls.Span>, whose `Command` property binds to a <xref:System.Windows.Input.ICommand>, and whose `CommandParameter` property contains the URL to open.
+1. Define the <xref:System.Windows.Input.ICommand> that will be executed by the <xref:Microsoft.Maui.Controls.TapGestureRecognizer>.
+1. Write the code that will be executed by the <xref:System.Windows.Input.ICommand>.
 
 The following example, shows a <xref:Microsoft.Maui.Controls.Label> whose content is set from multiple <xref:Microsoft.Maui.Controls.Span> objects:
 
@@ -339,7 +339,7 @@ In this example, the first and third <xref:Microsoft.Maui.Controls.Span> instanc
 
 :::image type="content" source="media/label/hyperlink.png" alt-text="Screenshot of a hyperlink.":::
 
-When the hyperlink is tapped, the <xref:Microsoft.Maui.Controls.TapGestureRecognizer> will respond by executing the `ICommand` defined by its `Command` property. In addition, the URL specified by the `CommandParameter` property will be passed to the `ICommand` as a parameter.
+When the hyperlink is tapped, the <xref:Microsoft.Maui.Controls.TapGestureRecognizer> will respond by executing the <xref:System.Windows.Input.ICommand> defined by its `Command` property. In addition, the URL specified by the `CommandParameter` property will be passed to the <xref:System.Windows.Input.ICommand> as a parameter.
 
 The code-behind for the XAML page contains the `TapCommand` implementation:
 

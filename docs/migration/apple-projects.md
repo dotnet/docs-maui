@@ -6,18 +6,18 @@ ms.date: 02/15/2023
 
 # Xamarin Apple project migration
 
-A .NET 7 project for a .NET for iOS app is similar to the following example:
+A .NET 8 project for a .NET iOS app is similar to the following example:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net7.0-ios</TargetFramework>
+    <TargetFramework>net8.0-ios</TargetFramework>
     <OutputType>Exe</OutputType>
     <Nullable>enable</Nullable>
     <ImplicitUsings>true</ImplicitUsings>
     <SupportedOSPlatformVersion>13.0</SupportedOSPlatformVersion>
   </PropertyGroup>
-</Project>  
+</Project>
 ```
 
 For a library project, omit the `$(OutputType)` property completely or specify `Library` as the property value.
@@ -28,12 +28,12 @@ The following table shows how to map properties in Xamarin Apple projects to .NE
 
 | Property | Description | .NET | Project conversion |
 | -------- | ----------- | ---- | ------------------ |
-| `MtouchExtraArgs` | Additional arguments to mtouch. | Some arguments are still applicable, some arguments are not. | Copy |
+| `MtouchExtraArgs` | Additional arguments to mtouch. | Some arguments are still applicable, some arguments aren't. | Copy |
 | `MtouchArch` | App architecture(s). | N/A | Convert to `RuntimeIdentifier`. For more information, see [Convert to RuntimeIdentifier](#convert-to-runtimeidentifier). |
 | `XamMacArch` | App architecture(s). | N/A | Convert to `RuntimeIdentifier`. For more information, see [Convert to RuntimeIdentifier](#convert-to-runtimeidentifier). |
 | `HttpClientHandler` | The default `HttpClientHandler`. | `UseNativeHttpHandler` | Convert to `UseNativeHttpHandler`. For more information, see [Convert to UseNativeHttpHandler](#convert-to-usenativehttphandler). |
 | `MtouchHttpClientHandler` | The default `MtouchHttpClientHandler.` | `UseNativeHttpHandler` | Convert to `UseNativeHttpHandler`. For more information, see [Convert to UseNativeHttpHandler](#convert-to-usenativehttphandler). |
-| `EnableCodeSigning` | If code signing is enabled. | | Copy |
+| `EnableCodeSigning` | Specifies if code signing is enabled. | | Copy |
 | `CodeSigningKey` | Specifies the code signing key. | | Rename to CodesignKey |
 | `CodesignKey` | Specifies the code signing key. | | Copy |
 | `CodesignProvision` | Specifies the provisioning profile. | | Copy |
@@ -47,7 +47,7 @@ The following table shows how to map properties in Xamarin Apple projects to .NE
 
 ### Convert to RuntimeIdentifier
 
-The following table shows how to convert the `MtouchArch` and `XamMacArch` properties to the `RuntimeIdentifier` property when migrating a Xamarin.iOS project to .NET for iOS:
+The following table shows how to convert the `MtouchArch` and `XamMacArch` properties to the `RuntimeIdentifier` property, or the `RuntimeIdentifiers` property, when migrating a Xamarin.iOS project to .NET iOS:
 
 | Value              | RuntimeIdentifier  | RuntimeIdentifiers                |
 | ------------------ | ------------------ | --------------------------------- |
@@ -55,13 +55,16 @@ The following table shows how to convert the `MtouchArch` and `XamMacArch` prope
 | ARMv7s             | ios-arm            |                                   |
 | ARMv7+ARMv7s       | ios-arm            |                                   |
 | ARM64              | ios-arm64          |                                   |
-| ARMv7+ARM64        |                    | ios-arm,ios-arm64                 |
-| ARMv7+ARMv7s+ARM64 |                    | ios-arm,ios-arm64                 |
+| ARMv7+ARM64        |                    | ios-arm;ios-arm64                 |
+| ARMv7+ARMv7s+ARM64 |                    | ios-arm;ios-arm64                 |
 | x86_64             | iossimulator-x64   |                                   |
 | i386               | iossimulator-x86   |                                   |
-| x86_64+i386        |                    | iossimulator-x86,iossimulator-x64 |
+| x86_64+i386        |                    | iossimulator-x86;iossimulator-x64 |
 
-The following table shows how to convert the `MtouchArch` and `XamMacArch` properties to the `RuntimeIdentifier` property when migrating a Xamarin.Mac project to .NET for macOS+:
+> [!IMPORTANT]
+> If you have multiple runtime identifiers, use the `RuntimeIdentifiers` property rather than the `RuntimeIdentifier` property.
+
+The following table shows how to convert the `MtouchArch` and `XamMacArch` properties to the `RuntimeIdentifier` property when migrating a Xamarin.Mac project to .NET macOS+:
 
 | Property | RuntimeIdentifier |
 | -------- | ----------------- |
@@ -78,7 +81,7 @@ For more information about the `RuntimeIdentifier` property, see [RuntimeIdentif
 
 ### Convert to UseNativeHttpHandler
 
-The following table shows how to convert the `HttpClientHandler` and `MtouchHttpClientHandler` properties to the `UseNativeHttpHandler` property when migrating a Xamarin Apple project to .NET 6+:
+The following table shows how to convert the `HttpClientHandler` and `MtouchHttpClientHandler` properties to the `UseNativeHttpHandler` property when migrating a Xamarin Apple project to .NET 8:
 
 | Value              | UseNativeHttpHandler  |
 | ------------------ | ------------------ |
@@ -100,7 +103,7 @@ Some values have moved from *Info.plist* to the project file.
 
 ### MinimumOSVersion and LSMinimumSystemVersion
 
-The `MinimumOSVersion` and `LSMinimumSystemVersion` properties should be converted to the `SupportedOSPlatformVersion` project in .NET 6+ projects. For more information, see [Ensure MinimumOSVersion is consistent with SupportedOSPlatformVersion](https://github.com/xamarin/xamarin-macios/issues/12336).
+The `MinimumOSVersion` and `LSMinimumSystemVersion` properties should be converted to the `SupportedOSPlatformVersion` property in .NET 8 projects. For more information, see [Ensure MinimumOSVersion is consistent with SupportedOSPlatformVersion](https://github.com/xamarin/xamarin-macios/issues/12336).
 
 ## See also
 

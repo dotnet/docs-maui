@@ -39,6 +39,8 @@ Once you've added your Apple Developer Account to Visual Studio, you need to ena
 # [Visual Studio for Mac](#tab/vsmac)
 <!-- markdownlint-enable MD025 -->
 
+[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
+
 1. In the **Solution Window**, double-click the **Info.plist** file from the **Platforms > iOS** folder of your .NET MAUI app project to open it in the editor.
 
 1. In the **Info.plist** editor, change from the **Source** view to the **Application** view:

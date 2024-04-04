@@ -1,7 +1,7 @@
 ---
 title: ".NET MAUI handlers"
 description: "Learn about .NET MAUI handlers, which map cross-platform controls to performant native controls on each platform."
-ms.date: 08/15/2022
+ms.date: 01/17/2024
 ---
 
 # Handlers
@@ -24,7 +24,7 @@ A key concept of .NET MAUI handlers is mappers. Each handler typically provides 
 
 A *property mapper* defines what Actions to take when a property change occurs in the cross-platform control. It's a `Dictionary` that maps the cross-platform control's properties to their associated Actions. Each platform handler then provides implementations of the Actions, which manipulate the native view API. This ensures that when a property is set on a cross-platform control, the underlying native view is updated as required.
 
-A *command mapper* defines what Actions to take when the cross-platform control sends commands to native views. They're similar to property mappers, but allow for additional data to be passed. A command in this context doesn't mean an `ICommand` implementation. Instead, a command is just an instruction, and optionally its data, that's sent to a native view. The command mapper is a `Dictionary` that maps the cross-platform control's command to their associated Actions. Each handler then provides implementations of the Actions, which manipulate the native view API. This ensures that when a cross-platform control sends a command to its native view, the native view is updated as required. For example, when a <xref:Microsoft.Maui.Controls.ScrollView> is scrolled, the `ScrollViewHandler` uses a command mapper to invoke an Action that accepts a scroll position argument. The Action then instructs the underlying native view to scroll to that position.
+A *command mapper* defines what Actions to take when the cross-platform control sends commands to native views. They're similar to property mappers, but allow for additional data to be passed. A command in this context doesn't mean an <xref:System.Windows.Input.ICommand> implementation. Instead, a command is just an instruction, and optionally its data, that's sent to a native view. The command mapper is a `Dictionary` that maps the cross-platform control's command to their associated Actions. Each handler then provides implementations of the Actions, which manipulate the native view API. This ensures that when a cross-platform control sends a command to its native view, the native view is updated as required. For example, when a <xref:Microsoft.Maui.Controls.ScrollView> is scrolled, the `ScrollViewHandler` uses a command mapper to invoke an Action that accepts a scroll position argument. The Action then instructs the underlying native view to scroll to that position.
 
 The advantage of using *mappers* to update native views is that native views can be decoupled from cross-platform controls. This removes the need for native views to subscribe to and unsubscribe from cross-platform control events. It also allows for easy customization because mappers can be modified without subclassing.
 
@@ -40,9 +40,9 @@ All handler-based .NET MAUI controls support two handler lifecycle events:
 
 In addition to these events, each cross-platform control also has an overridable `OnHandlerChanging` method that's invoked when the `HandlerChanging` event is raised, and a `OnHandlerChanged` method that's invoked when the `HandlerChanged` event is raised.
 
-## Handler-based views
+## View handlers
 
-The following table lists the types that implement handler-based views in .NET MAUI:
+The following table lists the types that implement views in .NET MAUI:
 
 | View | Interface | Handler | Property Mapper | Command Mapper |
 | -- | -- | -- | -- | -- |
@@ -92,3 +92,24 @@ The following table lists the types that implement handler-based views in .NET M
 | <xref:Microsoft.Maui.Controls.TimePicker> | <xref:Microsoft.Maui.ITimePicker> | <xref:Microsoft.Maui.Handlers.TimePickerHandler> | <xref:Microsoft.Maui.Handlers.TimePickerHandler.Mapper> | <xref:Microsoft.Maui.Handlers.TimePickerHandler.CommandMapper> |
 | <xref:Microsoft.Maui.Controls.ViewCell> | | `ViewCellRenderer` | `Mapper` | `CommandMapper` |
 | <xref:Microsoft.Maui.Controls.WebView> | <xref:Microsoft.Maui.IWebView> | <xref:Microsoft.Maui.Handlers.WebViewHandler> | <xref:Microsoft.Maui.Handlers.WebViewHandler.Mapper> | <xref:Microsoft.Maui.Handlers.WebViewHandler.CommandMapper> |
+
+## Page handlers
+
+The following table lists the types that implement pages in .NET MAUI:
+
+| Page | Android Handler | iOS/Mac Catalyst Handler | Windows Handler | Property Mapper | Command Mapper |
+| -- | -- | -- | -- | -- | -- |
+| <xref:Microsoft.Maui.Controls.ContentPage> | <xref:Microsoft.Maui.Handlers.PageHandler> | <xref:Microsoft.Maui.Handlers.PageHandler> | <xref:Microsoft.Maui.Handlers.PageHandler> | <xref:Microsoft.Maui.Handlers.PageHandler.Mapper> | <xref:Microsoft.Maui.Handlers.PageHandler.CommandMapper> |
+| <xref:Microsoft.Maui.Controls.FlyoutPage> | <xref:Microsoft.Maui.Handlers.FlyoutViewHandler> | PhoneFlyoutPageRenderer | <xref:Microsoft.Maui.Handlers.FlyoutViewHandler> | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.NavigationPage> | <xref:Microsoft.Maui.Handlers.NavigationViewHandler> | NavigationRenderer | <xref:Microsoft.Maui.Handlers.NavigationViewHandler> | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.TabbedPage> | <xref:Microsoft.Maui.Handlers.TabbedViewHandler> | TabbedRenderer | <xref:Microsoft.Maui.Handlers.TabbedViewHandler> | `Mapper` | `CommandMapper` |
+| <xref:Microsoft.Maui.Controls.Shell> | `ShellHandler` | ShellRenderer | ShellRenderer | `Mapper` | `CommandMapper` |
+
+<!--
+xrefs not used on:
+
+1. Mapper and CommandMapper because the properties are in different files (handlers vs compatibility renderers).
+1. Renderer classes because they are platform-specific, and the API docs only exist for the xplat layer.
+1. No API doc for ShellHandler.
+
+-->

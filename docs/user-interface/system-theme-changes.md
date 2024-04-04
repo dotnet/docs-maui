@@ -1,7 +1,7 @@
 ---
 title: "Respond to system theme changes"
 description: ".NET MAUI app can respond to operating system theme changes by using the AppThemeBinding markup extension, and the SetAppThemeColor and SetAppTheme extension methods."
-ms.date: 02/25/2022
+ms.date: 04/18/2023
 ---
 
 # Respond to system theme changes
@@ -12,7 +12,7 @@ Devices typically include light and dark themes, which each refer to a broad set
 
 The system theme may change for a variety of reasons, depending on the device configuration. This includes the system theme being explicitly changed by the user, it changing due to the time of day, and it changing due to environmental factors such as low light.
 
-.NET Multi-platform App UI (.NET MAUI) apps can respond to system theme changes by consuming resources with the `AppThemeBinding` markup extension, and the `SetAppThemeColor` and `SetAppTheme<T>`  extension methods.
+.NET Multi-platform App UI (.NET MAUI) apps can respond to system theme changes by consuming resources with the [`AppThemeBinding`](xref:Microsoft.Maui.Controls.Xaml.AppThemeBindingExtension) markup extension, and the `SetAppThemeColor` and `SetAppTheme<T>`  extension methods.
 
 > [!NOTE]
 > .NET MAUI apps can respond to system theme changes on iOS 13 or greater, Android 10 (API 29) or greater, macOS 10.14 or greater, and Windows 10 or greater.
@@ -23,11 +23,25 @@ The following screenshot shows themed pages, for the light system theme on iOS a
 
 ## Define and consume theme resources
 
-Resources for light and dark themes can be consumed with the `AppThemeBinding` markup extension, and the `SetAppThemeColor` and `SetAppTheme<T>` extension methods. With these approaches, resources are automatically applied based on the value of the current system theme. In addition, objects that consume these resources are automatically updated if the system theme changes while an app is running.
+Resources for light and dark themes can be consumed with the [`AppThemeBinding`](xref:Microsoft.Maui.Controls.Xaml.AppThemeBindingExtension) markup extension, and the `SetAppThemeColor` and `SetAppTheme<T>` extension methods. With these approaches, resources are automatically applied based on the value of the current system theme. In addition, objects that consume these resources are automatically updated if the system theme changes while an app is running.
 
 ### AppThemeBinding markup extension
 
-The `AppThemeBinding` markup extension enables you to consume a resource, such as an image or color, based on the current system theme:
+The [`AppThemeBinding`](xref:Microsoft.Maui.Controls.Xaml.AppThemeBindingExtension) markup extension enables you to consume a resource, such as an image or color, based on the current system theme.
+
+The [`AppThemeBinding`](xref:Microsoft.Maui.Controls.Xaml.AppThemeBindingExtension) markup extension is supported by the <xref:Microsoft.Maui.Controls.Xaml.AppThemeBindingExtension> class, which defines the following properties:
+
+- `Default`, of type `object`, that you set to the resource to be used by default.
+- `Light`, of type `object`, that you set to the resource to be used when the device is using its light theme.
+- `Dark`, of type `object`, that you set to the resource to be used when the device is using its dark theme.
+- `Value`, of type `object`, that returns the resource that's currently being used by the markup extension.
+
+> [!NOTE]
+> The XAML parser allows the <xref:Microsoft.Maui.Controls.Xaml.AppThemeBindingExtension> class to be abbreviated as `AppBindingTheme`.
+
+The `Default` property is the content property of <xref:Microsoft.Maui.Controls.Xaml.AppThemeBindingExtension>. Therefore, for XAML markup expressions expressed with curly braces, you can eliminate the `Default=` part of the expression provided that it's the first argument.
+
+The following XAML example shows how to use the [`AppThemeBinding`](xref:Microsoft.Maui.Controls.Xaml.AppThemeBindingExtension) markup extension:
 
 ```xaml
 <StackLayout>
@@ -39,7 +53,7 @@ The `AppThemeBinding` markup extension enables you to consume a resource, such a
 
 In this example, the text color of the first <xref:Microsoft.Maui.Controls.Label> is set to green when the device is using its light theme, and is set to red when the device is using its dark theme. Similarly, the <xref:Microsoft.Maui.Controls.Image> displays a different image file based upon the current system theme.
 
-In addition, resources defined in a <xref:Microsoft.Maui.Controls.ResourceDictionary> can be consumed with the [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) markup extension:
+Resources defined in a <xref:Microsoft.Maui.Controls.ResourceDictionary> can be consumed in an [`AppThemeBinding`](xref:Microsoft.Maui.Controls.Xaml.AppThemeBindingExtension) with the [`StaticResource`](xref:Microsoft.Maui.Controls.Xaml.StaticResourceExtension) markup extension:
 
 ```xaml
 <ContentPage ...>
@@ -72,7 +86,28 @@ In addition, resources defined in a <xref:Microsoft.Maui.Controls.ResourceDictio
 
 In this example, the background color of the <xref:Microsoft.Maui.Controls.Grid> and the <xref:Microsoft.Maui.Controls.Button> style changes based on whether the device is using its light theme or dark theme.
 
-For more information about the `AppThemeBinding` markup extension, see [AppThemeBinding markup extension](~/xaml/markup-extensions/consume.md#appthemebinding-markup-extension).
+::: moniker range=">=net-maui-8.0"
+
+In addition, resources defined in a <xref:Microsoft.Maui.Controls.ResourceDictionary> can also be consumed in an [`AppThemeBinding`](xref:Microsoft.Maui.Controls.Xaml.AppThemeBindingExtension) with the [`DynamicResource`](xref:Microsoft.Maui.Controls.Xaml.DynamicResourceExtension) markup extension:
+
+```xaml
+<ContentPage ...>
+    <ContentPage.Resources>
+        <Color x:Key="Primary">DarkGray</Color>
+        <Color x:Key="Secondary">HotPink</Color>
+        <Color x:Key="Tertiary">Yellow</Color>
+        <Style x:Key="labelStyle" TargetType="Label">
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Secondary}, Dark={StaticResource Primary}}" />
+            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource Primary}, Dark={DynamicResource Secondary}}" />
+        </Style>
+    </ContentPage.Resources>
+    <Label x:Name="myLabel"
+           Style="{StaticResource labelStyle}"/>
+</ContentPage>
+```
+
+::: moniker-end
 
 ### Extension methods
 

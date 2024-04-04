@@ -7,6 +7,8 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.Devices", "Microsoft.Maui.Devices.Sen
 
 # Geolocation
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-essentials)
+
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.Devices.Sensors.IGeolocation> interface. This interface provides APIs to retrieve the device's current geolocation coordinates.
 
 The default implementation of the `IGeolocation` interface is available through the <xref:Microsoft.Maui.Devices.Sensors.Geolocation.Default?displayProperty=nameWithType> property. Both the `IGeolocation` interface and `Geolocation` class are contained in the `Microsoft.Maui.Devices.Sensors` namespace.
@@ -18,17 +20,7 @@ To access the **Geolocation** functionality, the following platform-specific set
 <!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
 
-::: moniker range="=net-maui-6.0"
-
-Coarse *and* fine location permissions are required and should be configured in the Android project.
-
-::: moniker-end
-
-::: moniker range=">=net-maui-7.0"
-
 Coarse *or* fine location permissions, or both, must be specified and should be configured in the Android project.
-
-::: moniker-end
 
 Additionally, if your app targets Android 5.0 (API level 21) or higher, you must declare that your app uses the hardware features in the manifest file. This can be added in the following ways:
 
@@ -70,13 +62,11 @@ Additionally, if your app targets Android 5.0 (API level 21) or higher, you must
   <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
   ```
 
-<!-- NOT SUPPORTED
   \- or -
 
-- Use the Android project properties:
+- Update the Android Manifest in the manifest editor:
 
-  Right-click on the Android project and open the project's properties. Under _Android Manifest_ find the **Required permissions:** area and check the **ACCESS_COARSE_LOCATION** and **ACCESS_FINE_LOCATION** permissions. This will automatically update the _AndroidManifest.xml_ file.
--->
+  In Visual Studio double-click on the *Platforms/Android/AndroidManifest.xml* file to open the Android manifest editor. Then, under **Required permissions** check the permissions listed above. This will automatically update the *AndroidManifest.xml* file.
 
 > [!TIP]
 > Be sure to read the [Android documentation on background location updates](https://developer.android.com/training/location/permissions), as there are many restrictions that need to be considered.
@@ -92,43 +82,25 @@ In the _Platforms/iOS/Info.plist_ and _Platforms/MacCatalyst/Info.plist_ files, 
 
 The `<string>` element is the reason the app is requesting access to location information. This text is shown to the user.
 
+An alternative to editing the _Platforms/iOS/Info.plist_ and _Platforms/MacCatalyst/Info.plist_ files directly is opening the plist editor. In the editor you can add the **Privacy - Location When In Use Usage Description** property, and fill in a value to display to the user.
+
 ### Full accuracy location permission
 
 If you're going to request full accuracy with the <xref:Microsoft.Maui.Devices.Sensors.GeolocationRequest.RequestFullAccuracy?displayProperty=nameWithType> property, add the following dictionary to the _Platforms/iOS/Info.plist_ and _Platforms/MacCatalyst/Info.plist_ files:
 
 ```xml
 <key>NSLocationTemporaryUsageDescriptionDictionary</key>
-<array>
-  <dict>
-    <key>TemporaryFullAccuracyUsageDescription</key>
-    <string>Fill in a reason why your app needs full accuracy</string>
-  </dict>
-</array>
+<dict>
+  <key>TemporaryFullAccuracyUsageDescription</key>
+  <string>Fill in a reason why your app needs full accuracy</string>
+</dict>
 ```
 
 The `<string>` element is the reason the app is requesting access to location information with full accuracy. This text is shown to the user.
 
-<!-- NOT SUPPORTED
-An alternative to editing the _Platforms/iOS/Info.plist_ and _Platforms/MacCatalyst/Info.plist_ files directly is opening the plist editor. In the editor you can add the **Privacy - Location When In Use Usage Description** property, and fill in a value to display to the user.
--->
-
 # [Windows](#tab/windows)
 
-::: moniker range="=net-maui-6.0"
-
-<!-- NOT SUPPORTED>
-In the `Package.appxmanifest` under **Capabilities** ensure that `Location` capability are checked.
--->
-
-In the **Solution Explorer** pane, right-click on the _Platforms/Windows/Package.appxmanifest_ file, and select **View Code**. Under the `<Capabilities>` node, add the `<DeviceCapability Name="location"/>` element.
-
-::: moniker-end
-
-::: moniker range=">=net-maui-7.0"
-
 No setup is required.
-
-::: moniker-end
 
 -----
 <!-- markdownlint-enable MD025 -->
@@ -151,7 +123,7 @@ Depending on the device, not all location values may be available. For example, 
 While checking for the [last known location](#get-the-last-known-location) of the device may be quicker, it can be inaccurate. Use the <xref:Microsoft.Maui.Devices.Sensors.IGeolocation.GetLocationAsync%2A> method to query the device for the current location. You can configure the accuracy and timeout of the query. It's best to the method overload that uses the <xref:Microsoft.Maui.Devices.Sensors.GeolocationRequest> and <xref:System.Threading.CancellationToken> parameters, since it may take some time to get the device's location.
 
 > [!NOTE]
-> When necessary, the Geolocation API prompt's the user for permissions.
+> When necessary, the Geolocation API prompts the user for permissions.
 
 The following code example demonstrates how to request the device's location, while supporting cancellation:
 
@@ -161,6 +133,69 @@ Not all location values may be available, depending on the device. For example, 
 
 > [!WARNING]
 > <xref:Microsoft.Maui.Devices.Sensors.IGeolocation.GetLocationAsync%2A> can return `null` in some scenarios. This indicates that the underlying platform is unable to obtain the current location.
+
+::: moniker range=">=net-maui-8.0"
+
+## Listen for location changes
+
+In addition to querying the device for the current location, you can listen for location changes while an app is in the foreground.
+
+To check to see if the app is currently listening for location changes, there's a <xref:Microsoft.Maui.Devices.Sensors.Geolocation.IsListeningForeground> property you can query. Once you're ready to start listening for location changes you should call the <xref:Microsoft.Maui.Devices.Sensors.Geolocation.StartListeningForegroundAsync%2A> method. This method starts listening for location updates and raises the <xref:Microsoft.Maui.Devices.Sensors.Geolocation.LocationChanged> event when the location changes, provided that the app is in the foreground. The <xref:Microsoft.Maui.Devices.Sensors.GeolocationLocationChangedEventArgs> object that accompanies this event has a <xref:Microsoft.Maui.Devices.Sensors.GeolocationLocationChangedEventArgs.Location> property, of type <xref:Microsoft.Maui.Devices.Sensors.Location>, that represents the new location that's been detected.
+
+> [!NOTE]
+> When necessary, the Geolocation API prompts the user for permissions.
+
+The following code example demonstrates how to listen for a location change, and how to process the changed location:
+
+```csharp
+async void OnStartListening()
+{
+    try
+    {
+        Geolocation.LocationChanged += Geolocation_LocationChanged;
+        var request = new GeolocationListeningRequest((GeolocationAccuracy)Accuracy);
+        var success = await Geolocation.StartListeningForegroundAsync(request);
+
+        string status = success
+            ? "Started listening for foreground location updates"
+            : "Couldn't start listening";
+    }
+    catch (Exception ex)
+    {
+        // Unable to start listening for location changes
+    }
+}
+
+void Geolocation_LocationChanged(object sender, GeolocationLocationChangedEventArgs e)
+{
+    // Process e.Location to get the new location
+}
+```
+
+Error handling can be implemented by registering an event handler for the <xref:Microsoft.Maui.Devices.Sensors.Geolocation.ListeningFailed> event. The <xref:Microsoft.Maui.Devices.Sensors.GeolocationListeningFailedEventArgs> object that accompanies this event has an <xref:Microsoft.Maui.Devices.Sensors.GeolocationListeningFailedEventArgs.Error> property, of type <xref:Microsoft.Maui.Devices.Sensors.GeolocationError>, that indicates why listening failed. When the <xref:Microsoft.Maui.Devices.Sensors.Geolocation.ListeningFailed> event is raised, listening for further location changes stops and no further <xref:Microsoft.Maui.Devices.Sensors.Geolocation.LocationChanged> events are raised.
+
+To stop listening for location changes, call the <xref:Microsoft.Maui.Devices.Sensors.Geolocation.StopListeningForeground%2A> method:
+
+```csharp
+void OnStopListening()
+{
+    try
+    {
+        Geolocation.LocationChanged -= Geolocation_LocationChanged;
+        Geolocation.StopListeningForeground();
+        string status = "Stopped listening for foreground location updates";
+    }
+    catch (Exception ex)
+    {
+        // Unable to stop listening for location changes
+    }
+}
+```
+
+> [!NOTE]
+> The <xref:Microsoft.Maui.Devices.Sensors.Geolocation.StopListeningForeground%2A> method has no effect when the app isn't listening for location changes.
+
+::: moniker-end
 
 ## Accuracy
 

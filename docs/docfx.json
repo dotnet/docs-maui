@@ -48,15 +48,20 @@
     "globalMetadata": {
       "author": "davidbritch",
       "breadcrumb_path": "/dotnet/maui/breadcrumb/toc.json",
-      "extendBreadcrumb": true,
-      "feedback_system": "GitHub",
+      "feedback_system": "OpenSource",
       "feedback_github_repo": "dotnet/docs-maui",
       "feedback_product_url": "https://developercommunity.visualstudio.com/",
+      "open_source_feedback_contributorGuideUrl": "https://learn.microsoft.com/contribute/content/dotnet/dotnet-contribute",
+      "open_source_feedback_issueUrl": "https://github.com/dotnet/docs-maui/issues/new?template=customer-feedback.yml",
+      "open_source_feedback_productName": ".NET MAUI",
+      "open_source_feedback_issueTitle": "",
+      "open_source_feedback_productLogoLightUrl": "https://learn.microsoft.com/media/logos/logo_net.svg",
+      "open_source_feedback_productLogoDarkUrl": "https://learn.microsoft.com/media/logos/logo_net.svg",
       "ms.author": "dabritch",
-      "ms.prod": "dotnet-mobile",
+      "ms.service": "dotnet-mobile",
+      "ms.subservice": "dotnet-maui",
       "ms.topic": "conceptual",
-      "ms.technology": "dotnet-maui",
-      "uhfHeaderId": "MSDocsHeader-DotNet",
+      "uhfHeaderId": "MSDocsHeader-DotNetMaui",
       "zone_pivot_group_filename": "maui/zone-pivot-groups.json",
       "titleSuffix": ".NET MAUI",
       "searchScope": [ ".NET MAUI" ]
@@ -72,7 +77,7 @@
     "groups": {
       "net": {
         "dest": "net-dest",
-        "moniker_range": ">=net-maui-6.0"
+        "moniker_range": ">=net-maui-7.0"
       }
     }
   }

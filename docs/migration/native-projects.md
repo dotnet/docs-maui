@@ -1,6 +1,6 @@
 ---
 title: "Upgrade Xamarin.Android, Xamarin.iOS, and Xamarin.Mac projects to .NET"
-description: "Learn how to manually upgrade Xamarin native project files to .NET."
+description: "Learn how to manually upgrade Xamarin native projects to .NET."
 ms.date: 02/15/2023
 ---
 
@@ -11,16 +11,16 @@ To upgrade your Xamarin native projects to .NET, you must:
 > [!div class="checklist"]
 >
 > - Update your project file to be SDK-style.
-> - Update or replace incompatible dependencies with .NET 6+ versions.
+> - Update or replace incompatible dependencies with .NET 8 versions.
 > - Compile and test your app.
 
-For most apps, you won't need to change namespaces or undertake other rewrites.
+For most projects you won't need to change namespaces or undertake other rewrites.
 
-To simplify the upgrade process, we recommend creating a new .NET project of the same type and name as your Xamarin native project, and then copying in your code. This is the approach outlined below.
+To simplify the upgrade process, we recommend creating a new .NET project of the same type and name as your Xamarin native project, and then copy in your code. This is the approach outlined below.
 
 ## Create a new project
 
-In Visual Studio, create a new .NET project of the same type and name as your Xamarin native project. For example, to upgrade from Xamarin.Android to .NET for Android select the **Android Application** project template:
+In Visual Studio, create a new .NET project of the same type and name as your Xamarin native project. For example, to upgrade from Xamarin.Android to .NET Android select the **Android Application** project template:
 
 :::image type="content" source="media/new-android-app.png" alt-text="Screenshot of selecting the Android app project template in Visual Studio.":::
 
@@ -29,7 +29,7 @@ The new project should be given the same project and package name as your existi
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net6.0-android</TargetFramework>
+    <TargetFramework>net8.0-android</TargetFramework>
     <SupportedOSPlatformVersion>21</SupportedOSPlatformVersion>
     <OutputType>Exe</OutputType>
     <Nullable>enable</Nullable>
@@ -42,13 +42,13 @@ The new project should be given the same project and package name as your existi
 ```
 
 > [!IMPORTANT]
-> The target framework moniker (TFM) is what denotes the project as using .NET, in this case .NET 6. Valid TFMs for equivalent Xamarin native projects are net6.0-android, net6.0-ios, net6.0-macos, net6.0-tvos, and their .NET 7 equivalents.
+> The target framework moniker (TFM) is what denotes the project as using .NET, in this case .NET 8. Valid TFMs for equivalent Xamarin native projects are net8.0-android, net8.0-ios, net8.0-macos, and net8.0-tvos. For information about target frameworks in SDK-style projects, see [Target frameworks in SDK-style projects](/dotnet/standard/frameworks).
 
 Launch the app to confirm that your development environment can build the app.
 
 ## Merge files
 
-Copy your code and resource files from the folders of your Xamarin native app to identical folders within your new app. You should overwrite any files of the same name.
+Copy your code and resource files from the folders of your Xamarin native project to identical folders within your new app. You should overwrite any files of the same name.
 
 If you have other library projects, you should add them to your new solution and [add project references](/visualstudio/ide/managing-references-in-a-project) to them from your new .NET project.
 
@@ -56,28 +56,30 @@ You'll also need to copy some project properties from your Xamarin native projec
 
 ## Update dependencies
 
-Xamarin native NuGet packages are not compatible with .NET 6+ unless they have been recompiled using .NET TFMs. You can confirm a package is .NET 6+ compatible by looking at the **Frameworks** tab on [NuGet](https://nuget.org) for the package you're using, and checking that it lists one of the compatible frameworks shown in the following table:
+Generally, Xamarin native NuGet packages are not compatible with .NET 8 unless they have been recompiled using .NET TFMs. However, .NET Android apps can use NuGet packages targeting the `monoandroid` and `monoandroidXX.X` frameworks.
+
+You can confirm a package is .NET 8 compatible by looking at the **Frameworks** tab on [NuGet](https://nuget.org) for the package you're using, and checking that it lists one of the compatible frameworks shown in the following table:
 
 | Compatible frameworks | Incompatible frameworks |
 | --- | --- |
-| net6.0-android, net7.0-android | monoandroid, monoandroid10.0 |
-| net6.0-ios, net7.0-ios | monotouch, xamarinios, xamarinios10 |
-| net6.0-macos, net6.0-macos | monomac, xamarinmac, xamarinmac20 |
-| net6.0-tvos, net7.0-tvos | xamarintvos |
+| net8.0-android, monoandroid, monoandroidXX.X | |
+| net8.0-ios | monotouch, xamarinios, xamarinios10 |
+| net8.0-macos | monomac, xamarinmac, xamarinmac20 |
+| net8.0-tvos | xamarintvos |
 | | xamarinwatchos |
 
 > [!NOTE]
-> .NET Standard libraries that have no dependencies on the incompatible frameworks listed below are still compatible with .NET 6+.
+> .NET Standard libraries that have no dependencies on the incompatible frameworks listed above are still compatible with .NET 8.
 
-If a package on [NuGet](https://nuget.org) indicates compatibility with any of the `net6` or newer frameworks above, regardless of also including incompatible frameworks, then the package is compatible. Compatible NuGet packages can be added to your .NET native project using the NuGet package manager in Visual Studio.
+If a package on [NuGet](https://nuget.org) indicates compatibility with any of the compatible frameworks above, regardless of also including incompatible frameworks, then the package is compatible. Compatible NuGet packages can be added to your .NET native project using the NuGet package manager in Visual Studio.
 
-If you can't find a .NET 6+ compatible version of a NuGet package you should:
+If you can't find a .NET 8 compatible version of a NuGet package you should:
 
 - Recompile the package with .NET TFMs, if you own the code.
-- Look for a preview release of a .NET 6+ version of the package.
-- Replace the dependency with a .NET 6+ compatible alternative.
+- Look for a preview release of a .NET 8 version of the package.
+- Replace the dependency with a .NET 8 compatible alternative.
 
-For information about migrating Xamarin.Essentials code in a .NET for Android or .NET for iOS app, see [Migrate Xamarin.Essentials code in .NET for Android and .NET for iOS apps](native-essentials.md).
+For information about migrating Xamarin.Essentials code in a .NET Android or .NET iOS app, see [Migrate Xamarin.Essentials code in .NET Android and .NET iOS apps](native-essentials.md).
 
 ## Compile and troubleshoot
 

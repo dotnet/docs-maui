@@ -6,6 +6,12 @@ ms.date: 02/24/2023
 
 # Publish an iOS app for in-house distribution
 
+> [!div class="op_single_selector"]
+>
+> - [Publish for app store distribution](publish-app-store.md)
+> - [Publish for ad-hoc distribution](publish-ad-hoc.md)
+> - [Publish using the command line](publish-cli.md)
+
 In-house distribution enables members of the Apple Developer Enterprise Program to distribute apps internally to other members of the same organization. This has the advantage of not requiring an App Store review, and having no limit on the number of devices on which an app can be installed. However, members of the Apple Developer Enterprise Program don't have access to App Store Connect, and therefore the licensee is responsible for distributing the app.
 
 Distributing an iOS app requires that the app is provisioned using a *provisioning profile*. Provisioning profiles are files that contain code signing information, as well as the identity of the app and its intended distribution mechanism.
@@ -128,6 +134,8 @@ Visual Studio can publish a .NET MAUI iOS app for in-house distribution. For inf
 <!-- markdownlint-disable MD025 -->
 # [Visual Studio for Mac](#tab/vsmac)
 <!-- markdownlint-enable MD025 -->
+
+[!INCLUDE [Visual Studio for Mac end of life](~/includes/vsmac-eol.md)]
 
 [!INCLUDE [Publish](../includes/publish-vsmac.md)]
 

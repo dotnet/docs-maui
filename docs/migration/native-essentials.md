@@ -1,25 +1,28 @@
 ---
-title: "Migrate Xamarin.Essentials code in .NET for Android and .NET for iOS apps"
-description: "Learn how to migrate your Xamarin.Essentials code in .NET for iOS and .NET for Android apps."
+title: "Migrate Xamarin.Essentials code in .NET Android and .NET iOS apps"
+description: "Learn how to migrate your Xamarin.Essentials code in .NET iOS and .NET Android apps."
 ms.date: 03/09/2023
 no-loc: [ "Xamarin.Essentials", ".NET MAUI" ]
 ---
 
-# Migrate Xamarin.Essentials code in .NET for Android and .NET for iOS apps
+# Migrate Xamarin.Essentials code in .NET Android and .NET iOS apps
 
 Xamarin.Essentials is a fundamental library for nearly every Xamarin app, and its functionality is now part of .NET Multi-platform App UI (.NET MAUI).
 
-The process to use .NET MAUIs native device functionality, that was formerly known as Xamarin.Essentials, in a .NET for Android or .NET for iOS app, is:
+The following steps outline the process to use .NET MAUI's native device functionality, formerly known as Xamarin.Essentials, in a .NET Android or .NET iOS app:
 
-1. Remove the Xamarin.Essentials NuGet package from your .NET for Android or .NET for iOS app.
+1. Remove the Xamarin.Essentials NuGet package from your .NET Android or .NET iOS app.
 1. Set the `$(UseMauiEssentials)` build property to `true` in your project file. For more information, see [Modify your project file](#modify-your-project-file).
 1. Initialize the "essentials" functionality by calling the `Platform.Init` method. For more information, see [Initialize the platform](#initialize-the-platform).
-1. Perform additional setup, if required. For more information, see [Perform additional setup](#perform-additional-setup).
+1. Perform additional setup, if necessary. For more information, see [Perform additional setup](#perform-additional-setup).
 1. Add using directives for the required functionality. For more information, see [Add using directives](#add-using-directives).
+
+> [!IMPORTANT]
+> No action is required to use Xamarin.Essentials in a .NET MAUI app, other than removing references to the `Xamarin.Essentials` namespace, because .NET MAUI already includes the functionality from Xamarin.Essentials.
 
 ## Modify your project file
 
-To use .NET MAUIs native device functionality in a .NET for Android or .NET for iOS app, modify your project file and set the `$(UseMauiEssentials)` build property to `true`.
+To use .NET MAUIs native device functionality in a .NET Android or .NET iOS app, modify your project file and set the `$(UseMauiEssentials)` build property to `true`.
 
 <!-- markdownlint-disable MD025 -->
 # [Android](#tab/android)
@@ -28,7 +31,7 @@ To use .NET MAUIs native device functionality in a .NET for Android or .NET for 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net7.0-android</TargetFramework>
+    <TargetFramework>net8.0-android</TargetFramework>
     ...
     <UseMauiEssentials>true</UseMauiEssentials>
   </PropertyGroup>
@@ -42,7 +45,7 @@ To use .NET MAUIs native device functionality in a .NET for Android or .NET for 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net7.0-ios</TargetFramework>
+    <TargetFramework>net8.0-ios</TargetFramework>
     ...
     <UseMauiEssentials>true</UseMauiEssentials>
   </PropertyGroup>
@@ -57,7 +60,7 @@ To use .NET MAUIs native device functionality in a .NET for Android or .NET for 
 # [Android](#tab/android)
 <!-- markdownlint-enable MD025 -->
 
-In any <xref:Android.App.Activity> that's launched you must call the `Platform.Init` method, which is in the <xref:Microsoft.Maui.ApplicationModel> namespace, from the `OnCreate` method:
+In any <xref:Android.App.Activity> that's launched, you must call the `Platform.Init` method, which is in the <xref:Microsoft.Maui.ApplicationModel> namespace, from the `OnCreate` method:
 
 ```csharp
 using Android.Content.PM;
@@ -73,7 +76,7 @@ public class MainActivity : Activity
     {
         base.OnCreate(savedInstanceState);
         Platform.Init(this, savedInstanceState);
-        // ...  
+        // ...
     }
 }
 ```
@@ -84,7 +87,7 @@ The `Platform.Init` method requires an <xref:Android.App.Application> argument, 
 # [iOS](#tab/ios)
 <!-- markdownlint-enable MD025 -->
 
-In your `AppDelegate` class you must call the `Platform.Init` method, which is in the <xref:Microsoft.Maui.ApplicationModel> namespace, from the `FinishedLaunching` method:
+In your `AppDelegate` class, you must call the `Platform.Init` method, which is in the <xref:Microsoft.Maui.ApplicationModel> namespace, from the `FinishedLaunching` method:
 
 ```csharp
 using Microsoft.Maui.ApplicationModel;
@@ -208,7 +211,7 @@ Activity states are:
 | Method | Purpose |
 | ------ | ------- |
 | `ContinueUserActivity` | Informs the app that there's data associated with continuing a task specified as a <xref:Foundation.NSUserActivity> object, and then returns whether the app continued the activity. |
-| `GetCurrentUIViewController` | Gets the current view controller. This method will return `null` if unable to detect a <xref:UIKit.UIViewController>. |
+| `GetCurrentUIViewController` | Gets the current view controller. This method returns `null` if unable to detect a <xref:UIKit.UIViewController>. |
 | `OpenUrl` | Opens the specified URI to start an authentication flow. |
 | `PerformActionForShortcutItem` | Invokes the action that corresponds to the chosen `AppAction` by the user. |
 
@@ -225,7 +228,7 @@ public override void PerformActionForShortcutItem(UIApplication application, UIA
 
 ## Add using directives
 
-The implicit `global using` directives for .NET for iOS and .NET for Android don't include the namespaces for .NET MAUIs native device functionality. Therefore, `using` directives for the `Xamarin.Essentials` namespace should be replaced with `using` directives for the namespace that contains the required functionality:
+The implicit `global using` directives for .NET iOS and .NET Android don't include the namespaces for .NET MAUIs native device functionality. Therefore, `using` directives for the `Xamarin.Essentials` namespace should be replaced with `using` directives for the namespace that contains the required functionality:
 
 | Namespace | Purpose |
 | --------- | ------- |

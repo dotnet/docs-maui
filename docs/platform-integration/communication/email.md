@@ -7,6 +7,8 @@ no-loc: ["Microsoft.Maui", "Microsoft.Maui.ApplicationModel.Communication"]
 
 # Email
 
+[![Browse sample.](~/media/code-sample.png) Browse the sample](/samples/dotnet/maui-samples/platformintegration-essentials)
+
 This article describes how you can use the .NET Multi-platform App UI (.NET MAUI) <xref:Microsoft.Maui.ApplicationModel.Communication.IEmail> interface to open the default email app. When the email app is loaded, it can be set to create a new email with the specified recipients, subject, and body.
 
 The default implementation of the `IEmail` interface is available through the <xref:Microsoft.Maui.ApplicationModel.Communication.Email.Default?displayProperty=nameWithType> property. Both the `IEmail` interface and `Email` class are contained in the `Microsoft.Maui.ApplicationModel.Communication` namespace.
