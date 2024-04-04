@@ -21,8 +21,8 @@ To start developing native, cross-platform .NET MAUI apps on Windows, install Vi
 
 To build, sign, and deploy .NET MAUI apps for iOS, you'll also need:
 
-- A Mac that is compatible with the latest version of Xcode. For more information, see Apple's [minimum requirements documentation](https://developer.apple.com/support/xcode/)
-- The latest version of [Xcode](https://developer.apple.com/xcode).
+- A Mac that is compatible with Xcode. For more information, see Apple's [minimum requirements documentation](https://developer.apple.com/support/xcode/).
+- A specific version of Xcode, which depends on the version of .NET MAUI that you're using. For information, see [Release versions](https://github.com/dotnet/maui/wiki/Release-Versions).
 - An [Apple ID](https://appleid.apple.com/account) and paid [Apple Developer Program](https://developer.apple.com/programs) enrollment. An Apple ID is required to deploy apps to devices, and to submit apps to the Apple Store.
 
 Alternatively, to deploy debug builds of your app directly from Windows to your iOS device with [hot restart](~/ios/hot-restart.md), you'll need:
@@ -57,8 +57,8 @@ To start developing native, cross-platform .NET MAUI apps on macOS, install Visu
 
 To build, sign, and deploy .NET MAUI apps for iOS or macOS, you'll also need:
 
-- A Mac that is compatible with the latest version of Xcode. For more information, see Apple's [minimum requirements documentation](https://developer.apple.com/support/xcode/)
-- The latest version of [Xcode](https://developer.apple.com/xcode).
+- A Mac that is compatible with Xcode. For more information, see Apple's [minimum requirements documentation](https://developer.apple.com/support/xcode/).
+- A specific version of Xcode, which depends on the version of .NET MAUI that you're using. For information, see [Release versions](https://github.com/dotnet/maui/wiki/Release-Versions).
 - An [Apple ID](https://appleid.apple.com/account) and paid [Apple Developer Program](https://developer.apple.com/programs) enrollment. An Apple ID is required to deploy apps to devices, and to submit apps to the Apple Store.
 
 ## Installation
@@ -145,7 +145,7 @@ To debug a .NET MAUI app in Visual Studio Code, you need to have a valid target 
 
 To debug to an iOS or macOS target in Visual Studio Code:
 
-1. Install the [latest stable Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12).
+1. Install the version of Xcode that's required by the version of .NET MAUI that you're using. For information, see [Release versions](https://github.com/dotnet/maui/wiki/Release-Versions). The latest stable Xcode release can be downloaded from the [Mac App Store](https://apps.apple.com/us/app/xcode/id497799835?mt=12).
 1. Run `xcode-select --install` in a terminal to acquire the Xcode command line tools.
 
 ### Android
@@ -225,6 +225,7 @@ This extension is still in early preview, so there are a number of known limitat
 * Currently, you can't switch the target framework for IntelliSense (it will show syntax highlighting for only the first target framework listed in your .csproj file). This capability is in progress.
 * XAML and .NET Hot Reload are't currently supported.
 * This extension hasn't yet been fully tested with the latest iOS and Xcode betas.
+
 Please [give us your feedback](#provide-feedback) on other features you'd like to see as we continue building this new experience!
 
 ## Provide Feedback
